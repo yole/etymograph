@@ -1,0 +1,14 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Etymograph: Corpus</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<p>Corpus for <span th:text="${language.name}"></span></p>
+<ul>
+    <li th:each="text : ${texts}"><a th:text="${text.title}" th:href="@{/corpus/text/{id}(id=${text.id})}"></a> </li>
+</ul>
+
+</body>
+</html>

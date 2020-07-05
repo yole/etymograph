@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Etymograph: Word</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h2 th:text="${word.text}"></h2>
+<p th:text="${word.gloss}"></p>
+<div th:each="linkType : ${linksFrom.keySet()}">
+    <div th:text="${linkType}"></div>
+    <div th:each="link : ${linksFrom.get(linkType)}"><a th:text="${link.toWord.text}" th:href="@{/word/{l}/{t}(l=${link.toWord.language.shortName},t=${link.toWord.text})}"></a></div>
+</div>
+<div th:each="linkType : ${linksTo.keySet()}">
+    <div th:text="'Words '+ ${linkType} + ' this one'"></div>
+    <div th:each="link : ${linksTo.get(linkType)}"><a th:text="${link.fromWord.text}" th:href="@{/word/{l}/{t}(l=${link.fromWord.language.shortName},t=${link.fromWord.text})}"></a></div>
+</div>
+</body>
+</html>

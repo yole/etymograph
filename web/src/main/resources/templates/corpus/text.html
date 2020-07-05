@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Etymograph: Corpus Text</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h2 th:text="${text.title}"></h2>
+<div th:each="line : ${lines}">
+    <table>
+        <tr>
+            <td th:each="pair : ${line.pairs}"><a th:text="${pair.first}" th:href="@{/word/{l}/{t}(l=${text.language.shortName},t=${pair.second.text})}"></a></td>
+        </tr>
+        <tr>
+            <td th:each="pair : ${line.pairs}" th:text="${pair.second} ? ${pair.second.gloss}"></td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
