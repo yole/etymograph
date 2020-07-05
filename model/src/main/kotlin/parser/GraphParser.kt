@@ -4,8 +4,6 @@ import ru.yole.etymograph.InMemoryGraphRepository
 import ru.yole.etymograph.Language
 import ru.yole.etymograph.Link
 import ru.yole.etymograph.Word
-import java.io.File
-import java.io.FileInputStream
 import java.io.InputStream
 
 abstract class GraphSectionParser(val repo: InMemoryGraphRepository) {
@@ -39,8 +37,10 @@ fun parseWordChain(repo: InMemoryGraphRepository, line: String, language: Langua
         if (firstWord == null) {
             firstWord = word
         }
-        if (prevWord != null && linkType != null) {
-            repo.addLink(Link(prevWord!!, word, linkType!!, lineSource, null))
+        prevWord?.let { prevWord ->
+            if (linkType != null) {
+                repo.addLink(Link(prevWord, word, linkType!!, repo.findMatchingRule(prevWord, word), lineSource, null))
+            }
         }
         if (!linkAssociative) {
             prevWord = word
@@ -111,6 +111,20 @@ class CorpusTextSectionParser(repo: InMemoryGraphRepository): GraphSectionParser
     }
 }
 
+class RuleSectionParser(repo: InMemoryGraphRepository): GraphSectionParser(repo) {
+    override fun parseLine(line: String) {
+        val langId = line.substringBefore(':')
+        var tail = line.substringAfter(':').trim()
+        val fromPattern = tail.substringBefore("->").trim()
+        tail = tail.substringAfter("->").trim()
+        val tokens = tail.split(' ')
+        val toPattern = tokens.first()
+        val addedCategories = tokens.getOrNull(1)
+        val language = repo.languageByShortName(langId)
+        repo.addRule(language, language, fromPattern, toPattern, addedCategories, null, null)
+    }
+}
+
 fun parseGraph(stream: InputStream): InMemoryGraphRepository {
     val repo = InMemoryGraphRepository()
     stream.reader().useLines { lines ->
@@ -122,6 +136,7 @@ fun parseGraph(stream: InputStream): InMemoryGraphRepository {
                 currentSection = when(line.trim()) {
                     "[languages]" -> LanguagesSectionParser(repo)
                     "[corpustext]" -> CorpusTextSectionParser(repo)
+                    "[rules]" -> RuleSectionParser(repo)
                     else -> throw IllegalArgumentException("Unknown section name $line")
                 }
             }
@@ -133,28 +148,3 @@ fun parseGraph(stream: InputStream): InMemoryGraphRepository {
     }
     return repo
 }
-
-fun main(args: Array<String>) {
-    val repo = parseGraph(FileInputStream(File(args[0])))
-    for (corpusText in repo.allCorpusTexts()) {
-        println(corpusText.text)
-        val lines = corpusText.mapToLines(repo)
-        for (line in lines) {
-            for (corpusWord in line.corpusWords) {
-                println(corpusWord.text)
-                val word = corpusWord.word
-                if (word != null) {
-                    println("${word.text}: ${word.gloss}")
-                    println("Related words:")
-                    for (link in repo.getLinksFrom(word)) {
-                        println("${link.type} ${link.toWord.text} (${link.toWord.gloss})")
-                    }
-                    for (link in repo.getLinksTo(word)) {
-                        println("${link.type} ${link.fromWord.text} (${link.fromWord.gloss})")
-                    }
-                }
-            }
-        }
-    }
-}
-

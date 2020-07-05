@@ -27,6 +27,13 @@ class Word(val text: String, val language: Language, val gloss: String?, source:
         if (components.isNotEmpty()) {
             return components.joinToString("-") { it.toWord.getOrComputeGloss(graph) ?: "?" }
         }
+        val derivation = graph.getLinksFrom(this).filter { it.type == Link.Derived }.singleOrNull()
+        val addedCategories = derivation?.rule?.addedCategories
+        if (addedCategories != null) {
+            derivation.toWord.getOrComputeGloss(graph)?.let { fromGloss ->
+                return "$fromGloss$addedCategories"
+            }
+        }
         return null
     }
 }

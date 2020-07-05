@@ -3,24 +3,28 @@ Q: Quenya
 S: Sindarin
 CE: Common Eldarin
 
+[rules]
+Q: (*V) -> $1r .PL
+Q: (*C) -> $1i .PL
+
 [corpustext]
 Q: Galadriel's Lament {I:394}
 Ai! laurië lantar lassi súrinen!
   {PE17:61} ai alas
   {PE17:61} laurië golden.ADV < laurëa golden
-  {PE17:61} lantar fall.PL < lanta fall
+  {PE17:61} lantar < lanta fall
   {PE17:62} lassi leaf.PL < lasse leaf
   {PE17:62} súrinen wind.INS < súre wind
 Yéni únótimë ve rámar aldaron!
-  {PE17:62} yéni long year.PL < yén long year
+  {PE17:62} yéni < yén long year
   {PE17:62} únótimë uncountable.PL < únótima uncountable < nótima countable < NOT- count
   {PE17:63} ve as
-  {PE17:63} rámar wing.PL < ráma wing
+  {PE17:63} rámar < ráma wing
   {PE17.63} aldaron tree.GEN.GENPL < alda tree
 Yéni ve lintë yuldar avánier
   {PE17:63} lintë swift.PL < linta swift
-  {PE17:63} yuldar draught.PL < yulda draught < YUL- drink
-  {PE17:63} avánier depart.PL.PST.PTCP < avánie depart.PST.PTCP < av depart
+  {PE17:63} yuldar < yulda draught < YUL- drink
+  {PE17:63} avánier < avánie depart.PST.PTCP < av depart
 mi oromardi lisse-miruvóreva
   {PE17:63} mi in
   {PE17:63} oromardi <+ ORO- up + mardi dwelling.PL

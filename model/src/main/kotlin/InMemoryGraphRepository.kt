@@ -6,6 +6,7 @@ class InMemoryGraphRepository : GraphRepository() {
     private val words = mutableMapOf<Language, MutableMap<String, MutableList<Word>>>()
     private val linksFrom = mutableMapOf<Word, MutableList<Link>>()
     private val linksTo = mutableMapOf<Word, MutableList<Link>>()
+    private val rules = mutableListOf<Rule>()
 
     fun addLanguage(language: Language) {
         languages[language.shortName] = language
@@ -71,5 +72,27 @@ class InMemoryGraphRepository : GraphRepository() {
 
     override fun getLinksTo(word: Word): Iterable<Link> {
         return linksTo[word] ?: emptyList()
+    }
+
+    fun addRule(
+        fromLanguage: Language,
+        toLanguage: Language,
+        fromPattern: String,
+        toPattern: String,
+        addedCategories: String?,
+        source: String?,
+        notes: String?
+    ): Rule {
+        return Rule(fromLanguage, toLanguage, fromPattern, toPattern, addedCategories, source, notes)
+            .also { rules.add(it) }
+    }
+
+    fun findMatchingRule(fromWord: Word, toWord: Word): Rule? {
+        for (rule in rules) {
+            if (rule.matches(toWord) && rule.apply(toWord.text) == fromWord.text) {
+                return rule
+            }
+        }
+        return null
     }
 }
