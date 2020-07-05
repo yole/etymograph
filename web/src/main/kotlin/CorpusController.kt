@@ -30,7 +30,7 @@ class CorpusController(val graphService: GraphService) {
     fun text(@PathVariable id: Int, model: Model): String {
         val text = graphService.graph.corpusTextById(id) ?: throw NoCorpusTextException()
         model.addAttribute("text", text)
-        model.addAttribute("lines", text.mapToLines())
+        model.addAttribute("lines", text.mapToLines(graphService.graph))
         return "corpus/text"
     }
 }

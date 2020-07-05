@@ -9,10 +9,10 @@
 <div th:each="line : ${lines}">
     <table>
         <tr>
-            <td th:each="pair : ${line.pairs}"><a th:text="${pair.first}" th:href="@{/word/{l}/{t}(l=${text.language.shortName},t=${pair.second.text})}"></a></td>
+            <td th:each="corpusWord : ${line.corpusWords}"><a th:text="${corpusWord.text}" th:href="@{/word/{l}/{t}(l=${text.language.shortName},t=${corpusWord.word?.text})}"></a></td>
         </tr>
         <tr>
-            <td th:each="pair : ${line.pairs}" th:text="${pair.second} ? ${pair.second.gloss}"></td>
+            <td th:each="corpusWord : ${line.corpusWords}" th:text="${corpusWord.gloss}"></td>
         </tr>
     </table>
 </div>

@@ -7,4 +7,8 @@ class Link(
     source: String?,
     notes: String?
 ) : LangEntity(source, notes) {
+    companion object {
+        val Derived = "derived from"
+        val Agglutination = "agglutination of"
+    }
 }

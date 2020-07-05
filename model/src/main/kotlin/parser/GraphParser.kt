@@ -29,20 +29,22 @@ fun parseWordChain(repo: InMemoryGraphRepository, line: String, language: Langua
     var prevWord: Word? = null
     var lineSource: String? = null
     var linkType: String? = null
+    var linkAssociative = false
 
     fun doneWord() {
-        val word = Word(currentWordText!!, language, currentWordGloss, lineSource, null)
+        val word = repo.addWord(currentWordText!!, language, currentWordGloss, lineSource, null)
         currentWordText = null
         currentWordGloss = null
 
-        repo.addWord(word)
         if (firstWord == null) {
             firstWord = word
         }
         if (prevWord != null && linkType != null) {
             repo.addLink(Link(prevWord!!, word, linkType!!, lineSource, null))
         }
-        prevWord = word
+        if (!linkAssociative) {
+            prevWord = word
+        }
     }
 
     for ((index, token) in line.split(' ').withIndex()) {
@@ -53,7 +55,13 @@ fun parseWordChain(repo: InMemoryGraphRepository, line: String, language: Langua
 
         if (token == "<") {
             doneWord()
-            linkType = "derived from"
+            linkType = Link.Derived
+            linkAssociative = false
+        }
+        else if (token == "+" || token == "<+") {
+            doneWord()
+            linkType = Link.Agglutination
+            linkAssociative = true
         }
         else if (currentWordText == null) {
             currentWordText = token
@@ -130,10 +138,11 @@ fun main(args: Array<String>) {
     val repo = parseGraph(FileInputStream(File(args[0])))
     for (corpusText in repo.allCorpusTexts()) {
         println(corpusText.text)
-        val lines = corpusText.mapToLines()
+        val lines = corpusText.mapToLines(repo)
         for (line in lines) {
-            for ((textWord, word) in line.pairs) {
-                println(textWord)
+            for (corpusWord in line.corpusWords) {
+                println(corpusWord.text)
+                val word = corpusWord.word
                 if (word != null) {
                     println("${word.text}: ${word.gloss}")
                     println("Related words:")

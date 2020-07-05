@@ -47,9 +47,17 @@ class InMemoryGraphRepository : GraphRepository() {
         return corpus.filter { it.language == lang }
     }
 
-    fun addWord(word: Word) {
-        val wordsForLanguage = words.getOrPut(word.language) { mutableMapOf() }
-        wordsForLanguage.getOrPut(word.text) { mutableListOf() }.add(word)
+    fun addWord(
+        text: String,
+        language: Language,
+        gloss: String?,
+        source: String?,
+        notes: String?
+    ): Word {
+        val wordsForLanguage = words.getOrPut(language) { mutableMapOf() }
+        val wordsByText = wordsForLanguage.getOrPut(text) { mutableListOf() }
+        wordsByText.find { it.gloss == gloss }?.let { return it }
+        return Word(text, language, gloss, source, notes).also { wordsByText.add(it) }
     }
 
     fun addLink(link: Link) {

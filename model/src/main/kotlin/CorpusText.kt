@@ -1,6 +1,8 @@
 package ru.yole.etymograph
 
-class CorpusTextLine(val pairs: List<Pair<String, Word?>>)
+class CorpusWord(val text: String, val word: Word?, val gloss: String?)
+
+class CorpusTextLine(val corpusWords: List<CorpusWord>)
 
 class CorpusText(
     val id: Int,
@@ -11,11 +13,12 @@ class CorpusText(
     source: String?,
     notes: String?
 ): LangEntity(source, notes) {
-    fun mapToLines(): List<CorpusTextLine> {
+    fun mapToLines(repo: GraphRepository): List<CorpusTextLine> {
         return text.split("\n").map { line ->
             val textWords = line.split(' ')
             CorpusTextLine(textWords.map { textWord ->
-                textWord to words.find { word -> word.text.equals(textWord.trimEnd('!', ',', '.'), true) }
+                val word = words.find { word -> word.text.equals(textWord.trimEnd('!', ',', '.'), true) }
+                CorpusWord(textWord, word, word?.getOrComputeGloss(repo))
             })
         }
     }
