@@ -25,7 +25,9 @@ class Word(val text: String, val language: Language, val gloss: String?, source:
         gloss?.let { return it }
         val components = graph.getLinksFrom(this).filter { it.type == Link.Agglutination }
         if (components.isNotEmpty()) {
-            return components.joinToString("-") { it.toWord.getOrComputeGloss(graph) ?: "?" }
+            return components.joinToString("-") {
+                it.toWord.getOrComputeGloss(graph)?.substringBefore(", ") ?: "?"
+            }
         }
         val derivation = graph.getLinksFrom(this).filter { it.type == Link.Derived }.singleOrNull()
         val addedCategories = derivation?.rule?.addedCategories

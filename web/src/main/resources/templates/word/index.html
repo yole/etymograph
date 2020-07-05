@@ -6,7 +6,7 @@
 </head>
 <body>
 <h2 th:text="${word.text}"></h2>
-<p th:text="${word.gloss}"></p>
+<p th:text="${gloss}"></p>
 <div th:each="linkType : ${linksFrom.keySet()}">
     <div th:text="${linkType}"></div>
     <div th:each="link : ${linksFrom.get(linkType)}"><a th:text="${link.toWord.text}" th:href="@{/word/{l}/{t}(l=${link.toWord.language.shortName},t=${link.toWord.text})}"></a></div>

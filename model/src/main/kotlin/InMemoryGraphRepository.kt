@@ -37,7 +37,7 @@ class InMemoryGraphRepository : GraphRepository() {
 
     override fun wordsByText(lang: Language, text: String): List<Word> {
         val wordsInLang = words[lang] ?: return emptyList()
-        return wordsInLang[text] ?: emptyList()
+        return wordsInLang[text.toLowerCase()] ?: emptyList()
     }
 
     override fun allCorpusTexts(): Iterable<CorpusText> {
@@ -56,7 +56,7 @@ class InMemoryGraphRepository : GraphRepository() {
         notes: String?
     ): Word {
         val wordsForLanguage = words.getOrPut(language) { mutableMapOf() }
-        val wordsByText = wordsForLanguage.getOrPut(text) { mutableListOf() }
+        val wordsByText = wordsForLanguage.getOrPut(text.toLowerCase()) { mutableListOf() }
         wordsByText.find { it.gloss == gloss }?.let { return it }
         return Word(text, language, gloss, source, notes).also { wordsByText.add(it) }
     }

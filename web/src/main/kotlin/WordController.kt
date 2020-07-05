@@ -21,6 +21,7 @@ class WordController(val graphService: GraphService) {
 
         val word = words.single()
         model.addAttribute("word", word)
+        model.addAttribute("gloss", word.getOrComputeGloss(graph))
         val linksFrom = graph.getLinksFrom(word).groupBy { it.type }
         val linksTo = graph.getLinksTo(word).groupBy { it.type }
         model.addAttribute("linksFrom", linksFrom)

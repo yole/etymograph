@@ -4,8 +4,14 @@ S: Sindarin
 CE: Common Eldarin
 
 [rules]
-Q: (*V) -> $1r .PL
-Q: (*C) -> $1i .PL
+Q: (*)[eë] -> $1i .NOM.PL
+Q: (*V) -> $1r .NOM.PL
+Q: (*C) -> $1i .NOM.PL
+Q: (*)[aä] -> $1o .GEN
+Q: (*[eë]) -> $1o .GEN
+Q: (*[eë]) -> $1llo .ABL
+Q: (*[iī]) -> $1nna .ALL
+Q: (*) -> $1rya .POSS.3SG
 
 [corpustext]
 Q: Galadriel's Lament {I:394}
@@ -20,7 +26,7 @@ Yéni únótimë ve rámar aldaron!
   {PE17:62} únótimë uncountable.PL < únótima uncountable < nótima countable < NOT- count
   {PE17:63} ve as
   {PE17:63} rámar < ráma wing
-  {PE17.63} aldaron tree.GEN.GENPL < alda tree
+  {PE17.63} aldaron tree.GEN.PL < alda tree
 Yéni ve lintë yuldar avánier
   {PE17:63} lintë swift.PL < linta swift
   {PE17:63} yuldar < yulda draught < YUL- drink
@@ -31,3 +37,66 @@ mi oromardi lisse-miruvóreva
   {PE17:64} mardi dwelling.PL < mar dwelling
   {PE17:64} lisse-miruvóreva <+ lisse sweet + miruvóreva Elf-drink.PART
   {PE17:64} miruvóreva Elf-drink.PART < miruvóre Elf-drink
+Andúnë pella, Vardo tellumar
+  {PE17:64} Andúnë West < NDÚ sink, go down
+  {PE17:64} pella beyond
+  {PE17:65} Vardo < Varda Varda
+  {PE17:66} tellumar < telluma dome
+nu luini yassen tintilar i eleni
+  {PE17:66} nu under
+  {PE17:66} luini < luine blue
+  {PE17:66} yassen in which < ya demonstrative pointing back
+  {PE17:66} tintilar < tintila twinkle < TIN- sparkle, spark
+  {PE17:66} i the
+  {PE17:67} eleni < elen star < EL- star
+ómaryo airetári-lírinen.
+  {PE17:67} ómaryo < ómarya < óma voice
+  {PE17:67} airetári-lírinen <+ aire holy + tári queen + lírinen song.INS
+  {PE17:67} lírinen song.INS < líri song
+Sí man i yulma nin enquantuva?
+  {PE17:67} sí now
+  {PE17:68} man who
+  {PE17:68} yulma drinking-vessel < YUL- drink
+  {PE17:68} nin I.DAT < ni I/me
+  {PE17:68} enquantuva refill.FUT < enquanta refill < quanta fill < QUAT- fill
+An sí Tintalle Varda Oiolossëo
+  {PE17:69} an but
+  {PE17:69} Tintalle Kindler < tinta kindle < TIN- sparkle, spark
+  {PE17:69} Oiolossëo < Oiolossë Ever-snowy <+ oio ever + lossë snow
+  {PE17:69} oio ever < OY- ever
+ve fanyar máryat Elentári ortanë
+  {PE17:69} fanyar < fanya cloud
+  {PE17:69} máryat hand.DU.POSS.3G < márya < má hand
+  {PE17:70} Elentári < elen star + tári queen
+  {PE17:70} ortanë raise.PST < orta raise < ORO- up, high
+ar ilyë tier undulávë lumbulë
+  {PE17:70} ar and
+  {PE17:72} ilyë < ilya every, all
+  {PE17:72} tier < tie road
+  {PE17:72} undulávë <+ undu down, under + lávë lick.PST
+  {PE17:72} lávë lick.PST < LAB- lick
+  {PE17:72} lumbulë heavy shadow < LUM- gloom
+ar sindanóriello caita mornië
+  {PE17:72} sindanóriello < sindanórie <+ sinda grey + nóre land
+  {PE17:72} caita lie.3SG < KAY- lie
+  {PE17:73} mornië blackness < morna black < MOR- black
+i falmalinnar imbë met, ar hísië
+  {PE17:73} falmalinnar < falmalinna < falmali many waves < falma wave < PHAL- splash
+  {PE17:73} imbë between
+  {PE17:73} met us two
+  {PE17:73} hísië mist < KHITH- mist, fog
+untúpa Calaciryo míri oialë.
+  {PE17:73} untúpa <+ undu down, under + TUP- cover over
+  {PE17:73} Calaciryo < Calacirya Light-cleft <+ KAL- light + KIR- cleave
+  {PE17:73} míri < míre jewel
+  {PE17:73} oialë forever < OY- ever
+Sí vanwa na, Rómello vanwa, Valimar!
+  {PE17:74} vanwa gone < av depart
+  {PE17:74} Rómello < Róme east
+  {PE17:74} Valimar <+ Vali Valar + mar dwelling
+Namárië! Nai hiruvalyë Valimar.
+  {PE17:74} namárië farewell < márie goodness < mára good
+  {PE17:75} nai perhaps
+  {PE17:75} hiruvalyë find.2SG.FUT < hiruva find.FUT < hire find < KHIR- find
+Nai elyë hiruva. Namárië!
+  {PE17:76} elyë thou

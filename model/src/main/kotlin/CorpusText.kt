@@ -17,7 +17,9 @@ class CorpusText(
         return text.split("\n").map { line ->
             val textWords = line.split(' ')
             CorpusTextLine(textWords.map { textWord ->
-                val word = words.find { word -> word.text.equals(textWord.trimEnd('!', ',', '.'), true) }
+                val trimmedWord = textWord.trimEnd('!', ',', '.', '?')
+                val word = words.find { word -> word.text.equals(trimmedWord, true) }
+                    ?: repo.wordsByText(language, trimmedWord).singleOrNull()
                 CorpusWord(textWord, word, word?.getOrComputeGloss(repo))
             })
         }
