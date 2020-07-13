@@ -9,6 +9,7 @@ plugins {
 dependencies {
     implementation project(":model")
     implementation "org.jetbrains.kotlin:kotlin-stdlib"
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     testCompile group: 'junit', name: 'junit', version: '4.12'
