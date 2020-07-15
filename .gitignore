@@ -2,3 +2,5 @@
 /.gradle/
 /model/build/
 /web/build/
+/model/out/
+/web/out/
