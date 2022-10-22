@@ -3,23 +3,18 @@ package ru.yole.etymograph.web
 import org.springframework.http.HttpStatus
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PathVariable
-import org.springframework.web.bind.annotation.ResponseStatus
+import org.springframework.web.bind.annotation.*
+import ru.yole.etymograph.GraphRepository
 import ru.yole.etymograph.UnknownLanguage
+import ru.yole.etymograph.Word
 
 @Controller
+@CrossOrigin(origins = ["http://localhost:3000"])
 class WordController(val graphService: GraphService) {
     @GetMapping("/word/{lang}/{text}")
     fun word(@PathVariable lang: String, @PathVariable text: String, model: Model): String {
         val graph = graphService.graph
-        val language = graph.languageByShortName(lang)
-        if (language == UnknownLanguage) throw NoLanguageException()
-
-        val words = graph.wordsByText(language, text)
-        if (words.isEmpty()) throw NoWordException()
-
-        val word = words.single()
+        val word = findWord(graph, lang, text)
         model.addAttribute("word", word)
         model.addAttribute("gloss", word.getOrComputeGloss(graph))
         val linksFrom = graph.getLinksFrom(word).groupBy { it.type }
@@ -28,8 +23,46 @@ class WordController(val graphService: GraphService) {
         model.addAttribute("linksTo", linksTo)
         return "word/index"
     }
-}
 
+    data class LinkWordViewModel(val text: String)
+    data class LinkTypeViewModel(val type: String, val words: List<LinkWordViewModel>)
+    data class WordViewModel(
+        val language: String,
+        val text: String,
+        val gloss: String,
+        val linksFrom: List<LinkTypeViewModel>,
+        val linksTo: List<LinkTypeViewModel>
+    )
+
+    @GetMapping("/word/{lang}/{text}", produces = ["application/json"])
+    @ResponseBody
+    fun wordJson(@PathVariable lang: String, @PathVariable text: String): WordViewModel {
+        val graph = graphService.graph
+        val word = findWord(graph, lang, text)
+        val linksFrom = graph.getLinksFrom(word).groupBy { it.type }
+        val linksTo = graph.getLinksTo(word).groupBy { it.type }
+        return WordViewModel(
+            word.language.shortName,
+            word.text,
+            word.getOrComputeGloss(graph) ?: "",
+            linksFrom.map { LinkTypeViewModel(it.key.name, it.value.map { link -> LinkWordViewModel(link.toWord.text) }) },
+            linksTo.map { LinkTypeViewModel(it.key.name, it.value.map { link -> LinkWordViewModel(link.fromWord.text) }) }
+        )
+    }
+
+    private fun findWord(
+        graph: GraphRepository,
+        lang: String,
+        text: String
+    ): Word {
+        val language = graph.languageByShortName(lang)
+        if (language == UnknownLanguage) throw NoLanguageException()
+
+        val words = graph.wordsByText(language, text)
+        if (words.isEmpty()) throw NoWordException()
+        return words.single()
+    }
+}
 
 @ResponseStatus(value = HttpStatus.NOT_FOUND, reason = "No such word")
 class NoWordException : RuntimeException()
