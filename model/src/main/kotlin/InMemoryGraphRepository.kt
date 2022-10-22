@@ -40,6 +40,13 @@ open class InMemoryGraphRepository : GraphRepository() {
         return wordsInLang[text.toLowerCase()] ?: emptyList()
     }
 
+    override fun dictionaryWords(lang: Language): List<Word> {
+        val wordsInLang = words[lang] ?: return emptyList()
+        return wordsInLang.flatMap { it.value }
+            .filter { it.gloss != null && !it.text.all { c -> c.isUpperCase() || c == '-' } && linksFrom[it]?.none { it.type == Link.Derived } != false }
+            .sortedBy { it.text }
+    }
+
     override fun allCorpusTexts(): Iterable<CorpusText> {
         return corpus
     }

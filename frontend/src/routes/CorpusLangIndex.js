@@ -9,6 +9,7 @@ export default function CorpusLangIndex() {
     const corpusForLanguage = useLoaderData()
     return <>
         <p>Corpus for {corpusForLanguage.language.name}</p>
+        <Link to={`/dictionary/${corpusForLanguage.language.shortName}`}>Dictionary</Link>
         <ul>
             {corpusForLanguage.corpusTexts.map(t => (
                 <li key={t.id}><Link to={`/corpus/text/${t.id}`}>{t.title}</Link></li>

@@ -11,4 +11,5 @@ abstract class GraphRepository {
     abstract fun getLinksFrom(word: Word): Iterable<Link>
     abstract fun getLinksTo(word: Word): Iterable<Link>
     abstract fun wordsByText(lang: Language, text: String): List<Word>
+    abstract fun dictionaryWords(lang: Language): List<Word>
 }
