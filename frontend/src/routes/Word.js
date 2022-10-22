@@ -13,11 +13,11 @@ export default function Word() {
         <p>{word.gloss}</p>
         {word.linksFrom.map(l => <>
             <div>{l.type}</div>
-            {l.words.map(w => <Link to={`/word/${word.language}/${w.text}`}>{w.text}</Link>)}
+            {l.words.map(w => <div><Link to={`/word/${word.language}/${w.text}`}>{w.text}</Link></div>)}
         </>)}
         {word.linksTo.map(l => <>
             <div>Words {l.type} this one</div>
-            {l.words.map(w => <Link to={`/word/${word.language}/${w.text}`}>{w.text}</Link>)}
+            {l.words.map(w => <div><Link to={`/word/${word.language}/${w.text}`}>{w.text}</Link></div>)}
         </>)}
     </>
 }
