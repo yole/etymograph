@@ -1,5 +1,8 @@
 package ru.yole.etymograph
 
+import java.text.Collator
+import java.util.*
+
 open class InMemoryGraphRepository : GraphRepository() {
     protected val languages = mutableMapOf<String, Language>()
     protected val corpus = mutableListOf<CorpusText>()
@@ -44,7 +47,7 @@ open class InMemoryGraphRepository : GraphRepository() {
         val wordsInLang = words[lang] ?: return emptyList()
         return wordsInLang.flatMap { it.value }
             .filter { it.gloss != null && !it.text.all { c -> c.isUpperCase() || c == '-' } && linksFrom[it]?.none { it.type == Link.Derived } != false }
-            .sortedBy { it.text }
+            .sortedWith { o1, o2 -> Collator.getInstance(Locale.FRANCE).compare(o1.text, o2.text) }
     }
 
     override fun allCorpusTexts(): Iterable<CorpusText> {
