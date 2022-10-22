@@ -1,14 +1,14 @@
 package ru.yole.etymograph
 
-import kotlinx.serialization.ExperimentalSerializationApi
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
-import kotlinx.serialization.encodeToString
+import kotlinx.serialization.*
 import kotlinx.serialization.json.Json
-import kotlinx.serialization.json.decodeFromStream
+import kotlinx.serialization.json.Json.Default.decodeFromString
 import ru.yole.etymograph.parser.parseGraph
 import java.io.File
-import java.io.InputStream
+import java.nio.file.Path
+import kotlin.io.path.readText
+import kotlin.io.path.reader
+import kotlin.io.path.writeText
 
 class PersistentWord(val id: Int, text: String, language: Language, gloss: String?, source: String?, notes: String?)
     : Word(text, language, gloss, source, notes)
@@ -73,7 +73,7 @@ data class GraphRepositoryData(
     val corpusTexts: List<CorpusTextData>
 )
 
-class JsonGraphRepository : InMemoryGraphRepository() {
+class JsonGraphRepository(val path: Path) : InMemoryGraphRepository() {
     private val allWords = mutableListOf<PersistentWord>()
     private val allRules = mutableListOf<PersistentRule>()
     private val allLinks = mutableListOf<PersistentLink>()
@@ -111,9 +111,13 @@ class JsonGraphRepository : InMemoryGraphRepository() {
         }
     }
 
+    override fun save() {
+        path.writeText(toJson())
+    }
+
     fun toJson(): String {
         val repoData = createGraphRepositoryData()
-        return Json { prettyPrint = true }.encodeToString(repoData)
+        return theJson.encodeToString(repoData)
     }
 
     private fun createGraphRepositoryData(): GraphRepositoryData {
@@ -137,10 +141,11 @@ class JsonGraphRepository : InMemoryGraphRepository() {
     }
 
     companion object {
-        @OptIn(ExperimentalSerializationApi::class)
-        fun fromJson(stream: InputStream): JsonGraphRepository {
-            val data = Json.decodeFromStream<GraphRepositoryData>(stream)
-            val result = JsonGraphRepository()
+        val theJson = Json { prettyPrint = true }
+
+        fun fromJson(path: Path): JsonGraphRepository {
+            val result = JsonGraphRepository(path)
+            val data = Json.decodeFromString<GraphRepositoryData>(path.readText())
             for (language in data.languages) {
                 result.addLanguage(Language(language.name, language.shortName))
             }
@@ -180,7 +185,7 @@ class JsonGraphRepository : InMemoryGraphRepository() {
 }
 
 fun main() {
-    val repo = JsonGraphRepository()
+    val repo = JsonGraphRepository(Path.of(""))
     File("web/src/main/resources/jrrt.txt").inputStream().use {
         parseGraph(it, repo)
         File("jrrt.json").writeText(repo.toJson())

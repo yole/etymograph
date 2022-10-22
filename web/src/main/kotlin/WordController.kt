@@ -62,6 +62,19 @@ class WordController(val graphService: GraphService) {
         if (words.isEmpty()) throw NoWordException()
         return words.single()
     }
+
+    data class AddWordParameters(val text: String, val gloss: String, val source: String)
+
+    @PostMapping("/word/{lang}", consumes = ["application/json"])
+    @ResponseBody
+    fun addWord(@PathVariable lang: String, @RequestBody params: AddWordParameters) {
+        val graph = graphService.graph
+        val language = graph.languageByShortName(lang)
+        if (language == UnknownLanguage) throw NoLanguageException()
+
+        graph.addWord(params.text, language, params.gloss, params.source, null)
+        graph.save()
+    }
 }
 
 @ResponseStatus(value = HttpStatus.NOT_FOUND, reason = "No such word")

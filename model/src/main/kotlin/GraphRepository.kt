@@ -12,4 +12,14 @@ abstract class GraphRepository {
     abstract fun getLinksTo(word: Word): Iterable<Link>
     abstract fun wordsByText(lang: Language, text: String): List<Word>
     abstract fun dictionaryWords(lang: Language): List<Word>
+
+    abstract fun addWord(
+        text: String,
+        language: Language,
+        gloss: String?,
+        source: String?,
+        notes: String?
+    ): Word
+
+    abstract fun save()
 }

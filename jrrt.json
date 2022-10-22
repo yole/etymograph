@@ -1007,6 +1007,41 @@
             "lang": "Q",
             "gloss": "thou",
             "source": "PE17:76"
+        },
+        {
+            "id": 142,
+            "text": "parma",
+            "lang": "Q",
+            "gloss": "book",
+            "source": "PE22:50"
+        },
+        {
+            "id": 143,
+            "text": "formen",
+            "lang": "Q",
+            "gloss": "north",
+            "source": "PE22:50"
+        },
+        {
+            "id": 144,
+            "text": "malta",
+            "lang": "Q",
+            "gloss": "gold",
+            "source": "PE22:50"
+        },
+        {
+            "id": 145,
+            "text": "ampa",
+            "lang": "Q",
+            "gloss": "crook",
+            "source": "PE22:50"
+        },
+        {
+            "id": 146,
+            "text": "nūmen",
+            "lang": "Q",
+            "gloss": "west",
+            "source": "PE22:50"
         }
     ],
     "rules": [

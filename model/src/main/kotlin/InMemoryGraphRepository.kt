@@ -58,7 +58,7 @@ open class InMemoryGraphRepository : GraphRepository() {
         return corpus.filter { it.language == lang }
     }
 
-    fun addWord(
+    override fun addWord(
         text: String,
         language: Language,
         gloss: String?,
@@ -69,6 +69,9 @@ open class InMemoryGraphRepository : GraphRepository() {
         val wordsByText = wordsForLanguage.getOrPut(text.toLowerCase()) { mutableListOf() }
         wordsByText.find { it.gloss == gloss }?.let { return it }
         return createWord(text, language, gloss, source, notes).also { wordsByText.add(it) }
+    }
+
+    override fun save() {
     }
 
     protected open fun createWord(
