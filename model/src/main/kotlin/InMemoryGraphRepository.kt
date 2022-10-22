@@ -46,9 +46,14 @@ open class InMemoryGraphRepository : GraphRepository() {
     override fun dictionaryWords(lang: Language): List<Word> {
         val wordsInLang = words[lang] ?: return emptyList()
         return wordsInLang.flatMap { it.value }
-            .filter { it.gloss != null && !it.text.all { c -> c.isUpperCase() || c == '-' } && linksFrom[it]?.none { it.type == Link.Derived } != false }
+            .filter {
+                it.gloss != null &&
+                        !it.isRoot() &&
+                        linksFrom[it]?.none { link -> link.type == Link.Derived && !link.toWord.isRoot() } != false }
             .sortedWith { o1, o2 -> Collator.getInstance(Locale.FRANCE).compare(o1.text, o2.text) }
     }
+
+    private fun Word.isRoot() = text.all { c -> c.isUpperCase() || c == '-' }
 
     override fun allCorpusTexts(): Iterable<CorpusText> {
         return corpus
