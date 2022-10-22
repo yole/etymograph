@@ -10,5 +10,4 @@ export default function CorpusIndex() {
     return <ul>
         {languages.map(l => <li><Link to={`corpus/${l.shortName}`}>{l.name}</Link></li>)}
     </ul>
-    return <div>Corpus</div>
 }

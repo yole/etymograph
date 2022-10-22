@@ -6,10 +6,10 @@ import {
     Route,
 } from "react-router-dom";
 import './index.css';
-import CorpusIndex, { loader as corpusIndexLoader } from './CorpusIndex'
-import CorpusLangIndex, { loader as corpusLangIndexLoader } from "./CorpusLangIndex";
-import CorpusText, { loader as corpusTextLoader } from "./CorpusText";
-import Word, { loader as wordLoader } from "./Word";
+import CorpusIndex, { loader as corpusIndexLoader } from './routes/CorpusIndex'
+import CorpusLangIndex, { loader as corpusLangIndexLoader } from "./routes/CorpusLangIndex";
+import CorpusText, { loader as corpusTextLoader } from "./routes/CorpusText";
+import Word, { loader as wordLoader } from "./routes/Word";
 
 const router = createBrowserRouter([
     {
