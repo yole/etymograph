@@ -2,7 +2,7 @@ package ru.yole.etymograph.web
 
 import org.springframework.stereotype.Service
 import ru.yole.etymograph.GraphRepository
-import ru.yole.etymograph.parser.parseGraph
+import ru.yole.etymograph.JsonGraphRepository
 
 abstract class GraphService {
     abstract val graph: GraphRepository
@@ -10,5 +10,5 @@ abstract class GraphService {
 
 @Service
 class InMemoryGraphService: GraphService() {
-    override val graph = parseGraph(InMemoryGraphService::class.java.classLoader.getResourceAsStream("jrrt.txt"))
+    override val graph = JsonGraphRepository.fromJson(InMemoryGraphService::class.java.classLoader.getResourceAsStream("jrrt.json"))
 }

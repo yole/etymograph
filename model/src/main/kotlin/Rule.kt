@@ -1,6 +1,6 @@
 package ru.yole.etymograph
 
-class Rule(
+open class Rule(
     val fromLanguage: Language,
     val toLanguage: Language,
     val fromPattern: String,

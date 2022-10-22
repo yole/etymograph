@@ -1,0 +1,1791 @@
+{
+    "languages": [
+        {
+            "name": "Quenya",
+            "shortName": "Q"
+        },
+        {
+            "name": "Sindarin",
+            "shortName": "S"
+        },
+        {
+            "name": "Common Eldarin",
+            "shortName": "CE"
+        }
+    ],
+    "words": [
+        {
+            "id": 0,
+            "text": "ai",
+            "lang": "Q",
+            "gloss": "alas",
+            "source": "PE17:61"
+        },
+        {
+            "id": 1,
+            "text": "laurië",
+            "lang": "Q",
+            "gloss": "golden.ADV",
+            "source": "PE17:61"
+        },
+        {
+            "id": 2,
+            "text": "laurëa",
+            "lang": "Q",
+            "gloss": "golden",
+            "source": "PE17:61"
+        },
+        {
+            "id": 3,
+            "text": "lantar",
+            "lang": "Q",
+            "gloss": null,
+            "source": "PE17:61"
+        },
+        {
+            "id": 4,
+            "text": "lanta",
+            "lang": "Q",
+            "gloss": "fall",
+            "source": "PE17:61"
+        },
+        {
+            "id": 5,
+            "text": "lassi",
+            "lang": "Q",
+            "gloss": "leaf.PL",
+            "source": "PE17:62"
+        },
+        {
+            "id": 6,
+            "text": "lasse",
+            "lang": "Q",
+            "gloss": "leaf",
+            "source": "PE17:62"
+        },
+        {
+            "id": 7,
+            "text": "súrinen",
+            "lang": "Q",
+            "gloss": "wind.INS",
+            "source": "PE17:62"
+        },
+        {
+            "id": 8,
+            "text": "súre",
+            "lang": "Q",
+            "gloss": "wind",
+            "source": "PE17:62"
+        },
+        {
+            "id": 9,
+            "text": "yéni",
+            "lang": "Q",
+            "gloss": null,
+            "source": "PE17:62"
+        },
+        {
+            "id": 10,
+            "text": "yén",
+            "lang": "Q",
+            "gloss": "long year",
+            "source": "PE17:62"
+        },
+        {
+            "id": 11,
+            "text": "únótimë",
+            "lang": "Q",
+            "gloss": "uncountable.PL",
+            "source": "PE17:62"
+        },
+        {
+            "id": 12,
+            "text": "únótima",
+            "lang": "Q",
+            "gloss": "uncountable",
+            "source": "PE17:62"
+        },
+        {
+            "id": 13,
+            "text": "nótima",
+            "lang": "Q",
+            "gloss": "countable",
+            "source": "PE17:62"
+        },
+        {
+            "id": 14,
+            "text": "NOT-",
+            "lang": "Q",
+            "gloss": "count",
+            "source": "PE17:62"
+        },
+        {
+            "id": 15,
+            "text": "ve",
+            "lang": "Q",
+            "gloss": "as",
+            "source": "PE17:63"
+        },
+        {
+            "id": 16,
+            "text": "rámar",
+            "lang": "Q",
+            "gloss": null,
+            "source": "PE17:63"
+        },
+        {
+            "id": 17,
+            "text": "ráma",
+            "lang": "Q",
+            "gloss": "wing",
+            "source": "PE17:63"
+        },
+        {
+            "id": 18,
+            "text": "aldaron",
+            "lang": "Q",
+            "gloss": "tree.GEN.PL",
+            "source": "PE17.63"
+        },
+        {
+            "id": 19,
+            "text": "alda",
+            "lang": "Q",
+            "gloss": "tree",
+            "source": "PE17.63"
+        },
+        {
+            "id": 20,
+            "text": "lintë",
+            "lang": "Q",
+            "gloss": "swift.PL",
+            "source": "PE17:63"
+        },
+        {
+            "id": 21,
+            "text": "linta",
+            "lang": "Q",
+            "gloss": "swift",
+            "source": "PE17:63"
+        },
+        {
+            "id": 22,
+            "text": "yuldar",
+            "lang": "Q",
+            "gloss": null,
+            "source": "PE17:63"
+        },
+        {
+            "id": 23,
+            "text": "yulda",
+            "lang": "Q",
+            "gloss": "draught",
+            "source": "PE17:63"
+        },
+        {
+            "id": 24,
+            "text": "YUL-",
+            "lang": "Q",
+            "gloss": "drink",
+            "source": "PE17:63"
+        },
+        {
+            "id": 25,
+            "text": "avánier",
+            "lang": "Q",
+            "gloss": null,
+            "source": "PE17:63"
+        },
+        {
+            "id": 26,
+            "text": "avánie",
+            "lang": "Q",
+            "gloss": "depart.PST.PTCP",
+            "source": "PE17:63"
+        },
+        {
+            "id": 27,
+            "text": "av",
+            "lang": "Q",
+            "gloss": "depart",
+            "source": "PE17:63"
+        },
+        {
+            "id": 28,
+            "text": "mi",
+            "lang": "Q",
+            "gloss": "in",
+            "source": "PE17:63"
+        },
+        {
+            "id": 29,
+            "text": "oromardi",
+            "lang": "Q",
+            "gloss": null,
+            "source": "PE17:63"
+        },
+        {
+            "id": 30,
+            "text": "ORO-",
+            "lang": "Q",
+            "gloss": "up",
+            "source": "PE17:63"
+        },
+        {
+            "id": 31,
+            "text": "mardi",
+            "lang": "Q",
+            "gloss": "dwelling.PL",
+            "source": "PE17:63"
+        },
+        {
+            "id": 32,
+            "text": "mar",
+            "lang": "Q",
+            "gloss": "dwelling",
+            "source": "PE17:64"
+        },
+        {
+            "id": 33,
+            "text": "lisse-miruvóreva",
+            "lang": "Q",
+            "gloss": null,
+            "source": "PE17:64"
+        },
+        {
+            "id": 34,
+            "text": "lisse",
+            "lang": "Q",
+            "gloss": "sweet",
+            "source": "PE17:64"
+        },
+        {
+            "id": 35,
+            "text": "miruvóreva",
+            "lang": "Q",
+            "gloss": "Elf-drink.PART",
+            "source": "PE17:64"
+        },
+        {
+            "id": 36,
+            "text": "miruvóre",
+            "lang": "Q",
+            "gloss": "Elf-drink",
+            "source": "PE17:64"
+        },
+        {
+            "id": 37,
+            "text": "Andúnë",
+            "lang": "Q",
+            "gloss": "West",
+            "source": "PE17:64"
+        },
+        {
+            "id": 38,
+            "text": "NDÚ",
+            "lang": "Q",
+            "gloss": "sink, go down",
+            "source": "PE17:64"
+        },
+        {
+            "id": 39,
+            "text": "pella",
+            "lang": "Q",
+            "gloss": "beyond",
+            "source": "PE17:64"
+        },
+        {
+            "id": 40,
+            "text": "Vardo",
+            "lang": "Q",
+            "gloss": null,
+            "source": "PE17:65"
+        },
+        {
+            "id": 41,
+            "text": "Varda",
+            "lang": "Q",
+            "gloss": "Varda",
+            "source": "PE17:65"
+        },
+        {
+            "id": 42,
+            "text": "tellumar",
+            "lang": "Q",
+            "gloss": null,
+            "source": "PE17:66"
+        },
+        {
+            "id": 43,
+            "text": "telluma",
+            "lang": "Q",
+            "gloss": "dome",
+            "source": "PE17:66"
+        },
+        {
+            "id": 44,
+            "text": "nu",
+            "lang": "Q",
+            "gloss": "under",
+            "source": "PE17:66"
+        },
+        {
+            "id": 45,
+            "text": "luini",
+            "lang": "Q",
+            "gloss": null,
+            "source": "PE17:66"
+        },
+        {
+            "id": 46,
+            "text": "luine",
+            "lang": "Q",
+            "gloss": "blue",
+            "source": "PE17:66"
+        },
+        {
+            "id": 47,
+            "text": "yassen",
+            "lang": "Q",
+            "gloss": "in which",
+            "source": "PE17:66"
+        },
+        {
+            "id": 48,
+            "text": "ya",
+            "lang": "Q",
+            "gloss": "demonstrative pointing back",
+            "source": "PE17:66"
+        },
+        {
+            "id": 49,
+            "text": "tintilar",
+            "lang": "Q",
+            "gloss": null,
+            "source": "PE17:66"
+        },
+        {
+            "id": 50,
+            "text": "tintila",
+            "lang": "Q",
+            "gloss": "twinkle",
+            "source": "PE17:66"
+        },
+        {
+            "id": 51,
+            "text": "TIN-",
+            "lang": "Q",
+            "gloss": "sparkle, spark",
+            "source": "PE17:66"
+        },
+        {
+            "id": 52,
+            "text": "i",
+            "lang": "Q",
+            "gloss": "the",
+            "source": "PE17:66"
+        },
+        {
+            "id": 53,
+            "text": "eleni",
+            "lang": "Q",
+            "gloss": null,
+            "source": "PE17:67"
+        },
+        {
+            "id": 54,
+            "text": "elen",
+            "lang": "Q",
+            "gloss": "star",
+            "source": "PE17:67"
+        },
+        {
+            "id": 55,
+            "text": "EL-",
+            "lang": "Q",
+            "gloss": "star",
+            "source": "PE17:67"
+        },
+        {
+            "id": 56,
+            "text": "ómaryo",
+            "lang": "Q",
+            "gloss": null,
+            "source": "PE17:67"
+        },
+        {
+            "id": 57,
+            "text": "ómarya",
+            "lang": "Q",
+            "gloss": null,
+            "source": "PE17:67"
+        },
+        {
+            "id": 58,
+            "text": "óma",
+            "lang": "Q",
+            "gloss": "voice",
+            "source": "PE17:67"
+        },
+        {
+            "id": 59,
+            "text": "airetári-lírinen",
+            "lang": "Q",
+            "gloss": null,
+            "source": "PE17:67"
+        },
+        {
+            "id": 60,
+            "text": "aire",
+            "lang": "Q",
+            "gloss": "holy",
+            "source": "PE17:67"
+        },
+        {
+            "id": 61,
+            "text": "tári",
+            "lang": "Q",
+            "gloss": "queen",
+            "source": "PE17:67"
+        },
+        {
+            "id": 62,
+            "text": "lírinen",
+            "lang": "Q",
+            "gloss": "song.INS",
+            "source": "PE17:67"
+        },
+        {
+            "id": 63,
+            "text": "líri",
+            "lang": "Q",
+            "gloss": "song",
+            "source": "PE17:67"
+        },
+        {
+            "id": 64,
+            "text": "sí",
+            "lang": "Q",
+            "gloss": "now",
+            "source": "PE17:67"
+        },
+        {
+            "id": 65,
+            "text": "man",
+            "lang": "Q",
+            "gloss": "who",
+            "source": "PE17:68"
+        },
+        {
+            "id": 66,
+            "text": "yulma",
+            "lang": "Q",
+            "gloss": "drinking-vessel",
+            "source": "PE17:68"
+        },
+        {
+            "id": 67,
+            "text": "nin",
+            "lang": "Q",
+            "gloss": "I.DAT",
+            "source": "PE17:68"
+        },
+        {
+            "id": 68,
+            "text": "ni",
+            "lang": "Q",
+            "gloss": "I/me",
+            "source": "PE17:68"
+        },
+        {
+            "id": 69,
+            "text": "enquantuva",
+            "lang": "Q",
+            "gloss": "refill.FUT",
+            "source": "PE17:68"
+        },
+        {
+            "id": 70,
+            "text": "enquanta",
+            "lang": "Q",
+            "gloss": "refill",
+            "source": "PE17:68"
+        },
+        {
+            "id": 71,
+            "text": "quanta",
+            "lang": "Q",
+            "gloss": "fill",
+            "source": "PE17:68"
+        },
+        {
+            "id": 72,
+            "text": "QUAT-",
+            "lang": "Q",
+            "gloss": "fill",
+            "source": "PE17:68"
+        },
+        {
+            "id": 73,
+            "text": "an",
+            "lang": "Q",
+            "gloss": "but",
+            "source": "PE17:69"
+        },
+        {
+            "id": 74,
+            "text": "Tintalle",
+            "lang": "Q",
+            "gloss": "Kindler",
+            "source": "PE17:69"
+        },
+        {
+            "id": 75,
+            "text": "tinta",
+            "lang": "Q",
+            "gloss": "kindle",
+            "source": "PE17:69"
+        },
+        {
+            "id": 76,
+            "text": "Oiolossëo",
+            "lang": "Q",
+            "gloss": null,
+            "source": "PE17:69"
+        },
+        {
+            "id": 77,
+            "text": "Oiolossë",
+            "lang": "Q",
+            "gloss": "Ever-snowy",
+            "source": "PE17:69"
+        },
+        {
+            "id": 78,
+            "text": "oio",
+            "lang": "Q",
+            "gloss": "ever",
+            "source": "PE17:69"
+        },
+        {
+            "id": 79,
+            "text": "lossë",
+            "lang": "Q",
+            "gloss": "snow",
+            "source": "PE17:69"
+        },
+        {
+            "id": 80,
+            "text": "OY-",
+            "lang": "Q",
+            "gloss": "ever",
+            "source": "PE17:69"
+        },
+        {
+            "id": 81,
+            "text": "fanyar",
+            "lang": "Q",
+            "gloss": null,
+            "source": "PE17:69"
+        },
+        {
+            "id": 82,
+            "text": "fanya",
+            "lang": "Q",
+            "gloss": "cloud",
+            "source": "PE17:69"
+        },
+        {
+            "id": 83,
+            "text": "máryat",
+            "lang": "Q",
+            "gloss": "hand.DU.POSS.3G",
+            "source": "PE17:69"
+        },
+        {
+            "id": 84,
+            "text": "márya",
+            "lang": "Q",
+            "gloss": null,
+            "source": "PE17:69"
+        },
+        {
+            "id": 85,
+            "text": "má",
+            "lang": "Q",
+            "gloss": "hand",
+            "source": "PE17:69"
+        },
+        {
+            "id": 86,
+            "text": "Elentári",
+            "lang": "Q",
+            "gloss": null,
+            "source": "PE17:70"
+        },
+        {
+            "id": 87,
+            "text": "ortanë",
+            "lang": "Q",
+            "gloss": "raise.PST",
+            "source": "PE17:70"
+        },
+        {
+            "id": 88,
+            "text": "orta",
+            "lang": "Q",
+            "gloss": "raise",
+            "source": "PE17:70"
+        },
+        {
+            "id": 89,
+            "text": "ORO-",
+            "lang": "Q",
+            "gloss": "up, high",
+            "source": "PE17:70"
+        },
+        {
+            "id": 90,
+            "text": "ar",
+            "lang": "Q",
+            "gloss": "and",
+            "source": "PE17:70"
+        },
+        {
+            "id": 91,
+            "text": "ilyë",
+            "lang": "Q",
+            "gloss": null,
+            "source": "PE17:72"
+        },
+        {
+            "id": 92,
+            "text": "ilya",
+            "lang": "Q",
+            "gloss": "every, all",
+            "source": "PE17:72"
+        },
+        {
+            "id": 93,
+            "text": "tier",
+            "lang": "Q",
+            "gloss": null,
+            "source": "PE17:72"
+        },
+        {
+            "id": 94,
+            "text": "tie",
+            "lang": "Q",
+            "gloss": "road",
+            "source": "PE17:72"
+        },
+        {
+            "id": 95,
+            "text": "undulávë",
+            "lang": "Q",
+            "gloss": null,
+            "source": "PE17:72"
+        },
+        {
+            "id": 96,
+            "text": "undu",
+            "lang": "Q",
+            "gloss": "down, under",
+            "source": "PE17:72"
+        },
+        {
+            "id": 97,
+            "text": "lávë",
+            "lang": "Q",
+            "gloss": "lick.PST",
+            "source": "PE17:72"
+        },
+        {
+            "id": 98,
+            "text": "LAB-",
+            "lang": "Q",
+            "gloss": "lick",
+            "source": "PE17:72"
+        },
+        {
+            "id": 99,
+            "text": "lumbulë",
+            "lang": "Q",
+            "gloss": "heavy shadow",
+            "source": "PE17:72"
+        },
+        {
+            "id": 100,
+            "text": "LUM-",
+            "lang": "Q",
+            "gloss": "gloom",
+            "source": "PE17:72"
+        },
+        {
+            "id": 101,
+            "text": "sindanóriello",
+            "lang": "Q",
+            "gloss": null,
+            "source": "PE17:72"
+        },
+        {
+            "id": 102,
+            "text": "sindanórie",
+            "lang": "Q",
+            "gloss": null,
+            "source": "PE17:72"
+        },
+        {
+            "id": 103,
+            "text": "sinda",
+            "lang": "Q",
+            "gloss": "grey",
+            "source": "PE17:72"
+        },
+        {
+            "id": 104,
+            "text": "nóre",
+            "lang": "Q",
+            "gloss": "land",
+            "source": "PE17:72"
+        },
+        {
+            "id": 105,
+            "text": "caita",
+            "lang": "Q",
+            "gloss": "lie.3SG",
+            "source": "PE17:72"
+        },
+        {
+            "id": 106,
+            "text": "KAY-",
+            "lang": "Q",
+            "gloss": "lie",
+            "source": "PE17:72"
+        },
+        {
+            "id": 107,
+            "text": "mornië",
+            "lang": "Q",
+            "gloss": "blackness",
+            "source": "PE17:73"
+        },
+        {
+            "id": 108,
+            "text": "morna",
+            "lang": "Q",
+            "gloss": "black",
+            "source": "PE17:73"
+        },
+        {
+            "id": 109,
+            "text": "MOR-",
+            "lang": "Q",
+            "gloss": "black",
+            "source": "PE17:73"
+        },
+        {
+            "id": 110,
+            "text": "falmalinnar",
+            "lang": "Q",
+            "gloss": null,
+            "source": "PE17:73"
+        },
+        {
+            "id": 111,
+            "text": "falmalinna",
+            "lang": "Q",
+            "gloss": null,
+            "source": "PE17:73"
+        },
+        {
+            "id": 112,
+            "text": "falmali",
+            "lang": "Q",
+            "gloss": "many waves",
+            "source": "PE17:73"
+        },
+        {
+            "id": 113,
+            "text": "falma",
+            "lang": "Q",
+            "gloss": "wave",
+            "source": "PE17:73"
+        },
+        {
+            "id": 114,
+            "text": "PHAL-",
+            "lang": "Q",
+            "gloss": "splash",
+            "source": "PE17:73"
+        },
+        {
+            "id": 115,
+            "text": "imbë",
+            "lang": "Q",
+            "gloss": "between",
+            "source": "PE17:73"
+        },
+        {
+            "id": 116,
+            "text": "met",
+            "lang": "Q",
+            "gloss": "us two",
+            "source": "PE17:73"
+        },
+        {
+            "id": 117,
+            "text": "hísië",
+            "lang": "Q",
+            "gloss": "mist",
+            "source": "PE17:73"
+        },
+        {
+            "id": 118,
+            "text": "KHITH-",
+            "lang": "Q",
+            "gloss": "mist, fog",
+            "source": "PE17:73"
+        },
+        {
+            "id": 119,
+            "text": "untúpa",
+            "lang": "Q",
+            "gloss": null,
+            "source": "PE17:73"
+        },
+        {
+            "id": 120,
+            "text": "TUP-",
+            "lang": "Q",
+            "gloss": "cover over",
+            "source": "PE17:73"
+        },
+        {
+            "id": 121,
+            "text": "Calaciryo",
+            "lang": "Q",
+            "gloss": null,
+            "source": "PE17:73"
+        },
+        {
+            "id": 122,
+            "text": "Calacirya",
+            "lang": "Q",
+            "gloss": "Light-cleft",
+            "source": "PE17:73"
+        },
+        {
+            "id": 123,
+            "text": "KAL-",
+            "lang": "Q",
+            "gloss": "light",
+            "source": "PE17:73"
+        },
+        {
+            "id": 124,
+            "text": "KIR-",
+            "lang": "Q",
+            "gloss": "cleave",
+            "source": "PE17:73"
+        },
+        {
+            "id": 125,
+            "text": "míri",
+            "lang": "Q",
+            "gloss": null,
+            "source": "PE17:73"
+        },
+        {
+            "id": 126,
+            "text": "míre",
+            "lang": "Q",
+            "gloss": "jewel",
+            "source": "PE17:73"
+        },
+        {
+            "id": 127,
+            "text": "oialë",
+            "lang": "Q",
+            "gloss": "forever",
+            "source": "PE17:73"
+        },
+        {
+            "id": 128,
+            "text": "vanwa",
+            "lang": "Q",
+            "gloss": "gone",
+            "source": "PE17:74"
+        },
+        {
+            "id": 129,
+            "text": "Rómello",
+            "lang": "Q",
+            "gloss": null,
+            "source": "PE17:74"
+        },
+        {
+            "id": 130,
+            "text": "Róme",
+            "lang": "Q",
+            "gloss": "east",
+            "source": "PE17:74"
+        },
+        {
+            "id": 131,
+            "text": "Valimar",
+            "lang": "Q",
+            "gloss": null,
+            "source": "PE17:74"
+        },
+        {
+            "id": 132,
+            "text": "Vali",
+            "lang": "Q",
+            "gloss": "Valar",
+            "source": "PE17:74"
+        },
+        {
+            "id": 133,
+            "text": "namárië",
+            "lang": "Q",
+            "gloss": "farewell",
+            "source": "PE17:74"
+        },
+        {
+            "id": 134,
+            "text": "márie",
+            "lang": "Q",
+            "gloss": "goodness",
+            "source": "PE17:74"
+        },
+        {
+            "id": 135,
+            "text": "mára",
+            "lang": "Q",
+            "gloss": "good",
+            "source": "PE17:74"
+        },
+        {
+            "id": 136,
+            "text": "nai",
+            "lang": "Q",
+            "gloss": "perhaps",
+            "source": "PE17:75"
+        },
+        {
+            "id": 137,
+            "text": "hiruvalyë",
+            "lang": "Q",
+            "gloss": "find.2SG.FUT",
+            "source": "PE17:75"
+        },
+        {
+            "id": 138,
+            "text": "hiruva",
+            "lang": "Q",
+            "gloss": "find.FUT",
+            "source": "PE17:75"
+        },
+        {
+            "id": 139,
+            "text": "hire",
+            "lang": "Q",
+            "gloss": "find",
+            "source": "PE17:75"
+        },
+        {
+            "id": 140,
+            "text": "KHIR-",
+            "lang": "Q",
+            "gloss": "find",
+            "source": "PE17:75"
+        },
+        {
+            "id": 141,
+            "text": "elyë",
+            "lang": "Q",
+            "gloss": "thou",
+            "source": "PE17:76"
+        }
+    ],
+    "rules": [
+        {
+            "id": 0,
+            "fromLang": "Q",
+            "toLang": "Q",
+            "fromPattern": "(*)[eë]",
+            "toPattern": "$1i",
+            "addedCategories": ".NOM.PL"
+        },
+        {
+            "id": 1,
+            "fromLang": "Q",
+            "toLang": "Q",
+            "fromPattern": "(*V)",
+            "toPattern": "$1r",
+            "addedCategories": ".NOM.PL"
+        },
+        {
+            "id": 2,
+            "fromLang": "Q",
+            "toLang": "Q",
+            "fromPattern": "(*C)",
+            "toPattern": "$1i",
+            "addedCategories": ".NOM.PL"
+        },
+        {
+            "id": 3,
+            "fromLang": "Q",
+            "toLang": "Q",
+            "fromPattern": "(*)[aä]",
+            "toPattern": "$1o",
+            "addedCategories": ".GEN"
+        },
+        {
+            "id": 4,
+            "fromLang": "Q",
+            "toLang": "Q",
+            "fromPattern": "(*[eë])",
+            "toPattern": "$1o",
+            "addedCategories": ".GEN"
+        },
+        {
+            "id": 5,
+            "fromLang": "Q",
+            "toLang": "Q",
+            "fromPattern": "(*[eë])",
+            "toPattern": "$1llo",
+            "addedCategories": ".ABL"
+        },
+        {
+            "id": 6,
+            "fromLang": "Q",
+            "toLang": "Q",
+            "fromPattern": "(*[iī])",
+            "toPattern": "$1nna",
+            "addedCategories": ".ALL"
+        },
+        {
+            "id": 7,
+            "fromLang": "Q",
+            "toLang": "Q",
+            "fromPattern": "(*)",
+            "toPattern": "$1rya",
+            "addedCategories": ".POSS.3SG"
+        }
+    ],
+    "links": [
+        {
+            "id": 0,
+            "from": 1,
+            "to": 2,
+            "type": ">",
+            "source": "PE17:61"
+        },
+        {
+            "id": 1,
+            "from": 3,
+            "to": 4,
+            "type": ">",
+            "ruleId": 1,
+            "source": "PE17:61"
+        },
+        {
+            "id": 2,
+            "from": 5,
+            "to": 6,
+            "type": ">",
+            "ruleId": 0,
+            "source": "PE17:62"
+        },
+        {
+            "id": 3,
+            "from": 7,
+            "to": 8,
+            "type": ">",
+            "source": "PE17:62"
+        },
+        {
+            "id": 4,
+            "from": 9,
+            "to": 10,
+            "type": ">",
+            "ruleId": 2,
+            "source": "PE17:62"
+        },
+        {
+            "id": 5,
+            "from": 11,
+            "to": 12,
+            "type": ">",
+            "source": "PE17:62"
+        },
+        {
+            "id": 6,
+            "from": 12,
+            "to": 13,
+            "type": ">",
+            "source": "PE17:62"
+        },
+        {
+            "id": 7,
+            "from": 13,
+            "to": 14,
+            "type": ">",
+            "source": "PE17:62"
+        },
+        {
+            "id": 8,
+            "from": 16,
+            "to": 17,
+            "type": ">",
+            "ruleId": 1,
+            "source": "PE17:63"
+        },
+        {
+            "id": 9,
+            "from": 18,
+            "to": 19,
+            "type": ">",
+            "source": "PE17.63"
+        },
+        {
+            "id": 10,
+            "from": 20,
+            "to": 21,
+            "type": ">",
+            "source": "PE17:63"
+        },
+        {
+            "id": 11,
+            "from": 22,
+            "to": 23,
+            "type": ">",
+            "ruleId": 1,
+            "source": "PE17:63"
+        },
+        {
+            "id": 12,
+            "from": 23,
+            "to": 24,
+            "type": ">",
+            "source": "PE17:63"
+        },
+        {
+            "id": 13,
+            "from": 25,
+            "to": 26,
+            "type": ">",
+            "ruleId": 1,
+            "source": "PE17:63"
+        },
+        {
+            "id": 14,
+            "from": 26,
+            "to": 27,
+            "type": ">",
+            "source": "PE17:63"
+        },
+        {
+            "id": 15,
+            "from": 29,
+            "to": 30,
+            "type": "+",
+            "source": "PE17:63"
+        },
+        {
+            "id": 16,
+            "from": 29,
+            "to": 31,
+            "type": "+",
+            "source": "PE17:63"
+        },
+        {
+            "id": 17,
+            "from": 31,
+            "to": 32,
+            "type": ">",
+            "source": "PE17:64"
+        },
+        {
+            "id": 18,
+            "from": 33,
+            "to": 34,
+            "type": "+",
+            "source": "PE17:64"
+        },
+        {
+            "id": 19,
+            "from": 33,
+            "to": 35,
+            "type": "+",
+            "source": "PE17:64"
+        },
+        {
+            "id": 20,
+            "from": 35,
+            "to": 36,
+            "type": ">",
+            "source": "PE17:64"
+        },
+        {
+            "id": 21,
+            "from": 37,
+            "to": 38,
+            "type": ">",
+            "source": "PE17:64"
+        },
+        {
+            "id": 22,
+            "from": 40,
+            "to": 41,
+            "type": ">",
+            "ruleId": 3,
+            "source": "PE17:65"
+        },
+        {
+            "id": 23,
+            "from": 42,
+            "to": 43,
+            "type": ">",
+            "ruleId": 1,
+            "source": "PE17:66"
+        },
+        {
+            "id": 24,
+            "from": 45,
+            "to": 46,
+            "type": ">",
+            "ruleId": 0,
+            "source": "PE17:66"
+        },
+        {
+            "id": 25,
+            "from": 47,
+            "to": 48,
+            "type": ">",
+            "source": "PE17:66"
+        },
+        {
+            "id": 26,
+            "from": 49,
+            "to": 50,
+            "type": ">",
+            "ruleId": 1,
+            "source": "PE17:66"
+        },
+        {
+            "id": 27,
+            "from": 50,
+            "to": 51,
+            "type": ">",
+            "source": "PE17:66"
+        },
+        {
+            "id": 28,
+            "from": 53,
+            "to": 54,
+            "type": ">",
+            "ruleId": 2,
+            "source": "PE17:67"
+        },
+        {
+            "id": 29,
+            "from": 54,
+            "to": 55,
+            "type": ">",
+            "source": "PE17:67"
+        },
+        {
+            "id": 30,
+            "from": 56,
+            "to": 57,
+            "type": ">",
+            "ruleId": 3,
+            "source": "PE17:67"
+        },
+        {
+            "id": 31,
+            "from": 57,
+            "to": 58,
+            "type": ">",
+            "ruleId": 7,
+            "source": "PE17:67"
+        },
+        {
+            "id": 32,
+            "from": 59,
+            "to": 60,
+            "type": "+",
+            "source": "PE17:67"
+        },
+        {
+            "id": 33,
+            "from": 59,
+            "to": 61,
+            "type": "+",
+            "source": "PE17:67"
+        },
+        {
+            "id": 34,
+            "from": 59,
+            "to": 62,
+            "type": "+",
+            "source": "PE17:67"
+        },
+        {
+            "id": 35,
+            "from": 62,
+            "to": 63,
+            "type": ">",
+            "source": "PE17:67"
+        },
+        {
+            "id": 36,
+            "from": 66,
+            "to": 24,
+            "type": ">",
+            "source": "PE17:68"
+        },
+        {
+            "id": 37,
+            "from": 67,
+            "to": 68,
+            "type": ">",
+            "source": "PE17:68"
+        },
+        {
+            "id": 38,
+            "from": 69,
+            "to": 70,
+            "type": ">",
+            "source": "PE17:68"
+        },
+        {
+            "id": 39,
+            "from": 70,
+            "to": 71,
+            "type": ">",
+            "source": "PE17:68"
+        },
+        {
+            "id": 40,
+            "from": 71,
+            "to": 72,
+            "type": ">",
+            "source": "PE17:68"
+        },
+        {
+            "id": 41,
+            "from": 74,
+            "to": 75,
+            "type": ">",
+            "source": "PE17:69"
+        },
+        {
+            "id": 42,
+            "from": 75,
+            "to": 51,
+            "type": ">",
+            "source": "PE17:69"
+        },
+        {
+            "id": 43,
+            "from": 76,
+            "to": 77,
+            "type": ">",
+            "ruleId": 4,
+            "source": "PE17:69"
+        },
+        {
+            "id": 44,
+            "from": 77,
+            "to": 78,
+            "type": "+",
+            "source": "PE17:69"
+        },
+        {
+            "id": 45,
+            "from": 77,
+            "to": 79,
+            "type": "+",
+            "source": "PE17:69"
+        },
+        {
+            "id": 46,
+            "from": 78,
+            "to": 80,
+            "type": ">",
+            "source": "PE17:69"
+        },
+        {
+            "id": 47,
+            "from": 81,
+            "to": 82,
+            "type": ">",
+            "ruleId": 1,
+            "source": "PE17:69"
+        },
+        {
+            "id": 48,
+            "from": 83,
+            "to": 84,
+            "type": ">",
+            "source": "PE17:69"
+        },
+        {
+            "id": 49,
+            "from": 84,
+            "to": 85,
+            "type": ">",
+            "ruleId": 7,
+            "source": "PE17:69"
+        },
+        {
+            "id": 50,
+            "from": 86,
+            "to": 54,
+            "type": ">",
+            "source": "PE17:70"
+        },
+        {
+            "id": 51,
+            "from": 54,
+            "to": 61,
+            "type": "+",
+            "source": "PE17:70"
+        },
+        {
+            "id": 52,
+            "from": 87,
+            "to": 88,
+            "type": ">",
+            "source": "PE17:70"
+        },
+        {
+            "id": 53,
+            "from": 88,
+            "to": 89,
+            "type": ">",
+            "source": "PE17:70"
+        },
+        {
+            "id": 54,
+            "from": 91,
+            "to": 92,
+            "type": ">",
+            "source": "PE17:72"
+        },
+        {
+            "id": 55,
+            "from": 93,
+            "to": 94,
+            "type": ">",
+            "ruleId": 1,
+            "source": "PE17:72"
+        },
+        {
+            "id": 56,
+            "from": 95,
+            "to": 96,
+            "type": "+",
+            "source": "PE17:72"
+        },
+        {
+            "id": 57,
+            "from": 95,
+            "to": 97,
+            "type": "+",
+            "source": "PE17:72"
+        },
+        {
+            "id": 58,
+            "from": 97,
+            "to": 98,
+            "type": ">",
+            "source": "PE17:72"
+        },
+        {
+            "id": 59,
+            "from": 99,
+            "to": 100,
+            "type": ">",
+            "source": "PE17:72"
+        },
+        {
+            "id": 60,
+            "from": 101,
+            "to": 102,
+            "type": ">",
+            "ruleId": 5,
+            "source": "PE17:72"
+        },
+        {
+            "id": 61,
+            "from": 102,
+            "to": 103,
+            "type": "+",
+            "source": "PE17:72"
+        },
+        {
+            "id": 62,
+            "from": 102,
+            "to": 104,
+            "type": "+",
+            "source": "PE17:72"
+        },
+        {
+            "id": 63,
+            "from": 105,
+            "to": 106,
+            "type": ">",
+            "source": "PE17:72"
+        },
+        {
+            "id": 64,
+            "from": 107,
+            "to": 108,
+            "type": ">",
+            "source": "PE17:73"
+        },
+        {
+            "id": 65,
+            "from": 108,
+            "to": 109,
+            "type": ">",
+            "source": "PE17:73"
+        },
+        {
+            "id": 66,
+            "from": 110,
+            "to": 111,
+            "type": ">",
+            "ruleId": 1,
+            "source": "PE17:73"
+        },
+        {
+            "id": 67,
+            "from": 111,
+            "to": 112,
+            "type": ">",
+            "ruleId": 6,
+            "source": "PE17:73"
+        },
+        {
+            "id": 68,
+            "from": 112,
+            "to": 113,
+            "type": ">",
+            "source": "PE17:73"
+        },
+        {
+            "id": 69,
+            "from": 113,
+            "to": 114,
+            "type": ">",
+            "source": "PE17:73"
+        },
+        {
+            "id": 70,
+            "from": 117,
+            "to": 118,
+            "type": ">",
+            "source": "PE17:73"
+        },
+        {
+            "id": 71,
+            "from": 119,
+            "to": 96,
+            "type": "+",
+            "source": "PE17:73"
+        },
+        {
+            "id": 72,
+            "from": 119,
+            "to": 120,
+            "type": "+",
+            "source": "PE17:73"
+        },
+        {
+            "id": 73,
+            "from": 121,
+            "to": 122,
+            "type": ">",
+            "ruleId": 3,
+            "source": "PE17:73"
+        },
+        {
+            "id": 74,
+            "from": 122,
+            "to": 123,
+            "type": "+",
+            "source": "PE17:73"
+        },
+        {
+            "id": 75,
+            "from": 122,
+            "to": 124,
+            "type": "+",
+            "source": "PE17:73"
+        },
+        {
+            "id": 76,
+            "from": 125,
+            "to": 126,
+            "type": ">",
+            "ruleId": 0,
+            "source": "PE17:73"
+        },
+        {
+            "id": 77,
+            "from": 127,
+            "to": 80,
+            "type": ">",
+            "source": "PE17:73"
+        },
+        {
+            "id": 78,
+            "from": 128,
+            "to": 27,
+            "type": ">",
+            "source": "PE17:74"
+        },
+        {
+            "id": 79,
+            "from": 129,
+            "to": 130,
+            "type": ">",
+            "ruleId": 5,
+            "source": "PE17:74"
+        },
+        {
+            "id": 80,
+            "from": 131,
+            "to": 132,
+            "type": "+",
+            "source": "PE17:74"
+        },
+        {
+            "id": 81,
+            "from": 131,
+            "to": 32,
+            "type": "+",
+            "source": "PE17:74"
+        },
+        {
+            "id": 82,
+            "from": 133,
+            "to": 134,
+            "type": ">",
+            "source": "PE17:74"
+        },
+        {
+            "id": 83,
+            "from": 134,
+            "to": 135,
+            "type": ">",
+            "source": "PE17:74"
+        },
+        {
+            "id": 84,
+            "from": 137,
+            "to": 138,
+            "type": ">",
+            "source": "PE17:75"
+        },
+        {
+            "id": 85,
+            "from": 138,
+            "to": 139,
+            "type": ">",
+            "source": "PE17:75"
+        },
+        {
+            "id": 86,
+            "from": 139,
+            "to": 140,
+            "type": ">",
+            "source": "PE17:75"
+        }
+    ],
+    "corpusTexts": [
+        {
+            "id": 1,
+            "text": "Ai! laurië lantar lassi súrinen!\nYéni únótimë ve rámar aldaron!\nYéni ve lintë yuldar avánier\nmi oromardi lisse-miruvóreva\nAndúnë pella, Vardo tellumar\nnu luini yassen tintilar i eleni\nómaryo airetári-lírinen.\nSí man i yulma nin enquantuva?\nAn sí Tintalle Varda Oiolossëo\nve fanyar máryat Elentári ortanë\nar ilyë tier undulávë lumbulë\nar sindanóriello caita mornië\ni falmalinnar imbë met, ar hísië\nuntúpa Calaciryo míri oialë.\nSí vanwa na, Rómello vanwa, Valimar!\nNamárië! Nai hiruvalyë Valimar.\nNai elyë hiruva. Namárië!",
+            "title": "Galadriel's Lament",
+            "lang": "Q",
+            "wordIds": [
+                0,
+                1,
+                3,
+                5,
+                7,
+                9,
+                11,
+                15,
+                16,
+                18,
+                20,
+                22,
+                25,
+                28,
+                29,
+                31,
+                33,
+                35,
+                37,
+                39,
+                40,
+                42,
+                44,
+                45,
+                47,
+                49,
+                52,
+                53,
+                56,
+                59,
+                62,
+                64,
+                65,
+                66,
+                67,
+                69,
+                73,
+                74,
+                76,
+                78,
+                81,
+                83,
+                86,
+                87,
+                90,
+                91,
+                93,
+                95,
+                97,
+                99,
+                101,
+                105,
+                107,
+                110,
+                115,
+                116,
+                117,
+                119,
+                121,
+                125,
+                127,
+                128,
+                129,
+                131,
+                133,
+                136,
+                137,
+                141
+            ],
+            "source": "I:394"
+        }
+    ]
+}

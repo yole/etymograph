@@ -1,15 +1,19 @@
 package ru.yole.etymograph
 
-class Link(
+data class LinkType(val id: String, val name: String)
+
+open class Link(
     val fromWord: Word,
     val toWord: Word,
-    val type: String,
+    val type: LinkType,
     val rule: Rule?,
     source: String?,
     notes: String?
 ) : LangEntity(source, notes) {
     companion object {
-        val Derived = "derived from"
-        val Agglutination = "agglutination of"
+        val Derived = LinkType(">", "derived from")
+        val Agglutination = LinkType("+", "agglutination of")
+
+        val allLinkTypes = listOf(Derived, Agglutination)
     }
 }

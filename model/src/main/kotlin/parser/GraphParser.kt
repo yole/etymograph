@@ -1,9 +1,6 @@
 package ru.yole.etymograph.parser
 
-import ru.yole.etymograph.InMemoryGraphRepository
-import ru.yole.etymograph.Language
-import ru.yole.etymograph.Link
-import ru.yole.etymograph.Word
+import ru.yole.etymograph.*
 import java.io.InputStream
 
 abstract class GraphSectionParser(val repo: InMemoryGraphRepository) {
@@ -26,7 +23,7 @@ fun parseWordChain(repo: InMemoryGraphRepository, line: String, language: Langua
     var firstWord: Word? = null
     var prevWord: Word? = null
     var lineSource: String? = null
-    var linkType: String? = null
+    var linkType: LinkType? = null
     var linkAssociative = false
 
     fun doneWord() {
@@ -39,7 +36,7 @@ fun parseWordChain(repo: InMemoryGraphRepository, line: String, language: Langua
         }
         prevWord?.let { prevWord ->
             if (linkType != null) {
-                repo.addLink(Link(prevWord, word, linkType!!, repo.findMatchingRule(prevWord, word), lineSource, null))
+                repo.addLink(prevWord, word, linkType!!, repo.findMatchingRule(prevWord, word), lineSource, null)
             }
         }
         if (!linkAssociative) {
@@ -125,8 +122,7 @@ class RuleSectionParser(repo: InMemoryGraphRepository): GraphSectionParser(repo)
     }
 }
 
-fun parseGraph(stream: InputStream): InMemoryGraphRepository {
-    val repo = InMemoryGraphRepository()
+fun parseGraph(stream: InputStream, repo: InMemoryGraphRepository) {
     stream.reader().useLines { lines ->
         var currentSection: GraphSectionParser? = null
         for (line in lines) {
@@ -146,5 +142,4 @@ fun parseGraph(stream: InputStream): InMemoryGraphRepository {
         }
         currentSection?.done()
     }
-    return repo
 }

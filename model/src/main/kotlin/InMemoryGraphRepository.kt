@@ -1,8 +1,8 @@
 package ru.yole.etymograph
 
-class InMemoryGraphRepository : GraphRepository() {
-    private val languages = mutableMapOf<String, Language>()
-    private val corpus = mutableListOf<CorpusText>()
+open class InMemoryGraphRepository : GraphRepository() {
+    protected val languages = mutableMapOf<String, Language>()
+    protected val corpus = mutableListOf<CorpusText>()
     private val words = mutableMapOf<Language, MutableMap<String, MutableList<Word>>>()
     private val linksFrom = mutableMapOf<Word, MutableList<Link>>()
     private val linksTo = mutableMapOf<Word, MutableList<Link>>()
@@ -58,12 +58,26 @@ class InMemoryGraphRepository : GraphRepository() {
         val wordsForLanguage = words.getOrPut(language) { mutableMapOf() }
         val wordsByText = wordsForLanguage.getOrPut(text.toLowerCase()) { mutableListOf() }
         wordsByText.find { it.gloss == gloss }?.let { return it }
-        return Word(text, language, gloss, source, notes).also { wordsByText.add(it) }
+        return createWord(text, language, gloss, source, notes).also { wordsByText.add(it) }
     }
 
-    fun addLink(link: Link) {
-        linksFrom.getOrPut(link.fromWord) { mutableListOf() }.add(link)
-        linksTo.getOrPut(link.toWord) { mutableListOf() }.add(link)
+    protected open fun createWord(
+        text: String,
+        language: Language,
+        gloss: String?,
+        source: String?,
+        notes: String?
+    ) = Word(text, language, gloss, source, notes)
+
+    fun addLink(fromWord: Word, toWord: Word, type: LinkType, rule: Rule?, source: String?, notes: String?): Link {
+        return createLink(fromWord, toWord, type, rule, source, notes).also {
+            linksFrom.getOrPut(it.fromWord) { mutableListOf() }.add(it)
+            linksTo.getOrPut(it.toWord) { mutableListOf() }.add(it)
+        }
+    }
+
+    protected open fun createLink(fromWord: Word, toWord: Word, type: LinkType, rule: Rule?, source: String?, notes: String?): Link {
+        return Link(fromWord, toWord, type, rule, source, notes)
     }
 
     override fun getLinksFrom(word: Word): Iterable<Link> {
@@ -83,9 +97,19 @@ class InMemoryGraphRepository : GraphRepository() {
         source: String?,
         notes: String?
     ): Rule {
-        return Rule(fromLanguage, toLanguage, fromPattern, toPattern, addedCategories, source, notes)
+        return createRule(fromLanguage, toLanguage, fromPattern, toPattern, addedCategories, source, notes)
             .also { rules.add(it) }
     }
+
+    protected open fun createRule(
+        fromLanguage: Language,
+        toLanguage: Language,
+        fromPattern: String,
+        toPattern: String,
+        addedCategories: String?,
+        source: String?,
+        notes: String?
+    ) = Rule(fromLanguage, toLanguage, fromPattern, toPattern, addedCategories, source, notes)
 
     fun findMatchingRule(fromWord: Word, toWord: Word): Rule? {
         for (rule in rules) {
