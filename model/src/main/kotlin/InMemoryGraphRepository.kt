@@ -131,4 +131,8 @@ open class InMemoryGraphRepository : GraphRepository() {
         }
         return null
     }
+
+    override fun ruleById(id: Int): Rule? {
+        return rules.getOrNull(id)
+    }
 }

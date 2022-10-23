@@ -11,6 +11,7 @@ import CorpusLangIndex, { loader as corpusLangIndexLoader } from "./routes/Corpu
 import CorpusText, { loader as corpusTextLoader } from "./routes/CorpusText";
 import Word, { loader as wordLoader } from "./routes/Word";
 import Dictionary, { loader as dictionaryLoader } from "./routes/Dictionary";
+import Rule, { loader as ruleLoader } from "./routes/Rule";
 
 const router = createBrowserRouter([
     {
@@ -37,6 +38,11 @@ const router = createBrowserRouter([
         path: '/dictionary/:lang',
         element: <Dictionary/>,
         loader: dictionaryLoader
+    },
+    {
+        path: '/rule/:lang/:id',
+        element: <Rule/>,
+        loader: ruleLoader
     }
 ])
 

@@ -24,7 +24,7 @@ class WordController(val graphService: GraphService) {
         return "word/index"
     }
 
-    data class LinkWordViewModel(val text: String)
+    data class LinkWordViewModel(val text: String, val ruleId: Int?)
     data class LinkTypeViewModel(val type: String, val words: List<LinkWordViewModel>)
     data class WordViewModel(
         val language: String,
@@ -45,8 +45,8 @@ class WordController(val graphService: GraphService) {
             word.language.shortName,
             word.text,
             word.getOrComputeGloss(graph) ?: "",
-            linksFrom.map { LinkTypeViewModel(it.key.name, it.value.map { link -> LinkWordViewModel(link.toWord.text) }) },
-            linksTo.map { LinkTypeViewModel(it.key.name, it.value.map { link -> LinkWordViewModel(link.fromWord.text) }) }
+            linksFrom.map { LinkTypeViewModel(it.key.name, it.value.map { link -> LinkWordViewModel(link.toWord.text, link.rule?.id) }) },
+            linksTo.map { LinkTypeViewModel(it.key.name, it.value.map { link -> LinkWordViewModel(link.fromWord.text, link.rule?.id) }) }
         )
     }
 

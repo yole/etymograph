@@ -13,6 +13,8 @@ abstract class GraphRepository {
     abstract fun wordsByText(lang: Language, text: String): List<Word>
     abstract fun dictionaryWords(lang: Language): List<Word>
 
+    abstract fun ruleById(id: Int): Rule?
+
     abstract fun addWord(
         text: String,
         language: Language,

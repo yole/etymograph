@@ -12,6 +12,10 @@ class RuleCondition(val type: ConditionType, val characterClass: CharacterClass)
             ConditionType.EndsWith -> word.text.last() in characterClass.matchingCharacters
         }
     }
+
+    fun prettyPrint(): String = when(type) {
+        ConditionType.EndsWith -> "word ends with " + (characterClass.name?.let { "a $it" } ?: "'${characterClass.matchingCharacters}'")
+    }
 }
 
 enum class InstructionType {
@@ -23,6 +27,11 @@ class RuleInstruction(val type: InstructionType, val arg: String) {
     fun apply(word: String): String = when(type) {
         InstructionType.RemoveLastCharacter -> word.substring(0, word.lastIndex)
         InstructionType.AddSuffix -> word + arg
+    }
+
+    fun prettyPrint(): String = when(type) {
+        InstructionType.RemoveLastCharacter -> "remove last character"
+        InstructionType.AddSuffix -> "add suffix '$arg'"
     }
 }
 
