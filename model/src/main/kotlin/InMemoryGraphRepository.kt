@@ -9,7 +9,8 @@ open class InMemoryGraphRepository : GraphRepository() {
     private val words = mutableMapOf<Language, MutableMap<String, MutableList<Word>>>()
     private val linksFrom = mutableMapOf<Word, MutableList<Link>>()
     private val linksTo = mutableMapOf<Word, MutableList<Link>>()
-    private val rules = mutableListOf<Rule>()
+    protected val rules = mutableListOf<Rule>()
+    protected val namedCharacterClasses = mutableMapOf<Language, MutableList<CharacterClass>>()
 
     fun addLanguage(language: Language) {
         languages[language.shortName] = language
@@ -63,6 +64,10 @@ open class InMemoryGraphRepository : GraphRepository() {
         return corpus.filter { it.language == lang }
     }
 
+    fun addNamedCharacterClass(language: Language, name: String, characters: String) {
+        namedCharacterClasses.getOrPut(language) { mutableListOf() }.add(CharacterClass(name, characters))
+    }
+
     override fun addWord(
         text: String,
         language: Language,
@@ -109,29 +114,18 @@ open class InMemoryGraphRepository : GraphRepository() {
     fun addRule(
         fromLanguage: Language,
         toLanguage: Language,
-        fromPattern: String,
-        toPattern: String,
+        branches: List<RuleBranch>,
         addedCategories: String?,
         source: String?,
         notes: String?
     ): Rule {
-        return createRule(fromLanguage, toLanguage, fromPattern, toPattern, addedCategories, source, notes)
+        return Rule(rules.size, fromLanguage, toLanguage, branches, addedCategories, source, notes)
             .also { rules.add(it) }
     }
 
-    protected open fun createRule(
-        fromLanguage: Language,
-        toLanguage: Language,
-        fromPattern: String,
-        toPattern: String,
-        addedCategories: String?,
-        source: String?,
-        notes: String?
-    ) = Rule(fromLanguage, toLanguage, fromPattern, toPattern, addedCategories, source, notes)
-
     fun findMatchingRule(fromWord: Word, toWord: Word): Rule? {
         for (rule in rules) {
-            if (rule.matches(toWord) && rule.apply(toWord.text) == fromWord.text) {
+            if (rule.matches(toWord) && rule.apply(toWord) == fromWord.text) {
                 return rule
             }
         }

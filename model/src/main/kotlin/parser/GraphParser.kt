@@ -118,7 +118,7 @@ class RuleSectionParser(repo: InMemoryGraphRepository): GraphSectionParser(repo)
         val toPattern = tokens.first()
         val addedCategories = tokens.getOrNull(1)
         val language = repo.languageByShortName(langId)
-        repo.addRule(language, language, fromPattern, toPattern, addedCategories, null, null)
+//        repo.addRule(language, language, fromPattern, toPattern, addedCategories, null, null)
     }
 }
 

@@ -2,23 +2,13 @@ package ru.yole.etymograph
 
 import kotlinx.serialization.*
 import kotlinx.serialization.json.Json
-import kotlinx.serialization.json.Json.Default.decodeFromString
-import ru.yole.etymograph.parser.parseGraph
-import java.io.File
 import java.nio.file.Path
 import kotlin.io.path.readText
-import kotlin.io.path.reader
 import kotlin.io.path.writeText
 
 class PersistentWord(val id: Int, text: String, language: Language, gloss: String?, source: String?, notes: String?)
     : Word(text, language, gloss, source, notes)
 
-class PersistentRule(val id: Int, fromLanguage: Language, toLanguage: Language, fromPattern: String, toPattern: String,
-                     addedCategories: String?, source: String?, notes: String?
-) : Rule(fromLanguage, toLanguage,
-    fromPattern,
-    toPattern, addedCategories, source, notes
-)
 
 class PersistentLink(val id: Int, fromWord: Word, toWord: Word, type: LinkType, rule: Rule?, source: String?,
                      notes: String?
@@ -34,11 +24,23 @@ data class LanguageData(val name: String, val shortName: String)
 data class WordData(val id: Int, val text: String, @SerialName("lang") val languageShortName: String, val gloss: String?, val source: String? = null, val notes: String? = null)
 
 @Serializable
+data class CharacterClassData(@SerialName("lang") val languageShortName: String, val name: String, val characters: String)
+
+@Serializable
+data class RuleConditionData(val type: ConditionType, @SerialName("cls") val characterClassName: String? = null, val characters: String? = null)
+
+@Serializable
+data class RuleInstructionData(val type: InstructionType, val arg: String)
+
+@Serializable
+data class RuleBranchData(val conditions: List<RuleConditionData>, val instructions: List<RuleInstructionData>)
+
+@Serializable
 data class RuleData(
     val id: Int,
     @SerialName("fromLang") val fromLanguageShortName: String,
     @SerialName("toLang") val toLanguageShortName: String,
-    val fromPattern: String, val toPattern: String,
+    val branches: List<RuleBranchData>,
     val addedCategories: String?,
     val source: String? = null,
     val notes: String? = null
@@ -67,6 +69,7 @@ data class CorpusTextData(
 @Serializable
 data class GraphRepositoryData(
     val languages: List<LanguageData>,
+    val characterClasses: List<CharacterClassData>,
     val words: List<WordData>,
     val rules: List<RuleData>,
     val links: List<LinkData>,
@@ -75,26 +78,11 @@ data class GraphRepositoryData(
 
 class JsonGraphRepository(val path: Path) : InMemoryGraphRepository() {
     private val allWords = mutableListOf<PersistentWord>()
-    private val allRules = mutableListOf<PersistentRule>()
     private val allLinks = mutableListOf<PersistentLink>()
 
     override fun createWord(text: String, language: Language, gloss: String?, source: String?, notes: String?): Word {
         return PersistentWord(allWords.size, text, language, gloss, source, notes).also {
             allWords.add(it)
-        }
-    }
-
-    override fun createRule(
-        fromLanguage: Language,
-        toLanguage: Language,
-        fromPattern: String,
-        toPattern: String,
-        addedCategories: String?,
-        source: String?,
-        notes: String?
-    ): Rule {
-        return PersistentRule(allRules.size , fromLanguage, toLanguage, fromPattern, toPattern, addedCategories, source, notes).also {
-            allRules.add(it)
         }
     }
 
@@ -121,14 +109,18 @@ class JsonGraphRepository(val path: Path) : InMemoryGraphRepository() {
     }
 
     private fun createGraphRepositoryData(): GraphRepositoryData {
+        val characterClassData = namedCharacterClasses.flatMap { (lang, classes) ->
+            classes.map { CharacterClassData(lang.shortName, it.name!!, it.matchingCharacters)}
+        }
         return GraphRepositoryData(
             languages.values.map { LanguageData(it.name, it.shortName) },
+            characterClassData,
             allWords.map { WordData(it.id, it.text, it.language.shortName, it.gloss, it.source, it.notes) },
-            allRules.map { RuleData(it.id, it.fromLanguage.shortName, it.toLanguage.shortName, it.fromPattern, it.toPattern, it.addedCategories, it.source, it.notes) },
+            rules.map { ruleToSerializedFormat(it) },
             allLinks.map {
                 LinkData(
                     it.id, (it.fromWord as PersistentWord).id, (it.toWord as PersistentWord).id,
-                    it.type.id, (it.rule as PersistentRule?)?.id ?: -1, it.source, it.notes
+                    it.type.id, it.rule?.id ?: -1, it.source, it.notes
                 )
             },
             corpus.map {
@@ -140,6 +132,7 @@ class JsonGraphRepository(val path: Path) : InMemoryGraphRepository() {
         )
     }
 
+
     companion object {
         val theJson = Json { prettyPrint = true }
 
@@ -149,14 +142,18 @@ class JsonGraphRepository(val path: Path) : InMemoryGraphRepository() {
             for (language in data.languages) {
                 result.addLanguage(Language(language.name, language.shortName))
             }
+            for (characterClass in data.characterClasses) {
+                result.addNamedCharacterClass(result.languageByShortName(characterClass.languageShortName), characterClass.name, characterClass.characters)
+            }
             for (word in data.words) {
                 result.addWord(word.text, result.languageByShortName(word.languageShortName), word.gloss, word.source, word.notes)
             }
             for (rule in data.rules) {
+                val fromLanguage = result.languageByShortName(rule.fromLanguageShortName)
                 result.addRule(
-                    result.languageByShortName(rule.fromLanguageShortName),
+                    fromLanguage,
                     result.languageByShortName(rule.toLanguageShortName),
-                    rule.fromPattern, rule.toPattern, rule.addedCategories, rule.source, rule.notes
+                    ruleBranchesFromSerializedFormat(result, fromLanguage, rule.branches), rule.addedCategories, rule.source, rule.notes
                 )
             }
             for (link in data.links) {
@@ -164,7 +161,7 @@ class JsonGraphRepository(val path: Path) : InMemoryGraphRepository() {
                     result.allWords[link.fromWordId],
                     result.allWords[link.toWordId],
                     Link.allLinkTypes.first { it.id == link.type },
-                    link.ruleId.takeIf { it >= 0 }?.let { result.allRules[it] },
+                    link.ruleId.takeIf { it >= 0 }?.let { result.rules[it] },
                     link.source,
                     link.notes
                 )
@@ -181,13 +178,61 @@ class JsonGraphRepository(val path: Path) : InMemoryGraphRepository() {
             }
             return result
         }
+
+        fun ruleToSerializedFormat(it: Rule) =
+            RuleData(
+                it.id,
+                it.fromLanguage.shortName,
+                it.toLanguage.shortName,
+                it.branches.map { branch ->
+                    RuleBranchData(
+                        branch.conditions.map { rule ->
+                            RuleConditionData(rule.type, rule.characterClass.name,
+                                rule.characterClass.matchingCharacters.takeIf { rule.characterClass.name == null } )
+                        },
+                        branch.instructions.map { insn ->
+                            RuleInstructionData(insn.type, insn.arg)
+                        }
+                    )
+                },
+                it.addedCategories,
+                it.source,
+                it.notes
+            )
+
+        private fun ruleBranchesFromSerializedFormat(
+            result: JsonGraphRepository,
+            fromLanguage: Language,
+            branches: List<RuleBranchData>
+        ): List<RuleBranch> {
+            return branches.map { branchData ->
+                RuleBranch(
+                    branchData.conditions.map { condData ->
+                        RuleCondition(condData.type,
+                            condData.characterClassName?.let { className ->
+                                result.namedCharacterClasses[fromLanguage]!!.single { it.name == className }
+                            } ?: CharacterClass(null, condData.characters!!))
+                    },
+                    branchData.instructions.map { insnData ->
+                        RuleInstruction(insnData.type, insnData.arg)
+                    }
+                )
+            }
+        }
     }
 }
 
 fun main() {
-    val repo = JsonGraphRepository(Path.of(""))
-    File("web/src/main/resources/jrrt.txt").inputStream().use {
-        parseGraph(it, repo)
-        File("jrrt.json").writeText(repo.toJson())
-    }
+    val repo = JsonGraphRepository.fromJson(Path.of("jrrt.json"))
+
+    val q = repo.languageByShortName("Q")
+    repo.addNamedCharacterClass(q, "vowel", "aeiouáéíóúäëïöü")
+    repo.addNamedCharacterClass(q, "consonant", "bcdfghjklmnpqrstvwxz")
+    val v = CharacterClass(null, "eë")
+    val c = RuleCondition(ConditionType.EndsWith, v)
+    val i1 = RuleInstruction(InstructionType.RemoveLastCharacter, "")
+    val i2 = RuleInstruction(InstructionType.AddSuffix, "i")
+    val rb = RuleBranch(listOf(c), listOf(i1, i2))
+    repo.addRule(q, q, listOf(rb), ".NOM.PL",  null, null)
+    repo.save()
 }

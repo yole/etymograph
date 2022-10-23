@@ -13,6 +13,18 @@
             "shortName": "CE"
         }
     ],
+    "characterClasses": [
+        {
+            "lang": "Q",
+            "name": "vowel",
+            "characters": "aeiouáéíóúäëïöü"
+        },
+        {
+            "lang": "Q",
+            "name": "consonant",
+            "characters": "bcdfghjklmnpqrstvwxz"
+        }
+    ],
     "words": [
         {
             "id": 0,
@@ -1049,64 +1061,156 @@
             "id": 0,
             "fromLang": "Q",
             "toLang": "Q",
-            "fromPattern": "(*)[eë]",
-            "toPattern": "$1i",
+            "branches": [
+                {
+                    "conditions": [
+                        {
+                            "type": "EndsWith",
+                            "characters": "eë"
+                        }
+                    ],
+                    "instructions": [
+                        {
+                            "type": "RemoveLastCharacter",
+                            "arg": ""
+                        },
+                        {
+                            "type": "AddSuffix",
+                            "arg": "i"
+                        }
+                    ]
+                },
+                {
+                    "conditions": [
+                        {
+                            "type": "EndsWith",
+                            "cls": "vowel"
+                        }
+                    ],
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "arg": "r"
+                        }
+                    ]
+                },
+                {
+                    "conditions": [
+                        {
+                            "type": "EndsWith",
+                            "cls": "consonant"
+                        }
+                    ],
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "arg": "i"
+                        }
+                    ]
+                }
+            ],
             "addedCategories": ".NOM.PL"
         },
         {
             "id": 1,
             "fromLang": "Q",
             "toLang": "Q",
-            "fromPattern": "(*V)",
-            "toPattern": "$1r",
-            "addedCategories": ".NOM.PL"
+            "branches": [
+                {
+                    "conditions": [
+                        {
+                            "type": "EndsWith",
+                            "characters": "aä"
+                        }
+                    ],
+                    "instructions": [
+                        {
+                            "type": "RemoveLastCharacter",
+                            "arg": ""
+                        },
+                        {
+                            "type": "AddSuffix",
+                            "arg": "o"
+                        }
+                    ]
+                },
+                {
+                    "conditions": [
+                        {
+                            "type": "EndsWith",
+                            "characters": "eë"
+                        }
+                    ],
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "arg": "o"
+                        }
+                    ]
+                }
+            ],
+            "addedCategories": ".GEN"
         },
         {
             "id": 2,
             "fromLang": "Q",
             "toLang": "Q",
-            "fromPattern": "(*C)",
-            "toPattern": "$1i",
-            "addedCategories": ".NOM.PL"
+            "branches": [
+                {
+                    "conditions": [
+                        {
+                            "type": "EndsWith",
+                            "characters": "eë"
+                        }
+                    ],
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "arg": "llo"
+                        }
+                    ]
+                }
+            ],
+            "addedCategories": ".ABL"
         },
         {
             "id": 3,
             "fromLang": "Q",
             "toLang": "Q",
-            "fromPattern": "(*)[aä]",
-            "toPattern": "$1o",
-            "addedCategories": ".GEN"
+            "branches": [
+                {
+                    "conditions": [
+                        {
+                            "type": "EndsWith",
+                            "characters": "iī"
+                        }
+                    ],
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "arg": "nna"
+                        }
+                    ]
+                }
+            ],
+            "addedCategories": ".ALL"
         },
         {
             "id": 4,
             "fromLang": "Q",
             "toLang": "Q",
-            "fromPattern": "(*[eë])",
-            "toPattern": "$1o",
-            "addedCategories": ".GEN"
-        },
-        {
-            "id": 5,
-            "fromLang": "Q",
-            "toLang": "Q",
-            "fromPattern": "(*[eë])",
-            "toPattern": "$1llo",
-            "addedCategories": ".ABL"
-        },
-        {
-            "id": 6,
-            "fromLang": "Q",
-            "toLang": "Q",
-            "fromPattern": "(*[iī])",
-            "toPattern": "$1nna",
-            "addedCategories": ".ALL"
-        },
-        {
-            "id": 7,
-            "fromLang": "Q",
-            "toLang": "Q",
-            "fromPattern": "(*)",
-            "toPattern": "$1rya",
+            "branches": [
+                {
+                    "conditions": [
+                    ],
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "arg": "rya"
+                        }
+                    ]
+                }
+            ],
             "addedCategories": ".POSS.3SG"
         }
     ],
@@ -1123,7 +1227,7 @@
             "from": 3,
             "to": 4,
             "type": ">",
-            "ruleId": 1,
+            "ruleId": 0,
             "source": "PE17:61"
         },
         {
@@ -1146,7 +1250,7 @@
             "from": 9,
             "to": 10,
             "type": ">",
-            "ruleId": 2,
+            "ruleId": 0,
             "source": "PE17:62"
         },
         {
@@ -1175,7 +1279,7 @@
             "from": 16,
             "to": 17,
             "type": ">",
-            "ruleId": 1,
+            "ruleId": 0,
             "source": "PE17:63"
         },
         {
@@ -1197,7 +1301,7 @@
             "from": 22,
             "to": 23,
             "type": ">",
-            "ruleId": 1,
+            "ruleId": 0,
             "source": "PE17:63"
         },
         {
@@ -1212,7 +1316,7 @@
             "from": 25,
             "to": 26,
             "type": ">",
-            "ruleId": 1,
+            "ruleId": 0,
             "source": "PE17:63"
         },
         {
@@ -1276,7 +1380,7 @@
             "from": 40,
             "to": 41,
             "type": ">",
-            "ruleId": 3,
+            "ruleId": 1,
             "source": "PE17:65"
         },
         {
@@ -1284,7 +1388,7 @@
             "from": 42,
             "to": 43,
             "type": ">",
-            "ruleId": 1,
+            "ruleId": 0,
             "source": "PE17:66"
         },
         {
@@ -1307,7 +1411,7 @@
             "from": 49,
             "to": 50,
             "type": ">",
-            "ruleId": 1,
+            "ruleId": 0,
             "source": "PE17:66"
         },
         {
@@ -1322,7 +1426,7 @@
             "from": 53,
             "to": 54,
             "type": ">",
-            "ruleId": 2,
+            "ruleId": 0,
             "source": "PE17:67"
         },
         {
@@ -1337,7 +1441,7 @@
             "from": 56,
             "to": 57,
             "type": ">",
-            "ruleId": 3,
+            "ruleId": 1,
             "source": "PE17:67"
         },
         {
@@ -1345,7 +1449,7 @@
             "from": 57,
             "to": 58,
             "type": ">",
-            "ruleId": 7,
+            "ruleId": 4,
             "source": "PE17:67"
         },
         {
@@ -1430,7 +1534,7 @@
             "from": 76,
             "to": 77,
             "type": ">",
-            "ruleId": 4,
+            "ruleId": 1,
             "source": "PE17:69"
         },
         {
@@ -1459,7 +1563,7 @@
             "from": 81,
             "to": 82,
             "type": ">",
-            "ruleId": 1,
+            "ruleId": 0,
             "source": "PE17:69"
         },
         {
@@ -1474,7 +1578,7 @@
             "from": 84,
             "to": 85,
             "type": ">",
-            "ruleId": 7,
+            "ruleId": 4,
             "source": "PE17:69"
         },
         {
@@ -1517,7 +1621,7 @@
             "from": 93,
             "to": 94,
             "type": ">",
-            "ruleId": 1,
+            "ruleId": 0,
             "source": "PE17:72"
         },
         {
@@ -1553,7 +1657,7 @@
             "from": 101,
             "to": 102,
             "type": ">",
-            "ruleId": 5,
+            "ruleId": 2,
             "source": "PE17:72"
         },
         {
@@ -1596,7 +1700,7 @@
             "from": 110,
             "to": 111,
             "type": ">",
-            "ruleId": 1,
+            "ruleId": 0,
             "source": "PE17:73"
         },
         {
@@ -1604,7 +1708,7 @@
             "from": 111,
             "to": 112,
             "type": ">",
-            "ruleId": 6,
+            "ruleId": 3,
             "source": "PE17:73"
         },
         {
@@ -1647,7 +1751,7 @@
             "from": 121,
             "to": 122,
             "type": ">",
-            "ruleId": 3,
+            "ruleId": 1,
             "source": "PE17:73"
         },
         {
@@ -1691,7 +1795,7 @@
             "from": 129,
             "to": 130,
             "type": ">",
-            "ruleId": 5,
+            "ruleId": 2,
             "source": "PE17:74"
         },
         {

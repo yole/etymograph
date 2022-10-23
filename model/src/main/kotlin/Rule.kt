@@ -1,28 +1,58 @@
 package ru.yole.etymograph
 
-open class Rule(
+enum class ConditionType {
+    EndsWith
+}
+
+class CharacterClass(val name: String?, val matchingCharacters: String)
+
+class RuleCondition(val type: ConditionType, val characterClass: CharacterClass) {
+    fun matches(word: Word): Boolean {
+        return when (type) {
+            ConditionType.EndsWith -> word.text.last() in characterClass.matchingCharacters
+        }
+    }
+}
+
+enum class InstructionType {
+    RemoveLastCharacter,
+    AddSuffix
+}
+
+class RuleInstruction(val type: InstructionType, val arg: String) {
+    fun apply(word: String): String = when(type) {
+        InstructionType.RemoveLastCharacter -> word.substring(0, word.lastIndex)
+        InstructionType.AddSuffix -> word + arg
+    }
+}
+
+class RuleBranch(val conditions: List<RuleCondition>, val instructions: List<RuleInstruction>) {
+    fun matches(word: Word) = conditions.all { it.matches(word) }
+
+    fun apply(word: Word): String {
+        return instructions.fold(word.text) { s, i -> i.apply(s) }
+    }
+}
+
+class Rule(
+    val id: Int,
     val fromLanguage: Language,
     val toLanguage: Language,
-    val fromPattern: String,
-    val toPattern: String,
+    val branches: List<RuleBranch>,
     val addedCategories: String?,
     source: String?,
     notes: String?
 ) : LangEntity(source, notes) {
     fun matches(word: Word): Boolean {
-        return fromPattern.toRegexPattern().matches(word.text)
+        return branches.any { it.matches(word) }
     }
 
-    fun apply(word: String): String {
-        return fromPattern.toRegexPattern().replace(word) { mr ->
-            toPattern.replace("$1", mr.groupValues[1])
+    fun apply(word: Word): String {
+        for (branch in branches) {
+            if (branch.matches(word)) {
+                return branch.apply(word)
+            }
         }
-    }
-
-    private fun String.toRegexPattern(): Regex {
-        return this
-            .replace("*", ".+")
-            .replace("V", "[aeiouáéíóúäëïöü]")
-            .replace("C", "[bcdfghjklmnpqrstvwxz]").toRegex()
+        return word.text
     }
 }
