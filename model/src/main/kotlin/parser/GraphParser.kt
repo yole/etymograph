@@ -108,20 +108,6 @@ class CorpusTextSectionParser(repo: InMemoryGraphRepository): GraphSectionParser
     }
 }
 
-class RuleSectionParser(repo: InMemoryGraphRepository): GraphSectionParser(repo) {
-    override fun parseLine(line: String) {
-        val langId = line.substringBefore(':')
-        var tail = line.substringAfter(':').trim()
-        val fromPattern = tail.substringBefore("->").trim()
-        tail = tail.substringAfter("->").trim()
-        val tokens = tail.split(' ')
-        val toPattern = tokens.first()
-        val addedCategories = tokens.getOrNull(1)
-        val language = repo.languageByShortName(langId)
-//        repo.addRule(language, language, fromPattern, toPattern, addedCategories, null, null)
-    }
-}
-
 fun parseGraph(stream: InputStream, repo: InMemoryGraphRepository) {
     stream.reader().useLines { lines ->
         var currentSection: GraphSectionParser? = null
@@ -132,7 +118,6 @@ fun parseGraph(stream: InputStream, repo: InMemoryGraphRepository) {
                 currentSection = when(line.trim()) {
                     "[languages]" -> LanguagesSectionParser(repo)
                     "[corpustext]" -> CorpusTextSectionParser(repo)
-                    "[rules]" -> RuleSectionParser(repo)
                     else -> throw IllegalArgumentException("Unknown section name $line")
                 }
             }
