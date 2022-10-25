@@ -11,7 +11,7 @@ import ru.yole.etymograph.UnknownLanguage
 @RestController
 class RuleController(val graphService: GraphService) {
     data class RuleBranchViewModel(val conditions: List<String>, val instructions: List<String>)
-    data class RuleViewModel(val branches: List<RuleBranchViewModel>)
+    data class RuleViewModel(val prettyText: String, val branches: List<RuleBranchViewModel>)
 
     @GetMapping("/rule/{lang}/{id}")
     fun rule(@PathVariable lang: String, @PathVariable id: String): RuleViewModel {
@@ -19,7 +19,7 @@ class RuleController(val graphService: GraphService) {
         val language = graph.languageByShortName(lang)
         if (language == UnknownLanguage) throw NoLanguageException()
         val rule = id.toIntOrNull()?.let { graph.ruleById(it) } ?: throw NoRuleException()
-        return RuleViewModel(rule.branches.map { it.toViewModel() })
+        return RuleViewModel(rule.prettyPrint(), rule.branches.map { it.toViewModel() })
     }
 
     private fun RuleBranch.toViewModel(): RuleBranchViewModel {
