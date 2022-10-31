@@ -1173,6 +1173,13 @@
             "lang": "Q",
             "gloss": "year",
             "source": "VT42:10"
+        },
+        {
+            "id": 164,
+            "text": "na",
+            "lang": "Q",
+            "gloss": "be",
+            "source": "PE17:74"
         }
     ],
     "rules": [
@@ -1935,7 +1942,7 @@
             "id": 82,
             "from": 133,
             "to": 134,
-            "type": ">",
+            "type": "+",
             "source": "PE17:74"
         },
         {
@@ -2040,6 +2047,12 @@
             "from": 156,
             "to": 161,
             "type": ">"
+        },
+        {
+            "id": 98,
+            "from": 133,
+            "to": 164,
+            "type": "+"
         }
     ],
     "corpusTexts": [
