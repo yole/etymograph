@@ -3,7 +3,7 @@ import {useState} from "react";
 import {updateRule} from "../api";
 
 export async function loader({params}) {
-    return fetch(`http://localhost:8080/rule/${params.id}`, { headers: { 'Accept': 'application/json'} })
+    return fetch(`${process.env.REACT_APP_BACKEND_URL}rule/${params.id}`, { headers: { 'Accept': 'application/json'} })
 }
 
 export default function Rule() {
@@ -19,6 +19,7 @@ export default function Rule() {
     }
 
     return <>
+        <h3>{rule.addedCategories}</h3>
         {!editMode && rule.branches.map(b => <>
             <div>When:</div>
             <ul>

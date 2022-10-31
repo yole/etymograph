@@ -144,6 +144,10 @@ open class InMemoryGraphRepository : GraphRepository() {
         return null
     }
 
+    override fun allRules(): Iterable<Rule> {
+        return rules
+    }
+
     override fun ruleById(id: Int): Rule? {
         return rules.getOrNull(id)
     }

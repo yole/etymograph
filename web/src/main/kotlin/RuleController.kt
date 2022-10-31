@@ -14,15 +14,28 @@ class RuleController(val graphService: GraphService) {
         val fromLang: String,
         val toLang: String,
         val prettyText: String,
+        val addedCategories: String?,
         val branches: List<RuleBranchViewModel>
     )
+
+    @GetMapping("/rules")
+    fun rules(): List<RuleViewModel> {
+        return graphService.graph.allRules().map { it.toViewModel() }
+    }
 
     @GetMapping("/rule/{id}")
     fun rule(@PathVariable id: String): RuleViewModel {
         val graph = graphService.graph
         val rule = id.toIntOrNull()?.let { graph.ruleById(it) } ?: throw NoRuleException()
-        return RuleViewModel(rule.id, rule.fromLanguage.shortName, rule.toLanguage.shortName, rule.prettyPrint(),
-            rule.branches.map { it.toViewModel() })
+        return rule.toViewModel()
+    }
+
+    private fun Rule.toViewModel(): RuleViewModel {
+        return RuleViewModel(
+            id, fromLanguage.shortName, toLanguage.shortName,
+            prettyPrint(),
+            addedCategories,
+            branches.map { it.toViewModel() })
     }
 
     private fun RuleBranch.toViewModel(): RuleBranchViewModel {

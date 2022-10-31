@@ -14,6 +14,7 @@ abstract class GraphRepository {
     abstract fun wordsByText(lang: Language, text: String): List<Word>
     abstract fun dictionaryWords(lang: Language): List<Word>
 
+    abstract fun allRules(): Iterable<Rule>
     abstract fun ruleById(id: Int): Rule?
 
     abstract fun characterClassByName(lang: Language, name: String): CharacterClass?
