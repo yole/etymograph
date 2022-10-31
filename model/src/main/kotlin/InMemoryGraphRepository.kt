@@ -68,6 +68,10 @@ open class InMemoryGraphRepository : GraphRepository() {
         namedCharacterClasses.getOrPut(language) { mutableListOf() }.add(CharacterClass(name, characters))
     }
 
+    override fun characterClassByName(lang: Language, name: String): CharacterClass? {
+        return namedCharacterClasses[lang]?.singleOrNull { it.name == name }
+    }
+
     override fun addWord(
         text: String,
         language: Language,
@@ -111,7 +115,7 @@ open class InMemoryGraphRepository : GraphRepository() {
         return linksTo[word] ?: emptyList()
     }
 
-    fun addRule(
+    override fun addRule(
         fromLanguage: Language,
         toLanguage: Language,
         branches: List<RuleBranch>,

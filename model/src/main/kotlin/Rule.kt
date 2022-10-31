@@ -1,7 +1,6 @@
 package ru.yole.etymograph
 
 import java.lang.RuntimeException
-import java.text.ParseException
 
 enum class ConditionType {
     EndsWith
@@ -51,7 +50,7 @@ class RuleInstruction(val type: InstructionType, val arg: String) {
         InstructionType.AddSuffix -> word + arg
     }
 
-    fun prettyPrint(): String = type.name + (if (type.takesArgument)  " '$arg'" else "")
+    fun prettyPrint(): String = type.insnName + (if (type.takesArgument)  " '$arg'" else "")
 
     companion object {
         fun parse(s: String): RuleInstruction {
@@ -102,7 +101,7 @@ class Rule(
     val id: Int,
     val fromLanguage: Language,
     val toLanguage: Language,
-    val branches: List<RuleBranch>,
+    var branches: List<RuleBranch>,
     val addedCategories: String?,
     source: String?,
     notes: String?
@@ -122,5 +121,21 @@ class Rule(
 
     fun prettyPrint(): String {
         return branches.joinToString("\n\n") { it.prettyPrint() }
+    }
+
+    companion object {
+        fun parseBranches(s: String, characterClassLookup: (String) -> CharacterClass?): List<RuleBranch> {
+            val lines = s.split('\n').map { it.trim() }.filter { it.isNotEmpty() }
+            val branchTexts = mutableListOf<List<String>>()
+            lateinit var currentBranchText: MutableList<String>
+            for (l in lines) {
+                if (l.endsWith(':')) {
+                    currentBranchText = mutableListOf<String>()
+                    branchTexts.add(currentBranchText)
+                }
+                currentBranchText.add(l)
+            }
+            return branchTexts.map { RuleBranch.parse(it.joinToString("\n"), characterClassLookup) }
+        }
     }
 }

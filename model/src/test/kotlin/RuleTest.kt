@@ -63,4 +63,17 @@ class RuleTest {
         assertEquals("e", b.conditions[0].characterClass.matchingCharacters)
         assertEquals("a", b.instructions[0].arg)
     }
+
+    @Test
+    fun ruleParse() {
+        val branches = Rule.parseBranches("""
+            word ends with 'e':
+            - add suffix 'a'
+            word ends with 'i':
+            - add suffix 'r'
+        """.trimIndent()) { null }
+        assertEquals(2, branches.size)
+        assertEquals(1, branches[0].instructions.size)
+        assertEquals(1, branches[1].instructions.size)
+    }
 }

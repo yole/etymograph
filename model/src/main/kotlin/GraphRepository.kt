@@ -15,6 +15,8 @@ abstract class GraphRepository {
 
     abstract fun ruleById(id: Int): Rule?
 
+    abstract fun characterClassByName(lang: Language, name: String): CharacterClass?
+
     abstract fun addWord(
         text: String,
         language: Language,
@@ -22,6 +24,15 @@ abstract class GraphRepository {
         source: String?,
         notes: String?
     ): Word
+
+    abstract fun addRule(
+        fromLanguage: Language,
+        toLanguage: Language,
+        branches: List<RuleBranch>,
+        addedCategories: String?,
+        source: String?,
+        notes: String?
+    ): Rule
 
     abstract fun save()
 }

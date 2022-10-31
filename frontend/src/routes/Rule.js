@@ -1,13 +1,22 @@
-import {useLoaderData} from "react-router";
+import {useLoaderData, useRevalidator} from "react-router";
 import {useState} from "react";
+import {updateRule} from "../api";
 
 export async function loader({params}) {
-    return fetch(`http://localhost:8080/rule/${params.lang}/${params.id}`, { headers: { 'Accept': 'application/json'} })
+    return fetch(`http://localhost:8080/rule/${params.id}`, { headers: { 'Accept': 'application/json'} })
 }
 
 export default function Rule() {
     const rule = useLoaderData()
     const [editMode, setEditMode] = useState(false)
+    const [prettyText, setPrettyText] = useState(rule.prettyText)
+    const revalidator = useRevalidator()
+
+    function saveRule() {
+        updateRule(rule.id, rule.fromLang, rule.toLang, prettyText)
+            .then(() => revalidator.revalidate())
+        setEditMode(false)
+    }
 
     return <>
         {!editMode && rule.branches.map(b => <>
@@ -21,8 +30,9 @@ export default function Rule() {
             </ul>
         </>)}
         {editMode && <>
-            <textarea rows="10" cols="50">{rule.prettyText}</textarea>
+            <textarea rows="10" cols="50" value={prettyText} onChange={(e) => setPrettyText(e.target.value)}/>
             <br/>
+            <button onClick={() => saveRule()}>Save</button>
         </>}
         <button onClick={() => setEditMode(!editMode)}>{editMode ? "Cancel" : "Edit"}</button>
     </>

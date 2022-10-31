@@ -40,7 +40,7 @@ const router = createBrowserRouter([
         loader: dictionaryLoader
     },
     {
-        path: '/rule/:lang/:id',
+        path: '/rule/:id',
         element: <Rule/>,
         loader: ruleLoader
     }
