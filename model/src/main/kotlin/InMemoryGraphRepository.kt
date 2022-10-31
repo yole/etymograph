@@ -85,7 +85,9 @@ open class InMemoryGraphRepository : GraphRepository() {
     ): Word {
         val wordsForLanguage = words.getOrPut(language) { mutableMapOf() }
         val wordsByText = wordsForLanguage.getOrPut(text.toLowerCase()) { mutableListOf() }
-        wordsByText.find { it.gloss == gloss }?.let { return it }
+        wordsByText.find { it.gloss == gloss || gloss.isNullOrEmpty() }?.let {
+            return it
+        }
         return createWord(text, language, gloss, source, notes).also { wordsByText.add(it) }
     }
 

@@ -12,7 +12,7 @@ open class Link(
 ) : LangEntity(source, notes) {
     companion object {
         val Derived = LinkType(">", "derived from", "Words derived from this one")
-        val Agglutination = LinkType("+", "agglutination of", "Part of compound words")
+        val Agglutination = LinkType("+", "compound of", "Part of compound words")
 
         val allLinkTypes = listOf(Derived, Agglutination)
     }

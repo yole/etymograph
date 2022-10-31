@@ -1120,10 +1120,10 @@
         },
         {
             "id": 156,
-            "text": "mentië",
+            "text": "landa",
             "lang": "Q",
-            "gloss": null,
-            "source": "PE17:13"
+            "gloss": "boundary",
+            "source": "VT42:8"
         },
         {
             "id": 157,
@@ -1173,13 +1173,6 @@
             "lang": "Q",
             "gloss": "year",
             "source": "VT42:10"
-        },
-        {
-            "id": 164,
-            "text": "landa",
-            "lang": "Q",
-            "gloss": "boundary",
-            "source": "VT42:8"
         }
     ],
     "rules": [
@@ -2044,7 +2037,7 @@
         },
         {
             "id": 97,
-            "from": 164,
+            "from": 156,
             "to": 161,
             "type": ">"
         }

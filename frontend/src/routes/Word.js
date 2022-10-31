@@ -13,10 +13,12 @@ export default function Word() {
     const revalidator = useRevalidator()
     const [showBaseWord, setShowBaseWord] = useState(false)
     const [showDerivedWord, setShowDerivedWord] = useState(false)
+    const [showCompoundComponent, setShowCompoundComponent] = useState(false)
 
     function submitted() {
         setShowBaseWord(false)
         setShowDerivedWord(false)
+        setShowCompoundComponent(false)
         revalidator.revalidate()
     }
 
@@ -43,5 +45,7 @@ export default function Word() {
         {showBaseWord && <WordForm submitted={submitted} derivedWord={word}/>}
         <a href="#" onClick={() => setShowDerivedWord(!showDerivedWord)}>Add derived word</a><br/>
         {showDerivedWord && <WordForm submitted={submitted} baseWord={word}/>}
+        <a href="#" onClick={() => setShowCompoundComponent(!showCompoundComponent)}>Add component of compound</a><br/>
+        {showCompoundComponent && <WordForm submitted={submitted} compoundWord={word}/>}
     </>
 }

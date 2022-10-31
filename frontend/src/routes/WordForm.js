@@ -17,6 +17,9 @@ export default function WordForm(props) {
                 else if (props.baseWord) {
                     addLink(r.id, props.baseWord.id, '>').then(() => props.submitted())
                 }
+                else if (props.compoundWord) {
+                    addLink(props.compoundWord.id, r.id, '+').then(() => props.submitted())
+                }
                 else {
                     props.submitted()
                 }
