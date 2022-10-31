@@ -5,7 +5,7 @@ import WordForm from "./WordForm";
 
 
 export async function loader({params}) {
-    return fetch(`${process.env.REACT_APP_BACKEND_URL}word/${params.lang}/${params.text}`, { headers: { 'Accept': 'application/json'} })
+    return fetch(`${process.env.REACT_APP_BACKEND_URL}word/${params.lang}/${params["*"]}`, { headers: { 'Accept': 'application/json'} })
 }
 
 export default function Word() {

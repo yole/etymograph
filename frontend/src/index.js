@@ -37,7 +37,7 @@ const router = createBrowserRouter([
         element: <CorpusTextEditor/>
     },
     {
-        path: '/word/:lang/:text',
+        path: '/word/:lang/*',
         element: <Word/>,
         loader: wordLoader
     },
