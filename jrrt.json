@@ -1176,6 +1176,155 @@
             "lang": "S",
             "gloss": "crossing",
             "source": "PE17:15"
+        },
+        {
+            "id": 169,
+            "text": "amon",
+            "lang": "S",
+            "gloss": "hill, lump, clump, mass",
+            "source": "PE17:15"
+        },
+        {
+            "id": 170,
+            "text": "sûl",
+            "lang": "S",
+            "gloss": "wind",
+            "source": "PE17:15"
+        },
+        {
+            "id": 171,
+            "text": "Gil-galad",
+            "lang": "S",
+            "source": "PE17:15"
+        },
+        {
+            "id": 172,
+            "text": "gil",
+            "lang": "S",
+            "gloss": "star",
+            "source": "PE17:15"
+        },
+        {
+            "id": 173,
+            "text": "galad",
+            "lang": "S",
+            "gloss": "light",
+            "source": "PE17:16"
+        },
+        {
+            "id": 174,
+            "text": "Elendil",
+            "lang": "Q",
+            "source": "PE17:15"
+        },
+        {
+            "id": 175,
+            "text": "eled",
+            "lang": "Q",
+            "gloss": "Star-folk",
+            "source": "V"
+        },
+        {
+            "id": 176,
+            "text": "NIL-",
+            "lang": "CE",
+            "gloss": "friend",
+            "source": "V"
+        },
+        {
+            "id": 177,
+            "text": "ndil",
+            "lang": "Q",
+            "gloss": "friend",
+            "source": "PE17:16"
+        },
+        {
+            "id": 178,
+            "text": "Luthien",
+            "lang": "S",
+            "gloss": "daughter of flowers",
+            "source": "PE17:16"
+        },
+        {
+            "id": 179,
+            "text": "lúth",
+            "lang": "S",
+            "gloss": "blossom, inflorescence",
+            "source": "PE17:15"
+        },
+        {
+            "id": 180,
+            "text": "SKAL-",
+            "lang": "CE",
+            "gloss": "cover, veil, cloak, conceal",
+            "source": "PE17:184"
+        },
+        {
+            "id": 181,
+            "text": "esgal",
+            "lang": "S",
+            "gloss": "cast shadow",
+            "source": "PE17:184"
+        },
+        {
+            "id": 182,
+            "text": "Esgalduin",
+            "lang": "S",
+            "source": "PE17:15"
+        },
+        {
+            "id": 183,
+            "text": "Númenor",
+            "lang": "Q",
+            "source": "PE17:15"
+        },
+        {
+            "id": 184,
+            "text": "NDU-",
+            "lang": "CE",
+            "gloss": "go down, sink, set",
+            "source": "V"
+        },
+        {
+            "id": 185,
+            "text": "ATH-",
+            "lang": "CE",
+            "gloss": "ease, comfort, heal",
+            "source": "PE17:49"
+        },
+        {
+            "id": 186,
+            "text": "LAS-",
+            "lang": "CE",
+            "gloss": "leaf",
+            "source": "V"
+        },
+        {
+            "id": 187,
+            "text": "lass",
+            "lang": "S",
+            "gloss": "leaf",
+            "source": "PE17:49"
+        },
+        {
+            "id": 188,
+            "text": "athae",
+            "lang": "S",
+            "gloss": "ease, comfort, heal",
+            "source": "PE17:49"
+        },
+        {
+            "id": 189,
+            "text": "asëa",
+            "lang": "Q",
+            "gloss": "ease, comfort, heal",
+            "source": "PE17:49"
+        },
+        {
+            "id": 190,
+            "text": "athelas",
+            "lang": "S",
+            "source": "PE17:49"
         }
     ],
     "rules": [
@@ -2117,6 +2266,114 @@
             "from": 165,
             "to": 167,
             "type": "+"
+        },
+        {
+            "id": 101,
+            "from": 171,
+            "to": 172,
+            "type": "+"
+        },
+        {
+            "id": 102,
+            "from": 171,
+            "to": 173,
+            "type": "+"
+        },
+        {
+            "id": 103,
+            "from": 174,
+            "to": 175,
+            "type": "+"
+        },
+        {
+            "id": 104,
+            "from": 175,
+            "to": 55,
+            "type": ">"
+        },
+        {
+            "id": 105,
+            "from": 174,
+            "to": 177,
+            "type": "+"
+        },
+        {
+            "id": 106,
+            "from": 178,
+            "to": 179,
+            "type": ">"
+        },
+        {
+            "id": 107,
+            "from": 181,
+            "to": 180,
+            "type": ">"
+        },
+        {
+            "id": 108,
+            "from": 182,
+            "to": 181,
+            "type": "+"
+        },
+        {
+            "id": 109,
+            "from": 182,
+            "to": 167,
+            "type": "+"
+        },
+        {
+            "id": 110,
+            "from": 183,
+            "to": 146,
+            "type": "+"
+        },
+        {
+            "id": 111,
+            "from": 183,
+            "to": 104,
+            "type": "+"
+        },
+        {
+            "id": 112,
+            "from": 146,
+            "to": 184,
+            "type": ">"
+        },
+        {
+            "id": 113,
+            "from": 6,
+            "to": 186,
+            "type": ">"
+        },
+        {
+            "id": 114,
+            "from": 187,
+            "to": 186,
+            "type": ">"
+        },
+        {
+            "id": 115,
+            "from": 188,
+            "to": 185,
+            "type": ">"
+        },
+        {
+            "id": 116,
+            "from": 189,
+            "to": 185,
+            "type": ">"
+        },
+        {
+            "id": 117,
+            "from": 190,
+            "to": 188,
+            "type": "+"
+        },
+        {
+            "id": 118,
+            "from": 190,
+            "to": 187,
+            "type": "+"
         }
     ],
     "corpusTexts": [
@@ -2199,7 +2456,7 @@
         },
         {
             "id": 2,
-            "text": "Elen síla lúmenna omentielmo\n",
+            "text": "Elen síla lúmenna omentielmo",
             "title": null,
             "lang": "Q",
             "wordIds": [
