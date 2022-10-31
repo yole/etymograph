@@ -8,7 +8,7 @@ import ru.yole.etymograph.UnknownLanguage
 
 @RestController
 class DictionaryController(val graphService: GraphService) {
-    data class DictionaryWordViewModel(val text: String, val gloss: String)
+    data class DictionaryWordViewModel(val id: Int, val text: String, val gloss: String)
     data class DictionaryViewModel(val language: Language, val words: List<DictionaryWordViewModel>)
 
     @GetMapping("/dictionary/{lang}")
@@ -17,6 +17,6 @@ class DictionaryController(val graphService: GraphService) {
         val language = graph.languageByShortName(lang)
         if (language == UnknownLanguage) throw NoLanguageException()
         val words = graph.dictionaryWords(language)
-        return DictionaryViewModel(language, words.map { DictionaryWordViewModel(it.text, it.gloss!!) })
+        return DictionaryViewModel(language, words.map { DictionaryWordViewModel(it.id, it.text, it.gloss!!) })
     }
 }

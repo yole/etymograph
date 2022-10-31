@@ -23,7 +23,7 @@ export default function Dictionary() {
         <h3>Add word</h3>
         <WordForm language={dict.language.shortName} submitted={submitted}/>
         <ul>
-            {dict.words.map(w => <li><Link to={`/word/${dict.language.shortName}/${w.text}`}>{w.text}</Link> - {w.gloss}</li>)}
+            {dict.words.map(w => <li key={w.id}><Link to={`/word/${dict.language.shortName}/${w.text}`}>{w.text}</Link> - {w.gloss}</li>)}
         </ul>
     </>
 }
