@@ -13,7 +13,7 @@ export default function Dictionary() {
     return <>
         <h2>Dictionary for {dict.language.name}</h2>
         <h3>Add word</h3>
-        <WordForm language={dict.language} submitted={() => revalidator.revalidate()}/>
+        <WordForm language={dict.language.shortName} submitted={() => revalidator.revalidate()}/>
         <ul>
             {dict.words.map(w => <li><Link to={`/word/${dict.language.shortName}/${w.text}`}>{w.text}</Link> - {w.gloss}</li>)}
         </ul>

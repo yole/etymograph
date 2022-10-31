@@ -26,21 +26,22 @@ export default function Word() {
         {word.linksFrom.map(l => <>
             <div>{l.type}</div>
             {l.words.map(w => <div>
-                <Link to={`/word/${word.language}/${w.text}`}>{w.text}</Link>
-                {w.ruleId !== undefined && <>&nbsp;(<Link to={`/rule/${w.ruleId}`}>rule</Link>)</>}
+                <Link to={`/word/${w.language}/${w.text}`}>{w.text}</Link>
+                {w.ruleId !== null && <>&nbsp;(<Link to={`/rule/${w.ruleId}`}>rule</Link>)</>}
             </div>)}
         </>)}
         {word.linksTo.map(l => <>
             <div>{l.type}</div>
             {l.words.map(w => <div>
-                <Link to={`/word/${word.language}/${w.text}`}>{w.text}</Link>
-                {w.ruleId !== undefined  && <>&nbsp;(<Link to={`/rule/${w.ruleId}`}>rule</Link>)</>}
+                <Link to={`/word/${w.language}/${w.text}`}>{w.text}</Link>
+                {w.ruleId !== null && <>&nbsp;(<Link to={`/rule/${w.ruleId}`}>rule</Link>)</>}
             </div>)}
         </>)}
 
+        <p/>
         <a href="#" onClick={() => setShowBaseWord(!showBaseWord)}>Add base word</a><br/>
-        {showBaseWord && <WordForm submitted={submitted} language={word.language} derivedWord={word}/>}
+        {showBaseWord && <WordForm submitted={submitted} derivedWord={word}/>}
         <a href="#" onClick={() => setShowDerivedWord(!showDerivedWord)}>Add derived word</a><br/>
-        {showDerivedWord && <WordForm submitted={submitted} language={word.language} baseWord={word}/>}
+        {showDerivedWord && <WordForm submitted={submitted} baseWord={word}/>}
     </>
 }

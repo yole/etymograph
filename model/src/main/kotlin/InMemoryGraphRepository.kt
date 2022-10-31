@@ -54,7 +54,6 @@ open class InMemoryGraphRepository : GraphRepository() {
         return wordsInLang.flatMap { it.value }
             .filter {
                 it.gloss != null &&
-                        !it.isRoot() &&
                         linksFrom[it]?.none { link -> link.type == Link.Derived && !link.toWord.isRoot() } != false }
             .sortedWith { o1, o2 -> Collator.getInstance(Locale.FRANCE).compare(o1.text, o2.text) }
     }

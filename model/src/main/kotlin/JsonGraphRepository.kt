@@ -213,15 +213,5 @@ class JsonGraphRepository(val path: Path) : InMemoryGraphRepository() {
 
 fun main() {
     val repo = JsonGraphRepository.fromJson(Path.of("jrrt.json"))
-
-    val q = repo.languageByShortName("Q")
-    repo.addNamedCharacterClass(q, "vowel", "aeiouáéíóúäëïöü")
-    repo.addNamedCharacterClass(q, "consonant", "bcdfghjklmnpqrstvwxz")
-    val v = CharacterClass(null, "eë")
-    val c = RuleCondition(ConditionType.EndsWith, v)
-    val i1 = RuleInstruction(InstructionType.RemoveLastCharacter, "")
-    val i2 = RuleInstruction(InstructionType.AddSuffix, "i")
-    val rb = RuleBranch(listOf(c), listOf(i1, i2))
-    repo.addRule(q, q, listOf(rb), ".NOM.PL",  null, null)
     repo.save()
 }

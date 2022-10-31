@@ -5,9 +5,10 @@ export default function WordForm(props) {
     const [newWordText, setNewWordText] = useState("")
     const [newWordGloss, setNewWordGloss] = useState("")
     const [newWordSource, setNewWordSource] = useState("")
+    const [newWordLanguage, setNewWordLanguage] = useState(props.language || "")
 
     function handleFormSubmit(e) {
-        addWord(props.language, newWordText, newWordGloss, newWordSource)
+        addWord(newWordLanguage, newWordText, newWordGloss, newWordSource)
             .then(r => r.json())
             .then(r => {
                 if (props.derivedWord) {
@@ -29,6 +30,11 @@ export default function WordForm(props) {
     return <form onSubmit={handleFormSubmit}>
         <table>
             <tbody>
+            {props.language === undefined && <tr>
+                <td><label>Language:</label></td>
+                <td><input type="text" value={newWordLanguage} onChange={e => setNewWordLanguage(e.target.value)}
+                           id="word-input"/></td>
+            </tr>}
             <tr>
                 <td><label>Text:</label></td>
                 <td><input type="text" value={newWordText} onChange={e => setNewWordText(e.target.value)}

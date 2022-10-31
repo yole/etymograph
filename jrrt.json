@@ -127,7 +127,7 @@
         {
             "id": 14,
             "text": "NOT-",
-            "lang": "Q",
+            "lang": "CE",
             "gloss": "count",
             "source": "PE17:62"
         },
@@ -197,7 +197,7 @@
         {
             "id": 24,
             "text": "YUL-",
-            "lang": "Q",
+            "lang": "CE",
             "gloss": "drink",
             "source": "PE17:63"
         },
@@ -239,7 +239,7 @@
         {
             "id": 30,
             "text": "ORO-",
-            "lang": "Q",
+            "lang": "CE",
             "gloss": "up",
             "source": "PE17:63"
         },
@@ -295,7 +295,7 @@
         {
             "id": 38,
             "text": "NDÚ",
-            "lang": "Q",
+            "lang": "CE",
             "gloss": "sink, go down",
             "source": "PE17:64"
         },
@@ -386,7 +386,7 @@
         {
             "id": 51,
             "text": "TIN-",
-            "lang": "Q",
+            "lang": "CE",
             "gloss": "sparkle, spark",
             "source": "PE17:66"
         },
@@ -414,7 +414,7 @@
         {
             "id": 55,
             "text": "EL-",
-            "lang": "Q",
+            "lang": "CE",
             "gloss": "star",
             "source": "PE17:67"
         },
@@ -533,7 +533,7 @@
         {
             "id": 72,
             "text": "QUAT-",
-            "lang": "Q",
+            "lang": "CE",
             "gloss": "fill",
             "source": "PE17:68"
         },
@@ -589,7 +589,7 @@
         {
             "id": 80,
             "text": "OY-",
-            "lang": "Q",
+            "lang": "CE",
             "gloss": "ever",
             "source": "PE17:69"
         },
@@ -652,7 +652,7 @@
         {
             "id": 89,
             "text": "ORO-",
-            "lang": "Q",
+            "lang": "CE",
             "gloss": "up, high",
             "source": "PE17:70"
         },
@@ -715,7 +715,7 @@
         {
             "id": 98,
             "text": "LAB-",
-            "lang": "Q",
+            "lang": "CE",
             "gloss": "lick",
             "source": "PE17:72"
         },
@@ -729,7 +729,7 @@
         {
             "id": 100,
             "text": "LUM-",
-            "lang": "Q",
+            "lang": "CE",
             "gloss": "gloom",
             "source": "PE17:72"
         },
@@ -771,7 +771,7 @@
         {
             "id": 106,
             "text": "KAY-",
-            "lang": "Q",
+            "lang": "CE",
             "gloss": "lie",
             "source": "PE17:72"
         },
@@ -792,7 +792,7 @@
         {
             "id": 109,
             "text": "MOR-",
-            "lang": "Q",
+            "lang": "CE",
             "gloss": "black",
             "source": "PE17:73"
         },
@@ -827,7 +827,7 @@
         {
             "id": 114,
             "text": "PHAL-",
-            "lang": "Q",
+            "lang": "CE",
             "gloss": "splash",
             "source": "PE17:73"
         },
@@ -855,7 +855,7 @@
         {
             "id": 118,
             "text": "KHITH-",
-            "lang": "Q",
+            "lang": "CE",
             "gloss": "mist, fog",
             "source": "PE17:73"
         },
@@ -869,7 +869,7 @@
         {
             "id": 120,
             "text": "TUP-",
-            "lang": "Q",
+            "lang": "CE",
             "gloss": "cover over",
             "source": "PE17:73"
         },
@@ -890,14 +890,14 @@
         {
             "id": 123,
             "text": "KAL-",
-            "lang": "Q",
+            "lang": "CE",
             "gloss": "light",
             "source": "PE17:73"
         },
         {
             "id": 124,
             "text": "KIR-",
-            "lang": "Q",
+            "lang": "CE",
             "gloss": "cleave",
             "source": "PE17:73"
         },
@@ -1009,7 +1009,7 @@
         {
             "id": 140,
             "text": "KHIR-",
-            "lang": "Q",
+            "lang": "CE",
             "gloss": "find",
             "source": "PE17:75"
         },
@@ -1156,7 +1156,7 @@
         {
             "id": 161,
             "text": "LAP-",
-            "lang": "Q",
+            "lang": "CE",
             "gloss": "rim, edge, border, boundary, limit",
             "source": "VT42:8"
         },
@@ -1165,6 +1165,20 @@
             "text": "lanwa",
             "lang": "Q",
             "gloss": "within bounds, limited, finite, (well-)defined",
+            "source": "VT42:8"
+        },
+        {
+            "id": 163,
+            "text": "loa",
+            "lang": "Q",
+            "gloss": "year",
+            "source": "VT42:10"
+        },
+        {
+            "id": 164,
+            "text": "landa",
+            "lang": "Q",
+            "gloss": "boundary",
             "source": "VT42:8"
         }
     ],
@@ -2025,6 +2039,12 @@
         {
             "id": 96,
             "from": 162,
+            "to": 161,
+            "type": ">"
+        },
+        {
+            "id": 97,
+            "from": 164,
             "to": 161,
             "type": ">"
         }
