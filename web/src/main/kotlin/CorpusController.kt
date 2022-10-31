@@ -63,7 +63,7 @@ class CorpusController(val graphService: GraphService) {
         return "corpus/text"
     }
 
-    data class CorpusWordViewModel(val text: String, val gloss: String)
+    data class CorpusWordViewModel(val text: String, val gloss: String, val wordText: String?)
     data class CorpusLineViewModel(val words: List<CorpusWordViewModel>)
     data class CorpusTextViewModel(val id: Int, val title: String, val language: String, val lines: List<CorpusLineViewModel>)
 
@@ -81,7 +81,7 @@ class CorpusController(val graphService: GraphService) {
             language.shortName,
             mapToLines(graphService.graph).map {
                 CorpusLineViewModel(it.corpusWords.map { cw ->
-                    CorpusWordViewModel(cw.text, cw.gloss ?: "")
+                    CorpusWordViewModel(cw.text, cw.gloss ?: "", cw.word?.text)
                 })
             }
         )
