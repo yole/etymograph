@@ -15,3 +15,7 @@ export function addWord(lang, text, gloss, source) {
 export function updateRule(id, fromLang, toLang, text) {
     return postToBackend('rule/' + id, {fromLang: fromLang, toLang: toLang, text: text})
 }
+
+export function addCorpusText(text) {
+    return postToBackend("corpus", {text: text})
+}

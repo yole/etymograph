@@ -1054,6 +1054,90 @@
             "lang": "Q",
             "gloss": "west",
             "source": "PE22:50"
+        },
+        {
+            "id": 147,
+            "text": "síla",
+            "lang": "Q",
+            "gloss": "shine.3SG",
+            "source": "PE17:13"
+        },
+        {
+            "id": 148,
+            "text": "sile",
+            "lang": "Q",
+            "gloss": "shine",
+            "source": "PE17:13"
+        },
+        {
+            "id": 149,
+            "text": "lúmenna",
+            "lang": "Q",
+            "gloss": "time.ALL",
+            "source": "PE17:13"
+        },
+        {
+            "id": 150,
+            "text": "lúme",
+            "lang": "Q",
+            "gloss": "time",
+            "source": "PE17:13"
+        },
+        {
+            "id": 151,
+            "text": "omentielmo",
+            "lang": "Q",
+            "gloss": "meeting.2PL.GEN",
+            "source": "PE17:13"
+        },
+        {
+            "id": 152,
+            "text": "omentielma",
+            "lang": "Q",
+            "gloss": "meeting.2PL",
+            "source": "PE17:13"
+        },
+        {
+            "id": 153,
+            "text": "omentie",
+            "lang": "Q",
+            "gloss": "meeting",
+            "source": "PE17:13"
+        },
+        {
+            "id": 154,
+            "text": "o",
+            "lang": "Q",
+            "gloss": "together",
+            "source": "PE17:13"
+        },
+        {
+            "id": 155,
+            "text": "mentië",
+            "lang": "Q",
+            "gloss": "journey",
+            "source": "PE17:13"
+        },
+        {
+            "id": 156,
+            "text": "mentië",
+            "lang": "Q",
+            "gloss": null,
+            "source": "PE17:13"
+        },
+        {
+            "id": 157,
+            "text": "men-",
+            "lang": "Q",
+            "gloss": "go",
+            "source": "PE17:13"
+        },
+        {
+            "id": 158,
+            "text": "tie",
+            "lang": "Q",
+            "gloss": "path",
+            "source": "PE17:13"
         }
     ],
     "rules": [
@@ -1846,6 +1930,63 @@
             "to": 140,
             "type": ">",
             "source": "PE17:75"
+        },
+        {
+            "id": 87,
+            "from": 147,
+            "to": 148,
+            "type": ">",
+            "source": "PE17:13"
+        },
+        {
+            "id": 88,
+            "from": 149,
+            "to": 150,
+            "type": ">",
+            "source": "PE17:13"
+        },
+        {
+            "id": 89,
+            "from": 151,
+            "to": 152,
+            "type": ">",
+            "ruleId": 1,
+            "source": "PE17:13"
+        },
+        {
+            "id": 90,
+            "from": 152,
+            "to": 153,
+            "type": ">",
+            "source": "PE17:13"
+        },
+        {
+            "id": 91,
+            "from": 153,
+            "to": 154,
+            "type": "+",
+            "source": "PE17:13"
+        },
+        {
+            "id": 92,
+            "from": 153,
+            "to": 155,
+            "type": "+",
+            "source": "PE17:13"
+        },
+        {
+            "id": 93,
+            "from": 156,
+            "to": 157,
+            "type": "+",
+            "source": "PE17:13"
+        },
+        {
+            "id": 94,
+            "from": 156,
+            "to": 158,
+            "type": "+",
+            "source": "PE17:13"
         }
     ],
     "corpusTexts": [
@@ -1925,6 +2066,20 @@
                 141
             ],
             "source": "I:394"
+        },
+        {
+            "id": 2,
+            "text": "Elen síla lúmenna omentielmo\n",
+            "title": null,
+            "lang": "Q",
+            "wordIds": [
+                54,
+                147,
+                149,
+                151,
+                156
+            ],
+            "source": "PE17:23"
         }
     ]
 }

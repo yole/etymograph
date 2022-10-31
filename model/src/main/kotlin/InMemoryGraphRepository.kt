@@ -24,15 +24,15 @@ open class InMemoryGraphRepository : GraphRepository() {
         return languages[languageShortName] ?: UnknownLanguage
     }
 
-    fun addCorpusText(
+    override fun addCorpusText(
         text: String,
         title: String?,
         language: Language,
         words: List<Word>,
         source: String?,
         notes: String?
-    ) {
-        corpus += CorpusText(corpus.size + 1, text, title, language, words, source, notes)
+    ): CorpusText {
+        return CorpusText(corpus.size + 1, text, title, language, words, source, notes).also { corpus += it }
     }
 
     override fun corpusTextById(id: Int): CorpusText? {
@@ -96,7 +96,7 @@ open class InMemoryGraphRepository : GraphRepository() {
         notes: String?
     ) = Word(text, language, gloss, source, notes)
 
-    fun addLink(fromWord: Word, toWord: Word, type: LinkType, rule: Rule?, source: String?, notes: String?): Link {
+    override fun addLink(fromWord: Word, toWord: Word, type: LinkType, rule: Rule?, source: String?, notes: String?): Link {
         return createLink(fromWord, toWord, type, rule, source, notes).also {
             linksFrom.getOrPut(it.fromWord) { mutableListOf() }.add(it)
             linksTo.getOrPut(it.toWord) { mutableListOf() }.add(it)
@@ -127,7 +127,7 @@ open class InMemoryGraphRepository : GraphRepository() {
             .also { rules.add(it) }
     }
 
-    fun findMatchingRule(fromWord: Word, toWord: Word): Rule? {
+    override fun findMatchingRule(fromWord: Word, toWord: Word): Rule? {
         for (rule in rules) {
             if (rule.matches(toWord) && rule.apply(toWord) == fromWord.text) {
                 return rule

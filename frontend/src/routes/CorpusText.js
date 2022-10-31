@@ -11,14 +11,14 @@ export default function CorpusText() {
         <h2>{corpusText.title}</h2>
         {corpusText.lines.map(l => (
             <div>
-                <table>
+                <table><tbody>
                     <tr>
                         {l.words.map(w => <td><Link to={`/word/${corpusText.language}/${w.text}`}>{w.text}</Link></td>)}
                     </tr>
                     <tr>
                         {l.words.map(w => <td>{w.gloss}</td>)}
                     </tr>
-                </table>
+                </tbody></table>
             </div>
         ))}
     </>

@@ -34,5 +34,18 @@ abstract class GraphRepository {
         notes: String?
     ): Rule
 
+    abstract fun addCorpusText(
+        text: String,
+        title: String?,
+        language: Language,
+        words: List<Word>,
+        source: String?,
+        notes: String?
+    ): CorpusText
+
+    abstract fun addLink(fromWord: Word, toWord: Word, type: LinkType, rule: Rule?, source: String?, notes: String?): Link
+
+    abstract fun findMatchingRule(fromWord: Word, toWord: Word): Rule?
+
     abstract fun save()
 }

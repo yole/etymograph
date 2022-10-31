@@ -1,4 +1,4 @@
-import {useLoaderData} from "react-router";
+import {useLoaderData, useNavigate} from "react-router";
 import {Link} from "react-router-dom";
 
 export async function loader({params}) {
@@ -7,6 +7,7 @@ export async function loader({params}) {
 
 export default function CorpusLangIndex() {
     const corpusForLanguage = useLoaderData()
+    const navigate = useNavigate()
     return <>
         <p>Corpus for {corpusForLanguage.language.name}</p>
         <Link to={`/dictionary/${corpusForLanguage.language.shortName}`}>Dictionary</Link>
@@ -16,5 +17,6 @@ export default function CorpusLangIndex() {
                 )
             )}
         </ul>
+        <button onClick={() => navigate("/corpus/new")}>Add</button>
     </>
 }

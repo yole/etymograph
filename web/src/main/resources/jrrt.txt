@@ -14,6 +14,13 @@ Q: (*[iī]) -> $1nna .ALL
 Q: (*) -> $1rya .POSS.3SG
 
 [corpustext]
+Q: "Elen síla lúmenna omentielmo" {PE17:23}
+  {PE17:13} elen star
+  {PE17:13} síla shine.3SG < sile shine
+  {PE17:13} lúmenna time.ALL < lúme time
+  {PE17:13} omentielmo meeting.2PL.GEN < omentielma meeting.2PL < omentie meeting <+ o together + mentië journey
+  {PE17:13} mentië <+ men- go + tie path
+
 Q: Galadriel's Lament {I:394}
 Ai! laurië lantar lassi súrinen!
   {PE17:61} ai alas

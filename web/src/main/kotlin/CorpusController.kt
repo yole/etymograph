@@ -6,11 +6,14 @@ import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.CrossOrigin
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
+import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.ResponseBody
 import org.springframework.web.bind.annotation.ResponseStatus
 import ru.yole.etymograph.CorpusText
 import ru.yole.etymograph.Language
 import ru.yole.etymograph.UnknownLanguage
+import ru.yole.etymograph.parser.CorpusTextSectionParser
 
 @Controller
 @CrossOrigin(origins = ["http://localhost:3000"])
@@ -48,7 +51,7 @@ class CorpusController(val graphService: GraphService) {
 
         return CorpusLangViewModel(
             language,
-            graphService.graph.corpusTextsInLanguage(language).map { CorpusLangTextViewModel(it.id, it.title ?: "Untitled") }
+            graphService.graph.corpusTextsInLanguage(language).map { CorpusLangTextViewModel(it.id, it.title ?: it.text) }
         )
     }
 
@@ -62,21 +65,38 @@ class CorpusController(val graphService: GraphService) {
 
     data class CorpusWordViewModel(val text: String, val gloss: String)
     data class CorpusLineViewModel(val words: List<CorpusWordViewModel>)
-    data class CorpusTextViewModel(val title: String, val language: String, val lines: List<CorpusLineViewModel>)
+    data class CorpusTextViewModel(val id: Int, val title: String, val language: String, val lines: List<CorpusLineViewModel>)
 
     @GetMapping("/corpus/text/{id}", produces = ["application/json"])
     @ResponseBody
     fun textJson(@PathVariable id: Int): CorpusTextViewModel {
         val text = graphService.graph.corpusTextById(id) ?: throw NoCorpusTextException()
+        return text.toViewModel()
+    }
+
+    private fun CorpusText.toViewModel(): CorpusTextViewModel {
         return CorpusTextViewModel(
-            text.title ?: "Untitled",
-            text.language.shortName,
-            text.mapToLines(graphService.graph).map {
+            id,
+            title ?: "Untitled",
+            language.shortName,
+            mapToLines(graphService.graph).map {
                 CorpusLineViewModel(it.corpusWords.map { cw ->
                     CorpusWordViewModel(cw.text, cw.gloss ?: "")
                 })
             }
         )
+    }
+
+    data class CorpusParams(val text: String = "")
+
+    @PostMapping("/corpus", consumes = ["application/json"])
+    @ResponseBody
+    fun newText(@RequestBody params: CorpusParams): CorpusTextViewModel {
+        val repo = graphService.graph
+        val parser = CorpusTextSectionParser(repo)
+        val text = parser.parseText(params.text)
+        repo.save()
+        return text.toViewModel()
     }
 }
 

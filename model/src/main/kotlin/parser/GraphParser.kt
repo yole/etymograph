@@ -1,23 +1,8 @@
 package ru.yole.etymograph.parser
 
 import ru.yole.etymograph.*
-import java.io.InputStream
 
-abstract class GraphSectionParser(val repo: InMemoryGraphRepository) {
-    abstract fun parseLine(line: String)
-    open fun done() {}
-}
-
-class LanguagesSectionParser(repo: InMemoryGraphRepository) : GraphSectionParser(repo) {
-    override fun parseLine(line: String) {
-        val shortName = line.substringBefore(':').trim()
-        val name = line.substringAfter(':').trim()
-        repo.addLanguage(Language(name, shortName))
-
-    }
-}
-
-fun parseWordChain(repo: InMemoryGraphRepository, line: String, language: Language): Word {
+fun parseWordChain(repo: GraphRepository, line: String, language: Language): Word {
     var currentWordText: String? = null
     var currentWordGloss: String? = null
     var firstWord: Word? = null
@@ -74,25 +59,32 @@ fun parseWordChain(repo: InMemoryGraphRepository, line: String, language: Langua
     return firstWord!!
 }
 
-class CorpusTextSectionParser(repo: InMemoryGraphRepository): GraphSectionParser(repo) {
+class CorpusTextSectionParser(val repo: GraphRepository) {
     private var language: Language? = null
     private var title: String? = null
     private var text: String = ""
     private var source: String? = null
     private val words = mutableListOf<Word>()
 
-    override fun parseLine(line: String) {
+    private fun parseLine(line: String) {
         if (language == null) {
             language = repo.languageByShortName(line.substringBefore(':'))
             val tail = line.substringAfter(':')
+            val firstLine: String
             if (tail.endsWith('}')) {
                 source = tail.substringAfterLast('{').trimEnd('}')
-                title = tail.substringBeforeLast('{').trim()
+                firstLine = tail.substringBeforeLast('{').trim()
             }
             else {
-                title = tail
+                firstLine = tail
             }
 
+            if (firstLine.startsWith('"') && firstLine.endsWith('"')) {
+                text += firstLine.removePrefix("\"").removeSuffix("\"")
+            }
+            else {
+                title = firstLine
+            }
         }
         else if (!line.startsWith(' ')) {
             if (text.isNotEmpty()) text += "\n"
@@ -103,28 +95,10 @@ class CorpusTextSectionParser(repo: InMemoryGraphRepository): GraphSectionParser
         }
     }
 
-    override fun done() {
-        repo.addCorpusText(text, title, language!!, words, source, null)
-    }
-}
-
-fun parseGraph(stream: InputStream, repo: InMemoryGraphRepository) {
-    stream.reader().useLines { lines ->
-        var currentSection: GraphSectionParser? = null
-        for (line in lines) {
-            if (line.isBlank()) continue
-            if (line.startsWith("[")) {
-                currentSection?.done()
-                currentSection = when(line.trim()) {
-                    "[languages]" -> LanguagesSectionParser(repo)
-                    "[corpustext]" -> CorpusTextSectionParser(repo)
-                    else -> throw IllegalArgumentException("Unknown section name $line")
-                }
-            }
-            else {
-                currentSection?.parseLine(line.trimEnd())
-            }
+    fun parseText(corpusText: String): CorpusText {
+        for (line in corpusText.split('\n')) {
+            parseLine(line)
         }
-        currentSection?.done()
+        return repo.addCorpusText(text, title, language!!, words, source, null)
     }
 }

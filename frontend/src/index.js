@@ -12,6 +12,7 @@ import CorpusText, { loader as corpusTextLoader } from "./routes/CorpusText";
 import Word, { loader as wordLoader } from "./routes/Word";
 import Dictionary, { loader as dictionaryLoader } from "./routes/Dictionary";
 import Rule, { loader as ruleLoader } from "./routes/Rule";
+import CorpusTextEditor from "./routes/CorpusTextEditor";
 
 const router = createBrowserRouter([
     {
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
         path: '/corpus/text/:id',
         element: <CorpusText/>,
         loader: corpusTextLoader
+    },
+    {
+        path: '/corpus/new',
+        element: <CorpusTextEditor/>
     },
     {
         path: '/word/:lang/:text',
