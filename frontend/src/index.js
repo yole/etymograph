@@ -14,6 +14,7 @@ import Dictionary, { loader as dictionaryLoader } from "./routes/Dictionary";
 import RuleList, { loader as ruleListLoader } from "./routes/RuleList";
 import Rule, { loader as ruleLoader } from "./routes/Rule";
 import CorpusTextEditor from "./routes/CorpusTextEditor";
+import RuleEditor from "./routes/RuleEditor";
 
 const router = createBrowserRouter([
     {
@@ -54,6 +55,10 @@ const router = createBrowserRouter([
         path: '/rule/:id',
         element: <Rule/>,
         loader: ruleLoader
+    },
+    {
+        path: '/rules/new',
+        element: <RuleEditor/>
     }
 ])
 

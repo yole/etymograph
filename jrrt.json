@@ -1338,6 +1338,63 @@
                 }
             ],
             "addedCategories": ".POSS.3SG"
+        },
+        {
+            "id": 5,
+            "fromLang": "Q",
+            "toLang": "Q",
+            "branches": [
+                {
+                    "conditions": [
+                    ],
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "arg": "lye"
+                        }
+                    ]
+                }
+            ],
+            "addedCategories": "2SG",
+            "source": "PE17:76"
+        },
+        {
+            "id": 6,
+            "fromLang": "Q",
+            "toLang": "Q",
+            "branches": [
+                {
+                    "conditions": [
+                    ],
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "arg": "nye"
+                        }
+                    ]
+                }
+            ],
+            "addedCategories": "1SG",
+            "source": "PE17:76"
+        },
+        {
+            "id": 7,
+            "fromLang": "Q",
+            "toLang": "Q",
+            "branches": [
+                {
+                    "conditions": [
+                    ],
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "arg": "tye"
+                        }
+                    ]
+                }
+            ],
+            "addedCategories": "3SG",
+            "source": "PE17:76"
         }
     ],
     "links": [
@@ -1957,6 +2014,7 @@
             "from": 137,
             "to": 138,
             "type": ">",
+            "ruleId": 5,
             "source": "PE17:75"
         },
         {

@@ -15,6 +15,7 @@ class RuleController(val graphService: GraphService) {
         val toLang: String,
         val prettyText: String,
         val addedCategories: String?,
+        val source: String?,
         val branches: List<RuleBranchViewModel>
     )
 
@@ -35,6 +36,7 @@ class RuleController(val graphService: GraphService) {
             id, fromLanguage.shortName, toLanguage.shortName,
             prettyPrint(),
             addedCategories,
+            source,
             branches.map { it.toViewModel() })
     }
 
@@ -45,11 +47,17 @@ class RuleController(val graphService: GraphService) {
         )
     }
 
-    data class UpdateRuleParameters(val fromLang: String, val toLang: String, val text: String)
+    data class UpdateRuleParameters(
+        val fromLang: String,
+        val toLang: String,
+        val text: String,
+        val addedCategories: String? = null,
+        val source: String? = null
+    )
 
     @PostMapping("/rule", consumes = ["application/json"])
     @ResponseBody
-    fun newRule(@RequestBody params: UpdateRuleParameters) {
+    fun newRule(@RequestBody params: UpdateRuleParameters): RuleViewModel {
         val graph = graphService.graph
         val fromLanguage = graph.languageByShortName(params.fromLang)
         if (fromLanguage == UnknownLanguage) throw NoLanguageException()
@@ -57,8 +65,9 @@ class RuleController(val graphService: GraphService) {
         if (toLanguage == UnknownLanguage) throw NoLanguageException()
 
         val branches = Rule.parseBranches(params.text) { cls -> graph.characterClassByName(fromLanguage, cls) }
-        graph.addRule(fromLanguage, toLanguage, branches, null, null, null)
+        val rule = graph.addRule(fromLanguage, toLanguage, branches, params.addedCategories, params.source, null)
         graph.save()
+        return rule.toViewModel()
     }
 
     @PostMapping("/rule/{id}", consumes = ["application/json"])

@@ -81,18 +81,22 @@ class RuleBranch(val conditions: List<RuleCondition>, val instructions: List<Rul
 
     companion object {
         fun parse(s: String, characterClassLookup: (String) -> CharacterClass?): RuleBranch {
-            val lines = s.split("\n").map { it.trim() }.filter { it.isNotEmpty() }
-            if (!lines[0].endsWith(":")) {
-                throw RuleParseException("Conditions must end with :")
+            var lines = s.split("\n").map { it.trim() }.filter { it.isNotEmpty() }
+            val conditions = if (lines[0].endsWith(":")) {
+                listOf(RuleCondition.parse(lines[0].removeSuffix(":"), characterClassLookup)).also {
+                    lines = lines.drop(1)
+                }
             }
-            val c = RuleCondition.parse(lines[0].removeSuffix(":"), characterClassLookup)
-            val instructions = lines.drop(1).map {
+            else {
+                emptyList()
+            }
+            val instructions = lines.map {
                 if (!it.startsWith("-")) {
                     throw RuleParseException("Instructions must start with -")
                 }
                 RuleInstruction.parse(it.removePrefix("-").trim())
             }
-            return RuleBranch(listOf(c), instructions)
+            return RuleBranch(conditions, instructions)
         }
     }
 }
@@ -127,13 +131,16 @@ class Rule(
         fun parseBranches(s: String, characterClassLookup: (String) -> CharacterClass?): List<RuleBranch> {
             val lines = s.split('\n').map { it.trim() }.filter { it.isNotEmpty() }
             val branchTexts = mutableListOf<List<String>>()
-            lateinit var currentBranchText: MutableList<String>
+            var currentBranchText = mutableListOf<String>()
             for (l in lines) {
                 if (l.endsWith(':')) {
-                    currentBranchText = mutableListOf<String>()
+                    currentBranchText = mutableListOf()
                     branchTexts.add(currentBranchText)
                 }
                 currentBranchText.add(l)
+            }
+            if (branchTexts.isEmpty()) {   // rule with no conditions
+                branchTexts.add(currentBranchText)
             }
             return branchTexts.map { RuleBranch.parse(it.joinToString("\n"), characterClassLookup) }
         }

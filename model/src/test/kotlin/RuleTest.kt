@@ -76,4 +76,14 @@ class RuleTest {
         assertEquals(1, branches[0].instructions.size)
         assertEquals(1, branches[1].instructions.size)
     }
+
+    @Test
+    fun ruleParseWithoutConditions() {
+        val branches = Rule.parseBranches("""
+            - add suffix 'lye'
+        """.trimIndent()) { null }
+        assertEquals(1, branches.size)
+        assertEquals(1, branches[0].instructions.size)
+        assertTrue(branches[0].matches(Word(0, "abc", q)))
+    }
 }

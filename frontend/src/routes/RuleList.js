@@ -12,5 +12,6 @@ export default function RuleList() {
         <ul>
             {rules.map(r => <li key={r.id}><Link to={`/rule/${r.id}`}>{r.addedCategories}</Link></li>)}
         </ul>
+        <Link to="/rules/new">Add rule</Link>
     </>
 }

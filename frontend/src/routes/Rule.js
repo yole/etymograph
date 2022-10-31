@@ -35,6 +35,7 @@ export default function Rule() {
             <br/>
             <button onClick={() => saveRule()}>Save</button>
         </>}
+        {rule.source != null && <div className="source">Source: {rule.source}</div>}
         <button onClick={() => setEditMode(!editMode)}>{editMode ? "Cancel" : "Edit"}</button>
     </>
 }
