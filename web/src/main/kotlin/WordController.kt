@@ -46,7 +46,7 @@ class WordController(val graphService: GraphService) {
             word.text,
             word.getOrComputeGloss(graph) ?: "",
             linksFrom.map { LinkTypeViewModel(it.key.name, it.value.map { link -> LinkWordViewModel(link.toWord.text, link.rule?.id) }) },
-            linksTo.map { LinkTypeViewModel(it.key.name, it.value.map { link -> LinkWordViewModel(link.fromWord.text, link.rule?.id) }) }
+            linksTo.map { LinkTypeViewModel(it.key.reverseName, it.value.map { link -> LinkWordViewModel(link.fromWord.text, link.rule?.id) }) }
         )
     }
 

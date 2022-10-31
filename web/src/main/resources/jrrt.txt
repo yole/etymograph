@@ -74,7 +74,7 @@ An sí Tintalle Varda Oiolossëo
 ve fanyar máryat Elentári ortanë
   {PE17:69} fanyar < fanya cloud
   {PE17:69} máryat hand.DU.POSS.3G < márya < má hand
-  {PE17:70} Elentári < elen star + tári queen
+  {PE17:70} Elentári <+ elen star + tári queen
   {PE17:70} ortanë raise.PST < orta raise < ORO- up, high
 ar ilyë tier undulávë lumbulë
   {PE17:70} ar and

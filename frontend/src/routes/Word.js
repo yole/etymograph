@@ -19,7 +19,7 @@ export default function Word() {
             </div>)}
         </>)}
         {word.linksTo.map(l => <>
-            <div>Words {l.type} this one</div>
+            <div>{l.type}</div>
             {l.words.map(w => <div>
                 <Link to={`/word/${word.language}/${w.text}`}>{w.text}</Link>
                 {w.ruleId !== undefined  && <>&nbsp;(<Link to={`/rule/${w.ruleId}`}>rule</Link>)</>}
