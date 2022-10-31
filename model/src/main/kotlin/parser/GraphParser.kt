@@ -76,7 +76,7 @@ class CorpusTextSectionParser(val repo: GraphRepository) {
                 firstLine = tail.substringBeforeLast('{').trim()
             }
             else {
-                firstLine = tail
+                firstLine = tail.trim()
             }
 
             if (firstLine.startsWith('"') && firstLine.endsWith('"')) {
