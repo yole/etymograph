@@ -47,6 +47,6 @@ export default function Word() {
         <a href="#" onClick={() => setShowDerivedWord(!showDerivedWord)}>Add derived word</a><br/>
         {showDerivedWord && <WordForm submitted={submitted} baseWord={word}/>}
         <a href="#" onClick={() => setShowCompoundComponent(!showCompoundComponent)}>Add component of compound</a><br/>
-        {showCompoundComponent && <WordForm submitted={submitted} compoundWord={word}/>}
+        {showCompoundComponent && <WordForm submitted={submitted} compoundWord={word} language={word.language}/>}
     </>
 }
