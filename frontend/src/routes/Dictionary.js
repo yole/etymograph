@@ -1,4 +1,4 @@
-import {useLoaderData, useRevalidator} from "react-router";
+import {useLoaderData, useNavigate, useRevalidator} from "react-router";
 import {Link} from "react-router-dom";
 import WordForm from "./WordForm";
 
@@ -9,11 +9,19 @@ export async function loader({params}) {
 export default function Dictionary() {
     const dict = useLoaderData()
     const revalidator = useRevalidator()
+    const navigate = useNavigate()
+
+    function submitted(word) {
+        revalidator.revalidate()
+        if (word.gloss === "" || word.gloss === null) {
+            navigate("/word/" + word.language + "/" + word.text)
+        }
+    }
 
     return <>
         <h2>Dictionary for {dict.language.name}</h2>
         <h3>Add word</h3>
-        <WordForm language={dict.language.shortName} submitted={() => revalidator.revalidate()}/>
+        <WordForm language={dict.language.shortName} submitted={submitted}/>
         <ul>
             {dict.words.map(w => <li><Link to={`/word/${dict.language.shortName}/${w.text}`}>{w.text}</Link> - {w.gloss}</li>)}
         </ul>

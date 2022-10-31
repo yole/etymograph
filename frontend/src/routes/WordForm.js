@@ -12,16 +12,16 @@ export default function WordForm(props) {
             .then(r => r.json())
             .then(r => {
                 if (props.derivedWord) {
-                    addLink(props.derivedWord.id, r.id, '>').then(() => props.submitted())
+                    addLink(props.derivedWord.id, r.id, '>').then(() => props.submitted(r))
                 }
                 else if (props.baseWord) {
-                    addLink(r.id, props.baseWord.id, '>').then(() => props.submitted())
+                    addLink(r.id, props.baseWord.id, '>').then(() => props.submitted(r))
                 }
                 else if (props.compoundWord) {
-                    addLink(props.compoundWord.id, r.id, '+').then(() => props.submitted())
+                    addLink(props.compoundWord.id, r.id, '+').then(() => props.submitted(r))
                 }
                 else {
-                    props.submitted()
+                    props.submitted(r)
                 }
             })
         setNewWordText("")
