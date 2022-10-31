@@ -85,7 +85,9 @@ class WordController(val graphService: GraphService) {
         val language = graph.languageByShortName(lang)
         if (language == UnknownLanguage) throw NoLanguageException()
 
-        val word = graph.addWord(params.text, language, params.gloss, params.source, null)
+        val word = graph.addWord(params.text, language,
+            params.gloss.takeIf { it.trim().isNotEmpty() },
+            params.source, null)
         graph.save()
         return word.toViewModel(graph)
     }

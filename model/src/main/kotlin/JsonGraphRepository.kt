@@ -17,7 +17,7 @@ class PersistentLink(val id: Int, fromWord: Word, toWord: Word, type: LinkType, 
 data class LanguageData(val name: String, val shortName: String)
 
 @Serializable
-data class WordData(val id: Int, val text: String, @SerialName("lang") val languageShortName: String, val gloss: String?, val source: String? = null, val notes: String? = null)
+data class WordData(val id: Int, val text: String, @SerialName("lang") val languageShortName: String, val gloss: String? = null, val source: String? = null, val notes: String? = null)
 
 @Serializable
 data class CharacterClassData(@SerialName("lang") val languageShortName: String, val name: String, val characters: String)

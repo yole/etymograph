@@ -51,7 +51,6 @@
             "id": 3,
             "text": "lantar",
             "lang": "Q",
-            "gloss": null,
             "source": "PE17:61"
         },
         {
@@ -93,7 +92,6 @@
             "id": 9,
             "text": "yéni",
             "lang": "Q",
-            "gloss": null,
             "source": "PE17:62"
         },
         {
@@ -142,7 +140,6 @@
             "id": 16,
             "text": "rámar",
             "lang": "Q",
-            "gloss": null,
             "source": "PE17:63"
         },
         {
@@ -184,7 +181,6 @@
             "id": 22,
             "text": "yuldar",
             "lang": "Q",
-            "gloss": null,
             "source": "PE17:63"
         },
         {
@@ -205,7 +201,6 @@
             "id": 25,
             "text": "avánier",
             "lang": "Q",
-            "gloss": null,
             "source": "PE17:63"
         },
         {
@@ -233,7 +228,6 @@
             "id": 29,
             "text": "oromardi",
             "lang": "Q",
-            "gloss": null,
             "source": "PE17:63"
         },
         {
@@ -261,7 +255,6 @@
             "id": 33,
             "text": "lisse-miruvóreva",
             "lang": "Q",
-            "gloss": null,
             "source": "PE17:64"
         },
         {
@@ -310,7 +303,6 @@
             "id": 40,
             "text": "Vardo",
             "lang": "Q",
-            "gloss": null,
             "source": "PE17:65"
         },
         {
@@ -324,7 +316,6 @@
             "id": 42,
             "text": "tellumar",
             "lang": "Q",
-            "gloss": null,
             "source": "PE17:66"
         },
         {
@@ -345,7 +336,6 @@
             "id": 45,
             "text": "luini",
             "lang": "Q",
-            "gloss": null,
             "source": "PE17:66"
         },
         {
@@ -373,7 +363,6 @@
             "id": 49,
             "text": "tintilar",
             "lang": "Q",
-            "gloss": null,
             "source": "PE17:66"
         },
         {
@@ -401,7 +390,6 @@
             "id": 53,
             "text": "eleni",
             "lang": "Q",
-            "gloss": null,
             "source": "PE17:67"
         },
         {
@@ -422,14 +410,12 @@
             "id": 56,
             "text": "ómaryo",
             "lang": "Q",
-            "gloss": null,
             "source": "PE17:67"
         },
         {
             "id": 57,
             "text": "ómarya",
             "lang": "Q",
-            "gloss": null,
             "source": "PE17:67"
         },
         {
@@ -443,7 +429,6 @@
             "id": 59,
             "text": "airetári-lírinen",
             "lang": "Q",
-            "gloss": null,
             "source": "PE17:67"
         },
         {
@@ -562,7 +547,6 @@
             "id": 76,
             "text": "Oiolossëo",
             "lang": "Q",
-            "gloss": null,
             "source": "PE17:69"
         },
         {
@@ -597,7 +581,6 @@
             "id": 81,
             "text": "fanyar",
             "lang": "Q",
-            "gloss": null,
             "source": "PE17:69"
         },
         {
@@ -618,7 +601,6 @@
             "id": 84,
             "text": "márya",
             "lang": "Q",
-            "gloss": null,
             "source": "PE17:69"
         },
         {
@@ -632,7 +614,6 @@
             "id": 86,
             "text": "Elentári",
             "lang": "Q",
-            "gloss": null,
             "source": "PE17:70"
         },
         {
@@ -667,7 +648,6 @@
             "id": 91,
             "text": "ilyë",
             "lang": "Q",
-            "gloss": null,
             "source": "PE17:72"
         },
         {
@@ -681,7 +661,6 @@
             "id": 93,
             "text": "tier",
             "lang": "Q",
-            "gloss": null,
             "source": "PE17:72"
         },
         {
@@ -695,7 +674,6 @@
             "id": 95,
             "text": "undulávë",
             "lang": "Q",
-            "gloss": null,
             "source": "PE17:72"
         },
         {
@@ -737,14 +715,12 @@
             "id": 101,
             "text": "sindanóriello",
             "lang": "Q",
-            "gloss": null,
             "source": "PE17:72"
         },
         {
             "id": 102,
             "text": "sindanórie",
             "lang": "Q",
-            "gloss": null,
             "source": "PE17:72"
         },
         {
@@ -800,14 +776,12 @@
             "id": 110,
             "text": "falmalinnar",
             "lang": "Q",
-            "gloss": null,
             "source": "PE17:73"
         },
         {
             "id": 111,
             "text": "falmalinna",
             "lang": "Q",
-            "gloss": null,
             "source": "PE17:73"
         },
         {
@@ -863,7 +837,6 @@
             "id": 119,
             "text": "untúpa",
             "lang": "Q",
-            "gloss": null,
             "source": "PE17:73"
         },
         {
@@ -877,7 +850,6 @@
             "id": 121,
             "text": "Calaciryo",
             "lang": "Q",
-            "gloss": null,
             "source": "PE17:73"
         },
         {
@@ -905,7 +877,6 @@
             "id": 125,
             "text": "míri",
             "lang": "Q",
-            "gloss": null,
             "source": "PE17:73"
         },
         {
@@ -933,7 +904,6 @@
             "id": 129,
             "text": "Rómello",
             "lang": "Q",
-            "gloss": null,
             "source": "PE17:74"
         },
         {
@@ -947,7 +917,6 @@
             "id": 131,
             "text": "Valimar",
             "lang": "Q",
-            "gloss": null,
             "source": "PE17:74"
         },
         {
@@ -1180,6 +1149,33 @@
             "lang": "Q",
             "gloss": "be",
             "source": "PE17:74"
+        },
+        {
+            "id": 165,
+            "text": "Anduin",
+            "lang": "S",
+            "source": "PE17:13"
+        },
+        {
+            "id": 166,
+            "text": "and",
+            "lang": "S",
+            "gloss": "long",
+            "source": "PE17:13"
+        },
+        {
+            "id": 167,
+            "text": "duin",
+            "lang": "S",
+            "gloss": "river",
+            "source": "PE17:13"
+        },
+        {
+            "id": 168,
+            "text": "athrad",
+            "lang": "S",
+            "gloss": "crossing",
+            "source": "PE17:15"
         }
     ],
     "rules": [
@@ -1355,8 +1351,7 @@
                     ]
                 }
             ],
-            "addedCategories": "2SG",
-            "source": "PE17:76"
+            "addedCategories": "2SG"
         },
         {
             "id": 6,
@@ -1374,8 +1369,7 @@
                     ]
                 }
             ],
-            "addedCategories": "1SG",
-            "source": "PE17:76"
+            "addedCategories": "1SG"
         },
         {
             "id": 7,
@@ -2110,6 +2104,18 @@
             "id": 98,
             "from": 133,
             "to": 164,
+            "type": "+"
+        },
+        {
+            "id": 99,
+            "from": 165,
+            "to": 166,
+            "type": "+"
+        },
+        {
+            "id": 100,
+            "from": 165,
+            "to": 167,
             "type": "+"
         }
     ],
