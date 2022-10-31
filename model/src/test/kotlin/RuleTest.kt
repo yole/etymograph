@@ -10,8 +10,8 @@ class RuleTest {
     fun conditions() {
         val v = CharacterClass("vowel", "aeiou")
         val c = RuleCondition(ConditionType.EndsWith, v)
-        assertTrue(c.matches(Word("parma", q)))
-        assertFalse(c.matches(Word("formen", q)))
+        assertTrue(c.matches(Word(0, "parma", q)))
+        assertFalse(c.matches(Word(0, "formen", q)))
     }
 
     @Test
@@ -28,8 +28,8 @@ class RuleTest {
         val i2 = RuleInstruction(InstructionType.AddSuffix, "i")
         val r = RuleBranch(listOf(c), listOf(i1, i2))
 
-        assertTrue(r.matches(Word("lasse", q)))
-        assertEquals("lassi", r.apply(Word("lasse", q)))
+        assertTrue(r.matches(Word(0, "lasse", q)))
+        assertEquals("lassi", r.apply(Word(0, "lasse", q)))
     }
 
     @Test

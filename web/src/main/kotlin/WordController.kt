@@ -9,7 +9,6 @@ import ru.yole.etymograph.UnknownLanguage
 import ru.yole.etymograph.Word
 
 @Controller
-@CrossOrigin(origins = ["http://localhost:3000"])
 class WordController(val graphService: GraphService) {
     @GetMapping("/word/{lang}/{text}")
     fun word(@PathVariable lang: String, @PathVariable text: String, model: Model): String {
@@ -27,6 +26,7 @@ class WordController(val graphService: GraphService) {
     data class LinkWordViewModel(val text: String, val ruleId: Int?)
     data class LinkTypeViewModel(val type: String, val words: List<LinkWordViewModel>)
     data class WordViewModel(
+        val id: Int,
         val language: String,
         val text: String,
         val gloss: String,
@@ -39,14 +39,27 @@ class WordController(val graphService: GraphService) {
     fun wordJson(@PathVariable lang: String, @PathVariable text: String): WordViewModel {
         val graph = graphService.graph
         val word = findWord(graph, lang, text)
-        val linksFrom = graph.getLinksFrom(word).groupBy { it.type }
-        val linksTo = graph.getLinksTo(word).groupBy { it.type }
+        return word.toViewModel(graph)
+    }
+
+    private fun Word.toViewModel(graph: GraphRepository): WordViewModel {
+        val linksFrom = graph.getLinksFrom(this).groupBy { it.type }
+        val linksTo = graph.getLinksTo(this).groupBy { it.type }
         return WordViewModel(
-            word.language.shortName,
-            word.text,
-            word.getOrComputeGloss(graph) ?: "",
-            linksFrom.map { LinkTypeViewModel(it.key.name, it.value.map { link -> LinkWordViewModel(link.toWord.text, link.rule?.id) }) },
-            linksTo.map { LinkTypeViewModel(it.key.reverseName, it.value.map { link -> LinkWordViewModel(link.fromWord.text, link.rule?.id) }) }
+            id,
+            language.shortName,
+            text,
+            getOrComputeGloss(graph) ?: "",
+            linksFrom.map {
+                LinkTypeViewModel(
+                    it.key.name,
+                    it.value.map { link -> LinkWordViewModel(link.toWord.text, link.rule?.id) })
+            },
+            linksTo.map {
+                LinkTypeViewModel(
+                    it.key.reverseName,
+                    it.value.map { link -> LinkWordViewModel(link.fromWord.text, link.rule?.id) })
+            }
         )
     }
 
@@ -67,13 +80,14 @@ class WordController(val graphService: GraphService) {
 
     @PostMapping("/word/{lang}", consumes = ["application/json"])
     @ResponseBody
-    fun addWord(@PathVariable lang: String, @RequestBody params: AddWordParameters) {
+    fun addWord(@PathVariable lang: String, @RequestBody params: AddWordParameters): WordViewModel {
         val graph = graphService.graph
         val language = graph.languageByShortName(lang)
         if (language == UnknownLanguage) throw NoLanguageException()
 
-        graph.addWord(params.text, language, params.gloss, params.source, null)
+        val word = graph.addWord(params.text, language, params.gloss, params.source, null)
         graph.save()
+        return word.toViewModel(graph)
     }
 }
 

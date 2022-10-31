@@ -6,10 +6,6 @@ import java.nio.file.Path
 import kotlin.io.path.readText
 import kotlin.io.path.writeText
 
-class PersistentWord(val id: Int, text: String, language: Language, gloss: String?, source: String?, notes: String?)
-    : Word(text, language, gloss, source, notes)
-
-
 class PersistentLink(val id: Int, fromWord: Word, toWord: Word, type: LinkType, rule: Rule?, source: String?,
                      notes: String?
 ): Link(fromWord, toWord, type,
@@ -77,14 +73,7 @@ data class GraphRepositoryData(
 )
 
 class JsonGraphRepository(val path: Path) : InMemoryGraphRepository() {
-    private val allWords = mutableListOf<PersistentWord>()
     private val allLinks = mutableListOf<PersistentLink>()
-
-    override fun createWord(text: String, language: Language, gloss: String?, source: String?, notes: String?): Word {
-        return PersistentWord(allWords.size, text, language, gloss, source, notes).also {
-            allWords.add(it)
-        }
-    }
 
     override fun createLink(
         fromWord: Word,
@@ -119,14 +108,14 @@ class JsonGraphRepository(val path: Path) : InMemoryGraphRepository() {
             rules.map { ruleToSerializedFormat(it) },
             allLinks.map {
                 LinkData(
-                    it.id, (it.fromWord as PersistentWord).id, (it.toWord as PersistentWord).id,
+                    it.id, it.fromWord.id, it.toWord.id,
                     it.type.id, it.rule?.id ?: -1, it.source, it.notes
                 )
             },
             corpus.map {
                 CorpusTextData(
                     it.id, it.text, it.title, it.language.shortName,
-                    it.words.map { (it as PersistentWord).id }, it.source, it.notes
+                    it.words.map { it.id }, it.source, it.notes
                 )
             }
         )

@@ -19,3 +19,7 @@ export function updateRule(id, fromLang, toLang, text) {
 export function addCorpusText(text) {
     return postToBackend("corpus", {text: text})
 }
+
+export function addLink(fromWord, toWord, linkType) {
+    return postToBackend('link', {fromWord: fromWord, toWord: toWord, linkType: linkType})
+}

@@ -7,6 +7,7 @@ open class InMemoryGraphRepository : GraphRepository() {
     protected val languages = mutableMapOf<String, Language>()
     protected val corpus = mutableListOf<CorpusText>()
     private val words = mutableMapOf<Language, MutableMap<String, MutableList<Word>>>()
+    protected val allWords = mutableListOf<Word>()
     private val linksFrom = mutableMapOf<Word, MutableList<Link>>()
     private val linksTo = mutableMapOf<Word, MutableList<Link>>()
     protected val rules = mutableListOf<Rule>()
@@ -42,6 +43,10 @@ open class InMemoryGraphRepository : GraphRepository() {
     override fun wordsByText(lang: Language, text: String): List<Word> {
         val wordsInLang = words[lang] ?: return emptyList()
         return wordsInLang[text.toLowerCase()] ?: emptyList()
+    }
+
+    override fun wordById(id: Int): Word? {
+        return allWords.getOrNull(id)
     }
 
     override fun dictionaryWords(lang: Language): List<Word> {
@@ -88,13 +93,15 @@ open class InMemoryGraphRepository : GraphRepository() {
     override fun save() {
     }
 
-    protected open fun createWord(
+    private fun createWord(
         text: String,
         language: Language,
         gloss: String?,
         source: String?,
         notes: String?
-    ) = Word(text, language, gloss, source, notes)
+    ) = Word(allWords.size, text, language, gloss, source, notes).also {
+        allWords.add(it)
+    }
 
     override fun addLink(fromWord: Word, toWord: Word, type: LinkType, rule: Rule?, source: String?, notes: String?): Link {
         return createLink(fromWord, toWord, type, rule, source, notes).also {

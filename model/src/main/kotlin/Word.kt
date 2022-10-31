@@ -1,6 +1,13 @@
 package ru.yole.etymograph
 
-open class Word(val text: String, val language: Language, val gloss: String? = null, source: String? = null, notes: String? = null) : LangEntity(source, notes) {
+class Word(
+    val id: Int,
+    val text: String,
+    val language: Language,
+    val gloss: String? = null,
+    source: String? = null,
+    notes: String? = null
+) : LangEntity(source, notes) {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false

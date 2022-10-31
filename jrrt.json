@@ -1138,6 +1138,34 @@
             "lang": "Q",
             "gloss": "path",
             "source": "PE17:13"
+        },
+        {
+            "id": 159,
+            "text": "lanya",
+            "lang": "Q",
+            "gloss": "bound, enclose, separate from, mark the limit of",
+            "source": "VT42:8"
+        },
+        {
+            "id": 160,
+            "text": "sarnie",
+            "lang": "Q",
+            "gloss": "shingle, pebble-bank",
+            "source": "VT42:11"
+        },
+        {
+            "id": 161,
+            "text": "LAP-",
+            "lang": "Q",
+            "gloss": "rim, edge, border, boundary, limit",
+            "source": "VT42:8"
+        },
+        {
+            "id": 162,
+            "text": "lanwa",
+            "lang": "Q",
+            "gloss": "within bounds, limited, finite, (well-)defined",
+            "source": "VT42:8"
         }
     ],
     "rules": [
@@ -1673,7 +1701,7 @@
             "source": "PE17:70"
         },
         {
-            "id": 50,
+            "id": 51,
             "from": 86,
             "to": 61,
             "type": "+",
@@ -1987,6 +2015,18 @@
             "to": 158,
             "type": "+",
             "source": "PE17:13"
+        },
+        {
+            "id": 95,
+            "from": 159,
+            "to": 161,
+            "type": ">"
+        },
+        {
+            "id": 96,
+            "from": 162,
+            "to": 161,
+            "type": ">"
         }
     ],
     "corpusTexts": [
