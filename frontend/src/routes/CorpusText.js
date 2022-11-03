@@ -24,7 +24,14 @@ export default function CorpusText() {
 
     function showWordForm(text) {
         setWordFormVisible(true)
-        setPredefWord(text.toLowerCase())
+        setPredefWord(trimPunctuation(text.toLowerCase()))
+    }
+
+    function trimPunctuation(text) {
+        while (",.!?".includes(text.slice(text.length-1))) {
+            text = text.slice(0, text.length-1)
+        }
+        return text
     }
 
     return <>

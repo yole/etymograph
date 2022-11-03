@@ -1471,6 +1471,43 @@
             "lang": "S",
             "pos": "N",
             "source": "PE17:17"
+        },
+        {
+            "id": 211,
+            "text": "noro",
+            "lang": "S",
+            "gloss": "run.IMP",
+            "source": "PE17:18"
+        },
+        {
+            "id": 212,
+            "text": "lim",
+            "lang": "S",
+            "gloss": "fast",
+            "pos": "ADJ",
+            "source": "PE17:18"
+        },
+        {
+            "id": 213,
+            "text": "asfaloth",
+            "lang": "S",
+            "source": "PE17:18"
+        },
+        {
+            "id": 214,
+            "text": "ast",
+            "lang": "S",
+            "gloss": "light of sun",
+            "pos": "N",
+            "source": "PE17:18"
+        },
+        {
+            "id": 215,
+            "text": "faloth",
+            "lang": "S",
+            "gloss": "large wave",
+            "pos": "N",
+            "source": "PE17:18"
         }
     ],
     "rules": [
@@ -2610,6 +2647,24 @@
             "from": 210,
             "to": 206,
             "type": "+"
+        },
+        {
+            "id": 134,
+            "from": 213,
+            "to": 214,
+            "type": "+"
+        },
+        {
+            "id": 135,
+            "from": 213,
+            "to": 215,
+            "type": "+"
+        },
+        {
+            "id": 136,
+            "from": 215,
+            "to": 114,
+            "type": ">"
         }
     ],
     "corpusTexts": [
@@ -2707,6 +2762,14 @@
         {
             "id": 3,
             "text": "Ai na vedui Dúnadan! Mae g'ovannen.",
+            "title": null,
+            "lang": "S",
+            "wordIds": [
+            ]
+        },
+        {
+            "id": 4,
+            "text": "noro lim, noro lim Asfaloth",
             "title": null,
             "lang": "S",
             "wordIds": [
