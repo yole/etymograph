@@ -31,7 +31,7 @@ export default function Word() {
         <h2>{word.text}</h2>
         {!editMode && <>
             {word.pos && <div>{word.pos}</div>}
-            <p>{word.gloss}</p>
+            <p><Link to={`/dictionary/${word.language}`}>{word.language}</Link> {word.gloss}</p>
             {word.source != null && <div className="source">Source: {word.source}</div>}
         </>}
         {editMode && <WordForm language={word.language} updateId={word.id}

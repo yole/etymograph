@@ -1549,6 +1549,51 @@
             "gloss": "follower.PL",
             "pos": "N",
             "source": "PE17:18"
+        },
+        {
+            "id": 221,
+            "text": "Nimbrethil",
+            "lang": "S",
+            "pos": "NP",
+            "source": "PE17:19"
+        },
+        {
+            "id": 222,
+            "text": "nim",
+            "lang": "S",
+            "gloss": "pale",
+            "pos": "ADJ",
+            "source": "PE17:19"
+        },
+        {
+            "id": 223,
+            "text": "brethil",
+            "lang": "S",
+            "gloss": "silver birch",
+            "pos": "N",
+            "source": "PE17:19"
+        },
+        {
+            "id": 224,
+            "text": "NIK-W-",
+            "lang": "CE",
+            "gloss": "white",
+            "source": "V"
+        },
+        {
+            "id": 225,
+            "text": "SIL-",
+            "lang": "CE",
+            "gloss": "shine silver",
+            "source": "V"
+        },
+        {
+            "id": 226,
+            "text": "silma",
+            "lang": "Q",
+            "gloss": "shining white",
+            "pos": "ADJ",
+            "source": "V"
         }
     ],
     "rules": [
@@ -2729,6 +2774,30 @@
             "id": 140,
             "from": 220,
             "to": 219,
+            "type": ">"
+        },
+        {
+            "id": 141,
+            "from": 221,
+            "to": 222,
+            "type": "+"
+        },
+        {
+            "id": 142,
+            "from": 221,
+            "to": 223,
+            "type": "+"
+        },
+        {
+            "id": 143,
+            "from": 222,
+            "to": 224,
+            "type": ">"
+        },
+        {
+            "id": 144,
+            "from": 226,
+            "to": 225,
             "type": ">"
         }
     ],
