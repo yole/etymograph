@@ -1157,6 +1157,7 @@
             "id": 165,
             "text": "Anduin",
             "lang": "S",
+            "pos": "NP",
             "source": "PE17:13"
         },
         {
@@ -1273,6 +1274,7 @@
             "id": 182,
             "text": "Esgalduin",
             "lang": "S",
+            "pos": "NP",
             "source": "PE17:15"
         },
         {
@@ -1375,6 +1377,7 @@
             "text": "adan",
             "lang": "S",
             "gloss": "man",
+            "pos": "N",
             "source": "PE17:16"
         },
         {
@@ -1506,6 +1509,44 @@
             "text": "faloth",
             "lang": "S",
             "gloss": "large wave",
+            "pos": "N",
+            "source": "PE17:18"
+        },
+        {
+            "id": 216,
+            "text": "atan",
+            "lang": "Q",
+            "gloss": "man",
+            "pos": "N",
+            "source": "PE17:18"
+        },
+        {
+            "id": 217,
+            "text": "PHOR-",
+            "lang": "CE",
+            "gloss": "right hand",
+            "source": "V"
+        },
+        {
+            "id": 218,
+            "text": "forna",
+            "lang": "Q",
+            "gloss": "northern",
+            "pos": "ADJ",
+            "source": "PE17:18"
+        },
+        {
+            "id": 219,
+            "text": "KHIL-",
+            "lang": "CE",
+            "gloss": "follow",
+            "source": "V"
+        },
+        {
+            "id": 220,
+            "text": "hildi",
+            "lang": "Q",
+            "gloss": "follower.PL",
             "pos": "N",
             "source": "PE17:18"
         }
@@ -2664,6 +2705,30 @@
             "id": 136,
             "from": 215,
             "to": 114,
+            "type": ">"
+        },
+        {
+            "id": 137,
+            "from": 197,
+            "to": 216,
+            "type": ">"
+        },
+        {
+            "id": 138,
+            "from": 143,
+            "to": 217,
+            "type": ">"
+        },
+        {
+            "id": 139,
+            "from": 218,
+            "to": 217,
+            "type": ">"
+        },
+        {
+            "id": 140,
+            "from": 220,
+            "to": 219,
             "type": ">"
         }
     ],

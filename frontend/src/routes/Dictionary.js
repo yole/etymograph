@@ -6,6 +6,10 @@ export async function loader({params}) {
     return fetch(`http://localhost:8080/dictionary/${params.lang}`, { headers: { 'Accept': 'application/json'} })
 }
 
+export async function compoundLoader({params}) {
+    return fetch(`http://localhost:8080/dictionary/${params.lang}/compounds`, { headers: { 'Accept': 'application/json'} })
+}
+
 export default function Dictionary() {
     const dict = useLoaderData()
     const revalidator = useRevalidator()

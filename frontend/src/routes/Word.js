@@ -35,7 +35,7 @@ export default function Word() {
             {word.source != null && <div className="source">Source: {word.source}</div>}
         </>}
         {editMode && <WordForm language={word.language} updateId={word.id}
-                               initialGloss={word.gloss}
+                               initialGloss={word.glossComputed ? undefined : word.gloss}
                                initialPos={word.pos}
                                initialSource={word.source}
                                submitted={editSubmitted}/>}

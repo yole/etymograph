@@ -50,11 +50,22 @@ open class InMemoryGraphRepository : GraphRepository() {
     }
 
     override fun dictionaryWords(lang: Language): List<Word> {
+        return filteredWords(lang) {
+            it.gloss != null &&
+                    linksFrom[it]?.none { link -> link.type == Link.Derived && !link.toWord.isRoot() } != false
+        }
+    }
+
+    override fun compoundWords(lang: Language): List<Word> {
+        return filteredWords(lang) {
+            linksFrom[it]?.any { link -> link.type == Link.Agglutination } == true
+        }
+    }
+
+    private fun filteredWords(lang: Language, predicate: (Word) -> Boolean): List<Word> {
         val wordsInLang = words[lang] ?: return emptyList()
         return wordsInLang.flatMap { it.value }
-            .filter {
-                it.gloss != null &&
-                        linksFrom[it]?.none { link -> link.type == Link.Derived && !link.toWord.isRoot() } != false }
+            .filter(predicate)
             .sortedWith { o1, o2 -> Collator.getInstance(Locale.FRANCE).compare(o1.text, o2.text) }
     }
 

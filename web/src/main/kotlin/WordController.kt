@@ -30,6 +30,7 @@ class WordController(val graphService: GraphService) {
         val language: String,
         val text: String,
         val gloss: String,
+        val glossComputed: Boolean,
         val pos: String?,
         val source: String?,
         val linksFrom: List<LinkTypeViewModel>,
@@ -52,6 +53,7 @@ class WordController(val graphService: GraphService) {
             language.shortName,
             text,
             getOrComputeGloss(graph) ?: "",
+            gloss == null,
             pos,
             source,
             linksFrom.map {

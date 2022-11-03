@@ -9,7 +9,7 @@ import CorpusIndex, { loader as corpusIndexLoader } from './routes/CorpusIndex'
 import CorpusLangIndex, { loader as corpusLangIndexLoader } from "./routes/CorpusLangIndex";
 import CorpusText, { loader as corpusTextLoader } from "./routes/CorpusText";
 import Word, {loader as wordLoader, WordError} from "./routes/Word";
-import Dictionary, { loader as dictionaryLoader } from "./routes/Dictionary";
+import Dictionary, {compoundLoader, loader as dictionaryLoader} from "./routes/Dictionary";
 import RuleList, { loader as ruleListLoader } from "./routes/RuleList";
 import Rule, { loader as ruleLoader } from "./routes/Rule";
 import CorpusTextEditor from "./routes/CorpusTextEditor";
@@ -45,6 +45,11 @@ const router = createBrowserRouter([
         path: '/dictionary/:lang',
         element: <Dictionary/>,
         loader: dictionaryLoader
+    },
+    {
+        path: '/dictionary/:lang/compounds',
+        element: <Dictionary/>,
+        loader: compoundLoader
     },
     {
         path: '/rules',
