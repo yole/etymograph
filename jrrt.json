@@ -1325,6 +1325,87 @@
             "text": "athelas",
             "lang": "S",
             "source": "PE17:49"
+        },
+        {
+            "id": 191,
+            "text": "ai",
+            "lang": "S",
+            "gloss": "hail",
+            "source": "PE17:16"
+        },
+        {
+            "id": 192,
+            "text": "na",
+            "lang": "S",
+            "gloss": "at",
+            "source": "PE17:16"
+        },
+        {
+            "id": 193,
+            "text": "medui",
+            "lang": "S",
+            "gloss": "end, final, last",
+            "source": "PE17:16"
+        },
+        {
+            "id": 194,
+            "text": "vedui",
+            "lang": "S",
+            "source": "PE17:16"
+        },
+        {
+            "id": 195,
+            "text": "Dúnadan",
+            "lang": "S",
+            "source": "PE17:16"
+        },
+        {
+            "id": 196,
+            "text": "dún",
+            "lang": "S",
+            "gloss": "West",
+            "source": "PE17:16"
+        },
+        {
+            "id": 197,
+            "text": "adan",
+            "lang": "S",
+            "gloss": "man",
+            "source": "PE17:16"
+        },
+        {
+            "id": 198,
+            "text": "mae",
+            "lang": "S",
+            "gloss": "well",
+            "source": ""
+        },
+        {
+            "id": 199,
+            "text": "g'ovannen",
+            "lang": "S",
+            "source": "PE17:17"
+        },
+        {
+            "id": 200,
+            "text": "gī",
+            "lang": "S",
+            "gloss": "thou",
+            "source": "PE17:17"
+        },
+        {
+            "id": 201,
+            "text": "govannen",
+            "lang": "S",
+            "gloss": "met",
+            "source": ""
+        },
+        {
+            "id": 202,
+            "text": "govan",
+            "lang": "S",
+            "gloss": "meet",
+            "source": "PE17:16"
         }
     ],
     "rules": [
@@ -2374,6 +2455,48 @@
             "from": 190,
             "to": 187,
             "type": "+"
+        },
+        {
+            "id": 119,
+            "from": 194,
+            "to": 193,
+            "type": ">"
+        },
+        {
+            "id": 120,
+            "from": 195,
+            "to": 196,
+            "type": "+"
+        },
+        {
+            "id": 121,
+            "from": 195,
+            "to": 197,
+            "type": "+"
+        },
+        {
+            "id": 122,
+            "from": 196,
+            "to": 184,
+            "type": ">"
+        },
+        {
+            "id": 123,
+            "from": 199,
+            "to": 200,
+            "type": "+"
+        },
+        {
+            "id": 124,
+            "from": 199,
+            "to": 201,
+            "type": "+"
+        },
+        {
+            "id": 125,
+            "from": 201,
+            "to": 202,
+            "type": ">"
         }
     ],
     "corpusTexts": [
@@ -2467,6 +2590,14 @@
                 156
             ],
             "source": "PE17:23"
+        },
+        {
+            "id": 3,
+            "text": "Ai na vedui Dúnadan! Mae g'ovannen.",
+            "title": null,
+            "lang": "S",
+            "wordIds": [
+            ]
         }
     ]
 }

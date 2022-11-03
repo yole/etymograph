@@ -15,3 +15,8 @@ code {
   font-style: italic;
   font-size: smaller;
 }
+
+.undefWord {
+  text-decoration: underline dashed;
+  cursor: pointer;
+}

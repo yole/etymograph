@@ -2,7 +2,7 @@ import {useState} from "react";
 import {addLink, addWord} from "../api";
 
 export default function WordForm(props) {
-    const [newWordText, setNewWordText] = useState("")
+    const [newWordText, setNewWordText] = useState(props.predefWord !== undefined ? props.predefWord : "")
     const [newWordGloss, setNewWordGloss] = useState("")
     const [newWordSource, setNewWordSource] = useState("")
     const [newWordLanguage, setNewWordLanguage] = useState(props.language || "")
@@ -41,7 +41,7 @@ export default function WordForm(props) {
             <tr>
                 <td><label>Text:</label></td>
                 <td><input type="text" value={newWordText} onChange={e => setNewWordText(e.target.value)}
-                           id="word-text"/></td>
+                           id="word-text" readOnly={props.predefWord !== undefined}/></td>
             </tr>
             <tr>
                 <td><label>Gloss:</label></td>

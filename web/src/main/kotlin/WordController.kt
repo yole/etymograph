@@ -89,7 +89,8 @@ class WordController(val graphService: GraphService) {
 
         val word = graph.addWord(params.text, language,
             params.gloss.takeIf { it.trim().isNotEmpty() },
-            params.source, null)
+            params.source.takeIf { it.trim().isNotEmpty() },
+            null)
         graph.save()
         return word.toViewModel(graph)
     }
