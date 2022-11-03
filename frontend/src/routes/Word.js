@@ -13,12 +13,14 @@ export default function Word() {
     const [showBaseWord, setShowBaseWord] = useState(false)
     const [showDerivedWord, setShowDerivedWord] = useState(false)
     const [showCompoundComponent, setShowCompoundComponent] = useState(false)
+    const [showRelated, setShowRelated] = useState(false)
     const [editMode, setEditMode] = useState(false)
 
     function submitted() {
         setShowBaseWord(false)
         setShowDerivedWord(false)
         setShowCompoundComponent(false)
+        setShowRelated(false)
         revalidator.revalidate()
     }
 
@@ -64,6 +66,8 @@ export default function Word() {
         {showDerivedWord && <WordForm submitted={submitted} baseWord={word}/>}
         <a href="#" onClick={() => setShowCompoundComponent(!showCompoundComponent)}>Add component of compound</a><br/>
         {showCompoundComponent && <WordForm submitted={submitted} compoundWord={word} language={word.language}/>}
+        <a href="#" onClick={() => setShowRelated(!showRelated)}>Add related word</a><br/>
+        {showRelated && <WordForm submitted={submitted} relatedWord={word} language={word.language}/>}
     </>
 }
 

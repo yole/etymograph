@@ -1696,6 +1696,20 @@
             "lang": "S",
             "gloss": "star",
             "source": "PE17:22"
+        },
+        {
+            "id": 242,
+            "text": "bereth",
+            "lang": "S",
+            "gloss": "queen",
+            "pos": "N",
+            "source": "PE17:23"
+        },
+        {
+            "id": 243,
+            "text": "BARATH-",
+            "lang": "CE",
+            "gloss": "PE17:23"
         }
     ],
     "rules": [
@@ -2997,6 +3011,24 @@
             "from": 240,
             "to": 241,
             "type": "+"
+        },
+        {
+            "id": 161,
+            "from": 240,
+            "to": 242,
+            "type": "+"
+        },
+        {
+            "id": 162,
+            "from": 242,
+            "to": 243,
+            "type": ">"
+        },
+        {
+            "id": 163,
+            "from": 242,
+            "to": 223,
+            "type": "~"
         }
     ],
     "corpusTexts": [
