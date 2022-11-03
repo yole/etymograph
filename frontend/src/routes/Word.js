@@ -14,6 +14,7 @@ export default function Word() {
     const [showBaseWord, setShowBaseWord] = useState(false)
     const [showDerivedWord, setShowDerivedWord] = useState(false)
     const [showCompoundComponent, setShowCompoundComponent] = useState(false)
+    const [editMode, setEditMode] = useState(false)
 
     function submitted() {
         setShowBaseWord(false)
@@ -22,11 +23,24 @@ export default function Word() {
         revalidator.revalidate()
     }
 
+    function editSubmitted() {
+        setEditMode(false)
+        revalidator.revalidate()
+    }
+
     return <>
         <h2>{word.text}</h2>
-        {word.pos && <div>{word.pos}</div>}
-        <p>{word.gloss}</p>
-        {word.source != null && <div className="source">Source: {word.source}</div>}
+        {!editMode && <>
+            {word.pos && <div>{word.pos}</div>}
+            <p>{word.gloss}</p>
+            {word.source != null && <div className="source">Source: {word.source}</div>}
+        </>}
+        {editMode && <WordForm language={word.language} updateId={word.id}
+                               initialGloss={word.gloss}
+                               initialPos={word.pos}
+                               initialSource={word.source}
+                               submitted={editSubmitted}/>}
+        <button onClick={() => setEditMode(!editMode)}>{editMode ? "Cancel" : "Edit"}</button>
         {word.linksFrom.map(l => <>
             <div>{l.type}</div>
             {l.words.map(w => <div>

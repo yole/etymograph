@@ -80,7 +80,7 @@ class WordController(val graphService: GraphService) {
         return words.single()
     }
 
-    data class AddWordParameters(val text: String, val gloss: String, val pos: String, val source: String)
+    data class AddWordParameters(val text: String?, val gloss: String, val pos: String, val source: String)
 
     @PostMapping("/word/{lang}", consumes = ["application/json"])
     @ResponseBody
@@ -88,14 +88,27 @@ class WordController(val graphService: GraphService) {
         val graph = graphService.graph
         val language = graph.languageByShortName(lang)
         if (language == UnknownLanguage) throw NoLanguageException()
+        val text = params.text?.nullize() ?: throw NoWordTextException()
 
         val word = graph.addWord(
-            params.text, language,
-            params.gloss.takeIf { it.trim().isNotEmpty() },
-            params.pos.takeIf { it.trim().isNotEmpty() },
-            params.source.takeIf { it.trim().isNotEmpty() },
+            text, language,
+            params.gloss.nullize(),
+            params.pos.nullize(),
+            params.source.nullize(),
             null
         )
+        graph.save()
+        return word.toViewModel(graph)
+    }
+
+    @PostMapping("/word/{id}/update", consumes = ["application/json"])
+    @ResponseBody
+    fun updateWord(@PathVariable id: Int, @RequestBody params: AddWordParameters): WordViewModel {
+        val graph = graphService.graph
+        val word = graph.wordById(id) ?: throw NoWordException()
+        word.gloss = params.gloss.nullize()
+        word.pos = params.pos.nullize()
+        word.source = params.source.nullize()
         graph.save()
         return word.toViewModel(graph)
     }
@@ -103,3 +116,8 @@ class WordController(val graphService: GraphService) {
 
 @ResponseStatus(value = HttpStatus.NOT_FOUND, reason = "No such word")
 class NoWordException : RuntimeException()
+
+@ResponseStatus(value = HttpStatus.BAD_REQUEST, reason = "Word text not specified")
+class NoWordTextException : RuntimeException()
+
+fun String.nullize() = takeIf { it.trim().isNotEmpty() }

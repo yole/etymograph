@@ -161,6 +161,7 @@
             "text": "alda",
             "lang": "Q",
             "gloss": "tree",
+            "pos": "N",
             "source": "PE17.63"
         },
         {
@@ -397,6 +398,7 @@
             "text": "elen",
             "lang": "Q",
             "gloss": "star",
+            "pos": "N",
             "source": "PE17:67"
         },
         {
@@ -436,6 +438,7 @@
             "text": "aire",
             "lang": "Q",
             "gloss": "holy",
+            "pos": "ADJ",
             "source": "PE17:67"
         },
         {
@@ -1318,6 +1321,7 @@
             "text": "asëa",
             "lang": "Q",
             "gloss": "ease, comfort, heal",
+            "pos": "V",
             "source": "PE17:49"
         },
         {
