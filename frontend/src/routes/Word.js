@@ -43,6 +43,7 @@ export default function Word() {
         {word.linksFrom.map(l => <>
             <div>{l.type}</div>
             {l.words.map(w => <div>
+                {w.language !== word.language && w.language + " "}
                 <Link to={`/word/${w.language}/${w.text}`}>{w.text}</Link>
                 {w.ruleId !== null && <>&nbsp;(<Link to={`/rule/${w.ruleId}`}>rule</Link>)</>}
             </div>)}
@@ -50,6 +51,7 @@ export default function Word() {
         {word.linksTo.map(l => <>
             <div>{l.type}</div>
             {l.words.map(w => <div>
+                {w.language !== word.language && w.language + " "}
                 <Link to={`/word/${w.language}/${w.text}`}>{w.text}</Link>
                 {w.ruleId !== null && <>&nbsp;(<Link to={`/rule/${w.ruleId}`}>rule</Link>)</>}
             </div>)}

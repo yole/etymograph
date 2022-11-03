@@ -1594,6 +1594,57 @@
             "gloss": "shining white",
             "pos": "ADJ",
             "source": "V"
+        },
+        {
+            "id": 227,
+            "text": "RIL-",
+            "lang": "CE",
+            "gloss": "giltter",
+            "source": "V"
+        },
+        {
+            "id": 228,
+            "text": "rilya",
+            "lang": "Q",
+            "gloss": "gilttering, brilliance",
+            "pos": "N",
+            "source": "V"
+        },
+        {
+            "id": 229,
+            "text": "Silmaril",
+            "lang": "Q",
+            "source": "PE17:19"
+        },
+        {
+            "id": 230,
+            "text": "TA-",
+            "lang": "CE",
+            "gloss": "high, lofty, noble",
+            "source": "V"
+        },
+        {
+            "id": 231,
+            "text": "tar",
+            "lang": "Q",
+            "gloss": "high, lofty, noble",
+            "pos": "ADJ",
+            "source": "V"
+        },
+        {
+            "id": 232,
+            "text": "MEN-",
+            "lang": "CE",
+            "gloss": "place, spot",
+            "source": "V"
+        },
+        {
+            "id": 233,
+            "text": "men",
+            "lang": "Q",
+            "gloss": "place, spot",
+            "pos": "N",
+            "source": "V"
         }
     ],
     "rules": [
@@ -2798,6 +2849,42 @@
             "id": 144,
             "from": 226,
             "to": 225,
+            "type": ">"
+        },
+        {
+            "id": 145,
+            "from": 228,
+            "to": 227,
+            "type": ">"
+        },
+        {
+            "id": 146,
+            "from": 229,
+            "to": 226,
+            "type": "+"
+        },
+        {
+            "id": 147,
+            "from": 229,
+            "to": 228,
+            "type": "+"
+        },
+        {
+            "id": 148,
+            "from": 61,
+            "to": 230,
+            "type": ">"
+        },
+        {
+            "id": 149,
+            "from": 231,
+            "to": 230,
+            "type": ">"
+        },
+        {
+            "id": 150,
+            "from": 233,
+            "to": 232,
             "type": ">"
         }
     ],
