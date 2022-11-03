@@ -82,7 +82,7 @@ class WordController(val graphService: GraphService) {
         return words.single()
     }
 
-    data class AddWordParameters(val text: String?, val gloss: String, val pos: String, val source: String)
+    data class AddWordParameters(val text: String?, val gloss: String?, val pos: String?, val source: String?)
 
     @PostMapping("/word/{lang}", consumes = ["application/json"])
     @ResponseBody
@@ -122,4 +122,4 @@ class NoWordException : RuntimeException()
 @ResponseStatus(value = HttpStatus.BAD_REQUEST, reason = "Word text not specified")
 class NoWordTextException : RuntimeException()
 
-fun String.nullize() = takeIf { it.trim().isNotEmpty() }
+fun String?.nullize() = this?.takeIf { it.trim().isNotEmpty() }

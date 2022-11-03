@@ -1645,6 +1645,57 @@
             "gloss": "place, spot",
             "pos": "N",
             "source": "V"
+        },
+        {
+            "id": 234,
+            "text": "menel",
+            "lang": "Q",
+            "gloss": "firmament"
+        },
+        {
+            "id": 235,
+            "text": "el",
+            "lang": "Q",
+            "gloss": "star",
+            "pos": "N",
+            "source": "V"
+        },
+        {
+            "id": 236,
+            "text": "Tarmenel",
+            "lang": "Q",
+            "source": "PE17:19"
+        },
+        {
+            "id": 237,
+            "text": "Valinor",
+            "lang": "Q"
+        },
+        {
+            "id": 238,
+            "text": "Eldamar",
+            "lang": "Q",
+            "source": "PE17:20"
+        },
+        {
+            "id": 239,
+            "text": "a",
+            "lang": "S",
+            "gloss": "o"
+        },
+        {
+            "id": 240,
+            "text": "Elbereth",
+            "lang": "S",
+            "pos": "NP",
+            "source": "PE17:22"
+        },
+        {
+            "id": 241,
+            "text": "el",
+            "lang": "S",
+            "gloss": "star",
+            "source": "PE17:22"
         }
     ],
     "rules": [
@@ -2886,6 +2937,66 @@
             "from": 233,
             "to": 232,
             "type": ">"
+        },
+        {
+            "id": 151,
+            "from": 234,
+            "to": 233,
+            "type": "+"
+        },
+        {
+            "id": 152,
+            "from": 234,
+            "to": 235,
+            "type": "+"
+        },
+        {
+            "id": 153,
+            "from": 235,
+            "to": 55,
+            "type": ">"
+        },
+        {
+            "id": 154,
+            "from": 236,
+            "to": 231,
+            "type": "+"
+        },
+        {
+            "id": 155,
+            "from": 236,
+            "to": 234,
+            "type": "+"
+        },
+        {
+            "id": 156,
+            "from": 237,
+            "to": 132,
+            "type": "+"
+        },
+        {
+            "id": 157,
+            "from": 237,
+            "to": 104,
+            "type": "+"
+        },
+        {
+            "id": 158,
+            "from": 238,
+            "to": 175,
+            "type": "+"
+        },
+        {
+            "id": 159,
+            "from": 238,
+            "to": 32,
+            "type": "+"
+        },
+        {
+            "id": 160,
+            "from": 240,
+            "to": 241,
+            "type": "+"
         }
     ],
     "corpusTexts": [
@@ -2992,6 +3103,14 @@
             "id": 4,
             "text": "noro lim, noro lim Asfaloth",
             "title": null,
+            "lang": "S",
+            "wordIds": [
+            ]
+        },
+        {
+            "id": 5,
+            "text": "A Elbereth Gilthoniel\nsilevren penna míriel\no menel aglar elenath!\nNa-chaered palan-díriel\no galadh-remmin ennorath\nFanuilos le linnathon\nnef aear, sí nef aearon",
+            "title": "A Elbereth Gilthoniel",
             "lang": "S",
             "wordIds": [
             ]
