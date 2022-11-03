@@ -3,7 +3,6 @@ import {Link} from "react-router-dom";
 import {useState} from "react";
 import WordForm from "./WordForm";
 
-
 export async function loader({params}) {
     return fetch(`${process.env.REACT_APP_BACKEND_URL}word/${params.lang}/${params["*"]}`, { headers: { 'Accept': 'application/json'} })
 }
@@ -64,4 +63,8 @@ export default function Word() {
         <a href="#" onClick={() => setShowCompoundComponent(!showCompoundComponent)}>Add component of compound</a><br/>
         {showCompoundComponent && <WordForm submitted={submitted} compoundWord={word} language={word.language}/>}
     </>
+}
+
+export function WordError() {
+    return <div>No such word in the dictionary</div>
 }

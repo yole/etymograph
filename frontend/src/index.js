@@ -2,14 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import {
     createBrowserRouter,
-    RouterProvider,
-    Route,
+    RouterProvider
 } from "react-router-dom";
 import './index.css';
 import CorpusIndex, { loader as corpusIndexLoader } from './routes/CorpusIndex'
 import CorpusLangIndex, { loader as corpusLangIndexLoader } from "./routes/CorpusLangIndex";
 import CorpusText, { loader as corpusTextLoader } from "./routes/CorpusText";
-import Word, { loader as wordLoader } from "./routes/Word";
+import Word, {loader as wordLoader, WordError} from "./routes/Word";
 import Dictionary, { loader as dictionaryLoader } from "./routes/Dictionary";
 import RuleList, { loader as ruleListLoader } from "./routes/RuleList";
 import Rule, { loader as ruleLoader } from "./routes/Rule";
@@ -39,7 +38,8 @@ const router = createBrowserRouter([
     {
         path: '/word/:lang/*',
         element: <Word/>,
-        loader: wordLoader
+        loader: wordLoader,
+        errorElement: <WordError/>
     },
     {
         path: '/dictionary/:lang',
