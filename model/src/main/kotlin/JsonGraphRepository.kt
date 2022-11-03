@@ -17,7 +17,15 @@ class PersistentLink(val id: Int, fromWord: Word, toWord: Word, type: LinkType, 
 data class LanguageData(val name: String, val shortName: String)
 
 @Serializable
-data class WordData(val id: Int, val text: String, @SerialName("lang") val languageShortName: String, val gloss: String? = null, val source: String? = null, val notes: String? = null)
+data class WordData(
+    val id: Int,
+    val text: String,
+    @SerialName("lang") val languageShortName: String,
+    val gloss: String? = null,
+    val pos: String? = null,
+    val source: String? = null,
+    val notes: String? = null
+)
 
 @Serializable
 data class CharacterClassData(@SerialName("lang") val languageShortName: String, val name: String, val characters: String)
@@ -104,7 +112,7 @@ class JsonGraphRepository(val path: Path) : InMemoryGraphRepository() {
         return GraphRepositoryData(
             languages.values.map { LanguageData(it.name, it.shortName) },
             characterClassData,
-            allWords.map { WordData(it.id, it.text, it.language.shortName, it.gloss, it.source, it.notes) },
+            allWords.map { WordData(it.id, it.text, it.language.shortName, it.gloss, it.pos, it.source, it.notes) },
             rules.map { ruleToSerializedFormat(it) },
             allLinks.map {
                 LinkData(
@@ -135,7 +143,14 @@ class JsonGraphRepository(val path: Path) : InMemoryGraphRepository() {
                 result.addNamedCharacterClass(result.languageByShortName(characterClass.languageShortName), characterClass.name, characterClass.characters)
             }
             for (word in data.words) {
-                result.addWord(word.text, result.languageByShortName(word.languageShortName), word.gloss, word.source, word.notes)
+                result.addWord(
+                    word.text,
+                    result.languageByShortName(word.languageShortName),
+                    word.gloss,
+                    word.pos,
+                    word.source,
+                    word.notes
+                )
             }
             for (rule in data.rules) {
                 val fromLanguage = result.languageByShortName(rule.fromLanguageShortName)

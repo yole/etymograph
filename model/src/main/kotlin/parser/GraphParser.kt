@@ -12,7 +12,7 @@ fun parseWordChain(repo: GraphRepository, line: String, language: Language): Wor
     var linkAssociative = false
 
     fun doneWord() {
-        val word = repo.addWord(currentWordText!!, language, currentWordGloss, lineSource, null)
+        val word = repo.addWord(currentWordText!!, language, currentWordGloss, null, lineSource, null)
         currentWordText = null
         currentWordGloss = null
 

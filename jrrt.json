@@ -1406,6 +1406,67 @@
             "lang": "S",
             "gloss": "meet",
             "source": "PE17:16"
+        },
+        {
+            "id": 203,
+            "text": "SPIN-",
+            "lang": "CE",
+            "gloss": "fine thread, filament",
+            "source": "PE17:17"
+        },
+        {
+            "id": 204,
+            "text": "esbin",
+            "lang": "S",
+            "gloss": "thin thread",
+            "pos": "N",
+            "source": "PE17:17"
+        },
+        {
+            "id": 205,
+            "text": "finn",
+            "lang": "S",
+            "gloss": "hair",
+            "pos": "N",
+            "source": "PE17:17"
+        },
+        {
+            "id": 206,
+            "text": "findel",
+            "lang": "S",
+            "gloss": "head of hair",
+            "pos": "N",
+            "source": "PE17:17"
+        },
+        {
+            "id": 207,
+            "text": "LAWAR-",
+            "lang": "CE",
+            "gloss": "light of the Golden Tree",
+            "source": "V"
+        },
+        {
+            "id": 208,
+            "text": "laure",
+            "lang": "Q",
+            "gloss": "gold",
+            "pos": "N",
+            "source": "V"
+        },
+        {
+            "id": 209,
+            "text": "glaur",
+            "lang": "S",
+            "gloss": "gold",
+            "pos": "N",
+            "source": "V"
+        },
+        {
+            "id": 210,
+            "text": "Glorfindel",
+            "lang": "S",
+            "pos": "N",
+            "source": "PE17:17"
         }
     ],
     "rules": [
@@ -2497,6 +2558,54 @@
             "from": 201,
             "to": 202,
             "type": ">"
+        },
+        {
+            "id": 126,
+            "from": 204,
+            "to": 203,
+            "type": ">"
+        },
+        {
+            "id": 127,
+            "from": 205,
+            "to": 203,
+            "type": ">"
+        },
+        {
+            "id": 128,
+            "from": 206,
+            "to": 205,
+            "type": ">"
+        },
+        {
+            "id": 129,
+            "from": 2,
+            "to": 208,
+            "type": ">"
+        },
+        {
+            "id": 130,
+            "from": 208,
+            "to": 207,
+            "type": ">"
+        },
+        {
+            "id": 131,
+            "from": 209,
+            "to": 207,
+            "type": ">"
+        },
+        {
+            "id": 132,
+            "from": 210,
+            "to": 209,
+            "type": "+"
+        },
+        {
+            "id": 133,
+            "from": 210,
+            "to": 206,
+            "type": "+"
         }
     ],
     "corpusTexts": [

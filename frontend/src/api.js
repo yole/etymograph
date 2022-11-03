@@ -8,8 +8,8 @@ function postToBackend(endpoint, data) {
     })
 }
 
-export function addWord(lang, text, gloss, source) {
-    return postToBackend('word/' + lang, {text: text, gloss: gloss, source: source})
+export function addWord(lang, text, gloss, pos, source) {
+    return postToBackend('word/' + lang, {text: text, gloss: gloss, pos: pos, source: source})
 }
 
 export function addRule(fromLang, toLang, addedCategories, text, source) {

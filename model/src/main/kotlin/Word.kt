@@ -5,6 +5,7 @@ class Word(
     val text: String,
     val language: Language,
     val gloss: String? = null,
+    val pos: String? = null,
     source: String? = null,
     notes: String? = null
 ) : LangEntity(source, notes) {

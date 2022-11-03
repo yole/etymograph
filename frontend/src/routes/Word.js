@@ -24,6 +24,7 @@ export default function Word() {
 
     return <>
         <h2>{word.text}</h2>
+        {word.pos && <div>{word.pos}</div>}
         <p>{word.gloss}</p>
         {word.source != null && <div className="source">Source: {word.source}</div>}
         {word.linksFrom.map(l => <>

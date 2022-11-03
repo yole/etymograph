@@ -23,6 +23,7 @@ abstract class GraphRepository {
         text: String,
         language: Language,
         gloss: String?,
+        pos: String?,
         source: String?,
         notes: String?
     ): Word

@@ -80,6 +80,7 @@ open class InMemoryGraphRepository : GraphRepository() {
         text: String,
         language: Language,
         gloss: String?,
+        pos: String?,
         source: String?,
         notes: String?
     ): Word {
@@ -88,7 +89,7 @@ open class InMemoryGraphRepository : GraphRepository() {
         wordsByText.find { it.gloss == gloss || gloss.isNullOrEmpty() }?.let {
             return it
         }
-        return createWord(text, language, gloss, source, notes).also { wordsByText.add(it) }
+        return createWord(text, language, gloss, pos, source, notes).also { wordsByText.add(it) }
     }
 
     override fun save() {
@@ -98,9 +99,10 @@ open class InMemoryGraphRepository : GraphRepository() {
         text: String,
         language: Language,
         gloss: String?,
+        pos: String?,
         source: String?,
         notes: String?
-    ) = Word(allWords.size, text, language, gloss, source, notes).also {
+    ) = Word(allWords.size, text, language, gloss, pos, source, notes).also {
         allWords.add(it)
     }
 
