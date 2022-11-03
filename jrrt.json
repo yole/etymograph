@@ -1710,6 +1710,116 @@
             "text": "BARATH-",
             "lang": "CE",
             "gloss": "PE17:23"
+        },
+        {
+            "id": 244,
+            "text": "GIL-",
+            "lang": "CE",
+            "gloss": "shine (white or pale)",
+            "source": "V"
+        },
+        {
+            "id": 245,
+            "text": "THAN-",
+            "lang": "CE",
+            "gloss": "kindle",
+            "source": "PE17:23"
+        },
+        {
+            "id": 246,
+            "text": "thoniel",
+            "lang": "S",
+            "gloss": "kindler",
+            "pos": "N",
+            "source": "PE17:23"
+        },
+        {
+            "id": 247,
+            "text": "Gilthoniel",
+            "lang": "S"
+        },
+        {
+            "id": 248,
+            "text": "silef",
+            "lang": "S",
+            "gloss": "crystal",
+            "pos": "N",
+            "source": "PE17:23"
+        },
+        {
+            "id": 249,
+            "text": "silevren",
+            "lang": "S",
+            "gloss": "crystal",
+            "pos": "ADJ",
+            "source": "PE17:23"
+        },
+        {
+            "id": 250,
+            "text": "penna",
+            "lang": "S",
+            "gloss": "come down",
+            "pos": "V",
+            "source": "PE17:24"
+        },
+        {
+            "id": 251,
+            "text": "PEN-",
+            "lang": "CE",
+            "gloss": "slope, downslope",
+            "source": "V"
+        },
+        {
+            "id": 252,
+            "text": "MIR-",
+            "lang": "CE",
+            "gloss": "jewel",
+            "source": "V"
+        },
+        {
+            "id": 253,
+            "text": "mîr",
+            "lang": "S",
+            "gloss": "jewel",
+            "pos": "N",
+            "source": "PE17:24"
+        },
+        {
+            "id": 254,
+            "text": "míria",
+            "lang": "S",
+            "gloss": "sparkle like jewels",
+            "pos": "V",
+            "source": "PE17:24"
+        },
+        {
+            "id": 255,
+            "text": "míriel",
+            "lang": "S",
+            "gloss": "shining jewel-like",
+            "source": "PE17:24"
+        },
+        {
+            "id": 256,
+            "text": "o",
+            "lang": "S",
+            "gloss": "from",
+            "source": "PE17:24"
+        },
+        {
+            "id": 257,
+            "text": "menel",
+            "lang": "S",
+            "gloss": "heavens",
+            "source": "PE17:24"
+        },
+        {
+            "id": 258,
+            "text": "kala",
+            "lang": "Q",
+            "gloss": "light",
+            "pos": "N",
+            "source": "V"
         }
     ],
     "rules": [
@@ -1927,14 +2037,12 @@
     ],
     "links": [
         {
-            "id": 0,
             "from": 1,
             "to": 2,
             "type": ">",
             "source": "PE17:61"
         },
         {
-            "id": 1,
             "from": 3,
             "to": 4,
             "type": ">",
@@ -1942,7 +2050,6 @@
             "source": "PE17:61"
         },
         {
-            "id": 2,
             "from": 5,
             "to": 6,
             "type": ">",
@@ -1950,14 +2057,12 @@
             "source": "PE17:62"
         },
         {
-            "id": 3,
             "from": 7,
             "to": 8,
             "type": ">",
             "source": "PE17:62"
         },
         {
-            "id": 4,
             "from": 9,
             "to": 10,
             "type": ">",
@@ -1965,28 +2070,24 @@
             "source": "PE17:62"
         },
         {
-            "id": 5,
             "from": 11,
             "to": 12,
             "type": ">",
             "source": "PE17:62"
         },
         {
-            "id": 6,
             "from": 12,
             "to": 13,
             "type": ">",
             "source": "PE17:62"
         },
         {
-            "id": 7,
             "from": 13,
             "to": 14,
             "type": ">",
             "source": "PE17:62"
         },
         {
-            "id": 8,
             "from": 16,
             "to": 17,
             "type": ">",
@@ -1994,21 +2095,18 @@
             "source": "PE17:63"
         },
         {
-            "id": 9,
             "from": 18,
             "to": 19,
             "type": ">",
             "source": "PE17.63"
         },
         {
-            "id": 10,
             "from": 20,
             "to": 21,
             "type": ">",
             "source": "PE17:63"
         },
         {
-            "id": 11,
             "from": 22,
             "to": 23,
             "type": ">",
@@ -2016,14 +2114,12 @@
             "source": "PE17:63"
         },
         {
-            "id": 12,
             "from": 23,
             "to": 24,
             "type": ">",
             "source": "PE17:63"
         },
         {
-            "id": 13,
             "from": 25,
             "to": 26,
             "type": ">",
@@ -2031,63 +2127,54 @@
             "source": "PE17:63"
         },
         {
-            "id": 14,
             "from": 26,
             "to": 27,
             "type": ">",
             "source": "PE17:63"
         },
         {
-            "id": 15,
             "from": 29,
             "to": 30,
             "type": "+",
             "source": "PE17:63"
         },
         {
-            "id": 16,
             "from": 29,
             "to": 31,
             "type": "+",
             "source": "PE17:63"
         },
         {
-            "id": 17,
             "from": 31,
             "to": 32,
             "type": ">",
             "source": "PE17:64"
         },
         {
-            "id": 18,
             "from": 33,
             "to": 34,
             "type": "+",
             "source": "PE17:64"
         },
         {
-            "id": 19,
             "from": 33,
             "to": 35,
             "type": "+",
             "source": "PE17:64"
         },
         {
-            "id": 20,
             "from": 35,
             "to": 36,
             "type": ">",
             "source": "PE17:64"
         },
         {
-            "id": 21,
             "from": 37,
             "to": 38,
             "type": ">",
             "source": "PE17:64"
         },
         {
-            "id": 22,
             "from": 40,
             "to": 41,
             "type": ">",
@@ -2095,7 +2182,6 @@
             "source": "PE17:65"
         },
         {
-            "id": 23,
             "from": 42,
             "to": 43,
             "type": ">",
@@ -2103,7 +2189,6 @@
             "source": "PE17:66"
         },
         {
-            "id": 24,
             "from": 45,
             "to": 46,
             "type": ">",
@@ -2111,14 +2196,12 @@
             "source": "PE17:66"
         },
         {
-            "id": 25,
             "from": 47,
             "to": 48,
             "type": ">",
             "source": "PE17:66"
         },
         {
-            "id": 26,
             "from": 49,
             "to": 50,
             "type": ">",
@@ -2126,14 +2209,12 @@
             "source": "PE17:66"
         },
         {
-            "id": 27,
             "from": 50,
             "to": 51,
             "type": ">",
             "source": "PE17:66"
         },
         {
-            "id": 28,
             "from": 53,
             "to": 54,
             "type": ">",
@@ -2141,14 +2222,12 @@
             "source": "PE17:67"
         },
         {
-            "id": 29,
             "from": 54,
             "to": 55,
             "type": ">",
             "source": "PE17:67"
         },
         {
-            "id": 30,
             "from": 56,
             "to": 57,
             "type": ">",
@@ -2156,7 +2235,6 @@
             "source": "PE17:67"
         },
         {
-            "id": 31,
             "from": 57,
             "to": 58,
             "type": ">",
@@ -2164,84 +2242,72 @@
             "source": "PE17:67"
         },
         {
-            "id": 32,
             "from": 59,
             "to": 60,
             "type": "+",
             "source": "PE17:67"
         },
         {
-            "id": 33,
             "from": 59,
             "to": 61,
             "type": "+",
             "source": "PE17:67"
         },
         {
-            "id": 34,
             "from": 59,
             "to": 62,
             "type": "+",
             "source": "PE17:67"
         },
         {
-            "id": 35,
             "from": 62,
             "to": 63,
             "type": ">",
             "source": "PE17:67"
         },
         {
-            "id": 36,
             "from": 66,
             "to": 24,
             "type": ">",
             "source": "PE17:68"
         },
         {
-            "id": 37,
             "from": 67,
             "to": 68,
             "type": ">",
             "source": "PE17:68"
         },
         {
-            "id": 38,
             "from": 69,
             "to": 70,
             "type": ">",
             "source": "PE17:68"
         },
         {
-            "id": 39,
             "from": 70,
             "to": 71,
             "type": ">",
             "source": "PE17:68"
         },
         {
-            "id": 40,
             "from": 71,
             "to": 72,
             "type": ">",
             "source": "PE17:68"
         },
         {
-            "id": 41,
             "from": 74,
             "to": 75,
             "type": ">",
             "source": "PE17:69"
         },
         {
-            "id": 42,
             "from": 75,
             "to": 51,
             "type": ">",
             "source": "PE17:69"
         },
         {
-            "id": 43,
             "from": 76,
             "to": 77,
             "type": ">",
@@ -2249,28 +2315,24 @@
             "source": "PE17:69"
         },
         {
-            "id": 44,
             "from": 77,
             "to": 78,
             "type": "+",
             "source": "PE17:69"
         },
         {
-            "id": 45,
             "from": 77,
             "to": 79,
             "type": "+",
             "source": "PE17:69"
         },
         {
-            "id": 46,
             "from": 78,
             "to": 80,
             "type": ">",
             "source": "PE17:69"
         },
         {
-            "id": 47,
             "from": 81,
             "to": 82,
             "type": ">",
@@ -2278,14 +2340,12 @@
             "source": "PE17:69"
         },
         {
-            "id": 48,
             "from": 83,
             "to": 84,
             "type": ">",
             "source": "PE17:69"
         },
         {
-            "id": 49,
             "from": 84,
             "to": 85,
             "type": ">",
@@ -2293,42 +2353,36 @@
             "source": "PE17:69"
         },
         {
-            "id": 50,
             "from": 86,
             "to": 54,
             "type": "+",
             "source": "PE17:70"
         },
         {
-            "id": 51,
             "from": 86,
             "to": 61,
             "type": "+",
             "source": "PE17:70"
         },
         {
-            "id": 52,
             "from": 87,
             "to": 88,
             "type": ">",
             "source": "PE17:70"
         },
         {
-            "id": 53,
             "from": 88,
             "to": 89,
             "type": ">",
             "source": "PE17:70"
         },
         {
-            "id": 54,
             "from": 91,
             "to": 92,
             "type": ">",
             "source": "PE17:72"
         },
         {
-            "id": 55,
             "from": 93,
             "to": 94,
             "type": ">",
@@ -2336,35 +2390,30 @@
             "source": "PE17:72"
         },
         {
-            "id": 56,
             "from": 95,
             "to": 96,
             "type": "+",
             "source": "PE17:72"
         },
         {
-            "id": 57,
             "from": 95,
             "to": 97,
             "type": "+",
             "source": "PE17:72"
         },
         {
-            "id": 58,
             "from": 97,
             "to": 98,
             "type": ">",
             "source": "PE17:72"
         },
         {
-            "id": 59,
             "from": 99,
             "to": 100,
             "type": ">",
             "source": "PE17:72"
         },
         {
-            "id": 60,
             "from": 101,
             "to": 102,
             "type": ">",
@@ -2372,42 +2421,36 @@
             "source": "PE17:72"
         },
         {
-            "id": 61,
             "from": 102,
             "to": 103,
             "type": "+",
             "source": "PE17:72"
         },
         {
-            "id": 62,
             "from": 102,
             "to": 104,
             "type": "+",
             "source": "PE17:72"
         },
         {
-            "id": 63,
             "from": 105,
             "to": 106,
             "type": ">",
             "source": "PE17:72"
         },
         {
-            "id": 64,
             "from": 107,
             "to": 108,
             "type": ">",
             "source": "PE17:73"
         },
         {
-            "id": 65,
             "from": 108,
             "to": 109,
             "type": ">",
             "source": "PE17:73"
         },
         {
-            "id": 66,
             "from": 110,
             "to": 111,
             "type": ">",
@@ -2415,7 +2458,6 @@
             "source": "PE17:73"
         },
         {
-            "id": 67,
             "from": 111,
             "to": 112,
             "type": ">",
@@ -2423,42 +2465,36 @@
             "source": "PE17:73"
         },
         {
-            "id": 68,
             "from": 112,
             "to": 113,
             "type": ">",
             "source": "PE17:73"
         },
         {
-            "id": 69,
             "from": 113,
             "to": 114,
             "type": ">",
             "source": "PE17:73"
         },
         {
-            "id": 70,
             "from": 117,
             "to": 118,
             "type": ">",
             "source": "PE17:73"
         },
         {
-            "id": 71,
             "from": 119,
             "to": 96,
             "type": "+",
             "source": "PE17:73"
         },
         {
-            "id": 72,
             "from": 119,
             "to": 120,
             "type": "+",
             "source": "PE17:73"
         },
         {
-            "id": 73,
             "from": 121,
             "to": 122,
             "type": ">",
@@ -2466,21 +2502,18 @@
             "source": "PE17:73"
         },
         {
-            "id": 74,
             "from": 122,
             "to": 123,
             "type": "+",
             "source": "PE17:73"
         },
         {
-            "id": 75,
             "from": 122,
             "to": 124,
             "type": "+",
             "source": "PE17:73"
         },
         {
-            "id": 76,
             "from": 125,
             "to": 126,
             "type": ">",
@@ -2488,21 +2521,18 @@
             "source": "PE17:73"
         },
         {
-            "id": 77,
             "from": 127,
             "to": 80,
             "type": ">",
             "source": "PE17:73"
         },
         {
-            "id": 78,
             "from": 128,
             "to": 27,
             "type": ">",
             "source": "PE17:74"
         },
         {
-            "id": 79,
             "from": 129,
             "to": 130,
             "type": ">",
@@ -2510,35 +2540,30 @@
             "source": "PE17:74"
         },
         {
-            "id": 80,
             "from": 131,
             "to": 132,
             "type": "+",
             "source": "PE17:74"
         },
         {
-            "id": 81,
             "from": 131,
             "to": 32,
             "type": "+",
             "source": "PE17:74"
         },
         {
-            "id": 82,
             "from": 133,
             "to": 134,
             "type": "+",
             "source": "PE17:74"
         },
         {
-            "id": 83,
             "from": 134,
             "to": 135,
             "type": ">",
             "source": "PE17:74"
         },
         {
-            "id": 84,
             "from": 137,
             "to": 138,
             "type": ">",
@@ -2546,35 +2571,30 @@
             "source": "PE17:75"
         },
         {
-            "id": 85,
             "from": 138,
             "to": 139,
             "type": ">",
             "source": "PE17:75"
         },
         {
-            "id": 86,
             "from": 139,
             "to": 140,
             "type": ">",
             "source": "PE17:75"
         },
         {
-            "id": 87,
             "from": 147,
             "to": 148,
             "type": ">",
             "source": "PE17:13"
         },
         {
-            "id": 88,
             "from": 149,
             "to": 150,
             "type": ">",
             "source": "PE17:13"
         },
         {
-            "id": 89,
             "from": 151,
             "to": 152,
             "type": ">",
@@ -2582,453 +2602,439 @@
             "source": "PE17:13"
         },
         {
-            "id": 90,
             "from": 152,
             "to": 153,
             "type": ">",
             "source": "PE17:13"
         },
         {
-            "id": 91,
             "from": 153,
             "to": 154,
             "type": "+",
             "source": "PE17:13"
         },
         {
-            "id": 92,
             "from": 153,
             "to": 155,
             "type": "+",
             "source": "PE17:13"
         },
         {
-            "id": 93,
             "from": 156,
             "to": 157,
             "type": "+",
             "source": "PE17:13"
         },
         {
-            "id": 94,
             "from": 156,
             "to": 158,
             "type": "+",
             "source": "PE17:13"
         },
         {
-            "id": 95,
             "from": 159,
             "to": 161,
             "type": ">"
         },
         {
-            "id": 96,
             "from": 162,
             "to": 161,
             "type": ">"
         },
         {
-            "id": 97,
             "from": 156,
             "to": 161,
             "type": ">"
         },
         {
-            "id": 98,
             "from": 133,
             "to": 164,
             "type": "+"
         },
         {
-            "id": 99,
             "from": 165,
             "to": 166,
             "type": "+"
         },
         {
-            "id": 100,
             "from": 165,
             "to": 167,
             "type": "+"
         },
         {
-            "id": 101,
             "from": 171,
             "to": 172,
             "type": "+"
         },
         {
-            "id": 102,
             "from": 171,
             "to": 173,
             "type": "+"
         },
         {
-            "id": 103,
             "from": 174,
             "to": 175,
             "type": "+"
         },
         {
-            "id": 104,
             "from": 175,
             "to": 55,
             "type": ">"
         },
         {
-            "id": 105,
             "from": 174,
             "to": 177,
             "type": "+"
         },
         {
-            "id": 106,
             "from": 178,
             "to": 179,
             "type": ">"
         },
         {
-            "id": 107,
             "from": 181,
             "to": 180,
             "type": ">"
         },
         {
-            "id": 108,
             "from": 182,
             "to": 181,
             "type": "+"
         },
         {
-            "id": 109,
             "from": 182,
             "to": 167,
             "type": "+"
         },
         {
-            "id": 110,
             "from": 183,
             "to": 146,
             "type": "+"
         },
         {
-            "id": 111,
             "from": 183,
             "to": 104,
             "type": "+"
         },
         {
-            "id": 112,
             "from": 146,
             "to": 184,
             "type": ">"
         },
         {
-            "id": 113,
             "from": 6,
             "to": 186,
             "type": ">"
         },
         {
-            "id": 114,
             "from": 187,
             "to": 186,
             "type": ">"
         },
         {
-            "id": 115,
             "from": 188,
             "to": 185,
             "type": ">"
         },
         {
-            "id": 116,
             "from": 189,
             "to": 185,
             "type": ">"
         },
         {
-            "id": 117,
             "from": 190,
             "to": 188,
             "type": "+"
         },
         {
-            "id": 118,
             "from": 190,
             "to": 187,
             "type": "+"
         },
         {
-            "id": 119,
             "from": 194,
             "to": 193,
             "type": ">"
         },
         {
-            "id": 120,
             "from": 195,
             "to": 196,
             "type": "+"
         },
         {
-            "id": 121,
             "from": 195,
             "to": 197,
             "type": "+"
         },
         {
-            "id": 122,
             "from": 196,
             "to": 184,
             "type": ">"
         },
         {
-            "id": 123,
             "from": 199,
             "to": 200,
             "type": "+"
         },
         {
-            "id": 124,
             "from": 199,
             "to": 201,
             "type": "+"
         },
         {
-            "id": 125,
             "from": 201,
             "to": 202,
             "type": ">"
         },
         {
-            "id": 126,
             "from": 204,
             "to": 203,
             "type": ">"
         },
         {
-            "id": 127,
             "from": 205,
             "to": 203,
             "type": ">"
         },
         {
-            "id": 128,
             "from": 206,
             "to": 205,
             "type": ">"
         },
         {
-            "id": 129,
             "from": 2,
             "to": 208,
             "type": ">"
         },
         {
-            "id": 130,
             "from": 208,
             "to": 207,
             "type": ">"
         },
         {
-            "id": 131,
             "from": 209,
             "to": 207,
             "type": ">"
         },
         {
-            "id": 132,
             "from": 210,
             "to": 209,
             "type": "+"
         },
         {
-            "id": 133,
             "from": 210,
             "to": 206,
             "type": "+"
         },
         {
-            "id": 134,
             "from": 213,
             "to": 214,
             "type": "+"
         },
         {
-            "id": 135,
             "from": 213,
             "to": 215,
             "type": "+"
         },
         {
-            "id": 136,
             "from": 215,
             "to": 114,
             "type": ">"
         },
         {
-            "id": 137,
             "from": 197,
             "to": 216,
             "type": ">"
         },
         {
-            "id": 138,
             "from": 143,
             "to": 217,
             "type": ">"
         },
         {
-            "id": 139,
             "from": 218,
             "to": 217,
             "type": ">"
         },
         {
-            "id": 140,
             "from": 220,
             "to": 219,
             "type": ">"
         },
         {
-            "id": 141,
             "from": 221,
             "to": 222,
             "type": "+"
         },
         {
-            "id": 142,
             "from": 221,
             "to": 223,
             "type": "+"
         },
         {
-            "id": 143,
             "from": 222,
             "to": 224,
             "type": ">"
         },
         {
-            "id": 144,
             "from": 226,
             "to": 225,
             "type": ">"
         },
         {
-            "id": 145,
             "from": 228,
             "to": 227,
             "type": ">"
         },
         {
-            "id": 146,
             "from": 229,
             "to": 226,
             "type": "+"
         },
         {
-            "id": 147,
             "from": 229,
             "to": 228,
             "type": "+"
         },
         {
-            "id": 148,
             "from": 61,
             "to": 230,
             "type": ">"
         },
         {
-            "id": 149,
             "from": 231,
             "to": 230,
             "type": ">"
         },
         {
-            "id": 150,
             "from": 233,
             "to": 232,
             "type": ">"
         },
         {
-            "id": 151,
             "from": 234,
             "to": 233,
             "type": "+"
         },
         {
-            "id": 152,
             "from": 234,
             "to": 235,
             "type": "+"
         },
         {
-            "id": 153,
             "from": 235,
             "to": 55,
             "type": ">"
         },
         {
-            "id": 154,
             "from": 236,
             "to": 231,
             "type": "+"
         },
         {
-            "id": 155,
             "from": 236,
             "to": 234,
             "type": "+"
         },
         {
-            "id": 156,
             "from": 237,
             "to": 132,
             "type": "+"
         },
         {
-            "id": 157,
             "from": 237,
             "to": 104,
             "type": "+"
         },
         {
-            "id": 158,
             "from": 238,
             "to": 175,
             "type": "+"
         },
         {
-            "id": 159,
             "from": 238,
             "to": 32,
             "type": "+"
         },
         {
-            "id": 160,
             "from": 240,
             "to": 241,
             "type": "+"
         },
         {
-            "id": 161,
             "from": 240,
             "to": 242,
             "type": "+"
         },
         {
-            "id": 162,
             "from": 242,
             "to": 243,
             "type": ">"
         },
         {
-            "id": 163,
             "from": 242,
             "to": 223,
             "type": "~"
+        },
+        {
+            "from": 172,
+            "to": 244,
+            "type": ">"
+        },
+        {
+            "from": 246,
+            "to": 245,
+            "type": ">"
+        },
+        {
+            "from": 247,
+            "to": 172,
+            "type": "+"
+        },
+        {
+            "from": 247,
+            "to": 246,
+            "type": "+"
+        },
+        {
+            "from": 248,
+            "to": 225,
+            "type": ">"
+        },
+        {
+            "from": 249,
+            "to": 248,
+            "type": ">"
+        },
+        {
+            "from": 250,
+            "to": 251,
+            "type": ">"
+        },
+        {
+            "from": 253,
+            "to": 252,
+            "type": ">"
+        },
+        {
+            "from": 254,
+            "to": 253,
+            "type": ">"
+        },
+        {
+            "from": 255,
+            "to": 254,
+            "type": ">"
+        },
+        {
+            "from": 257,
+            "to": 234,
+            "type": ">"
+        },
+        {
+            "from": 258,
+            "to": 123,
+            "type": ">"
         }
     ],
     "corpusTexts": [

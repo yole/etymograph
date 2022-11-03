@@ -6,13 +6,6 @@ import java.nio.file.Path
 import kotlin.io.path.readText
 import kotlin.io.path.writeText
 
-class PersistentLink(val id: Int, fromWord: Word, toWord: Word, type: LinkType, rule: Rule?, source: String?,
-                     notes: String?
-): Link(fromWord, toWord, type,
-    rule,
-    source, notes
-)
-
 @Serializable
 data class LanguageData(val name: String, val shortName: String)
 
@@ -52,7 +45,6 @@ data class RuleData(
 
 @Serializable
 data class LinkData(
-    val id: Int,
     @SerialName("from") val fromWordId: Int,
     @SerialName("to") val toWordId: Int,
     val type: String,
@@ -81,7 +73,7 @@ data class GraphRepositoryData(
 )
 
 class JsonGraphRepository(val path: Path) : InMemoryGraphRepository() {
-    private val allLinks = mutableListOf<PersistentLink>()
+    private val allLinks = mutableListOf<Link>()
 
     override fun createLink(
         fromWord: Word,
@@ -91,7 +83,7 @@ class JsonGraphRepository(val path: Path) : InMemoryGraphRepository() {
         source: String?,
         notes: String?
     ): Link {
-        return PersistentLink(allLinks.size, fromWord, toWord, type, rule, source, notes).also {
+        return super.createLink(fromWord, toWord, type, rule, source, notes).also {
             allLinks.add(it)
         }
     }
@@ -116,7 +108,7 @@ class JsonGraphRepository(val path: Path) : InMemoryGraphRepository() {
             rules.map { ruleToSerializedFormat(it) },
             allLinks.map {
                 LinkData(
-                    it.id, it.fromWord.id, it.toWord.id,
+                    it.fromWord.id, it.toWord.id,
                     it.type.id, it.rule?.id ?: -1, it.source, it.notes
                 )
             },
