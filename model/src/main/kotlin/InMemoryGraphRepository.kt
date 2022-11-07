@@ -126,7 +126,7 @@ open class InMemoryGraphRepository : GraphRepository() {
 
     override fun deleteLink(fromWord: Word, toWord: Word, type: LinkType): Boolean {
         val result = linksFrom.getOrPut(fromWord) { mutableListOf() }.removeIf { it.toWord == toWord && it.type == type }
-        linksFrom.getOrPut(toWord) { mutableListOf() }.removeIf { it.fromWord == fromWord && it.type == type }
+        linksTo.getOrPut(toWord) { mutableListOf() }.removeIf { it.fromWord == fromWord && it.type == type }
         return result
     }
 

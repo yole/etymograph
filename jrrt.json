@@ -235,7 +235,7 @@
             "id": 30,
             "text": "ORO-",
             "lang": "CE",
-            "gloss": "up",
+            "gloss": "up, high",
             "source": "PE17:63"
         },
         {
@@ -635,10 +635,10 @@
         },
         {
             "id": 89,
-            "text": "ORO-",
+            "text": "TIR-",
             "lang": "CE",
-            "gloss": "up, high",
-            "source": "PE17:70"
+            "gloss": "watch, guard",
+            "source": "PE17:25"
         },
         {
             "id": 90,
@@ -1709,7 +1709,8 @@
             "id": 243,
             "text": "BARATH-",
             "lang": "CE",
-            "gloss": "PE17:23"
+            "gloss": "supreme, sublime, queen",
+            "source": "PE17:23"
         },
         {
             "id": 244,
@@ -1835,6 +1836,131 @@
             "lang": "Q",
             "gloss": "cleft",
             "pos": "N"
+        },
+        {
+            "id": 261,
+            "text": "alkar",
+            "lang": "Q",
+            "gloss": "radiance, glory",
+            "pos": "N",
+            "source": "PE17:24"
+        },
+        {
+            "id": 262,
+            "text": "aglareb",
+            "lang": "S",
+            "gloss": "glorious, brilliant",
+            "pos": "ADJ",
+            "source": "PE17:25"
+        },
+        {
+            "id": 263,
+            "text": "alcarin",
+            "lang": "Q",
+            "gloss": "glorious",
+            "pos": "ADJ",
+            "source": "PE17:24"
+        },
+        {
+            "id": 264,
+            "text": "elen",
+            "lang": "S",
+            "gloss": "star",
+            "pos": "N",
+            "source": "PE17:24"
+        },
+        {
+            "id": 265,
+            "text": "elenath",
+            "lang": "S",
+            "gloss": "star.PL",
+            "pos": "N",
+            "source": "PE17:24"
+        },
+        {
+            "id": 266,
+            "text": "na-chaered",
+            "lang": "S"
+        },
+        {
+            "id": 267,
+            "text": "na",
+            "lang": "S",
+            "gloss": "to",
+            "pos": "PREP",
+            "source": "PE17:25"
+        },
+        {
+            "id": 268,
+            "text": "haered",
+            "lang": "S",
+            "gloss": "remoteness",
+            "pos": "N",
+            "source": "PE17:25"
+        },
+        {
+            "id": 269,
+            "text": "haer",
+            "lang": "S",
+            "gloss": "remote",
+            "pos": "ADJ",
+            "source": "PE17:25"
+        },
+        {
+            "id": 270,
+            "text": "hae",
+            "lang": "S",
+            "gloss": "very far away",
+            "source": "PE17:25"
+        },
+        {
+            "id": 271,
+            "text": "KHAYA-",
+            "lang": "CE",
+            "gloss": "far, distant",
+            "source": "V"
+        },
+        {
+            "id": 272,
+            "text": "palan-díriel",
+            "lang": "S"
+        },
+        {
+            "id": 273,
+            "text": "palan",
+            "lang": "S",
+            "gloss": "afar",
+            "source": "PE17:25"
+        },
+        {
+            "id": 274,
+            "text": "díriel",
+            "lang": "S",
+            "gloss": "watching",
+            "pos": "PTCP",
+            "source": "PE17:25"
+        },
+        {
+            "id": 275,
+            "text": "palan",
+            "lang": "Q",
+            "gloss": "afar",
+            "source": "PE17:25"
+        },
+        {
+            "id": 276,
+            "text": "PAL-",
+            "lang": "CE",
+            "gloss": "wide (open)",
+            "source": "V"
+        },
+        {
+            "id": 277,
+            "text": "tíria",
+            "lang": "S",
+            "gloss": "watch",
+            "pos": "V",
+            "source": "PE17:25"
         }
     ],
     "rules": [
@@ -2184,12 +2310,6 @@
             "source": "PE17:64"
         },
         {
-            "from": 37,
-            "to": 38,
-            "type": ">",
-            "source": "PE17:64"
-        },
-        {
             "from": 40,
             "to": 41,
             "type": ">",
@@ -2387,7 +2507,7 @@
         },
         {
             "from": 88,
-            "to": 89,
+            "to": 30,
             "type": ">",
             "source": "PE17:70"
         },
@@ -3058,6 +3178,91 @@
             "from": 122,
             "to": 260,
             "type": "+"
+        },
+        {
+            "from": 261,
+            "to": 123,
+            "type": ">"
+        },
+        {
+            "from": 262,
+            "to": 259,
+            "type": ">"
+        },
+        {
+            "from": 263,
+            "to": 261,
+            "type": ">"
+        },
+        {
+            "from": 264,
+            "to": 55,
+            "type": ">"
+        },
+        {
+            "from": 265,
+            "to": 264,
+            "type": ">"
+        },
+        {
+            "from": 266,
+            "to": 267,
+            "type": "+"
+        },
+        {
+            "from": 266,
+            "to": 268,
+            "type": "+"
+        },
+        {
+            "from": 268,
+            "to": 269,
+            "type": ">"
+        },
+        {
+            "from": 269,
+            "to": 270,
+            "type": ">"
+        },
+        {
+            "from": 270,
+            "to": 271,
+            "type": ">"
+        },
+        {
+            "from": 272,
+            "to": 273,
+            "type": "+"
+        },
+        {
+            "from": 272,
+            "to": 274,
+            "type": "+"
+        },
+        {
+            "from": 273,
+            "to": 275,
+            "type": ">"
+        },
+        {
+            "from": 275,
+            "to": 276,
+            "type": ">"
+        },
+        {
+            "from": 274,
+            "to": 277,
+            "type": ">"
+        },
+        {
+            "from": 277,
+            "to": 89,
+            "type": ">"
+        },
+        {
+            "from": 37,
+            "to": 184,
+            "type": ">"
         }
     ],
     "corpusTexts": [
