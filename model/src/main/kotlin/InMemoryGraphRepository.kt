@@ -7,7 +7,7 @@ open class InMemoryGraphRepository : GraphRepository() {
     protected val languages = mutableMapOf<String, Language>()
     protected val corpus = mutableListOf<CorpusText>()
     private val words = mutableMapOf<Language, MutableMap<String, MutableList<Word>>>()
-    protected val allWords = mutableListOf<Word>()
+    protected val allWords = mutableListOf<Word?>()
     private val linksFrom = mutableMapOf<Word, MutableList<Link>>()
     private val linksTo = mutableMapOf<Word, MutableList<Link>>()
     protected val rules = mutableListOf<Rule>()
@@ -42,7 +42,7 @@ open class InMemoryGraphRepository : GraphRepository() {
 
     override fun wordsByText(lang: Language, text: String): List<Word> {
         val wordsInLang = words[lang] ?: return emptyList()
-        return wordsInLang[text.toLowerCase()] ?: emptyList()
+        return wordsInLang[text.lowercase(Locale.getDefault())] ?: emptyList()
     }
 
     override fun wordById(id: Int): Word? {
@@ -96,11 +96,18 @@ open class InMemoryGraphRepository : GraphRepository() {
         notes: String?
     ): Word {
         val wordsForLanguage = words.getOrPut(language) { mutableMapOf() }
-        val wordsByText = wordsForLanguage.getOrPut(text.toLowerCase()) { mutableListOf() }
+        val wordsByText = wordsForLanguage.getOrPut(text.lowercase(Locale.getDefault())) { mutableListOf() }
         wordsByText.find { it.gloss == gloss || gloss.isNullOrEmpty() }?.let {
             return it
         }
         return createWord(text, language, gloss, pos, source, notes).also { wordsByText.add(it) }
+    }
+
+    override fun deleteWord(word: Word) {
+        val wordsForLanguage = words.getOrPut(word.language) { mutableMapOf() }
+        val wordsByText = wordsForLanguage.getOrPut(word.text.lowercase(Locale.getDefault())) { mutableListOf() }
+        wordsByText.remove(word)
+        allWords[word.id] = null
     }
 
     override fun save() {

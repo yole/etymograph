@@ -29,6 +29,8 @@ abstract class GraphRepository {
         notes: String?
     ): Word
 
+    abstract fun deleteWord(word: Word)
+
     abstract fun addRule(
         fromLanguage: Language,
         toLanguage: Language,

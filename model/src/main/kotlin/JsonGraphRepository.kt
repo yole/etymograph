@@ -72,7 +72,7 @@ data class GraphRepositoryData(
     val corpusTexts: List<CorpusTextData>
 )
 
-class JsonGraphRepository(val path: Path) : InMemoryGraphRepository() {
+class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
     private val allLinks = mutableListOf<Link>()
 
     override fun createLink(
@@ -95,6 +95,9 @@ class JsonGraphRepository(val path: Path) : InMemoryGraphRepository() {
     }
 
     override fun save() {
+        if (path == null) {
+            throw IllegalStateException("Can't save: path not specified")
+        }
         path.writeText(toJson())
     }
 
@@ -110,7 +113,7 @@ class JsonGraphRepository(val path: Path) : InMemoryGraphRepository() {
         return GraphRepositoryData(
             languages.values.map { LanguageData(it.name, it.shortName) },
             characterClassData,
-            allWords.map { WordData(it.id, it.text, it.language.shortName, it.gloss, it.pos, it.source, it.notes) },
+            allWords.filterNotNull().map { WordData(it.id, it.text, it.language.shortName, it.gloss, it.pos, it.source, it.notes) },
             rules.map { ruleToSerializedFormat(it) },
             allLinks.map {
                 LinkData(
@@ -127,57 +130,80 @@ class JsonGraphRepository(val path: Path) : InMemoryGraphRepository() {
         )
     }
 
+    private fun loadJson(string: String) {
+        val data = Json.decodeFromString<GraphRepositoryData>(string)
+        for (language in data.languages) {
+            addLanguage(Language(language.name, language.shortName))
+        }
+        for (characterClass in data.characterClasses) {
+            addNamedCharacterClass(
+                languageByShortName(characterClass.languageShortName),
+                characterClass.name,
+                characterClass.characters
+            )
+        }
+        for (word in data.words) {
+            while (word.id > allWords.size) {
+                allWords.add(null)
+            }
+            addWord(
+                word.text,
+                languageByShortName(word.languageShortName),
+                word.gloss,
+                word.pos,
+                word.source,
+                word.notes
+            )
+        }
+        for (rule in data.rules) {
+            val fromLanguage = languageByShortName(rule.fromLanguageShortName)
+            addRule(
+                fromLanguage,
+                languageByShortName(rule.toLanguageShortName),
+                ruleBranchesFromSerializedFormat(this, fromLanguage, rule.branches),
+                rule.addedCategories,
+                rule.source,
+                rule.notes
+            )
+        }
+        for (link in data.links) {
+            val fromWord = allWords[link.fromWordId]
+            val toWord = allWords[link.toWordId]
+            if (fromWord != null && toWord != null) {
+                addLink(
+                    fromWord,
+                    toWord,
+                    Link.allLinkTypes.first { it.id == link.type },
+                    link.ruleId.takeIf { it >= 0 }?.let { rules[it] },
+                    link.source,
+                    link.notes
+                )
+            }
+        }
+        for (corpusText in data.corpusTexts) {
+            addCorpusText(
+                corpusText.text,
+                corpusText.title,
+                languageByShortName(corpusText.languageShortName),
+                corpusText.wordIds.mapNotNull { allWords[it] },
+                corpusText.source,
+                corpusText.notes
+            )
+        }
+    }
 
     companion object {
         val theJson = Json { prettyPrint = true }
 
         fun fromJson(path: Path): JsonGraphRepository {
             val result = JsonGraphRepository(path)
-            val data = Json.decodeFromString<GraphRepositoryData>(path.readText())
-            for (language in data.languages) {
-                result.addLanguage(Language(language.name, language.shortName))
-            }
-            for (characterClass in data.characterClasses) {
-                result.addNamedCharacterClass(result.languageByShortName(characterClass.languageShortName), characterClass.name, characterClass.characters)
-            }
-            for (word in data.words) {
-                result.addWord(
-                    word.text,
-                    result.languageByShortName(word.languageShortName),
-                    word.gloss,
-                    word.pos,
-                    word.source,
-                    word.notes
-                )
-            }
-            for (rule in data.rules) {
-                val fromLanguage = result.languageByShortName(rule.fromLanguageShortName)
-                result.addRule(
-                    fromLanguage,
-                    result.languageByShortName(rule.toLanguageShortName),
-                    ruleBranchesFromSerializedFormat(result, fromLanguage, rule.branches), rule.addedCategories, rule.source, rule.notes
-                )
-            }
-            for (link in data.links) {
-                result.addLink(
-                    result.allWords[link.fromWordId],
-                    result.allWords[link.toWordId],
-                    Link.allLinkTypes.first { it.id == link.type },
-                    link.ruleId.takeIf { it >= 0 }?.let { result.rules[it] },
-                    link.source,
-                    link.notes
-                )
-            }
-            for (corpusText in data.corpusTexts) {
-                result.addCorpusText(
-                    corpusText.text,
-                    corpusText.title,
-                    result.languageByShortName(corpusText.languageShortName),
-                    corpusText.wordIds.map { result.allWords[it] },
-                    corpusText.source,
-                    corpusText.notes
-                )
-            }
+            result.loadJson(path.readText())
+            return result
+        }
+
+        fun fromJsonString(string: String): JsonGraphRepository {
+            val result = JsonGraphRepository(null)
+            result.loadJson(string)
             return result
         }
 

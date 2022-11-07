@@ -287,13 +287,6 @@
             "source": "PE17:64"
         },
         {
-            "id": 38,
-            "text": "NDÚ",
-            "lang": "CE",
-            "gloss": "sink, go down",
-            "source": "PE17:64"
-        },
-        {
             "id": 39,
             "text": "pella",
             "lang": "Q",
@@ -2743,13 +2736,13 @@
             "source": "PE17:13"
         },
         {
-            "from": 156,
+            "from": 155,
             "to": 157,
             "type": "+",
             "source": "PE17:13"
         },
         {
-            "from": 156,
+            "from": 155,
             "to": 158,
             "type": "+",
             "source": "PE17:13"

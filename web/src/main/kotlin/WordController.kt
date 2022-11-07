@@ -116,6 +116,15 @@ class WordController(val graphService: GraphService) {
         graph.save()
         return word.toViewModel(graph)
     }
+
+    @PostMapping("/word/{id}/delete", consumes = ["application/json"])
+    @ResponseBody
+    fun deleteWord(@PathVariable id: Int) {
+        val graph = graphService.graph
+        val word = graph.wordById(id) ?: throw NoWordException()
+        graph.deleteWord(word)
+        graph.save()
+    }
 }
 
 @ResponseStatus(value = HttpStatus.NOT_FOUND, reason = "No such word")

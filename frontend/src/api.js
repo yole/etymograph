@@ -16,6 +16,10 @@ export function updateWord(id, gloss, pos, source) {
     return postToBackend(`word/${id}/update`, {gloss: gloss, pos: pos, source: source})
 }
 
+export function deleteWord(id) {
+    return postToBackend(`word/${id}/delete`, {})
+}
+
 export function addRule(fromLang, toLang, addedCategories, text, source) {
     return postToBackend('rule',
         {fromLang: fromLang, toLang: toLang, text: text, addedCategories: addedCategories, source: source})

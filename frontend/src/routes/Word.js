@@ -1,8 +1,8 @@
-import {useLoaderData, useRevalidator} from "react-router";
+import {useLoaderData, useNavigate, useRevalidator} from "react-router";
 import {Link} from "react-router-dom";
 import {useState} from "react";
 import WordForm from "./WordForm";
-import {deleteLink} from "../api";
+import {deleteLink, deleteWord} from "../api";
 
 export async function loader({params}) {
     return fetch(`${process.env.REACT_APP_BACKEND_URL}word/${params.lang}/${params["*"]}`, { headers: { 'Accept': 'application/json'} })
@@ -16,6 +16,7 @@ export default function Word() {
     const [showCompoundComponent, setShowCompoundComponent] = useState(false)
     const [showRelated, setShowRelated] = useState(false)
     const [editMode, setEditMode] = useState(false)
+    const navigate = useNavigate()
 
     function submitted() {
         setShowBaseWord(false)
@@ -28,6 +29,13 @@ export default function Word() {
     function editSubmitted() {
         setEditMode(false)
         revalidator.revalidate()
+    }
+
+    function deleteWordClicked() {
+        if (window.confirm("Delete this word?")) {
+            deleteWord(word.id)
+                .then(() => navigate("/dictionary/" +  word.language))
+        }
     }
 
     function deleteLinkClicked(fromWord, toWord, linkType) {
@@ -50,6 +58,7 @@ export default function Word() {
                                initialSource={word.source}
                                submitted={editSubmitted}/>}
         <button onClick={() => setEditMode(!editMode)}>{editMode ? "Cancel" : "Edit"}</button>
+        <button onClick={() => deleteWordClicked()}>Delete</button>
         {word.linksFrom.map(l => <>
             <div>{l.type}</div>
             {l.words.map(w => <div>
