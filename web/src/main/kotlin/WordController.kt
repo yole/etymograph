@@ -33,6 +33,7 @@ class WordController(val graphService: GraphService) {
         val glossComputed: Boolean,
         val pos: String?,
         val source: String?,
+        val notes: String?,
         val linksFrom: List<LinkTypeViewModel>,
         val linksTo: List<LinkTypeViewModel>
     )
@@ -56,6 +57,7 @@ class WordController(val graphService: GraphService) {
             gloss == null,
             pos,
             source,
+            notes,
             linksFrom.map {
                 LinkTypeViewModel(
                     it.key.id,
@@ -84,7 +86,13 @@ class WordController(val graphService: GraphService) {
         return words.single()
     }
 
-    data class AddWordParameters(val text: String?, val gloss: String?, val pos: String?, val source: String?)
+    data class AddWordParameters(
+        val text: String?,
+        val gloss: String?,
+        val pos: String?,
+        val source: String?,
+        val notes: String?
+    )
 
     @PostMapping("/word/{lang}", consumes = ["application/json"])
     @ResponseBody
@@ -99,7 +107,7 @@ class WordController(val graphService: GraphService) {
             params.gloss.nullize(),
             params.pos.nullize(),
             params.source.nullize(),
-            null
+            params.notes.nullize()
         )
         graph.save()
         return word.toViewModel(graph)
@@ -113,6 +121,7 @@ class WordController(val graphService: GraphService) {
         word.gloss = params.gloss.nullize()
         word.pos = params.pos.nullize()
         word.source = params.source.nullize()
+        word.notes = params.notes.nullize()
         graph.save()
         return word.toViewModel(graph)
     }

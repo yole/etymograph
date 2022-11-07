@@ -7,10 +7,11 @@ export default function WordForm(props) {
     const [newWordPos, setNewWordPos] = useState(props.initialPos !== undefined ? props.initialPos : "")
     const [newWordSource, setNewWordSource] = useState(props.initialSource !== undefined ? props.initialSource : "")
     const [newWordLanguage, setNewWordLanguage] = useState(props.language || "")
+    const [newWordNotes, setNewWordNotes] = useState(props.initialNotes !== undefined ? props.initialNotes : "")
 
     function handleFormSubmit(e) {
         if (props.updateId !== undefined) {
-            updateWord(props.updateId, newWordGloss, newWordPos, newWordSource)
+            updateWord(props.updateId, newWordGloss, newWordPos, newWordSource, newWordNotes)
                 .then(r => r.json())
                 .then(r => props.submitted(r))
         }
@@ -36,6 +37,7 @@ export default function WordForm(props) {
                 })
             setNewWordText("")
             setNewWordGloss("")
+            setNewWordNotes("")
         }
 
         e.preventDefault()
@@ -68,6 +70,11 @@ export default function WordForm(props) {
                 <td><label>Source:</label></td>
                 <td><input type="text" value={newWordSource} onChange={e => setNewWordSource(e.target.value)}
                            id="word-input"/></td>
+            </tr>
+            <tr>
+                <td><label htmlFor="word-notes">Notes:</label></td>
+                <td><textarea rows="3" cols="50" value={newWordNotes} onChange={e => setNewWordNotes(e.target.value)}
+                           id="word-notes"/></td>
             </tr>
             </tbody>
         </table>

@@ -8,12 +8,12 @@ function postToBackend(endpoint, data) {
     })
 }
 
-export function addWord(lang, text, gloss, pos, source) {
-    return postToBackend('word/' + lang, {text: text, gloss: gloss, pos: pos, source: source})
+export function addWord(lang, text, gloss, pos, source, notes) {
+    return postToBackend('word/' + lang, {text: text, gloss: gloss, pos: pos, source: source, notes: notes})
 }
 
-export function updateWord(id, gloss, pos, source) {
-    return postToBackend(`word/${id}/update`, {gloss: gloss, pos: pos, source: source})
+export function updateWord(id, gloss, pos, source, notes) {
+    return postToBackend(`word/${id}/update`, {gloss: gloss, pos: pos, source: source, notes})
 }
 
 export function deleteWord(id) {

@@ -50,12 +50,14 @@ export default function Word() {
         {!editMode && <>
             {word.pos && <div>{word.pos}</div>}
             <p><Link to={`/dictionary/${word.language}`}>{word.language}</Link> {word.gloss}</p>
+            {word.notes && <p>{word.notes}</p>}
             {word.source != null && <div className="source">Source: {word.source}</div>}
         </>}
         {editMode && <WordForm language={word.language} updateId={word.id}
                                initialGloss={word.glossComputed ? undefined : word.gloss}
                                initialPos={word.pos}
                                initialSource={word.source}
+                               initialNotes={word.notes}
                                submitted={editSubmitted}/>}
         <button onClick={() => setEditMode(!editMode)}>{editMode ? "Cancel" : "Edit"}</button>
         {!editMode && <button onClick={() => deleteWordClicked()}>Delete</button>}

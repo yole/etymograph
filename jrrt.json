@@ -1954,6 +1954,42 @@
             "gloss": "watch",
             "pos": "V",
             "source": "PE17:25"
+        },
+        {
+            "id": 278,
+            "text": "galadh-remmin",
+            "lang": "S",
+            "source": "PE17:25",
+            "notes": "There was not in Sindarin much distinction in size between *galadh* and *orn*. But oak..."
+        },
+        {
+            "id": 279,
+            "text": "galadh",
+            "lang": "S",
+            "gloss": "tree",
+            "pos": "N",
+            "source": "PE17:25"
+        },
+        {
+            "id": 280,
+            "text": "remmin",
+            "lang": "S",
+            "gloss": "meshed.PL",
+            "source": "PE17:26"
+        },
+        {
+            "id": 281,
+            "text": "GALA-",
+            "lang": "CE",
+            "gloss": "grow like plants",
+            "source": "PE17:25"
+        },
+        {
+            "id": 282,
+            "text": "remmen",
+            "lang": "S",
+            "gloss": "meshed",
+            "source": "PE17:26"
         }
     ],
     "rules": [
@@ -3255,6 +3291,31 @@
         {
             "from": 37,
             "to": 184,
+            "type": ">"
+        },
+        {
+            "from": 278,
+            "to": 279,
+            "type": "+"
+        },
+        {
+            "from": 278,
+            "to": 280,
+            "type": "+"
+        },
+        {
+            "from": 19,
+            "to": 281,
+            "type": ">"
+        },
+        {
+            "from": 279,
+            "to": 281,
+            "type": ">"
+        },
+        {
+            "from": 280,
+            "to": 282,
             "type": ">"
         }
     ],
