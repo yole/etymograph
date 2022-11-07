@@ -58,7 +58,7 @@ export default function Word() {
                                initialSource={word.source}
                                submitted={editSubmitted}/>}
         <button onClick={() => setEditMode(!editMode)}>{editMode ? "Cancel" : "Edit"}</button>
-        <button onClick={() => deleteWordClicked()}>Delete</button>
+        {!editMode && <button onClick={() => deleteWordClicked()}>Delete</button>}
         {word.linksFrom.map(l => <>
             <div>{l.type}</div>
             {l.words.map(w => <div>
