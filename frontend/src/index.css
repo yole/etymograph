@@ -20,3 +20,16 @@ code {
   text-decoration: underline dashed;
   cursor: pointer;
 }
+
+.deleteLink {
+  font-size: smaller;
+}
+
+.deleteLinkButton {
+  border-style: none;
+  background-color: transparent;
+  padding: 0;
+  text-decoration: underline;
+  color: blue;
+  cursor: pointer;
+}

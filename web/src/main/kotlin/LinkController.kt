@@ -21,6 +21,18 @@ class LinkController(val graphService: GraphService) {
         graph.addLink(fromWord, toWord, linkType, null, null, null)
         graph.save()
     }
+
+    @PostMapping("/link/delete")
+    fun deleteLink(@RequestBody params: LinkParams): Boolean {
+        val graph = graphService.graph
+        val fromWord = graph.wordById(params.fromWord) ?: throw NoWordException()
+        val toWord = graph.wordById(params.toWord) ?: throw NoWordException()
+        val linkType = Link.allLinkTypes.find { it.id == params.linkType } ?: throw NoLinkTypeException()
+
+        return graph.deleteLink(fromWord, toWord, linkType).also {
+            graph.save()
+        }
+    }
 }
 
 @ResponseStatus(value = HttpStatus.BAD_REQUEST, reason = "No such link type")

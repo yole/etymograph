@@ -2,6 +2,7 @@ import {useLoaderData, useRevalidator} from "react-router";
 import {Link} from "react-router-dom";
 import {useState} from "react";
 import WordForm from "./WordForm";
+import {deleteLink} from "../api";
 
 export async function loader({params}) {
     return fetch(`${process.env.REACT_APP_BACKEND_URL}word/${params.lang}/${params["*"]}`, { headers: { 'Accept': 'application/json'} })
@@ -29,6 +30,13 @@ export default function Word() {
         revalidator.revalidate()
     }
 
+    function deleteLinkClicked(fromWord, toWord, linkType) {
+        if (window.confirm("Delete this link?")) {
+            deleteLink(fromWord, toWord, linkType)
+                .then(() => revalidator.revalidate())
+        }
+    }
+
     return <>
         <h2>{word.text}</h2>
         {!editMode && <>
@@ -48,6 +56,9 @@ export default function Word() {
                 {w.language !== word.language && w.language + " "}
                 <Link to={`/word/${w.language}/${w.text}`}>{w.text}</Link>
                 {w.ruleId !== null && <>&nbsp;(<Link to={`/rule/${w.ruleId}`}>rule</Link>)</>}
+                &nbsp;<span className="deleteLink">
+                    (<button className="deleteLinkButton" onClick={() => deleteLinkClicked(word.id, w.id, l.typeId)}>x</button>)
+                </span>
             </div>)}
         </>)}
         {word.linksTo.map(l => <>
@@ -56,6 +67,9 @@ export default function Word() {
                 {w.language !== word.language && w.language + " "}
                 <Link to={`/word/${w.language}/${w.text}`}>{w.text}</Link>
                 {w.ruleId !== null && <>&nbsp;(<Link to={`/rule/${w.ruleId}`}>rule</Link>)</>}
+                &nbsp;<span className="deleteLink">
+                    (<button className="deleteLinkButton" onClick={() => deleteLinkClicked(w.id, word.id, l.typeId)}>x</button>)
+                </span>
             </div>)}
         </>)}
 

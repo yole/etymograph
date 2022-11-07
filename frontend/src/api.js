@@ -32,3 +32,7 @@ export function addCorpusText(text) {
 export function addLink(fromWord, toWord, linkType) {
     return postToBackend('link', {fromWord: fromWord, toWord: toWord, linkType: linkType})
 }
+
+export function deleteLink(fromWord, toWord, linkType) {
+    return postToBackend('link/delete', {fromWord: fromWord, toWord: toWord, linkType: linkType})
+}

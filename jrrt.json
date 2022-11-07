@@ -1820,6 +1820,21 @@
             "gloss": "light",
             "pos": "N",
             "source": "V"
+        },
+        {
+            "id": 259,
+            "text": "aglar",
+            "lang": "S",
+            "gloss": "glory",
+            "pos": "N",
+            "source": "PE17:24"
+        },
+        {
+            "id": 260,
+            "text": "kirya",
+            "lang": "Q",
+            "gloss": "cleft",
+            "pos": "N"
         }
     ],
     "rules": [
@@ -2502,18 +2517,6 @@
             "source": "PE17:73"
         },
         {
-            "from": 122,
-            "to": 123,
-            "type": "+",
-            "source": "PE17:73"
-        },
-        {
-            "from": 122,
-            "to": 124,
-            "type": "+",
-            "source": "PE17:73"
-        },
-        {
             "from": 125,
             "to": 126,
             "type": ">",
@@ -3035,6 +3038,26 @@
             "from": 258,
             "to": 123,
             "type": ">"
+        },
+        {
+            "from": 259,
+            "to": 123,
+            "type": ">"
+        },
+        {
+            "from": 260,
+            "to": 124,
+            "type": ">"
+        },
+        {
+            "from": 122,
+            "to": 258,
+            "type": "+"
+        },
+        {
+            "from": 122,
+            "to": 260,
+            "type": "+"
         }
     ],
     "corpusTexts": [

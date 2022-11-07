@@ -88,6 +88,12 @@ class JsonGraphRepository(val path: Path) : InMemoryGraphRepository() {
         }
     }
 
+    override fun deleteLink(fromWord: Word, toWord: Word, type: LinkType): Boolean {
+        return super.deleteLink(fromWord, toWord, type).also {
+            allLinks.removeIf { it.fromWord == fromWord && it.toWord == toWord && it.type == type }
+        }
+    }
+
     override fun save() {
         path.writeText(toJson())
     }
