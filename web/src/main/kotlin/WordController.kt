@@ -134,6 +134,28 @@ class WordController(val graphService: GraphService) {
         graph.deleteWord(word)
         graph.save()
     }
+
+    data class WordParadigmModel(
+        val title: String,
+        val rowTitles: List<String>,
+        val columnTitles: List<String>,
+        val cells: List<List<String>>
+    )
+
+    @GetMapping("/word/{id}/paradigms", produces = ["application/json"])
+    @ResponseBody
+    fun wordParadigms(@PathVariable id: Int): List<WordParadigmModel> {
+        val graph = graphService.graph
+        val word = graph.wordById(id) ?: throw NoWordException()
+        return graph.paradigmsForLanguage(word.language).filter { it.pos == word.pos }.map {
+            WordParadigmModel(
+                it.name,
+                it.rowTitles,
+                it.columns.map { col -> col.title },
+                it.generate(word)
+            )
+        }
+    }
 }
 
 @ResponseStatus(value = HttpStatus.NOT_FOUND, reason = "No such word")

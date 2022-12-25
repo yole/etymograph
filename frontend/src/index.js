@@ -17,6 +17,7 @@ import RuleEditor from "./routes/RuleEditor";
 import ParadigmList, { loader as paradigmListLoader } from "./routes/ParadigmList";
 import ParadigmEditor from "./routes/ParadigmEditor";
 import Paradigm, { loader as paradigmLoader } from "./routes/Paradigm";
+import WordParadigms, { loader as wordParadigmLoader } from "./routes/WordParadigms";
 
 const router = createBrowserRouter([
     {
@@ -81,6 +82,11 @@ const router = createBrowserRouter([
     {
         path: '/paradigms/:lang/new',
         element: <ParadigmEditor/>
+    },
+    {
+        path: '/word/:id/paradigms',
+        element: <WordParadigms/>,
+        loader: wordParadigmLoader
     }
 ])
 

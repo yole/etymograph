@@ -93,6 +93,8 @@ export default function Word() {
         {showCompoundComponent && <WordForm submitted={submitted} compoundWord={word} language={word.language}/>}
         <a href="#" onClick={() => setShowRelated(!showRelated)}>Add related word</a><br/>
         {showRelated && <WordForm submitted={submitted} relatedWord={word} language={word.language}/>}
+        <p/>
+        <Link to={`/word/${word.id}/paradigms`}>Paradigms</Link>
     </>
 }
 
