@@ -21,11 +21,11 @@ export default function Rule() {
     return <>
         <h3>{rule.addedCategories}</h3>
         {!editMode && rule.branches.map(b => <>
-            <div>When:</div>
+            <div>{b.conditions.length > 0 ? "When:" : "Otherwise:"}</div>
             <ul>
                 {b.conditions.map(c => <li>{c}</li>)}
             </ul>
-            <div>Then:</div>
+            {b.conditions.length > 0 && <div>Then:</div>}
             <ul>
                 {b.instructions.map(i => <li>{i}</li>)}
             </ul>

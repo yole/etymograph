@@ -2074,8 +2074,18 @@
                     "conditions": [
                         {
                             "type": "EndsWith",
-                            "characters": "eë"
+                            "characters": "oö"
                         }
+                    ],
+                    "instructions": [
+                        {
+                            "type": "NoChange",
+                            "arg": ""
+                        }
+                    ]
+                },
+                {
+                    "conditions": [
                     ],
                     "instructions": [
                         {

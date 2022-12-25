@@ -40,12 +40,14 @@ class RuleCondition(val type: ConditionType, val characterClass: CharacterClass)
 }
 
 enum class InstructionType(val insnName: String, val takesArgument: Boolean) {
+    NoChange("no change", false),
     RemoveLastCharacter("remove last character", false),
     AddSuffix("add suffix", true)
 }
 
 class RuleInstruction(val type: InstructionType, val arg: String) {
     fun apply(word: String): String = when(type) {
+        InstructionType.NoChange -> word
         InstructionType.RemoveLastCharacter -> word.substring(0, word.lastIndex)
         InstructionType.AddSuffix -> word + arg
     }
@@ -75,7 +77,11 @@ class RuleBranch(val conditions: List<RuleCondition>, val instructions: List<Rul
     }
 
     fun prettyPrint(): String {
-        return conditions.joinToString(" and ") { it.prettyPrint() } + ":\n" +
+        val prettyConditions = if (conditions.isEmpty())
+            "otherwise"
+        else
+            conditions.joinToString(" and ") { it.prettyPrint() }
+        return prettyConditions + ":\n" +
                 instructions.joinToString("\n") { " - " + it.prettyPrint() }
     }
 
