@@ -1995,6 +1995,7 @@
     "rules": [
         {
             "id": 0,
+            "name": "q-nom-pl",
             "fromLang": "Q",
             "toLang": "Q",
             "branches": [
@@ -2049,6 +2050,7 @@
         },
         {
             "id": 1,
+            "name": "q-gen",
             "fromLang": "Q",
             "toLang": "Q",
             "branches": [
@@ -2099,6 +2101,7 @@
         },
         {
             "id": 2,
+            "name": "q-abl",
             "fromLang": "Q",
             "toLang": "Q",
             "branches": [
@@ -2121,6 +2124,7 @@
         },
         {
             "id": 3,
+            "name": "q-all",
             "fromLang": "Q",
             "toLang": "Q",
             "branches": [
@@ -2143,6 +2147,7 @@
         },
         {
             "id": 4,
+            "name": "q-poss-3sg",
             "fromLang": "Q",
             "toLang": "Q",
             "branches": [
@@ -2161,6 +2166,7 @@
         },
         {
             "id": 5,
+            "name": "q-2sg",
             "fromLang": "Q",
             "toLang": "Q",
             "branches": [
@@ -2179,6 +2185,7 @@
         },
         {
             "id": 6,
+            "name": "q-1sg",
             "fromLang": "Q",
             "toLang": "Q",
             "branches": [
@@ -2197,6 +2204,7 @@
         },
         {
             "id": 7,
+            "name": "q-3sg",
             "fromLang": "Q",
             "toLang": "Q",
             "branches": [
@@ -3443,6 +3451,44 @@
             "title": "A Elbereth Gilthoniel",
             "lang": "S",
             "wordIds": [
+            ]
+        }
+    ],
+    "paradigms": [
+        {
+            "id": 0,
+            "name": "Noun",
+            "lang": "Q",
+            "pos": "N",
+            "rows": [
+                "Nom",
+                "Gen"
+            ],
+            "columns": [
+                {
+                    "title": "Sg",
+                    "cells": [
+                        {
+                            "ruleIds": [
+                            ]
+                        },
+                        {
+                            "ruleIds": [
+                                1
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "Pl",
+                    "cells": [
+                        {
+                            "ruleIds": [
+                                0
+                            ]
+                        }
+                    ]
+                }
             ]
         }
     ]

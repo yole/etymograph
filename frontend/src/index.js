@@ -14,6 +14,9 @@ import RuleList, { loader as ruleListLoader } from "./routes/RuleList";
 import Rule, { loader as ruleLoader } from "./routes/Rule";
 import CorpusTextEditor from "./routes/CorpusTextEditor";
 import RuleEditor from "./routes/RuleEditor";
+import ParadigmList, { loader as paradigmListLoader } from "./routes/ParadigmList";
+import ParadigmEditor from "./routes/ParadigmEditor";
+import Paradigm, { loader as paradigmLoader } from "./routes/Paradigm";
 
 const router = createBrowserRouter([
     {
@@ -64,6 +67,20 @@ const router = createBrowserRouter([
     {
         path: '/rules/new',
         element: <RuleEditor/>
+    },
+    {
+        path: '/paradigms/:lang',
+        element: <ParadigmList/>,
+        loader: paradigmListLoader
+    },
+    {
+        path: '/paradigm/:id',
+        element: <Paradigm/>,
+        loader: paradigmLoader
+    },
+    {
+        path: '/paradigms/:lang/new',
+        element: <ParadigmEditor/>
     }
 ])
 

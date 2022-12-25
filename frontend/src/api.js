@@ -40,3 +40,11 @@ export function addLink(fromWord, toWord, linkType) {
 export function deleteLink(fromWord, toWord, linkType) {
     return postToBackend('link/delete', {fromWord: fromWord, toWord: toWord, linkType: linkType})
 }
+
+export function addParadigm(name, language, pos, text) {
+    return postToBackend('paradigms/' + language, {name: name, pos: pos, text: text})
+}
+
+export function updateParadigm(id, name, pos, text) {
+    return postToBackend('paradigm/' + id, {name: name, pos: pos, text: text})
+}

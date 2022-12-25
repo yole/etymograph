@@ -11,6 +11,7 @@ class RuleController(val graphService: GraphService) {
     data class RuleBranchViewModel(val conditions: List<String>, val instructions: List<String>)
     data class RuleViewModel(
         val id: Int,
+        val name: String,
         val fromLang: String,
         val toLang: String,
         val prettyText: String,
@@ -33,7 +34,7 @@ class RuleController(val graphService: GraphService) {
 
     private fun Rule.toViewModel(): RuleViewModel {
         return RuleViewModel(
-            id, fromLanguage.shortName, toLanguage.shortName,
+            id, name, fromLanguage.shortName, toLanguage.shortName,
             prettyPrint(),
             addedCategories,
             source,
@@ -48,6 +49,7 @@ class RuleController(val graphService: GraphService) {
     }
 
     data class UpdateRuleParameters(
+        val name: String,
         val fromLang: String,
         val toLang: String,
         val text: String,
@@ -65,7 +67,7 @@ class RuleController(val graphService: GraphService) {
         if (toLanguage == UnknownLanguage) throw NoLanguageException()
 
         val branches = Rule.parseBranches(params.text) { cls -> graph.characterClassByName(fromLanguage, cls) }
-        val rule = graph.addRule(fromLanguage, toLanguage, branches, params.addedCategories, params.source, null)
+        val rule = graph.addRule(params.name, fromLanguage, toLanguage, branches, params.addedCategories, params.source, null)
         graph.save()
         return rule.toViewModel()
     }

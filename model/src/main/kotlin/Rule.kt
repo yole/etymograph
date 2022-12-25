@@ -109,6 +109,7 @@ class RuleBranch(val conditions: List<RuleCondition>, val instructions: List<Rul
 
 class Rule(
     val id: Int,
+    val name: String,
     val fromLanguage: Language,
     val toLanguage: Language,
     var branches: List<RuleBranch>,

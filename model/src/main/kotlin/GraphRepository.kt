@@ -17,6 +17,7 @@ abstract class GraphRepository {
 
     abstract fun allRules(): Iterable<Rule>
     abstract fun ruleById(id: Int): Rule?
+    abstract fun ruleByName(ruleName: String): Rule?
 
     abstract fun characterClassByName(lang: Language, name: String): CharacterClass?
 
@@ -32,6 +33,7 @@ abstract class GraphRepository {
     abstract fun deleteWord(word: Word)
 
     abstract fun addRule(
+        name: String,
         fromLanguage: Language,
         toLanguage: Language,
         branches: List<RuleBranch>,
@@ -48,6 +50,15 @@ abstract class GraphRepository {
         source: String?,
         notes: String?
     ): CorpusText
+
+    abstract fun addParadigm(
+        name: String,
+        language: Language,
+        pos: String
+    ): Paradigm
+
+    abstract fun paradigmsForLanguage(lang: Language): List<Paradigm>
+    abstract fun paradigmById(id: Int): Paradigm?
 
     abstract fun addLink(fromWord: Word, toWord: Word, type: LinkType, rule: Rule?, source: String?, notes: String?): Link
     abstract fun deleteLink(fromWord: Word, toWord: Word, type: LinkType): Boolean

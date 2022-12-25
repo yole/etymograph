@@ -19,7 +19,8 @@ export default function Rule() {
     }
 
     return <>
-        <h3>{rule.addedCategories}</h3>
+        <h3>{rule.name}</h3>
+        <p>Added categories: {rule.addedCategories}</p>
         {!editMode && rule.branches.map(b => <>
             <div>{b.conditions.length > 0 ? "When:" : "Otherwise:"}</div>
             <ul>

@@ -35,6 +35,7 @@ data class RuleBranchData(val conditions: List<RuleConditionData>, val instructi
 @Serializable
 data class RuleData(
     val id: Int,
+    val name: String?,
     @SerialName("fromLang") val fromLanguageShortName: String,
     @SerialName("toLang") val toLanguageShortName: String,
     val branches: List<RuleBranchData>,
@@ -63,13 +64,35 @@ data class CorpusTextData(
 )
 
 @Serializable
+data class ParadigmCellData(
+    val ruleIds: List<Int>
+)
+
+@Serializable
+data class ParadigmColumnData(
+    val title: String,
+    val cells: List<ParadigmCellData>
+)
+
+@Serializable
+data class ParadigmData(
+    val id: Int,
+    val name: String,
+    @SerialName("lang") val languageShortName: String,
+    val pos: String,
+    val rows: List<String>,
+    val columns: List<ParadigmColumnData>
+)
+
+@Serializable
 data class GraphRepositoryData(
     val languages: List<LanguageData>,
     val characterClasses: List<CharacterClassData>,
     val words: List<WordData>,
     val rules: List<RuleData>,
     val links: List<LinkData>,
-    val corpusTexts: List<CorpusTextData>
+    val corpusTexts: List<CorpusTextData>,
+    val paradigms: List<ParadigmData>
 )
 
 class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
@@ -126,6 +149,13 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                     it.id, it.text, it.title, it.language.shortName,
                     it.words.map { it.id }, it.source, it.notes
                 )
+            },
+            paradigms.map {
+                ParadigmData(it.id, it.name, it.language.shortName, it.pos, it.rowTitles, it.columns.map { col ->
+                    ParadigmColumnData(col.title, col.cells.map { cell ->
+                        ParadigmCellData(cell?.rules?.map { it.id } ?: emptyList())
+                    })
+                })
             }
         )
     }
@@ -158,6 +188,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
         for (rule in data.rules) {
             val fromLanguage = languageByShortName(rule.fromLanguageShortName)
             addRule(
+                rule.name ?: "",
                 fromLanguage,
                 languageByShortName(rule.toLanguageShortName),
                 ruleBranchesFromSerializedFormat(this, fromLanguage, rule.branches),
@@ -190,6 +221,26 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                 corpusText.notes
             )
         }
+        for (paradigm in data.paradigms) {
+            addParadigm(
+                paradigm.name,
+                languageByShortName(paradigm.languageShortName),
+                paradigm.pos
+            ).apply {
+                for (row in paradigm.rows) {
+                    addRow(row)
+                }
+                for ((colIndex, column) in paradigm.columns.withIndex()) {
+                    addColumn(column.title)
+                    for ((rowIndex, cell) in column.cells.withIndex()) {
+                        if (cell.ruleIds.isNotEmpty()) {
+                            val rules = cell.ruleIds.map { ruleById(it)!! }
+                            setRule(rowIndex, colIndex, rules)
+                        }
+                    }
+                }
+            }
+        }
     }
 
     companion object {
@@ -210,6 +261,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
         fun ruleToSerializedFormat(it: Rule) =
             RuleData(
                 it.id,
+                it.name,
                 it.fromLanguage.shortName,
                 it.toLanguage.shortName,
                 it.branches.map { branch ->

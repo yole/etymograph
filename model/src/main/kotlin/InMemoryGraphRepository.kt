@@ -12,6 +12,7 @@ open class InMemoryGraphRepository : GraphRepository() {
     private val linksTo = mutableMapOf<Word, MutableList<Link>>()
     protected val rules = mutableListOf<Rule>()
     protected val namedCharacterClasses = mutableMapOf<Language, MutableList<CharacterClass>>()
+    protected val paradigms = mutableListOf<Paradigm>()
 
     fun addLanguage(language: Language) {
         languages[language.shortName] = language
@@ -38,6 +39,10 @@ open class InMemoryGraphRepository : GraphRepository() {
 
     override fun corpusTextById(id: Int): CorpusText? {
         return corpus.getOrNull(id - 1)
+    }
+
+    override fun addParadigm(name: String, language: Language, pos: String): Paradigm {
+        return Paradigm(paradigms.size, name, language, pos).also { paradigms += it }
     }
 
     override fun wordsByText(lang: Language, text: String): List<Word> {
@@ -150,6 +155,7 @@ open class InMemoryGraphRepository : GraphRepository() {
     }
 
     override fun addRule(
+        name: String,
         fromLanguage: Language,
         toLanguage: Language,
         branches: List<RuleBranch>,
@@ -157,8 +163,16 @@ open class InMemoryGraphRepository : GraphRepository() {
         source: String?,
         notes: String?
     ): Rule {
-        return Rule(rules.size, fromLanguage, toLanguage, branches, addedCategories, source, notes)
+        return Rule(rules.size, name, fromLanguage, toLanguage, branches, addedCategories, source, notes)
             .also { rules.add(it) }
+    }
+
+    override fun paradigmsForLanguage(lang: Language): List<Paradigm> {
+        return paradigms.filter { it.language == lang }
+    }
+
+    override fun paradigmById(id: Int): Paradigm? {
+        return paradigms.getOrNull(id)
     }
 
     override fun findMatchingRule(fromWord: Word, toWord: Word): Rule? {
@@ -176,5 +190,9 @@ open class InMemoryGraphRepository : GraphRepository() {
 
     override fun ruleById(id: Int): Rule? {
         return rules.getOrNull(id)
+    }
+
+    override fun ruleByName(ruleName: String): Rule? {
+        return rules.find { it.name == ruleName }
     }
 }

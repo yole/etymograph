@@ -10,7 +10,7 @@ export default function RuleList() {
     return <>
     <h2>Rules</h2>
         <ul>
-            {rules.map(r => <li key={r.id}><Link to={`/rule/${r.id}`}>{r.addedCategories}</Link></li>)}
+            {rules.map(r => <li key={r.id}><Link to={`/rule/${r.id}`}>{r.name}</Link></li>)}
         </ul>
         <Link to="/rules/new">Add rule</Link>
     </>
