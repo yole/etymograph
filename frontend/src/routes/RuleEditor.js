@@ -9,12 +9,18 @@ export default function RuleEditor() {
     const [addedCategories, setAddedCategories] = useState("")
     const [source, setSource] = useState("")
     const [editableText, setEditableText] = useState("")
+    const [errorText, setErrorText] = useState("")
     const navigate = useNavigate()
 
     function saveRule() {
         addRule(name, fromLanguage, toLanguage, addedCategories, editableText, source)
-            .then(r => r.json())
-            .then(r => navigate("/rule/" + r.id))
+            .then(r => {
+                if (r.status === 200)
+                    r.json().then(r => navigate("/rule/" + r.id))
+                else {
+                    setErrorText(r.statusText.length > 0 ? r.statusText : "Failed to save rule")
+                }
+            })
     }
 
     return <>
@@ -43,5 +49,7 @@ export default function RuleEditor() {
         <textarea rows="10" cols="50" value={editableText} onChange={e => setEditableText(e.target.value)}/>
         <br/>
         <button onClick={saveRule}>Save</button>
+        <br/>
+        {errorText !== "" && <div className="errorText">{errorText}</div>}
     </>
 }

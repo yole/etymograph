@@ -33,3 +33,7 @@ code {
   color: blue;
   cursor: pointer;
 }
+
+.errorText {
+  color: red
+}

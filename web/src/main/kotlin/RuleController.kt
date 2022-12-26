@@ -2,8 +2,10 @@ package ru.yole.etymograph.web
 
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
+import org.springframework.web.server.ResponseStatusException
 import ru.yole.etymograph.Rule
 import ru.yole.etymograph.RuleBranch
+import ru.yole.etymograph.RuleParseException
 import ru.yole.etymograph.UnknownLanguage
 
 @RestController
@@ -66,7 +68,13 @@ class RuleController(val graphService: GraphService) {
         val toLanguage = graph.languageByShortName(params.toLang)
         if (toLanguage == UnknownLanguage) throw NoLanguageException()
 
-        val branches = Rule.parseBranches(params.text) { cls -> graph.characterClassByName(fromLanguage, cls) }
+        val branches = try {
+            Rule.parseBranches(params.text) { cls -> graph.characterClassByName(fromLanguage, cls) }
+        }
+        catch (e: RuleParseException) {
+            throw ResponseStatusException(HttpStatus.BAD_REQUEST, e.message, e)
+        }
+
         val rule = graph.addRule(params.name, fromLanguage, toLanguage, branches, params.addedCategories, params.source, null)
         graph.save()
         return rule.toViewModel()
