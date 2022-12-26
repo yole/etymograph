@@ -2,7 +2,7 @@ package ru.yole.etymograph
 
 data class ParadigmCell(val rules: List<Rule>) {
     fun generate(word: Word): String {
-        return rules.fold(word) { w, r -> Word(-1, r.apply(w), word.language) }.text
+        return rules.fold(word) { w, r -> r.apply(w) }.text
     }
 }
 

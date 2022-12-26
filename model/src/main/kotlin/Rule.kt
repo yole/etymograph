@@ -137,13 +137,14 @@ class Rule(
         return branches.any { it.matches(word) }
     }
 
-    fun apply(word: Word): String {
+    fun apply(word: Word): Word {
         for (branch in branches) {
             if (branch.matches(word)) {
-                return branch.apply(word)
+                val text = branch.apply(word)
+                return Word(-1, text, word.language, word.gloss?.let { it + (addedCategories ?: "") }, word.pos)
             }
         }
-        return word.text
+        return word
     }
 
     fun toEditableText(): String {

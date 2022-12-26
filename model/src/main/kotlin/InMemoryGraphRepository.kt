@@ -177,7 +177,7 @@ open class InMemoryGraphRepository : GraphRepository() {
 
     override fun findMatchingRule(fromWord: Word, toWord: Word): Rule? {
         for (rule in rules) {
-            if (rule.matches(toWord) && rule.apply(toWord) == fromWord.text) {
+            if (rule.matches(toWord) && rule.apply(toWord).text == fromWord.text) {
                 return rule
             }
         }
