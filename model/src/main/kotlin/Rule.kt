@@ -17,7 +17,7 @@ class RuleCondition(val type: ConditionType, val characterClass: CharacterClass)
         }
     }
 
-    fun prettyPrint(): String = when(type) {
+    fun toEditableText(): String = when(type) {
         ConditionType.EndsWith -> wordEndsWith + (characterClass.name?.let { "a $it" } ?: "'${characterClass.matchingCharacters}'")
     }
 
@@ -52,7 +52,7 @@ class RuleInstruction(val type: InstructionType, val arg: String) {
         InstructionType.AddSuffix -> word + arg
     }
 
-    fun prettyPrint(): String = type.insnName + (if (type.takesArgument)  " '$arg'" else "")
+    fun toEditableText(): String = type.insnName + (if (type.takesArgument)  " '$arg'" else "")
 
     companion object {
         fun parse(s: String): RuleInstruction {
@@ -76,13 +76,13 @@ class RuleBranch(val conditions: List<RuleCondition>, val instructions: List<Rul
         return instructions.fold(word.text) { s, i -> i.apply(s) }
     }
 
-    fun prettyPrint(): String {
-        val prettyConditions = if (conditions.isEmpty())
+    fun toEditableText(): String {
+        val editableConditions = if (conditions.isEmpty())
             "otherwise"
         else
-            conditions.joinToString(" and ") { it.prettyPrint() }
-        return prettyConditions + ":\n" +
-                instructions.joinToString("\n") { " - " + it.prettyPrint() }
+            conditions.joinToString(" and ") { it.toEditableText() }
+        return editableConditions + ":\n" +
+                instructions.joinToString("\n") { " - " + it.toEditableText() }
     }
 
     companion object {
@@ -130,8 +130,8 @@ class Rule(
         return word.text
     }
 
-    fun prettyPrint(): String {
-        return branches.joinToString("\n\n") { it.prettyPrint() }
+    fun toEditableText(): String {
+        return branches.joinToString("\n\n") { it.toEditableText() }
     }
 
     companion object {

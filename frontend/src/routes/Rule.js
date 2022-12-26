@@ -9,11 +9,11 @@ export async function loader({params}) {
 export default function Rule() {
     const rule = useLoaderData()
     const [editMode, setEditMode] = useState(false)
-    const [prettyText, setPrettyText] = useState(rule.prettyText)
+    const [editableText, setEditableText] = useState(rule.editableText)
     const revalidator = useRevalidator()
 
     function saveRule() {
-        updateRule(rule.id, rule.fromLang, rule.toLang, prettyText)
+        updateRule(rule.id, rule.fromLang, rule.toLang, editableText)
             .then(() => revalidator.revalidate())
         setEditMode(false)
     }
@@ -32,7 +32,7 @@ export default function Rule() {
             </ul>
         </>)}
         {editMode && <>
-            <textarea rows="10" cols="50" value={prettyText} onChange={(e) => setPrettyText(e.target.value)}/>
+            <textarea rows="10" cols="50" value={editableText} onChange={(e) => setEditableText(e.target.value)}/>
             <br/>
             <button onClick={() => saveRule()}>Save</button>
         </>}

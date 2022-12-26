@@ -14,7 +14,7 @@ class RuleController(val graphService: GraphService) {
         val name: String,
         val fromLang: String,
         val toLang: String,
-        val prettyText: String,
+        val editableText: String,
         val addedCategories: String?,
         val source: String?,
         val branches: List<RuleBranchViewModel>
@@ -35,7 +35,7 @@ class RuleController(val graphService: GraphService) {
     private fun Rule.toViewModel(): RuleViewModel {
         return RuleViewModel(
             id, name, fromLanguage.shortName, toLanguage.shortName,
-            prettyPrint(),
+            toEditableText(),
             addedCategories,
             source,
             branches.map { it.toViewModel() })
@@ -43,8 +43,8 @@ class RuleController(val graphService: GraphService) {
 
     private fun RuleBranch.toViewModel(): RuleBranchViewModel {
         return RuleBranchViewModel(
-            conditions.map { it.prettyPrint() },
-            instructions.map { it.prettyPrint() }
+            conditions.map { it.toEditableText() },
+            instructions.map { it.toEditableText() }
         )
     }
 

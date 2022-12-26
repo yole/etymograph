@@ -7,11 +7,11 @@ export default function RuleEditor() {
     const [toLanguage, setToLanguage] = useState("")
     const [addedCategories, setAddedCategories] = useState("")
     const [source, setSource] = useState("")
-    const [prettyText, setPrettyText] = useState("")
+    const [editableText, setEditableText] = useState("")
     const navigate = useNavigate()
 
     function saveRule() {
-        addRule(fromLanguage, toLanguage, addedCategories, prettyText, source)
+        addRule(fromLanguage, toLanguage, addedCategories, editableText, source)
             .then(r => r.json())
             .then(r => navigate("/rule/" + r.id))
     }
@@ -35,7 +35,7 @@ export default function RuleEditor() {
                 <td><input type="text" value={source} onChange={(e) => setSource(e.target.value)}/></td>
             </tr>
         </tbody></table>
-        <textarea rows="10" cols="50" value={prettyText} onChange={e => setPrettyText(e.target.value)}/>
+        <textarea rows="10" cols="50" value={editableText} onChange={e => setEditableText(e.target.value)}/>
         <br/>
         <button onClick={saveRule}>Save</button>
     </>
