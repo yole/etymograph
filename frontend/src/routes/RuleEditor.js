@@ -3,6 +3,7 @@ import {addRule} from "../api";
 import {useNavigate} from "react-router";
 
 export default function RuleEditor() {
+    const [name, setName] = useState("")
     const [fromLanguage, setFromLanguage] = useState("")
     const [toLanguage, setToLanguage] = useState("")
     const [addedCategories, setAddedCategories] = useState("")
@@ -11,13 +12,17 @@ export default function RuleEditor() {
     const navigate = useNavigate()
 
     function saveRule() {
-        addRule(fromLanguage, toLanguage, addedCategories, editableText, source)
+        addRule(name, fromLanguage, toLanguage, addedCategories, editableText, source)
             .then(r => r.json())
             .then(r => navigate("/rule/" + r.id))
     }
 
     return <>
         <table><tbody>
+            <tr>
+                <td><label>Name:</label></td>
+                <td><input type="text" value={name} onChange={(e) => setName(e.target.value)}/></td>
+            </tr>
             <tr>
                 <td><label>From language:</label></td>
                 <td><input type="text" value={fromLanguage} onChange={(e) => setFromLanguage(e.target.value)}/></td>
