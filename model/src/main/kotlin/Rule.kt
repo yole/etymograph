@@ -78,7 +78,7 @@ class RuleBranch(val conditions: List<RuleCondition>, val instructions: List<Rul
 
     fun toEditableText(): String {
         val editableConditions = if (conditions.isEmpty())
-            "otherwise"
+            OTHERWISE
         else
             conditions.joinToString(" and ") { it.toEditableText() }
         return editableConditions + ":\n" +
@@ -89,8 +89,13 @@ class RuleBranch(val conditions: List<RuleCondition>, val instructions: List<Rul
         fun parse(s: String, characterClassLookup: (String) -> CharacterClass?): RuleBranch {
             var lines = s.split("\n").map { it.trim() }.filter { it.isNotEmpty() }
             val conditions = if (lines[0].endsWith(":")) {
-                listOf(RuleCondition.parse(lines[0].removeSuffix(":"), characterClassLookup)).also {
-                    lines = lines.drop(1)
+                val conditionList = lines[0].removeSuffix(":")
+                lines = lines.drop(1)
+                if (conditionList == OTHERWISE) {
+                    emptyList()
+                }
+                else {
+                    listOf(RuleCondition.parse(conditionList, characterClassLookup))
                 }
             }
             else {
@@ -104,6 +109,8 @@ class RuleBranch(val conditions: List<RuleCondition>, val instructions: List<Rul
             }
             return RuleBranch(conditions, instructions)
         }
+
+        const val OTHERWISE = "otherwise"
     }
 }
 
