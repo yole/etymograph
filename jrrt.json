@@ -72,6 +72,7 @@
             "text": "lasse",
             "lang": "Q",
             "gloss": "leaf",
+            "pos": "N",
             "source": "PE17:62"
         },
         {
@@ -2221,6 +2222,40 @@
             ],
             "addedCategories": "3SG",
             "source": "PE17:76"
+        },
+        {
+            "id": 8,
+            "name": "q-dat",
+            "fromLang": "Q",
+            "toLang": "Q",
+            "branches": [
+                {
+                    "conditions": [
+                        {
+                            "type": "EndsWith",
+                            "cls": "consonant"
+                        }
+                    ],
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "arg": "en"
+                        }
+                    ]
+                },
+                {
+                    "conditions": [
+                    ],
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "arg": "n"
+                        }
+                    ]
+                }
+            ],
+            "addedCategories": ".DAT",
+            "source": "Plotz"
         }
     ],
     "links": [
@@ -3462,7 +3497,8 @@
             "pos": "N",
             "rows": [
                 "Nom",
-                "Gen"
+                "Gen",
+                "Dat"
             ],
             "columns": [
                 {
@@ -3475,6 +3511,11 @@
                         {
                             "ruleIds": [
                                 1
+                            ]
+                        },
+                        {
+                            "ruleIds": [
+                                8
                             ]
                         }
                     ]

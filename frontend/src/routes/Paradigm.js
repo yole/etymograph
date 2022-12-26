@@ -31,7 +31,7 @@ export default function Paradigm() {
             {paradigm.rowTitles.map((t, index) => <tr>
                 <td>{t}</td>
                 {paradigm.columns.map(col => <td>
-                    {col.cells[index].ruleNames.map((c, i) => <Link to={`/rule/${col.cells[index].ruleIds[i]}`}>{c}</Link>)}
+                    {col.cells[index].ruleSummaries.map((c, i) => <Link to={`/rule/${col.cells[index].ruleIds[i]}`}>{c}</Link>)}
                 </td>)}
             </tr>)}
         </tbody>

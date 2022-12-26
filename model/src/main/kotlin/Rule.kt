@@ -54,6 +54,11 @@ class RuleInstruction(val type: InstructionType, val arg: String) {
 
     fun toEditableText(): String = type.insnName + (if (type.takesArgument)  " '$arg'" else "")
 
+    fun toSummaryText() = when(type) {
+        InstructionType.AddSuffix -> "-$arg"
+        else -> ""
+    }
+
     companion object {
         fun parse(s: String): RuleInstruction {
             for (type in InstructionType.values()) {
@@ -83,6 +88,10 @@ class RuleBranch(val conditions: List<RuleCondition>, val instructions: List<Rul
             conditions.joinToString(" and ") { it.toEditableText() }
         return editableConditions + ":\n" +
                 instructions.joinToString("\n") { " - " + it.toEditableText() }
+    }
+
+    fun toSummaryText(): String {
+        return instructions.joinToString("") { it.toSummaryText() }
     }
 
     companion object {
@@ -139,6 +148,11 @@ class Rule(
 
     fun toEditableText(): String {
         return branches.joinToString("\n\n") { it.toEditableText() }
+    }
+
+    fun toSummaryText(): String {
+        val summaries = branches.map { it.toSummaryText() }.filter { it.isNotEmpty() }.toSet()
+        return summaries.joinToString("/")
     }
 
     companion object {
