@@ -71,8 +71,13 @@ data class Paradigm(
                 if (w == "-") {
                     continue
                 }
-                val ruleNames = w.split(',')
-                val rules = ruleNames.map { ruleLookup(it) ?: throw ParadigmParseException("Can't find rule $it") }
+                val rules = if (w == ".") {
+                    emptyList()
+                }
+                else {
+                    val ruleNames = w.split(',')
+                    ruleNames.map { ruleLookup(it) ?: throw ParadigmParseException("Can't find rule $it") }
+                }
                 setRule(rowIndex, colIndex, rules)
             }
         }
@@ -85,7 +90,8 @@ data class Paradigm(
                 append(rowTitle)
                 append(" ")
                 appendLine(columns.joinToString(" ") { col ->
-                    col.cells.getOrNull(index)?.rules?.joinToString(",") { it.name } ?: "-"
+                    val rules = col.cells.getOrNull(index)?.rules
+                    rules?.joinToString(",") { it.name }?.ifEmpty { "." } ?: "-"
                 })
             }
         }.trimEnd('\n')
