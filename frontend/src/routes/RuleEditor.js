@@ -7,13 +7,14 @@ export default function RuleEditor() {
     const [fromLanguage, setFromLanguage] = useState("")
     const [toLanguage, setToLanguage] = useState("")
     const [addedCategories, setAddedCategories] = useState("")
+    const [replacedCategories, setReplacedCategories] = useState("")
     const [source, setSource] = useState("")
     const [editableText, setEditableText] = useState("")
     const [errorText, setErrorText] = useState("")
     const navigate = useNavigate()
 
     function saveRule() {
-        addRule(name, fromLanguage, toLanguage, addedCategories, editableText, source)
+        addRule(name, fromLanguage, toLanguage, addedCategories, replacedCategories, editableText, source)
             .then(r => {
                 if (r.status === 200)
                     r.json().then(r => navigate("/rule/" + r.id))
@@ -40,6 +41,10 @@ export default function RuleEditor() {
             <tr>
                 <td><label>Added categories:</label></td>
                 <td><input type="text" value={addedCategories} onChange={(e) => setAddedCategories(e.target.value)}/></td>
+            </tr>
+            <tr>
+                <td><label>Replaced categories:</label></td>
+                <td><input type="text" value={replacedCategories} onChange={(e) => setReplacedCategories(e.target.value)}/></td>
             </tr>
             <tr>
                 <td><label>Source:</label></td>

@@ -2257,6 +2257,27 @@
             ],
             "addedCategories": ".DAT",
             "source": "Plotz"
+        },
+        {
+            "id": 9,
+            "name": "q-gen-pl",
+            "fromLang": "Q",
+            "toLang": "Q",
+            "branches": [
+                {
+                    "conditions": [
+                    ],
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "arg": "on"
+                        }
+                    ]
+                }
+            ],
+            "addedCategories": ".GEN.PL",
+            "replacedCategories": ".NOM.PL",
+            "source": ""
         }
     ],
     "links": [
@@ -3527,6 +3548,12 @@
                         {
                             "ruleIds": [
                                 0
+                            ]
+                        },
+                        {
+                            "ruleIds": [
+                                0,
+                                9
                             ]
                         }
                     ]

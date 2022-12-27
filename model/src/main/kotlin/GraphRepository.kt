@@ -38,6 +38,7 @@ abstract class GraphRepository {
         toLanguage: Language,
         branches: List<RuleBranch>,
         addedCategories: String?,
+        replacedCategories: String?,
         source: String?,
         notes: String?
     ): Rule

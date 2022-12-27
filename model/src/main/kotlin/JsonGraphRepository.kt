@@ -40,6 +40,7 @@ data class RuleData(
     @SerialName("toLang") val toLanguageShortName: String,
     val branches: List<RuleBranchData>,
     val addedCategories: String?,
+    val replacedCategories: String? = null,
     val source: String? = null,
     val notes: String? = null
 )
@@ -137,7 +138,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             languages.values.map { LanguageData(it.name, it.shortName) },
             characterClassData,
             allWords.filterNotNull().map { WordData(it.id, it.text, it.language.shortName, it.gloss, it.pos, it.source, it.notes) },
-            rules.map { ruleToSerializedFormat(it) },
+            rules.map { it.ruleToSerializedFormat() },
             allLinks.map {
                 LinkData(
                     it.fromWord.id, it.toWord.id,
@@ -193,6 +194,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                 languageByShortName(rule.toLanguageShortName),
                 ruleBranchesFromSerializedFormat(this, fromLanguage, rule.branches),
                 rule.addedCategories,
+                rule.replacedCategories,
                 rule.source,
                 rule.notes
             )
@@ -259,13 +261,13 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             return result
         }
 
-        fun ruleToSerializedFormat(it: Rule) =
+        fun Rule.ruleToSerializedFormat() =
             RuleData(
-                it.id,
-                it.name,
-                it.fromLanguage.shortName,
-                it.toLanguage.shortName,
-                it.branches.map { branch ->
+                id,
+                name,
+                fromLanguage.shortName,
+                toLanguage.shortName,
+                branches.map { branch ->
                     RuleBranchData(
                         branch.conditions.map { rule ->
                             RuleConditionData(rule.type, rule.characterClass.name,
@@ -276,9 +278,10 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                         }
                     )
                 },
-                it.addedCategories,
-                it.source,
-                it.notes
+                addedCategories,
+                replacedCategories,
+                source,
+                notes
             )
 
         private fun ruleBranchesFromSerializedFormat(

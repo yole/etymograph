@@ -130,6 +130,7 @@ class Rule(
     val toLanguage: Language,
     var branches: List<RuleBranch>,
     val addedCategories: String?,
+    val replacedCategories: String?,
     source: String?,
     notes: String?
 ) : LangEntity(source, notes) {
@@ -141,11 +142,17 @@ class Rule(
         for (branch in branches) {
             if (branch.matches(word)) {
                 val text = branch.apply(word)
-                return Word(-1, text, word.language, word.gloss?.let { it + (addedCategories ?: "") }, word.pos)
+                val gloss = word.gloss?.let { baseGloss ->
+                    applyCategories(baseGloss)
+                }
+                return Word(-1, text, word.language, gloss, word.pos)
             }
         }
         return word
     }
+
+    fun applyCategories(baseGloss: String) =
+        (replacedCategories?.let { baseGloss.replace(it, "") } ?: baseGloss) + (addedCategories ?: "")
 
     fun toEditableText(): String {
         return branches.joinToString("\n\n") { it.toEditableText() }

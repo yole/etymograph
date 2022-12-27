@@ -170,10 +170,11 @@ open class InMemoryGraphRepository : GraphRepository() {
         toLanguage: Language,
         branches: List<RuleBranch>,
         addedCategories: String?,
+        replacedCategories: String?,
         source: String?,
         notes: String?
     ): Rule {
-        return Rule(rules.size, name, fromLanguage, toLanguage, branches, addedCategories, source, notes)
+        return Rule(rules.size, name, fromLanguage, toLanguage, branches, addedCategories, replacedCategories, source, notes)
             .also { rules.add(it) }
     }
 

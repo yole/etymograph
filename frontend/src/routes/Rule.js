@@ -21,6 +21,7 @@ export default function Rule() {
     return <>
         <h3>{rule.name}</h3>
         <p>Added categories: {rule.addedCategories}</p>
+        {rule.replacedCategories && <p>Replaced categories: {rule.replacedCategories}</p>}
         {!editMode && rule.branches.map(b => <>
             <div>{b.conditions.length > 0 ? "When:" : "Otherwise:"}</div>
             <ul>

@@ -18,6 +18,7 @@ class RuleController(val graphService: GraphService) {
         val toLang: String,
         val editableText: String,
         val addedCategories: String?,
+        val replacedCategories: String?,
         val source: String?,
         val branches: List<RuleBranchViewModel>
     )
@@ -39,7 +40,8 @@ class RuleController(val graphService: GraphService) {
             id, name, fromLanguage.shortName, toLanguage.shortName,
             toEditableText(),
             addedCategories,
-            source,
+            replacedCategories,
+            source.nullize(),
             branches.map { it.toViewModel() })
     }
 
@@ -56,6 +58,7 @@ class RuleController(val graphService: GraphService) {
         val toLang: String,
         val text: String,
         val addedCategories: String? = null,
+        val replacedCategories: String? = null,
         val source: String? = null
     )
 
@@ -75,7 +78,16 @@ class RuleController(val graphService: GraphService) {
             throw ResponseStatusException(HttpStatus.BAD_REQUEST, e.message, e)
         }
 
-        val rule = graph.addRule(params.name, fromLanguage, toLanguage, branches, params.addedCategories, params.source, null)
+        val rule = graph.addRule(
+            params.name,
+            fromLanguage,
+            toLanguage,
+            branches,
+            params.addedCategories,
+            params.replacedCategories,
+            params.source,
+            null
+        )
         graph.save()
         return rule.toViewModel()
     }
