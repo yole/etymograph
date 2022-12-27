@@ -1,8 +1,8 @@
 package ru.yole.etymograph
 
 data class ParadigmCell(val rules: List<Rule>) {
-    fun generate(word: Word): String {
-        return rules.fold(word) { w, r -> r.apply(w) }.text
+    fun generate(word: Word): Word {
+        return rules.fold(word) { w, r -> r.apply(w) }
     }
 }
 
@@ -16,9 +16,9 @@ data class ParadigmColumn(val title: String) {
         cells[row] = ParadigmCell(rules)
     }
 
-    fun generate(word: Word): List<String> {
+    fun generate(word: Word): List<Word?> {
         return cells.map {
-            it?.generate(word) ?: word.text
+            it?.generate(word)
         }
     }
 }
@@ -48,7 +48,7 @@ data class Paradigm(
         columns[column].setRule(row, rules)
     }
 
-    fun generate(word: Word): List<List<String>> {
+    fun generate(word: Word): List<List<Word?>> {
         return columns.map {
             it.generate(word)
         }

@@ -136,6 +136,16 @@ open class InMemoryGraphRepository : GraphRepository() {
         }
     }
 
+    override fun substituteKnownWord(baseWord: Word, derivedWord: Word): Word {
+        val links = linksTo[baseWord] ?: return derivedWord
+        for (link in links) {
+            if (link.type == Link.Derived && link.fromWord.getOrComputeGloss(this) == derivedWord.gloss) {
+                return link.fromWord
+            }
+        }
+        return derivedWord
+    }
+
     override fun deleteLink(fromWord: Word, toWord: Word, type: LinkType): Boolean {
         val result = linksFrom.getOrPut(fromWord) { mutableListOf() }.removeIf { it.toWord == toWord && it.type == type }
         linksTo.getOrPut(toWord) { mutableListOf() }.removeIf { it.fromWord == fromWord && it.type == type }

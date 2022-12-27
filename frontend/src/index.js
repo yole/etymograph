@@ -84,7 +84,7 @@ const router = createBrowserRouter([
         element: <ParadigmEditor/>
     },
     {
-        path: '/word/:id/paradigms',
+        path: '/word/:lang/:id/paradigms',
         element: <WordParadigms/>,
         loader: wordParadigmLoader
     }

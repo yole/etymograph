@@ -16,14 +16,15 @@ class ParadigmTest {
         paradigm.addRow("Gen")
         paradigm.addColumn("Sg")
 
+        paradigm.setRule(0, 0, emptyList())
         val genRule = repo.addRule("q-gen", q, q, Rule.parseBranches("- add suffix 'o'") { null }, ".GEN", null, null)
         paradigm.setRule(1, 0, listOf(genRule))
 
         val lasse = repo.addWord("lasse", q, "leaf", "N", null, null)
 
         val lasseParadigm = paradigm.generate(lasse)
-        assertEquals("lasse", lasseParadigm[0][0])
-        assertEquals("lasseo", lasseParadigm[0][1])
+        assertEquals("lasse", lasseParadigm[0][0]?.text)
+        assertEquals("lasseo", lasseParadigm[0][1]?.text)
     }
 
     @Test

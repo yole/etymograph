@@ -63,6 +63,8 @@ abstract class GraphRepository {
     abstract fun addLink(fromWord: Word, toWord: Word, type: LinkType, rule: Rule?, source: String?, notes: String?): Link
     abstract fun deleteLink(fromWord: Word, toWord: Word, type: LinkType): Boolean
 
+    abstract fun substituteKnownWord(baseWord: Word, derivedWord: Word): Word
+
     abstract fun findMatchingRule(fromWord: Word, toWord: Word): Rule?
 
     abstract fun save()

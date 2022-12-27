@@ -135,11 +135,16 @@ class WordController(val graphService: GraphService) {
         graph.save()
     }
 
+    data class WordParadigmCellModel(
+        val word: String,
+        val wordId: Int
+    )
+
     data class WordParadigmModel(
         val title: String,
         val rowTitles: List<String>,
         val columnTitles: List<String>,
-        val cells: List<List<String>>
+        val cells: List<List<WordParadigmCellModel>>
     )
 
     @GetMapping("/word/{id}/paradigms", produces = ["application/json"])
@@ -147,12 +152,19 @@ class WordController(val graphService: GraphService) {
     fun wordParadigms(@PathVariable id: Int): List<WordParadigmModel> {
         val graph = graphService.graph
         val word = graph.wordById(id) ?: throw NoWordException()
-        return graph.paradigmsForLanguage(word.language).filter { it.pos == word.pos }.map {
+        return graph.paradigmsForLanguage(word.language).filter { it.pos == word.pos }.map { paradigm ->
+            val generatedParadigm = paradigm.generate(word)
+            val substitutedParadigm = generatedParadigm.map { colWords ->
+                colWords.map { cellWord ->
+                    val actualWord = cellWord?.let { graph.substituteKnownWord(word, it) }
+                    WordParadigmCellModel(actualWord?.text ?: "", actualWord?.id ?: -1)
+                }
+            }
             WordParadigmModel(
-                it.name,
-                it.rowTitles,
-                it.columns.map { col -> col.title },
-                it.generate(word)
+                paradigm.name,
+                paradigm.rowTitles,
+                paradigm.columns.map { col -> col.title },
+                substitutedParadigm
             )
         }
     }
