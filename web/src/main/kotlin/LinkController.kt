@@ -29,7 +29,7 @@ class LinkController(val graphService: GraphService) {
         val toWord = graph.wordById(params.toWord) ?: throw NoWordException()
         val linkType = Link.allLinkTypes.find { it.id == params.linkType } ?: throw NoLinkTypeException()
 
-        return graph.deleteLink(fromWord, toWord, linkType).also {
+        return (graph.deleteLink(fromWord, toWord, linkType) || graph.deleteLink(toWord, fromWord, linkType)).also {
             graph.save()
         }
     }

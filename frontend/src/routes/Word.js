@@ -8,6 +8,28 @@ export async function loader({params}) {
     return fetch(`${process.env.REACT_APP_BACKEND_URL}word/${params.lang}/${params["*"]}`, { headers: { 'Accept': 'application/json'} })
 }
 
+function WordLinkComponent(params) {
+    function deleteLinkClicked(fromWord, toWord, linkType) {
+        if (window.confirm("Delete this link?")) {
+            deleteLink(fromWord, toWord, linkType)
+                .then(() => params.revalidator.revalidate())
+        }
+    }
+
+    const word = params.word
+    return params.links.map(l => <>
+        <div>{l.type}</div>
+        {l.words.map(w => <div>
+            {w.language !== word.language && w.language + " "}
+            <Link to={`/word/${w.language}/${w.text}`}>{w.text}</Link>
+            {w.ruleIds.length > 0 && <>&nbsp;(<Link to={`/rule/${w.ruleIds[0]}`}>rule</Link>)</>}
+            &nbsp;<span className="deleteLink">
+                    (<button className="deleteLinkButton" onClick={() => deleteLinkClicked(word.id, w.id, l.typeId)}>x</button>)
+                </span>
+        </div>)}
+    </>)
+}
+
 export default function Word() {
     const word = useLoaderData()
     const revalidator = useRevalidator()
@@ -38,13 +60,6 @@ export default function Word() {
         }
     }
 
-    function deleteLinkClicked(fromWord, toWord, linkType) {
-        if (window.confirm("Delete this link?")) {
-            deleteLink(fromWord, toWord, linkType)
-                .then(() => revalidator.revalidate())
-        }
-    }
-
     return <>
         <h2>{word.text}</h2>
         {!editMode && <>
@@ -61,28 +76,9 @@ export default function Word() {
                                submitted={editSubmitted}/>}
         <button onClick={() => setEditMode(!editMode)}>{editMode ? "Cancel" : "Edit"}</button>
         {!editMode && <button onClick={() => deleteWordClicked()}>Delete</button>}
-        {word.linksFrom.map(l => <>
-            <div>{l.type}</div>
-            {l.words.map(w => <div>
-                {w.language !== word.language && w.language + " "}
-                <Link to={`/word/${w.language}/${w.text}`}>{w.text}</Link>
-                {w.ruleIds.length > 0 && <>&nbsp;(<Link to={`/rule/${w.ruleIds[0]}`}>rule</Link>)</>}
-                &nbsp;<span className="deleteLink">
-                    (<button className="deleteLinkButton" onClick={() => deleteLinkClicked(word.id, w.id, l.typeId)}>x</button>)
-                </span>
-            </div>)}
-        </>)}
-        {word.linksTo.map(l => <>
-            <div>{l.type}</div>
-            {l.words.map(w => <div>
-                {w.language !== word.language && w.language + " "}
-                <Link to={`/word/${w.language}/${w.text}`}>{w.text}</Link>
-                {w.ruleIds.length > 0 && <>&nbsp;(<Link to={`/rule/${w.ruleIds[0]}`}>rule</Link>)</>}
-                &nbsp;<span className="deleteLink">
-                    (<button className="deleteLinkButton" onClick={() => deleteLinkClicked(w.id, word.id, l.typeId)}>x</button>)
-                </span>
-            </div>)}
-        </>)}
+
+        <WordLinkComponent word={word} links={word.linksFrom} revalidator={revalidator}/>
+        <WordLinkComponent word={word} links={word.linksTo} revalidator={revalidator}/>
 
         <p/>
         <a href="#" onClick={() => setShowBaseWord(!showBaseWord)}>Add base word</a><br/>
