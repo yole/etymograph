@@ -13,7 +13,7 @@ export default function Rule() {
     const revalidator = useRevalidator()
 
     function saveRule() {
-        updateRule(rule.id, rule.fromLang, rule.toLang, editableText)
+        updateRule(rule.id, rule.name, rule.fromLang, rule.toLang, editableText)
             .then(() => revalidator.revalidate())
         setEditMode(false)
     }

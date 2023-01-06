@@ -8,6 +8,7 @@ export default function WordForm(props) {
     const [newWordSource, setNewWordSource] = useState(props.initialSource !== undefined ? props.initialSource : "")
     const [newWordLanguage, setNewWordLanguage] = useState(props.language || "")
     const [newWordNotes, setNewWordNotes] = useState(props.initialNotes !== undefined ? props.initialNotes : "")
+    const [newWordLinkRuleNames, setNewWordLinkRuleNames] = useState("")
 
     function handleFormSubmit(e) {
         if (props.updateId !== undefined) {
@@ -20,16 +21,16 @@ export default function WordForm(props) {
                 .then(r => r.json())
                 .then(r => {
                     if (props.derivedWord) {
-                        addLink(props.derivedWord.id, r.id, '>').then(() => props.submitted(r))
+                        addLink(props.derivedWord.id, r.id, '>', newWordLinkRuleNames).then(() => props.submitted(r))
                     }
                     else if (props.baseWord) {
-                        addLink(r.id, props.baseWord.id, '>').then(() => props.submitted(r))
+                        addLink(r.id, props.baseWord.id, '>', newWordLinkRuleNames).then(() => props.submitted(r))
                     }
                     else if (props.compoundWord) {
-                        addLink(props.compoundWord.id, r.id, '+').then(() => props.submitted(r))
+                        addLink(props.compoundWord.id, r.id, '+', newWordLinkRuleNames).then(() => props.submitted(r))
                     }
                     else if (props.relatedWord) {
-                        addLink(props.relatedWord.id, r.id, '~').then(() => props.submitted(r))
+                        addLink(props.relatedWord.id, r.id, '~', newWordLinkRuleNames).then(() => props.submitted(r))
                     }
                     else {
                         props.submitted(r)
@@ -65,6 +66,11 @@ export default function WordForm(props) {
                 <td><label>Gloss:</label></td>
                 <td><input type="text" value={newWordGloss} onChange={e => setNewWordGloss(e.target.value)}
                            id="word-gloss"/></td>
+            </tr>
+            <tr>
+                <td><label htmlFor="word-link-rule-names">Link rule names:</label></td>
+                <td><input type="text" value={newWordLinkRuleNames} onChange={e => setNewWordLinkRuleNames(e.target.value)}
+                           id="word-link-rule-names"/></td>
             </tr>
             <tr>
                 <td><label>Source:</label></td>

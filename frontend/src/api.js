@@ -29,16 +29,16 @@ export function addRule(name, fromLang, toLang, addedCategories, replacedCategor
         })
 }
 
-export function updateRule(id, fromLang, toLang, text) {
-    return postToBackend('rule/' + id, {fromLang: fromLang, toLang: toLang, text: text})
+export function updateRule(id, name, fromLang, toLang, text) {
+    return postToBackend('rule/' + id, {name: name, fromLang: fromLang, toLang: toLang, text: text})
 }
 
 export function addCorpusText(text) {
     return postToBackend("corpus", {text: text})
 }
 
-export function addLink(fromWord, toWord, linkType) {
-    return postToBackend('link', {fromWord: fromWord, toWord: toWord, linkType: linkType})
+export function addLink(fromWord, toWord, linkType, ruleNames) {
+    return postToBackend('link', {fromWord: fromWord, toWord: toWord, linkType: linkType, ruleNames: ruleNames})
 }
 
 export function deleteLink(fromWord, toWord, linkType) {

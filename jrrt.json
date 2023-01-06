@@ -1994,6 +1994,13 @@
             "lang": "S",
             "gloss": "meshed",
             "source": "PE17:26"
+        },
+        {
+            "id": 283,
+            "text": "lassenna",
+            "lang": "Q",
+            "gloss": "leaf.ALL",
+            "source": "Plotz"
         }
     ],
     "rules": [
@@ -2136,7 +2143,7 @@
                     "conditions": [
                         {
                             "type": "EndsWith",
-                            "characters": "iī"
+                            "cls": "vowel"
                         }
                     ],
                     "instructions": [
@@ -3444,6 +3451,14 @@
             "from": 280,
             "to": 282,
             "type": ">"
+        },
+        {
+            "from": 283,
+            "to": 6,
+            "type": ">",
+            "ruleIds": [
+                3
+            ]
         }
     ],
     "corpusTexts": [

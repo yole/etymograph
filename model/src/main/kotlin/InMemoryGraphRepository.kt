@@ -152,6 +152,11 @@ open class InMemoryGraphRepository : GraphRepository() {
         return result
     }
 
+    override fun findLink(fromWord: Word, toWord: Word, type: LinkType): Link? {
+        return linksFrom[fromWord]?.find { it.toWord == toWord && it.type == type } ?:
+            linksFrom[toWord]?.find { it.fromWord == toWord && it.type == type }
+    }
+
     protected open fun createLink(fromWord: Word, toWord: Word, type: LinkType, rules: List<Rule>, source: String?, notes: String?): Link {
         return Link(fromWord, toWord, type, rules, source, notes)
     }

@@ -6,7 +6,7 @@ open class Link(
     val fromWord: Word,
     val toWord: Word,
     val type: LinkType,
-    val rules: List<Rule>,
+    var rules: List<Rule>,
     source: String?,
     notes: String?
 ) : LangEntity(source, notes) {
