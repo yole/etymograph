@@ -129,8 +129,8 @@ open class InMemoryGraphRepository : GraphRepository() {
         allWords.add(it)
     }
 
-    override fun addLink(fromWord: Word, toWord: Word, type: LinkType, rule: Rule?, source: String?, notes: String?): Link {
-        return createLink(fromWord, toWord, type, rule, source, notes).also {
+    override fun addLink(fromWord: Word, toWord: Word, type: LinkType, rules: List<Rule>, source: String?, notes: String?): Link {
+        return createLink(fromWord, toWord, type, rules, source, notes).also {
             linksFrom.getOrPut(it.fromWord) { mutableListOf() }.add(it)
             linksTo.getOrPut(it.toWord) { mutableListOf() }.add(it)
         }
@@ -152,8 +152,8 @@ open class InMemoryGraphRepository : GraphRepository() {
         return result
     }
 
-    protected open fun createLink(fromWord: Word, toWord: Word, type: LinkType, rule: Rule?, source: String?, notes: String?): Link {
-        return Link(fromWord, toWord, type, rule, source, notes)
+    protected open fun createLink(fromWord: Word, toWord: Word, type: LinkType, rules: List<Rule>, source: String?, notes: String?): Link {
+        return Link(fromWord, toWord, type, rules, source, notes)
     }
 
     override fun getLinksFrom(word: Word): Iterable<Link> {

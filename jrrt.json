@@ -100,6 +100,7 @@
             "text": "yén",
             "lang": "Q",
             "gloss": "long year",
+            "pos": "N",
             "source": "PE17:62"
         },
         {
@@ -2291,14 +2292,18 @@
             "from": 3,
             "to": 4,
             "type": ">",
-            "ruleId": 0,
+            "ruleIds": [
+                0
+            ],
             "source": "PE17:61"
         },
         {
             "from": 5,
             "to": 6,
             "type": ">",
-            "ruleId": 0,
+            "ruleIds": [
+                0
+            ],
             "source": "PE17:62"
         },
         {
@@ -2311,7 +2316,9 @@
             "from": 9,
             "to": 10,
             "type": ">",
-            "ruleId": 0,
+            "ruleIds": [
+                0
+            ],
             "source": "PE17:62"
         },
         {
@@ -2336,7 +2343,9 @@
             "from": 16,
             "to": 17,
             "type": ">",
-            "ruleId": 0,
+            "ruleIds": [
+                0
+            ],
             "source": "PE17:63"
         },
         {
@@ -2355,7 +2364,9 @@
             "from": 22,
             "to": 23,
             "type": ">",
-            "ruleId": 0,
+            "ruleIds": [
+                0
+            ],
             "source": "PE17:63"
         },
         {
@@ -2368,7 +2379,9 @@
             "from": 25,
             "to": 26,
             "type": ">",
-            "ruleId": 0,
+            "ruleIds": [
+                0
+            ],
             "source": "PE17:63"
         },
         {
@@ -2417,21 +2430,27 @@
             "from": 40,
             "to": 41,
             "type": ">",
-            "ruleId": 1,
+            "ruleIds": [
+                1
+            ],
             "source": "PE17:65"
         },
         {
             "from": 42,
             "to": 43,
             "type": ">",
-            "ruleId": 0,
+            "ruleIds": [
+                0
+            ],
             "source": "PE17:66"
         },
         {
             "from": 45,
             "to": 46,
             "type": ">",
-            "ruleId": 0,
+            "ruleIds": [
+                0
+            ],
             "source": "PE17:66"
         },
         {
@@ -2444,7 +2463,9 @@
             "from": 49,
             "to": 50,
             "type": ">",
-            "ruleId": 0,
+            "ruleIds": [
+                0
+            ],
             "source": "PE17:66"
         },
         {
@@ -2457,7 +2478,9 @@
             "from": 53,
             "to": 54,
             "type": ">",
-            "ruleId": 0,
+            "ruleIds": [
+                0
+            ],
             "source": "PE17:67"
         },
         {
@@ -2470,14 +2493,18 @@
             "from": 56,
             "to": 57,
             "type": ">",
-            "ruleId": 1,
+            "ruleIds": [
+                1
+            ],
             "source": "PE17:67"
         },
         {
             "from": 57,
             "to": 58,
             "type": ">",
-            "ruleId": 4,
+            "ruleIds": [
+                4
+            ],
             "source": "PE17:67"
         },
         {
@@ -2550,7 +2577,9 @@
             "from": 76,
             "to": 77,
             "type": ">",
-            "ruleId": 1,
+            "ruleIds": [
+                1
+            ],
             "source": "PE17:69"
         },
         {
@@ -2575,7 +2604,9 @@
             "from": 81,
             "to": 82,
             "type": ">",
-            "ruleId": 0,
+            "ruleIds": [
+                0
+            ],
             "source": "PE17:69"
         },
         {
@@ -2588,7 +2619,9 @@
             "from": 84,
             "to": 85,
             "type": ">",
-            "ruleId": 4,
+            "ruleIds": [
+                4
+            ],
             "source": "PE17:69"
         },
         {
@@ -2625,7 +2658,9 @@
             "from": 93,
             "to": 94,
             "type": ">",
-            "ruleId": 0,
+            "ruleIds": [
+                0
+            ],
             "source": "PE17:72"
         },
         {
@@ -2656,7 +2691,9 @@
             "from": 101,
             "to": 102,
             "type": ">",
-            "ruleId": 2,
+            "ruleIds": [
+                2
+            ],
             "source": "PE17:72"
         },
         {
@@ -2693,14 +2730,18 @@
             "from": 110,
             "to": 111,
             "type": ">",
-            "ruleId": 0,
+            "ruleIds": [
+                0
+            ],
             "source": "PE17:73"
         },
         {
             "from": 111,
             "to": 112,
             "type": ">",
-            "ruleId": 3,
+            "ruleIds": [
+                3
+            ],
             "source": "PE17:73"
         },
         {
@@ -2737,14 +2778,18 @@
             "from": 121,
             "to": 122,
             "type": ">",
-            "ruleId": 1,
+            "ruleIds": [
+                1
+            ],
             "source": "PE17:73"
         },
         {
             "from": 125,
             "to": 126,
             "type": ">",
-            "ruleId": 0,
+            "ruleIds": [
+                0
+            ],
             "source": "PE17:73"
         },
         {
@@ -2763,7 +2808,9 @@
             "from": 129,
             "to": 130,
             "type": ">",
-            "ruleId": 2,
+            "ruleIds": [
+                2
+            ],
             "source": "PE17:74"
         },
         {
@@ -2794,7 +2841,9 @@
             "from": 137,
             "to": 138,
             "type": ">",
-            "ruleId": 5,
+            "ruleIds": [
+                5
+            ],
             "source": "PE17:75"
         },
         {
@@ -2825,7 +2874,9 @@
             "from": 151,
             "to": 152,
             "type": ">",
-            "ruleId": 1,
+            "ruleIds": [
+                1
+            ],
             "source": "PE17:13"
         },
         {

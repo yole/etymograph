@@ -18,7 +18,7 @@ class LinkController(val graphService: GraphService) {
         val toWord = graph.wordById(params.toWord) ?: throw NoWordException()
         val linkType = Link.allLinkTypes.find { it.id == params.linkType } ?: throw NoLinkTypeException()
 
-        graph.addLink(fromWord, toWord, linkType, null, null, null)
+        graph.addLink(fromWord, toWord, linkType, emptyList(), null, null)
         graph.save()
     }
 

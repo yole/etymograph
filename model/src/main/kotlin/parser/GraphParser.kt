@@ -21,7 +21,7 @@ fun parseWordChain(repo: GraphRepository, line: String, language: Language): Wor
         }
         prevWord?.let { prevWord ->
             if (linkType != null) {
-                repo.addLink(prevWord, word, linkType!!, repo.findMatchingRule(prevWord, word), lineSource, null)
+                repo.addLink(prevWord, word, linkType!!, repo.findMatchingRule(prevWord, word)?.let { listOf(it) } ?: emptyList(), lineSource, null)
             }
         }
         if (!linkAssociative) {

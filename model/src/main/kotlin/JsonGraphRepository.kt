@@ -50,7 +50,7 @@ data class LinkData(
     @SerialName("from") val fromWordId: Int,
     @SerialName("to") val toWordId: Int,
     val type: String,
-    val ruleId: Int = -1,
+    val ruleIds: List<Int>? = null,
     val source: String? = null,
     val notes: String? = null
 )
@@ -103,11 +103,11 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
         fromWord: Word,
         toWord: Word,
         type: LinkType,
-        rule: Rule?,
+        rules: List<Rule>,
         source: String?,
         notes: String?
     ): Link {
-        return super.createLink(fromWord, toWord, type, rule, source, notes).also {
+        return super.createLink(fromWord, toWord, type, rules, source, notes).also {
             allLinks.add(it)
         }
     }
@@ -139,10 +139,10 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             characterClassData,
             allWords.filterNotNull().map { WordData(it.id, it.text, it.language.shortName, it.gloss, it.pos, it.source, it.notes) },
             rules.map { it.ruleToSerializedFormat() },
-            allLinks.map {
+            allLinks.map { link ->
                 LinkData(
-                    it.fromWord.id, it.toWord.id,
-                    it.type.id, it.rule?.id ?: -1, it.source, it.notes
+                    link.fromWord.id, link.toWord.id,
+                    link.type.id, link.rules.takeIf { it.isNotEmpty() }?.map { it.id }, link.source, link.notes
                 )
             },
             corpus.map {
@@ -207,7 +207,8 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                     fromWord,
                     toWord,
                     Link.allLinkTypes.first { it.id == link.type },
-                    link.ruleId.takeIf { it >= 0 }?.let { rules[it] },
+                    link.ruleIds?.takeIf { it.isNotEmpty() }?.map { rules[it] }
+                        ?: emptyList(),
                     link.source,
                     link.notes
                 )

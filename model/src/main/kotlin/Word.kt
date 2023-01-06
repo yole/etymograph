@@ -39,10 +39,9 @@ class Word(
         }
         val derivation = graph.getLinksFrom(this).filter { it.type == Link.Derived }.singleOrNull()
         if (derivation != null) {
-            val derivationRule = derivation.rule
-            if (derivationRule?.addedCategories != null) {
+            if (derivation.rules.any { it.addedCategories != null }) {
                 derivation.toWord.getOrComputeGloss(graph)?.let { fromGloss ->
-                    return derivationRule.applyCategories(fromGloss)
+                    return derivation.rules.fold(fromGloss) { gloss, rule -> rule.applyCategories(gloss) }
                 }
             }
         }

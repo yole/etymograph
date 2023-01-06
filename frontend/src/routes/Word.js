@@ -66,7 +66,7 @@ export default function Word() {
             {l.words.map(w => <div>
                 {w.language !== word.language && w.language + " "}
                 <Link to={`/word/${w.language}/${w.text}`}>{w.text}</Link>
-                {w.ruleId !== null && <>&nbsp;(<Link to={`/rule/${w.ruleId}`}>rule</Link>)</>}
+                {w.ruleIds.length > 0 && <>&nbsp;(<Link to={`/rule/${w.ruleIds[0]}`}>rule</Link>)</>}
                 &nbsp;<span className="deleteLink">
                     (<button className="deleteLinkButton" onClick={() => deleteLinkClicked(word.id, w.id, l.typeId)}>x</button>)
                 </span>
@@ -77,7 +77,7 @@ export default function Word() {
             {l.words.map(w => <div>
                 {w.language !== word.language && w.language + " "}
                 <Link to={`/word/${w.language}/${w.text}`}>{w.text}</Link>
-                {w.ruleId !== null && <>&nbsp;(<Link to={`/rule/${w.ruleId}`}>rule</Link>)</>}
+                {w.ruleIds.length > 0 && <>&nbsp;(<Link to={`/rule/${w.ruleIds[0]}`}>rule</Link>)</>}
                 &nbsp;<span className="deleteLink">
                     (<button className="deleteLinkButton" onClick={() => deleteLinkClicked(w.id, word.id, l.typeId)}>x</button>)
                 </span>
