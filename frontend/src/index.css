@@ -21,11 +21,11 @@ code {
   cursor: pointer;
 }
 
-.deleteLink {
+.inlineButtonLink {
   font-size: smaller;
 }
 
-.deleteLinkButton {
+.inlineButton {
   border-style: none;
   background-color: transparent;
   padding: 0;

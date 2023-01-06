@@ -2,31 +2,65 @@ import {useLoaderData, useNavigate, useRevalidator} from "react-router";
 import {Link} from "react-router-dom";
 import {useState} from "react";
 import WordForm from "./WordForm";
-import {deleteLink, deleteWord} from "../api";
+import {deleteLink, deleteWord, updateLink} from "../api";
 
 export async function loader({params}) {
     return fetch(`${process.env.REACT_APP_BACKEND_URL}word/${params.lang}/${params["*"]}`, { headers: { 'Accept': 'application/json'} })
 }
 
 function WordLinkComponent(params) {
-    function deleteLinkClicked(fromWord, toWord, linkType) {
+    const baseWord = params.baseWord
+    const linkWord = params.linkWord
+    const [editMode, setEditMode] = useState(false)
+    const [ruleNames, setRuleNames] = useState(linkWord.ruleNames.join(","))
+
+    function deleteLinkClicked() {
         if (window.confirm("Delete this link?")) {
-            deleteLink(fromWord, toWord, linkType)
-                .then(() => params.revalidator.revalidate())
+            deleteLink(baseWord.id, linkWord.id, params.linkType.typeId)
+                .then(() => {
+                    setEditMode(false)
+                    params.revalidator.revalidate()
+                })
         }
     }
 
-    const word = params.word
+    function saveLink() {
+        updateLink(baseWord.id, linkWord.id, params.linkType.typeId, ruleNames)
+            .then(() => params.revalidator.revalidate())
+    }
+
+    return <div>
+        {linkWord.language !== baseWord.language && linkWord.language + " "}
+        <Link to={`/word/${linkWord.language}/${linkWord.text}`}>{linkWord.text}</Link>
+        {linkWord.ruleIds.length > 0 && <>&nbsp;(
+            {linkWord.ruleIds.map((ruleId, index) => <>
+              {index > 0 && ", "}
+              <Link to={`/rule/${ruleId}`}>{linkWord.ruleNames[index]}</Link>
+            </>)}
+        )</>}
+        &nbsp;<span className="inlineButtonLink">
+                    (<button className="inlineButton" onClick={() => setEditMode(!editMode)}>edit</button>)
+                </span>
+        &nbsp;<span className="inlineButtonLink">
+                    (<button className="inlineButton" onClick={() => deleteLinkClicked()}>x</button>)
+                </span>
+        {editMode && <>
+            <table><tbody>
+                <tr>
+                    <td>Rule names:</td>
+                    <td><input type="text" value={ruleNames} onChange={e => setRuleNames(e.target.value)}/></td>
+                </tr>
+                </tbody></table>
+            <button onClick={() => saveLink()}>Save</button>
+        </>}
+    </div>
+}
+
+function WordLinkTypeComponent(params) {
     return params.links.map(l => <>
         <div>{l.type}</div>
-        {l.words.map(w => <div>
-            {w.language !== word.language && w.language + " "}
-            <Link to={`/word/${w.language}/${w.text}`}>{w.text}</Link>
-            {w.ruleIds.length > 0 && <>&nbsp;(<Link to={`/rule/${w.ruleIds[0]}`}>rule</Link>)</>}
-            &nbsp;<span className="deleteLink">
-                    (<button className="deleteLinkButton" onClick={() => deleteLinkClicked(word.id, w.id, l.typeId)}>x</button>)
-                </span>
-        </div>)}
+        {l.words.map(w => <WordLinkComponent baseWord={params.word} linkWord={w} linkType={l} revalidator={params.revalidator}/>)}
+        <p/>
     </>)
 }
 
@@ -77,8 +111,8 @@ export default function Word() {
         <button onClick={() => setEditMode(!editMode)}>{editMode ? "Cancel" : "Edit"}</button>
         {!editMode && <button onClick={() => deleteWordClicked()}>Delete</button>}
 
-        <WordLinkComponent word={word} links={word.linksFrom} revalidator={revalidator}/>
-        <WordLinkComponent word={word} links={word.linksTo} revalidator={revalidator}/>
+        <WordLinkTypeComponent word={word} links={word.linksFrom} revalidator={revalidator}/>
+        <WordLinkTypeComponent word={word} links={word.linksTo} revalidator={revalidator}/>
 
         <p/>
         <a href="#" onClick={() => setShowBaseWord(!showBaseWord)}>Add base word</a><br/>

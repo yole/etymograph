@@ -45,6 +45,10 @@ export function deleteLink(fromWord, toWord, linkType) {
     return postToBackend('link/delete', {fromWord: fromWord, toWord: toWord, linkType: linkType})
 }
 
+export function updateLink(fromWord, toWord, linkType, ruleNames) {
+    return postToBackend('link/update', {fromWord: fromWord, toWord: toWord, linkType: linkType, ruleNames: ruleNames})
+}
+
 export function addParadigm(name, language, pos, text) {
     return postToBackend('paradigms/' + language, {name: name, pos: pos, text: text})
 }

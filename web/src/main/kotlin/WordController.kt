@@ -23,7 +23,14 @@ class WordController(val graphService: GraphService) {
         return "word/index"
     }
 
-    data class LinkWordViewModel(val id: Int, val text: String, val language: String, val ruleIds: List<Int>)
+    data class LinkWordViewModel(
+        val id: Int,
+        val text: String,
+        val language: String,
+        val ruleIds: List<Int>,
+        val ruleNames: List<String>
+    )
+
     data class LinkTypeViewModel(val typeId: String, val type: String, val words: List<LinkWordViewModel>)
     data class WordViewModel(
         val id: Int,
@@ -63,7 +70,10 @@ class WordController(val graphService: GraphService) {
                     it.key.id,
                     it.key.name,
                     it.value.map { link ->
-                        LinkWordViewModel(link.toWord.id, link.toWord.text, link.toWord.language.shortName, link.rules.map { it.id })
+                        LinkWordViewModel(link.toWord.id, link.toWord.text, link.toWord.language.shortName,
+                            link.rules.map { it.id },
+                            link.rules.map { it.name }
+                        )
                     }
                 )
             },
@@ -72,7 +82,10 @@ class WordController(val graphService: GraphService) {
                     it.key.id,
                     it.key.reverseName,
                     it.value.map { link ->
-                        LinkWordViewModel(link.fromWord.id, link.fromWord.text, link.fromWord.language.shortName, link.rules.map { it.id })
+                        LinkWordViewModel(link.fromWord.id, link.fromWord.text, link.fromWord.language.shortName,
+                            link.rules.map { it.id },
+                            link.rules.map { it.name }
+                        )
                     }
                 )
             }
