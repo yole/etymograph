@@ -17,16 +17,16 @@ function WordLinkComponent(params) {
     function deleteLinkClicked() {
         if (window.confirm("Delete this link?")) {
             deleteLink(baseWord.id, linkWord.id, params.linkType.typeId)
-                .then(() => {
-                    setEditMode(false)
-                    params.revalidator.revalidate()
-                })
+                .then(() => params.revalidator.revalidate())
         }
     }
 
     function saveLink() {
         updateLink(baseWord.id, linkWord.id, params.linkType.typeId, ruleNames)
-            .then(() => params.revalidator.revalidate())
+            .then(() => {
+                setEditMode(false)
+                params.revalidator.revalidate()
+            })
     }
 
     return <div>
