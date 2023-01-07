@@ -9,6 +9,7 @@ export default function WordForm(props) {
     const [newWordLanguage, setNewWordLanguage] = useState(props.language || "")
     const [newWordNotes, setNewWordNotes] = useState(props.initialNotes !== undefined ? props.initialNotes : "")
     const [newWordLinkRuleNames, setNewWordLinkRuleNames] = useState("")
+    const isAddingLink = props.derivedWord || props.baseWord || props.compoundWord || props.relatedWord
 
     function handleFormSubmit(e) {
         if (props.updateId !== undefined) {
@@ -67,11 +68,11 @@ export default function WordForm(props) {
                 <td><input type="text" value={newWordGloss} onChange={e => setNewWordGloss(e.target.value)}
                            id="word-gloss"/></td>
             </tr>
-            <tr>
+            {isAddingLink && <tr>
                 <td><label htmlFor="word-link-rule-names">Link rule names:</label></td>
                 <td><input type="text" value={newWordLinkRuleNames} onChange={e => setNewWordLinkRuleNames(e.target.value)}
                            id="word-link-rule-names"/></td>
-            </tr>
+            </tr>}
             <tr>
                 <td><label>Source:</label></td>
                 <td><input type="text" value={newWordSource} onChange={e => setNewWordSource(e.target.value)}
