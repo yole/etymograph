@@ -124,7 +124,7 @@ export default function Word() {
         <a href="#" onClick={() => setShowRelated(!showRelated)}>Add related word</a><br/>
         {showRelated && <WordForm submitted={submitted} relatedWord={word} language={word.language}/>}
         <p/>
-        <Link to={`/word/${word.language}/${word.id}/paradigms`}>Paradigms</Link>
+        {!word.glossComputed && <Link to={`/word/${word.language}/${word.id}/paradigms`}>Paradigms</Link>}
     </>
 }
 
