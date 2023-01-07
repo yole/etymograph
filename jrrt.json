@@ -79,7 +79,6 @@
             "id": 7,
             "text": "súrinen",
             "lang": "Q",
-            "gloss": "wind.INS",
             "source": "PE17:62"
         },
         {
@@ -2287,6 +2286,69 @@
             "addedCategories": ".GEN.PL",
             "replacedCategories": ".NOM.PL",
             "source": ""
+        },
+        {
+            "id": 10,
+            "name": "q-ins",
+            "fromLang": "Q",
+            "toLang": "Q",
+            "branches": [
+                {
+                    "conditions": [
+                        {
+                            "type": "EndsWith",
+                            "cls": "vowel"
+                        }
+                    ],
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "arg": "nen"
+                        }
+                    ]
+                },
+                {
+                    "conditions": [
+                        {
+                            "type": "EndsWith",
+                            "characters": "rl"
+                        }
+                    ],
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "arg": "men"
+                        }
+                    ]
+                },
+                {
+                    "conditions": [
+                        {
+                            "type": "EndsWith",
+                            "characters": "nt"
+                        }
+                    ],
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "arg": "wen"
+                        }
+                    ]
+                },
+                {
+                    "conditions": [
+                    ],
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "arg": "anen"
+                        }
+                    ]
+                }
+            ],
+            "addedCategories": ".INS",
+            "replacedCategories": "",
+            "source": "Introductory Quenya C7"
         }
     ],
     "links": [
@@ -2318,6 +2380,9 @@
             "from": 7,
             "to": 8,
             "type": ">",
+            "ruleIds": [
+                10
+            ],
             "source": "PE17:62"
         },
         {

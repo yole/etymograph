@@ -8,8 +8,8 @@ open class InMemoryGraphRepository : GraphRepository() {
     protected val corpus = mutableListOf<CorpusText>()
     private val words = mutableMapOf<Language, MutableMap<String, MutableList<Word>>>()
     protected val allWords = mutableListOf<Word?>()
-    private val linksFrom = mutableMapOf<Word, MutableList<Link>>()
-    private val linksTo = mutableMapOf<Word, MutableList<Link>>()
+    private val linksFrom = mutableMapOf<Int, MutableList<Link>>()
+    private val linksTo = mutableMapOf<Int, MutableList<Link>>()
     protected val rules = mutableListOf<Rule>()
     protected val namedCharacterClasses = mutableMapOf<Language, MutableList<CharacterClass>>()
     protected val paradigms = mutableListOf<Paradigm>()
@@ -57,13 +57,13 @@ open class InMemoryGraphRepository : GraphRepository() {
     override fun dictionaryWords(lang: Language): List<Word> {
         return filteredWords(lang) {
             it.gloss != null &&
-                    linksFrom[it]?.none { link -> link.type == Link.Derived && !link.toWord.isRoot() } != false
+                    linksFrom[it.id]?.none { link -> link.type == Link.Derived && !link.toWord.isRoot() } != false
         }
     }
 
     override fun compoundWords(lang: Language): List<Word> {
         return filteredWords(lang) {
-            linksFrom[it]?.any { link -> link.type == Link.Agglutination } == true
+            linksFrom[it.id]?.any { link -> link.type == Link.Agglutination } == true
         }
     }
 
@@ -131,13 +131,13 @@ open class InMemoryGraphRepository : GraphRepository() {
 
     override fun addLink(fromWord: Word, toWord: Word, type: LinkType, rules: List<Rule>, source: String?, notes: String?): Link {
         return createLink(fromWord, toWord, type, rules, source, notes).also {
-            linksFrom.getOrPut(it.fromWord) { mutableListOf() }.add(it)
-            linksTo.getOrPut(it.toWord) { mutableListOf() }.add(it)
+            linksFrom.getOrPut(it.fromWord.id) { mutableListOf() }.add(it)
+            linksTo.getOrPut(it.toWord.id) { mutableListOf() }.add(it)
         }
     }
 
     override fun substituteKnownWord(baseWord: Word, derivedWord: Word): Word {
-        val links = linksTo[baseWord] ?: return derivedWord
+        val links = linksTo[baseWord.id] ?: return derivedWord
         for (link in links) {
             if (link.type == Link.Derived && link.fromWord.getOrComputeGloss(this) == derivedWord.gloss) {
                 return link.fromWord
@@ -147,14 +147,14 @@ open class InMemoryGraphRepository : GraphRepository() {
     }
 
     override fun deleteLink(fromWord: Word, toWord: Word, type: LinkType): Boolean {
-        val result = linksFrom.getOrPut(fromWord) { mutableListOf() }.removeIf { it.toWord == toWord && it.type == type }
-        linksTo.getOrPut(toWord) { mutableListOf() }.removeIf { it.fromWord == fromWord && it.type == type }
+        val result = linksFrom.getOrPut(fromWord.id) { mutableListOf() }.removeIf { it.toWord == toWord && it.type == type }
+        linksTo.getOrPut(toWord.id) { mutableListOf() }.removeIf { it.fromWord == fromWord && it.type == type }
         return result
     }
 
     override fun findLink(fromWord: Word, toWord: Word, type: LinkType): Link? {
-        return linksFrom[fromWord]?.find { it.toWord == toWord && it.type == type } ?:
-            linksFrom[toWord]?.find { it.fromWord == toWord && it.type == type }
+        return linksFrom[fromWord.id]?.find { it.toWord == toWord && it.type == type } ?:
+            linksFrom[toWord.id]?.find { it.fromWord == toWord && it.type == type }
     }
 
     protected open fun createLink(fromWord: Word, toWord: Word, type: LinkType, rules: List<Rule>, source: String?, notes: String?): Link {
@@ -162,11 +162,11 @@ open class InMemoryGraphRepository : GraphRepository() {
     }
 
     override fun getLinksFrom(word: Word): Iterable<Link> {
-        return linksFrom[word] ?: emptyList()
+        return linksFrom[word.id] ?: emptyList()
     }
 
     override fun getLinksTo(word: Word): Iterable<Link> {
-        return linksTo[word] ?: emptyList()
+        return linksTo[word.id] ?: emptyList()
     }
 
     override fun addRule(
