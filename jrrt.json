@@ -107,7 +107,6 @@
             "id": 11,
             "text": "únótimë",
             "lang": "Q",
-            "gloss": "uncountable.PL",
             "source": "PE17:62"
         },
         {
@@ -115,6 +114,7 @@
             "text": "únótima",
             "lang": "Q",
             "gloss": "uncountable",
+            "pos": "ADJ",
             "source": "PE17:62"
         },
         {
@@ -170,7 +170,6 @@
             "id": 20,
             "text": "lintë",
             "lang": "Q",
-            "gloss": "swift.PL",
             "source": "PE17:63"
         },
         {
@@ -271,7 +270,6 @@
             "id": 35,
             "text": "miruvóreva",
             "lang": "Q",
-            "gloss": "Elf-drink.PART",
             "source": "PE17:64"
         },
         {
@@ -2357,6 +2355,98 @@
             "addedCategories": ".INS",
             "replacedCategories": "",
             "source": "Introductory Quenya C7"
+        },
+        {
+            "id": 11,
+            "name": "q-adj-pl",
+            "fromLang": "Q",
+            "toLang": "Q",
+            "branches": [
+                {
+                    "conditions": [
+                        {
+                            "type": "EndsWith",
+                            "characters": "a"
+                        }
+                    ],
+                    "instructions": [
+                        {
+                            "type": "RemoveLastCharacter",
+                            "arg": ""
+                        },
+                        {
+                            "type": "AddSuffix",
+                            "arg": "e"
+                        }
+                    ]
+                },
+                {
+                    "conditions": [
+                        {
+                            "type": "EndsWith",
+                            "characters": "e"
+                        }
+                    ],
+                    "instructions": [
+                        {
+                            "type": "RemoveLastCharacter",
+                            "arg": ""
+                        },
+                        {
+                            "type": "AddSuffix",
+                            "arg": "i"
+                        }
+                    ]
+                },
+                {
+                    "conditions": [
+                    ],
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "arg": "i"
+                        }
+                    ]
+                }
+            ],
+            "addedCategories": ".PL",
+            "replacedCategories": "",
+            "source": ""
+        },
+        {
+            "id": 12,
+            "name": "q-poss",
+            "fromLang": "Q",
+            "toLang": "Q",
+            "branches": [
+                {
+                    "conditions": [
+                        {
+                            "type": "EndsWith",
+                            "cls": "vowel"
+                        }
+                    ],
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "arg": "va"
+                        }
+                    ]
+                },
+                {
+                    "conditions": [
+                    ],
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "arg": "wa"
+                        }
+                    ]
+                }
+            ],
+            "addedCategories": ".POSS",
+            "replacedCategories": "",
+            "source": "Eldamo"
         }
     ],
     "links": [
@@ -2406,6 +2496,9 @@
             "from": 11,
             "to": 12,
             "type": ">",
+            "ruleIds": [
+                11
+            ],
             "source": "PE17:62"
         },
         {
@@ -2443,6 +2536,9 @@
             "from": 20,
             "to": 21,
             "type": ">",
+            "ruleIds": [
+                11
+            ],
             "source": "PE17:63"
         },
         {
@@ -2509,6 +2605,9 @@
             "from": 35,
             "to": 36,
             "type": ">",
+            "ruleIds": [
+                12
+            ],
             "source": "PE17:64"
         },
         {

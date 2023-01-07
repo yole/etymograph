@@ -20,6 +20,7 @@ export default function Rule() {
 
     return <>
         <h3>{rule.name}</h3>
+        <p>From {rule.fromLang} to {rule.toLang}</p>
         <p>Added categories: {rule.addedCategories}</p>
         {rule.replacedCategories && <p>Replaced categories: {rule.replacedCategories}</p>}
         {!editMode && rule.branches.map(b => <>
