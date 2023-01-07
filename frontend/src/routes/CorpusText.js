@@ -1,6 +1,6 @@
 import {useLoaderData, useNavigate, useRevalidator} from "react-router";
 import {Link} from "react-router-dom";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import WordForm from "./WordForm";
 
 export async function loader({params}) {
@@ -13,6 +13,7 @@ export default function CorpusText() {
     const [predefWord, setPredefWord] = useState("")
     const revalidator = useRevalidator()
     const navigate = useNavigate()
+    useEffect(() => { document.title = "Etymograph : " + corpusText.title })
 
     function submitted(word) {
         setWordFormVisible(false)

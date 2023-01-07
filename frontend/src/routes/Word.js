@@ -1,6 +1,6 @@
 import {useLoaderData, useNavigate, useRevalidator} from "react-router";
 import {Link} from "react-router-dom";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import WordForm from "./WordForm";
 import {deleteLink, deleteWord, updateLink} from "../api";
 
@@ -73,6 +73,7 @@ export default function Word() {
     const [showRelated, setShowRelated] = useState(false)
     const [editMode, setEditMode] = useState(false)
     const navigate = useNavigate()
+    useEffect(() => { document.title = "Etymograph : " + word.text })
 
     function submitted() {
         setShowBaseWord(false)

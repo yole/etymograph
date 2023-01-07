@@ -337,20 +337,20 @@
             "text": "luine",
             "lang": "Q",
             "gloss": "blue",
+            "pos": "ADJ",
             "source": "PE17:66"
         },
         {
             "id": 47,
             "text": "yassen",
             "lang": "Q",
-            "gloss": "in which",
             "source": "PE17:66"
         },
         {
             "id": 48,
             "text": "ya",
             "lang": "Q",
-            "gloss": "demonstrative pointing back",
+            "gloss": "that",
             "source": "PE17:66"
         },
         {
@@ -445,7 +445,6 @@
             "id": 62,
             "text": "lírinen",
             "lang": "Q",
-            "gloss": "song.INS",
             "source": "PE17:67"
         },
         {
@@ -453,6 +452,7 @@
             "text": "líri",
             "lang": "Q",
             "gloss": "song",
+            "pos": "N",
             "source": "PE17:67"
         },
         {
@@ -480,7 +480,6 @@
             "id": 67,
             "text": "nin",
             "lang": "Q",
-            "gloss": "I.DAT",
             "source": "PE17:68"
         },
         {
@@ -2447,6 +2446,41 @@
             "addedCategories": ".POSS",
             "replacedCategories": "",
             "source": "Eldamo"
+        },
+        {
+            "id": 13,
+            "name": "q-loc-pl",
+            "fromLang": "Q",
+            "toLang": "Q",
+            "branches": [
+                {
+                    "conditions": [
+                        {
+                            "type": "EndsWith",
+                            "cls": "vowel"
+                        }
+                    ],
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "arg": "ssen"
+                        }
+                    ]
+                },
+                {
+                    "conditions": [
+                    ],
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "arg": "issen"
+                        }
+                    ]
+                }
+            ],
+            "addedCategories": ".LOC.PL",
+            "replacedCategories": "",
+            "source": "Eldamo"
         }
     ],
     "links": [
@@ -2633,7 +2667,7 @@
             "to": 46,
             "type": ">",
             "ruleIds": [
-                0
+                11
             ],
             "source": "PE17:66"
         },
@@ -2641,6 +2675,9 @@
             "from": 47,
             "to": 48,
             "type": ">",
+            "ruleIds": [
+                13
+            ],
             "source": "PE17:66"
         },
         {
@@ -2713,6 +2750,9 @@
             "from": 62,
             "to": 63,
             "type": ">",
+            "ruleIds": [
+                10
+            ],
             "source": "PE17:67"
         },
         {
@@ -2725,6 +2765,9 @@
             "from": 67,
             "to": 68,
             "type": ">",
+            "ruleIds": [
+                8
+            ],
             "source": "PE17:68"
         },
         {
@@ -3772,7 +3815,8 @@
                 "Nom",
                 "Gen",
                 "Dat",
-                "Ins"
+                "Ins",
+                "Loc"
             ],
             "columns": [
                 {

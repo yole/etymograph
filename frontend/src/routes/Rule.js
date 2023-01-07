@@ -1,5 +1,5 @@
 import {useLoaderData, useRevalidator} from "react-router";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {updateRule} from "../api";
 
 export async function loader({params}) {
@@ -11,6 +11,7 @@ export default function Rule() {
     const [editMode, setEditMode] = useState(false)
     const [editableText, setEditableText] = useState(rule.editableText)
     const revalidator = useRevalidator()
+    useEffect(() => { document.title = "Etymograph : Rule " + rule.name })
 
     function saveRule() {
         updateRule(rule.id, rule.name, rule.fromLang, rule.toLang, editableText)
