@@ -86,6 +86,7 @@
             "text": "súre",
             "lang": "Q",
             "gloss": "wind",
+            "pos": "N",
             "source": "PE17:62"
         },
         {
@@ -2000,6 +2001,13 @@
             "lang": "Q",
             "gloss": "leaf.ALL",
             "source": "Plotz"
+        },
+        {
+            "id": 284,
+            "text": "SU-",
+            "lang": "CE",
+            "gloss": "blow",
+            "source": "PE17:124"
         }
     ],
     "rules": [
@@ -3531,6 +3539,11 @@
             "ruleIds": [
                 3
             ]
+        },
+        {
+            "from": 8,
+            "to": 284,
+            "type": ">"
         }
     ],
     "corpusTexts": [
@@ -3659,7 +3672,8 @@
             "rows": [
                 "Nom",
                 "Gen",
-                "Dat"
+                "Dat",
+                "Ins"
             ],
             "columns": [
                 {
@@ -3677,6 +3691,11 @@
                         {
                             "ruleIds": [
                                 8
+                            ]
+                        },
+                        {
+                            "ruleIds": [
+                                10
                             ]
                         }
                     ]

@@ -5,9 +5,7 @@ import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.ResponseStatus
 import org.springframework.web.bind.annotation.RestController
-import ru.yole.etymograph.Link
-import ru.yole.etymograph.LinkType
-import ru.yole.etymograph.Word
+import ru.yole.etymograph.*
 
 @RestController
 class LinkController(val graphService: GraphService) {
@@ -18,7 +16,7 @@ class LinkController(val graphService: GraphService) {
     fun addLink(@RequestBody params: LinkParams) {
         val graph = graphService.graph
         val (fromWord, toWord, linkType) = resolveLinkParams(params)
-        val rules = params.ruleNames.split(',').map { graph.ruleByName(it) ?: throw NoRuleException() }
+        val rules = resolveRuleNames(params)
 
         graph.addLink(fromWord, toWord, linkType, rules, null, null)
         graph.save()
@@ -33,13 +31,21 @@ class LinkController(val graphService: GraphService) {
         )
     }
 
+    private fun resolveRuleNames(params: LinkParams): List<Rule> {
+        return params.ruleNames
+            .takeIf { it.isNotBlank() }
+            ?.split(',')
+            ?.map { graphService.graph.ruleByName(it) ?: throw NoRuleException() }
+            ?: emptyList()
+    }
+
     @PostMapping("/link/update")
     fun updateLink(@RequestBody params: LinkParams) {
         val (fromWord, toWord, linkType) = resolveLinkParams(params)
 
         val graph = graphService.graph
         val link = graph.findLink(fromWord, toWord, linkType) ?: throw NoLinkException()
-        val rules = params.ruleNames.split(',').map { graph.ruleByName(it) ?: throw NoRuleException() }
+        val rules = resolveRuleNames(params)
 
         link.rules = rules
         graph.save()
