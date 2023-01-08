@@ -39,10 +39,10 @@ function WordLinkComponent(params) {
             </>)}
         )</>}
         &nbsp;<span className="inlineButtonLink">
-                    (<button className="inlineButton" onClick={() => setEditMode(!editMode)}>edit</button>)
+                    (<button className="inlineButton" onClick={() => setEditMode(!editMode)}>edit</button>
                 </span>
-        &nbsp;<span className="inlineButtonLink">
-                    (<button className="inlineButton" onClick={() => deleteLinkClicked()}>x</button>)
+        &nbsp;|&nbsp;<span className="inlineButtonLink">
+                    <button className="inlineButton" onClick={() => deleteLinkClicked()}>delete</button>)
                 </span>
         {editMode && <>
             <table><tbody>
