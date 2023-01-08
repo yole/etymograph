@@ -1037,7 +1037,6 @@
             "id": 149,
             "text": "lúmenna",
             "lang": "Q",
-            "gloss": "time.ALL",
             "source": "PE17:13"
         },
         {
@@ -3914,9 +3913,12 @@
                 "Nom",
                 "Gen",
                 "Dat",
-                "Ins",
+                "Poss",
+                "All",
+                "Abl",
                 "Loc",
-                "All"
+                "Ins",
+                ""
             ],
             "columns": [
                 {
@@ -3948,7 +3950,25 @@
                             "alternatives": [
                                 {
                                     "ruleIds": [
-                                        10
+                                        12
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "alternatives": [
+                                {
+                                    "ruleIds": [
+                                        3
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "alternatives": [
+                                {
+                                    "ruleIds": [
+                                        2
                                     ]
                                 }
                             ]
@@ -3966,7 +3986,7 @@
                             "alternatives": [
                                 {
                                     "ruleIds": [
-                                        3
+                                        10
                                     ]
                                 }
                             ]
@@ -4000,6 +4020,10 @@
                         {
                         },
                         {
+                        },
+                        {
+                        },
+                        {
                             "alternatives": [
                                 {
                                     "ruleIds": [
@@ -4021,8 +4045,6 @@
                                     ]
                                 }
                             ]
-                        },
-                        {
                         },
                         {
                         },
