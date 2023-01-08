@@ -19,7 +19,7 @@ export default function RuleEditor() {
                 if (r.status === 200)
                     r.json().then(r => navigate("/rule/" + r.id))
                 else {
-                    setErrorText(r.statusText.length > 0 ? r.statusText : "Failed to save rule")
+                    r.json().then(r => setErrorText(r.message.length > 0 ? r.message : "Failed to save rule"))
                 }
             })
     }

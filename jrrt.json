@@ -2550,6 +2550,27 @@
             "addedCategories": ".DU",
             "replacedCategories": "",
             "source": "https://eldamo.org/content/words/word-2265073101.html"
+        },
+        {
+            "id": 16,
+            "name": "q-ppl",
+            "fromLang": "Q",
+            "toLang": "Q",
+            "branches": [
+                {
+                    "conditions": [
+                    ],
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "arg": "li"
+                        }
+                    ]
+                }
+            ],
+            "addedCategories": ".PPL",
+            "replacedCategories": "",
+            "source": "https://www.eldamo.org/content/words/word-1164934417.html"
         }
     ],
     "links": [
