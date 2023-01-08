@@ -9,7 +9,7 @@ import ru.yole.etymograph.*
 
 @RestController
 class LinkController(val graphService: GraphService) {
-    data class LinkParams(val fromWord: Int = -1, val toWord: Int = -1, val linkType: String = "", val ruleNames: String)
+    data class LinkParams(val fromWord: Int = -1, val toWord: Int = -1, val linkType: String = "", val ruleNames: String = "")
     data class ResolvedLinkParams(val fromWord: Word, val toWord: Word, val linkType: LinkType)
 
     @PostMapping("/link")

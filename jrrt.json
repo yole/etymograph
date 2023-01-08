@@ -590,7 +590,6 @@
             "id": 83,
             "text": "máryat",
             "lang": "Q",
-            "gloss": "hand.DU.POSS.3G",
             "source": "PE17:69"
         },
         {
@@ -2516,6 +2515,41 @@
             "addedCategories": ".LOC",
             "replacedCategories": "",
             "source": "Eldamo"
+        },
+        {
+            "id": 15,
+            "name": "q-dual",
+            "fromLang": "Q",
+            "toLang": "Q",
+            "branches": [
+                {
+                    "conditions": [
+                        {
+                            "type": "EndsWith",
+                            "cls": "vowel"
+                        }
+                    ],
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "arg": "t"
+                        }
+                    ]
+                },
+                {
+                    "conditions": [
+                    ],
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "arg": "u"
+                        }
+                    ]
+                }
+            ],
+            "addedCategories": ".DU",
+            "replacedCategories": "",
+            "source": "https://eldamo.org/content/words/word-2265073101.html"
         }
     ],
     "links": [
@@ -2869,12 +2903,6 @@
             "ruleIds": [
                 0
             ],
-            "source": "PE17:69"
-        },
-        {
-            "from": 83,
-            "to": 84,
-            "type": ">",
             "source": "PE17:69"
         },
         {
@@ -3721,6 +3749,15 @@
             "from": 8,
             "to": 284,
             "type": ">"
+        },
+        {
+            "from": 83,
+            "to": 85,
+            "type": ">",
+            "ruleIds": [
+                4,
+                15
+            ]
         }
     ],
     "corpusTexts": [
@@ -3906,6 +3943,16 @@
                         {
                             "ruleIds": [
                                 13
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "Dual",
+                    "cells": [
+                        {
+                            "ruleIds": [
+                                15
                             ]
                         }
                     ]
