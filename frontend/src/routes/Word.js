@@ -13,6 +13,7 @@ function WordLinkComponent(params) {
     const linkWord = params.linkWord
     const [editMode, setEditMode] = useState(false)
     const [ruleNames, setRuleNames] = useState(linkWord.ruleNames.join(","))
+    const [errorText, setErrorText] = useState("")
 
     function deleteLinkClicked() {
         if (window.confirm("Delete this link?")) {
@@ -23,9 +24,15 @@ function WordLinkComponent(params) {
 
     function saveLink() {
         updateLink(baseWord.id, linkWord.id, params.linkType.typeId, ruleNames)
-            .then(() => {
-                setEditMode(false)
-                params.revalidator.revalidate()
+            .then((response) => {
+                if (response.status === 200) {
+                    setErrorText("")
+                    setEditMode(false)
+                    params.revalidator.revalidate()
+                }
+                else {
+                    response.json().then(r => setErrorText(r.message))
+                }
             })
     }
 
@@ -52,6 +59,7 @@ function WordLinkComponent(params) {
                 </tr>
                 </tbody></table>
             <button onClick={() => saveLink()}>Save</button>
+            {errorText !== "" && <div className="errorText">{errorText}</div>}
         </>}
     </div>
 }

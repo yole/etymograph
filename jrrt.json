@@ -649,7 +649,7 @@
             "id": 92,
             "text": "ilya",
             "lang": "Q",
-            "gloss": "every, all",
+            "gloss": "every",
             "source": "PE17:72"
         },
         {
@@ -2942,6 +2942,9 @@
             "from": 91,
             "to": 92,
             "type": ">",
+            "ruleIds": [
+                0
+            ],
             "source": "PE17:72"
         },
         {

@@ -3,10 +3,7 @@ package ru.yole.etymograph.web
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.server.ResponseStatusException
-import ru.yole.etymograph.Rule
-import ru.yole.etymograph.RuleBranch
-import ru.yole.etymograph.RuleParseException
-import ru.yole.etymograph.UnknownLanguage
+import ru.yole.etymograph.*
 
 @RestController
 class RuleController(val graphService: GraphService) {
@@ -29,10 +26,8 @@ class RuleController(val graphService: GraphService) {
     }
 
     @GetMapping("/rule/{id}")
-    fun rule(@PathVariable id: String): RuleViewModel {
-        val graph = graphService.graph
-        val rule = id.toIntOrNull()?.let { graph.ruleById(it) } ?: throw NoRuleException()
-        return rule.toViewModel()
+    fun rule(@PathVariable id: Int): RuleViewModel {
+        return resolveRule(id).toViewModel()
     }
 
     private fun Rule.toViewModel(): RuleViewModel {
@@ -94,13 +89,15 @@ class RuleController(val graphService: GraphService) {
 
     @PostMapping("/rule/{id}", consumes = ["application/json"])
     @ResponseBody
-    fun updateRule(@PathVariable id: String, @RequestBody params: UpdateRuleParameters) {
+    fun updateRule(@PathVariable id: Int, @RequestBody params: UpdateRuleParameters) {
         val graph = graphService.graph
-        val rule = id.toIntOrNull()?.let { graph.ruleById(it) } ?: throw NoRuleException()
+        val rule = resolveRule(id)
         rule.branches = Rule.parseBranches(params.text) { cls -> graph.characterClassByName(rule.fromLanguage, cls) }
         graph.save()
     }
-}
 
-@ResponseStatus(value = HttpStatus.NOT_FOUND, reason = "No such rule")
-class NoRuleException : RuntimeException()
+    private fun resolveRule(id: Int): Rule {
+        return graphService.graph.ruleById(id)
+            ?: throw ResponseStatusException(HttpStatus.NOT_FOUND, "No rule with ID $id")
+    }
+}

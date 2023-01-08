@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.ResponseStatus
 import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.server.ResponseStatusException
 import ru.yole.etymograph.*
 
 @RestController
@@ -35,7 +36,7 @@ class LinkController(val graphService: GraphService) {
         return params.ruleNames
             .takeIf { it.isNotBlank() }
             ?.split(',')
-            ?.map { graphService.graph.ruleByName(it) ?: throw NoRuleException() }
+            ?.map { graphService.graph.ruleByName(it) ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST, "No rule named $it") }
             ?: emptyList()
     }
 
