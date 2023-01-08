@@ -783,7 +783,6 @@
             "id": 112,
             "text": "falmali",
             "lang": "Q",
-            "gloss": "many waves",
             "source": "PE17:73"
         },
         {
@@ -3041,15 +3040,6 @@
             "source": "PE17:73"
         },
         {
-            "from": 110,
-            "to": 111,
-            "type": ">",
-            "ruleIds": [
-                0
-            ],
-            "source": "PE17:73"
-        },
-        {
             "from": 111,
             "to": 112,
             "type": ">",
@@ -3062,6 +3052,9 @@
             "from": 112,
             "to": 113,
             "type": ">",
+            "ruleIds": [
+                16
+            ],
             "source": "PE17:73"
         },
         {
@@ -3782,6 +3775,16 @@
                 4,
                 15
             ]
+        },
+        {
+            "from": 110,
+            "to": 113,
+            "type": ">",
+            "ruleIds": [
+                16,
+                3,
+                0
+            ]
         }
     ],
     "corpusTexts": [
@@ -3912,34 +3915,60 @@
                 "Gen",
                 "Dat",
                 "Ins",
-                "Loc"
+                "Loc",
+                "All"
             ],
             "columns": [
                 {
                     "title": "Sg",
                     "cells": [
                         {
-                            "ruleIds": [
+                            "alternatives": [
                             ]
                         },
                         {
-                            "ruleIds": [
-                                1
+                            "alternatives": [
+                                {
+                                    "ruleIds": [
+                                        1
+                                    ]
+                                }
                             ]
                         },
                         {
-                            "ruleIds": [
-                                8
+                            "alternatives": [
+                                {
+                                    "ruleIds": [
+                                        8
+                                    ]
+                                }
                             ]
                         },
                         {
-                            "ruleIds": [
-                                10
+                            "alternatives": [
+                                {
+                                    "ruleIds": [
+                                        10
+                                    ]
+                                }
                             ]
                         },
                         {
-                            "ruleIds": [
-                                14
+                            "alternatives": [
+                                {
+                                    "ruleIds": [
+                                        14
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "alternatives": [
+                                {
+                                    "ruleIds": [
+                                        3
+                                    ]
+                                }
                             ]
                         }
                     ]
@@ -3948,25 +3977,74 @@
                     "title": "Pl",
                     "cells": [
                         {
-                            "ruleIds": [
-                                0
+                            "alternatives": [
+                                {
+                                    "ruleIds": [
+                                        0
+                                    ]
+                                }
                             ]
                         },
                         {
-                            "ruleIds": [
-                                0,
-                                9
+                            "alternatives": [
+                                {
+                                    "ruleIds": [
+                                        0,
+                                        9
+                                    ]
+                                }
                             ]
                         },
                         {
-                            "ruleIds": null
                         },
                         {
-                            "ruleIds": null
                         },
                         {
-                            "ruleIds": [
-                                13
+                            "alternatives": [
+                                {
+                                    "ruleIds": [
+                                        13
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "Part-Pl",
+                    "cells": [
+                        {
+                            "alternatives": [
+                                {
+                                    "ruleIds": [
+                                        16
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                        },
+                        {
+                        },
+                        {
+                        },
+                        {
+                        },
+                        {
+                            "alternatives": [
+                                {
+                                    "ruleIds": [
+                                        16,
+                                        3
+                                    ]
+                                },
+                                {
+                                    "ruleIds": [
+                                        16,
+                                        3,
+                                        0
+                                    ]
+                                }
                             ]
                         }
                     ]
@@ -3975,8 +4053,12 @@
                     "title": "Dual",
                     "cells": [
                         {
-                            "ruleIds": [
-                                15
+                            "alternatives": [
+                                {
+                                    "ruleIds": [
+                                        15
+                                    ]
+                                }
                             ]
                         }
                     ]

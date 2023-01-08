@@ -18,13 +18,13 @@ class ParadigmTest {
 
         paradigm.setRule(0, 0, emptyList())
         val genRule = repo.addRule("q-gen", q, q, Rule.parseBranches("- add suffix 'o'") { null }, ".GEN", null, null, null)
-        paradigm.setRule(1, 0, listOf(genRule))
+        paradigm.setRule(1, 0, listOf(listOf(genRule)))
 
         val lasse = repo.addWord("lasse", q, "leaf", "N", null, null)
 
         val lasseParadigm = paradigm.generate(lasse)
-        assertEquals("lasse", lasseParadigm[0][0]?.text)
-        assertEquals("lasseo", lasseParadigm[0][1]?.text)
+        assertEquals("lasse", lasseParadigm[0][0]?.get(0)?.text)
+        assertEquals("lasseo", lasseParadigm[0][1]?.get(0)?.text)
     }
 
     @Test
@@ -53,9 +53,9 @@ class ParadigmTest {
         paradigm.parse(paradigmText) { ruleName -> repo.ruleByName(ruleName) }
         assertEquals("Sg", paradigm.columns[0].title)
         assertEquals("Gen", paradigm.rowTitles[1])
-        assertEquals(plRule, paradigm.columns[1].cells[0]!!.rules[0])
-        assertEquals(plRule, paradigm.columns[1].cells[1]!!.rules[0])
-        assertEquals(genPlRule, paradigm.columns[1].cells[1]!!.rules[1])
+        assertEquals(plRule, paradigm.columns[1].cells[0]!!.alternatives[0].rules[0])
+        assertEquals(plRule, paradigm.columns[1].cells[1]!!.alternatives[0].rules[0])
+        assertEquals(genPlRule, paradigm.columns[1].cells[1]!!.alternatives[0].rules[1])
 
         val editableText = paradigm.toEditableText()
         assertEquals(paradigmText, editableText)
