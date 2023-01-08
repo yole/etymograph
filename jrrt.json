@@ -2481,6 +2481,41 @@
             "addedCategories": ".LOC.PL",
             "replacedCategories": "",
             "source": "Eldamo"
+        },
+        {
+            "id": 14,
+            "name": "q-loc",
+            "fromLang": "Q",
+            "toLang": "Q",
+            "branches": [
+                {
+                    "conditions": [
+                        {
+                            "type": "EndsWith",
+                            "cls": "vowel"
+                        }
+                    ],
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "arg": "sse"
+                        }
+                    ]
+                },
+                {
+                    "conditions": [
+                    ],
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "arg": "esse"
+                        }
+                    ]
+                }
+            ],
+            "addedCategories": ".LOC",
+            "replacedCategories": "",
+            "source": "Eldamo"
         }
     ],
     "links": [
@@ -3840,6 +3875,11 @@
                             "ruleIds": [
                                 10
                             ]
+                        },
+                        {
+                            "ruleIds": [
+                                14
+                            ]
                         }
                     ]
                 },
@@ -3855,6 +3895,17 @@
                             "ruleIds": [
                                 0,
                                 9
+                            ]
+                        },
+                        {
+                            "ruleIds": null
+                        },
+                        {
+                            "ruleIds": null
+                        },
+                        {
+                            "ruleIds": [
+                                13
                             ]
                         }
                     ]

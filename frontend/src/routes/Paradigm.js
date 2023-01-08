@@ -1,5 +1,5 @@
 import {useLoaderData, useRevalidator} from "react-router";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 import {updateParadigm} from "../api";
 
@@ -12,6 +12,7 @@ export default function Paradigm() {
     const [editMode, setEditMode] = useState(false)
     const [editableText, setEditableText] = useState(paradigm.editableText)
     const revalidator = useRevalidator()
+    useEffect(() => { document.title = "Etymograph : " + paradigm.language + " " + paradigm.name + " Paradigm" })
 
     function saveParadigm() {
         updateParadigm(paradigm.id, paradigm.name, paradigm.pos, editableText)
@@ -21,6 +22,7 @@ export default function Paradigm() {
 
     return <>
     <h3>{paradigm.name}</h3>
+    <p>Language: {paradigm.language}</p>
     <p>POS: {paradigm.pos}</p>
     {!editMode && <table>
         <thead><tr>
