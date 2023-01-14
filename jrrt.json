@@ -3926,6 +3926,10 @@
                     "cells": [
                         {
                             "alternatives": [
+                                {
+                                    "ruleIds": [
+                                    ]
+                                }
                             ]
                         },
                         {

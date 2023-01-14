@@ -86,12 +86,12 @@ data class Paradigm(
                 if (w == "-") {
                     continue
                 }
-                val rules = if (w == ".") {
-                    emptyList()
-                }
-                else {
-                    val alternatives = w.split('|')
-                    alternatives.map { alt ->
+                val alternatives = w.split('|')
+                val rules = alternatives.map { alt ->
+                    if (alt == ".") {
+                        emptyList()
+                    }
+                    else {
                         val ruleNames = alt.split(',')
                         ruleNames.map { ruleLookup(it) ?: throw ParadigmParseException("Can't find rule $it") }
                     }
