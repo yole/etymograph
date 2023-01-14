@@ -12,6 +12,7 @@ class RuleController(val graphService: GraphService) {
     data class RuleExampleViewModel(
         val fromWord: String,
         val toWord: String,
+        val expectedWord: String,
         val allRules: List<String>
     )
 
@@ -49,7 +50,9 @@ class RuleController(val graphService: GraphService) {
             source.nullize(),
             branches.map { it.toViewModel() },
             graphService.graph.findRuleExamples(this).map { link ->
-                RuleExampleViewModel(link.fromWord.text, link.toWord.text, link.rules.map { it.name })
+                RuleExampleViewModel(link.fromWord.text, link.toWord.text,
+                    link.rules.fold(link.toWord) { w, r -> r.apply(w) }.text,
+                    link.rules.map { it.name })
             }
         )
     }

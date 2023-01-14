@@ -487,7 +487,6 @@
             "id": 69,
             "text": "enquantuva",
             "lang": "Q",
-            "gloss": "refill.FUT",
             "source": "PE17:68"
         },
         {
@@ -942,7 +941,6 @@
             "id": 138,
             "text": "hiruva",
             "lang": "Q",
-            "gloss": "find.FUT",
             "source": "PE17:75"
         },
         {
@@ -2055,6 +2053,11 @@
             "gloss": "sinner",
             "pos": "N",
             "source": "VT43:33"
+        },
+        {
+            "id": 296,
+            "text": "lúmessë",
+            "lang": "Q"
         }
     ],
     "rules": [
@@ -2685,6 +2688,63 @@
             "addedCategories": ".POSS.1PL",
             "replacedCategories": "",
             "source": ""
+        },
+        {
+            "id": 20,
+            "name": "q-fut",
+            "fromLang": "Q",
+            "toLang": "Q",
+            "branches": [
+                {
+                    "conditions": [
+                        {
+                            "type": "EndsWith",
+                            "characters": "u"
+                        }
+                    ],
+                    "instructions": [
+                        {
+                            "type": "RemoveLastCharacter",
+                            "arg": ""
+                        },
+                        {
+                            "type": "AddSuffix",
+                            "arg": "úva"
+                        }
+                    ]
+                },
+                {
+                    "conditions": [
+                        {
+                            "type": "EndsWith",
+                            "cls": "vowel"
+                        }
+                    ],
+                    "instructions": [
+                        {
+                            "type": "RemoveLastCharacter",
+                            "arg": ""
+                        },
+                        {
+                            "type": "AddSuffix",
+                            "arg": "uva"
+                        }
+                    ]
+                },
+                {
+                    "conditions": [
+                    ],
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "arg": "uva"
+                        }
+                    ]
+                }
+            ],
+            "addedCategories": ".FUT",
+            "replacedCategories": "",
+            "source": "https://eldamo.org/content/words/word-2817430301.html"
         }
     ],
     "links": [
@@ -2960,6 +3020,9 @@
             "from": 69,
             "to": 70,
             "type": ">",
+            "ruleIds": [
+                20
+            ],
             "source": "PE17:68"
         },
         {
@@ -3215,18 +3278,12 @@
             "source": "PE17:74"
         },
         {
-            "from": 137,
-            "to": 138,
-            "type": ">",
-            "ruleIds": [
-                5
-            ],
-            "source": "PE17:75"
-        },
-        {
             "from": 138,
             "to": 139,
             "type": ">",
+            "ruleIds": [
+                20
+            ],
             "source": "PE17:75"
         },
         {
@@ -3890,6 +3947,23 @@
             "ruleIds": [
                 19,
                 1
+            ]
+        },
+        {
+            "from": 137,
+            "to": 139,
+            "type": ">",
+            "ruleIds": [
+                20,
+                5
+            ]
+        },
+        {
+            "from": 296,
+            "to": 150,
+            "type": ">",
+            "ruleIds": [
+                14
             ]
         }
     ],
