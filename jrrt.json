@@ -2001,6 +2001,65 @@
             "id": 285,
             "text": "súri",
             "lang": "Q"
+        },
+        {
+            "id": 286,
+            "text": "héru",
+            "lang": "Q",
+            "gloss": "lord",
+            "pos": "N",
+            "source": "VT43:29"
+        },
+        {
+            "id": 287,
+            "text": "aistana",
+            "lang": "Q",
+            "gloss": "blessed",
+            "pos": "ADJ",
+            "source": "VT43:28"
+        },
+        {
+            "id": 288,
+            "text": "imíca",
+            "lang": "Q",
+            "gloss": "among",
+            "source": "VT43:30"
+        },
+        {
+            "id": 289,
+            "text": "nísi",
+            "lang": "Q",
+            "source": "VT43:31"
+        },
+        {
+            "id": 290,
+            "text": "nís",
+            "lang": "Q",
+            "gloss": "woman",
+            "pos": "N",
+            "source": "VT43:31"
+        },
+        {
+            "id": 291,
+            "text": "yávë",
+            "lang": "Q",
+            "gloss": "fruit",
+            "pos": "N",
+            "source": "VT43:31"
+        },
+        {
+            "id": 292,
+            "text": "mónalyo",
+            "lang": "Q",
+            "source": "VT43:31"
+        },
+        {
+            "id": 293,
+            "text": "móna",
+            "lang": "Q",
+            "gloss": "womb",
+            "pos": "N",
+            "source": "VT43:31"
         }
     ],
     "rules": [
@@ -2587,6 +2646,27 @@
             "branches": [
             ],
             "addedCategories": "",
+            "replacedCategories": "",
+            "source": ""
+        },
+        {
+            "id": 18,
+            "name": "q-poss-2sg",
+            "fromLang": "Q",
+            "toLang": "Q",
+            "branches": [
+                {
+                    "conditions": [
+                    ],
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "arg": "lya"
+                        }
+                    ]
+                }
+            ],
+            "addedCategories": ".POSS.2SG",
             "replacedCategories": "",
             "source": ""
         }
@@ -3794,6 +3874,23 @@
             "ruleIds": [
                 17
             ]
+        },
+        {
+            "from": 289,
+            "to": 290,
+            "type": ">",
+            "ruleIds": [
+                0
+            ]
+        },
+        {
+            "from": 292,
+            "to": 293,
+            "type": ">",
+            "ruleIds": [
+                18,
+                1
+            ]
         }
     ],
     "corpusTexts": [
@@ -3911,6 +4008,15 @@
             "lang": "S",
             "wordIds": [
             ]
+        },
+        {
+            "id": 6,
+            "text": "Aia María quanta Eruanno\ni Héru aselyë\naistana elyë imíca nísi\nar aistana i yávë mónalyo Yésus\nAirë María Eruo ontaril\ná hyamë rámen úcarindor\nsí ar lúmessë ya firuvammë: násië",
+            "title": "Aia María",
+            "lang": "Q",
+            "wordIds": [
+            ],
+            "source": "VT43:28"
         }
     ],
     "paradigms": [
