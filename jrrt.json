@@ -2002,6 +2002,11 @@
             "lang": "CE",
             "gloss": "blow",
             "source": "PE17:124"
+        },
+        {
+            "id": 285,
+            "text": "súri",
+            "lang": "Q"
         }
     ],
     "rules": [
@@ -2121,13 +2126,23 @@
                     "conditions": [
                         {
                             "type": "EndsWith",
-                            "characters": "eë"
+                            "cls": "vowel"
                         }
                     ],
                     "instructions": [
                         {
                             "type": "AddSuffix",
                             "arg": "llo"
+                        }
+                    ]
+                },
+                {
+                    "conditions": [
+                    ],
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "arg": "ello"
                         }
                     ]
                 }
@@ -2569,6 +2584,17 @@
             "addedCategories": ".PPL",
             "replacedCategories": "",
             "source": "https://www.eldamo.org/content/words/word-1164934417.html"
+        },
+        {
+            "id": 17,
+            "name": "q-noun-stem",
+            "fromLang": "Q",
+            "toLang": "Q",
+            "branches": [
+            ],
+            "addedCategories": "",
+            "replacedCategories": "",
+            "source": ""
         }
     ],
     "links": [
@@ -3784,6 +3810,14 @@
                 3,
                 0
             ]
+        },
+        {
+            "from": 285,
+            "to": 8,
+            "type": ">",
+            "ruleIds": [
+                17
+            ]
         }
     ],
     "corpusTexts": [
@@ -3917,8 +3951,7 @@
                 "All",
                 "Abl",
                 "Loc",
-                "Ins",
-                ""
+                "Ins"
             ],
             "columns": [
                 {
@@ -3936,6 +3969,7 @@
                             "alternatives": [
                                 {
                                     "ruleIds": [
+                                        17,
                                         1
                                     ]
                                 }
@@ -3945,6 +3979,7 @@
                             "alternatives": [
                                 {
                                     "ruleIds": [
+                                        17,
                                         8
                                     ]
                                 }
@@ -3954,6 +3989,7 @@
                             "alternatives": [
                                 {
                                     "ruleIds": [
+                                        17,
                                         12
                                     ]
                                 }
@@ -3963,6 +3999,7 @@
                             "alternatives": [
                                 {
                                     "ruleIds": [
+                                        17,
                                         3
                                     ]
                                 }
@@ -3972,6 +4009,7 @@
                             "alternatives": [
                                 {
                                     "ruleIds": [
+                                        17,
                                         2
                                     ]
                                 }
@@ -3981,6 +4019,7 @@
                             "alternatives": [
                                 {
                                     "ruleIds": [
+                                        17,
                                         14
                                     ]
                                 }
@@ -3990,6 +4029,7 @@
                             "alternatives": [
                                 {
                                     "ruleIds": [
+                                        17,
                                         10
                                     ]
                                 }
@@ -4013,6 +4053,7 @@
                             "alternatives": [
                                 {
                                     "ruleIds": [
+                                        17,
                                         0,
                                         9
                                     ]
@@ -4031,6 +4072,7 @@
                             "alternatives": [
                                 {
                                     "ruleIds": [
+                                        17,
                                         13
                                     ]
                                 }
@@ -4060,12 +4102,14 @@
                             "alternatives": [
                                 {
                                     "ruleIds": [
+                                        17,
                                         16,
                                         3
                                     ]
                                 },
                                 {
                                     "ruleIds": [
+                                        17,
                                         16,
                                         3,
                                         0
