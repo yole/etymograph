@@ -172,12 +172,11 @@ class WordController(val graphService: GraphService) {
         val graph = graphService.graph
         val word = graph.wordById(id) ?: throw NoWordException()
         return graph.paradigmsForLanguage(word.language).filter { it.pos == word.pos }.map { paradigm ->
-            val generatedParadigm = paradigm.generate(word)
+            val generatedParadigm = paradigm.generate(word, graph)
             val substitutedParadigm = generatedParadigm.map { colWords ->
                 colWords.map { cellWords ->
                     cellWords?.map { cellWord ->
-                        val actualWord = cellWord.let { graph.substituteKnownWord(word, it) }
-                        WordParadigmWordModel(actualWord.text, actualWord.id)
+                        WordParadigmWordModel(cellWord.text, cellWord.id)
                     } ?: emptyList()
                 }
             }

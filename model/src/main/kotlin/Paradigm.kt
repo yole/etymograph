@@ -3,8 +3,11 @@ package ru.yole.etymograph
 typealias RuleSeq = List<Rule>
 
 data class ParadigmRuleSeq(val rules: RuleSeq) {
-    fun generate(word: Word): Word {
-        return rules.fold(word) { w, r -> r.apply(w) }
+    fun generate(word: Word, graph: GraphRepository): Word {
+        return rules.fold(word) { w, r ->
+            val link = graph.getLinksTo(word).find { it.rules == listOf(r) }
+            link?.fromWord ?: r.apply(w)
+        }
     }
 }
 
@@ -13,8 +16,8 @@ typealias WordAlternatives = List<Word>
 class ParadigmCell(ruleAlternatives: List<RuleSeq>) {
     val alternatives = ruleAlternatives.map { ParadigmRuleSeq(it) }
 
-    fun generate(word: Word): WordAlternatives {
-        return alternatives.map { it.generate(word) }
+    fun generate(word: Word, graph: GraphRepository): WordAlternatives {
+        return alternatives.map { it.generate(word, graph) }
     }
 }
 
@@ -28,9 +31,9 @@ data class ParadigmColumn(val title: String) {
         cells[row] = ParadigmCell(rules)
     }
 
-    fun generate(word: Word): List<WordAlternatives?> {
+    fun generate(word: Word, graph: GraphRepository): List<WordAlternatives?> {
         return cells.map {
-            it?.generate(word)
+            it?.generate(word, graph)
         }
     }
 }
@@ -60,9 +63,9 @@ data class Paradigm(
         columns[column].setRule(row, rules)
     }
 
-    fun generate(word: Word): List<List<WordAlternatives?>> {
+    fun generate(word: Word, graph: GraphRepository): List<List<WordAlternatives?>> {
         return columns.map {
-            it.generate(word)
+            it.generate(word, graph)
         }
     }
 
