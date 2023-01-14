@@ -165,6 +165,7 @@ class Rule(
 
     companion object {
         fun parseBranches(s: String, characterClassLookup: (String) -> CharacterClass?): List<RuleBranch> {
+            if (s.isBlank()) return emptyList()
             val lines = s.split('\n').map { it.trim() }.filter { it.isNotEmpty() }
             val branchTexts = mutableListOf<List<String>>()
             var currentBranchText = mutableListOf<String>()
