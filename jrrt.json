@@ -780,12 +780,6 @@
             "source": "PE17:73"
         },
         {
-            "id": 112,
-            "text": "falmali",
-            "lang": "Q",
-            "source": "PE17:73"
-        },
-        {
             "id": 113,
             "text": "falma",
             "lang": "Q",
@@ -3062,24 +3056,6 @@
             "from": 108,
             "to": 109,
             "type": ">",
-            "source": "PE17:73"
-        },
-        {
-            "from": 111,
-            "to": 112,
-            "type": ">",
-            "ruleIds": [
-                3
-            ],
-            "source": "PE17:73"
-        },
-        {
-            "from": 112,
-            "to": 113,
-            "type": ">",
-            "ruleIds": [
-                16
-            ],
             "source": "PE17:73"
         },
         {

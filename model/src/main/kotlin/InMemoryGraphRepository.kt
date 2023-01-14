@@ -112,6 +112,16 @@ open class InMemoryGraphRepository : GraphRepository() {
         val wordsForLanguage = words.getOrPut(word.language) { mutableMapOf() }
         val wordsByText = wordsForLanguage.getOrPut(word.text.lowercase(Locale.getDefault())) { mutableListOf() }
         wordsByText.remove(word)
+        linksFrom[word.id]?.let {
+            for (link in it.toList()) {
+                deleteLink(link.fromWord, link.toWord, link.type)
+            }
+        }
+        linksTo[word.id]?.let {
+            for (link in it.toList()) {
+                deleteLink(link.fromWord, link.toWord, link.type)
+            }
+        }
         allWords[word.id] = null
     }
 
