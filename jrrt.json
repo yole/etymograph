@@ -408,12 +408,6 @@
             "source": "PE17:67"
         },
         {
-            "id": 57,
-            "text": "ómarya",
-            "lang": "Q",
-            "source": "PE17:67"
-        },
-        {
             "id": 58,
             "text": "óma",
             "lang": "Q",
@@ -589,12 +583,6 @@
         {
             "id": 83,
             "text": "máryat",
-            "lang": "Q",
-            "source": "PE17:69"
-        },
-        {
-            "id": 84,
-            "text": "márya",
             "lang": "Q",
             "source": "PE17:69"
         },
@@ -1045,13 +1033,6 @@
             "text": "omentielmo",
             "lang": "Q",
             "gloss": "meeting.2PL.GEN",
-            "source": "PE17:13"
-        },
-        {
-            "id": 152,
-            "text": "omentielma",
-            "lang": "Q",
-            "gloss": "meeting.2PL",
             "source": "PE17:13"
         },
         {
@@ -2060,6 +2041,20 @@
             "gloss": "womb",
             "pos": "N",
             "source": "VT43:31"
+        },
+        {
+            "id": 294,
+            "text": "úcarindor",
+            "lang": "Q",
+            "source": "VT43:33"
+        },
+        {
+            "id": 295,
+            "text": "úcarindo",
+            "lang": "Q",
+            "gloss": "sinner",
+            "pos": "N",
+            "source": "VT43:33"
         }
     ],
     "rules": [
@@ -2669,6 +2664,27 @@
             "addedCategories": ".POSS.2SG",
             "replacedCategories": "",
             "source": ""
+        },
+        {
+            "id": 19,
+            "name": "q-poss-1pl",
+            "fromLang": "Q",
+            "toLang": "Q",
+            "branches": [
+                {
+                    "conditions": [
+                    ],
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "arg": "lma"
+                        }
+                    ]
+                }
+            ],
+            "addedCategories": ".POSS.1PL",
+            "replacedCategories": "",
+            "source": ""
         }
     ],
     "links": [
@@ -2899,24 +2915,6 @@
             "source": "PE17:67"
         },
         {
-            "from": 56,
-            "to": 57,
-            "type": ">",
-            "ruleIds": [
-                1
-            ],
-            "source": "PE17:67"
-        },
-        {
-            "from": 57,
-            "to": 58,
-            "type": ">",
-            "ruleIds": [
-                4
-            ],
-            "source": "PE17:67"
-        },
-        {
             "from": 59,
             "to": 60,
             "type": "+",
@@ -3021,15 +3019,6 @@
             "type": ">",
             "ruleIds": [
                 0
-            ],
-            "source": "PE17:69"
-        },
-        {
-            "from": 84,
-            "to": 85,
-            "type": ">",
-            "ruleIds": [
-                4
             ],
             "source": "PE17:69"
         },
@@ -3259,21 +3248,6 @@
             "ruleIds": [
                 3
             ],
-            "source": "PE17:13"
-        },
-        {
-            "from": 151,
-            "to": 152,
-            "type": ">",
-            "ruleIds": [
-                1
-            ],
-            "source": "PE17:13"
-        },
-        {
-            "from": 152,
-            "to": 153,
-            "type": ">",
             "source": "PE17:13"
         },
         {
@@ -3889,6 +3863,32 @@
             "type": ">",
             "ruleIds": [
                 18,
+                1
+            ]
+        },
+        {
+            "from": 294,
+            "to": 295,
+            "type": ">",
+            "ruleIds": [
+                0
+            ]
+        },
+        {
+            "from": 56,
+            "to": 58,
+            "type": ">",
+            "ruleIds": [
+                4,
+                1
+            ]
+        },
+        {
+            "from": 151,
+            "to": 153,
+            "type": ">",
+            "ruleIds": [
+                19,
                 1
             ]
         }
