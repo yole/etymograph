@@ -104,10 +104,10 @@ export default function Word() {
     }
 
     return <>
-        <h2>{word.text}</h2>
+        <h2><small><Link to={`/dictionary/${word.language}`}>{word.language}</Link></small> {word.text}</h2>
         {!editMode && <>
             {word.pos && <div>{word.pos}</div>}
-            <p><Link to={`/dictionary/${word.language}`}>{word.language}</Link> {word.gloss}</p>
+            <p>{word.gloss}</p>
             {word.notes && <p>{word.notes}</p>}
             {word.source != null && <div className="source">Source: {word.source}</div>}
         </>}
