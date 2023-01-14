@@ -68,6 +68,7 @@ abstract class GraphRepository {
     abstract fun substituteKnownWord(baseWord: Word, derivedWord: Word): Word
 
     abstract fun findMatchingRule(fromWord: Word, toWord: Word): Rule?
+    abstract fun findRuleExamples(rule: Rule): List<Link>
 
     abstract fun save()
 }

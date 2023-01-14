@@ -210,6 +210,10 @@ open class InMemoryGraphRepository : GraphRepository() {
         return null
     }
 
+    override fun findRuleExamples(rule: Rule): List<Link> {
+        return linksFrom.values.flatten().filter { rule in it.rules }
+    }
+
     override fun allRules(): Iterable<Rule> {
         return rules
     }

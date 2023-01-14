@@ -1,6 +1,7 @@
 import {useLoaderData, useRevalidator} from "react-router";
 import {useEffect, useState} from "react";
 import {updateRule} from "../api";
+import {Link} from "react-router-dom";
 
 export async function loader({params}) {
     return fetch(`${process.env.REACT_APP_BACKEND_URL}rule/${params.id}`, { headers: { 'Accept': 'application/json'} })
@@ -20,7 +21,7 @@ export default function Rule() {
     }
 
     return <>
-        <h3>{rule.name}</h3>
+        <h2>{rule.name}</h2>
         <p>From {rule.fromLang} to {rule.toLang}</p>
         <p>Added categories: {rule.addedCategories}</p>
         {rule.replacedCategories && <p>Replaced categories: {rule.replacedCategories}</p>}
@@ -41,5 +42,16 @@ export default function Rule() {
         </>}
         {rule.source != null && <div className="source">Source: {rule.source}</div>}
         <button onClick={() => setEditMode(!editMode)}>{editMode ? "Cancel" : "Edit"}</button>
+        {rule.examples.length > 0 && <>
+            <h3>Examples</h3>
+            <ul>
+                {rule.examples.map(ex => <li>
+                    <Link to={`/word/${rule.toLang}/${ex.toWord}`}>{ex.toWord}</Link>
+                    &nbsp;->&nbsp;
+                    <Link to={`/word/${rule.fromLang}/${ex.fromWord}`}>{ex.fromWord}</Link>
+                    {ex.allRules.length > 1 && " (" + ex.allRules.join(", ") + ")"}
+                </li>)}
+            </ul>
+        </>}
     </>
 }

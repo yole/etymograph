@@ -8,6 +8,13 @@ import ru.yole.etymograph.*
 @RestController
 class RuleController(val graphService: GraphService) {
     data class RuleBranchViewModel(val conditions: List<String>, val instructions: List<String>)
+
+    data class RuleExampleViewModel(
+        val fromWord: String,
+        val toWord: String,
+        val allRules: List<String>
+    )
+
     data class RuleViewModel(
         val id: Int,
         val name: String,
@@ -18,7 +25,8 @@ class RuleController(val graphService: GraphService) {
         val addedCategories: String?,
         val replacedCategories: String?,
         val source: String?,
-        val branches: List<RuleBranchViewModel>
+        val branches: List<RuleBranchViewModel>,
+        val examples: List<RuleExampleViewModel>
     )
 
     @GetMapping("/rules")
@@ -39,7 +47,11 @@ class RuleController(val graphService: GraphService) {
             addedCategories,
             replacedCategories,
             source.nullize(),
-            branches.map { it.toViewModel() })
+            branches.map { it.toViewModel() },
+            graphService.graph.findRuleExamples(this).map { link ->
+                RuleExampleViewModel(link.fromWord.text, link.toWord.text, link.rules.map { it.name })
+            }
+        )
     }
 
     private fun RuleBranch.toViewModel(): RuleBranchViewModel {
