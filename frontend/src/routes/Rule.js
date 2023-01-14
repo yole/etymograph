@@ -21,12 +21,12 @@ export default function Rule() {
     }
 
     return <>
-        <h2>{rule.name}</h2>
+        <h2><small><Link to="/rules">Rules</Link> > </small>{rule.name}</h2>
         <p>From {rule.fromLang} to {rule.toLang}</p>
         <p>Added categories: {rule.addedCategories}</p>
         {rule.replacedCategories && <p>Replaced categories: {rule.replacedCategories}</p>}
         {!editMode && rule.branches.map(b => <>
-            <div>{b.conditions.length > 0 ? "When:" : "Otherwise:"}</div>
+            {rule.branches.length > 1 && <div>{b.conditions.length > 0 ? "When:" : "Otherwise:"}</div>}
             <ul>
                 {b.conditions.map(c => <li>{c}</li>)}
             </ul>
