@@ -13,6 +13,7 @@ class RuleController(val graphService: GraphService) {
         val name: String,
         val fromLang: String,
         val toLang: String,
+        val summaryText: String,
         val editableText: String,
         val addedCategories: String?,
         val replacedCategories: String?,
@@ -33,6 +34,7 @@ class RuleController(val graphService: GraphService) {
     private fun Rule.toViewModel(): RuleViewModel {
         return RuleViewModel(
             id, name, fromLanguage.shortName, toLanguage.shortName,
+            toSummaryText(),
             toEditableText(),
             addedCategories,
             replacedCategories,
