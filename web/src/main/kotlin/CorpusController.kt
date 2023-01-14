@@ -65,7 +65,13 @@ class CorpusController(val graphService: GraphService) {
 
     data class CorpusWordViewModel(val text: String, val gloss: String, val wordText: String?)
     data class CorpusLineViewModel(val words: List<CorpusWordViewModel>)
-    data class CorpusTextViewModel(val id: Int, val title: String, val language: String, val lines: List<CorpusLineViewModel>)
+    data class CorpusTextViewModel(
+        val id: Int,
+        val title: String,
+        val language: String,
+        val languageFullName: String,
+        val lines: List<CorpusLineViewModel>
+    )
 
     @GetMapping("/corpus/text/{id}", produces = ["application/json"])
     @ResponseBody
@@ -79,6 +85,7 @@ class CorpusController(val graphService: GraphService) {
             id,
             title ?: "Untitled",
             language.shortName,
+            language.name,
             mapToLines(graphService.graph).map {
                 CorpusLineViewModel(it.corpusWords.map { cw ->
                     CorpusWordViewModel(cw.text, cw.gloss ?: "", cw.word?.text)

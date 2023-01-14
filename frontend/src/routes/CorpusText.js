@@ -36,7 +36,7 @@ export default function CorpusText() {
     }
 
     return <>
-        <h2>{corpusText.title}</h2>
+        <h2>{corpusText.title} <small>(<Link to={`/corpus/${corpusText.language}`}>{corpusText.languageFullName}</Link>)</small></h2>
         {corpusText.lines.map(l => (
             <div>
                 <table><tbody>
