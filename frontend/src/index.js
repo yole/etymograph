@@ -36,7 +36,7 @@ const router = createBrowserRouter([
         loader: corpusTextLoader
     },
     {
-        path: '/corpus/new',
+        path: '/corpus/:lang/new',
         element: <CorpusTextEditor/>
     },
     {

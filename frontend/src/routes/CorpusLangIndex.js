@@ -21,6 +21,6 @@ export default function CorpusLangIndex() {
                 )
             )}
         </ul>
-        <button onClick={() => navigate("/corpus/new")}>Add</button>
+        <button onClick={() => navigate(`/corpus/${corpusForLanguage.language.shortName}/new`)}>Add</button>
     </>
 }

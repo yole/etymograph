@@ -33,8 +33,8 @@ export function updateRule(id, name, fromLang, toLang, text) {
     return postToBackend('rule/' + id, {name: name, fromLang: fromLang, toLang: toLang, text: text})
 }
 
-export function addCorpusText(text) {
-    return postToBackend("corpus", {text: text})
+export function addCorpusText(lang, text) {
+    return postToBackend(`corpus/${lang}/new`, {text: text})
 }
 
 export function addLink(fromWord, toWord, linkType, ruleNames) {

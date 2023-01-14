@@ -59,24 +59,21 @@ fun parseWordChain(repo: GraphRepository, line: String, language: Language): Wor
     return firstWord!!
 }
 
-class CorpusTextSectionParser(val repo: GraphRepository) {
-    private var language: Language? = null
+class CorpusTextSectionParser(private val repo: GraphRepository, private val language: Language) {
     private var title: String? = null
     private var text: String = ""
     private var source: String? = null
     private val words = mutableListOf<Word>()
 
     private fun parseLine(line: String) {
-        if (language == null) {
-            language = repo.languageByShortName(line.substringBefore(':'))
-            val tail = line.substringAfter(':')
+        if (text.isEmpty() && title == null) {
             val firstLine: String
-            if (tail.endsWith('}')) {
-                source = tail.substringAfterLast('{').trimEnd('}')
-                firstLine = tail.substringBeforeLast('{').trim()
+            if (line.endsWith('}')) {
+                source = line.substringAfterLast('{').trimEnd('}')
+                firstLine = line.substringBeforeLast('{').trim()
             }
             else {
-                firstLine = tail.trim()
+                firstLine = line.trim()
             }
 
             if (firstLine.startsWith('"') && firstLine.endsWith('"')) {
@@ -91,7 +88,7 @@ class CorpusTextSectionParser(val repo: GraphRepository) {
             text += line
         }
         else {
-            words.add(parseWordChain(repo, line.trim(), language!!))
+            words.add(parseWordChain(repo, line.trim(), language))
         }
     }
 
@@ -99,6 +96,6 @@ class CorpusTextSectionParser(val repo: GraphRepository) {
         for (line in corpusText.split('\n')) {
             parseLine(line)
         }
-        return repo.addCorpusText(text, title, language!!, words, source, null)
+        return repo.addCorpusText(text, title, language, words, source, null)
     }
 }

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.ResponseBody
 import org.springframework.web.bind.annotation.ResponseStatus
+import org.springframework.web.server.ResponseStatusException
 import ru.yole.etymograph.CorpusText
 import ru.yole.etymograph.Language
 import ru.yole.etymograph.UnknownLanguage
@@ -96,11 +97,13 @@ class CorpusController(val graphService: GraphService) {
 
     data class CorpusParams(val text: String = "")
 
-    @PostMapping("/corpus", consumes = ["application/json"])
+    @PostMapping("/corpus/{lang}/new", consumes = ["application/json"])
     @ResponseBody
-    fun newText(@RequestBody params: CorpusParams): CorpusTextViewModel {
+    fun newText(@PathVariable lang: String, @RequestBody params: CorpusParams): CorpusTextViewModel {
         val repo = graphService.graph
-        val parser = CorpusTextSectionParser(repo)
+        val language = repo.languageByShortName(lang)
+        if (language == UnknownLanguage) throw ResponseStatusException(HttpStatus.BAD_REQUEST, "No language named $lang")
+        val parser = CorpusTextSectionParser(repo, language)
         val text = parser.parseText(params.text)
         repo.save()
         return text.toViewModel()
