@@ -73,7 +73,7 @@ data class Paradigm(
         rowTitles.clear()
         columns.clear()
 
-        val lines = text.split('\n')
+        val lines = text.split('\n').filter { it.isNotEmpty() }
         val columnHeaders = lines[0].trim().split(' ')
         for (columnHeader in columnHeaders) {
             addColumn(columnHeader)
