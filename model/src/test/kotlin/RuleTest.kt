@@ -9,7 +9,7 @@ class RuleTest {
     @Test
     fun conditions() {
         val v = CharacterClass("vowel", "aeiou")
-        val c = RuleCondition(ConditionType.EndsWith, v)
+        val c = LeafRuleCondition(ConditionType.EndsWith, v)
         assertTrue(c.matches(Word(0, "parma", q)))
         assertFalse(c.matches(Word(0, "formen", q)))
     }
@@ -23,10 +23,10 @@ class RuleTest {
     @Test
     fun rule() {
         val v = CharacterClass(null, "eë")
-        val c = RuleCondition(ConditionType.EndsWith, v)
+        val c = LeafRuleCondition(ConditionType.EndsWith, v)
         val i1 = RuleInstruction(InstructionType.RemoveLastCharacter, "")
         val i2 = RuleInstruction(InstructionType.AddSuffix, "i")
-        val r = RuleBranch(listOf(c), listOf(i1, i2))
+        val r = RuleBranch(c, listOf(i1, i2))
 
         assertTrue(r.matches(Word(0, "lasse", q)))
         assertEquals("lassi", r.apply(Word(0, "lasse", q)))
@@ -34,12 +34,12 @@ class RuleTest {
 
     @Test
     fun conditionParse() {
-        val c = RuleCondition.parse("word ends with 'eë'") { null }
+        val c = LeafRuleCondition.parse("word ends with 'eë'") { null }
         assertEquals(ConditionType.EndsWith, c.type)
         assertEquals("eë", c.characterClass.matchingCharacters)
 
         val v = CharacterClass("vowel", "aoiue")
-        val c2 = RuleCondition.parse("word ends with a vowel") { if (it == "vowel") v else null }
+        val c2 = LeafRuleCondition.parse("word ends with a vowel") { if (it == "vowel") v else null }
         assertEquals(ConditionType.EndsWith, c2.type)
         assertEquals(v, c2.characterClass)
     }
@@ -60,7 +60,7 @@ class RuleTest {
             word ends with 'e':
             - add suffix 'a'
         """.trimIndent()) { null }
-        assertEquals("e", b.conditions[0].characterClass.matchingCharacters)
+        assertEquals("e", (b.condition as LeafRuleCondition).characterClass.matchingCharacters)
         assertEquals("a", b.instructions[0].arg)
     }
 
@@ -97,6 +97,6 @@ class RuleTest {
         """.trimIndent()) { null }
         assertEquals(2, branches.size)
         assertEquals(1, branches[0].instructions.size)
-        assertEquals(0, branches[1].conditions.size)
+        assertEquals(OtherwiseCondition, branches[1].condition)
     }
 }

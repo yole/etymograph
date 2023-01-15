@@ -10,33 +10,54 @@ class CharacterClass(val name: String?, val matchingCharacters: String)
 
 class RuleParseException(msg: String): RuntimeException(msg)
 
-class RuleCondition(val type: ConditionType, val characterClass: CharacterClass) {
-    fun matches(word: Word): Boolean {
+sealed class RuleCondition {
+    abstract fun matches(word: Word): Boolean
+    abstract fun toEditableText(): String
+
+    companion object {
+        fun parse(s: String, characterClassLookup: (String) -> CharacterClass?): RuleCondition {
+            if (s == OtherwiseCondition.OTHERWISE) {
+                return OtherwiseCondition
+            }
+            return LeafRuleCondition.parse(s, characterClassLookup)
+        }
+    }
+}
+
+class LeafRuleCondition(val type: ConditionType, val characterClass: CharacterClass) : RuleCondition() {
+    override fun matches(word: Word): Boolean {
         return when (type) {
             ConditionType.EndsWith -> word.text.last() in characterClass.matchingCharacters
         }
     }
 
-    fun toEditableText(): String = when(type) {
+    override fun toEditableText(): String = when(type) {
         ConditionType.EndsWith -> wordEndsWith + (characterClass.name?.let { "a $it" } ?: "'${characterClass.matchingCharacters}'")
     }
 
     companion object {
         const val wordEndsWith = "word ends with "
 
-        fun parse(s: String, characterClassLookup: (String) -> CharacterClass?): RuleCondition {
+        fun parse(s: String, characterClassLookup: (String) -> CharacterClass?): LeafRuleCondition {
             if (s.startsWith(wordEndsWith)) {
                 val c = s.removePrefix(wordEndsWith)
                 if (c.startsWith('\'')) {
-                    return RuleCondition(ConditionType.EndsWith, CharacterClass(null, c.removePrefix("'").removeSuffix("'")))
+                    return LeafRuleCondition(ConditionType.EndsWith, CharacterClass(null, c.removePrefix("'").removeSuffix("'")))
                 }
                 val characterClass = characterClassLookup(c.removePrefix("a "))
                     ?: throw RuleParseException("Unrecognized character class $c")
-                return RuleCondition(ConditionType.EndsWith, characterClass)
+                return LeafRuleCondition(ConditionType.EndsWith, characterClass)
             }
             throw RuleParseException("Unrecognized condition $s")
         }
     }
+}
+
+object OtherwiseCondition : RuleCondition() {
+    override fun matches(word: Word): Boolean = true
+    override fun toEditableText(): String = OTHERWISE
+
+    const val OTHERWISE = "otherwise"
 }
 
 enum class InstructionType(val insnName: String, val takesArgument: Boolean) {
@@ -74,19 +95,15 @@ class RuleInstruction(val type: InstructionType, val arg: String) {
     }
 }
 
-class RuleBranch(val conditions: List<RuleCondition>, val instructions: List<RuleInstruction>) {
-    fun matches(word: Word) = conditions.all { it.matches(word) }
+class RuleBranch(val condition: RuleCondition, val instructions: List<RuleInstruction>) {
+    fun matches(word: Word) = condition.matches(word)
 
     fun apply(word: Word): String {
         return instructions.fold(word.text) { s, i -> i.apply(s) }
     }
 
     fun toEditableText(): String {
-        val editableConditions = if (conditions.isEmpty())
-            OTHERWISE
-        else
-            conditions.joinToString(" and ") { it.toEditableText() }
-        return editableConditions + ":\n" +
+        return condition.toEditableText() + ":\n" +
                 instructions.joinToString("\n") { " - " + it.toEditableText() }
     }
 
@@ -97,18 +114,13 @@ class RuleBranch(val conditions: List<RuleCondition>, val instructions: List<Rul
     companion object {
         fun parse(s: String, characterClassLookup: (String) -> CharacterClass?): RuleBranch {
             var lines = s.split("\n").map { it.trim() }.filter { it.isNotEmpty() }
-            val conditions = if (lines[0].endsWith(":")) {
+            val condition = if (lines[0].endsWith(":")) {
                 val conditionList = lines[0].removeSuffix(":")
                 lines = lines.drop(1)
-                if (conditionList == OTHERWISE) {
-                    emptyList()
-                }
-                else {
-                    listOf(RuleCondition.parse(conditionList, characterClassLookup))
-                }
+                RuleCondition.parse(conditionList, characterClassLookup)
             }
             else {
-                emptyList()
+                OtherwiseCondition
             }
             val instructions = lines.map {
                 if (!it.startsWith("-")) {
@@ -116,10 +128,8 @@ class RuleBranch(val conditions: List<RuleCondition>, val instructions: List<Rul
                 }
                 RuleInstruction.parse(it.removePrefix("-").trim())
             }
-            return RuleBranch(conditions, instructions)
+            return RuleBranch(condition, instructions)
         }
-
-        const val OTHERWISE = "otherwise"
     }
 }
 

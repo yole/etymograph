@@ -26,11 +26,7 @@ export default function Rule() {
         <p>Added categories: {rule.addedCategories}</p>
         {rule.replacedCategories && <p>Replaced categories: {rule.replacedCategories}</p>}
         {!editMode && rule.branches.map(b => <>
-            {rule.branches.length > 1 && <div>{b.conditions.length > 0 ? "When:" : "Otherwise:"}</div>}
-            <ul>
-                {b.conditions.map(c => <li>{c}</li>)}
-            </ul>
-            {b.conditions.length > 0 && <div>Then:</div>}
+            {rule.branches.length > 1 && <div>{b.conditions}:</div>}
             <ul>
                 {b.instructions.map(i => <li>{i}</li>)}
             </ul>

@@ -990,6 +990,7 @@
             "text": "ampa",
             "lang": "Q",
             "gloss": "crook",
+            "pos": "N",
             "source": "PE22:50"
         },
         {
@@ -2068,12 +2069,6 @@
             "toLang": "Q",
             "branches": [
                 {
-                    "conditions": [
-                        {
-                            "type": "EndsWith",
-                            "characters": "eë"
-                        }
-                    ],
                     "instructions": [
                         {
                             "type": "RemoveLastCharacter",
@@ -2083,35 +2078,38 @@
                             "type": "AddSuffix",
                             "arg": "i"
                         }
-                    ]
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "characters": "eë"
+                    }
                 },
                 {
-                    "conditions": [
-                        {
-                            "type": "EndsWith",
-                            "cls": "vowel"
-                        }
-                    ],
                     "instructions": [
                         {
                             "type": "AddSuffix",
                             "arg": "r"
                         }
-                    ]
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "cls": "vowel"
+                    }
                 },
                 {
-                    "conditions": [
-                        {
-                            "type": "EndsWith",
-                            "cls": "consonant"
-                        }
-                    ],
                     "instructions": [
                         {
                             "type": "AddSuffix",
                             "arg": "i"
                         }
-                    ]
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "cls": "consonant"
+                    }
                 }
             ],
             "addedCategories": ".NOM.PL"
@@ -2123,12 +2121,6 @@
             "toLang": "Q",
             "branches": [
                 {
-                    "conditions": [
-                        {
-                            "type": "EndsWith",
-                            "characters": "aä"
-                        }
-                    ],
                     "instructions": [
                         {
                             "type": "RemoveLastCharacter",
@@ -2138,31 +2130,36 @@
                             "type": "AddSuffix",
                             "arg": "o"
                         }
-                    ]
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "characters": "aä"
+                    }
                 },
                 {
-                    "conditions": [
-                        {
-                            "type": "EndsWith",
-                            "characters": "oö"
-                        }
-                    ],
                     "instructions": [
                         {
                             "type": "NoChange",
                             "arg": ""
                         }
-                    ]
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "characters": "oö"
+                    }
                 },
                 {
-                    "conditions": [
-                    ],
                     "instructions": [
                         {
                             "type": "AddSuffix",
                             "arg": "o"
                         }
-                    ]
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
                 }
             ],
             "addedCategories": ".GEN"
@@ -2174,28 +2171,28 @@
             "toLang": "Q",
             "branches": [
                 {
-                    "conditions": [
-                        {
-                            "type": "EndsWith",
-                            "cls": "vowel"
-                        }
-                    ],
                     "instructions": [
                         {
                             "type": "AddSuffix",
                             "arg": "llo"
                         }
-                    ]
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "cls": "vowel"
+                    }
                 },
                 {
-                    "conditions": [
-                    ],
                     "instructions": [
                         {
                             "type": "AddSuffix",
                             "arg": "ello"
                         }
-                    ]
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
                 }
             ],
             "addedCategories": ".ABL"
@@ -2207,18 +2204,17 @@
             "toLang": "Q",
             "branches": [
                 {
-                    "conditions": [
-                        {
-                            "type": "EndsWith",
-                            "cls": "vowel"
-                        }
-                    ],
                     "instructions": [
                         {
                             "type": "AddSuffix",
                             "arg": "nna"
                         }
-                    ]
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "cls": "vowel"
+                    }
                 }
             ],
             "addedCategories": ".ALL"
@@ -2230,14 +2226,15 @@
             "toLang": "Q",
             "branches": [
                 {
-                    "conditions": [
-                    ],
                     "instructions": [
                         {
                             "type": "AddSuffix",
                             "arg": "rya"
                         }
-                    ]
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
                 }
             ],
             "addedCategories": ".POSS.3SG"
@@ -2249,14 +2246,15 @@
             "toLang": "Q",
             "branches": [
                 {
-                    "conditions": [
-                    ],
                     "instructions": [
                         {
                             "type": "AddSuffix",
                             "arg": "lye"
                         }
-                    ]
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
                 }
             ],
             "addedCategories": "2SG"
@@ -2268,14 +2266,15 @@
             "toLang": "Q",
             "branches": [
                 {
-                    "conditions": [
-                    ],
                     "instructions": [
                         {
                             "type": "AddSuffix",
                             "arg": "nye"
                         }
-                    ]
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
                 }
             ],
             "addedCategories": "1SG"
@@ -2287,14 +2286,15 @@
             "toLang": "Q",
             "branches": [
                 {
-                    "conditions": [
-                    ],
                     "instructions": [
                         {
                             "type": "AddSuffix",
                             "arg": "tye"
                         }
-                    ]
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
                 }
             ],
             "addedCategories": "3SG",
@@ -2307,28 +2307,28 @@
             "toLang": "Q",
             "branches": [
                 {
-                    "conditions": [
-                        {
-                            "type": "EndsWith",
-                            "cls": "consonant"
-                        }
-                    ],
                     "instructions": [
                         {
                             "type": "AddSuffix",
                             "arg": "en"
                         }
-                    ]
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "cls": "consonant"
+                    }
                 },
                 {
-                    "conditions": [
-                    ],
                     "instructions": [
                         {
                             "type": "AddSuffix",
                             "arg": "n"
                         }
-                    ]
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
                 }
             ],
             "addedCategories": ".DAT",
@@ -2341,14 +2341,15 @@
             "toLang": "Q",
             "branches": [
                 {
-                    "conditions": [
-                    ],
                     "instructions": [
                         {
                             "type": "AddSuffix",
                             "arg": "on"
                         }
-                    ]
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
                 }
             ],
             "addedCategories": ".GEN.PL",
@@ -2362,56 +2363,54 @@
             "toLang": "Q",
             "branches": [
                 {
-                    "conditions": [
-                        {
-                            "type": "EndsWith",
-                            "cls": "vowel"
-                        }
-                    ],
                     "instructions": [
                         {
                             "type": "AddSuffix",
                             "arg": "nen"
                         }
-                    ]
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "cls": "vowel"
+                    }
                 },
                 {
-                    "conditions": [
-                        {
-                            "type": "EndsWith",
-                            "characters": "rl"
-                        }
-                    ],
                     "instructions": [
                         {
                             "type": "AddSuffix",
                             "arg": "men"
                         }
-                    ]
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "characters": "rl"
+                    }
                 },
                 {
-                    "conditions": [
-                        {
-                            "type": "EndsWith",
-                            "characters": "nt"
-                        }
-                    ],
                     "instructions": [
                         {
                             "type": "AddSuffix",
                             "arg": "wen"
                         }
-                    ]
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "characters": "nt"
+                    }
                 },
                 {
-                    "conditions": [
-                    ],
                     "instructions": [
                         {
                             "type": "AddSuffix",
                             "arg": "anen"
                         }
-                    ]
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
                 }
             ],
             "addedCategories": ".INS",
@@ -2425,12 +2424,6 @@
             "toLang": "Q",
             "branches": [
                 {
-                    "conditions": [
-                        {
-                            "type": "EndsWith",
-                            "characters": "a"
-                        }
-                    ],
                     "instructions": [
                         {
                             "type": "RemoveLastCharacter",
@@ -2440,15 +2433,14 @@
                             "type": "AddSuffix",
                             "arg": "e"
                         }
-                    ]
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "characters": "a"
+                    }
                 },
                 {
-                    "conditions": [
-                        {
-                            "type": "EndsWith",
-                            "characters": "e"
-                        }
-                    ],
                     "instructions": [
                         {
                             "type": "RemoveLastCharacter",
@@ -2458,17 +2450,23 @@
                             "type": "AddSuffix",
                             "arg": "i"
                         }
-                    ]
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "characters": "e"
+                    }
                 },
                 {
-                    "conditions": [
-                    ],
                     "instructions": [
                         {
                             "type": "AddSuffix",
                             "arg": "i"
                         }
-                    ]
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
                 }
             ],
             "addedCategories": ".PL",
@@ -2482,28 +2480,28 @@
             "toLang": "Q",
             "branches": [
                 {
-                    "conditions": [
-                        {
-                            "type": "EndsWith",
-                            "cls": "vowel"
-                        }
-                    ],
                     "instructions": [
                         {
                             "type": "AddSuffix",
                             "arg": "va"
                         }
-                    ]
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "cls": "vowel"
+                    }
                 },
                 {
-                    "conditions": [
-                    ],
                     "instructions": [
                         {
                             "type": "AddSuffix",
                             "arg": "wa"
                         }
-                    ]
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
                 }
             ],
             "addedCategories": ".POSS",
@@ -2517,28 +2515,28 @@
             "toLang": "Q",
             "branches": [
                 {
-                    "conditions": [
-                        {
-                            "type": "EndsWith",
-                            "cls": "vowel"
-                        }
-                    ],
                     "instructions": [
                         {
                             "type": "AddSuffix",
                             "arg": "ssen"
                         }
-                    ]
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "cls": "vowel"
+                    }
                 },
                 {
-                    "conditions": [
-                    ],
                     "instructions": [
                         {
                             "type": "AddSuffix",
                             "arg": "issen"
                         }
-                    ]
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
                 }
             ],
             "addedCategories": ".LOC.PL",
@@ -2552,28 +2550,28 @@
             "toLang": "Q",
             "branches": [
                 {
-                    "conditions": [
-                        {
-                            "type": "EndsWith",
-                            "cls": "vowel"
-                        }
-                    ],
                     "instructions": [
                         {
                             "type": "AddSuffix",
                             "arg": "sse"
                         }
-                    ]
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "cls": "vowel"
+                    }
                 },
                 {
-                    "conditions": [
-                    ],
                     "instructions": [
                         {
                             "type": "AddSuffix",
                             "arg": "esse"
                         }
-                    ]
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
                 }
             ],
             "addedCategories": ".LOC",
@@ -2587,28 +2585,28 @@
             "toLang": "Q",
             "branches": [
                 {
-                    "conditions": [
-                        {
-                            "type": "EndsWith",
-                            "cls": "vowel"
-                        }
-                    ],
                     "instructions": [
                         {
                             "type": "AddSuffix",
                             "arg": "t"
                         }
-                    ]
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "cls": "vowel"
+                    }
                 },
                 {
-                    "conditions": [
-                    ],
                     "instructions": [
                         {
                             "type": "AddSuffix",
                             "arg": "u"
                         }
-                    ]
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
                 }
             ],
             "addedCategories": ".DU",
@@ -2622,14 +2620,15 @@
             "toLang": "Q",
             "branches": [
                 {
-                    "conditions": [
-                    ],
                     "instructions": [
                         {
                             "type": "AddSuffix",
                             "arg": "li"
                         }
-                    ]
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
                 }
             ],
             "addedCategories": ".PPL",
@@ -2654,14 +2653,15 @@
             "toLang": "Q",
             "branches": [
                 {
-                    "conditions": [
-                    ],
                     "instructions": [
                         {
                             "type": "AddSuffix",
                             "arg": "lya"
                         }
-                    ]
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
                 }
             ],
             "addedCategories": ".POSS.2SG",
@@ -2675,14 +2675,15 @@
             "toLang": "Q",
             "branches": [
                 {
-                    "conditions": [
-                    ],
                     "instructions": [
                         {
                             "type": "AddSuffix",
                             "arg": "lma"
                         }
-                    ]
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
                 }
             ],
             "addedCategories": ".POSS.1PL",
@@ -2696,12 +2697,6 @@
             "toLang": "Q",
             "branches": [
                 {
-                    "conditions": [
-                        {
-                            "type": "EndsWith",
-                            "characters": "u"
-                        }
-                    ],
                     "instructions": [
                         {
                             "type": "RemoveLastCharacter",
@@ -2711,15 +2706,14 @@
                             "type": "AddSuffix",
                             "arg": "úva"
                         }
-                    ]
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "characters": "u"
+                    }
                 },
                 {
-                    "conditions": [
-                        {
-                            "type": "EndsWith",
-                            "cls": "vowel"
-                        }
-                    ],
                     "instructions": [
                         {
                             "type": "RemoveLastCharacter",
@@ -2729,17 +2723,23 @@
                             "type": "AddSuffix",
                             "arg": "uva"
                         }
-                    ]
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "cls": "vowel"
+                    }
                 },
                 {
-                    "conditions": [
-                    ],
                     "instructions": [
                         {
                             "type": "AddSuffix",
                             "arg": "uva"
                         }
-                    ]
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
                 }
             ],
             "addedCategories": ".FUT",
@@ -2826,7 +2826,7 @@
             "type": ">",
             "ruleIds": [
                 0,
-                1
+                9
             ],
             "source": "PE17.63"
         },

@@ -7,7 +7,7 @@ import ru.yole.etymograph.*
 
 @RestController
 class RuleController(val graphService: GraphService) {
-    data class RuleBranchViewModel(val conditions: List<String>, val instructions: List<String>)
+    data class RuleBranchViewModel(val conditions: String, val instructions: List<String>)
 
     data class RuleExampleViewModel(
         val fromWord: String,
@@ -59,7 +59,7 @@ class RuleController(val graphService: GraphService) {
 
     private fun RuleBranch.toViewModel(): RuleBranchViewModel {
         return RuleBranchViewModel(
-            conditions.map { it.toEditableText() },
+            condition.toEditableText(),
             instructions.map { it.toEditableText() }
         )
     }

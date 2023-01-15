@@ -24,13 +24,38 @@ data class WordData(
 data class CharacterClassData(@SerialName("lang") val languageShortName: String, val name: String, val characters: String)
 
 @Serializable
-data class RuleConditionData(val type: ConditionType, @SerialName("cls") val characterClassName: String? = null, val characters: String? = null)
+sealed class RuleConditionData {
+    abstract fun toRuntimeFormat(result: JsonGraphRepository, fromLanguage: Language): RuleCondition
+}
+
+@Serializable
+data class LeafRuleConditionData(
+    @SerialName("cond") val type: ConditionType,
+    @SerialName("cls") val characterClassName: String? = null,
+    val characters: String? = null
+) : RuleConditionData() {
+    override fun toRuntimeFormat(result: JsonGraphRepository, fromLanguage: Language): RuleCondition {
+        return LeafRuleCondition(type,
+            characterClassName?.let { className ->
+                result.lookupCharacterClass(className, fromLanguage)
+            } ?: CharacterClass(null, characters!!))
+    }
+}
+
+
+@Serializable
+class OtherwiseConditionData : RuleConditionData() {
+    override fun toRuntimeFormat(result: JsonGraphRepository, fromLanguage: Language): RuleCondition = OtherwiseCondition
+}
 
 @Serializable
 data class RuleInstructionData(val type: InstructionType, val arg: String)
 
 @Serializable
-data class RuleBranchData(val conditions: List<RuleConditionData>, val instructions: List<RuleInstructionData>)
+data class RuleBranchData(
+    val instructions: List<RuleInstructionData>,
+    val condition: RuleConditionData? = null
+)
 
 @Serializable
 data class RuleData(
@@ -128,6 +153,10 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             throw IllegalStateException("Can't save: path not specified")
         }
         path.writeText(toJson())
+    }
+
+    fun lookupCharacterClass(name: String, language: Language): CharacterClass {
+        return namedCharacterClasses[language]!!.single { it.name == name }
     }
 
     fun toJson(): String {
@@ -277,13 +306,10 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                 toLanguage.shortName,
                 branches.map { branch ->
                     RuleBranchData(
-                        branch.conditions.map { rule ->
-                            RuleConditionData(rule.type, rule.characterClass.name,
-                                rule.characterClass.matchingCharacters.takeIf { rule.characterClass.name == null } )
-                        },
                         branch.instructions.map { insn ->
                             RuleInstructionData(insn.type, insn.arg)
-                        }
+                        },
+                        branch.condition.toSerializedFormat()
                     )
                 },
                 addedCategories,
@@ -292,6 +318,12 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                 notes
             )
 
+        private fun RuleCondition.toSerializedFormat(): RuleConditionData = when(this) {
+            is LeafRuleCondition -> LeafRuleConditionData(type, characterClass.name,
+                characterClass.matchingCharacters.takeIf { characterClass.name == null } )
+            is OtherwiseCondition -> OtherwiseConditionData()
+        }
+
         private fun ruleBranchesFromSerializedFormat(
             result: JsonGraphRepository,
             fromLanguage: Language,
@@ -299,12 +331,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
         ): List<RuleBranch> {
             return branches.map { branchData ->
                 RuleBranch(
-                    branchData.conditions.map { condData ->
-                        RuleCondition(condData.type,
-                            condData.characterClassName?.let { className ->
-                                result.namedCharacterClasses[fromLanguage]!!.single { it.name == className }
-                            } ?: CharacterClass(null, condData.characters!!))
-                    },
+                    branchData.condition!!.toRuntimeFormat(result, fromLanguage),
                     branchData.instructions.map { insnData ->
                         RuleInstruction(insnData.type, insnData.arg)
                     }
