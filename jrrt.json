@@ -2080,9 +2080,19 @@
                         }
                     ],
                     "condition": {
-                        "type": "ru.yole.etymograph.LeafRuleConditionData",
-                        "cond": "EndsWith",
-                        "characters": "eë"
+                        "type": "ru.yole.etymograph.OrRuleConditionData",
+                        "members": [
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "EndsWith",
+                                "characters": "e"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "EndsWith",
+                                "characters": "ë"
+                            }
+                        ]
                     }
                 },
                 {
@@ -2132,9 +2142,19 @@
                         }
                     ],
                     "condition": {
-                        "type": "ru.yole.etymograph.LeafRuleConditionData",
-                        "cond": "EndsWith",
-                        "characters": "aä"
+                        "type": "ru.yole.etymograph.OrRuleConditionData",
+                        "members": [
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "EndsWith",
+                                "characters": "a"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "EndsWith",
+                                "characters": "ä"
+                            }
+                        ]
                     }
                 },
                 {
@@ -2145,9 +2165,19 @@
                         }
                     ],
                     "condition": {
-                        "type": "ru.yole.etymograph.LeafRuleConditionData",
-                        "cond": "EndsWith",
-                        "characters": "oö"
+                        "type": "ru.yole.etymograph.OrRuleConditionData",
+                        "members": [
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "EndsWith",
+                                "characters": "o"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "EndsWith",
+                                "characters": "ö"
+                            }
+                        ]
                     }
                 },
                 {
@@ -2383,9 +2413,19 @@
                         }
                     ],
                     "condition": {
-                        "type": "ru.yole.etymograph.LeafRuleConditionData",
-                        "cond": "EndsWith",
-                        "characters": "rl"
+                        "type": "ru.yole.etymograph.OrRuleConditionData",
+                        "members": [
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "EndsWith",
+                                "characters": "r"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "EndsWith",
+                                "characters": "l"
+                            }
+                        ]
                     }
                 },
                 {
@@ -2396,9 +2436,19 @@
                         }
                     ],
                     "condition": {
-                        "type": "ru.yole.etymograph.LeafRuleConditionData",
-                        "cond": "EndsWith",
-                        "characters": "nt"
+                        "type": "ru.yole.etymograph.OrRuleConditionData",
+                        "members": [
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "EndsWith",
+                                "characters": "n"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "EndsWith",
+                                "characters": "t"
+                            }
+                        ]
                     }
                 },
                 {

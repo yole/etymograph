@@ -45,6 +45,15 @@ class RuleTest {
     }
 
     @Test
+    fun conditionParseOr() {
+        val c = RuleCondition.parse("word ends with 'e' or word ends with 'ë'") { null }
+        assertTrue(c is OrRuleCondition)
+        val l1 = (c as OrRuleCondition).members[0] as LeafRuleCondition
+        assertEquals(ConditionType.EndsWith, l1.type)
+        assertEquals("e", l1.characterClass.matchingCharacters)
+    }
+
+    @Test
     fun instructionParse() {
         val i = RuleInstruction.parse("remove last character")
         assertEquals(InstructionType.RemoveLastCharacter, i.type)

@@ -19,6 +19,10 @@ sealed class RuleCondition {
             if (s == OtherwiseCondition.OTHERWISE) {
                 return OtherwiseCondition
             }
+            val orBranches = s.split(OrRuleCondition.OR)
+            if (orBranches.size > 1) {
+                return OrRuleCondition(orBranches.map { parse(it, characterClassLookup) })
+            }
             return LeafRuleCondition.parse(s, characterClassLookup)
         }
     }
@@ -50,6 +54,16 @@ class LeafRuleCondition(val type: ConditionType, val characterClass: CharacterCl
             }
             throw RuleParseException("Unrecognized condition $s")
         }
+    }
+}
+
+class OrRuleCondition(val members: List<RuleCondition>) : RuleCondition() {
+    override fun matches(word: Word): Boolean = members.any { it.matches(word) }
+
+    override fun toEditableText(): String = members.joinToString(OR) { it.toEditableText() }
+
+    companion object {
+        const val OR = " or "
     }
 }
 
