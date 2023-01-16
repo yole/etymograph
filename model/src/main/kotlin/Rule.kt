@@ -28,15 +28,20 @@ sealed class RuleCondition {
     }
 }
 
-class LeafRuleCondition(val type: ConditionType, val characterClass: CharacterClass) : RuleCondition() {
+class LeafRuleCondition(
+    val type: ConditionType,
+    val characterClass: CharacterClass?,
+    val parameter: String?
+) : RuleCondition() {
     override fun matches(word: Word): Boolean {
         return when (type) {
-            ConditionType.EndsWith -> word.text.last() in characterClass.matchingCharacters
+            ConditionType.EndsWith -> characterClass?.let { word.text.last() in it.matchingCharacters }
+                ?: word.text.endsWith(parameter!!)
         }
     }
 
     override fun toEditableText(): String = when(type) {
-        ConditionType.EndsWith -> wordEndsWith + (characterClass.name?.let { "a $it" } ?: "'${characterClass.matchingCharacters}'")
+        ConditionType.EndsWith -> wordEndsWith + (characterClass?.name?.let { "a $it" } ?: "'$parameter'")
     }
 
     companion object {
@@ -46,11 +51,11 @@ class LeafRuleCondition(val type: ConditionType, val characterClass: CharacterCl
             if (s.startsWith(wordEndsWith)) {
                 val c = s.removePrefix(wordEndsWith)
                 if (c.startsWith('\'')) {
-                    return LeafRuleCondition(ConditionType.EndsWith, CharacterClass(null, c.removePrefix("'").removeSuffix("'")))
+                    return LeafRuleCondition(ConditionType.EndsWith, null, c.removePrefix("'").removeSuffix("'"))
                 }
                 val characterClass = characterClassLookup(c.removePrefix("a "))
                     ?: throw RuleParseException("Unrecognized character class $c")
-                return LeafRuleCondition(ConditionType.EndsWith, characterClass)
+                return LeafRuleCondition(ConditionType.EndsWith, characterClass, null)
             }
             throw RuleParseException("Unrecognized condition $s")
         }

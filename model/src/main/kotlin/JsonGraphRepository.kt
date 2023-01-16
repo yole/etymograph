@@ -35,10 +35,11 @@ data class LeafRuleConditionData(
     val characters: String? = null
 ) : RuleConditionData() {
     override fun toRuntimeFormat(result: JsonGraphRepository, fromLanguage: Language): RuleCondition {
-        return LeafRuleCondition(type,
-            characterClassName?.let { className ->
-                result.lookupCharacterClass(className, fromLanguage)
-            } ?: CharacterClass(null, characters!!))
+        return LeafRuleCondition(
+            type,
+            characterClassName?.let { className -> result.lookupCharacterClass(className, fromLanguage) },
+            characters
+        )
     }
 }
 
@@ -326,8 +327,11 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             )
 
         private fun RuleCondition.toSerializedFormat(): RuleConditionData = when(this) {
-            is LeafRuleCondition -> LeafRuleConditionData(type, characterClass.name,
-                characterClass.matchingCharacters.takeIf { characterClass.name == null } )
+            is LeafRuleCondition -> LeafRuleConditionData(
+                type,
+                characterClass?.name,
+                parameter
+            )
             is OrRuleCondition -> OrRuleConditionData(members.map { it.toSerializedFormat()} )
             is OtherwiseCondition -> OtherwiseConditionData()
         }

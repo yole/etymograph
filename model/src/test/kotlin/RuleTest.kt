@@ -9,7 +9,7 @@ class RuleTest {
     @Test
     fun conditions() {
         val v = CharacterClass("vowel", "aeiou")
-        val c = LeafRuleCondition(ConditionType.EndsWith, v)
+        val c = LeafRuleCondition(ConditionType.EndsWith, v, null)
         assertTrue(c.matches(Word(0, "parma", q)))
         assertFalse(c.matches(Word(0, "formen", q)))
     }
@@ -23,7 +23,7 @@ class RuleTest {
     @Test
     fun rule() {
         val v = CharacterClass(null, "eë")
-        val c = LeafRuleCondition(ConditionType.EndsWith, v)
+        val c = LeafRuleCondition(ConditionType.EndsWith, v, null)
         val i1 = RuleInstruction(InstructionType.RemoveLastCharacter, "")
         val i2 = RuleInstruction(InstructionType.AddSuffix, "i")
         val r = RuleBranch(c, listOf(i1, i2))
@@ -36,7 +36,7 @@ class RuleTest {
     fun conditionParse() {
         val c = LeafRuleCondition.parse("word ends with 'eë'") { null }
         assertEquals(ConditionType.EndsWith, c.type)
-        assertEquals("eë", c.characterClass.matchingCharacters)
+        assertEquals("eë", c.parameter)
 
         val v = CharacterClass("vowel", "aoiue")
         val c2 = LeafRuleCondition.parse("word ends with a vowel") { if (it == "vowel") v else null }
@@ -50,7 +50,7 @@ class RuleTest {
         assertTrue(c is OrRuleCondition)
         val l1 = (c as OrRuleCondition).members[0] as LeafRuleCondition
         assertEquals(ConditionType.EndsWith, l1.type)
-        assertEquals("e", l1.characterClass.matchingCharacters)
+        assertEquals("e", l1.parameter)
     }
 
     @Test
@@ -69,7 +69,7 @@ class RuleTest {
             word ends with 'e':
             - add suffix 'a'
         """.trimIndent()) { null }
-        assertEquals("e", (b.condition as LeafRuleCondition).characterClass.matchingCharacters)
+        assertEquals("e", (b.condition as LeafRuleCondition).parameter)
         assertEquals("a", b.instructions[0].arg)
     }
 
