@@ -39,6 +39,7 @@ function WordLinkComponent(params) {
     return <div>
         {linkWord.language !== baseWord.language && linkWord.language + " "}
         <Link to={`/word/${linkWord.language}/${linkWord.text}`}>{linkWord.text}</Link>
+        {linkWord.gloss != null && ' "' + linkWord.gloss + '"' }
         {linkWord.ruleIds.length > 0 && <>&nbsp;(
             {linkWord.ruleIds.map((ruleId, index) => <>
               {index > 0 && ", "}

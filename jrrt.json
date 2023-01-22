@@ -799,7 +799,8 @@
             "id": 117,
             "text": "hísië",
             "lang": "Q",
-            "gloss": "mist",
+            "gloss": "mistiness",
+            "pos": "N",
             "source": "PE17:73"
         },
         {
@@ -2059,6 +2060,56 @@
             "id": 296,
             "text": "lúmessë",
             "lang": "Q"
+        },
+        {
+            "id": 297,
+            "text": "airë",
+            "lang": "Q",
+            "gloss": "holy",
+            "pos": "ADJ",
+            "source": "VT43:14"
+        },
+        {
+            "id": 298,
+            "text": "esselya",
+            "lang": "Q",
+            "source": "VT43:14"
+        },
+        {
+            "id": 299,
+            "text": "esse",
+            "lang": "Q",
+            "gloss": "name",
+            "pos": "N",
+            "source": "VT43:14"
+        },
+        {
+            "id": 300,
+            "text": "aranielya",
+            "lang": "Q"
+        },
+        {
+            "id": 301,
+            "text": "aranië",
+            "lang": "Q",
+            "gloss": "kingdom",
+            "pos": "N",
+            "source": "VT43:15"
+        },
+        {
+            "id": 302,
+            "text": "aran",
+            "lang": "Q",
+            "gloss": "king",
+            "pos": "N"
+        },
+        {
+            "id": 303,
+            "text": "hísë",
+            "lang": "Q",
+            "gloss": "mist",
+            "pos": "N",
+            "source": "PE17:73"
         }
     ],
     "rules": [
@@ -2818,6 +2869,45 @@
             "addedCategories": ".FUT",
             "replacedCategories": "",
             "source": "https://eldamo.org/content/words/word-2817430301.html"
+        },
+        {
+            "id": 21,
+            "name": "q-abstract-noun",
+            "fromLang": "Q",
+            "toLang": "Q",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "RemoveLastCharacter",
+                            "arg": ""
+                        },
+                        {
+                            "type": "AddSuffix",
+                            "arg": "ië"
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "cls": "vowel"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "arg": "ië"
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": "",
+            "replacedCategories": "",
+            "source": "https://eldamo.org/content/words/word-948396235.html"
         }
     ],
     "links": [
@@ -3255,6 +3345,9 @@
             "from": 107,
             "to": 108,
             "type": ">",
+            "ruleIds": [
+                21
+            ],
             "source": "PE17:73"
         },
         {
@@ -3266,12 +3359,6 @@
         {
             "from": 113,
             "to": 114,
-            "type": ">",
-            "source": "PE17:73"
-        },
-        {
-            "from": 117,
-            "to": 118,
             "type": ">",
             "source": "PE17:73"
         },
@@ -4038,6 +4125,43 @@
             "ruleIds": [
                 14
             ]
+        },
+        {
+            "from": 298,
+            "to": 299,
+            "type": ">",
+            "ruleIds": [
+                18
+            ]
+        },
+        {
+            "from": 300,
+            "to": 301,
+            "type": ">",
+            "ruleIds": [
+                18
+            ]
+        },
+        {
+            "from": 301,
+            "to": 302,
+            "type": ">",
+            "ruleIds": [
+                21
+            ]
+        },
+        {
+            "from": 117,
+            "to": 303,
+            "type": ">",
+            "ruleIds": [
+                21
+            ]
+        },
+        {
+            "from": 303,
+            "to": 118,
+            "type": ">"
         }
     ],
     "corpusTexts": [
@@ -4164,6 +4288,15 @@
             "wordIds": [
             ],
             "source": "VT43:28"
+        },
+        {
+            "id": 7,
+            "text": "Átaremma i ëa han Eä\nna airë esselya\naranielya na tuluva\nna carë indómelya\ncemendë tambe Erumandë\námen anta síra ilaurëa massamma\nar ámen apsenë úcaremmar\nsíve emmë apsenet tien i úcarir emmen\nálamë tulya úsahtienna\nmal ámë etelehta ulcullo: násië",
+            "title": "Ataremma",
+            "lang": "Q",
+            "wordIds": [
+            ],
+            "source": "VT43:7"
         }
     ],
     "paradigms": [

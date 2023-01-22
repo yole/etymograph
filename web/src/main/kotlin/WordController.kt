@@ -27,6 +27,7 @@ class WordController(val graphService: GraphService) {
         val id: Int,
         val text: String,
         val language: String,
+        val gloss: String?,
         val ruleIds: List<Int>,
         val ruleNames: List<String>
     )
@@ -71,6 +72,7 @@ class WordController(val graphService: GraphService) {
                     it.key.name,
                     it.value.map { link ->
                         LinkWordViewModel(link.toWord.id, link.toWord.text, link.toWord.language.shortName,
+                            link.toWord.getOrComputeGloss(graph),
                             link.rules.map { it.id },
                             link.rules.map { it.name }
                         )
@@ -83,6 +85,7 @@ class WordController(val graphService: GraphService) {
                     it.key.reverseName,
                     it.value.map { link ->
                         LinkWordViewModel(link.fromWord.id, link.fromWord.text, link.fromWord.language.shortName,
+                            link.fromWord.getOrComputeGloss(graph),
                             link.rules.map { it.id },
                             link.rules.map { it.name }
                         )
