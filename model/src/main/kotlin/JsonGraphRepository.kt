@@ -24,6 +24,9 @@ data class WordData(
 data class CharacterClassData(@SerialName("lang") val languageShortName: String, val name: String, val characters: String)
 
 @Serializable
+data class DigraphData(@SerialName("lang") val languageShortName: String, val digraphs: List<String>)
+
+@Serializable
 sealed class RuleConditionData {
     abstract fun toRuntimeFormat(result: JsonGraphRepository, fromLanguage: Language): RuleCondition
 }
@@ -127,6 +130,7 @@ data class ParadigmData(
 data class GraphRepositoryData(
     val languages: List<LanguageData>,
     val characterClasses: List<CharacterClassData>,
+    val digraphs: List<DigraphData>,
     val words: List<WordData>,
     val rules: List<RuleData>,
     val links: List<LinkData>,
@@ -176,9 +180,11 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
         val characterClassData = namedCharacterClasses.flatMap { (lang, classes) ->
             classes.map { CharacterClassData(lang.shortName, it.name!!, it.matchingCharacters)}
         }
+        val digraphData = languages.values.map { DigraphData(it.shortName, it.digraphs) }
         return GraphRepositoryData(
             languages.values.map { LanguageData(it.name, it.shortName) },
             characterClassData,
+            digraphData,
             allWords.filterNotNull().map { WordData(it.id, it.text, it.language.shortName, it.gloss, it.pos, it.source, it.notes) },
             rules.map { it.ruleToSerializedFormat() },
             allLinks.map { link ->
@@ -216,6 +222,9 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                 characterClass.name,
                 characterClass.characters
             )
+        }
+        for (digraphData in data.digraphs) {
+            languageByShortName(digraphData.languageShortName).digraphs = digraphData.digraphs
         }
         for (word in data.words) {
             while (word.id > allWords.size) {

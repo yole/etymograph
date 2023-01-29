@@ -5,6 +5,10 @@ import org.junit.Test
 
 class RuleTest {
     val q = Language("Quenya", "Q")
+    val ce = Language("Common Eldarin", "CE")
+    init {
+        ce.digraphs = listOf("kh", "th")
+    }
 
     @Test
     fun conditions() {
@@ -107,5 +111,41 @@ class RuleTest {
         assertEquals(2, branches.size)
         assertEquals(1, branches[0].instructions.size)
         assertEquals(OtherwiseCondition, branches[1].condition)
+    }
+
+    @Test
+    fun phonemeIterator() {
+        val it = PhonemeIterator(Word(0, "khith", ce))
+        assertEquals("kh", it.current)
+        assertTrue(it.next())
+        assertEquals("i", it.current)
+        assertTrue(it.next())
+        assertEquals("th", it.current)
+        assertFalse(it.next())
+    }
+
+    @Test
+    fun phonemeCondition() {
+        val it = PhonemeIterator(Word(0, "khith", ce))
+        val cond = LeafRuleCondition(ConditionType.PhonemeMatches, null, "kh")
+        assertTrue(cond.matches(it))
+    }
+
+    @Test
+    fun phonemeConditionParse() {
+        val it = PhonemeIterator(Word(0, "khith", ce))
+        val cond = RuleCondition.parse("sound is 'kh'") { null }
+        assertTrue(cond.matches(it))
+    }
+
+    @Test
+    fun soundCorrespondence() {
+        val rule = Rule(-1, "q", ce, q, Rule.parseBranches("""
+            sound is 'th':
+            - new sound is 's'
+            sound is 'kh':
+            - new sound is 'h'
+        """.trimIndent()) { null }, null, null, null, null)
+        assertEquals("his", rule.apply(Word(-1, "khith", ce)).text)
     }
 }

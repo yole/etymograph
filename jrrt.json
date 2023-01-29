@@ -25,6 +25,26 @@
             "characters": "bcdfghjklmnpqrstvwxz"
         }
     ],
+    "digraphs": [
+        {
+            "lang": "Q",
+            "digraphs": [
+            ]
+        },
+        {
+            "lang": "S",
+            "digraphs": [
+            ]
+        },
+        {
+            "lang": "CE",
+            "digraphs": [
+                "kh",
+                "th",
+                "ph"
+            ]
+        }
+    ],
     "words": [
         {
             "id": 0,
@@ -2908,6 +2928,56 @@
             "addedCategories": "",
             "replacedCategories": "",
             "source": "https://eldamo.org/content/words/word-948396235.html"
+        },
+        {
+            "id": 22,
+            "name": "ce-q-spirants",
+            "fromLang": "CE",
+            "toLang": "Q",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "arg": "f"
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "PhonemeMatches",
+                        "characters": "ph"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "arg": "h"
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "PhonemeMatches",
+                        "characters": "kh"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "arg": "s"
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "PhonemeMatches",
+                        "characters": "th"
+                    }
+                }
+            ],
+            "addedCategories": "",
+            "replacedCategories": "",
+            "source": "https://eldamo.org/content/words/word-3262991621.html"
         }
     ],
     "links": [
@@ -4161,7 +4231,10 @@
         {
             "from": 303,
             "to": 118,
-            "type": ">"
+            "type": ">",
+            "ruleIds": [
+                22
+            ]
         }
     ],
     "corpusTexts": [
