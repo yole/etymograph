@@ -130,11 +130,11 @@ class RuleTest {
     fun phonemeIterator() {
         val it = PhonemeIterator(Word(0, "khith", ce))
         assertEquals("kh", it.current)
-        assertTrue(it.next())
+        assertTrue(it.advance())
         assertEquals("i", it.current)
-        assertTrue(it.next())
+        assertTrue(it.advance())
         assertEquals("th", it.current)
-        assertFalse(it.next())
+        assertFalse(it.advance())
     }
 
     @Test
@@ -153,23 +153,40 @@ class RuleTest {
 
     @Test
     fun soundCorrespondence() {
-        val rule = Rule(-1, "q", ce, q, Rule.parseBranches("""
+        val rule = parseRule(
+            ce, q,
+            """
             sound is 'th':
             - new sound is 's'
             sound is 'kh':
             - new sound is 'h'
-        """.trimIndent(), ce), null, null, null, null)
+            """.trimIndent()
+        )
         assertEquals("his", rule.apply(Word(-1, "khith", ce)).text)
     }
 
+    private fun parseRule(fromLanguage: Language, toLanguage: Language, text: String): Rule = Rule(
+        -1, "q", fromLanguage, toLanguage,
+        Rule.parseBranches(text, fromLanguage), null, null, null, null
+    )
+
     @Test
     fun soundDisappears() {
-        val rule = Rule(-1, "q", ce, q, Rule.parseBranches("""
+        val rule = parseRule(ce, q, """
             sound is 'i':
             - sound disappears
             sound is 'th':
             - new sound is 's'
-        """.trimIndent(), ce), null, null, null, null)
+        """.trimIndent())
         assertEquals("khs", rule.apply(Word(-1, "khithi", ce)).text)
+    }
+
+    @Test
+    fun previousSound() {
+        val rule = parseRule(ce, q, """
+            sound is 'i' and previous sound is 'kh':
+            - sound disappears
+        """.trimIndent())
+        assertEquals("khthi", rule.apply(Word(-1, "khithi", ce)).text)
     }
 }

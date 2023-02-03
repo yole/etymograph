@@ -5,7 +5,8 @@ import java.util.*
 
 enum class ConditionType(val condName: String) {
     EndsWith(LeafRuleCondition.wordEndsWith),
-    PhonemeMatches(LeafRuleCondition.soundIs)
+    PhonemeMatches(LeafRuleCondition.soundIs),
+    PrevPhonemeMatches(LeafRuleCondition.prevSoundIs)
 }
 
 class CharacterClass(val name: String?, val matchingCharacters: String)
@@ -16,23 +17,26 @@ class PhonemeIterator(val word: Word) {
     private val phonemes = splitPhonemes(word.text.lowercase(Locale.getDefault()), word.language.digraphs)
     private val resultPhonemes = phonemes.toMutableList()
     private var phonemeIndex = 0
+    private var resultPhonemeIndex = 0
 
     val current: String get() = phonemes[phonemeIndex]
+    val previous: String? get() = phonemes.getOrNull(phonemeIndex - 1)
 
-    fun next(): Boolean {
+    fun advance(): Boolean {
         if (phonemeIndex < phonemes.size - 1) {
             phonemeIndex++
+            resultPhonemeIndex++
             return true
         }
         return false
     }
 
     fun replace(s: String) {
-        resultPhonemes[phonemeIndex] = s
+        resultPhonemes[resultPhonemeIndex] = s
     }
 
     fun delete() {
-        resultPhonemes.removeAt(phonemeIndex)
+        resultPhonemes.removeAt(resultPhonemeIndex)
         resultPhonemeIndex--
     }
 
@@ -43,7 +47,7 @@ class PhonemeIterator(val word: Word) {
     private fun splitPhonemes(text: String, digraphs: List<String>): List<String> {
         val result = mutableListOf<String>()
         var offset = 0
-        while (offset < text.length - 1) {
+        while (offset < text.length) {
             val digraph = digraphs.firstOrNull { text.startsWith(it, offset) }
             if (digraph != null) {
                 result.add(digraph)
@@ -64,12 +68,12 @@ sealed class RuleCondition {
         val it = PhonemeIterator(word)
         while (true) {
             if (matches(it)) return true
-            if (!it.next()) break
+            if (!it.advance()) break
         }
         return false
     }
 
-    abstract fun matches(phoneme: PhonemeIterator): Boolean
+    abstract fun matches(phonemes: PhonemeIterator): Boolean
     abstract fun toEditableText(): String
 
     companion object {
@@ -107,12 +111,17 @@ class LeafRuleCondition(
         }
     }
 
-    override fun matches(phoneme: PhonemeIterator): Boolean {
+    override fun matches(phonemes: PhonemeIterator): Boolean {
         return when (type) {
-            ConditionType.PhonemeMatches -> phoneme.current == parameter
+            ConditionType.PhonemeMatches -> matchPhoneme(phonemes.current)
+            ConditionType.PrevPhonemeMatches -> matchPhoneme(phonemes.previous)
             else -> throw IllegalStateException("Trying to use a word condition for matching phonemes")
         }
     }
+
+    private fun matchPhoneme(phoneme: String?) =
+        (characterClass?.let { phoneme != null && phoneme in it.matchingCharacters }
+            ?: (phoneme == parameter))
 
     override fun toEditableText(): String =
         type.condName + (characterClass?.name?.let { "a $it" } ?: "'$parameter'")
@@ -120,6 +129,7 @@ class LeafRuleCondition(
     companion object {
         const val wordEndsWith = "word ends with "
         const val soundIs = "sound is "
+        const val prevSoundIs = "previous sound is "
 
         fun parse(s: String, language: Language): LeafRuleCondition {
             for (conditionType in ConditionType.values()) {
@@ -152,7 +162,7 @@ class OrRuleCondition(val members: List<RuleCondition>) : RuleCondition() {
 
     override fun matches(word: Word): Boolean = members.any { it.matches(word) }
 
-    override fun matches(phoneme: PhonemeIterator) = members.any { it.matches(phoneme) }
+    override fun matches(phonemes: PhonemeIterator) = members.any { it.matches(phonemes) }
 
     override fun toEditableText(): String = members.joinToString(OR) { it.toEditableText() }
 
@@ -168,7 +178,7 @@ class AndRuleCondition(val members: List<RuleCondition>) : RuleCondition() {
 
     override fun matches(word: Word): Boolean = members.all { it.matches(word) }
 
-    override fun matches(phoneme: PhonemeIterator) = members.all { it.matches(phoneme) }
+    override fun matches(phonemes: PhonemeIterator) = members.all { it.matches(phonemes) }
 
     override fun toEditableText(): String = members.joinToString(AND) { it.toEditableText() }
 
@@ -180,7 +190,7 @@ class AndRuleCondition(val members: List<RuleCondition>) : RuleCondition() {
 object OtherwiseCondition : RuleCondition() {
     override fun isPhonemic(): Boolean = false
     override fun matches(word: Word): Boolean = true
-    override fun matches(phoneme: PhonemeIterator) = true
+    override fun matches(phonemes: PhonemeIterator) = true
     override fun toEditableText(): String = OTHERWISE
 
     const val OTHERWISE = "otherwise"
@@ -287,19 +297,19 @@ class Rule(
 
     fun apply(word: Word): Word {
         if (branches.any { it.condition.isPhonemic() }) {
-            val it = PhonemeIterator(word)
+            val phonemes = PhonemeIterator(word)
             while (true) {
                 for (branch in branches) {
-                    if (branch.condition.matches(it)) {
+                    if (branch.condition.matches(phonemes)) {
                         for (instruction in branch.instructions) {
-                            instruction.apply(word, it)
+                            instruction.apply(word, phonemes)
                         }
                         break
                     }
                 }
-                if (!it.next()) break
+                if (!phonemes.advance()) break
             }
-            return deriveWord(word, it.result())
+            return deriveWord(word, phonemes.result())
         }
 
         for (branch in branches) {
