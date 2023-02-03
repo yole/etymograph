@@ -7,10 +7,12 @@ class RuleTest {
     val q = Language("Quenya", "Q")
     val ce = Language("Common Eldarin", "CE")
     val v = CharacterClass("vowel", "aoiue")
+    val nasals = CharacterClass("nasal", "nm")
 
     init {
         ce.digraphs = listOf("kh", "th")
         q.characterClasses.add(v)
+        ce.characterClasses.add(nasals)
     }
 
     @Test
@@ -158,5 +160,16 @@ class RuleTest {
             - new sound is 'h'
         """.trimIndent(), ce), null, null, null, null)
         assertEquals("his", rule.apply(Word(-1, "khith", ce)).text)
+    }
+
+    @Test
+    fun soundDisappears() {
+        val rule = Rule(-1, "q", ce, q, Rule.parseBranches("""
+            sound is 'i':
+            - sound disappears
+            sound is 'th':
+            - new sound is 's'
+        """.trimIndent(), ce), null, null, null, null)
+        assertEquals("khs", rule.apply(Word(-1, "khithi", ce)).text)
     }
 }

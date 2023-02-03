@@ -31,6 +31,11 @@ class PhonemeIterator(val word: Word) {
         resultPhonemes[phonemeIndex] = s
     }
 
+    fun delete() {
+        resultPhonemes.removeAt(phonemeIndex)
+        resultPhonemeIndex--
+    }
+
     fun result(): String {
         return resultPhonemes.joinToString("")
     }
@@ -185,7 +190,8 @@ enum class InstructionType(val insnName: String, val takesArgument: Boolean) {
     NoChange("no change", false),
     RemoveLastCharacter("remove last character", false),
     AddSuffix("add suffix", true),
-    ChangeSound("new sound is", true)
+    ChangeSound("new sound is", true),
+    SoundDisappears("sound disappears", false)
 }
 
 class RuleInstruction(val type: InstructionType, val arg: String) {
@@ -199,6 +205,7 @@ class RuleInstruction(val type: InstructionType, val arg: String) {
     fun apply(word: Word, phoneme: PhonemeIterator) {
         when (type) {
             InstructionType.ChangeSound -> phoneme.replace(arg)
+            InstructionType.SoundDisappears -> phoneme.delete()
             else -> throw IllegalStateException("Can't apply word instruction to individual phoneme")
         }
     }
