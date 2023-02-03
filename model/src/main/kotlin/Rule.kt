@@ -3,9 +3,9 @@ package ru.yole.etymograph
 import java.lang.RuntimeException
 import java.util.*
 
-enum class ConditionType {
-    EndsWith,
-    PhonemeMatches,
+enum class ConditionType(val condName: String) {
+    EndsWith(LeafRuleCondition.wordEndsWith),
+    PhonemeMatches(LeafRuleCondition.soundIs)
 }
 
 class CharacterClass(val name: String?, val matchingCharacters: String)
@@ -109,22 +109,18 @@ class LeafRuleCondition(
         }
     }
 
-    override fun toEditableText(): String = when(type) {
-        ConditionType.EndsWith -> wordEndsWith + (characterClass?.name?.let { "a $it" } ?: "'$parameter'")
-        ConditionType.PhonemeMatches -> soundIs + (characterClass?.name?.let { "a $it" } ?: "'$parameter'")
-    }
+    override fun toEditableText(): String =
+        type.condName + (characterClass?.name?.let { "a $it" } ?: "'$parameter'")
 
     companion object {
         const val wordEndsWith = "word ends with "
         const val soundIs = "sound is "
-        const val previousSoundIs = "previous sound is "
 
         fun parse(s: String, language: Language): LeafRuleCondition {
-            if (s.startsWith(wordEndsWith)) {
-                return parseLeafCondition(ConditionType.EndsWith, s.removePrefix(wordEndsWith), language)
-            }
-            if (s.startsWith(soundIs)) {
-                return parseLeafCondition(ConditionType.PhonemeMatches, s.removePrefix(soundIs), language)
+            for (conditionType in ConditionType.values()) {
+                if (s.startsWith(conditionType.condName)) {
+                    return parseLeafCondition(conditionType, s.removePrefix(conditionType.condName), language)
+                }
             }
             throw RuleParseException("Unrecognized condition $s")
         }
