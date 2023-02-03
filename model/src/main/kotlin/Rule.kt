@@ -76,6 +76,10 @@ sealed class RuleCondition {
             if (orBranches.size > 1) {
                 return OrRuleCondition(orBranches.map { parse(it, language) })
             }
+            val andBranches = s.split(AndRuleCondition.AND)
+            if (andBranches.size > 1) {
+                return AndRuleCondition(andBranches.map { parse(it, language) })
+            }
             return LeafRuleCondition.parse(s, language)
         }
     }
@@ -113,6 +117,7 @@ class LeafRuleCondition(
     companion object {
         const val wordEndsWith = "word ends with "
         const val soundIs = "sound is "
+        const val previousSoundIs = "previous sound is "
 
         fun parse(s: String, language: Language): LeafRuleCondition {
             if (s.startsWith(wordEndsWith)) {
@@ -152,6 +157,22 @@ class OrRuleCondition(val members: List<RuleCondition>) : RuleCondition() {
 
     companion object {
         const val OR = " or "
+    }
+}
+
+class AndRuleCondition(val members: List<RuleCondition>) : RuleCondition() {
+    override fun isPhonemic(): Boolean {
+        return members.any { it.isPhonemic() }
+    }
+
+    override fun matches(word: Word): Boolean = members.all { it.matches(word) }
+
+    override fun matches(phoneme: PhonemeIterator) = members.all { it.matches(phoneme) }
+
+    override fun toEditableText(): String = members.joinToString(AND) { it.toEditableText() }
+
+    companion object {
+        const val AND = " and "
     }
 }
 

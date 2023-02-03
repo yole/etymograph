@@ -60,6 +60,15 @@ class RuleTest {
     }
 
     @Test
+    fun conditionParseAnd() {
+        val c = RuleCondition.parse("word ends with a vowel and word ends with 'a'", q)
+        assertTrue(c is AndRuleCondition)
+        val l1 = (c as AndRuleCondition).members[0] as LeafRuleCondition
+        assertEquals(ConditionType.EndsWith, l1.type)
+        assertEquals("vowel", l1.characterClass?.name)
+    }
+
+    @Test
     fun instructionParse() {
         val i = RuleInstruction.parse("remove last character")
         assertEquals(InstructionType.RemoveLastCharacter, i.type)
