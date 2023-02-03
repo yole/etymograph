@@ -23,6 +23,11 @@
             "lang": "Q",
             "name": "consonant",
             "characters": "bcdfghjklmnpqrstvwxz"
+        },
+        {
+            "lang": "CE",
+            "name": "nasal",
+            "characters": "nm"
         }
     ],
     "digraphs": [
@@ -2978,6 +2983,41 @@
             "addedCategories": "",
             "replacedCategories": "",
             "source": "https://eldamo.org/content/words/word-3262991621.html"
+        },
+        {
+            "id": 23,
+            "name": "ce-q-g-disappears",
+            "fromLang": "CE",
+            "toLang": "Q",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "SoundDisappears",
+                            "arg": ""
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.AndRuleConditionData",
+                        "members": [
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "PhonemeMatches",
+                                "characters": "g"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "PrevPhonemeMatches",
+                                "cls": "nasal",
+                                "negated": true
+                            }
+                        ]
+                    }
+                }
+            ],
+            "addedCategories": "",
+            "replacedCategories": "",
+            "source": "https://eldamo.org/content/words/word-1833409085.html"
         }
     ],
     "links": [
@@ -4084,7 +4124,10 @@
         {
             "from": 19,
             "to": 281,
-            "type": ">"
+            "type": ">",
+            "ruleIds": [
+                23
+            ]
         },
         {
             "from": 279,
