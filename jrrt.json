@@ -2185,6 +2185,35 @@
             "gloss": "tree",
             "pos": "N",
             "source": "PE17/153"
+        },
+        {
+            "id": 305,
+            "text": "carë",
+            "lang": "Q",
+            "gloss": "make.AOR",
+            "source": "VT43:15"
+        },
+        {
+            "id": 306,
+            "text": "car-",
+            "lang": "Q",
+            "gloss": "make",
+            "pos": "V",
+            "source": "PE43:15"
+        },
+        {
+            "id": 307,
+            "text": "indómelya",
+            "lang": "Q",
+            "source": "VT43:16"
+        },
+        {
+            "id": 308,
+            "text": "indómë",
+            "lang": "Q",
+            "gloss": "will",
+            "pos": "N",
+            "source": "VT43:16"
         }
     ],
     "rules": [
@@ -4333,6 +4362,19 @@
             "from": 304,
             "to": 281,
             "type": ">"
+        },
+        {
+            "from": 305,
+            "to": 306,
+            "type": ">"
+        },
+        {
+            "from": 307,
+            "to": 308,
+            "type": ">",
+            "ruleIds": [
+                18
+            ]
         }
     ],
     "corpusTexts": [

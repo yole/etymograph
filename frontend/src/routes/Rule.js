@@ -46,7 +46,7 @@ export default function Rule() {
                     &nbsp;->&nbsp;
                     <Link to={`/word/${rule.fromLang}/${ex.fromWord}`}>{ex.fromWord}</Link>
                     {ex.allRules.length > 1 && " (" + ex.allRules.join(", ") + ")"}
-                    {ex.expectedWord !== ex.fromWord && " [expected: " + ex.expectedWord + "]"}
+                    {ex.expectedWord !== null && ex.expectedWord !== ex.fromWord && " [expected: " + ex.expectedWord + "]"}
                 </li>)}
             </ul>
         </>}

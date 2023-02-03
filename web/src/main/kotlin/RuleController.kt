@@ -12,7 +12,7 @@ class RuleController(val graphService: GraphService) {
     data class RuleExampleViewModel(
         val fromWord: String,
         val toWord: String,
-        val expectedWord: String,
+        val expectedWord: String?,
         val allRules: List<String>
     )
 
@@ -51,10 +51,23 @@ class RuleController(val graphService: GraphService) {
             branches.map { it.toViewModel() },
             graphService.graph.findRuleExamples(this).map { link ->
                 RuleExampleViewModel(link.fromWord.text, link.toWord.text,
-                    link.rules.fold(link.toWord) { w, r -> r.apply(w) }.text,
+                    link.rules.fold(link.toWord) { w, r -> r.apply(w) }.text
+                        .takeIf { !isNormalizedEqual(it, link.fromWord.text) },
                     link.rules.map { it.name })
             }
         )
+    }
+
+    private fun isNormalizedEqual(ruleProducedWord: String, attestedWord: String): Boolean {
+        return normalize(ruleProducedWord) == normalize(attestedWord)
+    }
+
+    private fun normalize(s: String): String {
+        return s.replace('ä', 'a')
+            .replace('ö', 'o')
+            .replace('ü', 'u')
+            .replace('ï', 'i')
+            .replace('ë', 'e')
     }
 
     private fun RuleBranch.toViewModel(): RuleBranchViewModel {
