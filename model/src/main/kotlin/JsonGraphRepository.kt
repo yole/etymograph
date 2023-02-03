@@ -35,13 +35,15 @@ sealed class RuleConditionData {
 data class LeafRuleConditionData(
     @SerialName("cond") val type: ConditionType,
     @SerialName("cls") val characterClassName: String? = null,
-    val characters: String? = null
+    val characters: String? = null,
+    val negated: Boolean = false
 ) : RuleConditionData() {
     override fun toRuntimeFormat(result: JsonGraphRepository, fromLanguage: Language): RuleCondition {
         return LeafRuleCondition(
             type,
             characterClassName?.let { className -> fromLanguage.characterClassByName(className) },
-            characters
+            characters,
+            negated
         )
     }
 }
@@ -340,7 +342,8 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             is LeafRuleCondition -> LeafRuleConditionData(
                 type,
                 characterClass?.name,
-                parameter
+                parameter,
+                negated
             )
             is OrRuleCondition -> OrRuleConditionData(members.map { it.toSerializedFormat()} )
             is AndRuleCondition -> AndRuleConditionData(members.map { it.toSerializedFormat()} )

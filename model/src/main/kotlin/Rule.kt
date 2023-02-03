@@ -97,16 +97,19 @@ sealed class RuleCondition {
 class LeafRuleCondition(
     val type: ConditionType,
     val characterClass: CharacterClass?,
-    val parameter: String?
+    val parameter: String?,
+    val negated: Boolean
 ) : RuleCondition() {
     override fun isPhonemic(): Boolean {
         return type == ConditionType.PhonemeMatches
     }
 
+    private fun Boolean.negateIfNeeded() = if (negated) !this else this
+
     override fun matches(word: Word): Boolean {
         return when (type) {
-            ConditionType.EndsWith -> characterClass?.let { word.text.last() in it.matchingCharacters }
-                ?: word.text.endsWith(parameter!!)
+            ConditionType.EndsWith -> (characterClass?.let { word.text.last() in it.matchingCharacters }
+                ?: word.text.endsWith(parameter!!)).negateIfNeeded()
             else -> super.matches(word)
         }
     }
@@ -121,15 +124,16 @@ class LeafRuleCondition(
 
     private fun matchPhoneme(phoneme: String?) =
         (characterClass?.let { phoneme != null && phoneme in it.matchingCharacters }
-            ?: (phoneme == parameter))
+            ?: (phoneme == parameter)).negateIfNeeded()
 
     override fun toEditableText(): String =
-        type.condName + (characterClass?.name?.let { "a $it" } ?: "'$parameter'")
+        type.condName + (if (negated) notPrefix else "") + (characterClass?.name?.let { "a $it" } ?: "'$parameter'")
 
     companion object {
         const val wordEndsWith = "word ends with "
         const val soundIs = "sound is "
         const val prevSoundIs = "previous sound is "
+        const val notPrefix = "not "
 
         fun parse(s: String, language: Language): LeafRuleCondition {
             for (conditionType in ConditionType.values()) {
@@ -145,12 +149,20 @@ class LeafRuleCondition(
             c: String,
             language: Language
         ): LeafRuleCondition {
-            if (c.startsWith('\'')) {
-                return LeafRuleCondition(conditionType, null, c.removePrefix("'").removeSuffix("'"))
+            var negated = false
+            var condition = c
+            if (c.startsWith(notPrefix)) {
+                negated = true
+                condition = c.removePrefix(notPrefix)
             }
-            val characterClass = language.characterClassByName(c.removePrefix("a "))
+            if (condition.startsWith('\'')) {
+                return LeafRuleCondition(conditionType, null,
+                    condition.removePrefix("'").removeSuffix("'"),
+                    negated)
+            }
+            val characterClass = language.characterClassByName(condition.removePrefix("a "))
                 ?: throw RuleParseException("Unrecognized character class $c")
-            return LeafRuleCondition(conditionType, characterClass, null)
+            return LeafRuleCondition(conditionType, characterClass, null, negated)
         }
     }
 }

@@ -18,7 +18,7 @@ class RuleTest {
     @Test
     fun conditions() {
         val v = CharacterClass("vowel", "aeiou")
-        val c = LeafRuleCondition(ConditionType.EndsWith, v, null)
+        val c = LeafRuleCondition(ConditionType.EndsWith, v, null, false)
         assertTrue(c.matches(Word(0, "parma", q)))
         assertFalse(c.matches(Word(0, "formen", q)))
     }
@@ -32,7 +32,7 @@ class RuleTest {
     @Test
     fun rule() {
         val v = CharacterClass(null, "eë")
-        val c = LeafRuleCondition(ConditionType.EndsWith, v, null)
+        val c = LeafRuleCondition(ConditionType.EndsWith, v, null, false)
         val i1 = RuleInstruction(InstructionType.RemoveLastCharacter, "")
         val i2 = RuleInstruction(InstructionType.AddSuffix, "i")
         val r = RuleBranch(c, listOf(i1, i2))
@@ -140,7 +140,7 @@ class RuleTest {
     @Test
     fun phonemeCondition() {
         val it = PhonemeIterator(Word(0, "khith", ce))
-        val cond = LeafRuleCondition(ConditionType.PhonemeMatches, null, "kh")
+        val cond = LeafRuleCondition(ConditionType.PhonemeMatches, null, "kh", false)
         assertTrue(cond.matches(it))
     }
 
@@ -188,5 +188,14 @@ class RuleTest {
             - sound disappears
         """.trimIndent())
         assertEquals("khthi", rule.apply(Word(-1, "khithi", ce)).text)
+    }
+
+    @Test
+    fun previousSoundNegated() {
+        val rule = parseRule(ce, q, """
+            sound is 'i' and previous sound is not 'kh':
+            - sound disappears
+        """.trimIndent())
+        assertEquals("khith", rule.apply(Word(-1, "khithi", ce)).text)
     }
 }
