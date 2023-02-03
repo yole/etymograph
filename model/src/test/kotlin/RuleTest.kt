@@ -6,8 +6,11 @@ import org.junit.Test
 class RuleTest {
     val q = Language("Quenya", "Q")
     val ce = Language("Common Eldarin", "CE")
+    val v = CharacterClass("vowel", "aoiue")
+
     init {
         ce.digraphs = listOf("kh", "th")
+        q.characterClasses.add(v)
     }
 
     @Test
@@ -38,19 +41,18 @@ class RuleTest {
 
     @Test
     fun conditionParse() {
-        val c = LeafRuleCondition.parse("word ends with 'eë'") { null }
+        val c = LeafRuleCondition.parse("word ends with 'eë'", q)
         assertEquals(ConditionType.EndsWith, c.type)
         assertEquals("eë", c.parameter)
 
-        val v = CharacterClass("vowel", "aoiue")
-        val c2 = LeafRuleCondition.parse("word ends with a vowel") { if (it == "vowel") v else null }
+        val c2 = LeafRuleCondition.parse("word ends with a vowel", q)
         assertEquals(ConditionType.EndsWith, c2.type)
         assertEquals(v, c2.characterClass)
     }
 
     @Test
     fun conditionParseOr() {
-        val c = RuleCondition.parse("word ends with 'e' or word ends with 'ë'") { null }
+        val c = RuleCondition.parse("word ends with 'e' or word ends with 'ë'", q)
         assertTrue(c is OrRuleCondition)
         val l1 = (c as OrRuleCondition).members[0] as LeafRuleCondition
         assertEquals(ConditionType.EndsWith, l1.type)
@@ -72,7 +74,7 @@ class RuleTest {
         val b = RuleBranch.parse("""
             word ends with 'e':
             - add suffix 'a'
-        """.trimIndent()) { null }
+        """.trimIndent(), q)
         assertEquals("e", (b.condition as LeafRuleCondition).parameter)
         assertEquals("a", b.instructions[0].arg)
     }
@@ -84,7 +86,7 @@ class RuleTest {
             - add suffix 'a'
             word ends with 'i':
             - add suffix 'r'
-        """.trimIndent()) { null }
+        """.trimIndent(), q)
         assertEquals(2, branches.size)
         assertEquals(1, branches[0].instructions.size)
         assertEquals(1, branches[1].instructions.size)
@@ -94,7 +96,7 @@ class RuleTest {
     fun ruleParseWithoutConditions() {
         val branches = Rule.parseBranches("""
             - add suffix 'lye'
-        """.trimIndent()) { null }
+        """.trimIndent(), q)
         assertEquals(1, branches.size)
         assertEquals(1, branches[0].instructions.size)
         assertTrue(branches[0].matches(Word(0, "abc", q)))
@@ -107,7 +109,7 @@ class RuleTest {
             - add suffix 'a'
             otherwise:
             - add suffix 'r'
-        """.trimIndent()) { null }
+        """.trimIndent(), q)
         assertEquals(2, branches.size)
         assertEquals(1, branches[0].instructions.size)
         assertEquals(OtherwiseCondition, branches[1].condition)
@@ -134,7 +136,7 @@ class RuleTest {
     @Test
     fun phonemeConditionParse() {
         val it = PhonemeIterator(Word(0, "khith", ce))
-        val cond = RuleCondition.parse("sound is 'kh'") { null }
+        val cond = RuleCondition.parse("sound is 'kh'", ce)
         assertTrue(cond.matches(it))
     }
 
@@ -145,7 +147,7 @@ class RuleTest {
             - new sound is 's'
             sound is 'kh':
             - new sound is 'h'
-        """.trimIndent()) { null }, null, null, null, null)
+        """.trimIndent(), ce), null, null, null, null)
         assertEquals("his", rule.apply(Word(-1, "khith", ce)).text)
     }
 }

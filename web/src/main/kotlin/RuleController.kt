@@ -84,7 +84,7 @@ class RuleController(val graphService: GraphService) {
         if (toLanguage == UnknownLanguage) throw NoLanguageException()
 
         val branches = try {
-            Rule.parseBranches(params.text) { cls -> graph.characterClassByName(fromLanguage, cls) }
+            Rule.parseBranches(params.text, fromLanguage)
         }
         catch (e: RuleParseException) {
             throw ResponseStatusException(HttpStatus.BAD_REQUEST, e.message, e)
@@ -109,7 +109,7 @@ class RuleController(val graphService: GraphService) {
     fun updateRule(@PathVariable id: Int, @RequestBody params: UpdateRuleParameters) {
         val graph = graphService.graph
         val rule = resolveRule(id)
-        rule.branches = Rule.parseBranches(params.text) { cls -> graph.characterClassByName(rule.fromLanguage, cls) }
+        rule.branches = Rule.parseBranches(params.text, rule.fromLanguage)
         graph.save()
     }
 

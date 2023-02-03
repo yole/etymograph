@@ -40,7 +40,7 @@ data class LeafRuleConditionData(
     override fun toRuntimeFormat(result: JsonGraphRepository, fromLanguage: Language): RuleCondition {
         return LeafRuleCondition(
             type,
-            characterClassName?.let { className -> result.lookupCharacterClass(className, fromLanguage) },
+            characterClassName?.let { className -> fromLanguage.characterClassByName(className) },
             characters
         )
     }
@@ -167,18 +167,14 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
         path.writeText(toJson())
     }
 
-    fun lookupCharacterClass(name: String, language: Language): CharacterClass {
-        return namedCharacterClasses[language]!!.single { it.name == name }
-    }
-
     fun toJson(): String {
         val repoData = createGraphRepositoryData()
         return theJson.encodeToString(repoData)
     }
 
     private fun createGraphRepositoryData(): GraphRepositoryData {
-        val characterClassData = namedCharacterClasses.flatMap { (lang, classes) ->
-            classes.map { CharacterClassData(lang.shortName, it.name!!, it.matchingCharacters)}
+        val characterClassData = languages.values.flatMap { lang ->
+            lang.characterClasses.map { CharacterClassData(lang.shortName, it.name!!, it.matchingCharacters)}
         }
         val digraphData = languages.values.map { DigraphData(it.shortName, it.digraphs) }
         return GraphRepositoryData(
@@ -217,11 +213,8 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             addLanguage(Language(language.name, language.shortName))
         }
         for (characterClass in data.characterClasses) {
-            addNamedCharacterClass(
-                languageByShortName(characterClass.languageShortName),
-                characterClass.name,
-                characterClass.characters
-            )
+            languageByShortName(characterClass.languageShortName).characterClasses.add(
+                CharacterClass(characterClass.name, characterClass.characters))
         }
         for (digraphData in data.digraphs) {
             languageByShortName(digraphData.languageShortName).digraphs = digraphData.digraphs

@@ -68,15 +68,15 @@ sealed class RuleCondition {
     abstract fun toEditableText(): String
 
     companion object {
-        fun parse(s: String, characterClassLookup: (String) -> CharacterClass?): RuleCondition {
+        fun parse(s: String, language: Language): RuleCondition {
             if (s == OtherwiseCondition.OTHERWISE) {
                 return OtherwiseCondition
             }
             val orBranches = s.split(OrRuleCondition.OR)
             if (orBranches.size > 1) {
-                return OrRuleCondition(orBranches.map { parse(it, characterClassLookup) })
+                return OrRuleCondition(orBranches.map { parse(it, language) })
             }
-            return LeafRuleCondition.parse(s, characterClassLookup)
+            return LeafRuleCondition.parse(s, language)
         }
     }
 }
@@ -114,12 +114,12 @@ class LeafRuleCondition(
         const val wordEndsWith = "word ends with "
         const val soundIs = "sound is "
 
-        fun parse(s: String, characterClassLookup: (String) -> CharacterClass?): LeafRuleCondition {
+        fun parse(s: String, language: Language): LeafRuleCondition {
             if (s.startsWith(wordEndsWith)) {
-                return parseLeafCondition(ConditionType.EndsWith, s.removePrefix(wordEndsWith), characterClassLookup)
+                return parseLeafCondition(ConditionType.EndsWith, s.removePrefix(wordEndsWith), language)
             }
             if (s.startsWith(soundIs)) {
-                return parseLeafCondition(ConditionType.PhonemeMatches, s.removePrefix(soundIs), characterClassLookup)
+                return parseLeafCondition(ConditionType.PhonemeMatches, s.removePrefix(soundIs), language)
             }
             throw RuleParseException("Unrecognized condition $s")
         }
@@ -127,12 +127,12 @@ class LeafRuleCondition(
         private fun parseLeafCondition(
             conditionType: ConditionType,
             c: String,
-            characterClassLookup: (String) -> CharacterClass?
+            language: Language
         ): LeafRuleCondition {
             if (c.startsWith('\'')) {
                 return LeafRuleCondition(conditionType, null, c.removePrefix("'").removeSuffix("'"))
             }
-            val characterClass = characterClassLookup(c.removePrefix("a "))
+            val characterClass = language.characterClassByName(c.removePrefix("a "))
                 ?: throw RuleParseException("Unrecognized character class $c")
             return LeafRuleCondition(conditionType, characterClass, null)
         }
@@ -225,12 +225,12 @@ class RuleBranch(val condition: RuleCondition, val instructions: List<RuleInstru
     }
 
     companion object {
-        fun parse(s: String, characterClassLookup: (String) -> CharacterClass?): RuleBranch {
+        fun parse(s: String, language: Language): RuleBranch {
             var lines = s.split("\n").map { it.trim() }.filter { it.isNotEmpty() }
             val condition = if (lines[0].endsWith(":")) {
                 val conditionList = lines[0].removeSuffix(":")
                 lines = lines.drop(1)
-                RuleCondition.parse(conditionList, characterClassLookup)
+                RuleCondition.parse(conditionList, language)
             }
             else {
                 OtherwiseCondition
@@ -307,7 +307,7 @@ class Rule(
     }
 
     companion object {
-        fun parseBranches(s: String, characterClassLookup: (String) -> CharacterClass?): List<RuleBranch> {
+        fun parseBranches(s: String, language: Language): List<RuleBranch> {
             if (s.isBlank()) return emptyList()
             val lines = s.split('\n').map { it.trim() }.filter { it.isNotEmpty() }
             val branchTexts = mutableListOf<List<String>>()
@@ -322,7 +322,7 @@ class Rule(
             if (branchTexts.isEmpty()) {   // rule with no conditions
                 branchTexts.add(currentBranchText)
             }
-            return branchTexts.map { RuleBranch.parse(it.joinToString("\n"), characterClassLookup) }
+            return branchTexts.map { RuleBranch.parse(it.joinToString("\n"), language) }
         }
     }
 }

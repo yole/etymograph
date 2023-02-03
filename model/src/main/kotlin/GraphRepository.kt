@@ -19,8 +19,6 @@ abstract class GraphRepository {
     abstract fun ruleById(id: Int): Rule?
     abstract fun ruleByName(ruleName: String): Rule?
 
-    abstract fun characterClassByName(lang: Language, name: String): CharacterClass?
-
     abstract fun addWord(
         text: String,
         language: Language,

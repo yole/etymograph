@@ -17,7 +17,7 @@ class ParadigmTest {
         paradigm.addColumn("Sg")
 
         paradigm.setRule(0, 0, listOf(emptyList()))
-        val genRule = repo.addRule("q-gen", q, q, Rule.parseBranches("- add suffix 'o'") { null }, ".GEN", null, null, null)
+        val genRule = repo.addRule("q-gen", q, q, Rule.parseBranches("- add suffix 'o'", q), ".GEN", null, null, null)
         paradigm.setRule(1, 0, listOf(listOf(genRule)))
 
         val lasse = repo.addWord("lasse", q, "leaf", "N", null, null)
@@ -32,13 +32,13 @@ class ParadigmTest {
         val repo = InMemoryGraphRepository()
         repo.addLanguage(q)
 
-        val plRule = repo.addRule("q-nom-pl", q, q, Rule.parseBranches("- add suffix 'r'") { null }, ".PL", null, null, null)
-        val genRule = repo.addRule("q-gen", q, q, Rule.parseBranches("- add suffix 'o'") { null }, ".GEN", null, null, null)
+        val plRule = repo.addRule("q-nom-pl", q, q, Rule.parseBranches("- add suffix 'r'", q), ".PL", null, null, null)
+        val genRule = repo.addRule("q-gen", q, q, Rule.parseBranches("- add suffix 'o'", q), ".GEN", null, null, null)
         val genPlRule = repo.addRule(
             "q-gen-pl",
             q,
             q,
-            Rule.parseBranches("- add suffix 'on'") { null },
+            Rule.parseBranches("- add suffix 'on'", q),
             ".GEN.PL",
             null,
             null,

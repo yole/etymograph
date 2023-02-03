@@ -11,7 +11,6 @@ open class InMemoryGraphRepository : GraphRepository() {
     private val linksFrom = mutableMapOf<Int, MutableList<Link>>()
     private val linksTo = mutableMapOf<Int, MutableList<Link>>()
     protected val rules = mutableListOf<Rule>()
-    protected val namedCharacterClasses = mutableMapOf<Language, MutableList<CharacterClass>>()
     protected val paradigms = mutableListOf<Paradigm>()
 
     fun addLanguage(language: Language) {
@@ -82,14 +81,6 @@ open class InMemoryGraphRepository : GraphRepository() {
 
     override fun corpusTextsInLanguage(lang: Language): Iterable<CorpusText> {
         return corpus.filter { it.language == lang }
-    }
-
-    fun addNamedCharacterClass(language: Language, name: String, characters: String) {
-        namedCharacterClasses.getOrPut(language) { mutableListOf() }.add(CharacterClass(name, characters))
-    }
-
-    override fun characterClassByName(lang: Language, name: String): CharacterClass? {
-        return namedCharacterClasses[lang]?.singleOrNull { it.name == name }
     }
 
     override fun addWord(
