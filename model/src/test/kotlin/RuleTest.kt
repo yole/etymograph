@@ -6,18 +6,17 @@ import org.junit.Test
 class RuleTest {
     val q = Language("Quenya", "Q")
     val ce = Language("Common Eldarin", "CE")
-    val v = CharacterClass("vowel", "aoiue")
-    val nasals = CharacterClass("nasal", "nm")
+    val v = PhonemeClass("vowel", listOf("a", "o", "u", "i", "e"))
+    val nasals = PhonemeClass("nasal", listOf("m", "n"))
 
     init {
         ce.digraphs = listOf("kh", "th")
-        q.characterClasses.add(v)
-        ce.characterClasses.add(nasals)
+        q.phonemeClasses.add(v)
+        ce.phonemeClasses.add(nasals)
     }
 
     @Test
     fun conditions() {
-        val v = CharacterClass("vowel", "aeiou")
         val c = LeafRuleCondition(ConditionType.EndsWith, v, null, false)
         assertTrue(c.matches(Word(0, "parma", q)))
         assertFalse(c.matches(Word(0, "formen", q)))
@@ -31,7 +30,7 @@ class RuleTest {
 
     @Test
     fun rule() {
-        val v = CharacterClass(null, "eë")
+        val v = PhonemeClass(null, listOf("e", "ë"))
         val c = LeafRuleCondition(ConditionType.EndsWith, v, null, false)
         val i1 = RuleInstruction(InstructionType.RemoveLastCharacter, "")
         val i2 = RuleInstruction(InstructionType.AddSuffix, "i")
@@ -49,7 +48,7 @@ class RuleTest {
 
         val c2 = LeafRuleCondition.parse("word ends with a vowel", q)
         assertEquals(ConditionType.EndsWith, c2.type)
-        assertEquals(v, c2.characterClass)
+        assertEquals(v, c2.phonemeClass)
     }
 
     @Test
@@ -67,7 +66,7 @@ class RuleTest {
         assertTrue(c is AndRuleCondition)
         val l1 = (c as AndRuleCondition).members[0] as LeafRuleCondition
         assertEquals(ConditionType.EndsWith, l1.type)
-        assertEquals("vowel", l1.characterClass?.name)
+        assertEquals("vowel", l1.phonemeClass?.name)
     }
 
     @Test

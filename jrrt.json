@@ -13,21 +13,61 @@
             "shortName": "CE"
         }
     ],
-    "characterClasses": [
+    "phonemeClasses": [
         {
             "lang": "Q",
             "name": "vowel",
-            "characters": "aeiouáéíóúäëïöü"
+            "phonemes": [
+                "a",
+                "e",
+                "i",
+                "o",
+                "u",
+                "á",
+                "é",
+                "í",
+                "ó",
+                "ú",
+                "ä",
+                "ë",
+                "ï",
+                "ö",
+                "ü"
+            ]
         },
         {
             "lang": "Q",
             "name": "consonant",
-            "characters": "bcdfghjklmnpqrstvwxz"
+            "phonemes": [
+                "b",
+                "c",
+                "d",
+                "f",
+                "g",
+                "h",
+                "j",
+                "k",
+                "l",
+                "m",
+                "n",
+                "p",
+                "q",
+                "r",
+                "s",
+                "t",
+                "v",
+                "w",
+                "x",
+                "z"
+            ]
         },
         {
             "lang": "CE",
             "name": "nasal",
-            "characters": "nm"
+            "phonemes": [
+                "n",
+                "m"
+            ]
         }
     ],
     "digraphs": [
@@ -1002,6 +1042,7 @@
             "text": "formen",
             "lang": "Q",
             "gloss": "north",
+            "pos": "N",
             "source": "PE22:50"
         },
         {
@@ -1135,6 +1176,7 @@
             "text": "loa",
             "lang": "Q",
             "gloss": "year",
+            "pos": "N",
             "source": "VT42:10"
         },
         {
@@ -2135,6 +2177,14 @@
             "gloss": "mist",
             "pos": "N",
             "source": "PE17:73"
+        },
+        {
+            "id": 304,
+            "text": "galada",
+            "lang": "CE",
+            "gloss": "tree",
+            "pos": "N",
+            "source": "PE17/153"
         }
     ],
     "rules": [
@@ -4122,14 +4172,6 @@
             "type": "+"
         },
         {
-            "from": 19,
-            "to": 281,
-            "type": ">",
-            "ruleIds": [
-                23
-            ]
-        },
-        {
             "from": 279,
             "to": 281,
             "type": ">"
@@ -4278,6 +4320,19 @@
             "ruleIds": [
                 22
             ]
+        },
+        {
+            "from": 19,
+            "to": 304,
+            "type": ">",
+            "ruleIds": [
+                23
+            ]
+        },
+        {
+            "from": 304,
+            "to": 281,
+            "type": ">"
         }
     ],
     "corpusTexts": [

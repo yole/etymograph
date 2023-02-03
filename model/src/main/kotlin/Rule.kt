@@ -9,7 +9,7 @@ enum class ConditionType(val condName: String) {
     PrevPhonemeMatches(LeafRuleCondition.prevSoundIs)
 }
 
-class CharacterClass(val name: String?, val matchingCharacters: String)
+class PhonemeClass(val name: String?, val matchingPhonemes: List<String>)
 
 class RuleParseException(msg: String): RuntimeException(msg)
 
@@ -21,6 +21,7 @@ class PhonemeIterator(val word: Word) {
 
     val current: String get() = phonemes[phonemeIndex]
     val previous: String? get() = phonemes.getOrNull(phonemeIndex - 1)
+    val last: String get() = phonemes.last()
 
     fun advance(): Boolean {
         if (phonemeIndex < phonemes.size - 1) {
@@ -96,7 +97,7 @@ sealed class RuleCondition {
 
 class LeafRuleCondition(
     val type: ConditionType,
-    val characterClass: CharacterClass?,
+    val phonemeClass: PhonemeClass?,
     val parameter: String?,
     val negated: Boolean
 ) : RuleCondition() {
@@ -108,7 +109,7 @@ class LeafRuleCondition(
 
     override fun matches(word: Word): Boolean {
         return when (type) {
-            ConditionType.EndsWith -> (characterClass?.let { word.text.last() in it.matchingCharacters }
+            ConditionType.EndsWith -> (phonemeClass?.let { PhonemeIterator(word).last in it.matchingPhonemes }
                 ?: word.text.endsWith(parameter!!)).negateIfNeeded()
             else -> super.matches(word)
         }
@@ -123,11 +124,11 @@ class LeafRuleCondition(
     }
 
     private fun matchPhoneme(phoneme: String?) =
-        (characterClass?.let { phoneme != null && phoneme in it.matchingCharacters }
+        (phonemeClass?.let { phoneme != null && phoneme in it.matchingPhonemes }
             ?: (phoneme == parameter)).negateIfNeeded()
 
     override fun toEditableText(): String =
-        type.condName + (if (negated) notPrefix else "") + (characterClass?.name?.let { "a $it" } ?: "'$parameter'")
+        type.condName + (if (negated) notPrefix else "") + (phonemeClass?.name?.let { "a $it" } ?: "'$parameter'")
 
     companion object {
         const val wordEndsWith = "word ends with "
