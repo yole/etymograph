@@ -9,7 +9,7 @@ export default function CorpusIndex() {
     const languages = useLoaderData()
     return <>
         <ul>
-        {languages.map(l => <li key={l.shortName}><Link to={`corpus/${l.shortName}`}>{l.name}</Link></li>)}
+        {languages.map(l => <li key={l.shortName}><Link to={`language/${l.shortName}`}>{l.name}</Link></li>)}
         </ul>
         <Link to="/rules">Rules</Link>
     </>

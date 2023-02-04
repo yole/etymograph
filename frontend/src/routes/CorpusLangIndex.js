@@ -9,12 +9,9 @@ export async function loader({params}) {
 export default function CorpusLangIndex() {
     const corpusForLanguage = useLoaderData()
     const navigate = useNavigate()
-    useEffect(() => { document.title = "Etymograph : " + corpusForLanguage.language.name })
+    useEffect(() => { document.title = "Etymograph : " + corpusForLanguage.language.name + " : Corpus"})
     return <>
-        <p>Corpus for {corpusForLanguage.language.name}</p>
-        <Link to={`/dictionary/${corpusForLanguage.language.shortName}`}>Dictionary</Link><br/>
-        <Link to={`/dictionary/${corpusForLanguage.language.shortName}/compounds`}>Compound Words</Link><br/>
-        <Link to={`/paradigms/${corpusForLanguage.language.shortName}`}>Paradigms</Link>
+        <h2><small><Link to={`/language/${corpusForLanguage.language.shortName}`}>{corpusForLanguage.language.name}</Link></small> > Corpus</h2>
         <ul>
             {corpusForLanguage.corpusTexts.map(t => (
                 <li key={t.id}><Link to={`/corpus/text/${t.id}`}>{t.title}</Link></li>

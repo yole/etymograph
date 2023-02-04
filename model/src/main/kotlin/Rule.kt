@@ -9,7 +9,7 @@ enum class ConditionType(val condName: String) {
     PrevPhonemeMatches(LeafRuleCondition.prevSoundIs)
 }
 
-class PhonemeClass(val name: String?, val matchingPhonemes: List<String>)
+class PhonemeClass(val name: String, val matchingPhonemes: List<String>)
 
 class RuleParseException(msg: String): RuntimeException(msg)
 

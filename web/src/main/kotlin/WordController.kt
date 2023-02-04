@@ -36,6 +36,7 @@ class WordController(val graphService: GraphService) {
     data class WordViewModel(
         val id: Int,
         val language: String,
+        val languageFullName: String,
         val text: String,
         val gloss: String,
         val glossComputed: Boolean,
@@ -60,6 +61,7 @@ class WordController(val graphService: GraphService) {
         return WordViewModel(
             id,
             language.shortName,
+            language.name,
             text,
             getOrComputeGloss(graph) ?: "",
             gloss == null,

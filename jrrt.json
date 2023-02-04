@@ -2214,6 +2214,20 @@
             "gloss": "will",
             "pos": "N",
             "source": "VT43:16"
+        },
+        {
+            "id": 309,
+            "text": "cemendë",
+            "lang": "Q",
+            "source": "VT43:17"
+        },
+        {
+            "id": 310,
+            "text": "cemen",
+            "lang": "Q",
+            "gloss": "earth",
+            "pos": "N",
+            "source": "VT43:17"
         }
     ],
     "rules": [
@@ -4374,6 +4388,14 @@
             "type": ">",
             "ruleIds": [
                 18
+            ]
+        },
+        {
+            "from": 309,
+            "to": 310,
+            "type": ">",
+            "ruleIds": [
+                14
             ]
         }
     ],

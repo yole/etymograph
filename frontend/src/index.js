@@ -6,6 +6,7 @@ import {
 } from "react-router-dom";
 import './index.css';
 import CorpusIndex, { loader as corpusIndexLoader } from './routes/CorpusIndex'
+import LanguageIndex, { loader as languageIndexLoader } from './routes/LanguageIndex'
 import CorpusLangIndex, { loader as corpusLangIndexLoader } from "./routes/CorpusLangIndex";
 import CorpusText, { loader as corpusTextLoader } from "./routes/CorpusText";
 import Word, {loader as wordLoader, WordError} from "./routes/Word";
@@ -24,6 +25,11 @@ const router = createBrowserRouter([
         path: '/',
         element: <CorpusIndex/>,
         loader: corpusIndexLoader
+    },
+    {
+        path: '/language/:langId',
+        element: <LanguageIndex/>,
+        loader: languageIndexLoader
     },
     {
         path: '/corpus/:langId',
