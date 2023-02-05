@@ -259,7 +259,7 @@ class RuleBranch(val condition: RuleCondition, val instructions: List<RuleInstru
     fun matches(word: Word) = condition.matches(word)
 
     fun apply(word: Word): String {
-        return instructions.fold(word.text) { s, i -> i.apply(s) }
+        return instructions.fold(word.text.trimEnd('-')) { s, i -> i.apply(s) }
     }
 
     fun toEditableText(): String {

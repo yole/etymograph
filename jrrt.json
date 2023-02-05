@@ -2228,6 +2228,20 @@
             "gloss": "earth",
             "pos": "N",
             "source": "VT43:17"
+        },
+        {
+            "id": 311,
+            "text": "tuluva",
+            "lang": "Q",
+            "source": "VT43:14"
+        },
+        {
+            "id": 312,
+            "text": "tul-",
+            "lang": "Q",
+            "gloss": "come",
+            "pos": "V",
+            "source": "VT43:14"
         }
     ],
     "rules": [
@@ -4396,6 +4410,14 @@
             "type": ">",
             "ruleIds": [
                 14
+            ]
+        },
+        {
+            "from": 311,
+            "to": 312,
+            "type": ">",
+            "ruleIds": [
+                20
             ]
         }
     ],
