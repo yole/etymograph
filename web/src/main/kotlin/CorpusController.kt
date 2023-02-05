@@ -2,10 +2,8 @@ package ru.yole.etymograph.web
 
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
-import org.springframework.web.server.ResponseStatusException
 import ru.yole.etymograph.CorpusText
 import ru.yole.etymograph.Language
-import ru.yole.etymograph.UnknownLanguage
 import ru.yole.etymograph.parser.CorpusTextSectionParser
 
 @RestController
@@ -21,9 +19,7 @@ class CorpusController(val graphService: GraphService) {
 
     @GetMapping("/corpus/{lang}")
     fun langIndexJson(@PathVariable lang: String): CorpusLangViewModel {
-        val language = graphService.graph.languageByShortName(lang)
-        if (language == UnknownLanguage) throw NoLanguageException()
-
+        val language = graphService.resolveLanguage(lang)
         return CorpusLangViewModel(
             language,
             graphService.graph.corpusTextsInLanguage(language).map { CorpusLangTextViewModel(it.id, it.title ?: it.text) }
@@ -66,17 +62,13 @@ class CorpusController(val graphService: GraphService) {
     @ResponseBody
     fun newText(@PathVariable lang: String, @RequestBody params: CorpusParams): CorpusTextViewModel {
         val repo = graphService.graph
-        val language = repo.languageByShortName(lang)
-        if (language == UnknownLanguage) throw ResponseStatusException(HttpStatus.BAD_REQUEST, "No language named $lang")
+        val language = graphService.resolveLanguage(lang)
         val parser = CorpusTextSectionParser(repo, language)
         val text = parser.parseText(params.text)
         repo.save()
         return text.toViewModel()
     }
 }
-
-@ResponseStatus(value = HttpStatus.NOT_FOUND, reason = "No such language")
-class NoLanguageException : RuntimeException()
 
 @ResponseStatus(value = HttpStatus.NOT_FOUND, reason = "No such corpus text")
 class NoCorpusTextException : RuntimeException()

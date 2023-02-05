@@ -33,8 +33,7 @@ class ParadigmController(val graphService: GraphService) {
 
     @GetMapping("/paradigms/{lang}")
     fun paradigms(@PathVariable lang: String): List<ParadigmViewModel> {
-        val language = graphService.graph.languageByShortName(lang)
-        if (language == UnknownLanguage) throw NoLanguageException()
+        val language = graphService.resolveLanguage(lang)
 
         return graphService.graph.paradigmsForLanguage(language).map {
             it.toViewModel()
@@ -71,8 +70,7 @@ class ParadigmController(val graphService: GraphService) {
     @ResponseBody
     fun newParadigm(@PathVariable lang: String, @RequestBody params: UpdateParadigmParameters): ParadigmViewModel {
         val graph = graphService.graph
-        val language = graph.languageByShortName(lang)
-        if (language == UnknownLanguage) throw NoLanguageException()
+        val language = graphService.resolveLanguage(lang)
 
         val p = graph.addParadigm(params.name, language, params.pos)
         p.parse(params.text, graph::ruleByName)

@@ -6,5 +6,3 @@ class Language(val name: String, val shortName: String) {
 
     fun characterClassByName(name: String) = phonemeClasses.find { it.name == name }
 }
-
-val UnknownLanguage = Language("?", "?")

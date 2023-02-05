@@ -21,9 +21,6 @@ data class WordData(
 )
 
 @Serializable
-data class CharacterClassData(@SerialName("lang") val languageShortName: String, val name: String, val characters: String)
-
-@Serializable
 data class PhonemeClassData(@SerialName("lang") val languageShortName: String, val name: String, val phonemes: List<String>)
 
 @Serializable
@@ -187,7 +184,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
 
     private fun createGraphRepositoryData(): GraphRepositoryData {
         val phonemeClassData = languages.values.flatMap { lang ->
-            lang.phonemeClasses.map { PhonemeClassData(lang.shortName, it.name!!, it.matchingPhonemes) }
+            lang.phonemeClasses.map { PhonemeClassData(lang.shortName, it.name, it.matchingPhonemes) }
         }
         val digraphData = languages.values.map { DigraphData(it.shortName, it.digraphs) }
         return GraphRepositoryData(
@@ -226,11 +223,11 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             addLanguage(Language(language.name, language.shortName))
         }
         for (phonemeClass in data.phonemeClasses) {
-            languageByShortName(phonemeClass.languageShortName).phonemeClasses.add(
+            languageByShortName(phonemeClass.languageShortName)!!.phonemeClasses.add(
                 PhonemeClass(phonemeClass.name, phonemeClass.phonemes))
         }
         for (digraphData in data.digraphs) {
-            languageByShortName(digraphData.languageShortName).digraphs = digraphData.digraphs
+            languageByShortName(digraphData.languageShortName)!!.digraphs = digraphData.digraphs
         }
         for (word in data.words) {
             while (word.id > allWords.size) {
@@ -238,7 +235,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             }
             addWord(
                 word.text,
-                languageByShortName(word.languageShortName),
+                languageByShortName(word.languageShortName)!!,
                 word.gloss,
                 word.pos,
                 word.source,
@@ -246,11 +243,11 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             )
         }
         for (rule in data.rules) {
-            val fromLanguage = languageByShortName(rule.fromLanguageShortName)
+            val fromLanguage = languageByShortName(rule.fromLanguageShortName)!!
             addRule(
                 rule.name ?: "",
                 fromLanguage,
-                languageByShortName(rule.toLanguageShortName),
+                languageByShortName(rule.toLanguageShortName)!!,
                 ruleBranchesFromSerializedFormat(this, fromLanguage, rule.branches),
                 rule.addedCategories,
                 rule.replacedCategories,
@@ -277,7 +274,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             addCorpusText(
                 corpusText.text,
                 corpusText.title,
-                languageByShortName(corpusText.languageShortName),
+                languageByShortName(corpusText.languageShortName)!!,
                 corpusText.wordIds.mapNotNull { allWords[it] },
                 corpusText.source,
                 corpusText.notes
@@ -286,7 +283,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
         for (paradigm in data.paradigms) {
             addParadigm(
                 paradigm.name,
-                languageByShortName(paradigm.languageShortName),
+                languageByShortName(paradigm.languageShortName)!!,
                 paradigm.pos
             ).apply {
                 for (row in paradigm.rows) {

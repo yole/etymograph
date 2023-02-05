@@ -2,7 +2,7 @@ package ru.yole.etymograph
 
 abstract class GraphRepository {
     abstract fun allLanguages(): Iterable<Language>
-    abstract fun languageByShortName(languageShortName: String): Language
+    abstract fun languageByShortName(languageShortName: String): Language?
 
     abstract fun allCorpusTexts(): Iterable<CorpusText>
     abstract fun corpusTextsInLanguage(lang: Language): Iterable<CorpusText>

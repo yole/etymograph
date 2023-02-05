@@ -91,10 +91,8 @@ class RuleController(val graphService: GraphService) {
     @ResponseBody
     fun newRule(@RequestBody params: UpdateRuleParameters): RuleViewModel {
         val graph = graphService.graph
-        val fromLanguage = graph.languageByShortName(params.fromLang)
-        if (fromLanguage == UnknownLanguage) throw NoLanguageException()
-        val toLanguage = graph.languageByShortName(params.toLang)
-        if (toLanguage == UnknownLanguage) throw NoLanguageException()
+        val fromLanguage = graphService.resolveLanguage(params.fromLang)
+        val toLanguage = graphService.resolveLanguage(params.toLang)
 
         val branches = try {
             Rule.parseBranches(params.text, fromLanguage)

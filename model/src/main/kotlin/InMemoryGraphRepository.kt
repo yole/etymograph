@@ -21,8 +21,8 @@ open class InMemoryGraphRepository : GraphRepository() {
         return languages.values
     }
 
-    override fun languageByShortName(languageShortName: String): Language {
-        return languages[languageShortName] ?: UnknownLanguage
+    override fun languageByShortName(languageShortName: String): Language? {
+        return languages[languageShortName]
     }
 
     override fun addCorpusText(

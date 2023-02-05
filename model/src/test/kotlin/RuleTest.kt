@@ -30,7 +30,7 @@ class RuleTest {
 
     @Test
     fun rule() {
-        val v = PhonemeClass(null, listOf("e", "ë"))
+        val v = PhonemeClass("e", listOf("e", "ë"))
         val c = LeafRuleCondition(ConditionType.EndsWith, v, null, false)
         val i1 = RuleInstruction(InstructionType.RemoveLastCharacter, "")
         val i2 = RuleInstruction(InstructionType.AddSuffix, "i")

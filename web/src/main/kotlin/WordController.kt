@@ -3,7 +3,6 @@ package ru.yole.etymograph.web
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
 import ru.yole.etymograph.GraphRepository
-import ru.yole.etymograph.UnknownLanguage
 import ru.yole.etymograph.Word
 
 @RestController
@@ -86,8 +85,7 @@ class WordController(val graphService: GraphService) {
         lang: String,
         text: String
     ): Word {
-        val language = graph.languageByShortName(lang)
-        if (language == UnknownLanguage) throw NoLanguageException()
+        val language = graphService.resolveLanguage(lang)
 
         val words = graph.wordsByText(language, text)
         if (words.isEmpty()) throw NoWordException()
@@ -106,8 +104,7 @@ class WordController(val graphService: GraphService) {
     @ResponseBody
     fun addWord(@PathVariable lang: String, @RequestBody params: AddWordParameters): WordViewModel {
         val graph = graphService.graph
-        val language = graph.languageByShortName(lang)
-        if (language == UnknownLanguage) throw NoLanguageException()
+        val language = graphService.resolveLanguage(lang)
         val text = params.text?.nullize() ?: throw NoWordTextException()
 
         val word = graph.addWord(
