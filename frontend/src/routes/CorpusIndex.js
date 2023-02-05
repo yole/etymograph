@@ -11,6 +11,5 @@ export default function CorpusIndex() {
         <ul>
         {languages.map(l => <li key={l.shortName}><Link to={`language/${l.shortName}`}>{l.name}</Link></li>)}
         </ul>
-        <Link to="/rules">Rules</Link>
     </>
 }

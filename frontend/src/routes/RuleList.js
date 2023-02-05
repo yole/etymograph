@@ -1,19 +1,23 @@
-import {useLoaderData} from "react-router";
+import {useLoaderData, useParams} from "react-router";
 import {Link} from "react-router-dom";
 import {useEffect} from "react";
 
-export async function loader() {
-    return fetch(`${process.env.REACT_APP_BACKEND_URL}rules`, { headers: { 'Accept': 'application/json'} })
+export async function loader({params}) {
+    return fetch(`${process.env.REACT_APP_BACKEND_URL}rules/${params.langId}`, { headers: { 'Accept': 'application/json'} })
 }
 
 export default function RuleList() {
-    const rules = useLoaderData()
+    const ruleList = useLoaderData()
+    const params = useParams()
     useEffect(() => { document.title = "Etymograph : Rules" })
 
     return <>
-    <h2>Rules</h2>
+    <h2>
+        <small><Link to={`/language/${params.langId}`}>{ruleList.toLangFullName}</Link> > </small>
+        Rules
+    </h2>
         <ul>
-            {rules.map(r => <li key={r.id}><Link to={`/rule/${r.id}`}>{r.name}</Link>{r.summaryText.length > 0 ? ": " + r.summaryText : ""}</li>)}
+            {ruleList.rules.map(r => <li key={r.id}><Link to={`/rule/${r.id}`}>{r.name}</Link>{r.summaryText.length > 0 ? ": " + r.summaryText : ""}</li>)}
         </ul>
         <Link to="/rules/new">Add rule</Link>
     </>

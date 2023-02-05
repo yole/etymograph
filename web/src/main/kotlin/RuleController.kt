@@ -21,6 +21,8 @@ class RuleController(val graphService: GraphService) {
         val name: String,
         val fromLang: String,
         val toLang: String,
+        val fromLangFullName: String,
+        val toLangFullName: String,
         val summaryText: String,
         val editableText: String,
         val addedCategories: String?,
@@ -30,9 +32,18 @@ class RuleController(val graphService: GraphService) {
         val examples: List<RuleExampleViewModel>
     )
 
-    @GetMapping("/rules")
-    fun rules(): List<RuleViewModel> {
-        return graphService.graph.allRules().map { it.toViewModel() }
+    data class RuleListViewModel(
+        val toLangFullName: String,
+        val rules: List<RuleViewModel>
+    )
+
+    @GetMapping("/rules/{lang}")
+    fun rules(@PathVariable lang: String): RuleListViewModel {
+        val language = graphService.resolveLanguage(lang)
+        return RuleListViewModel(
+            language.name,
+            graphService.graph.allRules().filter { it.toLanguage == language }.map { it.toViewModel() }
+        )
     }
 
     @GetMapping("/rule/{id}")
@@ -42,7 +53,9 @@ class RuleController(val graphService: GraphService) {
 
     private fun Rule.toViewModel(): RuleViewModel {
         return RuleViewModel(
-            id, name, fromLanguage.shortName, toLanguage.shortName,
+            id, name,
+            fromLanguage.shortName, toLanguage.shortName,
+            fromLanguage.name, toLanguage.name,
             toSummaryText(),
             toEditableText(),
             addedCategories,

@@ -62,7 +62,7 @@ const router = createBrowserRouter([
         loader: compoundLoader
     },
     {
-        path: '/rules',
+        path: '/rules/:langId',
         element: <RuleList/>,
         loader: ruleListLoader
     },

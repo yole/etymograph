@@ -21,8 +21,11 @@ export default function Rule() {
     }
 
     return <>
-        <h2><small><Link to="/rules">Rules</Link> > </small>{rule.name}</h2>
-        <p>From {rule.fromLang} to {rule.toLang}</p>
+        <h2><small>
+            <Link to={`/language/${rule.toLang}`}>{rule.toLangFullName}</Link> >
+            <Link to={`/rules/${rule.toLang}`}>Rules</Link> > </small>
+            {rule.name}</h2>
+        {rule.fromLang !== rule.toLang && <p>From {rule.fromLangFullName} to {rule.toLangFullName}</p>}
         {rule.addedCategories && <p>Added categories: {rule.addedCategories}</p>}
         {rule.replacedCategories && <p>Replaced categories: {rule.replacedCategories}</p>}
         {!editMode && rule.branches.map(b => <>
