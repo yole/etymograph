@@ -129,7 +129,6 @@
             "id": 5,
             "text": "lassi",
             "lang": "Q",
-            "gloss": "leaf.NOM.PL",
             "source": "PE17:62"
         },
         {
@@ -220,7 +219,6 @@
             "id": 18,
             "text": "aldaron",
             "lang": "Q",
-            "gloss": "tree.GEN.PL",
             "source": "PE17.63"
         },
         {
@@ -369,6 +367,7 @@
             "text": "Varda",
             "lang": "Q",
             "gloss": "Varda",
+            "pos": "NP",
             "source": "PE17:65"
         },
         {
@@ -587,6 +586,7 @@
             "text": "Tintalle",
             "lang": "Q",
             "gloss": "Kindler",
+            "pos": "NP",
             "source": "PE17:69"
         },
         {
@@ -607,6 +607,7 @@
             "text": "Oiolossë",
             "lang": "Q",
             "gloss": "Ever-snowy",
+            "pos": "NP",
             "source": "PE17:69"
         },
         {
@@ -661,6 +662,7 @@
             "id": 86,
             "text": "Elentári",
             "lang": "Q",
+            "pos": "NP",
             "source": "PE17:70"
         },
         {
@@ -899,6 +901,7 @@
             "text": "Calacirya",
             "lang": "Q",
             "gloss": "Light-cleft",
+            "pos": "NP",
             "source": "PE17:73"
         },
         {
@@ -959,13 +962,13 @@
             "id": 131,
             "text": "Valimar",
             "lang": "Q",
+            "pos": "NP",
             "source": "PE17:74"
         },
         {
             "id": 132,
             "text": "Vali",
             "lang": "Q",
-            "gloss": "Valar",
             "source": "PE17:74"
         },
         {
@@ -1000,7 +1003,6 @@
             "id": 137,
             "text": "hiruvalyë",
             "lang": "Q",
-            "gloss": "find.2SG.FUT",
             "source": "PE17:75"
         },
         {
@@ -1245,6 +1247,7 @@
             "id": 174,
             "text": "Elendil",
             "lang": "Q",
+            "pos": "NP",
             "source": "PE17:15"
         },
         {
@@ -1307,6 +1310,7 @@
             "id": 183,
             "text": "Númenor",
             "lang": "Q",
+            "pos": "NP",
             "source": "PE17:15"
         },
         {
@@ -1640,6 +1644,7 @@
             "id": 229,
             "text": "Silmaril",
             "lang": "Q",
+            "pos": "NP",
             "source": "PE17:19"
         },
         {
@@ -1690,17 +1695,20 @@
             "id": 236,
             "text": "Tarmenel",
             "lang": "Q",
+            "pos": "NP",
             "source": "PE17:19"
         },
         {
             "id": 237,
             "text": "Valinor",
-            "lang": "Q"
+            "lang": "Q",
+            "pos": "NP"
         },
         {
             "id": 238,
             "text": "Eldamar",
             "lang": "Q",
+            "pos": "NP",
             "source": "PE17:20"
         },
         {
@@ -2235,6 +2243,20 @@
             "gloss": "come",
             "pos": "V",
             "source": "VT43:14"
+        },
+        {
+            "id": 313,
+            "text": "tambe",
+            "lang": "Q",
+            "gloss": "so",
+            "source": "VT43:17"
+        },
+        {
+            "id": 314,
+            "text": "Vala",
+            "lang": "Q",
+            "gloss": "Vala",
+            "pos": "NP"
         }
     ],
     "rules": [
@@ -2486,7 +2508,7 @@
                     }
                 }
             ],
-            "addedCategories": "2SG"
+            "addedCategories": ".2SG"
         },
         {
             "id": 6,
@@ -4411,6 +4433,14 @@
             "from": 155,
             "to": 94,
             "type": "+"
+        },
+        {
+            "from": 132,
+            "to": 314,
+            "type": ">",
+            "ruleIds": [
+                0
+            ]
         }
     ],
     "corpusTexts": [

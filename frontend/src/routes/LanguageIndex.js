@@ -19,6 +19,7 @@ export default function LanguageIndex() {
         </ul>
         <Link to={`/dictionary/${params.langId}`}>Dictionary</Link><br/>
         <Link to={`/dictionary/${params.langId}/compounds`}>Compound Words</Link><br/>
+        <Link to={`/dictionary/${params.langId}/names`}>Names</Link><br/>
         <Link to={`/rules/${params.langId}`}>Rules</Link><br/>
         <Link to={`/paradigms/${params.langId}`}>Paradigms</Link><br/>
         <Link to={`/corpus/${params.langId}`}>Corpus</Link>

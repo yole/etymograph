@@ -4,18 +4,26 @@ import WordForm from "./WordForm";
 import {useEffect} from "react";
 
 export async function loader({params}) {
-    return fetch(`http://localhost:8080/dictionary/${params.lang}`, { headers: { 'Accept': 'application/json'} })
+    return fetch(`${process.env.REACT_APP_BACKEND_URL}dictionary/${params.lang}`, { headers: { 'Accept': 'application/json'} })
 }
 
 export async function compoundLoader({params}) {
-    return fetch(`http://localhost:8080/dictionary/${params.lang}/compounds`, { headers: { 'Accept': 'application/json'} })
+    return fetch(`${process.env.REACT_APP_BACKEND_URL}dictionary/${params.lang}/compounds`, { headers: { 'Accept': 'application/json'} })
 }
 
-export default function Dictionary() {
+export async function namesLoader({params}) {
+    return fetch(`${process.env.REACT_APP_BACKEND_URL}dictionary/${params.lang}/names`, { headers: { 'Accept': 'application/json'} })
+}
+
+export default function Dictionary(params) {
     const dict = useLoaderData()
     const revalidator = useRevalidator()
     const navigate = useNavigate()
-    useEffect(() => { document.title = "Etymograph : " + dict.language.name + " : Dictionary"})
+
+    const filterText = params.filter === "names" ? "Names" :
+        (params.filter === "compounds" ? "Compounds" : "Dictionary")
+
+    useEffect(() => { document.title = "Etymograph : " + dict.language.name + " : " + filterText})
 
     function submitted(word) {
         revalidator.revalidate()
@@ -25,7 +33,7 @@ export default function Dictionary() {
     }
 
     return <>
-        <h2><small><Link to={`/language/${dict.language.shortName}`}>{dict.language.name}</Link></small> > Dictionary</h2>
+        <h2><small><Link to={`/language/${dict.language.shortName}`}>{dict.language.name}</Link></small> > {filterText}</h2>
         <h3>Add word</h3>
         <WordForm language={dict.language.shortName} submitted={submitted}/>
         <ul>

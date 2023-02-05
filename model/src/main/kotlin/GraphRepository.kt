@@ -14,6 +14,7 @@ abstract class GraphRepository {
     abstract fun wordsByText(lang: Language, text: String): List<Word>
     abstract fun dictionaryWords(lang: Language): List<Word>
     abstract fun compoundWords(lang: Language): List<Word>
+    abstract fun nameWords(lang: Language): List<Word>
     abstract fun findAttestations(word: Word): List<CorpusText>
 
     abstract fun allRules(): Iterable<Rule>

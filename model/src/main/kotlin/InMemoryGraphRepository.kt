@@ -54,22 +54,32 @@ open class InMemoryGraphRepository : GraphRepository() {
     }
 
     override fun dictionaryWords(lang: Language): List<Word> {
-        return filteredWords(lang) {
-            it.gloss != null &&
-                    linksFrom[it.id]?.none { link -> link.type == Link.Derived && !link.toWord.isRoot() } != false
-        }
+        return filteredWords(lang, WordKind.NORMAL)
     }
 
     override fun compoundWords(lang: Language): List<Word> {
-        return filteredWords(lang) {
-            linksFrom[it.id]?.any { link -> link.type == Link.Agglutination } == true
+        return filteredWords(lang, WordKind.COMPOUND)
+    }
+
+    override fun nameWords(lang: Language): List<Word> {
+        return filteredWords(lang, WordKind.NAME)
+    }
+
+    enum class WordKind { NAME, COMPOUND, DERIVED, NORMAL }
+
+    private fun classifyWord(word: Word): WordKind {
+        return when {
+            word.pos == "NP" -> WordKind.NAME
+            word.gloss == null -> WordKind.DERIVED
+            linksFrom[word.id]?.any { link -> link.type == Link.Agglutination && !link.toWord.isRoot() } == true -> WordKind.COMPOUND
+            else -> WordKind.NORMAL
         }
     }
 
-    private fun filteredWords(lang: Language, predicate: (Word) -> Boolean): List<Word> {
+    private fun filteredWords(lang: Language, kind: WordKind): List<Word> {
         val wordsInLang = words[lang] ?: return emptyList()
         return wordsInLang.flatMap { it.value }
-            .filter(predicate)
+            .filter { classifyWord(it) == kind }
             .sortedWith { o1, o2 -> Collator.getInstance(Locale.FRANCE).compare(o1.text, o2.text) }
     }
 
