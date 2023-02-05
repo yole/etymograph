@@ -1137,13 +1137,6 @@
             "source": "PE17:13"
         },
         {
-            "id": 158,
-            "text": "tie",
-            "lang": "Q",
-            "gloss": "path",
-            "source": "PE17:13"
-        },
-        {
             "id": 159,
             "text": "lanya",
             "lang": "Q",
@@ -3703,12 +3696,6 @@
             "source": "PE17:13"
         },
         {
-            "from": 155,
-            "to": 158,
-            "type": "+",
-            "source": "PE17:13"
-        },
-        {
             "from": 159,
             "to": 161,
             "type": ">"
@@ -4419,6 +4406,11 @@
             "ruleIds": [
                 20
             ]
+        },
+        {
+            "from": 155,
+            "to": 94,
+            "type": "+"
         }
     ],
     "corpusTexts": [

@@ -2,6 +2,7 @@ package ru.yole.etymograph.web
 
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
+import org.springframework.web.server.ResponseStatusException
 import ru.yole.etymograph.GraphRepository
 import ru.yole.etymograph.Word
 
@@ -36,9 +37,22 @@ class WordController(val graphService: GraphService) {
     )
 
     @GetMapping("/word/{lang}/{text}")
-    fun wordJson(@PathVariable lang: String, @PathVariable text: String): WordViewModel {
+    fun wordJson(@PathVariable lang: String, @PathVariable text: String): List<WordViewModel> {
         val graph = graphService.graph
-        val word = findWord(graph, lang, text)
+
+        val language = graphService.resolveLanguage(lang)
+
+        val words = graph.wordsByText(language, text)
+        if (words.isEmpty())
+            throw ResponseStatusException(HttpStatus.NOT_FOUND, "No word with text $text")
+
+        return words.map { it.toViewModel(graph) }
+    }
+
+    @GetMapping("/word/{lang}/{text}/{id}")
+    fun singleWordJson(@PathVariable lang: String, @PathVariable text: String, @PathVariable id: Int): WordViewModel {
+        val graph = graphService.graph
+        val word = graph.wordById(id) ?: throw ResponseStatusException(HttpStatus.NOT_FOUND, "No word with ID $id")
         return word.toViewModel(graph)
     }
 
@@ -86,18 +100,6 @@ class WordController(val graphService: GraphService) {
                 )
             }
         )
-    }
-
-    private fun findWord(
-        graph: GraphRepository,
-        lang: String,
-        text: String
-    ): Word {
-        val language = graphService.resolveLanguage(lang)
-
-        val words = graph.wordsByText(language, text)
-        if (words.isEmpty()) throw NoWordException()
-        return words.single()
     }
 
     data class AddWordParameters(

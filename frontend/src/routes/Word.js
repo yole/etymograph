@@ -73,8 +73,9 @@ function WordLinkTypeComponent(params) {
     </>)
 }
 
-export default function Word() {
-    const word = useLoaderData()
+function SingleWord(params) {
+    const word = params.word
+
     const revalidator = useRevalidator()
     const [showBaseWord, setShowBaseWord] = useState(false)
     const [showDerivedWord, setShowDerivedWord] = useState(false)
@@ -148,6 +149,20 @@ export default function Word() {
         <p/>
         {!word.glossComputed && <Link to={`/word/${word.language}/${word.id}/paradigms`}>Paradigms</Link>}
     </>
+}
+
+
+export default function Word() {
+    const words = useLoaderData()
+    if (Array.isArray(words)) {
+        if (words.length === 1) {
+            return <SingleWord word={words[0]}/>
+        }
+        return <ul>
+            {words.map(w => <li><Link to={`/word/${w.language}/${w.text}/${w.id}`}>{w.text} "{w.gloss}"</Link></li>)}
+        </ul>
+    }
+    return <SingleWord word={words}/>
 }
 
 export function WordError() {
