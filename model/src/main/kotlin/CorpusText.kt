@@ -1,5 +1,7 @@
 package ru.yole.etymograph
 
+import java.util.*
+
 class CorpusWord(val text: String, val word: Word?, val gloss: String?)
 
 class CorpusTextLine(val corpusWords: List<CorpusWord>)
@@ -15,13 +17,21 @@ class CorpusText(
 ): LangEntity(source, notes) {
     fun mapToLines(repo: GraphRepository): List<CorpusTextLine> {
         return text.split("\n").map { line ->
-            val textWords = line.split(' ')
+            val textWords = splitIntoNormalizedWords(line)
             CorpusTextLine(textWords.map { textWord ->
-                val trimmedWord = textWord.trimEnd('!', ',', '.', '?')
-                val word = words.find { word -> word.text.equals(trimmedWord, true) }
-                    ?: repo.wordsByText(language, trimmedWord).singleOrNull()
+                val word = words.find { word -> word.text == textWord }
+                    ?: repo.wordsByText(language, textWord).singleOrNull()
                 CorpusWord(textWord, word, word?.getOrComputeGloss(repo))
             })
         }
+    }
+
+    private fun splitIntoNormalizedWords(line: String): List<String> {
+        return line.split(' ').map { it.trimEnd('!', ',', '.', '?').lowercase(Locale.FRANCE) }
+    }
+
+    fun containsWord(word: Word): Boolean {
+        if (word in words) return true
+        return text.split("\n").any { word.text in splitIntoNormalizedWords(it) }
     }
 }

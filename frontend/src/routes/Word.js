@@ -124,6 +124,15 @@ export default function Word() {
         <button onClick={() => setEditMode(!editMode)}>{editMode ? "Cancel" : "Edit"}</button>
         {!editMode && <button onClick={() => deleteWordClicked()}>Delete</button>}
 
+        {word.attestations.length > 0 &&
+            <p>Attested in {word.attestations.map((att, i) => <>
+                {i > 0 && ", "}
+                <Link to={`/corpus/text/${att.textId}`}>{att.textTitle}</Link>
+                </>
+                )}
+            </p>
+        }
+
         <WordLinkTypeComponent word={word} links={word.linksFrom} revalidator={revalidator}/>
         <WordLinkTypeComponent word={word} links={word.linksTo} revalidator={revalidator}/>
 

@@ -17,6 +17,9 @@ class WordController(val graphService: GraphService) {
     )
 
     data class LinkTypeViewModel(val typeId: String, val type: String, val words: List<LinkWordViewModel>)
+
+    data class AttestationViewModel(val textId: Int, val textTitle: String)
+
     data class WordViewModel(
         val id: Int,
         val language: String,
@@ -27,6 +30,7 @@ class WordController(val graphService: GraphService) {
         val pos: String?,
         val source: String?,
         val notes: String?,
+        val attestations: List<AttestationViewModel>,
         val linksFrom: List<LinkTypeViewModel>,
         val linksTo: List<LinkTypeViewModel>
     )
@@ -41,6 +45,7 @@ class WordController(val graphService: GraphService) {
     private fun Word.toViewModel(graph: GraphRepository): WordViewModel {
         val linksFrom = graph.getLinksFrom(this).groupBy { it.type }
         val linksTo = graph.getLinksTo(this).groupBy { it.type }
+        val attestations = graph.findAttestations(this)
         return WordViewModel(
             id,
             language.shortName,
@@ -51,6 +56,9 @@ class WordController(val graphService: GraphService) {
             pos,
             source,
             notes,
+            attestations.map {
+                AttestationViewModel(it.id, it.title ?: it.text)
+            },
             linksFrom.map {
                 LinkTypeViewModel(
                     it.key.id,

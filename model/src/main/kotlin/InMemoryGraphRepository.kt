@@ -75,6 +75,10 @@ open class InMemoryGraphRepository : GraphRepository() {
 
     private fun Word.isRoot() = text.all { c -> c.isUpperCase() || c == '-' }
 
+    override fun findAttestations(word: Word): List<CorpusText> {
+        return corpusTextsInLanguage(word.language).filter { it.containsWord(word) }
+    }
+
     override fun allCorpusTexts(): Iterable<CorpusText> {
         return corpus
     }
