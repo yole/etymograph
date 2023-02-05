@@ -1,28 +1,13 @@
 package ru.yole.etymograph.web
 
 import org.springframework.http.HttpStatus
-import org.springframework.stereotype.Controller
-import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.*
 import ru.yole.etymograph.GraphRepository
 import ru.yole.etymograph.UnknownLanguage
 import ru.yole.etymograph.Word
 
-@Controller
+@RestController
 class WordController(val graphService: GraphService) {
-    @GetMapping("/word/{lang}/{text}")
-    fun word(@PathVariable lang: String, @PathVariable text: String, model: Model): String {
-        val graph = graphService.graph
-        val word = findWord(graph, lang, text)
-        model.addAttribute("word", word)
-        model.addAttribute("gloss", word.getOrComputeGloss(graph))
-        val linksFrom = graph.getLinksFrom(word).groupBy { it.type }
-        val linksTo = graph.getLinksTo(word).groupBy { it.type }
-        model.addAttribute("linksFrom", linksFrom)
-        model.addAttribute("linksTo", linksTo)
-        return "word/index"
-    }
-
     data class LinkWordViewModel(
         val id: Int,
         val text: String,
@@ -47,8 +32,7 @@ class WordController(val graphService: GraphService) {
         val linksTo: List<LinkTypeViewModel>
     )
 
-    @GetMapping("/word/{lang}/{text}", produces = ["application/json"])
-    @ResponseBody
+    @GetMapping("/word/{lang}/{text}")
     fun wordJson(@PathVariable lang: String, @PathVariable text: String): WordViewModel {
         val graph = graphService.graph
         val word = findWord(graph, lang, text)
@@ -171,8 +155,7 @@ class WordController(val graphService: GraphService) {
         val cells: List<List<List<WordParadigmWordModel>>>
     )
 
-    @GetMapping("/word/{id}/paradigms", produces = ["application/json"])
-    @ResponseBody
+    @GetMapping("/word/{id}/paradigms")
     fun wordParadigms(@PathVariable id: Int): List<WordParadigmModel> {
         val graph = graphService.graph
         val word = graph.wordById(id) ?: throw NoWordException()
