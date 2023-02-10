@@ -33,7 +33,7 @@ open class InMemoryGraphRepository : GraphRepository() {
         source: String?,
         notes: String?
     ): CorpusText {
-        return CorpusText(corpus.size + 1, text, title, language, words, source, notes).also { corpus += it }
+        return CorpusText(corpus.size + 1, text, title, language, words.toMutableList(), source, notes).also { corpus += it }
     }
 
     override fun corpusTextById(id: Int): CorpusText? {

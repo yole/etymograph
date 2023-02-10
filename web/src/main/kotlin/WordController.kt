@@ -51,9 +51,7 @@ class WordController(val graphService: GraphService) {
 
     @GetMapping("/word/{lang}/{text}/{id}")
     fun singleWordJson(@PathVariable lang: String, @PathVariable text: String, @PathVariable id: Int): WordViewModel {
-        val graph = graphService.graph
-        val word = graph.wordById(id) ?: throw ResponseStatusException(HttpStatus.NOT_FOUND, "No word with ID $id")
-        return word.toViewModel(graph)
+        return graphService.resolveWord(id).toViewModel(graphService.graph)
     }
 
     private fun Word.toViewModel(graph: GraphRepository): WordViewModel {

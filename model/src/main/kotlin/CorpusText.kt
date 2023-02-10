@@ -11,7 +11,7 @@ class CorpusText(
     val text: String,
     val title: String?,
     val language: Language,
-    val words: List<Word>,
+    val words: MutableList<Word>,
     source: String?,
     notes: String?
 ): LangEntity(source, notes) {
@@ -20,8 +20,12 @@ class CorpusText(
             val textWords = splitIntoNormalizedWords(line)
             CorpusTextLine(textWords.map { textWord ->
                 val word = words.find { word -> word.text == textWord }
-                    ?: repo.wordsByText(language, textWord).singleOrNull()
-                CorpusWord(textWord, word, word?.getOrComputeGloss(repo))
+                if (word != null) {
+                    CorpusWord(textWord, word, word.getOrComputeGloss(repo))
+                }
+                else {
+                    CorpusWord(textWord, null, repo.wordsByText(language, textWord).firstOrNull()?.getOrComputeGloss(repo))
+                }
             })
         }
     }

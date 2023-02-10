@@ -2,6 +2,7 @@ package ru.yole.etymograph.web
 
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
+import org.springframework.web.server.ResponseStatusException
 import ru.yole.etymograph.CorpusText
 import ru.yole.etymograph.Language
 import ru.yole.etymograph.parser.CorpusTextSectionParser
@@ -26,7 +27,7 @@ class CorpusController(val graphService: GraphService) {
         )
     }
 
-    data class CorpusWordViewModel(val text: String, val gloss: String, val wordText: String?)
+    data class CorpusWordViewModel(val text: String, val gloss: String, val wordId: Int?, val wordText: String?)
     data class CorpusLineViewModel(val words: List<CorpusWordViewModel>)
     data class CorpusTextViewModel(
         val id: Int,
@@ -38,8 +39,12 @@ class CorpusController(val graphService: GraphService) {
 
     @GetMapping("/corpus/text/{id}")
     fun textJson(@PathVariable id: Int): CorpusTextViewModel {
-        val text = graphService.graph.corpusTextById(id) ?: throw NoCorpusTextException()
-        return text.toViewModel()
+        return resolveCorpusText(id).toViewModel()
+    }
+
+    private fun resolveCorpusText(id: Int): CorpusText {
+        return graphService.graph.corpusTextById(id)
+            ?: throw ResponseStatusException(HttpStatus.NOT_FOUND, "No corpus text with ID $id")
     }
 
     private fun CorpusText.toViewModel(): CorpusTextViewModel {
@@ -50,7 +55,7 @@ class CorpusController(val graphService: GraphService) {
             language.name,
             mapToLines(graphService.graph).map {
                 CorpusLineViewModel(it.corpusWords.map { cw ->
-                    CorpusWordViewModel(cw.text, cw.gloss ?: "", cw.word?.text)
+                    CorpusWordViewModel(cw.text, cw.gloss ?: "", cw.word?.id, cw.word?.text)
                 })
             }
         )
@@ -68,7 +73,14 @@ class CorpusController(val graphService: GraphService) {
         repo.save()
         return text.toViewModel()
     }
-}
 
-@ResponseStatus(value = HttpStatus.NOT_FOUND, reason = "No such corpus text")
-class NoCorpusTextException : RuntimeException()
+    data class AssociateWordParameters(val wordId: Int = -1)
+
+    @PostMapping("/corpus/text/{id}/associate")
+    fun associateWord(@PathVariable id: Int, @RequestBody params: AssociateWordParameters) {
+        val corpusText = resolveCorpusText(id)
+        val word = graphService.resolveWord(params.wordId)
+        corpusText.words.add(word)
+        graphService.graph.save()
+    }
+}

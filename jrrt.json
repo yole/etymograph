@@ -2257,6 +2257,70 @@
             "lang": "Q",
             "gloss": "Vala",
             "pos": "NP"
+        },
+        {
+            "id": 315,
+            "text": "maría",
+            "lang": "Q",
+            "gloss": "Maria",
+            "pos": "NP",
+            "source": "VT43:27"
+        },
+        {
+            "id": 316,
+            "text": "aselyë",
+            "lang": "Q",
+            "source": "VT43:29"
+        },
+        {
+            "id": 317,
+            "text": "as",
+            "lang": "Q",
+            "gloss": "with",
+            "pos": "PREP",
+            "source": "VT43:30"
+        },
+        {
+            "id": 318,
+            "text": "lye",
+            "lang": "Q",
+            "gloss": "you",
+            "pos": "PRON",
+            "source": "VT43:30"
+        },
+        {
+            "id": 319,
+            "text": "eruo",
+            "lang": "Q"
+        },
+        {
+            "id": 320,
+            "text": "Eru",
+            "lang": "Q",
+            "gloss": "Eru",
+            "pos": "PN",
+            "source": "VT43:32"
+        },
+        {
+            "id": 321,
+            "text": "ontaril",
+            "lang": "Q",
+            "gloss": "begetter",
+            "pos": "N",
+            "source": "VT43:32"
+        },
+        {
+            "id": 322,
+            "text": "hyamë",
+            "lang": "Q",
+            "gloss": "pray",
+            "pos": "V",
+            "source": "VT43:32"
+        },
+        {
+            "id": 323,
+            "text": "rámen",
+            "lang": "Q"
         }
     ],
     "rules": [
@@ -4441,6 +4505,24 @@
             "ruleIds": [
                 0
             ]
+        },
+        {
+            "from": 316,
+            "to": 317,
+            "type": "+"
+        },
+        {
+            "from": 316,
+            "to": 318,
+            "type": "+"
+        },
+        {
+            "from": 319,
+            "to": 320,
+            "type": ">",
+            "ruleIds": [
+                1
+            ]
         }
     ],
     "corpusTexts": [
@@ -4565,6 +4647,7 @@
             "title": "Aia María",
             "lang": "Q",
             "wordIds": [
+                323
             ],
             "source": "VT43:28"
         },
