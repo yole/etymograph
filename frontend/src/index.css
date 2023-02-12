@@ -37,3 +37,8 @@ code {
 .errorText {
   color: red
 }
+
+.iconWithMargin {
+  margin-left: 2px;
+  cursor: pointer;
+}

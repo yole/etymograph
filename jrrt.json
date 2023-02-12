@@ -2321,6 +2321,14 @@
             "id": 323,
             "text": "rámen",
             "lang": "Q"
+        },
+        {
+            "id": 324,
+            "text": "quanta",
+            "lang": "Q",
+            "gloss": "full",
+            "pos": "ADJ",
+            "source": "VT43:28"
         }
     ],
     "rules": [
@@ -4647,7 +4655,8 @@
             "title": "Aia María",
             "lang": "Q",
             "wordIds": [
-                323
+                323,
+                324
             ],
             "source": "VT43:28"
         },
