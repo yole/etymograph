@@ -48,3 +48,5 @@ class Word(
         return null
     }
 }
+
+data class Attestation(val word: Word, val corpusText: CorpusText)

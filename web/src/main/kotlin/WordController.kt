@@ -19,7 +19,7 @@ class WordController(val graphService: GraphService) {
 
     data class LinkTypeViewModel(val typeId: String, val type: String, val words: List<LinkWordViewModel>)
 
-    data class AttestationViewModel(val textId: Int, val textTitle: String)
+    data class AttestationViewModel(val textId: Int, val textTitle: String, val word: String?)
 
     data class WordViewModel(
         val id: Int,
@@ -68,8 +68,12 @@ class WordController(val graphService: GraphService) {
             pos,
             source,
             notes,
-            attestations.map {
-                AttestationViewModel(it.id, it.title ?: it.text)
+            attestations.map { attestation ->
+                AttestationViewModel(
+                    attestation.corpusText.id,
+                    attestation.corpusText.title ?: attestation.corpusText.text,
+                    attestation.word.text.takeIf { it != text }
+                )
             },
             linksFrom.map {
                 LinkTypeViewModel(

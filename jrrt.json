@@ -2329,6 +2329,28 @@
             "gloss": "full",
             "pos": "ADJ",
             "source": "VT43:28"
+        },
+        {
+            "id": 325,
+            "text": "eruanno",
+            "lang": "Q",
+            "source": "VT43:28"
+        },
+        {
+            "id": 326,
+            "text": "eruanna",
+            "lang": "Q",
+            "gloss": "God's grace",
+            "pos": "N",
+            "source": "VT43:28"
+        },
+        {
+            "id": 327,
+            "text": "anna",
+            "lang": "Q",
+            "gloss": "gift",
+            "pos": "N",
+            "source": "PE17:91"
         }
     ],
     "rules": [
@@ -4531,6 +4553,24 @@
             "ruleIds": [
                 1
             ]
+        },
+        {
+            "from": 325,
+            "to": 326,
+            "type": ">",
+            "ruleIds": [
+                1
+            ]
+        },
+        {
+            "from": 326,
+            "to": 320,
+            "type": "+"
+        },
+        {
+            "from": 326,
+            "to": 327,
+            "type": "+"
         }
     ],
     "corpusTexts": [
@@ -4656,7 +4696,8 @@
             "lang": "Q",
             "wordIds": [
                 323,
-                324
+                324,
+                325
             ],
             "source": "VT43:28"
         },

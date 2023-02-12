@@ -129,6 +129,7 @@ function SingleWord(params) {
             <p>Attested in {word.attestations.map((att, i) => <>
                 {i > 0 && ", "}
                 <Link to={`/corpus/text/${att.textId}`}>{att.textTitle}</Link>
+                {att.word && ' ("' + att.word + '")'}
                 </>
                 )}
             </p>

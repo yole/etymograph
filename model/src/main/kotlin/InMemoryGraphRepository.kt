@@ -85,8 +85,27 @@ open class InMemoryGraphRepository : GraphRepository() {
 
     private fun Word.isRoot() = text.all { c -> c.isUpperCase() || c == '-' }
 
-    override fun findAttestations(word: Word): List<CorpusText> {
-        return corpusTextsInLanguage(word.language).filter { it.containsWord(word) }
+    override fun findAttestations(word: Word): List<Attestation> {
+        val allDerivedWords = collectDerivedWords(word)
+        val result = mutableListOf<Attestation>()
+        corpusText@ for (corpusText in corpusTextsInLanguage(word.language)) {
+            for (derivedWord in allDerivedWords) {
+                if (corpusText.containsWord(derivedWord)) {
+                    result.add(Attestation(derivedWord, corpusText))
+                    continue@corpusText
+                }
+            }
+        }
+        return result
+    }
+
+    private fun collectDerivedWords(word: Word): Collection<Word> {
+        val result = mutableSetOf<Word>()
+        result.add(word)
+        for (link in getLinksTo(word)) {
+            result.add(link.fromWord)
+        }
+        return result
     }
 
     override fun allCorpusTexts(): Iterable<CorpusText> {
