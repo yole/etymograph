@@ -8,7 +8,7 @@ import ru.yole.etymograph.Word
 
 @RestController
 class DictionaryController(val graphService: GraphService) {
-    data class DictionaryWordViewModel(val id: Int, val text: String, val gloss: String)
+    data class DictionaryWordViewModel(val id: Int, val text: String, val gloss: String, val homonym: Boolean)
     data class DictionaryViewModel(val language: Language, val words: List<DictionaryWordViewModel>)
 
     @GetMapping("/dictionary/{lang}")
@@ -29,7 +29,13 @@ class DictionaryController(val graphService: GraphService) {
     private fun loadDictionary(lang: String, wordLoader: (Language) -> List<Word>): DictionaryViewModel {
         val language = graphService.resolveLanguage(lang)
         val words = wordLoader(language)
+        val homonyms = mutableSetOf<String>()
+        for ((index, word) in words.withIndex()) {
+            if (index > 0 && word.text == words[index-1].text) {
+                homonyms.add(word.text)
+            }
+        }
         return DictionaryViewModel(language, words.map { DictionaryWordViewModel(it.id, it.text,
-            it.getOrComputeGloss(graphService.graph) ?: "") })
+            it.getOrComputeGloss(graphService.graph) ?: "", it.text in homonyms) })
     }
 }
