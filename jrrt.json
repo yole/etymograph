@@ -102,7 +102,6 @@
             "id": 1,
             "text": "laurië",
             "lang": "Q",
-            "gloss": "golden.ADV",
             "source": "PE17:61"
         },
         {
@@ -485,14 +484,6 @@
             "source": "PE17:67"
         },
         {
-            "id": 60,
-            "text": "aire",
-            "lang": "Q",
-            "gloss": "holy",
-            "pos": "ADJ",
-            "source": "PE17:67"
-        },
-        {
             "id": 61,
             "text": "tári",
             "lang": "Q",
@@ -790,7 +781,7 @@
             "id": 105,
             "text": "caita",
             "lang": "Q",
-            "gloss": "lie.3SG",
+            "gloss": "lie",
             "source": "PE17:72"
         },
         {
@@ -1078,7 +1069,7 @@
         },
         {
             "id": 148,
-            "text": "sile",
+            "text": "sil-",
             "lang": "Q",
             "gloss": "shine",
             "source": "PE17:13"
@@ -2190,7 +2181,6 @@
             "id": 305,
             "text": "carë",
             "lang": "Q",
-            "gloss": "make.AOR",
             "source": "VT43:15"
         },
         {
@@ -2357,12 +2347,6 @@
             "lang": "Q",
             "gloss": "for",
             "pos": "PREP",
-            "source": "VT43:33"
-        },
-        {
-            "id": 329,
-            "text": "men",
-            "lang": "Q",
             "source": "VT43:33"
         },
         {
@@ -2851,6 +2835,27 @@
                             "arg": ""
                         },
                         {
+                            "type": "RemoveLastCharacter",
+                            "arg": ""
+                        },
+                        {
+                            "type": "AddSuffix",
+                            "arg": "ie"
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "characters": "ëa"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "RemoveLastCharacter",
+                            "arg": ""
+                        },
+                        {
                             "type": "AddSuffix",
                             "arg": "e"
                         }
@@ -3312,6 +3317,51 @@
             "addedCategories": ".1PL.EXCL",
             "replacedCategories": "",
             "source": "https://eldamo.org/content/words/word-1020286637.html"
+        },
+        {
+            "id": 25,
+            "name": "q-aor-uninflected",
+            "fromLang": "Q",
+            "toLang": "Q",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "NoChange",
+                            "arg": ""
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OrRuleConditionData",
+                        "members": [
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "EndsWith",
+                                "characters": "a"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "EndsWith",
+                                "characters": "u"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "arg": "e"
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".AOR",
+            "replacedCategories": "",
+            "source": "https://eldamo.org/content/words/word-2025078257.html"
         }
     ],
     "links": [
@@ -3319,6 +3369,9 @@
             "from": 1,
             "to": 2,
             "type": ">",
+            "ruleIds": [
+                11
+            ],
             "source": "PE17:61"
         },
         {
@@ -3543,7 +3596,7 @@
         },
         {
             "from": 59,
-            "to": 60,
+            "to": 297,
             "type": "+",
             "source": "PE17:67"
         },
@@ -4575,7 +4628,10 @@
         {
             "from": 305,
             "to": 306,
-            "type": ">"
+            "type": ">",
+            "ruleIds": [
+                25
+            ]
         },
         {
             "from": 307,
@@ -4654,19 +4710,6 @@
             "from": 323,
             "to": 328,
             "type": "+"
-        },
-        {
-            "from": 323,
-            "to": 329,
-            "type": "+"
-        },
-        {
-            "from": 329,
-            "to": 330,
-            "type": ">",
-            "ruleIds": [
-                8
-            ]
         },
         {
             "from": 332,
