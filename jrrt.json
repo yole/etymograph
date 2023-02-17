@@ -2431,6 +2431,21 @@
             "id": 342,
             "text": "men",
             "lang": "Q"
+        },
+        {
+            "id": 343,
+            "text": "anta",
+            "lang": "Q",
+            "gloss": "give",
+            "pos": "V",
+            "source": "VT49:14"
+        },
+        {
+            "id": 344,
+            "text": "síra",
+            "lang": "Q",
+            "gloss": "today",
+            "source": "VT43:18"
         }
     ],
     "rules": [
@@ -3402,6 +3417,28 @@
             "addedCategories": ".AOR",
             "replacedCategories": "",
             "source": "https://eldamo.org/content/words/word-2025078257.html"
+        },
+        {
+            "id": 26,
+            "name": "q-adj-suffix",
+            "fromLang": "Q",
+            "toLang": "Q",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "arg": "a"
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": "",
+            "replacedCategories": "",
+            "source": "https://eldamo.org/content/words/word-1770267447.html"
         }
     ],
     "links": [
@@ -4155,7 +4192,10 @@
         {
             "from": 2,
             "to": 208,
-            "type": ">"
+            "type": ">",
+            "ruleIds": [
+                26
+            ]
         },
         {
             "from": 208,
@@ -4810,6 +4850,11 @@
             "from": 340,
             "to": 342,
             "type": "+"
+        },
+        {
+            "from": 327,
+            "to": 343,
+            "type": ">"
         }
     ],
     "corpusTexts": [
@@ -4950,7 +4995,9 @@
             "lang": "Q",
             "wordIds": [
                 337,
-                340
+                340,
+                343,
+                344
             ],
             "source": "VT43:7"
         }

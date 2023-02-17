@@ -155,6 +155,10 @@ open class InMemoryGraphRepository : GraphRepository() {
     }
 
     override fun deleteWord(word: Word) {
+        for (corpusText in corpus) {
+            corpusText.words.removeIf { it.id == word.id }
+        }
+
         val wordsForLanguage = words.getOrPut(word.language) { mutableMapOf() }
         val wordsByText = wordsForLanguage.getOrPut(word.text.lowercase(Locale.getDefault())) { mutableListOf() }
         wordsByText.remove(word)
