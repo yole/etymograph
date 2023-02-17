@@ -18,8 +18,8 @@ class CorpusText(
     fun mapToLines(repo: GraphRepository): List<CorpusTextLine> {
         return text.split("\n").map { line ->
             val textWords = splitIntoNormalizedWords(line)
-            CorpusTextLine(textWords.map { textWord ->
-                val word = words.find { word -> word.text == textWord }
+            CorpusTextLine(textWords.map { (textWord, normalizedWord) ->
+                val word = words.find { word -> word.text == normalizedWord }
                 if (word != null) {
                     CorpusWord(textWord, word, word.getOrComputeGloss(repo))
                 }
@@ -30,12 +30,12 @@ class CorpusText(
         }
     }
 
-    private fun splitIntoNormalizedWords(line: String): List<String> {
-        return line.split(' ').map { it.trimEnd('!', ',', '.', '?', ':').lowercase(Locale.FRANCE) }
+    private fun splitIntoNormalizedWords(line: String): List<Pair<String, String>> {
+        return line.split(' ').map { it to it.trimEnd('!', ',', '.', '?', ':').lowercase(Locale.FRANCE) }
     }
 
     fun containsWord(word: Word): Boolean {
         if (word in words) return true
-        return text.split("\n").any { word.text in splitIntoNormalizedWords(it) }
+        return text.split("\n").any { word.text in splitIntoNormalizedWords(it).map { it.second} }
     }
 }
