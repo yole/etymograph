@@ -21,17 +21,27 @@ export default function WordForm(props) {
             addWord(newWordLanguage, newWordText, newWordGloss, newWordPos, newWordSource)
                 .then(r => r.json())
                 .then(r => {
-                    if (props.derivedWord) {
-                        addLink(props.derivedWord.id, r.id, '>', newWordLinkRuleNames).then(() => props.submitted(r))
-                    }
-                    else if (props.baseWord) {
-                        addLink(r.id, props.baseWord.id, '>', newWordLinkRuleNames).then(() => props.submitted(r))
-                    }
-                    else if (props.compoundWord) {
-                        addLink(props.compoundWord.id, r.id, '+', newWordLinkRuleNames).then(() => props.submitted(r))
-                    }
-                    else if (props.relatedWord) {
-                        addLink(props.relatedWord.id, r.id, '~', newWordLinkRuleNames).then(() => props.submitted(r))
+                    if (isAddingLink) {
+                        let fromId, toId, linkType
+                        if (props.derivedWord) {
+                            [fromId, toId, linkType] = [props.derivedWord.id, r.id, '>']
+                        }
+                        else if (props.baseWord) {
+                            [fromId, toId, linkType] = [r.id, props.baseWord.id, '>']
+                        }
+                        else if (props.compoundWord) {
+                            [fromId, toId, linkType] = [props.compoundWord.id, r.id, '+']
+                        }
+                        else {
+                            [fromId, toId, linkType] = [props.relatedWord.id, r.id, '~']
+                        }
+                        addLink(fromId, toId, linkType, newWordLinkRuleNames)
+                            .then(lr => {
+                                if (lr.status === 200)
+                                    props.submitted(r)
+                                else
+                                    lr.json().then(lr => props.submitted(r, lr))
+                            })
                     }
                     else {
                         props.submitted(r)

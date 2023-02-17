@@ -2363,7 +2363,6 @@
             "id": 329,
             "text": "men",
             "lang": "Q",
-            "gloss": "us.DAT",
             "source": "VT43:33"
         },
         {
@@ -2373,6 +2372,41 @@
             "gloss": "we",
             "pos": "PRON",
             "source": "VT43:33"
+        },
+        {
+            "id": 331,
+            "text": "yésus",
+            "lang": "Q",
+            "gloss": "Jesus",
+            "pos": "NP",
+            "source": "VT43:31"
+        },
+        {
+            "id": 332,
+            "text": "firuvammë",
+            "lang": "Q",
+            "source": "VT43:34"
+        },
+        {
+            "id": 333,
+            "text": "fir-",
+            "lang": "Q",
+            "gloss": "die",
+            "pos": "V",
+            "source": "VT43:34"
+        },
+        {
+            "id": 334,
+            "text": "násië",
+            "lang": "Q",
+            "source": "VT43:35"
+        },
+        {
+            "id": 336,
+            "text": "sië",
+            "lang": "Q",
+            "gloss": "thus",
+            "source": "VT43:24"
         }
     ],
     "rules": [
@@ -3256,6 +3290,28 @@
             "addedCategories": "",
             "replacedCategories": "",
             "source": "https://eldamo.org/content/words/word-1833409085.html"
+        },
+        {
+            "id": 24,
+            "name": "q-1pl-excl",
+            "fromLang": "Q",
+            "toLang": "Q",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "arg": "lme"
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".1PL.EXCL",
+            "replacedCategories": "",
+            "source": "https://eldamo.org/content/words/word-1020286637.html"
         }
     ],
     "links": [
@@ -4611,6 +4667,25 @@
             "ruleIds": [
                 8
             ]
+        },
+        {
+            "from": 332,
+            "to": 333,
+            "type": ">",
+            "ruleIds": [
+                20,
+                24
+            ]
+        },
+        {
+            "from": 334,
+            "to": 164,
+            "type": "+"
+        },
+        {
+            "from": 334,
+            "to": 336,
+            "type": "+"
         }
     ],
     "corpusTexts": [
@@ -4737,7 +4812,10 @@
             "wordIds": [
                 323,
                 324,
-                325
+                325,
+                331,
+                332,
+                334
             ],
             "source": "VT43:28"
         },

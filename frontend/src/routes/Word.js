@@ -87,15 +87,22 @@ function SingleWord(params) {
     const [showCompoundComponent, setShowCompoundComponent] = useState(false)
     const [showRelated, setShowRelated] = useState(false)
     const [editMode, setEditMode] = useState(false)
+    const [errorText, setErrorText] = useState("")
     const navigate = useNavigate()
     useEffect(() => { document.title = "Etymograph : " + word.text })
 
-    function submitted() {
-        setShowBaseWord(false)
-        setShowDerivedWord(false)
-        setShowCompoundComponent(false)
-        setShowRelated(false)
-        revalidator.revalidate()
+    function submitted(r, lr) {
+        if (lr && lr.status !== 200) {
+            setErrorText(lr.message)
+        }
+        else {
+            setErrorText("")
+            setShowBaseWord(false)
+            setShowDerivedWord(false)
+            setShowCompoundComponent(false)
+            setShowRelated(false)
+            revalidator.revalidate()
+        }
     }
 
     function editSubmitted() {
@@ -153,6 +160,7 @@ function SingleWord(params) {
         <a href="#" onClick={() => setShowRelated(!showRelated)}>Add related word</a><br/>
         {showRelated && <WordForm submitted={submitted} relatedWord={word} language={word.language}/>}
         <p/>
+        {errorText !== "" && <div className="errorText">{errorText}</div>}
         {!word.glossComputed && <Link to={`/word/${word.language}/${word.id}/paradigms`}>Paradigms</Link>}
     </>
 }
