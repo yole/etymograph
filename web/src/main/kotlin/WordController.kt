@@ -125,7 +125,7 @@ class WordController(val graphService: GraphService) {
         val language = graphService.resolveLanguage(lang)
         val text = params.text?.nullize() ?: throw NoWordTextException()
 
-        val word = graph.addWord(
+        val word = graph.findOrAddWord(
             text, language,
             params.gloss.nullize(),
             params.fullGloss.nullize(),

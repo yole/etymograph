@@ -237,8 +237,8 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                 allWords.add(null)
             }
             addWord(
-                word.text,
                 languageByShortName(word.languageShortName)!!,
+                word.text,
                 word.gloss,
                 word.fullGloss,
                 word.pos,

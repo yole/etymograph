@@ -22,7 +22,7 @@ abstract class GraphRepository {
     abstract fun ruleById(id: Int): Rule?
     abstract fun ruleByName(ruleName: String): Rule?
 
-    abstract fun addWord(
+    abstract fun findOrAddWord(
         text: String,
         language: Language,
         gloss: String?,

@@ -2413,6 +2413,24 @@
             "gloss": "holy",
             "fullGloss": "good (morally), blessed, holy, unmarred, free from evil”",
             "source": "https://eldamo.org/content/words/word-1868394071.html"
+        },
+        {
+            "id": 340,
+            "text": "ámen",
+            "lang": "Q",
+            "source": "VT43:18"
+        },
+        {
+            "id": 341,
+            "text": "á",
+            "lang": "Q",
+            "gloss": "imperative particle",
+            "source": "VT43:18"
+        },
+        {
+            "id": 342,
+            "text": "men",
+            "lang": "Q"
         }
     ],
     "rules": [
@@ -4769,6 +4787,29 @@
             "from": 338,
             "to": 339,
             "type": "+"
+        },
+        {
+            "from": 340,
+            "to": 341,
+            "type": "+"
+        },
+        {
+            "from": 323,
+            "to": 342,
+            "type": "+"
+        },
+        {
+            "from": 342,
+            "to": 330,
+            "type": ">",
+            "ruleIds": [
+                8
+            ]
+        },
+        {
+            "from": 340,
+            "to": 342,
+            "type": "+"
         }
     ],
     "corpusTexts": [
@@ -4908,7 +4949,8 @@
             "title": "Ataremma",
             "lang": "Q",
             "wordIds": [
-                337
+                337,
+                340
             ],
             "source": "VT43:7"
         }
