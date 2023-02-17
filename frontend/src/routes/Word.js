@@ -157,7 +157,7 @@ function SingleWord(params) {
         <a href="#" onClick={() => setShowDerivedWord(!showDerivedWord)}>Add derived word</a><br/>
         {showDerivedWord && <WordForm submitted={submitted} baseWord={word}/>}
         <a href="#" onClick={() => setShowCompoundComponent(!showCompoundComponent)}>Add component of compound</a><br/>
-        {showCompoundComponent && <WordForm submitted={submitted} compoundWord={word} language={word.language}/>}
+        {showCompoundComponent && <WordForm submitted={submitted} compoundWord={word}/>}
         <a href="#" onClick={() => setShowRelated(!showRelated)}>Add related word</a><br/>
         {showRelated && <WordForm submitted={submitted} relatedWord={word} language={word.language}/>}
         <p/>

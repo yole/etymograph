@@ -2405,6 +2405,14 @@
             "text": "eruman",
             "lang": "Q",
             "source": "VT43:16"
+        },
+        {
+            "id": 339,
+            "text": "MAN-",
+            "lang": "CE",
+            "gloss": "holy",
+            "fullGloss": "good (morally), blessed, holy, unmarred, free from evil”",
+            "source": "https://eldamo.org/content/words/word-1868394071.html"
         }
     ],
     "rules": [
@@ -4755,6 +4763,11 @@
         {
             "from": 338,
             "to": 320,
+            "type": "+"
+        },
+        {
+            "from": 338,
+            "to": 339,
             "type": "+"
         }
     ],
