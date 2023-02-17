@@ -29,6 +29,7 @@ class WordController(val graphService: GraphService) {
         val text: String,
         val gloss: String,
         val glossComputed: Boolean,
+        val fullGloss: String?,
         val pos: String?,
         val source: String?,
         val notes: String?,
@@ -66,6 +67,7 @@ class WordController(val graphService: GraphService) {
             text,
             getOrComputeGloss(graph) ?: "",
             gloss == null,
+            fullGloss,
             pos,
             source,
             notes,
@@ -110,6 +112,7 @@ class WordController(val graphService: GraphService) {
     data class AddWordParameters(
         val text: String?,
         val gloss: String?,
+        val fullGloss: String?,
         val pos: String?,
         val source: String?,
         val notes: String?
@@ -125,6 +128,7 @@ class WordController(val graphService: GraphService) {
         val word = graph.addWord(
             text, language,
             params.gloss.nullize(),
+            params.fullGloss.nullize(),
             params.pos.nullize(),
             params.source.nullize(),
             params.notes.nullize()
@@ -139,6 +143,7 @@ class WordController(val graphService: GraphService) {
         val graph = graphService.graph
         val word = graph.wordById(id) ?: throw NoWordException()
         word.gloss = params.gloss.nullize()
+        word.fullGloss = params.fullGloss.nullize()
         word.pos = params.pos.nullize()
         word.source = params.source.nullize()
         word.notes = params.notes.nullize()

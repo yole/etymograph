@@ -37,9 +37,14 @@ export default function Dictionary(params) {
         <h3>Add word</h3>
         <WordForm language={dict.language.shortName} submitted={submitted}/>
         <ul>
-            {dict.words.map(w => <li key={w.id}>
-                <Link to={`/word/${dict.language.shortName}/${w.text}${w.homonym ? "/" + w.id : ""}`}>{w.text}</Link> - {w.gloss}
-            </li>)}
+            {dict.words.map(w => {
+                let gloss = w.fullGloss !== null && w.fullGloss !== "" ? w.fullGloss : w.gloss;
+
+                return <li key={w.id}>
+                    <Link
+                        to={`/word/${dict.language.shortName}/${w.text}${w.homonym ? "/" + w.id : ""}`}>{w.text}</Link> - {gloss}
+                </li>;
+            })}
         </ul>
     </>
 }

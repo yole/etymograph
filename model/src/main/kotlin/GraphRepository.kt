@@ -26,9 +26,10 @@ abstract class GraphRepository {
         text: String,
         language: Language,
         gloss: String?,
-        pos: String?,
-        source: String?,
-        notes: String?
+        fullGloss: String? = null,
+        pos: String? = null,
+        source: String? = null,
+        notes: String? = null
     ): Word
 
     abstract fun deleteWord(word: Word)

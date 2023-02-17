@@ -124,6 +124,7 @@ open class InMemoryGraphRepository : GraphRepository() {
         text: String,
         language: Language,
         gloss: String?,
+        fullGloss: String?,
         pos: String?,
         source: String?,
         notes: String?
@@ -133,7 +134,10 @@ open class InMemoryGraphRepository : GraphRepository() {
         wordsByText.find { it.gloss == gloss || gloss.isNullOrEmpty() }?.let {
             return it
         }
-        return createWord(text, language, gloss, pos, source, notes).also { wordsByText.add(it) }
+        return Word(allWords.size, text, language, gloss, fullGloss, pos, source, notes).also {
+            allWords.add(it)
+            wordsByText.add(it)
+        }
     }
 
     override fun deleteWord(word: Word) {
@@ -154,17 +158,6 @@ open class InMemoryGraphRepository : GraphRepository() {
     }
 
     override fun save() {
-    }
-
-    private fun createWord(
-        text: String,
-        language: Language,
-        gloss: String?,
-        pos: String?,
-        source: String?,
-        notes: String?
-    ) = Word(allWords.size, text, language, gloss, pos, source, notes).also {
-        allWords.add(it)
     }
 
     override fun addLink(fromWord: Word, toWord: Word, type: LinkType, rules: List<Rule>, source: String?, notes: String?): Link {

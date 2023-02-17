@@ -15,6 +15,7 @@ data class WordData(
     val text: String,
     @SerialName("lang") val languageShortName: String,
     val gloss: String? = null,
+    val fullGloss: String? = null,
     val pos: String? = null,
     val source: String? = null,
     val notes: String? = null
@@ -191,7 +192,9 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             languages.values.map { LanguageData(it.name, it.shortName) },
             phonemeClassData,
             digraphData,
-            allWords.filterNotNull().map { WordData(it.id, it.text, it.language.shortName, it.gloss, it.pos, it.source, it.notes) },
+            allWords.filterNotNull().map {
+                WordData(it.id, it.text, it.language.shortName, it.gloss, it.fullGloss, it.pos, it.source, it.notes)
+            },
             rules.map { it.ruleToSerializedFormat() },
             allLinks.map { link ->
                 LinkData(
@@ -237,6 +240,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                 word.text,
                 languageByShortName(word.languageShortName)!!,
                 word.gloss,
+                word.fullGloss,
                 word.pos,
                 word.source,
                 word.notes

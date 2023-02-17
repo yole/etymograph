@@ -4,6 +4,7 @@ import {addLink, addWord, updateWord} from "../api";
 export default function WordForm(props) {
     const [newWordText, setNewWordText] = useState(props.predefWord !== undefined ? props.predefWord : "")
     const [newWordGloss, setNewWordGloss] = useState(props.initialGloss !== undefined ? props.initialGloss : "")
+    const [newWordFullGloss, setNewWordFullGloss] = useState(props.initialFullGloss !== undefined ? props.initialFullGloss : "")
     const [newWordPos, setNewWordPos] = useState(props.initialPos !== undefined ? props.initialPos : "")
     const [newWordSource, setNewWordSource] = useState(props.initialSource !== undefined ? props.initialSource : "")
     const [newWordLanguage, setNewWordLanguage] = useState(props.language || "")
@@ -13,12 +14,12 @@ export default function WordForm(props) {
 
     function handleFormSubmit(e) {
         if (props.updateId !== undefined) {
-            updateWord(props.updateId, newWordGloss, newWordPos, newWordSource, newWordNotes)
+            updateWord(props.updateId, newWordGloss, newWordFullGloss, newWordPos, newWordSource, newWordNotes)
                 .then(r => r.json())
                 .then(r => props.submitted(r))
         }
         else {
-            addWord(newWordLanguage, newWordText, newWordGloss, newWordPos, newWordSource)
+            addWord(newWordLanguage, newWordText, newWordGloss, newWordFullGloss, newWordPos, newWordSource)
                 .then(r => r.json())
                 .then(r => {
                     if (isAddingLink) {
@@ -49,6 +50,7 @@ export default function WordForm(props) {
                 })
             setNewWordText("")
             setNewWordGloss("")
+            setNewWordFullGloss("")
             setNewWordNotes("")
         }
 
@@ -64,7 +66,7 @@ export default function WordForm(props) {
                            id="word-input"/></td>
             </tr>}
             {props.updateId === undefined && <tr>
-                <td><label>Text:</label></td>
+                <td><label htmlFor="word-text">Text:</label></td>
                 <td><input type="text" value={newWordText} onChange={e => setNewWordText(e.target.value)}
                            id="word-text" readOnly={props.predefWord !== undefined}/></td>
             </tr>}
@@ -74,9 +76,14 @@ export default function WordForm(props) {
                            id="word-pos"/></td>
             </tr>
             <tr>
-                <td><label>Gloss:</label></td>
+                <td><label htmlFor="word-gloss">Gloss:</label></td>
                 <td><input type="text" value={newWordGloss} onChange={e => setNewWordGloss(e.target.value)}
                            id="word-gloss"/></td>
+            </tr>
+            <tr>
+                <td><label htmlFor="word-fullgloss">Full gloss:</label></td>
+                <td><input type="text" value={newWordFullGloss} onChange={e => setNewWordFullGloss(e.target.value)}
+                           id="word-fullgloss"/></td>
             </tr>
             {isAddingLink && <tr>
                 <td><label htmlFor="word-link-rule-names">Link rule names:</label></td>

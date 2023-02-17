@@ -1627,7 +1627,8 @@
             "id": 228,
             "text": "rilya",
             "lang": "Q",
-            "gloss": "gilttering, brilliance",
+            "gloss": "brilliance",
+            "fullGloss": "gilttering, brilliance",
             "pos": "N",
             "source": "V"
         },
@@ -1866,7 +1867,8 @@
             "id": 261,
             "text": "alkar",
             "lang": "Q",
-            "gloss": "radiance, glory",
+            "gloss": "radiance",
+            "fullGloss": "radiance, glory",
             "pos": "N",
             "source": "PE17:24"
         },
@@ -2391,6 +2393,18 @@
             "lang": "Q",
             "gloss": "thus",
             "source": "VT43:24"
+        },
+        {
+            "id": 337,
+            "text": "erumandë",
+            "lang": "Q",
+            "source": "VT43:16"
+        },
+        {
+            "id": 338,
+            "text": "eruman",
+            "lang": "Q",
+            "source": "VT43:16"
         }
     ],
     "rules": [
@@ -4729,6 +4743,19 @@
             "from": 334,
             "to": 336,
             "type": "+"
+        },
+        {
+            "from": 337,
+            "to": 338,
+            "type": ">",
+            "ruleIds": [
+                14
+            ]
+        },
+        {
+            "from": 338,
+            "to": 320,
+            "type": "+"
         }
     ],
     "corpusTexts": [
@@ -4868,6 +4895,7 @@
             "title": "Ataremma",
             "lang": "Q",
             "wordIds": [
+                337
             ],
             "source": "VT43:7"
         }

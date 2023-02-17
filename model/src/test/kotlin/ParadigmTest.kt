@@ -20,7 +20,7 @@ class ParadigmTest {
         val genRule = repo.addRule("q-gen", q, q, Rule.parseBranches("- add suffix 'o'", q), ".GEN", null, null, null)
         paradigm.setRule(1, 0, listOf(listOf(genRule)))
 
-        val lasse = repo.addWord("lasse", q, "leaf", "N", null, null)
+        val lasse = repo.addWord("lasse", q, "leaf", pos = "N")
 
         val lasseParadigm = paradigm.generate(lasse, repo)
         assertEquals("lasse", lasseParadigm[0][0]?.get(0)?.text)

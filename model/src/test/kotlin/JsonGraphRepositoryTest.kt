@@ -21,5 +21,5 @@ class JsonGraphRepositoryTest {
         assertEquals("def", repo2.wordById(def.id)!!.text)
     }
 
-    fun GraphRepository.addWord(text: String) = addWord(text, q, text, null, null, null)
+    fun GraphRepository.addWord(text: String) = addWord(text, q, text)
 }

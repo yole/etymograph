@@ -124,12 +124,13 @@ function SingleWord(params) {
             {word.text}</h2>
         {!editMode && <>
             {word.pos && <div>{word.pos}</div>}
-            <p>{word.gloss}</p>
+            <p>{word.fullGloss !== null && word.fullGloss !== "" ? word.fullGloss : word.gloss}</p>
             {word.notes && <p>{word.notes}</p>}
             {word.source != null && <div className="source">Source: {word.source}</div>}
         </>}
         {editMode && <WordForm language={word.language} updateId={word.id}
                                initialGloss={word.glossComputed ? undefined : word.gloss}
+                               initialFullGloss={word.fullGloss}
                                initialPos={word.pos}
                                initialSource={word.source}
                                initialNotes={word.notes}

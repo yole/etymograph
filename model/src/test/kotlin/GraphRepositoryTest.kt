@@ -32,5 +32,5 @@ class GraphRepositoryTest {
         assertEquals(0, repo.wordsByText(q, "abc").size)
     }
 
-    fun GraphRepository.addWord(text: String) = addWord(text, q, text, null, null, null)
+    fun GraphRepository.addWord(text: String) = addWord(text, q, text)
 }

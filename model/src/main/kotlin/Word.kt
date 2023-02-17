@@ -5,6 +5,7 @@ class Word(
     val text: String,
     val language: Language,
     var gloss: String? = null,
+    var fullGloss: String? = null,
     var pos: String? = null,
     source: String? = null,
     notes: String? = null
