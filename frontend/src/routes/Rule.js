@@ -46,6 +46,7 @@ export default function Rule() {
             <ul>
                 {rule.examples.map(ex => <li>
                     <Link to={`/word/${rule.toLang}/${ex.toWord}`}>{ex.toWord}</Link>
+                    {ex.toWordGloss && `" ${ex.toWordGloss}"`}
                     &nbsp;->&nbsp;
                     <Link to={`/word/${rule.fromLang}/${ex.fromWord}`}>{ex.fromWord}</Link>
                     {ex.allRules.length > 1 && " (" + ex.allRules.join(", ") + ")"}
