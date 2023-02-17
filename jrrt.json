@@ -2036,7 +2036,6 @@
             "id": 283,
             "text": "lassenna",
             "lang": "Q",
-            "gloss": "leaf.ALL",
             "source": "Plotz"
         },
         {
@@ -2298,7 +2297,7 @@
             "text": "Eru",
             "lang": "Q",
             "gloss": "Eru",
-            "pos": "PN",
+            "pos": "NP",
             "source": "VT43:32"
         },
         {
@@ -2351,6 +2350,29 @@
             "gloss": "gift",
             "pos": "N",
             "source": "PE17:91"
+        },
+        {
+            "id": 328,
+            "text": "rá",
+            "lang": "Q",
+            "gloss": "for",
+            "pos": "PREP",
+            "source": "VT43:33"
+        },
+        {
+            "id": 329,
+            "text": "men",
+            "lang": "Q",
+            "gloss": "us.DAT",
+            "source": "VT43:33"
+        },
+        {
+            "id": 330,
+            "text": "me",
+            "lang": "Q",
+            "gloss": "we",
+            "pos": "PRON",
+            "source": "VT43:33"
         }
     ],
     "rules": [
@@ -4571,6 +4593,24 @@
             "from": 326,
             "to": 327,
             "type": "+"
+        },
+        {
+            "from": 323,
+            "to": 328,
+            "type": "+"
+        },
+        {
+            "from": 323,
+            "to": 329,
+            "type": "+"
+        },
+        {
+            "from": 329,
+            "to": 330,
+            "type": ">",
+            "ruleIds": [
+                8
+            ]
         }
     ],
     "corpusTexts": [

@@ -14,7 +14,8 @@ class WordController(val graphService: GraphService) {
         val language: String,
         val gloss: String?,
         val ruleIds: List<Int>,
-        val ruleNames: List<String>
+        val ruleNames: List<String>,
+        val homonym: Boolean
     )
 
     data class LinkTypeViewModel(val typeId: String, val type: String, val words: List<LinkWordViewModel>)
@@ -83,7 +84,8 @@ class WordController(val graphService: GraphService) {
                         LinkWordViewModel(link.toWord.id, link.toWord.text, link.toWord.language.shortName,
                             link.toWord.getOrComputeGloss(graph),
                             link.rules.map { it.id },
-                            link.rules.map { it.name }
+                            link.rules.map { it.name },
+                            graph.isHomonym(link.toWord)
                         )
                     }
                 )
@@ -96,7 +98,8 @@ class WordController(val graphService: GraphService) {
                         LinkWordViewModel(link.fromWord.id, link.fromWord.text, link.fromWord.language.shortName,
                             link.fromWord.getOrComputeGloss(graph),
                             link.rules.map { it.id },
-                            link.rules.map { it.name }
+                            link.rules.map { it.name },
+                            graph.isHomonym(link.fromWord)
                         )
                     }
                 )

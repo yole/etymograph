@@ -108,6 +108,10 @@ open class InMemoryGraphRepository : GraphRepository() {
         return result
     }
 
+    override fun isHomonym(word: Word): Boolean {
+        return wordsByText(word.language, word.text).size > 1
+    }
+
     override fun allCorpusTexts(): Iterable<CorpusText> {
         return corpus
     }
