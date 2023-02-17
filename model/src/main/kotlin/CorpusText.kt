@@ -31,7 +31,7 @@ class CorpusText(
     }
 
     private fun splitIntoNormalizedWords(line: String): List<String> {
-        return line.split(' ').map { it.trimEnd('!', ',', '.', '?').lowercase(Locale.FRANCE) }
+        return line.split(' ').map { it.trimEnd('!', ',', '.', '?', ':').lowercase(Locale.FRANCE) }
     }
 
     fun containsWord(word: Word): Boolean {
