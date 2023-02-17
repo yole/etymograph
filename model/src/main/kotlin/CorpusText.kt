@@ -19,7 +19,7 @@ class CorpusText(
         return text.split("\n").map { line ->
             val textWords = splitIntoNormalizedWords(line)
             CorpusTextLine(textWords.map { (textWord, normalizedWord) ->
-                val word = words.find { word -> word.text == normalizedWord }
+                val word = words.find { word -> word.text.lowercase(Locale.FRANCE) == normalizedWord }
                 if (word != null) {
                     CorpusWord(textWord, word, word.getOrComputeGloss(repo))
                 }
