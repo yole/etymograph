@@ -2446,6 +2446,76 @@
             "lang": "Q",
             "gloss": "today",
             "source": "VT43:18"
+        },
+        {
+            "id": 345,
+            "text": "ilaurëa",
+            "lang": "Q",
+            "gloss": "daily",
+            "pos": "ADJ",
+            "source": "VT43:18"
+        },
+        {
+            "id": 346,
+            "text": "ilaurë",
+            "lang": "Q",
+            "source": "VT43:18"
+        },
+        {
+            "id": 347,
+            "text": "il-",
+            "lang": "Q",
+            "gloss": "every"
+        },
+        {
+            "id": 348,
+            "text": "aurë",
+            "lang": "Q",
+            "gloss": "day",
+            "pos": "N"
+        },
+        {
+            "id": 349,
+            "text": "massamma",
+            "lang": "Q",
+            "source": "VT43:18"
+        },
+        {
+            "id": 350,
+            "text": "massa",
+            "lang": "Q",
+            "gloss": "bread",
+            "pos": "N",
+            "source": "q-poss-1pl"
+        },
+        {
+            "id": 351,
+            "text": "apsenë",
+            "lang": "Q",
+            "source": "VT43:18"
+        },
+        {
+            "id": 352,
+            "text": "apsen-",
+            "lang": "Q",
+            "gloss": "forgive",
+            "pos": "V",
+            "source": "VT43:18"
+        },
+        {
+            "id": 353,
+            "text": "úcaremmar",
+            "lang": "Q",
+            "source": "VT43:18"
+        },
+        {
+            "id": 354,
+            "text": "úcare",
+            "lang": "Q",
+            "gloss": "sin",
+            "fullGloss": "sin, debt, trespass",
+            "pos": "N",
+            "source": "VT43:19"
         }
     ],
     "rules": [
@@ -4855,6 +4925,46 @@
             "from": 327,
             "to": 343,
             "type": ">"
+        },
+        {
+            "from": 345,
+            "to": 346,
+            "type": ">"
+        },
+        {
+            "from": 346,
+            "to": 347,
+            "type": "+"
+        },
+        {
+            "from": 346,
+            "to": 348,
+            "type": "+"
+        },
+        {
+            "from": 349,
+            "to": 350,
+            "type": ">",
+            "ruleIds": [
+                19
+            ]
+        },
+        {
+            "from": 351,
+            "to": 352,
+            "type": ">",
+            "ruleIds": [
+                25
+            ]
+        },
+        {
+            "from": 353,
+            "to": 354,
+            "type": ">",
+            "ruleIds": [
+                19,
+                0
+            ]
         }
     ],
     "corpusTexts": [
@@ -4998,7 +5108,11 @@
                 337,
                 340,
                 343,
-                344
+                344,
+                345,
+                349,
+                351,
+                353
             ],
             "source": "VT43:7"
         }

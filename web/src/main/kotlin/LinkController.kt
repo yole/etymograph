@@ -36,7 +36,7 @@ class LinkController(val graphService: GraphService) {
         return params.ruleNames
             .takeIf { it.isNotBlank() }
             ?.split(',')
-            ?.map { graphService.graph.ruleByName(it) ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST, "No rule named $it") }
+            ?.map { graphService.graph.ruleByName(it.trim()) ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST, "No rule named $it") }
             ?: emptyList()
     }
 
