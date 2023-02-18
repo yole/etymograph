@@ -2531,6 +2531,55 @@
             "gloss": "beyond",
             "pos": "PREP",
             "source": "VT43:14"
+        },
+        {
+            "id": 357,
+            "text": "átaremma",
+            "lang": "Q",
+            "source": "VT43:13"
+        },
+        {
+            "id": 358,
+            "text": "atar",
+            "lang": "Q",
+            "gloss": "father",
+            "pos": "N",
+            "source": "VT43:13"
+        },
+        {
+            "id": 359,
+            "text": "emmë",
+            "lang": "Q",
+            "gloss": "we",
+            "fullGloss": "we (emphatic exclusive)",
+            "pos": "PRON",
+            "source": "VT43:20"
+        },
+        {
+            "id": 360,
+            "text": "apsenet",
+            "lang": "Q"
+        },
+        {
+            "id": 361,
+            "text": "tien",
+            "lang": "Q"
+        },
+        {
+            "id": 362,
+            "text": "te",
+            "lang": "Q",
+            "gloss": "them",
+            "pos": "PRON",
+            "source": "VT43:21"
+        },
+        {
+            "id": 363,
+            "text": "i",
+            "lang": "Q",
+            "gloss": "who",
+            "pos": "PRON",
+            "source": "VT43:21"
         }
     ],
     "rules": [
@@ -3538,6 +3587,28 @@
             "addedCategories": "",
             "replacedCategories": "",
             "source": "https://eldamo.org/content/words/word-1770267447.html"
+        },
+        {
+            "id": 27,
+            "name": "q-obj-3pl",
+            "fromLang": "Q",
+            "toLang": "Q",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "arg": "t"
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".3PL",
+            "replacedCategories": "",
+            "source": ""
         }
     ],
     "links": [
@@ -4994,6 +5065,30 @@
                 19,
                 0
             ]
+        },
+        {
+            "from": 357,
+            "to": 358,
+            "type": ">",
+            "ruleIds": [
+                19
+            ]
+        },
+        {
+            "from": 360,
+            "to": 351,
+            "type": ">",
+            "ruleIds": [
+                27
+            ]
+        },
+        {
+            "from": 361,
+            "to": 362,
+            "type": ">",
+            "ruleIds": [
+                8
+            ]
         }
     ],
     "corpusTexts": [
@@ -5124,7 +5219,8 @@
                 325,
                 331,
                 332,
-                334
+                334,
+                52
             ],
             "source": "VT43:28"
         },
@@ -5143,7 +5239,12 @@
                 351,
                 353,
                 355,
-                356
+                356,
+                357,
+                359,
+                360,
+                361,
+                363
             ],
             "source": "VT43:7"
         }

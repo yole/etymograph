@@ -36,6 +36,9 @@ class CorpusText(
 
     fun containsWord(word: Word): Boolean {
         if (word in words) return true
-        return text.split("\n").any { word.text in splitIntoNormalizedWords(it).map { it.second} }
+        return text.split("\n").any {
+            word.text in splitIntoNormalizedWords(it).map { it.second } &&
+                    words.none { w -> w.text == word.text && w.id != word.id }
+        }
     }
 }
