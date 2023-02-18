@@ -29,6 +29,7 @@ class RuleController(val graphService: GraphService) {
         val addedCategories: String?,
         val replacedCategories: String?,
         val source: String?,
+        val notes: String?,
         val branches: List<RuleBranchViewModel>,
         val examples: List<RuleExampleViewModel>
     )
@@ -62,6 +63,7 @@ class RuleController(val graphService: GraphService) {
             addedCategories,
             replacedCategories,
             source.nullize(),
+            notes.nullize(),
             branches.map { it.toViewModel() },
             graphService.graph.findRuleExamples(this).map { link ->
                 RuleExampleViewModel(
@@ -101,7 +103,8 @@ class RuleController(val graphService: GraphService) {
         val text: String,
         val addedCategories: String? = null,
         val replacedCategories: String? = null,
-        val source: String? = null
+        val source: String? = null,
+        val notes: String? = null
     )
 
     @PostMapping("/rule", consumes = ["application/json"])
@@ -126,7 +129,7 @@ class RuleController(val graphService: GraphService) {
             params.addedCategories,
             params.replacedCategories,
             params.source,
-            null
+            params.notes
         )
         graph.save()
         return rule.toViewModel()
@@ -138,6 +141,7 @@ class RuleController(val graphService: GraphService) {
         val graph = graphService.graph
         val rule = resolveRule(id)
         rule.branches = Rule.parseBranches(params.text, rule.fromLanguage)
+        rule.notes = params.notes
         graph.save()
     }
 

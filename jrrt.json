@@ -2516,6 +2516,21 @@
             "fullGloss": "sin, debt, trespass",
             "pos": "N",
             "source": "VT43:19"
+        },
+        {
+            "id": 355,
+            "text": "síve",
+            "lang": "Q",
+            "gloss": "as",
+            "source": "VT43:17"
+        },
+        {
+            "id": 356,
+            "text": "han",
+            "lang": "Q",
+            "gloss": "beyond",
+            "pos": "PREP",
+            "source": "VT43:14"
         }
     ],
     "rules": [
@@ -3229,6 +3244,19 @@
                     "instructions": [
                         {
                             "type": "AddSuffix",
+                            "arg": "elma"
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "cls": "consonant"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
                             "arg": "lma"
                         }
                     ],
@@ -3239,7 +3267,8 @@
             ],
             "addedCategories": ".POSS.1PL",
             "replacedCategories": "",
-            "source": ""
+            "source": "",
+            "notes": "Older versions of the paradigm use the suffix 'mma' instead of 'lma'."
         },
         {
             "id": 20,
@@ -5112,7 +5141,9 @@
                 345,
                 349,
                 351,
-                353
+                353,
+                355,
+                356
             ],
             "source": "VT43:7"
         }

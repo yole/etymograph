@@ -11,11 +11,12 @@ export default function Rule() {
     const rule = useLoaderData()
     const [editMode, setEditMode] = useState(false)
     const [editableText, setEditableText] = useState(rule.editableText)
+    const [notes, setNotes] = useState(rule.notes)
     const revalidator = useRevalidator()
     useEffect(() => { document.title = "Etymograph : Rule " + rule.name })
 
     function saveRule() {
-        updateRule(rule.id, rule.name, rule.fromLang, rule.toLang, editableText)
+        updateRule(rule.id, rule.name, rule.fromLang, rule.toLang, editableText, notes)
             .then(() => revalidator.revalidate())
         setEditMode(false)
     }
@@ -29,7 +30,7 @@ export default function Rule() {
         {rule.addedCategories && <p>Added categories: {rule.addedCategories}</p>}
         {rule.replacedCategories && <p>Replaced categories: {rule.replacedCategories}</p>}
         {!editMode && rule.branches.map(b => <>
-            {(rule.branches.length > 1 || rule.fromLang != rule.toLang) && <div>{b.conditions}:</div>}
+            {(rule.branches.length > 1 || rule.fromLang !== rule.toLang) && <div>{b.conditions}:</div>}
             <ul>
                 {b.instructions.map(i => <li>{i}</li>)}
             </ul>
@@ -37,9 +38,18 @@ export default function Rule() {
         {editMode && <>
             <textarea rows="10" cols="50" value={editableText} onChange={(e) => setEditableText(e.target.value)}/>
             <br/>
+            <h3>Notes</h3>
+            <textarea rows="5" cols="50" value={notes} onChange={(e) => setNotes(e.target.value)}/>
+            <br/>
             <button onClick={() => saveRule()}>Save</button>
         </>}
         {rule.source != null && <div className="source">Source: {rule.source}</div>}
+
+        {(!editMode && rule.notes != null) && <>
+            <h3>Notes</h3>
+            <p>{rule.notes}</p>
+        </>}
+
         <button onClick={() => setEditMode(!editMode)}>{editMode ? "Cancel" : "Edit"}</button>
         {rule.examples.length > 0 && <>
             <h3>Examples</h3>

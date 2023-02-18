@@ -20,17 +20,18 @@ export function deleteWord(id) {
     return postToBackend(`word/${id}/delete`, {})
 }
 
-export function addRule(name, fromLang, toLang, addedCategories, replacedCategories, text, source) {
+export function addRule(name, fromLang, toLang, addedCategories, replacedCategories, text, source, notes) {
     return postToBackend('rule',
         {name: name, fromLang: fromLang, toLang: toLang, text: text,
             addedCategories: addedCategories,
             replacedCategories: replacedCategories,
-            source: source
+            source: source,
+            notes: notes
         })
 }
 
-export function updateRule(id, name, fromLang, toLang, text) {
-    return postToBackend('rule/' + id, {name: name, fromLang: fromLang, toLang: toLang, text: text})
+export function updateRule(id, name, fromLang, toLang, text, notes) {
+    return postToBackend('rule/' + id, {name: name, fromLang: fromLang, toLang: toLang, text: text, notes: notes})
 }
 
 export function addCorpusText(lang, text) {

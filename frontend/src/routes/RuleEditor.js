@@ -9,6 +9,7 @@ export default function RuleEditor() {
     const [addedCategories, setAddedCategories] = useState("")
     const [replacedCategories, setReplacedCategories] = useState("")
     const [source, setSource] = useState("")
+    const [notes, setNotes] = useState("")
     const [editableText, setEditableText] = useState("")
     const [errorText, setErrorText] = useState("")
     const navigate = useNavigate()
@@ -52,6 +53,9 @@ export default function RuleEditor() {
             </tr>
         </tbody></table>
         <textarea rows="10" cols="50" value={editableText} onChange={e => setEditableText(e.target.value)}/>
+        <br/>
+        <h3>Notes</h3>
+        <textarea rows="5" cols="50" value={notes} onChange={e => setNotes(e.target.value)}/>
         <br/>
         <button onClick={saveRule}>Save</button>
         <br/>
