@@ -126,7 +126,7 @@ function SingleWord(params) {
             {word.pos && <div>{word.pos}</div>}
             <p>{word.fullGloss !== null && word.fullGloss !== "" ? word.fullGloss : word.gloss}</p>
             {word.notes && <p>{word.notes}</p>}
-            {word.source != null && <div className="source">Source: {word.source}</div>}
+            {word.source != null && <div className="source">Source: {word.source.startsWith("http") ? <a href={word.source}>{word.source}</a> : word.source}</div>}
         </>}
         {editMode && <WordForm language={word.language} updateId={word.id}
                                initialGloss={word.glossComputed ? undefined : word.gloss}

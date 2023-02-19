@@ -43,7 +43,7 @@ export default function Rule() {
             <br/>
             <button onClick={() => saveRule()}>Save</button>
         </>}
-        {rule.source != null && <div className="source">Source: {rule.source}</div>}
+        {rule.source != null && <div className="source">Source: {rule.source.startsWith("http") ? <a href={rule.source}>{rule.source}</a> : rule.source}</div>}
 
         {(!editMode && rule.notes != null) && <>
             <h3>Notes</h3>
