@@ -30,6 +30,8 @@ class Word(
         return result
     }
 
+    val normalizedText: String get() = language.normalizeWord(text)
+
     fun getOrComputeGloss(graph: GraphRepository): String? {
         gloss?.let { return it }
         val components = graph.getLinksFrom(this).filter { it.type == Link.Agglutination }

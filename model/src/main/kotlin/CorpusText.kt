@@ -19,7 +19,7 @@ class CorpusText(
         return text.split("\n").map { line ->
             val textWords = splitIntoNormalizedWords(line)
             CorpusTextLine(textWords.map { (textWord, normalizedWord) ->
-                val word = words.find { word -> word.text.lowercase(Locale.FRANCE) == normalizedWord }
+                val word = words.find { word -> word.normalizedText == normalizedWord }
                 if (word != null) {
                     CorpusWord(textWord, word, word.getOrComputeGloss(repo))
                 }
@@ -31,7 +31,7 @@ class CorpusText(
     }
 
     private fun splitIntoNormalizedWords(line: String): List<Pair<String, String>> {
-        return line.split(' ').map { it to it.trimEnd('!', ',', '.', '?', ':').lowercase(Locale.FRANCE) }
+        return line.split(' ').map { it to language.normalizeWord(it.trimEnd('!', ',', '.', '?', ':')) }
     }
 
     fun containsWord(word: Word): Boolean {

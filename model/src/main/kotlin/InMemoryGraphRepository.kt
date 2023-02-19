@@ -46,7 +46,7 @@ open class InMemoryGraphRepository : GraphRepository() {
 
     override fun wordsByText(lang: Language, text: String): List<Word> {
         val wordsInLang = words[lang] ?: return emptyList()
-        return wordsInLang[text.lowercase(Locale.getDefault())] ?: emptyList()
+        return wordsInLang[lang.normalizeWord(text)] ?: emptyList()
     }
 
     override fun wordById(id: Int): Word? {
@@ -129,8 +129,7 @@ open class InMemoryGraphRepository : GraphRepository() {
         source: String?,
         notes: String?
     ): Word {
-        val wordsForLanguage = words.getOrPut(language) { mutableMapOf() }
-        val wordsByText = wordsForLanguage.getOrPut(text.lowercase(Locale.getDefault())) { mutableListOf() }
+        val wordsByText = mapOfWordsByText(language, text)
         wordsByText.find { it.getOrComputeGloss(this) == gloss || gloss.isNullOrEmpty() }?.let {
             return it
         }
@@ -146,8 +145,7 @@ open class InMemoryGraphRepository : GraphRepository() {
         source: String?,
         notes: String?
     ): Word {
-        val wordsForLanguage = words.getOrPut(language) { mutableMapOf() }
-        val wordsByText = wordsForLanguage.getOrPut(text.lowercase(Locale.getDefault())) { mutableListOf() }
+        val wordsByText = mapOfWordsByText(language, text)
         return Word(allWords.size, text, language, gloss, fullGloss, pos, source, notes).also {
             allWords.add(it)
             wordsByText.add(it)
@@ -159,8 +157,7 @@ open class InMemoryGraphRepository : GraphRepository() {
             corpusText.words.removeIf { it.id == word.id }
         }
 
-        val wordsForLanguage = words.getOrPut(word.language) { mutableMapOf() }
-        val wordsByText = wordsForLanguage.getOrPut(word.text.lowercase(Locale.getDefault())) { mutableListOf() }
+        val wordsByText = mapOfWordsByText(word.language, word.text)
         wordsByText.remove(word)
         linksFrom[word.id]?.let {
             for (link in it.toList()) {
@@ -173,6 +170,15 @@ open class InMemoryGraphRepository : GraphRepository() {
             }
         }
         allWords[word.id] = null
+    }
+
+    private fun mapOfWordsByText(
+        language: Language,
+        text: String
+    ): MutableList<Word> {
+        val wordsForLanguage = words.getOrPut(language) { mutableMapOf() }
+        val wordsByText = wordsForLanguage.getOrPut(language.normalizeWord(text)) { mutableListOf() }
+        return wordsByText
     }
 
     override fun save() {

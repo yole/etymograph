@@ -71,22 +71,14 @@ class RuleController(val graphService: GraphService) {
                     link.toWord.text,
                     link.toWord.getOrComputeGloss(graphService.graph),
                     link.rules.fold(link.toWord) { w, r -> r.apply(w) }.text
-                        .takeIf { !isNormalizedEqual(it, link.fromWord.text) },
+                        .takeIf { !isNormalizedEqual(link.toWord.language, it, link.fromWord.text) },
                     link.rules.map { it.name })
             }
         )
     }
 
-    private fun isNormalizedEqual(ruleProducedWord: String, attestedWord: String): Boolean {
-        return normalize(ruleProducedWord) == normalize(attestedWord)
-    }
-
-    private fun normalize(s: String): String {
-        return s.replace('ä', 'a')
-            .replace('ö', 'o')
-            .replace('ü', 'u')
-            .replace('ï', 'i')
-            .replace('ë', 'e')
+    private fun isNormalizedEqual(lang: Language, ruleProducedWord: String, attestedWord: String): Boolean {
+        return lang.normalizeWord(ruleProducedWord) == lang.normalizeWord(attestedWord)
     }
 
     private fun RuleBranch.toViewModel(): RuleBranchViewModel {

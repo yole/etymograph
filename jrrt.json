@@ -2411,7 +2411,7 @@
             "text": "MAN-",
             "lang": "CE",
             "gloss": "holy",
-            "fullGloss": "good (morally), blessed, holy, unmarred, free from evil”",
+            "fullGloss": "good (morally), blessed, holy, unmarred, free from evil",
             "source": "https://eldamo.org/content/words/word-1868394071.html"
         },
         {
@@ -2663,6 +2663,76 @@
             "gloss": "induce",
             "pos": "V",
             "source": "VT43:23"
+        },
+        {
+            "id": 376,
+            "text": "mal",
+            "lang": "Q",
+            "gloss": "but",
+            "source": "VT43:23"
+        },
+        {
+            "id": 377,
+            "text": "ámë",
+            "lang": "Q"
+        },
+        {
+            "id": 378,
+            "text": "etelehta",
+            "lang": "Q",
+            "gloss": "deliver",
+            "pos": "V",
+            "source": "VT43:23"
+        },
+        {
+            "id": 379,
+            "text": "et-",
+            "lang": "Q",
+            "gloss": "out",
+            "source": "PE17:77"
+        },
+        {
+            "id": 380,
+            "text": "lehta-",
+            "lang": "Q",
+            "gloss": "loosen",
+            "pos": "V",
+            "source": "VT43:23"
+        },
+        {
+            "id": 381,
+            "text": "LEK-",
+            "lang": "CE",
+            "gloss": "loose"
+        },
+        {
+            "id": 383,
+            "text": "ulcullo",
+            "lang": "Q"
+        },
+        {
+            "id": 384,
+            "text": "ulco",
+            "lang": "Q",
+            "gloss": "evil",
+            "pos": "N",
+            "source": "VT43:24"
+        },
+        {
+            "id": 385,
+            "text": "ëa",
+            "lang": "Q",
+            "gloss": "exist",
+            "pos": "V",
+            "source": "VT43:13"
+        },
+        {
+            "id": 386,
+            "text": "Ëa",
+            "lang": "Q",
+            "gloss": "Creation",
+            "pos": "NP",
+            "source": "VT43:13"
         }
     ],
     "rules": [
@@ -5342,6 +5412,39 @@
             "from": 365,
             "to": 306,
             "type": "+"
+        },
+        {
+            "from": 377,
+            "to": 341,
+            "type": "+"
+        },
+        {
+            "from": 377,
+            "to": 330,
+            "type": "+"
+        },
+        {
+            "from": 378,
+            "to": 379,
+            "type": "+"
+        },
+        {
+            "from": 378,
+            "to": 380,
+            "type": "+"
+        },
+        {
+            "from": 380,
+            "to": 381,
+            "type": ">"
+        },
+        {
+            "from": 383,
+            "to": 384,
+            "type": ">",
+            "ruleIds": [
+                2
+            ]
         }
     ],
     "corpusTexts": [
@@ -5502,7 +5605,14 @@
                 366,
                 367,
                 370,
-                371
+                371,
+                376,
+                377,
+                378,
+                383,
+                385,
+                386,
+                386
             ],
             "source": "VT43:7"
         }

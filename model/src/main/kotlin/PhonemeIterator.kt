@@ -3,7 +3,7 @@ package ru.yole.etymograph
 import java.util.*
 
 class PhonemeIterator(val word: Word) {
-    private val phonemes = splitPhonemes(word.text.lowercase(Locale.getDefault()).trimEnd('-'), word.language.digraphs)
+    private val phonemes = splitPhonemes(word.normalizedText.trimEnd('-'), word.language.digraphs)
     private val resultPhonemes = phonemes.toMutableList()
     private var phonemeIndex = 0
     private var resultPhonemeIndex = 0
