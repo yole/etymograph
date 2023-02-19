@@ -2580,6 +2580,89 @@
             "gloss": "who",
             "pos": "PRON",
             "source": "VT43:21"
+        },
+        {
+            "id": 364,
+            "text": "úcarir",
+            "lang": "Q"
+        },
+        {
+            "id": 365,
+            "text": "úcar-",
+            "lang": "Q",
+            "gloss": "trespass",
+            "fullGloss": " trespass, do wrong, sin",
+            "pos": "V",
+            "source": "VT43:21"
+        },
+        {
+            "id": 366,
+            "text": "emmen",
+            "lang": "Q",
+            "source": "VT43:21"
+        },
+        {
+            "id": 367,
+            "text": "álamë",
+            "lang": "Q",
+            "source": "VT43:22"
+        },
+        {
+            "id": 368,
+            "text": "ála",
+            "lang": "Q",
+            "gloss": "do not",
+            "source": "VT43:22"
+        },
+        {
+            "id": 369,
+            "text": "la",
+            "lang": "Q",
+            "gloss": "not"
+        },
+        {
+            "id": 370,
+            "text": "tulya",
+            "lang": "Q",
+            "gloss": "lead",
+            "pos": "V",
+            "source": "VT43:22"
+        },
+        {
+            "id": 371,
+            "text": "úsahtienna",
+            "lang": "Q"
+        },
+        {
+            "id": 372,
+            "text": "úsahtië",
+            "lang": "Q",
+            "gloss": "temptation",
+            "pos": "N",
+            "source": "VT43:23"
+        },
+        {
+            "id": 373,
+            "text": "ú",
+            "lang": "Q",
+            "gloss": "not",
+            "source": "PE17:62"
+        },
+        {
+            "id": 374,
+            "text": "sahtië",
+            "lang": "Q",
+            "gloss": "inducement",
+            "pos": "N",
+            "source": "VT43:23"
+        },
+        {
+            "id": 375,
+            "text": "sahta-",
+            "lang": "Q",
+            "gloss": "induce",
+            "pos": "V",
+            "source": "VT43:23"
         }
     ],
     "rules": [
@@ -3607,6 +3690,95 @@
                 }
             ],
             "addedCategories": ".3PL",
+            "replacedCategories": "",
+            "source": ""
+        },
+        {
+            "id": 28,
+            "name": "q-aor-inflected",
+            "fromLang": "Q",
+            "toLang": "Q",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "NoChange",
+                            "arg": ""
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OrRuleConditionData",
+                        "members": [
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "EndsWith",
+                                "characters": "a"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "EndsWith",
+                                "characters": "u"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "arg": "i"
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".AOR",
+            "replacedCategories": "",
+            "source": "https://eldamo.org/content/words/word-2025078257.html"
+        },
+        {
+            "id": 29,
+            "name": "q-v-pl",
+            "fromLang": "Q",
+            "toLang": "Q",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "arg": "r"
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".PL",
+            "replacedCategories": "",
+            "source": ""
+        },
+        {
+            "id": 30,
+            "name": "q-causative",
+            "fromLang": "Q",
+            "toLang": "Q",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "arg": "ya"
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": "",
             "replacedCategories": "",
             "source": ""
         }
@@ -5089,6 +5261,77 @@
             "ruleIds": [
                 8
             ]
+        },
+        {
+            "from": 364,
+            "to": 365,
+            "type": ">",
+            "ruleIds": [
+                28,
+                29
+            ]
+        },
+        {
+            "from": 366,
+            "to": 359,
+            "type": ">",
+            "ruleIds": [
+                8
+            ]
+        },
+        {
+            "from": 367,
+            "to": 368,
+            "type": "+"
+        },
+        {
+            "from": 367,
+            "to": 330,
+            "type": "+"
+        },
+        {
+            "from": 368,
+            "to": 341,
+            "type": "+"
+        },
+        {
+            "from": 368,
+            "to": 369,
+            "type": "+"
+        },
+        {
+            "from": 370,
+            "to": 312,
+            "type": ">",
+            "ruleIds": [
+                30
+            ]
+        },
+        {
+            "from": 371,
+            "to": 372,
+            "type": ">",
+            "ruleIds": [
+                3
+            ]
+        },
+        {
+            "from": 372,
+            "to": 373,
+            "type": "+"
+        },
+        {
+            "from": 372,
+            "to": 374,
+            "type": "+"
+        },
+        {
+            "from": 374,
+            "to": 375,
+            "type": ">",
+            "ruleIds": [
+                21
+            ]
         }
     ],
     "corpusTexts": [
@@ -5244,7 +5487,12 @@
                 359,
                 360,
                 361,
-                363
+                363,
+                364,
+                366,
+                367,
+                370,
+                371
             ],
             "source": "VT43:7"
         }

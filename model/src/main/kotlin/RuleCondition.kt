@@ -53,7 +53,7 @@ class LeafRuleCondition(
     override fun matches(word: Word): Boolean {
         return when (type) {
             ConditionType.EndsWith -> (phonemeClass?.let { PhonemeIterator(word).last in it.matchingPhonemes }
-                ?: word.text.endsWith(parameter!!)).negateIfNeeded()
+                ?: word.text.trimEnd('-').endsWith(parameter!!)).negateIfNeeded()
             else -> super.matches(word)
         }
     }
