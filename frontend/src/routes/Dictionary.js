@@ -33,7 +33,9 @@ export default function Dictionary(params) {
     }
 
     return <>
-        <h2><small><Link to={`/language/${dict.language.shortName}`}>{dict.language.name}</Link></small> > {filterText}</h2>
+        <h2><small>
+            <Link to={`/`}>Etymograph</Link> >{' '}
+            <Link to={`/language/${dict.language.shortName}`}>{dict.language.name}</Link></small> > {filterText}</h2>
         <h3>Add word</h3>
         <WordForm language={dict.language.shortName} submitted={submitted}/>
         <ul>

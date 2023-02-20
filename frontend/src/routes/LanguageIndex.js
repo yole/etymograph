@@ -12,7 +12,7 @@ export default function LanguageIndex() {
     useEffect(() => { document.title = "Etymograph : " + lang.name })
 
     return <>
-        <h2>{lang.name}</h2>
+        <h2><small><Link to={`/`}>Etymograph</Link> > </small>{lang.name}</h2>
         <h3>Phonetics</h3>
         <ul>
         {lang.phonemeClasses.map(pc => <li>{pc.name}: {pc.matchingPhonemes.join(", ")}</li>)}

@@ -13,7 +13,9 @@ export default function RuleList() {
 
     return <>
     <h2>
-        <small><Link to={`/language/${params.langId}`}>{ruleList.toLangFullName}</Link> > </small>
+        <small>
+            <Link to={`/`}>Etymograph</Link> >{' '}
+            <Link to={`/language/${params.langId}`}>{ruleList.toLangFullName}</Link> > </small>
         Rules
     </h2>
         <ul>

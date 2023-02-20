@@ -9,6 +9,13 @@ export default function ParadigmList() {
     const paradigms = useLoaderData()
     const params = useParams()
     return <>
+        <h2>
+            <small>
+                <Link to={`/`}>Etymograph</Link> >{' '}
+                {/*<Link to={`/language/${word.language}`}>{word.languageFullName}</Link> >{' '}*/}
+            </small>
+            Paradigms
+        </h2>
         <ul>
             {paradigms.map(p => <li key={p.id}><Link to={`/paradigm/${p.id}`}>{p.name}</Link></li>)}
         </ul>

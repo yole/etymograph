@@ -8,6 +8,7 @@ export async function loader() {
 export default function CorpusIndex() {
     const languages = useLoaderData()
     return <>
+        <h2>Etymograph</h2>
         <ul>
         {languages.map(l => <li key={l.shortName}><Link to={`language/${l.shortName}`}>{l.name}</Link></li>)}
         </ul>

@@ -23,7 +23,8 @@ export default function Rule() {
 
     return <>
         <h2><small>
-            <Link to={`/language/${rule.toLang}`}>{rule.toLangFullName}</Link> >
+            <Link to={`/`}>Etymograph</Link> >{' '}
+            <Link to={`/language/${rule.toLang}`}>{rule.toLangFullName}</Link> >{' '}
             <Link to={`/rules/${rule.toLang}`}>Rules</Link> > </small>
             {rule.name}</h2>
         {rule.fromLang !== rule.toLang && <p>From {rule.fromLangFullName} to {rule.toLangFullName}</p>}

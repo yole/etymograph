@@ -119,7 +119,8 @@ function SingleWord(params) {
 
     return <>
         <h2><small>
-            <Link to={`/language/${word.language}`}>{word.languageFullName}</Link> >
+            <Link to={`/`}>Etymograph</Link> >{' '}
+            <Link to={`/language/${word.language}`}>{word.languageFullName}</Link> >{' '}
             <Link to={`/dictionary/${word.language}`}>Dictionary</Link> > </small>
             {word.text}</h2>
         {!editMode && <>
