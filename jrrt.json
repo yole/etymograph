@@ -3851,6 +3851,45 @@
             "addedCategories": "",
             "replacedCategories": "",
             "source": ""
+        },
+        {
+            "id": 31,
+            "name": "q-dat-pl",
+            "fromLang": "Q",
+            "toLang": "Q",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "RemoveLastCharacter",
+                            "arg": ""
+                        },
+                        {
+                            "type": "AddSuffix",
+                            "arg": "in"
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "characters": "e"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "arg": "in"
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".DAT.PL",
+            "replacedCategories": "",
+            "source": "https://eldamo.org/content/words/word-1853042105.html"
         }
     ],
     "links": [
@@ -5741,6 +5780,14 @@
                             ]
                         },
                         {
+                            "alternatives": [
+                                {
+                                    "ruleIds": [
+                                        17,
+                                        31
+                                    ]
+                                }
+                            ]
                         },
                         {
                         },

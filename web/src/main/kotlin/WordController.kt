@@ -172,11 +172,18 @@ class WordController(val graphService: GraphService) {
         val cells: List<List<List<WordParadigmWordModel>>>
     )
 
+    data class WordParadigmListModel(
+        val word: String,
+        val language: String,
+        val languageFullName: String,
+        val paradigms: List<WordParadigmModel>
+    )
+
     @GetMapping("/word/{id}/paradigms")
-    fun wordParadigms(@PathVariable id: Int): List<WordParadigmModel> {
+    fun wordParadigms(@PathVariable id: Int): WordParadigmListModel {
         val graph = graphService.graph
-        val word = graph.wordById(id) ?: throw NoWordException()
-        return graph.paradigmsForLanguage(word.language).filter { it.pos == word.pos }.map { paradigm ->
+        val word = graphService.resolveWord(id)
+        val paradigmModels = graph.paradigmsForLanguage(word.language).filter { it.pos == word.pos }.map { paradigm ->
             val generatedParadigm = paradigm.generate(word, graph)
             val substitutedParadigm = generatedParadigm.map { colWords ->
                 colWords.map { cellWords ->
@@ -192,6 +199,7 @@ class WordController(val graphService: GraphService) {
                 substitutedParadigm
             )
         }
+        return WordParadigmListModel(word.text, word.language.shortName, word.language.name, paradigmModels)
     }
 }
 
