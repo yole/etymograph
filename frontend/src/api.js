@@ -30,8 +30,12 @@ export function addRule(name, fromLang, toLang, addedCategories, replacedCategor
         })
 }
 
-export function updateRule(id, name, fromLang, toLang, text, notes) {
-    return postToBackend('rule/' + id, {name: name, fromLang: fromLang, toLang: toLang, text: text, notes: notes})
+export function updateRule(id, name, fromLang, toLang, addedCategories, replacedCategories, text, source, notes) {
+    return postToBackend('rule/' + id, {name: name, fromLang: fromLang, toLang: toLang, text: text,
+        addedCategories: addedCategories,
+        replacedCategories: replacedCategories,
+        source: source,
+        notes: notes})
 }
 
 export function addCorpusText(lang, text) {

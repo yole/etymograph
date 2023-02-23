@@ -45,7 +45,7 @@ export default function Paradigm() {
         </tbody>
     </table>}
     {editMode && <>
-        <textarea rows="10" cols="50" value={editableText} onChange={(e) => setEditableText(e.target.value)}/>
+        <textarea rows="10" cols="80" value={editableText} onChange={(e) => setEditableText(e.target.value)}/>
         <br/>
         <button onClick={() => saveParadigm()}>Save</button>
     </>}

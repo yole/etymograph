@@ -10,13 +10,16 @@ export async function loader({params}) {
 export default function Rule() {
     const rule = useLoaderData()
     const [editMode, setEditMode] = useState(false)
+    const [addedCategories, setAddedCategories] = useState(rule.addedCategories)
+    const [replacedCategories, setReplacedCategories] = useState(rule.replacedCategories)
+    const [source, setSource] = useState(rule.source)
     const [editableText, setEditableText] = useState(rule.editableText)
     const [notes, setNotes] = useState(rule.notes)
     const revalidator = useRevalidator()
     useEffect(() => { document.title = "Etymograph : Rule " + rule.name })
 
     function saveRule() {
-        updateRule(rule.id, rule.name, rule.fromLang, rule.toLang, editableText, notes)
+        updateRule(rule.id, rule.name, rule.fromLang, rule.toLang, addedCategories, replacedCategories, editableText, source, notes)
             .then(() => revalidator.revalidate())
         setEditMode(false)
     }
@@ -28,27 +31,43 @@ export default function Rule() {
             <Link to={`/rules/${rule.toLang}`}>Rules</Link> > </small>
             {rule.name}</h2>
         {rule.fromLang !== rule.toLang && <p>From {rule.fromLangFullName} to {rule.toLangFullName}</p>}
-        {rule.addedCategories && <p>Added categories: {rule.addedCategories}</p>}
-        {rule.replacedCategories && <p>Replaced categories: {rule.replacedCategories}</p>}
-        {!editMode && rule.branches.map(b => <>
-            {(rule.branches.length > 1 || rule.fromLang !== rule.toLang) && <div>{b.conditions}:</div>}
-            <ul>
-                {b.instructions.map(i => <li>{i}</li>)}
-            </ul>
-        </>)}
+        {!editMode && <>
+            {rule.addedCategories && <p>Added categories: {rule.addedCategories}</p>}
+            {rule.replacedCategories && <p>Replaced categories: {rule.replacedCategories}</p>}
+            {rule.source != null && <div className="source">Source: {rule.source.startsWith("http") ? <a href={rule.source}>{rule.source}</a> : rule.source}</div>}
+            <p/>
+            {rule.branches.map(b => <>
+                {(rule.branches.length > 1 || rule.fromLang !== rule.toLang) && <div>{b.conditions}:</div>}
+                <ul>
+                    {b.instructions.map(i => <li>{i}</li>)}
+                </ul>
+            </>)}
+            {rule.notes != null && <>
+                <h3>Notes</h3>
+                <p>{rule.notes}</p>
+            </>}
+        </>}
         {editMode && <>
+            <table><tbody>
+            <tr>
+                <td><label>Added categories:</label></td>
+                <td><input type="text" value={addedCategories} onChange={(e) => setAddedCategories(e.target.value)}/></td>
+            </tr>
+            <tr>
+                <td><label>Replaced categories:</label></td>
+                <td><input type="text" value={replacedCategories} onChange={(e) => setReplacedCategories(e.target.value)}/></td>
+            </tr>
+            <tr>
+                <td><label>Source:</label></td>
+                <td><input type="text" value={source} onChange={(e) => setSource(e.target.value)}/></td>
+            </tr>
+            </tbody></table>
             <textarea rows="10" cols="50" value={editableText} onChange={(e) => setEditableText(e.target.value)}/>
             <br/>
             <h3>Notes</h3>
             <textarea rows="5" cols="50" value={notes} onChange={(e) => setNotes(e.target.value)}/>
             <br/>
             <button onClick={() => saveRule()}>Save</button>
-        </>}
-        {rule.source != null && <div className="source">Source: {rule.source.startsWith("http") ? <a href={rule.source}>{rule.source}</a> : rule.source}</div>}
-
-        {(!editMode && rule.notes != null) && <>
-            <h3>Notes</h3>
-            <p>{rule.notes}</p>
         </>}
 
         <button onClick={() => setEditMode(!editMode)}>{editMode ? "Cancel" : "Edit"}</button>

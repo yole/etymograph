@@ -46,8 +46,8 @@ class Rule(
     val fromLanguage: Language,
     val toLanguage: Language,
     var branches: List<RuleBranch>,
-    val addedCategories: String?,
-    val replacedCategories: String?,
+    var addedCategories: String?,
+    var replacedCategories: String?,
     source: String?,
     notes: String?
 ) : LangEntity(source, notes) {

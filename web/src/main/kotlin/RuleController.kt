@@ -134,6 +134,9 @@ class RuleController(val graphService: GraphService) {
         val rule = resolveRule(id)
         rule.branches = Rule.parseBranches(params.text, rule.fromLanguage)
         rule.notes = params.notes
+        rule.addedCategories = params.addedCategories.nullize()
+        rule.replacedCategories = params.replacedCategories.nullize()
+        rule.source = params.source.nullize()
         graph.save()
     }
 

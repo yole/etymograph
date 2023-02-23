@@ -2819,7 +2819,8 @@
                     }
                 }
             ],
-            "addedCategories": ".NOM.PL"
+            "addedCategories": ".NOM.PL",
+            "source": "https://eldamo.org/content/words/word-2870822299.html"
         },
         {
             "id": 1,
@@ -3390,6 +3391,33 @@
                 {
                     "instructions": [
                         {
+                            "type": "RemoveLastCharacter",
+                            "arg": ""
+                        },
+                        {
+                            "type": "AddSuffix",
+                            "arg": "lli"
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OrRuleConditionData",
+                        "members": [
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "EndsWith",
+                                "characters": "n"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "EndsWith",
+                                "characters": "r"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "instructions": [
+                        {
                             "type": "AddSuffix",
                             "arg": "li"
                         }
@@ -3890,6 +3918,41 @@
             "addedCategories": ".DAT.PL",
             "replacedCategories": "",
             "source": "https://eldamo.org/content/words/word-1853042105.html"
+        },
+        {
+            "id": 32,
+            "name": "q-dat-dual",
+            "fromLang": "Q",
+            "toLang": "Q",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "arg": "nt"
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "cls": "vowel"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "arg": "un"
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".DAT.DU",
+            "replacedCategories": "",
+            "source": ""
         }
     ],
     "links": [
@@ -5820,8 +5883,26 @@
                             ]
                         },
                         {
+                            "alternatives": [
+                                {
+                                    "ruleIds": [
+                                        17,
+                                        16,
+                                        9
+                                    ]
+                                }
+                            ]
                         },
                         {
+                            "alternatives": [
+                                {
+                                    "ruleIds": [
+                                        17,
+                                        16,
+                                        8
+                                    ]
+                                }
+                            ]
                         },
                         {
                         },
@@ -5854,6 +5935,27 @@
                                 {
                                     "ruleIds": [
                                         15
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "alternatives": [
+                                {
+                                    "ruleIds": [
+                                        17,
+                                        15,
+                                        1
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "alternatives": [
+                                {
+                                    "ruleIds": [
+                                        17,
+                                        32
                                     ]
                                 }
                             ]
