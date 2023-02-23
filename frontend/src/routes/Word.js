@@ -163,7 +163,7 @@ function SingleWord(params) {
         {showRelated && <WordForm submitted={submitted} relatedWord={word} language={word.language}/>}
         <p/>
         {errorText !== "" && <div className="errorText">{errorText}</div>}
-        {!word.glossComputed && <Link to={`/word/${word.language}/${word.id}/paradigms`}>Paradigms</Link>}
+        {word.pos && !word.glossComputed && <Link to={`/word/${word.language}/${word.id}/paradigms`}>Paradigms</Link>}
     </>
 }
 

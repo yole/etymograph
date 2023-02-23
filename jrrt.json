@@ -2770,6 +2770,13 @@
             "lang": "Q",
             "gloss": "ship.DAT",
             "source": "Plotz"
+        },
+        {
+            "id": 389,
+            "text": "ciryant",
+            "lang": "Q",
+            "gloss": "ship.DAT.DU",
+            "source": "Plotz"
         }
     ],
     "rules": [
@@ -5591,6 +5598,14 @@
             "type": ">",
             "ruleIds": [
                 8
+            ]
+        },
+        {
+            "from": 389,
+            "to": 387,
+            "type": ">",
+            "ruleIds": [
+                32
             ]
         }
     ],
