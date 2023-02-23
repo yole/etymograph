@@ -21,8 +21,11 @@ export default function Paradigm() {
     }
 
     return <>
-    <h3>{paradigm.name}</h3>
-    <p>Language: {paradigm.language}</p>
+        <h2><small>
+            <Link to={`/`}>Etymograph</Link> >{' '}
+            <Link to={`/language/${paradigm.language}`}>{paradigm.languageFullName}</Link> >{' '}
+            <Link to={`/paradigms/${paradigm.language}`}>Paradigms</Link> > </small>
+            {paradigm.name}</h2>
     <p>POS: {paradigm.pos}</p>
     {!editMode && <table>
         <thead><tr>

@@ -25,6 +25,7 @@ class ParadigmController(val graphService: GraphService) {
         val id: Int,
         val name: String,
         val language: String,
+        val languageFullName: String,
         val pos: String,
         val rowTitles: List<String>,
         val columns: List<ParadigmColumnViewModel>,
@@ -41,7 +42,11 @@ class ParadigmController(val graphService: GraphService) {
     }
 
     private fun Paradigm.toViewModel() =
-        ParadigmViewModel(id, name, language.shortName, pos, rowTitles, columns.map { it.toViewModel(rowTitles.size) }, toEditableText() )
+        ParadigmViewModel(id, name,
+            language.shortName, language.name, pos, rowTitles,
+            columns.map { it.toViewModel(rowTitles.size) },
+            toEditableText()
+        )
 
     private fun ParadigmColumn.toViewModel(rows: Int) =
         ParadigmColumnViewModel(title, (0 until rows).map {
