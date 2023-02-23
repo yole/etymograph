@@ -136,7 +136,7 @@ function SingleWord(params) {
                                initialSource={word.source}
                                initialNotes={word.notes}
                                submitted={editSubmitted}/>}
-        <button onClick={() => setEditMode(!editMode)}>{editMode ? "Cancel" : "Edit"}</button>
+        <button onClick={() => setEditMode(!editMode)}>{editMode ? "Cancel" : "Edit"}</button>&nbsp;
         {!editMode && <button onClick={() => deleteWordClicked()}>Delete</button>}
 
         {word.attestations.length > 0 &&

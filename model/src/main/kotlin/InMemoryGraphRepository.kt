@@ -71,9 +71,15 @@ open class InMemoryGraphRepository : GraphRepository() {
         return when {
             word.pos == "NP" -> WordKind.NAME
             word.gloss == null -> WordKind.DERIVED
+            word.hasGrammarCategory() -> WordKind.DERIVED
             linksFrom[word.id]?.any { link -> link.type == Link.Agglutination && !link.toWord.isRoot() } == true -> WordKind.COMPOUND
             else -> WordKind.NORMAL
         }
+    }
+
+    private fun Word.hasGrammarCategory(): Boolean {
+        val suffix = gloss?.substringAfterLast('.')
+        return !suffix.isNullOrEmpty() && suffix.all { it.isUpperCase() || it.isDigit() }
     }
 
     private fun filteredWords(lang: Language, kind: WordKind): List<Word> {
