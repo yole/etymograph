@@ -28,6 +28,9 @@ data class PhonemeClassData(@SerialName("lang") val languageShortName: String, v
 data class DigraphData(@SerialName("lang") val languageShortName: String, val digraphs: List<String>)
 
 @Serializable
+data class LetterNormalizationData(@SerialName("lang") val languageShortName: String, val rules: Map<String, String>)
+
+@Serializable
 sealed class RuleConditionData {
     abstract fun toRuntimeFormat(result: JsonGraphRepository, fromLanguage: Language): RuleCondition
 }
@@ -142,11 +145,12 @@ data class GraphRepositoryData(
     val languages: List<LanguageData>,
     val phonemeClasses: List<PhonemeClassData>,
     val digraphs: List<DigraphData>,
+    val letterNormalization: List<LetterNormalizationData>,
     val words: List<WordData>,
     val rules: List<RuleData>,
     val links: List<LinkData>,
     val corpusTexts: List<CorpusTextData>,
-    val paradigms: List<ParadigmData>
+    val paradigms: List<ParadigmData>,
 )
 
 class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
@@ -188,10 +192,12 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             lang.phonemeClasses.map { PhonemeClassData(lang.shortName, it.name, it.matchingPhonemes) }
         }
         val digraphData = languages.values.map { DigraphData(it.shortName, it.digraphs) }
+        val letterNormalizationData = languages.values.map { LetterNormalizationData(it.shortName, it.letterNormalization) }
         return GraphRepositoryData(
             languages.values.map { LanguageData(it.name, it.shortName) },
             phonemeClassData,
             digraphData,
+            letterNormalizationData,
             allWords.filterNotNull().map {
                 WordData(it.id, it.text, it.language.shortName, it.gloss, it.fullGloss, it.pos, it.source, it.notes)
             },
@@ -231,6 +237,11 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
         }
         for (digraphData in data.digraphs) {
             languageByShortName(digraphData.languageShortName)!!.digraphs = digraphData.digraphs
+        }
+        data.letterNormalization?.let {
+            for (letterNormalizationData in it) {
+                languageByShortName(letterNormalizationData.languageShortName)!!.letterNormalization = letterNormalizationData.rules
+            }
         }
         for (word in data.words) {
             while (word.id > allWords.size) {

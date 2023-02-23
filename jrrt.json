@@ -90,6 +90,29 @@
             ]
         }
     ],
+    "letterNormalization": [
+        {
+            "lang": "Q",
+            "rules": {
+                "ä": "a",
+                "ö": "o",
+                "ü": "u",
+                "ï": "i",
+                "ë": "e",
+                "c": "k"
+            }
+        },
+        {
+            "lang": "S",
+            "rules": {
+            }
+        },
+        {
+            "lang": "CE",
+            "rules": {
+            }
+        }
+    ],
     "words": [
         {
             "id": 0,
@@ -2733,6 +2756,20 @@
             "gloss": "Creation",
             "pos": "NP",
             "source": "VT43:13"
+        },
+        {
+            "id": 387,
+            "text": "cirya",
+            "lang": "Q",
+            "gloss": "ship",
+            "pos": "N"
+        },
+        {
+            "id": 388,
+            "text": "ciryan",
+            "lang": "Q",
+            "gloss": "ship.DAT",
+            "source": "Plotz"
         }
     ],
     "rules": [
@@ -5546,6 +5583,14 @@
             "type": ">",
             "ruleIds": [
                 2
+            ]
+        },
+        {
+            "from": 388,
+            "to": 387,
+            "type": ">",
+            "ruleIds": [
+                8
             ]
         }
     ],

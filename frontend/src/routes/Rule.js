@@ -67,7 +67,7 @@ export default function Rule() {
             <h3>Notes</h3>
             <textarea rows="5" cols="50" value={notes} onChange={(e) => setNotes(e.target.value)}/>
             <br/>
-            <button onClick={() => saveRule()}>Save</button>
+            <button onClick={() => saveRule()}>Save</button>&nbsp;
         </>}
 
         <button onClick={() => setEditMode(!editMode)}>{editMode ? "Cancel" : "Edit"}</button>
