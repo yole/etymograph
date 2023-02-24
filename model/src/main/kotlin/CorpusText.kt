@@ -7,14 +7,14 @@ class CorpusWord(val text: String, val word: Word?, val gloss: String?)
 class CorpusTextLine(val corpusWords: List<CorpusWord>)
 
 class CorpusText(
-    val id: Int,
+    id: Int,
     val text: String,
     val title: String?,
     val language: Language,
     val words: MutableList<Word>,
     source: String?,
     notes: String?
-): LangEntity(source, notes) {
+): LangEntity(id, source, notes) {
     fun mapToLines(repo: GraphRepository): List<CorpusTextLine> {
         return text.split("\n").map { line ->
             val textWords = splitIntoNormalizedWords(line)

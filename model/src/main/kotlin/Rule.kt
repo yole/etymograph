@@ -55,7 +55,7 @@ class RuleBranch(val condition: RuleCondition, val instructions: List<RuleInstru
 }
 
 class Rule(
-    val id: Int,
+    id: Int,
     val name: String,
     val fromLanguage: Language,
     val toLanguage: Language,
@@ -64,7 +64,7 @@ class Rule(
     var replacedCategories: String?,
     source: String?,
     notes: String?
-) : LangEntity(source, notes) {
+) : LangEntity(id, source, notes) {
     fun matches(word: Word): Boolean {
         return branches.any { it.matches(word) }
     }

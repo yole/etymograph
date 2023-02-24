@@ -157,14 +157,14 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
     private val allLinks = mutableListOf<Link>()
 
     override fun createLink(
-        fromWord: Word,
-        toWord: Word,
+        fromEntity: LangEntity,
+        toEntity: LangEntity,
         type: LinkType,
         rules: List<Rule>,
         source: String?,
         notes: String?
     ): Link {
-        return super.createLink(fromWord, toWord, type, rules, source, notes).also {
+        return super.createLink(fromEntity, toEntity, type, rules, source, notes).also {
             allLinks.add(it)
         }
     }
@@ -198,7 +198,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             phonemeClassData,
             digraphData,
             letterNormalizationData,
-            allWords.filterNotNull().map {
+            allLangEntities.filterIsInstance<Word>().map {
                 WordData(it.id, it.text, it.language.shortName, it.gloss, it.fullGloss, it.pos, it.source, it.notes)
             },
             rules.map { it.ruleToSerializedFormat() },
@@ -242,8 +242,8 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             languageByShortName(letterNormalizationData.languageShortName)!!.letterNormalization = letterNormalizationData.rules
         }
         for (word in data.words) {
-            while (word.id > allWords.size) {
-                allWords.add(null)
+            while (word.id > allLangEntities.size) {
+                allLangEntities.add(null)
             }
             addWord(
                 languageByShortName(word.languageShortName)!!,
@@ -269,14 +269,14 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             )
         }
         for (link in data.links) {
-            val fromWord = allWords[link.fromWordId]
-            val toWord = allWords[link.toWordId]
+            val fromWord = allLangEntities[link.fromWordId]
+            val toWord = allLangEntities[link.toWordId]
             if (fromWord != null && toWord != null) {
                 addLink(
                     fromWord,
                     toWord,
                     Link.allLinkTypes.first { it.id == link.type },
-                    link.ruleIds?.takeIf { it.isNotEmpty() }?.map { rules[it] }
+                    link.ruleIds?.takeIf { it.isNotEmpty() }?.map { allLangEntities[it] as Rule }
                         ?: emptyList(),
                     link.source,
                     link.notes
@@ -288,7 +288,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                 corpusText.text,
                 corpusText.title,
                 languageByShortName(corpusText.languageShortName)!!,
-                corpusText.wordIds.mapNotNull { allWords[it] },
+                corpusText.wordIds.mapNotNull { allLangEntities[it] as? Word },
                 corpusText.source,
                 corpusText.notes
             )
@@ -406,5 +406,8 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
 
 fun main() {
     val repo = JsonGraphRepository.fromJson(Path.of("jrrt.json"))
+    for ((index, entity) in repo.allLangEntities.withIndex()) {
+        entity?.id = index
+    }
     repo.save()
 }

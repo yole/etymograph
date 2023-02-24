@@ -7,7 +7,7 @@ open class InMemoryGraphRepository : GraphRepository() {
     protected val languages = mutableMapOf<String, Language>()
     protected val corpus = mutableListOf<CorpusText>()
     private val words = mutableMapOf<Language, MutableMap<String, MutableList<Word>>>()
-    protected val allWords = mutableListOf<Word?>()
+    val allLangEntities = mutableListOf<LangEntity?>()
     private val linksFrom = mutableMapOf<Int, MutableList<Link>>()
     private val linksTo = mutableMapOf<Int, MutableList<Link>>()
     protected val rules = mutableListOf<Rule>()
@@ -33,11 +33,14 @@ open class InMemoryGraphRepository : GraphRepository() {
         source: String?,
         notes: String?
     ): CorpusText {
-        return CorpusText(corpus.size + 1, text, title, language, words.toMutableList(), source, notes).also { corpus += it }
+        return CorpusText(allLangEntities.size, text, title, language, words.toMutableList(), source, notes).also {
+            corpus += it
+            allLangEntities += it
+        }
     }
 
     override fun corpusTextById(id: Int): CorpusText? {
-        return corpus.getOrNull(id - 1)
+        return allLangEntities.getOrNull(id) as? CorpusText
     }
 
     override fun addParadigm(name: String, language: Language, pos: String): Paradigm {
@@ -50,7 +53,7 @@ open class InMemoryGraphRepository : GraphRepository() {
     }
 
     override fun wordById(id: Int): Word? {
-        return allWords.getOrNull(id)
+        return allLangEntities.getOrNull(id) as? Word
     }
 
     override fun dictionaryWords(lang: Language): List<Word> {
@@ -152,8 +155,8 @@ open class InMemoryGraphRepository : GraphRepository() {
         notes: String?
     ): Word {
         val wordsByText = mapOfWordsByText(language, text)
-        return Word(allWords.size, text, language, gloss, fullGloss, pos, source, notes).also {
-            allWords.add(it)
+        return Word(allLangEntities.size, text, language, gloss, fullGloss, pos, source, notes).also {
+            allLangEntities.add(it)
             wordsByText.add(it)
         }
     }
@@ -175,7 +178,7 @@ open class InMemoryGraphRepository : GraphRepository() {
                 deleteLink(link.fromWord, link.toWord, link.type)
             }
         }
-        allWords[word.id] = null
+        allLangEntities[word.id] = null
     }
 
     private fun mapOfWordsByText(
@@ -190,8 +193,8 @@ open class InMemoryGraphRepository : GraphRepository() {
     override fun save() {
     }
 
-    override fun addLink(fromWord: Word, toWord: Word, type: LinkType, rules: List<Rule>, source: String?, notes: String?): Link {
-        return createLink(fromWord, toWord, type, rules, source, notes).also {
+    override fun addLink(fromEntity: LangEntity, toEntity: LangEntity, type: LinkType, rules: List<Rule>, source: String?, notes: String?): Link {
+        return createLink(fromEntity, toEntity, type, rules, source, notes).also {
             linksFrom.getOrPut(it.fromWord.id) { mutableListOf() }.add(it)
             linksTo.getOrPut(it.toWord.id) { mutableListOf() }.add(it)
         }
@@ -218,8 +221,8 @@ open class InMemoryGraphRepository : GraphRepository() {
             linksFrom[toWord.id]?.find { it.fromWord == toWord && it.type == type }
     }
 
-    protected open fun createLink(fromWord: Word, toWord: Word, type: LinkType, rules: List<Rule>, source: String?, notes: String?): Link {
-        return Link(fromWord, toWord, type, rules, source, notes)
+    protected open fun createLink(fromEntity: LangEntity, toEntity: LangEntity, type: LinkType, rules: List<Rule>, source: String?, notes: String?): Link {
+        return Link(fromEntity as Word, toEntity as Word, type, rules, source, notes)
     }
 
     override fun getLinksFrom(word: Word): Iterable<Link> {
@@ -240,8 +243,11 @@ open class InMemoryGraphRepository : GraphRepository() {
         source: String?,
         notes: String?
     ): Rule {
-        return Rule(rules.size, name, fromLanguage, toLanguage, branches, addedCategories, replacedCategories, source, notes)
-            .also { rules.add(it) }
+        return Rule(allLangEntities.size, name, fromLanguage, toLanguage, branches, addedCategories, replacedCategories, source, notes)
+            .also {
+                rules.add(it)
+                allLangEntities.add(it)
+            }
     }
 
     override fun paradigmsForLanguage(lang: Language): List<Paradigm> {
@@ -270,7 +276,7 @@ open class InMemoryGraphRepository : GraphRepository() {
     }
 
     override fun ruleById(id: Int): Rule? {
-        return rules.getOrNull(id)
+        return allLangEntities.getOrNull(id) as? Rule
     }
 
     override fun ruleByName(ruleName: String): Rule? {

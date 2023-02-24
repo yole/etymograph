@@ -7,9 +7,9 @@ open class Link(
     val toWord: Word,
     val type: LinkType,
     var rules: List<Rule>,
-    source: String?,
-    notes: String?
-) : LangEntity(source, notes) {
+    var source: String?,
+    var notes: String?
+) {
     companion object {
         val Derived = LinkType(">", "derived from", "Words derived from this one")
         val Agglutination = LinkType("+", "compound of", "Part of compound words")
