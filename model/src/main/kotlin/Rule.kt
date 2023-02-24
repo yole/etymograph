@@ -2,17 +2,11 @@ package ru.yole.etymograph
 
 class RuleParseException(msg: String): RuntimeException(msg)
 
-interface RuleRef {
+fun interface RuleRef {
     fun resolve(): Rule
 
     companion object {
-        fun to(rule: Rule): RuleRef {
-            return object : RuleRef {
-                override fun resolve(): Rule {
-                    return rule
-                }
-            }
-        }
+        fun to(rule: Rule): RuleRef = RuleRef { rule }
     }
 }
 

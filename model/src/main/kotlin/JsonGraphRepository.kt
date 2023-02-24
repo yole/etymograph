@@ -400,11 +400,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             }
 
         private fun ruleRef(repo: JsonGraphRepository, ruleId: Int) =
-            object : RuleRef {
-                override fun resolve(): Rule {
-                    return repo.ruleById(ruleId)!!
-                }
-            }
+            RuleRef { repo.ruleById(ruleId)!! }
     }
 }
 
