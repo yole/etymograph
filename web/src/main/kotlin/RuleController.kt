@@ -66,12 +66,14 @@ class RuleController(val graphService: GraphService) {
             notes.nullize(),
             branches.map { it.toViewModel() },
             graphService.graph.findRuleExamples(this).map { link ->
+                val fromWord = link.fromEntity as Word
+                val toWord = link.toEntity as Word
                 RuleExampleViewModel(
-                    link.fromWord.text,
-                    link.toWord.text,
-                    link.toWord.getOrComputeGloss(graphService.graph),
-                    link.rules.fold(link.toWord) { w, r -> r.apply(w) }.text
-                        .takeIf { !isNormalizedEqual(link.toWord.language, it, link.fromWord.text) },
+                    fromWord.text,
+                    toWord.text,
+                    toWord.getOrComputeGloss(graphService.graph),
+                    link.rules.fold(toWord) { w, r -> r.apply(w) }.text
+                        .takeIf { !isNormalizedEqual(toWord.language, it, fromWord.text) },
                     link.rules.map { it.name })
             }
         )

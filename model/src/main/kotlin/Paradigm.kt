@@ -6,7 +6,7 @@ data class ParadigmRuleSeq(val rules: RuleSeq) {
     fun generate(word: Word, graph: GraphRepository): Word {
         return rules.fold(word) { w, r ->
             val link = graph.getLinksTo(word).find { it.rules == listOf(r) }
-            link?.fromWord ?: r.apply(w)
+            link?.fromEntity as? Word ?: r.apply(w)
         }
     }
 }

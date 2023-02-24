@@ -34,16 +34,16 @@ class Word(
 
     fun getOrComputeGloss(graph: GraphRepository): String? {
         gloss?.let { return it }
-        val components = graph.getLinksFrom(this).filter { it.type == Link.Agglutination }
+        val components = graph.getLinksFrom(this).filter { it.type == Link.Agglutination && it.toEntity is Word }
         if (components.isNotEmpty()) {
             return components.joinToString("-") {
-                it.toWord.getOrComputeGloss(graph)?.substringBefore(", ") ?: "?"
+                (it.toEntity as Word).getOrComputeGloss(graph)?.substringBefore(", ") ?: "?"
             }
         }
-        val derivation = graph.getLinksFrom(this).filter { it.type == Link.Derived }.singleOrNull()
+        val derivation = graph.getLinksFrom(this).filter { it.type == Link.Derived && it.toEntity is Word }.singleOrNull()
         if (derivation != null) {
             if (derivation.rules.any { it.addedCategories != null }) {
-                derivation.toWord.getOrComputeGloss(graph)?.let { fromGloss ->
+                (derivation.toEntity as Word).getOrComputeGloss(graph)?.let { fromGloss ->
                     return derivation.rules.fold(fromGloss) { gloss, rule -> rule.applyCategories(gloss) }
                 }
             }

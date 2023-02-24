@@ -11,23 +11,23 @@ import ru.yole.etymograph.*
 @RestController
 class LinkController(val graphService: GraphService) {
     data class LinkParams(val fromWord: Int = -1, val toWord: Int = -1, val linkType: String = "", val ruleNames: String = "")
-    data class ResolvedLinkParams(val fromWord: Word, val toWord: Word, val linkType: LinkType)
+    data class ResolvedLinkParams(val fromEntity: LangEntity, val toEntity: LangEntity, val linkType: LinkType)
 
     @PostMapping("/link")
     fun addLink(@RequestBody params: LinkParams) {
         val graph = graphService.graph
-        val (fromWord, toWord, linkType) = resolveLinkParams(params)
+        val (fromEntity, toEntity, linkType) = resolveLinkParams(params)
         val rules = resolveRuleNames(params)
 
-        graph.addLink(fromWord, toWord, linkType, rules, null, null)
+        graph.addLink(fromEntity, toEntity, linkType, rules, null, null)
         graph.save()
     }
 
     private fun resolveLinkParams(params: LinkParams): ResolvedLinkParams {
         val graph = graphService.graph
         return ResolvedLinkParams(
-            graph.wordById(params.fromWord) ?: throw NoWordException(),
-            graph.wordById(params.toWord) ?: throw NoWordException(),
+            graph.langEntityById(params.fromWord) ?: throw NoWordException(),
+            graph.langEntityById(params.toWord) ?: throw NoWordException(),
             Link.allLinkTypes.find { it.id == params.linkType } ?: throw NoLinkTypeException()
         )
     }
@@ -42,10 +42,10 @@ class LinkController(val graphService: GraphService) {
 
     @PostMapping("/link/update")
     fun updateLink(@RequestBody params: LinkParams) {
-        val (fromWord, toWord, linkType) = resolveLinkParams(params)
+        val (fromEntity, toEntity, linkType) = resolveLinkParams(params)
 
         val graph = graphService.graph
-        val link = graph.findLink(fromWord, toWord, linkType) ?: throw NoLinkException()
+        val link = graph.findLink(fromEntity, toEntity, linkType) ?: throw NoLinkException()
         val rules = resolveRuleNames(params)
 
         link.rules = rules

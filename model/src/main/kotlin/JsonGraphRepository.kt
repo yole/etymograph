@@ -169,9 +169,9 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
         }
     }
 
-    override fun deleteLink(fromWord: Word, toWord: Word, type: LinkType): Boolean {
-        return super.deleteLink(fromWord, toWord, type).also {
-            allLinks.removeIf { it.fromWord == fromWord && it.toWord == toWord && it.type == type }
+    override fun deleteLink(fromEntity: LangEntity, toEntity: LangEntity, type: LinkType): Boolean {
+        return super.deleteLink(fromEntity, toEntity, type).also {
+            allLinks.removeIf { it.fromEntity == fromEntity && it.toEntity == toEntity && it.type == type }
         }
     }
 
@@ -204,7 +204,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             rules.map { it.ruleToSerializedFormat() },
             allLinks.map { link ->
                 LinkData(
-                    link.fromWord.id, link.toWord.id,
+                    link.fromEntity.id, link.toEntity.id,
                     link.type.id, link.rules.takeIf { it.isNotEmpty() }?.map { it.id }, link.source, link.notes
                 )
             },
@@ -406,8 +406,5 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
 
 fun main() {
     val repo = JsonGraphRepository.fromJson(Path.of("jrrt.json"))
-    for ((index, entity) in repo.allLangEntities.withIndex()) {
-        entity?.id = index
-    }
     repo.save()
 }

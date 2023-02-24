@@ -25,6 +25,9 @@ open class InMemoryGraphRepository : GraphRepository() {
         return languages[languageShortName]
     }
 
+    override fun langEntityById(id: Int): LangEntity? =
+        allLangEntities.getOrNull(id)
+
     override fun addCorpusText(
         text: String,
         title: String?,
@@ -75,7 +78,9 @@ open class InMemoryGraphRepository : GraphRepository() {
             word.pos == "NP" -> WordKind.NAME
             word.gloss == null -> WordKind.DERIVED
             word.hasGrammarCategory() -> WordKind.DERIVED
-            linksFrom[word.id]?.any { link -> link.type == Link.Agglutination && !link.toWord.isRoot() } == true -> WordKind.COMPOUND
+            linksFrom[word.id]?.any {
+                link -> link.type == Link.Agglutination && link.toEntity is Word && !link.toEntity.isRoot()
+            } == true -> WordKind.COMPOUND
             else -> WordKind.NORMAL
         }
     }
@@ -112,7 +117,9 @@ open class InMemoryGraphRepository : GraphRepository() {
         val result = mutableSetOf<Word>()
         result.add(word)
         for (link in getLinksTo(word)) {
-            result.add(link.fromWord)
+            if (link.fromEntity is Word) {
+                result.add(link.fromEntity)
+            }
         }
         return result
     }
@@ -170,12 +177,12 @@ open class InMemoryGraphRepository : GraphRepository() {
         wordsByText.remove(word)
         linksFrom[word.id]?.let {
             for (link in it.toList()) {
-                deleteLink(link.fromWord, link.toWord, link.type)
+                deleteLink(link.fromEntity, link.toEntity, link.type)
             }
         }
         linksTo[word.id]?.let {
             for (link in it.toList()) {
-                deleteLink(link.fromWord, link.toWord, link.type)
+                deleteLink(link.fromEntity, link.toEntity, link.type)
             }
         }
         allLangEntities[word.id] = null
@@ -195,34 +202,37 @@ open class InMemoryGraphRepository : GraphRepository() {
 
     override fun addLink(fromEntity: LangEntity, toEntity: LangEntity, type: LinkType, rules: List<Rule>, source: String?, notes: String?): Link {
         return createLink(fromEntity, toEntity, type, rules, source, notes).also {
-            linksFrom.getOrPut(it.fromWord.id) { mutableListOf() }.add(it)
-            linksTo.getOrPut(it.toWord.id) { mutableListOf() }.add(it)
+            linksFrom.getOrPut(it.fromEntity.id) { mutableListOf() }.add(it)
+            linksTo.getOrPut(it.toEntity.id) { mutableListOf() }.add(it)
         }
     }
 
     override fun substituteKnownWord(baseWord: Word, derivedWord: Word): Word {
         val links = linksTo[baseWord.id] ?: return derivedWord
         for (link in links) {
-            if (link.type == Link.Derived && link.fromWord.getOrComputeGloss(this) == derivedWord.gloss) {
-                return link.fromWord
+            if (link.type == Link.Derived) {
+                val fromEntity = link.fromEntity
+                if (fromEntity is Word && fromEntity.getOrComputeGloss(this) == derivedWord.gloss) {
+                    return fromEntity
+                }
             }
         }
         return derivedWord
     }
 
-    override fun deleteLink(fromWord: Word, toWord: Word, type: LinkType): Boolean {
-        val result = linksFrom.getOrPut(fromWord.id) { mutableListOf() }.removeIf { it.toWord == toWord && it.type == type }
-        linksTo.getOrPut(toWord.id) { mutableListOf() }.removeIf { it.fromWord == fromWord && it.type == type }
+    override fun deleteLink(fromEntity: LangEntity, toEntity: LangEntity, type: LinkType): Boolean {
+        val result = linksFrom.getOrPut(fromEntity.id) { mutableListOf() }.removeIf { it.toEntity == toEntity && it.type == type }
+        linksTo.getOrPut(toEntity.id) { mutableListOf() }.removeIf { it.fromEntity == fromEntity && it.type == type }
         return result
     }
 
-    override fun findLink(fromWord: Word, toWord: Word, type: LinkType): Link? {
-        return linksFrom[fromWord.id]?.find { it.toWord == toWord && it.type == type } ?:
-            linksFrom[toWord.id]?.find { it.fromWord == toWord && it.type == type }
+    override fun findLink(fromEntity: LangEntity, toEntity: LangEntity, type: LinkType): Link? {
+        return linksFrom[fromEntity.id]?.find { it.toEntity == toEntity && it.type == type } ?:
+            linksFrom[toEntity.id]?.find { it.fromEntity == toEntity && it.type == type }
     }
 
     protected open fun createLink(fromEntity: LangEntity, toEntity: LangEntity, type: LinkType, rules: List<Rule>, source: String?, notes: String?): Link {
-        return Link(fromEntity as Word, toEntity as Word, type, rules, source, notes)
+        return Link(fromEntity, toEntity, type, rules, source, notes)
     }
 
     override fun getLinksFrom(word: Word): Iterable<Link> {

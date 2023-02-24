@@ -4,6 +4,8 @@ abstract class GraphRepository {
     abstract fun allLanguages(): Iterable<Language>
     abstract fun languageByShortName(languageShortName: String): Language?
 
+    abstract fun langEntityById(id: Int): LangEntity?
+
     abstract fun allCorpusTexts(): Iterable<CorpusText>
     abstract fun corpusTextsInLanguage(lang: Language): Iterable<CorpusText>
     abstract fun corpusTextById(id: Int): CorpusText?
@@ -64,8 +66,8 @@ abstract class GraphRepository {
     abstract fun paradigmById(id: Int): Paradigm?
 
     abstract fun addLink(fromEntity: LangEntity, toEntity: LangEntity, type: LinkType, rules: List<Rule>, source: String?, notes: String?): Link
-    abstract fun deleteLink(fromWord: Word, toWord: Word, type: LinkType): Boolean
-    abstract fun findLink(fromWord: Word, toWord: Word, type: LinkType): Link?
+    abstract fun deleteLink(fromEntity: LangEntity, toEntity: LangEntity, type: LinkType): Boolean
+    abstract fun findLink(fromEntity: LangEntity, toEntity: LangEntity, type: LinkType): Link?
 
     abstract fun substituteKnownWord(baseWord: Word, derivedWord: Word): Word
 

@@ -2,9 +2,9 @@ package ru.yole.etymograph
 
 data class LinkType(val id: String, val name: String, val reverseName: String)
 
-open class Link(
-    val fromWord: Word,
-    val toWord: Word,
+class Link(
+    val fromEntity: LangEntity,
+    val toEntity: LangEntity,
     val type: LinkType,
     var rules: List<Rule>,
     var source: String?,

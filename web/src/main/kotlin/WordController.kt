@@ -82,12 +82,13 @@ class WordController(val graphService: GraphService) {
                 LinkTypeViewModel(
                     it.key.id,
                     it.key.name,
-                    it.value.map { link ->
-                        LinkWordViewModel(link.toWord.id, link.toWord.text, link.toWord.language.shortName,
-                            link.toWord.getOrComputeGloss(graph),
+                    it.value.filter { link -> link.toEntity is Word }.map { link ->
+                        val toWord = link.toEntity as Word
+                        LinkWordViewModel(link.toEntity.id, toWord.text, toWord.language.shortName,
+                            toWord.getOrComputeGloss(graph),
                             link.rules.map { it.id },
                             link.rules.map { it.name },
-                            graph.isHomonym(link.toWord)
+                            graph.isHomonym(toWord)
                         )
                     }
                 )
@@ -96,12 +97,13 @@ class WordController(val graphService: GraphService) {
                 LinkTypeViewModel(
                     it.key.id,
                     it.key.reverseName,
-                    it.value.map { link ->
-                        LinkWordViewModel(link.fromWord.id, link.fromWord.text, link.fromWord.language.shortName,
-                            link.fromWord.getOrComputeGloss(graph),
+                    it.value.filter { link -> link.fromEntity is Word }.map { link ->
+                        val fromWord = link.fromEntity as Word
+                        LinkWordViewModel(link.fromEntity.id, fromWord.text, fromWord.language.shortName,
+                            fromWord.getOrComputeGloss(graph),
                             link.rules.map { it.id },
                             link.rules.map { it.name },
-                            graph.isHomonym(link.fromWord)
+                            graph.isHomonym(fromWord)
                         )
                     }
                 )
