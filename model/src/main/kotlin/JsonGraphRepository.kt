@@ -74,7 +74,7 @@ class OtherwiseConditionData : RuleConditionData() {
 }
 
 @Serializable
-data class RuleInstructionData(val type: InstructionType, val arg: String)
+data class RuleInstructionData(val type: InstructionType, val args: Array<String>)
 
 @Serializable
 data class RuleBranchData(
@@ -238,10 +238,8 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
         for (digraphData in data.digraphs) {
             languageByShortName(digraphData.languageShortName)!!.digraphs = digraphData.digraphs
         }
-        data.letterNormalization?.let {
-            for (letterNormalizationData in it) {
-                languageByShortName(letterNormalizationData.languageShortName)!!.letterNormalization = letterNormalizationData.rules
-            }
+        for (letterNormalizationData in data.letterNormalization) {
+            languageByShortName(letterNormalizationData.languageShortName)!!.letterNormalization = letterNormalizationData.rules
         }
         for (word in data.words) {
             while (word.id > allWords.size) {
@@ -342,7 +340,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                 branches.map { branch ->
                     RuleBranchData(
                         branch.instructions.map { insn ->
-                            RuleInstructionData(insn.type, insn.arg)
+                            RuleInstructionData(insn.type, args = insn.argsToSerializedFormat())
                         },
                         branch.condition.toSerializedFormat()
                     )
@@ -352,6 +350,9 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                 source,
                 notes
             )
+
+        private fun RuleInstruction.argsToSerializedFormat(): Array<String> =
+            if (type.takesArgument) arrayOf(arg) else emptyArray()
 
         private fun RuleCondition.toSerializedFormat(): RuleConditionData = when(this) {
             is LeafRuleCondition -> LeafRuleConditionData(
@@ -374,7 +375,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                 RuleBranch(
                     branchData.condition!!.toRuntimeFormat(result, fromLanguage),
                     branchData.instructions.map { insnData ->
-                        RuleInstruction(insnData.type, insnData.arg)
+                        RuleInstruction(insnData.type, insnData.args.firstOrNull() ?: "")
                     }
                 )
             }

@@ -2777,6 +2777,47 @@
             "lang": "Q",
             "gloss": "ship.DAT.DU",
             "source": "Plotz"
+        },
+        {
+            "id": 390,
+            "text": "ciryalin",
+            "lang": "Q",
+            "gloss": "ship.DAT.PPL",
+            "source": "Plotz"
+        },
+        {
+            "id": 391,
+            "text": "ciryain",
+            "lang": "Q",
+            "gloss": "ship.DAT.PL"
+        },
+        {
+            "id": 392,
+            "text": "ciryo",
+            "lang": "Q",
+            "gloss": "ship.GEN",
+            "source": "Plotz"
+        },
+        {
+            "id": 393,
+            "text": "ciryato",
+            "lang": "Q",
+            "gloss": "ship.GEN.DU",
+            "source": "Plotz"
+        },
+        {
+            "id": 394,
+            "text": "ciryalion",
+            "lang": "Q",
+            "gloss": "ship.GEN.PPL",
+            "source": "Plotz"
+        },
+        {
+            "id": 395,
+            "text": "ciryaron",
+            "lang": "Q",
+            "gloss": "ship.GEN.PL",
+            "source": "Plotz"
         }
     ],
     "rules": [
@@ -2790,7 +2831,9 @@
                     "instructions": [
                         {
                             "type": "AddSuffix",
-                            "arg": "r"
+                            "args": [
+                                "r"
+                            ]
                         }
                     ],
                     "condition": {
@@ -2813,11 +2856,14 @@
                     "instructions": [
                         {
                             "type": "RemoveLastCharacter",
-                            "arg": ""
+                            "args": [
+                            ]
                         },
                         {
                             "type": "AddSuffix",
-                            "arg": "i"
+                            "args": [
+                                "i"
+                            ]
                         }
                     ],
                     "condition": {
@@ -2840,7 +2886,9 @@
                     "instructions": [
                         {
                             "type": "AddSuffix",
-                            "arg": "r"
+                            "args": [
+                                "r"
+                            ]
                         }
                     ],
                     "condition": {
@@ -2853,7 +2901,9 @@
                     "instructions": [
                         {
                             "type": "AddSuffix",
-                            "arg": "i"
+                            "args": [
+                                "i"
+                            ]
                         }
                     ],
                     "condition": {
@@ -2876,11 +2926,14 @@
                     "instructions": [
                         {
                             "type": "RemoveLastCharacter",
-                            "arg": ""
+                            "args": [
+                            ]
                         },
                         {
                             "type": "AddSuffix",
-                            "arg": "o"
+                            "args": [
+                                "o"
+                            ]
                         }
                     ],
                     "condition": {
@@ -2903,7 +2956,8 @@
                     "instructions": [
                         {
                             "type": "NoChange",
-                            "arg": ""
+                            "args": [
+                            ]
                         }
                     ],
                     "condition": {
@@ -2926,7 +2980,9 @@
                     "instructions": [
                         {
                             "type": "AddSuffix",
-                            "arg": "o"
+                            "args": [
+                                "o"
+                            ]
                         }
                     ],
                     "condition": {
@@ -2934,7 +2990,8 @@
                     }
                 }
             ],
-            "addedCategories": ".GEN"
+            "addedCategories": ".GEN",
+            "source": "https://eldamo.org/content/words/word-2537177661.html"
         },
         {
             "id": 2,
@@ -2946,7 +3003,9 @@
                     "instructions": [
                         {
                             "type": "AddSuffix",
-                            "arg": "llo"
+                            "args": [
+                                "llo"
+                            ]
                         }
                     ],
                     "condition": {
@@ -2959,7 +3018,9 @@
                     "instructions": [
                         {
                             "type": "AddSuffix",
-                            "arg": "ello"
+                            "args": [
+                                "ello"
+                            ]
                         }
                     ],
                     "condition": {
@@ -2967,7 +3028,8 @@
                     }
                 }
             ],
-            "addedCategories": ".ABL"
+            "addedCategories": ".ABL",
+            "source": "https://eldamo.org/content/words/word-3384394593.html"
         },
         {
             "id": 3,
@@ -2979,7 +3041,9 @@
                     "instructions": [
                         {
                             "type": "AddSuffix",
-                            "arg": "nna"
+                            "args": [
+                                "nna"
+                            ]
                         }
                     ],
                     "condition": {
@@ -3001,7 +3065,9 @@
                     "instructions": [
                         {
                             "type": "AddSuffix",
-                            "arg": "rya"
+                            "args": [
+                                "rya"
+                            ]
                         }
                     ],
                     "condition": {
@@ -3021,7 +3087,9 @@
                     "instructions": [
                         {
                             "type": "AddSuffix",
-                            "arg": "lye"
+                            "args": [
+                                "lye"
+                            ]
                         }
                     ],
                     "condition": {
@@ -3041,7 +3109,9 @@
                     "instructions": [
                         {
                             "type": "AddSuffix",
-                            "arg": "nye"
+                            "args": [
+                                "nye"
+                            ]
                         }
                     ],
                     "condition": {
@@ -3061,7 +3131,9 @@
                     "instructions": [
                         {
                             "type": "AddSuffix",
-                            "arg": "tye"
+                            "args": [
+                                "tye"
+                            ]
                         }
                     ],
                     "condition": {
@@ -3082,7 +3154,9 @@
                     "instructions": [
                         {
                             "type": "AddSuffix",
-                            "arg": "en"
+                            "args": [
+                                "en"
+                            ]
                         }
                     ],
                     "condition": {
@@ -3095,7 +3169,9 @@
                     "instructions": [
                         {
                             "type": "AddSuffix",
-                            "arg": "n"
+                            "args": [
+                                "n"
+                            ]
                         }
                     ],
                     "condition": {
@@ -3116,7 +3192,9 @@
                     "instructions": [
                         {
                             "type": "AddSuffix",
-                            "arg": "on"
+                            "args": [
+                                "on"
+                            ]
                         }
                     ],
                     "condition": {
@@ -3138,7 +3216,9 @@
                     "instructions": [
                         {
                             "type": "AddSuffix",
-                            "arg": "nen"
+                            "args": [
+                                "nen"
+                            ]
                         }
                     ],
                     "condition": {
@@ -3151,7 +3231,9 @@
                     "instructions": [
                         {
                             "type": "AddSuffix",
-                            "arg": "men"
+                            "args": [
+                                "men"
+                            ]
                         }
                     ],
                     "condition": {
@@ -3174,7 +3256,9 @@
                     "instructions": [
                         {
                             "type": "AddSuffix",
-                            "arg": "wen"
+                            "args": [
+                                "wen"
+                            ]
                         }
                     ],
                     "condition": {
@@ -3197,7 +3281,9 @@
                     "instructions": [
                         {
                             "type": "AddSuffix",
-                            "arg": "anen"
+                            "args": [
+                                "anen"
+                            ]
                         }
                     ],
                     "condition": {
@@ -3219,15 +3305,19 @@
                     "instructions": [
                         {
                             "type": "RemoveLastCharacter",
-                            "arg": ""
+                            "args": [
+                            ]
                         },
                         {
                             "type": "RemoveLastCharacter",
-                            "arg": ""
+                            "args": [
+                            ]
                         },
                         {
                             "type": "AddSuffix",
-                            "arg": "ie"
+                            "args": [
+                                "ie"
+                            ]
                         }
                     ],
                     "condition": {
@@ -3240,11 +3330,14 @@
                     "instructions": [
                         {
                             "type": "RemoveLastCharacter",
-                            "arg": ""
+                            "args": [
+                            ]
                         },
                         {
                             "type": "AddSuffix",
-                            "arg": "e"
+                            "args": [
+                                "e"
+                            ]
                         }
                     ],
                     "condition": {
@@ -3257,11 +3350,14 @@
                     "instructions": [
                         {
                             "type": "RemoveLastCharacter",
-                            "arg": ""
+                            "args": [
+                            ]
                         },
                         {
                             "type": "AddSuffix",
-                            "arg": "i"
+                            "args": [
+                                "i"
+                            ]
                         }
                     ],
                     "condition": {
@@ -3274,7 +3370,9 @@
                     "instructions": [
                         {
                             "type": "AddSuffix",
-                            "arg": "i"
+                            "args": [
+                                "i"
+                            ]
                         }
                     ],
                     "condition": {
@@ -3296,7 +3394,9 @@
                     "instructions": [
                         {
                             "type": "AddSuffix",
-                            "arg": "va"
+                            "args": [
+                                "va"
+                            ]
                         }
                     ],
                     "condition": {
@@ -3309,7 +3409,9 @@
                     "instructions": [
                         {
                             "type": "AddSuffix",
-                            "arg": "wa"
+                            "args": [
+                                "wa"
+                            ]
                         }
                     ],
                     "condition": {
@@ -3331,7 +3433,9 @@
                     "instructions": [
                         {
                             "type": "AddSuffix",
-                            "arg": "ssen"
+                            "args": [
+                                "ssen"
+                            ]
                         }
                     ],
                     "condition": {
@@ -3344,7 +3448,9 @@
                     "instructions": [
                         {
                             "type": "AddSuffix",
-                            "arg": "issen"
+                            "args": [
+                                "issen"
+                            ]
                         }
                     ],
                     "condition": {
@@ -3366,7 +3472,9 @@
                     "instructions": [
                         {
                             "type": "AddSuffix",
-                            "arg": "sse"
+                            "args": [
+                                "sse"
+                            ]
                         }
                     ],
                     "condition": {
@@ -3379,7 +3487,9 @@
                     "instructions": [
                         {
                             "type": "AddSuffix",
-                            "arg": "esse"
+                            "args": [
+                                "esse"
+                            ]
                         }
                     ],
                     "condition": {
@@ -3401,7 +3511,9 @@
                     "instructions": [
                         {
                             "type": "AddSuffix",
-                            "arg": "t"
+                            "args": [
+                                "t"
+                            ]
                         }
                     ],
                     "condition": {
@@ -3414,7 +3526,9 @@
                     "instructions": [
                         {
                             "type": "AddSuffix",
-                            "arg": "u"
+                            "args": [
+                                "u"
+                            ]
                         }
                     ],
                     "condition": {
@@ -3436,11 +3550,14 @@
                     "instructions": [
                         {
                             "type": "RemoveLastCharacter",
-                            "arg": ""
+                            "args": [
+                            ]
                         },
                         {
                             "type": "AddSuffix",
-                            "arg": "lli"
+                            "args": [
+                                "lli"
+                            ]
                         }
                     ],
                     "condition": {
@@ -3463,7 +3580,9 @@
                     "instructions": [
                         {
                             "type": "AddSuffix",
-                            "arg": "li"
+                            "args": [
+                                "li"
+                            ]
                         }
                     ],
                     "condition": {
@@ -3496,7 +3615,9 @@
                     "instructions": [
                         {
                             "type": "AddSuffix",
-                            "arg": "lya"
+                            "args": [
+                                "lya"
+                            ]
                         }
                     ],
                     "condition": {
@@ -3518,7 +3639,9 @@
                     "instructions": [
                         {
                             "type": "AddSuffix",
-                            "arg": "elma"
+                            "args": [
+                                "elma"
+                            ]
                         }
                     ],
                     "condition": {
@@ -3531,7 +3654,9 @@
                     "instructions": [
                         {
                             "type": "AddSuffix",
-                            "arg": "lma"
+                            "args": [
+                                "lma"
+                            ]
                         }
                     ],
                     "condition": {
@@ -3554,11 +3679,14 @@
                     "instructions": [
                         {
                             "type": "RemoveLastCharacter",
-                            "arg": ""
+                            "args": [
+                            ]
                         },
                         {
                             "type": "AddSuffix",
-                            "arg": "úva"
+                            "args": [
+                                "úva"
+                            ]
                         }
                     ],
                     "condition": {
@@ -3571,11 +3699,14 @@
                     "instructions": [
                         {
                             "type": "RemoveLastCharacter",
-                            "arg": ""
+                            "args": [
+                            ]
                         },
                         {
                             "type": "AddSuffix",
-                            "arg": "uva"
+                            "args": [
+                                "uva"
+                            ]
                         }
                     ],
                     "condition": {
@@ -3588,7 +3719,9 @@
                     "instructions": [
                         {
                             "type": "AddSuffix",
-                            "arg": "uva"
+                            "args": [
+                                "uva"
+                            ]
                         }
                     ],
                     "condition": {
@@ -3610,11 +3743,14 @@
                     "instructions": [
                         {
                             "type": "RemoveLastCharacter",
-                            "arg": ""
+                            "args": [
+                            ]
                         },
                         {
                             "type": "AddSuffix",
-                            "arg": "ië"
+                            "args": [
+                                "ië"
+                            ]
                         }
                     ],
                     "condition": {
@@ -3627,7 +3763,9 @@
                     "instructions": [
                         {
                             "type": "AddSuffix",
-                            "arg": "ië"
+                            "args": [
+                                "ië"
+                            ]
                         }
                     ],
                     "condition": {
@@ -3649,7 +3787,9 @@
                     "instructions": [
                         {
                             "type": "ChangeSound",
-                            "arg": "f"
+                            "args": [
+                                "f"
+                            ]
                         }
                     ],
                     "condition": {
@@ -3662,7 +3802,9 @@
                     "instructions": [
                         {
                             "type": "ChangeSound",
-                            "arg": "h"
+                            "args": [
+                                "h"
+                            ]
                         }
                     ],
                     "condition": {
@@ -3675,7 +3817,9 @@
                     "instructions": [
                         {
                             "type": "ChangeSound",
-                            "arg": "s"
+                            "args": [
+                                "s"
+                            ]
                         }
                     ],
                     "condition": {
@@ -3699,7 +3843,8 @@
                     "instructions": [
                         {
                             "type": "SoundDisappears",
-                            "arg": ""
+                            "args": [
+                            ]
                         }
                     ],
                     "condition": {
@@ -3734,7 +3879,9 @@
                     "instructions": [
                         {
                             "type": "AddSuffix",
-                            "arg": "lme"
+                            "args": [
+                                "lme"
+                            ]
                         }
                     ],
                     "condition": {
@@ -3756,7 +3903,8 @@
                     "instructions": [
                         {
                             "type": "NoChange",
-                            "arg": ""
+                            "args": [
+                            ]
                         }
                     ],
                     "condition": {
@@ -3779,7 +3927,9 @@
                     "instructions": [
                         {
                             "type": "AddSuffix",
-                            "arg": "e"
+                            "args": [
+                                "e"
+                            ]
                         }
                     ],
                     "condition": {
@@ -3801,7 +3951,9 @@
                     "instructions": [
                         {
                             "type": "AddSuffix",
-                            "arg": "a"
+                            "args": [
+                                "a"
+                            ]
                         }
                     ],
                     "condition": {
@@ -3823,7 +3975,9 @@
                     "instructions": [
                         {
                             "type": "AddSuffix",
-                            "arg": "t"
+                            "args": [
+                                "t"
+                            ]
                         }
                     ],
                     "condition": {
@@ -3845,7 +3999,8 @@
                     "instructions": [
                         {
                             "type": "NoChange",
-                            "arg": ""
+                            "args": [
+                            ]
                         }
                     ],
                     "condition": {
@@ -3868,7 +4023,9 @@
                     "instructions": [
                         {
                             "type": "AddSuffix",
-                            "arg": "i"
+                            "args": [
+                                "i"
+                            ]
                         }
                     ],
                     "condition": {
@@ -3890,7 +4047,9 @@
                     "instructions": [
                         {
                             "type": "AddSuffix",
-                            "arg": "r"
+                            "args": [
+                                "r"
+                            ]
                         }
                     ],
                     "condition": {
@@ -3912,7 +4071,9 @@
                     "instructions": [
                         {
                             "type": "AddSuffix",
-                            "arg": "ya"
+                            "args": [
+                                "ya"
+                            ]
                         }
                     ],
                     "condition": {
@@ -3934,11 +4095,14 @@
                     "instructions": [
                         {
                             "type": "RemoveLastCharacter",
-                            "arg": ""
+                            "args": [
+                            ]
                         },
                         {
                             "type": "AddSuffix",
-                            "arg": "in"
+                            "args": [
+                                "in"
+                            ]
                         }
                     ],
                     "condition": {
@@ -3951,7 +4115,9 @@
                     "instructions": [
                         {
                             "type": "AddSuffix",
-                            "arg": "in"
+                            "args": [
+                                "in"
+                            ]
                         }
                     ],
                     "condition": {
@@ -3973,7 +4139,9 @@
                     "instructions": [
                         {
                             "type": "AddSuffix",
-                            "arg": "nt"
+                            "args": [
+                                "nt"
+                            ]
                         }
                     ],
                     "condition": {
@@ -3986,7 +4154,9 @@
                     "instructions": [
                         {
                             "type": "AddSuffix",
-                            "arg": "un"
+                            "args": [
+                                "un"
+                            ]
                         }
                     ],
                     "condition": {
@@ -5606,6 +5776,58 @@
             "type": ">",
             "ruleIds": [
                 32
+            ]
+        },
+        {
+            "from": 390,
+            "to": 387,
+            "type": ">",
+            "ruleIds": [
+                16,
+                8
+            ]
+        },
+        {
+            "from": 391,
+            "to": 387,
+            "type": ">",
+            "ruleIds": [
+                31
+            ]
+        },
+        {
+            "from": 392,
+            "to": 387,
+            "type": ">",
+            "ruleIds": [
+                1
+            ]
+        },
+        {
+            "from": 393,
+            "to": 387,
+            "type": ">",
+            "ruleIds": [
+                15,
+                1
+            ]
+        },
+        {
+            "from": 394,
+            "to": 387,
+            "type": ">",
+            "ruleIds": [
+                16,
+                9
+            ]
+        },
+        {
+            "from": 395,
+            "to": 387,
+            "type": ">",
+            "ruleIds": [
+                0,
+                9
             ]
         }
     ],
