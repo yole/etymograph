@@ -4,9 +4,7 @@ import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Test
 
-class GraphRepositoryTest {
-    val q = Language("Quenya", "Q")
-
+class GraphRepositoryTest : QBaseTest() {
     @Test
     fun links() {
         val repo = InMemoryGraphRepository()

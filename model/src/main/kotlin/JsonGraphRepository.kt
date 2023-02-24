@@ -45,7 +45,7 @@ data class LeafRuleConditionData(
     override fun toRuntimeFormat(result: JsonGraphRepository, fromLanguage: Language): RuleCondition {
         return LeafRuleCondition(
             type,
-            characterClassName?.let { className -> fromLanguage.characterClassByName(className) },
+            characterClassName?.let { className -> fromLanguage.phonemeClassByName(className) },
             characters,
             negated
         )
@@ -352,7 +352,13 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             )
 
         private fun RuleInstruction.argsToSerializedFormat(): Array<String> =
-            if (type.takesArgument) arrayOf(arg) else emptyArray()
+            when (this) {
+                is ApplySoundRuleInstruction -> arrayOf(
+                    ruleRef.resolve().id.toString(),
+                    seekTarget.toEditableText()
+                )
+                else -> if (type.takesArgument) arrayOf(arg) else emptyArray()
+            }
 
         private fun RuleCondition.toSerializedFormat(): RuleConditionData = when(this) {
             is LeafRuleCondition -> LeafRuleConditionData(
@@ -366,7 +372,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             is OtherwiseCondition -> OtherwiseConditionData()
         }
 
-        private fun ruleBranchesFromSerializedFormat(
+        fun ruleBranchesFromSerializedFormat(
             result: JsonGraphRepository,
             fromLanguage: Language,
             branches: List<RuleBranchData>
@@ -375,11 +381,30 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                 RuleBranch(
                     branchData.condition!!.toRuntimeFormat(result, fromLanguage),
                     branchData.instructions.map { insnData ->
-                        RuleInstruction(insnData.type, insnData.args.firstOrNull() ?: "")
+                        ruleInstructionFromSerializedFormat(result, fromLanguage, insnData)
                     }
                 )
             }
         }
+
+        private fun ruleInstructionFromSerializedFormat(
+            result: JsonGraphRepository,
+            fromLanguage: Language,
+            insnData: RuleInstructionData
+        ): RuleInstruction =
+            when (insnData.type) {
+                InstructionType.ApplySoundRule ->
+                    ApplySoundRuleInstruction(fromLanguage, ruleRef(result, insnData.args[0].toInt()), insnData.args[1])
+                else ->
+                    RuleInstruction(insnData.type, insnData.args.firstOrNull() ?: "")
+            }
+
+        private fun ruleRef(repo: JsonGraphRepository, ruleId: Int) =
+            object : RuleRef {
+                override fun resolve(): Rule {
+                    return repo.ruleById(ruleId)!!
+                }
+            }
     }
 }
 

@@ -3,9 +3,7 @@ package ru.yole.etymograph
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
-class ParadigmTest {
-    val q = Language("Quenya", "Q")
-
+class ParadigmTest : QBaseTest() {
     @Test
     fun paradigm() {
         val repo = InMemoryGraphRepository()
@@ -17,7 +15,7 @@ class ParadigmTest {
         paradigm.addColumn("Sg")
 
         paradigm.setRule(0, 0, listOf(emptyList()))
-        val genRule = repo.addRule("q-gen", q, q, Rule.parseBranches("- add suffix 'o'", q), ".GEN", null, null, null)
+        val genRule = repo.addRule("q-gen", q, q, Rule.parseBranches("- add suffix 'o'", q.parseContext()), ".GEN", null, null, null)
         paradigm.setRule(1, 0, listOf(listOf(genRule)))
 
         val lasse = repo.findOrAddWord("lasse", q, "leaf", pos = "N")
@@ -32,13 +30,13 @@ class ParadigmTest {
         val repo = InMemoryGraphRepository()
         repo.addLanguage(q)
 
-        val plRule = repo.addRule("q-nom-pl", q, q, Rule.parseBranches("- add suffix 'r'", q), ".PL", null, null, null)
-        val genRule = repo.addRule("q-gen", q, q, Rule.parseBranches("- add suffix 'o'", q), ".GEN", null, null, null)
+        val plRule = repo.addRule("q-nom-pl", q, q, Rule.parseBranches("- add suffix 'r'", q.parseContext()), ".PL", null, null, null)
+        val genRule = repo.addRule("q-gen", q, q, Rule.parseBranches("- add suffix 'o'", q.parseContext()), ".GEN", null, null, null)
         val genPlRule = repo.addRule(
             "q-gen-pl",
             q,
             q,
-            Rule.parseBranches("- add suffix 'on'", q),
+            Rule.parseBranches("- add suffix 'on'", q.parseContext()),
             ".GEN.PL",
             null,
             null,

@@ -1,12 +1,43 @@
 package ru.yole.etymograph
 
-import java.util.*
+class SeekTarget(val index: Int, val phonemeClass: PhonemeClass) {
+    fun toEditableText(): String {
+        for (ordinal in ordinals) {
+            if (index == ordinal.value) {
+                return "${ordinal.key} ${phonemeClass.name}"
+            }
+        }
+        return "$index ${phonemeClass.name}"
+    }
 
-class PhonemeIterator(val word: Word) {
-    private val phonemes = splitPhonemes(word.normalizedText.trimEnd('-'), word.language.digraphs)
+    companion object {
+        val ordinals = mapOf(
+            "first" to 1,
+            "second" to 2,
+            "third" to 3
+        )
+
+        fun parse(s: String, language: Language): SeekTarget {
+            for (ordinal in ordinals) {
+                if (s.startsWith(ordinal.key)) {
+                    val phonemeClassName = s.removePrefix(ordinal.key).trim()
+                    val phonemeClass = language.phonemeClassByName(phonemeClassName)
+                        ?: throw RuleParseException("Unknown phoneme class '$phonemeClassName'")
+                    return SeekTarget(ordinal.value, phonemeClass)
+                }
+            }
+            throw RuleParseException("Cannot parse seek target $s")
+        }
+    }
+}
+
+class PhonemeIterator(text: String, language: Language) {
+    private val phonemes = splitPhonemes(text, language.digraphs)
     private val resultPhonemes = phonemes.toMutableList()
     private var phonemeIndex = 0
     private var resultPhonemeIndex = 0
+
+    constructor(word: Word) : this(word.normalizedText.trimEnd('-'), word.language)
 
     val current: String get() = phonemes[phonemeIndex]
     val previous: String? get() = phonemes.getOrNull(phonemeIndex - 1)
@@ -17,6 +48,21 @@ class PhonemeIterator(val word: Word) {
             phonemeIndex++
             resultPhonemeIndex++
             return true
+        }
+        return false
+    }
+
+    fun seek(seekTarget: SeekTarget): Boolean {
+        var foundCount = 0
+        for (targetPhonemeIndex in phonemes.indices) {
+            if (phonemes[targetPhonemeIndex] in seekTarget.phonemeClass.matchingPhonemes) {
+                foundCount++
+                if (foundCount == seekTarget.index) {
+                    phonemeIndex = targetPhonemeIndex
+                    resultPhonemeIndex = targetPhonemeIndex
+                    return true
+                }
+            }
         }
         return false
     }

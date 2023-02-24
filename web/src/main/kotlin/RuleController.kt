@@ -107,7 +107,7 @@ class RuleController(val graphService: GraphService) {
         val toLanguage = graphService.resolveLanguage(params.toLang)
 
         val branches = try {
-            Rule.parseBranches(params.text, fromLanguage)
+            Rule.parseBranches(params.text, parseContext(fromLanguage, toLanguage))
         }
         catch (e: RuleParseException) {
             throw ResponseStatusException(HttpStatus.BAD_REQUEST, e.message, e)
@@ -127,12 +127,17 @@ class RuleController(val graphService: GraphService) {
         return rule.toViewModel()
     }
 
+    private fun parseContext(fromLanguage: Language, toLanguage: Language): RuleParseContext =
+        RuleParseContext(fromLanguage, toLanguage) {
+            RuleRef.to(graphService.graph.ruleByName(it) ?: throw RuleParseException("No rule with name $it"))
+        }
+
     @PostMapping("/rule/{id}", consumes = ["application/json"])
     @ResponseBody
     fun updateRule(@PathVariable id: Int, @RequestBody params: UpdateRuleParameters) {
         val graph = graphService.graph
         val rule = resolveRule(id)
-        rule.branches = Rule.parseBranches(params.text, rule.fromLanguage)
+        rule.branches = Rule.parseBranches(params.text, parseContext(rule.fromLanguage, rule.toLanguage))
         rule.notes = params.notes
         rule.addedCategories = params.addedCategories.nullize()
         rule.replacedCategories = params.replacedCategories.nullize()

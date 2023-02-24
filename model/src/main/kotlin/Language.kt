@@ -9,7 +9,7 @@ class Language(val name: String, val shortName: String) {
     var phonemeClasses = mutableListOf<PhonemeClass>()
     var letterNormalization = mapOf<String, String>()
 
-    fun characterClassByName(name: String) = phonemeClasses.find { it.name == name }
+    fun phonemeClassByName(name: String) = phonemeClasses.find { it.name == name }
 
     fun normalizeWord(text: String): String {
         return text.lowercase(Locale.FRANCE)

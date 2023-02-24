@@ -3,18 +3,7 @@ package ru.yole.etymograph
 import org.junit.Assert.*
 import org.junit.Test
 
-class RuleTest {
-    val q = Language("Quenya", "Q")
-    val ce = Language("Common Eldarin", "CE")
-    val v = PhonemeClass("vowel", listOf("a", "o", "u", "i", "e"))
-    val nasals = PhonemeClass("nasal", listOf("m", "n"))
-
-    init {
-        ce.digraphs = listOf("kh", "th")
-        q.phonemeClasses.add(v)
-        ce.phonemeClasses.add(nasals)
-    }
-
+class RuleTest : QBaseTest() {
     @Test
     fun conditions() {
         val c = LeafRuleCondition(ConditionType.EndsWith, v, null, false)
@@ -25,7 +14,7 @@ class RuleTest {
     @Test
     fun instructions() {
         val i = RuleInstruction(InstructionType.RemoveLastCharacter, "")
-        assertEquals("parm", i.apply("parma"))
+        assertEquals("parm", i.apply("parma", q))
     }
 
     @Test
@@ -71,10 +60,10 @@ class RuleTest {
 
     @Test
     fun instructionParse() {
-        val i = RuleInstruction.parse("remove last character")
+        val i = RuleInstruction.parse("remove last character", q.parseContext())
         assertEquals(InstructionType.RemoveLastCharacter, i.type)
 
-        val i2 = RuleInstruction.parse("add suffix 'a'")
+        val i2 = RuleInstruction.parse("add suffix 'a'", q.parseContext())
         assertEquals(InstructionType.AddSuffix, i2.type)
         assertEquals("a", i2.arg)
     }
@@ -84,7 +73,7 @@ class RuleTest {
         val b = RuleBranch.parse("""
             word ends with 'e':
             - add suffix 'a'
-        """.trimIndent(), q)
+        """.trimIndent(), q.parseContext())
         assertEquals("e", (b.condition as LeafRuleCondition).parameter)
         assertEquals("a", b.instructions[0].arg)
     }
@@ -96,7 +85,7 @@ class RuleTest {
             - add suffix 'a'
             word ends with 'i':
             - add suffix 'r'
-        """.trimIndent(), q)
+        """.trimIndent(), q.parseContext())
         assertEquals(2, branches.size)
         assertEquals(1, branches[0].instructions.size)
         assertEquals(1, branches[1].instructions.size)
@@ -106,7 +95,7 @@ class RuleTest {
     fun ruleParseWithoutConditions() {
         val branches = Rule.parseBranches("""
             - add suffix 'lye'
-        """.trimIndent(), q)
+        """.trimIndent(), q.parseContext())
         assertEquals(1, branches.size)
         assertEquals(1, branches[0].instructions.size)
         assertTrue(branches[0].matches(Word(0, "abc", q)))
@@ -119,7 +108,7 @@ class RuleTest {
             - add suffix 'a'
             otherwise:
             - add suffix 'r'
-        """.trimIndent(), q)
+        """.trimIndent(), q.parseContext())
         assertEquals(2, branches.size)
         assertEquals(1, branches[0].instructions.size)
         assertEquals(OtherwiseCondition, branches[1].condition)
@@ -127,7 +116,7 @@ class RuleTest {
 
     @Test
     fun phonemeIterator() {
-        val it = PhonemeIterator(Word(0, "khith", ce))
+        val it = PhonemeIterator(ce.word("khith"))
         assertEquals("kh", it.current)
         assertTrue(it.advance())
         assertEquals("i", it.current)
@@ -138,14 +127,14 @@ class RuleTest {
 
     @Test
     fun phonemeCondition() {
-        val it = PhonemeIterator(Word(0, "khith", ce))
+        val it = PhonemeIterator(ce.word("khith"))
         val cond = LeafRuleCondition(ConditionType.PhonemeMatches, null, "kh", false)
         assertTrue(cond.matches(it))
     }
 
     @Test
     fun phonemeConditionParse() {
-        val it = PhonemeIterator(Word(0, "khith", ce))
+        val it = PhonemeIterator(ce.word("khith"))
         val cond = RuleCondition.parse("sound is 'kh'", ce)
         assertTrue(cond.matches(it))
     }
@@ -164,11 +153,6 @@ class RuleTest {
         assertEquals("his", rule.apply(Word(-1, "khith", ce)).text)
     }
 
-    private fun parseRule(fromLanguage: Language, toLanguage: Language, text: String): Rule = Rule(
-        -1, "q", fromLanguage, toLanguage,
-        Rule.parseBranches(text, fromLanguage), null, null, null, null
-    )
-
     @Test
     fun soundDisappears() {
         val rule = parseRule(ce, q, """
@@ -177,7 +161,7 @@ class RuleTest {
             sound is 'th':
             - new sound is 's'
         """.trimIndent())
-        assertEquals("khs", rule.apply(Word(-1, "khithi", ce)).text)
+        assertEquals("khs", rule.apply(ce.word("khithi")).text)
     }
 
     @Test
@@ -186,7 +170,7 @@ class RuleTest {
             sound is 'i' and previous sound is 'kh':
             - sound disappears
         """.trimIndent())
-        assertEquals("khthi", rule.apply(Word(-1, "khithi", ce)).text)
+        assertEquals("khthi", rule.apply(ce.word("khithi")).text)
     }
 
     @Test
@@ -195,6 +179,52 @@ class RuleTest {
             sound is 'i' and previous sound is not 'kh':
             - sound disappears
         """.trimIndent())
-        assertEquals("khith", rule.apply(Word(-1, "khithi", ce)).text)
+        assertEquals("khith", rule.apply(ce.word("khithi")).text)
+    }
+
+    @Test
+    fun applySoundRule() {
+        val soundRule = parseRule(q, q, """
+            sound is 'a':
+            - new sound is 'á'
+        """.trimIndent())
+        val applySoundRuleInstruction = ApplySoundRuleInstruction(q, RuleRef.to(soundRule), "first vowel")
+        assertEquals("lásse", applySoundRuleInstruction.apply("lasse", q))
+    }
+
+    @Test
+    fun parseApplySoundRule() {
+        val soundRule = parseRule(q, q, """
+            sound is 'a':
+            - new sound is 'á'
+        """.trimIndent())
+        val parseContext = RuleParseContext(q, q) {
+            if (it == "q-lengthen") RuleRef.to(soundRule) else throw RuleParseException("no such rule")
+        }
+        val applySoundRule = Rule(-1, "q-lengthen", q, q, Rule.parseBranches("""
+            - apply sound rule 'q-lengthen' to first vowel
+        """.trimIndent(), parseContext), null, null, null, null)
+        assertEquals("lásse", applySoundRule.apply(q.word("lasse")).text)
+    }
+
+    @Test fun soundRuleToEditableText() {
+        val soundRule = parseRule(q, q, """
+            sound is 'a':
+            - new sound is 'á'
+        """.trimIndent())
+        val applySoundRuleInstruction = ApplySoundRuleInstruction(q, RuleRef.to(soundRule), "first vowel")
+        assertEquals("apply sound rule 'q' to first vowel", applySoundRuleInstruction.toEditableText())
     }
 }
+
+fun Language.word(text: String) = Word(-1, text, this)
+
+fun Language.parseContext() = RuleParseContext(this, this) { throw RuleParseException("no such rule") }
+
+fun parseRule(fromLanguage: Language, toLanguage: Language, text: String): Rule = Rule(
+    -1, "q", fromLanguage, toLanguage,
+    Rule.parseBranches(text,
+        RuleParseContext(fromLanguage, toLanguage) { throw RuleParseException("no such rule") }
+    ),
+    null, null, null, null
+)

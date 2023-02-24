@@ -2,11 +2,31 @@ package ru.yole.etymograph
 
 class RuleParseException(msg: String): RuntimeException(msg)
 
+interface RuleRef {
+    fun resolve(): Rule
+
+    companion object {
+        fun to(rule: Rule): RuleRef {
+            return object : RuleRef {
+                override fun resolve(): Rule {
+                    return rule
+                }
+            }
+        }
+    }
+}
+
+class RuleParseContext(
+    val fromLanguage: Language,
+    val toLanguage: Language,
+    val ruleRefFactory: (String) -> RuleRef
+)
+
 class RuleBranch(val condition: RuleCondition, val instructions: List<RuleInstruction>) {
     fun matches(word: Word) = condition.matches(word)
 
     fun apply(word: Word): String {
-        return instructions.fold(word.text.trimEnd('-')) { s, i -> i.apply(s) }
+        return instructions.fold(word.text.trimEnd('-')) { s, i -> i.apply(s, word.language) }
     }
 
     fun toEditableText(): String {
@@ -19,12 +39,12 @@ class RuleBranch(val condition: RuleCondition, val instructions: List<RuleInstru
     }
 
     companion object {
-        fun parse(s: String, language: Language): RuleBranch {
+        fun parse(s: String, context: RuleParseContext): RuleBranch {
             var lines = s.split("\n").map { it.trim() }.filter { it.isNotEmpty() }
             val condition = if (lines[0].endsWith(":")) {
                 val conditionList = lines[0].removeSuffix(":")
                 lines = lines.drop(1)
-                RuleCondition.parse(conditionList, language)
+                RuleCondition.parse(conditionList, context.fromLanguage)
             }
             else {
                 OtherwiseCondition
@@ -33,7 +53,7 @@ class RuleBranch(val condition: RuleCondition, val instructions: List<RuleInstru
                 if (!it.startsWith("-")) {
                     throw RuleParseException("Instructions must start with -")
                 }
-                RuleInstruction.parse(it.removePrefix("-").trim())
+                RuleInstruction.parse(it.removePrefix("-").trim(), context)
             }
             return RuleBranch(condition, instructions)
         }
@@ -59,14 +79,7 @@ class Rule(
         if (branches.any { it.condition.isPhonemic() }) {
             val phonemes = PhonemeIterator(word)
             while (true) {
-                for (branch in branches) {
-                    if (branch.condition.matches(phonemes)) {
-                        for (instruction in branch.instructions) {
-                            instruction.apply(word, phonemes)
-                        }
-                        break
-                    }
-                }
+                applyToPhoneme(phonemes)
                 if (!phonemes.advance()) break
             }
             return deriveWord(word, phonemes.result())
@@ -79,6 +92,17 @@ class Rule(
             }
         }
         return word
+    }
+
+    fun applyToPhoneme(phonemes: PhonemeIterator) {
+        for (branch in branches) {
+            if (branch.condition.matches(phonemes)) {
+                for (instruction in branch.instructions) {
+                    instruction.apply(phonemes)
+                }
+                break
+            }
+        }
     }
 
     private fun deriveWord(word: Word, text: String): Word {
@@ -101,7 +125,7 @@ class Rule(
     }
 
     companion object {
-        fun parseBranches(s: String, language: Language): List<RuleBranch> {
+        fun parseBranches(s: String, context: RuleParseContext): List<RuleBranch> {
             if (s.isBlank()) return emptyList()
             val lines = s.split('\n').map { it.trim() }.filter { it.isNotEmpty() }
             val branchTexts = mutableListOf<List<String>>()
@@ -116,7 +140,7 @@ class Rule(
             if (branchTexts.isEmpty()) {   // rule with no conditions
                 branchTexts.add(currentBranchText)
             }
-            return branchTexts.map { RuleBranch.parse(it.joinToString("\n"), language) }
+            return branchTexts.map { RuleBranch.parse(it.joinToString("\n"), context) }
         }
     }
 }

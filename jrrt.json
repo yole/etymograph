@@ -1087,7 +1087,6 @@
             "id": 147,
             "text": "síla",
             "lang": "Q",
-            "gloss": "shine.3SG",
             "source": "PE17:13"
         },
         {
@@ -4167,6 +4166,123 @@
             "addedCategories": ".DAT.DU",
             "replacedCategories": "",
             "source": ""
+        },
+        {
+            "id": 33,
+            "name": "q-lengthen",
+            "fromLang": "Q",
+            "toLang": "Q",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "á"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "PhonemeMatches",
+                        "characters": "a"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "ó"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "PhonemeMatches",
+                        "characters": "o"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "ú"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "PhonemeMatches",
+                        "characters": "u"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "í"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "PhonemeMatches",
+                        "characters": "i"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "é"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "PhonemeMatches",
+                        "characters": "e"
+                    }
+                }
+            ],
+            "addedCategories": "",
+            "replacedCategories": "",
+            "source": ""
+        },
+        {
+            "id": 34,
+            "name": "q-present",
+            "fromLang": "Q",
+            "toLang": "Q",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ApplySoundRule",
+                            "args": [
+                                "33",
+                                "first vowel"
+                            ]
+                        },
+                        {
+                            "type": "AddSuffix",
+                            "args": [
+                                "a"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".PRES",
+            "replacedCategories": "",
+            "source": "https://eldamo.org/content/words/word-4095499405.html"
         }
     ],
     "links": [
@@ -4718,6 +4834,9 @@
             "from": 147,
             "to": 148,
             "type": ">",
+            "ruleIds": [
+                34
+            ],
             "source": "PE17:13"
         },
         {

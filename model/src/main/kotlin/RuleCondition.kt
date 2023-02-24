@@ -104,7 +104,7 @@ class LeafRuleCondition(
                     condition.removePrefix("'").removeSuffix("'"),
                     negated)
             }
-            val characterClass = language.characterClassByName(condition.removePrefix("a "))
+            val characterClass = language.phonemeClassByName(condition.removePrefix("a "))
                 ?: throw RuleParseException("Unrecognized character class $c")
             return LeafRuleCondition(conditionType, characterClass, null, negated)
         }
