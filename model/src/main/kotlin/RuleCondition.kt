@@ -1,9 +1,10 @@
 package ru.yole.etymograph
 
-enum class ConditionType(val condName: String) {
+enum class ConditionType(val condName: String, val takesArgument: Boolean = true) {
     EndsWith(LeafRuleCondition.wordEndsWith),
     PhonemeMatches(LeafRuleCondition.soundIs),
-    PrevPhonemeMatches(LeafRuleCondition.prevSoundIs)
+    PrevPhonemeMatches(LeafRuleCondition.prevSoundIs),
+    BeginningOfWord(LeafRuleCondition.beginningOfWord, false)
 }
 
 sealed class RuleCondition {
@@ -62,6 +63,7 @@ class LeafRuleCondition(
         return when (type) {
             ConditionType.PhonemeMatches -> matchPhoneme(phonemes.current)
             ConditionType.PrevPhonemeMatches -> matchPhoneme(phonemes.previous)
+            ConditionType.BeginningOfWord -> phonemes.atBeginning()
             else -> throw IllegalStateException("Trying to use a word condition for matching phonemes")
         }
     }
@@ -71,13 +73,17 @@ class LeafRuleCondition(
             ?: (phoneme == parameter)).negateIfNeeded()
 
     override fun toEditableText(): String =
-        type.condName + (if (negated) notPrefix else "") + (phonemeClass?.name?.let { "a $it" } ?: "'$parameter'")
+        if (type.takesArgument)
+            type.condName + (if (negated) notPrefix else "") + (phonemeClass?.name?.let { "a $it" } ?: "'$parameter'")
+        else
+            type.condName
 
     companion object {
         const val wordEndsWith = "word ends with "
         const val soundIs = "sound is "
         const val prevSoundIs = "previous sound is "
         const val notPrefix = "not "
+        const val beginningOfWord = "beginning of word"
 
         fun parse(s: String, language: Language): LeafRuleCondition {
             for (conditionType in ConditionType.values()) {
@@ -98,6 +104,9 @@ class LeafRuleCondition(
             if (c.startsWith(notPrefix)) {
                 negated = true
                 condition = c.removePrefix(notPrefix)
+            }
+            if (!conditionType.takesArgument) {
+                return LeafRuleCondition(conditionType, null, null, negated)
             }
             if (condition.startsWith('\'')) {
                 return LeafRuleCondition(conditionType, null,

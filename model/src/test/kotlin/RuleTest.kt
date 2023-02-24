@@ -215,6 +215,15 @@ class RuleTest : QBaseTest() {
         val applySoundRuleInstruction = ApplySoundRuleInstruction(q, RuleRef.to(soundRule), "first vowel")
         assertEquals("apply sound rule 'q' to first vowel", applySoundRuleInstruction.toEditableText())
     }
+
+    @Test fun beginningOfWord() {
+        val rule = parseRule(ce, q, """
+            beginning of word and sound is 'd':
+            - new sound is 'l'
+        """.trimIndent())
+        assertEquals("lanta", rule.apply(ce.word("danta")).text)
+        assertEquals("beginning of word and sound is 'd'", rule.branches[0].condition.toEditableText())
+    }
 }
 
 fun Language.word(text: String) = Word(-1, text, this)

@@ -80,6 +80,8 @@ class PhonemeIterator(text: String, language: Language) {
         return resultPhonemes.joinToString("")
     }
 
+    fun atBeginning(): Boolean = phonemeIndex == 0
+
     private fun splitPhonemes(text: String, digraphs: List<String>): List<String> {
         val result = mutableListOf<String>()
         var offset = 0
