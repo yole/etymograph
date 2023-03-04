@@ -364,6 +364,9 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
 
         private fun RuleInstruction.argsToSerializedFormat(): Array<String> =
             when (this) {
+                is ApplyRuleInstruction -> arrayOf(
+                    ruleRef.resolve().id.toString()
+                )
                 is ApplySoundRuleInstruction -> arrayOf(
                     ruleRef.resolve().id.toString(),
                     seekTarget.toEditableText()
@@ -404,6 +407,8 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             insnData: RuleInstructionData
         ): RuleInstruction =
             when (insnData.type) {
+                InstructionType.ApplyRule ->
+                    ApplyRuleInstruction(ruleRef(result, insnData.args[0].toInt()))
                 InstructionType.ApplySoundRule ->
                     ApplySoundRuleInstruction(fromLanguage, ruleRef(result, insnData.args[0].toInt()), insnData.args[1])
                 else ->

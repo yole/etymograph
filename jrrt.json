@@ -3297,6 +3297,12 @@
                 {
                     "instructions": [
                         {
+                            "type": "ApplyRule",
+                            "args": [
+                                "396"
+                            ]
+                        },
+                        {
                             "type": "AddSuffix",
                             "args": [
                                 "on"
@@ -3308,9 +3314,7 @@
                     }
                 }
             ],
-            "addedCategories": ".GEN.PL",
-            "replacedCategories": ".NOM.PL",
-            "source": ""
+            "addedCategories": ".GEN.PL"
         },
         {
             "id": 406,
@@ -4449,6 +4453,66 @@
             "addedCategories": "",
             "replacedCategories": "",
             "source": "PE17:68"
+        },
+        {
+            "id": 462,
+            "name": "q-gen-ppl",
+            "fromLang": "Q",
+            "toLang": "Q",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ApplyRule",
+                            "args": [
+                                "412"
+                            ]
+                        },
+                        {
+                            "type": "AddSuffix",
+                            "args": [
+                                "on"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".GEN.PPL",
+            "replacedCategories": "",
+            "source": "https://eldamo.org/content/words/word-2537177661.html"
+        },
+        {
+            "id": 470,
+            "name": "q-gen-dual",
+            "fromLang": "Q",
+            "toLang": "Q",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ApplyRule",
+                            "args": [
+                                "411"
+                            ]
+                        },
+                        {
+                            "type": "AddSuffix",
+                            "args": [
+                                "o"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".GEN.DU",
+            "replacedCategories": "",
+            "source": "https://eldamo.org/content/words/word-2537177661.html"
         }
     ],
     "links": [
@@ -4526,7 +4590,6 @@
             "to": 19,
             "type": ">",
             "ruleIds": [
-                396,
                 405
             ],
             "source": "PE17.63"
@@ -6087,8 +6150,7 @@
             "to": 387,
             "type": ">",
             "ruleIds": [
-                411,
-                397
+                470
             ]
         },
         {
@@ -6096,8 +6158,7 @@
             "to": 387,
             "type": ">",
             "ruleIds": [
-                412,
-                405
+                462
             ]
         },
         {
@@ -6105,7 +6166,6 @@
             "to": 387,
             "type": ">",
             "ruleIds": [
-                396,
                 405
             ]
         },
@@ -6198,7 +6258,7 @@
     ],
     "corpusTexts": [
         {
-            "id": 432,
+            "id": 463,
             "text": "Ai! laurië lantar lassi súrinen!\nYéni únótimë ve rámar aldaron!\nYéni ve lintë yuldar avánier\nmi oromardi lisse-miruvóreva\nAndúnë pella, Vardo tellumar\nnu luini yassen tintilar i eleni\nómaryo airetári-lírinen.\nSí man i yulma nin enquantuva?\nAn sí Tintalle Varda Oiolossëo\nve fanyar máryat Elentári ortanë\nar ilyë tier undulávë lumbulë\nar sindanóriello caita mornië\ni falmalinnar imbë met, ar hísië\nuntúpa Calaciryo míri oialë.\nSí vanwa na, Rómello vanwa, Valimar!\nNamárië! Nai hiruvalyë Valimar.\nNai elyë hiruva. Namárië!",
             "title": "Galadriel's Lament",
             "lang": "Q",
@@ -6276,7 +6336,7 @@
             "source": "I:394"
         },
         {
-            "id": 433,
+            "id": 464,
             "text": "Elen síla lúmenna omentielmo",
             "title": null,
             "lang": "Q",
@@ -6290,7 +6350,7 @@
             "source": "PE17:23"
         },
         {
-            "id": 434,
+            "id": 465,
             "text": "Ai na vedui Dúnadan! Mae g'ovannen.",
             "title": null,
             "lang": "S",
@@ -6298,7 +6358,7 @@
             ]
         },
         {
-            "id": 435,
+            "id": 466,
             "text": "noro lim, noro lim Asfaloth",
             "title": null,
             "lang": "S",
@@ -6306,7 +6366,7 @@
             ]
         },
         {
-            "id": 436,
+            "id": 467,
             "text": "A Elbereth Gilthoniel\nsilevren penna míriel\no menel aglar elenath!\nNa-chaered palan-díriel\no galadh-remmin ennorath\nFanuilos le linnathon\nnef aear, sí nef aearon",
             "title": "A Elbereth Gilthoniel",
             "lang": "S",
@@ -6314,7 +6374,7 @@
             ]
         },
         {
-            "id": 437,
+            "id": 468,
             "text": "Aia María quanta Eruanno\ni Héru aselyë\naistana elyë imíca nísi\nar aistana i yávë mónalyo Yésus\nAirë María Eruo ontaril\ná hyamë rámen úcarindor\nsí ar lúmessë ya firuvammë: násië",
             "title": "Aia María",
             "lang": "Q",
@@ -6330,7 +6390,7 @@
             "source": "VT43:28"
         },
         {
-            "id": 438,
+            "id": 469,
             "text": "Átaremma i ëa han Eä\nna airë esselya\naranielya na tuluva\nna carë indómelya\ncemendë tambe Erumandë\námen anta síra ilaurëa massamma\nar ámen apsenë úcaremmar\nsíve emmë apsenet tien i úcarir emmen\nálamë tulya úsahtienna\nmal ámë etelehta ulcullo: násië",
             "title": "Ataremma",
             "lang": "Q",
@@ -6483,7 +6543,6 @@
                                 {
                                     "ruleIds": [
                                         413,
-                                        396,
                                         405
                                     ]
                                 }
@@ -6534,8 +6593,7 @@
                                 {
                                     "ruleIds": [
                                         413,
-                                        412,
-                                        405
+                                        462
                                     ]
                                 }
                             ]
@@ -6591,8 +6649,7 @@
                                 {
                                     "ruleIds": [
                                         413,
-                                        411,
-                                        397
+                                        470
                                     ]
                                 }
                             ]

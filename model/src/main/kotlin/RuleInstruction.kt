@@ -4,6 +4,7 @@ enum class InstructionType(val insnName: String, val takesArgument: Boolean) {
     NoChange("no change", false),
     RemoveLastCharacter("remove last character", false),
     AddSuffix("add suffix", true),
+    ApplyRule("apply rule", true),
     ApplySoundRule("apply sound rule", true),
     ChangeSound("new sound is", true),
     SoundDisappears("sound disappears", false)
@@ -27,7 +28,7 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
 
     open fun toEditableText(): String = type.insnName + (if (type.takesArgument)  " '$arg'" else "")
 
-    fun toSummaryText() = when(type) {
+    open fun toSummaryText() = when(type) {
         InstructionType.AddSuffix -> "-$arg"
         else -> ""
     }
@@ -37,10 +38,11 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
             for (type in InstructionType.values()) {
                 if (type.takesArgument && s.startsWith(type.insnName + " '")) {
                     val arg = s.removePrefix(type.insnName + " '").removeSuffix("'")
-                    if (type == InstructionType.ApplySoundRule) {
-                        return ApplySoundRuleInstruction.parse(arg, context)
+                    return when(type) {
+                        InstructionType.ApplyRule -> ApplyRuleInstruction(context.ruleRefFactory(arg))
+                        InstructionType.ApplySoundRule -> ApplySoundRuleInstruction.parse(arg, context)
+                        else -> RuleInstruction(type, arg)
                     }
-                    return RuleInstruction(type, arg)
                 }
                 if (!type.takesArgument && s == type.insnName) {
                     return RuleInstruction(type, "")
@@ -49,6 +51,19 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
             throw RuleParseException("Unrecognized instruction $s")
         }
     }
+}
+
+class ApplyRuleInstruction(val ruleRef: RuleRef)
+    : RuleInstruction(InstructionType.ApplyRule, "")
+{
+    override fun apply(word: Word): Word =
+        ruleRef.resolve().apply(word)
+
+    override fun toEditableText(): String =
+        InstructionType.ApplyRule.insnName + " '" + ruleRef.resolve().name + "'"
+
+    override fun toSummaryText(): String =
+        ruleRef.resolve().toSummaryText()
 }
 
 class ApplySoundRuleInstruction(language: Language, val ruleRef: RuleRef, arg: String)
