@@ -376,6 +376,7 @@
             "text": "pella",
             "lang": "Q",
             "gloss": "beyond",
+            "fullGloss": "beyond a boundary",
             "source": "PE17:64"
         },
         {
@@ -2853,6 +2854,76 @@
             "lang": "CE",
             "gloss": "sweet",
             "source": "PE17:148"
+        },
+        {
+            "id": 445,
+            "text": "pelo",
+            "lang": "Q",
+            "gloss": "boundary",
+            "pos": "N",
+            "source": "PE17:65"
+        },
+        {
+            "id": 446,
+            "text": "la",
+            "lang": "Q",
+            "gloss": "beyond",
+            "source": "PE17:65"
+        },
+        {
+            "id": 447,
+            "text": "PEL-",
+            "lang": "CE",
+            "gloss": "fence",
+            "source": "PE17:65"
+        },
+        {
+            "id": 448,
+            "text": "LUY-",
+            "lang": "CE",
+            "gloss": "blue",
+            "source": "VT48:24"
+        },
+        {
+            "id": 449,
+            "text": "YA-",
+            "lang": "CE",
+            "gloss": "there"
+        },
+        {
+            "id": 450,
+            "text": "THIL-",
+            "lang": "CE",
+            "gloss": "shine silver",
+            "source": "PE17:66"
+        },
+        {
+            "id": 451,
+            "text": "OM-",
+            "lang": "CE",
+            "gloss": "of resonant sounds",
+            "source": "PE17:138"
+        },
+        {
+            "id": 452,
+            "text": "AYA-",
+            "lang": "CE",
+            "gloss": "blessed",
+            "source": "PE17:146"
+        },
+        {
+            "id": 453,
+            "text": "LIR-",
+            "lang": "CE",
+            "gloss": "sing",
+            "source": "PE17:67"
+        },
+        {
+            "id": 454,
+            "text": "PHAN-",
+            "lang": "CE",
+            "gloss": "cover",
+            "source": "PE17:174"
         }
     ],
     "rules": [
@@ -6072,6 +6143,56 @@
         {
             "from": 34,
             "to": 444,
+            "type": ">"
+        },
+        {
+            "from": 39,
+            "to": 445,
+            "type": "+"
+        },
+        {
+            "from": 39,
+            "to": 446,
+            "type": "+"
+        },
+        {
+            "from": 445,
+            "to": 447,
+            "type": ">"
+        },
+        {
+            "from": 46,
+            "to": 448,
+            "type": ">"
+        },
+        {
+            "from": 48,
+            "to": 449,
+            "type": ">"
+        },
+        {
+            "from": 50,
+            "to": 450,
+            "type": ">"
+        },
+        {
+            "from": 58,
+            "to": 451,
+            "type": ">"
+        },
+        {
+            "from": 297,
+            "to": 452,
+            "type": ">"
+        },
+        {
+            "from": 63,
+            "to": 453,
+            "type": ">"
+        },
+        {
+            "from": 82,
+            "to": 454,
             "type": ">"
         }
     ],

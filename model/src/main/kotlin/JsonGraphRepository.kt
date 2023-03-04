@@ -257,7 +257,8 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
         }
         for (rule in data.rules) {
             val fromLanguage = languageByShortName(rule.fromLanguageShortName)!!
-            addRule(
+            val addedRule = Rule(
+                rule.id,
                 rule.name ?: "",
                 fromLanguage,
                 languageByShortName(rule.toLanguageShortName)!!,
@@ -267,6 +268,14 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                 rule.source,
                 rule.notes
             )
+            rules.add(addedRule)
+            while (allLangEntities.size <= rule.id) {
+                allLangEntities.add(null)
+            }
+            if (allLangEntities[rule.id] != null) {
+                throw IllegalStateException("Duplicate ID ${rule.id}")
+            }
+            allLangEntities[rule.id] = addedRule
         }
         for (link in data.links) {
             val fromWord = allLangEntities[link.fromWordId]
@@ -276,7 +285,9 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                     fromWord,
                     toWord,
                     Link.allLinkTypes.first { it.id == link.type },
-                    link.ruleIds?.takeIf { it.isNotEmpty() }?.map { allLangEntities[it] as Rule }
+                    link.ruleIds
+                        ?.takeIf { it.isNotEmpty() }
+                        ?.map { allLangEntities[it] as? Rule ?: throw IllegalStateException("Broken rule ID reference $it") }
                         ?: emptyList(),
                     link.source,
                     link.notes
