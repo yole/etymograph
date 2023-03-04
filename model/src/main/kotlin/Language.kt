@@ -12,11 +12,8 @@ class Language(val name: String, val shortName: String) {
     fun phonemeClassByName(name: String) = phonemeClasses.find { it.name == name }
 
     fun normalizeWord(text: String): String {
-        return text.lowercase(Locale.FRANCE)
-            .replace('ä', 'a')
-            .replace('ö', 'o')
-            .replace('ü', 'u')
-            .replace('ï', 'i')
-            .replace('ë', 'e')
+        return letterNormalization.entries.fold(text.lowercase(Locale.FRANCE)) { s, entry ->
+            s.replace(entry.key, entry.value)
+        }
     }
 }
