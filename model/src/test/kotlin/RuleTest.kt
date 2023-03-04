@@ -14,7 +14,7 @@ class RuleTest : QBaseTest() {
     @Test
     fun instructions() {
         val i = RuleInstruction(InstructionType.RemoveLastCharacter, "")
-        assertEquals("parm", i.apply("parma", q))
+        assertEquals("parm", i.apply(q.word("parma")).text)
     }
 
     @Test
@@ -26,7 +26,7 @@ class RuleTest : QBaseTest() {
         val r = RuleBranch(c, listOf(i1, i2))
 
         assertTrue(r.matches(Word(0, "lasse", q)))
-        assertEquals("lassi", r.apply(Word(0, "lasse", q)))
+        assertEquals("lassi", r.apply(q.word("lasse")).text)
     }
 
     @Test
@@ -189,7 +189,7 @@ class RuleTest : QBaseTest() {
             - new sound is 'á'
         """.trimIndent())
         val applySoundRuleInstruction = ApplySoundRuleInstruction(q, RuleRef.to(soundRule), "first vowel")
-        assertEquals("lásse", applySoundRuleInstruction.apply("lasse", q))
+        assertEquals("lásse", applySoundRuleInstruction.apply(q.word("lasse")).text)
     }
 
     @Test

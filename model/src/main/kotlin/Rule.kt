@@ -19,8 +19,9 @@ class RuleParseContext(
 class RuleBranch(val condition: RuleCondition, val instructions: List<RuleInstruction>) {
     fun matches(word: Word) = condition.matches(word)
 
-    fun apply(word: Word): String {
-        return instructions.fold(word.text.trimEnd('-')) { s, i -> i.apply(s, word.language) }
+    fun apply(word: Word): Word {
+        val normalizedWord = word.derive(word.text.trimEnd('-'))
+        return instructions.fold(normalizedWord) { s, i -> i.apply(s) }
     }
 
     fun toEditableText(): String {
@@ -81,8 +82,8 @@ class Rule(
 
         for (branch in branches) {
             if (branch.matches(word)) {
-                val text = branch.apply(word)
-                return deriveWord(word, text)
+                val resultWord = branch.apply(word)
+                return deriveWord(word, resultWord.text)
             }
         }
         return word

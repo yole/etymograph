@@ -10,10 +10,10 @@ enum class InstructionType(val insnName: String, val takesArgument: Boolean) {
 }
 
 open class RuleInstruction(val type: InstructionType, val arg: String) {
-    open fun apply(word: String, language: Language): String = when(type) {
+    open fun apply(word: Word): Word = when(type) {
         InstructionType.NoChange -> word
-        InstructionType.RemoveLastCharacter -> word.substring(0, word.lastIndex)
-        InstructionType.AddSuffix -> word + arg
+        InstructionType.RemoveLastCharacter -> word.derive(word.text.substring(0, word.text.lastIndex))
+        InstructionType.AddSuffix -> word.derive(word.text + arg)
         else -> throw IllegalStateException("Can't apply phoneme instruction to full word")
     }
 
@@ -56,11 +56,11 @@ class ApplySoundRuleInstruction(language: Language, val ruleRef: RuleRef, arg: S
 {
     val seekTarget = SeekTarget.parse(arg, language)
 
-    override fun apply(word: String, language: Language): String {
-        val phonemes = PhonemeIterator(word, language)
+    override fun apply(word: Word): Word {
+        val phonemes = PhonemeIterator(word)
         if (phonemes.seek(seekTarget)) {
             ruleRef.resolve().applyToPhoneme(phonemes)
-            return phonemes.result()
+            return word.derive(phonemes.result())
         }
         return word
     }
