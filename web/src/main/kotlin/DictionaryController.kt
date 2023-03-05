@@ -29,13 +29,12 @@ class DictionaryController(val graphService: GraphService) {
     private fun loadDictionary(lang: String, wordLoader: (Language) -> List<Word>): DictionaryViewModel {
         val language = graphService.resolveLanguage(lang)
         val words = wordLoader(language)
-        val homonyms = mutableSetOf<String>()
-        for ((index, word) in words.withIndex()) {
-            if (index > 0 && word.text == words[index-1].text) {
-                homonyms.add(word.text)
-            }
-        }
-        return DictionaryViewModel(language, words.map { DictionaryWordViewModel(it.id, it.text,
-            it.getOrComputeGloss(graphService.graph) ?: "", it.fullGloss, it.text in homonyms) })
+        return DictionaryViewModel(language, words.map {
+            DictionaryWordViewModel(
+                it.id, it.text,
+                it.getOrComputeGloss(graphService.graph) ?: "", it.fullGloss,
+                graphService.graph.isHomonym(it)
+            )
+        })
     }
 }
