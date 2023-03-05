@@ -8,6 +8,15 @@ export async function loader({params}) {
     return fetch(`${process.env.REACT_APP_BACKEND_URL}word/${params.lang}/${params["*"]}`, { headers: { 'Accept': 'application/json'} })
 }
 
+export function WordLink(params) {
+    const word = params.word
+    let linkTarget = `/word/${word.language}/${word.text}`;
+    if (word.homonym) {
+        linkTarget += `/${word.id}`
+    }
+    return <Link to={linkTarget}>{word.text}</Link>
+}
+
 function WordLinkComponent(params) {
     const baseWord = params.baseWord
     const linkWord = params.linkWord
@@ -36,15 +45,10 @@ function WordLinkComponent(params) {
             })
     }
 
-    var linkTarget = `/word/${linkWord.language}/${linkWord.text}`
-    if (linkWord.homonym) {
-        linkTarget += `/${linkWord.id}`
-    }
-
     return <div>
-        {linkWord.language !== baseWord.language && linkWord.language + " "}
-        <Link to={linkTarget}>{linkWord.text}</Link>
-        {linkWord.gloss != null && ' "' + linkWord.gloss + '"' }
+        {linkWord.word.language !== baseWord.language && linkWord.word.language + " "}
+        <WordLink word={linkWord.word}/>
+        {linkWord.word.gloss != null && ' "' + linkWord.word.gloss + '"' }
         {linkWord.ruleIds.length > 0 && <>&nbsp;(
             {linkWord.ruleIds.map((ruleId, index) => <>
               {index > 0 && ", "}

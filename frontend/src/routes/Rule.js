@@ -2,6 +2,7 @@ import {useLoaderData, useRevalidator} from "react-router";
 import {useEffect, useState} from "react";
 import {updateRule} from "../api";
 import {Link} from "react-router-dom";
+import {WordLink} from "./Word";
 
 export async function loader({params}) {
     return fetch(`${process.env.REACT_APP_BACKEND_URL}rule/${params.id}`, { headers: { 'Accept': 'application/json'} })
@@ -75,10 +76,10 @@ export default function Rule() {
             <h3>Examples</h3>
             <ul>
                 {rule.examples.map(ex => <li>
-                    <Link to={`/word/${rule.toLang}/${ex.toWord}`}>{ex.toWord}</Link>
-                    {ex.toWordGloss && `" ${ex.toWordGloss}"`}
+                    <WordLink word={ex.toWord}/>
+                    {ex.toWord.gloss && `" ${ex.toWord.gloss}"`}
                     &nbsp;->&nbsp;
-                    <Link to={`/word/${rule.fromLang}/${ex.fromWord}`}>{ex.fromWord}</Link>
+                    <WordLink word={ex.fromWord}/>
                     {ex.allRules.length > 1 && " (" + ex.allRules.join(", ") + ")"}
                     {ex.expectedWord !== null && ex.expectedWord !== ex.fromWord && " [expected: " + ex.expectedWord + "]"}
                 </li>)}

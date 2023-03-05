@@ -2924,6 +2924,48 @@
             "lang": "CE",
             "gloss": "cover",
             "source": "PE17:174"
+        },
+        {
+            "id": 480,
+            "text": "ciryanna",
+            "lang": "Q",
+            "gloss": "ship.ALL",
+            "source": "Plotz"
+        },
+        {
+            "id": 481,
+            "text": "ciryannar",
+            "lang": "Q",
+            "gloss": "ship.ALL.PL",
+            "source": "Plotz"
+        },
+        {
+            "id": 483,
+            "text": "ciryanta",
+            "lang": "Q",
+            "gloss": "ship.ALL.DU",
+            "source": "Plotz"
+        },
+        {
+            "id": 485,
+            "text": "ciryalinna",
+            "lang": "Q",
+            "gloss": "ship.ALL.PPL",
+            "source": "Plotz"
+        },
+        {
+            "id": 487,
+            "text": "ciryalinnar",
+            "lang": "Q",
+            "gloss": "ship.ALL.PPL",
+            "source": "Plotz"
+        },
+        {
+            "id": 489,
+            "text": "ciryallo",
+            "lang": "Q",
+            "gloss": "ship.ABL",
+            "source": "Plotz"
         }
     ],
     "rules": [
@@ -3118,6 +3160,21 @@
                         "type": "ru.yole.etymograph.LeafRuleConditionData",
                         "cond": "EndsWith",
                         "cls": "vowel"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "args": [
+                                "lo"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "characters": "l"
                     }
                 },
                 {
@@ -4513,6 +4570,234 @@
             "addedCategories": ".GEN.DU",
             "replacedCategories": "",
             "source": "https://eldamo.org/content/words/word-2537177661.html"
+        },
+        {
+            "id": 478,
+            "name": "q-dat-ppl",
+            "fromLang": "Q",
+            "toLang": "Q",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ApplyRule",
+                            "args": [
+                                "412"
+                            ]
+                        },
+                        {
+                            "type": "ApplyRule",
+                            "args": [
+                                "404"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".DAT.PPL",
+            "replacedCategories": "",
+            "source": "https://eldamo.org/content/words/word-1853042105.html"
+        },
+        {
+            "id": 479,
+            "name": "q-all-pl",
+            "fromLang": "Q",
+            "toLang": "Q",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "args": [
+                                "nnar"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "cls": "vowel"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "args": [
+                                "innar"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".ALL.PL",
+            "replacedCategories": "",
+            "source": "https://eldamo.org/content/words/word-488436569.html"
+        },
+        {
+            "id": 482,
+            "name": "q-all-dual",
+            "fromLang": "Q",
+            "toLang": "Q",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "args": [
+                                "nta"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "cls": "vowel"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "args": [
+                                "unna"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".ALL.DU",
+            "replacedCategories": "",
+            "source": "https://eldamo.org/content/words/word-488436569.html"
+        },
+        {
+            "id": 484,
+            "name": "q-all-ppl",
+            "fromLang": "Q",
+            "toLang": "Q",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ApplyRule",
+                            "args": [
+                                "412"
+                            ]
+                        },
+                        {
+                            "type": "ApplyRule",
+                            "args": [
+                                "399"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".ALL.PPL",
+            "replacedCategories": "",
+            "source": "Plotz"
+        },
+        {
+            "id": 486,
+            "name": "q-all-ppl-long",
+            "fromLang": "Q",
+            "toLang": "Q",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ApplyRule",
+                            "args": [
+                                "412"
+                            ]
+                        },
+                        {
+                            "type": "ApplyRule",
+                            "args": [
+                                "399"
+                            ]
+                        },
+                        {
+                            "type": "AddSuffix",
+                            "args": [
+                                "r"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".ALL.PPL",
+            "replacedCategories": "",
+            "source": "Plotz"
+        },
+        {
+            "id": 488,
+            "name": "q-abl-pl",
+            "fromLang": "Q",
+            "toLang": "Q",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "args": [
+                                "llon"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "cls": "vowel"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "args": [
+                                "lon"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "characters": "l"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "args": [
+                                "illon"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".ABL.PL",
+            "replacedCategories": "",
+            "source": "https://eldamo.org/content/words/word-3384394593.html"
         }
     ],
     "links": [
@@ -5649,9 +5934,7 @@
             "to": 113,
             "type": ">",
             "ruleIds": [
-                412,
-                399,
-                396
+                486
             ]
         },
         {
@@ -6125,8 +6408,7 @@
             "to": 387,
             "type": ">",
             "ruleIds": [
-                412,
-                404
+                478
             ]
         },
         {
@@ -6254,11 +6536,59 @@
             "from": 82,
             "to": 454,
             "type": ">"
+        },
+        {
+            "from": 480,
+            "to": 387,
+            "type": ">",
+            "ruleIds": [
+                399
+            ]
+        },
+        {
+            "from": 481,
+            "to": 387,
+            "type": ">",
+            "ruleIds": [
+                479
+            ]
+        },
+        {
+            "from": 483,
+            "to": 387,
+            "type": ">",
+            "ruleIds": [
+                482
+            ]
+        },
+        {
+            "from": 485,
+            "to": 387,
+            "type": ">",
+            "ruleIds": [
+                484
+            ]
+        },
+        {
+            "from": 487,
+            "to": 387,
+            "type": ">",
+            "ruleIds": [
+                486
+            ]
+        },
+        {
+            "from": 489,
+            "to": 387,
+            "type": ">",
+            "ruleIds": [
+                398
+            ]
         }
     ],
     "corpusTexts": [
         {
-            "id": 463,
+            "id": 471,
             "text": "Ai! laurië lantar lassi súrinen!\nYéni únótimë ve rámar aldaron!\nYéni ve lintë yuldar avánier\nmi oromardi lisse-miruvóreva\nAndúnë pella, Vardo tellumar\nnu luini yassen tintilar i eleni\nómaryo airetári-lírinen.\nSí man i yulma nin enquantuva?\nAn sí Tintalle Varda Oiolossëo\nve fanyar máryat Elentári ortanë\nar ilyë tier undulávë lumbulë\nar sindanóriello caita mornië\ni falmalinnar imbë met, ar hísië\nuntúpa Calaciryo míri oialë.\nSí vanwa na, Rómello vanwa, Valimar!\nNamárië! Nai hiruvalyë Valimar.\nNai elyë hiruva. Namárië!",
             "title": "Galadriel's Lament",
             "lang": "Q",
@@ -6336,7 +6666,7 @@
             "source": "I:394"
         },
         {
-            "id": 464,
+            "id": 472,
             "text": "Elen síla lúmenna omentielmo",
             "title": null,
             "lang": "Q",
@@ -6350,7 +6680,7 @@
             "source": "PE17:23"
         },
         {
-            "id": 465,
+            "id": 473,
             "text": "Ai na vedui Dúnadan! Mae g'ovannen.",
             "title": null,
             "lang": "S",
@@ -6358,7 +6688,7 @@
             ]
         },
         {
-            "id": 466,
+            "id": 474,
             "text": "noro lim, noro lim Asfaloth",
             "title": null,
             "lang": "S",
@@ -6366,7 +6696,7 @@
             ]
         },
         {
-            "id": 467,
+            "id": 475,
             "text": "A Elbereth Gilthoniel\nsilevren penna míriel\no menel aglar elenath!\nNa-chaered palan-díriel\no galadh-remmin ennorath\nFanuilos le linnathon\nnef aear, sí nef aearon",
             "title": "A Elbereth Gilthoniel",
             "lang": "S",
@@ -6374,7 +6704,7 @@
             ]
         },
         {
-            "id": 468,
+            "id": 476,
             "text": "Aia María quanta Eruanno\ni Héru aselyë\naistana elyë imíca nísi\nar aistana i yávë mónalyo Yésus\nAirë María Eruo ontaril\ná hyamë rámen úcarindor\nsí ar lúmessë ya firuvammë: násië",
             "title": "Aia María",
             "lang": "Q",
@@ -6390,7 +6720,7 @@
             "source": "VT43:28"
         },
         {
-            "id": 469,
+            "id": 477,
             "text": "Átaremma i ëa han Eä\nna airë esselya\naranielya na tuluva\nna carë indómelya\ncemendë tambe Erumandë\námen anta síra ilaurëa massamma\nar ámen apsenë úcaremmar\nsíve emmë apsenet tien i úcarir emmen\nálamë tulya úsahtienna\nmal ámë etelehta ulcullo: násië",
             "title": "Ataremma",
             "lang": "Q",
@@ -6561,6 +6891,13 @@
                         {
                         },
                         {
+                            "alternatives": [
+                                {
+                                    "ruleIds": [
+                                        479
+                                    ]
+                                }
+                            ]
                         },
                         {
                         },
@@ -6603,8 +6940,7 @@
                                 {
                                     "ruleIds": [
                                         413,
-                                        412,
-                                        404
+                                        478
                                     ]
                                 }
                             ]
@@ -6616,16 +6952,13 @@
                                 {
                                     "ruleIds": [
                                         413,
-                                        412,
-                                        399
+                                        484
                                     ]
                                 },
                                 {
                                     "ruleIds": [
                                         413,
-                                        412,
-                                        399,
-                                        396
+                                        486
                                     ]
                                 }
                             ]
@@ -6660,6 +6993,17 @@
                                     "ruleIds": [
                                         413,
                                         428
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                        },
+                        {
+                            "alternatives": [
+                                {
+                                    "ruleIds": [
+                                        482
                                     ]
                                 }
                             ]

@@ -10,9 +10,8 @@ class RuleController(val graphService: GraphService) {
     data class RuleBranchViewModel(val conditions: String, val instructions: List<String>)
 
     data class RuleExampleViewModel(
-        val fromWord: String,
-        val toWord: String,
-        val toWordGloss: String?,
+        val fromWord: WordRefViewModel,
+        val toWord: WordRefViewModel,
         val expectedWord: String?,
         val allRules: List<String>
     )
@@ -54,6 +53,7 @@ class RuleController(val graphService: GraphService) {
     }
 
     private fun Rule.toViewModel(): RuleViewModel {
+        val graph = graphService.graph
         return RuleViewModel(
             id, name,
             fromLanguage.shortName, toLanguage.shortName,
@@ -65,16 +65,16 @@ class RuleController(val graphService: GraphService) {
             source.nullize(),
             notes.nullize(),
             branches.map { it.toViewModel() },
-            graphService.graph.findRuleExamples(this).map { link ->
+            graph.findRuleExamples(this).map { link ->
                 val fromWord = link.fromEntity as Word
                 val toWord = link.toEntity as Word
                 RuleExampleViewModel(
-                    fromWord.text,
-                    toWord.text,
-                    toWord.getOrComputeGloss(graphService.graph),
+                    fromWord.toRefViewModel(graph),
+                    toWord.toRefViewModel(graph),
                     link.rules.fold(toWord) { w, r -> r.apply(w) }.text
                         .takeIf { !isNormalizedEqual(toWord.language, it, fromWord.text) },
-                    link.rules.map { it.name })
+                    link.rules.map { it.name }
+                )
             }
         )
     }

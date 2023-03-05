@@ -6,16 +6,23 @@ import org.springframework.web.server.ResponseStatusException
 import ru.yole.etymograph.GraphRepository
 import ru.yole.etymograph.Word
 
+data class WordRefViewModel(
+    val id: Int,
+    val text: String,
+    val language: String,
+    val gloss: String?,
+    val homonym: Boolean
+)
+
+fun Word.toRefViewModel(graph: GraphRepository) =
+    WordRefViewModel(id, text, language.shortName, getOrComputeGloss(graph), graph.isHomonym(this))
+
 @RestController
 class WordController(val graphService: GraphService) {
     data class LinkWordViewModel(
-        val id: Int,
-        val text: String,
-        val language: String,
-        val gloss: String?,
+        val word: WordRefViewModel,
         val ruleIds: List<Int>,
         val ruleNames: List<String>,
-        val homonym: Boolean
     )
 
     data class LinkTypeViewModel(val typeId: String, val type: String, val words: List<LinkWordViewModel>)
@@ -84,11 +91,9 @@ class WordController(val graphService: GraphService) {
                     it.key.name,
                     it.value.filter { link -> link.toEntity is Word }.map { link ->
                         val toWord = link.toEntity as Word
-                        LinkWordViewModel(link.toEntity.id, toWord.text, toWord.language.shortName,
-                            toWord.getOrComputeGloss(graph),
+                        LinkWordViewModel(toWord.toRefViewModel(graph),
                             link.rules.map { it.id },
-                            link.rules.map { it.name },
-                            graph.isHomonym(toWord)
+                            link.rules.map { it.name }
                         )
                     }
                 )
@@ -99,11 +104,9 @@ class WordController(val graphService: GraphService) {
                     it.key.reverseName,
                     it.value.filter { link -> link.fromEntity is Word }.map { link ->
                         val fromWord = link.fromEntity as Word
-                        LinkWordViewModel(link.fromEntity.id, fromWord.text, fromWord.language.shortName,
-                            fromWord.getOrComputeGloss(graph),
+                        LinkWordViewModel(fromWord.toRefViewModel(graph),
                             link.rules.map { it.id },
-                            link.rules.map { it.name },
-                            graph.isHomonym(fromWord)
+                            link.rules.map { it.name }
                         )
                     }
                 )
