@@ -2980,6 +2980,13 @@
             "lang": "Q",
             "gloss": "ship.ABL.PPL",
             "source": "Plotz"
+        },
+        {
+            "id": 515,
+            "text": "ciryalto",
+            "lang": "Q",
+            "gloss": "ship.ABL.DU",
+            "source": "Plotz"
         }
     ],
     "rules": [
@@ -4842,6 +4849,45 @@
             "addedCategories": ".ABL.PPL",
             "source": "https://eldamo.org/content/words/word-3384394593.html",
             "notes": "Final 'n' is optional or can be replaced with 'r'"
+        },
+        {
+            "id": 514,
+            "name": "q-abl-dual",
+            "fromLang": "Q",
+            "toLang": "Q",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "args": [
+                                "lto"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "cls": "vowel"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "args": [
+                                "ullo"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".ABL.DU",
+            "replacedCategories": "",
+            "source": "https://eldamo.org/content/words/word-3384394593.html"
         }
     ],
     "links": [
@@ -6643,6 +6689,14 @@
             "type": ">",
             "ruleIds": [
                 505
+            ]
+        },
+        {
+            "from": 515,
+            "to": 387,
+            "type": ">",
+            "ruleIds": [
+                514
             ]
         }
     ],

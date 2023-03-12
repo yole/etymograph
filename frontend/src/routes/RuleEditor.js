@@ -15,7 +15,7 @@ export default function RuleEditor() {
     const navigate = useNavigate()
 
     function saveRule() {
-        addRule(name, fromLanguage, toLanguage, addedCategories, replacedCategories, editableText, source)
+        addRule(name, fromLanguage, toLanguage, addedCategories, replacedCategories, editableText, source, notes)
             .then(r => {
                 if (r.status === 200)
                     r.json().then(r => navigate("/rule/" + r.id))
