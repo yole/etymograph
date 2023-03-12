@@ -111,6 +111,9 @@ class Rule(
         (replacedCategories?.let { baseGloss.replace(it, "") } ?: baseGloss) + (addedCategories ?: "")
 
     fun toEditableText(): String {
+        if (branches.size == 1 && branches[0].condition is OtherwiseCondition) {
+            return branches[0].instructions.joinToString("\n") { " - " + it.toEditableText() }
+        }
         return branches.joinToString("\n\n") { it.toEditableText() }
     }
 

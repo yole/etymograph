@@ -2966,6 +2966,20 @@
             "lang": "Q",
             "gloss": "ship.ABL",
             "source": "Plotz"
+        },
+        {
+            "id": 497,
+            "text": "ciryallon",
+            "lang": "Q",
+            "gloss": "ship.ABL.PL",
+            "source": "Plotz"
+        },
+        {
+            "id": 513,
+            "text": "ciryalillon",
+            "lang": "Q",
+            "gloss": "ship.ABL.PPL",
+            "source": "Plotz"
         }
     ],
     "rules": [
@@ -4798,6 +4812,36 @@
             "addedCategories": ".ABL.PL",
             "replacedCategories": "",
             "source": "https://eldamo.org/content/words/word-3384394593.html"
+        },
+        {
+            "id": 505,
+            "name": "q-abl-ppl",
+            "fromLang": "Q",
+            "toLang": "Q",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ApplyRule",
+                            "args": [
+                                "412"
+                            ]
+                        },
+                        {
+                            "type": "ApplyRule",
+                            "args": [
+                                "488"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".ABL.PPL",
+            "source": "https://eldamo.org/content/words/word-3384394593.html",
+            "notes": "Final 'n' is optional or can be replaced with 'r'"
         }
     ],
     "links": [
@@ -6584,11 +6628,27 @@
             "ruleIds": [
                 398
             ]
+        },
+        {
+            "from": 497,
+            "to": 387,
+            "type": ">",
+            "ruleIds": [
+                488
+            ]
+        },
+        {
+            "from": 513,
+            "to": 387,
+            "type": ">",
+            "ruleIds": [
+                505
+            ]
         }
     ],
     "corpusTexts": [
         {
-            "id": 471,
+            "id": 506,
             "text": "Ai! laurië lantar lassi súrinen!\nYéni únótimë ve rámar aldaron!\nYéni ve lintë yuldar avánier\nmi oromardi lisse-miruvóreva\nAndúnë pella, Vardo tellumar\nnu luini yassen tintilar i eleni\nómaryo airetári-lírinen.\nSí man i yulma nin enquantuva?\nAn sí Tintalle Varda Oiolossëo\nve fanyar máryat Elentári ortanë\nar ilyë tier undulávë lumbulë\nar sindanóriello caita mornië\ni falmalinnar imbë met, ar hísië\nuntúpa Calaciryo míri oialë.\nSí vanwa na, Rómello vanwa, Valimar!\nNamárië! Nai hiruvalyë Valimar.\nNai elyë hiruva. Namárië!",
             "title": "Galadriel's Lament",
             "lang": "Q",
@@ -6666,7 +6726,7 @@
             "source": "I:394"
         },
         {
-            "id": 472,
+            "id": 507,
             "text": "Elen síla lúmenna omentielmo",
             "title": null,
             "lang": "Q",
@@ -6680,7 +6740,7 @@
             "source": "PE17:23"
         },
         {
-            "id": 473,
+            "id": 508,
             "text": "Ai na vedui Dúnadan! Mae g'ovannen.",
             "title": null,
             "lang": "S",
@@ -6688,7 +6748,7 @@
             ]
         },
         {
-            "id": 474,
+            "id": 509,
             "text": "noro lim, noro lim Asfaloth",
             "title": null,
             "lang": "S",
@@ -6696,7 +6756,7 @@
             ]
         },
         {
-            "id": 475,
+            "id": 510,
             "text": "A Elbereth Gilthoniel\nsilevren penna míriel\no menel aglar elenath!\nNa-chaered palan-díriel\no galadh-remmin ennorath\nFanuilos le linnathon\nnef aear, sí nef aearon",
             "title": "A Elbereth Gilthoniel",
             "lang": "S",
@@ -6704,7 +6764,7 @@
             ]
         },
         {
-            "id": 476,
+            "id": 511,
             "text": "Aia María quanta Eruanno\ni Héru aselyë\naistana elyë imíca nísi\nar aistana i yávë mónalyo Yésus\nAirë María Eruo ontaril\ná hyamë rámen úcarindor\nsí ar lúmessë ya firuvammë: násië",
             "title": "Aia María",
             "lang": "Q",
@@ -6720,7 +6780,7 @@
             "source": "VT43:28"
         },
         {
-            "id": 477,
+            "id": 512,
             "text": "Átaremma i ëa han Eä\nna airë esselya\naranielya na tuluva\nna carë indómelya\ncemendë tambe Erumandë\námen anta síra ilaurëa massamma\nar ámen apsenë úcaremmar\nsíve emmë apsenet tien i úcarir emmen\nálamë tulya úsahtienna\nmal ámë etelehta ulcullo: násië",
             "title": "Ataremma",
             "lang": "Q",
@@ -6900,6 +6960,13 @@
                             ]
                         },
                         {
+                            "alternatives": [
+                                {
+                                    "ruleIds": [
+                                        488
+                                    ]
+                                }
+                            ]
                         },
                         {
                             "alternatives": [
