@@ -5105,6 +5105,12 @@
                 {
                     "instructions": [
                         {
+                            "type": "ApplyRule",
+                            "args": [
+                                "413"
+                            ]
+                        },
+                        {
                             "type": "AddSuffix",
                             "args": [
                                 "línen"
@@ -5117,9 +5123,7 @@
                 }
             ],
             "addedCategories": ".INS.PPL",
-            "replacedCategories": "",
-            "source": "https://eldamo.org/content/words/word-1605931301.html",
-            "notes": ""
+            "source": "https://eldamo.org/content/words/word-1605931301.html"
         },
         {
             "id": 532,
@@ -7020,9 +7024,9 @@
             ]
         },
         {
-            "from": 387,
-            "to": 534,
-            "type": "+",
+            "from": 534,
+            "to": 387,
+            "type": ">",
             "ruleIds": [
                 532
             ]
@@ -7441,6 +7445,15 @@
                                     ]
                                 }
                             ]
+                        },
+                        {
+                            "alternatives": [
+                                {
+                                    "ruleIds": [
+                                        531
+                                    ]
+                                }
+                            ]
                         }
                     ]
                 },
@@ -7502,6 +7515,15 @@
                                 {
                                     "ruleIds": [
                                         519
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "alternatives": [
+                                {
+                                    "ruleIds": [
+                                        532
                                     ]
                                 }
                             ]

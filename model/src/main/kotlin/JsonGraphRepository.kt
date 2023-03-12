@@ -269,13 +269,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                 rule.notes
             )
             rules.add(addedRule)
-            while (allLangEntities.size <= rule.id) {
-                allLangEntities.add(null)
-            }
-            if (allLangEntities[rule.id] != null) {
-                throw IllegalStateException("Duplicate ID ${rule.id}")
-            }
-            allLangEntities[rule.id] = addedRule
+            setLangEntity(rule.id, addedRule)
         }
         for (link in data.links) {
             val fromWord = allLangEntities[link.fromWordId]
@@ -295,14 +289,17 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             }
         }
         for (corpusText in data.corpusTexts) {
-            addCorpusText(
+            val addedCorpusText = CorpusText(
+                corpusText.id,
                 corpusText.text,
                 corpusText.title,
                 languageByShortName(corpusText.languageShortName)!!,
-                corpusText.wordIds.mapNotNull { allLangEntities[it] as? Word },
+                corpusText.wordIds.mapNotNull { allLangEntities[it] as? Word }.toMutableList(),
                 corpusText.source,
                 corpusText.notes
             )
+            corpus += addedCorpusText
+            setLangEntity(corpusText.id, addedCorpusText)
         }
         for (paradigm in data.paradigms) {
             addParadigm(
@@ -325,6 +322,16 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                 }
             }
         }
+    }
+
+    private fun setLangEntity(id: Int, entity: LangEntity) {
+        while (allLangEntities.size <= id) {
+            allLangEntities.add(null)
+        }
+        if (allLangEntities[id] != null) {
+            throw IllegalStateException("Duplicate ID $id")
+        }
+        allLangEntities[id] = entity
     }
 
     companion object {
