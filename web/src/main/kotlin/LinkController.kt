@@ -26,8 +26,10 @@ class LinkController(val graphService: GraphService) {
     private fun resolveLinkParams(params: LinkParams): ResolvedLinkParams {
         val graph = graphService.graph
         return ResolvedLinkParams(
-            graph.langEntityById(params.fromWord) ?: throw NoWordException(),
-            graph.langEntityById(params.toWord) ?: throw NoWordException(),
+            graph.langEntityById(params.fromWord)
+                ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST, "No word or rule with ID ${params.fromWord}"),
+            graph.langEntityById(params.toWord)
+                ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST, "No word or rule with ID ${params.toWord}"),
             Link.allLinkTypes.find { it.id == params.linkType } ?: throw NoLinkTypeException()
         )
     }

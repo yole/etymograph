@@ -146,7 +146,7 @@ class WordController(val graphService: GraphService) {
     @ResponseBody
     fun updateWord(@PathVariable id: Int, @RequestBody params: AddWordParameters): WordViewModel {
         val graph = graphService.graph
-        val word = graph.wordById(id) ?: throw NoWordException()
+        val word = graph.wordById(id) ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST, "No word with ID $id")
         word.gloss = params.gloss.nullize()
         word.fullGloss = params.fullGloss.nullize()
         word.pos = params.pos.nullize()
@@ -160,7 +160,7 @@ class WordController(val graphService: GraphService) {
     @ResponseBody
     fun deleteWord(@PathVariable id: Int) {
         val graph = graphService.graph
-        val word = graph.wordById(id) ?: throw NoWordException()
+        val word = graph.wordById(id) ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST, "No word with ID $id")
         graph.deleteWord(word)
         graph.save()
     }
@@ -207,9 +207,6 @@ class WordController(val graphService: GraphService) {
         return WordParadigmListModel(word.text, word.language.shortName, word.language.name, paradigmModels)
     }
 }
-
-@ResponseStatus(value = HttpStatus.NOT_FOUND, reason = "No such word")
-class NoWordException : RuntimeException()
 
 @ResponseStatus(value = HttpStatus.BAD_REQUEST, reason = "Word text not specified")
 class NoWordTextException : RuntimeException()

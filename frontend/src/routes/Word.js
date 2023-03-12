@@ -26,13 +26,21 @@ function WordLinkComponent(params) {
 
     function deleteLinkClicked() {
         if (window.confirm("Delete this link?")) {
-            deleteLink(baseWord.id, linkWord.id, params.linkType.typeId)
-                .then(() => params.revalidator.revalidate())
+            deleteLink(baseWord.id, linkWord.word.id, params.linkType.typeId)
+                .then((r) => {
+                    if (r.status === 200) {
+                        setErrorText("")
+                        params.revalidator.revalidate()
+                    }
+                    else {
+                        r.json().then(r => setErrorText(r.message))
+                    }
+                })
         }
     }
 
     function saveLink() {
-        updateLink(baseWord.id, linkWord.id, params.linkType.typeId, ruleNames)
+        updateLink(baseWord.id, linkWord.word.id, params.linkType.typeId, ruleNames)
             .then((response) => {
                 if (response.status === 200) {
                     setErrorText("")
@@ -69,8 +77,8 @@ function WordLinkComponent(params) {
                 </tr>
                 </tbody></table>
             <button onClick={() => saveLink()}>Save</button>
-            {errorText !== "" && <div className="errorText">{errorText}</div>}
         </>}
+        {errorText !== "" && <div className="errorText">{errorText}</div>}
     </div>
 }
 
