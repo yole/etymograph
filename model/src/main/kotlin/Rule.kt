@@ -19,9 +19,9 @@ class RuleParseContext(
 class RuleBranch(val condition: RuleCondition, val instructions: List<RuleInstruction>) {
     fun matches(word: Word) = condition.matches(word)
 
-    fun apply(word: Word): Word {
+    fun apply(word: Word, graph: GraphRepository): Word {
         val normalizedWord = word.derive(word.text.trimEnd('-'))
-        return instructions.fold(normalizedWord) { s, i -> i.apply(s) }
+        return instructions.fold(normalizedWord) { s, i -> i.apply(s, graph) }
     }
 
     fun toEditableText(): String {
@@ -70,7 +70,7 @@ class Rule(
         return branches.any { it.matches(word) }
     }
 
-    fun apply(word: Word): Word {
+    fun apply(word: Word, graph: GraphRepository): Word {
         if (branches.any { it.condition.isPhonemic() }) {
             val phonemes = PhonemeIterator(word)
             while (true) {
@@ -82,7 +82,7 @@ class Rule(
 
         for (branch in branches) {
             if (branch.matches(word)) {
-                val resultWord = branch.apply(word)
+                val resultWord = branch.apply(word, graph)
                 return deriveWord(word, resultWord.text)
             }
         }

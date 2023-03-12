@@ -2987,6 +2987,34 @@
             "lang": "Q",
             "gloss": "ship.ABL.DU",
             "source": "Plotz"
+        },
+        {
+            "id": 517,
+            "text": "ciryassen",
+            "lang": "Q",
+            "gloss": "ship.LOC.PL",
+            "source": "Plotz"
+        },
+        {
+            "id": 518,
+            "text": "ciryalisse",
+            "lang": "Q",
+            "gloss": "ship.LOC.PPL",
+            "source": "Plotz"
+        },
+        {
+            "id": 520,
+            "text": "ciryatse",
+            "lang": "Q",
+            "gloss": "ship.LOC.DU",
+            "source": "Plotz"
+        },
+        {
+            "id": 522,
+            "text": "ciryanen",
+            "lang": "Q",
+            "gloss": "ship.INS",
+            "source": "Plotz"
         }
     ],
     "rules": [
@@ -3403,6 +3431,12 @@
                 {
                     "instructions": [
                         {
+                            "type": "ApplyRule",
+                            "args": [
+                                "413"
+                            ]
+                        },
+                        {
                             "type": "AddSuffix",
                             "args": [
                                 "nen"
@@ -3417,6 +3451,12 @@
                 },
                 {
                     "instructions": [
+                        {
+                            "type": "ApplyRule",
+                            "args": [
+                                "413"
+                            ]
+                        },
                         {
                             "type": "AddSuffix",
                             "args": [
@@ -3443,6 +3483,12 @@
                 {
                     "instructions": [
                         {
+                            "type": "ApplyRule",
+                            "args": [
+                                "413"
+                            ]
+                        },
+                        {
                             "type": "AddSuffix",
                             "args": [
                                 "wen"
@@ -3468,6 +3514,12 @@
                 {
                     "instructions": [
                         {
+                            "type": "ApplyRule",
+                            "args": [
+                                "413"
+                            ]
+                        },
+                        {
                             "type": "AddSuffix",
                             "args": [
                                 "anen"
@@ -3480,7 +3532,6 @@
                 }
             ],
             "addedCategories": ".INS",
-            "replacedCategories": "",
             "source": "Introductory Quenya C7"
         },
         {
@@ -4888,6 +4939,141 @@
             "addedCategories": ".ABL.DU",
             "replacedCategories": "",
             "source": "https://eldamo.org/content/words/word-3384394593.html"
+        },
+        {
+            "id": 516,
+            "name": "q-loc-ppl",
+            "fromLang": "Q",
+            "toLang": "Q",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ApplyRule",
+                            "args": [
+                                "413"
+                            ]
+                        },
+                        {
+                            "type": "ApplyRule",
+                            "args": [
+                                "412"
+                            ]
+                        },
+                        {
+                            "type": "ApplyRule",
+                            "args": [
+                                "410"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".LOC.PPL",
+            "source": "https://eldamo.org/content/words/word-988788179.html"
+        },
+        {
+            "id": 519,
+            "name": "q-loc-dual",
+            "fromLang": "Q",
+            "toLang": "Q",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "args": [
+                                "tse"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "cls": "vowel"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "args": [
+                                "usse"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".LOC.DUAL",
+            "replacedCategories": "",
+            "source": "https://eldamo.org/content/words/word-988788179.html",
+            "notes": "Locative for u-duals is not attested"
+        },
+        {
+            "id": 521,
+            "name": "q-ins-pl",
+            "fromLang": "Q",
+            "toLang": "Q",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "RemoveLastCharacter",
+                            "args": [
+                            ]
+                        },
+                        {
+                            "type": "AddSuffix",
+                            "args": [
+                                "ínen"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "characters": "e"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "args": [
+                                "ínen"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "cls": "consonant"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "args": [
+                                "inen"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".INS.PL",
+            "replacedCategories": "",
+            "source": "https://eldamo.org/content/words/word-1605931301.html",
+            "notes": ""
         }
     ],
     "links": [
@@ -6698,6 +6884,38 @@
             "ruleIds": [
                 514
             ]
+        },
+        {
+            "from": 517,
+            "to": 387,
+            "type": ">",
+            "ruleIds": [
+                409
+            ]
+        },
+        {
+            "from": 518,
+            "to": 387,
+            "type": ">",
+            "ruleIds": [
+                516
+            ]
+        },
+        {
+            "from": 520,
+            "to": 387,
+            "type": ">",
+            "ruleIds": [
+                519
+            ]
+        },
+        {
+            "from": 522,
+            "to": 387,
+            "type": ">",
+            "ruleIds": [
+                406
+            ]
         }
     ],
     "corpusTexts": [
@@ -7008,6 +7226,7 @@
                             "alternatives": [
                                 {
                                     "ruleIds": [
+                                        413,
                                         479
                                     ]
                                 }
@@ -7017,6 +7236,7 @@
                             "alternatives": [
                                 {
                                     "ruleIds": [
+                                        413,
                                         488
                                     ]
                                 }
@@ -7083,6 +7303,25 @@
                                     ]
                                 }
                             ]
+                        },
+                        {
+                            "alternatives": [
+                                {
+                                    "ruleIds": [
+                                        413,
+                                        505
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "alternatives": [
+                                {
+                                    "ruleIds": [
+                                        516
+                                    ]
+                                }
+                            ]
                         }
                     ]
                 },
@@ -7125,6 +7364,25 @@
                                 {
                                     "ruleIds": [
                                         482
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "alternatives": [
+                                {
+                                    "ruleIds": [
+                                        413,
+                                        514
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "alternatives": [
+                                {
+                                    "ruleIds": [
+                                        519
                                     ]
                                 }
                             ]

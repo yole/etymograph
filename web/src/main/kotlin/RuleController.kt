@@ -71,7 +71,7 @@ class RuleController(val graphService: GraphService) {
                 RuleExampleViewModel(
                     fromWord.toRefViewModel(graph),
                     toWord.toRefViewModel(graph),
-                    link.rules.fold(toWord) { w, r -> r.apply(w) }.text
+                    link.rules.fold(toWord) { w, r -> r.apply(w, graph) }.text
                         .takeIf { !isNormalizedEqual(toWord.language, it, fromWord.text) },
                     link.rules.map { it.name }
                 )

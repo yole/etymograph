@@ -14,7 +14,7 @@ class RuleTest : QBaseTest() {
     @Test
     fun instructions() {
         val i = RuleInstruction(InstructionType.RemoveLastCharacter, "")
-        assertEquals("parm", i.apply(q.word("parma")).text)
+        assertEquals("parm", i.apply(q.word("parma"), emptyRepo).text)
     }
 
     @Test
@@ -26,7 +26,7 @@ class RuleTest : QBaseTest() {
         val r = RuleBranch(c, listOf(i1, i2))
 
         assertTrue(r.matches(Word(0, "lasse", q)))
-        assertEquals("lassi", r.apply(q.word("lasse")).text)
+        assertEquals("lassi", r.apply(q.word("lasse"), emptyRepo).text)
     }
 
     @Test
@@ -150,7 +150,7 @@ class RuleTest : QBaseTest() {
             - new sound is 'h'
             """.trimIndent()
         )
-        assertEquals("his", rule.apply(Word(-1, "khith", ce)).text)
+        assertEquals("his", rule.apply(ce.word("khith"), emptyRepo).text)
     }
 
     @Test
@@ -161,7 +161,7 @@ class RuleTest : QBaseTest() {
             sound is 'th':
             - new sound is 's'
         """.trimIndent())
-        assertEquals("khs", rule.apply(ce.word("khithi")).text)
+        assertEquals("khs", rule.apply(ce.word("khithi"), emptyRepo).text)
     }
 
     @Test
@@ -170,7 +170,7 @@ class RuleTest : QBaseTest() {
             sound is 'i' and previous sound is 'kh':
             - sound disappears
         """.trimIndent())
-        assertEquals("khthi", rule.apply(ce.word("khithi")).text)
+        assertEquals("khthi", rule.apply(ce.word("khithi"), emptyRepo).text)
     }
 
     @Test
@@ -179,7 +179,7 @@ class RuleTest : QBaseTest() {
             sound is 'i' and previous sound is not 'kh':
             - sound disappears
         """.trimIndent())
-        assertEquals("khith", rule.apply(ce.word("khithi")).text)
+        assertEquals("khith", rule.apply(ce.word("khithi"), emptyRepo).text)
     }
 
     @Test
@@ -189,7 +189,7 @@ class RuleTest : QBaseTest() {
             - new sound is 'á'
         """.trimIndent())
         val applySoundRuleInstruction = ApplySoundRuleInstruction(q, RuleRef.to(soundRule), "first vowel")
-        assertEquals("lásse", applySoundRuleInstruction.apply(q.word("lasse")).text)
+        assertEquals("lásse", applySoundRuleInstruction.apply(q.word("lasse"), emptyRepo).text)
     }
 
     @Test
@@ -204,7 +204,7 @@ class RuleTest : QBaseTest() {
         val applySoundRule = Rule(-1, "q-lengthen", q, q, Rule.parseBranches("""
             - apply sound rule 'q-lengthen' to first vowel
         """.trimIndent(), parseContext), null, null, null, null)
-        assertEquals("lásse", applySoundRule.apply(q.word("lasse")).text)
+        assertEquals("lásse", applySoundRule.apply(q.word("lasse"), emptyRepo).text)
     }
 
     @Test fun soundRuleToEditableText() {
@@ -221,7 +221,7 @@ class RuleTest : QBaseTest() {
             beginning of word and sound is 'd':
             - new sound is 'l'
         """.trimIndent())
-        assertEquals("lanta", rule.apply(ce.word("danta")).text)
+        assertEquals("lanta", rule.apply(ce.word("danta"), emptyRepo).text)
         assertEquals("beginning of word and sound is 'd'", rule.branches[0].condition.toEditableText())
     }
 }

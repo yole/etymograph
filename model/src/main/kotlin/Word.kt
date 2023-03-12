@@ -32,7 +32,7 @@ class Word(
 
     val normalizedText: String get() = language.normalizeWord(text)
 
-    fun derive(text: String): Word = Word(-1, text, language, gloss, fullGloss, pos)
+    fun derive(text: String): Word = if (this.text == text) this else Word(-1, text, language, gloss, fullGloss, pos)
 
     fun getOrComputeGloss(graph: GraphRepository): String? {
         gloss?.let { return it }

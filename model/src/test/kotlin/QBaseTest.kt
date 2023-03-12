@@ -6,4 +6,6 @@ open class QBaseTest {
         it.digraphs = listOf("kh", "th")
     }
     val v = PhonemeClass("vowel", listOf("a", "o", "u", "i", "e")).also { q.phonemeClasses.add(it) }
+
+    val emptyRepo = InMemoryGraphRepository()
 }
