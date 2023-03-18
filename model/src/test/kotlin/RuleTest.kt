@@ -243,6 +243,13 @@ class RuleTest : QBaseTest() {
         assertTrue(condition.matches(q.word("rauca")))
         assertFalse(condition.matches(q.word("tie")))
     }
+
+    @Test
+    fun syllableMatcherEndsWith() {
+        val condition = RuleCondition.parse("first syllable ends with a consonant", q) as SyllableRuleCondition
+        assertTrue(condition.matches(q.word("ampa")))
+        assertFalse(condition.matches(q.word("tie")))
+    }
 }
 
 fun Language.word(text: String) = Word(-1, text, this)

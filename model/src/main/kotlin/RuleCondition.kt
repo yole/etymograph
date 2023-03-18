@@ -87,7 +87,7 @@ class LeafRuleCondition(
         const val indefiniteArticle = "a "
 
         fun parse(s: String, language: Language): RuleCondition {
-            if (SyllableRuleCondition.syllableContains in s) {
+            if (SyllableRuleCondition.syllable in s) {
                 return SyllableRuleCondition.parse(s, language)
             }
 
@@ -125,7 +125,27 @@ class LeafRuleCondition(
     }
 }
 
-class SyllableRuleCondition(val index: Int, val phonemeClass: PhonemeClass) : RuleCondition() {
+enum class SyllableMatchType(val condName: String) {
+    Contains("contains"),
+    EndsWith("ends with");
+
+    companion object  {
+        fun parse(s: String): Pair<SyllableMatchType, String>? {
+            for (entry in SyllableMatchType.values()) {
+                if (s.startsWith(entry.condName)) {
+                    return entry to s.removePrefix(entry.condName).trim()
+                }
+            }
+            return null
+        }
+    }
+}
+
+class SyllableRuleCondition(
+    val matchType: SyllableMatchType,
+    val index: Int,
+    val phonemeClass: PhonemeClass
+) : RuleCondition() {
     override fun isPhonemic(): Boolean = false
 
     override fun matches(word: Word): Boolean {
@@ -134,11 +154,17 @@ class SyllableRuleCondition(val index: Int, val phonemeClass: PhonemeClass) : Ru
         if (indexToMatch !in syllables.indices) return false
         val syllable = syllables[indexToMatch]
         val phonemes = PhonemeIterator(word)
-        for (i in syllable.startIndex until syllable.endIndex) {
-            phonemes.advanceTo(i)
-            if (phonemeClass.matchesCurrent(phonemes)) {
-                return true
+        if (matchType == SyllableMatchType.Contains) {
+            for (i in syllable.startIndex until syllable.endIndex) {
+                phonemes.advanceTo(i)
+                if (phonemeClass.matchesCurrent(phonemes)) {
+                    return true
+                }
             }
+        }
+        else if (matchType == SyllableMatchType.EndsWith) {
+            phonemes.advanceTo(syllable.endIndex - 1)
+            return phonemeClass.matchesCurrent(phonemes)
         }
         return false
     }
@@ -148,21 +174,24 @@ class SyllableRuleCondition(val index: Int, val phonemeClass: PhonemeClass) : Ru
     }
 
     override fun toEditableText(): String {
-        return "${Ordinals.toString(index)} $syllableContains a ${phonemeClass.name}"
+        return "${Ordinals.toString(index)} $syllable ${matchType.condName} a ${phonemeClass.name}"
     }
 
     companion object {
-        const val syllableContains = "syllable contains"
+        const val syllable = "syllable"
 
         fun parse(s: String, language: Language): SyllableRuleCondition {
-            val i = s.indexOf(syllableContains)
+            val i = s.indexOf(syllable)
             val prefix = s.substring(0, i).trim()
-            val index = Ordinals.parse(prefix)?.first ?: throw RuleParseException("Cannot parse ordinal $prefix")
-            val tail = s.substring(i)
-                .removePrefix(syllableContains).trim()
-                .removePrefix(LeafRuleCondition.indefiniteArticle).trim()
-            val phonemeClass = language.phonemeClassByName(tail) ?: throw RuleParseException("Unknown phoneme class $tail")
-            return SyllableRuleCondition(index, phonemeClass)
+            val index = Ordinals.parse(prefix)?.first ?: throw RuleParseException("Cannot parse ordinal '$prefix'")
+            val tail = s.substring(i).removePrefix(syllable).trim()
+
+            val (matchType, phonemeClassName) = SyllableMatchType.parse(tail)
+                ?: throw RuleParseException("Cannot parse syllable condition '$tail'")
+
+            val phonemeClass = language.phonemeClassByName(phonemeClassName.removePrefix(LeafRuleCondition.indefiniteArticle).trim())
+                ?: throw RuleParseException("Unknown phoneme class '$phonemeClassName'")
+            return SyllableRuleCondition(matchType, index, phonemeClass)
         }
     }
 }
