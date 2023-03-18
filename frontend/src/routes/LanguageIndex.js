@@ -12,11 +12,12 @@ export default function LanguageIndex() {
     const params = useParams()
     const [editMode, setEditMode] = useState(false)
     const [letterNorm, setLetterNorm] = useState(lang.letterNormalization)
+    const [diphthongs, setDiphthongs] = useState(lang.diphthongs.join(", "))
     const revalidator = useRevalidator()
     useEffect(() => { document.title = "Etymograph : " + lang.name })
 
     function saveLanguage() {
-        updateLanguage(params.langId, letterNorm)
+        updateLanguage(params.langId, letterNorm, diphthongs)
             .then(() => revalidator.revalidate())
         setEditMode(false)
     }
@@ -36,6 +37,13 @@ export default function LanguageIndex() {
         <ul>
         {lang.phonemeClasses.map(pc => <li>{pc.name}: {pc.matchingPhonemes.join(", ")}</li>)}
         </ul>
+        {!editMode && lang.diphthongs.length > 0 && <p>Diphthongs: {lang.diphthongs.join(", ")}</p>}
+        {editMode && <table><tbody>
+        <tr>
+            <td><label>Diphthongs:</label></td>
+            <td><input type="text" value={diphthongs} onChange={(e) => setDiphthongs(e.target.value)}/></td>
+        </tr>
+        </tbody></table>}
 
         {editMode && <>
             <button onClick={() => saveLanguage()}>Save</button>&nbsp;

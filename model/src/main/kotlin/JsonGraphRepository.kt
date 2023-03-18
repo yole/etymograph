@@ -28,6 +28,9 @@ data class PhonemeClassData(@SerialName("lang") val languageShortName: String, v
 data class DigraphData(@SerialName("lang") val languageShortName: String, val digraphs: List<String>)
 
 @Serializable
+data class DiphthongData(@SerialName("lang") val languageShortName: String, val diphthongs: List<String>)
+
+@Serializable
 data class LetterNormalizationData(@SerialName("lang") val languageShortName: String, val rules: Map<String, String>)
 
 @Serializable
@@ -145,6 +148,7 @@ data class GraphRepositoryData(
     val languages: List<LanguageData>,
     val phonemeClasses: List<PhonemeClassData>,
     val digraphs: List<DigraphData>,
+    val diphthongs: List<DiphthongData>,
     val letterNormalization: List<LetterNormalizationData>,
     val words: List<WordData>,
     val rules: List<RuleData>,
@@ -192,11 +196,13 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             lang.phonemeClasses.map { PhonemeClassData(lang.shortName, it.name, it.matchingPhonemes) }
         }
         val digraphData = languages.values.map { DigraphData(it.shortName, it.digraphs) }
+        val diphthongData = languages.values.map { DiphthongData(it.shortName, it.diphthongs) }
         val letterNormalizationData = languages.values.map { LetterNormalizationData(it.shortName, it.letterNormalization) }
         return GraphRepositoryData(
             languages.values.map { LanguageData(it.name, it.shortName) },
             phonemeClassData,
             digraphData,
+            diphthongData,
             letterNormalizationData,
             allLangEntities.filterIsInstance<Word>().map {
                 WordData(it.id, it.text, it.language.shortName, it.gloss, it.fullGloss, it.pos, it.source, it.notes)
@@ -237,6 +243,9 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
         }
         for (digraphData in data.digraphs) {
             languageByShortName(digraphData.languageShortName)!!.digraphs = digraphData.digraphs
+        }
+        for (diphthongData in data.diphthongs) {
+            languageByShortName(diphthongData.languageShortName)!!.diphthongs = diphthongData.diphthongs
         }
         for (letterNormalizationData in data.letterNormalization) {
             languageByShortName(letterNormalizationData.languageShortName)!!.letterNormalization = letterNormalizationData.rules

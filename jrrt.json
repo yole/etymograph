@@ -7107,7 +7107,8 @@
                 136,
                 137,
                 141,
-                138
+                138,
+                164
             ],
             "source": "I:394"
         },
@@ -7530,6 +7531,29 @@
                         }
                     ]
                 }
+            ]
+        }
+    ],
+    "diphthongs": [
+        {
+            "lang": "Q",
+            "diphthongs": [
+                "ai",
+                "oi",
+                "ui",
+                "au",
+                "eu",
+                "iu"
+            ]
+        },
+        {
+            "lang": "S",
+            "diphthongs": [
+            ]
+        },
+        {
+            "lang": "CE",
+            "diphthongs": [
             ]
         }
     ]

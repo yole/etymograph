@@ -15,6 +15,7 @@ class LanguageController(val graphService: GraphService) {
 
     data class LanguageViewModel(
         val name: String,
+        val diphthongs: List<String>,
         val phonemeClasses: List<PhonemeClassViewModel>,
         val letterNormalization: String
     )
@@ -24,19 +25,22 @@ class LanguageController(val graphService: GraphService) {
         val language = graphService.resolveLanguage(lang)
         return LanguageViewModel(
             language.name,
+            language.diphthongs,
             language.phonemeClasses.map { PhonemeClassViewModel(it.name, it.matchingPhonemes) },
             language.letterNormalization.entries.joinToString(", ") { (from, to) -> "$from=$to" }
         )
     }
 
     data class UpdateLanguageParameters(
-        val letterNormalization: String? = null
+        val letterNormalization: String? = null,
+        val diphthongs: String? = null
     )
 
     @PostMapping("/language/{lang}", consumes = ["application/json"])
     fun updateLanguage(@PathVariable lang: String, @RequestBody params: UpdateLanguageParameters) {
         val language = graphService.resolveLanguage(lang)
         language.letterNormalization = params.letterNormalization?.let { parseLetterNormalization(it) } ?: emptyMap()
+        language.diphthongs = params.diphthongs?.let { it.split(",").map { d -> d.trim() } } ?: emptyList()
         graphService.graph.save()
     }
 
