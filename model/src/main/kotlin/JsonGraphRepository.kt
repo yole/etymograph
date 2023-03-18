@@ -41,16 +41,29 @@ sealed class RuleConditionData {
 @Serializable
 data class LeafRuleConditionData(
     @SerialName("cond") val type: ConditionType,
-    @SerialName("cls") val characterClassName: String? = null,
+    @SerialName("cls") val phonemeClassName: String? = null,
     val characters: String? = null,
     val negated: Boolean = false
 ) : RuleConditionData() {
     override fun toRuntimeFormat(result: JsonGraphRepository, fromLanguage: Language): RuleCondition {
         return LeafRuleCondition(
             type,
-            characterClassName?.let { className -> fromLanguage.phonemeClassByName(className) },
+            phonemeClassName?.let { className -> fromLanguage.phonemeClassByName(className) },
             characters,
             negated
+        )
+    }
+}
+
+@Serializable
+class SyllableRuleConditionData(
+    val index: Int,
+    @SerialName("cls") val phonemeClassName: String,
+) : RuleConditionData() {
+    override fun toRuntimeFormat(result: JsonGraphRepository, fromLanguage: Language): RuleCondition {
+        return SyllableRuleCondition(
+            index,
+            fromLanguage.phonemeClassByName(phonemeClassName)!!
         )
     }
 }
@@ -391,6 +404,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             }
 
         private fun RuleCondition.toSerializedFormat(): RuleConditionData = when(this) {
+            is SyllableRuleCondition -> SyllableRuleConditionData(index, phonemeClass.name)
             is LeafRuleCondition -> LeafRuleConditionData(
                 type,
                 phonemeClass?.name,

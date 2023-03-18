@@ -8,7 +8,8 @@ open class QBaseTest {
     val ce = Language("Common Eldarin", "CE").also {
         it.digraphs = listOf("kh", "th")
     }
-    val v = PhonemeClass("vowel", listOf("a", "o", "u", "i", "e")).also { q.phonemeClasses.add(it) }
+    val v = PhonemeClass("vowel", listOf("a", "o", "u", "i", "e", "á", "ó", "ú", "í", "é")).also { q.phonemeClasses.add(it) }
+    val lv = PhonemeClass("long vowel", listOf("á", "ó", "ú", "í", "é")).also { q.phonemeClasses.add(it) }
 
     val emptyRepo = InMemoryGraphRepository()
 }

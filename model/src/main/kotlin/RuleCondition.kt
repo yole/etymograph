@@ -84,8 +84,13 @@ class LeafRuleCondition(
         const val prevSoundIs = "previous sound is "
         const val notPrefix = "not "
         const val beginningOfWord = "beginning of word"
+        const val indefiniteArticle = "a "
 
-        fun parse(s: String, language: Language): LeafRuleCondition {
+        fun parse(s: String, language: Language): RuleCondition {
+            if (SyllableRuleCondition.syllableContains in s) {
+                return SyllableRuleCondition.parse(s, language)
+            }
+
             for (conditionType in ConditionType.values()) {
                 if (s.startsWith(conditionType.condName)) {
                     return parseLeafCondition(conditionType, s.removePrefix(conditionType.condName), language)
@@ -113,9 +118,50 @@ class LeafRuleCondition(
                     condition.removePrefix("'").removeSuffix("'"),
                     negated)
             }
-            val characterClass = language.phonemeClassByName(condition.removePrefix("a "))
+            val characterClass = language.phonemeClassByName(condition.removePrefix(indefiniteArticle))
                 ?: throw RuleParseException("Unrecognized character class $c")
             return LeafRuleCondition(conditionType, characterClass, null, negated)
+        }
+    }
+}
+
+class SyllableRuleCondition(val index: Int, val phonemeClass: PhonemeClass) : RuleCondition() {
+    override fun isPhonemic(): Boolean = false
+
+    override fun matches(word: Word): Boolean {
+        val syllables = breakIntoSyllables(word)
+        val indexToMatch = if (index < 0) syllables.size + index else index
+        if (indexToMatch !in syllables.indices) return false
+        val syllable = syllables[indexToMatch]
+        val phonemes = PhonemeIterator(word)
+        for (i in syllable.startIndex until syllable.endIndex) {
+            if (phonemes[i] in phonemeClass.matchingPhonemes) {
+                return true
+            }
+        }
+        return false
+    }
+
+    override fun matches(phonemes: PhonemeIterator): Boolean {
+        throw IllegalStateException("This condition is not phonemic")
+    }
+
+    override fun toEditableText(): String {
+        return "${Ordinals.toString(index)} $syllableContains a ${phonemeClass.name}"
+    }
+
+    companion object {
+        const val syllableContains = "syllable contains"
+
+        fun parse(s: String, language: Language): SyllableRuleCondition {
+            val i = s.indexOf(syllableContains)
+            val prefix = s.substring(0, i).trim()
+            val index = Ordinals.parse(prefix)?.first ?: throw RuleParseException("Cannot parse ordinal $prefix")
+            val tail = s.substring(i)
+                .removePrefix(syllableContains).trim()
+                .removePrefix(LeafRuleCondition.indefiniteArticle).trim()
+            val phonemeClass = language.phonemeClassByName(tail) ?: throw RuleParseException("Unknown phoneme class $tail")
+            return SyllableRuleCondition(index, phonemeClass)
         }
     }
 }

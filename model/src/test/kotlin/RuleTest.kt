@@ -31,11 +31,11 @@ class RuleTest : QBaseTest() {
 
     @Test
     fun conditionParse() {
-        val c = LeafRuleCondition.parse("word ends with 'eë'", q)
+        val c = LeafRuleCondition.parse("word ends with 'eë'", q) as LeafRuleCondition
         assertEquals(ConditionType.EndsWith, c.type)
         assertEquals("eë", c.parameter)
 
-        val c2 = LeafRuleCondition.parse("word ends with a vowel", q)
+        val c2 = LeafRuleCondition.parse("word ends with a vowel", q) as LeafRuleCondition
         assertEquals(ConditionType.EndsWith, c2.type)
         assertEquals(v, c2.phonemeClass)
     }
@@ -207,7 +207,8 @@ class RuleTest : QBaseTest() {
         assertEquals("lásse", applySoundRule.apply(q.word("lasse"), emptyRepo).text)
     }
 
-    @Test fun soundRuleToEditableText() {
+    @Test
+    fun soundRuleToEditableText() {
         val soundRule = parseRule(q, q, """
             sound is 'a':
             - new sound is 'á'
@@ -216,13 +217,24 @@ class RuleTest : QBaseTest() {
         assertEquals("apply sound rule 'q' to first vowel", applySoundRuleInstruction.toEditableText())
     }
 
-    @Test fun beginningOfWord() {
+    @Test
+    fun beginningOfWord() {
         val rule = parseRule(ce, q, """
             beginning of word and sound is 'd':
             - new sound is 'l'
         """.trimIndent())
         assertEquals("lanta", rule.apply(ce.word("danta"), emptyRepo).text)
         assertEquals("beginning of word and sound is 'd'", rule.branches[0].condition.toEditableText())
+    }
+
+    @Test
+    fun syllableMatcher() {
+        val condition = RuleCondition.parse("second to last syllable contains a long vowel", q) as SyllableRuleCondition
+        assertEquals(-2, condition.index)
+        assertEquals("long vowel", condition.phonemeClass.name)
+        assertTrue(condition.matches(q.word("andúna")))
+        assertFalse(condition.matches(q.word("anca")))
+        assertEquals("second to last syllable contains a long vowel", condition.toEditableText())
     }
 }
 

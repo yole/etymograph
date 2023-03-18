@@ -1,32 +1,39 @@
 package ru.yole.etymograph
 
-class SeekTarget(val index: Int, val phonemeClass: PhonemeClass) {
-    fun toEditableText(): String {
+object Ordinals {
+    private val ordinals = listOf(
+        "last" to -1,
+        "second to last" to -2,
+        "first" to 1,
+        "second" to 2,
+        "third" to 3,
+    )
+
+    fun toString(i: Int): String? {
+        return ordinals.find { it.second == i }?.first
+    }
+
+    fun parse(s: String): Pair<Int, String>? {
         for (ordinal in ordinals) {
-            if (index == ordinal.value) {
-                return "${ordinal.key} ${phonemeClass.name}"
+            if (s.startsWith(ordinal.first)) {
+                return ordinal.second to s.removePrefix(ordinal.first).trim()
             }
         }
-        return "$index ${phonemeClass.name}"
+        return null
+    }
+}
+
+class SeekTarget(val index: Int, val phonemeClass: PhonemeClass) {
+    fun toEditableText(): String {
+        return Ordinals.toString(index)?.let { "$it ${phonemeClass.name}"} ?: "$index ${phonemeClass.name}"
     }
 
     companion object {
-        val ordinals = mapOf(
-            "first" to 1,
-            "second" to 2,
-            "third" to 3
-        )
-
         fun parse(s: String, language: Language): SeekTarget {
-            for (ordinal in ordinals) {
-                if (s.startsWith(ordinal.key)) {
-                    val phonemeClassName = s.removePrefix(ordinal.key).trim()
-                    val phonemeClass = language.phonemeClassByName(phonemeClassName)
-                        ?: throw RuleParseException("Unknown phoneme class '$phonemeClassName'")
-                    return SeekTarget(ordinal.value, phonemeClass)
-                }
-            }
-            throw RuleParseException("Cannot parse seek target $s")
+            val (index, phonemeClassName) = Ordinals.parse(s) ?: throw RuleParseException("Cannot parse seek target $s")
+            val phonemeClass = language.phonemeClassByName(phonemeClassName)
+                ?: throw RuleParseException("Unknown phoneme class '$phonemeClassName'")
+            return SeekTarget(index, phonemeClass)
         }
     }
 }
@@ -42,6 +49,8 @@ class PhonemeIterator(text: String, language: Language) {
     val current: String get() = phonemes[phonemeIndex]
     val previous: String? get() = phonemes.getOrNull(phonemeIndex - 1)
     val last: String get() = phonemes.last()
+
+    operator fun get(index: Int): String = phonemes[index]
 
     fun advance(): Boolean {
         if (phonemeIndex < phonemes.size - 1) {
