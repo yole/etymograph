@@ -250,6 +250,14 @@ class RuleTest : QBaseTest() {
         assertTrue(condition.matches(q.word("ampa")))
         assertFalse(condition.matches(q.word("tie")))
     }
+
+    @Test
+    fun syllableCount() {
+        val condition = RuleCondition.parse("number of syllables is 3", q) as LeafRuleCondition
+        assertEquals("3", condition.parameter)
+        assertTrue(condition.matches(q.word("andúna")))
+        assertFalse(condition.matches(q.word("anca")))
+    }
 }
 
 fun Language.word(text: String) = Word(-1, text, this)

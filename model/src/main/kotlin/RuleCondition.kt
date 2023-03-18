@@ -1,7 +1,12 @@
 package ru.yole.etymograph
 
-enum class ConditionType(val condName: String, val takesArgument: Boolean = true) {
+enum class ConditionType(
+    val condName: String,
+    val takesArgument: Boolean = true,
+    val takesPhonemeClass: Boolean = true
+) {
     EndsWith(LeafRuleCondition.wordEndsWith),
+    NumberOfSyllables(LeafRuleCondition.numberOfSyllables, takesPhonemeClass = false),
     PhonemeMatches(LeafRuleCondition.soundIs),
     PrevPhonemeMatches(LeafRuleCondition.prevSoundIs),
     BeginningOfWord(LeafRuleCondition.beginningOfWord, false)
@@ -55,6 +60,7 @@ class LeafRuleCondition(
         return when (type) {
             ConditionType.EndsWith -> (phonemeClass?.let { PhonemeIterator(word).last in it.matchingPhonemes }
                 ?: word.text.trimEnd('-').endsWith(parameter!!)).negateIfNeeded()
+            ConditionType.NumberOfSyllables -> breakIntoSyllables(word).size == parameter!!.toInt()
             else -> super.matches(word)
         }
     }
@@ -80,6 +86,7 @@ class LeafRuleCondition(
 
     companion object {
         const val wordEndsWith = "word ends with "
+        const val numberOfSyllables = "number of syllables is "
         const val soundIs = "sound is "
         const val prevSoundIs = "previous sound is "
         const val notPrefix = "not "
@@ -88,7 +95,7 @@ class LeafRuleCondition(
 
         fun parse(s: String, language: Language): RuleCondition {
             if (SyllableRuleCondition.syllable in s) {
-                return SyllableRuleCondition.parse(s, language)
+                SyllableRuleCondition.parse(s, language)?.let { return it }
             }
 
             for (conditionType in ConditionType.values()) {
@@ -113,7 +120,7 @@ class LeafRuleCondition(
             if (!conditionType.takesArgument) {
                 return LeafRuleCondition(conditionType, null, null, negated)
             }
-            if (condition.startsWith('\'')) {
+            if (condition.startsWith('\'') || !conditionType.takesPhonemeClass) {
                 return LeafRuleCondition(conditionType, null,
                     condition.removePrefix("'").removeSuffix("'"),
                     negated)
@@ -180,17 +187,17 @@ class SyllableRuleCondition(
     companion object {
         const val syllable = "syllable"
 
-        fun parse(s: String, language: Language): SyllableRuleCondition {
+        fun parse(s: String, language: Language): SyllableRuleCondition? {
             val i = s.indexOf(syllable)
             val prefix = s.substring(0, i).trim()
-            val index = Ordinals.parse(prefix)?.first ?: throw RuleParseException("Cannot parse ordinal '$prefix'")
+            val index = Ordinals.parse(prefix)?.first ?: return null
             val tail = s.substring(i).removePrefix(syllable).trim()
 
             val (matchType, phonemeClassName) = SyllableMatchType.parse(tail)
-                ?: throw RuleParseException("Cannot parse syllable condition '$tail'")
+                ?: return null
 
             val phonemeClass = language.phonemeClassByName(phonemeClassName.removePrefix(LeafRuleCondition.indefiniteArticle).trim())
-                ?: throw RuleParseException("Unknown phoneme class '$phonemeClassName'")
+                ?: return null
             return SyllableRuleCondition(matchType, index, phonemeClass)
         }
     }
