@@ -2,7 +2,22 @@ package ru.yole.etymograph
 
 import java.util.*
 
-class PhonemeClass(val name: String, val matchingPhonemes: List<String>)
+open class PhonemeClass(val name: String, val matchingPhonemes: List<String>) {
+    open fun matchesCurrent(it: PhonemeIterator): Boolean {
+        return it.current in matchingPhonemes
+    }
+
+    companion object {
+        val diphthong = object : PhonemeClass("diphthong", emptyList()) {
+            override fun matchesCurrent(it: PhonemeIterator): Boolean {
+                val next = it.next
+                return next != null && it.current + next in it.language.diphthongs
+            }
+        }
+
+        val specialPhonemeClasses = listOf(diphthong)
+    }
+}
 
 class Language(val name: String, val shortName: String) {
     var digraphs: List<String> = emptyList()
@@ -10,7 +25,8 @@ class Language(val name: String, val shortName: String) {
     var phonemeClasses = mutableListOf<PhonemeClass>()
     var letterNormalization = mapOf<String, String>()
 
-    fun phonemeClassByName(name: String) = phonemeClasses.find { it.name == name }
+    fun phonemeClassByName(name: String) =
+        phonemeClasses.find { it.name == name } ?: PhonemeClass.specialPhonemeClasses.find { it.name == name }
 
     fun normalizeWord(text: String): String {
         return letterNormalization.entries.fold(text.lowercase(Locale.FRANCE)) { s, entry ->

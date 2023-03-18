@@ -38,7 +38,7 @@ class SeekTarget(val index: Int, val phonemeClass: PhonemeClass) {
     }
 }
 
-class PhonemeIterator(text: String, language: Language) {
+class PhonemeIterator(text: String, val language: Language) {
     private val phonemes = splitPhonemes(text, language.digraphs)
     private val resultPhonemes = phonemes.toMutableList()
     private var phonemeIndex = 0
@@ -48,9 +48,15 @@ class PhonemeIterator(text: String, language: Language) {
 
     val current: String get() = phonemes[phonemeIndex]
     val previous: String? get() = phonemes.getOrNull(phonemeIndex - 1)
+    val next: String? get() = phonemes.getOrNull(phonemeIndex + 1)
     val last: String get() = phonemes.last()
 
     operator fun get(index: Int): String = phonemes[index]
+
+    fun advanceTo(index: Int) {
+        phonemeIndex = index
+        resultPhonemeIndex = index
+    }
 
     fun advance(): Boolean {
         if (phonemeIndex < phonemes.size - 1) {

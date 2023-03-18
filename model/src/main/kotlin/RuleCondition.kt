@@ -130,12 +130,13 @@ class SyllableRuleCondition(val index: Int, val phonemeClass: PhonemeClass) : Ru
 
     override fun matches(word: Word): Boolean {
         val syllables = breakIntoSyllables(word)
-        val indexToMatch = if (index < 0) syllables.size + index else index
+        val indexToMatch = if (index < 0) syllables.size + index else index - 1
         if (indexToMatch !in syllables.indices) return false
         val syllable = syllables[indexToMatch]
         val phonemes = PhonemeIterator(word)
         for (i in syllable.startIndex until syllable.endIndex) {
-            if (phonemes[i] in phonemeClass.matchingPhonemes) {
+            phonemes.advanceTo(i)
+            if (phonemeClass.matchesCurrent(phonemes)) {
                 return true
             }
         }

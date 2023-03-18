@@ -236,6 +236,13 @@ class RuleTest : QBaseTest() {
         assertFalse(condition.matches(q.word("anca")))
         assertEquals("second to last syllable contains a long vowel", condition.toEditableText())
     }
+
+    @Test
+    fun syllableMatcherDiphthong() {
+        val condition = RuleCondition.parse("first syllable contains a diphthong", q) as SyllableRuleCondition
+        assertTrue(condition.matches(q.word("rauca")))
+        assertFalse(condition.matches(q.word("tie")))
+    }
 }
 
 fun Language.word(text: String) = Word(-1, text, this)
