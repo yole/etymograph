@@ -32,4 +32,9 @@ class SyllablesTest : QBaseTest() {
     fun diphthong() {
         assertSyllables(q.word("caita"), 0 to 3, 3 to 5)
     }
+
+    @Test
+    fun longConsonantCluster() {
+        assertSyllables(q.word("monster"), 0 to 3, 3 to 7)
+    }
 }
