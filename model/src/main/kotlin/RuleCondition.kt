@@ -157,17 +157,10 @@ class SyllableRuleCondition(
 
     override fun matches(word: Word): Boolean {
         val syllables = breakIntoSyllables(word)
-        val indexToMatch = if (index < 0) syllables.size + index else index - 1
-        if (indexToMatch !in syllables.indices) return false
-        val syllable = syllables[indexToMatch]
+        val syllable = Ordinals.at(syllables, index) ?: return false
         val phonemes = PhonemeIterator(word)
         if (matchType == SyllableMatchType.Contains) {
-            for (i in syllable.startIndex until syllable.endIndex) {
-                phonemes.advanceTo(i)
-                if (phonemeClass.matchesCurrent(phonemes)) {
-                    return true
-                }
-            }
+            return phonemes.findMatchInRange(syllable.startIndex, syllable.endIndex, phonemeClass) != null
         }
         else if (matchType == SyllableMatchType.EndsWith) {
             phonemes.advanceTo(syllable.endIndex - 1)

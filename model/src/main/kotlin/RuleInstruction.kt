@@ -10,6 +10,7 @@ enum class InstructionType(
     AddSuffix("add suffix", "add suffix '(.+)'", true),
     ApplyRule("apply rule", "apply rule '(.+)'", true),
     ApplySoundRule("apply sound rule", "apply sound rule '(.+)' to (.+)", true),
+    ApplyStress("stress is on", "stress is on (.+) syllable", true),
     ChangeSound("new sound is", "new sound is '(.+)'", true),
     SoundDisappears("sound disappears");
 
@@ -48,6 +49,7 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
                     return when(type) {
                         InstructionType.ApplyRule -> ApplyRuleInstruction(context.ruleRefFactory(arg))
                         InstructionType.ApplySoundRule -> ApplySoundRuleInstruction.parse(match, context)
+                        InstructionType.ApplyStress -> ApplyStressInstruction(context.fromLanguage, arg)
                         else -> RuleInstruction(type, arg)
                     }
                 }
@@ -96,5 +98,19 @@ class ApplySoundRuleInstruction(language: Language, val ruleRef: RuleRef, arg: S
             val ruleRef = context.ruleRefFactory(match.groupValues[1])
             return ApplySoundRuleInstruction(context.fromLanguage, ruleRef, match.groupValues[2])
         }
+    }
+}
+
+class ApplyStressInstruction(val language: Language, arg: String) : RuleInstruction(InstructionType.ApplyStress, arg) {
+    private val syllableIndex = Ordinals.parse(arg)?.first ?: throw RuleParseException("Can't parse ordinal '$arg'")
+
+    override fun apply(word: Word, graph: GraphRepository): Word {
+        val syllables = breakIntoSyllables(word)
+        val vowel = language.phonemeClassByName(PhonemeClass.vowelClassName) ?: return word
+        val syllable = Ordinals.at(syllables, syllableIndex) ?: return word
+        val stressIndex = PhonemeIterator(word).findMatchInRange(syllable.startIndex, syllable.endIndex, vowel)
+            ?: return word
+        word.stressedPhonemeIndex = stressIndex    // TODO create a copy of the word here?
+        return word
     }
 }

@@ -21,6 +21,10 @@ object Ordinals {
         }
         return null
     }
+
+    fun <T> at(items: List<T>, index: Int): T? {
+        return items.getOrNull(if (index < 0) items.size + index else index - 1)
+    }
 }
 
 class SeekTarget(val index: Int, val phonemeClass: PhonemeClass) {
@@ -96,6 +100,16 @@ class PhonemeIterator(text: String, val language: Language) {
     }
 
     fun atBeginning(): Boolean = phonemeIndex == 0
+
+    fun findMatchInRange(start: Int, end: Int, phonemeClass: PhonemeClass): Int? {
+        for (i in start until end) {
+            advanceTo(i)
+            if (phonemeClass.matchesCurrent(this)) {
+                return i
+            }
+        }
+        return null
+    }
 
     private fun splitPhonemes(text: String, digraphs: List<String>): List<String> {
         val result = mutableListOf<String>()

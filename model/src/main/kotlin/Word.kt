@@ -34,6 +34,8 @@ class Word(
 
     fun derive(text: String): Word = if (this.text == text) this else Word(-1, text, language, gloss, fullGloss, pos)
 
+    var stressedPhonemeIndex: Int = -1
+
     fun getOrComputeGloss(graph: GraphRepository): String? {
         gloss?.let { return it }
         val components = graph.getLinksFrom(this).filter { it.type == Link.Agglutination && it.toEntity is Word }

@@ -258,6 +258,17 @@ class RuleTest : QBaseTest() {
         assertTrue(condition.matches(q.word("andúna")))
         assertFalse(condition.matches(q.word("anca")))
     }
+
+    @Test
+    fun stress() {
+        val rule = parseRule(q, q, """
+            number of syllables is 2:
+            - stress is on first syllable
+            """.trimIndent()
+        )
+        val word = rule.apply(q.word("lasse"), emptyRepo)
+        assertEquals(1, word.stressedPhonemeIndex)
+    }
 }
 
 fun Language.word(text: String) = Word(-1, text, this)

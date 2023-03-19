@@ -77,13 +77,13 @@ class Rule(
                 applyToPhoneme(phonemes)
                 if (!phonemes.advance()) break
             }
-            return deriveWord(word, phonemes.result())
+            return deriveWord(word, phonemes.result(), word.stressedPhonemeIndex)
         }
 
         for (branch in branches) {
             if (branch.matches(word)) {
                 val resultWord = branch.apply(word, graph)
-                return deriveWord(word, resultWord.text)
+                return deriveWord(word, resultWord.text, resultWord.stressedPhonemeIndex)
             }
         }
         return word
@@ -100,11 +100,11 @@ class Rule(
         }
     }
 
-    private fun deriveWord(word: Word, text: String): Word {
+    private fun deriveWord(word: Word, text: String, stressIndex: Int): Word {
         val gloss = word.gloss?.let { baseGloss ->
             applyCategories(baseGloss)
         }
-        return Word(-1, text, word.language, gloss, word.pos)
+        return Word(-1, text, word.language, gloss, word.pos).also { it.stressedPhonemeIndex = stressIndex }
     }
 
     fun applyCategories(baseGloss: String) =

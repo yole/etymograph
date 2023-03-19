@@ -16,6 +16,8 @@ open class PhonemeClass(val name: String, val matchingPhonemes: List<String>) {
         }
 
         val specialPhonemeClasses = listOf(diphthong)
+
+        const val vowelClassName = "vowel"
     }
 }
 

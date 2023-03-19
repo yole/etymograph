@@ -7,7 +7,7 @@ class Syllable(val startIndex: Int, val endIndex: Int) {
 data class MutableSyllable(var startIndex: Int, var endIndex: Int)
 
 fun breakIntoSyllables(word: Word): List<Syllable> {
-    val vowels = word.language.phonemeClassByName("vowel")
+    val vowels = word.language.phonemeClassByName(PhonemeClass.vowelClassName)
         ?: return emptyList()
 
     val result = mutableListOf<MutableSyllable>()
