@@ -1,13 +1,19 @@
 package ru.yole.etymograph
 
-enum class InstructionType(val insnName: String, val takesArgument: Boolean) {
-    NoChange("no change", false),
-    RemoveLastCharacter("remove last character", false),
-    AddSuffix("add suffix", true),
-    ApplyRule("apply rule", true),
-    ApplySoundRule("apply sound rule", true),
-    ChangeSound("new sound is", true),
-    SoundDisappears("sound disappears", false)
+enum class InstructionType(
+    val insnName: String,
+    @org.intellij.lang.annotations.Language("RegExp") val pattern: String? = null,
+    val takesArgument: Boolean = false
+) {
+    NoChange("no change"),
+    RemoveLastCharacter("remove last character"),
+    AddSuffix("add suffix", "add suffix '(.+)'", true),
+    ApplyRule("apply rule", "apply rule '(.+)'", true),
+    ApplySoundRule("apply sound rule", "apply sound rule '(.+)' to (.+)", true),
+    ChangeSound("new sound is", "new sound is '(.+)'", true),
+    SoundDisappears("sound disappears");
+
+    val regex = Regex(pattern ?: Regex.escape(insnName))
 }
 
 open class RuleInstruction(val type: InstructionType, val arg: String) {
@@ -36,16 +42,14 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
     companion object {
         fun parse(s: String, context: RuleParseContext): RuleInstruction {
             for (type in InstructionType.values()) {
-                if (type.takesArgument && s.startsWith(type.insnName + " '")) {
-                    val arg = s.removePrefix(type.insnName + " '").removeSuffix("'")
+                val match = type.regex.matchEntire(s)
+                if (match != null) {
+                    val arg = if (match.groups.size > 1) match.groupValues[1] else ""
                     return when(type) {
                         InstructionType.ApplyRule -> ApplyRuleInstruction(context.ruleRefFactory(arg))
-                        InstructionType.ApplySoundRule -> ApplySoundRuleInstruction.parse(arg, context)
+                        InstructionType.ApplySoundRule -> ApplySoundRuleInstruction.parse(match, context)
                         else -> RuleInstruction(type, arg)
                     }
-                }
-                if (!type.takesArgument && s == type.insnName) {
-                    return RuleInstruction(type, "")
                 }
             }
             throw RuleParseException("Unrecognized instruction $s")
@@ -88,15 +92,9 @@ class ApplySoundRuleInstruction(language: Language, val ruleRef: RuleRef, arg: S
     }
 
     companion object {
-        const val delimiter = "' to"
-
-        fun parse(s: String, context: RuleParseContext): ApplySoundRuleInstruction {
-            val index = s.indexOf(delimiter)
-            if (index < 0) {
-                throw RuleParseException("Incorrect syntax of 'apply sound rule'")
-            }
-            val ruleRef = context.ruleRefFactory(s.substring(0, index))
-            return ApplySoundRuleInstruction(context.fromLanguage, ruleRef, s.substring(index + delimiter.length).trim())
+        fun parse(match: MatchResult, context: RuleParseContext): ApplySoundRuleInstruction {
+            val ruleRef = context.ruleRefFactory(match.groupValues[1])
+            return ApplySoundRuleInstruction(context.fromLanguage, ruleRef, match.groupValues[2])
         }
     }
 }
