@@ -17,6 +17,20 @@ export function WordLink(params) {
     return <Link to={linkTarget}>{word.text}</Link>
 }
 
+export function WordWithStress(params) {
+    const text = params.text
+    const stressIndex = params.stressIndex
+    const stressLength = params.stressLength
+    if (stressIndex != null) {
+        return <>
+            {text.substring(0, stressIndex)}
+            <span className="stressed">{text.substring(stressIndex, stressIndex+stressLength)}</span>
+            {text.substring(stressIndex+stressLength)}
+        </>
+    }
+    return text
+}
+
 function WordLinkComponent(params) {
     const baseWord = params.baseWord
     const linkWord = params.linkWord
@@ -134,7 +148,7 @@ function SingleWord(params) {
             <Link to={`/`}>Etymograph</Link> >{' '}
             <Link to={`/language/${word.language}`}>{word.languageFullName}</Link> >{' '}
             <Link to={`/dictionary/${word.language}`}>Dictionary</Link> > </small>
-            {word.text}</h2>
+            <WordWithStress text={word.text} stressIndex={word.stressIndex} stressLength={word.stressLength}/></h2>
         {!editMode && <>
             {word.pos && <div>{word.pos}</div>}
             <p>{word.fullGloss !== null && word.fullGloss !== "" ? word.fullGloss : word.gloss}</p>

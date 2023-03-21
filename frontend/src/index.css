@@ -42,3 +42,7 @@ code {
   margin-left: 2px;
   cursor: pointer;
 }
+
+.stressed {
+  text-decoration: underline;
+}

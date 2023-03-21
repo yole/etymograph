@@ -4,6 +4,8 @@ import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.server.ResponseStatusException
 import ru.yole.etymograph.GraphRepository
+import ru.yole.etymograph.PhonemeClass
+import ru.yole.etymograph.PhonemeIterator
 import ru.yole.etymograph.Word
 
 data class WordRefViewModel(
@@ -42,7 +44,9 @@ class WordController(val graphService: GraphService) {
         val notes: String?,
         val attestations: List<AttestationViewModel>,
         val linksFrom: List<LinkTypeViewModel>,
-        val linksTo: List<LinkTypeViewModel>
+        val linksTo: List<LinkTypeViewModel>,
+        val stressIndex: Int?,
+        val stressLength: Int?
     )
 
     @GetMapping("/word/{lang}/{text}")
@@ -67,6 +71,9 @@ class WordController(val graphService: GraphService) {
         val linksFrom = graph.getLinksFrom(this).groupBy { it.type }
         val linksTo = graph.getLinksTo(this).groupBy { it.type }
         val attestations = graph.findAttestations(this)
+
+        val (stressCharacterIndex, stressLength) = calculateStress(graph)
+
         return WordViewModel(
             id,
             language.shortName,
@@ -110,7 +117,9 @@ class WordController(val graphService: GraphService) {
                         )
                     }
                 )
-            }
+            },
+            stressCharacterIndex,
+            stressLength
         )
     }
 
@@ -212,3 +221,14 @@ class WordController(val graphService: GraphService) {
 class NoWordTextException : RuntimeException()
 
 fun String?.nullize() = this?.takeIf { it.trim().isNotEmpty() }
+
+fun Word.calculateStress(graph: GraphRepository): Pair<Int?, Int?> {
+    language.stressRule?.resolve()?.apply(this, graph)
+    return if (stressedPhonemeIndex >= 0) {
+        val phonemes = PhonemeIterator(this)
+        phonemes.advanceTo(stressedPhonemeIndex)
+        val isDiphthong = PhonemeClass.diphthong.matchesCurrent(phonemes)
+        phonemes.phonemeToCharacterIndex(stressedPhonemeIndex) to (if (isDiphthong) 2 else 1)
+    } else
+        null to null
+}

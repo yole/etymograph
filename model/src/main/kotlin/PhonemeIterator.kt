@@ -112,6 +112,10 @@ class PhonemeIterator(text: String, val language: Language) {
         return null
     }
 
+    fun phonemeToCharacterIndex(phonemeIndex: Int): Int {
+        return phonemes.subList(0, phonemeIndex).sumOf { it.length }
+    }
+
     private fun splitPhonemes(text: String, digraphs: List<String>): List<String> {
         val result = mutableListOf<String>()
         var offset = 0
