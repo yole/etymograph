@@ -37,4 +37,9 @@ class SyllablesTest : QBaseTest() {
     fun longConsonantCluster() {
         assertSyllables(q.word("monster"), 0 to 3, 3 to 7)
     }
+
+    @Test
+    fun oromardi() {
+        assertSyllables(q.word("oromardi"), 0 to 1, 1 to 3, 3 to 6, 6 to 8)
+    }
 }

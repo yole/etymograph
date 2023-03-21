@@ -32,6 +32,7 @@ fun breakIntoSyllables(word: Word): List<Syllable> {
             }
         }
         else {
+            lastVowel = null
             consonants++
             if (consonants == 2) {
                 result.last().endIndex++
