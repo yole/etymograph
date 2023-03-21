@@ -2,6 +2,8 @@ package ru.yole.etymograph
 
 import org.junit.Assert.*
 import org.junit.Test
+import ru.yole.etymograph.JsonGraphRepository.Companion.ruleBranchesFromSerializedFormat
+import ru.yole.etymograph.JsonGraphRepository.Companion.ruleToSerializedFormat
 
 class RuleTest : QBaseTest() {
     @Test
@@ -268,6 +270,19 @@ class RuleTest : QBaseTest() {
         )
         val word = rule.apply(q.word("lasse"), emptyRepo)
         assertEquals(1, word.stressedPhonemeIndex)
+    }
+
+    @Test
+    fun serializeStressRule() {
+        val rule = parseRule(q, q, """
+            number of syllables is 2:
+            - stress is on first syllable
+            """.trimIndent()
+        )
+
+        val serializedRule = rule.ruleToSerializedFormat()
+        val branches = ruleBranchesFromSerializedFormat(emptyRepo, q, serializedRule.branches)
+        assertTrue(branches[0].instructions[0] is ApplyStressInstruction)
     }
 }
 

@@ -35,7 +35,7 @@ data class LetterNormalizationData(@SerialName("lang") val languageShortName: St
 
 @Serializable
 sealed class RuleConditionData {
-    abstract fun toRuntimeFormat(result: JsonGraphRepository, fromLanguage: Language): RuleCondition
+    abstract fun toRuntimeFormat(result: InMemoryGraphRepository, fromLanguage: Language): RuleCondition
 }
 
 @Serializable
@@ -45,7 +45,7 @@ data class LeafRuleConditionData(
     val characters: String? = null,
     val negated: Boolean = false
 ) : RuleConditionData() {
-    override fun toRuntimeFormat(result: JsonGraphRepository, fromLanguage: Language): RuleCondition {
+    override fun toRuntimeFormat(result: InMemoryGraphRepository, fromLanguage: Language): RuleCondition {
         return LeafRuleCondition(
             type,
             phonemeClassName?.let { className -> fromLanguage.phonemeClassByName(className) },
@@ -61,7 +61,7 @@ class SyllableRuleConditionData(
     val index: Int,
     @SerialName("cls") val phonemeClassName: String,
 ) : RuleConditionData() {
-    override fun toRuntimeFormat(result: JsonGraphRepository, fromLanguage: Language): RuleCondition {
+    override fun toRuntimeFormat(result: InMemoryGraphRepository, fromLanguage: Language): RuleCondition {
         return SyllableRuleCondition(
             matchType,
             index,
@@ -74,7 +74,7 @@ class SyllableRuleConditionData(
 data class OrRuleConditionData(
     val members: List<RuleConditionData>
 ) : RuleConditionData() {
-    override fun toRuntimeFormat(result: JsonGraphRepository, fromLanguage: Language): RuleCondition =
+    override fun toRuntimeFormat(result: InMemoryGraphRepository, fromLanguage: Language): RuleCondition =
         OrRuleCondition(members.map { it.toRuntimeFormat(result, fromLanguage) })
 }
 
@@ -82,13 +82,13 @@ data class OrRuleConditionData(
 data class AndRuleConditionData(
     val members: List<RuleConditionData>
 ) : RuleConditionData() {
-    override fun toRuntimeFormat(result: JsonGraphRepository, fromLanguage: Language): RuleCondition =
+    override fun toRuntimeFormat(result: InMemoryGraphRepository, fromLanguage: Language): RuleCondition =
         AndRuleCondition(members.map { it.toRuntimeFormat(result, fromLanguage) })
 }
 
 @Serializable
 class OtherwiseConditionData : RuleConditionData() {
-    override fun toRuntimeFormat(result: JsonGraphRepository, fromLanguage: Language): RuleCondition = OtherwiseCondition
+    override fun toRuntimeFormat(result: InMemoryGraphRepository, fromLanguage: Language): RuleCondition = OtherwiseCondition
 }
 
 @Serializable
@@ -419,7 +419,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
         }
 
         fun ruleBranchesFromSerializedFormat(
-            result: JsonGraphRepository,
+            result: InMemoryGraphRepository,
             fromLanguage: Language,
             branches: List<RuleBranchData>
         ): List<RuleBranch> {
@@ -434,7 +434,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
         }
 
         private fun ruleInstructionFromSerializedFormat(
-            result: JsonGraphRepository,
+            result: InMemoryGraphRepository,
             fromLanguage: Language,
             insnData: RuleInstructionData
         ): RuleInstruction =
@@ -443,11 +443,13 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                     ApplyRuleInstruction(ruleRef(result, insnData.args[0].toInt()))
                 InstructionType.ApplySoundRule ->
                     ApplySoundRuleInstruction(fromLanguage, ruleRef(result, insnData.args[0].toInt()), insnData.args[1])
+                InstructionType.ApplyStress ->
+                    ApplyStressInstruction(fromLanguage, insnData.args[0])
                 else ->
                     RuleInstruction(insnData.type, insnData.args.firstOrNull() ?: "")
             }
 
-        private fun ruleRef(repo: JsonGraphRepository, ruleId: Int) =
+        private fun ruleRef(repo: InMemoryGraphRepository, ruleId: Int) =
             RuleRef { repo.ruleById(ruleId)!! }
     }
 }
