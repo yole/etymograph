@@ -34,6 +34,9 @@ data class DiphthongData(@SerialName("lang") val languageShortName: String, val 
 data class LetterNormalizationData(@SerialName("lang") val languageShortName: String, val rules: Map<String, String>)
 
 @Serializable
+data class StressRuleData(@SerialName("lang") val languageShortName: String, val ruleId: Int)
+
+@Serializable
 sealed class RuleConditionData {
     abstract fun toRuntimeFormat(result: InMemoryGraphRepository, fromLanguage: Language): RuleCondition
 }
@@ -165,6 +168,7 @@ data class GraphRepositoryData(
     val digraphs: List<DigraphData>,
     val diphthongs: List<DiphthongData>,
     val letterNormalization: List<LetterNormalizationData>,
+    val stressRules: List<StressRuleData>,
     val words: List<WordData>,
     val rules: List<RuleData>,
     val links: List<LinkData>,
@@ -213,12 +217,16 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
         val digraphData = languages.values.map { DigraphData(it.shortName, it.digraphs) }
         val diphthongData = languages.values.map { DiphthongData(it.shortName, it.diphthongs) }
         val letterNormalizationData = languages.values.map { LetterNormalizationData(it.shortName, it.letterNormalization) }
+        val stressRuleData = languages.values.mapNotNull { lang ->
+            lang.stressRule?.let { StressRuleData(lang.shortName, it.resolve().id) }
+        }
         return GraphRepositoryData(
             languages.values.map { LanguageData(it.name, it.shortName) },
             phonemeClassData,
             digraphData,
             diphthongData,
             letterNormalizationData,
+            stressRuleData,
             allLangEntities.filterIsInstance<Word>().map {
                 WordData(it.id, it.text, it.language.shortName, it.gloss, it.fullGloss, it.pos, it.source, it.notes)
             },
@@ -264,6 +272,9 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
         }
         for (letterNormalizationData in data.letterNormalization) {
             languageByShortName(letterNormalizationData.languageShortName)!!.letterNormalization = letterNormalizationData.rules
+        }
+        for (stressRuleData in data.stressRules) {
+            languageByShortName(stressRuleData.languageShortName)!!.stressRule = ruleRef(this, stressRuleData.ruleId)
         }
         for (word in data.words) {
             while (word.id > allLangEntities.size) {

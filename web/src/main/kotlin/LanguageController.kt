@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RestController
 import ru.yole.etymograph.PhonemeClass
+import ru.yole.etymograph.RuleRef
 
 @RestController
 class LanguageController(val graphService: GraphService) {
@@ -18,24 +19,28 @@ class LanguageController(val graphService: GraphService) {
         val name: String,
         val diphthongs: List<String>,
         val phonemeClasses: List<PhonemeClassViewModel>,
-        val letterNormalization: String
+        val letterNormalization: String,
+        val stressRuleName: String?
     )
 
     @GetMapping("/language/{lang}")
     fun language(@PathVariable lang: String): LanguageViewModel {
         val language = graphService.resolveLanguage(lang)
+        val stressRule = language.stressRule?.resolve()
         return LanguageViewModel(
             language.name,
             language.diphthongs,
             language.phonemeClasses.map { PhonemeClassViewModel(it.name, it.matchingPhonemes) },
-            language.letterNormalization.entries.joinToString(", ") { (from, to) -> "$from=$to" }
+            language.letterNormalization.entries.joinToString(", ") { (from, to) -> "$from=$to" },
+            stressRule?.name
         )
     }
 
     data class UpdateLanguageParameters(
         val letterNormalization: String? = null,
         val phonemeClasses: String? = null,
-        val diphthongs: String? = null
+        val diphthongs: String? = null,
+        val stressRuleName: String? = null
     )
 
     @PostMapping("/language/{lang}", consumes = ["application/json"])
@@ -44,6 +49,10 @@ class LanguageController(val graphService: GraphService) {
         language.letterNormalization = params.letterNormalization?.let { parseLetterNormalization(it) } ?: emptyMap()
         language.phonemeClasses = params.phonemeClasses?.let { parsePhonemeClasses(it) } ?: mutableListOf()
         language.diphthongs = params.diphthongs?.let { it.split(",").map { d -> d.trim() } } ?: emptyList()
+
+        val stressRule = params.stressRuleName?.let { graphService.resolveRule(it) }
+        language.stressRule = stressRule?.let { RuleRef.to(it) }
+
         graphService.graph.save()
     }
 

@@ -131,7 +131,7 @@ class RuleController(val graphService: GraphService) {
 
     private fun parseContext(fromLanguage: Language, toLanguage: Language): RuleParseContext =
         RuleParseContext(fromLanguage, toLanguage) {
-            RuleRef.to(graphService.graph.ruleByName(it) ?: throw RuleParseException("No rule with name $it"))
+            RuleRef.to(graphService.resolveRule(it))
         }
 
     @PostMapping("/rule/{id}", consumes = ["application/json"])

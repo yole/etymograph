@@ -147,6 +147,12 @@
             }
         }
     ],
+    "stressRules": [
+        {
+            "lang": "Q",
+            "ruleId": 535
+        }
+    ],
     "words": [
         {
             "id": 0,
@@ -5245,12 +5251,55 @@
                         "index": -2,
                         "cls": "diphthong"
                     }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ApplyStress",
+                            "args": [
+                                "second to last"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.SyllableRuleConditionData",
+                        "matchType": "Contains",
+                        "index": -2,
+                        "cls": "long vowel"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ApplyStress",
+                            "args": [
+                                "second to last"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.SyllableRuleConditionData",
+                        "matchType": "EndsWith",
+                        "index": -2,
+                        "cls": "consonant"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ApplyStress",
+                            "args": [
+                                "third to last"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
                 }
             ],
-            "addedCategories": "",
-            "replacedCategories": "",
-            "source": "https://eldamo.org/content/words/word-30508289.html",
-            "notes": ""
+            "addedCategories": null,
+            "source": "https://eldamo.org/content/words/word-30508289.html"
         }
     ],
     "links": [

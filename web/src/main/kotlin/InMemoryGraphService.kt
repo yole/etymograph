@@ -3,10 +3,7 @@ package ru.yole.etymograph.web
 import org.springframework.http.HttpStatus
 import org.springframework.stereotype.Service
 import org.springframework.web.server.ResponseStatusException
-import ru.yole.etymograph.GraphRepository
-import ru.yole.etymograph.JsonGraphRepository
-import ru.yole.etymograph.Language
-import ru.yole.etymograph.Word
+import ru.yole.etymograph.*
 import java.nio.file.Path
 
 abstract class GraphService {
@@ -20,6 +17,11 @@ abstract class GraphService {
     fun resolveWord(id: Int): Word {
         return graph.wordById(id)
             ?: throw ResponseStatusException(HttpStatus.NOT_FOUND, "No word with ID $id")
+    }
+
+    fun resolveRule(name: String): Rule {
+        return graph.ruleByName(name.trim())
+            ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST, "No rule named '$name'")
     }
 }
 

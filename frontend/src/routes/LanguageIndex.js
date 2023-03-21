@@ -16,11 +16,12 @@ export default function LanguageIndex() {
     const [phonemeClasses, setPhonemeClasses] = useState(
         lang.phonemeClasses.map(pc => `${pc.name}: ${pc.matchingPhonemes.join(",")}`).join("\n")
     )
+    const [stressRule, setStressRule] = useState(lang.stressRuleName)
     const revalidator = useRevalidator()
     useEffect(() => { document.title = "Etymograph : " + lang.name })
 
     function saveLanguage() {
-        updateLanguage(params.langId, letterNorm, phonemeClasses, diphthongs)
+        updateLanguage(params.langId, letterNorm, phonemeClasses, diphthongs, stressRule)
             .then(() => revalidator.revalidate())
         setEditMode(false)
     }
@@ -43,6 +44,7 @@ export default function LanguageIndex() {
         {lang.phonemeClasses.map(pc => <li>{pc.name}: {pc.matchingPhonemes.join(", ")}</li>)}
         </ul>
         {lang.diphthongs.length > 0 && <p>Diphthongs: {lang.diphthongs.join(", ")}</p>}
+        {lang.stressRuleName != null && <p>Stress rule: {lang.stressRuleName}</p>}
         </>}
         {editMode && <>
             <textarea rows={5} cols={50} value={phonemeClasses} onChange={(e) => setPhonemeClasses(e.target.value)}/>
@@ -50,6 +52,10 @@ export default function LanguageIndex() {
             <tr>
                 <td><label>Diphthongs:</label></td>
                 <td><input type="text" value={diphthongs} onChange={(e) => setDiphthongs(e.target.value)}/></td>
+            </tr>
+            <tr>
+                <td><label>Stress rule:</label></td>
+                <td><input type="text" value={stressRule} onChange={(e) => setStressRule(e.target.value)}/></td>
             </tr>
             </tbody></table>
         </>}

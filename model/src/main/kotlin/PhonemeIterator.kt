@@ -4,6 +4,7 @@ object Ordinals {
     private val ordinals = listOf(
         "last" to -1,
         "second to last" to -2,
+        "third to last" to -3,
         "first" to 1,
         "second" to 2,
         "third" to 3,

@@ -26,6 +26,7 @@ class Language(val name: String, val shortName: String) {
     var diphthongs: List<String> = emptyList()
     var phonemeClasses = mutableListOf<PhonemeClass>()
     var letterNormalization = mapOf<String, String>()
+    var stressRule: RuleRef? = null
 
     fun phonemeClassByName(name: String) =
         phonemeClasses.find { it.name == name } ?: PhonemeClass.specialPhonemeClasses.find { it.name == name }
