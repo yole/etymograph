@@ -37,6 +37,17 @@
         },
         {
             "lang": "Q",
+            "name": "long vowel",
+            "phonemes": [
+                "á",
+                "é",
+                "í",
+                "ó",
+                "ú"
+            ]
+        },
+        {
+            "lang": "Q",
             "name": "consonant",
             "phonemes": [
                 "b",

@@ -66,6 +66,8 @@ export function updateParadigm(id, name, pos, text) {
     return postToBackend('paradigm/' + id, {name: name, pos: pos, text: text})
 }
 
-export function updateLanguage(lang, letterNorm, diphthongs) {
-    return postToBackend('language/' + lang, {letterNormalization: letterNorm, diphthongs: diphthongs})
+export function updateLanguage(lang, letterNorm, phonemeClasses, diphthongs) {
+    return postToBackend('language/' + lang,
+        {letterNormalization: letterNorm, phonemeClasses: phonemeClasses, diphthongs: diphthongs}
+    )
 }

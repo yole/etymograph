@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RestController
+import ru.yole.etymograph.PhonemeClass
 
 @RestController
 class LanguageController(val graphService: GraphService) {
@@ -33,6 +34,7 @@ class LanguageController(val graphService: GraphService) {
 
     data class UpdateLanguageParameters(
         val letterNormalization: String? = null,
+        val phonemeClasses: String? = null,
         val diphthongs: String? = null
     )
 
@@ -40,6 +42,7 @@ class LanguageController(val graphService: GraphService) {
     fun updateLanguage(@PathVariable lang: String, @RequestBody params: UpdateLanguageParameters) {
         val language = graphService.resolveLanguage(lang)
         language.letterNormalization = params.letterNormalization?.let { parseLetterNormalization(it) } ?: emptyMap()
+        language.phonemeClasses = params.phonemeClasses?.let { parsePhonemeClasses(it) } ?: mutableListOf()
         language.diphthongs = params.diphthongs?.let { it.split(",").map { d -> d.trim() } } ?: emptyList()
         graphService.graph.save()
     }
@@ -51,5 +54,12 @@ class LanguageController(val graphService: GraphService) {
             result[from] = to
         }
         return result
+    }
+
+    private fun parsePhonemeClasses(s: String): MutableList<PhonemeClass> {
+        return s.split('\n').map { cls ->
+            val (name, phonemes) = cls.split(':')
+            PhonemeClass(name.trim(), phonemes.split(',').map { it.trim() })
+        }.toMutableList()
     }
 }
