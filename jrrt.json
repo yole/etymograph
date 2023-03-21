@@ -90,6 +90,29 @@
             ]
         }
     ],
+    "diphthongs": [
+        {
+            "lang": "Q",
+            "diphthongs": [
+                "ai",
+                "oi",
+                "ui",
+                "au",
+                "eu",
+                "iu"
+            ]
+        },
+        {
+            "lang": "S",
+            "diphthongs": [
+            ]
+        },
+        {
+            "lang": "CE",
+            "diphthongs": [
+            ]
+        }
+    ],
     "letterNormalization": [
         {
             "lang": "Q",
@@ -5164,6 +5187,59 @@
             "replacedCategories": "",
             "source": "https://eldamo.org/content/words/word-1605931301.html",
             "notes": ""
+        },
+        {
+            "id": 535,
+            "name": "q-stress",
+            "fromLang": "Q",
+            "toLang": "Q",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ApplyStress",
+                            "args": [
+                                "first"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OrRuleConditionData",
+                        "members": [
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "NumberOfSyllables",
+                                "characters": "1"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "NumberOfSyllables",
+                                "characters": "2"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ApplyStress",
+                            "args": [
+                                "second to last"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.SyllableRuleConditionData",
+                        "matchType": "Contains",
+                        "index": -2,
+                        "cls": "diphthong"
+                    }
+                }
+            ],
+            "addedCategories": "",
+            "replacedCategories": "",
+            "source": "https://eldamo.org/content/words/word-30508289.html",
+            "notes": ""
         }
     ],
     "links": [
@@ -7531,29 +7607,6 @@
                         }
                     ]
                 }
-            ]
-        }
-    ],
-    "diphthongs": [
-        {
-            "lang": "Q",
-            "diphthongs": [
-                "ai",
-                "oi",
-                "ui",
-                "au",
-                "eu",
-                "iu"
-            ]
-        },
-        {
-            "lang": "S",
-            "diphthongs": [
-            ]
-        },
-        {
-            "lang": "CE",
-            "diphthongs": [
             ]
         }
     ]

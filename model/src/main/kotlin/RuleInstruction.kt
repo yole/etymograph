@@ -33,7 +33,7 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
         }
     }
 
-    open fun toEditableText(): String = type.insnName + (if (type.takesArgument)  " '$arg'" else "")
+    open fun toEditableText(): String = type.pattern?.replace("(.+)", arg) ?: type.insnName
 
     open fun toSummaryText() = when(type) {
         InstructionType.AddSuffix -> "-$arg"
