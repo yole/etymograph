@@ -5,6 +5,7 @@ import WordForm from "./WordForm";
 import {associateWord} from "../api";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit } from '@fortawesome/free-solid-svg-icons'
+import {WordWithStress} from "./Word";
 
 export async function loader({params}) {
     return fetch(process.env.REACT_APP_BACKEND_URL + "corpus/text/" + params.id, { headers: { 'Accept': 'application/json'} })
@@ -18,7 +19,9 @@ export function CorpusTextWordLink(params) {
 
     if (w.wordText || w.gloss) {
         return <span onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
-            <Link to={`/word/${corpusText.language}/${w.wordText ?? w.text}${w.wordId !== null ? "/" + w.wordId : ""}`}>{w.text}</Link>
+            <Link to={`/word/${corpusText.language}/${w.wordText ?? w.text}${w.wordId !== null ? "/" + w.wordId : ""}`}>
+                <WordWithStress text={w.text} stressIndex={w.stressIndex} stressLength={w.stressLength}/>
+            </Link>
             {hovered && <span className="iconWithMargin"><FontAwesomeIcon icon={faEdit} onClick={() => showWordForm(w.text)}/></span>}
         </span>
     }

@@ -27,7 +27,11 @@ class CorpusController(val graphService: GraphService) {
         )
     }
 
-    data class CorpusWordViewModel(val text: String, val gloss: String, val wordId: Int?, val wordText: String?)
+    data class CorpusWordViewModel(
+        val text: String, val gloss: String, val wordId: Int?, val wordText: String?,
+        val stressIndex: Int?, val stressLength: Int?
+    )
+
     data class CorpusLineViewModel(val words: List<CorpusWordViewModel>)
     data class CorpusTextViewModel(
         val id: Int,
@@ -55,7 +59,9 @@ class CorpusController(val graphService: GraphService) {
             language.name,
             mapToLines(graphService.graph).map {
                 CorpusLineViewModel(it.corpusWords.map { cw ->
-                    CorpusWordViewModel(cw.text, cw.gloss ?: "", cw.word?.id, cw.word?.text)
+                    val (stressIndex, stressLength) = cw.word?.calculateStress(graphService.graph) ?: (null to null)
+                    CorpusWordViewModel(cw.text, cw.gloss ?: "", cw.word?.id, cw.word?.text,
+                        stressIndex, stressLength)
                 })
             }
         )

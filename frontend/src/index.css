@@ -45,4 +45,5 @@ code {
 
 .stressed {
   text-decoration: underline;
+  font-weight: bold;
 }
