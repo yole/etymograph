@@ -38,8 +38,8 @@ export function updateRule(id, name, fromLang, toLang, addedCategories, replaced
         notes: notes})
 }
 
-export function addCorpusText(lang, text) {
-    return postToBackend(`corpus/${lang}/new`, {text: text})
+export function addCorpusText(lang, title, text, source) {
+    return postToBackend(`corpus/${lang}/new`, {title: title, text: text, source: source})
 }
 
 export function associateWord(corpusTextId, wordId) {

@@ -5,7 +5,6 @@ import org.springframework.web.bind.annotation.*
 import org.springframework.web.server.ResponseStatusException
 import ru.yole.etymograph.CorpusText
 import ru.yole.etymograph.Language
-import ru.yole.etymograph.parser.CorpusTextSectionParser
 
 @RestController
 @CrossOrigin(origins = ["http://localhost:3000"])
@@ -67,15 +66,14 @@ class CorpusController(val graphService: GraphService) {
         )
     }
 
-    data class CorpusParams(val text: String = "")
+    data class CorpusParams(val title: String = "", val text: String = "", val source: String = "")
 
     @PostMapping("/corpus/{lang}/new", consumes = ["application/json"])
     @ResponseBody
     fun newText(@PathVariable lang: String, @RequestBody params: CorpusParams): CorpusTextViewModel {
         val repo = graphService.graph
         val language = graphService.resolveLanguage(lang)
-        val parser = CorpusTextSectionParser(repo, language)
-        val text = parser.parseText(params.text)
+        val text = repo.addCorpusText(params.text, params.title, language, emptyList(), params.source, null)
         repo.save()
         return text.toViewModel()
     }
