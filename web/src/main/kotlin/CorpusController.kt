@@ -37,7 +37,8 @@ class CorpusController(val graphService: GraphService) {
         val title: String,
         val language: String,
         val languageFullName: String,
-        val lines: List<CorpusLineViewModel>
+        val lines: List<CorpusLineViewModel>,
+        val source: String?
     )
 
     @GetMapping("/corpus/text/{id}")
@@ -62,7 +63,8 @@ class CorpusController(val graphService: GraphService) {
                     CorpusWordViewModel(cw.text, cw.gloss ?: "", cw.word?.id, cw.word?.text,
                         stressIndex, stressLength)
                 })
-            }
+            },
+            source
         )
     }
 

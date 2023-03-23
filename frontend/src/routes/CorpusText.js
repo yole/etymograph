@@ -81,6 +81,9 @@ export default function CorpusText() {
                 </tbody></table>
             </div>
         ))}
+        {corpusText.source != null &&
+            <div className="source">Source: {corpusText.source.startsWith("http") ? <a href={corpusText.source}>{corpusText.source}</a> : corpusText.source}</div>
+        }
         {wordFormVisible && <WordForm submitted={submitted} language={corpusText.language} predefWord={predefWord}/>}
     </>
 }
