@@ -27,7 +27,7 @@ class CorpusController(val graphService: GraphService) {
     }
 
     data class CorpusWordViewModel(
-        val text: String, val gloss: String, val wordId: Int?, val wordText: String?,
+        val index: Int, val text: String, val gloss: String, val wordId: Int?, val wordText: String?,
         val stressIndex: Int?, val stressLength: Int?
     )
 
@@ -60,7 +60,7 @@ class CorpusController(val graphService: GraphService) {
             mapToLines(graphService.graph).map {
                 CorpusLineViewModel(it.corpusWords.map { cw ->
                     val (stressIndex, stressLength) = cw.word?.calculateStress(graphService.graph) ?: (null to null)
-                    CorpusWordViewModel(cw.text, cw.gloss ?: "", cw.word?.id, cw.word?.text,
+                    CorpusWordViewModel(cw.index, cw.text, cw.gloss ?: "", cw.word?.id, cw.word?.text,
                         stressIndex, stressLength)
                 })
             },
@@ -80,13 +80,13 @@ class CorpusController(val graphService: GraphService) {
         return text.toViewModel()
     }
 
-    data class AssociateWordParameters(val wordId: Int = -1)
+    data class AssociateWordParameters(val index: Int, val wordId: Int = -1)
 
     @PostMapping("/corpus/text/{id}/associate")
     fun associateWord(@PathVariable id: Int, @RequestBody params: AssociateWordParameters) {
         val corpusText = resolveCorpusText(id)
         val word = graphService.resolveWord(params.wordId)
-        corpusText.words.add(word)
+        corpusText.associateWord(params.index, word)
         graphService.graph.save()
     }
 }

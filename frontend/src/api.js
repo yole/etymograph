@@ -42,8 +42,8 @@ export function addCorpusText(lang, title, text, source) {
     return postToBackend(`corpus/${lang}/new`, {title: title, text: text, source: source})
 }
 
-export function associateWord(corpusTextId, wordId) {
-    return postToBackend(`corpus/text/${corpusTextId}/associate`, {wordId: wordId})
+export function associateWord(corpusTextId, wordId, index) {
+    return postToBackend(`corpus/text/${corpusTextId}/associate`, {wordId: wordId, index: index})
 }
 
 export function addLink(fromWord, toWord, linkType, ruleNames) {

@@ -1,8 +1,6 @@
 package ru.yole.etymograph
 
-import java.util.*
-
-class CorpusWord(val text: String, val word: Word?, val gloss: String?)
+class CorpusWord(val index: Int, val text: String, val word: Word?, val gloss: String?)
 
 class CorpusTextLine(val corpusWords: List<CorpusWord>)
 
@@ -11,20 +9,27 @@ class CorpusText(
     val text: String,
     val title: String?,
     val language: Language,
-    val words: MutableList<Word>,
+    words: List<Word?>,
     source: String?,
     notes: String?
 ): LangEntity(id, source, notes) {
+    private val _words = words.toMutableList()
+
+    val words: List<Word?>
+        get() = _words
+
     fun mapToLines(repo: GraphRepository): List<CorpusTextLine> {
+        var currentIndex = 0
         return text.split("\n").map { line ->
             val textWords = splitIntoNormalizedWords(line)
-            CorpusTextLine(textWords.map { (textWord, normalizedWord) ->
-                val word = words.find { word -> word.normalizedText == normalizedWord }
+            CorpusTextLine(textWords.map { (textWord, _) ->
+                val word = _words.getOrNull(currentIndex)
                 if (word != null) {
-                    CorpusWord(textWord, word, word.getOrComputeGloss(repo))
+                    CorpusWord(currentIndex++, textWord, word, word.getOrComputeGloss(repo))
                 }
                 else {
-                    CorpusWord(textWord, null, repo.wordsByText(language, textWord).firstOrNull()?.getOrComputeGloss(repo))
+                    val gloss = repo.wordsByText(language, textWord).firstOrNull()?.getOrComputeGloss(repo)
+                    CorpusWord(currentIndex++, textWord, null, gloss)
                 }
             })
         }
@@ -35,10 +40,18 @@ class CorpusText(
     }
 
     fun containsWord(word: Word): Boolean {
-        if (word in words) return true
+        if (word in _words) return true
         return text.split("\n").any {
             word.text in splitIntoNormalizedWords(it).map { it.second } &&
-                    words.none { w -> w.text == word.text && w.id != word.id }
+                    _words.none { w -> w != null && w.text == word.text && w.id != word.id }
         }
+    }
+
+    fun associateWord(index: Int, word: Word) {
+        _words[index] = word
+    }
+
+    fun removeWord(word: Word) {
+        _words.removeIf { it?.id == word.id }
     }
 }

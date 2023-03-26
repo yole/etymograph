@@ -130,7 +130,7 @@ data class LinkData(
 data class CorpusTextData(
     val id: Int, val text: String, val title: String?,
     @SerialName("lang") val languageShortName: String,
-    val wordIds: List<Int>,
+    val wordIds: List<Int?>,
     val source: String? = null,
     val notes: String? = null
 )
@@ -240,7 +240,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             corpus.map {
                 CorpusTextData(
                     it.id, it.text, it.title, it.language.shortName,
-                    it.words.map { it.id }, it.source, it.notes
+                    it.words.map { it?.id }, it.source, it.notes
                 )
             },
             paradigms.map {
@@ -329,7 +329,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                 corpusText.text,
                 corpusText.title,
                 languageByShortName(corpusText.languageShortName)!!,
-                corpusText.wordIds.mapNotNull { allLangEntities[it] as? Word }.toMutableList(),
+                corpusText.wordIds.map { id -> id?.let { allLangEntities[id] as? Word } }.toMutableList(),
                 corpusText.source,
                 corpusText.notes
             )

@@ -36,7 +36,7 @@ open class InMemoryGraphRepository : GraphRepository() {
         source: String?,
         notes: String?
     ): CorpusText {
-        return CorpusText(allLangEntities.size, text, title, language, words.toMutableList(), source, notes).also {
+        return CorpusText(allLangEntities.size, text, title, language, words, source, notes).also {
             corpus += it
             allLangEntities += it
         }
@@ -170,7 +170,7 @@ open class InMemoryGraphRepository : GraphRepository() {
 
     override fun deleteWord(word: Word) {
         for (corpusText in corpus) {
-            corpusText.words.removeIf { it.id == word.id }
+            corpusText.removeWord(word)
         }
 
         val wordsByText = mapOfWordsByText(word.language, word.text)
