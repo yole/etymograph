@@ -34,17 +34,29 @@ class RuleController(val graphService: GraphService) {
         val examples: List<RuleExampleViewModel>
     )
 
+    data class RuleGroupViewModel(
+        val groupName: String,
+        val rules: List<RuleViewModel>
+    )
+
     data class RuleListViewModel(
         val toLangFullName: String,
-        val rules: List<RuleViewModel>
+        val ruleGroups: List<RuleGroupViewModel>
     )
 
     @GetMapping("/rules/{lang}")
     fun rules(@PathVariable lang: String): RuleListViewModel {
         val language = graphService.resolveLanguage(lang)
+
+        val ruleGroups = mutableMapOf<String, MutableList<RuleViewModel>>()
+        for (rule in graphService.graph.allRules().filter { it.toLanguage == language }) {
+            val categoryName = if (rule.isPhonemic()) "Phonetics" else "Grammar"
+            ruleGroups.getOrPut(categoryName) { mutableListOf() }.add(rule.toViewModel())
+        }
+
         return RuleListViewModel(
             language.name,
-            graphService.graph.allRules().filter { it.toLanguage == language }.map { it.toViewModel() }
+            ruleGroups.entries.map { RuleGroupViewModel(it.key, it.value) }
         )
     }
 

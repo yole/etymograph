@@ -18,9 +18,12 @@ export default function RuleList() {
             <Link to={`/language/${params.langId}`}>{ruleList.toLangFullName}</Link> > </small>
         Rules
     </h2>
-        <ul>
-            {ruleList.rules.map(r => <li key={r.id}><Link to={`/rule/${r.id}`}>{r.name}</Link>{r.summaryText.length > 0 ? ": " + r.summaryText : ""}</li>)}
-        </ul>
+        {ruleList.ruleGroups.map(g => <>
+            <h2>{g.groupName}</h2>
+            <ul>
+                {g.rules.map(r => <li key={r.id}><Link to={`/rule/${r.id}`}>{r.name}</Link>{r.summaryText.length > 0 ? ": " + r.summaryText : ""}</li>)}
+            </ul>
+        </>)}
         <Link to="/rules/new">Add rule</Link>
     </>
 }
