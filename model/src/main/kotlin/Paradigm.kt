@@ -63,6 +63,15 @@ data class Paradigm(
         columns[column].setRule(row, rules)
     }
 
+    fun collectAllRules(): Set<Rule> {
+        return columns
+            .flatMap { col -> col.cells.flatMap {
+                cell -> cell?.alternatives ?: emptyList() }
+            }
+            .flatMap { it.rules }
+            .toSet()
+    }
+
     fun generate(word: Word, graph: GraphRepository): List<List<WordAlternatives?>> {
         return columns.map {
             it.generate(word, graph)

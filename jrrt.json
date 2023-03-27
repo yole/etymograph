@@ -3322,6 +3322,12 @@
             ],
             "addedCategories": ".ALL",
             "preInstructions": [
+                {
+                    "type": "ApplyRule",
+                    "args": [
+                        "413"
+                    ]
+                }
             ]
         },
         {
@@ -3893,9 +3899,14 @@
                 }
             ],
             "addedCategories": ".PPL",
-            "replacedCategories": "",
             "source": "https://www.eldamo.org/content/words/word-1164934417.html",
             "preInstructions": [
+                {
+                    "type": "ApplyRule",
+                    "args": [
+                        "413"
+                    ]
+                }
             ]
         },
         {
@@ -7575,7 +7586,6 @@
                             "alternatives": [
                                 {
                                     "ruleIds": [
-                                        413,
                                         399
                                     ]
                                 }

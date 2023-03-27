@@ -49,8 +49,17 @@ class RuleController(val graphService: GraphService) {
         val language = graphService.resolveLanguage(lang)
 
         val ruleGroups = mutableMapOf<String, MutableList<RuleViewModel>>()
+
+        val paradigms = graphService.graph.paradigmsForLanguage(language)
+        val paradigmRules = paradigms.associate { it.name to it.collectAllRules() }
+
         for (rule in graphService.graph.allRules().filter { it.toLanguage == language }) {
-            val categoryName = if (rule.isPhonemic()) "Phonetics" else "Grammar"
+            val categoryName = if (rule.isPhonemic())
+                "Phonetics"
+            else {
+                val paradigm = paradigmRules.entries.find { rule in it.value }?.key
+                if (paradigm != null) "Grammar: $paradigm" else "Grammar: Other"
+            }
             ruleGroups.getOrPut(categoryName) { mutableListOf() }.add(rule.toViewModel())
         }
 
