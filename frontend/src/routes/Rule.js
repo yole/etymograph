@@ -50,7 +50,7 @@ export default function Rule() {
                 {rule.preInstructions.map(r => <li>{r}</li>)}
             </ul>
             {rule.branches.map(b => <>
-                {(rule.branches.length > 1 || rule.fromLang !== rule.toLang) && <div>{b.conditions}:</div>}
+                {b.conditions !== "" && <div>{b.conditions}:</div>}
                 <ul>
                     {b.instructions.map(i => <li>{i}</li>)}
                 </ul>

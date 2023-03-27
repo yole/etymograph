@@ -78,7 +78,7 @@ class RuleController(val graphService: GraphService) {
             source.nullize(),
             notes.nullize(),
             logic.preInstructions.map { it.toEditableText() },
-            logic.branches.map { it.toViewModel() },
+            logic.branches.map { it.toViewModel(isUnconditional()) },
             graph.findRuleExamples(this).map { link ->
                 val fromWord = link.fromEntity as Word
                 val toWord = link.toEntity as Word
@@ -97,9 +97,9 @@ class RuleController(val graphService: GraphService) {
         return lang.normalizeWord(ruleProducedWord) == lang.normalizeWord(attestedWord)
     }
 
-    private fun RuleBranch.toViewModel(): RuleBranchViewModel {
+    private fun RuleBranch.toViewModel(isUnconditional: Boolean): RuleBranchViewModel {
         return RuleBranchViewModel(
-            condition.toEditableText(),
+            if (isUnconditional) "" else condition.toEditableText(),
             instructions.map { it.toEditableText() }
         )
     }

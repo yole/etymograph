@@ -112,12 +112,15 @@ class Rule(
         (replacedCategories?.let { baseGloss.replace(it, "") } ?: baseGloss) + (addedCategories ?: "")
 
     fun toEditableText(): String {
-        if (logic.branches.size == 1 && logic.branches[0].condition is OtherwiseCondition && logic.preInstructions.isEmpty()) {
+        if (isUnconditional()) {
             return logic.branches[0].instructions.joinToString("\n") { " - " + it.toEditableText() }
         }
         return logic.preInstructions.joinToString("") { " - " + it.toEditableText() + "\n" } +
                 logic.branches.joinToString("\n\n") { it.toEditableText() }
     }
+
+    fun isUnconditional() =
+        logic.branches.size == 1 && logic.branches[0].condition is OtherwiseCondition && logic.preInstructions.isEmpty()
 
     fun toSummaryText(): String {
         val summaries = logic.branches.map { it.toSummaryText() }.filter { it.isNotEmpty() }.toSet()
