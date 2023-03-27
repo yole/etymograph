@@ -37,6 +37,9 @@ export default function Rule() {
             {rule.replacedCategories && <p>Replaced categories: {rule.replacedCategories}</p>}
             {rule.source != null && <div className="source">Source: {rule.source.startsWith("http") ? <a href={rule.source}>{rule.source}</a> : rule.source}</div>}
             <p/>
+            <ul>
+                {rule.preInstructions.map(r => <li>{r}</li>)}
+            </ul>
             {rule.branches.map(b => <>
                 {(rule.branches.length > 1 || rule.fromLang !== rule.toLang) && <div>{b.conditions}:</div>}
                 <ul>

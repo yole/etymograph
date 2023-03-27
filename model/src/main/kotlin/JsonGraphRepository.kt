@@ -113,7 +113,8 @@ data class RuleData(
     val addedCategories: String?,
     val replacedCategories: String? = null,
     val source: String? = null,
-    val notes: String? = null
+    val notes: String? = null,
+    val preInstructions: List<RuleInstructionData>? = null
 )
 
 @Serializable
@@ -297,7 +298,12 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                 rule.name ?: "",
                 fromLanguage,
                 languageByShortName(rule.toLanguageShortName)!!,
-                ruleBranchesFromSerializedFormat(this, fromLanguage, rule.branches),
+                RuleLogic(
+                    rule.preInstructions?.let {
+                        ruleInstructionsFromSerializedFormat(this, fromLanguage, it)
+                    } ?: emptyList(),
+                    ruleBranchesFromSerializedFormat(this, fromLanguage, rule.branches)
+                ),
                 rule.addedCategories,
                 rule.replacedCategories,
                 rule.source,
@@ -390,19 +396,24 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                 name,
                 fromLanguage.shortName,
                 toLanguage.shortName,
-                branches.map { branch ->
+                logic.branches.map { branch ->
                     RuleBranchData(
-                        branch.instructions.map { insn ->
-                            RuleInstructionData(insn.type, args = insn.argsToSerializedFormat())
-                        },
+                        branch.instructions.toSerializedFormat(),
                         branch.condition.toSerializedFormat()
                     )
                 },
                 addedCategories,
                 replacedCategories,
                 source,
-                notes
+                notes,
+                preInstructions = logic.preInstructions.toSerializedFormat()
             )
+
+        private fun List<RuleInstruction>.toSerializedFormat(): List<RuleInstructionData> {
+            return map { insn ->
+                RuleInstructionData(insn.type, args = insn.argsToSerializedFormat())
+            }
+        }
 
         private fun RuleInstruction.argsToSerializedFormat(): Array<String> =
             when (this) {
@@ -437,11 +448,17 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             return branches.map { branchData ->
                 RuleBranch(
                     branchData.condition!!.toRuntimeFormat(result, fromLanguage),
-                    branchData.instructions.map { insnData ->
-                        ruleInstructionFromSerializedFormat(result, fromLanguage, insnData)
-                    }
+                    ruleInstructionsFromSerializedFormat(result, fromLanguage, branchData.instructions)
                 )
             }
+        }
+
+        private fun ruleInstructionsFromSerializedFormat(
+            result: InMemoryGraphRepository,
+            fromLanguage: Language,
+            ruleInstructionData: List<RuleInstructionData>
+        ) = ruleInstructionData.map { insnData ->
+            ruleInstructionFromSerializedFormat(result, fromLanguage, insnData)
         }
 
         private fun ruleInstructionFromSerializedFormat(

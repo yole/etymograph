@@ -62,10 +62,10 @@ class RuleTest : QBaseTest() {
 
     @Test
     fun instructionParse() {
-        val i = RuleInstruction.parse("remove last character", q.parseContext())
+        val i = RuleInstruction.parse("- remove last character", q.parseContext())
         assertEquals(InstructionType.RemoveLastCharacter, i.type)
 
-        val i2 = RuleInstruction.parse("add suffix 'a'", q.parseContext())
+        val i2 = RuleInstruction.parse("- add suffix 'a'", q.parseContext())
         assertEquals(InstructionType.AddSuffix, i2.type)
         assertEquals("a", i2.arg)
     }
@@ -87,7 +87,7 @@ class RuleTest : QBaseTest() {
             - add suffix 'a'
             word ends with 'i':
             - add suffix 'r'
-        """.trimIndent(), q.parseContext())
+        """.trimIndent(), q.parseContext()).branches
         assertEquals(2, branches.size)
         assertEquals(1, branches[0].instructions.size)
         assertEquals(1, branches[1].instructions.size)
@@ -97,7 +97,7 @@ class RuleTest : QBaseTest() {
     fun ruleParseWithoutConditions() {
         val branches = Rule.parseBranches("""
             - add suffix 'lye'
-        """.trimIndent(), q.parseContext())
+        """.trimIndent(), q.parseContext()).branches
         assertEquals(1, branches.size)
         assertEquals(1, branches[0].instructions.size)
         assertTrue(branches[0].matches(Word(0, "abc", q)))
@@ -110,7 +110,7 @@ class RuleTest : QBaseTest() {
             - add suffix 'a'
             otherwise:
             - add suffix 'r'
-        """.trimIndent(), q.parseContext())
+        """.trimIndent(), q.parseContext()).branches
         assertEquals(2, branches.size)
         assertEquals(1, branches[0].instructions.size)
         assertEquals(OtherwiseCondition, branches[1].condition)
@@ -226,7 +226,7 @@ class RuleTest : QBaseTest() {
             - new sound is 'l'
         """.trimIndent())
         assertEquals("lanta", rule.apply(ce.word("danta"), emptyRepo).text)
-        assertEquals("beginning of word and sound is 'd'", rule.branches[0].condition.toEditableText())
+        assertEquals("beginning of word and sound is 'd'", rule.logic.branches[0].condition.toEditableText())
     }
 
     @Test
@@ -283,6 +283,22 @@ class RuleTest : QBaseTest() {
         val serializedRule = rule.ruleToSerializedFormat()
         val branches = ruleBranchesFromSerializedFormat(emptyRepo, q, serializedRule.branches)
         assertTrue(branches[0].instructions[0] is ApplyStressInstruction)
+    }
+
+    @Test
+    fun preInstructions() {
+        val ruleText = """
+            | - remove last character
+            |word ends with 'r':
+            | - add suffix 'i'
+        """.trimMargin("|")
+        val rule = parseRule(q, q, ruleText)
+        assertEquals(1, rule.logic.preInstructions.size)
+
+        val word = rule.apply(q.word("sure"), emptyRepo)
+        assertEquals("suri", word.text)
+
+        assertEquals(ruleText, rule.toEditableText())
     }
 }
 

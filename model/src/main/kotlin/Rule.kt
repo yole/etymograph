@@ -20,8 +20,7 @@ class RuleBranch(val condition: RuleCondition, val instructions: List<RuleInstru
     fun matches(word: Word) = condition.matches(word)
 
     fun apply(word: Word, graph: GraphRepository): Word {
-        val normalizedWord = word.derive(word.text.trimEnd('-'))
-        return instructions.fold(normalizedWord) { s, i -> i.apply(s, graph) }
+        return instructions.apply(word, graph)
     }
 
     fun toEditableText(): String {
@@ -45,33 +44,32 @@ class RuleBranch(val condition: RuleCondition, val instructions: List<RuleInstru
                 OtherwiseCondition
             }
             val instructions = lines.map {
-                if (!it.startsWith("-")) {
-                    throw RuleParseException("Instructions must start with -")
-                }
-                RuleInstruction.parse(it.removePrefix("-").trim(), context)
+                RuleInstruction.parse(it, context)
             }
             return RuleBranch(condition, instructions)
         }
     }
 }
 
+class RuleLogic(val preInstructions: List<RuleInstruction>, val branches: List<RuleBranch>)
+
 class Rule(
     id: Int,
     val name: String,
     val fromLanguage: Language,
     val toLanguage: Language,
-    var branches: List<RuleBranch>,
+    var logic: RuleLogic,
     var addedCategories: String?,
     var replacedCategories: String?,
     source: String?,
     notes: String?
 ) : LangEntity(id, source, notes) {
     fun matches(word: Word): Boolean {
-        return branches.any { it.matches(word) }
+        return logic.branches.any { it.matches(word) }
     }
 
     fun apply(word: Word, graph: GraphRepository): Word {
-        if (branches.any { it.condition.isPhonemic() }) {
+        if (logic.branches.any { it.condition.isPhonemic() }) {
             val phonemes = PhonemeIterator(word)
             while (true) {
                 applyToPhoneme(phonemes)
@@ -80,9 +78,10 @@ class Rule(
             return deriveWord(word, phonemes.result(), word.stressedPhonemeIndex)
         }
 
-        for (branch in branches) {
-            if (branch.matches(word)) {
-                val resultWord = branch.apply(word, graph)
+        val preWord = if (logic.preInstructions.isEmpty()) word else logic.preInstructions.apply(word, graph)
+        for (branch in logic.branches) {
+            if (branch.matches(preWord)) {
+                val resultWord = branch.apply(preWord, graph)
                 return deriveWord(word, resultWord.text, resultWord.stressedPhonemeIndex)
             }
         }
@@ -90,7 +89,7 @@ class Rule(
     }
 
     fun applyToPhoneme(phonemes: PhonemeIterator) {
-        for (branch in branches) {
+        for (branch in logic.branches) {
             if (branch.condition.matches(phonemes)) {
                 for (instruction in branch.instructions) {
                     instruction.apply(phonemes)
@@ -111,25 +110,30 @@ class Rule(
         (replacedCategories?.let { baseGloss.replace(it, "") } ?: baseGloss) + (addedCategories ?: "")
 
     fun toEditableText(): String {
-        if (branches.size == 1 && branches[0].condition is OtherwiseCondition) {
-            return branches[0].instructions.joinToString("\n") { " - " + it.toEditableText() }
+        if (logic.branches.size == 1 && logic.branches[0].condition is OtherwiseCondition && logic.preInstructions.isEmpty()) {
+            return logic.branches[0].instructions.joinToString("\n") { " - " + it.toEditableText() }
         }
-        return branches.joinToString("\n\n") { it.toEditableText() }
+        return logic.preInstructions.joinToString("") { " - " + it.toEditableText() + "\n" } +
+                logic.branches.joinToString("\n\n") { it.toEditableText() }
     }
 
     fun toSummaryText(): String {
-        val summaries = branches.map { it.toSummaryText() }.filter { it.isNotEmpty() }.toSet()
+        val summaries = logic.branches.map { it.toSummaryText() }.filter { it.isNotEmpty() }.toSet()
         return summaries.joinToString("/")
     }
 
     companion object {
-        fun parseBranches(s: String, context: RuleParseContext): List<RuleBranch> {
-            if (s.isBlank()) return emptyList()
+        fun parseBranches(s: String, context: RuleParseContext): RuleLogic {
+            if (s.isBlank()) return RuleLogic(emptyList(), emptyList())
             val lines = s.split('\n').map { it.trim() }.filter { it.isNotEmpty() }
             val branchTexts = mutableListOf<List<String>>()
             var currentBranchText = mutableListOf<String>()
+            var preInstructionsText = mutableListOf<String>()
             for (l in lines) {
                 if (l.endsWith(':')) {
+                    if (branchTexts.isEmpty()) {
+                        preInstructionsText.addAll(currentBranchText)
+                    }
                     currentBranchText = mutableListOf()
                     branchTexts.add(currentBranchText)
                 }
@@ -138,7 +142,9 @@ class Rule(
             if (branchTexts.isEmpty()) {   // rule with no conditions
                 branchTexts.add(currentBranchText)
             }
-            return branchTexts.map { RuleBranch.parse(it.joinToString("\n"), context) }
+            val preInstructions = preInstructionsText.map { RuleInstruction.parse(it, context) }
+            val branches = branchTexts.map { RuleBranch.parse(it.joinToString("\n"), context) }
+            return RuleLogic(preInstructions, branches)
         }
     }
 }

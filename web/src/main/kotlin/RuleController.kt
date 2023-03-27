@@ -29,6 +29,7 @@ class RuleController(val graphService: GraphService) {
         val replacedCategories: String?,
         val source: String?,
         val notes: String?,
+        val preInstructions: List<String>,
         val branches: List<RuleBranchViewModel>,
         val examples: List<RuleExampleViewModel>
     )
@@ -64,7 +65,8 @@ class RuleController(val graphService: GraphService) {
             replacedCategories,
             source.nullize(),
             notes.nullize(),
-            branches.map { it.toViewModel() },
+            logic.preInstructions.map { it.toEditableText() },
+            logic.branches.map { it.toViewModel() },
             graph.findRuleExamples(this).map { link ->
                 val fromWord = link.fromEntity as Word
                 val toWord = link.toEntity as Word
@@ -108,7 +110,7 @@ class RuleController(val graphService: GraphService) {
         val fromLanguage = graphService.resolveLanguage(params.fromLang)
         val toLanguage = graphService.resolveLanguage(params.toLang)
 
-        val branches = try {
+        val logic = try {
             Rule.parseBranches(params.text, parseContext(fromLanguage, toLanguage))
         }
         catch (e: RuleParseException) {
@@ -119,7 +121,7 @@ class RuleController(val graphService: GraphService) {
             params.name,
             fromLanguage,
             toLanguage,
-            branches,
+            logic,
             params.addedCategories,
             params.replacedCategories,
             params.source,
@@ -139,7 +141,7 @@ class RuleController(val graphService: GraphService) {
     fun updateRule(@PathVariable id: Int, @RequestBody params: UpdateRuleParameters) {
         val graph = graphService.graph
         val rule = resolveRule(id)
-        rule.branches = Rule.parseBranches(params.text, parseContext(rule.fromLanguage, rule.toLanguage))
+        rule.logic = Rule.parseBranches(params.text, parseContext(rule.fromLanguage, rule.toLanguage))
         rule.notes = params.notes
         rule.addedCategories = params.addedCategories.nullize()
         rule.replacedCategories = params.replacedCategories.nullize()

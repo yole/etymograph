@@ -3125,19 +3125,9 @@
                         }
                     ],
                     "condition": {
-                        "type": "ru.yole.etymograph.OrRuleConditionData",
-                        "members": [
-                            {
-                                "type": "ru.yole.etymograph.LeafRuleConditionData",
-                                "cond": "EndsWith",
-                                "characters": "e"
-                            },
-                            {
-                                "type": "ru.yole.etymograph.LeafRuleConditionData",
-                                "cond": "EndsWith",
-                                "characters": "ë"
-                            }
-                        ]
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "characters": "e"
                     }
                 },
                 {
@@ -3172,7 +3162,15 @@
                 }
             ],
             "addedCategories": ".NOM.PL",
-            "source": "https://eldamo.org/content/words/word-2870822299.html"
+            "source": "https://eldamo.org/content/words/word-2870822299.html",
+            "preInstructions": [
+                {
+                    "type": "ApplyRule",
+                    "args": [
+                        "413"
+                    ]
+                }
+            ]
         },
         {
             "id": 397,
@@ -3195,19 +3193,9 @@
                         }
                     ],
                     "condition": {
-                        "type": "ru.yole.etymograph.OrRuleConditionData",
-                        "members": [
-                            {
-                                "type": "ru.yole.etymograph.LeafRuleConditionData",
-                                "cond": "EndsWith",
-                                "characters": "a"
-                            },
-                            {
-                                "type": "ru.yole.etymograph.LeafRuleConditionData",
-                                "cond": "EndsWith",
-                                "characters": "ä"
-                            }
-                        ]
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "characters": "a"
                     }
                 },
                 {
@@ -3219,19 +3207,9 @@
                         }
                     ],
                     "condition": {
-                        "type": "ru.yole.etymograph.OrRuleConditionData",
-                        "members": [
-                            {
-                                "type": "ru.yole.etymograph.LeafRuleConditionData",
-                                "cond": "EndsWith",
-                                "characters": "o"
-                            },
-                            {
-                                "type": "ru.yole.etymograph.LeafRuleConditionData",
-                                "cond": "EndsWith",
-                                "characters": "ö"
-                            }
-                        ]
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "characters": "o"
                     }
                 },
                 {
@@ -3249,7 +3227,15 @@
                 }
             ],
             "addedCategories": ".GEN",
-            "source": "https://eldamo.org/content/words/word-2537177661.html"
+            "source": "https://eldamo.org/content/words/word-2537177661.html",
+            "preInstructions": [
+                {
+                    "type": "ApplyRule",
+                    "args": [
+                        "413"
+                    ]
+                }
+            ]
         },
         {
             "id": 398,
@@ -3302,7 +3288,9 @@
                 }
             ],
             "addedCategories": ".ABL",
-            "source": "https://eldamo.org/content/words/word-3384394593.html"
+            "source": "https://eldamo.org/content/words/word-3384394593.html",
+            "preInstructions": [
+            ]
         },
         {
             "id": 399,
@@ -3326,7 +3314,9 @@
                     }
                 }
             ],
-            "addedCategories": ".ALL"
+            "addedCategories": ".ALL",
+            "preInstructions": [
+            ]
         },
         {
             "id": 400,
@@ -3348,7 +3338,9 @@
                     }
                 }
             ],
-            "addedCategories": ".POSS.3SG"
+            "addedCategories": ".POSS.3SG",
+            "preInstructions": [
+            ]
         },
         {
             "id": 401,
@@ -3370,7 +3362,9 @@
                     }
                 }
             ],
-            "addedCategories": ".2SG"
+            "addedCategories": ".2SG",
+            "preInstructions": [
+            ]
         },
         {
             "id": 402,
@@ -3392,7 +3386,9 @@
                     }
                 }
             ],
-            "addedCategories": "1SG"
+            "addedCategories": "1SG",
+            "preInstructions": [
+            ]
         },
         {
             "id": 403,
@@ -3415,7 +3411,9 @@
                 }
             ],
             "addedCategories": "3SG",
-            "source": "PE17:76"
+            "source": "PE17:76",
+            "preInstructions": [
+            ]
         },
         {
             "id": 404,
@@ -3453,7 +3451,9 @@
                 }
             ],
             "addedCategories": ".DAT",
-            "source": "Plotz"
+            "source": "Plotz",
+            "preInstructions": [
+            ]
         },
         {
             "id": 405,
@@ -3481,7 +3481,9 @@
                     }
                 }
             ],
-            "addedCategories": ".GEN.PL"
+            "addedCategories": ".GEN.PL",
+            "preInstructions": [
+            ]
         },
         {
             "id": 406,
@@ -3491,12 +3493,6 @@
             "branches": [
                 {
                     "instructions": [
-                        {
-                            "type": "ApplyRule",
-                            "args": [
-                                "413"
-                            ]
-                        },
                         {
                             "type": "AddSuffix",
                             "args": [
@@ -3512,12 +3508,6 @@
                 },
                 {
                     "instructions": [
-                        {
-                            "type": "ApplyRule",
-                            "args": [
-                                "413"
-                            ]
-                        },
                         {
                             "type": "AddSuffix",
                             "args": [
@@ -3544,12 +3534,6 @@
                 {
                     "instructions": [
                         {
-                            "type": "ApplyRule",
-                            "args": [
-                                "413"
-                            ]
-                        },
-                        {
                             "type": "AddSuffix",
                             "args": [
                                 "wen"
@@ -3575,12 +3559,6 @@
                 {
                     "instructions": [
                         {
-                            "type": "ApplyRule",
-                            "args": [
-                                "413"
-                            ]
-                        },
-                        {
                             "type": "AddSuffix",
                             "args": [
                                 "anen"
@@ -3593,7 +3571,15 @@
                 }
             ],
             "addedCategories": ".INS",
-            "source": "Introductory Quenya C7"
+            "source": "Introductory Quenya C7",
+            "preInstructions": [
+                {
+                    "type": "ApplyRule",
+                    "args": [
+                        "413"
+                    ]
+                }
+            ]
         },
         {
             "id": 407,
@@ -3682,7 +3668,9 @@
             ],
             "addedCategories": ".PL",
             "replacedCategories": "",
-            "source": ""
+            "source": "",
+            "preInstructions": [
+            ]
         },
         {
             "id": 408,
@@ -3721,7 +3709,9 @@
             ],
             "addedCategories": ".POSS",
             "replacedCategories": "",
-            "source": "Eldamo"
+            "source": "Eldamo",
+            "preInstructions": [
+            ]
         },
         {
             "id": 409,
@@ -3760,7 +3750,9 @@
             ],
             "addedCategories": ".LOC.PL",
             "replacedCategories": "",
-            "source": "Eldamo"
+            "source": "Eldamo",
+            "preInstructions": [
+            ]
         },
         {
             "id": 410,
@@ -3799,7 +3791,9 @@
             ],
             "addedCategories": ".LOC",
             "replacedCategories": "",
-            "source": "Eldamo"
+            "source": "Eldamo",
+            "preInstructions": [
+            ]
         },
         {
             "id": 411,
@@ -3838,7 +3832,9 @@
             ],
             "addedCategories": ".DU",
             "replacedCategories": "",
-            "source": "https://eldamo.org/content/words/word-2265073101.html"
+            "source": "https://eldamo.org/content/words/word-2265073101.html",
+            "preInstructions": [
+            ]
         },
         {
             "id": 412,
@@ -3892,7 +3888,9 @@
             ],
             "addedCategories": ".PPL",
             "replacedCategories": "",
-            "source": "https://www.eldamo.org/content/words/word-1164934417.html"
+            "source": "https://www.eldamo.org/content/words/word-1164934417.html",
+            "preInstructions": [
+            ]
         },
         {
             "id": 413,
@@ -3903,7 +3901,9 @@
             ],
             "addedCategories": "",
             "replacedCategories": "",
-            "source": ""
+            "source": "",
+            "preInstructions": [
+            ]
         },
         {
             "id": 414,
@@ -3927,7 +3927,9 @@
             ],
             "addedCategories": ".POSS.2SG",
             "replacedCategories": "",
-            "source": ""
+            "source": "",
+            "preInstructions": [
+            ]
         },
         {
             "id": 415,
@@ -3967,7 +3969,9 @@
             "addedCategories": ".POSS.1PL",
             "replacedCategories": "",
             "source": "",
-            "notes": "Older versions of the paradigm use the suffix 'mma' instead of 'lma'."
+            "notes": "Older versions of the paradigm use the suffix 'mma' instead of 'lma'.",
+            "preInstructions": [
+            ]
         },
         {
             "id": 416,
@@ -4031,7 +4035,9 @@
             ],
             "addedCategories": ".FUT",
             "replacedCategories": "",
-            "source": "https://eldamo.org/content/words/word-2817430301.html"
+            "source": "https://eldamo.org/content/words/word-2817430301.html",
+            "preInstructions": [
+            ]
         },
         {
             "id": 417,
@@ -4075,7 +4081,9 @@
             ],
             "addedCategories": "",
             "replacedCategories": "",
-            "source": "https://eldamo.org/content/words/word-948396235.html"
+            "source": "https://eldamo.org/content/words/word-948396235.html",
+            "preInstructions": [
+            ]
         },
         {
             "id": 418,
@@ -4131,7 +4139,9 @@
             ],
             "addedCategories": "",
             "replacedCategories": "",
-            "source": "https://eldamo.org/content/words/word-3262991621.html"
+            "source": "https://eldamo.org/content/words/word-3262991621.html",
+            "preInstructions": [
+            ]
         },
         {
             "id": 419,
@@ -4167,7 +4177,9 @@
             ],
             "addedCategories": "",
             "replacedCategories": "",
-            "source": "https://eldamo.org/content/words/word-1833409085.html"
+            "source": "https://eldamo.org/content/words/word-1833409085.html",
+            "preInstructions": [
+            ]
         },
         {
             "id": 420,
@@ -4191,7 +4203,9 @@
             ],
             "addedCategories": ".1PL.EXCL",
             "replacedCategories": "",
-            "source": "https://eldamo.org/content/words/word-1020286637.html"
+            "source": "https://eldamo.org/content/words/word-1020286637.html",
+            "preInstructions": [
+            ]
         },
         {
             "id": 421,
@@ -4239,7 +4253,9 @@
             ],
             "addedCategories": ".AOR",
             "replacedCategories": "",
-            "source": "https://eldamo.org/content/words/word-2025078257.html"
+            "source": "https://eldamo.org/content/words/word-2025078257.html",
+            "preInstructions": [
+            ]
         },
         {
             "id": 422,
@@ -4263,7 +4279,9 @@
             ],
             "addedCategories": "",
             "replacedCategories": "",
-            "source": "https://eldamo.org/content/words/word-1770267447.html"
+            "source": "https://eldamo.org/content/words/word-1770267447.html",
+            "preInstructions": [
+            ]
         },
         {
             "id": 423,
@@ -4287,7 +4305,9 @@
             ],
             "addedCategories": ".3PL",
             "replacedCategories": "",
-            "source": ""
+            "source": "",
+            "preInstructions": [
+            ]
         },
         {
             "id": 424,
@@ -4335,7 +4355,9 @@
             ],
             "addedCategories": ".AOR",
             "replacedCategories": "",
-            "source": "https://eldamo.org/content/words/word-2025078257.html"
+            "source": "https://eldamo.org/content/words/word-2025078257.html",
+            "preInstructions": [
+            ]
         },
         {
             "id": 425,
@@ -4359,7 +4381,9 @@
             ],
             "addedCategories": ".PL",
             "replacedCategories": "",
-            "source": ""
+            "source": "",
+            "preInstructions": [
+            ]
         },
         {
             "id": 426,
@@ -4383,7 +4407,9 @@
             ],
             "addedCategories": "",
             "replacedCategories": "",
-            "source": ""
+            "source": "",
+            "preInstructions": [
+            ]
         },
         {
             "id": 427,
@@ -4427,7 +4453,9 @@
             ],
             "addedCategories": ".DAT.PL",
             "replacedCategories": "",
-            "source": "https://eldamo.org/content/words/word-1853042105.html"
+            "source": "https://eldamo.org/content/words/word-1853042105.html",
+            "preInstructions": [
+            ]
         },
         {
             "id": 428,
@@ -4466,7 +4494,9 @@
             ],
             "addedCategories": ".DAT.DU",
             "replacedCategories": "",
-            "source": ""
+            "source": "",
+            "preInstructions": [
+            ]
         },
         {
             "id": 429,
@@ -4552,7 +4582,9 @@
             ],
             "addedCategories": "",
             "replacedCategories": "",
-            "source": ""
+            "source": "",
+            "preInstructions": [
+            ]
         },
         {
             "id": 430,
@@ -4583,7 +4615,9 @@
             ],
             "addedCategories": ".PRES",
             "replacedCategories": "",
-            "source": "https://eldamo.org/content/words/word-4095499405.html"
+            "source": "https://eldamo.org/content/words/word-4095499405.html",
+            "preInstructions": [
+            ]
         },
         {
             "id": 431,
@@ -4618,7 +4652,9 @@
             ],
             "addedCategories": "",
             "replacedCategories": "",
-            "source": "PE19:18"
+            "source": "PE19:18",
+            "preInstructions": [
+            ]
         },
         {
             "id": 442,
@@ -4642,7 +4678,9 @@
             ],
             "addedCategories": "",
             "replacedCategories": "",
-            "source": "PE17:68"
+            "source": "PE17:68",
+            "preInstructions": [
+            ]
         },
         {
             "id": 462,
@@ -4672,7 +4710,9 @@
             ],
             "addedCategories": ".GEN.PPL",
             "replacedCategories": "",
-            "source": "https://eldamo.org/content/words/word-2537177661.html"
+            "source": "https://eldamo.org/content/words/word-2537177661.html",
+            "preInstructions": [
+            ]
         },
         {
             "id": 470,
@@ -4702,7 +4742,9 @@
             ],
             "addedCategories": ".GEN.DU",
             "replacedCategories": "",
-            "source": "https://eldamo.org/content/words/word-2537177661.html"
+            "source": "https://eldamo.org/content/words/word-2537177661.html",
+            "preInstructions": [
+            ]
         },
         {
             "id": 478,
@@ -4732,7 +4774,9 @@
             ],
             "addedCategories": ".DAT.PPL",
             "replacedCategories": "",
-            "source": "https://eldamo.org/content/words/word-1853042105.html"
+            "source": "https://eldamo.org/content/words/word-1853042105.html",
+            "preInstructions": [
+            ]
         },
         {
             "id": 479,
@@ -4771,7 +4815,9 @@
             ],
             "addedCategories": ".ALL.PL",
             "replacedCategories": "",
-            "source": "https://eldamo.org/content/words/word-488436569.html"
+            "source": "https://eldamo.org/content/words/word-488436569.html",
+            "preInstructions": [
+            ]
         },
         {
             "id": 482,
@@ -4810,7 +4856,9 @@
             ],
             "addedCategories": ".ALL.DU",
             "replacedCategories": "",
-            "source": "https://eldamo.org/content/words/word-488436569.html"
+            "source": "https://eldamo.org/content/words/word-488436569.html",
+            "preInstructions": [
+            ]
         },
         {
             "id": 484,
@@ -4840,7 +4888,9 @@
             ],
             "addedCategories": ".ALL.PPL",
             "replacedCategories": "",
-            "source": "Plotz"
+            "source": "Plotz",
+            "preInstructions": [
+            ]
         },
         {
             "id": 486,
@@ -4876,7 +4926,9 @@
             ],
             "addedCategories": ".ALL.PPL",
             "replacedCategories": "",
-            "source": "Plotz"
+            "source": "Plotz",
+            "preInstructions": [
+            ]
         },
         {
             "id": 488,
@@ -4930,7 +4982,9 @@
             ],
             "addedCategories": ".ABL.PL",
             "replacedCategories": "",
-            "source": "https://eldamo.org/content/words/word-3384394593.html"
+            "source": "https://eldamo.org/content/words/word-3384394593.html",
+            "preInstructions": [
+            ]
         },
         {
             "id": 505,
@@ -4960,7 +5014,9 @@
             ],
             "addedCategories": ".ABL.PPL",
             "source": "https://eldamo.org/content/words/word-3384394593.html",
-            "notes": "Final 'n' is optional or can be replaced with 'r'"
+            "notes": "Final 'n' is optional or can be replaced with 'r'",
+            "preInstructions": [
+            ]
         },
         {
             "id": 514,
@@ -4999,7 +5055,9 @@
             ],
             "addedCategories": ".ABL.DU",
             "replacedCategories": "",
-            "source": "https://eldamo.org/content/words/word-3384394593.html"
+            "source": "https://eldamo.org/content/words/word-3384394593.html",
+            "preInstructions": [
+            ]
         },
         {
             "id": 516,
@@ -5034,7 +5092,9 @@
                 }
             ],
             "addedCategories": ".LOC.PPL",
-            "source": "https://eldamo.org/content/words/word-988788179.html"
+            "source": "https://eldamo.org/content/words/word-988788179.html",
+            "preInstructions": [
+            ]
         },
         {
             "id": 519,
@@ -5074,7 +5134,9 @@
             "addedCategories": ".LOC.DUAL",
             "replacedCategories": "",
             "source": "https://eldamo.org/content/words/word-988788179.html",
-            "notes": "Locative for u-duals is not attested"
+            "notes": "Locative for u-duals is not attested",
+            "preInstructions": [
+            ]
         },
         {
             "id": 521,
@@ -5134,7 +5196,9 @@
             "addedCategories": ".INS.PL",
             "replacedCategories": "",
             "source": "https://eldamo.org/content/words/word-1605931301.html",
-            "notes": ""
+            "notes": "",
+            "preInstructions": [
+            ]
         },
         {
             "id": 531,
@@ -5163,7 +5227,9 @@
                 }
             ],
             "addedCategories": ".INS.PPL",
-            "source": "https://eldamo.org/content/words/word-1605931301.html"
+            "source": "https://eldamo.org/content/words/word-1605931301.html",
+            "preInstructions": [
+            ]
         },
         {
             "id": 532,
@@ -5203,7 +5269,9 @@
             "addedCategories": ".INS.DU",
             "replacedCategories": "",
             "source": "https://eldamo.org/content/words/word-1605931301.html",
-            "notes": ""
+            "notes": "",
+            "preInstructions": [
+            ]
         },
         {
             "id": 535,
@@ -5299,7 +5367,9 @@
                 }
             ],
             "addedCategories": null,
-            "source": "https://eldamo.org/content/words/word-30508289.html"
+            "source": "https://eldamo.org/content/words/word-30508289.html",
+            "preInstructions": [
+            ]
         }
     ],
     "links": [
@@ -7470,7 +7540,6 @@
                             "alternatives": [
                                 {
                                     "ruleIds": [
-                                        413,
                                         397
                                     ]
                                 }
@@ -7553,7 +7622,6 @@
                             "alternatives": [
                                 {
                                     "ruleIds": [
-                                        413,
                                         405
                                     ]
                                 }

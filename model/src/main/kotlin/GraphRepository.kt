@@ -40,7 +40,7 @@ abstract class GraphRepository {
         name: String,
         fromLanguage: Language,
         toLanguage: Language,
-        branches: List<RuleBranch>,
+        logic: RuleLogic,
         addedCategories: String?,
         replacedCategories: String?,
         source: String?,

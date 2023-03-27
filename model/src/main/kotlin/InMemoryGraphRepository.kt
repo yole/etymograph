@@ -247,17 +247,19 @@ open class InMemoryGraphRepository : GraphRepository() {
         name: String,
         fromLanguage: Language,
         toLanguage: Language,
-        branches: List<RuleBranch>,
+        logic: RuleLogic,
         addedCategories: String?,
         replacedCategories: String?,
         source: String?,
         notes: String?
     ): Rule {
-        return Rule(allLangEntities.size, name, fromLanguage, toLanguage, branches, addedCategories, replacedCategories, source, notes)
-            .also {
-                rules.add(it)
-                allLangEntities.add(it)
-            }
+        return Rule(allLangEntities.size, name, fromLanguage, toLanguage,
+            logic,
+            addedCategories, replacedCategories, source, notes
+        ).also {
+            rules.add(it)
+            allLangEntities.add(it)
+        }
     }
 
     override fun paradigmsForLanguage(lang: Language): List<Paradigm> {

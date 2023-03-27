@@ -42,8 +42,12 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
 
     companion object {
         fun parse(s: String, context: RuleParseContext): RuleInstruction {
+            if (!s.startsWith("-")) {
+                throw RuleParseException("Instructions must start with -")
+            }
+            val trimmed = s.removePrefix("-").trim()
             for (type in InstructionType.values()) {
-                val match = type.regex.matchEntire(s)
+                val match = type.regex.matchEntire(trimmed)
                 if (match != null) {
                     val arg = if (match.groups.size > 1) match.groupValues[1] else ""
                     return when(type) {
@@ -54,9 +58,14 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
                     }
                 }
             }
-            throw RuleParseException("Unrecognized instruction $s")
+            throw RuleParseException("Unrecognized instruction '$s'")
         }
     }
+}
+
+fun List<RuleInstruction>.apply(word: Word, graph: GraphRepository): Word {
+    val normalizedWord = word.derive(word.text.trimEnd('-'))
+    return fold(normalizedWord) { s, i -> i.apply(s, graph) }
 }
 
 class ApplyRuleInstruction(val ruleRef: RuleRef)
