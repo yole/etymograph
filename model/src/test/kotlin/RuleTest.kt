@@ -300,16 +300,38 @@ class RuleTest : QBaseTest() {
 
         assertEquals(ruleText, rule.toEditableText())
     }
+
+    /*
+    @Test
+    fun chainedSummaryText() {
+        val qNomPl = parseRule(q, q, """
+            word ends with a vowel:
+            - add suffix 'r'
+            otherwise:
+            - add suffix 'i'
+        """.trimIndent(), "q-nom-pl")
+        val repo = InMemoryGraphRepository()
+        repo.addRule(qNomPl)
+
+        val qGenPl = parseRule(q, q, """
+            - apply rule 'q-nom-pl'
+            - add suffix 'on'
+            """.trimIndent(), repo = repo)
+        assertEquals("-ron/-ion", qGenPl.toSummaryText())
+    }
+     */
 }
 
 fun Language.word(text: String) = Word(-1, text, this)
 
 fun Language.parseContext() = RuleParseContext(this, this) { throw RuleParseException("no such rule") }
 
-fun parseRule(fromLanguage: Language, toLanguage: Language, text: String): Rule = Rule(
-    -1, "q", fromLanguage, toLanguage,
+fun parseRule(fromLanguage: Language, toLanguage: Language, text: String, name: String = "q", repo: GraphRepository? = null): Rule = Rule(
+    -1, name, fromLanguage, toLanguage,
     Rule.parseBranches(text,
-        RuleParseContext(fromLanguage, toLanguage) { throw RuleParseException("no such rule") }
+        RuleParseContext(fromLanguage, toLanguage) {
+            repo?.ruleByName(it)?.let { RuleRef.to(it) } ?: throw RuleParseException("no such rule")
+        }
     ),
     null, null, null, null
 )

@@ -257,9 +257,13 @@ open class InMemoryGraphRepository : GraphRepository() {
             logic,
             addedCategories, replacedCategories, source, notes
         ).also {
-            rules.add(it)
-            allLangEntities.add(it)
+            addRule(it)
         }
+    }
+
+    fun addRule(rule: Rule) {
+        rules.add(rule)
+        allLangEntities.add(rule)
     }
 
     override fun paradigmsForLanguage(lang: Language): List<Paradigm> {
