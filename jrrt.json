@@ -3290,6 +3290,12 @@
             "addedCategories": ".ABL",
             "source": "https://eldamo.org/content/words/word-3384394593.html",
             "preInstructions": [
+                {
+                    "type": "ApplyRule",
+                    "args": [
+                        "413"
+                    ]
+                }
             ]
         },
         {
@@ -7579,7 +7585,6 @@
                             "alternatives": [
                                 {
                                     "ruleIds": [
-                                        413,
                                         398
                                     ]
                                 }

@@ -17,11 +17,20 @@ export default function Rule() {
     const [editableText, setEditableText] = useState(rule.editableText)
     const [notes, setNotes] = useState(rule.notes)
     const revalidator = useRevalidator()
+    const [errorText, setErrorText] = useState("")
     useEffect(() => { document.title = "Etymograph : Rule " + rule.name })
 
     function saveRule() {
         updateRule(rule.id, rule.name, rule.fromLang, rule.toLang, addedCategories, replacedCategories, editableText, source, notes)
-            .then(() => revalidator.revalidate())
+            .then(r => {
+                if (r.status === 200) {
+                    setErrorText("")
+                    revalidator.revalidate()
+                }
+                else {
+                    r.json().then(r => setErrorText(r.message.length > 0 ? r.message : "Failed to save rule"))
+                }
+            })
         setEditMode(false)
     }
 
@@ -75,6 +84,7 @@ export default function Rule() {
         </>}
 
         <button onClick={() => setEditMode(!editMode)}>{editMode ? "Cancel" : "Edit"}</button>
+        {errorText !== "" && <div className="errorText">{errorText}</div>}
         {rule.examples.length > 0 && <>
             <h3>Examples</h3>
             <ul>
