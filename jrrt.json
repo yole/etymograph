@@ -3465,6 +3465,12 @@
             "addedCategories": ".DAT",
             "source": "Plotz",
             "preInstructions": [
+                {
+                    "type": "ApplyRule",
+                    "args": [
+                        "413"
+                    ]
+                }
             ]
         },
         {
@@ -3802,9 +3808,15 @@
                 }
             ],
             "addedCategories": ".LOC",
-            "replacedCategories": "",
             "source": "Eldamo",
+            "notes": "",
             "preInstructions": [
+                {
+                    "type": "ApplyRule",
+                    "args": [
+                        "413"
+                    ]
+                }
             ]
         },
         {
@@ -4469,9 +4481,14 @@
                 }
             ],
             "addedCategories": ".DAT.PL",
-            "replacedCategories": "",
             "source": "https://eldamo.org/content/words/word-1853042105.html",
             "preInstructions": [
+                {
+                    "type": "ApplyRule",
+                    "args": [
+                        "413"
+                    ]
+                }
             ]
         },
         {
@@ -4831,9 +4848,15 @@
                 }
             ],
             "addedCategories": ".ALL.PL",
-            "replacedCategories": "",
             "source": "https://eldamo.org/content/words/word-488436569.html",
+            "notes": "",
             "preInstructions": [
+                {
+                    "type": "ApplyRule",
+                    "args": [
+                        "413"
+                    ]
+                }
             ]
         },
         {
@@ -4998,9 +5021,14 @@
                 }
             ],
             "addedCategories": ".ABL.PL",
-            "replacedCategories": "",
             "source": "https://eldamo.org/content/words/word-3384394593.html",
             "preInstructions": [
+                {
+                    "type": "ApplyRule",
+                    "args": [
+                        "413"
+                    ]
+                }
             ]
         },
         {
@@ -7566,7 +7594,6 @@
                             "alternatives": [
                                 {
                                     "ruleIds": [
-                                        413,
                                         404
                                     ]
                                 }
@@ -7604,7 +7631,6 @@
                             "alternatives": [
                                 {
                                     "ruleIds": [
-                                        413,
                                         410
                                     ]
                                 }
@@ -7646,7 +7672,6 @@
                             "alternatives": [
                                 {
                                     "ruleIds": [
-                                        413,
                                         427
                                     ]
                                 }
@@ -7658,7 +7683,6 @@
                             "alternatives": [
                                 {
                                     "ruleIds": [
-                                        413,
                                         479
                                     ]
                                 }
@@ -7712,7 +7736,6 @@
                             "alternatives": [
                                 {
                                     "ruleIds": [
-                                        413,
                                         462
                                     ]
                                 }
@@ -7722,7 +7745,6 @@
                             "alternatives": [
                                 {
                                     "ruleIds": [
-                                        413,
                                         478
                                     ]
                                 }
@@ -7734,13 +7756,11 @@
                             "alternatives": [
                                 {
                                     "ruleIds": [
-                                        413,
                                         484
                                     ]
                                 },
                                 {
                                     "ruleIds": [
-                                        413,
                                         486
                                     ]
                                 }
@@ -7750,7 +7770,6 @@
                             "alternatives": [
                                 {
                                     "ruleIds": [
-                                        413,
                                         505
                                     ]
                                 }

@@ -32,13 +32,19 @@ class ParadigmController(val graphService: GraphService) {
         val editableText: String
     )
 
+    data class ParadigmListViewModel(
+        val langFullName: String,
+        val paradigms: List<ParadigmViewModel>
+    )
+
     @GetMapping("/paradigms/{lang}")
-    fun paradigms(@PathVariable lang: String): List<ParadigmViewModel> {
+    fun paradigms(@PathVariable lang: String): ParadigmListViewModel {
         val language = graphService.resolveLanguage(lang)
 
-        return graphService.graph.paradigmsForLanguage(language).map {
+        val paradigms = graphService.graph.paradigmsForLanguage(language).map {
             it.toViewModel()
         }
+        return ParadigmListViewModel(language.name, paradigms)
     }
 
     private fun Paradigm.toViewModel() =
