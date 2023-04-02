@@ -410,10 +410,11 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             )
 
         private fun List<RuleInstruction>.toSerializedFormat(): List<RuleInstructionData> {
-            return map { insn ->
-                RuleInstructionData(insn.type, args = insn.argsToSerializedFormat())
-            }
+            return map { it.toSerializedFormat() }
         }
+
+        fun RuleInstruction.toSerializedFormat() =
+            RuleInstructionData(type, args = argsToSerializedFormat())
 
         private fun RuleInstruction.argsToSerializedFormat(): Array<String> =
             when (this) {
@@ -461,7 +462,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             ruleInstructionFromSerializedFormat(result, fromLanguage, insnData)
         }
 
-        private fun ruleInstructionFromSerializedFormat(
+        fun ruleInstructionFromSerializedFormat(
             result: InMemoryGraphRepository,
             fromLanguage: Language,
             insnData: RuleInstructionData
@@ -473,6 +474,8 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                     ApplySoundRuleInstruction(fromLanguage, ruleRef(result, insnData.args[0].toInt()), insnData.args[1])
                 InstructionType.ApplyStress ->
                     ApplyStressInstruction(fromLanguage, insnData.args[0])
+                InstructionType.Prepend ->
+                    PrependInstruction(fromLanguage, insnData.args[0])
                 else ->
                     RuleInstruction(insnData.type, insnData.args.firstOrNull() ?: "")
             }

@@ -3,7 +3,9 @@ package ru.yole.etymograph
 import org.junit.Assert.*
 import org.junit.Test
 import ru.yole.etymograph.JsonGraphRepository.Companion.ruleBranchesFromSerializedFormat
+import ru.yole.etymograph.JsonGraphRepository.Companion.ruleInstructionFromSerializedFormat
 import ru.yole.etymograph.JsonGraphRepository.Companion.ruleToSerializedFormat
+import ru.yole.etymograph.JsonGraphRepository.Companion.toSerializedFormat
 
 class RuleTest : QBaseTest() {
     @Test
@@ -299,6 +301,16 @@ class RuleTest : QBaseTest() {
         assertEquals("suri", word.text)
 
         assertEquals(ruleText, rule.toEditableText())
+    }
+
+    @Test
+    fun prepend() {
+        val instruction = RuleInstruction.parse("- prepend first vowel", q.parseContext())
+        assertEquals("utul", instruction.apply(q.word("tul"), emptyRepo).text)
+        val data = instruction.toSerializedFormat()
+        val deserialized = ruleInstructionFromSerializedFormat(emptyRepo, q, data)
+        assertEquals("utul", deserialized.apply(q.word("tul"), emptyRepo).text)
+        assertEquals("prepend first vowel", instruction.toEditableText())
     }
 
     /*

@@ -3076,6 +3076,45 @@
             "lang": "Q",
             "gloss": "ship.INS.DU",
             "source": "Plotz"
+        },
+        {
+            "id": 537,
+            "text": "et",
+            "lang": "Q",
+            "gloss": "out of",
+            "pos": "PREP",
+            "source": "PE17:103"
+        },
+        {
+            "id": 538,
+            "text": "eärello",
+            "lang": "Q"
+        },
+        {
+            "id": 539,
+            "text": "ëar",
+            "lang": "Q",
+            "gloss": "sea",
+            "pos": "N",
+            "source": "PE17:103"
+        },
+        {
+            "id": 540,
+            "text": "endorenna",
+            "lang": "Q"
+        },
+        {
+            "id": 541,
+            "text": "Endórë",
+            "lang": "Q",
+            "gloss": "Middle-Earth",
+            "pos": "NP",
+            "source": "PE17:103"
+        },
+        {
+            "id": 542,
+            "text": "utúlien",
+            "lang": "Q"
         }
     ],
     "rules": [
@@ -3726,9 +3765,14 @@
                 }
             ],
             "addedCategories": ".POSS",
-            "replacedCategories": "",
             "source": "Eldamo",
             "preInstructions": [
+                {
+                    "type": "ApplyRule",
+                    "args": [
+                        "413"
+                    ]
+                }
             ]
         },
         {
@@ -3767,9 +3811,14 @@
                 }
             ],
             "addedCategories": ".LOC.PL",
-            "replacedCategories": "",
             "source": "Eldamo",
             "preInstructions": [
+                {
+                    "type": "ApplyRule",
+                    "args": [
+                        "413"
+                    ]
+                }
             ]
         },
         {
@@ -3855,9 +3904,14 @@
                 }
             ],
             "addedCategories": ".DU",
-            "replacedCategories": "",
             "source": "https://eldamo.org/content/words/word-2265073101.html",
             "preInstructions": [
+                {
+                    "type": "ApplyRule",
+                    "args": [
+                        "413"
+                    ]
+                }
             ]
         },
         {
@@ -4527,9 +4581,13 @@
                 }
             ],
             "addedCategories": ".DAT.DU",
-            "replacedCategories": "",
-            "source": "",
             "preInstructions": [
+                {
+                    "type": "ApplyRule",
+                    "args": [
+                        "413"
+                    ]
+                }
             ]
         },
         {
@@ -5099,9 +5157,14 @@
                 }
             ],
             "addedCategories": ".ABL.DU",
-            "replacedCategories": "",
             "source": "https://eldamo.org/content/words/word-3384394593.html",
             "preInstructions": [
+                {
+                    "type": "ApplyRule",
+                    "args": [
+                        "413"
+                    ]
+                }
             ]
         },
         {
@@ -5239,10 +5302,14 @@
                 }
             ],
             "addedCategories": ".INS.PL",
-            "replacedCategories": "",
             "source": "https://eldamo.org/content/words/word-1605931301.html",
-            "notes": "",
             "preInstructions": [
+                {
+                    "type": "ApplyRule",
+                    "args": [
+                        "413"
+                    ]
+                }
             ]
         },
         {
@@ -7281,6 +7348,27 @@
             "ruleIds": [
                 532
             ]
+        },
+        {
+            "from": 538,
+            "to": 539,
+            "type": ">",
+            "ruleIds": [
+                398
+            ]
+        },
+        {
+            "from": 540,
+            "to": 541,
+            "type": ">",
+            "ruleIds": [
+                399
+            ]
+        },
+        {
+            "from": 542,
+            "to": 312,
+            "type": ">"
         }
     ],
     "corpusTexts": [
@@ -7539,10 +7627,10 @@
             "title": "Elendil's Oath",
             "lang": "Q",
             "wordIds": [
-                null,
-                null,
-                null,
-                null,
+                537,
+                538,
+                540,
+                542,
                 null,
                 null,
                 null,
@@ -7603,7 +7691,6 @@
                             "alternatives": [
                                 {
                                     "ruleIds": [
-                                        413,
                                         408
                                     ]
                                 }
@@ -7692,7 +7779,6 @@
                             "alternatives": [
                                 {
                                     "ruleIds": [
-                                        413,
                                         488
                                     ]
                                 }
@@ -7702,7 +7788,6 @@
                             "alternatives": [
                                 {
                                     "ruleIds": [
-                                        413,
                                         409
                                     ]
                                 }
@@ -7712,7 +7797,6 @@
                             "alternatives": [
                                 {
                                     "ruleIds": [
-                                        413,
                                         521
                                     ]
                                 }
@@ -7811,7 +7895,6 @@
                             "alternatives": [
                                 {
                                     "ruleIds": [
-                                        413,
                                         470
                                     ]
                                 }
@@ -7821,7 +7904,6 @@
                             "alternatives": [
                                 {
                                     "ruleIds": [
-                                        413,
                                         428
                                     ]
                                 }
@@ -7842,7 +7924,6 @@
                             "alternatives": [
                                 {
                                     "ruleIds": [
-                                        413,
                                         514
                                     ]
                                 }

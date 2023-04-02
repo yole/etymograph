@@ -8,6 +8,7 @@ enum class InstructionType(
     NoChange("no change"),
     RemoveLastCharacter("remove last character"),
     AddSuffix("add suffix", "add suffix '(.+)'", true),
+    Prepend("prepend", "prepend (.+)", true),
     ApplyRule("apply rule", "apply rule '(.+)'", true),
     ApplySoundRule("apply sound rule", "apply sound rule '(.+)' to (.+)", true),
     ApplyStress("stress is on", "stress is on (.+) syllable", true),
@@ -54,6 +55,7 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
                         InstructionType.ApplyRule -> ApplyRuleInstruction(context.ruleRefFactory(arg))
                         InstructionType.ApplySoundRule -> ApplySoundRuleInstruction.parse(match, context)
                         InstructionType.ApplyStress -> ApplyStressInstruction(context.fromLanguage, arg)
+                        InstructionType.Prepend -> PrependInstruction(context.fromLanguage, arg)
                         else -> RuleInstruction(type, arg)
                     }
                 }
@@ -120,6 +122,18 @@ class ApplyStressInstruction(val language: Language, arg: String) : RuleInstruct
         val stressIndex = PhonemeIterator(word).findMatchInRange(syllable.startIndex, syllable.endIndex, vowel)
             ?: return word
         word.stressedPhonemeIndex = stressIndex    // TODO create a copy of the word here?
+        return word
+    }
+}
+
+class PrependInstruction(language: Language, arg: String) : RuleInstruction(InstructionType.Prepend, arg) {
+    val seekTarget = SeekTarget.parse(arg, language)
+
+    override fun apply(word: Word, graph: GraphRepository): Word {
+        val phonemes = PhonemeIterator(word)
+        if (phonemes.seek(seekTarget)) {
+            return word.derive(phonemes.current + word.text)
+        }
         return word
     }
 }
