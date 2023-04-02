@@ -24,4 +24,11 @@ class PhonemeIteratorTest : QBaseTest() {
     fun seekTargetToEditableText() {
         assertEquals("first vowel", SeekTarget(1, v).toEditableText())
     }
+
+    @Test
+    fun seekToLastVowel() {
+        val it = PhonemeIterator("lasse", q)
+        assertTrue(it.seek(SeekTarget(-1, v)))
+        assertEquals("e", it.current)
+    }
 }

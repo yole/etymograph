@@ -313,6 +313,16 @@ class RuleTest : QBaseTest() {
         assertEquals("prepend first vowel", instruction.toEditableText())
     }
 
+    @Test
+    fun stressCondition() {
+        val ciryali = q.word("ciryali")
+        ciryali.stressedPhonemeIndex = 2
+        val condition = RuleCondition.parse("stress is on third to last syllable", q)
+        assertTrue(condition.matches(ciryali))
+        assertFalse(condition.matches(q.word("lasse").apply { stressedPhonemeIndex = 1 }))
+        assertEquals("stress is on third to last syllable", condition.toEditableText())
+    }
+
     /*
 
     @Test

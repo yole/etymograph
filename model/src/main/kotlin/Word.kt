@@ -57,3 +57,19 @@ class Word(
 }
 
 data class Attestation(val word: Word, val corpusText: CorpusText)
+
+data class StressData(val index: Int, val length: Int)
+
+fun Word.calculateStress(): StressData? {
+    if (stressedPhonemeIndex < 0) {
+        // graph is used only for retrieving links of word and we don't need this for stress
+        language.stressRule?.resolve()?.apply(this, InMemoryGraphRepository.EMPTY)
+    }
+    return if (stressedPhonemeIndex >= 0) {
+        val phonemes = PhonemeIterator(this)
+        phonemes.advanceTo(stressedPhonemeIndex)
+        val isDiphthong = PhonemeClass.diphthong.matchesCurrent(phonemes)
+        StressData(phonemes.phonemeToCharacterIndex(stressedPhonemeIndex), (if (isDiphthong) 2 else 1))
+    } else
+        null
+}

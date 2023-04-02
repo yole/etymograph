@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*
 import org.springframework.web.server.ResponseStatusException
 import ru.yole.etymograph.CorpusText
 import ru.yole.etymograph.Language
+import ru.yole.etymograph.calculateStress
 
 @RestController
 @CrossOrigin(origins = ["http://localhost:3000"])
@@ -59,9 +60,9 @@ class CorpusController(val graphService: GraphService) {
             language.name,
             mapToLines(graphService.graph).map {
                 CorpusLineViewModel(it.corpusWords.map { cw ->
-                    val (stressIndex, stressLength) = cw.word?.calculateStress(graphService.graph) ?: (null to null)
+                    val stressData = cw.word?.calculateStress()
                     CorpusWordViewModel(cw.index, cw.text, cw.gloss ?: "", cw.word?.id, cw.word?.text,
-                        stressIndex, stressLength)
+                        stressData?.index, stressData?.length)
                 })
             },
             source

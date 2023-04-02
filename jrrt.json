@@ -3163,6 +3163,55 @@
             "gloss": "heir",
             "pos": "N",
             "source": "PE17:103"
+        },
+        {
+            "id": 553,
+            "text": "tenn’",
+            "lang": "Q",
+            "gloss": "until",
+            "notes": "elided"
+        },
+        {
+            "id": 554,
+            "text": "tenna",
+            "lang": "Q",
+            "gloss": "until",
+            "source": "PE17:103"
+        },
+        {
+            "id": 555,
+            "text": "TEN-",
+            "lang": "CE",
+            "gloss": "direction",
+            "source": "PE17:187"
+        },
+        {
+            "id": 556,
+            "text": "ambar-metta",
+            "lang": "Q"
+        },
+        {
+            "id": 557,
+            "text": "ambar",
+            "lang": "Q",
+            "gloss": "world",
+            "pos": "N",
+            "source": "PE17:103"
+        },
+        {
+            "id": 558,
+            "text": "metta",
+            "lang": "Q",
+            "gloss": "end",
+            "pos": "N",
+            "source": "PE17:103"
+        },
+        {
+            "id": 559,
+            "text": "MET-",
+            "lang": "CE",
+            "gloss": "end",
+            "source": "VT49:24"
         }
     ],
     "rules": [
@@ -3682,6 +3731,12 @@
                     "type": "ApplyRule",
                     "args": [
                         "413"
+                    ]
+                },
+                {
+                    "type": "ApplyRule",
+                    "args": [
+                        "560"
                     ]
                 }
             ]
@@ -5375,9 +5430,15 @@
                             ]
                         },
                         {
-                            "type": "AddSuffix",
+                            "type": "ApplyRule",
                             "args": [
-                                "línen"
+                                "412"
+                            ]
+                        },
+                        {
+                            "type": "ApplyRule",
+                            "args": [
+                                "406"
                             ]
                         }
                     ],
@@ -5641,6 +5702,36 @@
             "addedCategories": ".POSS.1SG",
             "replacedCategories": "",
             "source": "https://eldamo.org/content/words/word-4077936885.html",
+            "notes": "",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 560,
+            "name": "q-prosodic-lengthening",
+            "fromLang": "Q",
+            "toLang": "Q",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ApplySoundRule",
+                            "args": [
+                                "429",
+                                "last vowel"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "StressIs",
+                        "characters": "third to last syllable"
+                    }
+                }
+            ],
+            "addedCategories": "",
+            "replacedCategories": "",
+            "source": "https://eldamo.org/content/words/word-3082255977.html",
             "notes": "",
             "preInstructions": [
             ]
@@ -7554,6 +7645,40 @@
                 416,
                 544
             ]
+        },
+        {
+            "from": 550,
+            "to": 551,
+            "type": ">",
+            "ruleIds": [
+                552,
+                396
+            ]
+        },
+        {
+            "from": 553,
+            "to": 554,
+            "type": ">"
+        },
+        {
+            "from": 554,
+            "to": 555,
+            "type": ">"
+        },
+        {
+            "from": 556,
+            "to": 557,
+            "type": "+"
+        },
+        {
+            "from": 556,
+            "to": 558,
+            "type": "+"
+        },
+        {
+            "from": 558,
+            "to": 559,
+            "type": ">"
         }
     ],
     "corpusTexts": [
@@ -7820,8 +7945,8 @@
                 548,
                 null,
                 550,
-                null,
-                null
+                553,
+                556
             ],
             "source": "LotR:967"
         }

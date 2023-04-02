@@ -298,4 +298,8 @@ open class InMemoryGraphRepository : GraphRepository() {
     override fun ruleByName(ruleName: String): Rule? {
         return rules.find { it.name == ruleName }
     }
+
+    companion object {
+        val EMPTY = InMemoryGraphRepository()
+    }
 }

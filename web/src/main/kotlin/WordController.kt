@@ -3,10 +3,7 @@ package ru.yole.etymograph.web
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.server.ResponseStatusException
-import ru.yole.etymograph.GraphRepository
-import ru.yole.etymograph.PhonemeClass
-import ru.yole.etymograph.PhonemeIterator
-import ru.yole.etymograph.Word
+import ru.yole.etymograph.*
 
 data class WordRefViewModel(
     val id: Int,
@@ -72,7 +69,7 @@ class WordController(val graphService: GraphService) {
         val linksTo = graph.getLinksTo(this).groupBy { it.type }
         val attestations = graph.findAttestations(this)
 
-        val (stressCharacterIndex, stressLength) = calculateStress(graph)
+        val stressData = calculateStress()
 
         return WordViewModel(
             id,
@@ -118,8 +115,8 @@ class WordController(val graphService: GraphService) {
                     }
                 )
             },
-            stressCharacterIndex,
-            stressLength
+            stressData?.index,
+            stressData?.length
         )
     }
 
@@ -221,14 +218,3 @@ class WordController(val graphService: GraphService) {
 class NoWordTextException : RuntimeException()
 
 fun String?.nullize() = this?.takeIf { it.trim().isNotEmpty() }
-
-fun Word.calculateStress(graph: GraphRepository): Pair<Int?, Int?> {
-    language.stressRule?.resolve()?.apply(this, graph)
-    return if (stressedPhonemeIndex >= 0) {
-        val phonemes = PhonemeIterator(this)
-        phonemes.advanceTo(stressedPhonemeIndex)
-        val isDiphthong = PhonemeClass.diphthong.matchesCurrent(phonemes)
-        phonemes.phonemeToCharacterIndex(stressedPhonemeIndex) to (if (isDiphthong) 2 else 1)
-    } else
-        null to null
-}

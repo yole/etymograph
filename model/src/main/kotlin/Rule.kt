@@ -133,7 +133,7 @@ class Rule(
             val lines = s.split('\n').map { it.trim() }.filter { it.isNotEmpty() }
             val branchTexts = mutableListOf<List<String>>()
             var currentBranchText = mutableListOf<String>()
-            var preInstructionsText = mutableListOf<String>()
+            val preInstructionsText = mutableListOf<String>()
             for (l in lines) {
                 if (l.endsWith(':')) {
                     if (branchTexts.isEmpty()) {

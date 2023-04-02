@@ -1,5 +1,7 @@
 package ru.yole.etymograph
 
+import kotlin.math.exp
+
 enum class ConditionType(
     val condName: String,
     val takesArgument: Boolean = true,
@@ -9,6 +11,7 @@ enum class ConditionType(
     NumberOfSyllables(LeafRuleCondition.numberOfSyllables, takesPhonemeClass = false),
     PhonemeMatches(LeafRuleCondition.soundIs),
     PrevPhonemeMatches(LeafRuleCondition.prevSoundIs),
+    StressIs(LeafRuleCondition.stressIs, takesPhonemeClass = false),
     BeginningOfWord(LeafRuleCondition.beginningOfWord, false)
 }
 
@@ -61,8 +64,17 @@ class LeafRuleCondition(
             ConditionType.EndsWith -> (phonemeClass?.let { PhonemeIterator(word).last in it.matchingPhonemes }
                 ?: word.text.trimEnd('-').endsWith(parameter!!)).negateIfNeeded()
             ConditionType.NumberOfSyllables -> breakIntoSyllables(word).size == parameter!!.toInt()
+            ConditionType.StressIs -> matchStress(word)
             else -> super.matches(word)
         }
+    }
+
+    private fun matchStress(word: Word): Boolean {
+        val (expectedIndex, _) = parameter?.let { Ordinals.parse(it) } ?: return false // TODO throw RuleParseException
+        val stress = word.calculateStress() ?: return false
+        val syllables = breakIntoSyllables(word)
+        val expectedStressSyllable = Ordinals.at(syllables, expectedIndex) ?: return false
+        return stress.index >= expectedStressSyllable.startIndex && stress.index < expectedStressSyllable.endIndex
     }
 
     override fun matches(phonemes: PhonemeIterator): Boolean {
@@ -79,8 +91,14 @@ class LeafRuleCondition(
             ?: (phoneme == parameter)).negateIfNeeded()
 
     override fun toEditableText(): String =
-        if (type.takesArgument)
-            type.condName + (if (negated) notPrefix else "") + (phonemeClass?.name?.let { "a $it" } ?: "'$parameter'")
+        if (type.takesArgument) {
+            val parameterName = if (!type.takesPhonemeClass)
+                parameter
+            else
+                phonemeClass?.name?.let { "a $it" } ?: "'$parameter'"
+
+            type.condName + (if (negated) notPrefix else "") + parameterName
+        }
         else
             type.condName
 
@@ -89,6 +107,7 @@ class LeafRuleCondition(
         const val numberOfSyllables = "number of syllables is "
         const val soundIs = "sound is "
         const val prevSoundIs = "previous sound is "
+        const val stressIs = "stress is on "
         const val notPrefix = "not "
         const val beginningOfWord = "beginning of word"
         const val indefiniteArticle = "a "

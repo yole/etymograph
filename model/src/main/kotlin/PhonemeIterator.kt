@@ -73,18 +73,16 @@ class PhonemeIterator(text: String, val language: Language) {
     }
 
     fun seek(seekTarget: SeekTarget): Boolean {
-        var foundCount = 0
+        val matchingIndexes = mutableListOf<Int>()
         for (targetPhonemeIndex in phonemes.indices) {
             if (phonemes[targetPhonemeIndex] in seekTarget.phonemeClass.matchingPhonemes) {
-                foundCount++
-                if (foundCount == seekTarget.index) {
-                    phonemeIndex = targetPhonemeIndex
-                    resultPhonemeIndex = targetPhonemeIndex
-                    return true
-                }
+                matchingIndexes.add(targetPhonemeIndex)
             }
         }
-        return false
+        val result = Ordinals.at(matchingIndexes, seekTarget.index) ?: return false
+        phonemeIndex = result
+        resultPhonemeIndex = result
+        return true
     }
 
     fun replace(s: String) {
