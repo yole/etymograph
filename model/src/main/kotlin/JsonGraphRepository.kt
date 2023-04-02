@@ -136,14 +136,10 @@ data class CorpusTextData(
     val notes: String? = null
 )
 
-@Serializable
-data class ParadigmRuleSeqData(
-    val ruleIds: List<Int>?
-)
 
 @Serializable
 data class ParadigmCellData(
-    val alternatives: List<ParadigmRuleSeqData>? = null
+    val ruleAlternatives: List<Int?>? = null
 )
 
 @Serializable
@@ -247,9 +243,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             paradigms.map {
                 ParadigmData(it.id, it.name, it.language.shortName, it.pos, it.rowTitles, it.columns.map { col ->
                     ParadigmColumnData(col.title, col.cells.map { cell ->
-                        ParadigmCellData(alternatives = cell?.alternatives?.map { alt ->
-                            ParadigmRuleSeqData(alt.rules.map { it.id })
-                        })
+                        ParadigmCellData(ruleAlternatives = cell?.ruleAlternatives?.map { r -> r?.id })
                     })
                 })
             },
@@ -354,9 +348,9 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                 for ((colIndex, column) in paradigm.columns.withIndex()) {
                     addColumn(column.title)
                     for ((rowIndex, cell) in column.cells.withIndex()) {
-                        val alternatives = cell.alternatives
+                        val alternatives = cell.ruleAlternatives
                         if (alternatives != null) {
-                            val rules = alternatives.map { alt -> alt.ruleIds?.map { ruleById(it)!! } ?: emptyList() }
+                            val rules = alternatives.map { id -> id?.let { ruleById(it) } }
                             setRule(rowIndex, colIndex, rules)
                         }
                     }

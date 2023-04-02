@@ -8142,74 +8142,43 @@
                     "title": "Sg",
                     "cells": [
                         {
-                            "alternatives": [
-                                {
-                                    "ruleIds": [
-                                    ]
-                                }
+                            "ruleAlternatives": [
+                                null
                             ]
                         },
                         {
-                            "alternatives": [
-                                {
-                                    "ruleIds": [
-                                        397
-                                    ]
-                                }
+                            "ruleAlternatives": [
+                                397
                             ]
                         },
                         {
-                            "alternatives": [
-                                {
-                                    "ruleIds": [
-                                        404
-                                    ]
-                                }
+                            "ruleAlternatives": [
+                                404
                             ]
                         },
                         {
-                            "alternatives": [
-                                {
-                                    "ruleIds": [
-                                        408
-                                    ]
-                                }
+                            "ruleAlternatives": [
+                                408
                             ]
                         },
                         {
-                            "alternatives": [
-                                {
-                                    "ruleIds": [
-                                        399
-                                    ]
-                                }
+                            "ruleAlternatives": [
+                                399
                             ]
                         },
                         {
-                            "alternatives": [
-                                {
-                                    "ruleIds": [
-                                        398
-                                    ]
-                                }
+                            "ruleAlternatives": [
+                                398
                             ]
                         },
                         {
-                            "alternatives": [
-                                {
-                                    "ruleIds": [
-                                        410
-                                    ]
-                                }
+                            "ruleAlternatives": [
+                                410
                             ]
                         },
                         {
-                            "alternatives": [
-                                {
-                                    "ruleIds": [
-                                        406
-                                    ]
-                                }
+                            "ruleAlternatives": [
+                                406
                             ]
                         }
                     ]
@@ -8218,75 +8187,43 @@
                     "title": "Pl",
                     "cells": [
                         {
-                            "alternatives": [
-                                {
-                                    "ruleIds": [
-                                        396
-                                    ]
-                                }
+                            "ruleAlternatives": [
+                                396
                             ]
                         },
                         {
-                            "alternatives": [
-                                {
-                                    "ruleIds": [
-                                        405
-                                    ]
-                                }
+                            "ruleAlternatives": [
+                                405
                             ]
                         },
                         {
-                            "alternatives": [
-                                {
-                                    "ruleIds": [
-                                        427
-                                    ]
-                                }
+                            "ruleAlternatives": [
+                                427
                             ]
                         },
                         {
-                            "alternatives": [
-                                {
-                                    "ruleIds": [
-                                        564
-                                    ]
-                                }
+                            "ruleAlternatives": [
+                                564
                             ]
                         },
                         {
-                            "alternatives": [
-                                {
-                                    "ruleIds": [
-                                        479
-                                    ]
-                                }
+                            "ruleAlternatives": [
+                                479
                             ]
                         },
                         {
-                            "alternatives": [
-                                {
-                                    "ruleIds": [
-                                        488
-                                    ]
-                                }
+                            "ruleAlternatives": [
+                                488
                             ]
                         },
                         {
-                            "alternatives": [
-                                {
-                                    "ruleIds": [
-                                        409
-                                    ]
-                                }
+                            "ruleAlternatives": [
+                                409
                             ]
                         },
                         {
-                            "alternatives": [
-                                {
-                                    "ruleIds": [
-                                        521
-                                    ]
-                                }
+                            "ruleAlternatives": [
+                                521
                             ]
                         }
                     ]
@@ -8295,80 +8232,44 @@
                     "title": "Part-Pl",
                     "cells": [
                         {
-                            "alternatives": [
-                                {
-                                    "ruleIds": [
-                                        412
-                                    ]
-                                }
+                            "ruleAlternatives": [
+                                412
                             ]
                         },
                         {
-                            "alternatives": [
-                                {
-                                    "ruleIds": [
-                                        462
-                                    ]
-                                }
+                            "ruleAlternatives": [
+                                462
                             ]
                         },
                         {
-                            "alternatives": [
-                                {
-                                    "ruleIds": [
-                                        478
-                                    ]
-                                }
+                            "ruleAlternatives": [
+                                478
                             ]
                         },
                         {
-                            "alternatives": [
-                                {
-                                    "ruleIds": [
-                                        563
-                                    ]
-                                }
+                            "ruleAlternatives": [
+                                563
                             ]
                         },
                         {
-                            "alternatives": [
-                                {
-                                    "ruleIds": [
-                                        484
-                                    ]
-                                },
-                                {
-                                    "ruleIds": [
-                                        486
-                                    ]
-                                }
+                            "ruleAlternatives": [
+                                484,
+                                486
                             ]
                         },
                         {
-                            "alternatives": [
-                                {
-                                    "ruleIds": [
-                                        505
-                                    ]
-                                }
+                            "ruleAlternatives": [
+                                505
                             ]
                         },
                         {
-                            "alternatives": [
-                                {
-                                    "ruleIds": [
-                                        516
-                                    ]
-                                }
+                            "ruleAlternatives": [
+                                516
                             ]
                         },
                         {
-                            "alternatives": [
-                                {
-                                    "ruleIds": [
-                                        531
-                                    ]
-                                }
+                            "ruleAlternatives": [
+                                531
                             ]
                         }
                     ]
@@ -8377,75 +8278,43 @@
                     "title": "Dual",
                     "cells": [
                         {
-                            "alternatives": [
-                                {
-                                    "ruleIds": [
-                                        411
-                                    ]
-                                }
+                            "ruleAlternatives": [
+                                411
                             ]
                         },
                         {
-                            "alternatives": [
-                                {
-                                    "ruleIds": [
-                                        470
-                                    ]
-                                }
+                            "ruleAlternatives": [
+                                470
                             ]
                         },
                         {
-                            "alternatives": [
-                                {
-                                    "ruleIds": [
-                                        428
-                                    ]
-                                }
+                            "ruleAlternatives": [
+                                428
                             ]
                         },
                         {
-                            "alternatives": [
-                                {
-                                    "ruleIds": [
-                                        562
-                                    ]
-                                }
+                            "ruleAlternatives": [
+                                562
                             ]
                         },
                         {
-                            "alternatives": [
-                                {
-                                    "ruleIds": [
-                                        482
-                                    ]
-                                }
+                            "ruleAlternatives": [
+                                482
                             ]
                         },
                         {
-                            "alternatives": [
-                                {
-                                    "ruleIds": [
-                                        514
-                                    ]
-                                }
+                            "ruleAlternatives": [
+                                514
                             ]
                         },
                         {
-                            "alternatives": [
-                                {
-                                    "ruleIds": [
-                                        519
-                                    ]
-                                }
+                            "ruleAlternatives": [
+                                519
                             ]
                         },
                         {
-                            "alternatives": [
-                                {
-                                    "ruleIds": [
-                                        532
-                                    ]
-                                }
+                            "ruleAlternatives": [
+                                532
                             ]
                         }
                     ]
@@ -8467,35 +8336,19 @@
                     "title": "Sg",
                     "cells": [
                         {
-                            "alternatives": [
-                                {
-                                    "ruleIds": [
-                                        402
-                                    ]
-                                },
-                                {
-                                    "ruleIds": [
-                                        544
-                                    ]
-                                }
+                            "ruleAlternatives": [
+                                402,
+                                544
                             ]
                         },
                         {
-                            "alternatives": [
-                                {
-                                    "ruleIds": [
-                                        401
-                                    ]
-                                }
+                            "ruleAlternatives": [
+                                401
                             ]
                         },
                         {
-                            "alternatives": [
-                                {
-                                    "ruleIds": [
-                                        403
-                                    ]
-                                }
+                            "ruleAlternatives": [
+                                403
                             ]
                         }
                     ]
@@ -8517,30 +8370,18 @@
                     "title": "Sg",
                     "cells": [
                         {
-                            "alternatives": [
-                                {
-                                    "ruleIds": [
-                                        552
-                                    ]
-                                }
+                            "ruleAlternatives": [
+                                552
                             ]
                         },
                         {
-                            "alternatives": [
-                                {
-                                    "ruleIds": [
-                                        414
-                                    ]
-                                }
+                            "ruleAlternatives": [
+                                414
                             ]
                         },
                         {
-                            "alternatives": [
-                                {
-                                    "ruleIds": [
-                                        400
-                                    ]
-                                }
+                            "ruleAlternatives": [
+                                400
                             ]
                         }
                     ]

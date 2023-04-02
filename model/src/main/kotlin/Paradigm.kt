@@ -1,30 +1,20 @@
 package ru.yole.etymograph
 
-typealias RuleSeq = List<Rule>
-
-data class ParadigmRuleSeq(val rules: RuleSeq) {
-    fun generate(word: Word, graph: GraphRepository): Word {
-        return rules.fold(word) { w, r ->
-            val link = graph.getLinksTo(word).find { it.rules == listOf(r) }
-            link?.fromEntity as? Word ?: r.apply(w, graph)
-        }
-    }
-}
-
 typealias WordAlternatives = List<Word>
 
-class ParadigmCell(ruleAlternatives: List<RuleSeq>) {
-    val alternatives = ruleAlternatives.map { ParadigmRuleSeq(it) }
-
+class ParadigmCell(val ruleAlternatives: List<Rule?>) {
     fun generate(word: Word, graph: GraphRepository): WordAlternatives {
-        return alternatives.map { it.generate(word, graph) }
+        return ruleAlternatives.map { r ->
+            val link = graph.getLinksTo(word).find { it.rules == listOf(r) }
+            link?.fromEntity as? Word ?: r?.apply(word, graph) ?: word
+        }.ifEmpty { listOf(word) }
     }
 }
 
 data class ParadigmColumn(val title: String) {
     val cells = mutableListOf<ParadigmCell?>()
 
-    fun setRule(row: Int, rules: List<RuleSeq>) {
+    fun setRule(row: Int, rules: List<Rule?>) {
         while (cells.size <= row) {
             cells.add(null)
         }
@@ -55,7 +45,7 @@ data class Paradigm(
         columns.add(ParadigmColumn(title))
     }
 
-    fun setRule(row: Int, column: Int, rules: List<RuleSeq>) {
+    fun setRule(row: Int, column: Int, rules: List<Rule?>) {
         if (row >= rowTitles.size || column >= columns.size) {
             throw IllegalArgumentException("Invalid row or column index")
         }
@@ -66,9 +56,9 @@ data class Paradigm(
     fun collectAllRules(): Set<Rule> {
         return columns
             .flatMap { col -> col.cells.flatMap {
-                cell -> cell?.alternatives ?: emptyList() }
+                cell -> cell?.ruleAlternatives ?: emptyList() }
             }
-            .flatMap { it.rules }
+            .filterNotNull()
             .toSet()
     }
 
@@ -98,11 +88,10 @@ data class Paradigm(
                 val alternatives = w.split('|')
                 val rules = alternatives.map { alt ->
                     if (alt == ".") {
-                        emptyList()
+                        null
                     }
                     else {
-                        val ruleNames = alt.split(',')
-                        ruleNames.map { ruleLookup(it) ?: throw ParadigmParseException("Can't find rule $it") }
+                        ruleLookup(alt) ?: throw ParadigmParseException("Can't find rule $alt")
                     }
                 }
                 setRule(rowIndex, colIndex, rules)
@@ -117,10 +106,9 @@ data class Paradigm(
                 append(rowTitle)
                 append(" ")
                 appendLine(columns.joinToString(" ") { col ->
-                    val alternatives = col.cells.getOrNull(index)?.alternatives
-                    alternatives?.joinToString("|") { seq ->
-                        seq.rules.joinToString(",") { it.name }
-                    }?.ifEmpty { "." } ?: "-"
+                    val alternatives = col.cells.getOrNull(index)?.ruleAlternatives
+                    alternatives?.joinToString("|") { it?.name ?: "." }
+                        ?.ifEmpty { "." } ?: "-"
                 })
             }
         }.trimEnd('\n')

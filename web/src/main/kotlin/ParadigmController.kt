@@ -6,14 +6,10 @@ import ru.yole.etymograph.*
 
 @RestController
 class ParadigmController(val graphService: GraphService) {
-    data class ParadigmRuleSeqViewModel(
-        val ruleNames: List<String>,
-        val ruleSummaries: List<String>,
-        val ruleIds: List<Int>
-    )
-
     data class ParadigmCellViewModel(
-        val alternatives: List<ParadigmRuleSeqViewModel>
+        val alternativeRuleNames: List<String>,
+        val alternativeRuleSummaries: List<String>,
+        val alternativeRuleIds: List<Int?>
     )
 
     data class ParadigmColumnViewModel(
@@ -56,14 +52,15 @@ class ParadigmController(val graphService: GraphService) {
 
     private fun ParadigmColumn.toViewModel(rows: Int) =
         ParadigmColumnViewModel(title, (0 until rows).map {
-            cells.getOrNull(it)?.toViewModel() ?: ParadigmCellViewModel(emptyList())
+            cells.getOrNull(it)?.toViewModel() ?: ParadigmCellViewModel(emptyList(), emptyList(), emptyList())
         })
 
     private fun ParadigmCell.toViewModel() =
-        ParadigmCellViewModel(alternatives.map { it.toViewModel() })
-
-    private fun ParadigmRuleSeq.toViewModel() =
-        ParadigmRuleSeqViewModel(rules.map { it.name }, rules.map { it.toSummaryText() }, rules.map { it.id })
+        ParadigmCellViewModel(
+            ruleAlternatives.map { it?.name ?: "." },
+            ruleAlternatives.map { it?.toSummaryText() ?: "" },
+            ruleAlternatives.map { it?.id },
+        )
 
     @GetMapping("/paradigm/{id}")
     fun paradigm(@PathVariable id: Int): ParadigmViewModel {
