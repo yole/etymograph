@@ -3212,6 +3212,20 @@
             "lang": "CE",
             "gloss": "end",
             "source": "VT49:24"
+        },
+        {
+            "id": 561,
+            "text": "ciryava",
+            "lang": "Q",
+            "gloss": "ship.POSS",
+            "source": "Plotz"
+        },
+        {
+            "id": 565,
+            "text": "ciryalíva",
+            "lang": "Q",
+            "gloss": "ship.POSS.PPL",
+            "source": "Plotz"
         }
     ],
     "rules": [
@@ -3868,12 +3882,18 @@
                 }
             ],
             "addedCategories": ".POSS",
-            "source": "Eldamo",
+            "source": "https://eldamo.org/content/words/word-3983087533.html",
             "preInstructions": [
                 {
                     "type": "ApplyRule",
                     "args": [
                         "413"
+                    ]
+                },
+                {
+                    "type": "ApplyRule",
+                    "args": [
+                        "560"
                     ]
                 }
             ]
@@ -5734,6 +5754,140 @@
             "source": "https://eldamo.org/content/words/word-3082255977.html",
             "notes": "",
             "preInstructions": [
+            ]
+        },
+        {
+            "id": 562,
+            "name": "q-poss-dual",
+            "fromLang": "Q",
+            "toLang": "Q",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ApplyRule",
+                            "args": [
+                                "411"
+                            ]
+                        },
+                        {
+                            "type": "ApplyRule",
+                            "args": [
+                                "408"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".POSS.DU",
+            "replacedCategories": "",
+            "source": "https://eldamo.org/content/words/word-3983087533.html",
+            "notes": "",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 563,
+            "name": "q-poss-ppl",
+            "fromLang": "Q",
+            "toLang": "Q",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ApplyRule",
+                            "args": [
+                                "412"
+                            ]
+                        },
+                        {
+                            "type": "ApplyRule",
+                            "args": [
+                                "408"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".POSS.PPL",
+            "replacedCategories": "",
+            "source": "https://eldamo.org/content/words/word-3983087533.html",
+            "notes": "",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 564,
+            "name": "q-poss-pl",
+            "fromLang": "Q",
+            "toLang": "Q",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "args": [
+                                "íva"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "cls": "consonant"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "RemoveLastCharacter",
+                            "args": [
+                            ]
+                        },
+                        {
+                            "type": "AddSuffix",
+                            "args": [
+                                "íva"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "characters": "e"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "args": [
+                                "iva"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".POSS.PL",
+            "replacedCategories": "",
+            "source": "https://eldamo.org/content/words/word-2977430193.html",
+            "notes": "",
+            "preInstructions": [
+                {
+                    "type": "ApplyRule",
+                    "args": [
+                        "413"
+                    ]
+                }
             ]
         }
     ],
@@ -7679,6 +7833,22 @@
             "from": 558,
             "to": 559,
             "type": ">"
+        },
+        {
+            "from": 561,
+            "to": 387,
+            "type": ">",
+            "ruleIds": [
+                408
+            ]
+        },
+        {
+            "from": 565,
+            "to": 387,
+            "type": ">",
+            "ruleIds": [
+                563
+            ]
         }
     ],
     "corpusTexts": [
@@ -8075,6 +8245,13 @@
                             ]
                         },
                         {
+                            "alternatives": [
+                                {
+                                    "ruleIds": [
+                                        564
+                                    ]
+                                }
+                            ]
                         },
                         {
                             "alternatives": [
@@ -8145,6 +8322,13 @@
                             ]
                         },
                         {
+                            "alternatives": [
+                                {
+                                    "ruleIds": [
+                                        563
+                                    ]
+                                }
+                            ]
                         },
                         {
                             "alternatives": [
@@ -8220,6 +8404,13 @@
                             ]
                         },
                         {
+                            "alternatives": [
+                                {
+                                    "ruleIds": [
+                                        562
+                                    ]
+                                }
+                            ]
                         },
                         {
                             "alternatives": [
