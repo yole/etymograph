@@ -314,6 +314,22 @@ class RuleTest : QBaseTest() {
     }
 
     /*
+
+    @Test
+    fun applyRuleToSyllable() {
+        val soundRule = parseRule(q, q, """
+            sound is 'u':
+            - new sound is 'ú'
+        """.trimIndent(), "q-long")
+        val repo = InMemoryGraphRepository()
+        repo.addRule(soundRule)
+
+        val instruction = RuleInstruction.parse("- apply sound rule 'q-long' to first syllable", q.parseContext(repo))
+        assertEquals("túl", instruction.apply(q.word("tul"), emptyRepo).text)
+    }
+     */
+
+    /*
     @Test
     fun chainedSummaryText() {
         val qNomPl = parseRule(q, q, """
@@ -336,14 +352,18 @@ class RuleTest : QBaseTest() {
 
 fun Language.word(text: String) = Word(-1, text, this)
 
-fun Language.parseContext() = RuleParseContext(this, this) { throw RuleParseException("no such rule") }
+fun Language.parseContext(repo: GraphRepository? = null) = createParseContext(this, this, repo)
 
 fun parseRule(fromLanguage: Language, toLanguage: Language, text: String, name: String = "q", repo: GraphRepository? = null): Rule = Rule(
     -1, name, fromLanguage, toLanguage,
-    Rule.parseBranches(text,
-        RuleParseContext(fromLanguage, toLanguage) {
-            repo?.ruleByName(it)?.let { RuleRef.to(it) } ?: throw RuleParseException("no such rule")
-        }
-    ),
+    Rule.parseBranches(text, createParseContext(fromLanguage, toLanguage, repo)),
     null, null, null, null
 )
+
+private fun createParseContext(
+    fromLanguage: Language,
+    toLanguage: Language,
+    repo: GraphRepository?
+) = RuleParseContext(fromLanguage, toLanguage) {
+    repo?.ruleByName(it)?.let { RuleRef.to(it) } ?: throw RuleParseException("no such rule")
+}
