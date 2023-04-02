@@ -3115,6 +3115,54 @@
             "id": 542,
             "text": "utúlien",
             "lang": "Q"
+        },
+        {
+            "id": 545,
+            "text": "nómë",
+            "lang": "Q",
+            "gloss": "place",
+            "pos": "N",
+            "source": "VT42:17"
+        },
+        {
+            "id": 546,
+            "text": "si-",
+            "lang": "CE",
+            "gloss": "this (by me)",
+            "source": "VT49:18"
+        },
+        {
+            "id": 547,
+            "text": "sinomë",
+            "lang": "Q",
+            "gloss": "here",
+            "source": "PE17:67"
+        },
+        {
+            "id": 548,
+            "text": "maruvan",
+            "lang": "Q"
+        },
+        {
+            "id": 549,
+            "text": "mar-",
+            "lang": "Q",
+            "gloss": "abide",
+            "pos": "V",
+            "source": "PE17:103"
+        },
+        {
+            "id": 550,
+            "text": "hildinyar",
+            "lang": "Q"
+        },
+        {
+            "id": 551,
+            "text": "hildë",
+            "lang": "Q",
+            "gloss": "heir",
+            "pos": "N",
+            "source": "PE17:103"
         }
     ],
     "rules": [
@@ -5482,6 +5530,120 @@
             "source": "https://eldamo.org/content/words/word-30508289.html",
             "preInstructions": [
             ]
+        },
+        {
+            "id": 543,
+            "name": "q-perfect",
+            "fromLang": "Q",
+            "toLang": "Q",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "RemoveLastCharacter",
+                            "args": [
+                            ]
+                        },
+                        {
+                            "type": "AddSuffix",
+                            "args": [
+                                "ie"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "cls": "vowel"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "args": [
+                                "ie"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".PERF",
+            "replacedCategories": "",
+            "source": "https://eldamo.org/content/words/word-1665649345.html",
+            "notes": "",
+            "preInstructions": [
+                {
+                    "type": "Prepend",
+                    "args": [
+                        "first vowel"
+                    ]
+                },
+                {
+                    "type": "ApplySoundRule",
+                    "args": [
+                        "429",
+                        "second vowel"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 544,
+            "name": "q-1sg-short",
+            "fromLang": "Q",
+            "toLang": "Q",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "args": [
+                                "n"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".1SG",
+            "replacedCategories": "",
+            "source": "https://eldamo.org/content/words/word-1020286637.html",
+            "notes": "",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 552,
+            "name": "q-poss-1sg",
+            "fromLang": "Q",
+            "toLang": "Q",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "args": [
+                                "nya"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".POSS.1SG",
+            "replacedCategories": "",
+            "source": "https://eldamo.org/content/words/word-4077936885.html",
+            "notes": "",
+            "preInstructions": [
+            ]
         }
     ],
     "links": [
@@ -7368,7 +7530,30 @@
         {
             "from": 542,
             "to": 312,
-            "type": ">"
+            "type": ">",
+            "ruleIds": [
+                543,
+                544
+            ]
+        },
+        {
+            "from": 547,
+            "to": 546,
+            "type": "+"
+        },
+        {
+            "from": 547,
+            "to": 545,
+            "type": "+"
+        },
+        {
+            "from": 548,
+            "to": 549,
+            "type": ">",
+            "ruleIds": [
+                416,
+                544
+            ]
         }
     ],
     "corpusTexts": [
@@ -7631,10 +7816,10 @@
                 538,
                 540,
                 542,
+                547,
+                548,
                 null,
-                null,
-                null,
-                null,
+                550,
                 null,
                 null
             ],
@@ -7943,6 +8128,101 @@
                                 {
                                     "ruleIds": [
                                         532
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 1,
+            "name": "Subject Pronouns",
+            "lang": "Q",
+            "pos": "V",
+            "rows": [
+                "1p",
+                "2p",
+                "3p"
+            ],
+            "columns": [
+                {
+                    "title": "Sg",
+                    "cells": [
+                        {
+                            "alternatives": [
+                                {
+                                    "ruleIds": [
+                                        402
+                                    ]
+                                },
+                                {
+                                    "ruleIds": [
+                                        544
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "alternatives": [
+                                {
+                                    "ruleIds": [
+                                        401
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "alternatives": [
+                                {
+                                    "ruleIds": [
+                                        403
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "name": "Possessive Pronouns",
+            "lang": "Q",
+            "pos": "V",
+            "rows": [
+                "1p",
+                "2p",
+                "3p"
+            ],
+            "columns": [
+                {
+                    "title": "Sg",
+                    "cells": [
+                        {
+                            "alternatives": [
+                                {
+                                    "ruleIds": [
+                                        552
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "alternatives": [
+                                {
+                                    "ruleIds": [
+                                        414
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "alternatives": [
+                                {
+                                    "ruleIds": [
+                                        400
                                     ]
                                 }
                             ]
