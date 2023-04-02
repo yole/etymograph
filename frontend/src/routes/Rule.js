@@ -41,6 +41,7 @@ export default function Rule() {
             <Link to={`/rules/${rule.toLang}`}>Rules</Link> > </small>
             {rule.name}</h2>
         {rule.fromLang !== rule.toLang && <p>From {rule.fromLangFullName} to {rule.toLangFullName}</p>}
+        {rule.paradigmId !== null && <p>Paradigm: <Link to={`/paradigm/${rule.paradigmId}`}>{rule.paradigmName}</Link></p>}
         {!editMode && <>
             {rule.addedCategories && <p>Added categories: {rule.addedCategories}</p>}
             {rule.replacedCategories && <p>Replaced categories: {rule.replacedCategories}</p>}
