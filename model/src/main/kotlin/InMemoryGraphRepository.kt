@@ -235,12 +235,12 @@ open class InMemoryGraphRepository : GraphRepository() {
         return Link(fromEntity, toEntity, type, rules, source, notes)
     }
 
-    override fun getLinksFrom(word: Word): Iterable<Link> {
-        return linksFrom[word.id] ?: emptyList()
+    override fun getLinksFrom(entity: LangEntity): Iterable<Link> {
+        return linksFrom[entity.id] ?: emptyList()
     }
 
-    override fun getLinksTo(word: Word): Iterable<Link> {
-        return linksTo[word.id] ?: emptyList()
+    override fun getLinksTo(entity: LangEntity): Iterable<Link> {
+        return linksTo[entity.id] ?: emptyList()
     }
 
     override fun addRule(

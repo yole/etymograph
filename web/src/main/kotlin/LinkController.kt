@@ -10,7 +10,7 @@ import ru.yole.etymograph.*
 
 @RestController
 class LinkController(val graphService: GraphService) {
-    data class LinkParams(val fromWord: Int = -1, val toWord: Int = -1, val linkType: String = "", val ruleNames: String = "")
+    data class LinkParams(val fromEntity: Int = -1, val toEntity: Int = -1, val linkType: String = "", val ruleNames: String = "")
     data class ResolvedLinkParams(val fromEntity: LangEntity, val toEntity: LangEntity, val linkType: LinkType)
 
     @PostMapping("/link")
@@ -23,16 +23,30 @@ class LinkController(val graphService: GraphService) {
         graph.save()
     }
 
-    private fun resolveLinkParams(params: LinkParams): ResolvedLinkParams {
+    data class RuleLinkParams(val fromEntity: Int = -1, val toRuleName: String = "", val linkType: String = "")
+
+    @PostMapping("/link/rule")
+    fun addRuleLink(@RequestBody params: RuleLinkParams) {
         val graph = graphService.graph
+        val fromEntity = graphService.resolveEntity(params.fromEntity)
+        val toRule = graphService.resolveRule(params.toRuleName)
+        val linkType = resolveLinkType(params.linkType)
+
+        graph.addLink(fromEntity, toRule, linkType, emptyList(), null, null)
+        graph.save()
+    }
+
+    private fun resolveLinkParams(params: LinkParams): ResolvedLinkParams {
         return ResolvedLinkParams(
-            graph.langEntityById(params.fromWord)
-                ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST, "No word or rule with ID ${params.fromWord}"),
-            graph.langEntityById(params.toWord)
-                ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST, "No word or rule with ID ${params.toWord}"),
-            Link.allLinkTypes.find { it.id == params.linkType } ?: throw NoLinkTypeException()
+            graphService.resolveEntity(params.fromEntity),
+            graphService.resolveEntity(params.toEntity),
+            resolveLinkType(params.linkType),
         )
     }
+
+    private fun resolveLinkType(linkType: String) =
+        (Link.allLinkTypes.find { it.id == linkType }
+            ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST, "No link type '$linkType'"))
 
     private fun resolveRuleNames(params: LinkParams): List<Rule> {
         return params.ruleNames
@@ -64,9 +78,5 @@ class LinkController(val graphService: GraphService) {
         }
     }
 }
-
-@ResponseStatus(value = HttpStatus.BAD_REQUEST, reason = "No such link type")
-class NoLinkTypeException : RuntimeException()
-
 @ResponseStatus(value = HttpStatus.BAD_REQUEST, reason = "No such link")
 class NoLinkException : RuntimeException()

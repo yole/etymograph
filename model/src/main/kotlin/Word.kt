@@ -44,7 +44,7 @@ class Word(
                 (it.toEntity as Word).getOrComputeGloss(graph)?.substringBefore(", ") ?: "?"
             }
         }
-        val derivation = graph.getLinksFrom(this).filter { it.type == Link.Derived && it.toEntity is Word }.singleOrNull()
+        val derivation = graph.getLinksFrom(this).singleOrNull { it.type == Link.Derived && it.toEntity is Word }
         if (derivation != null) {
             if (derivation.rules.any { it.addedCategories != null }) {
                 (derivation.toEntity as Word).getOrComputeGloss(graph)?.let { fromGloss ->

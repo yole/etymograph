@@ -1,6 +1,6 @@
 import {useLoaderData, useRevalidator} from "react-router";
 import {useEffect, useState} from "react";
-import {updateRule} from "../api";
+import {addRuleLink, updateRule} from "../api";
 import {Link} from "react-router-dom";
 import {WordLink} from "./Word";
 
@@ -11,27 +11,36 @@ export async function loader({params}) {
 export default function Rule() {
     const rule = useLoaderData()
     const [editMode, setEditMode] = useState(false)
+    const [linkMode, setLinkMode] = useState(false)
     const [addedCategories, setAddedCategories] = useState(rule.addedCategories)
     const [replacedCategories, setReplacedCategories] = useState(rule.replacedCategories)
     const [source, setSource] = useState(rule.source)
     const [editableText, setEditableText] = useState(rule.editableText)
     const [notes, setNotes] = useState(rule.notes)
+    const [linkRuleName, setLinkRuleName] = useState("")
     const revalidator = useRevalidator()
     const [errorText, setErrorText] = useState("")
     useEffect(() => { document.title = "Etymograph : Rule " + rule.name })
 
+    function handleResponse(r) {
+        if (r.status === 200) {
+            setErrorText("")
+            revalidator.revalidate()
+        } else {
+            r.json().then(r => setErrorText(r.message.length > 0 ? r.message : "Failed to save rule"))
+        }
+    }
+
     function saveRule() {
         updateRule(rule.id, rule.name, rule.fromLang, rule.toLang, addedCategories, replacedCategories, editableText, source, notes)
-            .then(r => {
-                if (r.status === 200) {
-                    setErrorText("")
-                    revalidator.revalidate()
-                }
-                else {
-                    r.json().then(r => setErrorText(r.message.length > 0 ? r.message : "Failed to save rule"))
-                }
-            })
+            .then(handleResponse)
         setEditMode(false)
+    }
+
+    function saveLink() {
+        addRuleLink(rule.id, linkRuleName, '~')
+            .then(handleResponse)
+        setLinkMode(false)
     }
 
     return <>
@@ -84,7 +93,22 @@ export default function Rule() {
             <button onClick={() => saveRule()}>Save</button>&nbsp;
         </>}
 
-        <button onClick={() => setEditMode(!editMode)}>{editMode ? "Cancel" : "Edit"}</button>
+        <button onClick={() => setEditMode(!editMode)}>{editMode ? "Cancel" : "Edit"}</button>{' '}
+        <button onClick={() => setLinkMode(!linkMode)}>{linkMode ? "Cancel" : "Add Link"}</button>
+        {rule.links.length > 0 && <>
+            <h3>Related rules</h3>
+            {rule.links.map(rl => <>
+                <Link to={`/rule/${rl.toRuleId}`}>{rl.toRuleName}</Link>
+                <br/></>)
+            }
+        </>}
+        {linkMode && <>
+            <p>
+            <label>Link to rule name:</label>{' '}
+            <input type="text" value={linkRuleName} onChange={(e) => setLinkRuleName(e.target.value)}/>{' '}
+            <button onClick={() => saveLink()}>Save</button>
+            </p>
+        </>}
         {errorText !== "" && <div className="errorText">{errorText}</div>}
         {rule.examples.length > 0 && <>
             <h3>Examples</h3>

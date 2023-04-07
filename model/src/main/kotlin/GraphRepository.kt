@@ -10,8 +10,8 @@ abstract class GraphRepository {
     abstract fun corpusTextsInLanguage(lang: Language): Iterable<CorpusText>
     abstract fun corpusTextById(id: Int): CorpusText?
 
-    abstract fun getLinksFrom(word: Word): Iterable<Link>
-    abstract fun getLinksTo(word: Word): Iterable<Link>
+    abstract fun getLinksFrom(entity: LangEntity): Iterable<Link>
+    abstract fun getLinksTo(entity: LangEntity): Iterable<Link>
     abstract fun wordById(id: Int): Word?
     abstract fun wordsByText(lang: Language, text: String): List<Word>
     abstract fun dictionaryWords(lang: Language): List<Word>

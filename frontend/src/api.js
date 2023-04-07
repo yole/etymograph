@@ -46,8 +46,12 @@ export function associateWord(corpusTextId, wordId, index) {
     return postToBackend(`corpus/text/${corpusTextId}/associate`, {wordId: wordId, index: index})
 }
 
-export function addLink(fromWord, toWord, linkType, ruleNames) {
-    return postToBackend('link', {fromWord: fromWord, toWord: toWord, linkType: linkType, ruleNames: ruleNames})
+export function addLink(fromEntity, toEntity, linkType, ruleNames) {
+    return postToBackend('link', {fromEntity: fromEntity, toEntity: toEntity, linkType: linkType, ruleNames: ruleNames})
+}
+
+export function addRuleLink(fromEntity, toRuleName, linkType) {
+    return postToBackend('link/rule', {fromEntity: fromEntity, toRuleName: toRuleName, linkType: linkType})
 }
 
 export function deleteLink(fromWord, toWord, linkType) {

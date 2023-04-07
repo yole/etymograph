@@ -16,6 +16,11 @@ class RuleController(val graphService: GraphService) {
         val allRules: List<String>
     )
 
+    data class RuleLinkViewModel(
+        val toRuleId: Int,
+        val toRuleName: String
+    )
+
     data class RuleViewModel(
         val id: Int,
         val name: String,
@@ -33,6 +38,7 @@ class RuleController(val graphService: GraphService) {
         val paradigmName: String?,
         val preInstructions: List<String>,
         val branches: List<RuleBranchViewModel>,
+        val links: List<RuleLinkViewModel>,
         val examples: List<RuleExampleViewModel>
     )
 
@@ -82,6 +88,9 @@ class RuleController(val graphService: GraphService) {
     private fun Rule.toViewModel(): RuleViewModel {
         val graph = graphService.graph
         val paradigm = graph.paradigmsForLanguage(fromLanguage).find { this in it.collectAllRules() }
+        val links = (graph.getLinksFrom(this).map { it.toEntity } +
+                        graph.getLinksTo(this).map { it.fromEntity })
+            .filterIsInstance<Rule>().toList()
         return RuleViewModel(
             id, name,
             fromLanguage.shortName, toLanguage.shortName,
@@ -96,6 +105,7 @@ class RuleController(val graphService: GraphService) {
             paradigm?.name,
             logic.preInstructions.map { it.toEditableText() },
             logic.branches.map { it.toViewModel(isUnconditional()) },
+            links.map { RuleLinkViewModel(it.id, it.name) },
             graph.findRuleExamples(this).map { link ->
                 val fromWord = link.fromEntity as Word
                 val toWord = link.toEntity as Word
