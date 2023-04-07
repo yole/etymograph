@@ -11,4 +11,14 @@ class CorpusTextTest : QBaseTest() {
         assertEquals(0, lines[0].corpusWords[0].index)
         assertEquals(3, lines[1].corpusWords[0].index)
     }
+
+    @Test
+    fun testAssociateWord() {
+        val corpusText = CorpusText(-1, "ai laurie lantar", null, q, mutableListOf(), null, null)
+        val repo = InMemoryGraphRepository()
+        val laurie = q.word("laurie")
+        corpusText.associateWord(1, laurie)
+        val line = corpusText.mapToLines(repo).single()
+        assertEquals(laurie, line.corpusWords[1].word)
+    }
 }

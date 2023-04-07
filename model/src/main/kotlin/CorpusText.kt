@@ -48,10 +48,13 @@ class CorpusText(
     }
 
     fun associateWord(index: Int, word: Word) {
+        while (_words.size <= index) {
+            _words.add(null)
+        }
         _words[index] = word
     }
 
     fun removeWord(word: Word) {
-        _words.removeIf { it?.id == word.id }
+        _words.replaceAll { if (it?.id == word.id) null else it }
     }
 }
