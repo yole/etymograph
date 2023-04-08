@@ -3273,7 +3273,7 @@
         },
         {
             "id": 573,
-            "text": "auressë\t",
+            "text": "auressë",
             "lang": "Q"
         }
     ],
@@ -7934,6 +7934,14 @@
             "ruleIds": [
                 398
             ]
+        },
+        {
+            "from": 573,
+            "to": 348,
+            "type": ">",
+            "ruleIds": [
+                410
+            ]
         }
     ],
     "corpusTexts": [
@@ -8207,7 +8215,7 @@
         },
         {
             "id": 566,
-            "text": "man cenuva fána cirya?\nmétima hrestallo círa\ni fairi nécë\nringa súmaryassë\nve maiwi yaimië\nman tiruva fána cirya?\nwilwarin wilwa\nëar-celumessen\nrámainen elvië\t\nëar falastala\t\nwinga hlápula\t\nrámar sisílala\t\ncálë fifírula\t\nman hlaruva rávëa súrë?\t\nve tauri lillassië\t\nninqui carcar yarra\t\nisilmë ilcalassë\t\nisilmë pícalassë\t\nisilmë lantalassë\t\nve loicolícuma\t\nraumo nurrua\t\nundumë rúma\t\nman cenuva lumbor ahosta?\t\nmenel acúna\t\nruxal’ ambonnar\t\nëar amortala\t\nundumë hácala\t\nenwina lúmë\t\nelenillor pella talta-taltala\t\natalantëa mindonnar\t\nman tiruva rácina cirya?\t\nondolissë mornë\t\nnu fanyarë rúcina\t\nanar púrëa tihta\t\naxor ilcalannar\t\nmétim’ auressë\t\nman cenuva métim’ andúnë?\t",
+            "text": "man cenuva fána cirya?\nmétima hrestallo círa\ni fairi nécë\nringa súmaryassë\nve maiwi yaimië\nman tiruva fána cirya?\nwilwarin wilwa\nëar-celumessen\nrámainen elvië\nëar falastala\nwinga hlápula\nrámar sisílala\ncálë fifírula\nman hlaruva rávëa súrë?\nve tauri lillassië\nninqui carcar yarra\nisilmë ilcalassë\nisilmë pícalassë\nisilmë lantalassë\nve loicolícuma\nraumo nurrua\nundumë rúma\nman cenuva lumbor ahosta?\nmenel acúna\nruxal’ ambonnar\nëar amortala\nundumë hácala\nenwina lúmë\nelenillor pella talta-taltala\natalantëa mindonnar\nman tiruva rácina cirya?\nondolissë mornë\nnu fanyarë rúcina\nanar púrëa tihta\naxor ilcalannar\nmétim’ auressë\nman cenuva métim’ andúnë?",
             "title": "Markirya",
             "lang": "Q",
             "wordIds": [

@@ -26,7 +26,7 @@ class RuleBranch(val condition: RuleCondition, val instructions: List<RuleInstru
     }
 
     fun reverseApply(word: Word): String? {
-        var text: String? = word.text
+        var text: String? = word.language.normalizeWord(word.text)
         for (instruction in instructions.reversed()) {
             text = instruction.reverseApply(text!!)
             if (text == null) break
