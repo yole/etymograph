@@ -42,4 +42,9 @@ class SyllablesTest : QBaseTest() {
     fun oromardi() {
         assertSyllables(q.word("oromardi"), 0 to 1, 1 to 3, 3 to 6, 6 to 8)
     }
+
+    @Test
+    fun leadingConsonantCluster() {
+        assertSyllables(q.word("stop"), 0 to 4)
+    }
 }
