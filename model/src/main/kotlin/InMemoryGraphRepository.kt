@@ -124,6 +124,20 @@ open class InMemoryGraphRepository : GraphRepository() {
         return result
     }
 
+    override fun findParseCandidates(word: Word): List<ParseCandidate> {
+        return rules
+            .filter { it.fromLanguage == word.language && it.toLanguage == word.language }
+            .flatMap { rule ->
+                rule.reverseApply(word).flatMap { text ->
+                    val w = wordsByText(word.language, text)
+                    if (w.isNotEmpty())
+                        w.map { ParseCandidate(text, listOf(rule), it ) }
+                    else
+                        listOf(ParseCandidate(text, listOf(rule), null))
+                }
+            }
+    }
+
     override fun isHomonym(word: Word): Boolean {
         return wordsByText(word.language, word.text).size > 1
     }

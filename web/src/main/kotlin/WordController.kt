@@ -13,6 +13,13 @@ data class WordRefViewModel(
     val homonym: Boolean
 )
 
+data class ParseCandidateViewModel(
+    val text: String,
+    val categories: String,
+    val ruleNames: List<String>,
+    val wordId: Int?
+)
+
 fun Word.toRefViewModel(graph: GraphRepository) =
     WordRefViewModel(id, text, language.shortName, getOrComputeGloss(graph), graph.isHomonym(this))
 
@@ -39,6 +46,7 @@ class WordController(val graphService: GraphService) {
         val pos: String?,
         val source: String?,
         val notes: String?,
+        val parseCandidates: List<ParseCandidateViewModel>,
         val attestations: List<AttestationViewModel>,
         val linksFrom: List<LinkTypeViewModel>,
         val linksTo: List<LinkTypeViewModel>,
@@ -71,17 +79,22 @@ class WordController(val graphService: GraphService) {
 
         val stressData = calculateStress()
 
+        val computedGloss = getOrComputeGloss(graph)
         return WordViewModel(
             id,
             language.shortName,
             language.name,
             text,
-            getOrComputeGloss(graph) ?: "",
+            computedGloss ?: "",
             gloss == null,
             fullGloss,
             pos,
             source,
             notes,
+            if (computedGloss == null)
+                graph.findParseCandidates(this).map { it.toViewModel() }
+            else
+                emptyList(),
             attestations.map { attestation ->
                 AttestationViewModel(
                     attestation.corpusText.id,
@@ -218,3 +231,11 @@ class WordController(val graphService: GraphService) {
 class NoWordTextException : RuntimeException()
 
 fun String?.nullize() = this?.takeIf { it.trim().isNotEmpty() }
+
+fun ParseCandidate.toViewModel(): ParseCandidateViewModel =
+    ParseCandidateViewModel(
+        text,
+        rules.fold("") { t, rule -> t + rule.addedCategories },
+        rules.map { it.name },
+        word?.id
+    )

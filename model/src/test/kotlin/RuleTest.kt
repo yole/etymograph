@@ -323,6 +323,14 @@ class RuleTest : QBaseTest() {
         assertEquals("stress is on third to last syllable", condition.toEditableText())
     }
 
+    @Test
+    fun reverseApply() {
+        val rule = parseRule(q, q, "- add suffix 'llo'")
+        val candidates = rule.reverseApply(q.word("hrestallo"))
+        assertEquals(1, candidates.size)
+        assertEquals("hresta", candidates[0])
+    }
+
     /*
 
     @Test

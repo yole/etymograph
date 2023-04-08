@@ -2,7 +2,7 @@ import {useLoaderData, useNavigate, useRevalidator} from "react-router";
 import {Link} from "react-router-dom";
 import {useEffect, useState} from "react";
 import WordForm from "./WordForm";
-import {deleteLink, deleteWord, updateLink} from "../api";
+import {addLink, addWord, deleteLink, deleteWord, updateLink} from "../api";
 
 export async function loader({params}) {
     return fetch(`${process.env.REACT_APP_BACKEND_URL}word/${params.lang}/${params["*"]}`, { headers: { 'Accept': 'application/json'} })
@@ -143,6 +143,31 @@ function SingleWord(params) {
         }
     }
 
+    function linkToParseCandidate(pc, wordId) {
+        addLink(word.id, wordId, ">", pc.ruleNames.join(","))
+            .then((r) => {
+                if (r.status !== 200) {
+                    setErrorText(r.message)
+                }
+                revalidator.revalidate()
+            })
+    }
+
+    function acceptParseCandidate(pc) {
+        if (pc.wordId === null) {
+            addWord(word.language, pc.text, "", "", null, null)
+                .then(r => {
+                    if (r.status === 200)
+                        r.json().then(r => navigate(`/word/${word.language}/${pc.text}`))
+                    else
+                        setErrorText(r.message)
+                })
+        }
+        else {
+            linkToParseCandidate(pc, pc.wordId)
+        }
+    }
+
     return <>
         <h2><small>
             <Link to={`/`}>Etymograph</Link> >{' '}
@@ -154,6 +179,14 @@ function SingleWord(params) {
             <p>{word.fullGloss !== null && word.fullGloss !== "" ? word.fullGloss : word.gloss}</p>
             {word.notes && <p>{word.notes}</p>}
             {word.source != null && <div className="source">Source: {word.source.startsWith("http") ? <a href={word.source}>{word.source}</a> : word.source}</div>}
+            {word.parseCandidates.map(pc => <>
+                <p>
+                    {pc.wordId !== null && <Link to={`/word/${word.language}/${pc.text}/${pc.wordId}`}>{pc.text}</Link>}
+                    {pc.wordId === null && <i>{pc.text}</i>}
+                    {pc.categories}?{' '}
+                    <button onClick={(e) => acceptParseCandidate(pc)}>Accept</button>
+                </p>
+            </>)}
         </>}
         {editMode && <WordForm language={word.language} updateId={word.id}
                                initialGloss={word.glossComputed ? undefined : word.gloss}

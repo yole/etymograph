@@ -26,6 +26,13 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
         else -> throw IllegalStateException("Can't apply phoneme instruction to full word")
     }
 
+    open fun reverseApply(text: String): String? {
+        return when (type) {
+            InstructionType.AddSuffix -> if (text.endsWith(arg)) text.removeSuffix(arg) else null
+            else -> null
+        }
+    }
+
     fun apply(phoneme: PhonemeIterator) {
         when (type) {
             InstructionType.ChangeSound -> phoneme.replace(arg)

@@ -16,11 +16,22 @@ class RuleParseContext(
     val ruleRefFactory: (String) -> RuleRef
 )
 
+data class ParseCandidate(val text: String, val rules: List<Rule>, val word: Word?)
+
 class RuleBranch(val condition: RuleCondition, val instructions: List<RuleInstruction>) {
     fun matches(word: Word) = condition.matches(word)
 
     fun apply(word: Word, graph: GraphRepository): Word {
         return instructions.apply(word, graph)
+    }
+
+    fun reverseApply(word: Word): String? {
+        var text: String? = word.text
+        for (instruction in instructions.reversed()) {
+            text = instruction.reverseApply(text!!)
+            if (text == null) break
+        }
+        return text
     }
 
     fun toEditableText(): String {
@@ -88,6 +99,13 @@ class Rule(
             }
         }
         return word
+    }
+
+    fun reverseApply(word: Word): List<String> {
+        if (isPhonemic()) {
+            return emptyList()
+        }
+        return logic.branches.mapNotNull { it.reverseApply(word) }
     }
 
     fun applyToPhoneme(phonemes: PhonemeIterator) {
