@@ -91,7 +91,7 @@ class WordController(val graphService: GraphService) {
             pos,
             source,
             notes,
-            if (computedGloss == null)
+            if (computedGloss == null && linksFrom[Link.Derived].isNullOrEmpty())
                 graph.findParseCandidates(this).map { it.toViewModel() }
             else
                 emptyList(),

@@ -3275,6 +3275,19 @@
             "id": 573,
             "text": "auressë",
             "lang": "Q"
+        },
+        {
+            "id": 574,
+            "text": "fairi",
+            "lang": "Q"
+        },
+        {
+            "id": 575,
+            "text": "faire",
+            "lang": "Q",
+            "gloss": "phantom",
+            "pos": "N",
+            "source": "MC:221"
         }
     ],
     "rules": [
@@ -7942,6 +7955,14 @@
             "ruleIds": [
                 410
             ]
+        },
+        {
+            "from": 574,
+            "to": 575,
+            "type": ">",
+            "ruleIds": [
+                396
+            ]
         }
     ],
     "corpusTexts": [
@@ -8227,7 +8248,7 @@
                 571,
                 null,
                 null,
-                null,
+                574,
                 null,
                 null,
                 null,
