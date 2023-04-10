@@ -158,7 +158,9 @@ function SingleWord(params) {
             addWord(word.language, pc.text, "", "", null, null)
                 .then(r => {
                     if (r.status === 200)
-                        r.json().then(r => navigate(`/word/${word.language}/${pc.text}`))
+                        r.json().then(r =>
+                            linkToParseCandidate(pc, r.id)
+                        )
                     else
                         setErrorText(r.message)
                 })
