@@ -28,7 +28,7 @@ class RuleBranch(val condition: RuleCondition, val instructions: List<RuleInstru
     fun reverseApply(word: Word): String? {
         var text: String? = word.language.normalizeWord(word.text)
         for (instruction in instructions.reversed()) {
-            text = instruction.reverseApply(text!!)
+            text = instruction.reverseApply(text!!, word.language)
             if (text == null) break
         }
         if (text != null && text.endsWith("*")) {
@@ -118,9 +118,6 @@ class Rule(
     }
 
     fun reverseApply(word: Word): List<String> {
-        if (isPhonemic()) {
-            return emptyList()
-        }
         return logic.branches.mapNotNull { it.reverseApply(word) }
     }
 
@@ -133,6 +130,28 @@ class Rule(
                 break
             }
         }
+    }
+
+    fun reverseApplyToPhoneme(phonemes: PhonemeIterator): Boolean {
+        for (branch in logic.branches) {
+            val instruction = branch.instructions.singleOrNull()
+            if (instruction?.type == InstructionType.ChangeSound) {
+                if (instruction.arg == phonemes.current) {
+                    val condition = branch.condition as? LeafRuleCondition ?: return false
+                    if (condition.type == ConditionType.PhonemeMatches && condition.parameter != null) {
+                        phonemes.replace(condition.parameter)
+                        break
+                    }
+                    else {
+                        return false
+                    }
+                }
+            }
+            else {
+                return false
+            }
+        }
+        return true
     }
 
     private fun deriveWord(word: Word, text: String, stressIndex: Int): Word {

@@ -1,18 +1,17 @@
 package ru.yole.etymograph
 
-import kotlin.math.exp
-
 enum class ConditionType(
     val condName: String,
+    val phonemic: Boolean = false,
     val takesArgument: Boolean = true,
     val takesPhonemeClass: Boolean = true
 ) {
     EndsWith(LeafRuleCondition.wordEndsWith),
     NumberOfSyllables(LeafRuleCondition.numberOfSyllables, takesPhonemeClass = false),
-    PhonemeMatches(LeafRuleCondition.soundIs),
-    PrevPhonemeMatches(LeafRuleCondition.prevSoundIs),
+    PhonemeMatches(LeafRuleCondition.soundIs, phonemic = true),
+    PrevPhonemeMatches(LeafRuleCondition.prevSoundIs, phonemic = true),
     StressIs(LeafRuleCondition.stressIs, takesPhonemeClass = false),
-    BeginningOfWord(LeafRuleCondition.beginningOfWord, false)
+    BeginningOfWord(LeafRuleCondition.beginningOfWord, phonemic = true, takesArgument = false)
 }
 
 sealed class RuleCondition {
@@ -53,9 +52,7 @@ class LeafRuleCondition(
     val parameter: String?,
     val negated: Boolean
 ) : RuleCondition() {
-    override fun isPhonemic(): Boolean {
-        return type == ConditionType.PhonemeMatches
-    }
+    override fun isPhonemic(): Boolean = type.phonemic
 
     private fun Boolean.negateIfNeeded() = if (negated) !this else this
 

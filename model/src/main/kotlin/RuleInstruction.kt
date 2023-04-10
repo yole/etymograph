@@ -26,7 +26,7 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
         else -> throw IllegalStateException("Can't apply phoneme instruction to full word")
     }
 
-    open fun reverseApply(text: String): String? {
+    open fun reverseApply(text: String, language: Language): String? {
         return when (type) {
             InstructionType.AddSuffix -> if (text.endsWith(arg)) text.removeSuffix(arg) else null
             InstructionType.RemoveLastCharacter -> "$text*"
@@ -106,6 +106,15 @@ class ApplySoundRuleInstruction(language: Language, val ruleRef: RuleRef, arg: S
             return word.derive(phonemes.result())
         }
         return word
+    }
+
+    override fun reverseApply(text: String, language: Language): String? {
+        val phonemes = PhonemeIterator(text, language)
+        if (phonemes.seek(seekTarget)) {
+            if (!ruleRef.resolve().reverseApplyToPhoneme(phonemes)) return null
+            return phonemes.result()
+        }
+        return text
     }
 
     override fun toEditableText(): String {

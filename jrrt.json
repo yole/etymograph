@@ -3344,6 +3344,26 @@
             "text": "yaimië",
             "lang": "Q",
             "source": "MC:221"
+        },
+        {
+            "id": 585,
+            "text": "yaimëa",
+            "lang": "Q",
+            "pos": "ADJ"
+        },
+        {
+            "id": 586,
+            "text": "yaime",
+            "lang": "Q",
+            "gloss": "wailing",
+            "pos": "N",
+            "source": "MC:223"
+        },
+        {
+            "id": 587,
+            "text": "círa",
+            "lang": "Q",
+            "source": "MC:221"
         }
     ],
     "rules": [
@@ -8044,6 +8064,22 @@
             "ruleIds": [
                 396
             ]
+        },
+        {
+            "from": 584,
+            "to": 585,
+            "type": ">",
+            "ruleIds": [
+                407
+            ]
+        },
+        {
+            "from": 585,
+            "to": 586,
+            "type": ">",
+            "ruleIds": [
+                422
+            ]
         }
     ],
     "corpusTexts": [
@@ -8327,7 +8363,7 @@
                 387,
                 570,
                 571,
-                null,
+                587,
                 null,
                 574,
                 576,
@@ -8339,7 +8375,7 @@
                 null,
                 null,
                 null,
-                null,
+                387,
                 null,
                 null,
                 null,
