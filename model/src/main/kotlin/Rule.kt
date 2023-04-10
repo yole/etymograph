@@ -36,7 +36,13 @@ class RuleBranch(val condition: RuleCondition, val instructions: List<RuleInstru
             if (leafCondition.type != ConditionType.EndsWith || leafCondition.parameter == null) {
                 return null
             }
-            text = text.removeSuffix("*") + leafCondition.parameter.last()
+            val stars = text.takeLastWhile { it == '*' }
+            if (leafCondition.parameter.length >= stars.length) {
+                text = text.removeSuffix(stars) + leafCondition.parameter.substring(leafCondition.parameter.length - stars.length)
+            }
+            else {
+                text = null
+            }
         }
         if (text != null && condition.matches(word.derive(text))) {
             return text

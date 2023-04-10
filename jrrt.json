@@ -3306,6 +3306,43 @@
             "id": 578,
             "text": "ringa",
             "lang": "Q",
+            "gloss": "cold",
+            "pos": "ADJ",
+            "source": "MC:221"
+        },
+        {
+            "id": 580,
+            "text": "súmaryassë",
+            "lang": "Q",
+            "source": "MC:221"
+        },
+        {
+            "id": 581,
+            "text": "súma",
+            "lang": "Q",
+            "gloss": "bosom",
+            "fullGloss": "hollow cavity, bosom",
+            "pos": "N",
+            "source": "MC:223"
+        },
+        {
+            "id": 582,
+            "text": "maiwi",
+            "lang": "Q",
+            "source": "MC:221"
+        },
+        {
+            "id": 583,
+            "text": "maiwe",
+            "lang": "Q",
+            "gloss": "gull",
+            "pos": "N",
+            "source": "MC:222"
+        },
+        {
+            "id": 584,
+            "text": "yaimië",
+            "lang": "Q",
             "source": "MC:221"
         }
     ],
@@ -7990,6 +8027,23 @@
             "ruleIds": [
                 407
             ]
+        },
+        {
+            "from": 580,
+            "to": 581,
+            "type": ">",
+            "ruleIds": [
+                400,
+                410
+            ]
+        },
+        {
+            "from": 582,
+            "to": 583,
+            "type": ">",
+            "ruleIds": [
+                396
+            ]
         }
     ],
     "corpusTexts": [
@@ -8278,10 +8332,10 @@
                 574,
                 576,
                 578,
+                580,
                 null,
-                null,
-                null,
-                null,
+                582,
+                584,
                 null,
                 null,
                 null,
