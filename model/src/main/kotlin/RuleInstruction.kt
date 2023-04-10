@@ -29,6 +29,7 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
     open fun reverseApply(text: String): String? {
         return when (type) {
             InstructionType.AddSuffix -> if (text.endsWith(arg)) text.removeSuffix(arg) else null
+            InstructionType.RemoveLastCharacter -> "$text*"
             else -> null
         }
     }

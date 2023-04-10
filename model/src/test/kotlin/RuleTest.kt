@@ -339,6 +339,20 @@ class RuleTest : QBaseTest() {
         assertEquals("aure", candidates[0])
     }
 
+    @Test
+    fun reverseApplyMatch() {
+        val rule = parseRule(q, q, "word ends with a consonant:\n- add suffix 'i'")
+        val candidate = rule.reverseApply(q.word("nai"))
+        assertEquals(0, candidate.size)
+    }
+
+    @Test
+    fun reverseApplyLastCharacter() {
+        val rule = parseRule(q, q, "word ends with 'e':\n- remove last character\n- add suffix 'i'")
+        val candidate = rule.reverseApply(q.word("fairi"))
+        assertEquals("faire", candidate.single())
+    }
+
     /*
 
     @Test

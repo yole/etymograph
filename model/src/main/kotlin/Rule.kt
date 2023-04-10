@@ -31,7 +31,17 @@ class RuleBranch(val condition: RuleCondition, val instructions: List<RuleInstru
             text = instruction.reverseApply(text!!)
             if (text == null) break
         }
-        return text
+        if (text != null && text.endsWith("*")) {
+            val leafCondition = condition as? LeafRuleCondition ?: return null
+            if (leafCondition.type != ConditionType.EndsWith || leafCondition.parameter == null) {
+                return null
+            }
+            text = text.removeSuffix("*") + leafCondition.parameter.last()
+        }
+        if (text != null && condition.matches(word.derive(text))) {
+            return text
+        }
+        return null
     }
 
     fun toEditableText(): String {
