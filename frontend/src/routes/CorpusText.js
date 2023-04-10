@@ -86,6 +86,8 @@ export default function CorpusText() {
         {corpusText.source != null &&
             <div className="source">Source: {corpusText.source.startsWith("http") ? <a href={corpusText.source}>{corpusText.source}</a> : corpusText.source}</div>
         }
-        {wordFormVisible && <WordForm submitted={submitted} language={corpusText.language} predefWord={predefWord}/>}
+        {wordFormVisible &&
+            <WordForm submitted={submitted} language={corpusText.language} predefWord={predefWord} initialSource={corpusText.source}/>
+        }
     </>
 }

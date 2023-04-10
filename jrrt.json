@@ -3288,6 +3288,25 @@
             "gloss": "phantom",
             "pos": "N",
             "source": "MC:221"
+        },
+        {
+            "id": 576,
+            "text": "nécë",
+            "lang": "Q"
+        },
+        {
+            "id": 577,
+            "text": "néka",
+            "lang": "Q",
+            "gloss": "white",
+            "pos": "ADJ",
+            "source": "MC:221"
+        },
+        {
+            "id": 578,
+            "text": "ringa",
+            "lang": "Q",
+            "source": "MC:221"
         }
     ],
     "rules": [
@@ -7963,6 +7982,14 @@
             "ruleIds": [
                 396
             ]
+        },
+        {
+            "from": 576,
+            "to": 577,
+            "type": ">",
+            "ruleIds": [
+                407
+            ]
         }
     ],
     "corpusTexts": [
@@ -8249,8 +8276,8 @@
                 null,
                 null,
                 574,
-                null,
-                null,
+                576,
+                578,
                 null,
                 null,
                 null,
