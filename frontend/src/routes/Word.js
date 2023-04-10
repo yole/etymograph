@@ -185,6 +185,7 @@ function SingleWord(params) {
                 <p>
                     {pc.wordId !== null && <Link to={`/word/${word.language}/${pc.text}/${pc.wordId}`}>{pc.text}</Link>}
                     {pc.wordId === null && <i>{pc.text}</i>}
+                    {pc.categories.length === 0 && ` (${pc.ruleNames.join(",")})`}
                     {pc.categories}?{' '}
                     <button onClick={(e) => acceptParseCandidate(pc)}>Accept</button>
                 </p>
