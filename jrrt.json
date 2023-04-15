@@ -3418,6 +3418,15 @@
             "gloss": "seeming",
             "pos": "ADJ",
             "source": "PE17:189"
+        },
+        {
+            "id": 596,
+            "text": "wilwa",
+            "lang": "Q",
+            "gloss": "vague",
+            "fullGloss": "fluttering to and fro, vague",
+            "pos": "ADJ",
+            "source": "MC:222"
         }
     ],
     "rules": [
@@ -8483,7 +8492,7 @@
                 null,
                 387,
                 null,
-                null,
+                596,
                 588,
                 592,
                 593,

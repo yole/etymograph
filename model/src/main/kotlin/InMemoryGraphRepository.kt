@@ -128,7 +128,7 @@ open class InMemoryGraphRepository : GraphRepository() {
         return rules
             .filter { it.fromLanguage == word.language && it.toLanguage == word.language }
             .flatMap { rule ->
-                rule.reverseApply(word).flatMap { text ->
+                rule.reverseApply(word).filter { isAcceptableWord(word.language, it) }.flatMap { text ->
                     val w = wordsByText(word.language, text)
                     if (w.isNotEmpty())
                         w.map { ParseCandidate(text, listOf(rule), it ) }
@@ -136,6 +136,21 @@ open class InMemoryGraphRepository : GraphRepository() {
                         listOf(ParseCandidate(text, listOf(rule), null))
                 }
             }
+    }
+
+    fun isAcceptableWord(language: Language, wordText: String): Boolean {
+        val word = Word(-1, wordText, language)
+        val vowels = language.phonemeClassByName(PhonemeClass.vowelClassName)
+        if (language.syllableStructures.isNotEmpty() && vowels != null) {
+            val phonemes = PhonemeIterator(word)
+            val syllables = breakIntoSyllables(word)
+            for (syllable in syllables) {
+                if (analyzeSyllableStructure(vowels, phonemes, syllable) !in language.syllableStructures) {
+                    return false
+                }
+            }
+        }
+        return true
     }
 
     override fun isHomonym(word: Word): Boolean {
