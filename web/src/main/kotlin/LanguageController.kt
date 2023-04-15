@@ -18,6 +18,7 @@ class LanguageController(val graphService: GraphService) {
     data class LanguageViewModel(
         val name: String,
         val diphthongs: List<String>,
+        val digraphs: List<String>,
         val phonemeClasses: List<PhonemeClassViewModel>,
         val letterNormalization: String,
         val stressRuleName: String?
@@ -30,6 +31,7 @@ class LanguageController(val graphService: GraphService) {
         return LanguageViewModel(
             language.name,
             language.diphthongs,
+            language.digraphs,
             language.phonemeClasses.map { PhonemeClassViewModel(it.name, it.matchingPhonemes) },
             language.letterNormalization.entries.joinToString(", ") { (from, to) -> "$from=$to" },
             stressRule?.name
@@ -40,6 +42,7 @@ class LanguageController(val graphService: GraphService) {
         val letterNormalization: String? = null,
         val phonemeClasses: String? = null,
         val diphthongs: String? = null,
+        val digraphs: String? = null,
         val stressRuleName: String? = null
     )
 
@@ -49,6 +52,7 @@ class LanguageController(val graphService: GraphService) {
         language.letterNormalization = params.letterNormalization?.let { parseLetterNormalization(it) } ?: emptyMap()
         language.phonemeClasses = params.phonemeClasses?.let { parsePhonemeClasses(it) } ?: mutableListOf()
         language.diphthongs = params.diphthongs?.let { it.split(",").map { d -> d.trim() } } ?: emptyList()
+        language.digraphs = params.digraphs?.let { it.split(",").map { d -> d.trim() } } ?: emptyList()
 
         val stressRule = params.stressRuleName?.let { graphService.resolveRule(it) }
         language.stressRule = stressRule?.let { RuleRef.to(it) }

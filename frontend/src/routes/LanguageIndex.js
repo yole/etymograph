@@ -12,6 +12,7 @@ export default function LanguageIndex() {
     const params = useParams()
     const [editMode, setEditMode] = useState(false)
     const [letterNorm, setLetterNorm] = useState(lang.letterNormalization)
+    const [digraphs, setDigraphs] = useState(lang.digraphs.join(", "))
     const [diphthongs, setDiphthongs] = useState(lang.diphthongs.join(", "))
     const [phonemeClasses, setPhonemeClasses] = useState(
         lang.phonemeClasses.map(pc => `${pc.name}: ${pc.matchingPhonemes.join(",")}`).join("\n")
@@ -21,7 +22,7 @@ export default function LanguageIndex() {
     useEffect(() => { document.title = "Etymograph : " + lang.name })
 
     function saveLanguage() {
-        updateLanguage(params.langId, letterNorm, phonemeClasses, diphthongs, stressRule)
+        updateLanguage(params.langId, letterNorm, digraphs, phonemeClasses, diphthongs, stressRule)
             .then(() => revalidator.revalidate())
         setEditMode(false)
     }
@@ -29,11 +30,18 @@ export default function LanguageIndex() {
     return <>
         <h2><small><Link to={`/`}>Etymograph</Link> > </small>{lang.name}</h2>
         <h3>Orthography</h3>
-        {!editMode && lang.letterNormalization != null && <p>Letter normalization: {lang.letterNormalization}</p>}
+        {!editMode && <>
+            {lang.letterNormalization != null && <p>Letter normalization: {lang.letterNormalization}</p>}
+            {lang.digraphs.length > 0 && <p>Digraphs: {lang.digraphs.join(", ")}</p>}
+        </>}
         {editMode && <table><tbody>
         <tr>
             <td><label>Letter normalization:</label></td>
             <td><input type="text" value={letterNorm} onChange={(e) => setLetterNorm(e.target.value)}/></td>
+        </tr>
+        <tr>
+            <td><label>Digraphs:</label></td>
+            <td><input type="text" value={digraphs} onChange={(e) => setDigraphs(e.target.value)}/></td>
         </tr>
         </tbody></table>}
 
