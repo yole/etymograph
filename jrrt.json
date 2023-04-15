@@ -3427,6 +3427,12 @@
             "fullGloss": "fluttering to and fro, vague",
             "pos": "ADJ",
             "source": "MC:222"
+        },
+        {
+            "id": 598,
+            "text": "falastala",
+            "lang": "Q",
+            "source": "MC:221"
         }
     ],
     "rules": [
@@ -6090,6 +6096,48 @@
                     ]
                 }
             ]
+        },
+        {
+            "id": 597,
+            "name": "q-part",
+            "fromLang": "Q",
+            "toLang": "Q",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "args": [
+                                "ala"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "cls": "consonant"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "args": [
+                                "la"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".PART",
+            "replacedCategories": "",
+            "source": "MC:222",
+            "notes": "Rule is evidenced only in Markirya poem.",
+            "preInstructions": [
+            ]
         }
     ],
     "links": [
@@ -8497,7 +8545,7 @@
                 592,
                 593,
                 null,
-                null,
+                598,
                 null,
                 null,
                 null,

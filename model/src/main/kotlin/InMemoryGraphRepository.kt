@@ -128,13 +128,15 @@ open class InMemoryGraphRepository : GraphRepository() {
         return rules
             .filter { it.fromLanguage == word.language && it.toLanguage == word.language }
             .flatMap { rule ->
-                rule.reverseApply(word).filter { isAcceptableWord(word.language, it) }.flatMap { text ->
-                    val w = wordsByText(word.language, text)
-                    if (w.isNotEmpty())
-                        w.map { ParseCandidate(text, listOf(rule), it ) }
-                    else
-                        listOf(ParseCandidate(text, listOf(rule), null))
-                }
+                rule.reverseApply(word)
+                    .filter { it != word.text && isAcceptableWord(word.language, it) }
+                    .flatMap { text ->
+                        val w = wordsByText(word.language, text)
+                        if (w.isNotEmpty())
+                            w.map { ParseCandidate(text, listOf(rule), it ) }
+                        else
+                            listOf(ParseCandidate(text, listOf(rule), null))
+                    }
             }
     }
 
