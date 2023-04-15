@@ -85,6 +85,16 @@
         {
             "lang": "Q",
             "digraphs": [
+                "ty",
+                "dy",
+                "hy",
+                "ny",
+                "hl",
+                "hr",
+                "qu",
+                "gw",
+                "hw",
+                "nw"
             ]
         },
         {
@@ -3364,6 +3374,50 @@
             "text": "círa",
             "lang": "Q",
             "source": "MC:221"
+        },
+        {
+            "id": 588,
+            "text": "ëar-celumessen",
+            "lang": "Q",
+            "source": "MC:221"
+        },
+        {
+            "id": 589,
+            "text": "celumessen",
+            "lang": "Q"
+        },
+        {
+            "id": 591,
+            "text": "kelume",
+            "lang": "Q",
+            "gloss": "stream",
+            "pos": "N"
+        },
+        {
+            "id": 592,
+            "text": "rámainen",
+            "lang": "Q",
+            "source": "MC:221"
+        },
+        {
+            "id": 593,
+            "text": "elvië",
+            "lang": "Q",
+            "source": "MC:221"
+        },
+        {
+            "id": 594,
+            "text": "elvëa",
+            "lang": "Q",
+            "pos": "ADJ"
+        },
+        {
+            "id": 595,
+            "text": "vea",
+            "lang": "Q",
+            "gloss": "seeming",
+            "pos": "ADJ",
+            "source": "PE17:189"
         }
     ],
     "rules": [
@@ -8080,6 +8134,58 @@
             "ruleIds": [
                 422
             ]
+        },
+        {
+            "from": 588,
+            "to": 539,
+            "type": "+"
+        },
+        {
+            "from": 588,
+            "to": 589,
+            "type": "+"
+        },
+        {
+            "from": 589,
+            "to": 591,
+            "type": ">",
+            "ruleIds": [
+                409
+            ]
+        },
+        {
+            "from": 592,
+            "to": 17,
+            "type": ">",
+            "ruleIds": [
+                521
+            ]
+        },
+        {
+            "from": 593,
+            "to": 594,
+            "type": ">",
+            "ruleIds": [
+                407
+            ]
+        },
+        {
+            "from": 594,
+            "to": 235,
+            "type": "+"
+        },
+        {
+            "from": 594,
+            "to": 595,
+            "type": "+"
+        },
+        {
+            "from": 595,
+            "to": 15,
+            "type": ">",
+            "ruleIds": [
+                422
+            ]
         }
     ],
     "corpusTexts": [
@@ -8378,9 +8484,9 @@
                 387,
                 null,
                 null,
-                null,
-                null,
-                null,
+                588,
+                592,
+                593,
                 null,
                 null,
                 null,
