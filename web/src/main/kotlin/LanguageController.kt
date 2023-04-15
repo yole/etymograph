@@ -21,7 +21,8 @@ class LanguageController(val graphService: GraphService) {
         val digraphs: List<String>,
         val phonemeClasses: List<PhonemeClassViewModel>,
         val letterNormalization: String,
-        val stressRuleName: String?
+        val stressRuleName: String?,
+        val syllableStructures: List<String>
     )
 
     @GetMapping("/language/{lang}")
@@ -34,7 +35,8 @@ class LanguageController(val graphService: GraphService) {
             language.digraphs,
             language.phonemeClasses.map { PhonemeClassViewModel(it.name, it.matchingPhonemes) },
             language.letterNormalization.entries.joinToString(", ") { (from, to) -> "$from=$to" },
-            stressRule?.name
+            stressRule?.name,
+            language.syllableStructures
         )
     }
 
@@ -43,16 +45,21 @@ class LanguageController(val graphService: GraphService) {
         val phonemeClasses: String? = null,
         val diphthongs: String? = null,
         val digraphs: String? = null,
-        val stressRuleName: String? = null
+        val stressRuleName: String? = null,
+        val syllableStructures: String? = null
     )
 
     @PostMapping("/language/{lang}", consumes = ["application/json"])
     fun updateLanguage(@PathVariable lang: String, @RequestBody params: UpdateLanguageParameters) {
+        fun parseList(s: String?): List<String> =
+            s?.let { it.split(",").map { d -> d.trim() } } ?: emptyList()
+
         val language = graphService.resolveLanguage(lang)
         language.letterNormalization = params.letterNormalization?.let { parseLetterNormalization(it) } ?: emptyMap()
         language.phonemeClasses = params.phonemeClasses?.let { parsePhonemeClasses(it) } ?: mutableListOf()
-        language.diphthongs = params.diphthongs?.let { it.split(",").map { d -> d.trim() } } ?: emptyList()
-        language.digraphs = params.digraphs?.let { it.split(",").map { d -> d.trim() } } ?: emptyList()
+        language.diphthongs = parseList(params.diphthongs)
+        language.digraphs = parseList(params.digraphs)
+        language.syllableStructures = parseList(params.syllableStructures)
 
         val stressRule = params.stressRuleName?.let { graphService.resolveRule(it) }
         language.stressRule = stressRule?.let { RuleRef.to(it) }

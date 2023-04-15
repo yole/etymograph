@@ -14,6 +14,7 @@ export default function LanguageIndex() {
     const [letterNorm, setLetterNorm] = useState(lang.letterNormalization)
     const [digraphs, setDigraphs] = useState(lang.digraphs.join(", "))
     const [diphthongs, setDiphthongs] = useState(lang.diphthongs.join(", "))
+    const [syllableStructures, setSyllableStructures] = useState(lang.syllableStructures.join(", "))
     const [phonemeClasses, setPhonemeClasses] = useState(
         lang.phonemeClasses.map(pc => `${pc.name}: ${pc.matchingPhonemes.join(",")}`).join("\n")
     )
@@ -22,7 +23,7 @@ export default function LanguageIndex() {
     useEffect(() => { document.title = "Etymograph : " + lang.name })
 
     function saveLanguage() {
-        updateLanguage(params.langId, letterNorm, digraphs, phonemeClasses, diphthongs, stressRule)
+        updateLanguage(params.langId, letterNorm, digraphs, phonemeClasses, diphthongs, syllableStructures, stressRule)
             .then(() => revalidator.revalidate())
         setEditMode(false)
     }
@@ -52,6 +53,7 @@ export default function LanguageIndex() {
         {lang.phonemeClasses.map(pc => <li>{pc.name}: {pc.matchingPhonemes.join(", ")}</li>)}
         </ul>
         {lang.diphthongs.length > 0 && <p>Diphthongs: {lang.diphthongs.join(", ")}</p>}
+        {lang.syllableStructures.length > 0 && <p>Syllable structures: {lang.syllableStructures.join(", ")}</p>}
         {lang.stressRuleName != null && <p>Stress rule: {lang.stressRuleName}</p>}
         </>}
         {editMode && <>
@@ -60,6 +62,10 @@ export default function LanguageIndex() {
             <tr>
                 <td><label>Diphthongs:</label></td>
                 <td><input type="text" value={diphthongs} onChange={(e) => setDiphthongs(e.target.value)}/></td>
+            </tr>
+            <tr>
+                <td><label>Syllable structures:</label></td>
+                <td><input type="text" value={syllableStructures} onChange={(e) => setSyllableStructures(e.target.value)}/></td>
             </tr>
             <tr>
                 <td><label>Stress rule:</label></td>
