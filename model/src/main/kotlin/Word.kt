@@ -2,7 +2,7 @@ package ru.yole.etymograph
 
 class Word(
     id: Int,
-    val text: String,
+    var text: String,
     val language: Language,
     var gloss: String? = null,
     var fullGloss: String? = null,

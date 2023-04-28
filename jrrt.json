@@ -3433,6 +3433,15 @@
             "text": "falastala",
             "lang": "Q",
             "source": "MC:221"
+        },
+        {
+            "id": 599,
+            "text": "falasta-",
+            "lang": "Q",
+            "gloss": "foam",
+            "fullGloss": "to foam, surge",
+            "pos": "V",
+            "source": "MC:223"
         }
     ],
     "rules": [
@@ -8243,6 +8252,19 @@
             "ruleIds": [
                 422
             ]
+        },
+        {
+            "from": 598,
+            "to": 599,
+            "type": ">",
+            "ruleIds": [
+                597
+            ]
+        },
+        {
+            "from": 599,
+            "to": 114,
+            "type": ">"
         }
     ],
     "corpusTexts": [

@@ -166,6 +166,10 @@ class WordController(val graphService: GraphService) {
     fun updateWord(@PathVariable id: Int, @RequestBody params: AddWordParameters): WordViewModel {
         val graph = graphService.graph
         val word = graph.wordById(id) ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST, "No word with ID $id")
+        val text = params.text
+        if (text != null && text != word.text) {
+            graph.updateWordText(word, text)
+        }
         word.gloss = params.gloss.nullize()
         word.fullGloss = params.fullGloss.nullize()
         word.pos = params.pos.nullize()

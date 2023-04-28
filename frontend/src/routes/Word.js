@@ -131,15 +131,20 @@ function SingleWord(params) {
         }
     }
 
-    function editSubmitted() {
+    function editSubmitted(r) {
         setEditMode(false)
-        revalidator.revalidate()
+        if (r.text !== word.text) {
+            navigate(`/word/${word.language}/${r.text}`)
+        }
+        else {
+            revalidator.revalidate()
+        }
     }
 
     function deleteWordClicked() {
         if (window.confirm("Delete this word?")) {
             deleteWord(word.id)
-                .then(() => navigate("/dictionary/" +  word.language))
+                .then(() => navigate("/dictionary/" + word.language))
         }
     }
 
@@ -192,6 +197,7 @@ function SingleWord(params) {
             </>)}
         </>}
         {editMode && <WordForm language={word.language} updateId={word.id}
+                               initialWord={word.text}
                                initialGloss={word.glossComputed ? undefined : word.gloss}
                                initialFullGloss={word.fullGloss}
                                initialPos={word.pos}

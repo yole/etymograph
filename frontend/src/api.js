@@ -12,8 +12,8 @@ export function addWord(lang, text, gloss, fullGloss, pos, source, notes) {
     return postToBackend('word/' + lang, {text: text, gloss: gloss, fullGloss: fullGloss, pos: pos, source: source, notes: notes})
 }
 
-export function updateWord(id, gloss, fullGloss, pos, source, notes) {
-    return postToBackend(`word/${id}/update`, {gloss: gloss, fullGloss: fullGloss, pos: pos, source: source, notes})
+export function updateWord(id, text, gloss, fullGloss, pos, source, notes) {
+    return postToBackend(`word/${id}/update`, {text: text, gloss: gloss, fullGloss: fullGloss, pos: pos, source: source, notes})
 }
 
 export function deleteWord(id) {

@@ -2,7 +2,9 @@ import {useState} from "react";
 import {addLink, addWord, updateWord} from "../api";
 
 export default function WordForm(props) {
-    const [newWordText, setNewWordText] = useState(props.predefWord !== undefined ? props.predefWord : "")
+    const [newWordText, setNewWordText] = useState(
+        props.predefWord !== undefined ? props.predefWord : (props.initialWord !== undefined ? props.initialWord : "")
+    )
     const [newWordGloss, setNewWordGloss] = useState(props.initialGloss !== undefined ? props.initialGloss : "")
     const [newWordFullGloss, setNewWordFullGloss] = useState(props.initialFullGloss !== undefined ? props.initialFullGloss : "")
     const [newWordPos, setNewWordPos] = useState(props.initialPos !== undefined ? props.initialPos : "")
@@ -14,7 +16,7 @@ export default function WordForm(props) {
 
     function handleFormSubmit(e) {
         if (props.updateId !== undefined) {
-            updateWord(props.updateId, newWordGloss, newWordFullGloss, newWordPos, newWordSource, newWordNotes)
+            updateWord(props.updateId, newWordText, newWordGloss, newWordFullGloss, newWordPos, newWordSource, newWordNotes)
                 .then(r => r.json())
                 .then(r => props.submitted(r))
         }
@@ -65,11 +67,11 @@ export default function WordForm(props) {
                 <td><input type="text" value={newWordLanguage} onChange={e => setNewWordLanguage(e.target.value)}
                            id="word-input"/></td>
             </tr>}
-            {props.updateId === undefined && <tr>
+            <tr>
                 <td><label htmlFor="word-text">Text:</label></td>
                 <td><input type="text" value={newWordText} onChange={e => setNewWordText(e.target.value)}
                            id="word-text" readOnly={props.predefWord !== undefined}/></td>
-            </tr>}
+            </tr>
             <tr>
                 <td><label htmlFor="word-pos">POS:</label></td>
                 <td><input type="text" value={newWordPos} onChange={e => setNewWordPos(e.target.value)}

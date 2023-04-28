@@ -183,6 +183,12 @@ open class InMemoryGraphRepository : GraphRepository() {
         return addWord(language, text, gloss, fullGloss, pos, source, notes)
     }
 
+    override fun updateWordText(word: Word, text: String) {
+        mapOfWordsByText(word.language, word.text).remove(word)
+        word.text = text
+        mapOfWordsByText(word.language, text).add(word)
+    }
+
     protected fun addWord(
         language: Language,
         text: String,
