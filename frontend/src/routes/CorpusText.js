@@ -81,13 +81,13 @@ export default function CorpusText() {
                         {l.words.map(w => <td>{w.gloss}</td>)}
                     </tr>
                 </tbody></table>
+                {wordIndex >= l.words[0].index && wordIndex <= l.words[l.words.length - 1].index && wordFormVisible &&
+                    <WordForm submitted={submitted} language={corpusText.language} predefWord={predefWord} initialSource={corpusText.source}/>
+                }
             </div>
         ))}
         {corpusText.source != null &&
             <div className="source">Source: {corpusText.source.startsWith("http") ? <a href={corpusText.source}>{corpusText.source}</a> : corpusText.source}</div>
-        }
-        {wordFormVisible &&
-            <WordForm submitted={submitted} language={corpusText.language} predefWord={predefWord} initialSource={corpusText.source}/>
         }
     </>
 }
