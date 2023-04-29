@@ -3442,6 +3442,72 @@
             "fullGloss": "to foam, surge",
             "pos": "V",
             "source": "MC:223"
+        },
+        {
+            "id": 600,
+            "text": "winga",
+            "lang": "Q",
+            "gloss": "foam",
+            "pos": "N",
+            "source": "MC:222"
+        },
+        {
+            "id": 601,
+            "text": "hlápula",
+            "lang": "Q",
+            "source": "MC:221"
+        },
+        {
+            "id": 602,
+            "text": "hlápu-",
+            "lang": "Q",
+            "gloss": "blow",
+            "pos": "V",
+            "source": "MC:222"
+        },
+        {
+            "id": 603,
+            "text": "sisílala",
+            "lang": "Q",
+            "source": "MC:221"
+        },
+        {
+            "id": 604,
+            "text": "sisíla-",
+            "lang": "Q",
+            "gloss": "shine",
+            "fullGloss": "shine (frequentative)",
+            "pos": "V ",
+            "source": "MC:222"
+        },
+        {
+            "id": 605,
+            "text": "cálë",
+            "lang": "Q",
+            "gloss": "light",
+            "pos": "N",
+            "source": "MC:221"
+        },
+        {
+            "id": 606,
+            "text": "fifírula",
+            "lang": "Q",
+            "source": "MC:221"
+        },
+        {
+            "id": 607,
+            "text": "fifíru-",
+            "lang": "Q",
+            "gloss": "fade",
+            "fullGloss": "slowly fade away",
+            "pos": "V",
+            "source": "MC:223"
+        },
+        {
+            "id": 608,
+            "text": "hlaruva",
+            "lang": "Q",
+            "source": "MC:221"
         }
     ],
     "rules": [
@@ -8265,6 +8331,45 @@
             "from": 599,
             "to": 114,
             "type": ">"
+        },
+        {
+            "from": 601,
+            "to": 602,
+            "type": ">",
+            "ruleIds": [
+                597
+            ]
+        },
+        {
+            "from": 603,
+            "to": 604,
+            "type": ">",
+            "ruleIds": [
+                597
+            ]
+        },
+        {
+            "from": 604,
+            "to": 148,
+            "type": ">"
+        },
+        {
+            "from": 605,
+            "to": 123,
+            "type": ">"
+        },
+        {
+            "from": 606,
+            "to": 607,
+            "type": ">",
+            "ruleIds": [
+                597
+            ]
+        },
+        {
+            "from": 607,
+            "to": 333,
+            "type": ">"
         }
     ],
     "corpusTexts": [
@@ -8568,14 +8673,14 @@
                 593,
                 null,
                 598,
+                600,
+                601,
                 null,
+                603,
+                605,
+                606,
                 null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
+                608,
                 null,
                 null,
                 null,

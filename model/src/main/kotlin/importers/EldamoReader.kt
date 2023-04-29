@@ -33,6 +33,8 @@ fun main(args: Array<String>) {
     val q = repo.languageByShortName("Q")!!
     val vowels = q.phonemeClassByName(PhonemeClass.vowelClassName)!!
     val syllableStructures = mutableMapOf<String, String>()
+    val codas = mutableMapOf<String, String>()
+    val codaCounts = mutableMapOf<String, Int>()
     processEldamoWords(File(args[0]).reader()) { word, language, speech ->
         if (language == "q" && speech !in nonWordSpeechParts && "(" !in word && ' ' !in word) {
             val qWord = Word(-1, word.trimEnd('¹', '²', '³', '⁴', '-').replace('ē', 'é'), q)
@@ -43,10 +45,22 @@ fun main(args: Array<String>) {
                 if (structure !in syllableStructures) {
                     syllableStructures[structure] = word
                 }
+                val coda = phonemes[syllable.endIndex-1]
+                if (coda !in codas) {
+                    codas[coda] = word
+                }
+                if (coda == "f") {
+                    println("f: $word")
+                }
+                val count = codaCounts.getOrDefault(coda, 0)
+                codaCounts[coda] = count+1
             }
         }
     }
     for ((syllableStructure, example) in syllableStructures) {
         println("$syllableStructure: $example")
+    }
+    for ((coda, example) in codas) {
+        println("Coda: $coda in $example, total ${codaCounts[coda]}")
     }
 }
