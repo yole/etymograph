@@ -3585,7 +3585,77 @@
             "id": 621,
             "text": "lillassëa",
             "lang": "Q",
+            "gloss": "having many leaves",
             "pos": "ADJ"
+        },
+        {
+            "id": 622,
+            "text": "ninqui",
+            "lang": "Q",
+            "source": "MC:221"
+        },
+        {
+            "id": 623,
+            "text": "ninque",
+            "lang": "Q",
+            "gloss": "white",
+            "pos": "ADJ",
+            "source": "MC:222"
+        },
+        {
+            "id": 624,
+            "text": "NIK-",
+            "lang": "CE",
+            "gloss": "snow"
+        },
+        {
+            "id": 625,
+            "text": "carcar",
+            "lang": "Q",
+            "source": "MC:221"
+        },
+        {
+            "id": 626,
+            "text": "karka",
+            "lang": "Q",
+            "gloss": "fang",
+            "pos": "N",
+            "source": "MC:222"
+        },
+        {
+            "id": 627,
+            "text": "KARAK-",
+            "lang": "CE",
+            "gloss": "fang"
+        },
+        {
+            "id": 628,
+            "text": "yarra",
+            "lang": "Q",
+            "gloss": "snarl",
+            "source": "MC:221"
+        },
+        {
+            "id": 629,
+            "text": "isilmë",
+            "lang": "Q",
+            "gloss": "moonlight",
+            "pos": "N",
+            "source": "MC:222"
+        },
+        {
+            "id": 630,
+            "text": "ilcalassë",
+            "lang": "Q",
+            "source": "MC:221"
+        },
+        {
+            "id": 631,
+            "text": "ilka-",
+            "lang": "Q",
+            "gloss": "gleam",
+            "pos": "V",
+            "source": "MC:223"
         }
     ],
     "rules": [
@@ -8502,6 +8572,41 @@
             "ruleIds": [
                 407
             ]
+        },
+        {
+            "from": 622,
+            "to": 623,
+            "type": ">",
+            "ruleIds": [
+                407
+            ]
+        },
+        {
+            "from": 623,
+            "to": 624,
+            "type": ">"
+        },
+        {
+            "from": 625,
+            "to": 626,
+            "type": ">",
+            "ruleIds": [
+                396
+            ]
+        },
+        {
+            "from": 626,
+            "to": 627,
+            "type": ">"
+        },
+        {
+            "from": 630,
+            "to": 631,
+            "type": ">",
+            "ruleIds": [
+                597,
+                410
+            ]
         }
     ],
     "corpusTexts": [
@@ -8818,11 +8923,11 @@
                 null,
                 616,
                 619,
-                null,
-                null,
-                null,
-                null,
-                null,
+                622,
+                625,
+                628,
+                629,
+                630,
                 null,
                 null,
                 null,

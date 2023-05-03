@@ -125,18 +125,35 @@ open class InMemoryGraphRepository : GraphRepository() {
     }
 
     override fun findParseCandidates(word: Word): List<ParseCandidate> {
+        return findParseCandidates(word.language, word.text, word.pos, emptyList(), true)
+    }
+
+    private fun findParseCandidates(language: Language, text: String, pos: String?, prevRules: List<Rule>, recurse: Boolean): List<ParseCandidate> {
         return rules
-            .filter { it.fromLanguage == word.language && it.toLanguage == word.language &&
-                    (word.pos == null || it.toPOS == null || word.pos == it.toPOS) }
+            .filter {
+                it.fromLanguage == language && it.toLanguage == language &&
+                        (pos == null || it.toPOS == null || pos == it.toPOS)
+            }
             .flatMap { rule ->
-                rule.reverseApply(word)
-                    .filter { word.language.normalizeWord(it) != word.normalizedText && isAcceptableWord(word.language, it) }
+                rule.reverseApply(Word(-1, text, language, pos=pos))
+                    .filter {
+                        language.normalizeWord(it) != language.normalizeWord(text) &&
+                                isAcceptableWord(language, it)
+                    }
                     .flatMap { text ->
-                        val w = wordsByText(word.language, text)
+                        val w = wordsByText(language, text)
                         if (w.isNotEmpty())
-                            w.map { ParseCandidate(text, listOf(rule), it.pos, it ) }
+                            w.map { ParseCandidate(text, listOf(rule) + prevRules, it.pos, it) }
                         else
-                            listOf(ParseCandidate(text, listOf(rule), rule.fromPOS, null))
+                            listOf(ParseCandidate(text,  listOf(rule) + prevRules, rule.fromPOS, null))
+                    }
+                    .flatMap {
+                        if (recurse) {
+                            listOf(it) + findParseCandidates(language, it.text, it.pos, it.rules, false)
+                        }
+                        else {
+                            listOf(it)
+                        }
                     }
             }
     }
