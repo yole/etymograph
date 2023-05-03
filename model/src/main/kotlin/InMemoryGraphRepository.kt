@@ -130,7 +130,7 @@ open class InMemoryGraphRepository : GraphRepository() {
                     (word.pos == null || it.toPOS == null || word.pos == it.toPOS) }
             .flatMap { rule ->
                 rule.reverseApply(word)
-                    .filter { it != word.text && isAcceptableWord(word.language, it) }
+                    .filter { word.language.normalizeWord(it) != word.normalizedText && isAcceptableWord(word.language, it) }
                     .flatMap { text ->
                         val w = wordsByText(word.language, text)
                         if (w.isNotEmpty())
