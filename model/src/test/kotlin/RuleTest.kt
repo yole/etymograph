@@ -207,7 +207,7 @@ class RuleTest : QBaseTest() {
         }
         val applySoundRule = Rule(-1, "q-lengthen", q, q, Rule.parseBranches("""
             - apply sound rule 'q-lengthen' to first vowel
-        """.trimIndent(), parseContext), null, null, null, null)
+        """.trimIndent(), parseContext), null, null, null, null, null, null)
         assertEquals("lásse", applySoundRule.apply(q.word("lasse"), emptyRepo).text)
     }
 
@@ -416,7 +416,7 @@ fun Language.parseContext(repo: GraphRepository? = null) = createParseContext(th
 fun parseRule(fromLanguage: Language, toLanguage: Language, text: String, name: String = "q", repo: GraphRepository? = null): Rule = Rule(
     -1, name, fromLanguage, toLanguage,
     Rule.parseBranches(text, createParseContext(fromLanguage, toLanguage, repo)),
-    null, null, null, null
+    null, null, null, null, null, null
 )
 
 private fun createParseContext(

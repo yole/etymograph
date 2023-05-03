@@ -32,6 +32,8 @@ class RuleController(val graphService: GraphService) {
         val editableText: String,
         val addedCategories: String?,
         val replacedCategories: String?,
+        val fromPOS: String?,
+        val toPOS: String?,
         val source: String?,
         val notes: String?,
         val paradigmId: Int?,
@@ -99,6 +101,8 @@ class RuleController(val graphService: GraphService) {
             toEditableText(),
             addedCategories,
             replacedCategories,
+            fromPOS,
+            toPOS,
             source.nullize(),
             notes.nullize(),
             paradigm?.id,
@@ -138,6 +142,8 @@ class RuleController(val graphService: GraphService) {
         val text: String,
         val addedCategories: String? = null,
         val replacedCategories: String? = null,
+        val fromPOS: String? = null,
+        val toPOS: String? = null,
         val source: String? = null,
         val notes: String? = null
     )
@@ -163,6 +169,8 @@ class RuleController(val graphService: GraphService) {
             logic,
             params.addedCategories,
             params.replacedCategories,
+            params.fromPOS,
+            params.toPOS,
             params.source,
             params.notes
         )
@@ -184,6 +192,8 @@ class RuleController(val graphService: GraphService) {
         rule.notes = params.notes
         rule.addedCategories = params.addedCategories.nullize()
         rule.replacedCategories = params.replacedCategories.nullize()
+        rule.fromPOS = params.fromPOS.nullize()
+        rule.toPOS = params.toPOS.nullize()
         rule.source = params.source.nullize()
         graph.save()
     }

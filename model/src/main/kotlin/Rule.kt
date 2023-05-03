@@ -16,7 +16,7 @@ class RuleParseContext(
     val ruleRefFactory: (String) -> RuleRef
 )
 
-data class ParseCandidate(val text: String, val rules: List<Rule>, val word: Word?)
+data class ParseCandidate(val text: String, val rules: List<Rule>, val pos: String?, val word: Word?)
 
 class RuleBranch(val condition: RuleCondition, val instructions: List<RuleInstruction>) {
     fun matches(word: Word) = condition.matches(word)
@@ -88,6 +88,8 @@ class Rule(
     var logic: RuleLogic,
     var addedCategories: String?,
     var replacedCategories: String?,
+    var fromPOS: String?,
+    var toPOS: String?,
     source: String?,
     notes: String?
 ) : LangEntity(id, source, notes) {

@@ -14,6 +14,8 @@ export default function Rule() {
     const [linkMode, setLinkMode] = useState(false)
     const [addedCategories, setAddedCategories] = useState(rule.addedCategories)
     const [replacedCategories, setReplacedCategories] = useState(rule.replacedCategories)
+    const [fromPOS, setFromPOS] = useState(rule.fromPOS)
+    const [toPOS, setToPOS] = useState(rule.toPOS)
     const [source, setSource] = useState(rule.source)
     const [editableText, setEditableText] = useState(rule.editableText)
     const [notes, setNotes] = useState(rule.notes)
@@ -32,7 +34,7 @@ export default function Rule() {
     }
 
     function saveRule() {
-        updateRule(rule.id, rule.name, rule.fromLang, rule.toLang, addedCategories, replacedCategories, editableText, source, notes)
+        updateRule(rule.id, rule.name, rule.fromLang, rule.toLang, addedCategories, replacedCategories, fromPOS, toPOS, editableText, source, notes)
             .then(handleResponse)
         setEditMode(false)
     }
@@ -54,6 +56,8 @@ export default function Rule() {
         {!editMode && <>
             {rule.addedCategories && <p>Added categories: {rule.addedCategories}</p>}
             {rule.replacedCategories && <p>Replaced categories: {rule.replacedCategories}</p>}
+            {rule.fromPOS && <p>From POS: {rule.fromPOS}</p>}
+            {rule.toPOS && <p>To POS: {rule.toPOS}</p>}
             {rule.source != null && <div className="source">Source: {rule.source.startsWith("http") ? <a href={rule.source}>{rule.source}</a> : rule.source}</div>}
             <p/>
             <ul>
@@ -79,6 +83,14 @@ export default function Rule() {
             <tr>
                 <td><label>Replaced categories:</label></td>
                 <td><input type="text" value={replacedCategories} onChange={(e) => setReplacedCategories(e.target.value)}/></td>
+            </tr>
+            <tr>
+                <td><label>From POS</label></td>
+                <td><input type="text" value={fromPOS} onChange={(e) => setFromPOS(e.target.value)}/></td>
+            </tr>
+            <tr>
+                <td><label>To POS:</label></td>
+                <td><input type="text" value={toPOS} onChange={(e) => setToPOS(e.target.value)}/></td>
             </tr>
             <tr>
                 <td><label>Source:</label></td>

@@ -45,6 +45,8 @@ abstract class GraphRepository {
         logic: RuleLogic,
         addedCategories: String?,
         replacedCategories: String?,
+        fromPOS: String?,
+        toPOS: String?,
         source: String?,
         notes: String?
     ): Rule

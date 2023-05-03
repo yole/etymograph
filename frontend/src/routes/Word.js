@@ -160,7 +160,7 @@ function SingleWord(params) {
 
     function acceptParseCandidate(pc) {
         if (pc.wordId === null) {
-            addWord(word.language, pc.text, "", "", null, null)
+            addWord(word.language, pc.text, "", "", pc.pos, null)
                 .then(r => {
                     if (r.status === 200)
                         r.json().then(r =>

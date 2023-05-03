@@ -17,6 +17,7 @@ data class ParseCandidateViewModel(
     val text: String,
     val categories: String,
     val ruleNames: List<String>,
+    val pos: String?,
     val wordId: Int?
 )
 
@@ -241,5 +242,6 @@ fun ParseCandidate.toViewModel(): ParseCandidateViewModel =
         text,
         rules.fold("") { t, rule -> t + rule.addedCategories },
         rules.map { it.name },
+        pos,
         word?.id
     )

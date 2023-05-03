@@ -118,6 +118,8 @@ data class RuleData(
     val branches: List<RuleBranchData>,
     val addedCategories: String?,
     val replacedCategories: String? = null,
+    val fromPOS: String? = null,
+    val toPOS: String? = null,
     val source: String? = null,
     val notes: String? = null,
     val preInstructions: List<RuleInstructionData>? = null
@@ -324,6 +326,8 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                 ),
                 rule.addedCategories,
                 rule.replacedCategories,
+                rule.fromPOS,
+                rule.toPOS,
                 rule.source,
                 rule.notes
             )
@@ -422,6 +426,8 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                 },
                 addedCategories,
                 replacedCategories,
+                fromPOS,
+                toPOS,
                 source,
                 notes,
                 preInstructions = logic.preInstructions.toSerializedFormat()

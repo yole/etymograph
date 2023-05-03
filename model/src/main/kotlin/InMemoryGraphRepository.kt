@@ -126,16 +126,17 @@ open class InMemoryGraphRepository : GraphRepository() {
 
     override fun findParseCandidates(word: Word): List<ParseCandidate> {
         return rules
-            .filter { it.fromLanguage == word.language && it.toLanguage == word.language }
+            .filter { it.fromLanguage == word.language && it.toLanguage == word.language &&
+                    (word.pos == null || it.toPOS == null || word.pos == it.toPOS) }
             .flatMap { rule ->
                 rule.reverseApply(word)
                     .filter { it != word.text && isAcceptableWord(word.language, it) }
                     .flatMap { text ->
                         val w = wordsByText(word.language, text)
                         if (w.isNotEmpty())
-                            w.map { ParseCandidate(text, listOf(rule), it ) }
+                            w.map { ParseCandidate(text, listOf(rule), it.pos, it ) }
                         else
-                            listOf(ParseCandidate(text, listOf(rule), null))
+                            listOf(ParseCandidate(text, listOf(rule), rule.fromPOS, null))
                     }
             }
     }
@@ -294,12 +295,14 @@ open class InMemoryGraphRepository : GraphRepository() {
         logic: RuleLogic,
         addedCategories: String?,
         replacedCategories: String?,
+        fromPOS: String?,
+        toPOS: String?,
         source: String?,
         notes: String?
     ): Rule {
         return Rule(allLangEntities.size, name, fromLanguage, toLanguage,
             logic,
-            addedCategories, replacedCategories, source, notes
+            addedCategories, replacedCategories, fromPOS, toPOS, source, notes
         ).also {
             addRule(it)
         }

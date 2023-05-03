@@ -3508,6 +3508,84 @@
             "text": "hlaruva",
             "lang": "Q",
             "source": "MC:221"
+        },
+        {
+            "id": 609,
+            "text": "hlar-",
+            "lang": "Q",
+            "gloss": "hear",
+            "pos": "V",
+            "source": "MC:222"
+        },
+        {
+            "id": 610,
+            "text": "rávëa",
+            "lang": "Q",
+            "gloss": "roaring",
+            "pos": "ADJ",
+            "source": "MC:221"
+        },
+        {
+            "id": 611,
+            "text": "rávë",
+            "lang": "Q",
+            "gloss": "roaring noise",
+            "pos": "N",
+            "source": "MC:223"
+        },
+        {
+            "id": 613,
+            "text": "RAW-",
+            "lang": "CE",
+            "gloss": "roar",
+            "source": "Ety/RAW"
+        },
+        {
+            "id": 614,
+            "text": "tiruva",
+            "lang": "Q",
+            "source": "MC:221"
+        },
+        {
+            "id": 615,
+            "text": "tir-",
+            "lang": "Q",
+            "gloss": "guard",
+            "pos": "V",
+            "source": "MC:222"
+        },
+        {
+            "id": 616,
+            "text": "tauri",
+            "lang": "Q",
+            "source": "MC:221"
+        },
+        {
+            "id": 617,
+            "text": "taurë",
+            "lang": "Q",
+            "gloss": "forest",
+            "pos": "N",
+            "source": "MC:222"
+        },
+        {
+            "id": 618,
+            "text": "TAW-",
+            "lang": "CE",
+            "gloss": "wood",
+            "source": "PE17:115"
+        },
+        {
+            "id": 619,
+            "text": "lillassië",
+            "lang": "Q",
+            "source": "MC:221"
+        },
+        {
+            "id": 621,
+            "text": "lillassëa",
+            "lang": "Q",
+            "pos": "ADJ"
         }
     ],
     "rules": [
@@ -3594,6 +3672,8 @@
                 }
             ],
             "addedCategories": ".NOM.PL",
+            "fromPOS": "N",
+            "toPOS": "N",
             "source": "https://eldamo.org/content/words/word-2870822299.html",
             "preInstructions": [
                 {
@@ -4123,8 +4203,8 @@
                 }
             ],
             "addedCategories": ".PL",
-            "replacedCategories": "",
-            "source": "",
+            "fromPOS": "ADJ",
+            "toPOS": "ADJ",
             "preInstructions": [
             ]
         },
@@ -4522,7 +4602,8 @@
                 }
             ],
             "addedCategories": ".FUT",
-            "replacedCategories": "",
+            "fromPOS": "V",
+            "toPOS": "V",
             "source": "https://eldamo.org/content/words/word-2817430301.html",
             "preInstructions": [
             ]
@@ -5111,7 +5192,8 @@
                 }
             ],
             "addedCategories": ".PRES",
-            "replacedCategories": "",
+            "fromPOS": "V",
+            "toPOS": "V",
             "source": "https://eldamo.org/content/words/word-4095499405.html",
             "preInstructions": [
             ]
@@ -8370,6 +8452,56 @@
             "from": 607,
             "to": 333,
             "type": ">"
+        },
+        {
+            "from": 608,
+            "to": 609,
+            "type": ">",
+            "ruleIds": [
+                416
+            ]
+        },
+        {
+            "from": 610,
+            "to": 611,
+            "type": ">",
+            "ruleIds": [
+                422
+            ]
+        },
+        {
+            "from": 611,
+            "to": 613,
+            "type": ">"
+        },
+        {
+            "from": 614,
+            "to": 615,
+            "type": ">",
+            "ruleIds": [
+                416
+            ]
+        },
+        {
+            "from": 616,
+            "to": 617,
+            "type": ">",
+            "ruleIds": [
+                396
+            ]
+        },
+        {
+            "from": 617,
+            "to": 618,
+            "type": ">"
+        },
+        {
+            "from": 619,
+            "to": 621,
+            "type": ">",
+            "ruleIds": [
+                407
+            ]
         }
     ],
     "corpusTexts": [
@@ -8663,7 +8795,7 @@
                 582,
                 584,
                 null,
-                null,
+                614,
                 null,
                 387,
                 null,
@@ -8681,11 +8813,11 @@
                 606,
                 null,
                 608,
+                610,
+                8,
                 null,
-                null,
-                null,
-                null,
-                null,
+                616,
+                619,
                 null,
                 null,
                 null,
