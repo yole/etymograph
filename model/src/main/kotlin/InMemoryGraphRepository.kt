@@ -125,14 +125,16 @@ open class InMemoryGraphRepository : GraphRepository() {
     }
 
     override fun findParseCandidates(word: Word): List<ParseCandidate> {
-        return findParseCandidates(word.language, word.text, word.pos, emptyList(), true)
+        return findParseCandidates(word.language, word.text, word.pos, emptyList(), emptySet(), true)
     }
 
-    private fun findParseCandidates(language: Language, text: String, pos: String?, prevRules: List<Rule>, recurse: Boolean): List<ParseCandidate> {
+    private fun findParseCandidates(language: Language, text: String, pos: String?, prevRules: List<Rule>,
+                                    excludeParadigms: Set<Paradigm>, recurse: Boolean): List<ParseCandidate> {
         return rules
-            .filter {
-                it.fromLanguage == language && it.toLanguage == language &&
-                        (pos == null || it.toPOS == null || pos == it.toPOS)
+            .filter { rule ->
+                rule.fromLanguage == language && rule.toLanguage == language &&
+                        (pos == null || rule.toPOS == null || pos == rule.toPOS) &&
+                paradigmForRule(rule).let { it == null || it !in excludeParadigms }
             }
             .flatMap { rule ->
                 rule.reverseApply(Word(-1, text, language, pos=pos))
@@ -149,7 +151,9 @@ open class InMemoryGraphRepository : GraphRepository() {
                     }
                     .flatMap {
                         if (recurse) {
-                            listOf(it) + findParseCandidates(language, it.text, it.pos, it.rules, false)
+                            val paradigm = paradigmForRule(rule)
+                            val recurseExcludeParadigms = if (paradigm == null) excludeParadigms else excludeParadigms + setOf(paradigm)
+                            listOf(it) + findParseCandidates(language, it.text, it.pos, it.rules, recurseExcludeParadigms, false)
                         }
                         else {
                             listOf(it)
@@ -336,6 +340,10 @@ open class InMemoryGraphRepository : GraphRepository() {
 
     override fun paradigmById(id: Int): Paradigm? {
         return paradigms.getOrNull(id)
+    }
+
+    override fun paradigmForRule(rule: Rule): Paradigm? {
+        return paradigmsForLanguage(rule.fromLanguage).find { rule in it.collectAllRules() }
     }
 
     override fun findMatchingRule(fromWord: Word, toWord: Word): Rule? {

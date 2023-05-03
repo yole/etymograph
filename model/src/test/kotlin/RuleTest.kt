@@ -372,6 +372,13 @@ class RuleTest : QBaseTest() {
         assertEquals("cira", applySoundRuleInstruction.reverseApply("círa", q))
     }
 
+    @Test
+    fun reverseApplyMultiple() {
+        val rule = parseRule(q, q, "word ends with a consonant:\n- add suffix 'ala'\notherwise:\n- add suffix 'la'")
+        val candidates = rule.reverseApply(q.word("picala"))
+        assertEquals(2, candidates.size)
+    }
+
     /*
 
     @Test

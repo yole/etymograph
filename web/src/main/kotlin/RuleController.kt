@@ -89,7 +89,7 @@ class RuleController(val graphService: GraphService) {
 
     private fun Rule.toViewModel(): RuleViewModel {
         val graph = graphService.graph
-        val paradigm = graph.paradigmsForLanguage(fromLanguage).find { this in it.collectAllRules() }
+        val paradigm = graph.paradigmForRule(this)
         val links = (graph.getLinksFrom(this).map { it.toEntity } +
                         graph.getLinksTo(this).map { it.fromEntity })
             .filterIsInstance<Rule>().toList()

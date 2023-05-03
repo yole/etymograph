@@ -68,6 +68,7 @@ abstract class GraphRepository {
 
     abstract fun paradigmsForLanguage(lang: Language): List<Paradigm>
     abstract fun paradigmById(id: Int): Paradigm?
+    abstract fun paradigmForRule(rule: Rule): Paradigm?
 
     abstract fun addLink(fromEntity: LangEntity, toEntity: LangEntity, type: LinkType, rules: List<Rule>, source: String?, notes: String?): Link
     abstract fun deleteLink(fromEntity: LangEntity, toEntity: LangEntity, type: LinkType): Boolean

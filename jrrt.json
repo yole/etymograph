@@ -3656,6 +3656,68 @@
             "gloss": "gleam",
             "pos": "V",
             "source": "MC:223"
+        },
+        {
+            "id": 632,
+            "text": "pícalassë",
+            "lang": "Q",
+            "source": "MC:221"
+        },
+        {
+            "id": 634,
+            "text": "pík-",
+            "lang": "Q",
+            "gloss": "wane",
+            "pos": "V",
+            "source": "MC:223"
+        },
+        {
+            "id": 635,
+            "text": "lantalassë",
+            "lang": "Q",
+            "source": "MC:221"
+        },
+        {
+            "id": 636,
+            "text": "loicolícuma",
+            "lang": "Q",
+            "source": "MC:221"
+        },
+        {
+            "id": 637,
+            "text": "loico",
+            "lang": "Q",
+            "gloss": "corpse",
+            "pos": "N",
+            "source": "MC:223"
+        },
+        {
+            "id": 638,
+            "text": "lícuma",
+            "lang": "Q",
+            "gloss": "candle",
+            "pos": "N",
+            "source": "MC:223"
+        },
+        {
+            "id": 640,
+            "text": "erun",
+            "lang": "Q",
+            "source": "VT44:31"
+        },
+        {
+            "id": 641,
+            "text": "rainë",
+            "lang": "Q",
+            "gloss": "peace",
+            "pos": "N",
+            "source": "VT44:34"
+        },
+        {
+            "id": 642,
+            "text": "hínin",
+            "lang": "Q",
+            "source": "VT44:31"
         }
     ],
     "rules": [
@@ -6127,9 +6189,9 @@
                 }
             ],
             "addedCategories": ".1SG",
-            "replacedCategories": "",
+            "fromPOS": "V",
+            "toPOS": "V",
             "source": "https://eldamo.org/content/words/word-1020286637.html",
-            "notes": "",
             "preInstructions": [
             ]
         },
@@ -8607,6 +8669,42 @@
                 597,
                 410
             ]
+        },
+        {
+            "from": 632,
+            "to": 634,
+            "type": ">",
+            "ruleIds": [
+                597,
+                410
+            ]
+        },
+        {
+            "from": 635,
+            "to": 4,
+            "type": ">",
+            "ruleIds": [
+                597,
+                410
+            ]
+        },
+        {
+            "from": 636,
+            "to": 637,
+            "type": "+"
+        },
+        {
+            "from": 636,
+            "to": 638,
+            "type": "+"
+        },
+        {
+            "from": 640,
+            "to": 320,
+            "type": ">",
+            "ruleIds": [
+                404
+            ]
         }
     ],
     "corpusTexts": [
@@ -8929,11 +9027,11 @@
                 629,
                 630,
                 null,
+                632,
                 null,
+                635,
                 null,
-                null,
-                null,
-                null,
+                636,
                 null,
                 null,
                 null,
@@ -8975,6 +9073,26 @@
                 573
             ],
             "source": "MC:221"
+        },
+        {
+            "id": 639,
+            "text": "alcar mi Tarmenel na Erun\nar mi cemen rainë i hínin",
+            "title": "Alcar mi Tarmenel na Erun",
+            "lang": "Q",
+            "wordIds": [
+                null,
+                null,
+                null,
+                null,
+                640,
+                null,
+                null,
+                null,
+                641,
+                null,
+                642
+            ],
+            "source": "VT44:31"
         }
     ],
     "paradigms": [
