@@ -143,13 +143,20 @@ open class InMemoryGraphRepository : GraphRepository() {
     fun isAcceptableWord(language: Language, wordText: String): Boolean {
         val word = Word(-1, wordText, language)
         val vowels = language.phonemeClassByName(PhonemeClass.vowelClassName)
+        val phonemes = PhonemeIterator(word)
         if (language.syllableStructures.isNotEmpty() && vowels != null) {
-            val phonemes = PhonemeIterator(word)
             val syllables = breakIntoSyllables(word)
             for (syllable in syllables) {
                 if (analyzeSyllableStructure(vowels, phonemes, syllable) !in language.syllableStructures) {
                     return false
                 }
+            }
+        }
+        if (language.wordFinals.isNotEmpty()) {
+            phonemes.advanceTo(phonemes.size - 1)
+            val final = phonemes.current
+            if (language.wordFinals.none { it == final || language.phonemeClassByName(it)?.matchesCurrent(phonemes) == true }) {
+                return false
             }
         }
         return true

@@ -9022,5 +9022,18 @@
                 "CVVC"
             ]
         }
+    ],
+    "wordFinals": [
+        {
+            "lang": "Q",
+            "wordFinals": [
+                "vowel",
+                "n",
+                "r",
+                "l",
+                "s",
+                "t"
+            ]
+        }
     ]
 }

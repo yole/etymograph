@@ -40,6 +40,9 @@ data class StressRuleData(@SerialName("lang") val languageShortName: String, val
 data class SyllableStructureData(@SerialName("lang") val languageShortName: String, val syllableStructures: List<String>)
 
 @Serializable
+data class WordFinalData(@SerialName("lang") val languageShortName: String, val wordFinals: List<String>)
+
+@Serializable
 sealed class RuleConditionData {
     abstract fun toRuntimeFormat(result: InMemoryGraphRepository, fromLanguage: Language): RuleCondition
 }
@@ -174,7 +177,8 @@ data class GraphRepositoryData(
     val links: List<LinkData>,
     val corpusTexts: List<CorpusTextData>,
     val paradigms: List<ParadigmData>,
-    val syllableStructures: List<SyllableStructureData>? = null
+    val syllableStructures: List<SyllableStructureData>,
+    val wordFinals: List<WordFinalData>? = null
 )
 
 class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
@@ -224,6 +228,9 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
         val syllableStructureData = languages.values.mapNotNull { lang ->
             lang.syllableStructures.takeIf { it.isNotEmpty() }?.let { SyllableStructureData(lang.shortName, it) }
         }
+        val wordFinalsData = languages.values.mapNotNull { lang ->
+            lang.wordFinals.takeIf { it.isNotEmpty() }?.let { WordFinalData(lang.shortName, it) }
+        }
         return GraphRepositoryData(
             languages.values.map { LanguageData(it.name, it.shortName) },
             phonemeClassData,
@@ -254,7 +261,8 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                     })
                 })
             },
-            syllableStructureData
+            syllableStructureData,
+            wordFinalsData
         )
     }
 
@@ -279,9 +287,12 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
         for (stressRuleData in data.stressRules) {
             languageByShortName(stressRuleData.languageShortName)!!.stressRule = ruleRef(this, stressRuleData.ruleId)
         }
-        data.syllableStructures?.let {
-            for (syllableStructureData in it) {
-                languageByShortName(syllableStructureData.languageShortName)!!.syllableStructures = syllableStructureData.syllableStructures
+        for (syllableStructureData in data.syllableStructures) {
+            languageByShortName(syllableStructureData.languageShortName)!!.syllableStructures = syllableStructureData.syllableStructures
+        }
+        data.wordFinals?.let {
+            for (wordFinalData in it) {
+                languageByShortName(wordFinalData.languageShortName)!!.wordFinals = wordFinalData.wordFinals
             }
         }
         for (word in data.words) {

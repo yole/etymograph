@@ -55,6 +55,7 @@ class PhonemeIterator(text: String, val language: Language) {
     val previous: String? get() = phonemes.getOrNull(phonemeIndex - 1)
     val next: String? get() = phonemes.getOrNull(phonemeIndex + 1)
     val last: String get() = phonemes.last()
+    val size: Int get() = phonemes.size
 
     operator fun get(index: Int): String = phonemes[index]
 
