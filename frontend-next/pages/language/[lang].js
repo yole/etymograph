@@ -8,7 +8,7 @@ export const config = {
 }
 
 export async function getStaticProps(context) {
-    return fetchBackend(`language/${context.params.id}`)
+    return fetchBackend(`language/${context.params.lang}`)
 }
 
 export async function getStaticPaths() {

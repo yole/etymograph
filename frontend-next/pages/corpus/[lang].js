@@ -4,7 +4,7 @@ import {useRouter} from "next/router";
 import Link from "next/link";
 
 export async function getStaticProps(context) {
-    return fetchBackend(`corpus/${context.params.id}`)
+    return fetchBackend(`corpus/${context.params.lang}`)
 }
 
 export async function getStaticPaths() {

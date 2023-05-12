@@ -10,7 +10,7 @@ export async function fetchBackend(url) {
 
 export async function fetchAllLanguagePaths() {
     const {props} = await fetchBackend(`language`)
-    const paths = props.loaderData.map(lang => ({params: {id: lang.shortName}}))
+    const paths = props.loaderData.map(lang => ({params: {lang: lang.shortName}}))
     return {paths, fallback: false}
 }
 
