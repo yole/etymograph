@@ -2,7 +2,7 @@ import {useEffect, useState} from "react";
 import WordForm from "@/components/WordForm";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit } from '@fortawesome/free-solid-svg-icons'
-import {WordWithStress} from "@/components/WordWithStress";
+import WordWithStress from "@/components/WordWithStress";
 import {fetchBackend, associateWord} from "@/api";
 import {useRouter} from "next/router";
 import Link from "next/link";

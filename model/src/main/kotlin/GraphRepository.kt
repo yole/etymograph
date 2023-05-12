@@ -18,6 +18,7 @@ abstract class GraphRepository {
     abstract fun dictionaryWords(lang: Language): List<Word>
     abstract fun compoundWords(lang: Language): List<Word>
     abstract fun nameWords(lang: Language): List<Word>
+    abstract fun allWords(lang: Language): List<Word>
     abstract fun findAttestations(word: Word): List<Attestation>
     abstract fun isHomonym(word: Word): Boolean
     abstract fun findParseCandidates(word: Word): List<ParseCandidate>

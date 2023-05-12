@@ -26,6 +26,11 @@ class DictionaryController(val graphService: GraphService) {
         return loadDictionary(lang) { language -> graphService.graph.nameWords(language) }
     }
 
+    @GetMapping("/dictionary/{lang}/all")
+    fun allWords(@PathVariable lang: String): DictionaryViewModel {
+        return loadDictionary(lang) { language -> graphService.graph.allWords(language) }
+    }
+
     private fun loadDictionary(lang: String, wordLoader: (Language) -> List<Word>): DictionaryViewModel {
         val language = graphService.resolveLanguage(lang)
         val words = wordLoader(language)

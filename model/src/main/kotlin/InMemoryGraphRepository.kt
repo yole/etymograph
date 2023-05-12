@@ -71,6 +71,10 @@ open class InMemoryGraphRepository : GraphRepository() {
         return filteredWords(lang, WordKind.NAME)
     }
 
+    override fun allWords(lang: Language): List<Word> {
+        return words[lang]?.values?.flatten() ?: emptyList()
+    }
+
     enum class WordKind { NAME, COMPOUND, DERIVED, NORMAL }
 
     private fun classifyWord(word: Word): WordKind {

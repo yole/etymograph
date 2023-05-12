@@ -1,4 +1,4 @@
-export function WordWithStress(params) {
+export default function WordWithStress(params) {
     const text = params.text
     const stressIndex = params.stressIndex
     const stressLength = params.stressLength
