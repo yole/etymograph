@@ -10,22 +10,26 @@ import ru.yole.etymograph.calculateStress
 @RestController
 @CrossOrigin(origins = ["http://localhost:3000"])
 class CorpusController(val graphService: GraphService) {
-    @GetMapping("/corpus")
-    fun indexJson(): List<Language> {
-        return graphService.graph.allLanguages().toList()
-    }
-
     data class CorpusLangTextViewModel(val id: Int, val title: String)
     data class CorpusLangViewModel(val language: Language, val corpusTexts: List<CorpusLangTextViewModel>)
+    data class CorpusListViewModel(val corpusTexts: List<CorpusLangTextViewModel>)
+
+    @GetMapping("/corpus")
+    fun indexJson(): CorpusListViewModel {
+        return CorpusListViewModel(graphService.graph.allCorpusTexts().map { it.toLangViewModel() })
+    }
 
     @GetMapping("/corpus/{lang}")
     fun langIndexJson(@PathVariable lang: String): CorpusLangViewModel {
         val language = graphService.resolveLanguage(lang)
         return CorpusLangViewModel(
             language,
-            graphService.graph.corpusTextsInLanguage(language).map { CorpusLangTextViewModel(it.id, it.title ?: it.text) }
+            graphService.graph.corpusTextsInLanguage(language).map { it.toLangViewModel() }
         )
     }
+
+    private fun CorpusText.toLangViewModel() =
+        CorpusLangTextViewModel(id, title ?: text)
 
     data class CorpusWordViewModel(
         val index: Int, val text: String, val gloss: String, val wordId: Int?, val wordText: String?,

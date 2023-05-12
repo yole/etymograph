@@ -1,6 +1,6 @@
 import Link from "next/link";
 import {useEffect, useState} from "react";
-import {fetchBackend, updateLanguage} from "@/api";
+import {fetchBackend, updateLanguage, fetchAllLanguagePaths} from "@/api";
 import {useRouter} from "next/router";
 
 export const config = {
@@ -11,10 +11,8 @@ export async function getStaticProps(context) {
     return fetchBackend(`language/${context.params.id}`)
 }
 
-export async function getStaticPaths(context) {
-    const { props } = await fetchBackend(`corpus`)
-    const paths = props.loaderData.map(lang => ({params: {id: lang.shortName}}))
-    return {paths, fallback: false}
+export async function getStaticPaths() {
+    return await fetchAllLanguagePaths();
 }
 
 export default function LanguageIndex(props) {

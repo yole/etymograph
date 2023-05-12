@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RestController
+import ru.yole.etymograph.Language
 import ru.yole.etymograph.PhonemeClass
 import ru.yole.etymograph.RuleRef
 
@@ -26,6 +27,11 @@ class LanguageController(val graphService: GraphService) {
         val syllableStructures: List<String>,
         val wordFinals: List<String>
     )
+
+    @GetMapping("/language")
+    fun indexJson(): List<Language> {
+        return graphService.graph.allLanguages().toList()
+    }
 
     @GetMapping("/language/{lang}")
     fun language(@PathVariable lang: String): LanguageViewModel {

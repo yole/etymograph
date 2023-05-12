@@ -2,7 +2,7 @@ import {useLoaderData} from "react-router";
 import {Link} from "react-router-dom";
 
 export async function loader() {
-    return fetch(process.env.REACT_APP_BACKEND_URL + "corpus", { headers: { 'Accept': 'application/json'} })
+    return fetch(process.env.REACT_APP_BACKEND_URL + "language", { headers: { 'Accept': 'application/json'} })
 }
 
 export default function CorpusIndex() {

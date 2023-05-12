@@ -2,7 +2,7 @@ import Link from "next/link";
 import {fetchBackend} from "@/api";
 
 export async function getStaticProps() {
-  return fetchBackend('corpus')
+  return fetchBackend('language')
 }
 
 export default function Home(props) {

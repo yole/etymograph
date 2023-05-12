@@ -8,6 +8,12 @@ export async function fetchBackend(url) {
     }
 }
 
+export async function fetchAllLanguagePaths() {
+    const {props} = await fetchBackend(`language`)
+    const paths = props.loaderData.map(lang => ({params: {id: lang.shortName}}))
+    return {paths, fallback: false}
+}
+
 function postToBackend(endpoint, data) {
     let url = process.env.NEXT_PUBLIC_BACKEND_URL + endpoint;
     console.log(url)
