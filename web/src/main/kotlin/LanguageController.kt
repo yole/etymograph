@@ -17,6 +17,7 @@ class LanguageController(val graphService: GraphService) {
 
     data class LanguageViewModel(
         val name: String,
+        val shortName: String,
         val diphthongs: List<String>,
         val digraphs: List<String>,
         val phonemeClasses: List<PhonemeClassViewModel>,
@@ -32,6 +33,7 @@ class LanguageController(val graphService: GraphService) {
         val stressRule = language.stressRule?.resolve()
         return LanguageViewModel(
             language.name,
+            language.shortName,
             language.diphthongs,
             language.digraphs,
             language.phonemeClasses.map { PhonemeClassViewModel(it.name, it.matchingPhonemes) },

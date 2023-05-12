@@ -3718,6 +3718,14 @@
             "text": "hínin",
             "lang": "Q",
             "source": "VT44:31"
+        },
+        {
+            "id": 643,
+            "text": "hína",
+            "lang": "Q",
+            "gloss": "child",
+            "pos": "N",
+            "source": "WJ:403"
         }
     ],
     "rules": [
@@ -4107,6 +4115,8 @@
                 }
             ],
             "addedCategories": ".DAT",
+            "fromPOS": "N",
+            "toPOS": "N",
             "source": "Plotz",
             "preInstructions": [
                 {
@@ -4953,7 +4963,8 @@
                 }
             ],
             "addedCategories": ".AOR",
-            "replacedCategories": "",
+            "fromPOS": "V",
+            "toPOS": "V",
             "source": "https://eldamo.org/content/words/word-2025078257.html",
             "preInstructions": [
             ]
@@ -5055,7 +5066,8 @@
                 }
             ],
             "addedCategories": ".AOR",
-            "replacedCategories": "",
+            "fromPOS": "V",
+            "toPOS": "V",
             "source": "https://eldamo.org/content/words/word-2025078257.html",
             "preInstructions": [
             ]
@@ -5153,6 +5165,8 @@
                 }
             ],
             "addedCategories": ".DAT.PL",
+            "fromPOS": "N",
+            "toPOS": "N",
             "source": "https://eldamo.org/content/words/word-1853042105.html",
             "preInstructions": [
                 {
@@ -8704,6 +8718,14 @@
             "type": ">",
             "ruleIds": [
                 404
+            ]
+        },
+        {
+            "from": 642,
+            "to": 643,
+            "type": ">",
+            "ruleIds": [
+                427
             ]
         }
     ],
