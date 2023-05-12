@@ -1,34 +1,34 @@
 import WordForm from "@/components/WordForm";
 import {useEffect} from "react";
-import {fetchAllLanguagePaths, fetchBackend} from "@/api";
+import {fetchBackend} from "@/api";
 import {useRouter} from "next/router";
 import Link from "next/link";
 
 export async function getStaticProps(context) {
-    return fetchBackend(`dictionary/${context.params.lang}`)
+    const lang = context.params.lang
+    if (lang.length === 2) {
+        return fetchBackend(`dictionary/${lang[0]}/${lang[1]}`)
+    }
+    return fetchBackend(`dictionary/${lang[0]}`)
 }
 
 export async function getStaticPaths() {
-    return await fetchAllLanguagePaths()
+    const {props} = await fetchBackend(`language`)
+    const paths = props.loaderData.flatMap(lang => [
+        {params: {lang: [lang.shortName]}},
+        {params: {lang: [lang.shortName, 'compounds']}},
+        {params: {lang: [lang.shortName, 'names']}}
+    ])
+    return {paths, fallback: false}
 }
-
-/*
-export async function compoundLoader({params}) {
-    return fetch(`${process.env.REACT_APP_BACKEND_URL}dictionary/${params.lang}/compounds`, { headers: { 'Accept': 'application/json'} })
-}
-
-export async function namesLoader({params}) {
-    return fetch(`${process.env.REACT_APP_BACKEND_URL}dictionary/${params.lang}/names`, { headers: { 'Accept': 'application/json'} })
-}
-
- */
 
 export default function Dictionary(params) {
     const dict = params.loaderData
     const router = useRouter()
+    const filter = router.query.lang.length < 2 ? "" : router.query.lang[1]
 
-    const filterText = params.filter === "names" ? "Names" :
-        (params.filter === "compounds" ? "Compounds" : "Dictionary")
+    const filterText = filter === "names" ? "Names" :
+        (filter === "compounds" ? "Compounds" : "Dictionary")
 
     useEffect(() => { document.title = "Etymograph : " + dict.language.name + " : " + filterText})
 
