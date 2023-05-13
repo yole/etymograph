@@ -1,6 +1,6 @@
 package ru.yole.etymograph
 
-class CorpusWord(val index: Int, val text: String, val word: Word?, val gloss: String?)
+class CorpusWord(val index: Int, val text: String, val word: Word?, val gloss: String?, val homonym: Boolean)
 
 class CorpusTextLine(val corpusWords: List<CorpusWord>)
 
@@ -25,11 +25,11 @@ class CorpusText(
             CorpusTextLine(textWords.map { (textWord, _) ->
                 val word = _words.getOrNull(currentIndex)
                 if (word != null) {
-                    CorpusWord(currentIndex++, textWord, word, word.getOrComputeGloss(repo))
+                    CorpusWord(currentIndex++, textWord, word, word.getOrComputeGloss(repo), repo.isHomonym(word))
                 }
                 else {
                     val gloss = repo.wordsByText(language, textWord).firstOrNull()?.getOrComputeGloss(repo)
-                    CorpusWord(currentIndex++, textWord, null, gloss)
+                    CorpusWord(currentIndex++, textWord, null, gloss, false)
                 }
             })
         }

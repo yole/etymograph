@@ -24,9 +24,12 @@ export function CorpusTextWordLink(params) {
     const [hovered, setHovered] = useState(false)
 
     if (w.wordText || w.gloss) {
-        const linkText = (w.wordText ?? w.text).toLowerCase()
+        let linkText = (w.wordText ?? w.text).toLowerCase()
+        if (w.wordId !== null && w.homonym) {
+            linkText += `/${w.wordId}`
+        }
         return <span onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
-            <Link href={`/word/${corpusText.language}/${linkText}${w.wordId !== null ? "/" + w.wordId : ""}`}>
+            <Link href={`/word/${corpusText.language}/${linkText}`}>
                 <WordWithStress text={w.text} stressIndex={w.stressIndex} stressLength={w.stressLength}/>
             </Link>
             {hovered && allowEdit() && <span className="iconWithMargin"><FontAwesomeIcon icon={faEdit} onClick={() => showWordForm(w.text, w.index)}/></span>}
