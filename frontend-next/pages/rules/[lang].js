@@ -1,5 +1,5 @@
 import {useEffect} from "react";
-import {fetchAllLanguagePaths, fetchBackend} from "@/api";
+import {allowEdit, fetchAllLanguagePaths, fetchBackend} from "@/api";
 import Link from "next/link";
 import {useRouter} from "next/router";
 
@@ -29,6 +29,6 @@ export default function RuleList(params) {
                 {g.rules.map(r => <li key={r.id}><Link href={`/rule/${r.id}`}>{r.name}</Link>{r.summaryText.length > 0 ? ": " + r.summaryText : ""}</li>)}
             </ul>
         </>)}
-        <Link href="/rules/new">Add rule</Link>
+        {allowEdit() && <Link href="/rules/new">Add rule</Link>}
     </>
 }

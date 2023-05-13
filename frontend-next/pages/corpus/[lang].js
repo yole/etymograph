@@ -1,5 +1,5 @@
 import {useEffect} from "react";
-import {fetchAllLanguagePaths, fetchBackend} from "@/api";
+import {allowEdit, fetchAllLanguagePaths, fetchBackend} from "@/api";
 import {useRouter} from "next/router";
 import Link from "next/link";
 
@@ -23,6 +23,6 @@ export default function CorpusLangIndex(props) {
                 )
             )}
         </ul>
-        {<button onClick={() => router.push(`/corpus/${corpusForLanguage.language.shortName}/new`)}>Add</button>}
+        {allowEdit() && <button onClick={() => router.push(`/corpus/${corpusForLanguage.language.shortName}/new`)}>Add</button>}
     </>
 }

@@ -2,7 +2,7 @@ import {useEffect, useState} from "react";
 import WordForm from "@/components/WordForm";
 import WordWithStress from "@/components/WordWithStress";
 import WordLink from "@/components/WordLink";
-import {addLink, addWord, deleteLink, deleteWord, fetchBackend, updateLink} from "@/api";
+import {addLink, addWord, deleteLink, deleteWord, fetchBackend, allowEdit, updateLink} from "@/api";
 import Link from "next/link";
 import {useRouter} from "next/router";
 
@@ -76,12 +76,14 @@ function WordLinkComponent(params) {
                 <Link href={`/rule/${ruleId}`}>{linkWord.ruleNames[index]}</Link>
             </>)}
             )</>}
-        &nbsp;<span className="inlineButtonLink">
+        {allowEdit() && <>
+            &nbsp;<span className="inlineButtonLink">
                     (<button className="inlineButton" onClick={() => setEditMode(!editMode)}>edit</button>
                 </span>
-        &nbsp;|&nbsp;<span className="inlineButtonLink">
+            &nbsp;|&nbsp;<span className="inlineButtonLink">
                     <button className="inlineButton" onClick={() => deleteLinkClicked()}>delete</button>)
                 </span>
+        </>}
         {editMode && <>
             <table><tbody>
             <tr>
@@ -202,8 +204,10 @@ function SingleWord(params) {
                                initialSource={word.source}
                                initialNotes={word.notes}
                                submitted={editSubmitted}/>}
-        <button onClick={() => setEditMode(!editMode)}>{editMode ? "Cancel" : "Edit"}</button>&nbsp;
-        {!editMode && <button onClick={() => deleteWordClicked()}>Delete</button>}
+        {allowEdit() && <>
+            <button onClick={() => setEditMode(!editMode)}>{editMode ? "Cancel" : "Edit"}</button>&nbsp;
+            {!editMode && <button onClick={() => deleteWordClicked()}>Delete</button>}
+        </>}
 
         {word.attestations.length > 0 &&
             <p>Attested in {word.attestations.map((att, i) => <>
@@ -219,16 +223,18 @@ function SingleWord(params) {
         <WordLinkTypeComponent word={word} links={word.linksTo} router={router}/>
 
         <p/>
-        <a href="#" onClick={() => setShowBaseWord(!showBaseWord)}>Add base word</a><br/>
-        {showBaseWord && <WordForm submitted={submitted} derivedWord={word}/>}
-        <a href="#" onClick={() => setShowDerivedWord(!showDerivedWord)}>Add derived word</a><br/>
-        {showDerivedWord && <WordForm submitted={submitted} baseWord={word}/>}
-        <a href="#" onClick={() => setShowCompoundComponent(!showCompoundComponent)}>Add component of compound</a><br/>
-        {showCompoundComponent && <WordForm submitted={submitted} compoundWord={word}/>}
-        <a href="#" onClick={() => setShowRelated(!showRelated)}>Add related word</a><br/>
-        {showRelated && <WordForm submitted={submitted} relatedWord={word} language={word.language}/>}
-        <p/>
-        {errorText !== "" && <div className="errorText">{errorText}</div>}
+        {allowEdit() && <>
+            <a href="#" onClick={() => setShowBaseWord(!showBaseWord)}>Add base word</a><br/>
+            {showBaseWord && <WordForm submitted={submitted} derivedWord={word}/>}
+            <a href="#" onClick={() => setShowDerivedWord(!showDerivedWord)}>Add derived word</a><br/>
+            {showDerivedWord && <WordForm submitted={submitted} baseWord={word}/>}
+            <a href="#" onClick={() => setShowCompoundComponent(!showCompoundComponent)}>Add component of compound</a><br/>
+            {showCompoundComponent && <WordForm submitted={submitted} compoundWord={word}/>}
+            <a href="#" onClick={() => setShowRelated(!showRelated)}>Add related word</a><br/>
+            {showRelated && <WordForm submitted={submitted} relatedWord={word} language={word.language}/>}
+            <p/>
+            {errorText !== "" && <div className="errorText">{errorText}</div>}
+        </>}
         {word.pos && !word.glossComputed && <Link href={`/paradigms/${word.language}/word/${word.id}`}>Paradigms</Link>}
     </>
 }

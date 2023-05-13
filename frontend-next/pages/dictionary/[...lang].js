@@ -1,6 +1,6 @@
 import WordForm from "@/components/WordForm";
 import {useEffect} from "react";
-import {fetchBackend} from "@/api";
+import {fetchBackend, allowEdit} from "@/api";
 import {useRouter} from "next/router";
 import Link from "next/link";
 
@@ -43,8 +43,10 @@ export default function Dictionary(params) {
         <h2><small>
             <Link href={`/`}>Etymograph</Link> {'> '}
             <Link href={`/language/${dict.language.shortName}`}>{dict.language.name}</Link></small> {'>'} {filterText}</h2>
-        <h3>Add word</h3>
-        <WordForm language={dict.language.shortName} submitted={submitted}/>
+        {allowEdit() && <>
+            <h3>Add word</h3>
+            <WordForm language={dict.language.shortName} submitted={submitted}/>
+        </>}
         <ul>
             {dict.words.map(w => {
                 let gloss = w.fullGloss !== null && w.fullGloss !== "" ? w.fullGloss : w.gloss;

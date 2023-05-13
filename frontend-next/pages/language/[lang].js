@@ -1,6 +1,6 @@
 import Link from "next/link";
 import {useEffect, useState} from "react";
-import {fetchBackend, updateLanguage, fetchAllLanguagePaths} from "@/api";
+import {fetchBackend, updateLanguage, fetchAllLanguagePaths, allowEdit} from "@/api";
 import {useRouter} from "next/router";
 
 export const config = {
@@ -18,7 +18,6 @@ export async function getStaticPaths() {
 export default function LanguageIndex(props) {
     const lang = props.loaderData
     const langId = lang.shortName
-    const allowEdit = process.env.NEXT_PUBLIC_READONLY !== "true"
     const [editMode, setEditMode] = useState(false)
     const [letterNorm, setLetterNorm] = useState(lang.letterNormalization)
     const [digraphs, setDigraphs] = useState(lang.digraphs.join(", "))
@@ -92,7 +91,7 @@ export default function LanguageIndex(props) {
         {editMode && <>
             <button onClick={() => saveLanguage()}>Save</button>&nbsp;
         </>}
-        {allowEdit &&
+        {allowEdit() &&
            <button onClick={() => setEditMode(!editMode)}>{editMode ? "Cancel" : "Edit"}</button>
         }
         <p/>

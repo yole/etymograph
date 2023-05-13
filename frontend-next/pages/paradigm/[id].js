@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {fetchBackend, updateParadigm} from "@/api";
+import {allowEdit, fetchBackend, updateParadigm} from "@/api";
 import {useRouter} from "next/router";
 import Link from "next/link";
 
@@ -55,6 +55,6 @@ export default function Paradigm(params) {
             <br/>
             <button onClick={() => saveParadigm()}>Save</button>
         </>}
-        <button onClick={() => setEditMode(!editMode)}>{editMode ? "Cancel" : "Edit"}</button>
+        {allowEdit() && <button onClick={() => setEditMode(!editMode)}>{editMode ? "Cancel" : "Edit"}</button>}
     </>
 }

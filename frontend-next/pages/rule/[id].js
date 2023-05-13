@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {addRuleLink, updateRule} from "@/api";
+import {addRuleLink, allowEdit, updateRule} from "@/api";
 import WordLink from "@/components/WordLink";
 import {fetchBackend} from "@/api";
 import {useRouter} from "next/router";
@@ -112,8 +112,10 @@ export default function Rule(params) {
             <button onClick={() => saveRule()}>Save</button>&nbsp;
         </>}
 
-        <button onClick={() => setEditMode(!editMode)}>{editMode ? "Cancel" : "Edit"}</button>{' '}
-        <button onClick={() => setLinkMode(!linkMode)}>{linkMode ? "Cancel" : "Add Link"}</button>
+        {allowEdit() && <>
+            <button onClick={() => setEditMode(!editMode)}>{editMode ? "Cancel" : "Edit"}</button>{' '}
+            <button onClick={() => setLinkMode(!linkMode)}>{linkMode ? "Cancel" : "Add Link"}</button>
+        </>}
         {rule.links.length > 0 && <>
             <h3>Related rules</h3>
             {rule.links.map(rl => <>

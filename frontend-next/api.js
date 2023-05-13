@@ -1,3 +1,7 @@
+export function allowEdit() {
+    return process.env.NEXT_PUBLIC_READONLY !== "true";
+}
+
 export async function fetchBackend(url) {
     const res= await fetch(process.env.NEXT_PUBLIC_BACKEND_URL + url, { headers: { 'Accept': 'application/json'} })
     const loaderData = await res.json()

@@ -3,7 +3,7 @@ import WordForm from "@/components/WordForm";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit } from '@fortawesome/free-solid-svg-icons'
 import WordWithStress from "@/components/WordWithStress";
-import {fetchBackend, associateWord} from "@/api";
+import {fetchBackend, associateWord, allowEdit} from "@/api";
 import {useRouter} from "next/router";
 import Link from "next/link";
 
@@ -24,15 +24,18 @@ export function CorpusTextWordLink(params) {
     const [hovered, setHovered] = useState(false)
 
     if (w.wordText || w.gloss) {
+        const linkText = (w.wordText ?? w.text).toLowerCase()
         return <span onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
-            <Link href={`/word/${corpusText.language}/${w.wordText ?? w.text}${w.wordId !== null ? "/" + w.wordId : ""}`}>
+            <Link href={`/word/${corpusText.language}/${linkText}${w.wordId !== null ? "/" + w.wordId : ""}`}>
                 <WordWithStress text={w.text} stressIndex={w.stressIndex} stressLength={w.stressLength}/>
             </Link>
-            {hovered && <span className="iconWithMargin"><FontAwesomeIcon icon={faEdit} onClick={() => showWordForm(w.text, w.index)}/></span>}
+            {hovered && allowEdit() && <span className="iconWithMargin"><FontAwesomeIcon icon={faEdit} onClick={() => showWordForm(w.text, w.index)}/></span>}
         </span>
     }
     else {
-        return <span className="undefWord" onClick={() => showWordForm(w.text, w.index)}>{w.text}</span>
+        return <span className="undefWord" onClick={() => {
+            if (allowEdit()) showWordForm(w.text, w.index)
+        }}>{w.text}</span>
     }
 }
 

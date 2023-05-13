@@ -1,5 +1,5 @@
 import {useEffect} from "react";
-import {fetchAllLanguagePaths, fetchBackend} from "@/api";
+import {allowEdit, fetchAllLanguagePaths, fetchBackend} from "@/api";
 import Link from "next/link";
 import {useRouter} from "next/router";
 
@@ -28,6 +28,6 @@ export default function ParadigmList(params) {
         <ul>
             {paradigmList.paradigms.map(p => <li key={p.id}><Link href={`/paradigm/${p.id}`}>{p.name}</Link></li>)}
         </ul>
-        <Link href={`/paradigms/${router.query.lang}/new`}>Add paradigm</Link>
+        {allowEdit() && <Link href={`/paradigms/${router.query.lang}/new`}>Add paradigm</Link>}
     </>
 }
