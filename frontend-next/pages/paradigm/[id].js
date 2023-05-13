@@ -17,12 +17,20 @@ export default function Paradigm(params) {
     const paradigm = params.loaderData
     const [editMode, setEditMode] = useState(false)
     const [editableText, setEditableText] = useState(paradigm.editableText)
+    const [errorText, setErrorText] = useState("")
+
     const router = useRouter()
     useEffect(() => { document.title = "Etymograph : " + paradigm.language + " " + paradigm.name + " Paradigm" })
 
     function saveParadigm() {
         updateParadigm(paradigm.id, paradigm.name, paradigm.pos, editableText)
-            .then(() => router.replace(router.asPath))
+            .then((r) => {
+                if (r.status === 200) {
+                    router.replace(router.asPath)
+                } else {
+                    r.json().then(r => setErrorText(r.message.length > 0 ? r.message : "Failed to save paradigm"))
+                }
+            })
         setEditMode(false)
     }
 
@@ -55,6 +63,7 @@ export default function Paradigm(params) {
             <br/>
             <button onClick={() => saveParadigm()}>Save</button>
         </>}
+        {errorText !== "" && <div className="errorText">{errorText}</div>}
         {allowEdit() && <button onClick={() => setEditMode(!editMode)}>{editMode ? "Cancel" : "Edit"}</button>}
     </>
 }
