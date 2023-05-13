@@ -3726,6 +3726,12 @@
             "gloss": "child",
             "pos": "N",
             "source": "WJ:403"
+        },
+        {
+            "id": 646,
+            "text": "símaryassen",
+            "lang": "Q",
+            "source": "VT49:6"
         }
     ],
     "rules": [

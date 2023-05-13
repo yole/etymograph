@@ -186,13 +186,13 @@ function SingleWord(params) {
             <p>{word.fullGloss !== null && word.fullGloss !== "" ? word.fullGloss : word.gloss}</p>
             {word.notes && <p>{word.notes}</p>}
             {word.source != null && <div className="source">Source: {word.source.startsWith("http") ? <a href={word.source}>{word.source}</a> : word.source}</div>}
-            {word.parseCandidates.map(pc => <>
+            {allowEdit() && word.parseCandidates.map(pc => <>
                 <p>
                     {pc.wordId !== null && <Link href={`/word/${word.language}/${pc.text}/${pc.wordId}`}>{pc.text}</Link>}
                     {pc.wordId === null && <i>{pc.text}</i>}
                     {pc.categories.length === 0 && ` (${pc.ruleNames.join(",")})`}
                     {pc.categories}?{' '}
-                    <button onClick={(e) => acceptParseCandidate(pc)}>Accept</button>
+                    <button onClick={() => acceptParseCandidate(pc)}>Accept</button>
                 </p>
             </>)}
         </>}
