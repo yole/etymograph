@@ -9422,6 +9422,32 @@
                     ]
                 }
             ]
+        },
+        {
+            "id": 3,
+            "name": "Object Suffixes",
+            "lang": "Q",
+            "pos": "V",
+            "rows": [
+                "3p"
+            ],
+            "columns": [
+                {
+                    "title": "Sg",
+                    "cells": [
+                    ]
+                },
+                {
+                    "title": "Pl",
+                    "cells": [
+                        {
+                            "ruleAlternatives": [
+                                423
+                            ]
+                        }
+                    ]
+                }
+            ]
         }
     ],
     "syllableStructures": [
