@@ -23,6 +23,6 @@ export default function CorpusLangIndex(props) {
                 )
             )}
         </ul>
-        {/*<button onClick={() => navigate(`/corpus/${corpusForLanguage.language.shortName}/new`)}>Add</button>*/}
+        {<button onClick={() => router.push(`/corpus/${corpusForLanguage.language.shortName}/new`)}>Add</button>}
     </>
 }
