@@ -18,7 +18,6 @@ export async function getStaticPaths() {
     const paths = []
     for (const lang of props.loaderData) {
         let url = `dictionary/${lang.shortName}/all`
-        console.log(url)
         const dictData = await fetchBackend(url)
         for (const word of dictData.props.loaderData.words) {
             paths.push({params: {lang: lang.shortName, text: [word.text]}})
