@@ -67,6 +67,7 @@ abstract class GraphRepository {
         pos: String
     ): Paradigm
 
+    abstract fun allParadigms(): List<Paradigm>
     abstract fun paradigmsForLanguage(lang: Language): List<Paradigm>
     abstract fun paradigmById(id: Int): Paradigm?
     abstract fun paradigmForRule(rule: Rule): Paradigm?

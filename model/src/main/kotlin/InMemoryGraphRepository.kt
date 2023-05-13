@@ -338,6 +338,10 @@ open class InMemoryGraphRepository : GraphRepository() {
         allLangEntities.add(rule)
     }
 
+    override fun allParadigms(): List<Paradigm> {
+        return paradigms
+    }
+
     override fun paradigmsForLanguage(lang: Language): List<Paradigm> {
         return paradigms.filter { it.language == lang }
     }
