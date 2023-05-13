@@ -6441,6 +6441,33 @@
             "notes": "Rule is evidenced only in Markirya poem.",
             "preInstructions": [
             ]
+        },
+        {
+            "id": 645,
+            "name": "q-2pl",
+            "fromLang": "Q",
+            "toLang": "Q",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "args": [
+                                "lde"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".2PL",
+            "replacedCategories": "",
+            "source": "https://eldamo.org/content/words/word-1020286637.html",
+            "notes": "",
+            "preInstructions": [
+            ]
         }
     ],
     "links": [
