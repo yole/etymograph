@@ -51,7 +51,7 @@ export default function Dictionary(params) {
 
                 return <li key={w.id}>
                     <Link
-                        href={`/word/${dict.language.shortName}/${w.text}${w.homonym ? "/" + w.id : ""}`}>{w.text}</Link> - {gloss}
+                        href={`/word/${dict.language.shortName}/${w.text.toLowerCase()}${w.homonym ? "/" + w.id : ""}`}>{w.text}</Link> - {gloss}
                 </li>;
             })}
         </ul>

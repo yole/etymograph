@@ -21,9 +21,9 @@ export async function getStaticPaths() {
         let url = `dictionary/${lang.shortName}/all`
         const dictData = await fetchBackend(url)
         for (const word of dictData.props.loaderData.words) {
-            paths.push({params: {lang: lang.shortName, text: [word.text]}})
+            paths.push({params: {lang: lang.shortName, text: [word.text.toLowerCase()]}})
             if (word.homonym) {
-                paths.push({params: {lang: lang.shortName, text: [word.text, word.id.toString()]}})
+                paths.push({params: {lang: lang.shortName, text: [word.text.toLowerCase(), word.id.toString()]}})
             }
         }
     }
