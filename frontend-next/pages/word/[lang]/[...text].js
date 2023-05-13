@@ -1,6 +1,7 @@
 import {useEffect, useState} from "react";
 import WordForm from "@/components/WordForm";
 import WordWithStress from "@/components/WordWithStress";
+import WordLink from "@/components/WordLink";
 import {addLink, addWord, deleteLink, deleteWord, fetchBackend, updateLink} from "@/api";
 import Link from "next/link";
 import {useRouter} from "next/router";
@@ -27,15 +28,6 @@ export async function getStaticPaths() {
         }
     }
     return {paths, fallback: false}
-}
-
-export function WordLink(params) {
-    const word = params.word
-    let linkTarget = `/word/${word.language}/${word.text}`;
-    if (word.homonym) {
-        linkTarget += `/${word.id}`
-    }
-    return <Link href={linkTarget}>{word.text}</Link>
 }
 
 function WordLinkComponent(params) {

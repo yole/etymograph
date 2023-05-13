@@ -54,6 +54,11 @@ class RuleController(val graphService: GraphService) {
         val ruleGroups: List<RuleGroupViewModel>
     )
 
+    @GetMapping("/rules")
+    fun allRules(): List<RuleViewModel> {
+        return graphService.graph.allRules().map { it.toViewModel() }
+    }
+
     @GetMapping("/rules/{lang}")
     fun rules(@PathVariable lang: String): RuleListViewModel {
         val language = graphService.resolveLanguage(lang)
