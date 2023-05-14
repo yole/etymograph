@@ -1,0 +1,16 @@
+version: '3.9'
+services:
+  backend:
+    build: .
+    ports:
+      - "8080:8080"
+  frontend-export:
+    environment:
+      - NEXT_PUBLIC_BACKEND_URL=http://backend:8080/
+    build:
+      context: frontend-next
+      dockerfile: export.dockerfile
+    volumes:
+      - type: bind
+        source: ./export
+        target: /app/out
