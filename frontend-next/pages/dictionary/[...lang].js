@@ -4,6 +4,10 @@ import {fetchBackend, allowEdit} from "@/api";
 import {useRouter} from "next/router";
 import Link from "next/link";
 
+export const config = {
+    unstable_runtimeJS: true
+}
+
 export async function getStaticProps(context) {
     const lang = context.params.lang
     if (lang.length === 2) {

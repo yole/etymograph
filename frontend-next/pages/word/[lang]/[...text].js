@@ -6,6 +6,10 @@ import {addLink, addWord, deleteLink, deleteWord, fetchBackend, allowEdit, updat
 import Link from "next/link";
 import {useRouter} from "next/router";
 
+export const config = {
+    unstable_runtimeJS: true
+}
+
 export async function getStaticProps(context) {
     const params = context.params.text
     if (params.length === 1) {
@@ -27,7 +31,7 @@ export async function getStaticPaths() {
             }
         }
     }
-    return {paths, fallback: false}
+    return {paths, fallback: allowEdit()}
 }
 
 function WordLinkComponent(params) {

@@ -3,6 +3,10 @@ import {allowEdit, fetchBackend, updateParadigm} from "@/api";
 import {useRouter} from "next/router";
 import Link from "next/link";
 
+export const config = {
+    unstable_runtimeJS: true
+}
+
 export async function getStaticProps(context) {
     return fetchBackend(`paradigm/${context.params.id}`)
 }
@@ -10,7 +14,7 @@ export async function getStaticProps(context) {
 export async function getStaticPaths() {
     const {props} = await fetchBackend(`paradigms`)
     const paths = props.loaderData.map(paradigm => ({params: {id: paradigm.id.toString()}}))
-    return {paths, fallback: false}
+    return {paths, fallback: allowEdit()}
 }
 
 export default function Paradigm(params) {

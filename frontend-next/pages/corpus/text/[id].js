@@ -7,6 +7,10 @@ import {fetchBackend, associateWord, allowEdit} from "@/api";
 import {useRouter} from "next/router";
 import Link from "next/link";
 
+export const config = {
+    unstable_runtimeJS: true
+}
+
 export async function getStaticProps(context) {
     return fetchBackend(`corpus/text/${context.params.id}`)
 }
@@ -14,7 +18,7 @@ export async function getStaticProps(context) {
 export async function getStaticPaths() {
     const {props} = await fetchBackend(`corpus`)
     const paths = props.loaderData.corpusTexts.map(corpusText => ({params: {id: corpusText.id.toString()}}))
-    return {paths, fallback: false}
+    return {paths, fallback: allowEdit()}
 }
 
 export function CorpusTextWordLink(params) {

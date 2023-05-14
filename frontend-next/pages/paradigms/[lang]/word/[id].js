@@ -1,6 +1,10 @@
-import {fetchBackend} from "@/api";
+import {allowEdit, fetchBackend} from "@/api";
 import Link from "next/link";
 import {useRouter} from "next/router";
+
+export const config = {
+    unstable_runtimeJS: true
+}
 
 export async function getStaticProps(context){
     return fetchBackend(`word/${context.params.id}/paradigms`, { headers: { 'Accept': 'application/json'} })
@@ -16,7 +20,7 @@ export async function getStaticPaths() {
             paths.push({params: {lang: lang.shortName, id: word.id.toString()}})
         }
     }
-    return {paths, fallback: false}
+    return {paths, fallback: allowEdit()}
 }
 
 export default function WordParadigms(params) {
