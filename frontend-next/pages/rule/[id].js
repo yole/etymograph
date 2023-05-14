@@ -12,7 +12,7 @@ export async function getStaticProps(context) {
 export async function getStaticPaths() {
     const {props} = await fetchBackend(`rules`)
     const paths = props.loaderData.map(rule => ({params: {id: rule.id.toString()}}))
-    return {paths, fallback: false}
+    return {paths, fallback: allowEdit()}
 }
 
 export default function Rule(params) {

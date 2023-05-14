@@ -7,6 +7,7 @@ services:
   frontend-export:
     environment:
       - NEXT_PUBLIC_BACKEND_URL=http://backend:8080/
+      - NEXT_PUBLIC_READONLY=true
     build:
       context: frontend-next
       dockerfile: export.dockerfile
