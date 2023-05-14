@@ -1,5 +1,6 @@
 package ru.yole.etymograph.web
 
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.http.HttpStatus
 import org.springframework.stereotype.Service
 import org.springframework.web.server.ResponseStatusException
@@ -32,5 +33,8 @@ abstract class GraphService {
 
 @Service
 class InMemoryGraphService: GraphService() {
-    override val graph = JsonGraphRepository.fromJson(Path.of("jrrt.json"))
+    @Value("\${etymograph.path}")
+    private var graphPath = ""
+
+    override val graph by lazy { JsonGraphRepository.fromJson(Path.of(graphPath)) }
 }
