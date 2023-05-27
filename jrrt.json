@@ -2651,6 +2651,7 @@
             "text": "i",
             "lang": "Q",
             "gloss": "who",
+            "fullGloss": "who, what, which, that",
             "pos": "PRON",
             "source": "VT43:21"
         },
@@ -3819,6 +3820,42 @@
             "fullGloss": "imagination, mind",
             "pos": "N",
             "source": "VT49:16"
+        },
+        {
+            "id": 661,
+            "text": "epë",
+            "lang": "Q",
+            "gloss": "after",
+            "fullGloss": "after (of time), following; before (in all relations but time)",
+            "source": "VT49:8"
+        },
+        {
+            "id": 662,
+            "text": "ta",
+            "lang": "Q",
+            "gloss": "that",
+            "source": "VT49:8"
+        },
+        {
+            "id": 663,
+            "text": "úsië",
+            "lang": "Q",
+            "gloss": "on the contrary",
+            "source": "VT49:18"
+        },
+        {
+            "id": 664,
+            "text": "cé",
+            "lang": "Q",
+            "gloss": "if",
+            "source": "VT49:19"
+        },
+        {
+            "id": 665,
+            "text": "mo",
+            "lang": "Q",
+            "gloss": "one",
+            "source": "VT49:19"
         }
     ],
     "rules": [
@@ -6590,6 +6627,54 @@
             "notes": "",
             "preInstructions": [
             ]
+        },
+        {
+            "id": 666,
+            "name": "q-past",
+            "fromLang": "Q",
+            "toLang": "Q",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "RemoveLastCharacter",
+                            "args": [
+                            ]
+                        },
+                        {
+                            "type": "AddSuffix",
+                            "args": [
+                                "mpe"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "characters": "p"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "args": [
+                                "ne"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "cls": "vowel"
+                    }
+                }
+            ],
+            "addedCategories": ".PST",
+            "fromPOS": "V",
+            "toPOS": "V",
+            "preInstructions": [
+            ]
         }
     ],
     "links": [
@@ -6942,6 +7027,9 @@
             "from": 87,
             "to": 88,
             "type": ">",
+            "ruleIds": [
+                666
+            ],
             "source": "PE17:70"
         },
         {
@@ -8934,6 +9022,36 @@
                 400,
                 409
             ]
+        },
+        {
+            "from": 655,
+            "to": 661,
+            "type": "+"
+        },
+        {
+            "from": 655,
+            "to": 662,
+            "type": "+"
+        },
+        {
+            "from": 655,
+            "to": 363,
+            "type": "+"
+        },
+        {
+            "from": 663,
+            "to": 373,
+            "type": "+"
+        },
+        {
+            "from": 663,
+            "to": 336,
+            "type": "+"
+        },
+        {
+            "from": 32,
+            "to": 549,
+            "type": "~"
         }
     ],
     "corpusTexts": [
@@ -9338,10 +9456,10 @@
                 null,
                 659,
                 646,
+                663,
                 null,
-                null,
-                null,
-                null,
+                664,
+                665,
                 null,
                 null,
                 null,
