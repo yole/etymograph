@@ -40,7 +40,9 @@ fun breakIntoSyllables(word: Word): List<Syllable> {
         index++
         if (!it.advance()) break
     }
-    result.last().endIndex = index
+    if (result.isNotEmpty()) {
+        result.last().endIndex = index
+    }
 
     return result.map { Syllable(it.startIndex, it.endIndex) }
 }

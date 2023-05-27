@@ -172,6 +172,9 @@ open class InMemoryGraphRepository : GraphRepository() {
         val phonemes = PhonemeIterator(word)
         if (language.syllableStructures.isNotEmpty() && vowels != null) {
             val syllables = breakIntoSyllables(word)
+            if (syllables.isEmpty()) {
+                return false
+            }
             for (syllable in syllables) {
                 if (analyzeSyllableStructure(vowels, phonemes, syllable) !in language.syllableStructures) {
                     return false

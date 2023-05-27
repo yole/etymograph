@@ -3796,6 +3796,12 @@
             "gloss": "left hand",
             "fullGloss": "left hand, south",
             "source": "PE17:18"
+        },
+        {
+            "id": 658,
+            "text": "ten",
+            "lang": "Q",
+            "source": "VT49:14"
         }
     ],
     "rules": [
@@ -8889,6 +8895,19 @@
             "from": 656,
             "to": 657,
             "type": "+"
+        },
+        {
+            "from": 656,
+            "to": 85,
+            "type": "+"
+        },
+        {
+            "from": 658,
+            "to": 362,
+            "type": ">",
+            "ruleIds": [
+                404
+            ]
         }
     ],
     "corpusTexts": [
