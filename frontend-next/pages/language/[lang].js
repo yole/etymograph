@@ -64,7 +64,7 @@ export default function LanguageIndex(props) {
             {lang.diphthongs.length > 0 && <p>Diphthongs: {lang.diphthongs.join(", ")}</p>}
             {lang.syllableStructures.length > 0 && <p>Syllable structures: {lang.syllableStructures.join(", ")}</p>}
             {lang.wordFinals.length > 0 && <p>Word finals: {lang.wordFinals.join(", ")}</p>}
-            {lang.stressRuleName != null && <p>Stress rule: {lang.stressRuleName}</p>}
+            {lang.stressRuleName != null && <p>Stress rule: <Link href={`/rule/${lang.stressRuleId}`}>{lang.stressRuleName}</Link></p>}
         </>}
         {editMode && <>
             <textarea rows={5} cols={50} value={phonemeClasses} onChange={(e) => setPhonemeClasses(e.target.value)}/>

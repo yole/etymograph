@@ -23,6 +23,7 @@ class LanguageController(val graphService: GraphService) {
         val digraphs: List<String>,
         val phonemeClasses: List<PhonemeClassViewModel>,
         val letterNormalization: String,
+        val stressRuleId: Int?,
         val stressRuleName: String?,
         val syllableStructures: List<String>,
         val wordFinals: List<String>
@@ -44,6 +45,7 @@ class LanguageController(val graphService: GraphService) {
             language.digraphs,
             language.phonemeClasses.map { PhonemeClassViewModel(it.name, it.matchingPhonemes) },
             language.letterNormalization.entries.joinToString(", ") { (from, to) -> "$from=$to" },
+            stressRule?.id,
             stressRule?.name,
             language.syllableStructures,
             language.wordFinals
