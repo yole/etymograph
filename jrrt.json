@@ -3802,6 +3802,23 @@
             "text": "ten",
             "lang": "Q",
             "source": "VT49:14"
+        },
+        {
+            "id": 659,
+            "text": "ulca",
+            "lang": "Q",
+            "gloss": "evil",
+            "pos": "ADJ",
+            "source": "VT49:14"
+        },
+        {
+            "id": 660,
+            "text": "síma",
+            "lang": "Q",
+            "gloss": "mind",
+            "fullGloss": "imagination, mind",
+            "pos": "N",
+            "source": "VT49:16"
         }
     ],
     "rules": [
@@ -8908,6 +8925,15 @@
             "ruleIds": [
                 404
             ]
+        },
+        {
+            "from": 646,
+            "to": 660,
+            "type": ">",
+            "ruleIds": [
+                400,
+                409
+            ]
         }
     ],
     "corpusTexts": [
@@ -9310,8 +9336,8 @@
                 null,
                 null,
                 null,
-                null,
-                null,
+                659,
+                646,
                 null,
                 null,
                 null,
@@ -9585,7 +9611,7 @@
             "id": 2,
             "name": "Possessive Pronouns",
             "lang": "Q",
-            "pos": "V",
+            "pos": "N",
             "rows": [
                 "1p",
                 "2p",

@@ -32,7 +32,7 @@ data class Paradigm(
     val id: Int,
     val name: String,
     val language: Language,
-    val pos: String
+    var pos: String
 ) {
     val rowTitles = mutableListOf<String>()
     val columns = mutableListOf<ParadigmColumn>()

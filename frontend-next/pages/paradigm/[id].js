@@ -21,13 +21,14 @@ export default function Paradigm(params) {
     const paradigm = params.loaderData
     const [editMode, setEditMode] = useState(false)
     const [editableText, setEditableText] = useState(paradigm.editableText)
+    const [pos, setPos] = useState(paradigm.pos)
     const [errorText, setErrorText] = useState("")
 
     const router = useRouter()
     useEffect(() => { document.title = "Etymograph : " + paradigm.language + " " + paradigm.name + " Paradigm" })
 
     function saveParadigm() {
-        updateParadigm(paradigm.id, paradigm.name, paradigm.pos, editableText)
+        updateParadigm(paradigm.id, paradigm.name, pos, editableText)
             .then((r) => {
                 if (r.status === 200) {
                     router.replace(router.asPath)
@@ -44,8 +45,9 @@ export default function Paradigm(params) {
             <Link href={`/language/${paradigm.language}`}>{paradigm.languageFullName}</Link> {'> '}
             <Link href={`/paradigms/${paradigm.language}`}>Paradigms</Link>{' > '}</small>
             {paradigm.name}</h2>
-        <p>POS: {paradigm.pos}</p>
-        {!editMode && <table>
+        {!editMode && <>
+            <p>POS: {paradigm.pos}</p>
+            <table>
             <thead><tr>
                 <td/>
                 {paradigm.columns.map(c => <td>{c.title}</td>)}
@@ -61,8 +63,15 @@ export default function Paradigm(params) {
                 </td>)}
             </tr>)}
             </tbody>
-        </table>}
+            </table>
+        </>}
         {editMode && <>
+            <table><tbody>
+            <tr>
+                <td><label>POS:</label></td>
+                <td><input type="text" value={pos} onChange={(e) => setPos(e.target.value)}/></td>
+            </tr>
+            </tbody></table>
             <textarea rows="10" cols="80" value={editableText} onChange={(e) => setEditableText(e.target.value)}/>
             <br/>
             <button onClick={() => saveParadigm()}>Save</button>
