@@ -95,7 +95,8 @@ function WordLinkComponent(params) {
                 <td><input type="text" value={ruleNames} onChange={e => setRuleNames(e.target.value)}/></td>
             </tr>
             </tbody></table>
-            <button onClick={() => saveLink()}>Save</button>
+            <button onClick={() => saveLink()}>Save</button>&nbsp;
+            <button onClick={() => setEditMode(false)}>Cancel</button>
         </>}
         {errorText !== "" && <div className="errorText">{errorText}</div>}
     </div>
