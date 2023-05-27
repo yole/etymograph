@@ -3732,6 +3732,70 @@
             "text": "símaryassen",
             "lang": "Q",
             "source": "VT49:6"
+        },
+        {
+            "id": 648,
+            "text": "eldar",
+            "lang": "Q",
+            "source": "VT49:6"
+        },
+        {
+            "id": 649,
+            "text": "Elda",
+            "lang": "Q",
+            "gloss": "elf",
+            "pos": "N"
+        },
+        {
+            "id": 650,
+            "text": "ataformaiti",
+            "lang": "Q",
+            "source": "VT49:6"
+        },
+        {
+            "id": 651,
+            "text": "ataformaite",
+            "lang": "Q",
+            "gloss": "ambidextrous",
+            "pos": "N",
+            "source": "VT49:11"
+        },
+        {
+            "id": 652,
+            "text": "ata",
+            "lang": "Q",
+            "gloss": "double",
+            "source": "PE17:166"
+        },
+        {
+            "id": 653,
+            "text": "formaite",
+            "lang": "Q",
+            "gloss": "dextrous",
+            "pos": "ADJ",
+            "source": "VT49:11"
+        },
+        {
+            "id": 655,
+            "text": "epetai",
+            "lang": "Q",
+            "gloss": "consequently",
+            "source": "VT49:12"
+        },
+        {
+            "id": 656,
+            "text": "hyarma",
+            "lang": "Q",
+            "gloss": "left hand",
+            "source": "VT49:12"
+        },
+        {
+            "id": 657,
+            "text": "hyar-",
+            "lang": "Q",
+            "gloss": "left hand",
+            "fullGloss": "left hand, south",
+            "source": "PE17:18"
         }
     ],
     "rules": [
@@ -4537,6 +4601,8 @@
                 }
             ],
             "addedCategories": ".DU",
+            "fromPOS": "N",
+            "toPOS": "N",
             "source": "https://eldamo.org/content/words/word-2265073101.html",
             "preInstructions": [
                 {
@@ -5022,8 +5088,8 @@
                 }
             ],
             "addedCategories": ".3PL",
-            "replacedCategories": "",
-            "source": "",
+            "fromPOS": "V",
+            "toPOS": "V",
             "preInstructions": [
             ]
         },
@@ -8787,6 +8853,42 @@
             "ruleIds": [
                 427
             ]
+        },
+        {
+            "from": 648,
+            "to": 649,
+            "type": ">",
+            "ruleIds": [
+                396
+            ]
+        },
+        {
+            "from": 650,
+            "to": 651,
+            "type": ">",
+            "ruleIds": [
+                396
+            ]
+        },
+        {
+            "from": 651,
+            "to": 652,
+            "type": "+"
+        },
+        {
+            "from": 651,
+            "to": 653,
+            "type": "+"
+        },
+        {
+            "from": 653,
+            "to": 217,
+            "type": ">"
+        },
+        {
+            "from": 656,
+            "to": 657,
+            "type": "+"
         }
     ],
     "corpusTexts": [
@@ -9182,6 +9284,26 @@
             "title": "Ambidexters Sentence",
             "lang": "Q",
             "wordIds": [
+                648,
+                650,
+                655,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                656
             ],
             "source": "VT49:6"
         }
@@ -9493,6 +9615,32 @@
                         {
                             "ruleAlternatives": [
                                 423
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "name": "Adjective",
+            "lang": "Q",
+            "pos": "ADJ",
+            "rows": [
+                "Nom"
+            ],
+            "columns": [
+                {
+                    "title": "Sg",
+                    "cells": [
+                    ]
+                },
+                {
+                    "title": "Pl",
+                    "cells": [
+                        {
+                            "ruleAlternatives": [
+                                407
                             ]
                         }
                     ]

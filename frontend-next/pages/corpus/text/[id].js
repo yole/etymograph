@@ -56,7 +56,7 @@ export default function CorpusText(params) {
 
     function submitted(word) {
         setWordFormVisible(false)
-        associateWord(params.id, word.id, wordIndex).then(() => {
+        associateWord(router.query.id, word.id, wordIndex).then(() => {
             router.replace(router.asPath)
             if (word.gloss === "" || word.gloss === null) {
                 router.push("/word/" + word.language + "/" + word.text)
