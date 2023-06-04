@@ -190,9 +190,15 @@ class RuleController(val graphService: GraphService) {
 
     @PostMapping("/rule/{id}", consumes = ["application/json"])
     @ResponseBody
-    fun updateRule(@PathVariable id: Int, @RequestBody params: UpdateRuleParameters) {
+    fun updateRule(@PathVariable id: Int, @RequestBody params: UpdateRuleParameters): RuleViewModel {
+        val fromLanguage = graphService.resolveLanguage(params.fromLang)
+        val toLanguage = graphService.resolveLanguage(params.toLang)
+
         val graph = graphService.graph
         val rule = resolveRule(id)
+        rule.name = params.name
+        rule.fromLanguage = fromLanguage
+        rule.toLanguage = toLanguage
         rule.logic = Rule.parseBranches(params.text, parseContext(rule.fromLanguage, rule.toLanguage))
         rule.notes = params.notes
         rule.addedCategories = params.addedCategories.nullize()
@@ -201,6 +207,7 @@ class RuleController(val graphService: GraphService) {
         rule.toPOS = params.toPOS.nullize()
         rule.source = params.source.nullize()
         graph.save()
+        return rule.toViewModel()
     }
 
     private fun resolveRule(id: Int): Rule {

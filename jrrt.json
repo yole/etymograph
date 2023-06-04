@@ -3963,6 +3963,18 @@
             "lang": "Q",
             "gloss": "Mighty Arising",
             "pos": "NP"
+        },
+        {
+            "id": 684,
+            "text": "formenna",
+            "lang": "Q",
+            "source": "VT49:6"
+        },
+        {
+            "id": 685,
+            "text": "tentanes",
+            "lang": "Q",
+            "source": "VT49:26"
         }
     ],
     "rules": [
@@ -4327,7 +4339,7 @@
         },
         {
             "id": 403,
-            "name": "q-3sg",
+            "name": "q-2sg-fam",
             "fromLang": "Q",
             "toLang": "Q",
             "branches": [
@@ -4345,7 +4357,7 @@
                     }
                 }
             ],
-            "addedCategories": "3SG",
+            "addedCategories": "2SG.FAM",
             "source": "PE17:76",
             "preInstructions": [
             ]
@@ -6875,6 +6887,64 @@
             "notes": "",
             "preInstructions": [
             ]
+        },
+        {
+            "id": 686,
+            "name": "q-3sg",
+            "fromLang": "Q",
+            "toLang": "Q",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "args": [
+                                "sse"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".3SG",
+            "replacedCategories": "",
+            "fromPOS": "V",
+            "toPOS": "",
+            "source": "",
+            "notes": "",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 687,
+            "name": "q-3sg-short",
+            "fromLang": "Q",
+            "toLang": "Q",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "args": [
+                                "s"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".3SG",
+            "replacedCategories": "",
+            "fromPOS": "V",
+            "toPOS": "",
+            "source": "",
+            "notes": "",
+            "preInstructions": [
+            ]
         }
     ],
     "links": [
@@ -9343,6 +9413,14 @@
             "ruleIds": [
                 398
             ]
+        },
+        {
+            "from": 684,
+            "to": 143,
+            "type": ">",
+            "ruleIds": [
+                399
+            ]
         }
     ],
     "corpusTexts": [
@@ -9759,7 +9837,12 @@
                 null,
                 656,
                 680,
-                682
+                682,
+                null,
+                null,
+                null,
+                684,
+                685
             ],
             "source": "VT49:6"
         }
@@ -9973,6 +10056,7 @@
                 "1p",
                 "1p-excl",
                 "2p",
+                "2p-fam",
                 "3p"
             ],
             "columns": [
@@ -9995,6 +10079,12 @@
                         {
                             "ruleAlternatives": [
                                 403
+                            ]
+                        },
+                        {
+                            "ruleAlternatives": [
+                                686,
+                                687
                             ]
                         }
                     ]

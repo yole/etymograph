@@ -82,9 +82,9 @@ class RuleLogic(val preInstructions: List<RuleInstruction>, val branches: List<R
 
 class Rule(
     id: Int,
-    val name: String,
-    val fromLanguage: Language,
-    val toLanguage: Language,
+    var name: String,
+    var fromLanguage: Language,
+    var toLanguage: Language,
     var logic: RuleLogic,
     var addedCategories: String?,
     var replacedCategories: String?,

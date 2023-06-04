@@ -1,28 +1,36 @@
 import {useState} from "react";
-import {addRule} from "@/api";
+import {addRule, updateRule} from "@/api";
 
 export default function RuleForm(props) {
-    const [name, setName] = useState("")
-    const [fromLanguage, setFromLanguage] = useState("")
-    const [toLanguage, setToLanguage] = useState("")
-    const [addedCategories, setAddedCategories] = useState("")
-    const [replacedCategories, setReplacedCategories] = useState("")
-    const [fromPOS, setFromPOS] = useState("")
-    const [toPOS, setToPOS] = useState("")
-    const [source, setSource] = useState("")
-    const [notes, setNotes] = useState("")
-    const [editableText, setEditableText] = useState("")
+    const [name, setName] = useState(props.initialName !== undefined ? props.initialName : "")
+    const [fromLanguage, setFromLanguage] = useState(props.initialFromLanguage !== undefined ? props.initialFromLanguage : "")
+    const [toLanguage, setToLanguage] = useState(props.initialToLanguage !== undefined ? props.initialToLanguage : "")
+    const [addedCategories, setAddedCategories] = useState(props.initialAddedCategories !== undefined ? props.initialAddedCategories : "")
+    const [replacedCategories, setReplacedCategories] = useState(props.initialReplacedCategories !== undefined ? props.initialReplacedCategories : "")
+    const [fromPOS, setFromPOS] = useState(props.initialFromPOS !== undefined ? props.initialFromPOS : "")
+    const [toPOS, setToPOS] = useState(props.initialToPOS !== undefined ? props.initialToPOS : "")
+    const [source, setSource] = useState(props.initialSource !== undefined ? props.initialSource : "")
+    const [notes, setNotes] = useState(props.initialNotes !== undefined ? props.initialNotes : "")
+    const [editableText, setEditableText] = useState(props.initialEditableText !== undefined ? props.initialEditableText : "")
     const [errorText, setErrorText] = useState("")
 
     function saveRule() {
-        addRule(name, fromLanguage, toLanguage, addedCategories, replacedCategories, fromPOS, toPOS, editableText, source, notes)
-            .then(r => {
-                if (r.status === 200)
-                    r.json().then(r => props.submitted(r.id))
-                else {
-                    r.json().then(r => setErrorText(r.message.length > 0 ? r.message : "Failed to save rule"))
-                }
-            })
+        if (props.updateId !== undefined) {
+            updateRule(props.updateId, name, fromLanguage, toLanguage, addedCategories, replacedCategories, fromPOS, toPOS, editableText, source, notes)
+                .then(handleResponse)
+        }
+        else {
+            addRule(name, fromLanguage, toLanguage, addedCategories, replacedCategories, fromPOS, toPOS, editableText, source, notes)
+                .then(handleResponse)
+        }
+    }
+
+    function handleResponse(r) {
+        if (r.status === 200)
+            r.json().then(r => props.submitted(r.id))
+        else {
+            r.json().then(r => setErrorText(r.message.length > 0 ? r.message : "Failed to save rule"))
+        }
     }
 
     return <>

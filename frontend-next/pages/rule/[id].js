@@ -4,6 +4,7 @@ import WordLink from "@/components/WordLink";
 import {fetchBackend} from "@/api";
 import {useRouter} from "next/router";
 import Link from "next/link";
+import RuleForm from "@/components/RuleForm";
 
 export const config = {
     unstable_runtimeJS: true
@@ -23,13 +24,6 @@ export default function Rule(params) {
     const rule = params.loaderData
     const [editMode, setEditMode] = useState(false)
     const [linkMode, setLinkMode] = useState(false)
-    const [addedCategories, setAddedCategories] = useState(rule.addedCategories)
-    const [replacedCategories, setReplacedCategories] = useState(rule.replacedCategories)
-    const [fromPOS, setFromPOS] = useState(rule.fromPOS)
-    const [toPOS, setToPOS] = useState(rule.toPOS)
-    const [source, setSource] = useState(rule.source)
-    const [editableText, setEditableText] = useState(rule.editableText)
-    const [notes, setNotes] = useState(rule.notes)
     const [linkRuleName, setLinkRuleName] = useState("")
     const [errorText, setErrorText] = useState("")
     const router = useRouter()
@@ -38,16 +32,14 @@ export default function Rule(params) {
     function handleResponse(r) {
         if (r.status === 200) {
             setErrorText("")
-            router.replace(router.asPath)
         } else {
             r.json().then(r => setErrorText(r.message.length > 0 ? r.message : "Failed to save rule"))
         }
     }
 
-    function saveRule() {
-        updateRule(rule.id, rule.name, rule.fromLang, rule.toLang, addedCategories, replacedCategories, fromPOS, toPOS, editableText, source, notes)
-            .then(handleResponse)
+    function submitted() {
         setEditMode(false)
+        router.replace(router.asPath)
     }
 
     function saveLink() {
@@ -85,36 +77,20 @@ export default function Rule(params) {
                 <p>{rule.notes}</p>
             </>}
         </>}
-        {editMode && <>
-            <table><tbody>
-            <tr>
-                <td><label>Added categories:</label></td>
-                <td><input type="text" value={addedCategories} onChange={(e) => setAddedCategories(e.target.value)}/></td>
-            </tr>
-            <tr>
-                <td><label>Replaced categories:</label></td>
-                <td><input type="text" value={replacedCategories} onChange={(e) => setReplacedCategories(e.target.value)}/></td>
-            </tr>
-            <tr>
-                <td><label>From POS</label></td>
-                <td><input type="text" value={fromPOS} onChange={(e) => setFromPOS(e.target.value)}/></td>
-            </tr>
-            <tr>
-                <td><label>To POS:</label></td>
-                <td><input type="text" value={toPOS} onChange={(e) => setToPOS(e.target.value)}/></td>
-            </tr>
-            <tr>
-                <td><label>Source:</label></td>
-                <td><input type="text" value={source} onChange={(e) => setSource(e.target.value)}/></td>
-            </tr>
-            </tbody></table>
-            <textarea rows="10" cols="50" value={editableText} onChange={(e) => setEditableText(e.target.value)}/>
-            <br/>
-            <h3>Notes</h3>
-            <textarea rows="5" cols="50" value={notes} onChange={(e) => setNotes(e.target.value)}/>
-            <br/>
-            <button onClick={() => saveRule()}>Save</button>&nbsp;
-        </>}
+        {editMode && <RuleForm
+            updateId={rule.id}
+            initialName={rule.name}
+            initialFromLanguage={rule.fromLang}
+            initialToLanguage={rule.toLang}
+            initialAddedCategories={rule.addedCategories}
+            initialReplacedCategories={rule.replacedCategories}
+            initialFromPOS={rule.fromPOS}
+            initialToPOS={rule.toPOS}
+            initialSource={rule.source}
+            initialNotes={rule.notes}
+            initialEditableText={rule.editableText}
+            submitted={submitted}
+        />}
 
         {allowEdit() && <>
             <button onClick={() => setEditMode(!editMode)}>{editMode ? "Cancel" : "Edit"}</button>{' '}
