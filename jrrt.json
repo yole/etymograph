@@ -3975,6 +3975,63 @@
             "text": "tentanes",
             "lang": "Q",
             "source": "VT49:26"
+        },
+        {
+            "id": 688,
+            "text": "amanna",
+            "lang": "Q",
+            "source": "VT49:6"
+        },
+        {
+            "id": 689,
+            "text": "Aman",
+            "lang": "Q",
+            "gloss": "Blessed Realm",
+            "pos": "NP"
+        },
+        {
+            "id": 690,
+            "text": "raumo",
+            "lang": "Q",
+            "gloss": "storm",
+            "pos": "N",
+            "source": "MC:221"
+        },
+        {
+            "id": 691,
+            "text": "nurrua",
+            "lang": "Q",
+            "source": "MC:221"
+        },
+        {
+            "id": 692,
+            "text": "nurru-",
+            "lang": "Q",
+            "gloss": "mumble",
+            "pos": "V",
+            "source": "MC:222"
+        },
+        {
+            "id": 693,
+            "text": "undumë",
+            "lang": "Q",
+            "gloss": "abyss",
+            "pos": "N",
+            "source": "MC:222"
+        },
+        {
+            "id": 694,
+            "text": "rúma",
+            "lang": "Q",
+            "source": "MC:222"
+        },
+        {
+            "id": 695,
+            "text": "rum-",
+            "lang": "Q",
+            "gloss": "shift",
+            "pos": "V",
+            "source": "MC:222"
         }
     ],
     "rules": [
@@ -9430,6 +9487,30 @@
                 666,
                 687
             ]
+        },
+        {
+            "from": 688,
+            "to": 689,
+            "type": ">",
+            "ruleIds": [
+                399
+            ]
+        },
+        {
+            "from": 691,
+            "to": 692,
+            "type": ">",
+            "ruleIds": [
+                422
+            ]
+        },
+        {
+            "from": 694,
+            "to": 695,
+            "type": ">",
+            "ruleIds": [
+                430
+            ]
         }
     ],
     "corpusTexts": [
@@ -9757,10 +9838,10 @@
                 635,
                 null,
                 636,
-                null,
-                null,
-                null,
-                null,
+                690,
+                691,
+                693,
+                694,
                 null,
                 null,
                 null,
@@ -9851,7 +9932,8 @@
                 null,
                 null,
                 684,
-                685
+                685,
+                688
             ],
             "source": "VT49:6"
         }

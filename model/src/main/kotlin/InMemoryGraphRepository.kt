@@ -146,7 +146,7 @@ open class InMemoryGraphRepository : GraphRepository() {
                 rule.reverseApply(Word(-1, text, language, pos=pos))
                     .filter {
                         language.normalizeWord(it) != language.normalizeWord(text) &&
-                                isAcceptableWord(language, it)
+                                (isAcceptableWord(language, it) || wordsByText(language, "$it-").isNotEmpty())
                     }
                     .flatMap { text ->
                         val w = wordsByText(language, text).ifEmpty { wordsByText(language, "$text-") }
