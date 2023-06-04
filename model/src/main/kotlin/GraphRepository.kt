@@ -21,6 +21,7 @@ abstract class GraphRepository {
     abstract fun allWords(lang: Language): List<Word>
     abstract fun findAttestations(word: Word): List<Attestation>
     abstract fun isHomonym(word: Word): Boolean
+    abstract fun isCompound(word: Word): Boolean
     abstract fun findParseCandidates(word: Word): List<ParseCandidate>
 
     abstract fun allRules(): Iterable<Rule>

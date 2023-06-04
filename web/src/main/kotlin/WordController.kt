@@ -52,7 +52,8 @@ class WordController(val graphService: GraphService) {
         val linksFrom: List<LinkTypeViewModel>,
         val linksTo: List<LinkTypeViewModel>,
         val stressIndex: Int?,
-        val stressLength: Int?
+        val stressLength: Int?,
+        val compound: Boolean
     )
 
     @GetMapping("/word/{lang}/{text}")
@@ -130,7 +131,8 @@ class WordController(val graphService: GraphService) {
                 )
             },
             stressData?.index,
-            stressData?.length
+            stressData?.length,
+            graph.isCompound(this)
         )
     }
 

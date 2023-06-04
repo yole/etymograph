@@ -180,11 +180,17 @@ function SingleWord(params) {
         }
     }
 
+    const isName = word.pos === "NP"
+    const isCompound = word.compound
+
     return <>
         <h2><small>
             <Link href={`/`}>Etymograph</Link> {'> '}
             <Link href={`/language/${word.language}`}>{word.languageFullName}</Link> {'> '}
-            <Link href={`/dictionary/${word.language}`}>Dictionary</Link> {'>'} </small>
+            {!isName && !isCompound && <Link href={`/dictionary/${word.language}`}>Dictionary</Link>}
+            {isName && <Link href={`/dictionary/${word.language}/names`}>Names</Link>}
+            {isCompound && <Link href={`/dictionary/${word.language}/compounds`}>Compounds</Link>}
+            {' > '}</small>
             <WordWithStress text={word.text} stressIndex={word.stressIndex} stressLength={word.stressLength}/></h2>
         {!editMode && <>
             {word.pos && <div>{word.pos}</div>}

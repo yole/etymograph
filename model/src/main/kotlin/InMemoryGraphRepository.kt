@@ -82,12 +82,14 @@ open class InMemoryGraphRepository : GraphRepository() {
             word.pos == "NP" -> WordKind.NAME
             word.gloss == null -> WordKind.DERIVED
             word.hasGrammarCategory() -> WordKind.DERIVED
-            linksFrom[word.id]?.any {
-                link -> link.type == Link.Agglutination && link.toEntity is Word && !link.toEntity.isRoot()
-            } == true -> WordKind.COMPOUND
+            isCompound(word) -> WordKind.COMPOUND
             else -> WordKind.NORMAL
         }
     }
+
+    override fun isCompound(word: Word) = linksFrom[word.id]?.any { link ->
+        link.type == Link.Agglutination && link.toEntity is Word && !link.toEntity.isRoot()
+    } == true
 
     private fun Word.hasGrammarCategory(): Boolean {
         val suffix = gloss?.substringAfterLast('.')
