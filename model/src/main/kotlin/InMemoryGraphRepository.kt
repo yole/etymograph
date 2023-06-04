@@ -149,7 +149,7 @@ open class InMemoryGraphRepository : GraphRepository() {
                                 isAcceptableWord(language, it)
                     }
                     .flatMap { text ->
-                        val w = wordsByText(language, text)
+                        val w = wordsByText(language, text).ifEmpty { wordsByText(language, "$text-") }
                         if (w.isNotEmpty())
                             w.map { ParseCandidate(text, listOf(rule) + prevRules, it.pos, it) }
                         else

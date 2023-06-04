@@ -9421,6 +9421,15 @@
             "ruleIds": [
                 399
             ]
+        },
+        {
+            "from": 685,
+            "to": 681,
+            "type": ">",
+            "ruleIds": [
+                666,
+                687
+            ]
         }
     ],
     "corpusTexts": [
