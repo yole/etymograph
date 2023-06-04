@@ -42,11 +42,13 @@ export function deleteWord(id) {
     return postToBackend(`word/${id}/delete`, {})
 }
 
-export function addRule(name, fromLang, toLang, addedCategories, replacedCategories, text, source, notes) {
+export function addRule(name, fromLang, toLang, addedCategories, replacedCategories, fromPOS, toPOS, text, source, notes) {
     return postToBackend('rule',
         {name: name, fromLang: fromLang, toLang: toLang, text: text,
             addedCategories: addedCategories,
             replacedCategories: replacedCategories,
+            fromPOS: fromPOS,
+            toPOS: toPOS,
             source: source,
             notes: notes
         })
