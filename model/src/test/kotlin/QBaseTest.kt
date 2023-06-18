@@ -15,4 +15,6 @@ open class QBaseTest {
     val lv = PhonemeClass("long vowel", listOf("á", "ó", "ú", "í", "é")).also { q.phonemeClasses.add(it) }
 
     val emptyRepo = InMemoryGraphRepository()
+
+    fun GraphRepository.addWord(text: String, gloss: String? = text) = findOrAddWord(text, q, gloss)
 }

@@ -1,5 +1,12 @@
 package ru.yole.etymograph
 
+class WordSegment(
+    val firstCharacter: Int,
+    val length: Int,
+    val category: String?,
+    val sourceRule: Rule?
+)
+
 class Word(
     id: Int,
     var text: String,
@@ -32,9 +39,17 @@ class Word(
 
     val normalizedText: String get() = language.normalizeWord(text)
 
-    fun derive(text: String): Word = if (this.text == text) this else Word(-1, text, language, gloss, fullGloss, pos)
+    fun derive(text: String, segment: WordSegment? = null): Word =
+        if (this.text == text)
+            this
+        else
+            Word(-1, text, language, gloss, fullGloss, pos).apply {
+                segment?.let { segments = listOf(it) }
+            }
 
     var stressedPhonemeIndex: Int = -1
+
+    var segments: List<WordSegment>? = null
 
     fun getOrComputeGloss(graph: GraphRepository): String? {
         gloss?.let { return it }
@@ -48,11 +63,29 @@ class Word(
         if (derivation != null) {
             if (derivation.rules.any { it.addedCategories != null }) {
                 (derivation.toEntity as Word).getOrComputeGloss(graph)?.let { fromGloss ->
-                    return derivation.rules.fold(fromGloss) { gloss, rule -> rule.applyCategories(gloss) }
+                    return derivation.rules.fold(fromGloss) { gloss, rule ->
+                        val segment = segments?.any { it.sourceRule == rule }
+                        rule.applyCategories(gloss, segment != null)
+                    }
                 }
             }
         }
         return null
+    }
+
+    fun segmentedText(): String {
+        if (segments.isNullOrEmpty()) return text
+        return buildString {
+            var index = 0
+            for (segment in segments!!) {
+                if (index < segment.firstCharacter) {
+                    append(text.substring(index, segment.firstCharacter))
+                }
+                index = segment.firstCharacter
+                append("-")
+            }
+            append(text.substring(index))
+        }
     }
 }
 

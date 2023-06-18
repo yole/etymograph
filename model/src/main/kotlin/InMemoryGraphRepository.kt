@@ -168,6 +168,19 @@ open class InMemoryGraphRepository : GraphRepository() {
             }
     }
 
+    override fun restoreSegments(word: Word): Word {
+        val baseWordLink = getLinksFrom(word).find { it.type == Link.Derived }
+        if (baseWordLink != null) {
+            val baseWordWithSegments = restoreSegments(baseWordLink.toEntity as Word)
+            val restoredWord = baseWordLink.rules.fold(baseWordWithSegments) { w, r -> r.apply(w, this) }
+            if (word.language.isNormalizedEqual(restoredWord.text, word.text)) {
+                return restoredWord
+            }
+        }
+
+        return word
+    }
+
     fun isAcceptableWord(language: Language, wordText: String): Boolean {
         val word = Word(-1, wordText, language)
         val vowels = language.phonemeClassByName(PhonemeClass.vowelClassName)

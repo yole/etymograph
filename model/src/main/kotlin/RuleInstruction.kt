@@ -19,10 +19,11 @@ enum class InstructionType(
 }
 
 open class RuleInstruction(val type: InstructionType, val arg: String) {
-    open fun apply(word: Word, graph: GraphRepository): Word = when(type) {
+    open fun apply(rule: Rule, word: Word, graph: GraphRepository): Word = when(type) {
         InstructionType.NoChange -> word
         InstructionType.RemoveLastCharacter -> word.derive(word.text.substring(0, word.text.lastIndex))
-        InstructionType.AddSuffix -> word.derive(word.text + arg)
+        InstructionType.AddSuffix ->
+            word.derive(word.text + arg, WordSegment(word.text.length, arg.length, rule.addedCategories, rule))
         else -> throw IllegalStateException("Can't apply phoneme instruction to full word")
     }
 
@@ -73,15 +74,15 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
     }
 }
 
-fun List<RuleInstruction>.apply(word: Word, graph: GraphRepository): Word {
+fun List<RuleInstruction>.apply(rule: Rule, word: Word, graph: GraphRepository): Word {
     val normalizedWord = word.derive(word.text.trimEnd('-'))
-    return fold(normalizedWord) { s, i -> i.apply(s, graph) }
+    return fold(normalizedWord) { s, i -> i.apply(rule, s, graph) }
 }
 
 class ApplyRuleInstruction(val ruleRef: RuleRef)
     : RuleInstruction(InstructionType.ApplyRule, "")
 {
-    override fun apply(word: Word, graph: GraphRepository): Word {
+    override fun apply(rule: Rule, word: Word, graph: GraphRepository): Word {
         val rule = ruleRef.resolve()
         val link = graph.getLinksTo(word).find { it.rules == listOf(rule) }
         return link?.fromEntity as? Word ?: rule.apply(word, graph)
@@ -99,7 +100,7 @@ class ApplySoundRuleInstruction(language: Language, val ruleRef: RuleRef, arg: S
 {
     val seekTarget = SeekTarget.parse(arg, language)
 
-    override fun apply(word: Word, graph: GraphRepository): Word {
+    override fun apply(rule: Rule, word: Word, graph: GraphRepository): Word {
         val phonemes = PhonemeIterator(word)
         if (phonemes.seek(seekTarget)) {
             ruleRef.resolve().applyToPhoneme(phonemes)
@@ -132,7 +133,7 @@ class ApplySoundRuleInstruction(language: Language, val ruleRef: RuleRef, arg: S
 class ApplyStressInstruction(val language: Language, arg: String) : RuleInstruction(InstructionType.ApplyStress, arg) {
     private val syllableIndex = Ordinals.parse(arg)?.first ?: throw RuleParseException("Can't parse ordinal '$arg'")
 
-    override fun apply(word: Word, graph: GraphRepository): Word {
+    override fun apply(rule: Rule, word: Word, graph: GraphRepository): Word {
         val syllables = breakIntoSyllables(word)
         val vowel = language.phonemeClassByName(PhonemeClass.vowelClassName) ?: return word
         val syllable = Ordinals.at(syllables, syllableIndex) ?: return word
@@ -146,7 +147,7 @@ class ApplyStressInstruction(val language: Language, arg: String) : RuleInstruct
 class PrependInstruction(language: Language, arg: String) : RuleInstruction(InstructionType.Prepend, arg) {
     val seekTarget = SeekTarget.parse(arg, language)
 
-    override fun apply(word: Word, graph: GraphRepository): Word {
+    override fun apply(rule: Rule, word: Word, graph: GraphRepository): Word {
         val phonemes = PhonemeIterator(word)
         if (phonemes.seek(seekTarget)) {
             return word.derive(phonemes.current + word.text)

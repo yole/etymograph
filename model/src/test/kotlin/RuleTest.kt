@@ -8,6 +8,8 @@ import ru.yole.etymograph.JsonGraphRepository.Companion.ruleToSerializedFormat
 import ru.yole.etymograph.JsonGraphRepository.Companion.toSerializedFormat
 
 class RuleTest : QBaseTest() {
+    private val dummyRule = parseRule(q, q, "- remove last character")
+
     @Test
     fun conditions() {
         val c = LeafRuleCondition(ConditionType.EndsWith, v, null, false)
@@ -18,7 +20,7 @@ class RuleTest : QBaseTest() {
     @Test
     fun instructions() {
         val i = RuleInstruction(InstructionType.RemoveLastCharacter, "")
-        assertEquals("parm", i.apply(q.word("parma"), emptyRepo).text)
+        assertEquals("parm", i.apply(dummyRule, q.word("parma"), emptyRepo).text)
     }
 
     @Test
@@ -30,7 +32,7 @@ class RuleTest : QBaseTest() {
         val r = RuleBranch(c, listOf(i1, i2))
 
         assertTrue(r.matches(Word(0, "lasse", q)))
-        assertEquals("lassi", r.apply(q.word("lasse"), emptyRepo).text)
+        assertEquals("lassi", r.apply(dummyRule, q.word("lasse"), emptyRepo).text)
     }
 
     @Test
@@ -193,7 +195,7 @@ class RuleTest : QBaseTest() {
             - new sound is 'á'
         """.trimIndent())
         val applySoundRuleInstruction = ApplySoundRuleInstruction(q, RuleRef.to(soundRule), "first vowel")
-        assertEquals("lásse", applySoundRuleInstruction.apply(q.word("lasse"), emptyRepo).text)
+        assertEquals("lásse", applySoundRuleInstruction.apply(soundRule, q.word("lasse"), emptyRepo).text)
     }
 
     @Test
@@ -305,11 +307,12 @@ class RuleTest : QBaseTest() {
 
     @Test
     fun prepend() {
-        val instruction = RuleInstruction.parse("- prepend first vowel", q.parseContext())
-        assertEquals("utul", instruction.apply(q.word("tul"), emptyRepo).text)
+        val rule = parseRule(q, q, "- prepend first vowel")
+        val instruction = rule.logic.branches[0].instructions[0]
+        assertEquals("utul", instruction.apply(rule, q.word("tul"), emptyRepo).text)
         val data = instruction.toSerializedFormat()
         val deserialized = ruleInstructionFromSerializedFormat(emptyRepo, q, data)
-        assertEquals("utul", deserialized.apply(q.word("tul"), emptyRepo).text)
+        assertEquals("utul", deserialized.apply(rule, q.word("tul"), emptyRepo).text)
         assertEquals("prepend first vowel", instruction.toEditableText())
     }
 
@@ -379,6 +382,44 @@ class RuleTest : QBaseTest() {
         assertEquals(2, candidates.size)
     }
 
+    @Test
+    fun segment() {
+        val rule = parseRule(q, q, "- add suffix 'llo'")
+        val result = rule.apply(q.word("hresta"), emptyRepo)
+        assertEquals(1, result.segments!!.size)
+        val segment = result.segments!![0]
+        assertEquals(6, segment.firstCharacter)
+        assertEquals(3, segment.length)
+        assertEquals(rule, segment.sourceRule)
+    }
+
+    @Test
+    fun multipleSegments() {
+        val rule1 = parseRule(q, q, "- add suffix 'llo'")
+        val rule2 = parseRule(q, q, "- add suffix 's'")
+        val result = rule2.apply(rule1.apply(q.word("hresta"), emptyRepo), emptyRepo)
+        assertEquals(2, result.segments!!.size)
+        /*
+        val segment = result.segments!![0]
+        assertEquals(6, segment.firstCharacter)
+        assertEquals(3, segment.length)
+        assertEquals(rule, segment.sourceRule)
+         */
+    }
+
+    @Test
+    fun restoreSegments() {
+        val repo = InMemoryGraphRepository()
+        val hresta = repo.addWord("hresta")
+        val hrestallo = repo.addWord("hrestallo", gloss = null)
+        val rule = parseRule(q, q, "- add suffix 'llo'", addedCategories = ".ABL")
+        val link = repo.addLink(hrestallo, hresta, Link.Derived, listOf(rule), null, null)
+        val restored = repo.restoreSegments(hrestallo)
+        assertEquals(1, restored.segments!!.size)
+        assertEquals("hresta-llo", restored.segmentedText())
+        assertEquals("hresta-ABL", restored.getOrComputeGloss(repo))
+    }
+
     /*
 
     @Test
@@ -420,10 +461,10 @@ fun Language.word(text: String) = Word(-1, text, this)
 
 fun Language.parseContext(repo: GraphRepository? = null) = createParseContext(this, this, repo)
 
-fun parseRule(fromLanguage: Language, toLanguage: Language, text: String, name: String = "q", repo: GraphRepository? = null): Rule = Rule(
+fun parseRule(fromLanguage: Language, toLanguage: Language, text: String, name: String = "q", repo: GraphRepository? = null, addedCategories: String? = null): Rule = Rule(
     -1, name, fromLanguage, toLanguage,
     Rule.parseBranches(text, createParseContext(fromLanguage, toLanguage, repo)),
-    null, null, null, null, null, null
+    addedCategories, null, null, null, null, null
 )
 
 private fun createParseContext(

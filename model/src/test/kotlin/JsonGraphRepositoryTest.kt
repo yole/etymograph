@@ -47,6 +47,4 @@ class JsonGraphRepositoryTest : QBaseTest() {
         assertEquals("q-lengthen", insn.ruleRef.resolve().name)
         assertEquals("vowel", insn.seekTarget.phonemeClass.name)
     }
-
-    fun GraphRepository.addWord(text: String) = findOrAddWord(text, q, text)
 }

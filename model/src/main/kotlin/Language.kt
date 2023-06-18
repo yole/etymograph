@@ -38,4 +38,8 @@ class Language(val name: String, val shortName: String) {
             s.replace(entry.key, entry.value)
         }
     }
+
+    fun isNormalizedEqual(ruleProducedWord: String, attestedWord: String): Boolean {
+        return normalizeWord(ruleProducedWord) == normalizeWord(attestedWord)
+    }
 }

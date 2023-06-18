@@ -56,6 +56,4 @@ class GraphRepositoryTest : QBaseTest() {
         assertEquals(hresta, candidates[0].word)
         assertEquals(rule, candidates[0].rules.single())
     }
-
-    fun GraphRepository.addWord(text: String) = findOrAddWord(text, q, text)
 }

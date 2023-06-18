@@ -122,15 +122,11 @@ class RuleController(val graphService: GraphService) {
                     fromWord.toRefViewModel(graph),
                     toWord.toRefViewModel(graph),
                     link.rules.fold(toWord) { w, r -> r.apply(w, graph) }.text
-                        .takeIf { !isNormalizedEqual(toWord.language, it, fromWord.text) },
+                        .takeIf { !toWord.language.isNormalizedEqual(it, fromWord.text) },
                     link.rules.map { it.name }
                 )
             }
         )
-    }
-
-    private fun isNormalizedEqual(lang: Language, ruleProducedWord: String, attestedWord: String): Boolean {
-        return lang.normalizeWord(ruleProducedWord) == lang.normalizeWord(attestedWord)
     }
 
     private fun RuleBranch.toViewModel(isUnconditional: Boolean): RuleBranchViewModel {

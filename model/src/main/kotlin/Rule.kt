@@ -21,8 +21,8 @@ data class ParseCandidate(val text: String, val rules: List<Rule>, val pos: Stri
 class RuleBranch(val condition: RuleCondition, val instructions: List<RuleInstruction>) {
     fun matches(word: Word) = condition.matches(word)
 
-    fun apply(word: Word, graph: GraphRepository): Word {
-        return instructions.apply(word, graph)
+    fun apply(rule: Rule, word: Word, graph: GraphRepository): Word {
+        return instructions.apply(rule, word, graph)
     }
 
     fun reverseApply(word: Word): String? {
@@ -106,14 +106,14 @@ class Rule(
                 applyToPhoneme(phonemes)
                 if (!phonemes.advance()) break
             }
-            return deriveWord(word, phonemes.result(), word.stressedPhonemeIndex)
+            return deriveWord(word, phonemes.result(), word.stressedPhonemeIndex, null)
         }
 
-        val preWord = if (logic.preInstructions.isEmpty()) word else logic.preInstructions.apply(word, graph)
+        val preWord = if (logic.preInstructions.isEmpty()) word else logic.preInstructions.apply(this, word, graph)
         for (branch in logic.branches) {
             if (branch.matches(preWord)) {
-                val resultWord = branch.apply(preWord, graph)
-                return deriveWord(word, resultWord.text, resultWord.stressedPhonemeIndex)
+                val resultWord = branch.apply(this, preWord, graph)
+                return deriveWord(word, resultWord.text, resultWord.stressedPhonemeIndex, resultWord.segments)
             }
         }
         return word
@@ -156,15 +156,32 @@ class Rule(
         return true
     }
 
-    private fun deriveWord(word: Word, text: String, stressIndex: Int): Word {
+    private fun deriveWord(word: Word, text: String, stressIndex: Int, segments: List<WordSegment>?): Word {
         val gloss = word.gloss?.let { baseGloss ->
-            applyCategories(baseGloss)
+            applyCategories(baseGloss, segments?.any { it.sourceRule == this} == true)
         }
-        return Word(-1, text, word.language, gloss, word.pos).also { it.stressedPhonemeIndex = stressIndex }
+        return Word(-1, text, word.language, gloss, word.pos).also {
+            it.stressedPhonemeIndex = stressIndex
+            val sourceSegments = word.segments
+            if (sourceSegments != null && segments != null) {
+                it.segments = sourceSegments + segments
+            }
+            else if (sourceSegments != null) {
+                it.segments = sourceSegments
+            }
+            else {
+                it.segments = segments
+            }
+        }
     }
 
-    fun applyCategories(baseGloss: String) =
-        (replacedCategories?.let { baseGloss.replace(it, "") } ?: baseGloss) + (addedCategories ?: "")
+    fun applyCategories(baseGloss: String, fromSegment: Boolean = false): String {
+        val replacedGloss = replacedCategories?.let { baseGloss.replace(it, "") } ?: baseGloss
+        addedCategories?.let {
+            return if (fromSegment) replacedGloss + "-" + it.removePrefix(".") else replacedGloss + it 
+        }
+        return replacedGloss
+    }
 
     fun toEditableText(): String {
         if (isUnconditional()) {
