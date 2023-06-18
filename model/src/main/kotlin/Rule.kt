@@ -163,14 +163,11 @@ class Rule(
         return Word(-1, text, word.language, gloss, word.pos).also {
             it.stressedPhonemeIndex = stressIndex
             val sourceSegments = word.segments
-            if (sourceSegments != null && segments != null) {
-                it.segments = sourceSegments + segments
+            if (segments != null) {
+                it.segments = segments
             }
             else if (sourceSegments != null) {
                 it.segments = sourceSegments
-            }
-            else {
-                it.segments = segments
             }
         }
     }

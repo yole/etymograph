@@ -420,6 +420,28 @@ class RuleTest : QBaseTest() {
         assertEquals("hresta-ABL", restored.getOrComputeGloss(repo))
     }
 
+    @Test
+    fun chainedSegments() {
+        val qNomPl = parseRule(q, q, """
+            word ends with a vowel:
+            - add suffix 'r'
+            otherwise:
+            - add suffix 'i'
+        """.trimIndent(), "q-nom-pl")
+        val repo = InMemoryGraphRepository()
+        repo.addRule(qNomPl)
+
+        val qGenPl = parseRule(q, q, """
+            - apply rule 'q-nom-pl'
+            - add suffix 'on'
+            """.trimIndent(), repo = repo)
+        val result = qGenPl.apply(q.word("alda"), repo)
+        assertEquals(1, result.segments!!.size)
+        val segment = result.segments!![0]
+        assertEquals(4, segment.firstCharacter)
+        assertEquals(3, segment.length)
+    }
+
     /*
 
     @Test

@@ -39,13 +39,37 @@ class Word(
 
     val normalizedText: String get() = language.normalizeWord(text)
 
-    fun derive(text: String, segment: WordSegment? = null): Word =
-        if (this.text == text)
+    fun derive(text: String, newSegment: WordSegment? = null): Word {
+        val sourceSegments = segments
+        return if (this.text == text)
             this
         else
             Word(-1, text, language, gloss, fullGloss, pos).apply {
-                segment?.let { segments = listOf(it) }
+                if (newSegment != null) {
+                    if (sourceSegments != null) {
+                        val lastSegment = sourceSegments.last()
+                        if (lastSegment.sourceRule == newSegment.sourceRule &&
+                            lastSegment.firstCharacter + lastSegment.length == newSegment.firstCharacter) {
+                            segments = sourceSegments.dropLast(1) + WordSegment(
+                                lastSegment.firstCharacter,
+                                lastSegment.length + newSegment.length,
+                                newSegment.category,
+                                newSegment.sourceRule
+                            )
+                        }
+                        else {
+                            segments = sourceSegments + newSegment
+                        }
+                    }
+                    else {
+                        segments = listOf(newSegment)
+                    }
+                }
+                else {
+                    segments = sourceSegments
+                }
             }
+    }
 
     var stressedPhonemeIndex: Int = -1
 
@@ -86,6 +110,11 @@ class Word(
             }
             append(text.substring(index))
         }
+    }
+
+    fun remapSegments(mapper: (WordSegment) -> WordSegment): Word {
+        segments = segments?.map(mapper)
+        return this
     }
 }
 

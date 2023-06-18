@@ -83,9 +83,16 @@ class ApplyRuleInstruction(val ruleRef: RuleRef)
     : RuleInstruction(InstructionType.ApplyRule, "")
 {
     override fun apply(rule: Rule, word: Word, graph: GraphRepository): Word {
-        val rule = ruleRef.resolve()
-        val link = graph.getLinksTo(word).find { it.rules == listOf(rule) }
-        return link?.fromEntity as? Word ?: rule.apply(word, graph)
+        val targetRule = ruleRef.resolve()
+        val link = graph.getLinksTo(word).find { it.rules == listOf(targetRule) }
+        return link?.fromEntity as? Word
+            ?: targetRule.apply(word, graph).remapSegments { s ->
+                if (s.sourceRule == targetRule)
+                    WordSegment(s.firstCharacter, s.length, rule.addedCategories, rule)
+                else
+                    s
+
+            }
     }
 
     override fun toEditableText(): String =
