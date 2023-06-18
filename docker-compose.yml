@@ -9,7 +9,7 @@ services:
       - NEXT_PUBLIC_BACKEND_URL=http://backend:8080/
       - NEXT_PUBLIC_READONLY=true
     build:
-      context: frontend-next
+      context: frontend
       dockerfile: export.dockerfile
     volumes:
       - type: bind
