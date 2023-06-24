@@ -442,6 +442,23 @@ class RuleTest : QBaseTest() {
         assertEquals(3, segment.length)
     }
 
+    @Test
+    fun testChainTwoSegments() {
+        val repo = InMemoryGraphRepository()
+        val qPpl = parseRule(q, q, "- add suffix 'li'", "q-ppl")
+        repo.addRule(qPpl)
+        val qAll = parseRule(q, q, "- add suffix 'nna'", "q-all")
+        repo.addRule(qAll)
+
+        val qAllPpl = parseRule(q, q, """
+            - apply rule 'q-ppl'
+            - apply rule 'q-all'
+            - add suffix 'r'
+        """.trimIndent(), repo = repo)
+        val result = qAllPpl.apply(q.word("falma"), repo)
+        assertEquals(1, result.segments!!.size)
+    }
+
     /*
 
     @Test

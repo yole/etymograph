@@ -45,29 +45,7 @@ class Word(
             this
         else
             Word(-1, text, language, gloss, fullGloss, pos).apply {
-                if (newSegment != null) {
-                    if (sourceSegments != null) {
-                        val lastSegment = sourceSegments.last()
-                        if (lastSegment.sourceRule == newSegment.sourceRule &&
-                            lastSegment.firstCharacter + lastSegment.length == newSegment.firstCharacter) {
-                            segments = sourceSegments.dropLast(1) + WordSegment(
-                                lastSegment.firstCharacter,
-                                lastSegment.length + newSegment.length,
-                                newSegment.category,
-                                newSegment.sourceRule
-                            )
-                        }
-                        else {
-                            segments = sourceSegments + newSegment
-                        }
-                    }
-                    else {
-                        segments = listOf(newSegment)
-                    }
-                }
-                else {
-                    segments = sourceSegments
-                }
+                segments = appendSegments(sourceSegments, newSegment)
             }
     }
 
@@ -115,6 +93,39 @@ class Word(
     fun remapSegments(mapper: (WordSegment) -> WordSegment): Word {
         segments = segments?.map(mapper)
         return this
+    }
+
+    companion object {
+        fun appendSegments(sourceSegments: List<WordSegment>?, newSegment: WordSegment?): List<WordSegment>? {
+            if (newSegment == null) {
+                return sourceSegments
+            }
+            if (sourceSegments == null) {
+                return listOf(newSegment)
+            }
+            return normalizeSegments(sourceSegments + newSegment)
+        }
+
+        fun normalizeSegments(segments: List<WordSegment>): List<WordSegment> {
+            var result = segments
+            while (result.size >= 2) {
+                val beforeLast = result[result.size - 2]
+                val last = result.last()
+                if (beforeLast.sourceRule == last.sourceRule &&
+                    beforeLast.firstCharacter + beforeLast.length == last.firstCharacter) {
+                    result = result.dropLast(2) + WordSegment(
+                        beforeLast.firstCharacter,
+                        beforeLast.length + last.length,
+                        last.category,
+                        last.sourceRule
+                    )
+                }
+                else {
+                    break
+                }
+            }
+            return result
+        }
     }
 }
 
