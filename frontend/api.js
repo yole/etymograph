@@ -64,6 +64,10 @@ export function updateRule(id, name, fromLang, toLang, addedCategories, replaced
         notes: notes})
 }
 
+export function deleteRule(id) {
+    return postToBackend(`rule/${id}/delete`, {})
+}
+
 export function addCorpusText(lang, title, text, source) {
     return postToBackend(`corpus/${lang}/new`, {title: title, text: text, source: source})
 }

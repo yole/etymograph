@@ -26,6 +26,18 @@ data class ParadigmColumn(val title: String) {
             it?.generate(word, graph)
         }
     }
+
+    fun removeRule(rule: Rule) {
+        for (index in cells.indices) {
+            val cell = cells[index] ?: continue
+            if (cell.ruleAlternatives.size == 1 && cell.ruleAlternatives[0] == rule) {
+                cells[index] = null
+            }
+            else {
+                cells[index] = ParadigmCell(cell.ruleAlternatives - rule)
+            }
+        }
+    }
 }
 
 data class Paradigm(
@@ -51,6 +63,12 @@ data class Paradigm(
         }
 
         columns[column].setRule(row, rules)
+    }
+
+    fun removeRule(rule: Rule) {
+        for (column in columns) {
+            column.removeRule(rule)
+        }
     }
 
     fun collectAllRules(): Set<Rule> {

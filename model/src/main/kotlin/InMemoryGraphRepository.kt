@@ -266,17 +266,29 @@ open class InMemoryGraphRepository : GraphRepository() {
 
         val wordsByText = mapOfWordsByText(word.language, word.text)
         wordsByText.remove(word)
-        linksFrom[word.id]?.let {
+        deleteLangEntity(word)
+    }
+
+    private fun deleteLangEntity(langEntity: LangEntity) {
+        linksFrom[langEntity.id]?.let {
             for (link in it.toList()) {
                 deleteLink(link.fromEntity, link.toEntity, link.type)
             }
         }
-        linksTo[word.id]?.let {
+        linksTo[langEntity.id]?.let {
             for (link in it.toList()) {
                 deleteLink(link.fromEntity, link.toEntity, link.type)
             }
         }
-        allLangEntities[word.id] = null
+        allLangEntities[langEntity.id] = null
+    }
+
+    override fun deleteRule(rule: Rule) {
+        for (paradigm in paradigms) {
+            paradigm.removeRule(rule)
+        }
+        rules.remove(rule)
+        deleteLangEntity(rule)
     }
 
     private fun mapOfWordsByText(

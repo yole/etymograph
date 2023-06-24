@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {addRuleLink, allowEdit, updateRule} from "@/api";
+import {addRuleLink, allowEdit, deleteRule, deleteWord, updateRule} from "@/api";
 import WordLink from "@/components/WordLink";
 import {fetchBackend} from "@/api";
 import {useRouter} from "next/router";
@@ -48,6 +48,13 @@ export default function Rule(params) {
         setLinkMode(false)
     }
 
+    function deleteRuleClicked() {
+        if (window.confirm("Delete this rule?")) {
+            deleteRule(rule.id)
+                .then(() => router.push("/rules/" + rule.toLang))
+        }
+    }
+
     return <>
         <h2><small>
             <Link href={`/`}>Etymograph</Link> {'> '}
@@ -94,7 +101,8 @@ export default function Rule(params) {
 
         {allowEdit() && <>
             <button onClick={() => setEditMode(!editMode)}>{editMode ? "Cancel" : "Edit"}</button>{' '}
-            <button onClick={() => setLinkMode(!linkMode)}>{linkMode ? "Cancel" : "Add Link"}</button>
+            <button onClick={() => setLinkMode(!linkMode)}>{linkMode ? "Cancel" : "Add Link"}</button>{' '}
+            <button onClick={() => deleteRuleClicked()}>{"Delete"}</button>
         </>}
         {rule.links.length > 0 && <>
             <h3>Related rules</h3>

@@ -206,6 +206,15 @@ class RuleController(val graphService: GraphService) {
         return rule.toViewModel()
     }
 
+    @PostMapping("/rule/{id}/delete", consumes = ["application/json"])
+    @ResponseBody
+    fun deleteRule(@PathVariable id: Int) {
+        val graph = graphService.graph
+        val rule = graph.ruleById(id) ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST, "No rule with ID $id")
+        graph.deleteRule(rule)
+        graph.save()
+    }
+
     private fun resolveRule(id: Int): Rule {
         return graphService.graph.ruleById(id)
             ?: throw ResponseStatusException(HttpStatus.NOT_FOUND, "No rule with ID $id")

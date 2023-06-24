@@ -28,6 +28,7 @@ abstract class GraphRepository {
     abstract fun allRules(): Iterable<Rule>
     abstract fun ruleById(id: Int): Rule?
     abstract fun ruleByName(ruleName: String): Rule?
+    abstract fun deleteRule(rule: Rule)
 
     abstract fun findOrAddWord(
         text: String,

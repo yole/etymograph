@@ -4046,6 +4046,93 @@
             "gloss": "dark cloud",
             "pos": "N",
             "source": "MC:222"
+        },
+        {
+            "id": 700,
+            "text": "ambonnar",
+            "lang": "Q",
+            "source": "MC:221"
+        },
+        {
+            "id": 701,
+            "text": "ambo",
+            "lang": "Q",
+            "gloss": "hill",
+            "pos": "N",
+            "source": "MC:222"
+        },
+        {
+            "id": 702,
+            "text": "AM-",
+            "lang": "CE",
+            "gloss": "up",
+            "source": "PE17:157"
+        },
+        {
+            "id": 703,
+            "text": "hácala",
+            "lang": "Q",
+            "source": "MC:221"
+        },
+        {
+            "id": 704,
+            "text": "háka-",
+            "lang": "Q",
+            "gloss": "yawn",
+            "pos": "V",
+            "source": "MC:222"
+        },
+        {
+            "id": 705,
+            "text": "enwina",
+            "lang": "Q",
+            "gloss": "old",
+            "pos": "ADJ",
+            "source": "MC:222"
+        },
+        {
+            "id": 706,
+            "text": "lúme",
+            "lang": "Q",
+            "gloss": "darkness",
+            "pos": "N",
+            "source": "MC:222"
+        },
+        {
+            "id": 707,
+            "text": "elenillor",
+            "lang": "Q",
+            "source": "MC:221"
+        },
+        {
+            "id": 709,
+            "text": "mindonnar",
+            "lang": "Q",
+            "source": "MC:221"
+        },
+        {
+            "id": 710,
+            "text": "mindon",
+            "lang": "Q",
+            "gloss": "tower",
+            "pos": "N",
+            "source": "MC:222"
+        },
+        {
+            "id": 711,
+            "text": "MIN-",
+            "lang": "CE",
+            "gloss": "one",
+            "fullGloss": "one, first in a series",
+            "source": "VT42:24"
+        },
+        {
+            "id": 712,
+            "text": "atalantëa",
+            "lang": "Q",
+            "gloss": "downfallen",
+            "pos": "ADJ",
+            "source": "MC:221"
         }
     ],
     "rules": [
@@ -5869,6 +5956,21 @@
                         {
                             "type": "AddSuffix",
                             "args": [
+                                "nar"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "characters": "n"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "args": [
                                 "nnar"
                             ]
                         }
@@ -5894,8 +5996,9 @@
                 }
             ],
             "addedCategories": ".ALL.PL",
+            "fromPOS": "N",
+            "toPOS": "N",
             "source": "https://eldamo.org/content/words/word-488436569.html",
-            "notes": "",
             "preInstructions": [
                 {
                     "type": "ApplyRule",
@@ -6068,6 +6171,8 @@
                 }
             ],
             "addedCategories": ".ABL.PL",
+            "fromPOS": "N",
+            "toPOS": "N",
             "source": "https://eldamo.org/content/words/word-3384394593.html",
             "preInstructions": [
                 {
@@ -7040,8 +7145,8 @@
             ]
         },
         {
-            "id": 699,
-            "name": "q-3pl",
+            "id": 708,
+            "name": "q-abl-pl-r",
             "fromLang": "Q",
             "toLang": "Q",
             "branches": [
@@ -7050,7 +7155,37 @@
                         {
                             "type": "AddSuffix",
                             "args": [
-                                "lte"
+                                "llor"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "cls": "vowel"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "args": [
+                                "lor"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "characters": "l"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "args": [
+                                "illor"
                             ]
                         }
                     ],
@@ -7059,13 +7194,17 @@
                     }
                 }
             ],
-            "addedCategories": ".3PL",
-            "replacedCategories": "",
-            "fromPOS": "V",
-            "toPOS": "V",
-            "source": "https://eldamo.org/content/words/word-1020286637.html",
-            "notes": "",
+            "addedCategories": ".ABL.PL",
+            "fromPOS": "N",
+            "toPOS": "N",
+            "source": "https://eldamo.org/content/words/word-3384394593.html",
             "preInstructions": [
+                {
+                    "type": "ApplyRule",
+                    "args": [
+                        "413"
+                    ]
+                }
             ]
         }
     ],
@@ -9589,6 +9728,48 @@
             "from": 697,
             "to": 100,
             "type": ">"
+        },
+        {
+            "from": 700,
+            "to": 701,
+            "type": ">",
+            "ruleIds": [
+                479
+            ]
+        },
+        {
+            "from": 701,
+            "to": 702,
+            "type": ">"
+        },
+        {
+            "from": 703,
+            "to": 704,
+            "type": ">",
+            "ruleIds": [
+                597
+            ]
+        },
+        {
+            "from": 707,
+            "to": 54,
+            "type": ">",
+            "ruleIds": [
+                708
+            ]
+        },
+        {
+            "from": 709,
+            "to": 710,
+            "type": ">",
+            "ruleIds": [
+                479
+            ]
+        },
+        {
+            "from": 710,
+            "to": 711,
+            "type": ">"
         }
     ],
     "corpusTexts": [
@@ -9927,18 +10108,18 @@
                 234,
                 null,
                 null,
-                null,
+                700,
                 539,
                 null,
                 693,
-                null,
-                null,
-                150,
-                null,
+                703,
+                705,
+                706,
+                707,
                 39,
                 null,
-                null,
-                null,
+                712,
+                709,
                 null,
                 614,
                 null,
@@ -10110,7 +10291,8 @@
                         },
                         {
                             "ruleAlternatives": [
-                                488
+                                488,
+                                708
                             ]
                         },
                         {
