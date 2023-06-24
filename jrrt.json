@@ -4032,6 +4032,20 @@
             "gloss": "shift",
             "pos": "V",
             "source": "MC:222"
+        },
+        {
+            "id": 696,
+            "text": "lumbor",
+            "lang": "Q",
+            "source": "MC:221"
+        },
+        {
+            "id": 697,
+            "text": "lumbo",
+            "lang": "Q",
+            "gloss": "dark cloud",
+            "pos": "N",
+            "source": "MC:222"
         }
     ],
     "rules": [
@@ -4367,6 +4381,7 @@
                 }
             ],
             "addedCategories": ".2SG",
+            "source": "https://eldamo.org/content/words/word-1020286637.html",
             "preInstructions": [
             ]
         },
@@ -4391,6 +4406,7 @@
                 }
             ],
             "addedCategories": "1SG",
+            "source": "https://eldamo.org/content/words/word-1020286637.html",
             "preInstructions": [
             ]
         },
@@ -5253,8 +5269,7 @@
                     }
                 }
             ],
-            "addedCategories": ".1PL.EXCL",
-            "replacedCategories": "",
+            "addedCategories": ".1PL.EX",
             "source": "https://eldamo.org/content/words/word-1020286637.html",
             "preInstructions": [
             ]
@@ -6964,11 +6979,8 @@
                 }
             ],
             "addedCategories": ".3SG",
-            "replacedCategories": "",
             "fromPOS": "V",
-            "toPOS": "",
-            "source": "",
-            "notes": "",
+            "source": "https://eldamo.org/content/words/word-1020286637.html",
             "preInstructions": [
             ]
         },
@@ -6993,10 +7005,65 @@
                 }
             ],
             "addedCategories": ".3SG",
+            "fromPOS": "V",
+            "source": "https://eldamo.org/content/words/word-1020286637.html",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 698,
+            "name": "q-1pl-incl",
+            "fromLang": "Q",
+            "toLang": "Q",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "args": [
+                                "lve"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".1PL.IN",
             "replacedCategories": "",
             "fromPOS": "V",
-            "toPOS": "",
-            "source": "",
+            "toPOS": "V",
+            "source": "https://eldamo.org/content/words/word-1020286637.html",
+            "notes": "",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 699,
+            "name": "q-3pl",
+            "fromLang": "Q",
+            "toLang": "Q",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "args": [
+                                "lte"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".3PL",
+            "replacedCategories": "",
+            "fromPOS": "V",
+            "toPOS": "V",
+            "source": "https://eldamo.org/content/words/word-1020286637.html",
             "notes": "",
             "preInstructions": [
             ]
@@ -9509,6 +9576,19 @@
             "ruleIds": [
                 430
             ]
+        },
+        {
+            "from": 696,
+            "to": 697,
+            "type": ">",
+            "ruleIds": [
+                396
+            ]
+        },
+        {
+            "from": 697,
+            "to": 100,
+            "type": ">"
         }
     ],
     "corpusTexts": [
@@ -9810,7 +9890,7 @@
                 588,
                 592,
                 593,
-                null,
+                539,
                 598,
                 600,
                 601,
@@ -9842,6 +9922,27 @@
                 694,
                 null,
                 567,
+                696,
+                null,
+                234,
+                null,
+                null,
+                null,
+                539,
+                null,
+                693,
+                null,
+                null,
+                150,
+                null,
+                39,
+                null,
+                null,
+                null,
+                null,
+                614,
+                null,
+                387,
                 null,
                 null,
                 null,
@@ -9853,28 +9954,9 @@
                 null,
                 null,
                 null,
+                573,
                 null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                573
+                567
             ],
             "source": "MC:221"
         },
@@ -10182,6 +10264,9 @@
                     "title": "Pl",
                     "cells": [
                         {
+                            "ruleAlternatives": [
+                                698
+                            ]
                         },
                         {
                             "ruleAlternatives": [
@@ -10191,6 +10276,13 @@
                         {
                             "ruleAlternatives": [
                                 645
+                            ]
+                        },
+                        {
+                        },
+                        {
+                            "ruleAlternatives": [
+                                647
                             ]
                         }
                     ]

@@ -68,9 +68,12 @@ class CorpusController(val graphService: GraphService) {
             mapToLines(repo).map { line ->
                 CorpusLineViewModel(line.corpusWords.map { cw ->
                     val stressData = cw.word?.calculateStress()
+                    val punctuation = cw.text.takeLastWhile { it in CorpusText.punctuation }
                     val wordWithSegments = cw.word?.let { repo.restoreSegments(it) }
                     val glossWithSegments = wordWithSegments?.getOrComputeGloss(repo) ?: cw.gloss ?: ""
-                    CorpusWordViewModel(cw.index, wordWithSegments?.segmentedText() ?: cw.text, glossWithSegments, cw.word?.id, cw.word?.text,
+                    CorpusWordViewModel(cw.index,
+                        wordWithSegments?.segmentedText()?.plus(punctuation) ?: cw.text,
+                        glossWithSegments, cw.word?.id, cw.word?.text,
                         adjustStressIndex(wordWithSegments, stressData?.index), stressData?.length, cw.homonym)
                 })
             },

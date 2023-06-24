@@ -36,7 +36,7 @@ class CorpusText(
     }
 
     private fun splitIntoNormalizedWords(line: String): List<Pair<String, String>> {
-        return line.split(' ').map { it to language.normalizeWord(it.trimEnd('!', ',', '.', '?', ':')) }
+        return line.split(' ').map { it to language.normalizeWord(it.trimEnd(*punctuation)) }
     }
 
     fun containsWord(word: Word): Boolean {
@@ -56,5 +56,9 @@ class CorpusText(
 
     fun removeWord(word: Word) {
         _words.replaceAll { if (it?.id == word.id) null else it }
+    }
+
+    companion object {
+        val punctuation = charArrayOf('!', ',', '.', '?', ':')
     }
 }
