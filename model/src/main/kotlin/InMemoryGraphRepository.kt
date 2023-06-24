@@ -171,10 +171,13 @@ open class InMemoryGraphRepository : GraphRepository() {
     override fun restoreSegments(word: Word): Word {
         val baseWordLink = getLinksFrom(word).find { it.type == Link.Derived }
         if (baseWordLink != null) {
-            val baseWordWithSegments = restoreSegments(baseWordLink.toEntity as Word)
-            val restoredWord = baseWordLink.rules.fold(baseWordWithSegments) { w, r -> r.apply(w, this) }
-            if (word.language.isNormalizedEqual(restoredWord.text, word.text)) {
-                return restoredWord
+            val baseWord = baseWordLink.toEntity as Word
+            if (baseWord.language == word.language) {
+                val baseWordWithSegments = restoreSegments(baseWord)
+                val restoredWord = baseWordLink.rules.fold(baseWordWithSegments) { w, r -> r.apply(w, this) }
+                if (word.language.isNormalizedEqual(restoredWord.text, word.text)) {
+                    return restoredWord
+                }
             }
         }
 
