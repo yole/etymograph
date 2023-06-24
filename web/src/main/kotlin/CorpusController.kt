@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*
 import org.springframework.web.server.ResponseStatusException
 import ru.yole.etymograph.CorpusText
 import ru.yole.etymograph.Language
+import ru.yole.etymograph.Word
 import ru.yole.etymograph.calculateStress
 
 @RestController
@@ -64,17 +65,29 @@ class CorpusController(val graphService: GraphService) {
             title ?: "Untitled",
             language.shortName,
             language.name,
-            mapToLines(repo).map {
-                CorpusLineViewModel(it.corpusWords.map { cw ->
+            mapToLines(repo).map { line ->
+                CorpusLineViewModel(line.corpusWords.map { cw ->
                     val stressData = cw.word?.calculateStress()
                     val wordWithSegments = cw.word?.let { repo.restoreSegments(it) }
                     val glossWithSegments = wordWithSegments?.getOrComputeGloss(repo) ?: cw.gloss ?: ""
                     CorpusWordViewModel(cw.index, wordWithSegments?.segmentedText() ?: cw.text, glossWithSegments, cw.word?.id, cw.word?.text,
-                        stressData?.index, stressData?.length, cw.homonym)
+                        adjustStressIndex(wordWithSegments, stressData?.index), stressData?.length, cw.homonym)
                 })
             },
             source
         )
+    }
+
+    private fun adjustStressIndex(wordWithSegments: Word?, stressIndex: Int?): Int? {
+        if (stressIndex == null) return null
+        val segments = wordWithSegments?.segments ?: return stressIndex
+        var result = stressIndex
+        for (segment in segments) {
+            if (segment.firstCharacter > 0 && segment.firstCharacter <= stressIndex) {
+                result++
+            }
+        }
+        return result
     }
 
     data class CorpusParams(val title: String = "", val text: String = "", val source: String = "")
