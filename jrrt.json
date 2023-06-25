@@ -10406,15 +10406,15 @@
             "lang": "Q",
             "pos": "V",
             "rows": [
-                "1p",
-                "1p-excl",
-                "2p",
-                "2p-fam",
-                "3p"
+                "1st Person",
+                "1st Person Inclusive",
+                "2nd Person",
+                "2nd Person Familiar",
+                "3rd Person"
             ],
             "columns": [
                 {
-                    "title": "Sg",
+                    "title": "Singular",
                     "cells": [
                         {
                             "ruleAlternatives": [
@@ -10443,16 +10443,16 @@
                     ]
                 },
                 {
-                    "title": "Pl",
+                    "title": "Plural",
                     "cells": [
                         {
                             "ruleAlternatives": [
-                                698
+                                420
                             ]
                         },
                         {
                             "ruleAlternatives": [
-                                420
+                                698
                             ]
                         },
                         {

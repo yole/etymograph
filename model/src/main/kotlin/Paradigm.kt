@@ -97,9 +97,22 @@ data class Paradigm(
         }
 
         for ((rowIndex, line) in lines.drop(1).withIndex()) {
-            val words = line.trim().split(' ')
-            addRow(words[0])
-            for ((colIndex, w) in words.drop(1).withIndex()) {
+            val lineTrimmed = line.trim()
+            val columnValues: List<String>
+            if (lineTrimmed.startsWith('"')) {
+                val endQuote = lineTrimmed.indexOf('"', 1)
+                if (endQuote < 0) {
+                    throw ParadigmParseException("Unclosed quote in row name")
+                }
+                addRow(lineTrimmed.substring(1, endQuote))
+                columnValues = lineTrimmed.substring(endQuote + 1).trim().split(' ')
+            }
+            else {
+                val words = line.trim().split(' ')
+                addRow(words[0])
+                columnValues = words.drop(1)
+            }
+            for ((colIndex, w) in columnValues.withIndex()) {
                 if (w == "-") {
                     continue
                 }
@@ -121,7 +134,12 @@ data class Paradigm(
         return buildString {
             appendLine(columns.joinToString(" ") { it.title })
             for ((index, rowTitle) in rowTitles.withIndex()) {
-                append(rowTitle)
+                if (' ' in rowTitle) {
+                    append("\"$rowTitle\"")
+                }
+                else {
+                    append(rowTitle)
+                }
                 append(" ")
                 appendLine(columns.joinToString(" ") { col ->
                     val alternatives = col.cells.getOrNull(index)?.ruleAlternatives
