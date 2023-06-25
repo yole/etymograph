@@ -7655,6 +7655,79 @@
             "source": "https://eldamo.org/content/words/word-4077936885.html",
             "preInstructions": [
             ]
+        },
+        {
+            "id": 743,
+            "name": "q-poss-2pl",
+            "fromLang": "Q",
+            "toLang": "Q",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "args": [
+                                "elda"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "cls": "consonant"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "args": [
+                                "lda"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": "",
+            "replacedCategories": "",
+            "fromPOS": "N",
+            "toPOS": "",
+            "source": "https://eldamo.org/content/words/word-4077936885.html",
+            "notes": "",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 744,
+            "name": "q-obj-3sg",
+            "fromLang": "Q",
+            "toLang": "Q",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "args": [
+                                "s"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".3SG",
+            "replacedCategories": "",
+            "fromPOS": "V",
+            "toPOS": "V",
+            "source": "https://eldamo.org/content/words/word-4071776673.html",
+            "notes": "",
+            "preInstructions": [
+            ]
         }
     ],
     "links": [
@@ -10347,6 +10420,11 @@
             "from": 414,
             "to": 401,
             "type": "~"
+        },
+        {
+            "from": 743,
+            "to": 645,
+            "type": "~"
         }
     ],
     "corpusTexts": [
@@ -11129,6 +11207,11 @@
                             "ruleAlternatives": [
                                 742
                             ]
+                        },
+                        {
+                            "ruleAlternatives": [
+                                743
+                            ]
                         }
                     ]
                 }
@@ -11140,16 +11223,21 @@
             "lang": "Q",
             "pos": "V",
             "rows": [
-                "3p"
+                "3rd Person"
             ],
             "columns": [
                 {
-                    "title": "Sg",
+                    "title": "Singular",
                     "cells": [
+                        {
+                            "ruleAlternatives": [
+                                744
+                            ]
+                        }
                     ]
                 },
                 {
-                    "title": "Pl",
+                    "title": "Plural",
                     "cells": [
                         {
                             "ruleAlternatives": [
@@ -11180,6 +11268,58 @@
                         {
                             "ruleAlternatives": [
                                 407
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "name": "Verb",
+            "lang": "Q",
+            "pos": "V",
+            "rows": [
+                "Aorist",
+                "Present",
+                "Past",
+                "Perfect",
+                "Future",
+                "Passive Participle"
+            ],
+            "columns": [
+                {
+                    "title": "Form",
+                    "cells": [
+                        {
+                            "ruleAlternatives": [
+                                424,
+                                421
+                            ]
+                        },
+                        {
+                            "ruleAlternatives": [
+                                430
+                            ]
+                        },
+                        {
+                            "ruleAlternatives": [
+                                666
+                            ]
+                        },
+                        {
+                            "ruleAlternatives": [
+                                543
+                            ]
+                        },
+                        {
+                            "ruleAlternatives": [
+                                416
+                            ]
+                        },
+                        {
+                            "ruleAlternatives": [
+                                717
                             ]
                         }
                     ]
