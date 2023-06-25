@@ -4180,9 +4180,9 @@
             "id": 724,
             "text": "ruc-",
             "lang": "Q",
-            "gloss": "feel fear",
+            "gloss": "flee, feel fear",
             "pos": "V",
-            "source": "MC:223"
+            "source": "VT44:5"
         },
         {
             "id": 725,
@@ -4297,6 +4297,227 @@
             "gloss": "heave",
             "pos": "V",
             "source": "MC:222"
+        },
+        {
+            "id": 746,
+            "text": "vanda",
+            "lang": "Q",
+            "gloss": "oath",
+            "pos": "N",
+            "source": "UT:305"
+        },
+        {
+            "id": 747,
+            "text": "sina",
+            "lang": "Q",
+            "gloss": "this",
+            "pos": "PRON",
+            "source": "UT:305"
+        },
+        {
+            "id": 748,
+            "text": "termaruva",
+            "lang": "Q",
+            "source": "UT:305"
+        },
+        {
+            "id": 749,
+            "text": "termar-",
+            "lang": "Q",
+            "gloss": "stand",
+            "pos": "V",
+            "source": "UT:317"
+        },
+        {
+            "id": 750,
+            "text": "ter",
+            "lang": "Q",
+            "gloss": "through",
+            "pos": "PREP",
+            "source": "UT:317"
+        },
+        {
+            "id": 751,
+            "text": "TER-",
+            "lang": "CE",
+            "gloss": "pierce"
+        },
+        {
+            "id": 752,
+            "text": "Elenna·nóreo",
+            "lang": "Q",
+            "source": "UT:305"
+        },
+        {
+            "id": 753,
+            "text": "Elenna·nóre",
+            "lang": "Q",
+            "pos": "N"
+        },
+        {
+            "id": 754,
+            "text": "Elenna",
+            "lang": "Q",
+            "source": "UT:305"
+        },
+        {
+            "id": 755,
+            "text": "enyalien",
+            "lang": "Q",
+            "source": "UT:305"
+        },
+        {
+            "id": 756,
+            "text": "enyalie",
+            "lang": "Q",
+            "pos": "N"
+        },
+        {
+            "id": 758,
+            "text": "enyal-",
+            "lang": "Q",
+            "gloss": "recall",
+            "pos": "V",
+            "source": "UT:317"
+        },
+        {
+            "id": 759,
+            "text": "en-",
+            "lang": "Q",
+            "gloss": "again",
+            "source": "PE17:68"
+        },
+        {
+            "id": 760,
+            "text": "yal-",
+            "lang": "Q",
+            "gloss": "summon",
+            "pos": "V",
+            "source": "UT:317"
+        },
+        {
+            "id": 761,
+            "text": "YAL-",
+            "lang": "CE",
+            "gloss": "cry"
+        },
+        {
+            "id": 762,
+            "text": "vorondo",
+            "lang": "Q",
+            "source": "UT:305"
+        },
+        {
+            "id": 763,
+            "text": "voronda",
+            "lang": "Q",
+            "gloss": "faithful",
+            "pos": "N",
+            "source": "UT:305"
+        },
+        {
+            "id": 764,
+            "text": "voronwë",
+            "lang": "Q",
+            "gloss": "faithfulness",
+            "pos": "N",
+            "source": "UT:305"
+        },
+        {
+            "id": 765,
+            "text": "tiruvantes",
+            "lang": "Q",
+            "source": "UT:305"
+        },
+        {
+            "id": 767,
+            "text": "hárar",
+            "lang": "Q",
+            "source": "UT:305"
+        },
+        {
+            "id": 768,
+            "text": "har-",
+            "lang": "Q",
+            "gloss": "sit",
+            "pos": "V",
+            "source": "UT:305"
+        },
+        {
+            "id": 769,
+            "text": "KHAD-",
+            "lang": "CE",
+            "gloss": "sit"
+        },
+        {
+            "id": 770,
+            "text": "mahalmassen",
+            "lang": "Q",
+            "source": "UT:305"
+        },
+        {
+            "id": 771,
+            "text": "mahalma",
+            "lang": "Q",
+            "gloss": "throne",
+            "pos": "N",
+            "source": "UT:305"
+        },
+        {
+            "id": 772,
+            "text": "or",
+            "lang": "Q",
+            "gloss": "above",
+            "pos": "PREP",
+            "source": "UT:305"
+        },
+        {
+            "id": 773,
+            "text": "mahalmar",
+            "lang": "Q",
+            "source": "UT:305"
+        },
+        {
+            "id": 774,
+            "text": "tennoio",
+            "lang": "Q",
+            "gloss": "forever",
+            "pos": "ADV",
+            "source": "UT:305"
+        },
+        {
+            "id": 776,
+            "text": "ortírielyanna",
+            "lang": "Q",
+            "pos": "N",
+            "source": "VT44:7"
+        },
+        {
+            "id": 777,
+            "text": "ortírie",
+            "lang": "Q",
+            "gloss": "patronage",
+            "pos": "N",
+            "source": "VT44:77"
+        },
+        {
+            "id": 778,
+            "text": "tírie",
+            "lang": "Q"
+        },
+        {
+            "id": 779,
+            "text": "rucimmë",
+            "lang": "Q",
+            "source": "VT44:5"
+        },
+        {
+            "id": 780,
+            "text": "aina",
+            "lang": "Q",
+            "gloss": "holy",
+            "pos": "ADJ",
+            "source": "VT44:7"
         }
     ],
     "rules": [
@@ -5060,6 +5281,8 @@
                 }
             ],
             "addedCategories": ".LOC.PL",
+            "fromPOS": "N",
+            "toPOS": "N",
             "source": "Eldamo",
             "preInstructions": [
                 {
@@ -5650,7 +5873,7 @@
                     }
                 }
             ],
-            "addedCategories": ".3PL",
+            "addedCategories": ".3PL.O",
             "fromPOS": "V.TENSE",
             "toPOS": "V.OBJ",
             "preInstructions": [
@@ -6839,9 +7062,9 @@
                 }
             ],
             "addedCategories": ".PERF",
-            "replacedCategories": "",
+            "fromPOS": "V",
+            "toPOS": "V.TENSE",
             "source": "https://eldamo.org/content/words/word-1665649345.html",
-            "notes": "",
             "preInstructions": [
                 {
                     "type": "Prepend",
@@ -7740,10 +7963,103 @@
                     }
                 }
             ],
-            "addedCategories": ".3SG",
+            "addedCategories": ".3SG.O",
             "fromPOS": "V.TENSE",
             "toPOS": "V.OBJ",
             "source": "https://eldamo.org/content/words/word-4071776673.html",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 757,
+            "name": "q-gerund",
+            "fromLang": "Q",
+            "toLang": "Q",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "RemoveLastCharacter",
+                            "args": [
+                            ]
+                        },
+                        {
+                            "type": "AddSuffix",
+                            "args": [
+                                "ie"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "characters": "a"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "args": [
+                                "ye"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "characters": "u"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "args": [
+                                "ie"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".GER",
+            "replacedCategories": "",
+            "fromPOS": "V",
+            "toPOS": "N",
+            "source": "https://eldamo.org/content/words/word-2279685699.html",
+            "notes": "",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 766,
+            "name": "q-3pl-n",
+            "fromLang": "Q",
+            "toLang": "Q",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "args": [
+                                "nte"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".3PL",
+            "replacedCategories": "",
+            "fromPOS": "V.TENSE",
+            "toPOS": "V.TENSE",
+            "source": "https://eldamo.org/content/words/word-1020286637.html",
+            "notes": "",
             "preInstructions": [
             ]
         }
@@ -8020,12 +8336,6 @@
             "ruleIds": [
                 416
             ],
-            "source": "PE17:68"
-        },
-        {
-            "from": 70,
-            "to": 71,
-            "type": ">",
             "source": "PE17:68"
         },
         {
@@ -10443,6 +10753,190 @@
             "from": 743,
             "to": 645,
             "type": "~"
+        },
+        {
+            "from": 748,
+            "to": 749,
+            "type": ">",
+            "ruleIds": [
+                416
+            ]
+        },
+        {
+            "from": 749,
+            "to": 750,
+            "type": "+"
+        },
+        {
+            "from": 749,
+            "to": 549,
+            "type": "+"
+        },
+        {
+            "from": 750,
+            "to": 751,
+            "type": ">"
+        },
+        {
+            "from": 752,
+            "to": 753,
+            "type": ">",
+            "ruleIds": [
+                397
+            ]
+        },
+        {
+            "from": 753,
+            "to": 754,
+            "type": "+"
+        },
+        {
+            "from": 754,
+            "to": 54,
+            "type": ">",
+            "ruleIds": [
+                399
+            ]
+        },
+        {
+            "from": 753,
+            "to": 104,
+            "type": "+"
+        },
+        {
+            "from": 755,
+            "to": 756,
+            "type": ">",
+            "ruleIds": [
+                404
+            ]
+        },
+        {
+            "from": 756,
+            "to": 758,
+            "type": ">",
+            "ruleIds": [
+                757
+            ]
+        },
+        {
+            "from": 70,
+            "to": 759,
+            "type": "+"
+        },
+        {
+            "from": 70,
+            "to": 71,
+            "type": "+"
+        },
+        {
+            "from": 758,
+            "to": 759,
+            "type": "+"
+        },
+        {
+            "from": 758,
+            "to": 760,
+            "type": "+"
+        },
+        {
+            "from": 760,
+            "to": 761,
+            "type": ">"
+        },
+        {
+            "from": 762,
+            "to": 763,
+            "type": ">",
+            "ruleIds": [
+                397
+            ]
+        },
+        {
+            "from": 765,
+            "to": 615,
+            "type": ">",
+            "ruleIds": [
+                416,
+                766,
+                744
+            ]
+        },
+        {
+            "from": 767,
+            "to": 768,
+            "type": ">",
+            "ruleIds": [
+                430,
+                425
+            ]
+        },
+        {
+            "from": 768,
+            "to": 769,
+            "type": ">"
+        },
+        {
+            "from": 770,
+            "to": 771,
+            "type": ">",
+            "ruleIds": [
+                409
+            ]
+        },
+        {
+            "from": 773,
+            "to": 771,
+            "type": ">",
+            "ruleIds": [
+                396
+            ]
+        },
+        {
+            "from": 774,
+            "to": 554,
+            "type": "+"
+        },
+        {
+            "from": 774,
+            "to": 78,
+            "type": "+"
+        },
+        {
+            "from": 776,
+            "to": 777,
+            "type": ">",
+            "ruleIds": [
+                414,
+                399
+            ]
+        },
+        {
+            "from": 777,
+            "to": 772,
+            "type": "+"
+        },
+        {
+            "from": 777,
+            "to": 778,
+            "type": "+"
+        },
+        {
+            "from": 778,
+            "to": 615,
+            "type": ">",
+            "ruleIds": [
+                417
+            ]
+        },
+        {
+            "from": 779,
+            "to": 724,
+            "type": ">",
+            "ruleIds": [
+                424,
+                420
+            ]
         }
     ],
     "corpusTexts": [
@@ -10872,6 +11366,53 @@
                 688
             ],
             "source": "VT49:6"
+        },
+        {
+            "id": 745,
+            "text": "vanda sina termaruva Elenna·nóreo alcar enyalien\nar Elendil Vorondo voronwë\nnai tiruvantes i hárar mahalmassen mi Númen\nar i Eru i or ilyë mahalmar ëa tennoio",
+            "title": "Cirion's Oath",
+            "lang": "Q",
+            "wordIds": [
+                746,
+                747,
+                748,
+                752,
+                null,
+                755,
+                null,
+                null,
+                762,
+                764,
+                null,
+                765,
+                363,
+                767,
+                770,
+                null,
+                null,
+                null,
+                null,
+                null,
+                363,
+                772,
+                null,
+                773,
+                null,
+                774
+            ],
+            "source": "UT:305"
+        },
+        {
+            "id": 775,
+            "text": "ortírielyanna rucimmë, Aina Eruontari\nalalyë nattira arcandemmar sangiessemman\nono alyë eterúna me illumë ilya raxellor\nalcarin Vendë ar manaquenta",
+            "title": "Ortírielyanna",
+            "lang": "Q",
+            "wordIds": [
+                776,
+                779,
+                780
+            ],
+            "source": "VT44:5"
         }
     ],
     "paradigms": [
@@ -11139,7 +11680,8 @@
                         },
                         {
                             "ruleAlternatives": [
-                                647
+                                647,
+                                766
                             ]
                         }
                     ]
@@ -11303,6 +11845,7 @@
                 "Past",
                 "Perfect",
                 "Future",
+                "Gerund",
                 "Passive Participle"
             ],
             "columns": [
@@ -11333,6 +11876,11 @@
                         {
                             "ruleAlternatives": [
                                 416
+                            ]
+                        },
+                        {
+                            "ruleAlternatives": [
+                                757
                             ]
                         },
                         {
