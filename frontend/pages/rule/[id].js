@@ -44,7 +44,10 @@ export default function Rule(params) {
 
     function saveLink() {
         addRuleLink(rule.id, linkRuleName, '~')
-            .then(handleResponse)
+            .then((r) => {
+                handleResponse(r)
+                router.replace(router.asPath)
+            })
         setLinkMode(false)
     }
 

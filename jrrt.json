@@ -4224,7 +4224,79 @@
             "id": 730,
             "text": "axo",
             "lang": "Q",
-            "pos": "N"
+            "gloss": "bone",
+            "pos": "N",
+            "source": "MC:222"
+        },
+        {
+            "id": 731,
+            "text": "ilcalannar",
+            "lang": "Q",
+            "source": "MC:222"
+        },
+        {
+            "id": 732,
+            "text": "cir-",
+            "lang": "Q",
+            "gloss": "cut",
+            "pos": "V",
+            "source": "MC:221"
+        },
+        {
+            "id": 733,
+            "text": "andúnë",
+            "lang": "Q",
+            "gloss": "sunset",
+            "pos": "N",
+            "source": "MC:222"
+        },
+        {
+            "id": 734,
+            "text": "talta-taltala",
+            "lang": "Q",
+            "source": "MC:221"
+        },
+        {
+            "id": 735,
+            "text": "talta-",
+            "lang": "Q",
+            "gloss": "fall",
+            "pos": "V",
+            "source": "MC:222"
+        },
+        {
+            "id": 736,
+            "text": "taltala",
+            "lang": "Q"
+        },
+        {
+            "id": 737,
+            "text": "wilwarin",
+            "lang": "Q",
+            "gloss": "butterfly",
+            "pos": "N",
+            "source": "MC:222"
+        },
+        {
+            "id": 738,
+            "text": "WIL-",
+            "lang": "CE",
+            "gloss": "fly",
+            "fullGloss": "fly, float in air"
+        },
+        {
+            "id": 739,
+            "text": "amortala",
+            "lang": "Q",
+            "source": "MC:222"
+        },
+        {
+            "id": 740,
+            "text": "amorta-",
+            "lang": "Q",
+            "gloss": "heave",
+            "pos": "V",
+            "source": "MC:222"
         }
     ],
     "rules": [
@@ -4521,6 +4593,21 @@
             "fromLang": "Q",
             "toLang": "Q",
             "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "args": [
+                                "ya"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "cls": "consonant"
+                    }
+                },
                 {
                     "instructions": [
                         {
@@ -5166,6 +5253,21 @@
                         {
                             "type": "AddSuffix",
                             "args": [
+                                "elya"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "cls": "consonant"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "args": [
                                 "lya"
                             ]
                         }
@@ -5176,14 +5278,12 @@
                 }
             ],
             "addedCategories": ".POSS.2SG",
-            "replacedCategories": "",
-            "source": "",
             "preInstructions": [
             ]
         },
         {
             "id": 415,
-            "name": "q-poss-1pl",
+            "name": "q-poss-1pl-excl",
             "fromLang": "Q",
             "toLang": "Q",
             "branches": [
@@ -5216,9 +5316,7 @@
                     }
                 }
             ],
-            "addedCategories": ".POSS.1PL",
-            "replacedCategories": "",
-            "source": "",
+            "addedCategories": ".POSS.1PL.EX",
             "notes": "Older versions of the paradigm use the suffix 'mma' instead of 'lma'.",
             "preInstructions": [
             ]
@@ -6778,6 +6876,21 @@
                         {
                             "type": "AddSuffix",
                             "args": [
+                                "inya"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "cls": "consonant"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "args": [
                                 "nya"
                             ]
                         }
@@ -6788,9 +6901,7 @@
                 }
             ],
             "addedCategories": ".POSS.1SG",
-            "replacedCategories": "",
             "source": "https://eldamo.org/content/words/word-4077936885.html",
-            "notes": "",
             "preInstructions": [
             ]
         },
@@ -7459,6 +7570,89 @@
             "toPOS": "",
             "source": "https://eldamo.org/content/words/word-2744508917.html",
             "notes": "",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 741,
+            "name": "q-poss-2sg-fam",
+            "fromLang": "Q",
+            "toLang": "Q",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "args": [
+                                "itya"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "cls": "consonant"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "args": [
+                                "tya"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": null,
+            "fromPOS": "N",
+            "source": "https://eldamo.org/content/words/word-4077936885.html",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 742,
+            "name": "q-poss-1pl-incl",
+            "fromLang": "Q",
+            "toLang": "Q",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "args": [
+                                "elva"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "cls": "consonant"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "args": [
+                                "lva"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".POSS.1PL.IN",
+            "fromPOS": "N",
+            "toPOS": "N",
+            "source": "https://eldamo.org/content/words/word-4077936885.html",
             "preInstructions": [
             ]
         }
@@ -10070,6 +10264,89 @@
             "ruleIds": [
                 396
             ]
+        },
+        {
+            "from": 731,
+            "to": 631,
+            "type": ">",
+            "ruleIds": [
+                597,
+                479
+            ]
+        },
+        {
+            "from": 587,
+            "to": 732,
+            "type": ">",
+            "ruleIds": [
+                430
+            ]
+        },
+        {
+            "from": 733,
+            "to": 184,
+            "type": ">"
+        },
+        {
+            "from": 734,
+            "to": 735,
+            "type": "+"
+        },
+        {
+            "from": 734,
+            "to": 736,
+            "type": "+"
+        },
+        {
+            "from": 736,
+            "to": 735,
+            "type": ">",
+            "ruleIds": [
+                597
+            ]
+        },
+        {
+            "from": 737,
+            "to": 596,
+            "type": ">"
+        },
+        {
+            "from": 596,
+            "to": 738,
+            "type": ">"
+        },
+        {
+            "from": 739,
+            "to": 740,
+            "type": ">",
+            "ruleIds": [
+                597
+            ]
+        },
+        {
+            "from": 740,
+            "to": 702,
+            "type": "+"
+        },
+        {
+            "from": 740,
+            "to": 88,
+            "type": "+"
+        },
+        {
+            "from": 742,
+            "to": 698,
+            "type": "~"
+        },
+        {
+            "from": 552,
+            "to": 402,
+            "type": "~"
+        },
+        {
+            "from": 414,
+            "to": 401,
+            "type": "~"
         }
     ],
     "corpusTexts": [
@@ -10366,7 +10643,7 @@
                 614,
                 null,
                 387,
-                null,
+                737,
                 596,
                 588,
                 592,
@@ -10410,14 +10687,14 @@
                 null,
                 700,
                 539,
-                null,
+                739,
                 693,
                 703,
                 705,
                 706,
                 707,
                 39,
-                null,
+                734,
                 712,
                 709,
                 null,
@@ -10433,11 +10710,13 @@
                 727,
                 728,
                 729,
-                null,
+                731,
                 null,
                 573,
                 null,
-                567
+                567,
+                null,
+                733
             ],
             "source": "MC:221"
         },
@@ -10706,9 +10985,9 @@
             "lang": "Q",
             "pos": "V",
             "rows": [
-                "1st Person",
+                "1st Person Exclusive",
                 "1st Person Inclusive",
-                "2nd Person",
+                "2nd Person Formal",
                 "2nd Person Familiar",
                 "3rd Person"
             ],
@@ -10804,8 +11083,10 @@
             "lang": "Q",
             "pos": "N",
             "rows": [
-                "1st Person",
-                "2nd Person",
+                "1st Person Exclusive",
+                "1st Person Inclusive",
+                "2nd Person Formal",
+                "2nd Person Familiar",
                 "3rd Person"
             ],
             "columns": [
@@ -10818,13 +11099,35 @@
                             ]
                         },
                         {
+                        },
+                        {
                             "ruleAlternatives": [
                                 414
                             ]
                         },
                         {
                             "ruleAlternatives": [
+                                741
+                            ]
+                        },
+                        {
+                            "ruleAlternatives": [
                                 400
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "Plural",
+                    "cells": [
+                        {
+                            "ruleAlternatives": [
+                                415
+                            ]
+                        },
+                        {
+                            "ruleAlternatives": [
+                                742
                             ]
                         }
                     ]
