@@ -4,10 +4,10 @@ typealias WordAlternatives = List<Word>
 
 class ParadigmCell(val ruleAlternatives: List<Rule?>) {
     fun generate(word: Word, graph: GraphRepository): WordAlternatives {
-        return ruleAlternatives.map { r ->
+        return ruleAlternatives.mapTo(mutableSetOf()) { r ->
             val link = graph.getLinksTo(word).find { it.rules == listOf(r) }
             link?.fromEntity as? Word ?: r?.apply(word, graph) ?: word
-        }.ifEmpty { listOf(word) }
+        }.toList().ifEmpty { listOf(word) }
     }
 }
 

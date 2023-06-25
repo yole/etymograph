@@ -5383,7 +5383,7 @@
             ],
             "addedCategories": ".FUT",
             "fromPOS": "V",
-            "toPOS": "V",
+            "toPOS": "V.TENSE",
             "source": "https://eldamo.org/content/words/word-2817430301.html",
             "preInstructions": [
             ]
@@ -5600,7 +5600,7 @@
             ],
             "addedCategories": ".AOR",
             "fromPOS": "V",
-            "toPOS": "V",
+            "toPOS": "V.TENSE",
             "source": "https://eldamo.org/content/words/word-2025078257.html",
             "preInstructions": [
             ]
@@ -5651,8 +5651,8 @@
                 }
             ],
             "addedCategories": ".3PL",
-            "fromPOS": "V",
-            "toPOS": "V",
+            "fromPOS": "V.TENSE",
+            "toPOS": "V.OBJ",
             "preInstructions": [
             ]
         },
@@ -5702,7 +5702,7 @@
             ],
             "addedCategories": ".AOR",
             "fromPOS": "V",
-            "toPOS": "V",
+            "toPOS": "V.TENSE",
             "source": "https://eldamo.org/content/words/word-2025078257.html",
             "preInstructions": [
             ]
@@ -5954,12 +5954,25 @@
                 {
                     "instructions": [
                         {
-                            "type": "ApplySoundRule",
+                            "type": "RemoveLastCharacter",
                             "args": [
-                                "429",
-                                "first vowel"
                             ]
                         },
+                        {
+                            "type": "AddSuffix",
+                            "args": [
+                                "ea"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "characters": "a"
+                    }
+                },
+                {
+                    "instructions": [
                         {
                             "type": "AddSuffix",
                             "args": [
@@ -5974,9 +5987,16 @@
             ],
             "addedCategories": ".PRES",
             "fromPOS": "V",
-            "toPOS": "V",
+            "toPOS": "V.TENSE",
             "source": "https://eldamo.org/content/words/word-4095499405.html",
             "preInstructions": [
+                {
+                    "type": "ApplySoundRule",
+                    "args": [
+                        "429",
+                        "first vowel"
+                    ]
+                }
             ]
         },
         {
@@ -7239,7 +7259,7 @@
             ],
             "addedCategories": ".PST",
             "fromPOS": "V",
-            "toPOS": "V",
+            "toPOS": "V.TENSE",
             "source": "https://eldamo.org/content/words/word-3224058975.html",
             "preInstructions": [
             ]
@@ -7721,11 +7741,9 @@
                 }
             ],
             "addedCategories": ".3SG",
-            "replacedCategories": "",
-            "fromPOS": "V",
-            "toPOS": "V",
+            "fromPOS": "V.TENSE",
+            "toPOS": "V.OBJ",
             "source": "https://eldamo.org/content/words/word-4071776673.html",
-            "notes": "",
             "preInstructions": [
             ]
         }
@@ -11061,7 +11079,7 @@
             "id": 1,
             "name": "Subject Pronouns",
             "lang": "Q",
-            "pos": "V",
+            "pos": "V.TENSE",
             "rows": [
                 "1st Person Exclusive",
                 "1st Person Inclusive",
@@ -11221,7 +11239,7 @@
             "id": 3,
             "name": "Object Suffixes",
             "lang": "Q",
-            "pos": "V",
+            "pos": "V.TENSE",
             "rows": [
                 "3rd Person"
             ],
