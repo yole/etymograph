@@ -171,7 +171,7 @@ open class InMemoryGraphRepository : GraphRepository() {
     private fun collectDerivedWordParadigms(word: Word): Set<Paradigm> {
         return getLinksTo(word)
             .filter { it.fromEntity is Word }
-            .mapNotNull { paradigmForRule(it.rules.last()) }
+            .mapNotNull { it.rules.lastOrNull()?.let { rule -> paradigmForRule(rule) } }
             .toSet()
     }
 
