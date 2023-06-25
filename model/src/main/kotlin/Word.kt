@@ -61,7 +61,7 @@ class Word(
                 (it.toEntity as Word).getOrComputeGloss(graph)?.substringBefore(", ") ?: "?"
             }
         }
-        val derivation = graph.getLinksFrom(this).singleOrNull { it.type == Link.Derived && it.toEntity is Word }
+        val derivation = baseWordLink(graph)
         if (derivation != null) {
             if (derivation.rules.any { it.addedCategories != null }) {
                 (derivation.toEntity as Word).getOrComputeGloss(graph)?.let { fromGloss ->
@@ -74,6 +74,9 @@ class Word(
         }
         return null
     }
+
+    fun baseWordLink(graph: GraphRepository): Link? =
+        graph.getLinksFrom(this).singleOrNull { it.type == Link.Derived && it.toEntity is Word }
 
     fun segmentedText(): String {
         if (segments.isNullOrEmpty()) return text

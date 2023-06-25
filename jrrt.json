@@ -4153,6 +4153,78 @@
             "text": "ondolissë",
             "lang": "Q",
             "source": "MC:221"
+        },
+        {
+            "id": 721,
+            "text": "ondo",
+            "lang": "Q",
+            "gloss": "stone",
+            "pos": "N",
+            "source": "MC:222"
+        },
+        {
+            "id": 722,
+            "text": "mornë",
+            "lang": "Q",
+            "source": "MC:221"
+        },
+        {
+            "id": 723,
+            "text": "fanyarë",
+            "lang": "Q",
+            "gloss": "the skies",
+            "pos": "N",
+            "source": "MC:222"
+        },
+        {
+            "id": 724,
+            "text": "ruc-",
+            "lang": "Q",
+            "gloss": "feel fear",
+            "pos": "V",
+            "source": "MC:223"
+        },
+        {
+            "id": 725,
+            "text": "rúcina",
+            "lang": "Q",
+            "source": "MC:221"
+        },
+        {
+            "id": 726,
+            "text": "anar",
+            "lang": "Q",
+            "gloss": "Sun",
+            "pos": "N",
+            "source": "MC:222"
+        },
+        {
+            "id": 727,
+            "text": "púrëa",
+            "lang": "Q",
+            "gloss": "bleared",
+            "pos": "ADJ",
+            "source": "MC:222"
+        },
+        {
+            "id": 728,
+            "text": "tihta",
+            "lang": "Q",
+            "gloss": "blink",
+            "pos": "V",
+            "source": "MC:222"
+        },
+        {
+            "id": 729,
+            "text": "axor",
+            "lang": "Q",
+            "source": "MC:221"
+        },
+        {
+            "id": 730,
+            "text": "axo",
+            "lang": "Q",
+            "pos": "N"
         }
     ],
     "rules": [
@@ -9961,6 +10033,43 @@
             "ruleIds": [
                 717
             ]
+        },
+        {
+            "from": 720,
+            "to": 721,
+            "type": ">",
+            "ruleIds": [
+                516
+            ]
+        },
+        {
+            "from": 722,
+            "to": 108,
+            "type": ">",
+            "ruleIds": [
+                407
+            ]
+        },
+        {
+            "from": 723,
+            "to": 82,
+            "type": ">"
+        },
+        {
+            "from": 725,
+            "to": 724,
+            "type": ">",
+            "ruleIds": [
+                717
+            ]
+        },
+        {
+            "from": 729,
+            "to": 730,
+            "type": ">",
+            "ruleIds": [
+                396
+            ]
         }
     ],
     "corpusTexts": [
@@ -10316,14 +10425,14 @@
                 718,
                 387,
                 720,
+                722,
                 null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
+                723,
+                725,
+                726,
+                727,
+                728,
+                729,
                 null,
                 null,
                 573,

@@ -131,7 +131,7 @@ open class InMemoryGraphRepository : GraphRepository() {
     }
 
     override fun findParseCandidates(word: Word): List<ParseCandidate> {
-        return findParseCandidates(word.language, word.text, word.pos, emptyList(), emptySet(), true)
+        return findParseCandidates(word.language, word.text, word.pos, emptyList(), collectDerivedWordParadigms(word), true)
     }
 
     private fun findParseCandidates(language: Language, text: String, pos: String?, prevRules: List<Rule>,
@@ -168,8 +168,15 @@ open class InMemoryGraphRepository : GraphRepository() {
             }
     }
 
+    private fun collectDerivedWordParadigms(word: Word): Set<Paradigm> {
+        return getLinksTo(word)
+            .filter { it.fromEntity is Word }
+            .mapNotNull { paradigmForRule(it.rules.last()) }
+            .toSet()
+    }
+
     override fun restoreSegments(word: Word): Word {
-        val baseWordLink = getLinksFrom(word).find { it.type == Link.Derived }
+        val baseWordLink = word.baseWordLink(this)
         if (baseWordLink != null) {
             val baseWord = baseWordLink.toEntity as Word
             if (baseWord.language == word.language) {
