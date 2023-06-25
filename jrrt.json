@@ -4133,6 +4133,26 @@
             "gloss": "downfallen",
             "pos": "ADJ",
             "source": "MC:221"
+        },
+        {
+            "id": 718,
+            "text": "rácina",
+            "lang": "Q",
+            "source": "MC:221"
+        },
+        {
+            "id": 719,
+            "text": "rac-",
+            "lang": "Q",
+            "gloss": "break",
+            "pos": "V",
+            "source": "MC:223"
+        },
+        {
+            "id": 720,
+            "text": "ondolissë",
+            "lang": "Q",
+            "source": "MC:221"
         }
     ],
     "rules": [
@@ -4927,8 +4947,9 @@
                 }
             ],
             "addedCategories": ".LOC",
+            "fromPOS": "N",
+            "toPOS": "N",
             "source": "Eldamo",
-            "notes": "",
             "preInstructions": [
                 {
                     "type": "ApplyRule",
@@ -5037,6 +5058,8 @@
                 }
             ],
             "addedCategories": ".PPL",
+            "fromPOS": "N",
+            "toPOS": "N",
             "source": "https://www.eldamo.org/content/words/word-1164934417.html",
             "preInstructions": [
                 {
@@ -6294,6 +6317,8 @@
                 }
             ],
             "addedCategories": ".LOC.PPL",
+            "fromPOS": "N",
+            "toPOS": "N",
             "source": "https://eldamo.org/content/words/word-988788179.html",
             "preInstructions": [
             ]
@@ -7205,6 +7230,164 @@
                         "413"
                     ]
                 }
+            ]
+        },
+        {
+            "id": 713,
+            "name": "q-1du-excl",
+            "fromLang": "Q",
+            "toLang": "Q",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "args": [
+                                "mme"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".1DU.EX",
+            "fromPOS": "V",
+            "toPOS": "V",
+            "source": "https://eldamo.org/content/words/word-1020286637.html",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 714,
+            "name": "q-1du-incl",
+            "fromLang": "Q",
+            "toLang": "Q",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "args": [
+                                "nque"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".1DU.IN",
+            "replacedCategories": "",
+            "fromPOS": "V",
+            "toPOS": "V",
+            "source": "https://eldamo.org/content/words/word-1020286637.html",
+            "notes": "",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 715,
+            "name": "q-2du",
+            "fromLang": "Q",
+            "toLang": "Q",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "args": [
+                                "ste"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".2DU",
+            "replacedCategories": "",
+            "fromPOS": "V",
+            "toPOS": "V",
+            "source": "https://eldamo.org/content/words/word-1020286637.html",
+            "notes": "",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 716,
+            "name": "q-3du",
+            "fromLang": "Q",
+            "toLang": "Q",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "args": [
+                                "tte"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".3DU",
+            "replacedCategories": "",
+            "fromPOS": "V",
+            "toPOS": "V",
+            "source": "https://eldamo.org/content/words/word-1020286637.html",
+            "notes": "",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 717,
+            "name": "q-pprt",
+            "fromLang": "Q",
+            "toLang": "Q",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "args": [
+                                "na"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "characters": "u"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "args": [
+                                "ina"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".PPRT",
+            "replacedCategories": "",
+            "fromPOS": "V",
+            "toPOS": "",
+            "source": "https://eldamo.org/content/words/word-2744508917.html",
+            "notes": "",
+            "preInstructions": [
             ]
         }
     ],
@@ -9770,6 +9953,14 @@
             "from": 710,
             "to": 711,
             "type": ">"
+        },
+        {
+            "from": 718,
+            "to": 719,
+            "type": ">",
+            "ruleIds": [
+                717
+            ]
         }
     ],
     "corpusTexts": [
@@ -10122,9 +10313,9 @@
                 709,
                 null,
                 614,
-                null,
+                718,
                 387,
-                null,
+                720,
                 null,
                 null,
                 null,
@@ -10468,6 +10659,33 @@
                             ]
                         }
                     ]
+                },
+                {
+                    "title": "Dual",
+                    "cells": [
+                        {
+                            "ruleAlternatives": [
+                                713
+                            ]
+                        },
+                        {
+                            "ruleAlternatives": [
+                                714
+                            ]
+                        },
+                        {
+                            "ruleAlternatives": [
+                                715
+                            ]
+                        },
+                        {
+                        },
+                        {
+                            "ruleAlternatives": [
+                                716
+                            ]
+                        }
+                    ]
                 }
             ]
         },
@@ -10477,13 +10695,13 @@
             "lang": "Q",
             "pos": "N",
             "rows": [
-                "1p",
-                "2p",
-                "3p"
+                "1st Person",
+                "2nd Person",
+                "3rd Person"
             ],
             "columns": [
                 {
-                    "title": "Sg",
+                    "title": "Singular",
                     "cells": [
                         {
                             "ruleAlternatives": [

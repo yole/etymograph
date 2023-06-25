@@ -372,7 +372,7 @@ class RuleTest : QBaseTest() {
         assertEquals("cira", phonemes.result())
 
         val applySoundRuleInstruction = ApplySoundRuleInstruction(q, RuleRef.to(rule), "first vowel")
-        assertEquals("cira", applySoundRuleInstruction.reverseApply("círa", q))
+        assertEquals("cira", applySoundRuleInstruction.reverseApply("círa", q).single())
     }
 
     @Test

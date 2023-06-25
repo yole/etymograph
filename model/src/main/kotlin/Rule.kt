@@ -25,28 +25,30 @@ class RuleBranch(val condition: RuleCondition, val instructions: List<RuleInstru
         return instructions.apply(rule, word, graph)
     }
 
-    fun reverseApply(word: Word): String? {
-        var text: String? = word.language.normalizeWord(word.text)
+    fun reverseApply(word: Word): List<String> {
+        var candidates = listOf(word.language.normalizeWord(word.text))
         for (instruction in instructions.reversed()) {
-            text = instruction.reverseApply(text!!, word.language)
-            if (text == null) break
+            candidates = candidates.flatMap { instruction.reverseApply(it, word.language) }
+            if (candidates.isEmpty()) break
         }
-        if (text != null && text.endsWith("*")) {
-            val leafCondition = condition as? LeafRuleCondition ?: return null
-            if (leafCondition.type != ConditionType.EndsWith || leafCondition.parameter == null) {
-                return null
-            }
-            val stars = text.takeLastWhile { it == '*' }
-            if (leafCondition.parameter.length >= stars.length) {
-                text = text.removeSuffix(stars) + leafCondition.parameter.substring(leafCondition.parameter.length - stars.length)
-            }
-            else {
-                text = null
-            }
-        }
-        if (text != null && condition.matches(word.derive(text))) {
+        candidates = candidates.mapNotNull { replaceStarWithConditionText(it) }
+        return candidates.filter { condition.matches(word.derive(it)) }
+    }
+
+    private fun replaceStarWithConditionText(text: String): String? {
+        if (!text.endsWith("*")) {
             return text
         }
+
+        val leafCondition = condition as? LeafRuleCondition ?: return null
+        if (leafCondition.type != ConditionType.EndsWith || leafCondition.parameter == null) {
+            return null
+        }
+        val stars = text.takeLastWhile { it == '*' }
+        if (leafCondition.parameter.length >= stars.length) {
+            return text.removeSuffix(stars) + leafCondition.parameter.substring(leafCondition.parameter.length - stars.length)
+        }
+
         return null
     }
 
@@ -120,7 +122,10 @@ class Rule(
     }
 
     fun reverseApply(word: Word): List<String> {
-        return logic.branches.mapNotNull { it.reverseApply(word) }
+        if (logic.branches.isEmpty()) {
+            return listOf(word.text)
+        }
+        return logic.branches.flatMap { it.reverseApply(word) }
     }
 
     fun applyToPhoneme(phonemes: PhonemeIterator) {
