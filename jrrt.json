@@ -4687,6 +4687,55 @@
             "gloss": "crumble",
             "pos": "V",
             "source": "MC:222"
+        },
+        {
+            "id": 808,
+            "text": "ahosta",
+            "lang": "Q",
+            "source": "MC:221"
+        },
+        {
+            "id": 809,
+            "text": "hosta",
+            "lang": "Q",
+            "gloss": "gather",
+            "pos": "V",
+            "source": "MC:222"
+        },
+        {
+            "id": 810,
+            "text": "khotta",
+            "lang": "CE",
+            "gloss": "gather",
+            "fullGloss": "gather hastily together, pile up",
+            "source": "PE17:39"
+        },
+        {
+            "id": 811,
+            "text": "KHOT-",
+            "lang": "CE",
+            "pos": "gather",
+            "source": "PE17:39"
+        },
+        {
+            "id": 812,
+            "text": "acúna",
+            "lang": "Q",
+            "source": "MC:222"
+        },
+        {
+            "id": 813,
+            "text": "cúna-",
+            "lang": "Q",
+            "gloss": "bend",
+            "pos": "V",
+            "source": "MC:222"
+        },
+        {
+            "id": 814,
+            "text": "KU-",
+            "lang": "CE",
+            "gloss": "bow, bend"
         }
     ],
     "rules": [
@@ -8260,6 +8309,32 @@
             "notes": "",
             "preInstructions": [
             ]
+        },
+        {
+            "id": 807,
+            "name": "q-inf-prefix",
+            "fromLang": "Q",
+            "toLang": "Q",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "AddPrefix",
+                            "args": [
+                                "a"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".INF",
+            "fromPOS": "V",
+            "source": "https://eldamo.org/content/words/word-3482070047.html",
+            "preInstructions": [
+            ]
         }
     ],
     "links": [
@@ -11252,6 +11327,37 @@
             "ruleIds": [
                 597
             ]
+        },
+        {
+            "from": 808,
+            "to": 809,
+            "type": ">",
+            "ruleIds": [
+                807
+            ]
+        },
+        {
+            "from": 809,
+            "to": 810,
+            "type": ">"
+        },
+        {
+            "from": 810,
+            "to": 811,
+            "type": ">"
+        },
+        {
+            "from": 812,
+            "to": 813,
+            "type": ">",
+            "ruleIds": [
+                807
+            ]
+        },
+        {
+            "from": 813,
+            "to": 814,
+            "type": ">"
         }
     ],
     "corpusTexts": [
@@ -11586,9 +11692,9 @@
                 null,
                 567,
                 696,
-                null,
+                808,
                 234,
-                null,
+                812,
                 804,
                 700,
                 539,

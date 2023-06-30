@@ -8,6 +8,7 @@ enum class InstructionType(
     NoChange("no change"),
     RemoveLastCharacter("remove last character"),
     AddSuffix("add suffix", "add suffix '(.+)'", true),
+    AddPrefix("add prefix", "add prefix '(.+)'", true),
     Prepend("prepend", "prepend (.+)", true),
     ApplyRule("apply rule", "apply rule '(.+)'", true),
     ApplySoundRule("apply sound rule", "apply sound rule '(.+)' to (.+)", true),
@@ -24,12 +25,14 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
         InstructionType.RemoveLastCharacter -> word.derive(word.text.substring(0, word.text.lastIndex))
         InstructionType.AddSuffix ->
             word.derive(word.text + arg, WordSegment(word.text.length, arg.length, rule.addedCategories, rule))
+        InstructionType.AddPrefix -> word.derive(arg + word.text)
         else -> throw IllegalStateException("Can't apply phoneme instruction to full word")
     }
 
     open fun reverseApply(text: String, language: Language): List<String> {
         return when (type) {
             InstructionType.AddSuffix -> if (text.endsWith(arg)) listOf(text.removeSuffix(arg)) else emptyList()
+            InstructionType.AddPrefix -> if (text.startsWith(arg)) listOf(text.removePrefix(arg)) else emptyList()
             InstructionType.RemoveLastCharacter -> listOf("$text*")
             else -> emptyList()
         }
@@ -47,6 +50,7 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
 
     open fun toSummaryText() = when(type) {
         InstructionType.AddSuffix -> "-$arg"
+        InstructionType.AddPrefix -> "$arg-"
         else -> ""
     }
 
