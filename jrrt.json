@@ -5031,6 +5031,66 @@
             "text": "LIN-",
             "lang": "CE",
             "gloss": "sing"
+        },
+        {
+            "id": 861,
+            "text": "ilu",
+            "lang": "Q",
+            "gloss": "world",
+            "pos": "N",
+            "source": "LR:72"
+        },
+        {
+            "id": 862,
+            "text": "Ilúvatar",
+            "lang": "Q",
+            "gloss": "All-father",
+            "pos": "NP",
+            "source": "LR:72"
+        },
+        {
+            "id": 863,
+            "text": "en",
+            "lang": "Q",
+            "gloss": "there",
+            "source": "LR:72"
+        },
+        {
+            "id": 864,
+            "text": "káre",
+            "lang": "Q",
+            "source": "LR:72"
+        },
+        {
+            "id": 865,
+            "text": "eldain",
+            "lang": "Q",
+            "source": "LR:72"
+        },
+        {
+            "id": 866,
+            "text": "a",
+            "lang": "Q",
+            "source": "LR:72"
+        },
+        {
+            "id": 868,
+            "text": "fírimoin",
+            "lang": "Q",
+            "source": "LR:72"
+        },
+        {
+            "id": 869,
+            "text": "fírimo",
+            "lang": "Q"
+        },
+        {
+            "id": 870,
+            "text": "firima",
+            "lang": "Q",
+            "gloss": "mortal",
+            "pos": "N",
+            "source": "VT44:35"
         }
     ],
     "rules": [
@@ -11876,6 +11936,45 @@
             "from": 858,
             "to": 859,
             "type": ">"
+        },
+        {
+            "from": 864,
+            "to": 306,
+            "type": ">",
+            "ruleIds": [
+                666
+            ]
+        },
+        {
+            "from": 865,
+            "to": 649,
+            "type": ">",
+            "ruleIds": [
+                427
+            ]
+        },
+        {
+            "from": 866,
+            "to": 90,
+            "type": "="
+        },
+        {
+            "from": 868,
+            "to": 869,
+            "type": ">",
+            "ruleIds": [
+                427
+            ]
+        },
+        {
+            "from": 869,
+            "to": 870,
+            "type": "="
+        },
+        {
+            "from": 870,
+            "to": 333,
+            "type": ">"
         }
     ],
     "corpusTexts": [
@@ -12400,6 +12499,22 @@
                 855
             ],
             "source": "PE16:96"
+        },
+        {
+            "id": 860,
+            "text": "Ilu Ilúvatar en káre eldain a fírimoin\nar antaróta mannar Valion: númessier\ntoi aina, mána, meldielto — enga morion: talantie\nMelko Mardello lende: márie\nen kárielto eldain Isil, hildin Úr-anar; toi írimar\nilyain antalto annar lestanen Ilúvatáren\nIlu vanya, fanya, eari, i-mar, ar ilqa ímen\nírima ye Númenor\nnan úye sére indo-ninya símen, ullume\nten sí ye tyelma, yéva tyel ar i narqelion\níre ilqa yéva nótina, hostainiéva, yallume\nananta úva táre fárea, ufárea\nman táre antáva nin Ilúvatar, Ilúvatar?\nenyáre tar i tyel, íre Anarinya qeluva",
+            "title": "Firiel's Song",
+            "lang": "Q",
+            "wordIds": [
+                861,
+                862,
+                863,
+                864,
+                865,
+                866,
+                868
+            ],
+            "source": "LR:72"
         }
     ],
     "paradigms": [
