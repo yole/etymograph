@@ -4518,6 +4518,29 @@
             "gloss": "holy",
             "pos": "ADJ",
             "source": "VT44:7"
+        },
+        {
+            "id": 781,
+            "text": "eruontari",
+            "lang": "Q",
+            "source": "VT44:5"
+        },
+        {
+            "id": 782,
+            "text": "ONO-",
+            "lang": "CE",
+            "gloss": "beget"
+        },
+        {
+            "id": 783,
+            "text": "alalyë",
+            "lang": "Q",
+            "source": "VT44:5"
+        },
+        {
+            "id": 784,
+            "text": "ala",
+            "lang": "Q"
         }
     ],
     "rules": [
@@ -10937,6 +10960,21 @@
                 424,
                 420
             ]
+        },
+        {
+            "from": 781,
+            "to": 320,
+            "type": "+"
+        },
+        {
+            "from": 781,
+            "to": 321,
+            "type": "+"
+        },
+        {
+            "from": 321,
+            "to": 782,
+            "type": ">"
         }
     ],
     "corpusTexts": [
@@ -11410,7 +11448,9 @@
             "wordIds": [
                 776,
                 779,
-                780
+                780,
+                781,
+                783
             ],
             "source": "VT44:5"
         }
