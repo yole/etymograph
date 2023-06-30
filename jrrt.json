@@ -2507,7 +2507,7 @@
         },
         {
             "id": 343,
-            "text": "anta",
+            "text": "anta-",
             "lang": "Q",
             "gloss": "give",
             "pos": "V",
@@ -4736,6 +4736,301 @@
             "text": "KU-",
             "lang": "CE",
             "gloss": "bow, bend"
+        },
+        {
+            "id": 815,
+            "text": "lúmenn'",
+            "lang": "Q",
+            "source": "PE17:23"
+        },
+        {
+            "id": 817,
+            "text": "norolinda",
+            "lang": "Q",
+            "source": "PE16:96"
+        },
+        {
+            "id": 818,
+            "text": "nor-",
+            "lang": "Q",
+            "gloss": "run",
+            "pos": "V",
+            "source": "PE17:168"
+        },
+        {
+            "id": 819,
+            "text": "linda",
+            "lang": "Q",
+            "gloss": "beautiful",
+            "fullGloss": "beautiful (of sound), sweet, melodious; soft, gentle, light",
+            "pos": "ADJ",
+            "source": "PE16:96"
+        },
+        {
+            "id": 820,
+            "text": "pirucendëa",
+            "lang": "Q",
+            "source": "PE16:96"
+        },
+        {
+            "id": 821,
+            "text": "piru",
+            "lang": "Q"
+        },
+        {
+            "id": 822,
+            "text": "pirë",
+            "lang": "Q",
+            "gloss": "toe",
+            "pos": "N",
+            "source": "PE16:96"
+        },
+        {
+            "id": 823,
+            "text": "cendë",
+            "lang": "Q",
+            "gloss": "point",
+            "pos": "N",
+            "source": "PE16:96"
+        },
+        {
+            "id": 824,
+            "text": "cendëa",
+            "lang": "Q"
+        },
+        {
+            "id": 825,
+            "text": "lendë",
+            "lang": "Q",
+            "source": "PE16:96"
+        },
+        {
+            "id": 826,
+            "text": "lenna-",
+            "lang": "Q",
+            "gloss": "come",
+            "pos": "V",
+            "source": "PE16:96"
+        },
+        {
+            "id": 827,
+            "text": "tanna",
+            "lang": "Q",
+            "source": "PE16:96"
+        },
+        {
+            "id": 828,
+            "text": "Nieliccilis",
+            "lang": "Q",
+            "gloss": "little Niele",
+            "pos": "NP",
+            "source": "PE16:96"
+        },
+        {
+            "id": 829,
+            "text": "sana",
+            "lang": "Q",
+            "gloss": "that",
+            "pos": "PRON",
+            "source": "PE16:96"
+        },
+        {
+            "id": 830,
+            "text": "wendë",
+            "lang": "Q",
+            "source": "PE16:96"
+        },
+        {
+            "id": 831,
+            "text": "nieninquëa",
+            "lang": "Q",
+            "source": "PE16:96"
+        },
+        {
+            "id": 832,
+            "text": "nieninque",
+            "lang": "Q",
+            "gloss": "snowdrop",
+            "pos": "N",
+            "source": "PE16:96"
+        },
+        {
+            "id": 833,
+            "text": "nie",
+            "lang": "Q",
+            "gloss": "tear",
+            "pos": "N",
+            "source": "PE21:6"
+        },
+        {
+            "id": 834,
+            "text": "yan",
+            "lang": "Q",
+            "source": "PE16:96"
+        },
+        {
+            "id": 835,
+            "text": "wilyar",
+            "lang": "Q",
+            "source": "PE16:96"
+        },
+        {
+            "id": 836,
+            "text": "vilya",
+            "lang": "Q",
+            "gloss": "air",
+            "pos": "N",
+            "source": "PE16:96"
+        },
+        {
+            "id": 837,
+            "text": "antar",
+            "lang": "Q",
+            "source": "PE16:96"
+        },
+        {
+            "id": 838,
+            "text": "miquelis",
+            "lang": "Q",
+            "source": "PE16:96"
+        },
+        {
+            "id": 839,
+            "text": "miquë",
+            "lang": "Q",
+            "gloss": "kiss",
+            "pos": "N",
+            "source": "https://eldamo.org/content/words/word-1277858807.html"
+        },
+        {
+            "id": 840,
+            "text": "i·oromandi",
+            "lang": "Q",
+            "source": "PE16:96"
+        },
+        {
+            "id": 841,
+            "text": "oromandi",
+            "lang": "Q"
+        },
+        {
+            "id": 842,
+            "text": "oroman",
+            "lang": "Q",
+            "gloss": "mountain-dweller",
+            "pos": "N"
+        },
+        {
+            "id": 843,
+            "text": "oro",
+            "lang": "Q",
+            "gloss": "mount",
+            "pos": "N",
+            "source": "PE17:64"
+        },
+        {
+            "id": 844,
+            "text": "wilwarindië",
+            "lang": "Q",
+            "source": "PE16:96"
+        },
+        {
+            "id": 845,
+            "text": "wilwarindëa",
+            "lang": "Q",
+            "pos": "ADJ"
+        },
+        {
+            "id": 846,
+            "text": "wingildi",
+            "lang": "Q",
+            "source": "PE16:96"
+        },
+        {
+            "id": 847,
+            "text": "vingil",
+            "lang": "Q",
+            "gloss": "nymph",
+            "pos": "N",
+            "source": "PE16:96"
+        },
+        {
+            "id": 848,
+            "text": "vingild",
+            "lang": "Q"
+        },
+        {
+            "id": 849,
+            "text": "losselië",
+            "lang": "Q",
+            "source": "PE16:96"
+        },
+        {
+            "id": 850,
+            "text": "lië",
+            "lang": "Q",
+            "gloss": "folk",
+            "pos": "N",
+            "source": "PE16:96"
+        },
+        {
+            "id": 851,
+            "text": "telerinwa",
+            "lang": "Q",
+            "source": "PE16:96"
+        },
+        {
+            "id": 852,
+            "text": "Telerin",
+            "lang": "Q",
+            "gloss": "of the Teleri",
+            "pos": "NP"
+        },
+        {
+            "id": 853,
+            "text": "táli",
+            "lang": "Q",
+            "source": "PE16:96"
+        },
+        {
+            "id": 854,
+            "text": "tál",
+            "lang": "Q",
+            "gloss": "foot",
+            "pos": "N",
+            "source": "PE16:96"
+        },
+        {
+            "id": 855,
+            "text": "lantalasselingië",
+            "lang": "Q",
+            "source": "PE16:96"
+        },
+        {
+            "id": 856,
+            "text": "lingië",
+            "lang": "Q"
+        },
+        {
+            "id": 857,
+            "text": "lingëa",
+            "lang": "Q",
+            "pos": "ADJ",
+            "source": "PE16:96"
+        },
+        {
+            "id": 858,
+            "text": "linge",
+            "lang": "Q",
+            "gloss": "musical sound",
+            "pos": "N",
+            "source": "PE16:96"
+        },
+        {
+            "id": 859,
+            "text": "LIN-",
+            "lang": "CE",
+            "gloss": "sing"
         }
     ],
     "rules": [
@@ -11358,6 +11653,229 @@
             "from": 813,
             "to": 814,
             "type": ">"
+        },
+        {
+            "from": 815,
+            "to": 149,
+            "type": "="
+        },
+        {
+            "from": 817,
+            "to": 818,
+            "type": "+"
+        },
+        {
+            "from": 817,
+            "to": 819,
+            "type": "+"
+        },
+        {
+            "from": 820,
+            "to": 821,
+            "type": "+"
+        },
+        {
+            "from": 821,
+            "to": 822,
+            "type": ">",
+            "ruleIds": [
+                411
+            ]
+        },
+        {
+            "from": 820,
+            "to": 824,
+            "type": "+"
+        },
+        {
+            "from": 824,
+            "to": 823,
+            "type": ">",
+            "ruleIds": [
+                422
+            ]
+        },
+        {
+            "from": 825,
+            "to": 826,
+            "type": ">",
+            "ruleIds": [
+                666
+            ]
+        },
+        {
+            "from": 827,
+            "to": 662,
+            "type": ">",
+            "ruleIds": [
+                399
+            ]
+        },
+        {
+            "from": 830,
+            "to": 800,
+            "type": "="
+        },
+        {
+            "from": 831,
+            "to": 832,
+            "type": ">",
+            "ruleIds": [
+                422
+            ]
+        },
+        {
+            "from": 832,
+            "to": 833,
+            "type": "+"
+        },
+        {
+            "from": 832,
+            "to": 623,
+            "type": "+"
+        },
+        {
+            "from": 834,
+            "to": 48,
+            "type": ">",
+            "ruleIds": [
+                404
+            ]
+        },
+        {
+            "from": 835,
+            "to": 836,
+            "type": ">",
+            "ruleIds": [
+                396
+            ]
+        },
+        {
+            "from": 837,
+            "to": 343,
+            "type": ">",
+            "ruleIds": [
+                425
+            ]
+        },
+        {
+            "from": 838,
+            "to": 839,
+            "type": "+"
+        },
+        {
+            "from": 838,
+            "to": 444,
+            "type": "+"
+        },
+        {
+            "from": 840,
+            "to": 52,
+            "type": "+"
+        },
+        {
+            "from": 840,
+            "to": 841,
+            "type": "+"
+        },
+        {
+            "from": 841,
+            "to": 842,
+            "type": ">",
+            "ruleIds": [
+                396
+            ]
+        },
+        {
+            "from": 842,
+            "to": 843,
+            "type": "+"
+        },
+        {
+            "from": 844,
+            "to": 845,
+            "type": ">",
+            "ruleIds": [
+                407
+            ]
+        },
+        {
+            "from": 845,
+            "to": 737,
+            "type": ">",
+            "ruleIds": [
+                422
+            ]
+        },
+        {
+            "from": 846,
+            "to": 847,
+            "type": ">",
+            "ruleIds": [
+                396
+            ]
+        },
+        {
+            "from": 849,
+            "to": 79,
+            "type": "+"
+        },
+        {
+            "from": 849,
+            "to": 850,
+            "type": "+"
+        },
+        {
+            "from": 851,
+            "to": 852,
+            "type": ">",
+            "ruleIds": [
+                408
+            ]
+        },
+        {
+            "from": 853,
+            "to": 854,
+            "type": ">",
+            "ruleIds": [
+                396
+            ]
+        },
+        {
+            "from": 855,
+            "to": 4,
+            "type": "+"
+        },
+        {
+            "from": 855,
+            "to": 6,
+            "type": "+"
+        },
+        {
+            "from": 855,
+            "to": 856,
+            "type": "+"
+        },
+        {
+            "from": 856,
+            "to": 857,
+            "type": ">",
+            "ruleIds": [
+                407
+            ]
+        },
+        {
+            "from": 857,
+            "to": 858,
+            "type": ">",
+            "ruleIds": [
+                422
+            ]
+        },
+        {
+            "from": 858,
+            "to": 859,
+            "type": ">"
         }
     ],
     "corpusTexts": [
@@ -11451,13 +11969,13 @@
         },
         {
             "id": 524,
-            "text": "Elen síla lúmenna omentielmo",
+            "text": "Elen síla lúmenn' omentielmo",
             "title": null,
             "lang": "Q",
             "wordIds": [
                 54,
                 147,
-                149,
+                815,
                 151
             ],
             "source": "PE17:23"
@@ -11850,6 +12368,38 @@
                 802
             ],
             "source": "VT44:5"
+        },
+        {
+            "id": 816,
+            "text": "norolinda pirucendëa\nlendë tanna Nieliccilis\nsana wendë nieninquëa\nyan i wilyar antar miquelis\ni·oromandi tanna lendë\nar wingildi wilwarindië\nlosselië telerinwa\ntáli lantalasselingië",
+            "title": "Nieninquë",
+            "lang": "Q",
+            "wordIds": [
+                817,
+                820,
+                825,
+                827,
+                828,
+                829,
+                830,
+                831,
+                834,
+                52,
+                835,
+                837,
+                838,
+                840,
+                827,
+                825,
+                90,
+                846,
+                844,
+                849,
+                851,
+                853,
+                855
+            ],
+            "source": "PE16:96"
         }
     ],
     "paradigms": [
