@@ -81,7 +81,7 @@ export default function WordForm(props) {
                 <td><input type="text" value={newWordFullGloss} onChange={e => setNewWordFullGloss(e.target.value)}
                            id="word-fullgloss"/></td>
             </tr>
-            {isAddingLink && <tr>
+            {props.linkType === '>' && <tr>
                 <td><label htmlFor="word-link-rule-names">Link rule names:</label></td>
                 <td><input type="text" value={newWordLinkRuleNames} onChange={e => setNewWordLinkRuleNames(e.target.value)}
                            id="word-link-rule-names"/></td>

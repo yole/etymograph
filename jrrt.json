@@ -4667,6 +4667,17 @@
             "text": "métim’",
             "lang": "Q",
             "source": "MC:221"
+        },
+        {
+            "id": 804,
+            "text": "ruxal’",
+            "lang": "Q",
+            "source": "MC:222"
+        },
+        {
+            "id": 805,
+            "text": "ruxala",
+            "lang": "Q"
         }
     ],
     "rules": [
@@ -11219,6 +11230,11 @@
             "from": 803,
             "to": 570,
             "type": "="
+        },
+        {
+            "from": 804,
+            "to": 805,
+            "type": "="
         }
     ],
     "corpusTexts": [
@@ -11556,7 +11572,7 @@
                 null,
                 234,
                 null,
-                null,
+                804,
                 700,
                 539,
                 739,
