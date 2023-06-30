@@ -55,6 +55,10 @@ class Word(
 
     fun getOrComputeGloss(graph: GraphRepository): String? {
         gloss?.let { return it }
+        val variationOf = graph.getLinksFrom(this).singleOrNull { it.type == Link.Variation && it.toEntity is Word }
+        if (variationOf != null) {
+            return (variationOf.toEntity as Word).getOrComputeGloss(graph)
+        }
         val components = graph.getLinksFrom(this).filter { it.type == Link.Agglutination && it.toEntity is Word }
         if (components.isNotEmpty()) {
             return components.joinToString("-") {

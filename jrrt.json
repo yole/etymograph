@@ -3178,9 +3178,7 @@
         {
             "id": 553,
             "text": "tenn’",
-            "lang": "Q",
-            "gloss": "until",
-            "notes": "elided"
+            "lang": "Q"
         },
         {
             "id": 554,
@@ -4535,12 +4533,140 @@
             "id": 783,
             "text": "alalyë",
             "lang": "Q",
+            "source": "VT43:22"
+        },
+        {
+            "id": 785,
+            "text": "nattira",
+            "lang": "Q",
+            "gloss": "despise",
+            "pos": "V",
+            "source": "VT44:8"
+        },
+        {
+            "id": 786,
+            "text": "arcandemmar",
+            "lang": "Q",
+            "source": "VT44:8"
+        },
+        {
+            "id": 787,
+            "text": "arcande",
+            "lang": "Q",
+            "gloss": "petition",
+            "pos": "N",
+            "source": "VT44:8"
+        },
+        {
+            "id": 789,
+            "text": "arca-",
+            "lang": "Q",
+            "gloss": "pray",
+            "pos": "V",
+            "source": "VT43:33"
+        },
+        {
+            "id": 790,
+            "text": "sangiessemman",
+            "lang": "Q",
+            "gloss": "necessity.LOC.PL.POSS.1PL.EX",
+            "source": "VT44:8",
+            "notes": "The possessive suffix 'mma' is effectively inserted in the middle of the locative case ending 'ssen'."
+        },
+        {
+            "id": 791,
+            "text": "sangie",
+            "lang": "Q",
+            "gloss": "necessity",
+            "pos": "N",
+            "source": "VT44:8"
+        },
+        {
+            "id": 792,
+            "text": "sanga",
+            "lang": "Q",
+            "gloss": "throng",
+            "fullGloss": "throng, press, pressure",
+            "pos": "N"
+        },
+        {
+            "id": 793,
+            "text": "THAG-",
+            "lang": "CE",
+            "gloss": "oppress, crush, press"
+        },
+        {
+            "id": 794,
+            "text": "ono",
+            "lang": "Q",
+            "gloss": "but",
+            "pos": "CONJ",
+            "source": "VT44:9"
+        },
+        {
+            "id": 795,
+            "text": "alyë",
+            "lang": "Q",
+            "source": "VT44:9"
+        },
+        {
+            "id": 796,
+            "text": "eterúna-",
+            "lang": "Q",
+            "gloss": "deliver",
+            "pos": "V",
+            "source": "VT44:9"
+        },
+        {
+            "id": 797,
+            "text": "illumë",
+            "lang": "Q",
+            "gloss": "always",
+            "pos": "ADV",
+            "source": "VT44:9"
+        },
+        {
+            "id": 798,
+            "text": "raxellor",
+            "lang": "Q",
             "source": "VT44:5"
         },
         {
-            "id": 784,
-            "text": "ala",
-            "lang": "Q"
+            "id": 799,
+            "text": "raxe",
+            "lang": "Q",
+            "gloss": "danger",
+            "pos": "N",
+            "source": "VT44:9"
+        },
+        {
+            "id": 800,
+            "text": "vendë",
+            "lang": "Q",
+            "gloss": "maiden",
+            "pos": "N",
+            "source": "VT44:5"
+        },
+        {
+            "id": 801,
+            "text": "WEN",
+            "lang": "CE",
+            "gloss": "maiden",
+            "source": "PE17:191"
+        },
+        {
+            "id": 802,
+            "text": "manaquenta",
+            "lang": "Q",
+            "gloss": "blessed",
+            "pos": "ADJ",
+            "source": "VT44:10"
+        },
+        {
+            "id": 803,
+            "text": "métim’",
+            "lang": "Q",
+            "source": "MC:221"
         }
     ],
     "rules": [
@@ -8085,6 +8211,35 @@
             "notes": "",
             "preInstructions": [
             ]
+        },
+        {
+            "id": 788,
+            "name": "q-action-verb",
+            "fromLang": "Q",
+            "toLang": "Q",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "args": [
+                                "nde"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": "",
+            "replacedCategories": "",
+            "fromPOS": "V",
+            "toPOS": "N",
+            "source": "https://eldamo.org/content/words/word-1383826631.html",
+            "notes": "",
+            "preInstructions": [
+            ]
         }
     ],
     "links": [
@@ -9985,11 +10140,6 @@
             ]
         },
         {
-            "from": 553,
-            "to": 554,
-            "type": ">"
-        },
-        {
             "from": 554,
             "to": 555,
             "type": ">"
@@ -10975,6 +11125,100 @@
             "from": 321,
             "to": 782,
             "type": ">"
+        },
+        {
+            "from": 783,
+            "to": 368,
+            "type": ">",
+            "ruleIds": [
+                401
+            ]
+        },
+        {
+            "from": 786,
+            "to": 787,
+            "type": ">",
+            "ruleIds": [
+                415,
+                396
+            ]
+        },
+        {
+            "from": 787,
+            "to": 789,
+            "type": ">",
+            "ruleIds": [
+                788
+            ]
+        },
+        {
+            "from": 790,
+            "to": 791,
+            "type": ">",
+            "ruleIds": [
+                410,
+                415,
+                396
+            ]
+        },
+        {
+            "from": 791,
+            "to": 792,
+            "type": ">",
+            "ruleIds": [
+                417
+            ]
+        },
+        {
+            "from": 792,
+            "to": 793,
+            "type": ">"
+        },
+        {
+            "from": 375,
+            "to": 793,
+            "type": ">"
+        },
+        {
+            "from": 795,
+            "to": 341,
+            "type": ">",
+            "ruleIds": [
+                401
+            ]
+        },
+        {
+            "from": 797,
+            "to": 347,
+            "type": "+"
+        },
+        {
+            "from": 797,
+            "to": 150,
+            "type": "+"
+        },
+        {
+            "from": 798,
+            "to": 799,
+            "type": ">",
+            "ruleIds": [
+                708
+            ]
+        },
+        {
+            "from": 800,
+            "to": 801,
+            "type": ">"
+        },
+        {
+            "from": 553,
+            "to": 554,
+            "type": "="
+        },
+        {
+            "from": 803,
+            "to": 570,
+            "type": "="
         }
     ],
     "corpusTexts": [
@@ -11339,7 +11583,7 @@
                 728,
                 729,
                 731,
-                null,
+                803,
                 573,
                 null,
                 567,
@@ -11450,7 +11694,21 @@
                 779,
                 780,
                 781,
-                783
+                783,
+                785,
+                786,
+                790,
+                794,
+                795,
+                796,
+                null,
+                797,
+                null,
+                798,
+                null,
+                800,
+                null,
+                802
             ],
             "source": "VT44:5"
         }

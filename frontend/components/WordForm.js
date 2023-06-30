@@ -12,7 +12,7 @@ export default function WordForm(props) {
     const [newWordLanguage, setNewWordLanguage] = useState(props.language || "")
     const [newWordNotes, setNewWordNotes] = useState(props.initialNotes !== undefined ? props.initialNotes : "")
     const [newWordLinkRuleNames, setNewWordLinkRuleNames] = useState("")
-    const isAddingLink = props.derivedWord || props.baseWord || props.compoundWord || props.relatedWord
+    const isAddingLink = props.linkType !== undefined
 
     function handleFormSubmit(e) {
         if (props.updateId !== undefined) {
@@ -25,20 +25,14 @@ export default function WordForm(props) {
                 .then(r => r.json())
                 .then(r => {
                     if (isAddingLink) {
-                        let fromId, toId, linkType
-                        if (props.derivedWord) {
-                            [fromId, toId, linkType] = [props.derivedWord.id, r.id, '>']
-                        }
-                        else if (props.baseWord) {
-                            [fromId, toId, linkType] = [r.id, props.baseWord.id, '>']
-                        }
-                        else if (props.compoundWord) {
-                            [fromId, toId, linkType] = [props.compoundWord.id, r.id, '+']
+                        let fromId, toId
+                        if (props.reverseLink === true) {
+                            [fromId, toId] = [r.id, props.linkTarget.id]
                         }
                         else {
-                            [fromId, toId, linkType] = [props.relatedWord.id, r.id, '~']
+                            [fromId, toId] = [props.linkTarget.id, r.id]
                         }
-                        addLink(fromId, toId, linkType, newWordLinkRuleNames)
+                        addLink(fromId, toId, props.linkType, newWordLinkRuleNames)
                             .then(lr => {
                                 if (lr.status === 200)
                                     props.submitted(r)
