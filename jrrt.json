@@ -4677,7 +4677,16 @@
         {
             "id": 805,
             "text": "ruxala",
-            "lang": "Q"
+            "lang": "Q",
+            "source": "MC:222"
+        },
+        {
+            "id": 806,
+            "text": "ruxa-",
+            "lang": "Q",
+            "gloss": "crumble",
+            "pos": "V",
+            "source": "MC:222"
         }
     ],
     "rules": [
@@ -11235,6 +11244,14 @@
             "from": 804,
             "to": 805,
             "type": "="
+        },
+        {
+            "from": 805,
+            "to": 806,
+            "type": ">",
+            "ruleIds": [
+                597
+            ]
         }
     ],
     "corpusTexts": [
