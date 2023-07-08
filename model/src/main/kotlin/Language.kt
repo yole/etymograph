@@ -36,7 +36,7 @@ class Language(val name: String, val shortName: String) {
     fun normalizeWord(text: String): String {
         return letterNormalization.entries.fold(text.lowercase(Locale.FRANCE)) { s, entry ->
             s.replace(entry.key, entry.value)
-        }
+        }.removeSuffix("-")
     }
 
     fun isNormalizedEqual(ruleProducedWord: String, attestedWord: String): Boolean {
