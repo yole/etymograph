@@ -498,8 +498,8 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                     ApplySoundRuleInstruction(fromLanguage, ruleRef(result, insnData.args[0].toInt()), insnData.args[1])
                 InstructionType.ApplyStress ->
                     ApplyStressInstruction(fromLanguage, insnData.args[0])
-                InstructionType.Prepend ->
-                    PrependInstruction(fromLanguage, insnData.args[0])
+                InstructionType.Prepend, InstructionType.Append ->
+                    PrependAppendInstruction(insnData.type, fromLanguage, insnData.args[0])
                 else ->
                     RuleInstruction(insnData.type, insnData.args.firstOrNull() ?: "")
             }

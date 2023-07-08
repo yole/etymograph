@@ -10,6 +10,7 @@ enum class InstructionType(
     AddSuffix("add suffix", "add suffix '(.+)'", true),
     AddPrefix("add prefix", "add prefix '(.+)'", true),
     Prepend("prepend", "prepend (.+)", true),
+    Append("append", "append (.+)", true),
     ApplyRule("apply rule", "apply rule '(.+)'", true),
     ApplySoundRule("apply sound rule", "apply sound rule '(.+)' to (.+)", true),
     ApplyStress("stress is on", "stress is on (.+) syllable", true),
@@ -68,7 +69,8 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
                         InstructionType.ApplyRule -> ApplyRuleInstruction(context.ruleRefFactory(arg))
                         InstructionType.ApplySoundRule -> ApplySoundRuleInstruction.parse(match, context)
                         InstructionType.ApplyStress -> ApplyStressInstruction(context.fromLanguage, arg)
-                        InstructionType.Prepend -> PrependInstruction(context.fromLanguage, arg)
+                        InstructionType.Prepend, InstructionType.Append ->
+                            PrependAppendInstruction(type, context.fromLanguage, arg)
                         else -> RuleInstruction(type, arg)
                     }
                 }
@@ -159,13 +161,22 @@ class ApplyStressInstruction(val language: Language, arg: String) : RuleInstruct
     }
 }
 
-class PrependInstruction(language: Language, arg: String) : RuleInstruction(InstructionType.Prepend, arg) {
+class PrependAppendInstruction(type: InstructionType, language: Language, arg: String) : RuleInstruction(type, arg) {
     val seekTarget = SeekTarget.parse(arg, language)
+
+    init {
+        if (type != InstructionType.Append && type != InstructionType.Prepend) {
+            throw IllegalStateException("Unsupported instruction type for this instruction implementation")
+        }
+    }
 
     override fun apply(rule: Rule, word: Word, graph: GraphRepository): Word {
         val phonemes = PhonemeIterator(word)
         if (phonemes.seek(seekTarget)) {
-            return word.derive(phonemes.current + word.text)
+            if (type == InstructionType.Prepend) {
+                return word.derive(phonemes.current + word.text)
+            }
+            return word.derive(word.text + phonemes.current)
         }
         return word
     }

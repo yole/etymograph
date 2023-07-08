@@ -5091,6 +5091,139 @@
             "gloss": "mortal",
             "pos": "N",
             "source": "VT44:35"
+        },
+        {
+            "id": 872,
+            "text": "súlë",
+            "lang": "Q",
+            "gloss": "breath",
+            "pos": "N",
+            "source": "NM:239"
+        },
+        {
+            "id": 873,
+            "text": "thūlē",
+            "lang": "CE",
+            "gloss": "blowing forth",
+            "pos": "N",
+            "source": "PE17:124"
+        },
+        {
+            "id": 874,
+            "text": "THU-",
+            "lang": "CE",
+            "gloss": "blow",
+            "fullGloss": "blow, cause an air movement",
+            "source": "PE17:124"
+        },
+        {
+            "id": 875,
+            "text": "manwëo",
+            "lang": "Q",
+            "source": "NM:239"
+        },
+        {
+            "id": 876,
+            "text": "Manwë",
+            "lang": "Q",
+            "gloss": "Blessed Being",
+            "pos": "NP",
+            "source": "PE21:85"
+        },
+        {
+            "id": 877,
+            "text": "etsurinyë",
+            "lang": "Q",
+            "source": "NM:239"
+        },
+        {
+            "id": 879,
+            "text": "etsurya-",
+            "lang": "Q",
+            "gloss": "go out",
+            "pos": "V",
+            "source": "NM:239"
+        },
+        {
+            "id": 880,
+            "text": "surya-",
+            "lang": "Q",
+            "gloss": "blow",
+            "pos": "V"
+        },
+        {
+            "id": 881,
+            "text": "thusya-",
+            "lang": "CE",
+            "gloss": "go forth",
+            "fullGloss": "go forth (as an emission)",
+            "pos": "V",
+            "source": "NM:239"
+        },
+        {
+            "id": 882,
+            "text": "eldaron",
+            "lang": "Q",
+            "source": "NM:239"
+        },
+        {
+            "id": 883,
+            "text": "indor",
+            "lang": "Q",
+            "source": "NM:239"
+        },
+        {
+            "id": 884,
+            "text": "indo",
+            "lang": "Q",
+            "gloss": "mind",
+            "fullGloss": "(state of) mind, (inner) thought, mood; will, resolve",
+            "pos": "N",
+            "source": "NM:239"
+        },
+        {
+            "id": 885,
+            "text": "indo",
+            "lang": "CE",
+            "gloss": "mind",
+            "fullGloss": "interior reflection or mind, the mind in its purposing faculty, the will; mood, heart",
+            "pos": "N",
+            "source": "PE22:165"
+        },
+        {
+            "id": 886,
+            "text": "imdo",
+            "lang": "CE",
+            "gloss": "self",
+            "fullGloss": "self, innermost being, centre of reason",
+            "pos": "N",
+            "source": "NM:176"
+        },
+        {
+            "id": 887,
+            "text": "IM-",
+            "lang": "CE",
+            "gloss": "same, alike"
+        },
+        {
+            "id": 888,
+            "text": "turyaner",
+            "lang": "Q",
+            "source": "NM:239"
+        },
+        {
+            "id": 889,
+            "text": "turya-",
+            "lang": "Q",
+            "gloss": "strengthen",
+            "pos": "V",
+            "source": "NM:239"
+        },
+        {
+            "id": 890,
+            "text": "TUR-",
+            "lang": "CE",
+            "gloss": "master"
         }
     ],
     "rules": [
@@ -5465,7 +5598,7 @@
                     }
                 }
             ],
-            "addedCategories": "1SG",
+            "addedCategories": ".1SG",
             "source": "https://eldamo.org/content/words/word-1020286637.html",
             "preInstructions": [
             ]
@@ -6524,8 +6657,8 @@
                 }
             ],
             "addedCategories": ".PL",
-            "fromPOS": "V",
-            "toPOS": "V",
+            "fromPOS": "V.TENSE",
+            "toPOS": "V.TENSE",
             "preInstructions": [
             ]
         },
@@ -8688,6 +8821,53 @@
             "addedCategories": ".INF",
             "fromPOS": "V",
             "source": "https://eldamo.org/content/words/word-3482070047.html",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 878,
+            "name": "q-half-strong-past",
+            "fromLang": "Q",
+            "toLang": "Q",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "RemoveLastCharacter",
+                            "args": [
+                            ]
+                        },
+                        {
+                            "type": "RemoveLastCharacter",
+                            "args": [
+                            ]
+                        },
+                        {
+                            "type": "Append",
+                            "args": [
+                                "first vowel"
+                            ]
+                        },
+                        {
+                            "type": "AddSuffix",
+                            "args": [
+                                "nye"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "characters": "ya"
+                    }
+                }
+            ],
+            "addedCategories": ".PST",
+            "replacedCategories": "",
+            "fromPOS": "V",
+            "toPOS": "V.TENSE",
+            "source": "",
+            "notes": "",
             "preInstructions": [
             ]
         }
@@ -11975,6 +12155,105 @@
             "from": 870,
             "to": 333,
             "type": ">"
+        },
+        {
+            "from": 872,
+            "to": 873,
+            "type": ">"
+        },
+        {
+            "from": 873,
+            "to": 874,
+            "type": ">"
+        },
+        {
+            "from": 875,
+            "to": 876,
+            "type": ">",
+            "ruleIds": [
+                397
+            ]
+        },
+        {
+            "from": 876,
+            "to": 339,
+            "type": ">"
+        },
+        {
+            "from": 877,
+            "to": 879,
+            "type": ">",
+            "ruleIds": [
+                878
+            ]
+        },
+        {
+            "from": 879,
+            "to": 379,
+            "type": "+"
+        },
+        {
+            "from": 879,
+            "to": 880,
+            "type": "+"
+        },
+        {
+            "from": 880,
+            "to": 881,
+            "type": ">"
+        },
+        {
+            "from": 881,
+            "to": 874,
+            "type": ">"
+        },
+        {
+            "from": 882,
+            "to": 649,
+            "type": ">",
+            "ruleIds": [
+                405
+            ]
+        },
+        {
+            "from": 883,
+            "to": 884,
+            "type": ">",
+            "ruleIds": [
+                396
+            ]
+        },
+        {
+            "from": 884,
+            "to": 885,
+            "type": ">"
+        },
+        {
+            "from": 885,
+            "to": 886,
+            "type": ">"
+        },
+        {
+            "from": 886,
+            "to": 887,
+            "type": ">"
+        },
+        {
+            "from": 888,
+            "to": 889,
+            "type": ">",
+            "ruleIds": [
+                666,
+                425
+            ]
+        },
+        {
+            "from": 889,
+            "to": 890,
+            "type": ">",
+            "ruleIds": [
+                426
+            ]
         }
     ],
     "corpusTexts": [
@@ -12523,6 +12802,14 @@
             "title": null,
             "lang": "Q",
             "wordIds": [
+                90,
+                872,
+                875,
+                877,
+                null,
+                882,
+                883,
+                888
             ],
             "source": "NM:239"
         }
