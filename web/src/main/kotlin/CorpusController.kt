@@ -100,7 +100,7 @@ class CorpusController(val graphService: GraphService) {
     fun newText(@PathVariable lang: String, @RequestBody params: CorpusParams): CorpusTextViewModel {
         val repo = graphService.graph
         val language = graphService.resolveLanguage(lang)
-        val text = repo.addCorpusText(params.text, params.title, language, emptyList(), params.source, null)
+        val text = repo.addCorpusText(params.text, params.title.nullize(), language, emptyList(), params.source, null)
         repo.save()
         return text.toViewModel()
     }

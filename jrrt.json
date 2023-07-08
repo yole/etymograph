@@ -12512,9 +12512,19 @@
                 864,
                 865,
                 866,
-                868
+                868,
+                90
             ],
             "source": "LR:72"
+        },
+        {
+            "id": 871,
+            "text": "ar súlë Manwëo etsurinyë ar Eldaron indor turyaner",
+            "title": null,
+            "lang": "Q",
+            "wordIds": [
+            ],
+            "source": "NM:239"
         }
     ],
     "paradigms": [
