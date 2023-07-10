@@ -4,6 +4,8 @@ abstract class GraphRepository {
     abstract fun allLanguages(): Iterable<Language>
     abstract fun languageByShortName(languageShortName: String): Language?
 
+    abstract fun addLanguage(language: Language)
+
     abstract fun langEntityById(id: Int): LangEntity?
 
     abstract fun allCorpusTexts(): Iterable<CorpusText>

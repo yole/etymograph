@@ -1,0 +1,47 @@
+{
+    "languages": [
+        {
+            "name": "Old English",
+            "shortName": "OE"
+        }
+    ],
+    "phonemeClasses": [
+    ],
+    "digraphs": [
+        {
+            "lang": "OE",
+            "digraphs": [
+            ]
+        }
+    ],
+    "diphthongs": [
+        {
+            "lang": "OE",
+            "diphthongs": [
+            ]
+        }
+    ],
+    "letterNormalization": [
+        {
+            "lang": "OE",
+            "rules": {
+            }
+        }
+    ],
+    "stressRules": [
+    ],
+    "words": [
+    ],
+    "rules": [
+    ],
+    "links": [
+    ],
+    "corpusTexts": [
+    ],
+    "paradigms": [
+    ],
+    "syllableStructures": [
+    ],
+    "wordFinals": [
+    ]
+}

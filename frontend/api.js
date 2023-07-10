@@ -100,6 +100,10 @@ export function updateParadigm(id, name, pos, text) {
     return postToBackend('paradigm/' + id, {name: name, pos: pos, text: text})
 }
 
+export function addLanguage(name, shortName) {
+    return postToBackend('languages', {name: name, shortName: shortName})
+}
+
 export function updateLanguage(lang, letterNorm, digraphs, phonemeClasses, diphthongs, syllableStructures, wordFinals, stressRule) {
     return postToBackend(`language/${lang}`,
         {

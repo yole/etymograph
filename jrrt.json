@@ -5224,6 +5224,70 @@
             "text": "TUR-",
             "lang": "CE",
             "gloss": "master"
+        },
+        {
+            "id": 892,
+            "text": "a",
+            "lang": "Q",
+            "gloss": "o",
+            "source": "LotR:981"
+        },
+        {
+            "id": 893,
+            "text": "vanimar",
+            "lang": "Q",
+            "source": "LotR:981"
+        },
+        {
+            "id": 894,
+            "text": "vanima",
+            "lang": "Q",
+            "gloss": "beautiful one",
+            "pos": "N",
+            "source": "LotR:981"
+        },
+        {
+            "id": 895,
+            "text": "vane",
+            "lang": "Q",
+            "gloss": "fair",
+            "pos": "ADJ",
+            "source": "PE17:56"
+        },
+        {
+            "id": 896,
+            "text": "vanimálion",
+            "lang": "Q",
+            "source": "LotR:981"
+        },
+        {
+            "id": 897,
+            "text": "nostari",
+            "lang": "Q",
+            "source": "LotR:981"
+        },
+        {
+            "id": 898,
+            "text": "nostar",
+            "lang": "Q",
+            "gloss": "parent",
+            "pos": "N",
+            "source": "LotR:981"
+        },
+        {
+            "id": 899,
+            "text": "nosta-",
+            "lang": "Q",
+            "gloss": "beget",
+            "pos": "V"
+        },
+        {
+            "id": 900,
+            "text": "nōrē",
+            "lang": "CE",
+            "gloss": "kindred, race",
+            "pos": "N",
+            "source": "PE17:26"
         }
     ],
     "rules": [
@@ -6974,6 +7038,26 @@
                 {
                     "instructions": [
                         {
+                            "type": "RemoveLastCharacter",
+                            "args": [
+                            ]
+                        },
+                        {
+                            "type": "AddSuffix",
+                            "args": [
+                                "ima"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "cls": "vowel"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
                             "type": "AddSuffix",
                             "args": [
                                 "ima"
@@ -6985,10 +7069,16 @@
                     }
                 }
             ],
-            "addedCategories": "",
-            "replacedCategories": "",
+            "addedCategories": null,
             "source": "PE17:68",
+            "notes": "",
             "preInstructions": [
+                {
+                    "type": "ApplyRule",
+                    "args": [
+                        "413"
+                    ]
+                }
             ]
         },
         {
@@ -12254,6 +12344,59 @@
             "ruleIds": [
                 426
             ]
+        },
+        {
+            "from": 893,
+            "to": 894,
+            "type": ">",
+            "ruleIds": [
+                396
+            ]
+        },
+        {
+            "from": 894,
+            "to": 895,
+            "type": ">",
+            "ruleIds": [
+                442
+            ]
+        },
+        {
+            "from": 896,
+            "to": 894,
+            "type": ">",
+            "ruleIds": [
+                560,
+                462
+            ]
+        },
+        {
+            "from": 897,
+            "to": 898,
+            "type": ">",
+            "ruleIds": [
+                396
+            ]
+        },
+        {
+            "from": 898,
+            "to": 899,
+            "type": ">"
+        },
+        {
+            "from": 899,
+            "to": 782,
+            "type": ">"
+        },
+        {
+            "from": 104,
+            "to": 900,
+            "type": ">"
+        },
+        {
+            "from": 900,
+            "to": 782,
+            "type": ">"
         }
     ],
     "corpusTexts": [
@@ -12812,6 +12955,19 @@
                 888
             ],
             "source": "NM:239"
+        },
+        {
+            "id": 891,
+            "text": "a vanimar, vanimálion nostari ",
+            "title": null,
+            "lang": "Q",
+            "wordIds": [
+                892,
+                893,
+                896,
+                897
+            ],
+            "source": "LotR:981"
         }
     ],
     "paradigms": [

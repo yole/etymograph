@@ -13,7 +13,7 @@ open class InMemoryGraphRepository : GraphRepository() {
     protected val rules = mutableListOf<Rule>()
     protected val paradigms = mutableListOf<Paradigm>()
 
-    fun addLanguage(language: Language) {
+    override fun addLanguage(language: Language) {
         languages[language.shortName] = language
     }
 

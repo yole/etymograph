@@ -12,5 +12,6 @@ export default function Home(props) {
     <ul>
       {languages.map(l => <li key={l.shortName}><Link href={`language/${l.shortName}`}>{l.name}</Link></li>)}
     </ul>
+    <Link href='languages/new'>Add language</Link>
   </>
 }
