@@ -447,9 +447,659 @@
             "lang": "OE",
             "gloss": "from",
             "pos": "PREP"
+        },
+        {
+            "id": 68,
+            "text": "iċ",
+            "lang": "OE",
+            "gloss": "I",
+            "pos": "PRON"
+        },
+        {
+            "id": 69,
+            "text": "ācsiġe",
+            "lang": "OE",
+            "gloss": "ask.PRES.1SG"
+        },
+        {
+            "id": 70,
+            "text": "ācsian",
+            "lang": "OE",
+            "gloss": "ask",
+            "pos": "V"
+        },
+        {
+            "id": 71,
+            "text": "ēow",
+            "lang": "OE",
+            "gloss": "you.DAT.PL"
+        },
+        {
+            "id": 72,
+            "text": "for-hwī",
+            "lang": "OE",
+            "gloss": "why"
+        },
+        {
+            "id": 73,
+            "text": "swā",
+            "lang": "OE",
+            "gloss": "so",
+            "fullGloss": "as, just as, so, thus, like"
+        },
+        {
+            "id": 74,
+            "text": "ġeornlīċe",
+            "lang": "OE",
+            "gloss": "eagerly",
+            "pos": "ADV"
+        },
+        {
+            "id": 75,
+            "text": "leornie",
+            "lang": "OE",
+            "gloss": "learn.PRES.PL"
+        },
+        {
+            "id": 76,
+            "text": "leornian",
+            "lang": "OE",
+            "gloss": "learn",
+            "pos": "V"
+        },
+        {
+            "id": 77,
+            "text": "we",
+            "lang": "OE",
+            "gloss": "we.NOM",
+            "pos": "PRON"
+        },
+        {
+            "id": 78,
+            "text": "nellaþ",
+            "lang": "OE"
+        },
+        {
+            "id": 79,
+            "text": "willaþ",
+            "lang": "OE",
+            "gloss": "want.PRES.PL"
+        },
+        {
+            "id": 80,
+            "text": "wesan",
+            "lang": "OE",
+            "gloss": "be",
+            "pos": "V"
+        },
+        {
+            "id": 81,
+            "text": "stunte",
+            "lang": "OE",
+            "gloss": "foolish",
+            "pos": "ADJ"
+        },
+        {
+            "id": 82,
+            "text": "nȳtenu",
+            "lang": "OE",
+            "gloss": "cattle",
+            "pos": "N"
+        },
+        {
+            "id": 83,
+            "text": "þā",
+            "lang": "OE",
+            "gloss": "that"
+        },
+        {
+            "id": 84,
+            "text": "nān",
+            "lang": "OE",
+            "gloss": "no"
+        },
+        {
+            "id": 85,
+            "text": "þing",
+            "lang": "OE",
+            "gloss": "thing",
+            "pos": "N"
+        },
+        {
+            "id": 86,
+            "text": "witaþ",
+            "lang": "OE",
+            "gloss": "know.PRES.3SG"
+        },
+        {
+            "id": 87,
+            "text": "gærs",
+            "lang": "OE",
+            "gloss": "grass",
+            "pos": "N"
+        },
+        {
+            "id": 88,
+            "text": "ond",
+            "lang": "OE",
+            "gloss": "but"
+        },
+        {
+            "id": 89,
+            "text": "wæter",
+            "lang": "OE",
+            "gloss": "water",
+            "pos": "N"
+        },
+        {
+            "id": 90,
+            "text": "wīse",
+            "lang": "OE",
+            "gloss": "way",
+            "pos": "N"
+        },
+        {
+            "id": 91,
+            "text": "hwilcum",
+            "lang": "OE",
+            "gloss": "what kind.DAT.PL"
+        },
+        {
+            "id": 92,
+            "text": "hwilċ",
+            "lang": "OE",
+            "gloss": "what kind"
+        },
+        {
+            "id": 93,
+            "text": "wīsdome",
+            "lang": "OE"
+        },
+        {
+            "id": 94,
+            "text": "wīsdōm",
+            "lang": "OE",
+            "gloss": "wisdom",
+            "pos": "N"
+        },
+        {
+            "id": 95,
+            "text": "ebẽñnẽ",
+            "lang": "Lyc"
+        },
+        {
+            "id": 96,
+            "text": "ebẽñne",
+            "lang": "Lyc",
+            "gloss": "this"
+        },
+        {
+            "id": 97,
+            "text": "χupã",
+            "lang": "Lyc"
+        },
+        {
+            "id": 98,
+            "text": "meneprñnewãtẽ",
+            "lang": "Lyc",
+            "gloss": "build.PST.3PL"
+        },
+        {
+            "id": 99,
+            "text": "χupa",
+            "lang": "Lyc",
+            "gloss": "tomb"
+        },
+        {
+            "id": 100,
+            "text": "tideimi",
+            "lang": "Lyc",
+            "gloss": "son",
+            "pos": "N"
+        },
+        {
+            "id": 101,
+            "text": "sehuwetẽne",
+            "lang": "Lyc"
+        },
+        {
+            "id": 102,
+            "text": "se",
+            "lang": "Lyc",
+            "gloss": "and"
+        },
+        {
+            "id": 103,
+            "text": "Huwetẽne",
+            "lang": "Lyc",
+            "gloss": "Huwetẽne",
+            "pos": "NP"
+        },
+        {
+            "id": 104,
+            "text": "pñnuteh",
+            "lang": "Lyc"
+        },
+        {
+            "id": 105,
+            "text": "Pñnute",
+            "lang": "Lyc",
+            "gloss": "Pñnute",
+            "pos": "NP"
+        },
+        {
+            "id": 106,
+            "text": "Slm͂mewe",
+            "lang": "Lyc",
+            "gloss": "Slm͂mewe",
+            "pos": "NP"
+        },
+        {
+            "id": 107,
+            "text": "prñnawu",
+            "lang": "Lyc"
+        },
+        {
+            "id": 108,
+            "text": "prñnawa",
+            "lang": "Lyc",
+            "gloss": "building",
+            "pos": "N"
+        },
+        {
+            "id": 109,
+            "text": "hrppiladi",
+            "lang": "Lyc"
+        },
+        {
+            "id": 110,
+            "text": "hrppi",
+            "lang": "Lyc",
+            "gloss": "for",
+            "pos": "PREP"
+        },
+        {
+            "id": 111,
+            "text": "ladi",
+            "lang": "Lyc"
+        },
+        {
+            "id": 112,
+            "text": "Hanadaza",
+            "lang": "Lyc",
+            "pos": "NP"
+        },
+        {
+            "id": 114,
+            "text": "lada",
+            "lang": "Lyc",
+            "gloss": "wife",
+            "pos": "N"
+        },
+        {
+            "id": 115,
+            "text": "tuhes",
+            "lang": "Lyc",
+            "gloss": "nephew",
+            "pos": "N"
+        },
+        {
+            "id": 120,
+            "text": "ehbi",
+            "lang": "Lyc",
+            "gloss": "his"
+        },
+        {
+            "id": 121,
+            "text": "setideime",
+            "lang": "Lyc"
+        },
+        {
+            "id": 122,
+            "text": "tideime",
+            "lang": "Lyc"
+        },
+        {
+            "id": 124,
+            "text": "prñnawã",
+            "lang": "Lyc"
+        },
+        {
+            "id": 125,
+            "text": "χluwãnimi",
+            "lang": "Lyc",
+            "pos": "NP"
+        },
+        {
+            "id": 126,
+            "text": "ehbije",
+            "lang": "Lyc",
+            "gloss": "his.DAT.PL"
+        },
+        {
+            "id": 127,
+            "text": "ebeñnẽ",
+            "lang": "Lyc"
+        },
+        {
+            "id": 128,
+            "text": "χudrehila",
+            "lang": "Lyc",
+            "pos": "NP"
+        },
+        {
+            "id": 130,
+            "text": "humelije",
+            "lang": "Lyc",
+            "gloss": "legitimate",
+            "pos": "ADJ"
+        },
+        {
+            "id": 132,
+            "text": "atli",
+            "lang": "Lyc"
+        },
+        {
+            "id": 133,
+            "text": "atla",
+            "lang": "Lyc",
+            "gloss": "self",
+            "fullGloss": "person, self",
+            "pos": "N"
+        },
+        {
+            "id": 134,
+            "text": "sejẽni",
+            "lang": "Lyc"
+        },
+        {
+            "id": 135,
+            "text": "ẽni",
+            "lang": "Lyc",
+            "gloss": "mother"
+        },
+        {
+            "id": 137,
+            "text": "seladi",
+            "lang": "Lyc"
+        },
+        {
+            "id": 141,
+            "text": "esedeplẽmi",
+            "lang": "Lyc",
+            "pos": "NP"
+        },
+        {
+            "id": 142,
+            "text": "mẽtiprñnawatẽ",
+            "lang": "Lyc"
+        },
+        {
+            "id": 143,
+            "text": "m",
+            "lang": "Lyc",
+            "gloss": "CONJ"
+        },
+        {
+            "id": 144,
+            "text": "ẽ",
+            "lang": "Lyc"
+        },
+        {
+            "id": 145,
+            "text": "ti",
+            "lang": "Lyc",
+            "gloss": "which",
+            "pos": "PRON"
+        },
+        {
+            "id": 146,
+            "text": "prñnawatẽ",
+            "lang": "Lyc",
+            "gloss": "built"
+        },
+        {
+            "id": 147,
+            "text": "e",
+            "lang": "Lyc",
+            "gloss": "he/she/it",
+            "pos": "N"
+        },
+        {
+            "id": 148,
+            "text": "erimñnuha",
+            "lang": "Lyc",
+            "pos": "NP"
+        },
+        {
+            "id": 149,
+            "text": "semuteh",
+            "lang": "Lyc",
+            "pos": "NP"
+        },
+        {
+            "id": 150,
+            "text": "semute",
+            "lang": "Lyc",
+            "pos": "NP"
+        },
+        {
+            "id": 151,
+            "text": "mẽti",
+            "lang": "Lyc"
+        },
+        {
+            "id": 152,
+            "text": "esete",
+            "lang": "Lyc",
+            "pos": "NP"
+        },
+        {
+            "id": 153,
+            "text": "muleseh",
+            "lang": "Lyc"
+        },
+        {
+            "id": 154,
+            "text": "mulese",
+            "lang": "Lyc",
+            "pos": "NP"
         }
     ],
     "rules": [
+        {
+            "id": 116,
+            "name": "lyc-acc",
+            "fromLang": "Lyc",
+            "toLang": "Lyc",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "RemoveLastCharacter",
+                            "args": [
+                            ]
+                        },
+                        {
+                            "type": "AddSuffix",
+                            "args": [
+                                "ã"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "characters": "a"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "RemoveLastCharacter",
+                            "args": [
+                            ]
+                        },
+                        {
+                            "type": "AddSuffix",
+                            "args": [
+                                "ẽ"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "characters": "e"
+                    }
+                }
+            ],
+            "addedCategories": ".ACC",
+            "replacedCategories": "",
+            "fromPOS": "N",
+            "toPOS": "N",
+            "source": "",
+            "notes": "",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 117,
+            "name": "lyc-np-gen",
+            "fromLang": "Lyc",
+            "toLang": "Lyc",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "args": [
+                                "h"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".GEN",
+            "replacedCategories": "",
+            "fromPOS": "NP",
+            "toPOS": "NP",
+            "source": "",
+            "notes": "",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 118,
+            "name": "lyc-acc-u",
+            "fromLang": "Lyc",
+            "toLang": "Lyc",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "RemoveLastCharacter",
+                            "args": [
+                            ]
+                        },
+                        {
+                            "type": "AddSuffix",
+                            "args": [
+                                "u"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "characters": "a"
+                    }
+                }
+            ],
+            "addedCategories": ".ACC",
+            "replacedCategories": "",
+            "fromPOS": "N",
+            "toPOS": "N",
+            "source": "",
+            "notes": "",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 119,
+            "name": "lyc-dat",
+            "fromLang": "Lyc",
+            "toLang": "Lyc",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "RemoveLastCharacter",
+                            "args": [
+                            ]
+                        },
+                        {
+                            "type": "AddSuffix",
+                            "args": [
+                                "i"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "characters": "a"
+                    }
+                }
+            ],
+            "addedCategories": ".DAT",
+            "replacedCategories": "",
+            "fromPOS": "N",
+            "toPOS": "N",
+            "source": "",
+            "notes": "",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 123,
+            "name": "lyc-dat-pl",
+            "fromLang": "Lyc",
+            "toLang": "Lyc",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "RemoveLastCharacter",
+                            "args": [
+                            ]
+                        },
+                        {
+                            "type": "AddSuffix",
+                            "args": [
+                                "e"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "characters": "i"
+                    }
+                }
+            ],
+            "addedCategories": ".DAT.PL",
+            "replacedCategories": "",
+            "fromPOS": "N",
+            "toPOS": "N",
+            "source": "",
+            "notes": "",
+            "preInstructions": [
+            ]
+        }
     ],
     "links": [
         {
@@ -541,6 +1191,229 @@
             "from": 64,
             "to": 65,
             "type": ">"
+        },
+        {
+            "from": 69,
+            "to": 70,
+            "type": ">"
+        },
+        {
+            "from": 71,
+            "to": 5,
+            "type": ">"
+        },
+        {
+            "from": 75,
+            "to": 76,
+            "type": ">"
+        },
+        {
+            "from": 78,
+            "to": 52,
+            "type": "+"
+        },
+        {
+            "from": 78,
+            "to": 79,
+            "type": "+"
+        },
+        {
+            "from": 79,
+            "to": 29,
+            "type": ">"
+        },
+        {
+            "from": 86,
+            "to": 56,
+            "type": ">"
+        },
+        {
+            "from": 91,
+            "to": 92,
+            "type": ">"
+        },
+        {
+            "from": 93,
+            "to": 94,
+            "type": ">"
+        },
+        {
+            "from": 95,
+            "to": 96,
+            "type": ">",
+            "ruleIds": [
+                116
+            ]
+        },
+        {
+            "from": 97,
+            "to": 99,
+            "type": ">",
+            "ruleIds": [
+                116
+            ]
+        },
+        {
+            "from": 101,
+            "to": 102,
+            "type": "+"
+        },
+        {
+            "from": 101,
+            "to": 103,
+            "type": "+"
+        },
+        {
+            "from": 104,
+            "to": 105,
+            "type": ">",
+            "ruleIds": [
+                117
+            ]
+        },
+        {
+            "from": 107,
+            "to": 108,
+            "type": ">",
+            "ruleIds": [
+                118
+            ]
+        },
+        {
+            "from": 109,
+            "to": 110,
+            "type": "+"
+        },
+        {
+            "from": 109,
+            "to": 111,
+            "type": "+"
+        },
+        {
+            "from": 111,
+            "to": 114,
+            "type": ">",
+            "ruleIds": [
+                119
+            ]
+        },
+        {
+            "from": 121,
+            "to": 102,
+            "type": "+"
+        },
+        {
+            "from": 121,
+            "to": 122,
+            "type": "+"
+        },
+        {
+            "from": 122,
+            "to": 100,
+            "type": ">",
+            "ruleIds": [
+                123
+            ]
+        },
+        {
+            "from": 124,
+            "to": 108,
+            "type": ">",
+            "ruleIds": [
+                116
+            ]
+        },
+        {
+            "from": 127,
+            "to": 95,
+            "type": "="
+        },
+        {
+            "from": 132,
+            "to": 133,
+            "type": ">",
+            "ruleIds": [
+                119
+            ]
+        },
+        {
+            "from": 134,
+            "to": 102,
+            "type": "+"
+        },
+        {
+            "from": 134,
+            "to": 135,
+            "type": "+"
+        },
+        {
+            "from": 137,
+            "to": 102,
+            "type": "+"
+        },
+        {
+            "from": 137,
+            "to": 111,
+            "type": "+"
+        },
+        {
+            "from": 142,
+            "to": 143,
+            "type": "+"
+        },
+        {
+            "from": 142,
+            "to": 144,
+            "type": "+"
+        },
+        {
+            "from": 142,
+            "to": 145,
+            "type": "+"
+        },
+        {
+            "from": 142,
+            "to": 146,
+            "type": "+"
+        },
+        {
+            "from": 144,
+            "to": 147,
+            "type": ">",
+            "ruleIds": [
+                116
+            ]
+        },
+        {
+            "from": 149,
+            "to": 150,
+            "type": ">",
+            "ruleIds": [
+                117
+            ]
+        },
+        {
+            "from": 151,
+            "to": 143,
+            "type": "+"
+        },
+        {
+            "from": 151,
+            "to": 144,
+            "type": "+"
+        },
+        {
+            "from": 151,
+            "to": 145,
+            "type": "+"
+        },
+        {
+            "from": 153,
+            "to": 154,
+            "type": ">",
+            "ruleIds": [
+                117
+            ]
         }
     ],
     "corpusTexts": [
@@ -630,37 +1503,68 @@
         },
         {
             "id": 9,
-            "text": "ebẽñnẽ χupã meneprñnewãtẽ\nslm͂mewe pñnuteh tideimi sehuwe tẽne",
+            "text": "ebẽñnẽ χupã meneprñnewãtẽ\nslm͂mewe pñnuteh tideimi sehuwetẽne",
             "title": "TL 12",
             "lang": "Lyc",
             "wordIds": [
+                95,
+                97,
+                98,
+                106,
+                104,
+                100,
+                101
             ],
             "source": ""
         },
         {
             "id": 10,
-            "text": "ebẽñnẽ prñnawu mẽneprñnawatẽ\nhanadaza hrpiladi\nebbi setide ime",
+            "text": "ebẽñnẽ prñnawu mẽneprñnawatẽ\nhanadaza hrppiladi\nehbi setideime",
             "title": "TL 53",
             "lang": "Lyc",
             "wordIds": [
+                null,
+                107,
+                null,
+                112,
+                109,
+                120,
+                121
             ],
             "source": ""
         },
         {
             "id": 11,
-            "text": "ẽbeñne prñnawã mẽtiprñnawatẽ χluwãnimi hrppiladi ehbi setideime\n??bije ẽpẽperikllh? χñtawata",
+            "text": "ebẽñne prñnawã mẽtiprñnawatẽ χluwãnimi hrppiladi ehbi setideime\nehbije ẽnẽperikelhe χñtawata",
             "title": "TL 67",
             "lang": "Lyc",
             "wordIds": [
+                null,
+                124,
+                null,
+                125,
+                null,
+                null,
+                null,
+                126
             ],
             "source": ""
         },
         {
             "id": 12,
-            "text": "ebeñnẽ χupã mene prñnatatẽ\nsbikazaχñtanubeh tideimi\ntemmusemutah tuhls\n",
+            "text": "ebeñnẽ χupã mene prñnawatẽ\nsbikaza χñtanubeh tideimi\ntemusemutah tuhes\n",
             "title": "TL 70",
             "lang": "Lyc",
             "wordIds": [
+                127,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                115
             ],
             "source": ""
         },
@@ -670,8 +1574,192 @@
             "title": "TL 73",
             "lang": "Lyc",
             "wordIds": [
+                null,
+                null,
+                null,
+                128
             ],
             "source": ""
+        },
+        {
+            "id": 67,
+            "text": "Iċ ācsiġe ēow, for-hwī swā ġeornlīċe leornie ġē?\nFor-þām we nellaþ wesan swā stunte nȳtenu, þā nān þing witaþ, būton gærs ond wæter.\nOnd hwæt wille ġē?\nWē willaþ wesan wīse.\nOn hwilcum wīsdome? Wille ġē bēon prættiġe oþþe þūsenthīwe on lēasungum, lytiġe on sprǣcum, onglǣwlīċe, hinderġēpe, wel spreċende ond yfele þencende, swǣsum wordum underþēodde, fācn wiðinnan tȳddriende, swā swā byrgels mēttum oferġeweorce, wiþinnan full stenċe?\nWē nellaþ swā wesan wīse, for-þām hē nis wīs, þe mid dydrunge hine selfne beswīċeð.\nAc hū wille ġē wesan?\nWe willaþ bēon bilewite būton līċetunge, ond wīse þæt wē būgen fram yfele ond dōn gōd.\n",
+            "title": "Aelfric's Colloquy 2",
+            "lang": "OE",
+            "wordIds": [
+                68,
+                69,
+                71,
+                72,
+                73,
+                74,
+                75,
+                5,
+                null,
+                77,
+                78,
+                80,
+                null,
+                81,
+                82,
+                83,
+                84,
+                85,
+                86,
+                null,
+                87,
+                88,
+                89,
+                null,
+                null,
+                null,
+                5,
+                null,
+                null,
+                null,
+                90,
+                null,
+                91,
+                93,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                80
+            ],
+            "source": ""
+        },
+        {
+            "id": 113,
+            "text": "ebẽñnẽ prñnawã mẽtiprñnawatẽ pertinamuwa hrppiladi ehbi setideime ehbije\n",
+            "title": "TL 66",
+            "lang": "Lyc",
+            "wordIds": [
+                95
+            ]
+        },
+        {
+            "id": 129,
+            "text": "ebẽñnẽ χupã mẽtiprñnawatẽ esedeplẽmi\nhrppiladi ehbi setideime ehbije humelije",
+            "title": "TL 85",
+            "lang": "Lyc",
+            "wordIds": [
+                null,
+                null,
+                142,
+                141,
+                null,
+                null,
+                null,
+                null,
+                130
+            ]
+        },
+        {
+            "id": 131,
+            "text": "ebẽñnẽ prñnawã mẽtiprñnawatẽ erimñnuha\nsemuteh tideimi hrppi atli ehbi sejẽni ehbi",
+            "title": "TL 86",
+            "lang": "Lyc",
+            "wordIds": [
+                null,
+                null,
+                null,
+                148,
+                149,
+                null,
+                null,
+                132,
+                null,
+                134
+            ]
+        },
+        {
+            "id": 136,
+            "text": "ebẽñnẽ χupu mẽti prñnawatẽ\nesete muleseh atli ehbi seladi setideime",
+            "title": "TL 105",
+            "lang": "Lyc",
+            "wordIds": [
+                null,
+                null,
+                151,
+                146,
+                152,
+                153,
+                null,
+                120,
+                137
+            ]
+        },
+        {
+            "id": 138,
+            "text": "ebẽñnẽ χupã meti prñnawãtẽ pumaña ertelijeseh tideimi\nhrppiladi ehbi uwiñte χumltijeh zzimazi se tideime ehbije",
+            "title": "TL 120",
+            "lang": "Lyc",
+            "wordIds": [
+            ]
+        },
+        {
+            "id": 139,
+            "text": "ebẽñnẽ χupã metiprñnawã? ẽerm͂menẽni se\nlada ehbi hrppi atlr epttese pañnetwelttehi",
+            "title": "TL 121",
+            "lang": "Lyc",
+            "wordIds": [
+            ]
+        },
+        {
+            "id": 140,
+            "text": "ebẽñne χupã meti prñnawatẽ qañnuiili\nqasah hrppi ladi ehbi setwdeimi",
+            "title": "N316",
+            "lang": "Lyc",
+            "wordIds": [
+            ]
         }
     ],
     "paradigms": [

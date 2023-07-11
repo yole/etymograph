@@ -1,5 +1,7 @@
 package ru.yole.etymograph
 
+import java.util.*
+
 class WordSegment(
     val firstCharacter: Int,
     val length: Int,
@@ -75,6 +77,9 @@ class Word(
                     }
                 }
             }
+        }
+        if (pos == "NP") {
+            return text.replaceFirstChar { it.uppercase(Locale.FRANCE) }
         }
         return null
     }
