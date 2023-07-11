@@ -3,6 +3,10 @@
         {
             "name": "Old English",
             "shortName": "OE"
+        },
+        {
+            "name": "Lycian",
+            "shortName": "Lyc"
         }
     ],
     "phonemeClasses": [
@@ -12,11 +16,21 @@
             "lang": "OE",
             "digraphs": [
             ]
+        },
+        {
+            "lang": "Lyc",
+            "digraphs": [
+            ]
         }
     ],
     "diphthongs": [
         {
             "lang": "OE",
+            "diphthongs": [
+            ]
+        },
+        {
+            "lang": "Lyc",
             "diphthongs": [
             ]
         }
@@ -26,17 +40,639 @@
             "lang": "OE",
             "rules": {
             }
+        },
+        {
+            "lang": "Lyc",
+            "rules": {
+            }
         }
     ],
     "stressRules": [
     ],
     "words": [
+        {
+            "id": 1,
+            "text": "wē",
+            "lang": "OE",
+            "gloss": "we",
+            "pos": "pron"
+        },
+        {
+            "id": 2,
+            "text": "lārēow",
+            "lang": "OE",
+            "gloss": "teacher"
+        },
+        {
+            "id": 3,
+            "text": "biddaþ",
+            "lang": "OE",
+            "gloss": "ask.PRES.PL"
+        },
+        {
+            "id": 4,
+            "text": "biddan",
+            "lang": "OE",
+            "gloss": "ask",
+            "pos": "V"
+        },
+        {
+            "id": 5,
+            "text": "ġē",
+            "lang": "OE",
+            "gloss": "you.NOM.PL",
+            "pos": "PRON"
+        },
+        {
+            "id": 6,
+            "text": "þū",
+            "lang": "OE",
+            "gloss": "you.NOM.SG",
+            "pos": "PRON"
+        },
+        {
+            "id": 7,
+            "text": "ūs",
+            "lang": "OE",
+            "gloss": "we.ACC",
+            "pos": "PRON"
+        },
+        {
+            "id": 8,
+            "text": "þē",
+            "lang": "OE",
+            "gloss": "you.ACC.SG"
+        },
+        {
+            "id": 14,
+            "text": "ēalā",
+            "lang": "OE",
+            "gloss": "lo"
+        },
+        {
+            "id": 15,
+            "text": "þæt",
+            "lang": "OE",
+            "gloss": "that"
+        },
+        {
+            "id": 16,
+            "text": "tǣċe",
+            "lang": "OE",
+            "gloss": "teach.2SG.SUBJ"
+        },
+        {
+            "id": 17,
+            "text": "tǣċan",
+            "lang": "OE",
+            "gloss": "teach",
+            "pos": "V"
+        },
+        {
+            "id": 18,
+            "text": "sprecan",
+            "lang": "OE",
+            "gloss": "speak",
+            "pos": "V"
+        },
+        {
+            "id": 19,
+            "text": "for-þām",
+            "lang": "OE",
+            "gloss": "because"
+        },
+        {
+            "id": 20,
+            "text": "unġelǣrede",
+            "lang": "OE",
+            "gloss": "unlearned.PL"
+        },
+        {
+            "id": 21,
+            "text": "unġelǣred",
+            "lang": "OE",
+            "gloss": "unlearned",
+            "pos": "ADJ"
+        },
+        {
+            "id": 22,
+            "text": "sindon",
+            "lang": "OE",
+            "gloss": "be.PRES.PL"
+        },
+        {
+            "id": 23,
+            "text": "bēon",
+            "lang": "OE",
+            "gloss": "be",
+            "pos": "V"
+        },
+        {
+            "id": 24,
+            "text": "and",
+            "lang": "OE",
+            "gloss": "and"
+        },
+        {
+            "id": 25,
+            "text": "ġewæmmodlīċe",
+            "lang": "OE",
+            "gloss": "corruptly",
+            "pos": "ADJ"
+        },
+        {
+            "id": 26,
+            "text": "sprecaþ",
+            "lang": "OE",
+            "gloss": "speak.PRES.PL"
+        },
+        {
+            "id": 27,
+            "text": "hwæt",
+            "lang": "OE",
+            "gloss": "what"
+        },
+        {
+            "id": 28,
+            "text": "wille",
+            "lang": "OE",
+            "gloss": "want.PRES.PL"
+        },
+        {
+            "id": 29,
+            "text": "willan",
+            "lang": "OE",
+            "gloss": "want",
+            "pos": "V"
+        },
+        {
+            "id": 30,
+            "text": "rēċe",
+            "lang": "OE",
+            "gloss": "care for.PRES.PL"
+        },
+        {
+            "id": 31,
+            "text": "reċċan",
+            "lang": "OE",
+            "gloss": "care for",
+            "pos": "V"
+        },
+        {
+            "id": 32,
+            "text": "būton",
+            "lang": "OE",
+            "gloss": "except",
+            "fullGloss": "except, provided that, unless, without"
+        },
+        {
+            "id": 33,
+            "text": "hit",
+            "lang": "OE",
+            "gloss": "it",
+            "pos": "PRON"
+        },
+        {
+            "id": 34,
+            "text": "riht",
+            "lang": "OE",
+            "gloss": "proper",
+            "pos": "ADJ"
+        },
+        {
+            "id": 35,
+            "text": "sprǣċ",
+            "lang": "OE",
+            "gloss": "speech",
+            "pos": "N"
+        },
+        {
+            "id": 36,
+            "text": "sie",
+            "lang": "OE",
+            "gloss": "be.SUBJ.PRES.3SG"
+        },
+        {
+            "id": 37,
+            "text": "behēfe",
+            "lang": "OE",
+            "gloss": "useful",
+            "pos": "ADJ"
+        },
+        {
+            "id": 38,
+            "text": "næs",
+            "lang": "OE",
+            "gloss": "not at all"
+        },
+        {
+            "id": 39,
+            "text": "īdel",
+            "lang": "OE",
+            "gloss": "idle",
+            "pos": "ADJ"
+        },
+        {
+            "id": 40,
+            "text": "oþþe",
+            "lang": "OE",
+            "gloss": "or",
+            "pos": "CONJ"
+        },
+        {
+            "id": 41,
+            "text": "fracod",
+            "lang": "OE",
+            "gloss": "worthless",
+            "pos": "ADJ"
+        },
+        {
+            "id": 42,
+            "text": "beswungen",
+            "lang": "OE",
+            "gloss": "beat.PP"
+        },
+        {
+            "id": 43,
+            "text": "beswingan",
+            "lang": "OE",
+            "gloss": "beat",
+            "fullGloss": "beat, flog",
+            "pos": "V"
+        },
+        {
+            "id": 44,
+            "text": "on",
+            "lang": "OE",
+            "gloss": "on",
+            "pos": "PREP"
+        },
+        {
+            "id": 45,
+            "text": "leornunge",
+            "lang": "OE",
+            "gloss": "learning"
+        },
+        {
+            "id": 46,
+            "text": "lēofre",
+            "lang": "OE",
+            "gloss": "more dear"
+        },
+        {
+            "id": 47,
+            "text": "is",
+            "lang": "OE",
+            "gloss": "be.PRES.3SG"
+        },
+        {
+            "id": 48,
+            "text": "for",
+            "lang": "OE",
+            "gloss": "before",
+            "pos": "PREP"
+        },
+        {
+            "id": 49,
+            "text": "lāre",
+            "lang": "OE"
+        },
+        {
+            "id": 50,
+            "text": "lār",
+            "lang": "OE",
+            "gloss": "learning",
+            "pos": "N"
+        },
+        {
+            "id": 51,
+            "text": "þonne",
+            "lang": "OE",
+            "gloss": "than"
+        },
+        {
+            "id": 52,
+            "text": "ne",
+            "lang": "OE",
+            "gloss": "not"
+        },
+        {
+            "id": 53,
+            "text": "cunnan",
+            "lang": "OE",
+            "gloss": "know",
+            "pos": "V"
+        },
+        {
+            "id": 54,
+            "text": "ac",
+            "lang": "OE",
+            "gloss": "and",
+            "pos": "CONJ"
+        },
+        {
+            "id": 55,
+            "text": "witon",
+            "lang": "OE",
+            "gloss": "know.PRES.PL"
+        },
+        {
+            "id": 56,
+            "text": "witan",
+            "lang": "OE",
+            "gloss": "know",
+            "pos": "V"
+        },
+        {
+            "id": 57,
+            "text": "eart",
+            "lang": "OE",
+            "gloss": "be.PRES.2SG"
+        },
+        {
+            "id": 58,
+            "text": "bilewit",
+            "lang": "OE",
+            "gloss": "honest",
+            "pos": "ADJ"
+        },
+        {
+            "id": 59,
+            "text": "nelle",
+            "lang": "OE"
+        },
+        {
+            "id": 60,
+            "text": "onbelǣdan",
+            "lang": "OE",
+            "gloss": "deliver",
+            "pos": "V"
+        },
+        {
+            "id": 61,
+            "text": "swingla",
+            "lang": "OE",
+            "gloss": "blow.ACC.PL"
+        },
+        {
+            "id": 62,
+            "text": "swingell",
+            "lang": "OE",
+            "gloss": "blow",
+            "fullGloss": "blow of a rod or a whip",
+            "pos": "N"
+        },
+        {
+            "id": 63,
+            "text": "siē",
+            "lang": "OE"
+        },
+        {
+            "id": 64,
+            "text": "tōġenȳdd",
+            "lang": "OE",
+            "gloss": "force.PP"
+        },
+        {
+            "id": 65,
+            "text": "tōġenȳdan",
+            "lang": "OE",
+            "gloss": "force",
+            "fullGloss": "force, compel",
+            "pos": "V"
+        },
+        {
+            "id": 66,
+            "text": "fram",
+            "lang": "OE",
+            "gloss": "from",
+            "pos": "PREP"
+        }
     ],
     "rules": [
     ],
     "links": [
+        {
+            "from": 3,
+            "to": 4,
+            "type": ">"
+        },
+        {
+            "from": 16,
+            "to": 17,
+            "type": ">"
+        },
+        {
+            "from": 20,
+            "to": 21,
+            "type": ">"
+        },
+        {
+            "from": 22,
+            "to": 23,
+            "type": ">"
+        },
+        {
+            "from": 26,
+            "to": 18,
+            "type": ">"
+        },
+        {
+            "from": 28,
+            "to": 29,
+            "type": ">"
+        },
+        {
+            "from": 30,
+            "to": 31,
+            "type": ">"
+        },
+        {
+            "from": 36,
+            "to": 23,
+            "type": ">"
+        },
+        {
+            "from": 42,
+            "to": 43,
+            "type": ">"
+        },
+        {
+            "from": 47,
+            "to": 23,
+            "type": ">"
+        },
+        {
+            "from": 49,
+            "to": 50,
+            "type": ">"
+        },
+        {
+            "from": 55,
+            "to": 56,
+            "type": ">"
+        },
+        {
+            "from": 57,
+            "to": 23,
+            "type": ">"
+        },
+        {
+            "from": 59,
+            "to": 52,
+            "type": "+"
+        },
+        {
+            "from": 59,
+            "to": 28,
+            "type": "+"
+        },
+        {
+            "from": 61,
+            "to": 62,
+            "type": ">"
+        },
+        {
+            "from": 63,
+            "to": 36,
+            "type": "="
+        },
+        {
+            "from": 64,
+            "to": 65,
+            "type": ">"
+        }
     ],
     "corpusTexts": [
+        {
+            "id": 0,
+            "text": "Wē ċildra biddaþ þē, ēalā lārēow, þæt þū tǣċe ūs sprecan for-þām unġelǣrede wē sindon and ġewæmmodlīċe wē sprecaþ.\nHwæt wille ġē sprecan?\nHwæt rēċe wē hwæt wē sprecan, būton hit riht sprǣċ sie and behēfe, næs īdel oþþe fracod.\nWille ġē bēon beswungen on leornunge?\nLēofre is ūs bēon beswungen for lāre þonne hit ne cunnan. Ac wē witon þæt þū eart bilewit and nelle onbelǣdan swingla ūs, būton þū siē tōġenȳdd fram ūs.",
+            "title": "Aelfric's Colloquy 1",
+            "lang": "OE",
+            "wordIds": [
+                1,
+                null,
+                3,
+                8,
+                14,
+                2,
+                15,
+                6,
+                16,
+                7,
+                18,
+                19,
+                20,
+                null,
+                22,
+                24,
+                25,
+                null,
+                26,
+                27,
+                28,
+                5,
+                18,
+                null,
+                30,
+                null,
+                null,
+                null,
+                18,
+                32,
+                33,
+                34,
+                35,
+                36,
+                null,
+                37,
+                38,
+                39,
+                40,
+                41,
+                null,
+                null,
+                null,
+                42,
+                44,
+                45,
+                46,
+                47,
+                null,
+                null,
+                null,
+                48,
+                49,
+                51,
+                null,
+                52,
+                53,
+                54,
+                null,
+                55,
+                null,
+                null,
+                57,
+                58,
+                null,
+                59,
+                60,
+                61,
+                7,
+                null,
+                null,
+                63,
+                64,
+                66,
+                7
+            ],
+            "source": ""
+        },
+        {
+            "id": 9,
+            "text": "ebẽñnẽ χupã meneprñnewãtẽ\nslm͂mewe pñnuteh tideimi sehuwe tẽne",
+            "title": "TL 12",
+            "lang": "Lyc",
+            "wordIds": [
+            ],
+            "source": ""
+        },
+        {
+            "id": 10,
+            "text": "ebẽñnẽ prñnawu mẽneprñnawatẽ\nhanadaza hrpiladi\nebbi setide ime",
+            "title": "TL 53",
+            "lang": "Lyc",
+            "wordIds": [
+            ],
+            "source": ""
+        },
+        {
+            "id": 11,
+            "text": "ẽbeñne prñnawã mẽtiprñnawatẽ χluwãnimi hrppiladi ehbi setideime\n??bije ẽpẽperikllh? χñtawata",
+            "title": "TL 67",
+            "lang": "Lyc",
+            "wordIds": [
+            ],
+            "source": ""
+        },
+        {
+            "id": 12,
+            "text": "ebeñnẽ χupã mene prñnatatẽ\nsbikazaχñtanubeh tideimi\ntemmusemutah tuhls\n",
+            "title": "TL 70",
+            "lang": "Lyc",
+            "wordIds": [
+            ],
+            "source": ""
+        },
+        {
+            "id": 13,
+            "text": "ebẽñnẽ prñnawãmẽne prñnawatẽ χudrehila hrppiladi ehbi",
+            "title": "TL 73",
+            "lang": "Lyc",
+            "wordIds": [
+            ],
+            "source": ""
+        }
     ],
     "paradigms": [
     ],
