@@ -71,7 +71,7 @@ export default function CorpusText(params) {
     }
 
     function trimPunctuation(text) {
-        while (",.!?:".includes(text.slice(text.length-1))) {
+        while (",.!?:;".includes(text.slice(text.length-1))) {
             text = text.slice(0, text.length-1)
         }
         return text

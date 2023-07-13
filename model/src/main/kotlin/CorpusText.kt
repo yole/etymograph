@@ -59,6 +59,6 @@ class CorpusText(
     }
 
     companion object {
-        val punctuation = charArrayOf('!', ',', '.', '?', ':')
+        val punctuation = charArrayOf('!', ',', '.', '?', ':', ';')
     }
 }
