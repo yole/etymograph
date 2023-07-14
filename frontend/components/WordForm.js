@@ -2,9 +2,7 @@ import {useState} from "react";
 import {addLink, addWord, updateWord} from "@/api";
 
 export default function WordForm(props) {
-    const [newWordText, setNewWordText] = useState(
-        props.predefWord !== undefined ? props.predefWord : (props.initialWord !== undefined ? props.initialWord : "")
-    )
+    const [newWordText, setNewWordText] = useState(props.initialText !== undefined ? props.initialText : "")
     const [newWordGloss, setNewWordGloss] = useState(props.initialGloss !== undefined ? props.initialGloss : "")
     const [newWordFullGloss, setNewWordFullGloss] = useState(props.initialFullGloss !== undefined ? props.initialFullGloss : "")
     const [newWordPos, setNewWordPos] = useState(props.initialPos !== undefined ? props.initialPos : "")
@@ -56,7 +54,7 @@ export default function WordForm(props) {
     return <form onSubmit={handleFormSubmit}>
         <table>
             <tbody>
-            {props.language === undefined && <tr>
+            {props.languageReadOnly !== true && <tr>
                 <td><label>Language:</label></td>
                 <td><input type="text" value={newWordLanguage} onChange={e => setNewWordLanguage(e.target.value)}
                            id="word-input"/></td>
@@ -64,7 +62,7 @@ export default function WordForm(props) {
             <tr>
                 <td><label htmlFor="word-text">Text:</label></td>
                 <td><input type="text" value={newWordText} onChange={e => setNewWordText(e.target.value)}
-                           id="word-text" readOnly={props.predefWord !== undefined}/></td>
+                           id="word-text" readOnly={props.textReadOnly === true}/></td>
             </tr>
             <tr>
                 <td><label htmlFor="word-pos">POS:</label></td>

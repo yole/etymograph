@@ -96,7 +96,10 @@ export default function CorpusText(params) {
                     </tr>
                 </tbody></table>
                 {wordIndex >= l.words[0].index && wordIndex <= l.words[l.words.length - 1].index && wordFormVisible &&
-                    <WordForm key={predefWord} submitted={submitted} language={corpusText.language} predefWord={predefWord} initialSource={corpusText.source}/>
+                    <WordForm key={predefWord} submitted={submitted}
+                              language={corpusText.language} languageReadOnly={true}
+                              initialText={predefWord} textReadOnly={true}
+                              initialSource={corpusText.source}/>
                 }
             </div>
         ))}

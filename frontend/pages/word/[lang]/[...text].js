@@ -209,8 +209,9 @@ function SingleWord(params) {
                 </p>
             </>)}
         </>}
-        {editMode && <WordForm language={word.language} updateId={word.id}
-                               initialWord={word.text}
+        {editMode && <WordForm language={word.language} languageReadOnly={true}
+                               updateId={word.id}
+                               initialText={word.text}
                                initialGloss={word.glossComputed ? undefined : word.gloss}
                                initialFullGloss={word.fullGloss}
                                initialPos={word.pos}
@@ -238,15 +239,15 @@ function SingleWord(params) {
         <p/>
         {allowEdit() && <>
             <button onClick={() => setShowBaseWord(!showBaseWord)}>Add base word</button><br/>
-            {showBaseWord && <WordForm submitted={submitted} linkType='>' linkTarget={word} reverseLink="true"/>}
+            {showBaseWord && <WordForm submitted={submitted} linkType='>' linkTarget={word} reverseLink="true" language={word.language} />}
             <button onClick={() => setShowDerivedWord(!showDerivedWord)}>Add derived word</button><br/>
-            {showDerivedWord && <WordForm submitted={submitted} linkType='>' linkTarget={word}/>}
+            {showDerivedWord && <WordForm submitted={submitted} linkType='>' linkTarget={word} language={word.language} />}
             <button onClick={() => setShowCompoundComponent(!showCompoundComponent)}>Add component of compound</button><br/>
-            {showCompoundComponent && <WordForm submitted={submitted} linkType='+' linkTarget={word}/>}
+            {showCompoundComponent && <WordForm submitted={submitted} linkType='+' linkTarget={word} language={word.language} />}
             <button onClick={() => setShowRelated(!showRelated)}>Add related word</button><br/>
-            {showRelated && <WordForm submitted={submitted} linkType='~' linkTarget={word} language={word.language}/>}
+            {showRelated && <WordForm submitted={submitted} linkType='~' linkTarget={word} language={word.language} languageReadOnly={true}/>}
             <button onClick={() => setShowVariation(!showVariation)}>Add variation of</button><br/>
-            {showVariation && <WordForm submitted={submitted} linkType='=' linkTarget={word} language={word.language}/>}
+            {showVariation && <WordForm submitted={submitted} linkType='=' linkTarget={word} language={word.language} languageReadOnly={true}/>}
             <p/>
             {errorText !== "" && <div className="errorText">{errorText}</div>}
         </>}

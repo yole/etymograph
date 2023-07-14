@@ -49,7 +49,7 @@ export default function Dictionary(params) {
             <Link href={`/language/${dict.language.shortName}`}>{dict.language.name}</Link></small> {'>'} {filterText}</h2>
         {allowEdit() && <>
             <h3>Add word</h3>
-            <WordForm language={dict.language.shortName} submitted={submitted}/>
+            <WordForm language={dict.language.shortName} languageReadOnly={true} submitted={submitted}/>
         </>}
         <ul>
             {dict.words.map(w => {
