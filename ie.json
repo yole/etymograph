@@ -1902,6 +1902,336 @@
             "lang": "OE",
             "gloss": "Creator",
             "pos": "N"
+        },
+        {
+            "id": 339,
+            "text": "qñturahi",
+            "lang": "Lyc",
+            "pos": "NP"
+        },
+        {
+            "id": 340,
+            "text": "hrppidubeh",
+            "lang": "Lyc"
+        },
+        {
+            "id": 343,
+            "text": "huwedri",
+            "lang": "Lyc",
+            "gloss": "all"
+        },
+        {
+            "id": 344,
+            "text": "zimasttrah",
+            "lang": "Lyc"
+        },
+        {
+            "id": 345,
+            "text": "zimasttra",
+            "lang": "Lyc",
+            "pos": "NP"
+        },
+        {
+            "id": 346,
+            "text": "meijadi",
+            "lang": "Lyc"
+        },
+        {
+            "id": 347,
+            "text": "tihe",
+            "lang": "Lyc",
+            "gloss": "any"
+        },
+        {
+            "id": 348,
+            "text": "muhãi",
+            "lang": "Lyc"
+        },
+        {
+            "id": 349,
+            "text": "mãhai",
+            "lang": "Lyc",
+            "gloss": "god.NOM.PL"
+        },
+        {
+            "id": 352,
+            "text": "ddaqasa",
+            "lang": "Lyc",
+            "pos": "NP"
+        },
+        {
+            "id": 353,
+            "text": "sttuleh",
+            "lang": "Lyc"
+        },
+        {
+            "id": 354,
+            "text": "sttule",
+            "lang": "Lyc",
+            "pos": "NP"
+        },
+        {
+            "id": 355,
+            "text": "wundra",
+            "lang": "OE",
+            "gloss": "wonder.GEN"
+        },
+        {
+            "id": 356,
+            "text": "hrppidube",
+            "lang": "Lyc",
+            "pos": "NP"
+        },
+        {
+            "id": 357,
+            "text": "ij",
+            "lang": "Lyc"
+        },
+        {
+            "id": 358,
+            "text": "tettm͂pe",
+            "lang": "Lyc",
+            "pos": "NP"
+        },
+        {
+            "id": 359,
+            "text": "hñtihãmah",
+            "lang": "Lyc"
+        },
+        {
+            "id": 360,
+            "text": "hñtihãma",
+            "lang": "Lyc",
+            "pos": "NP"
+        },
+        {
+            "id": 361,
+            "text": "m͂mẽ",
+            "lang": "Lyc",
+            "gloss": "except"
+        },
+        {
+            "id": 362,
+            "text": "seneñte",
+            "lang": "Lyc"
+        },
+        {
+            "id": 363,
+            "text": "sene",
+            "lang": "Lyc"
+        },
+        {
+            "id": 364,
+            "text": "ñte",
+            "lang": "Lyc",
+            "gloss": "inside"
+        },
+        {
+            "id": 365,
+            "text": "isbazi",
+            "lang": "Lyc",
+            "gloss": "bench.ACC"
+        },
+        {
+            "id": 366,
+            "text": "tãtitdi",
+            "lang": "Lyc"
+        },
+        {
+            "id": 367,
+            "text": "tdi",
+            "lang": "Lyc",
+            "gloss": "which.DAT"
+        },
+        {
+            "id": 368,
+            "text": "s",
+            "lang": "Lyc"
+        },
+        {
+            "id": 369,
+            "text": "meije",
+            "lang": "Lyc"
+        },
+        {
+            "id": 370,
+            "text": "nihrppitãtu",
+            "lang": "Lyc"
+        },
+        {
+            "id": 371,
+            "text": "ni",
+            "lang": "Lyc",
+            "gloss": "not"
+        },
+        {
+            "id": 372,
+            "text": "tãtu",
+            "lang": "Lyc",
+            "pos": "put.3SG"
+        },
+        {
+            "id": 373,
+            "text": "ladãtije",
+            "lang": "Lyc"
+        },
+        {
+            "id": 374,
+            "text": "tije",
+            "lang": "Lyc"
+        },
+        {
+            "id": 375,
+            "text": "tubidi",
+            "lang": "Lyc",
+            "gloss": "strike.3SG"
+        },
+        {
+            "id": 376,
+            "text": "semalija",
+            "lang": "Lyc"
+        },
+        {
+            "id": 377,
+            "text": "malija",
+            "lang": "Lyc",
+            "pos": "NP"
+        },
+        {
+            "id": 378,
+            "text": "setasa",
+            "lang": "Lyc"
+        },
+        {
+            "id": 379,
+            "text": "tasa",
+            "lang": "Lyc",
+            "gloss": "oath.PL"
+        },
+        {
+            "id": 380,
+            "text": "miñtaha",
+            "lang": "Lyc",
+            "gloss": "Miñte.GEN"
+        },
+        {
+            "id": 381,
+            "text": "mẽne",
+            "lang": "Lyc"
+        },
+        {
+            "id": 382,
+            "text": "qlajebi",
+            "lang": "Lyc",
+            "gloss": "Qla Ebi",
+            "pos": "NP"
+        },
+        {
+            "id": 383,
+            "text": "hrpi",
+            "lang": "Lyc"
+        },
+        {
+            "id": 384,
+            "text": "seẽke",
+            "lang": "Lyc"
+        },
+        {
+            "id": 385,
+            "text": "ẽke",
+            "lang": "Lyc",
+            "gloss": "when"
+        },
+        {
+            "id": 386,
+            "text": "lati",
+            "lang": "Lyc",
+            "gloss": "die.3SG"
+        },
+        {
+            "id": 387,
+            "text": "ñtipatezi",
+            "lang": "Lyc",
+            "gloss": "sarcophagus.ACC"
+        },
+        {
+            "id": 388,
+            "text": "seladã",
+            "lang": "Lyc"
+        },
+        {
+            "id": 389,
+            "text": "tãtu",
+            "lang": "Lyc",
+            "gloss": "place.3PL"
+        },
+        {
+            "id": 390,
+            "text": "meinipe",
+            "lang": "Lyc"
+        },
+        {
+            "id": 391,
+            "text": "i",
+            "lang": "Lyc"
+        },
+        {
+            "id": 392,
+            "text": "pe",
+            "lang": "Lyc"
+        },
+        {
+            "id": 393,
+            "text": "tibeinipe",
+            "lang": "Lyc"
+        },
+        {
+            "id": 394,
+            "text": "nipe",
+            "lang": "Lyc"
+        },
+        {
+            "id": 395,
+            "text": "hlm͂mi",
+            "lang": "Lyc"
+        },
+        {
+            "id": 396,
+            "text": "meituweti",
+            "lang": "Lyc"
+        },
+        {
+            "id": 397,
+            "text": "tuweti",
+            "lang": "Lyc"
+        },
+        {
+            "id": 398,
+            "text": "semãhãi",
+            "lang": "Lyc"
+        },
+        {
+            "id": 399,
+            "text": "tibei",
+            "lang": "Lyc"
+        },
+        {
+            "id": 400,
+            "text": "itlehi",
+            "lang": "Lyc",
+            "gloss": "league"
+        },
+        {
+            "id": 401,
+            "text": "trm͂mili",
+            "lang": "Lyc",
+            "gloss": "Lycian"
+        },
+        {
+            "id": 402,
+            "text": "trqqas",
+            "lang": "Lyc",
+            "gloss": "Storm-god"
         }
     ],
     "rules": [
@@ -3302,6 +3632,268 @@
             "from": 333,
             "to": 334,
             "type": ">"
+        },
+        {
+            "from": 344,
+            "to": 345,
+            "type": ">",
+            "ruleIds": [
+                117
+            ]
+        },
+        {
+            "from": 348,
+            "to": 349,
+            "type": "="
+        },
+        {
+            "from": 353,
+            "to": 354,
+            "type": ">",
+            "ruleIds": [
+                117
+            ]
+        },
+        {
+            "from": 340,
+            "to": 356,
+            "type": ">",
+            "ruleIds": [
+                117
+            ]
+        },
+        {
+            "from": 346,
+            "to": 181,
+            "type": "+"
+        },
+        {
+            "from": 346,
+            "to": 357,
+            "type": "+"
+        },
+        {
+            "from": 346,
+            "to": 214,
+            "type": "+"
+        },
+        {
+            "from": 357,
+            "to": 212,
+            "type": "="
+        },
+        {
+            "from": 359,
+            "to": 360,
+            "type": ">",
+            "ruleIds": [
+                117
+            ]
+        },
+        {
+            "from": 362,
+            "to": 363,
+            "type": "+"
+        },
+        {
+            "from": 362,
+            "to": 364,
+            "type": "+"
+        },
+        {
+            "from": 366,
+            "to": 183,
+            "type": "+"
+        },
+        {
+            "from": 366,
+            "to": 367,
+            "type": "+"
+        },
+        {
+            "from": 367,
+            "to": 145,
+            "type": ">"
+        },
+        {
+            "from": 363,
+            "to": 368,
+            "type": "+"
+        },
+        {
+            "from": 363,
+            "to": 206,
+            "type": "+"
+        },
+        {
+            "from": 363,
+            "to": 147,
+            "type": "+"
+        },
+        {
+            "from": 369,
+            "to": 181,
+            "type": "+"
+        },
+        {
+            "from": 369,
+            "to": 212,
+            "type": "+"
+        },
+        {
+            "from": 370,
+            "to": 371,
+            "type": "+"
+        },
+        {
+            "from": 370,
+            "to": 110,
+            "type": "+"
+        },
+        {
+            "from": 370,
+            "to": 372,
+            "type": "+"
+        },
+        {
+            "from": 373,
+            "to": 187,
+            "type": "+"
+        },
+        {
+            "from": 373,
+            "to": 374,
+            "type": "+"
+        },
+        {
+            "from": 376,
+            "to": 102,
+            "type": "+"
+        },
+        {
+            "from": 376,
+            "to": 377,
+            "type": "+"
+        },
+        {
+            "from": 378,
+            "to": 102,
+            "type": "+"
+        },
+        {
+            "from": 378,
+            "to": 379,
+            "type": "+"
+        },
+        {
+            "from": 381,
+            "to": 143,
+            "type": "+"
+        },
+        {
+            "from": 381,
+            "to": 256,
+            "type": "+"
+        },
+        {
+            "from": 381,
+            "to": 147,
+            "type": "+"
+        },
+        {
+            "from": 383,
+            "to": 110,
+            "type": "="
+        },
+        {
+            "from": 384,
+            "to": 102,
+            "type": "+"
+        },
+        {
+            "from": 384,
+            "to": 385,
+            "type": "+"
+        },
+        {
+            "from": 388,
+            "to": 102,
+            "type": "+"
+        },
+        {
+            "from": 388,
+            "to": 187,
+            "type": "+"
+        },
+        {
+            "from": 390,
+            "to": 181,
+            "type": "+"
+        },
+        {
+            "from": 390,
+            "to": 391,
+            "type": "+"
+        },
+        {
+            "from": 390,
+            "to": 371,
+            "type": "+"
+        },
+        {
+            "from": 390,
+            "to": 392,
+            "type": "+"
+        },
+        {
+            "from": 393,
+            "to": 194,
+            "type": "+"
+        },
+        {
+            "from": 393,
+            "to": 391,
+            "type": "+"
+        },
+        {
+            "from": 393,
+            "to": 394,
+            "type": "+"
+        },
+        {
+            "from": 396,
+            "to": 181,
+            "type": "+"
+        },
+        {
+            "from": 396,
+            "to": 391,
+            "type": "+"
+        },
+        {
+            "from": 396,
+            "to": 397,
+            "type": "+"
+        },
+        {
+            "from": 398,
+            "to": 102,
+            "type": "+"
+        },
+        {
+            "from": 398,
+            "to": 204,
+            "type": "+"
+        },
+        {
+            "from": 399,
+            "to": 194,
+            "type": "+"
+        },
+        {
+            "from": 399,
+            "to": 391,
+            "type": "+"
         }
     ],
     "corpusTexts": [
@@ -3832,7 +4424,7 @@
                 310,
                 null,
                 null,
-                null,
+                355,
                 329,
                 313,
                 314,
@@ -3861,6 +4453,114 @@
                 null,
                 317,
                 318
+            ]
+        },
+        {
+            "id": 338,
+            "text": "ebẽñnẽ χupã metiprñnawatẽ qñturahi hrppidubeh\ntideimi zimasttrah tuhes meijadi tike tihe\nzum͂m ... tubeiti muhãi huwedri",
+            "title": "TL 59",
+            "lang": "Lyc",
+            "wordIds": [
+                null,
+                null,
+                null,
+                339,
+                340,
+                null,
+                344,
+                null,
+                346,
+                null,
+                347,
+                null,
+                null,
+                null,
+                348,
+                343
+            ]
+        },
+        {
+            "id": 350,
+            "text": "ebẽñnẽ χupã mẽneprñnawatẽ tettm͂pe\nhñtihãmah tideimi seneñte tãtitdi\nisbazi meije nihrppitãtu tike m͂mẽ ladãtije\nhrppi ??? tadi tike kbi mẽne\ntubidi qlajebi semalija setasa miñtaha",
+            "title": "TL 75",
+            "lang": "Lyc",
+            "wordIds": [
+                null,
+                null,
+                null,
+                358,
+                359,
+                null,
+                362,
+                366,
+                365,
+                369,
+                370,
+                null,
+                361,
+                373,
+                null,
+                null,
+                null,
+                null,
+                null,
+                381,
+                375,
+                382,
+                376,
+                378,
+                380
+            ]
+        },
+        {
+            "id": 351,
+            "text": "ebẽñnẽ prñnawã mene prñnawatẽ ddaqasa sttuleh\ntideimi hrpi ladi ehbi setideime seẽke lati ddaqasa\nmene ñtepi tãti ñtipatezi seladã ehbi kbi tike meinipe ñtepi tãtu\ntibeinipe hlm͂mi tuwetu hlm͂mi meituweti tike tibei\nñtepi tadi tike mene itlehi tubeiti trm͂mili huwedri\nse trqqas semãhãi huwedri",
+            "title": "TL 88",
+            "lang": "Lyc",
+            "wordIds": [
+                null,
+                null,
+                null,
+                null,
+                352,
+                353,
+                null,
+                383,
+                null,
+                null,
+                null,
+                384,
+                386,
+                null,
+                null,
+                null,
+                null,
+                387,
+                388,
+                null,
+                null,
+                null,
+                390,
+                null,
+                389,
+                393,
+                395,
+                null,
+                395,
+                396,
+                null,
+                399,
+                null,
+                null,
+                null,
+                null,
+                400,
+                null,
+                401,
+                null,
+                null,
+                402,
+                398
             ]
         }
     ],
