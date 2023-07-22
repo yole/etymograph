@@ -2647,6 +2647,17 @@
                 "neut",
                 "a-stem"
             ]
+        },
+        {
+            "id": 475,
+            "text": "giefu",
+            "lang": "OE",
+            "gloss": "gift",
+            "pos": "N",
+            "classes": [
+                "fem",
+                "o-stem"
+            ]
         }
     ],
     "rules": [
@@ -3177,6 +3188,46 @@
                             }
                         ]
                     }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeEnding",
+                            "args": [
+                                "e"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.AndRuleConditionData",
+                        "members": [
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "ClassMatches",
+                                "characters": "o-stem"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "EndsWith",
+                                "characters": "u"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "Append",
+                            "args": [
+                                "'e'"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "ClassMatches",
+                        "characters": "o-stem"
+                    }
                 }
             ],
             "addedCategories": ".GEN",
@@ -3193,8 +3244,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "NoChange",
+                            "type": "ChangeEnding",
                             "args": [
+                                "e"
                             ]
                         }
                     ],
@@ -3204,23 +3256,34 @@
                             {
                                 "type": "ru.yole.etymograph.LeafRuleConditionData",
                                 "cond": "ClassMatches",
-                                "characters": "masc"
+                                "characters": "o-stem"
                             },
                             {
                                 "type": "ru.yole.etymograph.LeafRuleConditionData",
-                                "cond": "ClassMatches",
-                                "characters": "a-stem"
+                                "cond": "EndsWith",
+                                "characters": "u"
                             }
                         ]
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "Append",
+                            "args": [
+                                "'e'"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "ClassMatches",
+                        "characters": "o-stem"
                     }
                 }
             ],
             "addedCategories": ".ACC",
-            "replacedCategories": "",
             "fromPOS": "N",
-            "toPOS": "",
-            "source": "",
-            "notes": "",
             "preInstructions": [
             ]
         },
@@ -3278,6 +3341,46 @@
                                 "characters": "a-stem"
                             }
                         ]
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeEnding",
+                            "args": [
+                                "e"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.AndRuleConditionData",
+                        "members": [
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "ClassMatches",
+                                "characters": "o-stem"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "EndsWith",
+                                "characters": "u"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "Append",
+                            "args": [
+                                "'e'"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "ClassMatches",
+                        "characters": "o-stem"
                     }
                 }
             ],

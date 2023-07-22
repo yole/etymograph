@@ -29,6 +29,10 @@ sealed class RuleCondition {
     abstract fun matches(phonemes: PhonemeIterator): Boolean
     abstract fun toEditableText(): String
 
+    open fun findLeafCondition(type: ConditionType): LeafRuleCondition? {
+        return null
+    }
+
     companion object {
         fun parse(s: String, language: Language): RuleCondition {
             if (s == OtherwiseCondition.OTHERWISE) {
@@ -100,6 +104,10 @@ class LeafRuleCondition(
         }
         else
             type.condName
+
+    override fun findLeafCondition(type: ConditionType): LeafRuleCondition? {
+        return if (type == this.type) this else null
+    }
 
     companion object {
         const val wordEndsWith = "word ends with "
@@ -226,6 +234,10 @@ class OrRuleCondition(val members: List<RuleCondition>) : RuleCondition() {
 
     override fun toEditableText(): String = members.joinToString(OR) { it.toEditableText() }
 
+    override fun findLeafCondition(type: ConditionType): LeafRuleCondition? {
+        return members.firstNotNullOfOrNull { it.findLeafCondition(type) }
+    }
+
     companion object {
         const val OR = " or "
     }
@@ -241,6 +253,10 @@ class AndRuleCondition(val members: List<RuleCondition>) : RuleCondition() {
     override fun matches(phonemes: PhonemeIterator) = members.all { it.matches(phonemes) }
 
     override fun toEditableText(): String = members.joinToString(AND) { it.toEditableText() }
+
+    override fun findLeafCondition(type: ConditionType): LeafRuleCondition? {
+        return members.firstNotNullOfOrNull { it.findLeafCondition(type) }
+    }
 
     companion object {
         const val AND = " and "
