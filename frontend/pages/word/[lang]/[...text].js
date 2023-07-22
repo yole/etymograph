@@ -184,6 +184,7 @@ function SingleWord(params) {
 
     const isName = word.pos === "NP"
     const isCompound = word.compound
+    const posClassesEditable = word.pos + (word.classes.length > 0 ? " " + word.classes.join(" ") : "")
 
     return <>
         <h2><small>
@@ -195,7 +196,7 @@ function SingleWord(params) {
             {' > '}</small>
             <WordWithStress text={word.text} stressIndex={word.stressIndex} stressLength={word.stressLength}/></h2>
         {!editMode && <>
-            {word.pos && <div>{word.pos}</div>}
+            {word.pos && <div>{word.pos} {word.classes.length > 0 && "(" + word.classes.join(", ") + ")"}</div>}
             <p>{word.fullGloss !== null && word.fullGloss !== "" ? word.fullGloss : word.gloss}</p>
             {word.notes && <p>{word.notes}</p>}
             {word.source != null && <div className="source">Source: {word.source.startsWith("http") ? <a href={word.source}>{word.source}</a> : word.source}</div>}
@@ -214,7 +215,7 @@ function SingleWord(params) {
                                initialText={word.text}
                                initialGloss={word.glossComputed ? undefined : word.gloss}
                                initialFullGloss={word.fullGloss}
-                               initialPos={word.pos}
+                               initialPosClasses={posClassesEditable}
                                initialSource={word.source}
                                initialNotes={word.notes}
                                submitted={editSubmitted}/>}

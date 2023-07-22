@@ -38,6 +38,7 @@ abstract class GraphRepository {
         gloss: String?,
         fullGloss: String? = null,
         pos: String? = null,
+        classes: List<String> = emptyList(),
         source: String? = null,
         notes: String? = null
     ): Word

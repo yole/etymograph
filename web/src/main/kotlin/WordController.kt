@@ -45,6 +45,7 @@ class WordController(val graphService: GraphService) {
         val glossComputed: Boolean,
         val fullGloss: String?,
         val pos: String?,
+        val classes: List<String>,
         val source: String?,
         val notes: String?,
         val parseCandidates: List<ParseCandidateViewModel>,
@@ -91,6 +92,7 @@ class WordController(val graphService: GraphService) {
             gloss == null,
             fullGloss,
             pos,
+            classes,
             source,
             notes,
             if (computedGloss == null && linksFrom[Link.Derived].isNullOrEmpty())
@@ -140,7 +142,7 @@ class WordController(val graphService: GraphService) {
         val text: String?,
         val gloss: String?,
         val fullGloss: String?,
-        val pos: String?,
+        val posClasses: String?,
         val source: String?,
         val notes: String?
     )
@@ -152,11 +154,14 @@ class WordController(val graphService: GraphService) {
         val language = graphService.resolveLanguage(lang)
         val text = params.text?.nullize() ?: throw NoWordTextException()
 
+        val posClassList = params.posClasses.orEmpty().split(' ')
+
         val word = graph.findOrAddWord(
             text, language,
             params.gloss.nullize(),
             params.fullGloss.nullize(),
-            params.pos.nullize(),
+            posClassList.firstOrNull(),
+            posClassList.drop(1),
             params.source.nullize(),
             params.notes.nullize()
         )
@@ -173,9 +178,13 @@ class WordController(val graphService: GraphService) {
         if (text != null && text != word.text) {
             graph.updateWordText(word, text)
         }
+
+        val posClassList = params.posClasses.orEmpty().split(' ')
+
         word.gloss = params.gloss.nullize()
         word.fullGloss = params.fullGloss.nullize()
-        word.pos = params.pos.nullize()
+        word.pos = posClassList.firstOrNull()
+        word.classes = posClassList.drop(1)
         word.source = params.source.nullize()
         word.notes = params.notes.nullize()
         graph.save()

@@ -16,6 +16,7 @@ class Word(
     var gloss: String? = null,
     var fullGloss: String? = null,
     var pos: String? = null,
+    var classes: List<String> = emptyList(),
     source: String? = null,
     notes: String? = null
 ) : LangEntity(id, source, notes) {
@@ -46,7 +47,7 @@ class Word(
         return if (this.text == text)
             this
         else
-            Word(-1, text, language, gloss, fullGloss, pos).apply {
+            Word(-1, text, language, gloss, fullGloss, pos, classes).apply {
                 segments = appendSegments(sourceSegments, newSegment)
             }
     }

@@ -234,6 +234,7 @@ open class InMemoryGraphRepository : GraphRepository() {
         gloss: String?,
         fullGloss: String?,
         pos: String?,
+        classes: List<String>,
         source: String?,
         notes: String?
     ): Word {
@@ -241,7 +242,7 @@ open class InMemoryGraphRepository : GraphRepository() {
         wordsByText.find { it.getOrComputeGloss(this) == gloss || gloss.isNullOrEmpty() }?.let {
             return it
         }
-        return addWord(language, text, gloss, fullGloss, pos, source, notes)
+        return addWord(language, text, gloss, fullGloss, pos, classes, source, notes)
     }
 
     override fun updateWordText(word: Word, text: String) {
@@ -256,11 +257,12 @@ open class InMemoryGraphRepository : GraphRepository() {
         gloss: String?,
         fullGloss: String?,
         pos: String?,
+        classes: List<String>,
         source: String?,
         notes: String?
     ): Word {
         val wordsByText = mapOfWordsByText(language, text)
-        return Word(allLangEntities.size, text, language, gloss, fullGloss, pos, source, notes).also {
+        return Word(allLangEntities.size, text, language, gloss, fullGloss, pos, classes, source, notes).also {
             allLangEntities.add(it)
             wordsByText.add(it)
         }

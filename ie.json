@@ -2232,6 +2232,410 @@
             "text": "trqqas",
             "lang": "Lyc",
             "gloss": "Storm-god"
+        },
+        {
+            "id": 403,
+            "text": "prñnewã",
+            "lang": "Lyc",
+            "pos": "V"
+        },
+        {
+            "id": 405,
+            "text": "moððe",
+            "lang": "OE",
+            "gloss": "moth",
+            "pos": "N"
+        },
+        {
+            "id": 406,
+            "text": "word",
+            "lang": "OE",
+            "gloss": "word",
+            "pos": "N"
+        },
+        {
+            "id": 407,
+            "text": "fræt",
+            "lang": "OE",
+            "gloss": "devour.PRET.3SG"
+        },
+        {
+            "id": 408,
+            "text": "fretan",
+            "lang": "OE",
+            "gloss": "devour",
+            "pos": "V"
+        },
+        {
+            "id": 409,
+            "text": "mē",
+            "lang": "OE",
+            "gloss": "I.DAT"
+        },
+        {
+            "id": 410,
+            "text": "þūhte",
+            "lang": "OE",
+            "gloss": "think.PRET.3SG"
+        },
+        {
+            "id": 411,
+            "text": "þyncan",
+            "lang": "OE",
+            "gloss": "think",
+            "pos": "V"
+        },
+        {
+            "id": 412,
+            "text": "wrǣtlicu",
+            "lang": "OE",
+            "gloss": "marvellous.F.NOM"
+        },
+        {
+            "id": 413,
+            "text": "wrǣtlic",
+            "lang": "OE",
+            "gloss": "marvellous",
+            "pos": "ADJ"
+        },
+        {
+            "id": 414,
+            "text": "wyrd",
+            "lang": "OE",
+            "gloss": "fate",
+            "pos": "N"
+        },
+        {
+            "id": 415,
+            "text": "wundor",
+            "lang": "OE",
+            "gloss": "wonder",
+            "pos": "N"
+        },
+        {
+            "id": 416,
+            "text": "gefræġn",
+            "lang": "OE",
+            "gloss": "learn.PRET.1SG"
+        },
+        {
+            "id": 417,
+            "text": "gefrignan",
+            "lang": "OE",
+            "pos": "V"
+        },
+        {
+            "id": 418,
+            "text": "se",
+            "lang": "OE",
+            "gloss": "that"
+        },
+        {
+            "id": 419,
+            "text": "wyrm",
+            "lang": "OE",
+            "gloss": "serpent",
+            "pos": "N"
+        },
+        {
+            "id": 420,
+            "text": "forswealg",
+            "lang": "OE",
+            "gloss": "swallow.PRET.3SG"
+        },
+        {
+            "id": 421,
+            "text": "forswelgan",
+            "lang": "OE",
+            "gloss": "swallow",
+            "pos": "V"
+        },
+        {
+            "id": 422,
+            "text": "weres",
+            "lang": "OE",
+            "gloss": "man.GEN"
+        },
+        {
+            "id": 423,
+            "text": "wer",
+            "lang": "OE",
+            "gloss": "man"
+        },
+        {
+            "id": 424,
+            "text": "ġied",
+            "lang": "OE",
+            "gloss": "song",
+            "pos": "N"
+        },
+        {
+            "id": 425,
+            "text": "sumes",
+            "lang": "OE",
+            "gloss": "certain.GEN"
+        },
+        {
+            "id": 426,
+            "text": "sum",
+            "lang": "OE",
+            "gloss": "some",
+            "pos": "PRON"
+        },
+        {
+            "id": 427,
+            "text": "in",
+            "lang": "OE",
+            "gloss": "in"
+        },
+        {
+            "id": 428,
+            "text": "þȳstro",
+            "lang": "OE",
+            "gloss": "darkness",
+            "pos": "N"
+        },
+        {
+            "id": 429,
+            "text": "þēof",
+            "lang": "OE",
+            "gloss": "thief",
+            "pos": "N"
+        },
+        {
+            "id": 430,
+            "text": "þrymfæstne",
+            "lang": "OE",
+            "gloss": "glorious.ACC"
+        },
+        {
+            "id": 431,
+            "text": "þrymfæst",
+            "lang": "OE",
+            "gloss": "glorious",
+            "pos": "ADJ"
+        },
+        {
+            "id": 432,
+            "text": "cwide",
+            "lang": "OE",
+            "gloss": "saying",
+            "pos": "N"
+        },
+        {
+            "id": 433,
+            "text": "þæs",
+            "lang": "OE",
+            "gloss": "the.M.GEN"
+        },
+        {
+            "id": 434,
+            "text": "strangan",
+            "lang": "OE",
+            "gloss": "strong.GEN"
+        },
+        {
+            "id": 435,
+            "text": "strang",
+            "lang": "OE",
+            "gloss": "strong",
+            "pos": "ADJ"
+        },
+        {
+            "id": 436,
+            "text": "staþol",
+            "lang": "OE",
+            "gloss": "foundation"
+        },
+        {
+            "id": 437,
+            "text": "stælġiest",
+            "lang": "OE",
+            "gloss": "thievish spirit",
+            "pos": "N"
+        },
+        {
+            "id": 438,
+            "text": "wæs",
+            "lang": "OE",
+            "gloss": "be.PRET.3SG"
+        },
+        {
+            "id": 439,
+            "text": "wihte",
+            "lang": "OE",
+            "gloss": "at all"
+        },
+        {
+            "id": 440,
+            "text": "þē",
+            "lang": "OE",
+            "gloss": "though"
+        },
+        {
+            "id": 441,
+            "text": "glēawra",
+            "lang": "OE",
+            "gloss": "wise",
+            "pos": "ADJ"
+        },
+        {
+            "id": 442,
+            "text": "þȳ",
+            "lang": "OE",
+            "gloss": "the.INSTR"
+        },
+        {
+            "id": 443,
+            "text": "þām",
+            "lang": "OE",
+            "gloss": "the.M.DAT.PL"
+        },
+        {
+            "id": 444,
+            "text": "wordum",
+            "lang": "OE",
+            "pos": "word.DAT.PL"
+        },
+        {
+            "id": 445,
+            "text": "swealg",
+            "lang": "OE",
+            "gloss": "swallow.PRET.3SG"
+        },
+        {
+            "id": 446,
+            "text": "swelgan",
+            "lang": "OE",
+            "gloss": "swallow",
+            "pos": "V"
+        },
+        {
+            "id": 448,
+            "text": "samed",
+            "lang": "OE",
+            "gloss": "together",
+            "pos": "ADV"
+        },
+        {
+            "id": 449,
+            "text": "wuhte",
+            "lang": "OE",
+            "gloss": "creature.ACC.PL"
+        },
+        {
+            "id": 450,
+            "text": "seah",
+            "lang": "OE",
+            "gloss": "see.1SG"
+        },
+        {
+            "id": 451,
+            "text": "seón",
+            "lang": "OE",
+            "gloss": "see",
+            "pos": "V"
+        },
+        {
+            "id": 452,
+            "text": "wrǣtlīċe",
+            "lang": "OE",
+            "gloss": "marvellously",
+            "pos": "ADV"
+        },
+        {
+            "id": 453,
+            "text": "fēower",
+            "lang": "OE",
+            "gloss": "four"
+        },
+        {
+            "id": 454,
+            "text": "sīþian",
+            "lang": "OE",
+            "gloss": "travel",
+            "pos": "V"
+        },
+        {
+            "id": 455,
+            "text": "lāstas",
+            "lang": "OE",
+            "gloss": "track.NOM.PL"
+        },
+        {
+            "id": 456,
+            "text": "lāst",
+            "lang": "OE",
+            "gloss": "track"
+        },
+        {
+            "id": 457,
+            "text": "swaþu",
+            "lang": "OE",
+            "gloss": "trace.NOM.PL"
+        },
+        {
+            "id": 458,
+            "text": "swæþ",
+            "lang": "OE",
+            "gloss": "trace",
+            "pos": "N"
+        },
+        {
+            "id": 459,
+            "text": "swearta",
+            "lang": "OE",
+            "gloss": "black.NOM.PL"
+        },
+        {
+            "id": 460,
+            "text": "sweart",
+            "lang": "OE",
+            "gloss": "black",
+            "pos": "ADJ"
+        },
+        {
+            "id": 461,
+            "text": "swīþe",
+            "lang": "OE",
+            "gloss": "very",
+            "pos": "ADV"
+        },
+        {
+            "id": 462,
+            "text": "þā",
+            "lang": "OE",
+            "gloss": "when"
+        },
+        {
+            "id": 463,
+            "text": "ond",
+            "lang": "OE",
+            "gloss": "and"
+        },
+        {
+            "id": 464,
+            "text": "blacu",
+            "lang": "OE",
+            "gloss": "black.ACC"
+        },
+        {
+            "id": 465,
+            "text": "blác",
+            "lang": "OE",
+            "gloss": "bright",
+            "pos": "ADJ"
+        },
+        {
+            "id": 466,
+            "text": "stān",
+            "lang": "OE",
+            "gloss": "stone",
+            "pos": "N",
+            "classes": [
+                "masc",
+                "a-stem"
+            ]
         }
     ],
     "rules": [
@@ -2701,6 +3105,280 @@
             "addedCategories": ".3PL",
             "replacedCategories": "",
             "fromPOS": "V",
+            "toPOS": "",
+            "source": "",
+            "notes": "",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 467,
+            "name": "oe-gen",
+            "fromLang": "OE",
+            "toLang": "OE",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "args": [
+                                "es"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.AndRuleConditionData",
+                        "members": [
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "ClassMatches",
+                                "characters": "masc"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "ClassMatches",
+                                "characters": "a-stem"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "addedCategories": ".GEN",
+            "replacedCategories": "",
+            "fromPOS": "N",
+            "toPOS": "",
+            "source": "",
+            "notes": "",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 468,
+            "name": "oe-acc",
+            "fromLang": "OE",
+            "toLang": "OE",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "NoChange",
+                            "args": [
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.AndRuleConditionData",
+                        "members": [
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "ClassMatches",
+                                "characters": "masc"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "ClassMatches",
+                                "characters": "a-stem"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "addedCategories": ".ACC",
+            "replacedCategories": "",
+            "fromPOS": "N",
+            "toPOS": "",
+            "source": "",
+            "notes": "",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 469,
+            "name": "oe-dat",
+            "fromLang": "OE",
+            "toLang": "OE",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "args": [
+                                "e"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.AndRuleConditionData",
+                        "members": [
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "ClassMatches",
+                                "characters": "masc"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "ClassMatches",
+                                "characters": "a-stem"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "addedCategories": ".DAT",
+            "replacedCategories": "",
+            "fromPOS": "N",
+            "toPOS": "",
+            "source": "",
+            "notes": "",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 470,
+            "name": "oe-nom-pl",
+            "fromLang": "OE",
+            "toLang": "OE",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "args": [
+                                "as"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.AndRuleConditionData",
+                        "members": [
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "ClassMatches",
+                                "characters": "masc"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "ClassMatches",
+                                "characters": "a-stem"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "addedCategories": ".NOM.PL",
+            "replacedCategories": "",
+            "fromPOS": "N",
+            "toPOS": "",
+            "source": "",
+            "notes": "",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 471,
+            "name": "oe-acc-pl",
+            "fromLang": "OE",
+            "toLang": "OE",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ApplyRule",
+                            "args": [
+                                "470"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".ACC.PL",
+            "replacedCategories": "",
+            "fromPOS": "",
+            "toPOS": "",
+            "source": "",
+            "notes": "",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 472,
+            "name": "oe-gen-pl",
+            "fromLang": "OE",
+            "toLang": "OE",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "args": [
+                                "a"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.AndRuleConditionData",
+                        "members": [
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "ClassMatches",
+                                "characters": "masc"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "ClassMatches",
+                                "characters": "a-stem"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "addedCategories": ".GEN.PL",
+            "replacedCategories": "",
+            "fromPOS": "N",
+            "toPOS": "",
+            "source": "",
+            "notes": "",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 473,
+            "name": "oe-dat-pl",
+            "fromLang": "OE",
+            "toLang": "OE",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "args": [
+                                "um"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.AndRuleConditionData",
+                        "members": [
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "ClassMatches",
+                                "characters": "masc"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "ClassMatches",
+                                "characters": "a-stem"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "addedCategories": ".DAT.PL",
+            "replacedCategories": "",
+            "fromPOS": "N",
             "toPOS": "",
             "source": "",
             "notes": "",
@@ -3894,6 +4572,106 @@
             "from": 399,
             "to": 391,
             "type": "+"
+        },
+        {
+            "from": 407,
+            "to": 408,
+            "type": ">"
+        },
+        {
+            "from": 409,
+            "to": 68,
+            "type": ">"
+        },
+        {
+            "from": 410,
+            "to": 411,
+            "type": ">"
+        },
+        {
+            "from": 412,
+            "to": 413,
+            "type": ">"
+        },
+        {
+            "from": 416,
+            "to": 417,
+            "type": ">"
+        },
+        {
+            "from": 420,
+            "to": 421,
+            "type": ">"
+        },
+        {
+            "from": 422,
+            "to": 423,
+            "type": ">"
+        },
+        {
+            "from": 425,
+            "to": 426,
+            "type": ">"
+        },
+        {
+            "from": 430,
+            "to": 431,
+            "type": ">"
+        },
+        {
+            "from": 433,
+            "to": 277,
+            "type": ">"
+        },
+        {
+            "from": 434,
+            "to": 435,
+            "type": ">"
+        },
+        {
+            "from": 442,
+            "to": 277,
+            "type": ">"
+        },
+        {
+            "from": 443,
+            "to": 277,
+            "type": ">"
+        },
+        {
+            "from": 444,
+            "to": 406,
+            "type": ">"
+        },
+        {
+            "from": 445,
+            "to": 446,
+            "type": ">"
+        },
+        {
+            "from": 450,
+            "to": 451,
+            "type": ">"
+        },
+        {
+            "from": 455,
+            "to": 456,
+            "type": ">"
+        },
+        {
+            "from": 457,
+            "to": 458,
+            "type": ">"
+        },
+        {
+            "from": 459,
+            "to": 460,
+            "type": ">"
+        },
+        {
+            "from": 464,
+            "to": 465,
+            "type": ">"
         }
     ],
     "corpusTexts": [
@@ -4562,9 +5340,142 @@
                 402,
                 398
             ]
+        },
+        {
+            "id": 404,
+            "text": "Moððe word fræt; mē þæt þūhte\nwrǣtlicu wyrd, þā iċ þæt wundor gefræġn,\nþæt se wyrm forswealg weres ġied sumes,\nþēof in þȳstro, þrymfæstne cwide\nond þæs strangan staþol. Stælġiest ne wæs\nwihte þȳ glēawra þē hē þām wordum swealg.",
+            "title": "OE riddle 1",
+            "lang": "OE",
+            "wordIds": [
+                null,
+                406,
+                407,
+                409,
+                null,
+                410,
+                412,
+                414,
+                462,
+                null,
+                null,
+                415,
+                416,
+                null,
+                418,
+                419,
+                420,
+                422,
+                424,
+                425,
+                429,
+                427,
+                428,
+                430,
+                432,
+                463,
+                433,
+                434,
+                436,
+                437,
+                null,
+                438,
+                439,
+                442,
+                441,
+                440,
+                null,
+                443,
+                444,
+                445
+            ]
+        },
+        {
+            "id": 447,
+            "text": "Iċ seah wrǣtlīċe wuhte fēower\nsamed sīþian; swearta wǣran lāstas,\nswaþu swīþe blacu. Swift wæs on fōre,\nfuglum framra; flēag on lyfte,\ndēaf under ȳþe. Drēag unstille\nwinnende wiga se him wegas tǣcneþ\nofer fǣted gold fēower eallum.",
+            "title": "OE riddle 2",
+            "lang": "OE",
+            "wordIds": [
+                null,
+                450,
+                452,
+                449,
+                453,
+                448,
+                454,
+                459,
+                null,
+                455,
+                457,
+                461,
+                464
+            ]
         }
     ],
     "paradigms": [
+        {
+            "id": 0,
+            "name": "Noun",
+            "lang": "OE",
+            "pos": "N",
+            "rows": [
+                "Nom",
+                "Acc",
+                "Gen",
+                "Dat/Instr"
+            ],
+            "columns": [
+                {
+                    "title": "Sg",
+                    "cells": [
+                        {
+                            "ruleAlternatives": [
+                                null
+                            ]
+                        },
+                        {
+                            "ruleAlternatives": [
+                                468
+                            ]
+                        },
+                        {
+                            "ruleAlternatives": [
+                                467
+                            ]
+                        },
+                        {
+                            "ruleAlternatives": [
+                                469
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "Pl",
+                    "cells": [
+                        {
+                            "ruleAlternatives": [
+                                470
+                            ]
+                        },
+                        {
+                            "ruleAlternatives": [
+                                471
+                            ]
+                        },
+                        {
+                            "ruleAlternatives": [
+                                472
+                            ]
+                        },
+                        {
+                            "ruleAlternatives": [
+                                473
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
     ],
     "syllableStructures": [
     ],

@@ -7,6 +7,7 @@ enum class ConditionType(
     val takesPhonemeClass: Boolean = true
 ) {
     EndsWith(LeafRuleCondition.wordEndsWith),
+    ClassMatches(LeafRuleCondition.wordIs, takesPhonemeClass = false),
     NumberOfSyllables(LeafRuleCondition.numberOfSyllables, takesPhonemeClass = false),
     PhonemeMatches(LeafRuleCondition.soundIs, phonemic = true),
     PrevPhonemeMatches(LeafRuleCondition.prevSoundIs, phonemic = true),
@@ -62,6 +63,7 @@ class LeafRuleCondition(
                 ?: word.text.trimEnd('-').endsWith(parameter!!)).negateIfNeeded()
             ConditionType.NumberOfSyllables -> breakIntoSyllables(word).size == parameter!!.toInt()
             ConditionType.StressIs -> matchStress(word)
+            ConditionType.ClassMatches -> parameter in word.classes
             else -> super.matches(word)
         }
     }
@@ -101,6 +103,7 @@ class LeafRuleCondition(
 
     companion object {
         const val wordEndsWith = "word ends with "
+        const val wordIs = "word is "
         const val numberOfSyllables = "number of syllables is "
         const val soundIs = "sound is "
         const val prevSoundIs = "previous sound is "

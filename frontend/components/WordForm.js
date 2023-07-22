@@ -5,7 +5,7 @@ export default function WordForm(props) {
     const [newWordText, setNewWordText] = useState(props.initialText !== undefined ? props.initialText : "")
     const [newWordGloss, setNewWordGloss] = useState(props.initialGloss !== undefined ? props.initialGloss : "")
     const [newWordFullGloss, setNewWordFullGloss] = useState(props.initialFullGloss !== undefined ? props.initialFullGloss : "")
-    const [newWordPos, setNewWordPos] = useState(props.initialPos !== undefined ? props.initialPos : "")
+    const [newWordPosClasses, setNewWordPosClasses] = useState(props.initialPosClasses !== undefined ? props.initialPosClasses : "")
     const [newWordSource, setNewWordSource] = useState(props.initialSource !== undefined ? props.initialSource : "")
     const [newWordLanguage, setNewWordLanguage] = useState(props.language || "")
     const [newWordNotes, setNewWordNotes] = useState(props.initialNotes !== undefined ? props.initialNotes : "")
@@ -14,12 +14,12 @@ export default function WordForm(props) {
 
     function handleFormSubmit(e) {
         if (props.updateId !== undefined) {
-            updateWord(props.updateId, newWordText, newWordGloss, newWordFullGloss, newWordPos, newWordSource, newWordNotes)
+            updateWord(props.updateId, newWordText, newWordGloss, newWordFullGloss, newWordPosClasses, newWordSource, newWordNotes)
                 .then(r => r.json())
                 .then(r => props.submitted(r))
         }
         else {
-            addWord(newWordLanguage, newWordText, newWordGloss, newWordFullGloss, newWordPos, newWordSource)
+            addWord(newWordLanguage, newWordText, newWordGloss, newWordFullGloss, newWordPosClasses, newWordSource)
                 .then(r => r.json())
                 .then(r => {
                     if (isAddingLink) {
@@ -65,8 +65,8 @@ export default function WordForm(props) {
                            id="word-text" readOnly={props.textReadOnly === true}/></td>
             </tr>
             <tr>
-                <td><label htmlFor="word-pos">POS:</label></td>
-                <td><input type="text" value={newWordPos} onChange={e => setNewWordPos(e.target.value)}
+                <td><label htmlFor="word-pos">POS/classes:</label></td>
+                <td><input type="text" value={newWordPosClasses} onChange={e => setNewWordPosClasses(e.target.value)}
                            id="word-pos"/></td>
             </tr>
             <tr>
