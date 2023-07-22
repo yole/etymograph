@@ -162,7 +162,8 @@ class ApplyStressInstruction(val language: Language, arg: String) : RuleInstruct
 }
 
 class PrependAppendInstruction(type: InstructionType, language: Language, arg: String) : RuleInstruction(type, arg) {
-    val seekTarget = SeekTarget.parse(arg, language)
+    val seekTarget = if (arg.startsWith('\'')) null else SeekTarget.parse(arg, language)
+    val literalArg = if (arg.startsWith('\'')) arg.removePrefix("'").removeSuffix("'") else null
 
     init {
         if (type != InstructionType.Append && type != InstructionType.Prepend) {
@@ -171,13 +172,26 @@ class PrependAppendInstruction(type: InstructionType, language: Language, arg: S
     }
 
     override fun apply(rule: Rule, word: Word, graph: GraphRepository): Word {
+        if (literalArg != null) {
+            return if (type == InstructionType.Prepend)
+                word.derive(literalArg + word.text)
+            else
+                word.derive(word.text + literalArg)
+        }
         val phonemes = PhonemeIterator(word)
-        if (phonemes.seek(seekTarget)) {
+        if (phonemes.seek(seekTarget!!)) {
             if (type == InstructionType.Prepend) {
                 return word.derive(phonemes.current + word.text)
             }
             return word.derive(word.text + phonemes.current)
         }
         return word
+    }
+
+    override fun toSummaryText(): String {
+        if (literalArg != null) {
+            return if (type == InstructionType.Prepend) "$literalArg-" else "-$literalArg"
+        }
+        return super.toSummaryText()
     }
 }
