@@ -7,7 +7,7 @@ services:
     healthcheck:
       test: curl http://localhost:8080/corpus || exit 1
       interval: 10s
-      retries: 5
+      retries: 10
   frontend-export:
     environment:
       - NEXT_PUBLIC_BACKEND_URL=http://backend:8080/
