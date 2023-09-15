@@ -1,0 +1,8 @@
+name: Publish read-only database for Elvish
+on: [push, workflow_dispatch]
+jobs:
+  publish-elvish:
+    uses: ./.github/workflows/etymograph-build.yml@main
+    secrets:
+      siteId: ${{ secrets.ELVISH_ETYMOGRAPH_SITE_ID }}
+      netlifyAuthToken: ${{ secrets.NETLIFY_AUTH_TOKEN }}

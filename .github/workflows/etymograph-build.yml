@@ -1,5 +1,11 @@
-name: Publish read-only database for Elvish
-on: [push, workflow_dispatch]
+name: Publish read-only database
+on:
+  workflow_call:
+    secrets:
+      netlifyAuthToken:
+        required: true
+      siteId:
+        required: true
 jobs:
   export-database:
     timeout-minutes: 10
@@ -23,8 +29,8 @@ jobs:
         with:
           args: deploy --dir=export --prod
         env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_SITE_ID: ${{ secrets.ELVISH_ETYMOGRAPH_SITE_ID }}
+          NETLIFY_AUTH_TOKEN: ${{ secrets.netlifyAuthToken }}
+          NETLIFY_SITE_ID: ${{ secrets.siteId }}
 
       - name: Show logs
         if: always()
