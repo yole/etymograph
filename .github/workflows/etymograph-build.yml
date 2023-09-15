@@ -21,6 +21,8 @@ jobs:
 
       - name: Start backend
         run: docker compose up backend --build --detach --wait
+        env:
+          ETYMOGRAPH_GRAPH_PATH: ${{ inputs.graphPath }}
 
       - name: Create export target directory
         run: mkdir export
