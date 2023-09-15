@@ -1,5 +1,5 @@
 import Link from "next/link";
-import {fetchBackend} from "@/api";
+import {allowEdit, fetchBackend} from "@/api";
 
 export async function getStaticProps() {
   return fetchBackend('language')
@@ -12,6 +12,6 @@ export default function Home(props) {
     <ul>
       {languages.map(l => <li key={l.shortName}><Link href={`language/${l.shortName}`}>{l.name}</Link></li>)}
     </ul>
-    <Link href='languages/new'>Add language</Link>
+    {allowEdit() && <Link href='languages/new'>Add language</Link>}
   </>
 }
