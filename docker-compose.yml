@@ -5,7 +5,7 @@ services:
     ports:
       - "8080:8080"
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8080/corpus"]
+      test: curl http://localhost:8080/corpus || exit 1
       interval: 10s
       retries: 5
   frontend-export:
