@@ -12,6 +12,9 @@ jobs:
       - name: Start backend
         run: docker compose up backend --build --detach --wait
 
+      - name: Create export target directory
+        run: mkdir export
+
       - name: Generate exported data
         run: docker compose up frontend-export
 
