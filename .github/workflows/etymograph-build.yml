@@ -19,11 +19,12 @@ jobs:
         run: docker compose up frontend-export
 
       - name: Publish to Netlify
-        uses: netlify/actions/build@master
+        uses: netlify/actions/cli@master
+        with:
+          args: deploy --dir=export --prod
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.ELVISH_ETYMOGRAPH_SITE_ID }}
-          NETLIFY_DIR: export
 
       - name: Show logs
         if: always()
