@@ -1,6 +1,10 @@
 name: Publish read-only database
 on:
   workflow_call:
+    inputs:
+      graphPath:
+        required: true
+        type: string
     secrets:
       netlifyAuthToken:
         required: true
@@ -16,7 +20,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Start backend
-        run: docker compose up backend --build --detach --wait
+        run: docker compose up backend --build --detach --wait -e
 
       - name: Create export target directory
         run: mkdir export

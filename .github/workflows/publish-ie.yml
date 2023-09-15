@@ -1,10 +1,10 @@
-name: Publish read-only database for Elvish
+name: Publish read-only database for Indo-European
 on: [push, workflow_dispatch]
 jobs:
   publish-elvish:
     uses: ./.github/workflows/etymograph-build.yml
     with:
-      graphPath: /app/jrrt.json
+      graphPath: /app/ie.json
     secrets:
-      siteId: ${{ secrets.ELVISH_ETYMOGRAPH_SITE_ID }}
+      siteId: ${{ secrets.ETYMOGRAPH_SITE_ID }}
       netlifyAuthToken: ${{ secrets.NETLIFY_AUTH_TOKEN }}

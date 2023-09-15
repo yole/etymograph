@@ -8,6 +8,8 @@ services:
       test: curl http://localhost:8080/corpus || exit 1
       interval: 10s
       retries: 10
+    environment:
+      - ETYMOGRAPH_GRAPH_PATH
   frontend-export:
     environment:
       - NEXT_PUBLIC_BACKEND_URL=http://backend:8080/
