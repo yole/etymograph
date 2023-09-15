@@ -15,6 +15,10 @@ jobs:
       - name: Generate exported data
         run: docker compose up frontend-export
 
+      - name: Show logs
+        if: always()
+        run: docker logs etymograph-backend-1
+
       - name: Inspect health check
         if: always()
         run: docker inspect etymograph-backend-1
