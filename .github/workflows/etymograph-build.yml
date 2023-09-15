@@ -1,0 +1,19 @@
+name: Export read-only database
+on: [push, workflow_dispatch]
+jobs:
+  export-database:
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Start backend
+        run: docker-compose up backend --build --detach --wait
+
+      - name: Generate exported data
+        run: docker-compose up frontend-export
+
+      - name: Stop containers
+        run: docker-compose down

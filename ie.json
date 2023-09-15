@@ -1220,8 +1220,8 @@
             "id": 216,
             "text": "mẽte",
             "lang": "Lyc",
-            "gloss": "?",
-            "pos": "V"
+            "gloss": "harm",
+            "pos": "N"
         },
         {
             "id": 217,
@@ -2658,6 +2658,35 @@
                 "fem",
                 "o-stem"
             ]
+        },
+        {
+            "id": 477,
+            "text": "τezi",
+            "lang": "Lyc",
+            "gloss": "sarcophagus",
+            "pos": "",
+            "source": "Christiansen 2019: 83"
+        },
+        {
+            "id": 478,
+            "text": "xudalijẽ",
+            "lang": "Lyc",
+            "pos": "NP",
+            "source": "Christiansen 2019: 83"
+        },
+        {
+            "id": 479,
+            "text": "mahãi",
+            "lang": "Lyc",
+            "pos": "",
+            "source": "Christiansen 2019: 83"
+        },
+        {
+            "id": 480,
+            "text": "maha",
+            "lang": "Lyc",
+            "gloss": "god",
+            "pos": "N"
         }
     ],
     "rules": [
@@ -4186,7 +4215,10 @@
         {
             "from": 215,
             "to": 216,
-            "type": ">"
+            "type": ">",
+            "ruleIds": [
+                116
+            ]
         },
         {
             "from": 218,
@@ -4891,6 +4923,14 @@
             "from": 464,
             "to": 465,
             "type": ">"
+        },
+        {
+            "from": 479,
+            "to": 480,
+            "type": ">",
+            "ruleIds": [
+                269
+            ]
         }
     ],
     "corpusTexts": [
@@ -5628,6 +5668,31 @@
                 461,
                 464
             ]
+        },
+        {
+            "id": 476,
+            "text": "ebẽñnẽ τezi mẽne ñte tuwetẽ xudalijẽ: murãzah◊ tideimi hrppidem...\n...maza seije [...].adi tike mẽtẽ mẽne mahãi tubeiti nelez...",
+            "title": "TL 72",
+            "lang": "Lyc",
+            "wordIds": [
+                null,
+                477,
+                null,
+                null,
+                null,
+                478,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                215,
+                null,
+                479
+            ],
+            "source": "Christiansen 2019: 83"
         }
     ],
     "paradigms": [

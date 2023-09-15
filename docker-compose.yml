@@ -4,6 +4,9 @@ services:
     build: .
     ports:
       - "8080:8080"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/corpus"]
+      interval: 10s
   frontend-export:
     environment:
       - NEXT_PUBLIC_BACKEND_URL=http://backend:8080/
