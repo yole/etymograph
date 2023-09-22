@@ -30,7 +30,7 @@ export default function PublicationForm(props) {
             <td><input type="text" value={name} onChange={(e) => setName(e.target.value)}/></td>
         </tr>
         <tr>
-            <td><label>Reference ID</label></td>
+            <td><label>Reference ID: </label></td>
             <td><input type="text" value={refId} onChange={(e) => setRefId(e.target.value)}/></td>
         </tr>
         </tbody></table>

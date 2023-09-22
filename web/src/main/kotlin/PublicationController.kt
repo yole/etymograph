@@ -20,7 +20,7 @@ data class AddPublicationParameters(
 class PublicationController(val graphService: GraphService) {
     @GetMapping("/publications")
     fun publications(): List<PublicationViewModel> {
-        return graphService.graph.allPublications().map {
+        return graphService.graph.allPublications().sortedBy { it.refId }.map {
             it.toViewModel()
         }
     }

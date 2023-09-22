@@ -1503,7 +1503,12 @@
             "lang": "Lyc",
             "gloss": "strike",
             "pos": "V",
-            "source": "q-3sg"
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "q-3sg"
+                }
+            ]
         },
         {
             "id": 274,
@@ -2665,21 +2670,36 @@
             "lang": "Lyc",
             "gloss": "sarcophagus",
             "pos": "",
-            "source": "Christiansen 2019: 83"
+            "sourceRefs": [
+                {
+                    "pubId": 0,
+                    "refText": "83"
+                }
+            ]
         },
         {
             "id": 478,
             "text": "xudalijẽ",
             "lang": "Lyc",
             "pos": "NP",
-            "source": "Christiansen 2019: 83"
+            "sourceRefs": [
+                {
+                    "pubId": 0,
+                    "refText": "83"
+                }
+            ]
         },
         {
             "id": 479,
             "text": "mahãi",
             "lang": "Lyc",
             "pos": "",
-            "source": "Christiansen 2019: 83"
+            "sourceRefs": [
+                {
+                    "pubId": 0,
+                    "refText": "83"
+                }
+            ]
         },
         {
             "id": 480,
@@ -2741,7 +2761,6 @@
             "replacedCategories": "",
             "fromPOS": "N",
             "toPOS": "N",
-            "source": "",
             "notes": "",
             "preInstructions": [
             ]
@@ -2770,7 +2789,6 @@
             "replacedCategories": "",
             "fromPOS": "NP",
             "toPOS": "NP",
-            "source": "",
             "notes": "",
             "preInstructions": [
             ]
@@ -2806,7 +2824,6 @@
             "replacedCategories": "",
             "fromPOS": "N",
             "toPOS": "N",
-            "source": "",
             "notes": "",
             "preInstructions": [
             ]
@@ -2842,7 +2859,6 @@
             "replacedCategories": "",
             "fromPOS": "N",
             "toPOS": "N",
-            "source": "",
             "notes": "",
             "preInstructions": [
             ]
@@ -2878,7 +2894,6 @@
             "replacedCategories": "",
             "fromPOS": "N",
             "toPOS": "N",
-            "source": "",
             "notes": "",
             "preInstructions": [
             ]
@@ -2907,7 +2922,6 @@
             "replacedCategories": "",
             "fromPOS": "N",
             "toPOS": "N",
-            "source": "",
             "notes": "",
             "preInstructions": [
             ]
@@ -2936,7 +2950,6 @@
             "replacedCategories": "",
             "fromPOS": "V",
             "toPOS": "",
-            "source": "",
             "notes": "",
             "preInstructions": [
             ]
@@ -2965,7 +2978,6 @@
             "replacedCategories": "",
             "fromPOS": "V",
             "toPOS": "",
-            "source": "",
             "notes": "",
             "preInstructions": [
             ]
@@ -2994,7 +3006,6 @@
             "replacedCategories": "",
             "fromPOS": "N",
             "toPOS": "",
-            "source": "",
             "notes": "",
             "preInstructions": [
             ]
@@ -3023,7 +3034,6 @@
             "replacedCategories": "",
             "fromPOS": "V",
             "toPOS": "",
-            "source": "",
             "notes": "",
             "preInstructions": [
             ]
@@ -3059,7 +3069,6 @@
             "replacedCategories": "",
             "fromPOS": "N",
             "toPOS": "",
-            "source": "",
             "notes": "",
             "preInstructions": [
             ]
@@ -3088,7 +3097,6 @@
             "replacedCategories": "",
             "fromPOS": "V",
             "toPOS": "",
-            "source": "",
             "notes": "",
             "preInstructions": [
             ]
@@ -3157,7 +3165,6 @@
             "replacedCategories": "",
             "fromPOS": "V",
             "toPOS": "",
-            "source": "",
             "notes": "",
             "preInstructions": [
             ]
@@ -3504,7 +3511,6 @@
             "replacedCategories": "",
             "fromPOS": "",
             "toPOS": "",
-            "source": "",
             "notes": "",
             "preInstructions": [
             ]
@@ -5015,8 +5021,7 @@
                 64,
                 66,
                 7
-            ],
-            "source": ""
+            ]
         },
         {
             "id": 9,
@@ -5031,8 +5036,7 @@
                 104,
                 100,
                 101
-            ],
-            "source": ""
+            ]
         },
         {
             "id": 10,
@@ -5047,8 +5051,7 @@
                 109,
                 120,
                 121
-            ],
-            "source": ""
+            ]
         },
         {
             "id": 11,
@@ -5066,8 +5069,7 @@
                 126,
                 null,
                 259
-            ],
-            "source": ""
+            ]
         },
         {
             "id": 12,
@@ -5084,8 +5086,7 @@
                 null,
                 263,
                 115
-            ],
-            "source": ""
+            ]
         },
         {
             "id": 13,
@@ -5097,8 +5098,7 @@
                 null,
                 null,
                 128
-            ],
-            "source": ""
+            ]
         },
         {
             "id": 67,
@@ -5192,8 +5192,7 @@
                 null,
                 null,
                 80
-            ],
-            "source": ""
+            ]
         },
         {
             "id": 113,
@@ -5692,7 +5691,12 @@
                 null,
                 479
             ],
-            "source": "Christiansen 2019: 83"
+            "sourceRefs": [
+                {
+                    "pubId": 0,
+                    "refText": "83"
+                }
+            ]
         }
     ],
     "paradigms": [
@@ -5764,5 +5768,12 @@
     "syllableStructures": [
     ],
     "wordFinals": [
+    ],
+    "publications": [
+        {
+            "id": 0,
+            "name": "Christiansen, Birgit (2019). Editions of Lycian Inscriptions not Included in Melchert’s Corpus from 2001. In: Adiego, Ignasi-Xavier, García Trabazo, José Virgilio, Vernet, Mariona, Obrador-Cursach, Bartomeu and Martínez Rodríguez, Elena (eds.): Luwic dialects in Anatolian: Inheritance and Diffusion, Edicions de la Universitat de Barcelona, Barcelona. ",
+            "refId": "Christiansen 2019"
+        }
     ]
 }

@@ -3,7 +3,6 @@ package ru.yole.etymograph
 import kotlinx.serialization.*
 import kotlinx.serialization.json.Json
 import java.nio.file.Path
-import javax.xml.transform.Source
 import kotlin.io.path.readText
 import kotlin.io.path.writeText
 
@@ -22,7 +21,6 @@ data class WordData(
     val fullGloss: String? = null,
     val pos: String? = null,
     val classes: List<String>? = null,
-    val source: String? = null,
     val sourceRefs: List<SourceRefData>? = null,
     val notes: String? = null
 )
@@ -126,7 +124,6 @@ data class RuleData(
     val replacedCategories: String? = null,
     val fromPOS: String? = null,
     val toPOS: String? = null,
-    val source: String? = null,
     val sourceRefs: List<SourceRefData>? = null,
     val notes: String? = null,
     val preInstructions: List<RuleInstructionData>? = null
@@ -138,7 +135,6 @@ data class LinkData(
     @SerialName("to") val toWordId: Int,
     val type: String,
     val ruleIds: List<Int>? = null,
-    val source: String? = null,
     val sourceRefs: List<SourceRefData>? = null,
     val notes: String? = null
 )
@@ -148,7 +144,6 @@ data class CorpusTextData(
     val id: Int, val text: String, val title: String?,
     @SerialName("lang") val languageShortName: String,
     val wordIds: List<Int?>,
-    val source: String? = null,
     val sourceRefs: List<SourceRefData>? = null,
     val notes: String? = null
 )
@@ -260,14 +255,13 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             allLangEntities.filterIsInstance<Word>().map {
                 WordData(it.id, it.text, it.language.shortName, it.gloss, it.fullGloss, it.pos,
                     it.classes.takeIf { it.isNotEmpty() },
-                    null, it.source.sourceToSerializedFormat(), it.notes)
+                    it.source.sourceToSerializedFormat(), it.notes)
             },
             rules.map { it.ruleToSerializedFormat() },
             allLinks.map { link ->
                 LinkData(
                     link.fromEntity.id, link.toEntity.id,
                     link.type.id, link.rules.takeIf { it.isNotEmpty() }?.map { it.id },
-                    null,
                     link.source.sourceToSerializedFormat(),
                     link.notes
                 )
@@ -276,7 +270,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                 CorpusTextData(
                     it.id, it.text, it.title, it.language.shortName,
                     it.words.map { it?.id },
-                    null, it.source.sourceToSerializedFormat(), it.notes
+                    it.source.sourceToSerializedFormat(), it.notes
                 )
             },
             paradigms.map {
@@ -338,7 +332,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                 word.fullGloss,
                 word.pos,
                 word.classes ?: emptyList(),
-                loadSource(word.source, word.sourceRefs),
+                loadSource(word.sourceRefs),
                 word.notes
             )
         }
@@ -359,7 +353,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                 rule.replacedCategories,
                 rule.fromPOS,
                 rule.toPOS,
-                loadSource(rule.source, rule.sourceRefs),
+                loadSource(rule.sourceRefs),
                 rule.notes
             )
             rules.add(addedRule)
@@ -377,7 +371,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                         ?.takeIf { it.isNotEmpty() }
                         ?.map { allLangEntities[it] as? Rule ?: throw IllegalStateException("Broken rule ID reference $it") }
                         ?: emptyList(),
-                    loadSource(link.source, link.sourceRefs),
+                    loadSource(link.sourceRefs),
                     link.notes
                 )
             }
@@ -389,7 +383,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                 corpusText.title,
                 languageByShortName(corpusText.languageShortName)!!,
                 corpusText.wordIds.map { id -> id?.let { allLangEntities[id] as? Word } }.toMutableList(),
-                loadSource(corpusText.source, corpusText.sourceRefs),
+                loadSource(corpusText.sourceRefs),
                 corpusText.notes
             )
             corpus += addedCorpusText
@@ -443,14 +437,12 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             return result
         }
 
-        private fun List<SourceRef>.sourceToSerializedFormat(): List<SourceRefData> {
-            return map { SourceRefData(it.pubId, it.refText) }
+        private fun List<SourceRef>.sourceToSerializedFormat(): List<SourceRefData>? {
+            return map { SourceRefData(it.pubId, it.refText) }.takeIf { it.isNotEmpty() }
         }
 
-        private fun loadSource(source: String?, sourceRefs: List<SourceRefData>?): List<SourceRef> {
-            return source?.let { listOf(SourceRef(null, it)) }
-                ?: sourceRefs?.map { SourceRef(it.pubId, it.refText) }
-                ?: emptyList()
+        private fun loadSource(sourceRefs: List<SourceRefData>?): List<SourceRef> {
+            return sourceRefs?.map { SourceRef(it.pubId, it.refText) } ?: emptyList()
         }
 
         fun Rule.ruleToSerializedFormat() =
@@ -469,7 +461,6 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                 replacedCategories,
                 fromPOS,
                 toPOS,
-                null,
                 source.sourceToSerializedFormat(),
                 notes,
                 preInstructions = logic.preInstructions.toSerializedFormat()
@@ -551,7 +542,43 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
     }
 }
 
+fun remapSources(repo: GraphRepository, sources: List<SourceRef>, unknownSources: MutableSet<String>): List<SourceRef> {
+    return sources.mapNotNull { ref ->
+        if (ref.pubId == null && ref.refText.isBlank()) {
+            null
+        }
+        else if (ref.pubId != null || ':' !in ref.refText || ref.refText.startsWith("http")) {
+            ref
+        }
+        else {
+            val (refId, refText) = ref.refText.split(':', limit = 2)
+            val pub = repo.publicationByRefId(refId)
+            if (pub != null) {
+                SourceRef(pub.id, refText.trim())
+            }
+            else {
+                unknownSources.add(refId)
+                ref
+            }
+        }
+    }
+}
+
 fun main() {
     val repo = JsonGraphRepository.fromJson(Path.of("jrrt.json"))
+    val unknownSources = mutableSetOf<String>()
+    for (language in repo.allLanguages()) {
+        for (word in repo.allWords(language)) {
+            word.source = remapSources(repo, word.source, unknownSources)
+        }
+    }
+    for (rule in repo.allRules()) {
+        rule.source = remapSources(repo, rule.source, unknownSources)
+    }
+    for (corpusText in repo.allCorpusTexts()) {
+        corpusText.source = remapSources(repo, corpusText.source, unknownSources)
+    }
+    println("Unknown sources: ${unknownSources.joinToString("," )}")
+
     repo.save()
 }
