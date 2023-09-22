@@ -1,5 +1,5 @@
 import {useState} from "react";
-import {addPublication} from "@/api";
+import {addPublication, updatePublication} from "@/api";
 
 export default function PublicationForm(props) {
     const [name, setName] = useState(props.initialName !== undefined ? props.initialName : "")
@@ -7,7 +7,12 @@ export default function PublicationForm(props) {
     const [errorText, setErrorText] = useState("")
 
     function savePublication() {
-        addPublication(name, refId).then(handleResponse)
+        if (props.updateId !== undefined) {
+            updatePublication(props.updateId, name, refId).then(handleResponse)
+        }
+        else {
+            addPublication(name, refId).then(handleResponse)
+        }
     }
 
     function handleResponse(r) {

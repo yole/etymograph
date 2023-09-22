@@ -18664,8 +18664,13 @@
     "publications": [
         {
             "id": 0,
-            "name": "J.R.R. Tolkien, (editors) Patrick Wynne, Arden Smith, Carl Hostetter, Bill Welden; June 2002",
+            "name": "Vinyar Tengwar #44, J.R.R. Tolkien, (editors) Patrick Wynne, Arden Smith, Carl Hostetter, Bill Welden; June 2002",
             "refId": "VT44"
+        },
+        {
+            "id": 1,
+            "name": "Parma Eldalamberon #17; J.R.R. Tolkien, (editor) Christopher Gilson; 2007",
+            "refId": "PE17"
         }
     ]
 }

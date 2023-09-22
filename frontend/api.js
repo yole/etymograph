@@ -121,3 +121,7 @@ export function updateLanguage(lang, letterNorm, digraphs, phonemeClasses, dipht
 export function addPublication(name, refId) {
     return postToBackend('publications', {name: name, refId: refId})
 }
+
+export function updatePublication(id, name, refId) {
+    return postToBackend(`publication/${id}`, {name: name, refId: refId})
+}

@@ -43,4 +43,15 @@ class PublicationController(val graphService: GraphService) {
         graphService.graph.save()
         return publication.toViewModel()
     }
+
+    @PostMapping("/publication/{id}", consumes = ["application/json"])
+    @ResponseBody
+    fun updatePublication(@PathVariable id: Int, @RequestBody params: AddPublicationParameters): PublicationViewModel {
+        val publication = graphService.graph.publicationById(id)
+            ?: throw ResponseStatusException(HttpStatus.NOT_FOUND, "No publication with ID $id")
+        publication.name = params.name.nullize() ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST, "Name is required")
+        publication.refId = params.refId.nullize() ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST, "refID is required")
+        graphService.graph.save()
+        return publication.toViewModel()
+    }
 }
