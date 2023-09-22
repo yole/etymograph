@@ -39,7 +39,7 @@ abstract class GraphRepository {
         fullGloss: String? = null,
         pos: String? = null,
         classes: List<String> = emptyList(),
-        source: String? = null,
+        source: List<SourceRef> = emptyList(),
         notes: String? = null
     ): Word
 
@@ -54,7 +54,7 @@ abstract class GraphRepository {
         replacedCategories: String?,
         fromPOS: String?,
         toPOS: String?,
-        source: String?,
+        source: List<SourceRef>,
         notes: String?
     ): Rule
 
@@ -63,7 +63,7 @@ abstract class GraphRepository {
         title: String?,
         language: Language,
         words: List<Word>,
-        source: String?,
+        source: List<SourceRef>,
         notes: String?
     ): CorpusText
 
@@ -78,7 +78,11 @@ abstract class GraphRepository {
     abstract fun paradigmById(id: Int): Paradigm?
     abstract fun paradigmForRule(rule: Rule): Paradigm?
 
-    abstract fun addLink(fromEntity: LangEntity, toEntity: LangEntity, type: LinkType, rules: List<Rule>, source: String?, notes: String?): Link
+    abstract fun addLink(
+        fromEntity: LangEntity, toEntity: LangEntity, type: LinkType, rules: List<Rule>,
+        source: List<SourceRef>, notes: String?
+    ): Link
+
     abstract fun deleteLink(fromEntity: LangEntity, toEntity: LangEntity, type: LinkType): Boolean
     abstract fun findLink(fromEntity: LangEntity, toEntity: LangEntity, type: LinkType): Link?
 
@@ -89,6 +93,7 @@ abstract class GraphRepository {
 
     abstract fun allPublications(): List<Publication>
     abstract fun publicationById(id: Int): Publication?
+    abstract fun publicationByRefId(refId: String): Publication?
     abstract fun addPublication(name: String, refId: String): Publication
 
     abstract fun save()

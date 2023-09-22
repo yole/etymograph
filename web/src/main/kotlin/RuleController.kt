@@ -34,7 +34,8 @@ class RuleController(val graphService: GraphService) {
         val replacedCategories: String?,
         val fromPOS: String?,
         val toPOS: String?,
-        val source: String?,
+        val source: List<SourceRefViewModel>,
+        val sourceEditableText: String,
         val notes: String?,
         val paradigmId: Int?,
         val paradigmName: String?,
@@ -108,7 +109,8 @@ class RuleController(val graphService: GraphService) {
             replacedCategories,
             fromPOS,
             toPOS,
-            source.nullize(),
+            source.toViewModel(graph),
+            source.toEditableText(graph),
             notes.nullize(),
             paradigm?.id,
             paradigm?.name,
@@ -172,7 +174,7 @@ class RuleController(val graphService: GraphService) {
             params.replacedCategories,
             params.fromPOS,
             params.toPOS,
-            params.source,
+            parseSourceRefs(graph, params.source),
             params.notes
         )
         graph.save()
@@ -201,7 +203,7 @@ class RuleController(val graphService: GraphService) {
         rule.replacedCategories = params.replacedCategories.nullize()
         rule.fromPOS = params.fromPOS.nullize()
         rule.toPOS = params.toPOS.nullize()
-        rule.source = params.source.nullize()
+        rule.source = parseSourceRefs(graph, params.source)
         graph.save()
         return rule.toViewModel()
     }

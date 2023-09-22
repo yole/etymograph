@@ -2,6 +2,7 @@ package ru.yole.etymograph
 
 import java.text.Collator
 import java.util.*
+import javax.xml.transform.Source
 
 open class InMemoryGraphRepository : GraphRepository() {
     protected val languages = mutableMapOf<String, Language>()
@@ -34,7 +35,7 @@ open class InMemoryGraphRepository : GraphRepository() {
         title: String?,
         language: Language,
         words: List<Word>,
-        source: String?,
+        source: List<SourceRef>,
         notes: String?
     ): CorpusText {
         return CorpusText(allLangEntities.size, text, title, language, words, source, notes).also {
@@ -236,7 +237,7 @@ open class InMemoryGraphRepository : GraphRepository() {
         fullGloss: String?,
         pos: String?,
         classes: List<String>,
-        source: String?,
+        source: List<SourceRef>,
         notes: String?
     ): Word {
         val wordsByText = mapOfWordsByText(language, text)
@@ -259,7 +260,7 @@ open class InMemoryGraphRepository : GraphRepository() {
         fullGloss: String?,
         pos: String?,
         classes: List<String>,
-        source: String?,
+        source: List<SourceRef>,
         notes: String?
     ): Word {
         val wordsByText = mapOfWordsByText(language, text)
@@ -313,7 +314,10 @@ open class InMemoryGraphRepository : GraphRepository() {
     override fun save() {
     }
 
-    override fun addLink(fromEntity: LangEntity, toEntity: LangEntity, type: LinkType, rules: List<Rule>, source: String?, notes: String?): Link {
+    override fun addLink(
+        fromEntity: LangEntity, toEntity: LangEntity, type: LinkType, rules: List<Rule>,
+        source: List<SourceRef>, notes: String?
+    ): Link {
         return createLink(fromEntity, toEntity, type, rules, source, notes).also {
             linksFrom.getOrPut(it.fromEntity.id) { mutableListOf() }.add(it)
             linksTo.getOrPut(it.toEntity.id) { mutableListOf() }.add(it)
@@ -344,7 +348,10 @@ open class InMemoryGraphRepository : GraphRepository() {
             linksFrom[toEntity.id]?.find { it.fromEntity == toEntity && it.type == type }
     }
 
-    protected open fun createLink(fromEntity: LangEntity, toEntity: LangEntity, type: LinkType, rules: List<Rule>, source: String?, notes: String?): Link {
+    protected open fun createLink(
+        fromEntity: LangEntity, toEntity: LangEntity, type: LinkType, rules: List<Rule>,
+        source: List<SourceRef>, notes: String?
+    ): Link {
         return Link(fromEntity, toEntity, type, rules, source, notes)
     }
 
@@ -365,7 +372,7 @@ open class InMemoryGraphRepository : GraphRepository() {
         replacedCategories: String?,
         fromPOS: String?,
         toPOS: String?,
-        source: String?,
+        source: List<SourceRef>,
         notes: String?
     ): Rule {
         return Rule(allLangEntities.size, name, fromLanguage, toLanguage,
@@ -428,6 +435,10 @@ open class InMemoryGraphRepository : GraphRepository() {
 
     override fun publicationById(id: Int): Publication? {
         return publications.getOrNull(id)
+    }
+
+    override fun publicationByRefId(refId: String): Publication? {
+        return publications.find { it?.refId == refId }
     }
 
     override fun addPublication(name: String, refId: String): Publication {

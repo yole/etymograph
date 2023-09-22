@@ -209,7 +209,7 @@ class RuleTest : QBaseTest() {
         }
         val applySoundRule = Rule(-1, "q-lengthen", q, q, Rule.parseBranches("""
             - apply sound rule 'q-lengthen' to first vowel
-        """.trimIndent(), parseContext), null, null, null, null, null, null)
+        """.trimIndent(), parseContext), null, null, null, null, emptyList(), null)
         assertEquals("lásse", applySoundRule.apply(q.word("lasse"), emptyRepo).text)
     }
 
@@ -413,7 +413,7 @@ class RuleTest : QBaseTest() {
         val hresta = repo.addWord("hresta")
         val hrestallo = repo.addWord("hrestallo", gloss = null)
         val rule = parseRule(q, q, "- add suffix 'llo'", addedCategories = ".ABL")
-        val link = repo.addLink(hrestallo, hresta, Link.Derived, listOf(rule), null, null)
+        val link = repo.addLink(hrestallo, hresta, Link.Derived, listOf(rule), emptyList(), null)
         val restored = repo.restoreSegments(hrestallo)
         assertEquals(1, restored.segments!!.size)
         assertEquals("hresta-llo", restored.segmentedText())
@@ -503,7 +503,7 @@ fun Language.parseContext(repo: GraphRepository? = null) = createParseContext(th
 fun parseRule(fromLanguage: Language, toLanguage: Language, text: String, name: String = "q", repo: GraphRepository? = null, addedCategories: String? = null): Rule = Rule(
     -1, name, fromLanguage, toLanguage,
     Rule.parseBranches(text, createParseContext(fromLanguage, toLanguage, repo)),
-    addedCategories, null, null, null, null, null
+    addedCategories, null, null, null, emptyList(), null
 )
 
 private fun createParseContext(

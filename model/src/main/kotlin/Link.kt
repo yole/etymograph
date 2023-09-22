@@ -7,7 +7,7 @@ class Link(
     val toEntity: LangEntity,
     val type: LinkType,
     var rules: List<Rule>,
-    var source: String?,
+    var source: List<SourceRef>,
     var notes: String?
 ) {
     companion object {

@@ -92,7 +92,7 @@ class Rule(
     var replacedCategories: String?,
     var fromPOS: String?,
     var toPOS: String?,
-    source: String?,
+    source: List<SourceRef>,
     notes: String?
 ) : LangEntity(id, source, notes) {
     fun matches(word: Word): Boolean {

@@ -5,6 +5,7 @@ import {fetchBackend} from "@/api";
 import {useRouter} from "next/router";
 import Link from "next/link";
 import RuleForm from "@/components/RuleForm";
+import SourceRefs from "@/components/SourceRefs";
 
 export const config = {
     unstable_runtimeJS: true
@@ -71,7 +72,7 @@ export default function Rule(params) {
             {rule.replacedCategories && <p>Replaced categories: {rule.replacedCategories}</p>}
             {rule.fromPOS && <p>From POS: {rule.fromPOS}</p>}
             {rule.toPOS && <p>To POS: {rule.toPOS}</p>}
-            {rule.source != null && <div className="source">Source: {rule.source.startsWith("http") ? <a href={rule.source}>{rule.source}</a> : rule.source}</div>}
+            <SourceRefs source={rule.source}/>
             <p/>
             <ul>
                 {rule.preInstructions.map(r => <li>{r}</li>)}
@@ -96,7 +97,7 @@ export default function Rule(params) {
             initialReplacedCategories={rule.replacedCategories}
             initialFromPOS={rule.fromPOS}
             initialToPOS={rule.toPOS}
-            initialSource={rule.source}
+            initialSource={rule.sourceEditableText}
             initialNotes={rule.notes}
             initialEditableText={rule.editableText}
             submitted={submitted}

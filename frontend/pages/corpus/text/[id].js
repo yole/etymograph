@@ -6,6 +6,7 @@ import WordWithStress from "@/components/WordWithStress";
 import {fetchBackend, associateWord, allowEdit} from "@/api";
 import {useRouter} from "next/router";
 import Link from "next/link";
+import SourceRefs from "@/components/SourceRefs";
 
 export const config = {
     unstable_runtimeJS: true
@@ -99,12 +100,10 @@ export default function CorpusText(params) {
                     <WordForm key={predefWord} submitted={submitted}
                               language={corpusText.language} languageReadOnly={true}
                               initialText={predefWord} textReadOnly={true}
-                              initialSource={corpusText.source}/>
+                              initialSource={corpusText.sourceEditableText}/>
                 }
             </div>
         ))}
-        {corpusText.source != null &&
-            <div className="source">Source: {corpusText.source.startsWith("http") ? <a href={corpusText.source}>{corpusText.source}</a> : corpusText.source}</div>
-        }
+        <SourceRefs source={corpusText.source}/>
     </>
 }

@@ -29,7 +29,7 @@ class JsonGraphRepositoryTest : QBaseTest() {
             Rule.parseBranches("""
             sound is 'a':
             - new sound is 'á'
-        """.trimIndent(), q.parseContext()), null, null, null, null, null, null
+        """.trimIndent(), q.parseContext()), null, null, null, null, emptyList(), null
         )
 
         val parseContext = RuleParseContext(q, q) {
@@ -37,7 +37,7 @@ class JsonGraphRepositoryTest : QBaseTest() {
         }
         val applySoundRule = Rule(-1, "lengthen-first-vowel", q, q, Rule.parseBranches("""
             - apply sound rule 'q-lengthen' to first vowel
-        """.trimIndent(), parseContext), null, null, null, null, null, null)
+        """.trimIndent(), parseContext), null, null, null, null, emptyList(), null)
 
         val serializedData = applySoundRule.ruleToSerializedFormat()
         assertEquals(2, serializedData.branches[0].instructions[0].args.size)

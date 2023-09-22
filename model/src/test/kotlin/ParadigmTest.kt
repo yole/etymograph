@@ -24,7 +24,7 @@ class ParadigmTest : QBaseTest() {
             null,
             null,
             null,
-            null,
+            emptyList(),
             null
         )
         paradigm.setRule(1, 0, listOf(genRule))
@@ -50,7 +50,7 @@ class ParadigmTest : QBaseTest() {
             null,
             null,
             null,
-            null,
+            emptyList(),
             null
         )
         val genRule = repo.addRule(
@@ -62,7 +62,7 @@ class ParadigmTest : QBaseTest() {
             null,
             null,
             null,
-            null,
+            emptyList(),
             null
         )
         val genPlRule = repo.addRule(
@@ -74,7 +74,7 @@ class ParadigmTest : QBaseTest() {
             null,
             null,
             null,
-            null,
+            emptyList(),
             null
         )
 

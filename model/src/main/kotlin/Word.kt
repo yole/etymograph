@@ -17,7 +17,7 @@ class Word(
     var fullGloss: String? = null,
     var pos: String? = null,
     var classes: List<String> = emptyList(),
-    source: String? = null,
+    source: List<SourceRef> = emptyList(),
     notes: String? = null
 ) : LangEntity(id, source, notes) {
     override fun equals(other: Any?): Boolean {

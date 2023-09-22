@@ -19,7 +19,7 @@ class LinkController(val graphService: GraphService) {
         val (fromEntity, toEntity, linkType) = resolveLinkParams(params)
         val rules = resolveRuleNames(params)
 
-        graph.addLink(fromEntity, toEntity, linkType, rules, null, null)
+        graph.addLink(fromEntity, toEntity, linkType, rules, emptyList(), null)
         graph.save()
     }
 
@@ -32,7 +32,7 @@ class LinkController(val graphService: GraphService) {
         val toRule = graphService.resolveRule(params.toRuleName)
         val linkType = resolveLinkType(params.linkType)
 
-        graph.addLink(fromEntity, toRule, linkType, emptyList(), null, null)
+        graph.addLink(fromEntity, toRule, linkType, emptyList(), emptyList(), null)
         graph.save()
     }
 

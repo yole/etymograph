@@ -45,7 +45,8 @@ class CorpusController(val graphService: GraphService) {
         val language: String,
         val languageFullName: String,
         val lines: List<CorpusLineViewModel>,
-        val source: String?
+        val source: List<SourceRefViewModel>,
+        val sourceEditableText: String
     )
 
     @GetMapping("/corpus/text/{id}")
@@ -77,7 +78,8 @@ class CorpusController(val graphService: GraphService) {
                         adjustStressIndex(wordWithSegments, stressData?.index), stressData?.length, cw.homonym)
                 })
             },
-            source
+            source.toViewModel(repo ),
+            source.toEditableText(repo)
         )
     }
 
@@ -100,7 +102,10 @@ class CorpusController(val graphService: GraphService) {
     fun newText(@PathVariable lang: String, @RequestBody params: CorpusParams): CorpusTextViewModel {
         val repo = graphService.graph
         val language = graphService.resolveLanguage(lang)
-        val text = repo.addCorpusText(params.text, params.title.nullize(), language, emptyList(), params.source.nullize(), null)
+        val text = repo.addCorpusText(
+            params.text, params.title.nullize(), language, emptyList(),
+            parseSourceRefs(repo, params.source), null
+        )
         repo.save()
         return text.toViewModel()
     }

@@ -10,7 +10,7 @@ class CorpusText(
     val title: String?,
     val language: Language,
     words: List<Word?>,
-    source: String?,
+    source: List<SourceRef>,
     notes: String?
 ): LangEntity(id, source, notes) {
     private val _words = words.toMutableList()

@@ -2,6 +2,10 @@ import {allowEdit, fetchBackend} from "@/api";
 import {useEffect} from "react";
 import Link from "next/link";
 
+export const config = {
+    unstable_runtimeJS: true
+}
+
 export async function getStaticProps(context) {
     return fetchBackend(`publication/${context.params.id}`)
 }

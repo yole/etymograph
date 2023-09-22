@@ -1,4 +1,6 @@
 package ru.yole.etymograph
 
-open class LangEntity(val id: Int, var source: String?, var notes: String?) {
+class SourceRef(val pubId: Int?, val refText: String)
+
+open class LangEntity(val id: Int, var source: List<SourceRef>, var notes: String?) {
 }

@@ -46,7 +46,8 @@ class WordController(val graphService: GraphService) {
         val fullGloss: String?,
         val pos: String?,
         val classes: List<String>,
-        val source: String?,
+        val source: List<SourceRefViewModel>,
+        val sourceEditableText: String,
         val notes: String?,
         val parseCandidates: List<ParseCandidateViewModel>,
         val attestations: List<AttestationViewModel>,
@@ -93,7 +94,8 @@ class WordController(val graphService: GraphService) {
             fullGloss,
             pos,
             classes,
-            source,
+            source.toViewModel(graph),
+            source.toEditableText(graph),
             notes,
             if (computedGloss == null && linksFrom[Link.Derived].isNullOrEmpty())
                 graph.findParseCandidates(this).map { it.toViewModel() }
@@ -162,7 +164,7 @@ class WordController(val graphService: GraphService) {
             params.fullGloss.nullize(),
             posClassList.firstOrNull(),
             posClassList.drop(1),
-            params.source.nullize(),
+            parseSourceRefs(graph, params.source),
             params.notes.nullize()
         )
         graph.save()
@@ -185,7 +187,7 @@ class WordController(val graphService: GraphService) {
         word.fullGloss = params.fullGloss.nullize()
         word.pos = posClassList.firstOrNull()
         word.classes = posClassList.drop(1)
-        word.source = params.source.nullize()
+        word.source = parseSourceRefs(graph, params.source)
         word.notes = params.notes.nullize()
         graph.save()
         return word.toViewModel(graph)

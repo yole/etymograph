@@ -5,6 +5,7 @@ import WordLink from "@/components/WordLink";
 import {addLink, addWord, deleteLink, deleteWord, fetchBackend, allowEdit, updateLink} from "@/api";
 import Link from "next/link";
 import {useRouter} from "next/router";
+import SourceRefs from "@/components/SourceRefs";
 
 export const config = {
     unstable_runtimeJS: true
@@ -199,7 +200,7 @@ function SingleWord(params) {
             {word.pos && <div>{word.pos} {word.classes.length > 0 && "(" + word.classes.join(", ") + ")"}</div>}
             <p>{word.fullGloss !== null && word.fullGloss !== "" ? word.fullGloss : word.gloss}</p>
             {word.notes && <p>{word.notes}</p>}
-            {word.source != null && <div className="source">Source: {word.source.startsWith("http") ? <a href={word.source}>{word.source}</a> : word.source}</div>}
+            <SourceRefs source={word.source}/>
             {allowEdit() && word.parseCandidates.map(pc => <>
                 <p>
                     {pc.wordId !== null && <Link href={`/word/${word.language}/${pc.text}/${pc.wordId}`}>{pc.text}</Link>}
@@ -216,7 +217,7 @@ function SingleWord(params) {
                                initialGloss={word.glossComputed ? undefined : word.gloss}
                                initialFullGloss={word.fullGloss}
                                initialPosClasses={posClassesEditable}
-                               initialSource={word.source}
+                               initialSource={word.sourceEditableText}
                                initialNotes={word.notes}
                                submitted={editSubmitted}/>}
         {allowEdit() && <>
