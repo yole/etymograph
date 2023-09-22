@@ -13475,5 +13475,12 @@
                 "t"
             ]
         }
+    ],
+    "publications": [
+        {
+            "id": 0,
+            "name": "J.R.R. Tolkien, (editors) Patrick Wynne, Arden Smith, Carl Hostetter, Bill Welden; June 2002",
+            "refId": "VT44"
+        }
     ]
 }

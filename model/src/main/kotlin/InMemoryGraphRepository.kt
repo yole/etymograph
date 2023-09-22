@@ -12,6 +12,7 @@ open class InMemoryGraphRepository : GraphRepository() {
     private val linksTo = mutableMapOf<Int, MutableList<Link>>()
     protected val rules = mutableListOf<Rule>()
     protected val paradigms = mutableListOf<Paradigm>()
+    protected val publications = mutableListOf<Publication?>()
 
     override fun addLanguage(language: Language) {
         languages[language.shortName] = language
@@ -419,6 +420,20 @@ open class InMemoryGraphRepository : GraphRepository() {
 
     override fun ruleByName(ruleName: String): Rule? {
         return rules.find { it.name == ruleName }
+    }
+
+    override fun allPublications(): List<Publication> {
+        return publications.filterNotNull()
+    }
+
+    override fun publicationById(id: Int): Publication? {
+        return publications.getOrNull(id)
+    }
+
+    override fun addPublication(name: String, refId: String): Publication {
+        val publication = Publication(publications.size, name, refId)
+        publications.add(publication)
+        return publication
     }
 
     companion object {

@@ -168,6 +168,13 @@ data class ParadigmData(
 )
 
 @Serializable
+data class PublicationData(
+    val id: Int,
+    val name: String,
+    val refId: String
+)
+
+@Serializable
 data class GraphRepositoryData(
     val languages: List<LanguageData>,
     val phonemeClasses: List<PhonemeClassData>,
@@ -181,7 +188,8 @@ data class GraphRepositoryData(
     val corpusTexts: List<CorpusTextData>,
     val paradigms: List<ParadigmData>,
     val syllableStructures: List<SyllableStructureData>,
-    val wordFinals: List<WordFinalData>? = null
+    val wordFinals: List<WordFinalData>,
+    val publications: List<PublicationData>? = null
 )
 
 class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
@@ -265,7 +273,8 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                 })
             },
             syllableStructureData,
-            wordFinalsData
+            wordFinalsData,
+            publications.filterNotNull().map { PublicationData(it.id, it.name, it.refId) }
         )
     }
 
@@ -293,9 +302,15 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
         for (syllableStructureData in data.syllableStructures) {
             languageByShortName(syllableStructureData.languageShortName)!!.syllableStructures = syllableStructureData.syllableStructures
         }
-        data.wordFinals?.let {
-            for (wordFinalData in it) {
-                languageByShortName(wordFinalData.languageShortName)!!.wordFinals = wordFinalData.wordFinals
+        for (wordFinalData in data.wordFinals) {
+            languageByShortName(wordFinalData.languageShortName)!!.wordFinals = wordFinalData.wordFinals
+        }
+        data.publications?.let {
+            for (pubData in it) {
+                while (pubData.id > publications.size) {
+                    publications.add(null)
+                }
+                publications.add(Publication(pubData.id, pubData.name, pubData.refId))
             }
         }
         for (word in data.words) {

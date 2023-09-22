@@ -87,5 +87,9 @@ abstract class GraphRepository {
     abstract fun findMatchingRule(fromWord: Word, toWord: Word): Rule?
     abstract fun findRuleExamples(rule: Rule): List<Link>
 
+    abstract fun allPublications(): List<Publication>
+    abstract fun publicationById(id: Int): Publication?
+    abstract fun addPublication(name: String, refId: String): Publication
+
     abstract fun save()
 }
