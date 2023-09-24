@@ -2,7 +2,6 @@ package ru.yole.etymograph
 
 import java.text.Collator
 import java.util.*
-import javax.xml.transform.Source
 
 open class InMemoryGraphRepository : GraphRepository() {
     protected val languages = mutableMapOf<String, Language>()
@@ -134,7 +133,7 @@ open class InMemoryGraphRepository : GraphRepository() {
             }
         }
         for (compound in findCompoundsByComponent(word)) {
-            result.add(compound.compound)
+            result.add(compound.compoundWord)
         }
         return result
     }
@@ -382,6 +381,15 @@ open class InMemoryGraphRepository : GraphRepository() {
 
     override fun findComponentsByCompound(compoundWord: Word): List<Compound> {
         return compounds[compoundWord.id] ?: emptyList()
+    }
+
+    override fun deleteCompound(compound: Compound) {
+        val compoundList = compounds[compound.compoundWord.id]
+        compoundList?.remove(compound)
+        if (compoundList?.isEmpty() == true) {
+            compounds.remove(compound.compoundWord.id)
+        }
+        allLangEntities[compound.id] = null
     }
 
     override fun addRule(

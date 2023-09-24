@@ -138,7 +138,7 @@ class WordController(val graphService: GraphService) {
                     }
                 )
             },
-            graph.findCompoundsByComponent(this).map { it.compound.toRefViewModel(graph) },
+            graph.findCompoundsByComponent(this).map { it.compoundWord.toRefViewModel(graph) },
             graph.findComponentsByCompound(this).map { compound ->
                 CompoundComponentsViewModel(compound.id, compound.components.map { it.toRefViewModel(graph) })
             },

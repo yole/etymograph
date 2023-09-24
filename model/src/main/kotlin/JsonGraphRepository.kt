@@ -294,7 +294,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             wordFinalsData,
             publications.filterNotNull().map { PublicationData(it.id, it.name, it.refId) },
             allLangEntities.filterIsInstance<Compound>().map { c ->
-                CompoundData(c.id, c.compound.id, c.components.map { it.id }, c.source.sourceToSerializedFormat(), c.notes)
+                CompoundData(c.id, c.compoundWord.id, c.components.map { it.id }, c.source.sourceToSerializedFormat(), c.notes)
             }
         )
     }

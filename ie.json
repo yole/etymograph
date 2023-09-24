@@ -5439,16 +5439,6 @@
             ]
         },
         {
-            "id": 507,
-            "compoundId": 98,
-            "componentIds": [
-                143,
-                206,
-                147,
-                254
-            ]
-        },
-        {
             "id": 508,
             "compoundId": 255,
             "componentIds": [
@@ -5624,6 +5614,14 @@
             "componentIds": [
                 205,
                 146
+            ]
+        },
+        {
+            "id": 529,
+            "compoundId": 98,
+            "componentIds": [
+                205,
+                254
             ]
         }
     ]

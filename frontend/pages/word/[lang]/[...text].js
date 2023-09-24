@@ -2,7 +2,7 @@ import {useEffect, useState} from "react";
 import WordForm from "@/components/WordForm";
 import WordWithStress from "@/components/WordWithStress";
 import WordLink from "@/components/WordLink";
-import {addLink, addWord, deleteLink, deleteWord, fetchBackend, allowEdit, updateLink} from "@/api";
+import {addLink, addWord, deleteLink, deleteWord, fetchBackend, allowEdit, updateLink, deleteCompound} from "@/api";
 import Link from "next/link";
 import {useRouter} from "next/router";
 import SourceRefs from "@/components/SourceRefs";
@@ -131,7 +131,7 @@ function SingleWord(params) {
     const [showCompoundComponent, setShowCompoundComponent] = useState(false)
     const [showRelated, setShowRelated] = useState(false)
     const [showVariation, setShowVariation] = useState(false)
-    const [showAddComponent, setShowAddComponent] = useState(false)
+    const [addToCompound, setAddToCompound] = useState(undefined)
     const [editMode, setEditMode] = useState(false)
     const [errorText, setErrorText] = useState("")
     useEffect(() => { document.title = "Etymograph : " + word.text })
@@ -147,7 +147,7 @@ function SingleWord(params) {
             setShowCompoundComponent(false)
             setShowRelated(false)
             setShowVariation(false)
-            setShowAddComponent(false)
+            setAddToCompound(undefined)
             router.replace(router.asPath)
         }
     }
@@ -193,6 +193,12 @@ function SingleWord(params) {
         }
         else {
             linkToParseCandidate(pc, pc.wordId)
+        }
+    }
+
+    function deleteCompoundClicked(compoundId) {
+        if (window.confirm("Delete this compound?")) {
+            deleteCompound(compoundId).then(() => router.replace(router.asPath))
         }
     }
 
@@ -267,10 +273,14 @@ function SingleWord(params) {
                             {index > 0 && " + "}
                             <CompoundRefComponent key={mc.id} baseWord={params.word} linkWord={mc} router={params.router}/>
                         </>)}
-                        {showAddComponent && <WordForm submitted={submitted} addToCompound={m.compoundId} linkTarget={word} language={word.language} />}
+                        {addToCompound === m.compoundId && <WordForm submitted={submitted} addToCompound={m.compoundId} linkTarget={word} language={word.language} />}
                         {allowEdit() && <>
                             {' '}
-                            <button onClick={() => setShowAddComponent(!showAddComponent)}>Add component</button>
+                            {addToCompound === m.compoundId
+                                ? <button onClick={() => setAddToCompound(undefined)}>Cancel</button>
+                                : <button onClick={() => setAddToCompound(m.compoundId)}>Add component</button>}
+                            {' '}
+                            <button onClick={() => deleteCompoundClicked(m.compoundId)}>Delete</button>
                         </>}
                     </div>
                 )}
@@ -279,15 +289,15 @@ function SingleWord(params) {
 
         <p/>
         {allowEdit() && <>
-            <button onClick={() => setShowBaseWord(!showBaseWord)}>Add base word</button><br/>
+            {!isCompound && <><button onClick={() => setShowBaseWord(!showBaseWord)}>Add base word</button><br/></>}
             {showBaseWord && <WordForm submitted={submitted} linkType='>' linkTarget={word} reverseLink="true" language={word.language} />}
-            <button onClick={() => setShowDerivedWord(!showDerivedWord)}>Add derived word</button><br/>
+            {!isCompound && <><button onClick={() => setShowDerivedWord(!showDerivedWord)}>Add derived word</button><br/></>}
             {showDerivedWord && <WordForm submitted={submitted} linkType='>' linkTarget={word} language={word.language} />}
-            <button onClick={() => setShowCompoundComponent(!showCompoundComponent)}>Add component of compound</button><br/>
+            <button onClick={() => setShowCompoundComponent(!showCompoundComponent)}>Define as compound</button><br/>
             {showCompoundComponent && <WordForm submitted={submitted} newCompound={true} linkTarget={word} language={word.language} />}
             <button onClick={() => setShowRelated(!showRelated)}>Add related word</button><br/>
             {showRelated && <WordForm submitted={submitted} linkType='~' linkTarget={word} language={word.language} languageReadOnly={true}/>}
-            <button onClick={() => setShowVariation(!showVariation)}>Add variation of</button><br/>
+            {!isCompound && <><button onClick={() => setShowVariation(!showVariation)}>Add variation of</button><br/></>}
             {showVariation && <WordForm submitted={submitted} linkType='=' linkTarget={word} language={word.language} languageReadOnly={true}/>}
             <p/>
             {errorText !== "" && <div className="errorText">{errorText}</div>}

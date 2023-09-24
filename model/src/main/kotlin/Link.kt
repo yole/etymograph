@@ -21,7 +21,7 @@ class Link(
 
 class Compound(
     id: Int,
-    val compound: Word,
+    val compoundWord: Word,
     val components: MutableList<Word>,
     source: List<SourceRef>,
     notes: String?

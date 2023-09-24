@@ -94,6 +94,7 @@ abstract class GraphRepository {
     )
     abstract fun findCompoundsByComponent(component: Word): List<Compound>
     abstract fun findComponentsByCompound(compoundWord: Word): List<Compound>
+    abstract fun deleteCompound(compound: Compound)
 
     abstract fun substituteKnownWord(baseWord: Word, derivedWord: Word): Word
 

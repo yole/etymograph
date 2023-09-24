@@ -29,4 +29,13 @@ class CompoundController(val graphService: GraphService) {
         compound.components.add(componentWord)
         graphService.graph.save()
     }
+
+    @PostMapping("/compound/{id}/delete")
+    fun deleteCompound(@PathVariable id: Int) {
+        val graph = graphService.graph
+        val compound = graph.langEntityById(id) as? Compound
+            ?: throw ResponseStatusException(HttpStatus.NOT_FOUND, "No compound with ID $id")
+        graph.deleteCompound(compound)
+        graph.save()
+    }
 }

@@ -100,6 +100,10 @@ export function addToCompound(compoundId, componentWord) {
     return postToBackend(`compound/${compoundId}/add`,{componentId: componentWord})
 }
 
+export function deleteCompound(compoundId) {
+    return postToBackend(`compound/${compoundId}/delete`)
+}
+
 export function addParadigm(name, language, pos, text) {
     return postToBackend('paradigms/' + language, {name: name, pos: pos, text: text})
 }
