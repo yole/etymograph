@@ -392,6 +392,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                 val compoundWord = allLangEntities[compoundData.compoundId] as Word
                 val componentWords = compoundData.componentIds.mapTo(ArrayList()) { allLangEntities[it] as Word }
                 val compound = Compound(compoundData.id, compoundWord, componentWords, loadSource(compoundData.sourceRefs), compoundData.notes)
+                compounds.getOrPut(compoundWord.id) { arrayListOf() }.add(compound)
                 setLangEntity(compound.id, compound)
             }
         }
@@ -563,6 +564,6 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
 }
 
 fun main() {
-    val repo = JsonGraphRepository.fromJson(Path.of("jrrt.json"))
+    val repo = JsonGraphRepository.fromJson(Path.of("ie.json"))
     repo.save()
 }

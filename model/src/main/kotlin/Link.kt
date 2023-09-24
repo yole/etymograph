@@ -12,11 +12,10 @@ class Link(
 ) {
     companion object {
         val Derived = LinkType(">", "derived from", "Words derived from this one")
-        val Agglutination = LinkType("+", "compound of", "Part of compound words")
         val Related = LinkType("~", "Related to", "Related to")
         val Variation = LinkType("=", "Variation of", "Variations")
 
-        val allLinkTypes = listOf(Derived, Agglutination, Related, Variation)
+        val allLinkTypes = listOf(Derived, Related, Variation)
     }
 }
 

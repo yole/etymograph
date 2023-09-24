@@ -62,10 +62,10 @@ class Word(
         if (variationOf != null) {
             return (variationOf.toEntity as Word).getOrComputeGloss(graph)
         }
-        val components = graph.getLinksFrom(this).filter { it.type == Link.Agglutination && it.toEntity is Word }
-        if (components.isNotEmpty()) {
-            return components.joinToString("-") {
-                (it.toEntity as Word).getOrComputeGloss(graph)?.substringBefore(", ") ?: "?"
+        val compound = graph.findComponentsByCompound(this).firstOrNull()
+        if (compound != null) {
+            return compound.components.joinToString("-") {
+                it.getOrComputeGloss(graph)?.substringBefore(", ") ?: "?"
             }
         }
         val derivation = baseWordLink(graph)

@@ -3714,16 +3714,6 @@
             "type": ">"
         },
         {
-            "from": 59,
-            "to": 52,
-            "type": "+"
-        },
-        {
-            "from": 59,
-            "to": 28,
-            "type": "+"
-        },
-        {
             "from": 61,
             "to": 62,
             "type": ">"
@@ -3752,16 +3742,6 @@
             "from": 75,
             "to": 76,
             "type": ">"
-        },
-        {
-            "from": 78,
-            "to": 52,
-            "type": "+"
-        },
-        {
-            "from": 78,
-            "to": 79,
-            "type": "+"
         },
         {
             "from": 79,
@@ -3800,16 +3780,6 @@
             ]
         },
         {
-            "from": 101,
-            "to": 102,
-            "type": "+"
-        },
-        {
-            "from": 101,
-            "to": 103,
-            "type": "+"
-        },
-        {
             "from": 104,
             "to": 105,
             "type": ">",
@@ -3826,32 +3796,12 @@
             ]
         },
         {
-            "from": 109,
-            "to": 110,
-            "type": "+"
-        },
-        {
-            "from": 109,
-            "to": 111,
-            "type": "+"
-        },
-        {
             "from": 111,
             "to": 114,
             "type": ">",
             "ruleIds": [
                 119
             ]
-        },
-        {
-            "from": 121,
-            "to": 102,
-            "type": "+"
-        },
-        {
-            "from": 121,
-            "to": 122,
-            "type": "+"
         },
         {
             "from": 122,
@@ -3883,46 +3833,6 @@
             ]
         },
         {
-            "from": 134,
-            "to": 102,
-            "type": "+"
-        },
-        {
-            "from": 134,
-            "to": 135,
-            "type": "+"
-        },
-        {
-            "from": 137,
-            "to": 102,
-            "type": "+"
-        },
-        {
-            "from": 137,
-            "to": 111,
-            "type": "+"
-        },
-        {
-            "from": 142,
-            "to": 143,
-            "type": "+"
-        },
-        {
-            "from": 142,
-            "to": 144,
-            "type": "+"
-        },
-        {
-            "from": 142,
-            "to": 145,
-            "type": "+"
-        },
-        {
-            "from": 142,
-            "to": 146,
-            "type": "+"
-        },
-        {
             "from": 144,
             "to": 147,
             "type": ">",
@@ -3937,21 +3847,6 @@
             "ruleIds": [
                 117
             ]
-        },
-        {
-            "from": 151,
-            "to": 143,
-            "type": "+"
-        },
-        {
-            "from": 151,
-            "to": 144,
-            "type": "+"
-        },
-        {
-            "from": 151,
-            "to": 145,
-            "type": "+"
         },
         {
             "from": 153,
@@ -3999,41 +3894,6 @@
             "type": ">"
         },
         {
-            "from": 167,
-            "to": 143,
-            "type": "+"
-        },
-        {
-            "from": 167,
-            "to": 147,
-            "type": "+"
-        },
-        {
-            "from": 167,
-            "to": 145,
-            "type": "+"
-        },
-        {
-            "from": 167,
-            "to": 168,
-            "type": "+"
-        },
-        {
-            "from": 169,
-            "to": 143,
-            "type": "+"
-        },
-        {
-            "from": 169,
-            "to": 147,
-            "type": "+"
-        },
-        {
-            "from": 169,
-            "to": 145,
-            "type": "+"
-        },
-        {
             "from": 170,
             "to": 95,
             "type": "="
@@ -4047,37 +3907,12 @@
             ]
         },
         {
-            "from": 174,
-            "to": 102,
-            "type": "+"
-        },
-        {
-            "from": 174,
-            "to": 100,
-            "type": "+"
-        },
-        {
             "from": 178,
             "to": 179,
             "type": ">",
             "ruleIds": [
                 117
             ]
-        },
-        {
-            "from": 180,
-            "to": 181,
-            "type": "+"
-        },
-        {
-            "from": 180,
-            "to": 182,
-            "type": "+"
-        },
-        {
-            "from": 180,
-            "to": 183,
-            "type": "+"
         },
         {
             "from": 143,
@@ -4122,21 +3957,6 @@
             ]
         },
         {
-            "from": 192,
-            "to": 145,
-            "type": "+"
-        },
-        {
-            "from": 192,
-            "to": 182,
-            "type": "+"
-        },
-        {
-            "from": 192,
-            "to": 193,
-            "type": "+"
-        },
-        {
             "from": 195,
             "to": 133,
             "type": ">",
@@ -4153,41 +3973,6 @@
             ]
         },
         {
-            "from": 198,
-            "to": 194,
-            "type": "+"
-        },
-        {
-            "from": 198,
-            "to": 199,
-            "type": "+"
-        },
-        {
-            "from": 200,
-            "to": 201,
-            "type": "+"
-        },
-        {
-            "from": 200,
-            "to": 145,
-            "type": "+"
-        },
-        {
-            "from": 205,
-            "to": 143,
-            "type": "+"
-        },
-        {
-            "from": 205,
-            "to": 206,
-            "type": "+"
-        },
-        {
-            "from": 205,
-            "to": 147,
-            "type": "+"
-        },
-        {
             "from": 209,
             "to": 210,
             "type": ">",
@@ -4199,26 +3984,6 @@
             "from": 210,
             "to": 108,
             "type": "="
-        },
-        {
-            "from": 208,
-            "to": 102,
-            "type": "+"
-        },
-        {
-            "from": 208,
-            "to": 212,
-            "type": "+"
-        },
-        {
-            "from": 208,
-            "to": 145,
-            "type": "+"
-        },
-        {
-            "from": 208,
-            "to": 213,
-            "type": "+"
         },
         {
             "from": 213,
@@ -4242,52 +4007,12 @@
             ]
         },
         {
-            "from": 220,
-            "to": 143,
-            "type": "+"
-        },
-        {
-            "from": 220,
-            "to": 206,
-            "type": "+"
-        },
-        {
-            "from": 220,
-            "to": 147,
-            "type": "+"
-        },
-        {
-            "from": 220,
-            "to": 221,
-            "type": "+"
-        },
-        {
             "from": 222,
             "to": 223,
             "type": ">",
             "ruleIds": [
                 266
             ]
-        },
-        {
-            "from": 225,
-            "to": 102,
-            "type": "+"
-        },
-        {
-            "from": 225,
-            "to": 226,
-            "type": "+"
-        },
-        {
-            "from": 229,
-            "to": 102,
-            "type": "+"
-        },
-        {
-            "from": 229,
-            "to": 230,
-            "type": "+"
         },
         {
             "from": 235,
@@ -4298,32 +4023,12 @@
             ]
         },
         {
-            "from": 237,
-            "to": 102,
-            "type": "+"
-        },
-        {
-            "from": 237,
-            "to": 238,
-            "type": "+"
-        },
-        {
             "from": 238,
             "to": 239,
             "type": ">",
             "ruleIds": [
                 117
             ]
-        },
-        {
-            "from": 241,
-            "to": 102,
-            "type": "+"
-        },
-        {
-            "from": 241,
-            "to": 242,
-            "type": "+"
         },
         {
             "from": 242,
@@ -4358,56 +4063,6 @@
             "from": 250,
             "to": 115,
             "type": ">"
-        },
-        {
-            "from": 251,
-            "to": 143,
-            "type": "+"
-        },
-        {
-            "from": 251,
-            "to": 252,
-            "type": "+"
-        },
-        {
-            "from": 98,
-            "to": 143,
-            "type": "+"
-        },
-        {
-            "from": 98,
-            "to": 206,
-            "type": "+"
-        },
-        {
-            "from": 98,
-            "to": 147,
-            "type": "+"
-        },
-        {
-            "from": 98,
-            "to": 254,
-            "type": "+"
-        },
-        {
-            "from": 255,
-            "to": 143,
-            "type": "+"
-        },
-        {
-            "from": 255,
-            "to": 256,
-            "type": "+"
-        },
-        {
-            "from": 255,
-            "to": 147,
-            "type": "+"
-        },
-        {
-            "from": 255,
-            "to": 146,
-            "type": "+"
         },
         {
             "from": 146,
@@ -4456,16 +4111,6 @@
             "ruleIds": [
                 273
             ]
-        },
-        {
-            "from": 211,
-            "to": 169,
-            "type": "+"
-        },
-        {
-            "from": 211,
-            "to": 146,
-            "type": "+"
         },
         {
             "from": 224,
@@ -4529,16 +4174,6 @@
             "from": 308,
             "to": 309,
             "type": ">"
-        },
-        {
-            "from": 310,
-            "to": 311,
-            "type": "+"
-        },
-        {
-            "from": 310,
-            "to": 312,
-            "type": "+"
         },
         {
             "from": 319,
@@ -4605,21 +4240,6 @@
             ]
         },
         {
-            "from": 346,
-            "to": 181,
-            "type": "+"
-        },
-        {
-            "from": 346,
-            "to": 357,
-            "type": "+"
-        },
-        {
-            "from": 346,
-            "to": 214,
-            "type": "+"
-        },
-        {
             "from": 357,
             "to": 212,
             "type": "="
@@ -4633,209 +4253,14 @@
             ]
         },
         {
-            "from": 362,
-            "to": 363,
-            "type": "+"
-        },
-        {
-            "from": 362,
-            "to": 364,
-            "type": "+"
-        },
-        {
-            "from": 366,
-            "to": 183,
-            "type": "+"
-        },
-        {
-            "from": 366,
-            "to": 367,
-            "type": "+"
-        },
-        {
             "from": 367,
             "to": 145,
             "type": ">"
         },
         {
-            "from": 363,
-            "to": 368,
-            "type": "+"
-        },
-        {
-            "from": 363,
-            "to": 206,
-            "type": "+"
-        },
-        {
-            "from": 363,
-            "to": 147,
-            "type": "+"
-        },
-        {
-            "from": 369,
-            "to": 181,
-            "type": "+"
-        },
-        {
-            "from": 369,
-            "to": 212,
-            "type": "+"
-        },
-        {
-            "from": 370,
-            "to": 371,
-            "type": "+"
-        },
-        {
-            "from": 370,
-            "to": 110,
-            "type": "+"
-        },
-        {
-            "from": 370,
-            "to": 372,
-            "type": "+"
-        },
-        {
-            "from": 373,
-            "to": 187,
-            "type": "+"
-        },
-        {
-            "from": 373,
-            "to": 374,
-            "type": "+"
-        },
-        {
-            "from": 376,
-            "to": 102,
-            "type": "+"
-        },
-        {
-            "from": 376,
-            "to": 377,
-            "type": "+"
-        },
-        {
-            "from": 378,
-            "to": 102,
-            "type": "+"
-        },
-        {
-            "from": 378,
-            "to": 379,
-            "type": "+"
-        },
-        {
-            "from": 381,
-            "to": 143,
-            "type": "+"
-        },
-        {
-            "from": 381,
-            "to": 256,
-            "type": "+"
-        },
-        {
-            "from": 381,
-            "to": 147,
-            "type": "+"
-        },
-        {
             "from": 383,
             "to": 110,
             "type": "="
-        },
-        {
-            "from": 384,
-            "to": 102,
-            "type": "+"
-        },
-        {
-            "from": 384,
-            "to": 385,
-            "type": "+"
-        },
-        {
-            "from": 388,
-            "to": 102,
-            "type": "+"
-        },
-        {
-            "from": 388,
-            "to": 187,
-            "type": "+"
-        },
-        {
-            "from": 390,
-            "to": 181,
-            "type": "+"
-        },
-        {
-            "from": 390,
-            "to": 391,
-            "type": "+"
-        },
-        {
-            "from": 390,
-            "to": 371,
-            "type": "+"
-        },
-        {
-            "from": 390,
-            "to": 392,
-            "type": "+"
-        },
-        {
-            "from": 393,
-            "to": 194,
-            "type": "+"
-        },
-        {
-            "from": 393,
-            "to": 391,
-            "type": "+"
-        },
-        {
-            "from": 393,
-            "to": 394,
-            "type": "+"
-        },
-        {
-            "from": 396,
-            "to": 181,
-            "type": "+"
-        },
-        {
-            "from": 396,
-            "to": 391,
-            "type": "+"
-        },
-        {
-            "from": 396,
-            "to": 397,
-            "type": "+"
-        },
-        {
-            "from": 398,
-            "to": 102,
-            "type": "+"
-        },
-        {
-            "from": 398,
-            "to": 204,
-            "type": "+"
-        },
-        {
-            "from": 399,
-            "to": 194,
-            "type": "+"
-        },
-        {
-            "from": 399,
-            "to": 391,
-            "type": "+"
         },
         {
             "from": 407,
@@ -4957,16 +4382,6 @@
             "ruleIds": [
                 257
             ]
-        },
-        {
-            "from": 482,
-            "to": 205,
-            "type": "+"
-        },
-        {
-            "from": 482,
-            "to": 146,
-            "type": "+"
         }
     ],
     "corpusTexts": [
@@ -5815,6 +5230,401 @@
             "id": 0,
             "name": "Christiansen, Birgit (2019). Editions of Lycian Inscriptions not Included in Melchert’s Corpus from 2001. In: Adiego, Ignasi-Xavier, García Trabazo, José Virgilio, Vernet, Mariona, Obrador-Cursach, Bartomeu and Martínez Rodríguez, Elena (eds.): Luwic dialects in Anatolian: Inheritance and Diffusion, Edicions de la Universitat de Barcelona, Barcelona. ",
             "refId": "Christiansen 2019"
+        }
+    ],
+    "compounds": [
+        {
+            "id": 483,
+            "compoundId": 59,
+            "componentIds": [
+                52,
+                28
+            ]
+        },
+        {
+            "id": 484,
+            "compoundId": 78,
+            "componentIds": [
+                52,
+                79
+            ]
+        },
+        {
+            "id": 485,
+            "compoundId": 101,
+            "componentIds": [
+                102,
+                103
+            ]
+        },
+        {
+            "id": 486,
+            "compoundId": 109,
+            "componentIds": [
+                110,
+                111
+            ]
+        },
+        {
+            "id": 487,
+            "compoundId": 121,
+            "componentIds": [
+                102,
+                122
+            ]
+        },
+        {
+            "id": 488,
+            "compoundId": 134,
+            "componentIds": [
+                102,
+                135
+            ]
+        },
+        {
+            "id": 489,
+            "compoundId": 137,
+            "componentIds": [
+                102,
+                111
+            ]
+        },
+        {
+            "id": 490,
+            "compoundId": 142,
+            "componentIds": [
+                143,
+                144,
+                145,
+                146
+            ]
+        },
+        {
+            "id": 491,
+            "compoundId": 151,
+            "componentIds": [
+                143,
+                144,
+                145
+            ]
+        },
+        {
+            "id": 492,
+            "compoundId": 167,
+            "componentIds": [
+                143,
+                147,
+                145,
+                168
+            ]
+        },
+        {
+            "id": 493,
+            "compoundId": 169,
+            "componentIds": [
+                143,
+                147,
+                145
+            ]
+        },
+        {
+            "id": 494,
+            "compoundId": 174,
+            "componentIds": [
+                102,
+                100
+            ]
+        },
+        {
+            "id": 495,
+            "compoundId": 180,
+            "componentIds": [
+                181,
+                182,
+                183
+            ]
+        },
+        {
+            "id": 496,
+            "compoundId": 192,
+            "componentIds": [
+                145,
+                182,
+                193
+            ]
+        },
+        {
+            "id": 497,
+            "compoundId": 198,
+            "componentIds": [
+                194,
+                199
+            ]
+        },
+        {
+            "id": 498,
+            "compoundId": 200,
+            "componentIds": [
+                201,
+                145
+            ]
+        },
+        {
+            "id": 499,
+            "compoundId": 205,
+            "componentIds": [
+                143,
+                206,
+                147
+            ]
+        },
+        {
+            "id": 500,
+            "compoundId": 208,
+            "componentIds": [
+                102,
+                212,
+                145,
+                213
+            ]
+        },
+        {
+            "id": 501,
+            "compoundId": 220,
+            "componentIds": [
+                143,
+                206,
+                147,
+                221
+            ]
+        },
+        {
+            "id": 502,
+            "compoundId": 225,
+            "componentIds": [
+                102,
+                226
+            ]
+        },
+        {
+            "id": 503,
+            "compoundId": 229,
+            "componentIds": [
+                102,
+                230
+            ]
+        },
+        {
+            "id": 504,
+            "compoundId": 237,
+            "componentIds": [
+                102,
+                238
+            ]
+        },
+        {
+            "id": 505,
+            "compoundId": 241,
+            "componentIds": [
+                102,
+                242
+            ]
+        },
+        {
+            "id": 506,
+            "compoundId": 251,
+            "componentIds": [
+                143,
+                252
+            ]
+        },
+        {
+            "id": 507,
+            "compoundId": 98,
+            "componentIds": [
+                143,
+                206,
+                147,
+                254
+            ]
+        },
+        {
+            "id": 508,
+            "compoundId": 255,
+            "componentIds": [
+                143,
+                256,
+                147,
+                146
+            ]
+        },
+        {
+            "id": 509,
+            "compoundId": 211,
+            "componentIds": [
+                169,
+                146
+            ]
+        },
+        {
+            "id": 510,
+            "compoundId": 310,
+            "componentIds": [
+                311,
+                312
+            ]
+        },
+        {
+            "id": 511,
+            "compoundId": 346,
+            "componentIds": [
+                181,
+                357,
+                214
+            ]
+        },
+        {
+            "id": 512,
+            "compoundId": 362,
+            "componentIds": [
+                363,
+                364
+            ]
+        },
+        {
+            "id": 513,
+            "compoundId": 366,
+            "componentIds": [
+                183,
+                367
+            ]
+        },
+        {
+            "id": 514,
+            "compoundId": 363,
+            "componentIds": [
+                368,
+                206,
+                147
+            ]
+        },
+        {
+            "id": 515,
+            "compoundId": 369,
+            "componentIds": [
+                181,
+                212
+            ]
+        },
+        {
+            "id": 516,
+            "compoundId": 370,
+            "componentIds": [
+                371,
+                110,
+                372
+            ]
+        },
+        {
+            "id": 517,
+            "compoundId": 373,
+            "componentIds": [
+                187,
+                374
+            ]
+        },
+        {
+            "id": 518,
+            "compoundId": 376,
+            "componentIds": [
+                102,
+                377
+            ]
+        },
+        {
+            "id": 519,
+            "compoundId": 378,
+            "componentIds": [
+                102,
+                379
+            ]
+        },
+        {
+            "id": 520,
+            "compoundId": 381,
+            "componentIds": [
+                143,
+                256,
+                147
+            ]
+        },
+        {
+            "id": 521,
+            "compoundId": 384,
+            "componentIds": [
+                102,
+                385
+            ]
+        },
+        {
+            "id": 522,
+            "compoundId": 388,
+            "componentIds": [
+                102,
+                187
+            ]
+        },
+        {
+            "id": 523,
+            "compoundId": 390,
+            "componentIds": [
+                181,
+                391,
+                371,
+                392
+            ]
+        },
+        {
+            "id": 524,
+            "compoundId": 393,
+            "componentIds": [
+                194,
+                391,
+                394
+            ]
+        },
+        {
+            "id": 525,
+            "compoundId": 396,
+            "componentIds": [
+                181,
+                391,
+                397
+            ]
+        },
+        {
+            "id": 526,
+            "compoundId": 398,
+            "componentIds": [
+                102,
+                204
+            ]
+        },
+        {
+            "id": 527,
+            "compoundId": 399,
+            "componentIds": [
+                194,
+                391
+            ]
+        },
+        {
+            "id": 528,
+            "compoundId": 482,
+            "componentIds": [
+                205,
+                146
+            ]
         }
     ]
 }

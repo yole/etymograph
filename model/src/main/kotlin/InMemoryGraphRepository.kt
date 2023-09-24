@@ -90,9 +90,12 @@ open class InMemoryGraphRepository : GraphRepository() {
         }
     }
 
-    override fun isCompound(word: Word) = linksFrom[word.id]?.any { link ->
-        link.type == Link.Agglutination && link.toEntity is Word && !link.toEntity.isRoot()
-    } == true
+    override fun isCompound(word: Word): Boolean {
+        val compounds = compounds[word.id] ?: return false
+        return compounds.any {
+            it.components.any { c -> !c.isRoot() }
+        }
+    }
 
     private fun Word.hasGrammarCategory(): Boolean {
         val suffix = gloss?.substringAfterLast('.')
@@ -126,9 +129,12 @@ open class InMemoryGraphRepository : GraphRepository() {
         val result = mutableSetOf<Word>()
         result.add(word)
         for (link in getLinksTo(word)) {
-            if (link.fromEntity is Word && (link.type == Link.Derived || link.type == Link.Agglutination || link.type == Link.Variation)) {
+            if (link.fromEntity is Word && (link.type == Link.Derived || link.type == Link.Variation)) {
                 result.add(link.fromEntity)
             }
+        }
+        for (compound in findCompoundsByComponent(word)) {
+            result.add(compound.compound)
         }
         return result
     }
@@ -366,6 +372,7 @@ open class InMemoryGraphRepository : GraphRepository() {
 
     override fun createCompound(compoundWord: Word, firstComponent: Word, source: List<SourceRef>, notes: String?) {
         val compound = Compound(allLangEntities.size, compoundWord, mutableListOf(firstComponent), source, notes)
+        compounds.getOrPut(compoundWord.id) { arrayListOf() }.add(compound)
         allLangEntities.add(compound)
     }
 
@@ -374,7 +381,7 @@ open class InMemoryGraphRepository : GraphRepository() {
     }
 
     override fun findComponentsByCompound(compoundWord: Word): List<Compound> {
-        return allLangEntities.filterIsInstance<Compound>().filter { it.compound.id == compoundWord.id }
+        return compounds[compoundWord.id] ?: emptyList()
     }
 
     override fun addRule(
