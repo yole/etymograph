@@ -8546,6 +8546,18 @@
                     "refText": "26"
                 }
             ]
+        },
+        {
+            "id": 901,
+            "text": "Aldamir",
+            "lang": "Q",
+            "pos": "NP",
+            "sourceRefs": [
+                {
+                    "pubId": 15,
+                    "refText": "1038"
+                }
+            ]
         }
     ],
     "rules": [
@@ -17604,6 +17616,16 @@
             "id": 16,
             "name": "Lost Road and Other Writings; J.R.R. Tolkien, (editor) Christopher Tolkien; 1987",
             "refId": "LR"
+        }
+    ],
+    "compounds": [
+        {
+            "id": 902,
+            "compoundId": 901,
+            "componentIds": [
+                19,
+                126
+            ]
         }
     ]
 }

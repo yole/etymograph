@@ -11,6 +11,7 @@ open class InMemoryGraphRepository : GraphRepository() {
     val allLangEntities = mutableListOf<LangEntity?>()
     private val linksFrom = mutableMapOf<Int, MutableList<Link>>()
     private val linksTo = mutableMapOf<Int, MutableList<Link>>()
+    protected val compounds = mutableMapOf<Int, MutableList<Compound>>()
     protected val rules = mutableListOf<Rule>()
     protected val paradigms = mutableListOf<Paradigm>()
     protected val publications = mutableListOf<Publication?>()
@@ -361,6 +362,19 @@ open class InMemoryGraphRepository : GraphRepository() {
 
     override fun getLinksTo(entity: LangEntity): Iterable<Link> {
         return linksTo[entity.id] ?: emptyList()
+    }
+
+    override fun createCompound(compoundWord: Word, firstComponent: Word, source: List<SourceRef>, notes: String?) {
+        val compound = Compound(allLangEntities.size, compoundWord, mutableListOf(firstComponent), source, notes)
+        allLangEntities.add(compound)
+    }
+
+    override fun findCompoundsByComponent(component: Word): List<Compound> {
+        return allLangEntities.filterIsInstance<Compound>().filter { component.id in it.components.map { c -> c.id } }
+    }
+
+    override fun findComponentsByCompound(compoundWord: Word): List<Compound> {
+        return allLangEntities.filterIsInstance<Compound>().filter { it.compound.id == compoundWord.id }
     }
 
     override fun addRule(

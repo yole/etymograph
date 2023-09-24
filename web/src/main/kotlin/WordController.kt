@@ -36,6 +36,8 @@ class WordController(val graphService: GraphService) {
 
     data class AttestationViewModel(val textId: Int, val textTitle: String, val word: String?)
 
+    data class CompoundComponentsViewModel(val compoundId: Int, val components: List<WordRefViewModel>)
+
     data class WordViewModel(
         val id: Int,
         val language: String,
@@ -53,6 +55,8 @@ class WordController(val graphService: GraphService) {
         val attestations: List<AttestationViewModel>,
         val linksFrom: List<LinkTypeViewModel>,
         val linksTo: List<LinkTypeViewModel>,
+        val compounds: List<WordRefViewModel>,
+        val components: List<CompoundComponentsViewModel>,
         val stressIndex: Int?,
         val stressLength: Int?,
         val compound: Boolean
@@ -133,6 +137,10 @@ class WordController(val graphService: GraphService) {
                         )
                     }
                 )
+            },
+            graph.findCompoundsByComponent(this).map { it.compound.toRefViewModel(graph) },
+            graph.findComponentsByCompound(this).map { compound ->
+                CompoundComponentsViewModel(compound.id, compound.components.map { it.toRefViewModel(graph) })
             },
             stressData?.index,
             stressData?.length,

@@ -19,3 +19,11 @@ class Link(
         val allLinkTypes = listOf(Derived, Agglutination, Related, Variation)
     }
 }
+
+class Compound(
+    id: Int,
+    val compound: Word,
+    val components: MutableList<Word>,
+    source: List<SourceRef>,
+    notes: String?
+) : LangEntity(id, source, notes)

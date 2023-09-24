@@ -86,6 +86,15 @@ abstract class GraphRepository {
     abstract fun deleteLink(fromEntity: LangEntity, toEntity: LangEntity, type: LinkType): Boolean
     abstract fun findLink(fromEntity: LangEntity, toEntity: LangEntity, type: LinkType): Link?
 
+    abstract fun createCompound(
+        compoundWord: Word,
+        firstComponent: Word,
+        source: List<SourceRef>,
+        notes: String?
+    )
+    abstract fun findCompoundsByComponent(component: Word): List<Compound>
+    abstract fun findComponentsByCompound(compoundWord: Word): List<Compound>
+
     abstract fun substituteKnownWord(baseWord: Word, derivedWord: Word): Word
 
     abstract fun findMatchingRule(fromWord: Word, toWord: Word): Rule?

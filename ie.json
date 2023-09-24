@@ -44,6 +44,7 @@
         {
             "lang": "Lyc",
             "rules": {
+                "x": "χ"
             }
         }
     ],
@@ -2707,6 +2708,12 @@
             "lang": "Lyc",
             "gloss": "god",
             "pos": "N"
+        },
+        {
+            "id": 482,
+            "text": "meneprñnawatẽ",
+            "lang": "Lyc",
+            "pos": ""
         }
     ],
     "rules": [
@@ -4937,6 +4944,29 @@
             "ruleIds": [
                 269
             ]
+        },
+        {
+            "from": 403,
+            "to": 258,
+            "type": "="
+        },
+        {
+            "from": 254,
+            "to": 403,
+            "type": ">",
+            "ruleIds": [
+                257
+            ]
+        },
+        {
+            "from": 482,
+            "to": 205,
+            "type": "+"
+        },
+        {
+            "from": 482,
+            "to": 146,
+            "type": "+"
         }
     ],
     "corpusTexts": [
@@ -5696,6 +5726,17 @@
                     "pubId": 0,
                     "refText": "83"
                 }
+            ]
+        },
+        {
+            "id": 481,
+            "text": "ebẽñnẽ xupã meneprñnawatẽ xudali zuhrijah tideimi xezrimeh prñnezijehi",
+            "title": "TL 1",
+            "lang": "Lyc",
+            "wordIds": [
+                null,
+                null,
+                482
             ]
         }
     ],

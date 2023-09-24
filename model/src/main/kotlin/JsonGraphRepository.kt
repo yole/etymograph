@@ -140,6 +140,15 @@ data class LinkData(
 )
 
 @Serializable
+data class CompoundData(
+    val id: Int,
+    val compoundId: Int,
+    val componentIds: List<Int>,
+    val sourceRefs: List<SourceRefData>? = null,
+    val notes: String? = null
+)
+
+@Serializable
 data class CorpusTextData(
     val id: Int, val text: String, val title: String?,
     @SerialName("lang") val languageShortName: String,
@@ -192,7 +201,8 @@ data class GraphRepositoryData(
     val paradigms: List<ParadigmData>,
     val syllableStructures: List<SyllableStructureData>,
     val wordFinals: List<WordFinalData>,
-    val publications: List<PublicationData>? = null
+    val publications: List<PublicationData>,
+    val compounds: List<CompoundData>? = null
 )
 
 class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
@@ -282,7 +292,10 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             },
             syllableStructureData,
             wordFinalsData,
-            publications.filterNotNull().map { PublicationData(it.id, it.name, it.refId) }
+            publications.filterNotNull().map { PublicationData(it.id, it.name, it.refId) },
+            allLangEntities.filterIsInstance<Compound>().map { c ->
+                CompoundData(c.id, c.compound.id, c.components.map { it.id }, c.source.sourceToSerializedFormat(), c.notes)
+            }
         )
     }
 
@@ -313,13 +326,11 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
         for (wordFinalData in data.wordFinals) {
             languageByShortName(wordFinalData.languageShortName)!!.wordFinals = wordFinalData.wordFinals
         }
-        data.publications?.let {
-            for (pubData in it) {
-                while (pubData.id > publications.size) {
-                    publications.add(null)
-                }
-                publications.add(Publication(pubData.id, pubData.name, pubData.refId))
+        for (pubData in data.publications) {
+            while (pubData.id > publications.size) {
+                publications.add(null)
             }
+            publications.add(Publication(pubData.id, pubData.name, pubData.refId))
         }
         for (word in data.words) {
             while (word.id > allLangEntities.size) {
@@ -376,6 +387,15 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                 )
             }
         }
+        data.compounds?.let {
+            for (compoundData in it) {
+                val compoundWord = allLangEntities[compoundData.compoundId] as Word
+                val componentWords = compoundData.componentIds.mapTo(ArrayList()) { allLangEntities[it] as Word }
+                val compound = Compound(compoundData.id, compoundWord, componentWords, loadSource(compoundData.sourceRefs), compoundData.notes)
+                setLangEntity(compound.id, compound)
+            }
+        }
+
         for (corpusText in data.corpusTexts) {
             val addedCorpusText = CorpusText(
                 corpusText.id,
@@ -542,43 +562,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
     }
 }
 
-fun remapSources(repo: GraphRepository, sources: List<SourceRef>, unknownSources: MutableSet<String>): List<SourceRef> {
-    return sources.mapNotNull { ref ->
-        if (ref.pubId == null && ref.refText.isBlank()) {
-            null
-        }
-        else if (ref.pubId != null || ':' !in ref.refText || ref.refText.startsWith("http")) {
-            ref
-        }
-        else {
-            val (refId, refText) = ref.refText.split(':', limit = 2)
-            val pub = repo.publicationByRefId(refId)
-            if (pub != null) {
-                SourceRef(pub.id, refText.trim())
-            }
-            else {
-                unknownSources.add(refId)
-                ref
-            }
-        }
-    }
-}
-
 fun main() {
     val repo = JsonGraphRepository.fromJson(Path.of("jrrt.json"))
-    val unknownSources = mutableSetOf<String>()
-    for (language in repo.allLanguages()) {
-        for (word in repo.allWords(language)) {
-            word.source = remapSources(repo, word.source, unknownSources)
-        }
-    }
-    for (rule in repo.allRules()) {
-        rule.source = remapSources(repo, rule.source, unknownSources)
-    }
-    for (corpusText in repo.allCorpusTexts()) {
-        corpusText.source = remapSources(repo, corpusText.source, unknownSources)
-    }
-    println("Unknown sources: ${unknownSources.joinToString("," )}")
-
     repo.save()
 }

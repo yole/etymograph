@@ -1,5 +1,5 @@
 import {useState} from "react";
-import {addLink, addWord, updateWord} from "@/api";
+import {addLink, addToCompound, addWord, createCompound, updateWord} from "@/api";
 
 export default function WordForm(props) {
     const [newWordText, setNewWordText] = useState(props.initialText !== undefined ? props.initialText : "")
@@ -22,6 +22,13 @@ export default function WordForm(props) {
             addWord(newWordLanguage, newWordText, newWordGloss, newWordFullGloss, newWordPosClasses, newWordSource)
                 .then(r => r.json())
                 .then(r => {
+                    let onFulfilled = lr => {
+                        if (lr.status === 200)
+                            props.submitted(r)
+                        else
+                            lr.json().then(lr => props.submitted(r, lr))
+                    }
+
                     if (isAddingLink) {
                         let fromId, toId
                         if (props.reverseLink === true) {
@@ -31,12 +38,13 @@ export default function WordForm(props) {
                             [fromId, toId] = [props.linkTarget.id, r.id]
                         }
                         addLink(fromId, toId, props.linkType, newWordLinkRuleNames)
-                            .then(lr => {
-                                if (lr.status === 200)
-                                    props.submitted(r)
-                                else
-                                    lr.json().then(lr => props.submitted(r, lr))
-                            })
+                            .then(onFulfilled)
+                    }
+                    else if (props.newCompound === true) {
+                        createCompound(props.linkTarget.id, r.id).then(onFulfilled)
+                    }
+                    else if (props.addToCompound !== undefined) {
+                        addToCompound(props.addToCompound, r.id).then(onFulfilled)
                     }
                     else {
                         props.submitted(r)

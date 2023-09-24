@@ -103,6 +103,17 @@ function WordLinkComponent(params) {
     </div>
 }
 
+function CompoundRefComponent(params) {
+    const baseWord = params.baseWord
+    const linkWord = params.linkWord
+
+    return <span>
+        {linkWord.language !== baseWord.language && linkWord.language + " "}
+        <WordLink word={linkWord}/>
+        {linkWord.gloss != null && ' "' + linkWord.gloss + '"' }
+    </span>
+}
+
 function WordLinkTypeComponent(params) {
     return params.links.map(l => <>
         <div>{l.type}</div>
@@ -120,6 +131,7 @@ function SingleWord(params) {
     const [showCompoundComponent, setShowCompoundComponent] = useState(false)
     const [showRelated, setShowRelated] = useState(false)
     const [showVariation, setShowVariation] = useState(false)
+    const [showAddComponent, setShowAddComponent] = useState(false)
     const [editMode, setEditMode] = useState(false)
     const [errorText, setErrorText] = useState("")
     useEffect(() => { document.title = "Etymograph : " + word.text })
@@ -135,6 +147,7 @@ function SingleWord(params) {
             setShowCompoundComponent(false)
             setShowRelated(false)
             setShowVariation(false)
+            setShowAddComponent(false)
             router.replace(router.asPath)
         }
     }
@@ -238,6 +251,32 @@ function SingleWord(params) {
         <WordLinkTypeComponent word={word} links={word.linksFrom} router={router}/>
         <WordLinkTypeComponent word={word} links={word.linksTo} router={router}/>
 
+        {word.compounds.length > 0 &&
+            <>
+                <div>Component of compounds</div>
+                {word.compounds.map(m => <div><CompoundRefComponent key={m.id} baseWord={params.word} linkWord={m} router={params.router}/></div>)}
+                <p/>
+            </>
+        }
+        {word.components.length > 0 &&
+            <>
+                <div>Compound:</div>
+                {word.components.map(m =>
+                    <div>
+                        {m.components.map((mc, index) => <>
+                            {index > 0 && " + "}
+                            <CompoundRefComponent key={mc.id} baseWord={params.word} linkWord={mc} router={params.router}/>
+                        </>)}
+                        {showAddComponent && <WordForm submitted={submitted} addToCompound={m.compoundId} linkTarget={word} language={word.language} />}
+                        {allowEdit() && <>
+                            {' '}
+                            <button onClick={() => setShowAddComponent(!showAddComponent)}>Add component</button>
+                        </>}
+                    </div>
+                )}
+            </>
+        }
+
         <p/>
         {allowEdit() && <>
             <button onClick={() => setShowBaseWord(!showBaseWord)}>Add base word</button><br/>
@@ -245,7 +284,7 @@ function SingleWord(params) {
             <button onClick={() => setShowDerivedWord(!showDerivedWord)}>Add derived word</button><br/>
             {showDerivedWord && <WordForm submitted={submitted} linkType='>' linkTarget={word} language={word.language} />}
             <button onClick={() => setShowCompoundComponent(!showCompoundComponent)}>Add component of compound</button><br/>
-            {showCompoundComponent && <WordForm submitted={submitted} linkType='+' linkTarget={word} language={word.language} />}
+            {showCompoundComponent && <WordForm submitted={submitted} newCompound={true} linkTarget={word} language={word.language} />}
             <button onClick={() => setShowRelated(!showRelated)}>Add related word</button><br/>
             {showRelated && <WordForm submitted={submitted} linkType='~' linkTarget={word} language={word.language} languageReadOnly={true}/>}
             <button onClick={() => setShowVariation(!showVariation)}>Add variation of</button><br/>
