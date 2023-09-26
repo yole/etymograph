@@ -97,7 +97,9 @@ class Word(
                     append(text.substring(index, segment.firstCharacter))
                 }
                 index = segment.firstCharacter
-                append("-")
+                if (index > 0) {
+                    append("-")
+                }
             }
             append(text.substring(index))
         }
