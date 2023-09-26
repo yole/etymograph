@@ -148,7 +148,7 @@ open class InMemoryGraphRepository : GraphRepository() {
             .filter { rule ->
                 rule.fromLanguage == language && rule.toLanguage == language &&
                         (pos == null || rule.toPOS == null || pos == rule.toPOS) &&
-                paradigmForRule(rule).let { it == null || it !in excludeParadigms }
+                        paradigmForRule(rule).let { it == null || it !in excludeParadigms }
             }
             .flatMap { rule ->
                 rule.reverseApply(Word(-1, text, language, pos=pos))
