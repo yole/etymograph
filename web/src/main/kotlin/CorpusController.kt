@@ -17,7 +17,7 @@ class CorpusController(val graphService: GraphService) {
 
     @GetMapping("/corpus")
     fun indexJson(): CorpusListViewModel {
-        return CorpusListViewModel(graphService.graph.allCorpusTexts().map { it.toLangViewModel() })
+        return CorpusListViewModel(graphService.graph.allCorpusTexts().sortedBy { it.title }.map { it.toLangViewModel() })
     }
 
     @GetMapping("/corpus/{lang}")
@@ -25,7 +25,7 @@ class CorpusController(val graphService: GraphService) {
         val language = graphService.resolveLanguage(lang)
         return CorpusLangViewModel(
             language,
-            graphService.graph.corpusTextsInLanguage(language).map { it.toLangViewModel() }
+            graphService.graph.corpusTextsInLanguage(language).sortedBy { it.title }.map { it.toLangViewModel() }
         )
     }
 

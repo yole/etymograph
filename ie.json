@@ -2733,6 +2733,40 @@
             "id": 535,
             "text": "ddepñneweh",
             "lang": "Lyc"
+        },
+        {
+            "id": 536,
+            "text": "ddepñnewe",
+            "lang": "Lyc",
+            "pos": "NP"
+        },
+        {
+            "id": 538,
+            "text": "tewinezẽi",
+            "lang": "Lyc",
+            "pos": "NP"
+        },
+        {
+            "id": 539,
+            "text": "sppñtazah",
+            "lang": "Lyc"
+        },
+        {
+            "id": 540,
+            "text": "sppñtaza",
+            "lang": "Lyc",
+            "pos": "NP"
+        },
+        {
+            "id": 541,
+            "text": "asawãzalah",
+            "lang": "Lyc"
+        },
+        {
+            "id": 542,
+            "text": "asawãzala",
+            "lang": "Lyc",
+            "pos": "NP"
         }
     ],
     "rules": [
@@ -4409,6 +4443,30 @@
             "ruleIds": [
                 253
             ]
+        },
+        {
+            "from": 535,
+            "to": 536,
+            "type": ">",
+            "ruleIds": [
+                117
+            ]
+        },
+        {
+            "from": 539,
+            "to": 540,
+            "type": ">",
+            "ruleIds": [
+                117
+            ]
+        },
+        {
+            "from": 541,
+            "to": 542,
+            "type": ">",
+            "ruleIds": [
+                117
+            ]
         }
     ],
     "corpusTexts": [
@@ -5191,6 +5249,20 @@
                 534,
                 535
             ]
+        },
+        {
+            "id": 537,
+            "text": "ebẽñnẽ χupã mẽtiprñnawatẽ tewinezẽi sppñtazah asawãzalah tideimi hrppi ladi setideime miñti adaijẽ |||-",
+            "title": "TL 3",
+            "lang": "Lyc",
+            "wordIds": [
+                null,
+                null,
+                null,
+                538,
+                539,
+                541
+            ]
         }
     ],
     "paradigms": [
@@ -5325,16 +5397,6 @@
             "componentIds": [
                 102,
                 111
-            ]
-        },
-        {
-            "id": 490,
-            "compoundId": 142,
-            "componentIds": [
-                143,
-                144,
-                145,
-                146
             ]
         },
         {
@@ -5668,6 +5730,14 @@
             "componentIds": [
                 532,
                 145
+            ]
+        },
+        {
+            "id": 543,
+            "compoundId": 142,
+            "componentIds": [
+                151,
+                146
             ]
         }
     ]
