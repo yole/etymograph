@@ -1441,7 +1441,8 @@
             "id": 258,
             "text": "prñnawa",
             "lang": "Lyc",
-            "gloss": "build"
+            "gloss": "build",
+            "pos": "V"
         },
         {
             "id": 259,
@@ -2670,7 +2671,6 @@
             "text": "τezi",
             "lang": "Lyc",
             "gloss": "sarcophagus",
-            "pos": "",
             "sourceRefs": [
                 {
                     "pubId": 0,
@@ -2694,7 +2694,6 @@
             "id": 479,
             "text": "mahãi",
             "lang": "Lyc",
-            "pos": "",
             "sourceRefs": [
                 {
                     "pubId": 0,
@@ -2712,8 +2711,28 @@
         {
             "id": 482,
             "text": "meneprñnawatẽ",
+            "lang": "Lyc"
+        },
+        {
+            "id": 531,
+            "text": "pizziti",
+            "lang": "Lyc"
+        },
+        {
+            "id": 532,
+            "text": "pizzi",
             "lang": "Lyc",
-            "pos": ""
+            "pos": "NP"
+        },
+        {
+            "id": 534,
+            "text": "prñnawate",
+            "lang": "Lyc"
+        },
+        {
+            "id": 535,
+            "text": "ddepñneweh",
+            "lang": "Lyc"
         }
     ],
     "rules": [
@@ -4382,6 +4401,14 @@
             "ruleIds": [
                 257
             ]
+        },
+        {
+            "from": 534,
+            "to": 258,
+            "type": ">",
+            "ruleIds": [
+                253
+            ]
         }
     ],
     "corpusTexts": [
@@ -5153,6 +5180,17 @@
                 null,
                 482
             ]
+        },
+        {
+            "id": 530,
+            "text": "pizziti prñnawate ddepñneweh tideimi hrppi ladi ehbi se tideime",
+            "title": "TL 98",
+            "lang": "Lyc",
+            "wordIds": [
+                531,
+                534,
+                535
+            ]
         }
     ],
     "paradigms": [
@@ -5622,6 +5660,14 @@
             "componentIds": [
                 205,
                 254
+            ]
+        },
+        {
+            "id": 533,
+            "compoundId": 531,
+            "componentIds": [
+                532,
+                145
             ]
         }
     ]

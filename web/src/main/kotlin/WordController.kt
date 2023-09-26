@@ -170,7 +170,7 @@ class WordController(val graphService: GraphService) {
             text, language,
             params.gloss.nullize(),
             params.fullGloss.nullize(),
-            posClassList.firstOrNull(),
+            posClassList.firstOrNull().nullize(),
             posClassList.drop(1),
             parseSourceRefs(graph, params.source),
             params.notes.nullize()
