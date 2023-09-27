@@ -128,7 +128,7 @@ export default function Rule(params) {
             <ul>
                 {rule.examples.map(ex => <li>
                     <WordLink word={ex.toWord}/>
-                    {ex.toWord.gloss && `" ${ex.toWord.gloss}"`}
+                    {ex.toWord.gloss && ` "${ex.toWord.gloss}"`}
                     &nbsp;-&gt;&nbsp;
                     <WordLink word={ex.fromWord}/>
                     {ex.allRules.length > 1 && " (" + ex.allRules.join(", ") + ")"}
