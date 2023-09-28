@@ -193,7 +193,7 @@ class WordController(val graphService: GraphService) {
 
         word.gloss = params.gloss.nullize()
         word.fullGloss = params.fullGloss.nullize()
-        word.pos = posClassList.firstOrNull()
+        word.pos = posClassList.firstOrNull().nullize()
         word.classes = posClassList.drop(1)
         word.source = parseSourceRefs(graph, params.source)
         word.notes = params.notes.nullize()

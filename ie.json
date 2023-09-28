@@ -2181,14 +2181,8 @@
             "id": 391,
             "text": "i",
             "lang": "Lyc",
-            "gloss": "therein",
-            "pos": "",
-            "sourceRefs": [
-                {
-                    "pubId": 2,
-                    "refText": "27"
-                }
-            ]
+            "gloss": "he/she/it.DAT/LOC",
+            "pos": ""
         },
         {
             "id": 392,
@@ -2901,6 +2895,24 @@
                     "refText": "63"
                 }
             ]
+        },
+        {
+            "id": 568,
+            "text": "aladehali",
+            "lang": "Lyc",
+            "gloss": "allocation.DAT",
+            "pos": "",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "178"
+                }
+            ]
+        },
+        {
+            "id": 569,
+            "text": "adẽ",
+            "lang": "Lyc"
         }
     ],
     "rules": [
@@ -4727,6 +4739,14 @@
             "ruleIds": [
                 119
             ]
+        },
+        {
+            "from": 569,
+            "to": 548,
+            "type": ">",
+            "ruleIds": [
+                116
+            ]
         }
     ],
     "corpusTexts": [
@@ -5548,7 +5568,17 @@
                 561,
                 563,
                 566,
-                544
+                544,
+                568,
+                569
+            ]
+        },
+        {
+            "id": 571,
+            "text": "ebẽñnẽ ñtatã meneprñnawãtẽ pulenjda mullijeseh sedapara pulenjdah purihimetehe prñnezijehi hrppi lada epttehe setideime\nseije tieseri tadi tike ñtata ebehi\nmeije httẽmi punamaθθi aladahali ada ∠",
+            "title": "TL 6",
+            "lang": "Lyc",
+            "wordIds": [
             ]
         }
     ],
@@ -6078,6 +6108,17 @@
                 {
                     "pubId": 1,
                     "refText": "176"
+                }
+            ]
+        },
+        {
+            "id": 570,
+            "corpusTextId": 552,
+            "text": "This building has built Teleχuzi for his wife and children. And he has established under oath/by (means of) a sworn agreement III ada for the miñti, (namely) for the (purpose of the) allocation(?).",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "179"
                 }
             ]
         }
