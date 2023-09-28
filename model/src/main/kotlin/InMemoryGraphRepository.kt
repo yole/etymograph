@@ -11,6 +11,7 @@ open class InMemoryGraphRepository : GraphRepository() {
     private val linksFrom = mutableMapOf<Int, MutableList<Link>>()
     private val linksTo = mutableMapOf<Int, MutableList<Link>>()
     protected val compounds = mutableMapOf<Int, MutableList<Compound>>()
+    protected val translations = mutableMapOf<Int, MutableList<Translation>>()
     protected val rules = mutableListOf<Rule>()
     protected val paradigms = mutableListOf<Paradigm>()
     protected val publications = mutableListOf<Publication?>()
@@ -46,6 +47,21 @@ open class InMemoryGraphRepository : GraphRepository() {
 
     override fun corpusTextById(id: Int): CorpusText? {
         return allLangEntities.getOrNull(id) as? CorpusText
+    }
+
+    override fun addTranslation(corpusText: CorpusText, text: String, source: List<SourceRef>) {
+        val translation = Translation(allLangEntities.size, corpusText, text, source, null)
+        allLangEntities += translation
+        storeTranslation(corpusText, translation)
+    }
+
+    protected fun storeTranslation(corpusText: CorpusText, translation: Translation) {
+        val textTranslations = translations.getOrPut(corpusText.id) { mutableListOf() }
+        textTranslations.add(translation)
+    }
+
+    override fun translationsForText(corpusText: CorpusText): List<Translation> {
+        return translations[corpusText.id] ?: emptyList()
     }
 
     override fun addParadigm(name: String, language: Language, pos: String): Paradigm {

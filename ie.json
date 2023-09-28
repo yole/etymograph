@@ -2767,6 +2767,28 @@
             "text": "asawãzala",
             "lang": "Lyc",
             "pos": "NP"
+        },
+        {
+            "id": 544,
+            "text": "miñti",
+            "lang": "Lyc"
+        },
+        {
+            "id": 545,
+            "text": "adaijẽ",
+            "lang": "Lyc"
+        },
+        {
+            "id": 546,
+            "text": "adaije",
+            "lang": "Lyc",
+            "pos": "N"
+        },
+        {
+            "id": 548,
+            "text": "ade",
+            "lang": "Lyc",
+            "gloss": "ada"
         }
     ],
     "rules": [
@@ -3698,6 +3720,34 @@
             "fromPOS": "N",
             "preInstructions": [
             ]
+        },
+        {
+            "id": 547,
+            "name": "lyc-adj-suffix",
+            "fromLang": "Lyc",
+            "toLang": "Lyc",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "Append",
+                            "args": [
+                                "'ije'"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": "",
+            "replacedCategories": "",
+            "fromPOS": "",
+            "toPOS": "ADJ",
+            "notes": "",
+            "preInstructions": [
+            ]
         }
     ],
     "links": [
@@ -4466,6 +4516,22 @@
             "type": ">",
             "ruleIds": [
                 117
+            ]
+        },
+        {
+            "from": 545,
+            "to": 546,
+            "type": ">",
+            "ruleIds": [
+                116
+            ]
+        },
+        {
+            "from": 546,
+            "to": 548,
+            "type": ">",
+            "ruleIds": [
+                547
             ]
         }
     ],
@@ -5261,7 +5327,13 @@
                 null,
                 538,
                 539,
-                541
+                541,
+                null,
+                null,
+                null,
+                null,
+                544,
+                545
             ]
         }
     ],
@@ -5340,6 +5412,11 @@
             "id": 0,
             "name": "Christiansen, Birgit (2019). Editions of Lycian Inscriptions not Included in Melchert’s Corpus from 2001. In: Adiego, Ignasi-Xavier, García Trabazo, José Virgilio, Vernet, Mariona, Obrador-Cursach, Bartomeu and Martínez Rodríguez, Elena (eds.): Luwic dialects in Anatolian: Inheritance and Diffusion, Edicions de la Universitat de Barcelona, Barcelona. ",
             "refId": "Christiansen 2019"
+        },
+        {
+            "id": 1,
+            "name": "Christiansen, Birgit (2020). Grave Matters. Legal Provisions for a Proper Final Rest in Classical Lycia. In: Zimmermann, Martin (ed.): Das Xanthostal in archaisch-klassischer Zeit. Eine archäologisch-historische Bestandsaufnahme. Die hellenistische Polis als Lebensform, Vol. 7. Göttingen: Vandenhoeck & Ruprecht, 166-261.",
+            "refId": "Christiansen 2020"
         }
     ],
     "compounds": [
@@ -5740,5 +5817,7 @@
                 146
             ]
         }
+    ],
+    "translations": [
     ]
 }

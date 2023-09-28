@@ -72,6 +72,10 @@ export function addCorpusText(lang, title, text, source) {
     return postToBackend(`corpus/${lang}/new`, {title: title, text: text, source: source})
 }
 
+export function addTranslation(corpusTextId, text, source) {
+    return postToBackend('translation', {corpusTextId: corpusTextId, text: text, source: source})
+}
+
 export function associateWord(corpusTextId, wordId, index) {
     return postToBackend(`corpus/text/${corpusTextId}/associate`, {wordId: wordId, index: index})
 }

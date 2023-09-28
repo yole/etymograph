@@ -29,6 +29,11 @@ abstract class GraphService {
         return graph.ruleByName(name.trim())
             ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST, "No rule named '$name'")
     }
+
+    fun resolveCorpusText(id: Int): CorpusText {
+        return graph.corpusTextById(id)
+            ?: throw ResponseStatusException(HttpStatus.NOT_FOUND, "No corpus text with ID $id")
+    }
 }
 
 @Service

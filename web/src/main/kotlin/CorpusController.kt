@@ -1,8 +1,6 @@
 package ru.yole.etymograph.web
 
-import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
-import org.springframework.web.server.ResponseStatusException
 import ru.yole.etymograph.CorpusText
 import ru.yole.etymograph.Language
 import ru.yole.etymograph.Word
@@ -38,6 +36,8 @@ class CorpusController(val graphService: GraphService) {
 
     )
 
+    data class TranslationViewModel(val text: String, val source: List<SourceRefViewModel>)
+
     data class CorpusLineViewModel(val words: List<CorpusWordViewModel>)
     data class CorpusTextViewModel(
         val id: Int,
@@ -46,17 +46,13 @@ class CorpusController(val graphService: GraphService) {
         val languageFullName: String,
         val lines: List<CorpusLineViewModel>,
         val source: List<SourceRefViewModel>,
-        val sourceEditableText: String
+        val sourceEditableText: String,
+        val translations: List<TranslationViewModel>
     )
 
     @GetMapping("/corpus/text/{id}")
     fun textJson(@PathVariable id: Int): CorpusTextViewModel {
-        return resolveCorpusText(id).toViewModel()
-    }
-
-    private fun resolveCorpusText(id: Int): CorpusText {
-        return graphService.graph.corpusTextById(id)
-            ?: throw ResponseStatusException(HttpStatus.NOT_FOUND, "No corpus text with ID $id")
+        return graphService.resolveCorpusText(id).toViewModel()
     }
 
     private fun CorpusText.toViewModel(): CorpusTextViewModel {
@@ -78,8 +74,11 @@ class CorpusController(val graphService: GraphService) {
                         adjustStressIndex(wordWithSegments, stressData?.index), stressData?.length, cw.homonym)
                 })
             },
-            source.toViewModel(repo ),
-            source.toEditableText(repo)
+            source.toViewModel(repo),
+            source.toEditableText(repo),
+            repo.translationsForText(this).map {
+                TranslationViewModel(it.text, it.source.toViewModel(repo))
+            }
         )
     }
 
@@ -114,7 +113,7 @@ class CorpusController(val graphService: GraphService) {
 
     @PostMapping("/corpus/text/{id}/associate")
     fun associateWord(@PathVariable id: Int, @RequestBody params: AssociateWordParameters) {
-        val corpusText = resolveCorpusText(id)
+        val corpusText = graphService.resolveCorpusText(id)
         val word = graphService.resolveWord(params.wordId)
         corpusText.associateWord(params.index, word)
         graphService.graph.save()

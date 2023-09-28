@@ -62,3 +62,11 @@ class CorpusText(
         val punctuation = charArrayOf('!', ',', '.', '?', ':', ';')
     }
 }
+
+class Translation(
+    id: Int,
+    val corpusText: CorpusText,
+    val text: String,
+    source: List<SourceRef>,
+    notes: String?
+) : LangEntity(id, source, notes)

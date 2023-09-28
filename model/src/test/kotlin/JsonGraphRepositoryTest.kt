@@ -47,4 +47,16 @@ class JsonGraphRepositoryTest : QBaseTest() {
         assertEquals("q-lengthen", insn.ruleRef.resolve().name)
         assertEquals("vowel", insn.seekTarget.phonemeClass.name)
     }
+
+    @Test
+    fun serializeTranslation() {
+        val repo = JsonGraphRepository(null)
+        repo.addLanguage(q)
+        val corpusText = repo.addCorpusText("abc", null, q, emptyList(), emptyList(), null)
+        repo.addTranslation(corpusText, "def", emptyList())
+        val json = repo.toJson()
+        val repo2 = JsonGraphRepository.fromJsonString(json)
+        val corpusText2 = repo2.corpusTextById(corpusText.id)!!
+        assertEquals(1, repo2.translationsForText(corpusText2).size)
+    }
 }

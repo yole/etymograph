@@ -1,25 +1,16 @@
-package ru.yole.etymograph
+package ru.yole.etymograph.web
 
 import org.junit.Assert
 import org.junit.Test
-import ru.yole.etymograph.web.GraphService
-import ru.yole.etymograph.web.WordController
 
 class WordControllerTest {
     @Test
     fun testEmptyPOS() {
-        val repo = InMemoryGraphRepository()
-        val q = Language("Quenya", "q")
-        repo.addLanguage(q)
-
-        val graphService = object : GraphService() {
-            override val graph: GraphRepository
-                get() = repo
-        }
-        val wordController = WordController(graphService)
+        val fixture = QTestFixture()
+        val wordController = WordController(fixture.graphService)
         val addWordParams = WordController.AddWordParameters("ea", "be", "", "", "", "")
         wordController.addWord("q", addWordParams)
 
-        Assert.assertNull(repo.wordsByText(q, "ea").single().pos)
+        Assert.assertNull(fixture.repo.wordsByText(fixture.q, "ea").single().pos)
     }
 }

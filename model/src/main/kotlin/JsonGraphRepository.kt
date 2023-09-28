@@ -157,6 +157,14 @@ data class CorpusTextData(
     val notes: String? = null
 )
 
+@Serializable
+data class TranslationData(
+    val id: Int,
+    val corpusTextId: Int,
+    val text: String,
+    val sourceRefs: List<SourceRefData>? = null,
+    val notes: String? = null
+)
 
 @Serializable
 data class ParadigmCellData(
@@ -202,7 +210,8 @@ data class GraphRepositoryData(
     val syllableStructures: List<SyllableStructureData>,
     val wordFinals: List<WordFinalData>,
     val publications: List<PublicationData>,
-    val compounds: List<CompoundData>? = null
+    val compounds: List<CompoundData>,
+    val translations: List<TranslationData>? = null
 )
 
 class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
@@ -295,6 +304,9 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             publications.filterNotNull().map { PublicationData(it.id, it.name, it.refId) },
             allLangEntities.filterIsInstance<Compound>().map { c ->
                 CompoundData(c.id, c.compoundWord.id, c.components.map { it.id }, c.source.sourceToSerializedFormat(), c.notes)
+            },
+            allLangEntities.filterIsInstance<Translation>().map { t ->
+                TranslationData(t.id, t.corpusText.id, t.text, t.source.sourceToSerializedFormat(), t.notes)
             }
         )
     }
@@ -387,14 +399,12 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                 )
             }
         }
-        data.compounds?.let {
-            for (compoundData in it) {
-                val compoundWord = allLangEntities[compoundData.compoundId] as Word
-                val componentWords = compoundData.componentIds.mapTo(ArrayList()) { allLangEntities[it] as Word }
-                val compound = Compound(compoundData.id, compoundWord, componentWords, loadSource(compoundData.sourceRefs), compoundData.notes)
-                compounds.getOrPut(compoundWord.id) { arrayListOf() }.add(compound)
-                setLangEntity(compound.id, compound)
-            }
+        for (compoundData in data.compounds) {
+            val compoundWord = allLangEntities[compoundData.compoundId] as Word
+            val componentWords = compoundData.componentIds.mapTo(ArrayList()) { allLangEntities[it] as Word }
+            val compound = Compound(compoundData.id, compoundWord, componentWords, loadSource(compoundData.sourceRefs), compoundData.notes)
+            compounds.getOrPut(compoundWord.id) { arrayListOf() }.add(compound)
+            setLangEntity(compound.id, compound)
         }
 
         for (corpusText in data.corpusTexts) {
@@ -410,6 +420,22 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             corpus += addedCorpusText
             setLangEntity(corpusText.id, addedCorpusText)
         }
+        data.translations?.let {
+            for (translationData in it) {
+                val corpusText = allLangEntities[translationData.corpusTextId] as CorpusText
+                val translation = Translation(
+                    translationData.id,
+                    corpusText,
+                    translationData.text,
+                    loadSource(translationData.sourceRefs),
+                    translationData.notes
+                )
+                setLangEntity(translation.id, translation)
+                storeTranslation(corpusText, translation)
+            }
+        }
+
+
         for (paradigm in data.paradigms) {
             addParadigm(
                 paradigm.name,

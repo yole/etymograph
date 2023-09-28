@@ -3,7 +3,7 @@ import WordForm from "@/components/WordForm";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit } from '@fortawesome/free-solid-svg-icons'
 import WordWithStress from "@/components/WordWithStress";
-import {fetchBackend, associateWord, allowEdit} from "@/api";
+import {fetchBackend, associateWord, allowEdit, addTranslation} from "@/api";
 import {useRouter} from "next/router";
 import Link from "next/link";
 import SourceRefs from "@/components/SourceRefs";
@@ -52,6 +52,9 @@ export default function CorpusText(params) {
     const [wordFormVisible, setWordFormVisible] = useState(false);
     const [predefWord, setPredefWord] = useState("")
     const [wordIndex, setWordIndex] = useState(-1)
+    const [showTranslationForm, setShowTranslationForm] = useState(false)
+    const [translationText, setTranslationText] = useState("")
+    const [translationSource, setTranslationSource] = useState("")
     const router = useRouter()
     useEffect(() => { document.title = "Etymograph : " + corpusText.title })
 
@@ -76,6 +79,13 @@ export default function CorpusText(params) {
             text = text.slice(0, text.length-1)
         }
         return text
+    }
+
+    function submitTranslation() {
+        addTranslation(router.query.id, translationText, translationSource).then(() => {
+            setShowTranslationForm(false)
+            router.replace(router.asPath)
+        })
     }
 
     return <>
@@ -105,5 +115,23 @@ export default function CorpusText(params) {
             </div>
         ))}
         <SourceRefs source={corpusText.source}/>
+        {corpusText.translations.length > 0 && <>
+            <h3>Translations</h3>
+            {corpusText.translations.map(t =>
+                <div>{t.text} <SourceRefs source={t.source}/></div>
+            )}
+        </>}
+        {allowEdit() && <p><button onClick={() => setShowTranslationForm(!showTranslationForm)}>Add translation</button></p>}
+        {showTranslationForm && <>
+            <p/>
+            <textarea rows="10" cols="50" value={translationText} onChange={e => setTranslationText(e.target.value)}/>
+            <table><tbody>
+            <tr>
+                <td><label htmlFor="source">Source:</label></td>
+                <td><input type="text" id="source" value={translationSource} onChange={(e) => setTranslationSource(e.target.value)}/></td>
+            </tr>
+            </tbody></table>
+            <button onClick={() => submitTranslation()}>Submit</button>
+        </>}
     </>
 }
