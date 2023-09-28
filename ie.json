@@ -982,8 +982,7 @@
         {
             "id": 168,
             "text": "prñnawãtẽ",
-            "lang": "Lyc",
-            "gloss": "built.PL"
+            "lang": "Lyc"
         },
         {
             "id": 169,
@@ -1300,8 +1299,7 @@
         {
             "id": 231,
             "text": "ebeis",
-            "lang": "Lyc",
-            "gloss": "these"
+            "lang": "Lyc"
         },
         {
             "id": 232,
@@ -2790,7 +2788,11 @@
             "id": 548,
             "text": "ade",
             "lang": "Lyc",
-            "gloss": "ada"
+            "gloss": "ada",
+            "pos": "N",
+            "classes": [
+                "n"
+            ]
         },
         {
             "id": 553,
@@ -2819,22 +2821,10 @@
             "lang": "Lyc"
         },
         {
-            "id": 559,
-            "text": "i",
-            "lang": "Lyc",
-            "gloss": "for/to him/her",
-            "sourceRefs": [
-                {
-                    "pubId": 2,
-                    "refText": "26"
-                }
-            ]
-        },
-        {
             "id": 560,
             "text": "ede",
             "lang": "Lyc",
-            "gloss": "it, them",
+            "gloss": "he/she/it.DAT",
             "sourceRefs": [
                 {
                     "pubId": 2,
@@ -2912,6 +2902,151 @@
         {
             "id": 569,
             "text": "adẽ",
+            "lang": "Lyc"
+        },
+        {
+            "id": 572,
+            "text": "ñtatã",
+            "lang": "Lyc"
+        },
+        {
+            "id": 573,
+            "text": "ñtata",
+            "lang": "Lyc",
+            "gloss": "burial chamber",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": 2,
+                    "refText": "45"
+                }
+            ]
+        },
+        {
+            "id": 574,
+            "text": "meneprñnawãtẽ",
+            "lang": "Lyc"
+        },
+        {
+            "id": 578,
+            "text": "pulenjda",
+            "lang": "Lyc",
+            "pos": "NP"
+        },
+        {
+            "id": 579,
+            "text": "mullijeseh",
+            "lang": "Lyc"
+        },
+        {
+            "id": 580,
+            "text": "mullijese",
+            "lang": "Lyc",
+            "pos": "NP"
+        },
+        {
+            "id": 581,
+            "text": "sedapara",
+            "lang": "Lyc"
+        },
+        {
+            "id": 583,
+            "text": "dapara",
+            "lang": "Lyc",
+            "pos": "NP"
+        },
+        {
+            "id": 584,
+            "text": "pulenjdah",
+            "lang": "Lyc"
+        },
+        {
+            "id": 585,
+            "text": "purihimetehe",
+            "lang": "Lyc"
+        },
+        {
+            "id": 587,
+            "text": "prñnezijehi",
+            "lang": "Lyc"
+        },
+        {
+            "id": 588,
+            "text": "prñnezije",
+            "lang": "Lyc",
+            "gloss": "household member",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": 2,
+                    "refText": "52"
+                }
+            ]
+        },
+        {
+            "id": 589,
+            "text": "epttehe",
+            "lang": "Lyc"
+        },
+        {
+            "id": 590,
+            "text": "epttehi",
+            "lang": "Lyc",
+            "gloss": "their",
+            "pos": "PRON"
+        },
+        {
+            "id": 591,
+            "text": "seije",
+            "lang": "Lyc"
+        },
+        {
+            "id": 593,
+            "text": "tieseri",
+            "lang": "Lyc"
+        },
+        {
+            "id": 595,
+            "text": "eseri",
+            "lang": "Lyc"
+        },
+        {
+            "id": 596,
+            "text": "ebehi",
+            "lang": "Lyc"
+        },
+        {
+            "id": 597,
+            "text": "ebe",
+            "lang": "Lyc",
+            "gloss": "this",
+            "pos": "PRON"
+        },
+        {
+            "id": 598,
+            "text": "punamaθθi",
+            "lang": "Lyc"
+        },
+        {
+            "id": 599,
+            "text": "punamada",
+            "lang": "Lyc",
+            "gloss": "totality?",
+            "sourceRefs": [
+                {
+                    "pubId": 2,
+                    "refText": "53"
+                }
+            ]
+        },
+        {
+            "id": 600,
+            "text": "aladahali",
+            "lang": "Lyc"
+        },
+        {
+            "id": 601,
+            "text": "ada",
             "lang": "Lyc"
         }
     ],
@@ -3121,6 +3256,31 @@
                 {
                     "instructions": [
                         {
+                            "type": "ChangeEnding",
+                            "args": [
+                                "a"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.AndRuleConditionData",
+                        "members": [
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "ClassMatches",
+                                "characters": "n"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "EndsWith",
+                                "characters": "e"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "instructions": [
+                        {
                             "type": "AddSuffix",
                             "args": [
                                 "s"
@@ -3133,10 +3293,8 @@
                 }
             ],
             "addedCategories": ".ACC.PL",
-            "replacedCategories": "",
             "fromPOS": "N",
             "toPOS": "N",
-            "notes": "",
             "preInstructions": [
             ]
         },
@@ -3905,6 +4063,170 @@
             "replacedCategories": "",
             "fromPOS": "V",
             "toPOS": "",
+            "notes": "",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 576,
+            "name": "lyc-pt-3pl",
+            "fromLang": "Lyc",
+            "toLang": "Lyc",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "RemoveLastCharacter",
+                            "args": [
+                            ]
+                        },
+                        {
+                            "type": "AddSuffix",
+                            "args": [
+                                "ãte"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "characters": "a"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "RemoveLastCharacter",
+                            "args": [
+                            ]
+                        },
+                        {
+                            "type": "AddSuffix",
+                            "args": [
+                                "ẽte"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "characters": "e"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "args": [
+                                "te"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".PRET.3PL",
+            "replacedCategories": "",
+            "fromPOS": "V",
+            "toPOS": "",
+            "notes": "",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 577,
+            "name": "lyc-pt-3pl-n",
+            "fromLang": "Lyc",
+            "toLang": "Lyc",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "RemoveLastCharacter",
+                            "args": [
+                            ]
+                        },
+                        {
+                            "type": "AddSuffix",
+                            "args": [
+                                "ãtẽ"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "characters": "a"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "RemoveLastCharacter",
+                            "args": [
+                            ]
+                        },
+                        {
+                            "type": "AddSuffix",
+                            "args": [
+                                "ẽtẽ"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "characters": "e"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "AddSuffix",
+                            "args": [
+                                "tẽ"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".PRET.3PL",
+            "replacedCategories": "",
+            "fromPOS": "V",
+            "toPOS": "",
+            "notes": "",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 586,
+            "name": "lyc-np-gen-long",
+            "fromLang": "Lyc",
+            "toLang": "Lyc",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "Append",
+                            "args": [
+                                "'he'"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".GEN",
+            "replacedCategories": "",
+            "fromPOS": "NP",
+            "toPOS": "NP",
             "notes": "",
             "preInstructions": [
             ]
@@ -4747,6 +5069,112 @@
             "ruleIds": [
                 116
             ]
+        },
+        {
+            "from": 572,
+            "to": 573,
+            "type": ">",
+            "ruleIds": [
+                116
+            ]
+        },
+        {
+            "from": 168,
+            "to": 258,
+            "type": ">",
+            "ruleIds": [
+                577
+            ]
+        },
+        {
+            "from": 577,
+            "to": 576,
+            "type": "~"
+        },
+        {
+            "from": 579,
+            "to": 580,
+            "type": ">",
+            "ruleIds": [
+                117
+            ]
+        },
+        {
+            "from": 584,
+            "to": 578,
+            "type": ">",
+            "ruleIds": [
+                117
+            ]
+        },
+        {
+            "from": 585,
+            "to": 239,
+            "type": ">",
+            "ruleIds": [
+                586
+            ]
+        },
+        {
+            "from": 587,
+            "to": 588,
+            "type": ">",
+            "ruleIds": [
+                266
+            ]
+        },
+        {
+            "from": 589,
+            "to": 590,
+            "type": ">",
+            "ruleIds": [
+                123
+            ]
+        },
+        {
+            "from": 193,
+            "to": 564,
+            "type": ">",
+            "ruleIds": [
+                267
+            ]
+        },
+        {
+            "from": 596,
+            "to": 597,
+            "type": ">",
+            "ruleIds": [
+                266
+            ]
+        },
+        {
+            "from": 231,
+            "to": 597,
+            "type": ">",
+            "ruleIds": [
+                207
+            ]
+        },
+        {
+            "from": 598,
+            "to": 599,
+            "type": ">",
+            "ruleIds": [
+                266
+            ]
+        },
+        {
+            "from": 600,
+            "to": 568,
+            "type": "="
+        },
+        {
+            "from": 601,
+            "to": 548,
+            "type": ">",
+            "ruleIds": [
+                207
+            ]
         }
     ],
     "corpusTexts": [
@@ -5575,10 +6003,34 @@
         },
         {
             "id": 571,
-            "text": "ebẽñnẽ ñtatã meneprñnawãtẽ pulenjda mullijeseh sedapara pulenjdah purihimetehe prñnezijehi hrppi lada epttehe setideime\nseije tieseri tadi tike ñtata ebehi\nmeije httẽmi punamaθθi aladahali ada ∠",
+            "text": "ebẽñnẽ ñtatã meneprñnawãtẽ pulenjda mullijeseh sedapara pulenjdah purihimetehe prñnezijehi hrppi lada epttehe setideime\nseije tieseri tadi tike ñtata ebehi\nmeije tubeiti punamaθθi aladahali ada ∠",
             "title": "TL 6",
             "lang": "Lyc",
             "wordIds": [
+                null,
+                572,
+                574,
+                578,
+                579,
+                581,
+                584,
+                585,
+                587,
+                null,
+                null,
+                589,
+                121,
+                591,
+                593,
+                193,
+                null,
+                null,
+                596,
+                369,
+                null,
+                598,
+                600,
+                601
             ]
         }
     ],
@@ -5641,6 +6093,91 @@
                         {
                             "ruleAlternatives": [
                                 473
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 1,
+            "name": "Noun",
+            "lang": "Lyc",
+            "pos": "n",
+            "rows": [
+                "Acc.",
+                "Gen."
+            ],
+            "columns": [
+                {
+                    "title": "Nom.",
+                    "cells": [
+                        {
+                            "ruleAlternatives": [
+                                116
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "-",
+                    "cells": [
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "name": "Noun",
+            "lang": "Lyc",
+            "pos": "N",
+            "rows": [
+                "Nom.",
+                "Acc.",
+                "Gen.Adj.",
+                "Dat./Loc."
+            ],
+            "columns": [
+                {
+                    "title": "Sg.",
+                    "cells": [
+                        {
+                        },
+                        {
+                            "ruleAlternatives": [
+                                116
+                            ]
+                        },
+                        {
+                            "ruleAlternatives": [
+                                266
+                            ]
+                        },
+                        {
+                            "ruleAlternatives": [
+                                119
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "Pl.",
+                    "cells": [
+                        {
+                            "ruleAlternatives": [
+                                269
+                            ]
+                        },
+                        {
+                            "ruleAlternatives": [
+                                207
+                            ]
+                        },
+                        {
+                        },
+                        {
+                            "ruleAlternatives": [
+                                123
                             ]
                         }
                     ]
@@ -6074,6 +6611,38 @@
                 102,
                 558,
                 391
+            ]
+        },
+        {
+            "id": 575,
+            "compoundId": 574,
+            "componentIds": [
+                205,
+                168
+            ]
+        },
+        {
+            "id": 582,
+            "compoundId": 581,
+            "componentIds": [
+                102,
+                583
+            ]
+        },
+        {
+            "id": 592,
+            "compoundId": 591,
+            "componentIds": [
+                102,
+                212
+            ]
+        },
+        {
+            "id": 594,
+            "compoundId": 593,
+            "componentIds": [
+                145,
+                595
             ]
         }
     ],
