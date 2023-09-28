@@ -2180,7 +2180,15 @@
         {
             "id": 391,
             "text": "i",
-            "lang": "Lyc"
+            "lang": "Lyc",
+            "gloss": "therein",
+            "pos": "",
+            "sourceRefs": [
+                {
+                    "pubId": 2,
+                    "refText": "27"
+                }
+            ]
         },
         {
             "id": 392,
@@ -2789,6 +2797,110 @@
             "text": "ade",
             "lang": "Lyc",
             "gloss": "ada"
+        },
+        {
+            "id": 553,
+            "text": "ehb",
+            "lang": "Lyc"
+        },
+        {
+            "id": 554,
+            "text": "ebẽñn",
+            "lang": "Lyc"
+        },
+        {
+            "id": 555,
+            "text": "teleχuzi",
+            "lang": "Lyc",
+            "pos": "NP"
+        },
+        {
+            "id": 556,
+            "text": "sedi",
+            "lang": "Lyc"
+        },
+        {
+            "id": 558,
+            "text": "d",
+            "lang": "Lyc"
+        },
+        {
+            "id": 559,
+            "text": "i",
+            "lang": "Lyc",
+            "gloss": "for/to him/her",
+            "sourceRefs": [
+                {
+                    "pubId": 2,
+                    "refText": "26"
+                }
+            ]
+        },
+        {
+            "id": 560,
+            "text": "ede",
+            "lang": "Lyc",
+            "gloss": "it, them",
+            "sourceRefs": [
+                {
+                    "pubId": 2,
+                    "refText": "12"
+                }
+            ]
+        },
+        {
+            "id": 561,
+            "text": "ñta",
+            "lang": "Lyc"
+        },
+        {
+            "id": 562,
+            "text": "ñte",
+            "lang": "Lyc",
+            "gloss": "in(side)",
+            "sourceRefs": [
+                {
+                    "pubId": 2,
+                    "refText": "45"
+                }
+            ]
+        },
+        {
+            "id": 563,
+            "text": "tadẽ",
+            "lang": "Lyc"
+        },
+        {
+            "id": 564,
+            "text": "ta",
+            "lang": "Lyc",
+            "gloss": "put, place",
+            "pos": "V",
+            "sourceRefs": [
+                {
+                    "pubId": 2,
+                    "refText": "59"
+                }
+            ]
+        },
+        {
+            "id": 566,
+            "text": "tesi",
+            "lang": "Lyc"
+        },
+        {
+            "id": 567,
+            "text": "tese",
+            "lang": "Lyc",
+            "gloss": "oath",
+            "fullGloss": "oath, vow",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": 2,
+                    "refText": "63"
+                }
+            ]
         }
     ],
     "rules": [
@@ -3748,6 +3860,34 @@
             "notes": "",
             "preInstructions": [
             ]
+        },
+        {
+            "id": 565,
+            "name": "lyc-pt-3sg-n-lenited",
+            "fromLang": "Lyc",
+            "toLang": "Lyc",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "Append",
+                            "args": [
+                                "'dẽ'"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".PRET.3SG",
+            "replacedCategories": "",
+            "fromPOS": "V",
+            "toPOS": "",
+            "notes": "",
+            "preInstructions": [
+            ]
         }
     ],
     "links": [
@@ -4532,6 +4672,52 @@
             "type": ">",
             "ruleIds": [
                 547
+            ]
+        },
+        {
+            "from": 553,
+            "to": 120,
+            "type": "="
+        },
+        {
+            "from": 554,
+            "to": 95,
+            "type": "="
+        },
+        {
+            "from": 558,
+            "to": 560,
+            "type": "="
+        },
+        {
+            "from": 561,
+            "to": 562,
+            "type": "="
+        },
+        {
+            "from": 563,
+            "to": 564,
+            "type": ">",
+            "ruleIds": [
+                565
+            ]
+        },
+        {
+            "from": 565,
+            "to": 257,
+            "type": "~"
+        },
+        {
+            "from": 565,
+            "to": 253,
+            "type": "~"
+        },
+        {
+            "from": 566,
+            "to": 567,
+            "type": ">",
+            "ruleIds": [
+                119
             ]
         }
     ],
@@ -5335,6 +5521,27 @@
                 544,
                 545
             ]
+        },
+        {
+            "id": 552,
+            "text": "ebẽñn prñnawã metiprñnawatẽ teleχuzi hrpi ladi ehb setideimi\nsedi ñta tadẽ tesi miñti aladehali adẽ ||||",
+            "title": "TL 4",
+            "lang": "Lyc",
+            "wordIds": [
+                554,
+                null,
+                211,
+                555,
+                null,
+                null,
+                553,
+                174,
+                556,
+                561,
+                563,
+                566,
+                544
+            ]
         }
     ],
     "paradigms": [
@@ -5417,6 +5624,11 @@
             "id": 1,
             "name": "Christiansen, Birgit (2020). Grave Matters. Legal Provisions for a Proper Final Rest in Classical Lycia. In: Zimmermann, Martin (ed.): Das Xanthostal in archaisch-klassischer Zeit. Eine archäologisch-historische Bestandsaufnahme. Die hellenistische Polis als Lebensform, Vol. 7. Göttingen: Vandenhoeck & Ruprecht, 166-261.",
             "refId": "Christiansen 2020"
+        },
+        {
+            "id": 2,
+            "name": "Melchert, H. Craig (2004). A Dictionary of the Lycian Language. Ann Arbor: Beach Stave.",
+            "refId": "Melchert 2004"
         }
     ],
     "compounds": [
@@ -5816,8 +6028,50 @@
                 151,
                 146
             ]
+        },
+        {
+            "id": 557,
+            "compoundId": 556,
+            "componentIds": [
+                102,
+                558,
+                391
+            ]
         }
     ],
     "translations": [
+        {
+            "id": 549,
+            "corpusTextId": 530,
+            "text": "Pizzi has built it, the child of Ddepñnewe, for his wife and the children.",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "170"
+                }
+            ]
+        },
+        {
+            "id": 550,
+            "corpusTextId": 136,
+            "text": "This tomb has built Esete, (the child) of Mulese for himself and wife and children.",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "170"
+                }
+            ]
+        },
+        {
+            "id": 551,
+            "corpusTextId": 537,
+            "text": "This tomb has built Tewinezẽi, the son of Sppñtaza (and) Asawãzala, for the wife and the child[ren]. For the miñti (they have established) a quantity of III- ada.",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "176"
+                }
+            ]
+        }
     ]
 }

@@ -204,7 +204,7 @@ function SingleWord(params) {
 
     const isName = word.pos === "NP"
     const isCompound = word.compound
-    const posClassesEditable = word.pos + (word.classes.length > 0 ? " " + word.classes.join(" ") : "")
+    const posClassesEditable = (word.pos !== null ? word.pos : "") + (word.classes.length > 0 ? " " + word.classes.join(" ") : "")
 
     return <>
         <h2><small>
