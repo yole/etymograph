@@ -196,14 +196,15 @@ class PrependAppendInstruction(type: InstructionType, language: Language, arg: S
             return if (type == InstructionType.Prepend)
                 word.derive(literalArg + word.text)
             else
-                word.derive(word.text + literalArg)
+                word.derive(word.text + literalArg, WordSegment(word.text.length, literalArg.length, rule.addedCategories, rule))
         }
         val phonemes = PhonemeIterator(word)
         if (phonemes.seek(seekTarget!!)) {
+            val phoneme = phonemes.current
             if (type == InstructionType.Prepend) {
-                return word.derive(phonemes.current + word.text)
+                return word.derive(phoneme + word.text)
             }
-            return word.derive(word.text + phonemes.current)
+            return word.derive(word.text + phoneme, WordSegment(word.text.length, phoneme.length, rule.addedCategories, rule))
         }
         return word
     }

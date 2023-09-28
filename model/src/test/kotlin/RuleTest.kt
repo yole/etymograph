@@ -394,6 +394,17 @@ class RuleTest : QBaseTest() {
     }
 
     @Test
+    fun segmentAppend() {
+        val rule = parseRule(q, q, "- append 'llo'")
+        val result = rule.apply(q.word("hresta"), emptyRepo)
+        assertEquals(1, result.segments!!.size)
+        val segment = result.segments!![0]
+        assertEquals(6, segment.firstCharacter)
+        assertEquals(3, segment.length)
+        assertEquals(rule, segment.sourceRule)
+    }
+
+    @Test
     fun multipleSegments() {
         val rule1 = parseRule(q, q, "- add suffix 'llo'")
         val rule2 = parseRule(q, q, "- add suffix 's'")

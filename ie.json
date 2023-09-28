@@ -3031,12 +3031,7 @@
                 {
                     "instructions": [
                         {
-                            "type": "RemoveLastCharacter",
-                            "args": [
-                            ]
-                        },
-                        {
-                            "type": "AddSuffix",
+                            "type": "ChangeEnding",
                             "args": [
                                 "i"
                             ]
@@ -3047,13 +3042,26 @@
                         "cond": "EndsWith",
                         "characters": "a"
                     }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeEnding",
+                            "args": [
+                                "i"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "characters": "e"
+                    }
                 }
             ],
             "addedCategories": ".DAT",
-            "replacedCategories": "",
             "fromPOS": "N",
             "toPOS": "N",
-            "notes": "",
             "preInstructions": [
             ]
         },
