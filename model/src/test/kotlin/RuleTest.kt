@@ -335,6 +335,14 @@ class RuleTest : QBaseTest() {
     }
 
     @Test
+    fun reverseApplyAppend() {
+        val rule = parseRule(q, q, "- append 'llo'")
+        val candidates = rule.reverseApply(q.word("hrestallo"))
+        assertEquals(1, candidates.size)
+        assertEquals("hresta", candidates[0])
+    }
+
+    @Test
     fun reverseApplyNormalize() {
         val rule = parseRule(q, q, "- add suffix 'sse'")
         val candidates = rule.reverseApply(q.word("auressë"))

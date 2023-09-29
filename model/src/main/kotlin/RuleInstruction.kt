@@ -209,6 +209,16 @@ class PrependAppendInstruction(type: InstructionType, language: Language, arg: S
         return word
     }
 
+    override fun reverseApply(text: String, language: Language): List<String> {
+        if (literalArg != null) {
+            return when (type) {
+                InstructionType.Append -> if (text.endsWith(literalArg)) listOf(text.removeSuffix(literalArg)) else emptyList()
+                else -> if (text.startsWith(literalArg)) listOf(text.removePrefix(literalArg)) else emptyList()
+            }
+        }
+        return emptyList()
+    }
+
     override fun toSummaryText(): String {
         if (literalArg != null) {
             return if (type == InstructionType.Prepend) "$literalArg-" else "-$literalArg"

@@ -3048,6 +3048,34 @@
             "id": 601,
             "text": "ada",
             "lang": "Lyc"
+        },
+        {
+            "id": 604,
+            "text": "ddapssmm͂a",
+            "lang": "Lyc",
+            "pos": "NP"
+        },
+        {
+            "id": 605,
+            "text": "padrmm͂ah",
+            "lang": "Lyc"
+        },
+        {
+            "id": 606,
+            "text": "padrmm͂a",
+            "lang": "Lyc",
+            "pos": "NP"
+        },
+        {
+            "id": 607,
+            "text": "urebillaha",
+            "lang": "Lyc",
+            "pos": "NP"
+        },
+        {
+            "id": 608,
+            "text": "trmm͂isñ",
+            "lang": "Lyc"
         }
     ],
     "rules": [
@@ -3060,12 +3088,7 @@
                 {
                     "instructions": [
                         {
-                            "type": "RemoveLastCharacter",
-                            "args": [
-                            ]
-                        },
-                        {
-                            "type": "AddSuffix",
+                            "type": "ChangeEnding",
                             "args": [
                                 "ã"
                             ]
@@ -3080,12 +3103,7 @@
                 {
                     "instructions": [
                         {
-                            "type": "RemoveLastCharacter",
-                            "args": [
-                            ]
-                        },
-                        {
-                            "type": "AddSuffix",
+                            "type": "ChangeEnding",
                             "args": [
                                 "ẽ"
                             ]
@@ -3096,13 +3114,24 @@
                         "cond": "EndsWith",
                         "characters": "e"
                     }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "Append",
+                            "args": [
+                                "'ñ'"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
                 }
             ],
             "addedCategories": ".ACC",
-            "replacedCategories": "",
             "fromPOS": "N",
             "toPOS": "N",
-            "notes": "",
             "preInstructions": [
             ]
         },
@@ -5175,6 +5204,14 @@
             "ruleIds": [
                 207
             ]
+        },
+        {
+            "from": 605,
+            "to": 606,
+            "type": ">",
+            "ruleIds": [
+                117
+            ]
         }
     ],
     "corpusTexts": [
@@ -6032,6 +6069,25 @@
                 600,
                 601
             ]
+        },
+        {
+            "id": 603,
+            "text": "ebẽñnẽ prñnawã mẽtiprñnawatẽ ddapssmm͂a padrmm͂ah tideimi hrppi prñnezi ehbi urebillaha trmm͂isñ xñtewete teri arttum͂para sẽtalahhãti miñti adai O-",
+            "title": "TL 11",
+            "lang": "Lyc",
+            "wordIds": [
+                95,
+                124,
+                142,
+                604,
+                605,
+                null,
+                null,
+                null,
+                null,
+                607,
+                608
+            ]
         }
     ],
     "paradigms": [
@@ -6688,6 +6744,17 @@
                 {
                     "pubId": 1,
                     "refText": "179"
+                }
+            ]
+        },
+        {
+            "id": 602,
+            "corpusTextId": 571,
+            "text": "This burial chamber have built Pulejnda, (the child) of Mulliese, and Dapara, (the child) of Pulejnda, the household members of Purihimeti, for their wives and the children. Whoever places anybody eseri in this burial chamber - they should destroy everything belonging to him. For the allocation(?) ∠ ada.",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "Christensen 2020: 181"
                 }
             ]
         }
