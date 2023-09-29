@@ -3130,6 +3130,40 @@
             "id": 615,
             "text": "sẽtalahhãti",
             "lang": "Lyc"
+        },
+        {
+            "id": 617,
+            "text": "t",
+            "lang": "Lyc"
+        },
+        {
+            "id": 618,
+            "text": "alahhãti",
+            "lang": "Lyc"
+        },
+        {
+            "id": 619,
+            "text": "alahha",
+            "lang": "Lyc",
+            "pos": "V"
+        },
+        {
+            "id": 620,
+            "text": "alaha",
+            "lang": "Lyc",
+            "gloss": "assign",
+            "pos": "V",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "241"
+                }
+            ]
+        },
+        {
+            "id": 621,
+            "text": "adai",
+            "lang": "Lyc"
         }
     ],
     "rules": [
@@ -3271,6 +3305,21 @@
                         "type": "ru.yole.etymograph.LeafRuleConditionData",
                         "cond": "EndsWith",
                         "characters": "a"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeEnding",
+                            "args": [
+                                "i"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "characters": "ije"
                     }
                 },
                 {
@@ -5287,6 +5336,37 @@
             "from": 611,
             "to": 612,
             "type": "="
+        },
+        {
+            "from": 368,
+            "to": 102,
+            "type": "="
+        },
+        {
+            "from": 618,
+            "to": 619,
+            "type": ">",
+            "ruleIds": [
+                273
+            ]
+        },
+        {
+            "from": 619,
+            "to": 620,
+            "type": "="
+        },
+        {
+            "from": 621,
+            "to": 546,
+            "type": ">",
+            "ruleIds": [
+                119
+            ]
+        },
+        {
+            "from": 617,
+            "to": 145,
+            "type": "="
         }
     ],
     "corpusTexts": [
@@ -6165,7 +6245,9 @@
                 610,
                 613,
                 614,
-                615
+                615,
+                544,
+                621
             ]
         }
     ],
@@ -6785,7 +6867,9 @@
             "compoundId": 615,
             "componentIds": [
                 368,
-                144
+                144,
+                617,
+                618
             ]
         }
     ],
