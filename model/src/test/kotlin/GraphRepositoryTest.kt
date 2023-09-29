@@ -6,8 +6,7 @@ import org.junit.Test
 class GraphRepositoryTest : QBaseTest() {
     @Test
     fun links() {
-        val repo = InMemoryGraphRepository()
-        repo.addLanguage(q)
+        val repo = setupRepo()
         val abc = repo.addWord("abc")
         val def = repo.addWord("def")
         repo.addLink(abc, def, Link.Derived, emptyList(), emptyList(), null)
@@ -18,8 +17,7 @@ class GraphRepositoryTest : QBaseTest() {
 
     @Test
     fun deleteWord() {
-        val repo = InMemoryGraphRepository()
-        repo.addLanguage(q)
+        val repo = setupRepo()
 
         val abc = repo.addWord("abc")
         repo.addWord("def")
@@ -31,8 +29,7 @@ class GraphRepositoryTest : QBaseTest() {
 
     @Test
     fun parseCandidates() {
-        val repo = InMemoryGraphRepository()
-        repo.addLanguage(q)
+        val repo = setupRepo()
         val rule = parseRule(q, q, "- add suffix 'llo'", name = "q-abl")
         repo.addRule(rule)
         val candidates = repo.findParseCandidates(q.word("hrestallo"))
@@ -44,8 +41,7 @@ class GraphRepositoryTest : QBaseTest() {
 
     @Test
     fun parseCandidatesWithWord() {
-        val repo = InMemoryGraphRepository()
-        repo.addLanguage(q)
+        val repo = setupRepo()
         val rule = parseRule(q, q, "- add suffix 'llo'", name = "q-abl")
         val hresta = repo.addWord("hresta")
         repo.addRule(rule)
@@ -55,5 +51,20 @@ class GraphRepositoryTest : QBaseTest() {
         assertEquals("hresta", candidates[0].text)
         assertEquals(hresta, candidates[0].word)
         assertEquals(rule, candidates[0].rules.single())
+    }
+
+    @Test
+    fun parseCandidatesNotEmpty() {
+        val repo = setupRepo()
+        val rule = parseRule(q, q, "- add suffix 'llo'", name = "q-abl")
+        repo.addRule(rule)
+        val candidates = repo.findParseCandidates(q.word("llo"))
+        assertEquals(0, candidates.size)
+    }
+
+    private fun setupRepo(): InMemoryGraphRepository {
+        return InMemoryGraphRepository().apply {
+            addLanguage(q)
+        }
     }
 }

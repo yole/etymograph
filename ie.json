@@ -3076,6 +3076,60 @@
             "id": 608,
             "text": "trmm͂isñ",
             "lang": "Lyc"
+        },
+        {
+            "id": 609,
+            "text": "trmm͂is",
+            "lang": "Lyc",
+            "gloss": "Lycia",
+            "pos": "N"
+        },
+        {
+            "id": 610,
+            "text": "χñtewete",
+            "lang": "Lyc"
+        },
+        {
+            "id": 611,
+            "text": "χñtewe",
+            "lang": "Lyc",
+            "pos": "V"
+        },
+        {
+            "id": 612,
+            "text": "χñtawa",
+            "lang": "Lyc",
+            "gloss": "rule",
+            "sourceRefs": [
+                {
+                    "pubId": 2,
+                    "refText": "84"
+                }
+            ]
+        },
+        {
+            "id": 613,
+            "text": "teri",
+            "lang": "Lyc",
+            "gloss": "when",
+            "pos": "ADV",
+            "sourceRefs": [
+                {
+                    "pubId": 2,
+                    "refText": "63"
+                }
+            ]
+        },
+        {
+            "id": 614,
+            "text": "arttum͂para",
+            "lang": "Lyc",
+            "pos": "NP"
+        },
+        {
+            "id": 615,
+            "text": "sẽtalahhãti",
+            "lang": "Lyc"
         }
     ],
     "rules": [
@@ -5212,6 +5266,27 @@
             "ruleIds": [
                 117
             ]
+        },
+        {
+            "from": 608,
+            "to": 609,
+            "type": ">",
+            "ruleIds": [
+                116
+            ]
+        },
+        {
+            "from": 610,
+            "to": 611,
+            "type": ">",
+            "ruleIds": [
+                253
+            ]
+        },
+        {
+            "from": 611,
+            "to": 612,
+            "type": "="
         }
     ],
     "corpusTexts": [
@@ -6072,7 +6147,7 @@
         },
         {
             "id": 603,
-            "text": "ebẽñnẽ prñnawã mẽtiprñnawatẽ ddapssmm͂a padrmm͂ah tideimi hrppi prñnezi ehbi urebillaha trmm͂isñ xñtewete teri arttum͂para sẽtalahhãti miñti adai O-",
+            "text": "ebẽñnẽ prñnawã mẽtiprñnawatẽ ddapssmm͂a padrmm͂ah tideimi\nhrppi prñnezi ehbi urebillaha trmm͂isñ χñtewete teri\narttum͂para sẽtalahhãti miñti adai O-",
             "title": "TL 11",
             "lang": "Lyc",
             "wordIds": [
@@ -6086,7 +6161,11 @@
                 null,
                 null,
                 607,
-                608
+                608,
+                610,
+                613,
+                614,
+                615
             ]
         }
     ],
@@ -6699,6 +6778,14 @@
             "componentIds": [
                 145,
                 595
+            ]
+        },
+        {
+            "id": 616,
+            "compoundId": 615,
+            "componentIds": [
+                368,
+                144
             ]
         }
     ],

@@ -231,6 +231,7 @@ open class InMemoryGraphRepository : GraphRepository() {
     }
 
     fun isAcceptableWord(language: Language, wordText: String): Boolean {
+        if (wordText.isEmpty()) return false
         val word = Word(-1, wordText, language)
         val vowels = language.phonemeClassByName(PhonemeClass.vowelClassName)
         val phonemes = PhonemeIterator(word)
