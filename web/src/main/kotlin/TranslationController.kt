@@ -10,8 +10,10 @@ class TranslationController(val graphService: GraphService) {
 
     @PostMapping("/translation")
     fun addTranslation(@RequestBody params: TranslationParams) {
-        val source = parseSourceRefs(graphService.graph, params.source)
+        val graph = graphService.graph
+        val source = parseSourceRefs(graph, params.source)
         val corpusText = graphService.resolveCorpusText(params.corpusTextId)
-        graphService.graph.addTranslation(corpusText, params.text, source)
+        graph.addTranslation(corpusText, params.text, source)
+        graph.save()
     }
 }
