@@ -19,7 +19,7 @@ export default function WordForm(props) {
                 .then(r => props.submitted(r))
         }
         else {
-            addWord(newWordLanguage, newWordText, newWordGloss, newWordFullGloss, newWordPosClasses, newWordSource)
+            addWord(newWordLanguage, newWordText, newWordGloss, newWordFullGloss, newWordPosClasses, newWordSource, newWordNotes)
                 .then(r => r.json())
                 .then(r => {
                     let onFulfilled = lr => {

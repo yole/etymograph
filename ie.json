@@ -3304,6 +3304,30 @@
             "id": 653,
             "text": "n",
             "lang": "Lyc"
+        },
+        {
+            "id": 655,
+            "text": "wazala",
+            "lang": "Lyc",
+            "pos": "NP"
+        },
+        {
+            "id": 656,
+            "text": "eppleme",
+            "lang": "Lyc",
+            "pos": "NP"
+        },
+        {
+            "id": 657,
+            "text": "awasi",
+            "lang": "Lyc",
+            "notes": "Christiansen 2020: probably consists of the element awa- and si- so that it is likely a term designating the burial and its result (\"lying down\")"
+        },
+        {
+            "id": 660,
+            "text": "awaha.i",
+            "lang": "Lyc",
+            "notes": "Christiansen 2020: agents or representatives of the miñti; presumably a nominal derivative of univerbation *awa- and ha- \"the one who lets down/off/away\""
         }
     ],
     "rules": [
@@ -6545,6 +6569,49 @@
                 null,
                 650
             ]
+        },
+        {
+            "id": 654,
+            "text": "ebẽñnẽ χupã mẽti prñnawatẽ wazala eppleme tideimi hrppi ladi ehbi se tideime aladahali awasi ada //-",
+            "title": "TL 16",
+            "lang": "Lyc",
+            "wordIds": [
+                95,
+                97,
+                151,
+                146,
+                655,
+                656,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                657
+            ]
+        },
+        {
+            "id": 659,
+            "text": "ebẽñnẽ χupã mẽti prñnawatẽ ..... emi hrppi ladi ehbi se tideime aladahali awaha.i ... ada /",
+            "title": "TL 17",
+            "lang": "Lyc",
+            "wordIds": [
+                95,
+                97,
+                151,
+                146,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                660
+            ]
         }
     ],
     "paradigms": [
@@ -7270,11 +7337,22 @@
         {
             "id": 651,
             "corpusTextId": 635,
-            "text": "The tomb belonging to this (monument), Mede built it for his younger brother Hm͂prãma and for himself",
+            "text": "The tomb belonging to this (monument), Mede built itfor his younger brother Hm͂prãma and for himself",
             "sourceRefs": [
                 {
                     "pubId": 3,
                     "refText": "14"
+                }
+            ]
+        },
+        {
+            "id": 658,
+            "corpusTextId": 654,
+            "text": "This tomb has built Wazala, the child of Eppleme for his wife and the children. For the allocation(?) (and) for the internment II- ada.",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "185"
                 }
             ]
         }
