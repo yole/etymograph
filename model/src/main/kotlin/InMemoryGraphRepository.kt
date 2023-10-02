@@ -94,9 +94,9 @@ open class InMemoryGraphRepository : GraphRepository() {
     private fun classifyWord(word: Word): WordKind {
         return when {
             word.pos == "NP" -> WordKind.NAME
+            isCompound(word) -> WordKind.COMPOUND
             word.gloss == null -> WordKind.DERIVED
             word.hasGrammarCategory() -> WordKind.DERIVED
-            isCompound(word) -> WordKind.COMPOUND
             else -> WordKind.NORMAL
         }
     }

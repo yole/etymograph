@@ -3717,6 +3717,45 @@
             "text": "tuwala",
             "lang": "Lyc",
             "pos": "NP"
+        },
+        {
+            "id": 748,
+            "text": "ñtadẽ",
+            "lang": "Lyc"
+        },
+        {
+            "id": 749,
+            "text": "ñ",
+            "lang": "Lyc"
+        },
+        {
+            "id": 753,
+            "text": "hura",
+            "lang": "Lyc",
+            "pos": "NP"
+        },
+        {
+            "id": 754,
+            "text": "ikezi",
+            "lang": "Lyc",
+            "gloss": "the one of Ikos(?)",
+            "sourceRefs": [
+                {
+                    "pubId": 2,
+                    "refText": "28"
+                }
+            ]
+        },
+        {
+            "id": 757,
+            "text": "idamaχzza",
+            "lang": "Lyc",
+            "pos": "NP"
+        },
+        {
+            "id": 758,
+            "text": "sei",
+            "lang": "Lyc"
         }
     ],
     "rules": [
@@ -6327,6 +6366,11 @@
             "ruleIds": [
                 744
             ]
+        },
+        {
+            "from": 749,
+            "to": 561,
+            "type": "="
         }
     ],
     "corpusTexts": [
@@ -7482,13 +7526,100 @@
                 null,
                 null,
                 591,
-                null,
+                748,
                 null,
                 544,
                 null,
                 null,
                 null
             ]
+        },
+        {
+            "id": 752,
+            "text": "ebẽñnẽ xupu mẽti [p]rñnaw[a]tẽ hura\nikezi hrppi ladi ehbi se tideime seije\nñte tadẽ tesi miñti ada ||-)",
+            "title": "TL 47",
+            "lang": "Lyc",
+            "wordIds": [
+                95,
+                155,
+                151,
+                null,
+                753,
+                754,
+                null,
+                null,
+                120,
+                102,
+                122,
+                591,
+                null,
+                null,
+                null,
+                544
+            ],
+            "notes": ""
+        },
+        {
+            "id": 756,
+            "text": "ebẽñnẽ: xupu: meti: prñnawatẽ: idamaχzza: uherijeh \ntideimi: hrppi ladi ehbi: se tideime sei pijẽtẽ\npijatu: miñti: ẽtri: χupu: siχli: aladehχχãne: se hrzzi\ntupm͂me: siχla: hrzzi prñnawi: mei: ñtepi tãti\nidãmaxzzã: se l[adu ehbi s]e[ije] n[e hrppi tã]ti tike\nkbi: hrppijemei: tadi: tike: mene: tubeiti: mãhãi\nhuwedri: se itlehi: trmm͂ili: ebidalahaditi: ebei: ñte",
+            "title": "TL 57",
+            "lang": "Lyc",
+            "wordIds": [
+                95,
+                155,
+                169,
+                146,
+                757,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                758,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null
+            ],
+            "notes": ""
         }
     ],
     "paradigms": [
@@ -8168,6 +8299,22 @@
                 182,
                 743
             ]
+        },
+        {
+            "id": 750,
+            "compoundId": 748,
+            "componentIds": [
+                749,
+                563
+            ]
+        },
+        {
+            "id": 759,
+            "compoundId": 758,
+            "componentIds": [
+                102,
+                391
+            ]
         }
     ],
     "translations": [
@@ -8333,6 +8480,28 @@
                 {
                     "pubId": 1,
                     "refText": "198"
+                }
+            ]
+        },
+        {
+            "id": 751,
+            "corpusTextId": 746,
+            "text": "This tomb has built Tuwala for wife and children. And he has established II ada under oath/by (means of) a sworn contract for the miñti, (namely) for (the purpose of) the allocation(?).",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "201"
+                }
+            ]
+        },
+        {
+            "id": 755,
+            "corpusTextId": 752,
+            "text": "This tomb has built Hura, the ikezi/the one of Ikos(?) for his wife and the children. And he has established under oath/by (means of) a sworn contract for the miñti II-) ada.",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "202"
                 }
             ]
         }
