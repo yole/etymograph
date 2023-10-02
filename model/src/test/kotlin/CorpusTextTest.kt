@@ -33,4 +33,15 @@ class CorpusTextTest : QBaseTest() {
         val line = corpusText.mapToLines(repo).single()
         assertEquals(laurie, line.corpusWords[0].word)
     }
+
+    @Test
+    fun testNormalizedText() {
+        val corpusText = CorpusText(-1, "ai lau[rie] lantar", null, q, mutableListOf(), emptyList(), null)
+
+        val repo = InMemoryGraphRepository()
+        val laurie = q.word("laurie")
+
+        val lines = corpusText.mapToLines(repo)
+        assertEquals("laurie", lines[0].corpusWords[1].normalizedText)
+    }
 }

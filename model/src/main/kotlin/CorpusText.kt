@@ -1,6 +1,6 @@
 package ru.yole.etymograph
 
-class CorpusWord(val index: Int, val text: String, val word: Word?, val gloss: String?, val homonym: Boolean)
+class CorpusWord(val index: Int, val text: String, val normalizedText: String, val word: Word?, val gloss: String?, val homonym: Boolean)
 
 class CorpusTextLine(val corpusWords: List<CorpusWord>)
 
@@ -50,21 +50,24 @@ class CorpusText(
         var currentIndex = 0
         return text.split("\n").map { line ->
             val textWords = splitIntoNormalizedWords(line)
-            CorpusTextLine(textWords.map { (textWord, _) ->
+            CorpusTextLine(textWords.map { tw ->
                 val word = _words.getOrNull(currentIndex)
                 if (word != null) {
-                    CorpusWord(currentIndex++, textWord, word, word.getOrComputeGloss(repo), repo.isHomonym(word))
+                    CorpusWord(currentIndex++, tw.baseText, tw.normalizedText, word, word.getOrComputeGloss(repo), repo.isHomonym(word))
                 }
                 else {
-                    val gloss = repo.wordsByText(language, textWord).firstOrNull()?.getOrComputeGloss(repo)
-                    CorpusWord(currentIndex++, textWord, null, gloss, false)
+                    val gloss = repo.wordsByText(language, tw.normalizedText).firstOrNull()?.getOrComputeGloss(repo)
+                    CorpusWord(currentIndex++, tw.baseText, tw.normalizedText, null, gloss, false)
                 }
             })
         }
     }
 
     private fun splitIntoNormalizedWords(line: String): List<WordText> {
-        return line.split(' ').map { WordText(it, language.normalizeWord(it.trimEnd(*punctuation))) }
+        return line.split(' ').map {
+            val cleanText = it.trimEnd(*punctuation).replace("[", "").replace("]", "")
+            WordText(it, language.normalizeWord(cleanText))
+        }
     }
 
     fun containsWord(word: Word): Boolean {

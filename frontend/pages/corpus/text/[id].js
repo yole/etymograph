@@ -30,7 +30,7 @@ export function CorpusTextWordLink(params) {
     const [hovered, setHovered] = useState(false)
 
     if (w.wordText || w.gloss) {
-        let linkText = (w.wordText ?? w.text).toLowerCase()
+        let linkText = (w.wordText ?? w.normalizedText).toLowerCase()
         if (w.wordId !== null && w.homonym) {
             linkText += `/${w.wordId}`
         }
@@ -38,12 +38,12 @@ export function CorpusTextWordLink(params) {
             <Link href={`/word/${corpusText.language}/${linkText}`}>
                 <WordWithStress text={w.text} stressIndex={w.stressIndex} stressLength={w.stressLength}/>
             </Link>
-            {hovered && allowEdit() && <span className="iconWithMargin"><FontAwesomeIcon icon={faEdit} onClick={() => showWordForm(w.text, w.index)}/></span>}
+            {hovered && allowEdit() && <span className="iconWithMargin"><FontAwesomeIcon icon={faEdit} onClick={() => showWordForm(w.normalizedText, w.index)}/></span>}
         </span>
     }
     else {
         return <span className="undefWord" onClick={() => {
-            if (allowEdit()) showWordForm(w.text, w.index)
+            if (allowEdit()) showWordForm(w.normalizedText, w.index)
         }}>{w.text}</span>
     }
 }
@@ -77,15 +77,8 @@ export default function CorpusText(params) {
 
     function showWordForm(text, index) {
         setWordFormVisible(true)
-        setPredefWord(trimPunctuation(text.toLowerCase()))
+        setPredefWord(text)
         setWordIndex(index)
-    }
-
-    function trimPunctuation(text) {
-        while (",.!?:;".includes(text.slice(text.length-1))) {
-            text = text.slice(0, text.length-1)
-        }
-        return text
     }
 
     function submitTranslation() {

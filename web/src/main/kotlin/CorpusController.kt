@@ -31,9 +31,11 @@ class CorpusController(val graphService: GraphService) {
         CorpusLangTextViewModel(id, title ?: text)
 
     data class CorpusWordViewModel(
-        val index: Int, val text: String, val gloss: String, val wordId: Int?, val wordText: String?,
+        val index: Int,
+        val text: String,
+        val normalizedText: String,
+        val gloss: String, val wordId: Int?, val wordText: String?,
         val stressIndex: Int?, val stressLength: Int?, val homonym: Boolean,
-
     )
 
     data class TranslationViewModel(val text: String, val source: List<SourceRefViewModel>)
@@ -72,6 +74,7 @@ class CorpusController(val graphService: GraphService) {
                     val glossWithSegments = wordWithSegments?.getOrComputeGloss(repo) ?: cw.gloss ?: ""
                     CorpusWordViewModel(cw.index,
                         wordWithSegments?.segmentedText()?.plus(punctuation) ?: cw.text,
+                        cw.normalizedText,
                         glossWithSegments, cw.word?.id, cw.word?.text,
                         adjustStressIndex(wordWithSegments, stressData?.index), stressData?.length, cw.homonym)
                 })

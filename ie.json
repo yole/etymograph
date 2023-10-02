@@ -3152,7 +3152,7 @@
         },
         {
             "id": 623,
-            "text": "xudali",
+            "text": "χudali",
             "lang": "Lyc",
             "pos": "NP"
         },
@@ -3711,6 +3711,12 @@
             "id": 743,
             "text": "tane",
             "lang": "Lyc"
+        },
+        {
+            "id": 747,
+            "text": "tuwala",
+            "lang": "Lyc",
+            "pos": "NP"
         }
     ],
     "rules": [
@@ -7084,7 +7090,7 @@
         },
         {
             "id": 481,
-            "text": "ebẽñnẽ xupã meneprñnawatẽ xudali zuhrijah tideimi xezrimeh prñnezijehi",
+            "text": "ebẽñnẽ χupã meneprñnawatẽ χudali zuhrijah tideimi χezrimeh prñnezijehi",
             "title": "TL 1",
             "lang": "Lyc",
             "wordIds": [
@@ -7094,7 +7100,8 @@
                 623,
                 624,
                 null,
-                626
+                626,
+                null
             ]
         },
         {
@@ -7460,7 +7467,7 @@
         },
         {
             "id": 746,
-            "text": "ebẽñnẽ xupã meti prñnawatẽ tuwala: hrppi ladi se tideime: seije ñtadẽ: tesi: miñti: aladahali: ada: ||",
+            "text": "ebẽñnẽ: xupã: meti prñnawatẽ: tuwala: hrppi ladi se tideime: seije ñtadẽ: tesi: miñti: aladahali: ada: ||",
             "title": "TL 42a",
             "lang": "Lyc",
             "wordIds": [
@@ -7468,15 +7475,15 @@
                 null,
                 null,
                 null,
+                747,
                 null,
                 null,
                 null,
                 null,
+                591,
                 null,
                 null,
-                null,
-                null,
-                null,
+                544,
                 null,
                 null,
                 null
