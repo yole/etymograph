@@ -50,6 +50,7 @@ class CorpusController(val graphService: GraphService) {
         val lines: List<CorpusLineViewModel>,
         val source: List<SourceRefViewModel>,
         val sourceEditableText: String,
+        val notes: String?,
         val translations: List<TranslationViewModel>
     )
 
@@ -81,6 +82,7 @@ class CorpusController(val graphService: GraphService) {
             },
             source.toViewModel(repo),
             source.toEditableText(repo),
+            notes,
             repo.translationsForText(this).map {
                 TranslationViewModel(it.text, it.source.toViewModel(repo))
             }
@@ -99,7 +101,7 @@ class CorpusController(val graphService: GraphService) {
         return result
     }
 
-    data class CorpusTextParams(val title: String = "", val text: String = "", val source: String = "")
+    data class CorpusTextParams(val title: String = "", val text: String = "", val source: String = "", val notes: String = "")
 
     @PostMapping("/corpus/{lang}/new", consumes = ["application/json"])
     @ResponseBody
@@ -108,7 +110,7 @@ class CorpusController(val graphService: GraphService) {
         val language = graphService.resolveLanguage(lang)
         val text = repo.addCorpusText(
             params.text, params.title.nullize(), language, emptyList(),
-            parseSourceRefs(repo, params.source), null
+            parseSourceRefs(repo, params.source), params.notes.nullize()
         )
         repo.save()
         return text.toViewModel()
@@ -120,6 +122,7 @@ class CorpusController(val graphService: GraphService) {
         corpusText.text = params.text
         corpusText.title = params.title
         corpusText.source = parseSourceRefs(graphService.graph, params.source)
+        corpusText.notes = params.notes.nullize()
         graphService.graph.save()
     }
 

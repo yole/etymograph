@@ -5,14 +5,15 @@ export default function CorpusTextForm(props) {
     const [title, setTitle] = useState(props.initialTitle !== undefined ? props.initialTitle : "")
     const [text, setText] = useState(props.initialText !== undefined ? props.initialText : "")
     const [source, setSource] = useState(props.initialSource !== undefined ? props.initialSource : "")
+    const [notes, setNotes] = useState(props.initialNotes !== undefined ? props.initialNotes : "")
 
     function saveCorpusText() {
         if (props.updateId !== undefined) {
-            updateCorpusText(props.updateId, title, text, source)
+            updateCorpusText(props.updateId, title, text, source, notes)
                 .then(props.submitted())
         }
         else {
-            addCorpusText(props.lang, title, text, source)
+            addCorpusText(props.lang, title, text, source, notes)
                 .then(r => r.json())
                 .then(r => props.submitted(r))
         }
@@ -32,6 +33,8 @@ export default function CorpusTextForm(props) {
             <td><input type="text" id="source" value={source} onChange={(e) => setSource(e.target.value)}/></td>
         </tr>
         </tbody></table>
+        <h3>Notes</h3>
+        <textarea rows="5" cols="50" value={notes} onChange={e => setNotes(e.target.value)}/>
         <br/>
         <button onClick={() => saveCorpusText()}>Save</button>
     </>

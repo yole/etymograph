@@ -68,12 +68,12 @@ export function deleteRule(id) {
     return postToBackend(`rule/${id}/delete`, {})
 }
 
-export function addCorpusText(lang, title, text, source) {
-    return postToBackend(`corpus/${lang}/new`, {title: title, text: text, source: source})
+export function addCorpusText(lang, title, text, source, notes) {
+    return postToBackend(`corpus/${lang}/new`, {title: title, text: text, source: source, notes: notes})
 }
 
-export function updateCorpusText(id, title, text, source) {
-    return postToBackend(`corpus/text/${id}`, {title: title, text: text, source: source})
+export function updateCorpusText(id, title, text, source, notes) {
+    return postToBackend(`corpus/text/${id}`, {title: title, text: text, source: source, notes: notes})
 }
 
 export function addTranslation(corpusTextId, text, source) {

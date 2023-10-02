@@ -117,6 +117,10 @@ export default function CorpusText(params) {
             ))}
             <SourceRefs source={corpusText.source}/>
         </>}
+        {corpusText.notes != null && <>
+            <h3>Notes</h3>
+            <p>{corpusText.notes}</p>
+        </>}
         {editMode && <CorpusTextForm lang={corpusText.lang}
                                      updateId={corpusText.id}
                                      initialTitle={corpusText.title}
