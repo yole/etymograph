@@ -1136,7 +1136,15 @@
         {
             "id": 199,
             "text": "te",
-            "lang": "Lyc"
+            "lang": "Lyc",
+            "gloss": "PART",
+            "sourceRefs": [
+                {
+                    "pubId": 2,
+                    "refText": "61"
+                }
+            ],
+            "notes": "= Luw. -tta"
         },
         {
             "id": 200,
@@ -3756,6 +3764,131 @@
             "id": 758,
             "text": "sei",
             "lang": "Lyc"
+        },
+        {
+            "id": 760,
+            "text": "pijẽtẽ",
+            "lang": "Lyc"
+        },
+        {
+            "id": 761,
+            "text": "pijatu",
+            "lang": "Lyc"
+        },
+        {
+            "id": 762,
+            "text": "pijata",
+            "lang": "Lyc",
+            "gloss": "gift",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": 2,
+                    "refText": "49"
+                }
+            ]
+        },
+        {
+            "id": 763,
+            "text": "siχli",
+            "lang": "Lyc"
+        },
+        {
+            "id": 764,
+            "text": "siχla",
+            "lang": "Lyc",
+            "gloss": "shekel",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": 2,
+                    "refText": "58"
+                }
+            ]
+        },
+        {
+            "id": 765,
+            "text": "aladehχχãne",
+            "lang": "Lyc"
+        },
+        {
+            "id": 766,
+            "text": "aladehχχã",
+            "lang": "Lyc",
+            "gloss": "prepare for laying out",
+            "pos": "V",
+            "sourceRefs": [
+                {
+                    "pubId": 2,
+                    "refText": "3"
+                }
+            ],
+            "notes": "Possibly actually 'alahχχã' with 'de' element"
+        },
+        {
+            "id": 767,
+            "text": "tupm͂me",
+            "lang": "Lyc",
+            "gloss": "two, pair"
+        },
+        {
+            "id": 768,
+            "text": "prñnawi",
+            "lang": "Lyc"
+        },
+        {
+            "id": 769,
+            "text": "mei",
+            "lang": "Lyc"
+        },
+        {
+            "id": 771,
+            "text": "idãmaχzzã",
+            "lang": "Lyc"
+        },
+        {
+            "id": 773,
+            "text": "ne",
+            "lang": "Lyc",
+            "gloss": "not"
+        },
+        {
+            "id": 774,
+            "text": "hrppijemei",
+            "lang": "Lyc"
+        },
+        {
+            "id": 776,
+            "text": "je",
+            "lang": "Lyc"
+        },
+        {
+            "id": 778,
+            "text": "ebidalahaditi",
+            "lang": "Lyc"
+        },
+        {
+            "id": 779,
+            "text": "ebi",
+            "lang": "Lyc",
+            "gloss": "or"
+        },
+        {
+            "id": 781,
+            "text": "ebei",
+            "lang": "Lyc",
+            "gloss": "here"
+        },
+        {
+            "id": 782,
+            "text": "uherijeh",
+            "lang": "Lyc"
+        },
+        {
+            "id": 783,
+            "text": "uherije",
+            "lang": "Lyc",
+            "pos": "NP"
         }
     ],
     "rules": [
@@ -6371,6 +6504,72 @@
             "from": 749,
             "to": 561,
             "type": "="
+        },
+        {
+            "from": 760,
+            "to": 701,
+            "type": ">",
+            "ruleIds": [
+                577
+            ]
+        },
+        {
+            "from": 761,
+            "to": 762,
+            "type": ">",
+            "ruleIds": [
+                118
+            ]
+        },
+        {
+            "from": 762,
+            "to": 701,
+            "type": "~"
+        },
+        {
+            "from": 763,
+            "to": 764,
+            "type": ">",
+            "ruleIds": [
+                119
+            ]
+        },
+        {
+            "from": 765,
+            "to": 766,
+            "type": ">",
+            "ruleIds": [
+                744
+            ]
+        },
+        {
+            "from": 766,
+            "to": 620,
+            "type": "~"
+        },
+        {
+            "from": 768,
+            "to": 108,
+            "type": ">",
+            "ruleIds": [
+                119
+            ]
+        },
+        {
+            "from": 771,
+            "to": 757,
+            "type": ">",
+            "ruleIds": [
+                116
+            ]
+        },
+        {
+            "from": 782,
+            "to": 783,
+            "type": ">",
+            "ruleIds": [
+                117
+            ]
         }
     ],
     "corpusTexts": [
@@ -7561,7 +7760,7 @@
         },
         {
             "id": 756,
-            "text": "ebẽñnẽ: xupu: meti: prñnawatẽ: idamaχzza: uherijeh \ntideimi: hrppi ladi ehbi: se tideime sei pijẽtẽ\npijatu: miñti: ẽtri: χupu: siχli: aladehχχãne: se hrzzi\ntupm͂me: siχla: hrzzi prñnawi: mei: ñtepi tãti\nidãmaxzzã: se l[adu ehbi s]e[ije] n[e hrppi tã]ti tike\nkbi: hrppijemei: tadi: tike: mene: tubeiti: mãhãi\nhuwedri: se itlehi: trmm͂ili: ebidalahaditi: ebei: ñte",
+            "text": "ebẽñnẽ: xupu: meti: prñnawatẽ: idamaχzza: uherijeh \ntideimi: hrppi ladi ehbi: se tideime sei pijẽtẽ\npijatu: miñti: ẽtri: χupu: siχli: aladehχχãne: se hrzzi\ntupm͂me: siχla: hrzzi prñnawi: mei: ñtepi tãti\nidãmaxzzã: se l[adu ehbi s]e[ije] n[e hrppi tã]ti tike\nkbi: hrppijemei: tadi: tike: mene: tubeiti: mãhãi\nhuwedri: se itlehi: trm͂mili: ebidalahaditi: ebei: ñte",
             "title": "TL 57",
             "lang": "Lyc",
             "wordIds": [
@@ -7570,7 +7769,7 @@
                 169,
                 146,
                 757,
-                null,
+                782,
                 null,
                 null,
                 null,
@@ -7579,6 +7778,33 @@
                 null,
                 null,
                 758,
+                760,
+                761,
+                544,
+                null,
+                null,
+                763,
+                765,
+                null,
+                null,
+                767,
+                null,
+                null,
+                768,
+                769,
+                null,
+                null,
+                771,
+                null,
+                null,
+                null,
+                null,
+                773,
+                null,
+                null,
+                null,
+                null,
+                774,
                 null,
                 null,
                 null,
@@ -7587,39 +7813,11 @@
                 null,
                 null,
                 null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
+                401,
+                778,
+                781,
                 null
-            ],
-            "notes": ""
+            ]
         }
     ],
     "paradigms": [
@@ -8315,6 +8513,34 @@
                 102,
                 391
             ]
+        },
+        {
+            "id": 770,
+            "compoundId": 769,
+            "componentIds": [
+                181,
+                391
+            ]
+        },
+        {
+            "id": 775,
+            "compoundId": 774,
+            "componentIds": [
+                110,
+                776,
+                181,
+                391
+            ]
+        },
+        {
+            "id": 780,
+            "compoundId": 778,
+            "componentIds": [
+                779,
+                558,
+                201,
+                145
+            ]
         }
     ],
     "translations": [
@@ -8502,6 +8728,17 @@
                 {
                     "pubId": 1,
                     "refText": "202"
+                }
+            ]
+        },
+        {
+            "id": 784,
+            "corpusTextId": 756,
+            "text": "This tomb has built Idamaχzza, the son of Uherije for his wife and the children. And they have given a gift/fee/charge/delivery(?) to the minti (in order) to make the lower chamber ready for allocation(?) for (one) shekel and the upper for two(?) shekels. And inside the upper chamber they will/shall place Idamaχzza and wife. ... A]nd [they] will/shall not place anyone else [on top/in addition]. (If) one places anyone on top/in addition, then all(?) the gods will strike him and the Lycian itlehi - or who assigns(?) (anyone) thereon(?) inside this place.",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "209"
                 }
             ]
         }
