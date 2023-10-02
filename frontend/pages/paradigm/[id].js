@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {allowEdit, fetchBackend, updateParadigm} from "@/api";
+import {allowEdit, deleteParadigm, deleteRule, fetchBackend, updateParadigm} from "@/api";
 import {useRouter} from "next/router";
 import Link from "next/link";
 
@@ -37,6 +37,13 @@ export default function Paradigm(params) {
                 }
             })
         setEditMode(false)
+    }
+
+    function deleteParadigmClicked() {
+        if (window.confirm("Delete this paradigm?")) {
+            deleteParadigm(paradigm.id)
+                .then(() => router.push("/paradigms/" + paradigm.language))
+        }
     }
 
     return <>
@@ -77,6 +84,9 @@ export default function Paradigm(params) {
             <button onClick={() => saveParadigm()}>Save</button>
         </>}
         {errorText !== "" && <div className="errorText">{errorText}</div>}
-        {allowEdit() && <button onClick={() => setEditMode(!editMode)}>{editMode ? "Cancel" : "Edit"}</button>}
+        {allowEdit() && <>
+            <button onClick={() => setEditMode(!editMode)}>{editMode ? "Cancel" : "Edit"}</button>{' '}
+            <button onClick={() => deleteParadigmClicked()}>Delete</button>
+        </>}
     </>
 }

@@ -292,7 +292,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                     it.source.sourceToSerializedFormat(), it.notes
                 )
             },
-            paradigms.map {
+            paradigms.filterNotNull().map {
                 ParadigmData(it.id, it.name, it.language.shortName, it.pos, it.rowTitles, it.columns.map { col ->
                     ParadigmColumnData(col.title, col.cells.map { cell ->
                         ParadigmCellData(ruleAlternatives = cell?.ruleAlternatives?.map { r -> r?.id })
@@ -437,6 +437,10 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
 
 
         for (paradigm in data.paradigms) {
+            while (paradigm.id > paradigms.size) {
+                paradigms.add(null)
+            }
+
             addParadigm(
                 paradigm.name,
                 languageByShortName(paradigm.languageShortName)!!,

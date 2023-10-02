@@ -100,6 +100,15 @@ class ParadigmController(val graphService: GraphService) {
         paradigm.pos = params.pos
         graph.save()
     }
+
+    @PostMapping("/paradigm/{id}/delete")
+    @ResponseBody
+    fun deleteParadigm(@PathVariable id: Int) {
+        val graph = graphService.graph
+        val paradigm = graph.paradigmById(id) ?: throw NoParadigmException()
+        graph.deleteParadigm(paradigm)
+        graph.save()
+    }
 }
 
 @ResponseStatus(value = HttpStatus.NOT_FOUND, reason = "No such paradigm")

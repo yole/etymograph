@@ -7557,33 +7557,6 @@
             ]
         },
         {
-            "id": 1,
-            "name": "Noun",
-            "lang": "Lyc",
-            "pos": "n",
-            "rows": [
-                "Acc.",
-                "Gen."
-            ],
-            "columns": [
-                {
-                    "title": "Nom.",
-                    "cells": [
-                        {
-                            "ruleAlternatives": [
-                                116
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "title": "-",
-                    "cells": [
-                    ]
-                }
-            ]
-        },
-        {
             "id": 2,
             "name": "Noun",
             "lang": "Lyc",

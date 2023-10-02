@@ -76,6 +76,8 @@ abstract class GraphRepository {
         pos: String
     ): Paradigm
 
+    abstract fun deleteParadigm(paradigm: Paradigm)
+
     abstract fun allParadigms(): List<Paradigm>
     abstract fun paradigmsForLanguage(lang: Language): List<Paradigm>
     abstract fun paradigmById(id: Int): Paradigm?

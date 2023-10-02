@@ -13,7 +13,7 @@ open class InMemoryGraphRepository : GraphRepository() {
     protected val compounds = mutableMapOf<Int, MutableList<Compound>>()
     protected val translations = mutableMapOf<Int, MutableList<Translation>>()
     protected val rules = mutableListOf<Rule>()
-    protected val paradigms = mutableListOf<Paradigm>()
+    protected val paradigms = mutableListOf<Paradigm?>()
     protected val publications = mutableListOf<Publication?>()
 
     override fun addLanguage(language: Language) {
@@ -62,10 +62,6 @@ open class InMemoryGraphRepository : GraphRepository() {
 
     override fun translationsForText(corpusText: CorpusText): List<Translation> {
         return translations[corpusText.id] ?: emptyList()
-    }
-
-    override fun addParadigm(name: String, language: Language, pos: String): Paradigm {
-        return Paradigm(paradigms.size, name, language, pos).also { paradigms += it }
     }
 
     override fun wordsByText(lang: Language, text: String): List<Word> {
@@ -334,7 +330,7 @@ open class InMemoryGraphRepository : GraphRepository() {
 
     override fun deleteRule(rule: Rule) {
         for (paradigm in paradigms) {
-            paradigm.removeRule(rule)
+            paradigm?.removeRule(rule)
         }
         rules.remove(rule)
         deleteLangEntity(rule)
@@ -450,12 +446,20 @@ open class InMemoryGraphRepository : GraphRepository() {
         allLangEntities.add(rule)
     }
 
+    override fun addParadigm(name: String, language: Language, pos: String): Paradigm {
+        return Paradigm(paradigms.size, name, language, pos).also { paradigms += it }
+    }
+
+    override fun deleteParadigm(paradigm: Paradigm) {
+        paradigms[paradigm.id] = null
+    }
+
     override fun allParadigms(): List<Paradigm> {
-        return paradigms
+        return paradigms.filterNotNull()
     }
 
     override fun paradigmsForLanguage(lang: Language): List<Paradigm> {
-        return paradigms.filter { it.language == lang }
+        return paradigms.filterNotNull().filter { it.language == lang }
     }
 
     override fun paradigmById(id: Int): Paradigm? {

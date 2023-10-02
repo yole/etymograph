@@ -15,8 +15,7 @@ class JsonGraphRepositoryTest : QBaseTest() {
         val def = repo.addWord("def")
         repo.deleteWord(abc)
 
-        val json = repo.toJson()
-        val repo2 = JsonGraphRepository.fromJsonString(json)
+        val repo2 = repo.roundtrip()
         assertEquals(null, repo2.wordById(abc.id))
         assertEquals("def", repo2.wordById(def.id)!!.text)
     }
@@ -54,9 +53,26 @@ class JsonGraphRepositoryTest : QBaseTest() {
         repo.addLanguage(q)
         val corpusText = repo.addCorpusText("abc", null, q, emptyList(), emptyList(), null)
         repo.addTranslation(corpusText, "def", emptyList())
-        val json = repo.toJson()
-        val repo2 = JsonGraphRepository.fromJsonString(json)
+        val repo2 = repo.roundtrip()
         val corpusText2 = repo2.corpusTextById(corpusText.id)!!
         assertEquals(1, repo2.translationsForText(corpusText2).size)
+    }
+
+    private fun JsonGraphRepository.roundtrip(): JsonGraphRepository {
+        val json = toJson()
+        return JsonGraphRepository.fromJsonString(json)
+    }
+
+    @Test
+    fun serializeDeleteParadigm() {
+        val repo = JsonGraphRepository(null)
+        repo.addLanguage(q)
+        val np = repo.addParadigm("Noun", q, "N")
+        val vp = repo.addParadigm("Verb", q, "V")
+        repo.deleteParadigm(np)
+        assertEquals(1, repo.allParadigms().size)
+        val repo2 = repo.roundtrip()
+        assertEquals(1, repo2.allParadigms().size)
+        assertEquals("Verb", repo2.paradigmById(vp.id)!!.name)
     }
 }
