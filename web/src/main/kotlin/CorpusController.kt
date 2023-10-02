@@ -44,6 +44,7 @@ class CorpusController(val graphService: GraphService) {
         val title: String,
         val language: String,
         val languageFullName: String,
+        val text: String,
         val lines: List<CorpusLineViewModel>,
         val source: List<SourceRefViewModel>,
         val sourceEditableText: String,
@@ -62,6 +63,7 @@ class CorpusController(val graphService: GraphService) {
             title ?: "Untitled",
             language.shortName,
             language.name,
+            text,
             mapToLines(repo).map { line ->
                 CorpusLineViewModel(line.corpusWords.map { cw ->
                     val stressData = cw.word?.calculateStress()
@@ -94,11 +96,11 @@ class CorpusController(val graphService: GraphService) {
         return result
     }
 
-    data class CorpusParams(val title: String = "", val text: String = "", val source: String = "")
+    data class CorpusTextParams(val title: String = "", val text: String = "", val source: String = "")
 
     @PostMapping("/corpus/{lang}/new", consumes = ["application/json"])
     @ResponseBody
-    fun newText(@PathVariable lang: String, @RequestBody params: CorpusParams): CorpusTextViewModel {
+    fun newText(@PathVariable lang: String, @RequestBody params: CorpusTextParams): CorpusTextViewModel {
         val repo = graphService.graph
         val language = graphService.resolveLanguage(lang)
         val text = repo.addCorpusText(
@@ -107,6 +109,15 @@ class CorpusController(val graphService: GraphService) {
         )
         repo.save()
         return text.toViewModel()
+    }
+
+    @PostMapping("/corpus/text/{id}")
+    fun editText(@PathVariable id: Int, @RequestBody params: CorpusTextParams) {
+        val corpusText = graphService.resolveCorpusText(id)
+        corpusText.text = params.text
+        corpusText.title = params.title
+        corpusText.source = parseSourceRefs(graphService.graph, params.source)
+        graphService.graph.save()
     }
 
     data class AssociateWordParameters(val index: Int, val wordId: Int = -1)

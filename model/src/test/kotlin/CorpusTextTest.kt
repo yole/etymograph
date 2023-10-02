@@ -21,4 +21,16 @@ class CorpusTextTest : QBaseTest() {
         val line = corpusText.mapToLines(repo).single()
         assertEquals(laurie, line.corpusWords[1].word)
     }
+
+    @Test
+    fun testEditText() {
+        val corpusText = CorpusText(-1, "ai laurie lantar", null, q, mutableListOf(), emptyList(), null)
+        val repo = InMemoryGraphRepository()
+        val laurie = q.word("laurie")
+        corpusText.associateWord(1, laurie)
+
+        corpusText.text = "laurie lantar"
+        val line = corpusText.mapToLines(repo).single()
+        assertEquals(laurie, line.corpusWords[0].word)
+    }
 }

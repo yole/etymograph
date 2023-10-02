@@ -7,6 +7,7 @@ import {fetchBackend, associateWord, allowEdit, addTranslation} from "@/api";
 import {useRouter} from "next/router";
 import Link from "next/link";
 import SourceRefs from "@/components/SourceRefs";
+import CorpusTextForm from "@/components/CorpusTextForm";
 
 export const config = {
     unstable_runtimeJS: true
@@ -49,6 +50,7 @@ export function CorpusTextWordLink(params) {
 
 export default function CorpusText(params) {
     const corpusText = params.loaderData
+    const [editMode, setEditMode] = useState(false)
     const [wordFormVisible, setWordFormVisible] = useState(false);
     const [predefWord, setPredefWord] = useState("")
     const [wordIndex, setWordIndex] = useState(-1)
@@ -58,7 +60,12 @@ export default function CorpusText(params) {
     const router = useRouter()
     useEffect(() => { document.title = "Etymograph : " + corpusText.title })
 
-    function submitted(word) {
+    function textSubmitted() {
+        setEditMode(false)
+        router.replace(router.asPath)
+    }
+
+    function wordSubmitted(word) {
         setWordFormVisible(false)
         associateWord(router.query.id, word.id, wordIndex).then(() => {
             router.replace(router.asPath)
@@ -94,34 +101,45 @@ export default function CorpusText(params) {
             <Link href={`/language/${corpusText.language}`}>{corpusText.languageFullName}</Link> {'> '}
             <Link href={`/corpus/${corpusText.language}`}>Corpus</Link> {'>'} </small>
             {corpusText.title}</h2>
-        {corpusText.lines.map(l => (
-            <div key={l.words[0].index}>
-                <table><tbody>
-                    <tr>
-                        {l.words.map(w => <td key={w.index}>
-                            <CorpusTextWordLink word={w} corpusText={corpusText} showWordForm={showWordForm}/>
-                        </td>)}
-                    </tr>
-                    <tr>
-                        {l.words.map(w => <td key={w.index}>{w.gloss}</td>)}
-                    </tr>
-                </tbody></table>
-                {wordIndex >= l.words[0].index && wordIndex <= l.words[l.words.length - 1].index && wordFormVisible &&
-                    <WordForm key={predefWord} submitted={submitted}
-                              language={corpusText.language} languageReadOnly={true}
-                              initialText={predefWord} textReadOnly={true}
-                              initialSource={corpusText.sourceEditableText}/>
-                }
-            </div>
-        ))}
-        <SourceRefs source={corpusText.source}/>
+        {!editMode && <>
+            {corpusText.lines.map(l => (
+                <div key={l.words[0].index}>
+                    <table><tbody>
+                        <tr>
+                            {l.words.map(w => <td key={w.index}>
+                                <CorpusTextWordLink word={w} corpusText={corpusText} showWordForm={showWordForm}/>
+                            </td>)}
+                        </tr>
+                        <tr>
+                            {l.words.map(w => <td key={w.index}>{w.gloss}</td>)}
+                        </tr>
+                    </tbody></table>
+                    {wordIndex >= l.words[0].index && wordIndex <= l.words[l.words.length - 1].index && wordFormVisible &&
+                        <WordForm key={predefWord} submitted={wordSubmitted}
+                                  language={corpusText.language} languageReadOnly={true}
+                                  initialText={predefWord} textReadOnly={true}
+                                  initialSource={corpusText.sourceEditableText}/>
+                    }
+                </div>
+            ))}
+            <SourceRefs source={corpusText.source}/>
+        </>}
+        {editMode && <CorpusTextForm lang={corpusText.lang}
+                                     updateId={corpusText.id}
+                                     initialTitle={corpusText.title}
+                                     initialText={corpusText.text}
+                                     initialSource={corpusText.sourceEditableText}
+                                     submitted={textSubmitted}/>}
         {corpusText.translations.length > 0 && <>
             <h3>Translations</h3>
             {corpusText.translations.map(t =>
                 <div>{t.text} <SourceRefs source={t.source}/></div>
             )}
         </>}
-        {allowEdit() && <p><button onClick={() => setShowTranslationForm(!showTranslationForm)}>Add translation</button></p>}
+        {allowEdit() && <p>
+            <button onClick={() => setEditMode(!editMode)}>{!editMode ? "Edit" : "Cancel"}</button>{' '}
+            <button onClick={() => setShowTranslationForm(!showTranslationForm)}>Add translation</button>
+        </p>}
         {showTranslationForm && <>
             <p/>
             <textarea rows="10" cols="50" value={translationText} onChange={e => setTranslationText(e.target.value)}/>

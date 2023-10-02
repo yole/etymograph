@@ -9,7 +9,7 @@ class TranslationControllerTest {
         val fixture = QTestFixture()
 
         val corpusController = CorpusController(fixture.graphService)
-        val corpusParams = CorpusController.CorpusParams(text = "Elen sila...")
+        val corpusParams = CorpusController.CorpusTextParams(text = "Elen sila...")
         val corpusTextViewModel = corpusController.newText("q", corpusParams)
 
         val translationController = TranslationController(fixture.graphService)
