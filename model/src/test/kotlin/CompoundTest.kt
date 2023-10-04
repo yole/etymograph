@@ -17,6 +17,19 @@ class CompoundTest : QBaseTest() {
     }
 
     @Test
+    fun segmentedTextClitic() {
+        val repo = InMemoryGraphRepository().apply { addLanguage(q) }
+        val fara = repo.addWord("fara")
+        fara.classes = listOf("clitic")
+        val mir = repo.addWord("mir")
+        val faramir = repo.addWord("faramir")
+        val compound = repo.createCompound(faramir, fara, emptyList(), null)
+        compound.components.add(mir)
+        val restored = repo.restoreSegments(faramir)
+        Assert.assertEquals("fara=mir", restored.segmentedText())
+    }
+
+    @Test
     fun compoundsInDictionary() {
         val repo = InMemoryGraphRepository().apply { addLanguage(q) }
         val fara = repo.addWord("fara", "fara.NOM")

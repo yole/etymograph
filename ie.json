@@ -841,7 +841,11 @@
         {
             "id": 143,
             "text": "m",
-            "lang": "Lyc"
+            "lang": "Lyc",
+            "pos": "CONJ",
+            "classes": [
+                "clitic"
+            ]
         },
         {
             "id": 144,
@@ -853,7 +857,10 @@
             "text": "ti",
             "lang": "Lyc",
             "gloss": "which",
-            "pos": "PRON"
+            "pos": "PRON",
+            "classes": [
+                "clitic"
+            ]
         },
         {
             "id": 146,
@@ -865,7 +872,10 @@
             "text": "e",
             "lang": "Lyc",
             "gloss": "he/she/it",
-            "pos": "N"
+            "pos": "PRON",
+            "classes": [
+                "clitic"
+            ]
         },
         {
             "id": 148,
@@ -1044,7 +1054,11 @@
             "id": 181,
             "text": "me",
             "lang": "Lyc",
-            "gloss": "CONJ"
+            "gloss": "CONJ",
+            "pos": "CONJ",
+            "classes": [
+                "clitic"
+            ]
         },
         {
             "id": 182,

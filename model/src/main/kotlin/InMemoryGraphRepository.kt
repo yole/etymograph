@@ -217,7 +217,7 @@ open class InMemoryGraphRepository : GraphRepository() {
                 if (word.text.substring(index, index + componentLength) != component.text) {
                     break
                 }
-                segments.add(WordSegment(index, componentLength, null, null))
+                segments.add(WordSegment(index, componentLength, null, null, "clitic" in component.classes))
                 index += componentLength
             }
             word.segments = segments

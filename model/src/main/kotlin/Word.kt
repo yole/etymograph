@@ -6,7 +6,8 @@ class WordSegment(
     val firstCharacter: Int,
     val length: Int,
     val category: String?,
-    val sourceRule: Rule?
+    val sourceRule: Rule?,
+    val clitic: Boolean = false
 )
 
 class Word(
@@ -89,16 +90,21 @@ class Word(
         graph.getLinksFrom(this).singleOrNull { it.type == Link.Derived && it.toEntity is Word }
 
     fun segmentedText(): String {
-        if (segments.isNullOrEmpty()) return text
+        val segments = segments?.takeIf { it.isNotEmpty() } ?: return text
         return buildString {
             var index = 0
-            for (segment in segments!!) {
+            for ((segIndex, segment) in segments.withIndex()) {
                 if (index < segment.firstCharacter) {
                     append(text.substring(index, segment.firstCharacter))
                 }
                 index = segment.firstCharacter
                 if (index > 0) {
-                    append("-")
+                    if (segment.clitic || segments.getOrNull(segIndex-1)?.clitic == true) {
+                        append("=")
+                    }
+                    else {
+                        append("-")
+                    }
                 }
             }
             append(text.substring(index))
@@ -132,7 +138,8 @@ class Word(
                         beforeLast.firstCharacter,
                         beforeLast.length + last.length,
                         last.category,
-                        last.sourceRule
+                        last.sourceRule,
+                        last.clitic
                     )
                 }
                 else {
