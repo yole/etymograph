@@ -38,7 +38,12 @@ class CorpusController(val graphService: GraphService) {
         val stressIndex: Int?, val stressLength: Int?, val homonym: Boolean,
     )
 
-    data class TranslationViewModel(val text: String, val source: List<SourceRefViewModel>)
+    data class TranslationViewModel(
+        val id: Int,
+        val text: String,
+        val source: List<SourceRefViewModel>,
+        val sourceEditableText: String
+    )
 
     data class CorpusLineViewModel(val words: List<CorpusWordViewModel>)
     data class CorpusTextViewModel(
@@ -84,7 +89,7 @@ class CorpusController(val graphService: GraphService) {
             source.toEditableText(repo),
             notes,
             repo.translationsForText(this).map {
-                TranslationViewModel(it.text, it.source.toViewModel(repo))
+                TranslationViewModel(it.id, it.text, it.source.toViewModel(repo), it.source.toEditableText(repo))
             }
         )
     }

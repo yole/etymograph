@@ -109,7 +109,7 @@ class CorpusText(
 class Translation(
     id: Int,
     val corpusText: CorpusText,
-    val text: String,
+    var text: String,
     source: List<SourceRef>,
     notes: String?
 ) : LangEntity(id, source, notes)

@@ -8,6 +8,7 @@ import {useRouter} from "next/router";
 import Link from "next/link";
 import SourceRefs from "@/components/SourceRefs";
 import CorpusTextForm from "@/components/CorpusTextForm";
+import TranslationForm from "@/components/TranslationForm";
 
 export const config = {
     unstable_runtimeJS: true
@@ -55,8 +56,7 @@ export default function CorpusText(params) {
     const [predefWord, setPredefWord] = useState("")
     const [wordIndex, setWordIndex] = useState(-1)
     const [showTranslationForm, setShowTranslationForm] = useState(false)
-    const [translationText, setTranslationText] = useState("")
-    const [translationSource, setTranslationSource] = useState("")
+    const [editTranslationId, setEditTranslationId] = useState(undefined)
     const router = useRouter()
     useEffect(() => { document.title = "Etymograph : " + corpusText.title })
 
@@ -81,11 +81,20 @@ export default function CorpusText(params) {
         setWordIndex(index)
     }
 
-    function submitTranslation() {
-        addTranslation(router.query.id, translationText, translationSource).then(() => {
+    function toggleTranslationForm(id) {
+        if (showTranslationForm && editTranslationId === id) {
             setShowTranslationForm(false)
-            router.replace(router.asPath)
-        })
+        }
+        else {
+            setShowTranslationForm(true)
+            setEditTranslationId(id)
+        }
+    }
+
+    function translationSubmitted() {
+        setShowTranslationForm(false)
+        setEditTranslationId(undefined)
+        router.replace(router.asPath)
     }
 
     return <>
@@ -129,24 +138,22 @@ export default function CorpusText(params) {
                                      submitted={textSubmitted}/>}
         {corpusText.translations.length > 0 && <>
             <h3>Translations</h3>
-            {corpusText.translations.map(t =>
+            {corpusText.translations.map(t => <>
                 <div>{t.text} <SourceRefs source={t.source}/></div>
-            )}
+                {allowEdit() && <button onClick={() => toggleTranslationForm(t.id)}>Edit translation</button>}
+                {showTranslationForm && editTranslationId === t.id &&
+                    <TranslationForm corpusTextId={router.query.id}
+                                     updateId={t.id}
+                                     initialText={t.text}
+                                     initialSource={t.sourceEditableText}
+                                     submitted={translationSubmitted}/>}
+            </>)}
         </>}
         {allowEdit() && <p>
             <button onClick={() => setEditMode(!editMode)}>{!editMode ? "Edit" : "Cancel"}</button>{' '}
-            <button onClick={() => setShowTranslationForm(!showTranslationForm)}>Add translation</button>
+            <button onClick={() => toggleTranslationForm(undefined)}>Add translation</button>
         </p>}
-        {showTranslationForm && <>
-            <p/>
-            <textarea rows="10" cols="50" value={translationText} onChange={e => setTranslationText(e.target.value)}/>
-            <table><tbody>
-            <tr>
-                <td><label htmlFor="source">Source:</label></td>
-                <td><input type="text" id="source" value={translationSource} onChange={(e) => setTranslationSource(e.target.value)}/></td>
-            </tr>
-            </tbody></table>
-            <button onClick={() => submitTranslation()}>Submit</button>
-        </>}
+        {showTranslationForm && editTranslationId === undefined &&
+            <TranslationForm corpusTextId={router.query.id} submitted={translationSubmitted}/>}
     </>
 }
