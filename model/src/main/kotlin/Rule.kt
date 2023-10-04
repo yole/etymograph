@@ -25,10 +25,10 @@ class RuleBranch(val condition: RuleCondition, val instructions: List<RuleInstru
         return instructions.apply(rule, word, graph)
     }
 
-    fun reverseApply(word: Word): List<String> {
+    fun reverseApply(rule: Rule, word: Word): List<String> {
         var candidates = listOf(word.language.normalizeWord(word.text))
         for (instruction in instructions.reversed()) {
-            candidates = candidates.flatMap { instruction.reverseApply(it, word.language) }
+            candidates = candidates.flatMap { instruction.reverseApply(rule, it, word.language) }
             if (candidates.isEmpty()) break
         }
         candidates = candidates.mapNotNull { replaceStarWithConditionText(it) }
@@ -125,7 +125,7 @@ class Rule(
         if (logic.branches.isEmpty()) {
             return listOf(word.text)
         }
-        return logic.branches.flatMap { it.reverseApply(word) }
+        return logic.branches.flatMap { it.reverseApply(this, word) }
     }
 
     fun applyToPhoneme(phonemes: PhonemeIterator) {

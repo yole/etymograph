@@ -34,8 +34,10 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
 
     private fun changeEnding(word: Word, rule: Rule): Word {
         for (branch in rule.logic.branches) {
-            if (branch.matches(word)) {
-                val condition = branch.condition.findLeafCondition(ConditionType.EndsWith) ?: return word
+            if (branch.matches(word) && this in branch.instructions) {
+                val condition = branch.condition.findLeafConditions(ConditionType.EndsWith)
+                    .firstOrNull { it.matches(word) }
+                    ?: return word
                 val textWithoutEnding = if (condition.phonemeClass != null) {
                     // TODO parse with PhonemeIterator
                     word.text.dropLast(1)
@@ -47,16 +49,29 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
             }
         }
         return word
-
     }
 
-    open fun reverseApply(text: String, language: Language): List<String> {
+    open fun reverseApply(rule: Rule, text: String, language: Language): List<String> {
         return when (type) {
             InstructionType.AddSuffix -> if (text.endsWith(arg)) listOf(text.removeSuffix(arg)) else emptyList()
             InstructionType.AddPrefix -> if (text.startsWith(arg)) listOf(text.removePrefix(arg)) else emptyList()
             InstructionType.RemoveLastCharacter -> listOf("$text*")
+            InstructionType.ChangeEnding -> reverseChangeEnding(text, rule)
             else -> emptyList()
         }
+    }
+
+    private fun reverseChangeEnding(text: String, rule: Rule): List<String> {
+        if (!text.endsWith(arg)) return emptyList()
+        for (branch in rule.logic.branches) {
+            if (this in branch.instructions) {
+                val conditions = branch.condition.findLeafConditions(ConditionType.EndsWith)
+                return conditions.map { condition ->
+                     text.removeSuffix(arg) + if (condition.phonemeClass != null) "*" else condition.parameter
+                }
+            }
+        }
+        return emptyList()
     }
 
     fun apply(phoneme: PhonemeIterator) {
@@ -81,7 +96,7 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
                 throw RuleParseException("Instructions must start with -")
             }
             val trimmed = s.removePrefix("-").trim()
-            for (type in InstructionType.values()) {
+            for (type in InstructionType.entries) {
                 val match = type.regex.matchEntire(trimmed)
                 if (match != null) {
                     val arg = if (match.groups.size > 1) match.groupValues[1] else ""
@@ -120,7 +135,7 @@ class ApplyRuleInstruction(val ruleRef: RuleRef)
             }
     }
 
-    override fun reverseApply(text: String, language: Language): List<String> {
+    override fun reverseApply(rule: Rule, text: String, language: Language): List<String> {
         val targetRule = ruleRef.resolve()
         return targetRule.reverseApply(Word(-1, text, language))
     }
@@ -146,7 +161,7 @@ class ApplySoundRuleInstruction(language: Language, val ruleRef: RuleRef, arg: S
         return word
     }
 
-    override fun reverseApply(text: String, language: Language): List<String> {
+    override fun reverseApply(rule: Rule, text: String, language: Language): List<String> {
         val phonemes = PhonemeIterator(text, language)
         if (phonemes.seek(seekTarget)) {
             if (!ruleRef.resolve().reverseApplyToPhoneme(phonemes)) return emptyList()
@@ -209,7 +224,7 @@ class PrependAppendInstruction(type: InstructionType, language: Language, arg: S
         return word
     }
 
-    override fun reverseApply(text: String, language: Language): List<String> {
+    override fun reverseApply(rule: Rule, text: String, language: Language): List<String> {
         if (literalArg != null) {
             return when (type) {
                 InstructionType.Append -> if (text.endsWith(literalArg)) listOf(text.removeSuffix(literalArg)) else emptyList()

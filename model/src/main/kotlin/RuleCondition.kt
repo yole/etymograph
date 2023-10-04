@@ -29,8 +29,8 @@ sealed class RuleCondition {
     abstract fun matches(phonemes: PhonemeIterator): Boolean
     abstract fun toEditableText(): String
 
-    open fun findLeafCondition(type: ConditionType): LeafRuleCondition? {
-        return null
+    open fun findLeafConditions(type: ConditionType): List<LeafRuleCondition> {
+        return emptyList()
     }
 
     companion object {
@@ -105,8 +105,8 @@ class LeafRuleCondition(
         else
             type.condName
 
-    override fun findLeafCondition(type: ConditionType): LeafRuleCondition? {
-        return if (type == this.type) this else null
+    override fun findLeafConditions(type: ConditionType): List<LeafRuleCondition> {
+        return if (type == this.type) listOf(this) else emptyList()
     }
 
     companion object {
@@ -234,8 +234,8 @@ class OrRuleCondition(val members: List<RuleCondition>) : RuleCondition() {
 
     override fun toEditableText(): String = members.joinToString(OR) { it.toEditableText() }
 
-    override fun findLeafCondition(type: ConditionType): LeafRuleCondition? {
-        return members.firstNotNullOfOrNull { it.findLeafCondition(type) }
+    override fun findLeafConditions(type: ConditionType): List<LeafRuleCondition> {
+        return members.flatMap { it.findLeafConditions(type) }
     }
 
     companion object {
@@ -254,8 +254,8 @@ class AndRuleCondition(val members: List<RuleCondition>) : RuleCondition() {
 
     override fun toEditableText(): String = members.joinToString(AND) { it.toEditableText() }
 
-    override fun findLeafCondition(type: ConditionType): LeafRuleCondition? {
-        return members.firstNotNullOfOrNull { it.findLeafCondition(type) }
+    override fun findLeafConditions(type: ConditionType): List<LeafRuleCondition> {
+        return members.flatMap { it.findLeafConditions(type) }
     }
 
     companion object {

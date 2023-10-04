@@ -372,6 +372,21 @@ class RuleTest : QBaseTest() {
     }
 
     @Test
+    fun reverseApplyChangeEnding() {
+        val rule = parseRule(q, q, "word ends with 'ea':\n- change ending to 'ie'")
+        val candidate = rule.reverseApply(q.word("yaimie"))
+        assertEquals("yaimea", candidate.single())
+    }
+
+    @Test
+    fun reverseApplyChangeEndingOr() {
+        val rule = parseRule(q, q, "word ends with 'ea' or word ends with 'ao':\n- change ending to 'ie'")
+        val candidates = rule.reverseApply(q.word("yaimie"))
+        assertEquals(2, candidates.size)
+        assertTrue("yaimao" in candidates)
+    }
+
+    @Test
     fun reverseApplyToPhoneme() {
         val rule = parseRule(q, q, "sound is 'i':\n- new sound is 'í'")
         val phonemes = PhonemeIterator(q.word("círa"))
@@ -380,7 +395,7 @@ class RuleTest : QBaseTest() {
         assertEquals("cira", phonemes.result())
 
         val applySoundRuleInstruction = ApplySoundRuleInstruction(q, RuleRef.to(rule), "first vowel")
-        assertEquals("cira", applySoundRuleInstruction.reverseApply("círa", q).single())
+        assertEquals("cira", applySoundRuleInstruction.reverseApply(rule, "círa", q).single())
     }
 
     @Test
