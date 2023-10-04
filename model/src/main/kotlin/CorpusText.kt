@@ -13,7 +13,7 @@ class CorpusText(
     source: List<SourceRef>,
     notes: String?
 ): LangEntity(id, source, notes) {
-    private data class WordText(val baseText: String, val normalizedText: String)
+    private data class WordText(val baseText: String, val normalizedText: String, val index: Int)
 
     private val _words = words.toMutableList()
     private var _text: String = text
@@ -22,9 +22,8 @@ class CorpusText(
         get() = _text
         set(value) {
             val wordMap = mutableMapOf<String, MutableList<Word?>>()
-            var currentIndex = 0
             for (word in iterateWords()) {
-                wordMap.getOrPut(word.normalizedText) { arrayListOf() }.add(_words.getOrNull(currentIndex++))
+                wordMap.getOrPut(word.normalizedText) { arrayListOf() }.add(_words.getOrNull(word.index))
             }
 
             _text = value
@@ -49,7 +48,7 @@ class CorpusText(
     fun mapToLines(repo: GraphRepository): List<CorpusTextLine> {
         var currentIndex = 0
         return text.split("\n").map { line ->
-            val textWords = splitIntoNormalizedWords(line)
+            val textWords = splitIntoNormalizedWords(line, currentIndex)
             CorpusTextLine(textWords.map { tw ->
                 val word = _words.getOrNull(currentIndex)
                 if (word != null) {
@@ -63,27 +62,28 @@ class CorpusText(
         }
     }
 
-    private fun splitIntoNormalizedWords(line: String): List<WordText> {
+    private fun splitIntoNormalizedWords(line: String, lineStartIndex: Int): List<WordText> {
+        var currentIndex = lineStartIndex
         return line.split(' ').map {
             val cleanText = it.trimEnd(*punctuation).replace("[", "").replace("]", "")
-            WordText(it, language.normalizeWord(cleanText))
+            WordText(it, language.normalizeWord(cleanText), currentIndex++)
         }
     }
 
     fun containsWord(word: Word): Boolean {
         if (word in _words) return true
-        if (_words.none { w -> w != null && w.text == word.text && w.id != word.id }) {
-            for (wordText in iterateWords()) {
-                if (wordText.normalizedText == word.text) return true
-            }
+        for (wordText in iterateWords()) {
+            if (wordText.normalizedText == word.text && _words.getOrNull(wordText.index) == null) return true
         }
         return false
     }
 
     private fun iterateWords(): Sequence<WordText> {
+        var currentIndex = 0
         return sequence {
             for (line in text.split('\n')) {
-                for (wordText in splitIntoNormalizedWords(line)) {
+                for (wordText in splitIntoNormalizedWords(line, currentIndex)) {
+                    currentIndex++
                     yield(wordText)
                 }
             }

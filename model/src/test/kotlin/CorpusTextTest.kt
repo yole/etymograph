@@ -44,4 +44,26 @@ class CorpusTextTest : QBaseTest() {
         val lines = corpusText.mapToLines(repo)
         assertEquals("laurie", lines[0].corpusWords[1].normalizedText)
     }
+
+    @Test
+    fun testAttestations() {
+        val repo = InMemoryGraphRepository()
+        val eaV = q.word("ea", "be")
+        val eaN = q.word("ea", "being")
+        val ct1 = repo.addCorpusText("ea", null, q, listOf(eaV))
+        val ct2 = repo.addCorpusText("ea", null, q, listOf(eaN))
+
+        val attestations = repo.findAttestations(eaV)
+        assertEquals(1, attestations.size)
+    }
+
+    @Test
+    fun testAttestationsNotAssigned() {
+        val repo = InMemoryGraphRepository()
+        val eaV = q.word("lantar", "fall")
+        val ct1 = repo.addCorpusText("ai laurie lantar", null, q)
+
+        val attestations = repo.findAttestations(eaV)
+        assertEquals(1, attestations.size)
+    }
 }

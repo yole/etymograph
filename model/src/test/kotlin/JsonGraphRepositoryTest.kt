@@ -51,7 +51,7 @@ class JsonGraphRepositoryTest : QBaseTest() {
     fun serializeTranslation() {
         val repo = JsonGraphRepository(null)
         repo.addLanguage(q)
-        val corpusText = repo.addCorpusText("abc", null, q, emptyList(), emptyList(), null)
+        val corpusText = repo.addCorpusText("abc", null, q)
         repo.addTranslation(corpusText, "def", emptyList())
         val repo2 = repo.roundtrip()
         val corpusText2 = repo2.corpusTextById(corpusText.id)!!

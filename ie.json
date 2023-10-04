@@ -3889,6 +3889,77 @@
             "text": "uherije",
             "lang": "Lyc",
             "pos": "NP"
+        },
+        {
+            "id": 786,
+            "text": "mejadẽ",
+            "lang": "Lyc"
+        },
+        {
+            "id": 789,
+            "text": "adẽ",
+            "lang": "Lyc"
+        },
+        {
+            "id": 790,
+            "text": "seine",
+            "lang": "Lyc"
+        },
+        {
+            "id": 792,
+            "text": "esedeplẽmeje",
+            "lang": "Lyc"
+        },
+        {
+            "id": 795,
+            "text": "ijamara",
+            "lang": "Lyc",
+            "pos": "NP"
+        },
+        {
+            "id": 797,
+            "text": "setteri",
+            "lang": "Lyc"
+        },
+        {
+            "id": 799,
+            "text": "tteri",
+            "lang": "Lyc"
+        },
+        {
+            "id": 800,
+            "text": "meine",
+            "lang": "Lyc"
+        },
+        {
+            "id": 802,
+            "text": "meijene",
+            "lang": "Lyc"
+        },
+        {
+            "id": 804,
+            "text": "sẽne",
+            "lang": "Lyc"
+        },
+        {
+            "id": 806,
+            "text": "pddẽte",
+            "lang": "Lyc"
+        },
+        {
+            "id": 807,
+            "text": "pddẽ",
+            "lang": "Lyc"
+        },
+        {
+            "id": 809,
+            "text": "hrppittãne",
+            "lang": "Lyc"
+        },
+        {
+            "id": 811,
+            "text": "ttãne",
+            "lang": "Lyc"
         }
     ],
     "rules": [
@@ -6570,6 +6641,14 @@
             "ruleIds": [
                 117
             ]
+        },
+        {
+            "from": 789,
+            "to": 632,
+            "type": ">",
+            "ruleIds": [
+                565
+            ]
         }
     ],
     "corpusTexts": [
@@ -7818,6 +7897,144 @@
                 781,
                 null
             ]
+        },
+        {
+            "id": 785,
+            "text": "esedeplẽmeje: mejadẽ: tesi: miñti\nawahai: xupa: ehbi seine: epñ: puñtẽ\nmei: [a]wahi: tesi: aladahali -)",
+            "title": "TL 114",
+            "lang": "Lyc",
+            "wordIds": [
+                792,
+                786,
+                null,
+                544,
+                null,
+                null,
+                null,
+                790,
+                null,
+                null,
+                769,
+                null,
+                null,
+                null,
+                null
+            ]
+        },
+        {
+            "id": 794,
+            "text": "ebẽñnẽ: prñnawã mene: prñnawatẽ \nijamara: terssiχleh◊: tideimi malijahi: \nwedrẽñnehi: aχãtaza: me pibijeti\nprñnezi: setteri: adaijẽ meine ñtawãtã\npibijeti: tere ebehẽ meijene: hrppi tãti\ntike: ijamaraje: tibe: ladi: ehbi: hrpp[i=(i)je mei]\ntadi tike: kbi: tike χttbadi: ẽti: prñn[ezi tibe]\nkbijehi: tike: me httẽmi: ãnabahẽ: se .[.......]\nwedrẽñni: ãm͂mãma km͂ma: sñta: wawã: se ...\nχawã: sẽne: tesẽti: qãñti: trm͂milijẽti\nse itlehi: punemedezi: se kumezeiti: [prñnezi]\nse teteri : uhazata: mali: wedrẽñni: hrp[.....]\nsei agã: ijase: hrmm͂ã: ebẽ: me pijaxã: m[......]\nmupm͂me: miñte meti mazaiti: terẽ: ekẽ...\ntike: hrppittãne: kbi pddẽte [s]e ebei [...\nuhazata tere: ebehi: kume[h]i: hrppẽ [...\nse pijaxa meipẽme kumezei: eme: une .\nebette",
+            "title": "TL 149",
+            "lang": "Lyc",
+            "wordIds": [
+                95,
+                null,
+                null,
+                null,
+                null,
+                795,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                797,
+                null,
+                800,
+                null,
+                null,
+                null,
+                null,
+                802,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                804,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                758,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                169,
+                null,
+                null,
+                null,
+                null,
+                809,
+                null,
+                806,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null
+            ]
         }
     ],
     "paradigms": [
@@ -8541,6 +8758,73 @@
                 201,
                 145
             ]
+        },
+        {
+            "id": 788,
+            "compoundId": 786,
+            "componentIds": [
+                181,
+                789
+            ]
+        },
+        {
+            "id": 791,
+            "compoundId": 790,
+            "componentIds": [
+                102,
+                391,
+                773
+            ]
+        },
+        {
+            "id": 798,
+            "compoundId": 797,
+            "componentIds": [
+                102,
+                799
+            ]
+        },
+        {
+            "id": 801,
+            "compoundId": 800,
+            "componentIds": [
+                181,
+                391,
+                773
+            ]
+        },
+        {
+            "id": 803,
+            "compoundId": 802,
+            "componentIds": [
+                181,
+                212,
+                773
+            ]
+        },
+        {
+            "id": 805,
+            "compoundId": 804,
+            "componentIds": [
+                368,
+                675
+            ]
+        },
+        {
+            "id": 808,
+            "compoundId": 806,
+            "componentIds": [
+                807,
+                199
+            ]
+        },
+        {
+            "id": 810,
+            "compoundId": 809,
+            "componentIds": [
+                110,
+                811
+            ]
         }
     ],
     "translations": [
@@ -8739,6 +9023,28 @@
                 {
                     "pubId": 1,
                     "refText": "209"
+                }
+            ]
+        },
+        {
+            "id": 793,
+            "corpusTextId": 785,
+            "text": "On behalf of Esedeplẽmi the minti has made an oath/sworn agreement with regard to the one who lets down/inters(?) in this tomb. And afterwards they enrolled/admitted him (i.e. Esedeplẽmi). And for him, (namely) for the one who lets down/inters(?) (they have established) under oath/by (means of) the sworn agreement for the allocation -> (ada).",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "212"
+                }
+            ]
+        },
+        {
+            "id": 796,
+            "corpusTextId": 794,
+            "text": "This building has built Ijamara, the son of Terssiχle, the priest of the animal sacrifice for Malija of Rhodiapolis (?). And the household and the city (regularly) give (lit. \"gives\") (the amount of) ada (as agreed upon). And they do (lit. \"it does\") not (regularly) give for/to/in this district(?) access(?). ANd they shall not place anyone on top of him, (namely) on Ijamara or his wife. Should anyone place anyone else on to[p of him] by (means of) harm(?), a household member or] anyone of another (household) - (on him will be) the wrath of the anabahe and [...] of Rhodiapolis(?). ... As a fine(?) on the whole(?) 10(?) cow(s) and ... sheep. And the Lycian oath gods will destroy him [...] and the itlehi(?) of the totality(?). And the [household] and the city shall sacrifice every year to Malija of Rhodiapolis(?) fo[r] (the benefit of) ... And I made for/to her/him/therein, (namely) for/to ijas(?) this temenos(?) and I gave x[...] for/to the four minti. And they maza(i) for themselves the district(?). x ... to place anyone else on top of the place [a]nd here [...] every year in this sacred(?) district(?) (the(?)/a(?)) hrppe-? and I gave meipeme to sacrifice xxx for/to them.",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "226"
                 }
             ]
         }

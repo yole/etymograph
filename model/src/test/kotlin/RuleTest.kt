@@ -515,7 +515,7 @@ class RuleTest : QBaseTest() {
      */
 }
 
-fun Language.word(text: String) = Word(-1, text, this)
+fun Language.word(text: String, gloss: String? = null) = Word(-1, text, this, gloss)
 
 fun Language.parseContext(repo: GraphRepository? = null) = createParseContext(this, this, repo)
 
