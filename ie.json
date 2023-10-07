@@ -3955,7 +3955,16 @@
         {
             "id": 807,
             "text": "pddẽ",
-            "lang": "Lyc"
+            "lang": "Lyc",
+            "gloss": "place",
+            "fullGloss": "place, precinct",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": 2,
+                    "refText": "48"
+                }
+            ]
         },
         {
             "id": 809,
@@ -4018,8 +4027,267 @@
             "lang": "Lyc"
         },
         {
-            "id": 824,
-            "text": "pddẽhadẽ",
+            "id": 825,
+            "text": "hadẽ",
+            "lang": "Lyc"
+        },
+        {
+            "id": 826,
+            "text": "ha",
+            "lang": "Lyc",
+            "gloss": "release",
+            "fullGloss": "release, let go",
+            "pos": "V",
+            "sourceRefs": [
+                {
+                    "pubId": 2,
+                    "refText": "23"
+                }
+            ]
+        },
+        {
+            "id": 827,
+            "text": "trm͂mile",
+            "lang": "Lyc"
+        },
+        {
+            "id": 828,
+            "text": "ijeru",
+            "lang": "Lyc"
+        },
+        {
+            "id": 829,
+            "text": "ijera",
+            "lang": "Lyc",
+            "pos": "NP"
+        },
+        {
+            "id": 830,
+            "text": "senatrbbijẽmi",
+            "lang": "Lyc"
+        },
+        {
+            "id": 832,
+            "text": "natrbbijẽmi",
+            "lang": "Lyc"
+        },
+        {
+            "id": 833,
+            "text": "natrbbijẽmi",
+            "lang": "Lyc",
+            "gloss": "Natrbbijẽmi",
+            "pos": "NP"
+        },
+        {
+            "id": 834,
+            "text": "sejarñna",
+            "lang": "Lyc"
+        },
+        {
+            "id": 836,
+            "text": "arñna",
+            "lang": "Lyc",
+            "gloss": "Xanthos/Xanthian"
+        },
+        {
+            "id": 837,
+            "text": "asaχlazu",
+            "lang": "Lyc"
+        },
+        {
+            "id": 838,
+            "text": "asaχlaza",
+            "lang": "Lyc",
+            "gloss": "governor",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": 2,
+                    "refText": "6"
+                }
+            ]
+        },
+        {
+            "id": 839,
+            "text": "erttimeli",
+            "lang": "Lyc"
+        },
+        {
+            "id": 840,
+            "text": "erttimeli",
+            "lang": "Lyc",
+            "gloss": "Erttimeli",
+            "pos": "NP"
+        },
+        {
+            "id": 841,
+            "text": "mehñtitubedẽ",
+            "lang": "Lyc"
+        },
+        {
+            "id": 843,
+            "text": "hñti",
+            "lang": "Lyc"
+        },
+        {
+            "id": 844,
+            "text": "tubedẽ",
+            "lang": "Lyc"
+        },
+        {
+            "id": 845,
+            "text": "tube",
+            "lang": "Lyc",
+            "pos": "V"
+        },
+        {
+            "id": 846,
+            "text": "arus",
+            "lang": "Lyc"
+        },
+        {
+            "id": 847,
+            "text": "sejepewẽtlm̃mẽi",
+            "lang": "Lyc"
+        },
+        {
+            "id": 849,
+            "text": "epewẽtlm̃mẽi",
+            "lang": "Lyc"
+        },
+        {
+            "id": 850,
+            "text": "epewẽtlm̃me",
+            "lang": "Lyc",
+            "gloss": "perioikos",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": 2,
+                    "refText": "14"
+                }
+            ]
+        },
+        {
+            "id": 851,
+            "text": "arñnãi",
+            "lang": "Lyc"
+        },
+        {
+            "id": 852,
+            "text": "m͂maitẽ",
+            "lang": "Lyc"
+        },
+        {
+            "id": 853,
+            "text": "m͂mai",
+            "lang": "Lyc",
+            "gloss": "build",
+            "fullGloss": "build, install (or similar)",
+            "pos": "V",
+            "sourceRefs": [
+                {
+                    "pubId": 2,
+                    "refText": "42"
+                }
+            ]
+        },
+        {
+            "id": 854,
+            "text": "kumezijẽ",
+            "lang": "Lyc"
+        },
+        {
+            "id": 855,
+            "text": "kumezije",
+            "lang": "Lyc",
+            "gloss": "sacred precinct",
+            "pos": "N"
+        },
+        {
+            "id": 856,
+            "text": "θθẽ",
+            "lang": "Lyc"
+        },
+        {
+            "id": 857,
+            "text": "θθe",
+            "lang": "Lyc",
+            "gloss": "altar",
+            "fullGloss": "place of sacrifice, altar",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": 2,
+                    "refText": "74"
+                }
+            ]
+        },
+        {
+            "id": 858,
+            "text": "χñtawati",
+            "lang": "Lyc"
+        },
+        {
+            "id": 859,
+            "text": "χñtawati",
+            "lang": "Lyc",
+            "gloss": "ruler",
+            "fullGloss": "ruler, king",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": 2,
+                    "refText": "84"
+                }
+            ]
+        },
+        {
+            "id": 860,
+            "text": "χbidẽñni",
+            "lang": "Lyc"
+        },
+        {
+            "id": 861,
+            "text": "χbidẽñni",
+            "lang": "Lyc",
+            "gloss": "Kaunian",
+            "sourceRefs": [
+                {
+                    "pubId": 2,
+                    "refText": "82"
+                }
+            ]
+        },
+        {
+            "id": 862,
+            "text": "sejarKKazuma",
+            "lang": "Lyc"
+        },
+        {
+            "id": 864,
+            "text": "arKKazuma",
+            "lang": "Lyc",
+            "pos": "NP"
+        },
+        {
+            "id": 865,
+            "text": "sẽñnaitẽ",
+            "lang": "Lyc"
+        },
+        {
+            "id": 867,
+            "text": "ñn",
+            "lang": "Lyc"
+        },
+        {
+            "id": 868,
+            "text": "kumazu",
+            "lang": "Lyc"
+        },
+        {
+            "id": 869,
+            "text": "mahãna",
             "lang": "Lyc"
         }
     ],
@@ -4058,6 +4326,20 @@
                         "type": "ru.yole.etymograph.LeafRuleConditionData",
                         "cond": "EndsWith",
                         "characters": "e"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "NoChange",
+                            "args": [
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "characters": "i"
                     }
                 },
                 {
@@ -4192,6 +4474,20 @@
                         "type": "ru.yole.etymograph.LeafRuleConditionData",
                         "cond": "EndsWith",
                         "characters": "e"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "NoChange",
+                            "args": [
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "characters": "i"
                     }
                 }
             ],
@@ -4426,12 +4722,7 @@
                 {
                     "instructions": [
                         {
-                            "type": "RemoveLastCharacter",
-                            "args": [
-                            ]
-                        },
-                        {
-                            "type": "AddSuffix",
+                            "type": "ChangeEnding",
                             "args": [
                                 "ãi"
                             ]
@@ -4442,13 +4733,25 @@
                         "cond": "EndsWith",
                         "characters": "a"
                     }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeEnding",
+                            "args": [
+                                "ẽi"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "characters": "e"
+                    }
                 }
             ],
             "addedCategories": ".NOM.PL",
-            "replacedCategories": "",
             "fromPOS": "N",
-            "toPOS": "",
-            "notes": "",
             "preInstructions": [
             ]
         },
@@ -6731,6 +7034,139 @@
             "from": 822,
             "to": 102,
             "type": "="
+        },
+        {
+            "from": 825,
+            "to": 826,
+            "type": ">",
+            "ruleIds": [
+                565
+            ]
+        },
+        {
+            "from": 827,
+            "to": 401,
+            "type": ">",
+            "ruleIds": [
+                123
+            ]
+        },
+        {
+            "from": 828,
+            "to": 829,
+            "type": ">",
+            "ruleIds": [
+                118
+            ]
+        },
+        {
+            "from": 832,
+            "to": 833,
+            "type": ">",
+            "ruleIds": [
+                116
+            ]
+        },
+        {
+            "from": 837,
+            "to": 838,
+            "type": ">",
+            "ruleIds": [
+                118
+            ]
+        },
+        {
+            "from": 839,
+            "to": 840,
+            "type": ">",
+            "ruleIds": [
+                116
+            ]
+        },
+        {
+            "from": 844,
+            "to": 845,
+            "type": ">",
+            "ruleIds": [
+                565
+            ]
+        },
+        {
+            "from": 849,
+            "to": 850,
+            "type": ">",
+            "ruleIds": [
+                269
+            ]
+        },
+        {
+            "from": 851,
+            "to": 836,
+            "type": ">",
+            "ruleIds": [
+                269
+            ]
+        },
+        {
+            "from": 852,
+            "to": 853,
+            "type": ">",
+            "ruleIds": [
+                577
+            ]
+        },
+        {
+            "from": 854,
+            "to": 855,
+            "type": ">",
+            "ruleIds": [
+                116
+            ]
+        },
+        {
+            "from": 856,
+            "to": 857,
+            "type": ">",
+            "ruleIds": [
+                116
+            ]
+        },
+        {
+            "from": 858,
+            "to": 859,
+            "type": ">",
+            "ruleIds": [
+                119
+            ]
+        },
+        {
+            "from": 860,
+            "to": 861,
+            "type": ">",
+            "ruleIds": [
+                119
+            ]
+        },
+        {
+            "from": 867,
+            "to": 728,
+            "type": "="
+        },
+        {
+            "from": 868,
+            "to": 665,
+            "type": ">",
+            "ruleIds": [
+                118
+            ]
+        },
+        {
+            "from": 869,
+            "to": 480,
+            "type": ">",
+            "ruleIds": [
+                123
+            ]
         }
     ],
     "corpusTexts": [
@@ -8121,7 +8557,7 @@
         },
         {
             "id": 813,
-            "text": "ẽke: trm͂misñ: χssaθrapazate: pigesere:\nkatamlah: tideimi: sẽñneñtepddẽhadẽ:\ntrm̃mile: pddẽnehm̃mis:\nijeru: senatrbbijẽmi: sejarñna:\nasaχlazu: erttimeli: mehñtitubedẽ:\narus: sejepewẽtlm̃mẽi: arñnãi:\nm̃maitẽ: kumezijẽ:θθẽ: χñtawati:\nχbidẽñni: sejarKKazuma: χñtawati:\nsẽñnaitẽ: kumazu: mahãna: ebette:\neseimiju: qñturahahñ: tideimi:\nsede: eseimijaje: χuwatiti: seipijẽtẽ:\narawã: ehbijẽ: esiti: sedeliñtãtẽ:\nteteri: sejepewẽtlm̃mẽi:\nhrm̃mada: ttaraha: meχbaitẽ: zã:\neseχesñtedi: qñtati: sepigrẽi:\nsẽñteñtekm̃mẽ: sejẽti: θθẽ: sttatiteli:\nsetahñtãi: χñtawatehi: χbidẽñnehi:\nsejarKKazumahi: seipibiti:\nuhazata: ada: IH00: ẽti: tllaχñta:\narñna: sesm̃mati: χddazas: epide:\narawa: hãtikm̃mẽtis: meipibiti:\nsiχlas: sewajaitẽ: kumaha: ẽtisttali:\nppuweti: km̃mẽ: ebehi: χñtawataha: \nχbidãñnaha: serKKazumaha:\nmeijesitẽniti: hlm̃mipijata\nmedetewẽ: kumezidi: nuredi: nuredi:\narã: kumehedi: seuhazata: uwadi:\nχñtawati: χbidẽñni: sejerKKazuma:\nmekumezidi: seimija: sede: seimijaje\nχuwatiti: seijehrijaitẽ:\ntasa: mere: ebette: teteri: arñnas:\nsejepewẽtlm̃mẽi: arñnãi: metepituwẽti:\nmara: ebeija: ẽti: sttali:\nppuwetimẽ: ebehi: sewene: χttadi:\ntike: ebineñtewẽ: mahãna: ebette:\nebine: ñtewẽ: kumazi: ebehi: χttademejẽ:\ntike: mepddẽ: mahãna: sm̃mati:\nebette: sejẽni: qlahi: ebijehi\npñtrẽñni: setideime: ehbije: sejelijãna:\npigesereje: meijeserihhati:\nmehriqla: asñne: pzzititi",
+            "text": "ẽke: trm͂misñ: χssaθrapazate: pigesere:\nkatamlah: tideimi: sẽñneñtepddẽhadẽ:\ntrm͂mile: pddẽnehm̃mis:\nijeru: senatrbbijẽmi: sejarñna:\nasaχlazu: erttimeli: mehñtitubedẽ:\narus: sejepewẽtlm̃mẽi: arñnãi:\nm͂maitẽ: kumezijẽ: θθẽ: χñtawati:\nχbidẽñni: sejarKKazuma: χñtawati:\nsẽñnaitẽ: kumazu: mahãna: ebette:\neseimiju: qñturahahñ: tideimi:\nsede: eseimijaje: χuwatiti: seipijẽtẽ:\narawã: ehbijẽ: esiti: sedeliñtãtẽ:\nteteri: sejepewẽtlm̃mẽi:\nhrm̃mada: ttaraha: meχbaitẽ: zã:\neseχesñtedi: qñtati: sepigrẽi:\nsẽñteñtekm̃mẽ: sejẽti: θθẽ: sttatiteli:\nsetahñtãi: χñtawatehi: χbidẽñnehi:\nsejarKKazumahi: seipibiti:\nuhazata: ada: IH00: ẽti: tllaχñta:\narñna: sesm̃mati: χddazas: epide:\narawa: hãtikm̃mẽtis: meipibiti:\nsiχlas: sewajaitẽ: kumaha: ẽtisttali:\nppuweti: km̃mẽ: ebehi: χñtawataha: \nχbidãñnaha: serKKazumaha:\nmeijesitẽniti: hlm̃mipijata\nmedetewẽ: kumezidi: nuredi: nuredi:\narã: kumehedi: seuhazata: uwadi:\nχñtawati: χbidẽñni: sejerKKazuma:\nmekumezidi: seimija: sede: seimijaje\nχuwatiti: seijehrijaitẽ:\ntasa: mere: ebette: teteri: arñnas:\nsejepewẽtlm̃mẽi: arñnãi: metepituwẽti:\nmara: ebeija: ẽti: sttali:\nppuwetimẽ: ebehi: sewene: χttadi:\ntike: ebineñtewẽ: mahãna: ebette:\nebine: ñtewẽ: kumazi: ebehi: χttademejẽ:\ntike: mepddẽ: mahãna: sm̃mati:\nebette: sejẽni: qlahi: ebijehi\npñtrẽñni: setideime: ehbije: sejelijãna:\npigesereje: meijeserihhati:\nmehriqla: asñne: pzzititi",
             "title": "N320",
             "lang": "Lyc",
             "wordIds": [
@@ -8132,26 +8568,27 @@
                 819,
                 null,
                 821,
+                827,
                 null,
+                828,
+                830,
+                834,
+                837,
+                839,
+                841,
+                846,
+                847,
+                851,
+                852,
+                854,
+                856,
+                858,
+                860,
+                862,
                 null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
+                865,
+                868,
+                869,
                 null,
                 null,
                 null,
@@ -9065,7 +9502,58 @@
                 822,
                 728,
                 364,
-                824
+                807,
+                825
+            ]
+        },
+        {
+            "id": 831,
+            "compoundId": 830,
+            "componentIds": [
+                102,
+                832
+            ]
+        },
+        {
+            "id": 835,
+            "compoundId": 834,
+            "componentIds": [
+                102,
+                836
+            ]
+        },
+        {
+            "id": 842,
+            "compoundId": 841,
+            "componentIds": [
+                181,
+                843,
+                844
+            ]
+        },
+        {
+            "id": 848,
+            "compoundId": 847,
+            "componentIds": [
+                102,
+                849
+            ]
+        },
+        {
+            "id": 863,
+            "compoundId": 862,
+            "componentIds": [
+                102,
+                864
+            ]
+        },
+        {
+            "id": 866,
+            "compoundId": 865,
+            "componentIds": [
+                822,
+                867,
+                688
             ]
         }
     ],

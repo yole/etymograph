@@ -118,7 +118,7 @@ class Rule(
                 return deriveWord(word, resultWord.text, resultWord.stressedPhonemeIndex, resultWord.segments)
             }
         }
-        return word
+        return Word(-1, "?", word.language)
     }
 
     fun reverseApply(word: Word): List<String> {
