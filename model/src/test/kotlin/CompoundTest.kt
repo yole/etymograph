@@ -39,4 +39,17 @@ class CompoundTest : QBaseTest() {
         compound.components.add(mir)
         Assert.assertEquals(1, repo.compoundWords(q).size)
     }
+
+    @Test
+    fun deleteWordFromCompound() {
+        val repo = InMemoryGraphRepository().apply { addLanguage(q) }
+        val fara = repo.addWord("fara")
+        val mir = repo.addWord("mir")
+        val faramir = repo.addWord("faramir")
+        val compound = repo.createCompound(faramir, fara, emptyList(), null)
+        compound.components.add(mir)
+
+        repo.deleteWord(mir)
+        Assert.assertEquals(1, repo.findComponentsByCompound(faramir).first().components.size)
+    }
 }

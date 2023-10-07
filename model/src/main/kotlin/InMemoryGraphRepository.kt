@@ -311,6 +311,14 @@ open class InMemoryGraphRepository : GraphRepository() {
 
         val wordsByText = mapOfWordsByText(word.language, word.text)
         wordsByText.remove(word)
+
+        compounds.remove(word.id)
+        for (compoundList in compounds.values) {
+            for (compound in compoundList) {
+                compound.components.remove(word)
+            }
+        }
+
         deleteLangEntity(word)
     }
 

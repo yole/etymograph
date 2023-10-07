@@ -667,7 +667,11 @@
             "id": 102,
             "text": "se",
             "lang": "Lyc",
-            "gloss": "and"
+            "gloss": "and",
+            "pos": "CONJ",
+            "classes": [
+                "clitic"
+            ]
         },
         {
             "id": 103,
@@ -3079,18 +3083,6 @@
             "pos": "NP"
         },
         {
-            "id": 608,
-            "text": "trmm͂isñ",
-            "lang": "Lyc"
-        },
-        {
-            "id": 609,
-            "text": "trmm͂is",
-            "lang": "Lyc",
-            "gloss": "Lycia",
-            "pos": "N"
-        },
-        {
             "id": 610,
             "text": "χñtewete",
             "lang": "Lyc"
@@ -3973,6 +3965,61 @@
         {
             "id": 811,
             "text": "ttãne",
+            "lang": "Lyc"
+        },
+        {
+            "id": 814,
+            "text": "trm̃misñ",
+            "lang": "Lyc"
+        },
+        {
+            "id": 815,
+            "text": "trm̃mis",
+            "lang": "Lyc",
+            "pos": "N"
+        },
+        {
+            "id": 816,
+            "text": "trm͂misñ",
+            "lang": "Lyc"
+        },
+        {
+            "id": 817,
+            "text": "trm͂mis",
+            "lang": "Lyc",
+            "gloss": "Lycia",
+            "pos": "N"
+        },
+        {
+            "id": 818,
+            "text": "pigesere",
+            "lang": "Lyc",
+            "pos": "NP"
+        },
+        {
+            "id": 819,
+            "text": "katamlah",
+            "lang": "Lyc"
+        },
+        {
+            "id": 820,
+            "text": "katamla",
+            "lang": "Lyc",
+            "pos": "NP"
+        },
+        {
+            "id": 821,
+            "text": "sẽñneñtepddẽhadẽ",
+            "lang": "Lyc"
+        },
+        {
+            "id": 822,
+            "text": "sẽ",
+            "lang": "Lyc"
+        },
+        {
+            "id": 824,
+            "text": "pddẽhadẽ",
             "lang": "Lyc"
         }
     ],
@@ -6231,14 +6278,6 @@
             ]
         },
         {
-            "from": 608,
-            "to": 609,
-            "type": ">",
-            "ruleIds": [
-                116
-            ]
-        },
-        {
             "from": 610,
             "to": 611,
             "type": ">",
@@ -6663,6 +6702,35 @@
             "ruleIds": [
                 565
             ]
+        },
+        {
+            "from": 814,
+            "to": 815,
+            "type": ">",
+            "ruleIds": [
+                116
+            ]
+        },
+        {
+            "from": 816,
+            "to": 817,
+            "type": ">",
+            "ruleIds": [
+                116
+            ]
+        },
+        {
+            "from": 819,
+            "to": 820,
+            "type": ">",
+            "ruleIds": [
+                117
+            ]
+        },
+        {
+            "from": 822,
+            "to": 102,
+            "type": "="
         }
     ],
     "corpusTexts": [
@@ -7529,7 +7597,7 @@
         },
         {
             "id": 603,
-            "text": "ebẽñnẽ prñnawã mẽtiprñnawatẽ ddapssmm͂a padrmm͂ah tideimi\nhrppi prñnezi ehbi urebillaha trmm͂isñ χñtewete teri\narttum͂para sẽtalahhãti miñti adai O-",
+            "text": "ebẽñnẽ prñnawã mẽtiprñnawatẽ ddapssmm͂a padrmm͂ah tideimi\nhrppi prñnezi ehbi urebillaha trm͂misñ χñtewete teri\narttum͂para sẽtalahhãti miñti adai O-",
             "title": "TL 11",
             "lang": "Lyc",
             "wordIds": [
@@ -7543,13 +7611,14 @@
                 null,
                 null,
                 607,
-                608,
+                816,
                 610,
                 613,
                 614,
                 615,
                 544,
-                621
+                621,
+                null
             ]
         },
         {
@@ -8031,6 +8100,155 @@
                 809,
                 null,
                 806,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null
+            ]
+        },
+        {
+            "id": 813,
+            "text": "ẽke: trm͂misñ: χssaθrapazate: pigesere:\nkatamlah: tideimi: sẽñneñtepddẽhadẽ:\ntrm̃mile: pddẽnehm̃mis:\nijeru: senatrbbijẽmi: sejarñna:\nasaχlazu: erttimeli: mehñtitubedẽ:\narus: sejepewẽtlm̃mẽi: arñnãi:\nm̃maitẽ: kumezijẽ:θθẽ: χñtawati:\nχbidẽñni: sejarKKazuma: χñtawati:\nsẽñnaitẽ: kumazu: mahãna: ebette:\neseimiju: qñturahahñ: tideimi:\nsede: eseimijaje: χuwatiti: seipijẽtẽ:\narawã: ehbijẽ: esiti: sedeliñtãtẽ:\nteteri: sejepewẽtlm̃mẽi:\nhrm̃mada: ttaraha: meχbaitẽ: zã:\neseχesñtedi: qñtati: sepigrẽi:\nsẽñteñtekm̃mẽ: sejẽti: θθẽ: sttatiteli:\nsetahñtãi: χñtawatehi: χbidẽñnehi:\nsejarKKazumahi: seipibiti:\nuhazata: ada: IH00: ẽti: tllaχñta:\narñna: sesm̃mati: χddazas: epide:\narawa: hãtikm̃mẽtis: meipibiti:\nsiχlas: sewajaitẽ: kumaha: ẽtisttali:\nppuweti: km̃mẽ: ebehi: χñtawataha: \nχbidãñnaha: serKKazumaha:\nmeijesitẽniti: hlm̃mipijata\nmedetewẽ: kumezidi: nuredi: nuredi:\narã: kumehedi: seuhazata: uwadi:\nχñtawati: χbidẽñni: sejerKKazuma:\nmekumezidi: seimija: sede: seimijaje\nχuwatiti: seijehrijaitẽ:\ntasa: mere: ebette: teteri: arñnas:\nsejepewẽtlm̃mẽi: arñnãi: metepituwẽti:\nmara: ebeija: ẽti: sttali:\nppuwetimẽ: ebehi: sewene: χttadi:\ntike: ebineñtewẽ: mahãna: ebette:\nebine: ñtewẽ: kumazi: ebehi: χttademejẽ:\ntike: mepddẽ: mahãna: sm̃mati:\nebette: sejẽni: qlahi: ebijehi\npñtrẽñni: setideime: ehbije: sejelijãna:\npigesereje: meijeserihhati:\nmehriqla: asñne: pzzititi",
+            "title": "N320",
+            "lang": "Lyc",
+            "wordIds": [
+                null,
+                816,
+                null,
+                818,
+                819,
+                null,
+                821,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
                 null,
                 null,
                 null,
@@ -8838,6 +9056,16 @@
             "componentIds": [
                 110,
                 811
+            ]
+        },
+        {
+            "id": 823,
+            "compoundId": 821,
+            "componentIds": [
+                822,
+                728,
+                364,
+                824
             ]
         }
     ],
