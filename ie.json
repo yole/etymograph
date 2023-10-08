@@ -4398,7 +4398,13 @@
             "text": "arawa",
             "lang": "Lyc",
             "gloss": "freedom",
-            "pos": "N"
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "https://www.ediana.gwi.uni-muenchen.de/dictionary.php?lemma=3341"
+                }
+            ]
         }
     ],
     "rules": [

@@ -240,6 +240,7 @@ function SingleWord(params) {
                                initialNotes={word.notes}
                                submitted={editSubmitted}/>}
         {allowEdit() && <>
+            <p/>
             <button onClick={() => setEditMode(!editMode)}>{editMode ? "Cancel" : "Edit"}</button>&nbsp;
             {!editMode && <button onClick={() => deleteWordClicked()}>Delete</button>}
         </>}
