@@ -426,6 +426,7 @@ open class InMemoryGraphRepository : GraphRepository() {
         if (compoundList?.isEmpty() == true) {
             compounds.remove(compound.compoundWord.id)
         }
+        compound.compoundWord.segments = null
         allLangEntities[compound.id] = null
     }
 

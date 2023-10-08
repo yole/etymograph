@@ -52,4 +52,18 @@ class CompoundTest : QBaseTest() {
         repo.deleteWord(mir)
         Assert.assertEquals(1, repo.findComponentsByCompound(faramir).first().components.size)
     }
+
+    @Test
+    fun segmentedTextDeleteCompound() {
+        val repo = InMemoryGraphRepository().apply { addLanguage(q) }
+        val fara = repo.addWord("fara")
+        val mir = repo.addWord("mir")
+        val faramir = repo.addWord("faramir")
+        val compound = repo.createCompound(faramir, fara, emptyList(), null)
+        compound.components.add(mir)
+        val restored = repo.restoreSegments(faramir)
+        Assert.assertEquals("fara-mir", restored.segmentedText())
+        repo.deleteCompound(compound)
+        Assert.assertEquals("faramir", faramir.segmentedText())
+    }
 }

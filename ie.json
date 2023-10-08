@@ -2893,6 +2893,10 @@
                 {
                     "pubId": 2,
                     "refText": "63"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://www.ediana.gwi.uni-muenchen.de/dictionary.php?lemma=2733"
                 }
             ]
         },
@@ -2929,6 +2933,10 @@
                 {
                     "pubId": 2,
                     "refText": "45"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://www.ediana.gwi.uni-muenchen.de/dictionary.php?lemma=1964"
                 }
             ]
         },
@@ -4405,6 +4413,26 @@
                     "refText": "https://www.ediana.gwi.uni-muenchen.de/dictionary.php?lemma=3341"
                 }
             ]
+        },
+        {
+            "id": 888,
+            "text": "ehbijẽ",
+            "lang": "Lyc"
+        },
+        {
+            "id": 890,
+            "text": "esiti",
+            "lang": "Lyc"
+        },
+        {
+            "id": 891,
+            "text": "esi",
+            "lang": "Lyc"
+        },
+        {
+            "id": 893,
+            "text": "sedeliñtãtẽ",
+            "lang": "Lyc"
         }
     ],
     "rules": [
@@ -5695,6 +5723,46 @@
             "replacedCategories": "",
             "fromPOS": "V",
             "toPOS": "V",
+            "notes": "",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 889,
+            "name": "lyc-adj-acc-n",
+            "fromLang": "Lyc",
+            "toLang": "Lyc",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeEnding",
+                            "args": [
+                                "ijẽ"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.AndRuleConditionData",
+                        "members": [
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "EndsWith",
+                                "characters": "i"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "ClassMatches",
+                                "characters": "ije-stem"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "addedCategories": ".ACC.N",
+            "replacedCategories": "",
+            "fromPOS": "ADJ",
+            "toPOS": "ADJ",
             "notes": "",
             "preInstructions": [
             ]
@@ -7277,6 +7345,22 @@
             "ruleIds": [
                 116
             ]
+        },
+        {
+            "from": 888,
+            "to": 120,
+            "type": ">",
+            "ruleIds": [
+                889
+            ]
+        },
+        {
+            "from": 891,
+            "to": 740,
+            "type": ">",
+            "ruleIds": [
+                271
+            ]
         }
     ],
     "corpusTexts": [
@@ -8708,9 +8792,9 @@
                 880,
                 884,
                 886,
-                null,
-                null,
-                null,
+                888,
+                890,
+                893,
                 null,
                 null,
                 null,
@@ -9698,6 +9782,14 @@
                 102,
                 391,
                 760
+            ]
+        },
+        {
+            "id": 892,
+            "compoundId": 890,
+            "componentIds": [
+                891,
+                145
             ]
         }
     ],
