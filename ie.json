@@ -4143,7 +4143,19 @@
         {
             "id": 846,
             "text": "arus",
-            "lang": "Lyc"
+            "lang": "Lyc",
+            "gloss": "citizen(ry)",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": 2,
+                    "refText": "5"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://www.ediana.gwi.uni-muenchen.de/dictionary.php?lemma=3342"
+                }
+            ]
         },
         {
             "id": 847,
@@ -4289,6 +4301,104 @@
             "id": 869,
             "text": "mahãna",
             "lang": "Lyc"
+        },
+        {
+            "id": 870,
+            "text": "ebette",
+            "lang": "Lyc",
+            "gloss": "this.DAT.PL"
+        },
+        {
+            "id": 871,
+            "text": "eseimiju",
+            "lang": "Lyc"
+        },
+        {
+            "id": 872,
+            "text": "eseimija",
+            "lang": "Lyc",
+            "pos": "NP"
+        },
+        {
+            "id": 873,
+            "text": "qñturahahñ",
+            "lang": "Lyc"
+        },
+        {
+            "id": 874,
+            "text": "qnturahi",
+            "lang": "Lyc",
+            "pos": "NP"
+        },
+        {
+            "id": 875,
+            "text": "sede",
+            "lang": "Lyc"
+        },
+        {
+            "id": 877,
+            "text": "de",
+            "lang": "Lyc",
+            "gloss": "PART",
+            "pos": "PART",
+            "sourceRefs": [
+                {
+                    "pubId": 2,
+                    "refText": "8"
+                }
+            ],
+            "notes": "Probably = CLuv. -tar"
+        },
+        {
+            "id": 878,
+            "text": "eseimijaje",
+            "lang": "Lyc"
+        },
+        {
+            "id": 879,
+            "text": "qñturahah",
+            "lang": "Lyc",
+            "pos": "N"
+        },
+        {
+            "id": 880,
+            "text": "χuwatiti",
+            "lang": "Lyc"
+        },
+        {
+            "id": 881,
+            "text": "χuwati",
+            "lang": "Lyc"
+        },
+        {
+            "id": 883,
+            "text": "χuwa",
+            "lang": "Lyc",
+            "gloss": "stand close to",
+            "pos": "V",
+            "sourceRefs": [
+                {
+                    "pubId": 2,
+                    "refText": "86"
+                }
+            ]
+        },
+        {
+            "id": 884,
+            "text": "seipijẽtẽ",
+            "lang": "Lyc"
+        },
+        {
+            "id": 886,
+            "text": "arawã",
+            "lang": "Lyc"
+        },
+        {
+            "id": 887,
+            "text": "arawa",
+            "lang": "Lyc",
+            "gloss": "freedom",
+            "pos": "N"
         }
     ],
     "rules": [
@@ -4371,9 +4481,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "h"
+                                "'h'"
                             ]
                         }
                     ],
@@ -4383,10 +4493,8 @@
                 }
             ],
             "addedCategories": ".GEN",
-            "replacedCategories": "",
             "fromPOS": "NP",
             "toPOS": "NP",
-            "notes": "",
             "preInstructions": [
             ]
         },
@@ -4399,12 +4507,7 @@
                 {
                     "instructions": [
                         {
-                            "type": "RemoveLastCharacter",
-                            "args": [
-                            ]
-                        },
-                        {
-                            "type": "AddSuffix",
+                            "type": "ChangeEnding",
                             "args": [
                                 "u"
                             ]
@@ -4418,10 +4521,8 @@
                 }
             ],
             "addedCategories": ".ACC",
-            "replacedCategories": "",
             "fromPOS": "N",
             "toPOS": "N",
-            "notes": "",
             "preInstructions": [
             ]
         },
@@ -4584,9 +4685,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "s"
+                                "'s'"
                             ]
                         }
                     ],
@@ -4610,9 +4711,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "te"
+                                "'te'"
                             ]
                         }
                     ],
@@ -4622,10 +4723,8 @@
                 }
             ],
             "addedCategories": ".PRET.3SG",
-            "replacedCategories": "",
             "fromPOS": "V",
-            "toPOS": "",
-            "notes": "",
+            "toPOS": "V",
             "preInstructions": [
             ]
         },
@@ -4638,9 +4737,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "tẽ"
+                                "'tẽ'"
                             ]
                         }
                     ],
@@ -4650,10 +4749,8 @@
                 }
             ],
             "addedCategories": ".PRET.3SG",
-            "replacedCategories": "",
             "fromPOS": "V",
-            "toPOS": "",
-            "notes": "",
+            "toPOS": "V",
             "preInstructions": [
             ]
         },
@@ -4666,9 +4763,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "hi"
+                                "'hi'"
                             ]
                         }
                     ],
@@ -4678,10 +4775,7 @@
                 }
             ],
             "addedCategories": ".GEN.ADJ",
-            "replacedCategories": "",
             "fromPOS": "N",
-            "toPOS": "",
-            "notes": "",
             "preInstructions": [
             ]
         },
@@ -4694,9 +4788,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "di"
+                                "'di'"
                             ]
                         }
                     ],
@@ -4706,10 +4800,7 @@
                 }
             ],
             "addedCategories": ".3SG",
-            "replacedCategories": "",
             "fromPOS": "V",
-            "toPOS": "",
-            "notes": "",
             "preInstructions": [
             ]
         },
@@ -4764,9 +4855,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "ti"
+                                "'ti'"
                             ]
                         }
                     ],
@@ -4776,10 +4867,8 @@
                 }
             ],
             "addedCategories": ".3SG",
-            "replacedCategories": "",
             "fromPOS": "V",
-            "toPOS": "",
-            "notes": "",
+            "toPOS": "V",
             "preInstructions": [
             ]
         },
@@ -4792,12 +4881,7 @@
                 {
                     "instructions": [
                         {
-                            "type": "RemoveLastCharacter",
-                            "args": [
-                            ]
-                        },
-                        {
-                            "type": "AddSuffix",
+                            "type": "ChangeEnding",
                             "args": [
                                 "ãti"
                             ]
@@ -4812,12 +4896,7 @@
                 {
                     "instructions": [
                         {
-                            "type": "RemoveLastCharacter",
-                            "args": [
-                            ]
-                        },
-                        {
-                            "type": "AddSuffix",
+                            "type": "ChangeEnding",
                             "args": [
                                 "ẽti"
                             ]
@@ -4832,9 +4911,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "ti"
+                                "'ti'"
                             ]
                         }
                     ],
@@ -4844,10 +4923,8 @@
                 }
             ],
             "addedCategories": ".3PL",
-            "replacedCategories": "",
             "fromPOS": "V",
-            "toPOS": "",
-            "notes": "",
+            "toPOS": "V",
             "preInstructions": [
             ]
         },
@@ -4860,9 +4937,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "es"
+                                "'es'"
                             ]
                         }
                     ],
@@ -4885,9 +4962,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "es"
+                                "'es'"
                             ]
                         }
                     ],
@@ -5014,9 +5091,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "e"
+                                "'e'"
                             ]
                         }
                     ],
@@ -5039,9 +5116,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "e"
+                                "'e'"
                             ]
                         }
                     ],
@@ -5206,9 +5283,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "a"
+                                "'a'"
                             ]
                         }
                     ],
@@ -5231,9 +5308,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "a"
+                                "'a'"
                             ]
                         }
                     ],
@@ -5268,9 +5345,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "um"
+                                "'um'"
                             ]
                         }
                     ],
@@ -5293,9 +5370,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "um"
+                                "'um'"
                             ]
                         }
                     ],
@@ -5370,10 +5447,8 @@
                 }
             ],
             "addedCategories": ".PRET.3SG",
-            "replacedCategories": "",
             "fromPOS": "V",
-            "toPOS": "",
-            "notes": "",
+            "toPOS": "V",
             "preInstructions": [
             ]
         },
@@ -5386,12 +5461,7 @@
                 {
                     "instructions": [
                         {
-                            "type": "RemoveLastCharacter",
-                            "args": [
-                            ]
-                        },
-                        {
-                            "type": "AddSuffix",
+                            "type": "ChangeEnding",
                             "args": [
                                 "ãte"
                             ]
@@ -5406,12 +5476,7 @@
                 {
                     "instructions": [
                         {
-                            "type": "RemoveLastCharacter",
-                            "args": [
-                            ]
-                        },
-                        {
-                            "type": "AddSuffix",
+                            "type": "ChangeEnding",
                             "args": [
                                 "ẽte"
                             ]
@@ -5438,10 +5503,8 @@
                 }
             ],
             "addedCategories": ".PRET.3PL",
-            "replacedCategories": "",
             "fromPOS": "V",
-            "toPOS": "",
-            "notes": "",
+            "toPOS": "V",
             "preInstructions": [
             ]
         },
@@ -5454,12 +5517,7 @@
                 {
                     "instructions": [
                         {
-                            "type": "RemoveLastCharacter",
-                            "args": [
-                            ]
-                        },
-                        {
-                            "type": "AddSuffix",
+                            "type": "ChangeEnding",
                             "args": [
                                 "ãtẽ"
                             ]
@@ -5474,12 +5532,7 @@
                 {
                     "instructions": [
                         {
-                            "type": "RemoveLastCharacter",
-                            "args": [
-                            ]
-                        },
-                        {
-                            "type": "AddSuffix",
+                            "type": "ChangeEnding",
                             "args": [
                                 "ẽtẽ"
                             ]
@@ -5506,10 +5559,8 @@
                 }
             ],
             "addedCategories": ".PRET.3PL",
-            "replacedCategories": "",
             "fromPOS": "V",
-            "toPOS": "",
-            "notes": "",
+            "toPOS": "V",
             "preInstructions": [
             ]
         },
@@ -7167,6 +7218,59 @@
             "ruleIds": [
                 123
             ]
+        },
+        {
+            "from": 870,
+            "to": 597,
+            "type": ">"
+        },
+        {
+            "from": 871,
+            "to": 872,
+            "type": ">",
+            "ruleIds": [
+                118
+            ]
+        },
+        {
+            "from": 873,
+            "to": 879,
+            "type": ">",
+            "ruleIds": [
+                116
+            ]
+        },
+        {
+            "from": 879,
+            "to": 339,
+            "type": ">",
+            "ruleIds": [
+                266
+            ]
+        },
+        {
+            "from": 878,
+            "to": 872,
+            "type": ">",
+            "ruleIds": [
+                119
+            ]
+        },
+        {
+            "from": 881,
+            "to": 883,
+            "type": ">",
+            "ruleIds": [
+                271
+            ]
+        },
+        {
+            "from": 886,
+            "to": 887,
+            "type": ">",
+            "ruleIds": [
+                116
+            ]
         }
     ],
     "corpusTexts": [
@@ -8589,15 +8693,15 @@
                 865,
                 868,
                 869,
+                870,
+                871,
+                873,
                 null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
+                875,
+                878,
+                880,
+                884,
+                886,
                 null,
                 null,
                 null,
@@ -8779,6 +8883,7 @@
             "rows": [
                 "Nom.",
                 "Acc.",
+                "Gen.",
                 "Gen.Adj.",
                 "Dat./Loc."
             ],
@@ -8790,8 +8895,11 @@
                         },
                         {
                             "ruleAlternatives": [
-                                116
+                                116,
+                                118
                             ]
+                        },
+                        {
                         },
                         {
                             "ruleAlternatives": [
@@ -8816,6 +8924,11 @@
                         {
                             "ruleAlternatives": [
                                 207
+                            ]
+                        },
+                        {
+                            "ruleAlternatives": [
+                                724
                             ]
                         },
                         {
@@ -9554,6 +9667,31 @@
                 822,
                 867,
                 688
+            ]
+        },
+        {
+            "id": 876,
+            "compoundId": 875,
+            "componentIds": [
+                102,
+                877
+            ]
+        },
+        {
+            "id": 882,
+            "compoundId": 880,
+            "componentIds": [
+                881,
+                145
+            ]
+        },
+        {
+            "id": 885,
+            "compoundId": 884,
+            "componentIds": [
+                102,
+                391,
+                760
             ]
         }
     ],
