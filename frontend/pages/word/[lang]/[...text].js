@@ -292,7 +292,7 @@ function SingleWord(params) {
         <p/>
         {allowEdit() && <>
             {!isCompound && <><button onClick={() => setShowBaseWord(!showBaseWord)}>Add base word</button><br/></>}
-            {showBaseWord && <WordForm submitted={submitted} linkType='>' linkTarget={word} reverseLink="true" language={word.language} />}
+            {showBaseWord && <WordForm submitted={submitted} linkType='>' linkTarget={word} reverseLink={true} language={word.language} />}
             {!isCompound && <><button onClick={() => setShowDerivedWord(!showDerivedWord)}>Add derived word</button><br/></>}
             {showDerivedWord && <WordForm submitted={submitted} linkType='>' linkTarget={word} language={word.language} />}
             <button onClick={() => setShowCompoundComponent(!showCompoundComponent)}>Define as compound</button><br/>

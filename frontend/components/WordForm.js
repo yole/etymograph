@@ -33,10 +33,10 @@ export default function WordForm(props) {
                     if (isAddingLink) {
                         let fromId, toId
                         if (props.reverseLink === true) {
-                            [fromId, toId] = [r.id, props.linkTarget.id]
+                            [fromId, toId] = [props.linkTarget.id, r.id]
                         }
                         else {
-                            [fromId, toId] = [props.linkTarget.id, r.id]
+                            [fromId, toId] = [r.id, props.linkTarget.id]
                         }
                         addLink(fromId, toId, props.linkType, newWordLinkRuleNames)
                             .then(onFulfilled)

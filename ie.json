@@ -2846,7 +2846,7 @@
             "id": 560,
             "text": "ede",
             "lang": "Lyc",
-            "gloss": "he/she/it.DAT",
+            "gloss": "he/she/it.ACC",
             "sourceRefs": [
                 {
                     "pubId": 2,
@@ -4457,10 +4457,29 @@
             "lang": "Lyc"
         },
         {
-            "id": 898,
-            "text": "ede",
+            "id": 899,
+            "text": "teteri",
             "lang": "Lyc",
-            "gloss": "it.ACC.N"
+            "gloss": "city",
+            "pos": "N"
+        },
+        {
+            "id": 900,
+            "text": "hrm͂mada",
+            "lang": "Lyc"
+        },
+        {
+            "id": 901,
+            "text": "hrm͂ma",
+            "lang": "Lyc",
+            "gloss": "temenos",
+            "fullGloss": "Melchert 2004: 25",
+            "pos": "N"
+        },
+        {
+            "id": 903,
+            "text": "hrm͂mã",
+            "lang": "Lyc"
         }
     ],
     "rules": [
@@ -7389,6 +7408,29 @@
             "ruleIds": [
                 271
             ]
+        },
+        {
+            "from": 147,
+            "to": 560,
+            "type": ">"
+        },
+        {
+            "from": 895,
+            "to": 560,
+            "type": "="
+        },
+        {
+            "from": 903,
+            "to": 901,
+            "type": ">",
+            "ruleIds": [
+                116
+            ]
+        },
+        {
+            "from": 900,
+            "to": 901,
+            "type": ">"
         }
     ],
     "corpusTexts": [
@@ -8664,7 +8706,7 @@
         },
         {
             "id": 794,
-            "text": "ebẽñnẽ: prñnawã mene: prñnawatẽ \nijamara: terssiχleh◊: tideimi malijahi: \nwedrẽñnehi: aχãtaza: me pibijeti\nprñnezi: setteri: adaijẽ meine ñtawãtã\npibijeti: tere ebehẽ meijene: hrppi tãti\ntike: ijamaraje: tibe: ladi: ehbi: hrpp[i=(i)je mei]\ntadi tike: kbi: tike χttbadi: ẽti: prñn[ezi tibe]\nkbijehi: tike: me httẽmi: ãnabahẽ: se .[.......]\nwedrẽñni: ãm͂mãma km͂ma: sñta: wawã: se ...\nχawã: sẽne: tesẽti: qãñti: trm͂milijẽti\nse itlehi: punemedezi: se kumezeiti: [prñnezi]\nse teteri : uhazata: mali: wedrẽñni: hrp[.....]\nsei agã: ijase: hrmm͂ã: ebẽ: me pijaxã: m[......]\nmupm͂me: miñte meti mazaiti: terẽ: ekẽ...\ntike: hrppittãne: kbi pddẽte [s]e ebei [...\nuhazata tere: ebehi: kume[h]i: hrppẽ [...\nse pijaxa meipẽme kumezei: eme: une .\nebette",
+            "text": "ebẽñnẽ: prñnawã mene: prñnawatẽ \nijamara: terssiχleh◊: tideimi malijahi: \nwedrẽñnehi: aχãtaza: me pibijeti\nprñnezi: setteri: adaijẽ meine ñtawãtã\npibijeti: tere ebehẽ meijene: hrppi tãti\ntike: ijamaraje: tibe: ladi: ehbi: hrpp[i=(i)je mei]\ntadi tike: kbi: tike χttbadi: ẽti: prñn[ezi tibe]\nkbijehi: tike: me httẽmi: ãnabahẽ: se .[.......]\nwedrẽñni: ãm͂mãma km͂ma: sñta: wawã: se ...\nχawã: sẽne: tesẽti: qãñti: trm͂milijẽti\nse itlehi: punemedezi: se kumezeiti: [prñnezi]\nse teteri: uhazata: mali: wedrẽñni: hrp[.....]\nsei agã: ijase: hrm͂mã: ebẽ: me pijaxã: m[......]\nmupm͂me: miñte meti mazaiti: terẽ: ekẽ...\ntike: hrppittãne: kbi pddẽte [s]e ebei [...\nuhazata tere: ebehi: kume[h]i: hrppẽ [...\nse pijaxa meipẽme kumezei: eme: une .\nebette",
             "title": "TL 149",
             "lang": "Lyc",
             "wordIds": [
@@ -8739,11 +8781,10 @@
                 null,
                 null,
                 null,
-                null,
                 758,
                 null,
                 null,
-                null,
+                903,
                 null,
                 null,
                 null,
@@ -8779,7 +8820,7 @@
         },
         {
             "id": 813,
-            "text": "ẽke: trm͂misñ: χssaθrapazate: pigesere:\nkatamlah: tideimi: sẽñneñtepddẽhadẽ:\ntrm͂mile: pddẽnehm̃mis:\nijeru: senatrbbijẽmi: sejarñna:\nasaχlazu: erttimeli: mehñtitubedẽ:\narus: sejepewẽtlm̃mẽi: arñnãi:\nm͂maitẽ: kumezijẽ: θθẽ: χñtawati:\nχbidẽñni: sejarKKazuma: χñtawati:\nsẽñnaitẽ: kumazu: mahãna: ebette:\neseimiju: qñturahahñ: tideimi:\nsede: eseimijaje: χuwatiti: seipijẽtẽ:\narawã: ehbijẽ: esiti: sedeliñtãtẽ:\nteteri: sejepewẽtlm̃mẽi:\nhrm̃mada: ttaraha: meχbaitẽ: zã:\neseχesñtedi: qñtati: sepigrẽi:\nsẽñteñtekm̃mẽ: sejẽti: θθẽ: sttatiteli:\nsetahñtãi: χñtawatehi: χbidẽñnehi:\nsejarKKazumahi: seipibiti:\nuhazata: ada: IH00: ẽti: tllaχñta:\narñna: sesm̃mati: χddazas: epide:\narawa: hãtikm̃mẽtis: meipibiti:\nsiχlas: sewajaitẽ: kumaha: ẽtisttali:\nppuweti: km̃mẽ: ebehi: χñtawataha: \nχbidãñnaha: serKKazumaha:\nmeijesitẽniti: hlm̃mipijata\nmedetewẽ: kumezidi: nuredi: nuredi:\narã: kumehedi: seuhazata: uwadi:\nχñtawati: χbidẽñni: sejerKKazuma:\nmekumezidi: seimija: sede: seimijaje\nχuwatiti: seijehrijaitẽ:\ntasa: mere: ebette: teteri: arñnas:\nsejepewẽtlm̃mẽi: arñnãi: metepituwẽti:\nmara: ebeija: ẽti: sttali:\nppuwetimẽ: ebehi: sewene: χttadi:\ntike: ebineñtewẽ: mahãna: ebette:\nebine: ñtewẽ: kumazi: ebehi: χttademejẽ:\ntike: mepddẽ: mahãna: sm̃mati:\nebette: sejẽni: qlahi: ebijehi\npñtrẽñni: setideime: ehbije: sejelijãna:\npigesereje: meijeserihhati:\nmehriqla: asñne: pzzititi",
+            "text": "ẽke: trm͂misñ: χssaθrapazate: pigesere:\nkatamlah: tideimi: sẽñneñtepddẽhadẽ:\ntrm͂mile: pddẽnehm̃mis:\nijeru: senatrbbijẽmi: sejarñna:\nasaχlazu: erttimeli: mehñtitubedẽ:\narus: sejepewẽtlm̃mẽi: arñnãi:\nm͂maitẽ: kumezijẽ: θθẽ: χñtawati:\nχbidẽñni: sejarKKazuma: χñtawati:\nsẽñnaitẽ: kumazu: mahãna: ebette:\neseimiju: qñturahahñ: tideimi:\nsede: eseimijaje: χuwatiti: seipijẽtẽ:\narawã: ehbijẽ: esiti: sedeliñtãtẽ:\nteteri: sejepewẽtlm̃mẽi:\nhrm͂mada: ttaraha: meχbaitẽ: zã:\neseχesñtedi: qñtati: sepigrẽi:\nsẽñteñtekm̃mẽ: sejẽti: θθẽ: sttatiteli:\nsetahñtãi: χñtawatehi: χbidẽñnehi:\nsejarKKazumahi: seipibiti:\nuhazata: ada: IH00: ẽti: tllaχñta:\narñna: sesm̃mati: χddazas: epide:\narawa: hãtikm̃mẽtis: meipibiti:\nsiχlas: sewajaitẽ: kumaha: ẽtisttali:\nppuweti: km̃mẽ: ebehi: χñtawataha: \nχbidãñnaha: serKKazumaha:\nmeijesitẽniti: hlm̃mipijata\nmedetewẽ: kumezidi: nuredi: nuredi:\narã: kumehedi: seuhazata: uwadi:\nχñtawati: χbidẽñni: sejerKKazuma:\nmekumezidi: seimija: sede: seimijaje\nχuwatiti: seijehrijaitẽ:\ntasa: mere: ebette: teteri: arñnas:\nsejepewẽtlm̃mẽi: arñnãi: metepituwẽti:\nmara: ebeija: ẽti: sttali:\nppuwetimẽ: ebehi: sewene: χttadi:\ntike: ebineñtewẽ: mahãna: ebette:\nebine: ñtewẽ: kumazi: ebehi: χttademejẽ:\ntike: mepddẽ: mahãna: sm̃mati:\nebette: sejẽni: qlahi: ebijehi\npñtrẽñni: setideime: ehbije: sejelijãna:\npigesereje: meijeserihhati:\nmehriqla: asñne: pzzititi",
             "title": "N320",
             "lang": "Lyc",
             "wordIds": [
@@ -8823,9 +8864,9 @@
                 888,
                 890,
                 893,
+                899,
                 null,
-                null,
-                null,
+                900,
                 null,
                 null,
                 null,
