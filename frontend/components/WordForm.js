@@ -38,7 +38,7 @@ export default function WordForm(props) {
                         else {
                             [fromId, toId] = [r.id, props.linkTarget.id]
                         }
-                        addLink(fromId, toId, props.linkType, newWordLinkRuleNames)
+                        addLink(fromId, toId, props.linkType, newWordLinkRuleNames, newWordLinkSource)
                             .then(onFulfilled)
                     }
                     else if (props.newCompound === true) {
@@ -104,10 +104,10 @@ export default function WordForm(props) {
                 <td><textarea rows="3" cols="50" value={newWordNotes} onChange={e => setNewWordNotes(e.target.value)}
                            id="word-notes"/></td>
             </tr>
-            {props.newCompound === true && <tr>
-                <td><label htmlFor="compound-source"></label>Compound source:</td>
+            {(props.newCompound === true || isAddingLink) && <tr>
+                <td><label htmlFor="link-source"></label>{isAddingLink ? "Link source:" : "Compound source:"}</td>
                 <td><input type="text" value={newWordLinkSource} onChange={e => setNewWordLinkSource(e.target.value)}
-                           id="compound-source"/></td>
+                           id="link-source"/></td>
             </tr>}
             </tbody>
         </table>

@@ -30,6 +30,8 @@ class WordController(val graphService: GraphService) {
         val word: WordRefViewModel,
         val ruleIds: List<Int>,
         val ruleNames: List<String>,
+        val source: List<SourceRefViewModel>,
+        val sourceEditableText: String
     )
 
     data class LinkTypeViewModel(val typeId: String, val type: String, val words: List<LinkWordViewModel>)
@@ -124,7 +126,9 @@ class WordController(val graphService: GraphService) {
                         val toWord = link.toEntity as Word
                         LinkWordViewModel(toWord.toRefViewModel(graph),
                             link.rules.map { it.id },
-                            link.rules.map { it.name }
+                            link.rules.map { it.name },
+                            link.source.toViewModel(graph),
+                            link.source.toEditableText(graph)
                         )
                     }
                 )
@@ -137,7 +141,9 @@ class WordController(val graphService: GraphService) {
                         val fromWord = link.fromEntity as Word
                         LinkWordViewModel(fromWord.toRefViewModel(graph),
                             link.rules.map { it.id },
-                            link.rules.map { it.name }
+                            link.rules.map { it.name },
+                            link.source.toViewModel(graph),
+                            link.source.toEditableText(graph)
                         )
                     }
                 )

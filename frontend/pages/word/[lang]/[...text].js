@@ -40,6 +40,7 @@ function WordLinkComponent(params) {
     const linkWord = params.linkWord
     const [editMode, setEditMode] = useState(false)
     const [ruleNames, setRuleNames] = useState(linkWord.ruleNames.join(","))
+    const [source, setSource] = useState(linkWord.sourceEditableText)
     const [errorText, setErrorText] = useState("")
 
     function deleteLinkClicked() {
@@ -58,7 +59,7 @@ function WordLinkComponent(params) {
     }
 
     function saveLink() {
-        updateLink(baseWord.id, linkWord.word.id, params.linkType.typeId, ruleNames)
+        updateLink(baseWord.id, linkWord.word.id, params.linkType.typeId, ruleNames, source)
             .then((response) => {
                 if (response.status === 200) {
                     setErrorText("")
@@ -81,6 +82,7 @@ function WordLinkComponent(params) {
                 <Link href={`/rule/${ruleId}`}>{linkWord.ruleNames[index]}</Link>
             </>)}
             )</>}
+        <SourceRefs source={linkWord.source} span={true}/>
         {allowEdit() && <>
             &nbsp;<span className="inlineButtonLink">
                     (<button className="inlineButton" onClick={() => setEditMode(!editMode)}>edit</button>
@@ -94,6 +96,10 @@ function WordLinkComponent(params) {
             <tr>
                 <td>Rule names:</td>
                 <td><input type="text" value={ruleNames} onChange={e => setRuleNames(e.target.value)}/></td>
+            </tr>
+            <tr>
+                <td>Source</td>
+                <td><input type="text" value={source} onChange={e => setSource(e.target.value)}/></td>
             </tr>
             </tbody></table>
             <button onClick={() => saveLink()}>Save</button>&nbsp;

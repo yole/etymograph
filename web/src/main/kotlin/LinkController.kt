@@ -10,7 +10,14 @@ import ru.yole.etymograph.*
 
 @RestController
 class LinkController(val graphService: GraphService) {
-    data class LinkParams(val fromEntity: Int = -1, val toEntity: Int = -1, val linkType: String = "", val ruleNames: String = "")
+    data class LinkParams(
+        val fromEntity: Int = -1,
+        val toEntity: Int = -1,
+        val linkType: String = "",
+        val ruleNames: String = "",
+        val source: String = ""
+    )
+
     data class ResolvedLinkParams(val fromEntity: LangEntity, val toEntity: LangEntity, val linkType: LinkType)
 
     @PostMapping("/link")
@@ -18,8 +25,9 @@ class LinkController(val graphService: GraphService) {
         val graph = graphService.graph
         val (fromEntity, toEntity, linkType) = resolveLinkParams(params)
         val rules = resolveRuleNames(params)
+        val source = parseSourceRefs(graph, params.source)
 
-        graph.addLink(fromEntity, toEntity, linkType, rules, emptyList(), null)
+        graph.addLink(fromEntity, toEntity, linkType, rules, source, null)
         graph.save()
     }
 
@@ -65,6 +73,7 @@ class LinkController(val graphService: GraphService) {
         val rules = resolveRuleNames(params)
 
         link.rules = rules
+        link.source = parseSourceRefs(graph, params.source)
         graph.save()
     }
 

@@ -4466,20 +4466,85 @@
         {
             "id": 900,
             "text": "hrm͂mada",
-            "lang": "Lyc"
+            "lang": "Lyc",
+            "gloss": "temenos.COLL.PL",
+            "sourceRefs": [
+                {
+                    "pubId": 2,
+                    "refText": "25"
+                }
+            ]
         },
         {
             "id": 901,
             "text": "hrm͂ma",
             "lang": "Lyc",
             "gloss": "temenos",
-            "fullGloss": "Melchert 2004: 25",
-            "pos": "N"
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": 2,
+                    "refText": "25"
+                }
+            ]
         },
         {
             "id": 903,
             "text": "hrm͂mã",
             "lang": "Lyc"
+        },
+        {
+            "id": 904,
+            "text": "ttaraha",
+            "lang": "Lyc"
+        },
+        {
+            "id": 906,
+            "text": "ttarahi",
+            "lang": "Lyc",
+            "pos": "ADJ"
+        },
+        {
+            "id": 907,
+            "text": "meχbaitẽ",
+            "lang": "Lyc"
+        },
+        {
+            "id": 909,
+            "text": "χbaitẽ",
+            "lang": "Lyc"
+        },
+        {
+            "id": 910,
+            "text": "χbai",
+            "lang": "Lyc",
+            "gloss": "irrigate",
+            "pos": "V",
+            "sourceRefs": [
+                {
+                    "pubId": 2,
+                    "refText": "82"
+                }
+            ]
+        },
+        {
+            "id": 911,
+            "text": "zã",
+            "lang": "Lyc"
+        },
+        {
+            "id": 912,
+            "text": "za",
+            "lang": "Lyc",
+            "gloss": "allotment",
+            "fullGloss": "allotment, portion",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": 2,
+                    "refText": "87"
+                }
+            ]
         }
     ],
     "rules": [
@@ -5488,6 +5553,21 @@
                 {
                     "instructions": [
                         {
+                            "type": "ChangeEnding",
+                            "args": [
+                                "ije"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "characters": "i"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
                             "type": "Append",
                             "args": [
                                 "'ije'"
@@ -5499,11 +5579,8 @@
                     }
                 }
             ],
-            "addedCategories": "",
-            "replacedCategories": "",
-            "fromPOS": "",
+            "addedCategories": null,
             "toPOS": "ADJ",
-            "notes": "",
             "preInstructions": [
             ]
         },
@@ -5807,6 +5884,36 @@
                 }
             ],
             "addedCategories": ".ACC.N",
+            "replacedCategories": "",
+            "fromPOS": "ADJ",
+            "toPOS": "ADJ",
+            "notes": "",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 905,
+            "name": "lyc-adj-n-pl",
+            "fromLang": "Lyc",
+            "toLang": "Lyc",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeEnding",
+                            "args": [
+                                "a"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "characters": "i"
+                    }
+                }
+            ],
+            "addedCategories": ".PL.N",
             "replacedCategories": "",
             "fromPOS": "ADJ",
             "toPOS": "ADJ",
@@ -7431,6 +7538,68 @@
             "from": 900,
             "to": 901,
             "type": ">"
+        },
+        {
+            "from": 904,
+            "to": 906,
+            "type": ">",
+            "ruleIds": [
+                905
+            ]
+        },
+        {
+            "from": 906,
+            "to": 899,
+            "type": ">",
+            "ruleIds": [
+                266
+            ]
+        },
+        {
+            "from": 909,
+            "to": 910,
+            "type": ">",
+            "ruleIds": [
+                577
+            ]
+        },
+        {
+            "from": 911,
+            "to": 912,
+            "type": ">",
+            "ruleIds": [
+                116
+            ]
+        },
+        {
+            "from": 588,
+            "to": 165,
+            "type": ">",
+            "ruleIds": [
+                547
+            ]
+        },
+        {
+            "from": 259,
+            "to": 612,
+            "type": ">",
+            "sourceRefs": [
+                {
+                    "pubId": 4,
+                    "refText": "24"
+                }
+            ]
+        },
+        {
+            "from": 859,
+            "to": 612,
+            "type": ">",
+            "sourceRefs": [
+                {
+                    "pubId": 4,
+                    "refText": "24"
+                }
+            ]
         }
     ],
     "corpusTexts": [
@@ -8867,9 +9036,9 @@
                 899,
                 null,
                 900,
-                null,
-                null,
-                null,
+                904,
+                907,
+                911,
                 null,
                 null,
                 null,
@@ -9126,6 +9295,11 @@
             "id": 3,
             "name": "Kloekhorst, Alwin (2011). The opening formula of Lycian funerary inscriptions: mẽti vs. mẽne. In: Journal of Near Eastern Studies 70, 13–23.",
             "refId": "Kloekhorst 2011"
+        },
+        {
+            "id": 4,
+            "name": "Leiden Summer School 2023: Lycian Reader",
+            "refId": "Kloekhorst 2023"
         }
     ],
     "compounds": [
@@ -9875,6 +10049,14 @@
                     "pubId": 2,
                     "refText": "13"
                 }
+            ]
+        },
+        {
+            "id": 908,
+            "compoundId": 907,
+            "componentIds": [
+                181,
+                909
             ]
         }
     ],
