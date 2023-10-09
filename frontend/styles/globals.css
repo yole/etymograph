@@ -16,6 +16,12 @@ code {
   font-size: smaller;
 }
 
+.source-span {
+  font-style: italic;
+  font-size: smaller;
+  display: inline;
+}
+
 .undefWord {
   text-decoration: underline dashed;
   cursor: pointer;

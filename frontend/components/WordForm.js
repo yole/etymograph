@@ -10,6 +10,7 @@ export default function WordForm(props) {
     const [newWordLanguage, setNewWordLanguage] = useState(props.language || "")
     const [newWordNotes, setNewWordNotes] = useState(props.initialNotes !== undefined ? props.initialNotes : "")
     const [newWordLinkRuleNames, setNewWordLinkRuleNames] = useState("")
+    const [newWordLinkSource, setNewWordLinkSource] = useState("")
     const isAddingLink = props.linkType !== undefined
 
     function handleFormSubmit(e) {
@@ -41,7 +42,7 @@ export default function WordForm(props) {
                             .then(onFulfilled)
                     }
                     else if (props.newCompound === true) {
-                        createCompound(props.linkTarget.id, r.id).then(onFulfilled)
+                        createCompound(props.linkTarget.id, r.id, newWordLinkSource).then(onFulfilled)
                     }
                     else if (props.addToCompound !== undefined) {
                         addToCompound(props.addToCompound, r.id).then(onFulfilled)
@@ -54,6 +55,7 @@ export default function WordForm(props) {
             setNewWordGloss("")
             setNewWordFullGloss("")
             setNewWordNotes("")
+            setNewWordLinkSource("")
         }
 
         e.preventDefault()
@@ -102,6 +104,11 @@ export default function WordForm(props) {
                 <td><textarea rows="3" cols="50" value={newWordNotes} onChange={e => setNewWordNotes(e.target.value)}
                            id="word-notes"/></td>
             </tr>
+            {props.newCompound === true && <tr>
+                <td><label htmlFor="compound-source"></label>Compound source:</td>
+                <td><input type="text" value={newWordLinkSource} onChange={e => setNewWordLinkSource(e.target.value)}
+                           id="compound-source"/></td>
+            </tr>}
             </tbody>
         </table>
         <button type="submit">Submit</button>

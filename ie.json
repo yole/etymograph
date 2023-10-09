@@ -4433,6 +4433,34 @@
             "id": 893,
             "text": "sedeliñtãtẽ",
             "lang": "Lyc"
+        },
+        {
+            "id": 895,
+            "text": "ed",
+            "lang": "Lyc"
+        },
+        {
+            "id": 896,
+            "text": "eli",
+            "lang": "Lyc",
+            "gloss": "(preverb)",
+            "sourceRefs": [
+                {
+                    "pubId": 2,
+                    "refText": "13"
+                }
+            ]
+        },
+        {
+            "id": 897,
+            "text": "ñtãtẽ",
+            "lang": "Lyc"
+        },
+        {
+            "id": 898,
+            "text": "ede",
+            "lang": "Lyc",
+            "gloss": "it.ACC.N"
         }
     ],
     "rules": [
@@ -9790,6 +9818,22 @@
             "componentIds": [
                 891,
                 145
+            ]
+        },
+        {
+            "id": 894,
+            "compoundId": 893,
+            "componentIds": [
+                368,
+                895,
+                896,
+                897
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 2,
+                    "refText": "13"
+                }
             ]
         }
     ],

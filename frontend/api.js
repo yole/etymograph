@@ -104,8 +104,8 @@ export function updateLink(fromWord, toWord, linkType, ruleNames) {
     return postToBackend('link/update', {fromEntity: fromWord, toEntity: toWord, linkType: linkType, ruleNames: ruleNames})
 }
 
-export function createCompound(compoundWord, firstComponentWord) {
-    return postToBackend('compound', {compoundId: compoundWord, firstComponentId: firstComponentWord})
+export function createCompound(compoundWord, firstComponentWord, source) {
+    return postToBackend('compound', {compoundId: compoundWord, firstComponentId: firstComponentWord, source: source})
 }
 
 export function addToCompound(compoundId, componentWord) {

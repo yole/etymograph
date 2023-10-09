@@ -6,7 +6,7 @@ export default function SourceRefs(props) {
         return <></>
     }
 
-    return <div className="source">Source:{' '}
+    return <div className={props.span ? "source-span" : "source"}>{props.span ? " (source: " : "Source:"}{' '}
         {source.map((s, index) => {
             const prefix = index > 0 ? ", " : ""
             if (s.pubId !== null) {
@@ -19,5 +19,6 @@ export default function SourceRefs(props) {
                 return prefix + s.refText
             }
         })}
+        {props.span && ")"}
     </div>
 }
