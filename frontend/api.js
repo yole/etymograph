@@ -132,7 +132,7 @@ export function addLanguage(name, shortName) {
     return postToBackend('languages', {name: name, shortName: shortName})
 }
 
-export function updateLanguage(lang, letterNorm, digraphs, phonemeClasses, diphthongs, syllableStructures, wordFinals, stressRule) {
+export function updateLanguage(lang, letterNorm, digraphs, phonemeClasses, diphthongs, syllableStructures, wordFinals, stressRule, grammaticalCategories) {
     return postToBackend(`language/${lang}`,
         {
             letterNormalization: letterNorm,
@@ -141,7 +141,8 @@ export function updateLanguage(lang, letterNorm, digraphs, phonemeClasses, dipht
             diphthongs: diphthongs,
             syllableStructures: syllableStructures,
             wordFinals: wordFinals,
-            stressRuleName: stressRule
+            stressRuleName: stressRule,
+            grammaticalCategories: grammaticalCategories
         }
     )
 }

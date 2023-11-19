@@ -7,9 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.server.ResponseStatusException
-import ru.yole.etymograph.Language
-import ru.yole.etymograph.PhonemeClass
-import ru.yole.etymograph.RuleRef
+import ru.yole.etymograph.*
 
 @RestController
 class LanguageController(val graphService: GraphService) {
@@ -28,7 +26,8 @@ class LanguageController(val graphService: GraphService) {
         val stressRuleId: Int?,
         val stressRuleName: String?,
         val syllableStructures: List<String>,
-        val wordFinals: List<String>
+        val wordFinals: List<String>,
+        val grammaticalCategories: String
     )
 
     @GetMapping("/language")
@@ -54,7 +53,8 @@ class LanguageController(val graphService: GraphService) {
             stressRule?.id,
             stressRule?.name,
             syllableStructures,
-            wordFinals
+            wordFinals,
+            grammaticalCategories.toEditableText()
         )
     }
 
@@ -67,7 +67,8 @@ class LanguageController(val graphService: GraphService) {
         val digraphs: String? = null,
         val stressRuleName: String? = null,
         val syllableStructures: String? = null,
-        val wordFinals: String? = null
+        val wordFinals: String? = null,
+        val grammaticalCategories: String? = null
     )
 
     @PostMapping("/languages", consumes = ["application/json"])
@@ -101,6 +102,7 @@ class LanguageController(val graphService: GraphService) {
         language.digraphs = parseList(params.digraphs)
         language.syllableStructures = parseList(params.syllableStructures)
         language.wordFinals = parseList(params.wordFinals)
+        language.grammaticalCategories = params.grammaticalCategories?.let { parseGrammaticaLCategories(it) } ?: mutableListOf()
 
         val stressRule = params.stressRuleName?.let { graphService.resolveRule(it) }
         language.stressRule = stressRule?.let { RuleRef.to(it) }
@@ -120,5 +122,46 @@ class LanguageController(val graphService: GraphService) {
             val (name, phonemes) = cls.split(':')
             PhonemeClass(name.trim(), phonemes.split(',').map { it.trim() })
         }.toMutableList()
+    }
+
+    private fun List<GrammaticalCategory>.toEditableText(): String {
+        return joinToString("\n") { gc ->
+            val pos = gc.pos.joinToString(", ")
+            "${gc.name} ($pos): ${gc.values.joinToString(", ") { it.toEditableText() }}"
+        }
+    }
+
+    private fun GrammaticalCategoryValue.toEditableText(): String {
+        return "$name ($abbreviation)"
+    }
+
+    private fun parseGrammaticaLCategories(s: String): MutableList<GrammaticalCategory> {
+        return s.trim().split('\n').mapTo(mutableListOf()) { gcLine ->
+            val (nameString, valueStrings) = gcLine.trim().split(':', limit = 2)
+            val (name, pos) = parseGrammaticaLCategoryName(nameString)
+            GrammaticalCategory(
+                name,
+                pos,
+                valueStrings.split(',').map {
+                    parseGrammaticaLCategoryValue(it.trim())
+                }
+            )
+        }
+    }
+
+    private fun parseGrammaticaLCategoryName(s: String): Pair<String, List<String>> {
+        val p = parenthesized.matchEntire(s)
+            ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST, "Unrecognized grammatical category name format $s")
+        return p.groupValues[1] to p.groupValues[2].split(',').map { it.trim() }
+    }
+
+    private fun parseGrammaticaLCategoryValue(s: String): GrammaticalCategoryValue {
+        val p = parenthesized.matchEntire(s)
+            ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST, "Unrecognized grammatical category value format $s")
+        return GrammaticalCategoryValue(p.groupValues[1], p.groupValues[2])
+    }
+
+    companion object {
+        val parenthesized = Regex("(.+)\\s+\\((.+)\\)")
     }
 }

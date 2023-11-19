@@ -21,6 +21,10 @@ open class PhonemeClass(val name: String, val matchingPhonemes: List<String>) {
     }
 }
 
+class GrammaticalCategoryValue(val name: String, val abbreviation: String)
+
+class GrammaticalCategory(var name: String, var pos: List<String>, var values: List<GrammaticalCategoryValue>)
+
 class Language(val name: String, val shortName: String) {
     var digraphs: List<String> = emptyList()
     var diphthongs: List<String> = emptyList()
@@ -29,6 +33,7 @@ class Language(val name: String, val shortName: String) {
     var syllableStructures: List<String> = emptyList()
     var wordFinals: List<String> = emptyList()
     var stressRule: RuleRef? = null
+    var grammaticalCategories = mutableListOf<GrammaticalCategory>()
 
     fun phonemeClassByName(name: String) =
         phonemeClasses.find { it.name == name } ?: PhonemeClass.specialPhonemeClasses.find { it.name == name }

@@ -20,6 +20,7 @@ export default function LanguageIndex(props) {
     const langId = lang.shortName
     const [editMode, setEditMode] = useState(false)
     const [letterNorm, setLetterNorm] = useState(lang.letterNormalization)
+    const [grammaticalCategories, setGrammaticalCategories] = useState(lang.grammaticalCategories)
     const [digraphs, setDigraphs] = useState(lang.digraphs.join(", "))
     const [diphthongs, setDiphthongs] = useState(lang.diphthongs.join(", "))
     const [syllableStructures, setSyllableStructures] = useState(lang.syllableStructures.join(", "))
@@ -32,7 +33,7 @@ export default function LanguageIndex(props) {
     useEffect(() => { document.title = "Etymograph : " + lang.name })
 
     function saveLanguage() {
-        updateLanguage(langId, letterNorm, digraphs, phonemeClasses, diphthongs, syllableStructures, wordFinals, stressRule)
+        updateLanguage(langId, letterNorm, digraphs, phonemeClasses, diphthongs, syllableStructures, wordFinals, stressRule, grammaticalCategories)
             .then(() => router.replace(router.asPath))
         setEditMode(false)
     }
@@ -86,6 +87,18 @@ export default function LanguageIndex(props) {
                 <td><input type="text" value={stressRule} onChange={(e) => setStressRule(e.target.value)}/></td>
             </tr>
             </tbody></table>
+        </>}
+
+        <h3>Grammar</h3>
+        <h4>Grammatical categories</h4>
+        {!editMode && <>
+            <ul>
+                {grammaticalCategories.split('\n').map(s => <li>{s}</li>)}
+            </ul>
+        </>}
+        {editMode && <>
+            <textarea rows={5} cols={50} value={grammaticalCategories} onChange={(e) => setGrammaticalCategories(e.target.value)}/>
+            <br/>
         </>}
 
         {editMode && <>

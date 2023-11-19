@@ -8558,6 +8558,19 @@
                     "refText": "1038"
                 }
             ]
+        },
+        {
+            "id": 980,
+            "text": "ailin",
+            "lang": "Q",
+            "gloss": "a large lake",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-160049701.html"
+                }
+            ]
         }
     ],
     "rules": [
@@ -9563,9 +9576,20 @@
             "fromLang": "Q",
             "toLang": "Q",
             "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "NoChange",
+                            "args": [
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
             ],
-            "addedCategories": "",
-            "replacedCategories": "",
+            "addedCategories": null,
             "preInstructions": [
             ]
         },
@@ -17325,6 +17349,56 @@
             "componentIds": [
                 379,
                 880
+            ]
+        }
+    ],
+    "translations": [
+    ],
+    "grammaticalCategories": [
+        {
+            "lang": "Q",
+            "name": "Number",
+            "pos": [
+                "N"
+            ],
+            "values": [
+                {
+                    "name": "Singular",
+                    "abbreviation": "SG"
+                },
+                {
+                    "name": "Plural",
+                    "abbreviation": "PL"
+                },
+                {
+                    "name": "Dual",
+                    "abbreviation": "DU"
+                },
+                {
+                    "name": "Collective Plural",
+                    "abbreviation": "PPL"
+                }
+            ]
+        },
+        {
+            "lang": "Q",
+            "name": "Case",
+            "pos": [
+                "N"
+            ],
+            "values": [
+                {
+                    "name": "Nominative",
+                    "abbreviation": "NOM"
+                },
+                {
+                    "name": "Genitive",
+                    "abbreviation": "GEN"
+                },
+                {
+                    "name": "Dative",
+                    "abbreviation": "DAT"
+                }
             ]
         }
     ]

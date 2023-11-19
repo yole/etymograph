@@ -195,6 +195,20 @@ data class PublicationData(
 )
 
 @Serializable
+data class GrammaticalCategoryValueData(
+    val name: String,
+    val abbreviation: String
+)
+
+@Serializable
+data class GrammaticalCategoryData(
+    @SerialName("lang") val languageShortName: String,
+    val name: String,
+    val pos: List<String>,
+    val values: List<GrammaticalCategoryValueData>
+)
+
+@Serializable
 data class GraphRepositoryData(
     val languages: List<LanguageData>,
     val phonemeClasses: List<PhonemeClassData>,
@@ -211,7 +225,8 @@ data class GraphRepositoryData(
     val wordFinals: List<WordFinalData>,
     val publications: List<PublicationData>,
     val compounds: List<CompoundData>,
-    val translations: List<TranslationData>? = null
+    val translations: List<TranslationData>,
+    val grammaticalCategories: List<GrammaticalCategoryData>? = null
 )
 
 class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
@@ -264,6 +279,13 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
         val wordFinalsData = languages.values.mapNotNull { lang ->
             lang.wordFinals.takeIf { it.isNotEmpty() }?.let { WordFinalData(lang.shortName, it) }
         }
+        val grammaticalCategoryData = languages.values.flatMap { lang ->
+            lang.grammaticalCategories.map {
+                GrammaticalCategoryData(lang.shortName, it.name, it.pos, it.values.map { v ->
+                    GrammaticalCategoryValueData(v.name, v.abbreviation)
+                })
+            }
+        }
         return GraphRepositoryData(
             languages.values.map { LanguageData(it.name, it.shortName) },
             phonemeClassData,
@@ -307,7 +329,8 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             },
             allLangEntities.filterIsInstance<Translation>().map { t ->
                 TranslationData(t.id, t.corpusText.id, t.text, t.source.sourceToSerializedFormat(), t.notes)
-            }
+            },
+            grammaticalCategoryData
         )
     }
 
@@ -420,21 +443,28 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             corpus += addedCorpusText
             setLangEntity(corpusText.id, addedCorpusText)
         }
-        data.translations?.let {
-            for (translationData in it) {
-                val corpusText = allLangEntities[translationData.corpusTextId] as CorpusText
-                val translation = Translation(
-                    translationData.id,
-                    corpusText,
-                    translationData.text,
-                    loadSource(translationData.sourceRefs),
-                    translationData.notes
-                )
-                setLangEntity(translation.id, translation)
-                storeTranslation(corpusText, translation)
+        for (translationData in data.translations) {
+            val corpusText = allLangEntities[translationData.corpusTextId] as CorpusText
+            val translation = Translation(
+                translationData.id,
+                corpusText,
+                translationData.text,
+                loadSource(translationData.sourceRefs),
+                translationData.notes
+            )
+            setLangEntity(translation.id, translation)
+            storeTranslation(corpusText, translation)
+        }
+        data.grammaticalCategories?.let {
+            for (gc in it) {
+                val language = languageByShortName(gc.languageShortName)
+                language!!.grammaticalCategories.add(GrammaticalCategory(
+                    gc.name,
+                    gc.pos,
+                    gc.values.map { GrammaticalCategoryValue(it.name, it.abbreviation) }
+                ))
             }
         }
-
 
         for (paradigm in data.paradigms) {
             while (paradigm.id > paradigms.size) {

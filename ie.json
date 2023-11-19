@@ -4545,6 +4545,22 @@
                     "refText": "87"
                 }
             ]
+        },
+        {
+            "id": 913,
+            "text": "qñtati",
+            "lang": "Lyc"
+        },
+        {
+            "id": 914,
+            "text": "qñta",
+            "lang": "Lyc",
+            "pos": "V"
+        },
+        {
+            "id": 915,
+            "text": "sepigrẽi",
+            "lang": "Lyc"
         }
     ],
     "rules": [
@@ -7600,6 +7616,20 @@
                     "refText": "24"
                 }
             ]
+        },
+        {
+            "from": 913,
+            "to": 914,
+            "type": ">",
+            "ruleIds": [
+                273
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 2,
+                    "refText": "55"
+                }
+            ]
         }
     ],
     "corpusTexts": [
@@ -9040,8 +9070,8 @@
                 907,
                 911,
                 null,
-                null,
-                null,
+                913,
+                915,
                 null,
                 null,
                 null,
@@ -10057,6 +10087,13 @@
             "componentIds": [
                 181,
                 909
+            ]
+        },
+        {
+            "id": 916,
+            "compoundId": 915,
+            "componentIds": [
+                102
             ]
         }
     ],
