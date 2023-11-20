@@ -48,11 +48,11 @@ export default function RuleForm(props) {
             <td><input type="text" value={toLanguage} onChange={(e) => setToLanguage(e.target.value)}/></td>
         </tr>
         <tr>
-            <td><label>Added categories:</label></td>
+            <td><label>Added category values:</label></td>
             <td><input type="text" value={addedCategories} onChange={(e) => setAddedCategories(e.target.value)}/></td>
         </tr>
         <tr>
-            <td><label>Replaced categories:</label></td>
+            <td><label>Replaced category values:</label></td>
             <td><input type="text" value={replacedCategories} onChange={(e) => setReplacedCategories(e.target.value)}/></td>
         </tr>
         <tr>

@@ -47,4 +47,14 @@ class Language(val name: String, val shortName: String) {
     fun isNormalizedEqual(ruleProducedWord: String, attestedWord: String): Boolean {
         return normalizeWord(ruleProducedWord) == normalizeWord(attestedWord)
     }
+
+    fun findGrammaticalCategory(abbreviation: String): Pair<GrammaticalCategory, GrammaticalCategoryValue>? {
+        for (category in grammaticalCategories) {
+            val gcValue = category.values.find { it.abbreviation == abbreviation }
+            if (gcValue != null) {
+                return category to gcValue
+            }
+        }
+        return null
+    }
 }

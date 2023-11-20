@@ -53,12 +53,12 @@ abstract class GraphRepository {
         fromLanguage: Language,
         toLanguage: Language,
         logic: RuleLogic,
-        addedCategories: String?,
-        replacedCategories: String?,
-        fromPOS: String?,
-        toPOS: String?,
-        source: List<SourceRef>,
-        notes: String?
+        addedCategories: String? = null,
+        replacedCategories: String? = null,
+        fromPOS: String? = null,
+        toPOS: String? = null,
+        source: List<SourceRef> = emptyList(),
+        notes: String? = null
     ): Rule
 
     abstract fun addCorpusText(

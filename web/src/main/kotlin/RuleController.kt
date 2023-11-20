@@ -32,6 +32,7 @@ class RuleController(val graphService: GraphService) {
         val editableText: String,
         val addedCategories: String?,
         val replacedCategories: String?,
+        val addedCategoryDisplayNames: String?,
         val fromPOS: String?,
         val toPOS: String?,
         val source: List<SourceRefViewModel>,
@@ -107,6 +108,7 @@ class RuleController(val graphService: GraphService) {
             toEditableText(),
             addedCategories,
             replacedCategories,
+            toReadableCategories(fromLanguage, addedCategories),
             fromPOS,
             toPOS,
             source.toViewModel(graph),
@@ -129,6 +131,14 @@ class RuleController(val graphService: GraphService) {
                 )
             }
         )
+    }
+
+    private fun toReadableCategories(language: Language, addedCategories: String?): String? {
+        if (addedCategories == null) return null
+        val gcValues = parseCategoryValues(language, addedCategories)
+        return gcValues.joinToString(", ") { (category, value) ->
+            if (category == null || value == null) "?" else "${category.name}: ${value.name}"
+        }
     }
 
     private fun RuleBranch.toViewModel(isUnconditional: Boolean): RuleBranchViewModel {

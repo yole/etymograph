@@ -68,10 +68,11 @@ export default function Rule(params) {
         {rule.fromLang !== rule.toLang && <p>From {rule.fromLangFullName} to {rule.toLangFullName}</p>}
         {rule.paradigmId !== null && <p>Paradigm: <Link href={`/paradigm/${rule.paradigmId}`}>{rule.paradigmName}</Link></p>}
         {!editMode && <>
-            {rule.addedCategories && <p>Added categories: {rule.addedCategories}</p>}
-            {rule.replacedCategories && <p>Replaced categories: {rule.replacedCategories}</p>}
-            {rule.fromPOS && <p>From POS: {rule.fromPOS}</p>}
-            {rule.toPOS && <p>To POS: {rule.toPOS}</p>}
+            {rule.fromPOS && rule.fromPOS === rule.toPOS && <p>POS: {rule.fromPOS}</p>}
+            {rule.fromPOS && rule.fromPOS !== rule.toPOS && <p>From POS: {rule.fromPOS}</p>}
+            {rule.toPOS && rule.fromPOS !== rule.toPOS && <p>To POS: {rule.toPOS}</p>}
+            {rule.addedCategories && <p>Added category values: {rule.addedCategories} ({rule.addedCategoryDisplayNames})</p>}
+            {rule.replacedCategories && <p>Replaced category values: {rule.replacedCategories}</p>}
             <SourceRefs source={rule.source}/>
             <p/>
             <ul>

@@ -8276,7 +8276,7 @@
         },
         {
             "id": 875,
-            "text": "manwëo",
+            "text": "Manwëo",
             "lang": "Q",
             "sourceRefs": [
                 {
@@ -8571,6 +8571,31 @@
                     "refText": "https://eldamo.org/content/words/word-160049701.html"
                 }
             ]
+        },
+        {
+            "id": 982,
+            "text": "aiya",
+            "lang": "Q",
+            "gloss": "hail",
+            "fullGloss": "hail, behold, lo",
+            "sourceRefs": [
+                {
+                    "pubId": 15,
+                    "refText": "720"
+                }
+            ]
+        },
+        {
+            "id": 983,
+            "text": "Earendil",
+            "lang": "Q",
+            "pos": "NP",
+            "sourceRefs": [
+                {
+                    "pubId": 15,
+                    "refText": "720"
+                }
+            ]
         }
     ],
     "rules": [
@@ -8688,9 +8713,9 @@
                             ]
                         },
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "o"
+                                "'o'"
                             ]
                         }
                     ],
@@ -8717,9 +8742,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "o"
+                                "'o'"
                             ]
                         }
                     ],
@@ -16133,6 +16158,22 @@
                     "refText": "981"
                 }
             ]
+        },
+        {
+            "id": 981,
+            "text": "aiya Eärendil elenion ancalima",
+            "title": null,
+            "lang": "Q",
+            "wordIds": [
+                982,
+                983
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 15,
+                    "refText": "720"
+                }
+            ]
         }
     ],
     "paradigms": [
@@ -17353,6 +17394,14 @@
             "componentIds": [
                 379,
                 880
+            ]
+        },
+        {
+            "id": 984,
+            "compoundId": 983,
+            "componentIds": [
+                539,
+                177
             ]
         }
     ],

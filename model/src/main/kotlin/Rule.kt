@@ -227,3 +227,9 @@ class Rule(
         }
     }
 }
+
+fun parseCategoryValues(language: Language, categoryValues: String): List<Pair<GrammaticalCategory?, GrammaticalCategoryValue?>> {
+    return categoryValues.split('.').filter { it.isNotEmpty() }.map {
+        language.findGrammaticalCategory(it) ?: (null to null)
+    }
+}

@@ -28,8 +28,7 @@ class JsonGraphRepositoryTest : QBaseTest() {
             Rule.parseBranches("""
             sound is 'a':
             - new sound is 'á'
-        """.trimIndent(), q.parseContext()), null, null, null, null, emptyList(), null
-        )
+        """.trimIndent(), q.parseContext()))
 
         val parseContext = RuleParseContext(q, q) {
             if (it == "q-lengthen") RuleRef.to(soundRule) else throw RuleParseException("no such rule")
