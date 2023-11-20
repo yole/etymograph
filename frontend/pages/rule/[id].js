@@ -129,7 +129,7 @@ export default function Rule(params) {
                 {rule.examples.map(ex => <li>
                     <WordLink word={ex.toWord}/>
                     {ex.toWord.gloss && ` "${ex.toWord.gloss}"`}
-                    &nbsp;-&gt;&nbsp;
+                    &nbsp;&rarr;&nbsp;
                     <WordLink word={ex.fromWord}/>
                     {ex.allRules.length > 1 && " (" + ex.allRules.join(", ") + ")"}
                     {ex.expectedWord !== null && ex.expectedWord !== ex.fromWord && " [expected: " + ex.expectedWord + "]"}
