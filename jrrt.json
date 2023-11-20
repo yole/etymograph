@@ -8626,6 +8626,126 @@
             "lang": "Q",
             "gloss": "shine",
             "pos": "V"
+        },
+        {
+            "id": 990,
+            "text": "mélima",
+            "lang": "Q"
+        },
+        {
+            "id": 991,
+            "text": "mél-",
+            "lang": "Q",
+            "gloss": "love",
+            "pos": "V"
+        },
+        {
+            "id": 992,
+            "text": "yondion",
+            "lang": "Q"
+        },
+        {
+            "id": 993,
+            "text": "yondo",
+            "lang": "Q",
+            "gloss": "son",
+            "pos": "N"
+        },
+        {
+            "id": 994,
+            "text": "lenna",
+            "lang": "Q"
+        },
+        {
+            "id": 995,
+            "text": "le",
+            "lang": "Q",
+            "gloss": "you",
+            "fullGloss": "you (plural)"
+        },
+        {
+            "id": 996,
+            "text": "antanyes",
+            "lang": "Q"
+        },
+        {
+            "id": 997,
+            "text": "mélio",
+            "lang": "Q"
+        },
+        {
+            "id": 998,
+            "text": "mélië",
+            "lang": "Q",
+            "gloss": "loving",
+            "pos": "N"
+        },
+        {
+            "id": 999,
+            "text": "mel-",
+            "lang": "Q"
+        },
+        {
+            "id": 1000,
+            "text": "cenwa",
+            "lang": "Q",
+            "gloss": "reading (?)"
+        },
+        {
+            "id": 1002,
+            "text": "lantuva",
+            "lang": "Q",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "47"
+                }
+            ]
+        },
+        {
+            "id": 1003,
+            "text": "parmastanna",
+            "lang": "Q",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "47"
+                }
+            ]
+        },
+        {
+            "id": 1005,
+            "text": "lúmissen",
+            "lang": "Q",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "47"
+                }
+            ]
+        },
+        {
+            "id": 1007,
+            "text": "tengwiesto",
+            "lang": "Q",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "47"
+                }
+            ]
+        },
+        {
+            "id": 1008,
+            "text": "tengwie",
+            "lang": "Q"
+        },
+        {
+            "id": 1009,
+            "text": "tengwa",
+            "lang": "Q",
+            "gloss": "read",
+            "pos": "V"
         }
     ],
     "rules": [
@@ -8638,9 +8758,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "r"
+                                "'r'"
                             ]
                         }
                     ],
@@ -8663,12 +8783,7 @@
                 {
                     "instructions": [
                         {
-                            "type": "RemoveLastCharacter",
-                            "args": [
-                            ]
-                        },
-                        {
-                            "type": "AddSuffix",
+                            "type": "ChangeEnding",
                             "args": [
                                 "i"
                             ]
@@ -8683,9 +8798,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "r"
+                                "'r'"
                             ]
                         }
                     ],
@@ -8698,9 +8813,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "i"
+                                "'i'"
                             ]
                         }
                     ],
@@ -8738,14 +8853,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "RemoveLastCharacter",
+                            "type": "ChangeEnding",
                             "args": [
-                            ]
-                        },
-                        {
-                            "type": "Append",
-                            "args": [
-                                "'o'"
+                                "o"
                             ]
                         }
                     ],
@@ -8810,9 +8920,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "llo"
+                                "'llo'"
                             ]
                         }
                     ],
@@ -8825,9 +8935,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "lo"
+                                "'lo'"
                             ]
                         }
                     ],
@@ -8840,9 +8950,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "ello"
+                                "'ello'"
                             ]
                         }
                     ],
@@ -8878,9 +8988,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "nna"
+                                "'nna'"
                             ]
                         }
                     ],
@@ -8893,9 +9003,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "na"
+                                "'na'"
                             ]
                         }
                     ],
@@ -8908,9 +9018,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "enna"
+                                "'enna'"
                             ]
                         }
                     ],
@@ -8940,9 +9050,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "ya"
+                                "'ya'"
                             ]
                         }
                     ],
@@ -8955,9 +9065,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "rya"
+                                "'rya'"
                             ]
                         }
                     ],
@@ -8979,9 +9089,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "lye"
+                                "'lye'"
                             ]
                         }
                     ],
@@ -9009,9 +9119,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "nye"
+                                "'nye'"
                             ]
                         }
                     ],
@@ -9039,9 +9149,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "tye"
+                                "'tye'"
                             ]
                         }
                     ],
@@ -9132,9 +9242,9 @@
                             ]
                         },
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "on"
+                                "'on'"
                             ]
                         }
                     ],
@@ -9158,9 +9268,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "nen"
+                                "'nen'"
                             ]
                         }
                     ],
@@ -9173,9 +9283,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "men"
+                                "'men'"
                             ]
                         }
                     ],
@@ -9198,9 +9308,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "wen"
+                                "'wen'"
                             ]
                         }
                     ],
@@ -9223,9 +9333,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "anen"
+                                "'anen'"
                             ]
                         }
                     ],
@@ -9275,9 +9385,9 @@
                             ]
                         },
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "ie"
+                                "'ie'"
                             ]
                         }
                     ],
@@ -9295,9 +9405,9 @@
                             ]
                         },
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "e"
+                                "'e'"
                             ]
                         }
                     ],
@@ -9315,9 +9425,9 @@
                             ]
                         },
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "i"
+                                "'i'"
                             ]
                         }
                     ],
@@ -9330,9 +9440,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "i"
+                                "'i'"
                             ]
                         }
                     ],
@@ -9356,9 +9466,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "va"
+                                "'va'"
                             ]
                         }
                     ],
@@ -9371,9 +9481,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "wa"
+                                "'wa'"
                             ]
                         }
                     ],
@@ -9413,9 +9523,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "ssen"
+                                "'ssen'"
                             ]
                         }
                     ],
@@ -9428,9 +9538,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "issen"
+                                "'issen'"
                             ]
                         }
                     ],
@@ -9466,9 +9576,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "sse"
+                                "'sse'"
                             ]
                         }
                     ],
@@ -9481,9 +9591,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "esse"
+                                "'esse'"
                             ]
                         }
                     ],
@@ -9519,9 +9629,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "t"
+                                "'t'"
                             ]
                         }
                     ],
@@ -9534,9 +9644,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "u"
+                                "'u'"
                             ]
                         }
                     ],
@@ -9577,9 +9687,9 @@
                             ]
                         },
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "lli"
+                                "'lli'"
                             ]
                         }
                     ],
@@ -9602,9 +9712,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "li"
+                                "'li'"
                             ]
                         }
                     ],
@@ -9663,9 +9773,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "elya"
+                                "'elya'"
                             ]
                         }
                     ],
@@ -9678,9 +9788,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "lya"
+                                "'lya'"
                             ]
                         }
                     ],
@@ -9702,9 +9812,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "elma"
+                                "'elma'"
                             ]
                         }
                     ],
@@ -9717,9 +9827,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "lma"
+                                "'lma'"
                             ]
                         }
                     ],
@@ -9742,12 +9852,7 @@
                 {
                     "instructions": [
                         {
-                            "type": "RemoveLastCharacter",
-                            "args": [
-                            ]
-                        },
-                        {
-                            "type": "AddSuffix",
+                            "type": "ChangeEnding",
                             "args": [
                                 "úva"
                             ]
@@ -9762,12 +9867,7 @@
                 {
                     "instructions": [
                         {
-                            "type": "RemoveLastCharacter",
-                            "args": [
-                            ]
-                        },
-                        {
-                            "type": "AddSuffix",
+                            "type": "ChangeEnding",
                             "args": [
                                 "uva"
                             ]
@@ -9782,9 +9882,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "uva"
+                                "'uva'"
                             ]
                         }
                     ],
@@ -9795,7 +9895,7 @@
             ],
             "addedCategories": ".FUT",
             "fromPOS": "V",
-            "toPOS": "V.TENSE",
+            "toPOS": "V",
             "sourceRefs": [
                 {
                     "pubId": null,
@@ -9819,9 +9919,9 @@
                             ]
                         },
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "ië"
+                                "'ië'"
                             ]
                         }
                     ],
@@ -9834,9 +9934,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "ië"
+                                "'ië'"
                             ]
                         }
                     ],
@@ -9970,9 +10070,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "lme"
+                                "'lme'"
                             ]
                         }
                     ],
@@ -10024,9 +10124,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "e"
+                                "'e'"
                             ]
                         }
                     ],
@@ -10056,9 +10156,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "a"
+                                "'a'"
                             ]
                         }
                     ],
@@ -10086,9 +10186,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "t"
+                                "'t'"
                             ]
                         }
                     ],
@@ -10168,9 +10268,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "r"
+                                "'r'"
                             ]
                         }
                     ],
@@ -10194,9 +10294,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "ya"
+                                "'ya'"
                             ]
                         }
                     ],
@@ -10219,12 +10319,7 @@
                 {
                     "instructions": [
                         {
-                            "type": "RemoveLastCharacter",
-                            "args": [
-                            ]
-                        },
-                        {
-                            "type": "AddSuffix",
+                            "type": "ChangeEnding",
                             "args": [
                                 "in"
                             ]
@@ -10239,9 +10334,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "in"
+                                "'in'"
                             ]
                         }
                     ],
@@ -10277,9 +10372,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "nt"
+                                "'nt'"
                             ]
                         }
                     ],
@@ -10292,9 +10387,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "un"
+                                "'un'"
                             ]
                         }
                     ],
@@ -10562,9 +10657,9 @@
                             ]
                         },
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "on"
+                                "'on'"
                             ]
                         }
                     ],
@@ -10599,9 +10694,9 @@
                             ]
                         },
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "o"
+                                "'o'"
                             ]
                         }
                     ],
@@ -10667,9 +10762,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "nar"
+                                "'nar'"
                             ]
                         }
                     ],
@@ -10682,9 +10777,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "nnar"
+                                "'nnar'"
                             ]
                         }
                     ],
@@ -10697,9 +10792,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "innar"
+                                "'innar'"
                             ]
                         }
                     ],
@@ -10735,9 +10830,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "nta"
+                                "'nta'"
                             ]
                         }
                     ],
@@ -10750,9 +10845,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "unna"
+                                "'unna'"
                             ]
                         }
                     ],
@@ -10831,9 +10926,9 @@
                             ]
                         },
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "r"
+                                "'r'"
                             ]
                         }
                     ],
@@ -10862,9 +10957,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "llon"
+                                "'llon'"
                             ]
                         }
                     ],
@@ -10877,9 +10972,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "lon"
+                                "'lon'"
                             ]
                         }
                     ],
@@ -10892,9 +10987,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "illon"
+                                "'illon'"
                             ]
                         }
                     ],
@@ -10967,9 +11062,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "lto"
+                                "'lto'"
                             ]
                         }
                     ],
@@ -10982,9 +11077,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "ullo"
+                                "'ullo'"
                             ]
                         }
                     ],
@@ -11062,9 +11157,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "tse"
+                                "'tse'"
                             ]
                         }
                     ],
@@ -11077,9 +11172,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "usse"
+                                "'usse'"
                             ]
                         }
                     ],
@@ -11114,9 +11209,9 @@
                             ]
                         },
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "ínen"
+                                "'ínen'"
                             ]
                         }
                     ],
@@ -11129,9 +11224,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "ínen"
+                                "'ínen'"
                             ]
                         }
                     ],
@@ -11144,9 +11239,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "inen"
+                                "'inen'"
                             ]
                         }
                     ],
@@ -11222,9 +11317,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "nten"
+                                "'nten'"
                             ]
                         }
                     ],
@@ -11237,9 +11332,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "unen"
+                                "'unen'"
                             ]
                         }
                     ],
@@ -11377,9 +11472,9 @@
                             ]
                         },
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "ie"
+                                "'ie'"
                             ]
                         }
                     ],
@@ -11392,9 +11487,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "ie"
+                                "'ie'"
                             ]
                         }
                     ],
@@ -11437,9 +11532,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "n"
+                                "'n'"
                             ]
                         }
                     ],
@@ -11469,9 +11564,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "inya"
+                                "'inya'"
                             ]
                         }
                     ],
@@ -11484,9 +11579,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "nya"
+                                "'nya'"
                             ]
                         }
                     ],
@@ -11526,17 +11621,27 @@
                         "cond": "StressIs",
                         "characters": "third to last syllable"
                     }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "NoChange",
+                            "args": [
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
                 }
             ],
-            "addedCategories": "",
-            "replacedCategories": "",
+            "addedCategories": null,
             "sourceRefs": [
                 {
                     "pubId": null,
                     "refText": "https://eldamo.org/content/words/word-3082255977.html"
                 }
             ],
-            "notes": "",
             "preInstructions": [
             ]
         },
@@ -11625,9 +11730,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "íva"
+                                "'íva'"
                             ]
                         }
                     ],
@@ -11640,12 +11745,7 @@
                 {
                     "instructions": [
                         {
-                            "type": "RemoveLastCharacter",
-                            "args": [
-                            ]
-                        },
-                        {
-                            "type": "AddSuffix",
+                            "type": "ChangeEnding",
                             "args": [
                                 "íva"
                             ]
@@ -11660,9 +11760,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "iva"
+                                "'iva'"
                             ]
                         }
                     ],
@@ -11672,14 +11772,12 @@
                 }
             ],
             "addedCategories": ".POSS.PL",
-            "replacedCategories": "",
             "sourceRefs": [
                 {
                     "pubId": null,
                     "refText": "https://eldamo.org/content/words/word-2977430193.html"
                 }
             ],
-            "notes": "",
             "preInstructions": [
                 {
                     "type": "ApplyRule",
@@ -11698,9 +11796,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "ala"
+                                "'ala'"
                             ]
                         }
                     ],
@@ -11713,9 +11811,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "la"
+                                "'la'"
                             ]
                         }
                     ],
@@ -11745,9 +11843,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "lde"
+                                "'lde'"
                             ]
                         }
                     ],
@@ -11777,9 +11875,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "lte"
+                                "'lte'"
                             ]
                         }
                     ],
@@ -11814,9 +11912,9 @@
                             ]
                         },
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "mpe"
+                                "'mpe'"
                             ]
                         }
                     ],
@@ -11844,9 +11942,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "ne"
+                                "'ne'"
                             ]
                         }
                     ],
@@ -11859,9 +11957,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "ne"
+                                "'ne'"
                             ]
                         }
                     ],
@@ -11893,9 +11991,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "le"
+                                "'le'"
                             ]
                         }
                     ],
@@ -11919,9 +12017,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "sse"
+                                "'sse'"
                             ]
                         }
                     ],
@@ -11950,9 +12048,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "s"
+                                "'s'"
                             ]
                         }
                     ],
@@ -11981,9 +12079,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "lve"
+                                "'lve'"
                             ]
                         }
                     ],
@@ -12015,9 +12113,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "llor"
+                                "'llor'"
                             ]
                         }
                     ],
@@ -12030,9 +12128,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "lor"
+                                "'lor'"
                             ]
                         }
                     ],
@@ -12045,9 +12143,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "illor"
+                                "'illor'"
                             ]
                         }
                     ],
@@ -12083,9 +12181,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "mme"
+                                "'mme'"
                             ]
                         }
                     ],
@@ -12115,9 +12213,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "nque"
+                                "'nque'"
                             ]
                         }
                     ],
@@ -12149,9 +12247,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "ste"
+                                "'ste'"
                             ]
                         }
                     ],
@@ -12183,9 +12281,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "tte"
+                                "'tte'"
                             ]
                         }
                     ],
@@ -12217,9 +12315,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "na"
+                                "'na'"
                             ]
                         }
                     ],
@@ -12232,9 +12330,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "ina"
+                                "'ina'"
                             ]
                         }
                     ],
@@ -12266,9 +12364,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "itya"
+                                "'itya'"
                             ]
                         }
                     ],
@@ -12281,9 +12379,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "tya"
+                                "'tya'"
                             ]
                         }
                     ],
@@ -12312,9 +12410,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "elva"
+                                "'elva'"
                             ]
                         }
                     ],
@@ -12327,9 +12425,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "lva"
+                                "'lva'"
                             ]
                         }
                     ],
@@ -12359,9 +12457,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "elda"
+                                "'elda'"
                             ]
                         }
                     ],
@@ -12374,9 +12472,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "lda"
+                                "'lda'"
                             ]
                         }
                     ],
@@ -12408,9 +12506,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "s"
+                                "'s'"
                             ]
                         }
                     ],
@@ -12440,12 +12538,7 @@
                 {
                     "instructions": [
                         {
-                            "type": "RemoveLastCharacter",
-                            "args": [
-                            ]
-                        },
-                        {
-                            "type": "AddSuffix",
+                            "type": "ChangeEnding",
                             "args": [
                                 "ie"
                             ]
@@ -12460,9 +12553,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "ye"
+                                "'ye'"
                             ]
                         }
                     ],
@@ -12475,9 +12568,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "ie"
+                                "'ie'"
                             ]
                         }
                     ],
@@ -12487,7 +12580,6 @@
                 }
             ],
             "addedCategories": ".GER",
-            "replacedCategories": "",
             "fromPOS": "V",
             "toPOS": "N",
             "sourceRefs": [
@@ -12496,7 +12588,6 @@
                     "refText": "https://eldamo.org/content/words/word-2279685699.html"
                 }
             ],
-            "notes": "",
             "preInstructions": [
             ]
         },
@@ -12509,9 +12600,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "nte"
+                                "'nte'"
                             ]
                         }
                     ],
@@ -12543,9 +12634,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "nde"
+                                "'nde'"
                             ]
                         }
                     ],
@@ -12577,9 +12668,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddPrefix",
+                            "type": "Prepend",
                             "args": [
-                                "a"
+                                "'a'"
                             ]
                         }
                     ],
@@ -12624,9 +12715,9 @@
                             ]
                         },
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "nye"
+                                "'nye'"
                             ]
                         }
                     ],
@@ -12669,6 +12760,34 @@
             "replacedCategories": "",
             "fromPOS": "ADJ",
             "toPOS": "ADJ",
+            "notes": "",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 1004,
+            "name": "q-poss-2du",
+            "fromLang": "Q",
+            "toLang": "Q",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "Append",
+                            "args": [
+                                "'sta'"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".POSS.2DU",
+            "replacedCategories": "",
+            "fromPOS": "",
+            "toPOS": "",
             "notes": "",
             "preInstructions": [
             ]
@@ -15583,6 +15702,97 @@
                 442,
                 986
             ]
+        },
+        {
+            "from": 990,
+            "to": 991,
+            "type": ">",
+            "ruleIds": [
+                442
+            ]
+        },
+        {
+            "from": 992,
+            "to": 993,
+            "type": ">",
+            "ruleIds": [
+                405
+            ]
+        },
+        {
+            "from": 994,
+            "to": 995,
+            "type": ">",
+            "ruleIds": [
+                399
+            ]
+        },
+        {
+            "from": 996,
+            "to": 343,
+            "type": ">",
+            "ruleIds": [
+                402,
+                744
+            ]
+        },
+        {
+            "from": 997,
+            "to": 998,
+            "type": ">",
+            "ruleIds": [
+                397
+            ]
+        },
+        {
+            "from": 998,
+            "to": 999,
+            "type": ">",
+            "ruleIds": [
+                417
+            ]
+        },
+        {
+            "from": 1002,
+            "to": 4,
+            "type": ">",
+            "ruleIds": [
+                416
+            ]
+        },
+        {
+            "from": 1003,
+            "to": 142,
+            "type": ">",
+            "ruleIds": [
+                1004,
+                399
+            ]
+        },
+        {
+            "from": 1005,
+            "to": 150,
+            "type": ">",
+            "ruleIds": [
+                409
+            ]
+        },
+        {
+            "from": 1007,
+            "to": 1008,
+            "type": ">",
+            "ruleIds": [
+                1004,
+                397
+            ]
+        },
+        {
+            "from": 1008,
+            "to": 1009,
+            "type": ">",
+            "ruleIds": [
+                757
+            ]
         }
     ],
     "corpusTexts": [
@@ -16242,6 +16452,40 @@
                     "refText": "720"
                 }
             ]
+        },
+        {
+            "id": 989,
+            "text": "mélima yondion, lenna antanyes mélio cenwa",
+            "title": null,
+            "lang": "Q",
+            "wordIds": [
+                990,
+                992,
+                994,
+                996,
+                997,
+                1000
+            ]
+        },
+        {
+            "id": 1001,
+            "text": "nai laurë lantuva parmastanna lúmissen tengwiesto",
+            "title": null,
+            "lang": "Q",
+            "wordIds": [
+                null,
+                null,
+                1002,
+                1003,
+                1005,
+                1007
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "47"
+                }
+            ]
         }
     ],
     "paradigms": [
@@ -16600,6 +16844,20 @@
                         {
                             "ruleAlternatives": [
                                 743
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "Dual",
+                    "cells": [
+                        {
+                        },
+                        {
+                        },
+                        {
+                            "ruleAlternatives": [
+                                1004
                             ]
                         }
                     ]
@@ -17523,6 +17781,22 @@
                 {
                     "name": "Possessive",
                     "abbreviation": "POSS"
+                },
+                {
+                    "name": "Allative",
+                    "abbreviation": "ALL"
+                },
+                {
+                    "name": "Ablative",
+                    "abbreviation": "ABL"
+                },
+                {
+                    "name": "Instrumental",
+                    "abbreviation": "INS"
+                },
+                {
+                    "name": "Locative",
+                    "abbreviation": "LOC"
                 }
             ]
         },

@@ -15,6 +15,7 @@
         {
             "lang": "OE",
             "digraphs": [
+                ""
             ]
         },
         {
@@ -27,6 +28,7 @@
         {
             "lang": "OE",
             "diphthongs": [
+                ""
             ]
         },
         {
@@ -5665,9 +5667,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "te"
+                                "'te'"
                             ]
                         }
                     ],
@@ -5721,9 +5723,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "tẽ"
+                                "'tẽ'"
                             ]
                         }
                     ],
@@ -9302,8 +9304,20 @@
         }
     ],
     "syllableStructures": [
+        {
+            "lang": "OE",
+            "syllableStructures": [
+                ""
+            ]
+        }
     ],
     "wordFinals": [
+        {
+            "lang": "OE",
+            "wordFinals": [
+                ""
+            ]
+        }
     ],
     "publications": [
         {
@@ -10322,6 +10336,21 @@
             "id": 812,
             "corpusTextId": 481,
             "text": "This tomb, it was built by Χudali, son of Zuhrija, household member of Χezrime."
+        }
+    ],
+    "grammaticalCategories": [
+        {
+            "lang": "OE",
+            "name": "Case",
+            "pos": [
+                "N"
+            ],
+            "values": [
+                {
+                    "name": "Nominative",
+                    "abbreviation": "NOM"
+                }
+            ]
         }
     ]
 }

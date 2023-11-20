@@ -7,8 +7,6 @@ enum class InstructionType(
 ) {
     NoChange("no change"),
     RemoveLastCharacter("remove last character"),
-    AddSuffix("add suffix", "add suffix '(.+)'", true),
-    AddPrefix("add prefix", "add prefix '(.+)'", true),
     ChangeEnding("change ending to", "change ending to '(.+)'", true),
     Prepend("prepend", "prepend (.+)", true),
     Append("append", "append (.+)", true),
@@ -25,9 +23,6 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
     open fun apply(rule: Rule, word: Word, graph: GraphRepository): Word = when(type) {
         InstructionType.NoChange -> word
         InstructionType.RemoveLastCharacter -> word.derive(word.text.substring(0, word.text.lastIndex))
-        InstructionType.AddSuffix ->
-            word.derive(word.text + arg, WordSegment(word.text.length, arg.length, rule.addedCategories, rule))
-        InstructionType.AddPrefix -> word.derive(arg + word.text)
         InstructionType.ChangeEnding -> changeEnding(word, rule)
         else -> throw IllegalStateException("Can't apply phoneme instruction to full word")
     }
@@ -53,8 +48,6 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
 
     open fun reverseApply(rule: Rule, text: String, language: Language): List<String> {
         return when (type) {
-            InstructionType.AddSuffix -> if (text.endsWith(arg)) listOf(text.removeSuffix(arg)) else emptyList()
-            InstructionType.AddPrefix -> if (text.startsWith(arg)) listOf(text.removePrefix(arg)) else emptyList()
             InstructionType.RemoveLastCharacter -> listOf("$text*")
             InstructionType.ChangeEnding -> reverseChangeEnding(text, rule)
             else -> emptyList()
@@ -85,8 +78,7 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
     open fun toEditableText(): String = type.pattern?.replace("(.+)", arg) ?: type.insnName
 
     open fun toSummaryText() = when(type) {
-        InstructionType.AddSuffix, InstructionType.ChangeEnding -> "-$arg"
-        InstructionType.AddPrefix -> "$arg-"
+        InstructionType.ChangeEnding -> "-$arg"
         else -> ""
     }
 

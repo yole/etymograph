@@ -28,7 +28,7 @@ class RuleTest : QBaseTest() {
         val v = PhonemeClass("e", listOf("e", "ë"))
         val c = LeafRuleCondition(ConditionType.EndsWith, v, null, false)
         val i1 = RuleInstruction(InstructionType.RemoveLastCharacter, "")
-        val i2 = RuleInstruction(InstructionType.AddSuffix, "i")
+        val i2 = PrependAppendInstruction(InstructionType.Append, q, "'i'")
         val r = RuleBranch(c, listOf(i1, i2))
 
         assertTrue(r.matches(Word(0, "lasse", q)))
@@ -69,28 +69,28 @@ class RuleTest : QBaseTest() {
         val i = RuleInstruction.parse("- remove last character", q.parseContext())
         assertEquals(InstructionType.RemoveLastCharacter, i.type)
 
-        val i2 = RuleInstruction.parse("- add suffix 'a'", q.parseContext())
-        assertEquals(InstructionType.AddSuffix, i2.type)
-        assertEquals("a", i2.arg)
+        val i2 = RuleInstruction.parse("- append 'a'", q.parseContext())
+        assertEquals(InstructionType.Append, i2.type)
+        assertEquals("'a'", i2.arg)
     }
 
     @Test
     fun branchParse() {
         val b = RuleBranch.parse("""
             word ends with 'e':
-            - add suffix 'a'
+            - append 'a'
         """.trimIndent(), q.parseContext())
         assertEquals("e", (b.condition as LeafRuleCondition).parameter)
-        assertEquals("a", b.instructions[0].arg)
+        assertEquals("'a'", b.instructions[0].arg)
     }
 
     @Test
     fun ruleParse() {
         val branches = Rule.parseBranches("""
             word ends with 'e':
-            - add suffix 'a'
+            - append 'a'
             word ends with 'i':
-            - add suffix 'r'
+            - append 'r'
         """.trimIndent(), q.parseContext()).branches
         assertEquals(2, branches.size)
         assertEquals(1, branches[0].instructions.size)
@@ -100,7 +100,7 @@ class RuleTest : QBaseTest() {
     @Test
     fun ruleParseWithoutConditions() {
         val branches = Rule.parseBranches("""
-            - add suffix 'lye'
+            - append 'lye'
         """.trimIndent(), q.parseContext()).branches
         assertEquals(1, branches.size)
         assertEquals(1, branches[0].instructions.size)
@@ -111,9 +111,9 @@ class RuleTest : QBaseTest() {
     fun ruleParseOtherwise() {
         val branches = Rule.parseBranches("""
             word ends with 'e':
-            - add suffix 'a'
+            - append 'a'
             otherwise:
-            - add suffix 'r'
+            - append 'r'
         """.trimIndent(), q.parseContext()).branches
         assertEquals(2, branches.size)
         assertEquals(1, branches[0].instructions.size)
@@ -294,7 +294,7 @@ class RuleTest : QBaseTest() {
         val ruleText = """
             | - remove last character
             |word ends with 'r':
-            | - add suffix 'i'
+            | - append 'i'
         """.trimMargin("|")
         val rule = parseRule(q, q, ruleText)
         assertEquals(1, rule.logic.preInstructions.size)
@@ -328,7 +328,7 @@ class RuleTest : QBaseTest() {
 
     @Test
     fun reverseApply() {
-        val rule = parseRule(q, q, "- add suffix 'llo'")
+        val rule = parseRule(q, q, "- append 'llo'")
         val candidates = rule.reverseApply(q.word("hrestallo"))
         assertEquals(1, candidates.size)
         assertEquals("hresta", candidates[0])
@@ -344,7 +344,7 @@ class RuleTest : QBaseTest() {
 
     @Test
     fun reverseApplyNormalize() {
-        val rule = parseRule(q, q, "- add suffix 'sse'")
+        val rule = parseRule(q, q, "- append 'sse'")
         val candidates = rule.reverseApply(q.word("auressë"))
         assertEquals(1, candidates.size)
         assertEquals("aure", candidates[0])
@@ -352,21 +352,21 @@ class RuleTest : QBaseTest() {
 
     @Test
     fun reverseApplyMatch() {
-        val rule = parseRule(q, q, "word ends with a consonant:\n- add suffix 'i'")
+        val rule = parseRule(q, q, "word ends with a consonant:\n- append 'i'")
         val candidate = rule.reverseApply(q.word("nai"))
         assertEquals(0, candidate.size)
     }
 
     @Test
     fun reverseApplyLastCharacter() {
-        val rule = parseRule(q, q, "word ends with 'e':\n- remove last character\n- add suffix 'i'")
+        val rule = parseRule(q, q, "word ends with 'e':\n- remove last character\n- append 'i'")
         val candidate = rule.reverseApply(q.word("fairi"))
         assertEquals("faire", candidate.single())
     }
 
     @Test
     fun reverseApplyLastCharacterTwice() {
-        val rule = parseRule(q, q, "word ends with 'ea':\n- remove last character\n- remove last character\n- add suffix 'ie'")
+        val rule = parseRule(q, q, "word ends with 'ea':\n- remove last character\n- remove last character\n- append 'ie'")
         val candidate = rule.reverseApply(q.word("yaimie"))
         assertEquals("yaimea", candidate.single())
     }
@@ -400,14 +400,14 @@ class RuleTest : QBaseTest() {
 
     @Test
     fun reverseApplyMultiple() {
-        val rule = parseRule(q, q, "word ends with a consonant:\n- add suffix 'ala'\notherwise:\n- add suffix 'la'")
+        val rule = parseRule(q, q, "word ends with a consonant:\n- append 'ala'\notherwise:\n- append 'la'")
         val candidates = rule.reverseApply(q.word("picala"))
         assertEquals(2, candidates.size)
     }
 
     @Test
     fun segment() {
-        val rule = parseRule(q, q, "- add suffix 'llo'")
+        val rule = parseRule(q, q, "- append 'llo'")
         val result = rule.apply(q.word("hresta"), emptyRepo)
         assertEquals(1, result.segments!!.size)
         val segment = result.segments!![0]
@@ -429,8 +429,8 @@ class RuleTest : QBaseTest() {
 
     @Test
     fun multipleSegments() {
-        val rule1 = parseRule(q, q, "- add suffix 'llo'")
-        val rule2 = parseRule(q, q, "- add suffix 's'")
+        val rule1 = parseRule(q, q, "- append 'llo'")
+        val rule2 = parseRule(q, q, "- append 's'")
         val result = rule2.apply(rule1.apply(q.word("hresta"), emptyRepo), emptyRepo)
         assertEquals(2, result.segments!!.size)
         /*
@@ -446,7 +446,7 @@ class RuleTest : QBaseTest() {
         val repo = InMemoryGraphRepository()
         val hresta = repo.addWord("hresta")
         val hrestallo = repo.addWord("hrestallo", gloss = null)
-        val rule = parseRule(q, q, "- add suffix 'llo'", addedCategories = ".ABL")
+        val rule = parseRule(q, q, "- append 'llo'", addedCategories = ".ABL")
         val link = repo.addLink(hrestallo, hresta, Link.Derived, listOf(rule), emptyList(), null)
         val restored = repo.restoreSegments(hrestallo)
         assertEquals(1, restored.segments!!.size)
@@ -469,16 +469,16 @@ class RuleTest : QBaseTest() {
     fun chainedSegments() {
         val qNomPl = parseRule(q, q, """
             word ends with a vowel:
-            - add suffix 'r'
+            - append 'r'
             otherwise:
-            - add suffix 'i'
+            - append 'i'
         """.trimIndent(), "q-nom-pl")
         val repo = InMemoryGraphRepository()
         repo.addRule(qNomPl)
 
         val qGenPl = parseRule(q, q, """
             - apply rule 'q-nom-pl'
-            - add suffix 'on'
+            - append 'on'
             """.trimIndent(), repo = repo)
         val result = qGenPl.apply(q.word("alda"), repo)
         assertEquals(1, result.segments!!.size)
@@ -490,15 +490,15 @@ class RuleTest : QBaseTest() {
     @Test
     fun testChainTwoSegments() {
         val repo = InMemoryGraphRepository()
-        val qPpl = parseRule(q, q, "- add suffix 'li'", "q-ppl")
+        val qPpl = parseRule(q, q, "- append 'li'", "q-ppl")
         repo.addRule(qPpl)
-        val qAll = parseRule(q, q, "- add suffix 'nna'", "q-all")
+        val qAll = parseRule(q, q, "- append 'nna'", "q-all")
         repo.addRule(qAll)
 
         val qAllPpl = parseRule(q, q, """
             - apply rule 'q-ppl'
             - apply rule 'q-all'
-            - add suffix 'r'
+            - append 'r'
         """.trimIndent(), repo = repo)
         val result = qAllPpl.apply(q.word("falma"), repo)
         assertEquals(1, result.segments!!.size)
