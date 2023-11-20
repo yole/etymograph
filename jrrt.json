@@ -7392,7 +7392,6 @@
             "id": 790,
             "text": "sangiessemman",
             "lang": "Q",
-            "gloss": "necessity.LOC.PL.POSS.1PL.EX",
             "sourceRefs": [
                 {
                     "pubId": 0,
@@ -8746,6 +8745,128 @@
             "lang": "Q",
             "gloss": "read",
             "pos": "V"
+        },
+        {
+            "id": 1011,
+            "text": "atta",
+            "lang": "Q",
+            "gloss": "two",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "44"
+                }
+            ]
+        },
+        {
+            "id": 1012,
+            "text": "siluvat",
+            "lang": "Q",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "44"
+                }
+            ]
+        },
+        {
+            "id": 1014,
+            "text": "aurenna",
+            "lang": "Q",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "44"
+                }
+            ]
+        },
+        {
+            "id": 1015,
+            "text": "veryanwesto",
+            "lang": "Q",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "44"
+                }
+            ]
+        },
+        {
+            "id": 1016,
+            "text": "veryanwe",
+            "lang": "Q",
+            "gloss": "wedding",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-3806997461.html"
+                }
+            ]
+        },
+        {
+            "id": 1017,
+            "text": "sínen",
+            "lang": "Q",
+            "gloss": "so",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-2269313915.html"
+                }
+            ]
+        },
+        {
+            "id": 1019,
+            "text": "i·anda",
+            "lang": "Q",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-2269313915.html"
+                }
+            ]
+        },
+        {
+            "id": 1021,
+            "text": "anda",
+            "lang": "Q",
+            "gloss": "long",
+            "pos": "ADJ"
+        },
+        {
+            "id": 1022,
+            "text": "taina",
+            "lang": "Q",
+            "gloss": "stretched",
+            "fullGloss": "stretched, elongsted",
+            "pos": "ADJ",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "VT39:7"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-3748877237.html"
+                }
+            ]
+        },
+        {
+            "id": 1023,
+            "text": "andaurenya",
+            "lang": "Q",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-2269313915.html"
+                }
+            ]
+        },
+        {
+            "id": 1025,
+            "text": "aurenya",
+            "lang": "Q"
         }
     ],
     "rules": [
@@ -9076,7 +9197,7 @@
                     }
                 }
             ],
-            "addedCategories": ".POSS.3SG",
+            "addedCategories": ".3SPOSS",
             "preInstructions": [
             ]
         },
@@ -9131,6 +9252,8 @@
                 }
             ],
             "addedCategories": ".1SG",
+            "fromPOS": "V",
+            "toPOS": "V",
             "sourceRefs": [
                 {
                     "pubId": null,
@@ -9375,19 +9498,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "RemoveLastCharacter",
+                            "type": "ChangeEnding",
                             "args": [
-                            ]
-                        },
-                        {
-                            "type": "RemoveLastCharacter",
-                            "args": [
-                            ]
-                        },
-                        {
-                            "type": "Append",
-                            "args": [
-                                "'ie'"
+                                "ie"
                             ]
                         }
                     ],
@@ -9400,14 +9513,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "RemoveLastCharacter",
+                            "type": "ChangeEnding",
                             "args": [
-                            ]
-                        },
-                        {
-                            "type": "Append",
-                            "args": [
-                                "'e'"
+                                "e"
                             ]
                         }
                     ],
@@ -9420,14 +9528,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "RemoveLastCharacter",
+                            "type": "ChangeEnding",
                             "args": [
-                            ]
-                        },
-                        {
-                            "type": "Append",
-                            "args": [
-                                "'i'"
+                                "i"
                             ]
                         }
                     ],
@@ -9493,6 +9596,8 @@
                 }
             ],
             "addedCategories": ".POSS",
+            "fromPOS": "N",
+            "toPOS": "N",
             "sourceRefs": [
                 {
                     "pubId": null,
@@ -9682,14 +9787,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "RemoveLastCharacter",
+                            "type": "ChangeEnding",
                             "args": [
-                            ]
-                        },
-                        {
-                            "type": "Append",
-                            "args": [
-                                "'lli'"
+                                "lli"
                             ]
                         }
                     ],
@@ -9799,7 +9899,7 @@
                     }
                 }
             ],
-            "addedCategories": ".POSS.2SG",
+            "addedCategories": ".2SPOSS",
             "preInstructions": [
             ]
         },
@@ -9838,7 +9938,7 @@
                     }
                 }
             ],
-            "addedCategories": ".POSS.1PL.EX",
+            "addedCategories": ".1PEXPOSS",
             "notes": "Older versions of the paradigm use the suffix 'mma' instead of 'lma'.",
             "preInstructions": [
             ]
@@ -10197,9 +10297,9 @@
                     }
                 }
             ],
-            "addedCategories": ".3PL.O",
-            "fromPOS": "V.TENSE",
-            "toPOS": "V.OBJ",
+            "addedCategories": ".3PO",
+            "fromPOS": "V",
+            "toPOS": "V",
             "preInstructions": [
             ]
         },
@@ -10669,7 +10769,8 @@
                 }
             ],
             "addedCategories": ".GEN.PPL",
-            "replacedCategories": "",
+            "fromPOS": "N",
+            "toPOS": "N",
             "sourceRefs": [
                 {
                     "pubId": null,
@@ -10743,7 +10844,8 @@
                 }
             ],
             "addedCategories": ".DAT.PPL",
-            "replacedCategories": "",
+            "fromPOS": "N",
+            "toPOS": "N",
             "sourceRefs": [
                 {
                     "pubId": null,
@@ -10895,7 +10997,8 @@
                 }
             ],
             "addedCategories": ".ALL.PPL",
-            "replacedCategories": "",
+            "fromPOS": "N",
+            "toPOS": "N",
             "sourceRefs": [
                 {
                     "pubId": null,
@@ -10938,7 +11041,8 @@
                 }
             ],
             "addedCategories": ".ALL.PPL",
-            "replacedCategories": "",
+            "fromPOS": "N",
+            "toPOS": "N",
             "sourceRefs": [
                 {
                     "pubId": null,
@@ -11043,6 +11147,8 @@
                 }
             ],
             "addedCategories": ".ABL.PPL",
+            "fromPOS": "N",
+            "toPOS": "N",
             "sourceRefs": [
                 {
                     "pubId": null,
@@ -11089,6 +11195,8 @@
                 }
             ],
             "addedCategories": ".ABL.DU",
+            "fromPOS": "N",
+            "toPOS": "N",
             "sourceRefs": [
                 {
                     "pubId": null,
@@ -11183,8 +11291,9 @@
                     }
                 }
             ],
-            "addedCategories": ".LOC.DUAL",
-            "replacedCategories": "",
+            "addedCategories": ".LOC.DU",
+            "fromPOS": "N",
+            "toPOS": "N",
             "sourceRefs": [
                 {
                     "pubId": null,
@@ -11204,14 +11313,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "RemoveLastCharacter",
+                            "type": "ChangeEnding",
                             "args": [
-                            ]
-                        },
-                        {
-                            "type": "Append",
-                            "args": [
-                                "'ínen'"
+                                "ínen"
                             ]
                         }
                     ],
@@ -11299,6 +11403,8 @@
                 }
             ],
             "addedCategories": ".INS.PPL",
+            "fromPOS": "N",
+            "toPOS": "N",
             "sourceRefs": [
                 {
                     "pubId": null,
@@ -11344,14 +11450,14 @@
                 }
             ],
             "addedCategories": ".INS.DU",
-            "replacedCategories": "",
+            "fromPOS": "N",
+            "toPOS": "N",
             "sourceRefs": [
                 {
                     "pubId": null,
                     "refText": "https://eldamo.org/content/words/word-1605931301.html"
                 }
             ],
-            "notes": "",
             "preInstructions": [
             ]
         },
@@ -11590,7 +11696,9 @@
                     }
                 }
             ],
-            "addedCategories": ".POSS.1SG",
+            "addedCategories": ".1SPOSS",
+            "fromPOS": "N",
+            "toPOS": "N",
             "sourceRefs": [
                 {
                     "pubId": null,
@@ -11672,14 +11780,14 @@
                 }
             ],
             "addedCategories": ".POSS.DU",
-            "replacedCategories": "",
+            "fromPOS": "N",
+            "toPOS": "N",
             "sourceRefs": [
                 {
                     "pubId": null,
                     "refText": "https://eldamo.org/content/words/word-3983087533.html"
                 }
             ],
-            "notes": "",
             "preInstructions": [
             ]
         },
@@ -11710,14 +11818,14 @@
                 }
             ],
             "addedCategories": ".POSS.PPL",
-            "replacedCategories": "",
+            "fromPOS": "N",
+            "toPOS": "N",
             "sourceRefs": [
                 {
                     "pubId": null,
                     "refText": "https://eldamo.org/content/words/word-3983087533.html"
                 }
             ],
-            "notes": "",
             "preInstructions": [
             ]
         },
@@ -11772,6 +11880,8 @@
                 }
             ],
             "addedCategories": ".POSS.PL",
+            "fromPOS": "N",
+            "toPOS": "N",
             "sourceRefs": [
                 {
                     "pubId": null,
@@ -12390,8 +12500,9 @@
                     }
                 }
             ],
-            "addedCategories": null,
+            "addedCategories": ".2SFAMPOSS",
             "fromPOS": "N",
+            "toPOS": "N",
             "sourceRefs": [
                 {
                     "pubId": null,
@@ -12436,7 +12547,7 @@
                     }
                 }
             ],
-            "addedCategories": ".POSS.1PL.IN",
+            "addedCategories": ".1PINPOSS",
             "fromPOS": "N",
             "toPOS": "N",
             "sourceRefs": [
@@ -12483,17 +12594,15 @@
                     }
                 }
             ],
-            "addedCategories": "",
-            "replacedCategories": "",
+            "addedCategories": ".2PPOSS",
             "fromPOS": "N",
-            "toPOS": "",
+            "toPOS": "N",
             "sourceRefs": [
                 {
                     "pubId": null,
                     "refText": "https://eldamo.org/content/words/word-4077936885.html"
                 }
             ],
-            "notes": "",
             "preInstructions": [
             ]
         },
@@ -12517,9 +12626,9 @@
                     }
                 }
             ],
-            "addedCategories": ".3SG.O",
-            "fromPOS": "V.TENSE",
-            "toPOS": "V.OBJ",
+            "addedCategories": "3SO",
+            "fromPOS": "V",
+            "toPOS": "V",
             "sourceRefs": [
                 {
                     "pubId": null,
@@ -12784,10 +12893,34 @@
                     }
                 }
             ],
-            "addedCategories": ".POSS.2DU",
+            "addedCategories": ".2DPOSS",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 1013,
+            "name": "q-v-du",
+            "fromLang": "Q",
+            "toLang": "Q",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "Append",
+                            "args": [
+                                "'t'"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".DU",
             "replacedCategories": "",
-            "fromPOS": "",
-            "toPOS": "",
+            "fromPOS": "V",
+            "toPOS": "V",
             "notes": "",
             "preInstructions": [
             ]
@@ -15793,6 +15926,45 @@
             "ruleIds": [
                 757
             ]
+        },
+        {
+            "from": 1012,
+            "to": 148,
+            "type": ">",
+            "ruleIds": [
+                416,
+                1013
+            ]
+        },
+        {
+            "from": 1014,
+            "to": 348,
+            "type": ">",
+            "ruleIds": [
+                399
+            ]
+        },
+        {
+            "from": 1015,
+            "to": 1016,
+            "type": ">",
+            "ruleIds": [
+                1004,
+                397
+            ]
+        },
+        {
+            "from": 1017,
+            "to": 64,
+            "type": ">"
+        },
+        {
+            "from": 1025,
+            "to": 348,
+            "type": ">",
+            "ruleIds": [
+                552
+            ]
         }
     ],
     "corpusTexts": [
@@ -16455,16 +16627,31 @@
         },
         {
             "id": 989,
-            "text": "mélima yondion, lenna antanyes mélio cenwa",
-            "title": null,
+            "text": "sínen i·anda nyarnë metta ar taina andaurenya na quanta\nmélima yondion, lenna antanyes mélio cenwa",
+            "title": "Christopher Tolkien dedication",
             "lang": "Q",
             "wordIds": [
+                1017,
+                1019,
+                null,
+                null,
+                null,
+                1022,
+                1023,
+                null,
+                null,
                 990,
                 992,
                 994,
                 996,
                 997,
                 1000
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-2269313915.html"
+                }
             ]
         },
         {
@@ -16484,6 +16671,26 @@
                 {
                     "pubId": 5,
                     "refText": "47"
+                }
+            ]
+        },
+        {
+            "id": 1010,
+            "text": "nai elen atta siluvat aurenna veryanwesto",
+            "title": null,
+            "lang": "Q",
+            "wordIds": [
+                null,
+                null,
+                1011,
+                1012,
+                1014,
+                1015
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "44"
                 }
             ]
         }
@@ -17729,6 +17936,22 @@
                 539,
                 177
             ]
+        },
+        {
+            "id": 1020,
+            "compoundId": 1019,
+            "componentIds": [
+                52,
+                1021
+            ]
+        },
+        {
+            "id": 1024,
+            "compoundId": 1023,
+            "componentIds": [
+                1021,
+                1025
+            ]
         }
     ],
     "translations": [
@@ -17738,7 +17961,8 @@
             "lang": "Q",
             "name": "Number",
             "pos": [
-                "N"
+                "N",
+                "V"
             ],
             "values": [
                 {
@@ -17754,7 +17978,7 @@
                     "abbreviation": "DU"
                 },
                 {
-                    "name": "Collective Plural",
+                    "name": "Partitive Plural",
                     "abbreviation": "PPL"
                 }
             ]
@@ -17802,6 +18026,51 @@
         },
         {
             "lang": "Q",
+            "name": "Possession",
+            "pos": [
+                "N"
+            ],
+            "values": [
+                {
+                    "name": "1st person singular",
+                    "abbreviation": "1SPOSS"
+                },
+                {
+                    "name": "2nd person singular formal",
+                    "abbreviation": "2SPOSS"
+                },
+                {
+                    "name": "2nd person singular familiar",
+                    "abbreviation": "2SFAMPOSS"
+                },
+                {
+                    "name": "3rd person",
+                    "abbreviation": "3SPOSS"
+                },
+                {
+                    "name": "1st person plural inclusive",
+                    "abbreviation": "1PINPOSS"
+                },
+                {
+                    "name": "1st person plural exclusive",
+                    "abbreviation": "1PEXPOSS"
+                },
+                {
+                    "name": "2nd person plural",
+                    "abbreviation": "2PPOSS"
+                },
+                {
+                    "name": "3rd person plural",
+                    "abbreviation": "3PPOSS"
+                },
+                {
+                    "name": "2nd person dual",
+                    "abbreviation": "2DPOSS"
+                }
+            ]
+        },
+        {
+            "lang": "Q",
             "name": "Tense",
             "pos": [
                 "V"
@@ -17822,6 +18091,44 @@
                 {
                     "name": "Future",
                     "abbreviation": "FUT"
+                }
+            ]
+        },
+        {
+            "lang": "Q",
+            "name": "Person",
+            "pos": [
+                "V"
+            ],
+            "values": [
+                {
+                    "name": "1st",
+                    "abbreviation": "1"
+                },
+                {
+                    "name": "2nd",
+                    "abbreviation": "2"
+                },
+                {
+                    "name": "3rd",
+                    "abbreviation": "3"
+                }
+            ]
+        },
+        {
+            "lang": "Q",
+            "name": "Object",
+            "pos": [
+                "V"
+            ],
+            "values": [
+                {
+                    "name": "3rd person singular",
+                    "abbreviation": "3SO"
+                },
+                {
+                    "name": "3rd person plural",
+                    "abbreviation": "3PO"
                 }
             ]
         }

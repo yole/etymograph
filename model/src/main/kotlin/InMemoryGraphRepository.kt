@@ -214,7 +214,7 @@ open class InMemoryGraphRepository : GraphRepository() {
             var index = 0
             for (component in compound.components) {
                 val componentLength = component.text.length
-                if (word.text.substring(index, index + componentLength) != component.text) {
+                if (index + componentLength > word.text.length || word.text.substring(index, index + componentLength) != component.text) {
                     break
                 }
                 segments.add(WordSegment(index, componentLength, null, null, "clitic" in component.classes))
