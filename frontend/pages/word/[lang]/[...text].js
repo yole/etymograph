@@ -218,7 +218,7 @@ function SingleWord(params) {
             <Link href={`/language/${word.language}`}>{word.languageFullName}</Link> {'> '}
             {!isName && !isCompound && <Link href={`/dictionary/${word.language}`}>Dictionary</Link>}
             {isName && <Link href={`/dictionary/${word.language}/names`}>Names</Link>}
-            {isCompound && <Link href={`/dictionary/${word.language}/compounds`}>Compounds</Link>}
+            {!isName && isCompound && <Link href={`/dictionary/${word.language}/compounds`}>Compounds</Link>}
             {' > '}</small>
             <WordWithStress text={word.text} stressIndex={word.stressIndex} stressLength={word.stressLength}/></h2>
         {!editMode && <>
