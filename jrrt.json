@@ -8596,6 +8596,36 @@
                     "refText": "720"
                 }
             ]
+        },
+        {
+            "id": 985,
+            "text": "elenion",
+            "lang": "Q",
+            "sourceRefs": [
+                {
+                    "pubId": 15,
+                    "refText": "720"
+                }
+            ]
+        },
+        {
+            "id": 987,
+            "text": "ankalima",
+            "lang": "Q",
+            "gloss": "brightest",
+            "sourceRefs": [
+                {
+                    "pubId": 15,
+                    "refText": "720"
+                }
+            ]
+        },
+        {
+            "id": 988,
+            "text": "kal-",
+            "lang": "Q",
+            "gloss": "shine",
+            "pos": "V"
         }
     ],
     "rules": [
@@ -9039,9 +9069,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "en"
+                                "'en'"
                             ]
                         }
                     ],
@@ -9054,9 +9084,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "n"
+                                "'n'"
                             ]
                         }
                     ],
@@ -9114,6 +9144,8 @@
                 }
             ],
             "addedCategories": ".GEN.PL",
+            "fromPOS": "N",
+            "toPOS": "N",
             "preInstructions": [
             ]
         },
@@ -10005,7 +10037,7 @@
             ],
             "addedCategories": ".AOR",
             "fromPOS": "V",
-            "toPOS": "V.TENSE",
+            "toPOS": "V",
             "sourceRefs": [
                 {
                     "pubId": null,
@@ -10104,9 +10136,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "i"
+                                "'i'"
                             ]
                         }
                     ],
@@ -10117,7 +10149,7 @@
             ],
             "addedCategories": ".AOR",
             "fromPOS": "V",
-            "toPOS": "V.TENSE",
+            "toPOS": "V",
             "sourceRefs": [
                 {
                     "pubId": null,
@@ -10148,8 +10180,8 @@
                 }
             ],
             "addedCategories": ".PL",
-            "fromPOS": "V.TENSE",
-            "toPOS": "V.TENSE",
+            "fromPOS": "V",
+            "toPOS": "V",
             "preInstructions": [
             ]
         },
@@ -10377,12 +10409,7 @@
                 {
                     "instructions": [
                         {
-                            "type": "RemoveLastCharacter",
-                            "args": [
-                            ]
-                        },
-                        {
-                            "type": "AddSuffix",
+                            "type": "ChangeEnding",
                             "args": [
                                 "ea"
                             ]
@@ -10397,9 +10424,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "a"
+                                "'a'"
                             ]
                         }
                     ],
@@ -10410,7 +10437,7 @@
             ],
             "addedCategories": ".PRES",
             "fromPOS": "V",
-            "toPOS": "V.TENSE",
+            "toPOS": "V",
             "sourceRefs": [
                 {
                     "pubId": null,
@@ -10478,12 +10505,7 @@
                 {
                     "instructions": [
                         {
-                            "type": "RemoveLastCharacter",
-                            "args": [
-                            ]
-                        },
-                        {
-                            "type": "AddSuffix",
+                            "type": "ChangeEnding",
                             "args": [
                                 "ima"
                             ]
@@ -10498,9 +10520,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "AddSuffix",
+                            "type": "Append",
                             "args": [
-                                "ima"
+                                "'ima'"
                             ]
                         }
                     ],
@@ -10509,14 +10531,13 @@
                     }
                 }
             ],
-            "addedCategories": null,
+            "addedCategories": ".ABLE",
             "sourceRefs": [
                 {
                     "pubId": 1,
                     "refText": "68"
                 }
             ],
-            "notes": "",
             "preInstructions": [
                 {
                     "type": "ApplyRule",
@@ -12620,6 +12641,34 @@
             "replacedCategories": "",
             "fromPOS": "V",
             "toPOS": "V.TENSE",
+            "notes": "",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 986,
+            "name": "q-intensive",
+            "fromLang": "Q",
+            "toLang": "Q",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "Prepend",
+                            "args": [
+                                "'an'"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".INT",
+            "replacedCategories": "",
+            "fromPOS": "ADJ",
+            "toPOS": "ADJ",
             "notes": "",
             "preInstructions": [
             ]
@@ -15517,6 +15566,23 @@
             "from": 900,
             "to": 782,
             "type": ">"
+        },
+        {
+            "from": 985,
+            "to": 54,
+            "type": ">",
+            "ruleIds": [
+                405
+            ]
+        },
+        {
+            "from": 987,
+            "to": 988,
+            "type": ">",
+            "ruleIds": [
+                442,
+                986
+            ]
         }
     ],
     "corpusTexts": [
@@ -16166,7 +16232,9 @@
             "lang": "Q",
             "wordIds": [
                 982,
-                983
+                983,
+                985,
+                987
             ],
             "sourceRefs": [
                 {
@@ -17451,6 +17519,35 @@
                 {
                     "name": "Dative",
                     "abbreviation": "DAT"
+                },
+                {
+                    "name": "Possessive",
+                    "abbreviation": "POSS"
+                }
+            ]
+        },
+        {
+            "lang": "Q",
+            "name": "Tense",
+            "pos": [
+                "V"
+            ],
+            "values": [
+                {
+                    "name": "Present",
+                    "abbreviation": "PRES"
+                },
+                {
+                    "name": "Aorist",
+                    "abbreviation": "AOR"
+                },
+                {
+                    "name": "Past",
+                    "abbreviation": "PST"
+                },
+                {
+                    "name": "Future",
+                    "abbreviation": "FUT"
                 }
             ]
         }

@@ -275,7 +275,7 @@ fun String?.nullize() = this?.takeIf { it.trim().isNotEmpty() }
 fun ParseCandidate.toViewModel(): ParseCandidateViewModel =
     ParseCandidateViewModel(
         text,
-        rules.fold("") { t, rule -> t + rule.addedCategories },
+        rules.fold("") { t, rule -> t + rule.addedCategories.orEmpty() },
         rules.map { it.name },
         pos,
         word?.id
