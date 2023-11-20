@@ -110,7 +110,7 @@ class LanguageController(val graphService: GraphService) {
 
     private fun parseLetterNormalization(rules: String): Map<String, String> {
         val result = mutableMapOf<String, String>()
-        for (pair in rules.split(',')) {
+        for (pair in rules.trim().split(',').filter { it.isNotBlank() }) {
             val (from, to) = pair.trim().split('=', limit = 2)
             result[from] = to
         }
@@ -118,7 +118,7 @@ class LanguageController(val graphService: GraphService) {
     }
 
     private fun parsePhonemeClasses(s: String): MutableList<PhonemeClass> {
-        return s.split('\n').map { cls ->
+        return s.split('\n').filter { it.isNotBlank() }.map { cls ->
             val (name, phonemes) = cls.split(':')
             PhonemeClass(name.trim(), phonemes.split(',').map { it.trim() })
         }.toMutableList()
