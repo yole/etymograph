@@ -57,4 +57,13 @@ class Language(val name: String, val shortName: String) {
         }
         return null
     }
+
+    fun findNumberPersonCategories(abbreviation: String): List<Pair<GrammaticalCategory, GrammaticalCategoryValue?>>? {
+        if (abbreviation.first().isDigit()) {
+            val personCatValue = findGrammaticalCategory(abbreviation.take(1)) ?: return null
+            val numberCatValue = findGrammaticalCategory(abbreviation.drop(1)) ?: return null
+            return listOf(personCatValue, numberCatValue)
+        }
+        return null
+    }
 }

@@ -22,4 +22,23 @@ class RuleControllerTest {
         val ruleVM = ruleController.rule(rule.id)
         assertEquals("Case: Genitive", ruleVM.addedCategoryDisplayNames)
     }
+
+    @Test
+    fun testGrammaticalCategoriesExtractNumber() {
+        val fixture = QTestFixture()
+        val ruleController = RuleController(fixture.graphService)
+
+        fixture.q.grammaticalCategories.add(
+            GrammaticalCategory("Person", listOf("V"),
+                listOf(GrammaticalCategoryValue("1st person", "1"))))
+        fixture.q.grammaticalCategories.add(
+            GrammaticalCategory("Number", listOf("V"),
+                listOf(GrammaticalCategoryValue("Singular", "SG"))))
+
+        val rule = fixture.graphService.graph.addRule("q-1sg", fixture.q, fixture.q,
+            RuleLogic(emptyList(), emptyList()), ".1SG")
+
+        val ruleVM = ruleController.rule(rule.id)
+        assertEquals("Person: 1st person, Number: Singular", ruleVM.addedCategoryDisplayNames)
+    }
 }

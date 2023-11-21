@@ -229,7 +229,9 @@ class Rule(
 }
 
 fun parseCategoryValues(language: Language, categoryValues: String): List<Pair<GrammaticalCategory?, GrammaticalCategoryValue?>> {
-    return categoryValues.split('.').filter { it.isNotEmpty() }.map {
-        language.findGrammaticalCategory(it) ?: (null to null)
+    return categoryValues.split('.').filter { it.isNotEmpty() }.flatMap {
+        language.findGrammaticalCategory(it)?.let { listOf(it) }
+            ?: language.findNumberPersonCategories(it)
+            ?: listOf(null to null)
     }
 }

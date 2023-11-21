@@ -9307,7 +9307,7 @@
                     }
                 }
             ],
-            "addedCategories": "2SG.FAM",
+            "addedCategories": ".2FAM.SG",
             "sourceRefs": [
                 {
                     "pubId": 1,
@@ -10201,7 +10201,7 @@
                     }
                 }
             ],
-            "addedCategories": ".1PL.EX",
+            "addedCategories": ".1EX.PL",
             "sourceRefs": [
                 {
                     "pubId": null,
@@ -12209,8 +12209,7 @@
                     }
                 }
             ],
-            "addedCategories": ".1PL.IN",
-            "replacedCategories": "",
+            "addedCategories": ".1IN.PL",
             "fromPOS": "V",
             "toPOS": "V",
             "sourceRefs": [
@@ -12219,7 +12218,6 @@
                     "refText": "https://eldamo.org/content/words/word-1020286637.html"
                 }
             ],
-            "notes": "",
             "preInstructions": [
             ]
         },
@@ -12311,7 +12309,7 @@
                     }
                 }
             ],
-            "addedCategories": ".1DU.EX",
+            "addedCategories": ".1EX.DU",
             "fromPOS": "V",
             "toPOS": "V",
             "sourceRefs": [
@@ -12343,8 +12341,7 @@
                     }
                 }
             ],
-            "addedCategories": ".1DU.IN",
-            "replacedCategories": "",
+            "addedCategories": ".1IN.DU",
             "fromPOS": "V",
             "toPOS": "V",
             "sourceRefs": [
@@ -12353,7 +12350,6 @@
                     "refText": "https://eldamo.org/content/words/word-1020286637.html"
                 }
             ],
-            "notes": "",
             "preInstructions": [
             ]
         },
@@ -18118,8 +18114,20 @@
                     "abbreviation": "1"
                 },
                 {
-                    "name": "2nd",
+                    "name": "1st inclusive",
+                    "abbreviation": "1IN"
+                },
+                {
+                    "name": "1st exclusive",
+                    "abbreviation": "1EX"
+                },
+                {
+                    "name": "2nd formal",
                     "abbreviation": "2"
+                },
+                {
+                    "name": "2nd familiar",
+                    "abbreviation": "2FAM"
                 },
                 {
                     "name": "3rd",
