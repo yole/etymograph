@@ -151,16 +151,16 @@ open class InMemoryGraphRepository : GraphRepository() {
     }
 
     override fun findParseCandidates(word: Word): List<ParseCandidate> {
-        return findParseCandidates(word.language, word.text, word.pos, emptyList(), collectDerivedWordParadigms(word), true)
+        return findParseCandidates(word.language, word.text, word.pos, emptyList(), collectDerivedWordGrammaticalCategories(word), true)
     }
 
     private fun findParseCandidates(language: Language, text: String, pos: String?, prevRules: List<Rule>,
-                                    excludeParadigms: Set<Paradigm>, recurse: Boolean): List<ParseCandidate> {
+                                    excludeGrammaticalCategories: Set<GrammaticalCategory>, recurse: Boolean): List<ParseCandidate> {
         return rules
             .filter { rule ->
                 rule.fromLanguage == language && rule.toLanguage == language &&
                         (pos == null || rule.toPOS == null || pos == rule.toPOS) &&
-                        paradigmForRule(rule).let { it == null || it !in excludeParadigms }
+                        rule.addedGrammaticalCategories().none { it in excludeGrammaticalCategories }
             }
             .flatMap { rule ->
                 rule.reverseApply(Word(-1, text, language, pos=pos))
@@ -177,9 +177,8 @@ open class InMemoryGraphRepository : GraphRepository() {
                     }
                     .flatMap {
                         if (recurse) {
-                            val paradigm = paradigmForRule(rule)
-                            val recurseExcludeParadigms = if (paradigm == null) excludeParadigms else excludeParadigms + setOf(paradigm)
-                            listOf(it) + findParseCandidates(language, it.text, it.pos, it.rules, recurseExcludeParadigms, false)
+                            val recurseExcludeGrammaticalCategories = excludeGrammaticalCategories + rule.addedGrammaticalCategories().toSet()
+                            listOf(it) + findParseCandidates(language, it.text, it.pos, it.rules, recurseExcludeGrammaticalCategories, false)
                         }
                         else {
                             listOf(it)
@@ -188,10 +187,10 @@ open class InMemoryGraphRepository : GraphRepository() {
             }
     }
 
-    private fun collectDerivedWordParadigms(word: Word): Set<Paradigm> {
+    private fun collectDerivedWordGrammaticalCategories(word: Word): Set<GrammaticalCategory> {
         return getLinksTo(word)
             .filter { it.fromEntity is Word }
-            .mapNotNull { it.rules.lastOrNull()?.let { rule -> paradigmForRule(rule) } }
+            .flatMap { it.rules.lastOrNull()?.addedGrammaticalCategories() ?: emptyList() }
             .toSet()
     }
 

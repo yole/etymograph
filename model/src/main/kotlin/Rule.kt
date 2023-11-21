@@ -201,6 +201,10 @@ class Rule(
         return summaries.joinToString("/")
     }
 
+    fun addedGrammaticalCategories(): List<GrammaticalCategory> {
+        return addedCategories?.let { cv -> parseCategoryValues(fromLanguage, cv).mapNotNull { it.first } } ?: emptyList()
+    }
+
     companion object {
         fun parseBranches(s: String, context: RuleParseContext): RuleLogic {
             if (s.isBlank()) return RuleLogic(emptyList(), emptyList())
