@@ -6,7 +6,6 @@ enum class InstructionType(
     val takesArgument: Boolean = false
 ) {
     NoChange("no change"),
-    RemoveLastCharacter("remove last character"),
     ChangeEnding("change ending to", "change ending to '(.*)'", true),
     Prepend("prepend", "prepend (.+)", true),
     Append("append", "append (.+)", true),
@@ -22,7 +21,6 @@ enum class InstructionType(
 open class RuleInstruction(val type: InstructionType, val arg: String) {
     open fun apply(rule: Rule, word: Word, graph: GraphRepository): Word = when(type) {
         InstructionType.NoChange -> word
-        InstructionType.RemoveLastCharacter -> word.derive(word.text.substring(0, word.text.lastIndex))
         InstructionType.ChangeEnding -> changeEnding(word, rule)
         else -> throw IllegalStateException("Can't apply phoneme instruction to full word")
     }
@@ -48,7 +46,6 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
 
     open fun reverseApply(rule: Rule, text: String, language: Language): List<String> {
         return when (type) {
-            InstructionType.RemoveLastCharacter -> listOf("$text*")
             InstructionType.ChangeEnding -> reverseChangeEnding(text, rule)
             else -> emptyList()
         }

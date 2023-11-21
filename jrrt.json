@@ -12817,13 +12817,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "RemoveLastCharacter",
+                            "type": "ChangeEnding",
                             "args": [
-                            ]
-                        },
-                        {
-                            "type": "RemoveLastCharacter",
-                            "args": [
+                                ""
                             ]
                         },
                         {
@@ -12847,10 +12843,8 @@
                 }
             ],
             "addedCategories": ".PST",
-            "replacedCategories": "",
             "fromPOS": "V",
-            "toPOS": "V.TENSE",
-            "notes": "",
+            "toPOS": "V",
             "preInstructions": [
             ]
         },

@@ -8,7 +8,7 @@ import ru.yole.etymograph.JsonGraphRepository.Companion.ruleToSerializedFormat
 import ru.yole.etymograph.JsonGraphRepository.Companion.toSerializedFormat
 
 class RuleTest : QBaseTest() {
-    private val dummyRule = parseRule(q, q, "- remove last character")
+    private val dummyRule = parseRule(q, q, "- append 'a'")
 
     @Test
     fun conditions() {
@@ -19,20 +19,19 @@ class RuleTest : QBaseTest() {
 
     @Test
     fun instructions() {
-        val i = RuleInstruction(InstructionType.RemoveLastCharacter, "")
-        assertEquals("parm", i.apply(dummyRule, q.word("parma"), emptyRepo).text)
+        val i = PrependAppendInstruction(InstructionType.Append, q, "'a'")
+        assertEquals("parma", i.apply(dummyRule, q.word("parm"), emptyRepo).text)
     }
 
     @Test
     fun rule() {
         val v = PhonemeClass("e", listOf("e", "ë"))
         val c = LeafRuleCondition(ConditionType.EndsWith, v, null, false)
-        val i1 = RuleInstruction(InstructionType.RemoveLastCharacter, "")
         val i2 = PrependAppendInstruction(InstructionType.Append, q, "'i'")
-        val r = RuleBranch(c, listOf(i1, i2))
+        val r = RuleBranch(c, listOf(i2))
 
         assertTrue(r.matches(Word(0, "lasse", q)))
-        assertEquals("lassi", r.apply(dummyRule, q.word("lasse"), emptyRepo).text)
+        assertEquals("atani", r.apply(dummyRule, q.word("atan"), emptyRepo).text)
     }
 
     @Test
@@ -66,8 +65,8 @@ class RuleTest : QBaseTest() {
 
     @Test
     fun instructionParse() {
-        val i = RuleInstruction.parse("- remove last character", q.parseContext())
-        assertEquals(InstructionType.RemoveLastCharacter, i.type)
+        val i = RuleInstruction.parse("- sound disappears", q.parseContext())
+        assertEquals(InstructionType.SoundDisappears, i.type)
 
         val i2 = RuleInstruction.parse("- append 'a'", q.parseContext())
         assertEquals(InstructionType.Append, i2.type)
@@ -292,15 +291,15 @@ class RuleTest : QBaseTest() {
     @Test
     fun preInstructions() {
         val ruleText = """
-            | - remove last character
+            | - prepend 'a'
             |word ends with 'r':
             | - append 'i'
         """.trimMargin("|")
         val rule = parseRule(q, q, ruleText)
         assertEquals(1, rule.logic.preInstructions.size)
 
-        val word = rule.apply(q.word("sure"), emptyRepo)
-        assertEquals("suri", word.text)
+        val word = rule.apply(q.word("sur"), emptyRepo)
+        assertEquals("asuri", word.text)
 
         assertEquals(ruleText, rule.toEditableText())
     }
@@ -363,20 +362,6 @@ class RuleTest : QBaseTest() {
         val rule = parseRule(q, q, "word ends with a consonant:\n- append 'i'")
         val candidate = rule.reverseApply(q.word("nai"))
         assertEquals(0, candidate.size)
-    }
-
-    @Test
-    fun reverseApplyLastCharacter() {
-        val rule = parseRule(q, q, "word ends with 'e':\n- remove last character\n- append 'i'")
-        val candidate = rule.reverseApply(q.word("fairi"))
-        assertEquals("faire", candidate.single())
-    }
-
-    @Test
-    fun reverseApplyLastCharacterTwice() {
-        val rule = parseRule(q, q, "word ends with 'ea':\n- remove last character\n- remove last character\n- append 'ie'")
-        val candidate = rule.reverseApply(q.word("yaimie"))
-        assertEquals("yaimea", candidate.single())
     }
 
     @Test
