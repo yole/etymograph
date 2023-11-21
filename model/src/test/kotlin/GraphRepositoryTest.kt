@@ -30,7 +30,7 @@ class GraphRepositoryTest : QBaseTest() {
     @Test
     fun parseCandidates() {
         val repo = setupRepo()
-        val rule = parseRule(q, q, "- add suffix 'llo'", name = "q-abl")
+        val rule = parseRule(q, q, "- append 'llo'", name = "q-abl")
         repo.addRule(rule)
         val candidates = repo.findParseCandidates(q.word("hrestallo"))
         assertEquals(1, candidates.size)
@@ -42,7 +42,7 @@ class GraphRepositoryTest : QBaseTest() {
     @Test
     fun parseCandidatesWithWord() {
         val repo = setupRepo()
-        val rule = parseRule(q, q, "- add suffix 'llo'", name = "q-abl")
+        val rule = parseRule(q, q, "- append 'llo'", name = "q-abl")
         val hresta = repo.addWord("hresta")
         repo.addRule(rule)
 
@@ -56,7 +56,7 @@ class GraphRepositoryTest : QBaseTest() {
     @Test
     fun parseCandidatesNotEmpty() {
         val repo = setupRepo()
-        val rule = parseRule(q, q, "- add suffix 'llo'", name = "q-abl")
+        val rule = parseRule(q, q, "- append 'llo'", name = "q-abl")
         repo.addRule(rule)
         val candidates = repo.findParseCandidates(q.word("llo"))
         assertEquals(0, candidates.size)
