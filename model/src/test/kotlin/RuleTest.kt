@@ -317,6 +317,14 @@ class RuleTest : QBaseTest() {
     }
 
     @Test
+    fun changeEndingToEmpty() {
+        val rule = parseRule(q, q, "word ends with 'ea':\n- change ending to ''")
+        val result = rule.apply(q.word("yaimea"), emptyRepo)
+        assertEquals("yaim", result.text)
+        assertEquals("change ending to ''", rule.logic.branches.single().instructions.single().toEditableText())
+    }
+
+    @Test
     fun stressCondition() {
         val ciryali = q.word("ciryali")
         ciryali.stressedPhonemeIndex = 2

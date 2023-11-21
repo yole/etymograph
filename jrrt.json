@@ -8867,6 +8867,30 @@
             "id": 1025,
             "text": "aurenya",
             "lang": "Q"
+        },
+        {
+            "id": 1026,
+            "text": "nyarne",
+            "lang": "Q",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-2269313915.html"
+                }
+            ]
+        },
+        {
+            "id": 1027,
+            "text": "nyarna",
+            "lang": "Q",
+            "gloss": "long tale",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "163"
+                }
+            ]
         }
     ],
     "rules": [
@@ -10014,14 +10038,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "RemoveLastCharacter",
+                            "type": "ChangeEnding",
                             "args": [
-                            ]
-                        },
-                        {
-                            "type": "Append",
-                            "args": [
-                                "'ië'"
+                                "ië"
                             ]
                         }
                     ],
@@ -10046,6 +10065,7 @@
                 }
             ],
             "addedCategories": ".ABST",
+            "toPOS": "N",
             "sourceRefs": [
                 {
                     "pubId": null,
@@ -11573,14 +11593,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "RemoveLastCharacter",
+                            "type": "ChangeEnding",
                             "args": [
-                            ]
-                        },
-                        {
-                            "type": "Append",
-                            "args": [
-                                "'ie'"
+                                "ie"
                             ]
                         }
                     ],
@@ -11606,7 +11621,7 @@
             ],
             "addedCategories": ".PERF",
             "fromPOS": "V",
-            "toPOS": "V.TENSE",
+            "toPOS": "V",
             "sourceRefs": [
                 {
                     "pubId": null,
@@ -12017,14 +12032,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "RemoveLastCharacter",
+                            "type": "ChangeEnding",
                             "args": [
-                            ]
-                        },
-                        {
-                            "type": "Append",
-                            "args": [
-                                "'mpe'"
+                                "mpe"
                             ]
                         }
                     ],
@@ -12082,7 +12092,7 @@
             ],
             "addedCategories": ".PST",
             "fromPOS": "V",
-            "toPOS": "V.TENSE",
+            "toPOS": "V",
             "sourceRefs": [
                 {
                     "pubId": null,
@@ -12112,9 +12122,8 @@
                     }
                 }
             ],
-            "addedCategories": "",
-            "replacedCategories": "",
-            "notes": "",
+            "addedCategories": null,
+            "toPOS": "N",
             "preInstructions": [
             ]
         },
@@ -15965,6 +15974,11 @@
             "ruleIds": [
                 552
             ]
+        },
+        {
+            "from": 1026,
+            "to": 1027,
+            "type": "="
         }
     ],
     "corpusTexts": [
@@ -16633,13 +16647,13 @@
             "wordIds": [
                 1017,
                 1019,
-                null,
+                1026,
                 null,
                 null,
                 1022,
                 1023,
                 null,
-                null,
+                324,
                 990,
                 992,
                 994,
@@ -18087,6 +18101,10 @@
                 {
                     "name": "Past",
                     "abbreviation": "PST"
+                },
+                {
+                    "name": "Perfect",
+                    "abbreviation": "PERF"
                 },
                 {
                     "name": "Future",

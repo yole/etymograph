@@ -7,7 +7,7 @@ enum class InstructionType(
 ) {
     NoChange("no change"),
     RemoveLastCharacter("remove last character"),
-    ChangeEnding("change ending to", "change ending to '(.+)'", true),
+    ChangeEnding("change ending to", "change ending to '(.*)'", true),
     Prepend("prepend", "prepend (.+)", true),
     Append("append", "append (.+)", true),
     ApplyRule("apply rule", "apply rule '(.+)'", true),
@@ -75,7 +75,7 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
         }
     }
 
-    open fun toEditableText(): String = type.pattern?.replace("(.+)", arg) ?: type.insnName
+    open fun toEditableText(): String = type.pattern?.replace("(.+)", arg)?.replace("(.*)", arg) ?: type.insnName
 
     open fun toSummaryText() = when(type) {
         InstructionType.ChangeEnding -> "-$arg"
