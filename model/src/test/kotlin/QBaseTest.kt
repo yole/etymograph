@@ -16,5 +16,5 @@ open class QBaseTest {
 
     val emptyRepo = InMemoryGraphRepository()
 
-    fun GraphRepository.addWord(text: String, gloss: String? = text) = findOrAddWord(text, q, gloss)
+    fun GraphRepository.addWord(text: String, gloss: String? = text, pos: String? = null) = findOrAddWord(text, q, gloss, pos = pos)
 }

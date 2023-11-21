@@ -169,7 +169,10 @@ open class InMemoryGraphRepository : GraphRepository() {
                                 (isAcceptableWord(language, it) || wordsByText(language, "$it-").isNotEmpty())
                     }
                     .flatMap { text ->
-                        val w = wordsByText(language, text).ifEmpty { wordsByText(language, "$text-") }
+                        val w = wordsByText(language, text)
+                            .ifEmpty { wordsByText(language, "$text-") }
+                            .filter { w -> w.pos == null || rule.toPOS == null || rule.toPOS == w.pos }
+
                         if (w.isNotEmpty())
                             w.map { ParseCandidate(text, listOf(rule) + prevRules, it.pos, it) }
                         else

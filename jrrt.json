@@ -852,6 +852,7 @@
             "text": "tári",
             "lang": "Q",
             "gloss": "queen",
+            "pos": "N",
             "sourceRefs": [
                 {
                     "pubId": 1,
@@ -8891,6 +8892,56 @@
                     "refText": "163"
                 }
             ]
+        },
+        {
+            "id": 1029,
+            "text": "kaluva",
+            "lang": "Q",
+            "sourceRefs": [
+                {
+                    "pubId": 8,
+                    "refText": "22"
+                }
+            ]
+        },
+        {
+            "id": 1030,
+            "text": "tielyanna",
+            "lang": "Q",
+            "sourceRefs": [
+                {
+                    "pubId": 8,
+                    "refText": "22"
+                }
+            ]
+        },
+        {
+            "id": 1032,
+            "text": "elainen",
+            "lang": "Q",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "40"
+                }
+            ]
+        },
+        {
+            "id": 1033,
+            "text": "Elaine",
+            "lang": "Q",
+            "pos": "NP"
+        },
+        {
+            "id": 1034,
+            "text": "tárin",
+            "lang": "Q",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "40"
+                }
+            ]
         }
     ],
     "rules": [
@@ -9492,6 +9543,8 @@
                 }
             ],
             "addedCategories": ".INS",
+            "fromPOS": "N",
+            "toPOS": "N",
             "sourceRefs": [
                 {
                     "pubId": null,
@@ -11375,6 +11428,8 @@
                 }
             ],
             "addedCategories": ".INS.PL",
+            "fromPOS": "N",
+            "toPOS": "N",
             "sourceRefs": [
                 {
                     "pubId": null,
@@ -15969,6 +16024,31 @@
             "from": 1026,
             "to": 1027,
             "type": "="
+        },
+        {
+            "from": 1029,
+            "to": 988,
+            "type": ">",
+            "ruleIds": [
+                416
+            ]
+        },
+        {
+            "from": 1030,
+            "to": 94,
+            "type": ">",
+            "ruleIds": [
+                414,
+                399
+            ]
+        },
+        {
+            "from": 1032,
+            "to": 1033,
+            "type": ">",
+            "ruleIds": [
+                404
+            ]
         }
     ],
     "corpusTexts": [
@@ -16695,6 +16775,39 @@
                 {
                     "pubId": 5,
                     "refText": "44"
+                }
+            ]
+        },
+        {
+            "id": 1028,
+            "text": "Anar caluva tielyanna",
+            "title": null,
+            "lang": "Q",
+            "wordIds": [
+                null,
+                1029,
+                1030
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 8,
+                    "refText": "22"
+                }
+            ]
+        },
+        {
+            "id": 1031,
+            "text": "Elainen tárin Periandion ar meldenya anyáran",
+            "title": null,
+            "lang": "Q",
+            "wordIds": [
+                1032,
+                1034
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "40"
                 }
             ]
         }

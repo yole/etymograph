@@ -538,10 +538,13 @@ fun Language.word(text: String, gloss: String? = null) = Word(-1, text, this, gl
 
 fun Language.parseContext(repo: GraphRepository? = null) = createParseContext(this, this, repo)
 
-fun parseRule(fromLanguage: Language, toLanguage: Language, text: String, name: String = "q", repo: GraphRepository? = null, addedCategories: String? = null): Rule = Rule(
+fun parseRule(
+    fromLanguage: Language, toLanguage: Language, text: String, name: String = "q", repo: GraphRepository? = null,
+    addedCategories: String? = null, fromPOS: String? = null, toPOS: String? = null
+): Rule = Rule(
     -1, name, fromLanguage, toLanguage,
     Rule.parseBranches(text, createParseContext(fromLanguage, toLanguage, repo)),
-    addedCategories, null, null, null, emptyList(), null
+    addedCategories, null, fromPOS, toPOS, emptyList(), null
 )
 
 private fun createParseContext(
