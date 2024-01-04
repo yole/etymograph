@@ -8942,6 +8942,65 @@
                     "refText": "40"
                 }
             ]
+        },
+        {
+            "id": 1035,
+            "text": "periandion",
+            "lang": "Q",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "40"
+                }
+            ]
+        },
+        {
+            "id": 1036,
+            "text": "Perian",
+            "lang": "Q",
+            "gloss": "halfling",
+            "pos": "N"
+        },
+        {
+            "id": 1037,
+            "text": "periand",
+            "lang": "Q"
+        },
+        {
+            "id": 1038,
+            "text": "meldenya",
+            "lang": "Q",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "40"
+                }
+            ]
+        },
+        {
+            "id": 1039,
+            "text": "melde",
+            "lang": "Q",
+            "gloss": "friend",
+            "fullGloss": "friend (female)",
+            "pos": "N"
+        },
+        {
+            "id": 1040,
+            "text": "MEL-",
+            "lang": "CE",
+            "gloss": "love"
+        },
+        {
+            "id": 1041,
+            "text": "anyáran",
+            "lang": "Q",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "40"
+                }
+            ]
         }
     ],
     "rules": [
@@ -12035,14 +12094,14 @@
                 }
             ],
             "addedCategories": ".2PL",
-            "replacedCategories": "",
+            "fromPOS": "V",
+            "toPOS": "V",
             "sourceRefs": [
                 {
                     "pubId": null,
                     "refText": "https://eldamo.org/content/words/word-1020286637.html"
                 }
             ],
-            "notes": "",
             "preInstructions": [
             ]
         },
@@ -16049,6 +16108,43 @@
             "ruleIds": [
                 404
             ]
+        },
+        {
+            "from": 1034,
+            "to": 61,
+            "type": ">",
+            "ruleIds": [
+                404
+            ]
+        },
+        {
+            "from": 1035,
+            "to": 1036,
+            "type": ">",
+            "ruleIds": [
+                405
+            ]
+        },
+        {
+            "from": 1037,
+            "to": 1036,
+            "type": ">",
+            "ruleIds": [
+                413
+            ]
+        },
+        {
+            "from": 1038,
+            "to": 1039,
+            "type": ">",
+            "ruleIds": [
+                552
+            ]
+        },
+        {
+            "from": 1039,
+            "to": 1040,
+            "type": ">"
         }
     ],
     "corpusTexts": [
@@ -16802,7 +16898,11 @@
             "lang": "Q",
             "wordIds": [
                 1032,
-                1034
+                1034,
+                1035,
+                null,
+                1038,
+                1041
             ],
             "sourceRefs": [
                 {
