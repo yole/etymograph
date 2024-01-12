@@ -423,7 +423,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             }
         }
         for (compoundData in data.compounds) {
-            val compoundWord = allLangEntities[compoundData.compoundId] as Word
+            val compoundWord = allLangEntities[compoundData.compoundId] as? Word ?: throw IllegalStateException("No word with ID ${compoundData.compoundId}")
             val componentWords = compoundData.componentIds.mapTo(ArrayList()) { allLangEntities[it] as Word }
             val compound = Compound(compoundData.id, compoundWord, componentWords, loadSource(compoundData.sourceRefs), compoundData.notes)
             compounds.getOrPut(compoundWord.id) { arrayListOf() }.add(compound)
