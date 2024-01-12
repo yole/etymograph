@@ -20,9 +20,9 @@ class LanguageController(val graphService: GraphService) {
         val name: String,
         val shortName: String,
         val diphthongs: List<String>,
+        val phonemes: String,
         val digraphs: List<String>,
         val phonemeClasses: List<PhonemeClassViewModel>,
-        val letterNormalization: String,
         val stressRuleId: Int?,
         val stressRuleName: String?,
         val syllableStructures: List<String>,
@@ -47,9 +47,9 @@ class LanguageController(val graphService: GraphService) {
             name,
             shortName,
             diphthongs,
+            phonemes.phonemesToEditableText(),
             digraphs,
             phonemeClasses.map { PhonemeClassViewModel(it.name, it.matchingPhonemes) },
-            letterNormalization.entries.joinToString(", ") { (from, to) -> "$from=$to" },
             stressRule?.id,
             stressRule?.name,
             syllableStructures,
@@ -61,7 +61,7 @@ class LanguageController(val graphService: GraphService) {
     data class UpdateLanguageParameters(
         val name: String? = null,
         val shortName: String? = null,
-        val letterNormalization: String? = null,
+        val phonemes: String? = null,
         val phonemeClasses: String? = null,
         val diphthongs: String? = null,
         val digraphs: String? = null,
@@ -96,25 +96,34 @@ class LanguageController(val graphService: GraphService) {
         fun parseList(s: String?): List<String> =
             s?.takeIf { it.isNotBlank() }?.let { it.split(",").map { d -> d.trim() } } ?: emptyList()
 
-        language.letterNormalization = params.letterNormalization?.let { parseLetterNormalization(it) } ?: emptyMap()
+        language.phonemes = params.phonemes?.let { parsePhonemes(it) } ?: mutableListOf()
         language.phonemeClasses = params.phonemeClasses?.let { parsePhonemeClasses(it) } ?: mutableListOf()
         language.diphthongs = parseList(params.diphthongs)
         language.digraphs = parseList(params.digraphs)
         language.syllableStructures = parseList(params.syllableStructures)
         language.wordFinals = parseList(params.wordFinals)
-        language.grammaticalCategories = params.grammaticalCategories?.let { parseGrammaticaLCategories(it) } ?: mutableListOf()
+        language.grammaticalCategories = params.grammaticalCategories.nullize()?.let { parseGrammaticaLCategories(it) } ?: mutableListOf()
 
         val stressRule = params.stressRuleName?.let { graphService.resolveRule(it) }
         language.stressRule = stressRule?.let { RuleRef.to(it) }
     }
 
-    private fun parseLetterNormalization(rules: String): Map<String, String> {
-        val result = mutableMapOf<String, String>()
-        for (pair in rules.trim().split(',').filter { it.isNotBlank() }) {
-            val (from, to) = pair.trim().split('=', limit = 2)
-            result[from] = to
+    private fun parsePhonemes(s: String): MutableList<Phoneme> {
+        return s.split('\n').filter { it.isNotBlank() }.map { cls ->
+            val (grapheme, classes) = cls.split(':')
+            Phoneme(
+                grapheme.trim().split(',').map { it.trim() },
+                classes.trim().split(' ').map { it.trim() }
+            )
+        }.toMutableList()
+    }
+
+    private fun List<Phoneme>.phonemesToEditableText(): String {
+        return joinToString("\n") { p ->
+            val graphemes = p.graphemes.joinToString(", ")
+            val classes = p.classes.joinToString(" ")
+            "$graphemes: $classes"
         }
-        return result
     }
 
     private fun parsePhonemeClasses(s: String): MutableList<PhonemeClass> {

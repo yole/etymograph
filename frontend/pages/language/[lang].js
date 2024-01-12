@@ -19,7 +19,7 @@ export default function LanguageIndex(props) {
     const lang = props.loaderData
     const langId = lang.shortName
     const [editMode, setEditMode] = useState(false)
-    const [letterNorm, setLetterNorm] = useState(lang.letterNormalization)
+    const [phonemes, setPhonemes] = useState(lang.phonemes)
     const [grammaticalCategories, setGrammaticalCategories] = useState(lang.grammaticalCategories)
     const [digraphs, setDigraphs] = useState(lang.digraphs.join(", "))
     const [diphthongs, setDiphthongs] = useState(lang.diphthongs.join(", "))
@@ -33,7 +33,7 @@ export default function LanguageIndex(props) {
     useEffect(() => { document.title = "Etymograph : " + lang.name })
 
     function saveLanguage() {
-        updateLanguage(langId, letterNorm, digraphs, phonemeClasses, diphthongs, syllableStructures, wordFinals, stressRule, grammaticalCategories)
+        updateLanguage(langId, phonemes, digraphs, phonemeClasses, diphthongs, syllableStructures, wordFinals, stressRule, grammaticalCategories)
             .then(() => router.replace(router.asPath))
         setEditMode(false)
     }
@@ -42,14 +42,9 @@ export default function LanguageIndex(props) {
         <h2><small><Link href={`/`}>Etymograph</Link> {'>'} </small>{lang.name}</h2>
         <h3>Orthography</h3>
         {!editMode && <>
-            {lang.letterNormalization != null && <p>Letter normalization: {lang.letterNormalization}</p>}
             {lang.digraphs.length > 0 && <p>Digraphs: {lang.digraphs.join(", ")}</p>}
         </>}
         {editMode && <table><tbody>
-        <tr>
-            <td><label>Letter normalization:</label></td>
-            <td><input type="text" value={letterNorm} onChange={(e) => setLetterNorm(e.target.value)}/></td>
-        </tr>
         <tr>
             <td><label>Digraphs:</label></td>
             <td><input type="text" value={digraphs} onChange={(e) => setDigraphs(e.target.value)}/></td>
@@ -57,6 +52,17 @@ export default function LanguageIndex(props) {
         </tbody></table>}
 
         <h3>Phonetics</h3>
+        {(editMode || phonemes.trim().length > 0) && <h4>Phonemes</h4>}
+        {!editMode && phonemes.trim().length > 0 && <>
+            <ul>
+                {phonemes.split('\n').map(s => <li>{s}</li>)}
+            </ul>
+        </>}
+        {editMode && <>
+            <textarea rows={5} cols={50} value={phonemes} onChange={(e) => setPhonemes(e.target.value)}/>
+            <br/>
+        </>}
+
         <h4>Phoneme classes</h4>
         {!editMode && <>
             <ul>

@@ -29,13 +29,13 @@ data class WordData(
 data class PhonemeClassData(@SerialName("lang") val languageShortName: String, val name: String, val phonemes: List<String>)
 
 @Serializable
+data class PhonemeData(@SerialName("lang") val languageShortName: String, val graphemes: List<String>, val classes: List<String>)
+
+@Serializable
 data class DigraphData(@SerialName("lang") val languageShortName: String, val digraphs: List<String>)
 
 @Serializable
 data class DiphthongData(@SerialName("lang") val languageShortName: String, val diphthongs: List<String>)
-
-@Serializable
-data class LetterNormalizationData(@SerialName("lang") val languageShortName: String, val rules: Map<String, String>)
 
 @Serializable
 data class StressRuleData(@SerialName("lang") val languageShortName: String, val ruleId: Int)
@@ -214,7 +214,6 @@ data class GraphRepositoryData(
     val phonemeClasses: List<PhonemeClassData>,
     val digraphs: List<DigraphData>,
     val diphthongs: List<DiphthongData>,
-    val letterNormalization: List<LetterNormalizationData>,
     val stressRules: List<StressRuleData>,
     val words: List<WordData>,
     val rules: List<RuleData>,
@@ -226,7 +225,8 @@ data class GraphRepositoryData(
     val publications: List<PublicationData>,
     val compounds: List<CompoundData>,
     val translations: List<TranslationData>,
-    val grammaticalCategories: List<GrammaticalCategoryData>? = null
+    val grammaticalCategories: List<GrammaticalCategoryData>,
+    val phonemes: List<PhonemeData>? = null
 )
 
 class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
@@ -267,9 +267,11 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
         val phonemeClassData = languages.values.flatMap { lang ->
             lang.phonemeClasses.map { PhonemeClassData(lang.shortName, it.name, it.matchingPhonemes) }
         }
+        val phonemes = languages.values.flatMap { lang ->
+            lang.phonemes.map { PhonemeData(lang.shortName, it.graphemes, it.classes) }
+        }
         val digraphData = languages.values.map { DigraphData(it.shortName, it.digraphs) }
         val diphthongData = languages.values.map { DiphthongData(it.shortName, it.diphthongs) }
-        val letterNormalizationData = languages.values.map { LetterNormalizationData(it.shortName, it.letterNormalization) }
         val stressRuleData = languages.values.mapNotNull { lang ->
             lang.stressRule?.let { StressRuleData(lang.shortName, it.resolve().id) }
         }
@@ -291,7 +293,6 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             phonemeClassData,
             digraphData,
             diphthongData,
-            letterNormalizationData,
             stressRuleData,
             allLangEntities.filterIsInstance<Word>().map {
                 WordData(it.id, it.text, it.language.shortName, it.gloss, it.fullGloss, it.pos,
@@ -330,7 +331,8 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             allLangEntities.filterIsInstance<Translation>().map { t ->
                 TranslationData(t.id, t.corpusText.id, t.text, t.source.sourceToSerializedFormat(), t.notes)
             },
-            grammaticalCategoryData
+            grammaticalCategoryData,
+            phonemes
         )
     }
 
@@ -343,14 +345,15 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             languageByShortName(phonemeClass.languageShortName)!!.phonemeClasses.add(
                 PhonemeClass(phonemeClass.name, phonemeClass.phonemes))
         }
+        for (phoneme in data.phonemes ?: emptyList()) {
+            languageByShortName(phoneme.languageShortName)!!.phonemes.add(
+                Phoneme(phoneme.graphemes, phoneme.classes))
+        }
         for (digraphData in data.digraphs) {
             languageByShortName(digraphData.languageShortName)!!.digraphs = digraphData.digraphs
         }
         for (diphthongData in data.diphthongs) {
             languageByShortName(diphthongData.languageShortName)!!.diphthongs = diphthongData.diphthongs
-        }
-        for (letterNormalizationData in data.letterNormalization) {
-            languageByShortName(letterNormalizationData.languageShortName)!!.letterNormalization = letterNormalizationData.rules
         }
         for (stressRuleData in data.stressRules) {
             languageByShortName(stressRuleData.languageShortName)!!.stressRule = ruleRef(this, stressRuleData.ruleId)
@@ -455,15 +458,13 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             setLangEntity(translation.id, translation)
             storeTranslation(corpusText, translation)
         }
-        data.grammaticalCategories?.let {
-            for (gc in it) {
-                val language = languageByShortName(gc.languageShortName)
-                language!!.grammaticalCategories.add(GrammaticalCategory(
-                    gc.name,
-                    gc.pos,
-                    gc.values.map { GrammaticalCategoryValue(it.name, it.abbreviation) }
-                ))
-            }
+        for (gc in data.grammaticalCategories) {
+            val language = languageByShortName(gc.languageShortName)
+            language!!.grammaticalCategories.add(GrammaticalCategory(
+                gc.name,
+                gc.pos,
+                gc.values.map { GrammaticalCategoryValue(it.name, it.abbreviation) }
+            ))
         }
 
         for (paradigm in data.paradigms) {

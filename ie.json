@@ -50,24 +50,6 @@
             ]
         }
     ],
-    "letterNormalization": [
-        {
-            "lang": "OE",
-            "rules": {
-            }
-        },
-        {
-            "lang": "Lyc",
-            "rules": {
-                "x": "χ"
-            }
-        },
-        {
-            "lang": "ON",
-            "rules": {
-            }
-        }
-    ],
     "stressRules": [
     ],
     "words": [
@@ -5667,6 +5649,132 @@
             "id": 1099,
             "text": "danmarkarbót",
             "lang": "ON"
+        },
+        {
+            "id": 1103,
+            "text": "bað",
+            "lang": "ON",
+            "gloss": "ask.PST"
+        },
+        {
+            "id": 1104,
+            "text": "biðja",
+            "lang": "ON",
+            "gloss": "ask",
+            "fullGloss": "ask, beg, command, tell",
+            "pos": "V"
+        },
+        {
+            "id": 1105,
+            "text": "Gorm",
+            "lang": "ON"
+        },
+        {
+            "id": 1106,
+            "text": "föður",
+            "lang": "ON"
+        },
+        {
+            "id": 1107,
+            "text": "faðir",
+            "lang": "ON",
+            "gloss": "father",
+            "pos": "N",
+            "classes": [
+                "m"
+            ]
+        },
+        {
+            "id": 1108,
+            "text": "móður",
+            "lang": "ON"
+        },
+        {
+            "id": 1109,
+            "text": "móðir",
+            "lang": "ON",
+            "gloss": "mother",
+            "pos": "N",
+            "classes": [
+                "f"
+            ]
+        },
+        {
+            "id": 1110,
+            "text": "es",
+            "lang": "ON"
+        },
+        {
+            "id": 1111,
+            "text": "sér",
+            "lang": "ON",
+            "gloss": "him/herself.DAT"
+        },
+        {
+            "id": 1112,
+            "text": "sík",
+            "lang": "ON",
+            "gloss": "him/herself",
+            "pos": "PRON"
+        },
+        {
+            "id": 1113,
+            "text": "vann",
+            "lang": "ON",
+            "gloss": "win.PST"
+        },
+        {
+            "id": 1114,
+            "text": "vinna",
+            "lang": "ON",
+            "gloss": "win",
+            "fullGloss": "gain, win, work, perform, accomplish",
+            "pos": "V"
+        },
+        {
+            "id": 1115,
+            "text": "alla",
+            "lang": "ON",
+            "gloss": "all.F.ACC"
+        },
+        {
+            "id": 1116,
+            "text": "allr",
+            "lang": "ON",
+            "gloss": "all",
+            "fullGloss": "all, entire, whole",
+            "pos": "ADJ"
+        },
+        {
+            "id": 1117,
+            "text": "Norveg",
+            "lang": "ON"
+        },
+        {
+            "id": 1118,
+            "text": "Norvegr",
+            "lang": "ON",
+            "gloss": "Norway",
+            "pos": "PN"
+        },
+        {
+            "id": 1119,
+            "text": "Dani",
+            "lang": "ON",
+            "gloss": "Dane.ACC.PL"
+        },
+        {
+            "id": 1120,
+            "text": "kristna",
+            "lang": "ON",
+            "gloss": "Christian.M.ACC.PL"
+        },
+        {
+            "id": 1121,
+            "text": "kristinn",
+            "lang": "ON",
+            "gloss": "Christian",
+            "pos": "ADJ"
         }
     ],
     "rules": [
@@ -9774,6 +9882,68 @@
             "ruleIds": [
                 1090
             ]
+        },
+        {
+            "from": 1103,
+            "to": 1104,
+            "type": ">"
+        },
+        {
+            "from": 1105,
+            "to": 1003,
+            "type": ">",
+            "ruleIds": [
+                1010
+            ]
+        },
+        {
+            "from": 1106,
+            "to": 1107,
+            "type": ">",
+            "ruleIds": [
+                1010
+            ]
+        },
+        {
+            "from": 1108,
+            "to": 1109,
+            "type": ">",
+            "ruleIds": [
+                1010
+            ]
+        },
+        {
+            "from": 1110,
+            "to": 1076,
+            "type": "="
+        },
+        {
+            "from": 1111,
+            "to": 1112,
+            "type": ">"
+        },
+        {
+            "from": 1113,
+            "to": 1114,
+            "type": ">"
+        },
+        {
+            "from": 1115,
+            "to": 1116,
+            "type": ">"
+        },
+        {
+            "from": 1117,
+            "to": 1118,
+            "type": ">",
+            "ruleIds": [
+                1010
+            ]
+        },
+        {
+            "from": 1120,
+            "to": 1121,
+            "type": ">"
         }
     ],
     "corpusTexts": [
@@ -11472,6 +11642,43 @@
                 null,
                 1099
             ]
+        },
+        {
+            "id": 1102,
+            "text": "Haraldr konungr bað gera kumbl þessi ept Gorm föður sinn ok ept Þyri móður sina -- sá Haraldr es sér vann Danmörk alla ok Norveg ok Dani gerði kristna.",
+            "title": "Viking Language 4.1",
+            "lang": "ON",
+            "wordIds": [
+                null,
+                null,
+                1103,
+                null,
+                1060,
+                null,
+                null,
+                1105,
+                1106,
+                null,
+                null,
+                null,
+                null,
+                1108,
+                null,
+                null,
+                null,
+                null,
+                1110,
+                1111,
+                1113,
+                null,
+                1115,
+                null,
+                1117,
+                null,
+                1119,
+                null,
+                1120
+            ]
         }
     ],
     "paradigms": [
@@ -12878,6 +13085,21 @@
                     "name": "Plural",
                     "abbreviation": "PL"
                 }
+            ]
+        }
+    ],
+    "phonemes": [
+        {
+            "lang": "Lyc",
+            "graphemes": [
+                "x",
+                "χ"
+            ],
+            "classes": [
+                "voiceless",
+                "velar",
+                "fricative",
+                "consonant"
             ]
         }
     ]

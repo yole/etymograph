@@ -2,8 +2,8 @@ package ru.yole.etymograph
 
 open class QBaseTest {
     val q = Language("Quenya", "Q").also {
+        it.phonemes.add(Phoneme(listOf("e", "ë"), listOf("vowel")))
         it.diphthongs = listOf("ai", "oi", "ui", "au", "eu", "iu")
-        it.letterNormalization = mapOf("ë" to "e")
     }
 
     val ce = Language("Common Eldarin", "CE").also {

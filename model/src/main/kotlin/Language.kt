@@ -25,11 +25,13 @@ class GrammaticalCategoryValue(val name: String, val abbreviation: String)
 
 class GrammaticalCategory(var name: String, var pos: List<String>, var values: List<GrammaticalCategoryValue>)
 
+class Phoneme(val graphemes: List<String>, val classes: List<String>)
+
 class Language(val name: String, val shortName: String) {
+    var phonemes = mutableListOf<Phoneme>()
     var digraphs: List<String> = emptyList()
     var diphthongs: List<String> = emptyList()
     var phonemeClasses = mutableListOf<PhonemeClass>()
-    var letterNormalization = mapOf<String, String>()
     var syllableStructures: List<String> = emptyList()
     var wordFinals: List<String> = emptyList()
     var stressRule: RuleRef? = null
@@ -39,10 +41,13 @@ class Language(val name: String, val shortName: String) {
         phonemeClasses.find { it.name == name } ?: PhonemeClass.specialPhonemeClasses.find { it.name == name }
 
     fun normalizeWord(text: String): String {
-        return letterNormalization.entries.fold(text.lowercase(Locale.FRANCE)) { s, entry ->
-            s.replace(entry.key, entry.value)
+        return phonemes.filter { it.graphemes.size > 1 }.fold(text.lowercase(Locale.FRANCE)) { s, phoneme ->
+            normalizeGrapheme(s, phoneme)
         }.removeSuffix("-")
     }
+
+    private fun normalizeGrapheme(text: String, phoneme: Phoneme) =
+        phoneme.graphemes.drop(1).fold(text) { s, grapheme -> s.replace(grapheme, phoneme.graphemes.first()) }
 
     fun isNormalizedEqual(ruleProducedWord: String, attestedWord: String): Boolean {
         return normalizeWord(ruleProducedWord) == normalizeWord(attestedWord)

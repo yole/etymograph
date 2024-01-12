@@ -28,6 +28,26 @@ class LanguageControllerTest {
     }
 
     @Test
+    fun phonemes() {
+        val fixture = QTestFixture()
+        val languageController = LanguageController(fixture.graphService)
+
+        val parameters = LanguageController.UpdateLanguageParameters(
+            phonemes = "a: open front vowel\nc, k: voiceless velar stop"
+        )
+        languageController.updateLanguage("q", parameters)
+
+        val phonemes =  fixture.q.phonemes
+        assertEquals(2, phonemes.size)
+        assertEquals("a", phonemes[0].graphemes.single())
+        assertEquals("open", phonemes[0].classes[0])
+        assertEquals("c", phonemes[1].graphemes[0])
+
+        val vm = languageController.language("q")
+        assertEquals(vm.phonemes, parameters.phonemes)
+    }
+
+    @Test
     fun wordFinals() {
         val fixture = QTestFixture()
         val languageController = LanguageController(fixture.graphService)

@@ -134,29 +134,6 @@
             ]
         }
     ],
-    "letterNormalization": [
-        {
-            "lang": "Q",
-            "rules": {
-                "ä": "a",
-                "ö": "o",
-                "ü": "u",
-                "ï": "i",
-                "ë": "e",
-                "c": "k"
-            }
-        },
-        {
-            "lang": "S",
-            "rules": {
-            }
-        },
-        {
-            "lang": "CE",
-            "rules": {
-            }
-        }
-    ],
     "stressRules": [
         {
             "lang": "Q",
@@ -18363,6 +18340,150 @@
                     "name": "3rd person plural",
                     "abbreviation": "3PO"
                 }
+            ]
+        }
+    ],
+    "phonemes": [
+        {
+            "lang": "Q",
+            "graphemes": [
+                "a",
+                "ä"
+            ],
+            "classes": [
+                "open",
+                "front",
+                "unrounded",
+                "vowel"
+            ]
+        },
+        {
+            "lang": "Q",
+            "graphemes": [
+                "á"
+            ],
+            "classes": [
+                "long",
+                "open",
+                "front",
+                "unrounded",
+                "vowel"
+            ]
+        },
+        {
+            "lang": "Q",
+            "graphemes": [
+                "o",
+                "ö"
+            ],
+            "classes": [
+                "close-mid",
+                "back",
+                "rounded",
+                "vowel"
+            ]
+        },
+        {
+            "lang": "Q",
+            "graphemes": [
+                "ó"
+            ],
+            "classes": [
+                "long",
+                "close-mid",
+                "back",
+                "rounded",
+                "vowel"
+            ]
+        },
+        {
+            "lang": "Q",
+            "graphemes": [
+                "u",
+                "ü"
+            ],
+            "classes": [
+                "close",
+                "back",
+                "rounded",
+                "vowel"
+            ]
+        },
+        {
+            "lang": "Q",
+            "graphemes": [
+                "ú"
+            ],
+            "classes": [
+                "long",
+                "close",
+                "back",
+                "rounded",
+                "vowel"
+            ]
+        },
+        {
+            "lang": "Q",
+            "graphemes": [
+                "i",
+                "ï"
+            ],
+            "classes": [
+                "close",
+                "front",
+                "unrounded",
+                "vowel"
+            ]
+        },
+        {
+            "lang": "Q",
+            "graphemes": [
+                "í"
+            ],
+            "classes": [
+                "long",
+                "close",
+                "front",
+                "unrounded",
+                "vowel"
+            ]
+        },
+        {
+            "lang": "Q",
+            "graphemes": [
+                "e",
+                "ë"
+            ],
+            "classes": [
+                "close-mid",
+                "front",
+                "unrounded",
+                "vowel"
+            ]
+        },
+        {
+            "lang": "Q",
+            "graphemes": [
+                "é"
+            ],
+            "classes": [
+                "long",
+                "close-mid",
+                "front",
+                "unrounded",
+                "vowel"
+            ]
+        },
+        {
+            "lang": "Q",
+            "graphemes": [
+                "c",
+                "k"
+            ],
+            "classes": [
+                "voiceless",
+                "velar",
+                "stop"
             ]
         }
     ]
