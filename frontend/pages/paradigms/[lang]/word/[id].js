@@ -1,6 +1,7 @@
 import {allowEdit, fetchBackend} from "@/api";
 import Link from "next/link";
 import {useRouter} from "next/router";
+import {useEffect} from "react";
 
 export const config = {
     unstable_runtimeJS: true
@@ -26,6 +27,9 @@ export async function getStaticPaths() {
 export default function WordParadigms(params) {
     const paradigmList = params.loaderData
     const router = useRouter()
+
+    useEffect(() => { document.title = "Etymograph : " + paradigmList.word + " : Paradigms"})
+
     return <>
         <h2><small>
             <Link href={`/`}>Etymograph</Link> {'> '}
