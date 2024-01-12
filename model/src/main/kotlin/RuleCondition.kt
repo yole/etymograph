@@ -125,7 +125,7 @@ class LeafRuleCondition(
                 SyllableRuleCondition.parse(s, language)?.let { return it }
             }
 
-            for (conditionType in ConditionType.values()) {
+            for (conditionType in ConditionType.entries) {
                 if (s.startsWith(conditionType.condName)) {
                     return parseLeafCondition(conditionType, s.removePrefix(conditionType.condName), language)
                 }
@@ -165,7 +165,7 @@ enum class SyllableMatchType(val condName: String) {
 
     companion object  {
         fun parse(s: String): Pair<SyllableMatchType, String>? {
-            for (entry in SyllableMatchType.values()) {
+            for (entry in entries) {
                 if (s.startsWith(entry.condName)) {
                     return entry to s.removePrefix(entry.condName).trim()
                 }

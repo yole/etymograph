@@ -11,17 +11,11 @@ import ru.yole.etymograph.*
 
 @RestController
 class LanguageController(val graphService: GraphService) {
-    data class PhonemeClassViewModel(
-        val name: String,
-        val matchingPhonemes: List<String>
-    )
-
     data class LanguageViewModel(
         val name: String,
         val shortName: String,
         val diphthongs: List<String>,
         val phonemes: String,
-        val phonemeClasses: List<PhonemeClassViewModel>,
         val stressRuleId: Int?,
         val stressRuleName: String?,
         val syllableStructures: List<String>,
@@ -47,7 +41,6 @@ class LanguageController(val graphService: GraphService) {
             shortName,
             diphthongs,
             phonemes.phonemesToEditableText(),
-            phonemeClasses.map { PhonemeClassViewModel(it.name, it.matchingPhonemes) },
             stressRule?.id,
             stressRule?.name,
             syllableStructures,
@@ -60,7 +53,6 @@ class LanguageController(val graphService: GraphService) {
         val name: String? = null,
         val shortName: String? = null,
         val phonemes: String? = null,
-        val phonemeClasses: String? = null,
         val diphthongs: String? = null,
         val stressRuleName: String? = null,
         val syllableStructures: String? = null,
@@ -94,7 +86,6 @@ class LanguageController(val graphService: GraphService) {
             s?.takeIf { it.isNotBlank() }?.let { it.split(",").map { d -> d.trim() } } ?: emptyList()
 
         language.phonemes = params.phonemes?.let { parsePhonemes(it) } ?: mutableListOf()
-        language.phonemeClasses = params.phonemeClasses?.let { parsePhonemeClasses(it) } ?: mutableListOf()
         language.diphthongs = parseList(params.diphthongs)
         language.syllableStructures = parseList(params.syllableStructures)
         language.wordFinals = parseList(params.wordFinals)
@@ -120,13 +111,6 @@ class LanguageController(val graphService: GraphService) {
             val classes = p.classes.joinToString(" ")
             "$graphemes: $classes"
         }
-    }
-
-    private fun parsePhonemeClasses(s: String): MutableList<PhonemeClass> {
-        return s.split('\n').filter { it.isNotBlank() }.map { cls ->
-            val (name, phonemes) = cls.split(':')
-            PhonemeClass(name.trim(), phonemes.split(',').map { it.trim() })
-        }.toMutableList()
     }
 
     private fun List<GrammaticalCategory>.toEditableText(): String {

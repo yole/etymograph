@@ -26,9 +26,6 @@ data class WordData(
 )
 
 @Serializable
-data class PhonemeClassData(@SerialName("lang") val languageShortName: String, val name: String, val phonemes: List<String>)
-
-@Serializable
 data class PhonemeData(@SerialName("lang") val languageShortName: String, val graphemes: List<String>, val classes: List<String>)
 
 @Serializable
@@ -209,7 +206,6 @@ data class GrammaticalCategoryData(
 data class GraphRepositoryData(
     val languages: List<LanguageData>,
     val phonemes: List<PhonemeData>,
-    val phonemeClasses: List<PhonemeClassData>,
     val diphthongs: List<DiphthongData>,
     val stressRules: List<StressRuleData>,
     val words: List<WordData>,
@@ -260,9 +256,6 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
     }
 
     private fun createGraphRepositoryData(): GraphRepositoryData {
-        val phonemeClassData = languages.values.flatMap { lang ->
-            lang.phonemeClasses.map { PhonemeClassData(lang.shortName, it.name, it.matchingPhonemes) }
-        }
         val phonemes = languages.values.flatMap { lang ->
             lang.phonemes.map { PhonemeData(lang.shortName, it.graphemes, it.classes) }
         }
@@ -286,7 +279,6 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
         return GraphRepositoryData(
             languages.values.map { LanguageData(it.name, it.shortName) },
             phonemes,
-            phonemeClassData,
             diphthongData,
             stressRuleData,
             allLangEntities.filterIsInstance<Word>().map {
@@ -335,13 +327,9 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
         for (language in data.languages) {
             addLanguage(Language(language.name, language.shortName))
         }
-        for (phonemeClass in data.phonemeClasses) {
-            languageByShortName(phonemeClass.languageShortName)!!.phonemeClasses.add(
-                PhonemeClass(phonemeClass.name, phonemeClass.phonemes))
-        }
-        for (phoneme in data.phonemes ?: emptyList()) {
-            languageByShortName(phoneme.languageShortName)!!.phonemes.add(
-                Phoneme(phoneme.graphemes, phoneme.classes))
+        for (phoneme in data.phonemes) {
+            languageByShortName(phoneme.languageShortName)!!.phonemes +=
+                Phoneme(phoneme.graphemes, phoneme.classes)
         }
         for (diphthongData in data.diphthongs) {
             languageByShortName(diphthongData.languageShortName)!!.diphthongs = diphthongData.diphthongs

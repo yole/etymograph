@@ -24,15 +24,12 @@ export default function LanguageIndex(props) {
     const [diphthongs, setDiphthongs] = useState(lang.diphthongs.join(", "))
     const [syllableStructures, setSyllableStructures] = useState(lang.syllableStructures.join(", "))
     const [wordFinals, setWordFinals] = useState(lang.wordFinals.join(", "))
-    const [phonemeClasses, setPhonemeClasses] = useState(
-        lang.phonemeClasses.map(pc => `${pc.name}: ${pc.matchingPhonemes.join(",")}`).join("\n")
-    )
     const [stressRule, setStressRule] = useState(lang.stressRuleName)
     const router = useRouter()
     useEffect(() => { document.title = "Etymograph : " + lang.name })
 
     function saveLanguage() {
-        updateLanguage(langId, phonemes, phonemeClasses, diphthongs, syllableStructures, wordFinals, stressRule, grammaticalCategories)
+        updateLanguage(langId, phonemes, diphthongs, syllableStructures, wordFinals, stressRule, grammaticalCategories)
             .then(() => router.replace(router.asPath))
         setEditMode(false)
     }
@@ -52,18 +49,13 @@ export default function LanguageIndex(props) {
             <br/>
         </>}
 
-        <h4>Phoneme classes</h4>
         {!editMode && <>
-            <ul>
-                {lang.phonemeClasses.map(pc => <li key={pc.name}>{pc.name}: {pc.matchingPhonemes.join(", ")}</li>)}
-            </ul>
             {lang.diphthongs.length > 0 && <p>Diphthongs: {lang.diphthongs.join(", ")}</p>}
             {lang.syllableStructures.length > 0 && <p>Syllable structures: {lang.syllableStructures.join(", ")}</p>}
             {lang.wordFinals.length > 0 && <p>Word finals: {lang.wordFinals.join(", ")}</p>}
             {lang.stressRuleName != null && <p>Stress rule: <Link href={`/rule/${lang.stressRuleId}`}>{lang.stressRuleName}</Link></p>}
         </>}
         {editMode && <>
-            <textarea rows={5} cols={50} value={phonemeClasses} onChange={(e) => setPhonemeClasses(e.target.value)}/>
             <table><tbody>
             <tr>
                 <td><label>Diphthongs:</label></td>

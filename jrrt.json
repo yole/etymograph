@@ -13,71 +13,455 @@
             "shortName": "CE"
         }
     ],
-    "phonemeClasses": [
+    "phonemes": [
         {
             "lang": "Q",
-            "name": "vowel",
-            "phonemes": [
+            "graphemes": [
                 "a",
-                "e",
-                "i",
+                "ä"
+            ],
+            "classes": [
+                "open",
+                "front",
+                "unrounded",
+                "vowel"
+            ]
+        },
+        {
+            "lang": "Q",
+            "graphemes": [
+                "á"
+            ],
+            "classes": [
+                "long",
+                "open",
+                "front",
+                "unrounded",
+                "vowel"
+            ]
+        },
+        {
+            "lang": "Q",
+            "graphemes": [
                 "o",
+                "ö"
+            ],
+            "classes": [
+                "close-mid",
+                "back",
+                "rounded",
+                "vowel"
+            ]
+        },
+        {
+            "lang": "Q",
+            "graphemes": [
+                "ó"
+            ],
+            "classes": [
+                "long",
+                "close-mid",
+                "back",
+                "rounded",
+                "vowel"
+            ]
+        },
+        {
+            "lang": "Q",
+            "graphemes": [
                 "u",
-                "á",
-                "é",
-                "í",
-                "ó",
-                "ú",
-                "ä",
-                "ë",
-                "ï",
-                "ö",
                 "ü"
+            ],
+            "classes": [
+                "close",
+                "back",
+                "rounded",
+                "vowel"
             ]
         },
         {
             "lang": "Q",
-            "name": "long vowel",
-            "phonemes": [
-                "á",
-                "é",
-                "í",
-                "ó",
+            "graphemes": [
                 "ú"
+            ],
+            "classes": [
+                "long",
+                "close",
+                "back",
+                "rounded",
+                "vowel"
             ]
         },
         {
             "lang": "Q",
-            "name": "consonant",
-            "phonemes": [
-                "b",
+            "graphemes": [
+                "i",
+                "ï"
+            ],
+            "classes": [
+                "close",
+                "front",
+                "unrounded",
+                "vowel"
+            ]
+        },
+        {
+            "lang": "Q",
+            "graphemes": [
+                "í"
+            ],
+            "classes": [
+                "long",
+                "close",
+                "front",
+                "unrounded",
+                "vowel"
+            ]
+        },
+        {
+            "lang": "Q",
+            "graphemes": [
+                "e",
+                "ë"
+            ],
+            "classes": [
+                "close-mid",
+                "front",
+                "unrounded",
+                "vowel"
+            ]
+        },
+        {
+            "lang": "Q",
+            "graphemes": [
+                "é"
+            ],
+            "classes": [
+                "long",
+                "close-mid",
+                "front",
+                "unrounded",
+                "vowel"
+            ]
+        },
+        {
+            "lang": "Q",
+            "graphemes": [
                 "c",
-                "d",
-                "f",
-                "g",
-                "h",
-                "j",
-                "k",
-                "l",
-                "m",
-                "n",
-                "p",
-                "q",
-                "r",
-                "s",
-                "t",
-                "v",
-                "w",
-                "x",
+                "k"
+            ],
+            "classes": [
+                "voiceless",
+                "velar",
+                "stop"
+            ]
+        },
+        {
+            "lang": "Q",
+            "graphemes": [
+                "ty"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "lang": "Q",
+            "graphemes": [
+                "dy"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "lang": "Q",
+            "graphemes": [
+                "hy"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "lang": "Q",
+            "graphemes": [
+                "ny"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "lang": "Q",
+            "graphemes": [
+                "hl"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "lang": "Q",
+            "graphemes": [
+                "hr"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "lang": "Q",
+            "graphemes": [
+                "qu"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "lang": "Q",
+            "graphemes": [
+                "gw"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "lang": "Q",
+            "graphemes": [
+                "hw"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "lang": "Q",
+            "graphemes": [
+                "nw"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "lang": "Q",
+            "graphemes": [
+                "b"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "lang": "Q",
+            "graphemes": [
+                "d"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "lang": "Q",
+            "graphemes": [
+                "f"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "lang": "Q",
+            "graphemes": [
+                "g"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "lang": "Q",
+            "graphemes": [
+                "h"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "lang": "Q",
+            "graphemes": [
+                "j"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "lang": "Q",
+            "graphemes": [
+                "k"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "lang": "Q",
+            "graphemes": [
+                "l"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "lang": "Q",
+            "graphemes": [
+                "m"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "lang": "Q",
+            "graphemes": [
+                "n"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "lang": "Q",
+            "graphemes": [
+                "p"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "lang": "Q",
+            "graphemes": [
+                "q"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "lang": "Q",
+            "graphemes": [
+                "r"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "lang": "Q",
+            "graphemes": [
+                "s"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "lang": "Q",
+            "graphemes": [
+                "t"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "lang": "Q",
+            "graphemes": [
+                "v"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "lang": "Q",
+            "graphemes": [
+                "w"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "lang": "Q",
+            "graphemes": [
+                "x"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "lang": "Q",
+            "graphemes": [
                 "z"
+            ],
+            "classes": [
+                "consonant"
             ]
         },
         {
             "lang": "CE",
-            "name": "nasal",
-            "phonemes": [
-                "n",
+            "graphemes": [
+                "kh"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "lang": "CE",
+            "graphemes": [
+                "th"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "lang": "CE",
+            "graphemes": [
+                "ph"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "lang": "CE",
+            "graphemes": [
+                "n"
+            ],
+            "classes": [
+                "nasal",
+                "consonant"
+            ]
+        },
+        {
+            "lang": "CE",
+            "graphemes": [
                 "m"
+            ],
+            "classes": [
+                "nasal",
+                "consonant"
             ]
         }
     ],
@@ -10222,7 +10606,6 @@
                             {
                                 "type": "ru.yole.etymograph.LeafRuleConditionData",
                                 "cond": "PrevPhonemeMatches",
-                                "cls": "nasal",
                                 "negated": true
                             }
                         ]
@@ -18310,267 +18693,6 @@
                     "name": "3rd person plural",
                     "abbreviation": "3PO"
                 }
-            ]
-        }
-    ],
-    "phonemes": [
-        {
-            "lang": "Q",
-            "graphemes": [
-                "a",
-                "ä"
-            ],
-            "classes": [
-                "open",
-                "front",
-                "unrounded",
-                "vowel"
-            ]
-        },
-        {
-            "lang": "Q",
-            "graphemes": [
-                "á"
-            ],
-            "classes": [
-                "long",
-                "open",
-                "front",
-                "unrounded",
-                "vowel"
-            ]
-        },
-        {
-            "lang": "Q",
-            "graphemes": [
-                "o",
-                "ö"
-            ],
-            "classes": [
-                "close-mid",
-                "back",
-                "rounded",
-                "vowel"
-            ]
-        },
-        {
-            "lang": "Q",
-            "graphemes": [
-                "ó"
-            ],
-            "classes": [
-                "long",
-                "close-mid",
-                "back",
-                "rounded",
-                "vowel"
-            ]
-        },
-        {
-            "lang": "Q",
-            "graphemes": [
-                "u",
-                "ü"
-            ],
-            "classes": [
-                "close",
-                "back",
-                "rounded",
-                "vowel"
-            ]
-        },
-        {
-            "lang": "Q",
-            "graphemes": [
-                "ú"
-            ],
-            "classes": [
-                "long",
-                "close",
-                "back",
-                "rounded",
-                "vowel"
-            ]
-        },
-        {
-            "lang": "Q",
-            "graphemes": [
-                "i",
-                "ï"
-            ],
-            "classes": [
-                "close",
-                "front",
-                "unrounded",
-                "vowel"
-            ]
-        },
-        {
-            "lang": "Q",
-            "graphemes": [
-                "í"
-            ],
-            "classes": [
-                "long",
-                "close",
-                "front",
-                "unrounded",
-                "vowel"
-            ]
-        },
-        {
-            "lang": "Q",
-            "graphemes": [
-                "e",
-                "ë"
-            ],
-            "classes": [
-                "close-mid",
-                "front",
-                "unrounded",
-                "vowel"
-            ]
-        },
-        {
-            "lang": "Q",
-            "graphemes": [
-                "é"
-            ],
-            "classes": [
-                "long",
-                "close-mid",
-                "front",
-                "unrounded",
-                "vowel"
-            ]
-        },
-        {
-            "lang": "Q",
-            "graphemes": [
-                "c",
-                "k"
-            ],
-            "classes": [
-                "voiceless",
-                "velar",
-                "stop"
-            ]
-        },
-        {
-            "lang": "Q",
-            "graphemes": [
-                "ty"
-            ],
-            "classes": [
-                "consonant"
-            ]
-        },
-        {
-            "lang": "Q",
-            "graphemes": [
-                "dy"
-            ],
-            "classes": [
-                "consonant"
-            ]
-        },
-        {
-            "lang": "Q",
-            "graphemes": [
-                "hy"
-            ],
-            "classes": [
-                "consonant"
-            ]
-        },
-        {
-            "lang": "Q",
-            "graphemes": [
-                "ny"
-            ],
-            "classes": [
-                "consonant"
-            ]
-        },
-        {
-            "lang": "Q",
-            "graphemes": [
-                "hl"
-            ],
-            "classes": [
-                "consonant"
-            ]
-        },
-        {
-            "lang": "Q",
-            "graphemes": [
-                "hr"
-            ],
-            "classes": [
-                "consonant"
-            ]
-        },
-        {
-            "lang": "Q",
-            "graphemes": [
-                "qu"
-            ],
-            "classes": [
-                "consonant"
-            ]
-        },
-        {
-            "lang": "Q",
-            "graphemes": [
-                "gw"
-            ],
-            "classes": [
-                "consonant"
-            ]
-        },
-        {
-            "lang": "Q",
-            "graphemes": [
-                "hw"
-            ],
-            "classes": [
-                "consonant"
-            ]
-        },
-        {
-            "lang": "Q",
-            "graphemes": [
-                "nw"
-            ],
-            "classes": [
-                "consonant"
-            ]
-        },
-        {
-            "lang": "CE",
-            "graphemes": [
-                "kh"
-            ],
-            "classes": [
-                "consonant"
-            ]
-        },
-        {
-            "lang": "CE",
-            "graphemes": [
-                "th"
-            ],
-            "classes": [
-                "consonant"
-            ]
-        },
-        {
-            "lang": "CE",
-            "graphemes": [
-                "ph"
-            ],
-            "classes": [
-                "consonant"
             ]
         }
     ]

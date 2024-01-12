@@ -21,6 +21,13 @@ open class PhonemeClass(val name: String, val matchingPhonemes: List<String>) {
     }
 }
 
+class IntersectionPhonemeClass(name: String, val classList: List<PhonemeClass>)
+    : PhonemeClass(name, emptyList()) {
+    override fun matchesCurrent(it: PhonemeIterator): Boolean {
+        return classList.all { cls -> cls.matchesCurrent(it) }
+    }
+}
+
 class GrammaticalCategoryValue(val name: String, val abbreviation: String)
 
 class GrammaticalCategory(var name: String, var pos: List<String>, var values: List<GrammaticalCategoryValue>)
@@ -28,9 +35,15 @@ class GrammaticalCategory(var name: String, var pos: List<String>, var values: L
 class Phoneme(val graphemes: List<String>, val classes: List<String>)
 
 class Language(val name: String, val shortName: String) {
-    var phonemes = mutableListOf<Phoneme>()
+    var phonemes = listOf<Phoneme>()
+        set(value) {
+            field = value
+            updatePhonemeClasses()
+        }
     var diphthongs: List<String> = emptyList()
-    var phonemeClasses = mutableListOf<PhonemeClass>()
+    var phonemeClasses = listOf<PhonemeClass>()
+         private set
+
     var syllableStructures: List<String> = emptyList()
     var wordFinals: List<String> = emptyList()
     var stressRule: RuleRef? = null
@@ -39,8 +52,26 @@ class Language(val name: String, val shortName: String) {
     val digraphs: List<String>
         get() = phonemes.flatMap { it.graphemes }.filter { it.length > 1 }
 
-    fun phonemeClassByName(name: String) =
-        phonemeClasses.find { it.name == name } ?: PhonemeClass.specialPhonemeClasses.find { it.name == name }
+    private fun updatePhonemeClasses() {
+        val phonemeClassMap = mutableMapOf<String, MutableList<String>>()
+        for (phoneme in phonemes) {
+            for (cls in phoneme.classes) {
+                phonemeClassMap.getOrPut(cls) { mutableListOf() }.add(phoneme.graphemes[0])
+            }
+        }
+        phonemeClasses = phonemeClassMap.map { (name, phonemes) ->
+            PhonemeClass(name, phonemes)
+        }
+    }
+
+    fun phonemeClassByName(name: String): PhonemeClass? {
+        if (' ' in name) {
+            val subclassNames = name.split(' ')
+            val subclasses = subclassNames.map { phonemeClassByName(it) ?: return null }
+            return IntersectionPhonemeClass(name, subclasses)
+        }
+        return phonemeClasses.find { it.name == name } ?: PhonemeClass.specialPhonemeClasses.find { it.name == name }
+    }
 
     fun normalizeWord(text: String): String {
         return phonemes.filter { it.graphemes.size > 1 }.fold(text.lowercase(Locale.FRANCE)) { s, phoneme ->
