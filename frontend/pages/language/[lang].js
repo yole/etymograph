@@ -90,8 +90,8 @@ export default function LanguageIndex(props) {
         </>}
 
         <h3>Grammar</h3>
-        <h4>Grammatical categories</h4>
-        {!editMode && <>
+        {(editMode || grammaticalCategories.trim().length > 0) && <h4>Grammatical categories</h4>}
+        {!editMode && grammaticalCategories.trim().length > 0 && <>
             <ul>
                 {grammaticalCategories.split('\n').map(s => <li>{s}</li>)}
             </ul>
