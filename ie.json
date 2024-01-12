@@ -7,6 +7,10 @@
         {
             "name": "Lycian",
             "shortName": "Lyc"
+        },
+        {
+            "name": "Old Norse",
+            "shortName": "ON"
         }
     ],
     "phonemeClasses": [
@@ -15,11 +19,15 @@
         {
             "lang": "OE",
             "digraphs": [
-                ""
             ]
         },
         {
             "lang": "Lyc",
+            "digraphs": [
+            ]
+        },
+        {
+            "lang": "ON",
             "digraphs": [
             ]
         }
@@ -35,6 +43,11 @@
             "lang": "Lyc",
             "diphthongs": [
             ]
+        },
+        {
+            "lang": "ON",
+            "diphthongs": [
+            ]
         }
     ],
     "letterNormalization": [
@@ -48,6 +61,11 @@
             "rules": {
                 "x": "χ"
             }
+        },
+        {
+            "lang": "ON",
+            "rules": {
+            }
         }
     ],
     "stressRules": [
@@ -58,13 +76,14 @@
             "text": "wē",
             "lang": "OE",
             "gloss": "we",
-            "pos": "pron"
+            "pos": "PRON"
         },
         {
             "id": 2,
             "text": "lārēow",
             "lang": "OE",
-            "gloss": "teacher"
+            "gloss": "teacher",
+            "pos": "N"
         },
         {
             "id": 3,
@@ -147,8 +166,7 @@
         {
             "id": 20,
             "text": "unġelǣrede",
-            "lang": "OE",
-            "gloss": "unlearned.PL"
+            "lang": "OE"
         },
         {
             "id": 21,
@@ -419,7 +437,7 @@
         },
         {
             "id": 62,
-            "text": "swingell",
+            "text": "swingel",
             "lang": "OE",
             "gloss": "blow",
             "fullGloss": "blow of a rod or a whip",
@@ -4563,6 +4581,1092 @@
             "id": 915,
             "text": "sepigrẽi",
             "lang": "Lyc"
+        },
+        {
+            "id": 917,
+            "text": " þū",
+            "lang": "OE",
+            "gloss": "you",
+            "pos": "PRON"
+        },
+        {
+            "id": 918,
+            "text": "ċildra",
+            "lang": "OE",
+            "gloss": "child.NOM.PL"
+        },
+        {
+            "id": 919,
+            "text": "ċild",
+            "lang": "OE",
+            "gloss": "child",
+            "pos": "N"
+        },
+        {
+            "id": 923,
+            "text": "var",
+            "lang": "ON",
+            "gloss": "be.PST"
+        },
+        {
+            "id": 924,
+            "text": "hann",
+            "lang": "ON",
+            "gloss": "he",
+            "pos": "PRON"
+        },
+        {
+            "id": 925,
+            "text": "frændi",
+            "lang": "ON",
+            "gloss": "kinsman",
+            "pos": "N",
+            "classes": [
+                "m"
+            ]
+        },
+        {
+            "id": 926,
+            "text": "vera",
+            "lang": "ON",
+            "gloss": "be",
+            "pos": "V"
+        },
+        {
+            "id": 927,
+            "text": "landnámsmanns",
+            "lang": "ON"
+        },
+        {
+            "id": 928,
+            "text": "landnámsmaðr",
+            "lang": "ON",
+            "gloss": "settler",
+            "pos": "N"
+        },
+        {
+            "id": 929,
+            "text": "gaf",
+            "lang": "ON",
+            "gloss": "give.PST"
+        },
+        {
+            "id": 930,
+            "text": "gefa",
+            "lang": "ON",
+            "gloss": "give",
+            "pos": "V"
+        },
+        {
+            "id": 931,
+            "text": "land",
+            "lang": "ON",
+            "gloss": "land",
+            "pos": "N",
+            "classes": [
+                "n"
+            ]
+        },
+        {
+            "id": 932,
+            "text": "ok",
+            "lang": "ON",
+            "gloss": "and",
+            "pos": "CONJ"
+        },
+        {
+            "id": 933,
+            "text": "bjó",
+            "lang": "ON",
+            "gloss": "lived"
+        },
+        {
+            "id": 934,
+            "text": "búa",
+            "lang": "ON",
+            "gloss": "live",
+            "pos": "V"
+        },
+        {
+            "id": 935,
+            "text": "fyrst",
+            "lang": "ON",
+            "gloss": "first"
+        },
+        {
+            "id": 936,
+            "text": "á",
+            "lang": "ON",
+            "gloss": "on",
+            "fullGloss": "on; upon; at; in",
+            "pos": "PREP"
+        },
+        {
+            "id": 937,
+            "text": "hét",
+            "lang": "ON",
+            "gloss": "be named.PST"
+        },
+        {
+            "id": 938,
+            "text": "heita",
+            "lang": "ON",
+            "gloss": "be named",
+            "pos": "V"
+        },
+        {
+            "id": 939,
+            "text": "kona",
+            "lang": "ON",
+            "gloss": "woman",
+            "fullGloss": "wife; woman",
+            "pos": "N",
+            "classes": [
+                "f"
+            ]
+        },
+        {
+            "id": 940,
+            "text": "hans",
+            "lang": "ON",
+            "gloss": "he.GEN"
+        },
+        {
+            "id": 941,
+            "text": "en",
+            "lang": "ON",
+            "gloss": "but",
+            "fullGloss": "but; and",
+            "pos": "CONJ"
+        },
+        {
+            "id": 942,
+            "text": "sonr",
+            "lang": "ON",
+            "gloss": "son",
+            "pos": "N",
+            "classes": [
+                "m"
+            ]
+        },
+        {
+            "id": 943,
+            "text": "þeira",
+            "lang": "ON",
+            "gloss": "their",
+            "pos": "PRON"
+        },
+        {
+            "id": 944,
+            "text": "efniligr",
+            "lang": "ON",
+            "gloss": "promising",
+            "pos": "ADJ"
+        },
+        {
+            "id": 946,
+            "text": "hann",
+            "lang": "ON",
+            "gloss": "he.ACC"
+        },
+        {
+            "id": 947,
+            "text": "honum",
+            "lang": "ON",
+            "gloss": "he.DAT"
+        },
+        {
+            "id": 949,
+            "text": "náms",
+            "lang": "ON",
+            "gloss": "taking"
+        },
+        {
+            "id": 951,
+            "text": "maðr",
+            "lang": "ON",
+            "gloss": "man",
+            "pos": "N",
+            "classes": [
+                "m"
+            ]
+        },
+        {
+            "id": 952,
+            "text": "hon",
+            "lang": "ON",
+            "gloss": "she",
+            "pos": "PRON"
+        },
+        {
+            "id": 953,
+            "text": "hana",
+            "lang": "ON",
+            "gloss": "she.ACC"
+        },
+        {
+            "id": 954,
+            "text": "henni",
+            "lang": "ON",
+            "gloss": "she.DAT"
+        },
+        {
+            "id": 955,
+            "text": "hennar",
+            "lang": "ON",
+            "gloss": "she.GEN"
+        },
+        {
+            "id": 956,
+            "text": "konungr",
+            "lang": "ON",
+            "gloss": "king",
+            "pos": "N",
+            "classes": [
+                "m"
+            ]
+        },
+        {
+            "id": 957,
+            "text": "hestr",
+            "lang": "ON",
+            "gloss": "horse",
+            "pos": "N",
+            "classes": [
+                "m"
+            ]
+        },
+        {
+            "id": 958,
+            "text": "víkingr",
+            "lang": "ON",
+            "gloss": "viking",
+            "pos": "N",
+            "classes": [
+                "m"
+            ]
+        },
+        {
+            "id": 959,
+            "text": "ferð",
+            "lang": "ON",
+            "gloss": "journey",
+            "pos": "N",
+            "classes": [
+                "f",
+                "strong"
+            ]
+        },
+        {
+            "id": 960,
+            "text": "sök",
+            "lang": "ON",
+            "gloss": "cause",
+            "pos": "N",
+            "classes": [
+                "f",
+                "strong"
+            ]
+        },
+        {
+            "id": 961,
+            "text": "leið",
+            "lang": "ON",
+            "gloss": "way",
+            "fullGloss": "way, road",
+            "pos": "N",
+            "classes": [
+                "f",
+                "strong"
+            ]
+        },
+        {
+            "id": 962,
+            "text": "vík",
+            "lang": "ON",
+            "gloss": "bay",
+            "pos": "N",
+            "classes": [
+                "f"
+            ]
+        },
+        {
+            "id": 963,
+            "text": "hlíð",
+            "lang": "ON",
+            "gloss": "slope",
+            "pos": "N",
+            "classes": [
+                "f",
+                "strong"
+            ]
+        },
+        {
+            "id": 964,
+            "text": "skip",
+            "lang": "ON",
+            "gloss": "ship",
+            "pos": "N",
+            "classes": [
+                "n"
+            ]
+        },
+        {
+            "id": 965,
+            "text": "mál",
+            "lang": "ON",
+            "gloss": "speech",
+            "pos": "N",
+            "classes": [
+                "n"
+            ]
+        },
+        {
+            "id": 966,
+            "text": "sverð",
+            "lang": "ON",
+            "gloss": "sword",
+            "pos": "N",
+            "classes": [
+                "n"
+            ]
+        },
+        {
+            "id": 967,
+            "text": "þing",
+            "lang": "ON",
+            "gloss": "assembly",
+            "pos": "N",
+            "classes": [
+                "n"
+            ]
+        },
+        {
+            "id": 968,
+            "text": "mikill",
+            "lang": "ON",
+            "gloss": "great",
+            "pos": "ADJ"
+        },
+        {
+            "id": 969,
+            "text": "margr",
+            "lang": "ON",
+            "gloss": "many",
+            "pos": "ADJ"
+        },
+        {
+            "id": 970,
+            "text": "góðr",
+            "lang": "ON",
+            "gloss": "good",
+            "pos": "ADJ"
+        },
+        {
+            "id": 971,
+            "text": "sá",
+            "lang": "ON",
+            "gloss": "that",
+            "pos": "PRON"
+        },
+        {
+            "id": 972,
+            "text": "einn",
+            "lang": "ON",
+            "gloss": "one",
+            "pos": "NUM"
+        },
+        {
+            "id": 973,
+            "text": "hafa",
+            "lang": "ON",
+            "gloss": "have",
+            "pos": "V"
+        },
+        {
+            "id": 974,
+            "text": "segja",
+            "lang": "ON",
+            "gloss": "say",
+            "pos": "V"
+        },
+        {
+            "id": 975,
+            "text": "til",
+            "lang": "ON",
+            "gloss": "to",
+            "pos": "PREP"
+        },
+        {
+            "id": 976,
+            "text": "í",
+            "lang": "ON",
+            "gloss": "in",
+            "fullGloss": "in, into",
+            "pos": "PREP"
+        },
+        {
+            "id": 977,
+            "text": "at",
+            "lang": "ON",
+            "gloss": "that",
+            "pos": "CONJ"
+        },
+        {
+            "id": 978,
+            "text": "fjörðr",
+            "lang": "ON",
+            "gloss": "fjord",
+            "pos": "N",
+            "classes": [
+                "m"
+            ]
+        },
+        {
+            "id": 979,
+            "text": "dóttir",
+            "lang": "ON",
+            "gloss": "daughter",
+            "pos": "N",
+            "classes": [
+                "f"
+            ]
+        },
+        {
+            "id": 981,
+            "text": "með",
+            "lang": "ON",
+            "gloss": "with",
+            "pos": "PREP"
+        },
+        {
+            "id": 982,
+            "text": "fór",
+            "lang": "ON",
+            "gloss": "go.PST"
+        },
+        {
+            "id": 983,
+            "text": "fara",
+            "lang": "ON",
+            "gloss": "go",
+            "fullGloss": "go, travel, move",
+            "pos": "V"
+        },
+        {
+            "id": 984,
+            "text": "Herjólfr",
+            "lang": "ON",
+            "gloss": "Herjólf",
+            "pos": "NP"
+        },
+        {
+            "id": 985,
+            "text": "nam",
+            "lang": "ON",
+            "gloss": "take.PST"
+        },
+        {
+            "id": 986,
+            "text": "nema",
+            "lang": "ON",
+            "gloss": "take",
+            "pos": "V"
+        },
+        {
+            "id": 987,
+            "text": "eptir",
+            "lang": "ON",
+            "gloss": "after",
+            "pos": "PREP"
+        },
+        {
+            "id": 988,
+            "text": "Leifr",
+            "lang": "ON",
+            "gloss": "Leif",
+            "pos": "NP"
+        },
+        {
+            "id": 989,
+            "text": "hönd",
+            "lang": "ON",
+            "gloss": "land",
+            "pos": "N",
+            "classes": [
+                "m"
+            ]
+        },
+        {
+            "id": 990,
+            "text": "lítill",
+            "lang": "ON",
+            "gloss": "little",
+            "pos": "ADJ"
+        },
+        {
+            "id": 991,
+            "text": "illr",
+            "lang": "ON",
+            "gloss": "bad; ill",
+            "pos": "ADJ"
+        },
+        {
+            "id": 992,
+            "text": "sannr",
+            "lang": "ON",
+            "gloss": "true",
+            "pos": "ADJ"
+        },
+        {
+            "id": 993,
+            "text": "ek",
+            "lang": "ON",
+            "gloss": "I",
+            "pos": "PRON"
+        },
+        {
+            "id": 994,
+            "text": "þú",
+            "lang": "ON",
+            "gloss": "you",
+            "pos": "PRON"
+        },
+        {
+            "id": 995,
+            "text": "tveir",
+            "lang": "ON",
+            "gloss": "two",
+            "pos": "NUM"
+        },
+        {
+            "id": 996,
+            "text": "koma",
+            "lang": "ON",
+            "gloss": "come",
+            "pos": "V"
+        },
+        {
+            "id": 997,
+            "text": "munu",
+            "lang": "ON",
+            "gloss": "will",
+            "pos": "V"
+        },
+        {
+            "id": 998,
+            "text": "þá",
+            "lang": "ON",
+            "gloss": "then"
+        },
+        {
+            "id": 999,
+            "text": "þar",
+            "lang": "ON",
+            "gloss": "there"
+        },
+        {
+            "id": 1000,
+            "text": "um",
+            "lang": "ON",
+            "gloss": "about",
+            "pos": "PREP"
+        },
+        {
+            "id": 1001,
+            "text": "Eiríkr",
+            "lang": "ON",
+            "gloss": "Eirik",
+            "pos": "NP"
+        },
+        {
+            "id": 1003,
+            "text": "Gormr",
+            "lang": "ON",
+            "gloss": "Gorm",
+            "pos": "NP"
+        },
+        {
+            "id": 1004,
+            "text": "gerði",
+            "lang": "ON",
+            "gloss": "make.PST"
+        },
+        {
+            "id": 1005,
+            "text": "gera",
+            "lang": "ON",
+            "gloss": "make",
+            "fullGloss": "make; do; act",
+            "pos": "V"
+        },
+        {
+            "id": 1006,
+            "text": "kumbl",
+            "lang": "ON",
+            "gloss": "monument",
+            "fullGloss": "burial monument, mound, cairn",
+            "pos": "N",
+            "classes": [
+                "n",
+                "strong"
+            ]
+        },
+        {
+            "id": 1007,
+            "text": "þessi",
+            "lang": "ON",
+            "gloss": "this",
+            "pos": "PRON"
+        },
+        {
+            "id": 1008,
+            "text": "ept",
+            "lang": "ON"
+        },
+        {
+            "id": 1009,
+            "text": "Þurvi",
+            "lang": "ON",
+            "pos": "NP"
+        },
+        {
+            "id": 1013,
+            "text": "konu",
+            "lang": "ON"
+        },
+        {
+            "id": 1014,
+            "text": "sina",
+            "lang": "ON",
+            "gloss": "his/her own.F.ACC"
+        },
+        {
+            "id": 1015,
+            "text": "sinn",
+            "lang": "ON",
+            "gloss": "his/her own",
+            "pos": "PREP"
+        },
+        {
+            "id": 1016,
+            "text": "herjólfi",
+            "lang": "ON"
+        },
+        {
+            "id": 1017,
+            "text": "Bárðarson",
+            "lang": "ON"
+        },
+        {
+            "id": 1018,
+            "text": "Bárðar",
+            "lang": "ON"
+        },
+        {
+            "id": 1020,
+            "text": "Bárðr",
+            "lang": "ON",
+            "gloss": "Bard",
+            "pos": "NP"
+        },
+        {
+            "id": 1021,
+            "text": "Herjólfssonar",
+            "lang": "ON"
+        },
+        {
+            "id": 1022,
+            "text": "Herjólfsson",
+            "lang": "ON"
+        },
+        {
+            "id": 1023,
+            "text": "Herjólfs",
+            "lang": "ON"
+        },
+        {
+            "id": 1025,
+            "text": "Ingólfs",
+            "lang": "ON"
+        },
+        {
+            "id": 1026,
+            "text": "Ingólfr",
+            "lang": "ON",
+            "gloss": "Ingolf",
+            "pos": "NP"
+        },
+        {
+            "id": 1027,
+            "text": "land",
+            "lang": "ON"
+        },
+        {
+            "id": 1028,
+            "text": "milli",
+            "lang": "ON",
+            "gloss": "between",
+            "pos": "PREP"
+        },
+        {
+            "id": 1029,
+            "text": "Vags",
+            "lang": "ON"
+        },
+        {
+            "id": 1030,
+            "text": "Vagr",
+            "lang": "ON",
+            "gloss": "Vag Bay",
+            "pos": "NP"
+        },
+        {
+            "id": 1031,
+            "text": "Reykjaness",
+            "lang": "ON"
+        },
+        {
+            "id": 1032,
+            "text": "Reykjanes",
+            "lang": "ON",
+            "pos": "NP"
+        },
+        {
+            "id": 1033,
+            "text": "reykja",
+            "lang": "ON",
+            "gloss": "smoke",
+            "pos": "V"
+        },
+        {
+            "id": 1035,
+            "text": "nes",
+            "lang": "ON",
+            "gloss": "headland",
+            "pos": "N"
+        },
+        {
+            "id": 1036,
+            "text": "Bjarni",
+            "lang": "ON",
+            "pos": "NP"
+        },
+        {
+            "id": 1037,
+            "text": "Þorgerðr",
+            "lang": "ON",
+            "pos": "NP"
+        },
+        {
+            "id": 1038,
+            "text": "Eiríki",
+            "lang": "ON"
+        },
+        {
+            "id": 1039,
+            "text": "Grœnlands",
+            "lang": "ON"
+        },
+        {
+            "id": 1040,
+            "text": "Grœnland",
+            "lang": "ON",
+            "pos": "NP"
+        },
+        {
+            "id": 1041,
+            "text": "grœnn",
+            "lang": "ON",
+            "gloss": "green",
+            "pos": "ADJ"
+        },
+        {
+            "id": 1046,
+            "text": "Herjólfsnesi",
+            "lang": "ON"
+        },
+        {
+            "id": 1047,
+            "text": "Herjólfsnes",
+            "lang": "ON",
+            "pos": "NP"
+        },
+        {
+            "id": 1052,
+            "text": "fjördr",
+            "lang": "ON"
+        },
+        {
+            "id": 1053,
+            "text": "Herjólfsfjörð",
+            "lang": "ON"
+        },
+        {
+            "id": 1054,
+            "text": "Herjólfsfjörðr",
+            "lang": "ON",
+            "pos": "NP"
+        },
+        {
+            "id": 1056,
+            "text": "Eiríksfjörð",
+            "lang": "ON"
+        },
+        {
+            "id": 1057,
+            "text": "Eiríksfjörðr",
+            "lang": "ON",
+            "pos": "NP"
+        },
+        {
+            "id": 1058,
+            "text": "Eiríks",
+            "lang": "ON"
+        },
+        {
+            "id": 1060,
+            "text": "kumbl",
+            "lang": "ON"
+        },
+        {
+            "id": 1061,
+            "text": "Danmarkar",
+            "lang": "ON"
+        },
+        {
+            "id": 1062,
+            "text": "Danmörk",
+            "lang": "ON",
+            "gloss": "Denmark",
+            "pos": "NP"
+        },
+        {
+            "id": 1063,
+            "text": "bót",
+            "lang": "ON"
+        },
+        {
+            "id": 1064,
+            "text": "bót",
+            "lang": "ON",
+            "gloss": "adornment",
+            "pos": "N",
+            "classes": [
+                "n"
+            ]
+        },
+        {
+            "id": 1066,
+            "text": "Hörda-Knúts",
+            "lang": "ON"
+        },
+        {
+            "id": 1067,
+            "text": "Hörda-Knútr",
+            "lang": "ON",
+            "pos": "NP"
+        },
+        {
+            "id": 1068,
+            "text": "sterkr",
+            "lang": "ON",
+            "gloss": "strong",
+            "pos": "ADJ"
+        },
+        {
+            "id": 1069,
+            "text": "atgervimaðr",
+            "lang": "ON",
+            "gloss": "man of accomplishments",
+            "pos": "N"
+        },
+        {
+            "id": 1070,
+            "text": "ekki",
+            "lang": "ON",
+            "gloss": "not"
+        },
+        {
+            "id": 1071,
+            "text": "kallaðr",
+            "lang": "ON",
+            "gloss": "call.PPART"
+        },
+        {
+            "id": 1072,
+            "text": "kalla",
+            "lang": "ON",
+            "gloss": "call",
+            "pos": "V"
+        },
+        {
+            "id": 1073,
+            "text": "vitr",
+            "lang": "ON",
+            "gloss": "wise",
+            "pos": "ADJ"
+        },
+        {
+            "id": 1074,
+            "text": "fekk",
+            "lang": "ON",
+            "gloss": "get.PST"
+        },
+        {
+            "id": 1075,
+            "text": "fá",
+            "lang": "ON",
+            "gloss": "get",
+            "fullGloss": "get, take. procure, grasp, marry",
+            "pos": "V"
+        },
+        {
+            "id": 1076,
+            "text": "er",
+            "lang": "ON",
+            "gloss": "that",
+            "fullGloss": "who, which, that"
+        },
+        {
+            "id": 1077,
+            "text": "Þyri",
+            "lang": "ON",
+            "pos": "NP"
+        },
+        {
+            "id": 1078,
+            "text": "Haralds",
+            "lang": "ON"
+        },
+        {
+            "id": 1079,
+            "text": "haraldr",
+            "lang": "ON",
+            "gloss": "Harald",
+            "pos": "NP"
+        },
+        {
+            "id": 1080,
+            "text": "jarls",
+            "lang": "ON"
+        },
+        {
+            "id": 1081,
+            "text": "jarl",
+            "lang": "ON",
+            "gloss": "earl",
+            "pos": "N",
+            "classes": [
+                "m"
+            ]
+        },
+        {
+            "id": 1082,
+            "text": "af",
+            "lang": "ON",
+            "gloss": "of",
+            "fullGloss": "of, by, out of, from",
+            "pos": "PREP"
+        },
+        {
+            "id": 1083,
+            "text": "Klakk-Haraldr",
+            "lang": "ON",
+            "pos": "NP"
+        },
+        {
+            "id": 1084,
+            "text": "frið",
+            "lang": "ON",
+            "gloss": "beautiful.F"
+        },
+        {
+            "id": 1085,
+            "text": "friðr",
+            "lang": "ON",
+            "gloss": "beautiful",
+            "pos": "ADJ"
+        },
+        {
+            "id": 1086,
+            "text": "mestr",
+            "lang": "ON",
+            "gloss": "greatest",
+            "pos": "ADJ"
+        },
+        {
+            "id": 1087,
+            "text": "skörungr",
+            "lang": "ON",
+            "gloss": "leader",
+            "pos": "N"
+        },
+        {
+            "id": 1092,
+            "text": "rún",
+            "lang": "ON",
+            "gloss": "rune",
+            "pos": "N",
+            "classes": [
+                "f",
+                "strong"
+            ]
+        },
+        {
+            "id": 1093,
+            "text": "goði",
+            "lang": "ON",
+            "gloss": "chieftain",
+            "pos": "N",
+            "classes": [
+                "m",
+                "weak"
+            ]
+        },
+        {
+            "id": 1094,
+            "text": "tunga",
+            "lang": "ON",
+            "gloss": "tongue",
+            "pos": "N",
+            "classes": [
+                "f",
+                "weak"
+            ]
+        },
+        {
+            "id": 1095,
+            "text": "auga",
+            "lang": "ON",
+            "gloss": "eye",
+            "pos": "N",
+            "classes": [
+                "n",
+                "weak"
+            ]
+        },
+        {
+            "id": 1096,
+            "text": "konum",
+            "lang": "ON"
+        },
+        {
+            "id": 1097,
+            "text": "Norðlöndum",
+            "lang": "ON"
+        },
+        {
+            "id": 1098,
+            "text": "Norðlönd",
+            "lang": "ON",
+            "gloss": "Scandinavia",
+            "pos": "NP"
+        },
+        {
+            "id": 1099,
+            "text": "danmarkarbót",
+            "lang": "ON"
         }
     ],
     "rules": [
@@ -5431,9 +6535,6 @@
                 }
             ],
             "addedCategories": ".ACC.PL",
-            "replacedCategories": "",
-            "fromPOS": "",
-            "toPOS": "",
             "notes": "",
             "preInstructions": [
             ]
@@ -5938,6 +7039,734 @@
             "notes": "",
             "preInstructions": [
             ]
+        },
+        {
+            "id": 920,
+            "name": "oe-adj-m-nom-pl",
+            "fromLang": "OE",
+            "toLang": "OE",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "Append",
+                            "args": [
+                                "'e'"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".NOM.PL.M",
+            "replacedCategories": "",
+            "fromPOS": "ADJ",
+            "notes": "",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 1010,
+            "name": "on-acc",
+            "fromLang": "ON",
+            "toLang": "ON",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeEnding",
+                            "args": [
+                                ""
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "characters": "r"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeEnding",
+                            "args": [
+                                "a"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "characters": "i"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeEnding",
+                            "args": [
+                                "u"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.AndRuleConditionData",
+                        "members": [
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "EndsWith",
+                                "characters": "a"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "ClassMatches",
+                                "characters": "f"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "NoChange",
+                            "args": [
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".ACC",
+            "fromPOS": "N",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 1011,
+            "name": "on-dat",
+            "fromLang": "ON",
+            "toLang": "ON",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeEnding",
+                            "args": [
+                                "i"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "characters": "r"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "Append",
+                            "args": [
+                                "'i'"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.AndRuleConditionData",
+                        "members": [
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "ClassMatches",
+                                "characters": "n"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "ClassMatches",
+                                "characters": "strong"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeEnding",
+                            "args": [
+                                "a"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "characters": "i"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeEnding",
+                            "args": [
+                                "u"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.AndRuleConditionData",
+                        "members": [
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "EndsWith",
+                                "characters": "a"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "ClassMatches",
+                                "characters": "f"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "NoChange",
+                            "args": [
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".DAT",
+            "fromPOS": "N",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 1012,
+            "name": "on-gen",
+            "fromLang": "ON",
+            "toLang": "ON",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeEnding",
+                            "args": [
+                                "s"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "characters": "r"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "Append",
+                            "args": [
+                                "'ar'"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.AndRuleConditionData",
+                        "members": [
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "ClassMatches",
+                                "characters": "f"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "ClassMatches",
+                                "characters": "strong"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "Append",
+                            "args": [
+                                "'s'"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.AndRuleConditionData",
+                        "members": [
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "ClassMatches",
+                                "characters": "n"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "ClassMatches",
+                                "characters": "strong"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeEnding",
+                            "args": [
+                                "a"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "characters": "i"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeEnding",
+                            "args": [
+                                "u"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.AndRuleConditionData",
+                        "members": [
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "EndsWith",
+                                "characters": "a"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "ClassMatches",
+                                "characters": "f"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "NoChange",
+                            "args": [
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".GEN",
+            "fromPOS": "N",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 1088,
+            "name": "on-nom-pl",
+            "fromLang": "ON",
+            "toLang": "ON",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeEnding",
+                            "args": [
+                                "ar"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "characters": "r"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "Append",
+                            "args": [
+                                "'ar'"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.AndRuleConditionData",
+                        "members": [
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "ClassMatches",
+                                "characters": "f"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "ClassMatches",
+                                "characters": "strong"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeEnding",
+                            "args": [
+                                "ar"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "characters": "i"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeEnding",
+                            "args": [
+                                "ur"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.AndRuleConditionData",
+                        "members": [
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "EndsWith",
+                                "characters": "a"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "ClassMatches",
+                                "characters": "f"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeEnding",
+                            "args": [
+                                "u"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.AndRuleConditionData",
+                        "members": [
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "EndsWith",
+                                "characters": "a"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "ClassMatches",
+                                "characters": "n"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "NoChange",
+                            "args": [
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".NOM.PL",
+            "fromPOS": "N",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 1089,
+            "name": "on-acc-pl",
+            "fromLang": "ON",
+            "toLang": "ON",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeEnding",
+                            "args": [
+                                "a"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "characters": "r"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "Append",
+                            "args": [
+                                "'ar'"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.AndRuleConditionData",
+                        "members": [
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "ClassMatches",
+                                "characters": "f"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "ClassMatches",
+                                "characters": "strong"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeEnding",
+                            "args": [
+                                "a"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "characters": "i"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeEnding",
+                            "args": [
+                                "ur"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.AndRuleConditionData",
+                        "members": [
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "EndsWith",
+                                "characters": "a"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "ClassMatches",
+                                "characters": "f"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeEnding",
+                            "args": [
+                                "u"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.AndRuleConditionData",
+                        "members": [
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "EndsWith",
+                                "characters": "a"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "ClassMatches",
+                                "characters": "n"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "NoChange",
+                            "args": [
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".ACC.PL",
+            "fromPOS": "N",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 1090,
+            "name": "on-dat-pl",
+            "fromLang": "ON",
+            "toLang": "ON",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeEnding",
+                            "args": [
+                                "um"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OrRuleConditionData",
+                        "members": [
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "EndsWith",
+                                "characters": "r"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "EndsWith",
+                                "characters": "i"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "EndsWith",
+                                "characters": "a"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "Append",
+                            "args": [
+                                "'um'"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".DAT.PL",
+            "replacedCategories": "",
+            "fromPOS": "N",
+            "notes": "",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 1091,
+            "name": "on-gen-pl",
+            "fromLang": "ON",
+            "toLang": "ON",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeEnding",
+                            "args": [
+                                "a"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "characters": "r"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "Append",
+                            "args": [
+                                "'a'"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "ClassMatches",
+                        "characters": "strong"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeEnding",
+                            "args": [
+                                "a"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "characters": "i"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeEnding",
+                            "args": [
+                                "na"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "characters": "a"
+                    }
+                }
+            ],
+            "addedCategories": ".GEN.PL",
+            "replacedCategories": "",
+            "fromPOS": "N",
+            "notes": "",
+            "preInstructions": [
+            ]
         }
     ],
     "links": [
@@ -5954,7 +7783,10 @@
         {
             "from": 20,
             "to": 21,
-            "type": ">"
+            "type": ">",
+            "ruleIds": [
+                920
+            ]
         },
         {
             "from": 22,
@@ -5994,7 +7826,10 @@
         {
             "from": 49,
             "to": 50,
-            "type": ">"
+            "type": ">",
+            "ruleIds": [
+                469
+            ]
         },
         {
             "from": 55,
@@ -7632,6 +9467,313 @@
                     "refText": "55"
                 }
             ]
+        },
+        {
+            "from": 918,
+            "to": 919,
+            "type": ">"
+        },
+        {
+            "from": 8,
+            "to": 6,
+            "type": ">"
+        },
+        {
+            "from": 7,
+            "to": 1,
+            "type": ">"
+        },
+        {
+            "from": 923,
+            "to": 926,
+            "type": ">"
+        },
+        {
+            "from": 927,
+            "to": 928,
+            "type": ">",
+            "ruleIds": [
+                1012
+            ]
+        },
+        {
+            "from": 929,
+            "to": 930,
+            "type": ">"
+        },
+        {
+            "from": 933,
+            "to": 934,
+            "type": ">"
+        },
+        {
+            "from": 937,
+            "to": 938,
+            "type": ">"
+        },
+        {
+            "from": 940,
+            "to": 924,
+            "type": ">"
+        },
+        {
+            "from": 946,
+            "to": 924,
+            "type": ">"
+        },
+        {
+            "from": 947,
+            "to": 924,
+            "type": ">"
+        },
+        {
+            "from": 953,
+            "to": 952,
+            "type": ">"
+        },
+        {
+            "from": 954,
+            "to": 952,
+            "type": ">"
+        },
+        {
+            "from": 955,
+            "to": 952,
+            "type": ">"
+        },
+        {
+            "from": 958,
+            "to": 962,
+            "type": ">"
+        },
+        {
+            "from": 943,
+            "to": 971,
+            "type": ">"
+        },
+        {
+            "from": 982,
+            "to": 983,
+            "type": ">"
+        },
+        {
+            "from": 985,
+            "to": 986,
+            "type": ">"
+        },
+        {
+            "from": 1004,
+            "to": 1005,
+            "type": ">"
+        },
+        {
+            "from": 1008,
+            "to": 987,
+            "type": "="
+        },
+        {
+            "from": 1013,
+            "to": 939,
+            "type": ">",
+            "ruleIds": [
+                1010
+            ]
+        },
+        {
+            "from": 1014,
+            "to": 1015,
+            "type": ">"
+        },
+        {
+            "from": 1016,
+            "to": 984,
+            "type": ">",
+            "ruleIds": [
+                1011
+            ]
+        },
+        {
+            "from": 1018,
+            "to": 1020,
+            "type": ">",
+            "ruleIds": [
+                1012
+            ]
+        },
+        {
+            "from": 1021,
+            "to": 1022,
+            "type": ">",
+            "ruleIds": [
+                1012
+            ]
+        },
+        {
+            "from": 1023,
+            "to": 984,
+            "type": ">",
+            "ruleIds": [
+                1012
+            ]
+        },
+        {
+            "from": 1025,
+            "to": 1026,
+            "type": ">",
+            "ruleIds": [
+                1012
+            ]
+        },
+        {
+            "from": 1027,
+            "to": 931,
+            "type": ">",
+            "ruleIds": [
+                1010
+            ]
+        },
+        {
+            "from": 1029,
+            "to": 1030,
+            "type": ">",
+            "ruleIds": [
+                1012
+            ]
+        },
+        {
+            "from": 1031,
+            "to": 1032,
+            "type": ">",
+            "ruleIds": [
+                1012
+            ]
+        },
+        {
+            "from": 1038,
+            "to": 1001,
+            "type": ">",
+            "ruleIds": [
+                1011
+            ]
+        },
+        {
+            "from": 1039,
+            "to": 1040,
+            "type": ">",
+            "ruleIds": [
+                1012
+            ]
+        },
+        {
+            "from": 1046,
+            "to": 1047,
+            "type": ">",
+            "ruleIds": [
+                1011
+            ]
+        },
+        {
+            "from": 1053,
+            "to": 1054,
+            "type": ">",
+            "ruleIds": [
+                1010
+            ]
+        },
+        {
+            "from": 1056,
+            "to": 1057,
+            "type": ">",
+            "ruleIds": [
+                1010
+            ]
+        },
+        {
+            "from": 1058,
+            "to": 1001,
+            "type": ">",
+            "ruleIds": [
+                1012
+            ]
+        },
+        {
+            "from": 1060,
+            "to": 1006,
+            "type": ">",
+            "ruleIds": [
+                1010
+            ]
+        },
+        {
+            "from": 1061,
+            "to": 1062,
+            "type": ">",
+            "ruleIds": [
+                1012
+            ]
+        },
+        {
+            "from": 1063,
+            "to": 1064,
+            "type": ">",
+            "ruleIds": [
+                1010
+            ]
+        },
+        {
+            "from": 1066,
+            "to": 1067,
+            "type": ">",
+            "ruleIds": [
+                1012
+            ]
+        },
+        {
+            "from": 1071,
+            "to": 1072,
+            "type": ">"
+        },
+        {
+            "from": 1074,
+            "to": 1075,
+            "type": ">"
+        },
+        {
+            "from": 1078,
+            "to": 1079,
+            "type": ">",
+            "ruleIds": [
+                1012
+            ]
+        },
+        {
+            "from": 1080,
+            "to": 1081,
+            "type": ">",
+            "ruleIds": [
+                1012
+            ]
+        },
+        {
+            "from": 1084,
+            "to": 1085,
+            "type": ">"
+        },
+        {
+            "from": 1096,
+            "to": 939,
+            "type": ">",
+            "ruleIds": [
+                1090
+            ]
+        },
+        {
+            "from": 1097,
+            "to": 1098,
+            "type": ">",
+            "ruleIds": [
+                1090
+            ]
         }
     ],
     "corpusTexts": [
@@ -7642,7 +9784,7 @@
             "lang": "OE",
             "wordIds": [
                 1,
-                null,
+                918,
                 3,
                 8,
                 14,
@@ -9168,6 +11310,168 @@
                 null,
                 null
             ]
+        },
+        {
+            "id": 921,
+            "text": "Herjólfr var Bárðarson\nHerjólfssonar;\nhann var frændi Ingólfs\nlandnámsmanns.\nIngólfr gaf Herjólfi land\ná milli Vags ok Reykjaness.\nHerjólfr bjó fyrst á Drepstokki.\nÞorgerðr hét kona hans,\nen Bjarni sonr þeira,\nok var efniligr maðr.",
+            "title": "Viking Language 1.3",
+            "lang": "ON",
+            "wordIds": [
+                null,
+                923,
+                1017,
+                1021,
+                924,
+                null,
+                925,
+                1025,
+                927,
+                null,
+                929,
+                1016,
+                1027,
+                null,
+                1028,
+                1029,
+                932,
+                1031,
+                null,
+                933,
+                935,
+                936,
+                null,
+                1037,
+                937,
+                939,
+                940,
+                941,
+                1036,
+                942,
+                943,
+                null,
+                null,
+                944,
+                951
+            ]
+        },
+        {
+            "id": 980,
+            "text": "Herjólfr hét maðr\nBárðarson Herjólfssonar;\nhann fór til Grœnlands með Eiríki.\nHerjólfr nam Herjólfsfjörð\nok bjó á Herjólfsnesi.\nEiríkr nam Eiríksfjörð ok bjó í\nBrattahlíð,\nen Leifr sonr hans eptir hann.",
+            "title": "Viking Language 2.2",
+            "lang": "ON",
+            "wordIds": [
+                984,
+                null,
+                null,
+                null,
+                null,
+                null,
+                982,
+                null,
+                1039,
+                981,
+                1038,
+                null,
+                985,
+                1053,
+                null,
+                null,
+                null,
+                1046,
+                1001,
+                null,
+                1056,
+                null,
+                null,
+                null,
+                null,
+                null,
+                988,
+                null,
+                null,
+                987,
+                946
+            ]
+        },
+        {
+            "id": 1002,
+            "text": "Gormr konungr gerði kumbl þessi ept Þurvi konu sina, Danmarkar bót",
+            "title": "Viking Language 3.2",
+            "lang": "ON",
+            "wordIds": [
+                1003,
+                null,
+                1004,
+                1060,
+                1007,
+                1008,
+                1009,
+                null,
+                1014,
+                1061,
+                1063
+            ]
+        },
+        {
+            "id": 1065,
+            "text": "Gormr, sonr Hörda-Knúts, var mikill maðr ok sterkr. \nHann var atgervimaðr.\nEn ekki var hann kallaðr vitr maðr.\n\nGormr fekk konu, er Þyri hét.\nHon var dóttir Haralds jarls af Jótlandi.\nHann var kallaðr Klakk-Haraldr.\nÞyri var frið kona.\nHon var mestr skörungr af konum á Norðlöndum.\nHon hét þyri Danmarkarbót.",
+            "title": "Viking Language 3.7",
+            "lang": "ON",
+            "wordIds": [
+                null,
+                null,
+                1066,
+                null,
+                null,
+                null,
+                null,
+                1068,
+                null,
+                null,
+                null,
+                1069,
+                null,
+                1070,
+                null,
+                null,
+                1071,
+                1073,
+                null,
+                null,
+                null,
+                1074,
+                null,
+                1076,
+                1077,
+                null,
+                null,
+                null,
+                null,
+                1078,
+                1080,
+                1082,
+                null,
+                null,
+                null,
+                null,
+                1083,
+                null,
+                null,
+                1084,
+                null,
+                null,
+                null,
+                1086,
+                1087,
+                null,
+                1096,
+                null,
+                1097,
+                null,
+                null,
+                null,
+                1099
+            ]
         }
     ],
     "paradigms": [
@@ -9301,6 +11605,70 @@
                     ]
                 }
             ]
+        },
+        {
+            "id": 3,
+            "name": "Noun",
+            "lang": "ON",
+            "pos": "N",
+            "rows": [
+                "Nom",
+                "Acc",
+                "Dat",
+                "Gen"
+            ],
+            "columns": [
+                {
+                    "title": "Sg",
+                    "cells": [
+                        {
+                            "ruleAlternatives": [
+                                null
+                            ]
+                        },
+                        {
+                            "ruleAlternatives": [
+                                1010
+                            ]
+                        },
+                        {
+                            "ruleAlternatives": [
+                                1011
+                            ]
+                        },
+                        {
+                            "ruleAlternatives": [
+                                1012
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "Pl",
+                    "cells": [
+                        {
+                            "ruleAlternatives": [
+                                1088
+                            ]
+                        },
+                        {
+                            "ruleAlternatives": [
+                                1089
+                            ]
+                        },
+                        {
+                            "ruleAlternatives": [
+                                1090
+                            ]
+                        },
+                        {
+                            "ruleAlternatives": [
+                                1091
+                            ]
+                        }
+                    ]
+                }
+            ]
         }
     ],
     "syllableStructures": [
@@ -9312,12 +11680,6 @@
         }
     ],
     "wordFinals": [
-        {
-            "lang": "OE",
-            "wordFinals": [
-                ""
-            ]
-        }
     ],
     "publications": [
         {
@@ -10109,6 +12471,79 @@
             "componentIds": [
                 102
             ]
+        },
+        {
+            "id": 948,
+            "compoundId": 928,
+            "componentIds": [
+                931,
+                949,
+                951
+            ]
+        },
+        {
+            "id": 1019,
+            "compoundId": 1017,
+            "componentIds": [
+                1018,
+                942
+            ]
+        },
+        {
+            "id": 1024,
+            "compoundId": 1022,
+            "componentIds": [
+                1023,
+                942
+            ]
+        },
+        {
+            "id": 1034,
+            "compoundId": 1032,
+            "componentIds": [
+                1033,
+                1035
+            ]
+        },
+        {
+            "id": 1042,
+            "compoundId": 1040,
+            "componentIds": [
+                1041,
+                931
+            ]
+        },
+        {
+            "id": 1048,
+            "compoundId": 1047,
+            "componentIds": [
+                1023,
+                1035
+            ]
+        },
+        {
+            "id": 1055,
+            "compoundId": 1054,
+            "componentIds": [
+                1023,
+                978
+            ]
+        },
+        {
+            "id": 1059,
+            "compoundId": 1057,
+            "componentIds": [
+                1058,
+                978
+            ]
+        },
+        {
+            "id": 1100,
+            "compoundId": 1099,
+            "componentIds": [
+                1061,
+                1064
+            ]
         }
     ],
     "translations": [
@@ -10349,6 +12784,99 @@
                 {
                     "name": "Nominative",
                     "abbreviation": "NOM"
+                },
+                {
+                    "name": "Accusative",
+                    "abbreviation": "ACC"
+                },
+                {
+                    "name": "Genitive",
+                    "abbreviation": "GEN"
+                },
+                {
+                    "name": "Dative",
+                    "abbreviation": "DAT"
+                }
+            ]
+        },
+        {
+            "lang": "OE",
+            "name": "Number",
+            "pos": [
+                "N",
+                "ADJ"
+            ],
+            "values": [
+                {
+                    "name": "Singlular",
+                    "abbreviation": "SG"
+                },
+                {
+                    "name": "Plural",
+                    "abbreviation": "PL"
+                }
+            ]
+        },
+        {
+            "lang": "OE",
+            "name": "Gender",
+            "pos": [
+                "ADJ"
+            ],
+            "values": [
+                {
+                    "name": "Masculine",
+                    "abbreviation": "M"
+                },
+                {
+                    "name": "Feminine",
+                    "abbreviation": "F"
+                },
+                {
+                    "name": "Neuter",
+                    "abbreviation": "N"
+                }
+            ]
+        },
+        {
+            "lang": "ON",
+            "name": "Case",
+            "pos": [
+                "N"
+            ],
+            "values": [
+                {
+                    "name": "Nominative",
+                    "abbreviation": "NOM"
+                },
+                {
+                    "name": "Accusative",
+                    "abbreviation": "ACC"
+                },
+                {
+                    "name": "Genitive",
+                    "abbreviation": "GEN"
+                },
+                {
+                    "name": "Dative",
+                    "abbreviation": "DAT"
+                }
+            ]
+        },
+        {
+            "lang": "ON",
+            "name": "Number",
+            "pos": [
+                "N"
+            ],
+            "values": [
+                {
+                    "name": "Singular",
+                    "abbreviation": "SG"
+                },
+                {
+                    "name": "Plural",
+                    "abbreviation": "PL"
                 }
             ]
         }
