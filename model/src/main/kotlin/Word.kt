@@ -90,7 +90,7 @@ class Word(
         graph.getLinksFrom(this).singleOrNull { it.type == Link.Derived && it.toEntity is Word }
 
     fun segmentedText(): String {
-        val segments = segments?.takeIf { it.isNotEmpty() } ?: return text
+        val segments = segments?.filter { it.length > 0 }?.takeIf { it.isNotEmpty() } ?: return text
         return buildString {
             var index = 0
             for ((segIndex, segment) in segments.withIndex()) {

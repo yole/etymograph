@@ -477,6 +477,17 @@ class RuleTest : QBaseTest() {
     }
 
     @Test
+    fun restoreSegmentsEmptyEnding() {
+        val repo = InMemoryGraphRepository()
+        val hresta = repo.addWord("hresta")
+        val hrestallo = repo.addWord("hrestallo", gloss = null)
+        val rule = parseRule(q, q, "word ends with 'llo':\n- change ending to ''", addedCategories = ".ABL")
+        val link = repo.addLink(hresta, hrestallo, Link.Derived, listOf(rule), emptyList(), null)
+        val restored = repo.restoreSegments(hresta)
+        assertEquals("hresta", restored.segmentedText())
+    }
+
+    @Test
     fun chainedSegments() {
         val qNomPl = parseRule(q, q, """
             word ends with a vowel:
