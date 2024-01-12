@@ -32,9 +32,6 @@ data class PhonemeClassData(@SerialName("lang") val languageShortName: String, v
 data class PhonemeData(@SerialName("lang") val languageShortName: String, val graphemes: List<String>, val classes: List<String>)
 
 @Serializable
-data class DigraphData(@SerialName("lang") val languageShortName: String, val digraphs: List<String>)
-
-@Serializable
 data class DiphthongData(@SerialName("lang") val languageShortName: String, val diphthongs: List<String>)
 
 @Serializable
@@ -211,8 +208,8 @@ data class GrammaticalCategoryData(
 @Serializable
 data class GraphRepositoryData(
     val languages: List<LanguageData>,
+    val phonemes: List<PhonemeData>,
     val phonemeClasses: List<PhonemeClassData>,
-    val digraphs: List<DigraphData>,
     val diphthongs: List<DiphthongData>,
     val stressRules: List<StressRuleData>,
     val words: List<WordData>,
@@ -225,8 +222,7 @@ data class GraphRepositoryData(
     val publications: List<PublicationData>,
     val compounds: List<CompoundData>,
     val translations: List<TranslationData>,
-    val grammaticalCategories: List<GrammaticalCategoryData>,
-    val phonemes: List<PhonemeData>? = null
+    val grammaticalCategories: List<GrammaticalCategoryData>
 )
 
 class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
@@ -270,7 +266,6 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
         val phonemes = languages.values.flatMap { lang ->
             lang.phonemes.map { PhonemeData(lang.shortName, it.graphemes, it.classes) }
         }
-        val digraphData = languages.values.map { DigraphData(it.shortName, it.digraphs) }
         val diphthongData = languages.values.map { DiphthongData(it.shortName, it.diphthongs) }
         val stressRuleData = languages.values.mapNotNull { lang ->
             lang.stressRule?.let { StressRuleData(lang.shortName, it.resolve().id) }
@@ -290,8 +285,8 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
         }
         return GraphRepositoryData(
             languages.values.map { LanguageData(it.name, it.shortName) },
+            phonemes,
             phonemeClassData,
-            digraphData,
             diphthongData,
             stressRuleData,
             allLangEntities.filterIsInstance<Word>().map {
@@ -331,8 +326,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             allLangEntities.filterIsInstance<Translation>().map { t ->
                 TranslationData(t.id, t.corpusText.id, t.text, t.source.sourceToSerializedFormat(), t.notes)
             },
-            grammaticalCategoryData,
-            phonemes
+            grammaticalCategoryData
         )
     }
 
@@ -348,9 +342,6 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
         for (phoneme in data.phonemes ?: emptyList()) {
             languageByShortName(phoneme.languageShortName)!!.phonemes.add(
                 Phoneme(phoneme.graphemes, phoneme.classes))
-        }
-        for (digraphData in data.digraphs) {
-            languageByShortName(digraphData.languageShortName)!!.digraphs = digraphData.digraphs
         }
         for (diphthongData in data.diphthongs) {
             languageByShortName(diphthongData.languageShortName)!!.diphthongs = diphthongData.diphthongs

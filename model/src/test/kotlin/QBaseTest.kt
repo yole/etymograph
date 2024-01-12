@@ -7,7 +7,8 @@ open class QBaseTest {
     }
 
     val ce = Language("Common Eldarin", "CE").also {
-        it.digraphs = listOf("kh", "th")
+        it.phonemes.add(Phoneme(listOf("kh"), listOf("voiceless", "consonant")))
+        it.phonemes.add(Phoneme(listOf("th"), listOf("voiceless", "consonant")))
     }
     val v = PhonemeClass("vowel", listOf("a", "o", "u", "i", "e", "á", "ó", "ú", "í", "é")).also { q.phonemeClasses.add(it) }
     val c = PhonemeClass("consonant", listOf("b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "q", "r", "s", "t", "v", "w", "x", "z"))

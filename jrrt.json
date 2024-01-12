@@ -81,36 +81,6 @@
             ]
         }
     ],
-    "digraphs": [
-        {
-            "lang": "Q",
-            "digraphs": [
-                "ty",
-                "dy",
-                "hy",
-                "ny",
-                "hl",
-                "hr",
-                "qu",
-                "gw",
-                "hw",
-                "nw"
-            ]
-        },
-        {
-            "lang": "S",
-            "digraphs": [
-            ]
-        },
-        {
-            "lang": "CE",
-            "digraphs": [
-                "kh",
-                "th",
-                "ph"
-            ]
-        }
-    ],
     "diphthongs": [
         {
             "lang": "Q",
@@ -18484,6 +18454,123 @@
                 "voiceless",
                 "velar",
                 "stop"
+            ]
+        },
+        {
+            "lang": "Q",
+            "graphemes": [
+                "ty"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "lang": "Q",
+            "graphemes": [
+                "dy"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "lang": "Q",
+            "graphemes": [
+                "hy"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "lang": "Q",
+            "graphemes": [
+                "ny"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "lang": "Q",
+            "graphemes": [
+                "hl"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "lang": "Q",
+            "graphemes": [
+                "hr"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "lang": "Q",
+            "graphemes": [
+                "qu"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "lang": "Q",
+            "graphemes": [
+                "gw"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "lang": "Q",
+            "graphemes": [
+                "hw"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "lang": "Q",
+            "graphemes": [
+                "nw"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "lang": "CE",
+            "graphemes": [
+                "kh"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "lang": "CE",
+            "graphemes": [
+                "th"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "lang": "CE",
+            "graphemes": [
+                "ph"
+            ],
+            "classes": [
+                "consonant"
             ]
         }
     ]

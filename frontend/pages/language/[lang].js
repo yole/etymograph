@@ -21,7 +21,6 @@ export default function LanguageIndex(props) {
     const [editMode, setEditMode] = useState(false)
     const [phonemes, setPhonemes] = useState(lang.phonemes)
     const [grammaticalCategories, setGrammaticalCategories] = useState(lang.grammaticalCategories)
-    const [digraphs, setDigraphs] = useState(lang.digraphs.join(", "))
     const [diphthongs, setDiphthongs] = useState(lang.diphthongs.join(", "))
     const [syllableStructures, setSyllableStructures] = useState(lang.syllableStructures.join(", "))
     const [wordFinals, setWordFinals] = useState(lang.wordFinals.join(", "))
@@ -33,23 +32,13 @@ export default function LanguageIndex(props) {
     useEffect(() => { document.title = "Etymograph : " + lang.name })
 
     function saveLanguage() {
-        updateLanguage(langId, phonemes, digraphs, phonemeClasses, diphthongs, syllableStructures, wordFinals, stressRule, grammaticalCategories)
+        updateLanguage(langId, phonemes, phonemeClasses, diphthongs, syllableStructures, wordFinals, stressRule, grammaticalCategories)
             .then(() => router.replace(router.asPath))
         setEditMode(false)
     }
 
     return <>
         <h2><small><Link href={`/`}>Etymograph</Link> {'>'} </small>{lang.name}</h2>
-        <h3>Orthography</h3>
-        {!editMode && <>
-            {lang.digraphs.length > 0 && <p>Digraphs: {lang.digraphs.join(", ")}</p>}
-        </>}
-        {editMode && <table><tbody>
-        <tr>
-            <td><label>Digraphs:</label></td>
-            <td><input type="text" value={digraphs} onChange={(e) => setDigraphs(e.target.value)}/></td>
-        </tr>
-        </tbody></table>}
 
         <h3>Phonetics</h3>
         {(editMode || phonemes.trim().length > 0) && <h4>Phonemes</h4>}

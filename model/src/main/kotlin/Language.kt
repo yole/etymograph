@@ -29,13 +29,15 @@ class Phoneme(val graphemes: List<String>, val classes: List<String>)
 
 class Language(val name: String, val shortName: String) {
     var phonemes = mutableListOf<Phoneme>()
-    var digraphs: List<String> = emptyList()
     var diphthongs: List<String> = emptyList()
     var phonemeClasses = mutableListOf<PhonemeClass>()
     var syllableStructures: List<String> = emptyList()
     var wordFinals: List<String> = emptyList()
     var stressRule: RuleRef? = null
     var grammaticalCategories = mutableListOf<GrammaticalCategory>()
+
+    val digraphs: List<String>
+        get() = phonemes.flatMap { it.graphemes }.filter { it.length > 1 }
 
     fun phonemeClassByName(name: String) =
         phonemeClasses.find { it.name == name } ?: PhonemeClass.specialPhonemeClasses.find { it.name == name }

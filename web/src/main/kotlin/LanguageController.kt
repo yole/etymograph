@@ -21,7 +21,6 @@ class LanguageController(val graphService: GraphService) {
         val shortName: String,
         val diphthongs: List<String>,
         val phonemes: String,
-        val digraphs: List<String>,
         val phonemeClasses: List<PhonemeClassViewModel>,
         val stressRuleId: Int?,
         val stressRuleName: String?,
@@ -48,7 +47,6 @@ class LanguageController(val graphService: GraphService) {
             shortName,
             diphthongs,
             phonemes.phonemesToEditableText(),
-            digraphs,
             phonemeClasses.map { PhonemeClassViewModel(it.name, it.matchingPhonemes) },
             stressRule?.id,
             stressRule?.name,
@@ -64,7 +62,6 @@ class LanguageController(val graphService: GraphService) {
         val phonemes: String? = null,
         val phonemeClasses: String? = null,
         val diphthongs: String? = null,
-        val digraphs: String? = null,
         val stressRuleName: String? = null,
         val syllableStructures: String? = null,
         val wordFinals: String? = null,
@@ -99,7 +96,6 @@ class LanguageController(val graphService: GraphService) {
         language.phonemes = params.phonemes?.let { parsePhonemes(it) } ?: mutableListOf()
         language.phonemeClasses = params.phonemeClasses?.let { parsePhonemeClasses(it) } ?: mutableListOf()
         language.diphthongs = parseList(params.diphthongs)
-        language.digraphs = parseList(params.digraphs)
         language.syllableStructures = parseList(params.syllableStructures)
         language.wordFinals = parseList(params.wordFinals)
         language.grammaticalCategories = params.grammaticalCategories.nullize()?.let { parseGrammaticaLCategories(it) } ?: mutableListOf()
