@@ -109,7 +109,7 @@ open class InMemoryGraphRepository : GraphRepository() {
     }
 
     private fun Word.hasGrammarCategory(): Boolean {
-        val suffix = gloss?.substringAfterLast('.')
+        val suffix = gloss?.substringAfterLast('.', "")
         return !suffix.isNullOrEmpty() && suffix.all { it.isUpperCase() || it.isDigit() }
     }
 

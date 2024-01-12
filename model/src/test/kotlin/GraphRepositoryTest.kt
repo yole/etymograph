@@ -89,6 +89,13 @@ class GraphRepositoryTest : QBaseTest() {
         assertEquals(0, candidates.size)
     }
 
+    @Test
+    fun classifyWordI() {
+        val repo = setupRepo()
+        val ek = repo.addWord("ek", "I")
+        assertEquals(1, repo.dictionaryWords(q).size)
+    }
+
     private fun setupRepo(): InMemoryGraphRepository {
         return InMemoryGraphRepository().apply {
             addLanguage(q)
