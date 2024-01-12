@@ -178,7 +178,9 @@ enum class SyllableMatchType(val condName: String) {
 class SyllableRuleCondition(
     val matchType: SyllableMatchType,
     val index: Int,
-    val phonemeClass: PhonemeClass
+    val phonemeClass: PhonemeClass?,
+    val parameter: String?
+
 ) : RuleCondition() {
     override fun isPhonemic(): Boolean = false
 
@@ -187,11 +189,17 @@ class SyllableRuleCondition(
         val syllable = Ordinals.at(syllables, index) ?: return false
         val phonemes = PhonemeIterator(word)
         if (matchType == SyllableMatchType.Contains) {
-            return phonemes.findMatchInRange(syllable.startIndex, syllable.endIndex, phonemeClass) != null
+            if (phonemeClass != null) {
+                return phonemes.findMatchInRange(syllable.startIndex, syllable.endIndex, phonemeClass) != null
+            }
+            return parameter!! in word.text.substring(syllable.startIndex, syllable.endIndex)
         }
         else if (matchType == SyllableMatchType.EndsWith) {
-            phonemes.advanceTo(syllable.endIndex - 1)
-            return phonemeClass.matchesCurrent(phonemes)
+            if (phonemeClass != null) {
+                phonemes.advanceTo(syllable.endIndex - 1)
+                return phonemeClass.matchesCurrent(phonemes)
+            }
+            return word.text.substring(syllable.startIndex, syllable.endIndex).endsWith(parameter!!)
         }
         return false
     }
@@ -201,7 +209,8 @@ class SyllableRuleCondition(
     }
 
     override fun toEditableText(): String {
-        return "${Ordinals.toString(index)} $syllable ${matchType.condName} a ${phonemeClass.name}"
+        val paramText = if (phonemeClass != null) "a ${phonemeClass.name}" else "'$parameter'"
+        return "${Ordinals.toString(index)} $syllable ${matchType.condName} $paramText"
     }
 
     companion object {
@@ -216,9 +225,13 @@ class SyllableRuleCondition(
             val (matchType, phonemeClassName) = SyllableMatchType.parse(tail)
                 ?: return null
 
+            if (phonemeClassName.startsWith("'")) {
+                return SyllableRuleCondition(matchType, index,  null, phonemeClassName.trim('\''))
+            }
+
             val phonemeClass = language.phonemeClassByName(phonemeClassName.removePrefix(LeafRuleCondition.indefiniteArticle).trim())
                 ?: return null
-            return SyllableRuleCondition(matchType, index, phonemeClass)
+            return SyllableRuleCondition(matchType, index, phonemeClass, null)
         }
     }
 }

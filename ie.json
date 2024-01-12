@@ -13,6 +13,333 @@
             "shortName": "ON"
         }
     ],
+    "phonemes": [
+        {
+            "lang": "Lyc",
+            "graphemes": [
+                "x",
+                "χ"
+            ],
+            "classes": [
+                "voiceless",
+                "velar",
+                "fricative",
+                "consonant"
+            ]
+        },
+        {
+            "lang": "ON",
+            "graphemes": [
+                "a"
+            ],
+            "classes": [
+                "vowel"
+            ]
+        },
+        {
+            "lang": "ON",
+            "graphemes": [
+                "á"
+            ],
+            "classes": [
+                "long",
+                "vowel"
+            ]
+        },
+        {
+            "lang": "ON",
+            "graphemes": [
+                "b"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "lang": "ON",
+            "graphemes": [
+                "d"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "lang": "ON",
+            "graphemes": [
+                "ð"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "lang": "ON",
+            "graphemes": [
+                "e"
+            ],
+            "classes": [
+                "vowel"
+            ]
+        },
+        {
+            "lang": "ON",
+            "graphemes": [
+                "é"
+            ],
+            "classes": [
+                "long",
+                "vowel"
+            ]
+        },
+        {
+            "lang": "ON",
+            "graphemes": [
+                "f"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "lang": "ON",
+            "graphemes": [
+                "g"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "lang": "ON",
+            "graphemes": [
+                "h"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "lang": "ON",
+            "graphemes": [
+                "i"
+            ],
+            "classes": [
+                "vowel"
+            ]
+        },
+        {
+            "lang": "ON",
+            "graphemes": [
+                "í"
+            ],
+            "classes": [
+                "long",
+                "vowel"
+            ]
+        },
+        {
+            "lang": "ON",
+            "graphemes": [
+                "j"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "lang": "ON",
+            "graphemes": [
+                "k"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "lang": "ON",
+            "graphemes": [
+                "l"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "lang": "ON",
+            "graphemes": [
+                "m"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "lang": "ON",
+            "graphemes": [
+                "n"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "lang": "ON",
+            "graphemes": [
+                "o"
+            ],
+            "classes": [
+                "vowel"
+            ]
+        },
+        {
+            "lang": "ON",
+            "graphemes": [
+                "ó"
+            ],
+            "classes": [
+                "long",
+                "vowel"
+            ]
+        },
+        {
+            "lang": "ON",
+            "graphemes": [
+                "p"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "lang": "ON",
+            "graphemes": [
+                "r"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "lang": "ON",
+            "graphemes": [
+                "s"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "lang": "ON",
+            "graphemes": [
+                "t"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "lang": "ON",
+            "graphemes": [
+                "u"
+            ],
+            "classes": [
+                "vowel"
+            ]
+        },
+        {
+            "lang": "ON",
+            "graphemes": [
+                "ú"
+            ],
+            "classes": [
+                "long",
+                "vowel"
+            ]
+        },
+        {
+            "lang": "ON",
+            "graphemes": [
+                "v"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "lang": "ON",
+            "graphemes": [
+                "y"
+            ],
+            "classes": [
+                "vowel"
+            ]
+        },
+        {
+            "lang": "ON",
+            "graphemes": [
+                "ý"
+            ],
+            "classes": [
+                "long",
+                "vowel"
+            ]
+        },
+        {
+            "lang": "ON",
+            "graphemes": [
+                "x"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "lang": "ON",
+            "graphemes": [
+                "z"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "lang": "ON",
+            "graphemes": [
+                "þ"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "lang": "ON",
+            "graphemes": [
+                "æ"
+            ],
+            "classes": [
+                "vowel"
+            ]
+        },
+        {
+            "lang": "ON",
+            "graphemes": [
+                "œ"
+            ],
+            "classes": [
+                "vowel"
+            ]
+        },
+        {
+            "lang": "ON",
+            "graphemes": [
+                "ö"
+            ],
+            "classes": [
+                "vowel"
+            ]
+        }
+    ],
     "diphthongs": [
         {
             "lang": "OE",
@@ -5756,6 +6083,40 @@
             "lang": "ON",
             "gloss": "Christian",
             "pos": "ADJ"
+        },
+        {
+            "id": 1124,
+            "text": "armr",
+            "lang": "ON",
+            "gloss": "arm",
+            "pos": "N",
+            "classes": [
+                "m",
+                "strong"
+            ]
+        },
+        {
+            "id": 1125,
+            "text": "staðr",
+            "lang": "ON",
+            "gloss": "place",
+            "fullGloss": "place, stead",
+            "pos": "N",
+            "classes": [
+                "m",
+                "strong"
+            ]
+        },
+        {
+            "id": 1126,
+            "text": "saga",
+            "lang": "ON",
+            "gloss": "story",
+            "pos": "N",
+            "classes": [
+                "f",
+                "weak"
+            ]
         }
     ],
     "rules": [
@@ -7199,6 +7560,12 @@
                             "args": [
                                 "u"
                             ]
+                        },
+                        {
+                            "type": "ApplyRule",
+                            "args": [
+                                "1123"
+                            ]
                         }
                     ],
                     "condition": {
@@ -7302,6 +7669,12 @@
                             "type": "ChangeEnding",
                             "args": [
                                 "u"
+                            ]
+                        },
+                        {
+                            "type": "ApplyRule",
+                            "args": [
+                                "1123"
                             ]
                         }
                     ],
@@ -7432,6 +7805,12 @@
                             "args": [
                                 "u"
                             ]
+                        },
+                        {
+                            "type": "ApplyRule",
+                            "args": [
+                                "1123"
+                            ]
                         }
                     ],
                     "condition": {
@@ -7536,6 +7915,12 @@
                             "args": [
                                 "ur"
                             ]
+                        },
+                        {
+                            "type": "ApplyRule",
+                            "args": [
+                                "1123"
+                            ]
                         }
                     ],
                     "condition": {
@@ -7560,6 +7945,12 @@
                             "type": "ChangeEnding",
                             "args": [
                                 "u"
+                            ]
+                        },
+                        {
+                            "type": "ApplyRule",
+                            "args": [
+                                "1123"
                             ]
                         }
                     ],
@@ -7665,6 +8056,12 @@
                             "args": [
                                 "ur"
                             ]
+                        },
+                        {
+                            "type": "ApplyRule",
+                            "args": [
+                                "1123"
+                            ]
                         }
                     ],
                     "condition": {
@@ -7689,6 +8086,12 @@
                             "type": "ChangeEnding",
                             "args": [
                                 "u"
+                            ]
+                        },
+                        {
+                            "type": "ApplyRule",
+                            "args": [
+                                "1123"
                             ]
                         }
                     ],
@@ -7739,6 +8142,12 @@
                             "args": [
                                 "um"
                             ]
+                        },
+                        {
+                            "type": "ApplyRule",
+                            "args": [
+                                "1123"
+                            ]
                         }
                     ],
                     "condition": {
@@ -7769,6 +8178,12 @@
                             "args": [
                                 "'um'"
                             ]
+                        },
+                        {
+                            "type": "ApplyRule",
+                            "args": [
+                                "1123"
+                            ]
                         }
                     ],
                     "condition": {
@@ -7777,9 +8192,7 @@
                 }
             ],
             "addedCategories": ".DAT.PL",
-            "replacedCategories": "",
             "fromPOS": "N",
-            "notes": "",
             "preInstructions": [
             ]
         },
@@ -7854,6 +8267,74 @@
             "replacedCategories": "",
             "fromPOS": "N",
             "notes": "",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 1122,
+            "name": "on-a-fronting",
+            "fromLang": "ON",
+            "toLang": "ON",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "ö"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "PhonemeMatches",
+                        "characters": "a"
+                    }
+                }
+            ],
+            "addedCategories": null,
+            "notes": "",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 1123,
+            "name": "on-u-umlaut",
+            "fromLang": "ON",
+            "toLang": "ON",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ApplySoundRule",
+                            "args": [
+                                "1122",
+                                "first vowel"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.SyllableRuleConditionData",
+                        "matchType": "Contains",
+                        "index": -1,
+                        "cls": null,
+                        "parameter": "u"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "NoChange",
+                            "args": [
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": null,
             "preInstructions": [
             ]
         }
@@ -13066,21 +13547,6 @@
                     "name": "Plural",
                     "abbreviation": "PL"
                 }
-            ]
-        }
-    ],
-    "phonemes": [
-        {
-            "lang": "Lyc",
-            "graphemes": [
-                "x",
-                "χ"
-            ],
-            "classes": [
-                "voiceless",
-                "velar",
-                "fricative",
-                "consonant"
             ]
         }
     ]

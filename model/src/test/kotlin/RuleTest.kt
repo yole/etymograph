@@ -236,10 +236,20 @@ class RuleTest : QBaseTest() {
     fun syllableMatcher() {
         val condition = RuleCondition.parse("second to last syllable contains a long vowel", q) as SyllableRuleCondition
         assertEquals(-2, condition.index)
-        assertEquals("long vowel", condition.phonemeClass.name)
+        assertEquals("long vowel", condition.phonemeClass!!.name)
         assertTrue(condition.matches(q.word("andúna")))
         assertFalse(condition.matches(q.word("anca")))
         assertEquals("second to last syllable contains a long vowel", condition.toEditableText())
+    }
+
+    @Test
+    fun syllableMatcherSpecific() {
+        val condition = RuleCondition.parse("second to last syllable contains 'ú'", q) as SyllableRuleCondition
+        assertEquals(-2, condition.index)
+        assertEquals("ú", condition.parameter!!)
+        assertTrue(condition.matches(q.word("andúna")))
+        assertFalse(condition.matches(q.word("anca")))
+        assertEquals("second to last syllable contains 'ú'", condition.toEditableText())
     }
 
     @Test
