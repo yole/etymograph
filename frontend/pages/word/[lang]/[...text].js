@@ -306,7 +306,7 @@ function SingleWord(params) {
             <button onClick={() => setShowRelated(!showRelated)}>Add related word</button><br/>
             {showRelated && <WordForm submitted={submitted} linkType='~' linkTarget={word} language={word.language} languageReadOnly={true}/>}
             {!isCompound && <><button onClick={() => setShowVariation(!showVariation)}>Add variation of</button><br/></>}
-            {showVariation && <WordForm submitted={submitted} linkType='=' linkTarget={word} language={word.language} languageReadOnly={true}/>}
+            {showVariation && <WordForm submitted={submitted} linkType='=' reverseLink={true} linkTarget={word} language={word.language} languageReadOnly={true}/>}
             <p/>
             {errorText !== "" && <div className="errorText">{errorText}</div>}
         </>}
