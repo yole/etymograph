@@ -1,6 +1,7 @@
 package ru.yole.etymograph.web
 
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNull
 import org.junit.Test
 import ru.yole.etymograph.GrammaticalCategory
 import ru.yole.etymograph.GrammaticalCategoryValue
@@ -40,5 +41,22 @@ class RuleControllerTest {
 
         val ruleVM = ruleController.rule(rule.id)
         assertEquals("Person: 1st person, Number: Singular", ruleVM.addedCategoryDisplayNames)
+    }
+
+    @Test
+    fun testEmptyToPOS() {
+        val fixture = QTestFixture()
+        val ruleController = RuleController(fixture.graphService)
+
+        ruleController.newRule(
+            RuleController.UpdateRuleParameters(
+            "q-pos",
+            "q", "q",
+            "- no change",
+            toPOS = ""
+        ))
+
+        val rule = fixture.graphService.graph.ruleByName("q-pos")
+        assertNull(rule!!.toPOS)
     }
 }

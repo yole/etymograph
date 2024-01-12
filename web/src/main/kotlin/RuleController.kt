@@ -180,10 +180,10 @@ class RuleController(val graphService: GraphService) {
             fromLanguage,
             toLanguage,
             logic,
-            params.addedCategories,
-            params.replacedCategories,
-            params.fromPOS,
-            params.toPOS,
+            params.addedCategories.nullize(),
+            params.replacedCategories.nullize(),
+            params.fromPOS.nullize(),
+            params.toPOS.nullize(),
             parseSourceRefs(graph, params.source),
             params.notes
         )
