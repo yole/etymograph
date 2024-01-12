@@ -459,6 +459,17 @@ class RuleTest : QBaseTest() {
     }
 
     @Test
+    fun restoreSegmentsNoChangeNoRule() {
+        val repo = InMemoryGraphRepository()
+        val hresta2 = repo.addWord("hresta", gloss = "hresta.ABL")
+        val hresta = repo.addWord("hresta", gloss = "hresta")
+        val rule = parseRule(q, q, "word ends with 'i':\n- no change", addedCategories = ".ABL")
+        val link = repo.addLink(hresta2, hresta, Link.Derived, emptyList(), emptyList(), null)
+        val restored = repo.restoreSegments(hresta2)
+        assertEquals("hresta.ABL", restored.getOrComputeGloss(repo))
+    }
+
+    @Test
     fun chainedSegments() {
         val qNomPl = parseRule(q, q, """
             word ends with a vowel:

@@ -200,6 +200,10 @@ open class InMemoryGraphRepository : GraphRepository() {
     override fun restoreSegments(word: Word): Word {
         val baseWordLink = word.baseWordLink(this)
         if (baseWordLink != null) {
+            if (baseWordLink.rules.isEmpty()) {
+                return word
+            }
+
             val baseWord = baseWordLink.toEntity as Word
             if (baseWord.language == word.language) {
                 val baseWordWithSegments = restoreSegments(baseWord)
