@@ -43,12 +43,12 @@ class Word(
 
     val normalizedText: String get() = language.normalizeWord(text)
 
-    fun derive(text: String, newSegment: WordSegment? = null): Word {
+    fun derive(text: String, newSegment: WordSegment? = null, newClasses: List<String>? = null): Word {
         val sourceSegments = segments
         return if (this.text == text)
             this
         else
-            Word(-1, text, language, gloss, fullGloss, pos, classes).apply {
+            Word(-1, text, language, gloss, fullGloss, pos, newClasses ?: classes).apply {
                 segments = appendSegments(sourceSegments, newSegment)
             }
     }

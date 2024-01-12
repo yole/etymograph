@@ -32,7 +32,7 @@ class RuleBranch(val condition: RuleCondition, val instructions: List<RuleInstru
             if (candidates.isEmpty()) break
         }
         candidates = candidates.mapNotNull { replaceStarWithConditionText(it) }
-        return candidates.filter { condition.matches(word.derive(it)) }
+        return candidates.filter { condition.matches(word.derive(it, newClasses = listOf("*"))) }
     }
 
     private fun replaceStarWithConditionText(text: String): String? {
