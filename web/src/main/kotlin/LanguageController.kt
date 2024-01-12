@@ -94,7 +94,7 @@ class LanguageController(val graphService: GraphService) {
         params: UpdateLanguageParameters
     ) {
         fun parseList(s: String?): List<String> =
-            s?.let { it.split(",").map { d -> d.trim() } } ?: emptyList()
+            s?.takeIf { it.isNotBlank() }?.let { it.split(",").map { d -> d.trim() } } ?: emptyList()
 
         language.letterNormalization = params.letterNormalization?.let { parseLetterNormalization(it) } ?: emptyMap()
         language.phonemeClasses = params.phonemeClasses?.let { parsePhonemeClasses(it) } ?: mutableListOf()

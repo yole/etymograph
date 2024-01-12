@@ -26,4 +26,17 @@ class LanguageControllerTest {
         val vm = languageController.language("q")
         assertEquals(vm.grammaticalCategories, parameters.grammaticalCategories)
     }
+
+    @Test
+    fun wordFinals() {
+        val fixture = QTestFixture()
+        val languageController = LanguageController(fixture.graphService)
+
+        val parameters = LanguageController.UpdateLanguageParameters(
+            wordFinals = ""
+        )
+        languageController.updateLanguage("q", parameters)
+
+        assertEquals(0, fixture.q.wordFinals.size)
+    }
 }
