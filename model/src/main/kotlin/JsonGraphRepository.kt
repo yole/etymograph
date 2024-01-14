@@ -66,8 +66,8 @@ data class LeafRuleConditionData(
 class SyllableRuleConditionData(
     val matchType: SyllableMatchType,
     val index: Int,
-    @SerialName("cls") val phonemeClassName: String?,
-    val parameter: String?
+    @SerialName("cls") val phonemeClassName: String? = null,
+    val parameter: String? = null
 ) : RuleConditionData() {
     override fun toRuntimeFormat(result: InMemoryGraphRepository, fromLanguage: Language): RuleCondition {
         return SyllableRuleCondition(
