@@ -5598,7 +5598,10 @@
             "text": "segja",
             "lang": "ON",
             "gloss": "say",
-            "pos": "V"
+            "pos": "V",
+            "classes": [
+                "4conj"
+            ]
         },
         {
             "id": 975,
@@ -6108,7 +6111,10 @@
             "text": "kalla",
             "lang": "ON",
             "gloss": "call",
-            "pos": "V"
+            "pos": "V",
+            "classes": [
+                "1conj"
+            ]
         },
         {
             "id": 1073,
@@ -6447,6 +6453,61 @@
             "classes": [
                 "masc",
                 "a-stem"
+            ]
+        },
+        {
+            "id": 1131,
+            "text": "mæla",
+            "lang": "ON",
+            "gloss": "speak",
+            "pos": "V",
+            "classes": [
+                "2conj"
+            ]
+        },
+        {
+            "id": 1135,
+            "text": "telja",
+            "lang": "ON",
+            "gloss": "count",
+            "pos": "V",
+            "classes": [
+                "3conj"
+            ]
+        },
+        {
+            "id": 1136,
+            "text": "vaka",
+            "lang": "ON",
+            "gloss": "be awake",
+            "pos": "V",
+            "classes": [
+                "4conj"
+            ]
+        },
+        {
+            "id": 1137,
+            "text": "e",
+            "lang": "ON"
+        },
+        {
+            "id": 1138,
+            "text": "herja",
+            "lang": "ON",
+            "gloss": "raid",
+            "pos": "V",
+            "classes": [
+                "1conj"
+            ]
+        },
+        {
+            "id": 1139,
+            "text": "fylgja",
+            "lang": "ON",
+            "gloss": "follow",
+            "pos": "V",
+            "classes": [
+                "2conj"
             ]
         }
     ],
@@ -8660,7 +8721,6 @@
                         "type": "ru.yole.etymograph.SyllableRuleConditionData",
                         "matchType": "Contains",
                         "index": -1,
-                        "cls": null,
                         "parameter": "u"
                     }
                 },
@@ -8678,6 +8738,322 @@
                 }
             ],
             "addedCategories": null,
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 1128,
+            "name": "on-pres-2sg",
+            "fromLang": "ON",
+            "toLang": "ON",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ApplyRule",
+                            "args": [
+                                "1129"
+                            ]
+                        },
+                        {
+                            "type": "Append",
+                            "args": [
+                                "'r'"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".2SG",
+            "fromPOS": "V",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 1129,
+            "name": "on-pres-1sg",
+            "fromLang": "ON",
+            "toLang": "ON",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "NoChange",
+                            "args": [
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "ClassMatches",
+                        "characters": "1conj"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeEnding",
+                            "args": [
+                                "i"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.AndRuleConditionData",
+                        "members": [
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "ClassMatches",
+                                "characters": "2conj"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "EndsWith",
+                                "characters": "ja"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeEnding",
+                            "args": [
+                                "i"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.AndRuleConditionData",
+                        "members": [
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "ClassMatches",
+                                "characters": "2conj"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "EndsWith",
+                                "characters": "a"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeEnding",
+                            "args": [
+                                ""
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.AndRuleConditionData",
+                        "members": [
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "ClassMatches",
+                                "characters": "3conj"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "EndsWith",
+                                "characters": "ja"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeEnding",
+                            "args": [
+                                "i"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.AndRuleConditionData",
+                        "members": [
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "ClassMatches",
+                                "characters": "4conj"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "EndsWith",
+                                "characters": "ja"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeEnding",
+                            "args": [
+                                "i"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.AndRuleConditionData",
+                        "members": [
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "ClassMatches",
+                                "characters": "4conj"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "EndsWith",
+                                "characters": "a"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "addedCategories": ".1SG",
+            "fromPOS": "V",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 1130,
+            "name": "on-pres-3sg",
+            "fromLang": "ON",
+            "toLang": "ON",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ApplyRule",
+                            "args": [
+                                "1129"
+                            ]
+                        },
+                        {
+                            "type": "Append",
+                            "args": [
+                                "'r'"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".3SG",
+            "fromPOS": "V",
+            "notes": "",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 1132,
+            "name": "on-pres-1pl",
+            "fromLang": "ON",
+            "toLang": "ON",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeEnding",
+                            "args": [
+                                "um"
+                            ]
+                        },
+                        {
+                            "type": "ApplyRule",
+                            "args": [
+                                "1123"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "characters": "a"
+                    }
+                }
+            ],
+            "addedCategories": ".1PL",
+            "fromPOS": "V",
+            "notes": "",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 1133,
+            "name": "on-pres-2pl",
+            "fromLang": "ON",
+            "toLang": "ON",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeEnding",
+                            "args": [
+                                "ið"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "characters": "ja"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeEnding",
+                            "args": [
+                                "ið"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "characters": "a"
+                    }
+                }
+            ],
+            "addedCategories": ".2PL",
+            "fromPOS": "V",
+            "notes": "",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 1134,
+            "name": "on-pres-3pl",
+            "fromLang": "ON",
+            "toLang": "ON",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "NoChange",
+                            "args": [
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".3PL",
+            "fromPOS": "V",
+            "notes": "",
             "preInstructions": [
             ]
         }
@@ -10749,6 +11125,11 @@
             "from": 1120,
             "to": 1121,
             "type": ">"
+        },
+        {
+            "from": 965,
+            "to": 1131,
+            "type": "~"
         }
     ],
     "corpusTexts": [
@@ -12681,6 +13062,59 @@
                     ]
                 }
             ]
+        },
+        {
+            "id": 4,
+            "name": "Verb Present",
+            "lang": "ON",
+            "pos": "V",
+            "rows": [
+                "1st",
+                "2nd",
+                "3rd"
+            ],
+            "columns": [
+                {
+                    "title": "Sg",
+                    "cells": [
+                        {
+                            "ruleAlternatives": [
+                                1129
+                            ]
+                        },
+                        {
+                            "ruleAlternatives": [
+                                1128
+                            ]
+                        },
+                        {
+                            "ruleAlternatives": [
+                                1130
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "Pl",
+                    "cells": [
+                        {
+                            "ruleAlternatives": [
+                                1132
+                            ]
+                        },
+                        {
+                            "ruleAlternatives": [
+                                1133
+                            ]
+                        },
+                        {
+                            "ruleAlternatives": [
+                                1134
+                            ]
+                        }
+                    ]
+                }
+            ]
         }
     ],
     "syllableStructures": [
@@ -13883,6 +14317,92 @@
                 {
                     "name": "Plural",
                     "abbreviation": "PL"
+                }
+            ]
+        },
+        {
+            "lang": "ON",
+            "name": "Person",
+            "pos": [
+                "V"
+            ],
+            "values": [
+                {
+                    "name": "1st",
+                    "abbreviation": "1"
+                },
+                {
+                    "name": "2nd",
+                    "abbreviation": "2"
+                },
+                {
+                    "name": "3rd",
+                    "abbreviation": "3"
+                }
+            ]
+        }
+    ],
+    "wordClasses": [
+        {
+            "lang": "ON",
+            "name": "Gender",
+            "pos": [
+                "N"
+            ],
+            "values": [
+                {
+                    "name": "Male",
+                    "abbreviation": "m"
+                },
+                {
+                    "name": "Female",
+                    "abbreviation": "f"
+                },
+                {
+                    "name": "Neuter",
+                    "abbreviation": "n"
+                }
+            ]
+        },
+        {
+            "lang": "ON",
+            "name": "Declension type",
+            "pos": [
+                "N"
+            ],
+            "values": [
+                {
+                    "name": "Strong",
+                    "abbreviation": "strong"
+                },
+                {
+                    "name": "Weak",
+                    "abbreviation": "weak"
+                }
+            ]
+        },
+        {
+            "lang": "ON",
+            "name": "Conjugation",
+            "pos": [
+                "V"
+            ],
+            "values": [
+                {
+                    "name": "1st Conjugation",
+                    "abbreviation": "1conj"
+                },
+                {
+                    "name": "2nd Conjugation",
+                    "abbreviation": "2conj"
+                },
+                {
+                    "name": "3rd Conjugation",
+                    "abbreviation": "3conj"
+                },
+                {
+                    "name": "4th Conjugation",
+                    "abbreviation": "4conj"
                 }
             ]
         }
