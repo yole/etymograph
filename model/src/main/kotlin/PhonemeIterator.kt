@@ -1,7 +1,22 @@
 package ru.yole.etymograph
 
-object Ordinals {
-    private val ordinals = listOf(
+open class OrdinalTable(private val items: List<Pair<String, Int>>) {
+    fun toString(i: Int): String? {
+        return items.find { it.second == i }?.first
+    }
+
+    fun parse(s: String): Pair<Int, String>? {
+        for (ordinal in items) {
+            if (s.startsWith(ordinal.first)) {
+                return ordinal.second to s.removePrefix(ordinal.first).trim()
+            }
+        }
+        return null
+    }
+}
+
+object Ordinals : OrdinalTable(
+    listOf(
         "last" to -1,
         "second to last" to -2,
         "third to last" to -3,
@@ -9,24 +24,18 @@ object Ordinals {
         "second" to 2,
         "third" to 3,
     )
-
-    fun toString(i: Int): String? {
-        return ordinals.find { it.second == i }?.first
-    }
-
-    fun parse(s: String): Pair<Int, String>? {
-        for (ordinal in ordinals) {
-            if (s.startsWith(ordinal.first)) {
-                return ordinal.second to s.removePrefix(ordinal.first).trim()
-            }
-        }
-        return null
-    }
-
+) {
     fun <T> at(items: List<T>, index: Int): T? {
         return items.getOrNull(if (index < 0) items.size + index else index - 1)
     }
 }
+
+object RelativeOrdinals : OrdinalTable(
+    listOf(
+        "previous" to -1,
+        "next" to 1
+    )
+)
 
 class SeekTarget(val index: Int, val phonemeClass: PhonemeClass) {
     fun toEditableText(): String {
@@ -43,13 +52,26 @@ class SeekTarget(val index: Int, val phonemeClass: PhonemeClass) {
     }
 }
 
-class PhonemeIterator(text: String, val language: Language) {
-    private val phonemes = splitPhonemes(text, language.digraphs)
-    private val resultPhonemes = phonemes.toMutableList()
+class PhonemeIterator {
+    val language: Language
+    private val phonemes: List<String>
+    private val resultPhonemes: MutableList<String>
     private var phonemeIndex = 0
     private var resultPhonemeIndex = 0
 
     constructor(word: Word) : this(word.normalizedText.trimEnd('-'), word.language)
+
+    constructor(text: String, language: Language) {
+        phonemes = splitPhonemes(text, language.digraphs)
+        resultPhonemes = phonemes.toMutableList()
+        this.language = language
+    }
+
+    private constructor(phonemes: List<String>, resultPhonemes: MutableList<String>, language: Language) {
+        this.phonemes = phonemes
+        this.resultPhonemes = resultPhonemes
+        this.language = language
+    }
 
     val current: String get() = phonemes[phonemeIndex]
     val previous: String? get() = phonemes.getOrNull(phonemeIndex - 1)
@@ -59,15 +81,27 @@ class PhonemeIterator(text: String, val language: Language) {
 
     operator fun get(index: Int): String = phonemes[index]
 
+    fun clone(): PhonemeIterator {
+        return PhonemeIterator(phonemes, resultPhonemes, language).also {
+            it.phonemeIndex = phonemeIndex
+            it.resultPhonemeIndex = resultPhonemeIndex
+        }
+    }
+
     fun advanceTo(index: Int) {
         phonemeIndex = index
         resultPhonemeIndex = index
     }
 
     fun advance(): Boolean {
-        if (phonemeIndex < phonemes.size - 1) {
-            phonemeIndex++
-            resultPhonemeIndex++
+        return advanceBy(1)
+    }
+
+    fun advanceBy(relativeIndex: Int): Boolean {
+        val newIndex = phonemeIndex + relativeIndex
+        if (newIndex >= 0 && newIndex < phonemes.size) {
+            phonemeIndex = newIndex
+            resultPhonemeIndex += relativeIndex
             return true
         }
         return false

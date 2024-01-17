@@ -1623,6 +1623,7 @@
             "text": "lumbulë",
             "lang": "Q",
             "gloss": "heavy shadow",
+            "pos": "N",
             "sourceRefs": [
                 {
                     "pubId": 1,
@@ -10604,8 +10605,8 @@
                                 "characters": "g"
                             },
                             {
-                                "type": "ru.yole.etymograph.LeafRuleConditionData",
-                                "cond": "PrevPhonemeMatches",
+                                "type": "ru.yole.etymograph.RelativePhonemeRuleConditionData",
+                                "relativeIndex": -1,
                                 "negated": true
                             }
                         ]

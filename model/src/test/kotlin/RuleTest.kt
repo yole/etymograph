@@ -179,12 +179,40 @@ class RuleTest : QBaseTest() {
     }
 
     @Test
+    fun previousSoundPhonemeClass() {
+        val rule = parseRule(q, q, """
+            sound is 'i' and previous sound is not vowel:
+            - sound disappears
+        """.trimIndent())
+        assertEquals("khai", rule.apply(ce.word("khiai"), emptyRepo).text)
+    }
+
+    @Test
+    fun previousSoundPhonemeClassFirst() {
+        val rule = parseRule(q, q, """
+            sound is 'i' and previous sound is not vowel:
+            - sound disappears
+        """.trimIndent())
+        assertEquals("da", rule.apply(ce.word("ida"), emptyRepo).text)
+    }
+
+    @Test
     fun previousSoundNegated() {
         val rule = parseRule(ce, q, """
             sound is 'i' and previous sound is not 'kh':
             - sound disappears
         """.trimIndent())
         assertEquals("khith", rule.apply(ce.word("khithi"), emptyRepo).text)
+        assertEquals("sound is 'i' and previous sound is not 'kh'", rule.logic.branches[0].condition.toEditableText())
+    }
+
+    @Test
+    fun nextSound() {
+        val rule = parseRule(ce, q, """
+            sound is 'i' and next sound is 'kh':
+            - sound disappears
+        """.trimIndent())
+        assertEquals("khthis", rule.apply(ce.word("ikhthis"), emptyRepo).text)
     }
 
     @Test

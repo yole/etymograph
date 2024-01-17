@@ -15,6 +15,321 @@
     ],
     "phonemes": [
         {
+            "lang": "OE",
+            "graphemes": [
+                "æ"
+            ],
+            "classes": [
+                "vowel"
+            ]
+        },
+        {
+            "lang": "OE",
+            "graphemes": [
+                "ǣ"
+            ],
+            "classes": [
+                "long",
+                "vowel"
+            ]
+        },
+        {
+            "lang": "OE",
+            "graphemes": [
+                "a"
+            ],
+            "classes": [
+                "back",
+                "vowel"
+            ]
+        },
+        {
+            "lang": "OE",
+            "graphemes": [
+                "ā",
+                "á"
+            ],
+            "classes": [
+                "long",
+                "back",
+                "vowel"
+            ]
+        },
+        {
+            "lang": "OE",
+            "graphemes": [
+                "e"
+            ],
+            "classes": [
+                "vowel"
+            ]
+        },
+        {
+            "lang": "OE",
+            "graphemes": [
+                "ē",
+                "é"
+            ],
+            "classes": [
+                "long",
+                "vowel"
+            ]
+        },
+        {
+            "lang": "OE",
+            "graphemes": [
+                "i"
+            ],
+            "classes": [
+                "vowel"
+            ]
+        },
+        {
+            "lang": "OE",
+            "graphemes": [
+                "ī. í"
+            ],
+            "classes": [
+                "long",
+                "vowel"
+            ]
+        },
+        {
+            "lang": "OE",
+            "graphemes": [
+                "o"
+            ],
+            "classes": [
+                "back",
+                "vowel"
+            ]
+        },
+        {
+            "lang": "OE",
+            "graphemes": [
+                "ō",
+                "ó"
+            ],
+            "classes": [
+                "long",
+                "back",
+                "vowel"
+            ]
+        },
+        {
+            "lang": "OE",
+            "graphemes": [
+                "u"
+            ],
+            "classes": [
+                "back",
+                "vowel"
+            ]
+        },
+        {
+            "lang": "OE",
+            "graphemes": [
+                "ū",
+                "ú"
+            ],
+            "classes": [
+                "long",
+                "back",
+                "vowel"
+            ]
+        },
+        {
+            "lang": "OE",
+            "graphemes": [
+                "y"
+            ],
+            "classes": [
+                "vowel"
+            ]
+        },
+        {
+            "lang": "OE",
+            "graphemes": [
+                "ȳ",
+                "ý"
+            ],
+            "classes": [
+                "long",
+                "vowel"
+            ]
+        },
+        {
+            "lang": "OE",
+            "graphemes": [
+                "p"
+            ],
+            "classes": [
+                "consonannt"
+            ]
+        },
+        {
+            "lang": "OE",
+            "graphemes": [
+                "b"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "lang": "OE",
+            "graphemes": [
+                "m"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "lang": "OE",
+            "graphemes": [
+                "f"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "lang": "OE",
+            "graphemes": [
+                "v"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "lang": "OE",
+            "graphemes": [
+                "þ"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "lang": "OE",
+            "graphemes": [
+                "ð"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "lang": "OE",
+            "graphemes": [
+                "t"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "lang": "OE",
+            "graphemes": [
+                "d"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "lang": "OE",
+            "graphemes": [
+                "n"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "lang": "OE",
+            "graphemes": [
+                "s"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "lang": "OE",
+            "graphemes": [
+                "l"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "lang": "OE",
+            "graphemes": [
+                "r"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "lang": "OE",
+            "graphemes": [
+                "c"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "lang": "OE",
+            "graphemes": [
+                "g"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "lang": "OE",
+            "graphemes": [
+                "h"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "lang": "OE",
+            "graphemes": [
+                "sc"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "lang": "OE",
+            "graphemes": [
+                "cg"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "lang": "OE",
+            "graphemes": [
+                "x"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
             "lang": "Lyc",
             "graphemes": [
                 "x",
@@ -344,7 +659,12 @@
         {
             "lang": "OE",
             "diphthongs": [
-                ""
+                "ea",
+                "ēa",
+                "eo",
+                "ēo",
+                "ie",
+                "īe"
             ]
         },
         {
@@ -6117,6 +6437,17 @@
                 "f",
                 "weak"
             ]
+        },
+        {
+            "id": 1127,
+            "text": "dæg",
+            "lang": "OE",
+            "gloss": "day",
+            "pos": "N",
+            "classes": [
+                "masc",
+                "a-stem"
+            ]
         }
     ],
     "rules": [
@@ -6792,6 +7123,18 @@
                         "type": "ru.yole.etymograph.LeafRuleConditionData",
                         "cond": "ClassMatches",
                         "characters": "o-stem"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "NoChange",
+                            "args": [
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
                     }
                 }
             ],
@@ -12341,12 +12684,6 @@
         }
     ],
     "syllableStructures": [
-        {
-            "lang": "OE",
-            "syllableStructures": [
-                ""
-            ]
-        }
     ],
     "wordFinals": [
     ],

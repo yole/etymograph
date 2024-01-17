@@ -45,6 +45,13 @@ sealed class RuleConditionData {
     abstract fun toRuntimeFormat(result: InMemoryGraphRepository, fromLanguage: Language): RuleCondition
 }
 
+
+private fun requiredPhonemeClassByName(language: Language, phonemeClassName: String?): PhonemeClass? =
+    phonemeClassName?.let { className ->
+        language.phonemeClassByName(className)
+            ?: throw IllegalStateException("Can't find phoneme class referenced in rule: $phonemeClassName")
+    }
+
 @Serializable
 data class LeafRuleConditionData(
     @SerialName("cond") val type: ConditionType,
@@ -53,12 +60,8 @@ data class LeafRuleConditionData(
     val negated: Boolean = false
 ) : RuleConditionData() {
     override fun toRuntimeFormat(result: InMemoryGraphRepository, fromLanguage: Language): RuleCondition {
-        return LeafRuleCondition(
-            type,
-            phonemeClassName?.let { className -> fromLanguage.phonemeClassByName(className) },
-            characters,
-            negated
-        )
+        val phonemeClass = requiredPhonemeClassByName(fromLanguage, phonemeClassName)
+        return LeafRuleCondition(type, phonemeClass, characters, negated)
     }
 }
 
@@ -76,6 +79,19 @@ class SyllableRuleConditionData(
             phonemeClassName?.let { fromLanguage.phonemeClassByName(it)!! },
             parameter
         )
+    }
+}
+
+@Serializable
+class RelativePhonemeRuleConditionData(
+    val relativeIndex: Int,
+    val negated: Boolean,
+    @SerialName("cls") val phonemeClassName: String? = null,
+    val parameter: String? = null
+): RuleConditionData() {
+    override fun toRuntimeFormat(result: InMemoryGraphRepository, fromLanguage: Language): RuleCondition {
+        val phonemeClass = requiredPhonemeClassByName(fromLanguage, phonemeClassName)
+        return RelativePhonemeRuleCondition(relativeIndex, negated, phonemeClass, parameter)
     }
 }
 
@@ -550,6 +566,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
 
         private fun RuleCondition.toSerializedFormat(): RuleConditionData = when(this) {
             is SyllableRuleCondition -> SyllableRuleConditionData(matchType, index, phonemeClass?.name, parameter)
+            is RelativePhonemeRuleCondition -> RelativePhonemeRuleConditionData(relativeIndex, negated, parameter)
             is LeafRuleCondition -> LeafRuleConditionData(
                 type,
                 phonemeClass?.name,
