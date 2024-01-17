@@ -26,7 +26,7 @@ class LanguageController(val graphService: GraphService) {
 
     @GetMapping("/language")
     fun indexJson(): List<Language> {
-        return graphService.graph.allLanguages().toList()
+        return graphService.graph.allLanguages().sortedBy { it.name }.toList()
     }
 
     @GetMapping("/language/{lang}")
