@@ -140,7 +140,7 @@ function SingleWord(params) {
     const [addToCompound, setAddToCompound] = useState(undefined)
     const [editMode, setEditMode] = useState(false)
     const [errorText, setErrorText] = useState("")
-    useEffect(() => { document.title = "Etymograph : " + word.text })
+    useEffect(() => { document.title = "Etymograph : " + (word === undefined ? "Unknown Word" : word.text) })
 
     function submitted(r, lr) {
         if (lr && lr.status !== 200) {
@@ -206,6 +206,10 @@ function SingleWord(params) {
         if (window.confirm("Delete this compound?")) {
             deleteCompound(compoundId).then(() => router.replace(router.asPath))
         }
+    }
+
+    if (word === undefined) {
+        return <div>No such word in the dictionary</div>
     }
 
     const isName = word.pos === "NP"
@@ -326,8 +330,4 @@ export default function Word(params) {
         </ul>
     }
     return <SingleWord word={words}/>
-}
-
-export function WordError() {
-    return <div>No such word in the dictionary</div>
 }

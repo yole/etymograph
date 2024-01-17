@@ -3,7 +3,13 @@ export function allowEdit() {
 }
 
 export async function fetchBackend(url) {
-    const res= await fetch(process.env.NEXT_PUBLIC_BACKEND_URL + url, { headers: { 'Accept': 'application/json'} })
+    const fullUrl = process.env.NEXT_PUBLIC_BACKEND_URL + url
+    const res= await fetch(fullUrl, { headers: { 'Accept': 'application/json'} })
+    if (res.status === 404) {
+        return {
+            notFound: true
+        }
+    }
     const loaderData = await res.json()
     return {
         props: {
