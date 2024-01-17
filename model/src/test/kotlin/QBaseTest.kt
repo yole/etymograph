@@ -25,4 +25,8 @@ open class QBaseTest {
     val emptyRepo = InMemoryGraphRepository()
 
     fun GraphRepository.addWord(text: String, gloss: String? = text, pos: String? = null) = findOrAddWord(text, q, gloss, pos = pos)
+
+    fun repoWithQ() = InMemoryGraphRepository().apply {
+        addLanguage(q)
+    }
 }
