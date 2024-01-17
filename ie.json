@@ -6157,7 +6157,7 @@
         },
         {
             "id": 1079,
-            "text": "haraldr",
+            "text": "Haraldr",
             "lang": "ON",
             "gloss": "Harald",
             "pos": "NP"
@@ -6509,6 +6509,265 @@
             "classes": [
                 "2conj"
             ]
+        },
+        {
+            "id": 1141,
+            "text": "ágætr",
+            "lang": "ON",
+            "gloss": "excellent",
+            "fullGloss": "excellent, noble, distinguished",
+            "pos": "ADJ"
+        },
+        {
+            "id": 1142,
+            "text": "Skútaðar-Skedi",
+            "lang": "ON",
+            "pos": "NP"
+        },
+        {
+            "id": 1143,
+            "text": "Noregi",
+            "lang": "ON"
+        },
+        {
+            "id": 1144,
+            "text": "Noregr",
+            "lang": "ON",
+            "pos": "NP"
+        },
+        {
+            "id": 1145,
+            "text": "Björn",
+            "lang": "ON",
+            "pos": "NP"
+        },
+        {
+            "id": 1146,
+            "text": "Skinna-Björn",
+            "lang": "ON",
+            "pos": "NP"
+        },
+        {
+            "id": 1147,
+            "text": "því",
+            "lang": "ON",
+            "gloss": "because",
+            "pos": "CONJ"
+        },
+        {
+            "id": 1148,
+            "text": "Hólmsgarðsfari",
+            "lang": "ON"
+        },
+        {
+            "id": 1149,
+            "text": "Hólmsgarðs",
+            "lang": "ON"
+        },
+        {
+            "id": 1151,
+            "text": "fari",
+            "lang": "ON",
+            "gloss": "voyager",
+            "pos": "N"
+        },
+        {
+            "id": 1152,
+            "text": "Hólmsgarðr",
+            "lang": "ON",
+            "gloss": "Holmgard",
+            "pos": "NP"
+        },
+        {
+            "id": 1153,
+            "text": "farmaðr",
+            "lang": "ON",
+            "pos": "N"
+        },
+        {
+            "id": 1154,
+            "text": "far",
+            "lang": "ON"
+        },
+        {
+            "id": 1157,
+            "text": "Íslands",
+            "lang": "ON"
+        },
+        {
+            "id": 1158,
+            "text": "Ísland",
+            "lang": "ON",
+            "gloss": "Iceland",
+            "pos": "NP"
+        },
+        {
+            "id": 1159,
+            "text": "Miðfjörð",
+            "lang": "ON"
+        },
+        {
+            "id": 1160,
+            "text": "Miðfjörðr",
+            "lang": "ON",
+            "pos": "NP"
+        },
+        {
+            "id": 1161,
+            "text": "Línakradal",
+            "lang": "ON",
+            "pos": "NP"
+        },
+        {
+            "id": 1162,
+            "text": "Línakradal",
+            "lang": "ON"
+        },
+        {
+            "id": 1163,
+            "text": "Miðfjarðar-Skeggi",
+            "lang": "ON",
+            "pos": "NP"
+        },
+        {
+            "id": 1164,
+            "text": "garpr",
+            "lang": "ON",
+            "gloss": "bold",
+            "pos": "ADJ"
+        },
+        {
+            "id": 1165,
+            "text": "herjaði",
+            "lang": "ON"
+        },
+        {
+            "id": 1167,
+            "text": "austrveg",
+            "lang": "ON",
+            "gloss": "east route",
+            "pos": "N"
+        },
+        {
+            "id": 1168,
+            "text": "við",
+            "lang": "ON",
+            "gloss": "by",
+            "pos": "PREP"
+        },
+        {
+            "id": 1169,
+            "text": "Sjáland",
+            "lang": "ON",
+            "gloss": "Zealand",
+            "pos": "NP"
+        },
+        {
+            "id": 1170,
+            "text": "brjóta",
+            "lang": "ON",
+            "gloss": "break",
+            "pos": "V"
+        },
+        {
+            "id": 1171,
+            "text": "haug",
+            "lang": "ON"
+        },
+        {
+            "id": 1172,
+            "text": "haugr",
+            "lang": "ON",
+            "gloss": "burial mound",
+            "pos": "N"
+        },
+        {
+            "id": 1173,
+            "text": "Hrólfs",
+            "lang": "ON"
+        },
+        {
+            "id": 1174,
+            "text": "Hrólfr",
+            "lang": "ON",
+            "pos": "NP"
+        },
+        {
+            "id": 1175,
+            "text": "konungs",
+            "lang": "ON"
+        },
+        {
+            "id": 1176,
+            "text": "kraka",
+            "lang": "ON"
+        },
+        {
+            "id": 1177,
+            "text": "kraki",
+            "lang": "ON",
+            "pos": "NP"
+        },
+        {
+            "id": 1178,
+            "text": "tók",
+            "lang": "ON"
+        },
+        {
+            "id": 1179,
+            "text": "taka",
+            "lang": "ON",
+            "gloss": "take",
+            "pos": "V"
+        },
+        {
+            "id": 1180,
+            "text": "ór",
+            "lang": "ON",
+            "gloss": "from",
+            "pos": "PREP"
+        },
+        {
+            "id": 1181,
+            "text": "haugi",
+            "lang": "ON"
+        },
+        {
+            "id": 1182,
+            "text": "Sköfnung",
+            "lang": "ON"
+        },
+        {
+            "id": 1183,
+            "text": "Sköfnungr",
+            "lang": "ON",
+            "pos": "NP"
+        },
+        {
+            "id": 1184,
+            "text": "øxi",
+            "lang": "ON"
+        },
+        {
+            "id": 1185,
+            "text": "øx",
+            "lang": "ON",
+            "gloss": "axe",
+            "pos": "N",
+            "classes": [
+                "f"
+            ]
+        },
+        {
+            "id": 1186,
+            "text": "Hjalta",
+            "lang": "ON"
+        },
+        {
+            "id": 1187,
+            "text": "Hjalti",
+            "lang": "ON",
+            "pos": "NP"
         }
     ],
     "rules": [
@@ -9056,6 +9315,19 @@
             "notes": "",
             "preInstructions": [
             ]
+        },
+        {
+            "id": 1166,
+            "name": "on-past",
+            "fromLang": "ON",
+            "toLang": "ON",
+            "branches": [
+            ],
+            "addedCategories": ".PST",
+            "fromPOS": "V",
+            "notes": "",
+            "preInstructions": [
+            ]
         }
     ],
     "links": [
@@ -11130,6 +11402,131 @@
             "from": 965,
             "to": 1131,
             "type": "~"
+        },
+        {
+            "from": 1143,
+            "to": 1144,
+            "type": ">",
+            "ruleIds": [
+                1011
+            ]
+        },
+        {
+            "from": 1144,
+            "to": 1118,
+            "type": "="
+        },
+        {
+            "from": 1149,
+            "to": 1152,
+            "type": ">",
+            "ruleIds": [
+                1012
+            ]
+        },
+        {
+            "from": 1157,
+            "to": 1158,
+            "type": ">",
+            "ruleIds": [
+                1012
+            ]
+        },
+        {
+            "from": 1159,
+            "to": 1160,
+            "type": ">",
+            "ruleIds": [
+                1010
+            ]
+        },
+        {
+            "from": 1162,
+            "to": 1161,
+            "type": ">",
+            "ruleIds": [
+                1010
+            ]
+        },
+        {
+            "from": 1165,
+            "to": 1138,
+            "type": ">",
+            "ruleIds": [
+                1166
+            ]
+        },
+        {
+            "from": 1171,
+            "to": 1172,
+            "type": ">",
+            "ruleIds": [
+                1010
+            ]
+        },
+        {
+            "from": 1173,
+            "to": 1174,
+            "type": ">",
+            "ruleIds": [
+                1012
+            ]
+        },
+        {
+            "from": 1175,
+            "to": 956,
+            "type": ">",
+            "ruleIds": [
+                1012
+            ]
+        },
+        {
+            "from": 1176,
+            "to": 1177,
+            "type": ">",
+            "ruleIds": [
+                1012
+            ]
+        },
+        {
+            "from": 1178,
+            "to": 1179,
+            "type": ">",
+            "ruleIds": [
+                1166
+            ]
+        },
+        {
+            "from": 1181,
+            "to": 1172,
+            "type": ">",
+            "ruleIds": [
+                1011
+            ]
+        },
+        {
+            "from": 1182,
+            "to": 1183,
+            "type": ">",
+            "ruleIds": [
+                1010
+            ]
+        },
+        {
+            "from": 1184,
+            "to": 1185,
+            "type": ">",
+            "ruleIds": [
+                1010
+            ]
+        },
+        {
+            "from": 1186,
+            "to": 1187,
+            "type": ">",
+            "ruleIds": [
+                1012
+            ]
         }
     ],
     "corpusTexts": [
@@ -12865,6 +13262,91 @@
                 null,
                 1120
             ]
+        },
+        {
+            "id": 1140,
+            "text": "Skútaðar-Skedi hét maðr ágætr í Noregi.\nHans sonr var Björn. \nHann var kallaðr Skinna-Björn, \nþví at hann var Hólmsgarðsfari ok farmaðr mikill. \nHann fór til Íslands ok nam Miðfjörð ok Línakradal.\n\nHans sonr var Miðfjarðar-Skeggi; hann var garpr mikill ok farmaðr.\nHann herjaði í austrveg í Danmörk við Sjáland\nok fór at brjóta haug Hrólfs konungs kraka\nok tók hann þar ór haugi Sköfnung, sverð Hrólfs,\nok øxi Hjalta, ok mikit fé annat",
+            "title": "Viking Language 4.13",
+            "lang": "ON",
+            "wordIds": [
+                1142,
+                null,
+                null,
+                1141,
+                null,
+                1143,
+                null,
+                null,
+                null,
+                1145,
+                null,
+                null,
+                null,
+                null,
+                1146,
+                null,
+                1147,
+                null,
+                null,
+                null,
+                1148,
+                null,
+                1153,
+                null,
+                null,
+                null,
+                null,
+                null,
+                1157,
+                null,
+                null,
+                1159,
+                null,
+                1162,
+                null,
+                null,
+                null,
+                null,
+                1163,
+                null,
+                null,
+                1164,
+                null,
+                null,
+                null,
+                null,
+                1165,
+                null,
+                1167,
+                null,
+                null,
+                1168,
+                1169,
+                null,
+                null,
+                null,
+                1170,
+                1171,
+                1173,
+                1175,
+                1176,
+                null,
+                1178,
+                null,
+                null,
+                1180,
+                1181,
+                1182,
+                null,
+                null,
+                null,
+                1184,
+                1186,
+                null,
+                null,
+                null,
+                null
+            ]
         }
     ],
     "paradigms": [
@@ -13984,6 +14466,22 @@
                 1061,
                 1064
             ]
+        },
+        {
+            "id": 1150,
+            "compoundId": 1148,
+            "componentIds": [
+                1149,
+                1151
+            ]
+        },
+        {
+            "id": 1156,
+            "compoundId": 1153,
+            "componentIds": [
+                983,
+                951
+            ]
         }
     ],
     "translations": [
@@ -14307,7 +14805,8 @@
             "lang": "ON",
             "name": "Number",
             "pos": [
-                "N"
+                "N",
+                "V"
             ],
             "values": [
                 {
@@ -14338,6 +14837,23 @@
                 {
                     "name": "3rd",
                     "abbreviation": "3"
+                }
+            ]
+        },
+        {
+            "lang": "ON",
+            "name": "Tense",
+            "pos": [
+                "V"
+            ],
+            "values": [
+                {
+                    "name": "Present",
+                    "abbreviation": "PRES"
+                },
+                {
+                    "name": "Past",
+                    "abbreviation": "PST"
                 }
             ]
         }
