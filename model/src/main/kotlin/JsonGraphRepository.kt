@@ -86,12 +86,14 @@ class SyllableRuleConditionData(
 class RelativePhonemeRuleConditionData(
     val relativeIndex: Int,
     val negated: Boolean,
-    @SerialName("cls") val phonemeClassName: String? = null,
+    @SerialName("tcls") val targetPhonemeClassName: String? = null,
+    @SerialName("cls") val matchPhonemeClassName: String? = null,
     val parameter: String? = null
 ): RuleConditionData() {
     override fun toRuntimeFormat(result: InMemoryGraphRepository, fromLanguage: Language): RuleCondition {
-        val phonemeClass = requiredPhonemeClassByName(fromLanguage, phonemeClassName)
-        return RelativePhonemeRuleCondition(relativeIndex, negated, phonemeClass, parameter)
+        val targetPhonemeClass = requiredPhonemeClassByName(fromLanguage, targetPhonemeClassName)
+        val matchPhonemeClass = requiredPhonemeClassByName(fromLanguage, matchPhonemeClassName)
+        return RelativePhonemeRuleCondition(relativeIndex, negated, targetPhonemeClass, matchPhonemeClass, parameter)
     }
 }
 
@@ -576,7 +578,13 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
 
         private fun RuleCondition.toSerializedFormat(): RuleConditionData = when(this) {
             is SyllableRuleCondition -> SyllableRuleConditionData(matchType, index, phonemeClass?.name, parameter)
-            is RelativePhonemeRuleCondition -> RelativePhonemeRuleConditionData(relativeIndex, negated, parameter)
+            is RelativePhonemeRuleCondition -> RelativePhonemeRuleConditionData(
+                relativeIndex,
+                negated,
+                targetPhonemeClass?.name,
+                matchPhonemeClass?.name,
+                parameter
+            )
             is LeafRuleCondition -> LeafRuleConditionData(
                 type,
                 phonemeClass?.name,

@@ -47,6 +47,19 @@ class JsonGraphRepositoryTest : QBaseTest() {
     }
 
     @Test
+    fun serializeRelativePhonemeRule() {
+        val repo = JsonGraphRepository(null)
+        val rule = parseRule(q, q, """
+            sound is 'i' and previous sound is not vowel:
+            - sound disappears
+        """.trimIndent())
+
+        val serializedData = rule.ruleToSerializedFormat()
+        val branches = ruleBranchesFromSerializedFormat(repo, q, serializedData.branches)
+        assertEquals("sound is 'i' and previous sound is not vowel", branches[0].condition.toEditableText())
+    }
+
+    @Test
     fun serializeTranslation() {
         val repo = JsonGraphRepository(null)
         repo.addLanguage(q)

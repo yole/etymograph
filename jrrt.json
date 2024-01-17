@@ -10606,6 +10606,7 @@
                             },
                             {
                                 "type": "ru.yole.etymograph.RelativePhonemeRuleConditionData",
+                                "cls": "nasal",
                                 "relativeIndex": -1,
                                 "negated": true
                             }

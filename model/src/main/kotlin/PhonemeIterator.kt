@@ -1,5 +1,8 @@
 package ru.yole.etymograph
 
+import kotlin.math.abs
+import kotlin.math.sign
+
 open class OrdinalTable(private val items: List<Pair<String, Int>>) {
     fun toString(i: Int): String? {
         return items.find { it.second == i }?.first
@@ -103,6 +106,16 @@ class PhonemeIterator {
             phonemeIndex = newIndex
             resultPhonemeIndex += relativeIndex
             return true
+        }
+        return false
+    }
+
+    fun advanceToClass(phonemeClass: PhonemeClass, relativeIndex: Int): Boolean {
+        var count = abs(relativeIndex)
+        while (advanceBy(relativeIndex.sign)) {
+            if (phonemeClass.matchesCurrent(this) && --count == 0) {
+                return true
+            }
         }
         return false
     }

@@ -93,4 +93,14 @@ class PhonemeRuleTest : QBaseTest() {
         """.trimIndent())
         assertEquals("khthis", rule.apply(ce.word("ikhthis"), emptyRepo).text)
     }
+
+    @Test
+    fun nextPhonemeClass() {
+        val rule = parseRule(q, q, """
+            sound is 'i' and next vowel is 'a':
+            - sound disappears
+        """.trimIndent())
+        assertEquals("khtha", rule.apply(ce.word("khitha"), emptyRepo).text)
+        assertEquals("sound is 'i' and next vowel is 'a'", rule.logic.branches[0].condition.toEditableText())
+    }
 }

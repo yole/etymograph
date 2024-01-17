@@ -7578,6 +7578,12 @@
                             "args": [
                                 "'as'"
                             ]
+                        },
+                        {
+                            "type": "ApplyRule",
+                            "args": [
+                                "1188"
+                            ]
                         }
                     ],
                     "condition": {
@@ -7602,6 +7608,12 @@
                             "type": "Append",
                             "args": [
                                 "'u'"
+                            ]
+                        },
+                        {
+                            "type": "ApplyRule",
+                            "args": [
+                                "1188"
                             ]
                         }
                     ],
@@ -7665,6 +7677,12 @@
                             "args": [
                                 "'a'"
                             ]
+                        },
+                        {
+                            "type": "ApplyRule",
+                            "args": [
+                                "1188"
+                            ]
                         }
                     ],
                     "condition": {
@@ -7689,6 +7707,12 @@
                             "type": "Append",
                             "args": [
                                 "'a'"
+                            ]
+                        },
+                        {
+                            "type": "ApplyRule",
+                            "args": [
+                                "1188"
                             ]
                         }
                     ],
@@ -7727,6 +7751,12 @@
                             "args": [
                                 "'um'"
                             ]
+                        },
+                        {
+                            "type": "ApplyRule",
+                            "args": [
+                                "1188"
+                            ]
                         }
                     ],
                     "condition": {
@@ -7751,6 +7781,12 @@
                             "type": "Append",
                             "args": [
                                 "'um'"
+                            ]
+                        },
+                        {
+                            "type": "ApplyRule",
+                            "args": [
+                                "1188"
                             ]
                         }
                     ],
@@ -9325,6 +9361,71 @@
             ],
             "addedCategories": ".PST",
             "fromPOS": "V",
+            "notes": "",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 1188,
+            "name": "oe-restoration-of-a",
+            "fromLang": "OE",
+            "toLang": "OE",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "a"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.AndRuleConditionData",
+                        "members": [
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "PhonemeMatches",
+                                "characters": "æ"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.RelativePhonemeRuleConditionData",
+                                "relativeIndex": 1,
+                                "negated": false,
+                                "parameter": "w"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "a"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.AndRuleConditionData",
+                        "members": [
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "PhonemeMatches",
+                                "characters": "æ"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.RelativePhonemeRuleConditionData",
+                                "relativeIndex": 1,
+                                "negated": false,
+                                "tcls": "vowel",
+                                "cls": "back"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "addedCategories": null,
             "notes": "",
             "preInstructions": [
             ]
@@ -14859,6 +14960,40 @@
         }
     ],
     "wordClasses": [
+        {
+            "lang": "OE",
+            "name": "Gender",
+            "pos": [
+                "N"
+            ],
+            "values": [
+                {
+                    "name": "masculine",
+                    "abbreviation": "masc"
+                },
+                {
+                    "name": "feminine",
+                    "abbreviation": "fem"
+                },
+                {
+                    "name": "neuter",
+                    "abbreviation": "neut"
+                }
+            ]
+        },
+        {
+            "lang": "OE",
+            "name": "Stem class",
+            "pos": [
+                "N"
+            ],
+            "values": [
+                {
+                    "name": "a-class",
+                    "abbreviation": "a-class"
+                }
+            ]
+        },
         {
             "lang": "ON",
             "name": "Gender",

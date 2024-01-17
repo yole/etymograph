@@ -242,6 +242,7 @@ class SyllableRuleCondition(
 class RelativePhonemeRuleCondition(
     val relativeIndex: Int,
     val negated: Boolean,
+    val targetPhonemeClass: PhonemeClass?,
     val matchPhonemeClass: PhonemeClass?,
     val parameter: String?
 ) : RuleCondition() {
@@ -249,19 +250,25 @@ class RelativePhonemeRuleCondition(
 
     override fun matches(phonemes: PhonemeIterator): Boolean {
         val it = phonemes.clone()
-        val matchResult = if (!it.advanceBy(relativeIndex)) {
-            false
-        }
-        else {
-            matchPhonemeClass?.matchesCurrent(it) ?: (parameter == it.current)
-        }
+        val canAdvance = if (targetPhonemeClass != null)
+            it.advanceToClass(targetPhonemeClass, relativeIndex)
+        else
+            it.advanceBy(relativeIndex)
+        val matchResult = canAdvance && matchPhonemeClass?.matchesCurrent(it) ?: (parameter == it.current)
         return matchResult xor negated
     }
 
     override fun toEditableText(): String {
         return buildString {
             append(RelativeOrdinals.toString(relativeIndex))
-            append(" sound is ")
+            append(" ")
+            if (targetPhonemeClass != null) {
+                append(targetPhonemeClass.name)
+            }
+            else {
+                append("sound")
+            }
+            append(" is ")
             if (negated) {
                 append(LeafRuleCondition.notPrefix)
             }
@@ -276,10 +283,19 @@ class RelativePhonemeRuleCondition(
 
     companion object {
         fun parse(language: Language, relativeIndex: Int, tail: String): RelativePhonemeRuleCondition? {
-            if (!tail.startsWith(LeafRuleCondition.soundIs)) {
-                return null
+            val targetPhonemeClass: PhonemeClass?
+            var param: String
+            if (tail.startsWith(LeafRuleCondition.soundIs)) {
+                targetPhonemeClass = null
+                param = tail.removePrefix(LeafRuleCondition.soundIs)
             }
-            var param = tail.removePrefix(LeafRuleCondition.soundIs)
+            else {
+                if (' ' !in tail) return null
+                val targetPhonemeClassName = tail.substringBefore(' ')
+                param = tail.substringAfter(' ').trim().removePrefix("is ")
+                targetPhonemeClass = language.phonemeClassByName(targetPhonemeClassName)
+                    ?: throw RuleParseException("Unrecognized character class $targetPhonemeClassName")
+            }
             var negated = false
 
             if (param.startsWith(LeafRuleCondition.notPrefix)) {
@@ -287,8 +303,8 @@ class RelativePhonemeRuleCondition(
                 param = param.removePrefix(LeafRuleCondition.notPrefix)
             }
             param = param.trim()
-            val (phonemeClass, parameter) = parseParameter(language, param)
-            return RelativePhonemeRuleCondition(relativeIndex, negated, phonemeClass, parameter)
+            val (matchPhonemeClass, parameter) = parseParameter(language, param)
+            return RelativePhonemeRuleCondition(relativeIndex, negated, targetPhonemeClass, matchPhonemeClass, parameter)
         }
     }
 }
