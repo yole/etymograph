@@ -46,6 +46,17 @@ class CorpusTextTest : QBaseTest() {
     }
 
     @Test
+    fun testNormalizedTextDecapitalized() {
+        val corpusText = CorpusText(-1, "Ai Laurie. Lantar", null, q, mutableListOf(), emptyList(), null)
+
+        val repo = InMemoryGraphRepository()
+        val lines = corpusText.mapToLines(repo)
+        assertEquals("ai", lines[0].corpusWords[0].normalizedText)
+        assertEquals("Laurie", lines[0].corpusWords[1].normalizedText)
+        assertEquals("lantar", lines[0].corpusWords[2].normalizedText)
+    }
+
+    @Test
     fun testAttestations() {
         val repo = InMemoryGraphRepository()
         val eaV = q.word("ea", "be")

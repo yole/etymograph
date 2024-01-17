@@ -1,5 +1,7 @@
 package ru.yole.etymograph
 
+import java.util.*
+
 class CorpusWord(val index: Int, val text: String, val normalizedText: String, val word: Word?, val gloss: String?, val homonym: Boolean)
 
 class CorpusTextLine(val corpusWords: List<CorpusWord>)
@@ -47,16 +49,19 @@ class CorpusText(
 
     fun mapToLines(repo: GraphRepository): List<CorpusTextLine> {
         var currentIndex = 0
+        var sentenceStart = true
         return text.split("\n").map { line ->
             val textWords = splitIntoNormalizedWords(line, currentIndex)
             CorpusTextLine(textWords.map { tw ->
                 val word = _words.getOrNull(currentIndex)
+                val normalizedText = if (sentenceStart) tw.normalizedText else restoreCase(tw.normalizedText, tw.baseText)
+                sentenceStart = tw.baseText.endsWith('.')
                 if (word != null) {
-                    CorpusWord(currentIndex++, tw.baseText, tw.normalizedText, word, word.getOrComputeGloss(repo), repo.isHomonym(word))
+                    CorpusWord(currentIndex++, tw.baseText, normalizedText, word, word.getOrComputeGloss(repo), repo.isHomonym(word))
                 }
                 else {
                     val gloss = repo.wordsByText(language, tw.normalizedText).firstOrNull()?.getOrComputeGloss(repo)
-                    CorpusWord(currentIndex++, tw.baseText, tw.normalizedText, null, gloss, false)
+                    CorpusWord(currentIndex++, tw.baseText, normalizedText, null, gloss, false)
                 }
             })
         }
@@ -103,6 +108,19 @@ class CorpusText(
 
     companion object {
         val punctuation = charArrayOf('!', ',', '.', '?', ':', ';')
+    }
+}
+
+fun restoreCase(normalizedText: String, baseText: String): String {
+    return buildString {
+        for ((i, c) in normalizedText.withIndex()) {
+            if (baseText[i].isUpperCase()) {
+                append(c.uppercase(Locale.FRANCE))
+            }
+            else {
+                append(c)
+            }
+        }
     }
 }
 
