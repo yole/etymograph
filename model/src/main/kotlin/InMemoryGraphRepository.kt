@@ -159,7 +159,7 @@ open class InMemoryGraphRepository : GraphRepository() {
         return rules
             .filter { rule ->
                 rule.fromLanguage == language && rule.toLanguage == language &&
-                        (pos == null || rule.toPOS == null || pos == rule.toPOS) &&
+                        ruleMatchesPOS(pos, rule) &&
                         rule.addedGrammaticalCategories().none { it in excludeGrammaticalCategories }
             }
             .flatMap { rule ->
@@ -171,7 +171,7 @@ open class InMemoryGraphRepository : GraphRepository() {
                     .flatMap { text ->
                         val w = wordsByText(language, text)
                             .ifEmpty { wordsByText(language, "$text-") }
-                            .filter { w -> w.pos == null || rule.toPOS == null || rule.toPOS == w.pos }
+                            .filter { w -> ruleMatchesPOS(w.pos, rule) }
 
                         if (w.isNotEmpty())
                             w.map { ParseCandidate(text, listOf(rule) + prevRules, it.pos, it) }
@@ -188,6 +188,11 @@ open class InMemoryGraphRepository : GraphRepository() {
                         }
                     }
             }
+    }
+
+    private fun ruleMatchesPOS(pos: String?, rule: Rule): Boolean {
+        val rulePOS = rule.toPOS ?: rule.fromPOS
+        return pos == null || rulePOS == null || rulePOS == pos
     }
 
     private fun collectDerivedWordGrammaticalCategories(word: Word): Set<WordCategory> {

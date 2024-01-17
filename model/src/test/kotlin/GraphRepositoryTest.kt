@@ -81,6 +81,28 @@ class GraphRepositoryTest : QBaseTest() {
     }
 
     @Test
+    fun parseCandidatesExistingWordPOSMismatch2() {
+        val repo = setupRepo()
+        val presRule = parseRule(q, q, "- append 'a'", name = "q-pres", addedCategories = ".PRES", fromPOS = "V")
+        repo.addRule(presRule)
+        val hresta = repo.addWord("hrest", pos = "N")
+
+        val candidates = repo.findParseCandidates(q.word("hresta"))
+        assertEquals(1, candidates.size)
+        assertNull(candidates[0].word)
+    }
+
+    @Test
+    fun parseCandidatesPOSMismatch() {
+        val repo = setupRepo()
+        val presRule = parseRule(q, q, "- append 'a'", name = "q-pres", addedCategories = ".PRES", fromPOS = "V")
+        repo.addRule(presRule)
+
+        val candidates = repo.findParseCandidates(q.word("hresta", pos = "N"))
+        assertEquals(0, candidates.size)
+    }
+
+    @Test
     fun parseCandidatesNotEmpty() {
         val repo = setupRepo()
         val rule = parseRule(q, q, "- append 'llo'", name = "q-abl")
