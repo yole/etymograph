@@ -201,7 +201,7 @@ class Rule(
         return summaries.joinToString("/")
     }
 
-    fun addedGrammaticalCategories(): List<GrammaticalCategory> {
+    fun addedGrammaticalCategories(): List<WordCategory> {
         return addedCategories?.let { cv -> parseCategoryValues(fromLanguage, cv).mapNotNull { it.first } } ?: emptyList()
     }
 
@@ -232,7 +232,7 @@ class Rule(
     }
 }
 
-fun parseCategoryValues(language: Language, categoryValues: String): List<Pair<GrammaticalCategory?, GrammaticalCategoryValue?>> {
+fun parseCategoryValues(language: Language, categoryValues: String): List<Pair<WordCategory?, WordCategoryValue?>> {
     return categoryValues.split('.').filter { it.isNotEmpty() }.flatMap {
         language.findGrammaticalCategory(it)?.let { listOf(it) }
             ?: language.findNumberPersonCategories(it)

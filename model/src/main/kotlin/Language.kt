@@ -28,9 +28,9 @@ class IntersectionPhonemeClass(name: String, val classList: List<PhonemeClass>)
     }
 }
 
-class GrammaticalCategoryValue(val name: String, val abbreviation: String)
+class WordCategoryValue(val name: String, val abbreviation: String)
 
-class GrammaticalCategory(var name: String, var pos: List<String>, var values: List<GrammaticalCategoryValue>)
+class WordCategory(var name: String, var pos: List<String>, var values: List<WordCategoryValue>)
 
 class Phoneme(val graphemes: List<String>, val classes: List<String>)
 
@@ -47,7 +47,8 @@ class Language(val name: String, val shortName: String) {
     var syllableStructures: List<String> = emptyList()
     var wordFinals: List<String> = emptyList()
     var stressRule: RuleRef? = null
-    var grammaticalCategories = mutableListOf<GrammaticalCategory>()
+    var grammaticalCategories = mutableListOf<WordCategory>()
+    var wordClasses = mutableListOf<WordCategory>()
 
     val digraphs: List<String>
         get() = phonemes.flatMap { it.graphemes }.filter { it.length > 1 }
@@ -86,8 +87,16 @@ class Language(val name: String, val shortName: String) {
         return normalizeWord(ruleProducedWord) == normalizeWord(attestedWord)
     }
 
-    fun findGrammaticalCategory(abbreviation: String): Pair<GrammaticalCategory, GrammaticalCategoryValue>? {
-        for (category in grammaticalCategories) {
+    fun findGrammaticalCategory(abbreviation: String): Pair<WordCategory, WordCategoryValue>? {
+        return findWordCategory(abbreviation, grammaticalCategories)
+    }
+
+    fun findWordClass(abbreviation: String): Pair<WordCategory, WordCategoryValue>? {
+        return findWordCategory(abbreviation, wordClasses)
+    }
+
+    private fun findWordCategory(abbreviation: String, wordCategories: List<WordCategory>): Pair<WordCategory, WordCategoryValue>? {
+        for (category in wordCategories) {
             val gcValue = category.values.find { it.abbreviation == abbreviation }
             if (gcValue != null) {
                 return category to gcValue
@@ -96,7 +105,7 @@ class Language(val name: String, val shortName: String) {
         return null
     }
 
-    fun findNumberPersonCategories(abbreviation: String): List<Pair<GrammaticalCategory, GrammaticalCategoryValue?>>? {
+    fun findNumberPersonCategories(abbreviation: String): List<Pair<WordCategory, WordCategoryValue?>>? {
         if (abbreviation.first().isDigit()) {
             val personCatValue = findGrammaticalCategory(abbreviation.take(1)) ?: return null
             val numberCatValue = findGrammaticalCategory(abbreviation.drop(1)) ?: return null

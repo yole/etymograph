@@ -56,8 +56,8 @@ class GraphRepositoryTest : QBaseTest() {
     @Test
     fun parseCandidatesSameCategory() {
         val repo = setupRepo()
-        q.grammaticalCategories.add(GrammaticalCategory("Tense", listOf("V"),
-            listOf(GrammaticalCategoryValue("Present", "PRES"), GrammaticalCategoryValue("Aorist", "AOR"))))
+        q.grammaticalCategories.add(WordCategory("Tense", listOf("V"),
+            listOf(WordCategoryValue("Present", "PRES"), WordCategoryValue("Aorist", "AOR"))))
         val presRule = parseRule(q, q, "- append 'a'", name = "q-pres", addedCategories = ".PRES")
         val aorRule = parseRule(q, q, "- append 'i'", name = "q-aor", addedCategories = ".AOR")
         repo.addRule(presRule)

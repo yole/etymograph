@@ -207,17 +207,17 @@ data class PublicationData(
 )
 
 @Serializable
-data class GrammaticalCategoryValueData(
+data class WordCategoryValueData(
     val name: String,
     val abbreviation: String
 )
 
 @Serializable
-data class GrammaticalCategoryData(
+data class WordCategoryData(
     @SerialName("lang") val languageShortName: String,
     val name: String,
     val pos: List<String>,
-    val values: List<GrammaticalCategoryValueData>
+    val values: List<WordCategoryValueData>
 )
 
 @Serializable
@@ -236,7 +236,8 @@ data class GraphRepositoryData(
     val publications: List<PublicationData>,
     val compounds: List<CompoundData>,
     val translations: List<TranslationData>,
-    val grammaticalCategories: List<GrammaticalCategoryData>
+    val grammaticalCategories: List<WordCategoryData>,
+    val wordClasses: List<WordCategoryData>? = null
 )
 
 class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
@@ -287,13 +288,8 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
         val wordFinalsData = languages.values.mapNotNull { lang ->
             lang.wordFinals.takeIf { it.isNotEmpty() }?.let { WordFinalData(lang.shortName, it) }
         }
-        val grammaticalCategoryData = languages.values.flatMap { lang ->
-            lang.grammaticalCategories.map {
-                GrammaticalCategoryData(lang.shortName, it.name, it.pos, it.values.map { v ->
-                    GrammaticalCategoryValueData(v.name, v.abbreviation)
-                })
-            }
-        }
+        val grammarCategoryData = mapWordCategories { it.grammaticalCategories }
+        val wordClassData = mapWordCategories { it.wordClasses }
         return GraphRepositoryData(
             languages.values.map { LanguageData(it.name, it.shortName) },
             phonemes,
@@ -336,8 +332,17 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             allLangEntities.filterIsInstance<Translation>().map { t ->
                 TranslationData(t.id, t.corpusText.id, t.text, t.source.sourceToSerializedFormat(), t.notes)
             },
-            grammaticalCategoryData
+            grammarCategoryData,
+            wordClassData
         )
+    }
+
+    private fun mapWordCategories(prop: (Language) -> List<WordCategory>) = languages.values.flatMap { lang ->
+        prop(lang).map {
+            WordCategoryData(lang.shortName, it.name, it.pos, it.values.map { v ->
+                WordCategoryValueData(v.name, v.abbreviation)
+            })
+        }
     }
 
     private fun loadJson(string: String) {
@@ -455,14 +460,8 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             setLangEntity(translation.id, translation)
             storeTranslation(corpusText, translation)
         }
-        for (gc in data.grammaticalCategories) {
-            val language = languageByShortName(gc.languageShortName)
-            language!!.grammaticalCategories.add(GrammaticalCategory(
-                gc.name,
-                gc.pos,
-                gc.values.map { GrammaticalCategoryValue(it.name, it.abbreviation) }
-            ))
-        }
+        loadWordCategoryData(data.grammaticalCategories) { it.grammaticalCategories }
+        data.wordClasses?.let { wc -> loadWordCategoryData(wc) { it.wordClasses } }
 
         for (paradigm in data.paradigms) {
             while (paradigm.id > paradigms.size) {
@@ -488,6 +487,17 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                     }
                 }
             }
+        }
+    }
+
+    private fun loadWordCategoryData(wordCategoryData: List<WordCategoryData>, prop: (Language) -> MutableList<WordCategory>) {
+        for (gc in wordCategoryData) {
+            val language = languageByShortName(gc.languageShortName)
+            prop(language!!).add(WordCategory(
+                gc.name,
+                gc.pos,
+                gc.values.map { WordCategoryValue(it.name, it.abbreviation) }
+            ))
         }
     }
 

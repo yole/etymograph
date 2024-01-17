@@ -155,7 +155,7 @@ open class InMemoryGraphRepository : GraphRepository() {
     }
 
     private fun findParseCandidates(language: Language, text: String, pos: String?, prevRules: List<Rule>,
-                                    excludeGrammaticalCategories: Set<GrammaticalCategory>, recurse: Boolean): List<ParseCandidate> {
+                                    excludeGrammaticalCategories: Set<WordCategory>, recurse: Boolean): List<ParseCandidate> {
         return rules
             .filter { rule ->
                 rule.fromLanguage == language && rule.toLanguage == language &&
@@ -190,7 +190,7 @@ open class InMemoryGraphRepository : GraphRepository() {
             }
     }
 
-    private fun collectDerivedWordGrammaticalCategories(word: Word): Set<GrammaticalCategory> {
+    private fun collectDerivedWordGrammaticalCategories(word: Word): Set<WordCategory> {
         return getLinksTo(word)
             .filter { it.fromEntity is Word }
             .flatMap { it.rules.lastOrNull()?.addedGrammaticalCategories() ?: emptyList() }

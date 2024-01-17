@@ -20,7 +20,8 @@ class LanguageController(val graphService: GraphService) {
         val stressRuleName: String?,
         val syllableStructures: List<String>,
         val wordFinals: List<String>,
-        val grammaticalCategories: String
+        val grammaticalCategories: String,
+        val wordClasses: String
     )
 
     @GetMapping("/language")
@@ -45,7 +46,8 @@ class LanguageController(val graphService: GraphService) {
             stressRule?.name,
             syllableStructures,
             wordFinals,
-            grammaticalCategories.toEditableText()
+            grammaticalCategories.toEditableText(),
+            wordClasses.toEditableText()
         )
     }
 
@@ -57,7 +59,8 @@ class LanguageController(val graphService: GraphService) {
         val stressRuleName: String? = null,
         val syllableStructures: String? = null,
         val wordFinals: String? = null,
-        val grammaticalCategories: String? = null
+        val grammaticalCategories: String? = null,
+        val wordClasses: String? = null
     )
 
     @PostMapping("/languages", consumes = ["application/json"])
@@ -89,7 +92,8 @@ class LanguageController(val graphService: GraphService) {
         language.diphthongs = parseList(params.diphthongs)
         language.syllableStructures = parseList(params.syllableStructures)
         language.wordFinals = parseList(params.wordFinals)
-        language.grammaticalCategories = params.grammaticalCategories.nullize()?.let { parseGrammaticaLCategories(it) } ?: mutableListOf()
+        language.grammaticalCategories = params.grammaticalCategories.nullize()?.let { parseWordCategories(it) } ?: mutableListOf()
+        language.wordClasses = params.wordClasses.nullize()?.let { parseWordCategories(it) } ?: mutableListOf()
 
         val stressRule = params.stressRuleName?.let { graphService.resolveRule(it) }
         language.stressRule = stressRule?.let { RuleRef.to(it) }
@@ -113,41 +117,41 @@ class LanguageController(val graphService: GraphService) {
         }
     }
 
-    private fun List<GrammaticalCategory>.toEditableText(): String {
+    private fun List<WordCategory>.toEditableText(): String {
         return joinToString("\n") { gc ->
             val pos = gc.pos.joinToString(", ")
             "${gc.name} ($pos): ${gc.values.joinToString(", ") { it.toEditableText() }}"
         }
     }
 
-    private fun GrammaticalCategoryValue.toEditableText(): String {
+    private fun WordCategoryValue.toEditableText(): String {
         return "$name ($abbreviation)"
     }
 
-    private fun parseGrammaticaLCategories(s: String): MutableList<GrammaticalCategory> {
+    private fun parseWordCategories(s: String): MutableList<WordCategory> {
         return s.trim().split('\n').mapTo(mutableListOf()) { gcLine ->
             val (nameString, valueStrings) = gcLine.trim().split(':', limit = 2)
-            val (name, pos) = parseGrammaticaLCategoryName(nameString)
-            GrammaticalCategory(
+            val (name, pos) = parseWordCategoryName(nameString)
+            WordCategory(
                 name,
                 pos,
                 valueStrings.split(',').map {
-                    parseGrammaticaLCategoryValue(it.trim())
+                    parseWordCategoryValue(it.trim())
                 }
             )
         }
     }
 
-    private fun parseGrammaticaLCategoryName(s: String): Pair<String, List<String>> {
+    private fun parseWordCategoryName(s: String): Pair<String, List<String>> {
         val p = parenthesized.matchEntire(s)
             ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST, "Unrecognized grammatical category name format $s")
         return p.groupValues[1] to p.groupValues[2].split(',').map { it.trim() }
     }
 
-    private fun parseGrammaticaLCategoryValue(s: String): GrammaticalCategoryValue {
+    private fun parseWordCategoryValue(s: String): WordCategoryValue {
         val p = parenthesized.matchEntire(s)
             ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST, "Unrecognized grammatical category value format $s")
-        return GrammaticalCategoryValue(p.groupValues[1], p.groupValues[2])
+        return WordCategoryValue(p.groupValues[1], p.groupValues[2])
     }
 
     companion object {

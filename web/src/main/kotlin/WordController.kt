@@ -178,19 +178,35 @@ class WordController(val graphService: GraphService) {
         val language = graphService.resolveLanguage(lang)
         val text = params.text?.nullize() ?: throw NoWordTextException()
 
-        val posClassList = params.posClasses.orEmpty().split(' ')
+        val (pos, classes) = parseWordClasses(language, params.posClasses)
 
         val word = graph.findOrAddWord(
             text, language,
             params.gloss.nullize(),
             params.fullGloss.nullize(),
-            posClassList.firstOrNull().nullize(),
-            posClassList.drop(1),
+            pos,
+            classes,
             parseSourceRefs(graph, params.source),
             params.notes.nullize()
         )
         graph.save()
         return word.toViewModel(graph)
+    }
+
+    private fun parseWordClasses(language: Language, posClasses: String?): Pair<String?, List<String>> {
+        val posClassList = posClasses.orEmpty().split(' ')
+        val pos = posClassList.firstOrNull().nullize()
+        val classes = posClassList.drop(1)
+        if (pos != null) {
+            for (cls in classes) {
+                val (wc, wcv) = language.findWordClass(cls)
+                    ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST, "Unknown word class '$cls'")
+                if (pos !in wc.pos) {
+                    throw ResponseStatusException(HttpStatus.BAD_REQUEST, "Word class '$cls' does not apply to POS '$pos'")
+                }
+            }
+        }
+        return pos to classes
     }
 
     @PostMapping("/word/{id}/update", consumes = ["application/json"])
@@ -203,12 +219,12 @@ class WordController(val graphService: GraphService) {
             graph.updateWordText(word, text)
         }
 
-        val posClassList = params.posClasses.orEmpty().split(' ')
+        val (pos, classes) = parseWordClasses(word.language, params.posClasses)
 
         word.gloss = params.gloss.nullize()
         word.fullGloss = params.fullGloss.nullize()
-        word.pos = posClassList.firstOrNull().nullize()
-        word.classes = posClassList.drop(1)
+        word.pos = pos
+        word.classes = classes
         word.source = parseSourceRefs(graph, params.source)
         word.notes = params.notes.nullize()
         graph.save()

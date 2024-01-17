@@ -3,8 +3,8 @@ package ru.yole.etymograph.web
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull
 import org.junit.Test
-import ru.yole.etymograph.GrammaticalCategory
-import ru.yole.etymograph.GrammaticalCategoryValue
+import ru.yole.etymograph.WordCategory
+import ru.yole.etymograph.WordCategoryValue
 import ru.yole.etymograph.RuleLogic
 
 class RuleControllerTest {
@@ -14,8 +14,8 @@ class RuleControllerTest {
         val ruleController = RuleController(fixture.graphService)
 
         fixture.q.grammaticalCategories.add(
-            GrammaticalCategory("Case", listOf("N"),
-                listOf(GrammaticalCategoryValue("Genitive", "GEN"))))
+            WordCategory("Case", listOf("N"),
+                listOf(WordCategoryValue("Genitive", "GEN"))))
 
         val rule = fixture.graphService.graph.addRule("q-gen", fixture.q, fixture.q,
             RuleLogic(emptyList(), emptyList()), ".GEN")
@@ -30,11 +30,11 @@ class RuleControllerTest {
         val ruleController = RuleController(fixture.graphService)
 
         fixture.q.grammaticalCategories.add(
-            GrammaticalCategory("Person", listOf("V"),
-                listOf(GrammaticalCategoryValue("1st person", "1"))))
+            WordCategory("Person", listOf("V"),
+                listOf(WordCategoryValue("1st person", "1"))))
         fixture.q.grammaticalCategories.add(
-            GrammaticalCategory("Number", listOf("V"),
-                listOf(GrammaticalCategoryValue("Singular", "SG"))))
+            WordCategory("Number", listOf("V"),
+                listOf(WordCategoryValue("Singular", "SG"))))
 
         val rule = fixture.graphService.graph.addRule("q-1sg", fixture.q, fixture.q,
             RuleLogic(emptyList(), emptyList()), ".1SG")
