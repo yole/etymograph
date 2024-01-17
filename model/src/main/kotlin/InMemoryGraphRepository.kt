@@ -171,7 +171,7 @@ open class InMemoryGraphRepository : GraphRepository() {
                     .flatMap { candidateText ->
                         val w = wordsByText(language, candidateText)
                             .ifEmpty { wordsByText(language, "$candidateText-") }
-                            .filter { w -> ruleMatchesPOS(w.pos, rule) }
+                            .filter { w -> ruleMatchesPOS(w.pos, rule) && !grammaticalCategoriesIntersect(w, rule.addedGrammaticalCategories())}
 
                         if (w.isNotEmpty())
                             w.map { ParseCandidate(restoreCase(candidateText, text), listOf(rule) + prevRules, it.pos, it) }
@@ -188,6 +188,12 @@ open class InMemoryGraphRepository : GraphRepository() {
                         }
                     }
             }
+    }
+
+    private fun grammaticalCategoriesIntersect(w: Word, addedGrammaticalCategories: List<WordCategory>): Boolean {
+        val suffix = w.grammaticalCategorySuffix(this) ?: return false
+        val gc = parseCategoryValues(w.language, suffix)
+        return gc.any { it.first != null && it.first in addedGrammaticalCategories }
     }
 
     private fun ruleMatchesPOS(pos: String?, rule: Rule): Boolean {

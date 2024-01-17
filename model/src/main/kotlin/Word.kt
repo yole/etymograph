@@ -111,6 +111,12 @@ class Word(
         }
     }
 
+    fun grammaticalCategorySuffix(graph: GraphRepository): String? {
+        val gloss = getOrComputeGloss(graph)
+        val suffix = gloss?.substringAfterLast('.', "")
+        return suffix.takeIf { !it.isNullOrEmpty() && it.all { c -> c.isUpperCase() || c.isDigit() } }
+    }
+
     fun remapSegments(mapper: (WordSegment) -> WordSegment): Word {
         segments = segments?.map(mapper)
         return this
