@@ -37,6 +37,13 @@ export default function LanguageIndex(props) {
     return <>
         <h2><small><Link href={`/`}>Etymograph</Link> {'>'} </small>{lang.name}</h2>
 
+        <Link href={`/dictionary/${langId}`}>Dictionary</Link>
+        {' '}| <Link href={`/dictionary/${langId}/compounds`}>Compounds</Link>
+        {' '}| <Link href={`/dictionary/${langId}/names`}>Names</Link>
+        {' '}| <Link href={`/rules/${langId}`}>Rules</Link>
+        {' '}| <Link href={`/paradigms/${langId}`}>Paradigms</Link>
+        {' '}| <Link href={`/corpus/${langId}`}>Corpus</Link>
+
         <h3>Phonetics</h3>
         {(editMode || phonemes.trim().length > 0) && <h4>Phonemes</h4>}
         {!editMode && phonemes.trim().length > 0 && <>
@@ -95,11 +102,5 @@ export default function LanguageIndex(props) {
            <button onClick={() => setEditMode(!editMode)}>{editMode ? "Cancel" : "Edit"}</button>
         }
         <p/>
-        <Link href={`/dictionary/${langId}`}>Dictionary</Link><br/>
-        <Link href={`/dictionary/${langId}/compounds`}>Compound Words</Link><br/>
-        <Link href={`/dictionary/${langId}/names`}>Names</Link><br/>
-        <Link href={`/rules/${langId}`}>Rules</Link><br/>
-        <Link href={`/paradigms/${langId}`}>Paradigms</Link><br/>
-        <Link href={`/corpus/${langId}`}>Corpus</Link>
     </>
 }
