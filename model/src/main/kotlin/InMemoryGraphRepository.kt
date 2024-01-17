@@ -168,15 +168,15 @@ open class InMemoryGraphRepository : GraphRepository() {
                         language.normalizeWord(it) != language.normalizeWord(text) &&
                                 (isAcceptableWord(language, it) || wordsByText(language, "$it-").isNotEmpty())
                     }
-                    .flatMap { text ->
-                        val w = wordsByText(language, text)
-                            .ifEmpty { wordsByText(language, "$text-") }
+                    .flatMap { candidateText ->
+                        val w = wordsByText(language, candidateText)
+                            .ifEmpty { wordsByText(language, "$candidateText-") }
                             .filter { w -> ruleMatchesPOS(w.pos, rule) }
 
                         if (w.isNotEmpty())
-                            w.map { ParseCandidate(text, listOf(rule) + prevRules, it.pos, it) }
+                            w.map { ParseCandidate(restoreCase(candidateText, text), listOf(rule) + prevRules, it.pos, it) }
                         else
-                            listOf(ParseCandidate(text,  listOf(rule) + prevRules, rule.fromPOS, null))
+                            listOf(ParseCandidate(restoreCase(candidateText, text), listOf(rule) + prevRules, rule.fromPOS, null))
                     }
                     .flatMap {
                         if (recurse) {

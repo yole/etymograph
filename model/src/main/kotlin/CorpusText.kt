@@ -114,7 +114,7 @@ class CorpusText(
 fun restoreCase(normalizedText: String, baseText: String): String {
     return buildString {
         for ((i, c) in normalizedText.withIndex()) {
-            if (baseText[i].isUpperCase()) {
+            if (i < baseText.length && baseText[i].isUpperCase()) {
                 append(c.uppercase(Locale.FRANCE))
             }
             else {

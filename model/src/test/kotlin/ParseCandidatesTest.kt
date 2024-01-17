@@ -88,4 +88,14 @@ class ParseCandidatesTest : QBaseTest() {
         val candidates = repo.findParseCandidates(q.word("llo"))
         Assert.assertEquals(0, candidates.size)
     }
+
+    @Test
+    fun normalizeCase() {
+        val repo = repoWithQ()
+        val rule = parseRule(q, q, "- append 'llo'", name = "q-abl")
+        repo.addRule(rule)
+        val candidates = repo.findParseCandidates(q.word("Hrestallo"))
+        Assert.assertEquals(1, candidates.size)
+        Assert.assertEquals("Hresta", candidates[0].text)
+    }
 }
