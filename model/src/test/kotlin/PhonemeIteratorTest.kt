@@ -5,6 +5,17 @@ import org.junit.Assert.*
 
 class PhonemeIteratorTest : QBaseTest() {
     @Test
+    fun phonemeIterator() {
+        val it = PhonemeIterator(ce.word("khith"))
+        assertEquals("kh", it.current)
+        assertTrue(it.advance())
+        assertEquals("i", it.current)
+        assertTrue(it.advance())
+        assertEquals("th", it.current)
+        assertFalse(it.advance())
+    }
+
+    @Test
     fun seekToVowel() {
         val it = PhonemeIterator("lasse", q)
         it.seek(SeekTarget(1, v))
