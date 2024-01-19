@@ -87,7 +87,8 @@
         {
             "lang": "OE",
             "graphemes": [
-                "ī. í"
+                "ī",
+                "í"
             ],
             "classes": [
                 "long",
@@ -287,7 +288,8 @@
         {
             "lang": "OE",
             "graphemes": [
-                "g"
+                "g",
+                "ġ"
             ],
             "classes": [
                 "consonant"
@@ -936,7 +938,13 @@
             "text": "on",
             "lang": "OE",
             "gloss": "on",
-            "pos": "PREP"
+            "pos": "PREP",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "https://bosworthtoller.com/24432"
+                }
+            ]
         },
         {
             "id": 45,
@@ -973,7 +981,11 @@
             "text": "lār",
             "lang": "OE",
             "gloss": "learning",
-            "pos": "N"
+            "pos": "N",
+            "classes": [
+                "fem",
+                "o-stem"
+            ]
         },
         {
             "id": 51,
@@ -2474,27 +2486,32 @@
         {
             "id": 325,
             "text": "tēode",
-            "lang": "OE",
-            "gloss": "prepare.PST.3SG"
+            "lang": "OE"
         },
         {
             "id": 326,
             "text": "tēon",
             "lang": "OE",
             "gloss": "prepare",
-            "pos": "V"
+            "pos": "V",
+            "classes": [
+                "pret-d"
+            ]
         },
         {
             "id": 327,
             "text": "onstealde",
-            "lang": "OE",
-            "gloss": "establish.PST.3SG"
+            "lang": "OE"
         },
         {
             "id": 328,
             "text": "onstellan",
             "lang": "OE",
-            "gloss": "establish"
+            "gloss": "establish",
+            "pos": "V",
+            "classes": [
+                "pret-d"
+            ]
         },
         {
             "id": 329,
@@ -3117,7 +3134,7 @@
             "id": 438,
             "text": "wæs",
             "lang": "OE",
-            "gloss": "be.PRET.3SG"
+            "gloss": "be.PST.3SG"
         },
         {
             "id": 439,
@@ -3153,8 +3170,7 @@
         {
             "id": 444,
             "text": "wordum",
-            "lang": "OE",
-            "pos": "word.DAT.PL"
+            "lang": "OE"
         },
         {
             "id": 445,
@@ -6768,6 +6784,549 @@
             "text": "Hjalti",
             "lang": "ON",
             "pos": "NP"
+        },
+        {
+            "id": 1190,
+            "text": "ǣrdagum",
+            "lang": "OE"
+        },
+        {
+            "id": 1191,
+            "text": "ǣrdæg",
+            "lang": "OE"
+        },
+        {
+            "id": 1196,
+            "text": "wuniende",
+            "lang": "OE"
+        },
+        {
+            "id": 1197,
+            "text": "wunian",
+            "lang": "OE",
+            "gloss": "dwell",
+            "pos": "V",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "https://bosworthtoller.com/36878"
+                }
+            ]
+        },
+        {
+            "id": 1198,
+            "text": "be",
+            "lang": "OE",
+            "gloss": "by",
+            "pos": "PREP",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "https://bosworthtoller.com/3027"
+                }
+            ]
+        },
+        {
+            "id": 1199,
+            "text": "norþdǣlum",
+            "lang": "OE"
+        },
+        {
+            "id": 1200,
+            "text": "norþdǣl",
+            "lang": "OE"
+        },
+        {
+            "id": 1201,
+            "text": "norþ",
+            "lang": "OE",
+            "gloss": "north",
+            "pos": "ADJ",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "https://bosworthtoller.com/23864"
+                }
+            ]
+        },
+        {
+            "id": 1203,
+            "text": "dǣl",
+            "lang": "OE",
+            "gloss": "dale",
+            "pos": "N",
+            "classes": [
+                "neut"
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "https://bosworthtoller.com/7369"
+                }
+            ]
+        },
+        {
+            "id": 1204,
+            "text": "middangeardes",
+            "lang": "OE"
+        },
+        {
+            "id": 1205,
+            "text": "middangeard",
+            "lang": "OE",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "https://bosworthtoller.com/22797"
+                }
+            ]
+        },
+        {
+            "id": 1206,
+            "text": "cyning",
+            "lang": "OE",
+            "gloss": "king",
+            "pos": "N",
+            "classes": [
+                "masc"
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "https://bosworthtoller.com/7147"
+                }
+            ]
+        },
+        {
+            "id": 1207,
+            "text": "þe",
+            "lang": "OE",
+            "gloss": "which",
+            "pos": "PRON",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "https://bosworthtoller.com/31544"
+                }
+            ]
+        },
+        {
+            "id": 1208,
+            "text": "dohtor",
+            "lang": "OE",
+            "gloss": "daughter",
+            "pos": "N",
+            "classes": [
+                "fem"
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "https://bosworthtoller.com/7767"
+                }
+            ]
+        },
+        {
+            "id": 1209,
+            "text": "hæfde",
+            "lang": "OE"
+        },
+        {
+            "id": 1210,
+            "text": "habban",
+            "lang": "OE",
+            "gloss": "have",
+            "pos": "V",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "https://bosworthtoller.com/17802"
+                }
+            ]
+        },
+        {
+            "id": 1211,
+            "text": "āngan",
+            "lang": "OE"
+        },
+        {
+            "id": 1212,
+            "text": "ānga",
+            "lang": "OE",
+            "gloss": "sole",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "https://bosworthtoller.com/1805"
+                }
+            ]
+        },
+        {
+            "id": 1213,
+            "text": "hūse",
+            "lang": "OE"
+        },
+        {
+            "id": 1214,
+            "text": "hūs",
+            "lang": "OE",
+            "gloss": "house",
+            "pos": "N"
+        },
+        {
+            "id": 1215,
+            "text": "ēac",
+            "lang": "OE",
+            "gloss": "also",
+            "pos": "CONJ",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "https://bosworthtoller.com/8270"
+                }
+            ]
+        },
+        {
+            "id": 1216,
+            "text": "ān",
+            "lang": "OE",
+            "gloss": "one",
+            "pos": "NUM",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "https://bosworthtoller.com/1609"
+                }
+            ]
+        },
+        {
+            "id": 1217,
+            "text": "cniht",
+            "lang": "OE",
+            "gloss": "knight",
+            "pos": "N",
+            "classes": [
+                "masc"
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "https://bosworthtoller.com/6460"
+                }
+            ]
+        },
+        {
+            "id": 1218,
+            "text": "ōþrum",
+            "lang": "OE"
+        },
+        {
+            "id": 1219,
+            "text": "ōðer",
+            "lang": "OE",
+            "gloss": "other",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "https://bosworthtoller.com/25044"
+                }
+            ]
+        },
+        {
+            "id": 1220,
+            "text": "ungelíc",
+            "lang": "OE",
+            "gloss": "unlike",
+            "pos": "ADJ",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "https://bosworthtoller.com/33137"
+                }
+            ]
+        },
+        {
+            "id": 1222,
+            "text": "gelamp",
+            "lang": "OE",
+            "gloss": "occur.PST"
+        },
+        {
+            "id": 1223,
+            "text": "gelimpan",
+            "lang": "OE",
+            "gloss": "occur",
+            "pos": "V",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "https://bosworthtoller.com/15010"
+                }
+            ]
+        },
+        {
+            "id": 1224,
+            "text": "cyninges",
+            "lang": "OE"
+        },
+        {
+            "id": 1225,
+            "text": "huntan",
+            "lang": "OE"
+        },
+        {
+            "id": 1226,
+            "text": "hunta",
+            "lang": "OE",
+            "gloss": "hunter",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "https://bosworthtoller.com/19980"
+                }
+            ]
+        },
+        {
+            "id": 1227,
+            "text": "micelne",
+            "lang": "OE",
+            "gloss": "great.ACC"
+        },
+        {
+            "id": 1228,
+            "text": "micel",
+            "lang": "OE",
+            "gloss": "great",
+            "pos": "ADJ",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "https://bosworthtoller.com/22770"
+                }
+            ]
+        },
+        {
+            "id": 1229,
+            "text": "beran",
+            "lang": "OE"
+        },
+        {
+            "id": 1230,
+            "text": "bera",
+            "lang": "OE",
+            "gloss": "bear",
+            "pos": "N",
+            "classes": [
+                "masc"
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "https://bosworthtoller.com/3798"
+                }
+            ]
+        },
+        {
+            "id": 1231,
+            "text": "gemētton",
+            "lang": "OE",
+            "gloss": "meet.PST"
+        },
+        {
+            "id": 1232,
+            "text": "mētan",
+            "lang": "OE",
+            "gloss": "meet",
+            "pos": "V",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "https://bosworthtoller.com/22709"
+                }
+            ]
+        },
+        {
+            "id": 1233,
+            "text": "beorgum",
+            "lang": "OE"
+        },
+        {
+            "id": 1234,
+            "text": "beorg",
+            "lang": "OE",
+            "gloss": "hill",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "https://bosworthtoller.com/3728"
+                }
+            ]
+        },
+        {
+            "id": 1235,
+            "text": "hie",
+            "lang": "OE",
+            "gloss": "he.NOM.PL"
+        },
+        {
+            "id": 1236,
+            "text": "spyredon",
+            "lang": "OE"
+        },
+        {
+            "id": 1237,
+            "text": "spyrian",
+            "lang": "OE",
+            "gloss": "track",
+            "pos": "V",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "https://bosworthtoller.com/28609"
+                }
+            ]
+        },
+        {
+            "id": 1238,
+            "text": "to",
+            "lang": "OE"
+        },
+        {
+            "id": 1239,
+            "text": "tó",
+            "lang": "OE",
+            "gloss": "to",
+            "pos": "PREP",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "https://bosworthtoller.com/30587"
+                }
+            ]
+        },
+        {
+            "id": 1240,
+            "text": "denne",
+            "lang": "OE"
+        },
+        {
+            "id": 1241,
+            "text": "denn",
+            "lang": "OE",
+            "gloss": "den",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "https://bosworthtoller.com/7570"
+                }
+            ]
+        },
+        {
+            "id": 1242,
+            "text": "hine",
+            "lang": "OE",
+            "gloss": "he.ACC"
+        },
+        {
+            "id": 1243,
+            "text": "þǣr",
+            "lang": "OE",
+            "gloss": "there",
+            "pos": "ADV",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "https://bosworthtoller.com/31455"
+                }
+            ]
+        },
+        {
+            "id": 1244,
+            "text": "ofslōgon",
+            "lang": "OE",
+            "gloss": "kill.PST"
+        },
+        {
+            "id": 1245,
+            "text": "ofslēan",
+            "lang": "OE",
+            "gloss": "kill",
+            "pos": "V",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "https://bosworthtoller.com/56368"
+                }
+            ]
+        },
+        {
+            "id": 1246,
+            "text": "fæt",
+            "lang": "OE",
+            "gloss": "vessel",
+            "pos": "N",
+            "classes": [
+                "neut",
+                "a-stem"
+            ]
+        },
+        {
+            "id": 1247,
+            "text": "wīf",
+            "lang": "OE",
+            "gloss": "woman",
+            "pos": "N",
+            "classes": [
+                "neut",
+                "a-stem"
+            ]
+        },
+        {
+            "id": 1250,
+            "text": "engel",
+            "lang": "OE",
+            "gloss": "angel",
+            "pos": "N",
+            "classes": [
+                "masc",
+                "a-stem"
+            ]
+        },
+        {
+            "id": 1251,
+            "text": "hēafod",
+            "lang": "OE",
+            "gloss": "head",
+            "pos": "N",
+            "classes": [
+                "neut",
+                "a-stem"
+            ]
+        },
+        {
+            "id": 1259,
+            "text": "ofermēttu",
+            "lang": "OE",
+            "gloss": "pride",
+            "pos": "N",
+            "classes": [
+                "fem",
+                "o-stem"
+            ]
+        },
+        {
+            "id": 1260,
+            "text": "frōfor",
+            "lang": "OE",
+            "gloss": "solace",
+            "pos": "N",
+            "classes": [
+                "fem",
+                "o-stem"
+            ]
         }
     ],
     "rules": [
@@ -7306,6 +7865,12 @@
                 {
                     "instructions": [
                         {
+                            "type": "ApplyRule",
+                            "args": [
+                                "1249"
+                            ]
+                        },
+                        {
                             "type": "Append",
                             "args": [
                                 "'es'"
@@ -7330,6 +7895,12 @@
                 },
                 {
                     "instructions": [
+                        {
+                            "type": "ApplyRule",
+                            "args": [
+                                "1249"
+                            ]
+                        },
                         {
                             "type": "Append",
                             "args": [
@@ -7380,6 +7951,12 @@
                 },
                 {
                     "instructions": [
+                        {
+                            "type": "ApplyRule",
+                            "args": [
+                                "1249"
+                            ]
+                        },
                         {
                             "type": "Append",
                             "args": [
@@ -7433,6 +8010,12 @@
                 {
                     "instructions": [
                         {
+                            "type": "ApplyRule",
+                            "args": [
+                                "1249"
+                            ]
+                        },
+                        {
                             "type": "Append",
                             "args": [
                                 "'e'"
@@ -7472,6 +8055,12 @@
                 {
                     "instructions": [
                         {
+                            "type": "ApplyRule",
+                            "args": [
+                                "1249"
+                            ]
+                        },
+                        {
                             "type": "Append",
                             "args": [
                                 "'e'"
@@ -7496,6 +8085,12 @@
                 },
                 {
                     "instructions": [
+                        {
+                            "type": "ApplyRule",
+                            "args": [
+                                "1249"
+                            ]
+                        },
                         {
                             "type": "Append",
                             "args": [
@@ -7547,6 +8142,12 @@
                 {
                     "instructions": [
                         {
+                            "type": "ApplyRule",
+                            "args": [
+                                "1249"
+                            ]
+                        },
+                        {
                             "type": "Append",
                             "args": [
                                 "'e'"
@@ -7573,6 +8174,12 @@
             "branches": [
                 {
                     "instructions": [
+                        {
+                            "type": "ApplyRule",
+                            "args": [
+                                "1249"
+                            ]
+                        },
                         {
                             "type": "Append",
                             "args": [
@@ -7605,6 +8212,42 @@
                 {
                     "instructions": [
                         {
+                            "type": "NoChange",
+                            "args": [
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.AndRuleConditionData",
+                        "members": [
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "ClassMatches",
+                                "characters": "neut"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "ClassMatches",
+                                "characters": "a-stem"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.SyllableRuleConditionData",
+                                "matchType": "Contains",
+                                "index": -1,
+                                "cls": "long vowel"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ApplyRule",
+                            "args": [
+                                "1249"
+                            ]
+                        },
+                        {
                             "type": "Append",
                             "args": [
                                 "'u'"
@@ -7631,6 +8274,52 @@
                                 "characters": "a-stem"
                             }
                         ]
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeEnding",
+                            "args": [
+                                "a"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.AndRuleConditionData",
+                        "members": [
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "ClassMatches",
+                                "characters": "o-stem"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "EndsWith",
+                                "characters": "u"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ApplyRule",
+                            "args": [
+                                "1249"
+                            ]
+                        },
+                        {
+                            "type": "Append",
+                            "args": [
+                                "'a'"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "ClassMatches",
+                        "characters": "o-stem"
                     }
                 }
             ],
@@ -7673,6 +8362,12 @@
                 {
                     "instructions": [
                         {
+                            "type": "ApplyRule",
+                            "args": [
+                                "1249"
+                            ]
+                        },
+                        {
                             "type": "Append",
                             "args": [
                                 "'a'"
@@ -7704,6 +8399,12 @@
                 {
                     "instructions": [
                         {
+                            "type": "ApplyRule",
+                            "args": [
+                                "1249"
+                            ]
+                        },
+                        {
                             "type": "Append",
                             "args": [
                                 "'a'"
@@ -7730,6 +8431,52 @@
                                 "characters": "a-stem"
                             }
                         ]
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeEnding",
+                            "args": [
+                                "a"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.AndRuleConditionData",
+                        "members": [
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "ClassMatches",
+                                "characters": "o-stem"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "EndsWith",
+                                "characters": "u"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ApplyRule",
+                            "args": [
+                                "1249"
+                            ]
+                        },
+                        {
+                            "type": "Append",
+                            "args": [
+                                "'a'"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "ClassMatches",
+                        "characters": "o-stem"
                     }
                 }
             ],
@@ -7747,6 +8494,12 @@
                 {
                     "instructions": [
                         {
+                            "type": "ApplyRule",
+                            "args": [
+                                "1249"
+                            ]
+                        },
+                        {
                             "type": "Append",
                             "args": [
                                 "'um'"
@@ -7778,6 +8531,12 @@
                 {
                     "instructions": [
                         {
+                            "type": "ApplyRule",
+                            "args": [
+                                "1249"
+                            ]
+                        },
+                        {
                             "type": "Append",
                             "args": [
                                 "'um'"
@@ -7804,6 +8563,64 @@
                                 "characters": "a-stem"
                             }
                         ]
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeEnding",
+                            "args": [
+                                "um"
+                            ]
+                        },
+                        {
+                            "type": "ApplyRule",
+                            "args": [
+                                "1188"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.AndRuleConditionData",
+                        "members": [
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "ClassMatches",
+                                "characters": "o-stem"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "EndsWith",
+                                "characters": "u"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ApplyRule",
+                            "args": [
+                                "1249"
+                            ]
+                        },
+                        {
+                            "type": "Append",
+                            "args": [
+                                "'um'"
+                            ]
+                        },
+                        {
+                            "type": "ApplyRule",
+                            "args": [
+                                "1188"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "ClassMatches",
+                        "characters": "o-stem"
                     }
                 }
             ],
@@ -9429,6 +10246,461 @@
             "notes": "",
             "preInstructions": [
             ]
+        },
+        {
+            "id": 1195,
+            "name": "oe-participle",
+            "fromLang": "OE",
+            "toLang": "OE",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeEnding",
+                            "args": [
+                                "ende"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "characters": "an"
+                    }
+                }
+            ],
+            "addedCategories": ".PART",
+            "fromPOS": "V",
+            "notes": "",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 1248,
+            "name": "oe-delete-vowel",
+            "fromLang": "OE",
+            "toLang": "OE",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "SoundDisappears",
+                            "args": [
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "PhonemeMatches",
+                        "cls": "vowel"
+                    }
+                }
+            ],
+            "addedCategories": null,
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 1249,
+            "name": "oe-syncope",
+            "fromLang": "OE",
+            "toLang": "OE",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ApplySoundRule",
+                            "args": [
+                                "1248",
+                                "second vowel"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.AndRuleConditionData",
+                        "members": [
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "NumberOfSyllables",
+                                "characters": "2"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.SyllableRuleConditionData",
+                                "matchType": "EndsWith",
+                                "index": 1,
+                                "cls": "consonant"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ApplySoundRule",
+                            "args": [
+                                "1248",
+                                "third vowel"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.AndRuleConditionData",
+                        "members": [
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "NumberOfSyllables",
+                                "characters": "2"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.SyllableRuleConditionData",
+                                "matchType": "Contains",
+                                "index": 1,
+                                "cls": "diphthong"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ApplySoundRule",
+                            "args": [
+                                "1248",
+                                "second vowel"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.AndRuleConditionData",
+                        "members": [
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "NumberOfSyllables",
+                                "characters": "2"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.SyllableRuleConditionData",
+                                "matchType": "Contains",
+                                "index": 1,
+                                "cls": "long vowel"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "NoChange",
+                            "args": [
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": null,
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 1252,
+            "name": "oe-past-stem",
+            "fromLang": "OE",
+            "toLang": "OE",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeEnding",
+                            "args": [
+                                "d"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.AndRuleConditionData",
+                        "members": [
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "EndsWith",
+                                "characters": "an"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "ClassMatches",
+                                "characters": "pret-d"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeEnding",
+                            "args": [
+                                "ed"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.AndRuleConditionData",
+                        "members": [
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "EndsWith",
+                                "characters": "an"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "ClassMatches",
+                                "characters": "pret-ed"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeEnding",
+                            "args": [
+                                "t"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.AndRuleConditionData",
+                        "members": [
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "EndsWith",
+                                "characters": "an"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "ClassMatches",
+                                "characters": "pret-t"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeEnding",
+                            "args": [
+                                "od"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.AndRuleConditionData",
+                        "members": [
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "EndsWith",
+                                "characters": "an"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "ClassMatches",
+                                "characters": "pret-od"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "addedCategories": ".PST",
+            "fromPOS": "V",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 1253,
+            "name": "oe-past-weak-1sg",
+            "fromLang": "OE",
+            "toLang": "OE",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ApplyRule",
+                            "args": [
+                                "1252"
+                            ]
+                        },
+                        {
+                            "type": "Append",
+                            "args": [
+                                "'e'"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".PST.1SG",
+            "fromPOS": "V",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 1254,
+            "name": "oe-past-weak-2sg",
+            "fromLang": "OE",
+            "toLang": "OE",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ApplyRule",
+                            "args": [
+                                "1252"
+                            ]
+                        },
+                        {
+                            "type": "Append",
+                            "args": [
+                                "'est'"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".PST.2SG",
+            "fromPOS": "V",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 1255,
+            "name": "oe-past-weak-3sg",
+            "fromLang": "OE",
+            "toLang": "OE",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ApplyRule",
+                            "args": [
+                                "1252"
+                            ]
+                        },
+                        {
+                            "type": "Append",
+                            "args": [
+                                "'e'"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".PST.3SG",
+            "fromPOS": "V",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 1256,
+            "name": "oe-past-weak-1pl",
+            "fromLang": "OE",
+            "toLang": "OE",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ApplyRule",
+                            "args": [
+                                "1252"
+                            ]
+                        },
+                        {
+                            "type": "Append",
+                            "args": [
+                                "'on'"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".PST.1PL",
+            "fromPOS": "V",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 1257,
+            "name": "oe-past-weak-2pl",
+            "fromLang": "OE",
+            "toLang": "OE",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ApplyRule",
+                            "args": [
+                                "1252"
+                            ]
+                        },
+                        {
+                            "type": "Append",
+                            "args": [
+                                "'on'"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".PST.2PL",
+            "fromPOS": "V",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 1258,
+            "name": "oe-past-weak-3pl",
+            "fromLang": "OE",
+            "toLang": "OE",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ApplyRule",
+                            "args": [
+                                "1252"
+                            ]
+                        },
+                        {
+                            "type": "Append",
+                            "args": [
+                                "'on'"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".PST.3PL",
+            "fromPOS": "V",
+            "preInstructions": [
+            ]
         }
     ],
     "links": [
@@ -9968,12 +11240,18 @@
         {
             "from": 325,
             "to": 326,
-            "type": ">"
+            "type": ">",
+            "ruleIds": [
+                1255
+            ]
         },
         {
             "from": 327,
             "to": 328,
-            "type": ">"
+            "type": ">",
+            "ruleIds": [
+                1255
+            ]
         },
         {
             "from": 329,
@@ -10110,7 +11388,10 @@
         {
             "from": 444,
             "to": 406,
-            "type": ">"
+            "type": ">",
+            "ruleIds": [
+                473
+            ]
         },
         {
             "from": 445,
@@ -11628,6 +12909,163 @@
             "ruleIds": [
                 1012
             ]
+        },
+        {
+            "from": 1190,
+            "to": 1191,
+            "type": ">",
+            "ruleIds": [
+                473
+            ]
+        },
+        {
+            "from": 1196,
+            "to": 1197,
+            "type": ">",
+            "ruleIds": [
+                1195
+            ]
+        },
+        {
+            "from": 1199,
+            "to": 1200,
+            "type": ">",
+            "ruleIds": [
+                473
+            ]
+        },
+        {
+            "from": 1204,
+            "to": 1205,
+            "type": ">",
+            "ruleIds": [
+                467
+            ]
+        },
+        {
+            "from": 1209,
+            "to": 1210,
+            "type": ">",
+            "ruleIds": [
+                1255
+            ]
+        },
+        {
+            "from": 1211,
+            "to": 1212,
+            "type": ">",
+            "ruleIds": [
+                468
+            ]
+        },
+        {
+            "from": 1213,
+            "to": 1214,
+            "type": ">",
+            "ruleIds": [
+                469
+            ]
+        },
+        {
+            "from": 1218,
+            "to": 1219,
+            "type": ">",
+            "ruleIds": [
+                473
+            ]
+        },
+        {
+            "from": 1222,
+            "to": 1223,
+            "type": ">"
+        },
+        {
+            "from": 1224,
+            "to": 1206,
+            "type": ">",
+            "ruleIds": [
+                467
+            ]
+        },
+        {
+            "from": 1225,
+            "to": 1226,
+            "type": ">",
+            "ruleIds": [
+                470
+            ]
+        },
+        {
+            "from": 1205,
+            "to": 321,
+            "type": "="
+        },
+        {
+            "from": 1227,
+            "to": 1228,
+            "type": ">"
+        },
+        {
+            "from": 1229,
+            "to": 1230,
+            "type": ">",
+            "ruleIds": [
+                468
+            ]
+        },
+        {
+            "from": 1231,
+            "to": 1232,
+            "type": ">"
+        },
+        {
+            "from": 1233,
+            "to": 1234,
+            "type": ">",
+            "ruleIds": [
+                473
+            ]
+        },
+        {
+            "from": 1235,
+            "to": 286,
+            "type": ">"
+        },
+        {
+            "from": 1236,
+            "to": 1237,
+            "type": ">",
+            "ruleIds": [
+                1258
+            ]
+        },
+        {
+            "from": 1238,
+            "to": 1239,
+            "type": "="
+        },
+        {
+            "from": 1240,
+            "to": 1241,
+            "type": ">",
+            "ruleIds": [
+                469
+            ]
+        },
+        {
+            "from": 1242,
+            "to": 286,
+            "type": ">"
+        },
+        {
+            "from": 1244,
+            "to": 1245,
+            "type": ">"
+        },
+        {
+            "from": 438,
+            "to": 23,
+            "type": ">"
         }
     ],
     "corpusTexts": [
@@ -13448,6 +14886,64 @@
                 null,
                 null
             ]
+        },
+        {
+            "id": 1189,
+            "text": "On ǣrdagum wæs wuniende be norþdǣlum middangeardes sum cyning, þe āngan dohtor hæfde.\nOn his hūse wæs ēac ān cniht óþrum ungelíc.\nFor þam þe hit ǣr gelamp þæt þæs cyninges huntan micelne beran gemētton on þam beorgum,\nond hie spyredon æfter him to his denne, and hine þǣr ofslōgon.",
+            "title": "Sellic Spell",
+            "lang": "OE",
+            "wordIds": [
+                null,
+                1190,
+                null,
+                1196,
+                1198,
+                1199,
+                1204,
+                null,
+                1206,
+                1207,
+                1211,
+                1208,
+                1209,
+                null,
+                null,
+                1213,
+                null,
+                1215,
+                1216,
+                1217,
+                1218,
+                1220,
+                null,
+                null,
+                null,
+                null,
+                null,
+                1222,
+                null,
+                null,
+                1224,
+                1225,
+                1227,
+                1229,
+                1231,
+                null,
+                null,
+                1233,
+                null,
+                1235,
+                1236,
+                null,
+                null,
+                1238,
+                null,
+                1240,
+                null,
+                1242,
+                1243,
+                1244
+            ]
         }
     ],
     "paradigms": [
@@ -14583,6 +16079,22 @@
                 983,
                 951
             ]
+        },
+        {
+            "id": 1202,
+            "compoundId": 1200,
+            "componentIds": [
+                1201,
+                1203
+            ]
+        },
+        {
+            "id": 1221,
+            "compoundId": 1191,
+            "componentIds": [
+                298,
+                1127
+            ]
         }
     ],
     "translations": [
@@ -14843,7 +16355,8 @@
             "name": "Number",
             "pos": [
                 "N",
-                "ADJ"
+                "ADJ",
+                "V"
             ],
             "values": [
                 {
@@ -14874,6 +16387,44 @@
                 {
                     "name": "Neuter",
                     "abbreviation": "N"
+                }
+            ]
+        },
+        {
+            "lang": "OE",
+            "name": "Tense",
+            "pos": [
+                "V"
+            ],
+            "values": [
+                {
+                    "name": "Present",
+                    "abbreviation": "PRES"
+                },
+                {
+                    "name": "Past",
+                    "abbreviation": "PST"
+                }
+            ]
+        },
+        {
+            "lang": "OE",
+            "name": "Person",
+            "pos": [
+                "V"
+            ],
+            "values": [
+                {
+                    "name": "1st",
+                    "abbreviation": "1"
+                },
+                {
+                    "name": "2nd",
+                    "abbreviation": "2"
+                },
+                {
+                    "name": "3rd",
+                    "abbreviation": "3"
                 }
             ]
         },
@@ -14989,8 +16540,37 @@
             ],
             "values": [
                 {
-                    "name": "a-class",
-                    "abbreviation": "a-class"
+                    "name": "a-stem",
+                    "abbreviation": "a-stem"
+                },
+                {
+                    "name": "o-stem",
+                    "abbreviation": "o-stem"
+                }
+            ]
+        },
+        {
+            "lang": "OE",
+            "name": "Weak preterite suffix",
+            "pos": [
+                "V"
+            ],
+            "values": [
+                {
+                    "name": "-d-",
+                    "abbreviation": "pret-d"
+                },
+                {
+                    "name": "-ed-",
+                    "abbreviation": "pret-ed"
+                },
+                {
+                    "name": "-t-",
+                    "abbreviation": "pret-t"
+                },
+                {
+                    "name": "-od-",
+                    "abbreviation": "pret-od"
                 }
             ]
         },
