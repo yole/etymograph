@@ -16,46 +16,44 @@ export default function WordForm(props) {
     function handleFormSubmit(e) {
         if (props.updateId !== undefined) {
             updateWord(props.updateId, newWordText, newWordGloss, newWordFullGloss, newWordPosClasses, newWordSource, newWordNotes)
-                .then(r => r.json())
-                .then(r => props.submitted(r))
+                .then(r => r.json().then(jr => props.submitted(r.status, jr)))
         }
         else {
             addWord(newWordLanguage, newWordText, newWordGloss, newWordFullGloss, newWordPosClasses, newWordSource, newWordNotes)
-                .then(r => r.json())
                 .then(r => {
-                    let onFulfilled = lr => {
-                        if (lr.status === 200)
-                            props.submitted(r)
-                        else
-                            lr.json().then(lr => props.submitted(r, lr))
-                    }
+                    r.json().then(jr => {
+                        let onFulfilled = lr => {
+                            if (lr.status === 200)
+                                props.submitted(r.status, jr)
+                            else
+                                lr.json().then(lr => props.submitted(r.status, jr, lr))
+                        }
 
-                    if (isAddingLink) {
-                        let fromId, toId
-                        if (props.reverseLink === true) {
-                            [fromId, toId] = [props.linkTarget.id, r.id]
+                        if (isAddingLink) {
+                            let fromId, toId
+                            if (props.reverseLink === true) {
+                                [fromId, toId] = [props.linkTarget.id, jr.id]
+                            } else {
+                                [fromId, toId] = [jr.id, props.linkTarget.id]
+                            }
+                            addLink(fromId, toId, props.linkType, newWordLinkRuleNames, newWordLinkSource)
+                                .then(onFulfilled)
+                        } else if (props.newCompound === true) {
+                            createCompound(props.linkTarget.id, jr.id, newWordLinkSource).then(onFulfilled)
+                        } else if (props.addToCompound !== undefined) {
+                            addToCompound(props.addToCompound, jr.id).then(onFulfilled)
+                        } else {
+                            props.submitted(r.status, jr)
                         }
-                        else {
-                            [fromId, toId] = [r.id, props.linkTarget.id]
-                        }
-                        addLink(fromId, toId, props.linkType, newWordLinkRuleNames, newWordLinkSource)
-                            .then(onFulfilled)
-                    }
-                    else if (props.newCompound === true) {
-                        createCompound(props.linkTarget.id, r.id, newWordLinkSource).then(onFulfilled)
-                    }
-                    else if (props.addToCompound !== undefined) {
-                        addToCompound(props.addToCompound, r.id).then(onFulfilled)
-                    }
-                    else {
-                        props.submitted(r)
+                    })
+                    if (r.status === 200) {
+                        setNewWordText("")
+                        setNewWordGloss("")
+                        setNewWordFullGloss("")
+                        setNewWordNotes("")
+                        setNewWordLinkSource("")
                     }
                 })
-            setNewWordText("")
-            setNewWordGloss("")
-            setNewWordFullGloss("")
-            setNewWordNotes("")
-            setNewWordLinkSource("")
         }
 
         e.preventDefault()

@@ -142,23 +142,28 @@ function SingleWord(params) {
     const [errorText, setErrorText] = useState("")
     useEffect(() => { document.title = "Etymograph : " + (word === undefined ? "Unknown Word" : word.text) })
 
-    function submitted(r, lr) {
+    function submitted(status, r, lr) {
         if (lr && lr.status !== 200) {
             setErrorText(lr.message)
         }
         else {
-            setErrorText("")
             setShowBaseWord(false)
             setShowDerivedWord(false)
             setShowCompoundComponent(false)
             setShowRelated(false)
             setShowVariation(false)
             setAddToCompound(undefined)
-            router.replace(router.asPath)
+            if (status !== 200) {
+                setErrorText(r.message)
+            }
+            else {
+                setErrorText("")
+                router.replace(router.asPath)
+            }
         }
     }
 
-    function editSubmitted(r) {
+    function editSubmitted(status, r) {
         setEditMode(false)
         if (r.text !== word.text) {
             router.push(`/word/${word.language}/${r.text}`)

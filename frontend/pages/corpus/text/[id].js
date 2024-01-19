@@ -65,7 +65,7 @@ export default function CorpusText(params) {
         router.replace(router.asPath)
     }
 
-    function wordSubmitted(word) {
+    function wordSubmitted(status, word) {
         setWordFormVisible(false)
         associateWord(router.query.id, word.id, wordIndex).then(() => {
             router.replace(router.asPath)

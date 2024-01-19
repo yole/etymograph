@@ -1,5 +1,5 @@
 import WordForm from "@/components/WordForm";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import {fetchBackend, allowEdit} from "@/api";
 import {useRouter} from "next/router";
 import Link from "next/link";
@@ -34,12 +34,19 @@ export default function Dictionary(params) {
     const filterText = filter === "names" ? "Names" :
         (filter === "compounds" ? "Compounds" : "Dictionary")
 
+    const [errorText, setErrorText] = useState("")
     useEffect(() => { document.title = "Etymograph : " + dict.language.name + " : " + filterText})
 
-    function submitted(word) {
-        router.replace(router.asPath)
-        if (word.gloss === "" || word.gloss === null) {
-            router.push("/word/" + word.language + "/" + word.text)
+    function submitted(status, r) {
+        if (status !== 200) {
+            setErrorText(r.message)
+        }
+        else {
+            setErrorText("")
+            router.replace(router.asPath)
+            if (r.gloss === "" || r.gloss === null) {
+                router.push("/word/" + r.language + "/" + r.text)
+            }
         }
     }
 
@@ -50,6 +57,8 @@ export default function Dictionary(params) {
         {allowEdit() && <>
             <h3>Add word</h3>
             <WordForm language={dict.language.shortName} languageReadOnly={true} submitted={submitted}/>
+            <p/>
+            {errorText !== "" && <div className="errorText">{errorText}</div>}
         </>}
         <ul>
             {dict.words.map(w => {
