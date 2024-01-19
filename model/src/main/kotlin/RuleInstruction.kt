@@ -19,27 +19,25 @@ enum class InstructionType(
 }
 
 open class RuleInstruction(val type: InstructionType, val arg: String) {
-    open fun apply(rule: Rule, word: Word, graph: GraphRepository): Word = when(type) {
+    open fun apply(rule: Rule, branch: RuleBranch?, word: Word, graph: GraphRepository): Word = when(type) {
         InstructionType.NoChange -> word
-        InstructionType.ChangeEnding -> changeEnding(word, rule)
+        InstructionType.ChangeEnding -> changeEnding(word, rule, branch)
         else -> throw IllegalStateException("Can't apply phoneme instruction to full word")
     }
 
-    private fun changeEnding(word: Word, rule: Rule): Word {
-        for (branch in rule.logic.branches) {
-            if (branch.matches(word) && this in branch.instructions) {
-                val condition = branch.condition.findLeafConditions(ConditionType.EndsWith)
-                    .firstOrNull { it.matches(word) }
-                    ?: return word
-                val textWithoutEnding = if (condition.phonemeClass != null) {
-                    // TODO parse with PhonemeIterator
-                    word.text.dropLast(1)
-                }
-                else {
-                    word.text.dropLast(condition.parameter!!.length)
-                }
-                return word.derive(textWithoutEnding + arg, WordSegment(textWithoutEnding.length, arg.length, rule.addedCategories, rule))
+    private fun changeEnding(word: Word, rule: Rule, branch: RuleBranch?): Word {
+        if (branch != null) {
+            val condition = branch.condition.findLeafConditions(ConditionType.EndsWith)
+                .firstOrNull { it.matches(word) }
+                ?: return word
+            val textWithoutEnding = if (condition.phonemeClass != null) {
+                // TODO parse with PhonemeIterator
+                word.text.dropLast(1)
             }
+            else {
+                word.text.dropLast(condition.parameter!!.length)
+            }
+            return word.derive(textWithoutEnding + arg, WordSegment(textWithoutEnding.length, arg.length, rule.addedCategories, rule))
         }
         return word
     }
@@ -104,15 +102,15 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
     }
 }
 
-fun List<RuleInstruction>.apply(rule: Rule, word: Word, graph: GraphRepository): Word {
+fun List<RuleInstruction>.apply(rule: Rule, branch: RuleBranch?, word: Word, graph: GraphRepository): Word {
     val normalizedWord = word.derive(word.text.trimEnd('-'))
-    return fold(normalizedWord) { s, i -> i.apply(rule, s, graph) }
+    return fold(normalizedWord) { s, i -> i.apply(rule, branch, s, graph) }
 }
 
 class ApplyRuleInstruction(val ruleRef: RuleRef)
     : RuleInstruction(InstructionType.ApplyRule, "")
 {
-    override fun apply(rule: Rule, word: Word, graph: GraphRepository): Word {
+    override fun apply(rule: Rule, branch: RuleBranch?, word: Word, graph: GraphRepository): Word {
         val targetRule = ruleRef.resolve()
         val link = graph.getLinksTo(word).find { it.rules == listOf(targetRule) }
         return link?.fromEntity as? Word
@@ -141,7 +139,7 @@ class ApplySoundRuleInstruction(language: Language, val ruleRef: RuleRef, arg: S
 {
     val seekTarget = SeekTarget.parse(arg, language)
 
-    override fun apply(rule: Rule, word: Word, graph: GraphRepository): Word {
+    override fun apply(rule: Rule, branch: RuleBranch?, word: Word, graph: GraphRepository): Word {
         val phonemes = PhonemeIterator(word)
         if (phonemes.seek(seekTarget)) {
             ruleRef.resolve().applyToPhoneme(phonemes)
@@ -174,7 +172,7 @@ class ApplySoundRuleInstruction(language: Language, val ruleRef: RuleRef, arg: S
 class ApplyStressInstruction(val language: Language, arg: String) : RuleInstruction(InstructionType.ApplyStress, arg) {
     private val syllableIndex = Ordinals.parse(arg)?.first ?: throw RuleParseException("Can't parse ordinal '$arg'")
 
-    override fun apply(rule: Rule, word: Word, graph: GraphRepository): Word {
+    override fun apply(rule: Rule, branch: RuleBranch?, word: Word, graph: GraphRepository): Word {
         val syllables = breakIntoSyllables(word)
         val vowel = language.phonemeClassByName(PhonemeClass.vowelClassName) ?: return word
         val syllable = Ordinals.at(syllables, syllableIndex) ?: return word
@@ -195,7 +193,7 @@ class PrependAppendInstruction(type: InstructionType, language: Language, arg: S
         }
     }
 
-    override fun apply(rule: Rule, word: Word, graph: GraphRepository): Word {
+    override fun apply(rule: Rule, branch: RuleBranch?, word: Word, graph: GraphRepository): Word {
         if (literalArg != null) {
             return if (type == InstructionType.Prepend)
                 word.derive(literalArg + word.text)

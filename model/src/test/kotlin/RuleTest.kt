@@ -20,7 +20,7 @@ class RuleTest : QBaseTest() {
     @Test
     fun instructions() {
         val i = PrependAppendInstruction(InstructionType.Append, q, "'a'")
-        assertEquals("parma", i.apply(dummyRule, q.word("parm"), emptyRepo).text)
+        assertEquals("parma", i.apply(dummyRule, null, q.word("parm"), emptyRepo).text)
     }
 
     @Test
@@ -126,7 +126,7 @@ class RuleTest : QBaseTest() {
             - new sound is 'á'
         """.trimIndent())
         val applySoundRuleInstruction = ApplySoundRuleInstruction(q, RuleRef.to(soundRule), "first vowel")
-        assertEquals("lásse", applySoundRuleInstruction.apply(soundRule, q.word("lasse"), emptyRepo).text)
+        assertEquals("lásse", applySoundRuleInstruction.apply(soundRule, null, q.word("lasse"), emptyRepo).text)
     }
 
     @Test
@@ -250,10 +250,10 @@ class RuleTest : QBaseTest() {
     fun prepend() {
         val rule = parseRule(q, q, "- prepend first vowel")
         val instruction = rule.logic.branches[0].instructions[0]
-        assertEquals("utul", instruction.apply(rule, q.word("tul"), emptyRepo).text)
+        assertEquals("utul", instruction.apply(rule, null, q.word("tul"), emptyRepo).text)
         val data = instruction.toSerializedFormat()
         val deserialized = ruleInstructionFromSerializedFormat(emptyRepo, q, data)
-        assertEquals("utul", deserialized.apply(rule, q.word("tul"), emptyRepo).text)
+        assertEquals("utul", deserialized.apply(rule, null, q.word("tul"), emptyRepo).text)
         assertEquals("prepend first vowel", instruction.toEditableText())
     }
 

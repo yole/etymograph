@@ -22,7 +22,7 @@ class RuleBranch(val condition: RuleCondition, val instructions: List<RuleInstru
     fun matches(word: Word) = condition.matches(word)
 
     fun apply(rule: Rule, word: Word, graph: GraphRepository): Word {
-        return instructions.apply(rule, word, graph)
+        return instructions.apply(rule, this, word, graph)
     }
 
     fun reverseApply(rule: Rule, word: Word): List<String> {
@@ -111,7 +111,7 @@ class Rule(
             return deriveWord(word, phonemes.result(), word.stressedPhonemeIndex, null)
         }
 
-        val preWord = if (logic.preInstructions.isEmpty()) word else logic.preInstructions.apply(this, word, graph)
+        val preWord = if (logic.preInstructions.isEmpty()) word else logic.preInstructions.apply(this, null, word, graph)
         for (branch in logic.branches) {
             if (branch.matches(preWord)) {
                 val resultWord = branch.apply(this, preWord, graph)
