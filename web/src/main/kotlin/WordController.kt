@@ -267,7 +267,7 @@ class WordController(val graphService: GraphService) {
             val generatedParadigm = paradigm.generate(word, graph)
             val substitutedParadigm = generatedParadigm.map { colWords ->
                 colWords.map { cellWords ->
-                    cellWords?.map { cellWord ->
+                    cellWords?.map { (cellWord, _) ->
                         WordParadigmWordModel(cellWord.text, cellWord.id)
                     } ?: emptyList()
                 }

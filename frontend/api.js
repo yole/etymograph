@@ -24,6 +24,12 @@ export async function fetchAllLanguagePaths() {
     return {paths, fallback: false}
 }
 
+export async function fetchAlternatives(corpusTextId, index) {
+    const fullUrl = process.env.NEXT_PUBLIC_BACKEND_URL + `corpus/text/${corpusTextId}/alternatives/${index}`
+    const res= await fetch(fullUrl, { headers: { 'Accept': 'application/json'} })
+    return await res.json()
+}
+
 function postToBackend(endpoint, data) {
     let url = process.env.NEXT_PUBLIC_BACKEND_URL + endpoint;
     console.log(url)
@@ -92,6 +98,10 @@ export function editTranslation(id, text, source) {
 
 export function associateWord(corpusTextId, wordId, index) {
     return postToBackend(`corpus/text/${corpusTextId}/associate`, {wordId: wordId, index: index})
+}
+
+export function acceptAlternative(corpusTextId, index, wordId, ruleId) {
+    return postToBackend(`corpus/text/${corpusTextId}/accept`, {wordId: wordId, ruleId: ruleId, index: index})
 }
 
 export function addLink(fromEntity, toEntity, linkType, ruleNames, source) {

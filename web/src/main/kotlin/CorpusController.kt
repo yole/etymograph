@@ -1,10 +1,9 @@
 package ru.yole.etymograph.web
 
+import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
-import ru.yole.etymograph.CorpusText
-import ru.yole.etymograph.Language
-import ru.yole.etymograph.Word
-import ru.yole.etymograph.calculateStress
+import org.springframework.web.server.ResponseStatusException
+import ru.yole.etymograph.*
 
 @RestController
 @CrossOrigin(origins = ["http://localhost:3000"])
@@ -138,6 +137,48 @@ class CorpusController(val graphService: GraphService) {
         val corpusText = graphService.resolveCorpusText(id)
         val word = graphService.resolveWord(params.wordId)
         corpusText.associateWord(params.index, word)
+        graphService.graph.save()
+    }
+
+    data class AlternativeViewModel(val gloss: String, val wordId: Int, val ruleId: Int)
+
+    @GetMapping("/corpus/text/{id}/alternatives/{index}")
+    fun requestAlternatives(@PathVariable id: Int, @PathVariable index: Int): List<AlternativeViewModel> {
+        val corpusText = graphService.resolveCorpusText(id)
+        val word = corpusText.words.getOrNull(index)
+        val wordText = word?.text ?: corpusText.normalizedWordTextAt(index)
+        val wordsWithMatchingText = graphService.graph.wordsByText(corpusText.language, wordText)
+        return wordsWithMatchingText.flatMap {
+            val gloss = it.gloss
+            if (gloss == null)
+                emptyList()
+            else {
+                val alts = graphService.graph.requestAlternatives(it)
+                alts.map { pc ->
+                    val rule = pc.rules.single()
+                    AlternativeViewModel(rule.applyCategories(gloss), it.id, rule.id)
+                }
+            }
+        }
+    }
+
+    data class AcceptAlternativeParameters(val index: Int, val wordId: Int, val ruleId: Int)
+
+    @PostMapping("/corpus/text/{id}/accept")
+    fun acceptAlternative(@PathVariable id: Int, @RequestBody params: AcceptAlternativeParameters) {
+        val corpusText = graphService.resolveCorpusText(id)
+        val rule = graphService.resolveRule(params.ruleId)
+        val word = graphService.resolveWord(params.wordId)
+
+        val gloss = word.gloss
+            ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST, "Accepting alternative with unglossed word ${word.id}")
+        val newGloss = rule.applyCategories(gloss)
+        val graph = graphService.graph
+        val newWord = graph.findOrAddWord(word.text, word.language, newGloss)
+        graph.addLink(newWord, word, Link.Derived, listOf(rule), emptyList(), null)
+        newWord.gloss = null
+
+        corpusText.associateWord(params.index, newWord)
         graphService.graph.save()
     }
 }

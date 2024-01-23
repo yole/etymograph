@@ -6,6 +6,8 @@ class CorpusWord(val index: Int, val text: String, val normalizedText: String, v
 
 class CorpusTextLine(val corpusWords: List<CorpusWord>)
 
+class CorpusWordAlternative(val gloss: String)
+
 class CorpusText(
     id: Int,
     text: String,
@@ -94,6 +96,8 @@ class CorpusText(
             }
         }
     }
+
+    fun normalizedWordTextAt(index: Int) = iterateWords().elementAt(index).normalizedText
 
     fun associateWord(index: Int, word: Word) {
         while (_words.size <= index) {

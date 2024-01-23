@@ -32,8 +32,8 @@ class ParadigmTest : QBaseTest() {
         val lasse = repo.findOrAddWord("lasse", q, "leaf", pos = "N")
 
         val lasseParadigm = paradigm.generate(lasse, repo)
-        assertEquals("lasse", lasseParadigm[0][0]?.get(0)?.text)
-        assertEquals("lasseo", lasseParadigm[0][1]?.get(0)?.text)
+        assertEquals("lasse", lasseParadigm[0][0]?.get(0)?.word?.text)
+        assertEquals("lasseo", lasseParadigm[0][1]?.get(0)?.word?.text)
     }
 
     @Test

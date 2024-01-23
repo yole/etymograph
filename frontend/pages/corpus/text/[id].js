@@ -3,7 +3,7 @@ import WordForm from "@/components/WordForm";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit } from '@fortawesome/free-solid-svg-icons'
 import WordWithStress from "@/components/WordWithStress";
-import {fetchBackend, associateWord, allowEdit, addTranslation} from "@/api";
+import {fetchBackend, associateWord, allowEdit, addTranslation, fetchAlternatives, acceptAlternative} from "@/api";
 import {useRouter} from "next/router";
 import Link from "next/link";
 import SourceRefs from "@/components/SourceRefs";
@@ -57,6 +57,7 @@ export default function CorpusText(params) {
     const [wordIndex, setWordIndex] = useState(-1)
     const [showTranslationForm, setShowTranslationForm] = useState(false)
     const [editTranslationId, setEditTranslationId] = useState(undefined)
+    const [alternatives, setAlternatives] = useState([])
     const router = useRouter()
     useEffect(() => { document.title = "Etymograph : " + corpusText.title })
 
@@ -76,9 +77,22 @@ export default function CorpusText(params) {
     }
 
     function showWordForm(text, index) {
-        setWordFormVisible(true)
-        setPredefWord(text)
-        setWordIndex(index)
+        fetchAlternatives(corpusText.id, index)
+            .then(r => {
+                setAlternatives(r)
+                console.log("alternatives=" + r.props)
+                setWordFormVisible(true)
+                setPredefWord(text)
+                setWordIndex(index)
+            })
+    }
+
+    function acceptAlternativeClicked(index, wordId, ruleId) {
+        acceptAlternative(corpusText.id, index, wordId, ruleId)
+            .then(r => {
+                router.replace(router.asPath)
+                setWordFormVisible(false)
+            })
     }
 
     function toggleTranslationForm(id) {
@@ -117,10 +131,19 @@ export default function CorpusText(params) {
                         </tr>
                     </tbody></table>
                     {wordIndex >= l.words[0].index && wordIndex <= l.words[l.words.length - 1].index && wordFormVisible &&
-                        <WordForm key={predefWord} submitted={wordSubmitted}
-                                  language={corpusText.language} languageReadOnly={true}
-                                  initialText={predefWord} textReadOnly={true}
-                                  initialSource={corpusText.sourceEditableText}/>
+                        <>
+                            <div>{alternatives.map(alt => <>
+                                <button className="inlineButton"
+                                        onClick={() => acceptAlternativeClicked(wordIndex, alt.wordId, alt.ruleId)}>
+                                    {alt.gloss + '?'}
+                                </button>
+                                {' '}
+                            </>)}</div>
+                            <WordForm key={predefWord} submitted={wordSubmitted}
+                                      language={corpusText.language} languageReadOnly={true}
+                                      initialText={predefWord} textReadOnly={true}
+                                      initialSource={corpusText.sourceEditableText}/>
+                        </>
                     }
                 </div>
             ))}
