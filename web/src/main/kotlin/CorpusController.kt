@@ -150,7 +150,7 @@ class CorpusController(val graphService: GraphService) {
         val wordText = word?.text ?: corpusText.normalizedWordTextAt(index)
         val wordsWithMatchingText = graphService.graph.wordsByText(corpusText.language, wordText)
         return wordsWithMatchingText.flatMap {
-            val gloss = npGloss(it)
+            val gloss = it.glossOrNP()
             if (gloss == null)
                 emptyList()
             else {
@@ -167,9 +167,6 @@ class CorpusController(val graphService: GraphService) {
         }
     }
 
-    private fun npGloss(it: Word) =
-        it.gloss ?: if (it.pos == "NP") it.text.replaceFirstChar { c -> c.uppercase(Locale.FRANCE) } else null
-
     data class AcceptAlternativeParameters(val index: Int, val wordId: Int, val ruleId: Int)
 
     @PostMapping("/corpus/text/{id}/accept")
@@ -182,7 +179,7 @@ class CorpusController(val graphService: GraphService) {
         }
         else {
             val rule = graphService.resolveRule(params.ruleId)
-            val gloss = npGloss(word)
+            val gloss = word.glossOrNP()
                 ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST, "Accepting alternative with unglossed word ${word.id}")
             val newGloss = rule.applyCategories(gloss)
             val graph = graphService.graph

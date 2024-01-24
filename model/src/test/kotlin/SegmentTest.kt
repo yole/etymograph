@@ -58,10 +58,23 @@ class SegmentTest : QBaseTest() {
         val repo = InMemoryGraphRepository()
         val hresta2 = repo.addWord("hresta", gloss = null)
         val hresta = repo.addWord("hresta", gloss = "hresta")
-        val rule = parseRule(q, q, "word ends with 'i':\n- no change", addedCategories = ".ABL")
+        val rule = parseRule(q, q, "word ends with 'a':\n- no change", addedCategories = ".ABL")
         val link = repo.addLink(hresta2, hresta, Link.Derived, listOf(rule), emptyList(), null)
         val restored = repo.restoreSegments(hresta2)
         assertEquals("hresta.ABL", restored.getOrComputeGloss(repo))
+    }
+
+    @Test
+    fun restoreSegmentsNoChangeNP() {
+        val repo = InMemoryGraphRepository()
+        val hresta2 = repo.addWord("hresta", gloss = "hresta.ABL")
+        val hresta = repo.addWord("hresta", gloss = "hresta", pos = "NP")
+        val rule = parseRule(q, q, "word ends with 'a':\n- no change", addedCategories = ".ABL")
+        val link = repo.addLink(hresta2, hresta, Link.Derived, listOf(rule), emptyList(), null)
+        hresta2.gloss = null
+        hresta.gloss = null
+        val restored = repo.restoreSegments(hresta2)
+        assertEquals("Hresta.ABL", restored.getOrComputeGloss(repo))
     }
 
     @Test

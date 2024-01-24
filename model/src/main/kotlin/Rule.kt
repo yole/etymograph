@@ -166,7 +166,7 @@ class Rule(
     }
 
     private fun deriveWord(word: Word, text: String, stressIndex: Int, segments: List<WordSegment>?, classes: List<String>): Word {
-        val gloss = word.gloss?.let { baseGloss ->
+        val gloss = word.glossOrNP()?.let { baseGloss ->
             applyCategories(baseGloss, segments?.any { it.sourceRule == this} == true)
         }
         return Word(-1, text, word.language, gloss, pos = word.pos, classes = classes).also {

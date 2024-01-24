@@ -86,6 +86,9 @@ class Word(
         return null
     }
 
+    fun glossOrNP(): String? =
+        gloss ?: if (pos == "NP") text.replaceFirstChar { c -> c.uppercase(Locale.FRANCE) } else null
+
     fun baseWordLink(graph: GraphRepository): Link? =
         graph.getLinksFrom(this).singleOrNull { it.type == Link.Derived && it.toEntity is Word }
 
