@@ -246,7 +246,7 @@ class WordController(val graphService: GraphService) {
     )
 
     data class WordParadigmModel(
-        val title: String,
+        val name: String,
         val rowTitles: List<String>,
         val columnTitles: List<String>,
         val cells: List<List<List<WordParadigmWordModel>>>
