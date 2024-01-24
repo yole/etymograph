@@ -9,7 +9,7 @@ class ParadigmTest : QBaseTest() {
         val repo = InMemoryGraphRepository()
         repo.addLanguage(q)
 
-        val paradigm = repo.addParadigm("Noun", q, "N")
+        val paradigm = repo.addParadigm("Noun", q, listOf("N"))
         paradigm.addRow("Nom")
         paradigm.addRow("Gen")
         paradigm.addColumn("Sg")
@@ -78,7 +78,7 @@ class ParadigmTest : QBaseTest() {
             null
         )
 
-        val paradigm = repo.addParadigm("Noun", q, "N")
+        val paradigm = repo.addParadigm("Noun", q, listOf("N"))
         val paradigmText = """Sg Pl
             |Nom - q-nom-pl
             |Gen q-gen q-gen-pl

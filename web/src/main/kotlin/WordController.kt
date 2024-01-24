@@ -263,7 +263,7 @@ class WordController(val graphService: GraphService) {
     fun wordParadigms(@PathVariable id: Int): WordParadigmListModel {
         val graph = graphService.graph
         val word = graphService.resolveWord(id)
-        val paradigmModels = graph.paradigmsForLanguage(word.language).filter { it.pos == word.pos }.map { paradigm ->
+        val paradigmModels = graph.paradigmsForLanguage(word.language).filter { word.pos in it.pos }.map { paradigm ->
             val generatedParadigm = paradigm.generate(word, graph)
             val substitutedParadigm = generatedParadigm.map { colWords ->
                 colWords.map { cellWords ->

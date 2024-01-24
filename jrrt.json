@@ -1670,6 +1670,7 @@
             "text": "sinda",
             "lang": "Q",
             "gloss": "grey",
+            "pos": "ADJ",
             "sourceRefs": [
                 {
                     "pubId": 1,
@@ -10606,9 +10607,9 @@
                             },
                             {
                                 "type": "ru.yole.etymograph.RelativePhonemeRuleConditionData",
-                                "cls": "nasal",
                                 "relativeIndex": -1,
-                                "negated": true
+                                "negated": true,
+                                "cls": "nasal"
                             }
                         ]
                     }
@@ -17249,7 +17250,6 @@
             "id": 0,
             "name": "Noun",
             "lang": "Q",
-            "pos": "N",
             "rows": [
                 "Nom",
                 "Gen",
@@ -17443,13 +17443,15 @@
                         }
                     ]
                 }
+            ],
+            "posList": [
+                "N"
             ]
         },
         {
             "id": 1,
             "name": "Subject Pronouns",
             "lang": "Q",
-            "pos": "V.TENSE",
             "rows": [
                 "1st Person Exclusive",
                 "1st Person Inclusive",
@@ -17542,13 +17544,15 @@
                         }
                     ]
                 }
+            ],
+            "posList": [
+                "V.TENSE"
             ]
         },
         {
             "id": 2,
             "name": "Possessive Pronouns",
             "lang": "Q",
-            "pos": "N",
             "rows": [
                 "1st Person Exclusive",
                 "1st Person Inclusive",
@@ -17618,13 +17622,15 @@
                         }
                     ]
                 }
+            ],
+            "posList": [
+                "N"
             ]
         },
         {
             "id": 3,
             "name": "Object Suffixes",
             "lang": "Q",
-            "pos": "V.TENSE",
             "rows": [
                 "3rd Person"
             ],
@@ -17649,13 +17655,15 @@
                         }
                     ]
                 }
+            ],
+            "posList": [
+                "V.TENSE"
             ]
         },
         {
             "id": 4,
             "name": "Adjective",
             "lang": "Q",
-            "pos": "ADJ",
             "rows": [
                 "Nom"
             ],
@@ -17675,13 +17683,15 @@
                         }
                     ]
                 }
+            ],
+            "posList": [
+                "ADJ"
             ]
         },
         {
             "id": 5,
             "name": "Verb",
             "lang": "Q",
-            "pos": "V",
             "rows": [
                 "Aorist",
                 "Present",
@@ -17733,6 +17743,9 @@
                         }
                     ]
                 }
+            ],
+            "posList": [
+                "V"
             ]
         }
     ],
@@ -18697,5 +18710,7 @@
                 }
             ]
         }
+    ],
+    "wordClasses": [
     ]
 }

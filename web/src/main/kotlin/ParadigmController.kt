@@ -22,7 +22,7 @@ class ParadigmController(val graphService: GraphService) {
         val name: String,
         val language: String,
         val languageFullName: String,
-        val pos: String,
+        val pos: List<String>,
         val rowTitles: List<String>,
         val columns: List<ParadigmColumnViewModel>,
         val editableText: String
@@ -85,7 +85,7 @@ class ParadigmController(val graphService: GraphService) {
         val graph = graphService.graph
         val language = graphService.resolveLanguage(lang)
 
-        val p = graph.addParadigm(params.name, language, params.pos)
+        val p = graph.addParadigm(params.name, language, parseList(params.pos))
         p.parse(params.text, graph::ruleByName)
         graph.save()
         return p.toViewModel()
@@ -97,7 +97,7 @@ class ParadigmController(val graphService: GraphService) {
         val graph = graphService.graph
         val paradigm = graph.paradigmById(id) ?: throw NoParadigmException()
         paradigm.parse(params.text, graph::ruleByName)
-        paradigm.pos = params.pos
+        paradigm.pos = parseList(params.pos)
         graph.save()
     }
 

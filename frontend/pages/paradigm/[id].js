@@ -21,7 +21,7 @@ export default function Paradigm(params) {
     const paradigm = params.loaderData
     const [editMode, setEditMode] = useState(false)
     const [editableText, setEditableText] = useState(paradigm.editableText)
-    const [pos, setPos] = useState(paradigm.pos)
+    const [pos, setPos] = useState(paradigm.pos.join(", "))
     const [errorText, setErrorText] = useState("")
 
     const router = useRouter()
@@ -53,7 +53,7 @@ export default function Paradigm(params) {
             <Link href={`/paradigms/${paradigm.language}`}>Paradigms</Link>{' > '}</small>
             {paradigm.name}</h2>
         {!editMode && <>
-            <p>POS: {paradigm.pos}</p>
+            <p>POS: {paradigm.pos.join(", ")}</p>
             <table>
             <thead><tr>
                 <td/>

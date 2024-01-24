@@ -85,8 +85,6 @@ class LanguageController(val graphService: GraphService) {
         language: Language,
         params: UpdateLanguageParameters
     ) {
-        fun parseList(s: String?): List<String> =
-            s?.takeIf { it.isNotBlank() }?.let { it.split(",").map { d -> d.trim() } } ?: emptyList()
 
         language.phonemes = params.phonemes?.let { parsePhonemes(it) } ?: mutableListOf()
         language.diphthongs = parseList(params.diphthongs)
@@ -158,3 +156,6 @@ class LanguageController(val graphService: GraphService) {
         val parenthesized = Regex("(.+)\\s+\\((.+)\\)")
     }
 }
+
+fun parseList(s: String?): List<String> =
+    s?.takeIf { it.isNotBlank() }?.let { it.split(",").map { d -> d.trim() } } ?: emptyList()

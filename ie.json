@@ -7729,6 +7729,18 @@
             "text": "inn",
             "lang": "ON",
             "gloss": "the"
+        },
+        {
+            "id": 1322,
+            "text": "Gunnlaugs",
+            "lang": "ON"
+        },
+        {
+            "id": 1323,
+            "text": "Gunnlaugr",
+            "lang": "ON",
+            "gloss": "Gunnlaug",
+            "pos": "NP"
         }
     ],
     "rules": [
@@ -13944,6 +13956,14 @@
             "from": 1320,
             "to": 1321,
             "type": ">"
+        },
+        {
+            "from": 1322,
+            "to": 1323,
+            "type": ">",
+            "ruleIds": [
+                1012
+            ]
         }
     ],
     "corpusTexts": [
@@ -15852,7 +15872,7 @@
             "title": "Viking Language 5.17",
             "lang": "ON",
             "wordIds": [
-                null,
+                1322,
                 null,
                 null,
                 1289,
@@ -15930,7 +15950,6 @@
             "id": 0,
             "name": "Noun",
             "lang": "OE",
-            "pos": "N",
             "rows": [
                 "Nom",
                 "Acc",
@@ -15988,13 +16007,15 @@
                         }
                     ]
                 }
+            ],
+            "posList": [
+                "N"
             ]
         },
         {
             "id": 2,
             "name": "Noun",
             "lang": "Lyc",
-            "pos": "N",
             "rows": [
                 "Nom.",
                 "Acc.",
@@ -16055,13 +16076,15 @@
                         }
                     ]
                 }
+            ],
+            "posList": [
+                "N"
             ]
         },
         {
             "id": 3,
             "name": "Noun",
             "lang": "ON",
-            "pos": "N",
             "rows": [
                 "Nom",
                 "Acc",
@@ -16119,13 +16142,16 @@
                         }
                     ]
                 }
+            ],
+            "posList": [
+                "N",
+                "NP"
             ]
         },
         {
             "id": 4,
             "name": "Verb Present",
             "lang": "ON",
-            "pos": "V",
             "rows": [
                 "1st",
                 "2nd",
@@ -16172,6 +16198,9 @@
                         }
                     ]
                 }
+            ],
+            "posList": [
+                "V"
             ]
         }
     ],

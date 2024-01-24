@@ -18,7 +18,7 @@ class CorpusControllerTest {
             ".ACC"
         )
 
-        val paradigm = fixture.repo.addParadigm("Noun", fixture.q, "N")
+        val paradigm = fixture.repo.addParadigm("Noun", fixture.q, listOf("N"))
         paradigm.addRow("Nom")
         paradigm.addRow("Acc")
         paradigm.addColumn("Sg")

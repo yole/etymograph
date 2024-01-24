@@ -18,7 +18,7 @@ class AlternativesTest : QBaseTest() {
             )
         )
 
-        val paradigm = repo.addParadigm("Noun", q, "N")
+        val paradigm = repo.addParadigm("Noun", q, listOf("N"))
         paradigm.addRow("Nom")
         paradigm.addRow("Acc")
         paradigm.addColumn("Sg")

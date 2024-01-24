@@ -196,9 +196,9 @@ data class ParadigmData(
     val id: Int,
     val name: String,
     @SerialName("lang") val languageShortName: String,
-    val pos: String,
     val rows: List<String>,
-    val columns: List<ParadigmColumnData>
+    val columns: List<ParadigmColumnData>,
+    val posList: List<String>
 )
 
 @Serializable
@@ -319,11 +319,11 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                 )
             },
             paradigms.filterNotNull().map {
-                ParadigmData(it.id, it.name, it.language.shortName, it.pos, it.rowTitles, it.columns.map { col ->
+                ParadigmData(it.id, it.name, it.language.shortName, it.rowTitles, it.columns.map { col ->
                     ParadigmColumnData(col.title, col.cells.map { cell ->
                         ParadigmCellData(ruleAlternatives = cell?.ruleAlternatives?.map { r -> r?.id })
                     })
-                })
+                }, it.pos)
             },
             syllableStructureData,
             wordFinalsData,
@@ -473,7 +473,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             addParadigm(
                 paradigm.name,
                 languageByShortName(paradigm.languageShortName)!!,
-                paradigm.pos
+                paradigm.posList
             ).apply {
                 for (row in paradigm.rows) {
                     addRow(row)

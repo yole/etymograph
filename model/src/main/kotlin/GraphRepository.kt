@@ -74,7 +74,7 @@ abstract class GraphRepository {
     abstract fun addParadigm(
         name: String,
         language: Language,
-        pos: String
+        pos: List<String>
     ): Paradigm
 
     abstract fun deleteParadigm(paradigm: Paradigm)

@@ -79,8 +79,8 @@ class JsonGraphRepositoryTest : QBaseTest() {
     fun serializeDeleteParadigm() {
         val repo = JsonGraphRepository(null)
         repo.addLanguage(q)
-        val np = repo.addParadigm("Noun", q, "N")
-        val vp = repo.addParadigm("Verb", q, "V")
+        val np = repo.addParadigm("Noun", q, listOf("N"))
+        val vp = repo.addParadigm("Verb", q, listOf("V"))
         repo.deleteParadigm(np)
         assertEquals(1, repo.allParadigms().size)
         val repo2 = repo.roundtrip()
