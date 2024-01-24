@@ -64,6 +64,18 @@ class RuleTest : QBaseTest() {
     }
 
     @Test
+    fun parseParentheses() {
+        val text = "(word ends with a vowel and word ends with 'a') or word ends with 'c'"
+        val c = RuleCondition.parse(ParseBuffer(text), q)
+        assertTrue(c is OrRuleCondition)
+        val a = (c as OrRuleCondition).members[0] as AndRuleCondition
+        val l1 = a.members[0] as LeafRuleCondition
+        assertEquals(ConditionType.EndsWith, l1.type)
+        assertEquals("vowel", l1.phonemeClass?.name)
+        assertEquals(text, c.toEditableText())
+    }
+
+    @Test
     fun instructionParse() {
         val i = RuleInstruction.parse("- sound disappears", q.parseContext())
         assertEquals(InstructionType.SoundDisappears, i.type)

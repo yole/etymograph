@@ -65,12 +65,23 @@ sealed class RuleCondition {
         }
 
         private fun parseAndClause(buffer: ParseBuffer, language: Language): RuleCondition {
-            val c = LeafRuleCondition.parse(buffer, language)
+            val c = parseLeaf(buffer, language)
             val branches = mutableListOf(c)
             while (buffer.consume("and")) {
-                branches.add(LeafRuleCondition.parse(buffer, language))
+                branches.add(parseLeaf(buffer, language))
             }
             return branches.singleOrNull() ?: AndRuleCondition(branches)
+        }
+
+        private fun parseLeaf(buffer: ParseBuffer, language: Language): RuleCondition {
+            if (buffer.consume("(")) {
+                val inParentheses = parseOrClause(buffer, language)
+                if (!buffer.consume(")")) {
+                    buffer.fail("Closing parenthesis expected")
+                }
+                return inParentheses
+            }
+            return LeafRuleCondition.parse(buffer, language)
         }
     }
 }
@@ -314,7 +325,10 @@ class OrRuleCondition(val members: List<RuleCondition>) : RuleCondition() {
 
     override fun matches(phonemes: PhonemeIterator) = members.any { it.matches(phonemes) }
 
-    override fun toEditableText(): String = members.joinToString(OR) { it.toEditableText() }
+    override fun toEditableText(): String = members.joinToString(OR) {
+        val et = it.toEditableText()
+        if (it is AndRuleCondition) "($et)" else et
+    }
 
     override fun findLeafConditions(type: ConditionType): List<LeafRuleCondition> {
         return members.flatMap { it.findLeafConditions(type) }
@@ -334,7 +348,10 @@ class AndRuleCondition(val members: List<RuleCondition>) : RuleCondition() {
 
     override fun matches(phonemes: PhonemeIterator) = members.all { it.matches(phonemes) }
 
-    override fun toEditableText(): String = members.joinToString(AND) { it.toEditableText() }
+    override fun toEditableText(): String = members.joinToString(AND) {
+        val et = it.toEditableText()
+        if (it is OrRuleCondition) "($et)" else et
+    }
 
     override fun findLeafConditions(type: ConditionType): List<LeafRuleCondition> {
         return members.flatMap { it.findLeafConditions(type) }

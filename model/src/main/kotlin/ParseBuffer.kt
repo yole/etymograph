@@ -71,6 +71,6 @@ class ParseBuffer(val s: String) {
     }
 
     companion object {
-        val worDelimiters = charArrayOf(' ', ':')
+        val worDelimiters = charArrayOf(' ', ':', ')')
     }
 }
