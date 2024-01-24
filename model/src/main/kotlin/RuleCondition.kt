@@ -13,13 +13,13 @@ enum class ConditionType(
             throw RuleParseException("Unknown word class '$param'")
         param
     }),
-    NumberOfSyllables(LeafRuleCondition.numberOfSyllables, parameterParseCallback = { buf, language ->
+    NumberOfSyllables(LeafRuleCondition.numberOfSyllables, parameterParseCallback = { buf, _ ->
         val param = buf.nextWord()
         if (param?.toIntOrNull() == null) throw RuleParseException("Number of syllables should be a number")
         param
     }),
     PhonemeMatches(LeafRuleCondition.soundIs, phonemic = true),
-    StressIs(LeafRuleCondition.stressIs, parameterParseCallback = { buf, language ->
+    StressIs(LeafRuleCondition.stressIs, parameterParseCallback = { buf, _ ->
         val ord = Ordinals.parse(buf)
         if (ord == null || !buf.consume("syllable")) {
             throw RuleParseException("Syllable reference expected")
@@ -48,19 +48,29 @@ sealed class RuleCondition {
     }
 
     companion object {
-        fun parse(s: String, language: Language): RuleCondition {
-            if (s == OtherwiseCondition.OTHERWISE) {
+        fun parse(buffer: ParseBuffer, language: Language): RuleCondition {
+            if (buffer.consume(OtherwiseCondition.OTHERWISE)) {
                 return OtherwiseCondition
             }
-            val orBranches = s.split(OrRuleCondition.OR)
-            if (orBranches.size > 1) {
-                return OrRuleCondition(orBranches.map { parse(it, language) })
+            return parseOrClause(buffer, language)
+        }
+
+        private fun parseOrClause(buffer: ParseBuffer, language: Language): RuleCondition {
+            val c = parseAndClause(buffer, language)
+            val branches = mutableListOf(c)
+            while (buffer.consume("or")) {
+                branches.add(parseAndClause(buffer, language))
             }
-            val andBranches = s.split(AndRuleCondition.AND)
-            if (andBranches.size > 1) {
-                return AndRuleCondition(andBranches.map { parse(it, language) })
+            return branches.singleOrNull() ?: OrRuleCondition(branches)
+        }
+
+        private fun parseAndClause(buffer: ParseBuffer, language: Language): RuleCondition {
+            val c = LeafRuleCondition.parse(buffer, language)
+            val branches = mutableListOf(c)
+            while (buffer.consume("and")) {
+                branches.add(LeafRuleCondition.parse(buffer, language))
             }
-            return LeafRuleCondition.parse(s, language)
+            return branches.singleOrNull() ?: AndRuleCondition(branches)
         }
     }
 }
@@ -132,8 +142,7 @@ class LeafRuleCondition(
         const val beginningOfWord = "beginning of word"
         const val indefiniteArticle = "a "
 
-        fun parse(s: String, language: Language): RuleCondition {
-            val buffer = ParseBuffer(s)
+        fun parse(buffer: ParseBuffer, language: Language): RuleCondition {
             buffer.tryParse { SyllableRuleCondition.parse(buffer, language) }?.let { return it }
             buffer.tryParse { RelativePhonemeRuleCondition.parse(buffer, language) }?.let { return it}
 
@@ -142,7 +151,7 @@ class LeafRuleCondition(
                     return parseLeafCondition(conditionType, buffer, language)
                 }
             }
-            throw RuleParseException("Unrecognized condition $s")
+            buffer.fail("Unrecognized condition")
         }
 
         private fun parseLeafCondition(

@@ -54,7 +54,7 @@ class ParseBuffer(val s: String) {
 
     fun nextWord(): String? {
         if (pos == s.length) return null
-        val nextSpace = s.indexOf(' ', pos).takeIf { it >= 0 } ?: s.length
+        val nextSpace = s.indexOfAny(worDelimiters, pos).takeIf { it >= 0 } ?: s.length
         val result = s.substring(pos, nextSpace)
         pos = nextSpace
         consumeWhitespace()
@@ -64,5 +64,13 @@ class ParseBuffer(val s: String) {
     fun <T : Any> tryParse(callback: () -> T?): T? {
         val mark = pos
         return callback().also { if (it == null) pos = mark }
+    }
+
+    fun fail(message: String): Nothing {
+        throw RuleParseException("$message in $s")
+    }
+
+    companion object {
+        val worDelimiters = charArrayOf(' ', ':')
     }
 }

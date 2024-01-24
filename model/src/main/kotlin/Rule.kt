@@ -65,9 +65,13 @@ class RuleBranch(val condition: RuleCondition, val instructions: List<RuleInstru
         fun parse(s: String, context: RuleParseContext): RuleBranch {
             var lines = s.split("\n").map { it.trim() }.filter { it.isNotEmpty() }
             val condition = if (lines[0].endsWith(":")) {
-                val conditionList = lines[0].removeSuffix(":")
+                val buffer = ParseBuffer(lines[0])
                 lines = lines.drop(1)
-                RuleCondition.parse(conditionList, context.fromLanguage)
+                RuleCondition.parse(buffer, context.fromLanguage).also {
+                    if (!buffer.consume(":")) {
+                        buffer.fail("':' expected after condition")
+                    }
+                }
             }
             else {
                 OtherwiseCondition

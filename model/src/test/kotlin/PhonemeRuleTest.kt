@@ -16,7 +16,7 @@ class PhonemeRuleTest : QBaseTest() {
     @Test
     fun phonemeConditionParse() {
         val it = PhonemeIterator(ce.word("khith"))
-        val cond = RuleCondition.parse("sound is 'kh'", ce)
+        val cond = RuleCondition.parse(ParseBuffer("sound is 'kh'"), ce)
         assertTrue(cond.matches(it))
     }
 

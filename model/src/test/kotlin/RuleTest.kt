@@ -36,18 +36,18 @@ class RuleTest : QBaseTest() {
 
     @Test
     fun conditionParse() {
-        val c = LeafRuleCondition.parse("word ends with 'eë'", q) as LeafRuleCondition
+        val c = LeafRuleCondition.parse(ParseBuffer("word ends with 'eë'"), q) as LeafRuleCondition
         assertEquals(ConditionType.EndsWith, c.type)
         assertEquals("eë", c.parameter)
 
-        val c2 = LeafRuleCondition.parse("word ends with a vowel", q) as LeafRuleCondition
+        val c2 = LeafRuleCondition.parse(ParseBuffer("word ends with a vowel"), q) as LeafRuleCondition
         assertEquals(ConditionType.EndsWith, c2.type)
         assertEquals(v, c2.phonemeClass)
     }
 
     @Test
     fun conditionParseOr() {
-        val c = RuleCondition.parse("word ends with 'e' or word ends with 'ë'", q)
+        val c = RuleCondition.parse(ParseBuffer("word ends with 'e' or word ends with 'ë'"), q)
         assertTrue(c is OrRuleCondition)
         val l1 = (c as OrRuleCondition).members[0] as LeafRuleCondition
         assertEquals(ConditionType.EndsWith, l1.type)
@@ -56,7 +56,7 @@ class RuleTest : QBaseTest() {
 
     @Test
     fun conditionParseAnd() {
-        val c = RuleCondition.parse("word ends with a vowel and word ends with 'a'", q)
+        val c = RuleCondition.parse(ParseBuffer("word ends with a vowel and word ends with 'a'"), q)
         assertTrue(c is AndRuleCondition)
         val l1 = (c as AndRuleCondition).members[0] as LeafRuleCondition
         assertEquals(ConditionType.EndsWith, l1.type)
@@ -173,7 +173,7 @@ class RuleTest : QBaseTest() {
 
     @Test
     fun syllableMatcher() {
-        val condition = RuleCondition.parse("second to last syllable contains a long vowel", q) as SyllableRuleCondition
+        val condition = RuleCondition.parse(ParseBuffer("second to last syllable contains a long vowel"), q) as SyllableRuleCondition
         assertEquals(-2, condition.index)
         assertEquals("long vowel", condition.phonemeClass!!.name)
         assertTrue(condition.matches(q.word("andúna")))
@@ -183,7 +183,7 @@ class RuleTest : QBaseTest() {
 
     @Test
     fun syllableMatcherSpecific() {
-        val condition = RuleCondition.parse("second to last syllable contains 'ú'", q) as SyllableRuleCondition
+        val condition = RuleCondition.parse(ParseBuffer("second to last syllable contains 'ú'"), q) as SyllableRuleCondition
         assertEquals(-2, condition.index)
         assertEquals("ú", condition.parameter!!)
         assertTrue(condition.matches(q.word("andúna")))
@@ -193,21 +193,21 @@ class RuleTest : QBaseTest() {
 
     @Test
     fun syllableMatcherDiphthong() {
-        val condition = RuleCondition.parse("first syllable contains a diphthong", q) as SyllableRuleCondition
+        val condition = RuleCondition.parse(ParseBuffer("first syllable contains a diphthong"), q) as SyllableRuleCondition
         assertTrue(condition.matches(q.word("rauca")))
         assertFalse(condition.matches(q.word("tie")))
     }
 
     @Test
     fun syllableMatcherEndsWith() {
-        val condition = RuleCondition.parse("first syllable ends with a consonant", q) as SyllableRuleCondition
+        val condition = RuleCondition.parse(ParseBuffer("first syllable ends with a consonant"), q) as SyllableRuleCondition
         assertTrue(condition.matches(q.word("ampa")))
         assertFalse(condition.matches(q.word("tie")))
     }
 
     @Test
     fun syllableCount() {
-        val condition = RuleCondition.parse("number of syllables is 3", q) as LeafRuleCondition
+        val condition = RuleCondition.parse(ParseBuffer("number of syllables is 3"), q) as LeafRuleCondition
         assertEquals("3", condition.parameter)
         assertTrue(condition.matches(q.word("andúna")))
         assertFalse(condition.matches(q.word("anca")))
@@ -216,7 +216,7 @@ class RuleTest : QBaseTest() {
     @Test
     fun syllableCountInvalid() {
         assertThrows("Number of syllables should be a number", RuleParseException::class.java) {
-            RuleCondition.parse("number of syllables is foo", q) as LeafRuleCondition
+            RuleCondition.parse(ParseBuffer("number of syllables is foo"), q) as LeafRuleCondition
         }
     }
 
@@ -291,7 +291,7 @@ class RuleTest : QBaseTest() {
     fun stressCondition() {
         val ciryali = q.word("ciryali")
         ciryali.stressedPhonemeIndex = 2
-        val condition = RuleCondition.parse("stress is on third to last syllable", q)
+        val condition = RuleCondition.parse(ParseBuffer("stress is on third to last syllable"), q)
         assertTrue(condition.matches(ciryali))
         assertFalse(condition.matches(q.word("lasse").apply { stressedPhonemeIndex = 1 }))
         assertEquals("stress is on third to last syllable", condition.toEditableText())
