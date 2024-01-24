@@ -13,16 +13,7 @@ class CorpusControllerTest {
         val corpusTextViewModel = corpusController.newText("q", corpusParams)
 
         fixture.repo.findOrAddWord("elen", fixture.q, "star", pos = "N")
-        val accRule = fixture.repo.addRule("q-acc", fixture.q, fixture.q,
-            RuleLogic(emptyList(), listOf(RuleBranch(OtherwiseCondition, listOf(RuleInstruction(InstructionType.NoChange, ""))))),
-            ".ACC"
-        )
-
-        val paradigm = fixture.repo.addParadigm("Noun", fixture.q, listOf("N"))
-        paradigm.addRow("Nom")
-        paradigm.addRow("Acc")
-        paradigm.addColumn("Sg")
-        paradigm.setRule(1, 0, listOf(accRule))
+        val accRule = setupParadigm(fixture)
 
         val alternatives = corpusController.requestAlternatives(corpusTextViewModel.id, 0)
         assertEquals(1, alternatives.size)
@@ -33,6 +24,45 @@ class CorpusControllerTest {
             CorpusController.AcceptAlternativeParameters(0, alternatives[0].wordId, alternatives[0].ruleId))
         val word = fixture.repo.corpusTextById(corpusTextViewModel.id)!!.words[0]!!
         assertEquals("star.ACC", word.getOrComputeGloss(fixture.repo))
+    }
+
+    @Test
+    fun alternativesNP() {
+        val fixture = QTestFixture()
+        val corpusController = CorpusController(fixture.graphService)
+        val corpusParams = CorpusController.CorpusTextParams(text = "Elen sila...")
+        val corpusTextViewModel = corpusController.newText("q", corpusParams)
+
+        fixture.repo.findOrAddWord("elen", fixture.q, null, pos = "NP")
+        val accRule = setupParadigm(fixture)
+
+        val alternatives = corpusController.requestAlternatives(corpusTextViewModel.id, 0)
+        assertEquals(1, alternatives.size)
+        assertEquals("Elen.ACC", alternatives[0].gloss)
+        assertEquals(accRule.id, alternatives[0].ruleId)
+
+        corpusController.acceptAlternative(corpusTextViewModel.id,
+            CorpusController.AcceptAlternativeParameters(0, alternatives[0].wordId, alternatives[0].ruleId))
+        val word = fixture.repo.corpusTextById(corpusTextViewModel.id)!!.words[0]!!
+        assertEquals("Elen.ACC", word.getOrComputeGloss(fixture.repo))
+    }
+
+    private fun setupParadigm(fixture: QTestFixture): Rule {
+        val accRule = fixture.repo.addRule(
+            "q-acc", fixture.q, fixture.q,
+            RuleLogic(
+                emptyList(),
+                listOf(RuleBranch(OtherwiseCondition, listOf(RuleInstruction(InstructionType.NoChange, ""))))
+            ),
+            ".ACC"
+        )
+
+        val paradigm = fixture.repo.addParadigm("Noun", fixture.q, listOf("N", "NP"))
+        paradigm.addRow("Nom")
+        paradigm.addRow("Acc")
+        paradigm.addColumn("Sg")
+        paradigm.setRule(1, 0, listOf(accRule))
+        return accRule
     }
 
     @Test

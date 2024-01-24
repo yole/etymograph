@@ -4,6 +4,7 @@ import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.server.ResponseStatusException
 import ru.yole.etymograph.*
+import java.util.*
 
 @RestController
 @CrossOrigin(origins = ["http://localhost:3000"])
@@ -149,7 +150,7 @@ class CorpusController(val graphService: GraphService) {
         val wordText = word?.text ?: corpusText.normalizedWordTextAt(index)
         val wordsWithMatchingText = graphService.graph.wordsByText(corpusText.language, wordText)
         return wordsWithMatchingText.flatMap {
-            val gloss = it.gloss
+            val gloss = npGloss(it)
             if (gloss == null)
                 emptyList()
             else {
@@ -166,6 +167,9 @@ class CorpusController(val graphService: GraphService) {
         }
     }
 
+    private fun npGloss(it: Word) =
+        it.gloss ?: if (it.pos == "NP") it.text.replaceFirstChar { c -> c.uppercase(Locale.FRANCE) } else null
+
     data class AcceptAlternativeParameters(val index: Int, val wordId: Int, val ruleId: Int)
 
     @PostMapping("/corpus/text/{id}/accept")
@@ -178,7 +182,7 @@ class CorpusController(val graphService: GraphService) {
         }
         else {
             val rule = graphService.resolveRule(params.ruleId)
-            val gloss = word.gloss
+            val gloss = npGloss(word)
                 ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST, "Accepting alternative with unglossed word ${word.id}")
             val newGloss = rule.applyCategories(gloss)
             val graph = graphService.graph
