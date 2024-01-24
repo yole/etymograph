@@ -120,6 +120,13 @@ class RuleTest : QBaseTest() {
     }
 
     @Test
+    fun wordIsUnknownClass() {
+        assertThrows("Unknown word class 'm'", RuleParseException::class.java) {
+            Rule.parseBranches("word is m:\n- no change", q.parseContext())
+        }
+    }
+
+    @Test
     fun applySoundRule() {
         val soundRule = parseRule(q, q, """
             sound is 'a':
@@ -204,6 +211,13 @@ class RuleTest : QBaseTest() {
         assertEquals("3", condition.parameter)
         assertTrue(condition.matches(q.word("andúna")))
         assertFalse(condition.matches(q.word("anca")))
+    }
+
+    @Test
+    fun syllableCountInvalid() {
+        assertThrows("Number of syllables should be a number", RuleParseException::class.java) {
+            RuleCondition.parse("number of syllables is foo", q) as LeafRuleCondition
+        }
     }
 
     @Test
@@ -323,6 +337,7 @@ class RuleTest : QBaseTest() {
 
     @Test
     fun reverseApplyIgnoreClass() {
+        q.wordClasses.add(WordCategory("gender", listOf("N"), listOf(WordCategoryValue("female", "f"))))
         val rule = parseRule(q, q, "word ends with 'ea' and word is f:\n- change ending to 'ie'")
         val candidate = rule.reverseApply(q.word("yaimie"))
         assertEquals("yaimea", candidate.single())

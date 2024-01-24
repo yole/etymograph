@@ -18,8 +18,6 @@ class ParseBuffer(val s: String) {
         }
     }
 
-    val tail: String get() = s.substring(pos)
-
     fun consumeQuoted(): String? {
         if (s[pos] == '\'') {
             pos++

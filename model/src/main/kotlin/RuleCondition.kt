@@ -4,13 +4,28 @@ enum class ConditionType(
     val condName: String,
     val phonemic: Boolean = false,
     val takesArgument: Boolean = true,
-    val takesPhonemeClass: Boolean = true
+    val parameterParseCallback: ((ParseBuffer, Language) -> String)? = null
 ) {
     EndsWith(LeafRuleCondition.wordEndsWith),
-    ClassMatches(LeafRuleCondition.wordIs, takesPhonemeClass = false),
-    NumberOfSyllables(LeafRuleCondition.numberOfSyllables, takesPhonemeClass = false),
+    ClassMatches(LeafRuleCondition.wordIs, parameterParseCallback = { buf, language ->
+        val param = buf.nextWord() ?: throw RuleParseException("Word class expected")
+        if (language.findWordClass(param) == null)
+            throw RuleParseException("Unknown word class '$param'")
+        param
+    }),
+    NumberOfSyllables(LeafRuleCondition.numberOfSyllables, parameterParseCallback = { buf, language ->
+        val param = buf.nextWord()
+        if (param?.toIntOrNull() == null) throw RuleParseException("Number of syllables should be a number")
+        param
+    }),
     PhonemeMatches(LeafRuleCondition.soundIs, phonemic = true),
-    StressIs(LeafRuleCondition.stressIs, takesPhonemeClass = false),
+    StressIs(LeafRuleCondition.stressIs, parameterParseCallback = { buf, language ->
+        val ord = Ordinals.parse(buf)
+        if (ord == null || !buf.consume("syllable")) {
+            throw RuleParseException("Syllable reference expected")
+        }
+        "${Ordinals.toString(ord)} syllable"
+    }),
     BeginningOfWord(LeafRuleCondition.beginningOfWord, phonemic = true, takesArgument = false)
 }
 
@@ -72,7 +87,7 @@ class LeafRuleCondition(
     }
 
     private fun matchStress(word: Word): Boolean {
-        val (expectedIndex, _) = parameter?.let { Ordinals.parse(it) } ?: return false // TODO throw RuleParseException
+        val (expectedIndex, _) = parameter?.let { Ordinals.parse(it) } ?: return false
         val stress = word.calculateStress() ?: return false
         val syllables = breakIntoSyllables(word)
         val expectedStressSyllable = Ordinals.at(syllables, expectedIndex) ?: return false
@@ -93,7 +108,7 @@ class LeafRuleCondition(
 
     override fun toEditableText(): String =
         if (type.takesArgument) {
-            val parameterName = if (!type.takesPhonemeClass)
+            val parameterName = if (type.parameterParseCallback != null)
                 parameter
             else
                 phonemeClass?.name?.let { "a $it" } ?: "'$parameter'"
@@ -139,10 +154,13 @@ class LeafRuleCondition(
             if (!conditionType.takesArgument) {
                 return LeafRuleCondition(conditionType, null, null, negated)
             }
-            val (phonemeClass, parameter) = if (!conditionType.takesPhonemeClass)
-                null to buffer.tail.removePrefix("'").removeSuffix("'")
-            else
+            val (phonemeClass, parameter) = if (conditionType.parameterParseCallback != null) {
+                null to conditionType.parameterParseCallback.invoke(buffer, language)
+            }
+            else {
                 buffer.parseParameter(language)
+            }
+
             return LeafRuleCondition(conditionType, phonemeClass, parameter, negated)
         }
     }
