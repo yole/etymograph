@@ -266,6 +266,14 @@ class RuleTest : QBaseTest() {
     }
 
     @Test
+    fun applyClass() {
+        val rule = parseRule(q, q, "word ends with 'r':\n- mark word as strong")
+        val result = rule.apply(q.word("anar"), emptyRepo)
+        assertEquals("strong", result.classes.single())
+        assertEquals("mark word as strong", rule.logic.branches.single().instructions.single().toEditableText())
+    }
+
+    @Test
     fun stressCondition() {
         val ciryali = q.word("ciryali")
         ciryali.stressedPhonemeIndex = 2

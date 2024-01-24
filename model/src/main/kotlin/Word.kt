@@ -45,7 +45,7 @@ class Word(
 
     fun derive(text: String, newSegment: WordSegment? = null, newClasses: List<String>? = null): Word {
         val sourceSegments = segments
-        return if (this.text == text)
+        return if (this.text == text && newClasses == null)
             this
         else
             Word(-1, text, language, gloss, fullGloss, pos, newClasses ?: classes).apply {

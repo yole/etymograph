@@ -12,6 +12,7 @@ enum class InstructionType(
     ApplyRule("apply rule", "apply rule '(.+)'", true),
     ApplySoundRule("apply sound rule", "apply sound rule '(.+)' to (.+)", true),
     ApplyStress("stress is on", "stress is on (.+) syllable", true),
+    ApplyClass("mark word as", "mark word as (.*)", true),
     ChangeSound("new sound is", "new sound is '(.+)'", true),
     SoundDisappears("sound disappears");
 
@@ -22,6 +23,7 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
     open fun apply(rule: Rule, branch: RuleBranch?, word: Word, graph: GraphRepository): Word = when(type) {
         InstructionType.NoChange -> word
         InstructionType.ChangeEnding -> changeEnding(word, rule, branch)
+        InstructionType.ApplyClass -> word.derive(word.text, newClasses = (word.classes + arg).toSet().toList())
         else -> throw IllegalStateException("Can't apply phoneme instruction to full word")
     }
 
