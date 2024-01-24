@@ -1,6 +1,6 @@
 package ru.yole.etymograph
 
-data class WordAlternative(val word: Word, val rule: Rule?)
+data class WordAlternative(val word: Word, val expectedWord: Word, val rule: Rule?)
 
 typealias WordAlternatives = List<WordAlternative>
 
@@ -8,9 +8,10 @@ class ParadigmCell(val ruleAlternatives: List<Rule?>) {
     fun generate(word: Word, graph: GraphRepository): WordAlternatives {
         return ruleAlternatives.mapTo(mutableSetOf()) { r ->
             val link = graph.getLinksTo(word).find { it.rules == listOf(r) }
-            val resultWord = link?.fromEntity as? Word ?: r?.apply(word, graph) ?: word
-            WordAlternative(resultWord, r)
-        }.toList().ifEmpty { listOf(WordAlternative(word, null)) }
+            val expectedWord = r?.apply(word, graph) ?: word
+            val resultWord = link?.fromEntity as? Word ?: expectedWord
+            WordAlternative(resultWord, expectedWord, r)
+        }.toList().ifEmpty { listOf(WordAlternative(word, word, null)) }
     }
 }
 
