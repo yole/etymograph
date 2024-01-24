@@ -16,6 +16,15 @@ open class OrdinalTable(private val items: List<Pair<String, Int>>) {
         }
         return null
     }
+
+    fun parse(buffer: ParseBuffer): Int? {
+        for (ordinal in items) {
+            if (buffer.consume(ordinal.first)) {
+                return ordinal.second
+            }
+        }
+        return null
+    }
 }
 
 object Ordinals : OrdinalTable(
