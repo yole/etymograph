@@ -20,13 +20,37 @@ class ParseBuffer(val s: String) {
 
     val tail: String get() = s.substring(pos)
 
-    fun parseParameter(language: Language): Pair<PhonemeClass?, String?> {
-        val tail = s.substring(pos)
+    fun consumeQuoted(): String? {
         if (s[pos] == '\'') {
-            return null to tail.removePrefix("'").removeSuffix("'")
+            pos++
+            val endQuote = s.indexOf('\'', pos)
+            if (endQuote < 0) {
+                throw RuleParseException("Closing quote expected")
+            }
+            val result = s.substring(pos, endQuote)
+            pos = endQuote + 1
+            consumeWhitespace()
+            return result
         }
-        val characterClass = language.phonemeClassByName(tail.removePrefix(LeafRuleCondition.indefiniteArticle))
-            ?: throw RuleParseException("Unrecognized character class $tail")
+        return null
+    }
+
+    fun parseParameter(language: Language): Pair<PhonemeClass?, String?> {
+        consumeQuoted()?.let { return null to it }
+        consume(LeafRuleCondition.indefiniteArticle)
+        var phonemeClassName = nextWord() ?: throw RuleParseException("Phoneme class name expected")
+        val mark = pos
+        while (true) {
+            val nextPhonemeClass = nextWord()
+            if (nextPhonemeClass == null || language.phonemeClassByName(nextPhonemeClass) == null) {
+                pos = mark
+                break
+            }
+            phonemeClassName = "$phonemeClassName $nextPhonemeClass"
+        }
+
+        val characterClass = language.phonemeClassByName(phonemeClassName)
+            ?: throw RuleParseException("Unrecognized character class $phonemeClassName")
         return characterClass to null
     }
 
