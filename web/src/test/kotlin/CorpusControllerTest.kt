@@ -34,4 +34,25 @@ class CorpusControllerTest {
         val word = fixture.repo.corpusTextById(corpusTextViewModel.id)!!.words[0]!!
         assertEquals("star.ACC", word.getOrComputeGloss(fixture.repo))
     }
+
+    @Test
+    fun alternativesHomonym() {
+        val fixture = QTestFixture()
+        val corpusController = CorpusController(fixture.graphService)
+        val corpusParams = CorpusController.CorpusTextParams(text = "Elen sila...")
+        val corpusTextViewModel = corpusController.newText("q", corpusParams)
+
+        fixture.repo.findOrAddWord("elen", fixture.q, "star", pos = "N")
+        fixture.repo.findOrAddWord("elen", fixture.q, "scar", pos = "N")
+
+        val alternatives = corpusController.requestAlternatives(corpusTextViewModel.id, 0)
+        assertEquals(1, alternatives.size)
+        assertEquals("scar", alternatives[0].gloss)
+        assertEquals(-1, alternatives[0].ruleId)
+
+        corpusController.acceptAlternative(corpusTextViewModel.id,
+            CorpusController.AcceptAlternativeParameters(0, alternatives[0].wordId, alternatives[0].ruleId))
+        val word = fixture.repo.corpusTextById(corpusTextViewModel.id)!!.words[0]!!
+        assertEquals("scar", word.getOrComputeGloss(fixture.repo))
+    }
 }

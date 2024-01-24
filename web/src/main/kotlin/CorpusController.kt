@@ -153,8 +153,12 @@ class CorpusController(val graphService: GraphService) {
             if (gloss == null)
                 emptyList()
             else {
+                val baseWord = if (it == wordsWithMatchingText.first())
+                    emptyList()
+                else
+                    listOf(AlternativeViewModel(gloss, it.id, -1))
                 val alts = graphService.graph.requestAlternatives(it)
-                alts.map { pc ->
+                baseWord + alts.map { pc ->
                     val rule = pc.rules.single()
                     AlternativeViewModel(rule.applyCategories(gloss), it.id, rule.id)
                 }
@@ -167,18 +171,24 @@ class CorpusController(val graphService: GraphService) {
     @PostMapping("/corpus/text/{id}/accept")
     fun acceptAlternative(@PathVariable id: Int, @RequestBody params: AcceptAlternativeParameters) {
         val corpusText = graphService.resolveCorpusText(id)
-        val rule = graphService.resolveRule(params.ruleId)
         val word = graphService.resolveWord(params.wordId)
 
-        val gloss = word.gloss
-            ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST, "Accepting alternative with unglossed word ${word.id}")
-        val newGloss = rule.applyCategories(gloss)
-        val graph = graphService.graph
-        val newWord = graph.findOrAddWord(word.text, word.language, newGloss)
-        graph.addLink(newWord, word, Link.Derived, listOf(rule), emptyList(), null)
-        newWord.gloss = null
+        if (params.ruleId == -1) {
+            corpusText.associateWord(params.index, word)
+        }
+        else {
+            val rule = graphService.resolveRule(params.ruleId)
+            val gloss = word.gloss
+                ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST, "Accepting alternative with unglossed word ${word.id}")
+            val newGloss = rule.applyCategories(gloss)
+            val graph = graphService.graph
+            val newWord = graph.findOrAddWord(word.text, word.language, newGloss)
+            graph.addLink(newWord, word, Link.Derived, listOf(rule), emptyList(), null)
+            newWord.gloss = null
 
-        corpusText.associateWord(params.index, newWord)
+            corpusText.associateWord(params.index, newWord)
+        }
+
         graphService.graph.save()
     }
 }
