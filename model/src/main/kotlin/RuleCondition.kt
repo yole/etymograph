@@ -100,9 +100,9 @@ class LeafRuleCondition(
         return when (type) {
             ConditionType.EndsWith -> (phonemeClass?.let { PhonemeIterator(word).last in it.matchingPhonemes }
                 ?: word.text.trimEnd('-').endsWith(parameter!!)).negateIfNeeded()
-            ConditionType.NumberOfSyllables -> breakIntoSyllables(word).size == parameter!!.toInt()
-            ConditionType.StressIs -> matchStress(word)
-            ConditionType.ClassMatches -> parameter in word.classes || word.classes == listOf("*")
+            ConditionType.NumberOfSyllables -> (breakIntoSyllables(word).size == parameter!!.toInt()).negateIfNeeded()
+            ConditionType.StressIs -> matchStress(word).negateIfNeeded()
+            ConditionType.ClassMatches -> (parameter in word.classes || word.classes == listOf("*")).negateIfNeeded()
             else -> super.matches(word)
         }
     }

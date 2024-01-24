@@ -226,6 +226,14 @@ class RuleTest : QBaseTest() {
     }
 
     @Test
+    fun syllableCountNegated() {
+        val condition = RuleCondition.parse(ParseBuffer("number of syllables is not 3"), q) as LeafRuleCondition
+        assertEquals("3", condition.parameter)
+        assertFalse(condition.matches(q.word("andúna")))
+        assertTrue(condition.matches(q.word("anca")))
+    }
+
+    @Test
     fun syllableCountInvalid() {
         assertThrows("Number of syllables should be a number", RuleParseException::class.java) {
             RuleCondition.parse(ParseBuffer("number of syllables is foo"), q) as LeafRuleCondition
