@@ -6111,7 +6111,10 @@
             "text": "atgervimaðr",
             "lang": "ON",
             "gloss": "man of accomplishments",
-            "pos": "N"
+            "pos": "N",
+            "classes": [
+                "m"
+            ]
         },
         {
             "id": 1070,
@@ -6235,7 +6238,10 @@
             "text": "skörungr",
             "lang": "ON",
             "gloss": "leader",
-            "pos": "N"
+            "pos": "N",
+            "classes": [
+                "m"
+            ]
         },
         {
             "id": 1092,
@@ -6698,7 +6704,10 @@
             "text": "haugr",
             "lang": "ON",
             "gloss": "burial mound",
-            "pos": "N"
+            "pos": "N",
+            "classes": [
+                "m"
+            ]
         },
         {
             "id": 1173,
@@ -7741,6 +7750,17 @@
             "lang": "ON",
             "gloss": "Gunnlaug",
             "pos": "NP"
+        },
+        {
+            "id": 1325,
+            "text": "otr",
+            "lang": "ON",
+            "gloss": "otter",
+            "pos": "N",
+            "classes": [
+                "m",
+                "r-stem"
+            ]
         }
     ],
     "rules": [
@@ -9465,22 +9485,21 @@
                     "condition": {
                         "type": "ru.yole.etymograph.LeafRuleConditionData",
                         "cond": "EndsWith",
-                        "characters": "r"
+                        "characters": "v"
                     }
                 },
                 {
                     "instructions": [
                         {
-                            "type": "ChangeEnding",
+                            "type": "NoChange",
                             "args": [
-                                "n"
                             ]
                         }
                     ],
                     "condition": {
                         "type": "ru.yole.etymograph.LeafRuleConditionData",
-                        "cond": "EndsWith",
-                        "characters": "nn"
+                        "cond": "ClassMatches",
+                        "characters": "strong"
                     }
                 },
                 {
@@ -9545,6 +9564,12 @@
             "addedCategories": ".ACC",
             "fromPOS": "N",
             "preInstructions": [
+                {
+                    "type": "ApplyRule",
+                    "args": [
+                        "1324"
+                    ]
+                }
             ]
         },
         {
@@ -9556,9 +9581,8 @@
                 {
                     "instructions": [
                         {
-                            "type": "ChangeEnding",
+                            "type": "NoChange",
                             "args": [
-                                "vi"
                             ]
                         }
                     ],
@@ -9567,55 +9591,15 @@
                         "members": [
                             {
                                 "type": "ru.yole.etymograph.LeafRuleConditionData",
-                                "cond": "EndsWith",
-                                "characters": "r"
-                            },
-                            {
-                                "type": "ru.yole.etymograph.LeafRuleConditionData",
                                 "cond": "ClassMatches",
-                                "characters": "v-stem"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "instructions": [
-                        {
-                            "type": "ChangeEnding",
-                            "args": [
-                                "i"
-                            ]
-                        }
-                    ],
-                    "condition": {
-                        "type": "ru.yole.etymograph.OrRuleConditionData",
-                        "members": [
-                            {
-                                "type": "ru.yole.etymograph.LeafRuleConditionData",
-                                "cond": "EndsWith",
-                                "characters": "ir"
+                                "characters": "strong"
                             },
                             {
                                 "type": "ru.yole.etymograph.LeafRuleConditionData",
                                 "cond": "EndsWith",
-                                "characters": "r"
+                                "characters": "i"
                             }
                         ]
-                    }
-                },
-                {
-                    "instructions": [
-                        {
-                            "type": "ChangeEnding",
-                            "args": [
-                                "ni"
-                            ]
-                        }
-                    ],
-                    "condition": {
-                        "type": "ru.yole.etymograph.LeafRuleConditionData",
-                        "cond": "EndsWith",
-                        "characters": "nn"
                     }
                 },
                 {
@@ -9633,12 +9617,37 @@
                             {
                                 "type": "ru.yole.etymograph.LeafRuleConditionData",
                                 "cond": "ClassMatches",
-                                "characters": "n"
+                                "characters": "strong"
                             },
                             {
                                 "type": "ru.yole.etymograph.LeafRuleConditionData",
                                 "cond": "ClassMatches",
+                                "characters": "m"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "Append",
+                            "args": [
+                                "'i'"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.AndRuleConditionData",
+                        "members": [
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "ClassMatches",
                                 "characters": "strong"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "ClassMatches",
+                                "characters": "n"
                             }
                         ]
                     }
@@ -9705,6 +9714,12 @@
             "addedCategories": ".DAT",
             "fromPOS": "N",
             "preInstructions": [
+                {
+                    "type": "ApplyRule",
+                    "args": [
+                        "1324"
+                    ]
+                }
             ]
         },
         {
@@ -9716,26 +9731,16 @@
                 {
                     "instructions": [
                         {
-                            "type": "ChangeEnding",
+                            "type": "Append",
                             "args": [
-                                "ar"
+                                "'ar'"
                             ]
                         }
                     ],
                     "condition": {
-                        "type": "ru.yole.etymograph.AndRuleConditionData",
-                        "members": [
-                            {
-                                "type": "ru.yole.etymograph.LeafRuleConditionData",
-                                "cond": "EndsWith",
-                                "characters": "r"
-                            },
-                            {
-                                "type": "ru.yole.etymograph.LeafRuleConditionData",
-                                "cond": "ClassMatches",
-                                "characters": "gen-ar"
-                            }
-                        ]
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "ClassMatches",
+                        "characters": "gen-ar"
                     }
                 },
                 {
@@ -9748,24 +9753,69 @@
                         }
                     ],
                     "condition": {
-                        "type": "ru.yole.etymograph.LeafRuleConditionData",
-                        "cond": "EndsWith",
-                        "characters": "r"
+                        "type": "ru.yole.etymograph.AndRuleConditionData",
+                        "members": [
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "ClassMatches",
+                                "characters": "strong"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "EndsWith",
+                                "characters": "v"
+                            }
+                        ]
                     }
                 },
                 {
                     "instructions": [
                         {
-                            "type": "ChangeEnding",
+                            "type": "Append",
                             "args": [
-                                "ns"
+                                "'s'"
                             ]
                         }
                     ],
                     "condition": {
-                        "type": "ru.yole.etymograph.LeafRuleConditionData",
-                        "cond": "EndsWith",
-                        "characters": "nn"
+                        "type": "ru.yole.etymograph.AndRuleConditionData",
+                        "members": [
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "ClassMatches",
+                                "characters": "m"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "ClassMatches",
+                                "characters": "strong"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "Append",
+                            "args": [
+                                "'s'"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.AndRuleConditionData",
+                        "members": [
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "ClassMatches",
+                                "characters": "n"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "ClassMatches",
+                                "characters": "strong"
+                            }
+                        ]
                     }
                 },
                 {
@@ -9880,6 +9930,12 @@
             "addedCategories": ".GEN",
             "fromPOS": "N",
             "preInstructions": [
+                {
+                    "type": "ApplyRule",
+                    "args": [
+                        "1324"
+                    ]
+                }
             ]
         },
         {
@@ -9900,62 +9956,7 @@
                     "condition": {
                         "type": "ru.yole.etymograph.LeafRuleConditionData",
                         "cond": "EndsWith",
-                        "characters": "ir"
-                    }
-                },
-                {
-                    "instructions": [
-                        {
-                            "type": "ChangeEnding",
-                            "args": [
-                                "var"
-                            ]
-                        }
-                    ],
-                    "condition": {
-                        "type": "ru.yole.etymograph.AndRuleConditionData",
-                        "members": [
-                            {
-                                "type": "ru.yole.etymograph.LeafRuleConditionData",
-                                "cond": "EndsWith",
-                                "characters": "r"
-                            },
-                            {
-                                "type": "ru.yole.etymograph.LeafRuleConditionData",
-                                "cond": "ClassMatches",
-                                "characters": "v-stem"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "instructions": [
-                        {
-                            "type": "ChangeEnding",
-                            "args": [
-                                "ar"
-                            ]
-                        }
-                    ],
-                    "condition": {
-                        "type": "ru.yole.etymograph.LeafRuleConditionData",
-                        "cond": "EndsWith",
-                        "characters": "r"
-                    }
-                },
-                {
-                    "instructions": [
-                        {
-                            "type": "ChangeEnding",
-                            "args": [
-                                "nar"
-                            ]
-                        }
-                    ],
-                    "condition": {
-                        "type": "ru.yole.etymograph.LeafRuleConditionData",
-                        "cond": "EndsWith",
-                        "characters": "nn"
+                        "characters": "i"
                     }
                 },
                 {
@@ -9968,34 +9969,9 @@
                         }
                     ],
                     "condition": {
-                        "type": "ru.yole.etymograph.AndRuleConditionData",
-                        "members": [
-                            {
-                                "type": "ru.yole.etymograph.LeafRuleConditionData",
-                                "cond": "ClassMatches",
-                                "characters": "f"
-                            },
-                            {
-                                "type": "ru.yole.etymograph.LeafRuleConditionData",
-                                "cond": "ClassMatches",
-                                "characters": "strong"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "instructions": [
-                        {
-                            "type": "ChangeEnding",
-                            "args": [
-                                "ar"
-                            ]
-                        }
-                    ],
-                    "condition": {
                         "type": "ru.yole.etymograph.LeafRuleConditionData",
-                        "cond": "EndsWith",
-                        "characters": "i"
+                        "cond": "ClassMatches",
+                        "characters": "strong"
                     }
                 },
                 {
@@ -10076,6 +10052,12 @@
             "addedCategories": ".NOM.PL",
             "fromPOS": "N",
             "preInstructions": [
+                {
+                    "type": "ApplyRule",
+                    "args": [
+                        "1324"
+                    ]
+                }
             ]
         },
         {
@@ -10094,17 +10076,27 @@
                         }
                     ],
                     "condition": {
-                        "type": "ru.yole.etymograph.LeafRuleConditionData",
-                        "cond": "EndsWith",
-                        "characters": "ir"
+                        "type": "ru.yole.etymograph.AndRuleConditionData",
+                        "members": [
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "ClassMatches",
+                                "characters": "strong"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "EndsWith",
+                                "characters": "i"
+                            }
+                        ]
                     }
                 },
                 {
                     "instructions": [
                         {
-                            "type": "ChangeEnding",
+                            "type": "Append",
                             "args": [
-                                "va"
+                                "'a'"
                             ]
                         }
                     ],
@@ -10113,13 +10105,13 @@
                         "members": [
                             {
                                 "type": "ru.yole.etymograph.LeafRuleConditionData",
-                                "cond": "EndsWith",
-                                "characters": "r"
+                                "cond": "ClassMatches",
+                                "characters": "m"
                             },
                             {
                                 "type": "ru.yole.etymograph.LeafRuleConditionData",
                                 "cond": "ClassMatches",
-                                "characters": "v-stem"
+                                "characters": "strong"
                             }
                         ]
                     }
@@ -10127,31 +10119,26 @@
                 {
                     "instructions": [
                         {
-                            "type": "ChangeEnding",
+                            "type": "Append",
                             "args": [
-                                "a"
+                                "'a'"
                             ]
                         }
                     ],
                     "condition": {
-                        "type": "ru.yole.etymograph.LeafRuleConditionData",
-                        "cond": "EndsWith",
-                        "characters": "r"
-                    }
-                },
-                {
-                    "instructions": [
-                        {
-                            "type": "ChangeEnding",
-                            "args": [
-                                "na"
-                            ]
-                        }
-                    ],
-                    "condition": {
-                        "type": "ru.yole.etymograph.LeafRuleConditionData",
-                        "cond": "EndsWith",
-                        "characters": "nn"
+                        "type": "ru.yole.etymograph.AndRuleConditionData",
+                        "members": [
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "ClassMatches",
+                                "characters": "n"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "ClassMatches",
+                                "characters": "strong"
+                            }
+                        ]
                     }
                 },
                 {
@@ -10272,6 +10259,12 @@
             "addedCategories": ".ACC.PL",
             "fromPOS": "N",
             "preInstructions": [
+                {
+                    "type": "ApplyRule",
+                    "args": [
+                        "1324"
+                    ]
+                }
             ]
         },
         {
@@ -10285,7 +10278,7 @@
                         {
                             "type": "ChangeEnding",
                             "args": [
-                                "vum"
+                                "um"
                             ]
                         },
                         {
@@ -10296,19 +10289,9 @@
                         }
                     ],
                     "condition": {
-                        "type": "ru.yole.etymograph.AndRuleConditionData",
-                        "members": [
-                            {
-                                "type": "ru.yole.etymograph.LeafRuleConditionData",
-                                "cond": "EndsWith",
-                                "characters": "r"
-                            },
-                            {
-                                "type": "ru.yole.etymograph.LeafRuleConditionData",
-                                "cond": "ClassMatches",
-                                "characters": "v-stem"
-                            }
-                        ]
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "characters": "v"
                     }
                 },
                 {
@@ -10332,16 +10315,6 @@
                             {
                                 "type": "ru.yole.etymograph.LeafRuleConditionData",
                                 "cond": "EndsWith",
-                                "characters": "ir"
-                            },
-                            {
-                                "type": "ru.yole.etymograph.LeafRuleConditionData",
-                                "cond": "EndsWith",
-                                "characters": "r"
-                            },
-                            {
-                                "type": "ru.yole.etymograph.LeafRuleConditionData",
-                                "cond": "EndsWith",
                                 "characters": "i"
                             },
                             {
@@ -10350,27 +10323,6 @@
                                 "characters": "a"
                             }
                         ]
-                    }
-                },
-                {
-                    "instructions": [
-                        {
-                            "type": "ChangeEnding",
-                            "args": [
-                                "num"
-                            ]
-                        },
-                        {
-                            "type": "ApplyRule",
-                            "args": [
-                                "1123"
-                            ]
-                        }
-                    ],
-                    "condition": {
-                        "type": "ru.yole.etymograph.LeafRuleConditionData",
-                        "cond": "EndsWith",
-                        "characters": "nn"
                     }
                 },
                 {
@@ -10396,6 +10348,12 @@
             "addedCategories": ".DAT.PL",
             "fromPOS": "N",
             "preInstructions": [
+                {
+                    "type": "ApplyRule",
+                    "args": [
+                        "1324"
+                    ]
+                }
             ]
         },
         {
@@ -10409,64 +10367,14 @@
                         {
                             "type": "ChangeEnding",
                             "args": [
-                                "va"
-                            ]
-                        }
-                    ],
-                    "condition": {
-                        "type": "ru.yole.etymograph.AndRuleConditionData",
-                        "members": [
-                            {
-                                "type": "ru.yole.etymograph.LeafRuleConditionData",
-                                "cond": "EndsWith",
-                                "characters": "r"
-                            },
-                            {
-                                "type": "ru.yole.etymograph.LeafRuleConditionData",
-                                "cond": "ClassMatches",
-                                "characters": "v-stem"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "instructions": [
-                        {
-                            "type": "ChangeEnding",
-                            "args": [
                                 "a"
-                            ]
-                        }
-                    ],
-                    "condition": {
-                        "type": "ru.yole.etymograph.OrRuleConditionData",
-                        "members": [
-                            {
-                                "type": "ru.yole.etymograph.LeafRuleConditionData",
-                                "cond": "EndsWith",
-                                "characters": "ir"
-                            },
-                            {
-                                "type": "ru.yole.etymograph.LeafRuleConditionData",
-                                "cond": "EndsWith",
-                                "characters": "r"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "instructions": [
-                        {
-                            "type": "ChangeEnding",
-                            "args": [
-                                "na"
                             ]
                         }
                     ],
                     "condition": {
                         "type": "ru.yole.etymograph.LeafRuleConditionData",
                         "cond": "EndsWith",
-                        "characters": "nn"
+                        "characters": "i"
                     }
                 },
                 {
@@ -10489,21 +10397,6 @@
                         {
                             "type": "ChangeEnding",
                             "args": [
-                                "a"
-                            ]
-                        }
-                    ],
-                    "condition": {
-                        "type": "ru.yole.etymograph.LeafRuleConditionData",
-                        "cond": "EndsWith",
-                        "characters": "i"
-                    }
-                },
-                {
-                    "instructions": [
-                        {
-                            "type": "ChangeEnding",
-                            "args": [
                                 "na"
                             ]
                         }
@@ -10518,6 +10411,12 @@
             "addedCategories": ".GEN.PL",
             "fromPOS": "N",
             "preInstructions": [
+                {
+                    "type": "ApplyRule",
+                    "args": [
+                        "1324"
+                    ]
+                }
             ]
         },
         {
@@ -11433,6 +11332,117 @@
             ],
             "addedCategories": ".PST.3PL",
             "fromPOS": "V",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 1324,
+            "name": "on-n-stem",
+            "fromLang": "ON",
+            "toLang": "ON",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ApplyClass",
+                            "args": [
+                                "string"
+                            ]
+                        },
+                        {
+                            "type": "ChangeEnding",
+                            "args": [
+                                "n"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "characters": "nn"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ApplyClass",
+                            "args": [
+                                "strong"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "ClassMatches",
+                        "characters": "r-stem"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ApplyClass",
+                            "args": [
+                                "strong"
+                            ]
+                        },
+                        {
+                            "type": "ChangeEnding",
+                            "args": [
+                                "v"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.AndRuleConditionData",
+                        "members": [
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "EndsWith",
+                                "characters": "r"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "ClassMatches",
+                                "characters": "v-stem"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ApplyClass",
+                            "args": [
+                                "strong"
+                            ]
+                        },
+                        {
+                            "type": "ChangeEnding",
+                            "args": [
+                                ""
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "characters": "r"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "NoChange",
+                            "args": [
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": null,
             "preInstructions": [
             ]
         }
@@ -17678,6 +17688,10 @@
                 {
                     "name": "-v",
                     "abbreviation": "v-stem"
+                },
+                {
+                    "name": "-r",
+                    "abbreviation": "r-stem"
                 }
             ]
         }
