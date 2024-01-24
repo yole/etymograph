@@ -324,7 +324,7 @@ function SingleWord(params) {
             <p/>
             {errorText !== "" && <div className="errorText">{errorText}</div>}
         </>}
-        {word.pos && !word.glossComputed && <Link href={`/paradigms/${word.language}/word/${word.id}`}>Paradigms</Link>}
+        {word.pos && (!word.glossComputed || word.pos === 'NP') && <Link href={`/paradigms/${word.language}/word/${word.id}`}>Paradigms</Link>}
     </>
 }
 
