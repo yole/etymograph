@@ -164,12 +164,17 @@ function SingleWord(params) {
     }
 
     function editSubmitted(status, r) {
-        setEditMode(false)
-        if (r.text !== word.text) {
-            router.push(`/word/${word.language}/${r.text}`)
+        if (status !== 200) {
+            setErrorText(r.message)
         }
         else {
-            router.replace(router.asPath)
+            setEditMode(false)
+            if (r.text !== word.text) {
+                router.push(`/word/${word.language}/${r.text}`)
+            }
+            else {
+                router.replace(router.asPath)
+            }
         }
     }
 
