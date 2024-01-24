@@ -5609,7 +5609,11 @@
             "text": "hafa",
             "lang": "ON",
             "gloss": "have",
-            "pos": "V"
+            "pos": "V",
+            "classes": [
+                "2conj",
+                "pret-ð"
+            ]
         },
         {
             "id": 974,
@@ -5987,7 +5991,10 @@
             "text": "nes",
             "lang": "ON",
             "gloss": "headland",
-            "pos": "N"
+            "pos": "N",
+            "classes": [
+                "n"
+            ]
         },
         {
             "id": 1036,
@@ -6015,7 +6022,11 @@
             "id": 1040,
             "text": "Grœnland",
             "lang": "ON",
-            "pos": "NP"
+            "pos": "NP",
+            "classes": [
+                "n",
+                "strong"
+            ]
         },
         {
             "id": 1041,
@@ -6033,7 +6044,10 @@
             "id": 1047,
             "text": "Herjólfsnes",
             "lang": "ON",
-            "pos": "NP"
+            "pos": "NP",
+            "classes": [
+                "n"
+            ]
         },
         {
             "id": 1052,
@@ -6136,8 +6150,7 @@
         {
             "id": 1071,
             "text": "kallaðr",
-            "lang": "ON",
-            "gloss": "call.PPART"
+            "lang": "ON"
         },
         {
             "id": 1072,
@@ -6193,7 +6206,10 @@
             "text": "Haraldr",
             "lang": "ON",
             "gloss": "Harald",
-            "pos": "NP"
+            "pos": "NP",
+            "classes": [
+                "m"
+            ]
         },
         {
             "id": 1080,
@@ -6732,7 +6748,10 @@
             "id": 1174,
             "text": "Hrólfr",
             "lang": "ON",
-            "pos": "NP"
+            "pos": "NP",
+            "classes": [
+                "m"
+            ]
         },
         {
             "id": 1175,
@@ -7817,7 +7836,10 @@
             "id": 1332,
             "text": "Visburr",
             "lang": "ON",
-            "pos": "NP"
+            "pos": "NP",
+            "classes": [
+                "m"
+            ]
         },
         {
             "id": 1333,
@@ -8345,6 +8367,402 @@
             "classes": [
                 "f"
             ]
+        },
+        {
+            "id": 1431,
+            "text": "hafði",
+            "lang": "ON"
+        },
+        {
+            "id": 1432,
+            "text": "verit",
+            "lang": "ON"
+        },
+        {
+            "id": 1434,
+            "text": "allra",
+            "lang": "ON",
+            "gloss": "all.M.GEN.PL"
+        },
+        {
+            "id": 1435,
+            "text": "konunga",
+            "lang": "ON"
+        },
+        {
+            "id": 1437,
+            "text": "ársælstr",
+            "lang": "ON"
+        },
+        {
+            "id": 1438,
+            "text": "ársæll",
+            "lang": "ON",
+            "gloss": "fortunate",
+            "fullGloss": "fortunate as to the seasonal harvest",
+            "pos": "ADJ"
+        },
+        {
+            "id": 1439,
+            "text": "mikit",
+            "lang": "ON",
+            "gloss": "greatly",
+            "pos": "ADV"
+        },
+        {
+            "id": 1440,
+            "text": "menn",
+            "lang": "ON"
+        },
+        {
+            "id": 1441,
+            "text": "þat",
+            "lang": "ON",
+            "gloss": "that.N"
+        },
+        {
+            "id": 1442,
+            "text": "spurðusk",
+            "lang": "ON"
+        },
+        {
+            "id": 1443,
+            "text": "spyrja",
+            "lang": "ON",
+            "gloss": "ask",
+            "fullGloss": "ask; hear; hear of, learn, be informed, find out",
+            "pos": "V"
+        },
+        {
+            "id": 1444,
+            "text": "dauðr",
+            "lang": "ON",
+            "gloss": "dead",
+            "pos": "ADJ"
+        },
+        {
+            "id": 1445,
+            "text": "lík",
+            "lang": "ON",
+            "gloss": "body",
+            "fullGloss": "body, corpse",
+            "pos": "N",
+            "classes": [
+                "n"
+            ]
+        },
+        {
+            "id": 1446,
+            "text": "flutt",
+            "lang": "ON"
+        },
+        {
+            "id": 1447,
+            "text": "flytja",
+            "lang": "ON",
+            "gloss": "move",
+            "fullGloss": "convey, move, carry",
+            "pos": "V"
+        },
+        {
+            "id": 1448,
+            "text": "Hringaríki",
+            "lang": "ON",
+            "pos": "NP",
+            "classes": [
+                "n"
+            ]
+        },
+        {
+            "id": 1449,
+            "text": "graptar",
+            "lang": "ON"
+        },
+        {
+            "id": 1450,
+            "text": "gröptr",
+            "lang": "ON",
+            "gloss": "digging",
+            "fullGloss": "digging, burial",
+            "pos": "N",
+            "classes": [
+                "m"
+            ]
+        },
+        {
+            "id": 1451,
+            "text": "ætlat",
+            "lang": "ON"
+        },
+        {
+            "id": 1452,
+            "text": "ætla",
+            "lang": "ON",
+            "gloss": "intend",
+            "pos": "V"
+        },
+        {
+            "id": 1454,
+            "text": "ríkismenn",
+            "lang": "ON"
+        },
+        {
+            "id": 1455,
+            "text": "ríkismaðr",
+            "lang": "ON",
+            "pos": "N",
+            "classes": [
+                "m"
+            ]
+        },
+        {
+            "id": 1456,
+            "text": "ríki",
+            "lang": "ON",
+            "gloss": "kingdom",
+            "pos": "N",
+            "classes": [
+                "n"
+            ]
+        },
+        {
+            "id": 1458,
+            "text": "Raumaríki",
+            "lang": "ON",
+            "pos": "NP"
+        },
+        {
+            "id": 1459,
+            "text": "Vestfold",
+            "lang": "ON",
+            "pos": "NP"
+        },
+        {
+            "id": 1460,
+            "text": "Heiðmörk",
+            "lang": "ON",
+            "pos": "NP"
+        },
+        {
+            "id": 1461,
+            "text": "beiddusk",
+            "lang": "ON"
+        },
+        {
+            "id": 1462,
+            "text": "beiða",
+            "lang": "ON",
+            "gloss": "ask",
+            "fullGloss": "ask, beg",
+            "pos": "V"
+        },
+        {
+            "id": 1463,
+            "text": "allir",
+            "lang": "ON",
+            "gloss": "all.M.NOM.PL"
+        },
+        {
+            "id": 1464,
+            "text": "líkit",
+            "lang": "ON"
+        },
+        {
+            "id": 1466,
+            "text": "heygja",
+            "lang": "ON",
+            "gloss": "bury",
+            "fullGloss": "bury in a mound",
+            "pos": "V",
+            "classes": [
+                "3conj",
+                "pret-ð"
+            ]
+        },
+        {
+            "id": 1467,
+            "text": "fylki",
+            "lang": "ON",
+            "gloss": "province",
+            "pos": "N",
+            "classes": [
+                "n"
+            ]
+        },
+        {
+            "id": 1468,
+            "text": "Drepstokki",
+            "lang": "ON"
+        },
+        {
+            "id": 1469,
+            "text": "Drepstokkr",
+            "lang": "ON",
+            "pos": "NP",
+            "classes": [
+                "m"
+            ]
+        },
+        {
+            "id": 1472,
+            "text": "inn",
+            "lang": "ON",
+            "gloss": "the.M.ACC"
+        },
+        {
+            "id": 1473,
+            "text": "inum",
+            "lang": "ON",
+            "gloss": "the.M.DAT"
+        },
+        {
+            "id": 1474,
+            "text": "ins",
+            "lang": "ON",
+            "gloss": "the.M.GEN"
+        },
+        {
+            "id": 1475,
+            "text": "it",
+            "lang": "ON",
+            "gloss": "the.N.ACC"
+        },
+        {
+            "id": 1476,
+            "text": "inu",
+            "lang": "ON",
+            "gloss": "the.N.DAT"
+        },
+        {
+            "id": 1477,
+            "text": "ins",
+            "lang": "ON",
+            "gloss": "the.N.GEN"
+        },
+        {
+            "id": 1478,
+            "text": "líkinu",
+            "lang": "ON"
+        },
+        {
+            "id": 1480,
+            "text": "höfuðit",
+            "lang": "ON"
+        },
+        {
+            "id": 1481,
+            "text": "höfuð",
+            "lang": "ON",
+            "gloss": "head",
+            "pos": "N",
+            "classes": [
+                "n"
+            ]
+        },
+        {
+            "id": 1483,
+            "text": "lagit",
+            "lang": "ON"
+        },
+        {
+            "id": 1484,
+            "text": "legja",
+            "lang": "ON",
+            "gloss": "lay",
+            "fullGloss": "lay, place, put",
+            "pos": "V"
+        },
+        {
+            "id": 1485,
+            "text": "Steini",
+            "lang": "ON"
+        },
+        {
+            "id": 1486,
+            "text": "steinn",
+            "lang": "ON",
+            "gloss": "stone",
+            "pos": "N",
+            "classes": [
+                "m"
+            ]
+        },
+        {
+            "id": 1487,
+            "text": "skipt",
+            "lang": "ON"
+        },
+        {
+            "id": 1488,
+            "text": "skipta",
+            "lang": "ON",
+            "gloss": "divide",
+            "fullGloss": "divide, share",
+            "pos": "V"
+        },
+        {
+            "id": 1489,
+            "text": "staði",
+            "lang": "ON"
+        },
+        {
+            "id": 1490,
+            "text": "heim",
+            "lang": "ON",
+            "gloss": "homeward",
+            "pos": "ADV"
+        },
+        {
+            "id": 1491,
+            "text": "kallaðir",
+            "lang": "ON"
+        },
+        {
+            "id": 1492,
+            "text": "heygðu",
+            "lang": "ON"
+        },
+        {
+            "id": 1493,
+            "text": "hluta",
+            "lang": "ON"
+        },
+        {
+            "id": 1494,
+            "text": "sinn",
+            "lang": "ON",
+            "gloss": "his/her own.M.ACC"
+        },
+        {
+            "id": 1495,
+            "text": "hluti",
+            "lang": "ON",
+            "gloss": "part",
+            "pos": "N",
+            "classes": [
+                "m"
+            ]
+        },
+        {
+            "id": 1496,
+            "text": "Brattahlíð",
+            "lang": "ON",
+            "pos": "NP",
+            "classes": [
+                "f"
+            ]
+        },
+        {
+            "id": 1497,
+            "text": "Brattahlíð",
+            "lang": "ON"
+        },
+        {
+            "id": 1501,
+            "text": "spakr",
+            "lang": "ON",
+            "gloss": "wise",
+            "pos": "ADJ"
         }
     ],
     "rules": [
@@ -13394,6 +13812,427 @@
             "notes": "",
             "preInstructions": [
             ]
+        },
+        {
+            "id": 1433,
+            "name": "on-ppart",
+            "fromLang": "ON",
+            "toLang": "ON",
+            "branches": [
+            ],
+            "addedCategories": ".PPART",
+            "fromPOS": "V",
+            "notes": "",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 1436,
+            "name": "on-adj-sup",
+            "fromLang": "ON",
+            "toLang": "ON",
+            "branches": [
+            ],
+            "addedCategories": ".SUP",
+            "fromPOS": "ADJ",
+            "notes": "",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 1498,
+            "name": "on-adj-strong-m-acc",
+            "fromLang": "ON",
+            "toLang": "ON",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ApplyRule",
+                            "args": [
+                                "1502"
+                            ]
+                        },
+                        {
+                            "type": "Append",
+                            "args": [
+                                "'an'"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".M.ACC",
+            "fromPOS": "ADJ",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 1499,
+            "name": "on-adj-strong-m-dat",
+            "fromLang": "ON",
+            "toLang": "ON",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ApplyRule",
+                            "args": [
+                                "1502"
+                            ]
+                        },
+                        {
+                            "type": "Append",
+                            "args": [
+                                "'um'"
+                            ]
+                        },
+                        {
+                            "type": "ApplyRule",
+                            "args": [
+                                "1123"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".M.DAT",
+            "fromPOS": "ADJ",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 1500,
+            "name": "on-adj-strong-m-gen",
+            "fromLang": "ON",
+            "toLang": "ON",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ApplyRule",
+                            "args": [
+                                "1502"
+                            ]
+                        },
+                        {
+                            "type": "Append",
+                            "args": [
+                                "'s'"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".M.GEN",
+            "fromPOS": "ADJ",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 1502,
+            "name": "on-adj-stem",
+            "fromLang": "ON",
+            "toLang": "ON",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeEnding",
+                            "args": [
+                                ""
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "characters": "r"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "NoChange",
+                            "args": [
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": null,
+            "fromPOS": "ADJ",
+            "notes": "",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 1503,
+            "name": "on-adj-strong-f-nom",
+            "fromLang": "ON",
+            "toLang": "ON",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ApplyRule",
+                            "args": [
+                                "1502"
+                            ]
+                        },
+                        {
+                            "type": "ApplyRule",
+                            "args": [
+                                "1394"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".F.NOM",
+            "fromPOS": "ADJ",
+            "notes": "",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 1504,
+            "name": "on-adj-strong-f-acc",
+            "fromLang": "ON",
+            "toLang": "ON",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ApplyRule",
+                            "args": [
+                                "1502"
+                            ]
+                        },
+                        {
+                            "type": "Append",
+                            "args": [
+                                "'a'"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".F.ACC",
+            "fromPOS": "ADJ",
+            "notes": "",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 1505,
+            "name": "on-adj-strong-f-dat",
+            "fromLang": "ON",
+            "toLang": "ON",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ApplyRule",
+                            "args": [
+                                "1502"
+                            ]
+                        },
+                        {
+                            "type": "Append",
+                            "args": [
+                                "'ri'"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".F.DAT",
+            "fromPOS": "ADJ",
+            "notes": "",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 1506,
+            "name": "on-adj-strong-f-gen",
+            "fromLang": "ON",
+            "toLang": "ON",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ApplyRule",
+                            "args": [
+                                "1502"
+                            ]
+                        },
+                        {
+                            "type": "Append",
+                            "args": [
+                                "'rar'"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".F.GEN",
+            "fromPOS": "ADJ",
+            "notes": "",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 1507,
+            "name": "on-adj-strong-n-nom",
+            "fromLang": "ON",
+            "toLang": "ON",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ApplyRule",
+                            "args": [
+                                "1502"
+                            ]
+                        },
+                        {
+                            "type": "Append",
+                            "args": [
+                                "'t'"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".N.NOM",
+            "fromPOS": "ADJ",
+            "notes": "",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 1508,
+            "name": "on-adj-strong-n-acc",
+            "fromLang": "ON",
+            "toLang": "ON",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ApplyRule",
+                            "args": [
+                                "1507"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".N.ACC",
+            "fromPOS": "ADJ",
+            "notes": "",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 1509,
+            "name": "on-adj-strong-n-dat",
+            "fromLang": "ON",
+            "toLang": "ON",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ApplyRule",
+                            "args": [
+                                "1502"
+                            ]
+                        },
+                        {
+                            "type": "Append",
+                            "args": [
+                                "'u'"
+                            ]
+                        },
+                        {
+                            "type": "ApplyRule",
+                            "args": [
+                                "1123"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".N.DAT",
+            "fromPOS": "ADJ",
+            "notes": "",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 1510,
+            "name": "on-adj-strong-n-gen",
+            "fromLang": "ON",
+            "toLang": "ON",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ApplyRule",
+                            "args": [
+                                "1502"
+                            ]
+                        },
+                        {
+                            "type": "Append",
+                            "args": [
+                                "'s'"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".N.GEN",
+            "fromPOS": "ADJ",
+            "notes": "",
+            "preInstructions": [
+            ]
         }
     ],
     "links": [
@@ -15370,7 +16209,10 @@
         {
             "from": 1071,
             "to": 1072,
-            "type": ">"
+            "type": ">",
+            "ruleIds": [
+                1433
+            ]
         },
         {
             "from": 1074,
@@ -16150,6 +16992,216 @@
             "type": ">",
             "ruleIds": [
                 1010
+            ]
+        },
+        {
+            "from": 1431,
+            "to": 973,
+            "type": ">",
+            "ruleIds": [
+                1404
+            ]
+        },
+        {
+            "from": 1432,
+            "to": 926,
+            "type": ">",
+            "ruleIds": [
+                1433
+            ]
+        },
+        {
+            "from": 1434,
+            "to": 1116,
+            "type": ">"
+        },
+        {
+            "from": 1435,
+            "to": 956,
+            "type": ">",
+            "ruleIds": [
+                1091
+            ]
+        },
+        {
+            "from": 1437,
+            "to": 1438,
+            "type": ">",
+            "ruleIds": [
+                1436
+            ]
+        },
+        {
+            "from": 1440,
+            "to": 951,
+            "type": ">",
+            "ruleIds": [
+                1088
+            ]
+        },
+        {
+            "from": 1441,
+            "to": 971,
+            "type": ">"
+        },
+        {
+            "from": 1442,
+            "to": 1443,
+            "type": ">",
+            "ruleIds": [
+                1421
+            ]
+        },
+        {
+            "from": 1446,
+            "to": 1447,
+            "type": ">",
+            "ruleIds": [
+                1433
+            ]
+        },
+        {
+            "from": 1449,
+            "to": 1450,
+            "type": ">",
+            "ruleIds": [
+                1012
+            ]
+        },
+        {
+            "from": 1451,
+            "to": 1452,
+            "type": ">",
+            "ruleIds": [
+                1433
+            ]
+        },
+        {
+            "from": 1454,
+            "to": 1455,
+            "type": ">",
+            "ruleIds": [
+                1088
+            ]
+        },
+        {
+            "from": 1461,
+            "to": 1462,
+            "type": ">",
+            "ruleIds": [
+                1421
+            ]
+        },
+        {
+            "from": 1463,
+            "to": 1116,
+            "type": ">"
+        },
+        {
+            "from": 1468,
+            "to": 1469,
+            "type": ">",
+            "ruleIds": [
+                1011
+            ]
+        },
+        {
+            "from": 1472,
+            "to": 1321,
+            "type": ">"
+        },
+        {
+            "from": 1473,
+            "to": 1321,
+            "type": ">"
+        },
+        {
+            "from": 1474,
+            "to": 1321,
+            "type": ">"
+        },
+        {
+            "from": 1475,
+            "to": 1321,
+            "type": ">"
+        },
+        {
+            "from": 1476,
+            "to": 1321,
+            "type": ">"
+        },
+        {
+            "from": 1477,
+            "to": 1321,
+            "type": ">"
+        },
+        {
+            "from": 1483,
+            "to": 1484,
+            "type": ">",
+            "ruleIds": [
+                1433
+            ]
+        },
+        {
+            "from": 1485,
+            "to": 1486,
+            "type": ">",
+            "ruleIds": [
+                1011
+            ]
+        },
+        {
+            "from": 1487,
+            "to": 1488,
+            "type": ">",
+            "ruleIds": [
+                1433
+            ]
+        },
+        {
+            "from": 1489,
+            "to": 1125,
+            "type": ">",
+            "ruleIds": [
+                1089
+            ]
+        },
+        {
+            "from": 1491,
+            "to": 1072,
+            "type": ">",
+            "ruleIds": [
+                1433
+            ]
+        },
+        {
+            "from": 1492,
+            "to": 1466,
+            "type": ">",
+            "ruleIds": [
+                1407
+            ]
+        },
+        {
+            "from": 1494,
+            "to": 1015,
+            "type": ">"
+        },
+        {
+            "from": 1493,
+            "to": 1495,
+            "type": ">",
+            "ruleIds": [
+                1010
+            ]
+        },
+        {
+            "from": 1497,
+            "to": 1496,
+            "type": ">",
+            "ruleIds": [
+                1011
             ]
         }
     ],
@@ -17716,7 +18768,7 @@
                 933,
                 935,
                 936,
-                null,
+                1468,
                 1037,
                 937,
                 939,
@@ -17761,7 +18813,7 @@
                 null,
                 null,
                 null,
-                null,
+                1497,
                 null,
                 988,
                 null,
@@ -18240,6 +19292,118 @@
                 1387,
                 1427
             ]
+        },
+        {
+            "id": 1430,
+            "text": "Hálfdanar saga svarta\nHann hafði verit allra konunga ársælstr.\nSvá mikit gerðu menn sér um hann,\nat þá er þat spurðusk,\nat hann var dauðr ok lík hans var flutt á Hringaríki\nok var þar til graptar ætlat,\nþá fóru ríkismenn af Raumaríki ok af Vestfold ok Heiðmörk\nok beiddusk allir at hafa líkit með sér ok heygja í sínu fylki,\nok þótti þat vera árvænt þeim, er nædi.\nEn þeir sættusk svá, at líkinu var skipt í fjóra staði,\nok var höfuðit lagit í haug at Steini á Hringaríki,\nen hverir fluttu heim sinn hluta ok heygðu,\nok eru þat allt kallaðir Hálfdanarhaugar.",
+            "title": "Viking Language 6.13",
+            "lang": "ON",
+            "wordIds": [
+                null,
+                null,
+                null,
+                null,
+                1431,
+                1432,
+                1434,
+                1435,
+                1437,
+                null,
+                1439,
+                null,
+                1440,
+                null,
+                null,
+                946,
+                null,
+                null,
+                null,
+                null,
+                1442,
+                null,
+                null,
+                null,
+                1444,
+                null,
+                1445,
+                null,
+                null,
+                1446,
+                null,
+                1448,
+                null,
+                null,
+                null,
+                null,
+                1449,
+                1451,
+                null,
+                null,
+                1454,
+                null,
+                1458,
+                null,
+                null,
+                1459,
+                null,
+                1460,
+                null,
+                1461,
+                1463,
+                null,
+                null,
+                1464,
+                null,
+                null,
+                null,
+                1466,
+                null,
+                null,
+                1467,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                1478,
+                null,
+                1487,
+                null,
+                null,
+                1489,
+                null,
+                null,
+                1480,
+                1483,
+                null,
+                null,
+                null,
+                1485,
+                null,
+                null,
+                null,
+                null,
+                null,
+                1490,
+                1494,
+                1493,
+                null,
+                1492,
+                null,
+                null,
+                null,
+                null,
+                1491,
+                null
+            ]
         }
     ],
     "paradigms": [
@@ -18663,6 +19827,98 @@
             ],
             "posList": [
                 "V"
+            ]
+        },
+        {
+            "id": 10,
+            "name": "Adjective Strong",
+            "lang": "ON",
+            "rows": [
+                "Nom",
+                "Acc",
+                "Dat",
+                "Gen"
+            ],
+            "columns": [
+                {
+                    "title": "SgM",
+                    "cells": [
+                        {
+                            "ruleAlternatives": [
+                                null
+                            ]
+                        },
+                        {
+                            "ruleAlternatives": [
+                                1498
+                            ]
+                        },
+                        {
+                            "ruleAlternatives": [
+                                1499
+                            ]
+                        },
+                        {
+                            "ruleAlternatives": [
+                                1500
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "SgF",
+                    "cells": [
+                        {
+                            "ruleAlternatives": [
+                                1503
+                            ]
+                        },
+                        {
+                            "ruleAlternatives": [
+                                1504
+                            ]
+                        },
+                        {
+                            "ruleAlternatives": [
+                                1505
+                            ]
+                        },
+                        {
+                            "ruleAlternatives": [
+                                1506
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "SgN",
+                    "cells": [
+                        {
+                            "ruleAlternatives": [
+                                1507
+                            ]
+                        },
+                        {
+                            "ruleAlternatives": [
+                                1508
+                            ]
+                        },
+                        {
+                            "ruleAlternatives": [
+                                1509
+                            ]
+                        },
+                        {
+                            "ruleAlternatives": [
+                                1510
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "posList": [
+                "ADJ",
+                "PRON"
             ]
         }
     ],
@@ -19589,6 +20845,38 @@
                 1382,
                 1320
             ]
+        },
+        {
+            "id": 1457,
+            "compoundId": 1455,
+            "componentIds": [
+                1456,
+                951
+            ]
+        },
+        {
+            "id": 1465,
+            "compoundId": 1464,
+            "componentIds": [
+                1445,
+                1320
+            ]
+        },
+        {
+            "id": 1479,
+            "compoundId": 1478,
+            "componentIds": [
+                1445,
+                1476
+            ]
+        },
+        {
+            "id": 1482,
+            "compoundId": 1480,
+            "componentIds": [
+                1481,
+                1320
+            ]
         }
     ],
     "translations": [
@@ -20019,6 +21307,53 @@
                     "abbreviation": "MID"
                 }
             ]
+        },
+        {
+            "lang": "ON",
+            "name": "Deverbal form",
+            "pos": [
+                "V"
+            ],
+            "values": [
+                {
+                    "name": "Past participle",
+                    "abbreviation": "PPART"
+                }
+            ]
+        },
+        {
+            "lang": "ON",
+            "name": "Comparative degree",
+            "pos": [
+                "ADJ"
+            ],
+            "values": [
+                {
+                    "name": "Superlative",
+                    "abbreviation": "SUP"
+                }
+            ]
+        },
+        {
+            "lang": "ON",
+            "name": "Gender",
+            "pos": [
+                "ADJ"
+            ],
+            "values": [
+                {
+                    "name": "Masculine",
+                    "abbreviation": "M"
+                },
+                {
+                    "name": "Feminine",
+                    "abbreviation": "F"
+                },
+                {
+                    "name": "Neuter",
+                    "abbreviation": "N"
+                }
+            ]
         }
     ],
     "wordClasses": [
@@ -20094,11 +21429,11 @@
             ],
             "values": [
                 {
-                    "name": "Male",
+                    "name": "Masculine",
                     "abbreviation": "m"
                 },
                 {
-                    "name": "Female",
+                    "name": "Feminine",
                     "abbreviation": "f"
                 },
                 {
@@ -20111,7 +21446,8 @@
             "lang": "ON",
             "name": "Declension type",
             "pos": [
-                "N"
+                "N",
+                "NP"
             ],
             "values": [
                 {
