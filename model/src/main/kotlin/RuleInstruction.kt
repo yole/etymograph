@@ -75,7 +75,7 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
     open fun toEditableText(): String = type.pattern?.replace("(.+)", arg)?.replace("(.*)", arg) ?: type.insnName
 
     open fun toSummaryText() = when(type) {
-        InstructionType.ChangeEnding -> "-$arg"
+        InstructionType.ChangeEnding -> if (arg.isNotEmpty()) "-$arg" else ""
         else -> ""
     }
 
