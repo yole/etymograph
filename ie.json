@@ -5231,8 +5231,7 @@
         {
             "id": 923,
             "text": "var",
-            "lang": "ON",
-            "gloss": "be.PST"
+            "lang": "ON"
         },
         {
             "id": 924,
@@ -5274,15 +5273,17 @@
         {
             "id": 929,
             "text": "gaf",
-            "lang": "ON",
-            "gloss": "give.PST"
+            "lang": "ON"
         },
         {
             "id": 930,
             "text": "gefa",
             "lang": "ON",
             "gloss": "give",
-            "pos": "V"
+            "pos": "V",
+            "classes": [
+                "strong"
+            ]
         },
         {
             "id": 931,
@@ -5305,15 +5306,17 @@
         {
             "id": 933,
             "text": "bjó",
-            "lang": "ON",
-            "gloss": "lived"
+            "lang": "ON"
         },
         {
             "id": 934,
             "text": "búa",
             "lang": "ON",
             "gloss": "live",
-            "pos": "V"
+            "pos": "V",
+            "classes": [
+                "strong"
+            ]
         },
         {
             "id": 935,
@@ -5332,15 +5335,17 @@
         {
             "id": 937,
             "text": "hét",
-            "lang": "ON",
-            "gloss": "be named.PST"
+            "lang": "ON"
         },
         {
             "id": 938,
             "text": "heita",
             "lang": "ON",
             "gloss": "be named",
-            "pos": "V"
+            "pos": "V",
+            "classes": [
+                "strong"
+            ]
         },
         {
             "id": 939,
@@ -5674,8 +5679,7 @@
         {
             "id": 982,
             "text": "fór",
-            "lang": "ON",
-            "gloss": "go.PST"
+            "lang": "ON"
         },
         {
             "id": 983,
@@ -5701,8 +5705,7 @@
         {
             "id": 985,
             "text": "nam",
-            "lang": "ON",
-            "gloss": "take.PST"
+            "lang": "ON"
         },
         {
             "id": 986,
@@ -6171,8 +6174,7 @@
         {
             "id": 1074,
             "text": "fekk",
-            "lang": "ON",
-            "gloss": "get.PST"
+            "lang": "ON"
         },
         {
             "id": 1075,
@@ -6339,8 +6341,7 @@
         {
             "id": 1103,
             "text": "bað",
-            "lang": "ON",
-            "gloss": "ask.PST"
+            "lang": "ON"
         },
         {
             "id": 1104,
@@ -6406,8 +6407,7 @@
         {
             "id": 1113,
             "text": "vann",
-            "lang": "ON",
-            "gloss": "win.PST"
+            "lang": "ON"
         },
         {
             "id": 1114,
@@ -6653,7 +6653,11 @@
             "text": "Ísland",
             "lang": "ON",
             "gloss": "Iceland",
-            "pos": "NP"
+            "pos": "NP",
+            "classes": [
+                "n",
+                "strong"
+            ]
         },
         {
             "id": 1159,
@@ -9022,6 +9026,66 @@
         {
             "id": 1577,
             "text": "sín",
+            "lang": "ON"
+        },
+        {
+            "id": 1580,
+            "text": "var",
+            "lang": "ON"
+        },
+        {
+            "id": 1581,
+            "text": "várum",
+            "lang": "ON"
+        },
+        {
+            "id": 1582,
+            "text": "vart",
+            "lang": "ON"
+        },
+        {
+            "id": 1583,
+            "text": "váruð",
+            "lang": "ON"
+        },
+        {
+            "id": 1584,
+            "text": "váru",
+            "lang": "ON"
+        },
+        {
+            "id": 1585,
+            "text": "Jótlandi",
+            "lang": "ON"
+        },
+        {
+            "id": 1586,
+            "text": "Jótland",
+            "lang": "ON",
+            "pos": "NP",
+            "classes": [
+                "n",
+                "strong"
+            ]
+        },
+        {
+            "id": 1587,
+            "text": "þessi",
+            "lang": "ON"
+        },
+        {
+            "id": 1588,
+            "text": "kumbl",
+            "lang": "ON"
+        },
+        {
+            "id": 1589,
+            "text": "Danmörk",
+            "lang": "ON"
+        },
+        {
+            "id": 1590,
+            "text": "fé",
             "lang": "ON"
         }
     ],
@@ -13510,18 +13574,12 @@
         },
         {
             "id": 1402,
-            "name": "on-past-weak-1sg",
+            "name": "on-past-1sg",
             "fromLang": "ON",
             "toLang": "ON",
             "branches": [
                 {
                     "instructions": [
-                        {
-                            "type": "ApplyRule",
-                            "args": [
-                                "1401"
-                            ]
-                        },
                         {
                             "type": "Append",
                             "args": [
@@ -13530,29 +13588,47 @@
                         }
                     ],
                     "condition": {
-                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "ClassMatches",
+                        "characters": "strong",
+                        "negated": true
                     }
                 }
             ],
             "addedCategories": ".PST.1SG",
             "fromPOS": "V",
             "preInstructions": [
+                {
+                    "type": "ApplyRule",
+                    "args": [
+                        "1401"
+                    ]
+                }
             ]
         },
         {
             "id": 1403,
-            "name": "on-past-weak-2sg",
+            "name": "on-past-2sg",
             "fromLang": "ON",
             "toLang": "ON",
             "branches": [
                 {
                     "instructions": [
                         {
-                            "type": "ApplyRule",
+                            "type": "Append",
                             "args": [
-                                "1401"
+                                "'t'"
                             ]
-                        },
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "ClassMatches",
+                        "characters": "strong"
+                    }
+                },
+                {
+                    "instructions": [
                         {
                             "type": "Append",
                             "args": [
@@ -13567,24 +13643,23 @@
             ],
             "addedCategories": ".PST.2SG",
             "fromPOS": "V",
-            "notes": "",
             "preInstructions": [
+                {
+                    "type": "ApplyRule",
+                    "args": [
+                        "1401"
+                    ]
+                }
             ]
         },
         {
             "id": 1404,
-            "name": "on-past-weak-3sg",
+            "name": "on-past-3sg",
             "fromLang": "ON",
             "toLang": "ON",
             "branches": [
                 {
                     "instructions": [
-                        {
-                            "type": "ApplyRule",
-                            "args": [
-                                "1401"
-                            ]
-                        },
                         {
                             "type": "Append",
                             "args": [
@@ -13593,19 +13668,27 @@
                         }
                     ],
                     "condition": {
-                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "ClassMatches",
+                        "characters": "strong",
+                        "negated": true
                     }
                 }
             ],
             "addedCategories": ".PST.3SG",
             "fromPOS": "V",
-            "notes": "",
             "preInstructions": [
+                {
+                    "type": "ApplyRule",
+                    "args": [
+                        "1401"
+                    ]
+                }
             ]
         },
         {
             "id": 1405,
-            "name": "on-past-weak-1pl",
+            "name": "on-past-1pl",
             "fromLang": "ON",
             "toLang": "ON",
             "branches": [
@@ -13637,13 +13720,12 @@
             ],
             "addedCategories": ".PST.1PL",
             "fromPOS": "V",
-            "notes": "",
             "preInstructions": [
             ]
         },
         {
             "id": 1406,
-            "name": "on-past-weak-2pl",
+            "name": "on-past-2pl",
             "fromLang": "ON",
             "toLang": "ON",
             "branches": [
@@ -13675,13 +13757,12 @@
             ],
             "addedCategories": ".PST.2PL",
             "fromPOS": "V",
-            "notes": "",
             "preInstructions": [
             ]
         },
         {
             "id": 1407,
-            "name": "on-past-weak-3pl",
+            "name": "on-past-3pl",
             "fromLang": "ON",
             "toLang": "ON",
             "branches": [
@@ -16736,7 +16817,10 @@
         {
             "from": 923,
             "to": 926,
-            "type": ">"
+            "type": ">",
+            "ruleIds": [
+                1404
+            ]
         },
         {
             "from": 927,
@@ -16749,17 +16833,26 @@
         {
             "from": 929,
             "to": 930,
-            "type": ">"
+            "type": ">",
+            "ruleIds": [
+                1404
+            ]
         },
         {
             "from": 933,
             "to": 934,
-            "type": ">"
+            "type": ">",
+            "ruleIds": [
+                1404
+            ]
         },
         {
             "from": 937,
             "to": 938,
-            "type": ">"
+            "type": ">",
+            "ruleIds": [
+                1404
+            ]
         },
         {
             "from": 940,
@@ -16785,12 +16878,18 @@
         {
             "from": 982,
             "to": 983,
-            "type": ">"
+            "type": ">",
+            "ruleIds": [
+                1404
+            ]
         },
         {
             "from": 985,
             "to": 986,
-            "type": ">"
+            "type": ">",
+            "ruleIds": [
+                1404
+            ]
         },
         {
             "from": 1004,
@@ -16976,7 +17075,10 @@
         {
             "from": 1074,
             "to": 1075,
-            "type": ">"
+            "type": ">",
+            "ruleIds": [
+                1404
+            ]
         },
         {
             "from": 1078,
@@ -17018,7 +17120,10 @@
         {
             "from": 1103,
             "to": 1104,
-            "type": ">"
+            "type": ">",
+            "ruleIds": [
+                1404
+            ]
         },
         {
             "from": 1105,
@@ -17057,7 +17162,10 @@
         {
             "from": 1113,
             "to": 1114,
-            "type": ">"
+            "type": ">",
+            "ruleIds": [
+                1404
+            ]
         },
         {
             "from": 1115,
@@ -18479,6 +18587,86 @@
             "type": ">",
             "ruleIds": [
                 1498
+            ]
+        },
+        {
+            "from": 1580,
+            "to": 926,
+            "type": ">",
+            "ruleIds": [
+                1402
+            ]
+        },
+        {
+            "from": 1581,
+            "to": 926,
+            "type": ">",
+            "ruleIds": [
+                1405
+            ]
+        },
+        {
+            "from": 1582,
+            "to": 926,
+            "type": ">",
+            "ruleIds": [
+                1403
+            ]
+        },
+        {
+            "from": 1583,
+            "to": 926,
+            "type": ">",
+            "ruleIds": [
+                1406
+            ]
+        },
+        {
+            "from": 1584,
+            "to": 926,
+            "type": ">",
+            "ruleIds": [
+                1407
+            ]
+        },
+        {
+            "from": 1585,
+            "to": 1586,
+            "type": ">",
+            "ruleIds": [
+                1011
+            ]
+        },
+        {
+            "from": 1587,
+            "to": 1007,
+            "type": ">",
+            "ruleIds": [
+                1544
+            ]
+        },
+        {
+            "from": 1588,
+            "to": 1006,
+            "type": ">",
+            "ruleIds": [
+                1089
+            ]
+        },
+        {
+            "from": 1589,
+            "to": 1062,
+            "type": ">",
+            "ruleIds": [
+                1010
+            ]
+        },
+        {
+            "from": 1590,
+            "to": 1317,
+            "type": ">",
+            "ruleIds": [
+                1010
             ]
         }
     ],
@@ -20156,7 +20344,7 @@
                 1078,
                 1080,
                 1082,
-                null,
+                1585,
                 null,
                 null,
                 null,
@@ -20189,12 +20377,12 @@
                 null,
                 1103,
                 null,
-                1060,
-                null,
+                1588,
+                1587,
                 null,
                 1105,
                 1106,
-                null,
+                1494,
                 null,
                 null,
                 null,
@@ -20206,7 +20394,7 @@
                 1110,
                 1111,
                 1113,
-                null,
+                1589,
                 1115,
                 null,
                 1117,
@@ -20297,7 +20485,7 @@
                 1186,
                 null,
                 null,
-                null,
+                1590,
                 null
             ]
         },
@@ -20953,7 +21141,7 @@
         },
         {
             "id": 7,
-            "name": "Verb Weak Past",
+            "name": "Verb Past",
             "lang": "ON",
             "rows": [
                 "1st",
