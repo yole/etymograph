@@ -91,14 +91,14 @@ class RuleController(val graphService: GraphService) {
 
     @GetMapping("/rule/{id}")
     fun rule(@PathVariable id: Int): RuleViewModel {
-        return resolveRule(id).toViewModel()
+        return graphService.resolveRule(id).toViewModel()
     }
 
     private fun Rule.toViewModel(): RuleViewModel {
         val graph = graphService.graph
         val paradigm = graph.paradigmForRule(this)
         val links = (graph.getLinksFrom(this).map { it.toEntity } +
-                        graph.getLinksTo(this).map { it.fromEntity })
+                graph.getLinksTo(this).map { it.fromEntity })
             .filterIsInstance<Rule>().toList()
         return RuleViewModel(
             id, name,
@@ -168,10 +168,13 @@ class RuleController(val graphService: GraphService) {
         val fromLanguage = graphService.resolveLanguage(params.fromLang)
         val toLanguage = graphService.resolveLanguage(params.toLang)
 
+        if (graph.ruleByName(params.name) != null) {
+            badRequest("Rule named '${params.name} already exists")
+        }
+
         val logic = try {
             Rule.parseBranches(params.text, parseContext(fromLanguage, toLanguage))
-        }
-        catch (e: RuleParseException) {
+        } catch (e: RuleParseException) {
             throw ResponseStatusException(HttpStatus.BAD_REQUEST, e.message, e)
         }
 
@@ -201,9 +204,13 @@ class RuleController(val graphService: GraphService) {
     fun updateRule(@PathVariable id: Int, @RequestBody params: UpdateRuleParameters): RuleViewModel {
         val fromLanguage = graphService.resolveLanguage(params.fromLang)
         val toLanguage = graphService.resolveLanguage(params.toLang)
-
         val graph = graphService.graph
-        val rule = resolveRule(id)
+        val rule = graphService.resolveRule(id)
+
+        if (rule.name != params.name && graph.ruleByName(params.name) != null) {
+            badRequest("Rule named '${params.name} already exists")
+        }
+
         rule.name = params.name
         rule.fromLanguage = fromLanguage
         rule.toLanguage = toLanguage
@@ -225,10 +232,5 @@ class RuleController(val graphService: GraphService) {
         val rule = graph.ruleById(id) ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST, "No rule with ID $id")
         graph.deleteRule(rule)
         graph.save()
-    }
-
-    private fun resolveRule(id: Int): Rule {
-        return graphService.graph.ruleById(id)
-            ?: throw ResponseStatusException(HttpStatus.NOT_FOUND, "No rule with ID $id")
     }
 }

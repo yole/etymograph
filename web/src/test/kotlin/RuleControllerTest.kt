@@ -1,8 +1,8 @@
 package ru.yole.etymograph.web
 
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertNull
+import org.junit.Assert.*
 import org.junit.Test
+import org.springframework.web.server.ResponseStatusException
 import ru.yole.etymograph.WordCategory
 import ru.yole.etymograph.WordCategoryValue
 import ru.yole.etymograph.RuleLogic
@@ -58,5 +58,27 @@ class RuleControllerTest {
 
         val rule = fixture.graphService.graph.ruleByName("q-pos")
         assertNull(rule!!.toPOS)
+    }
+
+    @Test
+    fun uniqueRuleName() {
+        val fixture = QTestFixture()
+        val ruleController = RuleController(fixture.graphService)
+
+        ruleController.newRule(
+            RuleController.UpdateRuleParameters(
+                "q-pos",
+                "q", "q",
+                "- no change"
+            ))
+
+        assertThrows("Rule named 'q-pos' already exists", ResponseStatusException::class.java) {
+            ruleController.newRule(
+                RuleController.UpdateRuleParameters(
+                    "q-pos",
+                    "q", "q",
+                    "- no change"
+                ))
+        }
     }
 }
