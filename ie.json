@@ -5785,7 +5785,10 @@
             "text": "koma",
             "lang": "ON",
             "gloss": "come",
-            "pos": "V"
+            "pos": "V",
+            "classes": [
+                "strong"
+            ]
         },
         {
             "id": 997,
@@ -9087,6 +9090,378 @@
             "id": 1590,
             "text": "fé",
             "lang": "ON"
+        },
+        {
+            "id": 1591,
+            "text": "kom",
+            "lang": "ON"
+        },
+        {
+            "id": 1592,
+            "text": "stóð",
+            "lang": "ON"
+        },
+        {
+            "id": 1593,
+            "text": "standa",
+            "lang": "ON",
+            "gloss": "stand",
+            "pos": "V",
+            "classes": [
+                "strong"
+            ]
+        },
+        {
+            "id": 1594,
+            "text": "skyldu",
+            "lang": "ON"
+        },
+        {
+            "id": 1595,
+            "text": "skulu",
+            "lang": "ON",
+            "gloss": "shall",
+            "pos": "V"
+        },
+        {
+            "id": 1596,
+            "text": "tíma",
+            "lang": "ON"
+        },
+        {
+            "id": 1597,
+            "text": "tími",
+            "lang": "ON",
+            "gloss": "time",
+            "pos": "N",
+            "classes": [
+                "m"
+            ]
+        },
+        {
+            "id": 1598,
+            "text": "ófriðr",
+            "lang": "ON",
+            "gloss": "war",
+            "fullGloss": "war, strife",
+            "pos": "N",
+            "classes": [
+                "m"
+            ]
+        },
+        {
+            "id": 1599,
+            "text": "Nóregi",
+            "lang": "ON"
+        },
+        {
+            "id": 1600,
+            "text": "Nóregr",
+            "lang": "ON"
+        },
+        {
+            "id": 1601,
+            "text": "brauzk",
+            "lang": "ON"
+        },
+        {
+            "id": 1603,
+            "text": "ríkis",
+            "lang": "ON"
+        },
+        {
+            "id": 1604,
+            "text": "lúfa",
+            "lang": "ON",
+            "gloss": "Shaggyhair"
+        },
+        {
+            "id": 1605,
+            "text": "Hálfdanar",
+            "lang": "ON"
+        },
+        {
+            "id": 1606,
+            "text": "Hálfdan",
+            "lang": "ON",
+            "pos": "NP",
+            "classes": [
+                "gen-ar"
+            ]
+        },
+        {
+            "id": 1607,
+            "text": "svarta",
+            "lang": "ON",
+            "gloss": "black.GEN"
+        },
+        {
+            "id": 1608,
+            "text": "svartr",
+            "lang": "ON",
+            "gloss": "black",
+            "pos": "ADJ"
+        },
+        {
+            "id": 1609,
+            "text": "áðr",
+            "lang": "ON",
+            "gloss": "before",
+            "pos": "ADV"
+        },
+        {
+            "id": 1610,
+            "text": "síðan",
+            "lang": "ON",
+            "gloss": "then",
+            "pos": "ADV"
+        },
+        {
+            "id": 1611,
+            "text": "norðr",
+            "lang": "ON",
+            "gloss": "northward",
+            "pos": "ADV"
+        },
+        {
+            "id": 1612,
+            "text": "átti",
+            "lang": "ON"
+        },
+        {
+            "id": 1613,
+            "text": "margar",
+            "lang": "ON"
+        },
+        {
+            "id": 1614,
+            "text": "orrostur",
+            "lang": "ON"
+        },
+        {
+            "id": 1615,
+            "text": "orrosta",
+            "lang": "ON",
+            "gloss": "battle",
+            "pos": "N",
+            "classes": [
+                "f"
+            ]
+        },
+        {
+            "id": 1616,
+            "text": "jafnan",
+            "lang": "ON",
+            "gloss": "always",
+            "pos": "ADV"
+        },
+        {
+            "id": 1617,
+            "text": "sigr",
+            "lang": "ON",
+            "gloss": "victory",
+            "pos": "N",
+            "classes": [
+                "m",
+                "r-stem"
+            ]
+        },
+        {
+            "id": 1618,
+            "text": "sigr",
+            "lang": "ON"
+        },
+        {
+            "id": 1619,
+            "text": "suðr",
+            "lang": "ON",
+            "gloss": "southward",
+            "pos": "ADV"
+        },
+        {
+            "id": 1620,
+            "text": "landinu",
+            "lang": "ON"
+        },
+        {
+            "id": 1622,
+            "text": "lagði",
+            "lang": "ON"
+        },
+        {
+            "id": 1623,
+            "text": "leggja",
+            "lang": "ON",
+            "gloss": "lay",
+            "pos": "V"
+        },
+        {
+            "id": 1624,
+            "text": "undir",
+            "lang": "ON",
+            "gloss": "under",
+            "pos": "PREP"
+        },
+        {
+            "id": 1625,
+            "text": "sik",
+            "lang": "ON",
+            "gloss": "oneself",
+            "pos": "PRON"
+        },
+        {
+            "id": 1626,
+            "text": "hvar",
+            "lang": "ON",
+            "gloss": "where",
+            "pos": "ADV"
+        },
+        {
+            "id": 1627,
+            "text": "upp",
+            "lang": "ON",
+            "gloss": "up",
+            "pos": "ADV"
+        },
+        {
+            "id": 1628,
+            "text": "Hörðaland",
+            "lang": "ON",
+            "pos": "NP",
+            "classes": [
+                "n"
+            ]
+        },
+        {
+            "id": 1629,
+            "text": "Hörðaland",
+            "lang": "ON"
+        },
+        {
+            "id": 1630,
+            "text": "móti",
+            "lang": "ON",
+            "gloss": "towards",
+            "pos": "PREP"
+        },
+        {
+            "id": 1631,
+            "text": "múgr",
+            "lang": "ON",
+            "gloss": "crowd",
+            "pos": "N",
+            "classes": [
+                "m"
+            ]
+        },
+        {
+            "id": 1632,
+            "text": "margmenni",
+            "lang": "ON",
+            "gloss": "multitude",
+            "pos": "N",
+            "classes": [
+                "n"
+            ]
+        },
+        {
+            "id": 1633,
+            "text": "formenn",
+            "lang": "ON"
+        },
+        {
+            "id": 1634,
+            "text": "formaðr",
+            "lang": "ON",
+            "gloss": "leader",
+            "pos": "N",
+            "classes": [
+                "m"
+            ]
+        },
+        {
+            "id": 1635,
+            "text": "Kjötvi",
+            "lang": "ON",
+            "pos": "NP"
+        },
+        {
+            "id": 1636,
+            "text": "auðgi",
+            "lang": "ON"
+        },
+        {
+            "id": 1637,
+            "text": "Þórir",
+            "lang": "ON",
+            "pos": "NP"
+        },
+        {
+            "id": 1638,
+            "text": "Suðr-Rygirnir",
+            "lang": "ON",
+            "gloss": "southlanders"
+        },
+        {
+            "id": 1639,
+            "text": "Súlki",
+            "lang": "ON",
+            "pos": "NP"
+        },
+        {
+            "id": 1640,
+            "text": "fundr",
+            "lang": "ON",
+            "gloss": "meeting",
+            "pos": "N",
+            "classes": [
+                "m"
+            ]
+        },
+        {
+            "id": 1641,
+            "text": "varð",
+            "lang": "ON"
+        },
+        {
+            "id": 1642,
+            "text": "verða",
+            "lang": "ON",
+            "gloss": "become",
+            "fullGloss": "become, happen, take place",
+            "pos": "V"
+        },
+        {
+            "id": 1643,
+            "text": "Rogalandi",
+            "lang": "ON"
+        },
+        {
+            "id": 1644,
+            "text": "Rogaland",
+            "lang": "ON",
+            "pos": "NP"
+        },
+        {
+            "id": 1645,
+            "text": "firði",
+            "lang": "ON"
+        },
+        {
+            "id": 1646,
+            "text": "heitir",
+            "lang": "ON"
+        },
+        {
+            "id": 1647,
+            "text": "Hafrsfirði",
+            "lang": "ON"
+        },
+        {
+            "id": 1648,
+            "text": "Hafrsfjörðr",
+            "lang": "ON",
+            "pos": "NP"
         }
     ],
     "rules": [
@@ -12467,19 +12842,6 @@
                 }
             ],
             "addedCategories": ".3PL",
-            "fromPOS": "V",
-            "notes": "",
-            "preInstructions": [
-            ]
-        },
-        {
-            "id": 1166,
-            "name": "on-past",
-            "fromLang": "ON",
-            "toLang": "ON",
-            "branches": [
-            ],
-            "addedCategories": ".PST",
             "fromPOS": "V",
             "notes": "",
             "preInstructions": [
@@ -17280,7 +17642,7 @@
             "to": 1179,
             "type": ">",
             "ruleIds": [
-                1166
+                1404
             ]
         },
         {
@@ -17663,7 +18025,7 @@
             "to": 1334,
             "type": ">",
             "ruleIds": [
-                1166
+                1404
             ]
         },
         {
@@ -17695,7 +18057,7 @@
             "to": 1344,
             "type": ">",
             "ruleIds": [
-                1166
+                1404
             ]
         },
         {
@@ -17766,7 +18128,7 @@
             "to": 996,
             "type": ">",
             "ruleIds": [
-                1166
+                1407
             ]
         },
         {
@@ -17782,7 +18144,7 @@
             "to": 1375,
             "type": ">",
             "ruleIds": [
-                1166
+                1407
             ]
         },
         {
@@ -18667,6 +19029,181 @@
             "type": ">",
             "ruleIds": [
                 1010
+            ]
+        },
+        {
+            "from": 1591,
+            "to": 996,
+            "type": ">",
+            "ruleIds": [
+                1404
+            ]
+        },
+        {
+            "from": 1592,
+            "to": 1593,
+            "type": ">",
+            "ruleIds": [
+                1404
+            ]
+        },
+        {
+            "from": 1594,
+            "to": 1595,
+            "type": ">",
+            "ruleIds": [
+                1407
+            ]
+        },
+        {
+            "from": 1596,
+            "to": 1597,
+            "type": ">",
+            "ruleIds": [
+                1010
+            ]
+        },
+        {
+            "from": 1599,
+            "to": 1600,
+            "type": ">",
+            "ruleIds": [
+                1010
+            ]
+        },
+        {
+            "from": 1600,
+            "to": 1118,
+            "type": "="
+        },
+        {
+            "from": 1601,
+            "to": 1170,
+            "type": ">",
+            "ruleIds": [
+                1418
+            ]
+        },
+        {
+            "from": 1603,
+            "to": 1456,
+            "type": ">",
+            "ruleIds": [
+                1012
+            ]
+        },
+        {
+            "from": 1605,
+            "to": 1606,
+            "type": ">",
+            "ruleIds": [
+                1012
+            ]
+        },
+        {
+            "from": 1607,
+            "to": 1608,
+            "type": ">"
+        },
+        {
+            "from": 1612,
+            "to": 1375,
+            "type": ">",
+            "ruleIds": [
+                1404
+            ]
+        },
+        {
+            "from": 1613,
+            "to": 969,
+            "type": ">",
+            "ruleIds": [
+                1540
+            ]
+        },
+        {
+            "from": 1614,
+            "to": 1615,
+            "type": ">",
+            "ruleIds": [
+                1089
+            ]
+        },
+        {
+            "from": 1618,
+            "to": 1617,
+            "type": ">",
+            "ruleIds": [
+                1010
+            ]
+        },
+        {
+            "from": 1622,
+            "to": 1623,
+            "type": ">",
+            "ruleIds": [
+                1404
+            ]
+        },
+        {
+            "from": 1629,
+            "to": 1628,
+            "type": ">",
+            "ruleIds": [
+                1010
+            ]
+        },
+        {
+            "from": 1633,
+            "to": 1634,
+            "type": ">",
+            "ruleIds": [
+                1088
+            ]
+        },
+        {
+            "from": 1636,
+            "to": 1297,
+            "type": ">"
+        },
+        {
+            "from": 1641,
+            "to": 1642,
+            "type": ">",
+            "ruleIds": [
+                1404
+            ]
+        },
+        {
+            "from": 1643,
+            "to": 1644,
+            "type": ">",
+            "ruleIds": [
+                1011
+            ]
+        },
+        {
+            "from": 1645,
+            "to": 978,
+            "type": ">",
+            "ruleIds": [
+                1011
+            ]
+        },
+        {
+            "from": 1646,
+            "to": 938,
+            "type": ">",
+            "ruleIds": [
+                1130
+            ]
+        },
+        {
+            "from": 1647,
+            "to": 1648,
+            "type": ">",
+            "ruleIds": [
+                1011
             ]
         }
     ],
@@ -20608,7 +21145,7 @@
                 null,
                 1297,
                 1318,
-                1317,
+                1590,
                 null,
                 1298,
                 null,
@@ -20659,7 +21196,7 @@
                 1329,
                 null,
                 null,
-                null,
+                1494,
                 1331,
                 null,
                 1333,
@@ -20720,14 +21257,14 @@
                 1378,
                 null,
                 null,
-                null,
+                1591,
                 null,
                 1423,
                 null,
                 null,
                 null,
                 1381,
-                null,
+                1592,
                 null,
                 1384,
                 1373,
@@ -20737,7 +21274,7 @@
                 null,
                 null,
                 null,
-                null,
+                1594,
                 null,
                 null,
                 null,
@@ -20873,11 +21410,105 @@
         },
         {
             "id": 1517,
-            "text": "þenna tíma var ófriðr mikill í Nóregi; brauzk þar til rikis Haraldr lúfa,\nsonr Hálfdanar svarta; hann var áðr konungr á Upplöndum.\nSíðan fór hann norðr í land ok átti þar margar orrostur,\nok hafði han jafnan sigr.\nHerjaði hann svá suðr eptir landinu ok lagði undir sik,\nhvar sem hann fór; en er hann kom upp á Hörðaland,\nkom í móti honum múgr ok margmenni.\nVáru þar formenn: Kjötvi inn auðgi ok Þórir haklangr\nok þeir Suðr-Rygirnir ok Súlki konungr.\nFundr þeira Haralds konungs varð á Rogalandi, í firði þeim,\ner heitir í Hafrsfirði.",
+            "text": "þenna tíma var ófriðr mikill í Nóregi; brauzk þar til ríkis Haraldr lúfa,\nsonr Hálfdanar svarta; hann var áðr konungr á Upplöndum.\nSíðan fór hann norðr í land ok átti þar margar orrostur,\nok hafði hann jafnan sigr.\nHerjaði hann svá suðr eptir landinu ok lagði undir sik,\nhvar sem hann fór; en er hann kom upp á Hörðaland,\nkom í móti honum múgr ok margmenni.\nVáru þar formenn: Kjötvi inn auðgi ok Þórir haklangr\nok þeir Suðr-Rygirnir ok Súlki konungr.\nFundr þeira Haralds konungs varð á Rogalandi, í firði þeim,\ner heitir í Hafrsfirði.",
             "title": "Viking Language 7.2",
             "lang": "ON",
             "wordIds": [
-                1518
+                1518,
+                1596,
+                null,
+                1598,
+                null,
+                null,
+                1599,
+                1601,
+                null,
+                null,
+                1603,
+                null,
+                1604,
+                null,
+                1605,
+                1607,
+                null,
+                null,
+                1609,
+                null,
+                null,
+                null,
+                1610,
+                null,
+                null,
+                1611,
+                null,
+                1027,
+                null,
+                1612,
+                null,
+                1613,
+                1614,
+                null,
+                null,
+                null,
+                1616,
+                1618,
+                null,
+                null,
+                null,
+                1619,
+                null,
+                1620,
+                null,
+                1622,
+                1624,
+                1625,
+                1626,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                1627,
+                null,
+                1629,
+                null,
+                null,
+                1630,
+                null,
+                1631,
+                null,
+                1632,
+                null,
+                null,
+                1633,
+                1635,
+                null,
+                1636,
+                null,
+                1637,
+                null,
+                null,
+                null,
+                1638,
+                null,
+                1639,
+                null,
+                1640,
+                null,
+                null,
+                null,
+                1641,
+                null,
+                1643,
+                null,
+                1645,
+                null,
+                null,
+                1646,
+                null,
+                1647
             ]
         }
     ],
@@ -22426,6 +23057,14 @@
             "componentIds": [
                 1481,
                 1320
+            ]
+        },
+        {
+            "id": 1621,
+            "compoundId": 1620,
+            "componentIds": [
+                931,
+                1476
             ]
         }
     ],
