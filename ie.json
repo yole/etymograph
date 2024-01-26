@@ -5356,8 +5356,7 @@
         {
             "id": 940,
             "text": "hans",
-            "lang": "ON",
-            "gloss": "he.GEN"
+            "lang": "ON"
         },
         {
             "id": 941,
@@ -5381,7 +5380,6 @@
             "id": 943,
             "text": "þeira",
             "lang": "ON",
-            "gloss": "their",
             "pos": "PRON"
         },
         {
@@ -5394,14 +5392,12 @@
         {
             "id": 946,
             "text": "hann",
-            "lang": "ON",
-            "gloss": "he.ACC"
+            "lang": "ON"
         },
         {
             "id": 947,
             "text": "honum",
-            "lang": "ON",
-            "gloss": "he.DAT"
+            "lang": "ON"
         },
         {
             "id": 949,
@@ -5687,7 +5683,10 @@
             "lang": "ON",
             "gloss": "go",
             "fullGloss": "go, travel, move",
-            "pos": "V"
+            "pos": "V",
+            "classes": [
+                "strong"
+            ]
         },
         {
             "id": 984,
@@ -5882,16 +5881,15 @@
         },
         {
             "id": 1014,
-            "text": "sina",
-            "lang": "ON",
-            "gloss": "his/her own.F.ACC"
+            "text": "sína",
+            "lang": "ON"
         },
         {
             "id": 1015,
             "text": "sinn",
             "lang": "ON",
             "gloss": "his/her own",
-            "pos": "PREP"
+            "pos": "PRON"
         },
         {
             "id": 1016,
@@ -7498,8 +7496,7 @@
         {
             "id": 1282,
             "text": "síns",
-            "lang": "ON",
-            "gloss": "his/her own.M.GEN"
+            "lang": "ON"
         },
         {
             "id": 1283,
@@ -7764,14 +7761,14 @@
         {
             "id": 1320,
             "text": "it",
-            "lang": "ON",
-            "gloss": "the.N"
+            "lang": "ON"
         },
         {
             "id": 1321,
             "text": "inn",
             "lang": "ON",
-            "gloss": "the"
+            "gloss": "the",
+            "pos": "PRON"
         },
         {
             "id": 1322,
@@ -8418,8 +8415,7 @@
         {
             "id": 1441,
             "text": "þat",
-            "lang": "ON",
-            "gloss": "that.N"
+            "lang": "ON"
         },
         {
             "id": 1442,
@@ -8607,38 +8603,32 @@
         {
             "id": 1472,
             "text": "inn",
-            "lang": "ON",
-            "gloss": "the.M.ACC"
+            "lang": "ON"
         },
         {
             "id": 1473,
             "text": "inum",
-            "lang": "ON",
-            "gloss": "the.M.DAT"
+            "lang": "ON"
         },
         {
             "id": 1474,
             "text": "ins",
-            "lang": "ON",
-            "gloss": "the.M.GEN"
+            "lang": "ON"
         },
         {
             "id": 1475,
             "text": "it",
-            "lang": "ON",
-            "gloss": "the.N.ACC"
+            "lang": "ON"
         },
         {
             "id": 1476,
             "text": "inu",
-            "lang": "ON",
-            "gloss": "the.N.DAT"
+            "lang": "ON"
         },
         {
             "id": 1477,
             "text": "ins",
-            "lang": "ON",
-            "gloss": "the.N.GEN"
+            "lang": "ON"
         },
         {
             "id": 1478,
@@ -8731,8 +8721,7 @@
         {
             "id": 1494,
             "text": "sinn",
-            "lang": "ON",
-            "gloss": "his/her own.M.ACC"
+            "lang": "ON"
         },
         {
             "id": 1495,
@@ -8793,6 +8782,246 @@
         {
             "id": 1516,
             "text": "eru",
+            "lang": "ON"
+        },
+        {
+            "id": 1518,
+            "text": "þenna",
+            "lang": "ON"
+        },
+        {
+            "id": 1519,
+            "text": "hef",
+            "lang": "ON"
+        },
+        {
+            "id": 1520,
+            "text": "höfum",
+            "lang": "ON"
+        },
+        {
+            "id": 1521,
+            "text": "hefr",
+            "lang": "ON"
+        },
+        {
+            "id": 1522,
+            "text": "hafið",
+            "lang": "ON"
+        },
+        {
+            "id": 1523,
+            "text": "hefr",
+            "lang": "ON"
+        },
+        {
+            "id": 1524,
+            "text": "syni",
+            "lang": "ON"
+        },
+        {
+            "id": 1525,
+            "text": "sonum",
+            "lang": "ON"
+        },
+        {
+            "id": 1526,
+            "text": "sonar",
+            "lang": "ON"
+        },
+        {
+            "id": 1527,
+            "text": "synir",
+            "lang": "ON"
+        },
+        {
+            "id": 1528,
+            "text": "sonu",
+            "lang": "ON"
+        },
+        {
+            "id": 1529,
+            "text": "mann",
+            "lang": "ON"
+        },
+        {
+            "id": 1530,
+            "text": "manni",
+            "lang": "ON"
+        },
+        {
+            "id": 1531,
+            "text": "manns",
+            "lang": "ON"
+        },
+        {
+            "id": 1532,
+            "text": "menn",
+            "lang": "ON"
+        },
+        {
+            "id": 1533,
+            "text": "mönnum",
+            "lang": "ON"
+        },
+        {
+            "id": 1534,
+            "text": "manna",
+            "lang": "ON"
+        },
+        {
+            "id": 1547,
+            "text": "in",
+            "lang": "ON"
+        },
+        {
+            "id": 1548,
+            "text": "ina",
+            "lang": "ON"
+        },
+        {
+            "id": 1549,
+            "text": "inni",
+            "lang": "ON"
+        },
+        {
+            "id": 1550,
+            "text": "innar",
+            "lang": "ON"
+        },
+        {
+            "id": 1551,
+            "text": "inir",
+            "lang": "ON"
+        },
+        {
+            "id": 1552,
+            "text": "ina",
+            "lang": "ON"
+        },
+        {
+            "id": 1553,
+            "text": "inna",
+            "lang": "ON"
+        },
+        {
+            "id": 1554,
+            "text": "inar",
+            "lang": "ON"
+        },
+        {
+            "id": 1555,
+            "text": "inar",
+            "lang": "ON"
+        },
+        {
+            "id": 1556,
+            "text": "inna",
+            "lang": "ON"
+        },
+        {
+            "id": 1557,
+            "text": "in",
+            "lang": "ON"
+        },
+        {
+            "id": 1558,
+            "text": "in",
+            "lang": "ON"
+        },
+        {
+            "id": 1559,
+            "text": "inna",
+            "lang": "ON"
+        },
+        {
+            "id": 1560,
+            "text": "því",
+            "lang": "ON"
+        },
+        {
+            "id": 1561,
+            "text": "þess",
+            "lang": "ON"
+        },
+        {
+            "id": 1562,
+            "text": "þá",
+            "lang": "ON"
+        },
+        {
+            "id": 1563,
+            "text": "þeim",
+            "lang": "ON"
+        },
+        {
+            "id": 1564,
+            "text": "þær",
+            "lang": "ON"
+        },
+        {
+            "id": 1565,
+            "text": "þau",
+            "lang": "ON"
+        },
+        {
+            "id": 1566,
+            "text": "sínum",
+            "lang": "ON"
+        },
+        {
+            "id": 1567,
+            "text": "sín",
+            "lang": "ON"
+        },
+        {
+            "id": 1568,
+            "text": "sinni",
+            "lang": "ON"
+        },
+        {
+            "id": 1569,
+            "text": "sinnar",
+            "lang": "ON"
+        },
+        {
+            "id": 1570,
+            "text": "sitt",
+            "lang": "ON"
+        },
+        {
+            "id": 1571,
+            "text": "sínu",
+            "lang": "ON"
+        },
+        {
+            "id": 1572,
+            "text": "síns",
+            "lang": "ON"
+        },
+        {
+            "id": 1573,
+            "text": "sínir",
+            "lang": "ON"
+        },
+        {
+            "id": 1574,
+            "text": "sína",
+            "lang": "ON"
+        },
+        {
+            "id": 1575,
+            "text": "sinna",
+            "lang": "ON"
+        },
+        {
+            "id": 1576,
+            "text": "sínar",
+            "lang": "ON"
+        },
+        {
+            "id": 1577,
+            "text": "sín",
             "lang": "ON"
         }
     ],
@@ -11872,6 +12101,37 @@
                 {
                     "instructions": [
                         {
+                            "type": "ApplyRule",
+                            "args": [
+                                "1579"
+                            ]
+                        },
+                        {
+                            "type": "ChangeEnding",
+                            "args": [
+                                ""
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.AndRuleConditionData",
+                        "members": [
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "ClassMatches",
+                                "characters": "strong"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "EndsWith",
+                                "characters": "a"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "instructions": [
+                        {
                             "type": "NoChange",
                             "args": [
                             ]
@@ -14264,6 +14524,490 @@
             "notes": "",
             "preInstructions": [
             ]
+        },
+        {
+            "id": 1535,
+            "name": "on-adj-strong-m-nom-pl",
+            "fromLang": "ON",
+            "toLang": "ON",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ApplyRule",
+                            "args": [
+                                "1502"
+                            ]
+                        },
+                        {
+                            "type": "Append",
+                            "args": [
+                                "'ir'"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".M.NOM.PL",
+            "fromPOS": "ADJ",
+            "notes": "",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 1536,
+            "name": "on-adj-strong-m-acc-pl",
+            "fromLang": "ON",
+            "toLang": "ON",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ApplyRule",
+                            "args": [
+                                "1502"
+                            ]
+                        },
+                        {
+                            "type": "Append",
+                            "args": [
+                                "'a'"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".M.ACC.PL",
+            "fromPOS": "ADJ",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 1537,
+            "name": "on-adj-strong-m-dat-pl",
+            "fromLang": "ON",
+            "toLang": "ON",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ApplyRule",
+                            "args": [
+                                "1499"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".M.DAT.PL",
+            "fromPOS": "ON",
+            "notes": "",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 1538,
+            "name": "on-adj-strong-m-gen-pl",
+            "fromLang": "ON",
+            "toLang": "ON",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ApplyRule",
+                            "args": [
+                                "1502"
+                            ]
+                        },
+                        {
+                            "type": "Append",
+                            "args": [
+                                "'ra'"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".M.GEN.PL",
+            "fromPOS": "ADJ",
+            "notes": "",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 1539,
+            "name": "on-adj-strong-f-nom-pl",
+            "fromLang": "ON",
+            "toLang": "ON",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ApplyRule",
+                            "args": [
+                                "1502"
+                            ]
+                        },
+                        {
+                            "type": "Append",
+                            "args": [
+                                "'ar'"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".F.NOM.PL",
+            "fromPOS": "ADJ",
+            "notes": "",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 1540,
+            "name": "on-adj-strong-f-acc-pl",
+            "fromLang": "ON",
+            "toLang": "ON",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ApplyRule",
+                            "args": [
+                                "1539"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".F.ACC.PL",
+            "fromPOS": "ADJ",
+            "notes": "",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 1541,
+            "name": "on-adj-strong-f-dat-pl",
+            "fromLang": "ON",
+            "toLang": "ON",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ApplyRule",
+                            "args": [
+                                "1537"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".F.DAT.PL",
+            "fromPOS": "ADJ",
+            "notes": "",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 1542,
+            "name": "on-adj-strong-f-gen-pl",
+            "fromLang": "ON",
+            "toLang": "ON",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ApplyRule",
+                            "args": [
+                                "1538"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".F.GEN.PL",
+            "fromPOS": "ADJ",
+            "notes": "",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 1543,
+            "name": "on-adj-strong-n-nom-pl",
+            "fromLang": "ON",
+            "toLang": "ON",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ApplyRule",
+                            "args": [
+                                "1502"
+                            ]
+                        },
+                        {
+                            "type": "ApplyRule",
+                            "args": [
+                                "1394"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".N.NOM.PL",
+            "fromPOS": "ADJ",
+            "notes": "",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 1544,
+            "name": "on-adj-strong-n-acc-pl",
+            "fromLang": "ON",
+            "toLang": "ON",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ApplyRule",
+                            "args": [
+                                "1543"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".N.ACC.PL",
+            "fromPOS": "ADJ",
+            "notes": "",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 1545,
+            "name": "on-adj-strong-n-dat-pl",
+            "fromLang": "ON",
+            "toLang": "ON",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ApplyRule",
+                            "args": [
+                                "1537"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".N.DAT.PL",
+            "fromPOS": "ADJ",
+            "notes": "",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 1546,
+            "name": "on-adj-strong-n-gen-pl",
+            "fromLang": "ON",
+            "toLang": "ON",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ApplyRule",
+                            "args": [
+                                "1538"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".N.GEN.PL",
+            "fromPOS": "ADJ",
+            "notes": "",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 1578,
+            "name": "on-i-umlaut-change",
+            "fromLang": "ON",
+            "toLang": "ON",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "e"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "PhonemeMatches",
+                        "characters": "a"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "æ"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "PhonemeMatches",
+                        "characters": "á"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "ø"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "PhonemeMatches",
+                        "characters": "o"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "œ"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "PhonemeMatches",
+                        "characters": "ó"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "y"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "PhonemeMatches",
+                        "characters": "u"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "ý"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "PhonemeMatches",
+                        "characters": "ú"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "ø"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "PhonemeMatches",
+                        "characters": "ö"
+                    }
+                }
+            ],
+            "addedCategories": null,
+            "notes": "",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 1579,
+            "name": "on-i-umlaut",
+            "fromLang": "ON",
+            "toLang": "ON",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ApplySoundRule",
+                            "args": [
+                                "1578",
+                                "first vowel"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": null,
+            "notes": "",
+            "preInstructions": [
+            ]
         }
     ],
     "links": [
@@ -16020,41 +16764,22 @@
         {
             "from": 940,
             "to": 924,
-            "type": ">"
-        },
-        {
-            "from": 946,
-            "to": 924,
-            "type": ">"
+            "type": ">",
+            "ruleIds": [
+                1500
+            ]
         },
         {
             "from": 947,
             "to": 924,
-            "type": ">"
-        },
-        {
-            "from": 953,
-            "to": 952,
-            "type": ">"
-        },
-        {
-            "from": 954,
-            "to": 952,
-            "type": ">"
-        },
-        {
-            "from": 955,
-            "to": 952,
-            "type": ">"
+            "type": ">",
+            "ruleIds": [
+                1499
+            ]
         },
         {
             "from": 958,
             "to": 962,
-            "type": ">"
-        },
-        {
-            "from": 943,
-            "to": 971,
             "type": ">"
         },
         {
@@ -16091,7 +16816,10 @@
         {
             "from": 1014,
             "to": 1015,
-            "type": ">"
+            "type": ">",
+            "ruleIds": [
+                1504
+            ]
         },
         {
             "from": 1016,
@@ -16649,7 +17377,7 @@
             "to": 1007,
             "type": ">",
             "ruleIds": [
-                1010
+                1504
             ]
         },
         {
@@ -16721,7 +17449,10 @@
         {
             "from": 1282,
             "to": 1015,
-            "type": ">"
+            "type": ">",
+            "ruleIds": [
+                1500
+            ]
         },
         {
             "from": 1291,
@@ -16790,7 +17521,10 @@
         {
             "from": 1320,
             "to": 1321,
-            "type": ">"
+            "type": ">",
+            "ruleIds": [
+                1507
+            ]
         },
         {
             "from": 1322,
@@ -17071,11 +17805,6 @@
             ]
         },
         {
-            "from": 1441,
-            "to": 971,
-            "type": ">"
-        },
-        {
             "from": 1442,
             "to": 1443,
             "type": ">",
@@ -17139,32 +17868,50 @@
         {
             "from": 1472,
             "to": 1321,
-            "type": ">"
+            "type": ">",
+            "ruleIds": [
+                1498
+            ]
         },
         {
             "from": 1473,
             "to": 1321,
-            "type": ">"
+            "type": ">",
+            "ruleIds": [
+                1499
+            ]
         },
         {
             "from": 1474,
             "to": 1321,
-            "type": ">"
+            "type": ">",
+            "ruleIds": [
+                1500
+            ]
         },
         {
             "from": 1475,
             "to": 1321,
-            "type": ">"
+            "type": ">",
+            "ruleIds": [
+                1508
+            ]
         },
         {
             "from": 1476,
             "to": 1321,
-            "type": ">"
+            "type": ">",
+            "ruleIds": [
+                1509
+            ]
         },
         {
             "from": 1477,
             "to": 1321,
-            "type": ">"
+            "type": ">",
+            "ruleIds": [
+                1510
+            ]
         },
         {
             "from": 1483,
@@ -17217,7 +17964,10 @@
         {
             "from": 1494,
             "to": 1015,
-            "type": ">"
+            "type": ">",
+            "ruleIds": [
+                1498
+            ]
         },
         {
             "from": 1493,
@@ -17281,6 +18031,454 @@
             "type": ">",
             "ruleIds": [
                 1134
+            ]
+        },
+        {
+            "from": 1518,
+            "to": 1007,
+            "type": ">",
+            "ruleIds": [
+                1498
+            ]
+        },
+        {
+            "from": 1519,
+            "to": 973,
+            "type": ">",
+            "ruleIds": [
+                1129
+            ]
+        },
+        {
+            "from": 1520,
+            "to": 973,
+            "type": ">",
+            "ruleIds": [
+                1132
+            ]
+        },
+        {
+            "from": 1521,
+            "to": 973,
+            "type": ">",
+            "ruleIds": [
+                1128
+            ]
+        },
+        {
+            "from": 1522,
+            "to": 973,
+            "type": ">",
+            "ruleIds": [
+                1133
+            ]
+        },
+        {
+            "from": 1523,
+            "to": 973,
+            "type": ">",
+            "ruleIds": [
+                1130
+            ]
+        },
+        {
+            "from": 1524,
+            "to": 942,
+            "type": ">",
+            "ruleIds": [
+                1011
+            ]
+        },
+        {
+            "from": 1525,
+            "to": 942,
+            "type": ">",
+            "ruleIds": [
+                1090
+            ]
+        },
+        {
+            "from": 1526,
+            "to": 942,
+            "type": ">",
+            "ruleIds": [
+                1012
+            ]
+        },
+        {
+            "from": 1527,
+            "to": 942,
+            "type": ">",
+            "ruleIds": [
+                1088
+            ]
+        },
+        {
+            "from": 1528,
+            "to": 942,
+            "type": ">",
+            "ruleIds": [
+                1089
+            ]
+        },
+        {
+            "from": 1529,
+            "to": 951,
+            "type": ">",
+            "ruleIds": [
+                1010
+            ]
+        },
+        {
+            "from": 1530,
+            "to": 951,
+            "type": ">",
+            "ruleIds": [
+                1011
+            ]
+        },
+        {
+            "from": 1531,
+            "to": 951,
+            "type": ">",
+            "ruleIds": [
+                1012
+            ]
+        },
+        {
+            "from": 1532,
+            "to": 951,
+            "type": ">",
+            "ruleIds": [
+                1089
+            ]
+        },
+        {
+            "from": 1533,
+            "to": 951,
+            "type": ">",
+            "ruleIds": [
+                1090
+            ]
+        },
+        {
+            "from": 1534,
+            "to": 951,
+            "type": ">",
+            "ruleIds": [
+                1091
+            ]
+        },
+        {
+            "from": 1547,
+            "to": 1321,
+            "type": ">",
+            "ruleIds": [
+                1503
+            ]
+        },
+        {
+            "from": 1548,
+            "to": 1321,
+            "type": ">",
+            "ruleIds": [
+                1504
+            ]
+        },
+        {
+            "from": 1549,
+            "to": 1321,
+            "type": ">",
+            "ruleIds": [
+                1505
+            ]
+        },
+        {
+            "from": 1550,
+            "to": 1321,
+            "type": ">",
+            "ruleIds": [
+                1506
+            ]
+        },
+        {
+            "from": 1551,
+            "to": 1321,
+            "type": ">",
+            "ruleIds": [
+                1535
+            ]
+        },
+        {
+            "from": 1552,
+            "to": 1321,
+            "type": ">",
+            "ruleIds": [
+                1536
+            ]
+        },
+        {
+            "from": 1553,
+            "to": 1321,
+            "type": ">",
+            "ruleIds": [
+                1538
+            ]
+        },
+        {
+            "from": 1554,
+            "to": 1321,
+            "type": ">",
+            "ruleIds": [
+                1539
+            ]
+        },
+        {
+            "from": 1555,
+            "to": 1321,
+            "type": ">",
+            "ruleIds": [
+                1540
+            ]
+        },
+        {
+            "from": 1556,
+            "to": 1321,
+            "type": ">",
+            "ruleIds": [
+                1542
+            ]
+        },
+        {
+            "from": 1557,
+            "to": 1321,
+            "type": ">",
+            "ruleIds": [
+                1543
+            ]
+        },
+        {
+            "from": 1558,
+            "to": 1321,
+            "type": ">",
+            "ruleIds": [
+                1544
+            ]
+        },
+        {
+            "from": 1559,
+            "to": 1321,
+            "type": ">",
+            "ruleIds": [
+                1546
+            ]
+        },
+        {
+            "from": 952,
+            "to": 924,
+            "type": ">",
+            "ruleIds": [
+                1503
+            ]
+        },
+        {
+            "from": 953,
+            "to": 924,
+            "type": ">",
+            "ruleIds": [
+                1504
+            ]
+        },
+        {
+            "from": 954,
+            "to": 924,
+            "type": ">",
+            "ruleIds": [
+                1505
+            ]
+        },
+        {
+            "from": 955,
+            "to": 924,
+            "type": ">",
+            "ruleIds": [
+                1506
+            ]
+        },
+        {
+            "from": 943,
+            "to": 924,
+            "type": ">",
+            "ruleIds": [
+                1538
+            ]
+        },
+        {
+            "from": 1441,
+            "to": 924,
+            "type": ">",
+            "ruleIds": [
+                1507
+            ]
+        },
+        {
+            "from": 1560,
+            "to": 924,
+            "type": ">",
+            "ruleIds": [
+                1509
+            ]
+        },
+        {
+            "from": 1561,
+            "to": 924,
+            "type": ">",
+            "ruleIds": [
+                1510
+            ]
+        },
+        {
+            "from": 1368,
+            "to": 924,
+            "type": ">",
+            "ruleIds": [
+                1535
+            ]
+        },
+        {
+            "from": 1562,
+            "to": 924,
+            "type": ">",
+            "ruleIds": [
+                1536
+            ]
+        },
+        {
+            "from": 1563,
+            "to": 924,
+            "type": ">",
+            "ruleIds": [
+                1537
+            ]
+        },
+        {
+            "from": 1564,
+            "to": 924,
+            "type": ">",
+            "ruleIds": [
+                1539
+            ]
+        },
+        {
+            "from": 1565,
+            "to": 924,
+            "type": ">",
+            "ruleIds": [
+                1543
+            ]
+        },
+        {
+            "from": 1566,
+            "to": 1015,
+            "type": ">",
+            "ruleIds": [
+                1499
+            ]
+        },
+        {
+            "from": 1567,
+            "to": 1015,
+            "type": ">",
+            "ruleIds": [
+                1503
+            ]
+        },
+        {
+            "from": 1568,
+            "to": 1015,
+            "type": ">",
+            "ruleIds": [
+                1505
+            ]
+        },
+        {
+            "from": 1569,
+            "to": 1015,
+            "type": ">",
+            "ruleIds": [
+                1506
+            ]
+        },
+        {
+            "from": 1570,
+            "to": 1015,
+            "type": ">",
+            "ruleIds": [
+                1507
+            ]
+        },
+        {
+            "from": 1571,
+            "to": 1015,
+            "type": ">",
+            "ruleIds": [
+                1509
+            ]
+        },
+        {
+            "from": 1572,
+            "to": 1015,
+            "type": ">",
+            "ruleIds": [
+                1510
+            ]
+        },
+        {
+            "from": 1573,
+            "to": 1015,
+            "type": ">",
+            "ruleIds": [
+                1535
+            ]
+        },
+        {
+            "from": 1574,
+            "to": 1015,
+            "type": ">",
+            "ruleIds": [
+                1536
+            ]
+        },
+        {
+            "from": 1575,
+            "to": 1015,
+            "type": ">",
+            "ruleIds": [
+                1538
+            ]
+        },
+        {
+            "from": 1576,
+            "to": 1015,
+            "type": ">",
+            "ruleIds": [
+                1539
+            ]
+        },
+        {
+            "from": 1577,
+            "to": 1015,
+            "type": ">",
+            "ruleIds": [
+                1543
+            ]
+        },
+        {
+            "from": 946,
+            "to": 924,
+            "type": ">",
+            "ruleIds": [
+                1498
             ]
         }
     ],
@@ -18903,7 +20101,7 @@
         },
         {
             "id": 1002,
-            "text": "Gormr konungr gerði kumbl þessi ept Þurvi konu sina, Danmarkar bót",
+            "text": "Gormr konungr gerði kumbl þessi ept Þurvi konu sína, Danmarkar bót",
             "title": "Viking Language 3.2",
             "lang": "ON",
             "wordIds": [
@@ -18915,7 +20113,7 @@
                 1008,
                 1009,
                 null,
-                1014,
+                null,
                 1061,
                 1063
             ]
@@ -18983,7 +20181,7 @@
         },
         {
             "id": 1102,
-            "text": "Haraldr konungr bað gera kumbl þessi ept Gorm föður sinn ok ept Þyri móður sina -- sá Haraldr es sér vann Danmörk alla ok Norveg ok Dani gerði kristna.",
+            "text": "Haraldr konungr bað gera kumbl þessi ept Gorm föður sinn ok ept Þyri móður sína -- sá Haraldr es sér vann Danmörk alla ok Norveg ok Dani gerði kristna.",
             "title": "Viking Language 4.1",
             "lang": "ON",
             "wordIds": [
@@ -19264,7 +20462,7 @@
         },
         {
             "id": 1327,
-            "text": "Dómaldi tók arf eptir föður sinn, Visbur, ok réð löndum.\nÁ hans dögum gerðisk sultr ok seyra í Svíþjoð.\nÞá hófu Sviar blót stór at Uppsölum.\nIt fyrsta haust blótuðu þeir yxnum, en batnaði ekki árferd.\nEn annat haust hófu þeir mannblót, en árferd var söm eða verri.\nEn it þriðja haust kómu Sviar fjöllment til Uppsala at hefja blót.\nþá áttu höfðingjar ráðagørð sina, ok kom þat ásamt með þeim,\nat hallærit stóð af Dómalda, konungi þeira, ok þat með,\nat þeir skyldu blóta honum ok veita honum atgöngu\nok drepa hann ok rjóða stalla með blóði hans, ok svá gerðu þeir.",
+            "text": "Dómaldi tók arf eptir föður sinn, Visbur, ok réð löndum.\nÁ hans dögum gerðisk sultr ok seyra í Svíþjoð.\nÞá hófu Sviar blót stór at Uppsölum.\nIt fyrsta haust blótuðu þeir yxnum, en batnaði ekki árferd.\nEn annat haust hófu þeir mannblót, en árferd var söm eða verri.\nEn it þriðja haust kómu Sviar fjöllment til Uppsala at hefja blót.\nþá áttu höfðingjar ráðagørð sína, ok kom þat ásamt með þeim,\nat hallærit stóð af Dómalda, konungi þeira, ok þat með,\nat þeir skyldu blóta honum ok veita honum atgöngu\nok drepa hann ok rjóða stalla með blóði hans, ok svá gerðu þeir.",
             "title": "Viking Language 6.2",
             "lang": "ON",
             "wordIds": [
@@ -19360,7 +20558,7 @@
                 1428,
                 null,
                 1386,
-                null,
+                946,
                 null,
                 1424,
                 1425,
@@ -19369,7 +20567,8 @@
                 null,
                 null,
                 1387,
-                1427
+                1427,
+                null
             ]
         },
         {
@@ -19482,6 +20681,15 @@
                 null,
                 1491,
                 null
+            ]
+        },
+        {
+            "id": 1517,
+            "text": "þenna tíma var ófriðr mikill í Nóregi; brauzk þar til rikis Haraldr lúfa,\nsonr Hálfdanar svarta; hann var áðr konungr á Upplöndum.\nSíðan fór hann norðr í land ok átti þar margar orrostur,\nok hafði han jafnan sigr.\nHerjaði hann svá suðr eptir landinu ok lagði undir sik,\nhvar sem hann fór; en er hann kom upp á Hörðaland,\nkom í móti honum múgr ok margmenni.\nVáru þar formenn: Kjötvi inn auðgi ok Þórir haklangr\nok þeir Suðr-Rygirnir ok Súlki konungr.\nFundr þeira Haralds konungs varð á Rogalandi, í firði þeim,\ner heitir í Hafrsfirði.",
+            "title": "Viking Language 7.2",
+            "lang": "ON",
+            "wordIds": [
+                1518
             ]
         }
     ],
@@ -19990,6 +21198,81 @@
                         {
                             "ruleAlternatives": [
                                 1510
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "PlM",
+                    "cells": [
+                        {
+                            "ruleAlternatives": [
+                                1535
+                            ]
+                        },
+                        {
+                            "ruleAlternatives": [
+                                1536
+                            ]
+                        },
+                        {
+                            "ruleAlternatives": [
+                                1537
+                            ]
+                        },
+                        {
+                            "ruleAlternatives": [
+                                1538
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "PlF",
+                    "cells": [
+                        {
+                            "ruleAlternatives": [
+                                1539
+                            ]
+                        },
+                        {
+                            "ruleAlternatives": [
+                                1540
+                            ]
+                        },
+                        {
+                            "ruleAlternatives": [
+                                1541
+                            ]
+                        },
+                        {
+                            "ruleAlternatives": [
+                                1542
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "PlN",
+                    "cells": [
+                        {
+                            "ruleAlternatives": [
+                                1543
+                            ]
+                        },
+                        {
+                            "ruleAlternatives": [
+                                1544
+                            ]
+                        },
+                        {
+                            "ruleAlternatives": [
+                                1545
+                            ]
+                        },
+                        {
+                            "ruleAlternatives": [
+                                1546
                             ]
                         }
                     ]
@@ -21526,7 +22809,8 @@
             "name": "Declension type",
             "pos": [
                 "N",
-                "NP"
+                "NP",
+                "V"
             ],
             "values": [
                 {
