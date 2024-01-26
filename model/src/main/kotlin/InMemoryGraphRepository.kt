@@ -159,6 +159,7 @@ open class InMemoryGraphRepository : GraphRepository() {
         return rules
             .filter { rule ->
                 rule.fromLanguage == language && rule.toLanguage == language &&
+                        considerForParseCandidates(rule) &&
                         ruleMatchesPOS(pos, rule) &&
                         rule.addedGrammaticalCategories().none { it in excludeGrammaticalCategories }
             }
@@ -195,6 +196,9 @@ open class InMemoryGraphRepository : GraphRepository() {
         val gc = parseCategoryValues(w.language, suffix)
         return gc.any { it.first != null && it.first in addedGrammaticalCategories }
     }
+
+    private fun considerForParseCandidates(rule: Rule) =
+        rule.toPOS != null || !rule.addedCategories.isNullOrEmpty()
 
     private fun ruleMatchesPOS(pos: String?, rule: Rule): Boolean {
         val rulePOS = rule.toPOS ?: rule.fromPOS

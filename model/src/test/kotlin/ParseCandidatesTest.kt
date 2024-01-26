@@ -9,7 +9,7 @@ class ParseCandidatesTest : QBaseTest() {
     @Test
     fun parseCandidates() {
         val repo = repoWithQ()
-        val rule = parseRule(q, q, "- append 'llo'", name = "q-abl")
+        val rule = parseRule(q, q, "- append 'llo'", name = "q-abl", addedCategories = ".ABL")
         repo.addRule(rule)
         val candidates = repo.findParseCandidates(q.word("hrestallo"))
         assertEquals(1, candidates.size)
@@ -21,7 +21,7 @@ class ParseCandidatesTest : QBaseTest() {
     @Test
     fun parseCandidatesWithWord() {
         val repo = repoWithQ()
-        val rule = parseRule(q, q, "- append 'llo'", name = "q-abl")
+        val rule = parseRule(q, q, "- append 'llo'", name = "q-abl", addedCategories = ".ABL")
         val hresta = repo.addWord("hresta")
         repo.addRule(rule)
 
@@ -111,7 +111,7 @@ class ParseCandidatesTest : QBaseTest() {
     @Test
     fun normalizeCase() {
         val repo = repoWithQ()
-        val rule = parseRule(q, q, "- append 'llo'", name = "q-abl")
+        val rule = parseRule(q, q, "- append 'llo'", name = "q-abl", addedCategories = ".ABL")
         repo.addRule(rule)
         val candidates = repo.findParseCandidates(q.word("Hrestallo"))
         assertEquals(1, candidates.size)
