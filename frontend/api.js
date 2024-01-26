@@ -144,6 +144,10 @@ export function deleteParadigm(id) {
     return postToBackend(`paradigm/${id}/delete`)
 }
 
+export function updateWordParadigm(id, paradigm) {
+    return postToBackend(`word/${id}/paradigm`, {items: [...paradigm]})
+}
+
 export function addLanguage(name, shortName) {
     return postToBackend('languages', {name: name, shortName: shortName})
 }

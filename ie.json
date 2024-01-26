@@ -5256,6 +5256,7 @@
             "text": "vera",
             "lang": "ON",
             "gloss": "be",
+            "fullGloss": "be",
             "pos": "V"
         },
         {
@@ -8763,6 +8764,36 @@
             "lang": "ON",
             "gloss": "wise",
             "pos": "ADJ"
+        },
+        {
+            "id": 1511,
+            "text": "em",
+            "lang": "ON"
+        },
+        {
+            "id": 1512,
+            "text": "ert",
+            "lang": "ON"
+        },
+        {
+            "id": 1513,
+            "text": "er",
+            "lang": "ON"
+        },
+        {
+            "id": 1514,
+            "text": "erum",
+            "lang": "ON"
+        },
+        {
+            "id": 1515,
+            "text": "eruð",
+            "lang": "ON"
+        },
+        {
+            "id": 1516,
+            "text": "eru",
+            "lang": "ON"
         }
     ],
     "rules": [
@@ -17202,6 +17233,54 @@
             "type": ">",
             "ruleIds": [
                 1011
+            ]
+        },
+        {
+            "from": 1511,
+            "to": 926,
+            "type": ">",
+            "ruleIds": [
+                1129
+            ]
+        },
+        {
+            "from": 1512,
+            "to": 926,
+            "type": ">",
+            "ruleIds": [
+                1128
+            ]
+        },
+        {
+            "from": 1513,
+            "to": 926,
+            "type": ">",
+            "ruleIds": [
+                1130
+            ]
+        },
+        {
+            "from": 1514,
+            "to": 926,
+            "type": ">",
+            "ruleIds": [
+                1132
+            ]
+        },
+        {
+            "from": 1515,
+            "to": 926,
+            "type": ">",
+            "ruleIds": [
+                1133
+            ]
+        },
+        {
+            "from": 1516,
+            "to": 926,
+            "type": ">",
+            "ruleIds": [
+                1134
             ]
         }
     ],

@@ -33,4 +33,19 @@ class WordControllerTest {
         val badAddWordParams = WordController.AddWordParameters("ea", "be", "", "N f", "", "")
         Assert.assertThrows("Unknown word class 'f'", Exception::class.java) { wordController.addWord("q", badAddWordParams) }
     }
+
+    @Test
+    fun updateParadigm() {
+        val fixture = QTestFixture()
+        val accRule = fixture.setupParadigm()
+        val elen = fixture.repo.findOrAddWord("elen", fixture.q, "star", pos = "N")
+
+        val wc = WordController(fixture.graphService)
+        val wordParadigms = wc.wordParadigms(elen.id)
+        assertEquals(1, wordParadigms.paradigms.size)
+
+        wc.updateParadigm(elen.id, WordController.UpdateParadigmParameters(arrayOf(arrayOf(accRule.id, "elena"))))
+        val elena = fixture.repo.wordsByText(fixture.q, "elena").single()
+        assertEquals("star.ACC", elena.getOrComputeGloss(fixture.repo))
+    }
 }

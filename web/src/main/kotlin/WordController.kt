@@ -176,7 +176,7 @@ class WordController(val graphService: GraphService) {
     fun addWord(@PathVariable lang: String, @RequestBody params: AddWordParameters): WordViewModel {
         val graph = graphService.graph
         val language = graphService.resolveLanguage(lang)
-        val text = params.text?.nullize() ?: throw NoWordTextException()
+        val text = params.text?.nullize() ?: badRequest("No word text specified")
 
         val (pos, classes) = parseWordClasses(language, params.posClasses)
 
@@ -242,7 +242,8 @@ class WordController(val graphService: GraphService) {
 
     data class WordParadigmWordModel(
         val word: String,
-        val wordId: Int
+        val wordId: Int,
+        val ruleId: Int?
     )
 
     data class WordParadigmModel(
@@ -254,6 +255,7 @@ class WordController(val graphService: GraphService) {
 
     data class WordParadigmListModel(
         val word: String,
+        val wordId: Int,
         val language: String,
         val languageFullName: String,
         val paradigms: List<WordParadigmModel>
@@ -267,8 +269,8 @@ class WordController(val graphService: GraphService) {
             val generatedParadigm = paradigm.generate(word, graph)
             val substitutedParadigm = generatedParadigm.map { colWords ->
                 colWords.map { cellWords ->
-                    cellWords?.map { (cellWord, _) ->
-                        WordParadigmWordModel(cellWord.text, cellWord.id)
+                    cellWords?.map { alt ->
+                        WordParadigmWordModel(alt.word.text, alt.word.id, alt.rule?.id)
                     } ?: emptyList()
                 }
             }
@@ -279,12 +281,39 @@ class WordController(val graphService: GraphService) {
                 substitutedParadigm
             )
         }
-        return WordParadigmListModel(word.text, word.language.shortName, word.language.name, paradigmModels)
+        return WordParadigmListModel(word.text, word.id, word.language.shortName, word.language.name, paradigmModels)
+    }
+
+    data class UpdateParadigmParameters(var items: Array<Array<Any>> = emptyArray())
+
+    @PostMapping("/word/{id}/paradigm", consumes = ["application/json"])
+    fun updateParadigm(@PathVariable id: Int, @RequestBody paradigm: UpdateParadigmParameters) {
+        val graph = graphService.graph
+        val word = graphService.resolveWord(id)
+        val gloss = word.glossOrNP() ?: badRequest("Trying to update paradigm for unglossed word ${word.text}")
+        val derivedWordLinks = graph.getLinksTo(word).filter { it.type == Link.Derived && it.fromEntity is Word }
+        for ((ruleIdAny, textAny) in paradigm.items) {
+            val ruleId = ruleIdAny as Int
+            val text = textAny as String
+            val rule = graphService.resolveRule(ruleId)
+            val existingLink = derivedWordLinks.find { it.rules == listOf(rule) }
+            if (existingLink != null) {
+                // TODO what if word is used in corpus texts?
+                (existingLink.fromEntity as Word).text = text
+            }
+            else {
+                val newGloss = rule.applyCategories(gloss)
+                val newWord = graphService.graph.findOrAddWord(text, word.language, newGloss)
+                graph.addLink(newWord, word, Link.Derived, listOf(rule), emptyList(), null)
+                newWord.gloss = null
+            }
+        }
+        graph.save()
     }
 }
 
-@ResponseStatus(value = HttpStatus.BAD_REQUEST, reason = "Word text not specified")
-class NoWordTextException : RuntimeException()
+fun badRequest(message: String): Nothing =
+    throw ResponseStatusException(HttpStatus.BAD_REQUEST, message)
 
 fun String?.nullize() = this?.takeIf { it.trim().isNotEmpty() }
 
