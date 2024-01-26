@@ -3,6 +3,7 @@ package ru.yole.etymograph.web
 import org.junit.Assert
 import org.junit.Assert.assertEquals
 import org.junit.Test
+import ru.yole.etymograph.Link
 import ru.yole.etymograph.WordCategory
 import ru.yole.etymograph.WordCategoryValue
 
@@ -47,5 +48,21 @@ class WordControllerTest {
         wc.updateParadigm(elen.id, WordController.UpdateParadigmParameters(arrayOf(arrayOf(accRule.id, "elena"))))
         val elena = fixture.repo.wordsByText(fixture.q, "elena").single()
         assertEquals("star.ACC", elena.getOrComputeGloss(fixture.repo))
+    }
+
+    @Test
+    fun updateParadigmChangeText() {
+        val fixture = QTestFixture()
+        val accRule = fixture.setupParadigm()
+        val elen = fixture.repo.findOrAddWord("elen", fixture.q, "star", pos = "N")
+        val elena = fixture.repo.findOrAddWord("elena", fixture.q, null, pos = "N")
+        fixture.repo.addLink(elena, elen, Link.Derived, listOf(accRule), emptyList(), null)
+
+        val wc = WordController(fixture.graphService)
+        val wordParadigms = wc.wordParadigms(elen.id)
+        assertEquals(1, wordParadigms.paradigms.size)
+
+        wc.updateParadigm(elen.id, WordController.UpdateParadigmParameters(arrayOf(arrayOf(accRule.id, "elenna"))))
+        assertEquals(elena, fixture.repo.wordsByText(fixture.q, "elenna").single())
     }
 }

@@ -299,7 +299,7 @@ class WordController(val graphService: GraphService) {
             val existingLink = derivedWordLinks.find { it.rules == listOf(rule) }
             if (existingLink != null) {
                 // TODO what if word is used in corpus texts?
-                (existingLink.fromEntity as Word).text = text
+                graph.updateWordText(existingLink.fromEntity as Word, text)
             }
             else {
                 val newGloss = rule.applyCategories(gloss)
