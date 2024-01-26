@@ -181,13 +181,21 @@ class CorpusController(val graphService: GraphService) {
             val rule = graphService.resolveRule(params.ruleId)
             val gloss = word.glossOrNP()
                 ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST, "Accepting alternative with unglossed word ${word.id}")
-            val newGloss = rule.applyCategories(gloss)
-            val graph = graphService.graph
-            val newWord = graph.findOrAddWord(word.text, word.language, newGloss)
-            graph.addLink(newWord, word, Link.Derived, listOf(rule), emptyList(), null)
-            newWord.gloss = null
 
-            corpusText.associateWord(params.index, newWord)
+            val linkedWord = graphService.graph.getLinksTo(word).singleOrNull { it.rules == listOf(rule) }?.fromEntity as? Word
+            if (linkedWord != null) {
+                corpusText.associateWord(params.index, linkedWord)
+            }
+            else {
+                val newGloss = rule.applyCategories(gloss)
+                val graph = graphService.graph
+                val newWord = graph.findOrAddWord(word.text, word.language, newGloss)
+                graph.addLink(newWord, word, Link.Derived, listOf(rule), emptyList(), null)
+                newWord.gloss = null
+
+                corpusText.associateWord(params.index, newWord)
+            }
+
         }
 
         graphService.graph.save()

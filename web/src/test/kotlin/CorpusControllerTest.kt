@@ -27,6 +27,31 @@ class CorpusControllerTest {
     }
 
     @Test
+    fun alternativesExistingLink() {
+        val fixture = QTestFixture()
+        val corpusController = CorpusController(fixture.graphService)
+        val corpusParams = CorpusController.CorpusTextParams(text = "Elen sila...")
+        val corpusTextViewModel = corpusController.newText("q", corpusParams)
+
+        val accRule = fixture.setupParadigm()
+        val elen = fixture.repo.findOrAddWord("elen", fixture.q, "star", pos = "N")
+        val elenAcc =  fixture.repo.findOrAddWord("elen", fixture.q,  null, pos = "N")
+        fixture.repo.addLink(elenAcc, elen, Link.Derived, listOf(accRule), emptyList(), null)
+
+        val alternatives = corpusController.requestAlternatives(corpusTextViewModel.id, 0)
+        assertEquals(1, alternatives.size)
+        assertEquals("star.ACC", alternatives[0].gloss)
+        assertEquals(accRule.id, alternatives[0].ruleId)
+
+        corpusController.acceptAlternative(corpusTextViewModel.id,
+            CorpusController.AcceptAlternativeParameters(0, alternatives[0].wordId, alternatives[0].ruleId))
+
+        val word = fixture.repo.corpusTextById(corpusTextViewModel.id)!!.words[0]!!
+        assertEquals(elenAcc.id, word.id)
+        assertEquals(1, fixture.repo.getLinksFrom(elenAcc).count())
+    }
+
+    @Test
     fun alternativesNP() {
         val fixture = QTestFixture()
         val corpusController = CorpusController(fixture.graphService)
