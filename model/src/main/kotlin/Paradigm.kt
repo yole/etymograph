@@ -46,7 +46,7 @@ data class ParadigmColumn(val title: String) {
 
 data class Paradigm(
     val id: Int,
-    val name: String,
+    var name: String,
     val language: Language,
     var pos: List<String>
 ) {

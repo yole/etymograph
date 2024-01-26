@@ -97,6 +97,7 @@ class ParadigmController(val graphService: GraphService) {
         val graph = graphService.graph
         val paradigm = graph.paradigmById(id) ?: throw NoParadigmException()
         paradigm.parse(params.text, graph::ruleByName)
+        paradigm.name = params.name
         paradigm.pos = parseList(params.pos)
         graph.save()
     }

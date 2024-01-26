@@ -21,6 +21,7 @@ export default function Paradigm(params) {
     const paradigm = params.loaderData
     const [editMode, setEditMode] = useState(false)
     const [editableText, setEditableText] = useState(paradigm.editableText)
+    const [name, setName] = useState(paradigm.name)
     const [pos, setPos] = useState(paradigm.pos.join(", "))
     const [errorText, setErrorText] = useState("")
 
@@ -28,7 +29,7 @@ export default function Paradigm(params) {
     useEffect(() => { document.title = "Etymograph : " + paradigm.language + " " + paradigm.name + " Paradigm" })
 
     function saveParadigm() {
-        updateParadigm(paradigm.id, paradigm.name, pos, editableText)
+        updateParadigm(paradigm.id, name, pos, editableText)
             .then((r) => {
                 if (r.status === 200) {
                     router.replace(router.asPath)
@@ -74,6 +75,10 @@ export default function Paradigm(params) {
         </>}
         {editMode && <>
             <table><tbody>
+            <tr>
+                <td><label>Name:</label></td>
+                <td><input type="text" value={name} onChange={(e) => setName(e.target.value)}/></td>
+            </tr>
             <tr>
                 <td><label>POS:</label></td>
                 <td><input type="text" value={pos} onChange={(e) => setPos(e.target.value)}/></td>
