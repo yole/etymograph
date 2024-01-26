@@ -241,8 +241,7 @@ class WordController(val graphService: GraphService) {
     }
 
     data class WordParadigmWordModel(
-        val word: String,
-        val wordId: Int,
+        val word: WordRefViewModel,
         val ruleId: Int?
     )
 
@@ -270,7 +269,7 @@ class WordController(val graphService: GraphService) {
             val substitutedParadigm = generatedParadigm.map { colWords ->
                 colWords.map { cellWords ->
                     cellWords?.map { alt ->
-                        WordParadigmWordModel(alt.word.text, alt.word.id, alt.rule?.id)
+                        WordParadigmWordModel(alt.word.toRefViewModel(graph), alt.rule?.id)
                     } ?: emptyList()
                 }
             }

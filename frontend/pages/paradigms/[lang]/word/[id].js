@@ -2,6 +2,7 @@ import {allowEdit, fetchBackend, updateParadigm, updateWordParadigm} from "@/api
 import Link from "next/link";
 import {useRouter} from "next/router";
 import {useEffect, useState} from "react";
+import WordLink from "@/components/WordLink";
 
 export const config = {
     unstable_runtimeJS: true
@@ -28,9 +29,9 @@ function WordParadigmCell(params) {
     const alt = params.alt
     if (params.editMode && alt.ruleId) {
         return <input type="text" size="10"
-                      value={params.editedParadigm.get(alt.ruleId) ?? alt.word}
+                      value={params.editedParadigm.get(alt.ruleId) ?? alt.word.text}
                       onChange={(e) => {
-                          if (params.editedParadigm.has(alt.ruleId) || e.target.value !== alt.word) {
+                          if (params.editedParadigm.has(alt.ruleId) || e.target.value !== alt.word.text) {
                               const newParadigm = new Map(params.editedParadigm)
                               newParadigm.set(alt.ruleId, e.target.value)
                               params.setEditedParadigm(newParadigm)
@@ -38,8 +39,8 @@ function WordParadigmCell(params) {
                       }}
         />
     }
-    return alt?.wordId > 0 ?
-        <Link href={`/word/${params.lang}/${alt?.word}`}>{alt?.word}</Link> : alt?.word
+    return alt?.word?.id > 0 ?
+        <WordLink word={alt.word}></WordLink> : alt?.word?.text
 }
 
 function WordParadigm(params) {
