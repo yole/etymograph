@@ -54,6 +54,11 @@ function WordParadigm(params) {
         })
     }
 
+    function cancelEditing() {
+        setEditMode(false)
+        setEditedParadigm(new Map())
+    }
+
     const p = params.paradigm
     return <>
         <h3>{p.name}</h3>
@@ -80,7 +85,7 @@ function WordParadigm(params) {
         {!editMode && <button onClick={() => setEditMode(true)}>Edit</button>}
         {editMode && <>
             <button onClick={saveParadigm}>Save</button>
-            <button onClick={() => setEditMode(false)}>Cancel</button>
+            <button onClick={cancelEditing}>Cancel</button>
         </>}
     </>
 }
