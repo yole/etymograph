@@ -58,7 +58,7 @@ class RuleController(val graphService: GraphService) {
 
     @GetMapping("/rules")
     fun allRules(): List<RuleViewModel> {
-        return graphService.graph.allRules().map { it.toViewModel() }
+        return graphService.graph.allRules().map { it.toViewModel(false) }
     }
 
     @GetMapping("/rules/{lang}")
@@ -80,7 +80,7 @@ class RuleController(val graphService: GraphService) {
         for (rule in graphService.graph.allRules().filter { it.toLanguage == language }) {
             if (rule in allParadigmRules) continue
             val categoryName = if (rule.isPhonemic()) "Phonetics" else "Grammar: Other"
-            ruleGroups.getOrPut(categoryName) { mutableListOf() }.add(rule.toViewModel())
+            ruleGroups.getOrPut(categoryName) { mutableListOf() }.add(rule.toViewModel(false))
         }
 
         return RuleListViewModel(
@@ -94,7 +94,7 @@ class RuleController(val graphService: GraphService) {
         return graphService.resolveRule(id).toViewModel()
     }
 
-    private fun Rule.toViewModel(): RuleViewModel {
+    private fun Rule.toViewModel(withExamples: Boolean = true): RuleViewModel {
         val graph = graphService.graph
         val paradigm = graph.paradigmForRule(this)
         val links = (graph.getLinksFrom(this).map { it.toEntity } +
@@ -119,7 +119,7 @@ class RuleController(val graphService: GraphService) {
             logic.preInstructions.map { it.toEditableText() },
             logic.branches.map { it.toViewModel(isUnconditional()) },
             links.map { RuleLinkViewModel(it.id, it.name) },
-            graph.findRuleExamples(this).map { link ->
+            if (!withExamples) emptyList() else graph.findRuleExamples(this).map { link ->
                 val fromWord = link.fromEntity as Word
                 val toWord = link.toEntity as Word
                 RuleExampleViewModel(
