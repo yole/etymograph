@@ -117,15 +117,14 @@ class LeafRuleCondition(
 
     override fun matches(phonemes: PhonemeIterator): Boolean {
         return when (type) {
-            ConditionType.PhonemeMatches -> matchPhoneme(phonemes.current)
+            ConditionType.PhonemeMatches -> matchPhoneme(phonemes)
             ConditionType.BeginningOfWord -> phonemes.atBeginning()
             else -> throw IllegalStateException("Trying to use a word condition for matching phonemes")
         }
     }
 
-    private fun matchPhoneme(phoneme: String?) =
-        (phonemeClass?.let { phoneme != null && phoneme in it.matchingPhonemes }
-            ?: (phoneme == parameter)).negateIfNeeded()
+    private fun matchPhoneme(phonemes: PhonemeIterator) =
+        (phonemeClass?.matchesCurrent(phonemes) ?: (phonemes.current == parameter)).negateIfNeeded()
 
     override fun toEditableText(): String =
         if (type.takesArgument) {

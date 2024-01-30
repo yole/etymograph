@@ -103,4 +103,16 @@ class PhonemeRuleTest : QBaseTest() {
         assertEquals("khtha", rule.apply(ce.word("khitha"), emptyRepo).text)
         assertEquals("sound is 'i' and next vowel is 'a'", rule.logic.branches[0].condition.toEditableText())
     }
+
+    @Test
+    fun diphtong() {
+        val rule = parseRule(q, q, """
+            sound is diphthong:
+            - no change
+            sound is 'a':
+            - new sound is 'o'
+        """.trimIndent())
+        assertEquals("ainu", rule.apply(q.word("ainu"), emptyRepo).text)
+        assertEquals("omo", rule.apply(q.word("ama"), emptyRepo).text)
+    }
 }

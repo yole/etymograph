@@ -72,6 +72,7 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
         when (type) {
             InstructionType.ChangeSound -> phoneme.replace(arg)
             InstructionType.SoundDisappears -> phoneme.delete()
+            InstructionType.NoChange -> Unit
             else -> throw IllegalStateException("Can't apply word instruction to individual phoneme")
         }
     }
