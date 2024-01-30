@@ -31,6 +31,8 @@ abstract class GraphRepository {
     abstract fun requestAlternatives(word: Word): List<ParseCandidate>
     abstract fun restoreSegments(word: Word): Word
 
+    abstract fun matchesPhonotactics(lang: Language, text: String): Boolean
+
     abstract fun allRules(): Iterable<Rule>
     abstract fun ruleById(id: Int): Rule?
     abstract fun ruleByName(ruleName: String): Rule?

@@ -13,17 +13,21 @@ enum class InstructionType(
     ApplySoundRule("apply sound rule", "apply sound rule '(.+)' to (.+)", true),
     ApplyStress("stress is on", "stress is on (.+) syllable", true),
     ApplyClass("mark word as", "mark word as (.*)", true),
+    Disallow("disallow", "disallow", false),
     ChangeSound("new sound is", "new sound is '(.+)'", true),
     SoundDisappears("sound disappears");
 
     val regex = Regex(pattern ?: Regex.escape(insnName))
 }
 
+const val DISALLOW_CLASS = "disallow"
+
 open class RuleInstruction(val type: InstructionType, val arg: String) {
     open fun apply(rule: Rule, branch: RuleBranch?, word: Word, graph: GraphRepository): Word = when(type) {
         InstructionType.NoChange -> word
         InstructionType.ChangeEnding -> changeEnding(word, rule, branch)
         InstructionType.ApplyClass -> word.derive(word.text, newClasses = (word.classes + arg).toSet().toList())
+        InstructionType.Disallow -> word.derive(word.text, newClasses = (word.classes + DISALLOW_CLASS).toSet().toList())
         else -> throw IllegalStateException("Can't apply phoneme instruction to full word")
     }
 

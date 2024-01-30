@@ -24,13 +24,13 @@ export default function LanguageIndex(props) {
     const [wordClasses, setWordClasses] = useState(lang.wordClasses)
     const [diphthongs, setDiphthongs] = useState(lang.diphthongs.join(", "))
     const [syllableStructures, setSyllableStructures] = useState(lang.syllableStructures.join(", "))
-    const [wordFinals, setWordFinals] = useState(lang.wordFinals.join(", "))
     const [stressRule, setStressRule] = useState(lang.stressRuleName)
+    const [phonotacticsRule, setPhonotacticsRule] = useState(lang.phonotacticsRuleName)
     const router = useRouter()
     useEffect(() => { document.title = "Etymograph : " + lang.name })
 
     function saveLanguage() {
-        updateLanguage(langId, phonemes, diphthongs, syllableStructures, wordFinals, stressRule, grammaticalCategories, wordClasses)
+        updateLanguage(langId, phonemes, diphthongs, syllableStructures, stressRule, phonotacticsRule, grammaticalCategories, wordClasses)
             .then(() => router.replace(router.asPath))
         setEditMode(false)
     }
@@ -60,8 +60,8 @@ export default function LanguageIndex(props) {
         {!editMode && <>
             {lang.diphthongs.length > 0 && <p>Diphthongs: {lang.diphthongs.join(", ")}</p>}
             {lang.syllableStructures.length > 0 && <p>Syllable structures: {lang.syllableStructures.join(", ")}</p>}
-            {lang.wordFinals.length > 0 && <p>Word finals: {lang.wordFinals.join(", ")}</p>}
             {lang.stressRuleName != null && <p>Stress rule: <Link href={`/rule/${lang.stressRuleId}`}>{lang.stressRuleName}</Link></p>}
+            {lang.phonotacticsRuleName != null && <p>Phonotactics rule: <Link href={`/rule/${lang.phonotacticsRuleId}`}>{lang.phonotacticsRuleName}</Link></p>}
         </>}
         {editMode && <>
             <table><tbody>
@@ -74,12 +74,12 @@ export default function LanguageIndex(props) {
                 <td><input type="text" value={syllableStructures} onChange={(e) => setSyllableStructures(e.target.value)}/></td>
             </tr>
             <tr>
-                <td><label>Word finals:</label></td>
-                <td><input type="text" value={wordFinals} onChange={(e) => setWordFinals(e.target.value)}/></td>
-            </tr>
-            <tr>
                 <td><label>Stress rule:</label></td>
                 <td><input type="text" value={stressRule} onChange={(e) => setStressRule(e.target.value)}/></td>
+            </tr>
+            <tr>
+                <td><label>Phonotactics rule:</label></td>
+                <td><input type="text" value={phonotacticsRule} onChange={(e) => setPhonotacticsRule(e.target.value)}/></td>
             </tr>
             </tbody></table>
         </>}

@@ -32,19 +32,15 @@ data class PhonemeData(@SerialName("lang") val languageShortName: String, val gr
 data class DiphthongData(@SerialName("lang") val languageShortName: String, val diphthongs: List<String>)
 
 @Serializable
-data class StressRuleData(@SerialName("lang") val languageShortName: String, val ruleId: Int)
+data class LanguageRuleData(@SerialName("lang") val languageShortName: String, val ruleId: Int)
 
 @Serializable
 data class SyllableStructureData(@SerialName("lang") val languageShortName: String, val syllableStructures: List<String>)
 
 @Serializable
-data class WordFinalData(@SerialName("lang") val languageShortName: String, val wordFinals: List<String>)
-
-@Serializable
 sealed class RuleConditionData {
     abstract fun toRuntimeFormat(result: InMemoryGraphRepository, fromLanguage: Language): RuleCondition
 }
-
 
 private fun requiredPhonemeClassByName(language: Language, phonemeClassName: String?): PhonemeClass? =
     phonemeClassName?.let { className ->
@@ -227,19 +223,19 @@ data class GraphRepositoryData(
     val languages: List<LanguageData>,
     val phonemes: List<PhonemeData>,
     val diphthongs: List<DiphthongData>,
-    val stressRules: List<StressRuleData>,
+    val stressRules: List<LanguageRuleData>,
     val words: List<WordData>,
     val rules: List<RuleData>,
     val links: List<LinkData>,
     val corpusTexts: List<CorpusTextData>,
     val paradigms: List<ParadigmData>,
     val syllableStructures: List<SyllableStructureData>,
-    val wordFinals: List<WordFinalData>,
     val publications: List<PublicationData>,
     val compounds: List<CompoundData>,
     val translations: List<TranslationData>,
     val grammaticalCategories: List<WordCategoryData>,
-    val wordClasses: List<WordCategoryData>? = null
+    val wordClasses: List<WordCategoryData>,
+    val phonotacticsRules: List<LanguageRuleData>? = null
 )
 
 class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
@@ -281,14 +277,10 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             lang.phonemes.map { PhonemeData(lang.shortName, it.graphemes, it.classes) }
         }
         val diphthongData = languages.values.map { DiphthongData(it.shortName, it.diphthongs) }
-        val stressRuleData = languages.values.mapNotNull { lang ->
-            lang.stressRule?.let { StressRuleData(lang.shortName, it.resolve().id) }
-        }
+        val stressRuleData = mapLanguageRules { lang -> lang.stressRule }
+        val phonotacticsRuleData = mapLanguageRules { lang -> lang.phonotacticsRule }
         val syllableStructureData = languages.values.mapNotNull { lang ->
             lang.syllableStructures.takeIf { it.isNotEmpty() }?.let { SyllableStructureData(lang.shortName, it) }
-        }
-        val wordFinalsData = languages.values.mapNotNull { lang ->
-            lang.wordFinals.takeIf { it.isNotEmpty() }?.let { WordFinalData(lang.shortName, it) }
         }
         val grammarCategoryData = mapWordCategories { it.grammaticalCategories }
         val wordClassData = mapWordCategories { it.wordClasses }
@@ -326,7 +318,6 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                 }, it.pos)
             },
             syllableStructureData,
-            wordFinalsData,
             publications.filterNotNull().map { PublicationData(it.id, it.name, it.refId) },
             allLangEntities.filterIsInstance<Compound>().map { c ->
                 CompoundData(c.id, c.compoundWord.id, c.components.map { it.id }, c.source.sourceToSerializedFormat(), c.notes)
@@ -335,8 +326,13 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                 TranslationData(t.id, t.corpusText.id, t.text, t.source.sourceToSerializedFormat(), t.notes)
             },
             grammarCategoryData,
-            wordClassData
+            wordClassData,
+            phonotacticsRuleData
         )
+    }
+
+    private fun mapLanguageRules(prop: (Language) -> RuleRef?) = languages.values.mapNotNull { lang ->
+        prop(lang)?.let { LanguageRuleData(lang.shortName, it.resolve().id) }
     }
 
     private fun mapWordCategories(prop: (Language) -> List<WordCategory>) = languages.values.flatMap { lang ->
@@ -362,11 +358,14 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
         for (stressRuleData in data.stressRules) {
             languageByShortName(stressRuleData.languageShortName)!!.stressRule = ruleRef(this, stressRuleData.ruleId)
         }
+        data.phonotacticsRules?.let {
+            for (ruleData in it) {
+                languageByShortName(ruleData.languageShortName)!!.phonotacticsRule= ruleRef(this, ruleData.ruleId)
+            }
+        }
+
         for (syllableStructureData in data.syllableStructures) {
             languageByShortName(syllableStructureData.languageShortName)!!.syllableStructures = syllableStructureData.syllableStructures
-        }
-        for (wordFinalData in data.wordFinals) {
-            languageByShortName(wordFinalData.languageShortName)!!.wordFinals = wordFinalData.wordFinals
         }
         for (pubData in data.publications) {
             while (pubData.id > publications.size) {
@@ -463,7 +462,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             storeTranslation(corpusText, translation)
         }
         loadWordCategoryData(data.grammaticalCategories) { it.grammaticalCategories }
-        data.wordClasses?.let { wc -> loadWordCategoryData(wc) { it.wordClasses } }
+        loadWordCategoryData(data.wordClasses) { it.wordClasses }
 
         for (paradigm in data.paradigms) {
             while (paradigm.id > paradigms.size) {

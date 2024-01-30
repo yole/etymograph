@@ -18,8 +18,9 @@ class LanguageController(val graphService: GraphService) {
         val phonemes: String,
         val stressRuleId: Int?,
         val stressRuleName: String?,
+        val phonotacticsRuleId: Int?,
+        val phonotacticsRuleName: String?,
         val syllableStructures: List<String>,
-        val wordFinals: List<String>,
         val grammaticalCategories: String,
         val wordClasses: String
     )
@@ -37,6 +38,7 @@ class LanguageController(val graphService: GraphService) {
 
     private fun Language.toViewModel(): LanguageViewModel {
         val stressRule = stressRule?.resolve()
+        val phonotacticsRule = phonotacticsRule?.resolve()
         return LanguageViewModel(
             name,
             shortName,
@@ -44,8 +46,9 @@ class LanguageController(val graphService: GraphService) {
             phonemes.phonemesToEditableText(),
             stressRule?.id,
             stressRule?.name,
+            phonotacticsRule?.id,
+            phonotacticsRule?.name,
             syllableStructures,
-            wordFinals,
             grammaticalCategories.toEditableText(),
             wordClasses.toEditableText()
         )
@@ -57,8 +60,8 @@ class LanguageController(val graphService: GraphService) {
         val phonemes: String? = null,
         val diphthongs: String? = null,
         val stressRuleName: String? = null,
+        val phonotacticsRuleName: String? = null,
         val syllableStructures: String? = null,
-        val wordFinals: String? = null,
         val grammaticalCategories: String? = null,
         val wordClasses: String? = null
     )
@@ -89,12 +92,14 @@ class LanguageController(val graphService: GraphService) {
         language.phonemes = params.phonemes?.let { parsePhonemes(it) } ?: mutableListOf()
         language.diphthongs = parseList(params.diphthongs)
         language.syllableStructures = parseList(params.syllableStructures)
-        language.wordFinals = parseList(params.wordFinals)
         language.grammaticalCategories = params.grammaticalCategories.nullize()?.let { parseWordCategories(it) } ?: mutableListOf()
         language.wordClasses = params.wordClasses.nullize()?.let { parseWordCategories(it) } ?: mutableListOf()
 
         val stressRule = params.stressRuleName?.let { graphService.resolveRule(it) }
         language.stressRule = stressRule?.let { RuleRef.to(it) }
+
+        val phonotacticsRule = params.phonotacticsRuleName?.let { graphService.resolveRule(it) }
+        language.phonotacticsRule = phonotacticsRule?.let { RuleRef.to(it) }
     }
 
     private fun parsePhonemes(s: String): MutableList<Phoneme> {

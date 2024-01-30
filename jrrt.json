@@ -13370,6 +13370,67 @@
             "notes": "",
             "preInstructions": [
             ]
+        },
+        {
+            "id": 1042,
+            "name": "q-phono",
+            "fromLang": "Q",
+            "toLang": "Q",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "Disallow",
+                            "args": [
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.AndRuleConditionData",
+                        "members": [
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "EndsWith",
+                                "cls": "vowel",
+                                "negated": true
+                            },
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "EndsWith",
+                                "characters": "n",
+                                "negated": true
+                            },
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "EndsWith",
+                                "characters": "r",
+                                "negated": true
+                            },
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "EndsWith",
+                                "characters": "l",
+                                "negated": true
+                            },
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "EndsWith",
+                                "characters": "s",
+                                "negated": true
+                            },
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "EndsWith",
+                                "characters": "t",
+                                "negated": true
+                            }
+                        ]
+                    }
+                }
+            ],
+            "addedCategories": null,
+            "preInstructions": [
+            ]
         }
     ],
     "links": [
@@ -17764,19 +17825,6 @@
             ]
         }
     ],
-    "wordFinals": [
-        {
-            "lang": "Q",
-            "wordFinals": [
-                "vowel",
-                "n",
-                "r",
-                "l",
-                "s",
-                "t"
-            ]
-        }
-    ],
     "publications": [
         {
             "id": 0,
@@ -18712,5 +18760,11 @@
         }
     ],
     "wordClasses": [
+    ],
+    "phonotacticsRules": [
+        {
+            "lang": "Q",
+            "ruleId": 1042
+        }
     ]
 }

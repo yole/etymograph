@@ -15451,6 +15451,42 @@
             "notes": "",
             "preInstructions": [
             ]
+        },
+        {
+            "id": 1649,
+            "name": "on-phono",
+            "fromLang": "ON",
+            "toLang": "ON",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "Disallow",
+                            "args": [
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OrRuleConditionData",
+                        "members": [
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "EndsWith",
+                                "characters": "j"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "EndsWith",
+                                "characters": "v"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "addedCategories": null,
+            "notes": "",
+            "preInstructions": [
+            ]
         }
     ],
     "links": [
@@ -22105,8 +22141,6 @@
     ],
     "syllableStructures": [
     ],
-    "wordFinals": [
-    ],
     "publications": [
         {
             "id": 0,
@@ -23735,6 +23769,12 @@
                     "abbreviation": "pret-ð"
                 }
             ]
+        }
+    ],
+    "phonotacticsRules": [
+        {
+            "lang": "ON",
+            "ruleId": 1649
         }
     ]
 }

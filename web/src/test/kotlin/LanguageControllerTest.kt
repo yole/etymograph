@@ -2,6 +2,7 @@ package ru.yole.etymograph.web
 
 import org.junit.Assert.assertEquals
 import org.junit.Test
+import ru.yole.etymograph.RuleLogic
 
 class LanguageControllerTest {
     @Test
@@ -48,15 +49,33 @@ class LanguageControllerTest {
     }
 
     @Test
-    fun wordFinals() {
+    fun diphthongs() {
         val fixture = QTestFixture()
         val languageController = LanguageController(fixture.graphService)
 
         val parameters = LanguageController.UpdateLanguageParameters(
-            wordFinals = ""
+            diphthongs = ""
         )
         languageController.updateLanguage("q", parameters)
 
-        assertEquals(0, fixture.q.wordFinals.size)
+        assertEquals(0, fixture.q.diphthongs.size)
+    }
+
+    @Test
+    fun phonotacticsRules() {
+        val fixture = QTestFixture()
+        val rule = fixture.graphService.graph.addRule("q-phono", fixture.q, fixture.q,
+            RuleLogic(emptyList(), emptyList()))
+
+        val languageController = LanguageController(fixture.graphService)
+        val parameters = LanguageController.UpdateLanguageParameters(
+            phonotacticsRuleName = "q-phono"
+        )
+        languageController.updateLanguage("q", parameters)
+        assertEquals(rule.id, fixture.q.phonotacticsRule?.resolve()?.id)
+
+        val languageVM = languageController.language("q")
+        assertEquals(rule.id, languageVM.phonotacticsRuleId)
+        assertEquals("q-phono", languageVM.phonotacticsRuleName)
     }
 }

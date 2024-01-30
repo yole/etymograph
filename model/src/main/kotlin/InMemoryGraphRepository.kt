@@ -279,12 +279,14 @@ open class InMemoryGraphRepository : GraphRepository() {
                 }
             }
         }
-        if (language.wordFinals.isNotEmpty()) {
-            phonemes.advanceTo(phonemes.size - 1)
-            val final = phonemes.current
-            if (language.wordFinals.none { it == final || language.phonemeClassByName(it)?.matchesCurrent(phonemes) == true }) {
-                return false
-            }
+        return matchesPhonotactics(language, wordText)
+    }
+
+    override fun matchesPhonotactics(lang: Language, text: String): Boolean {
+        val rule = lang.phonotacticsRule?.resolve()
+        if (rule != null) {
+            val result = rule.apply(Word(-1, text, lang), this)
+            return DISALLOW_CLASS !in result.classes
         }
         return true
     }
