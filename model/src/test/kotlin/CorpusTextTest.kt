@@ -57,6 +57,16 @@ class CorpusTextTest : QBaseTest() {
     }
 
     @Test
+    fun testNormalizedTextRemoveQuotes() {
+        val corpusText = CorpusText(-1, "quet \"Ai laurie lantar,\"", null, q, mutableListOf(), emptyList(), null)
+
+        val repo = InMemoryGraphRepository()
+        val lines = corpusText.mapToLines(repo)
+        assertEquals("ai", lines[0].corpusWords[1].normalizedText)
+        assertEquals("lantar", lines[0].corpusWords[3].normalizedText)
+    }
+
+    @Test
     fun testAttestations() {
         val repo = InMemoryGraphRepository()
         val eaV = q.word("ea", "be")

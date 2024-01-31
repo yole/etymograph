@@ -72,7 +72,8 @@ class CorpusText(
     private fun splitIntoNormalizedWords(line: String, lineStartIndex: Int): List<WordText> {
         var currentIndex = lineStartIndex
         return line.split(' ').map {
-            val cleanText = it.trimEnd(*punctuation).replace("[", "").replace("]", "")
+            val cleanText = it.trimStart('"').trimEnd(*punctuation)
+                .replace("[", "").replace("]", "")
             WordText(it, language.normalizeWord(cleanText), currentIndex++)
         }
     }
@@ -111,7 +112,7 @@ class CorpusText(
     }
 
     companion object {
-        val punctuation = charArrayOf('!', ',', '.', '?', ':', ';')
+        val punctuation = charArrayOf('!', ',', '.', '?', ':', ';', '\"')
     }
 }
 
