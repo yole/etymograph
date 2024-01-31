@@ -164,7 +164,7 @@ open class InMemoryGraphRepository : GraphRepository() {
                 uniqueMap[key] = parseCandidate
             }
         }
-        return uniqueMap.values.toList()
+        return uniqueMap.values.filter { it.word != null }.toList() + uniqueMap.values.filter { it.word == null }.toList()
     }
 
     private fun findParseCandidates(language: Language, text: String, pos: String?, prevRules: List<Rule>,
