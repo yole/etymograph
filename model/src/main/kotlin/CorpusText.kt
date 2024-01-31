@@ -72,9 +72,10 @@ class CorpusText(
                 sentenceStart = tw.baseText.endsWith('.')
                 if (word != null) {
                     val stressData = word.calculateStress()
-                    val punctuation = tw.baseText.takeLastWhile { it in CorpusText.punctuation }
+                    val leadingPunctuation = tw.baseText.takeWhile { it == '"' }
+                    val trailingPunctuation = tw.baseText.takeLastWhile { it in punctuation }
                     val wordWithSegments = repo.restoreSegments(word)
-                    val segmentedText = wordWithSegments.segmentedText() + punctuation
+                    val segmentedText = leadingPunctuation + restoreCase(wordWithSegments.segmentedText(), tw.baseText) + trailingPunctuation
                     val glossWithSegments = wordWithSegments.getOrComputeGloss(repo)
                     val stressIndex = adjustStressIndex(wordWithSegments, stressData?.index)
 
@@ -151,9 +152,10 @@ class CorpusText(
 }
 
 fun restoreCase(normalizedText: String, baseText: String): String {
+    val offset = baseText.takeWhile { it == '"' }.length
     return buildString {
         for ((i, c) in normalizedText.withIndex()) {
-            if (i < baseText.length && baseText[i].isUpperCase()) {
+            if (i + offset < baseText.length && baseText[i + offset].isUpperCase()) {
                 append(c.uppercase(Locale.FRANCE))
             }
             else {
