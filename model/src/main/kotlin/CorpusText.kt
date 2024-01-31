@@ -2,11 +2,20 @@ package ru.yole.etymograph
 
 import java.util.*
 
-class CorpusWord(val index: Int, val text: String, val normalizedText: String, val word: Word?, val gloss: String?, val homonym: Boolean)
+class CorpusWord(
+    val index: Int,
+    val text: String,
+    val normalizedText: String,
+    val segmentedText: String,
+    val word: Word?,
+    val gloss: String?,
+    val segmentedGloss: String?,
+    val stressIndex: Int?,
+    val stressLength: Int?,
+    val homonym: Boolean
+)
 
 class CorpusTextLine(val corpusWords: List<CorpusWord>)
-
-class CorpusWordAlternative(val gloss: String)
 
 class CorpusText(
     id: Int,
@@ -56,18 +65,43 @@ class CorpusText(
             val textWords = splitIntoNormalizedWords(line, currentIndex)
             CorpusTextLine(textWords.map { tw ->
                 val word = _words.getOrNull(currentIndex)
-                val normalizedText = if (sentenceStart) tw.normalizedText else restoreCase(tw.normalizedText, tw.baseText)
+                val normalizedText = if (sentenceStart || tw.baseText.startsWith("\""))
+                    tw.normalizedText
+                else
+                    restoreCase(tw.normalizedText, tw.baseText)
                 sentenceStart = tw.baseText.endsWith('.')
                 if (word != null) {
-                    CorpusWord(currentIndex++, tw.baseText, normalizedText, word, word.getOrComputeGloss(repo), repo.isHomonym(word))
+                    val stressData = word.calculateStress()
+                    val punctuation = tw.baseText.takeLastWhile { it in CorpusText.punctuation }
+                    val wordWithSegments = repo.restoreSegments(word)
+                    val segmentedText = wordWithSegments.segmentedText() + punctuation
+                    val glossWithSegments = wordWithSegments.getOrComputeGloss(repo)
+                    val stressIndex = adjustStressIndex(wordWithSegments, stressData?.index)
+
+                    CorpusWord(currentIndex++, tw.baseText, normalizedText, segmentedText, word, word.getOrComputeGloss(repo),
+                        glossWithSegments, stressIndex, stressData?.length, repo.isHomonym(word))
                 }
                 else {
                     val gloss = repo.wordsByText(language, tw.normalizedText).firstOrNull()?.getOrComputeGloss(repo)
-                    CorpusWord(currentIndex++, tw.baseText, normalizedText, null, gloss, false)
+                    CorpusWord(currentIndex++, tw.baseText, normalizedText, tw.baseText,null, gloss, gloss, null, null,false)
                 }
             })
         }
     }
+
+    private fun adjustStressIndex(wordWithSegments: Word?, stressIndex: Int?): Int? {
+        if (stressIndex == null) return null
+        val segments = wordWithSegments?.segments ?: return stressIndex
+        var result = stressIndex
+        for (segment in segments) {
+            if (segment.firstCharacter > 0 && segment.firstCharacter <= stressIndex) {
+                result++
+            }
+        }
+        return result
+    }
+
+
 
     private fun splitIntoNormalizedWords(line: String, lineStartIndex: Int): List<WordText> {
         var currentIndex = lineStartIndex

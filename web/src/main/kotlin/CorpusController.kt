@@ -74,15 +74,12 @@ class CorpusController(val graphService: GraphService) {
             text,
             mapToLines(repo).map { line ->
                 CorpusLineViewModel(line.corpusWords.map { cw ->
-                    val stressData = cw.word?.calculateStress()
-                    val punctuation = cw.text.takeLastWhile { it in CorpusText.punctuation }
-                    val wordWithSegments = cw.word?.let { repo.restoreSegments(it) }
-                    val glossWithSegments = wordWithSegments?.getOrComputeGloss(repo) ?: cw.gloss ?: ""
                     CorpusWordViewModel(cw.index,
-                        wordWithSegments?.segmentedText()?.plus(punctuation) ?: cw.text,
+                        cw.segmentedText,
                         cw.normalizedText,
-                        glossWithSegments, cw.word?.id, cw.word?.text,
-                        adjustStressIndex(wordWithSegments, stressData?.index), stressData?.length, cw.homonym)
+                        cw.segmentedGloss ?: "",
+                        cw.word?.id, cw.word?.text,
+                        cw.stressIndex, cw.stressLength, cw.homonym)
                 })
             },
             source.toViewModel(repo),
@@ -92,18 +89,6 @@ class CorpusController(val graphService: GraphService) {
                 TranslationViewModel(it.id, it.text, it.source.toViewModel(repo), it.source.toEditableText(repo))
             }
         )
-    }
-
-    private fun adjustStressIndex(wordWithSegments: Word?, stressIndex: Int?): Int? {
-        if (stressIndex == null) return null
-        val segments = wordWithSegments?.segments ?: return stressIndex
-        var result = stressIndex
-        for (segment in segments) {
-            if (segment.firstCharacter > 0 && segment.firstCharacter <= stressIndex) {
-                result++
-            }
-        }
-        return result
     }
 
     data class CorpusTextParams(val title: String = "", val text: String = "", val source: String = "", val notes: String = "")
