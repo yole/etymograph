@@ -51,6 +51,8 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
     open fun reverseApply(rule: Rule, text: String, language: Language): List<String> {
         return when (type) {
             InstructionType.ChangeEnding -> reverseChangeEnding(text, rule)
+            InstructionType.NoChange -> listOf(text)
+            InstructionType.ApplyClass -> listOf(text)
             else -> emptyList()
         }
     }

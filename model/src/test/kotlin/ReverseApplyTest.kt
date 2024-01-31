@@ -97,4 +97,11 @@ class ReverseApplyTest : QBaseTest() {
         val candidates = rule.reverseApply(q.word("acirae"))
         assertEquals("cira", candidates.single())
     }
+
+    @Test
+    fun reverseApplyNoChange() {
+        val rule = parseRule(q, q, "word ends with vowel:\n- no change")
+        val candidates = rule.reverseApply(q.word("cira"))
+        assertEquals("cira", candidates.single())
+    }
 }
