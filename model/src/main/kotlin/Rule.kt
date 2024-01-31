@@ -16,7 +16,10 @@ class RuleParseContext(
     val ruleRefFactory: (String) -> RuleRef
 )
 
-data class ParseCandidate(val text: String, val rules: List<Rule>, val pos: String?, val word: Word?)
+data class ParseCandidate(val text: String, val rules: List<Rule>, val pos: String?, val word: Word?) {
+    val categories: String
+        get() = rules.fold("") { t, rule -> t + rule.addedCategories.orEmpty() }
+}
 
 class RuleBranch(val condition: RuleCondition, val instructions: List<RuleInstruction>) {
     fun matches(word: Word) = condition.matches(word)

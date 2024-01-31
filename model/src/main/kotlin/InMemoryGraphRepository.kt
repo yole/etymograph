@@ -150,8 +150,21 @@ open class InMemoryGraphRepository : GraphRepository() {
         return result
     }
 
+    data class ParseCandidateKey(val text: String, val categories: String)
+
     override fun findParseCandidates(word: Word): List<ParseCandidate> {
-        return findParseCandidates(word.language, word.text, word.pos, emptyList(), collectDerivedWordGrammaticalCategories(word), true)
+        val result = findParseCandidates(
+            word.language, word.text, word.pos, emptyList(),
+            collectDerivedWordGrammaticalCategories(word), true
+        )
+        val uniqueMap = mutableMapOf<ParseCandidateKey, ParseCandidate>()
+        for (parseCandidate in result) {
+            val key = ParseCandidateKey(parseCandidate.text, parseCandidate.categories)
+            if (key !in uniqueMap) {
+                uniqueMap[key] = parseCandidate
+            }
+        }
+        return uniqueMap.values.toList()
     }
 
     private fun findParseCandidates(language: Language, text: String, pos: String?, prevRules: List<Rule>,
