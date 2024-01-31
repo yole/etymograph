@@ -53,6 +53,14 @@ class ReverseApplyTest : QBaseTest() {
     }
 
     @Test
+    fun reverseApplyIgnoreClassNegated() {
+        q.wordClasses.add(WordCategory("gender", listOf("N"), listOf(WordCategoryValue("female", "f"))))
+        val rule = parseRule(q, q, "word ends with 'ea' and word is not f:\n- change ending to 'ie'")
+        val candidate = rule.reverseApply(q.word("yaimie"))
+        assertEquals("yaimea", candidate.single())
+    }
+
+    @Test
     fun reverseApplyChangeEndingOr() {
         val rule = parseRule(q, q, "word ends with 'ea' or word ends with 'ao':\n- change ending to 'ie'")
         val candidates = rule.reverseApply(q.word("yaimie"))

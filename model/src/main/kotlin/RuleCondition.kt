@@ -102,7 +102,7 @@ class LeafRuleCondition(
                 ?: word.text.trimEnd('-').endsWith(parameter!!)).negateIfNeeded()
             ConditionType.NumberOfSyllables -> (breakIntoSyllables(word).size == parameter!!.toInt()).negateIfNeeded()
             ConditionType.StressIs -> matchStress(word).negateIfNeeded()
-            ConditionType.ClassMatches -> (parameter in word.classes || word.classes == listOf("*")).negateIfNeeded()
+            ConditionType.ClassMatches -> (parameter in word.classes).negateIfNeeded() || word.classes == listOf("*")
             else -> super.matches(word)
         }
     }
