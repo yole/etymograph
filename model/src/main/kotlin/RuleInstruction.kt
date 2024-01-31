@@ -106,6 +106,17 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
             }
             throw RuleParseException("Unrecognized instruction '$s'")
         }
+
+        fun reverseApplyInstructions(
+            candidates: List<String>,
+            rule: Rule,
+            word: Word,
+            ruleInstructions: List<RuleInstruction>
+        ): List<String> {
+            return ruleInstructions.reversed().fold(candidates) { c, instruction ->
+                c.flatMap { instruction.reverseApply(rule, it, word.language) }
+            }
+        }
     }
 }
 

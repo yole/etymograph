@@ -78,4 +78,11 @@ class ReverseApplyTest : QBaseTest() {
         val candidates = rule.reverseApply(q.word("picala"))
         assertEquals(2, candidates.size)
     }
+
+    @Test
+    fun reverseApplyPreInstructions() {
+        val rule = parseRule(q, q, "- prepend 'a'\nword ends with vowel:\n- append 'e'")
+        val candidates = rule.reverseApply(q.word("acirae"))
+        assertEquals("cira", candidates.single())
+    }
 }
