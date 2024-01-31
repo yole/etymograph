@@ -146,6 +146,7 @@ class Rule(
     fun reverseApplyToPhoneme(phonemes: PhonemeIterator): Boolean {
         for (branch in logic.branches) {
             val instruction = branch.instructions.singleOrNull()
+            if (instruction?.type == InstructionType.NoChange) continue
             if (instruction?.type == InstructionType.ChangeSound) {
                 if (instruction.arg == phonemes.current) {
                     val condition = branch.condition as? LeafRuleCondition ?: return false
