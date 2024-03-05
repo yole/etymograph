@@ -157,6 +157,9 @@ Here's an example of a compound condition:
 word is strong and (word ends with 'v' or word ends with 'j'):
 ```
 
+Conditions with arguments can be negated. This is done by adding a `not` operator before the argument of a condition,
+for example, `word ends with not 'a'` or `word is not m`.
+
 #### Morphological (Inflectional and Derivational) Rules
 
 The following conditions can be used in morphological rules:
