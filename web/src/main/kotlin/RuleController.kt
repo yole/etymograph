@@ -175,6 +175,9 @@ class RuleController(val graphService: GraphService) {
         if (graph.ruleByName(params.name) != null) {
             badRequest("Rule named '${params.name} already exists")
         }
+        if (' ' in params.name) {
+            badRequest("Rule names may not contain spaces")
+        }
 
         val logic = try {
             Rule.parseBranches(params.text, parseContext(fromLanguage, toLanguage))
@@ -213,6 +216,9 @@ class RuleController(val graphService: GraphService) {
 
         if (rule.name != params.name && graph.ruleByName(params.name) != null) {
             badRequest("Rule named '${params.name} already exists")
+        }
+        if (' ' in params.name) {
+            badRequest("Rule names may not contain spaces")
         }
 
         rule.name = params.name
