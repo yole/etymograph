@@ -86,12 +86,11 @@ class PhonemeIterator {
     }
 
     val current: String get() = phonemes[phonemeIndex]
-    val previous: String? get() = phonemes.getOrNull(phonemeIndex - 1)
-    val next: String? get() = phonemes.getOrNull(phonemeIndex + 1)
     val last: String? get() = phonemes.lastOrNull()
     val size: Int get() = phonemes.size
 
     operator fun get(index: Int): String = phonemes[index]
+    fun atRelative(relativeIndex: Int): String? = phonemes.getOrNull(phonemeIndex + relativeIndex)
 
     fun clone(): PhonemeIterator {
         return PhonemeIterator(phonemes, resultPhonemes, language).also {
@@ -144,6 +143,10 @@ class PhonemeIterator {
 
     fun replace(s: String) {
         resultPhonemes[resultPhonemeIndex] = s
+    }
+
+    fun replaceAtRelative(relativeIndex: Int, s: String) {
+        resultPhonemes[resultPhonemeIndex + relativeIndex] = s
     }
 
     fun delete() {

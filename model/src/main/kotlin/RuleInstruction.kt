@@ -15,7 +15,7 @@ enum class InstructionType(
     ApplyClass("mark word as", "mark word as (.*)", true),
     Disallow("disallow", "disallow", false),
     ChangeSound("new sound is", "new sound is '(.+)'", true),
-    ChangeSoundClass("becomes", "(.+) becomes (.+)", true),
+    ChangeSoundClass("becomes", "(previous\\s+|next\\s+)?(.+) becomes (.+)", true),
     SoundDisappears("sound disappears"),
     NextSoundDisappears("next sound disappears");
 
@@ -253,26 +253,30 @@ class PrependAppendInstruction(type: InstructionType, language: Language, arg: S
     }
 }
 
-class ChangePhonemeClassInstruction(val oldClass: String, val newClass: String)
+class ChangePhonemeClassInstruction(val relativeIndex: Int, val oldClass: String, val newClass: String)
     : RuleInstruction(InstructionType.ChangeSoundClass, "")
 {
     override fun apply(phonemes: PhonemeIterator) {
-        val phoneme = phonemes.language.phonemes.find { phonemes.current in it.graphemes } ?: return
+        val phoneme = phonemes.language.phonemes.find { phonemes.atRelative(relativeIndex) in it.graphemes } ?: return
         val newClasses = phoneme.classes.toMutableSet()
         if (oldClass !in newClasses) return
         newClasses.remove(oldClass)
         newClasses.add(newClass)
         val newPhoneme = phonemes.language.phonemes.singleOrNull { it.classes == newClasses } ?: return
-        phonemes.replace(newPhoneme.graphemes[0])
+        phonemes.replaceAtRelative(relativeIndex, newPhoneme.graphemes[0])
     }
 
     override fun toEditableText(): String {
-        return "$oldClass becomes $newClass"
+        val relIndex = RelativeOrdinals.toString(relativeIndex)?.plus(" ") ?: ""
+        return "$relIndex$oldClass becomes $newClass"
     }
 
     companion object {
         fun parse(match: MatchResult): ChangePhonemeClassInstruction {
-            return ChangePhonemeClassInstruction(match.groupValues[1], match.groupValues[2])
+            val relativeIndex = match.groupValues[1].takeIf { it.isNotEmpty() }?.trim()?.let {
+                RelativeOrdinals.parse(it)?.first
+            } ?: 0
+            return ChangePhonemeClassInstruction(relativeIndex, match.groupValues[2], match.groupValues[3])
         }
     }
 }

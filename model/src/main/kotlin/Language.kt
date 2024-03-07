@@ -10,7 +10,7 @@ open class PhonemeClass(val name: String, val matchingPhonemes: List<String>) {
     companion object {
         val diphthong = object : PhonemeClass("diphthong", emptyList()) {
             override fun matchesCurrent(it: PhonemeIterator): Boolean {
-                val next = it.next
+                val next = it.atRelative(1)
                 return next != null && it.current + next in it.language.diphthongs
             }
         }

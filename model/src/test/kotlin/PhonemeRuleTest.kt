@@ -143,4 +143,20 @@ class PhonemeRuleTest : QBaseTest() {
         val deserialized = JsonGraphRepository.ruleInstructionFromSerializedFormat(emptyRepo, q, data)
         assertEquals("voiceless becomes voiced", deserialized.toEditableText())
     }
+
+    @Test
+    fun changePreviousPhonemeClass() {
+        val rule = parseRule(q, q, """
+            sound is nasal and previous sound is voiceless stop:
+            - previous voiceless becomes voiced
+        """.trimIndent())
+        assertEquals("utubnu", rule.apply(q.word("utupnu"), emptyRepo).text)
+
+        val ruleInstruction = rule.logic.branches[0].instructions[0]
+        assertEquals("previous voiceless becomes voiced", ruleInstruction.toEditableText())
+
+        val data = ruleInstruction.toSerializedFormat()
+        val deserialized = JsonGraphRepository.ruleInstructionFromSerializedFormat(emptyRepo, q, data)
+        assertEquals("previous voiceless becomes voiced", deserialized.toEditableText())
+    }
 }

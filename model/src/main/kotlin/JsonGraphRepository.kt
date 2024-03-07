@@ -574,7 +574,8 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                 )
                 is ChangePhonemeClassInstruction -> arrayOf(
                     oldClass,
-                    newClass
+                    newClass,
+                    relativeIndex.toString()
                 )
                 else -> if (type.takesArgument) arrayOf(arg) else emptyArray()
             }
@@ -635,7 +636,8 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                 InstructionType.Prepend, InstructionType.Append ->
                     PrependAppendInstruction(insnData.type, fromLanguage, insnData.args[0])
                 InstructionType.ChangeSoundClass ->
-                    ChangePhonemeClassInstruction(insnData.args[0], insnData.args[1])
+                    ChangePhonemeClassInstruction(insnData.args.getOrNull(2)?.toInt() ?: 0,
+                        insnData.args[0], insnData.args[1])
                 else ->
                     RuleInstruction(insnData.type, insnData.args.firstOrNull() ?: "")
             }
