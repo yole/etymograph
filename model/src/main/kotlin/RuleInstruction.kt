@@ -15,7 +15,8 @@ enum class InstructionType(
     ApplyClass("mark word as", "mark word as (.*)", true),
     Disallow("disallow", "disallow", false),
     ChangeSound("new sound is", "new sound is '(.+)'", true),
-    SoundDisappears("sound disappears");
+    SoundDisappears("sound disappears"),
+    NextSoundDisappears("next sound disappears");
 
     val regex = Regex(pattern ?: Regex.escape(insnName))
 }
@@ -74,6 +75,7 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
         when (type) {
             InstructionType.ChangeSound -> phoneme.replace(arg)
             InstructionType.SoundDisappears -> phoneme.delete()
+            InstructionType.NextSoundDisappears -> phoneme.deleteNext()
             InstructionType.NoChange -> Unit
             else -> throw IllegalStateException("Can't apply word instruction to individual phoneme")
         }

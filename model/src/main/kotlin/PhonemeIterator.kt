@@ -151,6 +151,11 @@ class PhonemeIterator {
         resultPhonemeIndex--
     }
 
+    fun deleteNext() {
+        resultPhonemes.removeAt(resultPhonemeIndex + 1)
+        phonemeIndex++
+    }
+
     fun result(): String {
         return resultPhonemes.joinToString("")
     }

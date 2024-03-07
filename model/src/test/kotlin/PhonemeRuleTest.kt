@@ -46,6 +46,17 @@ class PhonemeRuleTest : QBaseTest() {
     }
 
     @Test
+    fun nextSoundDisappears() {
+        val rule = parseRule(ce, q, """
+            sound is 'm' and next sound is 'b':
+            - next sound disappears
+            sound is 'b':
+            - new sound is 'w'
+        """.trimIndent())
+        assertEquals("mawa", rule.apply(ce.word("mbaba"), emptyRepo).text)
+    }
+
+    @Test
     fun previousSound() {
         val rule = parseRule(ce, q, """
             sound is 'i' and previous sound is 'kh':
