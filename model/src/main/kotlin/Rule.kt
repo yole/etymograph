@@ -112,14 +112,14 @@ class Rule(
                 applyToPhoneme(word, phonemes)
                 if (!phonemes.advance()) break
             }
-            return deriveWord(word, phonemes.result(), word.stressedPhonemeIndex, null, word.classes)
+            return deriveWord(word, phonemes.result(), toLanguage, word.stressedPhonemeIndex, null, word.classes)
         }
 
         val preWord = if (logic.preInstructions.isEmpty()) word else logic.preInstructions.apply(this, null, word, graph)
         for (branch in logic.branches) {
             if (branch.matches(preWord)) {
                 val resultWord = branch.apply(this, preWord, graph)
-                return deriveWord(word, resultWord.text, resultWord.stressedPhonemeIndex, resultWord.segments, resultWord.classes)
+                return deriveWord(word, resultWord.text, toLanguage, resultWord.stressedPhonemeIndex, resultWord.segments, resultWord.classes)
             }
         }
         return Word(-1, "?", word.language)
@@ -169,11 +169,12 @@ class Rule(
         return true
     }
 
-    private fun deriveWord(word: Word, text: String, stressIndex: Int, segments: List<WordSegment>?, classes: List<String>): Word {
+    private fun deriveWord(word: Word, text: String, language: Language, stressIndex: Int, segments: List<WordSegment>?,
+                           classes: List<String>): Word {
         val gloss = word.glossOrNP()?.let { baseGloss ->
             applyCategories(baseGloss, segments?.any { it.sourceRule == this} == true)
         }
-        return Word(-1, text, word.language, gloss, pos = word.pos, classes = classes).also {
+        return Word(-1, text, language ?: word.language, gloss, pos = word.pos, classes = classes).also {
             it.stressedPhonemeIndex = stressIndex
             val sourceSegments = word.segments
             if (segments != null) {
