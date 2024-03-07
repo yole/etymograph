@@ -41,7 +41,7 @@ class LanguageControllerTest {
         val phonemes =  fixture.q.phonemes
         assertEquals(2, phonemes.size)
         assertEquals("a", phonemes[0].graphemes.single())
-        assertEquals("open", phonemes[0].classes[0])
+        assertEquals("open", phonemes[0].classes.first())
         assertEquals("c", phonemes[1].graphemes[0])
 
         val vm = languageController.language("q")

@@ -15,6 +15,7 @@ enum class InstructionType(
     ApplyClass("mark word as", "mark word as (.*)", true),
     Disallow("disallow", "disallow", false),
     ChangeSound("new sound is", "new sound is '(.+)'", true),
+    ChangeSoundClass("becomes", "(.+) becomes (.+)", true),
     SoundDisappears("sound disappears"),
     NextSoundDisappears("next sound disappears");
 
@@ -71,11 +72,11 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
         return emptyList()
     }
 
-    fun apply(phoneme: PhonemeIterator) {
+    open fun apply(phonemes: PhonemeIterator) {
         when (type) {
-            InstructionType.ChangeSound -> phoneme.replace(arg)
-            InstructionType.SoundDisappears -> phoneme.delete()
-            InstructionType.NextSoundDisappears -> phoneme.deleteNext()
+            InstructionType.ChangeSound -> phonemes.replace(arg)
+            InstructionType.SoundDisappears -> phonemes.delete()
+            InstructionType.NextSoundDisappears -> phonemes.deleteNext()
             InstructionType.NoChange -> Unit
             else -> throw IllegalStateException("Can't apply word instruction to individual phoneme")
         }
@@ -104,6 +105,7 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
                         InstructionType.ApplyStress -> ApplyStressInstruction(context.fromLanguage, arg)
                         InstructionType.Prepend, InstructionType.Append ->
                             PrependAppendInstruction(type, context.fromLanguage, arg)
+                        InstructionType.ChangeSoundClass -> ChangePhonemeClassInstruction.parse(match)
                         else -> RuleInstruction(type, arg)
                     }
                 }
@@ -248,5 +250,29 @@ class PrependAppendInstruction(type: InstructionType, language: Language, arg: S
             return if (type == InstructionType.Prepend) "$literalArg-" else "-$literalArg"
         }
         return super.toSummaryText()
+    }
+}
+
+class ChangePhonemeClassInstruction(val oldClass: String, val newClass: String)
+    : RuleInstruction(InstructionType.ChangeSoundClass, "")
+{
+    override fun apply(phonemes: PhonemeIterator) {
+        val phoneme = phonemes.language.phonemes.find { phonemes.current in it.graphemes } ?: return
+        val newClasses = phoneme.classes.toMutableSet()
+        if (oldClass !in newClasses) return
+        newClasses.remove(oldClass)
+        newClasses.add(newClass)
+        val newPhoneme = phonemes.language.phonemes.singleOrNull { it.classes == newClasses } ?: return
+        phonemes.replace(newPhoneme.graphemes[0])
+    }
+
+    override fun toEditableText(): String {
+        return "$oldClass becomes $newClass"
+    }
+
+    companion object {
+        fun parse(match: MatchResult): ChangePhonemeClassInstruction {
+            return ChangePhonemeClassInstruction(match.groupValues[1], match.groupValues[2])
+        }
     }
 }

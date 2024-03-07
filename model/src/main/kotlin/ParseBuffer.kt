@@ -37,7 +37,7 @@ class ParseBuffer(val s: String) {
         consumeQuoted()?.let { return null to it }
         consume(LeafRuleCondition.indefiniteArticle)
         var phonemeClassName = nextWord() ?: throw RuleParseException("Phoneme class name expected")
-        val mark = pos
+        var mark = pos
         while (true) {
             val nextPhonemeClass = nextWord()
             if (nextPhonemeClass == null || language.phonemeClassByName(nextPhonemeClass) == null) {
@@ -45,6 +45,7 @@ class ParseBuffer(val s: String) {
                 break
             }
             phonemeClassName = "$phonemeClassName $nextPhonemeClass"
+            mark = pos
         }
 
         val characterClass = language.phonemeClassByName(phonemeClassName)

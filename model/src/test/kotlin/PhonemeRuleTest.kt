@@ -3,6 +3,7 @@ package ru.yole.etymograph
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Test
+import ru.yole.etymograph.JsonGraphRepository.Companion.toSerializedFormat
 
 class PhonemeRuleTest : QBaseTest() {
 
@@ -125,5 +126,21 @@ class PhonemeRuleTest : QBaseTest() {
         """.trimIndent())
         assertEquals("ainu", rule.apply(q.word("ainu"), emptyRepo).text)
         assertEquals("omo", rule.apply(q.word("ama"), emptyRepo).text)
+    }
+
+    @Test
+    fun changePhonemeClass() {
+        val rule = parseRule(q, q, """
+            sound is voiceless stop and next sound is nasal:
+            - voiceless becomes voiced
+        """.trimIndent())
+        assertEquals("utubnu", rule.apply(q.word("utupnu"), emptyRepo).text)
+
+        val ruleInstruction = rule.logic.branches[0].instructions[0]
+        assertEquals("voiceless becomes voiced", ruleInstruction.toEditableText())
+
+        val data = ruleInstruction.toSerializedFormat()
+        val deserialized = JsonGraphRepository.ruleInstructionFromSerializedFormat(emptyRepo, q, data)
+        assertEquals("voiceless becomes voiced", deserialized.toEditableText())
     }
 }

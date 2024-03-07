@@ -3,14 +3,18 @@ package ru.yole.etymograph
 open class QBaseTest {
     val q = Language("Quenya", "Q").also {
         it.phonemes = listOf(
-            Phoneme(listOf("e", "ë"), listOf("vowel"))
+            Phoneme(listOf("e", "ë"), setOf("vowel"))
         ) + listOf("a", "o", "u", "i").map { p ->
-            Phoneme(listOf(p), listOf("vowel"))
+            Phoneme(listOf(p),setOf("vowel"))
         } + listOf("á", "ó", "ú", "í", "é").map { p ->
-            Phoneme(listOf(p), listOf("long", "vowel"))
-        } + listOf("b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "q", "r", "s", "t", "v", "w", "x", "z").map { p ->
-            Phoneme(listOf(p), listOf("consonant"))
-        }
+            Phoneme(listOf(p), setOf("long", "vowel"))
+        } + listOf("c", "f", "g", "h", "j", "k", "l", "m", "q", "r", "s", "v", "w", "x", "z").map { p ->
+            Phoneme(listOf(p), setOf("consonant"))
+        } + phoneme("p", "voiceless bilabial stop consonant") +
+            phoneme("t", "voiceless alveolar stop consonant") +
+            phoneme("b", "voiced bilabial stop consonant") +
+            phoneme("d", "voiced alveolar stop consonant") +
+            phoneme("n", "nasal consonant")
 
         it.diphthongs = listOf("ai", "oi", "ui", "au", "eu", "iu")
     }
@@ -18,8 +22,8 @@ open class QBaseTest {
 
     val ce = Language("Common Eldarin", "CE").also {
         it.phonemes = listOf(
-            Phoneme(listOf("kh"), listOf("voiceless", "consonant")),
-            Phoneme(listOf("th"), listOf("voiceless", "consonant"))
+            Phoneme(listOf("kh"), setOf("voiceless", "consonant")),
+            Phoneme(listOf("th"), setOf("voiceless", "consonant"))
         )
     }
     val emptyRepo = InMemoryGraphRepository()
@@ -28,5 +32,9 @@ open class QBaseTest {
 
     fun repoWithQ() = InMemoryGraphRepository().apply {
         addLanguage(q)
+    }
+
+    fun phoneme(sound: String, classes: String): Phoneme {
+        return Phoneme(listOf(sound), classes.split(' ').toSet())
     }
 }

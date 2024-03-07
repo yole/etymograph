@@ -274,7 +274,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
 
     private fun createGraphRepositoryData(): GraphRepositoryData {
         val phonemes = languages.values.flatMap { lang ->
-            lang.phonemes.map { PhonemeData(lang.shortName, it.graphemes, it.classes) }
+            lang.phonemes.map { PhonemeData(lang.shortName, it.graphemes, it.classes.toList()) }
         }
         val diphthongData = languages.values.map { DiphthongData(it.shortName, it.diphthongs) }
         val stressRuleData = mapLanguageRules { lang -> lang.stressRule }
@@ -350,7 +350,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
         }
         for (phoneme in data.phonemes) {
             languageByShortName(phoneme.languageShortName)!!.phonemes +=
-                Phoneme(phoneme.graphemes, phoneme.classes)
+                Phoneme(phoneme.graphemes, phoneme.classes.toSet())
         }
         for (diphthongData in data.diphthongs) {
             languageByShortName(diphthongData.languageShortName)!!.diphthongs = diphthongData.diphthongs
@@ -572,6 +572,10 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                     ruleRef.resolve().id.toString(),
                     seekTarget.toEditableText()
                 )
+                is ChangePhonemeClassInstruction -> arrayOf(
+                    oldClass,
+                    newClass
+                )
                 else -> if (type.takesArgument) arrayOf(arg) else emptyArray()
             }
 
@@ -630,6 +634,8 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                     ApplyStressInstruction(fromLanguage, insnData.args[0])
                 InstructionType.Prepend, InstructionType.Append ->
                     PrependAppendInstruction(insnData.type, fromLanguage, insnData.args[0])
+                InstructionType.ChangeSoundClass ->
+                    ChangePhonemeClassInstruction(insnData.args[0], insnData.args[1])
                 else ->
                     RuleInstruction(insnData.type, insnData.args.firstOrNull() ?: "")
             }

@@ -107,7 +107,7 @@ class LanguageController(val graphService: GraphService) {
             val (grapheme, classes) = cls.split(':')
             Phoneme(
                 grapheme.trim().split(',').map { it.trim() },
-                classes.trim().split(' ').map { it.trim() }
+                classes.trim().split(' ').map { it.trim() }.toSet()
             )
         }.toMutableList()
     }
