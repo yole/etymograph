@@ -321,7 +321,7 @@ class RuleTest : QBaseTest() {
     @Test
     fun stressCondition() {
         val ciryali = q.word("ciryali")
-        ciryali.stressedPhonemeIndex = 2
+        ciryali.stressedPhonemeIndex = 1
         val condition = RuleCondition.parse(ParseBuffer("stress is on third to last syllable"), q)
         assertTrue(condition.matches(ciryali))
         assertFalse(condition.matches(q.word("lasse").apply { stressedPhonemeIndex = 1 }))

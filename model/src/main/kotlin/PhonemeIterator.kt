@@ -88,6 +88,7 @@ class PhonemeIterator {
     val current: String get() = phonemes[phonemeIndex]
     val last: String? get() = phonemes.lastOrNull()
     val size: Int get() = phonemes.size
+    val index: Int get() = phonemeIndex
 
     operator fun get(index: Int): String = phonemes[index]
     fun atRelative(relativeIndex: Int): String? = phonemes.getOrNull(phonemeIndex + relativeIndex)

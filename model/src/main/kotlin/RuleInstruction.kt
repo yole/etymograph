@@ -72,7 +72,7 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
         return emptyList()
     }
 
-    open fun apply(phonemes: PhonemeIterator) {
+    open fun apply(word: Word, phonemes: PhonemeIterator) {
         when (type) {
             InstructionType.ChangeSound -> phonemes.replace(arg)
             InstructionType.SoundDisappears -> phonemes.delete()
@@ -166,7 +166,7 @@ class ApplySoundRuleInstruction(language: Language, val ruleRef: RuleRef, arg: S
     override fun apply(rule: Rule, branch: RuleBranch?, word: Word, graph: GraphRepository): Word {
         val phonemes = PhonemeIterator(word)
         if (phonemes.seek(seekTarget)) {
-            ruleRef.resolve().applyToPhoneme(phonemes)
+            ruleRef.resolve().applyToPhoneme(word, phonemes)
             return word.derive(phonemes.result())
         }
         return word
@@ -256,7 +256,7 @@ class PrependAppendInstruction(type: InstructionType, language: Language, arg: S
 class ChangePhonemeClassInstruction(val relativeIndex: Int, val oldClass: String, val newClass: String)
     : RuleInstruction(InstructionType.ChangeSoundClass, "")
 {
-    override fun apply(phonemes: PhonemeIterator) {
+    override fun apply(word: Word, phonemes: PhonemeIterator) {
         val phoneme = phonemes.language.phonemes.find { phonemes.atRelative(relativeIndex) in it.graphemes } ?: return
         val newClasses = phoneme.classes.toMutableSet()
         if (oldClass !in newClasses) return

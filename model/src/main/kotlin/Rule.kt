@@ -109,7 +109,7 @@ class Rule(
         if (isPhonemic()) {
             val phonemes = PhonemeIterator(word)
             while (true) {
-                applyToPhoneme(phonemes)
+                applyToPhoneme(word, phonemes)
                 if (!phonemes.advance()) break
             }
             return deriveWord(word, phonemes.result(), word.stressedPhonemeIndex, null, word.classes)
@@ -135,11 +135,11 @@ class Rule(
         }
     }
 
-    fun applyToPhoneme(phonemes: PhonemeIterator) {
+    fun applyToPhoneme(word: Word, phonemes: PhonemeIterator) {
         for (branch in logic.branches) {
-            if (branch.condition.matches(phonemes)) {
+            if (branch.condition.matches(word, phonemes)) {
                 for (instruction in branch.instructions) {
-                    instruction.apply(phonemes)
+                    instruction.apply(word, phonemes)
                 }
                 break
             }

@@ -9,16 +9,18 @@ class PhonemeRuleTest : QBaseTest() {
 
     @Test
     fun phonemeCondition() {
-        val it = PhonemeIterator(ce.word("khith"))
+        val word = ce.word("khith")
+        val it = PhonemeIterator(word)
         val cond = LeafRuleCondition(ConditionType.PhonemeMatches, null, "kh", false)
-        assertTrue(cond.matches(it))
+        assertTrue(cond.matches(word, it))
     }
 
     @Test
     fun phonemeConditionParse() {
-        val it = PhonemeIterator(ce.word("khith"))
+        val word = ce.word("khith")
+        val it = PhonemeIterator(word)
         val cond = RuleCondition.parse(ParseBuffer("sound is 'kh'"), ce)
-        assertTrue(cond.matches(it))
+        assertTrue(cond.matches(word, it))
     }
 
     @Test
@@ -158,5 +160,14 @@ class PhonemeRuleTest : QBaseTest() {
         val data = ruleInstruction.toSerializedFormat()
         val deserialized = JsonGraphRepository.ruleInstructionFromSerializedFormat(emptyRepo, q, data)
         assertEquals("previous voiceless becomes voiced", deserialized.toEditableText())
+    }
+
+    @Test
+    fun stressedCondition() {
+        val rule = parseRule(q, q, """
+            sound is 'o' and previous sound is 'w' and syllable is stressed:
+            - new sound is 'a'
+        """.trimIndent())
+        assertEquals("wawo", rule.apply(q.word("wowo").apply { stressedPhonemeIndex = 1 }, emptyRepo).text)
     }
 }

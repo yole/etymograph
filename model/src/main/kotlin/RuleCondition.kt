@@ -27,7 +27,8 @@ enum class ConditionType(
         "${Ordinals.toString(ord)} syllable"
     }),
     BeginningOfWord(LeafRuleCondition.beginningOfWord, phonemic = true, takesArgument = false),
-    EndOfWord(LeafRuleCondition.endOfWord, phonemic = true, takesArgument = false)
+    EndOfWord(LeafRuleCondition.endOfWord, phonemic = true, takesArgument = false),
+    SyllableIsStressed(LeafRuleCondition.syllableIsStressed, phonemic = true, takesArgument = false)
 }
 
 sealed class RuleCondition {
@@ -35,13 +36,13 @@ sealed class RuleCondition {
     open fun matches(word: Word): Boolean {
         val it = PhonemeIterator(word)
         while (true) {
-            if (matches(it)) return true
+            if (matches(word, it)) return true
             if (!it.advance()) break
         }
         return false
     }
 
-    abstract fun matches(phonemes: PhonemeIterator): Boolean
+    abstract fun matches(word: Word, phonemes: PhonemeIterator): Boolean
     abstract fun toEditableText(): String
 
     open fun findLeafConditions(type: ConditionType): List<LeafRuleCondition> {
@@ -116,11 +117,12 @@ class LeafRuleCondition(
         return stress.index >= expectedStressSyllable.startIndex && stress.index < expectedStressSyllable.endIndex
     }
 
-    override fun matches(phonemes: PhonemeIterator): Boolean {
+    override fun matches(word: Word, phonemes: PhonemeIterator): Boolean {
         return when (type) {
             ConditionType.PhonemeMatches -> matchPhoneme(phonemes)
             ConditionType.BeginningOfWord -> phonemes.atBeginning()
             ConditionType.EndOfWord -> phonemes.atEnd()
+            ConditionType.SyllableIsStressed -> word.calcStressedPhonemeIndex() == phonemes.index
             else -> throw IllegalStateException("Trying to use a word condition for matching phonemes")
         }
     }
@@ -153,6 +155,7 @@ class LeafRuleCondition(
         const val notPrefix = "not "
         const val beginningOfWord = "beginning of word"
         const val endOfWord = "end of word"
+        const val syllableIsStressed = "syllable is stressed"
         const val indefiniteArticle = "a "
 
         fun parse(buffer: ParseBuffer, language: Language): RuleCondition {
@@ -232,7 +235,7 @@ class SyllableRuleCondition(
         return false
     }
 
-    override fun matches(phonemes: PhonemeIterator): Boolean {
+    override fun matches(word: Word, phonemes: PhonemeIterator): Boolean {
         throw IllegalStateException("This condition is not phonemic")
     }
 
@@ -264,7 +267,7 @@ class RelativePhonemeRuleCondition(
 ) : RuleCondition() {
     override fun isPhonemic(): Boolean = true
 
-    override fun matches(phonemes: PhonemeIterator): Boolean {
+    override fun matches(word: Word, phonemes: PhonemeIterator): Boolean {
         val it = phonemes.clone()
         val canAdvance = if (targetPhonemeClass != null)
             it.advanceToClass(targetPhonemeClass, relativeIndex)
@@ -325,7 +328,7 @@ class OrRuleCondition(val members: List<RuleCondition>) : RuleCondition() {
 
     override fun matches(word: Word): Boolean = members.any { it.matches(word) }
 
-    override fun matches(phonemes: PhonemeIterator) = members.any { it.matches(phonemes) }
+    override fun matches(word: Word, phonemes: PhonemeIterator) = members.any { it.matches(word, phonemes) }
 
     override fun toEditableText(): String = members.joinToString(OR) {
         val et = it.toEditableText()
@@ -348,7 +351,7 @@ class AndRuleCondition(val members: List<RuleCondition>) : RuleCondition() {
 
     override fun matches(word: Word): Boolean = members.all { it.matches(word) }
 
-    override fun matches(phonemes: PhonemeIterator) = members.all { it.matches(phonemes) }
+    override fun matches(word: Word, phonemes: PhonemeIterator) = members.all { it.matches(word, phonemes) }
 
     override fun toEditableText(): String = members.joinToString(AND) {
         val et = it.toEditableText()
@@ -367,7 +370,7 @@ class AndRuleCondition(val members: List<RuleCondition>) : RuleCondition() {
 object OtherwiseCondition : RuleCondition() {
     override fun isPhonemic(): Boolean = false
     override fun matches(word: Word): Boolean = true
-    override fun matches(phonemes: PhonemeIterator) = true
+    override fun matches(word: Word, phonemes: PhonemeIterator) = true
     override fun toEditableText(): String = OTHERWISE
 
     const val OTHERWISE = "otherwise"
