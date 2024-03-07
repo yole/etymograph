@@ -156,6 +156,7 @@ class PhonemeIterator {
     }
 
     fun atBeginning(): Boolean = phonemeIndex == 0
+    fun atEnd(): Boolean = phonemeIndex == phonemes.size - 1
 
     fun findMatchInRange(start: Int, end: Int, phonemeClass: PhonemeClass): Int? {
         for (i in start until end) {

@@ -184,6 +184,16 @@ class RuleTest : QBaseTest() {
     }
 
     @Test
+    fun endOfWord() {
+        val rule = parseRule(ce, q, """
+            end of word and sound is 'i':
+            - new sound is 'e'
+        """.trimIndent())
+        assertEquals("limbe", rule.apply(ce.word("limbi"), emptyRepo).text)
+        assertEquals("end of word and sound is 'i'", rule.logic.branches[0].condition.toEditableText())
+    }
+
+    @Test
     fun syllableMatcher() {
         val condition = RuleCondition.parse(ParseBuffer("second to last syllable contains a long vowel"), q) as SyllableRuleCondition
         assertEquals(-2, condition.index)

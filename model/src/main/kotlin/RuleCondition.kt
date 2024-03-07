@@ -26,7 +26,8 @@ enum class ConditionType(
         }
         "${Ordinals.toString(ord)} syllable"
     }),
-    BeginningOfWord(LeafRuleCondition.beginningOfWord, phonemic = true, takesArgument = false)
+    BeginningOfWord(LeafRuleCondition.beginningOfWord, phonemic = true, takesArgument = false),
+    EndOfWord(LeafRuleCondition.endOfWord, phonemic = true, takesArgument = false)
 }
 
 sealed class RuleCondition {
@@ -119,6 +120,7 @@ class LeafRuleCondition(
         return when (type) {
             ConditionType.PhonemeMatches -> matchPhoneme(phonemes)
             ConditionType.BeginningOfWord -> phonemes.atBeginning()
+            ConditionType.EndOfWord -> phonemes.atEnd()
             else -> throw IllegalStateException("Trying to use a word condition for matching phonemes")
         }
     }
@@ -150,6 +152,7 @@ class LeafRuleCondition(
         const val stressIs = "stress is on "
         const val notPrefix = "not "
         const val beginningOfWord = "beginning of word"
+        const val endOfWord = "end of word"
         const val indefiniteArticle = "a "
 
         fun parse(buffer: ParseBuffer, language: Language): RuleCondition {

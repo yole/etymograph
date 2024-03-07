@@ -215,6 +215,7 @@ The following conditions can be used in phonological rules:
  * `<next|previous> <phoneme class> is:` Checks whether the next or previous phoneme of a given phoneme class
    matches the given phoneme or phoneme class. Examples: `next stop is voiceless`, `next vowel is 'a'`.
  * `beginning of word`: Checks whether the current phoneme is the first one in the word.
+ * `end of word`: Checks whether the current phoneme is the last one in the word.
 
 The following instructions can be used in phonological rules:
 
