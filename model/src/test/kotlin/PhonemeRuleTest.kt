@@ -179,4 +179,15 @@ class PhonemeRuleTest : QBaseTest() {
         """.trimIndent())
         assertEquals("sphin", rule.apply(q.word("spin"), emptyRepo).text)
     }
+
+    @Test
+    fun syllableIs() {
+        val rule = parseRule(q, q, """
+            syllable is second to last and sound is 'i' and next vowel is 'a':
+            - new sound is 'e'
+        """.trimIndent())
+        assertEquals("findela", rule.apply(q.word("findila"), emptyRepo).text)
+        val ruleCondition = rule.logic.branches[0].condition
+        assertEquals("syllable is second to last and sound is 'i' and next vowel is 'a'", ruleCondition.toEditableText())
+    }
 }

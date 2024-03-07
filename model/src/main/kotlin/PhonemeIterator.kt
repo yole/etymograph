@@ -37,8 +37,11 @@ object Ordinals : OrdinalTable(
         "third" to 3,
     )
 ) {
+    fun toAbsoluteIndex(index: Int, size: Int): Int =
+        if (index < 0) size + index else index - 1
+
     fun <T> at(items: List<T>, index: Int): T? {
-        return items.getOrNull(if (index < 0) items.size + index else index - 1)
+        return items.getOrNull(toAbsoluteIndex(index, items.size))
     }
 }
 

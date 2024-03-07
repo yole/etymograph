@@ -28,7 +28,12 @@ enum class ConditionType(
     }),
     BeginningOfWord(LeafRuleCondition.beginningOfWord, phonemic = true, takesArgument = false),
     EndOfWord(LeafRuleCondition.endOfWord, phonemic = true, takesArgument = false),
-    SyllableIsStressed(LeafRuleCondition.syllableIsStressed, phonemic = true, takesArgument = false)
+    SyllableIsStressed(LeafRuleCondition.syllableIsStressed, phonemic = true, takesArgument = false),
+    SyllableIndex(LeafRuleCondition.syllableIs, phonemic = true, parameterParseCallback = { buf, _ ->
+        val param = Ordinals.parse(buf)
+        if (param == null) throw RuleParseException("Invalid syllable index $param")
+        param.toString()
+    })
 }
 
 sealed class RuleCondition {
@@ -123,8 +128,21 @@ class LeafRuleCondition(
             ConditionType.BeginningOfWord -> phonemes.atBeginning()
             ConditionType.EndOfWord -> phonemes.atEnd()
             ConditionType.SyllableIsStressed -> word.calcStressedPhonemeIndex() == phonemes.index
+            ConditionType.SyllableIndex -> matchSyllableIndex(phonemes, word)
             else -> throw IllegalStateException("Trying to use a word condition for matching phonemes")
         }
+    }
+
+    private fun matchSyllableIndex(phonemes: PhonemeIterator, word: Word): Boolean {
+        val syllables = breakIntoSyllables(word)
+        if (syllables.isEmpty()) return false
+        val absIndex = Ordinals.toAbsoluteIndex(parameter!!.toInt(), syllables.size)
+        for ((i, s) in syllables.withIndex()) {
+            if (phonemes.index < s.endIndex) {
+                return i == absIndex
+            }
+        }
+        return false
     }
 
     private fun matchPhoneme(phonemes: PhonemeIterator) =
@@ -132,15 +150,23 @@ class LeafRuleCondition(
 
     override fun toEditableText(): String =
         if (type.takesArgument) {
-            val parameterName = if (type.parameterParseCallback != null)
-                parameter
-            else
-                phonemeClass?.name?.let { "a $it" } ?: "'$parameter'"
-
+            val parameterName = parameterToEditableText()
             type.condName + (if (negated) notPrefix else "") + parameterName
         }
         else
             type.condName
+
+    private fun parameterToEditableText(): String? {
+        if (type == ConditionType.SyllableIndex) {
+            return Ordinals.toString(parameter!!.toInt())
+        }
+
+        val parameterName = if (type.parameterParseCallback != null)
+            parameter
+        else
+            phonemeClass?.name?.let { "a $it" } ?: "'$parameter'"
+        return parameterName
+    }
 
     override fun findLeafConditions(type: ConditionType): List<LeafRuleCondition> {
         return if (type == this.type) listOf(this) else emptyList()
@@ -156,6 +182,7 @@ class LeafRuleCondition(
         const val beginningOfWord = "beginning of word"
         const val endOfWord = "end of word"
         const val syllableIsStressed = "syllable is stressed"
+        const val syllableIs = "syllable is "
         const val indefiniteArticle = "a "
 
         fun parse(buffer: ParseBuffer, language: Language): RuleCondition {
