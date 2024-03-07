@@ -210,6 +210,10 @@ The following conditions can be used in phonological rules:
 
  * `sound is`: Checks whether the current phoneme matches the given phoneme (enclosed in single quotes;
    for example, `sound is 'e'`) or phoneme class.
+ * `<next|previous> sound is`: Checks whether the next or previous sound matches the given phoneme or
+    phoneme class. Example: `next sound is 'a'`
+ * `<next|previous> <phoneme class> is:` Checks whether the next or previous phoneme of a given phoneme class
+   matches the given phoneme or phoneme class. Examples: `next stop is voiceless`, `next vowel is 'a'`.
  * `beginning of word`: Checks whether the current phoneme is the first one in the word.
 
 The following instructions can be used in phonological rules:
