@@ -170,6 +170,10 @@ The following conditions can be used in morphological rules:
    as a possible value for the 'gender' class of nouns).
  * `number of syllables is`: Checks whether the word has exactly the specified number of syllables
    (for example, `number of syllables is 2`) 
+ * `<ordinal> syllable contains`: Checks if the syllable with the specified ordinal number contains a given
+   substring or a phoneme of a given class. Example: `first syllable contains long vowel`
+ * `<ordinal> syllable ends with`: Checks if the syllable with the specified ordinal number ends with a given
+   substring or a phoneme of a given class. Example: `last syllable ends with voiceless consonant`
  * `stress is`: Checks whether the stress is on the given syllable (for example, `stress is on second to last syllable`)
 
 The following instructions can be used in morphological rules:
