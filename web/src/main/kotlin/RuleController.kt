@@ -120,16 +120,20 @@ class RuleController(val graphService: GraphService) {
             logic.branches.map { it.toViewModel(isUnconditional()) },
             links.map { RuleLinkViewModel(it.id, it.name) },
             if (!withExamples) emptyList() else graph.findRuleExamples(this).map { link ->
-                val fromWord = link.fromEntity as Word
-                val toWord = link.toEntity as Word
-                RuleExampleViewModel(
-                    fromWord.toRefViewModel(graph),
-                    toWord.toRefViewModel(graph),
-                    link.rules.fold(toWord) { w, r -> r.apply(w, graph) }.text
-                        .takeIf { !toWord.language.isNormalizedEqual(it, fromWord.text) },
-                    link.rules.map { RuleLinkViewModel(it.id, it.name) }
-                )
+                exampleToViewModel(link, graph)
             }
+        )
+    }
+
+    private fun exampleToViewModel(link: Link, graph: GraphRepository): RuleExampleViewModel {
+        val fromWord = link.fromEntity as Word
+        val toWord = link.toEntity as Word
+        return RuleExampleViewModel(
+            fromWord.toRefViewModel(graph),
+            toWord.toRefViewModel(graph),
+            link.rules.fold(toWord) { w, r -> r.apply(w, graph) }.text
+                .takeIf { !fromWord.language.isNormalizedEqual(it, fromWord.text) },
+            link.rules.map { RuleLinkViewModel(it.id, it.name) }
         )
     }
 
