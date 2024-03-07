@@ -170,4 +170,13 @@ class PhonemeRuleTest : QBaseTest() {
         """.trimIndent())
         assertEquals("wawo", rule.apply(q.word("wowo").apply { stressedPhonemeIndex = 1 }, emptyRepo).text)
     }
+
+    @Test
+    fun nextSoundIs() {
+        val rule = parseRule(q, q, """
+            beginning of word and sound is 's' and next sound is 'p':
+            - new next sound is 'ph'
+        """.trimIndent())
+        assertEquals("sphin", rule.apply(q.word("spin"), emptyRepo).text)
+    }
 }

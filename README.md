@@ -225,6 +225,7 @@ The following instructions can be used in phonological rules:
 
  * `no change`: Leaves the phoneme as is.
  * `new sound is`: Replaces the phoneme with another phoneme, specified in single quotes.
+ * `new next sound is`: Replaces the next phoneme with another phoneme, specified in single quotes.
  * `sound disappears`: Deletes the phoneme from the word.
  * `next sound disappears`: Deletes the next phoneme from the word.
  * `<old class> becomes <new class>`: Replaces the phoneme with a different phoneme which has the same set

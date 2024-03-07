@@ -15,6 +15,7 @@ enum class InstructionType(
     ApplyClass("mark word as", "mark word as (.*)", true),
     Disallow("disallow", "disallow", false),
     ChangeSound("new sound is", "new sound is '(.+)'", true),
+    ChangeNextSound("new next sound is", "new next sound is '(.+)'", true),
     ChangeSoundClass("becomes", "(previous\\s+|next\\s+)?(.+) becomes (.+)", true),
     SoundDisappears("sound disappears"),
     NextSoundDisappears("next sound disappears");
@@ -75,6 +76,7 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
     open fun apply(word: Word, phonemes: PhonemeIterator) {
         when (type) {
             InstructionType.ChangeSound -> phonemes.replace(arg)
+            InstructionType.ChangeNextSound -> phonemes.replaceAtRelative(1, arg)
             InstructionType.SoundDisappears -> phonemes.delete()
             InstructionType.NextSoundDisappears -> phonemes.deleteNext()
             InstructionType.NoChange -> Unit
