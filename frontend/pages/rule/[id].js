@@ -132,7 +132,15 @@ export default function Rule(params) {
                     {ex.toWord.gloss && ` "${ex.toWord.gloss}"`}
                     &nbsp;&rarr;&nbsp;
                     <WordLink word={ex.fromWord}/>
-                    {ex.allRules.length > 1 && " (" + ex.allRules.join(", ") + ")"}
+                    {ex.allRules.length > 1 && <>
+                        {' '}(
+                        {ex.allRules.map((rl, i) => <>
+                            {i > 0 && ", "}
+                            {rl.toRuleId !== rule.id && <Link href={`/rule/${rl.toRuleId}`}>{rl.toRuleName}</Link>}
+                            {rl.toRuleId === rule.id && rl.toRuleName}
+                        </>)}
+                        )
+                    </>}
                     {ex.expectedWord !== null && ex.expectedWord !== ex.fromWord && " [expected: " + ex.expectedWord + "]"}
                 </li>)}
             </ul>

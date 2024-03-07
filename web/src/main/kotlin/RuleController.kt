@@ -9,16 +9,16 @@ import ru.yole.etymograph.*
 class RuleController(val graphService: GraphService) {
     data class RuleBranchViewModel(val conditions: String, val instructions: List<String>)
 
+    data class RuleLinkViewModel(
+        val toRuleId: Int,
+        val toRuleName: String
+    )
+
     data class RuleExampleViewModel(
         val fromWord: WordRefViewModel,
         val toWord: WordRefViewModel,
         val expectedWord: String?,
-        val allRules: List<String>
-    )
-
-    data class RuleLinkViewModel(
-        val toRuleId: Int,
-        val toRuleName: String
+        val allRules: List<RuleLinkViewModel>
     )
 
     data class RuleViewModel(
@@ -127,7 +127,7 @@ class RuleController(val graphService: GraphService) {
                     toWord.toRefViewModel(graph),
                     link.rules.fold(toWord) { w, r -> r.apply(w, graph) }.text
                         .takeIf { !toWord.language.isNormalizedEqual(it, fromWord.text) },
-                    link.rules.map { it.name }
+                    link.rules.map { RuleLinkViewModel(it.id, it.name) }
                 )
             }
         )
