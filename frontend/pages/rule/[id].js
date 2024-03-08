@@ -128,6 +128,7 @@ export default function Rule(params) {
             <h3>Examples</h3>
             <ul>
                 {rule.examples.map(ex => <li>
+                    {ex.fromWord.language !== ex.toWord.language && `${ex.toWord.language} `}
                     <WordLink word={ex.toWord}/>
                     {ex.toWord.gloss && ` "${ex.toWord.gloss}"`}
                     &nbsp;&rarr;&nbsp;
