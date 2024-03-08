@@ -42,6 +42,7 @@ class Word(
     }
 
     val normalizedText: String get() = language.normalizeWord(text)
+    val normalized: Word get() = derive(normalizedText)
 
     fun derive(text: String, newSegment: WordSegment? = null, newClasses: List<String>? = null): Word {
         val sourceSegments = segments

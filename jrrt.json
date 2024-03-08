@@ -10092,6 +10092,49 @@
                     "refText": "https://eldamo.org/content/words/word-444400573.html"
                 }
             ]
+        },
+        {
+            "id": 1073,
+            "text": "ann",
+            "lang": "S",
+            "gloss": "gift",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "90; https://eldamo.org/content/words/word-1284836923.html"
+                }
+            ]
+        },
+        {
+            "id": 1074,
+            "text": "annā",
+            "lang": "CE",
+            "gloss": "gift",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "90"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-3729805313.html"
+                }
+            ]
+        },
+        {
+            "id": 1076,
+            "text": "aklara",
+            "lang": "CE",
+            "gloss": "glory",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-1779496437.html"
+                }
+            ]
         }
     ],
     "rules": [
@@ -15224,6 +15267,52 @@
             "notes": "",
             "preInstructions": [
             ]
+        },
+        {
+            "id": 1075,
+            "name": "s-voiceless-stops-after-vowels",
+            "fromLang": "S",
+            "toLang": "S",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSoundClass",
+                            "args": [
+                                "voiceless",
+                                "voiced",
+                                "0"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.AndRuleConditionData",
+                        "members": [
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "PhonemeMatches",
+                                "cls": "voiceless stop"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.RelativePhonemeRuleConditionData",
+                                "relativeIndex": -1,
+                                "negated": false,
+                                "cls": "vowel"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "addedCategories": null,
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-2240258959.html"
+                }
+            ],
+            "notes": "",
+            "preInstructions": [
+            ]
         }
     ],
     "links": [
@@ -16121,11 +16210,6 @@
         },
         {
             "from": 258,
-            "to": 123,
-            "type": ">"
-        },
-        {
-            "from": 259,
             "to": 123,
             "type": ">"
         },
@@ -18424,6 +18508,29 @@
                 1062,
                 1071
             ]
+        },
+        {
+            "from": 1073,
+            "to": 1074,
+            "type": ">",
+            "ruleIds": [
+                1064,
+                1062,
+                1059
+            ]
+        },
+        {
+            "from": 259,
+            "to": 1076,
+            "type": ">",
+            "ruleIds": [
+                1075
+            ]
+        },
+        {
+            "from": 1076,
+            "to": 123,
+            "type": ">"
         }
     ],
     "corpusTexts": [
@@ -20662,7 +20769,14 @@
                 1064,
                 1065,
                 1055,
-                1060
+                1060,
+                1066,
+                1070,
+                1067,
+                1062,
+                1075,
+                1059,
+                1071
             ]
         }
     ]

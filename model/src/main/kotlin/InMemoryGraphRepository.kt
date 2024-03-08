@@ -414,7 +414,7 @@ open class InMemoryGraphRepository : GraphRepository() {
     }
 
     override fun applyRuleSequence(link: Link, sequence: RuleSequence) {
-        var word = link.toEntity as Word
+        var word = (link.toEntity as Word).normalized
         val applicableRules = mutableListOf<Rule>()
         for (ruleRef in sequence.rules) {
             val rule = ruleRef.resolve()
