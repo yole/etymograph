@@ -378,7 +378,7 @@ fun parseRule(
     addedCategories, null, fromPOS, toPOS, emptyList(), null
 )
 
-private fun createParseContext(
+fun createParseContext(
     fromLanguage: Language,
     toLanguage: Language,
     repo: GraphRepository?

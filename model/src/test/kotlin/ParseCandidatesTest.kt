@@ -9,8 +9,7 @@ class ParseCandidatesTest : QBaseTest() {
     @Test
     fun parseCandidates() {
         val repo = repoWithQ()
-        val rule = parseRule(q, q, "- append 'llo'", name = "q-abl", addedCategories = ".ABL")
-        repo.addRule(rule)
+        val rule = repo.rule("- append 'llo'", name = "q-abl", addedCategories = ".ABL")
         val candidates = repo.findParseCandidates(q.word("hrestallo"))
         assertEquals(1, candidates.size)
         assertEquals("hresta", candidates[0].text)
@@ -21,9 +20,8 @@ class ParseCandidatesTest : QBaseTest() {
     @Test
     fun parseCandidatesWithWord() {
         val repo = repoWithQ()
-        val rule = parseRule(q, q, "- append 'llo'", name = "q-abl", addedCategories = ".ABL")
+        val rule = repo.rule("- append 'llo'", name = "q-abl", addedCategories = ".ABL")
         val hresta = repo.addWord("hresta")
-        repo.addRule(rule)
 
         val candidates = repo.findParseCandidates(q.word("hrestallo"))
         assertEquals(1, candidates.size)
@@ -37,10 +35,8 @@ class ParseCandidatesTest : QBaseTest() {
         val repo = repoWithQ()
         q.grammaticalCategories.add(WordCategory("Tense", listOf("V"),
             listOf(WordCategoryValue("Present", "PRES"), WordCategoryValue("Aorist", "AOR"))))
-        val presRule = parseRule(q, q, "- append 'a'", name = "q-pres", addedCategories = ".PRES")
-        val aorRule = parseRule(q, q, "- append 'i'", name = "q-aor", addedCategories = ".AOR")
-        repo.addRule(presRule)
-        repo.addRule(aorRule)
+        repo.rule("- append 'a'", name = "q-pres", addedCategories = ".PRES")
+        repo.rule("- append 'i'", name = "q-aor", addedCategories = ".AOR")
 
         val candidates = repo.findParseCandidates(q.word("oia"))
         assertEquals(1, candidates.size)
@@ -52,10 +48,8 @@ class ParseCandidatesTest : QBaseTest() {
         val repo = repoWithQ()
         q.grammaticalCategories.add(WordCategory("Tense", listOf("V"),
             listOf(WordCategoryValue("Present", "PRES"), WordCategoryValue("Aorist", "AOR"))))
-        val presRule = parseRule(q, q, "- append 'a'", name = "q-pres", addedCategories = ".PRES")
-        val aorRule = parseRule(q, q, "- append 'i'", name = "q-aor", addedCategories = ".AOR")
-        repo.addRule(presRule)
-        repo.addRule(aorRule)
+        repo.rule("- append 'a'", name = "q-pres", addedCategories = ".PRES")
+        repo.rule("- append 'i'", name = "q-aor", addedCategories = ".AOR")
 
         repo.addWord("oi", "be.PRES")
 
@@ -111,8 +105,7 @@ class ParseCandidatesTest : QBaseTest() {
     @Test
     fun normalizeCase() {
         val repo = repoWithQ()
-        val rule = parseRule(q, q, "- append 'llo'", name = "q-abl", addedCategories = ".ABL")
-        repo.addRule(rule)
+        repo.rule("- append 'llo'", name = "q-abl", addedCategories = ".ABL")
         val candidates = repo.findParseCandidates(q.word("Hrestallo"))
         assertEquals(1, candidates.size)
         assertEquals("Hresta", candidates[0].text)

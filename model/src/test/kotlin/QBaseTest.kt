@@ -37,4 +37,16 @@ open class QBaseTest {
     fun phoneme(sound: String, classes: String): Phoneme {
         return Phoneme(listOf(sound), classes.split(' ').toSet())
     }
+
+    fun GraphRepository.rule(
+        text: String,
+        fromLanguage: Language = q,
+        toLanguage: Language = q,
+        name: String = "q", addedCategories: String? = null
+    ): Rule {
+        return addRule(name, fromLanguage, toLanguage,
+            Rule.parseBranches(text, createParseContext(fromLanguage, toLanguage, this)),
+            addedCategories = addedCategories
+        )
+    }
 }
