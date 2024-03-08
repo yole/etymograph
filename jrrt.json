@@ -14716,6 +14716,18 @@
                         "cond": "NumberOfSyllables",
                         "characters": "1"
                     }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "NoChange",
+                            "args": [
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
                 }
             ],
             "addedCategories": null,
@@ -16101,7 +16113,10 @@
         {
             "from": 197,
             "to": 216,
-            "type": ">"
+            "type": ">",
+            "ruleIds": [
+                1075
+            ]
         },
         {
             "from": 143,
@@ -18524,6 +18539,7 @@
             "to": 1076,
             "type": ">",
             "ruleIds": [
+                1062,
                 1075
             ]
         },
