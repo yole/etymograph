@@ -324,7 +324,8 @@ fun linkToViewModel(
 fun suggestedSequences(graph: GraphRepository, link: Link): List<WordController.RuleSequenceViewModel> {
     if (link.type != Link.Derived || link.rules.isNotEmpty()) return emptyList()
     val word = link.fromEntity as Word
-    return graph.ruleSequencesForLanguage(word.language).map {
+    val baseWord = link.toEntity as Word
+    return graph.ruleSequencesForLanguage(word.language).filter { it.fromLanguage == baseWord.language }.map {
         WordController.RuleSequenceViewModel(it.name, it.id)
     }
 }
