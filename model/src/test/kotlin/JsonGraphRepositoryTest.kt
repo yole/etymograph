@@ -96,4 +96,21 @@ class JsonGraphRepositoryTest : QBaseTest() {
         val repo2 = repo.roundtrip()
         assertEquals(1, repo2.languageByShortName("Q")!!.phonemes.size)
     }
+
+    @Test
+    fun serializeRuleSequence() {
+        val repo = JsonGraphRepository(null)
+        repo.addLanguage(ce)
+        repo.addLanguage(q)
+        val rule = repo.addRule("i-disappears", ce, q,
+            Rule.parseBranches("""
+            sound is 'i' and previous sound is 'a':
+            - sound disappears
+        """.trimIndent(), q.parseContext(repo)))
+        repo.addRuleSequence("ce-to-q", ce, q, listOf(rule))
+        val repo2 = repo.roundtrip()
+        val sequences = repo2.ruleSequencesForLanguage(repo2.languageByShortName("Q")!!)
+        assertEquals(1, sequences.size)
+        assertEquals("i-disappears", sequences[0].rules[0].resolve().name)
+    }
 }

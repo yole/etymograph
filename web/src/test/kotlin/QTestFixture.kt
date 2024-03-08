@@ -3,8 +3,10 @@ package ru.yole.etymograph.web
 import ru.yole.etymograph.*
 
 class QTestFixture {
+    val ce = Language("Common Eldarin", "ce")
     val q = Language("Quenya", "q")
     val repo = InMemoryGraphRepository().apply {
+        addLanguage(ce)
         addLanguage(q)
     }
 

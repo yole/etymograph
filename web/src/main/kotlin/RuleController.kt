@@ -48,7 +48,11 @@ class RuleController(val graphService: GraphService) {
 
     data class RuleGroupViewModel(
         val groupName: String,
-        val rules: List<RuleViewModel>
+        val rules: List<RuleViewModel>,
+        val sequenceId: Int? = null,
+        val sequenceName: String? = null,
+        val sequenceFromLang: String? = null,
+        val sequenceToLang: String? = null
     )
 
     data class RuleListViewModel(
@@ -70,22 +74,38 @@ class RuleController(val graphService: GraphService) {
         val paradigms = graphService.graph.paradigmsForLanguage(language)
         val paradigmRules = paradigms.associate { it.name to it.collectAllRules() }
         val allParadigmRules = paradigmRules.values.flatten().toSet()
+        val ruleSeqMap = mutableMapOf<String, RuleSequence>()
 
         for (paradigmRule in paradigmRules.entries) {
             ruleGroups
                 .getOrPut("Grammar: ${paradigmRule.key}") { mutableListOf() }
-                .addAll(paradigmRule.value.map { it.toViewModel() })
+                .addAll(paradigmRule.value.map { it.toViewModel(false) })
+        }
+
+        val sequences = graphService.graph.ruleSequencesForLanguage(language)
+        val allSequenceRules = mutableSetOf<Rule>()
+        for (sequence in sequences) {
+            val groupName = "Phonetics: ${sequence.name}"
+            val group = ruleGroups.getOrPut(groupName) { mutableListOf() }
+            ruleSeqMap[groupName] = sequence
+            val rules = sequence.rules.map { it.resolve() }
+            allSequenceRules.addAll(rules)
+            group.addAll(rules.map { it.toViewModel(false) })
         }
 
         for (rule in graphService.graph.allRules().filter { it.toLanguage == language }) {
-            if (rule in allParadigmRules) continue
+            if (rule in allParadigmRules || rule in allSequenceRules) continue
             val categoryName = if (rule.isPhonemic()) "Phonetics" else "Grammar: Other"
             ruleGroups.getOrPut(categoryName) { mutableListOf() }.add(rule.toViewModel(false))
         }
 
         return RuleListViewModel(
             language.name,
-            ruleGroups.entries.map { RuleGroupViewModel(it.key, it.value) }
+            ruleGroups.entries.map {
+                val seq = ruleSeqMap[it.key]
+                RuleGroupViewModel(it.key, it.value, seq?.id, seq?.name,
+                    seq?.fromLanguage?.shortName, seq?.toLanguage?.shortName)
+            }
         )
     }
 
@@ -242,5 +262,41 @@ class RuleController(val graphService: GraphService) {
         val rule = graph.ruleById(id) ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST, "No rule with ID $id")
         graph.deleteRule(rule)
         graph.save()
+    }
+
+    data class UpdateSequenceParams(
+        val name: String,
+        val fromLang: String,
+        val toLang: String,
+        val ruleNames: String
+    )
+
+    @PostMapping("/rule/sequence", consumes = ["application/json"])
+    fun newSequence(@RequestBody params: UpdateSequenceParams) {
+        val graph = graphService.graph
+        val (fromLanguage, toLanguage, rules) = resolveUpdateSequenceParams(params)
+        graph.addRuleSequence(params.name, fromLanguage, toLanguage, rules)
+        graph.save()
+    }
+
+    private fun resolveUpdateSequenceParams(params: UpdateSequenceParams): Triple<Language, Language, List<Rule>> {
+        val fromLanguage = graphService.resolveLanguage(params.fromLang)
+        val toLanguage = graphService.resolveLanguage(params.toLang)
+        val rules = params.ruleNames.split('\n').filter { it.isNotBlank() }.map {
+            graphService.resolveRule(it.trim())
+        }
+        return Triple(fromLanguage, toLanguage, rules)
+    }
+
+    @PostMapping("/rule/sequence/{id}", consumes = ["application/json"])
+    fun updateSequence(@PathVariable id: Int, @RequestBody params: UpdateSequenceParams) {
+        val sequence = graphService.graph.langEntityById(id) as? RuleSequence
+            ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST, "No sequence with ID $id")
+        val (fromLanguage, toLanguage, rules) = resolveUpdateSequenceParams(params)
+        sequence.name = params.name
+        sequence.fromLanguage = fromLanguage
+        sequence.toLanguage = toLanguage
+        sequence.rules = rules.map { RuleRef.to(it) }
+        graphService.graph.save()
     }
 }

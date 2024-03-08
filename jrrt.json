@@ -20651,5 +20651,19 @@
             "lang": "Q",
             "ruleId": 1042
         }
+    ],
+    "ruleSequences": [
+        {
+            "id": 1072,
+            "name": "ce-to-s",
+            "fromLang": "CE",
+            "toLang": "S",
+            "ruleIds": [
+                1064,
+                1065,
+                1055,
+                1060
+            ]
+        }
     ]
 }

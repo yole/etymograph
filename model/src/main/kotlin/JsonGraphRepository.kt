@@ -140,6 +140,17 @@ data class RuleData(
 )
 
 @Serializable
+data class RuleSequenceData(
+    val id: Int,
+    val name: String,
+    @SerialName("fromLang") val fromLanguageShortName: String,
+    @SerialName("toLang") val toLanguageShortName: String,
+    val ruleIds: List<Int>,
+    val sourceRefs: List<SourceRefData>? = null,
+    val notes: String? = null,
+)
+
+@Serializable
 data class LinkData(
     @SerialName("from") val fromWordId: Int,
     @SerialName("to") val toWordId: Int,
@@ -235,7 +246,8 @@ data class GraphRepositoryData(
     val translations: List<TranslationData>,
     val grammaticalCategories: List<WordCategoryData>,
     val wordClasses: List<WordCategoryData>,
-    val phonotacticsRules: List<LanguageRuleData>? = null
+    val phonotacticsRules: List<LanguageRuleData>,
+    val ruleSequences: List<RuleSequenceData>? = null
 )
 
 class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
@@ -327,7 +339,13 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             },
             grammarCategoryData,
             wordClassData,
-            phonotacticsRuleData
+            phonotacticsRuleData,
+            allLangEntities.filterIsInstance<RuleSequence>().map { s ->
+                RuleSequenceData(
+                    s.id, s.name, s.fromLanguage.shortName, s.toLanguage.shortName,
+                    s.rules.map { it.resolve().id },
+                    s.source.sourceToSerializedFormat(), s.notes)
+            }
         )
     }
 
@@ -358,10 +376,8 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
         for (stressRuleData in data.stressRules) {
             languageByShortName(stressRuleData.languageShortName)!!.stressRule = ruleRef(this, stressRuleData.ruleId)
         }
-        data.phonotacticsRules?.let {
-            for (ruleData in it) {
-                languageByShortName(ruleData.languageShortName)!!.phonotacticsRule= ruleRef(this, ruleData.ruleId)
-            }
+        for (ruleData in data.phonotacticsRules) {
+            languageByShortName(ruleData.languageShortName)!!.phonotacticsRule= ruleRef(this, ruleData.ruleId)
         }
 
         for (syllableStructureData in data.syllableStructures) {
@@ -410,6 +426,19 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             )
             rules.add(addedRule)
             setLangEntity(rule.id, addedRule)
+        }
+        for (sequence in data.ruleSequences ?: emptyList()) {
+            val ruleSequence = RuleSequence(
+                sequence.id,
+                sequence.name,
+                languageByShortName(sequence.fromLanguageShortName)
+                    ?: throw IllegalStateException("Broken language ID reference ${sequence.fromLanguageShortName}"),
+                languageByShortName(sequence.toLanguageShortName)!!,
+                sequence.ruleIds.map { ruleRef(this, it) },
+                loadSource(sequence.sourceRefs),
+                sequence.notes
+            )
+            setLangEntity(ruleSequence.id, ruleSequence)
         }
         for (link in data.links) {
             val fromWord = allLangEntities[link.fromWordId]
@@ -643,7 +672,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             }
 
         private fun ruleRef(repo: InMemoryGraphRepository, ruleId: Int) =
-            RuleRef { repo.ruleById(ruleId)!! }
+            RuleRef { repo.ruleById(ruleId) ?: throw IllegalStateException("Broken rule ID reference $ruleId") }
     }
 }
 

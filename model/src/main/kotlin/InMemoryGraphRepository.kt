@@ -401,6 +401,18 @@ open class InMemoryGraphRepository : GraphRepository() {
         deleteLangEntity(rule)
     }
 
+    override fun addRuleSequence(name: String, fromLanguage: Language, toLanguage: Language, rules: List<Rule>): RuleSequence {
+        return RuleSequence(allLangEntities.size, name, fromLanguage, toLanguage,
+            rules.map { RuleRef.to(it) }, emptyList(), null
+        ).also {
+            allLangEntities.add(it)
+        }
+    }
+
+    override fun ruleSequencesForLanguage(language: Language): List<RuleSequence> {
+        return allLangEntities.filterIsInstance<RuleSequence>().filter { it.toLanguage == language }
+    }
+
     private fun mapOfWordsByText(
         language: Language,
         text: String

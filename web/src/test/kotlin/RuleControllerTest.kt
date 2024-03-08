@@ -81,4 +81,55 @@ class RuleControllerTest {
                 ))
         }
     }
+
+    @Test
+    fun newSequence() {
+        val fixture = QTestFixture()
+        val rule = fixture.graphService.graph.addRule("q-gen", fixture.q, fixture.q,
+            RuleLogic(emptyList(), emptyList()))
+
+        val ruleController = RuleController(fixture.graphService)
+        ruleController.newSequence(
+            RuleController.UpdateSequenceParams(
+                "ce-to-q",
+                "ce",
+                "q",
+                rule.name
+            )
+        )
+
+        val seq = fixture.graphService.graph.ruleSequencesForLanguage(fixture.q).single()
+
+        val ruleList = ruleController.rules("q")
+        assertEquals(1, ruleList.ruleGroups.size)
+        assertEquals("Phonetics: ce-to-q", ruleList.ruleGroups[0].groupName)
+        assertEquals(seq.id, ruleList.ruleGroups[0].sequenceId)
+    }
+
+    @Test
+    fun editSequence() {
+        val fixture = QTestFixture()
+        val graph = fixture.graphService.graph
+        val rule = graph.addRule("q-gen", fixture.q, fixture.q,
+            RuleLogic(emptyList(), emptyList()), ".GEN")
+        val seq = graph.addRuleSequence("ce-to-q", fixture.ce, fixture.q, listOf(rule))
+
+        val rule2 = graph.addRule("q-acc", fixture.q, fixture.q,
+            RuleLogic(emptyList(), emptyList()))
+
+        val ruleController = RuleController(fixture.graphService)
+        ruleController.updateSequence(
+            seq.id,
+            RuleController.UpdateSequenceParams(
+                "ce-to-q",
+                "ce",
+                "q",
+                "${rule.name}\n${rule2.name}"
+            )
+        )
+
+        val ruleList = ruleController.rules("q")
+        assertEquals(1, ruleList.ruleGroups.size)
+        assertEquals(2, ruleList.ruleGroups[0].rules.size)
+    }
 }

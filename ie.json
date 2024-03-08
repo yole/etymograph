@@ -6815,7 +6815,11 @@
             "id": 1183,
             "text": "Sköfnungr",
             "lang": "ON",
-            "pos": "NP"
+            "pos": "NP",
+            "classes": [
+                "m",
+                "strong"
+            ]
         },
         {
             "id": 1184,

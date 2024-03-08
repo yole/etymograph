@@ -174,7 +174,7 @@ class Rule(
         val gloss = word.glossOrNP()?.let { baseGloss ->
             applyCategories(baseGloss, segments?.any { it.sourceRule == this} == true)
         }
-        return Word(-1, text, language ?: word.language, gloss, pos = word.pos, classes = classes).also {
+        return Word(-1, text, language, gloss, pos = word.pos, classes = classes).also {
             it.stressedPhonemeIndex = stressIndex
             val sourceSegments = word.segments
             if (segments != null) {
@@ -240,6 +240,14 @@ class Rule(
         }
     }
 }
+
+class RuleSequence(
+    id: Int, var name: String,
+    var fromLanguage: Language,
+    var toLanguage: Language,
+    var rules: List<RuleRef>,
+    source: List<SourceRef>, notes: String?
+) : LangEntity(id, source, notes)
 
 fun parseCategoryValues(language: Language, categoryValues: String): List<Pair<WordCategory?, WordCategoryValue?>> {
     return categoryValues.split('.').filter { it.isNotEmpty() }.flatMap {

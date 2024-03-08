@@ -36,7 +36,28 @@ abstract class GraphRepository {
     abstract fun allRules(): Iterable<Rule>
     abstract fun ruleById(id: Int): Rule?
     abstract fun ruleByName(ruleName: String): Rule?
+    abstract fun addRule(
+        name: String,
+        fromLanguage: Language,
+        toLanguage: Language,
+        logic: RuleLogic,
+        addedCategories: String? = null,
+        replacedCategories: String? = null,
+        fromPOS: String? = null,
+        toPOS: String? = null,
+        source: List<SourceRef> = emptyList(),
+        notes: String? = null
+    ): Rule
     abstract fun deleteRule(rule: Rule)
+
+    abstract fun addRuleSequence(
+        name: String,
+        fromLanguage: Language,
+        toLanguage: Language,
+        rules: List<Rule>
+    ): RuleSequence
+
+    abstract fun ruleSequencesForLanguage(language: Language): List<RuleSequence>
 
     abstract fun findOrAddWord(
         text: String,
@@ -50,19 +71,6 @@ abstract class GraphRepository {
     ): Word
 
     abstract fun deleteWord(word: Word)
-
-    abstract fun addRule(
-        name: String,
-        fromLanguage: Language,
-        toLanguage: Language,
-        logic: RuleLogic,
-        addedCategories: String? = null,
-        replacedCategories: String? = null,
-        fromPOS: String? = null,
-        toPOS: String? = null,
-        source: List<SourceRef> = emptyList(),
-        notes: String? = null
-    ): Rule
 
     abstract fun addCorpusText(
         text: String,
