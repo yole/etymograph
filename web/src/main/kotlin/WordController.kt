@@ -26,12 +26,18 @@ fun Word.toRefViewModel(graph: GraphRepository) =
 
 @RestController
 class WordController(val graphService: GraphService) {
+    data class RuleSequenceViewModel(
+        val name: String,
+        val id: Int
+    )
+
     data class LinkWordViewModel(
         val word: WordRefViewModel,
         val ruleIds: List<Int>,
         val ruleNames: List<String>,
         val source: List<SourceRefViewModel>,
-        val sourceEditableText: String
+        val sourceEditableText: String,
+        val suggestedSequences: List<RuleSequenceViewModel>
     )
 
     data class LinkTypeViewModel(val typeId: String, val type: String, val words: List<LinkWordViewModel>)
@@ -128,7 +134,8 @@ class WordController(val graphService: GraphService) {
                             link.rules.map { it.id },
                             link.rules.map { it.name },
                             link.source.toViewModel(graph),
-                            link.source.toEditableText(graph)
+                            link.source.toEditableText(graph),
+                            suggestedSequences(link)
                         )
                     }
                 )
@@ -143,7 +150,8 @@ class WordController(val graphService: GraphService) {
                             link.rules.map { it.id },
                             link.rules.map { it.name },
                             link.source.toViewModel(graph),
-                            link.source.toEditableText(graph)
+                            link.source.toEditableText(graph),
+                            emptyList()
                         )
                     }
                 )
@@ -160,6 +168,14 @@ class WordController(val graphService: GraphService) {
             stressData?.length,
             graph.isCompound(this)
         )
+    }
+
+    private fun suggestedSequences(link: Link): List<RuleSequenceViewModel> {
+        if (link.type != Link.Derived || link.rules.isNotEmpty()) return emptyList()
+        val word = link.fromEntity as Word
+        return graphService.graph.ruleSequencesForLanguage(word.language).map {
+            RuleSequenceViewModel(it.name, it.id)
+        }
     }
 
     data class AddWordParameters(

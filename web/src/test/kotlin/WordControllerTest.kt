@@ -65,4 +65,22 @@ class WordControllerTest {
         wc.updateParadigm(elen.id, WordController.UpdateParadigmParameters(arrayOf(arrayOf(accRule.id, "elenna"))))
         assertEquals(elena, fixture.repo.wordsByText(fixture.q, "elenna").single())
     }
+
+    @Test
+    fun suggestSequence() {
+        val fixture = QTestFixture()
+        val graph = fixture.graphService.graph
+        val seq = fixture.setupRuleSequence()
+
+        val w1 = graph.findOrAddWord("am", fixture.ce, null)
+        val w2 = graph.findOrAddWord("an", fixture.q, null)
+        val link = graph.addLink(w2, w1, Link.Derived, emptyList(), emptyList(), null)
+
+        val wordController = WordController(fixture.graphService)
+        val wordViewModel = wordController.singleWordJson("q", "an", w2.id)
+        val linkTypeViewModel = wordViewModel.linksFrom.single()
+        val linkViewModel = linkTypeViewModel.words.single()
+        val seqViewModel = linkViewModel.suggestedSequences.single()
+        assertEquals(seq.name, seqViewModel.name)
+    }
 }

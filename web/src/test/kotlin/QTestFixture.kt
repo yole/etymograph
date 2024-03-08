@@ -32,4 +32,19 @@ class QTestFixture {
         paradigm.setRule(1, 0, listOf(accRule))
         return accRule
     }
+
+    fun setupRuleSequence(): RuleSequence {
+        RuleController(graphService).newRule(
+            RuleController.UpdateRuleParameters(
+                "q-final-consonant",
+                "q", "q",
+                "end of word and sound is 'm':\n- new sound is 'n'"
+            )
+        )
+        return graphService.graph.addRuleSequence(
+            "ce-to-q", ce, q,
+            listOf(graphService.graph.ruleByName("q-final-consonant")!!)
+        )
+    }
+
 }

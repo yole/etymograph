@@ -3,9 +3,7 @@ package ru.yole.etymograph.web
 import org.junit.Assert.*
 import org.junit.Test
 import org.springframework.web.server.ResponseStatusException
-import ru.yole.etymograph.WordCategory
-import ru.yole.etymograph.WordCategoryValue
-import ru.yole.etymograph.RuleLogic
+import ru.yole.etymograph.*
 
 class RuleControllerTest {
     @Test
@@ -111,7 +109,7 @@ class RuleControllerTest {
         val fixture = QTestFixture()
         val graph = fixture.graphService.graph
         val rule = graph.addRule("q-gen", fixture.q, fixture.q,
-            RuleLogic(emptyList(), emptyList()), ".GEN")
+            RuleLogic(emptyList(), emptyList()))
         val seq = graph.addRuleSequence("ce-to-q", fixture.ce, fixture.q, listOf(rule))
 
         val rule2 = graph.addRule("q-acc", fixture.q, fixture.q,
@@ -131,5 +129,19 @@ class RuleControllerTest {
         val ruleList = ruleController.rules("q")
         assertEquals(1, ruleList.ruleGroups.size)
         assertEquals(2, ruleList.ruleGroups[0].rules.size)
+    }
+
+    @Test
+    fun applySequence() {
+        val fixture = QTestFixture()
+        val graph = fixture.graphService.graph
+        val ruleController = RuleController(fixture.graphService)
+        val seq = fixture.setupRuleSequence()
+        val w1 = graph.findOrAddWord("am", fixture.ce, null)
+        val w2 = graph.findOrAddWord("an", fixture.q, null)
+        val link = graph.addLink(w2, w1, Link.Derived, emptyList(), emptyList(), null)
+
+        ruleController.applySequence(seq.id, RuleController.ApplySequenceParams(w2.id, w1.id))
+        assertEquals(1, link.rules.size)
     }
 }

@@ -76,6 +76,10 @@ export function updateRule(id, name, fromLang, toLang, addedCategories, replaced
         notes: notes})
 }
 
+export function deleteRule(id) {
+    return postToBackend(`rule/${id}/delete`, {})
+}
+
 export function addRuleSequence(name, fromLang, toLang, rules) {
     return postToBackend('rule/sequence', {
         name: name,
@@ -84,7 +88,6 @@ export function addRuleSequence(name, fromLang, toLang, rules) {
         ruleNames: rules
     })
 }
-
 
 export function updateRuleSequence(id, name, fromLang, toLang, rules) {
     return postToBackend('rule/sequence/' + id, {
@@ -95,8 +98,11 @@ export function updateRuleSequence(id, name, fromLang, toLang, rules) {
     })
 }
 
-export function deleteRule(id) {
-    return postToBackend(`rule/${id}/delete`, {})
+export function applyRuleSequence(seqId, fromWordId, toWordId) {
+    return postToBackend(`rule/sequence/${seqId}/apply`, {
+        linkFromId: fromWordId,
+        linkToId: toWordId
+    })
 }
 
 export function addCorpusText(lang, title, text, source, notes) {

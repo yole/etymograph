@@ -2,7 +2,17 @@ import {useEffect, useState} from "react";
 import WordForm from "@/components/WordForm";
 import WordWithStress from "@/components/WordWithStress";
 import WordLink from "@/components/WordLink";
-import {addLink, addWord, deleteLink, deleteWord, fetchBackend, allowEdit, updateLink, deleteCompound} from "@/api";
+import {
+    addLink,
+    addWord,
+    deleteLink,
+    deleteWord,
+    fetchBackend,
+    allowEdit,
+    updateLink,
+    deleteCompound,
+    applyRuleSequence
+} from "@/api";
 import Link from "next/link";
 import {useRouter} from "next/router";
 import SourceRefs from "@/components/SourceRefs";
@@ -58,6 +68,18 @@ function WordLinkComponent(params) {
         }
     }
 
+    function applySequenceClicked(seqId, fromWordId, toWordId) {
+        applyRuleSequence(seqId, fromWordId, toWordId)
+            .then((response) => {
+                if (response.status === 200) {
+                    params.router.replace(params.router.asPath)
+                }
+                else {
+                    response.json().then(r => setErrorText(r.message))
+                }
+            })
+    }
+
     function saveLink() {
         updateLink(baseWord.id, linkWord.word.id, params.linkType.typeId, ruleNames, source)
             .then((response) => {
@@ -88,12 +110,19 @@ function WordLinkComponent(params) {
                     (<button className="inlineButton" onClick={() => setEditMode(!editMode)}>edit</button>
                 </span>
             &nbsp;|&nbsp;<span className="inlineButtonLink">
-                    <button className="inlineButton" onClick={() => deleteLinkClicked()}>delete</button>)
+                    <button className="inlineButton" onClick={() => deleteLinkClicked()}>delete</button>
                 </span>
+            {linkWord.suggestedSequences.map(seq => <>
+                &nbsp;|&nbsp;<span className="inlineButtonLink">
+                    <button className="inlineButton" onClick={() => applySequenceClicked(seq.id, baseWord.id, linkWord.word.id)}>apply sequence {seq.name}</button>
+                </span>
+            </>)}
+            )
         </>}
         {editMode && <>
-            <table><tbody>
-            <tr>
+            <table>
+                <tbody>
+                <tr>
                 <td>Rule names:</td>
                 <td><input type="text" value={ruleNames} onChange={e => setRuleNames(e.target.value)}/></td>
             </tr>

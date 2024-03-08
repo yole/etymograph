@@ -413,6 +413,21 @@ open class InMemoryGraphRepository : GraphRepository() {
         return allLangEntities.filterIsInstance<RuleSequence>().filter { it.toLanguage == language }
     }
 
+    override fun applyRuleSequence(link: Link, sequence: RuleSequence) {
+        var word = link.toEntity as Word
+        val applicableRules = mutableListOf<Rule>()
+        for (ruleRef in sequence.rules) {
+            val rule = ruleRef.resolve()
+            val newWord = rule.apply(word, this)
+            if ('?' in newWord.text) return
+            if (newWord.text != word.text) {
+                applicableRules.add(rule)
+                word = newWord
+            }
+        }
+        link.rules = applicableRules
+    }
+
     private fun mapOfWordsByText(
         language: Language,
         text: String
