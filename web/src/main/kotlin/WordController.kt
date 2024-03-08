@@ -129,14 +129,7 @@ class WordController(val graphService: GraphService) {
                     it.key.id,
                     it.key.name,
                     it.value.filter { link -> link.toEntity is Word }.map { link ->
-                        val toWord = link.toEntity as Word
-                        LinkWordViewModel(toWord.toRefViewModel(graph),
-                            link.rules.map { it.id },
-                            link.rules.map { it.name },
-                            link.source.toViewModel(graph),
-                            link.source.toEditableText(graph),
-                            suggestedSequences(link)
-                        )
+                        linkToViewModel(link, graph, true)
                     }
                 )
             },
@@ -145,14 +138,7 @@ class WordController(val graphService: GraphService) {
                     it.key.id,
                     it.key.reverseName,
                     it.value.filter { link -> link.fromEntity is Word }.map { link ->
-                        val fromWord = link.fromEntity as Word
-                        LinkWordViewModel(fromWord.toRefViewModel(graph),
-                            link.rules.map { it.id },
-                            link.rules.map { it.name },
-                            link.source.toViewModel(graph),
-                            link.source.toEditableText(graph),
-                            emptyList()
-                        )
+                        linkToViewModel(link, graph, false)
                     }
                 )
             },
@@ -168,14 +154,6 @@ class WordController(val graphService: GraphService) {
             stressData?.length,
             graph.isCompound(this)
         )
-    }
-
-    private fun suggestedSequences(link: Link): List<RuleSequenceViewModel> {
-        if (link.type != Link.Derived || link.rules.isNotEmpty()) return emptyList()
-        val word = link.fromEntity as Word
-        return graphService.graph.ruleSequencesForLanguage(word.language).map {
-            RuleSequenceViewModel(it.name, it.id)
-        }
     }
 
     data class AddWordParameters(
@@ -324,6 +302,30 @@ class WordController(val graphService: GraphService) {
             }
         }
         graph.save()
+    }
+}
+
+fun linkToViewModel(
+    link: Link,
+    graph: GraphRepository,
+    fromSide: Boolean
+): WordController.LinkWordViewModel {
+    val toWord = if (fromSide) link.toEntity as Word else link.fromEntity as Word
+    return WordController.LinkWordViewModel(
+        toWord.toRefViewModel(graph),
+        link.rules.map { it.id },
+        link.rules.map { it.name },
+        link.source.toViewModel(graph),
+        link.source.toEditableText(graph),
+        if (fromSide) suggestedSequences(graph, link) else emptyList()
+    )
+}
+
+fun suggestedSequences(graph: GraphRepository, link: Link): List<WordController.RuleSequenceViewModel> {
+    if (link.type != Link.Derived || link.rules.isNotEmpty()) return emptyList()
+    val word = link.fromEntity as Word
+    return graph.ruleSequencesForLanguage(word.language).map {
+        WordController.RuleSequenceViewModel(it.name, it.id)
     }
 }
 

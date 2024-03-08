@@ -308,7 +308,8 @@ class RuleController(val graphService: GraphService) {
     )
 
     @PostMapping("/rule/sequence/{id}/apply", consumes = ["application/json"])
-    fun applySequence(@PathVariable id: Int, @RequestBody params: ApplySequenceParams) {
+    @ResponseBody
+    fun applySequence(@PathVariable id: Int, @RequestBody params: ApplySequenceParams): WordController.LinkWordViewModel {
         val sequence = resolveSequence(id)
         val fromEntity = graphService.resolveWord(params.linkFromId)
         val toEntity = graphService.resolveWord(params.linkToId)
@@ -317,5 +318,6 @@ class RuleController(val graphService: GraphService) {
             ?: badRequest("No Derived link from ${params.linkFromId} to ${params.linkToId}")
         graph.applyRuleSequence(link, sequence)
         graph.save()
+        return linkToViewModel(link, graph, true)
     }
 }

@@ -72,7 +72,14 @@ function WordLinkComponent(params) {
         applyRuleSequence(seqId, fromWordId, toWordId)
             .then((response) => {
                 if (response.status === 200) {
-                    params.router.replace(params.router.asPath)
+                    response.json().then(r => {
+                        if (r.ruleIds.size > 0) {
+                            params.router.replace(params.router.asPath)
+                        }
+                        else {
+                            setErrorText("No matching rules in this rule sequence")
+                        }
+                    })
                 }
                 else {
                     response.json().then(r => setErrorText(r.message))

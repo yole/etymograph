@@ -141,7 +141,8 @@ class RuleControllerTest {
         val w2 = graph.findOrAddWord("an", fixture.q, null)
         val link = graph.addLink(w2, w1, Link.Derived, emptyList(), emptyList(), null)
 
-        ruleController.applySequence(seq.id, RuleController.ApplySequenceParams(w2.id, w1.id))
+        val result = ruleController.applySequence(seq.id, RuleController.ApplySequenceParams(w2.id, w1.id))
+        assertEquals(1, result.ruleIds.size)
         assertEquals(1, link.rules.size)
     }
 }
