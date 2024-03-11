@@ -73,7 +73,7 @@ function WordLinkComponent(params) {
             .then((response) => {
                 if (response.status === 200) {
                     response.json().then(r => {
-                        if (r.ruleIds.size > 0) {
+                        if (r.ruleIds.length > 0) {
                             params.router.replace(params.router.asPath)
                         }
                         else {
