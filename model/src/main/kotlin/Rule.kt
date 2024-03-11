@@ -57,8 +57,13 @@ class RuleBranch(val condition: RuleCondition, val instructions: List<RuleInstru
                 instructions.joinToString("\n") { " - " + it.toEditableText() }
     }
 
-    fun toSummaryText(): String {
-        return instructions.joinToString("") { it.toSummaryText() }
+    fun toSummaryText(phonemic: Boolean): String? {
+        if (phonemic) {
+            val insn = instructions.singleOrNull() ?: return null
+            return insn.toSummaryText(condition)
+        }
+        val summaries = instructions.map { it.toSummaryText(condition) ?: return null }
+        return summaries.joinToString("")
     }
 
     companion object {
@@ -206,8 +211,13 @@ class Rule(
         logic.branches.size == 1 && logic.branches[0].condition is OtherwiseCondition && logic.preInstructions.isEmpty()
 
     fun toSummaryText(): String {
-        val summaries = logic.branches.map { it.toSummaryText() }.filter { it.isNotEmpty() }.toSet()
-        return summaries.joinToString("/")
+        val summaries = logic.branches.map { it.toSummaryText(isPhonemic()) }
+        if (summaries.any { it == null }) return ""
+        val filteredSummaries = summaries.filter { !it.isNullOrEmpty() }
+        if (isPhonemic()) {
+            return filteredSummaries.joinToString(", ")
+        }
+        return filteredSummaries.toSet().joinToString("/")
     }
 
     fun addedGrammaticalCategories(): List<WordCategory> {

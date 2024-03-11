@@ -35,6 +35,7 @@ class PhonemeRuleTest : QBaseTest() {
             """.trimIndent()
         )
         assertEquals("his", rule.apply(ce.word("khith"), emptyRepo).text)
+        assertEquals("'th' -> 's', 'kh' -> 'h'", rule.toSummaryText())
     }
 
     @Test
@@ -46,6 +47,7 @@ class PhonemeRuleTest : QBaseTest() {
             - new sound is 's'
         """.trimIndent())
         assertEquals("khs", rule.apply(ce.word("khithi"), emptyRepo).text)
+        assertEquals("'i' -> Ø, 'th' -> 's'", rule.toSummaryText())
     }
 
     @Test
@@ -57,6 +59,7 @@ class PhonemeRuleTest : QBaseTest() {
             - new sound is 'w'
         """.trimIndent())
         assertEquals("mawa", rule.apply(ce.word("mbaba"), emptyRepo).text)
+        assertEquals("'mb' -> 'm', 'b' -> 'w'", rule.toSummaryText())
     }
 
     @Test
@@ -66,6 +69,7 @@ class PhonemeRuleTest : QBaseTest() {
             - sound disappears
         """.trimIndent())
         assertEquals("khthi", rule.apply(ce.word("khithi"), emptyRepo).text)
+        assertEquals("'i' -> Ø after 'kh'", rule.toSummaryText())
     }
 
     @Test
@@ -75,6 +79,7 @@ class PhonemeRuleTest : QBaseTest() {
             - sound disappears
         """.trimIndent())
         assertEquals("khai", rule.apply(ce.word("khiai"), emptyRepo).text)
+        assertEquals("'i' -> Ø after not vowel", rule.toSummaryText())
     }
 
     @Test
@@ -106,6 +111,7 @@ class PhonemeRuleTest : QBaseTest() {
             - sound disappears
         """.trimIndent())
         assertEquals("khthis", rule.apply(ce.word("ikhthis"), emptyRepo).text)
+        assertEquals("'i' -> Ø before 'kh'", rule.toSummaryText())
     }
 
     @Test
@@ -137,6 +143,7 @@ class PhonemeRuleTest : QBaseTest() {
             - voiceless becomes voiced
         """.trimIndent())
         assertEquals("utubnu", rule.apply(q.word("utupnu"), emptyRepo).text)
+        assertEquals("voiceless -> voiced before nasal", rule.toSummaryText())
 
         val ruleInstruction = rule.logic.branches[0].instructions[0]
         assertEquals("voiceless becomes voiced", ruleInstruction.toEditableText())
@@ -178,6 +185,7 @@ class PhonemeRuleTest : QBaseTest() {
             - new next sound is 'ph'
         """.trimIndent())
         assertEquals("sphin", rule.apply(q.word("spin"), emptyRepo).text)
+        assertEquals("'sp' -> 'sph' at beginning of word", rule.toSummaryText())
     }
 
     @Test

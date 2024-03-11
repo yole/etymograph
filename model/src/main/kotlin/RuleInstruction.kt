@@ -86,9 +86,64 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
 
     open fun toEditableText(): String = type.pattern?.replace("(.+)", arg)?.replace("(.*)", arg) ?: type.insnName
 
-    open fun toSummaryText() = when(type) {
-        InstructionType.ChangeEnding -> if (arg.isNotEmpty()) "-$arg" else ""
+    open fun toSummaryText(condition: RuleCondition): String? = when(type) {
+        InstructionType.ChangeEnding ->
+            if (arg.isNotEmpty()) "-$arg" else ""
+        InstructionType.ChangeSound, InstructionType.ChangeNextSound,
+        InstructionType.SoundDisappears, InstructionType.NextSoundDisappears,
+        InstructionType.ChangeSoundClass ->
+            toSummaryTextPhonemic(condition)
         else -> ""
+    }
+
+    protected fun toSummaryTextPhonemic(condition: RuleCondition): String? {
+        val soundIs = condition.findLeafConditions(ConditionType.PhonemeMatches).singleOrNull() ?: return null
+        val soundIsParameter = soundIs.phonemeClass?.name ?: "'${soundIs.parameter}'"
+        var includeRelativePhoneme = true
+        val changeSummary = when (type) {
+            InstructionType.ChangeSound -> "$soundIsParameter -> '${arg}'"
+            InstructionType.ChangeSoundClass -> (this as ChangePhonemeClassInstruction).oldClass + " -> " + newClass
+            InstructionType.SoundDisappears -> "$soundIsParameter -> Ø"
+            InstructionType.ChangeNextSound, InstructionType.NextSoundDisappears -> summarizeNextSound(condition).also {
+                includeRelativePhoneme = false
+            }
+            else -> return null
+        }
+        val context = summarizeContext(condition, includeRelativePhoneme) ?: return null
+        return changeSummary + context
+    }
+
+    private fun summarizeNextSound(condition: RuleCondition): String? {
+        val soundIs = condition.findLeafConditions(ConditionType.PhonemeMatches).singleOrNull() ?: return null
+        if (soundIs.phonemeClass != null) return null
+        val nextPhonemeIs = condition.findLeafConditions { it is RelativePhonemeRuleCondition }.singleOrNull() as? RelativePhonemeRuleCondition
+            ?: return null
+        if (nextPhonemeIs.targetPhonemeClass != null || nextPhonemeIs.relativeIndex != 1) return null
+        val nextSound = if (type == InstructionType.NextSoundDisappears) "" else arg
+        return "'${soundIs.parameter}${nextPhonemeIs.parameter}' -> '${soundIs.parameter}$nextSound'"
+    }
+
+    private fun summarizeContext(condition: RuleCondition, includeRelativePhoneme: Boolean): String? {
+        val relativePhonemeContext = if (includeRelativePhoneme) summarizeRelativePhoneme(condition) else ""
+        val bow = condition.findLeafConditions(ConditionType.BeginningOfWord)
+        if (bow.any()) return "$relativePhonemeContext at beginning of word"
+        val eow = condition.findLeafConditions(ConditionType.EndOfWord)
+        if (eow.any()) return "$relativePhonemeContext at end of word"
+        return relativePhonemeContext
+    }
+
+    private fun summarizeRelativePhoneme(condition: RuleCondition): String? {
+        val relativePhoneme = condition.findLeafConditions { it is RelativePhonemeRuleCondition }
+            .singleOrNull() as? RelativePhonemeRuleCondition
+            ?: return ""
+        if (relativePhoneme.targetPhonemeClass != null) return null
+        val relativePhonemeParameter = relativePhoneme.matchPhonemeClass?.name ?: "'${relativePhoneme.parameter}'"
+        val negation = if (relativePhoneme.negated) "not " else ""
+        return when (relativePhoneme.relativeIndex) {
+            -1 -> " after $negation$relativePhonemeParameter"
+            1 -> " before $negation$relativePhonemeParameter"
+            else -> null
+        }
     }
 
     companion object {
@@ -156,7 +211,7 @@ class ApplyRuleInstruction(val ruleRef: RuleRef)
     override fun toEditableText(): String =
         InstructionType.ApplyRule.insnName + " '" + ruleRef.resolve().name + "'"
 
-    override fun toSummaryText(): String =
+    override fun toSummaryText(condition: RuleCondition): String =
         ruleRef.resolve().toSummaryText()
 }
 
@@ -247,11 +302,11 @@ class PrependAppendInstruction(type: InstructionType, language: Language, arg: S
         return emptyList()
     }
 
-    override fun toSummaryText(): String {
+    override fun toSummaryText(condition: RuleCondition): String? {
         if (literalArg != null) {
             return if (type == InstructionType.Prepend) "$literalArg-" else "-$literalArg"
         }
-        return super.toSummaryText()
+        return super.toSummaryText(condition)
     }
 }
 

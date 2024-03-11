@@ -50,9 +50,12 @@ sealed class RuleCondition {
     abstract fun matches(word: Word, phonemes: PhonemeIterator): Boolean
     abstract fun toEditableText(): String
 
-    open fun findLeafConditions(type: ConditionType): List<LeafRuleCondition> {
-        return emptyList()
+    open fun findLeafConditions(predicate: (RuleCondition) -> Boolean): List<RuleCondition> {
+        return if (predicate(this)) listOf(this) else emptyList()
     }
+
+    fun findLeafConditions(type: ConditionType): List<LeafRuleCondition> =
+        findLeafConditions { it is LeafRuleCondition && it.type == type }.filterIsInstance<LeafRuleCondition>()
 
     companion object {
         fun parse(buffer: ParseBuffer, language: Language): RuleCondition {
@@ -166,10 +169,6 @@ class LeafRuleCondition(
         else
             phonemeClass?.name?.let { "a $it" } ?: "'$parameter'"
         return parameterName
-    }
-
-    override fun findLeafConditions(type: ConditionType): List<LeafRuleCondition> {
-        return if (type == this.type) listOf(this) else emptyList()
     }
 
     companion object {
@@ -362,8 +361,8 @@ class OrRuleCondition(val members: List<RuleCondition>) : RuleCondition() {
         if (it is AndRuleCondition) "($et)" else et
     }
 
-    override fun findLeafConditions(type: ConditionType): List<LeafRuleCondition> {
-        return members.flatMap { it.findLeafConditions(type) }
+    override fun findLeafConditions(predicate: (RuleCondition) -> Boolean): List<RuleCondition> {
+        return members.flatMap { it.findLeafConditions(predicate) }
     }
 
     companion object {
@@ -385,8 +384,8 @@ class AndRuleCondition(val members: List<RuleCondition>) : RuleCondition() {
         if (it is OrRuleCondition) "($et)" else et
     }
 
-    override fun findLeafConditions(type: ConditionType): List<LeafRuleCondition> {
-        return members.flatMap { it.findLeafConditions(type) }
+    override fun findLeafConditions(predicate: (RuleCondition) -> Boolean): List<RuleCondition> {
+        return members.flatMap { it.findLeafConditions(predicate) }
     }
 
     companion object {
