@@ -207,4 +207,13 @@ class PhonemeRuleTest : QBaseTest() {
         """.trimIndent())
         assertEquals("'i' -> 'e' after 'a' or 'o'", rule.toSummaryText())
     }
+
+    @Test
+    fun summaryBeforeAfter() {
+        val rule = parseRule(q, q, """
+            sound is 'kh' and previous sound is vowel and next sound is 'th':
+            - new sound is 'i'
+        """.trimIndent())
+        assertEquals("'kh' -> 'i' after vowel before 'th'", rule.toSummaryText())
+    }
 }
