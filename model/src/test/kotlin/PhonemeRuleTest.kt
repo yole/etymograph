@@ -200,6 +200,15 @@ class PhonemeRuleTest : QBaseTest() {
     }
 
     @Test
+    fun syllableIsSummary() {
+        val rule = parseRule(q, q, """
+            syllable is second to last and sound is 'i' and next sound is 'a':
+            - new sound is 'e'
+        """.trimIndent())
+        assertEquals("'i' -> 'e' before 'a' in second to last syllable", rule.toSummaryText())
+    }
+
+    @Test
     fun summaryWithOr() {
         val rule = parseRule(q, q, """
             sound is 'i' and (previous sound is 'a' or previous sound is 'o'):
