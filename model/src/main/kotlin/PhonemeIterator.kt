@@ -164,6 +164,11 @@ class PhonemeIterator {
         phonemeIndex++
     }
 
+    fun insertBefore(s: String) {
+        resultPhonemes.add(resultPhonemeIndex, s)
+        resultPhonemeIndex++
+    }
+
     fun result(): String {
         return resultPhonemes.joinToString("")
     }

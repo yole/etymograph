@@ -216,4 +216,15 @@ class PhonemeRuleTest : QBaseTest() {
         """.trimIndent())
         assertEquals("'kh' -> 'i' after vowel before 'th'", rule.toSummaryText())
     }
+
+    @Test
+    fun soundIsInserted() {
+        val rule = parseRule(q, q, """
+            sound is a consonant and previous sound is a vowel and next sound is 'i':
+            - 'i' is inserted before
+            - next sound disappears
+        """.trimIndent())
+        assertEquals("eir", rule.apply(q.word("eri"), emptyRepo).text)
+        assertEquals("'i' is inserted before", rule.logic.branches[0].instructions[0].toEditableText())
+    }
 }
