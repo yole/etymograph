@@ -133,17 +133,22 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
     }
 
     private fun summarizeRelativePhoneme(condition: RuleCondition): String? {
-        val relativePhoneme = condition.findLeafConditions { it is RelativePhonemeRuleCondition }
-            .singleOrNull() as? RelativePhonemeRuleCondition
-            ?: return ""
-        if (relativePhoneme.targetPhonemeClass != null) return null
-        val relativePhonemeParameter = relativePhoneme.matchPhonemeClass?.name ?: "'${relativePhoneme.parameter}'"
-        val negation = if (relativePhoneme.negated) "not " else ""
-        return when (relativePhoneme.relativeIndex) {
-            -1 -> " after $negation$relativePhonemeParameter"
-            1 -> " before $negation$relativePhonemeParameter"
-            else -> null
+        val relativePhonemes = condition.findLeafConditions { it is RelativePhonemeRuleCondition }
+            .filterIsInstance<RelativePhonemeRuleCondition>()
+        if (relativePhonemes.isEmpty()) return ""
+        if (relativePhonemes.any { it.targetPhonemeClass != null }) return null
+        val relativePhonemeParameters = relativePhonemes.map {
+            val p = it.matchPhonemeClass?.name ?: "'${it.parameter}'"
+            val negation = if (it.negated) "not " else ""
+            "$negation$p"
         }
+        if (relativePhonemes.all { it.relativeIndex == -1 }) {
+            return " after ${relativePhonemeParameters.joinToString(" or ")}"
+        }
+        if (relativePhonemes.all { it.relativeIndex == 1 }) {
+            return " before ${relativePhonemeParameters.joinToString(" or ")}"
+        }
+        return null
     }
 
     companion object {

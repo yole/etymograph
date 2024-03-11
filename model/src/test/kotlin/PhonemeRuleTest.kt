@@ -198,4 +198,13 @@ class PhonemeRuleTest : QBaseTest() {
         val ruleCondition = rule.logic.branches[0].condition
         assertEquals("syllable is second to last and sound is 'i' and next vowel is 'a'", ruleCondition.toEditableText())
     }
+
+    @Test
+    fun summaryWithOr() {
+        val rule = parseRule(q, q, """
+            sound is 'i' and (previous sound is 'a' or previous sound is 'o'):
+            - new sound is 'e'
+        """.trimIndent())
+        assertEquals("'i' -> 'e' after 'a' or 'o'", rule.toSummaryText())
+    }
 }
