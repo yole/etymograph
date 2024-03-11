@@ -106,7 +106,14 @@ function WordLinkComponent(params) {
         <WordLink word={linkWord.word}/>
         {linkWord.word.gloss != null && ' "' + linkWord.word.gloss + '"' }
         {linkWord.ruleIds.length > 0 && <>&nbsp;(
-            {linkWord.ruleIds.map((ruleId, index) => <>
+            {linkWord.ruleResults.length > 0 && <>
+                {linkWord.word.text}
+                {linkWord.ruleIds.map((ruleId, index) => <>
+                    {' '}<Link href={`/rule/${ruleId}`} title={linkWord.ruleNames[index]}>{'>'}</Link>{' '}
+                    {linkWord.ruleResults[index]}
+                </>)}
+            </>}
+            {linkWord.ruleResults.length === 0 && linkWord.ruleIds.map((ruleId, index) => <>
                 {index > 0 && ", "}
                 <Link href={`/rule/${ruleId}`}>{linkWord.ruleNames[index]}</Link>
             </>)}

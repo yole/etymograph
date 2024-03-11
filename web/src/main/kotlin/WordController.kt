@@ -35,6 +35,7 @@ class WordController(val graphService: GraphService) {
         val word: WordRefViewModel,
         val ruleIds: List<Int>,
         val ruleNames: List<String>,
+        val ruleResults: List<String>,
         val source: List<SourceRefViewModel>,
         val sourceEditableText: String,
         val suggestedSequences: List<RuleSequenceViewModel>
@@ -315,10 +316,22 @@ fun linkToViewModel(
         toWord.toRefViewModel(graph),
         link.rules.map { it.id },
         link.rules.map { it.name },
+        buildIntermediateSteps(graph, link),
         link.source.toViewModel(graph),
         link.source.toEditableText(graph),
         if (fromSide) suggestedSequences(graph, link) else emptyList()
     )
+}
+
+fun buildIntermediateSteps(graph: GraphRepository, link: Link): List<String> {
+    if (link.type != Link.Derived || link.rules.size <= 1) return emptyList()
+    var word = link.toEntity as Word
+    val result = mutableListOf<String>()
+    for (rule in link.rules) {
+        word = rule.apply(word, graph)
+        result.add(word.text)
+    }
+    return result
 }
 
 fun suggestedSequences(graph: GraphRepository, link: Link): List<WordController.RuleSequenceViewModel> {
