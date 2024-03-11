@@ -48,7 +48,8 @@ object Ordinals : OrdinalTable(
 object RelativeOrdinals : OrdinalTable(
     listOf(
         "previous" to -1,
-        "next" to 1
+        "next" to 1,
+        "second next" to 2
     )
 )
 
