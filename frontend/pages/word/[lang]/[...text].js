@@ -107,7 +107,7 @@ function WordLinkComponent(params) {
         {linkWord.word.gloss != null && ' "' + linkWord.word.gloss + '"' }
         {linkWord.ruleIds.length > 0 && <>&nbsp;(
             {linkWord.ruleResults.length > 0 && <>
-                {linkWord.word.text}
+                {params.directionFrom ? linkWord.word.text : baseWord.text}
                 {linkWord.ruleIds.map((ruleId, index) => <>
                     {' '}<Link href={`/rule/${ruleId}`} title={linkWord.ruleNames[index]}>{'>'}</Link>{' '}
                     {linkWord.ruleResults[index]}
@@ -166,7 +166,8 @@ function CompoundRefComponent(params) {
 function WordLinkTypeComponent(params) {
     return params.links.map(l => <>
         <div>{l.type}</div>
-        {l.words.map(w => <WordLinkComponent key={w.id} baseWord={params.word} linkWord={w} linkType={l} router={params.router}/>)}
+        {l.words.map(w => <WordLinkComponent key={w.id} baseWord={params.word} linkWord={w} linkType={l}
+                                             router={params.router} directionFrom={params.directionFrom}/>)}
         <p/>
     </>)
 }
@@ -318,8 +319,8 @@ function SingleWord(params) {
             </p>
         }
 
-        <WordLinkTypeComponent word={word} links={word.linksFrom} router={router}/>
-        <WordLinkTypeComponent word={word} links={word.linksTo} router={router}/>
+        <WordLinkTypeComponent word={word} links={word.linksFrom} directionFrom={true} router={router}/>
+        <WordLinkTypeComponent word={word} links={word.linksTo} directionFrom={false} router={router}/>
 
         {word.compounds.length > 0 &&
             <>
