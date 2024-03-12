@@ -19,14 +19,14 @@ fun processParadigm(repo: GraphRepository, word: Word, paradigm: Paradigm, callb
     }
 }
 
-fun processParadigms(repo: JsonGraphRepository, callback: (Word, WordAlternative, Rule) -> Unit) {
+fun processParadigms(repo: JsonGraphRepository, callback: (Word, String, Rule) -> Unit) {
     for (language in repo.allLanguages()) {
         val paradigms = repo.paradigmsForLanguage(language)
         for (word in repo.dictionaryWords(language)) {
             val applicableParadigms = paradigms.filter { word.pos in it.pos }
             for (applicableParadigm in applicableParadigms) {
                 processParadigm(repo, word, applicableParadigm) { alt, rule ->
-                    callback(word, alt, rule)
+                    callback(word, alt.expectedWord.text, rule)
                 }
             }
         }
@@ -35,8 +35,8 @@ fun processParadigms(repo: JsonGraphRepository, callback: (Word, WordAlternative
 
 fun export(repo: JsonGraphRepository, outputPath: String) {
     Path.of(outputPath).outputStream().bufferedWriter().use { outWriter ->
-        processParadigms(repo) { word, alt, rule ->
-            outWriter.write("${word.id},${rule.name},${alt.expectedWord.text}\n")
+        processParadigms(repo) { word, expected, rule ->
+            outWriter.write("${word.id},${rule.name},${expected}\n")
         }
     }
 }
@@ -50,10 +50,10 @@ fun verify(repo: JsonGraphRepository, goldPath: String) {
         gold[Key(id.toInt(), ruleName)] = result
     }
 
-    processParadigms(repo) { word, alt, rule ->
+    processParadigms(repo) { word, expected, rule ->
         val goldWord = gold[Key(word.id, rule.name)]
-        if (goldWord != null && goldWord != alt.expectedWord.text) {
-            println("Changed result for rule ${rule.name} on word ${word.text}: previous $goldWord, now ${alt.expectedWord.text}")
+        if (goldWord != null && goldWord != expected) {
+            println("Changed result for rule ${rule.name} on word ${word.text}: previous $goldWord, now $expected")
         }
     }
 }
