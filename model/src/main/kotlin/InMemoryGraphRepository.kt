@@ -420,7 +420,7 @@ open class InMemoryGraphRepository : GraphRepository() {
             val rule = ruleRef.resolve()
             val newWord = rule.apply(word, this)
             if ('?' in newWord.text) return
-            if (newWord.text != word.text) {
+            if (!newWord.language.isNormalizedEqual(newWord, word)) {
                 applicableRules.add(rule)
                 word = newWord
             }

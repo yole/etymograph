@@ -134,10 +134,6 @@ class Language(val name: String, val shortName: String) {
         return normalizeWord(ruleProducedWord.asOrthographic().text) == normalizeWord(attestedWord.asOrthographic().text)
     }
 
-    fun isNormalizedEqual(ruleProducedWord: String, attestedWord: String): Boolean {
-        return normalizeWord(ruleProducedWord) == normalizeWord(attestedWord)
-    }
-
     fun findGrammaticalCategory(abbreviation: String): Pair<WordCategory, WordCategoryValue>? {
         return findWordCategory(abbreviation, grammaticalCategories)
     }
