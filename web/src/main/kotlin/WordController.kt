@@ -319,7 +319,7 @@ fun linkToViewModel(
         buildIntermediateSteps(graph, link),
         link.source.toViewModel(graph),
         link.source.toEditableText(graph),
-        if (fromSide) suggestedSequences(graph, link) else emptyList()
+        suggestedSequences(graph, link)
     )
 }
 
