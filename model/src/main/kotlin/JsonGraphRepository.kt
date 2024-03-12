@@ -26,7 +26,12 @@ data class WordData(
 )
 
 @Serializable
-data class PhonemeData(@SerialName("lang") val languageShortName: String, val graphemes: List<String>, val classes: List<String>)
+data class PhonemeData(
+    @SerialName("lang") val languageShortName: String,
+    val graphemes: List<String>,
+    val sound: String? = null,
+    val classes: List<String> = emptyList()
+)
 
 @Serializable
 data class DiphthongData(@SerialName("lang") val languageShortName: String, val diphthongs: List<String>)
@@ -286,7 +291,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
 
     private fun createGraphRepositoryData(): GraphRepositoryData {
         val phonemes = languages.values.flatMap { lang ->
-            lang.phonemes.map { PhonemeData(lang.shortName, it.graphemes, it.classes.toList()) }
+            lang.phonemes.map { PhonemeData(lang.shortName, it.graphemes, it.sound, it.classes.toList()) }
         }
         val diphthongData = languages.values.map { DiphthongData(it.shortName, it.diphthongs) }
         val stressRuleData = mapLanguageRules { lang -> lang.stressRule }
@@ -368,7 +373,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
         }
         for (phoneme in data.phonemes) {
             languageByShortName(phoneme.languageShortName)!!.phonemes +=
-                Phoneme(phoneme.graphemes, phoneme.classes.toSet())
+                Phoneme(phoneme.graphemes, phoneme.sound, phoneme.classes.toSet())
         }
         for (diphthongData in data.diphthongs) {
             languageByShortName(diphthongData.languageShortName)!!.diphthongs = diphthongData.diphthongs

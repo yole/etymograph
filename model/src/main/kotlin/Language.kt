@@ -32,7 +32,7 @@ class WordCategoryValue(val name: String, val abbreviation: String)
 
 class WordCategory(var name: String, var pos: List<String>, var values: List<WordCategoryValue>)
 
-class Phoneme(val graphemes: List<String>, val classes: Set<String>)
+class Phoneme(val graphemes: List<String>, val sound: String?, val classes: Set<String>)
 
 class Language(val name: String, val shortName: String) {
     var phonemes = listOf<Phoneme>()

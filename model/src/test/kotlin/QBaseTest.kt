@@ -3,13 +3,13 @@ package ru.yole.etymograph
 open class QBaseTest {
     val q = Language("Quenya", "Q").also {
         it.phonemes = listOf(
-            Phoneme(listOf("e", "ë"), setOf("vowel"))
+            Phoneme(listOf("e", "ë"), null, setOf("vowel"))
         ) + listOf("a", "o", "u", "i").map { p ->
-            Phoneme(listOf(p),setOf("vowel"))
+            Phoneme(listOf(p), null, setOf("vowel"))
         } + listOf("á", "ó", "ú", "í", "é").map { p ->
-            Phoneme(listOf(p), setOf("long", "vowel"))
+            Phoneme(listOf(p), null, setOf("long", "vowel"))
         } + listOf("c", "f", "h", "j", "l", "m", "q", "r", "s", "v", "w", "x", "z").map { p ->
-            Phoneme(listOf(p), setOf("consonant"))
+            Phoneme(listOf(p), null, setOf("consonant"))
         } + phoneme("p", "voiceless bilabial stop consonant") +
             phoneme("t", "voiceless alveolar stop consonant") +
             phoneme("b", "voiced bilabial stop consonant") +
@@ -24,8 +24,8 @@ open class QBaseTest {
 
     val ce = Language("Common Eldarin", "CE").also {
         it.phonemes = listOf(
-            Phoneme(listOf("kh"), setOf("voiceless", "consonant")),
-            Phoneme(listOf("th"), setOf("voiceless", "consonant"))
+            Phoneme(listOf("kh"), null, setOf("voiceless", "consonant")),
+            Phoneme(listOf("th"), null, setOf("voiceless", "consonant"))
         )
     }
     val emptyRepo = InMemoryGraphRepository()
@@ -38,7 +38,7 @@ open class QBaseTest {
     }
 
     fun phoneme(sound: String, classes: String): Phoneme {
-        return Phoneme(listOf(sound), classes.split(' ').toSet())
+        return Phoneme(listOf(sound), null, classes.split(' ').toSet())
     }
 
     fun GraphRepository.rule(
