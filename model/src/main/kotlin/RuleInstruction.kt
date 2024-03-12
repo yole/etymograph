@@ -19,7 +19,7 @@ enum class InstructionType(
     ChangeSoundClass("becomes", "(previous\\s+|next\\s+)?(.+) becomes (.+)", true),
     SoundDisappears("sound disappears"),
     NextSoundDisappears("next sound disappears"),
-    SoundInserted("is inserted", "'(.+)' is inserted before");
+    SoundInserted("is inserted", "'(.+)' is inserted before", true);
 
     val regex = Regex(pattern ?: Regex.escape(insnName))
 }
