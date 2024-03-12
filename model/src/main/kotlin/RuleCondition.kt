@@ -110,12 +110,18 @@ class LeafRuleCondition(
         return when (type) {
             ConditionType.EndsWith -> (phonemeClass?.let { PhonemeIterator(word).last in it.matchingPhonemes }
                 ?: word.text.trimEnd('-').endsWith(parameter!!)).negateIfNeeded()
-            ConditionType.NumberOfSyllables -> (breakIntoSyllables(word).size == parameter!!.toInt()).negateIfNeeded()
+            ConditionType.NumberOfSyllables -> matchNumberOfSyllables(word)
             ConditionType.StressIs -> matchStress(word).negateIfNeeded()
-            ConditionType.ClassMatches -> (parameter in word.classes).negateIfNeeded() || word.classes == listOf("*")
+            ConditionType.ClassMatches -> matchClass(word)
             else -> super.matches(word)
         }
     }
+
+    private fun matchNumberOfSyllables(word: Word) =
+        (breakIntoSyllables(word).size == parameter!!.toInt()).negateIfNeeded()
+
+    private fun matchClass(word: Word) =
+        (parameter in word.classes).negateIfNeeded() || word.classes == listOf("*")
 
     private fun matchStress(word: Word): Boolean {
         val (expectedIndex, _) = parameter?.let { Ordinals.parse(it) } ?: return false
@@ -132,7 +138,8 @@ class LeafRuleCondition(
             ConditionType.EndOfWord -> phonemes.atEnd()
             ConditionType.SyllableIsStressed -> word.calcStressedPhonemeIndex() == phonemes.index
             ConditionType.SyllableIndex -> matchSyllableIndex(phonemes, word)
-            ConditionType.ClassMatches -> (parameter in word.classes).negateIfNeeded() || word.classes == listOf("*")
+            ConditionType.ClassMatches -> matchClass(word)
+            ConditionType.NumberOfSyllables -> matchNumberOfSyllables(word)
             else -> throw IllegalStateException("Trying to use a word condition for matching phonemes")
         }
     }
