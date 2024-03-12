@@ -39,7 +39,9 @@ class Language(val name: String, val shortName: String) {
         set(value) {
             field = value
             updatePhonemeClasses()
+            updateGraphemes()
         }
+
     var diphthongs: List<String> = emptyList()
     var phonemeClasses = listOf<PhonemeClass>()
          private set
@@ -50,8 +52,10 @@ class Language(val name: String, val shortName: String) {
     var grammaticalCategories = mutableListOf<WordCategory>()
     var wordClasses = mutableListOf<WordCategory>()
 
-    val digraphs: List<String>
-        get() = phonemes.flatMap { it.graphemes }.filter { it.length > 1 }
+    var digraphs: Map<String, Phoneme> = emptyMap()
+        private set
+    var singleGraphemes: Map<Char, Phoneme> = emptyMap()
+        private set
 
     private fun updatePhonemeClasses() {
         val phonemeClassMap = mutableMapOf<String, MutableList<String>>()
@@ -65,6 +69,24 @@ class Language(val name: String, val shortName: String) {
         }
     }
 
+    private fun updateGraphemes() {
+        val digraphs = mutableMapOf<String, Phoneme>()
+        val singleGraphemes = mutableMapOf<Char, Phoneme>()
+
+        for (phoneme in phonemes) {
+            for (g in phoneme.graphemes) {
+                if (g.length > 1) {
+                    digraphs[g] = phoneme
+                }
+                else {
+                    singleGraphemes[g[0]] = phoneme
+                }
+            }
+        }
+        this.digraphs = digraphs
+        this.singleGraphemes = singleGraphemes
+    }
+
     fun phonemeClassByName(name: String): PhonemeClass? {
         if (' ' in name) {
             val subclassNames = name.split(' ')
@@ -74,14 +96,28 @@ class Language(val name: String, val shortName: String) {
         return phonemeClasses.find { it.name == name } ?: PhonemeClass.specialPhonemeClasses.find { it.name == name }
     }
 
-    fun normalizeWord(text: String): String {
-        return phonemes.filter { it.graphemes.size > 1 }.fold(text.lowercase(Locale.FRANCE)) { s, phoneme ->
-            normalizeGrapheme(s, phoneme)
-        }.removeSuffix("-")
+    fun iteratePhonemes(text: String, callback: (String, Phoneme?) -> Unit) {
+        var offset = 0
+        while (offset < text.length) {
+            val digraph = digraphs.keys.firstOrNull { text.startsWith(it, offset) }
+            if (digraph != null) {
+                callback(digraph, digraphs[digraph])
+                offset += digraph.length
+            }
+            else {
+                callback(text.substring(offset, offset + 1), singleGraphemes[text[offset]])
+                offset++
+            }
+        }
     }
 
-    private fun normalizeGrapheme(text: String, phoneme: Phoneme) =
-        phoneme.graphemes.drop(1).fold(text) { s, grapheme -> s.replace(grapheme, phoneme.graphemes.first()) }
+    fun normalizeWord(text: String): String {
+        return buildString {
+            iteratePhonemes(text.lowercase(Locale.FRANCE)) { s, phoneme ->
+                append(phoneme?.graphemes?.get(0) ?: s)
+            }
+        }.removeSuffix("-")
+    }
 
     fun isNormalizedEqual(ruleProducedWord: String, attestedWord: String): Boolean {
         return normalizeWord(ruleProducedWord) == normalizeWord(attestedWord)
