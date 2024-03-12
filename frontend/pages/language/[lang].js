@@ -26,13 +26,22 @@ export default function LanguageIndex(props) {
     const [syllableStructures, setSyllableStructures] = useState(lang.syllableStructures.join(", "))
     const [stressRule, setStressRule] = useState(lang.stressRuleName)
     const [phonotacticsRule, setPhonotacticsRule] = useState(lang.phonotacticsRuleName)
+    const [errorText, setErrorText] = useState("")
     const router = useRouter()
     useEffect(() => { document.title = "Etymograph : " + lang.name })
 
     function saveLanguage() {
         updateLanguage(langId, phonemes, diphthongs, syllableStructures, stressRule, phonotacticsRule, grammaticalCategories, wordClasses)
-            .then(() => router.replace(router.asPath))
-        setEditMode(false)
+            .then((r) => {
+                if (r.status === 200) {
+                    setErrorText("")
+                    setEditMode(false)
+                    router.replace(router.asPath)
+                }
+                else {
+                    r.json().then(r => setErrorText(r.message))
+                }
+            })
     }
 
     return <>
@@ -114,5 +123,6 @@ export default function LanguageIndex(props) {
            <button onClick={() => setEditMode(!editMode)}>{editMode ? "Cancel" : "Edit"}</button>
         }
         <p/>
+        {errorText !== "" && <div className="errorText">{errorText}</div>}
     </>
 }
