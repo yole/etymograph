@@ -132,6 +132,7 @@ class LeafRuleCondition(
             ConditionType.EndOfWord -> phonemes.atEnd()
             ConditionType.SyllableIsStressed -> word.calcStressedPhonemeIndex() == phonemes.index
             ConditionType.SyllableIndex -> matchSyllableIndex(phonemes, word)
+            ConditionType.ClassMatches -> (parameter in word.classes).negateIfNeeded() || word.classes == listOf("*")
             else -> throw IllegalStateException("Trying to use a word condition for matching phonemes")
         }
     }
