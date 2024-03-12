@@ -34,6 +34,41 @@ class WordCategory(var name: String, var pos: List<String>, var values: List<Wor
 
 class Phoneme(val graphemes: List<String>, val sound: String?, val classes: Set<String>)
 
+class PhonemeLookup {
+    private var digraphs = mutableMapOf<String, Phoneme>()
+    private var singleGraphemes = mutableMapOf<Char, Phoneme>()
+
+    fun clear() {
+        digraphs.clear()
+        singleGraphemes.clear()
+    }
+
+    fun add(key: String, phoneme: Phoneme) {
+        if (key.length > 1) {
+            digraphs[key] = phoneme
+        }
+        else {
+            singleGraphemes[key[0]] = phoneme
+        }
+    }
+
+    fun iteratePhonemes(text: String, callback: (String, Phoneme?) -> Unit) {
+        var offset = 0
+        while (offset < text.length) {
+
+            val digraph = digraphs.keys.firstOrNull { text.startsWith(it, offset) }
+            if (digraph != null) {
+                callback(digraph, digraphs[digraph])
+                offset += digraph.length
+            }
+            else {
+                callback(text.substring(offset, offset + 1), singleGraphemes[text[offset]])
+                offset++
+            }
+        }
+    }
+}
+
 class Language(val name: String, val shortName: String) {
     var phonemes = listOf<Phoneme>()
         set(value) {
@@ -52,10 +87,8 @@ class Language(val name: String, val shortName: String) {
     var grammaticalCategories = mutableListOf<WordCategory>()
     var wordClasses = mutableListOf<WordCategory>()
 
-    var digraphs: Map<String, Phoneme> = emptyMap()
-        private set
-    var singleGraphemes: Map<Char, Phoneme> = emptyMap()
-        private set
+    var orthoPhonemeLookup = PhonemeLookup()
+    var phonoPhonemeLookup = PhonemeLookup()
 
     private fun updatePhonemeClasses() {
         val phonemeClassMap = mutableMapOf<String, MutableList<String>>()
@@ -70,21 +103,14 @@ class Language(val name: String, val shortName: String) {
     }
 
     private fun updateGraphemes() {
-        val digraphs = mutableMapOf<String, Phoneme>()
-        val singleGraphemes = mutableMapOf<Char, Phoneme>()
-
+        orthoPhonemeLookup.clear()
+        phonoPhonemeLookup.clear()
         for (phoneme in phonemes) {
             for (g in phoneme.graphemes) {
-                if (g.length > 1) {
-                    digraphs[g] = phoneme
-                }
-                else {
-                    singleGraphemes[g[0]] = phoneme
-                }
+                orthoPhonemeLookup.add(g, phoneme)
             }
+            phonoPhonemeLookup.add(phoneme.sound ?: phoneme.graphemes[0], phoneme)
         }
-        this.digraphs = digraphs
-        this.singleGraphemes = singleGraphemes
     }
 
     fun phonemeClassByName(name: String): PhonemeClass? {
@@ -96,24 +122,9 @@ class Language(val name: String, val shortName: String) {
         return phonemeClasses.find { it.name == name } ?: PhonemeClass.specialPhonemeClasses.find { it.name == name }
     }
 
-    fun iteratePhonemes(text: String, callback: (String, Phoneme?) -> Unit) {
-        var offset = 0
-        while (offset < text.length) {
-            val digraph = digraphs.keys.firstOrNull { text.startsWith(it, offset) }
-            if (digraph != null) {
-                callback(digraph, digraphs[digraph])
-                offset += digraph.length
-            }
-            else {
-                callback(text.substring(offset, offset + 1), singleGraphemes[text[offset]])
-                offset++
-            }
-        }
-    }
-
     fun normalizeWord(text: String): String {
         return buildString {
-            iteratePhonemes(text.lowercase(Locale.FRANCE)) { s, phoneme ->
+            orthoPhonemeLookup.iteratePhonemes(text.lowercase(Locale.FRANCE)) { s, phoneme ->
                 append(phoneme?.graphemes?.get(0) ?: s)
             }
         }.removeSuffix("-")

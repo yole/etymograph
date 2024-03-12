@@ -44,13 +44,36 @@ class Word(
     val normalizedText: String get() = language.normalizeWord(text)
     val normalized: Word get() = derive(normalizedText)
 
-    fun derive(text: String, newSegment: WordSegment? = null, newClasses: List<String>? = null): Word {
+    var isPhonemic: Boolean = false
+
+    fun asPhonemic(): Word {
+        if (isPhonemic) return this
+        val phonemicText = buildString {
+            language.orthoPhonemeLookup.iteratePhonemes(text) { s, phoneme ->
+                append(phoneme?.sound ?: s)
+            }
+        }
+        return derive(phonemicText, phonemic = true)
+    }
+
+    fun asOrthographic(): Word {
+        if (!isPhonemic) return this
+        val orthoText = buildString {
+            language.phonoPhonemeLookup.iteratePhonemes(text) { s, phoneme ->
+                append(phoneme?.graphemes?.get(0) ?: s)
+            }
+        }
+        return derive(orthoText, phonemic = false)
+    }
+
+    fun derive(text: String, newSegment: WordSegment? = null, newClasses: List<String>? = null, phonemic: Boolean? = false): Word {
         val sourceSegments = segments
-        return if (this.text == text && newClasses == null)
+        return if (this.text == text && newClasses == null && phonemic == null)
             this
         else
             Word(-1, text, language, gloss, fullGloss, pos, newClasses ?: classes).apply {
                 segments = appendSegments(sourceSegments, newSegment)
+                phonemic?.let { isPhonemic = it }
             }
     }
 

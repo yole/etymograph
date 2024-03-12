@@ -75,11 +75,11 @@ class PhonemeIterator {
     private var phonemeIndex = 0
     private var resultPhonemeIndex = 0
 
-    constructor(word: Word) : this(word.normalizedText.trimEnd('-'), word.language)
+    constructor(word: Word) : this(word.normalizedText.trimEnd('-'), word.language, word.isPhonemic)
 
-    constructor(text: String, language: Language) {
+    constructor(text: String, language: Language, phonemic: Boolean = false) {
         this.language = language
-        phonemes = splitPhonemes(text)
+        phonemes = splitPhonemes(text, phonemic)
         resultPhonemes = phonemes.toMutableList()
     }
 
@@ -190,9 +190,13 @@ class PhonemeIterator {
         return phonemes.subList(0, phonemeIndex).sumOf { it.length }
     }
 
-    private fun splitPhonemes(text: String): List<String> {
+    private fun splitPhonemes(text: String, phonemic: Boolean): List<String> {
         val result = mutableListOf<String>()
-        language.iteratePhonemes(text) { phonemeText, phoneme -> result.add(phoneme?.graphemes?.first() ?: phonemeText)}
+        val lookup = if (phonemic) language.phonoPhonemeLookup else language.orthoPhonemeLookup
+        lookup.iteratePhonemes(text) { phonemeText, phoneme ->
+            val normalizedText = if (phonemic) phoneme?.sound else phoneme?.graphemes?.first()
+            result.add(normalizedText ?: phonemeText)
+        }
         return result
     }
 }
