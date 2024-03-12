@@ -520,6 +520,16 @@
         {
             "lang": "S",
             "graphemes": [
+                "ǭ"
+            ],
+            "classes": [
+                "long",
+                "vowel"
+            ]
+        },
+        {
+            "lang": "S",
+            "graphemes": [
                 "u",
                 "ü"
             ],
@@ -656,6 +666,7 @@
             "graphemes": [
                 "dh"
             ],
+            "sound": "ð",
             "classes": [
                 "voiced",
                 "dental",
@@ -666,7 +677,8 @@
         {
             "lang": "S",
             "graphemes": [
-                "f"
+                "f",
+                "ph"
             ],
             "classes": [
                 "voiceless",
@@ -692,6 +704,7 @@
             "graphemes": [
                 "gh"
             ],
+            "sound": "ɣ",
             "classes": [
                 "voiced",
                 "velar",
@@ -705,6 +718,7 @@
                 "c",
                 "k"
             ],
+            "sound": "k",
             "classes": [
                 "voiceless",
                 "velar",
@@ -715,8 +729,10 @@
         {
             "lang": "S",
             "graphemes": [
+                "ch",
                 "kh"
             ],
+            "sound": "x",
             "classes": [
                 "voiceless",
                 "uvular",
@@ -765,6 +781,18 @@
         {
             "lang": "S",
             "graphemes": [
+                "ñ"
+            ],
+            "sound": "ŋ",
+            "classes": [
+                "voiced",
+                "nasal",
+                "consonant"
+            ]
+        },
+        {
+            "lang": "S",
+            "graphemes": [
                 "p"
             ],
             "classes": [
@@ -804,10 +832,44 @@
             "graphemes": [
                 "th"
             ],
+            "sound": "θ",
             "classes": [
                 "voiceless",
                 "dental",
                 "fricative",
+                "consonant"
+            ]
+        },
+        {
+            "lang": "S",
+            "graphemes": [
+                "kʰ"
+            ],
+            "classes": [
+                "aspirated",
+                "velar",
+                "consonant"
+            ]
+        },
+        {
+            "lang": "S",
+            "graphemes": [
+                "tʰ"
+            ],
+            "classes": [
+                "aspirated",
+                "alveolar",
+                "consonant"
+            ]
+        },
+        {
+            "lang": "S",
+            "graphemes": [
+                "pʰ"
+            ],
+            "classes": [
+                "aspirated",
+                "bilabial",
                 "consonant"
             ]
         },
@@ -864,6 +926,16 @@
                 "close-mid",
                 "back",
                 "rounded",
+                "vowel"
+            ]
+        },
+        {
+            "lang": "CE",
+            "graphemes": [
+                "ǭ"
+            ],
+            "classes": [
+                "long",
                 "vowel"
             ]
         },
@@ -956,7 +1028,9 @@
             "graphemes": [
                 "kh"
             ],
+            "sound": "kʰ",
             "classes": [
+                "aspirated",
                 "consonant"
             ]
         },
@@ -965,7 +1039,9 @@
             "graphemes": [
                 "th"
             ],
+            "sound": "tʰ",
             "classes": [
+                "aspirated",
                 "consonant"
             ]
         },
@@ -974,7 +1050,9 @@
             "graphemes": [
                 "ph"
             ],
+            "sound": "pʰ",
             "classes": [
+                "aspirated",
                 "consonant"
             ]
         },
@@ -1055,6 +1133,7 @@
             "graphemes": [
                 "ñ"
             ],
+            "sound": "ŋ",
             "classes": [
                 "voiced",
                 "velar",
@@ -1084,6 +1163,16 @@
                 "alveolar",
                 "stop",
                 "consonant"
+            ]
+        },
+        {
+            "lang": "CE",
+            "graphemes": [
+                "y"
+            ],
+            "sound": "j",
+            "classes": [
+                "semivowel"
             ]
         }
     ],
@@ -10315,7 +10404,7 @@
         },
         {
             "id": 1089,
-            "text": "julmā",
+            "text": "yulmā",
             "lang": "CE",
             "gloss": "drinking vessel",
             "pos": "N",
@@ -10455,6 +10544,9 @@
             "lang": "CE",
             "gloss": "cast shadow",
             "pos": "N",
+            "classes": [
+                "initial-s-syllabic"
+            ],
             "sourceRefs": [
                 {
                     "pubId": 1,
@@ -10463,6 +10555,223 @@
                 {
                     "pubId": null,
                     "refText": "https://eldamo.org/content/words/word-2533624585.html"
+                }
+            ]
+        },
+        {
+            "id": 1112,
+            "text": "dîr",
+            "lang": "S",
+            "gloss": "difficult",
+            "pos": "ADJ",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "154"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-2853268099.html"
+                }
+            ]
+        },
+        {
+            "id": 1113,
+            "text": "dērā",
+            "lang": "CE",
+            "gloss": "difficult",
+            "pos": "ADJ",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "154"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-1636916521.html"
+                }
+            ]
+        },
+        {
+            "id": 1115,
+            "text": "têw",
+            "lang": "S",
+            "gloss": "letter",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "43"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-696039073.html"
+                }
+            ]
+        },
+        {
+            "id": 1116,
+            "text": "tekmā",
+            "lang": "CE",
+            "gloss": "letter",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "43"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-594113779.html"
+                }
+            ]
+        },
+        {
+            "id": 1118,
+            "text": "teñmā",
+            "lang": "CE",
+            "gloss": "letter",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": 4,
+                    "refText": "149"
+                }
+            ]
+        },
+        {
+            "id": 1122,
+            "text": "arātā",
+            "lang": "CE",
+            "gloss": "high, lofty, noble",
+            "pos": "ADJ",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "PM:363"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-3106778397.html"
+                }
+            ]
+        },
+        {
+            "id": 1123,
+            "text": "arod",
+            "lang": "S",
+            "gloss": "noble",
+            "pos": "ADJ",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "39"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-876008275.html"
+                }
+            ]
+        },
+        {
+            "id": 1127,
+            "text": "fela",
+            "lang": "S",
+            "gloss": "mine",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "118"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-3229814977.html"
+                }
+            ]
+        },
+        {
+            "id": 1128,
+            "text": "phelgā",
+            "lang": "CE",
+            "gloss": "mine",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "118"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-652207345.html"
+                }
+            ]
+        },
+        {
+            "id": 1130,
+            "text": "rî",
+            "lang": "S",
+            "gloss": "wreath",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "PM:347"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-2239255549.html"
+                }
+            ]
+        },
+        {
+            "id": 1131,
+            "text": "rīgā",
+            "lang": "CE",
+            "gloss": "wreath",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "PM:347"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-237977647.html"
+                }
+            ]
+        },
+        {
+            "id": 1133,
+            "text": "thû",
+            "lang": "S",
+            "gloss": "horrible darkness, black mist",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "183"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-2950002373.html"
+                }
+            ]
+        },
+        {
+            "id": 1134,
+            "text": "thūsē",
+            "lang": "CE",
+            "gloss": "horrible darkness, black mist",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "183"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-1260484391.html"
                 }
             ]
         }
@@ -14963,7 +15272,7 @@
                             {
                                 "type": "ru.yole.etymograph.LeafRuleConditionData",
                                 "cond": "PhonemeMatches",
-                                "characters": "ñ"
+                                "characters": "ŋ"
                             },
                             {
                                 "type": "ru.yole.etymograph.RelativePhonemeRuleConditionData",
@@ -14982,7 +15291,6 @@
                     "refText": "https://eldamo.org/content/words/word-3057844573.html"
                 }
             ],
-            "notes": "",
             "preInstructions": [
             ]
         },
@@ -15227,7 +15535,7 @@
                         {
                             "type": "ChangeNextSound",
                             "args": [
-                                "f"
+                                "ɸ"
                             ]
                         }
                     ],
@@ -15257,7 +15565,7 @@
                         {
                             "type": "ChangeNextSound",
                             "args": [
-                                "th"
+                                "θ"
                             ]
                         }
                     ],
@@ -15287,7 +15595,7 @@
                         {
                             "type": "ChangeNextSound",
                             "args": [
-                                "kh"
+                                "x"
                             ]
                         }
                     ],
@@ -15320,7 +15628,6 @@
                     "refText": "https://eldamo.org/content/words/word-798037075.html"
                 }
             ],
-            "notes": "",
             "preInstructions": [
             ]
         },
@@ -15357,19 +15664,19 @@
                                         "type": "ru.yole.etymograph.RelativePhonemeRuleConditionData",
                                         "relativeIndex": 1,
                                         "negated": false,
-                                        "parameter": "f"
+                                        "parameter": "ɸ"
                                     },
                                     {
                                         "type": "ru.yole.etymograph.RelativePhonemeRuleConditionData",
                                         "relativeIndex": 1,
                                         "negated": false,
-                                        "parameter": "th"
+                                        "parameter": "θ"
                                     },
                                     {
                                         "type": "ru.yole.etymograph.RelativePhonemeRuleConditionData",
                                         "relativeIndex": 1,
                                         "negated": false,
-                                        "parameter": "kh"
+                                        "parameter": "x"
                                     }
                                 ]
                             }
@@ -15384,7 +15691,6 @@
                     "refText": "https://eldamo.org/content/words/word-3841187313.html"
                 }
             ],
-            "notes": "",
             "preInstructions": [
             ]
         },
@@ -15507,7 +15813,7 @@
                         {
                             "type": "ChangeSound",
                             "args": [
-                                "dh"
+                                "ð"
                             ]
                         }
                     ],
@@ -15533,7 +15839,7 @@
                         {
                             "type": "ChangeSound",
                             "args": [
-                                "gh"
+                                "ɣ"
                             ]
                         }
                     ],
@@ -15562,7 +15868,6 @@
                     "refText": "https://eldamo.org/content/words/word-1590520649.html"
                 }
             ],
-            "notes": "",
             "preInstructions": [
             ]
         },
@@ -15587,7 +15892,7 @@
                             {
                                 "type": "ru.yole.etymograph.LeafRuleConditionData",
                                 "cond": "PhonemeMatches",
-                                "characters": "dh"
+                                "characters": "ð"
                             },
                             {
                                 "type": "ru.yole.etymograph.RelativePhonemeRuleConditionData",
@@ -15606,7 +15911,6 @@
                     "refText": "https://eldamo.org/content/words/word-226282629.html"
                 }
             ],
-            "notes": "",
             "preInstructions": [
             ]
         },
@@ -15693,7 +15997,7 @@
                         {
                             "type": "ChangeSound",
                             "args": [
-                                "dh"
+                                "ð"
                             ]
                         }
                     ],
@@ -15719,7 +16023,7 @@
                         {
                             "type": "ChangeSound",
                             "args": [
-                                "gh"
+                                "ɣ"
                             ]
                         }
                     ],
@@ -15748,7 +16052,6 @@
                     "refText": "https://eldamo.org/content/words/word-1726791627.html"
                 }
             ],
-            "notes": "",
             "preInstructions": [
             ]
         },
@@ -15901,7 +16204,7 @@
                             {
                                 "type": "ru.yole.etymograph.LeafRuleConditionData",
                                 "cond": "PhonemeMatches",
-                                "characters": "kh"
+                                "characters": "x"
                             },
                             {
                                 "type": "ru.yole.etymograph.RelativePhonemeRuleConditionData",
@@ -15913,7 +16216,7 @@
                                 "type": "ru.yole.etymograph.RelativePhonemeRuleConditionData",
                                 "relativeIndex": 1,
                                 "negated": false,
-                                "parameter": "th"
+                                "parameter": "θ"
                             }
                         ]
                     }
@@ -15933,7 +16236,7 @@
                             {
                                 "type": "ru.yole.etymograph.LeafRuleConditionData",
                                 "cond": "PhonemeMatches",
-                                "characters": "f"
+                                "characters": "ɸ"
                             },
                             {
                                 "type": "ru.yole.etymograph.RelativePhonemeRuleConditionData",
@@ -15945,7 +16248,7 @@
                                 "type": "ru.yole.etymograph.RelativePhonemeRuleConditionData",
                                 "relativeIndex": 1,
                                 "negated": false,
-                                "parameter": "th"
+                                "parameter": "θ"
                             }
                         ]
                     }
@@ -15958,7 +16261,6 @@
                     "refText": "https://eldamo.org/content/words/word-4002924749.html"
                 }
             ],
-            "notes": "",
             "preInstructions": [
             ]
         },
@@ -16206,6 +16508,7 @@
                         {
                             "type": "SoundInserted",
                             "args": [
+                                "i"
                             ]
                         },
                         {
@@ -16245,7 +16548,6 @@
                     "refText": "https://eldamo.org/content/words/word-2399289739.html"
                 }
             ],
-            "notes": "",
             "preInstructions": [
             ]
         },
@@ -16477,6 +16779,7 @@
                         {
                             "type": "SoundInserted",
                             "args": [
+                                "e"
                             ]
                         }
                     ],
@@ -16497,6 +16800,11 @@
                                 "relativeIndex": 1,
                                 "negated": false,
                                 "cls": "voiceless stop"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "ClassMatches",
+                                "characters": "initial-s-syllabic"
                             }
                         ]
                     }
@@ -16509,7 +16817,6 @@
                     "refText": "https://eldamo.org/content/words/word-2107885715.html"
                 }
             ],
-            "notes": "",
             "preInstructions": [
             ]
         },
@@ -16540,7 +16847,7 @@
                                 "type": "ru.yole.etymograph.RelativePhonemeRuleConditionData",
                                 "relativeIndex": 1,
                                 "negated": false,
-                                "parameter": "c"
+                                "parameter": "k"
                             }
                         ]
                     }
@@ -16553,6 +16860,880 @@
                     "refText": "https://eldamo.org/content/words/word-1759587217.html"
                 }
             ],
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 1108,
+            "name": "s-ph-bh",
+            "fromLang": "S",
+            "toLang": "S",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "f"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "PhonemeMatches",
+                        "characters": "ɸ"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "v"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "PhonemeMatches",
+                        "characters": "β"
+                    }
+                }
+            ],
+            "addedCategories": null,
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-890563133.html"
+                }
+            ],
+            "notes": "",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 1109,
+            "name": "s-voiceless-stops-after-consonants",
+            "fromLang": "S",
+            "toLang": "S",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "pʰ"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.AndRuleConditionData",
+                        "members": [
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "PhonemeMatches",
+                                "characters": "p"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.RelativePhonemeRuleConditionData",
+                                "relativeIndex": -1,
+                                "negated": false,
+                                "cls": "consonant"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.RelativePhonemeRuleConditionData",
+                                "relativeIndex": -1,
+                                "negated": true,
+                                "parameter": "s"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "tʰ"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.AndRuleConditionData",
+                        "members": [
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "PhonemeMatches",
+                                "characters": "t"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.RelativePhonemeRuleConditionData",
+                                "relativeIndex": -1,
+                                "negated": false,
+                                "cls": "consonant"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.RelativePhonemeRuleConditionData",
+                                "relativeIndex": -1,
+                                "negated": true,
+                                "parameter": "s"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "kʰ"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.AndRuleConditionData",
+                        "members": [
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "PhonemeMatches",
+                                "characters": "k"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.RelativePhonemeRuleConditionData",
+                                "relativeIndex": -1,
+                                "negated": false,
+                                "cls": "consonant"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.RelativePhonemeRuleConditionData",
+                                "relativeIndex": -1,
+                                "negated": true,
+                                "parameter": "s"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "addedCategories": null,
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-1683955225.html"
+                }
+            ],
+            "notes": "",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 1110,
+            "name": "s-aspirates-to-voiceless-spirants",
+            "fromLang": "S",
+            "toLang": "S",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "ɸ"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "PhonemeMatches",
+                        "characters": "pʰ"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "θ"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "PhonemeMatches",
+                        "characters": "tʰ"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "x"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "PhonemeMatches",
+                        "characters": "kʰ"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "ɸ"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.AndRuleConditionData",
+                        "members": [
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "PhonemeMatches",
+                                "characters": "p"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.RelativePhonemeRuleConditionData",
+                                "relativeIndex": 1,
+                                "negated": false,
+                                "cls": "aspirated"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "θ"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.AndRuleConditionData",
+                        "members": [
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "PhonemeMatches",
+                                "characters": "t"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.RelativePhonemeRuleConditionData",
+                                "relativeIndex": 1,
+                                "negated": false,
+                                "cls": "aspirated"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "x"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.AndRuleConditionData",
+                        "members": [
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "PhonemeMatches",
+                                "characters": "k"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.RelativePhonemeRuleConditionData",
+                                "relativeIndex": 1,
+                                "negated": false,
+                                "cls": "aspirated"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "addedCategories": null,
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-883570327.html"
+                }
+            ],
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 1111,
+            "name": "s-long-e-o",
+            "fromLang": "S",
+            "toLang": "S",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "í"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "PhonemeMatches",
+                        "characters": "é"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "ú"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "PhonemeMatches",
+                        "characters": "ó"
+                    }
+                }
+            ],
+            "addedCategories": null,
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-3889365613.html"
+                }
+            ],
+            "notes": "",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 1114,
+            "name": "s-nm-ngm",
+            "fromLang": "S",
+            "toLang": "S",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "w"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.AndRuleConditionData",
+                        "members": [
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "PhonemeMatches",
+                                "characters": "m"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.OrRuleConditionData",
+                                "members": [
+                                    {
+                                        "type": "ru.yole.etymograph.RelativePhonemeRuleConditionData",
+                                        "relativeIndex": -1,
+                                        "negated": false,
+                                        "parameter": "n"
+                                    },
+                                    {
+                                        "type": "ru.yole.etymograph.RelativePhonemeRuleConditionData",
+                                        "relativeIndex": -1,
+                                        "negated": false,
+                                        "parameter": "ŋ"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                }
+            ],
+            "addedCategories": null,
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-3258926163.html"
+                }
+            ],
+            "notes": "",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 1117,
+            "name": "s-voiceless-stops-before-nasals",
+            "fromLang": "S",
+            "toLang": "S",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSoundClass",
+                            "args": [
+                                "voiceless",
+                                "voiced",
+                                "0"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.AndRuleConditionData",
+                        "members": [
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "PhonemeMatches",
+                                "cls": "voiceless stop"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.RelativePhonemeRuleConditionData",
+                                "relativeIndex": 1,
+                                "negated": false,
+                                "cls": "nasal"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "addedCategories": null,
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-3463937975.html"
+                }
+            ],
+            "notes": "",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 1119,
+            "name": "s-ng-vanishes",
+            "fromLang": "S",
+            "toLang": "S",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSoundClass",
+                            "args": [
+                                "short",
+                                "long",
+                                "-1"
+                            ]
+                        },
+                        {
+                            "type": "SoundDisappears",
+                            "args": [
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.AndRuleConditionData",
+                        "members": [
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "PhonemeMatches",
+                                "characters": "ŋ"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.RelativePhonemeRuleConditionData",
+                                "relativeIndex": -1,
+                                "negated": false,
+                                "cls": "vowel"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.OrRuleConditionData",
+                                "members": [
+                                    {
+                                        "type": "ru.yole.etymograph.RelativePhonemeRuleConditionData",
+                                        "relativeIndex": 1,
+                                        "negated": false,
+                                        "parameter": "n"
+                                    },
+                                    {
+                                        "type": "ru.yole.etymograph.RelativePhonemeRuleConditionData",
+                                        "relativeIndex": 1,
+                                        "negated": false,
+                                        "parameter": "w"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                }
+            ],
+            "addedCategories": null,
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-3707785609.html"
+                }
+            ],
+            "notes": "",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 1120,
+            "name": "s-o-au",
+            "fromLang": "S",
+            "toLang": "S",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "au"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "PhonemeMatches",
+                        "characters": "ǭ"
+                    }
+                }
+            ],
+            "addedCategories": null,
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-558704171.html"
+                }
+            ],
+            "notes": "",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 1124,
+            "name": "s-long-a",
+            "fromLang": "S",
+            "toLang": "S",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "ǭ"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "PhonemeMatches",
+                        "characters": "á"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "ǭ"
+                            ]
+                        },
+                        {
+                            "type": "NextSoundDisappears",
+                            "args": [
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.AndRuleConditionData",
+                        "members": [
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "PhonemeMatches",
+                                "characters": "a"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.RelativePhonemeRuleConditionData",
+                                "relativeIndex": 1,
+                                "negated": false,
+                                "parameter": "u"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "addedCategories": null,
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-2858643115.html"
+                }
+            ],
+            "notes": "",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 1125,
+            "name": "s-au-ae",
+            "fromLang": "S",
+            "toLang": "S",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "o"
+                            ]
+                        },
+                        {
+                            "type": "NextSoundDisappears",
+                            "args": [
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.AndRuleConditionData",
+                        "members": [
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "PhonemeMatches",
+                                "characters": "a"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.RelativePhonemeRuleConditionData",
+                                "relativeIndex": 1,
+                                "negated": false,
+                                "parameter": "u"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "NumberOfSyllables",
+                                "characters": "1",
+                                "negated": true
+                            }
+                        ]
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "SoundDisappears",
+                            "args": [
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.AndRuleConditionData",
+                        "members": [
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "PhonemeMatches",
+                                "characters": "a"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.RelativePhonemeRuleConditionData",
+                                "relativeIndex": 1,
+                                "negated": false,
+                                "parameter": "e"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "NumberOfSyllables",
+                                "characters": "1",
+                                "negated": true
+                            }
+                        ]
+                    }
+                }
+            ],
+            "addedCategories": null,
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-567222053.html"
+                }
+            ],
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 1126,
+            "name": "s-gh-after-consonant",
+            "fromLang": "S",
+            "toLang": "S",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "a"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.AndRuleConditionData",
+                        "members": [
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "PhonemeMatches",
+                                "characters": "ɣ"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.RelativePhonemeRuleConditionData",
+                                "relativeIndex": -1,
+                                "negated": false,
+                                "cls": "consonant"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "EndOfWord"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "addedCategories": null,
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-916418731.html"
+                }
+            ],
+            "notes": "",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 1129,
+            "name": "s-gh-disappears",
+            "fromLang": "S",
+            "toLang": "S",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "SoundDisappears",
+                            "args": [
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "PhonemeMatches",
+                        "characters": "ɣ"
+                    }
+                }
+            ],
+            "addedCategories": null,
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-4164672875.html"
+                }
+            ],
+            "notes": "",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 1132,
+            "name": "s-h-after-vowels",
+            "fromLang": "S",
+            "toLang": "S",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "SoundDisappears",
+                            "args": [
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.AndRuleConditionData",
+                        "members": [
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "PhonemeMatches",
+                                "characters": "h"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.RelativePhonemeRuleConditionData",
+                                "relativeIndex": -1,
+                                "negated": false,
+                                "cls": "vowel"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "addedCategories": null,
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-875184187.html"
+                }
+            ],
+            "notes": "",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 1135,
+            "name": "s-intervocalic-h",
+            "fromLang": "S",
+            "toLang": "S",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "h"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.AndRuleConditionData",
+                        "members": [
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "PhonemeMatches",
+                                "characters": "s"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.RelativePhonemeRuleConditionData",
+                                "relativeIndex": -1,
+                                "negated": false,
+                                "cls": "vowel"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.RelativePhonemeRuleConditionData",
+                                "relativeIndex": 1,
+                                "negated": false,
+                                "cls": "vowel"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "addedCategories": null,
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-1260484391.html"
+                }
+            ],
+            "notes": "",
             "preInstructions": [
             ]
         }
@@ -16887,17 +18068,6 @@
                 {
                     "pubId": null,
                     "refText": "PE17:67"
-                }
-            ]
-        },
-        {
-            "from": 66,
-            "to": 24,
-            "type": ">",
-            "sourceRefs": [
-                {
-                    "pubId": null,
-                    "refText": "PE17:68"
                 }
             ]
         },
@@ -19734,7 +20904,9 @@
                 1065,
                 1066,
                 1067,
-                1062
+                1108,
+                1062,
+                1101
             ]
         },
         {
@@ -19797,7 +20969,15 @@
         {
             "from": 1085,
             "to": 1086,
-            "type": ">"
+            "type": ">",
+            "ruleIds": [
+                1064,
+                1109,
+                1110,
+                1084,
+                1062,
+                1096
+            ]
         },
         {
             "from": 1088,
@@ -19831,7 +21011,16 @@
         {
             "from": 1098,
             "to": 1099,
-            "type": ">"
+            "type": ">",
+            "ruleIds": [
+                1064,
+                1109,
+                1110,
+                1097,
+                1062,
+                1059,
+                1091
+            ]
         },
         {
             "from": 169,
@@ -19879,6 +21068,84 @@
             "from": 1105,
             "to": 180,
             "type": ">"
+        },
+        {
+            "from": 66,
+            "to": 1089,
+            "type": ">"
+        },
+        {
+            "from": 1112,
+            "to": 1113,
+            "type": ">",
+            "ruleIds": [
+                1064,
+                1111,
+                1062
+            ]
+        },
+        {
+            "from": 1115,
+            "to": 1118,
+            "type": ">",
+            "ruleIds": [
+                1064,
+                1114,
+                1119,
+                1062
+            ]
+        },
+        {
+            "from": 1123,
+            "to": 1122,
+            "type": ">",
+            "ruleIds": [
+                1064,
+                1124,
+                1120,
+                1062,
+                1075,
+                1125
+            ]
+        },
+        {
+            "from": 1127,
+            "to": 1128,
+            "type": ">",
+            "ruleIds": [
+                1117,
+                1064,
+                1110,
+                1070,
+                1108,
+                1062,
+                1059,
+                1126
+            ]
+        },
+        {
+            "from": 1130,
+            "to": 1131,
+            "type": ">",
+            "ruleIds": [
+                1064,
+                1077,
+                1129,
+                1062
+            ]
+        },
+        {
+            "from": 1133,
+            "to": 1134,
+            "type": ">",
+            "ruleIds": [
+                1117,
+                1064,
+                1110,
+                1135,
+                1132,
+                1062
+            ]
         }
     ],
     "corpusTexts": [
@@ -22100,6 +23367,32 @@
         }
     ],
     "wordClasses": [
+        {
+            "lang": "S",
+            "name": "Phonology",
+            "pos": [
+                "N"
+            ],
+            "values": [
+                {
+                    "name": "initial-s-syllabic",
+                    "abbreviation": "initial-s-syllabic"
+                }
+            ]
+        },
+        {
+            "lang": "CE",
+            "name": "Phonology",
+            "pos": [
+                "N"
+            ],
+            "values": [
+                {
+                    "name": "initial-s-syllabic",
+                    "abbreviation": "initial-s-syllabic"
+                }
+            ]
+        }
     ],
     "phonotacticsRules": [
         {
@@ -22114,9 +23407,14 @@
             "fromLang": "CE",
             "toLang": "S",
             "ruleIds": [
+                1117,
                 1064,
                 1106,
                 1065,
+                1109,
+                1110,
+                1124,
+                1135,
                 1055,
                 1060,
                 1066,
@@ -22124,17 +23422,26 @@
                 1067,
                 1077,
                 1080,
+                1129,
+                1132,
                 1084,
                 1087,
+                1108,
                 1092,
                 1097,
+                1111,
+                1114,
+                1119,
+                1120,
                 1062,
                 1095,
                 1075,
                 1059,
+                1126,
                 1083,
                 1096,
                 1091,
+                1125,
                 1071,
                 1101,
                 1090,
