@@ -50,7 +50,7 @@ class Word(
         if (isPhonemic) return this
         val phonemicText = buildString {
             language.orthoPhonemeLookup.iteratePhonemes(text) { s, phoneme ->
-                append(phoneme?.sound ?: s)
+                append(phoneme?.sound ?: phoneme?.graphemes?.first() ?: s)
             }
         }
         return derive(phonemicText, phonemic = true)

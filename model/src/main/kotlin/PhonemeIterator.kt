@@ -75,7 +75,11 @@ class PhonemeIterator {
     private var phonemeIndex = 0
     private var resultPhonemeIndex = 0
 
-    constructor(word: Word) : this(word.normalizedText.trimEnd('-'), word.language, word.isPhonemic)
+    constructor(word: Word) : this(
+        if (word.isPhonemic) word.text else word.normalizedText.trimEnd('-'),
+        word.language,
+        word.isPhonemic
+    )
 
     constructor(text: String, language: Language, phonemic: Boolean = false) {
         this.language = language

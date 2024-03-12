@@ -14,4 +14,12 @@ class OrthographyTest : QBaseTest() {
         val ortho = phonemic.asOrthographic()
         assertEquals("yulma", ortho.text)
     }
+
+    @Test
+    fun normalize() {
+        ce.phonemes = listOf(Phoneme(listOf("á", "ā"), null, setOf("vowel")))
+        val yulma = ce.word("yulmā")
+        val phonemic = yulma.asPhonemic()
+        assertEquals("yulmá", phonemic.text)
+    }
 }

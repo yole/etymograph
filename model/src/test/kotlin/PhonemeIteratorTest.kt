@@ -49,4 +49,12 @@ class PhonemeIteratorTest : QBaseTest() {
         val it = PhonemeIterator("hyarmen", q)
         assertEquals("hy", it.current)
     }
+
+    @Test
+    fun phonemic() {
+        q.phonemes = mutableListOf(Phoneme(listOf("c", "k"), "k", setOf("consonant")))
+        val w = q.word("calma").asPhonemic()
+        val it = PhonemeIterator(w)
+        assertEquals("kalma", it.result())
+    }
 }
