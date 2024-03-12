@@ -145,4 +145,28 @@ class RuleControllerTest {
         assertEquals(1, result.ruleIds.size)
         assertEquals(1, link.rules.size)
     }
+
+    @Test
+    fun expectedWordOrtho() {
+        val fixture = QTestFixture()
+        val graph = fixture.graphService.graph
+        fixture.q.phonemes = listOf(Phoneme(listOf("th"), "θ", setOf("consonant")))
+
+        val ruleController = RuleController(fixture.graphService)
+        ruleController.newRule(
+            RuleController.UpdateRuleParameters(
+                "q-pos",
+                "q", "q",
+                "sound is 't' and end of word:\n- new sound is 'θ'",
+            ))
+        val rule = graph.ruleByName("q-pos")!!
+
+        val word1 = graph.findOrAddWord("ait", fixture.q, "")
+        val word2 = graph.findOrAddWord("aith", fixture.q, "")
+        graph.addLink(word2, word1, Link.Derived, listOf(rule), emptyList(), null)
+
+        val ruleViewModel = ruleController.rule(rule.id)
+        val example = ruleViewModel.examples.single()
+        assertNull(example.expectedWord)
+    }
 }

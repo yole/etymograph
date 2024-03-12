@@ -114,7 +114,7 @@ class Rule(
                 applyToPhoneme(phonemic, phonemes)
                 if (!phonemes.advance()) break
             }
-            return deriveWord(word, phonemes.result(), toLanguage, word.stressedPhonemeIndex, null, word.classes)
+            return deriveWord(phonemic, phonemes.result(), toLanguage, word.stressedPhonemeIndex, null, word.classes)
         }
 
         val preWord = if (logic.preInstructions.isEmpty()) word else logic.preInstructions.apply(this, null, word, graph)

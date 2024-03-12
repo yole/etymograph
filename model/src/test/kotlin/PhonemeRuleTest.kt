@@ -255,6 +255,6 @@ class PhonemeRuleTest : QBaseTest() {
             - new sound is 'y'
         """.trimIndent())
         ce.phonemes = listOf(Phoneme(listOf("c", "k"), "k", setOf("consonant")))
-        assertEquals("ykra", rule.apply(ce.word("ikra"), emptyRepo).asOrthographic().text)
+        assertEquals("ycra", rule.apply(ce.word("ikra"), emptyRepo).asOrthographic().text)
     }
 }
