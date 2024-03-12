@@ -104,10 +104,6 @@ class Rule(
     source: List<SourceRef>,
     notes: String?
 ) : LangEntity(id, source, notes) {
-    fun matches(word: Word): Boolean {
-        return logic.branches.any { it.matches(word) }
-    }
-
     fun isPhonemic(): Boolean = logic.branches.any { it.condition.isPhonemic() }
 
     fun apply(word: Word, graph: GraphRepository): Word {

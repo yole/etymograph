@@ -563,15 +563,6 @@ open class InMemoryGraphRepository : GraphRepository() {
         return paradigmsForLanguage(rule.fromLanguage).find { rule in it.collectAllRules() }
     }
 
-    override fun findMatchingRule(fromWord: Word, toWord: Word): Rule? {
-        for (rule in rules) {
-            if (rule.matches(toWord) && rule.apply(toWord, this).text == fromWord.text) {
-                return rule
-            }
-        }
-        return null
-    }
-
     override fun findRuleExamples(rule: Rule): List<Link> {
         return linksFrom.values.flatten().filter { rule in it.rules }
     }
