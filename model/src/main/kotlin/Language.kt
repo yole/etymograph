@@ -2,7 +2,7 @@ package ru.yole.etymograph
 
 import java.util.*
 
-open class PhonemeClass(val name: String, val matchingPhonemes: List<String>) {
+open class PhonemeClass(val name: String, var matchingPhonemes: List<String>) {
     open fun matchesCurrent(it: PhonemeIterator): Boolean {
         return it.current in matchingPhonemes
     }
@@ -94,11 +94,13 @@ class Language(val name: String, val shortName: String) {
         val phonemeClassMap = mutableMapOf<String, MutableList<String>>()
         for (phoneme in phonemes) {
             for (cls in phoneme.classes) {
-                phonemeClassMap.getOrPut(cls) { mutableListOf() }.add(phoneme.graphemes[0])
+                phonemeClassMap.getOrPut(cls) { mutableListOf() }.add(phoneme.sound ?: phoneme.graphemes[0])
             }
         }
+        val oldPhonemeClasses = phonemeClasses
         phonemeClasses = phonemeClassMap.map { (name, phonemes) ->
-            PhonemeClass(name, phonemes)
+            oldPhonemeClasses.find { it.name == name }?.also { it.matchingPhonemes = phonemes }
+                ?: PhonemeClass(name, phonemes)
         }
     }
 
