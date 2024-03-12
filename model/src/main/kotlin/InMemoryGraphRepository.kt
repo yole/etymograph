@@ -251,8 +251,8 @@ open class InMemoryGraphRepository : GraphRepository() {
             val baseWord = baseWordLink.toEntity as Word
             if (baseWord.language == word.language) {
                 val baseWordWithSegments = restoreSegments(baseWord)
-                val restoredWord = baseWordLink.rules.fold(baseWordWithSegments) { w, r -> r.apply(w, this) }
-                if (word.language.isNormalizedEqual(restoredWord.text, word.text)) {
+                val restoredWord = baseWordLink.applyRules(baseWordWithSegments, this)
+                if (word.language.isNormalizedEqual(restoredWord, word)) {
                     return restoredWord
                 }
             }

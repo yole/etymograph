@@ -71,9 +71,10 @@ class Word(
         return if (this.text == text && newClasses == null && phonemic == null)
             this
         else
-            Word(-1, text, language, gloss, fullGloss, pos, newClasses ?: classes).apply {
-                segments = appendSegments(sourceSegments, newSegment)
-                phonemic?.let { isPhonemic = it }
+            Word(-1, text, language, gloss, fullGloss, pos, newClasses ?: classes).also {
+                it.stressedPhonemeIndex = stressedPhonemeIndex
+                it.segments = appendSegments(sourceSegments, newSegment)
+                if (phonemic != null) it.isPhonemic = phonemic
             }
     }
 

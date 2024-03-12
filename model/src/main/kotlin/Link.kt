@@ -17,6 +17,10 @@ class Link(
 
         val allLinkTypes = listOf(Derived, Related, Variation)
     }
+
+    fun applyRules(word: Word, graph: GraphRepository): Word {
+        return rules.fold(word) { w, r -> r.apply(w, graph) }
+    }
 }
 
 class Compound(

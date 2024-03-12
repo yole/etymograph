@@ -236,4 +236,15 @@ class PhonemeRuleTest : QBaseTest() {
         assertEquals("eir", rule.apply(q.word("eri"), emptyRepo).text)
         assertEquals("'i' is inserted before", rule.logic.branches[0].instructions[0].toEditableText())
     }
+
+    @Test
+    fun phonemeRulesWorkWithSoundValues() {
+        val rule = parseRule(ce, q, """
+            sound is 'j' and next sound is 'u':
+            - new sound is 'y'
+            - next sound disappears
+        """.trimIndent())
+        ce.phonemes = listOf(Phoneme(listOf("y"), "j", setOf("semivowel")))
+        assertEquals("ylma", rule.apply(ce.word("yulma"), emptyRepo).asOrthographic().text)
+    }
 }

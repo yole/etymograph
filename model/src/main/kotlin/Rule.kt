@@ -108,9 +108,10 @@ class Rule(
 
     fun apply(word: Word, graph: GraphRepository): Word {
         if (isPhonemic()) {
-            val phonemes = PhonemeIterator(word)
+            val phonemic = word.asPhonemic()
+            val phonemes = PhonemeIterator(phonemic)
             while (true) {
-                applyToPhoneme(word, phonemes)
+                applyToPhoneme(phonemic, phonemes)
                 if (!phonemes.advance()) break
             }
             return deriveWord(word, phonemes.result(), toLanguage, word.stressedPhonemeIndex, null, word.classes)
@@ -184,6 +185,7 @@ class Rule(
             else if (sourceSegments != null) {
                 it.segments = sourceSegments
             }
+            it.isPhonemic = word.isPhonemic
         }
     }
 
