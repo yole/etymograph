@@ -9,6 +9,7 @@ enum class InstructionType(
     ChangeEnding("change ending to", "change ending to '(.*)'", true),
     Prepend("prepend", "prepend (.+)", true),
     Append("append", "append (.+)", true),
+    Insert("insert", "insert '(.+)' (before|after) (.+)"),
     ApplyRule("apply rule", "apply rule '(.+)'", true),
     ApplySoundRule("apply sound rule", "apply sound rule '(.+)' to (.+)", true),
     ApplyStress("stress is on", "stress is on (.+) syllable", true),
@@ -177,6 +178,7 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
                         InstructionType.ApplyStress -> ApplyStressInstruction(context.fromLanguage, arg)
                         InstructionType.Prepend, InstructionType.Append ->
                             PrependAppendInstruction(type, context.fromLanguage, arg)
+                        InstructionType.Insert -> InsertInstruction.parse(context.fromLanguage, match)
                         InstructionType.ChangeSoundClass -> ChangePhonemeClassInstruction.parse(match)
                         else -> RuleInstruction(type, arg)
                     }
@@ -323,6 +325,35 @@ class PrependAppendInstruction(type: InstructionType, language: Language, arg: S
             return if (type == InstructionType.Prepend) "$literalArg-" else "-$literalArg"
         }
         return super.toSummaryText(condition)
+    }
+}
+
+class InsertInstruction(arg: String, val relIndex: Int, val seekTarget: SeekTarget) : RuleInstruction(InstructionType.Insert, arg) {
+    override fun apply(rule: Rule, branch: RuleBranch?, word: Word, graph: GraphRepository): Word {
+        val phonemes = PhonemeIterator(word)
+        if (!phonemes.seek(seekTarget)) return word
+        if (relIndex == -1) {
+            phonemes.insertBefore(arg)
+        }
+        else {
+            phonemes.insertAfter(arg)
+        }
+        return word.derive(phonemes.result())
+    }
+
+    override fun toEditableText(): String {
+        val relIndexWord = if (relIndex == -1) "before" else "after"
+        return "insert '$arg' $relIndexWord ${seekTarget.toEditableText()}"
+    }
+
+    companion object {
+        fun parse(language: Language, match: MatchResult): InsertInstruction {
+            return InsertInstruction(
+                match.groupValues[1],
+                if (match.groupValues[2] == "before") -1 else 1,
+                SeekTarget.parse(match.groupValues[3], language)
+            )
+        }
     }
 }
 

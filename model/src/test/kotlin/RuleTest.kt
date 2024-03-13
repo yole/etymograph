@@ -339,7 +339,7 @@ class RuleTest : QBaseTest() {
         val rule = parseRule(q, q, "word ends with 'ea':\n- change ending to ''")
         val result = rule.apply(q.word("yaimea"), emptyRepo)
         assertEquals("yaim", result.text)
-        assertEquals("change ending to ''", rule.logic.branches.single().instructions.single().toEditableText())
+        assertEquals("change ending to ''", rule.singleInstruction().toEditableText())
         assertEquals("", rule.logic.branches[0].toSummaryText(false))
     }
 
@@ -348,8 +348,10 @@ class RuleTest : QBaseTest() {
         val rule = parseRule(q, q, "word ends with 'r':\n- mark word as strong")
         val result = rule.apply(q.word("anar"), emptyRepo)
         assertEquals("strong", result.classes.single())
-        assertEquals("mark word as strong", rule.logic.branches.single().instructions.single().toEditableText())
+        assertEquals("mark word as strong", rule.singleInstruction().toEditableText())
     }
+
+    private fun Rule.singleInstruction() = logic.branches.single().instructions.single()
 
     @Test
     fun stressCondition() {
@@ -359,6 +361,13 @@ class RuleTest : QBaseTest() {
         assertTrue(condition.matches(ciryali))
         assertFalse(condition.matches(q.word("lasse").apply { stressedPhonemeIndex = 1 }))
         assertEquals("stress is on third to last syllable", condition.toEditableText())
+    }
+
+    @Test
+    fun insert() {
+        val rule = parseRule(q, q, "- insert 'i' before last consonant")
+        assertEquals("adain", rule.apply(q.word("adan"), emptyRepo).text)
+        assertEquals("insert 'i' before last consonant", rule.singleInstruction().toEditableText())
     }
 
     /*

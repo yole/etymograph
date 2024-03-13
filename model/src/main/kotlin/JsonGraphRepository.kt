@@ -611,6 +611,11 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                     newClass,
                     relativeIndex.toString()
                 )
+                is InsertInstruction -> arrayOf(
+                    arg,
+                    relIndex.toString(),
+                    seekTarget.toEditableText()
+                )
                 else -> if (type.takesArgument) arrayOf(arg) else emptyArray()
             }
 
@@ -669,6 +674,8 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                     ApplyStressInstruction(fromLanguage, insnData.args[0])
                 InstructionType.Prepend, InstructionType.Append ->
                     PrependAppendInstruction(insnData.type, fromLanguage, insnData.args[0])
+                InstructionType.Insert ->
+                    InsertInstruction(insnData.args[0], insnData.args[1].toInt(), SeekTarget.parse(insnData.args[2], fromLanguage))
                 InstructionType.ChangeSoundClass ->
                     ChangePhonemeClassInstruction(insnData.args.getOrNull(2)?.toInt() ?: 0,
                         insnData.args[0], insnData.args[1])
