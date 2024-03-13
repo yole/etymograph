@@ -174,6 +174,8 @@ The following conditions can be used in morphological rules:
    substring or a phoneme of a given class. Example: `first syllable contains long vowel`
  * `<ordinal> syllable ends with`: Checks if the syllable with the specified ordinal number ends with a given
    substring or a phoneme of a given class. Example: `last syllable ends with voiceless consonant`
+ * `<ordinal> <phoneme class> is:` Checks whether the phoneme at given index matches the given phoneme or phoneme class.
+   Example: `second to last sound is vowel`.
  * `stress is`: Checks whether the stress is on the given syllable (for example, `stress is on second to last syllable`)
 
 The following instructions can be used in morphological rules:
@@ -185,10 +187,13 @@ The following instructions can be used in morphological rules:
  * `prepend`: Prepend a prefix to the word. Argument is specified in the same way as with `append`.
  * `change ending to`: Change the part of the word matched by the `word ends with` condition in the preceding
    condition line to the specified ending (always specified as a literal string in single quotes).
- * `apply rule`: Apply the specified morphological rule to the word. The name of the rule to apply
+ * `insert '<sound>' <before|after> <position>`: Inserts characters into the word at the given position.
+   Example: `insert 'i' before last consonant'`
+ * `apply rule`: Apply the specified morphological or phonological rule to the word. The name of the rule to apply
    is specified in single quotes: `apply rule 'q-noun-stem'`. If there exists a derived word using that
    rule in the derivation link, the text of that word is taken instead of evaluating the conditions
    and instructions of the specified rule (this allows to express partially irregular inflections or derivations).
+   If a phonological rule is specified as an argument, it's applied to every phoneme in the word.
  * `apply sound rule`: Apply the specified phonological rule to the specified phoneme (for example,
     `apply sound rule 'on-a-fronting' to first vowel`).
  * `mark word as`: Adds the specified class to the word. This is normally used only in rules which
@@ -214,10 +219,10 @@ The following conditions can be used in phonological rules:
 
  * `sound is`: Checks whether the current phoneme matches the given phoneme (enclosed in single quotes;
    for example, `sound is 'e'`) or phoneme class.
- * `<next|previous> sound is`: Checks whether the next or previous sound matches the given phoneme or
+ * `<next|second next|previous> sound is`: Checks whether the next or previous sound matches the given phoneme or
     phoneme class. Example: `next sound is 'a'`
- * `<next|previous> <phoneme class> is:` Checks whether the next or previous phoneme of a given phoneme class
-   matches the given phoneme or phoneme class. Examples: `next stop is voiceless`, `next vowel is 'a'`.
+ * `<next|second next|previous> <phoneme class> is:` Checks whether the next or previous phoneme of a given phoneme 
+   class matches the given phoneme or phoneme class. Examples: `next stop is voiceless`, `next vowel is 'a'`.
  * `beginning of word`: Checks whether the current phoneme is the first one in the word.
  * `end of word`: Checks whether the current phoneme is the last one in the word.
  * `syllable is stressed`: Checks whether the current phoneme is in the stressed syllable.
@@ -227,15 +232,16 @@ The following conditions can be used in phonological rules:
 The following instructions can be used in phonological rules:
 
  * `no change`: Leaves the phoneme as is.
- * `new sound is`: Replaces the phoneme with another phoneme, specified in single quotes.
- * `new next sound is`: Replaces the next phoneme with another phoneme, specified in single quotes.
+ * `new sound is`: Replaces the phoneme with another phoneme (or several phonemes), specified in single quotes.
+ * `new next sound is`: Replaces the next phoneme with another phoneme (or several phonemes), specified in single quotes.
  * `sound disappears`: Deletes the phoneme from the word.
  * `next sound disappears`: Deletes the next phoneme from the word.
  * `<old class> becomes <new class>`: Replaces the phoneme with a different phoneme which has the same set
    of classes, except that it nas <new class> instead of <old class>. Example: `voiceless becomes voiced`.  
-* `<next|previous> <old class> becomes <new class>`: Replaces the next/previous phoneme with a different  
-  phoneme which has the same set of classes, except that it nas <new class> instead of <old class>. 
-  Example: `previous long becomes short`.
+ * `<next|previous> <old class> becomes <new class>`: Replaces the next/previous phoneme with a different  
+   phoneme which has the same set of classes, except that it nas <new class> instead of <old class>. 
+   Example: `previous long becomes short`.
+ * `<sound> is inserted before`: Inserts the specified phoneme before the current phoneme.
 
 
 #### Stress Rule
