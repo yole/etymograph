@@ -133,7 +133,8 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
         if (eow.any()) return "$relativePhonemeContext at end of word"
         val syllableIndexCondition = condition.findLeafConditions(ConditionType.SyllableIndex).singleOrNull()
         if (syllableIndexCondition != null) {
-            return "$relativePhonemeContext in ${Ordinals.toString(syllableIndexCondition.parameter!!.toInt())} syllable"
+            val neg = if (syllableIndexCondition.negated) "not " else ""
+            return "$relativePhonemeContext in $neg${Ordinals.toString(syllableIndexCondition.parameter!!.toInt())} syllable"
         }
         return relativePhonemeContext
     }

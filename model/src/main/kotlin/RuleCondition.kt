@@ -146,14 +146,14 @@ class LeafRuleCondition(
 
     private fun matchSyllableIndex(phonemes: PhonemeIterator, word: Word): Boolean {
         val syllables = breakIntoSyllables(word)
-        if (syllables.isEmpty()) return false
+        if (syllables.isEmpty()) return false.negateIfNeeded()
         val absIndex = Ordinals.toAbsoluteIndex(parameter!!.toInt(), syllables.size)
         for ((i, s) in syllables.withIndex()) {
             if (phonemes.index < s.endIndex) {
-                return i == absIndex
+                return (i == absIndex).negateIfNeeded()
             }
         }
-        return false
+        return false.negateIfNeeded()
     }
 
     private fun matchPhoneme(phonemes: PhonemeIterator) =

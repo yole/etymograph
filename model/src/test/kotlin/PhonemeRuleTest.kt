@@ -200,6 +200,20 @@ class PhonemeRuleTest : QBaseTest() {
     }
 
     @Test
+    fun syllableIsNegated() {
+        val rule = parseRule(q, q, """
+            syllable is not last and sound is 'o':
+            - new sound is 'e'
+            syllable is last and sound is 'o':
+            - new sound is 'y'
+        """.trimIndent())
+        assertEquals("yrch", rule.apply(q.word("orch"), emptyRepo).text)
+        val ruleCondition = rule.logic.branches[0].condition
+        assertEquals("syllable is not last and sound is 'o'", ruleCondition.toEditableText())
+        assertEquals("'o' -> 'e' in not last syllable", rule.logic.branches[0].toSummaryText(true))
+    }
+
+    @Test
     fun syllableIsSummary() {
         val rule = parseRule(q, q, """
             syllable is second to last and sound is 'i' and next sound is 'a':
