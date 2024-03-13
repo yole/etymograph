@@ -209,13 +209,14 @@ class ApplyRuleInstruction(val ruleRef: RuleRef)
     override fun apply(rule: Rule, branch: RuleBranch?, word: Word, graph: GraphRepository): Word {
         val targetRule = ruleRef.resolve()
         val link = graph.getLinksTo(word).find { it.rules == listOf(targetRule) }
-        return link?.fromEntity as? Word
-            ?: targetRule.apply(word, graph).remapSegments { s ->
-                if (s.sourceRule == targetRule)
-                    WordSegment(s.firstCharacter, s.length, rule.addedCategories, rule)
-                else
-                    s
-            }
+        (link?.fromEntity as? Word)?.let { return it }
+        val result = targetRule.apply(word, graph).asOrthographic()
+        return result.remapSegments { s ->
+            if (s.sourceRule == targetRule)
+                WordSegment(s.firstCharacter, s.length, rule.addedCategories, rule)
+            else
+                s
+        }
     }
 
     override fun reverseApply(rule: Rule, text: String, language: Language): List<String> {
