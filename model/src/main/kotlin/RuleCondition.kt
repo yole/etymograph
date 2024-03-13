@@ -293,13 +293,14 @@ class SyllableRuleCondition(
 }
 
 class RelativePhonemeRuleCondition(
+    val relative: Boolean,
     val relativeIndex: Int,
     val negated: Boolean,
     val targetPhonemeClass: PhonemeClass?,
     val matchPhonemeClass: PhonemeClass?,
     val parameter: String?
 ) : RuleCondition() {
-    override fun isPhonemic(): Boolean = true
+    override fun isPhonemic(): Boolean = relative
 
     override fun matches(word: Word, phonemes: PhonemeIterator): Boolean {
         val it = phonemes.clone()
@@ -307,13 +308,23 @@ class RelativePhonemeRuleCondition(
             it.advanceToClass(targetPhonemeClass, relativeIndex)
         else
             it.advanceBy(relativeIndex)
-        val matchResult = canAdvance && matchPhonemeClass?.matchesCurrent(it) ?: (parameter == it.current)
+        val matchResult = canAdvance && matchesCurrent(it)
         return matchResult xor negated
+    }
+
+    private fun matchesCurrent(it: PhonemeIterator) =
+        matchPhonemeClass?.matchesCurrent(it) ?: (parameter == it.current)
+
+    override fun matches(word: Word): Boolean {
+        val seekTarget = SeekTarget(relativeIndex, targetPhonemeClass)
+        val phonemes = PhonemeIterator(word)
+        if (!phonemes.seek(seekTarget)) return negated
+        return matchesCurrent(phonemes) xor negated
     }
 
     override fun toEditableText(): String {
         return buildString {
-            append(RelativeOrdinals.toString(relativeIndex))
+            append(if (relative) RelativeOrdinals.toString(relativeIndex) else Ordinals.toString(relativeIndex))
             append(" ")
             if (targetPhonemeClass != null) {
                 append(targetPhonemeClass.name)
@@ -336,7 +347,10 @@ class RelativePhonemeRuleCondition(
 
     companion object {
         fun parse(buffer: ParseBuffer, language: Language): RelativePhonemeRuleCondition? {
-            val relativeIndex = RelativeOrdinals.parse(buffer) ?: return null
+            var relative = true
+            val relativeIndex = RelativeOrdinals.parse(buffer)
+                ?: Ordinals.parse(buffer)?.also { relative = false }
+                ?: return null
 
             val targetPhonemeClass: PhonemeClass?
             if (buffer.consume(LeafRuleCondition.soundIs)) {
@@ -350,7 +364,7 @@ class RelativePhonemeRuleCondition(
             }
             val negated = buffer.consume(LeafRuleCondition.notPrefix)
             val (matchPhonemeClass, parameter) = buffer.parseParameter(language)
-            return RelativePhonemeRuleCondition(relativeIndex, negated, targetPhonemeClass, matchPhonemeClass, parameter)
+            return RelativePhonemeRuleCondition(relative, relativeIndex, negated, targetPhonemeClass, matchPhonemeClass, parameter)
         }
     }
 }

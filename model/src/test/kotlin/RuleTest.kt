@@ -370,6 +370,18 @@ class RuleTest : QBaseTest() {
         assertEquals("insert 'i' before last consonant", rule.singleInstruction().toEditableText())
     }
 
+    @Test
+    fun absolutePhonemeRuleCondition() {
+        val rule = parseRule(q, q, """
+            last sound is consonant and second to last sound is vowel:
+            - insert 'i' before last consonant
+            otherwise:
+            - no change
+         """.trimIndent())
+        assertEquals("adain", rule.apply(q.word("adan"), emptyRepo).text)
+        assertEquals("fela", rule.apply(q.word("fela"), emptyRepo).text)
+    }
+
     /*
 
     @Test
