@@ -53,16 +53,21 @@ object RelativeOrdinals : OrdinalTable(
     )
 )
 
-class SeekTarget(val index: Int, val phonemeClass: PhonemeClass) {
+class SeekTarget(val index: Int, val phonemeClass: PhonemeClass?) {
     fun toEditableText(): String {
-        return Ordinals.toString(index)?.let { "$it ${phonemeClass.name}"} ?: "$index ${phonemeClass.name}"
+        val targetSound = phonemeClass?.name ?: "sound"
+        return Ordinals.toString(index)?.let { "$it $targetSound"} ?: "$index $targetSound"
     }
 
     companion object {
         fun parse(s: String, language: Language): SeekTarget {
             val (index, phonemeClassName) = Ordinals.parse(s) ?: throw RuleParseException("Cannot parse seek target $s")
-            val phonemeClass = language.phonemeClassByName(phonemeClassName)
-                ?: throw RuleParseException("Unknown phoneme class '$phonemeClassName'")
+            val phonemeClass = if (phonemeClassName == "sound")
+                null
+            else {
+                language.phonemeClassByName(phonemeClassName)
+                    ?: throw RuleParseException("Unknown phoneme class '$phonemeClassName'")
+            }
             return SeekTarget(index, phonemeClass)
         }
     }
@@ -138,9 +143,17 @@ class PhonemeIterator {
     }
 
     fun seek(seekTarget: SeekTarget): Boolean {
+        val targetPhonemeClass = seekTarget.phonemeClass
+        if (targetPhonemeClass == null) {
+            val absIndex = Ordinals.toAbsoluteIndex(seekTarget.index, phonemes.size)
+            if (absIndex >= phonemes.size) return false
+            advanceTo(absIndex)
+            return true
+        }
+
         val matchingIndexes = mutableListOf<Int>()
         for (targetPhonemeIndex in phonemes.indices) {
-            if (phonemes[targetPhonemeIndex] in seekTarget.phonemeClass.matchingPhonemes) {
+            if (phonemes[targetPhonemeIndex] in targetPhonemeClass.matchingPhonemes) {
                 matchingIndexes.add(targetPhonemeIndex)
             }
         }

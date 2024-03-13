@@ -43,7 +43,7 @@ class JsonGraphRepositoryTest : QBaseTest() {
         val branches = ruleBranchesFromSerializedFormat(repo, q, serializedData.branches)
         val insn = branches[0].instructions[0] as ApplySoundRuleInstruction
         assertEquals("q-lengthen", insn.ruleRef.resolve().name)
-        assertEquals("vowel", insn.seekTarget.phonemeClass.name)
+        assertEquals("vowel", insn.seekTarget.phonemeClass!!.name)
     }
 
     @Test
