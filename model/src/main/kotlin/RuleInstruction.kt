@@ -238,7 +238,7 @@ class ApplySoundRuleInstruction(language: Language, val ruleRef: RuleRef, arg: S
         val phonemes = PhonemeIterator(word)
         if (phonemes.seek(seekTarget)) {
             ruleRef.resolve().applyToPhoneme(word, phonemes)
-            return word.derive(phonemes.result())
+            return word.derive(phonemes.result(), phonemic = true).asOrthographic()
         }
         return word
     }
