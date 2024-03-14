@@ -148,27 +148,13 @@ class Rule(
         }
     }
 
-    fun reverseApplyToPhoneme(phonemes: PhonemeIterator): Boolean {
+    fun reverseApplyToPhoneme(phonemes: PhonemeIterator): List<String> {
         for (branch in logic.branches) {
-            val instruction = branch.instructions.singleOrNull()
-            if (instruction?.type == InstructionType.NoChange) continue
-            if (instruction?.type == InstructionType.ChangeSound) {
-                if (instruction.arg == phonemes.current) {
-                    val condition = branch.condition as? LeafRuleCondition ?: return false
-                    if (condition.type == ConditionType.PhonemeMatches && condition.parameter != null) {
-                        phonemes.replace(condition.parameter)
-                        break
-                    }
-                    else {
-                        return false
-                    }
-                }
-            }
-            else {
-                return false
-            }
+            val instruction = branch.instructions.singleOrNull() ?: return emptyList()
+            val result = instruction.reverseApplyToPhoneme(phonemes.clone(), branch.condition) ?: return emptyList()
+            if (result.isNotEmpty()) return result
         }
-        return true
+        return listOf(phonemes.result())
     }
 
     private fun deriveWord(word: Word, text: String, language: Language, stressIndex: Int, segments: List<WordSegment>?,

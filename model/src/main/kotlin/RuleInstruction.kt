@@ -174,6 +174,24 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
         return relativePhonemeParameters.joinToString(" or ")
     }
 
+    fun reverseApplyToPhoneme(phonemes: PhonemeIterator, condition: RuleCondition): List<String>? {
+        if (type == InstructionType.NoChange) return emptyList()
+        if (type == InstructionType.ChangeSound) {
+            if (arg == phonemes.current) {
+                val leafCondition = condition as? LeafRuleCondition ?: return null
+                if (leafCondition.type == ConditionType.PhonemeMatches && leafCondition.parameter != null) {
+                    phonemes.replace(leafCondition.parameter)
+                    return listOf(phonemes.result())
+                }
+                else {
+                    return null
+                }
+            }
+            return emptyList()
+        }
+        return null
+    }
+
     companion object {
         fun parse(s: String, context: RuleParseContext): RuleInstruction {
             if (!s.startsWith("-")) {
@@ -267,8 +285,7 @@ class ApplySoundRuleInstruction(language: Language, val ruleRef: RuleRef, arg: S
     override fun reverseApply(rule: Rule, text: String, language: Language): List<String> {
         val phonemes = PhonemeIterator(text, language)
         if (phonemes.seek(seekTarget)) {
-            if (!ruleRef.resolve().reverseApplyToPhoneme(phonemes)) return emptyList()
-            return listOf(phonemes.result())
+            return ruleRef.resolve().reverseApplyToPhoneme(phonemes)
         }
         return listOf(text)
     }
