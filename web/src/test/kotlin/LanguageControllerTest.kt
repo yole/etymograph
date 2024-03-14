@@ -29,6 +29,27 @@ class LanguageControllerTest {
     }
 
     @Test
+    fun wordClassesOptionalAbbreviation() {
+        val fixture = QTestFixture()
+        val languageController = LanguageController(fixture.graphService)
+
+        val parameters = LanguageController.UpdateLanguageParameters(
+            wordClasses = "Plural type (N): class-plural-rim"
+        )
+        languageController.updateLanguage("q", parameters)
+
+        val categories = fixture.q.wordClasses
+        assertEquals(1, categories.size)
+        val pluralType = categories[0]
+        assertEquals(1, pluralType.values.size)
+        assertEquals("class-plural-rim", pluralType.values[0].name)
+        assertEquals("class-plural-rim", pluralType.values[0].abbreviation)
+
+        val vm = languageController.language("q")
+        assertEquals(vm.wordClasses, parameters.wordClasses)
+    }
+
+    @Test
     fun phonemes() {
         val fixture = QTestFixture()
         val languageController = LanguageController(fixture.graphService)

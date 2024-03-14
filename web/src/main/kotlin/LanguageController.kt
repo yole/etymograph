@@ -147,7 +147,7 @@ class LanguageController(val graphService: GraphService) {
     }
 
     private fun WordCategoryValue.toEditableText(): String {
-        return "$name ($abbreviation)"
+        return if (name == abbreviation) name else "$name ($abbreviation)"
     }
 
     private fun parseWordCategories(s: String): MutableList<WordCategory> {
@@ -172,7 +172,7 @@ class LanguageController(val graphService: GraphService) {
 
     private fun parseWordCategoryValue(s: String): WordCategoryValue {
         val p = parenthesized.matchEntire(s)
-            ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST, "Unrecognized grammatical category value format $s")
+            ?: return WordCategoryValue(s, s)
         return WordCategoryValue(p.groupValues[1], p.groupValues[2])
     }
 
