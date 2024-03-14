@@ -58,9 +58,21 @@ class Word(
 
     fun asOrthographic(): Word {
         if (!isPhonemic) return this
-        val orthoText = buildString {
-            language.phonoPhonemeLookup.iteratePhonemes(text) { s, phoneme ->
-                append(phoneme?.graphemes?.get(0) ?: s)
+        val orthoRule = language.orthographyRule?.resolve()
+        val orthoText: String
+        if (orthoRule != null) {
+            val it = PhonemeIterator(this, resultPhonemic = false)
+            while (true) {
+                orthoRule.applyToPhoneme(this, it)
+                if (!it.advance()) break
+            }
+            orthoText = it.result()
+        }
+        else {
+            orthoText = buildString {
+                language.phonoPhonemeLookup.iteratePhonemes(text) { s, phoneme ->
+                    append(phoneme?.graphemes?.get(0) ?: s)
+                }
             }
         }
         return derive(orthoText, phonemic = false)

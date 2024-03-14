@@ -80,16 +80,29 @@ class PhonemeIterator {
     private var phonemeIndex = 0
     private var resultPhonemeIndex = 0
 
-    constructor(word: Word) : this(
+    constructor(word: Word, resultPhonemic: Boolean? = null) : this(
         if (word.isPhonemic) word.text else word.normalizedText.trimEnd('-'),
         word.language,
-        word.isPhonemic
+        word.isPhonemic,
+        resultPhonemic
     )
 
-    constructor(text: String, language: Language, phonemic: Boolean = false) {
+    constructor(text: String, language: Language, phonemic: Boolean = false, resultPhonemic: Boolean? = null) {
         this.language = language
-        phonemes = splitPhonemes(text, phonemic)
-        resultPhonemes = phonemes.toMutableList()
+
+        val sourcePhonemes = mutableListOf<String>()
+        resultPhonemes = mutableListOf()
+        val lookup = if (phonemic) this.language.phonoPhonemeLookup else this.language.orthoPhonemeLookup
+
+        lookup.iteratePhonemes(text) { phonemeText, phoneme ->
+            val normalizedText = if (phonemic) phoneme?.sound else phoneme?.graphemes?.first()
+            sourcePhonemes.add(normalizedText ?: phonemeText)
+
+            val normalizedResultText = if (resultPhonemic ?: phonemic) phoneme?.sound else phoneme?.graphemes?.first()
+            resultPhonemes.add(normalizedResultText ?: phonemeText)
+        }
+
+        phonemes = sourcePhonemes
     }
 
     private constructor(phonemes: List<String>, resultPhonemes: MutableList<String>, language: Language) {

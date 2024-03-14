@@ -55,7 +55,6 @@ class PhonemeLookup {
     fun iteratePhonemes(text: String, callback: (String, Phoneme?) -> Unit) {
         var offset = 0
         while (offset < text.length) {
-
             val digraph = digraphs.keys.firstOrNull { text.startsWith(it, offset) }
             if (digraph != null) {
                 callback(digraph, digraphs[digraph])
@@ -84,6 +83,7 @@ class Language(val name: String, val shortName: String) {
     var syllableStructures: List<String> = emptyList()
     var stressRule: RuleRef? = null
     var phonotacticsRule: RuleRef? = null
+    var orthographyRule: RuleRef? = null
     var grammaticalCategories = mutableListOf<WordCategory>()
     var wordClasses = mutableListOf<WordCategory>()
 

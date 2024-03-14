@@ -22,4 +22,13 @@ class OrthographyTest : QBaseTest() {
         val phonemic = yulma.asPhonemic()
         assertEquals("yulmá", phonemic.text)
     }
+
+    @Test
+    fun orthographyRule() {
+        val rule = parseRule(ce, ce, "beginning of word and sound is 'j':\n- new sound is 'i'")
+        ce.orthographyRule = RuleRef.to(rule)
+        ce.phonemes = listOf(Phoneme(listOf("y"), "j", setOf("semivowel")))
+        val iayn = ce.word("jajn").apply { isPhonemic = true }
+        assertEquals("iayn", iayn.asOrthographic().text)
+    }
 }

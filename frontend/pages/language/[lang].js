@@ -26,12 +26,13 @@ export default function LanguageIndex(props) {
     const [syllableStructures, setSyllableStructures] = useState(lang.syllableStructures.join(", "))
     const [stressRule, setStressRule] = useState(lang.stressRuleName)
     const [phonotacticsRule, setPhonotacticsRule] = useState(lang.phonotacticsRuleName)
+    const [orthographyRule, setOrthographyRule] = useState(lang.orthographyRuleName)
     const [errorText, setErrorText] = useState("")
     const router = useRouter()
     useEffect(() => { document.title = "Etymograph : " + lang.name })
 
     function saveLanguage() {
-        updateLanguage(langId, phonemes, diphthongs, syllableStructures, stressRule, phonotacticsRule, grammaticalCategories, wordClasses)
+        updateLanguage(langId, phonemes, diphthongs, syllableStructures, stressRule, phonotacticsRule, orthographyRule, grammaticalCategories, wordClasses)
             .then((r) => {
                 if (r.status === 200) {
                     setErrorText("")
@@ -71,6 +72,7 @@ export default function LanguageIndex(props) {
             {lang.syllableStructures.length > 0 && <p>Syllable structures: {lang.syllableStructures.join(", ")}</p>}
             {lang.stressRuleName != null && <p>Stress rule: <Link href={`/rule/${lang.stressRuleId}`}>{lang.stressRuleName}</Link></p>}
             {lang.phonotacticsRuleName != null && <p>Phonotactics rule: <Link href={`/rule/${lang.phonotacticsRuleId}`}>{lang.phonotacticsRuleName}</Link></p>}
+            {lang.orthographyRuleName != null && <p>Orthography rule: <Link href={`/rule/${lang.orthographyRuleId}`}>{lang.orthographyRuleName}</Link></p>}
         </>}
         {editMode && <>
             <table><tbody>
@@ -89,6 +91,10 @@ export default function LanguageIndex(props) {
             <tr>
                 <td><label>Phonotactics rule:</label></td>
                 <td><input type="text" value={phonotacticsRule} onChange={(e) => setPhonotacticsRule(e.target.value)}/></td>
+            </tr>
+            <tr>
+                <td><label>Orthography rule:</label></td>
+                <td><input type="text" value={orthographyRule} onChange={(e) => setOrthographyRule(e.target.value)}/></td>
             </tr>
             </tbody></table>
         </>}

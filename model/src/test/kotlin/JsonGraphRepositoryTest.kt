@@ -138,4 +138,16 @@ class JsonGraphRepositoryTest : QBaseTest() {
         assertEquals(1, sequences.size)
         assertEquals("i-disappears", sequences[0].rules[0].resolve().name)
     }
+
+    @Test
+    fun serializeOrthographyRule() {
+        val repo = JsonGraphRepository(null)
+        repo.addLanguage(q)
+        val rule = repo.addRule("q-ortho", q, q,
+            Rule.parseBranches("sound is 'j' and beginning of word:\n - new sound is 'y'", q.parseContext(repo)))
+        q.orthographyRule = RuleRef.to(rule)
+
+        val repo2 = repo.roundtrip()
+        assertEquals("q-ortho", repo2.languageByShortName("Q")!!.orthographyRule!!.resolve().name)
+   }
 }

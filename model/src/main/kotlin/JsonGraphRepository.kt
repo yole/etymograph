@@ -253,7 +253,8 @@ data class GraphRepositoryData(
     val grammaticalCategories: List<WordCategoryData>,
     val wordClasses: List<WordCategoryData>,
     val phonotacticsRules: List<LanguageRuleData>,
-    val ruleSequences: List<RuleSequenceData>? = null
+    val ruleSequences: List<RuleSequenceData>,
+    val orthographyRules: List<LanguageRuleData>? = null
 )
 
 class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
@@ -297,6 +298,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
         val diphthongData = languages.values.map { DiphthongData(it.shortName, it.diphthongs) }
         val stressRuleData = mapLanguageRules { lang -> lang.stressRule }
         val phonotacticsRuleData = mapLanguageRules { lang -> lang.phonotacticsRule }
+        val orthographyRulesData = mapLanguageRules { lang -> lang.orthographyRule }
         val syllableStructureData = languages.values.mapNotNull { lang ->
             lang.syllableStructures.takeIf { it.isNotEmpty() }?.let { SyllableStructureData(lang.shortName, it) }
         }
@@ -351,7 +353,8 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                     s.id, s.name, s.fromLanguage.shortName, s.toLanguage.shortName,
                     s.rules.map { it.resolve().id },
                     s.source.sourceToSerializedFormat(), s.notes)
-            }
+            },
+            orthographyRulesData
         )
     }
 
@@ -384,6 +387,9 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
         }
         for (ruleData in data.phonotacticsRules) {
             languageByShortName(ruleData.languageShortName)!!.phonotacticsRule= ruleRef(this, ruleData.ruleId)
+        }
+        for (ruleData in data.orthographyRules ?: emptyList()) {
+            languageByShortName(ruleData.languageShortName)!!.orthographyRule= ruleRef(this, ruleData.ruleId)
         }
 
         for (syllableStructureData in data.syllableStructures) {
@@ -433,7 +439,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             rules.add(addedRule)
             setLangEntity(rule.id, addedRule)
         }
-        for (sequence in data.ruleSequences ?: emptyList()) {
+        for (sequence in data.ruleSequences) {
             val ruleSequence = RuleSequence(
                 sequence.id,
                 sequence.name,
