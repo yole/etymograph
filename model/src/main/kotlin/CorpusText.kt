@@ -76,7 +76,7 @@ class CorpusText(
                     val trailingPunctuation = tw.baseText.takeLastWhile { it in punctuation }
                     val wordWithSegments = repo.restoreSegments(word)
                     val segmentedText = leadingPunctuation + restoreCase(wordWithSegments.segmentedText(), tw.baseText) + trailingPunctuation
-                    val glossWithSegments = wordWithSegments.getOrComputeGloss(repo)
+                    val glossWithSegments = wordWithSegments.getOrComputeGloss(repo) ?: word.getOrComputeGloss(repo)
                     val stressIndex = adjustStressIndex(wordWithSegments, stressData?.index)
 
                     CorpusWord(currentIndex++, tw.baseText, normalizedText, segmentedText, word, word.getOrComputeGloss(repo),
