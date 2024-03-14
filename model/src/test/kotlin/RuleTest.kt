@@ -197,6 +197,22 @@ class RuleTest : QBaseTest() {
     }
 
     @Test
+    fun applySoundRuleCase() {
+        q.phonemes = listOf(Phoneme(listOf("c", "k"), "k", emptySet()), Phoneme(listOf("ch"), "x", emptySet()))
+        val soundRule = parseRule(q, q, """
+            sound is 'p':
+            - new sound is 'ph'
+        """.trimIndent(), name = "q-lengthen-sound")
+        val parseContext = RuleParseContext(q, q) {
+            if (it == "q-lengthen-sound") RuleRef.to(soundRule) else throw RuleParseException("no such rule")
+        }
+        val applySoundRule = Rule(-1, "q-lengthen", q, q, Rule.parseBranches("""
+            - apply sound rule 'q-lengthen-sound' to first sound
+        """.trimIndent(), parseContext), null, null, null, null, emptyList(), null)
+        assertEquals("pherian", applySoundRule.apply(q.word("Perian"), emptyRepo).text)
+    }
+
+    @Test
     fun soundRuleToEditableText() {
         val soundRule = parseRule(q, q, """
             sound is 'a':

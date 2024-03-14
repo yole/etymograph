@@ -49,7 +49,7 @@ class Word(
     fun asPhonemic(): Word {
         if (isPhonemic) return this
         val phonemicText = buildString {
-            language.orthoPhonemeLookup.iteratePhonemes(text) { s, phoneme ->
+            language.orthoPhonemeLookup.iteratePhonemes(text.lowercase(Locale.FRANCE)) { s, phoneme ->
                 append(phoneme?.sound ?: phoneme?.graphemes?.first() ?: s)
             }
         }
