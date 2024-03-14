@@ -182,9 +182,9 @@ class RuleTest : QBaseTest() {
 
     @Test
     fun applySoundRuleOrtho() {
-        q.phonemes = listOf(Phoneme(listOf("ch"), "x", emptySet()))
+        q.phonemes = listOf(Phoneme(listOf("c", "k"), "k", emptySet()), Phoneme(listOf("ch"), "x", emptySet()))
         val soundRule = parseRule(q, q, """
-            sound is 'h':
+            sound is 'k':
             - new sound is 'x'
         """.trimIndent(), name = "q-lengthen-sound")
         val parseContext = RuleParseContext(q, q) {
@@ -193,7 +193,7 @@ class RuleTest : QBaseTest() {
         val applySoundRule = Rule(-1, "q-lengthen", q, q, Rule.parseBranches("""
             - apply sound rule 'q-lengthen-sound' to first sound
         """.trimIndent(), parseContext), null, null, null, null, emptyList(), null)
-        assertEquals("chaered", applySoundRule.apply(q.word("haered"), emptyRepo).text)
+        assertEquals("chaered", applySoundRule.apply(q.word("caered"), emptyRepo).text)
     }
 
     @Test

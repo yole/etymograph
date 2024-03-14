@@ -239,7 +239,7 @@ class ApplySoundRuleInstruction(language: Language, val ruleRef: RuleRef, arg: S
     val seekTarget = SeekTarget.parse(arg, language)
 
     override fun apply(rule: Rule, branch: RuleBranch?, word: Word, graph: GraphRepository): Word {
-        val phonemes = PhonemeIterator(word)
+        val phonemes = PhonemeIterator(word.asPhonemic())
         if (phonemes.seek(seekTarget)) {
             ruleRef.resolve().applyToPhoneme(word, phonemes)
             return word.derive(phonemes.result(), phonemic = true).asOrthographic()
