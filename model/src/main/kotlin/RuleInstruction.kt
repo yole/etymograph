@@ -87,7 +87,19 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
         }
     }
 
-    open fun toEditableText(): String = type.pattern?.replace("(.+)", arg)?.replace("(.*)", arg) ?: type.insnName
+    fun toEditableText(): String = toRichText().toString()
+
+    open fun toRichText(): RichText {
+        if (type.pattern != null) {
+            val argIndex = type.pattern.indexOfAny(listOf("(.+)", "(.*)"))
+            if (argIndex > 0) {
+                return type.pattern.substring(0, argIndex).rich() +
+                        arg.rich(emph = true) +
+                        type.pattern.substring(argIndex + 4).rich()
+            }
+        }
+        return type.insnName.richText()
+    }
 
     open fun toSummaryText(condition: RuleCondition): String? = when(type) {
         InstructionType.ChangeEnding ->
@@ -226,8 +238,13 @@ class ApplyRuleInstruction(val ruleRef: RuleRef)
         return targetRule.reverseApply(Word(-1, text, language))
     }
 
-    override fun toEditableText(): String =
-        InstructionType.ApplyRule.insnName + " '" + ruleRef.resolve().name + "'"
+    override fun toRichText(): RichText {
+        val rule = ruleRef.resolve()
+        return InstructionType.ApplyRule.insnName.rich() +
+                " '".rich() +
+                rule.name.rich(linkType = "rule", linkId = rule.id) +
+                "'".rich()
+    }
 
     override fun toSummaryText(condition: RuleCondition): String =
         ruleRef.resolve().toSummaryText()
@@ -256,8 +273,11 @@ class ApplySoundRuleInstruction(language: Language, val ruleRef: RuleRef, arg: S
         return listOf(text)
     }
 
-    override fun toEditableText(): String {
-        return InstructionType.ApplySoundRule.insnName + " '" + ruleRef.resolve().name + "' to " + seekTarget.toEditableText()
+    override fun toRichText(): RichText {
+        val rule = ruleRef.resolve()
+        return InstructionType.ApplySoundRule.insnName.rich() + " '".rich() +
+                rule.name.rich(linkType = "rule", linkId = rule.id) + "' to ".rich() +
+                seekTarget.toEditableText().rich(emph = true)
     }
 
     companion object {
@@ -341,9 +361,9 @@ class InsertInstruction(arg: String, val relIndex: Int, val seekTarget: SeekTarg
         return word.derive(phonemes.result())
     }
 
-    override fun toEditableText(): String {
+    override fun toRichText(): RichText {
         val relIndexWord = if (relIndex == -1) "before" else "after"
-        return "insert '$arg' $relIndexWord ${seekTarget.toEditableText()}"
+        return "insert '$arg' $relIndexWord ${seekTarget.toEditableText()}".richText()
     }
 
     companion object {
@@ -370,9 +390,9 @@ class ChangePhonemeClassInstruction(val relativeIndex: Int, val oldClass: String
         phonemes.replaceAtRelative(relativeIndex, newPhoneme.graphemes[0])
     }
 
-    override fun toEditableText(): String {
+    override fun toRichText(): RichText {
         val relIndex = RelativeOrdinals.toString(relativeIndex)?.plus(" ") ?: ""
-        return "$relIndex$oldClass becomes $newClass"
+        return "$relIndex$oldClass becomes $newClass".richText()
     }
 
     companion object {

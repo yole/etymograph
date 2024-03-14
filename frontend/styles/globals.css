@@ -14,6 +14,7 @@ code {
 .source {
   font-style: italic;
   font-size: smaller;
+  margin-top: 5pt;
 }
 
 .source-span {
@@ -51,5 +52,9 @@ code {
 
 .stressed {
   text-decoration: underline;
+  font-weight: bold;
+}
+
+.richTextEmph {
   font-weight: bold;
 }

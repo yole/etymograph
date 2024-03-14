@@ -3689,7 +3689,6 @@
             "id": 211,
             "text": "noro",
             "lang": "S",
-            "gloss": "run.IMP",
             "sourceRefs": [
                 {
                     "pubId": 1,
@@ -4467,7 +4466,7 @@
         },
         {
             "id": 277,
-            "text": "tíria",
+            "text": "tiria",
             "lang": "S",
             "gloss": "watch",
             "pos": "V",
@@ -4475,6 +4474,10 @@
                 {
                     "pubId": 1,
                     "refText": "25"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-2230295347.html"
                 }
             ]
         },
@@ -4507,7 +4510,6 @@
             "id": 280,
             "text": "remmin",
             "lang": "S",
-            "gloss": "meshed.PL",
             "sourceRefs": [
                 {
                     "pubId": 1,
@@ -10826,9 +10828,7 @@
         {
             "id": 1138,
             "text": "tíriel",
-            "lang": "S",
-            "gloss": "having watched",
-            "pos": "PTCP"
+            "lang": "S"
         },
         {
             "id": 1139,
@@ -10977,6 +10977,390 @@
                 {
                     "pubId": null,
                     "refText": "https://eldamo.org/content/words/word-1009966641.html"
+                }
+            ]
+        },
+        {
+            "id": 1157,
+            "text": "Fanuilos",
+            "lang": "S"
+        },
+        {
+            "id": 1158,
+            "text": "fân",
+            "lang": "S",
+            "gloss": "cloud",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "26"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-4069992565.html"
+                }
+            ]
+        },
+        {
+            "id": 1160,
+            "text": "ui",
+            "lang": "S",
+            "gloss": "ever",
+            "pos": "ADV",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "Let:278"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-1094080739.html"
+                }
+            ]
+        },
+        {
+            "id": 1161,
+            "text": "loss",
+            "lang": "S",
+            "gloss": "snow",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "26"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-621911321.html"
+                }
+            ]
+        },
+        {
+            "id": 1162,
+            "text": "le",
+            "lang": "S",
+            "gloss": "thee",
+            "pos": "PRON",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "26"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-1581961535.html"
+                }
+            ]
+        },
+        {
+            "id": 1165,
+            "text": "linnathon",
+            "lang": "S"
+        },
+        {
+            "id": 1166,
+            "text": "linna-",
+            "lang": "S",
+            "gloss": "sing",
+            "pos": "V",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "27"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-578926463.html"
+                }
+            ]
+        },
+        {
+            "id": 1167,
+            "text": "sí",
+            "lang": "S",
+            "gloss": "here",
+            "pos": "ADV"
+        },
+        {
+            "id": 1173,
+            "text": "palan-diriel",
+            "lang": "S",
+            "sourceRefs": [
+                {
+                    "pubId": 15,
+                    "refText": "729"
+                }
+            ]
+        },
+        {
+            "id": 1175,
+            "text": "diriel",
+            "lang": "S"
+        },
+        {
+            "id": 1176,
+            "text": "tiriel",
+            "lang": "S"
+        },
+        {
+            "id": 1178,
+            "text": "nallon",
+            "lang": "S",
+            "sourceRefs": [
+                {
+                    "pubId": 15,
+                    "refText": "729"
+                }
+            ]
+        },
+        {
+            "id": 1179,
+            "text": "nalla-",
+            "lang": "S",
+            "gloss": "cry",
+            "pos": "V",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "RGEO:64"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-3664782271.html"
+                }
+            ]
+        },
+        {
+            "id": 1180,
+            "text": "di’nguruthos",
+            "lang": "S",
+            "sourceRefs": [
+                {
+                    "pubId": 15,
+                    "refText": "729"
+                }
+            ]
+        },
+        {
+            "id": 1181,
+            "text": "di",
+            "lang": "S",
+            "gloss": "under",
+            "pos": "PREP"
+        },
+        {
+            "id": 1183,
+            "text": "nguruthos",
+            "lang": "S"
+        },
+        {
+            "id": 1184,
+            "text": "guruthos",
+            "lang": "S"
+        },
+        {
+            "id": 1185,
+            "text": "guru",
+            "lang": "S",
+            "gloss": "death",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "87"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-831232163.html"
+                }
+            ]
+        },
+        {
+            "id": 1187,
+            "text": "ñgurū",
+            "lang": "CE",
+            "gloss": "death",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "87"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-2804785965.html"
+                }
+            ]
+        },
+        {
+            "id": 1188,
+            "text": "thoss",
+            "lang": "S",
+            "gloss": "fear",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "87"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-3018033807.html"
+                }
+            ]
+        },
+        {
+            "id": 1190,
+            "text": "nor-",
+            "lang": "S",
+            "gloss": "run",
+            "pos": "V",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "168"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-2693935519.html"
+                }
+            ]
+        },
+        {
+            "id": 1191,
+            "text": "tiro",
+            "lang": "S",
+            "sourceRefs": [
+                {
+                    "pubId": 15,
+                    "refText": "729"
+                }
+            ]
+        },
+        {
+            "id": 1192,
+            "text": "tir-",
+            "lang": "S",
+            "gloss": "look",
+            "fullGloss": "look, watch, guard",
+            "pos": "V",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "95"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-1681096947.html"
+                }
+            ]
+        },
+        {
+            "id": 1193,
+            "text": "nin",
+            "lang": "S",
+            "gloss": "me",
+            "pos": "PRON",
+            "sourceRefs": [
+                {
+                    "pubId": 15,
+                    "refText": "729"
+                }
+            ]
+        },
+        {
+            "id": 1194,
+            "text": "ni",
+            "lang": "CE",
+            "gloss": "I, me",
+            "pos": "PRON",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "68"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-4061029919.html"
+                }
+            ]
+        },
+        {
+            "id": 1197,
+            "text": "covad-",
+            "lang": "S",
+            "gloss": "make meet",
+            "pos": "V",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "16"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-325480393.html"
+                }
+            ]
+        },
+        {
+            "id": 1199,
+            "text": "ennyn",
+            "lang": "S",
+            "sourceRefs": [
+                {
+                    "pubId": 15,
+                    "refText": "305"
+                }
+            ]
+        },
+        {
+            "id": 1200,
+            "text": "annon",
+            "lang": "S",
+            "gloss": "gate",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "40"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-3606114301.html"
+                }
+            ]
+        },
+        {
+            "id": 1201,
+            "text": "aran",
+            "lang": "S",
+            "gloss": "king",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": 15,
+                    "refText": "305"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-658710813.html"
+                }
+            ]
+        },
+        {
+            "id": 1202,
+            "text": "ANA-",
+            "lang": "CE",
+            "gloss": "toward",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "40"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-3999209813.html"
                 }
             ]
         }
@@ -18787,6 +19171,408 @@
             ],
             "preInstructions": [
             ]
+        },
+        {
+            "id": 1163,
+            "name": "s-future",
+            "fromLang": "S",
+            "toLang": "S",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "Append",
+                            "args": [
+                                "'tha'"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "characters": "a"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "Append",
+                            "args": [
+                                "'atha'"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".FUT",
+            "fromPOS": "V",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-824238907.html"
+                }
+            ],
+            "notes": "",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 1164,
+            "name": "s-1sg",
+            "fromLang": "S",
+            "toLang": "S",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeEnding",
+                            "args": [
+                                "on"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "characters": "a"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "Append",
+                            "args": [
+                                "'n'"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".1SG",
+            "fromPOS": "V",
+            "notes": "",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 1169,
+            "name": "s-lengthen-vowel",
+            "fromLang": "S",
+            "toLang": "S",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSoundClass",
+                            "args": [
+                                "short",
+                                "long",
+                                "0"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "PhonemeMatches",
+                        "cls": "short vowel"
+                    }
+                }
+            ],
+            "addedCategories": null,
+            "notes": "",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 1170,
+            "name": "s-ppart-root-change",
+            "fromLang": "S",
+            "toLang": "S",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ApplySoundRule",
+                            "args": [
+                                "1148",
+                                "first vowel"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.SyllableRuleConditionData",
+                        "matchType": "EndsWith",
+                        "index": 1,
+                        "cls": "consonant"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ApplySoundRule",
+                            "args": [
+                                "1169",
+                                "first vowel"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": null,
+            "notes": "",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 1171,
+            "name": "s-ppart",
+            "fromLang": "S",
+            "toLang": "S",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeEnding",
+                            "args": [
+                                "iel"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OrRuleConditionData",
+                        "members": [
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "EndsWith",
+                                "characters": "ia"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "EndsWith",
+                                "characters": "a"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "Append",
+                            "args": [
+                                "'iel'"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".PPART",
+            "fromPOS": "V",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-957492101.html"
+                }
+            ],
+            "preInstructions": [
+                {
+                    "type": "ApplyRule",
+                    "args": [
+                        "1170"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 1172,
+            "name": "s-part",
+            "fromLang": "S",
+            "toLang": "S",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeEnding",
+                            "args": [
+                                "ol"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "characters": "a"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "Append",
+                            "args": [
+                                "'ol'"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".PART",
+            "fromPOS": "V",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-957492101.html"
+                }
+            ],
+            "notes": "",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 1189,
+            "name": "s-imp",
+            "fromLang": "S",
+            "toLang": "S",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeEnding",
+                            "args": [
+                                "o"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "characters": "a"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "Append",
+                            "args": [
+                                "'o'"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".IMP",
+            "fromPOS": "V",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-3326716807.html"
+                }
+            ],
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 1195,
+            "name": "s-past",
+            "fromLang": "S",
+            "toLang": "S",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeEnding",
+                            "args": [
+                                "nt"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "characters": "d"
+                    }
+                }
+            ],
+            "addedCategories": ".PST",
+            "fromPOS": "V",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-2212943647.html"
+                }
+            ],
+            "notes": "",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 1196,
+            "name": "s-passive-part",
+            "fromLang": "S",
+            "toLang": "S",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeEnding",
+                            "args": [
+                                "nnen"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "characters": "nt"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "Append",
+                            "args": [
+                                "'en'"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".PPP",
+            "fromPOS": "V",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-3022208083.html"
+                }
+            ],
+            "notes": "",
+            "preInstructions": [
+                {
+                    "type": "ApplyRule",
+                    "args": [
+                        "1195"
+                    ]
+                }
+            ]
         }
     ],
     "links": [
@@ -19519,7 +20305,13 @@
         {
             "from": 201,
             "to": 202,
-            "type": ">"
+            "type": ">",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "16"
+                }
+            ]
         },
         {
             "from": 204,
@@ -19753,7 +20545,10 @@
         {
             "from": 280,
             "to": 282,
-            "type": ">"
+            "type": ">",
+            "ruleIds": [
+                1149
+            ]
         },
         {
             "from": 283,
@@ -22210,7 +23005,10 @@
         {
             "from": 1138,
             "to": 277,
-            "type": ">"
+            "type": ">",
+            "ruleIds": [
+                1171
+            ]
         },
         {
             "from": 1139,
@@ -22235,6 +23033,115 @@
             "ruleIds": [
                 1145
             ]
+        },
+        {
+            "from": 1165,
+            "to": 1166,
+            "type": ">",
+            "ruleIds": [
+                1163,
+                1164
+            ]
+        },
+        {
+            "from": 1175,
+            "to": 1176,
+            "type": ">",
+            "ruleIds": [
+                1137
+            ]
+        },
+        {
+            "from": 1176,
+            "to": 277,
+            "type": ">",
+            "ruleIds": [
+                1172
+            ]
+        },
+        {
+            "from": 1178,
+            "to": 1179,
+            "type": ">",
+            "ruleIds": [
+                1164
+            ]
+        },
+        {
+            "from": 1183,
+            "to": 1184,
+            "type": ">",
+            "ruleIds": [
+                1137
+            ]
+        },
+        {
+            "from": 1185,
+            "to": 1187,
+            "type": ">",
+            "ruleIds": [
+                1064,
+                1055
+            ]
+        },
+        {
+            "from": 211,
+            "to": 1190,
+            "type": ">",
+            "ruleIds": [
+                1189
+            ]
+        },
+        {
+            "from": 1191,
+            "to": 1192,
+            "type": ">",
+            "ruleIds": [
+                1189
+            ]
+        },
+        {
+            "from": 1192,
+            "to": 89,
+            "type": ">"
+        },
+        {
+            "from": 1193,
+            "to": 1194,
+            "type": ">"
+        },
+        {
+            "from": 201,
+            "to": 1197,
+            "type": ">",
+            "ruleIds": [
+                1196,
+                1137
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "16"
+                }
+            ]
+        },
+        {
+            "from": 1199,
+            "to": 1200,
+            "type": ">",
+            "ruleIds": [
+                1149
+            ]
+        },
+        {
+            "from": 1074,
+            "to": 1202,
+            "type": ">"
+        },
+        {
+            "from": 1200,
+            "to": 1202,
+            "type": ">"
         }
     ],
     "corpusTexts": [
@@ -22361,6 +23268,12 @@
                 null,
                 null,
                 null
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 15,
+                    "refText": "209"
+                }
             ]
         },
         {
@@ -22378,7 +23291,7 @@
         },
         {
             "id": 527,
-            "text": "A Elbereth Gilthoniel\nsilevren penna míriel\no menel aglar elenath!\nNa-chaered palan-díriel\no galadh-remmin Ennorath\nFanuilos le linnathon\nnef aear, sí nef aearon",
+            "text": "A Elbereth Gilthoniel\nsilevren penna míriel\no menel aglar elenath!\nNa-chaered palan-díriel\no galadh-remmin Ennorath\nFanuilos, le linnathon\nnef aear, sí nef aearon",
             "title": "A Elbereth Gilthoniel",
             "lang": "S",
             "wordIds": [
@@ -22397,12 +23310,12 @@
                 null,
                 null,
                 1146,
-                null,
-                null,
-                null,
+                1157,
+                1162,
+                1165,
                 1078,
                 1139,
-                null,
+                1167,
                 null,
                 null
             ]
@@ -22998,6 +23911,50 @@
                 {
                     "pubId": 5,
                     "refText": "40"
+                }
+            ]
+        },
+        {
+            "id": 1168,
+            "text": "A Elbereth Gilthoniel\no menel palan-diriel\nle nallon sí di’nguruthos\na tiro nin, Fanuilos",
+            "title": "A Elbereth Gilthoniel (Two Towers)",
+            "lang": "S",
+            "wordIds": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                1173,
+                null,
+                1178,
+                null,
+                1180,
+                null,
+                1191,
+                1193
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 15,
+                    "refText": "729"
+                }
+            ]
+        },
+        {
+            "id": 1198,
+            "text": "Ennyn Durin Aran Moria\npedo mellon a minno\nim Narvi hain echant \nCelebrimbor o Eregion teithant i thiw hin",
+            "title": "Moria Gate Inscription",
+            "lang": "S",
+            "wordIds": [
+                1199,
+                null,
+                1201
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 15,
+                    "refText": "305"
                 }
             ]
         }
@@ -24296,6 +25253,39 @@
                 192,
                 1141
             ]
+        },
+        {
+            "id": 1159,
+            "compoundId": 1157,
+            "componentIds": [
+                1158,
+                1160,
+                1161
+            ]
+        },
+        {
+            "id": 1174,
+            "compoundId": 1173,
+            "componentIds": [
+                273,
+                1175
+            ]
+        },
+        {
+            "id": 1182,
+            "compoundId": 1180,
+            "componentIds": [
+                1181,
+                1183
+            ]
+        },
+        {
+            "id": 1186,
+            "compoundId": 1184,
+            "componentIds": [
+                1185,
+                1188
+            ]
         }
     ],
     "translations": [
@@ -24496,7 +25486,8 @@
             "lang": "S",
             "name": "Number",
             "pos": [
-                "N"
+                "N",
+                "V"
             ],
             "values": [
                 {
@@ -24510,6 +25501,90 @@
                 {
                     "name": "Class Plural",
                     "abbreviation": "CPL"
+                }
+            ]
+        },
+        {
+            "lang": "S",
+            "name": "Tense",
+            "pos": [
+                "V"
+            ],
+            "values": [
+                {
+                    "name": "Future",
+                    "abbreviation": "FUT"
+                },
+                {
+                    "name": "Past",
+                    "abbreviation": "PST"
+                }
+            ]
+        },
+        {
+            "lang": "S",
+            "name": "Person",
+            "pos": [
+                "V"
+            ],
+            "values": [
+                {
+                    "name": "1st",
+                    "abbreviation": "1"
+                },
+                {
+                    "name": "1st inclusive",
+                    "abbreviation": "1IN"
+                },
+                {
+                    "name": "1st exclusive",
+                    "abbreviation": "1EX"
+                },
+                {
+                    "name": "2nd formal",
+                    "abbreviation": "2"
+                },
+                {
+                    "name": "2nd familiar",
+                    "abbreviation": "2FAM"
+                },
+                {
+                    "name": "3rd",
+                    "abbreviation": "3"
+                }
+            ]
+        },
+        {
+            "lang": "S",
+            "name": "Non-finite form",
+            "pos": [
+                "V"
+            ],
+            "values": [
+                {
+                    "name": "Present active participle",
+                    "abbreviation": "PART"
+                },
+                {
+                    "name": "Past active participle",
+                    "abbreviation": "PPART"
+                },
+                {
+                    "name": "Past passive participle",
+                    "abbreviation": "PPP"
+                }
+            ]
+        },
+        {
+            "lang": "S",
+            "name": "Mood",
+            "pos": [
+                "V"
+            ],
+            "values": [
+                {
+                    "name": "Imperative",
+                    "abbreviation": "IMP"
                 }
             ]
         }

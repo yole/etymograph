@@ -7,7 +7,7 @@ import ru.yole.etymograph.*
 
 @RestController
 class RuleController(val graphService: GraphService) {
-    data class RuleBranchViewModel(val conditions: String, val instructions: List<String>)
+    data class RuleBranchViewModel(val conditions: RichText, val instructions: List<RichText>)
 
     data class RuleLinkViewModel(
         val toRuleId: Int,
@@ -40,7 +40,7 @@ class RuleController(val graphService: GraphService) {
         val notes: String?,
         val paradigmId: Int?,
         val paradigmName: String?,
-        val preInstructions: List<String>,
+        val preInstructions: List<RichText>,
         val branches: List<RuleBranchViewModel>,
         val links: List<RuleLinkViewModel>,
         val examples: List<RuleExampleViewModel>
@@ -136,7 +136,7 @@ class RuleController(val graphService: GraphService) {
             notes.nullize(),
             paradigm?.id,
             paradigm?.name,
-            logic.preInstructions.map { it.toEditableText() },
+            logic.preInstructions.map { it.toRichText() },
             logic.branches.map { it.toViewModel(isUnconditional()) },
             links.map { RuleLinkViewModel(it.id, it.name) },
             if (!withExamples) emptyList() else graph.findRuleExamples(this).map { link ->
@@ -167,8 +167,8 @@ class RuleController(val graphService: GraphService) {
 
     private fun RuleBranch.toViewModel(isUnconditional: Boolean): RuleBranchViewModel {
         return RuleBranchViewModel(
-            if (isUnconditional) "" else condition.toEditableText(),
-            instructions.map { it.toEditableText() }
+            if (isUnconditional) RichText(emptyList()) else condition.toRichText(),
+            instructions.map { it.toRichText() }
         )
     }
 

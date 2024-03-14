@@ -48,7 +48,12 @@ sealed class RuleCondition {
     }
 
     abstract fun matches(word: Word, phonemes: PhonemeIterator): Boolean
-    abstract fun toEditableText(): String
+
+    fun toEditableText(): String {
+        return toRichText().toString()
+    }
+
+    abstract fun toRichText(): RichText
 
     open fun findLeafConditions(predicate: (RuleCondition) -> Boolean): List<RuleCondition> {
         return if (predicate(this)) listOf(this) else emptyList()
@@ -159,13 +164,12 @@ class LeafRuleCondition(
     private fun matchPhoneme(phonemes: PhonemeIterator) =
         (phonemeClass?.matchesCurrent(phonemes) ?: (phonemes.current == parameter)).negateIfNeeded()
 
-    override fun toEditableText(): String =
+    override fun toRichText(): RichText =
         if (type.takesArgument) {
             val parameterName = parameterToEditableText()
-            type.condName + (if (negated) notPrefix else "") + parameterName
-        }
-        else
-            type.condName
+            type.condName.rich() + (if (negated) notPrefix else "").rich() + (parameterName ?: "").rich(emph = true)
+        } else
+            type.condName.richText()
 
     private fun parameterToEditableText(): String? {
         if (type == ConditionType.SyllableIndex) {
@@ -273,9 +277,9 @@ class SyllableRuleCondition(
         throw IllegalStateException("This condition is not phonemic")
     }
 
-    override fun toEditableText(): String {
+    override fun toRichText(): RichText {
         val paramText = if (phonemeClass != null) "a ${phonemeClass.name}" else "'$parameter'"
-        return "${Ordinals.toString(index)} $syllable ${matchType.condName} $paramText"
+        return richText("${Ordinals.toString(index)} $syllable ${matchType.condName} $paramText".rich())
     }
 
     companion object {
@@ -322,27 +326,13 @@ class RelativePhonemeRuleCondition(
         return matchesCurrent(phonemes) xor negated
     }
 
-    override fun toEditableText(): String {
-        return buildString {
-            append(if (relative) RelativeOrdinals.toString(relativeIndex) else Ordinals.toString(relativeIndex))
-            append(" ")
-            if (targetPhonemeClass != null) {
-                append(targetPhonemeClass.name)
-            }
-            else {
-                append("sound")
-            }
-            append(" is ")
-            if (negated) {
-                append(LeafRuleCondition.notPrefix)
-            }
-            if (matchPhonemeClass != null) {
-                append(matchPhonemeClass.name)
-            }
-            else {
-                append("'$parameter'")
-            }
-        }
+    override fun toRichText(): RichText {
+        return (if (relative) RelativeOrdinals.toString(relativeIndex) else Ordinals.toString(relativeIndex))!!.rich(true) +
+            " ".rich() +
+            (targetPhonemeClass?.name?.rich(true) ?: "sound".rich()) +
+            " is ".rich() +
+            (if (negated) LeafRuleCondition.notPrefix.rich() else "".rich()) +
+            (matchPhonemeClass?.name?.rich(true) ?: "'$parameter'".rich(true))
     }
 
     companion object {
@@ -378,9 +368,9 @@ class OrRuleCondition(val members: List<RuleCondition>) : RuleCondition() {
 
     override fun matches(word: Word, phonemes: PhonemeIterator) = members.any { it.matches(word, phonemes) }
 
-    override fun toEditableText(): String = members.joinToString(OR) {
-        val et = it.toEditableText()
-        if (it is AndRuleCondition) "($et)" else et
+    override fun toRichText(): RichText = members.joinToRichText(OR) {
+        val et = it.toRichText()
+        if (it is AndRuleCondition) et.prepend("(").append(")") else et
     }
 
     override fun findLeafConditions(predicate: (RuleCondition) -> Boolean): List<RuleCondition> {
@@ -401,9 +391,9 @@ class AndRuleCondition(val members: List<RuleCondition>) : RuleCondition() {
 
     override fun matches(word: Word, phonemes: PhonemeIterator) = members.all { it.matches(word, phonemes) }
 
-    override fun toEditableText(): String = members.joinToString(AND) {
-        val et = it.toEditableText()
-        if (it is OrRuleCondition) "($et)" else et
+    override fun toRichText(): RichText = members.joinToRichText(AND) {
+        val et = it.toRichText()
+        if (it is OrRuleCondition) et.prepend(")").append(")") else et
     }
 
     override fun findLeafConditions(predicate: (RuleCondition) -> Boolean): List<RuleCondition> {
@@ -419,7 +409,7 @@ object OtherwiseCondition : RuleCondition() {
     override fun isPhonemic(): Boolean = false
     override fun matches(word: Word): Boolean = true
     override fun matches(word: Word, phonemes: PhonemeIterator) = true
-    override fun toEditableText(): String = OTHERWISE
+    override fun toRichText(): RichText = OTHERWISE.richText()
 
     const val OTHERWISE = "otherwise"
 }

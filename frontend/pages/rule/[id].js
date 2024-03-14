@@ -6,6 +6,7 @@ import {useRouter} from "next/router";
 import Link from "next/link";
 import RuleForm from "@/components/RuleForm";
 import SourceRefs from "@/components/SourceRefs";
+import RichText from "@/components/RichText";
 
 export const config = {
     unstable_runtimeJS: true
@@ -76,12 +77,12 @@ export default function Rule(params) {
             <SourceRefs source={rule.source}/>
             <p/>
             <ul>
-                {rule.preInstructions.map(r => <li>{r}</li>)}
+                {rule.preInstructions.map(r => <li><RichText richText={r}></RichText></li>)}
             </ul>
             {rule.branches.map(b => <>
-                {b.conditions !== "" && <div>{b.conditions}:</div>}
+                {b.conditions.fragments.length > 0 && <div><RichText richText={b.conditions}/>:</div>}
                 <ul>
-                    {b.instructions.map(i => <li>{i}</li>)}
+                    {b.instructions.map(i => <li><RichText richText={i}></RichText></li>)}
                 </ul>
             </>)}
             {rule.notes != null && <>
