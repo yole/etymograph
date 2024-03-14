@@ -110,7 +110,7 @@ class CorpusController(val graphService: GraphService) {
     fun editText(@PathVariable id: Int, @RequestBody params: CorpusTextParams) {
         val corpusText = graphService.resolveCorpusText(id)
         corpusText.text = params.text
-        corpusText.title = params.title
+        corpusText.title = params.title.nullize()
         corpusText.source = parseSourceRefs(graphService.graph, params.source)
         corpusText.notes = params.notes.nullize()
         graphService.graph.save()
