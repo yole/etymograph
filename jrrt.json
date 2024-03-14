@@ -3482,7 +3482,8 @@
             "id": 193,
             "text": "medui",
             "lang": "S",
-            "gloss": "end, final, last",
+            "gloss": "end",
+            "fullGloss": "end, final, last",
             "sourceRefs": [
                 {
                     "pubId": 1,
@@ -11363,6 +11364,2219 @@
                     "refText": "https://eldamo.org/content/words/word-3999209813.html"
                 }
             ]
+        },
+        {
+            "id": 1203,
+            "text": "Moria",
+            "lang": "S",
+            "pos": "NP",
+            "sourceRefs": [
+                {
+                    "pubId": 15,
+                    "refText": "305"
+                }
+            ]
+        },
+        {
+            "id": 1204,
+            "text": "morn",
+            "lang": "S",
+            "gloss": "black",
+            "pos": "ADJ",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "35"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-509187197.html"
+                }
+            ]
+        },
+        {
+            "id": 1206,
+            "text": "iâ",
+            "lang": "S",
+            "gloss": "chasm",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "35"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-2498098539.html"
+                }
+            ]
+        },
+        {
+            "id": 1207,
+            "text": "yagā",
+            "lang": "CE",
+            "gloss": "chasm",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "Let:383"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-1579426943.html"
+                }
+            ]
+        },
+        {
+            "id": 1208,
+            "text": "YAG-",
+            "lang": "CE",
+            "gloss": "gap",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "35"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-4031180395.html"
+                }
+            ]
+        },
+        {
+            "id": 1209,
+            "text": "pedo",
+            "lang": "S",
+            "sourceRefs": [
+                {
+                    "pubId": 15,
+                    "refText": "305"
+                }
+            ]
+        },
+        {
+            "id": 1210,
+            "text": "ped-",
+            "lang": "S",
+            "gloss": "say",
+            "pos": "V",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "40"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-599418975.html"
+                }
+            ]
+        },
+        {
+            "id": 1211,
+            "text": "mellon",
+            "lang": "S",
+            "gloss": "friend",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": 15,
+                    "refText": "305"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-2964964287.html"
+                }
+            ]
+        },
+        {
+            "id": 1212,
+            "text": "a",
+            "lang": "S",
+            "gloss": "and",
+            "pos": "CONJ",
+            "sourceRefs": [
+                {
+                    "pubId": 15,
+                    "refText": "305"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-2814200763.html"
+                }
+            ]
+        },
+        {
+            "id": 1213,
+            "text": "minno",
+            "lang": "S",
+            "sourceRefs": [
+                {
+                    "pubId": 15,
+                    "refText": "305"
+                }
+            ]
+        },
+        {
+            "id": 1214,
+            "text": "minna-",
+            "lang": "S",
+            "gloss": "enter",
+            "pos": "V",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "41"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-2086508063.html"
+                }
+            ]
+        },
+        {
+            "id": 1215,
+            "text": "MI-",
+            "lang": "CE",
+            "gloss": "in",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "41"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-4236320083.html"
+                }
+            ]
+        },
+        {
+            "id": 1216,
+            "text": "im",
+            "lang": "S",
+            "gloss": "I",
+            "pos": "PRON",
+            "sourceRefs": [
+                {
+                    "pubId": 15,
+                    "refText": "305"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-3035605195.html"
+                }
+            ]
+        },
+        {
+            "id": 1217,
+            "text": "immā",
+            "lang": "CE",
+            "gloss": "reflexive",
+            "sourceRefs": [
+                {
+                    "pubId": 12,
+                    "refText": "14"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-4250421713.html"
+                }
+            ]
+        },
+        {
+            "id": 1218,
+            "text": "Narvi",
+            "lang": "S",
+            "pos": "NP",
+            "sourceRefs": [
+                {
+                    "pubId": 15,
+                    "refText": "305"
+                }
+            ]
+        },
+        {
+            "id": 1219,
+            "text": "hain",
+            "lang": "S",
+            "sourceRefs": [
+                {
+                    "pubId": 15,
+                    "refText": "305"
+                }
+            ]
+        },
+        {
+            "id": 1220,
+            "text": "san",
+            "lang": "S",
+            "gloss": "that",
+            "pos": "PRON",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "42"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-3265662125.html"
+                }
+            ]
+        },
+        {
+            "id": 1221,
+            "text": "echant",
+            "lang": "S",
+            "sourceRefs": [
+                {
+                    "pubId": 15,
+                    "refText": "305"
+                }
+            ]
+        },
+        {
+            "id": 1222,
+            "text": "echad-",
+            "lang": "S",
+            "gloss": "form",
+            "pos": "V",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "42"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-630017767.html"
+                }
+            ]
+        },
+        {
+            "id": 1223,
+            "text": "Celebrimbor",
+            "lang": "S",
+            "pos": "NP",
+            "sourceRefs": [
+                {
+                    "pubId": 15,
+                    "refText": "305"
+                }
+            ]
+        },
+        {
+            "id": 1224,
+            "text": "Eregion",
+            "lang": "S",
+            "pos": "NP",
+            "sourceRefs": [
+                {
+                    "pubId": 15,
+                    "refText": "305"
+                }
+            ]
+        },
+        {
+            "id": 1225,
+            "text": "celebrin",
+            "lang": "S",
+            "gloss": "like silver",
+            "pos": "ADJ",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "42"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-281453255.html"
+                }
+            ]
+        },
+        {
+            "id": 1227,
+            "text": "bor",
+            "lang": "S"
+        },
+        {
+            "id": 1228,
+            "text": "paur",
+            "lang": "S",
+            "gloss": "fist",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "42"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-3702347683.htmlp"
+                }
+            ]
+        },
+        {
+            "id": 1229,
+            "text": "ion",
+            "lang": "S",
+            "gloss": "region",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "37"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-3076614207.html"
+                }
+            ]
+        },
+        {
+            "id": 1230,
+            "text": "iaun",
+            "lang": "S",
+            "gloss": "wide",
+            "pos": "ADJ",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "42"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-719618883.html"
+                }
+            ]
+        },
+        {
+            "id": 1231,
+            "text": "yānā",
+            "lang": "CE",
+            "gloss": "wide",
+            "pos": "ADJ",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "42"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-447044619.html"
+                }
+            ]
+        },
+        {
+            "id": 1233,
+            "text": "ereg",
+            "lang": "S",
+            "gloss": "holly",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "42"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-4109992773.html"
+                }
+            ]
+        },
+        {
+            "id": 1235,
+            "text": "teithant",
+            "lang": "S",
+            "sourceRefs": [
+                {
+                    "pubId": 15,
+                    "refText": "305"
+                }
+            ]
+        },
+        {
+            "id": 1236,
+            "text": "teitha-",
+            "lang": "S",
+            "gloss": "write",
+            "pos": "V",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "43"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-956996613.html"
+                }
+            ]
+        },
+        {
+            "id": 1237,
+            "text": "i",
+            "lang": "S",
+            "gloss": "the",
+            "sourceRefs": [
+                {
+                    "pubId": 15,
+                    "refText": "305"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-1324303307.html"
+                }
+            ]
+        },
+        {
+            "id": 1238,
+            "text": "thiw",
+            "lang": "S",
+            "sourceRefs": [
+                {
+                    "pubId": 15,
+                    "refText": "305"
+                }
+            ]
+        },
+        {
+            "id": 1239,
+            "text": "hin",
+            "lang": "S",
+            "sourceRefs": [
+                {
+                    "pubId": 15,
+                    "refText": "305"
+                }
+            ]
+        },
+        {
+            "id": 1240,
+            "text": "sen",
+            "lang": "S",
+            "gloss": "this",
+            "pos": "PRON",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "44"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-1324303307.html"
+                }
+            ]
+        },
+        {
+            "id": 1242,
+            "text": "edhellen",
+            "lang": "S",
+            "gloss": "elvish",
+            "pos": "ADJ",
+            "sourceRefs": [
+                {
+                    "pubId": 15,
+                    "refText": "307"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-443709235.html"
+                }
+            ]
+        },
+        {
+            "id": 1244,
+            "text": "Durin",
+            "lang": "S",
+            "pos": "NP",
+            "sourceRefs": [
+                {
+                    "pubId": 15,
+                    "refText": "305"
+                }
+            ]
+        },
+        {
+            "id": 1245,
+            "text": "edro",
+            "lang": "S",
+            "sourceRefs": [
+                {
+                    "pubId": 15,
+                    "refText": "307"
+                }
+            ]
+        },
+        {
+            "id": 1246,
+            "text": "edra-",
+            "lang": "S",
+            "gloss": "open",
+            "pos": "V",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "45"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-209902113.html"
+                }
+            ]
+        },
+        {
+            "id": 1247,
+            "text": "etr-",
+            "lang": "CE",
+            "gloss": "open",
+            "pos": "V",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "45"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-2220469759.html"
+                }
+            ]
+        },
+        {
+            "id": 1248,
+            "text": "hi",
+            "lang": "S",
+            "gloss": "now",
+            "sourceRefs": [
+                {
+                    "pubId": 15,
+                    "refText": "307"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-1925514569.html"
+                }
+            ]
+        },
+        {
+            "id": 1249,
+            "text": "men",
+            "lang": "S",
+            "gloss": "us",
+            "pos": "PRON",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "38"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-2968542933.html"
+                }
+            ]
+        },
+        {
+            "id": 1250,
+            "text": "me",
+            "lang": "CE",
+            "gloss": "1st-pl-exclusive-pronound",
+            "pos": "PRON",
+            "sourceRefs": [
+                {
+                    "pubId": 12,
+                    "refText": "25"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-3059005759.html"
+                }
+            ]
+        },
+        {
+            "id": 1251,
+            "text": "an",
+            "lang": "S",
+            "gloss": "for",
+            "pos": "PREP",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "38"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-667014213.html"
+                }
+            ]
+        },
+        {
+            "id": 1252,
+            "text": "ammen",
+            "lang": "S",
+            "sourceRefs": [
+                {
+                    "pubId": 15,
+                    "refText": "307"
+                }
+            ]
+        },
+        {
+            "id": 1254,
+            "text": "fennas",
+            "lang": "S",
+            "gloss": "doorway",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "45"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-3912347965.html"
+                }
+            ]
+        },
+        {
+            "id": 1256,
+            "text": "fenn",
+            "lang": "S",
+            "gloss": "door",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-967027745.html"
+                }
+            ]
+        },
+        {
+            "id": 1257,
+            "text": "nogothrim",
+            "lang": "S",
+            "sourceRefs": [
+                {
+                    "pubId": 15,
+                    "refText": "307"
+                }
+            ]
+        },
+        {
+            "id": 1258,
+            "text": "nogoth",
+            "lang": "S",
+            "gloss": "dwarf",
+            "pos": "N",
+            "classes": [
+                "cpl-rim"
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "45"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-1973906879.html"
+                }
+            ]
+        },
+        {
+            "id": 1260,
+            "text": "lasto",
+            "lang": "S",
+            "sourceRefs": [
+                {
+                    "pubId": 15,
+                    "refText": "307"
+                }
+            ]
+        },
+        {
+            "id": 1261,
+            "text": "lasta-",
+            "lang": "S",
+            "gloss": "listen",
+            "pos": "V",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "46"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-3923493535.html"
+                }
+            ]
+        },
+        {
+            "id": 1262,
+            "text": "LAS-",
+            "lang": "CE",
+            "gloss": "listen",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "46"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-52259685.html"
+                }
+            ]
+        },
+        {
+            "id": 1263,
+            "text": "beth",
+            "lang": "S",
+            "sourceRefs": [
+                {
+                    "pubId": 15,
+                    "refText": "307"
+                }
+            ]
+        },
+        {
+            "id": 1264,
+            "text": "peth",
+            "lang": "S",
+            "gloss": "word",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "46"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-184000497.html"
+                }
+            ]
+        },
+        {
+            "id": 1265,
+            "text": "mín",
+            "lang": "S",
+            "gloss": "our",
+            "pos": "PRON",
+            "sourceRefs": [
+                {
+                    "pubId": 0,
+                    "refText": "22"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-1998998965.html"
+                }
+            ]
+        },
+        {
+            "id": 1266,
+            "text": "lam",
+            "lang": "S",
+            "gloss": "tongue",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "46"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-3738278997.html"
+                }
+            ]
+        },
+        {
+            "id": 1267,
+            "text": "lammen",
+            "lang": "S",
+            "sourceRefs": [
+                {
+                    "pubId": 15,
+                    "refText": "307"
+                }
+            ]
+        },
+        {
+            "id": 1270,
+            "text": "ir",
+            "lang": "S",
+            "gloss": "?when",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "LB:354"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-3586600781.html"
+                }
+            ]
+        },
+        {
+            "id": 1271,
+            "text": "Ithil",
+            "lang": "S",
+            "gloss": "Moon",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "LB:354"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-535385615.html"
+                }
+            ]
+        },
+        {
+            "id": 1272,
+            "text": "Eruchín",
+            "lang": "S",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "LB:354"
+                }
+            ]
+        },
+        {
+            "id": 1273,
+            "text": "Eru",
+            "lang": "S",
+            "pos": "NP"
+        },
+        {
+            "id": 1275,
+            "text": "chín",
+            "lang": "S"
+        },
+        {
+            "id": 1277,
+            "text": "menel-vír",
+            "lang": "S",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "LB:354"
+                }
+            ]
+        },
+        {
+            "id": 1279,
+            "text": "vír",
+            "lang": "S"
+        },
+        {
+            "id": 1280,
+            "text": "síla-",
+            "lang": "S",
+            "gloss": "shine",
+            "pos": "V",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "LB:354"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-3093716127.html"
+                }
+            ]
+        },
+        {
+            "id": 1281,
+            "text": "si",
+            "lang": "S",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "LB:354"
+                }
+            ]
+        },
+        {
+            "id": 1282,
+            "text": "loth",
+            "lang": "S",
+            "gloss": "flower",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "LB:354"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-1114592353.html"
+                }
+            ]
+        },
+        {
+            "id": 1283,
+            "text": "lotta",
+            "lang": "CE",
+            "gloss": "bloom",
+            "sourceRefs": [
+                {
+                    "pubId": 7,
+                    "refText": "18"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-3848699385.html"
+                }
+            ]
+        },
+        {
+            "id": 1285,
+            "text": "dín",
+            "lang": "S",
+            "gloss": "silence",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "LB:354"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-2828762165.html"
+                }
+            ]
+        },
+        {
+            "id": 1286,
+            "text": "hír",
+            "lang": "S",
+            "gloss": "lord",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "LB:354"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-3444049341.html"
+                }
+            ]
+        },
+        {
+            "id": 1287,
+            "text": "khēr",
+            "lang": "CE",
+            "gloss": "lord",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "VT41:9"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-2134601505.html"
+                }
+            ]
+        },
+        {
+            "id": 1289,
+            "text": "annún",
+            "lang": "S",
+            "gloss": "sunset",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "LB:354"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-1864027637.html"
+                }
+            ]
+        },
+        {
+            "id": 1290,
+            "text": "linnon",
+            "lang": "S",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "LB:354"
+                }
+            ]
+        },
+        {
+            "id": 1291,
+            "text": "Tinúviel",
+            "lang": "S",
+            "gloss": "Nightingale",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "LB:354"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-3671129013.html"
+                }
+            ]
+        },
+        {
+            "id": 1293,
+            "text": "cuio",
+            "lang": "S",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "Let:448"
+                }
+            ]
+        },
+        {
+            "id": 1294,
+            "text": "cuia-",
+            "lang": "S",
+            "gloss": "live",
+            "pos": "V",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "102"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-1983781483.html"
+                }
+            ]
+        },
+        {
+            "id": 1295,
+            "text": "KOY-",
+            "lang": "CE",
+            "gloss": "live",
+            "sourceRefs": [
+                {
+                    "pubId": 4,
+                    "refText": "136"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-990782687.html"
+                }
+            ]
+        },
+        {
+            "id": 1296,
+            "text": "Pheriain",
+            "lang": "S",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "Let:448"
+                }
+            ]
+        },
+        {
+            "id": 1297,
+            "text": "Perian",
+            "lang": "S",
+            "gloss": "halfling",
+            "pos": "N"
+        },
+        {
+            "id": 1298,
+            "text": "anann",
+            "lang": "S",
+            "pos": "ADV",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "Let:448"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-1381185893.html"
+                }
+            ]
+        },
+        {
+            "id": 1300,
+            "text": "aglar’ni",
+            "lang": "S",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "Let:448"
+                }
+            ]
+        },
+        {
+            "id": 1302,
+            "text": "Pheriannath",
+            "lang": "S",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "Let:448"
+                }
+            ]
+        },
+        {
+            "id": 1303,
+            "text": "Daur",
+            "lang": "S",
+            "gloss": "Frodo",
+            "pos": "NP",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "Let:448"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-1136599881.html"
+                }
+            ]
+        },
+        {
+            "id": 1304,
+            "text": "dāra",
+            "lang": "CE",
+            "gloss": "wise",
+            "pos": "ADJ",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "102"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-1199278527.html"
+                }
+            ]
+        },
+        {
+            "id": 1305,
+            "text": "Berhael",
+            "lang": "S",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "Let:448"
+                }
+            ]
+        },
+        {
+            "id": 1306,
+            "text": "Perhael",
+            "lang": "S"
+        },
+        {
+            "id": 1307,
+            "text": "per",
+            "lang": "S",
+            "gloss": "half",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "102"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-1064900693.html"
+                }
+            ]
+        },
+        {
+            "id": 1309,
+            "text": "hael",
+            "lang": "S"
+        },
+        {
+            "id": 1310,
+            "text": "sael",
+            "lang": "S",
+            "gloss": "wise",
+            "pos": "ADJ",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "MR:305"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-3888667647.html"
+                }
+            ]
+        },
+        {
+            "id": 1311,
+            "text": "conin",
+            "lang": "S",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "Let:448"
+                }
+            ],
+            "notes": "See https://eldamo.org/content/words/word-242834451.html for a description of this plural form"
+        },
+        {
+            "id": 1312,
+            "text": "caun",
+            "lang": "S",
+            "gloss": "prince",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "102"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-3713703897.html"
+                }
+            ]
+        },
+        {
+            "id": 1313,
+            "text": "eglerio",
+            "lang": "S",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "Let:448"
+                }
+            ]
+        },
+        {
+            "id": 1314,
+            "text": "egleria-",
+            "lang": "S",
+            "gloss": "glorify",
+            "pos": "V",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "102"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-4022873477.html"
+                }
+            ]
+        },
+        {
+            "id": 1316,
+            "text": "ae",
+            "lang": "S",
+            "sourceRefs": [
+                {
+                    "pubId": 0,
+                    "refText": "21"
+                }
+            ]
+        },
+        {
+            "id": 1317,
+            "text": "adar",
+            "lang": "S",
+            "gloss": "father",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": 0,
+                    "refText": "22"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-1791197021.html"
+                }
+            ]
+        },
+        {
+            "id": 1318,
+            "text": "nín",
+            "lang": "S",
+            "gloss": "my",
+            "pos": "PRON",
+            "sourceRefs": [
+                {
+                    "pubId": 0,
+                    "refText": "22"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-191574293.html"
+                }
+            ]
+        },
+        {
+            "id": 1319,
+            "text": "i",
+            "lang": "S",
+            "gloss": "who",
+            "pos": "PRON",
+            "sourceRefs": [
+                {
+                    "pubId": 0,
+                    "refText": "22"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-1123899243.html"
+                }
+            ]
+        },
+        {
+            "id": 1320,
+            "text": "vi",
+            "lang": "S",
+            "sourceRefs": [
+                {
+                    "pubId": 0,
+                    "refText": "21"
+                }
+            ]
+        },
+        {
+            "id": 1321,
+            "text": "mi",
+            "lang": "S",
+            "gloss": "in",
+            "pos": "PREP",
+            "sourceRefs": [
+                {
+                    "pubId": 0,
+                    "refText": "22"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-2583985695.html"
+                }
+            ]
+        },
+        {
+            "id": 1322,
+            "text": "no",
+            "lang": "S",
+            "sourceRefs": [
+                {
+                    "pubId": 0,
+                    "refText": "21"
+                }
+            ]
+        },
+        {
+            "id": 1323,
+            "text": "na-",
+            "lang": "S",
+            "gloss": "be",
+            "pos": "V",
+            "sourceRefs": [
+                {
+                    "pubId": 0,
+                    "refText": "22"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-3079325279.html"
+                }
+            ]
+        },
+        {
+            "id": 1324,
+            "text": "aer",
+            "lang": "S",
+            "gloss": "holy",
+            "pos": "ADJ",
+            "sourceRefs": [
+                {
+                    "pubId": 0,
+                    "refText": "22"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-669292895.html"
+                }
+            ]
+        },
+        {
+            "id": 1325,
+            "text": "eneth",
+            "lang": "S",
+            "gloss": "name",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": 0,
+                    "refText": "22"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-2803446275.html"
+                }
+            ]
+        },
+        {
+            "id": 1326,
+            "text": "lín",
+            "lang": "S",
+            "gloss": "thy",
+            "pos": "PRON",
+            "sourceRefs": [
+                {
+                    "pubId": 0,
+                    "refText": "22"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-3806423637.html"
+                }
+            ]
+        },
+        {
+            "id": 1327,
+            "text": "tolo",
+            "lang": "S",
+            "sourceRefs": [
+                {
+                    "pubId": 0,
+                    "refText": "21"
+                }
+            ]
+        },
+        {
+            "id": 1328,
+            "text": "tol-",
+            "lang": "S",
+            "gloss": "come",
+            "pos": "V",
+            "sourceRefs": [
+                {
+                    "pubId": 0,
+                    "refText": "25"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-2756894593.html"
+                }
+            ]
+        },
+        {
+            "id": 1330,
+            "text": "TUL-",
+            "lang": "CE",
+            "gloss": "come",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "188"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-822910333.html"
+                }
+            ]
+        },
+        {
+            "id": 1331,
+            "text": "arnad",
+            "lang": "S",
+            "gloss": "kingdom",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": 0,
+                    "refText": "25"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-3461038807.html"
+                }
+            ]
+        },
+        {
+            "id": 1332,
+            "text": "caro",
+            "lang": "S",
+            "sourceRefs": [
+                {
+                    "pubId": 0,
+                    "refText": "21"
+                }
+            ]
+        },
+        {
+            "id": 1333,
+            "text": "car-",
+            "lang": "S",
+            "gloss": "do",
+            "fullGloss": "do, make",
+            "pos": "V",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "68"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-3736354243.html"
+                }
+            ]
+        },
+        {
+            "id": 1334,
+            "text": "KAR-",
+            "lang": "CE",
+            "gloss": "make",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "84"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-443381331.html"
+                }
+            ]
+        },
+        {
+            "id": 1335,
+            "text": "lin",
+            "lang": "S",
+            "sourceRefs": [
+                {
+                    "pubId": 0,
+                    "refText": "24"
+                }
+            ]
+        },
+        {
+            "id": 1336,
+            "text": "innas",
+            "lang": "S",
+            "gloss": "will",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": 0,
+                    "refText": "26"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-3558124111.html"
+                }
+            ]
+        },
+        {
+            "id": 1337,
+            "text": "ind",
+            "lang": "S",
+            "gloss": "heart",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": 4,
+                    "refText": "165"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-2354893653.html"
+                }
+            ]
+        },
+        {
+            "id": 1339,
+            "text": "bo",
+            "lang": "S",
+            "gloss": "on",
+            "pos": "PREP",
+            "sourceRefs": [
+                {
+                    "pubId": 0,
+                    "refText": "21"
+                }
+            ]
+        },
+        {
+            "id": 1340,
+            "text": "ceven",
+            "lang": "S",
+            "gloss": "Earth",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": 0,
+                    "refText": "27"
+                }
+            ]
+        },
+        {
+            "id": 1341,
+            "text": "kemen",
+            "lang": "CE",
+            "gloss": "earth",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": 10,
+                    "refText": "71"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-615175951.html"
+                }
+            ]
+        },
+        {
+            "id": 1342,
+            "text": "sui",
+            "lang": "S",
+            "gloss": "as",
+            "sourceRefs": [
+                {
+                    "pubId": 0,
+                    "refText": "27"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-917698495.html"
+                }
+            ]
+        },
+        {
+            "id": 1343,
+            "text": "anno",
+            "lang": "S",
+            "sourceRefs": [
+                {
+                    "pubId": 0,
+                    "refText": "21"
+                }
+            ]
+        },
+        {
+            "id": 1344,
+            "text": "anna-",
+            "lang": "S",
+            "gloss": "give",
+            "pos": "V",
+            "sourceRefs": [
+                {
+                    "pubId": 0,
+                    "refText": "27"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-1272131327.html"
+                }
+            ]
+        },
+        {
+            "id": 1345,
+            "text": "antā",
+            "lang": "CE",
+            "gloss": "give",
+            "pos": "V"
+        },
+        {
+            "id": 1347,
+            "text": "sír",
+            "lang": "S",
+            "gloss": "today",
+            "sourceRefs": [
+                {
+                    "pubId": 0,
+                    "refText": "27"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-3294375263.html"
+                }
+            ]
+        },
+        {
+            "id": 1348,
+            "text": "SI-",
+            "lang": "CE",
+            "gloss": "this",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "67"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-3377957087.html"
+                }
+            ]
+        },
+        {
+            "id": 1349,
+            "text": "mbas",
+            "lang": "S",
+            "sourceRefs": [
+                {
+                    "pubId": 0,
+                    "refText": "21"
+                }
+            ]
+        },
+        {
+            "id": 1350,
+            "text": "bast",
+            "lang": "S",
+            "gloss": "bread",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": 0,
+                    "refText": "27"
+                }
+            ]
+        },
+        {
+            "id": 1351,
+            "text": "mbasta",
+            "lang": "CE",
+            "gloss": "bread",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-1283740149.html"
+                }
+            ]
+        },
+        {
+            "id": 1352,
+            "text": "MBAS-",
+            "lang": "CE",
+            "gloss": "bake",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "51"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-2464642161.html"
+                }
+            ]
+        },
+        {
+            "id": 1353,
+            "text": "ilaurui",
+            "lang": "S",
+            "gloss": "daily",
+            "pos": "ADJ",
+            "sourceRefs": [
+                {
+                    "pubId": 0,
+                    "refText": "28"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-3114332903.html"
+                }
+            ]
+        },
+        {
+            "id": 1354,
+            "text": "il",
+            "lang": "S",
+            "gloss": "all",
+            "sourceRefs": [
+                {
+                    "pubId": 0,
+                    "refText": "28"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-3414825689.html"
+                }
+            ]
+        },
+        {
+            "id": 1356,
+            "text": "aur",
+            "lang": "S",
+            "gloss": "day",
+            "fullGloss": "(whole) day",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "120"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-2784467005.html"
+                }
+            ]
+        },
+        {
+            "id": 1357,
+            "text": "vín",
+            "lang": "S",
+            "sourceRefs": [
+                {
+                    "pubId": 0,
+                    "refText": "21"
+                }
+            ]
+        },
+        {
+            "id": 1358,
+            "text": "ar",
+            "lang": "S",
+            "sourceRefs": [
+                {
+                    "pubId": 0,
+                    "refText": "21"
+                }
+            ]
+        },
+        {
+            "id": 1359,
+            "text": "díheno",
+            "lang": "S",
+            "sourceRefs": [
+                {
+                    "pubId": 0,
+                    "refText": "21"
+                }
+            ]
+        },
+        {
+            "id": 1360,
+            "text": "díhena-",
+            "lang": "S",
+            "gloss": "forgive",
+            "pos": "V",
+            "sourceRefs": [
+                {
+                    "pubId": 0,
+                    "refText": "28"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-54714613.html"
+                }
+            ]
+        },
+        {
+            "id": 1361,
+            "text": "úgerth",
+            "lang": "S",
+            "sourceRefs": [
+                {
+                    "pubId": 0,
+                    "refText": "21"
+                }
+            ]
+        },
+        {
+            "id": 1362,
+            "text": "úgarth",
+            "lang": "S",
+            "gloss": "trespass",
+            "sourceRefs": [
+                {
+                    "pubId": 0,
+                    "refText": "28"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-859775011.html"
+                }
+            ]
+        },
+        {
+            "id": 1363,
+            "text": "ú",
+            "lang": "S",
+            "gloss": "not",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "62"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-1438153453.html"
+                }
+            ]
+        },
+        {
+            "id": 1365,
+            "text": "carth",
+            "lang": "S",
+            "gloss": "deed",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": 0,
+                    "refText": "28"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-4005253249.html"
+                }
+            ]
+        },
+        {
+            "id": 1366,
+            "text": "vin",
+            "lang": "S",
+            "sourceRefs": [
+                {
+                    "pubId": 0,
+                    "refText": "21"
+                }
+            ]
+        },
+        {
+            "id": 1368,
+            "text": "gohenam",
+            "lang": "S",
+            "sourceRefs": [
+                {
+                    "pubId": 0,
+                    "refText": "21"
+                }
+            ]
+        },
+        {
+            "id": 1369,
+            "text": "gohena-",
+            "lang": "S",
+            "gloss": "forgive",
+            "pos": "V",
+            "sourceRefs": [
+                {
+                    "pubId": 0,
+                    "refText": "29"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-4047916513.html"
+                }
+            ]
+        },
+        {
+            "id": 1370,
+            "text": "di",
+            "lang": "S",
+            "gloss": "they.SOFT",
+            "sourceRefs": [
+                {
+                    "pubId": 0,
+                    "refText": "21"
+                }
+            ]
+        },
+        {
+            "id": 1371,
+            "text": "ti",
+            "lang": "S",
+            "gloss": "they",
+            "pos": "PRON",
+            "sourceRefs": [
+                {
+                    "pubId": 0,
+                    "refText": "30"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-206577057.html"
+                }
+            ]
+        },
+        {
+            "id": 1372,
+            "text": "ai",
+            "lang": "S",
+            "gloss": "those who",
+            "pos": "PRON",
+            "sourceRefs": [
+                {
+                    "pubId": 0,
+                    "refText": "30"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-16264317.html"
+                }
+            ]
+        },
+        {
+            "id": 1374,
+            "text": "gerir",
+            "lang": "S",
+            "sourceRefs": [
+                {
+                    "pubId": 0,
+                    "refText": "21"
+                }
+            ]
+        },
+        {
+            "id": 1376,
+            "text": "Húrin",
+            "lang": "S",
+            "pos": "NP",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "VT50:5"
+                }
+            ]
+        },
+        {
+            "id": 1377,
+            "text": "Túrin",
+            "lang": "S",
+            "pos": "NP",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "VT50:5"
+                }
+            ]
+        },
+        {
+            "id": 1378,
+            "text": "i-Veleglind",
+            "lang": "S",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "VT50:5"
+                }
+            ]
+        },
+        {
+            "id": 1380,
+            "text": "Veleglind",
+            "lang": "S"
+        },
+        {
+            "id": 1381,
+            "text": "Beleglinn",
+            "lang": "S"
+        },
+        {
+            "id": 1382,
+            "text": "beleg",
+            "lang": "S",
+            "gloss": "great",
+            "pos": "ADJ",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "115"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-3202359171.html"
+                }
+            ]
+        },
+        {
+            "id": 1383,
+            "text": "lind",
+            "lang": "S",
+            "gloss": "song",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "27"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-3855995391.html"
+                }
+            ]
+        },
+        {
+            "id": 1385,
+            "text": "eithro",
+            "lang": "S",
+            "gloss": "also",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "VT50:12"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-1789005665.html"
+                }
+            ]
+        },
+        {
+            "id": 1386,
+            "text": "i-Chín",
+            "lang": "S",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "VT50:5"
+                }
+            ]
+        },
+        {
+            "id": 1388,
+            "text": "Edain",
+            "lang": "S",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "VT50:5"
+                }
+            ]
+        },
+        {
+            "id": 1389,
+            "text": "hen",
+            "lang": "S",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "VT50:5"
+                }
+            ]
+        },
+        {
+            "id": 1390,
+            "text": "sel",
+            "lang": "S",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "VT50:5"
+                }
+            ]
+        },
+        {
+            "id": 1391,
+            "text": "sell",
+            "lang": "S",
+            "gloss": "daughter",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "SD:129"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-3339236895.html"
+                }
+            ]
         }
     ],
     "rules": [
@@ -18679,6 +20893,21 @@
                         {
                             "type": "Append",
                             "args": [
+                                "'rim'"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "ClassMatches",
+                        "characters": "cpl-rim"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "Append",
+                            "args": [
                                 "'ath'"
                             ]
                         }
@@ -18695,7 +20924,6 @@
                     "refText": "https://eldamo.org/content/words/word-2990539277.html"
                 }
             ],
-            "notes": "",
             "preInstructions": [
             ]
         },
@@ -19507,6 +21735,21 @@
                         "cond": "EndsWith",
                         "characters": "d"
                     }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "Append",
+                            "args": [
+                                "'nt'"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "characters": "a"
+                    }
                 }
             ],
             "addedCategories": ".PST",
@@ -19517,7 +21760,6 @@
                     "refText": "https://eldamo.org/content/words/word-2212943647.html"
                 }
             ],
-            "notes": "",
             "preInstructions": [
             ]
         },
@@ -19572,6 +21814,436 @@
                         "1195"
                     ]
                 }
+            ]
+        },
+        {
+            "id": 1232,
+            "name": "s-orthography",
+            "fromLang": "S",
+            "toLang": "S",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "i"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.AndRuleConditionData",
+                        "members": [
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "BeginningOfWord"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "PhonemeMatches",
+                                "characters": "j"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "f"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.AndRuleConditionData",
+                        "members": [
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "EndOfWord"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "PhonemeMatches",
+                                "characters": "v"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "addedCategories": null,
+            "notes": "",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 1243,
+            "name": "s-adj-suffix",
+            "fromLang": "S",
+            "toLang": "S",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "Append",
+                            "args": [
+                                "'ren'"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": null,
+            "toPOS": "ADJ",
+            "notes": "",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 1255,
+            "name": "s-abstract-suffix",
+            "fromLang": "S",
+            "toLang": "S",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "Append",
+                            "args": [
+                                "'as'"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": null,
+            "toPOS": "N",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-2300496767.html"
+                }
+            ],
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 1259,
+            "name": "s-aug-suffix",
+            "fromLang": "S",
+            "toLang": "S",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "Append",
+                            "args": [
+                                "'oth'"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": null,
+            "toPOS": "N",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-3958131179.html"
+                }
+            ],
+            "notes": "",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 1284,
+            "name": "s-long-voiceless-spirants",
+            "fromLang": "S",
+            "toLang": "S",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "SoundDisappears",
+                            "args": [
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.AndRuleConditionData",
+                        "members": [
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "PhonemeMatches",
+                                "characters": "θ"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.RelativePhonemeRuleConditionData",
+                                "relativeIndex": 1,
+                                "negated": false,
+                                "parameter": "θ"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "SoundDisappears",
+                            "args": [
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.AndRuleConditionData",
+                        "members": [
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "PhonemeMatches",
+                                "characters": "x"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.RelativePhonemeRuleConditionData",
+                                "relativeIndex": 1,
+                                "negated": false,
+                                "parameter": "x"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "addedCategories": null,
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-1206014597.html"
+                }
+            ],
+            "notes": "",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 1288,
+            "name": "s-initial-kh",
+            "fromLang": "S",
+            "toLang": "S",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "h"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.AndRuleConditionData",
+                        "members": [
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "PhonemeMatches",
+                                "characters": "x"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "BeginningOfWord"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "addedCategories": null,
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-4287595571.html"
+                }
+            ],
+            "notes": "",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 1346,
+            "name": "s-medial-nasal-spirant",
+            "fromLang": "S",
+            "toLang": "S",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeNextSound",
+                            "args": [
+                                "m"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.AndRuleConditionData",
+                        "members": [
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "PhonemeMatches",
+                                "characters": "m"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.RelativePhonemeRuleConditionData",
+                                "relativeIndex": 1,
+                                "negated": false,
+                                "parameter": "f"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeNextSound",
+                            "args": [
+                                "n"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.AndRuleConditionData",
+                        "members": [
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "PhonemeMatches",
+                                "characters": "n"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.RelativePhonemeRuleConditionData",
+                                "relativeIndex": 1,
+                                "negated": false,
+                                "parameter": "θ"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeNextSound",
+                            "args": [
+                                "g"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.AndRuleConditionData",
+                        "members": [
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "PhonemeMatches",
+                                "characters": "ŋ"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.RelativePhonemeRuleConditionData",
+                                "relativeIndex": 1,
+                                "negated": false,
+                                "parameter": "x"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "addedCategories": null,
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-2996915415.html"
+                }
+            ],
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 1367,
+            "name": "s-1pl-1962",
+            "fromLang": "S",
+            "toLang": "S",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "Append",
+                            "args": [
+                                "'m'"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "characters": "a"
+                    }
+                }
+            ],
+            "addedCategories": ".1PL",
+            "fromPOS": "V",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "132"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-1090138655.html"
+                }
+            ],
+            "notes": "",
+            "preInstructions": [
+            ]
+        },
+        {
+            "id": 1373,
+            "name": "s-3pl",
+            "fromLang": "S",
+            "toLang": "S",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ApplyRule",
+                            "args": [
+                                "1148"
+                            ]
+                        },
+                        {
+                            "type": "Append",
+                            "args": [
+                                "'ir'"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".3PL",
+            "fromPOS": "V",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-2515398979.html"
+                }
+            ],
+            "notes": "",
+            "preInstructions": [
             ]
         }
     ],
@@ -20349,7 +23021,10 @@
         {
             "from": 215,
             "to": 114,
-            "type": ">"
+            "type": ">",
+            "ruleIds": [
+                1259
+            ]
         },
         {
             "from": 197,
@@ -20437,7 +23112,10 @@
         {
             "from": 249,
             "to": 248,
-            "type": ">"
+            "type": ">",
+            "ruleIds": [
+                1243
+            ]
         },
         {
             "from": 250,
@@ -23142,6 +25820,574 @@
             "from": 1200,
             "to": 1202,
             "type": ">"
+        },
+        {
+            "from": 1206,
+            "to": 1207,
+            "type": ">",
+            "ruleIds": [
+                1117,
+                1064,
+                1077,
+                1129,
+                1062
+            ]
+        },
+        {
+            "from": 1207,
+            "to": 1208,
+            "type": ">"
+        },
+        {
+            "from": 1209,
+            "to": 1210,
+            "type": ">",
+            "ruleIds": [
+                1189
+            ]
+        },
+        {
+            "from": 1213,
+            "to": 1214,
+            "type": ">",
+            "ruleIds": [
+                1189
+            ]
+        },
+        {
+            "from": 1214,
+            "to": 1215,
+            "type": ">"
+        },
+        {
+            "from": 1216,
+            "to": 1217,
+            "type": ">",
+            "ruleIds": [
+                1064,
+                1067,
+                1062,
+                1059,
+                1091,
+                1102
+            ]
+        },
+        {
+            "from": 1219,
+            "to": 1220,
+            "type": ">",
+            "ruleIds": [
+                1137,
+                1149
+            ]
+        },
+        {
+            "from": 1221,
+            "to": 1222,
+            "type": ">",
+            "ruleIds": [
+                1195
+            ]
+        },
+        {
+            "from": 1227,
+            "to": 1228,
+            "type": ">",
+            "ruleIds": [
+                1137
+            ]
+        },
+        {
+            "from": 1229,
+            "to": 1230,
+            "type": ">"
+        },
+        {
+            "from": 1230,
+            "to": 1231,
+            "type": ">",
+            "ruleIds": [
+                1117,
+                1064,
+                1124,
+                1120,
+                1062
+            ]
+        },
+        {
+            "from": 1235,
+            "to": 1236,
+            "type": ">",
+            "ruleIds": [
+                1195
+            ]
+        },
+        {
+            "from": 1238,
+            "to": 1115,
+            "type": ">",
+            "ruleIds": [
+                1144,
+                1149
+            ]
+        },
+        {
+            "from": 1239,
+            "to": 1240,
+            "type": ">",
+            "ruleIds": [
+                1137,
+                1149
+            ]
+        },
+        {
+            "from": 1242,
+            "to": 1150,
+            "type": ">",
+            "ruleIds": [
+                1243
+            ]
+        },
+        {
+            "from": 1245,
+            "to": 1246,
+            "type": ">",
+            "ruleIds": [
+                1189
+            ]
+        },
+        {
+            "from": 1246,
+            "to": 1247,
+            "type": ">"
+        },
+        {
+            "from": 1249,
+            "to": 1250,
+            "type": ">"
+        },
+        {
+            "from": 1254,
+            "to": 1256,
+            "type": ">",
+            "ruleIds": [
+                1255
+            ]
+        },
+        {
+            "from": 1257,
+            "to": 1258,
+            "type": ">",
+            "ruleIds": [
+                1145
+            ]
+        },
+        {
+            "from": 1258,
+            "to": 1156,
+            "type": ">",
+            "ruleIds": [
+                1259
+            ]
+        },
+        {
+            "from": 1260,
+            "to": 1261,
+            "type": ">",
+            "ruleIds": [
+                1189
+            ]
+        },
+        {
+            "from": 1261,
+            "to": 1262,
+            "type": ">"
+        },
+        {
+            "from": 1263,
+            "to": 1264,
+            "type": ">",
+            "ruleIds": [
+                1137
+            ]
+        },
+        {
+            "from": 1249,
+            "to": 1265,
+            "type": "~"
+        },
+        {
+            "from": 1271,
+            "to": 450,
+            "type": ">"
+        },
+        {
+            "from": 1275,
+            "to": 1154,
+            "type": ">",
+            "ruleIds": [
+                1137,
+                1149
+            ]
+        },
+        {
+            "from": 1273,
+            "to": 320,
+            "type": ">"
+        },
+        {
+            "from": 1279,
+            "to": 253,
+            "type": ">",
+            "ruleIds": [
+                1137
+            ]
+        },
+        {
+            "from": 1280,
+            "to": 225,
+            "type": ">"
+        },
+        {
+            "from": 1281,
+            "to": 1167,
+            "type": "="
+        },
+        {
+            "from": 1282,
+            "to": 1283,
+            "type": ">",
+            "ruleIds": [
+                1109,
+                1110,
+                1062,
+                1284
+            ]
+        },
+        {
+            "from": 1286,
+            "to": 1287,
+            "type": ">",
+            "ruleIds": [
+                1117,
+                1110,
+                1111,
+                1288
+            ]
+        },
+        {
+            "from": 1290,
+            "to": 1166,
+            "type": ">",
+            "ruleIds": [
+                1164
+            ]
+        },
+        {
+            "from": 1293,
+            "to": 1294,
+            "type": ">",
+            "ruleIds": [
+                1189
+            ]
+        },
+        {
+            "from": 1294,
+            "to": 1295,
+            "type": ">"
+        },
+        {
+            "from": 1296,
+            "to": 1297,
+            "type": ">",
+            "ruleIds": [
+                1144,
+                1149
+            ]
+        },
+        {
+            "from": 1302,
+            "to": 1297,
+            "type": ">",
+            "ruleIds": [
+                1144,
+                1145
+            ]
+        },
+        {
+            "from": 1303,
+            "to": 1304,
+            "type": ">",
+            "ruleIds": [
+                1124,
+                1120,
+                1062
+            ]
+        },
+        {
+            "from": 1305,
+            "to": 1306,
+            "type": ">",
+            "ruleIds": [
+                1137
+            ]
+        },
+        {
+            "from": 1309,
+            "to": 1310,
+            "type": ">",
+            "ruleIds": [
+                1137
+            ]
+        },
+        {
+            "from": 1311,
+            "to": 1312,
+            "type": ">",
+            "ruleIds": [
+                1149
+            ]
+        },
+        {
+            "from": 1313,
+            "to": 1314,
+            "type": ">",
+            "ruleIds": [
+                1189
+            ]
+        },
+        {
+            "from": 1314,
+            "to": 259,
+            "type": ">"
+        },
+        {
+            "from": 1316,
+            "to": 239,
+            "type": "="
+        },
+        {
+            "from": 1320,
+            "to": 1321,
+            "type": ">",
+            "ruleIds": [
+                1137
+            ]
+        },
+        {
+            "from": 1322,
+            "to": 1323,
+            "type": ">",
+            "ruleIds": [
+                1189
+            ]
+        },
+        {
+            "from": 1324,
+            "to": 452,
+            "type": ">"
+        },
+        {
+            "from": 1162,
+            "to": 1326,
+            "type": "~"
+        },
+        {
+            "from": 1327,
+            "to": 1328,
+            "type": ">",
+            "ruleIds": [
+                1189
+            ]
+        },
+        {
+            "from": 312,
+            "to": 1330,
+            "type": ">"
+        },
+        {
+            "from": 1328,
+            "to": 1330,
+            "type": ">"
+        },
+        {
+            "from": 1331,
+            "to": 1201,
+            "type": ">"
+        },
+        {
+            "from": 1332,
+            "to": 1333,
+            "type": ">",
+            "ruleIds": [
+                1189
+            ]
+        },
+        {
+            "from": 306,
+            "to": 1334,
+            "type": ">"
+        },
+        {
+            "from": 1333,
+            "to": 1334,
+            "type": ">"
+        },
+        {
+            "from": 1335,
+            "to": 1326,
+            "type": "="
+        },
+        {
+            "from": 1336,
+            "to": 1337,
+            "type": ">",
+            "ruleIds": [
+                1255
+            ]
+        },
+        {
+            "from": 1337,
+            "to": 885,
+            "type": ">"
+        },
+        {
+            "from": 1340,
+            "to": 1341,
+            "type": ">"
+        },
+        {
+            "from": 1343,
+            "to": 1344,
+            "type": ">",
+            "ruleIds": [
+                1189
+            ]
+        },
+        {
+            "from": 1344,
+            "to": 1345,
+            "type": ">"
+        },
+        {
+            "from": 546,
+            "to": 1348,
+            "type": ">"
+        },
+        {
+            "from": 1347,
+            "to": 1348,
+            "type": ">"
+        },
+        {
+            "from": 1349,
+            "to": 1350,
+            "type": ">",
+            "ruleIds": [
+                1137
+            ]
+        },
+        {
+            "from": 1350,
+            "to": 1351,
+            "type": ">",
+            "ruleIds": [
+                1055,
+                1062
+            ]
+        },
+        {
+            "from": 1351,
+            "to": 1352,
+            "type": ">"
+        },
+        {
+            "from": 1357,
+            "to": 1265,
+            "type": ">",
+            "ruleIds": [
+                1137
+            ]
+        },
+        {
+            "from": 1358,
+            "to": 1212,
+            "type": "="
+        },
+        {
+            "from": 1359,
+            "to": 1360,
+            "type": ">",
+            "ruleIds": [
+                1189
+            ]
+        },
+        {
+            "from": 1361,
+            "to": 1362,
+            "type": ">",
+            "ruleIds": [
+                1149
+            ]
+        },
+        {
+            "from": 1366,
+            "to": 1357,
+            "type": "="
+        },
+        {
+            "from": 1368,
+            "to": 1369,
+            "type": ">",
+            "ruleIds": [
+                1367
+            ]
+        },
+        {
+            "from": 1370,
+            "to": 1371,
+            "type": ">",
+            "ruleIds": [
+                1137
+            ]
+        },
+        {
+            "from": 1374,
+            "to": 1333,
+            "type": ">",
+            "ruleIds": [
+                1373,
+                1137
+            ]
+        },
+        {
+            "from": 1380,
+            "to": 1381,
+            "type": ">",
+            "ruleIds": [
+                1137
+            ]
+        },
+        {
+            "from": 1388,
+            "to": 197,
+            "type": ">",
+            "ruleIds": [
+                1149
+            ]
+        },
+        {
+            "from": 1389,
+            "to": 1240,
+            "type": ">",
+            "ruleIds": [
+                1137
+            ]
+        },
+        {
+            "from": 1390,
+            "to": 1391,
+            "type": "="
         }
     ],
     "corpusTexts": [
@@ -23948,13 +27194,241 @@
             "lang": "S",
             "wordIds": [
                 1199,
+                1244,
+                1201,
+                1203,
+                1209,
+                1211,
+                1212,
+                1213,
+                1216,
+                1218,
+                1219,
+                1221,
                 null,
-                1201
+                1223,
+                null,
+                1224,
+                1235,
+                1237,
+                1238,
+                1239
             ],
             "sourceRefs": [
                 {
                     "pubId": 15,
                     "refText": "305"
+                }
+            ]
+        },
+        {
+            "id": 1241,
+            "text": "annon edhellen, edro hi ammen\nfennas nogothrim, lasto beth lammen",
+            "title": "Moria Gate Spell",
+            "lang": "S",
+            "wordIds": [
+                null,
+                1242,
+                1245,
+                1248,
+                1252,
+                1254,
+                1257,
+                1260,
+                1263,
+                1267
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 15,
+                    "refText": "307"
+                }
+            ]
+        },
+        {
+            "id": 1269,
+            "text": "ir Ithil ammen Eruchín\nmenel-vîr síla díriel\nsi loth a galadh lasto dîn\na Hîr Annûn Gilthoniel\nle linnon im Tinúviel",
+            "title": "Lúthien’s Song",
+            "lang": "S",
+            "wordIds": [
+                1270,
+                1271,
+                null,
+                1272,
+                1277,
+                1280,
+                null,
+                1281,
+                1282,
+                1212,
+                null,
+                null,
+                1285,
+                null,
+                1286,
+                1289,
+                null,
+                null,
+                1290,
+                null,
+                1291
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "LB:354"
+                }
+            ]
+        },
+        {
+            "id": 1292,
+            "text": "cuio i Pheriain anann\naglar’ni Pheriannath\nDaur a Berhael, Conin en Annûn\neglerio",
+            "title": "Praises of Cormallen",
+            "lang": "S",
+            "wordIds": [
+                1293,
+                1237,
+                1296,
+                1298,
+                1300,
+                1302,
+                1303,
+                1212,
+                1305,
+                1311,
+                null,
+                null,
+                1313
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "Let:448"
+                }
+            ]
+        },
+        {
+            "id": 1315,
+            "text": "ae Adar nín i vi Menel\nno aer i eneth lín\ntolo i arnad lín\ncaro den i innas lin\nbo Ceven sui vi Menel\nanno ammen sír i mbas ilaurui vín\nar díheno ammen i úgerth vin\nsui mín i gohenam di ai gerir úgerth ammen",
+            "title": "Ae Adar Nín",
+            "lang": "S",
+            "wordIds": [
+                1316,
+                1317,
+                1318,
+                1319,
+                1320,
+                null,
+                1322,
+                1324,
+                null,
+                1325,
+                1326,
+                1327,
+                null,
+                1331,
+                null,
+                1332,
+                null,
+                null,
+                1336,
+                1335,
+                1339,
+                1340,
+                1342,
+                null,
+                null,
+                1343,
+                null,
+                1347,
+                null,
+                1349,
+                1353,
+                1357,
+                1358,
+                1359,
+                null,
+                null,
+                1361,
+                1366,
+                null,
+                null,
+                1319,
+                1368,
+                1370,
+                1372,
+                1374
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 0,
+                    "refText": "21"
+                }
+            ]
+        },
+        {
+            "id": 1375,
+            "text": " i-Veleglind i eithro en estar i-Chîn Húrin\ni glinn hen agorer Edain mi Velerian, ach hí in Ellath îr ed epholar\nar-phent Rían Tuor-na: man agorech?\nsí il chem en i Naugrim en ir Ellath thor den ammen\nTúrin ion Húrin Túramarth\nar Nienor sel Morwen Níniel \ni chîn Húrin\nos i Veleglinn i edain agorer vi Veleriann\nar in Ellath epholar eno vi Eressai",
+            "title": "Turin Wrapper",
+            "lang": "S",
+            "wordIds": [
+                null,
+                1378,
+                null,
+                1385,
+                null,
+                null,
+                1386,
+                null,
+                null,
+                null,
+                1389,
+                null,
+                1388,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                1377,
+                null,
+                null,
+                null,
+                null,
+                null,
+                1390,
+                null,
+                null,
+                null,
+                null,
+                null,
+                1376
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "VT50:5"
                 }
             ]
         }
@@ -25286,6 +28760,127 @@
                 1185,
                 1188
             ]
+        },
+        {
+            "id": 1205,
+            "compoundId": 1203,
+            "componentIds": [
+                1204,
+                1206
+            ]
+        },
+        {
+            "id": 1226,
+            "compoundId": 1223,
+            "componentIds": [
+                1225,
+                1227
+            ]
+        },
+        {
+            "id": 1234,
+            "compoundId": 1224,
+            "componentIds": [
+                1233,
+                1229
+            ]
+        },
+        {
+            "id": 1253,
+            "compoundId": 1252,
+            "componentIds": [
+                1251,
+                1249
+            ]
+        },
+        {
+            "id": 1268,
+            "compoundId": 1267,
+            "componentIds": [
+                1266,
+                1265
+            ]
+        },
+        {
+            "id": 1274,
+            "compoundId": 1272,
+            "componentIds": [
+                1273,
+                1275
+            ]
+        },
+        {
+            "id": 1278,
+            "compoundId": 1277,
+            "componentIds": [
+                257,
+                1279
+            ]
+        },
+        {
+            "id": 1299,
+            "compoundId": 1298,
+            "componentIds": [
+                1251,
+                166
+            ]
+        },
+        {
+            "id": 1301,
+            "compoundId": 1300,
+            "componentIds": [
+                259,
+                1251,
+                1237
+            ]
+        },
+        {
+            "id": 1308,
+            "compoundId": 1305,
+            "componentIds": [
+                1307,
+                1309
+            ]
+        },
+        {
+            "id": 1355,
+            "compoundId": 1353,
+            "componentIds": [
+                1354,
+                1356
+            ]
+        },
+        {
+            "id": 1364,
+            "compoundId": 1362,
+            "componentIds": [
+                1363,
+                1365
+            ]
+        },
+        {
+            "id": 1379,
+            "compoundId": 1378,
+            "componentIds": [
+                1237,
+                1380
+            ]
+        },
+        {
+            "id": 1384,
+            "compoundId": 1381,
+            "componentIds": [
+                1382,
+                1383
+            ]
+        },
+        {
+            "id": 1387,
+            "compoundId": 1386,
+            "componentIds": [
+                1237,
+                1275
+            ]
         }
     ],
     "translations": [
@@ -25604,6 +29199,19 @@
             ]
         },
         {
+            "lang": "S",
+            "name": "Class plural type",
+            "pos": [
+                "N"
+            ],
+            "values": [
+                {
+                    "name": "cpl-rim",
+                    "abbreviation": "cpl-rim"
+                }
+            ]
+        },
+        {
             "lang": "CE",
             "name": "Phonology",
             "pos": [
@@ -25658,19 +29266,28 @@
                 1120,
                 1062,
                 1095,
+                1288,
                 1075,
                 1059,
                 1126,
                 1083,
                 1096,
+                1346,
                 1091,
                 1125,
                 1071,
                 1101,
                 1090,
                 1102,
+                1284,
                 1107
             ]
+        }
+    ],
+    "orthographyRules": [
+        {
+            "lang": "S",
+            "ruleId": 1232
         }
     ]
 }
