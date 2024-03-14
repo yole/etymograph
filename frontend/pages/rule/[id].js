@@ -92,6 +92,7 @@ export default function Rule(params) {
         </>}
         {editMode && <RuleForm
             updateId={rule.id}
+            initialType={rule.phonemic ? "phono" : "morpho"}
             initialName={rule.name}
             initialFromLanguage={rule.fromLang}
             initialToLanguage={rule.toLang}

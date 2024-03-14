@@ -2,6 +2,7 @@ import {useState} from "react";
 import {addRule, updateRule} from "@/api";
 
 export default function RuleForm(props) {
+    const [ruleType, setRuleType] = useState(props.initialType !== undefined ? props.initialType : "phono")
     const [name, setName] = useState(props.initialName !== undefined ? props.initialName : "")
     const [fromLanguage, setFromLanguage] = useState(props.initialFromLanguage !== undefined ? props.initialFromLanguage : "")
     const [toLanguage, setToLanguage] = useState(props.initialToLanguage !== undefined ? props.initialToLanguage : "")
@@ -34,40 +35,48 @@ export default function RuleForm(props) {
     }
 
     return <>
+        Rule type:{' '}
+            <button className={ruleType === "morpho" ? "inlineButton inlineButtonActive " : "inlineButton"} onClick={() => setRuleType("morpho")}>Morphological</button>{' | '}
+            <button className={ruleType === "phono" ? "inlineButton inlineButtonActive " : "inlineButton"} onClick={() => setRuleType("phono")}>Phonological</button>
+        <hr/>
         <table><tbody>
         <tr>
             <td><label>Name:</label></td>
             <td><input type="text" value={name} onChange={(e) => setName(e.target.value)}/></td>
         </tr>
-        <tr>
+        {ruleType === "phono" && <tr>
             <td><label>From language:</label></td>
             <td><input type="text" value={fromLanguage} onChange={(e) => setFromLanguage(e.target.value)}/></td>
-        </tr>
+        </tr>}
         <tr>
-            <td><label>To language:</label></td>
+            <td><label>{ruleType === "morpho" ? "Language:" : "To language:"}</label></td>
             <td><input type="text" value={toLanguage} onChange={(e) => setToLanguage(e.target.value)}/></td>
         </tr>
-        <tr>
-            <td><label>Added category values:</label></td>
-            <td><input type="text" value={addedCategories} onChange={(e) => setAddedCategories(e.target.value)}/></td>
-        </tr>
-        <tr>
-            <td><label>Replaced category values:</label></td>
-            <td><input type="text" value={replacedCategories} onChange={(e) => setReplacedCategories(e.target.value)}/></td>
-        </tr>
-        <tr>
-            <td><label>From POS</label></td>
-            <td><input type="text" value={fromPOS} onChange={(e) => setFromPOS(e.target.value)}/></td>
-        </tr>
-        <tr>
-            <td><label>To POS:</label></td>
-            <td><input type="text" value={toPOS} onChange={(e) => setToPOS(e.target.value)}/></td>
-        </tr>
+        {ruleType === "morpho" && <>
+            <tr>
+                <td><label>Added category values:</label></td>
+                <td><input type="text" value={addedCategories} onChange={(e) => setAddedCategories(e.target.value)}/></td>
+            </tr>
+            <tr>
+                <td><label>Replaced category values:</label></td>
+                <td><input type="text" value={replacedCategories}
+                           onChange={(e) => setReplacedCategories(e.target.value)}/></td>
+            </tr>
+            <tr>
+                <td><label>From POS</label></td>
+                <td><input type="text" value={fromPOS} onChange={(e) => setFromPOS(e.target.value)}/></td>
+            </tr>
+            <tr>
+                <td><label>To POS:</label></td>
+                <td><input type="text" value={toPOS} onChange={(e) => setToPOS(e.target.value)}/></td>
+            </tr>
+        </>}
         <tr>
             <td><label>Source:</label></td>
             <td><input type="text" value={source} onChange={(e) => setSource(e.target.value)}/></td>
         </tr>
-        </tbody></table>
+        </tbody>
+        </table>
         <textarea rows="10" cols="50" value={editableText} onChange={e => setEditableText(e.target.value)}/>
         <br/>
         <h3>Notes</h3>

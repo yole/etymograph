@@ -57,7 +57,7 @@ export default function RuleList(params) {
             </>}
         </>)}
         {allowEdit() && <p>
-            <Link href="/rules/new">Add rule</Link> | <Link href="/rules/sequence/new">Add rule sequence</Link>
+            <Link href={`/rules/${router.query.lang}/new`}>Add rule</Link> | <Link href="/rules/sequence/new">Add rule sequence</Link>
         </p>}
     </>
 }

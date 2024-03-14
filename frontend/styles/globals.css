@@ -41,6 +41,10 @@ code {
   cursor: pointer;
 }
 
+.inlineButtonActive {
+  font-weight: bold;
+}
+
 .errorText {
   color: red
 }
