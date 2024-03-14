@@ -174,7 +174,7 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
         return relativePhonemeParameters.joinToString(" or ")
     }
 
-    fun reverseApplyToPhoneme(phonemes: PhonemeIterator, condition: RuleCondition): List<String>? {
+    open fun reverseApplyToPhoneme(phonemes: PhonemeIterator, condition: RuleCondition): List<String>? {
         if (type == InstructionType.NoChange) return emptyList()
         if (type == InstructionType.ChangeSound) {
             if (arg == phonemes.current) {
@@ -398,18 +398,33 @@ class ChangePhonemeClassInstruction(val relativeIndex: Int, val oldClass: String
     : RuleInstruction(InstructionType.ChangeSoundClass, "")
 {
     override fun apply(word: Word, phonemes: PhonemeIterator) {
-        val phoneme = phonemes.language.phonemes.find { phonemes.atRelative(relativeIndex) in it.graphemes } ?: return
+        replacePhonemeClass(phonemes, oldClass, newClass)
+    }
+
+    private fun replacePhonemeClass(phonemes: PhonemeIterator, fromClass: String, toClass: String): Boolean {
+        val phoneme = phonemes.language.phonemes.find { phonemes.atRelative(relativeIndex) in it.graphemes } ?: return false
         val newClasses = phoneme.classes.toMutableSet()
-        if (oldClass !in newClasses) return
-        newClasses.remove(oldClass)
-        newClasses.add(newClass)
-        val newPhoneme = phonemes.language.phonemes.singleOrNull { it.classes == newClasses } ?: return
+        if (fromClass !in newClasses) return false
+        newClasses.remove(fromClass)
+        newClasses.add(toClass)
+        val newPhoneme = phonemes.language.phonemes.singleOrNull { it.classes == newClasses } ?: return false
         phonemes.replaceAtRelative(relativeIndex, newPhoneme.graphemes[0])
+        return true
     }
 
     override fun toRichText(): RichText {
         val relIndex = RelativeOrdinals.toString(relativeIndex)?.plus(" ") ?: ""
         return "$relIndex$oldClass becomes $newClass".richText()
+    }
+
+    override fun reverseApplyToPhoneme(phonemes: PhonemeIterator, condition: RuleCondition): List<String>? {
+        val newClassRef = phonemes.language.phonemeClassByName(newClass) ?: return null
+        if (newClassRef.matchesCurrent(phonemes)) {
+            val newPhonemes = phonemes.clone()
+            if (!replacePhonemeClass(newPhonemes, newClass, oldClass)) return null
+            return listOf(newPhonemes.result())
+        }
+        return emptyList()
     }
 
     companion object {
