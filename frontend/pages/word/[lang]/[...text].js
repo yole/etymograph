@@ -274,6 +274,20 @@ function SingleWord(params) {
         }
     }
 
+    function deleteRuleLinkClicked(ruleId, linkType) {
+        if (window.confirm("Delete this link?")) {
+            deleteLink(word.id, ruleId, linkType)
+                .then(r => {
+                    if (r.status === 200) {
+                        router.replace(router.asPath)
+                    }
+                    else {
+                        r.json().then(r => setErrorText(r.message))
+                    }
+                })
+        }
+    }
+
     if (word === undefined) {
         return <div>No such word in the dictionary</div>
     }
@@ -370,6 +384,11 @@ function SingleWord(params) {
                 <div>Linked rules:</div>
                 {word.linkedRules.map(rl => <>
                     <Link href={`/rule/${rl.ruleId}`}>{rl.ruleName}</Link>
+                    {allowEdit() && <>
+                        &nbsp;(<span className="inlineButtonLink">
+                            <button className="inlineButton" onClick={() => deleteRuleLinkClicked(rl.ruleId, rl.linkType)}>delete</button>
+                        </span>)</>
+                    }
                     <br/></>
                 )}
             </>

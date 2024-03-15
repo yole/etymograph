@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {addRuleLink, allowEdit, deleteRule, deleteWord, updateRule} from "@/api";
+import {addRuleLink, allowEdit, deleteLink, deleteRule, deleteWord, updateRule} from "@/api";
 import WordLink from "@/components/WordLink";
 import {fetchBackend} from "@/api";
 import {useRouter} from "next/router";
@@ -50,6 +50,20 @@ export default function Rule(params) {
         if (window.confirm("Delete this rule?")) {
             deleteRule(rule.id)
                 .then(() => router.push("/rules/" + rule.toLang))
+        }
+    }
+
+    function deleteLinkClicked(entityId, linkType) {
+        if (window.confirm("Delete this link?")) {
+            deleteLink(entityId, rule.id, linkType)
+                .then(r => {
+                    if (r.status === 200) {
+                        router.replace(router.asPath)
+                    }
+                    else {
+                        r.json().then(r => setErrorText(r.message))
+                    }
+                })
         }
     }
 
@@ -108,7 +122,14 @@ export default function Rule(params) {
             <h3>Related rules</h3>
             {rule.links.map(rl => <>
                 <Link href={`/rule/${rl.toRuleId}`}>{rl.toRuleName}</Link>
-                <br/></>)
+                {allowEdit() && <>
+                    &nbsp;(<span className="inlineButtonLink">
+                            <button className="inlineButton"
+                                    onClick={() => deleteLinkClicked(rl.toRuleId, rl.linkType)}>delete</button>
+                        </span>)</>
+                }
+                <br/>
+            </>)
             }
         </>}
         {rule.linkedWords.length > 0 && <>
@@ -116,6 +137,11 @@ export default function Rule(params) {
             {rule.linkedWords.map(lw => <>
                 <WordLink word={lw.toWord}/>
                 <SourceRefs source={lw.source}/>
+                {allowEdit() && <>
+                    &nbsp;(<span className="inlineButtonLink">
+                            <button className="inlineButton" onClick={() => deleteLinkClicked(lw.toWord.id, lw.linkType)}>delete</button>
+                        </span>)</>
+                }
             </>)}
         </>}
         {linkMode && <RuleLinkForm fromEntityId={rule.id} submitted={linkSubmitted} />}

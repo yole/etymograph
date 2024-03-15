@@ -11,11 +11,13 @@ class RuleController(val graphService: GraphService) {
 
     data class RuleLinkViewModel(
         val toRuleId: Int,
-        val toRuleName: String
+        val toRuleName: String,
+        val linkType: String
     )
 
     data class RuleWordLinkViewModel(
         val toWord: WordRefViewModel,
+        val linkType: String,
         val source: List<SourceRefViewModel>,
         val notes: String?
     )
@@ -146,14 +148,17 @@ class RuleController(val graphService: GraphService) {
             isPhonemic(),
             logic.preInstructions.map { it.toRichText() },
             logic.branches.map { it.toViewModel(isUnconditional()) },
-            links.mapNotNull {
-                val rule = it.second as? Rule
-                rule?.let { RuleLinkViewModel(it.id, it.name) }
+            links.mapNotNull { (link, langEntity) ->
+                val rule = langEntity as? Rule
+                rule?.let { RuleLinkViewModel(it.id, it.name, link.type.id) }
             },
             links.mapNotNull { (link, langEntity) ->
                 val word = langEntity as? Word
                 word?.let {
-                    RuleWordLinkViewModel(word.toRefViewModel(graph), link.source.toViewModel(graph), link.notes)
+                    RuleWordLinkViewModel(
+                        word.toRefViewModel(graph),
+                        link.type.id, link.source.toViewModel(graph), link.notes
+                    )
                 }
             },
             if (!withExamples) emptyList() else graph.findRuleExamples(this).map { link ->
@@ -170,7 +175,7 @@ class RuleController(val graphService: GraphService) {
             toWord.toRefViewModel(graph),
             link.applyRules(toWord, graph).asOrthographic()
                 .takeIf { !fromWord.language.isNormalizedEqual(it, fromWord) }?.text,
-            link.rules.map { RuleLinkViewModel(it.id, it.name) }
+            link.rules.map { RuleLinkViewModel(it.id, it.name, link.type.id) }
         )
     }
 

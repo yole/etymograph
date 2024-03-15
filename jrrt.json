@@ -13577,6 +13577,132 @@
                     "refText": "https://eldamo.org/content/words/word-3339236895.html"
                 }
             ]
+        },
+        {
+            "id": 1392,
+            "text": "rim",
+            "lang": "S",
+            "gloss": "host",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "50"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-2541307047.html"
+                }
+            ]
+        },
+        {
+            "id": 1394,
+            "text": "Aragorn",
+            "lang": "S",
+            "pos": "NP",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "SD:128"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-1838387211.html"
+                }
+            ]
+        },
+        {
+            "id": 1395,
+            "text": "Arathornion",
+            "lang": "S",
+            "pos": "NP",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "SD:128"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-3454979407.html"
+                }
+            ]
+        },
+        {
+            "id": 1396,
+            "text": "ion",
+            "lang": "S",
+            "gloss": "son",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "170"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-3309334861.html"
+                }
+            ]
+        },
+        {
+            "id": 1397,
+            "text": "Arathorn",
+            "lang": "S",
+            "pos": "NP"
+        },
+        {
+            "id": 1399,
+            "text": "Edhelharn",
+            "lang": "S",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "SD:128"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-2405672595.html"
+                }
+            ]
+        },
+        {
+            "id": 1401,
+            "text": "harn",
+            "lang": "S"
+        },
+        {
+            "id": 1402,
+            "text": "sarn",
+            "lang": "S",
+            "gloss": "stone",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "RC:163"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-1057523367.html"
+                }
+            ]
+        },
+        {
+            "id": 1403,
+            "text": "Gondor",
+            "lang": "S",
+            "pos": "NP"
+        },
+        {
+            "id": 1404,
+            "text": "Arnor",
+            "lang": "S",
+            "pos": "NP"
+        },
+        {
+            "id": 1405,
+            "text": "mbair",
+            "lang": "S"
         }
     ],
     "rules": [
@@ -22103,6 +22229,11 @@
                                 "relativeIndex": 1,
                                 "negated": false,
                                 "parameter": "f"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "BeginningOfWord",
+                                "negated": true
                             }
                         ]
                     }
@@ -22129,6 +22260,11 @@
                                 "relativeIndex": 1,
                                 "negated": false,
                                 "parameter": "θ"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "BeginningOfWord",
+                                "negated": true
                             }
                         ]
                     }
@@ -22155,6 +22291,11 @@
                                 "relativeIndex": 1,
                                 "negated": false,
                                 "parameter": "x"
+                            },
+                            {
+                                "type": "ru.yole.etymograph.LeafRuleConditionData",
+                                "cond": "BeginningOfWord",
+                                "negated": true
                             }
                         ]
                     }
@@ -26388,6 +26529,28 @@
             "from": 1390,
             "to": 1391,
             "type": "="
+        },
+        {
+            "from": 1401,
+            "to": 1402,
+            "type": ">",
+            "ruleIds": [
+                1137
+            ]
+        },
+        {
+            "from": 1405,
+            "to": 1057,
+            "type": ">",
+            "ruleIds": [
+                1144,
+                1149
+            ]
+        },
+        {
+            "from": 1392,
+            "to": 1145,
+            "type": "~"
         }
     ],
     "corpusTexts": [
@@ -27429,6 +27592,35 @@
                 {
                     "pubId": null,
                     "refText": "VT50:5"
+                }
+            ]
+        },
+        {
+            "id": 1393,
+            "text": "Aragorn Arathornion Edhelharn\naran Gondor ar Arnor ar Hîr i Mbair Annui\nanglennatha i Varanduiniant erin dolothen Ethuil\negor ben genediad Drannail erin Gwirith edwen\nar e aníra ennas suilannad mhellyn în phain\nedregol e aníra tírad i Cherdir Perhael (i sennui Panthael estathar aen) Condir i Drann\nar Meril bess dîn, ar Elanor, Meril, Glorfinniel, ar Eirien sellath dîn\nar Iorhael, Gelir, Cordof, ar Baravorn, ionnath dîn\na Pherhael ar am Meril suilad uin aran o Minas Tirith nelchaenen ned Echuir",
+            "title": "King's Letter",
+            "lang": "S",
+            "wordIds": [
+                1394,
+                1395,
+                1399,
+                null,
+                1403,
+                null,
+                1404,
+                null,
+                null,
+                null,
+                1405
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "SD:128"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-2405672595.html"
                 }
             ]
         }
@@ -28880,6 +29072,22 @@
             "componentIds": [
                 1237,
                 1275
+            ]
+        },
+        {
+            "id": 1398,
+            "compoundId": 1395,
+            "componentIds": [
+                1397,
+                1396
+            ]
+        },
+        {
+            "id": 1400,
+            "compoundId": 1399,
+            "componentIds": [
+                1150,
+                1401
             ]
         }
     ],

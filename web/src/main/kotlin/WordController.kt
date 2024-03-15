@@ -54,6 +54,7 @@ class WordController(val graphService: GraphService) {
     data class LinkedRuleViewModel(
         val ruleId: Int,
         val ruleName: String,
+        val linkType: String,
         val source: List<SourceRefViewModel>,
         val notes: String?
     )
@@ -172,7 +173,7 @@ class WordController(val graphService: GraphService) {
             ruleLinks.map { link ->
                 val rule = link.fromEntity as? Rule ?: link.toEntity as Rule
                 LinkedRuleViewModel(
-                    rule.id, rule.name, link.source.toViewModel(graph), link.notes
+                    rule.id, rule.name, link.type.id, link.source.toViewModel(graph), link.notes
                 )
             },
             stressData?.index,
