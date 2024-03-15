@@ -122,6 +122,7 @@ export default function Rule(params) {
             <h3>Related rules</h3>
             {rule.links.map(rl => <>
                 <Link href={`/rule/${rl.toRuleId}`}>{rl.toRuleName}</Link>
+                <SourceRefs source={rl.source} span={true}/>
                 {allowEdit() && <>
                     &nbsp;(<span className="inlineButtonLink">
                             <button className="inlineButton"
@@ -135,8 +136,9 @@ export default function Rule(params) {
         {rule.linkedWords.length > 0 && <>
             <h3>Related word</h3>
             {rule.linkedWords.map(lw => <>
+                {lw.toWord.language !== rule.toLang && lw.toWord.language + " "}
                 <WordLink word={lw.toWord}/>
-                <SourceRefs source={lw.source}/>
+                <SourceRefs source={lw.source} span={true}/>
                 {allowEdit() && <>
                     &nbsp;(<span className="inlineButtonLink">
                             <button className="inlineButton" onClick={() => deleteLinkClicked(lw.toWord.id, lw.linkType)}>delete</button>

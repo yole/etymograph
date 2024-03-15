@@ -12,7 +12,9 @@ class RuleController(val graphService: GraphService) {
     data class RuleLinkViewModel(
         val toRuleId: Int,
         val toRuleName: String,
-        val linkType: String
+        val linkType: String,
+        val source: List<SourceRefViewModel>,
+        val notes: String?
     )
 
     data class RuleWordLinkViewModel(
@@ -150,7 +152,9 @@ class RuleController(val graphService: GraphService) {
             logic.branches.map { it.toViewModel(isUnconditional()) },
             links.mapNotNull { (link, langEntity) ->
                 val rule = langEntity as? Rule
-                rule?.let { RuleLinkViewModel(it.id, it.name, link.type.id) }
+                rule?.let {
+                    RuleLinkViewModel(it.id, it.name, link.type.id, link.source.toViewModel(graph), link.notes)
+                }
             },
             links.mapNotNull { (link, langEntity) ->
                 val word = langEntity as? Word
@@ -175,7 +179,7 @@ class RuleController(val graphService: GraphService) {
             toWord.toRefViewModel(graph),
             link.applyRules(toWord, graph).asOrthographic()
                 .takeIf { !fromWord.language.isNormalizedEqual(it, fromWord) }?.text,
-            link.rules.map { RuleLinkViewModel(it.id, it.name, link.type.id) }
+            link.rules.map { RuleLinkViewModel(it.id, it.name, link.type.id, link.source.toViewModel(graph), link.notes) }
         )
     }
 

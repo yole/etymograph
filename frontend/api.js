@@ -133,8 +133,10 @@ export function addLink(fromEntity, toEntity, linkType, ruleNames, source) {
     return postToBackend('link', {fromEntity: fromEntity, toEntity: toEntity, linkType: linkType, ruleNames: ruleNames, source: source})
 }
 
-export function addRuleLink(fromEntity, toRuleName, linkType) {
-    return postToBackend('link/rule', {fromEntity: fromEntity, toRuleName: toRuleName, linkType: linkType})
+export function addRuleLink(fromEntity, toRuleName, linkType, source) {
+    return postToBackend('link/rule',
+        {fromEntity: fromEntity, toRuleName: toRuleName, linkType: linkType, source: source}
+    )
 }
 
 export function deleteLink(fromEntity, toEntity, linkType) {

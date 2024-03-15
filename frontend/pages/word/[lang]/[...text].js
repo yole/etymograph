@@ -384,6 +384,7 @@ function SingleWord(params) {
                 <div>Linked rules:</div>
                 {word.linkedRules.map(rl => <>
                     <Link href={`/rule/${rl.ruleId}`}>{rl.ruleName}</Link>
+                    <SourceRefs source={rl.source} span={true}/>
                     {allowEdit() && <>
                         &nbsp;(<span className="inlineButtonLink">
                             <button className="inlineButton" onClick={() => deleteRuleLinkClicked(rl.ruleId, rl.linkType)}>delete</button>

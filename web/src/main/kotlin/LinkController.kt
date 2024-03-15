@@ -15,7 +15,8 @@ class LinkController(val graphService: GraphService) {
         val toEntity: Int = -1,
         val linkType: String = "",
         val ruleNames: String = "",
-        val source: String = ""
+        val source: String = "",
+        val notes: String? = null
     )
 
     data class ResolvedLinkParams(val fromEntity: LangEntity, val toEntity: LangEntity, val linkType: LinkType)
@@ -27,11 +28,17 @@ class LinkController(val graphService: GraphService) {
         val rules = resolveRuleNames(params)
         val source = parseSourceRefs(graph, params.source)
 
-        graph.addLink(fromEntity, toEntity, linkType, rules, source, null)
+        graph.addLink(fromEntity, toEntity, linkType, rules, source, params.notes.nullize())
         graph.save()
     }
 
-    data class RuleLinkParams(val fromEntity: Int = -1, val toRuleName: String = "", val linkType: String = "")
+    data class RuleLinkParams(
+        val fromEntity: Int = -1,
+        val toRuleName: String = "",
+        val linkType: String = "",
+        val source: String = "",
+        val notes: String? = null
+    )
 
     @PostMapping("/link/rule")
     fun addRuleLink(@RequestBody params: RuleLinkParams) {
@@ -39,8 +46,9 @@ class LinkController(val graphService: GraphService) {
         val fromEntity = graphService.resolveEntity(params.fromEntity)
         val toRule = graphService.resolveRule(params.toRuleName)
         val linkType = resolveLinkType(params.linkType)
+        val source = parseSourceRefs(graph, params.source)
 
-        graph.addLink(fromEntity, toRule, linkType, emptyList(), emptyList(), null)
+        graph.addLink(fromEntity, toRule, linkType, emptyList(), source, params.notes.nullize())
         graph.save()
     }
 
@@ -69,11 +77,13 @@ class LinkController(val graphService: GraphService) {
         val (fromEntity, toEntity, linkType) = resolveLinkParams(params)
 
         val graph = graphService.graph
-        val link = graph.findLink(fromEntity, toEntity, linkType) ?: throw NoLinkException()
+        val link = graph.findLink(fromEntity, toEntity, linkType)
+            ?: badRequest("No such link")
         val rules = resolveRuleNames(params)
 
         link.rules = rules
         link.source = parseSourceRefs(graph, params.source)
+        link.notes = params.notes.nullize()
         graph.save()
     }
 
@@ -87,5 +97,3 @@ class LinkController(val graphService: GraphService) {
         }
     }
 }
-@ResponseStatus(value = HttpStatus.BAD_REQUEST, reason = "No such link")
-class NoLinkException : RuntimeException()
