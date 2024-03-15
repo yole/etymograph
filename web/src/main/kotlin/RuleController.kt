@@ -14,6 +14,12 @@ class RuleController(val graphService: GraphService) {
         val toRuleName: String
     )
 
+    data class RuleWordLinkViewModel(
+        val toWord: WordRefViewModel,
+        val source: List<SourceRefViewModel>,
+        val notes: String?
+    )
+
     data class RuleExampleViewModel(
         val fromWord: WordRefViewModel,
         val toWord: WordRefViewModel,
@@ -44,6 +50,7 @@ class RuleController(val graphService: GraphService) {
         val preInstructions: List<RichText>,
         val branches: List<RuleBranchViewModel>,
         val links: List<RuleLinkViewModel>,
+        val linkedWords: List<RuleWordLinkViewModel>,
         val examples: List<RuleExampleViewModel>
     )
 
@@ -118,9 +125,8 @@ class RuleController(val graphService: GraphService) {
     private fun Rule.toViewModel(withExamples: Boolean = true): RuleViewModel {
         val graph = graphService.graph
         val paradigm = graph.paradigmForRule(this)
-        val links = (graph.getLinksFrom(this).map { it.toEntity } +
-                graph.getLinksTo(this).map { it.fromEntity })
-            .filterIsInstance<Rule>().toList()
+        val links = (graph.getLinksFrom(this).map { it to it.toEntity } +
+                graph.getLinksTo(this).map { it to it.fromEntity })
         return RuleViewModel(
             id, name,
             fromLanguage.shortName, toLanguage.shortName,
@@ -140,7 +146,16 @@ class RuleController(val graphService: GraphService) {
             isPhonemic(),
             logic.preInstructions.map { it.toRichText() },
             logic.branches.map { it.toViewModel(isUnconditional()) },
-            links.map { RuleLinkViewModel(it.id, it.name) },
+            links.mapNotNull {
+                val rule = it.second as? Rule
+                rule?.let { RuleLinkViewModel(it.id, it.name) }
+            },
+            links.mapNotNull { (link, langEntity) ->
+                val word = langEntity as? Word
+                word?.let {
+                    RuleWordLinkViewModel(word.toRefViewModel(graph), link.source.toViewModel(graph), link.notes)
+                }
+            },
             if (!withExamples) emptyList() else graph.findRuleExamples(this).map { link ->
                 exampleToViewModel(link, graph)
             }

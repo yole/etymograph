@@ -51,6 +51,13 @@ class WordController(val graphService: GraphService) {
         val source: List<SourceRefViewModel>
     )
 
+    data class LinkedRuleViewModel(
+        val ruleId: Int,
+        val ruleName: String,
+        val source: List<SourceRefViewModel>,
+        val notes: String?
+    )
+
     data class WordViewModel(
         val id: Int,
         val language: String,
@@ -70,6 +77,7 @@ class WordController(val graphService: GraphService) {
         val linksTo: List<LinkTypeViewModel>,
         val compounds: List<WordRefViewModel>,
         val components: List<CompoundComponentsViewModel>,
+        val linkedRules: List<LinkedRuleViewModel>,
         val stressIndex: Int?,
         val stressLength: Int?,
         val compound: Boolean
@@ -96,6 +104,8 @@ class WordController(val graphService: GraphService) {
     private fun Word.toViewModel(graph: GraphRepository): WordViewModel {
         val linksFrom = graph.getLinksFrom(this).groupBy { it.type }
         val linksTo = graph.getLinksTo(this).groupBy { it.type }
+        val ruleLinks = (linksFrom.values.flatten() + linksTo.values.flatten())
+            .filter { it.fromEntity is Rule || it.toEntity is Rule }
         val attestations = graph.findAttestations(this)
 
         val stressData = calculateStress()
@@ -125,23 +135,31 @@ class WordController(val graphService: GraphService) {
                     attestation.word.text.takeIf { it != text }
                 )
             },
-            linksFrom.map {
-                LinkTypeViewModel(
-                    it.key.id,
-                    it.key.name,
-                    it.value.filter { link -> link.toEntity is Word }.map { link ->
-                        linkToViewModel(link, graph, true)
-                    }
-                )
+            linksFrom.mapNotNull {
+                val wordLinks = it.value.filter { link -> link.toEntity is Word }
+                if (wordLinks.isEmpty())
+                    null
+                else
+                    LinkTypeViewModel(
+                        it.key.id,
+                        it.key.name,
+                        wordLinks.map { link ->
+                            linkToViewModel(link, graph, true)
+                        }
+                    )
             },
-            linksTo.map {
-                LinkTypeViewModel(
-                    it.key.id,
-                    it.key.reverseName,
-                    it.value.filter { link -> link.fromEntity is Word }.map { link ->
-                        linkToViewModel(link, graph, false)
-                    }
-                )
+            linksTo.mapNotNull {
+                val wordLinks = it.value.filter { link -> link.fromEntity is Word }
+                if (wordLinks.isEmpty())
+                    null
+                else
+                    LinkTypeViewModel(
+                        it.key.id,
+                        it.key.reverseName,
+                        wordLinks.map { link ->
+                            linkToViewModel(link, graph, false)
+                        }
+                    )
             },
             graph.findCompoundsByComponent(this).map { it.compoundWord.toRefViewModel(graph) },
             graph.findComponentsByCompound(this).map { compound ->
@@ -149,6 +167,12 @@ class WordController(val graphService: GraphService) {
                     compound.id,
                     compound.components.map { it.toRefViewModel(graph) },
                     compound.source.toViewModel(graph)
+                )
+            },
+            ruleLinks.map { link ->
+                val rule = link.fromEntity as? Rule ?: link.toEntity as Rule
+                LinkedRuleViewModel(
+                    rule.id, rule.name, link.source.toViewModel(graph), link.notes
                 )
             },
             stressData?.index,

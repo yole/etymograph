@@ -7,6 +7,7 @@ import Link from "next/link";
 import RuleForm from "@/components/RuleForm";
 import SourceRefs from "@/components/SourceRefs";
 import RichText from "@/components/RichText";
+import RuleLinkForm from "@/components/RuleLinkForm";
 
 export const config = {
     unstable_runtimeJS: true
@@ -26,31 +27,23 @@ export default function Rule(params) {
     const rule = params.loaderData
     const [editMode, setEditMode] = useState(false)
     const [linkMode, setLinkMode] = useState(false)
-    const [linkRuleName, setLinkRuleName] = useState("")
     const [errorText, setErrorText] = useState("")
     const router = useRouter()
     useEffect(() => { document.title = "Etymograph : Rule " + rule.name })
 
-    function handleResponse(r) {
-        if (r.status === 200) {
+    function linkSubmitted(status, jr) {
+        if (status === 200) {
             setErrorText("")
+            setLinkMode(false)
+            router.replace(router.asPath)
         } else {
-            r.json().then(r => setErrorText(r.message.length > 0 ? r.message : "Failed to save rule"))
+            setErrorText(jr.message.length > 0 ? jr.message : "Failed to save rule")
         }
     }
 
     function submitted() {
         setEditMode(false)
         router.replace(router.asPath)
-    }
-
-    function saveLink() {
-        addRuleLink(rule.id, linkRuleName, '~')
-            .then((r) => {
-                handleResponse(r)
-                router.replace(router.asPath)
-            })
-        setLinkMode(false)
     }
 
     function deleteRuleClicked() {
@@ -118,13 +111,14 @@ export default function Rule(params) {
                 <br/></>)
             }
         </>}
-        {linkMode && <>
-            <p>
-                <label>Link to rule name:</label>{' '}
-                <input type="text" value={linkRuleName} onChange={(e) => setLinkRuleName(e.target.value)}/>{' '}
-                <button onClick={() => saveLink()}>Save</button>
-            </p>
+        {rule.linkedWords.length > 0 && <>
+            <h3>Related word</h3>
+            {rule.linkedWords.map(lw => <>
+                <WordLink word={lw.toWord}/>
+                <SourceRefs source={lw.source}/>
+            </>)}
         </>}
+        {linkMode && <RuleLinkForm fromEntityId={rule.id} submitted={linkSubmitted} />}
         {errorText !== "" && <div className="errorText">{errorText}</div>}
         {rule.examples.length > 0 && <>
             <h3>Examples</h3>

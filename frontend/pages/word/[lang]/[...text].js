@@ -16,6 +16,7 @@ import {
 import Link from "next/link";
 import {useRouter} from "next/router";
 import SourceRefs from "@/components/SourceRefs";
+import RuleLinkForm from "@/components/RuleLinkForm";
 
 export const config = {
     unstable_runtimeJS: true
@@ -181,6 +182,7 @@ function SingleWord(params) {
     const [showCompoundComponent, setShowCompoundComponent] = useState(false)
     const [showRelated, setShowRelated] = useState(false)
     const [showVariation, setShowVariation] = useState(false)
+    const [showRuleLink, setShowRuleLink] = useState(false)
     const [addToCompound, setAddToCompound] = useState(undefined)
     const [editMode, setEditMode] = useState(false)
     const [errorText, setErrorText] = useState("")
@@ -219,6 +221,16 @@ function SingleWord(params) {
             else {
                 router.replace(router.asPath)
             }
+        }
+    }
+
+    function ruleLinkSubmitted(status, r) {
+        if (status !== 200) {
+            setErrorText(r.message)
+        }
+        else {
+            setShowRuleLink(false)
+            router.replace(router.asPath)
         }
     }
 
@@ -353,6 +365,16 @@ function SingleWord(params) {
             </>
         }
 
+        {word.linkedRules.length > 0 &&
+            <>
+                <div>Linked rules:</div>
+                {word.linkedRules.map(rl => <>
+                    <Link href={`/rule/${rl.ruleId}`}>{rl.ruleName}</Link>
+                    <br/></>
+                )}
+            </>
+        }
+
         <p/>
         {allowEdit() && <>
             {!isCompound && <><button onClick={() => setShowBaseWord(!showBaseWord)}>Add base word</button><br/></>}
@@ -365,6 +387,8 @@ function SingleWord(params) {
             {showRelated && <WordForm submitted={submitted} linkType='~' linkTarget={word} language={word.language} languageReadOnly={true}/>}
             {!isCompound && <><button onClick={() => setShowVariation(!showVariation)}>Add variation of</button><br/></>}
             {showVariation && <WordForm submitted={submitted} linkType='=' reverseLink={true} linkTarget={word} language={word.language} languageReadOnly={true}/>}
+            <button onClick={() => setShowRuleLink(!showRuleLink)}>Add related rule</button><br/>
+            {showRuleLink && <RuleLinkForm submitted={ruleLinkSubmitted} fromEntityId={word.id}/>}
             <p/>
             {errorText !== "" && <div className="errorText">{errorText}</div>}
         </>}
