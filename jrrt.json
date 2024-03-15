@@ -12569,7 +12569,8 @@
         {
             "id": 1306,
             "text": "Perhael",
-            "lang": "S"
+            "lang": "S",
+            "pos": "NP"
         },
         {
             "id": 1307,
@@ -13717,6 +13718,578 @@
                 {
                     "pubId": null,
                     "refText": "https://eldamo.org/content/words/word-1068546623.html"
+                }
+            ]
+        },
+        {
+            "id": 1407,
+            "text": "annui",
+            "lang": "S",
+            "gloss": "western",
+            "pos": "ADJ",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "SD:128"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-2869753515.html"
+                }
+            ]
+        },
+        {
+            "id": 1408,
+            "text": "anglennatha",
+            "lang": "S",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "SD:128"
+                }
+            ]
+        },
+        {
+            "id": 1409,
+            "text": "anglenna-",
+            "lang": "S",
+            "gloss": "approach",
+            "pos": "V",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "SD:129"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-1686866509.html"
+                }
+            ]
+        },
+        {
+            "id": 1411,
+            "text": "glenna-",
+            "lang": "S",
+            "gloss": "travel",
+            "pos": "V",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "SD:129"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-801922421.html"
+                }
+            ]
+        },
+        {
+            "id": 1412,
+            "text": "LED-",
+            "lang": "CE",
+            "gloss": "go, proceed",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "51"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-1772134687.html"
+                }
+            ]
+        },
+        {
+            "id": 1413,
+            "text": "Varanduiniant",
+            "lang": "S",
+            "sourceRefs": [
+                {
+                    "pubId": 17,
+                    "refText": "129"
+                }
+            ]
+        },
+        {
+            "id": 1414,
+            "text": "Baranduiniant",
+            "lang": "S"
+        },
+        {
+            "id": 1415,
+            "text": "Baranduin",
+            "lang": "S",
+            "pos": "NP"
+        },
+        {
+            "id": 1417,
+            "text": "iant",
+            "lang": "S",
+            "gloss": "bridge",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": 17,
+                    "refText": "129"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-2353825653.html"
+                }
+            ]
+        },
+        {
+            "id": 1418,
+            "text": "YAN-",
+            "lang": "CE",
+            "gloss": "join",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "45"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-2909098865.html"
+                }
+            ]
+        },
+        {
+            "id": 1419,
+            "text": "dolothen",
+            "lang": "S",
+            "sourceRefs": [
+                {
+                    "pubId": 17,
+                    "refText": "128"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-2405672595.html"
+                }
+            ]
+        },
+        {
+            "id": 1420,
+            "text": "tolothen",
+            "lang": "S",
+            "gloss": "eighth",
+            "pos": "ADJ"
+        },
+        {
+            "id": 1421,
+            "text": "tolodh",
+            "lang": "S",
+            "gloss": "eight",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "95"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-3023271443.html"
+                }
+            ]
+        },
+        {
+            "id": 1422,
+            "text": "ethuil",
+            "lang": "S",
+            "gloss": "spring",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": 17,
+                    "refText": "129"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-1008917403.html"
+                }
+            ]
+        },
+        {
+            "id": 1423,
+            "text": "egor",
+            "lang": "S",
+            "gloss": "or",
+            "pos": "CONJ",
+            "sourceRefs": [
+                {
+                    "pubId": 17,
+                    "refText": "129"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-3073110357.html"
+                }
+            ]
+        },
+        {
+            "id": 1424,
+            "text": "genediad",
+            "lang": "S",
+            "sourceRefs": [
+                {
+                    "pubId": 17,
+                    "refText": "129"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-2300691831.html"
+                }
+            ]
+        },
+        {
+            "id": 1426,
+            "text": "genedia-",
+            "lang": "S",
+            "gloss": "reckon",
+            "pos": "V",
+            "sourceRefs": [
+                {
+                    "pubId": 17,
+                    "refText": "129"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-2219424381.html"
+                }
+            ]
+        },
+        {
+            "id": 1427,
+            "text": "Gwirith",
+            "lang": "S",
+            "gloss": "April",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": 17,
+                    "refText": "129"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-477581653.html"
+                }
+            ]
+        },
+        {
+            "id": 1428,
+            "text": "edwen",
+            "lang": "S",
+            "gloss": "second",
+            "pos": "ADJ",
+            "sourceRefs": [
+                {
+                    "pubId": 17,
+                    "refText": "129"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-4191424859.html"
+                }
+            ]
+        },
+        {
+            "id": 1429,
+            "text": "e",
+            "lang": "S",
+            "gloss": "he",
+            "pos": "PRON",
+            "sourceRefs": [
+                {
+                    "pubId": 17,
+                    "refText": "129"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-2398368447.html"
+                }
+            ]
+        },
+        {
+            "id": 1430,
+            "text": "aníra",
+            "lang": "S",
+            "gloss": "desire",
+            "pos": "V",
+            "sourceRefs": [
+                {
+                    "pubId": 17,
+                    "refText": "129"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-549462809.html"
+                }
+            ]
+        },
+        {
+            "id": 1431,
+            "text": "ennas",
+            "lang": "S",
+            "gloss": "there",
+            "pos": "ADV",
+            "sourceRefs": [
+                {
+                    "pubId": 17,
+                    "refText": "129"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-433074759.html"
+                }
+            ]
+        },
+        {
+            "id": 1432,
+            "text": "suilannad",
+            "lang": "S",
+            "sourceRefs": [
+                {
+                    "pubId": 17,
+                    "refText": "128"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-2405672595.html"
+                }
+            ]
+        },
+        {
+            "id": 1433,
+            "text": "suilanna-",
+            "lang": "S",
+            "gloss": "greet",
+            "pos": "V",
+            "sourceRefs": [
+                {
+                    "pubId": 17,
+                    "refText": "129"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-3517210617.html"
+                }
+            ]
+        },
+        {
+            "id": 1434,
+            "text": "mhellyn",
+            "lang": "S"
+        },
+        {
+            "id": 1435,
+            "text": "ín",
+            "lang": "S",
+            "gloss": "his",
+            "pos": "PRON",
+            "sourceRefs": [
+                {
+                    "pubId": 17,
+                    "refText": "129"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-2987738783.html"
+                }
+            ]
+        },
+        {
+            "id": 1436,
+            "text": "fain",
+            "lang": "S",
+            "sourceRefs": [
+                {
+                    "pubId": 17,
+                    "refText": "128"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-2405672595.html"
+                }
+            ]
+        },
+        {
+            "id": 1437,
+            "text": "pân",
+            "lang": "S",
+            "gloss": "all",
+            "pos": "ADJ",
+            "sourceRefs": [
+                {
+                    "pubId": 17,
+                    "refText": "129"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-1690934137.html"
+                }
+            ]
+        },
+        {
+            "id": 1438,
+            "text": "edregol",
+            "lang": "S",
+            "gloss": "in especial",
+            "pos": "ADV",
+            "sourceRefs": [
+                {
+                    "pubId": 17,
+                    "refText": "129"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-4059097285.html"
+                }
+            ]
+        },
+        {
+            "id": 1439,
+            "text": "tírad",
+            "lang": "S"
+        },
+        {
+            "id": 1440,
+            "text": "tíra-",
+            "lang": "S",
+            "gloss": "see",
+            "pos": "V",
+            "sourceRefs": [
+                {
+                    "pubId": 17,
+                    "refText": "129"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-608718335.html"
+                }
+            ]
+        },
+        {
+            "id": 1441,
+            "text": "cherdir",
+            "lang": "S"
+        },
+        {
+            "id": 1442,
+            "text": "herdir",
+            "lang": "S",
+            "gloss": "master",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": 17,
+                    "refText": "129"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-1538062533.html"
+                }
+            ]
+        },
+        {
+            "id": 1444,
+            "text": "dîr",
+            "lang": "S",
+            "gloss": "man",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "60"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-2168038773.html"
+                }
+            ]
+        },
+        {
+            "id": 1446,
+            "text": "Meril",
+            "lang": "S",
+            "pos": "NP",
+            "sourceRefs": [
+                {
+                    "pubId": 17,
+                    "refText": "128"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-2405672595.html"
+                }
+            ]
+        },
+        {
+            "id": 1447,
+            "text": "Elanor",
+            "lang": "S",
+            "pos": "NP",
+            "sourceRefs": [
+                {
+                    "pubId": 17,
+                    "refText": "128"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-2405672595.html"
+                }
+            ]
+        },
+        {
+            "id": 1448,
+            "text": "Pherhael",
+            "lang": "S",
+            "sourceRefs": [
+                {
+                    "pubId": 17,
+                    "refText": "128"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-2405672595.html"
+                }
+            ]
+        },
+        {
+            "id": 1449,
+            "text": "bess",
+            "lang": "S",
+            "gloss": "wife",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": 17,
+                    "refText": "129"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-3367157657.html"
+                }
+            ]
+        },
+        {
+            "id": 1450,
+            "text": "dín",
+            "lang": "S"
+        },
+        {
+            "id": 1451,
+            "text": "tîn",
+            "lang": "S",
+            "gloss": "his",
+            "pos": "PRON",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "VT31:21"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-2130737323.html"
                 }
             ]
         }
@@ -22402,6 +22975,53 @@
             "notes": "",
             "preInstructions": [
             ]
+        },
+        {
+            "id": 1425,
+            "name": "s-gerund",
+            "fromLang": "S",
+            "toLang": "S",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "Append",
+                            "args": [
+                                "'ed'"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.LeafRuleConditionData",
+                        "cond": "EndsWith",
+                        "characters": "a"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "Append",
+                            "args": [
+                                "'d'"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "ru.yole.etymograph.OtherwiseConditionData"
+                    }
+                }
+            ],
+            "addedCategories": ".GER",
+            "fromPOS": "V",
+            "sourceRefs": [
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-285541985.html"
+                }
+            ],
+            "notes": "",
+            "preInstructions": [
+            ]
         }
     ],
     "links": [
@@ -26578,6 +27198,116 @@
                     "refText": "79"
                 }
             ]
+        },
+        {
+            "from": 1407,
+            "to": 1289,
+            "type": ">"
+        },
+        {
+            "from": 1408,
+            "to": 1409,
+            "type": ">",
+            "ruleIds": [
+                1163
+            ]
+        },
+        {
+            "from": 1411,
+            "to": 1412,
+            "type": ">"
+        },
+        {
+            "from": 1413,
+            "to": 1414,
+            "type": ">",
+            "ruleIds": [
+                1137
+            ]
+        },
+        {
+            "from": 1417,
+            "to": 1418,
+            "type": ">"
+        },
+        {
+            "from": 1419,
+            "to": 1420,
+            "type": ">",
+            "ruleIds": [
+                1137
+            ]
+        },
+        {
+            "from": 1420,
+            "to": 1421,
+            "type": ">"
+        },
+        {
+            "from": 1424,
+            "to": 1426,
+            "type": ">",
+            "ruleIds": [
+                1425
+            ]
+        },
+        {
+            "from": 1432,
+            "to": 1433,
+            "type": ">",
+            "ruleIds": [
+                1425
+            ]
+        },
+        {
+            "from": 1434,
+            "to": 1211,
+            "type": ">",
+            "ruleIds": [
+                1137,
+                1149
+            ]
+        },
+        {
+            "from": 1436,
+            "to": 1437,
+            "type": ">",
+            "ruleIds": [
+                1144,
+                1149
+            ]
+        },
+        {
+            "from": 1439,
+            "to": 1440,
+            "type": ">",
+            "ruleIds": [
+                1425
+            ]
+        },
+        {
+            "from": 1441,
+            "to": 1442,
+            "type": ">",
+            "ruleIds": [
+                1137
+            ]
+        },
+        {
+            "from": 1448,
+            "to": 1306,
+            "type": ">",
+            "ruleIds": [
+                1144
+            ]
+        },
+        {
+            "from": 1450,
+            "to": 1451,
+            "type": ">",
+            "ruleIds": [
+                1137
+            ]
         }
     ],
     "corpusTexts": [
@@ -27638,7 +28368,66 @@
                 null,
                 null,
                 null,
-                1405
+                1405,
+                1407,
+                1408,
+                null,
+                1413,
+                null,
+                1419,
+                1422,
+                1423,
+                null,
+                1424,
+                null,
+                null,
+                1427,
+                1428,
+                null,
+                1429,
+                1430,
+                1431,
+                1432,
+                1434,
+                1435,
+                1436,
+                1438,
+                null,
+                null,
+                1439,
+                null,
+                1441,
+                1306,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                1446,
+                1449,
+                1450,
+                null,
+                1447,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                1212,
+                1448
             ],
             "sourceRefs": [
                 {
@@ -28294,6 +29083,11 @@
             "id": 16,
             "name": "Lost Road and Other Writings; J.R.R. Tolkien, (editor) Christopher Tolkien; 1987",
             "refId": "LR"
+        },
+        {
+            "id": 17,
+            "name": "Sauron Defeated, J.R.R. Tolkien, (editor) Christopher Tolkien; 1992",
+            "refId": "SD"
         }
     ],
     "compounds": [
@@ -29116,6 +29910,38 @@
                 1150,
                 1401
             ]
+        },
+        {
+            "id": 1410,
+            "compoundId": 1409,
+            "componentIds": [
+                1251,
+                1411
+            ]
+        },
+        {
+            "id": 1416,
+            "compoundId": 1414,
+            "componentIds": [
+                1415,
+                1417
+            ]
+        },
+        {
+            "id": 1443,
+            "compoundId": 1442,
+            "componentIds": [
+                1286,
+                1444
+            ]
+        },
+        {
+            "id": 1445,
+            "compoundId": 1306,
+            "componentIds": [
+                1307,
+                1310
+            ]
         }
     ],
     "translations": [
@@ -29402,6 +30228,10 @@
                 {
                     "name": "Past passive participle",
                     "abbreviation": "PPP"
+                },
+                {
+                    "name": "Gerund",
+                    "abbreviation": "GER"
                 }
             ]
         },
