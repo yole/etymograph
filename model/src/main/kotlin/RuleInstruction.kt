@@ -139,15 +139,17 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
     }
 
     private fun summarizeContext(condition: RuleCondition, includeRelativePhoneme: Boolean): String? {
+        fun LeafRuleCondition.maybeNot() = if (negated) "not " else ""
+
         val relativePhonemeContext = if (includeRelativePhoneme) summarizeRelativePhoneme(condition) else ""
-        val bow = condition.findLeafConditions(ConditionType.BeginningOfWord)
-        if (bow.any()) return "$relativePhonemeContext at beginning of word"
-        val eow = condition.findLeafConditions(ConditionType.EndOfWord)
-        if (eow.any()) return "$relativePhonemeContext at end of word"
+        val bow = condition.findLeafConditions(ConditionType.BeginningOfWord).firstOrNull()
+        if (bow != null) return "$relativePhonemeContext ${bow.maybeNot()}at beginning of word"
+        val eow = condition.findLeafConditions(ConditionType.EndOfWord).firstOrNull()
+        if (eow != null) return "$relativePhonemeContext ${eow.maybeNot()}at end of word"
         val syllableIndexCondition = condition.findLeafConditions(ConditionType.SyllableIndex).singleOrNull()
         if (syllableIndexCondition != null) {
-            val neg = if (syllableIndexCondition.negated) "not " else ""
-            return "$relativePhonemeContext in $neg${Ordinals.toString(syllableIndexCondition.parameter!!.toInt())} syllable"
+            val index = Ordinals.toString(syllableIndexCondition.parameter!!.toInt())
+            return "$relativePhonemeContext in ${syllableIndexCondition.maybeNot()}$index syllable"
         }
         return relativePhonemeContext
     }

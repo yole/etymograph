@@ -139,8 +139,8 @@ class LeafRuleCondition(
     override fun matches(word: Word, phonemes: PhonemeIterator): Boolean {
         return when (type) {
             ConditionType.PhonemeMatches -> matchPhoneme(phonemes)
-            ConditionType.BeginningOfWord -> phonemes.atBeginning()
-            ConditionType.EndOfWord -> phonemes.atEnd()
+            ConditionType.BeginningOfWord -> phonemes.atBeginning().negateIfNeeded()
+            ConditionType.EndOfWord -> phonemes.atEnd().negateIfNeeded()
             ConditionType.SyllableIsStressed -> word.calcStressedPhonemeIndex() == phonemes.index
             ConditionType.SyllableIndex -> matchSyllableIndex(phonemes, word)
             ConditionType.ClassMatches -> matchClass(word)
@@ -164,12 +164,15 @@ class LeafRuleCondition(
     private fun matchPhoneme(phonemes: PhonemeIterator) =
         (phonemeClass?.matchesCurrent(phonemes) ?: (phonemes.current == parameter)).negateIfNeeded()
 
-    override fun toRichText(): RichText =
-        if (type.takesArgument) {
+    override fun toRichText(): RichText {
+        val maybeNotPrefix = (if (negated) notPrefix else "").rich()
+        return if (type.takesArgument) {
             val parameterName = parameterToEditableText()
-            type.condName.rich() + (if (negated) notPrefix else "").rich() + (parameterName ?: "").rich(emph = true)
-        } else
-            type.condName.richText()
+            type.condName.rich() + maybeNotPrefix + (parameterName ?: "").rich(emph = true)
+        } else {
+            maybeNotPrefix + type.condName.rich()
+        }
+    }
 
     private fun parameterToEditableText(): String? {
         if (type == ConditionType.SyllableIndex) {
@@ -202,7 +205,11 @@ class LeafRuleCondition(
 
             for (conditionType in ConditionType.entries) {
                 if (buffer.consume(conditionType.condName)) {
-                    return parseLeafCondition(conditionType, buffer, language)
+                    val negated = conditionType.takesArgument && buffer.consume(notPrefix)
+                    return parseLeafCondition(conditionType, buffer, language, negated)
+                }
+                else if (!conditionType.takesArgument && buffer.consume("$notPrefix${conditionType.condName}")) {
+                    return parseLeafCondition(conditionType, buffer, language, true)
                 }
             }
             buffer.fail("Unrecognized condition")
@@ -211,9 +218,9 @@ class LeafRuleCondition(
         private fun parseLeafCondition(
             conditionType: ConditionType,
             buffer: ParseBuffer,
-            language: Language
+            language: Language,
+            negated: Boolean
         ): LeafRuleCondition {
-            val negated = buffer.consume(notPrefix)
             if (!conditionType.takesArgument) {
                 return LeafRuleCondition(conditionType, null, null, negated)
             }
