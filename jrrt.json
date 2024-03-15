@@ -13703,6 +13703,22 @@
             "id": 1405,
             "text": "mbair",
             "lang": "S"
+        },
+        {
+            "id": 1406,
+            "text": "lō",
+            "lang": "CE",
+            "gloss": "ablative",
+            "sourceRefs": [
+                {
+                    "pubId": 10,
+                    "refText": "79"
+                },
+                {
+                    "pubId": null,
+                    "refText": "https://eldamo.org/content/words/word-1068546623.html"
+                }
+            ]
         }
     ],
     "rules": [
@@ -26551,6 +26567,17 @@
             "from": 1392,
             "to": 1145,
             "type": "~"
+        },
+        {
+            "from": 1406,
+            "to": 398,
+            "type": "~",
+            "sourceRefs": [
+                {
+                    "pubId": 10,
+                    "refText": "79"
+                }
+            ]
         }
     ],
     "corpusTexts": [
