@@ -65,19 +65,19 @@ class CorpusText(
             val textWords = splitIntoNormalizedWords(line, currentIndex)
             CorpusTextLine(textWords.map { tw ->
                 val word = _words.getOrNull(currentIndex)
-                val normalizedText = if (sentenceStart || tw.baseText.startsWith("\""))
+                val normalizedText = if (sentenceStart || tw.baseText.startsWith("\"") || tw.baseText.startsWith("("))
                     tw.normalizedText
                 else
                     restoreCase(tw.normalizedText, tw.baseText)
                 sentenceStart = tw.baseText.endsWith('.')
                 if (word != null) {
                     val stressData = word.calculateStress()
-                    val leadingPunctuation = tw.baseText.takeWhile { it == '"' }
+                    val leadingPunctuation = tw.baseText.takeWhile { it == '"' || it == '(' }
                     val trailingPunctuation = tw.baseText.takeLastWhile { it in punctuation }
                     val wordWithSegments = repo.restoreSegments(word)
                     val segmentedText = leadingPunctuation + restoreCase(wordWithSegments.segmentedText(), tw.baseText) + trailingPunctuation
                     val glossWithSegments = wordWithSegments.getOrComputeGloss(repo) ?: word.getOrComputeGloss(repo)
-                    val stressIndex = adjustStressIndex(wordWithSegments, stressData?.index)
+                    val stressIndex = adjustStressIndex(wordWithSegments, stressData?.index)?.plus(leadingPunctuation.length)
 
                     CorpusWord(currentIndex++, tw.baseText, normalizedText, segmentedText, word, word.getOrComputeGloss(repo),
                         glossWithSegments, stressIndex, stressData?.length, repo.isHomonym(word))
@@ -102,12 +102,10 @@ class CorpusText(
         return result
     }
 
-
-
     private fun splitIntoNormalizedWords(line: String, lineStartIndex: Int): List<WordText> {
         var currentIndex = lineStartIndex
         return line.split(' ').map {
-            val cleanText = it.trimStart('"').trimEnd(*punctuation)
+            val cleanText = it.trimStart('"', '(').trimEnd(*punctuation)
                 .replace("[", "").replace("]", "")
             WordText(it, language.normalizeWord(cleanText), currentIndex++)
         }
@@ -147,7 +145,7 @@ class CorpusText(
     }
 
     companion object {
-        val punctuation = charArrayOf('!', ',', '.', '?', ':', ';', '\"')
+        val punctuation = charArrayOf('!', ',', '.', '?', ':', ';', '\"', '(', ')')
     }
 }
 

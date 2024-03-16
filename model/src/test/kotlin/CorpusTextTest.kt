@@ -80,6 +80,24 @@ class CorpusTextTest : QBaseTest() {
     }
 
     @Test
+    fun testNormalizedTextRemoveParenthees() {
+        val corpusText = CorpusText(-1, "Perhael (i sennui Panthael)", null, q, mutableListOf(), emptyList(), null)
+
+        val repo = repoWithQ()
+        val stressRule = repo.rule("- stress is on first syllable")
+        q.stressRule = RuleRef.to(stressRule)
+
+        val i = repo.addWord("i")
+        corpusText.associateWord(1, i)
+
+        val lines = corpusText.mapToLines(repo)
+        assertEquals("i", lines[0].corpusWords[1].normalizedText)
+        assertEquals("(i", lines[0].corpusWords[1].segmentedText)
+        assertEquals(1, lines[0].corpusWords[1].stressIndex)
+        assertEquals("Panthael", lines[0].corpusWords[3].normalizedText)
+    }
+
+    @Test
     fun testAttestations() {
         val repo = InMemoryGraphRepository()
         val eaV = q.word("ea", "be")

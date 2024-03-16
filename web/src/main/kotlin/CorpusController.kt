@@ -32,8 +32,8 @@ class CorpusController(val graphService: GraphService) {
 
     data class CorpusWordViewModel(
         val index: Int,
-        val text: String,
-        val normalizedText: String,
+        val text: String,  // CorpusWord.segmentedText
+        val normalizedText: String, // CorpusWord.normalizedText
         val gloss: String, val wordId: Int?, val wordText: String?,
         val stressIndex: Int?, val stressLength: Int?, val homonym: Boolean,
     )
