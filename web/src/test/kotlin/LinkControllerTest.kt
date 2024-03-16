@@ -10,8 +10,8 @@ class LinkControllerTest {
         val fixture = QTestFixture()
 
         val linkController = LinkController(fixture.graphService)
-        val word1 = fixture.repo.findOrAddWord("abc", fixture.q, "abc")
-        val word2 = fixture.repo.findOrAddWord("def", fixture.q, "def")
+        val word1 = fixture.graph.findOrAddWord("abc", fixture.q, "abc")
+        val word2 = fixture.graph.findOrAddWord("def", fixture.q, "def")
 
         linkController.addLink(LinkController.LinkParams(word1.id, word2.id, Link.Related.id, source = "src"))
 
@@ -26,7 +26,7 @@ class LinkControllerTest {
         val fixture = QTestFixture()
 
         val linkController = LinkController(fixture.graphService)
-        val word = fixture.repo.findOrAddWord("abc", fixture.q, "abc")
+        val word = fixture.graph.findOrAddWord("abc", fixture.q, "abc")
 
         val ruleController = RuleController(fixture.graphService)
         ruleController.newRule(

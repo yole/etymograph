@@ -95,7 +95,10 @@ class Word(
     fun calcStressedPhonemeIndex(): Int {
         if (stressedPhonemeIndex < 0) {
             // graph is used only for retrieving links of word and we don't need this for stress
-            language.stressRule?.resolve()?.apply(this, InMemoryGraphRepository.EMPTY)
+            val wordWithStress = language.stressRule?.resolve()?.apply(this, InMemoryGraphRepository.EMPTY)
+            if (wordWithStress != null) {
+                stressedPhonemeIndex = wordWithStress.stressedPhonemeIndex
+            }
         }
         return stressedPhonemeIndex
     }

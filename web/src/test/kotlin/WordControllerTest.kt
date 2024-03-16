@@ -15,10 +15,10 @@ class WordControllerTest {
         val addWordParams = WordController.AddWordParameters("ea", "be", "", "", "", "")
         val wordViewModel = wordController.addWord("q", addWordParams)
 
-        Assert.assertNull(fixture.repo.wordsByText(fixture.q, "ea").single().pos)
+        Assert.assertNull(fixture.graph.wordsByText(fixture.q, "ea").single().pos)
 
         wordController.updateWord(wordViewModel.id, addWordParams)
-        Assert.assertNull(fixture.repo.wordsByText(fixture.q, "ea").single().pos)
+        Assert.assertNull(fixture.graph.wordsByText(fixture.q, "ea").single().pos)
     }
 
     @Test
@@ -39,31 +39,31 @@ class WordControllerTest {
     fun updateParadigm() {
         val fixture = QTestFixture()
         val accRule = fixture.setupParadigm()
-        val elen = fixture.repo.findOrAddWord("elen", fixture.q, "star", pos = "N")
+        val elen = fixture.graph.findOrAddWord("elen", fixture.q, "star", pos = "N")
 
         val wc = WordController(fixture.graphService)
         val wordParadigms = wc.wordParadigms(elen.id)
         assertEquals(1, wordParadigms.paradigms.size)
 
         wc.updateParadigm(elen.id, WordController.UpdateParadigmParameters(arrayOf(arrayOf(accRule.id, "elena"))))
-        val elena = fixture.repo.wordsByText(fixture.q, "elena").single()
-        assertEquals("star.ACC", elena.getOrComputeGloss(fixture.repo))
+        val elena = fixture.graph.wordsByText(fixture.q, "elena").single()
+        assertEquals("star.ACC", elena.getOrComputeGloss(fixture.graph))
     }
 
     @Test
     fun updateParadigmChangeText() {
         val fixture = QTestFixture()
         val accRule = fixture.setupParadigm()
-        val elen = fixture.repo.findOrAddWord("elen", fixture.q, "star", pos = "N")
-        val elena = fixture.repo.findOrAddWord("elena", fixture.q, null, pos = "N")
-        fixture.repo.addLink(elena, elen, Link.Derived, listOf(accRule), emptyList(), null)
+        val elen = fixture.graph.findOrAddWord("elen", fixture.q, "star", pos = "N")
+        val elena = fixture.graph.findOrAddWord("elena", fixture.q, null, pos = "N")
+        fixture.graph.addLink(elena, elen, Link.Derived, listOf(accRule), emptyList(), null)
 
         val wc = WordController(fixture.graphService)
         val wordParadigms = wc.wordParadigms(elen.id)
         assertEquals(1, wordParadigms.paradigms.size)
 
         wc.updateParadigm(elen.id, WordController.UpdateParadigmParameters(arrayOf(arrayOf(accRule.id, "elenna"))))
-        assertEquals(elena, fixture.repo.wordsByText(fixture.q, "elenna").single())
+        assertEquals(elena, fixture.graph.wordsByText(fixture.q, "elenna").single())
     }
 
     @Test

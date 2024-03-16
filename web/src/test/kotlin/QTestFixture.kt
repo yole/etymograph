@@ -5,18 +5,18 @@ import ru.yole.etymograph.*
 class QTestFixture {
     val ce = Language("Common Eldarin", "ce")
     val q = Language("Quenya", "q")
-    val repo = InMemoryGraphRepository().apply {
+    val graph = InMemoryGraphRepository().apply {
         addLanguage(ce)
         addLanguage(q)
     }
 
     val graphService = object : GraphService() {
         override val graph: GraphRepository
-            get() = repo
+            get() = this@QTestFixture.graph
     }
 
     fun setupParadigm(): Rule {
-        val accRule = repo.addRule(
+        val accRule = graph.addRule(
             "q-acc", q, q,
             RuleLogic(
                 emptyList(),
@@ -25,7 +25,7 @@ class QTestFixture {
             ".ACC"
         )
 
-        val paradigm = repo.addParadigm("Noun", q, listOf("N", "NP"))
+        val paradigm = graph.addParadigm("Noun", q, listOf("N", "NP"))
         paradigm.addRow("Nom")
         paradigm.addRow("Acc")
         paradigm.addColumn("Sg")
