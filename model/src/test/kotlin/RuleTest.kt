@@ -76,6 +76,13 @@ class RuleTest : QBaseTest() {
     }
 
     @Test
+    fun andToString() {
+        val text = "(word ends with a vowel or word ends with 'c') and word begins with 'c'"
+        val c = RuleCondition.parse(ParseBuffer(text), q)
+        assertEquals(text, c.toEditableText())
+    }
+
+    @Test
     fun instructionParse() {
         val i = RuleInstruction.parse("- sound disappears", q.parseContext())
         assertEquals(InstructionType.SoundDisappears, i.type)

@@ -429,7 +429,7 @@ class AndRuleCondition(val members: List<RuleCondition>) : RuleCondition() {
 
     override fun toRichText(): RichText = members.joinToRichText(AND) {
         val et = it.toRichText()
-        if (it is OrRuleCondition) et.prepend(")").append(")") else et
+        if (it is OrRuleCondition) et.prepend("(").append(")") else et
     }
 
     override fun findLeafConditions(predicate: (RuleCondition) -> Boolean): List<RuleCondition> {
