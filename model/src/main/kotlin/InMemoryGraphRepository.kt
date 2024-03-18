@@ -449,9 +449,9 @@ open class InMemoryGraphRepository : GraphRepository() {
             throw IllegalArgumentException("Link already exists")
         }
 
-        val allLinkedEntities = mutableSetOf<LangEntity>()
+        val allLinkedEntities = mutableSetOf<Int>()
         collectLinkedEntitiesRecursive(fromEntity, allLinkedEntities)
-        if (toEntity in allLinkedEntities) {
+        if (toEntity.id in allLinkedEntities) {
             throw IllegalArgumentException("Cycles in links are not allowed")
         }
 
@@ -461,9 +461,9 @@ open class InMemoryGraphRepository : GraphRepository() {
         }
     }
 
-    private fun collectLinkedEntitiesRecursive(fromEntity: LangEntity, seenEntities: MutableSet<LangEntity>) {
-        if (fromEntity in seenEntities) return
-        seenEntities.add(fromEntity)
+    private fun collectLinkedEntitiesRecursive(fromEntity: LangEntity, seenEntities: MutableSet<Int>) {
+        if (fromEntity.id in seenEntities) return
+        seenEntities.add(fromEntity.id)
         for (link in getLinksFrom(fromEntity)) {
             collectLinkedEntitiesRecursive(link.toEntity, seenEntities)
         }
