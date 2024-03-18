@@ -22,17 +22,17 @@ data class ParseCandidate(val text: String, val rules: List<Rule>, val pos: Stri
 }
 
 class RuleBranch(val condition: RuleCondition, val instructions: List<RuleInstruction>) {
-    fun matches(word: Word) = condition.matches(word)
+    fun matches(word: Word, graph: GraphRepository) = condition.matches(word, graph)
 
     fun apply(rule: Rule, word: Word, graph: GraphRepository): Word {
         return instructions.apply(rule, this, word, graph)
     }
 
-    fun reverseApply(rule: Rule, word: Word): List<String> {
+    fun reverseApply(rule: Rule, word: Word, graph: GraphRepository): List<String> {
         var candidates = listOf(word.language.normalizeWord(word.text))
-        candidates = RuleInstruction.reverseApplyInstructions(candidates, rule, word, instructions)
+        candidates = RuleInstruction.reverseApplyInstructions(candidates, rule, word, instructions, graph)
         candidates = candidates.mapNotNull { replaceStarWithConditionText(it) }
-        return candidates.filter { condition.matches(word.derive(it, newClasses = listOf("*"))) }
+        return candidates.filter { condition.matches(word.derive(it, newClasses = listOf("*")), graph) }
     }
 
     private fun replaceStarWithConditionText(text: String): String? {
@@ -119,7 +119,7 @@ class Rule(
 
         val preWord = if (logic.preInstructions.isEmpty()) word else logic.preInstructions.apply(this, null, word, graph)
         for (branch in logic.branches) {
-            if (branch.matches(preWord)) {
+            if (branch.matches(preWord, graph)) {
                 val resultWord = branch.apply(this, preWord, graph)
                 return deriveWord(word, resultWord.text, toLanguage, resultWord.stressedPhonemeIndex, resultWord.segments, resultWord.classes)
             }
@@ -127,13 +127,13 @@ class Rule(
         return Word(-1, "?", word.language)
     }
 
-    fun reverseApply(word: Word): List<String> {
+    fun reverseApply(word: Word, graph: GraphRepository): List<String> {
         if (logic.branches.isEmpty()) {
             return listOf(word.text)
         }
         return logic.branches.flatMap {
-            val candidates = it.reverseApply(this, word)
-            RuleInstruction.reverseApplyInstructions(candidates, this, word, logic.preInstructions)
+            val candidates = it.reverseApply(this, word, graph)
+            RuleInstruction.reverseApplyInstructions(candidates, this, word, logic.preInstructions, graph)
         }
     }
 

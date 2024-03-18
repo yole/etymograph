@@ -30,16 +30,16 @@ const val DISALLOW_CLASS = "disallow"
 open class RuleInstruction(val type: InstructionType, val arg: String) {
     open fun apply(rule: Rule, branch: RuleBranch?, word: Word, graph: GraphRepository): Word = when(type) {
         InstructionType.NoChange -> word
-        InstructionType.ChangeEnding -> changeEnding(word, rule, branch)
+        InstructionType.ChangeEnding -> changeEnding(word, rule, branch, graph)
         InstructionType.ApplyClass -> word.derive(word.text, newClasses = (word.classes + arg).toSet().toList())
         InstructionType.Disallow -> word.derive(word.text, newClasses = (word.classes + DISALLOW_CLASS).toSet().toList())
         else -> throw IllegalStateException("Can't apply phoneme instruction to full word")
     }
 
-    private fun changeEnding(word: Word, rule: Rule, branch: RuleBranch?): Word {
+    private fun changeEnding(word: Word, rule: Rule, branch: RuleBranch?, graph: GraphRepository): Word {
         if (branch != null) {
             val condition = branch.condition.findLeafConditions(ConditionType.EndsWith)
-                .firstOrNull { it.matches(word) }
+                .firstOrNull { it.matches(word, graph) }
                 ?: return word
             val textWithoutEnding = if (condition.phonemeClass != null) {
                 // TODO parse with PhonemeIterator
@@ -53,7 +53,7 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
         return word
     }
 
-    open fun reverseApply(rule: Rule, text: String, language: Language): List<String> {
+    open fun reverseApply(rule: Rule, text: String, language: Language, graph: GraphRepository): List<String> {
         return when (type) {
             InstructionType.ChangeEnding -> reverseChangeEnding(text, rule)
             InstructionType.NoChange -> listOf(text)
@@ -223,10 +223,11 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
             candidates: List<String>,
             rule: Rule,
             word: Word,
-            ruleInstructions: List<RuleInstruction>
+            ruleInstructions: List<RuleInstruction>,
+            graph: GraphRepository
         ): List<String> {
             return ruleInstructions.reversed().fold(candidates) { c, instruction ->
-                c.flatMap { instruction.reverseApply(rule, it, word.language) }
+                c.flatMap { instruction.reverseApply(rule, it, word.language, graph) }
             }
         }
     }
@@ -253,9 +254,9 @@ class ApplyRuleInstruction(val ruleRef: RuleRef)
         }
     }
 
-    override fun reverseApply(rule: Rule, text: String, language: Language): List<String> {
+    override fun reverseApply(rule: Rule, text: String, language: Language, graph: GraphRepository): List<String> {
         val targetRule = ruleRef.resolve()
-        return targetRule.reverseApply(Word(-1, text, language))
+        return targetRule.reverseApply(Word(-1, text, language), graph)
     }
 
     override fun toRichText(): RichText {
@@ -284,7 +285,7 @@ class ApplySoundRuleInstruction(language: Language, val ruleRef: RuleRef, arg: S
         return word
     }
 
-    override fun reverseApply(rule: Rule, text: String, language: Language): List<String> {
+    override fun reverseApply(rule: Rule, text: String, language: Language, graph: GraphRepository): List<String> {
         val phonemes = PhonemeIterator(text, language)
         if (phonemes.seek(seekTarget)) {
             return ruleRef.resolve().reverseApplyToPhoneme(phonemes)
@@ -349,7 +350,7 @@ class PrependAppendInstruction(type: InstructionType, language: Language, arg: S
         return word
     }
 
-    override fun reverseApply(rule: Rule, text: String, language: Language): List<String> {
+    override fun reverseApply(rule: Rule, text: String, language: Language, graph: GraphRepository): List<String> {
         if (literalArg != null) {
             return when (type) {
                 InstructionType.Append -> if (text.endsWith(literalArg)) listOf(text.removeSuffix(literalArg)) else emptyList()

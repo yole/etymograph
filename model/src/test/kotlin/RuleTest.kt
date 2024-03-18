@@ -13,8 +13,8 @@ class RuleTest : QBaseTest() {
     @Test
     fun conditions() {
         val c = LeafRuleCondition(ConditionType.EndsWith, v, null, false)
-        assertTrue(c.matches(Word(0, "parma", q)))
-        assertFalse(c.matches(Word(0, "formen", q)))
+        assertTrue(c.matches(Word(0, "parma", q), emptyRepo))
+        assertFalse(c.matches(Word(0, "formen", q), emptyRepo))
     }
 
     @Test
@@ -30,7 +30,7 @@ class RuleTest : QBaseTest() {
         val i2 = PrependAppendInstruction(InstructionType.Append, q, "'i'")
         val r = RuleBranch(c, listOf(i2))
 
-        assertTrue(r.matches(Word(0, "lasse", q)))
+        assertTrue(r.matches(Word(0, "lasse", q), emptyRepo))
         assertEquals("atani", r.apply(dummyRule, q.word("atan"), emptyRepo).text)
     }
 
@@ -115,7 +115,7 @@ class RuleTest : QBaseTest() {
         """.trimIndent(), q.parseContext()).branches
         assertEquals(1, branches.size)
         assertEquals(1, branches[0].instructions.size)
-        assertTrue(branches[0].matches(Word(0, "abc", q)))
+        assertTrue(branches[0].matches(Word(0, "abc", q), emptyRepo))
     }
 
     @Test
@@ -247,8 +247,8 @@ class RuleTest : QBaseTest() {
         val condition = RuleCondition.parse(ParseBuffer("second to last syllable contains a long vowel"), q) as SyllableRuleCondition
         assertEquals(-2, condition.index)
         assertEquals("long vowel", condition.phonemeClass!!.name)
-        assertTrue(condition.matches(q.word("andúna")))
-        assertFalse(condition.matches(q.word("anca")))
+        assertTrue(condition.matches(q.word("andúna"), emptyRepo))
+        assertFalse(condition.matches(q.word("anca"), emptyRepo))
         assertEquals("second to last syllable contains a long vowel", condition.toEditableText())
     }
 
@@ -257,39 +257,39 @@ class RuleTest : QBaseTest() {
         val condition = RuleCondition.parse(ParseBuffer("second to last syllable contains 'ú'"), q) as SyllableRuleCondition
         assertEquals(-2, condition.index)
         assertEquals("ú", condition.parameter!!)
-        assertTrue(condition.matches(q.word("andúna")))
-        assertFalse(condition.matches(q.word("anca")))
+        assertTrue(condition.matches(q.word("andúna"), emptyRepo))
+        assertFalse(condition.matches(q.word("anca"), emptyRepo))
         assertEquals("second to last syllable contains 'ú'", condition.toEditableText())
     }
 
     @Test
     fun syllableMatcherDiphthong() {
         val condition = RuleCondition.parse(ParseBuffer("first syllable contains a diphthong"), q) as SyllableRuleCondition
-        assertTrue(condition.matches(q.word("rauca")))
-        assertFalse(condition.matches(q.word("tie")))
+        assertTrue(condition.matches(q.word("rauca"), emptyRepo))
+        assertFalse(condition.matches(q.word("tie"), emptyRepo))
     }
 
     @Test
     fun syllableMatcherEndsWith() {
         val condition = RuleCondition.parse(ParseBuffer("first syllable ends with a consonant"), q) as SyllableRuleCondition
-        assertTrue(condition.matches(q.word("ampa")))
-        assertFalse(condition.matches(q.word("tie")))
+        assertTrue(condition.matches(q.word("ampa"), emptyRepo))
+        assertFalse(condition.matches(q.word("tie"), emptyRepo))
     }
 
     @Test
     fun syllableCount() {
         val condition = RuleCondition.parse(ParseBuffer("number of syllables is 3"), q) as LeafRuleCondition
         assertEquals("3", condition.parameter)
-        assertTrue(condition.matches(q.word("andúna")))
-        assertFalse(condition.matches(q.word("anca")))
+        assertTrue(condition.matches(q.word("andúna"), emptyRepo))
+        assertFalse(condition.matches(q.word("anca"), emptyRepo))
     }
 
     @Test
     fun syllableCountNegated() {
         val condition = RuleCondition.parse(ParseBuffer("number of syllables is not 3"), q) as LeafRuleCondition
         assertEquals("3", condition.parameter)
-        assertFalse(condition.matches(q.word("andúna")))
-        assertTrue(condition.matches(q.word("anca")))
+        assertFalse(condition.matches(q.word("andúna"), emptyRepo))
+        assertTrue(condition.matches(q.word("anca"), emptyRepo))
     }
 
     @Test
@@ -374,8 +374,8 @@ class RuleTest : QBaseTest() {
         val ciryali = q.word("ciryali")
         ciryali.stressedPhonemeIndex = 1
         val condition = RuleCondition.parse(ParseBuffer("stress is on third to last syllable"), q)
-        assertTrue(condition.matches(ciryali))
-        assertFalse(condition.matches(q.word("lasse").apply { stressedPhonemeIndex = 1 }))
+        assertTrue(condition.matches(ciryali, emptyRepo))
+        assertFalse(condition.matches(q.word("lasse").apply { stressedPhonemeIndex = 1 }, emptyRepo))
         assertEquals("stress is on third to last syllable", condition.toEditableText())
     }
 
@@ -396,6 +396,26 @@ class RuleTest : QBaseTest() {
          """.trimIndent())
         assertEquals("adain", rule.apply(q.word("adan"), emptyRepo).text)
         assertEquals("fela", rule.apply(q.word("fela"), emptyRepo).text)
+    }
+
+    @Test
+    fun baseWord() {
+        val rule = parseRule(q, q, """
+            first sound of base word in CE is 'm':
+            - prepend 'm'
+            otherwise:
+            - no change
+         """.trimIndent())
+
+        val repo = repoWithQ().apply {
+            addLanguage(ce)
+        }
+        val mbar = repo.addWord("mbar", language = ce)
+        val bar = repo.addWord("bar")
+        repo.addLink(bar, mbar, Link.Derived, emptyList(), emptyList(), null)
+
+        assertEquals("mbar", rule.apply(bar, repo).text)
+        assertEquals("first sound of base word in CE is 'm'", rule.logic.branches[0].condition.toEditableText())
     }
 
     /*

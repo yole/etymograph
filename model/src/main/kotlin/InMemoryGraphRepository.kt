@@ -177,7 +177,7 @@ open class InMemoryGraphRepository : GraphRepository() {
                         rule.addedGrammaticalCategories().none { it in excludeGrammaticalCategories }
             }
             .flatMap { rule ->
-                rule.reverseApply(Word(-1, text, language, pos=pos))
+                rule.reverseApply(Word(-1, text, language, pos=pos), this)
                     .filter {
                         language.normalizeWord(it) != language.normalizeWord(text) &&
                                 (isAcceptableWord(language, it) || wordsByText(language, "$it-").isNotEmpty())

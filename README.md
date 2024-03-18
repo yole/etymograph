@@ -176,6 +176,9 @@ The following conditions can be used in morphological rules:
    substring or a phoneme of a given class. Example: `last syllable ends with voiceless consonant`
  * `<ordinal> <phoneme class> is:` Checks whether the phoneme at given index matches the given phoneme or phoneme class.
    Example: `second to last sound is vowel`.
+ * `<ordinal> <phoneme class> of base word in <language> is:` Checks whether the phoneme at given index of word in the 
+   given language from which the current word is derived matches the given phoneme or phoneme class.
+   Example: `first sound of base word in CE is 'm'`.
  * `stress is`: Checks whether the stress is on the given syllable (for example, `stress is on second to last syllable`)
 
 The following instructions can be used in morphological rules:

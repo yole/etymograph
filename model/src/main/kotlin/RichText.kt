@@ -1,5 +1,7 @@
 package ru.yole.etymograph
 
+import javax.swing.RowFilter
+
 data class RichTextFragment(val text: String, val emph: Boolean = false, val linkType: String? = null, val linkId: Int? = null) {
     override fun toString(): String = text
 
@@ -24,6 +26,13 @@ data class RichText(val fragments: List<RichTextFragment>) {
             return this
         }
         return RichText(fragments + fragment)
+    }
+
+    operator fun plus(s: String): RichText {
+        if (s.isEmpty()) {
+            return this
+        }
+        return RichText(fragments + s.rich())
     }
 }
 
