@@ -13,6 +13,14 @@ export default function WordForm(props) {
     const [newWordLinkSource, setNewWordLinkSource] = useState("")
     const isAddingLink = props.linkType !== undefined
 
+    function clearFields() {
+        setNewWordText("")
+        setNewWordGloss("")
+        setNewWordFullGloss("")
+        setNewWordNotes("")
+        setNewWordLinkSource("")
+    }
+
     function handleFormSubmit(e) {
         if (props.updateId !== undefined) {
             updateWord(props.updateId, newWordText, newWordGloss, newWordFullGloss, newWordPosClasses, newWordSource, newWordNotes)
@@ -23,8 +31,10 @@ export default function WordForm(props) {
                 .then(r => {
                     r.json().then(jr => {
                         let onFulfilled = lr => {
-                            if (lr.status === 200)
+                            if (lr.status === 200) {
                                 props.submitted(r.status, jr)
+                                clearFields()
+                            }
                             else
                                 lr.json().then(lr => props.submitted(r.status, jr, lr))
                         }
@@ -43,16 +53,12 @@ export default function WordForm(props) {
                         } else if (props.addToCompound !== undefined) {
                             addToCompound(props.addToCompound, jr.id).then(onFulfilled)
                         } else {
+                            if (r.status === 200) {
+                                clearFields()
+                            }
                             props.submitted(r.status, jr)
                         }
                     })
-                    if (r.status === 200) {
-                        setNewWordText("")
-                        setNewWordGloss("")
-                        setNewWordFullGloss("")
-                        setNewWordNotes("")
-                        setNewWordLinkSource("")
-                    }
                 })
         }
 
