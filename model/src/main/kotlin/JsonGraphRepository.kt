@@ -10,7 +10,7 @@ import kotlin.io.path.writeText
 data class LanguageData(val name: String, val shortName: String)
 
 @Serializable
-data class SourceRefData(val pubId: Int?, val refText: String)
+data class SourceRefData(val pubId: Int? = null, val refText: String)
 
 @Serializable
 data class WordData(
@@ -54,6 +54,7 @@ private fun requiredPhonemeClassByName(language: Language, phonemeClassName: Str
     }
 
 @Serializable
+@SerialName("leaf")
 data class LeafRuleConditionData(
     @SerialName("cond") val type: ConditionType,
     @SerialName("cls") val phonemeClassName: String? = null,
@@ -68,6 +69,7 @@ data class LeafRuleConditionData(
 }
 
 @Serializable
+@SerialName("syllable")
 class SyllableRuleConditionData(
     val matchType: SyllableMatchType,
     val index: Int,
@@ -85,9 +87,10 @@ class SyllableRuleConditionData(
 }
 
 @Serializable
+@SerialName("relPhoneme")
 class RelativePhonemeRuleConditionData(
     val relativeIndex: Int,
-    val negated: Boolean,
+    val negated: Boolean = false,
     @SerialName("tcls") val targetPhonemeClassName: String? = null,
     @SerialName("cls") val matchPhonemeClassName: String? = null,
     val parameter: String? = null,
@@ -104,6 +107,7 @@ class RelativePhonemeRuleConditionData(
 }
 
 @Serializable
+@SerialName("or")
 data class OrRuleConditionData(
     val members: List<RuleConditionData>
 ) : RuleConditionData() {
@@ -112,6 +116,7 @@ data class OrRuleConditionData(
 }
 
 @Serializable
+@SerialName("and")
 data class AndRuleConditionData(
     val members: List<RuleConditionData>
 ) : RuleConditionData() {
@@ -120,6 +125,7 @@ data class AndRuleConditionData(
 }
 
 @Serializable
+@SerialName("otherwise")
 class OtherwiseConditionData : RuleConditionData() {
     override fun toRuntimeFormat(result: InMemoryGraphRepository, fromLanguage: Language): RuleCondition = OtherwiseCondition
 }
@@ -140,7 +146,7 @@ data class RuleData(
     @SerialName("fromLang") val fromLanguageShortName: String,
     @SerialName("toLang") val toLanguageShortName: String,
     val branches: List<RuleBranchData>,
-    val addedCategories: String?,
+    val addedCategories: String? = null,
     val replacedCategories: String? = null,
     val fromPOS: String? = null,
     val toPOS: String? = null,
@@ -597,8 +603,8 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                 fromPOS,
                 toPOS,
                 source.sourceToSerializedFormat(),
-                notes,
-                preInstructions = logic.preInstructions.toSerializedFormat()
+                notes.takeIf { it != null },
+                preInstructions = logic.preInstructions.toSerializedFormat().takeIf { it.isNotEmpty() }
             )
 
         private fun List<RuleInstruction>.toSerializedFormat(): List<RuleInstructionData> {
