@@ -493,7 +493,7 @@ open class InMemoryGraphRepository : GraphRepository() {
 
     override fun findLink(fromEntity: LangEntity, toEntity: LangEntity, type: LinkType): Link? {
         return linksFrom[fromEntity.id]?.find { it.toEntity == toEntity && it.type == type } ?:
-            linksFrom[toEntity.id]?.find { it.fromEntity == toEntity && it.type == type }
+            linksFrom[toEntity.id]?.find { it.fromEntity == fromEntity && it.type == type }
     }
 
     protected open fun createLink(
