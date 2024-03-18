@@ -2,11 +2,12 @@ package ru.yole.etymograph
 
 enum class ConditionType(
     val condName: String,
+    val condNameAfterBaseLanguage: String? = null,
     val phonemic: Boolean = false,
     val takesArgument: Boolean = true,
     val parameterParseCallback: ((ParseBuffer, Language) -> String)? = null
 ) {
-    EndsWith(LeafRuleCondition.wordEndsWith),
+    EndsWith(LeafRuleCondition.wordEndsWith, condNameAfterBaseLanguage = LeafRuleCondition.endsWith),
     BeginsWith(LeafRuleCondition.wordBeginsWith),
     ClassMatches(LeafRuleCondition.wordIs, parameterParseCallback = { buf, language ->
         val param = buf.nextWord() ?: throw RuleParseException("Word class expected")
@@ -106,16 +107,18 @@ class LeafRuleCondition(
     val type: ConditionType,
     val phonemeClass: PhonemeClass?,
     val parameter: String?,
-    val negated: Boolean
+    val negated: Boolean,
+    val baseLanguageShortName: String?
 ) : RuleCondition() {
     override fun isPhonemic(): Boolean = type.phonemic
 
     private fun Boolean.negateIfNeeded() = if (negated) !this else this
 
     override fun matches(word: Word, graph: GraphRepository): Boolean {
+        val matchWord = graph.findWordToMatch(word, baseLanguageShortName) ?: return false
         return when (type) {
-            ConditionType.EndsWith -> (phonemeClass?.let { PhonemeIterator(word).last in it.matchingPhonemes }
-                ?: word.text.trimEnd('-').endsWith(parameter!!)).negateIfNeeded()
+            ConditionType.EndsWith -> (phonemeClass?.let { PhonemeIterator(matchWord).last in it.matchingPhonemes }
+                ?: matchWord.text.trimEnd('-').endsWith(parameter!!)).negateIfNeeded()
             ConditionType.BeginsWith -> (phonemeClass?.let { PhonemeIterator(word).current in it.matchingPhonemes }
                 ?: word.text.startsWith(parameter!!)).negateIfNeeded()
             ConditionType.NumberOfSyllables -> matchNumberOfSyllables(word)
@@ -171,7 +174,13 @@ class LeafRuleCondition(
         val maybeNotPrefix = (if (negated) notPrefix else "").rich()
         return if (type.takesArgument) {
             val parameterName = parameterToEditableText()
-            type.condName.rich() + maybeNotPrefix + (parameterName ?: "").rich(emph = true)
+            val condName = if (baseLanguageShortName != null) {
+                "base word in ".rich() + baseLanguageShortName.rich(emph = true) + " " + type.condNameAfterBaseLanguage!!.rich()
+            }
+            else {
+                type.condName.richText()
+            }
+            condName + maybeNotPrefix + (parameterName ?: "").rich(emph = true)
         } else {
             maybeNotPrefix + type.condName.rich()
         }
@@ -191,6 +200,7 @@ class LeafRuleCondition(
 
     companion object {
         const val wordEndsWith = "word ends with "
+        const val endsWith = "ends with "
         const val wordBeginsWith = "word begins with "
         const val wordIs = "word is "
         const val numberOfSyllables = "number of syllables is "
@@ -205,15 +215,23 @@ class LeafRuleCondition(
 
         fun parse(buffer: ParseBuffer, language: Language): RuleCondition {
             buffer.tryParse { SyllableRuleCondition.parse(buffer, language) }?.let { return it }
-            buffer.tryParse { RelativePhonemeRuleCondition.parse(buffer, language) }?.let { return it}
+            buffer.tryParse { RelativePhonemeRuleCondition.parse(buffer, language) }?.let { return it }
+
+            val baseLanguageShortName = if (buffer.consume("base word in")) {
+                buffer.nextWord()
+            }
+            else {
+                null
+            }
 
             for (conditionType in ConditionType.entries) {
-                if (buffer.consume(conditionType.condName)) {
+                val condNameToMatch = if (baseLanguageShortName != null) conditionType.condNameAfterBaseLanguage else conditionType.condName
+                if (condNameToMatch != null && buffer.consume(condNameToMatch)) {
                     val negated = conditionType.takesArgument && buffer.consume(notPrefix)
-                    return parseLeafCondition(conditionType, buffer, language, negated)
+                    return parseLeafCondition(conditionType, buffer, language, negated, baseLanguageShortName)
                 }
                 else if (!conditionType.takesArgument && buffer.consume("$notPrefix${conditionType.condName}")) {
-                    return parseLeafCondition(conditionType, buffer, language, true)
+                    return parseLeafCondition(conditionType, buffer, language, true, baseLanguageShortName)
                 }
             }
             buffer.fail("Unrecognized condition")
@@ -223,11 +241,13 @@ class LeafRuleCondition(
             conditionType: ConditionType,
             buffer: ParseBuffer,
             language: Language,
-            negated: Boolean
+            negated: Boolean,
+            baseLanguageShortName: String?
         ): LeafRuleCondition {
             if (!conditionType.takesArgument) {
-                return LeafRuleCondition(conditionType, null, null, negated)
+                return LeafRuleCondition(conditionType, null, null, negated, null)
             }
+
             val (phonemeClass, parameter) = if (conditionType.parameterParseCallback != null) {
                 null to conditionType.parameterParseCallback.invoke(buffer, language)
             }
@@ -235,7 +255,7 @@ class LeafRuleCondition(
                 buffer.parseParameter(language)
             }
 
-            return LeafRuleCondition(conditionType, phonemeClass, parameter, negated)
+            return LeafRuleCondition(conditionType, phonemeClass, parameter, negated, baseLanguageShortName)
         }
     }
 }
@@ -307,6 +327,15 @@ class SyllableRuleCondition(
     }
 }
 
+fun GraphRepository.findWordToMatch(word: Word, baseLanguageShortName: String?): Word? {
+    if (baseLanguageShortName != null) {
+        val baseLang = languageByShortName(baseLanguageShortName) ?: return null
+        val baseWords = getLinksFrom(word).filter { it.type == Link.Derived }.map { it.toEntity }
+        return baseWords.filterIsInstance<Word>().find { it.language == baseLang }
+    }
+    return word
+}
+
 class RelativePhonemeRuleCondition(
     val relative: Boolean,
     val relativeIndex: Int,
@@ -332,14 +361,7 @@ class RelativePhonemeRuleCondition(
         matchPhonemeClass?.matchesCurrent(it) ?: (parameter == it.current)
 
     override fun matches(word: Word, graph: GraphRepository): Boolean {
-        val matchWord = if (baseLanguageShortName != null) {
-            val baseLang = graph.languageByShortName(baseLanguageShortName) ?: return false
-            val baseWords = graph.getLinksFrom(word).filter { it.type == Link.Derived }.map { it.toEntity }
-            baseWords.filterIsInstance<Word>().find { it.language == baseLang } ?: return false
-        }
-        else {
-            word
-        }
+        val matchWord = graph.findWordToMatch(word, baseLanguageShortName) ?: return false
 
         val seekTarget = SeekTarget(relativeIndex, targetPhonemeClass)
         val phonemes = PhonemeIterator(matchWord)

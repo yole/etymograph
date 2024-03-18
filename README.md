@@ -166,6 +166,9 @@ The following conditions can be used in morphological rules:
 
  * `word ends with`: Checks whether the word ends with the specified sequence of phonemes
    (for example, `word ends with 'ie'`) or a phoneme of a specified class (for example, `word ends with a vowel`).
+ * `base word in <language> ends with`: Checks whether the word in the given language from which the current word
+   is derived ends with the specified sequence of phonemes (for example, `base word in CE ends with 'ie'`)
+   or a phoneme of a specified class (for example, `base word in CE ends with a vowel`).
  * `word begins with`: Checks whether the word begins with the specified sequence of phonemes
    (for example, `word begins with 'm'`) or a phoneme of a specified class (for example, `word begins with a consonant`).
  * `word is`: Checks whether the word belongs to the given class (for example, `word is m`, where `m` is defined

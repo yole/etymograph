@@ -78,7 +78,7 @@ class Word(
         return derive(orthoText, phonemic = false)
     }
 
-    fun derive(text: String, newSegment: WordSegment? = null, newClasses: List<String>? = null, phonemic: Boolean? = false): Word {
+    fun derive(text: String, newSegment: WordSegment? = null, newClasses: List<String>? = null, phonemic: Boolean? = null): Word {
         val sourceSegments = segments
         return if (this.text == text && newClasses == null && phonemic == null)
             this

@@ -11,7 +11,7 @@ class PhonemeRuleTest : QBaseTest() {
     fun phonemeCondition() {
         val word = ce.word("khith")
         val it = PhonemeIterator(word)
-        val cond = LeafRuleCondition(ConditionType.PhonemeMatches, null, "kh", false)
+        val cond = LeafRuleCondition(ConditionType.PhonemeMatches, null, "kh", false, null)
         assertTrue(cond.matches(word, it))
     }
 

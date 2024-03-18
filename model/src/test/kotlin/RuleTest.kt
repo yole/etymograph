@@ -12,7 +12,7 @@ class RuleTest : QBaseTest() {
 
     @Test
     fun conditions() {
-        val c = LeafRuleCondition(ConditionType.EndsWith, v, null, false)
+        val c = LeafRuleCondition(ConditionType.EndsWith, v, null, false, null)
         assertTrue(c.matches(Word(0, "parma", q), emptyRepo))
         assertFalse(c.matches(Word(0, "formen", q), emptyRepo))
     }
@@ -26,7 +26,7 @@ class RuleTest : QBaseTest() {
     @Test
     fun rule() {
         val v = PhonemeClass("e", listOf("e", "ë"))
-        val c = LeafRuleCondition(ConditionType.EndsWith, v, null, false)
+        val c = LeafRuleCondition(ConditionType.EndsWith, v, null, false, null)
         val i2 = PrependAppendInstruction(InstructionType.Append, q, "'i'")
         val r = RuleBranch(c, listOf(i2))
 
@@ -429,6 +429,24 @@ class RuleTest : QBaseTest() {
 
         assertEquals("mbar", rule.apply(bar, repo).text)
         assertEquals("first sound of base word in CE is 'm'", rule.logic.branches[0].condition.toEditableText())
+    }
+
+    @Test
+    fun baseWordEndsWith() {
+        val rule = parseRule(q, q, """
+            base word in CE ends with 'm':
+            - change ending to 'm'
+         """.trimIndent())
+
+        val repo = repoWithQ().apply {
+            addLanguage(ce)
+        }
+        val talam = repo.addWord("talam", language = ce)
+        val talan = repo.addWord("talan")
+        repo.addLink(talan, talam, Link.Derived, emptyList(), emptyList(), null)
+
+        assertEquals("talam", rule.apply(talan, repo).text)
+        assertEquals("base word in CE ends with 'm'", rule.logic.branches[0].condition.toEditableText())
     }
 
     /*

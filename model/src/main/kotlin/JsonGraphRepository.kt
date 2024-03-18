@@ -58,11 +58,12 @@ data class LeafRuleConditionData(
     @SerialName("cond") val type: ConditionType,
     @SerialName("cls") val phonemeClassName: String? = null,
     val characters: String? = null,
-    val negated: Boolean = false
+    val negated: Boolean = false,
+    val baseLanguageShortName: String? = null
 ) : RuleConditionData() {
     override fun toRuntimeFormat(result: InMemoryGraphRepository, fromLanguage: Language): RuleCondition {
         val phonemeClass = requiredPhonemeClassByName(fromLanguage, phonemeClassName)
-        return LeafRuleCondition(type, phonemeClass, characters, negated)
+        return LeafRuleCondition(type, phonemeClass, characters, negated, baseLanguageShortName)
     }
 }
 
@@ -644,7 +645,8 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                 type,
                 phonemeClass?.name,
                 parameter,
-                negated
+                negated,
+                baseLanguageShortName
             )
             is OrRuleCondition -> OrRuleConditionData(members.map { it.toSerializedFormat()} )
             is AndRuleCondition -> AndRuleConditionData(members.map { it.toSerializedFormat()} )
