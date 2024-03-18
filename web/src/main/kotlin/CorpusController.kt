@@ -135,7 +135,7 @@ class CorpusController(val graphService: GraphService) {
         val wordText = word?.text ?: corpusText.normalizedWordTextAt(index)
         val wordsWithMatchingText = graphService.graph.wordsByText(corpusText.language, wordText)
         return wordsWithMatchingText.flatMap {
-            val gloss = it.glossOrNP()
+            val gloss = it.getOrComputeGloss(graphService.graph)
             if (gloss == null)
                 emptyList()
             else {
@@ -143,10 +143,15 @@ class CorpusController(val graphService: GraphService) {
                     emptyList()
                 else
                     listOf(AlternativeViewModel(gloss, it.id, -1))
-                val alts = graphService.graph.requestAlternatives(it)
-                baseWord + alts.map { pc ->
-                    val rule = pc.rules.single()
-                    AlternativeViewModel(rule.applyCategories(gloss), it.id, rule.id)
+                if (it.glossOrNP() == null) {
+                    baseWord
+                }
+                else {
+                    val alts = graphService.graph.requestAlternatives(it)
+                    baseWord + alts.map { pc ->
+                        val rule = pc.rules.single()
+                        AlternativeViewModel(rule.applyCategories(gloss), it.id, rule.id)
+                    }
                 }
             }
         }
