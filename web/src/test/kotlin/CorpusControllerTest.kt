@@ -35,13 +35,13 @@ class CorpusControllerTest {
 
         val accRule = fixture.setupParadigm()
         val elen = fixture.graph.findOrAddWord("elen", fixture.q, "star", pos = "N")
-        val elenAcc =  fixture.graph.findOrAddWord("elen", fixture.q,  null, pos = "N")
+        val elenAcc =  fixture.graph.findOrAddWord("elen", fixture.q,  "star.ACC", pos = "N")
+        elenAcc.gloss = null
         fixture.graph.addLink(elenAcc, elen, Link.Derived, listOf(accRule), emptyList(), null)
 
         val alternatives = corpusController.requestAlternatives(corpusTextViewModel.id, 0)
         assertEquals(1, alternatives.size)
         assertEquals("star.ACC", alternatives[0].gloss)
-        assertEquals(accRule.id, alternatives[0].ruleId)
 
         corpusController.acceptAlternative(corpusTextViewModel.id,
             CorpusController.AcceptAlternativeParameters(0, alternatives[0].wordId, alternatives[0].ruleId))

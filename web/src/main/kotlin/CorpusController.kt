@@ -134,7 +134,7 @@ class CorpusController(val graphService: GraphService) {
         val word = corpusText.words.getOrNull(index)
         val wordText = word?.text ?: corpusText.normalizedWordTextAt(index)
         val wordsWithMatchingText = graphService.graph.wordsByText(corpusText.language, wordText)
-        return wordsWithMatchingText.flatMap {
+        val allVariants = wordsWithMatchingText.flatMap {
             val gloss = it.getOrComputeGloss(graphService.graph)
             if (gloss == null)
                 emptyList()
@@ -155,6 +155,7 @@ class CorpusController(val graphService: GraphService) {
                 }
             }
         }
+        return allVariants.associateBy { it.gloss }.values.toList()
     }
 
     data class AcceptAlternativeParameters(val index: Int, val wordId: Int, val ruleId: Int)
