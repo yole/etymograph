@@ -139,6 +139,12 @@ class RuleTest : QBaseTest() {
     }
 
     @Test
+    fun beginsWith() {
+        val rule = parseRule(q, q, "word begins with 'b':\n- prepend 'm'")
+        assertEquals("mbar", rule.apply(q.word("bar"),emptyRepo).text)
+    }
+
+    @Test
     fun applySoundRule() {
         val soundRule = parseRule(q, q, """
             sound is 'a':

@@ -7,6 +7,7 @@ enum class ConditionType(
     val parameterParseCallback: ((ParseBuffer, Language) -> String)? = null
 ) {
     EndsWith(LeafRuleCondition.wordEndsWith),
+    BeginsWith(LeafRuleCondition.wordBeginsWith),
     ClassMatches(LeafRuleCondition.wordIs, parameterParseCallback = { buf, language ->
         val param = buf.nextWord() ?: throw RuleParseException("Word class expected")
         if (language.findWordClass(param) == null)
@@ -115,6 +116,8 @@ class LeafRuleCondition(
         return when (type) {
             ConditionType.EndsWith -> (phonemeClass?.let { PhonemeIterator(word).last in it.matchingPhonemes }
                 ?: word.text.trimEnd('-').endsWith(parameter!!)).negateIfNeeded()
+            ConditionType.BeginsWith -> (phonemeClass?.let { PhonemeIterator(word).current in it.matchingPhonemes }
+                ?: word.text.startsWith(parameter!!)).negateIfNeeded()
             ConditionType.NumberOfSyllables -> matchNumberOfSyllables(word)
             ConditionType.StressIs -> matchStress(word).negateIfNeeded()
             ConditionType.ClassMatches -> matchClass(word)
@@ -188,6 +191,7 @@ class LeafRuleCondition(
 
     companion object {
         const val wordEndsWith = "word ends with "
+        const val wordBeginsWith = "word begins with "
         const val wordIs = "word is "
         const val numberOfSyllables = "number of syllables is "
         const val soundIs = "sound is "

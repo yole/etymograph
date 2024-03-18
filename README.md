@@ -166,6 +166,8 @@ The following conditions can be used in morphological rules:
 
  * `word ends with`: Checks whether the word ends with the specified sequence of phonemes
    (for example, `word ends with 'ie'`) or a phoneme of a specified class (for example, `word ends with a vowel`).
+ * `word begins with`: Checks whether the word begins with the specified sequence of phonemes
+   (for example, `word begins with 'm'`) or a phoneme of a specified class (for example, `word begins with a consonant`).
  * `word is`: Checks whether the word belongs to the given class (for example, `word is m`, where `m` is defined
    as a possible value for the 'gender' class of nouns).
  * `number of syllables is`: Checks whether the word has exactly the specified number of syllables
