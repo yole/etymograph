@@ -269,7 +269,7 @@ class PhonemeRuleTest : QBaseTest() {
             - new sound is 'y'
             - next sound disappears
         """.trimIndent())
-        ce.phonemes = listOf(Phoneme(listOf("y"), "j", setOf("semivowel")))
+        ce.phonemes = listOf(phoneme(listOf("y"), "j", "semivowel"))
         assertEquals("ylma", rule.apply(ce.word("yulma"), emptyRepo).asOrthographic().text)
     }
 
@@ -279,7 +279,7 @@ class PhonemeRuleTest : QBaseTest() {
             sound is 'i' and next sound is consonant:
             - new sound is 'y'
         """.trimIndent())
-        ce.phonemes = listOf(Phoneme(listOf("c", "k"), "k", setOf("consonant")))
+        ce.phonemes = listOf(phoneme(listOf("c", "k"), "k", "consonant"))
         assertEquals("ycra", rule.apply(ce.word("ikra"), emptyRepo).asOrthographic().text)
     }
 }

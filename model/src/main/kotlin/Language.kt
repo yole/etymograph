@@ -32,7 +32,10 @@ class WordCategoryValue(val name: String, val abbreviation: String)
 
 class WordCategory(var name: String, var pos: List<String>, var values: List<WordCategoryValue>)
 
-class Phoneme(val graphemes: List<String>, val sound: String?, val classes: Set<String>)
+class Phoneme(
+    id: Int, val graphemes: List<String>, val sound: String?, val classes: Set<String>,
+    source: List<SourceRef> = emptyList(), notes: String? = null
+) : LangEntity(id, source, notes)
 
 class PhonemeLookup {
     private var digraphs = mutableMapOf<String, Phoneme>()

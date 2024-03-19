@@ -195,7 +195,10 @@ class RuleTest : QBaseTest() {
 
     @Test
     fun applySoundRuleOrtho() {
-        q.phonemes = listOf(Phoneme(listOf("c", "k"), "k", emptySet()), Phoneme(listOf("ch"), "x", emptySet()))
+        q.phonemes = listOf(
+            phoneme(listOf("c", "k"), "k", ""),
+            phoneme(listOf("ch"), "x", "")
+        )
         val soundRule = parseRule(q, q, """
             sound is 'k':
             - new sound is 'x'
@@ -211,7 +214,7 @@ class RuleTest : QBaseTest() {
 
     @Test
     fun applySoundRuleCase() {
-        q.phonemes = listOf(Phoneme(listOf("c", "k"), "k", emptySet()), Phoneme(listOf("ch"), "x", emptySet()))
+        q.phonemes = listOf(phoneme(listOf("c", "k"), "k", ""), phoneme(listOf("ch"), "x", ""))
         val soundRule = parseRule(q, q, """
             sound is 'p':
             - new sound is 'ph'

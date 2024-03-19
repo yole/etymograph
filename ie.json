@@ -15,6 +15,7 @@
     ],
     "phonemes": [
         {
+            "id": 1758,
             "lang": "OE",
             "graphemes": [
                 "æ"
@@ -24,6 +25,7 @@
             ]
         },
         {
+            "id": 1759,
             "lang": "OE",
             "graphemes": [
                 "ǣ"
@@ -34,6 +36,7 @@
             ]
         },
         {
+            "id": 1760,
             "lang": "OE",
             "graphemes": [
                 "a"
@@ -44,6 +47,7 @@
             ]
         },
         {
+            "id": 1761,
             "lang": "OE",
             "graphemes": [
                 "ā",
@@ -56,6 +60,7 @@
             ]
         },
         {
+            "id": 1762,
             "lang": "OE",
             "graphemes": [
                 "e"
@@ -65,6 +70,7 @@
             ]
         },
         {
+            "id": 1763,
             "lang": "OE",
             "graphemes": [
                 "ē",
@@ -76,6 +82,7 @@
             ]
         },
         {
+            "id": 1764,
             "lang": "OE",
             "graphemes": [
                 "i"
@@ -85,6 +92,7 @@
             ]
         },
         {
+            "id": 1765,
             "lang": "OE",
             "graphemes": [
                 "ī",
@@ -96,6 +104,7 @@
             ]
         },
         {
+            "id": 1766,
             "lang": "OE",
             "graphemes": [
                 "o"
@@ -106,6 +115,7 @@
             ]
         },
         {
+            "id": 1767,
             "lang": "OE",
             "graphemes": [
                 "ō",
@@ -118,6 +128,7 @@
             ]
         },
         {
+            "id": 1768,
             "lang": "OE",
             "graphemes": [
                 "u"
@@ -128,6 +139,7 @@
             ]
         },
         {
+            "id": 1769,
             "lang": "OE",
             "graphemes": [
                 "ū",
@@ -140,6 +152,7 @@
             ]
         },
         {
+            "id": 1770,
             "lang": "OE",
             "graphemes": [
                 "y"
@@ -149,6 +162,7 @@
             ]
         },
         {
+            "id": 1771,
             "lang": "OE",
             "graphemes": [
                 "ȳ",
@@ -160,6 +174,7 @@
             ]
         },
         {
+            "id": 1772,
             "lang": "OE",
             "graphemes": [
                 "p"
@@ -169,6 +184,7 @@
             ]
         },
         {
+            "id": 1773,
             "lang": "OE",
             "graphemes": [
                 "b"
@@ -178,6 +194,7 @@
             ]
         },
         {
+            "id": 1774,
             "lang": "OE",
             "graphemes": [
                 "m"
@@ -187,6 +204,7 @@
             ]
         },
         {
+            "id": 1775,
             "lang": "OE",
             "graphemes": [
                 "f"
@@ -196,6 +214,7 @@
             ]
         },
         {
+            "id": 1776,
             "lang": "OE",
             "graphemes": [
                 "v"
@@ -205,6 +224,7 @@
             ]
         },
         {
+            "id": 1777,
             "lang": "OE",
             "graphemes": [
                 "þ"
@@ -214,6 +234,7 @@
             ]
         },
         {
+            "id": 1778,
             "lang": "OE",
             "graphemes": [
                 "ð"
@@ -223,6 +244,7 @@
             ]
         },
         {
+            "id": 1779,
             "lang": "OE",
             "graphemes": [
                 "t"
@@ -232,6 +254,7 @@
             ]
         },
         {
+            "id": 1780,
             "lang": "OE",
             "graphemes": [
                 "d"
@@ -241,6 +264,7 @@
             ]
         },
         {
+            "id": 1781,
             "lang": "OE",
             "graphemes": [
                 "n"
@@ -250,6 +274,7 @@
             ]
         },
         {
+            "id": 1782,
             "lang": "OE",
             "graphemes": [
                 "s"
@@ -259,6 +284,7 @@
             ]
         },
         {
+            "id": 1783,
             "lang": "OE",
             "graphemes": [
                 "l"
@@ -268,6 +294,7 @@
             ]
         },
         {
+            "id": 1784,
             "lang": "OE",
             "graphemes": [
                 "r"
@@ -277,6 +304,7 @@
             ]
         },
         {
+            "id": 1785,
             "lang": "OE",
             "graphemes": [
                 "c"
@@ -286,6 +314,7 @@
             ]
         },
         {
+            "id": 1786,
             "lang": "OE",
             "graphemes": [
                 "g",
@@ -296,6 +325,7 @@
             ]
         },
         {
+            "id": 1787,
             "lang": "OE",
             "graphemes": [
                 "h"
@@ -305,6 +335,7 @@
             ]
         },
         {
+            "id": 1788,
             "lang": "OE",
             "graphemes": [
                 "sc"
@@ -314,6 +345,7 @@
             ]
         },
         {
+            "id": 1789,
             "lang": "OE",
             "graphemes": [
                 "cg"
@@ -323,6 +355,7 @@
             ]
         },
         {
+            "id": 1790,
             "lang": "OE",
             "graphemes": [
                 "x"
@@ -332,6 +365,7 @@
             ]
         },
         {
+            "id": 1791,
             "lang": "Lyc",
             "graphemes": [
                 "x",
@@ -345,6 +379,7 @@
             ]
         },
         {
+            "id": 1792,
             "lang": "ON",
             "graphemes": [
                 "a"
@@ -354,6 +389,7 @@
             ]
         },
         {
+            "id": 1793,
             "lang": "ON",
             "graphemes": [
                 "á"
@@ -364,6 +400,7 @@
             ]
         },
         {
+            "id": 1794,
             "lang": "ON",
             "graphemes": [
                 "b"
@@ -373,6 +410,7 @@
             ]
         },
         {
+            "id": 1795,
             "lang": "ON",
             "graphemes": [
                 "d"
@@ -382,6 +420,7 @@
             ]
         },
         {
+            "id": 1796,
             "lang": "ON",
             "graphemes": [
                 "ð"
@@ -391,6 +430,7 @@
             ]
         },
         {
+            "id": 1797,
             "lang": "ON",
             "graphemes": [
                 "e"
@@ -400,6 +440,7 @@
             ]
         },
         {
+            "id": 1798,
             "lang": "ON",
             "graphemes": [
                 "é"
@@ -410,6 +451,7 @@
             ]
         },
         {
+            "id": 1799,
             "lang": "ON",
             "graphemes": [
                 "f"
@@ -419,6 +461,7 @@
             ]
         },
         {
+            "id": 1800,
             "lang": "ON",
             "graphemes": [
                 "g"
@@ -428,6 +471,7 @@
             ]
         },
         {
+            "id": 1801,
             "lang": "ON",
             "graphemes": [
                 "h"
@@ -437,6 +481,7 @@
             ]
         },
         {
+            "id": 1802,
             "lang": "ON",
             "graphemes": [
                 "i"
@@ -446,6 +491,7 @@
             ]
         },
         {
+            "id": 1803,
             "lang": "ON",
             "graphemes": [
                 "í"
@@ -456,6 +502,7 @@
             ]
         },
         {
+            "id": 1804,
             "lang": "ON",
             "graphemes": [
                 "j"
@@ -465,6 +512,7 @@
             ]
         },
         {
+            "id": 1805,
             "lang": "ON",
             "graphemes": [
                 "k"
@@ -474,6 +522,7 @@
             ]
         },
         {
+            "id": 1806,
             "lang": "ON",
             "graphemes": [
                 "l"
@@ -483,6 +532,7 @@
             ]
         },
         {
+            "id": 1807,
             "lang": "ON",
             "graphemes": [
                 "m"
@@ -492,6 +542,7 @@
             ]
         },
         {
+            "id": 1808,
             "lang": "ON",
             "graphemes": [
                 "n"
@@ -501,6 +552,7 @@
             ]
         },
         {
+            "id": 1809,
             "lang": "ON",
             "graphemes": [
                 "o"
@@ -510,6 +562,7 @@
             ]
         },
         {
+            "id": 1810,
             "lang": "ON",
             "graphemes": [
                 "ó"
@@ -520,6 +573,7 @@
             ]
         },
         {
+            "id": 1811,
             "lang": "ON",
             "graphemes": [
                 "p"
@@ -529,6 +583,7 @@
             ]
         },
         {
+            "id": 1812,
             "lang": "ON",
             "graphemes": [
                 "r"
@@ -538,6 +593,7 @@
             ]
         },
         {
+            "id": 1813,
             "lang": "ON",
             "graphemes": [
                 "s"
@@ -547,6 +603,7 @@
             ]
         },
         {
+            "id": 1814,
             "lang": "ON",
             "graphemes": [
                 "t"
@@ -556,6 +613,7 @@
             ]
         },
         {
+            "id": 1815,
             "lang": "ON",
             "graphemes": [
                 "u"
@@ -565,6 +623,7 @@
             ]
         },
         {
+            "id": 1816,
             "lang": "ON",
             "graphemes": [
                 "ú"
@@ -575,6 +634,7 @@
             ]
         },
         {
+            "id": 1817,
             "lang": "ON",
             "graphemes": [
                 "v"
@@ -584,6 +644,7 @@
             ]
         },
         {
+            "id": 1818,
             "lang": "ON",
             "graphemes": [
                 "y"
@@ -593,6 +654,7 @@
             ]
         },
         {
+            "id": 1819,
             "lang": "ON",
             "graphemes": [
                 "ý"
@@ -603,6 +665,7 @@
             ]
         },
         {
+            "id": 1820,
             "lang": "ON",
             "graphemes": [
                 "x"
@@ -612,6 +675,7 @@
             ]
         },
         {
+            "id": 1821,
             "lang": "ON",
             "graphemes": [
                 "z"
@@ -621,6 +685,7 @@
             ]
         },
         {
+            "id": 1822,
             "lang": "ON",
             "graphemes": [
                 "þ"
@@ -630,6 +695,7 @@
             ]
         },
         {
+            "id": 1823,
             "lang": "ON",
             "graphemes": [
                 "æ"
@@ -639,6 +705,7 @@
             ]
         },
         {
+            "id": 1824,
             "lang": "ON",
             "graphemes": [
                 "œ"
@@ -648,6 +715,7 @@
             ]
         },
         {
+            "id": 1825,
             "lang": "ON",
             "graphemes": [
                 "ö"
@@ -24802,6 +24870,27 @@
                 {
                     "name": "Accusative",
                     "abbreviation": "ACC"
+                },
+                {
+                    "name": "Dative",
+                    "abbreviation": "DAT"
+                }
+            ]
+        },
+        {
+            "lang": "Lyc",
+            "name": "Number",
+            "pos": [
+                "N"
+            ],
+            "values": [
+                {
+                    "name": "Singular",
+                    "abbreviation": "SG"
+                },
+                {
+                    "name": "Plural",
+                    "abbreviation": "PL"
                 }
             ]
         },

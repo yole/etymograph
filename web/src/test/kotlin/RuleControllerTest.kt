@@ -150,7 +150,7 @@ class RuleControllerTest {
     fun expectedWordOrtho() {
         val fixture = QTestFixture()
         val graph = fixture.graphService.graph
-        fixture.q.phonemes = listOf(Phoneme(listOf("th"), "θ", setOf("consonant")))
+        fixture.q.phonemes = listOf(Phoneme(-1, listOf("th"), "θ", setOf("consonant")))
 
         val ruleController = RuleController(fixture.graphService)
         ruleController.newRule(

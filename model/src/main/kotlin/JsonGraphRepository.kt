@@ -27,10 +27,13 @@ data class WordData(
 
 @Serializable
 data class PhonemeData(
+    val id: Int,
     @SerialName("lang") val languageShortName: String,
     val graphemes: List<String>,
     val sound: String? = null,
-    val classes: List<String> = emptyList()
+    val classes: List<String> = emptyList(),
+    val sourceRefs: List<SourceRefData>? = null,
+    val notes: String? = null
 )
 
 @Serializable
@@ -303,7 +306,12 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
 
     private fun createGraphRepositoryData(): GraphRepositoryData {
         val phonemes = languages.values.flatMap { lang ->
-            lang.phonemes.map { PhonemeData(lang.shortName, it.graphemes, it.sound, it.classes.toList()) }
+            lang.phonemes.map {
+                PhonemeData(
+                    it.id, lang.shortName, it.graphemes, it.sound, it.classes.toList(),
+                    it.source.sourceToSerializedFormat(), it.notes
+                )
+            }
         }
         val diphthongData = languages.values.map { DiphthongData(it.shortName, it.diphthongs) }
         val stressRuleData = mapLanguageRules { lang -> lang.stressRule }
@@ -385,9 +393,20 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
         for (language in data.languages) {
             addLanguage(Language(language.name, language.shortName))
         }
-        for (phoneme in data.phonemes) {
-            languageByShortName(phoneme.languageShortName)!!.phonemes +=
-                Phoneme(phoneme.graphemes, phoneme.sound, phoneme.classes.toSet())
+
+        for (phonemeData in data.phonemes) {
+            val phoneme = Phoneme(
+                phonemeData.id,
+                phonemeData.graphemes,
+                phonemeData.sound,
+                phonemeData.classes.toSet(),
+                loadSource(phonemeData.sourceRefs),
+                phonemeData.notes
+            )
+            languageByShortName(phonemeData.languageShortName)!!.phonemes += phoneme
+            if (phoneme.id != -1) {
+                setLangEntity(phoneme.id, phoneme)
+            }
         }
         for (diphthongData in data.diphthongs) {
             languageByShortName(diphthongData.languageShortName)!!.diphthongs = diphthongData.diphthongs
@@ -411,20 +430,19 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             }
             publications.add(Publication(pubData.id, pubData.name, pubData.refId))
         }
-        for (word in data.words) {
-            while (word.id > allLangEntities.size) {
-                allLangEntities.add(null)
-            }
-            addWord(
-                languageByShortName(word.languageShortName)!!,
-                word.text,
-                word.gloss,
-                word.fullGloss,
-                word.pos,
-                word.classes ?: emptyList(),
-                loadSource(word.sourceRefs),
-                word.notes
+        for (wordData in data.words) {
+            val language = languageByShortName(wordData.languageShortName)!!
+            val wordsByText = mapOfWordsByText(language, wordData.text)
+            val word = Word(
+                wordData.id, wordData.text, language, wordData.gloss,
+                wordData.fullGloss,
+                wordData.pos,
+                wordData.classes ?: emptyList(),
+                loadSource(wordData.sourceRefs),
+                wordData.notes
             )
+            setLangEntity(word.id, word)
+            wordsByText.add(word)
         }
         for (rule in data.rules) {
             val fromLanguage = languageByShortName(rule.fromLanguageShortName)!!

@@ -95,7 +95,7 @@ class LanguageController(val graphService: GraphService) {
         params: UpdateLanguageParameters
     ) {
 
-        language.phonemes = params.phonemes?.let { parsePhonemes(it) } ?: mutableListOf()
+//        language.phonemes = params.phonemes?.let { parsePhonemes(it) } ?: mutableListOf()
         language.diphthongs = parseList(params.diphthongs)
         language.syllableStructures = parseList(params.syllableStructures)
         language.grammaticalCategories = params.grammaticalCategories.nullize()?.let { parseWordCategories(it) } ?: mutableListOf()
@@ -111,6 +111,7 @@ class LanguageController(val graphService: GraphService) {
         return stressRule?.let { RuleRef.to(it) }
     }
 
+    /*
     private fun parsePhonemes(s: String): MutableList<Phoneme> {
         return s.split('\n').filter { it.isNotBlank() }.map { cls ->
             val (grapheme, classes) = cls.split(':')
@@ -129,6 +130,7 @@ class LanguageController(val graphService: GraphService) {
             )
         }.toMutableList()
     }
+     */
 
     private fun List<Phoneme>.phonemesToEditableText(): String {
         return joinToString("\n") { p ->

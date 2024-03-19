@@ -25,10 +25,10 @@ class RuleSequenceTest : QBaseTest() {
         val repo = repoWithQ().apply {
             addLanguage(ce)
         }
-        ce.phonemes += Phoneme(listOf("c", "k"), null, setOf("voiceless", "velar", "stop", "consonant"))
-        ce.phonemes += Phoneme(listOf("g"), null, setOf("voiced", "velar", "stop", "consonant"))
+        ce.phonemes += Phoneme(-1, listOf("c", "k"), null, setOf("voiceless", "velar", "stop", "consonant"))
+        ce.phonemes += Phoneme(-1, listOf("g"), null, setOf("voiced", "velar", "stop", "consonant"))
         q.phonemes = q.phonemes.filter { "c" !in it.graphemes && "k" !in it.graphemes } +
-                Phoneme(listOf("c", "k"), null, setOf("voiceless", "velar", "stop", "consonant"))
+                Phoneme(-1, listOf("c", "k"), null, setOf("voiceless", "velar", "stop", "consonant"))
         val qVoiceless = repo.rule("sound is voiceless stop:\n- voiceless becomes voiced", name = "q-voiceless")
         val seq = repo.addRuleSequence("ce-q", ce, q, listOf(qVoiceless))
         val ceWord = repo.addWord("aklar", language = ce)

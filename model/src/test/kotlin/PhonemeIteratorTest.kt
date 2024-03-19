@@ -45,14 +45,14 @@ class PhonemeIteratorTest : QBaseTest() {
 
     @Test
     fun digraphs() {
-        q.phonemes = mutableListOf(Phoneme(listOf("hy"), null, setOf("voiceless", "glide")))
+        q.phonemes = listOf(phoneme("hy", "voiceless glide"))
         val it = PhonemeIterator("hyarmen", q)
         assertEquals("hy", it.current)
     }
 
     @Test
     fun phonemic() {
-        q.phonemes = mutableListOf(Phoneme(listOf("c", "k"), "k", setOf("consonant")))
+        q.phonemes = listOf(phoneme(listOf("c", "k"), "k", "consonant"))
         val w = q.word("calma").asPhonemic()
         val it = PhonemeIterator(w)
         assertEquals("kalma", it.result())

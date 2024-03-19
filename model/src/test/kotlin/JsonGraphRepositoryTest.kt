@@ -117,7 +117,7 @@ class JsonGraphRepositoryTest : QBaseTest() {
     fun serializePhonemes() {
         val repo = JsonGraphRepository(null)
         repo.addLanguage(q)
-        q.phonemes = mutableListOf(Phoneme(listOf("a"), null, setOf("front", "open", "vowel")))
+        q.phonemes = mutableListOf(phoneme("a", "front open vowel"))
         val repo2 = repo.roundtrip()
         assertEquals(1, repo2.languageByShortName("Q")!!.phonemes.size)
     }

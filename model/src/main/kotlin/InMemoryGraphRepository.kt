@@ -428,7 +428,7 @@ open class InMemoryGraphRepository : GraphRepository() {
         link.rules = applicableRules
     }
 
-    private fun mapOfWordsByText(
+    protected fun mapOfWordsByText(
         language: Language,
         text: String
     ): MutableList<Word> {

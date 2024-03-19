@@ -97,9 +97,9 @@ class CorpusControllerTest {
     fun stress() {
         val fixture = QTestFixture()
         fixture.q.phonemes = listOf(
-            Phoneme(listOf("a"), null, setOf("vowel")),
-            Phoneme(listOf("i"), null, setOf("vowel")),
-            Phoneme(listOf("e"), null, setOf("vowel"))
+            Phoneme(-1, listOf("a"), null, setOf("vowel")),
+            Phoneme(-1, listOf("i"), null, setOf("vowel")),
+            Phoneme(-1, listOf("e"), null, setOf("vowel"))
         )
 
         val ruleController = RuleController(fixture.graphService)

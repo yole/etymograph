@@ -6,7 +6,7 @@ import org.junit.Test
 class OrthographyTest : QBaseTest() {
     @Test
     fun simpleRoundtrip() {
-        ce.phonemes = listOf(Phoneme(listOf("y"), "j", setOf("semivowel")))
+        ce.phonemes = listOf(phoneme(listOf("y"), "j", "semivowel"))
         val yulma = ce.word("yulma")
         val phonemic = yulma.asPhonemic()
         assertEquals("julma", phonemic.text)
@@ -17,7 +17,7 @@ class OrthographyTest : QBaseTest() {
 
     @Test
     fun normalize() {
-        ce.phonemes = listOf(Phoneme(listOf("á", "ā"), null, setOf("vowel")))
+        ce.phonemes = listOf(phoneme(listOf("á", "ā"), null, "vowel"))
         val yulma = ce.word("yulmā")
         val phonemic = yulma.asPhonemic()
         assertEquals("yulmá", phonemic.text)
@@ -27,7 +27,7 @@ class OrthographyTest : QBaseTest() {
     fun orthographyRule() {
         val rule = parseRule(ce, ce, "beginning of word and sound is 'j':\n- new sound is 'i'")
         ce.orthographyRule = RuleRef.to(rule)
-        ce.phonemes = listOf(Phoneme(listOf("y"), "j", setOf("semivowel")))
+        ce.phonemes = listOf(phoneme(listOf("y"), "j", "semivowel"))
         val iayn = ce.word("jajn").apply { isPhonemic = true }
         assertEquals("iayn", iayn.asOrthographic().text)
     }
