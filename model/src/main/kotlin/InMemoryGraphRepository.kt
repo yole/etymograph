@@ -50,6 +50,17 @@ open class InMemoryGraphRepository : GraphRepository() {
         deleteLangEntity(phoneme)
     }
 
+    override fun findRelatedRules(language: Language, phoneme: Phoneme): List<Rule> {
+        val sequences = allLangEntities
+            .filterIsInstance<RuleSequence>()
+            .filter { it.fromLanguage == language || it.toLanguage == language  }
+        return sequences.flatMap {
+            it.rules.map { ruleRef -> ruleRef.resolve() }.filter { rule ->
+                rule.logic.branches.any { branch -> branch.condition.refersToPhoneme(phoneme) }
+            }
+        }
+    }
+
     override fun addCorpusText(
         text: String,
         title: String?,

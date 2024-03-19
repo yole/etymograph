@@ -5,6 +5,12 @@ import ru.yole.etymograph.GraphRepository
 import ru.yole.etymograph.Language
 import ru.yole.etymograph.Phoneme
 
+data class PhonemeRuleViewModel(
+    val id: Int,
+    val name: String,
+    val summary: String
+)
+
 data class PhonemeViewModel(
     val id: Int,
     val languageShortName: String,
@@ -14,7 +20,8 @@ data class PhonemeViewModel(
     val classes: String,
     val source: List<SourceRefViewModel>,
     val sourceEditableText: String,
-    val notes: String?
+    val notes: String?,
+    val relatedRules: List<PhonemeRuleViewModel>
 )
 
 @RestController
@@ -94,6 +101,9 @@ fun Phoneme.toViewModel(graph: GraphRepository, language: Language): PhonemeView
         classes.joinToString(" "),
         source.toViewModel(graph),
         source.toEditableText(graph),
-        notes
+        notes,
+        graph.findRelatedRules(language, this).map {
+            PhonemeRuleViewModel(it.id, it.name, it.toSummaryText())
+        }
     )
 }

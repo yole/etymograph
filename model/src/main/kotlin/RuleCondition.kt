@@ -64,6 +64,24 @@ sealed class RuleCondition {
     fun findLeafConditions(type: ConditionType): List<LeafRuleCondition> =
         findLeafConditions { it is LeafRuleCondition && it.type == type }.filterIsInstance<LeafRuleCondition>()
 
+    open fun refersToPhoneme(phoneme: Phoneme): Boolean = false
+
+    protected fun checkRefersToPhoneme(
+        phoneme: Phoneme,
+        parameter: String?,
+        phonemeClass: PhonemeClass?
+    ): Boolean {
+        val sound = phoneme.sound
+        val phonemeAsString = if (isPhonemic() && sound != null) sound else phoneme.graphemes[0]
+        if (parameter != null) {
+            return phonemeAsString in parameter
+        }
+        if (phonemeClass != null) {
+            return phonemeAsString in phonemeClass.matchingPhonemes
+        }
+        return false
+    }
+
     companion object {
         fun parse(buffer: ParseBuffer, language: Language): RuleCondition {
             if (buffer.consume(OtherwiseCondition.OTHERWISE)) {
@@ -198,6 +216,10 @@ class LeafRuleCondition(
         return parameterName
     }
 
+    override fun refersToPhoneme(phoneme: Phoneme): Boolean {
+        return checkRefersToPhoneme(phoneme, parameter, phonemeClass)
+    }
+
     companion object {
         const val wordEndsWith = "word ends with "
         const val endsWith = "ends with "
@@ -313,6 +335,10 @@ class SyllableRuleCondition(
         return richText("${Ordinals.toString(index)} $syllable ${matchType.condName} $paramText".rich())
     }
 
+    override fun refersToPhoneme(phoneme: Phoneme): Boolean {
+        return checkRefersToPhoneme(phoneme, parameter, phonemeClass)
+    }
+
     companion object {
         const val syllable = "syllable"
 
@@ -380,6 +406,10 @@ class RelativePhonemeRuleCondition(
             (matchPhonemeClass?.name?.rich(true) ?: "'$parameter'".rich(true))
     }
 
+    override fun refersToPhoneme(phoneme: Phoneme): Boolean {
+        return checkRefersToPhoneme(phoneme, parameter, matchPhonemeClass)
+    }
+
     companion object {
         fun parse(buffer: ParseBuffer, language: Language): RelativePhonemeRuleCondition? {
             var relative = true
@@ -435,6 +465,10 @@ class OrRuleCondition(val members: List<RuleCondition>) : RuleCondition() {
         return members.flatMap { it.findLeafConditions(predicate) }
     }
 
+    override fun refersToPhoneme(phoneme: Phoneme): Boolean {
+        return members.any { it.refersToPhoneme(phoneme) }
+    }
+
     companion object {
         const val OR = " or "
     }
@@ -456,6 +490,10 @@ class AndRuleCondition(val members: List<RuleCondition>) : RuleCondition() {
 
     override fun findLeafConditions(predicate: (RuleCondition) -> Boolean): List<RuleCondition> {
         return members.flatMap { it.findLeafConditions(predicate) }
+    }
+
+    override fun refersToPhoneme(phoneme: Phoneme): Boolean {
+        return members.any { it.refersToPhoneme(phoneme) }
     }
 
     companion object {

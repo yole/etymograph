@@ -72,5 +72,15 @@ export default function Phoneme(props) {
             {' '}
             <button onClick={() => deletePhonemeClicked()}>{"Delete"}</button>
         </>}
+
+        {phoneme.relatedRules.length > 0 && <>
+            <h3>Related rules</h3>
+            <ul>
+                {phoneme.relatedRules.map(rr => <li>
+                    <Link href={`/rule/${rr.id}`}>{rr.name}</Link>
+                    {rr.summary && <>: {rr.summary}</>}
+                </li>)}
+            </ul>
+        </>}
     </>
 }

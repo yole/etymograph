@@ -2,6 +2,9 @@ package ru.yole.etymograph.web
 
 import org.junit.Assert.assertEquals
 import org.junit.Test
+import ru.yole.etymograph.Rule
+import ru.yole.etymograph.RuleParseContext
+import ru.yole.etymograph.RuleParseException
 
 class PhonemeControllerTest {
     @Test
@@ -46,5 +49,19 @@ class PhonemeControllerTest {
         val phonemeController = PhonemeController(fixture.graphService)
         phonemeController.deletePhoneme(phoneme.id)
         assertEquals(0, fixture.q.phonemes.size)
+    }
+
+    @Test
+    fun relatedRules() {
+        val fixture = QTestFixture()
+        val phoneme = fixture.graph.addPhoneme(fixture.q, listOf("w"), null, setOf())
+        val rule = fixture.graphService.graph.addRule("q-gen", fixture.ce, fixture.q,
+            Rule.parseBranches("sound is 'w':\n- new sound is 'u'",
+                RuleParseContext(fixture.q, fixture.q) { throw RuleParseException("no such rule")})
+        )
+        val seq = fixture.graphService.graph.addRuleSequence("ce-to-q", fixture.ce, fixture.q, listOf(rule))
+
+        val phonemeViewModel = PhonemeController(fixture.graphService).phoneme(phoneme.id)
+        assertEquals(1, phonemeViewModel.relatedRules.size)
     }
 }

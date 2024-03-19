@@ -22,9 +22,15 @@ open class PhonemeClass(val name: String, var matchingPhonemes: List<String>) {
 }
 
 class IntersectionPhonemeClass(name: String, val classList: List<PhonemeClass>)
-    : PhonemeClass(name, emptyList()) {
+    : PhonemeClass(name, mergePhonemeClasses(classList)) {
     override fun matchesCurrent(it: PhonemeIterator): Boolean {
         return classList.all { cls -> cls.matchesCurrent(it) }
+    }
+
+    companion object {
+        private fun mergePhonemeClasses(classList: List<PhonemeClass>): List<String> {
+            return classList.flatMap { it.matchingPhonemes }.toSet().toList()
+        }
     }
 }
 
