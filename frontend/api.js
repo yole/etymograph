@@ -180,12 +180,11 @@ export function addLanguage(name, shortName) {
 }
 
 export function updateLanguage(
-    lang, phonemes, diphthongs, syllableStructures, stressRule, phonotacticsRule, orthographyRule,
+    lang, diphthongs, syllableStructures, stressRule, phonotacticsRule, orthographyRule,
     grammaticalCategories, wordClasses
 ) {
     return postToBackend(`language/${lang}`,
         {
-            phonemes: phonemes,
             diphthongs: diphthongs,
             syllableStructures: syllableStructures,
             stressRuleName: stressRule,
@@ -195,6 +194,28 @@ export function updateLanguage(
             wordClasses: wordClasses
         }
     )
+}
+
+export function addPhoneme(lang, graphemes, sound, classes, source) {
+    return postToBackend(`phonemes/${lang}`, {
+        graphemes: graphemes,
+        sound: sound,
+        classes: classes,
+        source: source
+    })
+}
+
+export function updatePhoneme(id, graphemes, sound, classes, source) {
+    return postToBackend(`phoneme/${id}`, {
+        graphemes: graphemes,
+        sound: sound,
+        classes: classes,
+        source: source
+    })
+}
+
+export function deletePhoneme(id) {
+    return postToBackend(`phoneme/${id}/delete`)
 }
 
 export function addPublication(name, refId) {

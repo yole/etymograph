@@ -19,7 +19,6 @@ export default function LanguageIndex(props) {
     const lang = props.loaderData
     const langId = lang.shortName
     const [editMode, setEditMode] = useState(false)
-    const [phonemes, setPhonemes] = useState(lang.phonemes)
     const [grammaticalCategories, setGrammaticalCategories] = useState(lang.grammaticalCategories)
     const [wordClasses, setWordClasses] = useState(lang.wordClasses)
     const [diphthongs, setDiphthongs] = useState(lang.diphthongs.join(", "))
@@ -32,7 +31,7 @@ export default function LanguageIndex(props) {
     useEffect(() => { document.title = "Etymograph : " + lang.name })
 
     function saveLanguage() {
-        updateLanguage(langId, phonemes, diphthongs, syllableStructures, stressRule, phonotacticsRule, orthographyRule, grammaticalCategories, wordClasses)
+        updateLanguage(langId, diphthongs, syllableStructures, stressRule, phonotacticsRule, orthographyRule, grammaticalCategories, wordClasses)
             .then((r) => {
                 if (r.status === 200) {
                     setErrorText("")
@@ -56,16 +55,20 @@ export default function LanguageIndex(props) {
         {' '}| <Link href={`/corpus/${langId}`}>Corpus</Link>
 
         <h3>Phonetics</h3>
-        {(editMode || phonemes.trim().length > 0) && <h4>Phonemes</h4>}
-        {!editMode && phonemes.trim().length > 0 && <>
+        {lang.phonemes.length > 0 && <>
+            <h4>Phonemes</h4>
             <ul>
-                {phonemes.split('\n').map(s => <li>{s}</li>)}
+                {lang.phonemes.map(ph =>
+                    <li>
+                        <Link href={`/phoneme/${ph.id}`}>{ph.graphemes.join(", ")}</Link>
+                        {ph.sound.length > 0 && ` /${ph.sound}/`}
+                        {' '}&ndash;{' '}
+                        {ph.classes}
+                    </li>
+                )}
             </ul>
         </>}
-        {editMode && <>
-            <textarea rows={5} cols={50} value={phonemes} onChange={(e) => setPhonemes(e.target.value)}/>
-            <br/>
-        </>}
+        {allowEdit() && <Link href={`/phonemes/${langId}/new`}>Add phoneme</Link>}
 
         {!editMode && <>
             {lang.diphthongs.length > 0 && <p>Diphthongs: {lang.diphthongs.join(", ")}</p>}

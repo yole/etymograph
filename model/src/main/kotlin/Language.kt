@@ -33,7 +33,7 @@ class WordCategoryValue(val name: String, val abbreviation: String)
 class WordCategory(var name: String, var pos: List<String>, var values: List<WordCategoryValue>)
 
 class Phoneme(
-    id: Int, val graphemes: List<String>, val sound: String?, val classes: Set<String>,
+    id: Int, var graphemes: List<String>, var sound: String?, var classes: Set<String>,
     source: List<SourceRef> = emptyList(), notes: String? = null
 ) : LangEntity(id, source, notes)
 

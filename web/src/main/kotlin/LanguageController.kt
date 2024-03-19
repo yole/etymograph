@@ -15,7 +15,7 @@ class LanguageController(val graphService: GraphService) {
         val name: String,
         val shortName: String,
         val diphthongs: List<String>,
-        val phonemes: String,
+        val phonemes: List<PhonemeViewModel>,
         val stressRuleId: Int?,
         val stressRuleName: String?,
         val phonotacticsRuleId: Int?,
@@ -46,7 +46,7 @@ class LanguageController(val graphService: GraphService) {
             name,
             shortName,
             diphthongs,
-            phonemes.phonemesToEditableText(),
+            phonemes.map { it.toViewModel(graphService.graph, this) },
             stressRule?.id,
             stressRule?.name,
             phonotacticsRule?.id,
@@ -109,36 +109,6 @@ class LanguageController(val graphService: GraphService) {
     private fun parseRuleRef(name: String?): RuleRef? {
         val stressRule = name?.let { graphService.resolveRule(it) }
         return stressRule?.let { RuleRef.to(it) }
-    }
-
-    /*
-    private fun parsePhonemes(s: String): MutableList<Phoneme> {
-        return s.split('\n').filter { it.isNotBlank() }.map { cls ->
-            val (grapheme, classes) = cls.split(':')
-            var graphemeList = grapheme.trim()
-            var sound: String? = null
-            if (graphemeList.endsWith('/')) {
-                val soundStart = graphemeList.indexOf('/')
-                sound = graphemeList.substring(soundStart + 1).removeSuffix("/")
-                graphemeList = graphemeList.substring(0, soundStart).trim()
-            }
-
-            Phoneme(
-                graphemeList.split(',').map { it.trim() },
-                sound,
-                classes.trim().split(' ').map { it.trim() }.toSet()
-            )
-        }.toMutableList()
-    }
-     */
-
-    private fun List<Phoneme>.phonemesToEditableText(): String {
-        return joinToString("\n") { p ->
-            val graphemes = p.graphemes.joinToString(", ")
-            val sound = p.sound?.let { " /$it/" } ?: ""
-            val classes = p.classes.joinToString(" ")
-            "$graphemes$sound: $classes"
-        }
     }
 
     private fun List<WordCategory>.toEditableText(): String {

@@ -306,6 +306,9 @@
                 "f"
             ],
             "classes": [
+                "voiceless",
+                "labiodental",
+                "fricative",
                 "consonant"
             ]
         },
@@ -329,18 +332,10 @@
                 "h"
             ],
             "classes": [
+                "voiceless",
+                "glottal",
+                "fricative",
                 "consonant"
-            ]
-        },
-        {
-            "id": 1565,
-            "lang": "Q",
-            "graphemes": [
-                "j"
-            ],
-            "classes": [
-                "palatal",
-                "semivowel"
             ]
         },
         {
@@ -350,6 +345,10 @@
                 "l"
             ],
             "classes": [
+                "voiced",
+                "alveolar",
+                "lateral",
+                "approximant",
                 "consonant"
             ]
         },
@@ -1351,6 +1350,18 @@
             "sound": "j",
             "classes": [
                 "semivowel"
+            ]
+        },
+        {
+            "id": 1642,
+            "lang": "CE",
+            "graphemes": [
+                "w"
+            ],
+            "classes": [
+                "voiced",
+                "labial-velar",
+                "approximant"
             ]
         }
     ],

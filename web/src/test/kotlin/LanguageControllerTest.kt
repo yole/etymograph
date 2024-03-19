@@ -50,44 +50,6 @@ class LanguageControllerTest {
     }
 
     @Test
-    fun phonemes() {
-        val fixture = QTestFixture()
-        val languageController = LanguageController(fixture.graphService)
-
-        val parameters = LanguageController.UpdateLanguageParameters(
-            phonemes = "a: open front vowel\nc, k: voiceless velar stop"
-        )
-        languageController.updateLanguage("q", parameters)
-
-        val phonemes =  fixture.q.phonemes
-        assertEquals(2, phonemes.size)
-        assertEquals("a", phonemes[0].graphemes.single())
-        assertEquals("open", phonemes[0].classes.first())
-        assertEquals("c", phonemes[1].graphemes[0])
-
-        val vm = languageController.language("q")
-        assertEquals(vm.phonemes, parameters.phonemes)
-    }
-
-    @Test
-    fun phonemeSound() {
-        val fixture = QTestFixture()
-        val languageController = LanguageController(fixture.graphService)
-
-        val parameters = LanguageController.UpdateLanguageParameters(
-            phonemes = "y /j/: semivowel"
-        )
-        languageController.updateLanguage("q", parameters)
-
-        val phonemes =  fixture.q.phonemes
-        assertEquals("y", phonemes.single().graphemes.single())
-        assertEquals("j", phonemes.single().sound)
-
-        val qViewModel = languageController.language("q")
-        assertEquals("y /j/: semivowel", qViewModel.phonemes)
-    }
-
-    @Test
     fun diphthongs() {
         val fixture = QTestFixture()
         val languageController = LanguageController(fixture.graphService)

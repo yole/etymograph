@@ -6,6 +6,17 @@ abstract class GraphRepository {
 
     abstract fun addLanguage(language: Language)
 
+    abstract fun addPhoneme(
+        language: Language,
+        graphemes: List<String>,
+        sound: String?,
+        classes: Set<String>,
+        source: List<SourceRef> = emptyList(),
+        notes: String? = null
+    ): Phoneme
+
+    abstract fun deletePhoneme(language: Language, phoneme: Phoneme)
+
     abstract fun langEntityById(id: Int): LangEntity?
 
     abstract fun allCorpusTexts(): Iterable<CorpusText>

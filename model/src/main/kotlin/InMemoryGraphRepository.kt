@@ -31,6 +31,25 @@ open class InMemoryGraphRepository : GraphRepository() {
     override fun langEntityById(id: Int): LangEntity? =
         allLangEntities.getOrNull(id)
 
+    override fun addPhoneme(
+        language: Language,
+        graphemes: List<String>,
+        sound: String?,
+        classes: Set<String>,
+        source: List<SourceRef>,
+        notes: String?
+    ): Phoneme {
+        return Phoneme(allLangEntities.size, graphemes, sound, classes, source, notes).also {
+            language.phonemes += it
+            allLangEntities += it
+        }
+    }
+
+    override fun deletePhoneme(language: Language, phoneme: Phoneme) {
+        language.phonemes -= phoneme
+        deleteLangEntity(phoneme)
+    }
+
     override fun addCorpusText(
         text: String,
         title: String?,
