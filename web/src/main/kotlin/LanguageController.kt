@@ -11,11 +11,26 @@ import ru.yole.etymograph.*
 
 @RestController
 class LanguageController(val graphService: GraphService) {
+    data class PhonemeTableCellViewModel(
+        val phonemes: List<PhonemeViewModel>
+    )
+
+    data class PhonemeTableRowViewModel(
+        val title: String,
+        val cells: List<PhonemeTableCellViewModel>
+    )
+
+    data class PhonemeTableViewModel(
+        val title: String,
+        val columnTitles: List<String>,
+        val rows: List<PhonemeTableRowViewModel>
+    )
+
     data class LanguageViewModel(
         val name: String,
         val shortName: String,
         val diphthongs: List<String>,
-        val phonemes: List<PhonemeViewModel>,
+        val phonemes: List<PhonemeTableViewModel>,
         val stressRuleId: Int?,
         val stressRuleName: String?,
         val phonotacticsRuleId: Int?,
@@ -46,7 +61,13 @@ class LanguageController(val graphService: GraphService) {
             name,
             shortName,
             diphthongs,
-            phonemes.map { it.toViewModel(graphService.graph, this) },
+            buildPhonemeTables().map { table ->
+                PhonemeTableViewModel(table.title, table.columnTitles, table.rows.map { row ->
+                    PhonemeTableRowViewModel(row.title, row.columns.map { cell ->
+                        PhonemeTableCellViewModel(cell.phonemes.map { it.toViewModel(graphService.graph, this)})
+                    })
+                })
+            },
             stressRule?.id,
             stressRule?.name,
             phonotacticsRule?.id,
@@ -94,8 +115,6 @@ class LanguageController(val graphService: GraphService) {
         language: Language,
         params: UpdateLanguageParameters
     ) {
-
-//        language.phonemes = params.phonemes?.let { parsePhonemes(it) } ?: mutableListOf()
         language.diphthongs = parseList(params.diphthongs)
         language.syllableStructures = parseList(params.syllableStructures)
         language.grammaticalCategories = params.grammaticalCategories.nullize()?.let { parseWordCategories(it) } ?: mutableListOf()

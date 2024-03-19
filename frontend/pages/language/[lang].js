@@ -55,19 +55,35 @@ export default function LanguageIndex(props) {
         {' '}| <Link href={`/corpus/${langId}`}>Corpus</Link>
 
         <h3>Phonetics</h3>
-        {lang.phonemes.length > 0 && <>
-            <h4>Phonemes</h4>
-            <ul>
-                {lang.phonemes.map(ph =>
-                    <li>
-                        <Link href={`/phoneme/${ph.id}`}>{ph.graphemes.join(", ")}</Link>
-                        {ph.sound.length > 0 && ` /${ph.sound}/`}
-                        {' '}&ndash;{' '}
-                        {ph.classes}
-                    </li>
-                )}
-            </ul>
-        </>}
+        {lang.phonemes.map(pt => <>
+            <h4>{pt.title}</h4>
+            {(pt.rows.length > 1 || pt.columnTitles.length > 0) && <table className="phonemeTable">
+                <thead><tr>
+                    <th/>
+                    {pt.columnTitles.map(ct => <th>{ct}</th>)}
+                </tr></thead>
+                <tbody>
+                {pt.rows.map(pr => <tr>
+                    <th scope="row">{pr.title}</th>
+                    {pr.cells.map(pc => <td>
+                        {pc.phonemes.map((p, i) => <>
+                            {i > 0 && ", "}
+                            <Link href={`/phoneme/${p.id}`}>{p.graphemes[0]}</Link>
+                            {p.sound.length > 0 && ` /${p.sound}/`}
+                        </>)}
+                    </td>)}
+                </tr>)}
+                </tbody>
+            </table>}
+            {(pt.rows.length === 1 && pt.columnTitles.length === 0 && <ul>
+                {pt.rows[0].cells.map(c => <li>
+                    <Link href={`/phoneme/${c.phonemes[0].id}`}>{c.phonemes[0].graphemes.join(", ")}</Link>
+                    {c.phonemes[0].sound.length > 0 && ` /${c.phonemes[0].sound}/`}
+                    {' '}&ndash;{' '}
+                    {c.phonemes[0].classes}
+                </li>)}
+            </ul>)}
+        </>)}
         {allowEdit() && <Link href={`/phonemes/${langId}/new`}>Add phoneme</Link>}
 
         {!editMode && <>

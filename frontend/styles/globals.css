@@ -62,3 +62,19 @@ code {
 .richTextEmph {
   font-weight: bold;
 }
+
+.phonemeTable {
+  border-collapse: collapse;
+
+}
+
+.phonemeTable tr {
+  padding: 0;
+  margin: 0;
+}
+
+.phonemeTable td, .phonemeTable th {
+  text-align: center;
+  border: 1px solid black;
+  padding: 5px;
+}

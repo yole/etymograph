@@ -14,7 +14,7 @@ open class QBaseTest {
             phoneme("t", "voiceless alveolar stop consonant") +
             phoneme("b", "voiced bilabial stop consonant") +
             phoneme("d", "voiced alveolar stop consonant") +
-            phoneme("n", "nasal consonant") +
+            phoneme("n", "voiced alveolar nasal consonant") +
             phoneme("k", "voiceless velar stop consonant") +
             phoneme("g", "voiced velar stop consonant")
 
