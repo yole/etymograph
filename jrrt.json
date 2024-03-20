@@ -166,6 +166,7 @@
                 "c",
                 "k"
             ],
+            "sound": "k",
             "classes": [
                 "voiceless",
                 "velar",
@@ -179,7 +180,12 @@
             "graphemes": [
                 "ty"
             ],
+            "sound": "tʲ",
             "classes": [
+                "palatalized",
+                "voiceless",
+                "alveolar",
+                "stop",
                 "consonant"
             ]
         },
@@ -189,7 +195,12 @@
             "graphemes": [
                 "dy"
             ],
+            "sound": "dʲ",
             "classes": [
+                "palatalized",
+                "voiced",
+                "alveolar",
+                "stop",
                 "consonant"
             ]
         },
@@ -199,7 +210,11 @@
             "graphemes": [
                 "hy"
             ],
+            "sound": "j̊",
             "classes": [
+                "voiceless",
+                "palatal",
+                "approximant",
                 "consonant"
             ]
         },
@@ -209,7 +224,12 @@
             "graphemes": [
                 "ny"
             ],
+            "sound": "nʲ",
             "classes": [
+                "palatalized",
+                "voiced",
+                "alveolar",
+                "nasal",
                 "consonant"
             ]
         },
@@ -219,7 +239,12 @@
             "graphemes": [
                 "hl"
             ],
+            "sound": "l̥",
             "classes": [
+                "voiceless",
+                "alveolar",
+                "lateral",
+                "approximant",
                 "consonant"
             ]
         },
@@ -229,7 +254,11 @@
             "graphemes": [
                 "hr"
             ],
+            "sound": "r̥",
             "classes": [
+                "voiceless",
+                "alveolar",
+                "trill",
                 "consonant"
             ]
         },
@@ -239,7 +268,12 @@
             "graphemes": [
                 "qu"
             ],
+            "sound": "kʷ",
             "classes": [
+                "labialized",
+                "voiceless",
+                "velar",
+                "stop",
                 "consonant"
             ]
         },
@@ -249,7 +283,12 @@
             "graphemes": [
                 "gw"
             ],
+            "sound": "gʷ",
             "classes": [
+                "labialized",
+                "voiced",
+                "velar",
+                "stop",
                 "consonant"
             ]
         },
@@ -259,7 +298,11 @@
             "graphemes": [
                 "hw"
             ],
+            "sound": "w̥",
             "classes": [
+                "voiceless",
+                "velar",
+                "approximant",
                 "consonant"
             ]
         },
@@ -269,7 +312,12 @@
             "graphemes": [
                 "nw"
             ],
+            "sound": "ŋʷ",
             "classes": [
+                "labialized",
+                "voiced",
+                "velar",
+                "nasal",
                 "consonant"
             ]
         },
@@ -405,22 +453,15 @@
             ]
         },
         {
-            "id": 1571,
-            "lang": "Q",
-            "graphemes": [
-                "q"
-            ],
-            "classes": [
-                "consonant"
-            ]
-        },
-        {
             "id": 1572,
             "lang": "Q",
             "graphemes": [
                 "r"
             ],
             "classes": [
+                "voiced",
+                "alveolar",
+                "trill",
                 "consonant"
             ]
         },
@@ -431,6 +472,9 @@
                 "s"
             ],
             "classes": [
+                "voiceless",
+                "alveolar",
+                "fricative",
                 "consonant"
             ]
         },
@@ -454,6 +498,9 @@
                 "v"
             ],
             "classes": [
+                "voiced",
+                "labiodental",
+                "fricative",
                 "consonant"
             ]
         },
@@ -464,8 +511,10 @@
                 "w"
             ],
             "classes": [
-                "labiovelar",
-                "semivowel"
+                "voiced",
+                "velar",
+                "approximant",
+                "consonant"
             ]
         },
         {
@@ -475,6 +524,9 @@
                 "x"
             ],
             "classes": [
+                "voiceless",
+                "uvular",
+                "fricative",
                 "consonant"
             ]
         },
@@ -488,7 +540,8 @@
             "classes": [
                 "voiced",
                 "palatal",
-                "approximant"
+                "approximant",
+                "consonant"
             ]
         },
         {
@@ -498,6 +551,9 @@
                 "z"
             ],
             "classes": [
+                "voiced",
+                "alveolar",
+                "fricative",
                 "consonant"
             ]
         },
@@ -510,6 +566,7 @@
             "classes": [
                 "aspirated",
                 "velar",
+                "stop",
                 "consonant"
             ]
         },
@@ -522,6 +579,7 @@
             "classes": [
                 "aspirated",
                 "alveolar",
+                "stop",
                 "consonant"
             ]
         },
@@ -534,6 +592,7 @@
             "classes": [
                 "aspirated",
                 "bilabial",
+                "stop",
                 "consonant"
             ]
         },
@@ -775,7 +834,7 @@
             ],
             "classes": [
                 "voiceless",
-                "labiodental",
+                "bilabial",
                 "fricative",
                 "consonant"
             ]
@@ -813,11 +872,11 @@
             "graphemes": [
                 "hw"
             ],
-            "sound": "ʍ",
+            "sound": "w̥",
             "classes": [
                 "voiceless",
-                "labial-velar",
-                "fricative",
+                "velar",
+                "approximant",
                 "consonant"
             ]
         },
@@ -872,7 +931,7 @@
             "graphemes": [
                 "lh"
             ],
-            "sound": "ɬ",
+            "sound": "l̥",
             "classes": [
                 "voiceless",
                 "alveolar",
@@ -917,6 +976,7 @@
             "sound": "ŋ",
             "classes": [
                 "voiced",
+                "velar",
                 "nasal",
                 "consonant"
             ]
@@ -961,6 +1021,11 @@
                 "trill",
                 "liquid",
                 "consonant"
+            ],
+            "sourceRefs": [
+                {
+                    "refText": "https://eldamo.org/content/words/word-3504318431.html"
+                }
             ]
         },
         {
@@ -1024,6 +1089,76 @@
                 "aspirated",
                 "bilabial",
                 "consonant"
+            ]
+        },
+        {
+            "id": 1647,
+            "lang": "S",
+            "graphemes": [
+                "s"
+            ],
+            "classes": [
+                "voiceless",
+                "alveolar",
+                "fricative",
+                "consonant"
+            ]
+        },
+        {
+            "id": 1648,
+            "lang": "S",
+            "graphemes": [
+                "h"
+            ],
+            "classes": [
+                "voiceless",
+                "glottal",
+                "fricative",
+                "consonant"
+            ]
+        },
+        {
+            "id": 1649,
+            "lang": "S",
+            "graphemes": [
+                "v"
+            ],
+            "classes": [
+                "voiced",
+                "bilabial",
+                "fricative",
+                "consonant"
+            ]
+        },
+        {
+            "id": 1650,
+            "lang": "S",
+            "graphemes": [
+                "w"
+            ],
+            "classes": [
+                "voiced",
+                "velar",
+                "approximant",
+                "consonant"
+            ]
+        },
+        {
+            "id": 1651,
+            "lang": "S",
+            "graphemes": [
+                "j"
+            ],
+            "classes": [
+                "voiced",
+                "palatal",
+                "approximant",
+                "consonant"
+            ],
+            "sourceRefs": [
+                {
+                    "refText": "https://eldamo.org/content/words/word-1590307365.html"
+                }
             ]
         },
         {
@@ -14960,6 +15095,68 @@
                     "refText": "174"
                 }
             ]
+        },
+        {
+            "id": 1644,
+            "text": "rhaw",
+            "lang": "S",
+            "gloss": "flesh",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "refText": "MR:349"
+                },
+                {
+                    "refText": "https://eldamo.org/content/words/word-4093888565.html"
+                }
+            ]
+        },
+        {
+            "id": 1645,
+            "text": "srāwe",
+            "lang": "CE",
+            "gloss": "flrsh",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": 18,
+                    "refText": "350"
+                },
+                {
+                    "refText": "https://eldamo.org/content/words/word-140517109.html"
+                }
+            ]
+        },
+        {
+            "id": 1653,
+            "text": "hlōn",
+            "lang": "Q",
+            "gloss": "sound",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": 13,
+                    "refText": "29"
+                },
+                {
+                    "refText": "https://eldamo.org/content/words/word-1236141771.html"
+                }
+            ]
+        },
+        {
+            "id": 1654,
+            "text": "SLON-",
+            "lang": "CE",
+            "gloss": "sound",
+            "sourceRefs": [
+                {
+                    "pubId": 13,
+                    "refText": "29"
+                },
+                {
+                    "refText": "https://eldamo.org/content/words/word-2954543201.html"
+                }
+            ]
         }
     ],
     "rules": [
@@ -22854,9 +23051,37 @@
                             }
                         ]
                     }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "w"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "and",
+                        "members": [
+                            {
+                                "type": "leaf",
+                                "cond": "EndOfWord"
+                            },
+                            {
+                                "type": "leaf",
+                                "cond": "PhonemeMatches",
+                                "characters": "u"
+                            },
+                            {
+                                "type": "relPhoneme",
+                                "relativeIndex": -1,
+                                "parameter": "a"
+                            }
+                        ]
+                    }
                 }
-            ],
-            "notes": ""
+            ]
         },
         {
             "id": 1243,
@@ -23750,6 +23975,288 @@
             "sourceRefs": [
                 {
                     "refText": "https://eldamo.org/content/words/word-14484545.html"
+                }
+            ],
+            "notes": ""
+        },
+        {
+            "id": 1643,
+            "name": "s-initial-s-unvoicing",
+            "fromLang": "S",
+            "toLang": "S",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "SoundDisappears",
+                            "args": [
+                            ]
+                        },
+                        {
+                            "type": "ChangeNextSound",
+                            "args": [
+                                "r̥"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "and",
+                        "members": [
+                            {
+                                "type": "leaf",
+                                "cond": "PhonemeMatches",
+                                "characters": "s"
+                            },
+                            {
+                                "type": "relPhoneme",
+                                "relativeIndex": 1,
+                                "parameter": "r"
+                            },
+                            {
+                                "type": "leaf",
+                                "cond": "BeginningOfWord"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "SoundDisappears",
+                            "args": [
+                            ]
+                        },
+                        {
+                            "type": "ChangeNextSound",
+                            "args": [
+                                "l̥"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "and",
+                        "members": [
+                            {
+                                "type": "leaf",
+                                "cond": "PhonemeMatches",
+                                "characters": "s"
+                            },
+                            {
+                                "type": "relPhoneme",
+                                "relativeIndex": 1,
+                                "parameter": "l"
+                            },
+                            {
+                                "type": "leaf",
+                                "cond": "BeginningOfWord"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "SoundDisappears",
+                            "args": [
+                            ]
+                        },
+                        {
+                            "type": "ChangeNextSound",
+                            "args": [
+                                "w̥"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "and",
+                        "members": [
+                            {
+                                "type": "leaf",
+                                "cond": "PhonemeMatches",
+                                "characters": "s"
+                            },
+                            {
+                                "type": "relPhoneme",
+                                "relativeIndex": 1,
+                                "parameter": "w"
+                            },
+                            {
+                                "type": "leaf",
+                                "cond": "BeginningOfWord"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "refText": "https://eldamo.org/content/words/word-3923357111.html"
+                }
+            ]
+        },
+        {
+            "id": 1646,
+            "name": "s-final-w-v-disappears",
+            "fromLang": "S",
+            "toLang": "S",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "SoundDisappears",
+                            "args": [
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "and",
+                        "members": [
+                            {
+                                "type": "or",
+                                "members": [
+                                    {
+                                        "type": "leaf",
+                                        "cond": "PhonemeMatches",
+                                        "characters": "w"
+                                    },
+                                    {
+                                        "type": "leaf",
+                                        "cond": "PhonemeMatches",
+                                        "characters": "v"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "relPhoneme",
+                                "relativeIndex": -1,
+                                "parameter": "u"
+                            },
+                            {
+                                "type": "leaf",
+                                "cond": "EndOfWord"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "refText": "https://eldamo.org/content/words/word-70600889.html"
+                }
+            ]
+        },
+        {
+            "id": 1652,
+            "name": "q-initial-s-unvoicing",
+            "fromLang": "Q",
+            "toLang": "Q",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "SoundDisappears",
+                            "args": [
+                            ]
+                        },
+                        {
+                            "type": "ChangeNextSound",
+                            "args": [
+                                "r̥"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "and",
+                        "members": [
+                            {
+                                "type": "leaf",
+                                "cond": "PhonemeMatches",
+                                "characters": "s"
+                            },
+                            {
+                                "type": "relPhoneme",
+                                "relativeIndex": 1,
+                                "parameter": "r"
+                            },
+                            {
+                                "type": "leaf",
+                                "cond": "BeginningOfWord"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "SoundDisappears",
+                            "args": [
+                            ]
+                        },
+                        {
+                            "type": "ChangeNextSound",
+                            "args": [
+                                "l̥"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "and",
+                        "members": [
+                            {
+                                "type": "leaf",
+                                "cond": "PhonemeMatches",
+                                "characters": "s"
+                            },
+                            {
+                                "type": "relPhoneme",
+                                "relativeIndex": 1,
+                                "parameter": "l"
+                            },
+                            {
+                                "type": "leaf",
+                                "cond": "BeginningOfWord"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "SoundDisappears",
+                            "args": [
+                            ]
+                        },
+                        {
+                            "type": "ChangeNextSound",
+                            "args": [
+                                "w̥"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "and",
+                        "members": [
+                            {
+                                "type": "leaf",
+                                "cond": "PhonemeMatches",
+                                "characters": "s"
+                            },
+                            {
+                                "type": "relPhoneme",
+                                "relativeIndex": 1,
+                                "parameter": "w"
+                            },
+                            {
+                                "type": "leaf",
+                                "cond": "BeginningOfWord"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "refText": "https://eldamo.org/content/words/word-1556924193.html"
                 }
             ],
             "notes": ""
@@ -28208,6 +28715,26 @@
             "from": 1537,
             "to": 454,
             "type": ">"
+        },
+        {
+            "from": 1644,
+            "to": 1645,
+            "type": ">",
+            "ruleIds": [
+                1643,
+                1124,
+                1120,
+                1062,
+                1646
+            ]
+        },
+        {
+            "from": 1653,
+            "to": 1654,
+            "type": ">",
+            "ruleIds": [
+                1652
+            ]
         }
     ],
     "corpusTexts": [
@@ -30009,6 +30536,11 @@
             "id": 17,
             "name": "Sauron Defeated, J.R.R. Tolkien, (editor) Christopher Tolkien; 1992",
             "refId": "SD"
+        },
+        {
+            "id": 18,
+            "name": "Morgoth's Ring, J.R.R. Tolkien, (editor) Christopher Tolkien; 1993",
+            "refId": "MR"
         }
     ],
     "compounds": [
@@ -31348,6 +31880,7 @@
                 1117,
                 1064,
                 1106,
+                1643,
                 1065,
                 1109,
                 1110,
@@ -31386,6 +31919,7 @@
                 1101,
                 1090,
                 1102,
+                1646,
                 1284,
                 1107
             ]
@@ -31396,6 +31930,7 @@
             "fromLang": "CE",
             "toLang": "Q",
             "ruleIds": [
+                1652,
                 431,
                 418,
                 1049,
