@@ -47,25 +47,26 @@ export default function Phoneme(props) {
             Phoneme
         </h2>
 
-        {!editMode && <p>
+        {!editMode && <>
+            <p>
             Graphemes: {phoneme.graphemes.join(", ")}<br/>
             {phoneme.sound.length > 0 && <>Sound: {phoneme.sound}<br/></>}
             {phoneme.classes.length > 0 && "Classes: " + phoneme.classes}
+            </p>
             <SourceRefs source={phoneme.source}/>
             {phoneme.notes != null && <>
                 <h3>Notes</h3>
                 <p>{phoneme.notes}</p>
             </>}
-
-            </p>}
-            {editMode && <PhonemeForm
-                updateId={phoneme.id}
-                initialGraphemes={phoneme.graphemes.join(", ")}
-                initialSound={phoneme.sound}
-                initialClasses={phoneme.classes}
-                initialSource={phoneme.sourceEditableText}
-                submitted={submitted}
-            />}
+        </>}
+        {editMode && <PhonemeForm
+            updateId={phoneme.id}
+            initialGraphemes={phoneme.graphemes.join(", ")}
+            initialSound={phoneme.sound}
+            initialClasses={phoneme.classes}
+            initialSource={phoneme.sourceEditableText}
+            submitted={submitted}
+        />}
 
         {allowEdit() && <>
             <button onClick={() => setEditMode(!editMode)}>{editMode ? "Cancel" : "Edit"}</button>
