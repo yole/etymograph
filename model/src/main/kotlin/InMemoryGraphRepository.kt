@@ -56,7 +56,7 @@ open class InMemoryGraphRepository : GraphRepository() {
             .filter { it.fromLanguage == language || it.toLanguage == language  }
         return sequences.flatMap {
             it.rules.map { ruleRef -> ruleRef.resolve() }.filter { rule ->
-                rule.logic.branches.any { branch -> branch.condition.refersToPhoneme(phoneme) }
+                rule.refersToPhoneme(phoneme)
             }
         }
     }

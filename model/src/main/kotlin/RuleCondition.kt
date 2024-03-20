@@ -335,10 +335,6 @@ class SyllableRuleCondition(
         return richText("${Ordinals.toString(index)} $syllable ${matchType.condName} $paramText".rich())
     }
 
-    override fun refersToPhoneme(phoneme: Phoneme): Boolean {
-        return checkRefersToPhoneme(phoneme, parameter, phonemeClass)
-    }
-
     companion object {
         const val syllable = "syllable"
 
@@ -404,10 +400,6 @@ class RelativePhonemeRuleCondition(
             " is " +
             (if (negated) LeafRuleCondition.notPrefix.rich() else "".rich()) +
             (matchPhonemeClass?.name?.rich(true) ?: "'$parameter'".rich(true))
-    }
-
-    override fun refersToPhoneme(phoneme: Phoneme): Boolean {
-        return checkRefersToPhoneme(phoneme, parameter, matchPhonemeClass)
     }
 
     companion object {

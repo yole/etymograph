@@ -41,7 +41,10 @@ class WordCategory(var name: String, var pos: List<String>, var values: List<Wor
 class Phoneme(
     id: Int, var graphemes: List<String>, var sound: String?, var classes: Set<String>,
     source: List<SourceRef> = emptyList(), notes: String? = null
-) : LangEntity(id, source, notes)
+) : LangEntity(id, source, notes) {
+    val effectiveSound: String
+        get() = sound ?: graphemes.first()
+}
 
 class PhonemeLookup {
     private var digraphs = mutableMapOf<String, Phoneme>()

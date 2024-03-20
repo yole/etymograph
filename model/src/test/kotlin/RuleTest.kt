@@ -266,7 +266,7 @@ class RuleTest : QBaseTest() {
         assertTrue(condition.matches(q.word("andúna"), emptyRepo))
         assertFalse(condition.matches(q.word("anca"), emptyRepo))
         assertEquals("second to last syllable contains a long vowel", condition.toEditableText())
-        assertTrue(condition.refersToPhoneme(q.phonemes.find { "á" in it.graphemes }!!))
+        assertFalse(condition.refersToPhoneme(q.phonemes.find { "á" in it.graphemes }!!))
     }
 
     @Test
@@ -413,7 +413,7 @@ class RuleTest : QBaseTest() {
          """.trimIndent())
         assertEquals("adain", rule.apply(q.word("adan"), emptyRepo).text)
         assertEquals("fela", rule.apply(q.word("fela"), emptyRepo).text)
-        assertTrue(rule.logic.branches.first().condition.refersToPhoneme(q.phonemes.find { "a" in it.graphemes }!!))
+        assertFalse(rule.logic.branches.first().condition.refersToPhoneme(q.phonemes.find { "a" in it.graphemes }!!))
     }
 
     @Test

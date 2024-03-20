@@ -54,14 +54,17 @@ class PhonemeControllerTest {
     @Test
     fun relatedRules() {
         val fixture = QTestFixture()
-        val phoneme = fixture.graph.addPhoneme(fixture.q, listOf("w"), null, setOf())
+        val wPhoneme = fixture.graph.addPhoneme(fixture.q, listOf("w"), null, setOf())
+        val uPhoneme = fixture.graph.addPhoneme(fixture.q, listOf("u"), null, setOf())
         val rule = fixture.graphService.graph.addRule("q-gen", fixture.ce, fixture.q,
             Rule.parseBranches("sound is 'w':\n- new sound is 'u'",
                 RuleParseContext(fixture.q, fixture.q) { throw RuleParseException("no such rule")})
         )
         val seq = fixture.graphService.graph.addRuleSequence("ce-to-q", fixture.ce, fixture.q, listOf(rule))
 
-        val phonemeViewModel = PhonemeController(fixture.graphService).phoneme(phoneme.id)
-        assertEquals(1, phonemeViewModel.relatedRules.size)
+        val wPhonemeViewModel = PhonemeController(fixture.graphService).phoneme(wPhoneme.id)
+        assertEquals(1, wPhonemeViewModel.relatedRules.size)
+        val uPhonemeViewModel = PhonemeController(fixture.graphService).phoneme(uPhoneme.id)
+        assertEquals(1, uPhonemeViewModel.relatedRules.size)
     }
 }

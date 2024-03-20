@@ -66,6 +66,10 @@ class RuleBranch(val condition: RuleCondition, val instructions: List<RuleInstru
         return summaries.joinToString("")
     }
 
+    fun refersToPhoneme(phoneme: Phoneme): Boolean {
+        return condition.refersToPhoneme(phoneme) || instructions.any { it.refersToPhoneme(phoneme) }
+    }
+
     companion object {
         fun parse(s: String, context: RuleParseContext): RuleBranch {
             var lines = s.split("\n").map { it.trim() }.filter { it.isNotEmpty() }
@@ -206,6 +210,10 @@ class Rule(
 
     fun addedGrammaticalCategories(): List<WordCategory> {
         return addedCategories?.let { cv -> parseCategoryValues(fromLanguage, cv).mapNotNull { it.first } } ?: emptyList()
+    }
+
+    fun refersToPhoneme(phoneme: Phoneme): Boolean {
+        return logic.branches.any { branch -> branch.refersToPhoneme(phoneme) }
     }
 
     companion object {

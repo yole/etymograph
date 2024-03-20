@@ -194,6 +194,13 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
         return null
     }
 
+    fun refersToPhoneme(phoneme: Phoneme): Boolean {
+        return when (type) {
+            InstructionType.ChangeSound, InstructionType.ChangeNextSound -> phoneme.effectiveSound == arg
+            else -> false
+        }
+    }
+
     companion object {
         fun parse(s: String, context: RuleParseContext): RuleInstruction {
             if (!s.startsWith("-")) {
