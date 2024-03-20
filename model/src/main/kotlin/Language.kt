@@ -29,7 +29,13 @@ class IntersectionPhonemeClass(name: String, val classList: List<PhonemeClass>)
 
     companion object {
         private fun mergePhonemeClasses(classList: List<PhonemeClass>): List<String> {
-            return classList.flatMap { it.matchingPhonemes }.toSet().toList()
+            return classList.fold(emptySet<String>()) { set, cls ->
+                if (set.isEmpty())
+                    cls.matchingPhonemes.toSet()
+                else
+                    set.intersect(cls.matchingPhonemes)
+
+            }.toList()
         }
     }
 }
