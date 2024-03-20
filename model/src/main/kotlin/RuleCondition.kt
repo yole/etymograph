@@ -217,7 +217,10 @@ class LeafRuleCondition(
     }
 
     override fun refersToPhoneme(phoneme: Phoneme): Boolean {
-        return checkRefersToPhoneme(phoneme, parameter, phonemeClass)
+        return when(type) {
+            ConditionType.ClassMatches -> false
+            else -> checkRefersToPhoneme(phoneme, parameter, phonemeClass)
+        }
     }
 
     companion object {
