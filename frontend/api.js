@@ -196,20 +196,22 @@ export function updateLanguage(
     )
 }
 
-export function addPhoneme(lang, graphemes, sound, classes, source) {
+export function addPhoneme(lang, graphemes, sound, classes, historical, source) {
     return postToBackend(`phonemes/${lang}`, {
         graphemes: graphemes,
         sound: sound,
         classes: classes,
+        historical: historical,
         source: source
     })
 }
 
-export function updatePhoneme(id, graphemes, sound, classes, source) {
+export function updatePhoneme(id, graphemes, sound, classes, historical, source) {
     return postToBackend(`phoneme/${id}`, {
         graphemes: graphemes,
         sound: sound,
         classes: classes,
+        historical: historical,
         source: source
     })
 }

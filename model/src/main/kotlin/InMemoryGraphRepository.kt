@@ -36,10 +36,11 @@ open class InMemoryGraphRepository : GraphRepository() {
         graphemes: List<String>,
         sound: String?,
         classes: Set<String>,
+        historical: Boolean,
         source: List<SourceRef>,
         notes: String?
     ): Phoneme {
-        return Phoneme(allLangEntities.size, graphemes, sound, classes, source, notes).also {
+        return Phoneme(allLangEntities.size, graphemes, sound, classes, historical, source, notes).also {
             language.phonemes += it
             allLangEntities += it
         }

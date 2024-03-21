@@ -18,6 +18,7 @@ data class PhonemeViewModel(
     val graphemes: List<String>,
     val sound: String,
     val classes: String,
+    val historical: Boolean,
     val source: List<SourceRefViewModel>,
     val sourceEditableText: String,
     val notes: String?,
@@ -52,6 +53,7 @@ class PhonemeController(val graphService: GraphService) {
         val graphemes: String,
         val sound: String,
         val classes: String,
+        val historical: Boolean = false,
         val source: String? = null,
         val notes: String? = null
     )
@@ -64,6 +66,7 @@ class PhonemeController(val graphService: GraphService) {
             parseList(params.graphemes),
             params.sound.nullize(),
             params.classes.split(' ').toSet(),
+            params.historical,
             parseSourceRefs(graphService.graph, params.source),
             params.notes
         )
@@ -77,6 +80,7 @@ class PhonemeController(val graphService: GraphService) {
         phoneme.graphemes = parseList(params.graphemes)
         phoneme.sound = params.sound.nullize()
         phoneme.classes = params.classes.split(' ').toSet()
+        phoneme.historical = params.historical
         phoneme.source = parseSourceRefs(graphService.graph, params.source)
         phoneme.notes = params.notes
         graphService.graph.save()
@@ -99,6 +103,7 @@ fun Phoneme.toViewModel(graph: GraphRepository, language: Language): PhonemeView
         graphemes,
         sound ?: "",
         classes.joinToString(" "),
+        historical,
         source.toViewModel(graph),
         source.toEditableText(graph),
         notes,

@@ -35,7 +35,7 @@ class PhonemeControllerTest {
         val phoneme = fixture.graph.addPhoneme(fixture.q, listOf("a"), null, setOf("vowel"))
         val phonemeController = PhonemeController(fixture.graphService)
         phonemeController.updatePhoneme(phoneme.id, PhonemeController.UpdatePhonemeParameters(
-            "a, ǎ", "a", "short vowel", "", ""
+            "a, ǎ", "a", "short vowel", false,"", ""
         ))
         assertEquals(listOf("a", "ǎ"), phoneme.graphemes)
         assertEquals("a", phoneme.sound)

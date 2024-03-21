@@ -11,6 +11,7 @@ abstract class GraphRepository {
         graphemes: List<String>,
         sound: String?,
         classes: Set<String>,
+        historical: Boolean = false,
         source: List<SourceRef> = emptyList(),
         notes: String? = null
     ): Phoneme

@@ -5,15 +5,16 @@ export default function PhonemeForm(props) {
     const [graphemes, setGraphemes] = useState(props.initialGraphemes !== undefined ? props.initialGraphemes : "")
     const [sound, setSound] = useState(props.initialSound !== undefined ? props.initialSound : "")
     const [classes, setClasses] = useState(props.initialClasses !== undefined ? props.initialClasses : "")
+    const [historical, setHistorical] = useState(props.initialHistorical !== undefined ? props.initialHistorical : false)
     const [source, setSource] = useState(props.initialSource !== undefined ? props.initialSource : "")
     const [errorText, setErrorText] = useState("")
 
     function savePhoneme() {
         if (props.updateId !== undefined) {
-            updatePhoneme(props.updateId, graphemes, sound, classes, source).then(handleResponse)
+            updatePhoneme(props.updateId, graphemes, sound, classes, historical, source).then(handleResponse)
         }
         else {
-            addPhoneme(props.language, graphemes, sound, classes, source).then(handleResponse)
+            addPhoneme(props.language, graphemes, sound, classes, historical, source).then(handleResponse)
         }
     }
 
@@ -52,6 +53,11 @@ export default function PhonemeForm(props) {
             </tr>
             </tbody>
         </table>
+        <label>
+            <input type="checkbox" checked={historical} onChange={(e) => setHistorical(!historical)}/>
+            Historical
+        </label>
+        <p/>
         <button onClick={savePhoneme}>Save</button>
         <br/>
         {errorText !== "" && <div className="errorText">{errorText}</div>}

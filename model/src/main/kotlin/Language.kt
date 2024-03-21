@@ -45,7 +45,7 @@ class WordCategoryValue(val name: String, val abbreviation: String)
 class WordCategory(var name: String, var pos: List<String>, var values: List<WordCategoryValue>)
 
 class Phoneme(
-    id: Int, var graphemes: List<String>, var sound: String?, var classes: Set<String>,
+    id: Int, var graphemes: List<String>, var sound: String?, var classes: Set<String>, var historical: Boolean = false,
     source: List<SourceRef> = emptyList(), notes: String? = null
 ) : LangEntity(id, source, notes) {
     val effectiveSound: String
@@ -255,14 +255,22 @@ class Language(val name: String, val shortName: String) {
 
     fun buildPhonemeTables(): List<PhonemeTable> {
         val result = mutableListOf<PhonemeTable>()
-        val consonants = phonemes.filter { "consonant" in it.classes }
+        val consonants = phonemes.filter { "consonant" in it.classes && !it.historical }
         if (consonants.isNotEmpty()) {
             result.addAll(buildPhonemeTable(consonants, "Consonants", articulationManners, articulationPlaces))
         }
+        val historicalConsonants = phonemes.filter { "consonant" in it.classes && it.historical }
+        if (historicalConsonants.isNotEmpty()) {
+            result.addAll(buildPhonemeTable(historicalConsonants, "Historical Consonants", articulationManners, articulationPlaces))
+        }
 
-        val vowels = phonemes.filter { PhonemeClass.vowelClassName in it.classes }
+        val vowels = phonemes.filter { PhonemeClass.vowelClassName in it.classes && !it.historical }
         if (vowels.isNotEmpty()) {
             result.addAll(buildPhonemeTable(vowels, "Vowels", vowelHeights, vowelBackness))
+        }
+        val historicalVowels = phonemes.filter { PhonemeClass.vowelClassName in it.classes && it.historical }
+        if (historicalVowels.isNotEmpty()) {
+            result.addAll(buildPhonemeTable(historicalVowels, "Historical Vowels", vowelHeights, vowelBackness))
         }
 
         val otherPhonemes = phonemes.filter { "consonant" !in it.classes && PhonemeClass.vowelClassName !in it.classes  }

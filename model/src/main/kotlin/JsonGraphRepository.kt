@@ -32,6 +32,7 @@ data class PhonemeData(
     val graphemes: List<String>,
     val sound: String? = null,
     val classes: List<String> = emptyList(),
+    val historical: Boolean = false,
     val sourceRefs: List<SourceRefData>? = null,
     val notes: String? = null
 )
@@ -308,7 +309,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
         val phonemes = languages.values.flatMap { lang ->
             lang.phonemes.map {
                 PhonemeData(
-                    it.id, lang.shortName, it.graphemes, it.sound, it.classes.toList(),
+                    it.id, lang.shortName, it.graphemes, it.sound, it.classes.toList(), it.historical,
                     it.source.sourceToSerializedFormat(), it.notes
                 )
             }
@@ -400,6 +401,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                 phonemeData.graphemes,
                 phonemeData.sound,
                 phonemeData.classes.toSet(),
+                phonemeData.historical,
                 loadSource(phonemeData.sourceRefs),
                 phonemeData.notes
             )
