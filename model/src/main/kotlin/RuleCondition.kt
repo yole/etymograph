@@ -361,24 +361,18 @@ fun GraphRepository.findWordToMatch(word: Word, baseLanguageShortName: String?):
 }
 
 class RelativePhonemeRuleCondition(
-    val relative: Boolean,
-    val relativeIndex: Int,
     val negated: Boolean,
-    val targetPhonemeClass: PhonemeClass?,
+    val seekTarget: SeekTarget,
     val matchPhonemeClass: PhonemeClass?,
     val parameter: String?,
     val baseLanguageShortName: String?
 ) : RuleCondition() {
-    override fun isPhonemic(): Boolean = relative
+    override fun isPhonemic(): Boolean = seekTarget.relative
 
     override fun matches(word: Word, phonemes: PhonemeIterator): Boolean {
         val it = phonemes.clone()
-        val canAdvance = if (targetPhonemeClass != null)
-            it.advanceToClass(targetPhonemeClass, relativeIndex)
-        else
-            it.advanceBy(relativeIndex)
-        val matchResult = canAdvance && matchesCurrent(it)
-        return matchResult xor negated
+        if (!it.seek(seekTarget)) return negated
+        return matchesCurrent(it) xor negated
     }
 
     private fun matchesCurrent(it: PhonemeIterator) =
@@ -387,16 +381,13 @@ class RelativePhonemeRuleCondition(
     override fun matches(word: Word, graph: GraphRepository): Boolean {
         val matchWord = graph.findWordToMatch(word, baseLanguageShortName) ?: return false
 
-        val seekTarget = SeekTarget(relativeIndex, targetPhonemeClass)
         val phonemes = PhonemeIterator(matchWord)
         if (!phonemes.seek(seekTarget)) return negated
         return matchesCurrent(phonemes) xor negated
     }
 
     override fun toRichText(): RichText {
-        return (if (relative) RelativeOrdinals.toString(relativeIndex) else Ordinals.toString(relativeIndex))!!.rich(true) +
-            " ".rich() +
-            (targetPhonemeClass?.name?.rich(true) ?: "sound".rich()) +
+        return seekTarget.toRichText() +
             (if (baseLanguageShortName != null) " of base word in ".rich() else "".rich()) +
             (baseLanguageShortName?.rich(true) ?: "".rich()) +
             " is " +
@@ -406,22 +397,9 @@ class RelativePhonemeRuleCondition(
 
     companion object {
         fun parse(buffer: ParseBuffer, language: Language): RelativePhonemeRuleCondition? {
-            var relative = true
-            val relativeIndex = RelativeOrdinals.parse(buffer)
-                ?: Ordinals.parse(buffer)?.also { relative = false }
-                ?: return null
+            val seekTarget = SeekTarget.parse(buffer, language) ?: return null
 
-            val targetPhonemeClass: PhonemeClass?
-            if (buffer.consume("sound")) {
-                targetPhonemeClass = null
-            }
-            else {
-                val targetPhonemeClassName = buffer.nextWord() ?: return null
-                targetPhonemeClass = language.phonemeClassByName(targetPhonemeClassName)
-                    ?: throw RuleParseException("Unrecognized character class $targetPhonemeClassName")
-            }
-
-            val baseLanguageShortName = if (!relative && buffer.consume("of base word in")) {
+            val baseLanguageShortName = if (!seekTarget.relative && buffer.consume("of base word in")) {
                 buffer.nextWord()
             }
             else {
@@ -435,7 +413,7 @@ class RelativePhonemeRuleCondition(
             val negated = buffer.consume(LeafRuleCondition.notPrefix)
             val (matchPhonemeClass, parameter) = buffer.parseParameter(language)
             return RelativePhonemeRuleCondition(
-                relative, relativeIndex, negated, targetPhonemeClass, matchPhonemeClass, parameter, baseLanguageShortName
+                negated, seekTarget, matchPhonemeClass, parameter, baseLanguageShortName
             )
         }
     }

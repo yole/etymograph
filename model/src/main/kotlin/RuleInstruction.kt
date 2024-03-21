@@ -133,7 +133,12 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
         if (soundIs.phonemeClass != null) return null
         val nextPhonemeIs = condition.findLeafConditions { it is RelativePhonemeRuleCondition }.singleOrNull() as? RelativePhonemeRuleCondition
             ?: return null
-        if (nextPhonemeIs.targetPhonemeClass != null || nextPhonemeIs.relativeIndex != 1) return null
+        if (nextPhonemeIs.seekTarget.phonemeClass != null ||
+            nextPhonemeIs.seekTarget.index != 1 ||
+            !nextPhonemeIs.seekTarget.relative)
+        {
+            return null
+        }
         val nextSound = if (type == InstructionType.NextSoundDisappears) "" else arg
         return "'${soundIs.parameter}${nextPhonemeIs.parameter}' -> '${soundIs.parameter}$nextSound'"
     }
@@ -158,7 +163,7 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
         val relativePhonemes = condition.findLeafConditions { it is RelativePhonemeRuleCondition }
             .filterIsInstance<RelativePhonemeRuleCondition>()
         if (relativePhonemes.isEmpty()) return ""
-        if (relativePhonemes.any { it.targetPhonemeClass != null }) return null
+        if (relativePhonemes.any { it.seekTarget.phonemeClass != null }) return null
 
         val after = summarizeRelativePhonemeParameters(relativePhonemes, -1)
             .takeIf { it.isNotEmpty() }?.let { " after $it" } ?: ""
@@ -168,7 +173,7 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
     }
 
     private fun summarizeRelativePhonemeParameters(relativePhonemes: List<RelativePhonemeRuleCondition>, relIndex: Int): String {
-        val relativePhonemeParameters = relativePhonemes.filter { it.relativeIndex == relIndex}.map {
+        val relativePhonemeParameters = relativePhonemes.filter { it.seekTarget.index == relIndex}.map {
             val p = it.matchPhonemeClass?.name ?: "'${it.parameter}'"
             val negation = if (it.negated) "not " else ""
             "$negation$p"

@@ -29,6 +29,15 @@ class PhonemeIteratorTest : QBaseTest() {
         val t = SeekTarget.parse("first vowel", q)
         assertEquals(1, t.index)
         assertEquals("vowel", t.phonemeClass!!.name)
+        assertFalse(t.relative)
+    }
+
+    @Test
+    fun parseSeekTargetRelative() {
+        val t = SeekTarget.parse("next vowel", q)
+        assertEquals(1, t.index)
+        assertEquals("vowel", t.phonemeClass!!.name)
+        assertTrue(t.relative)
     }
 
     @Test

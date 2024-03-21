@@ -18,6 +18,17 @@ open class PhonemeClass(val name: String, var matchingPhonemes: List<String>) {
         val specialPhonemeClasses = listOf(diphthong)
 
         const val vowelClassName = "vowel"
+
+        fun parse(buffer: ParseBuffer, language: Language): PhonemeClass? {
+            if (buffer.consume("sound")) {
+                return null
+            }
+            else {
+                val targetPhonemeClassName = buffer.nextWord() ?: return null
+                return language.phonemeClassByName(targetPhonemeClassName)
+                    ?: throw RuleParseException("Unrecognized character class $targetPhonemeClassName")
+            }
+        }
     }
 }
 

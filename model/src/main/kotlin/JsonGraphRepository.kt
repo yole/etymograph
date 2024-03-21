@@ -105,7 +105,9 @@ class RelativePhonemeRuleConditionData(
         val targetPhonemeClass = requiredPhonemeClassByName(fromLanguage, targetPhonemeClassName)
         val matchPhonemeClass = requiredPhonemeClassByName(fromLanguage, matchPhonemeClassName)
         return RelativePhonemeRuleCondition(
-            relative, relativeIndex, negated, targetPhonemeClass, matchPhonemeClass, parameter, baseLanguageShortName
+            negated,
+            SeekTarget(relativeIndex, targetPhonemeClass, relative),
+            matchPhonemeClass, parameter, baseLanguageShortName
         )
     }
 }
@@ -661,12 +663,12 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
         private fun RuleCondition.toSerializedFormat(): RuleConditionData = when(this) {
             is SyllableRuleCondition -> SyllableRuleConditionData(matchType, index, phonemeClass?.name, parameter)
             is RelativePhonemeRuleCondition -> RelativePhonemeRuleConditionData(
-                relativeIndex,
+                seekTarget.index,
                 negated,
-                targetPhonemeClass?.name,
+                seekTarget.phonemeClass?.name,
                 matchPhonemeClass?.name,
                 parameter,
-                relative,
+                seekTarget.relative,
                 baseLanguageShortName
             )
             is LeafRuleCondition -> LeafRuleConditionData(
