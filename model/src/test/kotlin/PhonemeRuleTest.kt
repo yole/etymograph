@@ -337,4 +337,14 @@ class PhonemeRuleTest : QBaseTest() {
         """.trimIndent(), context = parseContext)
         assertEquals("sílá", rule.apply(q.word("síla"), emptyRepo).text)
     }
+
+    @Test
+    fun phonemeEquality() {
+        val rule = parseRule(q, q, """
+            sound is 'a' and sound is same as previous vowel:
+            - sound disappears
+        """.trimIndent())
+        assertEquals("glawre", rule.apply(q.word("glaware"), emptyRepo).text)
+        assertEquals("sound is 'a' and sound is same as previous vowel", rule.logic.branches.single().condition.toEditableText())
+    }
 }

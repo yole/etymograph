@@ -32,6 +32,10 @@ data class RichText(val fragments: List<RichTextFragment>) {
         return RichText(fragments + fragment)
     }
 
+    operator fun plus(text: RichText): RichText {
+        return RichText(fragments + text.fragments)
+    }
+
     operator fun plus(s: String): RichText {
         if (s.isEmpty()) {
             return this

@@ -35,7 +35,8 @@ enum class ConditionType(
         val param = Ordinals.parse(buf)
         if (param == null) throw RuleParseException("Invalid syllable index $param")
         param.toString()
-    })
+    }),
+    SoundEquals(LeafRuleCondition.soundIsSame, phonemic = true, takesArgument = true)
 }
 
 sealed class RuleCondition {
@@ -236,10 +237,12 @@ class LeafRuleCondition(
         const val syllableIsStressed = "syllable is stressed"
         const val syllableIs = "syllable is "
         const val indefiniteArticle = "a "
+        const val soundIsSame = "sound is same as "
 
         fun parse(buffer: ParseBuffer, language: Language): RuleCondition {
             buffer.tryParse { SyllableRuleCondition.parse(buffer, language) }?.let { return it }
             buffer.tryParse { RelativePhonemeRuleCondition.parse(buffer, language) }?.let { return it }
+            buffer.tryParse { PhonemeEqualsRuleCondition.parse(buffer, language) }?.let { return it }
 
             val baseLanguageShortName = if (buffer.consume("base word in")) {
                 buffer.nextWord()
@@ -415,6 +418,30 @@ class RelativePhonemeRuleCondition(
             return RelativePhonemeRuleCondition(
                 negated, seekTarget, matchPhonemeClass, parameter, baseLanguageShortName
             )
+        }
+    }
+}
+
+class PhonemeEqualsRuleCondition(val target: SeekTarget) : RuleCondition() {
+    override fun isPhonemic(): Boolean = true
+
+    override fun matches(word: Word, phonemes: PhonemeIterator): Boolean {
+        val matchIterator = phonemes.clone()
+        matchIterator.seek(target)
+        return phonemes.current == matchIterator.current
+    }
+
+    override fun toRichText(): RichText {
+        return "sound is same as ".richText() + target.toRichText()
+    }
+
+    companion object {
+        fun parse(buffer: ParseBuffer, language: Language): PhonemeEqualsRuleCondition? {
+            if (!buffer.consume(LeafRuleCondition.soundIsSame)) {
+                return null
+            }
+            val target = SeekTarget.parse(buffer, language) ?: return null
+            return PhonemeEqualsRuleCondition(target)
         }
     }
 }

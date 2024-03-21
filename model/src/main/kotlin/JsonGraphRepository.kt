@@ -113,6 +113,21 @@ class RelativePhonemeRuleConditionData(
 }
 
 @Serializable
+@SerialName("phonemeEquals")
+class PhonemeEqualsRuleConditionData(
+    val index: Int,
+    @SerialName("cls") val phonemeClassName: String?,
+    val relative: Boolean
+) : RuleConditionData() {
+    override fun toRuntimeFormat(result: InMemoryGraphRepository, fromLanguage: Language): RuleCondition {
+        return PhonemeEqualsRuleCondition(
+            SeekTarget(index, phonemeClassName?.let { fromLanguage.phonemeClassByName(it) }, relative)
+        )
+    }
+
+}
+
+@Serializable
 @SerialName("or")
 data class OrRuleConditionData(
     val members: List<RuleConditionData>
@@ -670,6 +685,11 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                 parameter,
                 seekTarget.relative,
                 baseLanguageShortName
+            )
+            is PhonemeEqualsRuleCondition -> PhonemeEqualsRuleConditionData(
+                target.index,
+                target.phonemeClass?.name,
+                target.relative
             )
             is LeafRuleCondition -> LeafRuleConditionData(
                 type,
