@@ -11,7 +11,7 @@ enum class InstructionType(
     Append("append", "append (.+)", true),
     Insert("insert", "insert '(.+)' (before|after) (.+)"),
     ApplyRule("apply rule", "apply rule '(.+)'", true),
-    ApplySoundRule("apply sound rule", "apply sound rule '(.+)' to (.+)", true),
+    ApplySoundRule("apply sound rule", "apply sound rule '(.+)'( to (.+))?", true),
     ApplyStress("stress is on", "stress is on (.+) syllable", true),
     ApplyClass("mark word as", "mark word as (.*)", true),
     Disallow("disallow", "disallow", false),
@@ -278,12 +278,17 @@ class ApplyRuleInstruction(val ruleRef: RuleRef)
         ruleRef.resolve().toSummaryText()
 }
 
-class ApplySoundRuleInstruction(language: Language, val ruleRef: RuleRef, arg: String)
-    : RuleInstruction(InstructionType.ApplySoundRule, arg)
+class ApplySoundRuleInstruction(language: Language, val ruleRef: RuleRef, arg: String?)
+    : RuleInstruction(InstructionType.ApplySoundRule, arg ?: "")
 {
-    val seekTarget = SeekTarget.parse(arg, language)
+    val seekTarget = arg?.let { SeekTarget.parse(it, language) }
+
+    override fun apply(word: Word, phonemes: PhonemeIterator) {
+        ruleRef.resolve().applyToPhoneme(word, phonemes)
+    }
 
     override fun apply(rule: Rule, branch: RuleBranch?, word: Word, graph: GraphRepository): Word {
+        if (seekTarget == null) return word
         val phonemes = PhonemeIterator(word.asPhonemic())
         if (phonemes.seek(seekTarget)) {
             ruleRef.resolve().applyToPhoneme(word, phonemes)
@@ -293,6 +298,7 @@ class ApplySoundRuleInstruction(language: Language, val ruleRef: RuleRef, arg: S
     }
 
     override fun reverseApply(rule: Rule, text: String, language: Language, graph: GraphRepository): List<String> {
+        if (seekTarget == null) return listOf(text)
         val phonemes = PhonemeIterator(text, language)
         if (phonemes.seek(seekTarget)) {
             return ruleRef.resolve().reverseApplyToPhoneme(phonemes)
@@ -303,14 +309,15 @@ class ApplySoundRuleInstruction(language: Language, val ruleRef: RuleRef, arg: S
     override fun toRichText(): RichText {
         val rule = ruleRef.resolve()
         return InstructionType.ApplySoundRule.insnName.rich() + " '".rich() +
-                rule.name.rich(linkType = "rule", linkId = rule.id) + "' to ".rich() +
-                seekTarget.toEditableText().rich(emph = true)
+                rule.name.rich(linkType = "rule", linkId = rule.id) + "'" +
+                (seekTarget?.let { " to "} ?: "") +
+                (seekTarget?.toEditableText()?.rich(emph = true) ?: "".rich())
     }
 
     companion object {
         fun parse(match: MatchResult, context: RuleParseContext): ApplySoundRuleInstruction {
             val ruleRef = context.ruleRefFactory(match.groupValues[1])
-            return ApplySoundRuleInstruction(context.fromLanguage, ruleRef, match.groupValues[2])
+            return ApplySoundRuleInstruction(context.fromLanguage, ruleRef, match.groupValues[3].takeIf { it.isNotEmpty() })
         }
     }
 }

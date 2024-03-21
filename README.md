@@ -250,6 +250,8 @@ The following instructions can be used in phonological rules:
    phoneme which has the same set of classes, except that it nas <new class> instead of <old class>. 
    Example: `previous long becomes short`.
  * `<sound> is inserted before`: Inserts the specified phoneme before the current phoneme.
+* `apply sound rule`: Apply the specified phonological rule to the current phoneme (for example,
+  `apply sound rule 'on-a-fronting'`).
 
 
 #### Stress Rule

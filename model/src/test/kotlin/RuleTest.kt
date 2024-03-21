@@ -166,11 +166,9 @@ class RuleTest : QBaseTest() {
         val soundRule = parseRule(q, q, """
             sound is 'a':
             - new sound is 'á'
-        """.trimIndent())
-        val parseContext = RuleParseContext(q, q) {
-            if (it == "q-lengthen") RuleRef.to(soundRule) else throw RuleParseException("no such rule")
-        }
-        val applySoundRule = Rule(-1, "q-lengthen", q, q, Rule.parseBranches("""
+        """.trimIndent(), name = "q-lengthen")
+        val parseContext = q.parseContext(null, soundRule)
+        val applySoundRule = Rule(-1, "q-lengthen-first", q, q, Rule.parseBranches("""
             - apply sound rule 'q-lengthen' to first vowel
         """.trimIndent(), parseContext), null, null, null, null, emptyList(), null)
         assertEquals("lásse", applySoundRule.apply(q.word("lasse"), emptyRepo).text)
@@ -182,9 +180,7 @@ class RuleTest : QBaseTest() {
             sound is 'a':
             - new sound is 'á'
         """.trimIndent(), name = "q-lengthen-sound")
-        val parseContext = RuleParseContext(q, q) {
-            if (it == "q-lengthen-sound") RuleRef.to(soundRule) else throw RuleParseException("no such rule")
-        }
+        val parseContext = q.parseContext(null, soundRule)
         val applySoundRule = Rule(-1, "q-lengthen", q, q, Rule.parseBranches("""
             - apply sound rule 'q-lengthen-sound' to first sound
         """.trimIndent(), parseContext), null, null, null, null, emptyList(), null)
@@ -203,9 +199,7 @@ class RuleTest : QBaseTest() {
             sound is 'k':
             - new sound is 'x'
         """.trimIndent(), name = "q-lengthen-sound")
-        val parseContext = RuleParseContext(q, q) {
-            if (it == "q-lengthen-sound") RuleRef.to(soundRule) else throw RuleParseException("no such rule")
-        }
+        val parseContext = q.parseContext(null, soundRule)
         val applySoundRule = Rule(-1, "q-lengthen", q, q, Rule.parseBranches("""
             - apply sound rule 'q-lengthen-sound' to first sound
         """.trimIndent(), parseContext), null, null, null, null, emptyList(), null)
@@ -219,9 +213,7 @@ class RuleTest : QBaseTest() {
             sound is 'p':
             - new sound is 'ph'
         """.trimIndent(), name = "q-lengthen-sound")
-        val parseContext = RuleParseContext(q, q) {
-            if (it == "q-lengthen-sound") RuleRef.to(soundRule) else throw RuleParseException("no such rule")
-        }
+        val parseContext = q.parseContext(null, soundRule)
         val applySoundRule = Rule(-1, "q-lengthen", q, q, Rule.parseBranches("""
             - apply sound rule 'q-lengthen-sound' to first sound
         """.trimIndent(), parseContext), null, null, null, null, emptyList(), null)
@@ -493,21 +485,26 @@ class RuleTest : QBaseTest() {
 
 fun Language.word(text: String, gloss: String? = null, pos: String? = null) = Word(-1, text, this, gloss, pos = pos)
 
-fun Language.parseContext(repo: GraphRepository? = null) = createParseContext(this, this, repo)
+fun Language.parseContext(repo: GraphRepository? = null, vararg rules: Rule): RuleParseContext =
+    createParseContext(this, this, repo, *rules)
 
 fun parseRule(
     fromLanguage: Language, toLanguage: Language, text: String, name: String = "q", repo: GraphRepository? = null,
-    addedCategories: String? = null, fromPOS: String? = null, toPOS: String? = null
+    addedCategories: String? = null, fromPOS: String? = null, toPOS: String? = null,
+    context: RuleParseContext? = null
 ): Rule = Rule(
     -1, name, fromLanguage, toLanguage,
-    Rule.parseBranches(text, createParseContext(fromLanguage, toLanguage, repo)),
+    Rule.parseBranches(text, context ?: createParseContext(fromLanguage, toLanguage, repo)),
     addedCategories, null, fromPOS, toPOS, emptyList(), null
 )
 
 fun createParseContext(
     fromLanguage: Language,
     toLanguage: Language,
-    repo: GraphRepository?
-) = RuleParseContext(fromLanguage, toLanguage) {
-    repo?.ruleByName(it)?.let { RuleRef.to(it) } ?: throw RuleParseException("no such rule")
+    repo: GraphRepository?,
+    vararg rules: Rule
+) = RuleParseContext(fromLanguage, toLanguage) { ruleName ->
+    repo?.ruleByName(ruleName)?.let { RuleRef.to(it) }
+        ?: rules.find { rule -> rule.name == ruleName }?.let { RuleRef.to(it) }
+        ?: throw RuleParseException("no such rule")
 }

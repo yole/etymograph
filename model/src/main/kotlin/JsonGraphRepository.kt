@@ -639,10 +639,12 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                 is ApplyRuleInstruction -> arrayOf(
                     ruleRef.resolve().id.toString()
                 )
-                is ApplySoundRuleInstruction -> arrayOf(
-                    ruleRef.resolve().id.toString(),
-                    seekTarget.toEditableText()
-                )
+                is ApplySoundRuleInstruction -> {
+                    val ruleId = ruleRef.resolve().id.toString()
+                    seekTarget?.let {
+                        arrayOf(ruleId, it.toEditableText())
+                    } ?: arrayOf(ruleId)
+                }
                 is ChangePhonemeClassInstruction -> arrayOf(
                     oldClass,
                     newClass,
@@ -709,7 +711,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                 InstructionType.ApplyRule ->
                     ApplyRuleInstruction(ruleRef(result, insnData.args[0].toInt()))
                 InstructionType.ApplySoundRule ->
-                    ApplySoundRuleInstruction(fromLanguage, ruleRef(result, insnData.args[0].toInt()), insnData.args[1])
+                    ApplySoundRuleInstruction(fromLanguage, ruleRef(result, insnData.args[0].toInt()), insnData.args.getOrNull(1))
                 InstructionType.ApplyStress ->
                     ApplyStressInstruction(fromLanguage, insnData.args[0])
                 InstructionType.Prepend, InstructionType.Append ->
