@@ -47,6 +47,8 @@ class PhonemeRuleTest : QBaseTest() {
         """.trimIndent())
         assertEquals("khs", rule.apply(ce.word("khithi"), emptyRepo).text)
         assertEquals("'i' -> Ø, 'th' -> 's'", rule.toSummaryText())
+        assertTrue(rule.refersToPhoneme(ce.phonemes.find { "th" in it.graphemes }!!))
+        assertFalse(rule.refersToPhoneme(q.phonemes.find { "t" in it.graphemes }!!))
     }
 
     @Test

@@ -71,10 +71,9 @@ sealed class RuleCondition {
         parameter: String?,
         phonemeClass: PhonemeClass?
     ): Boolean {
-        val sound = phoneme.sound
-        val phonemeAsString = if (isPhonemic() && sound != null) sound else phoneme.graphemes[0]
+        val phonemeAsString = if (isPhonemic()) phoneme.effectiveSound else phoneme.graphemes[0]
         if (parameter != null) {
-            return phonemeAsString in parameter
+            return parameter == phonemeAsString
         }
         if (phonemeClass != null) {
             return phonemeAsString in phonemeClass.matchingPhonemes
