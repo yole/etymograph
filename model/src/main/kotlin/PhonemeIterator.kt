@@ -252,15 +252,5 @@ class PhonemeIterator {
     fun phonemeToCharacterIndex(phonemeIndex: Int): Int {
         return phonemes.subList(0, phonemeIndex).sumOf { it.length }
     }
-
-    private fun splitPhonemes(text: String, phonemic: Boolean): List<String> {
-        val result = mutableListOf<String>()
-        val lookup = if (phonemic) language.phonoPhonemeLookup else language.orthoPhonemeLookup
-        lookup.iteratePhonemes(text) { phonemeText, phoneme ->
-            val normalizedText = if (phonemic) phoneme?.sound else phoneme?.graphemes?.first()
-            result.add(normalizedText ?: phonemeText)
-        }
-        return result
-    }
 }
 
