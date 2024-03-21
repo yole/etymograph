@@ -183,12 +183,21 @@ class PhonemeRuleTest : QBaseTest() {
     }
 
     @Test
-    fun stressedCondition() {
+    fun stressedSoundCondition() {
         val rule = parseRule(q, q, """
-            sound is 'o' and previous sound is 'w' and syllable is stressed:
+            sound is 'o' and previous sound is 'w' and sound is stressed:
             - new sound is 'a'
         """.trimIndent())
         assertEquals("wawo", rule.apply(q.word("wowo").apply { stressedPhonemeIndex = 1 }, emptyRepo).text)
+    }
+
+    @Test
+    fun stressedSoundConditionNegated() {
+        val rule = parseRule(q, q, """
+            sound is 'o' and previous sound is 'w' and sound is not stressed:
+            - new sound is 'a'
+        """.trimIndent())
+        assertEquals("wowa", rule.apply(q.word("wowo").apply { stressedPhonemeIndex = 1 }, emptyRepo).text)
     }
 
     @Test

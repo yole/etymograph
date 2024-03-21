@@ -30,7 +30,6 @@ enum class ConditionType(
     }),
     BeginningOfWord(LeafRuleCondition.beginningOfWord, phonemic = true, takesArgument = false),
     EndOfWord(LeafRuleCondition.endOfWord, phonemic = true, takesArgument = false),
-    SyllableIsStressed(LeafRuleCondition.syllableIsStressed, phonemic = true, takesArgument = false),
     SyllableIndex(LeafRuleCondition.syllableIs, phonemic = true, parameterParseCallback = { buf, _ ->
         val param = Ordinals.parse(buf)
         if (param == null) throw RuleParseException("Invalid syllable index $param")
@@ -165,7 +164,6 @@ class LeafRuleCondition(
             ConditionType.PhonemeMatches -> matchPhoneme(phonemes)
             ConditionType.BeginningOfWord -> phonemes.atBeginning().negateIfNeeded()
             ConditionType.EndOfWord -> phonemes.atEnd().negateIfNeeded()
-            ConditionType.SyllableIsStressed -> word.calcStressedPhonemeIndex() == phonemes.index
             ConditionType.SyllableIndex -> matchSyllableIndex(phonemes, word)
             ConditionType.ClassMatches -> matchClass(word)
             ConditionType.NumberOfSyllables -> matchNumberOfSyllables(word)

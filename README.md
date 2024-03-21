@@ -233,7 +233,7 @@ The following conditions can be used in phonological rules:
    class matches the given phoneme or phoneme class. Examples: `next stop is voiceless`, `next vowel is 'a'`.
  * `beginning of word`: Checks whether the current phoneme is the first one in the word.
  * `end of word`: Checks whether the current phoneme is the last one in the word.
- * `syllable is stressed`: Checks whether the current phoneme is in the stressed syllable.
+ * `sound is stressed`: Checks whether the current phoneme is the stressed vowel.
  * `syllable is <ordinal>`: Checks if the current phoneme is in the syllable with the given indes.
    Example: `syllable is second to last` 
  * `sound is same as`: Checks whether the current phoneme is the same as the specified phoneme.

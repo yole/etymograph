@@ -15,7 +15,14 @@ open class PhonemeClass(val name: String, var matchingPhonemes: List<String>) {
             }
         }
 
-        val specialPhonemeClasses = listOf(diphthong)
+        val stressed = object : PhonemeClass("stressed", emptyList()) {
+            override fun matchesCurrent(it: PhonemeIterator): Boolean {
+                return it.stressedPhonemeIndex == it.index
+            }
+        }
+
+
+        val specialPhonemeClasses = listOf(diphthong, stressed)
 
         const val vowelClassName = "vowel"
     }

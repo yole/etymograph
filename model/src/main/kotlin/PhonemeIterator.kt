@@ -100,16 +100,25 @@ class PhonemeIterator {
     private val resultPhonemes: MutableList<String>
     private var phonemeIndex = 0
     private var resultPhonemeIndex = 0
+    private val stressCallback: (() -> Int)?
 
     constructor(word: Word, resultPhonemic: Boolean? = null) : this(
         if (word.isPhonemic) word.text else word.normalizedText.trimEnd('-'),
         word.language,
         word.isPhonemic,
-        resultPhonemic
+        resultPhonemic,
+        { word.calcStressedPhonemeIndex() }
     )
 
-    constructor(text: String, language: Language, phonemic: Boolean = false, resultPhonemic: Boolean? = null) {
+    constructor(
+        text: String,
+        language: Language,
+        phonemic: Boolean = false,
+        resultPhonemic: Boolean? = null,
+        stressCallback: (() -> Int)? = null
+    ) {
         this.language = language
+        this.stressCallback = stressCallback
 
         val sourcePhonemes = mutableListOf<String>()
         resultPhonemes = mutableListOf()
@@ -126,10 +135,16 @@ class PhonemeIterator {
         phonemes = sourcePhonemes
     }
 
-    private constructor(phonemes: List<String>, resultPhonemes: MutableList<String>, language: Language) {
+    private constructor(
+        phonemes: List<String>,
+        resultPhonemes: MutableList<String>,
+        language: Language,
+        stressCallback: (() -> Int)? = null
+    ) {
         this.phonemes = phonemes
         this.resultPhonemes = resultPhonemes
         this.language = language
+        this.stressCallback = stressCallback
     }
 
     val current: String get() = phonemes[phonemeIndex]
@@ -141,7 +156,7 @@ class PhonemeIterator {
     fun atRelative(relativeIndex: Int): String? = phonemes.getOrNull(phonemeIndex + relativeIndex)
 
     fun clone(): PhonemeIterator {
-        return PhonemeIterator(phonemes, resultPhonemes, language).also {
+        return PhonemeIterator(phonemes, resultPhonemes, language, stressCallback).also {
             it.phonemeIndex = phonemeIndex
             it.resultPhonemeIndex = resultPhonemeIndex
         }
@@ -252,5 +267,8 @@ class PhonemeIterator {
     fun phonemeToCharacterIndex(phonemeIndex: Int): Int {
         return phonemes.subList(0, phonemeIndex).sumOf { it.length }
     }
+
+    val stressedPhonemeIndex: Int?
+        get() = stressCallback?.invoke()
 }
 
