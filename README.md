@@ -251,7 +251,8 @@ The following instructions can be used in phonological rules:
    Example: `previous long becomes short`.
  * `<sound> is inserted before`: Inserts the specified phoneme before the current phoneme.
 * `apply sound rule`: Apply the specified phonological rule to the current phoneme (for example,
-  `apply sound rule 'on-a-fronting'`).
+  `apply sound rule 'on-a-fronting'`), or to the specified phoneme relative to the current one
+  (for example, `apply sound rule 'on-a-fronting' to next sound`).
 
 
 #### Stress Rule

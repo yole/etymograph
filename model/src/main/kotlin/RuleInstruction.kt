@@ -289,6 +289,9 @@ class ApplySoundRuleInstruction(language: Language, val ruleRef: RuleRef, arg: S
     val seekTarget = arg?.let { SeekTarget.parse(it, language) }
 
     override fun apply(word: Word, phonemes: PhonemeIterator) {
+        if (seekTarget != null && seekTarget.relative) {
+            phonemes.seek(seekTarget)
+        }
         ruleRef.resolve().applyToPhoneme(word, phonemes)
     }
 

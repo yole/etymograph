@@ -299,4 +299,18 @@ class PhonemeRuleTest : QBaseTest() {
         """.trimIndent(), context = parseContext)
         assertEquals("silá", rule.apply(q.word("sila"), emptyRepo).text)
     }
+
+    @Test
+    fun applySoundRulePhonemicNext() {
+        val soundRule = parseRule(q, q, """
+            sound is 'a':
+            - new sound is 'á'
+        """.trimIndent(), name = "q-lengthen")
+        val parseContext = q.parseContext(null, soundRule)
+        val rule = parseRule(q, q, """
+            sound is 'l':
+            - apply sound rule 'q-lengthen' to next vowel
+        """.trimIndent(), context = parseContext)
+        assertEquals("silá", rule.apply(q.word("sila"), emptyRepo).text)
+    }
 }
