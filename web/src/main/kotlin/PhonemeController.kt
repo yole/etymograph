@@ -4,11 +4,17 @@ import org.springframework.web.bind.annotation.*
 import ru.yole.etymograph.GraphRepository
 import ru.yole.etymograph.Language
 import ru.yole.etymograph.Phoneme
+import ru.yole.etymograph.RuleSequence
 
 data class PhonemeRuleViewModel(
     val id: Int,
     val name: String,
     val summary: String
+)
+
+data class PhonemeRuleGroupViewModel(
+    val title: String,
+    val rules: List<PhonemeRuleViewModel>
 )
 
 data class PhonemeViewModel(
@@ -22,7 +28,7 @@ data class PhonemeViewModel(
     val source: List<SourceRefViewModel>,
     val sourceEditableText: String,
     val notes: String?,
-    val relatedRules: List<PhonemeRuleViewModel>
+    val relatedRules: List<PhonemeRuleGroupViewModel>
 )
 
 @RestController
@@ -107,7 +113,34 @@ fun Phoneme.toViewModel(graph: GraphRepository, language: Language): PhonemeView
         source.toViewModel(graph),
         source.toEditableText(graph),
         notes,
-        graph.findRelatedRules(language, this).map {
+        findRelatedRules(graph, language, this)
+    )
+}
+
+fun findRelatedRules(graph: GraphRepository, language: Language, phoneme: Phoneme): List<PhonemeRuleGroupViewModel> {
+    val seqFromLanguage = graph.ruleSequencesFromLanguage(language)
+    val seqToLanguage = graph.ruleSequencesForLanguage(language)
+
+    val developmentGroups = seqFromLanguage.groupBy { it.toLanguage }.map { (language, sequences) ->
+        buildPhonemeRuleGroup("Development: ${language.name}", phoneme, sequences)
+    }
+    return if (seqToLanguage.isNotEmpty()) {
+        listOf(buildPhonemeRuleGroup("Origin", phoneme, seqToLanguage)) + developmentGroups
+    }
+    else {
+        developmentGroups
+    }
+}
+
+fun buildPhonemeRuleGroup(title: String, phoneme: Phoneme, sequences: List<RuleSequence>): PhonemeRuleGroupViewModel {
+    val rules = sequences.flatMap {
+        it.rules.map { ruleRef -> ruleRef.resolve() }.filter { rule ->
+            rule.refersToPhoneme(phoneme)
+        }
+    }
+    return PhonemeRuleGroupViewModel(
+        title,
+        rules.map {
             PhonemeRuleViewModel(it.id, it.name, it.toSummaryText())
         }
     )

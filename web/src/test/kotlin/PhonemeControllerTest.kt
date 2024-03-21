@@ -64,6 +64,10 @@ class PhonemeControllerTest {
 
         val wPhonemeViewModel = PhonemeController(fixture.graphService).phoneme(wPhoneme.id)
         assertEquals(1, wPhonemeViewModel.relatedRules.size)
+        val group = wPhonemeViewModel.relatedRules.single()
+        assertEquals("Origin", group.title)
+        assertEquals("q-gen", group.rules.single().name)
+
         val uPhonemeViewModel = PhonemeController(fixture.graphService).phoneme(uPhoneme.id)
         assertEquals(1, uPhonemeViewModel.relatedRules.size)
     }

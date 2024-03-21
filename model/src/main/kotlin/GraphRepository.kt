@@ -70,6 +70,7 @@ abstract class GraphRepository {
     ): RuleSequence
 
     abstract fun ruleSequencesForLanguage(language: Language): List<RuleSequence>
+    abstract fun ruleSequencesFromLanguage(language: Language): List<RuleSequence>
     abstract fun applyRuleSequence(link: Link, sequence: RuleSequence)
 
     abstract fun findOrAddWord(
@@ -128,7 +129,6 @@ abstract class GraphRepository {
     abstract fun substituteKnownWord(baseWord: Word, derivedWord: Word): Word
 
     abstract fun findRuleExamples(rule: Rule): List<Link>
-    abstract fun findRelatedRules(language: Language, phoneme: Phoneme): List<Rule>
 
     abstract fun allPublications(): List<Publication>
     abstract fun publicationById(id: Int): Publication?
