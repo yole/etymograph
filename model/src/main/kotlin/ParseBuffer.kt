@@ -36,21 +36,31 @@ class ParseBuffer(val s: String) {
     fun parseParameter(language: Language): Pair<PhonemeClass?, String?> {
         consumeQuoted()?.let { return null to it }
         consume(LeafRuleCondition.indefiniteArticle)
-        var phonemeClassName = nextWord() ?: throw RuleParseException("Phoneme class name expected")
-        var mark = pos
-        while (true) {
-            val nextPhonemeClass = nextWord()
-            if (nextPhonemeClass == null || language.phonemeClassByName(nextPhonemeClass) == null) {
-                pos = mark
-                break
-            }
-            phonemeClassName = "$phonemeClassName $nextPhonemeClass"
-            mark = pos
-        }
-
-        val characterClass = language.phonemeClassByName(phonemeClassName)
-            ?: throw RuleParseException("Unrecognized character class $phonemeClassName")
+        val characterClass = parsePhonemeClass(language, false)
         return characterClass to null
+    }
+
+    fun parsePhonemeClass(language: Language, allowSound: Boolean): PhonemeClass? {
+        if (consume("sound") && allowSound) {
+            return null
+        }
+        else {
+            var phonemeClassName = nextWord() ?: throw RuleParseException("Phoneme class name expected")
+            var mark = pos
+            while (true) {
+                val nextPhonemeClass = nextWord()
+                if (nextPhonemeClass == null || language.phonemeClassByName(nextPhonemeClass) == null) {
+                    pos = mark
+                    break
+                }
+                phonemeClassName = "$phonemeClassName $nextPhonemeClass"
+                mark = pos
+            }
+
+            val characterClass = language.phonemeClassByName(phonemeClassName)
+                ?: throw RuleParseException("Unrecognized character class $phonemeClassName")
+            return characterClass
+        }
     }
 
     fun nextWord(): String? {

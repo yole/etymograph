@@ -88,7 +88,7 @@ class SeekTarget(val index: Int, val phonemeClass: PhonemeClass?, val relative: 
                 ?: Ordinals.parse(buffer)?.also { relative = false }
                 ?: return null
 
-            val targetPhonemeClass = PhonemeClass.parse(buffer, language)
+            val targetPhonemeClass = buffer.parsePhonemeClass(language, true)
             return SeekTarget(index, targetPhonemeClass, relative)
         }
     }

@@ -5,7 +5,7 @@ open class QBaseTest {
         it.phonemes = listOf(
             Phoneme(-1,listOf("e", "ë"), null, setOf("vowel"))
         ) + listOf("a", "o", "u", "i").map { p ->
-            Phoneme(-1, listOf(p), null, setOf("vowel"))
+            Phoneme(-1, listOf(p), null, setOf("short", "vowel"))
         } + listOf("á", "ó", "ú", "í", "é").map { p ->
             Phoneme(-1, listOf(p), null, setOf("long", "vowel"))
         } + listOf("c", "f", "h", "j", "l", "m", "q", "r", "s", "v", "w", "x", "z").map { p ->

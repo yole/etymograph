@@ -126,6 +126,16 @@ class PhonemeRuleTest : QBaseTest() {
     }
 
     @Test
+    fun nextPhonemeClassComplex() {
+        val rule = parseRule(q, q, """
+            sound is 'i' and next short vowel is 'a':
+            - sound disappears
+        """.trimIndent())
+        assertEquals("khtha", rule.apply(ce.word("khitha"), emptyRepo).text)
+        assertEquals("sound is 'i' and next short vowel is 'a'", rule.logic.branches[0].condition.toEditableText())
+    }
+
+    @Test
     fun diphtong() {
         val rule = parseRule(q, q, """
             sound is diphthong:
@@ -312,5 +322,19 @@ class PhonemeRuleTest : QBaseTest() {
             - apply sound rule 'q-lengthen' to next vowel
         """.trimIndent(), context = parseContext)
         assertEquals("silá", rule.apply(q.word("sila"), emptyRepo).text)
+    }
+
+    @Test
+    fun applySoundRulePhonemicNextComplexClass() {
+        val soundRule = parseRule(q, q, """
+            sound is 'a':
+            - new sound is 'á'
+        """.trimIndent(), name = "q-lengthen")
+        val parseContext = q.parseContext(null, soundRule)
+        val rule = parseRule(q, q, """
+            sound is 's':
+            - apply sound rule 'q-lengthen' to next short vowel
+        """.trimIndent(), context = parseContext)
+        assertEquals("sílá", rule.apply(q.word("síla"), emptyRepo).text)
     }
 }
