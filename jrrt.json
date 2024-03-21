@@ -555,7 +555,8 @@
                 "alveolar",
                 "fricative",
                 "consonant"
-            ]
+            ],
+            "historical": true
         },
         {
             "id": 1580,
@@ -568,7 +569,8 @@
                 "velar",
                 "stop",
                 "consonant"
-            ]
+            ],
+            "historical": true
         },
         {
             "id": 1581,
@@ -581,7 +583,8 @@
                 "alveolar",
                 "stop",
                 "consonant"
-            ]
+            ],
+            "historical": true
         },
         {
             "id": 1582,
@@ -594,7 +597,8 @@
                 "bilabial",
                 "stop",
                 "consonant"
-            ]
+            ],
+            "historical": true
         },
         {
             "id": 1583,
@@ -1331,6 +1335,9 @@
             "sound": "kʰ",
             "classes": [
                 "aspirated",
+                "voiceless",
+                "velar",
+                "stop",
                 "consonant"
             ]
         },
@@ -1343,6 +1350,9 @@
             "sound": "tʰ",
             "classes": [
                 "aspirated",
+                "voiceless",
+                "alveolar",
+                "stop",
                 "consonant"
             ]
         },
@@ -1355,6 +1365,9 @@
             "sound": "pʰ",
             "classes": [
                 "aspirated",
+                "voiceless",
+                "bilabial",
+                "stop",
                 "consonant"
             ]
         },
@@ -1484,7 +1497,10 @@
             ],
             "sound": "j",
             "classes": [
-                "semivowel"
+                "voiced",
+                "palatal",
+                "approximant",
+                "consonant"
             ]
         },
         {
@@ -1495,8 +1511,96 @@
             ],
             "classes": [
                 "voiced",
-                "labial-velar",
-                "approximant"
+                "velar",
+                "approximant",
+                "consonant"
+            ]
+        },
+        {
+            "id": 1655,
+            "lang": "CE",
+            "graphemes": [
+                "l"
+            ],
+            "classes": [
+                "voiced",
+                "alveolar",
+                "lateral",
+                "approximant",
+                "liquid",
+                "consonant"
+            ]
+        },
+        {
+            "id": 1656,
+            "lang": "CE",
+            "graphemes": [
+                "r"
+            ],
+            "classes": [
+                "voiced",
+                "alveolar",
+                "trill",
+                "liquid",
+                "consonant"
+            ]
+        },
+        {
+            "id": 1657,
+            "lang": "CE",
+            "graphemes": [
+                "ʒ"
+            ],
+            "sound": "ɣ",
+            "classes": [
+                "voiced",
+                "velar",
+                "fricative",
+                "consonant"
+            ],
+            "sourceRefs": [
+                {
+                    "refText": "https://eldamo.org/content/words/word-853983385.html"
+                }
+            ]
+        },
+        {
+            "id": 1658,
+            "lang": "CE",
+            "graphemes": [
+                "s"
+            ],
+            "classes": [
+                "voiceless",
+                "alveolar",
+                "fricative",
+                "consonant"
+            ]
+        },
+        {
+            "id": 1659,
+            "lang": "CE",
+            "graphemes": [
+                "z"
+            ],
+            "classes": [
+                "voiced",
+                "alveolar",
+                "fricative",
+                "consonant"
+            ]
+        },
+        {
+            "id": 1660,
+            "lang": "CE",
+            "graphemes": [
+                "h"
+            ],
+            "classes": [
+                "voiceless",
+                "glottal",
+                "fricative",
+                "consonant"
             ]
         }
     ],
@@ -15157,6 +15261,140 @@
                     "refText": "https://eldamo.org/content/words/word-2954543201.html"
                 }
             ]
+        },
+        {
+            "id": 1662,
+            "text": "nette",
+            "lang": "Q",
+            "gloss": "girl",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": 12,
+                    "refText": "10"
+                },
+                {
+                    "refText": "https://eldamo.org/content/words/word-2587896133.html"
+                }
+            ]
+        },
+        {
+            "id": 1663,
+            "text": "netthi",
+            "lang": "CE",
+            "gloss": "girl",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": 12,
+                    "refText": "33"
+                },
+                {
+                    "refText": "https://eldamo.org/content/words/word-2413273407.html"
+                }
+            ]
+        },
+        {
+            "id": 1664,
+            "text": "NETH-",
+            "lang": "CE",
+            "gloss": "(young) woman",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "167"
+                },
+                {
+                    "refText": "https://eldamo.org/content/words/word-2404050475.html"
+                }
+            ]
+        },
+        {
+            "id": 1668,
+            "text": "nahta-",
+            "lang": "Q",
+            "gloss": "confine",
+            "pos": "V",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "166"
+                },
+                {
+                    "refText": "https://eldamo.org/content/words/word-3825061649.html"
+                }
+            ]
+        },
+        {
+            "id": 1669,
+            "text": "nakʰta-",
+            "lang": "CE",
+            "gloss": "confine",
+            "pos": "V"
+        },
+        {
+            "id": 1671,
+            "text": "lambë",
+            "lang": "Q",
+            "gloss": "language",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "46"
+                },
+                {
+                    "refText": "https://eldamo.org/content/words/word-1468650059.html"
+                }
+            ]
+        },
+        {
+            "id": 1672,
+            "text": "labmē",
+            "lang": "CE",
+            "gloss": "language",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": 6,
+                    "refText": "416"
+                },
+                {
+                    "refText": "https://eldamo.org/content/words/word-3120396967.html"
+                }
+            ]
+        },
+        {
+            "id": 1675,
+            "text": "mahta-",
+            "lang": "Q",
+            "gloss": "handle",
+            "pos": "V",
+            "sourceRefs": [
+                {
+                    "pubId": 12,
+                    "refText": "18"
+                },
+                {
+                    "refText": "https://eldamo.org/content/words/word-2062563543.html"
+                }
+            ]
+        },
+        {
+            "id": 1676,
+            "text": "magtā",
+            "lang": "CE",
+            "gloss": "handle",
+            "pos": "V",
+            "sourceRefs": [
+                {
+                    "pubId": 12,
+                    "refText": "18"
+                },
+                {
+                    "refText": "https://eldamo.org/content/words/word-3609323493.html"
+                }
+            ]
         }
     ],
     "rules": [
@@ -16420,25 +16658,12 @@
                         }
                     ],
                     "condition": {
-                        "type": "and",
-                        "members": [
-                            {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
-                                "characters": "g"
-                            },
-                            {
-                                "type": "relPhoneme",
-                                "relativeIndex": -1,
-                                "negated": true,
-                                "cls": "nasal"
-                            }
-                        ]
+                        "type": "leaf",
+                        "cond": "PhonemeMatches",
+                        "characters": "ɣ"
                     }
                 }
             ],
-            "addedCategories": "",
-            "replacedCategories": "",
             "sourceRefs": [
                 {
                     "refText": "https://eldamo.org/content/words/word-1833409085.html"
@@ -24260,6 +24485,475 @@
                 }
             ],
             "notes": ""
+        },
+        {
+            "id": 1661,
+            "name": "q-aspirates-before-voiceless-stops",
+            "fromLang": "Q",
+            "toLang": "Q",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ApplySoundRule",
+                            "args": [
+                                "1665"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "and",
+                        "members": [
+                            {
+                                "type": "leaf",
+                                "cond": "PhonemeMatches",
+                                "cls": "aspirated"
+                            },
+                            {
+                                "type": "relPhoneme",
+                                "relativeIndex": -1,
+                                "cls": "voiceless stop"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "refText": "https://eldamo.org/content/words/word-2190887743.html"
+                }
+            ]
+        },
+        {
+            "id": 1665,
+            "name": "ce-aspirated-to-stop",
+            "fromLang": "CE",
+            "toLang": "CE",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "p"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "leaf",
+                        "cond": "PhonemeMatches",
+                        "characters": "pʰ"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "t"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "leaf",
+                        "cond": "PhonemeMatches",
+                        "characters": "tʰ"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "k"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "leaf",
+                        "cond": "PhonemeMatches",
+                        "characters": "kʰ"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 1666,
+            "name": "ce-stop-to-aspirated",
+            "fromLang": "CE",
+            "toLang": "CE",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "pʰ"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "leaf",
+                        "cond": "PhonemeMatches",
+                        "characters": "p"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "kʰ"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "leaf",
+                        "cond": "PhonemeMatches",
+                        "characters": "k"
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "tʰ"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "leaf",
+                        "cond": "PhonemeMatches",
+                        "characters": "t"
+                    }
+                }
+            ],
+            "notes": ""
+        },
+        {
+            "id": 1667,
+            "name": "ce-aspiration-to-end",
+            "fromLang": "CE",
+            "toLang": "CE",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ApplySoundRule",
+                            "args": [
+                                "1665"
+                            ]
+                        },
+                        {
+                            "type": "ApplySoundRule",
+                            "args": [
+                                "1666",
+                                "next sound"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "and",
+                        "members": [
+                            {
+                                "type": "leaf",
+                                "cond": "PhonemeMatches",
+                                "cls": "aspirated"
+                            },
+                            {
+                                "type": "relPhoneme",
+                                "relativeIndex": 1,
+                                "cls": "voiceless stop"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "refText": "https://eldamo.org/content/words/word-3183451073.html"
+                }
+            ],
+            "notes": ""
+        },
+        {
+            "id": 1670,
+            "name": "ce-nasal-metathesis",
+            "fromLang": "CE",
+            "toLang": "CE",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "m"
+                            ]
+                        },
+                        {
+                            "type": "ChangeNextSound",
+                            "args": [
+                                "b"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "and",
+                        "members": [
+                            {
+                                "type": "leaf",
+                                "cond": "PhonemeMatches",
+                                "characters": "b"
+                            },
+                            {
+                                "type": "relPhoneme",
+                                "relativeIndex": 1,
+                                "parameter": "m"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "n"
+                            ]
+                        },
+                        {
+                            "type": "ChangeNextSound",
+                            "args": [
+                                "d"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "and",
+                        "members": [
+                            {
+                                "type": "leaf",
+                                "cond": "PhonemeMatches",
+                                "characters": "d"
+                            },
+                            {
+                                "type": "relPhoneme",
+                                "relativeIndex": 1,
+                                "parameter": "n"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "refText": "https://eldamo.org/content/words/word-3882201769.html"
+                }
+            ],
+            "notes": ""
+        },
+        {
+            "id": 1673,
+            "name": "q-ortho",
+            "fromLang": "Q",
+            "toLang": "Q",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "x"
+                            ]
+                        },
+                        {
+                            "type": "NextSoundDisappears",
+                            "args": [
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "and",
+                        "members": [
+                            {
+                                "type": "leaf",
+                                "cond": "PhonemeMatches",
+                                "characters": "k"
+                            },
+                            {
+                                "type": "relPhoneme",
+                                "relativeIndex": 1,
+                                "parameter": "s"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "h"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "and",
+                        "members": [
+                            {
+                                "type": "leaf",
+                                "cond": "PhonemeMatches",
+                                "characters": "x"
+                            },
+                            {
+                                "type": "relPhoneme",
+                                "relativeIndex": 1,
+                                "parameter": "t"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 1674,
+            "name": "ce-unvoice-stops-before-voiceless",
+            "fromLang": "CE",
+            "toLang": "CE",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSoundClass",
+                            "args": [
+                                "voiced",
+                                "voiceless",
+                                "0"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "and",
+                        "members": [
+                            {
+                                "type": "leaf",
+                                "cond": "PhonemeMatches",
+                                "cls": "voiced stop"
+                            },
+                            {
+                                "type": "or",
+                                "members": [
+                                    {
+                                        "type": "relPhoneme",
+                                        "relativeIndex": 1,
+                                        "cls": "voiceless stop"
+                                    },
+                                    {
+                                        "type": "relPhoneme",
+                                        "relativeIndex": 1,
+                                        "parameter": "s"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "refText": "https://eldamo.org/content/words/word-1944249607.html"
+                }
+            ]
+        },
+        {
+            "id": 1677,
+            "name": "ce-medial-ng",
+            "fromLang": "CE",
+            "toLang": "CE",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "ɣ"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "and",
+                        "members": [
+                            {
+                                "type": "leaf",
+                                "cond": "PhonemeMatches",
+                                "characters": "ŋ"
+                            },
+                            {
+                                "type": "relPhoneme",
+                                "relativeIndex": -1,
+                                "cls": "vowel"
+                            },
+                            {
+                                "type": "relPhoneme",
+                                "relativeIndex": 1,
+                                "cls": "vowel"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "refText": "https://eldamo.org/content/words/word-768986721.html"
+                }
+            ],
+            "notes": ""
+        },
+        {
+            "id": 1678,
+            "name": "q-syncope",
+            "fromLang": "Q",
+            "toLang": "Q",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "SoundDisappears",
+                            "args": [
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "and",
+                        "members": [
+                            {
+                                "type": "leaf",
+                                "cond": "PhonemeMatches",
+                                "cls": "short vowel"
+                            },
+                            {
+                                "type": "phonemeEquals",
+                                "index": -1,
+                                "cls": "vowel",
+                                "relative": true
+                            },
+                            {
+                                "type": "relPhoneme",
+                                "relativeIndex": -1,
+                                "tcls": "vowel",
+                                "cls": "stressed"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "refText": "https://eldamo.org/content/words/word-3116715705.html"
+                }
+            ],
+            "notes": ""
         }
     ],
     "links": [
@@ -25321,10 +26015,7 @@
         {
             "from": 19,
             "to": 304,
-            "type": ">",
-            "ruleIds": [
-                419
-            ]
+            "type": ">"
         },
         {
             "from": 304,
@@ -28735,6 +29426,51 @@
             "ruleIds": [
                 1652
             ]
+        },
+        {
+            "from": 1662,
+            "to": 1663,
+            "type": ">",
+            "ruleIds": [
+                1045,
+                1652,
+                1661
+            ]
+        },
+        {
+            "from": 1663,
+            "to": 1664,
+            "type": ">"
+        },
+        {
+            "from": 1668,
+            "to": 1669,
+            "type": ">",
+            "ruleIds": [
+                1667,
+                1652,
+                1661,
+                1531
+            ]
+        },
+        {
+            "from": 1671,
+            "to": 1672,
+            "type": ">",
+            "ruleIds": [
+                1670,
+                1527
+            ]
+        },
+        {
+            "from": 1675,
+            "to": 1676,
+            "type": ">",
+            "ruleIds": [
+                1674,
+                1531,
+                1527
+            ]
         }
     ],
     "corpusTexts": [
@@ -31876,6 +32612,10 @@
             "fromLang": "CE",
             "toLang": "S",
             "ruleIds": [
+                1667,
+                1670,
+                1045,
+                1674,
                 1508,
                 1117,
                 1064,
@@ -31930,8 +32670,15 @@
             "fromLang": "CE",
             "toLang": "Q",
             "ruleIds": [
+                1667,
+                1670,
+                1677,
+                1045,
+                1674,
+                1678,
                 1652,
                 431,
+                1661,
                 418,
                 1049,
                 1528,
@@ -31950,6 +32697,10 @@
         }
     ],
     "orthographyRules": [
+        {
+            "lang": "Q",
+            "ruleId": 1673
+        },
         {
             "lang": "S",
             "ruleId": 1232
