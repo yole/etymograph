@@ -232,7 +232,6 @@ class LeafRuleCondition(
         const val notPrefix = "not "
         const val beginningOfWord = "beginning of word"
         const val endOfWord = "end of word"
-        const val syllableIsStressed = "syllable is stressed"
         const val syllableIs = "syllable is "
         const val indefiniteArticle = "a "
         const val soundIsSame = "sound is same as "
