@@ -114,6 +114,19 @@ class LanguageController(val graphService: GraphService) {
         graphService.graph.save()
     }
 
+    data class CopyPhonemesParams(val fromLang: String = "")
+
+    @PostMapping("/language/{lang}/copyPhonemes", consumes = ["application/json"])
+    fun copyPhonemes(@PathVariable lang: String, @RequestBody params: CopyPhonemesParams) {
+        val toLanguage = graphService.resolveLanguage(lang)
+        val fromLanguage = graphService.resolveLanguage(params.fromLang)
+        for (phoneme in fromLanguage.phonemes) {
+            if (toLanguage.phonemes.none { phoneme.graphemes.intersect(it.graphemes).isNotEmpty() }) {
+                graphService.graph.addPhoneme(toLanguage, phoneme.graphemes, phoneme.sound, phoneme.classes)
+            }
+        }
+    }
+
     private fun updateLanguageDetails(
         language: Language,
         params: UpdateLanguageParameters

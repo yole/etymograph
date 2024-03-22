@@ -1,6 +1,6 @@
 import Link from "next/link";
 import {useEffect, useState} from "react";
-import {fetchBackend, updateLanguage, fetchAllLanguagePaths, allowEdit} from "@/api";
+import {fetchBackend, updateLanguage, fetchAllLanguagePaths, allowEdit, copyPhonemes} from "@/api";
 import {useRouter} from "next/router";
 
 export const config = {
@@ -27,6 +27,8 @@ export default function LanguageIndex(props) {
     const [phonotacticsRule, setPhonotacticsRule] = useState(lang.phonotacticsRuleName)
     const [orthographyRule, setOrthographyRule] = useState(lang.orthographyRuleName)
     const [errorText, setErrorText] = useState("")
+    const [showCopyPhonemesForm, setShowCopyPhonemesForm] = useState(false)
+    const [copyPhonemesFrom, setCopyPhonemesFrom] = useState("")
     const router = useRouter()
     useEffect(() => { document.title = "Etymograph : " + lang.name })
 
@@ -36,6 +38,19 @@ export default function LanguageIndex(props) {
                 if (r.status === 200) {
                     setErrorText("")
                     setEditMode(false)
+                    router.replace(router.asPath)
+                }
+                else {
+                    r.json().then(r => setErrorText(r.message))
+                }
+            })
+    }
+
+    function copyPhonemesClicked() {
+        copyPhonemes(langId, copyPhonemesFrom)
+            .then((r) => {
+                if (r.status === 200) {
+                    setErrorText("")
                     router.replace(router.asPath)
                 }
                 else {
@@ -84,7 +99,18 @@ export default function LanguageIndex(props) {
                 </li>)}
             </ul>)}
         </>)}
-        {allowEdit() && <Link href={`/phonemes/${langId}/new`}>Add phoneme</Link>}
+        {allowEdit() && <>
+            <Link href={`/phonemes/${langId}/new`}>Add phoneme</Link>
+            {lang.phonemes.length === 0 &&<>
+                {' '}
+                <button className="inlineButton" onClick={() => setShowCopyPhonemesForm(!showCopyPhonemesForm)}>Copy phonemes</button>
+                {showCopyPhonemesForm && <>
+                    <p/>
+                    Copy phonemes from: <input type="text" value={copyPhonemesFrom} onChange={(e) => setCopyPhonemesFrom(e.target.value)}/><p/>
+                    <button onClick={() => copyPhonemesClicked()}>Copy</button>
+                </>}
+            </>}
+        </>}
 
         {!editMode && <>
             {lang.diphthongs.length > 0 && <p>Diphthongs: {lang.diphthongs.join(", ")}</p>}

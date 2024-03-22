@@ -78,4 +78,15 @@ class LanguageControllerTest {
         assertEquals(rule.id, languageVM.phonotacticsRuleId)
         assertEquals("q-phono", languageVM.phonotacticsRuleName)
     }
+
+    @Test
+    fun copyPhonemes() {
+        fixture.graph.addPhoneme(fixture.q, listOf("a"), null, setOf("open", "back", "vowel"))
+        languageController.addLanguage(LanguageController.UpdateLanguageParameters(
+            "Sindarin", "S"
+        ))
+        languageController.copyPhonemes("S", LanguageController.CopyPhonemesParams("q"))
+        val s = fixture.graph.languageByShortName("S")!!
+        assertEquals(1, s.phonemes.size)
+    }
 }

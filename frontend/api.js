@@ -224,6 +224,10 @@ export function deletePhoneme(id) {
     return postToBackend(`phoneme/${id}/delete`)
 }
 
+export function copyPhonemes(toLang, fromLang) {
+    return postToBackend(`language/${toLang}/copyPhonemes`, {fromLang: fromLang})
+}
+
 export function addPublication(name, refId) {
     return postToBackend('publications', {name: name, refId: refId})
 }
