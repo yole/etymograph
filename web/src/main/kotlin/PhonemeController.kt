@@ -124,12 +124,13 @@ fun findRelatedRules(graph: GraphRepository, language: Language, phoneme: Phonem
     val developmentGroups = seqFromLanguage.groupBy { it.toLanguage }.map { (language, sequences) ->
         buildPhonemeRuleGroup("Development: ${language.name}", phoneme, sequences)
     }
-    return if (seqToLanguage.isNotEmpty()) {
+    val groups = if (seqToLanguage.isNotEmpty()) {
         listOf(buildPhonemeRuleGroup("Origin", phoneme, seqToLanguage)) + developmentGroups
     }
     else {
         developmentGroups
     }
+    return groups.filter { it.rules.isNotEmpty() }
 }
 
 fun buildPhonemeRuleGroup(title: String, phoneme: Phoneme, sequences: List<RuleSequence>): PhonemeRuleGroupViewModel {
