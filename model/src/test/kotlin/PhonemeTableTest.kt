@@ -22,6 +22,6 @@ class PhonemeTableTest : QBaseTest() {
         assertNotNull(otherConsonants.rows[0].columns.find { it.phonemes.any { p -> "s" in p.graphemes }})
 
         val vowels = tables[2]
-        assertEquals("Vowels", vowels.title)
+        assertEquals("Other Vowels", vowels.title)
     }
 }

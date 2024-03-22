@@ -100,7 +100,7 @@ class PhonemeTableCell {
 class PhonemeTableRow(val title: String) {
     val columns = mutableListOf<PhonemeTableCell>()
 
-    fun isEmpty(): Boolean = columns.none { c -> c.phonemes.isNotEmpty()}
+    fun isEmpty(): Boolean = columns.isEmpty() || columns.all { c -> c.phonemes.isEmpty()}
 
     fun isColumnEmpty(i: Int): Boolean {
         val cell = columns.getOrNull(i)
@@ -307,7 +307,7 @@ class Language(val name: String, val shortName: String) {
         }
 
         val result = mutableListOf<PhonemeTable>()
-        if (mainTable.rows.size > 0) {
+        if (mainTable.isNotEmpty()) {
             mainTable.compact()
             result.add(mainTable)
         }
