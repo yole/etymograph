@@ -65,7 +65,6 @@ code {
 
 .phonemeTable {
   border-collapse: collapse;
-
 }
 
 .phonemeTable tr {
@@ -77,4 +76,9 @@ code {
   text-align: center;
   border: 1px solid black;
   padding: 5px;
+}
+
+.footer {
+  font-size: smaller;
+  margin-top: 10pt;
 }
