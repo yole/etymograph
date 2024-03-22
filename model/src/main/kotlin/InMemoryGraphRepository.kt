@@ -477,7 +477,7 @@ open class InMemoryGraphRepository : GraphRepository() {
             val rule = ruleRef.resolve()
             val newWord = rule.apply(targetWord, this)
             if ('?' in newWord.text) return null
-            if (!newWord.language.isNormalizedEqual(newWord, targetWord)) {
+            if (newWord !== targetWord) {
                 applicableRules.add(rule)
                 targetWord = newWord
             }

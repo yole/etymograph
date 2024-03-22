@@ -114,11 +114,15 @@ class Rule(
         if (isPhonemic()) {
             val phonemic = word.asPhonemic()
             val phonemes = PhonemeIterator(phonemic)
+            var anyChanges = false
             while (true) {
-                applyToPhoneme(phonemic, phonemes)
+                anyChanges = anyChanges or applyToPhoneme(phonemic, phonemes)
                 if (!phonemes.advance()) break
             }
-            return deriveWord(phonemic, phonemes.result(), toLanguage, word.stressedPhonemeIndex, null, word.classes)
+            return if (anyChanges)
+                deriveWord(phonemic, phonemes.result(), toLanguage, word.stressedPhonemeIndex, null, word.classes)
+            else
+                word
         }
 
         val preWord = if (logic.preInstructions.isEmpty()) word else logic.preInstructions.apply(this, null, word, graph)
@@ -141,15 +145,16 @@ class Rule(
         }
     }
 
-    fun applyToPhoneme(word: Word, phonemes: PhonemeIterator) {
+    fun applyToPhoneme(word: Word, phonemes: PhonemeIterator): Boolean {
         for (branch in logic.branches) {
             if (branch.condition.matches(word, phonemes)) {
                 for (instruction in branch.instructions) {
                     instruction.apply(word, phonemes)
                 }
-                break
+                return true
             }
         }
+        return false
     }
 
     fun reverseApplyToPhoneme(phonemes: PhonemeIterator): List<String> {
