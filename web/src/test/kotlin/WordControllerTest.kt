@@ -101,4 +101,19 @@ class WordControllerTest {
         val seqViewModel = linkViewModel.suggestedSequences.single()
         assertEquals(seq.name, seqViewModel.name)
     }
+
+    @Test
+    fun deriveThroughSequence() {
+        val seq = fixture.setupRuleSequence()
+        val cew = graph.findOrAddWord("am", fixture.ce, null)
+        val wordViewModel = wordController.singleWordJson("ce", "am", cew.id)
+        assertEquals(1, wordViewModel.suggestedDeriveSequences.size)
+
+        val qWordViewModel = wordController.derive(cew.id, WordController.DeriveThroughSequenceParams(seq.id))
+        assertEquals("an", qWordViewModel.text)
+
+        val qw = graph.wordById(qWordViewModel.id)!!
+        val link = graph.findLink(qw, cew, Link.Derived)!!
+        assertEquals("q-final-consonant", link.rules.single().name)
+    }
 }

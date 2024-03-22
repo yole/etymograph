@@ -105,6 +105,10 @@ export function applyRuleSequence(seqId, fromWordId, toWordId) {
     })
 }
 
+export function deriveThroughRuleSequence(wordId, seqId) {
+    return postToBackend(`word/${wordId}/derive`, {sequenceId: seqId})
+}
+
 export function addCorpusText(lang, title, text, source, notes) {
     return postToBackend(`corpus/${lang}/new`, {title: title, text: text, source: source, notes: notes})
 }

@@ -72,6 +72,8 @@ abstract class GraphRepository {
     abstract fun ruleSequencesForLanguage(language: Language): List<RuleSequence>
     abstract fun ruleSequencesFromLanguage(language: Language): List<RuleSequence>
     abstract fun applyRuleSequence(link: Link, sequence: RuleSequence)
+    abstract fun suggestDeriveRuleSequences(word: Word): List<RuleSequence>
+    abstract fun deriveThroughRuleSequence(word: Word, sequence: RuleSequence): Word?
 
     abstract fun findOrAddWord(
         text: String,

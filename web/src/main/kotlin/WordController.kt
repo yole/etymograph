@@ -87,7 +87,8 @@ class WordController(val graphService: GraphService) {
         val linkedRules: List<LinkedRuleViewModel>,
         val stressIndex: Int?,
         val stressLength: Int?,
-        val compound: Boolean
+        val compound: Boolean,
+        val suggestedDeriveSequences: List<RuleSequenceViewModel>
     )
 
     @GetMapping("/word/{lang}/{text}")
@@ -185,7 +186,10 @@ class WordController(val graphService: GraphService) {
             },
             stressData?.index,
             stressData?.length,
-            graph.isCompound(this)
+            graph.isCompound(this),
+            graph.suggestDeriveRuleSequences(this).map {
+                RuleSequenceViewModel(it.name, it.id)
+            }
         )
     }
 
@@ -335,6 +339,16 @@ class WordController(val graphService: GraphService) {
             }
         }
         graph.save()
+    }
+
+    data class DeriveThroughSequenceParams(val sequenceId: Int = -1)
+
+    @PostMapping("/word/{id}/derive", consumes = ["application/json"])
+    fun derive(@PathVariable id: Int, @RequestBody params: DeriveThroughSequenceParams): WordViewModel {
+        val word = graphService.resolveWord(id)
+        val sequence = graphService.resolveRuleSequence(params.sequenceId)
+        val newWord = graphService.graph.deriveThroughRuleSequence(word, sequence)
+        return (newWord ?: word).toViewModel(graphService.graph)
     }
 }
 

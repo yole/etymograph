@@ -316,7 +316,7 @@ class RuleController(val graphService: GraphService) {
 
     @PostMapping("/rule/sequence/{id}", consumes = ["application/json"])
     fun updateSequence(@PathVariable id: Int, @RequestBody params: UpdateSequenceParams) {
-        val sequence = resolveSequence(id)
+        val sequence = graphService.resolveRuleSequence(id)
         val (fromLanguage, toLanguage, rules) = resolveUpdateSequenceParams(params)
         sequence.name = params.name
         sequence.fromLanguage = fromLanguage
@@ -324,9 +324,6 @@ class RuleController(val graphService: GraphService) {
         sequence.rules = rules.map { RuleRef.to(it) }
         graphService.graph.save()
     }
-
-    private fun resolveSequence(id: Int) = (graphService.graph.langEntityById(id) as? RuleSequence
-        ?: badRequest("No sequence with ID $id"))
 
     data class ApplySequenceParams(
         val linkFromId: Int,
@@ -336,7 +333,7 @@ class RuleController(val graphService: GraphService) {
     @PostMapping("/rule/sequence/{id}/apply", consumes = ["application/json"])
     @ResponseBody
     fun applySequence(@PathVariable id: Int, @RequestBody params: ApplySequenceParams): WordController.LinkWordViewModel {
-        val sequence = resolveSequence(id)
+        val sequence = graphService.resolveRuleSequence(id)
         val fromEntity = graphService.resolveWord(params.linkFromId)
         val toEntity = graphService.resolveWord(params.linkToId)
         val graph = graphService.graph

@@ -438,18 +438,51 @@ open class InMemoryGraphRepository : GraphRepository() {
     }
 
     override fun applyRuleSequence(link: Link, sequence: RuleSequence) {
-        var word = (link.toEntity as Word).normalized
+        val word = (link.toEntity as Word).normalized
         val applicableRules = mutableListOf<Rule>()
-        for (ruleRef in sequence.rules) {
-            val rule = ruleRef.resolve()
-            val newWord = rule.apply(word, this)
-            if ('?' in newWord.text) return
-            if (!newWord.language.isNormalizedEqual(newWord, word)) {
-                applicableRules.add(rule)
-                word = newWord
-            }
+        if (applyRuleSequence(word, sequence, applicableRules) == null) {
+            return
         }
         link.rules = applicableRules
+    }
+
+    override fun suggestDeriveRuleSequences(word: Word): List<RuleSequence> {
+        val existingDerivedWordLanguages = getLinksTo(word)
+            .filter { it.type == Link.Derived }
+            .map { it.fromEntity }
+            .filterIsInstance<Word>()
+            .mapTo(mutableSetOf()) { it.language }
+        return ruleSequencesFromLanguage(word.language).filter {
+            it.toLanguage !in existingDerivedWordLanguages
+        }
+    }
+
+    override fun deriveThroughRuleSequence(word: Word, sequence: RuleSequence): Word? {
+        val applicableRules = mutableListOf<Rule>()
+        val targetWord = applyRuleSequence(word, sequence, applicableRules) ?: return null
+        val newWord = findOrAddWord(
+            targetWord.text,
+            sequence.toLanguage,
+            word.gloss,
+            pos = word.pos,
+            classes = word.classes
+        )
+        addLink(newWord, word, Link.Derived, applicableRules, emptyList(), null)
+        return newWord
+    }
+
+    private fun applyRuleSequence(word: Word, sequence: RuleSequence, applicableRules: MutableList<Rule>): Word? {
+        var targetWord = word
+        for (ruleRef in sequence.rules) {
+            val rule = ruleRef.resolve()
+            val newWord = rule.apply(targetWord, this)
+            if ('?' in newWord.text) return null
+            if (!newWord.language.isNormalizedEqual(newWord, targetWord)) {
+                applicableRules.add(rule)
+                targetWord = newWord
+            }
+        }
+        return targetWord
     }
 
     protected fun mapOfWordsByText(

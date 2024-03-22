@@ -35,6 +35,9 @@ abstract class GraphService {
             ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST, "No rule with ID '$id'")
     }
 
+    fun resolveRuleSequence(id: Int) = (graph.langEntityById(id) as? RuleSequence
+        ?: badRequest("No sequence with ID $id"))
+
     fun resolveCorpusText(id: Int): CorpusText {
         return graph.corpusTextById(id)
             ?: throw ResponseStatusException(HttpStatus.NOT_FOUND, "No corpus text with ID $id")

@@ -11,7 +11,7 @@ import {
     allowEdit,
     updateLink,
     deleteCompound,
-    applyRuleSequence
+    applyRuleSequence, deriveThroughRuleSequence
 } from "@/api";
 import Link from "next/link";
 import {useRouter} from "next/router";
@@ -288,6 +288,19 @@ function SingleWord(params) {
         }
     }
 
+    function deriveThroughSequenceClicked(seqId) {
+        deriveThroughRuleSequence(word.id, seqId)
+            .then(r => {
+                if (r.status === 200) {
+                    router.replace(router.asPath)
+                }
+                else {
+                    r.json().then(r => setErrorText(r.message))
+                }
+            })
+    }
+
+
     if (word === undefined) {
         return <div>No such word in the dictionary</div>
     }
@@ -400,7 +413,12 @@ function SingleWord(params) {
         {allowEdit() && <>
             {!isCompound && <><button onClick={() => setShowBaseWord(!showBaseWord)}>Add base word</button><br/></>}
             {showBaseWord && <WordForm submitted={submitted} linkType='>' linkTarget={word} reverseLink={true} language={word.language} initialGloss={word.gloss}/>}
-            <button onClick={() => setShowDerivedWord(!showDerivedWord)}>Add derived word</button><br/>
+            <button onClick={() => setShowDerivedWord(!showDerivedWord)}>Add derived word</button>
+            {word.suggestedDeriveSequences.map(seq => <>
+                {' '}
+                <button className="inlineButton" onClick={() => deriveThroughSequenceClicked(seq.id)}>Derive through {seq.name}</button>
+            </>)}
+            <br/>
             {showDerivedWord && <WordForm submitted={submitted} linkType='>' linkTarget={word} language={word.language} />}
             <button onClick={() => setShowCompoundComponent(!showCompoundComponent)}>Define as compound</button><br/>
             {showCompoundComponent && <WordForm submitted={submitted} newCompound={true} linkTarget={word} language={word.language} />}
