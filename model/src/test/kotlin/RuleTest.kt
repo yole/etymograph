@@ -65,7 +65,7 @@ class RuleTest : QBaseTest() {
 
     @Test
     fun parseParentheses() {
-        val text = "(word ends with a vowel and word ends with 'a') or word ends with 'c'"
+        val text = "(word ends with vowel and word ends with 'a') or word ends with 'c'"
         val c = RuleCondition.parse(ParseBuffer(text), q)
         assertTrue(c is OrRuleCondition)
         val a = (c as OrRuleCondition).members[0] as AndRuleCondition
@@ -77,7 +77,7 @@ class RuleTest : QBaseTest() {
 
     @Test
     fun andToString() {
-        val text = "(word ends with a vowel or word ends with 'c') and word begins with 'c'"
+        val text = "(word ends with vowel or word ends with 'c') and word begins with 'c'"
         val c = RuleCondition.parse(ParseBuffer(text), q)
         assertEquals(text, c.toEditableText())
     }

@@ -210,7 +210,7 @@ class LeafRuleCondition(
         val parameterName = if (type.parameterParseCallback != null)
             parameter
         else
-            phonemeClass?.name?.let { "a $it" } ?: "'$parameter'"
+            phonemeClass?.name ?: "'$parameter'"
         return parameterName
     }
 
