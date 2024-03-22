@@ -6,6 +6,6 @@ export default function WordLink(params) {
     if (word.homonym) {
         linkTarget += `/${word.id}`
     }
-    return <Link href={linkTarget}>{word.text}</Link>
+    return <Link href={linkTarget}>{word.reconstructed && "*"}{word.text}</Link>
 }
 

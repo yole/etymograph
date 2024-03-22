@@ -10,7 +10,8 @@ data class WordRefViewModel(
     val text: String,
     val language: String,
     val gloss: String?,
-    val homonym: Boolean
+    val homonym: Boolean,
+    val reconstructed: Boolean
 )
 
 data class ParseCandidateViewModel(
@@ -22,7 +23,11 @@ data class ParseCandidateViewModel(
 )
 
 fun Word.toRefViewModel(graph: GraphRepository) =
-    WordRefViewModel(id, text, language.shortName, getOrComputeGloss(graph), graph.isHomonym(this))
+    WordRefViewModel(
+        id, text, language.shortName, getOrComputeGloss(graph),
+        graph.isHomonym(this),
+        language.reconstructed
+    )
 
 @RestController
 class WordController(val graphService: GraphService) {
@@ -63,6 +68,7 @@ class WordController(val graphService: GraphService) {
         val id: Int,
         val language: String,
         val languageFullName: String,
+        val languageReconstructed: Boolean,
         val text: String,
         val gloss: String,
         val glossComputed: Boolean,
@@ -116,6 +122,7 @@ class WordController(val graphService: GraphService) {
             id,
             language.shortName,
             language.name,
+            language.reconstructed,
             text,
             computedGloss ?: "",
             gloss == null,

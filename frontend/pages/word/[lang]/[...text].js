@@ -304,7 +304,8 @@ function SingleWord(params) {
             {isName && <Link href={`/dictionary/${word.language}/names`}>Names</Link>}
             {!isName && isCompound && <Link href={`/dictionary/${word.language}/compounds`}>Compounds</Link>}
             {' > '}</small>
-            <WordWithStress text={word.text} stressIndex={word.stressIndex} stressLength={word.stressLength}/></h2>
+            <WordWithStress text={word.text} stressIndex={word.stressIndex} stressLength={word.stressLength}
+                            reconstructed={word.languageReconstructed}/></h2>
         {!editMode && <>
             {word.pos && <div>{word.pos} {word.classes.length > 0 && "(" + word.classes.join(", ") + ")"}</div>}
             <p>{word.fullGloss !== null && word.fullGloss !== "" ? word.fullGloss : word.gloss}</p>
