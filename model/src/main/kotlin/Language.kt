@@ -21,8 +21,19 @@ open class PhonemeClass(val name: String, var matchingPhonemes: List<String>) {
             }
         }
 
+        val wordInitial = object : PhonemeClass("word-initial", emptyList()) {
+            override fun matchesCurrent(it: PhonemeIterator): Boolean {
+                return it.index == 0
+            }
+        }
 
-        val specialPhonemeClasses = listOf(diphthong, stressed)
+        val wordFinal = object : PhonemeClass("word-final", emptyList()) {
+            override fun matchesCurrent(it: PhonemeIterator): Boolean {
+                return it.index == it.size - 1
+            }
+        }
+
+        val specialPhonemeClasses = listOf(diphthong, stressed, wordInitial, wordFinal)
 
         const val vowelClassName = "vowel"
     }

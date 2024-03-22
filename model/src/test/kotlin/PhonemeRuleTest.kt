@@ -356,4 +356,13 @@ class PhonemeRuleTest : QBaseTest() {
         assertEquals("glawre", rule.apply(q.word("glaware"), emptyRepo).text)
         assertEquals("sound is 'a' and sound is same as previous vowel", rule.logic.branches.single().condition.toEditableText())
     }
+
+    @Test
+    fun wordFinal() {
+        val rule = parseRule(q, q, """
+            sound is 'a' and next sound is word-final:
+            - sound disappears
+        """.trimIndent())
+        assertEquals("glawr", rule.apply(q.word("glawar"), emptyRepo).text)
+    }
 }
