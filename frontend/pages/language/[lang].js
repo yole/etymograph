@@ -45,7 +45,7 @@ export default function LanguageIndex(props) {
     }
 
     return <>
-        <h2><small><Link href={`/`}>Etymograph</Link> {'>'} </small>{lang.name}</h2>
+        <h2><small><Link href={`/`}>Etymograph</Link> {'>'} </small>{lang.name} {lang.reconstructed && "(reconstructed)"}</h2>
 
         <Link href={`/dictionary/${langId}`}>Dictionary</Link>
         {' '}| <Link href={`/dictionary/${langId}/compounds`}>Compounds</Link>

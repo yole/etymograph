@@ -7,7 +7,7 @@ import kotlin.io.path.readText
 import kotlin.io.path.writeText
 
 @Serializable
-data class LanguageData(val name: String, val shortName: String)
+data class LanguageData(val name: String, val shortName: String, val reconstructed: Boolean = false)
 
 @Serializable
 data class SourceRefData(val pubId: Int? = null, val refText: String)
@@ -341,7 +341,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
         val grammarCategoryData = mapWordCategories { it.grammaticalCategories }
         val wordClassData = mapWordCategories { it.wordClasses }
         return GraphRepositoryData(
-            languages.values.map { LanguageData(it.name, it.shortName) },
+            languages.values.map { LanguageData(it.name, it.shortName, it.reconstructed) },
             phonemes,
             diphthongData,
             stressRuleData,
@@ -408,8 +408,10 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
 
     private fun loadJson(string: String) {
         val data = Json.decodeFromString<GraphRepositoryData>(string)
-        for (language in data.languages) {
-            addLanguage(Language(language.name, language.shortName))
+        for (languageData in data.languages) {
+            val language = Language(languageData.name, languageData.shortName)
+            language.reconstructed = languageData.reconstructed
+            addLanguage(language)
         }
 
         for (phonemeData in data.phonemes) {

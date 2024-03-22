@@ -166,6 +166,7 @@ class PhonemeTable(val title: String, rowTitles: List<String>? = null, columnTit
 }
 
 class Language(val name: String, val shortName: String) {
+    var reconstructed: Boolean = false
     var phonemes = listOf<Phoneme>()
         set(value) {
             field = value

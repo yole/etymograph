@@ -29,6 +29,7 @@ class LanguageController(val graphService: GraphService) {
     data class LanguageViewModel(
         val name: String,
         val shortName: String,
+        val reconstructed: Boolean,
         val diphthongs: List<String>,
         val phonemes: List<PhonemeTableViewModel>,
         val stressRuleId: Int?,
@@ -60,6 +61,7 @@ class LanguageController(val graphService: GraphService) {
         return LanguageViewModel(
             name,
             shortName,
+            reconstructed,
             diphthongs,
             buildPhonemeTables().map { table ->
                 PhonemeTableViewModel(table.title, table.columnTitles, table.rows.map { row ->
@@ -83,6 +85,7 @@ class LanguageController(val graphService: GraphService) {
     data class UpdateLanguageParameters(
         val name: String? = null,
         val shortName: String? = null,
+        val reconstructed: Boolean? = null,
         val phonemes: String? = null,
         val diphthongs: String? = null,
         val stressRuleName: String? = null,
@@ -115,6 +118,10 @@ class LanguageController(val graphService: GraphService) {
         language: Language,
         params: UpdateLanguageParameters
     ) {
+        if (params.reconstructed != null) {
+            language.reconstructed = params.reconstructed
+        }
+
         language.diphthongs = parseList(params.diphthongs)
         language.syllableStructures = parseList(params.syllableStructures)
         language.grammaticalCategories = params.grammaticalCategories.nullize()?.let { parseWordCategories(it) } ?: mutableListOf()

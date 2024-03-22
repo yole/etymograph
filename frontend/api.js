@@ -175,8 +175,8 @@ export function updateWordParadigm(id, paradigm) {
     return postToBackend(`word/${id}/paradigm`, {items: [...paradigm]})
 }
 
-export function addLanguage(name, shortName) {
-    return postToBackend('languages', {name: name, shortName: shortName})
+export function addLanguage(name, shortName, reconstructed) {
+    return postToBackend('languages', {name: name, shortName: shortName, reconstructed: reconstructed})
 }
 
 export function updateLanguage(
