@@ -146,7 +146,7 @@ class LanguageController(val graphService: GraphService) {
     }
 
     private fun parseRuleRef(name: String?): RuleRef? {
-        val stressRule = name?.let { graphService.resolveRule(it) }
+        val stressRule = name?.nullize()?.let { graphService.resolveRule(it) }
         return stressRule?.let { RuleRef.to(it) }
     }
 
