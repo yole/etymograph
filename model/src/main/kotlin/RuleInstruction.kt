@@ -146,7 +146,10 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
     private fun summarizeContext(condition: RuleCondition, includeRelativePhoneme: Boolean): String? {
         fun LeafRuleCondition.maybeNot() = if (negated) "not " else ""
 
-        val relativePhonemeContext = if (includeRelativePhoneme) summarizeRelativePhoneme(condition) else ""
+        val relativePhonemeContext = if (includeRelativePhoneme)
+            summarizeRelativePhoneme(condition) ?: ""
+        else
+            ""
         val bow = condition.findLeafConditions(ConditionType.BeginningOfWord).firstOrNull()
         if (bow != null) return "$relativePhonemeContext ${bow.maybeNot()}at beginning of word"
         val eow = condition.findLeafConditions(ConditionType.EndOfWord).firstOrNull()
