@@ -1,15 +1,22 @@
 package ru.yole.etymograph.web
 
 import org.junit.Assert.assertEquals
+import org.junit.Before
 import org.junit.Test
 import ru.yole.etymograph.RuleLogic
 
 class LanguageControllerTest {
+    private lateinit var fixture: QTestFixture
+    private lateinit var languageController: LanguageController
+
+    @Before
+    fun setup() {
+        fixture = QTestFixture()
+        languageController = LanguageController(fixture.graphService)
+    }
+
     @Test
     fun grammaticalCategories() {
-        val fixture = QTestFixture()
-        val languageController = LanguageController(fixture.graphService)
-
         val parameters = LanguageController.UpdateLanguageParameters(
             grammaticalCategories = "Number (N, ADJ): Singular (SG), Plural (PL), Dual (DU), Collective Plural (PPL)\nCase (N): Nominative (NOM), Genitive (GEN)"
         )
@@ -30,9 +37,6 @@ class LanguageControllerTest {
 
     @Test
     fun wordClassesOptionalAbbreviation() {
-        val fixture = QTestFixture()
-        val languageController = LanguageController(fixture.graphService)
-
         val parameters = LanguageController.UpdateLanguageParameters(
             wordClasses = "Plural type (N): class-plural-rim"
         )
@@ -51,9 +55,6 @@ class LanguageControllerTest {
 
     @Test
     fun diphthongs() {
-        val fixture = QTestFixture()
-        val languageController = LanguageController(fixture.graphService)
-
         val parameters = LanguageController.UpdateLanguageParameters(
             diphthongs = ""
         )
@@ -64,11 +65,9 @@ class LanguageControllerTest {
 
     @Test
     fun phonotacticsRules() {
-        val fixture = QTestFixture()
         val rule = fixture.graphService.graph.addRule("q-phono", fixture.q, fixture.q,
             RuleLogic(emptyList(), emptyList()))
 
-        val languageController = LanguageController(fixture.graphService)
         val parameters = LanguageController.UpdateLanguageParameters(
             phonotacticsRuleName = "q-phono"
         )
