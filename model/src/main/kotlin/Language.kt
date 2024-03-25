@@ -11,7 +11,14 @@ open class PhonemeClass(val name: String, var matchingPhonemes: List<String>) {
         val diphthong = object : PhonemeClass("diphthong", emptyList()) {
             override fun matchesCurrent(it: PhonemeIterator): Boolean {
                 val next = it.atRelative(1)
-                return next != null && it.current + next in it.language.diphthongs
+                if (next != null && it.current + next in it.language.diphthongs) {
+                    return true
+                }
+                val previous = it.atRelative(-1)
+                if (previous != null && previous + it.current in it.language.diphthongs) {
+                    return true
+                }
+                return false
             }
         }
 

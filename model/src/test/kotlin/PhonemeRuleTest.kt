@@ -148,6 +148,16 @@ class PhonemeRuleTest : QBaseTest() {
     }
 
     @Test
+    fun diphtongSecondVowel() {
+        val rule = parseRule(q, q, """
+            sound is 'i' and sound is not diphthong:
+            - sound disappears
+        """.trimIndent())
+        assertEquals("ainu", rule.apply(q.word("ainu"), emptyRepo).text)
+        assertEquals("sla", rule.apply(q.word("sila"), emptyRepo).text)
+    }
+
+    @Test
     fun changePhonemeClass() {
         val rule = parseRule(q, q, """
             sound is voiceless stop and next sound is nasal:
