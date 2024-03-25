@@ -432,7 +432,7 @@ class RuleTest : QBaseTest() {
         }
         val mbar = repo.addWord("mbar", language = ce)
         val bar = repo.addWord("bar")
-        repo.addLink(bar, mbar, Link.Derived, emptyList(), emptyList(), null)
+        repo.addLink(bar, mbar, Link.Origin, emptyList(), emptyList(), null)
 
         assertEquals("mbar", rule.apply(bar, repo).text)
         assertEquals("first sound of base word in CE is 'm'", rule.logic.branches[0].condition.toEditableText())
@@ -450,7 +450,7 @@ class RuleTest : QBaseTest() {
         }
         val talam = repo.addWord("talam", language = ce)
         val talan = repo.addWord("talan")
-        repo.addLink(talan, talam, Link.Derived, emptyList(), emptyList(), null)
+        repo.addLink(talan, talam, Link.Origin, emptyList(), emptyList(), null)
 
         assertEquals("talam", rule.apply(talan, repo).text)
         assertEquals("base word in CE ends with 'm'", rule.logic.branches[0].condition.toEditableText())

@@ -370,7 +370,7 @@ fun linkToViewModel(
 }
 
 fun buildIntermediateSteps(graph: GraphRepository, link: Link): List<String> {
-    if (link.type != Link.Derived || link.rules.size <= 1) return emptyList()
+    if (link.type != Link.Origin || link.rules.size <= 1) return emptyList()
     var word = link.toEntity as Word
     val result = mutableListOf<String>()
     for (rule in link.rules) {
@@ -381,7 +381,7 @@ fun buildIntermediateSteps(graph: GraphRepository, link: Link): List<String> {
 }
 
 fun suggestedSequences(graph: GraphRepository, link: Link): List<WordController.RuleSequenceViewModel> {
-    if (link.type != Link.Derived || link.rules.isNotEmpty()) return emptyList()
+    if (link.type != Link.Origin || link.rules.isNotEmpty()) return emptyList()
     val word = link.fromEntity as Word
     val baseWord = link.toEntity as Word
     return graph.ruleSequencesForLanguage(word.language).filter { it.fromLanguage == baseWord.language }.map {

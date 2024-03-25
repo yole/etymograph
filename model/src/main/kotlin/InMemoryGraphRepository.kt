@@ -448,7 +448,7 @@ open class InMemoryGraphRepository : GraphRepository() {
 
     override fun suggestDeriveRuleSequences(word: Word): List<RuleSequence> {
         val existingDerivedWordLanguages = getLinksTo(word)
-            .filter { it.type == Link.Derived }
+            .filter { it.type == Link.Origin }
             .map { it.fromEntity }
             .filterIsInstance<Word>()
             .mapTo(mutableSetOf()) { it.language }
@@ -467,7 +467,7 @@ open class InMemoryGraphRepository : GraphRepository() {
             pos = word.pos,
             classes = word.classes
         )
-        addLink(newWord, word, Link.Derived, applicableRules, emptyList(), null)
+        addLink(newWord, word, Link.Origin, applicableRules, emptyList(), null)
         return newWord
     }
 

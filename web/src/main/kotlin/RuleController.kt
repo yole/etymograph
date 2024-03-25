@@ -337,7 +337,7 @@ class RuleController(val graphService: GraphService) {
         val fromEntity = graphService.resolveWord(params.linkFromId)
         val toEntity = graphService.resolveWord(params.linkToId)
         val graph = graphService.graph
-        val link = graph.findLink(fromEntity, toEntity, Link.Derived)
+        val link = graph.findLink(fromEntity, toEntity, Link.Origin)
             ?: badRequest("No Derived link from ${params.linkFromId} to ${params.linkToId}")
         graph.applyRuleSequence(link, sequence)
         graph.save()

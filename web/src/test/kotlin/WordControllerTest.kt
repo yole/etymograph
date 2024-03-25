@@ -78,7 +78,7 @@ class WordControllerTest {
 
         val w1 = graph.findOrAddWord("am", fixture.ce, null)
         val w2 = graph.findOrAddWord("an", fixture.q, null)
-        val link = graph.addLink(w2, w1, Link.Derived, emptyList(), emptyList(), null)
+        val link = graph.addLink(w2, w1, Link.Origin, emptyList(), emptyList(), null)
 
         val wordViewModel = wordController.singleWordJson("q", "an", w2.id)
         val linkTypeViewModel = wordViewModel.linksFrom.single()
@@ -93,7 +93,7 @@ class WordControllerTest {
 
         val w1 = graph.findOrAddWord("am", fixture.ce, null)
         val w2 = graph.findOrAddWord("an", fixture.q, null)
-        val link = graph.addLink(w2, w1, Link.Derived, emptyList(), emptyList(), null)
+        val link = graph.addLink(w2, w1, Link.Origin, emptyList(), emptyList(), null)
 
         val wordViewModel = wordController.singleWordJson("ce", "am", w1.id)
         val linkTypeViewModel = wordViewModel.linksTo.single()
@@ -113,7 +113,7 @@ class WordControllerTest {
         assertEquals("an", qWordViewModel.text)
 
         val qw = graph.wordById(qWordViewModel.id)!!
-        val link = graph.findLink(qw, cew, Link.Derived)!!
+        val link = graph.findLink(qw, cew, Link.Origin)!!
         assertEquals("q-final-consonant", link.rules.single().name)
     }
 }

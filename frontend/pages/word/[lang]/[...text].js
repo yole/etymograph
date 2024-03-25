@@ -417,17 +417,17 @@ function SingleWord(params) {
         {allowEdit() && <>
             {!isCompound && <><button onClick={() => setShowBaseWord(!showBaseWord)}>Add base word</button><br/></>}
             {showBaseWord && <WordForm submitted={submitted} linkType='>' linkTarget={word} reverseLink={true} language={word.language} initialGloss={word.gloss}/>}
-            <button onClick={() => setShowDerivedWord(!showDerivedWord)}>Add derived word</button>
+            <button onClick={() => setShowDerivedWord(!showDerivedWord)}>Add derived word</button><br/>
+            {showDerivedWord && <WordForm submitted={submitted} linkType='>' linkTarget={word} language={word.language} />}
+            <button onClick={() => setShowOriginWord(!showOriginWord)}>Add origin word</button><br/>
+            {showOriginWord && <WordForm submitted={submitted} linkType='^' linkTarget={word} reverseLink={true} initialGloss={word.gloss}/>}
+            <button onClick={() => setShowDerivativeWord(!showDerivativeWord)}>Add derivative word</button>
+            {showDerivativeWord && <WordForm submitted={submitted} linkType='^' linkTarget={word} initialGloss={word.gloss}/>}
             {word.suggestedDeriveSequences.map(seq => <>
                 {' '}
                 <button className="inlineButton" onClick={() => deriveThroughSequenceClicked(seq.id)}>Derive through {seq.name}</button>
             </>)}
             <br/>
-            {showDerivedWord && <WordForm submitted={submitted} linkType='>' linkTarget={word} language={word.language} />}
-            <button onClick={() => setShowOriginWord(!showOriginWord)}>Add origin word</button><br/>
-            {showOriginWord && <WordForm submitted={submitted} linkType='^' linkTarget={word} reverseLink={true} initialGloss={word.gloss}/>}
-            <button onClick={() => setShowDerivativeWord(!showDerivativeWord)}>Add derivative word</button><br/>
-            {showDerivativeWord && <WordForm submitted={submitted} linkType='^' linkTarget={word} initialGloss={word.gloss}/>}
             <button onClick={() => setShowCompoundComponent(!showCompoundComponent)}>Define as compound</button><br/>
             {showCompoundComponent && <WordForm submitted={submitted} newCompound={true} linkTarget={word} language={word.language} />}
             <button onClick={() => setShowRelated(!showRelated)}>Add related word</button><br/>
