@@ -2141,7 +2141,8 @@
             "diphthongs": [
                 "eu",
                 "ai",
-                "au"
+                "au",
+                "ōu"
             ]
         },
         {
@@ -2152,7 +2153,8 @@
         {
             "lang": "PWGmc",
             "diphthongs": [
-                "au"
+                "au",
+                "ōu"
             ]
         }
     ],
@@ -12005,6 +12007,134 @@
             "text": "horn",
             "lang": "PWGmc",
             "gloss": "horn"
+        },
+        {
+            "id": 2007,
+            "text": "ahtōu",
+            "lang": "PGmc",
+            "gloss": "eight",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "61"
+                }
+            ]
+        },
+        {
+            "id": 2009,
+            "text": "ahtōu",
+            "lang": "PWGmc",
+            "gloss": "eight"
+        },
+        {
+            "id": 2010,
+            "text": "ahtō",
+            "lang": "PWGmc",
+            "gloss": "eight"
+        },
+        {
+            "id": 2012,
+            "text": "þrawu",
+            "lang": "PNWGmc",
+            "gloss": "emotional pain",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "61"
+                }
+            ]
+        },
+        {
+            "id": 2013,
+            "text": "þrau",
+            "lang": "PWGmc",
+            "gloss": "threat"
+        },
+        {
+            "id": 2015,
+            "text": "nu",
+            "lang": "PGmc",
+            "gloss": "now",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "65"
+                }
+            ]
+        },
+        {
+            "id": 2017,
+            "text": "nū",
+            "lang": "PWGmc",
+            "gloss": "now"
+        },
+        {
+            "id": 2019,
+            "text": "ajją",
+            "lang": "PGmc",
+            "gloss": "egg",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "66"
+                }
+            ]
+        },
+        {
+            "id": 2022,
+            "text": "aij",
+            "lang": "PWGmc",
+            "gloss": "egg"
+        },
+        {
+            "id": 2023,
+            "text": "glawwuz",
+            "lang": "PGmc",
+            "gloss": "exact",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "66"
+                }
+            ]
+        },
+        {
+            "id": 2024,
+            "text": "glauw",
+            "lang": "PWGmc",
+            "gloss": "exact",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "66"
+                }
+            ]
+        },
+        {
+            "id": 2025,
+            "text": "hawwaną",
+            "lang": "PGmc",
+            "gloss": "chop",
+            "pos": "V",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "66"
+                }
+            ]
+        },
+        {
+            "id": 2026,
+            "text": "hauwan",
+            "lang": "PWGmc",
+            "gloss": "chop",
+            "pos": "V",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "66"
+                }
+            ]
         }
     ],
     "rules": [
@@ -18366,6 +18496,12 @@
                             },
                             {
                                 "type": "relPhoneme",
+                                "relativeIndex": -1,
+                                "negated": true,
+                                "parameter": "w"
+                            },
+                            {
+                                "type": "relPhoneme",
                                 "relativeIndex": 1,
                                 "parameter": "u"
                             },
@@ -18384,8 +18520,7 @@
                     "pubId": 5,
                     "refText": "16"
                 }
-            ],
-            "notes": ""
+            ]
         },
         {
             "id": 1882,
@@ -18803,6 +18938,12 @@
                                 "type": "relPhoneme",
                                 "relativeIndex": -1,
                                 "cls": "consonant"
+                            },
+                            {
+                                "type": "relPhoneme",
+                                "relativeIndex": -1,
+                                "negated": true,
+                                "parameter": "j"
                             }
                         ]
                     }
@@ -18832,6 +18973,12 @@
                                 "type": "relPhoneme",
                                 "relativeIndex": -1,
                                 "cls": "consonant"
+                            },
+                            {
+                                "type": "relPhoneme",
+                                "relativeIndex": -1,
+                                "negated": true,
+                                "parameter": "w"
                             }
                         ]
                     }
@@ -18974,6 +19121,12 @@
                                 "negated": true
                             },
                             {
+                                "type": "leaf",
+                                "cond": "PhonemeMatches",
+                                "characters": "j",
+                                "negated": true
+                            },
+                            {
                                 "type": "relPhoneme",
                                 "relativeIndex": 1,
                                 "parameter": "j"
@@ -19013,13 +19166,68 @@
                                 "characters": "z"
                             },
                             {
+                                "type": "or",
+                                "members": [
+                                    {
+                                        "type": "relPhoneme",
+                                        "relativeIndex": -1,
+                                        "cls": "vowel"
+                                    },
+                                    {
+                                        "type": "relPhoneme",
+                                        "relativeIndex": -1,
+                                        "parameter": "j"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "or",
+                                "members": [
+                                    {
+                                        "type": "relPhoneme",
+                                        "relativeIndex": 1,
+                                        "cls": "vowel"
+                                    },
+                                    {
+                                        "type": "relPhoneme",
+                                        "relativeIndex": 1,
+                                        "parameter": "j"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "r"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "and",
+                        "members": [
+                            {
+                                "type": "leaf",
+                                "cond": "PhonemeMatches",
+                                "characters": "z"
+                            },
+                            {
                                 "type": "relPhoneme",
                                 "relativeIndex": -1,
-                                "cls": "vowel"
+                                "parameter": "r"
                             },
                             {
                                 "type": "relPhoneme",
                                 "relativeIndex": 1,
+                                "cls": "vowel"
+                            },
+                            {
+                                "type": "relPhoneme",
+                                "relativeIndex": -2,
                                 "cls": "vowel"
                             }
                         ]
@@ -19029,10 +19237,9 @@
             "sourceRefs": [
                 {
                     "pubId": 5,
-                    "refText": "52"
+                    "refText": "82"
                 }
-            ],
-            "notes": ""
+            ]
         },
         {
             "id": 1982,
@@ -19389,6 +19596,36 @@
                             }
                         ]
                     }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "NextSoundDisappears",
+                            "args": [
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "and",
+                        "members": [
+                            {
+                                "type": "leaf",
+                                "cond": "PhonemeMatches",
+                                "characters": "ō"
+                            },
+                            {
+                                "type": "relPhoneme",
+                                "relativeIndex": 1,
+                                "parameter": "u"
+                            },
+                            {
+                                "type": "leaf",
+                                "cond": "PhonemeMatches",
+                                "cls": "stressed",
+                                "negated": true
+                            }
+                        ]
+                    }
                 }
             ],
             "sourceRefs": [
@@ -19396,8 +19633,146 @@
                     "pubId": 5,
                     "refText": "60"
                 }
+            ]
+        },
+        {
+            "id": 2011,
+            "name": "pwgmc-w-after-stressed-vowel-before-u",
+            "fromLang": "PGmc",
+            "toLang": "PWGmc",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "SoundDisappears",
+                            "args": [
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "and",
+                        "members": [
+                            {
+                                "type": "leaf",
+                                "cond": "PhonemeMatches",
+                                "characters": "w"
+                            },
+                            {
+                                "type": "relPhoneme",
+                                "relativeIndex": -1,
+                                "cls": "stressed vowel"
+                            },
+                            {
+                                "type": "relPhoneme",
+                                "relativeIndex": 1,
+                                "parameter": "u"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "61"
+                }
             ],
             "notes": ""
+        },
+        {
+            "id": 2014,
+            "name": "pwgmc-stressed-final-vowels",
+            "fromLang": "PGmc",
+            "toLang": "PWGmc",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSoundClass",
+                            "args": [
+                                "short",
+                                "long",
+                                "0"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "leaf",
+                        "cond": "PhonemeMatches",
+                        "cls": "word-final stressed short vowel"
+                    }
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "65"
+                }
+            ]
+        },
+        {
+            "id": 2018,
+            "name": "pwgmc-jj-ww",
+            "fromLang": "PGmc",
+            "toLang": "PWGmc",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "u"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "and",
+                        "members": [
+                            {
+                                "type": "leaf",
+                                "cond": "PhonemeMatches",
+                                "characters": "w"
+                            },
+                            {
+                                "type": "relPhoneme",
+                                "relativeIndex": 1,
+                                "parameter": "w"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "i"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "and",
+                        "members": [
+                            {
+                                "type": "leaf",
+                                "cond": "PhonemeMatches",
+                                "characters": "j"
+                            },
+                            {
+                                "type": "relPhoneme",
+                                "relativeIndex": 1,
+                                "parameter": "j"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "65"
+                }
+            ]
         }
     ],
     "links": [
@@ -23640,6 +24015,57 @@
             "ruleIds": [
                 1889,
                 1966
+            ]
+        },
+        {
+            "from": 2010,
+            "to": 2007,
+            "type": "^",
+            "ruleIds": [
+                1997
+            ]
+        },
+        {
+            "from": 2013,
+            "to": 2012,
+            "type": "^",
+            "ruleIds": [
+                2011
+            ]
+        },
+        {
+            "from": 2017,
+            "to": 2015,
+            "type": "^",
+            "ruleIds": [
+                2014
+            ]
+        },
+        {
+            "from": 2022,
+            "to": 2019,
+            "type": "^",
+            "ruleIds": [
+                1966,
+                2018
+            ]
+        },
+        {
+            "from": 2024,
+            "to": 2023,
+            "type": "^",
+            "ruleIds": [
+                1963,
+                2018
+            ]
+        },
+        {
+            "from": 2026,
+            "to": 2025,
+            "type": "^",
+            "ruleIds": [
+                1966,
+                2018
             ]
         }
     ],
@@ -28502,13 +28928,16 @@
                 1966,
                 1976,
                 1969,
-                1981,
                 1978,
                 1982,
                 1983,
                 1990,
                 1995,
-                1997
+                1997,
+                2011,
+                2014,
+                2018,
+                1981
             ]
         }
     ],
