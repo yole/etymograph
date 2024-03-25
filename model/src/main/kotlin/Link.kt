@@ -12,10 +12,11 @@ class Link(
 ) {
     companion object {
         val Derived = LinkType(">", "derived from", "Words derived from this one")
+        val Origin = LinkType("^", "originates from", "Words originating from this one")
         val Related = LinkType("~", "Related to", "Related to")
         val Variation = LinkType("=", "Variation of", "Variations")
 
-        val allLinkTypes = listOf(Derived, Related, Variation)
+        val allLinkTypes = listOf(Derived, Origin, Related, Variation)
     }
 
     fun applyRules(word: Word, graph: GraphRepository): Word {

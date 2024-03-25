@@ -179,6 +179,8 @@ function SingleWord(params) {
     const router = useRouter()
     const [showBaseWord, setShowBaseWord] = useState(false)
     const [showDerivedWord, setShowDerivedWord] = useState(false)
+    const [showOriginWord, setShowOriginWord] = useState(false)
+    const [showDerivativeWord, setShowDerivativeWord] = useState(false)
     const [showCompoundComponent, setShowCompoundComponent] = useState(false)
     const [showRelated, setShowRelated] = useState(false)
     const [showVariation, setShowVariation] = useState(false)
@@ -195,6 +197,8 @@ function SingleWord(params) {
         else {
             setShowBaseWord(false)
             setShowDerivedWord(false)
+            setShowOriginWord(false)
+            setShowDerivativeWord(false)
             setShowCompoundComponent(false)
             setShowRelated(false)
             setShowVariation(false)
@@ -420,6 +424,10 @@ function SingleWord(params) {
             </>)}
             <br/>
             {showDerivedWord && <WordForm submitted={submitted} linkType='>' linkTarget={word} language={word.language} />}
+            <button onClick={() => setShowOriginWord(!showOriginWord)}>Add origin word</button><br/>
+            {showOriginWord && <WordForm submitted={submitted} linkType='^' linkTarget={word} reverseLink={true} initialGloss={word.gloss}/>}
+            <button onClick={() => setShowDerivativeWord(!showDerivativeWord)}>Add derivative word</button><br/>
+            {showDerivativeWord && <WordForm submitted={submitted} linkType='^' linkTarget={word} initialGloss={word.gloss}/>}
             <button onClick={() => setShowCompoundComponent(!showCompoundComponent)}>Define as compound</button><br/>
             {showCompoundComponent && <WordForm submitted={submitted} newCompound={true} linkTarget={word} language={word.language} />}
             <button onClick={() => setShowRelated(!showRelated)}>Add related word</button><br/>
