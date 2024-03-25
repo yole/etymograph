@@ -1261,6 +1261,20 @@
             ]
         },
         {
+            "id": 1987,
+            "lang": "PGmc",
+            "graphemes": [
+                "ų"
+            ],
+            "classes": [
+                "nasal",
+                "short",
+                "back",
+                "close",
+                "vowel"
+            ]
+        },
+        {
             "id": 1924,
             "lang": "PNWGmc",
             "graphemes": [
@@ -2138,6 +2152,7 @@
         {
             "lang": "PWGmc",
             "diphthongs": [
+                "au"
             ]
         }
     ],
@@ -11852,6 +11867,144 @@
                     "refText": "48"
                 }
             ]
+        },
+        {
+            "id": 1979,
+            "text": "sitjaną",
+            "lang": "PGmc",
+            "gloss": "sit",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "51"
+                }
+            ]
+        },
+        {
+            "id": 1980,
+            "text": "sittjan",
+            "lang": "PWGmc",
+            "gloss": "sit"
+        },
+        {
+            "id": 1985,
+            "text": "gumô",
+            "lang": "PGmc",
+            "gloss": "human"
+        },
+        {
+            "id": 1986,
+            "text": "gumanų",
+            "lang": "PGmc",
+            "gloss": "human.ACC"
+        },
+        {
+            "id": 1989,
+            "text": "guman",
+            "lang": "PWGmc",
+            "gloss": "human.ACC"
+        },
+        {
+            "id": 1991,
+            "text": "watōr",
+            "lang": "PGmc",
+            "gloss": "water",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "59"
+                }
+            ]
+        },
+        {
+            "id": 1993,
+            "text": "namô",
+            "lang": "PGmc",
+            "gloss": "name",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "59"
+                }
+            ]
+        },
+        {
+            "id": 1994,
+            "text": "namō",
+            "lang": "PWGmc",
+            "gloss": "name"
+        },
+        {
+            "id": 1996,
+            "text": "watar",
+            "lang": "PWGmc",
+            "gloss": "water"
+        },
+        {
+            "id": 1998,
+            "text": "sunauz",
+            "lang": "PGmc",
+            "gloss": "son.GEN"
+        },
+        {
+            "id": 2000,
+            "text": "sunō",
+            "lang": "PWGmc",
+            "gloss": "son.GEN"
+        },
+        {
+            "id": 2001,
+            "text": "þeu",
+            "lang": "PWGmc",
+            "gloss": "slave",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "43"
+                }
+            ]
+        },
+        {
+            "id": 2002,
+            "text": "þewaz",
+            "lang": "PGmc",
+            "gloss": "slave"
+        },
+        {
+            "id": 2003,
+            "text": "gastiz",
+            "lang": "PGmc",
+            "gloss": "guest",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "43"
+                }
+            ]
+        },
+        {
+            "id": 2004,
+            "text": "gasti",
+            "lang": "PWGmc",
+            "gloss": "guest"
+        },
+        {
+            "id": 2005,
+            "text": "hurną",
+            "lang": "PGmc",
+            "gloss": "horn",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "45"
+                }
+            ]
+        },
+        {
+            "id": 2006,
+            "text": "horn",
+            "lang": "PWGmc",
+            "gloss": "horn"
         }
     ],
     "rules": [
@@ -18785,6 +18938,466 @@
                 }
             ],
             "notes": ""
+        },
+        {
+            "id": 1978,
+            "name": "pwgmc-gemination-by-j",
+            "fromLang": "PGmc",
+            "toLang": "PWGmc",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "SoundIsGeminated",
+                            "args": [
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "and",
+                        "members": [
+                            {
+                                "type": "leaf",
+                                "cond": "PhonemeMatches",
+                                "cls": "consonant"
+                            },
+                            {
+                                "type": "leaf",
+                                "cond": "PhonemeMatches",
+                                "characters": "r",
+                                "negated": true
+                            },
+                            {
+                                "type": "leaf",
+                                "cond": "PhonemeMatches",
+                                "characters": "z",
+                                "negated": true
+                            },
+                            {
+                                "type": "relPhoneme",
+                                "relativeIndex": 1,
+                                "parameter": "j"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "50"
+                }
+            ]
+        },
+        {
+            "id": 1981,
+            "name": "pwgmc-intervocalic-z",
+            "fromLang": "PGmc",
+            "toLang": "PWGmc",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "r"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "and",
+                        "members": [
+                            {
+                                "type": "leaf",
+                                "cond": "PhonemeMatches",
+                                "characters": "z"
+                            },
+                            {
+                                "type": "relPhoneme",
+                                "relativeIndex": -1,
+                                "cls": "vowel"
+                            },
+                            {
+                                "type": "relPhoneme",
+                                "relativeIndex": 1,
+                                "cls": "vowel"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "52"
+                }
+            ],
+            "notes": ""
+        },
+        {
+            "id": 1982,
+            "name": "pwgmc-word-final-high-nasals",
+            "fromLang": "PGmc",
+            "toLang": "PWGmc",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "i"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "and",
+                        "members": [
+                            {
+                                "type": "leaf",
+                                "cond": "EndOfWord"
+                            },
+                            {
+                                "type": "leaf",
+                                "cond": "PhonemeMatches",
+                                "characters": "į"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "u"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "and",
+                        "members": [
+                            {
+                                "type": "leaf",
+                                "cond": "EndOfWord"
+                            },
+                            {
+                                "type": "leaf",
+                                "cond": "PhonemeMatches",
+                                "characters": "ų"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "55"
+                }
+            ],
+            "notes": ""
+        },
+        {
+            "id": 1983,
+            "name": "pwgmc-word-final-i-u",
+            "fromLang": "PGmc",
+            "toLang": "PWGmc",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ApplySoundRule",
+                            "args": [
+                                "1984"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "and",
+                        "members": [
+                            {
+                                "type": "or",
+                                "members": [
+                                    {
+                                        "type": "leaf",
+                                        "cond": "PhonemeMatches",
+                                        "characters": "i"
+                                    },
+                                    {
+                                        "type": "leaf",
+                                        "cond": "PhonemeMatches",
+                                        "characters": "u"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "leaf",
+                                "cond": "PhonemeMatches",
+                                "cls": "diphthong",
+                                "negated": true
+                            },
+                            {
+                                "type": "leaf",
+                                "cond": "EndOfWord"
+                            },
+                            {
+                                "type": "leaf",
+                                "cond": "NumberOfSyllables",
+                                "characters": ">=3"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "55"
+                }
+            ]
+        },
+        {
+            "id": 1984,
+            "name": "pwgmc-word-final-i-u-deletion",
+            "fromLang": "PWGmc",
+            "toLang": "PWGmc",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "NoChange",
+                            "args": [
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "and",
+                        "members": [
+                            {
+                                "type": "relPhoneme",
+                                "relativeIndex": -1,
+                                "cls": "consonant"
+                            },
+                            {
+                                "type": "or",
+                                "members": [
+                                    {
+                                        "type": "relPhoneme",
+                                        "relativeIndex": -2,
+                                        "parameter": "i"
+                                    },
+                                    {
+                                        "type": "relPhoneme",
+                                        "relativeIndex": -2,
+                                        "parameter": "u"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "SoundDisappears",
+                            "args": [
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "otherwise"
+                    }
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "55"
+                }
+            ],
+            "notes": ""
+        },
+        {
+            "id": 1990,
+            "name": "pwgmc-long-o",
+            "fromLang": "PGmc",
+            "toLang": "PWGmc",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "ā"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "and",
+                        "members": [
+                            {
+                                "type": "leaf",
+                                "cond": "PhonemeMatches",
+                                "characters": "ō"
+                            },
+                            {
+                                "type": "leaf",
+                                "cond": "EndOfWord"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "ā"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "and",
+                        "members": [
+                            {
+                                "type": "leaf",
+                                "cond": "PhonemeMatches",
+                                "characters": "ō"
+                            },
+                            {
+                                "type": "relPhoneme",
+                                "relativeIndex": 1,
+                                "parameter": "r"
+                            },
+                            {
+                                "type": "relPhoneme",
+                                "relativeIndex": 1,
+                                "cls": "word-final"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "ō"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "leaf",
+                        "cond": "PhonemeMatches",
+                        "characters": "ô"
+                    }
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "58"
+                }
+            ],
+            "notes": ""
+        },
+        {
+            "id": 1995,
+            "name": "pwgmc-shorten-before-final-r",
+            "fromLang": "PGmc",
+            "toLang": "PWGmc",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSoundClass",
+                            "args": [
+                                "long",
+                                "short",
+                                "0"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "and",
+                        "members": [
+                            {
+                                "type": "leaf",
+                                "cond": "PhonemeMatches",
+                                "cls": "long vowel"
+                            },
+                            {
+                                "type": "relPhoneme",
+                                "relativeIndex": 1,
+                                "parameter": "r"
+                            },
+                            {
+                                "type": "relPhoneme",
+                                "relativeIndex": 1,
+                                "cls": "word-final"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "60"
+                }
+            ],
+            "notes": ""
+        },
+        {
+            "id": 1997,
+            "name": "pwgmc-unstressed-diphthongs",
+            "fromLang": "PGmc",
+            "toLang": "PWGmc",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "ō"
+                            ]
+                        },
+                        {
+                            "type": "NextSoundDisappears",
+                            "args": [
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "and",
+                        "members": [
+                            {
+                                "type": "leaf",
+                                "cond": "PhonemeMatches",
+                                "characters": "a"
+                            },
+                            {
+                                "type": "relPhoneme",
+                                "relativeIndex": 1,
+                                "parameter": "u"
+                            },
+                            {
+                                "type": "leaf",
+                                "cond": "PhonemeMatches",
+                                "cls": "stressed",
+                                "negated": true
+                            }
+                        ]
+                    }
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "60"
+                }
+            ],
+            "notes": ""
         }
     ],
     "links": [
@@ -22819,7 +23432,7 @@
         {
             "from": 1861,
             "to": 1860,
-            "type": ">",
+            "type": "^",
             "ruleIds": [
                 1862
             ]
@@ -22827,7 +23440,7 @@
         {
             "from": 1865,
             "to": 1864,
-            "type": ">",
+            "type": "^",
             "ruleIds": [
                 1863
             ]
@@ -22835,7 +23448,7 @@
         {
             "from": 1869,
             "to": 1868,
-            "type": ">",
+            "type": "^",
             "ruleIds": [
                 1866,
                 1863
@@ -22844,7 +23457,7 @@
         {
             "from": 1875,
             "to": 1876,
-            "type": ">",
+            "type": "^",
             "ruleIds": [
                 1866,
                 1863,
@@ -22862,12 +23475,12 @@
         {
             "from": 1879,
             "to": 1880,
-            "type": ">"
+            "type": "^"
         },
         {
             "from": 1880,
             "to": 1881,
-            "type": ">",
+            "type": "^",
             "ruleIds": [
                 1882
             ]
@@ -22883,12 +23496,12 @@
         {
             "from": 1886,
             "to": 1887,
-            "type": ">"
+            "type": "^"
         },
         {
             "from": 1887,
             "to": 1888,
-            "type": ">",
+            "type": "^",
             "ruleIds": [
                 1884
             ]
@@ -22896,7 +23509,7 @@
         {
             "from": 1957,
             "to": 1890,
-            "type": ">",
+            "type": "^",
             "ruleIds": [
                 1889
             ]
@@ -22904,15 +23517,16 @@
         {
             "from": 1960,
             "to": 1959,
-            "type": ">",
+            "type": "^",
             "ruleIds": [
-                1958
+                1958,
+                1990
             ]
         },
         {
             "from": 1965,
             "to": 1964,
-            "type": ">",
+            "type": "^",
             "ruleIds": [
                 1963
             ]
@@ -22920,7 +23534,7 @@
         {
             "from": 1968,
             "to": 1967,
-            "type": ">",
+            "type": "^",
             "ruleIds": [
                 1963,
                 1966
@@ -22929,7 +23543,7 @@
         {
             "from": 1971,
             "to": 1970,
-            "type": ">",
+            "type": "^",
             "ruleIds": [
                 1963,
                 1966,
@@ -22939,7 +23553,7 @@
         {
             "from": 1973,
             "to": 1972,
-            "type": ">",
+            "type": "^",
             "ruleIds": [
                 1966,
                 1969
@@ -22948,11 +23562,84 @@
         {
             "from": 1975,
             "to": 1974,
-            "type": ">",
+            "type": "^",
             "ruleIds": [
                 1963,
                 1966,
                 1969
+            ]
+        },
+        {
+            "from": 1980,
+            "to": 1979,
+            "type": "^",
+            "ruleIds": [
+                1966,
+                1978
+            ]
+        },
+        {
+            "from": 1986,
+            "to": 1985,
+            "type": ">"
+        },
+        {
+            "from": 1989,
+            "to": 1986,
+            "type": "^",
+            "ruleIds": [
+                1982,
+                1983
+            ]
+        },
+        {
+            "from": 1994,
+            "to": 1993,
+            "type": "^",
+            "ruleIds": [
+                1990
+            ]
+        },
+        {
+            "from": 1996,
+            "to": 1991,
+            "type": "^",
+            "ruleIds": [
+                1990,
+                1995
+            ]
+        },
+        {
+            "from": 1998,
+            "to": 1964,
+            "type": ">"
+        },
+        {
+            "from": 2000,
+            "to": 1998,
+            "type": "^",
+            "ruleIds": [
+                1963,
+                1997
+            ]
+        },
+        {
+            "from": 2001,
+            "to": 2002,
+            "type": "^"
+        },
+        {
+            "from": 2004,
+            "to": 2003,
+            "type": "^"
+        },
+        {
+            "from": 2006,
+            "to": 2005,
+            "type": "^",
+            "ruleIds": [
+                1889,
+                1966
             ]
         }
     ],
@@ -27814,7 +28501,14 @@
                 1963,
                 1966,
                 1976,
-                1969
+                1969,
+                1981,
+                1978,
+                1982,
+                1983,
+                1990,
+                1995,
+                1997
             ]
         }
     ],
