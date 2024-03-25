@@ -173,8 +173,10 @@ The following conditions can be used in morphological rules:
    (for example, `word begins with 'm'`) or a phoneme of a specified class (for example, `word begins with a consonant`).
  * `word is`: Checks whether the word belongs to the given class (for example, `word is m`, where `m` is defined
    as a possible value for the 'gender' class of nouns).
- * `number of syllables is`: Checks whether the word has exactly the specified number of syllables
+ * `number of syllables is `: Checks whether the word has exactly the specified number of syllables
    (for example, `number of syllables is 2`) 
+ * `number of syllables is <at least|at most>`: Checks whether the word has at least or at most the specified number 
+  of syllables (for example, `number of syllables is at least 3`) 
  * `<ordinal> syllable contains`: Checks if the syllable with the specified ordinal number contains a given
    substring or a phoneme of a given class. Example: `first syllable contains long vowel`
  * `<ordinal> syllable ends with`: Checks if the syllable with the specified ordinal number ends with a given

@@ -294,6 +294,16 @@ class RuleTest : QBaseTest() {
     }
 
     @Test
+    fun syllableCountAtLeast() {
+        val condition = RuleCondition.parse(ParseBuffer("number of syllables is at least 2"), q) as LeafRuleCondition
+        assertEquals(">=2", condition.parameter)
+        assertTrue(condition.matches(q.word("andúna"), emptyRepo))
+        assertTrue(condition.matches(q.word("anca"), emptyRepo))
+        assertFalse(condition.matches(q.word("lo"), emptyRepo))
+        assertEquals("number of syllables is at least 2", condition.toEditableText())
+    }
+
+    @Test
     fun syllableCountNegated() {
         val condition = RuleCondition.parse(ParseBuffer("number of syllables is not 3"), q) as LeafRuleCondition
         assertEquals("3", condition.parameter)

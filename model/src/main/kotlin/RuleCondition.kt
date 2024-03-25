@@ -16,9 +16,17 @@ enum class ConditionType(
         param
     }),
     NumberOfSyllables(LeafRuleCondition.numberOfSyllables, parameterParseCallback = { buf, _ ->
+        val isAtLeast = buf.consume("at least")
+        val isAtMost = buf.consume("at most")
         val param = buf.nextWord()
         if (param?.toIntOrNull() == null) throw RuleParseException("Number of syllables should be a number")
-        param
+
+        if (isAtLeast)
+            ">=" + param
+        else if (isAtMost)
+            "<=" + param
+        else
+            param
     }),
     PhonemeMatches(LeafRuleCondition.soundIs, phonemic = true),
     StressIs(LeafRuleCondition.stressIs, parameterParseCallback = { buf, _ ->
@@ -145,8 +153,21 @@ class LeafRuleCondition(
         }
     }
 
-    private fun matchNumberOfSyllables(word: Word) =
-        (breakIntoSyllables(word).size == parameter!!.toInt()).negateIfNeeded()
+    private fun matchNumberOfSyllables(word: Word): Boolean {
+        var param = parameter!!
+        var compare = if (param.startsWith(">=")) {
+            param = param.removePrefix(">=");
+            { a: Int, b: Int -> a >= b }
+        }
+        else if (param.startsWith("<=")) {
+            param = param.removePrefix("<=");
+            { a: Int, b: Int -> a <= b }
+        }
+        else {
+            { a: Int, b: Int -> a == b }
+        }
+        return (compare(breakIntoSyllables(word).size, param.toInt())).negateIfNeeded()
+    }
 
     private fun matchClass(word: Word) =
         (parameter in word.classes).negateIfNeeded() || word.classes == listOf("*")
@@ -205,6 +226,14 @@ class LeafRuleCondition(
     private fun parameterToEditableText(): String? {
         if (type == ConditionType.SyllableIndex) {
             return Ordinals.toString(parameter!!.toInt())
+        }
+        if (type == ConditionType.NumberOfSyllables) {
+            if (parameter!!.startsWith(">=")) {
+                return "at least ${parameter.removePrefix(">=")}"
+            }
+            if (parameter.startsWith("<=")) {
+                return "at most ${parameter.removePrefix("<=")}"
+            }
         }
 
         val parameterName = if (type.parameterParseCallback != null)
