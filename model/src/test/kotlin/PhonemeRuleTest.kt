@@ -365,4 +365,13 @@ class PhonemeRuleTest : QBaseTest() {
         """.trimIndent())
         assertEquals("glawr", rule.apply(q.word("glawar"), emptyRepo).text)
     }
+
+    @Test
+    fun soundIsGeminated() {
+        val rule = parseRule(q, q, """
+            sound is 'k' and next sound is 'w':
+            - sound is geminated
+        """.trimIndent())
+        assertEquals("kkwenya", applyRule(rule, q.word("kwenya")))
+    }
 }

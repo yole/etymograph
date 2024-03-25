@@ -20,6 +20,7 @@ enum class InstructionType(
     ChangeSoundClass("becomes", "(previous\\s+|next\\s+)?(.+) becomes (.+)", true),
     SoundDisappears("sound disappears"),
     NextSoundDisappears("next sound disappears"),
+    SoundIsGeminated("sound is geminated"),
     SoundInserted("is inserted", "'(.+)' is inserted before", true);
 
     val regex = Regex(pattern ?: Regex.escape(insnName))
@@ -82,6 +83,7 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
             InstructionType.SoundDisappears -> phonemes.delete()
             InstructionType.NextSoundDisappears -> phonemes.deleteNext()
             InstructionType.SoundInserted -> phonemes.insertBefore(arg)
+            InstructionType.SoundIsGeminated -> phonemes.insertAfter(phonemes.current)
             InstructionType.NoChange -> Unit
             else -> throw IllegalStateException("Can't apply word instruction to individual phoneme")
         }
@@ -106,7 +108,7 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
             if (arg.isNotEmpty()) "-$arg" else ""
         InstructionType.ChangeSound, InstructionType.ChangeNextSound,
         InstructionType.SoundDisappears, InstructionType.NextSoundDisappears,
-        InstructionType.ChangeSoundClass ->
+        InstructionType.ChangeSoundClass, InstructionType.SoundIsGeminated ->
             toSummaryTextPhonemic(condition)
         else -> ""
     }

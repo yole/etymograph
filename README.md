@@ -246,6 +246,7 @@ The following instructions can be used in phonological rules:
  * `new next sound is`: Replaces the next phoneme with another phoneme (or several phonemes), specified in single quotes.
  * `sound disappears`: Deletes the phoneme from the word.
  * `next sound disappears`: Deletes the next phoneme from the word.
+ * `sound is geminated`: Inserts a copy of the current phoneme at the current location. 
  * `<old class> becomes <new class>`: Replaces the phoneme with a different phoneme which has the same set
    of classes, except that it nas <new class> instead of <old class>. Example: `voiceless becomes voiced`.  
  * `<next|previous> <old class> becomes <new class>`: Replaces the next/previous phoneme with a different  

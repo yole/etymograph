@@ -56,4 +56,8 @@ open class QBaseTest {
             addedCategories = addedCategories
         )
     }
+
+    fun applyRule(rule: Rule, word: Word): String {
+        return rule.apply(word, emptyRepo).text
+    }
 }
