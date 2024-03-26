@@ -67,9 +67,18 @@ class PhonemeController(val graphService: GraphService) {
     @PostMapping("/phonemes/{lang}", consumes = ["application/json"])
     fun addPhoneme(@PathVariable lang: String, @RequestBody params: UpdatePhonemeParameters): PhonemeViewModel {
         val language = graphService.resolveLanguage(lang)
+
+        val graphemes = parseList(params.graphemes)
+        for (phoneme in language.phonemes) {
+            val existingGraphemes = graphemes.intersect(phoneme.graphemes.toSet())
+            if (existingGraphemes.isNotEmpty()) {
+                badRequest("Duplicate graphemes $existingGraphemes")
+            }
+        }
+
         val phoneme = graphService.graph.addPhoneme(
             language,
-            parseList(params.graphemes),
+            graphemes,
             params.sound.nullize(),
             parseClasses(params),
             params.historical,

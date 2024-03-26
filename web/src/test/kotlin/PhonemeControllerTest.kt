@@ -1,17 +1,19 @@
 package ru.yole.etymograph.web
 
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertThrows
 import org.junit.Before
 import org.junit.Test
+import org.springframework.web.server.ResponseStatusException
 import ru.yole.etymograph.GraphRepository
 import ru.yole.etymograph.Rule
 import ru.yole.etymograph.RuleParseContext
 import ru.yole.etymograph.RuleParseException
 
 class PhonemeControllerTest {
-    lateinit var fixture: QTestFixture
-    lateinit var phonemeController: PhonemeController
-    lateinit var graph: GraphRepository
+    private lateinit var fixture: QTestFixture
+    private lateinit var phonemeController: PhonemeController
+    private lateinit var graph: GraphRepository
 
     @Before
     fun setup() {
@@ -36,6 +38,16 @@ class PhonemeControllerTest {
         val phoneme = fixture.q.phonemes.single()
         assertEquals("a", phoneme.graphemes.single())
         assertEquals("vowel", phoneme.classes.single())
+    }
+
+    @Test
+    fun duplicateGrapheme() {
+        graph.addPhoneme(fixture.q, listOf("a"), null, setOf("vowel"))
+        assertThrows(ResponseStatusException::class.java) {
+            phonemeController.addPhoneme(fixture.q.shortName, PhonemeController.UpdatePhonemeParameters(
+                "a", "", "vowel"
+            ))
+        }
     }
 
     @Test
