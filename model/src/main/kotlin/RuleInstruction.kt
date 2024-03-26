@@ -17,7 +17,7 @@ enum class InstructionType(
     Disallow("disallow", "disallow", false),
     ChangeSound("new sound is", "new sound is '(.+)'", true),
     ChangeNextSound("new next sound is", "new next sound is '(.+)'", true),
-    ChangeSoundClass("becomes", "(previous\\s+|next\\s+)?(.+) becomes (.+)", true),
+    ChangeSoundClass("becomes", RelativeOrdinals.toPattern() + "?(.+) becomes (.+)", true),
     SoundDisappears("sound disappears"),
     NextSoundDisappears("next sound disappears"),
     SoundIsGeminated("sound is geminated"),
@@ -459,9 +459,7 @@ class ChangePhonemeClassInstruction(val relativeIndex: Int, val oldClass: String
 
     companion object {
         fun parse(match: MatchResult): ChangePhonemeClassInstruction {
-            val relativeIndex = match.groupValues[1].takeIf { it.isNotEmpty() }?.trim()?.let {
-                RelativeOrdinals.parse(it)?.first
-            } ?: 0
+            val relativeIndex = RelativeOrdinals.parseMatch(match, 1)
             return ChangePhonemeClassInstruction(relativeIndex, match.groupValues[2], match.groupValues[3])
         }
     }
