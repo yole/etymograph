@@ -66,6 +66,7 @@ class ParseBuffer(val s: String) {
     fun nextWord(): String? {
         if (pos == s.length) return null
         val nextSpace = s.indexOfAny(worDelimiters, pos).takeIf { it >= 0 } ?: s.length
+        if (nextSpace == pos) return null
         val result = s.substring(pos, nextSpace)
         pos = nextSpace
         consumeWhitespace()
