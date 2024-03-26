@@ -483,6 +483,21 @@
             ]
         },
         {
+            "id": 2053,
+            "lang": "OE",
+            "graphemes": [
+                "ą̄"
+            ],
+            "classes": [
+                "nasal",
+                "long",
+                "back",
+                "open",
+                "vowel"
+            ],
+            "historical": true
+        },
+        {
             "id": 1791,
             "lang": "Lyc",
             "graphemes": [
@@ -1899,7 +1914,8 @@
                 "labiovelar",
                 "stop",
                 "consonant"
-            ]
+            ],
+            "historical": true
         },
         {
             "id": 1908,
@@ -1912,7 +1928,8 @@
                 "labiovelar",
                 "stop",
                 "consonant"
-            ]
+            ],
+            "historical": true
         },
         {
             "id": 1909,
@@ -1925,7 +1942,8 @@
                 "labiovelar",
                 "fricative",
                 "consonant"
-            ]
+            ],
+            "historical": true
         },
         {
             "id": 1910,
@@ -2094,7 +2112,8 @@
                 "mid",
                 "back",
                 "vowel"
-            ]
+            ],
+            "historical": true
         },
         {
             "id": 1923,
@@ -2105,6 +2124,34 @@
             "classes": [
                 "nasal",
                 "short",
+                "back",
+                "open",
+                "vowel"
+            ]
+        },
+        {
+            "id": 2041,
+            "lang": "PWGmc",
+            "graphemes": [
+                "ų̄"
+            ],
+            "classes": [
+                "long",
+                "back",
+                "close",
+                "nasal",
+                "vowel"
+            ]
+        },
+        {
+            "id": 2046,
+            "lang": "PWGmc",
+            "graphemes": [
+                "ą̄"
+            ],
+            "classes": [
+                "nasal",
+                "long",
                 "back",
                 "open",
                 "vowel"
@@ -2154,7 +2201,8 @@
             "lang": "PWGmc",
             "diphthongs": [
                 "au",
-                "ōu"
+                "ōu",
+                "ai"
             ]
         }
     ],
@@ -2166,6 +2214,10 @@
         {
             "lang": "PNWGmc",
             "ruleId": 1873
+        },
+        {
+            "lang": "PWGmc",
+            "ruleId": 2064
         }
     ],
     "words": [
@@ -12153,6 +12205,546 @@
                     "refText": "83"
                 }
             ]
+        },
+        {
+            "id": 2033,
+            "text": "wiz",
+            "lang": "PWGmc",
+            "gloss": "we"
+        },
+        {
+            "id": 2034,
+            "text": "we",
+            "lang": "OE",
+            "gloss": "we"
+        },
+        {
+            "id": 2035,
+            "text": "maiz",
+            "lang": "PWGmc",
+            "gloss": "more",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "86"
+                }
+            ]
+        },
+        {
+            "id": 2038,
+            "text": "mā",
+            "lang": "OE",
+            "gloss": "more"
+        },
+        {
+            "id": 2042,
+            "text": "unsti",
+            "lang": "PWGmc",
+            "gloss": "storm",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "141"
+                }
+            ]
+        },
+        {
+            "id": 2045,
+            "text": "neman",
+            "lang": "PWGmc",
+            "gloss": "take",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "141"
+                }
+            ]
+        },
+        {
+            "id": 2047,
+            "text": "anhtu",
+            "lang": "PWGmc",
+            "gloss": "persecution",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "143"
+                }
+            ]
+        },
+        {
+            "id": 2050,
+            "text": "hanhaną",
+            "lang": "PGmc",
+            "gloss": "hang",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "142"
+                }
+            ]
+        },
+        {
+            "id": 2051,
+            "text": "hanhan",
+            "lang": "PWGmc",
+            "gloss": "hang"
+        },
+        {
+            "id": 2059,
+            "text": "hōhan",
+            "lang": "OE",
+            "gloss": "hang"
+        },
+        {
+            "id": 2061,
+            "text": "haftaz",
+            "lang": "PGmc",
+            "gloss": "bound",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "147"
+                }
+            ]
+        },
+        {
+            "id": 2062,
+            "text": "haft",
+            "lang": "PWGmc",
+            "gloss": "captive",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "147"
+                }
+            ]
+        },
+        {
+            "id": 2065,
+            "text": "hæft",
+            "lang": "OE",
+            "gloss": "captive"
+        },
+        {
+            "id": 2066,
+            "text": "fader",
+            "lang": "PWGmc",
+            "gloss": "father",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "147"
+                }
+            ]
+        },
+        {
+            "id": 2067,
+            "text": "awiz",
+            "lang": "PGmc",
+            "gloss": "sheep",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "148"
+                }
+            ]
+        },
+        {
+            "id": 2068,
+            "text": "awi",
+            "lang": "PWGmc",
+            "gloss": "ewe",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "148"
+                }
+            ]
+        },
+        {
+            "id": 2071,
+            "text": "slēpaną",
+            "lang": "PGmc",
+            "gloss": "sleep",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "149"
+                }
+            ]
+        },
+        {
+            "id": 2072,
+            "text": "slāpan",
+            "lang": "PWGmc",
+            "gloss": "sleep",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "149"
+                }
+            ]
+        },
+        {
+            "id": 2073,
+            "text": "slǣpan",
+            "lang": "OE",
+            "gloss": "sleep"
+        },
+        {
+            "id": 2075,
+            "text": "tungā",
+            "lang": "PWGmc",
+            "gloss": "tongue",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "153"
+                }
+            ]
+        },
+        {
+            "id": 2083,
+            "text": "wilþijaz",
+            "lang": "PGmc",
+            "gloss": "wild",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "156"
+                }
+            ]
+        },
+        {
+            "id": 2084,
+            "text": "wilþī",
+            "lang": "PWGmc",
+            "gloss": "wild"
+        },
+        {
+            "id": 2087,
+            "text": "dōmijaną",
+            "lang": "PGmc",
+            "gloss": "to judge",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "157"
+                }
+            ]
+        },
+        {
+            "id": 2088,
+            "text": "dōmijan",
+            "lang": "PWGmc",
+            "gloss": "to judge",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "157"
+                }
+            ]
+        },
+        {
+            "id": 2091,
+            "text": "niuhsijaną",
+            "lang": "PGmc",
+            "gloss": "to spy",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "157"
+                }
+            ]
+        },
+        {
+            "id": 2092,
+            "text": "niuhsijan",
+            "lang": "PWGmc",
+            "gloss": "to spy"
+        },
+        {
+            "id": 2096,
+            "text": "hlaibaz",
+            "lang": "PGmc",
+            "gloss": "bread",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "170"
+                }
+            ]
+        },
+        {
+            "id": 2097,
+            "text": "hlaib",
+            "lang": "PWGmc",
+            "gloss": "bread"
+        },
+        {
+            "id": 2100,
+            "text": "haimaz",
+            "lang": "PGmc",
+            "gloss": "native place",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "170"
+                }
+            ]
+        },
+        {
+            "id": 2101,
+            "text": "haim",
+            "lang": "PWGmc",
+            "gloss": "native place"
+        },
+        {
+            "id": 2102,
+            "text": "hām",
+            "lang": "OE",
+            "gloss": "home"
+        },
+        {
+            "id": 2103,
+            "text": "stainaz",
+            "lang": "PGmc",
+            "gloss": "stone",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "170"
+                }
+            ]
+        },
+        {
+            "id": 2104,
+            "text": "stain",
+            "lang": "PWGmc",
+            "gloss": "stone"
+        },
+        {
+            "id": 2105,
+            "text": "raudaz",
+            "lang": "PGmc",
+            "gloss": "red",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "172"
+                }
+            ]
+        },
+        {
+            "id": 2106,
+            "text": "raud",
+            "lang": "PWGmc",
+            "gloss": "red"
+        },
+        {
+            "id": 2107,
+            "text": "rēad",
+            "lang": "OE",
+            "gloss": "red"
+        },
+        {
+            "id": 2108,
+            "text": "awjō",
+            "lang": "PGmc",
+            "gloss": "island",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "173"
+                }
+            ]
+        },
+        {
+            "id": 2109,
+            "text": "auwju",
+            "lang": "PWGmc",
+            "gloss": "island"
+        },
+        {
+            "id": 2110,
+            "text": "deupaz",
+            "lang": "PGmc",
+            "gloss": "deep",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "173"
+                }
+            ]
+        },
+        {
+            "id": 2111,
+            "text": "deup",
+            "lang": "PWGmc",
+            "gloss": "deep"
+        },
+        {
+            "id": 2112,
+            "text": "dēop",
+            "lang": "OE",
+            "gloss": "deep"
+        },
+        {
+            "id": 2113,
+            "text": "þēo",
+            "lang": "OE",
+            "gloss": "slave"
+        },
+        {
+            "id": 2115,
+            "text": "eahta",
+            "lang": "OE",
+            "gloss": "eight"
+        },
+        {
+            "id": 2116,
+            "text": "fehu",
+            "lang": "PGmc",
+            "gloss": "cattle, property",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "177"
+                }
+            ]
+        },
+        {
+            "id": 2117,
+            "text": "fehu",
+            "lang": "PWGmc",
+            "gloss": "cattle, property"
+        },
+        {
+            "id": 2118,
+            "text": "feoh",
+            "lang": "OE",
+            "gloss": "cattle, property"
+        },
+        {
+            "id": 2120,
+            "text": "armaz",
+            "lang": "PGmc",
+            "gloss": "arm",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "180"
+                }
+            ]
+        },
+        {
+            "id": 2121,
+            "text": "arm",
+            "lang": "PWGmc",
+            "gloss": "arm"
+        },
+        {
+            "id": 2123,
+            "text": "earm",
+            "lang": "OE",
+            "gloss": "arm"
+        },
+        {
+            "id": 2124,
+            "text": "swartaz",
+            "lang": "PGmc",
+            "gloss": "black",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "180"
+                }
+            ]
+        },
+        {
+            "id": 2125,
+            "text": "swart",
+            "lang": "PWGmc",
+            "gloss": "black"
+        },
+        {
+            "id": 2126,
+            "text": "werþaną",
+            "lang": "PGmc",
+            "gloss": "to become",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "182"
+                }
+            ]
+        },
+        {
+            "id": 2127,
+            "text": "werþan",
+            "lang": "PWGmc",
+            "gloss": "to become"
+        },
+        {
+            "id": 2131,
+            "text": "weorþan",
+            "lang": "OE",
+            "gloss": "to become"
+        },
+        {
+            "id": 2132,
+            "text": "herdō",
+            "lang": "PGmc",
+            "gloss": "herd",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "182"
+                }
+            ]
+        },
+        {
+            "id": 2133,
+            "text": "herdu",
+            "lang": "PWGmc",
+            "gloss": "herd"
+        },
+        {
+            "id": 2135,
+            "text": "halmaz",
+            "lang": "PGmc",
+            "gloss": "straw",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "184"
+                }
+            ]
+        },
+        {
+            "id": 2136,
+            "text": "halm",
+            "lang": "PWGmc",
+            "gloss": "straw"
+        },
+        {
+            "id": 2137,
+            "text": "healm",
+            "lang": "OE",
+            "gloss": "straw"
+        },
+        {
+            "id": 2138,
+            "text": "halsaz",
+            "lang": "PGmc",
+            "gloss": "neck",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "184"
+                }
+            ]
         }
     ],
     "rules": [
@@ -19811,6 +20403,60 @@
                 {
                     "instructions": [
                         {
+                            "type": "ChangeSoundClass",
+                            "args": [
+                                "short",
+                                "long",
+                                "0"
+                            ]
+                        },
+                        {
+                            "type": "SoundDisappears",
+                            "args": [
+                                "1"
+                            ]
+                        },
+                        {
+                            "type": "SoundDisappears",
+                            "args": [
+                                "2"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "and",
+                        "members": [
+                            {
+                                "type": "leaf",
+                                "cond": "PhonemeMatches",
+                                "characters": "a"
+                            },
+                            {
+                                "type": "relPhoneme",
+                                "relativeIndex": 1,
+                                "parameter": "i"
+                            },
+                            {
+                                "type": "relPhoneme",
+                                "relativeIndex": 2,
+                                "parameter": "z"
+                            },
+                            {
+                                "type": "relPhoneme",
+                                "relativeIndex": 2,
+                                "cls": "word-final"
+                            },
+                            {
+                                "type": "leaf",
+                                "cond": "NumberOfSyllables",
+                                "characters": "1"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "instructions": [
+                        {
                             "type": "ChangeSound",
                             "args": [
                                 "e"
@@ -19840,6 +20486,11 @@
                                 "type": "relPhoneme",
                                 "relativeIndex": 1,
                                 "cls": "word-final"
+                            },
+                            {
+                                "type": "leaf",
+                                "cond": "NumberOfSyllables",
+                                "characters": "1"
                             }
                         ]
                     }
@@ -19850,8 +20501,1053 @@
                     "pubId": 5,
                     "refText": "86"
                 }
+            ]
+        },
+        {
+            "id": 2039,
+            "name": "post-pwgmc-n-after-unstressed-i",
+            "fromLang": "PWGmc",
+            "toLang": "OE",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "SoundDisappears",
+                            "args": [
+                                "0"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "and",
+                        "members": [
+                            {
+                                "type": "leaf",
+                                "cond": "PhonemeMatches",
+                                "characters": "n"
+                            },
+                            {
+                                "type": "leaf",
+                                "cond": "EndOfWord"
+                            },
+                            {
+                                "type": "relPhoneme",
+                                "relativeIndex": -1,
+                                "parameter": "ī"
+                            },
+                            {
+                                "type": "relPhoneme",
+                                "relativeIndex": -1,
+                                "negated": true,
+                                "cls": "stressed"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "refText": "RInge 2014:88"
+                }
+            ]
+        },
+        {
+            "id": 2040,
+            "name": "north-pwgmc-nasals-before-fricatives",
+            "fromLang": "PWGmc",
+            "toLang": "OE",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "SoundDisappears",
+                            "args": [
+                                "0"
+                            ]
+                        },
+                        {
+                            "type": "ChangeSoundClass",
+                            "args": [
+                                "short",
+                                "long nasal",
+                                "-1"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "and",
+                        "members": [
+                            {
+                                "type": "leaf",
+                                "cond": "PhonemeMatches",
+                                "cls": "nasal consonant"
+                            },
+                            {
+                                "type": "relPhoneme",
+                                "relativeIndex": 1,
+                                "cls": "fricative"
+                            },
+                            {
+                                "type": "relPhoneme",
+                                "relativeIndex": -1,
+                                "cls": "vowel"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "139"
+                }
+            ]
+        },
+        {
+            "id": 2044,
+            "name": "north-pwgmc-e-before-m",
+            "fromLang": "PWGmc",
+            "toLang": "OE",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "i"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "and",
+                        "members": [
+                            {
+                                "type": "leaf",
+                                "cond": "PhonemeMatches",
+                                "characters": "e"
+                            },
+                            {
+                                "type": "relPhoneme",
+                                "relativeIndex": 1,
+                                "parameter": "m"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "141"
+                }
             ],
             "notes": ""
+        },
+        {
+            "id": 2048,
+            "name": "north-pwgmc-nasalization",
+            "fromLang": "PWGmc",
+            "toLang": "OE",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "ą"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "and",
+                        "members": [
+                            {
+                                "type": "leaf",
+                                "cond": "PhonemeMatches",
+                                "cls": "stressed",
+                                "characters": "a"
+                            },
+                            {
+                                "type": "relPhoneme",
+                                "relativeIndex": 1,
+                                "cls": "nasal consonant"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "142"
+                }
+            ]
+        },
+        {
+            "id": 2049,
+            "name": "north-pwgmc-nasalized-rounding",
+            "fromLang": "PGmc",
+            "toLang": "OE",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "ō"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "leaf",
+                        "cond": "PhonemeMatches",
+                        "characters": "ą̄"
+                    }
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "142"
+                }
+            ],
+            "notes": ""
+        },
+        {
+            "id": 2060,
+            "name": "pre-oe-a-fronting",
+            "fromLang": "PWGmc",
+            "toLang": "OE",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "æ"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "and",
+                        "members": [
+                            {
+                                "type": "leaf",
+                                "cond": "PhonemeMatches",
+                                "cls": "stressed",
+                                "characters": "a"
+                            },
+                            {
+                                "type": "leaf",
+                                "cond": "PhonemeMatches",
+                                "cls": "diphthong",
+                                "negated": true
+                            },
+                            {
+                                "type": "or",
+                                "members": [
+                                    {
+                                        "type": "relPhoneme",
+                                        "relativeIndex": 1,
+                                        "negated": true,
+                                        "parameter": "w"
+                                    },
+                                    {
+                                        "type": "and",
+                                        "members": [
+                                            {
+                                                "type": "relPhoneme",
+                                                "relativeIndex": 1,
+                                                "parameter": "w"
+                                            },
+                                            {
+                                                "type": "relPhoneme",
+                                                "relativeIndex": 2,
+                                                "parameter": "i"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "ǣ"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "and",
+                        "members": [
+                            {
+                                "type": "leaf",
+                                "cond": "PhonemeMatches",
+                                "cls": "stressed",
+                                "characters": "ā"
+                            },
+                            {
+                                "type": "leaf",
+                                "cond": "PhonemeMatches",
+                                "cls": "diphthong",
+                                "negated": true
+                            },
+                            {
+                                "type": "or",
+                                "members": [
+                                    {
+                                        "type": "relPhoneme",
+                                        "relativeIndex": 1,
+                                        "negated": true,
+                                        "parameter": "w"
+                                    },
+                                    {
+                                        "type": "and",
+                                        "members": [
+                                            {
+                                                "type": "relPhoneme",
+                                                "relativeIndex": 1,
+                                                "parameter": "w"
+                                            },
+                                            {
+                                                "type": "relPhoneme",
+                                                "relativeIndex": 2,
+                                                "parameter": "i"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "æ"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "and",
+                        "members": [
+                            {
+                                "type": "leaf",
+                                "cond": "PhonemeMatches",
+                                "cls": "unstressed",
+                                "characters": "a"
+                            },
+                            {
+                                "type": "leaf",
+                                "cond": "PhonemeMatches",
+                                "cls": "diphthong",
+                                "negated": true
+                            },
+                            {
+                                "type": "or",
+                                "members": [
+                                    {
+                                        "type": "relPhoneme",
+                                        "relativeIndex": 1,
+                                        "negated": true,
+                                        "parameter": "w"
+                                    },
+                                    {
+                                        "type": "and",
+                                        "members": [
+                                            {
+                                                "type": "relPhoneme",
+                                                "relativeIndex": 1,
+                                                "parameter": "w"
+                                            },
+                                            {
+                                                "type": "relPhoneme",
+                                                "relativeIndex": 2,
+                                                "parameter": "i"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "or",
+                                "members": [
+                                    {
+                                        "type": "relPhoneme",
+                                        "relativeIndex": 1,
+                                        "negated": true,
+                                        "cls": "nasal consonant"
+                                    },
+                                    {
+                                        "type": "and",
+                                        "members": [
+                                            {
+                                                "type": "relPhoneme",
+                                                "relativeIndex": 1,
+                                                "cls": "nasal consonant"
+                                            },
+                                            {
+                                                "type": "relPhoneme",
+                                                "relativeIndex": 2,
+                                                "cls": "vowel"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "ǣ"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "and",
+                        "members": [
+                            {
+                                "type": "leaf",
+                                "cond": "PhonemeMatches",
+                                "cls": "unstressed",
+                                "characters": "ā"
+                            },
+                            {
+                                "type": "leaf",
+                                "cond": "PhonemeMatches",
+                                "cls": "diphthong",
+                                "negated": true
+                            },
+                            {
+                                "type": "or",
+                                "members": [
+                                    {
+                                        "type": "relPhoneme",
+                                        "relativeIndex": 1,
+                                        "negated": true,
+                                        "parameter": "w"
+                                    },
+                                    {
+                                        "type": "and",
+                                        "members": [
+                                            {
+                                                "type": "relPhoneme",
+                                                "relativeIndex": 1,
+                                                "parameter": "w"
+                                            },
+                                            {
+                                                "type": "relPhoneme",
+                                                "relativeIndex": 2,
+                                                "parameter": "i"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "or",
+                                "members": [
+                                    {
+                                        "type": "relPhoneme",
+                                        "relativeIndex": 1,
+                                        "negated": true,
+                                        "cls": "nasal consonant"
+                                    },
+                                    {
+                                        "type": "and",
+                                        "members": [
+                                            {
+                                                "type": "relPhoneme",
+                                                "relativeIndex": 1,
+                                                "cls": "nasal consonant"
+                                            },
+                                            {
+                                                "type": "relPhoneme",
+                                                "relativeIndex": 2,
+                                                "cls": "vowel"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "146"
+                }
+            ],
+            "notes": "The fronting to ǣ is specific to West Saxon; Kentish and Anglian dialects had ē instead (Ringe 2014:149)"
+        },
+        {
+            "id": 2064,
+            "name": "pwgmc-stress",
+            "fromLang": "PWGmc",
+            "toLang": "PWGmc",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ApplyStress",
+                            "args": [
+                                "first"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "otherwise"
+                    }
+                }
+            ],
+            "notes": ""
+        },
+        {
+            "id": 2077,
+            "name": "pre-oe-long-o-unrounding",
+            "fromLang": "PWGmc",
+            "toLang": "OE",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "ā"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "and",
+                        "members": [
+                            {
+                                "type": "leaf",
+                                "cond": "PhonemeMatches",
+                                "cls": "unstressed",
+                                "characters": "ō"
+                            },
+                            {
+                                "type": "leaf",
+                                "cond": "SyllableIndex",
+                                "characters": "-1"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "154"
+                }
+            ],
+            "notes": ""
+        },
+        {
+            "id": 2082,
+            "name": "pre-oe-lth",
+            "fromLang": "PWGmc",
+            "toLang": "OE",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeNextSound",
+                            "args": [
+                                "d"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "and",
+                        "members": [
+                            {
+                                "type": "leaf",
+                                "cond": "PhonemeMatches",
+                                "characters": "l"
+                            },
+                            {
+                                "type": "relPhoneme",
+                                "relativeIndex": 1,
+                                "parameter": "þ"
+                            },
+                            {
+                                "type": "relPhoneme",
+                                "relativeIndex": 1,
+                                "negated": true,
+                                "cls": "word-final"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "156"
+                }
+            ],
+            "notes": ""
+        },
+        {
+            "id": 2086,
+            "name": "pre-oe-ij-syncope",
+            "fromLang": "PWGmc",
+            "toLang": "OE",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "SoundDisappears",
+                            "args": [
+                                "0"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "and",
+                        "members": [
+                            {
+                                "type": "leaf",
+                                "cond": "PhonemeMatches",
+                                "characters": "i"
+                            },
+                            {
+                                "type": "relPhoneme",
+                                "relativeIndex": 1,
+                                "parameter": "j"
+                            },
+                            {
+                                "type": "relPhoneme",
+                                "relativeIndex": -1,
+                                "cls": "consonant"
+                            },
+                            {
+                                "type": "relPhoneme",
+                                "relativeIndex": 2,
+                                "cls": "vowel"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "156"
+                }
+            ],
+            "notes": ""
+        },
+        {
+            "id": 2090,
+            "name": "pre-oe-h-before-two-nonsyllabics",
+            "fromLang": "PWGmc",
+            "toLang": "OE",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "SoundDisappears",
+                            "args": [
+                                "0"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "and",
+                        "members": [
+                            {
+                                "type": "leaf",
+                                "cond": "PhonemeMatches",
+                                "characters": "h"
+                            },
+                            {
+                                "type": "relPhoneme",
+                                "relativeIndex": 1,
+                                "cls": "consonant"
+                            },
+                            {
+                                "type": "relPhoneme",
+                                "relativeIndex": 2,
+                                "cls": "consonant"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "157"
+                }
+            ],
+            "notes": ""
+        },
+        {
+            "id": 2095,
+            "name": "oe-diphthong-tensing",
+            "fromLang": "PWGmc",
+            "toLang": "OE",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "ā"
+                            ]
+                        },
+                        {
+                            "type": "SoundDisappears",
+                            "args": [
+                                "1"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "and",
+                        "members": [
+                            {
+                                "type": "leaf",
+                                "cond": "PhonemeMatches",
+                                "characters": "a"
+                            },
+                            {
+                                "type": "relPhoneme",
+                                "relativeIndex": 1,
+                                "parameter": "i"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "ē"
+                            ]
+                        },
+                        {
+                            "type": "ChangeNextSound",
+                            "args": [
+                                "a"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "and",
+                        "members": [
+                            {
+                                "type": "leaf",
+                                "cond": "PhonemeMatches",
+                                "characters": "a"
+                            },
+                            {
+                                "type": "relPhoneme",
+                                "relativeIndex": 1,
+                                "parameter": "u"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "ē"
+                            ]
+                        },
+                        {
+                            "type": "ChangeNextSound",
+                            "args": [
+                                "o"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "and",
+                        "members": [
+                            {
+                                "type": "leaf",
+                                "cond": "PhonemeMatches",
+                                "characters": "e"
+                            },
+                            {
+                                "type": "relPhoneme",
+                                "relativeIndex": 1,
+                                "parameter": "u"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "170"
+                }
+            ]
+        },
+        {
+            "id": 2114,
+            "name": "oe-breaking-before-h",
+            "fromLang": "OE",
+            "toLang": "OE",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "ea"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "and",
+                        "members": [
+                            {
+                                "type": "leaf",
+                                "cond": "PhonemeMatches",
+                                "characters": "æ"
+                            },
+                            {
+                                "type": "relPhoneme",
+                                "relativeIndex": 1,
+                                "parameter": "h"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "eo"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "and",
+                        "members": [
+                            {
+                                "type": "leaf",
+                                "cond": "PhonemeMatches",
+                                "characters": "e"
+                            },
+                            {
+                                "type": "relPhoneme",
+                                "relativeIndex": 1,
+                                "parameter": "h"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "io"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "and",
+                        "members": [
+                            {
+                                "type": "leaf",
+                                "cond": "PhonemeMatches",
+                                "characters": "i"
+                            },
+                            {
+                                "type": "relPhoneme",
+                                "relativeIndex": 1,
+                                "parameter": "h"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "īo"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "and",
+                        "members": [
+                            {
+                                "type": "leaf",
+                                "cond": "PhonemeMatches",
+                                "characters": "ī"
+                            },
+                            {
+                                "type": "relPhoneme",
+                                "relativeIndex": 1,
+                                "parameter": "h"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "ēah"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "and",
+                        "members": [
+                            {
+                                "type": "leaf",
+                                "cond": "PhonemeMatches",
+                                "characters": "ǣ"
+                            },
+                            {
+                                "type": "relPhoneme",
+                                "relativeIndex": 1,
+                                "parameter": "h"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "176"
+                }
+            ],
+            "notes": ""
+        },
+        {
+            "id": 2119,
+            "name": "oe-breaking-before-rc-lc",
+            "fromLang": "OE",
+            "toLang": "OE",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "ea"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "and",
+                        "members": [
+                            {
+                                "type": "leaf",
+                                "cond": "PhonemeMatches",
+                                "characters": "æ"
+                            },
+                            {
+                                "type": "or",
+                                "members": [
+                                    {
+                                        "type": "relPhoneme",
+                                        "relativeIndex": 1,
+                                        "parameter": "r"
+                                    },
+                                    {
+                                        "type": "relPhoneme",
+                                        "relativeIndex": 1,
+                                        "parameter": "l"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "relPhoneme",
+                                "relativeIndex": 2,
+                                "cls": "consonant"
+                            },
+                            {
+                                "type": "relPhoneme",
+                                "relativeIndex": 2,
+                                "negated": true,
+                                "parameter": "j"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "eo"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "and",
+                        "members": [
+                            {
+                                "type": "leaf",
+                                "cond": "PhonemeMatches",
+                                "characters": "e"
+                            },
+                            {
+                                "type": "or",
+                                "members": [
+                                    {
+                                        "type": "relPhoneme",
+                                        "relativeIndex": 1,
+                                        "parameter": "r"
+                                    },
+                                    {
+                                        "type": "relPhoneme",
+                                        "relativeIndex": 1,
+                                        "parameter": "l"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "relPhoneme",
+                                "relativeIndex": 2,
+                                "cls": "consonant"
+                            },
+                            {
+                                "type": "relPhoneme",
+                                "relativeIndex": 2,
+                                "negated": true,
+                                "parameter": "j"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "180"
+                }
+            ]
         }
     ],
     "links": [
@@ -24145,6 +25841,322 @@
             "ruleIds": [
                 1966,
                 2018
+            ]
+        },
+        {
+            "from": 2034,
+            "to": 2033,
+            "type": "^",
+            "ruleIds": [
+                2032
+            ]
+        },
+        {
+            "from": 2038,
+            "to": 2035,
+            "type": "^",
+            "ruleIds": [
+                2032
+            ]
+        },
+        {
+            "from": 2051,
+            "to": 2050,
+            "type": "^",
+            "ruleIds": [
+                1966
+            ]
+        },
+        {
+            "from": 2059,
+            "to": 2051,
+            "type": "^",
+            "ruleIds": [
+                2040,
+                2049
+            ]
+        },
+        {
+            "from": 2062,
+            "to": 2061,
+            "type": "^",
+            "ruleIds": [
+                1963,
+                1966
+            ]
+        },
+        {
+            "from": 2065,
+            "to": 2062,
+            "type": "^",
+            "ruleIds": [
+                2060
+            ]
+        },
+        {
+            "from": 312,
+            "to": 2066,
+            "type": "^",
+            "ruleIds": [
+                2060
+            ]
+        },
+        {
+            "from": 2068,
+            "to": 2067,
+            "type": "^",
+            "ruleIds": [
+                1963
+            ]
+        },
+        {
+            "from": 2072,
+            "to": 2071,
+            "type": "^",
+            "ruleIds": [
+                1862,
+                1966
+            ]
+        },
+        {
+            "from": 2073,
+            "to": 2072,
+            "type": "^",
+            "ruleIds": [
+                2060
+            ]
+        },
+        {
+            "from": 2084,
+            "to": 2083,
+            "type": "^",
+            "ruleIds": [
+                1963,
+                1966,
+                1969
+            ]
+        },
+        {
+            "from": 2088,
+            "to": 2087,
+            "type": "^",
+            "ruleIds": [
+                1966
+            ]
+        },
+        {
+            "from": 2092,
+            "to": 2091,
+            "type": "^",
+            "ruleIds": [
+                1966
+            ]
+        },
+        {
+            "from": 2097,
+            "to": 2096,
+            "type": "^",
+            "ruleIds": [
+                1963,
+                1966
+            ]
+        },
+        {
+            "from": 2101,
+            "to": 2100,
+            "type": "^",
+            "ruleIds": [
+                1963,
+                1966
+            ]
+        },
+        {
+            "from": 2102,
+            "to": 2101,
+            "type": "^",
+            "ruleIds": [
+                2095
+            ]
+        },
+        {
+            "from": 2104,
+            "to": 2103,
+            "type": "^",
+            "ruleIds": [
+                1963,
+                1966
+            ]
+        },
+        {
+            "from": 466,
+            "to": 2104,
+            "type": "^",
+            "ruleIds": [
+                2095
+            ]
+        },
+        {
+            "from": 2106,
+            "to": 2105,
+            "type": "^",
+            "ruleIds": [
+                1963,
+                1966
+            ]
+        },
+        {
+            "from": 2107,
+            "to": 2106,
+            "type": "^",
+            "ruleIds": [
+                2095
+            ]
+        },
+        {
+            "from": 2109,
+            "to": 2108,
+            "type": "^",
+            "ruleIds": [
+                1866,
+                1863,
+                1978,
+                2018
+            ]
+        },
+        {
+            "from": 453,
+            "to": 1960,
+            "type": "^",
+            "ruleIds": [
+                2060,
+                2095
+            ]
+        },
+        {
+            "from": 2111,
+            "to": 2110,
+            "type": "^",
+            "ruleIds": [
+                1963,
+                1966
+            ]
+        },
+        {
+            "from": 2112,
+            "to": 2111,
+            "type": "^",
+            "ruleIds": [
+                2095
+            ]
+        },
+        {
+            "from": 2113,
+            "to": 2001,
+            "type": "^",
+            "ruleIds": [
+                2095
+            ]
+        },
+        {
+            "from": 2115,
+            "to": 2010,
+            "type": "^",
+            "ruleIds": [
+                2060,
+                2077,
+                2114
+            ]
+        },
+        {
+            "from": 2117,
+            "to": 2116,
+            "type": "^"
+        },
+        {
+            "from": 2118,
+            "to": 2117,
+            "type": "^",
+            "ruleIds": [
+                2114
+            ]
+        },
+        {
+            "from": 2121,
+            "to": 2120,
+            "type": "^",
+            "ruleIds": [
+                1963,
+                1966
+            ]
+        },
+        {
+            "from": 2123,
+            "to": 2121,
+            "type": "^",
+            "ruleIds": [
+                2060,
+                2119
+            ]
+        },
+        {
+            "from": 2125,
+            "to": 2124,
+            "type": "^",
+            "ruleIds": [
+                1963,
+                1966
+            ]
+        },
+        {
+            "from": 460,
+            "to": 2125,
+            "type": "^",
+            "ruleIds": [
+                2060,
+                2119
+            ]
+        },
+        {
+            "from": 2127,
+            "to": 2126,
+            "type": "^",
+            "ruleIds": [
+                1966
+            ]
+        },
+        {
+            "from": 2131,
+            "to": 2127,
+            "type": "^",
+            "ruleIds": [
+                2119
+            ]
+        },
+        {
+            "from": 2133,
+            "to": 2132,
+            "type": "^",
+            "ruleIds": [
+                1866,
+                1863
+            ]
+        },
+        {
+            "from": 2136,
+            "to": 2135,
+            "type": "^",
+            "ruleIds": [
+                1963,
+                1966
+            ]
+        },
+        {
+            "from": 2137,
+            "to": 2136,
+            "type": "^",
+            "ruleIds": [
+                2060,
+                2119
             ]
         }
     ],
@@ -29025,7 +31037,20 @@
             "toLang": "OE",
             "ruleIds": [
                 1981,
-                2032
+                2032,
+                2039,
+                2040,
+                2044,
+                2048,
+                2049,
+                2060,
+                2077,
+                2082,
+                2086,
+                2090,
+                2095,
+                2114,
+                2119
             ]
         }
     ],
