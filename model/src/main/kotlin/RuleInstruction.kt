@@ -444,7 +444,7 @@ class ChangePhonemeClassInstruction(val relativeIndex: Int, val oldClass: String
         val newClasses = phoneme.classes.toMutableSet()
         if (fromClass !in newClasses) return false
         newClasses.remove(fromClass)
-        newClasses.add(toClass)
+        newClasses.addAll(toClass.split(' '))
         val newPhoneme = phonemes.language.phonemes.singleOrNull { it.classes == newClasses } ?: return false
         phonemes.replaceAtRelative(relativeIndex, newPhoneme.graphemes[0])
         return true

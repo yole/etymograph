@@ -198,6 +198,20 @@ class PhonemeRuleTest : QBaseTest() {
     }
 
     @Test
+    fun changePhonemeClassMultiple() {
+        q.phonemes = listOf(
+            phoneme("a", "short back open vowel"),
+            phoneme("á", "long back open vowel"),
+            phoneme("ã", "long back open nasal vowel")
+        )
+        val rule = parseRule(q, q, """
+            sound is 'a':
+            - short becomes long nasal
+        """.trimIndent())
+        assertEquals("ãi", applyRule(rule, q.word("ai")))
+    }
+
+    @Test
     fun changePreviousPhonemeClass() {
         val rule = parseRule(q, q, """
             sound is nasal and previous sound is voiceless stop:
