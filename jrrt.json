@@ -4958,6 +4958,9 @@
                 {
                     "pubId": 3,
                     "refText": "28"
+                },
+                {
+                    "refText": "https://eldamo.org/content/words/word-3341755013.html"
                 }
             ]
         },
@@ -16654,6 +16657,7 @@
                         {
                             "type": "SoundDisappears",
                             "args": [
+                                ""
                             ]
                         }
                     ],
@@ -19423,8 +19427,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "NextSoundDisappears",
+                            "type": "SoundDisappears",
                             "args": [
+                                "1"
                             ]
                         }
                     ],
@@ -19451,8 +19456,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "NextSoundDisappears",
+                            "type": "SoundDisappears",
                             "args": [
+                                "1"
                             ]
                         }
                     ],
@@ -19578,8 +19584,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "NextSoundDisappears",
+                            "type": "SoundDisappears",
                             "args": [
+                                "1"
                             ]
                         }
                     ],
@@ -19602,8 +19609,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "NextSoundDisappears",
+                            "type": "SoundDisappears",
                             "args": [
+                                "1"
                             ]
                         }
                     ],
@@ -19641,6 +19649,7 @@
                         {
                             "type": "SoundDisappears",
                             "args": [
+                                ""
                             ]
                         }
                     ],
@@ -19669,6 +19678,7 @@
                         {
                             "type": "SoundDisappears",
                             "args": [
+                                ""
                             ]
                         }
                     ],
@@ -19697,6 +19707,7 @@
                         {
                             "type": "SoundDisappears",
                             "args": [
+                                ""
                             ]
                         }
                     ],
@@ -19814,6 +19825,7 @@
                         {
                             "type": "SoundDisappears",
                             "args": [
+                                ""
                             ]
                         }
                     ],
@@ -19855,6 +19867,7 @@
                         {
                             "type": "SoundDisappears",
                             "args": [
+                                ""
                             ]
                         }
                     ],
@@ -20047,6 +20060,7 @@
                         {
                             "type": "SoundDisappears",
                             "args": [
+                                ""
                             ]
                         }
                     ],
@@ -20624,8 +20638,9 @@
                             ]
                         },
                         {
-                            "type": "NextSoundDisappears",
+                            "type": "SoundDisappears",
                             "args": [
+                                "1"
                             ]
                         }
                     ],
@@ -20834,8 +20849,9 @@
                             ]
                         },
                         {
-                            "type": "NextSoundDisappears",
+                            "type": "SoundDisappears",
                             "args": [
+                                "1"
                             ]
                         }
                     ],
@@ -21037,6 +21053,7 @@
                         {
                             "type": "SoundDisappears",
                             "args": [
+                                ""
                             ]
                         }
                     ],
@@ -21586,6 +21603,7 @@
                         {
                             "type": "SoundDisappears",
                             "args": [
+                                ""
                             ]
                         }
                     ],
@@ -21687,8 +21705,9 @@
                             ]
                         },
                         {
-                            "type": "NextSoundDisappears",
+                            "type": "SoundDisappears",
                             "args": [
+                                "1"
                             ]
                         }
                     ],
@@ -21731,8 +21750,9 @@
                             ]
                         },
                         {
-                            "type": "NextSoundDisappears",
+                            "type": "SoundDisappears",
                             "args": [
+                                "1"
                             ]
                         }
                     ],
@@ -21763,6 +21783,7 @@
                         {
                             "type": "SoundDisappears",
                             "args": [
+                                ""
                             ]
                         }
                     ],
@@ -21849,6 +21870,7 @@
                         {
                             "type": "SoundDisappears",
                             "args": [
+                                ""
                             ]
                         }
                     ],
@@ -21877,6 +21899,7 @@
                         {
                             "type": "SoundDisappears",
                             "args": [
+                                ""
                             ]
                         }
                     ],
@@ -22006,6 +22029,7 @@
                         {
                             "type": "SoundDisappears",
                             "args": [
+                                ""
                             ]
                         }
                     ],
@@ -23397,6 +23421,7 @@
                         {
                             "type": "SoundDisappears",
                             "args": [
+                                ""
                             ]
                         }
                     ],
@@ -23421,6 +23446,7 @@
                         {
                             "type": "SoundDisappears",
                             "args": [
+                                ""
                             ]
                         }
                     ],
@@ -24215,6 +24241,7 @@
                         {
                             "type": "SoundDisappears",
                             "args": [
+                                ""
                             ]
                         },
                         {
@@ -24249,6 +24276,7 @@
                         {
                             "type": "SoundDisappears",
                             "args": [
+                                ""
                             ]
                         },
                         {
@@ -24283,6 +24311,7 @@
                         {
                             "type": "SoundDisappears",
                             "args": [
+                                ""
                             ]
                         },
                         {
@@ -24330,6 +24359,7 @@
                         {
                             "type": "SoundDisappears",
                             "args": [
+                                ""
                             ]
                         }
                     ],
@@ -24381,6 +24411,7 @@
                         {
                             "type": "SoundDisappears",
                             "args": [
+                                ""
                             ]
                         },
                         {
@@ -24415,6 +24446,7 @@
                         {
                             "type": "SoundDisappears",
                             "args": [
+                                ""
                             ]
                         },
                         {
@@ -24449,6 +24481,7 @@
                         {
                             "type": "SoundDisappears",
                             "args": [
+                                ""
                             ]
                         },
                         {
@@ -24768,8 +24801,9 @@
                             ]
                         },
                         {
-                            "type": "NextSoundDisappears",
+                            "type": "SoundDisappears",
                             "args": [
+                                "1"
                             ]
                         }
                     ],
@@ -24921,6 +24955,7 @@
                         {
                             "type": "SoundDisappears",
                             "args": [
+                                ""
                             ]
                         }
                     ],

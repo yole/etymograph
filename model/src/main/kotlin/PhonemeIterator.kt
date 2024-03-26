@@ -238,14 +238,14 @@ class PhonemeIterator {
         resultPhonemes[resultPhonemeIndex + relativeIndex] = s
     }
 
-    fun delete() {
-        resultPhonemes.removeAt(resultPhonemeIndex)
-        resultPhonemeIndex--
-    }
-
-    fun deleteNext() {
-        resultPhonemes.removeAt(resultPhonemeIndex + 1)
-        phonemeIndex++
+    fun deleteAtRelative(relativeIndex: Int) {
+        resultPhonemes.removeAt(resultPhonemeIndex + relativeIndex)
+        if (relativeIndex <= 0) {
+            resultPhonemeIndex--
+        }
+        else {
+            phonemeIndex++
+        }
     }
 
     fun insertBefore(s: String) {

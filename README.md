@@ -231,7 +231,7 @@ The following conditions can be used in phonological rules:
    for example, `sound is 'e'`) or phoneme class.
  * `<next|second next|previous> sound is`: Checks whether the next or previous sound matches the given phoneme or
     phoneme class. Example: `next sound is 'a'`
- * `<next|second next|previous> <phoneme class> is:` Checks whether the next or previous phoneme of a given phoneme 
+ * `<next|second next|previous|second previous> <phoneme class> is:` Checks whether the next or previous phoneme of a given phoneme 
    class matches the given phoneme or phoneme class. Examples: `next stop is voiceless`, `next vowel is 'a'`.
  * `beginning of word`: Checks whether the current phoneme is the first one in the word.
  * `end of word`: Checks whether the current phoneme is the last one in the word.
@@ -247,13 +247,13 @@ The following instructions can be used in phonological rules:
  * `new sound is`: Replaces the phoneme with another phoneme (or several phonemes), specified in single quotes.
  * `new next sound is`: Replaces the next phoneme with another phoneme (or several phonemes), specified in single quotes.
  * `sound disappears`: Deletes the phoneme from the word.
- * `next sound disappears`: Deletes the next phoneme from the word.
+ * `<next|previous|second next|second previous> sound disappears`: Deletes the next/previous phoneme from the word.
  * `sound is geminated`: Inserts a copy of the current phoneme at the current location. 
  * `<old class> becomes <new class>`: Replaces the phoneme with a different phoneme which has the same set
    of classes, except that it nas <new class> instead of <old class>. Example: `voiceless becomes voiced`.  
- * `<next|previous> <old class> becomes <new class>`: Replaces the next/previous phoneme with a different  
-   phoneme which has the same set of classes, except that it nas <new class> instead of <old class>. 
-   Example: `previous long becomes short`.
+ * `<next|previous|second next|second previous> <old class> becomes <new class>`: Replaces the next/previous 
+   phoneme with a different phoneme which has the same set of classes, except that it nas <new class> instead of 
+   <old class>. Example: `previous long becomes short`.
  * `<sound> is inserted before`: Inserts the specified phoneme before the current phoneme.
 * `apply sound rule`: Apply the specified phonological rule to the current phoneme (for example,
   `apply sound rule 'on-a-fronting'`), or to the specified phoneme relative to the current one

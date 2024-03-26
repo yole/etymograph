@@ -12021,12 +12021,6 @@
             ]
         },
         {
-            "id": 2009,
-            "text": "ahtōu",
-            "lang": "PWGmc",
-            "gloss": "eight"
-        },
-        {
             "id": 2010,
             "text": "ahtō",
             "lang": "PWGmc",
@@ -12133,6 +12127,30 @@
                 {
                     "pubId": 5,
                     "refText": "66"
+                }
+            ]
+        },
+        {
+            "id": 2028,
+            "text": "auzā",
+            "lang": "PWGmc",
+            "gloss": "ear",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "83"
+                }
+            ]
+        },
+        {
+            "id": 2030,
+            "text": "hazjan",
+            "lang": "PWGmc",
+            "gloss": "praise",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "83"
                 }
             ]
         }
@@ -15824,6 +15842,7 @@
                         {
                             "type": "SoundDisappears",
                             "args": [
+                                ""
                             ]
                         }
                     ],
@@ -18478,6 +18497,7 @@
                         {
                             "type": "SoundDisappears",
                             "args": [
+                                ""
                             ]
                         }
                     ],
@@ -18629,8 +18649,9 @@
                             ]
                         },
                         {
-                            "type": "NextSoundDisappears",
+                            "type": "SoundDisappears",
                             "args": [
+                                "1"
                             ]
                         }
                     ],
@@ -18821,6 +18842,7 @@
                         {
                             "type": "SoundDisappears",
                             "args": [
+                                ""
                             ]
                         }
                     ],
@@ -18865,6 +18887,7 @@
                         {
                             "type": "SoundDisappears",
                             "args": [
+                                ""
                             ]
                         }
                     ],
@@ -18992,8 +19015,9 @@
                             ]
                         },
                         {
-                            "type": "NextSoundDisappears",
+                            "type": "SoundDisappears",
                             "args": [
+                                "1"
                             ]
                         }
                     ],
@@ -19144,9 +19168,9 @@
         },
         {
             "id": 1981,
-            "name": "pwgmc-intervocalic-z",
-            "fromLang": "PGmc",
-            "toLang": "PWGmc",
+            "name": "post-pwgmc-intervocalic-z",
+            "fromLang": "PWGmc",
+            "toLang": "OE",
             "branches": [
                 {
                     "instructions": [
@@ -19408,6 +19432,7 @@
                         {
                             "type": "SoundDisappears",
                             "args": [
+                                ""
                             ]
                         }
                     ],
@@ -19570,8 +19595,9 @@
                             ]
                         },
                         {
-                            "type": "NextSoundDisappears",
+                            "type": "SoundDisappears",
                             "args": [
+                                "1"
                             ]
                         }
                     ],
@@ -19600,8 +19626,9 @@
                 {
                     "instructions": [
                         {
-                            "type": "NextSoundDisappears",
+                            "type": "SoundDisappears",
                             "args": [
+                                "1"
                             ]
                         }
                     ],
@@ -19646,6 +19673,7 @@
                         {
                             "type": "SoundDisappears",
                             "args": [
+                                ""
                             ]
                         }
                     ],
@@ -19773,6 +19801,57 @@
                     "refText": "65"
                 }
             ]
+        },
+        {
+            "id": 2032,
+            "name": "post-pwgmc-monosyllabic-z",
+            "fromLang": "PWGmc",
+            "toLang": "OE",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "e"
+                            ]
+                        },
+                        {
+                            "type": "SoundDisappears",
+                            "args": [
+                                "1"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "and",
+                        "members": [
+                            {
+                                "type": "leaf",
+                                "cond": "PhonemeMatches",
+                                "characters": "i"
+                            },
+                            {
+                                "type": "relPhoneme",
+                                "relativeIndex": 1,
+                                "parameter": "z"
+                            },
+                            {
+                                "type": "relPhoneme",
+                                "relativeIndex": 1,
+                                "cls": "word-final"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "86"
+                }
+            ],
+            "notes": ""
         }
     ],
     "links": [
@@ -28936,8 +29015,17 @@
                 1997,
                 2011,
                 2014,
-                2018,
-                1981
+                2018
+            ]
+        },
+        {
+            "id": 2027,
+            "name": "pwgmc-to-oe",
+            "fromLang": "PWGmc",
+            "toLang": "OE",
+            "ruleIds": [
+                1981,
+                2032
             ]
         }
     ],

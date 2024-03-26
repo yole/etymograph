@@ -18,8 +18,7 @@ enum class InstructionType(
     ChangeSound("new sound is", "new sound is '(.+)'", true),
     ChangeNextSound("new next sound is", "new next sound is '(.+)'", true),
     ChangeSoundClass("becomes", RelativeOrdinals.toPattern() + "?(.+) becomes (.+)", true),
-    SoundDisappears("sound disappears"),
-    NextSoundDisappears("next sound disappears"),
+    SoundDisappears("sound disappears", RelativeOrdinals.toPattern() + "?sound disappears", true),
     SoundIsGeminated("sound is geminated"),
     SoundInserted("is inserted", "'(.+)' is inserted before", true);
 
@@ -80,8 +79,7 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
         when (type) {
             InstructionType.ChangeSound -> phonemes.replace(arg)
             InstructionType.ChangeNextSound -> phonemes.replaceAtRelative(1, arg)
-            InstructionType.SoundDisappears -> phonemes.delete()
-            InstructionType.NextSoundDisappears -> phonemes.deleteNext()
+            InstructionType.SoundDisappears -> phonemes.deleteAtRelative(if (arg.isEmpty()) 0 else arg.toInt())
             InstructionType.SoundInserted -> phonemes.insertBefore(arg)
             InstructionType.SoundIsGeminated -> phonemes.insertAfter(phonemes.current)
             InstructionType.NoChange -> Unit
@@ -92,6 +90,9 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
     fun toEditableText(): String = toRichText().toString()
 
     open fun toRichText(): RichText {
+        if (type == InstructionType.SoundDisappears && arg != "0" && arg.isNotEmpty()) {
+            return RelativeOrdinals.toString(arg.toInt()).rich() + " ".rich() + type.insnName.rich()
+        }
         if (type.pattern != null) {
             val argIndex = type.pattern.indexOfAny(listOf("(.+)", "(.*)"))
             if (argIndex > 0) {
@@ -107,7 +108,7 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
         InstructionType.ChangeEnding ->
             if (arg.isNotEmpty()) "-$arg" else ""
         InstructionType.ChangeSound, InstructionType.ChangeNextSound,
-        InstructionType.SoundDisappears, InstructionType.NextSoundDisappears,
+        InstructionType.SoundDisappears,
         InstructionType.ChangeSoundClass, InstructionType.SoundIsGeminated ->
             toSummaryTextPhonemic(condition)
         else -> ""
@@ -120,8 +121,14 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
         val changeSummary = when (type) {
             InstructionType.ChangeSound -> "$soundIsParameter -> '${arg}'"
             InstructionType.ChangeSoundClass -> (this as ChangePhonemeClassInstruction).oldClass + " -> " + newClass
-            InstructionType.SoundDisappears -> "$soundIsParameter -> Ø"
-            InstructionType.ChangeNextSound, InstructionType.NextSoundDisappears -> summarizeNextSound(condition).also {
+            InstructionType.SoundDisappears -> when (arg) {
+                "0" -> "$soundIsParameter -> Ø"
+                "1" -> summarizeNextSound(condition).also {
+                    includeRelativePhoneme = false
+                }
+                else -> null
+            }
+            InstructionType.ChangeNextSound -> summarizeNextSound(condition).also {
                 includeRelativePhoneme = false
             }
             else -> return null
@@ -141,7 +148,7 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
         {
             return null
         }
-        val nextSound = if (type == InstructionType.NextSoundDisappears) "" else arg
+        val nextSound = if (type == InstructionType.SoundDisappears) "" else arg
         return "'${soundIs.parameter}${nextPhonemeIs.parameter}' -> '${soundIs.parameter}$nextSound'"
     }
 
@@ -229,6 +236,7 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
                             PrependAppendInstruction(type, context.fromLanguage, arg)
                         InstructionType.Insert -> InsertInstruction.parse(context.fromLanguage, match)
                         InstructionType.ChangeSoundClass -> ChangePhonemeClassInstruction.parse(match)
+                        InstructionType.SoundDisappears -> RuleInstruction(type, RelativeOrdinals.parseMatch(match, 1).toString())
                         else -> RuleInstruction(type, arg)
                     }
                 }
