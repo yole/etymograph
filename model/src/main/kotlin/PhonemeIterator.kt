@@ -4,8 +4,8 @@ import kotlin.math.abs
 import kotlin.math.sign
 
 open class OrdinalTable(private val items: List<Pair<String, Int>>) {
-    fun toString(i: Int): String? {
-        return items.find { it.second == i }?.first
+    fun toString(i: Int): String {
+        return items.find { it.second == i }?.first ?: i.toString()
     }
 
     fun parse(s: String): Pair<Int, String>? {
@@ -68,11 +68,11 @@ class SeekTarget(val index: Int, val phonemeClass: PhonemeClass?, val relative: 
     fun toEditableText(): String {
         val targetSound = phonemeClass?.name ?: "sound"
         val indexAsString = if (relative) RelativeOrdinals.toString(index) else Ordinals.toString(index)
-        return indexAsString?.let { "$it $targetSound"} ?: "$index $targetSound"
+        return "$indexAsString $targetSound"
     }
 
     fun toRichText(): RichText {
-        return (if (relative) RelativeOrdinals.toString(index) else Ordinals.toString(index))!!.rich(true) +
+        return (if (relative) RelativeOrdinals.toString(index) else Ordinals.toString(index)).rich(true) +
             " ".rich() +
             (phonemeClass?.name?.rich(true) ?: "sound".rich())
     }

@@ -443,7 +443,7 @@ class ChangePhonemeClassInstruction(val relativeIndex: Int, val oldClass: String
     }
 
     override fun toRichText(): RichText {
-        val relIndex = RelativeOrdinals.toString(relativeIndex)?.plus(" ") ?: ""
+        val relIndex = if (relativeIndex == 0) "" else RelativeOrdinals.toString(relativeIndex) + " "
         return relIndex.rich() + oldClass.rich(emph = true) + " becomes ".rich() + newClass.rich(emph = true)
     }
 
