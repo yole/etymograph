@@ -237,6 +237,18 @@ class PhonemeRuleTest : QBaseTest() {
     }
 
     @Test
+    fun stressedSoundCombinedCondition() {
+        val rule = parseRule(q, q, """
+            sound is stressed 'o' and previous sound is 'w':
+            - new sound is 'a'
+        """.trimIndent())
+        assertEquals("wawo", rule.apply(q.word("wowo").apply { stressedPhonemeIndex = 1 }, emptyRepo).text)
+        assertEquals("wiwo", rule.apply(q.word("wiwo").apply { stressedPhonemeIndex = 1 }, emptyRepo).text)
+        assertEquals("sound is stressed 'o' and previous sound is 'w'", rule.logic.branches[0].condition.toEditableText())
+        assertEquals("stressed 'o' -> 'a' after 'w'", rule.toSummaryText())
+    }
+
+    @Test
     fun stressedSoundConditionNegated() {
         val rule = parseRule(q, q, """
             sound is 'o' and previous sound is 'w' and sound is not stressed:

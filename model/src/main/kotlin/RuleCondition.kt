@@ -204,8 +204,9 @@ class LeafRuleCondition(
         return false.negateIfNeeded()
     }
 
-    private fun matchPhoneme(phonemes: PhonemeIterator) =
-        (phonemeClass?.matchesCurrent(phonemes) ?: (phonemes.current == parameter)).negateIfNeeded()
+    private fun matchPhoneme(phonemes: PhonemeIterator): Boolean =
+        ((phonemeClass?.matchesCurrent(phonemes) ?: true) &&
+         (parameter == null || phonemes.current == parameter)).negateIfNeeded()
 
     override fun toRichText(): RichText {
         val maybeNotPrefix = (if (negated) notPrefix else "").rich()
@@ -238,8 +239,9 @@ class LeafRuleCondition(
 
         val parameterName = if (type.parameterParseCallback != null)
             parameter
-        else
-            phonemeClass?.name ?: "'$parameter'"
+        else {
+            combineToEditableText(phonemeClass, parameter)
+        }
         return parameterName
     }
 
@@ -310,6 +312,11 @@ class LeafRuleCondition(
 
             return LeafRuleCondition(conditionType, phonemeClass, parameter, negated, baseLanguageShortName)
         }
+
+        fun combineToEditableText(phonemeClass1: PhonemeClass?, parameter: String?) = arrayOf(
+            phonemeClass1?.name,
+            parameter?.let { "'$it'" }
+        ).filterNotNull().joinToString(" ")
     }
 }
 

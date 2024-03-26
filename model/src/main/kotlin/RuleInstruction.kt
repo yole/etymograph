@@ -116,7 +116,7 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
 
     protected fun toSummaryTextPhonemic(condition: RuleCondition): String? {
         val soundIs = condition.findLeafConditions(ConditionType.PhonemeMatches).singleOrNull() ?: return null
-        val soundIsParameter = soundIs.phonemeClass?.name ?: "'${soundIs.parameter}'"
+        val soundIsParameter = LeafRuleCondition.combineToEditableText(soundIs.phonemeClass, soundIs.parameter)
         var includeRelativePhoneme = true
         val changeSummary = when (type) {
             InstructionType.ChangeSound -> "$soundIsParameter -> '${arg}'"

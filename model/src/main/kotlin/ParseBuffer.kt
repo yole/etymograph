@@ -18,8 +18,8 @@ class ParseBuffer(val s: String) {
         }
     }
 
-    fun consumeQuoted(): String? {
-        if (s[pos] == '\'') {
+    private fun consumeQuoted(): String? {
+        if (pos < s.length && s[pos] == '\'') {
             pos++
             val endQuote = s.indexOf('\'', pos)
             if (endQuote < 0) {
@@ -37,7 +37,7 @@ class ParseBuffer(val s: String) {
         consumeQuoted()?.let { return null to it }
         consume(LeafRuleCondition.indefiniteArticle)
         val characterClass = parsePhonemeClass(language, false)
-        return characterClass to null
+        return characterClass to consumeQuoted()
     }
 
     fun parsePhonemeClass(language: Language, allowSound: Boolean): PhonemeClass? {

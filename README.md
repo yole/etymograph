@@ -106,6 +106,12 @@ For every phoneme, a set of classes (features) is specified: whether it's a vowe
 how it's articulated (back/front, open/closed for vowels, voiced/voiceless, labial/velar etc. for consonants).
 The classes can be referenced in rules.
 
+In addition to the classes defined in each language, you can use a number of special classes in rules:
+ * `diphthong` matches a vowel which is part of a diphthong;
+ * `word-initial` matches the first phoneme of a word;
+ * `word-final` matches the last phoneme of a word;
+ * `stressed` matches the vowel in the stressed syllable of a word.
+
 ### Rules
 
 Etymograph supports two types of rules: morphological (operating on the word as a whole) and pholological
@@ -228,7 +234,8 @@ sound is a vowel:
 The following conditions can be used in phonological rules:
 
  * `sound is`: Checks whether the current phoneme matches the given phoneme (enclosed in single quotes;
-   for example, `sound is 'e'`) or phoneme class.
+   for example, `sound is 'e'`) or phoneme class. You can specify a phoneme class together with a specific sound,
+   for example, `sound is stressed 'a'`).
  * `<next|second next|previous> sound is`: Checks whether the next or previous sound matches the given phoneme or
     phoneme class. Example: `next sound is 'a'`
  * `<next|second next|previous|second previous> <phoneme class> is:` Checks whether the next or previous phoneme of a given phoneme 
