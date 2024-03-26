@@ -71,7 +71,7 @@ class PhonemeController(val graphService: GraphService) {
             language,
             parseList(params.graphemes),
             params.sound.nullize(),
-            params.classes.split(' ').toSet(),
+            parseClasses(params),
             params.historical,
             parseSourceRefs(graphService.graph, params.source),
             params.notes
@@ -85,12 +85,15 @@ class PhonemeController(val graphService: GraphService) {
         val phoneme = resolvePhoneme(id)
         phoneme.graphemes = parseList(params.graphemes)
         phoneme.sound = params.sound.nullize()
-        phoneme.classes = params.classes.split(' ').toSet()
+        phoneme.classes = parseClasses(params)
         phoneme.historical = params.historical
         phoneme.source = parseSourceRefs(graphService.graph, params.source)
         phoneme.notes = params.notes
         graphService.graph.save()
     }
+
+    private fun parseClasses(params: UpdatePhonemeParameters) =
+        params.classes.trim().split(' ').toSet()
 
     @PostMapping("/phoneme/{id}/delete", consumes = ["application/json"])
     fun deletePhoneme(@PathVariable id: Int) {
