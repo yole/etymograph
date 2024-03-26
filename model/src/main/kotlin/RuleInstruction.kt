@@ -80,8 +80,8 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
             InstructionType.ChangeSound -> phonemes.replace(arg)
             InstructionType.ChangeNextSound -> phonemes.replaceAtRelative(1, arg)
             InstructionType.SoundDisappears -> phonemes.deleteAtRelative(if (arg.isEmpty()) 0 else arg.toInt())
-            InstructionType.SoundInserted -> phonemes.insertBefore(arg)
-            InstructionType.SoundIsGeminated -> phonemes.insertAfter(phonemes.current)
+            InstructionType.SoundInserted -> phonemes.insertAtRelative(0, arg)
+            InstructionType.SoundIsGeminated -> phonemes.insertAtRelative(1, phonemes.current)
             InstructionType.NoChange -> Unit
             else -> throw IllegalStateException("Can't apply word instruction to individual phoneme")
         }
@@ -408,10 +408,10 @@ class InsertInstruction(arg: String, val relIndex: Int, val seekTarget: SeekTarg
         val phonemes = PhonemeIterator(word)
         if (!phonemes.seek(seekTarget)) return word
         if (relIndex == -1) {
-            phonemes.insertBefore(arg)
+            phonemes.insertAtRelative(0, arg)
         }
         else {
-            phonemes.insertAfter(arg)
+            phonemes.insertAtRelative(1, arg)
         }
         return word.derive(phonemes.result())
     }

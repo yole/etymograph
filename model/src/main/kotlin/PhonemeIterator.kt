@@ -110,7 +110,7 @@ class PhonemeIterator {
     private val phonemes: List<String>
     private val resultPhonemes: MutableList<String>
     private var phonemeIndex = 0
-    private var resultPhonemeIndex = 0
+    private val phonemeToResultIndexMap: IntArray
     private val stressCallback: (() -> Int)?
 
     constructor(word: Word, resultPhonemic: Boolean? = null) : this(
@@ -144,18 +144,21 @@ class PhonemeIterator {
         }
 
         phonemes = sourcePhonemes
+        phonemeToResultIndexMap = IntArray(phonemes.size) { it }
     }
 
     private constructor(
         phonemes: List<String>,
         resultPhonemes: MutableList<String>,
         language: Language,
-        stressCallback: (() -> Int)? = null
+        stressCallback: (() -> Int)? = null,
+        phonemeToResultIndexMap: IntArray
     ) {
         this.phonemes = phonemes
         this.resultPhonemes = resultPhonemes
         this.language = language
         this.stressCallback = stressCallback
+        this.phonemeToResultIndexMap = phonemeToResultIndexMap
     }
 
     val current: String get() = phonemes[phonemeIndex]
@@ -167,15 +170,13 @@ class PhonemeIterator {
     fun atRelative(relativeIndex: Int): String? = phonemes.getOrNull(phonemeIndex + relativeIndex)
 
     fun clone(): PhonemeIterator {
-        return PhonemeIterator(phonemes, resultPhonemes, language, stressCallback).also {
+        return PhonemeIterator(phonemes, resultPhonemes, language, stressCallback, phonemeToResultIndexMap).also {
             it.phonemeIndex = phonemeIndex
-            it.resultPhonemeIndex = resultPhonemeIndex
         }
     }
 
     fun advanceTo(index: Int) {
         phonemeIndex = index
-        resultPhonemeIndex = index
     }
 
     fun advance(): Boolean {
@@ -186,7 +187,6 @@ class PhonemeIterator {
         val newIndex = phonemeIndex + relativeIndex
         if (newIndex >= 0 && newIndex < phonemes.size) {
             phonemeIndex = newIndex
-            resultPhonemeIndex += relativeIndex
             return true
         }
         return false
@@ -226,36 +226,42 @@ class PhonemeIterator {
         }
         val result = Ordinals.at(matchingIndexes, seekTarget.index) ?: return false
         phonemeIndex = result
-        resultPhonemeIndex = result
         return true
     }
 
     fun replace(s: String) {
-        resultPhonemes[resultPhonemeIndex] = s
+        val resultIndex = phonemeToResultIndexMap[phonemeIndex]
+        if (resultIndex >= 0) {
+            resultPhonemes[resultIndex] = s
+        }
     }
 
     fun replaceAtRelative(relativeIndex: Int, s: String) {
-        resultPhonemes[resultPhonemeIndex + relativeIndex] = s
+        val resultIndex = phonemeToResultIndexMap[phonemeIndex + relativeIndex]
+        if (resultIndex >= 0) {
+            resultPhonemes[resultIndex] = s
+        }
     }
 
     fun deleteAtRelative(relativeIndex: Int) {
-        resultPhonemes.removeAt(resultPhonemeIndex + relativeIndex)
-        if (relativeIndex <= 0) {
-            resultPhonemeIndex--
-        }
-        else {
-            phonemeIndex++
+        val targetIndex = phonemeIndex + relativeIndex
+        val resultIndex = phonemeToResultIndexMap[targetIndex]
+        if (resultIndex >= 0) {
+            resultPhonemes.removeAt(resultIndex)
+            phonemeToResultIndexMap[targetIndex] = -1
+            for (i in targetIndex+1..<phonemes.size) {
+                phonemeToResultIndexMap[i]--
+            }
         }
     }
 
-    fun insertBefore(s: String) {
-        resultPhonemes.add(resultPhonemeIndex, s)
-        resultPhonemeIndex++
-    }
-
-    fun insertAfter(s: String) {
-        resultPhonemes.add(resultPhonemeIndex + 1, s)
-        resultPhonemeIndex++
+    fun insertAtRelative(relativeIndex: Int, s: String) {
+        val targetIndex = phonemeIndex + relativeIndex
+        val resultIndex = phonemeToResultIndexMap[targetIndex]
+        resultPhonemes.add(resultIndex, s)
+        for (i in targetIndex..<phonemes.size) {
+            phonemeToResultIndexMap[i]++
+        }
     }
 
     fun result(): String {
