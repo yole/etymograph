@@ -1,21 +1,30 @@
 package ru.yole.etymograph.web
 
 import org.junit.Assert.*
+import org.junit.Before
 import org.junit.Test
 import org.springframework.web.server.ResponseStatusException
 import ru.yole.etymograph.*
 
 class RuleControllerTest {
+    private lateinit var fixture: QTestFixture
+    private lateinit var ruleController: RuleController
+    private lateinit var graph: GraphRepository
+
+    @Before
+    fun setup() {
+        fixture = QTestFixture()
+        ruleController = RuleController(fixture.graphService)
+        graph = fixture.graph
+    }
+
     @Test
     fun testGrammaticalCategories() {
-        val fixture = QTestFixture()
-        val ruleController = RuleController(fixture.graphService)
-
         fixture.q.grammaticalCategories.add(
             WordCategory("Case", listOf("N"),
                 listOf(WordCategoryValue("Genitive", "GEN"))))
 
-        val rule = fixture.graphService.graph.addRule("q-gen", fixture.q, fixture.q,
+        val rule = graph.addRule("q-gen", fixture.q, fixture.q,
             RuleLogic(emptyList(), emptyList()), ".GEN")
 
         val ruleVM = ruleController.rule(rule.id)
@@ -24,9 +33,6 @@ class RuleControllerTest {
 
     @Test
     fun testGrammaticalCategoriesExtractNumber() {
-        val fixture = QTestFixture()
-        val ruleController = RuleController(fixture.graphService)
-
         fixture.q.grammaticalCategories.add(
             WordCategory("Person", listOf("V"),
                 listOf(WordCategoryValue("1st person", "1"))))
@@ -34,7 +40,7 @@ class RuleControllerTest {
             WordCategory("Number", listOf("V"),
                 listOf(WordCategoryValue("Singular", "SG"))))
 
-        val rule = fixture.graphService.graph.addRule("q-1sg", fixture.q, fixture.q,
+        val rule = graph.addRule("q-1sg", fixture.q, fixture.q,
             RuleLogic(emptyList(), emptyList()), ".1SG")
 
         val ruleVM = ruleController.rule(rule.id)
@@ -43,9 +49,6 @@ class RuleControllerTest {
 
     @Test
     fun testEmptyToPOS() {
-        val fixture = QTestFixture()
-        val ruleController = RuleController(fixture.graphService)
-
         ruleController.newRule(
             RuleController.UpdateRuleParameters(
             "q-pos",
@@ -54,15 +57,12 @@ class RuleControllerTest {
             toPOS = ""
         ))
 
-        val rule = fixture.graphService.graph.ruleByName("q-pos")
+        val rule = graph.ruleByName("q-pos")
         assertNull(rule!!.toPOS)
     }
 
     @Test
     fun uniqueRuleName() {
-        val fixture = QTestFixture()
-        val ruleController = RuleController(fixture.graphService)
-
         ruleController.newRule(
             RuleController.UpdateRuleParameters(
                 "q-pos",
@@ -70,7 +70,7 @@ class RuleControllerTest {
                 "- no change"
             ))
 
-        assertThrows("Rule named 'q-pos' already exists", ResponseStatusException::class.java) {
+        assertThrows(ResponseStatusException::class.java) {
             ruleController.newRule(
                 RuleController.UpdateRuleParameters(
                     "q-pos",
@@ -82,11 +82,9 @@ class RuleControllerTest {
 
     @Test
     fun newSequence() {
-        val fixture = QTestFixture()
-        val rule = fixture.graphService.graph.addRule("q-gen", fixture.q, fixture.q,
+        val rule = graph.addRule("q-gen", fixture.q, fixture.q,
             RuleLogic(emptyList(), emptyList()))
 
-        val ruleController = RuleController(fixture.graphService)
         ruleController.newSequence(
             RuleController.UpdateSequenceParams(
                 "ce-to-q",
@@ -96,7 +94,7 @@ class RuleControllerTest {
             )
         )
 
-        val seq = fixture.graphService.graph.ruleSequencesForLanguage(fixture.q).single()
+        val seq = graph.ruleSequencesForLanguage(fixture.q).single()
 
         val ruleList = ruleController.rules("q")
         assertEquals(1, ruleList.ruleGroups.size)
@@ -106,8 +104,6 @@ class RuleControllerTest {
 
     @Test
     fun editSequence() {
-        val fixture = QTestFixture()
-        val graph = fixture.graphService.graph
         val rule = graph.addRule("q-gen", fixture.q, fixture.q,
             RuleLogic(emptyList(), emptyList()))
         val seq = graph.addRuleSequence("ce-to-q", fixture.ce, fixture.q, listOf(rule))
@@ -115,7 +111,6 @@ class RuleControllerTest {
         val rule2 = graph.addRule("q-acc", fixture.q, fixture.q,
             RuleLogic(emptyList(), emptyList()))
 
-        val ruleController = RuleController(fixture.graphService)
         ruleController.updateSequence(
             seq.id,
             RuleController.UpdateSequenceParams(
@@ -133,9 +128,6 @@ class RuleControllerTest {
 
     @Test
     fun applySequence() {
-        val fixture = QTestFixture()
-        val graph = fixture.graphService.graph
-        val ruleController = RuleController(fixture.graphService)
         val seq = fixture.setupRuleSequence()
         val w1 = graph.findOrAddWord("am", fixture.ce, null)
         val w2 = graph.findOrAddWord("an", fixture.q, null)
@@ -148,11 +140,8 @@ class RuleControllerTest {
 
     @Test
     fun expectedWordOrtho() {
-        val fixture = QTestFixture()
-        val graph = fixture.graphService.graph
         fixture.q.phonemes = listOf(Phoneme(-1, listOf("th"), "θ", setOf("consonant")))
 
-        val ruleController = RuleController(fixture.graphService)
         ruleController.newRule(
             RuleController.UpdateRuleParameters(
                 "q-pos",
