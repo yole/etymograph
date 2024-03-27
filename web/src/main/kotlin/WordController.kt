@@ -365,7 +365,16 @@ class WordController(val graphService: GraphService) {
 
     @PostMapping("/wordSequence")
     fun addWordSequence(@RequestBody params: WordSequenceParams) {
-        val steps = params.sequence.split('>').map { it.trim() }
+        var stepText = params.sequence
+        var sourceText: String? = null
+        if (stepText.endsWith(')')) {
+            val sourceStart = stepText.lastIndexOf('(').takeIf { it >= 0 }
+                ?: badRequest("Can't parse sequence $stepText")
+            sourceText = stepText.substring(sourceStart + 1).removeSuffix(")")
+            stepText = stepText.substring(0, sourceStart).trim()
+        }
+        val source = parseSourceRefs(graphService.graph, sourceText)
+        val steps = stepText.split('>').map { it.trim() }
         var lastGloss: String? = null
         var lastWord: Word? = null
 
@@ -382,9 +391,9 @@ class WordController(val graphService: GraphService) {
                 gloss = lastGloss
             }
 
-            val word = graphService.graph.findOrAddWord(match.groupValues[2], language, gloss)
+            val word = graphService.graph.findOrAddWord(match.groupValues[2], language, gloss, source = source)
             if (lastWord != null) {
-                val link = graphService.graph.addLink(word, lastWord, Link.Origin, emptyList(), emptyList(), null)
+                val link = graphService.graph.addLink(word, lastWord, Link.Origin, emptyList(), source, null)
                 val ruleSequence = graphService.graph.ruleSequencesForLanguage(word.language)
                     .singleOrNull { it.fromLanguage == lastWord!!.language }
                 if (ruleSequence != null) {
