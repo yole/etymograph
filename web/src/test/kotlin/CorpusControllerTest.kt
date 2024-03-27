@@ -35,7 +35,7 @@ class CorpusControllerTest {
 
         val accRule = fixture.setupParadigm()
         val elen = fixture.graph.findOrAddWord("elen", fixture.q, "star", pos = "N")
-        val elenAcc =  fixture.graph.findOrAddWord("elen", fixture.q,  "star.ACC", pos = "N")
+        val elenAcc =  fixture.graph.findOrAddWord("elen", fixture.q, "star.ACC", pos = "N")
         elenAcc.gloss = null
         fixture.graph.addLink(elenAcc, elen, Link.Derived, listOf(accRule), emptyList(), null)
 

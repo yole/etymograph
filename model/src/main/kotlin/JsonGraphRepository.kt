@@ -21,6 +21,7 @@ data class WordData(
     val fullGloss: String? = null,
     val pos: String? = null,
     val classes: List<String>? = null,
+    val reconstructed: Boolean = false,
     val sourceRefs: List<SourceRefData>? = null,
     val notes: String? = null
 )
@@ -348,6 +349,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             allLangEntities.filterIsInstance<Word>().map {
                 WordData(it.id, it.text, it.language.shortName, it.gloss, it.fullGloss, it.pos,
                     it.classes.takeIf { it.isNotEmpty() },
+                    it.reconstructed,
                     it.source.sourceToSerializedFormat(), it.notes)
             },
             rules.map { it.ruleToSerializedFormat() },
@@ -459,6 +461,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                 wordData.fullGloss,
                 wordData.pos,
                 wordData.classes ?: emptyList(),
+                wordData.reconstructed,
                 loadSource(wordData.sourceRefs),
                 wordData.notes
             )

@@ -103,8 +103,7 @@ function WordLinkComponent(params) {
     }
 
     return <div>
-        {linkWord.word.language !== baseWord.language && linkWord.word.language + " "}
-        <WordLink word={linkWord.word}/>
+        <WordLink word={linkWord.word} baseLanguage={baseWord.language}/>
         {linkWord.word.gloss != null && ' "' + linkWord.word.gloss + '"' }
         {linkWord.ruleIds.length > 0 && <>&nbsp;(
             {linkWord.ruleResults.length > 0 && <>
@@ -158,8 +157,7 @@ function CompoundRefComponent(params) {
     const linkWord = params.linkWord
 
     return <span>
-        {linkWord.language !== baseWord.language && linkWord.language + " "}
-        <WordLink word={linkWord}/>
+        <WordLink word={linkWord} baseLanguage={baseWord.language}/>
         {linkWord.gloss != null && ' "' + linkWord.gloss + '"' }
     </span>
 }
@@ -257,7 +255,7 @@ function SingleWord(params) {
 
     function acceptParseCandidate(pc) {
         if (pc.wordId === null) {
-            addWord(word.language, pc.text, "", "", pc.pos, null)
+            addWord(word.language, pc.text, "", "", pc.pos)
                 .then(r => {
                     if (r.status === 200)
                         r.json().then(r =>
@@ -322,7 +320,7 @@ function SingleWord(params) {
             {!isName && isCompound && <Link href={`/dictionary/${word.language}/compounds`}>Compounds</Link>}
             {' > '}</small>
             <WordWithStress text={word.text} stressIndex={word.stressIndex} stressLength={word.stressLength}
-                            reconstructed={word.languageReconstructed}/></h2>
+                            reconstructed={word.reconstructed || word.languageReconstructed}/></h2>
         {!editMode && <>
             {word.pos && <div>{word.pos} {word.classes.length > 0 && "(" + word.classes.join(", ") + ")"}</div>}
             <p>{word.fullGloss !== null && word.fullGloss !== "" ? word.fullGloss : word.gloss}</p>
@@ -344,6 +342,7 @@ function SingleWord(params) {
                                initialGloss={word.glossComputed ? undefined : word.gloss}
                                initialFullGloss={word.fullGloss}
                                initialPosClasses={posClassesEditable}
+                               initialReconstructed={word.reconstructed}
                                initialSource={word.sourceEditableText}
                                initialNotes={word.notes}
                                submitted={editSubmitted}/>}

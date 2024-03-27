@@ -97,22 +97,13 @@ open class InMemoryGraphRepository : GraphRepository() {
         return filteredWords(lang, WordKind.NORMAL)
     }
 
-    override fun compoundWords(lang: Language): List<Word> {
-        return filteredWords(lang, WordKind.COMPOUND)
-    }
-
-    override fun nameWords(lang: Language): List<Word> {
-        return filteredWords(lang, WordKind.NAME)
-    }
-
     override fun allWords(lang: Language): List<Word> {
         return words[lang]?.values?.flatten() ?: emptyList()
     }
 
-    enum class WordKind { NAME, COMPOUND, DERIVED, NORMAL }
-
     private fun classifyWord(word: Word): WordKind {
         return when {
+            word.reconstructed -> WordKind.RECONSTRUCTED
             word.pos == "NP" -> WordKind.NAME
             isCompound(word) -> WordKind.COMPOUND
             word.gloss == null -> WordKind.DERIVED
@@ -133,7 +124,7 @@ open class InMemoryGraphRepository : GraphRepository() {
         return !suffix.isNullOrEmpty() && suffix.all { it.isUpperCase() || it.isDigit() }
     }
 
-    private fun filteredWords(lang: Language, kind: WordKind): List<Word> {
+    override fun filteredWords(lang: Language, kind: WordKind): List<Word> {
         val wordsInLang = words[lang] ?: return emptyList()
         return wordsInLang.flatMap { it.value }
             .filter { classifyWord(it) == kind }
@@ -343,6 +334,7 @@ open class InMemoryGraphRepository : GraphRepository() {
         fullGloss: String?,
         pos: String?,
         classes: List<String>,
+        reconstructed: Boolean,
         source: List<SourceRef>,
         notes: String?
     ): Word {
@@ -350,7 +342,7 @@ open class InMemoryGraphRepository : GraphRepository() {
         wordsByText.find { it.getOrComputeGloss(this) == gloss || gloss.isNullOrEmpty() }?.let {
             return it
         }
-        return addWord(language, text, gloss, fullGloss, pos, classes, source, notes)
+        return addWord(language, text, gloss, fullGloss, pos, classes, reconstructed, source, notes)
     }
 
     override fun updateWordText(word: Word, text: String) {
@@ -366,11 +358,12 @@ open class InMemoryGraphRepository : GraphRepository() {
         fullGloss: String?,
         pos: String?,
         classes: List<String>,
+        reconstructed: Boolean,
         source: List<SourceRef>,
         notes: String?
     ): Word {
         val wordsByText = mapOfWordsByText(language, text)
-        return Word(allLangEntities.size, text, language, gloss, fullGloss, pos, classes, source, notes).also {
+        return Word(allLangEntities.size, text, language, gloss, fullGloss, pos, classes, reconstructed, source, notes).also {
             allLangEntities.add(it)
             wordsByText.add(it)
         }

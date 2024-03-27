@@ -21,7 +21,8 @@ export async function getStaticPaths() {
     const paths = props.loaderData.flatMap(lang => [
         {params: {lang: [lang.shortName]}},
         {params: {lang: [lang.shortName, 'compounds']}},
-        {params: {lang: [lang.shortName, 'names']}}
+        {params: {lang: [lang.shortName, 'names']}},
+        {params: {lang: [lang.shortName, 'reconstructed']}}
     ])
     return {paths, fallback: false}
 }
@@ -32,7 +33,8 @@ export default function Dictionary(params) {
     const filter = router.query.lang.length < 2 ? "" : router.query.lang[1]
 
     const filterText = filter === "names" ? "Names" :
-        (filter === "compounds" ? "Compounds" : "Dictionary")
+        (filter === "reconstructed" ? "Reconstructed" :
+        (filter === "compounds" ? "Compounds" : "Dictionary"))
 
     const [errorText, setErrorText] = useState("")
     useEffect(() => { document.title = "Etymograph : " + dict.language.name + " : " + filterText})
@@ -56,7 +58,12 @@ export default function Dictionary(params) {
             <Link href={`/language/${dict.language.shortName}`}>{dict.language.name}</Link></small> {'>'} {filterText}</h2>
         {allowEdit() && <>
             <h3>Add word</h3>
-            <WordForm language={dict.language.shortName} languageReadOnly={true} submitted={submitted}/>
+            <WordForm language={dict.language.shortName}
+                      languageReadOnly={true}
+                      submitted={submitted}
+                      initialReconstructed={filter === "reconstructed"}
+                      hideReconstructed={filter === "reconstructed"}
+            />
             <p/>
             {errorText !== "" && <div className="errorText">{errorText}</div>}
         </>}

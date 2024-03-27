@@ -1,5 +1,7 @@
 package ru.yole.etymograph
 
+enum class WordKind { NAME, COMPOUND, DERIVED, RECONSTRUCTED, NORMAL }
+
 abstract class GraphRepository {
     abstract fun allLanguages(): Iterable<Language>
     abstract fun languageByShortName(languageShortName: String): Language?
@@ -33,8 +35,7 @@ abstract class GraphRepository {
     abstract fun wordsByText(lang: Language, text: String): List<Word>
     abstract fun updateWordText(word: Word, text: String)
     abstract fun dictionaryWords(lang: Language): List<Word>
-    abstract fun compoundWords(lang: Language): List<Word>
-    abstract fun nameWords(lang: Language): List<Word>
+    abstract fun filteredWords(lang: Language, kind: WordKind): List<Word>
     abstract fun allWords(lang: Language): List<Word>
     abstract fun findAttestations(word: Word): List<Attestation>
     abstract fun isHomonym(word: Word): Boolean
@@ -82,6 +83,7 @@ abstract class GraphRepository {
         fullGloss: String? = null,
         pos: String? = null,
         classes: List<String> = emptyList(),
+        reconstructed: Boolean = false,
         source: List<SourceRef> = emptyList(),
         notes: String? = null
     ): Word

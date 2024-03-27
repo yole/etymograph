@@ -6,6 +6,7 @@ export default function WordForm(props) {
     const [newWordGloss, setNewWordGloss] = useState(props.initialGloss !== undefined ? props.initialGloss : "")
     const [newWordFullGloss, setNewWordFullGloss] = useState(props.initialFullGloss !== undefined ? props.initialFullGloss : "")
     const [newWordPosClasses, setNewWordPosClasses] = useState(props.initialPosClasses !== undefined ? props.initialPosClasses : "")
+    const [reconstructed, setReconstructed] = useState(props.initialReconstructed !== undefined ? props.initialReconstructed : false)
     const [newWordSource, setNewWordSource] = useState(props.initialSource !== undefined ? props.initialSource : "")
     const [newWordLanguage, setNewWordLanguage] = useState(props.language || "")
     const [newWordNotes, setNewWordNotes] = useState(props.initialNotes !== undefined ? props.initialNotes : "")
@@ -23,11 +24,17 @@ export default function WordForm(props) {
 
     function handleFormSubmit(e) {
         if (props.updateId !== undefined) {
-            updateWord(props.updateId, newWordText, newWordGloss, newWordFullGloss, newWordPosClasses, newWordSource, newWordNotes)
+            updateWord(
+                props.updateId, newWordText, newWordGloss, newWordFullGloss, newWordPosClasses, reconstructed,
+                newWordSource, newWordNotes
+            )
                 .then(r => r.json().then(jr => props.submitted(r.status, jr)))
         }
         else {
-            addWord(newWordLanguage, newWordText, newWordGloss, newWordFullGloss, newWordPosClasses, newWordSource, newWordNotes)
+            addWord(
+                newWordLanguage, newWordText, newWordGloss, newWordFullGloss, newWordPosClasses, reconstructed,
+                newWordSource, newWordNotes
+            )
                 .then(r => {
                     r.json().then(jr => {
                         let onFulfilled = lr => {
@@ -106,7 +113,7 @@ export default function WordForm(props) {
             <tr>
                 <td><label htmlFor="word-notes">Notes:</label></td>
                 <td><textarea rows="3" cols="50" value={newWordNotes} onChange={e => setNewWordNotes(e.target.value)}
-                           id="word-notes"/></td>
+                              id="word-notes"/></td>
             </tr>
             {(props.newCompound === true || isAddingLink) && <tr>
                 <td><label htmlFor="link-source"></label>{isAddingLink ? "Link source:" : "Compound source:"}</td>
@@ -115,6 +122,10 @@ export default function WordForm(props) {
             </tr>}
             </tbody>
         </table>
+        {!props.hideReconstructed && <><label>
+            <input type="checkbox" checked={reconstructed} onChange={(e) => setReconstructed(!reconstructed)}/>
+            Reconstructed
+        </label><br/></>}
         <button type="submit">Submit</button>
     </form>
 }

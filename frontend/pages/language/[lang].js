@@ -65,6 +65,7 @@ export default function LanguageIndex(props) {
         <Link href={`/dictionary/${langId}`}>Dictionary</Link>
         {' '}| <Link href={`/dictionary/${langId}/compounds`}>Compounds</Link>
         {' '}| <Link href={`/dictionary/${langId}/names`}>Names</Link>
+        {' '}| <Link href={`/dictionary/${langId}/reconstructed`}>Reconstructed words</Link>
         {' '}| <Link href={`/rules/${langId}`}>Rules</Link>
         {' '}| <Link href={`/paradigms/${langId}`}>Paradigms</Link>
         {' '}| <Link href={`/corpus/${langId}`}>Corpus</Link>

@@ -136,8 +136,7 @@ export default function Rule(params) {
         {rule.linkedWords.length > 0 && <>
             <h3>Related word</h3>
             {rule.linkedWords.map(lw => <>
-                {lw.toWord.language !== rule.toLang && lw.toWord.language + " "}
-                <WordLink word={lw.toWord}/>
+                <WordLink word={lw.toWord} baseLanguage={rule.toLang}/>
                 <SourceRefs source={lw.source} span={true}/>
                 {allowEdit() && <>
                     &nbsp;(<span className="inlineButtonLink">
@@ -152,8 +151,7 @@ export default function Rule(params) {
             <h3>Examples</h3>
             <ul>
                 {rule.examples.map(ex => <li>
-                    {ex.fromWord.language !== ex.toWord.language && `${ex.toWord.language} `}
-                    <WordLink word={ex.toWord}/>
+                    <WordLink word={ex.toWord} baseLanguage={ex.fromWord.language}/>
                     {ex.toWord.gloss && ` "${ex.toWord.gloss}"`}
                     &nbsp;&rarr;&nbsp;
                     <WordLink word={ex.fromWord}/>

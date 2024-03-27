@@ -9,6 +9,7 @@ data class WordRefViewModel(
     val id: Int,
     val text: String,
     val language: String,
+    val displayLanguage: String,
     val gloss: String?,
     val homonym: Boolean,
     val reconstructed: Boolean
@@ -24,9 +25,11 @@ data class ParseCandidateViewModel(
 
 fun Word.toRefViewModel(graph: GraphRepository) =
     WordRefViewModel(
-        id, text, language.shortName, getOrComputeGloss(graph),
+        id, text, language.shortName,
+        if (reconstructed) "pre-" + language.shortName else language.shortName,
+        getOrComputeGloss(graph),
         graph.isHomonym(this),
-        language.reconstructed
+        reconstructed || language.reconstructed
     )
 
 @RestController
@@ -75,6 +78,7 @@ class WordController(val graphService: GraphService) {
         val fullGloss: String?,
         val pos: String?,
         val classes: List<String>,
+        val reconstructed: Boolean,
         val source: List<SourceRefViewModel>,
         val sourceEditableText: String,
         val notes: String?,
@@ -130,6 +134,7 @@ class WordController(val graphService: GraphService) {
             fullGloss,
             pos,
             classes,
+            reconstructed,
             source.toViewModel(graph),
             source.toEditableText(graph),
             notes,
@@ -198,6 +203,7 @@ class WordController(val graphService: GraphService) {
         val gloss: String?,
         val fullGloss: String?,
         val posClasses: String?,
+        val reconstructed: Boolean?,
         val source: String?,
         val notes: String?
     )
@@ -217,6 +223,7 @@ class WordController(val graphService: GraphService) {
             params.fullGloss.nullize(),
             pos,
             classes,
+            params.reconstructed ?: false,
             parseSourceRefs(graph, params.source),
             params.notes.nullize()
         )
@@ -256,6 +263,9 @@ class WordController(val graphService: GraphService) {
         word.fullGloss = params.fullGloss.nullize()
         word.pos = pos
         word.classes = classes
+        if (params.reconstructed != null) {
+            word.reconstructed = params.reconstructed
+        }
         word.source = parseSourceRefs(graph, params.source)
         word.notes = params.notes.nullize()
         graph.save()

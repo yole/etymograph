@@ -37,7 +37,7 @@ class CompoundTest : QBaseTest() {
         val faramir = repo.addWord("faramir")
         val compound = repo.createCompound(faramir, fara, emptyList(), null)
         compound.components.add(mir)
-        Assert.assertEquals(1, repo.compoundWords(q).size)
+        Assert.assertEquals(1, repo.filteredWords(q, WordKind.COMPOUND).size)
     }
 
     @Test

@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RestController
 import ru.yole.etymograph.Language
-import ru.yole.etymograph.Word
+import ru.yole.etymograph.WordKind
 
 @RestController
 class DictionaryController(val graphService: GraphService) {
@@ -13,27 +13,35 @@ class DictionaryController(val graphService: GraphService) {
 
     @GetMapping("/dictionary/{lang}")
     fun dictionary(@PathVariable lang: String): DictionaryViewModel {
-        return loadDictionary(lang) { language -> graphService.graph.dictionaryWords(language) }
+        return loadDictionary(lang, WordKind.NORMAL)
     }
 
     @GetMapping("/dictionary/{lang}/compounds")
     fun dictionaryCompound(@PathVariable lang: String): DictionaryViewModel {
-        return loadDictionary(lang) { language -> graphService.graph.compoundWords(language) }
+        return loadDictionary(lang, WordKind.COMPOUND)
     }
 
     @GetMapping("/dictionary/{lang}/names")
     fun dictionaryNames(@PathVariable lang: String): DictionaryViewModel {
-        return loadDictionary(lang) { language -> graphService.graph.nameWords(language) }
+        return loadDictionary(lang, WordKind.NAME)
+    }
+
+    @GetMapping("/dictionary/{lang}/reconstructed")
+    fun dictionaryReconstructed(@PathVariable lang: String): DictionaryViewModel {
+        return loadDictionary(lang, WordKind.RECONSTRUCTED)
     }
 
     @GetMapping("/dictionary/{lang}/all")
     fun allWords(@PathVariable lang: String): DictionaryViewModel {
-        return loadDictionary(lang) { language -> graphService.graph.allWords(language) }
+        return loadDictionary(lang, null)
     }
 
-    private fun loadDictionary(lang: String, wordLoader: (Language) -> List<Word>): DictionaryViewModel {
+    private fun loadDictionary(lang: String, wordKind: WordKind?): DictionaryViewModel {
         val language = graphService.resolveLanguage(lang)
-        val words = wordLoader(language)
+        val words = if (wordKind == null)
+            graphService.graph.allWords(language)
+        else
+            graphService.graph.filteredWords(language, wordKind)
         return DictionaryViewModel(language, words.map {
             DictionaryWordViewModel(
                 it.id, it.text,
