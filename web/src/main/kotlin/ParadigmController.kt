@@ -87,7 +87,6 @@ class ParadigmController(val graphService: GraphService) {
 
         val p = graph.addParadigm(params.name, language, parseList(params.pos))
         p.parse(params.text, graph::ruleByName)
-        graph.save()
         return p.toViewModel()
     }
 
@@ -99,7 +98,6 @@ class ParadigmController(val graphService: GraphService) {
         paradigm.parse(params.text, graph::ruleByName)
         paradigm.name = params.name
         paradigm.pos = parseList(params.pos)
-        graph.save()
     }
 
     @PostMapping("/paradigm/{id}/delete")
@@ -108,7 +106,6 @@ class ParadigmController(val graphService: GraphService) {
         val graph = graphService.graph
         val paradigm = graph.paradigmById(id) ?: throw NoParadigmException()
         graph.deleteParadigm(paradigm)
-        graph.save()
     }
 }
 

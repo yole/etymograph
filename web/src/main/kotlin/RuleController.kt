@@ -243,7 +243,6 @@ class RuleController(val graphService: GraphService) {
             parseSourceRefs(graph, params.source),
             params.notes
         )
-        graph.save()
         return rule.toViewModel()
     }
 
@@ -277,7 +276,6 @@ class RuleController(val graphService: GraphService) {
         rule.fromPOS = params.fromPOS.nullize()
         rule.toPOS = params.toPOS.nullize()
         rule.source = parseSourceRefs(graph, params.source)
-        graph.save()
         return rule.toViewModel()
     }
 
@@ -287,7 +285,6 @@ class RuleController(val graphService: GraphService) {
         val graph = graphService.graph
         val rule = graph.ruleById(id) ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST, "No rule with ID $id")
         graph.deleteRule(rule)
-        graph.save()
     }
 
     data class UpdateSequenceParams(
@@ -302,7 +299,6 @@ class RuleController(val graphService: GraphService) {
         val graph = graphService.graph
         val (fromLanguage, toLanguage, rules) = resolveUpdateSequenceParams(params)
         graph.addRuleSequence(params.name, fromLanguage, toLanguage, rules)
-        graph.save()
     }
 
     private fun resolveUpdateSequenceParams(params: UpdateSequenceParams): Triple<Language, Language, List<Rule>> {
@@ -322,7 +318,6 @@ class RuleController(val graphService: GraphService) {
         sequence.fromLanguage = fromLanguage
         sequence.toLanguage = toLanguage
         sequence.rules = rules.map { RuleRef.to(it) }
-        graphService.graph.save()
     }
 
     data class ApplySequenceParams(
@@ -340,7 +335,6 @@ class RuleController(val graphService: GraphService) {
         val link = graph.findLink(fromEntity, toEntity, Link.Origin)
             ?: badRequest("No Derived link from ${params.linkFromId} to ${params.linkToId}")
         graph.applyRuleSequence(link, sequence)
-        graph.save()
         return linkToViewModel(link, graph, true)
     }
 }

@@ -103,7 +103,6 @@ class LanguageController(val graphService: GraphService) {
         val language = Language(name, shortName)
         graphService.graph.addLanguage(language)
         updateLanguageDetails(language, params)
-        graphService.graph.save()
         return language.toViewModel()
     }
 
@@ -111,7 +110,6 @@ class LanguageController(val graphService: GraphService) {
     fun updateLanguage(@PathVariable lang: String, @RequestBody params: UpdateLanguageParameters) {
         val language = graphService.resolveLanguage(lang)
         updateLanguageDetails(language, params)
-        graphService.graph.save()
     }
 
     data class CopyPhonemesParams(val fromLang: String = "")

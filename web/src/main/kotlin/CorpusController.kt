@@ -101,7 +101,6 @@ class CorpusController(val graphService: GraphService) {
             params.text, params.title.nullize(), language, emptyList(),
             parseSourceRefs(repo, params.source), params.notes.nullize()
         )
-        repo.save()
         return text.toViewModel()
     }
 
@@ -112,7 +111,6 @@ class CorpusController(val graphService: GraphService) {
         corpusText.title = params.title.nullize()
         corpusText.source = parseSourceRefs(graphService.graph, params.source)
         corpusText.notes = params.notes.nullize()
-        graphService.graph.save()
     }
 
     data class AssociateWordParameters(val index: Int, val wordId: Int = -1)
@@ -122,7 +120,6 @@ class CorpusController(val graphService: GraphService) {
         val corpusText = graphService.resolveCorpusText(id)
         val word = graphService.resolveWord(params.wordId)
         corpusText.associateWord(params.index, word)
-        graphService.graph.save()
     }
 
     data class AlternativeViewModel(val gloss: String, val wordId: Int, val ruleId: Int)
@@ -187,7 +184,5 @@ class CorpusController(val graphService: GraphService) {
             }
 
         }
-
-        graphService.graph.save()
     }
 }

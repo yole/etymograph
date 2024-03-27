@@ -29,7 +29,6 @@ class LinkController(val graphService: GraphService) {
         val source = parseSourceRefs(graph, params.source)
 
         graph.addLink(fromEntity, toEntity, linkType, rules, source, params.notes.nullize())
-        graph.save()
     }
 
     data class RuleLinkParams(
@@ -49,7 +48,6 @@ class LinkController(val graphService: GraphService) {
         val source = parseSourceRefs(graph, params.source)
 
         graph.addLink(fromEntity, toRule, linkType, emptyList(), source, params.notes.nullize())
-        graph.save()
     }
 
     private fun resolveLinkParams(params: LinkParams): ResolvedLinkParams {
@@ -84,7 +82,6 @@ class LinkController(val graphService: GraphService) {
         link.rules = rules
         link.source = parseSourceRefs(graph, params.source)
         link.notes = params.notes.nullize()
-        graph.save()
     }
 
     @PostMapping("/link/delete")
@@ -92,8 +89,6 @@ class LinkController(val graphService: GraphService) {
         val graph = graphService.graph
         val (fromWord, toWord, linkType) = resolveLinkParams(params)
 
-        return (graph.deleteLink(fromWord, toWord, linkType) || graph.deleteLink(toWord, fromWord, linkType)).also {
-            graph.save()
-        }
+        return (graph.deleteLink(fromWord, toWord, linkType) || graph.deleteLink(toWord, fromWord, linkType))
     }
 }

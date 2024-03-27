@@ -21,7 +21,6 @@ class CompoundController(val graphService: GraphService) {
         val graph = graphService.graph
         val source = parseSourceRefs(graph, params.source)
         graph.createCompound(compoundWord, componentWord, source, null)
-        graph.save()
     }
 
     @PostMapping("/compound/{id}/add")
@@ -30,7 +29,6 @@ class CompoundController(val graphService: GraphService) {
             ?: throw ResponseStatusException(HttpStatus.NOT_FOUND, "No compound with ID $id")
         val componentWord = graphService.resolveWord(params.componentId)
         compound.components.add(componentWord)
-        graphService.graph.save()
     }
 
     @PostMapping("/compound/{id}/delete")
@@ -39,6 +37,5 @@ class CompoundController(val graphService: GraphService) {
         val compound = graph.langEntityById(id) as? Compound
             ?: throw ResponseStatusException(HttpStatus.NOT_FOUND, "No compound with ID $id")
         graph.deleteCompound(compound)
-        graph.save()
     }
 }

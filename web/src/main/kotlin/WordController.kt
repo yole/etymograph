@@ -227,7 +227,6 @@ class WordController(val graphService: GraphService) {
             parseSourceRefs(graph, params.source),
             params.notes.nullize()
         )
-        graph.save()
         return word.toViewModel(graph)
     }
 
@@ -268,7 +267,6 @@ class WordController(val graphService: GraphService) {
         }
         word.source = parseSourceRefs(graph, params.source)
         word.notes = params.notes.nullize()
-        graph.save()
         return word.toViewModel(graph)
     }
 
@@ -278,7 +276,6 @@ class WordController(val graphService: GraphService) {
         val graph = graphService.graph
         val word = graph.wordById(id) ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST, "No word with ID $id")
         graph.deleteWord(word)
-        graph.save()
     }
 
     data class WordParadigmWordModel(
@@ -348,7 +345,6 @@ class WordController(val graphService: GraphService) {
                 newWord.gloss = null
             }
         }
-        graph.save()
     }
 
     data class DeriveThroughSequenceParams(val sequenceId: Int = -1)

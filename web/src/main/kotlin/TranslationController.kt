@@ -20,7 +20,6 @@ class TranslationController(val graphService: GraphService) {
             ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST, "Corpus text ID not specified")
         val corpusText = graphService.resolveCorpusText(params.corpusTextId)
         graph.addTranslation(corpusText, params.text, source)
-        graph.save()
     }
 
     @PostMapping("/translations/{id}")
@@ -31,6 +30,5 @@ class TranslationController(val graphService: GraphService) {
             ?: throw ResponseStatusException(HttpStatus.NOT_FOUND, "No translation with ID $id")
         translation.text = params.text
         translation.source = source
-        graph.save()
     }
 }

@@ -85,7 +85,6 @@ class PhonemeController(val graphService: GraphService) {
             parseSourceRefs(graphService.graph, params.source),
             params.notes
         )
-        graphService.graph.save()
         return phoneme.toViewModel(graphService.graph, language)
     }
 
@@ -98,7 +97,6 @@ class PhonemeController(val graphService: GraphService) {
         phoneme.historical = params.historical
         phoneme.source = parseSourceRefs(graphService.graph, params.source)
         phoneme.notes = params.notes
-        graphService.graph.save()
     }
 
     private fun parseClasses(params: UpdatePhonemeParameters) =
@@ -109,7 +107,6 @@ class PhonemeController(val graphService: GraphService) {
         val phoneme = resolvePhoneme(id)
         val language = findLanguage(phoneme, id)
         graphService.graph.deletePhoneme(language, phoneme)
-        graphService.graph.save()
     }
 }
 

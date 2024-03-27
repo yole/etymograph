@@ -40,7 +40,6 @@ class PublicationController(val graphService: GraphService) {
         val name = params.name.nullize() ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST, "Name is required")
         val refId = params.refId.nullize() ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST, "refID is required")
         val publication = graphService.graph.addPublication(name, refId)
-        graphService.graph.save()
         return publication.toViewModel()
     }
 
@@ -51,7 +50,6 @@ class PublicationController(val graphService: GraphService) {
             ?: throw ResponseStatusException(HttpStatus.NOT_FOUND, "No publication with ID $id")
         publication.name = params.name.nullize() ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST, "Name is required")
         publication.refId = params.refId.nullize() ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST, "refID is required")
-        graphService.graph.save()
         return publication.toViewModel()
     }
 }
