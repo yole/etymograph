@@ -28,7 +28,8 @@ class RuleController(val graphService: GraphService) {
         val fromWord: WordRefViewModel,
         val toWord: WordRefViewModel,
         val expectedWord: String?,
-        val allRules: List<RuleLinkViewModel>
+        val allRules: List<RuleLinkViewModel>,
+        val ruleResults: List<String>
     )
 
     data class RuleViewModel(
@@ -193,7 +194,8 @@ class RuleController(val graphService: GraphService) {
             toWord.toRefViewModel(graph),
             link.applyRules(toWord, graph).asOrthographic()
                 .takeIf { !fromWord.language.isNormalizedEqual(it, fromWord) }?.text,
-            link.rules.map { RuleLinkViewModel(it.id, it.name, link.type.id, link.source.toViewModel(graph), link.notes) }
+            link.rules.map { RuleLinkViewModel(it.id, it.name, link.type.id, link.source.toViewModel(graph), link.notes) },
+            buildIntermediateSteps(graph, link)
         )
     }
 
