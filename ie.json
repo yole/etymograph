@@ -464,8 +464,8 @@
             ],
             "classes": [
                 "voiced",
-                "palatal",
-                "approximant",
+                "postalveolar",
+                "affricate",
                 "consonant"
             ]
         },
@@ -496,6 +496,19 @@
                 "vowel"
             ],
             "historical": true
+        },
+        {
+            "id": 2155,
+            "lang": "OE",
+            "graphemes": [
+                "ċ"
+            ],
+            "classes": [
+                "voiceless",
+                "postalveolar",
+                "affricate",
+                "consonant"
+            ]
         },
         {
             "id": 1791,
@@ -2172,8 +2185,7 @@
         },
         {
             "lang": "Lyc",
-            "diphthongs": [
-            ]
+            "diphthongs": []
         },
         {
             "lang": "ON",
@@ -2194,8 +2206,7 @@
         },
         {
             "lang": "PNWGmc",
-            "diphthongs": [
-            ]
+            "diphthongs": []
         },
         {
             "lang": "PWGmc",
@@ -4850,7 +4861,7 @@
         },
         {
             "id": 474,
-            "text": "scip",
+            "text": "sċip",
             "lang": "OE",
             "gloss": "ship",
             "pos": "N",
@@ -12745,6 +12756,571 @@
                     "refText": "184"
                 }
             ]
+        },
+        {
+            "id": 2139,
+            "text": "hals",
+            "lang": "PWGmc",
+            "gloss": "neck"
+        },
+        {
+            "id": 2140,
+            "text": "heals",
+            "lang": "OE",
+            "gloss": "neck"
+        },
+        {
+            "id": 2142,
+            "text": "trewa-",
+            "lang": "PGmc",
+            "gloss": "tree",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "187"
+                }
+            ]
+        },
+        {
+            "id": 2143,
+            "text": "trewa-",
+            "lang": "PWGmc",
+            "gloss": "tree"
+        },
+        {
+            "id": 2145,
+            "text": "treow-",
+            "lang": "OE",
+            "gloss": "tree"
+        },
+        {
+            "id": 2146,
+            "text": "gelwaz",
+            "lang": "PGmc",
+            "gloss": "yellow",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "187"
+                }
+            ]
+        },
+        {
+            "id": 2147,
+            "text": "gelu",
+            "lang": "PWGmc",
+            "gloss": "yellow"
+        },
+        {
+            "id": 2150,
+            "text": "latōst",
+            "lang": "PWGmc",
+            "gloss": "most recently",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "191"
+                }
+            ]
+        },
+        {
+            "id": 2151,
+            "text": "latost",
+            "lang": "OE",
+            "gloss": "most recently"
+        },
+        {
+            "id": 2152,
+            "text": "askā",
+            "lang": "PWGmc",
+            "gloss": "ashes",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "192"
+                }
+            ]
+        },
+        {
+            "id": 2153,
+            "text": "ārundī",
+            "lang": "PWGmc",
+            "gloss": "message, errand",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "200"
+                }
+            ]
+        },
+        {
+            "id": 2154,
+            "text": "ārundī",
+            "lang": "OE",
+            "gloss": "message, errand",
+            "reconstructed": true
+        },
+        {
+            "id": 2157,
+            "text": "kinnuz",
+            "lang": "PGmc",
+            "gloss": "cheek"
+        },
+        {
+            "id": 2158,
+            "text": "kinn",
+            "lang": "PWGmc",
+            "gloss": "jaw"
+        },
+        {
+            "id": 2159,
+            "text": "ċinn",
+            "lang": "OE",
+            "gloss": "chin"
+        },
+        {
+            "id": 2160,
+            "text": "kisil",
+            "lang": "PWGmc",
+            "gloss": "gravel"
+        },
+        {
+            "id": 2161,
+            "text": "ċisel",
+            "lang": "OE",
+            "gloss": "gravel"
+        },
+        {
+            "id": 2163,
+            "text": "gīslaz",
+            "lang": "PGmc",
+            "gloss": "hostage",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "204"
+                }
+            ]
+        },
+        {
+            "id": 2164,
+            "text": "ġīsl",
+            "lang": "OE",
+            "gloss": "hostage",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "204"
+                }
+            ]
+        },
+        {
+            "id": 2165,
+            "text": "skipą",
+            "lang": "PGmc",
+            "gloss": "ship",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "204"
+                }
+            ]
+        },
+        {
+            "id": 2167,
+            "text": "skīnaną",
+            "lang": "PGmc",
+            "gloss": "shine",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "204"
+                }
+            ]
+        },
+        {
+            "id": 2168,
+            "text": "sċīnan",
+            "lang": "OE",
+            "gloss": "shine",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "204"
+                }
+            ]
+        },
+        {
+            "id": 2169,
+            "text": "kirikā",
+            "lang": "PWGmc",
+            "gloss": "church",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "204"
+                }
+            ]
+        },
+        {
+            "id": 2170,
+            "text": "ċiriċe",
+            "lang": "OE",
+            "gloss": "church",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "204"
+                }
+            ]
+        },
+        {
+            "id": 2171,
+            "text": "kīp",
+            "lang": "PWGmc",
+            "gloss": "embryo, shoot",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "205"
+                }
+            ]
+        },
+        {
+            "id": 2172,
+            "text": "ċīp",
+            "lang": "OE",
+            "gloss": "embryo, shoot",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "205"
+                }
+            ]
+        },
+        {
+            "id": 2173,
+            "text": "gibiþī",
+            "lang": "PWGmc",
+            "gloss": "given, granted (by fate)",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "205"
+                }
+            ]
+        },
+        {
+            "id": 2174,
+            "text": "ġifeþe",
+            "lang": "OE",
+            "gloss": "given, granted (by fate)",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "205"
+                }
+            ]
+        },
+        {
+            "id": 2175,
+            "text": "gimmu",
+            "lang": "PWGmc",
+            "gloss": "gem"
+        },
+        {
+            "id": 2176,
+            "text": "ġimm",
+            "lang": "OE",
+            "gloss": "gem"
+        },
+        {
+            "id": 2177,
+            "text": "kalbaz",
+            "lang": "PGmc",
+            "gloss": "calf",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "205"
+                }
+            ]
+        },
+        {
+            "id": 2178,
+            "text": "kalb",
+            "lang": "PWGmc",
+            "gloss": "calf",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "205"
+                }
+            ]
+        },
+        {
+            "id": 2179,
+            "text": "ċealf",
+            "lang": "OE",
+            "gloss": "calf",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "205"
+                }
+            ]
+        },
+        {
+            "id": 2180,
+            "text": "kaldaz",
+            "lang": "PGmc",
+            "gloss": "cold",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "205"
+                }
+            ]
+        },
+        {
+            "id": 2181,
+            "text": "ċeald",
+            "lang": "OE",
+            "gloss": "cold",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "205"
+                }
+            ]
+        },
+        {
+            "id": 2182,
+            "text": "gardaz",
+            "lang": "PGmc",
+            "gloss": "enclosure"
+        },
+        {
+            "id": 2183,
+            "text": "ġeard",
+            "lang": "OE",
+            "gloss": "enclosure"
+        },
+        {
+            "id": 2184,
+            "text": "galgô",
+            "lang": "PGmc",
+            "gloss": "gallows"
+        },
+        {
+            "id": 2185,
+            "text": "ġealga",
+            "lang": "OE",
+            "gloss": "gallows"
+        },
+        {
+            "id": 2186,
+            "text": "garwijaną",
+            "lang": "PNWGmc",
+            "gloss": "to prepare",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "205"
+                }
+            ]
+        },
+        {
+            "id": 2187,
+            "text": "ġierwan",
+            "lang": "OE",
+            "gloss": "to prepare",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "205"
+                }
+            ]
+        },
+        {
+            "id": 2190,
+            "text": "garną",
+            "lang": "PNWGmc",
+            "gloss": "yarn",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "205"
+                }
+            ]
+        },
+        {
+            "id": 2191,
+            "text": "ġearn",
+            "lang": "OE",
+            "gloss": "yarn",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "205"
+                }
+            ]
+        },
+        {
+            "id": 2192,
+            "text": "galdraz",
+            "lang": "PNWGmc",
+            "gloss": "incantation"
+        },
+        {
+            "id": 2193,
+            "text": "ġealdor",
+            "lang": "OE",
+            "gloss": "incantation"
+        },
+        {
+            "id": 2194,
+            "text": "skardaz",
+            "lang": "PNWGmc",
+            "gloss": "damaged, notched",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "205"
+                }
+            ]
+        },
+        {
+            "id": 2195,
+            "text": "sċeard",
+            "lang": "OE",
+            "gloss": "damaged, notched",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "205"
+                }
+            ]
+        },
+        {
+            "id": 2196,
+            "text": "skarpaz",
+            "lang": "PNWGmc",
+            "gloss": "rough",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "205"
+                }
+            ]
+        },
+        {
+            "id": 2197,
+            "text": "skarp",
+            "lang": "PWGmc",
+            "gloss": "sharp",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "205"
+                }
+            ]
+        },
+        {
+            "id": 2198,
+            "text": "sċearp",
+            "lang": "OE",
+            "gloss": "sharp",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "205"
+                }
+            ]
+        },
+        {
+            "id": 2199,
+            "text": "kaldī",
+            "lang": "PWGmc",
+            "gloss": "coldness"
+        },
+        {
+            "id": 2200,
+            "text": "ċieldu",
+            "lang": "OE",
+            "gloss": "coldness"
+        },
+        {
+            "id": 2201,
+            "text": "gernaz",
+            "lang": "PGmc",
+            "gloss": "desirous, eager",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "205"
+                }
+            ]
+        },
+        {
+            "id": 2202,
+            "text": "ġeorn",
+            "lang": "OE",
+            "gloss": "desirous, eager",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "205"
+                }
+            ]
+        },
+        {
+            "id": 2203,
+            "text": "kerban",
+            "lang": "PWGmc",
+            "gloss": "to carve, to cut",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "205"
+                }
+            ]
+        },
+        {
+            "id": 2204,
+            "text": "ċeorfan",
+            "lang": "OE",
+            "gloss": "to carve, to cut",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "205"
+                }
+            ]
+        },
+        {
+            "id": 2205,
+            "text": "skelh",
+            "lang": "PWGmc",
+            "gloss": "oblique, crooked, squinting",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "205"
+                }
+            ]
+        },
+        {
+            "id": 2206,
+            "text": "sċeolh",
+            "lang": "OE",
+            "gloss": "oblique, crooked, squinting",
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "205"
+                }
+            ]
         }
     ],
     "rules": [
@@ -12788,8 +13364,7 @@
                     "instructions": [
                         {
                             "type": "NoChange",
-                            "args": [
-                            ]
+                            "args": []
                         }
                     ],
                     "condition": {
@@ -12921,8 +13496,7 @@
                     "instructions": [
                         {
                             "type": "NoChange",
-                            "args": [
-                            ]
+                            "args": []
                         }
                     ],
                     "condition": {
@@ -13422,8 +13996,7 @@
                     "instructions": [
                         {
                             "type": "NoChange",
-                            "args": [
-                            ]
+                            "args": []
                         }
                     ],
                     "condition": {
@@ -13599,8 +14172,7 @@
                     "instructions": [
                         {
                             "type": "NoChange",
-                            "args": [
-                            ]
+                            "args": []
                         }
                     ],
                     "condition": {
@@ -14449,8 +15021,7 @@
                     "instructions": [
                         {
                             "type": "NoChange",
-                            "args": [
-                            ]
+                            "args": []
                         }
                     ],
                     "condition": {
@@ -14519,8 +15090,7 @@
                     "instructions": [
                         {
                             "type": "NoChange",
-                            "args": [
-                            ]
+                            "args": []
                         }
                     ],
                     "condition": {
@@ -14574,8 +15144,7 @@
                     "instructions": [
                         {
                             "type": "NoChange",
-                            "args": [
-                            ]
+                            "args": []
                         }
                     ],
                     "condition": {
@@ -14598,8 +15167,7 @@
                     "instructions": [
                         {
                             "type": "NoChange",
-                            "args": [
-                            ]
+                            "args": []
                         }
                     ],
                     "condition": {
@@ -14830,8 +15398,7 @@
                     "instructions": [
                         {
                             "type": "NoChange",
-                            "args": [
-                            ]
+                            "args": []
                         }
                     ],
                     "condition": {
@@ -15041,8 +15608,7 @@
                     "instructions": [
                         {
                             "type": "NoChange",
-                            "args": [
-                            ]
+                            "args": []
                         }
                     ],
                     "condition": {
@@ -15379,8 +15945,7 @@
                     "instructions": [
                         {
                             "type": "NoChange",
-                            "args": [
-                            ]
+                            "args": []
                         }
                     ],
                     "condition": {
@@ -15727,8 +16292,7 @@
                     "instructions": [
                         {
                             "type": "NoChange",
-                            "args": [
-                            ]
+                            "args": []
                         }
                     ],
                     "condition": {
@@ -15908,8 +16472,7 @@
                     "instructions": [
                         {
                             "type": "NoChange",
-                            "args": [
-                            ]
+                            "args": []
                         }
                     ],
                     "condition": {
@@ -15996,8 +16559,7 @@
                     "instructions": [
                         {
                             "type": "NoChange",
-                            "args": [
-                            ]
+                            "args": []
                         }
                     ],
                     "condition": {
@@ -16076,8 +16638,7 @@
                     "instructions": [
                         {
                             "type": "NoChange",
-                            "args": [
-                            ]
+                            "args": []
                         }
                     ],
                     "condition": {
@@ -16325,8 +16886,7 @@
                     "instructions": [
                         {
                             "type": "NoChange",
-                            "args": [
-                            ]
+                            "args": []
                         }
                     ],
                     "condition": {
@@ -16537,8 +17097,7 @@
                     "instructions": [
                         {
                             "type": "NoChange",
-                            "args": [
-                            ]
+                            "args": []
                         }
                     ],
                     "condition": {
@@ -17107,8 +17666,7 @@
                     "instructions": [
                         {
                             "type": "NoChange",
-                            "args": [
-                            ]
+                            "args": []
                         }
                     ],
                     "condition": {
@@ -18054,8 +18612,7 @@
             "name": "on-ppart",
             "fromLang": "ON",
             "toLang": "ON",
-            "branches": [
-            ],
+            "branches": [],
             "addedCategories": ".PPART",
             "fromPOS": "V",
             "notes": ""
@@ -18065,8 +18622,7 @@
             "name": "on-adj-sup",
             "fromLang": "ON",
             "toLang": "ON",
-            "branches": [
-            ],
+            "branches": [],
             "addedCategories": ".SUP",
             "fromPOS": "ADJ",
             "notes": ""
@@ -18189,8 +18745,7 @@
                     "instructions": [
                         {
                             "type": "NoChange",
-                            "args": [
-                            ]
+                            "args": []
                         }
                     ],
                     "condition": {
@@ -18905,8 +19460,7 @@
                     "instructions": [
                         {
                             "type": "Disallow",
-                            "args": [
-                            ]
+                            "args": []
                         }
                     ],
                     "condition": {
@@ -19712,8 +20266,7 @@
                     "instructions": [
                         {
                             "type": "SoundIsGeminated",
-                            "args": [
-                            ]
+                            "args": []
                         }
                     ],
                     "condition": {
@@ -19989,8 +20542,7 @@
                     "instructions": [
                         {
                             "type": "NoChange",
-                            "args": [
-                            ]
+                            "args": []
                         }
                     ],
                     "condition": {
@@ -21546,6 +22098,363 @@
                 {
                     "pubId": 5,
                     "refText": "180"
+                }
+            ]
+        },
+        {
+            "id": 2141,
+            "name": "oe-breaking-before-w",
+            "fromLang": "PGmc",
+            "toLang": "OE",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "eo"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "and",
+                        "members": [
+                            {
+                                "type": "leaf",
+                                "cond": "PhonemeMatches",
+                                "characters": "e"
+                            },
+                            {
+                                "type": "relPhoneme",
+                                "relativeIndex": 1,
+                                "parameter": "w"
+                            },
+                            {
+                                "type": "relPhoneme",
+                                "relativeIndex": 2,
+                                "negated": true,
+                                "parameter": "i"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "io"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "and",
+                        "members": [
+                            {
+                                "type": "leaf",
+                                "cond": "PhonemeMatches",
+                                "characters": "i"
+                            },
+                            {
+                                "type": "relPhoneme",
+                                "relativeIndex": 1,
+                                "parameter": "w"
+                            },
+                            {
+                                "type": "relPhoneme",
+                                "relativeIndex": 2,
+                                "negated": true,
+                                "parameter": "i"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "eo"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "and",
+                        "members": [
+                            {
+                                "type": "leaf",
+                                "cond": "PhonemeMatches",
+                                "characters": "e"
+                            },
+                            {
+                                "type": "relPhoneme",
+                                "relativeIndex": 1,
+                                "parameter": "l"
+                            },
+                            {
+                                "type": "relPhoneme",
+                                "relativeIndex": 2,
+                                "parameter": "w"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "187"
+                }
+            ],
+            "notes": ""
+        },
+        {
+            "id": 2148,
+            "name": "oe-hs",
+            "fromLang": "PWGmc",
+            "toLang": "OE",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "k"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "and",
+                        "members": [
+                            {
+                                "type": "leaf",
+                                "cond": "PhonemeMatches",
+                                "characters": "h"
+                            },
+                            {
+                                "type": "relPhoneme",
+                                "relativeIndex": 1,
+                                "parameter": "s"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "188"
+                }
+            ],
+            "notes": ""
+        },
+        {
+            "id": 2149,
+            "name": "oe-ae-retraction",
+            "fromLang": "OE",
+            "toLang": "OE",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "a"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "and",
+                        "members": [
+                            {
+                                "type": "leaf",
+                                "cond": "PhonemeMatches",
+                                "cls": "stressed",
+                                "characters": "æ"
+                            },
+                            {
+                                "type": "relPhoneme",
+                                "relativeIndex": 1,
+                                "cls": "consonant"
+                            },
+                            {
+                                "type": "relPhoneme",
+                                "relativeIndex": 2,
+                                "cls": "back vowel"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "a"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "and",
+                        "members": [
+                            {
+                                "type": "leaf",
+                                "cond": "PhonemeMatches",
+                                "cls": "stressed",
+                                "characters": "æ"
+                            },
+                            {
+                                "type": "relPhoneme",
+                                "relativeIndex": 1,
+                                "parameter": "s"
+                            },
+                            {
+                                "type": "relPhoneme",
+                                "relativeIndex": 2,
+                                "cls": "consonant"
+                            },
+                            {
+                                "type": "relPhoneme",
+                                "relativeIndex": 3,
+                                "cls": "back vowel"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "ā"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "and",
+                        "members": [
+                            {
+                                "type": "leaf",
+                                "cond": "PhonemeMatches",
+                                "cls": "stressed",
+                                "characters": "ǣ"
+                            },
+                            {
+                                "type": "relPhoneme",
+                                "relativeIndex": 1,
+                                "cls": "consonant"
+                            },
+                            {
+                                "type": "relPhoneme",
+                                "relativeIndex": 2,
+                                "cls": "back vowel"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "189"
+                }
+            ],
+            "notes": "Ringe 2014:199: The stressed ǣ existed only in West Saxon dialects at the time."
+        },
+        {
+            "id": 2156,
+            "name": "oe-palatalization",
+            "fromLang": "OE",
+            "toLang": "OE",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "ċ"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "and",
+                        "members": [
+                            {
+                                "type": "leaf",
+                                "cond": "PhonemeMatches",
+                                "cls": "word-initial",
+                                "characters": "k"
+                            },
+                            {
+                                "type": "relPhoneme",
+                                "relativeIndex": 1,
+                                "cls": "front vowel"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeNextSound",
+                            "args": [
+                                "ċ"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "and",
+                        "members": [
+                            {
+                                "type": "leaf",
+                                "cond": "PhonemeMatches",
+                                "cls": "word-initial",
+                                "characters": "s"
+                            },
+                            {
+                                "type": "relPhoneme",
+                                "relativeIndex": 1,
+                                "parameter": "k"
+                            },
+                            {
+                                "type": "relPhoneme",
+                                "relativeIndex": 2,
+                                "cls": "front vowel"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "ġ"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "and",
+                        "members": [
+                            {
+                                "type": "leaf",
+                                "cond": "PhonemeMatches",
+                                "cls": "word-initial",
+                                "characters": "g"
+                            },
+                            {
+                                "type": "relPhoneme",
+                                "relativeIndex": 1,
+                                "cls": "front vowel"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "203"
                 }
             ]
         }
@@ -26158,6 +27067,407 @@
                 2060,
                 2119
             ]
+        },
+        {
+            "from": 2139,
+            "to": 2138,
+            "type": "^",
+            "ruleIds": [
+                1963,
+                1966
+            ]
+        },
+        {
+            "from": 2140,
+            "to": 2139,
+            "type": "^",
+            "ruleIds": [
+                2060,
+                2119
+            ]
+        },
+        {
+            "from": 2143,
+            "to": 2142,
+            "type": "^"
+        },
+        {
+            "from": 2145,
+            "to": 2143,
+            "type": "^",
+            "ruleIds": [
+                2060,
+                2141
+            ]
+        },
+        {
+            "from": 2147,
+            "to": 2146,
+            "type": "^",
+            "ruleIds": [
+                1963,
+                1966,
+                1969
+            ]
+        },
+        {
+            "from": 2151,
+            "to": 2150,
+            "type": "^",
+            "ruleIds": [
+                2060,
+                2149
+            ]
+        },
+        {
+            "from": 2154,
+            "to": 2153,
+            "type": "^",
+            "ruleIds": [
+                2060,
+                2149
+            ]
+        },
+        {
+            "from": 2158,
+            "to": 2157,
+            "type": "^",
+            "ruleIds": [
+                1963
+            ]
+        },
+        {
+            "from": 2159,
+            "to": 2158,
+            "type": "^",
+            "ruleIds": [
+                2156
+            ]
+        },
+        {
+            "from": 2161,
+            "to": 2160,
+            "type": "^",
+            "ruleIds": [
+                2156
+            ]
+        },
+        {
+            "from": 2164,
+            "to": 2163,
+            "type": "^",
+            "ruleIds": [
+                1963,
+                1966,
+                2156
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "204"
+                }
+            ]
+        },
+        {
+            "from": 474,
+            "to": 2165,
+            "type": "^",
+            "ruleIds": [
+                1966,
+                2156
+            ]
+        },
+        {
+            "from": 2168,
+            "to": 2167,
+            "type": "^",
+            "ruleIds": [
+                1966,
+                2156
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "204"
+                }
+            ]
+        },
+        {
+            "from": 2170,
+            "to": 2169,
+            "type": "^",
+            "ruleIds": [
+                2060,
+                2156
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "204"
+                }
+            ]
+        },
+        {
+            "from": 2172,
+            "to": 2171,
+            "type": "^",
+            "ruleIds": [
+                2156
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "205"
+                }
+            ]
+        },
+        {
+            "from": 2174,
+            "to": 2173,
+            "type": "^",
+            "ruleIds": [
+                2156
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "205"
+                }
+            ]
+        },
+        {
+            "from": 2176,
+            "to": 2175,
+            "type": "^",
+            "ruleIds": [
+                2156
+            ]
+        },
+        {
+            "from": 2178,
+            "to": 2177,
+            "type": "^",
+            "ruleIds": [
+                1963,
+                1966
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "205"
+                }
+            ]
+        },
+        {
+            "from": 2179,
+            "to": 2178,
+            "type": "^",
+            "ruleIds": [
+                2060,
+                2119,
+                2156
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "205"
+                }
+            ]
+        },
+        {
+            "from": 2181,
+            "to": 2180,
+            "type": "^",
+            "ruleIds": [
+                1963,
+                1966,
+                2060,
+                2119,
+                2156
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "205"
+                }
+            ]
+        },
+        {
+            "from": 2183,
+            "to": 2182,
+            "type": "^",
+            "ruleIds": [
+                1963,
+                1966,
+                2060,
+                2119,
+                2156
+            ]
+        },
+        {
+            "from": 2185,
+            "to": 2184,
+            "type": "^",
+            "ruleIds": [
+                1990,
+                2060,
+                2077,
+                2119,
+                2156
+            ]
+        },
+        {
+            "from": 2187,
+            "to": 2186,
+            "type": "^",
+            "ruleIds": [
+                1966,
+                2060,
+                2086,
+                2119,
+                2156
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "205"
+                }
+            ]
+        },
+        {
+            "from": 2191,
+            "to": 2190,
+            "type": "^",
+            "ruleIds": [
+                1966,
+                2060,
+                2119,
+                2156
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "205"
+                }
+            ]
+        },
+        {
+            "from": 2193,
+            "to": 2192,
+            "type": "^",
+            "ruleIds": [
+                1963,
+                1966,
+                2060,
+                2119,
+                2156
+            ]
+        },
+        {
+            "from": 2195,
+            "to": 2194,
+            "type": "^",
+            "ruleIds": [
+                1963,
+                1966,
+                2060,
+                2119,
+                2156
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "205"
+                }
+            ]
+        },
+        {
+            "from": 2197,
+            "to": 2196,
+            "type": "^",
+            "ruleIds": [
+                1963,
+                1966
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "205"
+                }
+            ]
+        },
+        {
+            "from": 2198,
+            "to": 2197,
+            "type": "^",
+            "ruleIds": [
+                2060,
+                2119,
+                2156
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "205"
+                }
+            ]
+        },
+        {
+            "from": 2200,
+            "to": 2199,
+            "type": "^",
+            "ruleIds": [
+                2060,
+                2119,
+                2156
+            ]
+        },
+        {
+            "from": 2202,
+            "to": 2201,
+            "type": "^",
+            "ruleIds": [
+                1963,
+                1966,
+                2119,
+                2156
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "205"
+                }
+            ]
+        },
+        {
+            "from": 2204,
+            "to": 2203,
+            "type": "^",
+            "ruleIds": [
+                2119,
+                2156
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "205"
+                }
+            ]
+        },
+        {
+            "from": 2206,
+            "to": 2205,
+            "type": "^",
+            "ruleIds": [
+                2119,
+                2156
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "205"
+                }
+            ]
         }
     ],
     "corpusTexts": [
@@ -28756,16 +30066,14 @@
                 {
                     "title": "Sg.",
                     "cells": [
-                        {
-                        },
+                        {},
                         {
                             "ruleAlternatives": [
                                 116,
                                 118
                             ]
                         },
-                        {
-                        },
+                        {},
                         {
                             "ruleAlternatives": [
                                 266
@@ -28796,8 +30104,7 @@
                                 724
                             ]
                         },
-                        {
-                        },
+                        {},
                         {
                             "ruleAlternatives": [
                                 123
@@ -29265,8 +30572,7 @@
             ]
         }
     ],
-    "syllableStructures": [
-    ],
+    "syllableStructures": [],
     "publications": [
         {
             "id": 0,
@@ -31006,28 +32312,8 @@
             "fromLang": "PGmc",
             "toLang": "PWGmc",
             "ruleIds": [
-                1862,
-                1866,
-                1863,
-                1874,
-                1882,
-                1883,
-                1884,
-                1889,
-                1958,
-                1963,
-                1966,
-                1976,
-                1969,
-                1978,
-                1982,
-                1983,
-                1990,
-                1995,
-                1997,
-                2011,
-                2014,
-                2018
+                1867,
+                2188
             ]
         },
         {
@@ -31050,10 +32336,57 @@
                 2090,
                 2095,
                 2114,
-                2119
+                2119,
+                2141,
+                2148,
+                2149,
+                2156
+            ]
+        },
+        {
+            "id": 2162,
+            "name": "pgmc-to-oe",
+            "fromLang": "PGmc",
+            "toLang": "OE",
+            "ruleIds": [
+                1885,
+                2027
+            ]
+        },
+        {
+            "id": 2188,
+            "name": "pnwgmc-to-pwgmc",
+            "fromLang": "PNWGmc",
+            "toLang": "PWGmc",
+            "ruleIds": [
+                1884,
+                1889,
+                1958,
+                1963,
+                1966,
+                1976,
+                1969,
+                1978,
+                1982,
+                1983,
+                1990,
+                1995,
+                1997,
+                2011,
+                2014,
+                2018
+            ]
+        },
+        {
+            "id": 2189,
+            "name": "pnwgmc-to-oe",
+            "fromLang": "PNWGmc",
+            "toLang": "OE",
+            "ruleIds": [
+                2188,
+                2027
             ]
         }
     ],
-    "orthographyRules": [
-    ]
+    "orthographyRules": []
 }
