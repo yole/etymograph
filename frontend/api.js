@@ -59,6 +59,10 @@ export function deleteWord(id) {
     return postToBackend(`word/${id}/delete`, {})
 }
 
+export function addWordSequence(text) {
+    return postToBackend(`wordSequence`, {sequence: text})
+}
+
 export function addRule(name, fromLang, toLang, addedCategories, replacedCategories, fromPOS, toPOS, text, source, notes) {
     return postToBackend('rule',
         {name: name, fromLang: fromLang, toLang: toLang, text: text,

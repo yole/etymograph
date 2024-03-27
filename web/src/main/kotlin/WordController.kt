@@ -360,6 +360,44 @@ class WordController(val graphService: GraphService) {
         val newWord = graphService.graph.deriveThroughRuleSequence(word, sequence)
         return (newWord ?: word).toViewModel(graphService.graph)
     }
+
+    data class WordSequenceParams(val sequence: String = "")
+
+    @PostMapping("/wordSequence")
+    fun addWordSequence(@RequestBody params: WordSequenceParams) {
+        val steps = params.sequence.split('>').map { it.trim() }
+        var lastGloss: String? = null
+        var lastWord: Word? = null
+
+        for (step in steps) {
+            val match = sequenceStepPattern.matchEntire(step)
+                ?: badRequest("Can't parse sequence step: $step")
+            val language = graphService.resolveLanguage(match.groupValues[1])
+
+            var gloss: String? = match.groupValues[3].trim(' ', '\'')
+            if (!gloss.isNullOrEmpty()) {
+                lastGloss = gloss
+            }
+            else {
+                gloss = lastGloss
+            }
+
+            val word = graphService.graph.findOrAddWord(match.groupValues[2], language, gloss)
+            if (lastWord != null) {
+                val link = graphService.graph.addLink(word, lastWord, Link.Origin, emptyList(), emptyList(), null)
+                val ruleSequence = graphService.graph.ruleSequencesForLanguage(word.language)
+                    .singleOrNull { it.fromLanguage == lastWord!!.language }
+                if (ruleSequence != null) {
+                    graphService.graph.applyRuleSequence(link, ruleSequence)
+                }
+            }
+            lastWord = word
+        }
+    }
+
+    companion object {
+        val sequenceStepPattern = Regex("(\\w+) (\\S+)(\\s+'\\w+')?")
+    }
 }
 
 fun linkToViewModel(

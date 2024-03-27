@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {addRuleLink, allowEdit, deleteLink, deleteRule, deleteWord, updateRule} from "@/api";
+import {addRuleLink, addWordSequence, allowEdit, deleteLink, deleteRule, deleteWord, updateRule} from "@/api";
 import WordLink from "@/components/WordLink";
 import {fetchBackend} from "@/api";
 import {useRouter} from "next/router";
@@ -28,6 +28,8 @@ export default function Rule(params) {
     const [editMode, setEditMode] = useState(false)
     const [linkMode, setLinkMode] = useState(false)
     const [errorText, setErrorText] = useState("")
+    const [showExampleForm, setShowExampleForm] = useState(false)
+    const [exampleText, setExampleText] = useState("")
     const router = useRouter()
     useEffect(() => { document.title = "Etymograph : Rule " + rule.name })
 
@@ -65,6 +67,22 @@ export default function Rule(params) {
                     }
                 })
         }
+    }
+
+    function exampleSubmitted() {
+        addWordSequence(exampleText)
+            .then(r => {
+                if (r.status === 200) {
+                    setShowExampleForm(false)
+                    setExampleText("")
+                    setErrorText("")
+                    router.replace(router.asPath)
+                }
+                else {
+                        r.json().then(r => setErrorText(r.message))
+                }
+            })
+
     }
 
     return <>
@@ -168,5 +186,11 @@ export default function Rule(params) {
                 </li>)}
             </ul>
         </>}
+        {allowEdit() && <button onClick={() => setShowExampleForm(!showExampleForm)}>Add example</button>}
+        {showExampleForm && <p>
+            Example:{' '}
+            <input type="text" size="50" value={exampleText} onChange={(e) => setExampleText(e.target.value)}/><br/>
+            <button onClick={() => exampleSubmitted()}>Submit</button>
+        </p>}
     </>
 }

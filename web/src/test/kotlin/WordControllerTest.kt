@@ -116,4 +116,19 @@ class WordControllerTest {
         val link = graph.findLink(qw, cew, Link.Origin)!!
         assertEquals("q-final-consonant", link.rules.single().name)
     }
+
+    @Test
+    fun addWordSequence() {
+        val seq = fixture.setupRuleSequence()
+
+        wordController.addWordSequence(WordController.WordSequenceParams("ce am 'smth' > q an"))
+        val ceWord = graph.wordsByText(fixture.ce, "am").single()
+        assertEquals("smth", ceWord.gloss)
+
+        val qWord = graph.wordsByText(fixture.q, "an").single()
+        assertEquals("smth", qWord.gloss)
+
+        val link = graph.findLink(qWord, ceWord, Link.Origin)
+        assertEquals("q-final-consonant", link!!.rules.single().name)
+    }
 }
