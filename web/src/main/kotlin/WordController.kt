@@ -387,7 +387,17 @@ class WordController(val graphService: GraphService) {
                 gloss = lastGloss
             }
 
-            val word = graphService.graph.findOrAddWord(match.groupValues[2], language, gloss, source = source)
+            var reconstructed = false
+            var text = match.groupValues[2]
+            if (text.startsWith("*")) {
+                text = text.removePrefix("*")
+                if (!language.reconstructed) {
+                    reconstructed = true
+                }
+            }
+
+            val word = graphService.graph.findOrAddWord(text, language, gloss, source = source,
+                reconstructed = reconstructed)
             if (lastWord != null) {
                 val link = graphService.graph.addLink(word, lastWord, Link.Origin, emptyList(), source, null)
                 val ruleSequence = graphService.graph.ruleSequencesForLanguage(word.language)
