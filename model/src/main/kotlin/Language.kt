@@ -347,7 +347,9 @@ class Language(val name: String, val shortName: String) {
             "labial", "bilabial", "labiodental", "dental", "alveolar", "postalveolar", "palatal", "velar", "labiovelar",
             "uvular", "glottal"
         )
-        val articulationManners = listOf("plosive", "stop", "fricative", "nasal", "approximant", "trill", "lateral")
+        val articulationManners = listOf(
+            "plosive", "stop", "fricative", "affricate", "nasal", "approximant", "trill", "lateral"
+        )
         val vowelHeights = listOf("close", "near-close", "close-mid", "mid", "open-mid", "near-open", "open")
         val vowelBackness = listOf("front", "near-front", "central", "near-back", "back")
     }
