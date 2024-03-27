@@ -1,8 +1,18 @@
 import {useRouter} from "next/router";
 import PhonemeForm from "@/components/PhonemeForm";
 import Link from "next/link";
+import {fetchAllLanguagePaths, fetchBackend} from "@/api";
 
-export default function PublicationEditor() {
+export async function getStaticProps(context) {
+    return fetchBackend(`language/${context.params.lang}`)
+}
+
+export async function getStaticPaths() {
+    return await fetchAllLanguagePaths();
+}
+
+export default function PublicationEditor(params) {
+    const langData = params.loaderData
     const router = useRouter()
     const lang = router.query.lang
 
@@ -14,6 +24,7 @@ export default function PublicationEditor() {
         <h2>
             <small>
                 <Link href={`/`}>Etymograph</Link> {'> '}
+                <Link href={`/language/${lang}`}>{langData.name}</Link> {'> '}
             </small>
             New Phoneme
         </h2>
