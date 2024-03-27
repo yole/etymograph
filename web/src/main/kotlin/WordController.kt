@@ -401,7 +401,7 @@ class WordController(val graphService: GraphService) {
     }
 
     companion object {
-        val sequenceStepPattern = Regex("(\\w+) (\\S+)(\\s+'\\w+')?")
+        val sequenceStepPattern = Regex("(\\w+) (\\S+)(\\s+'.+')?")
     }
 }
 
