@@ -139,6 +139,43 @@ class RuleControllerTest {
     }
 
     @Test
+    fun nestedSequence() {
+        val ceRule = ruleController.newRule(
+            RuleController.UpdateRuleParameters(
+                "ce-p-f",
+                "ce", "ce",
+                "sound is 'p':\n- new sound is 'f'"
+            )
+        )
+        val ceSequence = graph.addRuleSequence("ce-sequence", fixture.ce, fixture.ce,
+            listOf(graph.ruleByName(ceRule.name)!!))
+
+        val qRule = ruleController.newRule(
+            RuleController.UpdateRuleParameters(
+                "q-final-consonant",
+                "q", "q",
+                "end of word and sound is 'm':\n- new sound is 'n'"
+            )
+        )
+
+        ruleController.newSequence(
+            RuleController.UpdateSequenceParams(
+                "ce-to-q",
+                "ce",
+                "q",
+                "sequence: ${ceSequence.name}\n${qRule.name}"
+            )
+        )
+        val seq = graph.ruleSequencesForLanguage(fixture.q).single()
+        assertEquals(ceSequence.id, seq.ruleIds[0])
+        assertEquals(qRule.id, seq.ruleIds[1])
+
+        val rules = ruleController.rules("q")
+        val group = rules.ruleGroups.single()
+        assertEquals(2, group.rules.size)
+    }
+
+    @Test
     fun expectedWordOrtho() {
         fixture.q.phonemes = listOf(Phoneme(-1, listOf("th"), "θ", setOf("consonant")))
 

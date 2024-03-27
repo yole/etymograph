@@ -67,11 +67,12 @@ abstract class GraphRepository {
         name: String,
         fromLanguage: Language,
         toLanguage: Language,
-        rules: List<Rule>
+        rules: List<LangEntity>
     ): RuleSequence
 
     abstract fun ruleSequencesForLanguage(language: Language): List<RuleSequence>
     abstract fun ruleSequencesFromLanguage(language: Language): List<RuleSequence>
+    abstract fun ruleSequenceByName(name: String): RuleSequence?
     abstract fun applyRuleSequence(link: Link, sequence: RuleSequence)
     abstract fun suggestDeriveRuleSequences(word: Word): List<RuleSequence>
     abstract fun deriveThroughRuleSequence(word: Word, sequence: RuleSequence): Word?

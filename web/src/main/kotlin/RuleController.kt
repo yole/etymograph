@@ -58,9 +58,15 @@ class RuleController(val graphService: GraphService) {
         val examples: List<RuleExampleViewModel>
     )
 
+    data class RuleShortViewModel(
+        val id: Int,
+        val name: String,
+        val summaryText: String
+    )
+
     data class RuleGroupViewModel(
         val groupName: String,
-        val rules: List<RuleViewModel>,
+        val rules: List<RuleShortViewModel>,
         val sequenceId: Int? = null,
         val sequenceName: String? = null,
         val sequenceFromLang: String? = null,
@@ -73,15 +79,15 @@ class RuleController(val graphService: GraphService) {
     )
 
     @GetMapping("/rules")
-    fun allRules(): List<RuleViewModel> {
-        return graphService.graph.allRules().map { it.toViewModel(false) }
+    fun allRules(): List<RuleShortViewModel> {
+        return graphService.graph.allRules().map { it.toShortViewModel() }
     }
 
     @GetMapping("/rules/{lang}")
     fun rules(@PathVariable lang: String): RuleListViewModel {
         val language = graphService.resolveLanguage(lang)
 
-        val ruleGroups = mutableMapOf<String, MutableList<RuleViewModel>>()
+        val ruleGroups = mutableMapOf<String, MutableList<RuleShortViewModel>>()
 
         val paradigms = graphService.graph.paradigmsForLanguage(language)
         val paradigmRules = paradigms.associate { it.name to it.collectAllRules() }
@@ -91,7 +97,7 @@ class RuleController(val graphService: GraphService) {
         for (paradigmRule in paradigmRules.entries) {
             ruleGroups
                 .getOrPut("Grammar: ${paradigmRule.key}") { mutableListOf() }
-                .addAll(paradigmRule.value.map { it.toViewModel(false) })
+                .addAll(paradigmRule.value.map { it.toShortViewModel() })
         }
 
         val sequences = graphService.graph.ruleSequencesForLanguage(language)
@@ -100,15 +106,15 @@ class RuleController(val graphService: GraphService) {
             val groupName = "Phonetics: ${sequence.name}"
             val group = ruleGroups.getOrPut(groupName) { mutableListOf() }
             ruleSeqMap[groupName] = sequence
-            val rules = sequence.rules.map { it.resolve() }
-            allSequenceRules.addAll(rules)
-            group.addAll(rules.map { it.toViewModel(false) })
+            val rules = sequence.ruleIds.map { graphService.graph.langEntityById(it)!! }
+            allSequenceRules.addAll(rules.filterIsInstance<Rule>())
+            group.addAll(rules.map { it.toShortViewModel() })
         }
 
         for (rule in graphService.graph.allRules().filter { it.toLanguage == language }) {
             if (rule in allParadigmRules || rule in allSequenceRules) continue
             val categoryName = if (rule.isPhonemic()) "Phonetics" else "Grammar: Other"
-            ruleGroups.getOrPut(categoryName) { mutableListOf() }.add(rule.toViewModel(false))
+            ruleGroups.getOrPut(categoryName) { mutableListOf() }.add(rule.toShortViewModel())
         }
 
         return RuleListViewModel(
@@ -126,7 +132,15 @@ class RuleController(val graphService: GraphService) {
         return graphService.resolveRule(id).toViewModel()
     }
 
-    private fun Rule.toViewModel(withExamples: Boolean = true): RuleViewModel {
+    private fun LangEntity.toShortViewModel(): RuleShortViewModel {
+        return when (this) {
+            is Rule -> RuleShortViewModel(id, name, toSummaryText())
+            is RuleSequence -> RuleShortViewModel(id, "sequence: $name", "")
+            else -> throw IllegalStateException("Unknown entity type")
+        }
+    }
+
+    private fun Rule.toViewModel(): RuleViewModel {
         val graph = graphService.graph
         val paradigm = graph.paradigmForRule(this)
         val links = (graph.getLinksFrom(this).map { it to it.toEntity } +
@@ -165,7 +179,7 @@ class RuleController(val graphService: GraphService) {
                     )
                 }
             },
-            if (!withExamples) emptyList() else graph.findRuleExamples(this).map { link ->
+            graph.findRuleExamples(this).map { link ->
                 exampleToViewModel(link, graph)
             }
         )
@@ -301,11 +315,19 @@ class RuleController(val graphService: GraphService) {
         graph.addRuleSequence(params.name, fromLanguage, toLanguage, rules)
     }
 
-    private fun resolveUpdateSequenceParams(params: UpdateSequenceParams): Triple<Language, Language, List<Rule>> {
+    private fun resolveUpdateSequenceParams(params: UpdateSequenceParams): Triple<Language, Language, List<LangEntity>> {
         val fromLanguage = graphService.resolveLanguage(params.fromLang)
         val toLanguage = graphService.resolveLanguage(params.toLang)
         val rules = params.ruleNames.split('\n').filter { it.isNotBlank() }.map {
-            graphService.resolveRule(it.trim())
+            val name = it.trim()
+            if (name.startsWith("sequence:")) {
+                val sequenceName = name.removePrefix("sequence:").trim()
+                graphService.graph.ruleSequenceByName(sequenceName)
+                    ?: badRequest("Cannot find rule sequence $sequenceName")
+            }
+            else {
+                graphService.resolveRule(name)
+            }
         }
         return Triple(fromLanguage, toLanguage, rules)
     }
@@ -317,7 +339,7 @@ class RuleController(val graphService: GraphService) {
         sequence.name = params.name
         sequence.fromLanguage = fromLanguage
         sequence.toLanguage = toLanguage
-        sequence.rules = rules.map { RuleRef.to(it) }
+        sequence.ruleIds = rules.map { it.id }
     }
 
     data class ApplySequenceParams(

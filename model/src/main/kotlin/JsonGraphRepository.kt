@@ -389,7 +389,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             allLangEntities.filterIsInstance<RuleSequence>().map { s ->
                 RuleSequenceData(
                     s.id, s.name, s.fromLanguage.shortName, s.toLanguage.shortName,
-                    s.rules.map { it.resolve().id },
+                    s.ruleIds,
                     s.source.sourceToSerializedFormat(), s.notes)
             },
             orthographyRulesData
@@ -498,7 +498,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                 languageByShortName(sequence.fromLanguageShortName)
                     ?: throw IllegalStateException("Broken language ID reference ${sequence.fromLanguageShortName}"),
                 languageByShortName(sequence.toLanguageShortName)!!,
-                sequence.ruleIds.map { ruleRef(this, it) },
+                sequence.ruleIds,
                 loadSource(sequence.sourceRefs),
                 sequence.notes
             )

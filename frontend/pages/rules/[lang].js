@@ -38,7 +38,11 @@ export default function RuleList(params) {
             <h2 key={g.groupName}>{g.groupName}</h2>
             {(g.sequenceId === null || sequenceEditId !== g.sequenceId) && <>
                 <ul>
-                    {g.rules.map(r => <li key={r.id}><Link href={`/rule/${r.id}`}>{r.name}</Link>{r.summaryText.length > 0 ? ": " + r.summaryText : ""}</li>)}
+                    {g.rules.map(r => <li key={r.id}>
+                        {!r.name.startsWith("sequence: ") && <Link href={`/rule/${r.id}`}>{r.name}</Link>}
+                        {r.name.startsWith("sequence: ") && r.name}
+                        {r.summaryText.length > 0 ? ": " + r.summaryText : ""}
+                    </li>)}
                 </ul>
                 {allowEdit() && g.sequenceId !== null &&
                     <button onClick={() => setSequenceEditId(g.sequenceId)}>Edit sequence</button>

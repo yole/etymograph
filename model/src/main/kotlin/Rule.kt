@@ -252,9 +252,24 @@ class RuleSequence(
     id: Int, var name: String,
     var fromLanguage: Language,
     var toLanguage: Language,
-    var rules: List<RuleRef>,
+    var ruleIds: List<Int>,
     source: List<SourceRef>, notes: String?
-) : LangEntity(id, source, notes)
+) : LangEntity(id, source, notes) {
+
+    fun resolveRules(graph: GraphRepository): List<Rule> {
+        val result = mutableListOf<Rule>()
+        for (ruleId in ruleIds) {
+            val entity = graph.langEntityById(ruleId)
+            if (entity is Rule) {
+                result.add(entity)
+            }
+            else if (entity is RuleSequence) {
+                result.addAll(entity.resolveRules(graph))
+            }
+        }
+        return result
+    }
+}
 
 fun parseCategoryValues(language: Language, categoryValues: String): List<Pair<WordCategory?, WordCategoryValue?>> {
     return categoryValues.split('.').filter { it.isNotEmpty() }.flatMap {

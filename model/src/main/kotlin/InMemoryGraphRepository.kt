@@ -414,9 +414,9 @@ open class InMemoryGraphRepository : GraphRepository() {
         deleteLangEntity(rule)
     }
 
-    override fun addRuleSequence(name: String, fromLanguage: Language, toLanguage: Language, rules: List<Rule>): RuleSequence {
+    override fun addRuleSequence(name: String, fromLanguage: Language, toLanguage: Language, rules: List<LangEntity>): RuleSequence {
         return RuleSequence(allLangEntities.size, name, fromLanguage, toLanguage,
-            rules.map { RuleRef.to(it) }, emptyList(), null
+            rules.map { it.id }, emptyList(), null
         ).also {
             allLangEntities.add(it)
         }
@@ -428,6 +428,10 @@ open class InMemoryGraphRepository : GraphRepository() {
 
     override fun ruleSequencesFromLanguage(language: Language): List<RuleSequence> {
         return allLangEntities.filterIsInstance<RuleSequence>().filter { it.fromLanguage == language }
+    }
+
+    override fun ruleSequenceByName(name: String): RuleSequence? {
+        return allLangEntities.filterIsInstance<RuleSequence>().find { it.name == name }
     }
 
     override fun applyRuleSequence(link: Link, sequence: RuleSequence) {
@@ -466,8 +470,7 @@ open class InMemoryGraphRepository : GraphRepository() {
 
     private fun applyRuleSequence(word: Word, sequence: RuleSequence, applicableRules: MutableList<Rule>): Word? {
         var targetWord = word
-        for (ruleRef in sequence.rules) {
-            val rule = ruleRef.resolve()
+        for (rule in sequence.resolveRules(this)) {
             val newWord = rule.apply(targetWord, this)
             if ('?' in newWord.text) return null
             if (newWord !== targetWord) {

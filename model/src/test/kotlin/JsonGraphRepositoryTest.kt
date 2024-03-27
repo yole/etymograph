@@ -136,7 +136,7 @@ class JsonGraphRepositoryTest : QBaseTest() {
         val repo2 = repo.roundtrip()
         val sequences = repo2.ruleSequencesForLanguage(repo2.languageByShortName("Q")!!)
         assertEquals(1, sequences.size)
-        assertEquals("i-disappears", sequences[0].rules[0].resolve().name)
+        assertEquals("i-disappears", sequences[0].resolveRules(repo2).single().name)
     }
 
     @Test
