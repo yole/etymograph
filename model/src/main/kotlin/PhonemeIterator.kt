@@ -60,7 +60,8 @@ object RelativeOrdinals : OrdinalTable(
         "previous" to -1,
         "next" to 1,
         "second next" to 2,
-        "second previous" to -2
+        "second previous" to -2,
+        "third next" to 3
     )
 )
 
