@@ -110,6 +110,8 @@ In addition to the classes defined in each language, you can use a number of spe
  * `diphthong` matches a vowel which is part of a diphthong;
  * `word-initial` matches the first phoneme of a word;
  * `word-final` matches the last phoneme of a word;
+ * `syllable-initial` matches the first phoneme in a syllable;
+ * `syllable-final` matches the last phonene of a syllable;
  * `stressed` matches the vowel in the stressed syllable of a word.
  * `unstressed` matches everything except the vowel in the stressed syllable of a word.
 

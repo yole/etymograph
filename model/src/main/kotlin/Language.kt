@@ -46,7 +46,23 @@ open class PhonemeClass(val name: String, var matchingPhonemes: List<String>) {
             }
         }
 
-        val specialPhonemeClasses = listOf(diphthong, stressed, unstressed, wordInitial, wordFinal)
+        val syllableInitial = object : PhonemeClass("syllable-initial", emptyList()) {
+            override fun matchesCurrent(it: PhonemeIterator): Boolean {
+                val syllables = it.syllables ?: return false
+                return syllables.any { s -> it.index == s.startIndex }
+            }
+        }
+
+        val syllableFinal = object : PhonemeClass("syllable-final", emptyList()) {
+            override fun matchesCurrent(it: PhonemeIterator): Boolean {
+                val syllables = it.syllables ?: return false
+                return syllables.any { s -> it.index == s.endIndex - 1 }
+            }
+        }
+
+        val specialPhonemeClasses = listOf(
+            diphthong, stressed, unstressed, wordInitial, wordFinal, syllableInitial, syllableFinal
+        )
 
         const val vowelClassName = "vowel"
     }

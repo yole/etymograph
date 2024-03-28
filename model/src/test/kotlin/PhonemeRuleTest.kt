@@ -440,4 +440,13 @@ class PhonemeRuleTest : QBaseTest() {
         """.trimIndent())
         assertEquals("kkwenya", applyRule(rule, q.word("kwenya")))
     }
+
+    @Test
+    fun syllableFinal() {
+        val rule = parseRule(q, q, """
+            sound is syllable-final 'n':
+            - new sound is 'm'
+        """.trimIndent())
+        assertEquals("inomdem", applyRule(rule, q.word("inonden")))
+    }
 }

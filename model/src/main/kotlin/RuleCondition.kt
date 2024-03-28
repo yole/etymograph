@@ -185,16 +185,16 @@ class LeafRuleCondition(
             ConditionType.PhonemeMatches -> matchPhoneme(phonemes)
             ConditionType.BeginningOfWord -> phonemes.atBeginning().negateIfNeeded()
             ConditionType.EndOfWord -> phonemes.atEnd().negateIfNeeded()
-            ConditionType.SyllableIndex -> matchSyllableIndex(phonemes, word)
+            ConditionType.SyllableIndex -> matchSyllableIndex(phonemes)
             ConditionType.ClassMatches -> matchClass(word)
             ConditionType.NumberOfSyllables -> matchNumberOfSyllables(word)
             else -> throw IllegalStateException("Trying to use a word condition for matching phonemes")
         }
     }
 
-    private fun matchSyllableIndex(phonemes: PhonemeIterator, word: Word): Boolean {
-        val syllables = breakIntoSyllables(word)
-        if (syllables.isEmpty()) return false.negateIfNeeded()
+    private fun matchSyllableIndex(phonemes: PhonemeIterator): Boolean {
+        val syllables = phonemes.syllables
+        if (syllables.isNullOrEmpty()) return false.negateIfNeeded()
         val absIndex = Ordinals.toAbsoluteIndex(parameter!!.toInt(), syllables.size)
         for ((i, s) in syllables.withIndex()) {
             if (phonemes.index < s.endIndex) {
