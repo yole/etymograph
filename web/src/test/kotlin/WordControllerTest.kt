@@ -121,7 +121,7 @@ class WordControllerTest {
     fun addWordSequence() {
         val seq = fixture.setupRuleSequence()
 
-        wordController.addWordSequence(WordController.WordSequenceParams("ce am 'smth, other' > q an (PE xx)"))
+        wordController.addWordSequence(WordController.WordSequenceParams("ce am 'smth, other' > q an", "PE xx"))
         val ceWord = graph.wordsByText(fixture.ce, "am").single()
         assertEquals("smth, other", ceWord.gloss)
         assertEquals("PE xx", ceWord.source.single().refText)

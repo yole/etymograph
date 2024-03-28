@@ -30,6 +30,7 @@ export default function Rule(params) {
     const [errorText, setErrorText] = useState("")
     const [showExampleForm, setShowExampleForm] = useState(false)
     const [exampleText, setExampleText] = useState("")
+    const [exampleSource, setExampleSource] = useState("")
     const router = useRouter()
     useEffect(() => { document.title = "Etymograph : Rule " + rule.name })
 
@@ -70,7 +71,7 @@ export default function Rule(params) {
     }
 
     function exampleSubmitted() {
-        addWordSequence(exampleText)
+        addWordSequence(exampleText, exampleSource)
             .then(r => {
                 if (r.status === 200) {
                     setShowExampleForm(false)
@@ -197,10 +198,18 @@ export default function Rule(params) {
             </ul>
         </>}
         {allowEdit() && <button onClick={() => setShowExampleForm(!showExampleForm)}>Add example</button>}
-        {showExampleForm && <p>
-            Example:{' '}
-            <input type="text" size="50" value={exampleText} onChange={(e) => setExampleText(e.target.value)}/><br/>
+        {showExampleForm && <>
+            <table><tbody>
+            <tr>
+                <td>Example:</td>
+                <td><input type="text" size="50" value={exampleText} onChange={(e) => setExampleText(e.target.value)}/></td>
+            </tr>
+            <tr>
+                <td>Source:</td>
+                <td><input type="text" value={exampleSource} onChange={(e) => setExampleSource(e.target.value)}/></td>
+            </tr>
+            </tbody></table>
             <button onClick={() => exampleSubmitted()}>Submit</button>
-        </p>}
+        </>}
     </>
 }
