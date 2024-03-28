@@ -143,7 +143,7 @@ fun findRelatedRules(graph: GraphRepository, language: Language, phoneme: Phonem
 }
 
 fun buildPhonemeRuleGroup(graph: GraphRepository, title: String, phoneme: Phoneme, sequences: List<RuleSequence>): PhonemeRuleGroupViewModel {
-    val rules = sequences.flatMap {
+    val rules = sequences.flatMapTo(mutableSetOf()) {
         it.resolveRules(graph).filter { rule ->
             rule.refersToPhoneme(phoneme)
         }
