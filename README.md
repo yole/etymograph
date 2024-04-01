@@ -113,7 +113,8 @@ In addition to the classes defined in each language, you can use a number of spe
  * `syllable-initial` matches the first phoneme in a syllable;
  * `syllable-final` matches the last phonene of a syllable;
  * `stressed` matches the vowel in the stressed syllable of a word.
- * `unstressed` matches everything except the vowel in the stressed syllable of a word.
+
+Any phoneme class can be inverted by prefixing it with `non-`, for example: `non-word-initial`.
 
 ### Rules
 

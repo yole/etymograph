@@ -28,12 +28,6 @@ open class PhonemeClass(val name: String, var matchingPhonemes: List<String>) {
             }
         }
 
-        val unstressed = object : PhonemeClass("unstressed", emptyList()) {
-            override fun matchesCurrent(it: PhonemeIterator): Boolean {
-                return it.stressedPhonemeIndex != it.index
-            }
-        }
-
         val wordInitial = object : PhonemeClass("word-initial", emptyList()) {
             override fun matchesCurrent(it: PhonemeIterator): Boolean {
                 return it.index == 0
@@ -61,7 +55,7 @@ open class PhonemeClass(val name: String, var matchingPhonemes: List<String>) {
         }
 
         val specialPhonemeClasses = listOf(
-            diphthong, stressed, unstressed, wordInitial, wordFinal, syllableInitial, syllableFinal
+            diphthong, stressed, wordInitial, wordFinal, syllableInitial, syllableFinal
         )
 
         const val vowelClassName = "vowel"
@@ -84,6 +78,14 @@ class IntersectionPhonemeClass(name: String, val classList: List<PhonemeClass>)
 
             }.toList()
         }
+    }
+}
+
+class NegatedPhonemeClass(private val baseClass: PhonemeClass)
+    : PhonemeClass("non-" + baseClass.name, emptyList())
+{
+    override fun matchesCurrent(it: PhonemeIterator): Boolean {
+        return !baseClass.matchesCurrent(it)
     }
 }
 
@@ -258,6 +260,10 @@ class Language(val name: String, val shortName: String) {
             val subclassNames = name.split(' ')
             val subclasses = subclassNames.map { phonemeClassByName(it) ?: return null }
             return IntersectionPhonemeClass(name, subclasses)
+        }
+        if (name.startsWith("non-")) {
+            val baseClass = phonemeClassByName(name.removePrefix("non-")) ?: return null
+            return NegatedPhonemeClass(baseClass)
         }
         return phonemeClasses.find { it.name == name } ?: PhonemeClass.specialPhonemeClasses.find { it.name == name }
     }

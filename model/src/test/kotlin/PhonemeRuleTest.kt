@@ -260,7 +260,7 @@ class PhonemeRuleTest : QBaseTest() {
     @Test
     fun unstressedSoundCondition() {
         val rule = parseRule(q, q, """
-            sound is unstressed 'o' and previous sound is 'w':
+            sound is non-stressed 'o' and previous sound is 'w':
             - new sound is 'a'
         """.trimIndent())
         assertEquals("wowa", rule.apply(q.word("wowo").apply { stressedPhonemeIndex = 1 }, emptyRepo).text)
@@ -430,6 +430,15 @@ class PhonemeRuleTest : QBaseTest() {
             - sound disappears
         """.trimIndent())
         assertEquals("glawr", rule.apply(q.word("glawar"), emptyRepo).text)
+    }
+
+    @Test
+    fun nonWordInital() {
+        val rule = parseRule(q, q, """
+            sound is non-word-initial 'w' and next sound is 'i':
+            - sound disappears
+        """.trimIndent())
+        assertEquals("wii", applyRule(rule, q.word("wiwi")))
     }
 
     @Test
