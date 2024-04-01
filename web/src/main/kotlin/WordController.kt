@@ -358,14 +358,20 @@ class WordController(val graphService: GraphService) {
     }
 
     data class WordSequenceParams(val sequence: String = "", val source: String = "")
+    data class WordSequenceResults(
+        val words: List<WordRefViewModel>,
+        val ruleIds: List<Int>
+    )
 
     @PostMapping("/wordSequence")
-    fun addWordSequence(@RequestBody params: WordSequenceParams) {
+    fun addWordSequence(@RequestBody params: WordSequenceParams): WordSequenceResults {
         var stepText = params.sequence
         val source = parseSourceRefs(graphService.graph, params.source)
         val steps = stepText.split('>').map { it.trim() }
         var lastGloss: String? = null
         var lastWord: Word? = null
+        val resultWords = mutableListOf<WordRefViewModel>()
+        val resultRules = mutableListOf<Int>()
 
         for (step in steps) {
             val match = sequenceStepPattern.matchEntire(step)
@@ -391,16 +397,19 @@ class WordController(val graphService: GraphService) {
 
             val word = graphService.graph.findOrAddWord(text, language, gloss, source = source,
                 reconstructed = reconstructed)
+            resultWords.add(word.toRefViewModel(graphService.graph))
             if (lastWord != null) {
                 val link = graphService.graph.addLink(word, lastWord, Link.Origin, emptyList(), source, null)
                 val ruleSequence = graphService.graph.ruleSequencesForLanguage(word.language)
                     .singleOrNull { it.fromLanguage == lastWord!!.language }
                 if (ruleSequence != null) {
                     graphService.graph.applyRuleSequence(link, ruleSequence)
+                    resultRules.addAll(link.rules.map { it.id })
                 }
             }
             lastWord = word
         }
+        return WordSequenceResults(resultWords, resultRules)
     }
 
     companion object {

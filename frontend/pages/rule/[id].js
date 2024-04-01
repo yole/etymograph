@@ -31,6 +31,7 @@ export default function Rule(params) {
     const [showExampleForm, setShowExampleForm] = useState(false)
     const [exampleText, setExampleText] = useState("")
     const [exampleSource, setExampleSource] = useState("")
+    const [exampleUnmatched, setExampleUnmatched] = useState([])
     const router = useRouter()
     useEffect(() => { document.title = "Etymograph : Rule " + rule.name })
 
@@ -74,13 +75,22 @@ export default function Rule(params) {
         addWordSequence(exampleText, exampleSource)
             .then(r => {
                 if (r.status === 200) {
-                    setShowExampleForm(false)
-                    setExampleText("")
-                    setErrorText("")
-                    router.replace(router.asPath)
+                    r.json().then(r => {
+                        setShowExampleForm(false)
+                        setExampleText("")
+                        if (r.ruleIds.indexOf(rule.id) >= 0) {
+                            setErrorText("")
+                            setExampleUnmatched([])
+                            router.replace(router.asPath)
+                        }
+                        else {
+                            setErrorText("Example does not match rule")
+                            setExampleUnmatched(r.words)
+                        }
+                    })
                 }
                 else {
-                        r.json().then(r => setErrorText(r.message))
+                    r.json().then(r => setErrorText(r.message))
                 }
             })
 
@@ -210,6 +220,12 @@ export default function Rule(params) {
             </tr>
             </tbody></table>
             <button onClick={() => exampleSubmitted()}>Submit</button>
+            {exampleUnmatched.length > 0 && <>
+                <p>Unmatched example: {exampleUnmatched.map((w, i) => <>
+                    {i > 0 && ' > '}
+                    <WordLink word={w} baseLanguage={rule.toLang}/>
+                </>)}</p>
+            </>}
         </>}
     </>
 }
