@@ -16,11 +16,16 @@ class SyllablesTest : QBaseTest() {
     @Test
     fun openSyllables() {
         assertSyllables(q.word("mana"), 0 to 2, 2 to 4)
+
     }
 
     @Test
     fun consonantCluster() {
-        assertSyllables(q.word("lasse"), 0 to 3, 3 to 5)
+        val word = q.word("lasse")
+        assertSyllables(word, 0 to 3, 3 to 5)
+        val syllables = breakIntoSyllables(word)
+        assertTrue(syllables[0].closed)
+        assertFalse(syllables[1].closed)
     }
 
     @Test

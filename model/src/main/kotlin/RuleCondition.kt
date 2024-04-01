@@ -1,5 +1,7 @@
 package ru.yole.etymograph
 
+import kotlin.math.abs
+
 enum class ConditionType(
     val condName: String,
     val condNameAfterBaseLanguage: String? = null,
@@ -39,9 +41,14 @@ enum class ConditionType(
     BeginningOfWord(LeafRuleCondition.beginningOfWord, phonemic = true, takesArgument = false),
     EndOfWord(LeafRuleCondition.endOfWord, phonemic = true, takesArgument = false),
     SyllableIndex(LeafRuleCondition.syllableIs, phonemic = true, parameterParseCallback = { buf, _ ->
-        val param = Ordinals.parse(buf)
-        if (param == null) throw RuleParseException("Invalid syllable index $param")
-        param.toString()
+        if (buf.consume("open"))
+            "open"
+        else if (buf.consume("closed"))
+            "closed"
+        else {
+            val param = Ordinals.parse(buf) ?: throw RuleParseException("Invalid syllable index ${buf.nextWord()}")
+            param.toString()
+        }
     }),
     SoundEquals(LeafRuleCondition.soundIsSame, phonemic = true, takesArgument = true)
 }
@@ -195,10 +202,18 @@ class LeafRuleCondition(
     private fun matchSyllableIndex(phonemes: PhonemeIterator): Boolean {
         val syllables = phonemes.syllables
         if (syllables.isNullOrEmpty()) return false.negateIfNeeded()
-        val absIndex = Ordinals.toAbsoluteIndex(parameter!!.toInt(), syllables.size)
+        val absIndex = parameter!!.toIntOrNull()?.let { Ordinals.toAbsoluteIndex(it, syllables.size) }
         for ((i, s) in syllables.withIndex()) {
             if (phonemes.index < s.endIndex) {
-                return (i == absIndex).negateIfNeeded()
+                if (absIndex != null) {
+                    return (i == absIndex).negateIfNeeded()
+                }
+                if (parameter == "closed") {
+                    return s.closed.negateIfNeeded()
+                }
+                if (parameter == "open") {
+                    return !s.closed.negateIfNeeded()
+                }
             }
         }
         return false.negateIfNeeded()
@@ -226,7 +241,7 @@ class LeafRuleCondition(
 
     private fun parameterToEditableText(): String? {
         if (type == ConditionType.SyllableIndex) {
-            return Ordinals.toString(parameter!!.toInt())
+            return parameter!!.toIntOrNull()?.let { Ordinals.toString(it) } ?: parameter
         }
         if (type == ConditionType.NumberOfSyllables) {
             if (parameter!!.startsWith(">=")) {
