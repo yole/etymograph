@@ -236,10 +236,9 @@ class WordController(val graphService: GraphService) {
         val classes = posClassList.drop(1)
         if (pos != null) {
             for (cls in classes) {
-                val (wc, wcv) = language.findWordClass(cls)
-                    ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST, "Unknown word class '$cls'")
+                val (wc, _) = language.findWordClass(cls) ?: badRequest("Unknown word class '$cls'")
                 if (pos !in wc.pos) {
-                    throw ResponseStatusException(HttpStatus.BAD_REQUEST, "Word class '$cls' does not apply to POS '$pos'")
+                    badRequest("Word class '$cls' does not apply to POS '$pos'")
                 }
             }
         }
@@ -365,7 +364,7 @@ class WordController(val graphService: GraphService) {
 
     @PostMapping("/wordSequence")
     fun addWordSequence(@RequestBody params: WordSequenceParams): WordSequenceResults {
-        var stepText = params.sequence
+        val stepText = params.sequence
         val source = parseSourceRefs(graphService.graph, params.source)
         val steps = stepText.split('>').map { it.trim() }
         var lastGloss: String? = null
