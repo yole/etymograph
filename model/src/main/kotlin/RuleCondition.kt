@@ -1,7 +1,5 @@
 package ru.yole.etymograph
 
-import kotlin.math.abs
-
 enum class ConditionType(
     val condName: String,
     val condNameAfterBaseLanguage: String? = null,
@@ -24,9 +22,9 @@ enum class ConditionType(
         if (param?.toIntOrNull() == null) throw RuleParseException("Number of syllables should be a number")
 
         if (isAtLeast)
-            ">=" + param
+            ">=$param"
         else if (isAtMost)
-            "<=" + param
+            "<=$param"
         else
             param
     }),
