@@ -277,6 +277,16 @@ class PhonemeRuleTest : QBaseTest() {
     }
 
     @Test
+    fun nextSoundIsClassParameter() {
+        val rule = parseRule(q, q, """
+            sound is 's' and next sound is non-word-final 'p':
+            - new next sound is 'ph'
+        """.trimIndent())
+        assertEquals("sphisvosp", rule.apply(q.word("spisvosp"), emptyRepo).text)
+        assertEquals("sound is 's' and next sound is non-word-final 'p'", rule.logic.branches[0].condition.toEditableText())
+    }
+
+    @Test
     fun beginningOfWordNegated() {
         val rule = parseRule(q, q, """
             not beginning of word and sound is 'a':

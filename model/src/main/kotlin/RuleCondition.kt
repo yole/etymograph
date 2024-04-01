@@ -313,8 +313,8 @@ class LeafRuleCondition(
             return LeafRuleCondition(conditionType, phonemeClass, parameter, negated, baseLanguageShortName)
         }
 
-        fun combineToEditableText(phonemeClass1: PhonemeClass?, parameter: String?) = arrayOf(
-            phonemeClass1?.name,
+        fun combineToEditableText(phonemeClass: PhonemeClass?, parameter: String?) = arrayOf(
+            phonemeClass?.name,
             parameter?.let { "'$it'" }
         ).filterNotNull().joinToString(" ")
     }
@@ -411,8 +411,9 @@ class RelativePhonemeRuleCondition(
         return matchesCurrent(it) xor negated
     }
 
-    private fun matchesCurrent(it: PhonemeIterator) =
-        matchPhonemeClass?.matchesCurrent(it) ?: (parameter == it.current)
+    private fun matchesCurrent(phonemes: PhonemeIterator): Boolean =
+        (matchPhonemeClass?.matchesCurrent(phonemes) ?: true) &&
+         (parameter == null || phonemes.current == parameter)
 
     override fun matches(word: Word, graph: GraphRepository): Boolean {
         val matchWord = graph.findWordToMatch(word, baseLanguageShortName) ?: return false
@@ -428,7 +429,7 @@ class RelativePhonemeRuleCondition(
             (baseLanguageShortName?.rich(true) ?: "".rich()) +
             " is " +
             (if (negated) LeafRuleCondition.notPrefix.rich() else "".rich()) +
-            (matchPhonemeClass?.name?.rich(true) ?: "'$parameter'".rich(true))
+            LeafRuleCondition.combineToEditableText(matchPhonemeClass, parameter).rich(true)
     }
 
     companion object {
