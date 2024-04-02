@@ -97,6 +97,17 @@ class PhonemePattern(val phonemeClass: PhonemeClass?, val literal: String?) {
             phonemeClass?.name,
             literal?.let { "'$it'" }
         ).filterNotNull().joinToString(" ")
+
+    fun refersToPhoneme(phoneme: Phoneme, phonemic: Boolean): Boolean {
+        val phonemeAsString = if (phonemic) phoneme.effectiveSound else phoneme.graphemes[0]
+        if (literal != null) {
+            return literal == phonemeAsString
+        }
+        if (phonemeClass != null) {
+            return phonemeAsString in phonemeClass.matchingPhonemes
+        }
+        return false
+    }
 }
 
 class PhonemeClassList {

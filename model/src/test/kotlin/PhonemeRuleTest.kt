@@ -10,7 +10,7 @@ class PhonemeRuleTest : QBaseTest() {
     fun phonemeCondition() {
         val word = ce.word("khith")
         val it = PhonemeIterator(word)
-        val cond = LeafRuleCondition(ConditionType.PhonemeMatches, null, "kh", false, null)
+        val cond = RelativePhonemeRuleCondition(false, null, PhonemePattern(null, "kh"), null)
         assertTrue(cond.matches(word, it))
     }
 

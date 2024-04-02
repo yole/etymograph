@@ -115,8 +115,11 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
     }
 
     protected fun toSummaryTextPhonemic(condition: RuleCondition): String? {
-        val soundIs = condition.findLeafConditions(ConditionType.PhonemeMatches).singleOrNull() ?: return null
-        val soundIsParameter = LeafRuleCondition.combineToEditableText(soundIs.phonemeClass, soundIs.parameter)
+        val soundIs = condition.findLeafConditions {
+            it is RelativePhonemeRuleCondition && it.seekTarget == null
+        }.singleOrNull() as RelativePhonemeRuleCondition? ?: return null
+
+        val soundIsParameter = soundIs.phonemePattern.toEditableText()
         var includeRelativePhoneme = true
         val changeSummary = when (type) {
             InstructionType.ChangeSound -> "$soundIsParameter -> '${arg}'"
@@ -138,18 +141,23 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
     }
 
     private fun summarizeNextSound(condition: RuleCondition): String? {
-        val soundIs = condition.findLeafConditions(ConditionType.PhonemeMatches).singleOrNull() ?: return null
-        if (soundIs.phonemeClass != null) return null
-        val nextPhonemeIs = condition.findLeafConditions { it is RelativePhonemeRuleCondition }.singleOrNull() as? RelativePhonemeRuleCondition
+        val soundIs = condition.findLeafConditions {
+            it is RelativePhonemeRuleCondition && it.seekTarget == null
+        }.singleOrNull() as RelativePhonemeRuleCondition? ?: return null
+
+        if (soundIs.phonemePattern.phonemeClass != null) return null
+        val nextPhonemeIs = condition.findLeafConditions {
+            it is RelativePhonemeRuleCondition && it.seekTarget != null
+        }.singleOrNull() as? RelativePhonemeRuleCondition
             ?: return null
-        if (nextPhonemeIs.seekTarget.phonemeClass != null ||
+        if (nextPhonemeIs.seekTarget!!.phonemeClass != null ||
             nextPhonemeIs.seekTarget.index != 1 ||
             !nextPhonemeIs.seekTarget.relative)
         {
             return null
         }
         val nextSound = if (type == InstructionType.SoundDisappears) "" else arg
-        return "'${soundIs.parameter}${nextPhonemeIs.phonemePattern.literal}' -> '${soundIs.parameter}$nextSound'"
+        return "'${soundIs.phonemePattern.literal}${nextPhonemeIs.phonemePattern.literal}' -> '${soundIs.phonemePattern.literal}$nextSound'"
     }
 
     private fun summarizeContext(condition: RuleCondition, includeRelativePhoneme: Boolean): String? {
@@ -174,8 +182,9 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
     private fun summarizeRelativePhoneme(condition: RuleCondition): String? {
         val relativePhonemes = condition.findLeafConditions { it is RelativePhonemeRuleCondition }
             .filterIsInstance<RelativePhonemeRuleCondition>()
+            .filter { it.seekTarget != null }
         if (relativePhonemes.isEmpty()) return ""
-        if (relativePhonemes.any { it.seekTarget.phonemeClass != null }) return null
+        if (relativePhonemes.any { it.seekTarget!!.phonemeClass != null }) return null
 
         val after = summarizeRelativePhonemeParameters(relativePhonemes, -1)
             .takeIf { it.isNotEmpty() }?.let { " after $it" } ?: ""
@@ -185,7 +194,7 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
     }
 
     private fun summarizeRelativePhonemeParameters(relativePhonemes: List<RelativePhonemeRuleCondition>, relIndex: Int): String {
-        val relativePhonemeParameters = relativePhonemes.filter { it.seekTarget.index == relIndex}.map {
+        val relativePhonemeParameters = relativePhonemes.filter { it.seekTarget?.index == relIndex}.map {
             val p = it.phonemePattern.toEditableText()
             val negation = if (it.negated) "not " else ""
             "$negation$p"
@@ -197,9 +206,9 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
         if (type == InstructionType.NoChange) return emptyList()
         if (type == InstructionType.ChangeSound) {
             if (arg == phonemes.current) {
-                val leafCondition = condition as? LeafRuleCondition ?: return null
-                if (leafCondition.type == ConditionType.PhonemeMatches && leafCondition.parameter != null) {
-                    phonemes.replace(leafCondition.parameter)
+                val leafCondition = condition as? RelativePhonemeRuleCondition ?: return null
+                if (leafCondition.seekTarget == null && leafCondition.phonemePattern.literal != null) {
+                    phonemes.replace(leafCondition.phonemePattern.literal)
                     return listOf(phonemes.result())
                 }
                 else {

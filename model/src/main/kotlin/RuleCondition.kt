@@ -28,7 +28,6 @@ enum class ConditionType(
         else
             param
     }),
-    PhonemeMatches(LeafRuleCondition.soundIs, phonemic = true),
     StressIs(LeafRuleCondition.stressIs, parameterParseCallback = { buf, _ ->
         val ord = Ordinals.parse(buf)
         if (ord == null || !buf.consume("syllable")) {
@@ -78,21 +77,6 @@ sealed class RuleCondition {
         findLeafConditions { it is LeafRuleCondition && it.type == type }.filterIsInstance<LeafRuleCondition>()
 
     open fun refersToPhoneme(phoneme: Phoneme): Boolean = false
-
-    protected fun checkRefersToPhoneme(
-        phoneme: Phoneme,
-        parameter: String?,
-        phonemeClass: PhonemeClass?
-    ): Boolean {
-        val phonemeAsString = if (isPhonemic()) phoneme.effectiveSound else phoneme.graphemes[0]
-        if (parameter != null) {
-            return parameter == phonemeAsString
-        }
-        if (phonemeClass != null) {
-            return phonemeAsString in phonemeClass.matchingPhonemes
-        }
-        return false
-    }
 
     companion object {
         fun parse(buffer: ParseBuffer, language: Language): RuleCondition {
@@ -187,7 +171,6 @@ class LeafRuleCondition(
 
     override fun matches(word: Word, phonemes: PhonemeIterator): Boolean {
         return when (type) {
-            ConditionType.PhonemeMatches -> matchPhoneme(phonemes)
             ConditionType.BeginningOfWord -> phonemes.atBeginning().negateIfNeeded()
             ConditionType.EndOfWord -> phonemes.atEnd().negateIfNeeded()
             ConditionType.SyllableIndex -> matchSyllableIndex(phonemes)
@@ -216,10 +199,6 @@ class LeafRuleCondition(
         }
         return false.negateIfNeeded()
     }
-
-    private fun matchPhoneme(phonemes: PhonemeIterator): Boolean =
-        ((phonemeClass?.matchesCurrent(phonemes) ?: true) &&
-         (parameter == null || phonemes.current == parameter)).negateIfNeeded()
 
     override fun toRichText(): RichText {
         val maybeNotPrefix = (if (negated) notPrefix else "").rich()
@@ -258,13 +237,6 @@ class LeafRuleCondition(
         return parameterName
     }
 
-    override fun refersToPhoneme(phoneme: Phoneme): Boolean {
-        return when(type) {
-            ConditionType.ClassMatches -> false
-            else -> checkRefersToPhoneme(phoneme, parameter, phonemeClass)
-        }
-    }
-
     companion object {
         const val wordEndsWith = "word ends with "
         const val endsWith = "ends with "
@@ -282,8 +254,8 @@ class LeafRuleCondition(
 
         fun parse(buffer: ParseBuffer, language: Language): RuleCondition {
             buffer.tryParse { SyllableRuleCondition.parse(buffer, language) }?.let { return it }
-            buffer.tryParse { RelativePhonemeRuleCondition.parse(buffer, language) }?.let { return it }
             buffer.tryParse { PhonemeEqualsRuleCondition.parse(buffer, language) }?.let { return it }
+            buffer.tryParse { RelativePhonemeRuleCondition.parse(buffer, language) }?.let { return it }
 
             val baseLanguageShortName = if (buffer.consume("base word in")) {
                 buffer.nextWord()
@@ -411,19 +383,27 @@ fun GraphRepository.findWordToMatch(word: Word, baseLanguageShortName: String?):
 
 class RelativePhonemeRuleCondition(
     val negated: Boolean,
-    val seekTarget: SeekTarget,
+    val seekTarget: SeekTarget?,
     val phonemePattern: PhonemePattern,
     val baseLanguageShortName: String?
 ) : RuleCondition() {
-    override fun isPhonemic(): Boolean = seekTarget.relative
+    override fun isPhonemic(): Boolean = seekTarget?.relative ?: true
 
     override fun matches(word: Word, phonemes: PhonemeIterator): Boolean {
-        val it = phonemes.clone()
-        if (!it.seek(seekTarget)) return negated
+        val it = if (seekTarget == null)
+            phonemes
+        else {
+            phonemes.clone().also {
+                if (!it.seek(seekTarget)) return negated
+            }
+        }
         return phonemePattern.matchesCurrent(it) xor negated
     }
 
     override fun matches(word: Word, graph: GraphRepository): Boolean {
+        if (seekTarget == null) {
+            throw IllegalStateException("This condition is  phonemic")
+        }
         val matchWord = graph.findWordToMatch(word, baseLanguageShortName) ?: return false
 
         val phonemes = PhonemeIterator(matchWord)
@@ -432,7 +412,7 @@ class RelativePhonemeRuleCondition(
     }
 
     override fun toRichText(): RichText {
-        return seekTarget.toRichText() +
+        return (seekTarget?.toRichText() ?: "sound".richText()) +
             (if (baseLanguageShortName != null) " of base word in ".rich() else "".rich()) +
             (baseLanguageShortName?.rich(true) ?: "".rich()) +
             " is " +
@@ -440,8 +420,16 @@ class RelativePhonemeRuleCondition(
             phonemePattern.toEditableText().rich(true)
     }
 
+    override fun refersToPhoneme(phoneme: Phoneme): Boolean {
+        return seekTarget == null && phonemePattern.refersToPhoneme(phoneme, true)
+    }
+
     companion object {
         fun parse(buffer: ParseBuffer, language: Language): RelativePhonemeRuleCondition? {
+            if (buffer.consume(LeafRuleCondition.soundIs)) {
+                return parseTail(buffer, language, null, null)
+            }
+
             val seekTarget = SeekTarget.parse(buffer, language) ?: return null
 
             val baseLanguageShortName = if (!seekTarget.relative && buffer.consume("of base word in")) {
@@ -455,6 +443,15 @@ class RelativePhonemeRuleCondition(
                 return null
             }
 
+            return parseTail(buffer, language, seekTarget, baseLanguageShortName)
+        }
+
+        private fun parseTail(
+            buffer: ParseBuffer,
+            language: Language,
+            seekTarget: SeekTarget?,
+            baseLanguageShortName: String?
+        ): RelativePhonemeRuleCondition {
             val negated = buffer.consume(LeafRuleCondition.notPrefix)
             val phonemePattern = buffer.parsePhonemePattern(language)
             return RelativePhonemeRuleCondition(

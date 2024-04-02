@@ -13115,6 +13115,7 @@
             "text": "ċeald",
             "lang": "OE",
             "gloss": "cold",
+            "pos": "ADJ",
             "sourceRefs": [
                 {
                     "pubId": 5,
@@ -17609,9 +17610,9 @@
                         }
                     ],
                     "condition": {
-                        "type": "leaf",
-                        "cond": "PhonemeMatches",
-                        "cls": "diphthong"
+                        "type": "relPhoneme",
+                        "cls": "diphthong",
+                        "relative": false
                     }
                 },
                 {
@@ -17624,9 +17625,9 @@
                         }
                     ],
                     "condition": {
-                        "type": "leaf",
-                        "cond": "PhonemeMatches",
-                        "characters": "a"
+                        "type": "relPhoneme",
+                        "parameter": "a",
+                        "relative": false
                     }
                 }
             ]
@@ -18049,9 +18050,9 @@
                         "type": "and",
                         "members": [
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
-                                "characters": "æ"
+                                "type": "relPhoneme",
+                                "parameter": "æ",
+                                "relative": false
                             },
                             {
                                 "type": "relPhoneme",
@@ -18074,9 +18075,9 @@
                         "type": "and",
                         "members": [
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
-                                "characters": "æ"
+                                "type": "relPhoneme",
+                                "parameter": "æ",
+                                "relative": false
                             },
                             {
                                 "type": "relPhoneme",
@@ -18132,9 +18133,9 @@
                         }
                     ],
                     "condition": {
-                        "type": "leaf",
-                        "cond": "PhonemeMatches",
-                        "cls": "vowel"
+                        "type": "relPhoneme",
+                        "cls": "vowel",
+                        "relative": false
                     }
                 }
             ]
@@ -18824,9 +18825,9 @@
                         }
                     ],
                     "condition": {
-                        "type": "leaf",
-                        "cond": "PhonemeMatches",
-                        "characters": "ö"
+                        "type": "relPhoneme",
+                        "parameter": "ö",
+                        "relative": false
                     }
                 }
             ],
@@ -18893,9 +18894,9 @@
                         }
                     ],
                     "condition": {
-                        "type": "leaf",
-                        "cond": "PhonemeMatches",
-                        "characters": "a"
+                        "type": "relPhoneme",
+                        "parameter": "a",
+                        "relative": false
                     }
                 }
             ],
@@ -20462,9 +20463,9 @@
                         }
                     ],
                     "condition": {
-                        "type": "leaf",
-                        "cond": "PhonemeMatches",
-                        "characters": "a"
+                        "type": "relPhoneme",
+                        "parameter": "a",
+                        "relative": false
                     }
                 },
                 {
@@ -20477,9 +20478,9 @@
                         }
                     ],
                     "condition": {
-                        "type": "leaf",
-                        "cond": "PhonemeMatches",
-                        "characters": "á"
+                        "type": "relPhoneme",
+                        "parameter": "á",
+                        "relative": false
                     }
                 },
                 {
@@ -20492,9 +20493,9 @@
                         }
                     ],
                     "condition": {
-                        "type": "leaf",
-                        "cond": "PhonemeMatches",
-                        "characters": "o"
+                        "type": "relPhoneme",
+                        "parameter": "o",
+                        "relative": false
                     }
                 },
                 {
@@ -20507,9 +20508,9 @@
                         }
                     ],
                     "condition": {
-                        "type": "leaf",
-                        "cond": "PhonemeMatches",
-                        "characters": "ó"
+                        "type": "relPhoneme",
+                        "parameter": "ó",
+                        "relative": false
                     }
                 },
                 {
@@ -20522,9 +20523,9 @@
                         }
                     ],
                     "condition": {
-                        "type": "leaf",
-                        "cond": "PhonemeMatches",
-                        "characters": "u"
+                        "type": "relPhoneme",
+                        "parameter": "u",
+                        "relative": false
                     }
                 },
                 {
@@ -20537,9 +20538,9 @@
                         }
                     ],
                     "condition": {
-                        "type": "leaf",
-                        "cond": "PhonemeMatches",
-                        "characters": "ú"
+                        "type": "relPhoneme",
+                        "parameter": "ú",
+                        "relative": false
                     }
                 },
                 {
@@ -20552,9 +20553,9 @@
                         }
                     ],
                     "condition": {
-                        "type": "leaf",
-                        "cond": "PhonemeMatches",
-                        "characters": "ö"
+                        "type": "relPhoneme",
+                        "parameter": "ö",
+                        "relative": false
                     }
                 }
             ],
@@ -20634,9 +20635,9 @@
                         "type": "and",
                         "members": [
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
-                                "characters": "ē"
+                                "type": "relPhoneme",
+                                "parameter": "ē",
+                                "relative": false
                             },
                             {
                                 "type": "leaf",
@@ -20676,9 +20677,9 @@
                         "type": "and",
                         "members": [
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
-                                "cls": "long close vowel"
+                                "type": "relPhoneme",
+                                "cls": "long close vowel",
+                                "relative": false
                             },
                             {
                                 "type": "leaf",
@@ -20724,9 +20725,9 @@
                         "type": "and",
                         "members": [
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
-                                "characters": "ō"
+                                "type": "relPhoneme",
+                                "parameter": "ō",
+                                "relative": false
                             },
                             {
                                 "type": "leaf",
@@ -20784,9 +20785,9 @@
                         "type": "and",
                         "members": [
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
-                                "characters": "w"
+                                "type": "relPhoneme",
+                                "parameter": "w",
+                                "relative": false
                             },
                             {
                                 "type": "relPhoneme",
@@ -20840,9 +20841,9 @@
                         "type": "and",
                         "members": [
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
-                                "characters": "a"
+                                "type": "relPhoneme",
+                                "parameter": "a",
+                                "relative": false
                             },
                             {
                                 "type": "relPhoneme",
@@ -20850,10 +20851,10 @@
                                 "parameter": "m"
                             },
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
+                                "type": "relPhoneme",
+                                "negated": true,
                                 "cls": "stressed",
-                                "negated": true
+                                "relative": false
                             }
                         ]
                     }
@@ -20886,9 +20887,9 @@
                         "type": "and",
                         "members": [
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
-                                "characters": "e"
+                                "type": "relPhoneme",
+                                "parameter": "e",
+                                "relative": false
                             },
                             {
                                 "type": "relPhoneme",
@@ -20896,10 +20897,10 @@
                                 "parameter": "r"
                             },
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
+                                "type": "relPhoneme",
+                                "negated": true,
                                 "cls": "stressed",
-                                "negated": true
+                                "relative": false
                             }
                         ]
                     }
@@ -20938,9 +20939,9 @@
                         "type": "and",
                         "members": [
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
-                                "characters": "a"
+                                "type": "relPhoneme",
+                                "parameter": "a",
+                                "relative": false
                             },
                             {
                                 "type": "relPhoneme",
@@ -20948,10 +20949,10 @@
                                 "parameter": "i"
                             },
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
+                                "type": "relPhoneme",
+                                "negated": true,
                                 "cls": "stressed",
-                                "negated": true
+                                "relative": false
                             }
                         ]
                     }
@@ -20984,14 +20985,14 @@
                         "type": "and",
                         "members": [
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
-                                "characters": "u"
+                                "type": "relPhoneme",
+                                "parameter": "u",
+                                "relative": false
                             },
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
-                                "cls": "stressed"
+                                "type": "relPhoneme",
+                                "cls": "stressed",
+                                "relative": false
                             },
                             {
                                 "type": "leaf",
@@ -21082,14 +21083,14 @@
                                 "type": "or",
                                 "members": [
                                     {
-                                        "type": "leaf",
-                                        "cond": "PhonemeMatches",
-                                        "characters": "z"
+                                        "type": "relPhoneme",
+                                        "parameter": "z",
+                                        "relative": false
                                     },
                                     {
-                                        "type": "leaf",
-                                        "cond": "PhonemeMatches",
-                                        "characters": "d"
+                                        "type": "relPhoneme",
+                                        "parameter": "d",
+                                        "relative": false
                                     }
                                 ]
                             },
@@ -21129,9 +21130,9 @@
                         "type": "and",
                         "members": [
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
-                                "characters": "z"
+                                "type": "relPhoneme",
+                                "parameter": "z",
+                                "relative": false
                             },
                             {
                                 "type": "relPhoneme",
@@ -21177,14 +21178,14 @@
                                 "type": "or",
                                 "members": [
                                     {
-                                        "type": "leaf",
-                                        "cond": "PhonemeMatches",
-                                        "characters": "a"
+                                        "type": "relPhoneme",
+                                        "parameter": "a",
+                                        "relative": false
                                     },
                                     {
-                                        "type": "leaf",
-                                        "cond": "PhonemeMatches",
-                                        "characters": "ą"
+                                        "type": "relPhoneme",
+                                        "parameter": "ą",
+                                        "relative": false
                                     }
                                 ]
                             },
@@ -21193,10 +21194,10 @@
                                 "cond": "EndOfWord"
                             },
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
+                                "type": "relPhoneme",
+                                "negated": true,
                                 "cls": "stressed",
-                                "negated": true
+                                "relative": false
                             }
                         ]
                     }
@@ -21228,9 +21229,9 @@
                         "type": "and",
                         "members": [
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
-                                "characters": "j"
+                                "type": "relPhoneme",
+                                "parameter": "j",
+                                "relative": false
                             },
                             {
                                 "type": "leaf",
@@ -21263,9 +21264,9 @@
                         "type": "and",
                         "members": [
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
-                                "characters": "w"
+                                "type": "relPhoneme",
+                                "parameter": "w",
+                                "relative": false
                             },
                             {
                                 "type": "leaf",
@@ -21304,9 +21305,9 @@
                         "type": "and",
                         "members": [
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
-                                "characters": "i"
+                                "type": "relPhoneme",
+                                "parameter": "i",
+                                "relative": false
                             },
                             {
                                 "type": "relPhoneme",
@@ -21345,9 +21346,9 @@
                         }
                     ],
                     "condition": {
-                        "type": "leaf",
-                        "cond": "PhonemeMatches",
-                        "characters": "kʷ"
+                        "type": "relPhoneme",
+                        "parameter": "kʷ",
+                        "relative": false
                     }
                 },
                 {
@@ -21360,9 +21361,9 @@
                         }
                     ],
                     "condition": {
-                        "type": "leaf",
-                        "cond": "PhonemeMatches",
-                        "characters": "ɡʷ"
+                        "type": "relPhoneme",
+                        "parameter": "ɡʷ",
+                        "relative": false
                     }
                 },
                 {
@@ -21375,9 +21376,9 @@
                         }
                     ],
                     "condition": {
-                        "type": "leaf",
-                        "cond": "PhonemeMatches",
-                        "characters": "hʷ"
+                        "type": "relPhoneme",
+                        "parameter": "hʷ",
+                        "relative": false
                     }
                 }
             ],
@@ -21406,27 +21407,27 @@
                         "type": "and",
                         "members": [
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
-                                "cls": "consonant"
+                                "type": "relPhoneme",
+                                "cls": "consonant",
+                                "relative": false
                             },
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
-                                "characters": "r",
-                                "negated": true
+                                "type": "relPhoneme",
+                                "negated": true,
+                                "parameter": "r",
+                                "relative": false
                             },
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
-                                "characters": "z",
-                                "negated": true
+                                "type": "relPhoneme",
+                                "negated": true,
+                                "parameter": "z",
+                                "relative": false
                             },
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
-                                "characters": "j",
-                                "negated": true
+                                "type": "relPhoneme",
+                                "negated": true,
+                                "parameter": "j",
+                                "relative": false
                             },
                             {
                                 "type": "relPhoneme",
@@ -21463,9 +21464,9 @@
                         "type": "and",
                         "members": [
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
-                                "characters": "z"
+                                "type": "relPhoneme",
+                                "parameter": "z",
+                                "relative": false
                             },
                             {
                                 "type": "or",
@@ -21513,9 +21514,9 @@
                         "type": "and",
                         "members": [
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
-                                "characters": "z"
+                                "type": "relPhoneme",
+                                "parameter": "z",
+                                "relative": false
                             },
                             {
                                 "type": "relPhoneme",
@@ -21566,9 +21567,9 @@
                                 "cond": "EndOfWord"
                             },
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
-                                "characters": "į"
+                                "type": "relPhoneme",
+                                "parameter": "į",
+                                "relative": false
                             }
                         ]
                     }
@@ -21590,9 +21591,9 @@
                                 "cond": "EndOfWord"
                             },
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
-                                "characters": "ų"
+                                "type": "relPhoneme",
+                                "parameter": "ų",
+                                "relative": false
                             }
                         ]
                     }
@@ -21628,22 +21629,22 @@
                                 "type": "or",
                                 "members": [
                                     {
-                                        "type": "leaf",
-                                        "cond": "PhonemeMatches",
-                                        "characters": "i"
+                                        "type": "relPhoneme",
+                                        "parameter": "i",
+                                        "relative": false
                                     },
                                     {
-                                        "type": "leaf",
-                                        "cond": "PhonemeMatches",
-                                        "characters": "u"
+                                        "type": "relPhoneme",
+                                        "parameter": "u",
+                                        "relative": false
                                     }
                                 ]
                             },
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
+                                "type": "relPhoneme",
+                                "negated": true,
                                 "cls": "diphthong",
-                                "negated": true
+                                "relative": false
                             },
                             {
                                 "type": "leaf",
@@ -21745,9 +21746,9 @@
                         "type": "and",
                         "members": [
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
-                                "characters": "ō"
+                                "type": "relPhoneme",
+                                "parameter": "ō",
+                                "relative": false
                             },
                             {
                                 "type": "leaf",
@@ -21769,9 +21770,9 @@
                         "type": "and",
                         "members": [
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
-                                "characters": "ō"
+                                "type": "relPhoneme",
+                                "parameter": "ō",
+                                "relative": false
                             },
                             {
                                 "type": "relPhoneme",
@@ -21796,9 +21797,9 @@
                         }
                     ],
                     "condition": {
-                        "type": "leaf",
-                        "cond": "PhonemeMatches",
-                        "characters": "ô"
+                        "type": "relPhoneme",
+                        "parameter": "ô",
+                        "relative": false
                     }
                 }
             ],
@@ -21831,9 +21832,9 @@
                         "type": "and",
                         "members": [
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
-                                "cls": "long vowel"
+                                "type": "relPhoneme",
+                                "cls": "long vowel",
+                                "relative": false
                             },
                             {
                                 "type": "relPhoneme",
@@ -21882,9 +21883,9 @@
                         "type": "and",
                         "members": [
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
-                                "characters": "a"
+                                "type": "relPhoneme",
+                                "parameter": "a",
+                                "relative": false
                             },
                             {
                                 "type": "relPhoneme",
@@ -21892,10 +21893,10 @@
                                 "parameter": "u"
                             },
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
+                                "type": "relPhoneme",
+                                "negated": true,
                                 "cls": "stressed",
-                                "negated": true
+                                "relative": false
                             }
                         ]
                     }
@@ -21913,9 +21914,9 @@
                         "type": "and",
                         "members": [
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
-                                "characters": "ō"
+                                "type": "relPhoneme",
+                                "parameter": "ō",
+                                "relative": false
                             },
                             {
                                 "type": "relPhoneme",
@@ -21923,10 +21924,10 @@
                                 "parameter": "u"
                             },
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
+                                "type": "relPhoneme",
+                                "negated": true,
                                 "cls": "stressed",
-                                "negated": true
+                                "relative": false
                             }
                         ]
                     }
@@ -21958,9 +21959,9 @@
                         "type": "and",
                         "members": [
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
-                                "characters": "w"
+                                "type": "relPhoneme",
+                                "parameter": "w",
+                                "relative": false
                             },
                             {
                                 "type": "relPhoneme",
@@ -22002,9 +22003,9 @@
                         }
                     ],
                     "condition": {
-                        "type": "leaf",
-                        "cond": "PhonemeMatches",
-                        "cls": "word-final stressed short vowel"
+                        "type": "relPhoneme",
+                        "cls": "word-final stressed short vowel",
+                        "relative": false
                     }
                 }
             ],
@@ -22034,9 +22035,9 @@
                         "type": "and",
                         "members": [
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
-                                "characters": "w"
+                                "type": "relPhoneme",
+                                "parameter": "w",
+                                "relative": false
                             },
                             {
                                 "type": "relPhoneme",
@@ -22059,9 +22060,9 @@
                         "type": "and",
                         "members": [
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
-                                "characters": "j"
+                                "type": "relPhoneme",
+                                "parameter": "j",
+                                "relative": false
                             },
                             {
                                 "type": "relPhoneme",
@@ -22112,9 +22113,9 @@
                         "type": "and",
                         "members": [
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
-                                "characters": "a"
+                                "type": "relPhoneme",
+                                "parameter": "a",
+                                "relative": false
                             },
                             {
                                 "type": "relPhoneme",
@@ -22158,9 +22159,9 @@
                         "type": "and",
                         "members": [
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
-                                "characters": "i"
+                                "type": "relPhoneme",
+                                "parameter": "i",
+                                "relative": false
                             },
                             {
                                 "type": "relPhoneme",
@@ -22207,9 +22208,9 @@
                         "type": "and",
                         "members": [
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
-                                "characters": "n"
+                                "type": "relPhoneme",
+                                "parameter": "n",
+                                "relative": false
                             },
                             {
                                 "type": "leaf",
@@ -22263,9 +22264,9 @@
                         "type": "and",
                         "members": [
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
-                                "cls": "nasal consonant"
+                                "type": "relPhoneme",
+                                "cls": "nasal consonant",
+                                "relative": false
                             },
                             {
                                 "type": "relPhoneme",
@@ -22307,9 +22308,9 @@
                         "type": "and",
                         "members": [
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
-                                "characters": "e"
+                                "type": "relPhoneme",
+                                "parameter": "e",
+                                "relative": false
                             },
                             {
                                 "type": "relPhoneme",
@@ -22347,10 +22348,10 @@
                         "type": "and",
                         "members": [
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
+                                "type": "relPhoneme",
                                 "cls": "stressed",
-                                "characters": "a"
+                                "parameter": "a",
+                                "relative": false
                             },
                             {
                                 "type": "relPhoneme",
@@ -22384,9 +22385,9 @@
                         }
                     ],
                     "condition": {
-                        "type": "leaf",
-                        "cond": "PhonemeMatches",
-                        "characters": "ą̄"
+                        "type": "relPhoneme",
+                        "parameter": "ą̄",
+                        "relative": false
                     }
                 }
             ],
@@ -22417,16 +22418,16 @@
                         "type": "and",
                         "members": [
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
+                                "type": "relPhoneme",
                                 "cls": "stressed",
-                                "characters": "a"
+                                "parameter": "a",
+                                "relative": false
                             },
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
+                                "type": "relPhoneme",
+                                "negated": true,
                                 "cls": "diphthong",
-                                "negated": true
+                                "relative": false
                             },
                             {
                                 "type": "or",
@@ -22470,16 +22471,16 @@
                         "type": "and",
                         "members": [
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
+                                "type": "relPhoneme",
                                 "cls": "stressed",
-                                "characters": "ā"
+                                "parameter": "ā",
+                                "relative": false
                             },
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
+                                "type": "relPhoneme",
+                                "negated": true,
                                 "cls": "diphthong",
-                                "negated": true
+                                "relative": false
                             },
                             {
                                 "type": "or",
@@ -22523,16 +22524,16 @@
                         "type": "and",
                         "members": [
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
+                                "type": "relPhoneme",
                                 "cls": "non-stressed",
-                                "characters": "a"
+                                "parameter": "a",
+                                "relative": false
                             },
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
+                                "type": "relPhoneme",
+                                "negated": true,
                                 "cls": "diphthong",
-                                "negated": true
+                                "relative": false
                             },
                             {
                                 "type": "or",
@@ -22602,16 +22603,16 @@
                         "type": "and",
                         "members": [
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
+                                "type": "relPhoneme",
                                 "cls": "non-stressed",
-                                "characters": "ā"
+                                "parameter": "ā",
+                                "relative": false
                             },
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
+                                "type": "relPhoneme",
+                                "negated": true,
                                 "cls": "diphthong",
-                                "negated": true
+                                "relative": false
                             },
                             {
                                 "type": "or",
@@ -22718,10 +22719,10 @@
                         "type": "and",
                         "members": [
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
+                                "type": "relPhoneme",
                                 "cls": "non-stressed",
-                                "characters": "ō"
+                                "parameter": "ō",
+                                "relative": false
                             },
                             {
                                 "type": "leaf",
@@ -22759,9 +22760,9 @@
                         "type": "and",
                         "members": [
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
-                                "characters": "l"
+                                "type": "relPhoneme",
+                                "parameter": "l",
+                                "relative": false
                             },
                             {
                                 "type": "relPhoneme",
@@ -22805,9 +22806,9 @@
                         "type": "and",
                         "members": [
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
-                                "characters": "i"
+                                "type": "relPhoneme",
+                                "parameter": "i",
+                                "relative": false
                             },
                             {
                                 "type": "relPhoneme",
@@ -22855,9 +22856,9 @@
                         "type": "and",
                         "members": [
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
-                                "characters": "h"
+                                "type": "relPhoneme",
+                                "parameter": "h",
+                                "relative": false
                             },
                             {
                                 "type": "relPhoneme",
@@ -22906,9 +22907,9 @@
                         "type": "and",
                         "members": [
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
-                                "characters": "a"
+                                "type": "relPhoneme",
+                                "parameter": "a",
+                                "relative": false
                             },
                             {
                                 "type": "relPhoneme",
@@ -22937,9 +22938,9 @@
                         "type": "and",
                         "members": [
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
-                                "characters": "a"
+                                "type": "relPhoneme",
+                                "parameter": "a",
+                                "relative": false
                             },
                             {
                                 "type": "relPhoneme",
@@ -22968,9 +22969,9 @@
                         "type": "and",
                         "members": [
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
-                                "characters": "e"
+                                "type": "relPhoneme",
+                                "parameter": "e",
+                                "relative": false
                             },
                             {
                                 "type": "relPhoneme",
@@ -23007,9 +23008,9 @@
                         "type": "and",
                         "members": [
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
-                                "characters": "æ"
+                                "type": "relPhoneme",
+                                "parameter": "æ",
+                                "relative": false
                             },
                             {
                                 "type": "relPhoneme",
@@ -23032,9 +23033,9 @@
                         "type": "and",
                         "members": [
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
-                                "characters": "e"
+                                "type": "relPhoneme",
+                                "parameter": "e",
+                                "relative": false
                             },
                             {
                                 "type": "relPhoneme",
@@ -23057,9 +23058,9 @@
                         "type": "and",
                         "members": [
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
-                                "characters": "i"
+                                "type": "relPhoneme",
+                                "parameter": "i",
+                                "relative": false
                             },
                             {
                                 "type": "relPhoneme",
@@ -23082,9 +23083,9 @@
                         "type": "and",
                         "members": [
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
-                                "characters": "ī"
+                                "type": "relPhoneme",
+                                "parameter": "ī",
+                                "relative": false
                             },
                             {
                                 "type": "relPhoneme",
@@ -23107,9 +23108,9 @@
                         "type": "and",
                         "members": [
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
-                                "characters": "ǣ"
+                                "type": "relPhoneme",
+                                "parameter": "ǣ",
+                                "relative": false
                             },
                             {
                                 "type": "relPhoneme",
@@ -23147,9 +23148,9 @@
                         "type": "and",
                         "members": [
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
-                                "characters": "æ"
+                                "type": "relPhoneme",
+                                "parameter": "æ",
+                                "relative": false
                             },
                             {
                                 "type": "or",
@@ -23193,9 +23194,9 @@
                         "type": "and",
                         "members": [
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
-                                "characters": "e"
+                                "type": "relPhoneme",
+                                "parameter": "e",
+                                "relative": false
                             },
                             {
                                 "type": "or",
@@ -23253,9 +23254,9 @@
                         "type": "and",
                         "members": [
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
-                                "characters": "e"
+                                "type": "relPhoneme",
+                                "parameter": "e",
+                                "relative": false
                             },
                             {
                                 "type": "relPhoneme",
@@ -23284,9 +23285,9 @@
                         "type": "and",
                         "members": [
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
-                                "characters": "i"
+                                "type": "relPhoneme",
+                                "parameter": "i",
+                                "relative": false
                             },
                             {
                                 "type": "relPhoneme",
@@ -23315,9 +23316,9 @@
                         "type": "and",
                         "members": [
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
-                                "characters": "e"
+                                "type": "relPhoneme",
+                                "parameter": "e",
+                                "relative": false
                             },
                             {
                                 "type": "relPhoneme",
@@ -23360,9 +23361,9 @@
                         "type": "and",
                         "members": [
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
-                                "characters": "h"
+                                "type": "relPhoneme",
+                                "parameter": "h",
+                                "relative": false
                             },
                             {
                                 "type": "relPhoneme",
@@ -23400,10 +23401,10 @@
                         "type": "and",
                         "members": [
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
+                                "type": "relPhoneme",
                                 "cls": "stressed",
-                                "characters": "æ"
+                                "parameter": "æ",
+                                "relative": false
                             },
                             {
                                 "type": "relPhoneme",
@@ -23431,10 +23432,10 @@
                         "type": "and",
                         "members": [
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
+                                "type": "relPhoneme",
                                 "cls": "stressed",
-                                "characters": "æ"
+                                "parameter": "æ",
+                                "relative": false
                             },
                             {
                                 "type": "relPhoneme",
@@ -23467,10 +23468,10 @@
                         "type": "and",
                         "members": [
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
+                                "type": "relPhoneme",
                                 "cls": "stressed",
-                                "characters": "ǣ"
+                                "parameter": "ǣ",
+                                "relative": false
                             },
                             {
                                 "type": "relPhoneme",
@@ -23513,9 +23514,9 @@
                         "type": "and",
                         "members": [
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
-                                "characters": "k"
+                                "type": "relPhoneme",
+                                "parameter": "k",
+                                "relative": false
                             },
                             {
                                 "type": "relPhoneme",
@@ -23538,10 +23539,10 @@
                         "type": "and",
                         "members": [
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
+                                "type": "relPhoneme",
                                 "cls": "word-initial",
-                                "characters": "s"
+                                "parameter": "s",
+                                "relative": false
                             },
                             {
                                 "type": "relPhoneme",
@@ -23569,9 +23570,9 @@
                         "type": "and",
                         "members": [
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
-                                "characters": "g"
+                                "type": "relPhoneme",
+                                "parameter": "g",
+                                "relative": false
                             },
                             {
                                 "type": "relPhoneme",
@@ -23594,10 +23595,10 @@
                         "type": "and",
                         "members": [
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
+                                "type": "relPhoneme",
                                 "cls": "syllable-final",
-                                "characters": "g"
+                                "parameter": "g",
+                                "relative": false
                             },
                             {
                                 "type": "relPhoneme",
@@ -23631,9 +23632,9 @@
                         }
                     ],
                     "condition": {
-                        "type": "leaf",
-                        "cond": "PhonemeMatches",
-                        "characters": "k"
+                        "type": "relPhoneme",
+                        "parameter": "k",
+                        "relative": false
                     }
                 }
             ],
@@ -23658,9 +23659,9 @@
                         "type": "and",
                         "members": [
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
-                                "characters": "w"
+                                "type": "relPhoneme",
+                                "parameter": "w",
+                                "relative": false
                             },
                             {
                                 "type": "relPhoneme",
@@ -23704,9 +23705,9 @@
                         "type": "and",
                         "members": [
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
-                                "characters": "æ"
+                                "type": "relPhoneme",
+                                "parameter": "æ",
+                                "relative": false
                             },
                             {
                                 "type": "or",
@@ -23739,9 +23740,9 @@
                         "type": "and",
                         "members": [
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
-                                "characters": "ǣ"
+                                "type": "relPhoneme",
+                                "parameter": "ǣ",
+                                "relative": false
                             },
                             {
                                 "type": "or",
@@ -23774,9 +23775,9 @@
                         "type": "and",
                         "members": [
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
-                                "characters": "e"
+                                "type": "relPhoneme",
+                                "parameter": "e",
+                                "relative": false
                             },
                             {
                                 "type": "or",
@@ -23824,10 +23825,10 @@
                         "type": "and",
                         "members": [
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
+                                "type": "relPhoneme",
                                 "cls": "stressed",
-                                "characters": "u"
+                                "parameter": "u",
+                                "relative": false
                             },
                             {
                                 "type": "relPhoneme",
@@ -23851,10 +23852,10 @@
                         "type": "and",
                         "members": [
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
+                                "type": "relPhoneme",
                                 "cls": "stressed",
-                                "characters": "ū"
+                                "parameter": "ū",
+                                "relative": false
                             },
                             {
                                 "type": "relPhoneme",
@@ -23878,10 +23879,10 @@
                         "type": "and",
                         "members": [
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
+                                "type": "relPhoneme",
                                 "cls": "stressed",
-                                "characters": "o"
+                                "parameter": "o",
+                                "relative": false
                             },
                             {
                                 "type": "relPhoneme",
@@ -23905,10 +23906,10 @@
                         "type": "and",
                         "members": [
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
+                                "type": "relPhoneme",
                                 "cls": "stressed",
-                                "characters": "ō"
+                                "parameter": "ō",
+                                "relative": false
                             },
                             {
                                 "type": "relPhoneme",
@@ -23932,10 +23933,10 @@
                         "type": "and",
                         "members": [
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
+                                "type": "relPhoneme",
                                 "cls": "stressed",
-                                "characters": "æ"
+                                "parameter": "æ",
+                                "relative": false
                             },
                             {
                                 "type": "relPhoneme",
@@ -24010,10 +24011,10 @@
                         "type": "and",
                         "members": [
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
+                                "type": "relPhoneme",
                                 "cls": "non-word-initial",
-                                "characters": "w"
+                                "parameter": "w",
+                                "relative": false
                             },
                             {
                                 "type": "or",
@@ -24062,16 +24063,16 @@
                         "type": "and",
                         "members": [
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
+                                "type": "relPhoneme",
                                 "cls": "non-stressed",
-                                "characters": "æ"
+                                "parameter": "æ",
+                                "relative": false
                             },
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
+                                "type": "relPhoneme",
+                                "negated": true,
                                 "cls": "diphthong",
-                                "negated": true
+                                "relative": false
                             },
                             {
                                 "type": "leaf",
@@ -24106,16 +24107,16 @@
                         "type": "and",
                         "members": [
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
+                                "type": "relPhoneme",
                                 "cls": "non-stressed",
-                                "characters": "e"
+                                "parameter": "e",
+                                "relative": false
                             },
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
+                                "type": "relPhoneme",
+                                "negated": true,
                                 "cls": "diphthong",
-                                "negated": true
+                                "relative": false
                             },
                             {
                                 "type": "leaf",
@@ -24150,77 +24151,16 @@
                         "type": "and",
                         "members": [
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
+                                "type": "relPhoneme",
                                 "cls": "non-stressed",
-                                "characters": "i"
-                            },
-                            {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
-                                "cls": "diphthong",
-                                "negated": true
-                            },
-                            {
-                                "type": "leaf",
-                                "cond": "SyllableIndex",
-                                "characters": "open"
-                            },
-                            {
-                                "type": "leaf",
-                                "cond": "SyllableIndex",
-                                "characters": "-1",
-                                "negated": true
+                                "parameter": "i",
+                                "relative": false
                             },
                             {
                                 "type": "relPhoneme",
-                                "relativeIndex": -1,
-                                "tcls": "vowel",
-                                "cls": "stressed"
-                            },
-                            {
-                                "type": "or",
-                                "members": [
-                                    {
-                                        "type": "relPhoneme",
-                                        "relativeIndex": -1,
-                                        "tcls": "vowel",
-                                        "cls": "long"
-                                    },
-                                    {
-                                        "type": "relPhoneme",
-                                        "relativeIndex": -1,
-                                        "tcls": "vowel",
-                                        "cls": "diphthong"
-                                    }
-                                ]
-                            }
-                        ]
-                    }
-                },
-                {
-                    "instructions": [
-                        {
-                            "type": "SoundDisappears",
-                            "args": [
-                                "0"
-                            ]
-                        }
-                    ],
-                    "condition": {
-                        "type": "and",
-                        "members": [
-                            {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
-                                "cls": "non-stressed",
-                                "characters": "u"
-                            },
-                            {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
+                                "negated": true,
                                 "cls": "diphthong",
-                                "negated": true
+                                "relative": false
                             },
                             {
                                 "type": "leaf",
@@ -24272,16 +24212,77 @@
                         "type": "and",
                         "members": [
                             {
-                                "type": "leaf",
-                                "cond": "PhonemeMatches",
+                                "type": "relPhoneme",
                                 "cls": "non-stressed",
-                                "characters": "y"
+                                "parameter": "u",
+                                "relative": false
+                            },
+                            {
+                                "type": "relPhoneme",
+                                "negated": true,
+                                "cls": "diphthong",
+                                "relative": false
                             },
                             {
                                 "type": "leaf",
-                                "cond": "PhonemeMatches",
-                                "cls": "diphthong",
+                                "cond": "SyllableIndex",
+                                "characters": "open"
+                            },
+                            {
+                                "type": "leaf",
+                                "cond": "SyllableIndex",
+                                "characters": "-1",
                                 "negated": true
+                            },
+                            {
+                                "type": "relPhoneme",
+                                "relativeIndex": -1,
+                                "tcls": "vowel",
+                                "cls": "stressed"
+                            },
+                            {
+                                "type": "or",
+                                "members": [
+                                    {
+                                        "type": "relPhoneme",
+                                        "relativeIndex": -1,
+                                        "tcls": "vowel",
+                                        "cls": "long"
+                                    },
+                                    {
+                                        "type": "relPhoneme",
+                                        "relativeIndex": -1,
+                                        "tcls": "vowel",
+                                        "cls": "diphthong"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "SoundDisappears",
+                            "args": [
+                                "0"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "and",
+                        "members": [
+                            {
+                                "type": "relPhoneme",
+                                "cls": "non-stressed",
+                                "parameter": "y",
+                                "relative": false
+                            },
+                            {
+                                "type": "relPhoneme",
+                                "negated": true,
+                                "cls": "diphthong",
+                                "relative": false
                             },
                             {
                                 "type": "leaf",
