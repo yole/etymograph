@@ -58,6 +58,9 @@ private fun requiredPhonemeClassByName(language: Language, phonemeClassName: Str
             ?: throw IllegalStateException("Can't find phoneme class referenced in rule: $phonemeClassName")
     }
 
+private fun Language.loadPhonemePattern(phonemeClassName: String?, literal: String?): PhonemePattern =
+    PhonemePattern(requiredPhonemeClassByName(this, phonemeClassName), literal)
+
 @Serializable
 @SerialName("leaf")
 data class LeafRuleConditionData(
@@ -85,8 +88,7 @@ class SyllableRuleConditionData(
         return SyllableRuleCondition(
             matchType,
             index,
-            phonemeClassName?.let { fromLanguage.phonemeClassByName(it)!! },
-            parameter
+            fromLanguage.loadPhonemePattern(phonemeClassName, parameter)
         )
     }
 }
@@ -104,11 +106,11 @@ class RelativePhonemeRuleConditionData(
 ): RuleConditionData() {
     override fun toRuntimeFormat(result: InMemoryGraphRepository, fromLanguage: Language): RuleCondition {
         val targetPhonemeClass = requiredPhonemeClassByName(fromLanguage, targetPhonemeClassName)
-        val matchPhonemeClass = requiredPhonemeClassByName(fromLanguage, matchPhonemeClassName)
         return RelativePhonemeRuleCondition(
             negated,
             SeekTarget(relativeIndex, targetPhonemeClass, relative),
-            matchPhonemeClass, parameter, baseLanguageShortName
+            fromLanguage.loadPhonemePattern(matchPhonemeClassName, parameter),
+            baseLanguageShortName
         )
     }
 }
@@ -681,13 +683,18 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             }
 
         private fun RuleCondition.toSerializedFormat(): RuleConditionData = when(this) {
-            is SyllableRuleCondition -> SyllableRuleConditionData(matchType, index, phonemeClass?.name, parameter)
+            is SyllableRuleCondition -> SyllableRuleConditionData(
+                matchType,
+                index,
+                phonemePattern.phonemeClass?.name,
+                phonemePattern.literal
+            )
             is RelativePhonemeRuleCondition -> RelativePhonemeRuleConditionData(
                 seekTarget.index,
                 negated,
                 seekTarget.phonemeClass?.name,
-                matchPhonemeClass?.name,
-                parameter,
+                phonemePattern.phonemeClass?.name,
+                phonemePattern.literal,
                 seekTarget.relative,
                 baseLanguageShortName
             )

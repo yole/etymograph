@@ -149,7 +149,7 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
             return null
         }
         val nextSound = if (type == InstructionType.SoundDisappears) "" else arg
-        return "'${soundIs.parameter}${nextPhonemeIs.parameter}' -> '${soundIs.parameter}$nextSound'"
+        return "'${soundIs.parameter}${nextPhonemeIs.phonemePattern.literal}' -> '${soundIs.parameter}$nextSound'"
     }
 
     private fun summarizeContext(condition: RuleCondition, includeRelativePhoneme: Boolean): String? {
@@ -186,7 +186,7 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
 
     private fun summarizeRelativePhonemeParameters(relativePhonemes: List<RelativePhonemeRuleCondition>, relIndex: Int): String {
         val relativePhonemeParameters = relativePhonemes.filter { it.seekTarget.index == relIndex}.map {
-            val p = it.matchPhonemeClass?.name ?: "'${it.parameter}'"
+            val p = it.phonemePattern.toEditableText()
             val negation = if (it.negated) "not " else ""
             "$negation$p"
         }

@@ -33,11 +33,11 @@ class ParseBuffer(val s: String) {
         return null
     }
 
-    fun parseParameter(language: Language): Pair<PhonemeClass?, String?> {
-        consumeQuoted()?.let { return null to it }
+    fun parsePhonemePattern(language: Language): PhonemePattern {
+        consumeQuoted()?.let { return PhonemePattern(null, it) }
         consume(LeafRuleCondition.indefiniteArticle)
         val characterClass = parsePhonemeClass(language, false)
-        return characterClass to consumeQuoted()
+        return PhonemePattern(characterClass, consumeQuoted())
     }
 
     fun parsePhonemeClass(language: Language, allowSound: Boolean): PhonemeClass? {

@@ -87,6 +87,18 @@ class NegatedPhonemeClass(private val baseClass: PhonemeClass)
     }
 }
 
+class PhonemePattern(val phonemeClass: PhonemeClass?, val literal: String?) {
+    fun matchesCurrent(phonemes: PhonemeIterator): Boolean =
+        (phonemeClass?.matchesCurrent(phonemes) ?: true) &&
+         (literal == null || phonemes.current == literal)
+
+    fun toEditableText(): String =
+         arrayOf(
+            phonemeClass?.name,
+            literal?.let { "'$it'" }
+        ).filterNotNull().joinToString(" ")
+}
+
 class PhonemeClassList {
     private var classes: List<PhonemeClass> = listOf()
 
