@@ -50,6 +50,10 @@ enum class ConditionType(
     SoundEquals(LeafRuleCondition.soundIsSame, phonemic = true, takesArgument = true)
 }
 
+interface RuleConditionParser {
+    fun tryParse(buffer: ParseBuffer, language: Language): RuleCondition?
+}
+
 sealed class RuleCondition {
     abstract fun isPhonemic(): Boolean
     open fun matches(word: Word, graph: GraphRepository): Boolean {
@@ -253,9 +257,13 @@ class LeafRuleCondition(
         const val soundIsSame = "sound is same as "
 
         fun parse(buffer: ParseBuffer, language: Language): RuleCondition {
-            buffer.tryParse { SyllableRuleCondition.parse(buffer, language) }?.let { return it }
-            buffer.tryParse { PhonemeEqualsRuleCondition.parse(buffer, language) }?.let { return it }
-            buffer.tryParse { RelativePhonemeRuleCondition.parse(buffer, language) }?.let { return it }
+            for (parser in arrayOf(
+                SyllableRuleCondition,
+                PhonemeEqualsRuleCondition,
+                RelativePhonemeRuleCondition
+            )) {
+                buffer.tryParse { parser.tryParse(buffer, language) }?.let { return it }
+            }
 
             val baseLanguageShortName = if (buffer.consume("base word in")) {
                 buffer.nextWord()
@@ -358,10 +366,10 @@ class SyllableRuleCondition(
         return richText("${Ordinals.toString(index)} $syllable ${matchType.condName} $paramText".rich())
     }
 
-    companion object {
+    companion object : RuleConditionParser {
         const val syllable = "syllable"
 
-        fun parse(buffer: ParseBuffer, language: Language): SyllableRuleCondition? {
+        override fun tryParse(buffer: ParseBuffer, language: Language): SyllableRuleCondition? {
             val index = Ordinals.parse(buffer) ?: return null
             if (!buffer.consume(syllable)) return null
             val matchType = SyllableMatchType.parse(buffer) ?: return null
@@ -424,8 +432,8 @@ class RelativePhonemeRuleCondition(
         return seekTarget == null && phonemePattern.refersToPhoneme(phoneme, true)
     }
 
-    companion object {
-        fun parse(buffer: ParseBuffer, language: Language): RelativePhonemeRuleCondition? {
+    companion object : RuleConditionParser {
+        override fun tryParse(buffer: ParseBuffer, language: Language): RelativePhonemeRuleCondition? {
             if (buffer.consume(LeafRuleCondition.soundIs)) {
                 return parseTail(buffer, language, null, null)
             }
@@ -474,8 +482,8 @@ class PhonemeEqualsRuleCondition(val target: SeekTarget) : RuleCondition() {
         return "sound is same as ".richText() + target.toRichText()
     }
 
-    companion object {
-        fun parse(buffer: ParseBuffer, language: Language): PhonemeEqualsRuleCondition? {
+    companion object : RuleConditionParser {
+        override fun tryParse(buffer: ParseBuffer, language: Language): PhonemeEqualsRuleCondition? {
             if (!buffer.consume(LeafRuleCondition.soundIsSame)) {
                 return null
             }
