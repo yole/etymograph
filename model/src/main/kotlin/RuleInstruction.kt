@@ -75,7 +75,7 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
         return emptyList()
     }
 
-    open fun apply(word: Word, phonemes: PhonemeIterator) {
+    open fun apply(word: Word, phonemes: PhonemeIterator, graph: GraphRepository) {
         when (type) {
             InstructionType.ChangeSound -> phonemes.replace(arg)
             InstructionType.ChangeNextSound -> phonemes.replaceAtRelative(1, arg)
@@ -310,18 +310,18 @@ class ApplySoundRuleInstruction(language: Language, val ruleRef: RuleRef, arg: S
 {
     val seekTarget = arg?.let { SeekTarget.parse(it, language) }
 
-    override fun apply(word: Word, phonemes: PhonemeIterator) {
+    override fun apply(word: Word, phonemes: PhonemeIterator, graph: GraphRepository) {
         if (seekTarget != null && seekTarget.relative) {
             phonemes.seek(seekTarget)
         }
-        ruleRef.resolve().applyToPhoneme(word, phonemes)
+        ruleRef.resolve().applyToPhoneme(word, phonemes, graph)
     }
 
     override fun apply(rule: Rule, branch: RuleBranch?, word: Word, graph: GraphRepository): Word {
         if (seekTarget == null) return word
         val phonemes = PhonemeIterator(word.asPhonemic())
         if (phonemes.seek(seekTarget)) {
-            ruleRef.resolve().applyToPhoneme(word, phonemes)
+            ruleRef.resolve().applyToPhoneme(word, phonemes, graph)
             return word.derive(phonemes.result(), phonemic = true).asOrthographic()
         }
         return word
@@ -444,7 +444,7 @@ class InsertInstruction(arg: String, val relIndex: Int, val seekTarget: SeekTarg
 class ChangePhonemeClassInstruction(val relativeIndex: Int, val oldClass: String, val newClass: String)
     : RuleInstruction(InstructionType.ChangeSoundClass, "")
 {
-    override fun apply(word: Word, phonemes: PhonemeIterator) {
+    override fun apply(word: Word, phonemes: PhonemeIterator, graph: GraphRepository) {
         replacePhonemeClass(phonemes, oldClass, newClass)
     }
 

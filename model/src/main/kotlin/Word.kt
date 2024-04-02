@@ -64,7 +64,7 @@ class Word(
         if (orthoRule != null) {
             val it = PhonemeIterator(this, resultPhonemic = false)
             while (true) {
-                orthoRule.applyToPhoneme(this, it)
+                orthoRule.applyToPhoneme(this, it, InMemoryGraphRepository.EMPTY)
                 if (!it.advance()) break
             }
             orthoText = it.result()

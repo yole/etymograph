@@ -116,7 +116,7 @@ class Rule(
             val phonemes = PhonemeIterator(phonemic)
             var anyChanges = false
             while (true) {
-                anyChanges = anyChanges or applyToPhoneme(phonemic, phonemes)
+                anyChanges = anyChanges or applyToPhoneme(phonemic, phonemes, graph)
                 if (!phonemes.advance()) break
             }
             return if (anyChanges)
@@ -145,11 +145,11 @@ class Rule(
         }
     }
 
-    fun applyToPhoneme(word: Word, phonemes: PhonemeIterator): Boolean {
+    fun applyToPhoneme(word: Word, phonemes: PhonemeIterator, graph: GraphRepository): Boolean {
         for (branch in logic.branches) {
-            if (branch.condition.matches(word, phonemes)) {
+            if (branch.condition.matches(word, phonemes, graph)) {
                 for (instruction in branch.instructions) {
-                    instruction.apply(word, phonemes)
+                    instruction.apply(word, phonemes, graph)
                 }
                 return true
             }
