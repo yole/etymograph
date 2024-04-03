@@ -378,11 +378,15 @@ class SyllableCountRuleCondition(val condition: String?, negated: Boolean, val e
         override fun tryParse(buffer: ParseBuffer, language: Language): RuleCondition? {
             if (!buffer.consume(LeafRuleCondition.numberOfSyllables)) return null
             val negated = buffer.consume(LeafRuleCondition.notPrefix)
-            val isAtLeast = buffer.consume("at least")
-            val isAtMost = buffer.consume("at most")
+            val condition = if (buffer.consume("at least"))
+                ">="
+            else if (buffer.consume("at most"))
+                "<="
+            else
+                null
             val param = buffer.nextWord()?.toIntOrNull()
                 ?: throw RuleParseException("Number of syllables should be a number")
-            return SyllableCountRuleCondition(if (isAtLeast) ">=" else if (isAtMost) "<=" else null, negated, param)
+            return SyllableCountRuleCondition(condition, negated, param)
         }
     }
 }
