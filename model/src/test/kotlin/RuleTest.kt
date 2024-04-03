@@ -287,16 +287,17 @@ class RuleTest : QBaseTest() {
 
     @Test
     fun syllableCount() {
-        val condition = RuleCondition.parse(ParseBuffer("number of syllables is 3"), q) as LeafRuleCondition
-        assertEquals("3", condition.parameter)
+        val condition = RuleCondition.parse(ParseBuffer("number of syllables is 3"), q) as SyllableCountRuleCondition
+        assertEquals(3, condition.expectCount)
         assertTrue(condition.matches(q.word("andúna"), emptyRepo))
         assertFalse(condition.matches(q.word("anca"), emptyRepo))
     }
 
     @Test
     fun syllableCountAtLeast() {
-        val condition = RuleCondition.parse(ParseBuffer("number of syllables is at least 2"), q) as LeafRuleCondition
-        assertEquals(">=2", condition.parameter)
+        val condition = RuleCondition.parse(ParseBuffer("number of syllables is at least 2"), q) as SyllableCountRuleCondition
+        assertEquals(">=", condition.condition)
+        assertEquals(2, condition.expectCount)
         assertTrue(condition.matches(q.word("andúna"), emptyRepo))
         assertTrue(condition.matches(q.word("anca"), emptyRepo))
         assertFalse(condition.matches(q.word("lo"), emptyRepo))
@@ -305,8 +306,8 @@ class RuleTest : QBaseTest() {
 
     @Test
     fun syllableCountNegated() {
-        val condition = RuleCondition.parse(ParseBuffer("number of syllables is not 3"), q) as LeafRuleCondition
-        assertEquals("3", condition.parameter)
+        val condition = RuleCondition.parse(ParseBuffer("number of syllables is not 3"), q) as SyllableCountRuleCondition
+        assertEquals(3, condition.expectCount)
         assertFalse(condition.matches(q.word("andúna"), emptyRepo))
         assertTrue(condition.matches(q.word("anca"), emptyRepo))
     }

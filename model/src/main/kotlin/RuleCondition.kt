@@ -15,19 +15,6 @@ enum class ConditionType(
             throw RuleParseException("Unknown word class '$param'")
         param
     }),
-    NumberOfSyllables(LeafRuleCondition.numberOfSyllables, parameterParseCallback = { buf, _ ->
-        val isAtLeast = buf.consume("at least")
-        val isAtMost = buf.consume("at most")
-        val param = buf.nextWord()
-        if (param?.toIntOrNull() == null) throw RuleParseException("Number of syllables should be a number")
-
-        if (isAtLeast)
-            ">=$param"
-        else if (isAtMost)
-            "<=$param"
-        else
-            param
-    }),
     StressIs(LeafRuleCondition.stressIs, parameterParseCallback = { buf, _ ->
         val ord = Ordinals.parse(buf)
         if (ord == null || !buf.consume("syllable")) {
@@ -54,8 +41,9 @@ interface RuleConditionParser {
     fun tryParse(buffer: ParseBuffer, language: Language): RuleCondition?
 }
 
-sealed class RuleCondition {
-    abstract fun isPhonemic(): Boolean
+sealed class RuleCondition(val negated: Boolean = false) {
+    open fun isPhonemic(): Boolean = false
+
     open fun matches(word: Word, graph: GraphRepository): Boolean {
         if (isPhonemic()) throw IllegalStateException("Condition requires phonemic context")
         return false
@@ -79,6 +67,11 @@ sealed class RuleCondition {
         findLeafConditions { it is LeafRuleCondition && it.type == type }.filterIsInstance<LeafRuleCondition>()
 
     open fun refersToPhoneme(phoneme: Phoneme): Boolean = false
+
+    protected fun Boolean.negateIfNeeded() = if (negated) !this else this
+
+    protected val maybeNot
+        get() = (if (negated) LeafRuleCondition.notPrefix else "").rich()
 
     companion object {
         fun parse(buffer: ParseBuffer, language: Language): RuleCondition {
@@ -123,12 +116,10 @@ class LeafRuleCondition(
     val type: ConditionType,
     val phonemeClass: PhonemeClass?,
     val parameter: String?,
-    val negated: Boolean,
+    negated: Boolean,
     val baseLanguageShortName: String?
-) : RuleCondition() {
+) : RuleCondition(negated) {
     override fun isPhonemic(): Boolean = type.phonemic
-
-    private fun Boolean.negateIfNeeded() = if (negated) !this else this
 
     override fun matches(word: Word, graph: GraphRepository): Boolean {
         val matchWord = graph.findWordToMatch(word, baseLanguageShortName) ?: return false
@@ -137,27 +128,10 @@ class LeafRuleCondition(
                 ?: matchWord.text.trimEnd('-').endsWith(parameter!!)).negateIfNeeded()
             ConditionType.BeginsWith -> (phonemeClass?.let { PhonemeIterator(word).current in it.matchingPhonemes }
                 ?: word.text.startsWith(parameter!!)).negateIfNeeded()
-            ConditionType.NumberOfSyllables -> matchNumberOfSyllables(word)
             ConditionType.StressIs -> matchStress(word).negateIfNeeded()
             ConditionType.ClassMatches -> matchClass(word)
             else -> throw IllegalStateException()
         }
-    }
-
-    private fun matchNumberOfSyllables(word: Word): Boolean {
-        var param = parameter!!
-        val compare = if (param.startsWith(">=")) {
-            param = param.removePrefix(">=");
-            { a: Int, b: Int -> a >= b }
-        }
-        else if (param.startsWith("<=")) {
-            param = param.removePrefix("<=");
-            { a: Int, b: Int -> a <= b }
-        }
-        else {
-            { a: Int, b: Int -> a == b }
-        }
-        return (compare(breakIntoSyllables(word).size, param.toInt())).negateIfNeeded()
     }
 
     private fun matchClass(word: Word) =
@@ -177,7 +151,6 @@ class LeafRuleCondition(
             ConditionType.EndOfWord -> phonemes.atEnd().negateIfNeeded()
             ConditionType.SyllableIndex -> matchSyllableIndex(phonemes)
             ConditionType.ClassMatches -> matchClass(word)
-            ConditionType.NumberOfSyllables -> matchNumberOfSyllables(word)
             else -> throw IllegalStateException("Trying to use a word condition for matching phonemes")
         }
     }
@@ -203,7 +176,6 @@ class LeafRuleCondition(
     }
 
     override fun toRichText(): RichText {
-        val maybeNotPrefix = (if (negated) notPrefix else "").rich()
         return if (type.takesArgument) {
             val parameterName = parameterToEditableText()
             val condName = if (baseLanguageShortName != null) {
@@ -212,23 +184,15 @@ class LeafRuleCondition(
             else {
                 type.condName.richText()
             }
-            condName + maybeNotPrefix + (parameterName ?: "").rich(emph = true)
+            condName + maybeNot + (parameterName ?: "").rich(emph = true)
         } else {
-            maybeNotPrefix + type.condName.rich()
+            maybeNot + type.condName.rich()
         }
     }
 
     private fun parameterToEditableText(): String? {
         if (type == ConditionType.SyllableIndex) {
             return parameter!!.toIntOrNull()?.let { Ordinals.toString(it) } ?: parameter
-        }
-        if (type == ConditionType.NumberOfSyllables) {
-            if (parameter!!.startsWith(">=")) {
-                return "at least ${parameter.removePrefix(">=")}"
-            }
-            if (parameter.startsWith("<=")) {
-                return "at most ${parameter.removePrefix("<=")}"
-            }
         }
 
         val parameterName = if (type.parameterParseCallback != null)
@@ -257,6 +221,7 @@ class LeafRuleCondition(
         fun parse(buffer: ParseBuffer, language: Language): RuleCondition {
             for (parser in arrayOf(
                 SyllableRuleCondition,
+                SyllableCountRuleCondition,
                 PhonemeEqualsRuleCondition,
                 RelativePhonemeRuleCondition
             )) {
@@ -387,12 +352,47 @@ fun GraphRepository.findWordToMatch(word: Word, baseLanguageShortName: String?):
     return word
 }
 
+class SyllableCountRuleCondition(val condition: String?, negated: Boolean, val expectCount: Int)
+    : RuleCondition(negated)
+{
+    override fun matches(word: Word, graph: GraphRepository): Boolean {
+        val compare = when (condition) {
+            ">=" -> { a: Int, b: Int -> a >= b }
+            "<=" -> { a: Int, b: Int -> a <= b }
+            else ->  { a: Int, b: Int -> a == b }
+        }
+        return compare(breakIntoSyllables(word).size, expectCount) xor negated
+    }
+
+    override fun toRichText(): RichText {
+        val param = when(condition) {
+            ">=" -> "at least "
+            "<=" -> "at most "
+            else -> ""
+        }
+        return LeafRuleCondition.numberOfSyllables.richText() + maybeNot + param.rich(true) +
+                expectCount.toString().rich(true)
+    }
+
+    companion object : RuleConditionParser {
+        override fun tryParse(buffer: ParseBuffer, language: Language): RuleCondition? {
+            if (!buffer.consume(LeafRuleCondition.numberOfSyllables)) return null
+            val negated = buffer.consume(LeafRuleCondition.notPrefix)
+            val isAtLeast = buffer.consume("at least")
+            val isAtMost = buffer.consume("at most")
+            val param = buffer.nextWord()?.toIntOrNull()
+                ?: throw RuleParseException("Number of syllables should be a number")
+            return SyllableCountRuleCondition(if (isAtLeast) ">=" else if (isAtMost) "<=" else null, negated, param)
+        }
+    }
+}
+
 class RelativePhonemeRuleCondition(
-    val negated: Boolean,
+    negated: Boolean,
     val seekTarget: SeekTarget?,
     val phonemePattern: PhonemePattern,
     val baseLanguageShortName: String?
-) : RuleCondition() {
+) : RuleCondition(negated) {
     override fun isPhonemic(): Boolean = seekTarget?.relative ?: true
 
     override fun matches(word: Word, phonemes: PhonemeIterator, graph: GraphRepository): Boolean {
@@ -498,11 +498,8 @@ class OrRuleCondition(val members: List<RuleCondition>) : RuleCondition() {
 
     override fun matches(word: Word, graph: GraphRepository): Boolean = members.any { it.matches(word, graph) }
 
-    override fun matches(word: Word, phonemes: PhonemeIterator, graph: GraphRepository) = members.any { it.matches(
-        word,
-        phonemes,
-        graph
-    ) }
+    override fun matches(word: Word, phonemes: PhonemeIterator, graph: GraphRepository) =
+        members.any { it.matches(word, phonemes, graph) }
 
     override fun toRichText(): RichText = members.joinToRichText(OR) {
         val et = it.toRichText()
@@ -529,11 +526,8 @@ class AndRuleCondition(val members: List<RuleCondition>) : RuleCondition() {
 
     override fun matches(word: Word, graph: GraphRepository): Boolean = members.all { it.matches(word, graph) }
 
-    override fun matches(word: Word, phonemes: PhonemeIterator, graph: GraphRepository) = members.all { it.matches(
-        word,
-        phonemes,
-        graph
-    ) }
+    override fun matches(word: Word, phonemes: PhonemeIterator, graph: GraphRepository) =
+        members.all { it.matches(word, phonemes, graph) }
 
     override fun toRichText(): RichText = members.joinToRichText(AND) {
         val et = it.toRichText()

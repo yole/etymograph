@@ -13260,6 +13260,7 @@
             "text": "sċearp",
             "lang": "OE",
             "gloss": "sharp",
+            "pos": "ADJ",
             "sourceRefs": [
                 {
                     "pubId": 5,
@@ -16479,10 +16480,9 @@
                                 ]
                             },
                             {
-                                "type": "leaf",
-                                "cond": "NumberOfSyllables",
-                                "characters": "1",
-                                "negated": true
+                                "type": "syllableCount",
+                                "negated": true,
+                                "expectCount": 1
                             }
                         ]
                     }
@@ -17665,9 +17665,8 @@
                                 "parameter": "u"
                             },
                             {
-                                "type": "leaf",
-                                "cond": "NumberOfSyllables",
-                                "characters": "3"
+                                "type": "syllableCount",
+                                "expectCount": 3
                             }
                         ]
                     }
@@ -18160,9 +18159,8 @@
                         "type": "and",
                         "members": [
                             {
-                                "type": "leaf",
-                                "cond": "NumberOfSyllables",
-                                "characters": "2"
+                                "type": "syllableCount",
+                                "expectCount": 2
                             },
                             {
                                 "type": "syllable",
@@ -18187,9 +18185,8 @@
                         "type": "and",
                         "members": [
                             {
-                                "type": "leaf",
-                                "cond": "NumberOfSyllables",
-                                "characters": "2"
+                                "type": "syllableCount",
+                                "expectCount": 2
                             },
                             {
                                 "type": "syllable",
@@ -18214,9 +18211,8 @@
                         "type": "and",
                         "members": [
                             {
-                                "type": "leaf",
-                                "cond": "NumberOfSyllables",
-                                "characters": "2"
+                                "type": "syllableCount",
+                                "expectCount": 2
                             },
                             {
                                 "type": "syllable",
@@ -18857,9 +18853,8 @@
                         }
                     ],
                     "condition": {
-                        "type": "leaf",
-                        "cond": "NumberOfSyllables",
-                        "characters": "2"
+                        "type": "syllableCount",
+                        "expectCount": 2
                     }
                 },
                 {
@@ -20686,10 +20681,9 @@
                                 "cond": "EndOfWord"
                             },
                             {
-                                "type": "leaf",
-                                "cond": "NumberOfSyllables",
-                                "characters": "1",
-                                "negated": true
+                                "type": "syllableCount",
+                                "negated": true,
+                                "expectCount": 1
                             }
                         ]
                     }
@@ -20995,10 +20989,9 @@
                                 "relative": false
                             },
                             {
-                                "type": "leaf",
-                                "cond": "NumberOfSyllables",
-                                "characters": "1",
-                                "negated": true
+                                "type": "syllableCount",
+                                "negated": true,
+                                "expectCount": 1
                             },
                             {
                                 "type": "relPhoneme",
@@ -21651,9 +21644,9 @@
                                 "cond": "EndOfWord"
                             },
                             {
-                                "type": "leaf",
-                                "cond": "NumberOfSyllables",
-                                "characters": ">=3"
+                                "type": "syllableCount",
+                                "condition": ">=",
+                                "expectCount": 3
                             }
                         ]
                     }
@@ -22133,9 +22126,8 @@
                                 "cls": "word-final"
                             },
                             {
-                                "type": "leaf",
-                                "cond": "NumberOfSyllables",
-                                "characters": "1"
+                                "type": "syllableCount",
+                                "expectCount": 1
                             }
                         ]
                     }
@@ -22174,9 +22166,8 @@
                                 "cls": "word-final"
                             },
                             {
-                                "type": "leaf",
-                                "cond": "NumberOfSyllables",
-                                "characters": "1"
+                                "type": "syllableCount",
+                                "expectCount": 1
                             }
                         ]
                     }

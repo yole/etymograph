@@ -5415,6 +5415,9 @@
                 {
                     "pubId": 1,
                     "refText": "91"
+                },
+                {
+                    "refText": "https://eldamo.org/content/words/word-3547079839.html"
                 }
             ]
         },
@@ -17931,14 +17934,12 @@
                         "type": "or",
                         "members": [
                             {
-                                "type": "leaf",
-                                "cond": "NumberOfSyllables",
-                                "characters": "1"
+                                "type": "syllableCount",
+                                "expectCount": 1
                             },
                             {
-                                "type": "leaf",
-                                "cond": "NumberOfSyllables",
-                                "characters": "2"
+                                "type": "syllableCount",
+                                "expectCount": 2
                             }
                         ]
                     }
@@ -19785,9 +19786,8 @@
                         }
                     ],
                     "condition": {
-                        "type": "leaf",
-                        "cond": "NumberOfSyllables",
-                        "characters": "1"
+                        "type": "syllableCount",
+                        "expectCount": 1
                     }
                 },
                 {
@@ -21764,10 +21764,9 @@
                                 "parameter": "u"
                             },
                             {
-                                "type": "leaf",
-                                "cond": "NumberOfSyllables",
-                                "characters": "1",
-                                "negated": true
+                                "type": "syllableCount",
+                                "negated": true,
+                                "expectCount": 1
                             }
                         ]
                     }
@@ -21795,10 +21794,9 @@
                                 "parameter": "e"
                             },
                             {
-                                "type": "leaf",
-                                "cond": "NumberOfSyllables",
-                                "characters": "1",
-                                "negated": true
+                                "type": "syllableCount",
+                                "negated": true,
+                                "expectCount": 1
                             }
                         ]
                     }
@@ -22758,9 +22756,8 @@
                                 "relative": false
                             },
                             {
-                                "type": "leaf",
-                                "cond": "NumberOfSyllables",
-                                "characters": "1"
+                                "type": "syllableCount",
+                                "expectCount": 1
                             }
                         ]
                     }
@@ -22783,9 +22780,8 @@
                                 "relative": false
                             },
                             {
-                                "type": "leaf",
-                                "cond": "NumberOfSyllables",
-                                "characters": "1"
+                                "type": "syllableCount",
+                                "expectCount": 1
                             }
                         ]
                     }
@@ -23908,10 +23904,9 @@
                                 "cond": "EndOfWord"
                             },
                             {
-                                "type": "leaf",
-                                "cond": "NumberOfSyllables",
-                                "characters": "1",
-                                "negated": true
+                                "type": "syllableCount",
+                                "negated": true,
+                                "expectCount": 1
                             }
                         ]
                     }
