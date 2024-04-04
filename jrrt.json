@@ -2050,6 +2050,7 @@
             "text": "lisse",
             "lang": "Q",
             "gloss": "sweet",
+            "pos": "ADJ",
             "sourceRefs": [
                 {
                     "pubId": 1,
@@ -20119,9 +20120,8 @@
                         "type": "and",
                         "members": [
                             {
-                                "type": "leaf",
-                                "cond": "SyllableIndex",
-                                "characters": "-2"
+                                "type": "syllableIndex",
+                                "matchIndex": -2
                             },
                             {
                                 "type": "relPhoneme",
@@ -20150,9 +20150,8 @@
                         "type": "and",
                         "members": [
                             {
-                                "type": "leaf",
-                                "cond": "SyllableIndex",
-                                "characters": "-2"
+                                "type": "syllableIndex",
+                                "matchIndex": -2
                             },
                             {
                                 "type": "relPhoneme",
@@ -20906,9 +20905,8 @@
                                 "parameter": "i"
                             },
                             {
-                                "type": "leaf",
-                                "cond": "SyllableIndex",
-                                "characters": "-1"
+                                "type": "syllableIndex",
+                                "matchIndex": -1
                             }
                         ]
                     }
@@ -22425,9 +22423,8 @@
                                 "relative": false
                             },
                             {
-                                "type": "leaf",
-                                "cond": "SyllableIndex",
-                                "characters": "-1",
+                                "type": "syllableIndex",
+                                "matchIndex": -1,
                                 "negated": true
                             }
                         ]
@@ -22451,9 +22448,8 @@
                                 "relative": false
                             },
                             {
-                                "type": "leaf",
-                                "cond": "SyllableIndex",
-                                "characters": "-1"
+                                "type": "syllableIndex",
+                                "matchIndex": -1
                             }
                         ]
                     }
@@ -22476,9 +22472,8 @@
                                 "relative": false
                             },
                             {
-                                "type": "leaf",
-                                "cond": "SyllableIndex",
-                                "characters": "-1"
+                                "type": "syllableIndex",
+                                "matchIndex": -1
                             }
                         ]
                     }
@@ -22501,9 +22496,8 @@
                                 "relative": false
                             },
                             {
-                                "type": "leaf",
-                                "cond": "SyllableIndex",
-                                "characters": "-1"
+                                "type": "syllableIndex",
+                                "matchIndex": -1
                             }
                         ]
                     }
@@ -22593,9 +22587,8 @@
                                 "relative": false
                             },
                             {
-                                "type": "leaf",
-                                "cond": "SyllableIndex",
-                                "characters": "-1",
+                                "type": "syllableIndex",
+                                "matchIndex": -1,
                                 "negated": true
                             }
                         ]
@@ -22630,9 +22623,8 @@
                                 "parameter": "u"
                             },
                             {
-                                "type": "leaf",
-                                "cond": "SyllableIndex",
-                                "characters": "-1"
+                                "type": "syllableIndex",
+                                "matchIndex": -1
                             }
                         ]
                     }
@@ -22655,9 +22647,8 @@
                                 "relative": false
                             },
                             {
-                                "type": "leaf",
-                                "cond": "SyllableIndex",
-                                "characters": "-1"
+                                "type": "syllableIndex",
+                                "matchIndex": -1
                             }
                         ]
                     }
@@ -22680,9 +22671,8 @@
                                 "relative": false
                             },
                             {
-                                "type": "leaf",
-                                "cond": "SyllableIndex",
-                                "characters": "-1"
+                                "type": "syllableIndex",
+                                "matchIndex": -1
                             }
                         ]
                     }
@@ -22705,9 +22695,8 @@
                                 "relative": false
                             },
                             {
-                                "type": "leaf",
-                                "cond": "SyllableIndex",
-                                "characters": "-1",
+                                "type": "syllableIndex",
+                                "matchIndex": -1,
                                 "negated": true
                             }
                         ]
@@ -22731,9 +22720,8 @@
                                 "relative": false
                             },
                             {
-                                "type": "leaf",
-                                "cond": "SyllableIndex",
-                                "characters": "-1"
+                                "type": "syllableIndex",
+                                "matchIndex": -1
                             }
                         ]
                     }
@@ -22804,9 +22792,8 @@
                                 "relative": false
                             },
                             {
-                                "type": "leaf",
-                                "cond": "SyllableIndex",
-                                "characters": "-1"
+                                "type": "syllableIndex",
+                                "matchIndex": -1
                             }
                         ]
                     }
@@ -22829,9 +22816,8 @@
                                 "relative": false
                             },
                             {
-                                "type": "leaf",
-                                "cond": "SyllableIndex",
-                                "characters": "-1"
+                                "type": "syllableIndex",
+                                "matchIndex": -1
                             }
                         ]
                     }

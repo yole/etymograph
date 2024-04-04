@@ -13060,7 +13060,8 @@
             "id": 2176,
             "text": "ġimm",
             "lang": "OE",
-            "gloss": "gem"
+            "gloss": "gem",
+            "pos": "N"
         },
         {
             "id": 2177,
@@ -20635,9 +20636,8 @@
                                 "relative": false
                             },
                             {
-                                "type": "leaf",
-                                "cond": "SyllableIndex",
-                                "characters": "1"
+                                "type": "syllableIndex",
+                                "matchIndex": 1
                             }
                         ]
                     }
@@ -22716,9 +22716,8 @@
                                 "relative": false
                             },
                             {
-                                "type": "leaf",
-                                "cond": "SyllableIndex",
-                                "characters": "-1"
+                                "type": "syllableIndex",
+                                "matchIndex": -1
                             }
                         ]
                     }
@@ -24066,14 +24065,12 @@
                                 "relative": false
                             },
                             {
-                                "type": "leaf",
-                                "cond": "SyllableIndex",
-                                "characters": "open"
+                                "type": "syllableIndex",
+                                "matchClass": "open"
                             },
                             {
-                                "type": "leaf",
-                                "cond": "SyllableIndex",
-                                "characters": "-1",
+                                "type": "syllableIndex",
+                                "matchIndex": -1,
                                 "negated": true
                             },
                             {
@@ -24110,14 +24107,12 @@
                                 "relative": false
                             },
                             {
-                                "type": "leaf",
-                                "cond": "SyllableIndex",
-                                "characters": "open"
+                                "type": "syllableIndex",
+                                "matchClass": "open"
                             },
                             {
-                                "type": "leaf",
-                                "cond": "SyllableIndex",
-                                "characters": "-1",
+                                "type": "syllableIndex",
+                                "matchIndex": -1,
                                 "negated": true
                             },
                             {
@@ -24154,14 +24149,12 @@
                                 "relative": false
                             },
                             {
-                                "type": "leaf",
-                                "cond": "SyllableIndex",
-                                "characters": "open"
+                                "type": "syllableIndex",
+                                "matchClass": "open"
                             },
                             {
-                                "type": "leaf",
-                                "cond": "SyllableIndex",
-                                "characters": "-1",
+                                "type": "syllableIndex",
+                                "matchIndex": -1,
                                 "negated": true
                             },
                             {
@@ -24215,14 +24208,12 @@
                                 "relative": false
                             },
                             {
-                                "type": "leaf",
-                                "cond": "SyllableIndex",
-                                "characters": "open"
+                                "type": "syllableIndex",
+                                "matchClass": "open"
                             },
                             {
-                                "type": "leaf",
-                                "cond": "SyllableIndex",
-                                "characters": "-1",
+                                "type": "syllableIndex",
+                                "matchIndex": -1,
                                 "negated": true
                             },
                             {
@@ -24276,14 +24267,12 @@
                                 "relative": false
                             },
                             {
-                                "type": "leaf",
-                                "cond": "SyllableIndex",
-                                "characters": "open"
+                                "type": "syllableIndex",
+                                "matchClass": "open"
                             },
                             {
-                                "type": "leaf",
-                                "cond": "SyllableIndex",
-                                "characters": "-1",
+                                "type": "syllableIndex",
+                                "matchIndex": -1,
                                 "negated": true
                             },
                             {

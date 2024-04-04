@@ -24,16 +24,6 @@ enum class ConditionType(
     }),
     BeginningOfWord(LeafRuleCondition.beginningOfWord, phonemic = true, takesArgument = false),
     EndOfWord(LeafRuleCondition.endOfWord, phonemic = true, takesArgument = false),
-    SyllableIndex(LeafRuleCondition.syllableIs, phonemic = true, parameterParseCallback = { buf, _ ->
-        if (buf.consume("open"))
-            "open"
-        else if (buf.consume("closed"))
-            "closed"
-        else {
-            val param = Ordinals.parse(buf) ?: throw RuleParseException("Invalid syllable index ${buf.nextWord()}")
-            param.toString()
-        }
-    }),
     SoundEquals(LeafRuleCondition.soundIsSame, phonemic = true, takesArgument = true)
 }
 
@@ -70,7 +60,7 @@ sealed class RuleCondition(val negated: Boolean = false) {
 
     protected fun Boolean.negateIfNeeded() = if (negated) !this else this
 
-    protected val maybeNot
+    val maybeNot: RichTextFragment
         get() = (if (negated) LeafRuleCondition.notPrefix else "").rich()
 
     companion object {
@@ -149,30 +139,9 @@ class LeafRuleCondition(
         return when (type) {
             ConditionType.BeginningOfWord -> phonemes.atBeginning().negateIfNeeded()
             ConditionType.EndOfWord -> phonemes.atEnd().negateIfNeeded()
-            ConditionType.SyllableIndex -> matchSyllableIndex(phonemes)
             ConditionType.ClassMatches -> matchClass(word)
             else -> throw IllegalStateException("Trying to use a word condition for matching phonemes")
         }
-    }
-
-    private fun matchSyllableIndex(phonemes: PhonemeIterator): Boolean {
-        val syllables = phonemes.syllables
-        if (syllables.isNullOrEmpty()) return false.negateIfNeeded()
-        val absIndex = parameter!!.toIntOrNull()?.let { Ordinals.toAbsoluteIndex(it, syllables.size) }
-        for ((i, s) in syllables.withIndex()) {
-            if (phonemes.index < s.endIndex) {
-                if (absIndex != null) {
-                    return (i == absIndex).negateIfNeeded()
-                }
-                if (parameter == "closed") {
-                    return s.closed.negateIfNeeded()
-                }
-                if (parameter == "open") {
-                    return !s.closed.negateIfNeeded()
-                }
-            }
-        }
-        return false.negateIfNeeded()
     }
 
     override fun toRichText(): RichText {
@@ -191,10 +160,6 @@ class LeafRuleCondition(
     }
 
     private fun parameterToEditableText(): String? {
-        if (type == ConditionType.SyllableIndex) {
-            return parameter!!.toIntOrNull()?.let { Ordinals.toString(it) } ?: parameter
-        }
-
         val parameterName = if (type.parameterParseCallback != null)
             parameter
         else {
@@ -222,6 +187,7 @@ class LeafRuleCondition(
             for (parser in arrayOf(
                 SyllableRuleCondition,
                 SyllableCountRuleCondition,
+                SyllableClassRuleCondition,
                 PhonemeEqualsRuleCondition,
                 RelativePhonemeRuleCondition
             )) {
@@ -387,6 +353,55 @@ class SyllableCountRuleCondition(val condition: String?, negated: Boolean, val e
             val param = buffer.nextWord()?.toIntOrNull()
                 ?: throw RuleParseException("Number of syllables should be a number")
             return SyllableCountRuleCondition(condition, negated, param)
+        }
+    }
+}
+
+class SyllableClassRuleCondition(val matchIndex: Int?, val matchClass: String?, negated: Boolean)
+    : RuleCondition(negated)
+{
+    override fun isPhonemic(): Boolean = true
+
+    override fun matches(word: Word, phonemes: PhonemeIterator, graph: GraphRepository): Boolean {
+        val syllables = phonemes.syllables
+        if (syllables.isNullOrEmpty()) return false.negateIfNeeded()
+        val absIndex = matchIndex?.let { Ordinals.toAbsoluteIndex(it, syllables.size) }
+        for ((i, s) in syllables.withIndex()) {
+            if (phonemes.index < s.endIndex) {
+                if (absIndex != null) {
+                    return (i == absIndex).negateIfNeeded()
+                }
+                return when (matchClass) {
+                    "closed" -> s.closed.negateIfNeeded()
+                    "open" -> !s.closed.negateIfNeeded()
+                    else -> false
+                }
+            }
+        }
+        return false.negateIfNeeded()
+    }
+
+    override fun toRichText(): RichText {
+        return "syllable is ".richText() + maybeNot +
+                (matchIndex?.let { Ordinals.toString(it) }?.rich(true) ?: matchClass!!.rich(true))
+    }
+
+    companion object : RuleConditionParser {
+        override fun tryParse(buffer: ParseBuffer, language: Language): RuleCondition? {
+            if (!buffer.consume(LeafRuleCondition.syllableIs)) {
+                return null
+            }
+            val negated = buffer.consume("not")
+            if (buffer.consume("open")) {
+                return SyllableClassRuleCondition(null, "open", negated)
+            }
+            else if (buffer.consume("close")) {
+                return SyllableClassRuleCondition(null, "close", negated)
+            }
+            else {
+                val index = Ordinals.parse(buffer) ?: return null
+                return SyllableClassRuleCondition(index, null, negated)
+            }
         }
     }
 }

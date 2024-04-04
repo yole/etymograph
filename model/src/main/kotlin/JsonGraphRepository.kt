@@ -106,6 +106,18 @@ class SyllableCountConditionData(
 }
 
 @Serializable
+@SerialName("syllableIndex")
+class SyllableClassConditionData(
+    val matchIndex: Int? = null,
+    val matchClass: String? = null,
+    val negated: Boolean = false
+) : RuleConditionData() {
+    override fun toRuntimeFormat(result: InMemoryGraphRepository, fromLanguage: Language): RuleCondition {
+        return SyllableClassRuleCondition(matchIndex, matchClass, negated)
+    }
+}
+
+@Serializable
 @SerialName("relPhoneme")
 class RelativePhonemeRuleConditionData(
     val relativeIndex: Int? = null,
@@ -703,6 +715,9 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             )
             is SyllableCountRuleCondition -> SyllableCountConditionData(
                 condition, negated, expectCount
+            )
+            is SyllableClassRuleCondition -> SyllableClassConditionData(
+                matchIndex, matchClass, negated
             )
             is RelativePhonemeRuleCondition -> RelativePhonemeRuleConditionData(
                 seekTarget?.index,
