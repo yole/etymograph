@@ -24177,6 +24177,11 @@
                                         "relativeIndex": -1,
                                         "tcls": "vowel",
                                         "cls": "diphthong"
+                                    },
+                                    {
+                                        "type": "syllableIndex",
+                                        "matchClass": "closed",
+                                        "relativeIndex": -1
                                     }
                                 ]
                             }
@@ -24236,6 +24241,11 @@
                                         "relativeIndex": -1,
                                         "tcls": "vowel",
                                         "cls": "diphthong"
+                                    },
+                                    {
+                                        "type": "syllableIndex",
+                                        "matchClass": "closed",
+                                        "relativeIndex": -1
                                     }
                                 ]
                             }
@@ -24295,6 +24305,11 @@
                                         "relativeIndex": -1,
                                         "tcls": "vowel",
                                         "cls": "diphthong"
+                                    },
+                                    {
+                                        "type": "syllableIndex",
+                                        "matchClass": "closed",
+                                        "relativeIndex": -1
                                     }
                                 ]
                             }

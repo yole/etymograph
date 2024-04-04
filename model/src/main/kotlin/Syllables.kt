@@ -49,6 +49,10 @@ fun breakIntoSyllables(word: Word): List<Syllable> {
     return result.map { Syllable(it.startIndex, it.endIndex, it.closed) }
 }
 
+fun findSyllable(syllables: List<Syllable>, phonemeIndex: Int): Int {
+    return syllables.indexOfFirst { phonemeIndex >= it.startIndex && phonemeIndex < it.endIndex }
+}
+
 fun analyzeSyllableStructure(vowels: PhonemeClass, phonemes: PhonemeIterator, syllable: Syllable): String {
     return buildString {
         for (index in syllable.startIndex until syllable.endIndex) {

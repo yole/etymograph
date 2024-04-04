@@ -171,7 +171,7 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
         if (bow != null) return "$relativePhonemeContext ${bow.maybeNot()}at beginning of word"
         val eow = condition.findLeafConditions(ConditionType.EndOfWord).firstOrNull()
         if (eow != null) return "$relativePhonemeContext ${eow.maybeNot()}at end of word"
-        val syllableIndexCondition = condition.findLeafConditions { it is SyllableClassRuleCondition }.singleOrNull() as SyllableClassRuleCondition?
+        val syllableIndexCondition = condition.findLeafConditions { it is RelativeSyllableRuleCondition }.singleOrNull() as RelativeSyllableRuleCondition?
         if (syllableIndexCondition != null && syllableIndexCondition.matchClass == null) {
             val index = Ordinals.toString(syllableIndexCondition.matchIndex!!)
             return "$relativePhonemeContext in ${syllableIndexCondition.maybeNot}$index syllable"

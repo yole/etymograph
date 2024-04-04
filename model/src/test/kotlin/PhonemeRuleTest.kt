@@ -341,6 +341,15 @@ class PhonemeRuleTest : QBaseTest() {
     }
 
     @Test
+    fun prevSyllableIsClosed() {
+        val rule = parseRule(q, q, """
+            previous syllable is closed and sound is 'a':
+            - new sound is 'e'
+        """.trimIndent())
+        assertEquals("wilwena", applyRule(rule, q.word("wilwana")))
+    }
+
+    @Test
     fun summaryWithOr() {
         val rule = parseRule(q, q, """
             sound is 'i' and (previous sound is 'a' or previous sound is 'o'):
