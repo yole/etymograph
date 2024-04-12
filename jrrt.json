@@ -15403,6 +15403,830 @@
                     "refText": "https://eldamo.org/content/words/word-3609323493.html"
                 }
             ]
+        },
+        {
+            "id": 1680,
+            "text": "laita-",
+            "lang": "Q",
+            "gloss": "bless",
+            "pos": "V",
+            "sourceRefs": [
+                {
+                    "pubId": 15,
+                    "refText": "953"
+                },
+                {
+                    "refText": "https://eldamo.org/content/words/word-261637557.html"
+                }
+            ]
+        },
+        {
+            "id": 1681,
+            "text": "andave",
+            "lang": "Q",
+            "sourceRefs": [
+                {
+                    "pubId": 15,
+                    "refText": "953"
+                },
+                {
+                    "refText": "https://eldamo.org/content/words/word-2360177771.html"
+                }
+            ]
+        },
+        {
+            "id": 1683,
+            "text": "laituvalmet",
+            "lang": "Q",
+            "sourceRefs": [
+                {
+                    "pubId": 15,
+                    "refText": "953"
+                }
+            ]
+        },
+        {
+            "id": 1684,
+            "text": "tárienna",
+            "lang": "Q",
+            "sourceRefs": [
+                {
+                    "pubId": 15,
+                    "refText": "953"
+                }
+            ]
+        },
+        {
+            "id": 1685,
+            "text": "tára",
+            "lang": "Q",
+            "gloss": "lofty",
+            "fullGloss": "lofty, tall, high",
+            "pos": "ADJ",
+            "sourceRefs": [
+                {
+                    "refText": "https://eldamo.org/content/words/word-2753253893.html"
+                }
+            ]
+        },
+        {
+            "id": 1687,
+            "text": "heru",
+            "lang": "Q",
+            "gloss": "lord",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "97"
+                },
+                {
+                    "refText": "https://eldamo.org/content/words/word-3187467167.html"
+                }
+            ]
+        },
+        {
+            "id": 1688,
+            "text": "órava-",
+            "lang": "Q",
+            "gloss": "have mercy",
+            "pos": "V",
+            "sourceRefs": [
+                {
+                    "pubId": 0,
+                    "refText": "12"
+                },
+                {
+                    "refText": "https://eldamo.org/content/words/word-223773401.html"
+                }
+            ]
+        },
+        {
+            "id": 1689,
+            "text": "DAB-",
+            "lang": "CE",
+            "gloss": "give way",
+            "fullGloss": "give way,  make room, permit, allow",
+            "sourceRefs": [
+                {
+                    "pubId": 0,
+                    "refText": "14"
+                }
+            ]
+        },
+        {
+            "id": 1694,
+            "text": "Maria",
+            "lang": "Q",
+            "sourceRefs": [
+                {
+                    "pubId": 0,
+                    "refText": "12"
+                }
+            ]
+        },
+        {
+            "id": 1701,
+            "text": "omesse",
+            "lang": "Q",
+            "sourceRefs": [
+                {
+                    "pubId": 0,
+                    "refText": "12"
+                }
+            ]
+        },
+        {
+            "id": 1703,
+            "text": "messe",
+            "lang": "Q"
+        },
+        {
+            "id": 1704,
+            "text": "ómesse",
+            "lang": "Q",
+            "sourceRefs": [
+                {
+                    "pubId": 0,
+                    "refText": "12"
+                }
+            ]
+        },
+        {
+            "id": 1705,
+            "text": "Hrísto",
+            "lang": "Q",
+            "gloss": "Christ",
+            "pos": "NP",
+            "sourceRefs": [
+                {
+                    "pubId": 0,
+                    "refText": "12"
+                }
+            ]
+        },
+        {
+            "id": 1706,
+            "text": "meneldea",
+            "lang": "Q",
+            "sourceRefs": [
+                {
+                    "pubId": 3,
+                    "refText": "13"
+                }
+            ]
+        },
+        {
+            "id": 1707,
+            "text": "menelde",
+            "lang": "Q"
+        },
+        {
+            "id": 1708,
+            "text": "Eruion",
+            "lang": "Q",
+            "sourceRefs": [
+                {
+                    "pubId": 0,
+                    "refText": "12"
+                }
+            ]
+        },
+        {
+            "id": 1710,
+            "text": "ion",
+            "lang": "Q",
+            "gloss": "son",
+            "sourceRefs": [
+                {
+                    "refText": "https://eldamo.org/content/words/word-4167656007.html"
+                }
+            ]
+        },
+        {
+            "id": 1711,
+            "text": "Mardorunando",
+            "lang": "Q",
+            "sourceRefs": [
+                {
+                    "pubId": 0,
+                    "refText": "12"
+                },
+                {
+                    "refText": "https://eldamo.org/content/words/word-453667973.html"
+                }
+            ]
+        },
+        {
+            "id": 1712,
+            "text": "mardo",
+            "lang": "Q"
+        },
+        {
+            "id": 1714,
+            "text": "runando",
+            "lang": "Q",
+            "gloss": "redeemer",
+            "sourceRefs": [
+                {
+                    "pubId": 0,
+                    "refText": "17"
+                },
+                {
+                    "refText": "https://eldamo.org/content/words/word-3656351225.html"
+                }
+            ]
+        },
+        {
+            "id": 1717,
+            "text": "rúna",
+            "lang": "Q",
+            "gloss": "free"
+        },
+        {
+            "id": 1718,
+            "text": "ucar-",
+            "lang": "Q",
+            "gloss": "trespass",
+            "pos": "V",
+            "sourceRefs": [
+                {
+                    "pubId": 3,
+                    "refText": "21"
+                },
+                {
+                    "refText": "https://eldamo.org/content/words/word-1772134283.html"
+                }
+            ]
+        },
+        {
+            "id": 1719,
+            "text": "PHAY-",
+            "lang": "CE",
+            "gloss": "radiate",
+            "sourceRefs": [
+                {
+                    "refText": "V:381"
+                }
+            ]
+        },
+        {
+            "id": 1720,
+            "text": "neldie",
+            "lang": "Q",
+            "sourceRefs": [
+                {
+                    "pubId": 0,
+                    "refText": "12"
+                }
+            ]
+        },
+        {
+            "id": 1721,
+            "text": "nelde",
+            "lang": "Q",
+            "gloss": "three"
+        },
+        {
+            "id": 1722,
+            "text": "er",
+            "lang": "Q",
+            "gloss": "one",
+            "sourceRefs": [
+                {
+                    "pubId": 0,
+                    "refText": "17"
+                },
+                {
+                    "refText": "https://eldamo.org/content/words/word-429609191.html"
+                }
+            ]
+        },
+        {
+            "id": 1723,
+            "text": "atarme",
+            "lang": "Q",
+            "sourceRefs": [
+                {
+                    "pubId": 0,
+                    "refText": "12"
+                }
+            ]
+        },
+        {
+            "id": 1724,
+            "text": "atar",
+            "lang": "Q",
+            "gloss": "for",
+            "pos": "PREP",
+            "notes": "VT43:33: derived from a prepositional element 'ata-' ('across, over, lying from side to side') plus allative ending '-r'"
+        },
+        {
+            "id": 1726,
+            "text": "AT-",
+            "lang": "CE",
+            "gloss": "two, across",
+            "sourceRefs": [
+                {
+                    "refText": "https://eldamo.org/content/words/word-2176818521.html"
+                },
+                {
+                    "pubId": 3,
+                    "refText": "33"
+                }
+            ]
+        },
+        {
+            "id": 1727,
+            "text": "Eruontarie",
+            "lang": "Q",
+            "sourceRefs": [
+                {
+                    "pubId": 0,
+                    "refText": "12"
+                }
+            ]
+        },
+        {
+            "id": 1728,
+            "text": "Wenderon",
+            "lang": "Q",
+            "sourceRefs": [
+                {
+                    "pubId": 0,
+                    "refText": "12"
+                }
+            ]
+        },
+        {
+            "id": 1729,
+            "text": "Hristo",
+            "lang": "Q",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": 0,
+                    "refText": "12"
+                }
+            ]
+        },
+        {
+            "id": 1730,
+            "text": "amille",
+            "lang": "Q",
+            "gloss": "mother",
+            "sourceRefs": [
+                {
+                    "pubId": 0,
+                    "refText": "12"
+                },
+                {
+                    "refText": "https://eldamo.org/content/words/word-3747740827.html"
+                }
+            ]
+        },
+        {
+            "id": 1731,
+            "text": "AM-",
+            "lang": "CE",
+            "gloss": "mother",
+            "sourceRefs": [
+                {
+                    "pubId": 13,
+                    "refText": "17"
+                },
+                {
+                    "refText": "https://eldamo.org/content/words/word-1995513169.html"
+                }
+            ]
+        },
+        {
+            "id": 1732,
+            "text": "Eruva",
+            "lang": "Q",
+            "sourceRefs": [
+                {
+                    "pubId": 0,
+                    "refText": "12"
+                }
+            ]
+        },
+        {
+            "id": 1733,
+            "text": "lisseo",
+            "lang": "Q",
+            "sourceRefs": [
+                {
+                    "pubId": 0,
+                    "refText": "12"
+                }
+            ]
+        },
+        {
+            "id": 1734,
+            "text": "lisse",
+            "lang": "Q",
+            "gloss": "grace",
+            "sourceRefs": [
+                {
+                    "pubId": 0,
+                    "refText": "18"
+                },
+                {
+                    "refText": "https://eldamo.org/content/words/word-3872213169.html"
+                }
+            ]
+        },
+        {
+            "id": 1735,
+            "text": "Eldalie",
+            "lang": "Q",
+            "sourceRefs": [
+                {
+                    "pubId": 23,
+                    "refText": "190"
+                },
+                {
+                    "refText": "https://eldamo.org/content/words/word-2532135507.html"
+                }
+            ]
+        },
+        {
+            "id": 1737,
+            "text": "Atanatári",
+            "lang": "Q",
+            "sourceRefs": [
+                {
+                    "pubId": 23,
+                    "refText": "190"
+                }
+            ]
+        },
+        {
+            "id": 1738,
+            "text": "Atanatár",
+            "lang": "Q",
+            "pos": "N"
+        },
+        {
+            "id": 1740,
+            "text": "utúlie’n",
+            "lang": "Q",
+            "sourceRefs": [
+                {
+                    "pubId": 23,
+                    "refText": "190"
+                }
+            ]
+        },
+        {
+            "id": 1741,
+            "text": "utúlie",
+            "lang": "Q"
+        },
+        {
+            "id": 1743,
+            "text": "auta-",
+            "lang": "Q",
+            "gloss": "depart",
+            "pos": "V",
+            "sourceRefs": [
+                {
+                    "pubId": 23,
+                    "refText": "190"
+                },
+                {
+                    "refText": "https://eldamo.org/content/words/word-3752445525.html"
+                }
+            ]
+        },
+        {
+            "id": 1744,
+            "text": "AW-",
+            "lang": "CE",
+            "gloss": "away",
+            "pos": "away",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "143"
+                },
+                {
+                    "refText": "https://eldamo.org/content/words/word-3617829545.html"
+                }
+            ]
+        },
+        {
+            "id": 1745,
+            "text": "lóme",
+            "lang": "Q",
+            "gloss": "night",
+            "fullGloss": "night, dimness, twilight, dusk, darkness",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": 23,
+                    "refText": "190"
+                },
+                {
+                    "refText": "https://eldamo.org/content/words/word-2401626913.html"
+                }
+            ]
+        },
+        {
+            "id": 1746,
+            "text": "dōmē",
+            "lang": "CE",
+            "gloss": "night, twilight",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "152"
+                }
+            ]
+        },
+        {
+            "id": 1747,
+            "text": "DOM-",
+            "lang": "CE",
+            "gloss": "dark",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "152"
+                },
+                {
+                    "refText": "https://eldamo.org/content/words/word-2992708987.html"
+                }
+            ]
+        },
+        {
+            "id": 1748,
+            "text": "carir",
+            "lang": "Q",
+            "sourceRefs": [
+                {
+                    "pubId": 6,
+                    "refText": "391"
+                }
+            ]
+        },
+        {
+            "id": 1749,
+            "text": "quettar",
+            "lang": "Q",
+            "sourceRefs": [
+                {
+                    "pubId": 6,
+                    "refText": "391"
+                }
+            ]
+        },
+        {
+            "id": 1750,
+            "text": "quetta",
+            "lang": "Q",
+            "gloss": "word",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "46"
+                },
+                {
+                    "refText": "https://eldamo.org/content/words/word-106071007.html"
+                }
+            ]
+        },
+        {
+            "id": 1751,
+            "text": "KWET-",
+            "lang": "CE",
+            "gloss": "say, speak, utter words",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "46"
+                },
+                {
+                    "refText": "https://eldamo.org/content/words/word-743690107.html"
+                }
+            ]
+        },
+        {
+            "id": 1752,
+            "text": "ómainen",
+            "lang": "Q",
+            "sourceRefs": [
+                {
+                    "pubId": 6,
+                    "refText": "391"
+                }
+            ]
+        },
+        {
+            "id": 1753,
+            "text": "imbi",
+            "lang": "Q",
+            "sourceRefs": [
+                {
+                    "pubId": 12,
+                    "refText": "11"
+                }
+            ]
+        },
+        {
+            "id": 1754,
+            "text": "ye",
+            "lang": "Q",
+            "gloss": "and (clitic)",
+            "sourceRefs": [
+                {
+                    "pubId": 12,
+                    "refText": "11"
+                },
+                {
+                    "refText": "https://eldamo.org/content/words/word-1379960551.html"
+                }
+            ]
+        },
+        {
+            "id": 1755,
+            "text": "Cemenye",
+            "lang": "Q",
+            "sourceRefs": [
+                {
+                    "pubId": 12,
+                    "refText": "11"
+                }
+            ]
+        },
+        {
+            "id": 1757,
+            "text": "mene",
+            "lang": "Q",
+            "sourceRefs": [
+                {
+                    "pubId": 12,
+                    "refText": "11"
+                }
+            ]
+        },
+        {
+            "id": 1758,
+            "text": "Ráno",
+            "lang": "Q",
+            "sourceRefs": [
+                {
+                    "pubId": 12,
+                    "refText": "11"
+                }
+            ]
+        },
+        {
+            "id": 1759,
+            "text": "Rána",
+            "lang": "Q",
+            "gloss": "Moon",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": 23,
+                    "refText": "99"
+                },
+                {
+                    "refText": "https://eldamo.org/content/words/word-3593477243.html"
+                }
+            ]
+        },
+        {
+            "id": 1760,
+            "text": "rānā",
+            "lang": "CE",
+            "gloss": "Moon",
+            "sourceRefs": [
+                {
+                    "pubId": 13,
+                    "refText": "7"
+                }
+            ]
+        },
+        {
+            "id": 1761,
+            "text": "RAN-",
+            "lang": "CE",
+            "gloss": "wander, stray",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "60"
+                },
+                {
+                    "refText": "https://eldamo.org/content/words/word-1421057433.html"
+                }
+            ]
+        },
+        {
+            "id": 1763,
+            "text": "merin",
+            "lang": "Q"
+        },
+        {
+            "id": 1764,
+            "text": "mer-",
+            "lang": "Q",
+            "gloss": "hope",
+            "pos": "V",
+            "sourceRefs": [
+                {
+                    "refText": "https://eldamo.org/content/words/word-3171901809.html"
+                }
+            ]
+        },
+        {
+            "id": 1765,
+            "text": "sa",
+            "lang": "Q",
+            "gloss": "that",
+            "pos": "CONJ",
+            "sourceRefs": [
+                {
+                    "refText": "https://eldamo.org/content/words/word-2443642287.html"
+                }
+            ]
+        },
+        {
+            "id": 1766,
+            "text": "haryalye",
+            "lang": "Q",
+            "sourceRefs": [
+                {
+                    "refText": "https://eldamo.org/content/words/word-587333183.html"
+                }
+            ]
+        },
+        {
+            "id": 1767,
+            "text": "harya-",
+            "lang": "Q",
+            "gloss": "have",
+            "pos": "V",
+            "sourceRefs": [
+                {
+                    "refText": "https://eldamo.org/content/words/word-826126495.html"
+                }
+            ]
+        },
+        {
+            "id": 1768,
+            "text": "alasse",
+            "lang": "Q",
+            "gloss": "happiness",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "refText": "https://eldamo.org/content/words/word-3383391839.html"
+                }
+            ]
+        },
+        {
+            "id": 1769,
+            "text": "nó",
+            "lang": "Q",
+            "gloss": "before",
+            "pos": "PREP",
+            "sourceRefs": [
+                {
+                    "refText": "https://eldamo.org/content/words/word-3938607967.html"
+                }
+            ]
+        },
+        {
+            "id": 1770,
+            "text": "vanyalye",
+            "lang": "Q",
+            "sourceRefs": [
+                {
+                    "refText": "https://eldamo.org/content/words/word-1630806239.html"
+                }
+            ]
+        },
+        {
+            "id": 1771,
+            "text": "vanya-",
+            "lang": "Q",
+            "gloss": "pass",
+            "pos": "V",
+            "sourceRefs": [
+                {
+                    "refText": "https://eldamo.org/content/words/word-1630806239.html"
+                }
+            ]
+        },
+        {
+            "id": 1772,
+            "text": "Ambarello",
+            "lang": "Q"
         }
     ],
     "rules": [
@@ -15752,6 +16576,7 @@
                 }
             ],
             "addedCategories": ".2SG",
+            "fromPOS": "V",
             "sourceRefs": [
                 {
                     "refText": "https://eldamo.org/content/words/word-1020286637.html"
@@ -24964,6 +25789,92 @@
                 }
             ],
             "notes": ""
+        },
+        {
+            "id": 1682,
+            "name": "q-abstract-noun-ve",
+            "fromLang": "Q",
+            "toLang": "Q",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "Append",
+                            "args": [
+                                "'ve'"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "otherwise"
+                    }
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "refText": "https://eldamo.org/content/words/word-3407884905.html"
+                }
+            ],
+            "notes": ""
+        },
+        {
+            "id": 1715,
+            "name": "q-masc-agent-suffix",
+            "fromLang": "Q",
+            "toLang": "Q",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "Append",
+                            "args": [
+                                "'ndo'"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "otherwise"
+                    }
+                }
+            ],
+            "toPOS": "N",
+            "sourceRefs": [
+                {
+                    "refText": "https://eldamo.org/content/words/word-3334912475.html"
+                },
+                {
+                    "pubId": 1,
+                    "refText": "190"
+                }
+            ]
+        },
+        {
+            "id": 1716,
+            "name": "q-fem-agent-suffix",
+            "fromLang": "Q",
+            "toLang": "Q",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "Append",
+                            "args": [
+                                "'nde'"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "otherwise"
+                    }
+                }
+            ],
+            "toPOS": "N",
+            "sourceRefs": [
+                {
+                    "refText": "https://eldamo.org/content/words/word-400062103.html"
+                }
+            ],
+            "notes": ""
         }
     ],
     "links": [
@@ -29481,6 +30392,363 @@
                 1531,
                 1527
             ]
+        },
+        {
+            "from": 1681,
+            "to": 1021,
+            "type": ">",
+            "ruleIds": [
+                1682
+            ]
+        },
+        {
+            "from": 1683,
+            "to": 1680,
+            "type": ">",
+            "ruleIds": [
+                416,
+                420,
+                423
+            ]
+        },
+        {
+            "from": 1684,
+            "to": 1685,
+            "type": ">",
+            "ruleIds": [
+                417,
+                399
+            ]
+        },
+        {
+            "from": 286,
+            "to": 1687,
+            "type": "="
+        },
+        {
+            "from": 1694,
+            "to": 315,
+            "type": "="
+        },
+        {
+            "from": 1703,
+            "to": 330,
+            "type": ">",
+            "ruleIds": [
+                410
+            ]
+        },
+        {
+            "from": 1704,
+            "to": 1701,
+            "type": "="
+        },
+        {
+            "from": 1706,
+            "to": 1707,
+            "type": ">",
+            "ruleIds": [
+                422
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 3,
+                    "refText": "13"
+                }
+            ]
+        },
+        {
+            "from": 1707,
+            "to": 234,
+            "type": ">",
+            "ruleIds": [
+                410
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 3,
+                    "refText": "16"
+                }
+            ]
+        },
+        {
+            "from": 1712,
+            "to": 32,
+            "type": ">",
+            "ruleIds": [
+                397
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 0,
+                    "refText": "17"
+                }
+            ]
+        },
+        {
+            "from": 1716,
+            "to": 1715,
+            "type": "~"
+        },
+        {
+            "from": 1682,
+            "to": 417,
+            "type": "~"
+        },
+        {
+            "from": 1715,
+            "to": 788,
+            "type": "~"
+        },
+        {
+            "from": 1714,
+            "to": 1717,
+            "type": ">",
+            "ruleIds": [
+                1715
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 0,
+                    "refText": "17"
+                }
+            ]
+        },
+        {
+            "from": 295,
+            "to": 1718,
+            "type": ">",
+            "ruleIds": [
+                1715
+            ]
+        },
+        {
+            "from": 575,
+            "to": 1719,
+            "type": "^",
+            "sourceRefs": [
+                {
+                    "pubId": 3,
+                    "refText": "37"
+                }
+            ]
+        },
+        {
+            "from": 1720,
+            "to": 1721,
+            "type": ">",
+            "ruleIds": [
+                417
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 0,
+                    "refText": "17"
+                }
+            ]
+        },
+        {
+            "from": 1724,
+            "to": 1726,
+            "type": "^"
+        },
+        {
+            "from": 1727,
+            "to": 781,
+            "type": "="
+        },
+        {
+            "from": 1728,
+            "to": 830,
+            "type": ">",
+            "ruleIds": [
+                405
+            ]
+        },
+        {
+            "from": 1729,
+            "to": 1705,
+            "type": "="
+        },
+        {
+            "from": 1730,
+            "to": 1731,
+            "type": "^"
+        },
+        {
+            "from": 1732,
+            "to": 320,
+            "type": ">",
+            "ruleIds": [
+                408
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 0,
+                    "refText": "18"
+                }
+            ]
+        },
+        {
+            "from": 1733,
+            "to": 1734,
+            "type": ">",
+            "ruleIds": [
+                397
+            ]
+        },
+        {
+            "from": 1734,
+            "to": 444,
+            "type": "^",
+            "sourceRefs": [
+                {
+                    "pubId": 3,
+                    "refText": "29"
+                }
+            ]
+        },
+        {
+            "from": 1737,
+            "to": 1738,
+            "type": ">",
+            "ruleIds": [
+                396
+            ]
+        },
+        {
+            "from": 1741,
+            "to": 312,
+            "type": ">",
+            "ruleIds": [
+                543
+            ]
+        },
+        {
+            "from": 27,
+            "to": 1743,
+            "type": "~"
+        },
+        {
+            "from": 1743,
+            "to": 1744,
+            "type": "^"
+        },
+        {
+            "from": 706,
+            "to": 1745,
+            "type": "~"
+        },
+        {
+            "from": 1745,
+            "to": 1746,
+            "type": "^",
+            "ruleIds": [
+                431,
+                1527
+            ]
+        },
+        {
+            "from": 1746,
+            "to": 1747,
+            "type": ">"
+        },
+        {
+            "from": 1748,
+            "to": 306,
+            "type": ">",
+            "ruleIds": [
+                424,
+                425
+            ]
+        },
+        {
+            "from": 1749,
+            "to": 1750,
+            "type": ">",
+            "ruleIds": [
+                396
+            ]
+        },
+        {
+            "from": 1750,
+            "to": 1751,
+            "type": "^"
+        },
+        {
+            "from": 1752,
+            "to": 58,
+            "type": ">",
+            "ruleIds": [
+                521
+            ]
+        },
+        {
+            "from": 1753,
+            "to": 115,
+            "type": "="
+        },
+        {
+            "from": 1757,
+            "to": 157,
+            "type": ">",
+            "ruleIds": [
+                421
+            ]
+        },
+        {
+            "from": 1758,
+            "to": 1759,
+            "type": ">",
+            "ruleIds": [
+                397
+            ]
+        },
+        {
+            "from": 1759,
+            "to": 1760,
+            "type": "^",
+            "ruleIds": [
+                1527
+            ]
+        },
+        {
+            "from": 1760,
+            "to": 1761,
+            "type": ">"
+        },
+        {
+            "from": 1763,
+            "to": 1764,
+            "type": ">",
+            "ruleIds": [
+                424,
+                544
+            ]
+        },
+        {
+            "from": 1766,
+            "to": 1767,
+            "type": ">",
+            "ruleIds": [
+                401
+            ]
+        },
+        {
+            "from": 1770,
+            "to": 1771,
+            "type": ">",
+            "ruleIds": [
+                401
+            ]
+        },
+        {
+            "from": 1772,
+            "to": 557,
+            "type": ">",
+            "ruleIds": [
+                398
+            ]
         }
     ],
     "corpusTexts": [
@@ -30666,6 +31934,21 @@
             "wordIds": [
                 null,
                 1688,
+                1701,
+                892,
+                1705,
+                1688,
+                1704,
+                358,
+                1706,
+                320,
+                1688,
+                null,
+                892,
+                1708,
+                1711,
+                320,
+                null,
                 null,
                 892,
                 null,
@@ -30673,31 +31956,29 @@
                 null,
                 null,
                 null,
+                892,
                 null,
+                1720,
+                null,
+                1722,
                 null,
                 null,
                 892,
                 null,
+                1694,
+                789,
+                1723,
                 null,
+                1727,
                 null,
+                830,
                 null,
-                null,
-                892,
-                null,
-                null,
-                null,
-                null,
-                null,
-                892,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                892,
-                null,
-                1694
+                1728,
+                1730,
+                1729,
+                1730,
+                1732,
+                1733
             ],
             "sourceRefs": [
                 {
@@ -30711,7 +31992,14 @@
             "text": "aiya Eldalië ar Atanatári, utúlie’n aurë",
             "title": null,
             "lang": "Q",
-            "wordIds": [],
+            "wordIds": [
+                982,
+                1735,
+                null,
+                1737,
+                1740,
+                348
+            ],
             "sourceRefs": [
                 {
                     "refText": "S:190"
@@ -30723,10 +32011,15 @@
             "text": "auta i lómë",
             "title": null,
             "lang": "Q",
-            "wordIds": [],
+            "wordIds": [
+                1743,
+                null,
+                1745
+            ],
             "sourceRefs": [
                 {
-                    "refText": "S:190"
+                    "pubId": 23,
+                    "refText": "190"
                 }
             ]
         },
@@ -30735,11 +32028,55 @@
             "text": "i carir quettar ómainen",
             "title": null,
             "lang": "Q",
-            "wordIds": [],
+            "wordIds": [
+                363,
+                1748,
+                1749,
+                1752
+            ],
             "sourceRefs": [
                 {
                     "pubId": 6,
                     "refText": "391"
+                }
+            ]
+        },
+        {
+            "id": 1697,
+            "text": "imbi Menel Cemenyë menë Ráno tië",
+            "title": null,
+            "lang": "Q",
+            "wordIds": [
+                1753,
+                null,
+                1755,
+                1757,
+                1758
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 12,
+                    "refText": "11"
+                }
+            ]
+        },
+        {
+            "id": 1762,
+            "text": "merin sa haryalyë alassë nó vanyalyë Ambarello",
+            "title": null,
+            "lang": "Q",
+            "wordIds": [
+                1763,
+                1765,
+                1766,
+                1768,
+                1769,
+                1770,
+                1772
+            ],
+            "sourceRefs": [
+                {
+                    "refText": "https://eldamo.org/content/words/word-587333183.html"
                 }
             ]
         }
@@ -31388,6 +32725,36 @@
             "id": 18,
             "name": "Morgoth's Ring, J.R.R. Tolkien, (editor) Christopher Tolkien; 1993",
             "refId": "MR"
+        },
+        {
+            "id": 19,
+            "name": "Vinyar Tengwar #46; J.R.R. Tolkien, (editors) Patrick Wynne, Carl Hostetter; July 2004",
+            "refId": "VT46"
+        },
+        {
+            "id": 20,
+            "name": "Vinyar Tengwar #45; J.R.R. Tolkien, (editors) Patrick Wynne, Carl Hostetter; November 2003",
+            "refId": "VT45"
+        },
+        {
+            "id": 21,
+            "name": "Parma Eldalamberon #18; J.R.R. Tolkien, (editor) Christopher Gilson, Patrick H. Wynne and Arden R. Smith; 2009",
+            "refId": "PE18"
+        },
+        {
+            "id": 22,
+            "name": "Parma Eldalamberon #15; J.R.R. Tolkien, (editors) Christopher Gilson, Arden R. Smith, Patrick H. Wynne, Carl Hostetter, Bill Welden; 2004",
+            "refId": "PE15"
+        },
+        {
+            "id": 23,
+            "name": "Silmarillion; J.R.R. Tolkien, (editor) Christopher Tolkien; 1977",
+            "refId": "S"
+        },
+        {
+            "id": 24,
+            "name": "Parma Eldalamberon 20",
+            "refId": "PE20"
         }
     ],
     "compounds": [
@@ -32340,9 +33707,139 @@
                 1358,
                 1524
             ]
+        },
+        {
+            "id": 1692,
+            "compoundId": 1688,
+            "componentIds": [
+                154,
+                1689
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 0,
+                    "refText": "14"
+                }
+            ],
+            "notes": "from *wōdab-, in which *dab- means 'be yielding or permissive, make allowances'"
+        },
+        {
+            "id": 1702,
+            "compoundId": 1701,
+            "componentIds": [
+                154,
+                1703
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 3,
+                    "refText": "29"
+                }
+            ]
+        },
+        {
+            "id": 1709,
+            "compoundId": 1708,
+            "componentIds": [
+                320,
+                1710
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 0,
+                    "refText": "17"
+                }
+            ]
+        },
+        {
+            "id": 1713,
+            "compoundId": 1711,
+            "componentIds": [
+                1712,
+                1714
+            ]
+        },
+        {
+            "id": 1725,
+            "compoundId": 1723,
+            "componentIds": [
+                1724,
+                330
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 3,
+                    "refText": "33"
+                }
+            ]
+        },
+        {
+            "id": 1736,
+            "compoundId": 1735,
+            "componentIds": [
+                649,
+                850
+            ]
+        },
+        {
+            "id": 1739,
+            "compoundId": 1738,
+            "componentIds": [
+                216,
+                358
+            ]
+        },
+        {
+            "id": 1742,
+            "compoundId": 1740,
+            "componentIds": [
+                1741,
+                52
+            ]
+        },
+        {
+            "id": 1756,
+            "compoundId": 1755,
+            "componentIds": [
+                310,
+                1754
+            ]
         }
     ],
-    "translations": [],
+    "translations": [
+        {
+            "id": 1698,
+            "corpusTextId": 524,
+            "text": "a star shines on the hour of our meeting",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "12"
+                }
+            ]
+        },
+        {
+            "id": 1699,
+            "corpusTextId": 891,
+            "text": "fair ones begetters of fair ones",
+            "sourceRefs": [
+                {
+                    "pubId": 17,
+                    "refText": "73"
+                }
+            ]
+        },
+        {
+            "id": 1700,
+            "corpusTextId": 891,
+            "text": "O beautiful ones, parents of beautiful children",
+            "sourceRefs": [
+                {
+                    "refText": "Let:448"
+                }
+            ]
+        }
+    ],
     "grammaticalCategories": [
         {
             "lang": "Q",
