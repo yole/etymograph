@@ -4,7 +4,7 @@ import WordLink from "@/components/WordLink";
 import {fetchBackend} from "@/api";
 import {useRouter} from "next/router";
 import Link from "next/link";
-import RuleForm from "@/components/RuleForm";
+import RuleForm from "@/forms/RuleForm";
 import SourceRefs from "@/components/SourceRefs";
 import RichText from "@/components/RichText";
 import RuleLinkForm from "@/components/RuleLinkForm";
@@ -129,16 +129,18 @@ export default function Rule(params) {
         {editMode && <RuleForm
             updateId={rule.id}
             initialType={rule.phonemic ? "phono" : "morpho"}
-            initialName={rule.name}
-            initialFromLanguage={rule.fromLang}
-            initialToLanguage={rule.toLang}
-            initialAddedCategories={rule.addedCategories}
-            initialReplacedCategories={rule.replacedCategories}
-            initialFromPOS={rule.fromPOS}
-            initialToPOS={rule.toPOS}
-            initialSource={rule.sourceEditableText}
-            initialNotes={rule.notes}
-            initialEditableText={rule.editableText}
+            defaultValues={{
+                name: rule.name,
+                fromLang: rule.fromLang,
+                toLang: rule.toLang,
+                addedCategories: rule.addedCategories,
+                replacedCategories: rule.replacedCategories,
+                fromPOS: rule.fromPOS,
+                toPOS: rule.toPOS,
+                source: rule.sourceEditableText,
+                notes: rule.notes,
+                text: rule.editableText
+            }}
             submitted={submitted}
         />}
 

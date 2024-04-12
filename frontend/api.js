@@ -63,26 +63,12 @@ export function addWordSequence(text, source) {
     return postToBackend(`wordSequence`, {sequence: text, source})
 }
 
-export function addRule(name, fromLang, toLang, addedCategories, replacedCategories, fromPOS, toPOS, text, source, notes) {
-    return postToBackend('rule',
-        {name: name, fromLang: fromLang, toLang: toLang, text: text,
-            addedCategories: addedCategories,
-            replacedCategories: replacedCategories,
-            fromPOS: fromPOS,
-            toPOS: toPOS,
-            source: source,
-            notes: notes
-        })
+export function addRule(data) {
+    return postToBackend('rule', data)
 }
 
-export function updateRule(id, name, fromLang, toLang, addedCategories, replacedCategories, fromPOS, toPOS, text, source, notes) {
-    return postToBackend('rule/' + id, {name: name, fromLang: fromLang, toLang: toLang, text: text,
-        addedCategories: addedCategories,
-        replacedCategories: replacedCategories,
-        fromPOS: fromPOS,
-        toPOS: toPOS,
-        source: source,
-        notes: notes})
+export function updateRule(id, data) {
+    return postToBackend('rule/' + id, data)
 }
 
 export function deleteRule(id) {
