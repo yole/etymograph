@@ -237,10 +237,10 @@ export function copyPhonemes(toLang, fromLang) {
     return postToBackend(`language/${toLang}/copyPhonemes`, {fromLang: fromLang})
 }
 
-export function addPublication(name, refId) {
-    return postToBackend('publications', {name: name, refId: refId})
+export function addPublication(data) {
+    return postToBackend('publications', data)
 }
 
-export function updatePublication(id, name, refId) {
-    return postToBackend(`publication/${id}`, {name: name, refId: refId})
+export function updatePublication(id, data) {
+    return postToBackend(`publication/${id}`, data)
 }

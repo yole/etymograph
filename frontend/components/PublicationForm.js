@@ -1,17 +1,17 @@
 import {useState} from "react";
+import {useForm} from "react-hook-form";
 import {addPublication, updatePublication} from "@/api";
 
 export default function PublicationForm(props) {
-    const [name, setName] = useState(props.initialName !== undefined ? props.initialName : "")
-    const [refId, setRefId] = useState(props.initialRefId !== undefined ? props.initialRefId : "")
+    const {register, handleSubmit} = useForm({defaultValues: props.defaultValues});
     const [errorText, setErrorText] = useState("")
 
-    function savePublication() {
+    function savePublication(data) {
         if (props.updateId !== undefined) {
-            updatePublication(props.updateId, name, refId).then(handleResponse)
+            updatePublication(props.updateId, data).then(handleResponse)
         }
         else {
-            addPublication(name, refId).then(handleResponse)
+            addPublication(data).then(handleResponse)
         }
     }
 
@@ -23,19 +23,19 @@ export default function PublicationForm(props) {
         }
     }
 
-    return <>
+    return <form onSubmit={handleSubmit(savePublication)}>
         <table><tbody>
         <tr>
             <td><label>Name:</label></td>
-            <td><input type="text" value={name} onChange={(e) => setName(e.target.value)}/></td>
+            <td><input type="text" {...register("name")}/></td>
         </tr>
         <tr>
             <td><label>Reference ID: </label></td>
-            <td><input type="text" value={refId} onChange={(e) => setRefId(e.target.value)}/></td>
+            <td><input type="text" {...register("refId")}/></td>
         </tr>
         </tbody></table>
-        <button onClick={savePublication}>Save</button>
+        <input type="submit" value="Save" />
         <br/>
         {errorText !== "" && <div className="errorText">{errorText}</div>}
-    </>
+    </form>
 }

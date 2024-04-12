@@ -44,8 +44,7 @@ export default function Publication(props) {
         </>}
         {editMode && <PublicationForm
             updateId={publication.id}
-            initialName={publication.name}
-            initialRefId={publication.refId}
+            defaultValues={{name: publication.name, refId: publication.refId}}
             submitted={submitted}
         />}
 
