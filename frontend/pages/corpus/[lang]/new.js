@@ -1,7 +1,7 @@
 import CorpusTextForm from "@/forms/CorpusTextForm";
 import {fetchAllLanguagePaths, fetchBackend} from "@/api";
-import Link from "next/link";
 import {useRouter} from "next/router";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 export async function getStaticProps(context) {
     return fetchBackend(`language/${context.params.lang}`)
@@ -18,14 +18,7 @@ export default function CorpusTextEditor(params) {
     const lang = router.query.lang
 
     return <>
-        <h2>
-            <small>
-                <Link href={`/`}>Etymograph</Link> {'> '}
-                <Link href={`/language/${lang}`}>{langData.name}</Link> {'> '}
-            </small>
-            New Corpus Text
-        </h2>
-
+        <Breadcrumbs langName={langData.name} langId={lang} title="New Corpus Text"/>
         <CorpusTextForm lang={lang} redirectOnCreate={r => `/corpus/text/${r.id}`}/>
     </>
 }

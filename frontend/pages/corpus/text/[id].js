@@ -9,6 +9,7 @@ import Link from "next/link";
 import SourceRefs from "@/components/SourceRefs";
 import CorpusTextForm from "@/forms/CorpusTextForm";
 import TranslationForm from "@/components/TranslationForm";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 export const config = {
     unstable_runtimeJS: true
@@ -80,7 +81,6 @@ export default function CorpusText(params) {
         fetchAlternatives(corpusText.id, index)
             .then(r => {
                 setAlternatives(r)
-                console.log("alternatives=" + r.props)
                 setWordFormVisible(true)
                 setPredefWord(text)
                 setWordIndex(index)
@@ -112,11 +112,10 @@ export default function CorpusText(params) {
     }
 
     return <>
-        <h2><small>
-            <Link href={`/`}>Etymograph</Link> {'> '}
-            <Link href={`/language/${corpusText.language}`}>{corpusText.languageFullName}</Link> {'> '}
-            <Link href={`/corpus/${corpusText.language}`}>Corpus</Link> {'>'} </small>
-            {corpusText.title}</h2>
+        <Breadcrumbs langId={corpusText.language} langName={corpusText.languageFullName} title={corpusText.title}
+                     steps={[
+                         {title: "Corpus", url: `/corpus/${corpusText.language}`}
+                     ]}/>
         {!editMode && <>
             {corpusText.lines.map(l => (
                 <div key={l.words[0].index}>
