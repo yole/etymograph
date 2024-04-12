@@ -155,9 +155,12 @@ export default function CorpusText(params) {
         </>}
         {editMode && <CorpusTextForm lang={corpusText.lang}
                                      updateId={corpusText.id}
-                                     initialTitle={corpusText.title}
-                                     initialText={corpusText.text}
-                                     initialSource={corpusText.sourceEditableText}
+                                     defaultValues={{
+                                         title: corpusText.title,
+                                         text: corpusText.text,
+                                         source: corpusText.sourceEditableText,
+                                         notes: corpusText.notes
+                                     }}
                                      submitted={textSubmitted}/>}
         {corpusText.translations.length > 0 && <>
             <h3>Translations</h3>

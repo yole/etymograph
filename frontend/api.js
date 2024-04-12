@@ -118,12 +118,12 @@ export function deriveThroughRuleSequence(wordId, seqId) {
     return postToBackend(`word/${wordId}/derive`, {sequenceId: seqId})
 }
 
-export function addCorpusText(lang, title, text, source, notes) {
-    return postToBackend(`corpus/${lang}/new`, {title: title, text: text, source: source, notes: notes})
+export function addCorpusText(lang, data) {
+    return postToBackend(`corpus/${lang}/new`, data)
 }
 
-export function updateCorpusText(id, title, text, source, notes) {
-    return postToBackend(`corpus/text/${id}`, {title: title, text: text, source: source, notes: notes})
+export function updateCorpusText(id, data) {
+    return postToBackend(`corpus/text/${id}`, data)
 }
 
 export function addTranslation(corpusTextId, text, source) {
