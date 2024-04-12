@@ -142,8 +142,8 @@ export function acceptAlternative(corpusTextId, index, wordId, ruleId) {
     return postToBackend(`corpus/text/${corpusTextId}/accept`, {wordId: wordId, ruleId: ruleId, index: index})
 }
 
-export function addLink(fromEntity, toEntity, linkType, ruleNames, source) {
-    return postToBackend('link', {fromEntity: fromEntity, toEntity: toEntity, linkType: linkType, ruleNames: ruleNames, source: source})
+export function addLink(fromEntity, toEntity, linkType, ruleNames, source, notes) {
+    return postToBackend('link', {fromEntity, toEntity, linkType, ruleNames, source, notes})
 }
 
 export function addRuleLink(fromEntity, toRuleName, linkType, source) {
@@ -160,8 +160,8 @@ export function updateLink(fromWord, toWord, linkType, ruleNames, source) {
     return postToBackend('link/update', {fromEntity: fromWord, toEntity: toWord, linkType: linkType, ruleNames: ruleNames, source: source})
 }
 
-export function createCompound(compoundWord, firstComponentWord, source) {
-    return postToBackend('compound', {compoundId: compoundWord, firstComponentId: firstComponentWord, source: source})
+export function createCompound(compoundWord, firstComponentWord, source, notes) {
+    return postToBackend('compound', {compoundId: compoundWord, firstComponentId: firstComponentWord, source, notes})
 }
 
 export function addToCompound(compoundId, componentWord) {

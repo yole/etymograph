@@ -381,6 +381,7 @@ function SingleWord(params) {
                             {index > 0 && " + "}
                             <CompoundRefComponent key={mc.id} baseWord={params.word} linkWord={mc} router={params.router}/>
                         </>)}
+                        {m.notes && <> &ndash; {m.notes}</>}
                         <SourceRefs source={m.source} span={true}/>
                         {addToCompound === m.compoundId && <WordForm submitted={submitted} addToCompound={m.compoundId} linkTarget={word} language={word.language} />}
                         {allowEdit() && <>

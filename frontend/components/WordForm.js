@@ -12,6 +12,7 @@ export default function WordForm(props) {
     const [newWordNotes, setNewWordNotes] = useState(props.initialNotes !== undefined ? props.initialNotes : "")
     const [newWordLinkRuleNames, setNewWordLinkRuleNames] = useState("")
     const [newWordLinkSource, setNewWordLinkSource] = useState("")
+    const [newWordLinkNotes, setNewWordLinkNotes] = useState("")
     const isAddingLink = props.linkType !== undefined
 
     function clearFields() {
@@ -20,6 +21,7 @@ export default function WordForm(props) {
         setNewWordFullGloss("")
         setNewWordNotes("")
         setNewWordLinkSource("")
+        setNewWordLinkNotes("")
     }
 
     function handleFormSubmit(e) {
@@ -53,10 +55,10 @@ export default function WordForm(props) {
                             } else {
                                 [fromId, toId] = [jr.id, props.linkTarget.id]
                             }
-                            addLink(fromId, toId, props.linkType, newWordLinkRuleNames, newWordLinkSource)
+                            addLink(fromId, toId, props.linkType, newWordLinkRuleNames, newWordLinkSource, newWordLinkNotes)
                                 .then(onFulfilled)
                         } else if (props.newCompound === true) {
-                            createCompound(props.linkTarget.id, jr.id, newWordLinkSource).then(onFulfilled)
+                            createCompound(props.linkTarget.id, jr.id, newWordLinkSource, newWordLinkNotes).then(onFulfilled)
                         } else if (props.addToCompound !== undefined) {
                             addToCompound(props.addToCompound, jr.id).then(onFulfilled)
                         } else {
@@ -115,11 +117,20 @@ export default function WordForm(props) {
                 <td><textarea rows="3" cols="50" value={newWordNotes} onChange={e => setNewWordNotes(e.target.value)}
                               id="word-notes"/></td>
             </tr>
-            {(props.newCompound === true || isAddingLink) && <tr>
-                <td><label htmlFor="link-source"></label>{isAddingLink ? "Link source:" : "Compound source:"}</td>
-                <td><input type="text" value={newWordLinkSource} onChange={e => setNewWordLinkSource(e.target.value)}
-                           id="link-source"/></td>
-            </tr>}
+            {(props.newCompound === true || isAddingLink) && <>
+                <tr>
+                    <td><label htmlFor="link-source"></label>{isAddingLink ? "Link source:" : "Compound source:"}</td>
+                    <td><input type="text" value={newWordLinkSource}
+                               onChange={e => setNewWordLinkSource(e.target.value)}
+                               id="link-source"/></td>
+                </tr>
+                <tr>
+                    <td><label htmlFor="link-notes"></label>{isAddingLink ? "Link notes:" : "Compound notes:"}</td>
+                    <td><input type="text" value={newWordLinkNotes}
+                               onChange={e => setNewWordLinkNotes(e.target.value)}
+                               id="link-notes"/></td>
+                </tr>
+            </>}
             </tbody>
         </table>
         {!props.hideReconstructed && <><label>

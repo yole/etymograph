@@ -56,7 +56,8 @@ class WordController(val graphService: GraphService) {
     data class CompoundComponentsViewModel(
         val compoundId: Int,
         val components: List<WordRefViewModel>,
-        val source: List<SourceRefViewModel>
+        val source: List<SourceRefViewModel>,
+        val notes: String?
     )
 
     data class LinkedRuleViewModel(
@@ -180,7 +181,8 @@ class WordController(val graphService: GraphService) {
                 CompoundComponentsViewModel(
                     compound.id,
                     compound.components.map { it.toRefViewModel(graph) },
-                    compound.source.toViewModel(graph)
+                    compound.source.toViewModel(graph),
+                    compound.notes
                 )
             },
             ruleLinks.map { link ->
