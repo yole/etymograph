@@ -1,6 +1,7 @@
 import {useState} from "react";
 import {useForm} from "react-hook-form";
 import {addPublication, updatePublication} from "@/api";
+import FormRow from "@/components/FormRow";
 
 export default function PublicationForm(props) {
     const {register, handleSubmit} = useForm({defaultValues: props.defaultValues});
@@ -25,14 +26,8 @@ export default function PublicationForm(props) {
 
     return <form onSubmit={handleSubmit(savePublication)}>
         <table><tbody>
-        <tr>
-            <td><label>Name:</label></td>
-            <td><input type="text" {...register("name")}/></td>
-        </tr>
-        <tr>
-            <td><label>Reference ID: </label></td>
-            <td><input type="text" {...register("refId")}/></td>
-        </tr>
+        <FormRow label="Name" id="name" register={register}/>
+        <FormRow label="Reference ID" id="refId" register={register}/>
         </tbody></table>
         <input type="submit" value="Save" />
         <br/>
