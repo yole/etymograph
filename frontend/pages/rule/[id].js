@@ -7,7 +7,7 @@ import Link from "next/link";
 import RuleForm from "@/forms/RuleForm";
 import SourceRefs from "@/components/SourceRefs";
 import RichText from "@/components/RichText";
-import RuleLinkForm from "@/components/RuleLinkForm";
+import RuleLinkForm from "@/forms/RuleLinkForm";
 
 export const config = {
     unstable_runtimeJS: true
@@ -35,14 +35,9 @@ export default function Rule(params) {
     const router = useRouter()
     useEffect(() => { document.title = "Etymograph : Rule " + rule.name })
 
-    function linkSubmitted(status, jr) {
-        if (status === 200) {
-            setErrorText("")
-            setLinkMode(false)
-            router.replace(router.asPath)
-        } else {
-            setErrorText(jr.message.length > 0 ? jr.message : "Failed to save rule")
-        }
+    function linkSubmitted() {
+        setLinkMode(false)
+        router.replace(router.asPath)
     }
 
     function submitted() {
@@ -147,7 +142,7 @@ export default function Rule(params) {
 
         {allowEdit() && <>
             {!editMode && <><button onClick={() => setEditMode(true)}>Edit</button>{' '}</>}
-            <button onClick={() => setLinkMode(!linkMode)}>{linkMode ? "Cancel" : "Add Link"}</button>{' '}
+            {!linkMode && <><button onClick={() => setLinkMode(true)}>Add Link</button>{' '}</>}
             <button onClick={() => deleteRuleClicked()}>{"Delete"}</button>
         </>}
         {rule.links.length > 0 && <>
@@ -177,7 +172,7 @@ export default function Rule(params) {
                 }
             </>)}
         </>}
-        {linkMode && <RuleLinkForm fromEntityId={rule.id} submitted={linkSubmitted} />}
+        {linkMode && <RuleLinkForm fromEntityId={rule.id} submitted={linkSubmitted} cancelled={() => setLinkMode(false)}/>}
         {errorText !== "" && <div className="errorText">{errorText}</div>}
         {rule.examples.length > 0 && <>
             <h3>Examples</h3>

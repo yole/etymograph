@@ -20,7 +20,7 @@ export default function EtymographForm(props) {
 
     function handleResponse(r) {
         if (r.status === 200) {
-            if (props.submitted !== undefined || props.redirectOnCreate !== undefined) {
+            if (r.headers.get("content-type") === "application/json") {
                 r.json().then(r => {
                     if (props.redirectOnCreate !== undefined) {
                         const url = props.redirectOnCreate(r)
@@ -29,6 +29,9 @@ export default function EtymographForm(props) {
                         props.submitted(r)
                     }
                 })
+            }
+            else {
+                props.submitted()
             }
         }
         else {

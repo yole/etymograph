@@ -16,7 +16,7 @@ import {
 import Link from "next/link";
 import {useRouter} from "next/router";
 import SourceRefs from "@/components/SourceRefs";
-import RuleLinkForm from "@/components/RuleLinkForm";
+import RuleLinkForm from "@/forms/RuleLinkForm";
 
 export const config = {
     unstable_runtimeJS: true
@@ -226,14 +226,9 @@ function SingleWord(params) {
         }
     }
 
-    function ruleLinkSubmitted(status, r) {
-        if (status !== 200) {
-            setErrorText(r.message)
-        }
-        else {
-            setShowRuleLink(false)
-            router.replace(router.asPath)
-        }
+    function ruleLinkSubmitted() {
+        setShowRuleLink(false)
+        router.replace(router.asPath)
     }
 
     function deleteWordClicked() {
