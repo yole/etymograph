@@ -69,10 +69,11 @@ open class InMemoryGraphRepository : GraphRepository() {
         return allLangEntities.getOrNull(id) as? CorpusText
     }
 
-    override fun addTranslation(corpusText: CorpusText, text: String, source: List<SourceRef>) {
+    override fun addTranslation(corpusText: CorpusText, text: String, source: List<SourceRef>): Translation {
         val translation = Translation(allLangEntities.size, corpusText, text, source, null)
         allLangEntities += translation
         storeTranslation(corpusText, translation)
+        return translation
     }
 
     protected fun storeTranslation(corpusText: CorpusText, translation: Translation) {

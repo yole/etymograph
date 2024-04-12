@@ -4,6 +4,7 @@ import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.server.ResponseStatusException
 import ru.yole.etymograph.*
+import ru.yole.etymograph.web.CorpusController.TranslationViewModel
 
 @RestController
 @CrossOrigin(origins = ["http://localhost:3000"])
@@ -85,7 +86,7 @@ class CorpusController(val graphService: GraphService) {
             source.toEditableText(repo),
             notes,
             repo.translationsForText(this).map {
-                TranslationViewModel(it.id, it.text, it.source.toViewModel(repo), it.source.toEditableText(repo))
+                translationToViewModel(it, repo)
             }
         )
     }
@@ -186,3 +187,6 @@ class CorpusController(val graphService: GraphService) {
         }
     }
 }
+
+fun translationToViewModel(t: Translation, repo: GraphRepository): TranslationViewModel =
+    TranslationViewModel(t.id, t.text, t.source.toViewModel(repo), t.source.toEditableText(repo))

@@ -126,12 +126,12 @@ export function updateCorpusText(id, data) {
     return postToBackend(`corpus/text/${id}`, data)
 }
 
-export function addTranslation(corpusTextId, text, source) {
-    return postToBackend('translation', {corpusTextId: corpusTextId, text: text, source: source})
+export function addTranslation(corpusTextId, data) {
+    return postToBackend('translation', {corpusTextId: corpusTextId, ...data})
 }
 
-export function editTranslation(id, text, source) {
-    return postToBackend(`translations/${id}`, {text: text, source: source})
+export function editTranslation(id, data) {
+    return postToBackend(`translations/${id}`, data)
 }
 
 export function associateWord(corpusTextId, wordId, index) {

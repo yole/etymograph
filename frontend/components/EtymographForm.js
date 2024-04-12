@@ -19,16 +19,18 @@ export default function EtymographForm(props) {
     }
 
     function handleResponse(r) {
-        if (r.status === 200)
-            r.json().then(r => {
-                if (props.redirectOnCreate !== undefined) {
-                    const url = props.redirectOnCreate(r)
-                    router.push(url)
-                }
-                else {
-                    props.submitted(r)
-                }
-            })
+        if (r.status === 200) {
+            if (props.submitted !== undefined || props.redirectOnCreate !== undefined) {
+                r.json().then(r => {
+                    if (props.redirectOnCreate !== undefined) {
+                        const url = props.redirectOnCreate(r)
+                        router.push(url)
+                    } else {
+                        props.submitted(r)
+                    }
+                })
+            }
+        }
         else {
             r.json().then(r => setErrorText(r.message.length > 0 ? r.message : "Failed to save form"))
         }

@@ -13,22 +13,24 @@ class TranslationController(val graphService: GraphService) {
     data class TranslationParams(val corpusTextId: Int? = null, val text: String, val source: String)
 
     @PostMapping("/translation")
-    fun addTranslation(@RequestBody params: TranslationParams) {
+    fun addTranslation(@RequestBody params: TranslationParams): CorpusController.TranslationViewModel {
         val graph = graphService.graph
         val source = parseSourceRefs(graph, params.source)
         val corpusTextId = params.corpusTextId
             ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST, "Corpus text ID not specified")
-        val corpusText = graphService.resolveCorpusText(params.corpusTextId)
-        graph.addTranslation(corpusText, params.text, source)
+        val corpusText = graphService.resolveCorpusText(corpusTextId)
+        val translation = graph.addTranslation(corpusText, params.text, source)
+        return translationToViewModel(translation, graph)
     }
 
     @PostMapping("/translations/{id}")
-    fun editTranslation(@PathVariable id: Int, @RequestBody params: TranslationParams) {
+    fun editTranslation(@PathVariable id: Int, @RequestBody params: TranslationParams): CorpusController.TranslationViewModel {
         val graph = graphService.graph
         val source = parseSourceRefs(graph, params.source)
         val translation = graph.langEntityById(id) as? Translation
             ?: throw ResponseStatusException(HttpStatus.NOT_FOUND, "No translation with ID $id")
         translation.text = params.text
         translation.source = source
+        return translationToViewModel(translation, graph)
     }
 }

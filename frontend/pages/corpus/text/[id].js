@@ -8,7 +8,7 @@ import {useRouter} from "next/router";
 import Link from "next/link";
 import SourceRefs from "@/components/SourceRefs";
 import CorpusTextForm from "@/forms/CorpusTextForm";
-import TranslationForm from "@/components/TranslationForm";
+import TranslationForm from "@/forms/TranslationForm";
 import Breadcrumbs from "@/components/Breadcrumbs";
 
 export const config = {
@@ -169,8 +169,10 @@ export default function CorpusText(params) {
                 {showTranslationForm && editTranslationId === t.id &&
                     <TranslationForm corpusTextId={router.query.id}
                                      updateId={t.id}
-                                     initialText={t.text}
-                                     initialSource={t.sourceEditableText}
+                                     defaultValues={{
+                                         text: t.text,
+                                         source: t.sourceEditableText
+                                     }}
                                      submitted={translationSubmitted}/>}
             </>)}
         </>}

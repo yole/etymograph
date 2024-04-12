@@ -26,7 +26,7 @@ abstract class GraphRepository {
     abstract fun corpusTextsInLanguage(lang: Language): Iterable<CorpusText>
     abstract fun corpusTextById(id: Int): CorpusText?
 
-    abstract fun addTranslation(corpusText: CorpusText, text: String, source: List<SourceRef>)
+    abstract fun addTranslation(corpusText: CorpusText, text: String, source: List<SourceRef>): Translation
     abstract fun translationsForText(corpusText: CorpusText): List<Translation>
 
     abstract fun getLinksFrom(entity: LangEntity): Iterable<Link>
