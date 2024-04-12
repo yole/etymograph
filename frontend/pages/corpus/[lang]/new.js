@@ -1,7 +1,7 @@
-import {useRouter} from "next/router";
 import CorpusTextForm from "@/forms/CorpusTextForm";
 import {fetchAllLanguagePaths, fetchBackend} from "@/api";
 import Link from "next/link";
+import {useRouter} from "next/router";
 
 export async function getStaticProps(context) {
     return fetchBackend(`language/${context.params.lang}`)
@@ -17,10 +17,6 @@ export default function CorpusTextEditor(params) {
 
     const lang = router.query.lang
 
-    function submitted(r) {
-        router.push("/corpus/text/" + r.id)
-    }
-
     return <>
         <h2>
             <small>
@@ -30,6 +26,6 @@ export default function CorpusTextEditor(params) {
             New Corpus Text
         </h2>
 
-        <CorpusTextForm lang={lang} submitted={submitted}/>
+        <CorpusTextForm lang={lang} redirectOnCreate={r => `/corpus/text/${r.id}`}/>
     </>
 }

@@ -1,11 +1,13 @@
 import {useForm} from "react-hook-form";
 import {createContext, useState} from "react";
+import {useRouter} from "next/router";
 
 export const FormRegisterContext = createContext(undefined)
 
 export default function EtymographForm(props) {
     const {register, handleSubmit} = useForm({defaultValues: props.defaultValues});
     const [errorText, setErrorText] = useState("")
+    const router = useRouter()
 
     function saveForm(data) {
         if (props.updateId !== undefined) {
@@ -18,7 +20,15 @@ export default function EtymographForm(props) {
 
     function handleResponse(r) {
         if (r.status === 200)
-            r.json().then(r => props.submitted(r))
+            r.json().then(r => {
+                if (props.redirectOnCreate !== undefined) {
+                    const url = props.redirectOnCreate(r)
+                    router.push(url)
+                }
+                else {
+                    props.submitted(r)
+                }
+            })
         else {
             r.json().then(r => setErrorText(r.message.length > 0 ? r.message : "Failed to save form"))
         }
