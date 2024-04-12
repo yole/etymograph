@@ -1,12 +1,12 @@
 import {useRouter} from "next/router";
-import PublicationForm from "@/components/PublicationForm";
+import PublicationForm from "@/forms/PublicationForm";
 import Link from "next/link";
 
 export default function PublicationEditor() {
     const router = useRouter()
 
-    function submitted(id) {
-        router.push("/publication/" + id)
+    function submitted(r) {
+        router.push("/publication/" + r.id)
     }
 
     return <>

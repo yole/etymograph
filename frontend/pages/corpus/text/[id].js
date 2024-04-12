@@ -7,7 +7,7 @@ import {fetchBackend, associateWord, allowEdit, addTranslation, fetchAlternative
 import {useRouter} from "next/router";
 import Link from "next/link";
 import SourceRefs from "@/components/SourceRefs";
-import CorpusTextForm from "@/components/CorpusTextForm";
+import CorpusTextForm from "@/forms/CorpusTextForm";
 import TranslationForm from "@/components/TranslationForm";
 
 export const config = {

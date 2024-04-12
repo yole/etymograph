@@ -1,7 +1,7 @@
 import {allowEdit, fetchBackend} from "@/api";
 import {useEffect, useState} from "react";
 import Link from "next/link";
-import PublicationForm from "@/components/PublicationForm";
+import PublicationForm from "@/forms/PublicationForm";
 import {useRouter} from "next/router";
 
 export const config = {

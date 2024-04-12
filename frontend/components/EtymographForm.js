@@ -18,7 +18,7 @@ export default function EtymographForm(props) {
 
     function handleResponse(r) {
         if (r.status === 200)
-            r.json().then(r => props.submitted(r.id))
+            r.json().then(r => props.submitted(r))
         else {
             r.json().then(r => setErrorText(r.message.length > 0 ? r.message : "Failed to save form"))
         }
@@ -27,8 +27,9 @@ export default function EtymographForm(props) {
     return <FormRegisterContext.Provider value={register}>
         <form onSubmit={handleSubmit(saveForm)}>
             {props.children}
-            <input type="submit" value="Save"/>
-            <br/>
+            <p>
+                <input type="submit" value="Save"/>
+            </p>
             {errorText !== "" && <div className="errorText">{errorText}</div>}
         </form>
     </FormRegisterContext.Provider>

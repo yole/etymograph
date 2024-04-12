@@ -30633,6 +30633,115 @@
                     "refText": "https://eldamo.org/content/words/word-2405672595.html"
                 }
             ]
+        },
+        {
+            "id": 1679,
+            "text": "a laita te, laita te\nandavë laituvalmet\na laita tárienna",
+            "title": "Praises of Cormallen",
+            "lang": "Q",
+            "wordIds": [
+                null,
+                1680,
+                null,
+                null,
+                null,
+                1681,
+                1683,
+                null,
+                null,
+                1684
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 15,
+                    "refText": "953"
+                }
+            ]
+        },
+        {
+            "id": 1686,
+            "text": "Heru órava omessë\na Hrísto órava ómessë\nAtar meneldëa Eru órava omessë\na Eruion Mardorunando, Eru órava omessë\na Aina Fairë, Eru órava omessë\na Aina Neldië Eru Er órava omessë\na Aina Maria arca atarmë\nAina Eruontarië\nAina Wendë mi Wenderon\nAmillë Hristo\nAmillë Eruva lissëo",
+            "title": "Litany of Loreto",
+            "lang": "Q",
+            "wordIds": [
+                null,
+                1688,
+                null,
+                892,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                892,
+                null,
+                null,
+                null,
+                null,
+                null,
+                892,
+                null,
+                null,
+                null,
+                null,
+                null,
+                892,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                892,
+                null,
+                1694
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 0,
+                    "refText": "12"
+                }
+            ]
+        },
+        {
+            "id": 1693,
+            "text": "aiya Eldalië ar Atanatári, utúlie’n aurë",
+            "title": null,
+            "lang": "Q",
+            "wordIds": [],
+            "sourceRefs": [
+                {
+                    "refText": "S:190"
+                }
+            ]
+        },
+        {
+            "id": 1695,
+            "text": "auta i lómë",
+            "title": null,
+            "lang": "Q",
+            "wordIds": [],
+            "sourceRefs": [
+                {
+                    "refText": "S:190"
+                }
+            ]
+        },
+        {
+            "id": 1696,
+            "text": "i carir quettar ómainen",
+            "title": null,
+            "lang": "Q",
+            "wordIds": [],
+            "sourceRefs": [
+                {
+                    "pubId": 6,
+                    "refText": "391"
+                }
+            ]
         }
     ],
     "paradigms": [

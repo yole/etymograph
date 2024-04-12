@@ -1,5 +1,5 @@
 import {useRouter} from "next/router";
-import CorpusTextForm from "@/components/CorpusTextForm";
+import CorpusTextForm from "@/forms/CorpusTextForm";
 import {fetchAllLanguagePaths, fetchBackend} from "@/api";
 import Link from "next/link";
 
