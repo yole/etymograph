@@ -160,7 +160,8 @@ export default function CorpusText(params) {
                                          source: corpusText.sourceEditableText,
                                          notes: corpusText.notes
                                      }}
-                                     submitted={textSubmitted}/>}
+                                     submitted={textSubmitted}
+                                     cancelled={() => setEditMode(false)}/>}
         {corpusText.translations.length > 0 && <>
             <h3>Translations</h3>
             {corpusText.translations.map(t => <>
@@ -177,7 +178,7 @@ export default function CorpusText(params) {
             </>)}
         </>}
         {allowEdit() && <p>
-            <button onClick={() => setEditMode(!editMode)}>{!editMode ? "Edit" : "Cancel"}</button>{' '}
+            {!editMode && <><button onClick={() => setEditMode(true)}>Edit</button>{' '}</>}
             <button onClick={() => toggleTranslationForm(undefined)}>Add translation</button>
         </p>}
         {showTranslationForm && editTranslationId === undefined &&
