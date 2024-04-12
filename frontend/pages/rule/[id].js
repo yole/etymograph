@@ -142,10 +142,11 @@ export default function Rule(params) {
                 text: rule.editableText
             }}
             submitted={submitted}
+            cancelled={() => setEditMode(false)}
         />}
 
         {allowEdit() && <>
-            <button onClick={() => setEditMode(!editMode)}>{editMode ? "Cancel" : "Edit"}</button>{' '}
+            {!editMode && <><button onClick={() => setEditMode(true)}>Edit</button>{' '}</>}
             <button onClick={() => setLinkMode(!linkMode)}>{linkMode ? "Cancel" : "Add Link"}</button>{' '}
             <button onClick={() => deleteRuleClicked()}>{"Delete"}</button>
         </>}

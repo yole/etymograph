@@ -41,6 +41,7 @@ export default function EtymographForm(props) {
             {props.children}
             <p>
                 <input type="submit" value="Save"/>
+                {props.cancelled !== undefined && <>{' '}<button onClick={props.cancelled}>Cancel</button></>}
             </p>
             {errorText !== "" && <div className="errorText">{errorText}</div>}
         </form>
