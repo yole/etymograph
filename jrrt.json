@@ -16227,6 +16227,54 @@
             "id": 1772,
             "text": "Ambarello",
             "lang": "Q"
+        },
+        {
+            "id": 1775,
+            "text": "labmā",
+            "lang": "CE",
+            "gloss": "tongue",
+            "sourceRefs": [
+                {
+                    "pubId": 6,
+                    "refText": "416"
+                }
+            ]
+        },
+        {
+            "id": 1776,
+            "text": "lamba",
+            "lang": "Q",
+            "gloss": "tongue",
+            "sourceRefs": [
+                {
+                    "pubId": 6,
+                    "refText": "416"
+                }
+            ]
+        },
+        {
+            "id": 1778,
+            "text": "phāy",
+            "lang": "CE",
+            "gloss": "ray of light, flame",
+            "sourceRefs": [
+                {
+                    "pubId": 14,
+                    "refText": "104"
+                }
+            ]
+        },
+        {
+            "id": 1779,
+            "text": "fá",
+            "lang": "Q",
+            "gloss": "ray of light, flame",
+            "sourceRefs": [
+                {
+                    "pubId": 14,
+                    "refText": "104"
+                }
+            ]
         }
     ],
     "rules": [
@@ -25875,6 +25923,141 @@
                 }
             ],
             "notes": ""
+        },
+        {
+            "id": 1774,
+            "name": "ce-bm-dn",
+            "fromLang": "CE",
+            "toLang": "CE",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "m"
+                            ]
+                        },
+                        {
+                            "type": "ChangeNextSound",
+                            "args": [
+                                "b"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "and",
+                        "members": [
+                            {
+                                "type": "relPhoneme",
+                                "parameter": "b",
+                                "relative": false
+                            },
+                            {
+                                "type": "relPhoneme",
+                                "relativeIndex": 1,
+                                "parameter": "m"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "instructions": [
+                        {
+                            "type": "ChangeSound",
+                            "args": [
+                                "n"
+                            ]
+                        },
+                        {
+                            "type": "ChangeNextSound",
+                            "args": [
+                                "d"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "and",
+                        "members": [
+                            {
+                                "type": "relPhoneme",
+                                "parameter": "d",
+                                "relative": false
+                            },
+                            {
+                                "type": "relPhoneme",
+                                "relativeIndex": 1,
+                                "parameter": "n"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 12,
+                    "refText": "12"
+                },
+                {
+                    "refText": "https://eldamo.org/content/words/word-3882201769.html"
+                }
+            ],
+            "notes": ""
+        },
+        {
+            "id": 1777,
+            "name": "ce-final-j-w-after-long-vowels",
+            "fromLang": "CE",
+            "toLang": "CE",
+            "branches": [
+                {
+                    "instructions": [
+                        {
+                            "type": "SoundDisappears",
+                            "args": [
+                                "0"
+                            ]
+                        }
+                    ],
+                    "condition": {
+                        "type": "and",
+                        "members": [
+                            {
+                                "type": "or",
+                                "members": [
+                                    {
+                                        "type": "relPhoneme",
+                                        "cls": "word-final",
+                                        "parameter": "j",
+                                        "relative": false
+                                    },
+                                    {
+                                        "type": "relPhoneme",
+                                        "cls": "word-final",
+                                        "parameter": "w",
+                                        "relative": false
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "relPhoneme",
+                                "relativeIndex": -1,
+                                "cls": "long vowel"
+                            },
+                            {
+                                "type": "syllableCount",
+                                "expectCount": 1
+                            }
+                        ]
+                    }
+                }
+            ],
+            "sourceRefs": [
+                {
+                    "refText": "https://eldamo.org/content/words/word-1539930001.html"
+                }
+            ],
+            "notes": ""
         }
     ],
     "links": [
@@ -30749,6 +30932,47 @@
             "ruleIds": [
                 398
             ]
+        },
+        {
+            "from": 1776,
+            "to": 1775,
+            "type": "^",
+            "ruleIds": [
+                1774,
+                1527
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 6,
+                    "refText": "416"
+                }
+            ]
+        },
+        {
+            "from": 1775,
+            "to": 98,
+            "type": ">"
+        },
+        {
+            "from": 1779,
+            "to": 1778,
+            "type": "^",
+            "ruleIds": [
+                1777,
+                418,
+                1538
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 14,
+                    "refText": "104"
+                }
+            ]
+        },
+        {
+            "from": 1778,
+            "to": 1719,
+            "type": ">"
         }
     ],
     "corpusTexts": [
@@ -34219,10 +34443,7 @@
             "fromLang": "CE",
             "toLang": "S",
             "ruleIds": [
-                1667,
-                1670,
-                1045,
-                1674,
+                1773,
                 1508,
                 1117,
                 1064,
@@ -34277,11 +34498,7 @@
             "fromLang": "CE",
             "toLang": "Q",
             "ruleIds": [
-                1667,
-                1670,
-                1677,
-                1045,
-                1674,
+                1773,
                 1678,
                 1652,
                 431,
@@ -34300,6 +34517,21 @@
                 1538,
                 1529,
                 1530
+            ]
+        },
+        {
+            "id": 1773,
+            "name": "ce-common",
+            "fromLang": "CE",
+            "toLang": "CE",
+            "ruleIds": [
+                1667,
+                1774,
+                1777,
+                1670,
+                1677,
+                1045,
+                1674
             ]
         }
     ],
