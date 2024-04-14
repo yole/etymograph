@@ -75,22 +75,12 @@ export function deleteRule(id) {
     return postToBackend(`rule/${id}/delete`, {})
 }
 
-export function addRuleSequence(name, fromLang, toLang, rules) {
-    return postToBackend('rule/sequence', {
-        name: name,
-        fromLang: fromLang,
-        toLang: toLang,
-        ruleNames: rules
-    })
+export function addRuleSequence(data) {
+    return postToBackend('rule/sequence', data)
 }
 
-export function updateRuleSequence(id, name, fromLang, toLang, rules) {
-    return postToBackend('rule/sequence/' + id, {
-        name: name,
-        fromLang: fromLang,
-        toLang: toLang,
-        ruleNames: rules
-    })
+export function updateRuleSequence(id, data) {
+    return postToBackend('rule/sequence/' + id, data)
 }
 
 export function applyRuleSequence(seqId, fromWordId, toWordId) {

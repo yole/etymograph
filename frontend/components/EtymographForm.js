@@ -30,7 +30,7 @@ export default function EtymographForm(props) {
                     }
                 })
             }
-            else {
+            else if (props.submitted !== undefined) {
                 props.submitted()
             }
         }

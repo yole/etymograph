@@ -2,7 +2,7 @@ import {useEffect, useState} from "react";
 import {allowEdit, fetchAllLanguagePaths, fetchBackend} from "@/api";
 import Link from "next/link";
 import {useRouter} from "next/router";
-import RuleSequenceForm from "@/components/RuleSequenceForm";
+import RuleSequenceForm from "@/forms/RuleSequenceForm";
 
 export const config = {
     unstable_runtimeJS: true
@@ -22,9 +22,9 @@ export default function RuleList(params) {
     const [sequenceEditId, setSequenceEditId] = useState(null)
     useEffect(() => { document.title = "Etymograph : Rules" })
 
-    function sequenceSubmitted(toLang) {
+    function sequenceSubmitted(data) {
         setSequenceEditId(null)
-        router.push("/rules/" + toLang)
+        router.push("/rules/" + data.toLang)
     }
 
     return <>
@@ -51,13 +51,15 @@ export default function RuleList(params) {
             {g.sequenceId !== null && sequenceEditId === g.sequenceId && <>
                 <RuleSequenceForm
                     updateId={g.sequenceId}
-                    initialName={g.sequenceName}
-                    initialFromLanguage={g.sequenceFromLang}
-                    initialToLanguage={g.sequenceToLang}
-                    initialRules={g.rules.map(r => r.name).join("\n")}
+                    defaultValues={{
+                        name: g.sequenceName,
+                        fromLang: g.sequenceFromLang,
+                        toLang: g.sequenceToLang,
+                        ruleNames: g.rules.map(r => r.name).join("\n")
+                    }}
                     submitted={sequenceSubmitted}
+                    cancelled={() => setSequenceEditId(null)}
                 />
-                <button onClick={() => setSequenceEditId(null)}>Cancel</button>
             </>}
         </>)}
         {allowEdit() && <p>

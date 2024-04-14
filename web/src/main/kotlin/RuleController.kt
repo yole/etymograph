@@ -303,6 +303,12 @@ class RuleController(val graphService: GraphService) {
         graph.deleteRule(rule)
     }
 
+    data class RuleSequenceViewModel(
+        val name: String,
+        val fromLang: String,
+        val toLang: String
+    )
+
     data class UpdateSequenceParams(
         val name: String,
         val fromLang: String,
@@ -311,11 +317,16 @@ class RuleController(val graphService: GraphService) {
     )
 
     @PostMapping("/rule/sequence", consumes = ["application/json"])
-    fun newSequence(@RequestBody params: UpdateSequenceParams) {
+    fun newSequence(@RequestBody params: UpdateSequenceParams): RuleSequenceViewModel {
         val graph = graphService.graph
         val (fromLanguage, toLanguage, rules) = resolveUpdateSequenceParams(params)
-        graph.addRuleSequence(params.name, fromLanguage, toLanguage, rules)
+        val sequence = graph.addRuleSequence(params.name, fromLanguage, toLanguage, rules)
+        return sequence.toViewModel(graph)
     }
+
+    private fun RuleSequence.toViewModel(graph: GraphRepository) = RuleSequenceViewModel(
+        name, fromLanguage.shortName, toLanguage.shortName
+    )
 
     private fun resolveUpdateSequenceParams(params: UpdateSequenceParams): Triple<Language, Language, List<LangEntity>> {
         val fromLanguage = graphService.resolveLanguage(params.fromLang)
@@ -335,13 +346,14 @@ class RuleController(val graphService: GraphService) {
     }
 
     @PostMapping("/rule/sequence/{id}", consumes = ["application/json"])
-    fun updateSequence(@PathVariable id: Int, @RequestBody params: UpdateSequenceParams) {
+    fun updateSequence(@PathVariable id: Int, @RequestBody params: UpdateSequenceParams): RuleSequenceViewModel {
         val sequence = graphService.resolveRuleSequence(id)
         val (fromLanguage, toLanguage, rules) = resolveUpdateSequenceParams(params)
         sequence.name = params.name
         sequence.fromLanguage = fromLanguage
         sequence.toLanguage = toLanguage
         sequence.ruleIds = rules.map { it.id }
+        return sequence.toViewModel(graphService.graph)
     }
 
     data class ApplySequenceParams(
