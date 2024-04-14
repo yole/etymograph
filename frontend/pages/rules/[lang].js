@@ -63,7 +63,9 @@ export default function RuleList(params) {
             </>}
         </>)}
         {allowEdit() && <p>
-            <Link href={`/rules/${router.query.lang}/new`}>Add rule</Link> | <Link href="/rules/sequence/new">Add rule sequence</Link>
+            <button onClick={() => router.push(`/rules/${router.query.lang}/new`)}>Add rule</button>
+            {' '}
+            <button onClick={() => router.push(`/rules/sequence/new`)}>Add rule sequence</button>
         </p>}
     </>
 }
