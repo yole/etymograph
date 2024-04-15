@@ -9,7 +9,6 @@ import {
     deleteWord,
     fetchBackend,
     allowEdit,
-    updateLink,
     deleteCompound,
     applyRuleSequence, deriveThroughRuleSequence
 } from "@/api";
@@ -18,6 +17,7 @@ import {useRouter} from "next/router";
 import SourceRefs from "@/components/SourceRefs";
 import RuleLinkForm from "@/forms/RuleLinkForm";
 import {GlobalStateContext} from "@/components/EtymographForm";
+import EditLinkForm from "@/forms/EditLinkForm";
 
 export const config = {
     unstable_runtimeJS: true
@@ -51,8 +51,6 @@ function WordLinkComponent(params) {
     const baseWord = params.baseWord
     const linkWord = params.linkWord
     const [editMode, setEditMode] = useState(false)
-    const [ruleNames, setRuleNames] = useState(linkWord.ruleNames.join(","))
-    const [source, setSource] = useState(linkWord.sourceEditableText)
     const [errorText, setErrorText] = useState("")
 
     function deleteLinkClicked() {
@@ -89,18 +87,9 @@ function WordLinkComponent(params) {
             })
     }
 
-    function saveLink() {
-        updateLink(baseWord.id, linkWord.word.id, params.linkType.typeId, ruleNames, source)
-            .then((response) => {
-                if (response.status === 200) {
-                    setErrorText("")
-                    setEditMode(false)
-                    params.router.replace(params.router.asPath)
-                }
-                else {
-                    response.json().then(r => setErrorText(r.message))
-                }
-            })
+    function linkSubmitted() {
+        setEditMode(false)
+        params.router.replace(params.router.asPath)
     }
 
     return <div>
@@ -134,21 +123,17 @@ function WordLinkComponent(params) {
             </>)}
             )
         </>}
-        {editMode && <>
-            <table>
-                <tbody>
-                <tr>
-                <td>Rule names:</td>
-                <td><input type="text" value={ruleNames} onChange={e => setRuleNames(e.target.value)}/></td>
-            </tr>
-            <tr>
-                <td>Source</td>
-                <td><input type="text" value={source} onChange={e => setSource(e.target.value)}/></td>
-            </tr>
-            </tbody></table>
-            <button onClick={() => saveLink()}>Save</button>&nbsp;
-            <button onClick={() => setEditMode(false)}>Cancel</button>
-        </>}
+        {editMode && <EditLinkForm
+            baseWordId={baseWord.id}
+            linkWordId={linkWord.word.id}
+            linkType={params.linkType.typeId}
+            defaultValues={{
+                ruleNames: linkWord.ruleNames.join(","),
+                source: linkWord.sourceEditableText
+            }}
+            submitted={linkSubmitted}
+            cancelled={() => setEditMode(false)}/>
+        }
         {errorText !== "" && <div className="errorText">{errorText}</div>}
     </div>
 }
@@ -291,7 +276,7 @@ function SingleWord(params) {
     const isCompound = word.compound
     const posClassesEditable = (word.pos !== null ? word.pos : "") + (word.classes.length > 0 ? " " + word.classes.join(" ") : "")
 
-    return <>
+    return <GlobalStateContext.Provider value={params.globalState}>
         <h2><small>
             <Link href={`/`}>Etymograph</Link> {'> '}
             <Link href={`/language/${word.language}`}>{word.languageFullName}</Link> {'> '}
@@ -400,7 +385,7 @@ function SingleWord(params) {
         }
 
         <p/>
-        {allowEdit() && <GlobalStateContext.Provider value={params.globalState}>
+        {allowEdit() && <>
             {!isCompound && <><button onClick={() => setShowBaseWord(!showBaseWord)}>Add base word</button><br/></>}
             {showBaseWord && <WordForm submitted={submitted} linkType='>' linkTarget={word} reverseLink={true} defaultValues={{language: word.language, gloss: word.gloss}} cancelled={() => setShowBaseWord(false)}/>}
             <button onClick={() => setShowDerivedWord(!showDerivedWord)}>Add derived word</button><br/>
@@ -424,9 +409,9 @@ function SingleWord(params) {
             {showRuleLink && <RuleLinkForm submitted={ruleLinkSubmitted} fromEntityId={word.id}/>}
             <p/>
             {errorText !== "" && <div className="errorText">{errorText}</div>}
-        </GlobalStateContext.Provider>}
+        </>}
         {word.pos && (!word.glossComputed || word.pos === 'NP') && <Link href={`/paradigms/${word.language}/word/${word.id}`}>Paradigms</Link>}
-    </>
+    </GlobalStateContext.Provider>
 }
 
 
