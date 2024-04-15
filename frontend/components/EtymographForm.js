@@ -18,7 +18,10 @@ export default function EtymographForm(props) {
                     const url = props.redirectOnCreate(jr)
                     router.push(url)
                 } else {
-                    props.submitted(jr, data)
+                    const result = props.submitted(jr, data)
+                    if (result !== undefined && result.message !== undefined) {
+                        setErrorText(result.message)
+                    }
                 }
             }
             else if (props.submitted !== undefined) {
@@ -31,18 +34,25 @@ export default function EtymographForm(props) {
         }
     }
 
+    let form = <form onSubmit={methods.handleSubmit(saveForm)}>
+        {props.children}
+        <p>
+            <input type="submit" value="Save"/>
+            {props.cancelled !== undefined && <>{' '}
+                <button onClick={props.cancelled}>Cancel</button>
+            </>}
+        </p>
+        {errorText !== "" && <div className="errorText">{errorText}</div>}
+    </form>
+
+    if (props.globalState !== undefined) {
+        return <FormProvider {...methods}>
+            <GlobalStateContext.Provider value={props.globalState}>
+                {form}
+            </GlobalStateContext.Provider>
+        </FormProvider>
+    }
     return <FormProvider {...methods}>
-        <GlobalStateContext.Provider value={props.globalState}>
-            <form onSubmit={methods.handleSubmit(saveForm)}>
-                {props.children}
-                <p>
-                    <input type="submit" value="Save"/>
-                    {props.cancelled !== undefined && <>{' '}
-                        <button onClick={props.cancelled}>Cancel</button>
-                    </>}
-                </p>
-                {errorText !== "" && <div className="errorText">{errorText}</div>}
-            </form>
-        </GlobalStateContext.Provider>
+        {form}
     </FormProvider>
 }

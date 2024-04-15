@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import WordForm from "@/components/WordForm";
+import WordForm from "@/forms/WordForm";
 import WordWithStress from "@/components/WordWithStress";
 import WordLink from "@/components/WordLink";
 import {
@@ -17,6 +17,7 @@ import Link from "next/link";
 import {useRouter} from "next/router";
 import SourceRefs from "@/components/SourceRefs";
 import RuleLinkForm from "@/forms/RuleLinkForm";
+import {GlobalStateContext} from "@/components/EtymographForm";
 
 export const config = {
     unstable_runtimeJS: true
@@ -25,9 +26,9 @@ export const config = {
 export async function getStaticProps(context) {
     const params = context.params.text
     if (params.length === 1) {
-        return fetchBackend(`word/${context.params.lang}/${params[0]}`)
+        return fetchBackend(`word/${context.params.lang}/${params[0]}`, true)
     }
-    return fetchBackend(`word/${context.params.lang}/${params[0]}/${params[1]}`)
+    return fetchBackend(`word/${context.params.lang}/${params[0]}/${params[1]}`, true)
 }
 
 export async function getStaticPaths() {
@@ -188,41 +189,25 @@ function SingleWord(params) {
     const [errorText, setErrorText] = useState("")
     useEffect(() => { document.title = "Etymograph : " + (word === undefined ? "Unknown Word" : word.text) })
 
-    function submitted(status, r, lr) {
-        if (lr && lr.status !== 200) {
-            setErrorText(lr.message)
-        }
-        else {
-            setShowBaseWord(false)
-            setShowDerivedWord(false)
-            setShowOriginWord(false)
-            setShowDerivativeWord(false)
-            setShowCompoundComponent(false)
-            setShowRelated(false)
-            setShowVariation(false)
-            setAddToCompound(undefined)
-            if (status !== 200) {
-                setErrorText(r.message)
-            }
-            else {
-                setErrorText("")
-                router.replace(router.asPath)
-            }
-        }
+    function submitted(r) {
+        setShowBaseWord(false)
+        setShowDerivedWord(false)
+        setShowOriginWord(false)
+        setShowDerivativeWord(false)
+        setShowCompoundComponent(false)
+        setShowRelated(false)
+        setShowVariation(false)
+        setAddToCompound(undefined)
+        router.replace(router.asPath)
     }
 
-    function editSubmitted(status, r) {
-        if (status !== 200) {
-            setErrorText(r.message)
+    function editSubmitted(r) {
+        setEditMode(false)
+        if (r.text !== word.text) {
+            router.push(`/word/${word.language}/${r.text}`)
         }
         else {
-            setEditMode(false)
-            if (r.text !== word.text) {
-                router.push(`/word/${word.language}/${r.text}`)
-            }
-            else {
-                router.replace(router.asPath)
-            }
+            router.replace(router.asPath)
         }
     }
 
@@ -331,20 +316,26 @@ function SingleWord(params) {
                 </p>
             </>)}
         </>}
-        {editMode && <WordForm language={word.language} languageReadOnly={true}
-                               updateId={word.id}
-                               initialText={word.text}
-                               initialGloss={word.glossComputed ? undefined : word.gloss}
-                               initialFullGloss={word.fullGloss}
-                               initialPosClasses={posClassesEditable}
-                               initialReconstructed={word.reconstructed}
-                               initialSource={word.sourceEditableText}
-                               initialNotes={word.notes}
-                               submitted={editSubmitted}/>}
-        {allowEdit() && <>
+        {editMode && <WordForm
+            updateId={word.id}
+            defaultValues={{
+                language: word.language,
+                text: word.text,
+                gloss: word.glossComputed ? undefined : word.gloss,
+                fullGloss: word.fullGloss,
+                posClasses: posClassesEditable,
+                reconstructed: word.reconstructed,
+                source: word.sourceEditableText,
+                notes: word.notes
+            }}
+            languageReadOnly={true}
+            submitted={editSubmitted}
+            cancelled={() => setEditMode(false)}
+            />}
+        {allowEdit() && !editMode && <>
             <p/>
-            <button onClick={() => setEditMode(!editMode)}>{editMode ? "Cancel" : "Edit"}</button>&nbsp;
-            {!editMode && <button onClick={() => deleteWordClicked()}>Delete</button>}
+            <button onClick={() => setEditMode(true)}>{"Edit"}</button>&nbsp;
+            <button onClick={() => deleteWordClicked()}>Delete</button>
         </>}
 
         {word.attestations.length > 0 &&
@@ -378,7 +369,7 @@ function SingleWord(params) {
                         </>)}
                         {m.notes && <> &ndash; {m.notes}</>}
                         <SourceRefs source={m.source} span={true}/>
-                        {addToCompound === m.compoundId && <WordForm submitted={submitted} addToCompound={m.compoundId} linkTarget={word} language={word.language} />}
+                        {addToCompound === m.compoundId && <WordForm submitted={submitted} addToCompound={m.compoundId} linkTarget={word} defaultValues={{language: word.language}} globalState={params.globalState}/>}
                         {allowEdit() && <>
                             {' '}
                             {addToCompound === m.compoundId
@@ -409,31 +400,31 @@ function SingleWord(params) {
         }
 
         <p/>
-        {allowEdit() && <>
+        {allowEdit() && <GlobalStateContext.Provider value={params.globalState}>
             {!isCompound && <><button onClick={() => setShowBaseWord(!showBaseWord)}>Add base word</button><br/></>}
-            {showBaseWord && <WordForm submitted={submitted} linkType='>' linkTarget={word} reverseLink={true} language={word.language} initialGloss={word.gloss}/>}
+            {showBaseWord && <WordForm submitted={submitted} linkType='>' linkTarget={word} reverseLink={true} defaultValues={{language: word.language, gloss: word.gloss}} cancelled={() => setShowBaseWord(false)}/>}
             <button onClick={() => setShowDerivedWord(!showDerivedWord)}>Add derived word</button><br/>
-            {showDerivedWord && <WordForm submitted={submitted} linkType='>' linkTarget={word} language={word.language} />}
+            {showDerivedWord && <WordForm submitted={submitted} linkType='>' linkTarget={word} defaultValues={{language: word.language}} cancelled={() => setShowDerivedWord(false)} />}
             <button onClick={() => setShowOriginWord(!showOriginWord)}>Add origin word</button><br/>
-            {showOriginWord && <WordForm submitted={submitted} linkType='^' linkTarget={word} reverseLink={true} initialGloss={word.gloss}/>}
+            {showOriginWord && <WordForm submitted={submitted} linkType='^' linkTarget={word} reverseLink={true} defaultValues={{gloss: word.gloss}} cancelled={() => setShowOriginWord(false)}/>}
             <button onClick={() => setShowDerivativeWord(!showDerivativeWord)}>Add derivative word</button>
-            {showDerivativeWord && <WordForm submitted={submitted} linkType='^' linkTarget={word} initialGloss={word.gloss}/>}
+            {showDerivativeWord && <WordForm submitted={submitted} linkType='^' linkTarget={word} defaultValues={{gloss: word.gloss}} cancelled={() => setShowDerivativeWord(false)}/>}
             {word.suggestedDeriveSequences.map(seq => <>
                 {' '}
                 <button className="inlineButton" onClick={() => deriveThroughSequenceClicked(seq.id)}>Derive through {seq.name}</button>
             </>)}
             <br/>
             <button onClick={() => setShowCompoundComponent(!showCompoundComponent)}>Define as compound</button><br/>
-            {showCompoundComponent && <WordForm submitted={submitted} newCompound={true} linkTarget={word} language={word.language} />}
+            {showCompoundComponent && <WordForm submitted={submitted} newCompound={true} linkTarget={word} defaultValues={{language: word.language}} cancelled={() => setShowCompoundComponent(false)}/>}
             <button onClick={() => setShowRelated(!showRelated)}>Add related word</button><br/>
-            {showRelated && <WordForm submitted={submitted} linkType='~' linkTarget={word} language={word.language} languageReadOnly={true}/>}
+            {showRelated && <WordForm submitted={submitted} linkType='~' linkTarget={word} defaultValues={{language: word.language}} languageReadOnly={true} cancelled={() => setShowRelated(false)}/>}
             {!isCompound && <><button onClick={() => setShowVariation(!showVariation)}>Add variation of</button><br/></>}
-            {showVariation && <WordForm submitted={submitted} linkType='=' reverseLink={true} linkTarget={word} language={word.language} languageReadOnly={true}/>}
+            {showVariation && <WordForm submitted={submitted} linkType='=' reverseLink={true} linkTarget={word} defaultValues={{language: word.language}} languageReadOnly={true} cancelled={() => setShowVariation(false)}/>}
             <button onClick={() => setShowRuleLink(!showRuleLink)}>Add related rule</button><br/>
             {showRuleLink && <RuleLinkForm submitted={ruleLinkSubmitted} fromEntityId={word.id}/>}
             <p/>
             {errorText !== "" && <div className="errorText">{errorText}</div>}
-        </>}
+        </GlobalStateContext.Provider>}
         {word.pos && (!word.glossComputed || word.pos === 'NP') && <Link href={`/paradigms/${word.language}/word/${word.id}`}>Paradigms</Link>}
     </>
 }
@@ -443,11 +434,11 @@ export default function Word(params) {
     const words = params.loaderData
     if (Array.isArray(words)) {
         if (words.length === 1) {
-            return <SingleWord word={words[0]}/>
+            return <SingleWord word={words[0]} globalState={params.globalState}/>
         }
         return <ul>
             {words.map(w => <li key={w.id}><Link href={`/word/${w.language}/${w.text}/${w.id}`}>{w.text} &quot;{w.gloss}&quot;</Link></li>)}
         </ul>
     }
-    return <SingleWord word={words}/>
+    return <SingleWord word={words} globalState={params.globalState}/>
 }
