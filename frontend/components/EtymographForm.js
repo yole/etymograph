@@ -1,11 +1,9 @@
-import {useForm} from "react-hook-form";
-import {createContext, useState} from "react";
+import {FormProvider, useForm} from "react-hook-form";
+import {useState} from "react";
 import {useRouter} from "next/router";
 
-export const FormRegisterContext = createContext(undefined)
-
 export default function EtymographForm(props) {
-    const {register, handleSubmit} = useForm({defaultValues: props.defaultValues});
+    const methods = useForm({defaultValues: props.defaultValues});
     const [errorText, setErrorText] = useState("")
     const router = useRouter()
 
@@ -39,8 +37,8 @@ export default function EtymographForm(props) {
         }
     }
 
-    return <FormRegisterContext.Provider value={register}>
-        <form onSubmit={handleSubmit(saveForm)}>
+    return <FormProvider {...methods}>
+        <form onSubmit={methods.handleSubmit(saveForm)}>
             {props.children}
             <p>
                 <input type="submit" value="Save"/>
@@ -48,5 +46,5 @@ export default function EtymographForm(props) {
             </p>
             {errorText !== "" && <div className="errorText">{errorText}</div>}
         </form>
-    </FormRegisterContext.Provider>
+    </FormProvider>
 }
