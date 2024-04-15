@@ -14,11 +14,14 @@ export async function fetchBackend(url, withGlobalState) {
     if (withGlobalState) {
         const allLanguages = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}language`, { headers: { 'Accept': 'application/json'} })
         const allLanguagesJson = await allLanguages.json()
+        const allRules = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}rules`, { headers: { 'Accept': 'application/json'} })
+        const alllRulesJson = await allRules.json()
         return {
             props: {
                 loaderData,
                 globalState: {
-                    languages: allLanguagesJson
+                    languages: allLanguagesJson,
+                    rules: alllRulesJson
                 }
             }
         }

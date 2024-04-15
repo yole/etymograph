@@ -5,6 +5,7 @@ import FormRow from "@/components/FormRow";
 import FormTextArea from "@/components/FormTextArea";
 import FormCheckbox from "@/components/FormCheckbox";
 import {useState} from "react";
+import RuleListSelect from "@/components/RuleListSelect";
 
 export default function WordForm(props) {
     const isAddingLink = props.linkType !== undefined
@@ -75,7 +76,7 @@ export default function WordForm(props) {
         <FormRow id="posClasses" label="POS/classes"/>
         <FormRow id="gloss" label="Gloss"/>
         <FormRow id="fullGloss" label="Full gloss"/>
-        {props.linkType === '>' && <FormRow id="linkRuleNames" label="Link rule names"/>}
+        {props.linkType === '>' && <RuleListSelect id="linkRuleNames" label="Link rule names"/>}
         <FormRow id="source" label="Source"/>
         <tr>
             <td>Notes:</td>
