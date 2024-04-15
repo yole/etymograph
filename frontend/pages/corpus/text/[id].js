@@ -60,7 +60,6 @@ export default function CorpusText(params) {
     const [editTranslationId, setEditTranslationId] = useState(undefined)
     const [alternatives, setAlternatives] = useState([])
     const router = useRouter()
-    useEffect(() => { document.title = "Etymograph : " + corpusText.title })
 
     function textSubmitted() {
         setEditMode(false)
