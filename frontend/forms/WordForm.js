@@ -1,12 +1,16 @@
-import {addLink, addToCompound, addWord, createCompound, updateWord} from "@/api";
+import {addLink, addToCompound, addWord, createCompound, fetchBackend, updateWord} from "@/api";
 import EtymographForm from "@/components/EtymographForm";
 import LanguageSelect from "@/components/LanguageSelect";
 import FormRow from "@/components/FormRow";
 import FormTextArea from "@/components/FormTextArea";
 import FormCheckbox from "@/components/FormCheckbox";
+import {useState} from "react";
 
 export default function WordForm(props) {
     const isAddingLink = props.linkType !== undefined
+
+    const [isNewWord, setNewWord] = useState(false)
+    const [wordDefinitions, setWordDefinitions] = useState([])
 
     async function submitted(wordJson, data) {
         if (isAddingLink) {
@@ -33,6 +37,26 @@ export default function WordForm(props) {
         }
     }
 
+    async function updateWordStatus(data) {
+        if (isAddingLink || props.newCompound === true || props.addToCompound !== undefined) {
+            const wordResponse = await fetchBackend(`word/${data.language}/${data.text}`)
+            if (wordResponse.notFound !== undefined) {
+                setNewWord(true)
+                setWordDefinitions([])
+            }
+            else {
+                setNewWord(false)
+                const wordJson = wordResponse.props.loaderData
+                if (Array.isArray(wordJson)) {
+                    setWordDefinitions(wordJson.map(w => w.gloss))
+                }
+                else {
+                    setWordDefinitions([wordJson.gloss])
+                }
+            }
+        }
+    }
+
     return <EtymographForm
         create={(data) => addWord(data.language, data.text, data.gloss, data.fullGloss, data.posClasses,
             data.reconstructed, data.source, data.notes)}
@@ -44,7 +68,10 @@ export default function WordForm(props) {
 
         <table><tbody>
         {props.languageReadOnly !== true && <LanguageSelect id="language" label="Language"/>}
-        <FormRow id="text" label="Text" readOnly={props.textReadOnly === true}/>
+        <FormRow id="text" label="Text" readOnly={props.textReadOnly === true} handleBlur={updateWordStatus}>
+            {isNewWord && <span className="newWord">New</span>}
+            {wordDefinitions.length > 0 && <span className="wordDefinitions">{wordDefinitions.join(", ")}</span>}
+        </FormRow>
         <FormRow id="posClasses" label="POS/classes"/>
         <FormRow id="gloss" label="Gloss"/>
         <FormRow id="fullGloss" label="Full gloss"/>
