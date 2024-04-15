@@ -6,12 +6,13 @@ import {updateLink} from "@/api";
 export default function EditLinkForm(props) {
     return <EtymographForm
         create={(data) => updateLink(props.baseWordId, props.linkWordId, props.linkType,
-            data.ruleNames, data.source)}
+            data.ruleNames, data.source, data.notes)}
         {...props}
     >
         <table><tbody>
             <RuleListSelect id="ruleNames" label="Rule names"/>
             <FormRow id="source" label="Source"/>
+            <FormRow id="notes" label="Notes"/>
         </tbody></table>
     </EtymographForm>
 }

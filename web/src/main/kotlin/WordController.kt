@@ -46,6 +46,7 @@ class WordController(val graphService: GraphService) {
         val ruleResults: List<String>,
         val source: List<SourceRefViewModel>,
         val sourceEditableText: String,
+        val notes: String?,
         val suggestedSequences: List<RuleSequenceViewModel>
     )
 
@@ -431,6 +432,7 @@ fun linkToViewModel(
         buildIntermediateSteps(graph, link),
         link.source.toViewModel(graph),
         link.source.toEditableText(graph),
+        link.notes,
         suggestedSequences(graph, link)
     )
 }

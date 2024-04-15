@@ -108,6 +108,7 @@ function WordLinkComponent(params) {
                 <Link href={`/rule/${ruleId}`}>{linkWord.ruleNames[index]}</Link>
             </>)}
             )</>}
+        {linkWord.notes && <> &ndash; {linkWord.notes}</>}
         <SourceRefs source={linkWord.source} span={true}/>
         {allowEdit() && <>
             &nbsp;<span className="inlineButtonLink">

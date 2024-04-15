@@ -147,8 +147,8 @@ export function deleteLink(fromEntity, toEntity, linkType) {
     return postToBackend('link/delete', {fromEntity: fromEntity, toEntity: toEntity, linkType: linkType})
 }
 
-export function updateLink(fromWord, toWord, linkType, ruleNames, source) {
-    return postToBackend('link/update', {fromEntity: fromWord, toEntity: toWord, linkType: linkType, ruleNames: ruleNames, source: source})
+export function updateLink(fromWord, toWord, linkType, ruleNames, source, notes) {
+    return postToBackend('link/update', {fromEntity: fromWord, toEntity: toWord, linkType: linkType, ruleNames: ruleNames, source: source, notes: notes})
 }
 
 export function createCompound(compoundWord, firstComponentWord, source, notes) {
