@@ -3,6 +3,7 @@ import {fetchBackend, allowEdit} from "@/api";
 import {useRouter} from "next/router";
 import Link from "next/link";
 import WordForm from "@/forms/WordForm";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 export const config = {
     unstable_runtimeJS: true
@@ -36,8 +37,6 @@ export default function Dictionary(params) {
         (filter === "reconstructed" ? "Reconstructed" :
         (filter === "compounds" ? "Compounds" : "Dictionary"))
 
-    useEffect(() => { document.title = "Etymograph : " + dict.language.name + " : " + filterText})
-
     function submitted(r) {
         if (r.gloss === "" || r.gloss === null) {
             router.push("/word/" + r.language + "/" + r.text)
@@ -48,9 +47,8 @@ export default function Dictionary(params) {
     }
 
     return <>
-        <h2><small>
-            <Link href={`/`}>Etymograph</Link> {'> '}
-            <Link href={`/language/${dict.language.shortName}`}>{dict.language.name}</Link></small> {'>'} {filterText}</h2>
+        <Breadcrumbs langId={dict.language.shortName} langName={dict.language.name} title={filterText}/>
+
         {allowEdit() && <>
             <h3>Add word</h3>
             <WordForm languageReadOnly={true}
