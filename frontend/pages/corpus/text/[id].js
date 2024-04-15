@@ -171,8 +171,10 @@ export default function CorpusText(params) {
         {corpusText.translations.length > 0 && <>
             <h3>Translations</h3>
             {corpusText.translations.map(t => <>
-                <div>{t.text} <SourceRefs source={t.source}/></div>
-                {allowEdit() && <button onClick={() => toggleTranslationForm(t.id)}>Edit translation</button>}
+                {(!showTranslationForm || editTranslationId !== t.id) && <>
+                    <div>{t.text} <SourceRefs source={t.source}/></div>
+                    {allowEdit() && <button onClick={() => toggleTranslationForm(t.id)}>Edit translation</button>}
+                </>}
                 {showTranslationForm && editTranslationId === t.id &&
                     <TranslationForm corpusTextId={router.query.id}
                                      updateId={t.id}
@@ -180,7 +182,8 @@ export default function CorpusText(params) {
                                          text: t.text,
                                          source: t.sourceEditableText
                                      }}
-                                     submitted={translationSubmitted}/>}
+                                     submitted={translationSubmitted}
+                                     cancelled={() => toggleTranslationForm(t.id)}/>}
             </>)}
         </>}
         {allowEdit() && <p>
@@ -188,6 +191,10 @@ export default function CorpusText(params) {
             <button onClick={() => toggleTranslationForm(undefined)}>Add translation</button>
         </p>}
         {showTranslationForm && editTranslationId === undefined &&
-            <TranslationForm corpusTextId={router.query.id} submitted={translationSubmitted}/>}
+            <TranslationForm
+                corpusTextId={router.query.id}
+                submitted={translationSubmitted}
+                cancelled={() => toggleTranslationForm(undefined)}
+            />}
     </>
 }
