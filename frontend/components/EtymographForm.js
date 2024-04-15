@@ -9,33 +9,25 @@ export default function EtymographForm(props) {
     const [errorText, setErrorText] = useState("")
     const router = useRouter()
 
-    function saveForm(data) {
-        if (props.updateId !== undefined) {
-            props.update(data).then(handleResponse)
-        }
-        else {
-            props.create(data).then(handleResponse)
-        }
-    }
-
-    function handleResponse(r) {
+    async function saveForm(data) {
+        const r = props.updateId !== undefined ? await props.update(data) : await props.create(data)
         if (r.status === 200) {
             if (r.headers.get("content-type") === "application/json") {
-                r.json().then(r => {
-                    if (props.redirectOnCreate !== undefined) {
-                        const url = props.redirectOnCreate(r)
-                        router.push(url)
-                    } else {
-                        props.submitted(r)
-                    }
-                })
+                const jr = await r.json()
+                if (props.redirectOnCreate !== undefined) {
+                    const url = props.redirectOnCreate(jr)
+                    router.push(url)
+                } else {
+                    props.submitted(jr, data)
+                }
             }
             else if (props.submitted !== undefined) {
                 props.submitted()
             }
         }
         else {
-            r.json().then(r => setErrorText(r.message.length > 0 ? r.message : "Failed to save form"))
+            const jr = await r.json()
+            setErrorText(jr.message.length > 0 ? jr.message : "Failed to save form")
         }
     }
 
