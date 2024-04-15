@@ -1875,7 +1875,11 @@
             "pos": "N",
             "sourceRefs": [
                 {
-                    "refText": "PE17.63"
+                    "pubId": 1,
+                    "refText": "63"
+                },
+                {
+                    "refText": "https://eldamo.org/content/words/word-539805327.html"
                 }
             ]
         },
@@ -3381,7 +3385,6 @@
             "id": 151,
             "text": "omentielmo",
             "lang": "Q",
-            "gloss": "meeting.2PL.GEN",
             "sourceRefs": [
                 {
                     "pubId": 1,
@@ -4242,6 +4245,9 @@
             "sourceRefs": [
                 {
                     "refText": "V"
+                },
+                {
+                    "refText": "https://eldamo.org/content/words/word-3191380133.html"
                 }
             ]
         },
@@ -4689,11 +4695,15 @@
             "text": "alcarin",
             "lang": "Q",
             "gloss": "glorious",
+            "fullGloss": "glorious, brilliant",
             "pos": "ADJ",
             "sourceRefs": [
                 {
                     "pubId": 1,
                     "refText": "24"
+                },
+                {
+                    "refText": "https://eldamo.org/content/words/word-3088983891.html"
                 }
             ]
         },
@@ -4941,7 +4951,6 @@
             "id": 286,
             "text": "héru",
             "lang": "Q",
-            "gloss": "lord",
             "pos": "N",
             "sourceRefs": [
                 {
@@ -15667,6 +15676,9 @@
             "sourceRefs": [
                 {
                     "refText": "V:381"
+                },
+                {
+                    "refText": "https://eldamo.org/content/words/word-2056783583.html"
                 }
             ]
         },
@@ -16273,6 +16285,494 @@
                 {
                     "pubId": 14,
                     "refText": "104"
+                }
+            ]
+        },
+        {
+            "id": 1780,
+            "text": "aiwë",
+            "lang": "Q",
+            "gloss": "small bird",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": 8,
+                    "refText": "401"
+                },
+                {
+                    "refText": "https://eldamo.org/content/words/word-1137358351.html"
+                }
+            ]
+        },
+        {
+            "id": 1781,
+            "text": "alahasta",
+            "lang": "Q",
+            "gloss": "unmarred",
+            "pos": "ADJ",
+            "sourceRefs": [
+                {
+                    "pubId": 18,
+                    "refText": "254"
+                },
+                {
+                    "refText": "https://eldamo.org/content/words/word-451527979.html"
+                }
+            ]
+        },
+        {
+            "id": 1782,
+            "text": "alqua",
+            "lang": "Q",
+            "gloss": "swan",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": 11,
+                    "refText": "378"
+                },
+                {
+                    "refText": "https://eldamo.org/content/words/word-4104058537.html"
+                }
+            ]
+        },
+        {
+            "id": 1783,
+            "text": "anca",
+            "lang": "Q",
+            "gloss": "jaws",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": 15,
+                    "refText": "1123"
+                },
+                {
+                    "refText": "https://eldamo.org/content/words/word-1954231881.html"
+                }
+            ]
+        },
+        {
+            "id": 1784,
+            "text": "anga",
+            "lang": "Q",
+            "gloss": "iron",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": 15,
+                    "refText": "1122"
+                },
+                {
+                    "refText": "https://eldamo.org/content/words/word-3314352465.html"
+                }
+            ]
+        },
+        {
+            "id": 1785,
+            "text": "atalantë",
+            "lang": "Q",
+            "gloss": "downfall",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": 2,
+                    "refText": "223"
+                },
+                {
+                    "refText": "https://eldamo.org/content/words/word-2504699977.html"
+                }
+            ]
+        },
+        {
+            "id": 1786,
+            "text": "calma",
+            "lang": "Q",
+            "gloss": "lamp",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": 15,
+                    "refText": "1121"
+                },
+                {
+                    "refText": "https://eldamo.org/content/words/word-4063999805.html"
+                }
+            ]
+        },
+        {
+            "id": 1787,
+            "text": "camba",
+            "lang": "Q",
+            "gloss": "hand",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": 12,
+                    "refText": "8"
+                },
+                {
+                    "refText": "https://eldamo.org/content/words/word-133691265.html"
+                }
+            ]
+        },
+        {
+            "id": 1788,
+            "text": "Aiwendil",
+            "lang": "Q",
+            "pos": "NP",
+            "sourceRefs": [
+                {
+                    "pubId": 8,
+                    "refText": "393"
+                },
+                {
+                    "refText": "https://eldamo.org/content/words/word-1532309033.html"
+                }
+            ]
+        },
+        {
+            "id": 1791,
+            "text": "laiqua",
+            "lang": "Q",
+            "gloss": "green",
+            "pos": "ADJ",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "71"
+                },
+                {
+                    "refText": "https://eldamo.org/content/words/word-3494583511.html"
+                }
+            ]
+        },
+        {
+            "id": 1792,
+            "text": "Imrahil",
+            "lang": "Q",
+            "pos": "NP",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "71"
+                }
+            ]
+        },
+        {
+            "id": 1793,
+            "text": "míse",
+            "lang": "Q",
+            "gloss": "grey",
+            "pos": "ADJ",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "71"
+                },
+                {
+                    "refText": "https://eldamo.org/content/words/word-3824976295.html"
+                }
+            ]
+        },
+        {
+            "id": 1794,
+            "text": "Eomer",
+            "lang": "Q",
+            "pos": "NP",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "71"
+                }
+            ]
+        },
+        {
+            "id": 1795,
+            "text": "telepta",
+            "lang": "Q",
+            "gloss": "silver",
+            "pos": "ADJ",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "71"
+                },
+                {
+                    "refText": "https://eldamo.org/content/words/word-2398301613.html"
+                }
+            ]
+        },
+        {
+            "id": 1796,
+            "text": "telpe",
+            "lang": "Q",
+            "gloss": "silver"
+        },
+        {
+            "id": 1797,
+            "text": "Gimli",
+            "lang": "Q",
+            "pos": "NP",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "71"
+                }
+            ]
+        },
+        {
+            "id": 1798,
+            "text": "Olórin",
+            "lang": "Q",
+            "pos": "NP",
+            "sourceRefs": [
+                {
+                    "pubId": 8,
+                    "refText": "396"
+                },
+                {
+                    "refText": "https://eldamo.org/content/words/word-3018787843.html"
+                }
+            ]
+        },
+        {
+            "id": 1799,
+            "text": "olor",
+            "lang": "Q",
+            "gloss": "dream, vision",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": 8,
+                    "refText": "396"
+                },
+                {
+                    "refText": "https://eldamo.org/content/words/word-2318718619.html"
+                }
+            ]
+        },
+        {
+            "id": 1800,
+            "text": "lossea",
+            "lang": "Q",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "71"
+                }
+            ]
+        },
+        {
+            "id": 1801,
+            "text": "tarne",
+            "lang": "Q",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "71"
+                }
+            ]
+        },
+        {
+            "id": 1802,
+            "text": "tar-",
+            "lang": "Q",
+            "gloss": "stand",
+            "pos": "V",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "71"
+                },
+                {
+                    "refText": "https://eldamo.org/content/words/word-4264082917.html"
+                }
+            ]
+        },
+        {
+            "id": 1803,
+            "text": "TAR-",
+            "lang": "CE",
+            "gloss": "stand",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "186"
+                },
+                {
+                    "refText": "https://eldamo.org/content/words/word-1356167137.html"
+                }
+            ]
+        },
+        {
+            "id": 1805,
+            "text": "Aracorno",
+            "lang": "Q",
+            "gloss": "Aragorn",
+            "pos": "NP",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "71"
+                }
+            ]
+        },
+        {
+            "id": 1807,
+            "text": "Ataren",
+            "lang": "Q",
+            "sourceRefs": [
+                {
+                    "pubId": 3,
+                    "refText": "7"
+                }
+            ]
+        },
+        {
+            "id": 1808,
+            "text": "Yondon",
+            "lang": "Q",
+            "sourceRefs": [
+                {
+                    "pubId": 3,
+                    "refText": "7"
+                }
+            ]
+        },
+        {
+            "id": 1809,
+            "text": "Airefean",
+            "lang": "Q",
+            "sourceRefs": [
+                {
+                    "pubId": 3,
+                    "refText": "7"
+                }
+            ]
+        },
+        {
+            "id": 1810,
+            "text": "Airefea",
+            "lang": "Q",
+            "pos": "N"
+        },
+        {
+            "id": 1812,
+            "text": "fëa",
+            "lang": "Q",
+            "gloss": "spirit",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": 18,
+                    "refText": "165"
+                },
+                {
+                    "refText": "https://eldamo.org/content/words/word-3664448297.html"
+                }
+            ]
+        },
+        {
+            "id": 1813,
+            "text": "enge",
+            "lang": "Q",
+            "sourceRefs": [
+                {
+                    "pubId": 3,
+                    "refText": "7"
+                }
+            ]
+        },
+        {
+            "id": 1815,
+            "text": "eldarinwe",
+            "lang": "Q",
+            "sourceRefs": [
+                {
+                    "pubId": 12,
+                    "refText": "4"
+                }
+            ]
+        },
+        {
+            "id": 1816,
+            "text": "eldarin",
+            "lang": "Q",
+            "gloss": "of the Eldar",
+            "pos": "ADJ"
+        },
+        {
+            "id": 1817,
+            "text": "leperi",
+            "lang": "Q",
+            "sourceRefs": [
+                {
+                    "pubId": 12,
+                    "refText": "4"
+                }
+            ]
+        },
+        {
+            "id": 1818,
+            "text": "leper",
+            "lang": "Q",
+            "gloss": "finger",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": 12,
+                    "refText": "4"
+                },
+                {
+                    "refText": "https://eldamo.org/content/words/word-75501495.html"
+                }
+            ]
+        },
+        {
+            "id": 1819,
+            "text": "notessi",
+            "lang": "Q",
+            "sourceRefs": [
+                {
+                    "pubId": 12,
+                    "refText": "4"
+                }
+            ]
+        },
+        {
+            "id": 1821,
+            "text": "notesse",
+            "lang": "Q",
+            "gloss": "numeral",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": 12,
+                    "refText": "4"
+                },
+                {
+                    "refText": "https://eldamo.org/content/words/word-3717913129.html"
+                }
+            ]
+        },
+        {
+            "id": 1822,
+            "text": "ULU-",
+            "lang": "CE"
+        },
+        {
+            "id": 1823,
+            "text": "UL-",
+            "lang": "CE",
+            "gloss": "flow",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "168"
+                },
+                {
+                    "refText": "https://eldamo.org/content/words/word-2518000351.html"
                 }
             ]
         }
@@ -27054,7 +27554,8 @@
             "ruleIds": [
                 415,
                 397
-            ]
+            ],
+            "notes": "The ending was changed from 'lvo' to 'lmo' in LOTR 2e"
         },
         {
             "from": 137,
@@ -30973,6 +31474,130 @@
             "from": 1778,
             "to": 1719,
             "type": ">"
+        },
+        {
+            "from": 712,
+            "to": 1785,
+            "type": ">"
+        },
+        {
+            "from": 287,
+            "to": 452,
+            "type": "^"
+        },
+        {
+            "from": 1795,
+            "to": 1796,
+            "type": ">"
+        },
+        {
+            "from": 1798,
+            "to": 1799,
+            "type": ">"
+        },
+        {
+            "from": 1800,
+            "to": 79,
+            "type": ">",
+            "ruleIds": [
+                422
+            ]
+        },
+        {
+            "from": 1801,
+            "to": 1802,
+            "type": ">",
+            "ruleIds": [
+                666
+            ]
+        },
+        {
+            "from": 1802,
+            "to": 1803,
+            "type": "^"
+        },
+        {
+            "from": 1807,
+            "to": 358,
+            "type": ">",
+            "ruleIds": [
+                404
+            ]
+        },
+        {
+            "from": 1808,
+            "to": 993,
+            "type": ">",
+            "ruleIds": [
+                404
+            ]
+        },
+        {
+            "from": 1809,
+            "to": 1810,
+            "type": ">",
+            "ruleIds": [
+                404
+            ]
+        },
+        {
+            "from": 1812,
+            "to": 1719,
+            "type": "^"
+        },
+        {
+            "from": 1813,
+            "to": 385,
+            "type": ">",
+            "ruleIds": [
+                666
+            ]
+        },
+        {
+            "from": 1815,
+            "to": 1816,
+            "type": ">",
+            "ruleIds": [
+                408,
+                407
+            ]
+        },
+        {
+            "from": 1817,
+            "to": 1818,
+            "type": ">",
+            "ruleIds": [
+                396
+            ]
+        },
+        {
+            "from": 1819,
+            "to": 1821,
+            "type": ">",
+            "ruleIds": [
+                396
+            ]
+        },
+        {
+            "from": 148,
+            "to": 225,
+            "type": "^"
+        },
+        {
+            "from": 150,
+            "to": 1822,
+            "type": "^",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "168"
+                }
+            ]
+        },
+        {
+            "from": 1822,
+            "to": 1823,
+            "type": "="
         }
     ],
     "corpusTexts": [
@@ -32301,6 +32926,85 @@
             "sourceRefs": [
                 {
                     "refText": "https://eldamo.org/content/words/word-587333183.html"
+                }
+            ]
+        },
+        {
+            "id": 1790,
+            "text": "sanomë tarnë Olórin, Aracorno, Eomer, Imrahil, mi mísë, mi telepta yo morna, mi laiqua yo ninquë, mi luinë, ta Gimli mi lossëa",
+            "title": null,
+            "lang": "Q",
+            "wordIds": [
+                null,
+                1801,
+                1798,
+                1805,
+                1794,
+                1792,
+                null,
+                1793,
+                null,
+                1795,
+                null,
+                null,
+                null,
+                1791,
+                null,
+                null,
+                null,
+                null,
+                null,
+                1797,
+                null,
+                1800
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "71"
+                }
+            ]
+        },
+        {
+            "id": 1806,
+            "text": "alcar i Ataren ar i Yondon ar i Airefëan\ntambë engë i et...",
+            "title": "Alcar i Ataren",
+            "lang": "Q",
+            "wordIds": [
+                null,
+                null,
+                1807,
+                null,
+                null,
+                1808,
+                null,
+                null,
+                1809,
+                null,
+                1813
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 3,
+                    "refText": "7"
+                }
+            ]
+        },
+        {
+            "id": 1814,
+            "text": "Eldarinwë Leperi ar Notessi",
+            "title": null,
+            "lang": "Q",
+            "wordIds": [
+                1815,
+                1817,
+                null,
+                1819
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 12,
+                    "refText": "4"
                 }
             ]
         }
@@ -34028,6 +34732,22 @@
                 310,
                 1754
             ]
+        },
+        {
+            "id": 1789,
+            "compoundId": 1788,
+            "componentIds": [
+                1780,
+                177
+            ]
+        },
+        {
+            "id": 1811,
+            "compoundId": 1810,
+            "componentIds": [
+                297,
+                1812
+            ]
         }
     ],
     "translations": [
@@ -34060,6 +34780,17 @@
             "sourceRefs": [
                 {
                     "refText": "Let:448"
+                }
+            ]
+        },
+        {
+            "id": 1804,
+            "corpusTextId": 1790,
+            "text": "There stood Gandalf, Aragorn, Eomer and Imrahil in grey, in silver and black, in green and white, and in blue, and also Gimli in white",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "71"
                 }
             ]
         }
