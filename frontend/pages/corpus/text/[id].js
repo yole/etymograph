@@ -1,9 +1,9 @@
 import {useEffect, useState} from "react";
-import WordForm from "@/components/WordForm";
+import WordForm from "@/forms/WordForm";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit } from '@fortawesome/free-solid-svg-icons'
 import WordWithStress from "@/components/WordWithStress";
-import {fetchBackend, associateWord, allowEdit, addTranslation, fetchAlternatives, acceptAlternative} from "@/api";
+import {fetchBackend, associateWord, allowEdit, fetchAlternatives, acceptAlternative} from "@/api";
 import {useRouter} from "next/router";
 import Link from "next/link";
 import SourceRefs from "@/components/SourceRefs";
@@ -67,12 +67,14 @@ export default function CorpusText(params) {
         router.replace(router.asPath)
     }
 
-    function wordSubmitted(status, word) {
+    function wordSubmitted(word) {
         setWordFormVisible(false)
         associateWord(router.query.id, word.id, wordIndex).then(() => {
-            router.replace(router.asPath)
             if (word.gloss === "" || word.gloss === null) {
                 router.push("/word/" + word.language + "/" + word.text)
+            }
+            else {
+                router.replace(router.asPath)
             }
         })
     }
@@ -139,9 +141,13 @@ export default function CorpusText(params) {
                                 {' '}
                             </>)}</div>
                             <WordForm key={predefWord} submitted={wordSubmitted}
-                                      language={corpusText.language} languageReadOnly={true}
-                                      initialText={predefWord} textReadOnly={true}
-                                      initialSource={corpusText.sourceEditableText}/>
+                                      defaultValues={{
+                                          language: corpusText.language,
+                                          text: predefWord,
+                                          source: corpusText.sourceEditableText
+                                      }}
+                                      languageReadOnly={true}
+                                      textReadOnly={true}/>
                         </>
                     }
                 </div>
