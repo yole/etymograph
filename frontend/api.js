@@ -2,7 +2,7 @@ export function allowEdit() {
     return process.env.NEXT_PUBLIC_READONLY !== "true";
 }
 
-export async function fetchBackend(url) {
+export async function fetchBackend(url, withGlobalState) {
     const fullUrl = process.env.NEXT_PUBLIC_BACKEND_URL + url
     const res= await fetch(fullUrl, { headers: { 'Accept': 'application/json'} })
     if (res.status === 404) {
@@ -11,6 +11,18 @@ export async function fetchBackend(url) {
         }
     }
     const loaderData = await res.json()
+    if (withGlobalState) {
+        const allLanguages = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}language`, { headers: { 'Accept': 'application/json'} })
+        const allLanguagesJson = await allLanguages.json()
+        return {
+            props: {
+                loaderData,
+                globalState: {
+                    languages: allLanguagesJson
+                }
+            }
+        }
+    }
     return {
         props: {
             loaderData

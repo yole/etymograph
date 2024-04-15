@@ -3,6 +3,7 @@ import {addRule, updateRule} from "@/api";
 import EtymographForm from "@/components/EtymographForm";
 import FormRow from "@/components/FormRow";
 import FormTextArea from "@/components/FormTextArea";
+import LanguageSelect from "@/components/LanguageSelect";
 
 export default function RuleForm(props) {
     const [ruleType, setRuleType] = useState(props.initialType !== undefined ? props.initialType : "phono")
@@ -19,8 +20,8 @@ export default function RuleForm(props) {
 
             <table><tbody>
                 <FormRow label="Name" id="name"/>
-                {ruleType === "phono" && <FormRow label="From language" id="fromLang"/>}
-                <FormRow label={ruleType === "morpho" ? "Language" : "To language"} id="toLang"/>
+                {ruleType === "phono" && <LanguageSelect label="From language" id="fromLang"/>}
+                <LanguageSelect label={ruleType === "morpho" ? "Language" : "To language"} id="toLang"/>
                 {ruleType === "morpho" && <>
                     <FormRow label="Added category values" id="addedCategories"/>
                     <FormRow label="Replaced category values" id="replacedCategories"/>

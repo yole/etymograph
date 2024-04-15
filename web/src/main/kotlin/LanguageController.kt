@@ -43,9 +43,16 @@ class LanguageController(val graphService: GraphService) {
         val wordClasses: String
     )
 
+    data class LanguageShortViewModel(
+        val name: String,
+        val shortName: String
+    )
+
     @GetMapping("/language")
-    fun indexJson(): List<Language> {
-        return graphService.graph.allLanguages().sortedBy { it.name }.toList()
+    fun indexJson(): List<LanguageShortViewModel> {
+        return graphService.graph.allLanguages().sortedBy { it.name }.map {
+            LanguageShortViewModel(it.name, it.shortName)
+        }
     }
 
     @GetMapping("/language/{lang}")

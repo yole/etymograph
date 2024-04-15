@@ -14,7 +14,7 @@ export const config = {
 }
 
 export async function getStaticProps(context) {
-    return fetchBackend(`rule/${context.params.id}`)
+    return fetchBackend(`rule/${context.params.id}`, true)
 }
 
 export async function getStaticPaths() {
@@ -137,6 +137,7 @@ export default function Rule(params) {
                 text: rule.editableText
             }}
             submitted={submitted}
+            globalState={params.globalState}
             cancelled={() => setEditMode(false)}
         />}
 
