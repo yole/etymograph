@@ -8,6 +8,7 @@ import RuleForm from "@/forms/RuleForm";
 import SourceRefs from "@/components/SourceRefs";
 import RichText from "@/components/RichText";
 import RuleLinkForm from "@/forms/RuleLinkForm";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 export const config = {
     unstable_runtimeJS: true
@@ -33,7 +34,6 @@ export default function Rule(params) {
     const [exampleSource, setExampleSource] = useState("")
     const [exampleUnmatched, setExampleUnmatched] = useState([])
     const router = useRouter()
-    useEffect(() => { document.title = "Etymograph : Rule " + rule.name })
 
     function linkSubmitted() {
         setLinkMode(false)
@@ -92,11 +92,9 @@ export default function Rule(params) {
     }
 
     return <>
-        <h2><small>
-            <Link href={`/`}>Etymograph</Link> {'> '}
-            <Link href={`/language/${rule.toLang}`}>{rule.toLangFullName}</Link> {'> '}
-            <Link href={`/rules/${rule.toLang}`}>Rules</Link> {'> '}</small>
-            {rule.name}</h2>
+        <Breadcrumbs langId={rule.toLang} langName={rule.toLangFullName}
+                     steps={[{title: "Rules", url: `/rules/${rule.toLang}`}]}
+                     title={rule.name}/>
         {rule.fromLang !== rule.toLang && <p>From {rule.fromLangFullName} to {rule.toLangFullName}</p>}
         {rule.paradigmId !== null && <p>Paradigm: <Link href={`/paradigm/${rule.paradigmId}`}>{rule.paradigmName}</Link></p>}
         {!editMode && <>

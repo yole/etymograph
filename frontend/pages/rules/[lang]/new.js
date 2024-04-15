@@ -7,9 +7,7 @@ export async function getStaticProps(context) {
     return fetchBackend(`language/${context.params.lang}`, true)
 }
 
-export async function getStaticPaths() {
-    return await fetchAllLanguagePaths();
-}
+export const getStaticPaths = fetchAllLanguagePaths
 
 export default function RuleEditor(params) {
     const langData = params.loaderData

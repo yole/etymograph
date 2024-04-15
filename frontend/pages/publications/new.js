@@ -1,14 +1,9 @@
 import PublicationForm from "@/forms/PublicationForm";
-import Link from "next/link";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 export default function PublicationEditor() {
     return <>
-        <h2>
-            <small>
-                <Link href={`/`}>Etymograph</Link> {'> '}
-            </small>
-            New Publication
-        </h2>
+        <Breadcrumbs title="New Publication"/>
         <PublicationForm redirectOnCreate={r => `/publication/${r.id}`}/>
     </>
 }

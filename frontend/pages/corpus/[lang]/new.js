@@ -7,9 +7,7 @@ export async function getStaticProps(context) {
     return fetchBackend(`language/${context.params.lang}`)
 }
 
-export async function getStaticPaths() {
-    return await fetchAllLanguagePaths();
-}
+export const getStaticPaths = fetchAllLanguagePaths
 
 export default function CorpusTextEditor(params) {
     const langData = params.loaderData

@@ -1,8 +1,8 @@
 import {allowEdit, fetchBackend} from "@/api";
-import {useEffect, useState} from "react";
-import Link from "next/link";
+import {useState} from "react";
 import PublicationForm from "@/forms/PublicationForm";
 import {useRouter} from "next/router";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 export const config = {
     unstable_runtimeJS: true
@@ -23,21 +23,13 @@ export default function Publication(props) {
     const [editMode, setEditMode] = useState(false)
     const router = useRouter()
 
-    useEffect(() => { document.title = "Etymograph : Bibliography : " + publication.refId })
-
     function submitted() {
         setEditMode(false)
         router.replace(router.asPath)
     }
 
     return <>
-        <h2>
-            <small>
-                <Link href={`/`}>Etymograph</Link> {'> '}
-                <Link href={`/publications`}>Bibliography</Link> {'> '}
-            </small>
-            {publication.refId}
-        </h2>
+        <Breadcrumbs steps={[{title: "Bibliography", url: `/publications`}]} title={publication.refId} />
 
         {!editMode && <>
             <p>{publication.name}</p>
