@@ -3,6 +3,8 @@ package ru.yole.etymograph.web
 import org.junit.Assert.assertEquals
 import org.junit.Test
 import ru.yole.etymograph.*
+import ru.yole.etymograph.web.controllers.CorpusController
+import ru.yole.etymograph.web.controllers.RuleController
 
 class CorpusControllerTest {
     @Test

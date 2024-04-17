@@ -9,6 +9,7 @@ import ru.yole.etymograph.GraphRepository
 import ru.yole.etymograph.Link
 import ru.yole.etymograph.WordCategory
 import ru.yole.etymograph.WordCategoryValue
+import ru.yole.etymograph.web.controllers.WordController
 
 class WordControllerTest {
     private lateinit var fixture: QTestFixture

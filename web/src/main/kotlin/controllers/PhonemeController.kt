@@ -1,10 +1,11 @@
-package ru.yole.etymograph.web
+package ru.yole.etymograph.web.controllers
 
 import org.springframework.web.bind.annotation.*
 import ru.yole.etymograph.GraphRepository
 import ru.yole.etymograph.Language
 import ru.yole.etymograph.Phoneme
 import ru.yole.etymograph.RuleSequence
+import ru.yole.etymograph.web.*
 
 data class PhonemeRuleViewModel(
     val id: Int,

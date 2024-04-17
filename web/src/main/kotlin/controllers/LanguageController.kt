@@ -1,4 +1,4 @@
-package ru.yole.etymograph.web
+package ru.yole.etymograph.web.controllers
 
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.GetMapping
@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.server.ResponseStatusException
 import ru.yole.etymograph.*
+import ru.yole.etymograph.web.GraphService
 
 @RestController
 class LanguageController(val graphService: GraphService) {

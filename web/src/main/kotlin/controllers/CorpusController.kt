@@ -1,10 +1,11 @@
-package ru.yole.etymograph.web
+package ru.yole.etymograph.web.controllers
 
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.server.ResponseStatusException
 import ru.yole.etymograph.*
-import ru.yole.etymograph.web.CorpusController.TranslationViewModel
+import ru.yole.etymograph.web.*
+import ru.yole.etymograph.web.controllers.CorpusController.TranslationViewModel
 
 @RestController
 @CrossOrigin(origins = ["http://localhost:3000"])

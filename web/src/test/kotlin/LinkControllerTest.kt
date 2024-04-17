@@ -3,6 +3,9 @@ package ru.yole.etymograph.web
 import org.junit.Assert.assertEquals
 import org.junit.Test
 import ru.yole.etymograph.Link
+import ru.yole.etymograph.web.controllers.LinkController
+import ru.yole.etymograph.web.controllers.RuleController
+import ru.yole.etymograph.web.controllers.WordController
 
 class LinkControllerTest {
     @Test

@@ -4,6 +4,7 @@ import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
 import ru.yole.etymograph.RuleLogic
+import ru.yole.etymograph.web.controllers.LanguageController
 
 class LanguageControllerTest {
     private lateinit var fixture: QTestFixture

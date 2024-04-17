@@ -1,6 +1,7 @@
 package ru.yole.etymograph.web
 
 import ru.yole.etymograph.*
+import ru.yole.etymograph.web.controllers.RuleController
 
 class QTestFixture {
     val ce = Language("Common Eldarin", "ce")

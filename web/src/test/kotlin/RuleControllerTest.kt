@@ -5,6 +5,7 @@ import org.junit.Before
 import org.junit.Test
 import org.springframework.web.server.ResponseStatusException
 import ru.yole.etymograph.*
+import ru.yole.etymograph.web.controllers.RuleController
 
 class RuleControllerTest {
     private lateinit var fixture: QTestFixture

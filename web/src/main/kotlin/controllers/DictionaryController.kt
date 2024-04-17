@@ -1,4 +1,4 @@
-package ru.yole.etymograph.web
+package ru.yole.etymograph.web.controllers
 
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RestController
 import ru.yole.etymograph.GraphRepository
 import ru.yole.etymograph.Language
 import ru.yole.etymograph.WordKind
+import ru.yole.etymograph.web.GraphService
+import ru.yole.etymograph.web.resolveLanguage
 
 @RestController
 @RequestMapping("/{graph}/dictionary")

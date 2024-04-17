@@ -1,7 +1,8 @@
-package ru.yole.etymograph.web
+package ru.yole.etymograph.web.controllers
 
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RestController
+import ru.yole.etymograph.web.GraphService
 
 @RestController
 class GraphController(val graphService: GraphService) {

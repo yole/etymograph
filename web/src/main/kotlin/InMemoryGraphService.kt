@@ -5,6 +5,8 @@ import org.springframework.http.HttpStatus
 import org.springframework.stereotype.Service
 import org.springframework.web.server.ResponseStatusException
 import ru.yole.etymograph.*
+import ru.yole.etymograph.web.controllers.badRequest
+import ru.yole.etymograph.web.controllers.notFound
 import java.nio.file.Path
 
 abstract class GraphService {

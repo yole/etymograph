@@ -9,6 +9,7 @@ import ru.yole.etymograph.GraphRepository
 import ru.yole.etymograph.Rule
 import ru.yole.etymograph.RuleParseContext
 import ru.yole.etymograph.RuleParseException
+import ru.yole.etymograph.web.controllers.PhonemeController
 
 class PhonemeControllerTest {
     private lateinit var fixture: QTestFixture
