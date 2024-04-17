@@ -10,15 +10,8 @@ import ru.yole.etymograph.web.controllers.notFound
 import java.nio.file.Path
 
 abstract class GraphService {
-    abstract val graph: GraphRepository
-
-    fun allGraphs(): List<GraphRepository> {
-        return listOf(graph)
-    }
-
-    fun resolveGraph(name: String): GraphRepository {
-        return graph
-    }
+    abstract fun allGraphs(): List<GraphRepository>
+    abstract fun resolveGraph(name: String): GraphRepository
 
     fun resolveLanguage(graph: String, lang: String): Language {
         return resolveGraph(graph).languageByShortName(lang)
@@ -59,7 +52,18 @@ class InMemoryGraphService: GraphService() {
     @Value("\${etymograph.path}")
     private var graphPath = ""
 
-    override val graph by lazy { JsonGraphRepository.fromJson(Path.of(graphPath)) }
+    private val graphs: Map<String, GraphRepository> by lazy {
+        val map = mutableMapOf<String, GraphRepository>()
+        for (graphName in graphPath.split(',')) {
+            val graph = JsonGraphRepository.fromJson(Path.of(graphName))
+            map[graph.id] = graph
+        }
+        map
+    }
+
+    override fun allGraphs(): List<GraphRepository> = graphs.values.toList()
+    override fun resolveGraph(name: String): GraphRepository =
+        graphs[name] ?: notFound("No graph with ID $name")
 }
 
 fun GraphRepository.resolveLanguage(lang: String): Language {

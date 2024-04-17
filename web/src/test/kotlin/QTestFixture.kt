@@ -12,8 +12,13 @@ class QTestFixture {
     }
 
     val graphService = object : GraphService() {
-        override val graph: GraphRepository
-            get() = this@QTestFixture.graph
+        override fun allGraphs(): List<GraphRepository> {
+            return listOf(graph)
+        }
+
+        override fun resolveGraph(name: String): GraphRepository {
+            return graph
+        }
     }
 
     fun setupParadigm(): Rule {
