@@ -4632,7 +4632,7 @@
         },
         {
             "id": 258,
-            "text": "kala",
+            "text": "cala",
             "lang": "Q",
             "gloss": "light",
             "pos": "N",
@@ -4657,7 +4657,7 @@
         },
         {
             "id": 260,
-            "text": "kirya",
+            "text": "cirya",
             "lang": "Q",
             "gloss": "cleft",
             "pos": "N"
@@ -7321,7 +7321,7 @@
         },
         {
             "id": 626,
-            "text": "karka",
+            "text": "carca",
             "lang": "Q",
             "gloss": "fang",
             "pos": "N",
@@ -7329,6 +7329,9 @@
                 {
                     "pubId": 2,
                     "refText": "222"
+                },
+                {
+                    "refText": "https://eldamo.org/content/words/word-3837352769.html"
                 }
             ]
         },
@@ -10100,7 +10103,7 @@
         },
         {
             "id": 988,
-            "text": "kal-",
+            "text": "cal-",
             "lang": "Q",
             "gloss": "shine",
             "pos": "V"
@@ -16777,6 +16780,119 @@
                     "refText": "https://eldamo.org/content/words/word-2518000351.html"
                 }
             ]
+        },
+        {
+            "id": 1826,
+            "text": "aerlinn",
+            "lang": "S",
+            "sourceRefs": [
+                {
+                    "refText": "RGEO:62"
+                },
+                {
+                    "refText": "https://eldamo.org/content/words/word-1712116201.html"
+                }
+            ]
+        },
+        {
+            "id": 1828,
+            "text": "linn",
+            "lang": "S",
+            "gloss": "song",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": 0,
+                    "refText": "24"
+                }
+            ]
+        },
+        {
+            "id": 1871,
+            "text": "UB-",
+            "lang": "CE",
+            "gloss": "have in mind",
+            "sourceRefs": [
+                {
+                    "pubId": 13,
+                    "refText": "25"
+                },
+                {
+                    "refText": "https://eldamo.org/content/words/word-2231699231.html"
+                }
+            ]
+        },
+        {
+            "id": 1872,
+            "text": "aklāra",
+            "lang": "CE",
+            "gloss": "glorious",
+            "pos": "ADJ",
+            "sourceRefs": [
+                {
+                    "pubId": 21,
+                    "refText": "87"
+                },
+                {
+                    "refText": "https://eldamo.org/content/words/word-1658435263.html"
+                }
+            ]
+        },
+        {
+            "id": 1873,
+            "text": "aglor",
+            "lang": "S",
+            "gloss": "glorious",
+            "pos": "ADJ",
+            "sourceRefs": [
+                {
+                    "pubId": 21,
+                    "refText": "87"
+                },
+                {
+                    "refText": "https://eldamo.org/content/words/word-3355064255.html"
+                }
+            ]
+        },
+        {
+            "id": 1874,
+            "text": "dūbā",
+            "lang": "CE",
+            "gloss": "bend",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "168"
+                }
+            ]
+        },
+        {
+            "id": 1875,
+            "text": "lúva",
+            "lang": "Q",
+            "gloss": "bend",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "168"
+                }
+            ]
+        },
+        {
+            "id": 1876,
+            "text": "carma",
+            "lang": "Q",
+            "gloss": "helm",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "114"
+                },
+                {
+                    "refText": "https://eldamo.org/content/words/word-1115019499.html"
+                }
+            ]
         }
     ],
     "rules": [
@@ -18547,12 +18663,13 @@
                     }
                 }
             ],
-            "addedCategories": "",
-            "replacedCategories": "",
             "sourceRefs": [
                 {
                     "pubId": 14,
                     "refText": "18"
+                },
+                {
+                    "refText": "https://eldamo.org/content/words/word-3325625207.html"
                 }
             ]
         },
@@ -27613,7 +27730,6 @@
             "to": 118,
             "type": "^",
             "ruleIds": [
-                431,
                 418,
                 1526,
                 1529
@@ -29277,7 +29393,6 @@
             "to": 881,
             "type": "^",
             "ruleIds": [
-                431,
                 418,
                 1528,
                 1529,
@@ -31003,7 +31118,6 @@
             "to": 1537,
             "type": "^",
             "ruleIds": [
-                431,
                 418,
                 1527,
                 1538
@@ -31600,6 +31714,45 @@
             "from": 1822,
             "to": 1823,
             "type": "="
+        },
+        {
+            "from": 1871,
+            "to": 416,
+            "type": "~",
+            "sourceRefs": [
+                {
+                    "pubId": 4,
+                    "refText": "132"
+                }
+            ]
+        },
+        {
+            "from": 1873,
+            "to": 1872,
+            "type": "^",
+            "ruleIds": [
+                1124,
+                1120,
+                1062,
+                1075,
+                1059,
+                1125
+            ]
+        },
+        {
+            "from": 1875,
+            "to": 1874,
+            "type": "^",
+            "ruleIds": [
+                431,
+                1527
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "168"
+                }
+            ]
         }
     ],
     "corpusTexts": [
@@ -33009,6 +33162,27 @@
                     "refText": "4"
                 }
             ]
+        },
+        {
+            "id": 1824,
+            "text": "Aerlinn in Edhil o Imladris",
+            "title": "Untitled",
+            "lang": "S",
+            "wordIds": [
+                1826,
+                null,
+                null,
+                null,
+                null
+            ],
+            "sourceRefs": [
+                {
+                    "refText": "RGEO:62"
+                },
+                {
+                    "refText": "https://eldamo.org/content/words/word-1712116201.html"
+                }
+            ]
         }
     ],
     "paradigms": [
@@ -33598,7 +33772,7 @@
         },
         {
             "id": 7,
-            "name": "J.R.R. Tolkien, (editors) Carl Hostetter, Bill Welden; July 2001",
+            "name": "Vinyar Tengwar #42; J.R.R. Tolkien, (editors) Carl Hostetter, Bill Welden; July 2001",
             "refId": "VT42"
         },
         {
@@ -33685,6 +33859,16 @@
             "id": 24,
             "name": "Parma Eldalamberon 20",
             "refId": "PE20"
+        },
+        {
+            "id": 25,
+            "name": "Vinyar Tengwar #41",
+            "refId": "VT41"
+        },
+        {
+            "id": 26,
+            "name": "Vinyar Tengwar #40",
+            "refId": "VT40"
         }
     ],
     "compounds": [
@@ -34750,6 +34934,14 @@
                 297,
                 1812
             ]
+        },
+        {
+            "id": 1827,
+            "compoundId": 1826,
+            "componentIds": [
+                1324,
+                1828
+            ]
         }
     ],
     "translations": [
@@ -34795,6 +34987,11 @@
                     "refText": "71"
                 }
             ]
+        },
+        {
+            "id": 1825,
+            "corpusTextId": 1824,
+            "text": "Holy Song of the Elves of Rivendell"
         }
     ],
     "grammaticalCategories": [
