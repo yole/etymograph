@@ -321,8 +321,8 @@ data class GraphRepositoryData(
 class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
     private val allLinks = mutableListOf<Link>()
 
-    private lateinit var _id: String
-    private lateinit var _name: String
+    private var _id: String = ""
+    private var _name: String = ""
 
     override val id: String
         get() = _id
