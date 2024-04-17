@@ -1,8 +1,6 @@
 import {FormProvider, useForm} from "react-hook-form";
-import {createContext, useState} from "react";
+import {useState} from "react";
 import {useRouter} from "next/router";
-
-export const GlobalStateContext = createContext({})
 
 export default function EtymographForm(props) {
     const methods = useForm({defaultValues: props.defaultValues});
@@ -34,25 +32,16 @@ export default function EtymographForm(props) {
         }
     }
 
-    let form = <form onSubmit={methods.handleSubmit(saveForm)}>
-        {props.children}
-        <p>
-            <input type="submit" value="Save"/>
-            {props.cancelled !== undefined && <>{' '}
-                <button onClick={props.cancelled}>Cancel</button>
-            </>}
-        </p>
-        {errorText !== "" && <div className="errorText">{errorText}</div>}
-    </form>
-
-    if (props.globalState !== undefined) {
-        return <FormProvider {...methods}>
-            <GlobalStateContext.Provider value={props.globalState}>
-                {form}
-            </GlobalStateContext.Provider>
-        </FormProvider>
-    }
     return <FormProvider {...methods}>
-        {form}
+        <form onSubmit={methods.handleSubmit(saveForm)}>
+            {props.children}
+            <p>
+                <input type="submit" value="Save"/>
+                {props.cancelled !== undefined && <>{' '}
+                    <button onClick={props.cancelled}>Cancel</button>
+                </>}
+            </p>
+            {errorText !== "" && <div className="errorText">{errorText}</div>}
+        </form>
     </FormProvider>
 }

@@ -5,7 +5,7 @@ import {useRouter} from "next/router";
 export const getStaticPaths = fetchAllGraphs
 
 export async function getStaticProps(context) {
-  return fetchBackend(context.params.graph, `language`)
+  return fetchBackend(context.params.graph, `language`, true)
 }
 
 export default function Home(props) {

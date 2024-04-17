@@ -16,7 +16,6 @@ import Link from "next/link";
 import {useRouter} from "next/router";
 import SourceRefs from "@/components/SourceRefs";
 import RuleLinkForm from "@/forms/RuleLinkForm";
-import {GlobalStateContext} from "@/components/EtymographForm";
 import EditLinkForm from "@/forms/EditLinkForm";
 
 export const config = {
@@ -280,7 +279,7 @@ function SingleWord(params) {
     const isCompound = word.compound
     const posClassesEditable = (word.pos !== null ? word.pos : "") + (word.classes.length > 0 ? " " + word.classes.join(" ") : "")
 
-    return <GlobalStateContext.Provider value={params.globalState}>
+    return <>
         <h2><small>
             <Link href={`/${graph}`}>Etymograph</Link> {'> '}
             <Link href={`/${graph}/language/${word.language}`}>{word.languageFullName}</Link> {'> '}
@@ -415,7 +414,7 @@ function SingleWord(params) {
             {errorText !== "" && <div className="errorText">{errorText}</div>}
         </>}
         {word.pos && (!word.glossComputed || word.pos === 'NP') && <Link href={`/${graph}/paradigms/${word.language}/word/${word.id}`}>Paradigms</Link>}
-    </GlobalStateContext.Provider>
+    </>
 }
 
 export default function Word(params) {
@@ -424,11 +423,11 @@ export default function Word(params) {
     const graph = router.query.graph
     if (Array.isArray(words)) {
         if (words.length === 1) {
-            return <SingleWord word={words[0]} globalState={params.globalState}/>
+            return <SingleWord word={words[0]}/>
         }
         return <ul>
             {words.map(w => <li key={w.id}><Link href={`/${graph}/word/${w.language}/${w.text}/${w.id}`}>{w.text} &quot;{w.gloss}&quot;</Link></li>)}
         </ul>
     }
-    return <SingleWord word={words} globalState={params.globalState}/>
+    return <SingleWord word={words}/>
 }

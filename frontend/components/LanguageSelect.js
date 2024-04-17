@@ -1,6 +1,6 @@
 import {Controller, useFormContext} from "react-hook-form";
 import {useContext} from "react";
-import {GlobalStateContext} from "@/components/EtymographForm";
+import {GlobalStateContext} from "@/components/Contexts";
 import Select from "react-select";
 
 export default function LanguageSelect(props) {

@@ -1,10 +1,10 @@
 import PublicationForm from "@/forms/PublicationForm";
 import Breadcrumbs from "@/components/Breadcrumbs";
-import {useRouter} from "next/router";
+import {useContext} from "react";
+import {GraphContext} from "@/components/Contexts";
 
 export default function PublicationEditor() {
-    const router = useRouter()
-    const graph = router.query.graph
+    const graph = useContext(GraphContext)
     return <>
         <Breadcrumbs title="New Publication"/>
         <PublicationForm redirectOnCreate={r => `/${graph}/publication/${r.id}`}/>
