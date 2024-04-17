@@ -43,9 +43,9 @@ class QTestFixture {
                 "end of word and sound is 'm':\n- new sound is 'n'"
             )
         )
-        return graphService.graph.addRuleSequence(
+        return graph.addRuleSequence(
             "ce-to-q", ce, q,
-            listOf(graphService.graph.ruleByName("q-final-consonant")!!)
+            listOf(graph.ruleByName("q-final-consonant")!!)
         )
     }
 

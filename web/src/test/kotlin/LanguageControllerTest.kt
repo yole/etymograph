@@ -66,7 +66,7 @@ class LanguageControllerTest {
 
     @Test
     fun phonotacticsRules() {
-        val rule = fixture.graphService.graph.addRule("q-phono", fixture.q, fixture.q,
+        val rule = fixture.graph.addRule("q-phono", fixture.q, fixture.q,
             RuleLogic(emptyList(), emptyList()))
 
         val parameters = LanguageController.UpdateLanguageParameters(
