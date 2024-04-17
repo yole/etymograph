@@ -5,7 +5,7 @@ services:
     ports:
       - "8080:8080"
     healthcheck:
-      test: curl http://localhost:8080/corpus || exit 1
+      test: curl http://localhost:8080/graphs || exit 1
       interval: 10s
       retries: 10
     environment:
