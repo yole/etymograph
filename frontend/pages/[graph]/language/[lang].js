@@ -2,13 +2,14 @@ import Link from "next/link";
 import {useEffect, useState} from "react";
 import {fetchBackend, updateLanguage, fetchAllLanguagePaths, allowEdit, copyPhonemes} from "@/api";
 import {useRouter} from "next/router";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 export const config = {
     unstable_runtimeJS: true
 }
 
 export async function getStaticProps(context) {
-    return fetchBackend(context.params.graph, `language/${context.params.lang}`)
+    return fetchBackend(context.params.graph, `language/${context.params.lang}`, true)
 }
 
 export const getStaticPaths = fetchAllLanguagePaths
@@ -59,7 +60,7 @@ export default function LanguageIndex(props) {
     }
 
     return <>
-        <h2><small><Link href={`/${graph}`}>Etymograph</Link> {'>'} </small>{lang.name} {lang.reconstructed && "(reconstructed)"}</h2>
+        <Breadcrumbs title={lang.name + (lang.reconstructed ? " (reconstructed)" : "")}/>
 
         <Link href={`/${graph}/dictionary/${langId}`}>Dictionary</Link>
         {' '}| <Link href={`/${graph}/dictionary/${langId}/compounds`}>Compounds</Link>

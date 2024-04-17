@@ -1,10 +1,11 @@
 import Link from "next/link";
-import {useEffect} from "react";
-import {useRouter} from "next/router";
+import {useContext, useEffect} from "react";
+import {GlobalStateContext, GraphContext} from "@/components/Contexts";
 
 export default function Breadcrumbs(props) {
-    const router = useRouter()
-    const graph = router.query.graph
+    const graph = useContext(GraphContext)
+    const globalState = useContext(GlobalStateContext)
+    const theGraph = globalState !== undefined ? globalState.graphs.find((g) => g.id === graph) : undefined
 
     useEffect(() => {
         document.title = "Etymograph : " + (props.langName !== undefined ? props.langName + " : " : "") +
@@ -14,7 +15,11 @@ export default function Breadcrumbs(props) {
 
     return <h2>
         <small>
-            <Link href={`/${graph}`}>Etymograph</Link> {'> '}
+            {theGraph === undefined && <><Link href={`/${graph}`}>Etymograph</Link> {'> '}</>}
+            {theGraph !== undefined && <>
+                <Link href="/">Etymograph</Link>{' > '}
+                <Link href={`/${graph}`}>{theGraph.name}</Link>{' > '}
+            </>}
             {props.langId !== undefined && <>
                 <Link href={`/${graph}/language/${props.langId}`}>{props.langName}</Link> {'> '}
             </>}

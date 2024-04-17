@@ -12,6 +12,8 @@ export async function fetchBackend(graph, url, withGlobalState) {
     }
     const loaderData = await res.json()
     if (withGlobalState) {
+        const allGraphs = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}graphs`, { headers: { 'Accept': 'application/json'} })
+        const allGraphsJson = await allGraphs.json()
         const allLanguages = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}${graph}/language`, { headers: { 'Accept': 'application/json'} })
         const allLanguagesJson = await allLanguages.json()
         const allRules = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}${graph}/rules`, { headers: { 'Accept': 'application/json'} })
@@ -20,6 +22,7 @@ export async function fetchBackend(graph, url, withGlobalState) {
             props: {
                 loaderData,
                 globalState: {
+                    graphs: allGraphsJson,
                     languages: allLanguagesJson,
                     rules: alllRulesJson
                 }
@@ -31,6 +34,12 @@ export async function fetchBackend(graph, url, withGlobalState) {
             loaderData
         }
     }
+}
+
+export async function fetchGraphs() {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}graphs`, { headers: { 'Accept': 'application/json'} })
+    const loaderData = await response.json()
+    return {props: {loaderData}}
 }
 
 export async function fetchAllGraphs() {
