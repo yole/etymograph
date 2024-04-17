@@ -4,7 +4,7 @@ jobs:
   publish-elvish:
     uses: ./.github/workflows/etymograph-build.yml
     with:
-      graphPath: /app/ie.json
+      graphPath: /app/ie.json,/app/jrrt.json
     secrets:
       siteId: ${{ secrets.ETYMOGRAPH_SITE_ID }}
       netlifyAuthToken: ${{ secrets.NETLIFY_AUTH_TOKEN }}
