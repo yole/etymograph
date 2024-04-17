@@ -33,7 +33,7 @@ jobs:
       - name: Publish to Netlify
         uses: South-Paw/action-netlify-cli@v2
         with:
-          args: deploy --dir=export --prod
+          args: deploy --dir=export/out --prod
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.netlifyAuthToken }}
           NETLIFY_SITE_ID: ${{ secrets.siteId }}

@@ -20,4 +20,4 @@ services:
     volumes:
       - type: bind
         source: ./export
-        target: /app/out
+        target: /export
