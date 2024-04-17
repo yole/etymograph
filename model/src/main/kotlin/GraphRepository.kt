@@ -3,6 +3,8 @@ package ru.yole.etymograph
 enum class WordKind { NAME, COMPOUND, DERIVED, RECONSTRUCTED, NORMAL }
 
 abstract class GraphRepository {
+    abstract val id: String
+
     abstract fun allLanguages(): Iterable<Language>
     abstract fun languageByShortName(languageShortName: String): Language?
 

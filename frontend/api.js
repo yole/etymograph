@@ -2,9 +2,9 @@ export function allowEdit() {
     return process.env.NEXT_PUBLIC_READONLY !== "true";
 }
 
-export async function fetchBackend(url, withGlobalState) {
-    const fullUrl = process.env.NEXT_PUBLIC_BACKEND_URL + url
-    const res= await fetch(fullUrl, { headers: { 'Accept': 'application/json'} })
+export async function fetchBackend(graph, url, withGlobalState) {
+    const fullUrl = `${process.env.NEXT_PUBLIC_BACKEND_URL}${graph}/${url}`
+    const res = await fetch(fullUrl, { headers: { 'Accept': 'application/json'} })
     if (res.status === 404) {
         return {
             notFound: true
@@ -12,9 +12,9 @@ export async function fetchBackend(url, withGlobalState) {
     }
     const loaderData = await res.json()
     if (withGlobalState) {
-        const allLanguages = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}language`, { headers: { 'Accept': 'application/json'} })
+        const allLanguages = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}${graph}/language`, { headers: { 'Accept': 'application/json'} })
         const allLanguagesJson = await allLanguages.json()
-        const allRules = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}rules`, { headers: { 'Accept': 'application/json'} })
+        const allRules = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}${graph}/rules`, { headers: { 'Accept': 'application/json'} })
         const alllRulesJson = await allRules.json()
         return {
             props: {
@@ -33,14 +33,32 @@ export async function fetchBackend(url, withGlobalState) {
     }
 }
 
-export async function fetchAllLanguagePaths() {
-    const {props} = await fetchBackend(`language`)
-    const paths = props.loaderData.map(lang => ({params: {lang: lang.shortName}}))
+export async function fetchAllGraphs() {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}graphs`, { headers: { 'Accept': 'application/json'} })
+    const graphs = await response.json()
+    const paths = graphs.map(graph => ({params: {graph: graph.id}}))
     return {paths, fallback: false}
 }
 
-export async function fetchAlternatives(corpusTextId, index) {
-    const fullUrl = process.env.NEXT_PUBLIC_BACKEND_URL + `corpus/text/${corpusTextId}/alternatives/${index}`
+export async function fetchAllLanguagePaths() {
+    return fetchPathsForAllGraphs("language", (p) => ({lang: p.shortName}))
+}
+
+export async function fetchPathsForAllGraphs(url, callback) {
+    const graphs = await fetchAllGraphs()
+    const langPaths = await Promise.all(graphs.paths.map(async (g) => {
+        const {props} = await fetchBackend(g.params.graph, url)
+        return props.loaderData.map((l) => ({ graph: g.params.graph, ...l }))
+    }))
+    const paths = langPaths.flat().map(p => {
+        const data = callback(p)
+        return ({params: {graph: p.graph, ...data}});
+    })
+    return {paths, fallback: allowEdit()}
+}
+
+export async function fetchAlternatives(graph, corpusTextId, index) {
+    const fullUrl = process.env.NEXT_PUBLIC_BACKEND_URL + `${graph}/corpus/text/${corpusTextId}/alternatives/${index}`
     const res= await fetch(fullUrl, { headers: { 'Accept': 'application/json'} })
     return await res.json()
 }
@@ -57,137 +75,137 @@ function postToBackend(endpoint, data) {
     })
 }
 
-export function addWord(lang, text, gloss, fullGloss, posClasses, reconstructed, source, notes) {
-    return postToBackend('word/' + lang,
+export function addWord(graph, lang, text, gloss, fullGloss, posClasses, reconstructed, source, notes) {
+    return postToBackend(`${graph}/word/${lang}`,
         {text: text, gloss: gloss, fullGloss: fullGloss, posClasses: posClasses, reconstructed, source: source, notes: notes}
     )
 }
 
-export function updateWord(id, text, gloss, fullGloss, posClasses, reconstructed, source, notes) {
-    return postToBackend(`word/${id}/update`,
+export function updateWord(graph, id, text, gloss, fullGloss, posClasses, reconstructed, source, notes) {
+    return postToBackend(`${graph}/word/${id}/update`,
         {
             text: text, gloss: gloss, fullGloss: fullGloss, posClasses: posClasses, reconstructed, source: source, notes
         })
 }
 
-export function deleteWord(id) {
-    return postToBackend(`word/${id}/delete`, {})
+export function deleteWord(graph, id) {
+    return postToBackend(`${graph}/word/${id}/delete`, {})
 }
 
-export function addWordSequence(text, source) {
-    return postToBackend(`wordSequence`, {sequence: text, source})
+export function addWordSequence(graph, text, source) {
+    return postToBackend(`${graph}/wordSequence`, {sequence: text, source})
 }
 
-export function addRule(data) {
-    return postToBackend('rule', data)
+export function addRule(graph, data) {
+    return postToBackend(`${graph}/rule`, data)
 }
 
-export function updateRule(id, data) {
-    return postToBackend('rule/' + id, data)
+export function updateRule(graph, id, data) {
+    return postToBackend(`${graph}/rule/${id}`, data)
 }
 
-export function deleteRule(id) {
-    return postToBackend(`rule/${id}/delete`, {})
+export function deleteRule(graph, id) {
+    return postToBackend(`${graph}/rule/${id}/delete`, {})
 }
 
-export function addRuleSequence(data) {
-    return postToBackend('rule/sequence', data)
+export function addRuleSequence(graph, data) {
+    return postToBackend(`${graph}/rule/sequence`, data)
 }
 
-export function updateRuleSequence(id, data) {
+export function updateRuleSequence(graph, id, data) {
     return postToBackend('rule/sequence/' + id, data)
 }
 
-export function applyRuleSequence(seqId, fromWordId, toWordId) {
-    return postToBackend(`rule/sequence/${seqId}/apply`, {
+export function applyRuleSequence(graph, seqId, fromWordId, toWordId) {
+    return postToBackend(`${graph}/rule/sequence/${seqId}/apply`, {
         linkFromId: fromWordId,
         linkToId: toWordId
     })
 }
 
-export function deriveThroughRuleSequence(wordId, seqId) {
-    return postToBackend(`word/${wordId}/derive`, {sequenceId: seqId})
+export function deriveThroughRuleSequence(graph, wordId, seqId) {
+    return postToBackend(`${graph}/word/${wordId}/derive`, {sequenceId: seqId})
 }
 
-export function addCorpusText(lang, data) {
-    return postToBackend(`corpus/${lang}/new`, data)
+export function addCorpusText(graph, lang, data) {
+    return postToBackend(`${graph}/corpus/${lang}/new`, data)
 }
 
-export function updateCorpusText(id, data) {
-    return postToBackend(`corpus/text/${id}`, data)
+export function updateCorpusText(graph, id, data) {
+    return postToBackend(`${graph}/corpus/text/${id}`, data)
 }
 
-export function addTranslation(corpusTextId, data) {
-    return postToBackend('translation', {corpusTextId: corpusTextId, ...data})
+export function addTranslation(graph, corpusTextId, data) {
+    return postToBackend(`${graph}/translation`, {corpusTextId: corpusTextId, ...data})
 }
 
-export function editTranslation(id, data) {
-    return postToBackend(`translations/${id}`, data)
+export function editTranslation(graph, id, data) {
+    return postToBackend(`${graph}/translations/${id}`, data)
 }
 
-export function associateWord(corpusTextId, wordId, index) {
-    return postToBackend(`corpus/text/${corpusTextId}/associate`, {wordId: wordId, index: index})
+export function associateWord(graph, corpusTextId, wordId, index) {
+    return postToBackend(`${graph}/corpus/text/${corpusTextId}/associate`, {wordId: wordId, index: index})
 }
 
-export function acceptAlternative(corpusTextId, index, wordId, ruleId) {
-    return postToBackend(`corpus/text/${corpusTextId}/accept`, {wordId: wordId, ruleId: ruleId, index: index})
+export function acceptAlternative(graph, corpusTextId, index, wordId, ruleId) {
+    return postToBackend(`${graph}/corpus/text/${corpusTextId}/accept`, {wordId: wordId, ruleId: ruleId, index: index})
 }
 
-export function addLink(fromEntity, toEntity, linkType, ruleNames, source, notes) {
-    return postToBackend('link', {fromEntity, toEntity, linkType, ruleNames, source, notes})
+export function addLink(graph, fromEntity, toEntity, linkType, ruleNames, source, notes) {
+    return postToBackend(`${graph}/link`, {fromEntity, toEntity, linkType, ruleNames, source, notes})
 }
 
-export function addRuleLink(fromEntity, toRuleName, linkType, source) {
-    return postToBackend('link/rule',
+export function addRuleLink(graph, fromEntity, toRuleName, linkType, source) {
+    return postToBackend(`${graph}/link/rule`,
         {fromEntity: fromEntity, toRuleName: toRuleName, linkType: linkType, source: source}
     )
 }
 
-export function deleteLink(fromEntity, toEntity, linkType) {
-    return postToBackend('link/delete', {fromEntity: fromEntity, toEntity: toEntity, linkType: linkType})
+export function deleteLink(graph, fromEntity, toEntity, linkType) {
+    return postToBackend(`${graph}/link/delete`, {fromEntity: fromEntity, toEntity: toEntity, linkType: linkType})
 }
 
-export function updateLink(fromWord, toWord, linkType, ruleNames, source, notes) {
-    return postToBackend('link/update', {fromEntity: fromWord, toEntity: toWord, linkType: linkType, ruleNames: ruleNames, source: source, notes: notes})
+export function updateLink(graph, fromWord, toWord, linkType, ruleNames, source, notes) {
+    return postToBackend(`${graph}/link/update`, {fromEntity: fromWord, toEntity: toWord, linkType: linkType, ruleNames: ruleNames, source: source, notes: notes})
 }
 
-export function createCompound(compoundWord, firstComponentWord, source, notes) {
-    return postToBackend('compound', {compoundId: compoundWord, firstComponentId: firstComponentWord, source, notes})
+export function createCompound(graph, compoundWord, firstComponentWord, source, notes) {
+    return postToBackend(`${graph}/compound`, {compoundId: compoundWord, firstComponentId: firstComponentWord, source, notes})
 }
 
-export function addToCompound(compoundId, componentWord) {
-    return postToBackend(`compound/${compoundId}/add`,{componentId: componentWord})
+export function addToCompound(graph, compoundId, componentWord) {
+    return postToBackend(`${graph}/compound/${compoundId}/add`,{componentId: componentWord})
 }
 
-export function deleteCompound(compoundId) {
-    return postToBackend(`compound/${compoundId}/delete`)
+export function deleteCompound(graph, compoundId) {
+    return postToBackend(`${graph}/compound/${compoundId}/delete`)
 }
 
-export function addParadigm(name, language, pos, text) {
-    return postToBackend('paradigms/' + language, {name: name, pos: pos, text: text})
+export function addParadigm(graph, name, language, pos, text) {
+    return postToBackend(`${graph}/paradigms/${language}`, {name: name, pos: pos, text: text})
 }
 
-export function updateParadigm(id, name, pos, text) {
-    return postToBackend('paradigm/' + id, {name: name, pos: pos, text: text})
+export function updateParadigm(graph, id, name, pos, text) {
+    return postToBackend(`${graph}/paradigm/${id}`, {name: name, pos: pos, text: text})
 }
 
-export function deleteParadigm(id) {
-    return postToBackend(`paradigm/${id}/delete`)
+export function deleteParadigm(graph, id) {
+    return postToBackend(`${graph}/paradigm/${id}/delete`)
 }
 
-export function updateWordParadigm(id, paradigm) {
-    return postToBackend(`word/${id}/paradigm`, {items: [...paradigm]})
+export function updateWordParadigm(graph, id, paradigm) {
+    return postToBackend(`${graph}/word/${id}/paradigm`, {items: [...paradigm]})
 }
 
-export function addLanguage(name, shortName, reconstructed) {
-    return postToBackend('languages', {name: name, shortName: shortName, reconstructed: reconstructed})
+export function addLanguage(graph, name, shortName, reconstructed) {
+    return postToBackend(`${graph}/languages`, {name: name, shortName: shortName, reconstructed: reconstructed})
 }
 
 export function updateLanguage(
-    lang, diphthongs, syllableStructures, stressRule, phonotacticsRule, orthographyRule,
+    graph, lang, diphthongs, syllableStructures, stressRule, phonotacticsRule, orthographyRule,
     grammaticalCategories, wordClasses
 ) {
-    return postToBackend(`language/${lang}`,
+    return postToBackend(`${graph}/language/${lang}`,
         {
             diphthongs: diphthongs,
             syllableStructures: syllableStructures,
@@ -200,8 +218,8 @@ export function updateLanguage(
     )
 }
 
-export function addPhoneme(lang, graphemes, sound, classes, historical, source) {
-    return postToBackend(`phonemes/${lang}`, {
+export function addPhoneme(graph, lang, graphemes, sound, classes, historical, source) {
+    return postToBackend(`${graph}/phonemes/${lang}`, {
         graphemes: graphemes,
         sound: sound,
         classes: classes,
@@ -210,8 +228,8 @@ export function addPhoneme(lang, graphemes, sound, classes, historical, source) 
     })
 }
 
-export function updatePhoneme(id, graphemes, sound, classes, historical, source) {
-    return postToBackend(`phoneme/${id}`, {
+export function updatePhoneme(graph, id, graphemes, sound, classes, historical, source) {
+    return postToBackend(`${graph}/phoneme/${id}`, {
         graphemes: graphemes,
         sound: sound,
         classes: classes,
@@ -220,18 +238,18 @@ export function updatePhoneme(id, graphemes, sound, classes, historical, source)
     })
 }
 
-export function deletePhoneme(id) {
-    return postToBackend(`phoneme/${id}/delete`)
+export function deletePhoneme(graph, id) {
+    return postToBackend(`${graph}/phoneme/${id}/delete`)
 }
 
-export function copyPhonemes(toLang, fromLang) {
-    return postToBackend(`language/${toLang}/copyPhonemes`, {fromLang: fromLang})
+export function copyPhonemes(graph, toLang, fromLang) {
+    return postToBackend(`${graph}/language/${toLang}/copyPhonemes`, {fromLang: fromLang})
 }
 
-export function addPublication(data) {
-    return postToBackend('publications', data)
+export function addPublication(graph, data) {
+    return postToBackend(`${graph}/publications`, data)
 }
 
-export function updatePublication(id, data) {
-    return postToBackend(`publication/${id}`, data)
+export function updatePublication(graph, id, data) {
+    return postToBackend(`${graph}/publication/${id}`, data)
 }

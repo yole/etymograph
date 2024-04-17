@@ -1,10 +1,7 @@
 package ru.yole.etymograph.web
 
 import org.springframework.http.HttpStatus
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.ResponseStatus
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 import org.springframework.web.server.ResponseStatusException
 import ru.yole.etymograph.*
 
@@ -21,14 +18,14 @@ class LinkController(val graphService: GraphService) {
 
     data class ResolvedLinkParams(val fromEntity: LangEntity, val toEntity: LangEntity, val linkType: LinkType)
 
-    @PostMapping("/link")
-    fun addLink(@RequestBody params: LinkParams) {
-        val graph = graphService.graph
-        val (fromEntity, toEntity, linkType) = resolveLinkParams(params)
-        val rules = resolveRuleNames(params)
-        val source = parseSourceRefs(graph, params.source)
+    @PostMapping("/{graph}/link")
+    fun addLink(@PathVariable graph: String, @RequestBody params: LinkParams) {
+        val repo = graphService.resolveGraph(graph)
+        val (fromEntity, toEntity, linkType) = resolveLinkParams(graph, params)
+        val rules = resolveRuleNames(graph, params)
+        val source = parseSourceRefs(repo, params.source)
 
-        graph.addLink(fromEntity, toEntity, linkType, rules, source, params.notes.nullize())
+        repo.addLink(fromEntity, toEntity, linkType, rules, source, params.notes.nullize())
     }
 
     data class RuleLinkParams(
@@ -39,21 +36,21 @@ class LinkController(val graphService: GraphService) {
         val notes: String? = null
     )
 
-    @PostMapping("/link/rule")
-    fun addRuleLink(@RequestBody params: RuleLinkParams) {
-        val graph = graphService.graph
-        val fromEntity = graphService.resolveEntity(params.fromEntity)
-        val toRule = graphService.resolveRule(params.toRuleName)
+    @PostMapping("/{graph}/link/rule")
+    fun addRuleLink(@PathVariable graph: String, @RequestBody params: RuleLinkParams) {
+        val repo = graphService.resolveGraph(graph)
+        val fromEntity = graphService.resolveEntity(graph, params.fromEntity)
+        val toRule = graphService.resolveRule(graph, params.toRuleName)
         val linkType = resolveLinkType(params.linkType)
-        val source = parseSourceRefs(graph, params.source)
+        val source = parseSourceRefs(repo, params.source)
 
-        graph.addLink(fromEntity, toRule, linkType, emptyList(), source, params.notes.nullize())
+        repo.addLink(fromEntity, toRule, linkType, emptyList(), source, params.notes.nullize())
     }
 
-    private fun resolveLinkParams(params: LinkParams): ResolvedLinkParams {
+    private fun resolveLinkParams(graph: String, params: LinkParams): ResolvedLinkParams {
         return ResolvedLinkParams(
-            graphService.resolveEntity(params.fromEntity),
-            graphService.resolveEntity(params.toEntity),
+            graphService.resolveEntity(graph, params.fromEntity),
+            graphService.resolveEntity(graph, params.toEntity),
             resolveLinkType(params.linkType),
         )
     }
@@ -62,33 +59,33 @@ class LinkController(val graphService: GraphService) {
         (Link.allLinkTypes.find { it.id == linkType }
             ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST, "No link type '$linkType'"))
 
-    private fun resolveRuleNames(params: LinkParams): List<Rule> {
+    private fun resolveRuleNames(graph: String, params: LinkParams): List<Rule> {
         return params.ruleNames
             .takeIf { it.isNotBlank() }
             ?.split(',')
-            ?.map { graphService.resolveRule(it) }
+            ?.map { graphService.resolveRule(graph, it) }
             ?: emptyList()
     }
 
-    @PostMapping("/link/update")
-    fun updateLink(@RequestBody params: LinkParams) {
-        val (fromEntity, toEntity, linkType) = resolveLinkParams(params)
+    @PostMapping("/{graph}/link/update")
+    fun updateLink(@PathVariable graph: String, @RequestBody params: LinkParams) {
+        val (fromEntity, toEntity, linkType) = resolveLinkParams(graph, params)
 
-        val graph = graphService.graph
-        val link = graph.findLink(fromEntity, toEntity, linkType)
+        val repo = graphService.resolveGraph(graph)
+        val link = repo.findLink(fromEntity, toEntity, linkType)
             ?: badRequest("No such link")
-        val rules = resolveRuleNames(params)
+        val rules = resolveRuleNames(graph, params)
 
         link.rules = rules
-        link.source = parseSourceRefs(graph, params.source)
+        link.source = parseSourceRefs(repo, params.source)
         link.notes = params.notes.nullize()
     }
 
-    @PostMapping("/link/delete")
-    fun deleteLink(@RequestBody params: LinkParams): Boolean {
-        val graph = graphService.graph
-        val (fromWord, toWord, linkType) = resolveLinkParams(params)
+    @PostMapping("/{graph}/link/delete")
+    fun deleteLink(@PathVariable graph: String, @RequestBody params: LinkParams): Boolean {
+        val repo = graphService.resolveGraph(graph)
+        val (fromWord, toWord, linkType) = resolveLinkParams(graph, params)
 
-        return (graph.deleteLink(fromWord, toWord, linkType) || graph.deleteLink(toWord, fromWord, linkType))
+        return (repo.deleteLink(fromWord, toWord, linkType) || repo.deleteLink(toWord, fromWord, linkType))
     }
 }

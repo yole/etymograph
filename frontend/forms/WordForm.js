@@ -6,8 +6,12 @@ import FormTextArea from "@/components/FormTextArea";
 import FormCheckbox from "@/components/FormCheckbox";
 import {useState} from "react";
 import RuleListSelect from "@/components/RuleListSelect";
+import {useRouter} from "next/router";
 
 export default function WordForm(props) {
+    const router = useRouter()
+    const graph = router.query.graph
+
     const isAddingLink = props.linkType !== undefined
 
     const [isNewWord, setNewWord] = useState(false)
@@ -21,17 +25,17 @@ export default function WordForm(props) {
             } else {
                 [fromId, toId] = [wordJson.id, props.linkTarget.id]
             }
-            const r = await addLink(fromId, toId, props.linkType, data.linkRuleNames, data.linkSource, data.linkNotes)
+            const r = await addLink(graph, fromId, toId, props.linkType, data.linkRuleNames, data.linkSource, data.linkNotes)
             if (r.status !== 200) {
                 const jr = await r.json()
                 return {message: jr.message}
             }
         }
         else if (props.newCompound === true) {
-            await createCompound(props.linkTarget.id, wordJson.id, data.linkSource, data.linkNotes)
+            await createCompound(graph, props.linkTarget.id, wordJson.id, data.linkSource, data.linkNotes)
         }
         else if (props.addToCompound !== undefined) {
-            await addToCompound(props.addToCompound, wordJson.id)
+            await addToCompound(graph, props.addToCompound, wordJson.id)
         }
         if (props.submitted !== undefined) {
             props.submitted(wordJson)
@@ -40,7 +44,7 @@ export default function WordForm(props) {
 
     async function updateWordStatus(data) {
         if (isAddingLink || props.newCompound === true || props.addToCompound !== undefined) {
-            const wordResponse = await fetchBackend(`word/${data.language}/${data.text}`)
+            const wordResponse = await fetchBackend(graph, `word/${data.language}/${data.text}`)
             if (wordResponse.notFound !== undefined) {
                 setNewWord(true)
                 setWordDefinitions([])
@@ -59,9 +63,9 @@ export default function WordForm(props) {
     }
 
     return <EtymographForm
-        create={(data) => addWord(data.language, data.text, data.gloss, data.fullGloss, data.posClasses,
+        create={(data) => addWord(graph, data.language, data.text, data.gloss, data.fullGloss, data.posClasses,
             data.reconstructed, data.source, data.notes)}
-        update={(data) => updateWord(props.updateId, data.text, data.gloss, data.fullGloss, data.posClasses,
+        update={(data) => updateWord(graph, props.updateId, data.text, data.gloss, data.fullGloss, data.posClasses,
             data.reconstructed, data.source, data.notes)}
         {...props}
         submitted={submitted}

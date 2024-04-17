@@ -18,38 +18,38 @@ data class AddPublicationParameters(
 
 @RestController
 class PublicationController(val graphService: GraphService) {
-    @GetMapping("/publications")
-    fun publications(): List<PublicationViewModel> {
-        return graphService.graph.allPublications().sortedBy { it.refId }.map {
+    @GetMapping("/{graph}/publications")
+    fun publications(@PathVariable graph: String): List<PublicationViewModel> {
+        return graphService.resolveGraph(graph).allPublications().sortedBy { it.refId }.map {
             it.toViewModel()
         }
     }
 
     private fun Publication.toViewModel() = PublicationViewModel(id, name, refId)
 
-    @GetMapping("/publication/{id}")
-    fun publication(@PathVariable id: Int): PublicationViewModel {
-        val publication = graphService.graph.publicationById(id)
+    @GetMapping("/{graph}/publication/{id}")
+    fun publication(@PathVariable graph: String, @PathVariable id: Int): PublicationViewModel {
+        val publication = graphService.resolveGraph(graph).publicationById(id)
             ?: throw ResponseStatusException(HttpStatus.NOT_FOUND, "No publication with ID $id")
         return publication.toViewModel()
     }
 
-    @PostMapping("/publications", consumes = ["application/json"])
+    @PostMapping("/{graph}/publications", consumes = ["application/json"])
     @ResponseBody
-    fun addPublication(@RequestBody params: AddPublicationParameters): PublicationViewModel {
-        val name = params.name.nullize() ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST, "Name is required")
-        val refId = params.refId.nullize() ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST, "refID is required")
-        val publication = graphService.graph.addPublication(name, refId)
+    fun addPublication(@PathVariable graph: String, @RequestBody params: AddPublicationParameters): PublicationViewModel {
+        val name = params.name.nullize() ?: badRequest("Name is required")
+        val refId = params.refId.nullize() ?: badRequest("refID is required")
+        val publication = graphService.resolveGraph(graph).addPublication(name, refId)
         return publication.toViewModel()
     }
 
-    @PostMapping("/publication/{id}", consumes = ["application/json"])
+    @PostMapping("/{graph}/publication/{id}", consumes = ["application/json"])
     @ResponseBody
-    fun updatePublication(@PathVariable id: Int, @RequestBody params: AddPublicationParameters): PublicationViewModel {
-        val publication = graphService.graph.publicationById(id)
+    fun updatePublication(@PathVariable graph: String, @PathVariable id: Int, @RequestBody params: AddPublicationParameters): PublicationViewModel {
+        val publication = graphService.resolveGraph(graph).publicationById(id)
             ?: throw ResponseStatusException(HttpStatus.NOT_FOUND, "No publication with ID $id")
-        publication.name = params.name.nullize() ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST, "Name is required")
-        publication.refId = params.refId.nullize() ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST, "refID is required")
+        publication.name = params.name.nullize() ?: badRequest("Name is required")
+        publication.refId = params.refId.nullize() ?: badRequest("refID is required")
         return publication.toViewModel()
     }
 }

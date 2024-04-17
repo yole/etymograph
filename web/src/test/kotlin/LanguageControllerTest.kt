@@ -20,7 +20,7 @@ class LanguageControllerTest {
         val parameters = LanguageController.UpdateLanguageParameters(
             grammaticalCategories = "Number (N, ADJ): Singular (SG), Plural (PL), Dual (DU), Collective Plural (PPL)\nCase (N): Nominative (NOM), Genitive (GEN)"
         )
-        languageController.updateLanguage("q", parameters)
+        languageController.updateLanguage("" , "q", parameters)
 
         val categories = fixture.q.grammaticalCategories
         assertEquals(2, categories.size)
@@ -31,7 +31,7 @@ class LanguageControllerTest {
         assertEquals("Singular", number.values[0].name)
         assertEquals("SG", number.values[0].abbreviation)
 
-        val vm = languageController.language("q")
+        val vm = languageController.language("", "q")
         assertEquals(vm.grammaticalCategories, parameters.grammaticalCategories)
     }
 
@@ -40,7 +40,7 @@ class LanguageControllerTest {
         val parameters = LanguageController.UpdateLanguageParameters(
             wordClasses = "Plural type (N): class-plural-rim"
         )
-        languageController.updateLanguage("q", parameters)
+        languageController.updateLanguage("" , "q", parameters)
 
         val categories = fixture.q.wordClasses
         assertEquals(1, categories.size)
@@ -49,7 +49,7 @@ class LanguageControllerTest {
         assertEquals("class-plural-rim", pluralType.values[0].name)
         assertEquals("class-plural-rim", pluralType.values[0].abbreviation)
 
-        val vm = languageController.language("q")
+        val vm = languageController.language("", "q")
         assertEquals(vm.wordClasses, parameters.wordClasses)
     }
 
@@ -58,7 +58,7 @@ class LanguageControllerTest {
         val parameters = LanguageController.UpdateLanguageParameters(
             diphthongs = ""
         )
-        languageController.updateLanguage("q", parameters)
+        languageController.updateLanguage("" , "q", parameters)
 
         assertEquals(0, fixture.q.diphthongs.size)
     }
@@ -71,10 +71,10 @@ class LanguageControllerTest {
         val parameters = LanguageController.UpdateLanguageParameters(
             phonotacticsRuleName = "q-phono"
         )
-        languageController.updateLanguage("q", parameters)
+        languageController.updateLanguage("" , "q", parameters)
         assertEquals(rule.id, fixture.q.phonotacticsRule?.resolve()?.id)
 
-        val languageVM = languageController.language("q")
+        val languageVM = languageController.language("", "q")
         assertEquals(rule.id, languageVM.phonotacticsRuleId)
         assertEquals("q-phono", languageVM.phonotacticsRuleName)
     }
@@ -82,10 +82,10 @@ class LanguageControllerTest {
     @Test
     fun copyPhonemes() {
         fixture.graph.addPhoneme(fixture.q, listOf("a"), null, setOf("open", "back", "vowel"))
-        languageController.addLanguage(LanguageController.UpdateLanguageParameters(
+        languageController.addLanguage("" , LanguageController.UpdateLanguageParameters(
             "Sindarin", "S"
         ))
-        languageController.copyPhonemes("S", LanguageController.CopyPhonemesParams("q"))
+        languageController.copyPhonemes("" , "S", LanguageController.CopyPhonemesParams("q"))
         val s = fixture.graph.languageByShortName("S")!!
         assertEquals(1, s.phonemes.size)
     }

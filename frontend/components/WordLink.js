@@ -1,8 +1,12 @@
 import Link from "next/link";
+import {useRouter} from "next/router";
 
 export default function WordLink(params) {
+    const router = useRouter()
+    const graph = router.query.graph
+
     const word = params.word
-    let linkTarget = `/word/${word.language}/${word.text.toLowerCase()}`;
+    let linkTarget = `/${graph}/word/${word.language}/${word.text.toLowerCase()}`;
     if (word.homonym) {
         linkTarget += `/${word.id}`
     }

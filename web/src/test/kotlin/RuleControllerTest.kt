@@ -27,7 +27,7 @@ class RuleControllerTest {
         val rule = graph.addRule("q-gen", fixture.q, fixture.q,
             RuleLogic(emptyList(), emptyList()), ".GEN")
 
-        val ruleVM = ruleController.rule(rule.id)
+        val ruleVM = ruleController.rule("", rule.id)
         assertEquals("Case: Genitive", ruleVM.addedCategoryDisplayNames)
     }
 
@@ -43,13 +43,14 @@ class RuleControllerTest {
         val rule = graph.addRule("q-1sg", fixture.q, fixture.q,
             RuleLogic(emptyList(), emptyList()), ".1SG")
 
-        val ruleVM = ruleController.rule(rule.id)
+        val ruleVM = ruleController.rule("", rule.id)
         assertEquals("Person: 1st person, Number: Singular", ruleVM.addedCategoryDisplayNames)
     }
 
     @Test
     fun testEmptyToPOS() {
         ruleController.newRule(
+            "",
             RuleController.UpdateRuleParameters(
             "q-pos",
             "q", "q",
@@ -64,6 +65,7 @@ class RuleControllerTest {
     @Test
     fun uniqueRuleName() {
         ruleController.newRule(
+            "",
             RuleController.UpdateRuleParameters(
                 "q-pos",
                 "q", "q",
@@ -72,6 +74,7 @@ class RuleControllerTest {
 
         assertThrows(ResponseStatusException::class.java) {
             ruleController.newRule(
+                "",
                 RuleController.UpdateRuleParameters(
                     "q-pos",
                     "q", "q",
@@ -86,6 +89,7 @@ class RuleControllerTest {
             RuleLogic(emptyList(), emptyList()))
 
         ruleController.newSequence(
+            "",
             RuleController.UpdateSequenceParams(
                 "ce-to-q",
                 "ce",
@@ -96,7 +100,7 @@ class RuleControllerTest {
 
         val seq = graph.ruleSequencesForLanguage(fixture.q).single()
 
-        val ruleList = ruleController.rules("q")
+        val ruleList = ruleController.rules("", "q")
         assertEquals(1, ruleList.ruleGroups.size)
         assertEquals("Phonetics: ce-to-q", ruleList.ruleGroups[0].groupName)
         assertEquals(seq.id, ruleList.ruleGroups[0].sequenceId)
@@ -112,6 +116,7 @@ class RuleControllerTest {
             RuleLogic(emptyList(), emptyList()))
 
         ruleController.updateSequence(
+            "",
             seq.id,
             RuleController.UpdateSequenceParams(
                 "ce-to-q",
@@ -121,7 +126,7 @@ class RuleControllerTest {
             )
         )
 
-        val ruleList = ruleController.rules("q")
+        val ruleList = ruleController.rules("", "q")
         assertEquals(1, ruleList.ruleGroups.size)
         assertEquals(2, ruleList.ruleGroups[0].rules.size)
     }
@@ -133,7 +138,7 @@ class RuleControllerTest {
         val w2 = graph.findOrAddWord("an", fixture.q, null)
         val link = graph.addLink(w2, w1, Link.Origin, emptyList(), emptyList(), null)
 
-        val result = ruleController.applySequence(seq.id, RuleController.ApplySequenceParams(w2.id, w1.id))
+        val result = ruleController.applySequence("", seq.id, RuleController.ApplySequenceParams(w2.id, w1.id))
         assertEquals(1, result.ruleIds.size)
         assertEquals(1, link.rules.size)
     }
@@ -141,6 +146,7 @@ class RuleControllerTest {
     @Test
     fun nestedSequence() {
         val ceRule = ruleController.newRule(
+            "",
             RuleController.UpdateRuleParameters(
                 "ce-p-f",
                 "ce", "ce",
@@ -151,6 +157,7 @@ class RuleControllerTest {
             listOf(graph.ruleByName(ceRule.name)!!))
 
         val qRule = ruleController.newRule(
+            "",
             RuleController.UpdateRuleParameters(
                 "q-final-consonant",
                 "q", "q",
@@ -159,6 +166,7 @@ class RuleControllerTest {
         )
 
         ruleController.newSequence(
+            "",
             RuleController.UpdateSequenceParams(
                 "ce-to-q",
                 "ce",
@@ -170,7 +178,7 @@ class RuleControllerTest {
         assertEquals(ceSequence.id, seq.ruleIds[0])
         assertEquals(qRule.id, seq.ruleIds[1])
 
-        val rules = ruleController.rules("q")
+        val rules = ruleController.rules("", "q")
         val group = rules.ruleGroups.single()
         assertEquals(2, group.rules.size)
     }
@@ -180,6 +188,7 @@ class RuleControllerTest {
         fixture.q.phonemes = listOf(Phoneme(-1, listOf("th"), "θ", setOf("consonant")))
 
         ruleController.newRule(
+            "",
             RuleController.UpdateRuleParameters(
                 "q-pos",
                 "q", "q",
@@ -191,7 +200,7 @@ class RuleControllerTest {
         val word2 = graph.findOrAddWord("aith", fixture.q, "")
         graph.addLink(word2, word1, Link.Derived, listOf(rule), emptyList(), null)
 
-        val ruleViewModel = ruleController.rule(rule.id)
+        val ruleViewModel = ruleController.rule("", rule.id)
         val example = ruleViewModel.examples.single()
         assertNull(example.expectedWord)
     }

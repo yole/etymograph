@@ -2,11 +2,14 @@ import {addRuleSequence, updateRuleSequence} from "@/api";
 import EtymographForm from "@/components/EtymographForm";
 import FormRow from "@/components/FormRow";
 import FormTextArea from "@/components/FormTextArea";
+import {useRouter} from "next/router";
 
 export default function RuleSequenceForm(props) {
+    const router = useRouter()
+    const graph = router.query.graph
     return <EtymographForm
-        create={(data) => addRuleSequence(data)}
-        update={(data) => updateRuleSequence(props.updateId, data)}
+        create={(data) => addRuleSequence(graph, data)}
+        update={(data) => updateRuleSequence(graph, props.updateId, data)}
         {...props}
     >
         <table><tbody>

@@ -48,20 +48,21 @@ class LanguageController(val graphService: GraphService) {
         val shortName: String
     )
 
-    @GetMapping("/language")
-    fun indexJson(): List<LanguageShortViewModel> {
-        return graphService.graph.allLanguages().sortedBy { it.name }.map {
+    @GetMapping("/{graph}/language")
+    fun indexJson(@PathVariable graph: String): List<LanguageShortViewModel> {
+        return graphService.resolveGraph(graph).allLanguages().sortedBy { it.name }.map {
             LanguageShortViewModel(it.name, it.shortName)
         }
     }
 
-    @GetMapping("/language/{lang}")
-    fun language(@PathVariable lang: String): LanguageViewModel {
-        val language = graphService.resolveLanguage(lang)
-        return language.toViewModel()
+    @GetMapping("/{graph}/language/{lang}")
+    fun language(@PathVariable graph: String, @PathVariable lang: String): LanguageViewModel {
+        val language = graphService.resolveLanguage(graph, lang)
+        val repo = graphService.resolveGraph(graph)
+        return language.toViewModel(repo)
     }
 
-    private fun Language.toViewModel(): LanguageViewModel {
+    private fun Language.toViewModel(repo: GraphRepository): LanguageViewModel {
         val stressRule = stressRule?.resolve()
         val phonotacticsRule = phonotacticsRule?.resolve()
         val orthographyRule = orthographyRule?.resolve()
@@ -73,7 +74,7 @@ class LanguageController(val graphService: GraphService) {
             buildPhonemeTables().map { table ->
                 PhonemeTableViewModel(table.title, table.columnTitles, table.rows.map { row ->
                     PhonemeTableRowViewModel(row.title, row.columns.map { cell ->
-                        PhonemeTableCellViewModel(cell.phonemes.map { it.toViewModel(graphService.graph, this)})
+                        PhonemeTableCellViewModel(cell.phonemes.map { it.toViewModel(repo, this)})
                     })
                 })
             },
@@ -103,36 +104,39 @@ class LanguageController(val graphService: GraphService) {
         val wordClasses: String? = null
     )
 
-    @PostMapping("/languages", consumes = ["application/json"])
-    fun addLanguage(@RequestBody params: UpdateLanguageParameters): LanguageViewModel {
+    @PostMapping("/{graph}/languages", consumes = ["application/json"])
+    fun addLanguage(@PathVariable graph: String, @RequestBody params: UpdateLanguageParameters): LanguageViewModel {
         val name = params.name ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST, "Language name must be provided")
         val shortName = params.shortName ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST, "Language short name must be provided")
         val language = Language(name, shortName)
-        graphService.graph.addLanguage(language)
-        updateLanguageDetails(language, params)
-        return language.toViewModel()
+        val repo = graphService.resolveGraph(graph)
+        repo.addLanguage(language)
+        updateLanguageDetails(graph, language, params)
+        return language.toViewModel(repo)
     }
 
-    @PostMapping("/language/{lang}", consumes = ["application/json"])
-    fun updateLanguage(@PathVariable lang: String, @RequestBody params: UpdateLanguageParameters) {
-        val language = graphService.resolveLanguage(lang)
-        updateLanguageDetails(language, params)
+    @PostMapping("/{graph}/language/{lang}", consumes = ["application/json"])
+    fun updateLanguage(@PathVariable graph: String, @PathVariable lang: String, @RequestBody params: UpdateLanguageParameters) {
+        val language = graphService.resolveLanguage(graph, lang)
+        updateLanguageDetails(graph, language, params)
     }
 
     data class CopyPhonemesParams(val fromLang: String = "")
 
-    @PostMapping("/language/{lang}/copyPhonemes", consumes = ["application/json"])
-    fun copyPhonemes(@PathVariable lang: String, @RequestBody params: CopyPhonemesParams) {
-        val toLanguage = graphService.resolveLanguage(lang)
-        val fromLanguage = graphService.resolveLanguage(params.fromLang)
+    @PostMapping("/{graph}/language/{lang}/copyPhonemes", consumes = ["application/json"])
+    fun copyPhonemes(@PathVariable graph: String, @PathVariable lang: String, @RequestBody params: CopyPhonemesParams) {
+        val toLanguage = graphService.resolveLanguage(graph, lang)
+        val fromLanguage = graphService.resolveLanguage(graph, params.fromLang)
+        val repo = graphService.resolveGraph(graph)
         for (phoneme in fromLanguage.phonemes) {
             if (toLanguage.phonemes.none { phoneme.graphemes.intersect(it.graphemes).isNotEmpty() }) {
-                graphService.graph.addPhoneme(toLanguage, phoneme.graphemes, phoneme.sound, phoneme.classes)
+                repo.addPhoneme(toLanguage, phoneme.graphemes, phoneme.sound, phoneme.classes)
             }
         }
     }
 
     private fun updateLanguageDetails(
+        graph: String,
         language: Language,
         params: UpdateLanguageParameters
     ) {
@@ -145,13 +149,13 @@ class LanguageController(val graphService: GraphService) {
         language.grammaticalCategories = params.grammaticalCategories.nullize()?.let { parseWordCategories(it) } ?: mutableListOf()
         language.wordClasses = params.wordClasses.nullize()?.let { parseWordCategories(it) } ?: mutableListOf()
 
-        language.stressRule = parseRuleRef(params.stressRuleName)
-        language.phonotacticsRule = parseRuleRef(params.phonotacticsRuleName)
-        language.orthographyRule = parseRuleRef(params.orthographyRuleName)
+        language.stressRule = parseRuleRef(graph, params.stressRuleName)
+        language.phonotacticsRule = parseRuleRef(graph, params.phonotacticsRuleName)
+        language.orthographyRule = parseRuleRef(graph, params.orthographyRuleName)
     }
 
-    private fun parseRuleRef(name: String?): RuleRef? {
-        val stressRule = name?.nullize()?.let { graphService.resolveRule(it) }
+    private fun parseRuleRef(graph: String, name: String?): RuleRef? {
+        val stressRule = name?.nullize()?.let { graphService.resolveRule(graph, it) }
         return stressRule?.let { RuleRef.to(it) }
     }
 

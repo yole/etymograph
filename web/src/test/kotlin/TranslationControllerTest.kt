@@ -10,13 +10,13 @@ class TranslationControllerTest {
 
         val corpusController = CorpusController(fixture.graphService)
         val corpusParams = CorpusController.CorpusTextParams(text = "Elen sila...")
-        val corpusTextViewModel = corpusController.newText("q", corpusParams)
+        val corpusTextViewModel = corpusController.newText("", "q", corpusParams)
 
         val translationController = TranslationController(fixture.graphService)
         val translationParams = TranslationController.TranslationParams(corpusTextViewModel.id, "The star shines...", "")
-        translationController.addTranslation(translationParams)
+        translationController.addTranslation("", translationParams)
 
-        val corpusTextViewModel2 = corpusController.textJson(corpusTextViewModel.id)
+        val corpusTextViewModel2 = corpusController.textJson("", corpusTextViewModel.id)
         Assert.assertEquals(1, corpusTextViewModel2.translations.size)
     }
 }

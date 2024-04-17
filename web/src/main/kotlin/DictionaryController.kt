@@ -11,42 +11,43 @@ class DictionaryController(val graphService: GraphService) {
     data class DictionaryWordViewModel(val id: Int, val text: String, val gloss: String, val fullGloss: String?, val homonym: Boolean)
     data class DictionaryViewModel(val language: Language, val words: List<DictionaryWordViewModel>)
 
-    @GetMapping("/dictionary/{lang}")
-    fun dictionary(@PathVariable lang: String): DictionaryViewModel {
-        return loadDictionary(lang, WordKind.NORMAL)
+    @GetMapping("/{graph}/dictionary/{lang}")
+    fun dictionary(@PathVariable graph: String, @PathVariable lang: String): DictionaryViewModel {
+        return loadDictionary(graph, lang, WordKind.NORMAL)
     }
 
-    @GetMapping("/dictionary/{lang}/compounds")
-    fun dictionaryCompound(@PathVariable lang: String): DictionaryViewModel {
-        return loadDictionary(lang, WordKind.COMPOUND)
+    @GetMapping("/{graph}/dictionary/{lang}/compounds")
+    fun dictionaryCompound(@PathVariable graph: String, @PathVariable lang: String): DictionaryViewModel {
+        return loadDictionary(graph, lang, WordKind.COMPOUND)
     }
 
-    @GetMapping("/dictionary/{lang}/names")
-    fun dictionaryNames(@PathVariable lang: String): DictionaryViewModel {
-        return loadDictionary(lang, WordKind.NAME)
+    @GetMapping("/{graph}/dictionary/{lang}/names")
+    fun dictionaryNames(@PathVariable graph: String, @PathVariable lang: String): DictionaryViewModel {
+        return loadDictionary(graph, lang, WordKind.NAME)
     }
 
-    @GetMapping("/dictionary/{lang}/reconstructed")
-    fun dictionaryReconstructed(@PathVariable lang: String): DictionaryViewModel {
-        return loadDictionary(lang, WordKind.RECONSTRUCTED)
+    @GetMapping("/{graph}/dictionary/{lang}/reconstructed")
+    fun dictionaryReconstructed(@PathVariable graph: String, @PathVariable lang: String): DictionaryViewModel {
+        return loadDictionary(graph, lang, WordKind.RECONSTRUCTED)
     }
 
-    @GetMapping("/dictionary/{lang}/all")
-    fun allWords(@PathVariable lang: String): DictionaryViewModel {
-        return loadDictionary(lang, null)
+    @GetMapping("/{graph}/dictionary/{lang}/all")
+    fun allWords(@PathVariable graph: String, @PathVariable lang: String): DictionaryViewModel {
+        return loadDictionary(graph, lang, null)
     }
 
-    private fun loadDictionary(lang: String, wordKind: WordKind?): DictionaryViewModel {
-        val language = graphService.resolveLanguage(lang)
+    private fun loadDictionary(graph: String, lang: String, wordKind: WordKind?): DictionaryViewModel {
+        val repo = graphService.resolveGraph(graph)
+        val language = graphService.resolveLanguage(graph, lang)
         val words = if (wordKind == null)
-            graphService.graph.allWords(language)
+            repo.allWords(language)
         else
-            graphService.graph.filteredWords(language, wordKind)
+            repo.filteredWords(language, wordKind)
         return DictionaryViewModel(language, words.map {
             DictionaryWordViewModel(
                 it.id, it.text,
-                it.getOrComputeGloss(graphService.graph) ?: "", it.fullGloss,
-                graphService.graph.isHomonym(it)
+                it.getOrComputeGloss(repo) ?: "", it.fullGloss,
+                repo.isHomonym(it)
             )
         })
     }

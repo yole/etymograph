@@ -35,6 +35,7 @@ class QTestFixture {
 
     fun setupRuleSequence(): RuleSequence {
         RuleController(graphService).newRule(
+            "",
             RuleController.UpdateRuleParameters(
                 "q-final-consonant",
                 "q", "q",

@@ -1,5 +1,6 @@
 import {useState} from "react";
 import {addPhoneme, updatePhoneme} from "@/api";
+import {useRouter} from "next/router";
 
 export default function PhonemeForm(props) {
     const [graphemes, setGraphemes] = useState(props.initialGraphemes !== undefined ? props.initialGraphemes : "")
@@ -8,13 +9,15 @@ export default function PhonemeForm(props) {
     const [historical, setHistorical] = useState(props.initialHistorical !== undefined ? props.initialHistorical : false)
     const [source, setSource] = useState(props.initialSource !== undefined ? props.initialSource : "")
     const [errorText, setErrorText] = useState("")
+    const router = useRouter()
+    const graph = router.query.graph
 
     function savePhoneme() {
         if (props.updateId !== undefined) {
-            updatePhoneme(props.updateId, graphemes, sound, classes, historical, source).then(handleResponse)
+            updatePhoneme(graph, props.updateId, graphemes, sound, classes, historical, source).then(handleResponse)
         }
         else {
-            addPhoneme(props.language, graphemes, sound, classes, historical, source).then(handleResponse)
+            addPhoneme(graph, props.language, graphemes, sound, classes, historical, source).then(handleResponse)
         }
     }
 

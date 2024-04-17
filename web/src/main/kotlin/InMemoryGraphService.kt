@@ -10,36 +10,44 @@ import java.nio.file.Path
 abstract class GraphService {
     abstract val graph: GraphRepository
 
-    fun resolveLanguage(lang: String): Language {
-        return graph.languageByShortName(lang)
+    fun allGraphs(): List<GraphRepository> {
+        return listOf(graph)
+    }
+
+    fun resolveGraph(name: String): GraphRepository {
+        return graph
+    }
+
+    fun resolveLanguage(graph: String, lang: String): Language {
+        return resolveGraph(graph).languageByShortName(lang)
             ?: throw ResponseStatusException(HttpStatus.NOT_FOUND, "No language with short name $lang")
     }
 
-    fun resolveWord(id: Int): Word {
-        return graph.wordById(id)
+    fun resolveWord(graph: String, id: Int): Word {
+        return resolveGraph(graph).wordById(id)
             ?: throw ResponseStatusException(HttpStatus.NOT_FOUND, "No word with ID $id")
     }
 
-    fun resolveEntity(id: Int): LangEntity {
-        return graph.langEntityById(id)
+    fun resolveEntity(graph: String, id: Int): LangEntity {
+        return resolveGraph(graph).langEntityById(id)
             ?: throw ResponseStatusException(HttpStatus.NOT_FOUND, "No word or rule with ID $id")
     }
 
-    fun resolveRule(name: String): Rule {
-        return graph.ruleByName(name.trim())
+    fun resolveRule(graph: String, name: String): Rule {
+        return resolveGraph(graph).ruleByName(name.trim())
             ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST, "No rule named '$name'")
     }
 
-    fun resolveRule(id: Int): Rule {
-        return graph.ruleById(id)
+    fun resolveRule(graph: String, id: Int): Rule {
+        return resolveGraph(graph).ruleById(id)
             ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST, "No rule with ID '$id'")
     }
 
-    fun resolveRuleSequence(id: Int) = (graph.langEntityById(id) as? RuleSequence
+    fun resolveRuleSequence(graph: String, id: Int) = (resolveGraph(graph).langEntityById(id) as? RuleSequence
         ?: badRequest("No sequence with ID $id"))
 
-    fun resolveCorpusText(id: Int): CorpusText {
-        return graph.corpusTextById(id)
+    fun resolveCorpusText(graph: String, id: Int): CorpusText {
+        return resolveGraph(graph).corpusTextById(id)
             ?: throw ResponseStatusException(HttpStatus.NOT_FOUND, "No corpus text with ID $id")
     }
 }

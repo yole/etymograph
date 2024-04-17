@@ -4,9 +4,12 @@ import EtymographForm from "@/components/EtymographForm";
 import FormRow from "@/components/FormRow";
 import FormTextArea from "@/components/FormTextArea";
 import LanguageSelect from "@/components/LanguageSelect";
+import {useRouter} from "next/router";
 
 export default function RuleForm(props) {
     const [ruleType, setRuleType] = useState(props.initialType !== undefined ? props.initialType : "phono")
+    const router = useRouter()
+    const graph = router.query.graph
 
     return <>
         Rule type:{' '}
@@ -14,8 +17,8 @@ export default function RuleForm(props) {
             <button className={ruleType === "phono" ? "inlineButton inlineButtonActive " : "inlineButton"} onClick={() => setRuleType("phono")}>Phonological</button>
         <hr/>
         <EtymographForm
-            create={(data) => addRule(data)}
-            update={(data) => updateRule(props.updateId, data)}
+            create={(data) => addRule(graph, data)}
+            update={(data) => updateRule(graph, props.updateId, data)}
             {...props}>
 
             <table><tbody>

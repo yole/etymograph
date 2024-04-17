@@ -33,26 +33,28 @@ data class PhonemeViewModel(
 
 @RestController
 class PhonemeController(val graphService: GraphService) {
-    @GetMapping("/phonemes")
-    fun phonemes(): List<PhonemeViewModel> {
-        return graphService.graph.allLanguages().flatMap { language ->
-            language.phonemes.map { it.toViewModel(graphService.graph, language) }
+    @GetMapping("/{graph}/phonemes")
+    fun phonemes(@PathVariable graph: String): List<PhonemeViewModel> {
+        val repo = graphService.resolveGraph(graph)
+        return repo.allLanguages().flatMap { language ->
+            language.phonemes.map { it.toViewModel(repo, language) }
         }
     }
 
-    @GetMapping("/phoneme/{id}")
-    fun phoneme(@PathVariable id: Int): PhonemeViewModel {
-        val phoneme = resolvePhoneme(id)
-        val lang = findLanguage(phoneme, id)
-        return phoneme.toViewModel(graphService.graph, lang)
+    @GetMapping("/{graph}/phoneme/{id}")
+    fun phoneme(@PathVariable graph: String, @PathVariable id: Int): PhonemeViewModel {
+        val phoneme = resolvePhoneme(graph, id)
+        val repo = graphService.resolveGraph(graph)
+        val lang = findLanguage(repo, phoneme, id)
+        return phoneme.toViewModel(repo, lang)
     }
 
-    private fun findLanguage(phoneme: Phoneme, id: Int): Language {
-        return graphService.graph.allLanguages().find { phoneme in it.phonemes }
+    private fun findLanguage(repo: GraphRepository, phoneme: Phoneme, id: Int): Language {
+        return repo.allLanguages().find { phoneme in it.phonemes }
             ?: badRequest("Phoneme with id $id is not associated with any language")
     }
 
-    private fun resolvePhoneme(id: Int) = (graphService.graph.langEntityById(id) as? Phoneme
+    private fun resolvePhoneme(graph: String, id: Int) = (graphService.resolveGraph(graph).langEntityById(id) as? Phoneme
         ?: badRequest("Phoneme with id $id not found"))
 
     data class UpdatePhonemeParameters(
@@ -64,9 +66,9 @@ class PhonemeController(val graphService: GraphService) {
         val notes: String? = null
     )
 
-    @PostMapping("/phonemes/{lang}", consumes = ["application/json"])
-    fun addPhoneme(@PathVariable lang: String, @RequestBody params: UpdatePhonemeParameters): PhonemeViewModel {
-        val language = graphService.resolveLanguage(lang)
+    @PostMapping("/{graph}/phonemes/{lang}", consumes = ["application/json"])
+    fun addPhoneme(@PathVariable graph: String, @PathVariable lang: String, @RequestBody params: UpdatePhonemeParameters): PhonemeViewModel {
+        val language = graphService.resolveLanguage(graph, lang)
 
         val graphemes = parseList(params.graphemes)
         for (phoneme in language.phonemes) {
@@ -76,37 +78,40 @@ class PhonemeController(val graphService: GraphService) {
             }
         }
 
-        val phoneme = graphService.graph.addPhoneme(
+        val repo = graphService.resolveGraph(graph)
+        val phoneme = repo.addPhoneme(
             language,
             graphemes,
             params.sound.nullize(),
             parseClasses(params),
             params.historical,
-            parseSourceRefs(graphService.graph, params.source),
+            parseSourceRefs(repo, params.source),
             params.notes
         )
-        return phoneme.toViewModel(graphService.graph, language)
+        return phoneme.toViewModel(repo, language)
     }
 
-    @PostMapping("/phoneme/{id}", consumes = ["application/json"])
-    fun updatePhoneme(@PathVariable id: Int, @RequestBody params: UpdatePhonemeParameters) {
-        val phoneme = resolvePhoneme(id)
+    @PostMapping("/{graph}/phoneme/{id}", consumes = ["application/json"])
+    fun updatePhoneme(@PathVariable graph: String, @PathVariable id: Int, @RequestBody params: UpdatePhonemeParameters) {
+        val phoneme = resolvePhoneme(graph, id)
+        val repo = graphService.resolveGraph(graph)
         phoneme.graphemes = parseList(params.graphemes)
         phoneme.sound = params.sound.nullize()
         phoneme.classes = parseClasses(params)
         phoneme.historical = params.historical
-        phoneme.source = parseSourceRefs(graphService.graph, params.source)
+        phoneme.source = parseSourceRefs(repo, params.source)
         phoneme.notes = params.notes
     }
 
     private fun parseClasses(params: UpdatePhonemeParameters) =
         params.classes.trim().split(' ').toSet()
 
-    @PostMapping("/phoneme/{id}/delete", consumes = ["application/json"])
-    fun deletePhoneme(@PathVariable id: Int) {
-        val phoneme = resolvePhoneme(id)
-        val language = findLanguage(phoneme, id)
-        graphService.graph.deletePhoneme(language, phoneme)
+    @PostMapping("/{graph}/phoneme/{id}/delete", consumes = ["application/json"])
+    fun deletePhoneme(@PathVariable graph: String, @PathVariable id: Int) {
+        val phoneme = resolvePhoneme(graph, id)
+        val repo = graphService.resolveGraph(graph)
+        val language = findLanguage(repo, phoneme, id)
+        repo.deletePhoneme(language, phoneme)
     }
 }
 

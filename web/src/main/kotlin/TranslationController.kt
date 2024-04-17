@@ -12,25 +12,25 @@ import ru.yole.etymograph.Translation
 class TranslationController(val graphService: GraphService) {
     data class TranslationParams(val corpusTextId: Int? = null, val text: String, val source: String)
 
-    @PostMapping("/translation")
-    fun addTranslation(@RequestBody params: TranslationParams): CorpusController.TranslationViewModel {
-        val graph = graphService.graph
-        val source = parseSourceRefs(graph, params.source)
+    @PostMapping("/{graph}/translation")
+    fun addTranslation(@PathVariable graph: String, @RequestBody params: TranslationParams): CorpusController.TranslationViewModel {
+        val repo = graphService.resolveGraph(graph)
+        val source = parseSourceRefs(repo, params.source)
         val corpusTextId = params.corpusTextId
             ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST, "Corpus text ID not specified")
-        val corpusText = graphService.resolveCorpusText(corpusTextId)
-        val translation = graph.addTranslation(corpusText, params.text, source)
-        return translationToViewModel(translation, graph)
+        val corpusText = graphService.resolveCorpusText(graph, corpusTextId)
+        val translation = repo.addTranslation(corpusText, params.text, source)
+        return translationToViewModel(translation, repo)
     }
 
-    @PostMapping("/translations/{id}")
-    fun editTranslation(@PathVariable id: Int, @RequestBody params: TranslationParams): CorpusController.TranslationViewModel {
-        val graph = graphService.graph
-        val source = parseSourceRefs(graph, params.source)
-        val translation = graph.langEntityById(id) as? Translation
+    @PostMapping("/{graph}/translations/{id}")
+    fun editTranslation(@PathVariable graph: String, @PathVariable id: Int, @RequestBody params: TranslationParams): CorpusController.TranslationViewModel {
+        val repo = graphService.resolveGraph(graph)
+        val source = parseSourceRefs(repo, params.source)
+        val translation = repo.langEntityById(id) as? Translation
             ?: throw ResponseStatusException(HttpStatus.NOT_FOUND, "No translation with ID $id")
         translation.text = params.text
         translation.source = source
-        return translationToViewModel(translation, graph)
+        return translationToViewModel(translation, repo)
     }
 }

@@ -16,6 +16,9 @@ open class InMemoryGraphRepository : GraphRepository() {
     protected val paradigms = mutableListOf<Paradigm?>()
     protected val publications = mutableListOf<Publication?>()
 
+    override val id: String
+        get() = ""
+
     override fun addLanguage(language: Language) {
         languages[language.shortName] = language
     }

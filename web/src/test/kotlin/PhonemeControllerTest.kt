@@ -25,14 +25,14 @@ class PhonemeControllerTest {
     @Test
     fun view() {
         val phoneme = graph.addPhoneme(fixture.q, listOf("a"), null, setOf("vowel"))
-        val viewModel = phonemeController.phoneme(phoneme.id)
+        val viewModel = phonemeController.phoneme("", phoneme.id)
         assertEquals("vowel", viewModel.classes)
         assertEquals("Quenya", viewModel.languageFullName)
     }
 
     @Test
     fun new() {
-        phonemeController.addPhoneme(fixture.q.shortName, PhonemeController.UpdatePhonemeParameters(
+        phonemeController.addPhoneme("", fixture.q.shortName, PhonemeController.UpdatePhonemeParameters(
             "a", "", "vowel"
         ))
         val phoneme = fixture.q.phonemes.single()
@@ -44,7 +44,7 @@ class PhonemeControllerTest {
     fun duplicateGrapheme() {
         graph.addPhoneme(fixture.q, listOf("a"), null, setOf("vowel"))
         assertThrows(ResponseStatusException::class.java) {
-            phonemeController.addPhoneme(fixture.q.shortName, PhonemeController.UpdatePhonemeParameters(
+            phonemeController.addPhoneme("", fixture.q.shortName, PhonemeController.UpdatePhonemeParameters(
                 "a", "", "vowel"
             ))
         }
@@ -53,7 +53,7 @@ class PhonemeControllerTest {
     @Test
     fun update() {
         val phoneme = graph.addPhoneme(fixture.q, listOf("a"), null, setOf("vowel"))
-        phonemeController.updatePhoneme(phoneme.id, PhonemeController.UpdatePhonemeParameters(
+        phonemeController.updatePhoneme("", phoneme.id, PhonemeController.UpdatePhonemeParameters(
             "a, ǎ", "a", "short vowel", false,"", ""
         ))
         assertEquals(listOf("a", "ǎ"), phoneme.graphemes)
@@ -64,7 +64,7 @@ class PhonemeControllerTest {
     @Test
     fun updateTrim() {
         val phoneme = graph.addPhoneme(fixture.q, listOf("a"), null, setOf("vowel"))
-        phonemeController.updatePhoneme(phoneme.id, PhonemeController.UpdatePhonemeParameters(
+        phonemeController.updatePhoneme("", phoneme.id, PhonemeController.UpdatePhonemeParameters(
             "a, ǎ", "a", " short vowel ", false,"", ""
         ))
         assertEquals(setOf("short", "vowel"), phoneme.classes)
@@ -73,7 +73,7 @@ class PhonemeControllerTest {
     @Test
     fun delete() {
         val phoneme = graph.addPhoneme(fixture.q, listOf("a"), null, setOf("vowel"))
-        phonemeController.deletePhoneme(phoneme.id)
+        phonemeController.deletePhoneme("", phoneme.id)
         assertEquals(0, fixture.q.phonemes.size)
     }
 
@@ -87,13 +87,13 @@ class PhonemeControllerTest {
         )
         val seq = graph.addRuleSequence("ce-to-q", fixture.ce, fixture.q, listOf(rule))
 
-        val wPhonemeViewModel = phonemeController.phoneme(wPhoneme.id)
+        val wPhonemeViewModel = phonemeController.phoneme("", wPhoneme.id)
         assertEquals(1, wPhonemeViewModel.relatedRules.size)
         val group = wPhonemeViewModel.relatedRules.single()
         assertEquals("Origin", group.title)
         assertEquals("q-gen", group.rules.single().name)
 
-        val uPhonemeViewModel = phonemeController.phoneme(uPhoneme.id)
+        val uPhonemeViewModel = phonemeController.phoneme("", uPhoneme.id)
         assertEquals(1, uPhonemeViewModel.relatedRules.size)
     }
 }

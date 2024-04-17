@@ -1,8 +1,10 @@
 import Link from "next/link";
+import {useRouter} from "next/router";
 
 function RichTextFragment(params) {
+    const router = useRouter()
     if (params.fragment.linkType === "rule") {
-        return <Link href={`/rule/${params.fragment.linkId}`}>{params.fragment.text}</Link>
+        return <Link href={`/${router.query.graph}/rule/${params.fragment.linkId}`}>{params.fragment.text}</Link>
     }
     if (params.fragment.emph) {
         return <span className="richTextEmph">{params.fragment.text}</span>

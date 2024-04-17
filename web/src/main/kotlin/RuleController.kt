@@ -79,18 +79,19 @@ class RuleController(val graphService: GraphService) {
         val ruleGroups: List<RuleGroupViewModel>
     )
 
-    @GetMapping("/rules")
-    fun allRules(): List<RuleShortViewModel> {
-        return graphService.graph.allRules().map { it.toShortViewModel() }
+    @GetMapping("/{graph}/rules")
+    fun allRules(@PathVariable graph: String): List<RuleShortViewModel> {
+        return graphService.resolveGraph(graph).allRules().map { it.toShortViewModel() }
     }
 
-    @GetMapping("/rules/{lang}")
-    fun rules(@PathVariable lang: String): RuleListViewModel {
-        val language = graphService.resolveLanguage(lang)
+    @GetMapping("/{graph}/rules/{lang}")
+    fun rules(@PathVariable graph: String, @PathVariable lang: String): RuleListViewModel {
+        val language = graphService.resolveLanguage(graph, lang)
+        val repo = graphService.resolveGraph(graph)
 
         val ruleGroups = mutableMapOf<String, MutableList<RuleShortViewModel>>()
 
-        val paradigms = graphService.graph.paradigmsForLanguage(language)
+        val paradigms = repo.paradigmsForLanguage(language)
         val paradigmRules = paradigms.associate { it.name to it.collectAllRules() }
         val allParadigmRules = paradigmRules.values.flatten().toSet()
         val ruleSeqMap = mutableMapOf<String, RuleSequence>()
@@ -101,18 +102,18 @@ class RuleController(val graphService: GraphService) {
                 .addAll(paradigmRule.value.map { it.toShortViewModel() })
         }
 
-        val sequences = graphService.graph.ruleSequencesForLanguage(language)
+        val sequences = repo.ruleSequencesForLanguage(language)
         val allSequenceRules = mutableSetOf<Rule>()
         for (sequence in sequences) {
             val groupName = "Phonetics: ${sequence.name}"
             val group = ruleGroups.getOrPut(groupName) { mutableListOf() }
             ruleSeqMap[groupName] = sequence
-            val rules = sequence.ruleIds.map { graphService.graph.langEntityById(it)!! }
+            val rules = sequence.ruleIds.map { repo.langEntityById(it)!! }
             allSequenceRules.addAll(rules.filterIsInstance<Rule>())
             group.addAll(rules.map { it.toShortViewModel() })
         }
 
-        for (rule in graphService.graph.allRules().filter { it.toLanguage == language }) {
+        for (rule in repo.allRules().filter { it.toLanguage == language }) {
             if (rule in allParadigmRules || rule in allSequenceRules) continue
             val categoryName = if (rule.isPhonemic()) "Phonetics" else "Grammar: Other"
             ruleGroups.getOrPut(categoryName) { mutableListOf() }.add(rule.toShortViewModel())
@@ -128,9 +129,10 @@ class RuleController(val graphService: GraphService) {
         )
     }
 
-    @GetMapping("/rule/{id}")
-    fun rule(@PathVariable id: Int): RuleViewModel {
-        return graphService.resolveRule(id).toViewModel()
+    @GetMapping("/{graph}/rule/{id}")
+    fun rule(@PathVariable graph: String, @PathVariable id: Int): RuleViewModel {
+        val repo = graphService.resolveGraph(graph)
+        return graphService.resolveRule(graph, id).toViewModel(repo)
     }
 
     private fun LangEntity.toShortViewModel(): RuleShortViewModel {
@@ -141,11 +143,10 @@ class RuleController(val graphService: GraphService) {
         }
     }
 
-    private fun Rule.toViewModel(): RuleViewModel {
-        val graph = graphService.graph
-        val paradigm = graph.paradigmForRule(this)
-        val links = (graph.getLinksFrom(this).map { it to it.toEntity } +
-                graph.getLinksTo(this).map { it to it.fromEntity })
+    private fun Rule.toViewModel(repo: GraphRepository): RuleViewModel {
+        val paradigm = repo.paradigmForRule(this)
+        val links = (repo.getLinksFrom(this).map { it to it.toEntity } +
+                repo.getLinksTo(this).map { it to it.fromEntity })
         return RuleViewModel(
             id, name,
             fromLanguage.shortName, toLanguage.shortName,
@@ -157,8 +158,8 @@ class RuleController(val graphService: GraphService) {
             toReadableCategories(fromLanguage, addedCategories),
             fromPOS,
             toPOS,
-            source.toViewModel(graph),
-            source.toEditableText(graph),
+            source.toViewModel(repo),
+            source.toEditableText(repo),
             notes.nullize(),
             paradigm?.id,
             paradigm?.name,
@@ -168,20 +169,20 @@ class RuleController(val graphService: GraphService) {
             links.mapNotNull { (link, langEntity) ->
                 val rule = langEntity as? Rule
                 rule?.let {
-                    RuleLinkViewModel(it.id, it.name, link.type.id, link.source.toViewModel(graph), link.notes)
+                    RuleLinkViewModel(it.id, it.name, link.type.id, link.source.toViewModel(repo), link.notes)
                 }
             },
             links.mapNotNull { (link, langEntity) ->
                 val word = langEntity as? Word
                 word?.let {
                     RuleWordLinkViewModel(
-                        word.toRefViewModel(graph),
-                        link.type.id, link.source.toViewModel(graph), link.notes
+                        word.toRefViewModel(repo),
+                        link.type.id, link.source.toViewModel(repo), link.notes
                     )
                 }
             },
-            graph.findRuleExamples(this).map { link ->
-                exampleToViewModel(link, graph)
+            repo.findRuleExamples(this).map { link ->
+                exampleToViewModel(link, repo)
             }
         )
     }
@@ -227,14 +228,14 @@ class RuleController(val graphService: GraphService) {
         val notes: String? = null
     )
 
-    @PostMapping("/rule", consumes = ["application/json"])
+    @PostMapping("/{graph}/rule", consumes = ["application/json"])
     @ResponseBody
-    fun newRule(@RequestBody params: UpdateRuleParameters): RuleViewModel {
-        val graph = graphService.graph
-        val fromLanguage = graphService.resolveLanguage(params.fromLang)
-        val toLanguage = graphService.resolveLanguage(params.toLang)
+    fun newRule(@PathVariable graph: String, @RequestBody params: UpdateRuleParameters): RuleViewModel {
+        val repo = graphService.resolveGraph(graph)
+        val fromLanguage = graphService.resolveLanguage(graph, params.fromLang)
+        val toLanguage = graphService.resolveLanguage(graph, params.toLang)
 
-        if (graph.ruleByName(params.name) != null) {
+        if (repo.ruleByName(params.name) != null) {
             badRequest("Rule named '${params.name} already exists")
         }
         if (' ' in params.name) {
@@ -242,12 +243,12 @@ class RuleController(val graphService: GraphService) {
         }
 
         val logic = try {
-            Rule.parseBranches(params.text, parseContext(fromLanguage, toLanguage))
+            Rule.parseBranches(params.text, parseContext(graph, fromLanguage, toLanguage))
         } catch (e: RuleParseException) {
             throw ResponseStatusException(HttpStatus.BAD_REQUEST, e.message, e)
         }
 
-        val rule = graph.addRule(
+        val rule = repo.addRule(
             params.name,
             fromLanguage,
             toLanguage,
@@ -256,26 +257,26 @@ class RuleController(val graphService: GraphService) {
             params.replacedCategories.nullize(),
             params.fromPOS.nullize(),
             params.toPOS.nullize(),
-            parseSourceRefs(graph, params.source),
+            parseSourceRefs(repo, params.source),
             params.notes
         )
-        return rule.toViewModel()
+        return rule.toViewModel(repo)
     }
 
-    private fun parseContext(fromLanguage: Language, toLanguage: Language): RuleParseContext =
+    private fun parseContext(graph: String, fromLanguage: Language, toLanguage: Language): RuleParseContext =
         RuleParseContext(fromLanguage, toLanguage) {
-            RuleRef.to(graphService.resolveRule(it))
+            RuleRef.to(graphService.resolveRule(graph, it))
         }
 
-    @PostMapping("/rule/{id}", consumes = ["application/json"])
+    @PostMapping("/{graph}/rule/{id}", consumes = ["application/json"])
     @ResponseBody
-    fun updateRule(@PathVariable id: Int, @RequestBody params: UpdateRuleParameters): RuleViewModel {
-        val fromLanguage = graphService.resolveLanguage(params.fromLang)
-        val toLanguage = graphService.resolveLanguage(params.toLang)
-        val graph = graphService.graph
-        val rule = graphService.resolveRule(id)
+    fun updateRule(@PathVariable graph: String, @PathVariable id: Int, @RequestBody params: UpdateRuleParameters): RuleViewModel {
+        val fromLanguage = graphService.resolveLanguage(graph, params.fromLang)
+        val toLanguage = graphService.resolveLanguage(graph, params.toLang)
+        val repo = graphService.resolveGraph(graph)
+        val rule = graphService.resolveRule(graph, id)
 
-        if (rule.name != params.name && graph.ruleByName(params.name) != null) {
+        if (rule.name != params.name && repo.ruleByName(params.name) != null) {
             badRequest("Rule named '${params.name} already exists")
         }
         if (' ' in params.name) {
@@ -285,22 +286,22 @@ class RuleController(val graphService: GraphService) {
         rule.name = params.name
         rule.fromLanguage = fromLanguage
         rule.toLanguage = toLanguage
-        rule.logic = Rule.parseBranches(params.text, parseContext(rule.fromLanguage, rule.toLanguage))
+        rule.logic = Rule.parseBranches(params.text, parseContext(graph, rule.fromLanguage, rule.toLanguage))
         rule.notes = params.notes
         rule.addedCategories = params.addedCategories.nullize()
         rule.replacedCategories = params.replacedCategories.nullize()
         rule.fromPOS = params.fromPOS.nullize()
         rule.toPOS = params.toPOS.nullize()
-        rule.source = parseSourceRefs(graph, params.source)
-        return rule.toViewModel()
+        rule.source = parseSourceRefs(repo, params.source)
+        return rule.toViewModel(repo)
     }
 
-    @PostMapping("/rule/{id}/delete", consumes = ["application/json"])
+    @PostMapping("/{graph}/rule/{id}/delete", consumes = ["application/json"])
     @ResponseBody
-    fun deleteRule(@PathVariable id: Int) {
-        val graph = graphService.graph
-        val rule = graph.ruleById(id) ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST, "No rule with ID $id")
-        graph.deleteRule(rule)
+    fun deleteRule(@PathVariable graph: String, @PathVariable id: Int) {
+        val repo = graphService.resolveGraph(graph)
+        val rule = repo.ruleById(id) ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST, "No rule with ID $id")
+        repo.deleteRule(rule)
     }
 
     data class RuleSequenceViewModel(
@@ -316,44 +317,44 @@ class RuleController(val graphService: GraphService) {
         val ruleNames: String
     )
 
-    @PostMapping("/rule/sequence", consumes = ["application/json"])
-    fun newSequence(@RequestBody params: UpdateSequenceParams): RuleSequenceViewModel {
-        val graph = graphService.graph
-        val (fromLanguage, toLanguage, rules) = resolveUpdateSequenceParams(params)
-        val sequence = graph.addRuleSequence(params.name, fromLanguage, toLanguage, rules)
-        return sequence.toViewModel(graph)
+    @PostMapping("/{graph}/rule/sequence", consumes = ["application/json"])
+    fun newSequence(@PathVariable graph: String, @RequestBody params: UpdateSequenceParams): RuleSequenceViewModel {
+        val repo = graphService.resolveGraph(graph)
+        val (fromLanguage, toLanguage, rules) = resolveUpdateSequenceParams(graph, params)
+        val sequence = repo.addRuleSequence(params.name, fromLanguage, toLanguage, rules)
+        return sequence.toViewModel()
     }
 
-    private fun RuleSequence.toViewModel(graph: GraphRepository) = RuleSequenceViewModel(
+    private fun RuleSequence.toViewModel() = RuleSequenceViewModel(
         name, fromLanguage.shortName, toLanguage.shortName
     )
 
-    private fun resolveUpdateSequenceParams(params: UpdateSequenceParams): Triple<Language, Language, List<LangEntity>> {
-        val fromLanguage = graphService.resolveLanguage(params.fromLang)
-        val toLanguage = graphService.resolveLanguage(params.toLang)
+    private fun resolveUpdateSequenceParams(graph: String, params: UpdateSequenceParams): Triple<Language, Language, List<LangEntity>> {
+        val fromLanguage = graphService.resolveLanguage(graph, params.fromLang)
+        val toLanguage = graphService.resolveLanguage(graph, params.toLang)
         val rules = params.ruleNames.split('\n').filter { it.isNotBlank() }.map {
             val name = it.trim()
             if (name.startsWith("sequence:")) {
                 val sequenceName = name.removePrefix("sequence:").trim()
-                graphService.graph.ruleSequenceByName(sequenceName)
+                graphService.resolveGraph(graph).ruleSequenceByName(sequenceName)
                     ?: badRequest("Cannot find rule sequence $sequenceName")
             }
             else {
-                graphService.resolveRule(name)
+                graphService.resolveRule(graph, name)
             }
         }
         return Triple(fromLanguage, toLanguage, rules)
     }
 
-    @PostMapping("/rule/sequence/{id}", consumes = ["application/json"])
-    fun updateSequence(@PathVariable id: Int, @RequestBody params: UpdateSequenceParams): RuleSequenceViewModel {
-        val sequence = graphService.resolveRuleSequence(id)
-        val (fromLanguage, toLanguage, rules) = resolveUpdateSequenceParams(params)
+    @PostMapping("/{graph}/rule/sequence/{id}", consumes = ["application/json"])
+    fun updateSequence(@PathVariable graph: String, @PathVariable id: Int, @RequestBody params: UpdateSequenceParams): RuleSequenceViewModel {
+        val sequence = graphService.resolveRuleSequence(graph, id)
+        val (fromLanguage, toLanguage, rules) = resolveUpdateSequenceParams(graph, params)
         sequence.name = params.name
         sequence.fromLanguage = fromLanguage
         sequence.toLanguage = toLanguage
         sequence.ruleIds = rules.map { it.id }
-        return sequence.toViewModel(graphService.graph)
+        return sequence.toViewModel()
     }
 
     data class ApplySequenceParams(
@@ -361,16 +362,16 @@ class RuleController(val graphService: GraphService) {
         val linkToId: Int
     )
 
-    @PostMapping("/rule/sequence/{id}/apply", consumes = ["application/json"])
+    @PostMapping("/{graph}/rule/sequence/{id}/apply", consumes = ["application/json"])
     @ResponseBody
-    fun applySequence(@PathVariable id: Int, @RequestBody params: ApplySequenceParams): WordController.LinkWordViewModel {
-        val sequence = graphService.resolveRuleSequence(id)
-        val fromEntity = graphService.resolveWord(params.linkFromId)
-        val toEntity = graphService.resolveWord(params.linkToId)
-        val graph = graphService.graph
-        val link = graph.findLink(fromEntity, toEntity, Link.Origin)
+    fun applySequence(@PathVariable graph: String, @PathVariable id: Int, @RequestBody params: ApplySequenceParams): WordController.LinkWordViewModel {
+        val sequence = graphService.resolveRuleSequence(graph, id)
+        val fromEntity = graphService.resolveWord(graph, params.linkFromId)
+        val toEntity = graphService.resolveWord(graph, params.linkToId)
+        val repo = graphService.resolveGraph(graph)
+        val link = repo.findLink(fromEntity, toEntity, Link.Origin)
             ?: badRequest("No Derived link from ${params.linkFromId} to ${params.linkToId}")
-        graph.applyRuleSequence(link, sequence)
-        return linkToViewModel(link, graph, true)
+        repo.applyRuleSequence(link, sequence)
+        return linkToViewModel(link, repo, true)
     }
 }
