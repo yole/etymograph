@@ -29,18 +29,18 @@ ultimate end goal in mind.
 The project includes two databases:
 - ie.json contains notes from the courses I took in the
   [Leiden Summer School of Languages and Linguistics](https://www.universiteitleiden.nl/en/education/study-programmes/summer-schools/summer-school-in-languages-and-linguistics),
-  specifically Old English and Lycian, as well as notes from my study of Old Norse.
-- jrrt.json describes Tolkien's Elvish languages. It includes ~70-80% of the Quenya grammar, interlinear glosses for 
-  almost all Late Quenya texts and a bunch of etymological information. The contents of this database is heavily
-  based on [Eldamo](https://eldamo.org).
+  specifically Old English and Lycian, a work-in-progress implementation of the sound change rules between Proto-Germanic
+  and Old English, as well as notes from my study of Old Norse.
+- jrrt.json describes Tolkien's Elvish languages. It includes ~70-80% of the Quenya and Sindarin grammar, 
+  a partial implementation of the sound change rules between Common Eldarin and Quenya/Sindarin, interlinear glosses for 
+  almost all Late Quenya and many Sindarin texts, and a bunch of etymological information. 
+  The contents of this database is heavily based on [Eldamo](https://eldamo.org).
 
 ## Accessing the Databases
 
-Read-only versions of the databases are now available online. (When you run Etymograph locally, you can also edit the
-databases; changes are then saved to the .json files on your machine.)
-
-- Elvish database: https://elvish-etymograph.yole.page/
-- Indo-European database: https://etymograph.yole.page/
+A read-only version of the databases is now [available online](https://etymograph.yole.page/). 
+(When you run Etymograph locally, you can also edit the  databases; changes are then saved to the .json files on 
+your machine.)
 
 ## Running the project
 
