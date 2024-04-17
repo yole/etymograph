@@ -297,6 +297,7 @@ data class WordCategoryData(
 @Serializable
 data class GraphRepositoryData(
     val id: String,
+    val name: String,
     val languages: List<LanguageData>,
     val phonemes: List<PhonemeData>,
     val diphthongs: List<DiphthongData>,
@@ -321,9 +322,13 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
     private val allLinks = mutableListOf<Link>()
 
     private lateinit var _id: String
+    private lateinit var _name: String
 
     override val id: String
         get() = _id
+
+    override val name: String
+        get() = _name
 
     override fun createLink(
         fromEntity: LangEntity,
@@ -376,6 +381,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
         val wordClassData = mapWordCategories { it.wordClasses }
         return GraphRepositoryData(
             id,
+            name,
             languages.values.map { LanguageData(it.name, it.shortName, it.reconstructed) },
             phonemes,
             diphthongData,
@@ -445,6 +451,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
     private fun loadJson(string: String) {
         val data = Json.decodeFromString<GraphRepositoryData>(string)
         _id = data.id
+        _name = data.name
         for (languageData in data.languages) {
             val language = Language(languageData.name, languageData.shortName)
             language.reconstructed = languageData.reconstructed

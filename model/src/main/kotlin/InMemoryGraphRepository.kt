@@ -19,6 +19,9 @@ open class InMemoryGraphRepository : GraphRepository() {
     override val id: String
         get() = ""
 
+    override val name: String
+        get() = ""
+
     override fun addLanguage(language: Language) {
         languages[language.shortName] = language
     }

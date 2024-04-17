@@ -6,10 +6,10 @@ import ru.yole.etymograph.web.GraphService
 
 @RestController
 class GraphController(val graphService: GraphService) {
-    data class GraphViewModel(val id: String)
+    data class GraphViewModel(val id: String, val name: String)
 
     @GetMapping("/graphs")
     fun list(): List<GraphViewModel> {
-        return graphService.allGraphs().map { GraphViewModel(it.id) }
+        return graphService.allGraphs().map { GraphViewModel(it.id, it.name) }
     }
 }
