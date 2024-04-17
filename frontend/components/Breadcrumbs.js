@@ -11,7 +11,7 @@ export default function Breadcrumbs(props) {
         document.title = "Etymograph : " + (props.langName !== undefined ? props.langName + " : " : "") +
             (props.steps !== undefined ? props.steps.map(s => s.title).join(": ") + " : " : "") +
             props.title
-    }, []);
+    })
 
     return <h2>
         <small>
