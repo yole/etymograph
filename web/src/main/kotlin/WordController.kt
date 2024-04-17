@@ -462,6 +462,9 @@ fun suggestedSequences(graph: GraphRepository, link: Link): List<WordController.
 fun badRequest(message: String): Nothing =
     throw ResponseStatusException(HttpStatus.BAD_REQUEST, message)
 
+fun notFound(message: String): Nothing =
+    throw ResponseStatusException(HttpStatus.NOT_FOUND, message)
+
 fun String?.nullize() = this?.takeIf { it.trim().isNotEmpty() }
 
 fun ParseCandidate.toViewModel(): ParseCandidateViewModel =

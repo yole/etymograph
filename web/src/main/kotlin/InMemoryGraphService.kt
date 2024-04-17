@@ -59,3 +59,8 @@ class InMemoryGraphService: GraphService() {
 
     override val graph by lazy { JsonGraphRepository.fromJson(Path.of(graphPath)) }
 }
+
+fun GraphRepository.resolveLanguage(lang: String): Language {
+    return languageByShortName(lang)
+        ?: notFound("No language with short name $lang")
+}
