@@ -2,11 +2,11 @@ import {addCorpusText, updateCorpusText} from "@/api";
 import FormRow from "@/components/FormRow";
 import EtymographForm from "@/components/EtymographForm";
 import FormTextArea from "@/components/FormTextArea";
-import {useRouter} from "next/router";
+import {useContext} from "react";
+import {GraphContext} from "@/components/Contexts";
 
 export default function CorpusTextForm(props) {
-    const router = useRouter()
-    const graph = router.query.graph
+    const graph = useContext(GraphContext)
     return <EtymographForm
         create={(data) => addCorpusText(graph, props.lang, data)}
         update={(data) => updateCorpusText(graph, props.updateId, data)}

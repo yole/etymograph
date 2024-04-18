@@ -23,7 +23,7 @@ export const config = {
 }
 
 export async function getStaticProps(context) {
-    return fetchBackend(context.params.graph, `corpus/text/${context.params.id}`)
+    return fetchBackend(context.params.graph, `corpus/text/${context.params.id}`, true)
 }
 
 export async function getStaticPaths() {
@@ -85,22 +85,18 @@ export default function CorpusText(params) {
         })
     }
 
-    function showWordForm(text, index) {
-        fetchAlternatives(graph, corpusText.id, index)
-            .then(r => {
-                setAlternatives(r)
-                setWordFormVisible(true)
-                setPredefWord(text)
-                setWordIndex(index)
-            })
+    async function showWordForm(text, index) {
+        const r = await fetchAlternatives(graph, corpusText.id, index)
+        setAlternatives(r)
+        setWordFormVisible(true)
+        setPredefWord(text)
+        setWordIndex(index)
     }
 
-    function acceptAlternativeClicked(index, wordId, ruleId) {
-        acceptAlternative(graph, corpusText.id, index, wordId, ruleId)
-            .then(r => {
-                router.replace(router.asPath)
-                setWordFormVisible(false)
-            })
+    async function acceptAlternativeClicked(index, wordId, ruleId) {
+        await acceptAlternative(graph, corpusText.id, index, wordId, ruleId)
+        router.replace(router.asPath)
+        setWordFormVisible(false)
     }
 
     function toggleTranslationForm(id) {
@@ -167,7 +163,7 @@ export default function CorpusText(params) {
         {editMode && <CorpusTextForm lang={corpusText.lang}
                                      updateId={corpusText.id}
                                      defaultValues={{
-                                         title: corpusText.title,
+                                         title: corpusText.title === "Untitled" ? "" : corpusText.title,
                                          text: corpusText.text,
                                          source: corpusText.sourceEditableText,
                                          notes: corpusText.notes

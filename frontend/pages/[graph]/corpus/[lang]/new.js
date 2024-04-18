@@ -4,7 +4,7 @@ import {useRouter} from "next/router";
 import Breadcrumbs from "@/components/Breadcrumbs";
 
 export async function getStaticProps(context) {
-    return fetchBackend(context.params.graph,`language/${context.params.lang}`)
+    return fetchBackend(context.params.graph,`language/${context.params.lang}`, true)
 }
 
 export const getStaticPaths = fetchAllLanguagePaths

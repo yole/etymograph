@@ -8,7 +8,7 @@ export const config = {
 }
 
 export async function getStaticProps(context) {
-    return fetchBackend(context.params.graph, `corpus/${context.params.lang}`)
+    return fetchBackend(context.params.graph, `corpus/${context.params.lang}`, true)
 }
 
 export const getStaticPaths = fetchAllLanguagePaths
