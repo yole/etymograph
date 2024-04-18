@@ -243,13 +243,13 @@ data class CorpusTextData(
     val id: Int, val text: String, val title: String? = null,
     val wordIds: List<Int?>,
     val sourceRefs: List<SourceRefData>? = null,
-    val notes: String? = null
+    val notes: String? = null,
+    val translations: List<TranslationData> = emptyList()
 )
 
 @Serializable
 data class TranslationData(
     val id: Int,
-    val corpusTextId: Int,
     val text: String,
     val sourceRefs: List<SourceRefData>? = null,
     val notes: String? = null
@@ -305,7 +305,6 @@ data class GraphRepositoryData(
     val links: List<LinkData>,
     val paradigms: List<ParadigmData>,
     val compounds: List<CompoundData>,
-    val translations: List<TranslationData>,
     val ruleSequences: List<RuleSequenceData>
 )
 
@@ -407,10 +406,17 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                 CorpusTextData(
                     it.id, it.text, it.title,
                     it.words.map { it?.id },
-                    it.source.sourceToSerializedFormat(), it.notes
+                    it.source.sourceToSerializedFormat(), it.notes,
+                    collectTranslations(it)
                 )
             }
             consumer(language.shortName + "/corpus.json", theJson.encodeToString(corpusData))
+        }
+    }
+
+    private fun collectTranslations(corpusText: CorpusText): List<TranslationData> {
+        return allLangEntities.filterIsInstance<Translation>().filter { it.corpusText == corpusText }.map { t ->
+            TranslationData(t.id, t.text, t.source.sourceToSerializedFormat(), t.notes)
         }
     }
 
@@ -437,9 +443,6 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             },
             allLangEntities.filterIsInstance<Compound>().map { c ->
                 CompoundData(c.id, c.compoundWord.id, c.components.map { it.id }, c.source.sourceToSerializedFormat(), c.notes)
-            },
-            allLangEntities.filterIsInstance<Translation>().map { t ->
-                TranslationData(t.id, t.corpusText.id, t.text, t.source.sourceToSerializedFormat(), t.notes)
             },
             allLangEntities.filterIsInstance<RuleSequence>().map { s ->
                 RuleSequenceData(
@@ -522,19 +525,6 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             val compound = Compound(compoundData.id, compoundWord, componentWords, loadSource(compoundData.sourceRefs), compoundData.notes)
             compounds.getOrPut(compoundWord.id) { arrayListOf() }.add(compound)
             setLangEntity(compound.id, compound)
-        }
-
-        for (translationData in data.translations) {
-            val corpusText = allLangEntities[translationData.corpusTextId] as CorpusText
-            val translation = Translation(
-                translationData.id,
-                corpusText,
-                translationData.text,
-                loadSource(translationData.sourceRefs),
-                translationData.notes
-            )
-            setLangEntity(translation.id, translation)
-            storeTranslation(corpusText, translation)
         }
 
         for (paradigm in data.paradigms) {
@@ -633,6 +623,18 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                 )
                 corpus += addedCorpusText
                 setLangEntity(corpusText.id, addedCorpusText)
+
+                for (translationData in corpusText.translations) {
+                    val translation = Translation(
+                        translationData.id,
+                        addedCorpusText,
+                        translationData.text,
+                        loadSource(translationData.sourceRefs),
+                        translationData.notes
+                    )
+                    setLangEntity(translation.id, translation)
+                    storeTranslation(addedCorpusText, translation)
+                }
             }
         }
     }

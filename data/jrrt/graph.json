@@ -16503,61 +16503,6 @@
             ]
         }
     ],
-    "translations": [
-        {
-            "id": 1698,
-            "corpusTextId": 524,
-            "text": "a star shines on the hour of our meeting",
-            "sourceRefs": [
-                {
-                    "pubId": 1,
-                    "refText": "12"
-                }
-            ]
-        },
-        {
-            "id": 1699,
-            "corpusTextId": 891,
-            "text": "fair ones begetters of fair ones",
-            "sourceRefs": [
-                {
-                    "pubId": 17,
-                    "refText": "73"
-                }
-            ]
-        },
-        {
-            "id": 1700,
-            "corpusTextId": 891,
-            "text": "O beautiful ones, parents of beautiful children",
-            "sourceRefs": [
-                {
-                    "refText": "Let:448"
-                }
-            ]
-        },
-        {
-            "id": 1804,
-            "corpusTextId": 1790,
-            "text": "There stood Gandalf, Aragorn, Eomer and Imrahil in grey, in silver and black, in green and white, and in blue, and also Gimli in white",
-            "sourceRefs": [
-                {
-                    "pubId": 1,
-                    "refText": "71"
-                }
-            ]
-        },
-        {
-            "id": 1825,
-            "corpusTextId": 1824,
-            "text": "Holy Song of the Elves of Rivendell"
-        },
-        {
-            "id": 1884,
-            "corpusTextId": 1241,
-            "text": "Elvish gate open now for us,\ndoorway of the Dwarf-folk listen to the word of my tongue"
-        }
-    ],
     "ruleSequences": [
         {
             "id": 1072,

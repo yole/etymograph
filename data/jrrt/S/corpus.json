@@ -138,6 +138,12 @@
                 "pubId": 15,
                 "refText": "307"
             }
+        ],
+        "translations": [
+            {
+                "id": 1884,
+                "text": "Elvish gate open now for us,\ndoorway of the Dwarf-folk listen to the word of my tongue"
+            }
         ]
     },
     {
@@ -448,6 +454,12 @@
             },
             {
                 "refText": "https://eldamo.org/content/words/word-1712116201.html"
+            }
+        ],
+        "translations": [
+            {
+                "id": 1825,
+                "text": "Holy Song of the Elves of Rivendell"
             }
         ]
     },
