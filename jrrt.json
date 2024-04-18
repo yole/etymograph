@@ -1625,8 +1625,8 @@
                 "ei",
                 "ui",
                 "au",
-                "ae",
-                "oe"
+                "oe",
+                "ae"
             ]
         },
         {
@@ -16893,6 +16893,74 @@
                     "refText": "https://eldamo.org/content/words/word-1115019499.html"
                 }
             ]
+        },
+        {
+            "id": 1877,
+            "text": "ar",
+            "lang": "S",
+            "gloss": "noble",
+            "pos": "ADJ",
+            "sourceRefs": [
+                {
+                    "refText": "Let:426"
+                },
+                {
+                    "refText": "https://eldamo.org/content/words/word-1222397067.html"
+                }
+            ]
+        },
+        {
+            "id": 1879,
+            "text": "gorn",
+            "lang": "S",
+            "gloss": "revered",
+            "pos": "ADJ",
+            "sourceRefs": [
+                {
+                    "pubId": 1,
+                    "refText": "113"
+                },
+                {
+                    "refText": "https://eldamo.org/content/words/word-1330131825.html"
+                }
+            ]
+        },
+        {
+            "id": 1881,
+            "text": "ered",
+            "lang": "S",
+            "sourceRefs": [
+                {
+                    "pubId": 8,
+                    "refText": "40"
+                }
+            ]
+        },
+        {
+            "id": 1882,
+            "text": "orod",
+            "lang": "S",
+            "gloss": "mountain",
+            "pos": "N",
+            "sourceRefs": [
+                {
+                    "refText": "https://eldamo.org/content/words/word-1491591289.html"
+                }
+            ]
+        },
+        {
+            "id": 1883,
+            "text": "TUY-",
+            "lang": "CE",
+            "gloss": "sprout, bud",
+            "sourceRefs": [
+                {
+                    "refText": "VT39:7"
+                },
+                {
+                    "refText": "https://eldamo.org/content/words/word-3770763007.html"
+                }
+            ]
         }
     ],
     "rules": [
@@ -31753,6 +31821,19 @@
                     "refText": "168"
                 }
             ]
+        },
+        {
+            "from": 1881,
+            "to": 1882,
+            "type": ">",
+            "ruleIds": [
+                1149
+            ]
+        },
+        {
+            "from": 1422,
+            "to": 1883,
+            "type": "^"
         }
     ],
     "corpusTexts": [
@@ -31873,12 +31954,12 @@
             "title": null,
             "lang": "S",
             "wordIds": [
-                null,
+                191,
                 null,
                 194,
-                null,
-                null,
-                null
+                195,
+                198,
+                199
             ],
             "sourceRefs": [
                 {
@@ -32591,7 +32672,7 @@
             "title": "Moria Gate Spell",
             "lang": "S",
             "wordIds": [
-                null,
+                1200,
                 1242,
                 1245,
                 1248,
@@ -33166,7 +33247,7 @@
         {
             "id": 1824,
             "text": "Aerlinn in Edhil o Imladris",
-            "title": "Untitled",
+            "title": null,
             "lang": "S",
             "wordIds": [
                 1826,
@@ -33181,6 +33262,27 @@
                 },
                 {
                     "refText": "https://eldamo.org/content/words/word-1712116201.html"
+                }
+            ]
+        },
+        {
+            "id": 1880,
+            "text": "alae! ered en Echoriath, ered e·mbar nín",
+            "title": null,
+            "lang": "S",
+            "wordIds": [
+                null,
+                1881,
+                null,
+                null,
+                null,
+                null,
+                null
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 8,
+                    "refText": "40"
                 }
             ]
         }
@@ -33857,7 +33959,7 @@
         },
         {
             "id": 24,
-            "name": "Parma Eldalamberon 20",
+            "name": "Parma Eldalamberon #20",
             "refId": "PE20"
         },
         {
@@ -34942,6 +35044,14 @@
                 1324,
                 1828
             ]
+        },
+        {
+            "id": 1878,
+            "compoundId": 1394,
+            "componentIds": [
+                1877,
+                1879
+            ]
         }
     ],
     "translations": [
@@ -34992,6 +35102,11 @@
             "id": 1825,
             "corpusTextId": 1824,
             "text": "Holy Song of the Elves of Rivendell"
+        },
+        {
+            "id": 1884,
+            "corpusTextId": 1241,
+            "text": "Elvish gate open now for us,\ndoorway of the Dwarf-folk listen to the word of my tongue"
         }
     ],
     "grammaticalCategories": [
