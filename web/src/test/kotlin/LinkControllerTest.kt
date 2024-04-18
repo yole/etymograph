@@ -12,11 +12,11 @@ class LinkControllerTest {
     fun testLinkSource() {
         val fixture = QTestFixture()
 
-        val linkController = LinkController(fixture.graphService)
+        val linkController = LinkController()
         val word1 = fixture.graph.findOrAddWord("abc", fixture.q, "abc")
         val word2 = fixture.graph.findOrAddWord("def", fixture.q, "def")
 
-        linkController.addLink("", LinkController.LinkParams(word1.id, word2.id, Link.Related.id, source = "src"))
+        linkController.addLink(fixture.graph, LinkController.LinkParams(word1.id, word2.id, Link.Related.id, source = "src"))
 
         val wordController = WordController(fixture.graphService)
         val json = wordController.singleWordJson("", "q", "abc", word1.id)
@@ -28,7 +28,7 @@ class LinkControllerTest {
     fun linkWordToRule() {
         val fixture = QTestFixture()
 
-        val linkController = LinkController(fixture.graphService)
+        val linkController = LinkController()
         val word = fixture.graph.findOrAddWord("abc", fixture.q, "abc")
 
         val ruleController = RuleController(fixture.graphService)
@@ -40,7 +40,7 @@ class LinkControllerTest {
                 "sound is 't' and end of word:\n- new sound is 'θ'",
             ))
 
-        linkController.addRuleLink("", LinkController.RuleLinkParams(word.id, "q-pos", Link.Related.id))
+        linkController.addRuleLink(fixture.graph, LinkController.RuleLinkParams(word.id, "q-pos", Link.Related.id))
 
         val wordController = WordController(fixture.graphService)
         val wordViewModel = wordController.singleWordJson("", "q", "abc", word.id)
@@ -67,12 +67,12 @@ class LinkControllerTest {
                 "sound is 't' and end of word:\n- new sound is 'θ'",
             ))
 
-        val linkController = LinkController(fixture.graphService)
+        val linkController = LinkController()
         val baseWord = fixture.graph.findOrAddWord("mbar", fixture.ce, "home")
         val derivedWord = fixture.graph.findOrAddWord("mar", fixture.q, "home")
         val link = fixture.graph.addLink(derivedWord, baseWord, Link.Derived, emptyList(), emptyList(), null)
 
-        linkController.updateLink("", LinkController.LinkParams(
+        linkController.updateLink(fixture.graph, LinkController.LinkParams(
             fromEntity = baseWord.id,
             toEntity = derivedWord.id,
             linkType = Link.Derived.id,

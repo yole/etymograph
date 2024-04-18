@@ -23,11 +23,6 @@ abstract class GraphService {
             ?: throw ResponseStatusException(HttpStatus.NOT_FOUND, "No word with ID $id")
     }
 
-    fun resolveEntity(graph: String, id: Int): LangEntity {
-        return resolveGraph(graph).langEntityById(id)
-            ?: throw ResponseStatusException(HttpStatus.NOT_FOUND, "No word or rule with ID $id")
-    }
-
     fun resolveRule(graph: String, name: String): Rule {
         return resolveGraph(graph).ruleByName(name.trim())
             ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST, "No rule named '$name'")
@@ -85,4 +80,8 @@ fun GraphRepository.resolveRule(id: Int): Rule {
 
 fun GraphRepository.resolveRule(name: String): Rule {
     return ruleByName(name) ?: notFound("No rule with name $name")
+}
+
+fun GraphRepository.resolveEntity(id: Int): LangEntity {
+    return langEntityById(id) ?: notFound("No word or rule with ID $id")
 }
