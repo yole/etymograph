@@ -1,0 +1,137 @@
+[
+    {
+        "id": 0,
+        "name": "Vinyar Tengwar #44, J.R.R. Tolkien, (editors) Patrick Wynne, Arden Smith, Carl Hostetter, Bill Welden; June 2002",
+        "refId": "VT44"
+    },
+    {
+        "id": 1,
+        "name": "Parma Eldalamberon #17; J.R.R. Tolkien, (editor) Christopher Gilson; 2007",
+        "refId": "PE17"
+    },
+    {
+        "id": 2,
+        "name": "Monsters and the Critics; J.R.R. Tolkien, (editor) Christopher Tolkien; 1983",
+        "refId": "MC"
+    },
+    {
+        "id": 3,
+        "name": "Vinyar Tengwar #43; J.R.R. Tolkien, (editors) Patrick Wynne, Arden Smith, Carl Hostetter; January 2002",
+        "refId": "VT43"
+    },
+    {
+        "id": 4,
+        "name": "Parma Eldalamberon #22; J.R.R. Tolkien, (editors) Christopher Gilson, Arden Smith; 2015",
+        "refId": "PE22"
+    },
+    {
+        "id": 5,
+        "name": "Vinyar Tengwar #49; J.R.R. Tolkien, (editors) Patrick Wynne, Carl Hostetter; June 2007",
+        "refId": "VT49"
+    },
+    {
+        "id": 6,
+        "name": "War of the Jewels; J.R.R. Tolkien, (editor) Christopher Tolkien; 1994",
+        "refId": "WJ"
+    },
+    {
+        "id": 7,
+        "name": "Vinyar Tengwar #42; J.R.R. Tolkien, (editors) Carl Hostetter, Bill Welden; July 2001",
+        "refId": "VT42"
+    },
+    {
+        "id": 8,
+        "name": "Unfinished Tales of Númenor and Middle-earth; J.R.R. Tolkien, (editor) Christopher Tolkien; 1980",
+        "refId": "UT"
+    },
+    {
+        "id": 9,
+        "name": "Parma Eldalamberon #16; J.R.R. Tolkien, (editors) Christopher Gilson, Arden Smith, Patrick Wynne, Carl Hostetter, Bill Welden; 2006",
+        "refId": "PE16"
+    },
+    {
+        "id": 10,
+        "name": "Parma Eldalamberon #21; J.R.R. Tolkien, (editors) Christopher Gilson, Patrick Wynne, Arden Smith; 2013",
+        "refId": "PE21"
+    },
+    {
+        "id": 11,
+        "name": "The Nature of Middle-Earth; J.R.R. Tolkien, (editor) Carl Hostetter; 2021",
+        "refId": "NM"
+    },
+    {
+        "id": 12,
+        "name": " Vinyar Tengwar #47; J.R.R. Tolkien, (editor) Patrick Wynne; February 2005",
+        "refId": "VT47"
+    },
+    {
+        "id": 13,
+        "name": "Vinyar Tengwar #48; J.R.R. Tolkien, (editor) Patrick Wynne; December 2005",
+        "refId": "VT48"
+    },
+    {
+        "id": 14,
+        "name": "Parma Eldalamberon #19; J.R.R. Tolkien, (editor) Christopher Gilson; 2010",
+        "refId": "PE19"
+    },
+    {
+        "id": 15,
+        "name": " Lord of the Rings, 50th Anniversary One-Volume Edition; J.R.R. Tolkien; 2004, original publication 1954-55",
+        "refId": "LotR"
+    },
+    {
+        "id": 16,
+        "name": "Lost Road and Other Writings; J.R.R. Tolkien, (editor) Christopher Tolkien; 1987",
+        "refId": "LR"
+    },
+    {
+        "id": 17,
+        "name": "Sauron Defeated, J.R.R. Tolkien, (editor) Christopher Tolkien; 1992",
+        "refId": "SD"
+    },
+    {
+        "id": 18,
+        "name": "Morgoth's Ring, J.R.R. Tolkien, (editor) Christopher Tolkien; 1993",
+        "refId": "MR"
+    },
+    {
+        "id": 19,
+        "name": "Vinyar Tengwar #46; J.R.R. Tolkien, (editors) Patrick Wynne, Carl Hostetter; July 2004",
+        "refId": "VT46"
+    },
+    {
+        "id": 20,
+        "name": "Vinyar Tengwar #45; J.R.R. Tolkien, (editors) Patrick Wynne, Carl Hostetter; November 2003",
+        "refId": "VT45"
+    },
+    {
+        "id": 21,
+        "name": "Parma Eldalamberon #18; J.R.R. Tolkien, (editor) Christopher Gilson, Patrick H. Wynne and Arden R. Smith; 2009",
+        "refId": "PE18"
+    },
+    {
+        "id": 22,
+        "name": "Parma Eldalamberon #15; J.R.R. Tolkien, (editors) Christopher Gilson, Arden R. Smith, Patrick H. Wynne, Carl Hostetter, Bill Welden; 2004",
+        "refId": "PE15"
+    },
+    {
+        "id": 23,
+        "name": "Silmarillion; J.R.R. Tolkien, (editor) Christopher Tolkien; 1977",
+        "refId": "S"
+    },
+    {
+        "id": 24,
+        "name": "Parma Eldalamberon #20",
+        "refId": "PE20"
+    },
+    {
+        "id": 25,
+        "name": "Vinyar Tengwar #41",
+        "refId": "VT41"
+    },
+    {
+        "id": 26,
+        "name": "Vinyar Tengwar #40",
+        "refId": "VT40"
+    }
+]

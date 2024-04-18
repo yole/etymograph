@@ -308,7 +308,6 @@ data class GraphRepositoryData(
     val corpusTexts: List<CorpusTextData>,
     val paradigms: List<ParadigmData>,
     val syllableStructures: List<SyllableStructureData>,
-    val publications: List<PublicationData>,
     val compounds: List<CompoundData>,
     val translations: List<TranslationData>,
     val grammaticalCategories: List<WordCategoryData>,
@@ -359,6 +358,9 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
     fun saveToJson(consumer: (String, String) -> Unit) {
         val repoData = createGraphRepositoryData()
         consumer("graph.json", theJson.encodeToString(repoData))
+        consumer("publications.json", theJson.encodeToString(
+            publications.filterNotNull().map { PublicationData(it.id, it.name, it.refId) })
+        )
     }
 
     private fun createGraphRepositoryData(): GraphRepositoryData {
@@ -416,7 +418,6 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                 }, it.pos)
             },
             syllableStructureData,
-            publications.filterNotNull().map { PublicationData(it.id, it.name, it.refId) },
             allLangEntities.filterIsInstance<Compound>().map { c ->
                 CompoundData(c.id, c.compoundWord.id, c.components.map { it.id }, c.source.sourceToSerializedFormat(), c.notes)
             },
@@ -448,8 +449,8 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
         }
     }
 
-    private fun loadJson(callback: (String) -> String) {
-        val data = Json.decodeFromString<GraphRepositoryData>(callback("graph.json"))
+    private fun loadJson(contentProviderCallback: (String) -> String) {
+        val data = Json.decodeFromString<GraphRepositoryData>(contentProviderCallback("graph.json"))
         _id = data.id
         _name = data.name
         for (languageData in data.languages) {
@@ -489,12 +490,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
         for (syllableStructureData in data.syllableStructures) {
             languageByShortName(syllableStructureData.languageShortName)!!.syllableStructures = syllableStructureData.syllableStructures
         }
-        for (pubData in data.publications) {
-            while (pubData.id > publications.size) {
-                publications.add(null)
-            }
-            publications.add(Publication(pubData.id, pubData.name, pubData.refId))
-        }
+        loadPublications(contentProviderCallback)
         for (wordData in data.words) {
             val language = languageByShortName(wordData.languageShortName)!!
             val wordsByText = mapOfWordsByText(language, wordData.text)
@@ -623,6 +619,16 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                     }
                 }
             }
+        }
+    }
+
+    private fun loadPublications(contentProviderCallback: (String) -> String) {
+        val publicationsData = Json.decodeFromString<List<PublicationData>>(contentProviderCallback("publications.json"))
+        for (pubData in publicationsData) {
+            while (pubData.id > publications.size) {
+                publications.add(null)
+            }
+            publications.add(Publication(pubData.id, pubData.name, pubData.refId))
         }
     }
 
@@ -813,6 +819,9 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
 }
 
 fun main() {
-    val repo = JsonGraphRepository.fromJson(Path.of("data/ie"))
-    repo.save()
+    val ieRepo = JsonGraphRepository.fromJson(Path.of("data/ie"))
+    ieRepo.save()
+
+    val jrrtRepo = JsonGraphRepository.fromJson(Path.of("data/jrrt"))
+    jrrtRepo.save()
 }
