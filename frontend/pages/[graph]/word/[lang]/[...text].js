@@ -18,6 +18,7 @@ import SourceRefs from "@/components/SourceRefs";
 import RuleLinkForm from "@/forms/RuleLinkForm";
 import EditLinkForm from "@/forms/EditLinkForm";
 import {GraphContext} from "@/components/Contexts";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 export const config = {
     unstable_runtimeJS: true
@@ -218,7 +219,7 @@ function SingleWord(params) {
 
     async function acceptParseCandidate(pc) {
         if (pc.wordId === null) {
-           const r = await addWord(graph, word.language, pc.text, "", "", pc.pos)
+            const r = await addWord(graph, word.language, pc.text, "", "", pc.pos)
             if (r.status === 200)
                 r.json().then(r =>
                     linkToParseCandidate(pc, r.id)
@@ -268,16 +269,17 @@ function SingleWord(params) {
     const isCompound = word.compound
     const posClassesEditable = (word.pos !== null ? word.pos : "") + (word.classes.length > 0 ? " " + word.classes.join(" ") : "")
 
+    const [dictionaryTitle, dictionaryLink] =
+        isName ? ["Names", "/names"] :
+            (isCompound ? ["Compounds", "/compounds"] : ["Dictionary", ""])
+
     return <>
-        <h2><small>
-            <Link href={`/${graph}`}>Etymograph</Link> {'> '}
-            <Link href={`/${graph}/language/${word.language}`}>{word.languageFullName}</Link> {'> '}
-            {!isName && !isCompound && <Link href={`/${graph}/dictionary/${word.language}`}>Dictionary</Link>}
-            {isName && <Link href={`/${graph}/dictionary/${word.language}/names`}>Names</Link>}
-            {!isName && isCompound && <Link href={`/${graph}/dictionary/${word.language}/compounds`}>Compounds</Link>}
-            {' > '}</small>
+        <Breadcrumbs langId={word.language} langName={word.languageFullName}
+                     steps={[{title: dictionaryTitle, url: `/${graph}/dictionary/${word.language}${dictionaryLink}`}]}>
             <WordWithStress text={word.text} stressIndex={word.stressIndex} stressLength={word.stressLength}
-                            reconstructed={word.reconstructed || word.languageReconstructed}/></h2>
+                            reconstructed={word.reconstructed || word.languageReconstructed}/>
+        </Breadcrumbs>
+
         {!editMode && <>
             {word.pos && <div>{word.pos} {word.classes.length > 0 && "(" + word.classes.join(", ") + ")"}</div>}
             <p>{word.fullGloss !== null && word.fullGloss !== "" ? word.fullGloss : word.gloss}</p>

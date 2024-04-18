@@ -34,5 +34,6 @@ export default function Breadcrumbs(props) {
             </>)}
         </small>
         {props.title}
+        {props.children}
     </h2>
 }
