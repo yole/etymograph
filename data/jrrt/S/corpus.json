@@ -1,0 +1,473 @@
+[
+    {
+        "id": 525,
+        "text": "Ai na vedui Dúnadan! Mae g'ovannen.",
+        "wordIds": [
+            191,
+            null,
+            194,
+            195,
+            198,
+            199
+        ],
+        "sourceRefs": [
+            {
+                "pubId": 15,
+                "refText": "209"
+            }
+        ]
+    },
+    {
+        "id": 526,
+        "text": "noro lim, noro lim Asfaloth",
+        "wordIds": [
+            null,
+            null,
+            null,
+            null,
+            null
+        ]
+    },
+    {
+        "id": 527,
+        "text": "A Elbereth Gilthoniel\nsilevren penna míriel\no menel aglar elenath!\nNa-chaered palan-díriel\no galadh-remmin Ennorath\nFanuilos, le linnathon\nnef aear, sí nef aearon",
+        "title": "A Elbereth Gilthoniel",
+        "wordIds": [
+            239,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            1146,
+            1157,
+            1162,
+            1165,
+            1078,
+            1139,
+            1167,
+            null,
+            null
+        ]
+    },
+    {
+        "id": 1168,
+        "text": "A Elbereth Gilthoniel\no menel palan-diriel\nle nallon sí di’nguruthos\na tiro nin, Fanuilos",
+        "title": "A Elbereth Gilthoniel (Two Towers)",
+        "wordIds": [
+            239,
+            null,
+            null,
+            null,
+            null,
+            1173,
+            null,
+            1178,
+            null,
+            1180,
+            239,
+            1191,
+            1193
+        ],
+        "sourceRefs": [
+            {
+                "pubId": 15,
+                "refText": "729"
+            }
+        ]
+    },
+    {
+        "id": 1198,
+        "text": "Ennyn Durin Aran Moria\npedo mellon a minno\nim Narvi hain echant \nCelebrimbor o Eregion teithant i thiw hin",
+        "title": "Moria Gate Inscription",
+        "wordIds": [
+            1199,
+            1244,
+            1201,
+            1203,
+            1209,
+            1211,
+            1212,
+            1213,
+            1216,
+            1218,
+            1219,
+            1221,
+            null,
+            1223,
+            null,
+            1224,
+            1235,
+            1237,
+            1238,
+            1239
+        ],
+        "sourceRefs": [
+            {
+                "pubId": 15,
+                "refText": "305"
+            }
+        ]
+    },
+    {
+        "id": 1241,
+        "text": "annon edhellen, edro hi ammen\nfennas nogothrim, lasto beth lammen",
+        "title": "Moria Gate Spell",
+        "wordIds": [
+            1200,
+            1242,
+            1245,
+            1248,
+            1252,
+            1254,
+            1257,
+            1260,
+            1263,
+            1267
+        ],
+        "sourceRefs": [
+            {
+                "pubId": 15,
+                "refText": "307"
+            }
+        ]
+    },
+    {
+        "id": 1269,
+        "text": "ir Ithil ammen Eruchín\nmenel-vîr síla díriel\nsi loth a galadh lasto dîn\na Hîr Annûn Gilthoniel\nle linnon im Tinúviel",
+        "title": "Lúthien’s Song",
+        "wordIds": [
+            1270,
+            1271,
+            null,
+            1272,
+            1277,
+            1280,
+            null,
+            1281,
+            1282,
+            1212,
+            null,
+            null,
+            1285,
+            239,
+            1286,
+            1289,
+            null,
+            null,
+            1290,
+            null,
+            1291
+        ],
+        "sourceRefs": [
+            {
+                "refText": "LB:354"
+            }
+        ]
+    },
+    {
+        "id": 1292,
+        "text": "cuio i Pheriain anann\naglar’ni Pheriannath\nDaur a Berhael, Conin en Annûn\neglerio",
+        "title": "Praises of Cormallen",
+        "wordIds": [
+            1293,
+            1237,
+            1296,
+            1298,
+            1300,
+            1302,
+            1303,
+            1212,
+            1305,
+            1311,
+            null,
+            null,
+            1313
+        ],
+        "sourceRefs": [
+            {
+                "refText": "Let:448"
+            }
+        ]
+    },
+    {
+        "id": 1315,
+        "text": "ae Adar nín i vi Menel\nno aer i eneth lín\ntolo i arnad lín\ncaro den i innas lin\nbo Ceven sui vi Menel\nanno ammen sír i mbas ilaurui vín\nar díheno ammen i úgerth vin\nsui mín i gohenam di ai gerir úgerth ammen",
+        "title": "Ae Adar Nín",
+        "wordIds": [
+            1316,
+            1317,
+            1318,
+            1319,
+            1320,
+            null,
+            1322,
+            1324,
+            null,
+            1325,
+            1326,
+            1327,
+            null,
+            1331,
+            null,
+            1332,
+            null,
+            null,
+            1336,
+            1335,
+            1339,
+            1340,
+            1342,
+            null,
+            null,
+            1343,
+            null,
+            1347,
+            null,
+            1349,
+            1353,
+            1357,
+            1358,
+            1359,
+            null,
+            null,
+            1361,
+            1366,
+            null,
+            null,
+            1319,
+            1368,
+            1370,
+            1372,
+            1374
+        ],
+        "sourceRefs": [
+            {
+                "pubId": 0,
+                "refText": "21"
+            }
+        ]
+    },
+    {
+        "id": 1375,
+        "text": " i-Veleglind i eithro en estar i-Chîn Húrin\ni glinn hen agorer Edain mi Velerian, ach hí in Ellath îr ed epholar\nar-phent Rían Tuor-na: man agorech?\nsí il chem en i Naugrim en ir Ellath thor den ammen\nTúrin ion Húrin Túramarth\nar Nienor sel Morwen Níniel \ni chîn Húrin\nos i Veleglinn i edain agorer vi Veleriann\nar in Ellath epholar eno vi Eressai",
+        "title": "Turin Wrapper",
+        "wordIds": [
+            null,
+            1378,
+            null,
+            1385,
+            null,
+            1491,
+            1386,
+            null,
+            null,
+            null,
+            1389,
+            null,
+            1388,
+            null,
+            1492,
+            1494,
+            null,
+            null,
+            1495,
+            null,
+            null,
+            null,
+            1522,
+            1514,
+            1516,
+            1519,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            1502,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            1377,
+            1396,
+            null,
+            1503,
+            null,
+            null,
+            1390,
+            1497,
+            1509,
+            null,
+            null,
+            null,
+            1376,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            1501,
+            null,
+            null,
+            1495,
+            null,
+            null,
+            null,
+            1512
+        ],
+        "sourceRefs": [
+            {
+                "refText": "VT50:5"
+            }
+        ]
+    },
+    {
+        "id": 1393,
+        "text": "Aragorn Arathornion Edhelharn\naran Gondor ar Arnor ar Hîr i Mbair Annui\nanglennatha i Varanduiniant erin dolothen Ethuil\negor ben genediad Drannail erin Gwirith edwen\nar e aníra ennas suilannad mhellyn în phain\nedregol e aníra tírad i Cherdir Perhael (i sennui Panthael estathar aen) Condir i Drann\nar Meril bess dîn, ar Elanor, Meril, Glorfinniel, ar Eirien sellath dîn\nar Iorhael, Gelir, Cordof, ar Baravorn, ionnath dîn\na Pherhael ar am Meril suilad uin aran o Minas Tirith nelchaenen ned Echuir",
+        "title": "King's Letter",
+        "wordIds": [
+            1394,
+            1395,
+            1399,
+            1201,
+            1403,
+            null,
+            1404,
+            null,
+            null,
+            null,
+            1405,
+            1407,
+            1408,
+            null,
+            1413,
+            null,
+            1419,
+            1422,
+            1423,
+            null,
+            1424,
+            null,
+            null,
+            1427,
+            1428,
+            null,
+            1429,
+            1430,
+            1431,
+            1432,
+            1434,
+            1435,
+            1436,
+            1438,
+            null,
+            null,
+            1439,
+            null,
+            1441,
+            1306,
+            1319,
+            null,
+            1452,
+            1489,
+            1487,
+            1455,
+            null,
+            1459,
+            null,
+            1446,
+            1449,
+            1450,
+            null,
+            1447,
+            null,
+            1461,
+            null,
+            1466,
+            1467,
+            1450,
+            null,
+            1468,
+            1471,
+            1472,
+            null,
+            1473,
+            1474,
+            1450,
+            1476,
+            1448,
+            null,
+            1475,
+            null,
+            1477,
+            1478,
+            null,
+            null,
+            1481,
+            1482,
+            null,
+            1486,
+            1483
+        ],
+        "sourceRefs": [
+            {
+                "refText": "SD:128"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-2405672595.html"
+            }
+        ]
+    },
+    {
+        "id": 1824,
+        "text": "Aerlinn in Edhil o Imladris",
+        "wordIds": [
+            1826,
+            null,
+            null,
+            null,
+            null
+        ],
+        "sourceRefs": [
+            {
+                "refText": "RGEO:62"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-1712116201.html"
+            }
+        ]
+    },
+    {
+        "id": 1880,
+        "text": "alae! ered en Echoriath, ered e·mbar nín",
+        "wordIds": [
+            null,
+            1881,
+            null,
+            null,
+            null,
+            null,
+            null
+        ],
+        "sourceRefs": [
+            {
+                "pubId": 8,
+                "refText": "40"
+            }
+        ]
+    }
+]

@@ -240,8 +240,7 @@ data class CompoundData(
 
 @Serializable
 data class CorpusTextData(
-    val id: Int, val text: String, val title: String?,
-    @SerialName("lang") val languageShortName: String,
+    val id: Int, val text: String, val title: String? = null,
     val wordIds: List<Int?>,
     val sourceRefs: List<SourceRefData>? = null,
     val notes: String? = null
@@ -304,7 +303,6 @@ data class GraphRepositoryData(
     val languages: List<LanguageData>,
     val rules: List<RuleData>,
     val links: List<LinkData>,
-    val corpusTexts: List<CorpusTextData>,
     val paradigms: List<ParadigmData>,
     val compounds: List<CompoundData>,
     val translations: List<TranslationData>,
@@ -359,6 +357,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
         )
         saveLanguageDetails(consumer)
         saveWords(consumer)
+        saveCorpus(consumer)
     }
 
     private fun saveLanguageDetails(consumer: (String, String) -> Unit) {
@@ -402,6 +401,19 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
         }
     }
 
+    private fun saveCorpus(consumer: (String, String) -> Unit) {
+        for (language in languages.values) {
+            val corpusData = corpus.filter { it.language == language}.map {
+                CorpusTextData(
+                    it.id, it.text, it.title,
+                    it.words.map { it?.id },
+                    it.source.sourceToSerializedFormat(), it.notes
+                )
+            }
+            consumer(language.shortName + "/corpus.json", theJson.encodeToString(corpusData))
+        }
+    }
+
     private fun createGraphRepositoryData(): GraphRepositoryData {
         return GraphRepositoryData(
             id,
@@ -414,13 +426,6 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                     link.type.id, link.rules.takeIf { it.isNotEmpty() }?.map { it.id },
                     link.source.sourceToSerializedFormat(),
                     link.notes
-                )
-            },
-            corpus.map {
-                CorpusTextData(
-                    it.id, it.text, it.title, it.language.shortName,
-                    it.words.map { it?.id },
-                    it.source.sourceToSerializedFormat(), it.notes
                 )
             },
             paradigms.filterNotNull().map {
@@ -457,6 +462,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
         loadLanguageDetails(contentProviderCallback)
         loadPublications(contentProviderCallback)
         loadWords(contentProviderCallback)
+        loadCorpus(contentProviderCallback)
         for (rule in data.rules) {
             val fromLanguage = languageByShortName(rule.fromLanguageShortName)!!
             val addedRule = Rule(
@@ -518,19 +524,6 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             setLangEntity(compound.id, compound)
         }
 
-        for (corpusText in data.corpusTexts) {
-            val addedCorpusText = CorpusText(
-                corpusText.id,
-                corpusText.text,
-                corpusText.title,
-                languageByShortName(corpusText.languageShortName)!!,
-                corpusText.wordIds.map { id -> id?.let { allLangEntities[id] as? Word } }.toMutableList(),
-                loadSource(corpusText.sourceRefs),
-                corpusText.notes
-            )
-            corpus += addedCorpusText
-            setLangEntity(corpusText.id, addedCorpusText)
-        }
         for (translationData in data.translations) {
             val corpusText = allLangEntities[translationData.corpusTextId] as CorpusText
             val translation = Translation(
@@ -622,6 +615,25 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
     private fun deserializeWordCategories(data: List<WordCategoryData>): MutableList<WordCategory> {
         return data.mapTo(mutableListOf()) {
             WordCategory(it.name, it.pos, it.values.map { dv -> WordCategoryValue(dv.name, dv.abbreviation) })
+        }
+    }
+
+    private fun loadCorpus(contentProviderCallback: (String) -> String) {
+        for (language in languages.values) {
+            val corpusTextList = Json.decodeFromString<List<CorpusTextData>>(contentProviderCallback(language.shortName + "/corpus.json"))
+            for (corpusText in corpusTextList) {
+                val addedCorpusText = CorpusText(
+                    corpusText.id,
+                    corpusText.text,
+                    corpusText.title,
+                    language,
+                    corpusText.wordIds.map { id -> id?.let { allLangEntities[id] as? Word } }.toMutableList(),
+                    loadSource(corpusText.sourceRefs),
+                    corpusText.notes
+                )
+                corpus += addedCorpusText
+                setLangEntity(corpusText.id, addedCorpusText)
+            }
         }
     }
 
