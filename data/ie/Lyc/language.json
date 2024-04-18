@@ -13,5 +13,39 @@
                 "consonant"
             ]
         }
+    ],
+    "grammaticalCategories": [
+        {
+            "name": "Case",
+            "pos": [
+                "N"
+            ],
+            "values": [
+                {
+                    "name": "Accusative",
+                    "abbreviation": "ACC"
+                },
+                {
+                    "name": "Dative",
+                    "abbreviation": "DAT"
+                }
+            ]
+        },
+        {
+            "name": "Number",
+            "pos": [
+                "N"
+            ],
+            "values": [
+                {
+                    "name": "Singular",
+                    "abbreviation": "SG"
+                },
+                {
+                    "name": "Plural",
+                    "abbreviation": "PL"
+                }
+            ]
+        }
     ]
 }

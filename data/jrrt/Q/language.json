@@ -565,5 +565,208 @@
         "VVC",
         "CVC",
         "CVVC"
+    ],
+    "grammaticalCategories": [
+        {
+            "name": "Number",
+            "pos": [
+                "N",
+                "V"
+            ],
+            "values": [
+                {
+                    "name": "Singular",
+                    "abbreviation": "SG"
+                },
+                {
+                    "name": "Plural",
+                    "abbreviation": "PL"
+                },
+                {
+                    "name": "Dual",
+                    "abbreviation": "DU"
+                },
+                {
+                    "name": "Partitive Plural",
+                    "abbreviation": "PPL"
+                }
+            ]
+        },
+        {
+            "name": "Case",
+            "pos": [
+                "N"
+            ],
+            "values": [
+                {
+                    "name": "Nominative",
+                    "abbreviation": "NOM"
+                },
+                {
+                    "name": "Genitive",
+                    "abbreviation": "GEN"
+                },
+                {
+                    "name": "Dative",
+                    "abbreviation": "DAT"
+                },
+                {
+                    "name": "Possessive",
+                    "abbreviation": "POSS"
+                },
+                {
+                    "name": "Allative",
+                    "abbreviation": "ALL"
+                },
+                {
+                    "name": "Ablative",
+                    "abbreviation": "ABL"
+                },
+                {
+                    "name": "Instrumental",
+                    "abbreviation": "INS"
+                },
+                {
+                    "name": "Locative",
+                    "abbreviation": "LOC"
+                }
+            ]
+        },
+        {
+            "name": "Possession",
+            "pos": [
+                "N"
+            ],
+            "values": [
+                {
+                    "name": "1st person singular",
+                    "abbreviation": "1SPOSS"
+                },
+                {
+                    "name": "2nd person singular formal",
+                    "abbreviation": "2SPOSS"
+                },
+                {
+                    "name": "2nd person singular familiar",
+                    "abbreviation": "2SFAMPOSS"
+                },
+                {
+                    "name": "3rd person",
+                    "abbreviation": "3SPOSS"
+                },
+                {
+                    "name": "1st person plural inclusive",
+                    "abbreviation": "1PINPOSS"
+                },
+                {
+                    "name": "1st person plural exclusive",
+                    "abbreviation": "1PEXPOSS"
+                },
+                {
+                    "name": "2nd person plural",
+                    "abbreviation": "2PPOSS"
+                },
+                {
+                    "name": "3rd person plural",
+                    "abbreviation": "3PPOSS"
+                },
+                {
+                    "name": "2nd person dual",
+                    "abbreviation": "2DPOSS"
+                }
+            ]
+        },
+        {
+            "name": "Tense",
+            "pos": [
+                "V"
+            ],
+            "values": [
+                {
+                    "name": "Present",
+                    "abbreviation": "PRES"
+                },
+                {
+                    "name": "Aorist",
+                    "abbreviation": "AOR"
+                },
+                {
+                    "name": "Past",
+                    "abbreviation": "PST"
+                },
+                {
+                    "name": "Perfect",
+                    "abbreviation": "PERF"
+                },
+                {
+                    "name": "Future",
+                    "abbreviation": "FUT"
+                }
+            ]
+        },
+        {
+            "name": "Person",
+            "pos": [
+                "V"
+            ],
+            "values": [
+                {
+                    "name": "1st",
+                    "abbreviation": "1"
+                },
+                {
+                    "name": "1st inclusive",
+                    "abbreviation": "1IN"
+                },
+                {
+                    "name": "1st exclusive",
+                    "abbreviation": "1EX"
+                },
+                {
+                    "name": "2nd formal",
+                    "abbreviation": "2"
+                },
+                {
+                    "name": "2nd familiar",
+                    "abbreviation": "2FAM"
+                },
+                {
+                    "name": "3rd",
+                    "abbreviation": "3"
+                }
+            ]
+        },
+        {
+            "name": "Object",
+            "pos": [
+                "V"
+            ],
+            "values": [
+                {
+                    "name": "3rd person singular",
+                    "abbreviation": "3SO"
+                },
+                {
+                    "name": "3rd person plural",
+                    "abbreviation": "3PO"
+                }
+            ]
+        },
+        {
+            "name": "Non-finite verb form",
+            "pos": [
+                "V"
+            ],
+            "values": [
+                {
+                    "name": "Active participle",
+                    "abbreviation": ".PART"
+                },
+                {
+                    "name": "Infinitive",
+                    "abbreviation": ".INF"
+                }
+            ]
+        }
     ]
 }

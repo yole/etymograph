@@ -47,7 +47,8 @@ data class LanguageDetailsData(
     val stressRuleId: Int? = null,
     val phonotacticsRuleId: Int? = null,
     val orthographyRuleId: Int? = null,
-    val syllableStructures: List<String> = emptyList()
+    val syllableStructures: List<String> = emptyList(),
+    val grammaticalCategories: List<WordCategoryData> = emptyList()
 )
 
 @Serializable
@@ -291,7 +292,7 @@ data class WordCategoryValueData(
 
 @Serializable
 data class WordCategoryData(
-    @SerialName("lang") val languageShortName: String,
+    @SerialName("lang") val languageShortName: String? = null,
     val name: String,
     val pos: List<String>,
     val values: List<WordCategoryValueData>
@@ -309,7 +310,6 @@ data class GraphRepositoryData(
     val paradigms: List<ParadigmData>,
     val compounds: List<CompoundData>,
     val translations: List<TranslationData>,
-    val grammaticalCategories: List<WordCategoryData>,
     val wordClasses: List<WordCategoryData>,
     val ruleSequences: List<RuleSequenceData>
 )
@@ -377,14 +377,21 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                 lang.stressRule?.resolve()?.id,
                 lang.phonotacticsRule?.resolve()?.id,
                 lang.orthographyRule?.resolve()?.id,
-                lang.syllableStructures
+                lang.syllableStructures,
+                serializeWordCategories(lang, lang.grammaticalCategories)
             )
             consumer(lang.shortName + "/language.json", theJson.encodeToString(languageDetailsData))
         }
     }
 
+    private fun serializeWordCategories(lang: Language, categories: List<WordCategory>) =
+        categories.map {
+            WordCategoryData(null, it.name, it.pos, it.values.map { v ->
+                WordCategoryValueData(v.name, v.abbreviation)
+            })
+        }
+
     private fun createGraphRepositoryData(): GraphRepositoryData {
-        val grammarCategoryData = mapWordCategories { it.grammaticalCategories }
         val wordClassData = mapWordCategories { it.wordClasses }
         return GraphRepositoryData(
             id,
@@ -425,7 +432,6 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             allLangEntities.filterIsInstance<Translation>().map { t ->
                 TranslationData(t.id, t.corpusText.id, t.text, t.source.sourceToSerializedFormat(), t.notes)
             },
-            grammarCategoryData,
             wordClassData,
             allLangEntities.filterIsInstance<RuleSequence>().map { s ->
                 RuleSequenceData(
@@ -557,7 +563,6 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             setLangEntity(translation.id, translation)
             storeTranslation(corpusText, translation)
         }
-        loadWordCategoryData(data.grammaticalCategories) { it.grammaticalCategories }
         loadWordCategoryData(data.wordClasses) { it.wordClasses }
 
         for (paradigm in data.paradigms) {
@@ -610,6 +615,13 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             language.phonotacticsRule = data.phonotacticsRuleId?.let { ruleRef(this, it) }
             language.orthographyRule = data.orthographyRuleId?.let { ruleRef(this, it) }
             language.syllableStructures = data.syllableStructures
+            language.grammaticalCategories = deserializeWordCategories(data.grammaticalCategories)
+        }
+    }
+
+    private fun deserializeWordCategories(data: List<WordCategoryData>): MutableList<WordCategory> {
+        return data.mapTo(mutableListOf()) {
+            WordCategory(it.name, it.pos, it.values.map { dv -> WordCategoryValue(dv.name, dv.abbreviation) })
         }
     }
 
@@ -625,7 +637,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
 
     private fun loadWordCategoryData(wordCategoryData: List<WordCategoryData>, prop: (Language) -> MutableList<WordCategory>) {
         for (gc in wordCategoryData) {
-            val language = languageByShortName(gc.languageShortName)
+            val language = languageByShortName(gc.languageShortName!!)
             prop(language!!).add(WordCategory(
                 gc.name,
                 gc.pos,

@@ -535,5 +535,112 @@
         "ae"
     ],
     "stressRuleId": 535,
-    "orthographyRuleId": 1232
+    "orthographyRuleId": 1232,
+    "grammaticalCategories": [
+        {
+            "name": "Number",
+            "pos": [
+                "N",
+                "V"
+            ],
+            "values": [
+                {
+                    "name": "Singlular",
+                    "abbreviation": "SG"
+                },
+                {
+                    "name": "Plural",
+                    "abbreviation": "PL"
+                },
+                {
+                    "name": "Class Plural",
+                    "abbreviation": "CPL"
+                }
+            ]
+        },
+        {
+            "name": "Tense",
+            "pos": [
+                "V"
+            ],
+            "values": [
+                {
+                    "name": "Future",
+                    "abbreviation": "FUT"
+                },
+                {
+                    "name": "Past",
+                    "abbreviation": "PST"
+                }
+            ]
+        },
+        {
+            "name": "Person",
+            "pos": [
+                "V"
+            ],
+            "values": [
+                {
+                    "name": "1st",
+                    "abbreviation": "1"
+                },
+                {
+                    "name": "1st inclusive",
+                    "abbreviation": "1IN"
+                },
+                {
+                    "name": "1st exclusive",
+                    "abbreviation": "1EX"
+                },
+                {
+                    "name": "2nd formal",
+                    "abbreviation": "2"
+                },
+                {
+                    "name": "2nd familiar",
+                    "abbreviation": "2FAM"
+                },
+                {
+                    "name": "3rd",
+                    "abbreviation": "3"
+                }
+            ]
+        },
+        {
+            "name": "Non-finite form",
+            "pos": [
+                "V"
+            ],
+            "values": [
+                {
+                    "name": "Present active participle",
+                    "abbreviation": "PART"
+                },
+                {
+                    "name": "Past active participle",
+                    "abbreviation": "PPART"
+                },
+                {
+                    "name": "Past passive participle",
+                    "abbreviation": "PPP"
+                },
+                {
+                    "name": "Gerund",
+                    "abbreviation": "GER"
+                }
+            ]
+        },
+        {
+            "name": "Mood",
+            "pos": [
+                "V"
+            ],
+            "values": [
+                {
+                    "name": "Imperative",
+                    "abbreviation": "IMP"
+                }
+            ]
+        }
+    ]
 }
