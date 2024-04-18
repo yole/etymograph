@@ -1,0 +1,2029 @@
+[
+    {
+        "id": 14,
+        "text": "NOT-",
+        "gloss": "count",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "62"
+            }
+        ]
+    },
+    {
+        "id": 24,
+        "text": "YUL-",
+        "gloss": "drink",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "63"
+            }
+        ]
+    },
+    {
+        "id": 30,
+        "text": "ORO-",
+        "gloss": "up, high",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "63"
+            }
+        ]
+    },
+    {
+        "id": 51,
+        "text": "TIN-",
+        "gloss": "sparkle, spark",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "66"
+            }
+        ]
+    },
+    {
+        "id": 55,
+        "text": "EL-",
+        "gloss": "star",
+        "fullGloss": "lo, behold; star",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "67"
+            }
+        ]
+    },
+    {
+        "id": 72,
+        "text": "KWAT-",
+        "gloss": "fill",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "68"
+            }
+        ]
+    },
+    {
+        "id": 80,
+        "text": "OY-",
+        "gloss": "ever",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "69"
+            }
+        ]
+    },
+    {
+        "id": 89,
+        "text": "TIR-",
+        "gloss": "watch, guard",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "25"
+            }
+        ]
+    },
+    {
+        "id": 98,
+        "text": "LAB-",
+        "gloss": "lick",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "72"
+            }
+        ]
+    },
+    {
+        "id": 100,
+        "text": "LUM-",
+        "gloss": "gloom",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "72"
+            }
+        ]
+    },
+    {
+        "id": 106,
+        "text": "KAY-",
+        "gloss": "lie",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "72"
+            }
+        ]
+    },
+    {
+        "id": 109,
+        "text": "MOR-",
+        "gloss": "black",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "73"
+            }
+        ]
+    },
+    {
+        "id": 114,
+        "text": "PHAL-",
+        "gloss": "splash",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "73"
+            }
+        ]
+    },
+    {
+        "id": 118,
+        "text": "KHITH-",
+        "gloss": "mist, fog",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "73"
+            }
+        ]
+    },
+    {
+        "id": 120,
+        "text": "TUP-",
+        "gloss": "cover over",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "73"
+            }
+        ]
+    },
+    {
+        "id": 123,
+        "text": "KAL-",
+        "gloss": "light",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "73"
+            }
+        ]
+    },
+    {
+        "id": 124,
+        "text": "KIR-",
+        "gloss": "cleave",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "73"
+            }
+        ]
+    },
+    {
+        "id": 140,
+        "text": "KHIR-",
+        "gloss": "find",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "75"
+            }
+        ]
+    },
+    {
+        "id": 161,
+        "text": "LAP-",
+        "gloss": "rim, edge, border, boundary, limit",
+        "sourceRefs": [
+            {
+                "pubId": 7,
+                "refText": "8"
+            }
+        ]
+    },
+    {
+        "id": 176,
+        "text": "NIL-",
+        "gloss": "friend",
+        "sourceRefs": [
+            {
+                "refText": "V"
+            }
+        ]
+    },
+    {
+        "id": 180,
+        "text": "SKAL-",
+        "gloss": "cover, veil, cloak, conceal",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "184"
+            }
+        ]
+    },
+    {
+        "id": 184,
+        "text": "NDU-",
+        "gloss": "go down, sink, set",
+        "sourceRefs": [
+            {
+                "refText": "V"
+            }
+        ]
+    },
+    {
+        "id": 185,
+        "text": "ATH-",
+        "gloss": "ease, comfort, heal",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "49"
+            }
+        ]
+    },
+    {
+        "id": 186,
+        "text": "LAS-",
+        "gloss": "leaf",
+        "sourceRefs": [
+            {
+                "refText": "V"
+            }
+        ]
+    },
+    {
+        "id": 203,
+        "text": "SPIN-",
+        "gloss": "fine thread, filament",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "17"
+            }
+        ]
+    },
+    {
+        "id": 207,
+        "text": "LAWAR-",
+        "gloss": "light of the Golden Tree",
+        "sourceRefs": [
+            {
+                "refText": "V"
+            }
+        ]
+    },
+    {
+        "id": 217,
+        "text": "PHOR-",
+        "gloss": "right hand",
+        "sourceRefs": [
+            {
+                "refText": "V"
+            }
+        ]
+    },
+    {
+        "id": 219,
+        "text": "KHIL-",
+        "gloss": "follow",
+        "sourceRefs": [
+            {
+                "refText": "V"
+            }
+        ]
+    },
+    {
+        "id": 224,
+        "text": "NIK-W-",
+        "gloss": "white",
+        "sourceRefs": [
+            {
+                "refText": "V"
+            }
+        ]
+    },
+    {
+        "id": 225,
+        "text": "SIL-",
+        "gloss": "shine silver",
+        "sourceRefs": [
+            {
+                "refText": "V"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-3191380133.html"
+            }
+        ]
+    },
+    {
+        "id": 227,
+        "text": "RIL-",
+        "gloss": "giltter",
+        "sourceRefs": [
+            {
+                "refText": "V"
+            }
+        ]
+    },
+    {
+        "id": 230,
+        "text": "TA-",
+        "gloss": "high, lofty, noble",
+        "sourceRefs": [
+            {
+                "refText": "V"
+            }
+        ]
+    },
+    {
+        "id": 232,
+        "text": "MEN-",
+        "gloss": "place, spot",
+        "sourceRefs": [
+            {
+                "refText": "V"
+            }
+        ]
+    },
+    {
+        "id": 243,
+        "text": "BARATH-",
+        "gloss": "supreme, sublime, queen",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "23"
+            }
+        ]
+    },
+    {
+        "id": 244,
+        "text": "GIL-",
+        "gloss": "shine (white or pale)",
+        "sourceRefs": [
+            {
+                "refText": "V"
+            }
+        ]
+    },
+    {
+        "id": 245,
+        "text": "THAN-",
+        "gloss": "kindle",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "23"
+            }
+        ]
+    },
+    {
+        "id": 251,
+        "text": "PEN-",
+        "gloss": "slope, downslope",
+        "sourceRefs": [
+            {
+                "refText": "V"
+            }
+        ]
+    },
+    {
+        "id": 252,
+        "text": "MIR-",
+        "gloss": "jewel",
+        "sourceRefs": [
+            {
+                "refText": "V"
+            }
+        ]
+    },
+    {
+        "id": 271,
+        "text": "KHAYA-",
+        "gloss": "far, distant",
+        "sourceRefs": [
+            {
+                "refText": "V"
+            }
+        ]
+    },
+    {
+        "id": 276,
+        "text": "PAL-",
+        "gloss": "wide (open)",
+        "sourceRefs": [
+            {
+                "refText": "V"
+            }
+        ]
+    },
+    {
+        "id": 281,
+        "text": "GALA-",
+        "gloss": "grow like plants",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "25"
+            }
+        ]
+    },
+    {
+        "id": 284,
+        "text": "SU-",
+        "gloss": "blow",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "124"
+            }
+        ]
+    },
+    {
+        "id": 304,
+        "text": "galada",
+        "gloss": "tree",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "refText": "PE17/153"
+            }
+        ]
+    },
+    {
+        "id": 339,
+        "text": "MAN-",
+        "gloss": "holy",
+        "fullGloss": "good (morally), blessed, holy, unmarred, free from evil",
+        "sourceRefs": [
+            {
+                "refText": "https://eldamo.org/content/words/word-1868394071.html"
+            }
+        ]
+    },
+    {
+        "id": 381,
+        "text": "LEK-",
+        "gloss": "loose"
+    },
+    {
+        "id": 439,
+        "text": "danta",
+        "gloss": "fall",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "62"
+            }
+        ]
+    },
+    {
+        "id": 440,
+        "text": "DAT-",
+        "gloss": "fall",
+        "sourceRefs": [
+            {
+                "pubId": 12,
+                "refText": "29"
+            }
+        ]
+    },
+    {
+        "id": 443,
+        "text": "RAM-",
+        "gloss": "wing, fly",
+        "sourceRefs": [
+            {
+                "refText": "V"
+            }
+        ]
+    },
+    {
+        "id": 444,
+        "text": "LIS-",
+        "gloss": "sweet",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "148"
+            }
+        ]
+    },
+    {
+        "id": 447,
+        "text": "PEL-",
+        "gloss": "fence",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "65"
+            }
+        ]
+    },
+    {
+        "id": 448,
+        "text": "LUY-",
+        "gloss": "blue",
+        "sourceRefs": [
+            {
+                "pubId": 13,
+                "refText": "24"
+            }
+        ]
+    },
+    {
+        "id": 449,
+        "text": "YA-",
+        "gloss": "there",
+        "fullGloss": "there, over there; back, ago",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "42"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-1458116671.html"
+            }
+        ]
+    },
+    {
+        "id": 450,
+        "text": "THIL-",
+        "gloss": "shine silver",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "66"
+            }
+        ]
+    },
+    {
+        "id": 451,
+        "text": "OM-",
+        "gloss": "of resonant sounds",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "138"
+            }
+        ]
+    },
+    {
+        "id": 452,
+        "text": "AYA-",
+        "gloss": "blessed",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "146"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-2839240697.html"
+            }
+        ]
+    },
+    {
+        "id": 453,
+        "text": "LIR-",
+        "gloss": "sing",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "67"
+            }
+        ]
+    },
+    {
+        "id": 454,
+        "text": "PHAN-",
+        "gloss": "cover",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "174"
+            }
+        ]
+    },
+    {
+        "id": 546,
+        "text": "si-",
+        "gloss": "this (by me)",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "18"
+            }
+        ]
+    },
+    {
+        "id": 555,
+        "text": "TEN-",
+        "gloss": "direction",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "187"
+            }
+        ]
+    },
+    {
+        "id": 559,
+        "text": "MET-",
+        "gloss": "end",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "24"
+            }
+        ]
+    },
+    {
+        "id": 613,
+        "text": "RAW-",
+        "gloss": "roar",
+        "sourceRefs": [
+            {
+                "refText": "Ety/RAW"
+            }
+        ]
+    },
+    {
+        "id": 618,
+        "text": "TAW-",
+        "gloss": "wood",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "115"
+            }
+        ]
+    },
+    {
+        "id": 624,
+        "text": "NIK-",
+        "gloss": "snow"
+    },
+    {
+        "id": 627,
+        "text": "KARAK-",
+        "gloss": "fang"
+    },
+    {
+        "id": 675,
+        "text": "KEN-",
+        "gloss": "see",
+        "fullGloss": "see, perceive, note"
+    },
+    {
+        "id": 702,
+        "text": "AM-",
+        "gloss": "up",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "157"
+            }
+        ]
+    },
+    {
+        "id": 711,
+        "text": "MIN-",
+        "gloss": "one",
+        "fullGloss": "one, first in a series",
+        "sourceRefs": [
+            {
+                "pubId": 7,
+                "refText": "24"
+            }
+        ]
+    },
+    {
+        "id": 738,
+        "text": "WIL-",
+        "gloss": "fly",
+        "fullGloss": "fly, float in air"
+    },
+    {
+        "id": 751,
+        "text": "TER-",
+        "gloss": "pierce"
+    },
+    {
+        "id": 761,
+        "text": "YAL-",
+        "gloss": "cry"
+    },
+    {
+        "id": 769,
+        "text": "KHAD-",
+        "gloss": "sit"
+    },
+    {
+        "id": 782,
+        "text": "ONO-",
+        "gloss": "beget"
+    },
+    {
+        "id": 793,
+        "text": "THAG-",
+        "gloss": "oppress, crush, press"
+    },
+    {
+        "id": 801,
+        "text": "WEN",
+        "gloss": "maiden",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "191"
+            }
+        ]
+    },
+    {
+        "id": 810,
+        "text": "khotta",
+        "gloss": "gather",
+        "fullGloss": "gather hastily together, pile up",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "39"
+            }
+        ]
+    },
+    {
+        "id": 811,
+        "text": "KHOT-",
+        "pos": "gather",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "39"
+            }
+        ]
+    },
+    {
+        "id": 814,
+        "text": "KU-",
+        "gloss": "bow, bend"
+    },
+    {
+        "id": 859,
+        "text": "LIN-",
+        "gloss": "sing"
+    },
+    {
+        "id": 873,
+        "text": "thūlē",
+        "gloss": "blowing forth",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "124"
+            }
+        ]
+    },
+    {
+        "id": 874,
+        "text": "THU-",
+        "gloss": "blow",
+        "fullGloss": "blow, cause an air movement",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "124"
+            }
+        ]
+    },
+    {
+        "id": 881,
+        "text": "thusya-",
+        "gloss": "go forth",
+        "fullGloss": "go forth (as an emission)",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "pubId": 11,
+                "refText": "239"
+            }
+        ]
+    },
+    {
+        "id": 885,
+        "text": "indo",
+        "gloss": "mind",
+        "fullGloss": "interior reflection or mind, the mind in its purposing faculty, the will; mood, heart",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 4,
+                "refText": "165"
+            }
+        ]
+    },
+    {
+        "id": 886,
+        "text": "imdo",
+        "gloss": "self",
+        "fullGloss": "self, innermost being, centre of reason",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 11,
+                "refText": "176"
+            }
+        ]
+    },
+    {
+        "id": 887,
+        "text": "IM-",
+        "gloss": "same, alike"
+    },
+    {
+        "id": 890,
+        "text": "TUR-",
+        "gloss": "master"
+    },
+    {
+        "id": 900,
+        "text": "nōrē",
+        "gloss": "kindred, race",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "26"
+            }
+        ]
+    },
+    {
+        "id": 1040,
+        "text": "MEL-",
+        "gloss": "love"
+    },
+    {
+        "id": 1046,
+        "text": "danmi",
+        "gloss": "ebb-tide",
+        "pos": "N"
+    },
+    {
+        "id": 1050,
+        "text": "khadmā",
+        "gloss": "seat",
+        "classes": [
+            "N"
+        ],
+        "sourceRefs": [
+            {
+                "pubId": 4,
+                "refText": "148"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-312592051.html"
+            }
+        ]
+    },
+    {
+        "id": 1056,
+        "text": "mbar",
+        "gloss": "dwelling",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "106"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-1276509773.html"
+            }
+        ]
+    },
+    {
+        "id": 1061,
+        "text": "elen",
+        "gloss": "star",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "139"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-1825557517.html"
+            }
+        ]
+    },
+    {
+        "id": 1063,
+        "text": "spindilā",
+        "gloss": "head of hair",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "17"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-928797671.html"
+            }
+        ]
+    },
+    {
+        "id": 1068,
+        "text": "kuldā",
+        "gloss": "hollow",
+        "pos": "ADJ",
+        "sourceRefs": [
+            {
+                "pubId": 6,
+                "refText": "414"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-948108325.html"
+            }
+        ]
+    },
+    {
+        "id": 1074,
+        "text": "annā",
+        "gloss": "gift",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "90"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-3729805313.html"
+            }
+        ]
+    },
+    {
+        "id": 1076,
+        "text": "aklara",
+        "gloss": "glory",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "refText": "https://eldamo.org/content/words/word-1779496437.html"
+            }
+        ]
+    },
+    {
+        "id": 1079,
+        "text": "nebā",
+        "gloss": "on this side",
+        "pos": "PREP",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "27; https://eldamo.org/content/words/word-3828168149.html"
+            }
+        ]
+    },
+    {
+        "id": 1082,
+        "text": "tagra",
+        "gloss": "lofty",
+        "pos": "ADJ",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "186"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-3294028003.html"
+            }
+        ]
+    },
+    {
+        "id": 1086,
+        "text": "tektā",
+        "gloss": "sign, symbol, mark",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "43"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-3513579757.html"
+            }
+        ]
+    },
+    {
+        "id": 1089,
+        "text": "yulmā",
+        "gloss": "drinking vessel",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 6,
+                "refText": "416"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-3892783617.html"
+            }
+        ]
+    },
+    {
+        "id": 1094,
+        "text": "erjā",
+        "gloss": "isolated, lonely",
+        "pos": "ADJ",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "28"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-1647508329.html"
+            }
+        ]
+    },
+    {
+        "id": 1099,
+        "text": "urkō",
+        "gloss": "orc",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 6,
+                "refText": "390"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-558893647.html"
+            }
+        ]
+    },
+    {
+        "id": 1100,
+        "text": "ambuna",
+        "gloss": "hilly",
+        "pos": "ADJ",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "92"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-893310473.html"
+            }
+        ]
+    },
+    {
+        "id": 1103,
+        "text": "andā",
+        "gloss": "long",
+        "pos": "ADJ",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "90"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-329215553.html"
+            }
+        ]
+    },
+    {
+        "id": 1104,
+        "text": "duinē",
+        "gloss": "large river",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 13,
+                "refText": "23"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-3956451697.html"
+            }
+        ]
+    },
+    {
+        "id": 1105,
+        "text": "skalā",
+        "gloss": "cast shadow",
+        "pos": "N",
+        "classes": [
+            "initial-s-syllabic"
+        ],
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "184"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-2533624585.html"
+            }
+        ]
+    },
+    {
+        "id": 1113,
+        "text": "dērā",
+        "gloss": "difficult",
+        "pos": "ADJ",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "154"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-1636916521.html"
+            }
+        ]
+    },
+    {
+        "id": 1116,
+        "text": "tekmā",
+        "gloss": "letter",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "43"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-594113779.html"
+            }
+        ]
+    },
+    {
+        "id": 1118,
+        "text": "teñmā",
+        "gloss": "letter",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 4,
+                "refText": "149"
+            }
+        ]
+    },
+    {
+        "id": 1122,
+        "text": "arātā",
+        "gloss": "high, lofty, noble",
+        "pos": "ADJ",
+        "sourceRefs": [
+            {
+                "refText": "PM:363"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-3106778397.html"
+            }
+        ]
+    },
+    {
+        "id": 1128,
+        "text": "phelgā",
+        "gloss": "mine",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "118"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-652207345.html"
+            }
+        ]
+    },
+    {
+        "id": 1131,
+        "text": "rīgā",
+        "gloss": "wreath",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "refText": "PM:347"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-237977647.html"
+            }
+        ]
+    },
+    {
+        "id": 1134,
+        "text": "thūsē",
+        "gloss": "horrible darkness, black mist",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "183"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-1260484391.html"
+            }
+        ]
+    },
+    {
+        "id": 1187,
+        "text": "ñgurū",
+        "gloss": "death",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "87"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-2804785965.html"
+            }
+        ]
+    },
+    {
+        "id": 1194,
+        "text": "ni",
+        "gloss": "I, me",
+        "pos": "PRON",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "68"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-4061029919.html"
+            }
+        ]
+    },
+    {
+        "id": 1202,
+        "text": "ANA-",
+        "gloss": "toward",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "40"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-3999209813.html"
+            }
+        ]
+    },
+    {
+        "id": 1207,
+        "text": "yagā",
+        "gloss": "chasm",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "refText": "Let:383"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-1579426943.html"
+            }
+        ]
+    },
+    {
+        "id": 1208,
+        "text": "YAG-",
+        "gloss": "gap",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "35"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-4031180395.html"
+            }
+        ]
+    },
+    {
+        "id": 1215,
+        "text": "MI-",
+        "gloss": "in",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "41"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-4236320083.html"
+            }
+        ]
+    },
+    {
+        "id": 1217,
+        "text": "immā",
+        "gloss": "reflexive",
+        "sourceRefs": [
+            {
+                "pubId": 12,
+                "refText": "14"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-4250421713.html"
+            }
+        ]
+    },
+    {
+        "id": 1231,
+        "text": "yānā",
+        "gloss": "wide",
+        "pos": "ADJ",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "42"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-447044619.html"
+            }
+        ]
+    },
+    {
+        "id": 1247,
+        "text": "etr-",
+        "gloss": "open",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "45"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-2220469759.html"
+            }
+        ]
+    },
+    {
+        "id": 1250,
+        "text": "me",
+        "gloss": "1st-pl-exclusive-pronound",
+        "pos": "PRON",
+        "sourceRefs": [
+            {
+                "pubId": 12,
+                "refText": "25"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-3059005759.html"
+            }
+        ]
+    },
+    {
+        "id": 1262,
+        "text": "LAS-",
+        "gloss": "listen",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "46"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-52259685.html"
+            }
+        ]
+    },
+    {
+        "id": 1283,
+        "text": "lotta",
+        "gloss": "bloom",
+        "sourceRefs": [
+            {
+                "pubId": 7,
+                "refText": "18"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-3848699385.html"
+            }
+        ]
+    },
+    {
+        "id": 1287,
+        "text": "khēr",
+        "gloss": "lord",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "refText": "VT41:9"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-2134601505.html"
+            }
+        ]
+    },
+    {
+        "id": 1295,
+        "text": "KOY-",
+        "gloss": "live",
+        "sourceRefs": [
+            {
+                "pubId": 4,
+                "refText": "136"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-990782687.html"
+            }
+        ]
+    },
+    {
+        "id": 1304,
+        "text": "dāra",
+        "gloss": "wise",
+        "pos": "ADJ",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "102"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-1199278527.html"
+            }
+        ]
+    },
+    {
+        "id": 1330,
+        "text": "TUL-",
+        "gloss": "come",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "188"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-822910333.html"
+            }
+        ]
+    },
+    {
+        "id": 1334,
+        "text": "KAR-",
+        "gloss": "make",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "84"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-443381331.html"
+            }
+        ]
+    },
+    {
+        "id": 1341,
+        "text": "kemen",
+        "gloss": "earth",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 10,
+                "refText": "71"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-615175951.html"
+            }
+        ]
+    },
+    {
+        "id": 1345,
+        "text": "antā",
+        "gloss": "give",
+        "pos": "V"
+    },
+    {
+        "id": 1348,
+        "text": "SI-",
+        "gloss": "this",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "67"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-3377957087.html"
+            }
+        ]
+    },
+    {
+        "id": 1351,
+        "text": "mbasta",
+        "gloss": "bread",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "refText": "https://eldamo.org/content/words/word-1283740149.html"
+            }
+        ]
+    },
+    {
+        "id": 1352,
+        "text": "MBAS-",
+        "gloss": "bake",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "51"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-2464642161.html"
+            }
+        ]
+    },
+    {
+        "id": 1406,
+        "text": "lō",
+        "gloss": "ablative",
+        "sourceRefs": [
+            {
+                "pubId": 10,
+                "refText": "79"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-1068546623.html"
+            }
+        ]
+    },
+    {
+        "id": 1412,
+        "text": "LED-",
+        "gloss": "go, proceed",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "51"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-1772134687.html"
+            }
+        ]
+    },
+    {
+        "id": 1418,
+        "text": "YAN-",
+        "gloss": "join",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "45"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-2909098865.html"
+            }
+        ]
+    },
+    {
+        "id": 1465,
+        "text": "YE",
+        "gloss": "daughter",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "190"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-1494114279.html"
+            }
+        ]
+    },
+    {
+        "id": 1485,
+        "text": "KUY-",
+        "gloss": "awake, live",
+        "sourceRefs": [
+            {
+                "pubId": 11,
+                "refText": "274"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-2857715871.html"
+            }
+        ]
+    },
+    {
+        "id": 1488,
+        "text": "ai",
+        "gloss": "supposing",
+        "sourceRefs": [
+            {
+                "pubId": 4,
+                "refText": "139"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-1113408815.html"
+            }
+        ]
+    },
+    {
+        "id": 1507,
+        "text": "mbartā",
+        "gloss": "define",
+        "pos": "V",
+        "classes": [
+            "initial-nasal-syllabic"
+        ],
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "104"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-4126993751.html"
+            }
+        ]
+    },
+    {
+        "id": 1520,
+        "text": "MA-",
+        "gloss": "interrogative base",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "161"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-3692974015.html"
+            }
+        ]
+    },
+    {
+        "id": 1534,
+        "text": "talam",
+        "gloss": "platform",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "52"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-1730497023.html"
+            }
+        ]
+    },
+    {
+        "id": 1536,
+        "text": "sūri",
+        "gloss": "wind",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 11,
+                "refText": "237"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-1724545379.html"
+            }
+        ]
+    },
+    {
+        "id": 1537,
+        "text": "phanyā",
+        "gloss": "veiled",
+        "pos": "ADJ",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "174"
+            }
+        ]
+    },
+    {
+        "id": 1645,
+        "text": "srāwe",
+        "gloss": "flrsh",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 18,
+                "refText": "350"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-140517109.html"
+            }
+        ]
+    },
+    {
+        "id": 1654,
+        "text": "SLON-",
+        "gloss": "sound",
+        "sourceRefs": [
+            {
+                "pubId": 13,
+                "refText": "29"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-2954543201.html"
+            }
+        ]
+    },
+    {
+        "id": 1663,
+        "text": "netthi",
+        "gloss": "girl",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 12,
+                "refText": "33"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-2413273407.html"
+            }
+        ]
+    },
+    {
+        "id": 1664,
+        "text": "NETH-",
+        "gloss": "(young) woman",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "167"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-2404050475.html"
+            }
+        ]
+    },
+    {
+        "id": 1669,
+        "text": "nakʰta-",
+        "gloss": "confine",
+        "pos": "V"
+    },
+    {
+        "id": 1672,
+        "text": "labmē",
+        "gloss": "language",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 6,
+                "refText": "416"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-3120396967.html"
+            }
+        ]
+    },
+    {
+        "id": 1676,
+        "text": "magtā",
+        "gloss": "handle",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "pubId": 12,
+                "refText": "18"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-3609323493.html"
+            }
+        ]
+    },
+    {
+        "id": 1689,
+        "text": "DAB-",
+        "gloss": "give way",
+        "fullGloss": "give way,  make room, permit, allow",
+        "sourceRefs": [
+            {
+                "pubId": 0,
+                "refText": "14"
+            }
+        ]
+    },
+    {
+        "id": 1719,
+        "text": "PHAY-",
+        "gloss": "radiate",
+        "sourceRefs": [
+            {
+                "refText": "V:381"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-2056783583.html"
+            }
+        ]
+    },
+    {
+        "id": 1726,
+        "text": "AT-",
+        "gloss": "two, across",
+        "sourceRefs": [
+            {
+                "refText": "https://eldamo.org/content/words/word-2176818521.html"
+            },
+            {
+                "pubId": 3,
+                "refText": "33"
+            }
+        ]
+    },
+    {
+        "id": 1731,
+        "text": "AM-",
+        "gloss": "mother",
+        "sourceRefs": [
+            {
+                "pubId": 13,
+                "refText": "17"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-1995513169.html"
+            }
+        ]
+    },
+    {
+        "id": 1744,
+        "text": "AW-",
+        "gloss": "away",
+        "pos": "away",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "143"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-3617829545.html"
+            }
+        ]
+    },
+    {
+        "id": 1746,
+        "text": "dōmē",
+        "gloss": "night, twilight",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "152"
+            }
+        ]
+    },
+    {
+        "id": 1747,
+        "text": "DOM-",
+        "gloss": "dark",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "152"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-2992708987.html"
+            }
+        ]
+    },
+    {
+        "id": 1751,
+        "text": "KWET-",
+        "gloss": "say, speak, utter words",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "46"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-743690107.html"
+            }
+        ]
+    },
+    {
+        "id": 1760,
+        "text": "rānā",
+        "gloss": "Moon",
+        "sourceRefs": [
+            {
+                "pubId": 13,
+                "refText": "7"
+            }
+        ]
+    },
+    {
+        "id": 1761,
+        "text": "RAN-",
+        "gloss": "wander, stray",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "60"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-1421057433.html"
+            }
+        ]
+    },
+    {
+        "id": 1775,
+        "text": "labmā",
+        "gloss": "tongue",
+        "sourceRefs": [
+            {
+                "pubId": 6,
+                "refText": "416"
+            }
+        ]
+    },
+    {
+        "id": 1778,
+        "text": "phāy",
+        "gloss": "ray of light, flame",
+        "sourceRefs": [
+            {
+                "pubId": 14,
+                "refText": "104"
+            }
+        ]
+    },
+    {
+        "id": 1803,
+        "text": "TAR-",
+        "gloss": "stand",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "186"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-1356167137.html"
+            }
+        ]
+    },
+    {
+        "id": 1822,
+        "text": "ULU-"
+    },
+    {
+        "id": 1823,
+        "text": "UL-",
+        "gloss": "flow",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "168"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-2518000351.html"
+            }
+        ]
+    },
+    {
+        "id": 1871,
+        "text": "UB-",
+        "gloss": "have in mind",
+        "sourceRefs": [
+            {
+                "pubId": 13,
+                "refText": "25"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-2231699231.html"
+            }
+        ]
+    },
+    {
+        "id": 1872,
+        "text": "aklāra",
+        "gloss": "glorious",
+        "pos": "ADJ",
+        "sourceRefs": [
+            {
+                "pubId": 21,
+                "refText": "87"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-1658435263.html"
+            }
+        ]
+    },
+    {
+        "id": 1874,
+        "text": "dūbā",
+        "gloss": "bend",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "168"
+            }
+        ]
+    },
+    {
+        "id": 1883,
+        "text": "TUY-",
+        "gloss": "sprout, bud",
+        "sourceRefs": [
+            {
+                "refText": "VT39:7"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-3770763007.html"
+            }
+        ]
+    }
+]

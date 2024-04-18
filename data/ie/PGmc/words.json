@@ -1,0 +1,852 @@
+[
+    {
+        "id": 1860,
+        "text": "wēpną",
+        "gloss": "weapon"
+    },
+    {
+        "id": 1864,
+        "text": "bandī",
+        "gloss": "fetter"
+    },
+    {
+        "id": 1868,
+        "text": "gebō",
+        "gloss": "gift"
+    },
+    {
+        "id": 1876,
+        "text": "badwō",
+        "gloss": "battle"
+    },
+    {
+        "id": 1881,
+        "text": "dagamaz",
+        "gloss": "day.DAT.PL"
+    },
+    {
+        "id": 1888,
+        "text": "dagai",
+        "gloss": "day.DAT",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "25"
+            }
+        ]
+    },
+    {
+        "id": 1890,
+        "text": "utraz",
+        "gloss": "otter",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "27"
+            }
+        ]
+    },
+    {
+        "id": 1959,
+        "text": "fedwōr",
+        "gloss": "four",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "41"
+            }
+        ]
+    },
+    {
+        "id": 1961,
+        "text": "izwiz",
+        "gloss": "you.DAT.PL"
+    },
+    {
+        "id": 1964,
+        "text": "sunuz",
+        "gloss": "son",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "43"
+            }
+        ]
+    },
+    {
+        "id": 1967,
+        "text": "kuningaz",
+        "gloss": "headman",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "45"
+            }
+        ]
+    },
+    {
+        "id": 1970,
+        "text": "harjaz",
+        "gloss": "army",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "46"
+            }
+        ]
+    },
+    {
+        "id": 1972,
+        "text": "balwą",
+        "gloss": "harm, evil",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "46"
+            }
+        ]
+    },
+    {
+        "id": 1974,
+        "text": "andijaz",
+        "gloss": "end",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "46"
+            }
+        ]
+    },
+    {
+        "id": 1977,
+        "text": "kʷikʷaz",
+        "gloss": "alive",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "48"
+            }
+        ]
+    },
+    {
+        "id": 1979,
+        "text": "sitjaną",
+        "gloss": "sit",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "51"
+            }
+        ]
+    },
+    {
+        "id": 1985,
+        "text": "gumô",
+        "gloss": "human"
+    },
+    {
+        "id": 1986,
+        "text": "gumanų",
+        "gloss": "human.ACC"
+    },
+    {
+        "id": 1991,
+        "text": "watōr",
+        "gloss": "water",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "59"
+            }
+        ]
+    },
+    {
+        "id": 1993,
+        "text": "namô",
+        "gloss": "name",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "59"
+            }
+        ]
+    },
+    {
+        "id": 1998,
+        "text": "sunauz",
+        "gloss": "son.GEN"
+    },
+    {
+        "id": 2002,
+        "text": "þewaz",
+        "gloss": "slave"
+    },
+    {
+        "id": 2003,
+        "text": "gastiz",
+        "gloss": "guest",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "43"
+            }
+        ]
+    },
+    {
+        "id": 2005,
+        "text": "hurną",
+        "gloss": "horn",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "45"
+            }
+        ]
+    },
+    {
+        "id": 2007,
+        "text": "ahtōu",
+        "gloss": "eight",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "61"
+            }
+        ]
+    },
+    {
+        "id": 2015,
+        "text": "nu",
+        "gloss": "now",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "65"
+            }
+        ]
+    },
+    {
+        "id": 2019,
+        "text": "ajją",
+        "gloss": "egg",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "66"
+            }
+        ]
+    },
+    {
+        "id": 2023,
+        "text": "glawwuz",
+        "gloss": "exact",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "66"
+            }
+        ]
+    },
+    {
+        "id": 2025,
+        "text": "hawwaną",
+        "gloss": "chop",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "66"
+            }
+        ]
+    },
+    {
+        "id": 2050,
+        "text": "hanhaną",
+        "gloss": "hang",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "142"
+            }
+        ]
+    },
+    {
+        "id": 2061,
+        "text": "haftaz",
+        "gloss": "bound",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "147"
+            }
+        ]
+    },
+    {
+        "id": 2067,
+        "text": "awiz",
+        "gloss": "sheep",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "148"
+            }
+        ]
+    },
+    {
+        "id": 2071,
+        "text": "slēpaną",
+        "gloss": "sleep",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "149"
+            }
+        ]
+    },
+    {
+        "id": 2083,
+        "text": "wilþijaz",
+        "gloss": "wild",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "156"
+            }
+        ]
+    },
+    {
+        "id": 2087,
+        "text": "dōmijaną",
+        "gloss": "to judge",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "157"
+            }
+        ]
+    },
+    {
+        "id": 2091,
+        "text": "niuhsijaną",
+        "gloss": "to spy",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "157"
+            }
+        ]
+    },
+    {
+        "id": 2096,
+        "text": "hlaibaz",
+        "gloss": "bread",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "170"
+            }
+        ]
+    },
+    {
+        "id": 2100,
+        "text": "haimaz",
+        "gloss": "native place",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "170"
+            }
+        ]
+    },
+    {
+        "id": 2103,
+        "text": "stainaz",
+        "gloss": "stone",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "170"
+            }
+        ]
+    },
+    {
+        "id": 2105,
+        "text": "raudaz",
+        "gloss": "red",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "172"
+            }
+        ]
+    },
+    {
+        "id": 2108,
+        "text": "awjō",
+        "gloss": "island",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "173"
+            }
+        ]
+    },
+    {
+        "id": 2110,
+        "text": "deupaz",
+        "gloss": "deep",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "173"
+            }
+        ]
+    },
+    {
+        "id": 2116,
+        "text": "fehu",
+        "gloss": "cattle, property",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "177"
+            }
+        ]
+    },
+    {
+        "id": 2120,
+        "text": "armaz",
+        "gloss": "arm",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "180"
+            }
+        ]
+    },
+    {
+        "id": 2124,
+        "text": "swartaz",
+        "gloss": "black",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "180"
+            }
+        ]
+    },
+    {
+        "id": 2126,
+        "text": "werþaną",
+        "gloss": "to become",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "182"
+            }
+        ]
+    },
+    {
+        "id": 2132,
+        "text": "herdō",
+        "gloss": "herd",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "182"
+            }
+        ]
+    },
+    {
+        "id": 2135,
+        "text": "halmaz",
+        "gloss": "straw",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "184"
+            }
+        ]
+    },
+    {
+        "id": 2138,
+        "text": "halsaz",
+        "gloss": "neck",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "184"
+            }
+        ]
+    },
+    {
+        "id": 2142,
+        "text": "trewa-",
+        "gloss": "tree",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "187"
+            }
+        ]
+    },
+    {
+        "id": 2146,
+        "text": "gelwaz",
+        "gloss": "yellow",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "187"
+            }
+        ]
+    },
+    {
+        "id": 2157,
+        "text": "kinnuz",
+        "gloss": "cheek"
+    },
+    {
+        "id": 2163,
+        "text": "gīslaz",
+        "gloss": "hostage",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "204"
+            }
+        ]
+    },
+    {
+        "id": 2165,
+        "text": "skipą",
+        "gloss": "ship",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "204"
+            }
+        ]
+    },
+    {
+        "id": 2167,
+        "text": "skīnaną",
+        "gloss": "shine",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "204"
+            }
+        ]
+    },
+    {
+        "id": 2177,
+        "text": "kalbaz",
+        "gloss": "calf",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "205"
+            }
+        ]
+    },
+    {
+        "id": 2180,
+        "text": "kaldaz",
+        "gloss": "cold",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "205"
+            }
+        ]
+    },
+    {
+        "id": 2182,
+        "text": "gardaz",
+        "gloss": "enclosure"
+    },
+    {
+        "id": 2184,
+        "text": "galgô",
+        "gloss": "gallows"
+    },
+    {
+        "id": 2201,
+        "text": "gernaz",
+        "gloss": "desirous, eager",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "205"
+            }
+        ]
+    },
+    {
+        "id": 2207,
+        "text": "keusaną",
+        "gloss": "to test"
+    },
+    {
+        "id": 2210,
+        "text": "geutaną",
+        "gloss": "to pour",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "206"
+            }
+        ]
+    },
+    {
+        "id": 2213,
+        "text": "gaumijaną",
+        "gloss": "to observe",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "206"
+            }
+        ]
+    },
+    {
+        "id": 2215,
+        "text": "skauniz",
+        "gloss": "beautiful"
+    },
+    {
+        "id": 2234,
+        "text": "rīkiją",
+        "gloss": "kingdom"
+    },
+    {
+        "id": 2237,
+        "text": "stikiz",
+        "gloss": "puncture, point"
+    },
+    {
+        "id": 2241,
+        "text": "mikilaz",
+        "gloss": "big"
+    },
+    {
+        "id": 2245,
+        "text": "slagiz",
+        "gloss": "blow, stroke",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "208"
+            }
+        ]
+    },
+    {
+        "id": 2247,
+        "text": "dagaz",
+        "gloss": "day",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "212"
+            }
+        ]
+    },
+    {
+        "id": 2249,
+        "text": "sehʷaną",
+        "gloss": "to see",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "215"
+            }
+        ]
+    },
+    {
+        "id": 2256,
+        "text": "sinɡʷaną",
+        "gloss": "to sing",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "215"
+            }
+        ]
+    },
+    {
+        "id": 2260,
+        "text": "gebaną",
+        "gloss": "to give",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "215"
+            }
+        ]
+    },
+    {
+        "id": 2262,
+        "text": "geldaną",
+        "gloss": "to pay for",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "216"
+            }
+        ]
+    },
+    {
+        "id": 2264,
+        "text": "skattaz",
+        "gloss": "coin, money",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "216"
+            }
+        ]
+    },
+    {
+        "id": 2266,
+        "text": "skelduz",
+        "gloss": "shield",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "216"
+            }
+        ]
+    },
+    {
+        "id": 2271,
+        "text": "druhtiz",
+        "gloss": "war band",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "223"
+            }
+        ]
+    },
+    {
+        "id": 2273,
+        "text": "gamundiz",
+        "gloss": "memory",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "223"
+            }
+        ]
+    },
+    {
+        "id": 2275,
+        "text": "hungrijaną",
+        "gloss": "to be hungry",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "223"
+            }
+        ]
+    },
+    {
+        "id": 2277,
+        "text": "rugiz",
+        "gloss": "rye",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "223"
+            }
+        ]
+    },
+    {
+        "id": 2279,
+        "text": "wurmiz",
+        "gloss": "worm, snake",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "223"
+            }
+        ]
+    },
+    {
+        "id": 2284,
+        "text": "brūdiz",
+        "gloss": "bride",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "224"
+            }
+        ]
+    },
+    {
+        "id": 2286,
+        "text": "brūkiz",
+        "gloss": "useful",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "224"
+            }
+        ]
+    },
+    {
+        "id": 2289,
+        "text": "hūdiz",
+        "gloss": "skin",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "224"
+            }
+        ]
+    },
+    {
+        "id": 2293,
+        "text": "swōtuz",
+        "gloss": "sweet, pleasant",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "227"
+            }
+        ]
+    },
+    {
+        "id": 2296,
+        "text": "matiz",
+        "gloss": "food",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "236"
+            }
+        ]
+    },
+    {
+        "id": 2299,
+        "text": "saiwiz",
+        "gloss": "sea",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "259"
+            }
+        ]
+    },
+    {
+        "id": 2308,
+        "text": "saiwalō",
+        "gloss": "soul",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "265"
+            }
+        ]
+    }
+]

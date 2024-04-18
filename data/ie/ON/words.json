@@ -1,0 +1,3753 @@
+[
+    {
+        "id": 923,
+        "text": "var"
+    },
+    {
+        "id": 924,
+        "text": "hann",
+        "gloss": "he",
+        "pos": "PRON"
+    },
+    {
+        "id": 925,
+        "text": "frændi",
+        "gloss": "kinsman",
+        "pos": "N",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 926,
+        "text": "vera",
+        "gloss": "be",
+        "fullGloss": "be",
+        "pos": "V"
+    },
+    {
+        "id": 927,
+        "text": "landnámsmanns"
+    },
+    {
+        "id": 928,
+        "text": "landnámsmaðr",
+        "gloss": "settler",
+        "pos": "N"
+    },
+    {
+        "id": 929,
+        "text": "gaf"
+    },
+    {
+        "id": 930,
+        "text": "gefa",
+        "gloss": "give",
+        "pos": "V",
+        "classes": [
+            "strong"
+        ]
+    },
+    {
+        "id": 931,
+        "text": "land",
+        "gloss": "land",
+        "pos": "N",
+        "classes": [
+            "n",
+            "strong"
+        ]
+    },
+    {
+        "id": 932,
+        "text": "ok",
+        "gloss": "and",
+        "pos": "CONJ"
+    },
+    {
+        "id": 933,
+        "text": "bjó"
+    },
+    {
+        "id": 934,
+        "text": "búa",
+        "gloss": "live",
+        "pos": "V",
+        "classes": [
+            "strong"
+        ]
+    },
+    {
+        "id": 935,
+        "text": "fyrst",
+        "gloss": "first.ACC"
+    },
+    {
+        "id": 936,
+        "text": "á",
+        "gloss": "on",
+        "fullGloss": "on; upon; at; in",
+        "pos": "PREP",
+        "notes": "+ acc"
+    },
+    {
+        "id": 937,
+        "text": "hét"
+    },
+    {
+        "id": 938,
+        "text": "heita",
+        "gloss": "be named",
+        "pos": "V",
+        "classes": [
+            "strong"
+        ]
+    },
+    {
+        "id": 939,
+        "text": "kona",
+        "gloss": "woman",
+        "fullGloss": "wife; woman",
+        "pos": "N",
+        "classes": [
+            "f"
+        ]
+    },
+    {
+        "id": 940,
+        "text": "hans"
+    },
+    {
+        "id": 941,
+        "text": "en",
+        "gloss": "but",
+        "fullGloss": "but; and",
+        "pos": "CONJ"
+    },
+    {
+        "id": 942,
+        "text": "sonr",
+        "gloss": "son",
+        "pos": "N",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 943,
+        "text": "þeira",
+        "pos": "PRON"
+    },
+    {
+        "id": 944,
+        "text": "efniligr",
+        "gloss": "promising",
+        "pos": "ADJ"
+    },
+    {
+        "id": 946,
+        "text": "hann"
+    },
+    {
+        "id": 947,
+        "text": "honum"
+    },
+    {
+        "id": 949,
+        "text": "náms",
+        "gloss": "taking"
+    },
+    {
+        "id": 951,
+        "text": "maðr",
+        "gloss": "man",
+        "pos": "N",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 952,
+        "text": "hon",
+        "gloss": "she",
+        "pos": "PRON"
+    },
+    {
+        "id": 953,
+        "text": "hana",
+        "gloss": "she.ACC"
+    },
+    {
+        "id": 954,
+        "text": "henni",
+        "gloss": "she.DAT"
+    },
+    {
+        "id": 955,
+        "text": "hennar",
+        "gloss": "she.GEN"
+    },
+    {
+        "id": 956,
+        "text": "konungr",
+        "gloss": "king",
+        "pos": "N",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 957,
+        "text": "hestr",
+        "gloss": "horse",
+        "pos": "N",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 958,
+        "text": "víkingr",
+        "gloss": "viking",
+        "pos": "N",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 959,
+        "text": "ferð",
+        "gloss": "journey",
+        "pos": "N",
+        "classes": [
+            "f",
+            "strong"
+        ]
+    },
+    {
+        "id": 960,
+        "text": "sök",
+        "gloss": "cause",
+        "pos": "N",
+        "classes": [
+            "f",
+            "strong"
+        ]
+    },
+    {
+        "id": 961,
+        "text": "leið",
+        "gloss": "way",
+        "fullGloss": "way, road",
+        "pos": "N",
+        "classes": [
+            "f",
+            "strong"
+        ]
+    },
+    {
+        "id": 962,
+        "text": "vík",
+        "gloss": "bay",
+        "pos": "N",
+        "classes": [
+            "f"
+        ]
+    },
+    {
+        "id": 963,
+        "text": "hlíð",
+        "gloss": "slope",
+        "pos": "N",
+        "classes": [
+            "f",
+            "strong"
+        ]
+    },
+    {
+        "id": 964,
+        "text": "skip",
+        "gloss": "ship",
+        "pos": "N",
+        "classes": [
+            "n",
+            "strong"
+        ]
+    },
+    {
+        "id": 965,
+        "text": "mál",
+        "gloss": "speech",
+        "pos": "N",
+        "classes": [
+            "n"
+        ]
+    },
+    {
+        "id": 966,
+        "text": "sverð",
+        "gloss": "sword",
+        "pos": "N",
+        "classes": [
+            "n"
+        ]
+    },
+    {
+        "id": 967,
+        "text": "þing",
+        "gloss": "assembly",
+        "pos": "N",
+        "classes": [
+            "n"
+        ]
+    },
+    {
+        "id": 968,
+        "text": "mikill",
+        "gloss": "great",
+        "pos": "ADJ"
+    },
+    {
+        "id": 969,
+        "text": "margr",
+        "gloss": "many",
+        "pos": "ADJ"
+    },
+    {
+        "id": 970,
+        "text": "góðr",
+        "gloss": "good",
+        "pos": "ADJ"
+    },
+    {
+        "id": 971,
+        "text": "sá",
+        "gloss": "that",
+        "pos": "PRON"
+    },
+    {
+        "id": 972,
+        "text": "einn",
+        "gloss": "one",
+        "pos": "NUM"
+    },
+    {
+        "id": 973,
+        "text": "hafa",
+        "gloss": "have",
+        "pos": "V",
+        "classes": [
+            "2conj",
+            "pret-ð"
+        ]
+    },
+    {
+        "id": 974,
+        "text": "segja",
+        "gloss": "say",
+        "pos": "V",
+        "classes": [
+            "4conj"
+        ]
+    },
+    {
+        "id": 975,
+        "text": "til",
+        "gloss": "to",
+        "pos": "PREP"
+    },
+    {
+        "id": 976,
+        "text": "í",
+        "gloss": "in",
+        "fullGloss": "in, into",
+        "pos": "PREP",
+        "notes": "+ acc (motion), dat (position)"
+    },
+    {
+        "id": 977,
+        "text": "at",
+        "gloss": "that",
+        "pos": "CONJ"
+    },
+    {
+        "id": 978,
+        "text": "fjörðr",
+        "gloss": "fjord",
+        "pos": "N",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 979,
+        "text": "dóttir",
+        "gloss": "daughter",
+        "pos": "N",
+        "classes": [
+            "f"
+        ]
+    },
+    {
+        "id": 981,
+        "text": "með",
+        "gloss": "with",
+        "pos": "PREP"
+    },
+    {
+        "id": 982,
+        "text": "fór"
+    },
+    {
+        "id": 983,
+        "text": "fara",
+        "gloss": "go",
+        "fullGloss": "go, travel, move",
+        "pos": "V",
+        "classes": [
+            "strong"
+        ]
+    },
+    {
+        "id": 984,
+        "text": "Herjólfr",
+        "gloss": "Herjólf",
+        "pos": "NP",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 985,
+        "text": "nam"
+    },
+    {
+        "id": 986,
+        "text": "nema",
+        "gloss": "take",
+        "pos": "V"
+    },
+    {
+        "id": 987,
+        "text": "eptir",
+        "gloss": "after",
+        "pos": "PREP"
+    },
+    {
+        "id": 988,
+        "text": "Leifr",
+        "gloss": "Leif",
+        "pos": "NP"
+    },
+    {
+        "id": 989,
+        "text": "hönd",
+        "gloss": "land",
+        "pos": "N",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 990,
+        "text": "lítill",
+        "gloss": "little",
+        "pos": "ADJ"
+    },
+    {
+        "id": 991,
+        "text": "illr",
+        "gloss": "bad; ill",
+        "pos": "ADJ"
+    },
+    {
+        "id": 992,
+        "text": "sannr",
+        "gloss": "true",
+        "pos": "ADJ"
+    },
+    {
+        "id": 993,
+        "text": "ek",
+        "gloss": "I",
+        "pos": "PRON"
+    },
+    {
+        "id": 994,
+        "text": "þú",
+        "gloss": "you",
+        "pos": "PRON"
+    },
+    {
+        "id": 995,
+        "text": "tveir",
+        "gloss": "two",
+        "pos": "NUM"
+    },
+    {
+        "id": 996,
+        "text": "koma",
+        "gloss": "come",
+        "pos": "V",
+        "classes": [
+            "strong"
+        ]
+    },
+    {
+        "id": 997,
+        "text": "munu",
+        "gloss": "will",
+        "pos": "V"
+    },
+    {
+        "id": 998,
+        "text": "þá",
+        "gloss": "then"
+    },
+    {
+        "id": 999,
+        "text": "þar",
+        "gloss": "there"
+    },
+    {
+        "id": 1000,
+        "text": "um",
+        "gloss": "about",
+        "pos": "PREP"
+    },
+    {
+        "id": 1001,
+        "text": "Eiríkr",
+        "gloss": "Eirik",
+        "pos": "NP",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 1003,
+        "text": "Gormr",
+        "gloss": "Gorm",
+        "pos": "NP"
+    },
+    {
+        "id": 1004,
+        "text": "gerði"
+    },
+    {
+        "id": 1005,
+        "text": "gera",
+        "gloss": "make",
+        "fullGloss": "make; do; act",
+        "pos": "V",
+        "classes": [
+            "2conj",
+            "pret-ð"
+        ]
+    },
+    {
+        "id": 1006,
+        "text": "kumbl",
+        "gloss": "monument",
+        "fullGloss": "burial monument, mound, cairn",
+        "pos": "N",
+        "classes": [
+            "n",
+            "strong"
+        ]
+    },
+    {
+        "id": 1007,
+        "text": "þessi",
+        "gloss": "this",
+        "pos": "PRON"
+    },
+    {
+        "id": 1008,
+        "text": "ept"
+    },
+    {
+        "id": 1009,
+        "text": "Þurvi",
+        "pos": "NP"
+    },
+    {
+        "id": 1013,
+        "text": "konu"
+    },
+    {
+        "id": 1014,
+        "text": "sína"
+    },
+    {
+        "id": 1015,
+        "text": "sinn",
+        "gloss": "his/her own",
+        "pos": "PRON"
+    },
+    {
+        "id": 1016,
+        "text": "Herjólfi"
+    },
+    {
+        "id": 1017,
+        "text": "Bárðarson"
+    },
+    {
+        "id": 1018,
+        "text": "Bárðar"
+    },
+    {
+        "id": 1020,
+        "text": "Bárðr",
+        "gloss": "Bard",
+        "pos": "NP",
+        "classes": [
+            "gen-ar"
+        ]
+    },
+    {
+        "id": 1021,
+        "text": "Herjólfssonar"
+    },
+    {
+        "id": 1022,
+        "text": "Herjólfsson"
+    },
+    {
+        "id": 1023,
+        "text": "Herjólfs"
+    },
+    {
+        "id": 1025,
+        "text": "Ingólfs"
+    },
+    {
+        "id": 1026,
+        "text": "Ingólfr",
+        "gloss": "Ingolf",
+        "pos": "NP"
+    },
+    {
+        "id": 1027,
+        "text": "land"
+    },
+    {
+        "id": 1028,
+        "text": "milli",
+        "gloss": "between",
+        "pos": "PREP"
+    },
+    {
+        "id": 1029,
+        "text": "Vags"
+    },
+    {
+        "id": 1030,
+        "text": "Vagr",
+        "gloss": "Vag Bay",
+        "pos": "NP"
+    },
+    {
+        "id": 1031,
+        "text": "Reykjaness"
+    },
+    {
+        "id": 1032,
+        "text": "Reykjanes",
+        "pos": "NP"
+    },
+    {
+        "id": 1033,
+        "text": "reykja",
+        "gloss": "smoke",
+        "pos": "V"
+    },
+    {
+        "id": 1035,
+        "text": "nes",
+        "gloss": "headland",
+        "pos": "N",
+        "classes": [
+            "n"
+        ]
+    },
+    {
+        "id": 1036,
+        "text": "Bjarni",
+        "pos": "NP"
+    },
+    {
+        "id": 1037,
+        "text": "Þorgerðr",
+        "pos": "NP"
+    },
+    {
+        "id": 1038,
+        "text": "Eiríki"
+    },
+    {
+        "id": 1039,
+        "text": "Grœnlands"
+    },
+    {
+        "id": 1040,
+        "text": "Grœnland",
+        "pos": "NP",
+        "classes": [
+            "n",
+            "strong"
+        ]
+    },
+    {
+        "id": 1041,
+        "text": "grœnn",
+        "gloss": "green",
+        "pos": "ADJ"
+    },
+    {
+        "id": 1046,
+        "text": "Herjólfsnesi"
+    },
+    {
+        "id": 1047,
+        "text": "Herjólfsnes",
+        "pos": "NP",
+        "classes": [
+            "n"
+        ]
+    },
+    {
+        "id": 1052,
+        "text": "fjördr"
+    },
+    {
+        "id": 1053,
+        "text": "Herjólfsfjörð"
+    },
+    {
+        "id": 1054,
+        "text": "Herjólfsfjörðr",
+        "pos": "NP"
+    },
+    {
+        "id": 1056,
+        "text": "Eiríksfjörð"
+    },
+    {
+        "id": 1057,
+        "text": "Eiríksfjörðr",
+        "pos": "NP"
+    },
+    {
+        "id": 1058,
+        "text": "Eiríks"
+    },
+    {
+        "id": 1060,
+        "text": "kumbl"
+    },
+    {
+        "id": 1061,
+        "text": "Danmarkar"
+    },
+    {
+        "id": 1062,
+        "text": "Danmörk",
+        "gloss": "Denmark",
+        "pos": "NP"
+    },
+    {
+        "id": 1063,
+        "text": "bót"
+    },
+    {
+        "id": 1064,
+        "text": "bót",
+        "gloss": "adornment",
+        "pos": "N",
+        "classes": [
+            "n"
+        ]
+    },
+    {
+        "id": 1066,
+        "text": "Hörda-Knúts"
+    },
+    {
+        "id": 1067,
+        "text": "Hörda-Knútr",
+        "pos": "NP"
+    },
+    {
+        "id": 1068,
+        "text": "sterkr",
+        "gloss": "strong",
+        "pos": "ADJ"
+    },
+    {
+        "id": 1069,
+        "text": "atgervimaðr",
+        "gloss": "man of accomplishments",
+        "pos": "N",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 1070,
+        "text": "ekki",
+        "gloss": "not"
+    },
+    {
+        "id": 1071,
+        "text": "kallaðr"
+    },
+    {
+        "id": 1072,
+        "text": "kalla",
+        "gloss": "call",
+        "pos": "V",
+        "classes": [
+            "1conj"
+        ]
+    },
+    {
+        "id": 1073,
+        "text": "vitr",
+        "gloss": "wise",
+        "pos": "ADJ"
+    },
+    {
+        "id": 1074,
+        "text": "fekk"
+    },
+    {
+        "id": 1075,
+        "text": "fá",
+        "gloss": "get",
+        "fullGloss": "get, take. procure, grasp, marry",
+        "pos": "V"
+    },
+    {
+        "id": 1076,
+        "text": "er",
+        "gloss": "that",
+        "fullGloss": "who, which, that"
+    },
+    {
+        "id": 1077,
+        "text": "Þyri",
+        "pos": "NP"
+    },
+    {
+        "id": 1078,
+        "text": "Haralds"
+    },
+    {
+        "id": 1079,
+        "text": "Haraldr",
+        "gloss": "Harald",
+        "pos": "NP",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 1080,
+        "text": "jarls"
+    },
+    {
+        "id": 1081,
+        "text": "jarl",
+        "gloss": "earl",
+        "pos": "N",
+        "classes": [
+            "m",
+            "strong"
+        ]
+    },
+    {
+        "id": 1082,
+        "text": "af",
+        "gloss": "of",
+        "fullGloss": "of, by, out of, from",
+        "pos": "PREP"
+    },
+    {
+        "id": 1083,
+        "text": "Klakk-Haraldr",
+        "pos": "NP"
+    },
+    {
+        "id": 1084,
+        "text": "frið",
+        "gloss": "beautiful.F"
+    },
+    {
+        "id": 1085,
+        "text": "friðr",
+        "gloss": "beautiful",
+        "pos": "ADJ"
+    },
+    {
+        "id": 1086,
+        "text": "mestr",
+        "gloss": "greatest",
+        "pos": "ADJ"
+    },
+    {
+        "id": 1087,
+        "text": "skörungr",
+        "gloss": "leader",
+        "pos": "N",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 1092,
+        "text": "rún",
+        "gloss": "rune",
+        "pos": "N",
+        "classes": [
+            "f",
+            "strong"
+        ]
+    },
+    {
+        "id": 1093,
+        "text": "goði",
+        "gloss": "chieftain",
+        "pos": "N",
+        "classes": [
+            "m",
+            "weak"
+        ]
+    },
+    {
+        "id": 1094,
+        "text": "tunga",
+        "gloss": "tongue",
+        "pos": "N",
+        "classes": [
+            "f",
+            "weak"
+        ]
+    },
+    {
+        "id": 1095,
+        "text": "auga",
+        "gloss": "eye",
+        "pos": "N",
+        "classes": [
+            "n",
+            "weak"
+        ]
+    },
+    {
+        "id": 1096,
+        "text": "konum"
+    },
+    {
+        "id": 1097,
+        "text": "Norðlöndum"
+    },
+    {
+        "id": 1098,
+        "text": "Norðlönd",
+        "gloss": "Scandinavia",
+        "pos": "NP"
+    },
+    {
+        "id": 1099,
+        "text": "danmarkarbót"
+    },
+    {
+        "id": 1103,
+        "text": "bað"
+    },
+    {
+        "id": 1104,
+        "text": "biðja",
+        "gloss": "ask",
+        "fullGloss": "ask, beg, command, tell",
+        "pos": "V"
+    },
+    {
+        "id": 1105,
+        "text": "Gorm"
+    },
+    {
+        "id": 1106,
+        "text": "föður"
+    },
+    {
+        "id": 1107,
+        "text": "faðir",
+        "gloss": "father",
+        "pos": "N",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 1108,
+        "text": "móður"
+    },
+    {
+        "id": 1109,
+        "text": "móðir",
+        "gloss": "mother",
+        "pos": "N",
+        "classes": [
+            "f"
+        ]
+    },
+    {
+        "id": 1110,
+        "text": "es"
+    },
+    {
+        "id": 1111,
+        "text": "sér",
+        "gloss": "him/herself.DAT"
+    },
+    {
+        "id": 1112,
+        "text": "sík",
+        "gloss": "him/herself",
+        "pos": "PRON"
+    },
+    {
+        "id": 1113,
+        "text": "vann"
+    },
+    {
+        "id": 1114,
+        "text": "vinna",
+        "gloss": "win",
+        "fullGloss": "gain, win, work, perform, accomplish",
+        "pos": "V"
+    },
+    {
+        "id": 1115,
+        "text": "alla",
+        "gloss": "all.F.ACC"
+    },
+    {
+        "id": 1116,
+        "text": "allr",
+        "gloss": "all",
+        "fullGloss": "all, entire, whole",
+        "pos": "ADJ"
+    },
+    {
+        "id": 1117,
+        "text": "Norveg"
+    },
+    {
+        "id": 1118,
+        "text": "Norvegr",
+        "gloss": "Norway",
+        "pos": "PN"
+    },
+    {
+        "id": 1119,
+        "text": "Dani",
+        "gloss": "Dane.ACC.PL"
+    },
+    {
+        "id": 1120,
+        "text": "kristna",
+        "gloss": "Christian.M.ACC.PL"
+    },
+    {
+        "id": 1121,
+        "text": "kristinn",
+        "gloss": "Christian",
+        "pos": "ADJ"
+    },
+    {
+        "id": 1124,
+        "text": "armr",
+        "gloss": "arm",
+        "pos": "N",
+        "classes": [
+            "m",
+            "strong"
+        ]
+    },
+    {
+        "id": 1125,
+        "text": "staðr",
+        "gloss": "place",
+        "fullGloss": "place, stead",
+        "pos": "N",
+        "classes": [
+            "m",
+            "strong",
+            "strong-type2",
+            "gen-ar"
+        ]
+    },
+    {
+        "id": 1126,
+        "text": "saga",
+        "gloss": "story",
+        "pos": "N",
+        "classes": [
+            "f",
+            "weak"
+        ]
+    },
+    {
+        "id": 1131,
+        "text": "mæla",
+        "gloss": "speak",
+        "pos": "V",
+        "classes": [
+            "2conj",
+            "pret-t"
+        ]
+    },
+    {
+        "id": 1135,
+        "text": "telja",
+        "gloss": "count",
+        "pos": "V",
+        "classes": [
+            "3conj"
+        ]
+    },
+    {
+        "id": 1136,
+        "text": "vaka",
+        "gloss": "be awake",
+        "pos": "V",
+        "classes": [
+            "4conj",
+            "pret-t"
+        ]
+    },
+    {
+        "id": 1137,
+        "text": "e"
+    },
+    {
+        "id": 1138,
+        "text": "herja",
+        "gloss": "raid",
+        "pos": "V",
+        "classes": [
+            "1conj"
+        ]
+    },
+    {
+        "id": 1139,
+        "text": "fylgja",
+        "gloss": "follow",
+        "pos": "V",
+        "classes": [
+            "2conj"
+        ]
+    },
+    {
+        "id": 1141,
+        "text": "ágætr",
+        "gloss": "excellent",
+        "fullGloss": "excellent, noble, distinguished",
+        "pos": "ADJ"
+    },
+    {
+        "id": 1142,
+        "text": "Skútaðar-Skedi",
+        "pos": "NP"
+    },
+    {
+        "id": 1143,
+        "text": "Noregi"
+    },
+    {
+        "id": 1144,
+        "text": "Noregr",
+        "pos": "NP"
+    },
+    {
+        "id": 1145,
+        "text": "Björn",
+        "pos": "NP"
+    },
+    {
+        "id": 1146,
+        "text": "Skinna-Björn",
+        "pos": "NP"
+    },
+    {
+        "id": 1147,
+        "text": "því",
+        "gloss": "because",
+        "pos": "CONJ"
+    },
+    {
+        "id": 1148,
+        "text": "Hólmsgarðsfari"
+    },
+    {
+        "id": 1149,
+        "text": "Hólmsgarðs"
+    },
+    {
+        "id": 1151,
+        "text": "fari",
+        "gloss": "voyager",
+        "pos": "N"
+    },
+    {
+        "id": 1152,
+        "text": "Hólmsgarðr",
+        "gloss": "Holmgard",
+        "pos": "NP"
+    },
+    {
+        "id": 1153,
+        "text": "farmaðr",
+        "pos": "N"
+    },
+    {
+        "id": 1154,
+        "text": "far"
+    },
+    {
+        "id": 1157,
+        "text": "Íslands"
+    },
+    {
+        "id": 1158,
+        "text": "Ísland",
+        "gloss": "Iceland",
+        "pos": "NP",
+        "classes": [
+            "n",
+            "strong"
+        ]
+    },
+    {
+        "id": 1159,
+        "text": "Miðfjörð"
+    },
+    {
+        "id": 1160,
+        "text": "Miðfjörðr",
+        "pos": "NP"
+    },
+    {
+        "id": 1161,
+        "text": "Línakradal",
+        "pos": "NP"
+    },
+    {
+        "id": 1162,
+        "text": "Línakradal"
+    },
+    {
+        "id": 1163,
+        "text": "Miðfjarðar-Skeggi",
+        "pos": "NP"
+    },
+    {
+        "id": 1164,
+        "text": "garpr",
+        "gloss": "bold",
+        "pos": "ADJ"
+    },
+    {
+        "id": 1165,
+        "text": "herjaði"
+    },
+    {
+        "id": 1167,
+        "text": "austrveg",
+        "gloss": "east route",
+        "pos": "N"
+    },
+    {
+        "id": 1168,
+        "text": "við",
+        "gloss": "by",
+        "pos": "PREP"
+    },
+    {
+        "id": 1169,
+        "text": "Sjáland",
+        "gloss": "Zealand",
+        "pos": "NP"
+    },
+    {
+        "id": 1170,
+        "text": "brjóta",
+        "gloss": "break",
+        "pos": "V"
+    },
+    {
+        "id": 1171,
+        "text": "haug"
+    },
+    {
+        "id": 1172,
+        "text": "haugr",
+        "gloss": "burial mound",
+        "pos": "N",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 1173,
+        "text": "Hrólfs"
+    },
+    {
+        "id": 1174,
+        "text": "Hrólfr",
+        "pos": "NP",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 1175,
+        "text": "konungs"
+    },
+    {
+        "id": 1176,
+        "text": "kraka"
+    },
+    {
+        "id": 1177,
+        "text": "kraki",
+        "pos": "NP"
+    },
+    {
+        "id": 1178,
+        "text": "tók"
+    },
+    {
+        "id": 1179,
+        "text": "taka",
+        "gloss": "take",
+        "pos": "V"
+    },
+    {
+        "id": 1180,
+        "text": "ór",
+        "gloss": "from",
+        "pos": "PREP"
+    },
+    {
+        "id": 1181,
+        "text": "haugi"
+    },
+    {
+        "id": 1182,
+        "text": "Sköfnung"
+    },
+    {
+        "id": 1183,
+        "text": "Sköfnungr",
+        "pos": "NP",
+        "classes": [
+            "m",
+            "strong"
+        ]
+    },
+    {
+        "id": 1184,
+        "text": "øxi"
+    },
+    {
+        "id": 1185,
+        "text": "øx",
+        "gloss": "axe",
+        "pos": "N",
+        "classes": [
+            "f"
+        ]
+    },
+    {
+        "id": 1186,
+        "text": "Hjalta"
+    },
+    {
+        "id": 1187,
+        "text": "Hjalti",
+        "pos": "NP"
+    },
+    {
+        "id": 1262,
+        "text": "Sigríðr",
+        "gloss": "Sigrid",
+        "pos": "NP"
+    },
+    {
+        "id": 1263,
+        "text": "brú",
+        "gloss": "bridge",
+        "pos": "N"
+    },
+    {
+        "id": 1264,
+        "text": "brú"
+    },
+    {
+        "id": 1265,
+        "text": "þessa"
+    },
+    {
+        "id": 1266,
+        "text": "Alreks"
+    },
+    {
+        "id": 1267,
+        "text": "Alrekr",
+        "pos": "NP"
+    },
+    {
+        "id": 1268,
+        "text": "Orms"
+    },
+    {
+        "id": 1269,
+        "text": "Ormr",
+        "pos": "NP"
+    },
+    {
+        "id": 1270,
+        "text": "fyr"
+    },
+    {
+        "id": 1271,
+        "text": "fyrir",
+        "gloss": "for",
+        "pos": "PREP"
+    },
+    {
+        "id": 1272,
+        "text": "sálu"
+    },
+    {
+        "id": 1273,
+        "text": "sála",
+        "gloss": "soul",
+        "pos": "N",
+        "classes": [
+            "f"
+        ]
+    },
+    {
+        "id": 1274,
+        "text": "Hólmgeirs"
+    },
+    {
+        "id": 1275,
+        "text": "Hólmgeirr",
+        "pos": "NP"
+    },
+    {
+        "id": 1276,
+        "text": "föður"
+    },
+    {
+        "id": 1277,
+        "text": "Sigrøðar"
+    },
+    {
+        "id": 1278,
+        "text": "Sigrøðr",
+        "pos": "NP",
+        "classes": [
+            "gen-ar"
+        ]
+    },
+    {
+        "id": 1279,
+        "text": "búanda"
+    },
+    {
+        "id": 1280,
+        "text": "búandi",
+        "pos": "N"
+    },
+    {
+        "id": 1281,
+        "text": "bóndi",
+        "gloss": "husband",
+        "pos": "N"
+    },
+    {
+        "id": 1282,
+        "text": "síns"
+    },
+    {
+        "id": 1283,
+        "text": "skógr",
+        "gloss": "forest",
+        "pos": "N",
+        "classes": [
+            "m",
+            "strong",
+            "gen-ar"
+        ]
+    },
+    {
+        "id": 1284,
+        "text": "hersir",
+        "gloss": "lord",
+        "pos": "N",
+        "classes": [
+            "m",
+            "strong"
+        ]
+    },
+    {
+        "id": 1285,
+        "text": "söngr",
+        "gloss": "song",
+        "pos": "N",
+        "classes": [
+            "m",
+            "strong",
+            "v-stem"
+        ]
+    },
+    {
+        "id": 1287,
+        "text": "sveinn",
+        "gloss": "boy",
+        "pos": "N",
+        "classes": [
+            "m",
+            "strong"
+        ]
+    },
+    {
+        "id": 1289,
+        "text": "Þorsteinn",
+        "pos": "NP"
+    },
+    {
+        "id": 1290,
+        "text": "Egilsson"
+    },
+    {
+        "id": 1291,
+        "text": "Egils"
+    },
+    {
+        "id": 1293,
+        "text": "Egill",
+        "pos": "NP"
+    },
+    {
+        "id": 1294,
+        "text": "hersis"
+    },
+    {
+        "id": 1295,
+        "text": "Ásgerdr",
+        "pos": "NP"
+    },
+    {
+        "id": 1296,
+        "text": "Þorsteins"
+    },
+    {
+        "id": 1297,
+        "text": "auðigr",
+        "gloss": "rich",
+        "pos": "ADJ"
+    },
+    {
+        "id": 1298,
+        "text": "höfðingi",
+        "gloss": "leader",
+        "pos": "N",
+        "classes": [
+            "m",
+            "weak",
+            "j-stem"
+        ]
+    },
+    {
+        "id": 1299,
+        "text": "hógværr",
+        "gloss": "gentle",
+        "pos": "ADJ"
+    },
+    {
+        "id": 1300,
+        "text": "hófsmaðr",
+        "gloss": "man of moderation",
+        "pos": "N",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 1301,
+        "text": "hluti"
+    },
+    {
+        "id": 1302,
+        "text": "hlutr",
+        "gloss": "thing",
+        "pos": "N",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 1303,
+        "text": "engi",
+        "gloss": "no one",
+        "pos": "PRON"
+    },
+    {
+        "id": 1304,
+        "text": "afreksmaðr",
+        "gloss": "exceptional man",
+        "pos": "N",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 1305,
+        "text": "vöxt"
+    },
+    {
+        "id": 1306,
+        "text": "vöxtr",
+        "gloss": "size",
+        "fullGloss": "size, stature, growth, shape",
+        "pos": "N",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 1307,
+        "text": "eða",
+        "gloss": "or",
+        "pos": "CONJ"
+    },
+    {
+        "id": 1308,
+        "text": "afl",
+        "gloss": "physical strength",
+        "pos": "N",
+        "classes": [
+            "n"
+        ]
+    },
+    {
+        "id": 1309,
+        "text": "afl"
+    },
+    {
+        "id": 1310,
+        "text": "sem",
+        "gloss": "as",
+        "pos": "CONJ"
+    },
+    {
+        "id": 1311,
+        "text": "mesta",
+        "gloss": "most"
+    },
+    {
+        "id": 1312,
+        "text": "afarmenni",
+        "gloss": "big man"
+    },
+    {
+        "id": 1313,
+        "text": "vinsæll",
+        "gloss": "beloved",
+        "pos": "ADJ"
+    },
+    {
+        "id": 1314,
+        "text": "allri"
+    },
+    {
+        "id": 1315,
+        "text": "alþýðu"
+    },
+    {
+        "id": 1316,
+        "text": "alþýða",
+        "gloss": "public",
+        "fullGloss": "all the people, the majority of the people, the public, the common people",
+        "pos": "N",
+        "classes": [
+            "f"
+        ]
+    },
+    {
+        "id": 1317,
+        "text": "fé",
+        "gloss": "cattle",
+        "fullGloss": "cattle, sheep, wealth, money",
+        "pos": "N",
+        "classes": [
+            "n"
+        ]
+    },
+    {
+        "id": 1318,
+        "text": "at",
+        "gloss": "in",
+        "pos": "PREP"
+    },
+    {
+        "id": 1319,
+        "text": "þó",
+        "gloss": "yet",
+        "pos": "ADV"
+    },
+    {
+        "id": 1320,
+        "text": "it"
+    },
+    {
+        "id": 1321,
+        "text": "inn",
+        "gloss": "the",
+        "pos": "PRON"
+    },
+    {
+        "id": 1322,
+        "text": "Gunnlaugs"
+    },
+    {
+        "id": 1323,
+        "text": "Gunnlaugr",
+        "gloss": "Gunnlaug",
+        "pos": "NP"
+    },
+    {
+        "id": 1325,
+        "text": "otr",
+        "gloss": "otter",
+        "pos": "N",
+        "classes": [
+            "m",
+            "r-stem"
+        ]
+    },
+    {
+        "id": 1326,
+        "text": "karl",
+        "gloss": "old man",
+        "pos": "N",
+        "classes": [
+            "m",
+            "strong"
+        ]
+    },
+    {
+        "id": 1328,
+        "text": "Dómaldi",
+        "pos": "NP"
+    },
+    {
+        "id": 1329,
+        "text": "arf"
+    },
+    {
+        "id": 1330,
+        "text": "arfr",
+        "gloss": "inheritance",
+        "pos": "N",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 1331,
+        "text": "Visbur"
+    },
+    {
+        "id": 1332,
+        "text": "Visburr",
+        "pos": "NP",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 1333,
+        "text": "réð"
+    },
+    {
+        "id": 1334,
+        "text": "ráða",
+        "gloss": "advise",
+        "fullGloss": "advise, counsel; rule, govern, manage",
+        "pos": "V"
+    },
+    {
+        "id": 1335,
+        "text": "löndum"
+    },
+    {
+        "id": 1336,
+        "text": "dögum"
+    },
+    {
+        "id": 1338,
+        "text": "dagr",
+        "gloss": "day",
+        "pos": "N",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 1339,
+        "text": "sultr",
+        "gloss": "hunger",
+        "pos": "N",
+        "classes": [
+            "m",
+            "gen-ar"
+        ]
+    },
+    {
+        "id": 1340,
+        "text": "seyra",
+        "gloss": "starvation",
+        "pos": "N",
+        "classes": [
+            "f"
+        ]
+    },
+    {
+        "id": 1341,
+        "text": "Svíþjoð",
+        "gloss": "Sweden",
+        "pos": "NP"
+    },
+    {
+        "id": 1342,
+        "text": "Svíþjoð"
+    },
+    {
+        "id": 1343,
+        "text": "hófu"
+    },
+    {
+        "id": 1344,
+        "text": "hefja",
+        "gloss": "lift",
+        "fullGloss": "lift, raise, heave; begin",
+        "pos": "V"
+    },
+    {
+        "id": 1345,
+        "text": "Sviar",
+        "gloss": "Swedes"
+    },
+    {
+        "id": 1346,
+        "text": "blót",
+        "gloss": "sacrifice",
+        "pos": "N",
+        "classes": [
+            "n"
+        ]
+    },
+    {
+        "id": 1347,
+        "text": "blót"
+    },
+    {
+        "id": 1348,
+        "text": "stór"
+    },
+    {
+        "id": 1349,
+        "text": "stórr",
+        "gloss": "big",
+        "pos": "ADJ"
+    },
+    {
+        "id": 1350,
+        "text": "Uppsölum",
+        "gloss": "Uppsala.DAT"
+    },
+    {
+        "id": 1351,
+        "text": "Uppsala",
+        "pos": "NP"
+    },
+    {
+        "id": 1352,
+        "text": "fyrsta",
+        "gloss": "first.WEAK.ACC.SG"
+    },
+    {
+        "id": 1353,
+        "text": "haust",
+        "gloss": "autumn",
+        "pos": "N",
+        "classes": [
+            "n"
+        ]
+    },
+    {
+        "id": 1354,
+        "text": "haust"
+    },
+    {
+        "id": 1355,
+        "text": "blótuðu"
+    },
+    {
+        "id": 1356,
+        "text": "blóta",
+        "gloss": "sacrifice",
+        "pos": "V",
+        "classes": [
+            "1conj"
+        ]
+    },
+    {
+        "id": 1357,
+        "text": "yxnum"
+    },
+    {
+        "id": 1358,
+        "text": "uxi",
+        "gloss": "ox",
+        "pos": "N",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 1359,
+        "text": "batnaði"
+    },
+    {
+        "id": 1360,
+        "text": "batna",
+        "gloss": "improve",
+        "pos": "V",
+        "classes": [
+            "1conj"
+        ]
+    },
+    {
+        "id": 1361,
+        "text": "árferd",
+        "gloss": "harvest",
+        "pos": "N",
+        "classes": [
+            "f"
+        ]
+    },
+    {
+        "id": 1362,
+        "text": "annat",
+        "gloss": "other"
+    },
+    {
+        "id": 1363,
+        "text": "mannblót"
+    },
+    {
+        "id": 1365,
+        "text": "söm",
+        "gloss": "same.F"
+    },
+    {
+        "id": 1366,
+        "text": "samr",
+        "pos": "same"
+    },
+    {
+        "id": 1367,
+        "text": "verri",
+        "gloss": "worse"
+    },
+    {
+        "id": 1368,
+        "text": "þeir",
+        "gloss": "they.M",
+        "pos": "PRON"
+    },
+    {
+        "id": 1369,
+        "text": "þriðja",
+        "gloss": "third.N.ACC"
+    },
+    {
+        "id": 1370,
+        "text": "þriði",
+        "gloss": "third",
+        "pos": "ADJ"
+    },
+    {
+        "id": 1371,
+        "text": "kómu"
+    },
+    {
+        "id": 1372,
+        "text": "fjöllment",
+        "gloss": "in crowds",
+        "pos": "ADV"
+    },
+    {
+        "id": 1373,
+        "text": "konungi"
+    },
+    {
+        "id": 1374,
+        "text": "áttu"
+    },
+    {
+        "id": 1375,
+        "text": "eiga",
+        "gloss": "own",
+        "fullGloss": "own, have, possess",
+        "pos": "V"
+    },
+    {
+        "id": 1376,
+        "text": "höfðingjar"
+    },
+    {
+        "id": 1377,
+        "text": "ráðagørð",
+        "gloss": "council",
+        "pos": "N",
+        "classes": [
+            "f"
+        ]
+    },
+    {
+        "id": 1378,
+        "text": "ráðagørð"
+    },
+    {
+        "id": 1379,
+        "text": "blóði"
+    },
+    {
+        "id": 1380,
+        "text": "blóð",
+        "gloss": "blood",
+        "pos": "N",
+        "classes": [
+            "n"
+        ]
+    },
+    {
+        "id": 1381,
+        "text": "hallærit"
+    },
+    {
+        "id": 1382,
+        "text": "hallæri",
+        "gloss": "famine",
+        "pos": "N",
+        "classes": [
+            "n"
+        ]
+    },
+    {
+        "id": 1384,
+        "text": "Dómalda"
+    },
+    {
+        "id": 1385,
+        "text": "veita",
+        "gloss": "give",
+        "fullGloss": "grant, give, offer, assist",
+        "pos": "V"
+    },
+    {
+        "id": 1386,
+        "text": "drepa",
+        "gloss": "slay",
+        "fullGloss": "slay, kill, smite",
+        "pos": "V"
+    },
+    {
+        "id": 1387,
+        "text": "svá",
+        "gloss": "so",
+        "pos": "ADV"
+    },
+    {
+        "id": 1388,
+        "text": "för",
+        "gloss": "journey",
+        "pos": "N",
+        "classes": [
+            "f",
+            "strong",
+            "uml-stem"
+        ]
+    },
+    {
+        "id": 1390,
+        "text": "kerling",
+        "gloss": "old woman",
+        "pos": "N",
+        "classes": [
+            "f",
+            "strong"
+        ]
+    },
+    {
+        "id": 1391,
+        "text": "fyrstr",
+        "gloss": "first",
+        "pos": "ADJ"
+    },
+    {
+        "id": 1392,
+        "text": "skel",
+        "gloss": "shell",
+        "pos": "N",
+        "classes": [
+            "f",
+            "strong",
+            "j-stem"
+        ]
+    },
+    {
+        "id": 1393,
+        "text": "ör",
+        "gloss": "arrow",
+        "pos": "N",
+        "classes": [
+            "f",
+            "strong",
+            "v-stem"
+        ]
+    },
+    {
+        "id": 1395,
+        "text": "herað",
+        "gloss": "district",
+        "pos": "N",
+        "classes": [
+            "n",
+            "strong"
+        ]
+    },
+    {
+        "id": 1397,
+        "text": "kyn",
+        "gloss": "kin",
+        "pos": "N",
+        "classes": [
+            "n",
+            "strong",
+            "j-stem"
+        ]
+    },
+    {
+        "id": 1398,
+        "text": "högg",
+        "gloss": "blow",
+        "pos": "N",
+        "classes": [
+            "n",
+            "strong",
+            "v-stem"
+        ]
+    },
+    {
+        "id": 1399,
+        "text": "kvæði",
+        "gloss": "poem",
+        "pos": "N",
+        "classes": [
+            "n",
+            "strong"
+        ]
+    },
+    {
+        "id": 1400,
+        "text": "heiðr",
+        "gloss": "heath",
+        "pos": "N",
+        "classes": [
+            "f",
+            "strong"
+        ]
+    },
+    {
+        "id": 1408,
+        "text": "tald"
+    },
+    {
+        "id": 1422,
+        "text": "gerðisk"
+    },
+    {
+        "id": 1423,
+        "text": "ásamt",
+        "gloss": "together",
+        "pos": "ADV"
+    },
+    {
+        "id": 1424,
+        "text": "rjóða",
+        "gloss": "redden",
+        "pos": "V"
+    },
+    {
+        "id": 1425,
+        "text": "stalla"
+    },
+    {
+        "id": 1426,
+        "text": "stalli",
+        "gloss": "altar",
+        "pos": "N",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 1427,
+        "text": "gerðu"
+    },
+    {
+        "id": 1428,
+        "text": "atgöngu"
+    },
+    {
+        "id": 1429,
+        "text": "atganga",
+        "gloss": "attack",
+        "pos": "N",
+        "classes": [
+            "f"
+        ]
+    },
+    {
+        "id": 1431,
+        "text": "hafði"
+    },
+    {
+        "id": 1432,
+        "text": "verit"
+    },
+    {
+        "id": 1434,
+        "text": "allra",
+        "gloss": "all.M.GEN.PL"
+    },
+    {
+        "id": 1435,
+        "text": "konunga"
+    },
+    {
+        "id": 1437,
+        "text": "ársælstr"
+    },
+    {
+        "id": 1438,
+        "text": "ársæll",
+        "gloss": "fortunate",
+        "fullGloss": "fortunate as to the seasonal harvest",
+        "pos": "ADJ"
+    },
+    {
+        "id": 1439,
+        "text": "mikit",
+        "gloss": "greatly",
+        "pos": "ADV"
+    },
+    {
+        "id": 1440,
+        "text": "menn"
+    },
+    {
+        "id": 1441,
+        "text": "þat"
+    },
+    {
+        "id": 1442,
+        "text": "spurðusk"
+    },
+    {
+        "id": 1443,
+        "text": "spyrja",
+        "gloss": "ask",
+        "fullGloss": "ask; hear; hear of, learn, be informed, find out",
+        "pos": "V"
+    },
+    {
+        "id": 1444,
+        "text": "dauðr",
+        "gloss": "dead",
+        "pos": "ADJ"
+    },
+    {
+        "id": 1445,
+        "text": "lík",
+        "gloss": "body",
+        "fullGloss": "body, corpse",
+        "pos": "N",
+        "classes": [
+            "n"
+        ]
+    },
+    {
+        "id": 1446,
+        "text": "flutt"
+    },
+    {
+        "id": 1447,
+        "text": "flytja",
+        "gloss": "move",
+        "fullGloss": "convey, move, carry",
+        "pos": "V"
+    },
+    {
+        "id": 1448,
+        "text": "Hringaríki",
+        "pos": "NP",
+        "classes": [
+            "n"
+        ]
+    },
+    {
+        "id": 1449,
+        "text": "graptar"
+    },
+    {
+        "id": 1450,
+        "text": "gröptr",
+        "gloss": "digging",
+        "fullGloss": "digging, burial",
+        "pos": "N",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 1451,
+        "text": "ætlat"
+    },
+    {
+        "id": 1452,
+        "text": "ætla",
+        "gloss": "intend",
+        "pos": "V"
+    },
+    {
+        "id": 1454,
+        "text": "ríkismenn"
+    },
+    {
+        "id": 1455,
+        "text": "ríkismaðr",
+        "pos": "N",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 1456,
+        "text": "ríki",
+        "gloss": "kingdom",
+        "pos": "N",
+        "classes": [
+            "n"
+        ]
+    },
+    {
+        "id": 1458,
+        "text": "Raumaríki",
+        "pos": "NP"
+    },
+    {
+        "id": 1459,
+        "text": "Vestfold",
+        "pos": "NP"
+    },
+    {
+        "id": 1460,
+        "text": "Heiðmörk",
+        "pos": "NP"
+    },
+    {
+        "id": 1461,
+        "text": "beiddusk"
+    },
+    {
+        "id": 1462,
+        "text": "beiða",
+        "gloss": "ask",
+        "fullGloss": "ask, beg",
+        "pos": "V"
+    },
+    {
+        "id": 1463,
+        "text": "allir",
+        "gloss": "all.M.NOM.PL"
+    },
+    {
+        "id": 1464,
+        "text": "líkit"
+    },
+    {
+        "id": 1466,
+        "text": "heygja",
+        "gloss": "bury",
+        "fullGloss": "bury in a mound",
+        "pos": "V",
+        "classes": [
+            "3conj",
+            "pret-ð"
+        ]
+    },
+    {
+        "id": 1467,
+        "text": "fylki",
+        "gloss": "province",
+        "pos": "N",
+        "classes": [
+            "n"
+        ]
+    },
+    {
+        "id": 1468,
+        "text": "Drepstokki"
+    },
+    {
+        "id": 1469,
+        "text": "Drepstokkr",
+        "pos": "NP",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 1472,
+        "text": "inn"
+    },
+    {
+        "id": 1473,
+        "text": "inum"
+    },
+    {
+        "id": 1474,
+        "text": "ins"
+    },
+    {
+        "id": 1475,
+        "text": "it"
+    },
+    {
+        "id": 1476,
+        "text": "inu"
+    },
+    {
+        "id": 1477,
+        "text": "ins"
+    },
+    {
+        "id": 1478,
+        "text": "líkinu"
+    },
+    {
+        "id": 1480,
+        "text": "höfuðit"
+    },
+    {
+        "id": 1481,
+        "text": "höfuð",
+        "gloss": "head",
+        "pos": "N",
+        "classes": [
+            "n"
+        ]
+    },
+    {
+        "id": 1483,
+        "text": "lagit"
+    },
+    {
+        "id": 1484,
+        "text": "legja",
+        "gloss": "lay",
+        "fullGloss": "lay, place, put",
+        "pos": "V"
+    },
+    {
+        "id": 1485,
+        "text": "Steini"
+    },
+    {
+        "id": 1486,
+        "text": "steinn",
+        "gloss": "stone",
+        "pos": "N",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 1487,
+        "text": "skipt"
+    },
+    {
+        "id": 1488,
+        "text": "skipta",
+        "gloss": "divide",
+        "fullGloss": "divide, share",
+        "pos": "V"
+    },
+    {
+        "id": 1489,
+        "text": "staði"
+    },
+    {
+        "id": 1490,
+        "text": "heim",
+        "gloss": "homeward",
+        "pos": "ADV"
+    },
+    {
+        "id": 1491,
+        "text": "kallaðir"
+    },
+    {
+        "id": 1492,
+        "text": "heygðu"
+    },
+    {
+        "id": 1493,
+        "text": "hluta"
+    },
+    {
+        "id": 1494,
+        "text": "sinn"
+    },
+    {
+        "id": 1495,
+        "text": "hluti",
+        "gloss": "part",
+        "pos": "N",
+        "classes": [
+            "m",
+            "weak"
+        ]
+    },
+    {
+        "id": 1496,
+        "text": "Brattahlíð",
+        "pos": "NP",
+        "classes": [
+            "f"
+        ]
+    },
+    {
+        "id": 1497,
+        "text": "Brattahlíð"
+    },
+    {
+        "id": 1501,
+        "text": "spakr",
+        "gloss": "wise",
+        "pos": "ADJ"
+    },
+    {
+        "id": 1511,
+        "text": "em"
+    },
+    {
+        "id": 1512,
+        "text": "ert"
+    },
+    {
+        "id": 1513,
+        "text": "er"
+    },
+    {
+        "id": 1514,
+        "text": "erum"
+    },
+    {
+        "id": 1515,
+        "text": "eruð"
+    },
+    {
+        "id": 1516,
+        "text": "eru"
+    },
+    {
+        "id": 1518,
+        "text": "þenna"
+    },
+    {
+        "id": 1519,
+        "text": "hef"
+    },
+    {
+        "id": 1520,
+        "text": "höfum"
+    },
+    {
+        "id": 1521,
+        "text": "hefr"
+    },
+    {
+        "id": 1522,
+        "text": "hafið"
+    },
+    {
+        "id": 1523,
+        "text": "hefr"
+    },
+    {
+        "id": 1524,
+        "text": "syni"
+    },
+    {
+        "id": 1525,
+        "text": "sonum"
+    },
+    {
+        "id": 1526,
+        "text": "sonar"
+    },
+    {
+        "id": 1527,
+        "text": "synir"
+    },
+    {
+        "id": 1528,
+        "text": "sonu"
+    },
+    {
+        "id": 1529,
+        "text": "mann"
+    },
+    {
+        "id": 1530,
+        "text": "manni"
+    },
+    {
+        "id": 1531,
+        "text": "manns"
+    },
+    {
+        "id": 1532,
+        "text": "menn"
+    },
+    {
+        "id": 1533,
+        "text": "mönnum"
+    },
+    {
+        "id": 1534,
+        "text": "manna"
+    },
+    {
+        "id": 1547,
+        "text": "in"
+    },
+    {
+        "id": 1548,
+        "text": "ina"
+    },
+    {
+        "id": 1549,
+        "text": "inni"
+    },
+    {
+        "id": 1550,
+        "text": "innar"
+    },
+    {
+        "id": 1551,
+        "text": "inir"
+    },
+    {
+        "id": 1552,
+        "text": "ina"
+    },
+    {
+        "id": 1553,
+        "text": "inna"
+    },
+    {
+        "id": 1554,
+        "text": "inar"
+    },
+    {
+        "id": 1555,
+        "text": "inar"
+    },
+    {
+        "id": 1556,
+        "text": "inna"
+    },
+    {
+        "id": 1557,
+        "text": "in"
+    },
+    {
+        "id": 1558,
+        "text": "in"
+    },
+    {
+        "id": 1559,
+        "text": "inna"
+    },
+    {
+        "id": 1560,
+        "text": "því"
+    },
+    {
+        "id": 1561,
+        "text": "þess"
+    },
+    {
+        "id": 1562,
+        "text": "þá"
+    },
+    {
+        "id": 1563,
+        "text": "þeim"
+    },
+    {
+        "id": 1564,
+        "text": "þær"
+    },
+    {
+        "id": 1565,
+        "text": "þau"
+    },
+    {
+        "id": 1566,
+        "text": "sínum"
+    },
+    {
+        "id": 1567,
+        "text": "sín"
+    },
+    {
+        "id": 1568,
+        "text": "sinni"
+    },
+    {
+        "id": 1569,
+        "text": "sinnar"
+    },
+    {
+        "id": 1570,
+        "text": "sitt"
+    },
+    {
+        "id": 1571,
+        "text": "sínu"
+    },
+    {
+        "id": 1572,
+        "text": "síns"
+    },
+    {
+        "id": 1573,
+        "text": "sínir"
+    },
+    {
+        "id": 1574,
+        "text": "sína"
+    },
+    {
+        "id": 1575,
+        "text": "sinna"
+    },
+    {
+        "id": 1576,
+        "text": "sínar"
+    },
+    {
+        "id": 1577,
+        "text": "sín"
+    },
+    {
+        "id": 1580,
+        "text": "var"
+    },
+    {
+        "id": 1581,
+        "text": "várum"
+    },
+    {
+        "id": 1582,
+        "text": "vart"
+    },
+    {
+        "id": 1583,
+        "text": "váruð"
+    },
+    {
+        "id": 1584,
+        "text": "váru"
+    },
+    {
+        "id": 1585,
+        "text": "Jótlandi"
+    },
+    {
+        "id": 1586,
+        "text": "Jótland",
+        "pos": "NP",
+        "classes": [
+            "n",
+            "strong"
+        ]
+    },
+    {
+        "id": 1587,
+        "text": "þessi"
+    },
+    {
+        "id": 1588,
+        "text": "kumbl"
+    },
+    {
+        "id": 1589,
+        "text": "Danmörk"
+    },
+    {
+        "id": 1590,
+        "text": "fé"
+    },
+    {
+        "id": 1591,
+        "text": "kom"
+    },
+    {
+        "id": 1592,
+        "text": "stóð"
+    },
+    {
+        "id": 1593,
+        "text": "standa",
+        "gloss": "stand",
+        "pos": "V",
+        "classes": [
+            "strong"
+        ]
+    },
+    {
+        "id": 1594,
+        "text": "skyldu"
+    },
+    {
+        "id": 1595,
+        "text": "skulu",
+        "gloss": "shall",
+        "pos": "V"
+    },
+    {
+        "id": 1596,
+        "text": "tíma"
+    },
+    {
+        "id": 1597,
+        "text": "tími",
+        "gloss": "time",
+        "pos": "N",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 1598,
+        "text": "ófriðr",
+        "gloss": "war",
+        "fullGloss": "war, strife",
+        "pos": "N",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 1599,
+        "text": "Nóregi"
+    },
+    {
+        "id": 1600,
+        "text": "Nóregr"
+    },
+    {
+        "id": 1601,
+        "text": "brauzk"
+    },
+    {
+        "id": 1603,
+        "text": "ríkis"
+    },
+    {
+        "id": 1604,
+        "text": "lúfa",
+        "gloss": "Shaggyhair"
+    },
+    {
+        "id": 1605,
+        "text": "Hálfdanar"
+    },
+    {
+        "id": 1606,
+        "text": "Hálfdan",
+        "pos": "NP",
+        "classes": [
+            "gen-ar"
+        ]
+    },
+    {
+        "id": 1607,
+        "text": "svarta",
+        "gloss": "black.GEN"
+    },
+    {
+        "id": 1608,
+        "text": "svartr",
+        "gloss": "black",
+        "pos": "ADJ"
+    },
+    {
+        "id": 1609,
+        "text": "áðr",
+        "gloss": "before",
+        "pos": "ADV"
+    },
+    {
+        "id": 1610,
+        "text": "síðan",
+        "gloss": "then",
+        "pos": "ADV"
+    },
+    {
+        "id": 1611,
+        "text": "norðr",
+        "gloss": "northward",
+        "pos": "ADV"
+    },
+    {
+        "id": 1612,
+        "text": "átti"
+    },
+    {
+        "id": 1613,
+        "text": "margar"
+    },
+    {
+        "id": 1614,
+        "text": "orrostur"
+    },
+    {
+        "id": 1615,
+        "text": "orrosta",
+        "gloss": "battle",
+        "pos": "N",
+        "classes": [
+            "f"
+        ]
+    },
+    {
+        "id": 1616,
+        "text": "jafnan",
+        "gloss": "always",
+        "pos": "ADV"
+    },
+    {
+        "id": 1617,
+        "text": "sigr",
+        "gloss": "victory",
+        "pos": "N",
+        "classes": [
+            "m",
+            "r-stem"
+        ]
+    },
+    {
+        "id": 1618,
+        "text": "sigr"
+    },
+    {
+        "id": 1619,
+        "text": "suðr",
+        "gloss": "southward",
+        "pos": "ADV"
+    },
+    {
+        "id": 1620,
+        "text": "landinu"
+    },
+    {
+        "id": 1622,
+        "text": "lagði"
+    },
+    {
+        "id": 1623,
+        "text": "leggja",
+        "gloss": "lay",
+        "pos": "V"
+    },
+    {
+        "id": 1624,
+        "text": "undir",
+        "gloss": "under",
+        "pos": "PREP"
+    },
+    {
+        "id": 1625,
+        "text": "sik",
+        "gloss": "oneself",
+        "pos": "PRON"
+    },
+    {
+        "id": 1626,
+        "text": "hvar",
+        "gloss": "where",
+        "pos": "ADV"
+    },
+    {
+        "id": 1627,
+        "text": "upp",
+        "gloss": "up",
+        "pos": "ADV"
+    },
+    {
+        "id": 1628,
+        "text": "Hörðaland",
+        "pos": "NP",
+        "classes": [
+            "n"
+        ]
+    },
+    {
+        "id": 1629,
+        "text": "Hörðaland"
+    },
+    {
+        "id": 1630,
+        "text": "móti",
+        "gloss": "towards",
+        "pos": "PREP"
+    },
+    {
+        "id": 1631,
+        "text": "múgr",
+        "gloss": "crowd",
+        "pos": "N",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 1632,
+        "text": "margmenni",
+        "gloss": "multitude",
+        "pos": "N",
+        "classes": [
+            "n"
+        ]
+    },
+    {
+        "id": 1633,
+        "text": "formenn"
+    },
+    {
+        "id": 1634,
+        "text": "formaðr",
+        "gloss": "leader",
+        "pos": "N",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 1635,
+        "text": "Kjötvi",
+        "pos": "NP"
+    },
+    {
+        "id": 1636,
+        "text": "auðgi"
+    },
+    {
+        "id": 1637,
+        "text": "Þórir",
+        "pos": "NP"
+    },
+    {
+        "id": 1638,
+        "text": "Suðr-Rygirnir",
+        "gloss": "southlanders"
+    },
+    {
+        "id": 1639,
+        "text": "Súlki",
+        "pos": "NP"
+    },
+    {
+        "id": 1640,
+        "text": "fundr",
+        "gloss": "meeting",
+        "pos": "N",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 1641,
+        "text": "varð"
+    },
+    {
+        "id": 1642,
+        "text": "verða",
+        "gloss": "become",
+        "fullGloss": "become, happen, take place",
+        "pos": "V"
+    },
+    {
+        "id": 1643,
+        "text": "Rogalandi"
+    },
+    {
+        "id": 1644,
+        "text": "Rogaland",
+        "pos": "NP"
+    },
+    {
+        "id": 1645,
+        "text": "firði"
+    },
+    {
+        "id": 1646,
+        "text": "heitir"
+    },
+    {
+        "id": 1647,
+        "text": "Hafrsfirði"
+    },
+    {
+        "id": 1648,
+        "text": "Hafrsfjörðr",
+        "pos": "NP"
+    },
+    {
+        "id": 1650,
+        "text": "vinr",
+        "gloss": "friend",
+        "pos": "N",
+        "classes": [
+            "m",
+            "strong",
+            "strong-type2",
+            "gen-ar"
+        ]
+    },
+    {
+        "id": 1651,
+        "text": "elgr",
+        "gloss": "elk",
+        "pos": "N",
+        "classes": [
+            "m",
+            "strong",
+            "strong-type2",
+            "j-stem"
+        ]
+    },
+    {
+        "id": 1652,
+        "text": "bœr",
+        "gloss": "farmstead",
+        "pos": "N",
+        "classes": [
+            "m",
+            "strong",
+            "strong-type2",
+            "j-stem",
+            "gen-ar"
+        ]
+    },
+    {
+        "id": 1653,
+        "text": "öxl",
+        "gloss": "shoulder",
+        "pos": "N",
+        "classes": [
+            "f",
+            "strong",
+            "strong-type2",
+            "uml-stem"
+        ]
+    },
+    {
+        "id": 1654,
+        "text": "höfn",
+        "gloss": "harbor",
+        "pos": "N",
+        "classes": [
+            "f",
+            "strong",
+            "strong-type2",
+            "uml-stem"
+        ]
+    },
+    {
+        "id": 1655,
+        "text": "norn",
+        "gloss": "norn",
+        "pos": "N",
+        "classes": [
+            "f",
+            "strong",
+            "strong-type2"
+        ]
+    },
+    {
+        "id": 1656,
+        "text": "arfi",
+        "gloss": "heir",
+        "pos": "N",
+        "classes": [
+            "m",
+            "weak"
+        ]
+    },
+    {
+        "id": 1658,
+        "text": "bryti",
+        "gloss": "bailiff",
+        "pos": "N",
+        "classes": [
+            "m",
+            "weak",
+            "j-stem"
+        ]
+    },
+    {
+        "id": 1659,
+        "text": "vöðvi",
+        "gloss": "muscle",
+        "pos": "N",
+        "classes": [
+            "m",
+            "weak"
+        ]
+    },
+    {
+        "id": 1660,
+        "text": "kvenna"
+    },
+    {
+        "id": 1661,
+        "text": "kirkja",
+        "gloss": "church",
+        "pos": "N",
+        "classes": [
+            "f",
+            "weak"
+        ]
+    },
+    {
+        "id": 1662,
+        "text": "völva",
+        "gloss": "seeress",
+        "pos": "N",
+        "classes": [
+            "f",
+            "weak"
+        ]
+    },
+    {
+        "id": 1664,
+        "text": "þórólfr",
+        "pos": "NP"
+    },
+    {
+        "id": 1665,
+        "text": "höfðu"
+    },
+    {
+        "id": 1666,
+        "text": "karfa"
+    },
+    {
+        "id": 1667,
+        "text": "karfi",
+        "gloss": "karfi",
+        "fullGloss": "karfi (fast, coastal rowing ship)",
+        "pos": "N"
+    },
+    {
+        "id": 1668,
+        "text": "reru"
+    },
+    {
+        "id": 1669,
+        "text": "róa",
+        "gloss": "row",
+        "pos": "V"
+    },
+    {
+        "id": 1670,
+        "text": "borð",
+        "gloss": "board",
+        "pos": "N",
+        "classes": [
+            "f"
+        ]
+    },
+    {
+        "id": 1671,
+        "text": "borð"
+    },
+    {
+        "id": 1672,
+        "text": "tólf",
+        "gloss": "twelve",
+        "pos": "NUM"
+    },
+    {
+        "id": 1673,
+        "text": "þrettán",
+        "gloss": "thirteen",
+        "pos": "NUM"
+    },
+    {
+        "id": 1674,
+        "text": "nær",
+        "gloss": "almost",
+        "pos": "ADV"
+    },
+    {
+        "id": 1675,
+        "text": "fengit"
+    },
+    {
+        "id": 1676,
+        "text": "sumarit"
+    },
+    {
+        "id": 1677,
+        "text": "sumar",
+        "gloss": "summer",
+        "pos": "N",
+        "classes": [
+            "n"
+        ]
+    },
+    {
+        "id": 1679,
+        "text": "víking",
+        "gloss": "raid",
+        "pos": "N",
+        "classes": [
+            "f"
+        ]
+    },
+    {
+        "id": 1680,
+        "text": "steint"
+    },
+    {
+        "id": 1681,
+        "text": "steina",
+        "gloss": "paint",
+        "pos": "V"
+    },
+    {
+        "id": 1682,
+        "text": "mjök",
+        "gloss": "much",
+        "pos": "ADV"
+    },
+    {
+        "id": 1683,
+        "text": "ofan",
+        "gloss": "downwards",
+        "pos": "ADV"
+    },
+    {
+        "id": 1684,
+        "text": "sjó"
+    },
+    {
+        "id": 1685,
+        "text": "sjór",
+        "gloss": "sea",
+        "pos": "N",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 1686,
+        "text": "fegrsta"
+    },
+    {
+        "id": 1687,
+        "text": "fegrstr",
+        "gloss": "most beautiful",
+        "pos": "ADJ"
+    },
+    {
+        "id": 1688,
+        "text": "Þóris"
+    },
+    {
+        "id": 1689,
+        "text": "fengu"
+    },
+    {
+        "id": 1690,
+        "text": "góðar"
+    },
+    {
+        "id": 1691,
+        "text": "viðtökur"
+    },
+    {
+        "id": 1692,
+        "text": "viðtaka",
+        "gloss": "reception",
+        "pos": "N",
+        "classes": [
+            "f"
+        ]
+    },
+    {
+        "id": 1693,
+        "text": "skipit"
+    },
+    {
+        "id": 1695,
+        "text": "flaut"
+    },
+    {
+        "id": 1696,
+        "text": "fljóta",
+        "gloss": "float",
+        "pos": "V"
+    },
+    {
+        "id": 1697,
+        "text": "tjaldat"
+    },
+    {
+        "id": 1698,
+        "text": "tjalda",
+        "gloss": "pitch a tent",
+        "pos": "V"
+    },
+    {
+        "id": 1699,
+        "text": "dag"
+    },
+    {
+        "id": 1700,
+        "text": "gengu"
+    },
+    {
+        "id": 1701,
+        "text": "ganga",
+        "gloss": "go",
+        "pos": "V"
+    },
+    {
+        "id": 1702,
+        "text": "skipsins"
+    },
+    {
+        "id": 1703,
+        "text": "skips"
+    },
+    {
+        "id": 1705,
+        "text": "sáu"
+    },
+    {
+        "id": 1706,
+        "text": "sjá",
+        "gloss": "see",
+        "pos": "V"
+    },
+    {
+        "id": 1707,
+        "text": "konungsson"
+    },
+    {
+        "id": 1709,
+        "text": "son"
+    },
+    {
+        "id": 1710,
+        "text": "gekk"
+    },
+    {
+        "id": 1711,
+        "text": "horfði"
+    },
+    {
+        "id": 1712,
+        "text": "horfa",
+        "gloss": "turn",
+        "pos": "V",
+        "classes": [
+            "pret-ð"
+        ]
+    },
+    {
+        "id": 1713,
+        "text": "mælti"
+    },
+    {
+        "id": 1714,
+        "text": "vandliga",
+        "gloss": "carefully",
+        "pos": "ADV"
+    },
+    {
+        "id": 1715,
+        "text": "hyggr"
+    },
+    {
+        "id": 1716,
+        "text": "hyggja",
+        "gloss": "think",
+        "pos": "V"
+    },
+    {
+        "id": 1717,
+        "text": "skipinu"
+    },
+    {
+        "id": 1719,
+        "text": "hversu",
+        "gloss": "how",
+        "pos": "ADV"
+    },
+    {
+        "id": 1720,
+        "text": "lízk"
+    },
+    {
+        "id": 1721,
+        "text": "líta",
+        "gloss": "look",
+        "pos": "V"
+    },
+    {
+        "id": 1722,
+        "text": "þér",
+        "gloss": "you.DAT"
+    },
+    {
+        "id": 1724,
+        "text": "vel",
+        "gloss": "well",
+        "pos": "ADV"
+    },
+    {
+        "id": 1725,
+        "text": "segir"
+    },
+    {
+        "id": 1726,
+        "text": "þiggja",
+        "gloss": "accept",
+        "pos": "V"
+    },
+    {
+        "id": 1727,
+        "text": "sagði"
+    },
+    {
+        "id": 1728,
+        "text": "vill"
+    },
+    {
+        "id": 1729,
+        "text": "vilja",
+        "gloss": "wish",
+        "pos": "V"
+    },
+    {
+        "id": 1730,
+        "text": "vil"
+    },
+    {
+        "id": 1732,
+        "text": "fríðr",
+        "gloss": "beautiful",
+        "pos": "ADJ"
+    },
+    {
+        "id": 1733,
+        "text": "hreystimaðr",
+        "gloss": "valiant man",
+        "pos": "N"
+    },
+    {
+        "id": 1734,
+        "text": "hermaðr",
+        "gloss": "warrior",
+        "pos": "N"
+    },
+    {
+        "id": 1735,
+        "text": "sigrsæll",
+        "gloss": "victorious",
+        "pos": "ADJ"
+    },
+    {
+        "id": 1736,
+        "text": "ákafamaðr",
+        "gloss": "aggressive man",
+        "pos": "N"
+    },
+    {
+        "id": 1737,
+        "text": "skapi"
+    },
+    {
+        "id": 1738,
+        "text": "skap",
+        "gloss": "state",
+        "pos": "N",
+        "classes": [
+            "n"
+        ]
+    },
+    {
+        "id": 1739,
+        "text": "grimmr",
+        "gloss": "cruel",
+        "pos": "ADJ"
+    },
+    {
+        "id": 1740,
+        "text": "óþýðr",
+        "gloss": "unfriendly",
+        "pos": "ADJ"
+    },
+    {
+        "id": 1741,
+        "text": "fálátr",
+        "gloss": "silent",
+        "pos": "ADJ"
+    },
+    {
+        "id": 1742,
+        "text": "Gunnhildr",
+        "pos": "NP",
+        "classes": [
+            "f",
+            "strong",
+            "gen-ar"
+        ]
+    },
+    {
+        "id": 1743,
+        "text": "margkunnig",
+        "gloss": "skilled in magic",
+        "pos": "ADJ"
+    },
+    {
+        "id": 1744,
+        "text": "glaðmælt"
+    },
+    {
+        "id": 1745,
+        "text": "glaðmæltr",
+        "gloss": "cheerful in speech",
+        "pos": "ADJ"
+    },
+    {
+        "id": 1746,
+        "text": "undirhyggjumaðr",
+        "gloss": "deceitful person",
+        "fullGloss": "guileful or deceitful person",
+        "pos": "N"
+    },
+    {
+        "id": 1747,
+        "text": "Guthormr",
+        "pos": "NP"
+    },
+    {
+        "id": 1748,
+        "text": "Ragnfrøðr",
+        "pos": "NP"
+    },
+    {
+        "id": 1749,
+        "text": "Ragnhildr",
+        "pos": "NP"
+    },
+    {
+        "id": 1750,
+        "text": "Erlingr",
+        "pos": "NP"
+    },
+    {
+        "id": 1751,
+        "text": "Guðrøðr",
+        "pos": "NP"
+    },
+    {
+        "id": 1752,
+        "text": "Sigurðr",
+        "pos": "NP"
+    },
+    {
+        "id": 1753,
+        "text": "slefa",
+        "gloss": "slobber",
+        "pos": "N",
+        "classes": [
+            "f"
+        ]
+    },
+    {
+        "id": 1754,
+        "text": "öll"
+    },
+    {
+        "id": 1755,
+        "text": "Gunnhildar"
+    },
+    {
+        "id": 1756,
+        "text": "börn"
+    },
+    {
+        "id": 1757,
+        "text": "barn",
+        "gloss": "child",
+        "pos": "N",
+        "classes": [
+            "n"
+        ]
+    }
+]

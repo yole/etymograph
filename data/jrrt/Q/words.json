@@ -1,0 +1,7673 @@
+[
+    {
+        "id": 0,
+        "text": "ai",
+        "gloss": "alas",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "61"
+            }
+        ]
+    },
+    {
+        "id": 1,
+        "text": "laurië",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "61"
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "text": "laurëa",
+        "gloss": "golden",
+        "pos": "ADJ",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "61"
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "text": "lantar",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "61"
+            }
+        ]
+    },
+    {
+        "id": 4,
+        "text": "lanta",
+        "gloss": "fall",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "61"
+            }
+        ]
+    },
+    {
+        "id": 5,
+        "text": "lassi",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "62"
+            }
+        ]
+    },
+    {
+        "id": 6,
+        "text": "lasse",
+        "gloss": "leaf",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "62"
+            }
+        ]
+    },
+    {
+        "id": 7,
+        "text": "súrinen",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "62"
+            }
+        ]
+    },
+    {
+        "id": 8,
+        "text": "súre",
+        "gloss": "wind",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "62"
+            }
+        ]
+    },
+    {
+        "id": 9,
+        "text": "yéni",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "62"
+            }
+        ]
+    },
+    {
+        "id": 10,
+        "text": "yén",
+        "gloss": "long year",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "62"
+            }
+        ]
+    },
+    {
+        "id": 11,
+        "text": "únótimë",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "62"
+            }
+        ]
+    },
+    {
+        "id": 12,
+        "text": "únótima",
+        "gloss": "uncountable",
+        "pos": "ADJ",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "62"
+            }
+        ]
+    },
+    {
+        "id": 13,
+        "text": "nótima",
+        "gloss": "countable",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "62"
+            }
+        ]
+    },
+    {
+        "id": 15,
+        "text": "ve",
+        "gloss": "as",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "63"
+            }
+        ]
+    },
+    {
+        "id": 16,
+        "text": "rámar",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "63"
+            }
+        ]
+    },
+    {
+        "id": 17,
+        "text": "ráma",
+        "gloss": "wing",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "63"
+            }
+        ]
+    },
+    {
+        "id": 18,
+        "text": "aldaron",
+        "sourceRefs": [
+            {
+                "refText": "PE17.63"
+            }
+        ]
+    },
+    {
+        "id": 19,
+        "text": "alda",
+        "gloss": "tree",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "63"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-539805327.html"
+            }
+        ]
+    },
+    {
+        "id": 20,
+        "text": "lintë",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "63"
+            }
+        ]
+    },
+    {
+        "id": 21,
+        "text": "linta",
+        "gloss": "swift",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "63"
+            }
+        ]
+    },
+    {
+        "id": 22,
+        "text": "yuldar",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "63"
+            }
+        ]
+    },
+    {
+        "id": 23,
+        "text": "yulda",
+        "gloss": "draught",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "63"
+            }
+        ]
+    },
+    {
+        "id": 25,
+        "text": "avánier",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "63"
+            }
+        ]
+    },
+    {
+        "id": 26,
+        "text": "avánie",
+        "gloss": "depart.PST.PTCP",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "63"
+            }
+        ]
+    },
+    {
+        "id": 27,
+        "text": "av",
+        "gloss": "depart",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "63"
+            }
+        ]
+    },
+    {
+        "id": 28,
+        "text": "mi",
+        "gloss": "in",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "63"
+            }
+        ]
+    },
+    {
+        "id": 29,
+        "text": "oromardi",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "63"
+            }
+        ]
+    },
+    {
+        "id": 31,
+        "text": "mardi",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "63"
+            }
+        ]
+    },
+    {
+        "id": 32,
+        "text": "mar",
+        "gloss": "dwelling",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "64"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-131359355.html"
+            }
+        ]
+    },
+    {
+        "id": 33,
+        "text": "lisse-miruvóreva",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "64"
+            }
+        ]
+    },
+    {
+        "id": 34,
+        "text": "lisse",
+        "gloss": "sweet",
+        "pos": "ADJ",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "64"
+            }
+        ]
+    },
+    {
+        "id": 35,
+        "text": "miruvóreva",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "64"
+            }
+        ]
+    },
+    {
+        "id": 36,
+        "text": "miruvóre",
+        "gloss": "Elf-drink",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "64"
+            }
+        ]
+    },
+    {
+        "id": 37,
+        "text": "Andúnë",
+        "gloss": "West",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "64"
+            }
+        ]
+    },
+    {
+        "id": 39,
+        "text": "pella",
+        "gloss": "beyond",
+        "fullGloss": "beyond a boundary",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "64"
+            }
+        ]
+    },
+    {
+        "id": 40,
+        "text": "Vardo",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "65"
+            }
+        ]
+    },
+    {
+        "id": 41,
+        "text": "Varda",
+        "gloss": "Varda",
+        "pos": "NP",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "65"
+            }
+        ]
+    },
+    {
+        "id": 42,
+        "text": "tellumar",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "66"
+            }
+        ]
+    },
+    {
+        "id": 43,
+        "text": "telluma",
+        "gloss": "dome",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "66"
+            }
+        ]
+    },
+    {
+        "id": 44,
+        "text": "nu",
+        "gloss": "under",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "66"
+            }
+        ]
+    },
+    {
+        "id": 45,
+        "text": "luini",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "66"
+            }
+        ]
+    },
+    {
+        "id": 46,
+        "text": "luine",
+        "gloss": "blue",
+        "pos": "ADJ",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "66"
+            }
+        ]
+    },
+    {
+        "id": 47,
+        "text": "yassen",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "66"
+            }
+        ]
+    },
+    {
+        "id": 48,
+        "text": "ya",
+        "gloss": "that",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "66"
+            }
+        ]
+    },
+    {
+        "id": 49,
+        "text": "tintilar",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "66"
+            }
+        ]
+    },
+    {
+        "id": 50,
+        "text": "tintila",
+        "gloss": "twinkle",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "66"
+            }
+        ]
+    },
+    {
+        "id": 52,
+        "text": "i",
+        "gloss": "the",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "66"
+            }
+        ]
+    },
+    {
+        "id": 53,
+        "text": "eleni",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "67"
+            }
+        ]
+    },
+    {
+        "id": 54,
+        "text": "elen",
+        "gloss": "star",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "67"
+            }
+        ]
+    },
+    {
+        "id": 56,
+        "text": "ómaryo",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "67"
+            }
+        ]
+    },
+    {
+        "id": 58,
+        "text": "óma",
+        "gloss": "voice",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "67"
+            }
+        ]
+    },
+    {
+        "id": 59,
+        "text": "airetári-lírinen",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "67"
+            }
+        ]
+    },
+    {
+        "id": 61,
+        "text": "tári",
+        "gloss": "queen",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "67"
+            }
+        ]
+    },
+    {
+        "id": 62,
+        "text": "lírinen",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "67"
+            }
+        ]
+    },
+    {
+        "id": 63,
+        "text": "líri",
+        "gloss": "song",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "67"
+            }
+        ]
+    },
+    {
+        "id": 64,
+        "text": "sí",
+        "gloss": "now",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "67"
+            }
+        ]
+    },
+    {
+        "id": 65,
+        "text": "man",
+        "gloss": "who",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "68"
+            }
+        ]
+    },
+    {
+        "id": 66,
+        "text": "yulma",
+        "gloss": "drinking-vessel",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "68"
+            }
+        ]
+    },
+    {
+        "id": 67,
+        "text": "nin",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "68"
+            }
+        ]
+    },
+    {
+        "id": 68,
+        "text": "ni",
+        "gloss": "I/me",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "68"
+            }
+        ]
+    },
+    {
+        "id": 69,
+        "text": "enquantuva",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "68"
+            }
+        ]
+    },
+    {
+        "id": 70,
+        "text": "enquanta",
+        "gloss": "refill",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "68"
+            }
+        ]
+    },
+    {
+        "id": 71,
+        "text": "quanta",
+        "gloss": "fill",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "68"
+            }
+        ]
+    },
+    {
+        "id": 73,
+        "text": "an",
+        "gloss": "but",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "69"
+            }
+        ]
+    },
+    {
+        "id": 74,
+        "text": "Tintalle",
+        "gloss": "Kindler",
+        "pos": "NP",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "69"
+            }
+        ]
+    },
+    {
+        "id": 75,
+        "text": "tinta",
+        "gloss": "kindle",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "69"
+            }
+        ]
+    },
+    {
+        "id": 76,
+        "text": "Oiolossëo",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "69"
+            }
+        ]
+    },
+    {
+        "id": 77,
+        "text": "Oiolossë",
+        "gloss": "Ever-snowy",
+        "pos": "NP",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "69"
+            }
+        ]
+    },
+    {
+        "id": 78,
+        "text": "oio",
+        "gloss": "ever",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "69"
+            }
+        ]
+    },
+    {
+        "id": 79,
+        "text": "lossë",
+        "gloss": "snow",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "69"
+            }
+        ]
+    },
+    {
+        "id": 81,
+        "text": "fanyar",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "69"
+            }
+        ]
+    },
+    {
+        "id": 82,
+        "text": "fanya",
+        "gloss": "cloud",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "69"
+            }
+        ]
+    },
+    {
+        "id": 83,
+        "text": "máryat",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "69"
+            }
+        ]
+    },
+    {
+        "id": 85,
+        "text": "má",
+        "gloss": "hand",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "69"
+            }
+        ]
+    },
+    {
+        "id": 86,
+        "text": "Elentári",
+        "pos": "NP",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "70"
+            }
+        ]
+    },
+    {
+        "id": 87,
+        "text": "ortanë",
+        "gloss": "raise.PST",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "70"
+            }
+        ]
+    },
+    {
+        "id": 88,
+        "text": "orta",
+        "gloss": "raise",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "70"
+            }
+        ]
+    },
+    {
+        "id": 90,
+        "text": "ar",
+        "gloss": "and",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "70"
+            }
+        ]
+    },
+    {
+        "id": 91,
+        "text": "ilyë",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "72"
+            }
+        ]
+    },
+    {
+        "id": 92,
+        "text": "ilya",
+        "gloss": "every",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "72"
+            }
+        ]
+    },
+    {
+        "id": 93,
+        "text": "tier",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "72"
+            }
+        ]
+    },
+    {
+        "id": 94,
+        "text": "tie",
+        "gloss": "road",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "72"
+            }
+        ]
+    },
+    {
+        "id": 95,
+        "text": "undulávë",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "72"
+            }
+        ]
+    },
+    {
+        "id": 96,
+        "text": "undu",
+        "gloss": "down, under",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "72"
+            }
+        ]
+    },
+    {
+        "id": 97,
+        "text": "lávë",
+        "gloss": "lick.PST",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "72"
+            }
+        ]
+    },
+    {
+        "id": 99,
+        "text": "lumbulë",
+        "gloss": "heavy shadow",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "72"
+            }
+        ]
+    },
+    {
+        "id": 101,
+        "text": "sindanóriello",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "72"
+            }
+        ]
+    },
+    {
+        "id": 102,
+        "text": "sindanórie",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "72"
+            }
+        ]
+    },
+    {
+        "id": 103,
+        "text": "sinda",
+        "gloss": "grey",
+        "pos": "ADJ",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "72"
+            }
+        ]
+    },
+    {
+        "id": 104,
+        "text": "nóre",
+        "gloss": "land",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "72"
+            }
+        ]
+    },
+    {
+        "id": 105,
+        "text": "caita",
+        "gloss": "lie",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "72"
+            }
+        ]
+    },
+    {
+        "id": 107,
+        "text": "mornië",
+        "gloss": "blackness",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "73"
+            }
+        ]
+    },
+    {
+        "id": 108,
+        "text": "morna",
+        "gloss": "black",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "73"
+            }
+        ]
+    },
+    {
+        "id": 110,
+        "text": "falmalinnar",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "73"
+            }
+        ]
+    },
+    {
+        "id": 111,
+        "text": "falmalinna",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "73"
+            }
+        ]
+    },
+    {
+        "id": 113,
+        "text": "falma",
+        "gloss": "wave",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "73"
+            }
+        ]
+    },
+    {
+        "id": 115,
+        "text": "imbë",
+        "gloss": "between",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "73"
+            }
+        ]
+    },
+    {
+        "id": 116,
+        "text": "met",
+        "gloss": "us two",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "73"
+            }
+        ]
+    },
+    {
+        "id": 117,
+        "text": "hísië",
+        "gloss": "mistiness",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "73"
+            }
+        ]
+    },
+    {
+        "id": 119,
+        "text": "untúpa",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "73"
+            }
+        ]
+    },
+    {
+        "id": 121,
+        "text": "Calaciryo",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "73"
+            }
+        ]
+    },
+    {
+        "id": 122,
+        "text": "Calacirya",
+        "gloss": "Light-cleft",
+        "pos": "NP",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "73"
+            }
+        ]
+    },
+    {
+        "id": 125,
+        "text": "míri",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "73"
+            }
+        ]
+    },
+    {
+        "id": 126,
+        "text": "míre",
+        "gloss": "jewel",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "73"
+            }
+        ]
+    },
+    {
+        "id": 127,
+        "text": "oialë",
+        "gloss": "forever",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "73"
+            }
+        ]
+    },
+    {
+        "id": 128,
+        "text": "vanwa",
+        "gloss": "gone",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "74"
+            }
+        ]
+    },
+    {
+        "id": 129,
+        "text": "Rómello",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "74"
+            }
+        ]
+    },
+    {
+        "id": 130,
+        "text": "Róme",
+        "gloss": "east",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "74"
+            }
+        ]
+    },
+    {
+        "id": 131,
+        "text": "Valimar",
+        "pos": "NP",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "74"
+            }
+        ]
+    },
+    {
+        "id": 132,
+        "text": "Vali",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "74"
+            }
+        ]
+    },
+    {
+        "id": 133,
+        "text": "namárië",
+        "gloss": "farewell",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "74"
+            }
+        ]
+    },
+    {
+        "id": 134,
+        "text": "márie",
+        "gloss": "goodness",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "74"
+            }
+        ]
+    },
+    {
+        "id": 135,
+        "text": "mára",
+        "gloss": "good",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "74"
+            }
+        ]
+    },
+    {
+        "id": 136,
+        "text": "nai",
+        "gloss": "perhaps",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "75"
+            }
+        ]
+    },
+    {
+        "id": 137,
+        "text": "hiruvalyë",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "75"
+            }
+        ]
+    },
+    {
+        "id": 138,
+        "text": "hiruva",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "75"
+            }
+        ]
+    },
+    {
+        "id": 139,
+        "text": "hire",
+        "gloss": "find",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "75"
+            }
+        ]
+    },
+    {
+        "id": 141,
+        "text": "elyë",
+        "gloss": "thou",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "76"
+            }
+        ]
+    },
+    {
+        "id": 142,
+        "text": "parma",
+        "gloss": "book",
+        "sourceRefs": [
+            {
+                "pubId": 4,
+                "refText": "50"
+            }
+        ]
+    },
+    {
+        "id": 143,
+        "text": "formen",
+        "gloss": "north",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 4,
+                "refText": "50"
+            }
+        ]
+    },
+    {
+        "id": 144,
+        "text": "malta",
+        "gloss": "gold",
+        "sourceRefs": [
+            {
+                "pubId": 4,
+                "refText": "50"
+            }
+        ]
+    },
+    {
+        "id": 145,
+        "text": "ampa",
+        "gloss": "crook",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 4,
+                "refText": "50"
+            }
+        ]
+    },
+    {
+        "id": 146,
+        "text": "númen",
+        "gloss": "west",
+        "sourceRefs": [
+            {
+                "pubId": 4,
+                "refText": "50"
+            }
+        ]
+    },
+    {
+        "id": 147,
+        "text": "síla",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "13"
+            }
+        ]
+    },
+    {
+        "id": 148,
+        "text": "sil-",
+        "gloss": "shine",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "13"
+            }
+        ]
+    },
+    {
+        "id": 149,
+        "text": "lúmenna",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "13"
+            }
+        ]
+    },
+    {
+        "id": 150,
+        "text": "lúme",
+        "gloss": "time",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "13"
+            }
+        ]
+    },
+    {
+        "id": 151,
+        "text": "omentielmo",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "13"
+            }
+        ]
+    },
+    {
+        "id": 153,
+        "text": "omentie",
+        "gloss": "meeting",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "13"
+            }
+        ]
+    },
+    {
+        "id": 154,
+        "text": "o",
+        "gloss": "together",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "13"
+            }
+        ]
+    },
+    {
+        "id": 155,
+        "text": "mentië",
+        "gloss": "journey",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "13"
+            }
+        ]
+    },
+    {
+        "id": 156,
+        "text": "landa",
+        "gloss": "boundary",
+        "sourceRefs": [
+            {
+                "pubId": 7,
+                "refText": "8"
+            }
+        ]
+    },
+    {
+        "id": 157,
+        "text": "men-",
+        "gloss": "go",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "13"
+            }
+        ]
+    },
+    {
+        "id": 159,
+        "text": "lanya",
+        "gloss": "bound, enclose, separate from, mark the limit of",
+        "sourceRefs": [
+            {
+                "pubId": 7,
+                "refText": "8"
+            }
+        ]
+    },
+    {
+        "id": 160,
+        "text": "sarnie",
+        "gloss": "shingle, pebble-bank",
+        "sourceRefs": [
+            {
+                "pubId": 7,
+                "refText": "11"
+            }
+        ]
+    },
+    {
+        "id": 162,
+        "text": "lanwa",
+        "gloss": "within bounds, limited, finite, (well-)defined",
+        "sourceRefs": [
+            {
+                "pubId": 7,
+                "refText": "8"
+            }
+        ]
+    },
+    {
+        "id": 163,
+        "text": "loa",
+        "gloss": "year",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 7,
+                "refText": "10"
+            }
+        ]
+    },
+    {
+        "id": 164,
+        "text": "na",
+        "gloss": "be",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "74"
+            }
+        ]
+    },
+    {
+        "id": 174,
+        "text": "Elendil",
+        "pos": "NP",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "15"
+            }
+        ]
+    },
+    {
+        "id": 175,
+        "text": "eled",
+        "gloss": "Star-folk",
+        "sourceRefs": [
+            {
+                "refText": "V"
+            }
+        ]
+    },
+    {
+        "id": 177,
+        "text": "ndil",
+        "gloss": "friend",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "16"
+            }
+        ]
+    },
+    {
+        "id": 183,
+        "text": "Númenor",
+        "pos": "NP",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "15"
+            }
+        ]
+    },
+    {
+        "id": 189,
+        "text": "asëa",
+        "gloss": "ease, comfort, heal",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "49"
+            }
+        ]
+    },
+    {
+        "id": 208,
+        "text": "laure",
+        "gloss": "gold",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "refText": "V"
+            }
+        ]
+    },
+    {
+        "id": 216,
+        "text": "atan",
+        "gloss": "man",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "18"
+            }
+        ]
+    },
+    {
+        "id": 218,
+        "text": "forna",
+        "gloss": "northern",
+        "pos": "ADJ",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "18"
+            }
+        ]
+    },
+    {
+        "id": 220,
+        "text": "hildi",
+        "gloss": "follower.PL",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "18"
+            }
+        ]
+    },
+    {
+        "id": 226,
+        "text": "silma",
+        "gloss": "shining white",
+        "pos": "ADJ",
+        "sourceRefs": [
+            {
+                "refText": "V"
+            }
+        ]
+    },
+    {
+        "id": 228,
+        "text": "rilya",
+        "gloss": "brilliance",
+        "fullGloss": "gilttering, brilliance",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "refText": "V"
+            }
+        ]
+    },
+    {
+        "id": 229,
+        "text": "Silmaril",
+        "pos": "NP",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "19"
+            }
+        ]
+    },
+    {
+        "id": 231,
+        "text": "tar",
+        "gloss": "high, lofty, noble",
+        "pos": "ADJ",
+        "sourceRefs": [
+            {
+                "refText": "V"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-2047935813.html"
+            }
+        ]
+    },
+    {
+        "id": 233,
+        "text": "men",
+        "gloss": "place, spot",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "refText": "V"
+            }
+        ]
+    },
+    {
+        "id": 234,
+        "text": "menel",
+        "gloss": "firmament",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "222"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-1335823119.html"
+            }
+        ]
+    },
+    {
+        "id": 235,
+        "text": "el",
+        "gloss": "star",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "refText": "V"
+            }
+        ]
+    },
+    {
+        "id": 236,
+        "text": "Tarmenel",
+        "pos": "NP",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "19"
+            }
+        ]
+    },
+    {
+        "id": 237,
+        "text": "Valinor",
+        "pos": "NP"
+    },
+    {
+        "id": 238,
+        "text": "Eldamar",
+        "pos": "NP",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "20"
+            }
+        ]
+    },
+    {
+        "id": 258,
+        "text": "cala",
+        "gloss": "light",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "refText": "V"
+            }
+        ]
+    },
+    {
+        "id": 260,
+        "text": "cirya",
+        "gloss": "cleft",
+        "pos": "N"
+    },
+    {
+        "id": 261,
+        "text": "alkar",
+        "gloss": "radiance",
+        "fullGloss": "radiance, glory",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "24"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-2464648865.html"
+            }
+        ]
+    },
+    {
+        "id": 263,
+        "text": "alcarin",
+        "gloss": "glorious",
+        "fullGloss": "glorious, brilliant",
+        "pos": "ADJ",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "24"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-3088983891.html"
+            }
+        ]
+    },
+    {
+        "id": 275,
+        "text": "palan",
+        "gloss": "afar",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "25"
+            }
+        ]
+    },
+    {
+        "id": 283,
+        "text": "lassenna",
+        "sourceRefs": [
+            {
+                "refText": "Plotz"
+            }
+        ]
+    },
+    {
+        "id": 286,
+        "text": "héru",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 3,
+                "refText": "29"
+            }
+        ]
+    },
+    {
+        "id": 287,
+        "text": "aistana",
+        "gloss": "blessed",
+        "pos": "ADJ",
+        "sourceRefs": [
+            {
+                "pubId": 3,
+                "refText": "28"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-3341755013.html"
+            }
+        ]
+    },
+    {
+        "id": 288,
+        "text": "imíca",
+        "gloss": "among",
+        "sourceRefs": [
+            {
+                "pubId": 3,
+                "refText": "30"
+            }
+        ]
+    },
+    {
+        "id": 289,
+        "text": "nísi",
+        "sourceRefs": [
+            {
+                "pubId": 3,
+                "refText": "31"
+            }
+        ]
+    },
+    {
+        "id": 290,
+        "text": "nís",
+        "gloss": "woman",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 3,
+                "refText": "31"
+            }
+        ]
+    },
+    {
+        "id": 291,
+        "text": "yávë",
+        "gloss": "fruit",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 3,
+                "refText": "31"
+            }
+        ]
+    },
+    {
+        "id": 292,
+        "text": "mónalyo",
+        "sourceRefs": [
+            {
+                "pubId": 3,
+                "refText": "31"
+            }
+        ]
+    },
+    {
+        "id": 293,
+        "text": "móna",
+        "gloss": "womb",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 3,
+                "refText": "31"
+            }
+        ]
+    },
+    {
+        "id": 294,
+        "text": "úcarindor",
+        "sourceRefs": [
+            {
+                "pubId": 3,
+                "refText": "33"
+            }
+        ]
+    },
+    {
+        "id": 295,
+        "text": "úcarindo",
+        "gloss": "sinner",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 3,
+                "refText": "33"
+            }
+        ]
+    },
+    {
+        "id": 296,
+        "text": "lúmessë"
+    },
+    {
+        "id": 297,
+        "text": "airë",
+        "gloss": "holy",
+        "pos": "ADJ",
+        "sourceRefs": [
+            {
+                "pubId": 3,
+                "refText": "14"
+            }
+        ]
+    },
+    {
+        "id": 298,
+        "text": "esselya",
+        "sourceRefs": [
+            {
+                "pubId": 3,
+                "refText": "14"
+            }
+        ]
+    },
+    {
+        "id": 299,
+        "text": "esse",
+        "gloss": "name",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 3,
+                "refText": "14"
+            }
+        ]
+    },
+    {
+        "id": 300,
+        "text": "aranielya"
+    },
+    {
+        "id": 301,
+        "text": "aranië",
+        "gloss": "kingdom",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 3,
+                "refText": "15"
+            }
+        ]
+    },
+    {
+        "id": 302,
+        "text": "aran",
+        "gloss": "king",
+        "pos": "N"
+    },
+    {
+        "id": 303,
+        "text": "hísë",
+        "gloss": "mist",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "73"
+            }
+        ]
+    },
+    {
+        "id": 305,
+        "text": "carë",
+        "sourceRefs": [
+            {
+                "pubId": 3,
+                "refText": "15"
+            }
+        ]
+    },
+    {
+        "id": 306,
+        "text": "car-",
+        "gloss": "make",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "pubId": 3,
+                "refText": "15"
+            }
+        ]
+    },
+    {
+        "id": 307,
+        "text": "indómelya",
+        "sourceRefs": [
+            {
+                "pubId": 3,
+                "refText": "16"
+            }
+        ]
+    },
+    {
+        "id": 308,
+        "text": "indómë",
+        "gloss": "will",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 3,
+                "refText": "16"
+            }
+        ]
+    },
+    {
+        "id": 309,
+        "text": "cemendë",
+        "sourceRefs": [
+            {
+                "pubId": 3,
+                "refText": "17"
+            }
+        ]
+    },
+    {
+        "id": 310,
+        "text": "cemen",
+        "gloss": "earth",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 3,
+                "refText": "17"
+            }
+        ]
+    },
+    {
+        "id": 311,
+        "text": "tuluva",
+        "sourceRefs": [
+            {
+                "pubId": 3,
+                "refText": "14"
+            }
+        ]
+    },
+    {
+        "id": 312,
+        "text": "tul-",
+        "gloss": "come",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "pubId": 3,
+                "refText": "14"
+            }
+        ]
+    },
+    {
+        "id": 313,
+        "text": "tambe",
+        "gloss": "so",
+        "sourceRefs": [
+            {
+                "pubId": 3,
+                "refText": "17"
+            }
+        ]
+    },
+    {
+        "id": 314,
+        "text": "Vala",
+        "gloss": "Vala",
+        "pos": "NP"
+    },
+    {
+        "id": 315,
+        "text": "María",
+        "gloss": "Maria",
+        "pos": "NP",
+        "sourceRefs": [
+            {
+                "pubId": 3,
+                "refText": "27"
+            }
+        ]
+    },
+    {
+        "id": 316,
+        "text": "aselyë",
+        "sourceRefs": [
+            {
+                "pubId": 3,
+                "refText": "29"
+            }
+        ]
+    },
+    {
+        "id": 317,
+        "text": "as",
+        "gloss": "with",
+        "pos": "PREP",
+        "sourceRefs": [
+            {
+                "pubId": 3,
+                "refText": "30"
+            }
+        ]
+    },
+    {
+        "id": 318,
+        "text": "lye",
+        "gloss": "you",
+        "pos": "PRON",
+        "sourceRefs": [
+            {
+                "pubId": 3,
+                "refText": "30"
+            }
+        ]
+    },
+    {
+        "id": 319,
+        "text": "eruo"
+    },
+    {
+        "id": 320,
+        "text": "Eru",
+        "gloss": "Eru",
+        "pos": "NP",
+        "sourceRefs": [
+            {
+                "pubId": 3,
+                "refText": "32"
+            }
+        ]
+    },
+    {
+        "id": 321,
+        "text": "ontaril",
+        "gloss": "begetter",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 3,
+                "refText": "32"
+            }
+        ]
+    },
+    {
+        "id": 322,
+        "text": "hyamë",
+        "gloss": "pray",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "pubId": 3,
+                "refText": "32"
+            }
+        ]
+    },
+    {
+        "id": 323,
+        "text": "rámen"
+    },
+    {
+        "id": 324,
+        "text": "quanta",
+        "gloss": "full",
+        "pos": "ADJ",
+        "sourceRefs": [
+            {
+                "pubId": 3,
+                "refText": "28"
+            }
+        ]
+    },
+    {
+        "id": 325,
+        "text": "eruanno",
+        "sourceRefs": [
+            {
+                "pubId": 3,
+                "refText": "28"
+            }
+        ]
+    },
+    {
+        "id": 326,
+        "text": "eruanna",
+        "gloss": "God's grace",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 3,
+                "refText": "28"
+            }
+        ]
+    },
+    {
+        "id": 327,
+        "text": "anna",
+        "gloss": "gift",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "91"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-3547079839.html"
+            }
+        ]
+    },
+    {
+        "id": 328,
+        "text": "rá",
+        "gloss": "for",
+        "pos": "PREP",
+        "sourceRefs": [
+            {
+                "pubId": 3,
+                "refText": "33"
+            }
+        ]
+    },
+    {
+        "id": 330,
+        "text": "me",
+        "gloss": "we",
+        "pos": "PRON",
+        "sourceRefs": [
+            {
+                "pubId": 3,
+                "refText": "33"
+            }
+        ]
+    },
+    {
+        "id": 331,
+        "text": "Yésus",
+        "gloss": "Jesus",
+        "pos": "NP",
+        "sourceRefs": [
+            {
+                "pubId": 3,
+                "refText": "31"
+            }
+        ]
+    },
+    {
+        "id": 332,
+        "text": "firuvammë",
+        "sourceRefs": [
+            {
+                "pubId": 3,
+                "refText": "34"
+            }
+        ]
+    },
+    {
+        "id": 333,
+        "text": "fir-",
+        "gloss": "die",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "pubId": 3,
+                "refText": "34"
+            }
+        ]
+    },
+    {
+        "id": 334,
+        "text": "násië",
+        "sourceRefs": [
+            {
+                "pubId": 3,
+                "refText": "35"
+            }
+        ]
+    },
+    {
+        "id": 336,
+        "text": "sië",
+        "gloss": "thus",
+        "sourceRefs": [
+            {
+                "pubId": 3,
+                "refText": "24"
+            }
+        ]
+    },
+    {
+        "id": 337,
+        "text": "erumandë",
+        "sourceRefs": [
+            {
+                "pubId": 3,
+                "refText": "16"
+            }
+        ]
+    },
+    {
+        "id": 338,
+        "text": "eruman",
+        "sourceRefs": [
+            {
+                "pubId": 3,
+                "refText": "16"
+            }
+        ]
+    },
+    {
+        "id": 340,
+        "text": "ámen",
+        "sourceRefs": [
+            {
+                "pubId": 3,
+                "refText": "18"
+            }
+        ]
+    },
+    {
+        "id": 341,
+        "text": "á",
+        "gloss": "imperative particle",
+        "sourceRefs": [
+            {
+                "pubId": 3,
+                "refText": "18"
+            }
+        ]
+    },
+    {
+        "id": 342,
+        "text": "men"
+    },
+    {
+        "id": 343,
+        "text": "anta-",
+        "gloss": "give",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "14"
+            }
+        ]
+    },
+    {
+        "id": 344,
+        "text": "síra",
+        "gloss": "today",
+        "sourceRefs": [
+            {
+                "pubId": 3,
+                "refText": "18"
+            }
+        ]
+    },
+    {
+        "id": 345,
+        "text": "ilaurëa",
+        "gloss": "daily",
+        "pos": "ADJ",
+        "sourceRefs": [
+            {
+                "pubId": 3,
+                "refText": "18"
+            }
+        ]
+    },
+    {
+        "id": 346,
+        "text": "ilaurë",
+        "sourceRefs": [
+            {
+                "pubId": 3,
+                "refText": "18"
+            }
+        ]
+    },
+    {
+        "id": 347,
+        "text": "il-",
+        "gloss": "every"
+    },
+    {
+        "id": 348,
+        "text": "aurë",
+        "gloss": "day",
+        "pos": "N"
+    },
+    {
+        "id": 349,
+        "text": "massamma",
+        "sourceRefs": [
+            {
+                "pubId": 3,
+                "refText": "18"
+            }
+        ]
+    },
+    {
+        "id": 350,
+        "text": "massa",
+        "gloss": "bread",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "refText": "q-poss-1pl"
+            }
+        ]
+    },
+    {
+        "id": 351,
+        "text": "apsenë",
+        "sourceRefs": [
+            {
+                "pubId": 3,
+                "refText": "18"
+            }
+        ]
+    },
+    {
+        "id": 352,
+        "text": "apsen-",
+        "gloss": "forgive",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "pubId": 3,
+                "refText": "18"
+            }
+        ]
+    },
+    {
+        "id": 353,
+        "text": "úcaremmar",
+        "sourceRefs": [
+            {
+                "pubId": 3,
+                "refText": "18"
+            }
+        ]
+    },
+    {
+        "id": 354,
+        "text": "úcare",
+        "gloss": "sin",
+        "fullGloss": "sin, debt, trespass",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 3,
+                "refText": "19"
+            }
+        ]
+    },
+    {
+        "id": 355,
+        "text": "síve",
+        "gloss": "as",
+        "sourceRefs": [
+            {
+                "pubId": 3,
+                "refText": "17"
+            }
+        ]
+    },
+    {
+        "id": 356,
+        "text": "han",
+        "gloss": "beyond",
+        "pos": "PREP",
+        "sourceRefs": [
+            {
+                "pubId": 3,
+                "refText": "14"
+            }
+        ]
+    },
+    {
+        "id": 357,
+        "text": "átaremma",
+        "sourceRefs": [
+            {
+                "pubId": 3,
+                "refText": "13"
+            }
+        ]
+    },
+    {
+        "id": 358,
+        "text": "atar",
+        "gloss": "father",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 3,
+                "refText": "13"
+            }
+        ]
+    },
+    {
+        "id": 359,
+        "text": "emmë",
+        "gloss": "we",
+        "fullGloss": "we (emphatic exclusive)",
+        "pos": "PRON",
+        "sourceRefs": [
+            {
+                "pubId": 3,
+                "refText": "20"
+            }
+        ]
+    },
+    {
+        "id": 360,
+        "text": "apsenet"
+    },
+    {
+        "id": 361,
+        "text": "tien"
+    },
+    {
+        "id": 362,
+        "text": "te",
+        "gloss": "them",
+        "pos": "PRON",
+        "sourceRefs": [
+            {
+                "pubId": 3,
+                "refText": "21"
+            }
+        ]
+    },
+    {
+        "id": 363,
+        "text": "i",
+        "gloss": "who",
+        "fullGloss": "who, what, which, that",
+        "pos": "PRON",
+        "sourceRefs": [
+            {
+                "pubId": 3,
+                "refText": "21"
+            }
+        ]
+    },
+    {
+        "id": 364,
+        "text": "úcarir"
+    },
+    {
+        "id": 365,
+        "text": "úcar-",
+        "gloss": "trespass",
+        "fullGloss": " trespass, do wrong, sin",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "pubId": 3,
+                "refText": "21"
+            }
+        ]
+    },
+    {
+        "id": 366,
+        "text": "emmen",
+        "sourceRefs": [
+            {
+                "pubId": 3,
+                "refText": "21"
+            }
+        ]
+    },
+    {
+        "id": 367,
+        "text": "álamë",
+        "sourceRefs": [
+            {
+                "pubId": 3,
+                "refText": "22"
+            }
+        ]
+    },
+    {
+        "id": 368,
+        "text": "ála",
+        "gloss": "do not",
+        "sourceRefs": [
+            {
+                "pubId": 3,
+                "refText": "22"
+            }
+        ]
+    },
+    {
+        "id": 369,
+        "text": "la",
+        "gloss": "not"
+    },
+    {
+        "id": 370,
+        "text": "tulya",
+        "gloss": "lead",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "pubId": 3,
+                "refText": "22"
+            }
+        ]
+    },
+    {
+        "id": 371,
+        "text": "úsahtienna"
+    },
+    {
+        "id": 372,
+        "text": "úsahtië",
+        "gloss": "temptation",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 3,
+                "refText": "23"
+            }
+        ]
+    },
+    {
+        "id": 373,
+        "text": "ú",
+        "gloss": "not",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "62"
+            }
+        ]
+    },
+    {
+        "id": 374,
+        "text": "sahtië",
+        "gloss": "inducement",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 3,
+                "refText": "23"
+            }
+        ]
+    },
+    {
+        "id": 375,
+        "text": "sahta-",
+        "gloss": "induce",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "pubId": 3,
+                "refText": "23"
+            }
+        ]
+    },
+    {
+        "id": 376,
+        "text": "mal",
+        "gloss": "but",
+        "sourceRefs": [
+            {
+                "pubId": 3,
+                "refText": "23"
+            }
+        ]
+    },
+    {
+        "id": 377,
+        "text": "ámë"
+    },
+    {
+        "id": 378,
+        "text": "etelehta",
+        "gloss": "deliver",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "pubId": 3,
+                "refText": "23"
+            }
+        ]
+    },
+    {
+        "id": 379,
+        "text": "et-",
+        "gloss": "out",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "77"
+            }
+        ]
+    },
+    {
+        "id": 380,
+        "text": "lehta-",
+        "gloss": "loosen",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "pubId": 3,
+                "refText": "23"
+            }
+        ]
+    },
+    {
+        "id": 383,
+        "text": "ulcullo"
+    },
+    {
+        "id": 384,
+        "text": "ulco",
+        "gloss": "evil",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 3,
+                "refText": "24"
+            }
+        ]
+    },
+    {
+        "id": 385,
+        "text": "ëa",
+        "gloss": "exist",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "pubId": 3,
+                "refText": "13"
+            }
+        ]
+    },
+    {
+        "id": 386,
+        "text": "Ëa",
+        "gloss": "Creation",
+        "pos": "NP",
+        "sourceRefs": [
+            {
+                "pubId": 3,
+                "refText": "13"
+            }
+        ]
+    },
+    {
+        "id": 387,
+        "text": "cirya",
+        "gloss": "ship",
+        "pos": "N"
+    },
+    {
+        "id": 388,
+        "text": "ciryan",
+        "gloss": "ship.DAT",
+        "sourceRefs": [
+            {
+                "refText": "Plotz"
+            }
+        ]
+    },
+    {
+        "id": 389,
+        "text": "ciryant",
+        "gloss": "ship.DAT.DU",
+        "sourceRefs": [
+            {
+                "refText": "Plotz"
+            }
+        ]
+    },
+    {
+        "id": 390,
+        "text": "ciryalin",
+        "gloss": "ship.DAT.PPL",
+        "sourceRefs": [
+            {
+                "refText": "Plotz"
+            }
+        ]
+    },
+    {
+        "id": 391,
+        "text": "ciryain",
+        "gloss": "ship.DAT.PL"
+    },
+    {
+        "id": 392,
+        "text": "ciryo",
+        "gloss": "ship.GEN",
+        "sourceRefs": [
+            {
+                "refText": "Plotz"
+            }
+        ]
+    },
+    {
+        "id": 393,
+        "text": "ciryato",
+        "gloss": "ship.GEN.DU",
+        "sourceRefs": [
+            {
+                "refText": "Plotz"
+            }
+        ]
+    },
+    {
+        "id": 394,
+        "text": "ciryalion",
+        "gloss": "ship.GEN.PPL",
+        "sourceRefs": [
+            {
+                "refText": "Plotz"
+            }
+        ]
+    },
+    {
+        "id": 395,
+        "text": "ciryaron",
+        "gloss": "ship.GEN.PL",
+        "sourceRefs": [
+            {
+                "refText": "Plotz"
+            }
+        ]
+    },
+    {
+        "id": 441,
+        "text": "not-",
+        "gloss": "count",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "63"
+            }
+        ]
+    },
+    {
+        "id": 445,
+        "text": "pelo",
+        "gloss": "boundary",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "65"
+            }
+        ]
+    },
+    {
+        "id": 446,
+        "text": "la",
+        "gloss": "beyond",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "65"
+            }
+        ]
+    },
+    {
+        "id": 480,
+        "text": "ciryanna",
+        "gloss": "ship.ALL",
+        "sourceRefs": [
+            {
+                "refText": "Plotz"
+            }
+        ]
+    },
+    {
+        "id": 481,
+        "text": "ciryannar",
+        "gloss": "ship.ALL.PL",
+        "sourceRefs": [
+            {
+                "refText": "Plotz"
+            }
+        ]
+    },
+    {
+        "id": 483,
+        "text": "ciryanta",
+        "gloss": "ship.ALL.DU",
+        "sourceRefs": [
+            {
+                "refText": "Plotz"
+            }
+        ]
+    },
+    {
+        "id": 485,
+        "text": "ciryalinna",
+        "gloss": "ship.ALL.PPL",
+        "sourceRefs": [
+            {
+                "refText": "Plotz"
+            }
+        ]
+    },
+    {
+        "id": 487,
+        "text": "ciryalinnar",
+        "gloss": "ship.ALL.PPL",
+        "sourceRefs": [
+            {
+                "refText": "Plotz"
+            }
+        ]
+    },
+    {
+        "id": 489,
+        "text": "ciryallo",
+        "gloss": "ship.ABL",
+        "sourceRefs": [
+            {
+                "refText": "Plotz"
+            }
+        ]
+    },
+    {
+        "id": 497,
+        "text": "ciryallon",
+        "gloss": "ship.ABL.PL",
+        "sourceRefs": [
+            {
+                "refText": "Plotz"
+            }
+        ]
+    },
+    {
+        "id": 513,
+        "text": "ciryalillon",
+        "gloss": "ship.ABL.PPL",
+        "sourceRefs": [
+            {
+                "refText": "Plotz"
+            }
+        ]
+    },
+    {
+        "id": 515,
+        "text": "ciryalto",
+        "gloss": "ship.ABL.DU",
+        "sourceRefs": [
+            {
+                "refText": "Plotz"
+            }
+        ]
+    },
+    {
+        "id": 517,
+        "text": "ciryassen",
+        "gloss": "ship.LOC.PL",
+        "sourceRefs": [
+            {
+                "refText": "Plotz"
+            }
+        ]
+    },
+    {
+        "id": 518,
+        "text": "ciryalisse",
+        "gloss": "ship.LOC.PPL",
+        "sourceRefs": [
+            {
+                "refText": "Plotz"
+            }
+        ]
+    },
+    {
+        "id": 520,
+        "text": "ciryatse",
+        "gloss": "ship.LOC.DU",
+        "sourceRefs": [
+            {
+                "refText": "Plotz"
+            }
+        ]
+    },
+    {
+        "id": 522,
+        "text": "ciryanen",
+        "gloss": "ship.INS",
+        "sourceRefs": [
+            {
+                "refText": "Plotz"
+            }
+        ]
+    },
+    {
+        "id": 530,
+        "text": "ciryainen",
+        "gloss": "ship.INS.PL",
+        "sourceRefs": [
+            {
+                "refText": "Plotz"
+            }
+        ]
+    },
+    {
+        "id": 533,
+        "text": "ciryalínen",
+        "gloss": "ship.INS.PPL",
+        "sourceRefs": [
+            {
+                "refText": "Plotz"
+            }
+        ]
+    },
+    {
+        "id": 534,
+        "text": "ciryanten",
+        "gloss": "ship.INS.DU",
+        "sourceRefs": [
+            {
+                "refText": "Plotz"
+            }
+        ]
+    },
+    {
+        "id": 537,
+        "text": "et",
+        "gloss": "out of",
+        "pos": "PREP",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "103"
+            }
+        ]
+    },
+    {
+        "id": 538,
+        "text": "eärello"
+    },
+    {
+        "id": 539,
+        "text": "ëar",
+        "gloss": "sea",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "103"
+            }
+        ]
+    },
+    {
+        "id": 540,
+        "text": "endorenna"
+    },
+    {
+        "id": 541,
+        "text": "Endórë",
+        "gloss": "Middle-Earth",
+        "pos": "NP",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "103"
+            }
+        ]
+    },
+    {
+        "id": 542,
+        "text": "utúlien"
+    },
+    {
+        "id": 545,
+        "text": "nómë",
+        "gloss": "place",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 7,
+                "refText": "17"
+            }
+        ]
+    },
+    {
+        "id": 547,
+        "text": "sinomë",
+        "gloss": "here",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "67"
+            }
+        ]
+    },
+    {
+        "id": 548,
+        "text": "maruvan"
+    },
+    {
+        "id": 549,
+        "text": "mar-",
+        "gloss": "abide",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "103"
+            }
+        ]
+    },
+    {
+        "id": 550,
+        "text": "hildinyar"
+    },
+    {
+        "id": 551,
+        "text": "hildë",
+        "gloss": "heir",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "103"
+            }
+        ]
+    },
+    {
+        "id": 553,
+        "text": "tenn’"
+    },
+    {
+        "id": 554,
+        "text": "tenna",
+        "gloss": "until",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "103"
+            }
+        ]
+    },
+    {
+        "id": 556,
+        "text": "ambar-metta"
+    },
+    {
+        "id": 557,
+        "text": "ambar",
+        "gloss": "world",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "103"
+            }
+        ]
+    },
+    {
+        "id": 558,
+        "text": "metta",
+        "gloss": "end",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "103"
+            }
+        ]
+    },
+    {
+        "id": 561,
+        "text": "ciryava",
+        "gloss": "ship.POSS",
+        "sourceRefs": [
+            {
+                "refText": "Plotz"
+            }
+        ]
+    },
+    {
+        "id": 565,
+        "text": "ciryalíva",
+        "gloss": "ship.POSS.PPL",
+        "sourceRefs": [
+            {
+                "refText": "Plotz"
+            }
+        ]
+    },
+    {
+        "id": 567,
+        "text": "cenuva"
+    },
+    {
+        "id": 568,
+        "text": "cen-",
+        "gloss": "see",
+        "fullGloss": "see, behold, look",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "221"
+            }
+        ]
+    },
+    {
+        "id": 569,
+        "text": "fána",
+        "gloss": "white",
+        "pos": "ADJ",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "221"
+            }
+        ]
+    },
+    {
+        "id": 570,
+        "text": "métima",
+        "gloss": "last",
+        "pos": "ADJ",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "221"
+            }
+        ]
+    },
+    {
+        "id": 571,
+        "text": "hrestallo",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "221"
+            }
+        ]
+    },
+    {
+        "id": 572,
+        "text": "hresta",
+        "gloss": "beach",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "221"
+            }
+        ]
+    },
+    {
+        "id": 573,
+        "text": "auressë"
+    },
+    {
+        "id": 574,
+        "text": "fairi"
+    },
+    {
+        "id": 575,
+        "text": "faire",
+        "gloss": "phantom",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "221"
+            }
+        ]
+    },
+    {
+        "id": 576,
+        "text": "nécë"
+    },
+    {
+        "id": 577,
+        "text": "néka",
+        "gloss": "white",
+        "pos": "ADJ",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "221"
+            }
+        ]
+    },
+    {
+        "id": 578,
+        "text": "ringa",
+        "gloss": "cold",
+        "pos": "ADJ",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "221"
+            }
+        ]
+    },
+    {
+        "id": 580,
+        "text": "súmaryassë",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "221"
+            }
+        ]
+    },
+    {
+        "id": 581,
+        "text": "súma",
+        "gloss": "bosom",
+        "fullGloss": "hollow cavity, bosom",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "223"
+            }
+        ]
+    },
+    {
+        "id": 582,
+        "text": "maiwi",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "221"
+            }
+        ]
+    },
+    {
+        "id": 583,
+        "text": "maiwe",
+        "gloss": "gull",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "222"
+            }
+        ]
+    },
+    {
+        "id": 584,
+        "text": "yaimië",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "221"
+            }
+        ]
+    },
+    {
+        "id": 585,
+        "text": "yaimëa",
+        "pos": "ADJ"
+    },
+    {
+        "id": 586,
+        "text": "yaime",
+        "gloss": "wailing",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "223"
+            }
+        ]
+    },
+    {
+        "id": 587,
+        "text": "círa",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "221"
+            }
+        ]
+    },
+    {
+        "id": 588,
+        "text": "ëar-celumessen",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "221"
+            }
+        ]
+    },
+    {
+        "id": 589,
+        "text": "celumessen"
+    },
+    {
+        "id": 591,
+        "text": "kelume",
+        "gloss": "stream",
+        "pos": "N"
+    },
+    {
+        "id": 592,
+        "text": "rámainen",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "221"
+            }
+        ]
+    },
+    {
+        "id": 593,
+        "text": "elvië",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "221"
+            }
+        ]
+    },
+    {
+        "id": 594,
+        "text": "elvëa",
+        "pos": "ADJ"
+    },
+    {
+        "id": 595,
+        "text": "vea",
+        "gloss": "seeming",
+        "pos": "ADJ",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "189"
+            }
+        ]
+    },
+    {
+        "id": 596,
+        "text": "wilwa",
+        "gloss": "vague",
+        "fullGloss": "fluttering to and fro, vague",
+        "pos": "ADJ",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "222"
+            }
+        ]
+    },
+    {
+        "id": 598,
+        "text": "falastala",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "221"
+            }
+        ]
+    },
+    {
+        "id": 599,
+        "text": "falasta-",
+        "gloss": "foam",
+        "fullGloss": "to foam, surge",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "223"
+            }
+        ]
+    },
+    {
+        "id": 600,
+        "text": "winga",
+        "gloss": "foam",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "222"
+            }
+        ]
+    },
+    {
+        "id": 601,
+        "text": "hlápula",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "221"
+            }
+        ]
+    },
+    {
+        "id": 602,
+        "text": "hlápu-",
+        "gloss": "blow",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "222"
+            }
+        ]
+    },
+    {
+        "id": 603,
+        "text": "sisílala",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "221"
+            }
+        ]
+    },
+    {
+        "id": 604,
+        "text": "sisíla-",
+        "gloss": "shine",
+        "fullGloss": "shine (frequentative)",
+        "pos": "V ",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "222"
+            }
+        ]
+    },
+    {
+        "id": 605,
+        "text": "cálë",
+        "gloss": "light",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "221"
+            }
+        ]
+    },
+    {
+        "id": 606,
+        "text": "fifírula",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "221"
+            }
+        ]
+    },
+    {
+        "id": 607,
+        "text": "fifíru-",
+        "gloss": "fade",
+        "fullGloss": "slowly fade away",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "223"
+            }
+        ]
+    },
+    {
+        "id": 608,
+        "text": "hlaruva",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "221"
+            }
+        ]
+    },
+    {
+        "id": 609,
+        "text": "hlar-",
+        "gloss": "hear",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "222"
+            }
+        ]
+    },
+    {
+        "id": 610,
+        "text": "rávëa",
+        "gloss": "roaring",
+        "pos": "ADJ",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "221"
+            }
+        ]
+    },
+    {
+        "id": 611,
+        "text": "rávë",
+        "gloss": "roaring noise",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "223"
+            }
+        ]
+    },
+    {
+        "id": 614,
+        "text": "tiruva",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "221"
+            }
+        ]
+    },
+    {
+        "id": 615,
+        "text": "tir-",
+        "gloss": "guard",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "222"
+            }
+        ]
+    },
+    {
+        "id": 616,
+        "text": "tauri",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "221"
+            }
+        ]
+    },
+    {
+        "id": 617,
+        "text": "taurë",
+        "gloss": "forest",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "222"
+            }
+        ]
+    },
+    {
+        "id": 619,
+        "text": "lillassië",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "221"
+            }
+        ]
+    },
+    {
+        "id": 621,
+        "text": "lillassëa",
+        "gloss": "having many leaves",
+        "pos": "ADJ"
+    },
+    {
+        "id": 622,
+        "text": "ninqui",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "221"
+            }
+        ]
+    },
+    {
+        "id": 623,
+        "text": "ninque",
+        "gloss": "white",
+        "pos": "ADJ",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "222"
+            }
+        ]
+    },
+    {
+        "id": 625,
+        "text": "carcar",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "221"
+            }
+        ]
+    },
+    {
+        "id": 626,
+        "text": "carca",
+        "gloss": "fang",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "222"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-3837352769.html"
+            }
+        ]
+    },
+    {
+        "id": 628,
+        "text": "yarra",
+        "gloss": "snarl",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "221"
+            }
+        ]
+    },
+    {
+        "id": 629,
+        "text": "isilmë",
+        "gloss": "moonlight",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "222"
+            }
+        ]
+    },
+    {
+        "id": 630,
+        "text": "ilcalassë",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "221"
+            }
+        ]
+    },
+    {
+        "id": 631,
+        "text": "ilka-",
+        "gloss": "gleam",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "223"
+            }
+        ]
+    },
+    {
+        "id": 632,
+        "text": "pícalassë",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "221"
+            }
+        ]
+    },
+    {
+        "id": 634,
+        "text": "pík-",
+        "gloss": "wane",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "223"
+            }
+        ]
+    },
+    {
+        "id": 635,
+        "text": "lantalassë",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "221"
+            }
+        ]
+    },
+    {
+        "id": 636,
+        "text": "loicolícuma",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "221"
+            }
+        ]
+    },
+    {
+        "id": 637,
+        "text": "loico",
+        "gloss": "corpse",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "223"
+            }
+        ]
+    },
+    {
+        "id": 638,
+        "text": "lícuma",
+        "gloss": "candle",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "223"
+            }
+        ]
+    },
+    {
+        "id": 640,
+        "text": "erun",
+        "sourceRefs": [
+            {
+                "pubId": 0,
+                "refText": "31"
+            }
+        ]
+    },
+    {
+        "id": 641,
+        "text": "rainë",
+        "gloss": "peace",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 0,
+                "refText": "34"
+            }
+        ]
+    },
+    {
+        "id": 642,
+        "text": "hínin",
+        "sourceRefs": [
+            {
+                "pubId": 0,
+                "refText": "31"
+            }
+        ]
+    },
+    {
+        "id": 643,
+        "text": "hína",
+        "gloss": "child",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 6,
+                "refText": "403"
+            }
+        ]
+    },
+    {
+        "id": 646,
+        "text": "símaryassen",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "6"
+            }
+        ]
+    },
+    {
+        "id": 648,
+        "text": "eldar",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "6"
+            }
+        ]
+    },
+    {
+        "id": 649,
+        "text": "Elda",
+        "gloss": "elf",
+        "pos": "N"
+    },
+    {
+        "id": 650,
+        "text": "ataformaiti",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "6"
+            }
+        ]
+    },
+    {
+        "id": 651,
+        "text": "ataformaite",
+        "gloss": "ambidextrous",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "11"
+            }
+        ]
+    },
+    {
+        "id": 652,
+        "text": "ata",
+        "gloss": "double",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "166"
+            }
+        ]
+    },
+    {
+        "id": 653,
+        "text": "formaite",
+        "gloss": "dextrous",
+        "pos": "ADJ",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "11"
+            }
+        ]
+    },
+    {
+        "id": 655,
+        "text": "epetai",
+        "gloss": "consequently",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "12"
+            }
+        ]
+    },
+    {
+        "id": 656,
+        "text": "hyarma",
+        "gloss": "left hand",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "12"
+            }
+        ]
+    },
+    {
+        "id": 657,
+        "text": "hyar-",
+        "gloss": "left hand",
+        "fullGloss": "left hand, south",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "18"
+            }
+        ]
+    },
+    {
+        "id": 658,
+        "text": "ten",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "14"
+            }
+        ]
+    },
+    {
+        "id": 659,
+        "text": "ulca",
+        "gloss": "evil",
+        "pos": "ADJ",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "14"
+            }
+        ]
+    },
+    {
+        "id": 660,
+        "text": "síma",
+        "gloss": "mind",
+        "fullGloss": "imagination, mind",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "16"
+            }
+        ]
+    },
+    {
+        "id": 661,
+        "text": "epë",
+        "gloss": "after",
+        "fullGloss": "after (of time), following; before (in all relations but time)",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "8"
+            }
+        ]
+    },
+    {
+        "id": 662,
+        "text": "ta",
+        "gloss": "that",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "8"
+            }
+        ]
+    },
+    {
+        "id": 663,
+        "text": "úsië",
+        "gloss": "on the contrary",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "18"
+            }
+        ]
+    },
+    {
+        "id": 664,
+        "text": "cé",
+        "gloss": "if",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "19"
+            }
+        ]
+    },
+    {
+        "id": 665,
+        "text": "mo",
+        "gloss": "one",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "19"
+            }
+        ]
+    },
+    {
+        "id": 667,
+        "text": "lav-",
+        "gloss": "lick",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "72"
+            }
+        ]
+    },
+    {
+        "id": 668,
+        "text": "quernë",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "20"
+            }
+        ]
+    },
+    {
+        "id": 669,
+        "text": "quer-",
+        "gloss": "turn",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "20"
+            }
+        ]
+    },
+    {
+        "id": 670,
+        "text": "cendelë",
+        "gloss": "face",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "21"
+            }
+        ]
+    },
+    {
+        "id": 671,
+        "text": "oia",
+        "gloss": "everlasting",
+        "pos": "ADJ",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "59"
+            }
+        ]
+    },
+    {
+        "id": 673,
+        "text": "lumbe",
+        "gloss": "shadow",
+        "pos": "N"
+    },
+    {
+        "id": 674,
+        "text": "cenda-",
+        "gloss": "watch",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "156"
+            }
+        ]
+    },
+    {
+        "id": 676,
+        "text": "númenna",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "22"
+            }
+        ]
+    },
+    {
+        "id": 678,
+        "text": "nú-",
+        "gloss": "going down"
+    },
+    {
+        "id": 679,
+        "text": "senya",
+        "gloss": "usual",
+        "pos": "ADJ",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "24"
+            }
+        ]
+    },
+    {
+        "id": 680,
+        "text": "tentanë",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "23"
+            }
+        ]
+    },
+    {
+        "id": 681,
+        "text": "tenta-",
+        "gloss": "point",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "23"
+            }
+        ]
+    },
+    {
+        "id": 682,
+        "text": "melcorello",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "24"
+            }
+        ]
+    },
+    {
+        "id": 683,
+        "text": "Melkor",
+        "gloss": "Mighty Arising",
+        "pos": "NP"
+    },
+    {
+        "id": 684,
+        "text": "formenna",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "6"
+            }
+        ]
+    },
+    {
+        "id": 685,
+        "text": "tentanes",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "26"
+            }
+        ]
+    },
+    {
+        "id": 688,
+        "text": "amanna",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "6"
+            }
+        ]
+    },
+    {
+        "id": 689,
+        "text": "Aman",
+        "gloss": "Blessed Realm",
+        "pos": "NP"
+    },
+    {
+        "id": 690,
+        "text": "raumo",
+        "gloss": "storm",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "221"
+            }
+        ]
+    },
+    {
+        "id": 691,
+        "text": "nurrua",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "221"
+            }
+        ]
+    },
+    {
+        "id": 692,
+        "text": "nurru-",
+        "gloss": "mumble",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "222"
+            }
+        ]
+    },
+    {
+        "id": 693,
+        "text": "undumë",
+        "gloss": "abyss",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "222"
+            }
+        ]
+    },
+    {
+        "id": 694,
+        "text": "rúma",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "222"
+            }
+        ]
+    },
+    {
+        "id": 695,
+        "text": "rum-",
+        "gloss": "shift",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "222"
+            }
+        ]
+    },
+    {
+        "id": 696,
+        "text": "lumbor",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "221"
+            }
+        ]
+    },
+    {
+        "id": 697,
+        "text": "lumbo",
+        "gloss": "dark cloud",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "222"
+            }
+        ]
+    },
+    {
+        "id": 700,
+        "text": "ambonnar",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "221"
+            }
+        ]
+    },
+    {
+        "id": 701,
+        "text": "ambo",
+        "gloss": "hill",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "222"
+            }
+        ]
+    },
+    {
+        "id": 703,
+        "text": "hácala",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "221"
+            }
+        ]
+    },
+    {
+        "id": 704,
+        "text": "háka-",
+        "gloss": "yawn",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "222"
+            }
+        ]
+    },
+    {
+        "id": 705,
+        "text": "enwina",
+        "gloss": "old",
+        "pos": "ADJ",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "222"
+            }
+        ]
+    },
+    {
+        "id": 706,
+        "text": "lúme",
+        "gloss": "darkness",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "222"
+            }
+        ]
+    },
+    {
+        "id": 707,
+        "text": "elenillor",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "221"
+            }
+        ]
+    },
+    {
+        "id": 709,
+        "text": "mindonnar",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "221"
+            }
+        ]
+    },
+    {
+        "id": 710,
+        "text": "mindon",
+        "gloss": "tower",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "222"
+            }
+        ]
+    },
+    {
+        "id": 712,
+        "text": "atalantëa",
+        "gloss": "downfallen",
+        "pos": "ADJ",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "221"
+            }
+        ]
+    },
+    {
+        "id": 718,
+        "text": "rácina",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "221"
+            }
+        ]
+    },
+    {
+        "id": 719,
+        "text": "rac-",
+        "gloss": "break",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "223"
+            }
+        ]
+    },
+    {
+        "id": 720,
+        "text": "ondolissë",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "221"
+            }
+        ]
+    },
+    {
+        "id": 721,
+        "text": "ondo",
+        "gloss": "stone",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "222"
+            }
+        ]
+    },
+    {
+        "id": 722,
+        "text": "mornë",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "221"
+            }
+        ]
+    },
+    {
+        "id": 723,
+        "text": "fanyarë",
+        "gloss": "the skies",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "222"
+            }
+        ]
+    },
+    {
+        "id": 724,
+        "text": "ruc-",
+        "gloss": "flee, feel fear",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "pubId": 0,
+                "refText": "5"
+            }
+        ]
+    },
+    {
+        "id": 725,
+        "text": "rúcina",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "221"
+            }
+        ]
+    },
+    {
+        "id": 726,
+        "text": "anar",
+        "gloss": "Sun",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "222"
+            }
+        ]
+    },
+    {
+        "id": 727,
+        "text": "púrëa",
+        "gloss": "bleared",
+        "pos": "ADJ",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "222"
+            }
+        ]
+    },
+    {
+        "id": 728,
+        "text": "tihta",
+        "gloss": "blink",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "222"
+            }
+        ]
+    },
+    {
+        "id": 729,
+        "text": "axor",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "221"
+            }
+        ]
+    },
+    {
+        "id": 730,
+        "text": "axo",
+        "gloss": "bone",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "222"
+            }
+        ]
+    },
+    {
+        "id": 731,
+        "text": "ilcalannar",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "222"
+            }
+        ]
+    },
+    {
+        "id": 732,
+        "text": "cir-",
+        "gloss": "cut",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "221"
+            }
+        ]
+    },
+    {
+        "id": 733,
+        "text": "andúnë",
+        "gloss": "sunset",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "222"
+            }
+        ]
+    },
+    {
+        "id": 734,
+        "text": "talta-taltala",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "221"
+            }
+        ]
+    },
+    {
+        "id": 735,
+        "text": "talta-",
+        "gloss": "fall",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "222"
+            }
+        ]
+    },
+    {
+        "id": 736,
+        "text": "taltala"
+    },
+    {
+        "id": 737,
+        "text": "wilwarin",
+        "gloss": "butterfly",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "222"
+            }
+        ]
+    },
+    {
+        "id": 739,
+        "text": "amortala",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "222"
+            }
+        ]
+    },
+    {
+        "id": 740,
+        "text": "amorta-",
+        "gloss": "heave",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "222"
+            }
+        ]
+    },
+    {
+        "id": 746,
+        "text": "vanda",
+        "gloss": "oath",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 8,
+                "refText": "305"
+            }
+        ]
+    },
+    {
+        "id": 747,
+        "text": "sina",
+        "gloss": "this",
+        "pos": "PRON",
+        "sourceRefs": [
+            {
+                "pubId": 8,
+                "refText": "305"
+            }
+        ]
+    },
+    {
+        "id": 748,
+        "text": "termaruva",
+        "sourceRefs": [
+            {
+                "pubId": 8,
+                "refText": "305"
+            }
+        ]
+    },
+    {
+        "id": 749,
+        "text": "termar-",
+        "gloss": "stand",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "pubId": 8,
+                "refText": "317"
+            }
+        ]
+    },
+    {
+        "id": 750,
+        "text": "ter",
+        "gloss": "through",
+        "pos": "PREP",
+        "sourceRefs": [
+            {
+                "pubId": 8,
+                "refText": "317"
+            }
+        ]
+    },
+    {
+        "id": 752,
+        "text": "Elenna·nóreo",
+        "sourceRefs": [
+            {
+                "pubId": 8,
+                "refText": "305"
+            }
+        ]
+    },
+    {
+        "id": 753,
+        "text": "Elenna·nóre",
+        "pos": "N"
+    },
+    {
+        "id": 754,
+        "text": "Elenna",
+        "sourceRefs": [
+            {
+                "pubId": 8,
+                "refText": "305"
+            }
+        ]
+    },
+    {
+        "id": 755,
+        "text": "enyalien",
+        "sourceRefs": [
+            {
+                "pubId": 8,
+                "refText": "305"
+            }
+        ]
+    },
+    {
+        "id": 756,
+        "text": "enyalie",
+        "pos": "N"
+    },
+    {
+        "id": 758,
+        "text": "enyal-",
+        "gloss": "recall",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "pubId": 8,
+                "refText": "317"
+            }
+        ]
+    },
+    {
+        "id": 759,
+        "text": "en-",
+        "gloss": "again",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "68"
+            }
+        ]
+    },
+    {
+        "id": 760,
+        "text": "yal-",
+        "gloss": "summon",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "pubId": 8,
+                "refText": "317"
+            }
+        ]
+    },
+    {
+        "id": 762,
+        "text": "vorondo",
+        "sourceRefs": [
+            {
+                "pubId": 8,
+                "refText": "305"
+            }
+        ]
+    },
+    {
+        "id": 763,
+        "text": "voronda",
+        "gloss": "faithful",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 8,
+                "refText": "305"
+            }
+        ]
+    },
+    {
+        "id": 764,
+        "text": "voronwë",
+        "gloss": "faithfulness",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 8,
+                "refText": "305"
+            }
+        ]
+    },
+    {
+        "id": 765,
+        "text": "tiruvantes",
+        "sourceRefs": [
+            {
+                "pubId": 8,
+                "refText": "305"
+            }
+        ]
+    },
+    {
+        "id": 767,
+        "text": "hárar",
+        "sourceRefs": [
+            {
+                "pubId": 8,
+                "refText": "305"
+            }
+        ]
+    },
+    {
+        "id": 768,
+        "text": "har-",
+        "gloss": "sit",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "pubId": 8,
+                "refText": "305"
+            }
+        ]
+    },
+    {
+        "id": 770,
+        "text": "mahalmassen",
+        "sourceRefs": [
+            {
+                "pubId": 8,
+                "refText": "305"
+            }
+        ]
+    },
+    {
+        "id": 771,
+        "text": "mahalma",
+        "gloss": "throne",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 8,
+                "refText": "305"
+            }
+        ]
+    },
+    {
+        "id": 772,
+        "text": "or",
+        "gloss": "above",
+        "pos": "PREP",
+        "sourceRefs": [
+            {
+                "pubId": 8,
+                "refText": "305"
+            }
+        ]
+    },
+    {
+        "id": 773,
+        "text": "mahalmar",
+        "sourceRefs": [
+            {
+                "pubId": 8,
+                "refText": "305"
+            }
+        ]
+    },
+    {
+        "id": 774,
+        "text": "tennoio",
+        "gloss": "forever",
+        "pos": "ADV",
+        "sourceRefs": [
+            {
+                "pubId": 8,
+                "refText": "305"
+            }
+        ]
+    },
+    {
+        "id": 776,
+        "text": "ortírielyanna",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 0,
+                "refText": "7"
+            }
+        ]
+    },
+    {
+        "id": 777,
+        "text": "ortírie",
+        "gloss": "patronage",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 0,
+                "refText": "77"
+            }
+        ]
+    },
+    {
+        "id": 778,
+        "text": "tírie"
+    },
+    {
+        "id": 779,
+        "text": "rucimmë",
+        "sourceRefs": [
+            {
+                "pubId": 0,
+                "refText": "5"
+            }
+        ]
+    },
+    {
+        "id": 780,
+        "text": "aina",
+        "gloss": "holy",
+        "pos": "ADJ",
+        "sourceRefs": [
+            {
+                "pubId": 0,
+                "refText": "7"
+            }
+        ]
+    },
+    {
+        "id": 781,
+        "text": "eruontari",
+        "sourceRefs": [
+            {
+                "pubId": 0,
+                "refText": "5"
+            }
+        ]
+    },
+    {
+        "id": 783,
+        "text": "alalyë",
+        "sourceRefs": [
+            {
+                "pubId": 3,
+                "refText": "22"
+            }
+        ]
+    },
+    {
+        "id": 785,
+        "text": "nattira",
+        "gloss": "despise",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "pubId": 0,
+                "refText": "8"
+            }
+        ]
+    },
+    {
+        "id": 786,
+        "text": "arcandemmar",
+        "sourceRefs": [
+            {
+                "pubId": 0,
+                "refText": "8"
+            }
+        ]
+    },
+    {
+        "id": 787,
+        "text": "arcande",
+        "gloss": "petition",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 0,
+                "refText": "8"
+            }
+        ]
+    },
+    {
+        "id": 789,
+        "text": "arca-",
+        "gloss": "pray",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "pubId": 3,
+                "refText": "33"
+            }
+        ]
+    },
+    {
+        "id": 790,
+        "text": "sangiessemman",
+        "sourceRefs": [
+            {
+                "pubId": 0,
+                "refText": "8"
+            }
+        ],
+        "notes": "The possessive suffix 'mma' is effectively inserted in the middle of the locative case ending 'ssen'."
+    },
+    {
+        "id": 791,
+        "text": "sangie",
+        "gloss": "necessity",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 0,
+                "refText": "8"
+            }
+        ]
+    },
+    {
+        "id": 792,
+        "text": "sanga",
+        "gloss": "throng",
+        "fullGloss": "throng, press, pressure",
+        "pos": "N"
+    },
+    {
+        "id": 794,
+        "text": "ono",
+        "gloss": "but",
+        "pos": "CONJ",
+        "sourceRefs": [
+            {
+                "pubId": 0,
+                "refText": "9"
+            }
+        ]
+    },
+    {
+        "id": 795,
+        "text": "alyë",
+        "sourceRefs": [
+            {
+                "pubId": 0,
+                "refText": "9"
+            }
+        ]
+    },
+    {
+        "id": 796,
+        "text": "eterúna-",
+        "gloss": "deliver",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "pubId": 0,
+                "refText": "9"
+            }
+        ]
+    },
+    {
+        "id": 797,
+        "text": "illumë",
+        "gloss": "always",
+        "pos": "ADV",
+        "sourceRefs": [
+            {
+                "pubId": 0,
+                "refText": "9"
+            }
+        ]
+    },
+    {
+        "id": 798,
+        "text": "raxellor",
+        "sourceRefs": [
+            {
+                "pubId": 0,
+                "refText": "5"
+            }
+        ]
+    },
+    {
+        "id": 799,
+        "text": "raxe",
+        "gloss": "danger",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 0,
+                "refText": "9"
+            }
+        ]
+    },
+    {
+        "id": 800,
+        "text": "vendë",
+        "gloss": "maiden",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 0,
+                "refText": "5"
+            }
+        ]
+    },
+    {
+        "id": 802,
+        "text": "manaquenta",
+        "gloss": "blessed",
+        "pos": "ADJ",
+        "sourceRefs": [
+            {
+                "pubId": 0,
+                "refText": "10"
+            }
+        ]
+    },
+    {
+        "id": 803,
+        "text": "métim’",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "221"
+            }
+        ]
+    },
+    {
+        "id": 804,
+        "text": "ruxal’",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "222"
+            }
+        ]
+    },
+    {
+        "id": 805,
+        "text": "ruxala",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "222"
+            }
+        ]
+    },
+    {
+        "id": 806,
+        "text": "ruxa-",
+        "gloss": "crumble",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "222"
+            }
+        ]
+    },
+    {
+        "id": 808,
+        "text": "ahosta",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "221"
+            }
+        ]
+    },
+    {
+        "id": 809,
+        "text": "hosta",
+        "gloss": "gather",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "222"
+            }
+        ]
+    },
+    {
+        "id": 812,
+        "text": "acúna",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "222"
+            }
+        ]
+    },
+    {
+        "id": 813,
+        "text": "cúna-",
+        "gloss": "bend",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "222"
+            }
+        ]
+    },
+    {
+        "id": 815,
+        "text": "lúmenn'",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "23"
+            }
+        ]
+    },
+    {
+        "id": 817,
+        "text": "norolinda",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "96"
+            }
+        ]
+    },
+    {
+        "id": 818,
+        "text": "nor-",
+        "gloss": "run",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "168"
+            }
+        ]
+    },
+    {
+        "id": 819,
+        "text": "linda",
+        "gloss": "beautiful",
+        "fullGloss": "beautiful (of sound), sweet, melodious; soft, gentle, light",
+        "pos": "ADJ",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "96"
+            }
+        ]
+    },
+    {
+        "id": 820,
+        "text": "pirucendëa",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "96"
+            }
+        ]
+    },
+    {
+        "id": 821,
+        "text": "piru"
+    },
+    {
+        "id": 822,
+        "text": "pirë",
+        "gloss": "toe",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "96"
+            }
+        ]
+    },
+    {
+        "id": 823,
+        "text": "cendë",
+        "gloss": "point",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "96"
+            }
+        ]
+    },
+    {
+        "id": 824,
+        "text": "cendëa"
+    },
+    {
+        "id": 825,
+        "text": "lendë",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "96"
+            }
+        ]
+    },
+    {
+        "id": 826,
+        "text": "lenna-",
+        "gloss": "come",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "96"
+            }
+        ]
+    },
+    {
+        "id": 827,
+        "text": "tanna",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "96"
+            }
+        ]
+    },
+    {
+        "id": 828,
+        "text": "Nieliccilis",
+        "gloss": "little Niele",
+        "pos": "NP",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "96"
+            }
+        ]
+    },
+    {
+        "id": 829,
+        "text": "sana",
+        "gloss": "that",
+        "pos": "PRON",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "96"
+            }
+        ]
+    },
+    {
+        "id": 830,
+        "text": "wendë",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "96"
+            }
+        ]
+    },
+    {
+        "id": 831,
+        "text": "nieninquëa",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "96"
+            }
+        ]
+    },
+    {
+        "id": 832,
+        "text": "nieninque",
+        "gloss": "snowdrop",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "96"
+            }
+        ]
+    },
+    {
+        "id": 833,
+        "text": "nie",
+        "gloss": "tear",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 10,
+                "refText": "6"
+            }
+        ]
+    },
+    {
+        "id": 834,
+        "text": "yan",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "96"
+            }
+        ]
+    },
+    {
+        "id": 835,
+        "text": "wilyar",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "96"
+            }
+        ]
+    },
+    {
+        "id": 836,
+        "text": "vilya",
+        "gloss": "air",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "96"
+            }
+        ]
+    },
+    {
+        "id": 837,
+        "text": "antar",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "96"
+            }
+        ]
+    },
+    {
+        "id": 838,
+        "text": "miquelis",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "96"
+            }
+        ]
+    },
+    {
+        "id": 839,
+        "text": "miquë",
+        "gloss": "kiss",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "refText": "https://eldamo.org/content/words/word-1277858807.html"
+            }
+        ]
+    },
+    {
+        "id": 840,
+        "text": "i·oromandi",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "96"
+            }
+        ]
+    },
+    {
+        "id": 841,
+        "text": "oromandi"
+    },
+    {
+        "id": 842,
+        "text": "oroman",
+        "gloss": "mountain-dweller",
+        "pos": "N"
+    },
+    {
+        "id": 843,
+        "text": "oro",
+        "gloss": "mount",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "64"
+            }
+        ]
+    },
+    {
+        "id": 844,
+        "text": "wilwarindië",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "96"
+            }
+        ]
+    },
+    {
+        "id": 845,
+        "text": "wilwarindëa",
+        "pos": "ADJ"
+    },
+    {
+        "id": 846,
+        "text": "wingildi",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "96"
+            }
+        ]
+    },
+    {
+        "id": 847,
+        "text": "vingil",
+        "gloss": "nymph",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "96"
+            }
+        ]
+    },
+    {
+        "id": 848,
+        "text": "vingild"
+    },
+    {
+        "id": 849,
+        "text": "losselië",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "96"
+            }
+        ]
+    },
+    {
+        "id": 850,
+        "text": "lië",
+        "gloss": "folk",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "96"
+            }
+        ]
+    },
+    {
+        "id": 851,
+        "text": "telerinwa",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "96"
+            }
+        ]
+    },
+    {
+        "id": 852,
+        "text": "Telerin",
+        "gloss": "of the Teleri",
+        "pos": "NP"
+    },
+    {
+        "id": 853,
+        "text": "táli",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "96"
+            }
+        ]
+    },
+    {
+        "id": 854,
+        "text": "tál",
+        "gloss": "foot",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "96"
+            }
+        ]
+    },
+    {
+        "id": 855,
+        "text": "lantalasselingië",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "96"
+            }
+        ]
+    },
+    {
+        "id": 856,
+        "text": "lingië"
+    },
+    {
+        "id": 857,
+        "text": "lingëa",
+        "pos": "ADJ",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "96"
+            }
+        ]
+    },
+    {
+        "id": 858,
+        "text": "linge",
+        "gloss": "musical sound",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "96"
+            }
+        ]
+    },
+    {
+        "id": 861,
+        "text": "ilu",
+        "gloss": "world",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 16,
+                "refText": "72"
+            }
+        ]
+    },
+    {
+        "id": 862,
+        "text": "Ilúvatar",
+        "gloss": "All-father",
+        "pos": "NP",
+        "sourceRefs": [
+            {
+                "pubId": 16,
+                "refText": "72"
+            }
+        ]
+    },
+    {
+        "id": 863,
+        "text": "en",
+        "gloss": "there",
+        "sourceRefs": [
+            {
+                "pubId": 16,
+                "refText": "72"
+            }
+        ]
+    },
+    {
+        "id": 864,
+        "text": "káre",
+        "sourceRefs": [
+            {
+                "pubId": 16,
+                "refText": "72"
+            }
+        ]
+    },
+    {
+        "id": 865,
+        "text": "eldain",
+        "sourceRefs": [
+            {
+                "pubId": 16,
+                "refText": "72"
+            }
+        ]
+    },
+    {
+        "id": 866,
+        "text": "a",
+        "sourceRefs": [
+            {
+                "pubId": 16,
+                "refText": "72"
+            }
+        ]
+    },
+    {
+        "id": 868,
+        "text": "fírimoin",
+        "sourceRefs": [
+            {
+                "pubId": 16,
+                "refText": "72"
+            }
+        ]
+    },
+    {
+        "id": 869,
+        "text": "fírimo"
+    },
+    {
+        "id": 870,
+        "text": "firima",
+        "gloss": "mortal",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 0,
+                "refText": "35"
+            }
+        ]
+    },
+    {
+        "id": 872,
+        "text": "súlë",
+        "gloss": "breath",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 11,
+                "refText": "239"
+            }
+        ]
+    },
+    {
+        "id": 875,
+        "text": "Manwëo",
+        "sourceRefs": [
+            {
+                "pubId": 11,
+                "refText": "239"
+            }
+        ]
+    },
+    {
+        "id": 876,
+        "text": "Manwë",
+        "gloss": "Blessed Being",
+        "pos": "NP",
+        "sourceRefs": [
+            {
+                "pubId": 10,
+                "refText": "85"
+            }
+        ]
+    },
+    {
+        "id": 877,
+        "text": "etsurinyë",
+        "sourceRefs": [
+            {
+                "pubId": 11,
+                "refText": "239"
+            }
+        ]
+    },
+    {
+        "id": 879,
+        "text": "etsurya-",
+        "gloss": "go out",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "pubId": 11,
+                "refText": "239"
+            }
+        ]
+    },
+    {
+        "id": 880,
+        "text": "surya-",
+        "gloss": "blow",
+        "pos": "V"
+    },
+    {
+        "id": 882,
+        "text": "eldaron",
+        "sourceRefs": [
+            {
+                "pubId": 11,
+                "refText": "239"
+            }
+        ]
+    },
+    {
+        "id": 883,
+        "text": "indor",
+        "sourceRefs": [
+            {
+                "pubId": 11,
+                "refText": "239"
+            }
+        ]
+    },
+    {
+        "id": 884,
+        "text": "indo",
+        "gloss": "mind",
+        "fullGloss": "(state of) mind, (inner) thought, mood; will, resolve",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 11,
+                "refText": "239"
+            }
+        ]
+    },
+    {
+        "id": 888,
+        "text": "turyaner",
+        "sourceRefs": [
+            {
+                "pubId": 11,
+                "refText": "239"
+            }
+        ]
+    },
+    {
+        "id": 889,
+        "text": "turya-",
+        "gloss": "strengthen",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "pubId": 11,
+                "refText": "239"
+            }
+        ]
+    },
+    {
+        "id": 892,
+        "text": "a",
+        "gloss": "o",
+        "sourceRefs": [
+            {
+                "pubId": 15,
+                "refText": "981"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-3204020863.html"
+            }
+        ]
+    },
+    {
+        "id": 893,
+        "text": "vanimar",
+        "sourceRefs": [
+            {
+                "pubId": 15,
+                "refText": "981"
+            }
+        ]
+    },
+    {
+        "id": 894,
+        "text": "vanima",
+        "gloss": "beautiful one",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 15,
+                "refText": "981"
+            }
+        ]
+    },
+    {
+        "id": 895,
+        "text": "vane",
+        "gloss": "fair",
+        "pos": "ADJ",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "56"
+            }
+        ]
+    },
+    {
+        "id": 896,
+        "text": "vanimálion",
+        "sourceRefs": [
+            {
+                "pubId": 15,
+                "refText": "981"
+            }
+        ]
+    },
+    {
+        "id": 897,
+        "text": "nostari",
+        "sourceRefs": [
+            {
+                "pubId": 15,
+                "refText": "981"
+            }
+        ]
+    },
+    {
+        "id": 898,
+        "text": "nostar",
+        "gloss": "parent",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 15,
+                "refText": "981"
+            }
+        ]
+    },
+    {
+        "id": 899,
+        "text": "nosta-",
+        "gloss": "beget",
+        "pos": "V"
+    },
+    {
+        "id": 901,
+        "text": "Aldamir",
+        "pos": "NP",
+        "sourceRefs": [
+            {
+                "pubId": 15,
+                "refText": "1038"
+            }
+        ]
+    },
+    {
+        "id": 980,
+        "text": "ailin",
+        "gloss": "large lake",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "refText": "https://eldamo.org/content/words/word-160049701.html"
+            }
+        ]
+    },
+    {
+        "id": 982,
+        "text": "aiya",
+        "gloss": "hail",
+        "fullGloss": "hail, behold, lo",
+        "sourceRefs": [
+            {
+                "pubId": 15,
+                "refText": "720"
+            }
+        ]
+    },
+    {
+        "id": 983,
+        "text": "Earendil",
+        "pos": "NP",
+        "sourceRefs": [
+            {
+                "pubId": 15,
+                "refText": "720"
+            }
+        ]
+    },
+    {
+        "id": 985,
+        "text": "elenion",
+        "sourceRefs": [
+            {
+                "pubId": 15,
+                "refText": "720"
+            }
+        ]
+    },
+    {
+        "id": 987,
+        "text": "ankalima",
+        "gloss": "brightest",
+        "sourceRefs": [
+            {
+                "pubId": 15,
+                "refText": "720"
+            }
+        ]
+    },
+    {
+        "id": 988,
+        "text": "cal-",
+        "gloss": "shine",
+        "pos": "V"
+    },
+    {
+        "id": 990,
+        "text": "mélima"
+    },
+    {
+        "id": 991,
+        "text": "mél-",
+        "gloss": "love",
+        "pos": "V"
+    },
+    {
+        "id": 992,
+        "text": "yondion"
+    },
+    {
+        "id": 993,
+        "text": "yondo",
+        "gloss": "son",
+        "pos": "N"
+    },
+    {
+        "id": 994,
+        "text": "lenna"
+    },
+    {
+        "id": 995,
+        "text": "le",
+        "gloss": "you",
+        "fullGloss": "you (plural)"
+    },
+    {
+        "id": 996,
+        "text": "antanyes"
+    },
+    {
+        "id": 997,
+        "text": "mélio"
+    },
+    {
+        "id": 998,
+        "text": "mélië",
+        "gloss": "loving",
+        "pos": "N"
+    },
+    {
+        "id": 999,
+        "text": "mel-"
+    },
+    {
+        "id": 1000,
+        "text": "cenwa",
+        "gloss": "reading (?)"
+    },
+    {
+        "id": 1002,
+        "text": "lantuva",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "47"
+            }
+        ]
+    },
+    {
+        "id": 1003,
+        "text": "parmastanna",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "47"
+            }
+        ]
+    },
+    {
+        "id": 1005,
+        "text": "lúmissen",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "47"
+            }
+        ]
+    },
+    {
+        "id": 1007,
+        "text": "tengwiesto",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "47"
+            }
+        ]
+    },
+    {
+        "id": 1008,
+        "text": "tengwie"
+    },
+    {
+        "id": 1009,
+        "text": "tengwa",
+        "gloss": "read",
+        "pos": "V"
+    },
+    {
+        "id": 1011,
+        "text": "atta",
+        "gloss": "two",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "44"
+            }
+        ]
+    },
+    {
+        "id": 1012,
+        "text": "siluvat",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "44"
+            }
+        ]
+    },
+    {
+        "id": 1014,
+        "text": "aurenna",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "44"
+            }
+        ]
+    },
+    {
+        "id": 1015,
+        "text": "veryanwesto",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "44"
+            }
+        ]
+    },
+    {
+        "id": 1016,
+        "text": "veryanwe",
+        "gloss": "wedding",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "refText": "https://eldamo.org/content/words/word-3806997461.html"
+            }
+        ]
+    },
+    {
+        "id": 1017,
+        "text": "sínen",
+        "gloss": "so",
+        "sourceRefs": [
+            {
+                "refText": "https://eldamo.org/content/words/word-2269313915.html"
+            }
+        ]
+    },
+    {
+        "id": 1019,
+        "text": "i·anda",
+        "sourceRefs": [
+            {
+                "refText": "https://eldamo.org/content/words/word-2269313915.html"
+            }
+        ]
+    },
+    {
+        "id": 1021,
+        "text": "anda",
+        "gloss": "long",
+        "pos": "ADJ"
+    },
+    {
+        "id": 1022,
+        "text": "taina",
+        "gloss": "stretched",
+        "fullGloss": "stretched, elongsted",
+        "pos": "ADJ",
+        "sourceRefs": [
+            {
+                "refText": "VT39:7"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-3748877237.html"
+            }
+        ]
+    },
+    {
+        "id": 1023,
+        "text": "andaurenya",
+        "sourceRefs": [
+            {
+                "refText": "https://eldamo.org/content/words/word-2269313915.html"
+            }
+        ]
+    },
+    {
+        "id": 1025,
+        "text": "aurenya"
+    },
+    {
+        "id": 1026,
+        "text": "nyarne",
+        "sourceRefs": [
+            {
+                "refText": "https://eldamo.org/content/words/word-2269313915.html"
+            }
+        ]
+    },
+    {
+        "id": 1027,
+        "text": "nyarna",
+        "gloss": "long tale",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "163"
+            }
+        ]
+    },
+    {
+        "id": 1029,
+        "text": "kaluva",
+        "sourceRefs": [
+            {
+                "pubId": 8,
+                "refText": "22"
+            }
+        ]
+    },
+    {
+        "id": 1030,
+        "text": "tielyanna",
+        "sourceRefs": [
+            {
+                "pubId": 8,
+                "refText": "22"
+            }
+        ]
+    },
+    {
+        "id": 1032,
+        "text": "elainen",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "40"
+            }
+        ]
+    },
+    {
+        "id": 1033,
+        "text": "Elaine",
+        "pos": "NP"
+    },
+    {
+        "id": 1034,
+        "text": "tárin",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "40"
+            }
+        ]
+    },
+    {
+        "id": 1035,
+        "text": "periandion",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "40"
+            }
+        ]
+    },
+    {
+        "id": 1036,
+        "text": "Perian",
+        "gloss": "halfling",
+        "pos": "N"
+    },
+    {
+        "id": 1037,
+        "text": "periand"
+    },
+    {
+        "id": 1038,
+        "text": "meldenya",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "40"
+            }
+        ]
+    },
+    {
+        "id": 1039,
+        "text": "melde",
+        "gloss": "friend",
+        "fullGloss": "friend (female)",
+        "pos": "N"
+    },
+    {
+        "id": 1041,
+        "text": "anyáran",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "40"
+            }
+        ]
+    },
+    {
+        "id": 1044,
+        "text": "lanwe",
+        "gloss": "ebb-tide",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 13,
+                "refText": "32"
+            }
+        ]
+    },
+    {
+        "id": 1048,
+        "text": "hanwa",
+        "gloss": "seat",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 4,
+                "refText": "148"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-1333065305.html"
+            }
+        ]
+    },
+    {
+        "id": 1051,
+        "text": "rína",
+        "gloss": "garlanded, crowned",
+        "pos": "ADJ",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "182"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-3876656863.html"
+            }
+        ]
+    },
+    {
+        "id": 1053,
+        "text": "aia",
+        "gloss": "hail",
+        "sourceRefs": [
+            {
+                "pubId": 3,
+                "refText": "28"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-1827512751.html"
+            }
+        ]
+    },
+    {
+        "id": 1513,
+        "text": "Eressëa",
+        "gloss": "Lonely Isle",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "30"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-1215779357.html"
+            }
+        ]
+    },
+    {
+        "id": 1521,
+        "text": "ma",
+        "gloss": "interrogative particle"
+    },
+    {
+        "id": 1532,
+        "text": "tehta",
+        "gloss": "mark",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 15,
+                "refText": "1118"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-1113571231.html"
+            }
+        ]
+    },
+    {
+        "id": 1533,
+        "text": "talan",
+        "gloss": "platform",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "52"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-3707476671.html"
+            }
+        ]
+    },
+    {
+        "id": 1653,
+        "text": "hlōn",
+        "gloss": "sound",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 13,
+                "refText": "29"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-1236141771.html"
+            }
+        ]
+    },
+    {
+        "id": 1662,
+        "text": "nette",
+        "gloss": "girl",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 12,
+                "refText": "10"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-2587896133.html"
+            }
+        ]
+    },
+    {
+        "id": 1668,
+        "text": "nahta-",
+        "gloss": "confine",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "166"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-3825061649.html"
+            }
+        ]
+    },
+    {
+        "id": 1671,
+        "text": "lambë",
+        "gloss": "language",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "46"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-1468650059.html"
+            }
+        ]
+    },
+    {
+        "id": 1675,
+        "text": "mahta-",
+        "gloss": "handle",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "pubId": 12,
+                "refText": "18"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-2062563543.html"
+            }
+        ]
+    },
+    {
+        "id": 1680,
+        "text": "laita-",
+        "gloss": "bless",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "pubId": 15,
+                "refText": "953"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-261637557.html"
+            }
+        ]
+    },
+    {
+        "id": 1681,
+        "text": "andave",
+        "sourceRefs": [
+            {
+                "pubId": 15,
+                "refText": "953"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-2360177771.html"
+            }
+        ]
+    },
+    {
+        "id": 1683,
+        "text": "laituvalmet",
+        "sourceRefs": [
+            {
+                "pubId": 15,
+                "refText": "953"
+            }
+        ]
+    },
+    {
+        "id": 1684,
+        "text": "tárienna",
+        "sourceRefs": [
+            {
+                "pubId": 15,
+                "refText": "953"
+            }
+        ]
+    },
+    {
+        "id": 1685,
+        "text": "tára",
+        "gloss": "lofty",
+        "fullGloss": "lofty, tall, high",
+        "pos": "ADJ",
+        "sourceRefs": [
+            {
+                "refText": "https://eldamo.org/content/words/word-2753253893.html"
+            }
+        ]
+    },
+    {
+        "id": 1687,
+        "text": "heru",
+        "gloss": "lord",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "97"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-3187467167.html"
+            }
+        ]
+    },
+    {
+        "id": 1688,
+        "text": "órava-",
+        "gloss": "have mercy",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "pubId": 0,
+                "refText": "12"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-223773401.html"
+            }
+        ]
+    },
+    {
+        "id": 1694,
+        "text": "Maria",
+        "sourceRefs": [
+            {
+                "pubId": 0,
+                "refText": "12"
+            }
+        ]
+    },
+    {
+        "id": 1701,
+        "text": "omesse",
+        "sourceRefs": [
+            {
+                "pubId": 0,
+                "refText": "12"
+            }
+        ]
+    },
+    {
+        "id": 1703,
+        "text": "messe"
+    },
+    {
+        "id": 1704,
+        "text": "ómesse",
+        "sourceRefs": [
+            {
+                "pubId": 0,
+                "refText": "12"
+            }
+        ]
+    },
+    {
+        "id": 1705,
+        "text": "Hrísto",
+        "gloss": "Christ",
+        "pos": "NP",
+        "sourceRefs": [
+            {
+                "pubId": 0,
+                "refText": "12"
+            }
+        ]
+    },
+    {
+        "id": 1706,
+        "text": "meneldea",
+        "sourceRefs": [
+            {
+                "pubId": 3,
+                "refText": "13"
+            }
+        ]
+    },
+    {
+        "id": 1707,
+        "text": "menelde"
+    },
+    {
+        "id": 1708,
+        "text": "Eruion",
+        "sourceRefs": [
+            {
+                "pubId": 0,
+                "refText": "12"
+            }
+        ]
+    },
+    {
+        "id": 1710,
+        "text": "ion",
+        "gloss": "son",
+        "sourceRefs": [
+            {
+                "refText": "https://eldamo.org/content/words/word-4167656007.html"
+            }
+        ]
+    },
+    {
+        "id": 1711,
+        "text": "Mardorunando",
+        "sourceRefs": [
+            {
+                "pubId": 0,
+                "refText": "12"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-453667973.html"
+            }
+        ]
+    },
+    {
+        "id": 1712,
+        "text": "mardo"
+    },
+    {
+        "id": 1714,
+        "text": "runando",
+        "gloss": "redeemer",
+        "sourceRefs": [
+            {
+                "pubId": 0,
+                "refText": "17"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-3656351225.html"
+            }
+        ]
+    },
+    {
+        "id": 1717,
+        "text": "rúna",
+        "gloss": "free"
+    },
+    {
+        "id": 1718,
+        "text": "ucar-",
+        "gloss": "trespass",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "pubId": 3,
+                "refText": "21"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-1772134283.html"
+            }
+        ]
+    },
+    {
+        "id": 1720,
+        "text": "neldie",
+        "sourceRefs": [
+            {
+                "pubId": 0,
+                "refText": "12"
+            }
+        ]
+    },
+    {
+        "id": 1721,
+        "text": "nelde",
+        "gloss": "three"
+    },
+    {
+        "id": 1722,
+        "text": "er",
+        "gloss": "one",
+        "sourceRefs": [
+            {
+                "pubId": 0,
+                "refText": "17"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-429609191.html"
+            }
+        ]
+    },
+    {
+        "id": 1723,
+        "text": "atarme",
+        "sourceRefs": [
+            {
+                "pubId": 0,
+                "refText": "12"
+            }
+        ]
+    },
+    {
+        "id": 1724,
+        "text": "atar",
+        "gloss": "for",
+        "pos": "PREP",
+        "notes": "VT43:33: derived from a prepositional element 'ata-' ('across, over, lying from side to side') plus allative ending '-r'"
+    },
+    {
+        "id": 1727,
+        "text": "Eruontarie",
+        "sourceRefs": [
+            {
+                "pubId": 0,
+                "refText": "12"
+            }
+        ]
+    },
+    {
+        "id": 1728,
+        "text": "Wenderon",
+        "sourceRefs": [
+            {
+                "pubId": 0,
+                "refText": "12"
+            }
+        ]
+    },
+    {
+        "id": 1729,
+        "text": "Hristo",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 0,
+                "refText": "12"
+            }
+        ]
+    },
+    {
+        "id": 1730,
+        "text": "amille",
+        "gloss": "mother",
+        "sourceRefs": [
+            {
+                "pubId": 0,
+                "refText": "12"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-3747740827.html"
+            }
+        ]
+    },
+    {
+        "id": 1732,
+        "text": "Eruva",
+        "sourceRefs": [
+            {
+                "pubId": 0,
+                "refText": "12"
+            }
+        ]
+    },
+    {
+        "id": 1733,
+        "text": "lisseo",
+        "sourceRefs": [
+            {
+                "pubId": 0,
+                "refText": "12"
+            }
+        ]
+    },
+    {
+        "id": 1734,
+        "text": "lisse",
+        "gloss": "grace",
+        "sourceRefs": [
+            {
+                "pubId": 0,
+                "refText": "18"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-3872213169.html"
+            }
+        ]
+    },
+    {
+        "id": 1735,
+        "text": "Eldalie",
+        "sourceRefs": [
+            {
+                "pubId": 23,
+                "refText": "190"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-2532135507.html"
+            }
+        ]
+    },
+    {
+        "id": 1737,
+        "text": "Atanatári",
+        "sourceRefs": [
+            {
+                "pubId": 23,
+                "refText": "190"
+            }
+        ]
+    },
+    {
+        "id": 1738,
+        "text": "Atanatár",
+        "pos": "N"
+    },
+    {
+        "id": 1740,
+        "text": "utúlie’n",
+        "sourceRefs": [
+            {
+                "pubId": 23,
+                "refText": "190"
+            }
+        ]
+    },
+    {
+        "id": 1741,
+        "text": "utúlie"
+    },
+    {
+        "id": 1743,
+        "text": "auta-",
+        "gloss": "depart",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "pubId": 23,
+                "refText": "190"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-3752445525.html"
+            }
+        ]
+    },
+    {
+        "id": 1745,
+        "text": "lóme",
+        "gloss": "night",
+        "fullGloss": "night, dimness, twilight, dusk, darkness",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 23,
+                "refText": "190"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-2401626913.html"
+            }
+        ]
+    },
+    {
+        "id": 1748,
+        "text": "carir",
+        "sourceRefs": [
+            {
+                "pubId": 6,
+                "refText": "391"
+            }
+        ]
+    },
+    {
+        "id": 1749,
+        "text": "quettar",
+        "sourceRefs": [
+            {
+                "pubId": 6,
+                "refText": "391"
+            }
+        ]
+    },
+    {
+        "id": 1750,
+        "text": "quetta",
+        "gloss": "word",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "46"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-106071007.html"
+            }
+        ]
+    },
+    {
+        "id": 1752,
+        "text": "ómainen",
+        "sourceRefs": [
+            {
+                "pubId": 6,
+                "refText": "391"
+            }
+        ]
+    },
+    {
+        "id": 1753,
+        "text": "imbi",
+        "sourceRefs": [
+            {
+                "pubId": 12,
+                "refText": "11"
+            }
+        ]
+    },
+    {
+        "id": 1754,
+        "text": "ye",
+        "gloss": "and (clitic)",
+        "sourceRefs": [
+            {
+                "pubId": 12,
+                "refText": "11"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-1379960551.html"
+            }
+        ]
+    },
+    {
+        "id": 1755,
+        "text": "Cemenye",
+        "sourceRefs": [
+            {
+                "pubId": 12,
+                "refText": "11"
+            }
+        ]
+    },
+    {
+        "id": 1757,
+        "text": "mene",
+        "sourceRefs": [
+            {
+                "pubId": 12,
+                "refText": "11"
+            }
+        ]
+    },
+    {
+        "id": 1758,
+        "text": "Ráno",
+        "sourceRefs": [
+            {
+                "pubId": 12,
+                "refText": "11"
+            }
+        ]
+    },
+    {
+        "id": 1759,
+        "text": "Rána",
+        "gloss": "Moon",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 23,
+                "refText": "99"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-3593477243.html"
+            }
+        ]
+    },
+    {
+        "id": 1763,
+        "text": "merin"
+    },
+    {
+        "id": 1764,
+        "text": "mer-",
+        "gloss": "hope",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "refText": "https://eldamo.org/content/words/word-3171901809.html"
+            }
+        ]
+    },
+    {
+        "id": 1765,
+        "text": "sa",
+        "gloss": "that",
+        "pos": "CONJ",
+        "sourceRefs": [
+            {
+                "refText": "https://eldamo.org/content/words/word-2443642287.html"
+            }
+        ]
+    },
+    {
+        "id": 1766,
+        "text": "haryalye",
+        "sourceRefs": [
+            {
+                "refText": "https://eldamo.org/content/words/word-587333183.html"
+            }
+        ]
+    },
+    {
+        "id": 1767,
+        "text": "harya-",
+        "gloss": "have",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "refText": "https://eldamo.org/content/words/word-826126495.html"
+            }
+        ]
+    },
+    {
+        "id": 1768,
+        "text": "alasse",
+        "gloss": "happiness",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "refText": "https://eldamo.org/content/words/word-3383391839.html"
+            }
+        ]
+    },
+    {
+        "id": 1769,
+        "text": "nó",
+        "gloss": "before",
+        "pos": "PREP",
+        "sourceRefs": [
+            {
+                "refText": "https://eldamo.org/content/words/word-3938607967.html"
+            }
+        ]
+    },
+    {
+        "id": 1770,
+        "text": "vanyalye",
+        "sourceRefs": [
+            {
+                "refText": "https://eldamo.org/content/words/word-1630806239.html"
+            }
+        ]
+    },
+    {
+        "id": 1771,
+        "text": "vanya-",
+        "gloss": "pass",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "refText": "https://eldamo.org/content/words/word-1630806239.html"
+            }
+        ]
+    },
+    {
+        "id": 1772,
+        "text": "Ambarello"
+    },
+    {
+        "id": 1776,
+        "text": "lamba",
+        "gloss": "tongue",
+        "sourceRefs": [
+            {
+                "pubId": 6,
+                "refText": "416"
+            }
+        ]
+    },
+    {
+        "id": 1779,
+        "text": "fá",
+        "gloss": "ray of light, flame",
+        "sourceRefs": [
+            {
+                "pubId": 14,
+                "refText": "104"
+            }
+        ]
+    },
+    {
+        "id": 1780,
+        "text": "aiwë",
+        "gloss": "small bird",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 8,
+                "refText": "401"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-1137358351.html"
+            }
+        ]
+    },
+    {
+        "id": 1781,
+        "text": "alahasta",
+        "gloss": "unmarred",
+        "pos": "ADJ",
+        "sourceRefs": [
+            {
+                "pubId": 18,
+                "refText": "254"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-451527979.html"
+            }
+        ]
+    },
+    {
+        "id": 1782,
+        "text": "alqua",
+        "gloss": "swan",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 11,
+                "refText": "378"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-4104058537.html"
+            }
+        ]
+    },
+    {
+        "id": 1783,
+        "text": "anca",
+        "gloss": "jaws",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 15,
+                "refText": "1123"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-1954231881.html"
+            }
+        ]
+    },
+    {
+        "id": 1784,
+        "text": "anga",
+        "gloss": "iron",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 15,
+                "refText": "1122"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-3314352465.html"
+            }
+        ]
+    },
+    {
+        "id": 1785,
+        "text": "atalantë",
+        "gloss": "downfall",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "223"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-2504699977.html"
+            }
+        ]
+    },
+    {
+        "id": 1786,
+        "text": "calma",
+        "gloss": "lamp",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 15,
+                "refText": "1121"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-4063999805.html"
+            }
+        ]
+    },
+    {
+        "id": 1787,
+        "text": "camba",
+        "gloss": "hand",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 12,
+                "refText": "8"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-133691265.html"
+            }
+        ]
+    },
+    {
+        "id": 1788,
+        "text": "Aiwendil",
+        "pos": "NP",
+        "sourceRefs": [
+            {
+                "pubId": 8,
+                "refText": "393"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-1532309033.html"
+            }
+        ]
+    },
+    {
+        "id": 1791,
+        "text": "laiqua",
+        "gloss": "green",
+        "pos": "ADJ",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "71"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-3494583511.html"
+            }
+        ]
+    },
+    {
+        "id": 1792,
+        "text": "Imrahil",
+        "pos": "NP",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "71"
+            }
+        ]
+    },
+    {
+        "id": 1793,
+        "text": "míse",
+        "gloss": "grey",
+        "pos": "ADJ",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "71"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-3824976295.html"
+            }
+        ]
+    },
+    {
+        "id": 1794,
+        "text": "Eomer",
+        "pos": "NP",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "71"
+            }
+        ]
+    },
+    {
+        "id": 1795,
+        "text": "telepta",
+        "gloss": "silver",
+        "pos": "ADJ",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "71"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-2398301613.html"
+            }
+        ]
+    },
+    {
+        "id": 1796,
+        "text": "telpe",
+        "gloss": "silver"
+    },
+    {
+        "id": 1797,
+        "text": "Gimli",
+        "pos": "NP",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "71"
+            }
+        ]
+    },
+    {
+        "id": 1798,
+        "text": "Olórin",
+        "pos": "NP",
+        "sourceRefs": [
+            {
+                "pubId": 8,
+                "refText": "396"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-3018787843.html"
+            }
+        ]
+    },
+    {
+        "id": 1799,
+        "text": "olor",
+        "gloss": "dream, vision",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 8,
+                "refText": "396"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-2318718619.html"
+            }
+        ]
+    },
+    {
+        "id": 1800,
+        "text": "lossea",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "71"
+            }
+        ]
+    },
+    {
+        "id": 1801,
+        "text": "tarne",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "71"
+            }
+        ]
+    },
+    {
+        "id": 1802,
+        "text": "tar-",
+        "gloss": "stand",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "71"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-4264082917.html"
+            }
+        ]
+    },
+    {
+        "id": 1805,
+        "text": "Aracorno",
+        "gloss": "Aragorn",
+        "pos": "NP",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "71"
+            }
+        ]
+    },
+    {
+        "id": 1807,
+        "text": "Ataren",
+        "sourceRefs": [
+            {
+                "pubId": 3,
+                "refText": "7"
+            }
+        ]
+    },
+    {
+        "id": 1808,
+        "text": "Yondon",
+        "sourceRefs": [
+            {
+                "pubId": 3,
+                "refText": "7"
+            }
+        ]
+    },
+    {
+        "id": 1809,
+        "text": "Airefean",
+        "sourceRefs": [
+            {
+                "pubId": 3,
+                "refText": "7"
+            }
+        ]
+    },
+    {
+        "id": 1810,
+        "text": "Airefea",
+        "pos": "N"
+    },
+    {
+        "id": 1812,
+        "text": "fëa",
+        "gloss": "spirit",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 18,
+                "refText": "165"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-3664448297.html"
+            }
+        ]
+    },
+    {
+        "id": 1813,
+        "text": "enge",
+        "sourceRefs": [
+            {
+                "pubId": 3,
+                "refText": "7"
+            }
+        ]
+    },
+    {
+        "id": 1815,
+        "text": "eldarinwe",
+        "sourceRefs": [
+            {
+                "pubId": 12,
+                "refText": "4"
+            }
+        ]
+    },
+    {
+        "id": 1816,
+        "text": "eldarin",
+        "gloss": "of the Eldar",
+        "pos": "ADJ"
+    },
+    {
+        "id": 1817,
+        "text": "leperi",
+        "sourceRefs": [
+            {
+                "pubId": 12,
+                "refText": "4"
+            }
+        ]
+    },
+    {
+        "id": 1818,
+        "text": "leper",
+        "gloss": "finger",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 12,
+                "refText": "4"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-75501495.html"
+            }
+        ]
+    },
+    {
+        "id": 1819,
+        "text": "notessi",
+        "sourceRefs": [
+            {
+                "pubId": 12,
+                "refText": "4"
+            }
+        ]
+    },
+    {
+        "id": 1821,
+        "text": "notesse",
+        "gloss": "numeral",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 12,
+                "refText": "4"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-3717913129.html"
+            }
+        ]
+    },
+    {
+        "id": 1875,
+        "text": "lúva",
+        "gloss": "bend",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "168"
+            }
+        ]
+    },
+    {
+        "id": 1876,
+        "text": "carma",
+        "gloss": "helm",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "114"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-1115019499.html"
+            }
+        ]
+    }
+]

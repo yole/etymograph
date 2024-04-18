@@ -1,0 +1,654 @@
+[
+    {
+        "id": 1887,
+        "text": "dagē",
+        "gloss": "day.DAT",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "25"
+            }
+        ]
+    },
+    {
+        "id": 1891,
+        "text": "utraz",
+        "gloss": "otter"
+    },
+    {
+        "id": 1957,
+        "text": "otraz",
+        "gloss": "otter"
+    },
+    {
+        "id": 1960,
+        "text": "feuwar",
+        "gloss": "four"
+    },
+    {
+        "id": 1965,
+        "text": "sunu",
+        "gloss": "son"
+    },
+    {
+        "id": 1968,
+        "text": "kuning",
+        "gloss": "headman"
+    },
+    {
+        "id": 1971,
+        "text": "hari",
+        "gloss": "army"
+    },
+    {
+        "id": 1973,
+        "text": "balu",
+        "gloss": "harm, evil"
+    },
+    {
+        "id": 1975,
+        "text": "andī",
+        "gloss": "end"
+    },
+    {
+        "id": 1980,
+        "text": "sittjan",
+        "gloss": "sit"
+    },
+    {
+        "id": 1989,
+        "text": "guman",
+        "gloss": "human.ACC"
+    },
+    {
+        "id": 1994,
+        "text": "namō",
+        "gloss": "name"
+    },
+    {
+        "id": 1996,
+        "text": "watar",
+        "gloss": "water"
+    },
+    {
+        "id": 2000,
+        "text": "sunō",
+        "gloss": "son.GEN"
+    },
+    {
+        "id": 2001,
+        "text": "þeu",
+        "gloss": "slave",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "43"
+            }
+        ]
+    },
+    {
+        "id": 2004,
+        "text": "gasti",
+        "gloss": "guest"
+    },
+    {
+        "id": 2006,
+        "text": "horn",
+        "gloss": "horn"
+    },
+    {
+        "id": 2010,
+        "text": "ahtō",
+        "gloss": "eight"
+    },
+    {
+        "id": 2013,
+        "text": "þrau",
+        "gloss": "threat"
+    },
+    {
+        "id": 2017,
+        "text": "nū",
+        "gloss": "now"
+    },
+    {
+        "id": 2022,
+        "text": "aij",
+        "gloss": "egg"
+    },
+    {
+        "id": 2024,
+        "text": "glauw",
+        "gloss": "exact",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "66"
+            }
+        ]
+    },
+    {
+        "id": 2026,
+        "text": "hauwan",
+        "gloss": "chop",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "66"
+            }
+        ]
+    },
+    {
+        "id": 2028,
+        "text": "auzā",
+        "gloss": "ear",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "83"
+            }
+        ]
+    },
+    {
+        "id": 2030,
+        "text": "hazjan",
+        "gloss": "praise",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "83"
+            }
+        ]
+    },
+    {
+        "id": 2033,
+        "text": "wiz",
+        "gloss": "we"
+    },
+    {
+        "id": 2035,
+        "text": "maiz",
+        "gloss": "more",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "86"
+            }
+        ]
+    },
+    {
+        "id": 2042,
+        "text": "unsti",
+        "gloss": "storm",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "141"
+            }
+        ]
+    },
+    {
+        "id": 2045,
+        "text": "neman",
+        "gloss": "take",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "141"
+            }
+        ]
+    },
+    {
+        "id": 2047,
+        "text": "anhtu",
+        "gloss": "persecution",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "143"
+            }
+        ]
+    },
+    {
+        "id": 2051,
+        "text": "hanhan",
+        "gloss": "hang"
+    },
+    {
+        "id": 2062,
+        "text": "haft",
+        "gloss": "captive",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "147"
+            }
+        ]
+    },
+    {
+        "id": 2066,
+        "text": "fader",
+        "gloss": "father",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "147"
+            }
+        ]
+    },
+    {
+        "id": 2068,
+        "text": "awi",
+        "gloss": "ewe",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "148"
+            }
+        ]
+    },
+    {
+        "id": 2072,
+        "text": "slāpan",
+        "gloss": "sleep",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "149"
+            }
+        ]
+    },
+    {
+        "id": 2075,
+        "text": "tungā",
+        "gloss": "tongue",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "153"
+            }
+        ]
+    },
+    {
+        "id": 2084,
+        "text": "wilþī",
+        "gloss": "wild"
+    },
+    {
+        "id": 2088,
+        "text": "dōmijan",
+        "gloss": "to judge",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "157"
+            }
+        ]
+    },
+    {
+        "id": 2092,
+        "text": "niuhsijan",
+        "gloss": "to spy"
+    },
+    {
+        "id": 2097,
+        "text": "hlaib",
+        "gloss": "bread"
+    },
+    {
+        "id": 2101,
+        "text": "haim",
+        "gloss": "native place"
+    },
+    {
+        "id": 2104,
+        "text": "stain",
+        "gloss": "stone"
+    },
+    {
+        "id": 2106,
+        "text": "raud",
+        "gloss": "red"
+    },
+    {
+        "id": 2109,
+        "text": "auwju",
+        "gloss": "island"
+    },
+    {
+        "id": 2111,
+        "text": "deup",
+        "gloss": "deep"
+    },
+    {
+        "id": 2117,
+        "text": "fehu",
+        "gloss": "cattle, property"
+    },
+    {
+        "id": 2121,
+        "text": "arm",
+        "gloss": "arm"
+    },
+    {
+        "id": 2125,
+        "text": "swart",
+        "gloss": "black"
+    },
+    {
+        "id": 2127,
+        "text": "werþan",
+        "gloss": "to become"
+    },
+    {
+        "id": 2133,
+        "text": "herdu",
+        "gloss": "herd"
+    },
+    {
+        "id": 2136,
+        "text": "halm",
+        "gloss": "straw"
+    },
+    {
+        "id": 2139,
+        "text": "hals",
+        "gloss": "neck"
+    },
+    {
+        "id": 2143,
+        "text": "trewa-",
+        "gloss": "tree"
+    },
+    {
+        "id": 2147,
+        "text": "gelu",
+        "gloss": "yellow"
+    },
+    {
+        "id": 2150,
+        "text": "latōst",
+        "gloss": "most recently",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "191"
+            }
+        ]
+    },
+    {
+        "id": 2152,
+        "text": "askā",
+        "gloss": "ashes",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "192"
+            }
+        ]
+    },
+    {
+        "id": 2153,
+        "text": "ārundī",
+        "gloss": "message, errand",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "200"
+            }
+        ]
+    },
+    {
+        "id": 2158,
+        "text": "kinn",
+        "gloss": "jaw"
+    },
+    {
+        "id": 2160,
+        "text": "kisil",
+        "gloss": "gravel"
+    },
+    {
+        "id": 2169,
+        "text": "kirikā",
+        "gloss": "church",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "204"
+            }
+        ]
+    },
+    {
+        "id": 2171,
+        "text": "kīp",
+        "gloss": "embryo, shoot",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "205"
+            }
+        ]
+    },
+    {
+        "id": 2173,
+        "text": "gibiþī",
+        "gloss": "given, granted (by fate)",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "205"
+            }
+        ]
+    },
+    {
+        "id": 2175,
+        "text": "gimmu",
+        "gloss": "gem"
+    },
+    {
+        "id": 2178,
+        "text": "kalb",
+        "gloss": "calf",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "205"
+            }
+        ]
+    },
+    {
+        "id": 2197,
+        "text": "skarp",
+        "gloss": "sharp",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "205"
+            }
+        ]
+    },
+    {
+        "id": 2199,
+        "text": "kaldī",
+        "gloss": "coldness"
+    },
+    {
+        "id": 2203,
+        "text": "kerban",
+        "gloss": "to carve, to cut",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "205"
+            }
+        ]
+    },
+    {
+        "id": 2205,
+        "text": "skelh",
+        "gloss": "oblique, crooked, squinting",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "205"
+            }
+        ]
+    },
+    {
+        "id": 2208,
+        "text": "keusan",
+        "gloss": "to choose"
+    },
+    {
+        "id": 2211,
+        "text": "geutan",
+        "gloss": "to pour",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "206"
+            }
+        ]
+    },
+    {
+        "id": 2216,
+        "text": "skauni",
+        "gloss": "beautiful"
+    },
+    {
+        "id": 2227,
+        "text": "kaup",
+        "gloss": "trade, purchase",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "206"
+            }
+        ]
+    },
+    {
+        "id": 2229,
+        "text": "skūr",
+        "gloss": "shower (of rain)",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "206"
+            }
+        ]
+    },
+    {
+        "id": 2231,
+        "text": "lēkijaz",
+        "gloss": "physician"
+    },
+    {
+        "id": 2232,
+        "text": "lāki",
+        "gloss": "physician"
+    },
+    {
+        "id": 2235,
+        "text": "rīkī",
+        "gloss": "kingdom"
+    },
+    {
+        "id": 2250,
+        "text": "sehwan",
+        "gloss": "to see",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "215"
+            }
+        ]
+    },
+    {
+        "id": 2254,
+        "text": "mirkwī",
+        "gloss": "dark",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "215"
+            }
+        ]
+    },
+    {
+        "id": 2257,
+        "text": "singwan",
+        "gloss": "to sing",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "215"
+            }
+        ]
+    },
+    {
+        "id": 2268,
+        "text": "skāp",
+        "gloss": "sheep",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "216"
+            }
+        ]
+    },
+    {
+        "id": 2287,
+        "text": "brūkī",
+        "gloss": "useful",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "224"
+            }
+        ]
+    },
+    {
+        "id": 2294,
+        "text": "swōtī",
+        "gloss": "sweet, pleasant",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "227"
+            }
+        ]
+    },
+    {
+        "id": 2303,
+        "text": "aiwi",
+        "gloss": "law",
+        "sourceRefs": [
+            {
+                "refText": "RInge 2014:259"
+            }
+        ]
+    },
+    {
+        "id": 2312,
+        "text": "magadīn",
+        "gloss": "little girl",
+        "sourceRefs": [
+            {
+                "refText": "RInge 2014:265"
+            }
+        ]
+    },
+    {
+        "id": 2317,
+        "text": "grundilā",
+        "gloss": "name of a species of fish",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "267"
+            }
+        ]
+    }
+]

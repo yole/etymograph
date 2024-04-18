@@ -1,0 +1,147 @@
+[
+    {
+        "id": 1861,
+        "text": "wāpną",
+        "gloss": "weapon"
+    },
+    {
+        "id": 1865,
+        "text": "bandi",
+        "gloss": "fetter"
+    },
+    {
+        "id": 1869,
+        "text": "gebu",
+        "gloss": "gift"
+    },
+    {
+        "id": 1875,
+        "text": "badu",
+        "gloss": "battle"
+    },
+    {
+        "id": 1880,
+        "text": "dagumaz",
+        "gloss": "day.DAT.PL"
+    },
+    {
+        "id": 2012,
+        "text": "þrawu",
+        "gloss": "emotional pain",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "61"
+            }
+        ]
+    },
+    {
+        "id": 2186,
+        "text": "garwijaną",
+        "gloss": "to prepare",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "205"
+            }
+        ]
+    },
+    {
+        "id": 2190,
+        "text": "garną",
+        "gloss": "yarn",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "205"
+            }
+        ]
+    },
+    {
+        "id": 2192,
+        "text": "galdraz",
+        "gloss": "incantation"
+    },
+    {
+        "id": 2194,
+        "text": "skardaz",
+        "gloss": "damaged, notched",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "205"
+            }
+        ]
+    },
+    {
+        "id": 2196,
+        "text": "skarpaz",
+        "gloss": "rough",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "205"
+            }
+        ]
+    },
+    {
+        "id": 2218,
+        "text": "skeutaną",
+        "gloss": "to shoot"
+    },
+    {
+        "id": 2220,
+        "text": "gaukaz",
+        "gloss": "cuckoo",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "206"
+            }
+        ]
+    },
+    {
+        "id": 2223,
+        "text": "skaubą",
+        "gloss": "sheaf",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "206"
+            }
+        ]
+    },
+    {
+        "id": 2225,
+        "text": "keulaz",
+        "gloss": "keel, ship",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "206"
+            }
+        ]
+    },
+    {
+        "id": 2253,
+        "text": "mirkʷaz",
+        "gloss": "dark",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "215"
+            }
+        ]
+    },
+    {
+        "id": 2281,
+        "text": "kussijaną",
+        "gloss": "to kiss",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "223"
+            }
+        ]
+    }
+]

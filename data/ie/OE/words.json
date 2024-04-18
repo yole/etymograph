@@ -1,0 +1,2476 @@
+[
+    {
+        "id": 1,
+        "text": "wē",
+        "gloss": "we",
+        "pos": "PRON"
+    },
+    {
+        "id": 2,
+        "text": "lārēow",
+        "gloss": "teacher",
+        "pos": "N"
+    },
+    {
+        "id": 3,
+        "text": "biddaþ",
+        "gloss": "ask.PRES.PL"
+    },
+    {
+        "id": 4,
+        "text": "biddan",
+        "gloss": "ask",
+        "pos": "V"
+    },
+    {
+        "id": 5,
+        "text": "ġē",
+        "gloss": "you.NOM.PL",
+        "pos": "PRON"
+    },
+    {
+        "id": 6,
+        "text": "þū",
+        "gloss": "you.NOM.SG",
+        "pos": "PRON"
+    },
+    {
+        "id": 7,
+        "text": "ūs",
+        "gloss": "we.ACC",
+        "pos": "PRON"
+    },
+    {
+        "id": 8,
+        "text": "þē",
+        "gloss": "you.ACC.SG"
+    },
+    {
+        "id": 14,
+        "text": "ēalā",
+        "gloss": "lo"
+    },
+    {
+        "id": 15,
+        "text": "þæt",
+        "gloss": "that"
+    },
+    {
+        "id": 16,
+        "text": "tǣċe",
+        "gloss": "teach.2SG.SUBJ"
+    },
+    {
+        "id": 17,
+        "text": "tǣċan",
+        "gloss": "teach",
+        "pos": "V"
+    },
+    {
+        "id": 18,
+        "text": "sprecan",
+        "gloss": "speak",
+        "pos": "V"
+    },
+    {
+        "id": 19,
+        "text": "for-þām",
+        "gloss": "because"
+    },
+    {
+        "id": 20,
+        "text": "unġelǣrede"
+    },
+    {
+        "id": 21,
+        "text": "unġelǣred",
+        "gloss": "unlearned",
+        "pos": "ADJ"
+    },
+    {
+        "id": 22,
+        "text": "sindon",
+        "gloss": "be.PRES.PL"
+    },
+    {
+        "id": 23,
+        "text": "bēon",
+        "gloss": "be",
+        "pos": "V"
+    },
+    {
+        "id": 24,
+        "text": "and",
+        "gloss": "and"
+    },
+    {
+        "id": 25,
+        "text": "ġewæmmodlīċe",
+        "gloss": "corruptly",
+        "pos": "ADJ"
+    },
+    {
+        "id": 26,
+        "text": "sprecaþ",
+        "gloss": "speak.PRES.PL"
+    },
+    {
+        "id": 27,
+        "text": "hwæt",
+        "gloss": "what"
+    },
+    {
+        "id": 28,
+        "text": "wille",
+        "gloss": "want.PRES.PL"
+    },
+    {
+        "id": 29,
+        "text": "willan",
+        "gloss": "want",
+        "pos": "V"
+    },
+    {
+        "id": 30,
+        "text": "rēċe",
+        "gloss": "care for.PRES.PL"
+    },
+    {
+        "id": 31,
+        "text": "reċċan",
+        "gloss": "care for",
+        "pos": "V"
+    },
+    {
+        "id": 32,
+        "text": "būton",
+        "gloss": "except",
+        "fullGloss": "except, provided that, unless, without"
+    },
+    {
+        "id": 33,
+        "text": "hit",
+        "gloss": "it",
+        "pos": "PRON"
+    },
+    {
+        "id": 34,
+        "text": "riht",
+        "gloss": "proper",
+        "pos": "ADJ"
+    },
+    {
+        "id": 35,
+        "text": "sprǣċ",
+        "gloss": "speech",
+        "pos": "N"
+    },
+    {
+        "id": 36,
+        "text": "sie",
+        "gloss": "be.SUBJ.PRES.3SG"
+    },
+    {
+        "id": 37,
+        "text": "behēfe",
+        "gloss": "useful",
+        "pos": "ADJ"
+    },
+    {
+        "id": 38,
+        "text": "næs",
+        "gloss": "not at all"
+    },
+    {
+        "id": 39,
+        "text": "īdel",
+        "gloss": "idle",
+        "pos": "ADJ"
+    },
+    {
+        "id": 40,
+        "text": "oþþe",
+        "gloss": "or",
+        "pos": "CONJ"
+    },
+    {
+        "id": 41,
+        "text": "fracod",
+        "gloss": "worthless",
+        "pos": "ADJ"
+    },
+    {
+        "id": 42,
+        "text": "beswungen",
+        "gloss": "beat.PP"
+    },
+    {
+        "id": 43,
+        "text": "beswingan",
+        "gloss": "beat",
+        "fullGloss": "beat, flog",
+        "pos": "V"
+    },
+    {
+        "id": 44,
+        "text": "on",
+        "gloss": "on",
+        "pos": "PREP",
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/24432"
+            }
+        ]
+    },
+    {
+        "id": 45,
+        "text": "leornunge",
+        "gloss": "learning"
+    },
+    {
+        "id": 46,
+        "text": "lēofre",
+        "gloss": "more dear"
+    },
+    {
+        "id": 47,
+        "text": "is",
+        "gloss": "be.PRES.3SG"
+    },
+    {
+        "id": 48,
+        "text": "for",
+        "gloss": "before",
+        "pos": "PREP"
+    },
+    {
+        "id": 49,
+        "text": "lāre"
+    },
+    {
+        "id": 50,
+        "text": "lār",
+        "gloss": "learning",
+        "pos": "N",
+        "classes": [
+            "fem",
+            "o-stem"
+        ]
+    },
+    {
+        "id": 51,
+        "text": "þonne",
+        "gloss": "than"
+    },
+    {
+        "id": 52,
+        "text": "ne",
+        "gloss": "not"
+    },
+    {
+        "id": 53,
+        "text": "cunnan",
+        "gloss": "know",
+        "pos": "V"
+    },
+    {
+        "id": 54,
+        "text": "ac",
+        "gloss": "and",
+        "pos": "CONJ"
+    },
+    {
+        "id": 55,
+        "text": "witon",
+        "gloss": "know.PRES.PL"
+    },
+    {
+        "id": 56,
+        "text": "witan",
+        "gloss": "know",
+        "pos": "V"
+    },
+    {
+        "id": 57,
+        "text": "eart",
+        "gloss": "be.PRES.2SG"
+    },
+    {
+        "id": 58,
+        "text": "bilewit",
+        "gloss": "honest",
+        "pos": "ADJ"
+    },
+    {
+        "id": 59,
+        "text": "nelle"
+    },
+    {
+        "id": 60,
+        "text": "onbelǣdan",
+        "gloss": "deliver",
+        "pos": "V"
+    },
+    {
+        "id": 61,
+        "text": "swingla",
+        "gloss": "blow.ACC.PL"
+    },
+    {
+        "id": 62,
+        "text": "swingel",
+        "gloss": "blow",
+        "fullGloss": "blow of a rod or a whip",
+        "pos": "N"
+    },
+    {
+        "id": 63,
+        "text": "siē"
+    },
+    {
+        "id": 64,
+        "text": "tōġenȳdd",
+        "gloss": "force.PP"
+    },
+    {
+        "id": 65,
+        "text": "tōġenȳdan",
+        "gloss": "force",
+        "fullGloss": "force, compel",
+        "pos": "V"
+    },
+    {
+        "id": 66,
+        "text": "fram",
+        "gloss": "from",
+        "pos": "PREP"
+    },
+    {
+        "id": 68,
+        "text": "iċ",
+        "gloss": "I",
+        "pos": "PRON"
+    },
+    {
+        "id": 69,
+        "text": "ācsiġe",
+        "gloss": "ask.PRES.1SG"
+    },
+    {
+        "id": 70,
+        "text": "ācsian",
+        "gloss": "ask",
+        "pos": "V"
+    },
+    {
+        "id": 71,
+        "text": "ēow",
+        "gloss": "you.DAT.PL"
+    },
+    {
+        "id": 72,
+        "text": "for-hwī",
+        "gloss": "why"
+    },
+    {
+        "id": 73,
+        "text": "swā",
+        "gloss": "so",
+        "fullGloss": "as, just as, so, thus, like"
+    },
+    {
+        "id": 74,
+        "text": "ġeornlīċe",
+        "gloss": "eagerly",
+        "pos": "ADV"
+    },
+    {
+        "id": 75,
+        "text": "leornie",
+        "gloss": "learn.PRES.PL"
+    },
+    {
+        "id": 76,
+        "text": "leornian",
+        "gloss": "learn",
+        "pos": "V"
+    },
+    {
+        "id": 77,
+        "text": "we",
+        "gloss": "we.NOM",
+        "pos": "PRON"
+    },
+    {
+        "id": 78,
+        "text": "nellaþ"
+    },
+    {
+        "id": 79,
+        "text": "willaþ",
+        "gloss": "want.PRES.PL"
+    },
+    {
+        "id": 80,
+        "text": "wesan",
+        "gloss": "be",
+        "pos": "V"
+    },
+    {
+        "id": 81,
+        "text": "stunte",
+        "gloss": "foolish",
+        "pos": "ADJ"
+    },
+    {
+        "id": 82,
+        "text": "nȳtenu",
+        "gloss": "cattle",
+        "pos": "N"
+    },
+    {
+        "id": 83,
+        "text": "þā",
+        "gloss": "that"
+    },
+    {
+        "id": 84,
+        "text": "nān",
+        "gloss": "no"
+    },
+    {
+        "id": 85,
+        "text": "þing",
+        "gloss": "thing",
+        "pos": "N"
+    },
+    {
+        "id": 86,
+        "text": "witaþ",
+        "gloss": "know.PRES.3SG"
+    },
+    {
+        "id": 87,
+        "text": "gærs",
+        "gloss": "grass",
+        "pos": "N"
+    },
+    {
+        "id": 88,
+        "text": "ond",
+        "gloss": "but"
+    },
+    {
+        "id": 89,
+        "text": "wæter",
+        "gloss": "water",
+        "pos": "N"
+    },
+    {
+        "id": 90,
+        "text": "wīse",
+        "gloss": "way",
+        "pos": "N"
+    },
+    {
+        "id": 91,
+        "text": "hwilcum",
+        "gloss": "what kind.DAT.PL"
+    },
+    {
+        "id": 92,
+        "text": "hwilċ",
+        "gloss": "what kind"
+    },
+    {
+        "id": 93,
+        "text": "wīsdome"
+    },
+    {
+        "id": 94,
+        "text": "wīsdōm",
+        "gloss": "wisdom",
+        "pos": "N"
+    },
+    {
+        "id": 276,
+        "text": "þām",
+        "gloss": "the.M.DAT"
+    },
+    {
+        "id": 277,
+        "text": "sē",
+        "gloss": "the",
+        "fullGloss": "the, this, that"
+    },
+    {
+        "id": 278,
+        "text": "nēdfere",
+        "gloss": "unavoidable or necessary journey"
+    },
+    {
+        "id": 279,
+        "text": "nǣni",
+        "gloss": "no one"
+    },
+    {
+        "id": 280,
+        "text": "wyrþeþ",
+        "gloss": "become.3SG"
+    },
+    {
+        "id": 281,
+        "text": "weorþan",
+        "gloss": "become"
+    },
+    {
+        "id": 282,
+        "text": "þances",
+        "gloss": "thought.GEN"
+    },
+    {
+        "id": 283,
+        "text": "þanc",
+        "gloss": "thought",
+        "pos": "N"
+    },
+    {
+        "id": 284,
+        "text": "snotera",
+        "gloss": "wiser"
+    },
+    {
+        "id": 285,
+        "text": "him",
+        "gloss": "he.DAT"
+    },
+    {
+        "id": 286,
+        "text": "hē",
+        "gloss": "he"
+    },
+    {
+        "id": 287,
+        "text": "heonengange",
+        "gloss": "going hence"
+    },
+    {
+        "id": 288,
+        "text": "his",
+        "gloss": "he.GEN"
+    },
+    {
+        "id": 289,
+        "text": "gōdes",
+        "gloss": "good.GEN"
+    },
+    {
+        "id": 290,
+        "text": "gōd",
+        "gloss": "good",
+        "pos": "ADJ"
+    },
+    {
+        "id": 291,
+        "text": "æfter",
+        "gloss": "after",
+        "pos": "PREP"
+    },
+    {
+        "id": 292,
+        "text": "yfeles",
+        "gloss": "evil.GEN"
+    },
+    {
+        "id": 293,
+        "text": "yfel",
+        "gloss": "evil"
+    },
+    {
+        "id": 294,
+        "text": "heonon",
+        "gloss": "hence"
+    },
+    {
+        "id": 295,
+        "text": "weorþe",
+        "gloss": "be.FUT"
+    },
+    {
+        "id": 296,
+        "text": "dēaþe",
+        "gloss": "death.DAT"
+    },
+    {
+        "id": 297,
+        "text": "dēaþ",
+        "gloss": "death"
+    },
+    {
+        "id": 298,
+        "text": "ǣr",
+        "gloss": "before",
+        "pos": "PREP"
+    },
+    {
+        "id": 300,
+        "text": "mōdġeþanc",
+        "gloss": "thought",
+        "fullGloss": "thought; conception; purpose",
+        "pos": "N"
+    },
+    {
+        "id": 301,
+        "text": "heriġean",
+        "gloss": "praise"
+    },
+    {
+        "id": 302,
+        "text": "meotodes",
+        "gloss": "God.GEN"
+    },
+    {
+        "id": 303,
+        "text": "meotod",
+        "gloss": "god",
+        "pos": "N"
+    },
+    {
+        "id": 304,
+        "text": "weard",
+        "gloss": "guardian",
+        "pos": "N"
+    },
+    {
+        "id": 305,
+        "text": "heofonrīċes",
+        "gloss": "kingdom of heaven.GEN"
+    },
+    {
+        "id": 306,
+        "text": "heofonrīce",
+        "gloss": "kingdom of heaven"
+    },
+    {
+        "id": 307,
+        "text": "weorc",
+        "gloss": "work",
+        "pos": "N"
+    },
+    {
+        "id": 308,
+        "text": "meahte",
+        "gloss": "power.DAT"
+    },
+    {
+        "id": 309,
+        "text": "meaht",
+        "gloss": "power",
+        "pos": "N"
+    },
+    {
+        "id": 310,
+        "text": "wuldorfæder"
+    },
+    {
+        "id": 311,
+        "text": "wuldor",
+        "gloss": "wonder",
+        "pos": "N"
+    },
+    {
+        "id": 312,
+        "text": "fæder",
+        "gloss": "father",
+        "pos": "N"
+    },
+    {
+        "id": 313,
+        "text": "ēċe",
+        "gloss": "eternal",
+        "pos": "ADJ"
+    },
+    {
+        "id": 314,
+        "text": "drihten",
+        "gloss": "lord",
+        "pos": "N"
+    },
+    {
+        "id": 315,
+        "text": "ōr",
+        "gloss": "beginning",
+        "pos": "N"
+    },
+    {
+        "id": 316,
+        "text": "heofon",
+        "gloss": "heaven",
+        "pos": "N"
+    },
+    {
+        "id": 317,
+        "text": "frēa",
+        "gloss": "lord",
+        "pos": "N"
+    },
+    {
+        "id": 318,
+        "text": "ælmihtiġ",
+        "gloss": "almighty",
+        "pos": "ADJ"
+    },
+    {
+        "id": 319,
+        "text": "hrōfe",
+        "gloss": "roof.DAT"
+    },
+    {
+        "id": 320,
+        "text": "hrōf",
+        "gloss": "roof",
+        "pos": "N"
+    },
+    {
+        "id": 321,
+        "text": "middanġeard",
+        "gloss": "Middle-Earth"
+    },
+    {
+        "id": 322,
+        "text": "monncynnes",
+        "gloss": "mankind.GEN"
+    },
+    {
+        "id": 323,
+        "text": "monncynn",
+        "gloss": "mankind",
+        "pos": "N"
+    },
+    {
+        "id": 324,
+        "text": "ǣrest",
+        "gloss": "first"
+    },
+    {
+        "id": 325,
+        "text": "tēode"
+    },
+    {
+        "id": 326,
+        "text": "tēon",
+        "gloss": "prepare",
+        "pos": "V",
+        "classes": [
+            "pret-d"
+        ]
+    },
+    {
+        "id": 327,
+        "text": "onstealde"
+    },
+    {
+        "id": 328,
+        "text": "onstellan",
+        "gloss": "establish",
+        "pos": "V",
+        "classes": [
+            "pret-d"
+        ]
+    },
+    {
+        "id": 329,
+        "text": "ġehwæs",
+        "gloss": "each.GEN"
+    },
+    {
+        "id": 330,
+        "text": "gehwā",
+        "gloss": "each"
+    },
+    {
+        "id": 331,
+        "text": "sceōp",
+        "gloss": "make.PST.3SG"
+    },
+    {
+        "id": 332,
+        "text": "scyppan",
+        "gloss": "make",
+        "pos": "V"
+    },
+    {
+        "id": 333,
+        "text": "bearnum",
+        "gloss": "child.DAT.PL"
+    },
+    {
+        "id": 334,
+        "text": "bearn",
+        "gloss": "child",
+        "pos": "N"
+    },
+    {
+        "id": 335,
+        "text": "nū",
+        "gloss": "now"
+    },
+    {
+        "id": 336,
+        "text": "hāliġ",
+        "gloss": "holy",
+        "pos": "ADJ"
+    },
+    {
+        "id": 337,
+        "text": "scyppend",
+        "gloss": "Creator",
+        "pos": "N"
+    },
+    {
+        "id": 355,
+        "text": "wundra",
+        "gloss": "wonder.GEN"
+    },
+    {
+        "id": 405,
+        "text": "moððe",
+        "gloss": "moth",
+        "pos": "N"
+    },
+    {
+        "id": 406,
+        "text": "word",
+        "gloss": "word",
+        "pos": "N"
+    },
+    {
+        "id": 407,
+        "text": "fræt",
+        "gloss": "devour.PRET.3SG"
+    },
+    {
+        "id": 408,
+        "text": "fretan",
+        "gloss": "devour",
+        "pos": "V"
+    },
+    {
+        "id": 409,
+        "text": "mē",
+        "gloss": "I.DAT"
+    },
+    {
+        "id": 410,
+        "text": "þūhte",
+        "gloss": "think.PRET.3SG"
+    },
+    {
+        "id": 411,
+        "text": "þyncan",
+        "gloss": "think",
+        "pos": "V"
+    },
+    {
+        "id": 412,
+        "text": "wrǣtlicu",
+        "gloss": "marvellous.F.NOM"
+    },
+    {
+        "id": 413,
+        "text": "wrǣtlic",
+        "gloss": "marvellous",
+        "pos": "ADJ"
+    },
+    {
+        "id": 414,
+        "text": "wyrd",
+        "gloss": "fate",
+        "pos": "N"
+    },
+    {
+        "id": 415,
+        "text": "wundor",
+        "gloss": "wonder",
+        "pos": "N"
+    },
+    {
+        "id": 416,
+        "text": "gefræġn",
+        "gloss": "learn.PRET.1SG"
+    },
+    {
+        "id": 417,
+        "text": "gefrignan",
+        "pos": "V"
+    },
+    {
+        "id": 418,
+        "text": "se",
+        "gloss": "that"
+    },
+    {
+        "id": 419,
+        "text": "wyrm",
+        "gloss": "serpent",
+        "pos": "N"
+    },
+    {
+        "id": 420,
+        "text": "forswealg",
+        "gloss": "swallow.PRET.3SG"
+    },
+    {
+        "id": 421,
+        "text": "forswelgan",
+        "gloss": "swallow",
+        "pos": "V"
+    },
+    {
+        "id": 422,
+        "text": "weres",
+        "gloss": "man.GEN"
+    },
+    {
+        "id": 423,
+        "text": "wer",
+        "gloss": "man"
+    },
+    {
+        "id": 424,
+        "text": "ġied",
+        "gloss": "song",
+        "pos": "N"
+    },
+    {
+        "id": 425,
+        "text": "sumes",
+        "gloss": "certain.GEN"
+    },
+    {
+        "id": 426,
+        "text": "sum",
+        "gloss": "some",
+        "pos": "PRON"
+    },
+    {
+        "id": 427,
+        "text": "in",
+        "gloss": "in"
+    },
+    {
+        "id": 428,
+        "text": "þȳstro",
+        "gloss": "darkness",
+        "pos": "N"
+    },
+    {
+        "id": 429,
+        "text": "þēof",
+        "gloss": "thief",
+        "pos": "N"
+    },
+    {
+        "id": 430,
+        "text": "þrymfæstne",
+        "gloss": "glorious.ACC"
+    },
+    {
+        "id": 431,
+        "text": "þrymfæst",
+        "gloss": "glorious",
+        "pos": "ADJ"
+    },
+    {
+        "id": 432,
+        "text": "cwide",
+        "gloss": "saying",
+        "pos": "N"
+    },
+    {
+        "id": 433,
+        "text": "þæs",
+        "gloss": "the.M.GEN"
+    },
+    {
+        "id": 434,
+        "text": "strangan",
+        "gloss": "strong.GEN"
+    },
+    {
+        "id": 435,
+        "text": "strang",
+        "gloss": "strong",
+        "pos": "ADJ"
+    },
+    {
+        "id": 436,
+        "text": "staþol",
+        "gloss": "foundation"
+    },
+    {
+        "id": 437,
+        "text": "stælġiest",
+        "gloss": "thievish spirit",
+        "pos": "N"
+    },
+    {
+        "id": 438,
+        "text": "wæs",
+        "gloss": "be.PST.3SG"
+    },
+    {
+        "id": 439,
+        "text": "wihte",
+        "gloss": "at all"
+    },
+    {
+        "id": 440,
+        "text": "þē",
+        "gloss": "though"
+    },
+    {
+        "id": 441,
+        "text": "glēawra",
+        "gloss": "wise",
+        "pos": "ADJ"
+    },
+    {
+        "id": 442,
+        "text": "þȳ",
+        "gloss": "the.INSTR"
+    },
+    {
+        "id": 443,
+        "text": "þām",
+        "gloss": "the.M.DAT.PL"
+    },
+    {
+        "id": 444,
+        "text": "wordum"
+    },
+    {
+        "id": 445,
+        "text": "swealg",
+        "gloss": "swallow.PRET.3SG"
+    },
+    {
+        "id": 446,
+        "text": "swelgan",
+        "gloss": "swallow",
+        "pos": "V"
+    },
+    {
+        "id": 448,
+        "text": "samed",
+        "gloss": "together",
+        "pos": "ADV"
+    },
+    {
+        "id": 449,
+        "text": "wuhte",
+        "gloss": "creature.ACC.PL"
+    },
+    {
+        "id": 450,
+        "text": "seah",
+        "gloss": "see.1SG"
+    },
+    {
+        "id": 452,
+        "text": "wrǣtlīċe",
+        "gloss": "marvellously",
+        "pos": "ADV"
+    },
+    {
+        "id": 453,
+        "text": "fēower",
+        "gloss": "four"
+    },
+    {
+        "id": 454,
+        "text": "sīþian",
+        "gloss": "travel",
+        "pos": "V"
+    },
+    {
+        "id": 455,
+        "text": "lāstas",
+        "gloss": "track.NOM.PL"
+    },
+    {
+        "id": 456,
+        "text": "lāst",
+        "gloss": "track"
+    },
+    {
+        "id": 457,
+        "text": "swaþu",
+        "gloss": "trace.NOM.PL"
+    },
+    {
+        "id": 458,
+        "text": "swæþ",
+        "gloss": "trace",
+        "pos": "N"
+    },
+    {
+        "id": 459,
+        "text": "swearta",
+        "gloss": "black.NOM.PL"
+    },
+    {
+        "id": 460,
+        "text": "sweart",
+        "gloss": "black",
+        "pos": "ADJ"
+    },
+    {
+        "id": 461,
+        "text": "swīþe",
+        "gloss": "very",
+        "pos": "ADV"
+    },
+    {
+        "id": 462,
+        "text": "þā",
+        "gloss": "when"
+    },
+    {
+        "id": 463,
+        "text": "ond",
+        "gloss": "and"
+    },
+    {
+        "id": 464,
+        "text": "blacu",
+        "gloss": "black.ACC"
+    },
+    {
+        "id": 465,
+        "text": "blác",
+        "gloss": "bright",
+        "pos": "ADJ"
+    },
+    {
+        "id": 466,
+        "text": "stān",
+        "gloss": "stone",
+        "pos": "N",
+        "classes": [
+            "masc",
+            "a-stem"
+        ]
+    },
+    {
+        "id": 474,
+        "text": "sċip",
+        "gloss": "ship",
+        "pos": "N",
+        "classes": [
+            "neut",
+            "a-stem"
+        ]
+    },
+    {
+        "id": 475,
+        "text": "giefu",
+        "gloss": "gift",
+        "pos": "N",
+        "classes": [
+            "fem",
+            "o-stem"
+        ]
+    },
+    {
+        "id": 917,
+        "text": " þū",
+        "gloss": "you",
+        "pos": "PRON"
+    },
+    {
+        "id": 918,
+        "text": "ċildra",
+        "gloss": "child.NOM.PL"
+    },
+    {
+        "id": 919,
+        "text": "ċild",
+        "gloss": "child",
+        "pos": "N"
+    },
+    {
+        "id": 1127,
+        "text": "dæġ",
+        "gloss": "day",
+        "pos": "N",
+        "classes": [
+            "masc",
+            "a-stem"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/7328"
+            }
+        ]
+    },
+    {
+        "id": 1190,
+        "text": "ǣrdagum"
+    },
+    {
+        "id": 1191,
+        "text": "ǣrdæg"
+    },
+    {
+        "id": 1196,
+        "text": "wuniende"
+    },
+    {
+        "id": 1197,
+        "text": "wunian",
+        "gloss": "dwell",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/36878"
+            }
+        ]
+    },
+    {
+        "id": 1198,
+        "text": "be",
+        "gloss": "by",
+        "pos": "PREP",
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/3027"
+            }
+        ]
+    },
+    {
+        "id": 1199,
+        "text": "norþdǣlum"
+    },
+    {
+        "id": 1200,
+        "text": "norþdǣl"
+    },
+    {
+        "id": 1201,
+        "text": "norþ",
+        "gloss": "north",
+        "pos": "ADJ",
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/23864"
+            }
+        ]
+    },
+    {
+        "id": 1203,
+        "text": "dǣl",
+        "gloss": "dale",
+        "pos": "N",
+        "classes": [
+            "neut"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/7369"
+            }
+        ]
+    },
+    {
+        "id": 1204,
+        "text": "middangeardes"
+    },
+    {
+        "id": 1205,
+        "text": "middangeard",
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/22797"
+            }
+        ]
+    },
+    {
+        "id": 1206,
+        "text": "cyning",
+        "gloss": "king",
+        "pos": "N",
+        "classes": [
+            "masc"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/7147"
+            }
+        ]
+    },
+    {
+        "id": 1207,
+        "text": "þe",
+        "gloss": "which",
+        "pos": "PRON",
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/31544"
+            }
+        ]
+    },
+    {
+        "id": 1208,
+        "text": "dohtor",
+        "gloss": "daughter",
+        "pos": "N",
+        "classes": [
+            "fem"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/7767"
+            }
+        ]
+    },
+    {
+        "id": 1209,
+        "text": "hæfde"
+    },
+    {
+        "id": 1210,
+        "text": "habban",
+        "gloss": "have",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/17802"
+            }
+        ]
+    },
+    {
+        "id": 1211,
+        "text": "āngan"
+    },
+    {
+        "id": 1212,
+        "text": "ānga",
+        "gloss": "sole",
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/1805"
+            }
+        ]
+    },
+    {
+        "id": 1213,
+        "text": "hūse"
+    },
+    {
+        "id": 1214,
+        "text": "hūs",
+        "gloss": "house",
+        "pos": "N"
+    },
+    {
+        "id": 1215,
+        "text": "ēac",
+        "gloss": "also",
+        "pos": "CONJ",
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/8270"
+            }
+        ]
+    },
+    {
+        "id": 1216,
+        "text": "ān",
+        "gloss": "one",
+        "pos": "NUM",
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/1609"
+            }
+        ]
+    },
+    {
+        "id": 1217,
+        "text": "cniht",
+        "gloss": "knight",
+        "pos": "N",
+        "classes": [
+            "masc"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/6460"
+            }
+        ]
+    },
+    {
+        "id": 1218,
+        "text": "ōþrum"
+    },
+    {
+        "id": 1219,
+        "text": "ōðer",
+        "gloss": "other",
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/25044"
+            }
+        ]
+    },
+    {
+        "id": 1220,
+        "text": "ungelíc",
+        "gloss": "unlike",
+        "pos": "ADJ",
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/33137"
+            }
+        ]
+    },
+    {
+        "id": 1222,
+        "text": "gelamp",
+        "gloss": "occur.PST"
+    },
+    {
+        "id": 1223,
+        "text": "gelimpan",
+        "gloss": "occur",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/15010"
+            }
+        ]
+    },
+    {
+        "id": 1224,
+        "text": "cyninges"
+    },
+    {
+        "id": 1225,
+        "text": "huntan"
+    },
+    {
+        "id": 1226,
+        "text": "hunta",
+        "gloss": "hunter",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/19980"
+            }
+        ]
+    },
+    {
+        "id": 1229,
+        "text": "beran"
+    },
+    {
+        "id": 1230,
+        "text": "bera",
+        "gloss": "bear",
+        "pos": "N",
+        "classes": [
+            "masc"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/3798"
+            }
+        ]
+    },
+    {
+        "id": 1231,
+        "text": "gemētton",
+        "gloss": "meet.PST"
+    },
+    {
+        "id": 1232,
+        "text": "mētan",
+        "gloss": "meet",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/22709"
+            }
+        ]
+    },
+    {
+        "id": 1233,
+        "text": "beorgum"
+    },
+    {
+        "id": 1234,
+        "text": "beorg",
+        "gloss": "hill",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/3728"
+            }
+        ]
+    },
+    {
+        "id": 1235,
+        "text": "hie",
+        "gloss": "he.NOM.PL"
+    },
+    {
+        "id": 1236,
+        "text": "spyredon"
+    },
+    {
+        "id": 1237,
+        "text": "spyrian",
+        "gloss": "track",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/28609"
+            }
+        ]
+    },
+    {
+        "id": 1238,
+        "text": "to"
+    },
+    {
+        "id": 1239,
+        "text": "tó",
+        "gloss": "to",
+        "pos": "PREP",
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/30587"
+            }
+        ]
+    },
+    {
+        "id": 1240,
+        "text": "denne"
+    },
+    {
+        "id": 1241,
+        "text": "denn",
+        "gloss": "den",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/7570"
+            }
+        ]
+    },
+    {
+        "id": 1242,
+        "text": "hine",
+        "gloss": "he.ACC"
+    },
+    {
+        "id": 1243,
+        "text": "þǣr",
+        "gloss": "there",
+        "pos": "ADV",
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/31455"
+            }
+        ]
+    },
+    {
+        "id": 1244,
+        "text": "ofslōgon",
+        "gloss": "kill.PST"
+    },
+    {
+        "id": 1245,
+        "text": "ofslēan",
+        "gloss": "kill",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/56368"
+            }
+        ]
+    },
+    {
+        "id": 1246,
+        "text": "fæt",
+        "gloss": "vessel",
+        "pos": "N",
+        "classes": [
+            "neut",
+            "a-stem"
+        ]
+    },
+    {
+        "id": 1247,
+        "text": "wīf",
+        "gloss": "woman",
+        "pos": "N",
+        "classes": [
+            "neut",
+            "a-stem"
+        ]
+    },
+    {
+        "id": 1250,
+        "text": "engel",
+        "gloss": "angel",
+        "pos": "N",
+        "classes": [
+            "masc",
+            "a-stem"
+        ]
+    },
+    {
+        "id": 1251,
+        "text": "hēafod",
+        "gloss": "head",
+        "pos": "N",
+        "classes": [
+            "neut",
+            "a-stem"
+        ]
+    },
+    {
+        "id": 1259,
+        "text": "ofermēttu",
+        "gloss": "pride",
+        "pos": "N",
+        "classes": [
+            "fem",
+            "o-stem"
+        ]
+    },
+    {
+        "id": 1260,
+        "text": "frōfor",
+        "gloss": "solace",
+        "pos": "N",
+        "classes": [
+            "fem",
+            "o-stem"
+        ]
+    },
+    {
+        "id": 1879,
+        "text": "dagum",
+        "gloss": "day.DAT.PL"
+    },
+    {
+        "id": 1886,
+        "text": "dæge"
+    },
+    {
+        "id": 2034,
+        "text": "we",
+        "gloss": "we"
+    },
+    {
+        "id": 2038,
+        "text": "mā",
+        "gloss": "more"
+    },
+    {
+        "id": 2059,
+        "text": "hōhan",
+        "gloss": "hang"
+    },
+    {
+        "id": 2065,
+        "text": "hæft",
+        "gloss": "captive"
+    },
+    {
+        "id": 2073,
+        "text": "slǣpan",
+        "gloss": "sleep"
+    },
+    {
+        "id": 2102,
+        "text": "hām",
+        "gloss": "home"
+    },
+    {
+        "id": 2107,
+        "text": "rēad",
+        "gloss": "red"
+    },
+    {
+        "id": 2112,
+        "text": "dēop",
+        "gloss": "deep"
+    },
+    {
+        "id": 2113,
+        "text": "þēo",
+        "gloss": "slave"
+    },
+    {
+        "id": 2115,
+        "text": "eahta",
+        "gloss": "eight"
+    },
+    {
+        "id": 2118,
+        "text": "feoh",
+        "gloss": "cattle, property"
+    },
+    {
+        "id": 2123,
+        "text": "earm",
+        "gloss": "arm"
+    },
+    {
+        "id": 2131,
+        "text": "weorþan",
+        "gloss": "to become"
+    },
+    {
+        "id": 2137,
+        "text": "healm",
+        "gloss": "straw"
+    },
+    {
+        "id": 2140,
+        "text": "heals",
+        "gloss": "neck"
+    },
+    {
+        "id": 2145,
+        "text": "treow-",
+        "gloss": "tree"
+    },
+    {
+        "id": 2151,
+        "text": "latost",
+        "gloss": "most recently"
+    },
+    {
+        "id": 2154,
+        "text": "ārundī",
+        "gloss": "message, errand",
+        "reconstructed": true
+    },
+    {
+        "id": 2159,
+        "text": "ċinn",
+        "gloss": "chin"
+    },
+    {
+        "id": 2161,
+        "text": "ċisel",
+        "gloss": "gravel"
+    },
+    {
+        "id": 2164,
+        "text": "ġīsl",
+        "gloss": "hostage",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "204"
+            }
+        ]
+    },
+    {
+        "id": 2168,
+        "text": "sċīnan",
+        "gloss": "shine",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "204"
+            }
+        ]
+    },
+    {
+        "id": 2170,
+        "text": "ċiriċe",
+        "gloss": "church",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "204"
+            }
+        ]
+    },
+    {
+        "id": 2172,
+        "text": "ċīp",
+        "gloss": "embryo, shoot",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "205"
+            }
+        ]
+    },
+    {
+        "id": 2174,
+        "text": "ġifeþe",
+        "gloss": "given, granted (by fate)",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "205"
+            }
+        ]
+    },
+    {
+        "id": 2176,
+        "text": "ġimm",
+        "gloss": "gem",
+        "pos": "N"
+    },
+    {
+        "id": 2179,
+        "text": "ċealf",
+        "gloss": "calf",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "205"
+            }
+        ]
+    },
+    {
+        "id": 2181,
+        "text": "ċeald",
+        "gloss": "cold",
+        "pos": "ADJ",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "205"
+            }
+        ]
+    },
+    {
+        "id": 2183,
+        "text": "ġeard",
+        "gloss": "enclosure"
+    },
+    {
+        "id": 2185,
+        "text": "ġealga",
+        "gloss": "gallows"
+    },
+    {
+        "id": 2187,
+        "text": "ġierwan",
+        "gloss": "to prepare",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "205"
+            }
+        ]
+    },
+    {
+        "id": 2191,
+        "text": "ġearn",
+        "gloss": "yarn",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "205"
+            }
+        ]
+    },
+    {
+        "id": 2193,
+        "text": "ġealdor",
+        "gloss": "incantation"
+    },
+    {
+        "id": 2195,
+        "text": "sċeard",
+        "gloss": "damaged, notched",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "205"
+            }
+        ]
+    },
+    {
+        "id": 2198,
+        "text": "sċearp",
+        "gloss": "sharp",
+        "pos": "ADJ",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "205"
+            }
+        ]
+    },
+    {
+        "id": 2200,
+        "text": "ċieldu",
+        "gloss": "coldness"
+    },
+    {
+        "id": 2202,
+        "text": "ġeorn",
+        "gloss": "desirous, eager",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "205"
+            }
+        ]
+    },
+    {
+        "id": 2204,
+        "text": "ċeorfan",
+        "gloss": "to carve, to cut",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "205"
+            }
+        ]
+    },
+    {
+        "id": 2206,
+        "text": "sċeolh",
+        "gloss": "oblique, crooked, squinting",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "205"
+            }
+        ]
+    },
+    {
+        "id": 2209,
+        "text": "ċēosan",
+        "gloss": "to choose"
+    },
+    {
+        "id": 2212,
+        "text": "ġēotan",
+        "gloss": "to pour",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "206"
+            }
+        ]
+    },
+    {
+        "id": 2214,
+        "text": "ġīeman",
+        "gloss": "to observe",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "206"
+            }
+        ]
+    },
+    {
+        "id": 2217,
+        "text": "sċīene",
+        "gloss": "beautiful"
+    },
+    {
+        "id": 2219,
+        "text": "sċēotan",
+        "gloss": "to shoot"
+    },
+    {
+        "id": 2221,
+        "text": "ġēac",
+        "gloss": "cuckoo",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "206"
+            }
+        ]
+    },
+    {
+        "id": 2224,
+        "text": "sċēaf",
+        "gloss": "sheaf",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "206"
+            }
+        ]
+    },
+    {
+        "id": 2226,
+        "text": "ċēol",
+        "gloss": "keel, ship",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "206"
+            }
+        ]
+    },
+    {
+        "id": 2228,
+        "text": "ċēap",
+        "gloss": "trade, purchase",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "206"
+            }
+        ]
+    },
+    {
+        "id": 2230,
+        "text": "sċūr",
+        "gloss": "shower (of rain)",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "206"
+            }
+        ]
+    },
+    {
+        "id": 2233,
+        "text": "lǣċe",
+        "gloss": "physician"
+    },
+    {
+        "id": 2236,
+        "text": "rīċe",
+        "gloss": "kingdom"
+    },
+    {
+        "id": 2238,
+        "text": "stiċe",
+        "gloss": "puncture, point"
+    },
+    {
+        "id": 2240,
+        "text": "miċel",
+        "gloss": "big, great",
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/22770"
+            }
+        ]
+    },
+    {
+        "id": 2242,
+        "text": "miċelne",
+        "gloss": "miċel.ACC"
+    },
+    {
+        "id": 2246,
+        "text": "sleġe",
+        "gloss": "blow, stroke",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "208"
+            }
+        ]
+    },
+    {
+        "id": 2251,
+        "text": "seohąn",
+        "gloss": "to see",
+        "reconstructed": true,
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "215"
+            }
+        ]
+    },
+    {
+        "id": 2252,
+        "text": "sēon",
+        "gloss": "to see",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "215"
+            }
+        ]
+    },
+    {
+        "id": 2255,
+        "text": "mirce",
+        "gloss": "dark",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "215"
+            }
+        ]
+    },
+    {
+        "id": 2258,
+        "text": "singan",
+        "gloss": "to sing",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "215"
+            }
+        ]
+    },
+    {
+        "id": 2261,
+        "text": "ġiefan",
+        "gloss": "to give",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "215"
+            }
+        ]
+    },
+    {
+        "id": 2263,
+        "text": "ġieldan",
+        "gloss": "to pay for",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "216"
+            }
+        ]
+    },
+    {
+        "id": 2265,
+        "text": "sċeatt",
+        "gloss": "coin, money",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "216"
+            }
+        ]
+    },
+    {
+        "id": 2267,
+        "text": "sċield",
+        "gloss": "shield",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "216"
+            }
+        ]
+    },
+    {
+        "id": 2269,
+        "text": "sċēap",
+        "gloss": "sheep",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "216"
+            }
+        ]
+    },
+    {
+        "id": 2272,
+        "text": "dryht",
+        "gloss": "war band",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "223"
+            }
+        ]
+    },
+    {
+        "id": 2274,
+        "text": "ġemynd",
+        "gloss": "memory",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "223"
+            }
+        ]
+    },
+    {
+        "id": 2276,
+        "text": "hyngran",
+        "gloss": "to be hungry",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "223"
+            }
+        ]
+    },
+    {
+        "id": 2278,
+        "text": "ryġe",
+        "gloss": "rye",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "223"
+            }
+        ]
+    },
+    {
+        "id": 2280,
+        "text": "wyrm",
+        "gloss": "worm, snake",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "223"
+            }
+        ]
+    },
+    {
+        "id": 2282,
+        "text": "cyssan",
+        "gloss": "to kiss",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "223"
+            }
+        ]
+    },
+    {
+        "id": 2285,
+        "text": "brȳd",
+        "gloss": "bride",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "224"
+            }
+        ]
+    },
+    {
+        "id": 2288,
+        "text": "brȳċe",
+        "gloss": "useful",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "224"
+            }
+        ]
+    },
+    {
+        "id": 2290,
+        "text": "hȳd",
+        "gloss": "skin",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "224"
+            }
+        ]
+    },
+    {
+        "id": 2295,
+        "text": "swēte",
+        "gloss": "sweet, pleasant",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "227"
+            }
+        ]
+    },
+    {
+        "id": 2297,
+        "text": "mete",
+        "gloss": "food",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "236"
+            }
+        ]
+    },
+    {
+        "id": 2300,
+        "text": "sāwi",
+        "gloss": "sea",
+        "reconstructed": true,
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "259"
+            }
+        ]
+    },
+    {
+        "id": 2301,
+        "text": "sǣi",
+        "gloss": "sea",
+        "reconstructed": true,
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "259"
+            }
+        ]
+    },
+    {
+        "id": 2302,
+        "text": "sǣ",
+        "gloss": "sea",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "259"
+            }
+        ]
+    },
+    {
+        "id": 2304,
+        "text": "āwi",
+        "gloss": "law",
+        "reconstructed": true,
+        "sourceRefs": [
+            {
+                "refText": "RInge 2014:259"
+            }
+        ]
+    },
+    {
+        "id": 2305,
+        "text": "ǣi",
+        "gloss": "law",
+        "reconstructed": true,
+        "sourceRefs": [
+            {
+                "refText": "RInge 2014:259"
+            }
+        ]
+    },
+    {
+        "id": 2306,
+        "text": "ǣ",
+        "gloss": "law",
+        "sourceRefs": [
+            {
+                "refText": "RInge 2014:259"
+            }
+        ]
+    },
+    {
+        "id": 2309,
+        "text": "sāwælu",
+        "gloss": "soul",
+        "reconstructed": true,
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "265"
+            }
+        ]
+    },
+    {
+        "id": 2310,
+        "text": "sāwlu",
+        "gloss": "soul",
+        "reconstructed": true,
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "265"
+            }
+        ]
+    },
+    {
+        "id": 2311,
+        "text": "sāwl",
+        "gloss": "soul",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "265"
+            }
+        ]
+    },
+    {
+        "id": 2313,
+        "text": "mægædīn",
+        "gloss": "little girl",
+        "reconstructed": true,
+        "sourceRefs": [
+            {
+                "refText": "RInge 2014:265"
+            }
+        ]
+    },
+    {
+        "id": 2314,
+        "text": "mæġædīn",
+        "gloss": "little girl",
+        "reconstructed": true,
+        "sourceRefs": [
+            {
+                "refText": "RInge 2014:265"
+            }
+        ]
+    },
+    {
+        "id": 2315,
+        "text": "mæġdīn",
+        "gloss": "little girl",
+        "reconstructed": true,
+        "sourceRefs": [
+            {
+                "refText": "RInge 2014:265"
+            }
+        ]
+    },
+    {
+        "id": 2316,
+        "text": "mæġden",
+        "gloss": "little girl",
+        "sourceRefs": [
+            {
+                "refText": "RInge 2014:265"
+            }
+        ]
+    },
+    {
+        "id": 2318,
+        "text": "gryndilæ",
+        "gloss": "name of a species of fish",
+        "reconstructed": true,
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "267"
+            }
+        ]
+    },
+    {
+        "id": 2319,
+        "text": "gryndle",
+        "gloss": "herring",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "267"
+            }
+        ]
+    }
+]

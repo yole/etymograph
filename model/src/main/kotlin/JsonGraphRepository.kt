@@ -19,7 +19,6 @@ data class SourceRefData(val pubId: Int? = null, val refText: String)
 data class WordData(
     val id: Int,
     val text: String,
-    @SerialName("lang") val languageShortName: String,
     val gloss: String? = null,
     val fullGloss: String? = null,
     val pos: String? = null,
@@ -303,7 +302,6 @@ data class GraphRepositoryData(
     val id: String,
     val name: String,
     val languages: List<LanguageData>,
-    val words: List<WordData>,
     val rules: List<RuleData>,
     val links: List<LinkData>,
     val corpusTexts: List<CorpusTextData>,
@@ -360,6 +358,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             publications.filterNotNull().map { PublicationData(it.id, it.name, it.refId) })
         )
         saveLanguageDetails(consumer)
+        saveWords(consumer)
     }
 
     private fun saveLanguageDetails(consumer: (String, String) -> Unit) {
@@ -391,17 +390,23 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             })
         }
 
+    private fun saveWords(consumer: (String, String) -> Unit) {
+        for (language in languages.values) {
+            val wordData = allLangEntities.filterIsInstance<Word>().filter { it.language == language }.map {
+                WordData(it.id, it.text, it.gloss, it.fullGloss, it.pos,
+                    it.classes.takeIf { it.isNotEmpty() },
+                    it.reconstructed,
+                    it.source.sourceToSerializedFormat(), it.notes)
+            }
+            consumer(language.shortName + "/words.json", theJson.encodeToString(wordData))
+        }
+    }
+
     private fun createGraphRepositoryData(): GraphRepositoryData {
         return GraphRepositoryData(
             id,
             name,
             languages.values.map { LanguageData(it.name, it.shortName, it.reconstructed) },
-            allLangEntities.filterIsInstance<Word>().map {
-                WordData(it.id, it.text, it.language.shortName, it.gloss, it.fullGloss, it.pos,
-                    it.classes.takeIf { it.isNotEmpty() },
-                    it.reconstructed,
-                    it.source.sourceToSerializedFormat(), it.notes)
-            },
             rules.map { it.ruleToSerializedFormat() },
             allLinks.map { link ->
                 LinkData(
@@ -450,23 +455,8 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             addLanguage(language)
         }
         loadLanguageDetails(contentProviderCallback)
-
         loadPublications(contentProviderCallback)
-        for (wordData in data.words) {
-            val language = languageByShortName(wordData.languageShortName)!!
-            val wordsByText = mapOfWordsByText(language, wordData.text)
-            val word = Word(
-                wordData.id, wordData.text, language, wordData.gloss,
-                wordData.fullGloss,
-                wordData.pos,
-                wordData.classes ?: emptyList(),
-                wordData.reconstructed,
-                loadSource(wordData.sourceRefs),
-                wordData.notes
-            )
-            setLangEntity(word.id, word)
-            wordsByText.add(word)
-        }
+        loadWords(contentProviderCallback)
         for (rule in data.rules) {
             val fromLanguage = languageByShortName(rule.fromLanguageShortName)!!
             val addedRule = Rule(
@@ -606,6 +596,26 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             language.syllableStructures = data.syllableStructures
             language.grammaticalCategories = deserializeWordCategories(data.grammaticalCategories)
             language.wordClasses = deserializeWordCategories(data.wordClasses)
+        }
+    }
+
+    private fun loadWords(contentProviderCallback: (String) -> String) {
+        for (language in languages.values) {
+            val data = Json.decodeFromString<List<WordData>>(contentProviderCallback(language.shortName + "/words.json"))
+            for (wordData in data) {
+                val wordsByText = mapOfWordsByText(language, wordData.text)
+                val word = Word(
+                    wordData.id, wordData.text, language, wordData.gloss,
+                    wordData.fullGloss,
+                    wordData.pos,
+                    wordData.classes ?: emptyList(),
+                    wordData.reconstructed,
+                    loadSource(wordData.sourceRefs),
+                    wordData.notes
+                )
+                setLangEntity(word.id, word)
+                wordsByText.add(word)
+            }
         }
     }
 

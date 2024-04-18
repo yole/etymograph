@@ -1,0 +1,2621 @@
+[
+    {
+        "id": 95,
+        "text": "ebẽñnẽ"
+    },
+    {
+        "id": 96,
+        "text": "ebẽñne",
+        "gloss": "this"
+    },
+    {
+        "id": 97,
+        "text": "χupã"
+    },
+    {
+        "id": 98,
+        "text": "meneprñnewãtẽ",
+        "gloss": "build.PST.3PL"
+    },
+    {
+        "id": 99,
+        "text": "χupa",
+        "gloss": "tomb"
+    },
+    {
+        "id": 100,
+        "text": "tideimi",
+        "gloss": "son",
+        "pos": "N"
+    },
+    {
+        "id": 101,
+        "text": "sehuwetẽne"
+    },
+    {
+        "id": 102,
+        "text": "se",
+        "gloss": "and",
+        "pos": "CONJ",
+        "classes": [
+            "clitic"
+        ]
+    },
+    {
+        "id": 103,
+        "text": "Huwetẽne",
+        "gloss": "Huwetẽne",
+        "pos": "NP"
+    },
+    {
+        "id": 104,
+        "text": "pñnuteh"
+    },
+    {
+        "id": 105,
+        "text": "Pñnute",
+        "gloss": "Pñnute",
+        "pos": "NP"
+    },
+    {
+        "id": 106,
+        "text": "Slm͂mewe",
+        "gloss": "Slm͂mewe",
+        "pos": "NP"
+    },
+    {
+        "id": 107,
+        "text": "prñnawu"
+    },
+    {
+        "id": 108,
+        "text": "prñnawa",
+        "gloss": "building",
+        "pos": "N"
+    },
+    {
+        "id": 109,
+        "text": "hrppiladi"
+    },
+    {
+        "id": 110,
+        "text": "hrppi",
+        "gloss": "for",
+        "pos": "PREP"
+    },
+    {
+        "id": 111,
+        "text": "ladi"
+    },
+    {
+        "id": 112,
+        "text": "Hanadaza",
+        "pos": "NP"
+    },
+    {
+        "id": 114,
+        "text": "lada",
+        "gloss": "wife",
+        "pos": "N"
+    },
+    {
+        "id": 115,
+        "text": "tuhes",
+        "gloss": "nephew",
+        "pos": "N"
+    },
+    {
+        "id": 120,
+        "text": "ehbi",
+        "gloss": "his",
+        "pos": "PRON",
+        "classes": [
+            "ije-stem"
+        ]
+    },
+    {
+        "id": 121,
+        "text": "setideime"
+    },
+    {
+        "id": 122,
+        "text": "tideime"
+    },
+    {
+        "id": 124,
+        "text": "prñnawã"
+    },
+    {
+        "id": 125,
+        "text": "χluwãnimi",
+        "pos": "NP"
+    },
+    {
+        "id": 126,
+        "text": "ehbije"
+    },
+    {
+        "id": 127,
+        "text": "ebeñnẽ"
+    },
+    {
+        "id": 128,
+        "text": "χudrehila",
+        "pos": "NP"
+    },
+    {
+        "id": 130,
+        "text": "humelije",
+        "gloss": "legitimate",
+        "pos": "ADJ"
+    },
+    {
+        "id": 132,
+        "text": "atli"
+    },
+    {
+        "id": 133,
+        "text": "atla",
+        "gloss": "self",
+        "fullGloss": "person, self",
+        "pos": "N"
+    },
+    {
+        "id": 134,
+        "text": "sejẽni"
+    },
+    {
+        "id": 135,
+        "text": "ẽni",
+        "gloss": "mother"
+    },
+    {
+        "id": 137,
+        "text": "seladi"
+    },
+    {
+        "id": 141,
+        "text": "esedeplẽmi",
+        "pos": "NP"
+    },
+    {
+        "id": 142,
+        "text": "mẽtiprñnawatẽ"
+    },
+    {
+        "id": 143,
+        "text": "m",
+        "pos": "CONJ",
+        "classes": [
+            "clitic"
+        ]
+    },
+    {
+        "id": 144,
+        "text": "ẽ"
+    },
+    {
+        "id": 145,
+        "text": "ti",
+        "gloss": "which",
+        "pos": "PRON",
+        "classes": [
+            "clitic"
+        ]
+    },
+    {
+        "id": 146,
+        "text": "prñnawatẽ"
+    },
+    {
+        "id": 147,
+        "text": "e",
+        "gloss": "he/she/it",
+        "pos": "PRON",
+        "classes": [
+            "clitic"
+        ]
+    },
+    {
+        "id": 148,
+        "text": "erimñnuha",
+        "pos": "NP"
+    },
+    {
+        "id": 149,
+        "text": "semuteh"
+    },
+    {
+        "id": 150,
+        "text": "semute",
+        "pos": "NP"
+    },
+    {
+        "id": 151,
+        "text": "mẽti"
+    },
+    {
+        "id": 152,
+        "text": "esete",
+        "pos": "NP"
+    },
+    {
+        "id": 153,
+        "text": "muleseh"
+    },
+    {
+        "id": 154,
+        "text": "mulese",
+        "pos": "NP"
+    },
+    {
+        "id": 155,
+        "text": "χupu"
+    },
+    {
+        "id": 156,
+        "text": "pumaza",
+        "pos": "NP"
+    },
+    {
+        "id": 157,
+        "text": "ertelijeseh"
+    },
+    {
+        "id": 158,
+        "text": "ertelijese",
+        "pos": "NP"
+    },
+    {
+        "id": 159,
+        "text": "uwiñte",
+        "pos": "NP"
+    },
+    {
+        "id": 160,
+        "text": "χumetijeh"
+    },
+    {
+        "id": 161,
+        "text": "χumetije",
+        "pos": "NP"
+    },
+    {
+        "id": 162,
+        "text": "zzimazi"
+    },
+    {
+        "id": 163,
+        "text": "zzimaza",
+        "gloss": "zzimaza",
+        "pos": "N"
+    },
+    {
+        "id": 164,
+        "text": "erm͂menẽni",
+        "pos": "NP"
+    },
+    {
+        "id": 165,
+        "text": "prñnezi",
+        "gloss": "household",
+        "pos": "N"
+    },
+    {
+        "id": 166,
+        "text": "atla",
+        "gloss": "self.DAT.PL"
+    },
+    {
+        "id": 167,
+        "text": "metiprñnawãtẽ"
+    },
+    {
+        "id": 168,
+        "text": "prñnawãtẽ"
+    },
+    {
+        "id": 169,
+        "text": "meti"
+    },
+    {
+        "id": 170,
+        "text": "ebẽñni"
+    },
+    {
+        "id": 171,
+        "text": "qañnuwili",
+        "pos": "NP"
+    },
+    {
+        "id": 172,
+        "text": "qasah"
+    },
+    {
+        "id": 173,
+        "text": "qasa",
+        "pos": "NP"
+    },
+    {
+        "id": 174,
+        "text": "setideimi"
+    },
+    {
+        "id": 177,
+        "text": "zahama",
+        "pos": "NP"
+    },
+    {
+        "id": 178,
+        "text": "ddawãpartah"
+    },
+    {
+        "id": 179,
+        "text": "ddawãparta",
+        "pos": "NP"
+    },
+    {
+        "id": 180,
+        "text": "meñtepitãti"
+    },
+    {
+        "id": 181,
+        "text": "me",
+        "gloss": "CONJ",
+        "pos": "CONJ",
+        "classes": [
+            "clitic"
+        ]
+    },
+    {
+        "id": 182,
+        "text": "ñtepi",
+        "gloss": "grave"
+    },
+    {
+        "id": 183,
+        "text": "tãti",
+        "gloss": "put.3PL"
+    },
+    {
+        "id": 185,
+        "text": "zahãma",
+        "pos": "NP"
+    },
+    {
+        "id": 186,
+        "text": "zahãmã"
+    },
+    {
+        "id": 187,
+        "text": "ladã"
+    },
+    {
+        "id": 188,
+        "text": "tideimis"
+    },
+    {
+        "id": 189,
+        "text": "ehbis"
+    },
+    {
+        "id": 190,
+        "text": "kbi",
+        "gloss": "someone else"
+    },
+    {
+        "id": 191,
+        "text": "tike",
+        "gloss": "whoever"
+    },
+    {
+        "id": 192,
+        "text": "tiñtepitadi"
+    },
+    {
+        "id": 193,
+        "text": "tadi"
+    },
+    {
+        "id": 194,
+        "text": "tibe",
+        "gloss": "or"
+    },
+    {
+        "id": 195,
+        "text": "atlahi"
+    },
+    {
+        "id": 196,
+        "text": "kbijehi"
+    },
+    {
+        "id": 197,
+        "text": "kbije",
+        "gloss": "another"
+    },
+    {
+        "id": 198,
+        "text": "tibete"
+    },
+    {
+        "id": 199,
+        "text": "te",
+        "gloss": "PART",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "61"
+            }
+        ],
+        "notes": "= Luw. -tta"
+    },
+    {
+        "id": 200,
+        "text": "alahaditi"
+    },
+    {
+        "id": 201,
+        "text": "alahadi"
+    },
+    {
+        "id": 202,
+        "text": "tubeiti"
+    },
+    {
+        "id": 203,
+        "text": "wedrẽñni",
+        "gloss": "from Rodiapolis"
+    },
+    {
+        "id": 204,
+        "text": "mãhãi"
+    },
+    {
+        "id": 205,
+        "text": "mene"
+    },
+    {
+        "id": 206,
+        "text": "en"
+    },
+    {
+        "id": 208,
+        "text": "seijetiedi"
+    },
+    {
+        "id": 209,
+        "text": "prñnãwu"
+    },
+    {
+        "id": 210,
+        "text": "prñnãwa",
+        "pos": "N"
+    },
+    {
+        "id": 211,
+        "text": "metiprñnawatẽ"
+    },
+    {
+        "id": 212,
+        "text": "ije",
+        "gloss": "it.DAT.SG"
+    },
+    {
+        "id": 213,
+        "text": "edi",
+        "gloss": "do.3SG",
+        "notes": "Melchert 2004:2: elided 'tise adi'?"
+    },
+    {
+        "id": 214,
+        "text": "adi"
+    },
+    {
+        "id": 215,
+        "text": "mẽtẽ"
+    },
+    {
+        "id": 216,
+        "text": "mẽte",
+        "gloss": "harm",
+        "pos": "N"
+    },
+    {
+        "id": 217,
+        "text": "iχtta",
+        "pos": "NP"
+    },
+    {
+        "id": 218,
+        "text": "hlah"
+    },
+    {
+        "id": 219,
+        "text": "hla",
+        "pos": "NP"
+    },
+    {
+        "id": 220,
+        "text": "meneqasttu"
+    },
+    {
+        "id": 221,
+        "text": "qasttu",
+        "gloss": "destroy.IMP.3SG"
+    },
+    {
+        "id": 222,
+        "text": "qlahi"
+    },
+    {
+        "id": 223,
+        "text": "qla",
+        "pos": "NP"
+    },
+    {
+        "id": 224,
+        "text": "ebijehi"
+    },
+    {
+        "id": 225,
+        "text": "sewedri"
+    },
+    {
+        "id": 226,
+        "text": "wedri",
+        "gloss": "nymph",
+        "pos": "N"
+    },
+    {
+        "id": 227,
+        "text": "wehñtezi",
+        "gloss": "from Phellos"
+    },
+    {
+        "id": 229,
+        "text": "seprijenubehñ"
+    },
+    {
+        "id": 230,
+        "text": "prijenubehñ"
+    },
+    {
+        "id": 231,
+        "text": "ebeis"
+    },
+    {
+        "id": 232,
+        "text": "tukedris",
+        "gloss": "statues"
+    },
+    {
+        "id": 233,
+        "text": "χssbezẽ",
+        "pos": "NP"
+    },
+    {
+        "id": 234,
+        "text": "tuwetẽ"
+    },
+    {
+        "id": 235,
+        "text": "krupsseh"
+    },
+    {
+        "id": 236,
+        "text": "krupsse",
+        "pos": "NP"
+    },
+    {
+        "id": 237,
+        "text": "sepurihimeteh"
+    },
+    {
+        "id": 238,
+        "text": "purihimeteh"
+    },
+    {
+        "id": 239,
+        "text": "purihimete",
+        "pos": "NP"
+    },
+    {
+        "id": 240,
+        "text": "tlãñna",
+        "gloss": "Tloan"
+    },
+    {
+        "id": 241,
+        "text": "seladu"
+    },
+    {
+        "id": 242,
+        "text": "ladu"
+    },
+    {
+        "id": 243,
+        "text": "atru"
+    },
+    {
+        "id": 244,
+        "text": "atlu"
+    },
+    {
+        "id": 245,
+        "text": "tikeukẽprẽ",
+        "pos": "NP"
+    },
+    {
+        "id": 246,
+        "text": "pilleñni",
+        "gloss": "Pinarian",
+        "pos": "NP"
+    },
+    {
+        "id": 247,
+        "text": "urtaqijahñ",
+        "pos": "NP"
+    },
+    {
+        "id": 248,
+        "text": "kbatru"
+    },
+    {
+        "id": 249,
+        "text": "kbatra",
+        "gloss": "daughter",
+        "pos": "N"
+    },
+    {
+        "id": 250,
+        "text": "tuhesñ"
+    },
+    {
+        "id": 251,
+        "text": "mepi"
+    },
+    {
+        "id": 252,
+        "text": "epi",
+        "gloss": "upon"
+    },
+    {
+        "id": 254,
+        "text": "prñnewãtẽ"
+    },
+    {
+        "id": 255,
+        "text": "mẽneprñnawatẽ"
+    },
+    {
+        "id": 256,
+        "text": "ẽn"
+    },
+    {
+        "id": 258,
+        "text": "prñnawa",
+        "gloss": "build",
+        "pos": "V"
+    },
+    {
+        "id": 259,
+        "text": "χñtawata",
+        "gloss": "rule",
+        "pos": "N"
+    },
+    {
+        "id": 260,
+        "text": "sbikaza",
+        "pos": "NP"
+    },
+    {
+        "id": 261,
+        "text": "χñtanubeh"
+    },
+    {
+        "id": 262,
+        "text": "χñtanube",
+        "pos": "NP"
+    },
+    {
+        "id": 263,
+        "text": "temusemutah"
+    },
+    {
+        "id": 264,
+        "text": "temusemuta",
+        "pos": "NP"
+    },
+    {
+        "id": 265,
+        "text": "pertinamuwa",
+        "pos": "NP"
+    },
+    {
+        "id": 270,
+        "text": "mãha"
+    },
+    {
+        "id": 272,
+        "text": "tubei",
+        "gloss": "strike",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "refText": "q-3sg"
+            }
+        ]
+    },
+    {
+        "id": 274,
+        "text": "ebije",
+        "gloss": "local",
+        "pos": "N"
+    },
+    {
+        "id": 339,
+        "text": "qñturahi",
+        "pos": "NP"
+    },
+    {
+        "id": 340,
+        "text": "hrppidubeh"
+    },
+    {
+        "id": 343,
+        "text": "huwedri",
+        "gloss": "all"
+    },
+    {
+        "id": 344,
+        "text": "zimasttrah"
+    },
+    {
+        "id": 345,
+        "text": "zimasttra",
+        "pos": "NP"
+    },
+    {
+        "id": 346,
+        "text": "meijadi"
+    },
+    {
+        "id": 347,
+        "text": "tihe",
+        "gloss": "any"
+    },
+    {
+        "id": 348,
+        "text": "muhãi"
+    },
+    {
+        "id": 349,
+        "text": "mãhai",
+        "gloss": "god.NOM.PL"
+    },
+    {
+        "id": 352,
+        "text": "ddaqasa",
+        "pos": "NP"
+    },
+    {
+        "id": 353,
+        "text": "sttuleh"
+    },
+    {
+        "id": 354,
+        "text": "sttule",
+        "pos": "NP"
+    },
+    {
+        "id": 356,
+        "text": "hrppidube",
+        "pos": "NP"
+    },
+    {
+        "id": 357,
+        "text": "ij"
+    },
+    {
+        "id": 358,
+        "text": "tettm͂pe",
+        "pos": "NP"
+    },
+    {
+        "id": 359,
+        "text": "hñtihãmah"
+    },
+    {
+        "id": 360,
+        "text": "hñtihãma",
+        "pos": "NP"
+    },
+    {
+        "id": 361,
+        "text": "m͂mẽ",
+        "gloss": "except"
+    },
+    {
+        "id": 362,
+        "text": "seneñte"
+    },
+    {
+        "id": 363,
+        "text": "sene"
+    },
+    {
+        "id": 364,
+        "text": "ñte",
+        "gloss": "in(side)",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "45"
+            }
+        ]
+    },
+    {
+        "id": 365,
+        "text": "isbazi",
+        "gloss": "bench.ACC"
+    },
+    {
+        "id": 366,
+        "text": "tãtitdi"
+    },
+    {
+        "id": 367,
+        "text": "tdi",
+        "gloss": "which.DAT"
+    },
+    {
+        "id": 368,
+        "text": "s"
+    },
+    {
+        "id": 369,
+        "text": "meije"
+    },
+    {
+        "id": 370,
+        "text": "nihrppitãtu"
+    },
+    {
+        "id": 371,
+        "text": "ni",
+        "gloss": "not"
+    },
+    {
+        "id": 372,
+        "text": "tãtu",
+        "pos": "put.3SG"
+    },
+    {
+        "id": 373,
+        "text": "ladãtije"
+    },
+    {
+        "id": 374,
+        "text": "tije"
+    },
+    {
+        "id": 375,
+        "text": "tubidi",
+        "gloss": "strike.3SG"
+    },
+    {
+        "id": 376,
+        "text": "semalija"
+    },
+    {
+        "id": 377,
+        "text": "malija",
+        "pos": "NP"
+    },
+    {
+        "id": 378,
+        "text": "setasa"
+    },
+    {
+        "id": 379,
+        "text": "tasa",
+        "gloss": "oath.PL"
+    },
+    {
+        "id": 380,
+        "text": "miñtaha",
+        "gloss": "miñte.GEN"
+    },
+    {
+        "id": 381,
+        "text": "mẽne"
+    },
+    {
+        "id": 382,
+        "text": "qlajebi",
+        "gloss": "Qla Ebi",
+        "pos": "NP"
+    },
+    {
+        "id": 383,
+        "text": "hrpi"
+    },
+    {
+        "id": 384,
+        "text": "seẽke"
+    },
+    {
+        "id": 385,
+        "text": "ẽke",
+        "gloss": "when"
+    },
+    {
+        "id": 386,
+        "text": "lati",
+        "gloss": "die.3SG"
+    },
+    {
+        "id": 387,
+        "text": "ñtipatezi",
+        "gloss": "sarcophagus.ACC"
+    },
+    {
+        "id": 388,
+        "text": "seladã"
+    },
+    {
+        "id": 389,
+        "text": "tãtu",
+        "gloss": "place.3PL"
+    },
+    {
+        "id": 390,
+        "text": "meinipe"
+    },
+    {
+        "id": 391,
+        "text": "i",
+        "gloss": "he/she/it.DAT/LOC",
+        "pos": ""
+    },
+    {
+        "id": 392,
+        "text": "pe"
+    },
+    {
+        "id": 393,
+        "text": "tibeinipe"
+    },
+    {
+        "id": 394,
+        "text": "nipe"
+    },
+    {
+        "id": 395,
+        "text": "hlm͂mi"
+    },
+    {
+        "id": 396,
+        "text": "meituweti"
+    },
+    {
+        "id": 397,
+        "text": "tuweti"
+    },
+    {
+        "id": 398,
+        "text": "semãhãi"
+    },
+    {
+        "id": 399,
+        "text": "tibei"
+    },
+    {
+        "id": 400,
+        "text": "itlehi",
+        "gloss": "league"
+    },
+    {
+        "id": 401,
+        "text": "trm͂mili",
+        "gloss": "Lycian"
+    },
+    {
+        "id": 402,
+        "text": "trqqas",
+        "gloss": "Storm-god"
+    },
+    {
+        "id": 403,
+        "text": "prñnewã",
+        "pos": "V"
+    },
+    {
+        "id": 477,
+        "text": "τezi",
+        "gloss": "sarcophagus",
+        "sourceRefs": [
+            {
+                "pubId": 0,
+                "refText": "83"
+            }
+        ]
+    },
+    {
+        "id": 478,
+        "text": "xudalijẽ",
+        "pos": "NP",
+        "sourceRefs": [
+            {
+                "pubId": 0,
+                "refText": "83"
+            }
+        ]
+    },
+    {
+        "id": 479,
+        "text": "mahãi",
+        "sourceRefs": [
+            {
+                "pubId": 0,
+                "refText": "83"
+            }
+        ]
+    },
+    {
+        "id": 480,
+        "text": "maha",
+        "gloss": "god",
+        "pos": "N"
+    },
+    {
+        "id": 482,
+        "text": "meneprñnawatẽ"
+    },
+    {
+        "id": 531,
+        "text": "pizziti"
+    },
+    {
+        "id": 532,
+        "text": "pizzi",
+        "pos": "NP"
+    },
+    {
+        "id": 534,
+        "text": "prñnawate"
+    },
+    {
+        "id": 535,
+        "text": "ddepñneweh"
+    },
+    {
+        "id": 536,
+        "text": "ddepñnewe",
+        "pos": "NP"
+    },
+    {
+        "id": 538,
+        "text": "tewinezẽi",
+        "pos": "NP"
+    },
+    {
+        "id": 539,
+        "text": "sppñtazah"
+    },
+    {
+        "id": 540,
+        "text": "sppñtaza",
+        "pos": "NP"
+    },
+    {
+        "id": 541,
+        "text": "asawãzalah"
+    },
+    {
+        "id": 542,
+        "text": "asawãzala",
+        "pos": "NP"
+    },
+    {
+        "id": 544,
+        "text": "miñti"
+    },
+    {
+        "id": 545,
+        "text": "adaijẽ"
+    },
+    {
+        "id": 546,
+        "text": "adaije",
+        "pos": "N"
+    },
+    {
+        "id": 548,
+        "text": "ade",
+        "gloss": "ada",
+        "pos": "N",
+        "classes": [
+            "n"
+        ]
+    },
+    {
+        "id": 553,
+        "text": "ehb"
+    },
+    {
+        "id": 554,
+        "text": "ebẽñn"
+    },
+    {
+        "id": 555,
+        "text": "teleχuzi",
+        "pos": "NP"
+    },
+    {
+        "id": 556,
+        "text": "sedi"
+    },
+    {
+        "id": 558,
+        "text": "d"
+    },
+    {
+        "id": 560,
+        "text": "ede",
+        "gloss": "he/she/it.ACC",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "12"
+            }
+        ]
+    },
+    {
+        "id": 561,
+        "text": "ñta"
+    },
+    {
+        "id": 563,
+        "text": "tadẽ"
+    },
+    {
+        "id": 564,
+        "text": "ta",
+        "gloss": "put, place",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "59"
+            }
+        ]
+    },
+    {
+        "id": 566,
+        "text": "tesi"
+    },
+    {
+        "id": 567,
+        "text": "tese",
+        "gloss": "oath",
+        "fullGloss": "oath, vow",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "63"
+            },
+            {
+                "refText": "https://www.ediana.gwi.uni-muenchen.de/dictionary.php?lemma=2733"
+            }
+        ]
+    },
+    {
+        "id": 568,
+        "text": "aladehali",
+        "gloss": "allocation.DAT",
+        "pos": "",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "178"
+            }
+        ]
+    },
+    {
+        "id": 569,
+        "text": "adẽ"
+    },
+    {
+        "id": 572,
+        "text": "ñtatã"
+    },
+    {
+        "id": 573,
+        "text": "ñtata",
+        "gloss": "burial chamber",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "45"
+            },
+            {
+                "refText": "https://www.ediana.gwi.uni-muenchen.de/dictionary.php?lemma=1964"
+            }
+        ]
+    },
+    {
+        "id": 574,
+        "text": "meneprñnawãtẽ"
+    },
+    {
+        "id": 578,
+        "text": "pulenjda",
+        "pos": "NP"
+    },
+    {
+        "id": 579,
+        "text": "mullijeseh"
+    },
+    {
+        "id": 580,
+        "text": "mullijese",
+        "pos": "NP"
+    },
+    {
+        "id": 581,
+        "text": "sedapara"
+    },
+    {
+        "id": 583,
+        "text": "dapara",
+        "pos": "NP"
+    },
+    {
+        "id": 584,
+        "text": "pulenjdah"
+    },
+    {
+        "id": 585,
+        "text": "purihimetehe"
+    },
+    {
+        "id": 587,
+        "text": "prñnezijehi"
+    },
+    {
+        "id": 588,
+        "text": "prñnezije",
+        "gloss": "household member",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "52"
+            }
+        ]
+    },
+    {
+        "id": 589,
+        "text": "epttehe"
+    },
+    {
+        "id": 590,
+        "text": "epttehi",
+        "gloss": "their",
+        "pos": "PRON"
+    },
+    {
+        "id": 591,
+        "text": "seije"
+    },
+    {
+        "id": 593,
+        "text": "tieseri"
+    },
+    {
+        "id": 595,
+        "text": "eseri"
+    },
+    {
+        "id": 596,
+        "text": "ebehi"
+    },
+    {
+        "id": 597,
+        "text": "ebe",
+        "gloss": "this",
+        "pos": "PRON"
+    },
+    {
+        "id": 598,
+        "text": "punamaθθi"
+    },
+    {
+        "id": 599,
+        "text": "punamada",
+        "gloss": "totality?",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "53"
+            }
+        ]
+    },
+    {
+        "id": 600,
+        "text": "aladahali"
+    },
+    {
+        "id": 601,
+        "text": "ada"
+    },
+    {
+        "id": 604,
+        "text": "ddapssmm͂a",
+        "pos": "NP"
+    },
+    {
+        "id": 605,
+        "text": "padrmm͂ah"
+    },
+    {
+        "id": 606,
+        "text": "padrmm͂a",
+        "pos": "NP"
+    },
+    {
+        "id": 607,
+        "text": "urebillaha",
+        "pos": "NP"
+    },
+    {
+        "id": 610,
+        "text": "χñtewete"
+    },
+    {
+        "id": 611,
+        "text": "χñtewe",
+        "pos": "V"
+    },
+    {
+        "id": 612,
+        "text": "χñtawa",
+        "gloss": "rule",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "84"
+            }
+        ]
+    },
+    {
+        "id": 613,
+        "text": "teri",
+        "gloss": "when",
+        "pos": "ADV",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "63"
+            }
+        ]
+    },
+    {
+        "id": 614,
+        "text": "arttum͂para",
+        "pos": "NP"
+    },
+    {
+        "id": 615,
+        "text": "sẽtalahhãti"
+    },
+    {
+        "id": 617,
+        "text": "t"
+    },
+    {
+        "id": 618,
+        "text": "alahhãti"
+    },
+    {
+        "id": 619,
+        "text": "alahha",
+        "pos": "V"
+    },
+    {
+        "id": 620,
+        "text": "alaha",
+        "gloss": "assign",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "241"
+            }
+        ]
+    },
+    {
+        "id": 621,
+        "text": "adai"
+    },
+    {
+        "id": 623,
+        "text": "χudali",
+        "pos": "NP"
+    },
+    {
+        "id": 624,
+        "text": "zuhrijah"
+    },
+    {
+        "id": 625,
+        "text": "zuhrija",
+        "pos": "NP"
+    },
+    {
+        "id": 626,
+        "text": "xezrimeh"
+    },
+    {
+        "id": 627,
+        "text": "χezrime",
+        "pos": "NP"
+    },
+    {
+        "id": 628,
+        "text": "eptte",
+        "notes": "Melchert 2004:15: probably genuine alternative to epttehe with loss of -h- between like vowels and contraction"
+    },
+    {
+        "id": 629,
+        "text": "tuwe",
+        "gloss": "place",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "74"
+            }
+        ]
+    },
+    {
+        "id": 630,
+        "text": "urtaqijah",
+        "pos": "NP"
+    },
+    {
+        "id": 631,
+        "text": "prijenubeh",
+        "pos": "NP"
+    },
+    {
+        "id": 632,
+        "text": "a",
+        "gloss": "do",
+        "pos": "V"
+    },
+    {
+        "id": 636,
+        "text": "mede",
+        "pos": "NP"
+    },
+    {
+        "id": 637,
+        "text": "epñnẽni",
+        "gloss": "younger brother.DAT",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "15"
+            }
+        ]
+    },
+    {
+        "id": 638,
+        "text": "sejatli"
+    },
+    {
+        "id": 640,
+        "text": "hm͂prãma",
+        "pos": "NP"
+    },
+    {
+        "id": 642,
+        "text": "apñnãtama",
+        "pos": "NP"
+    },
+    {
+        "id": 643,
+        "text": "meipñ"
+    },
+    {
+        "id": 645,
+        "text": "pñ"
+    },
+    {
+        "id": 646,
+        "text": "epñ",
+        "gloss": "afterwards",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "15"
+            }
+        ]
+    },
+    {
+        "id": 647,
+        "text": "pudẽ"
+    },
+    {
+        "id": 648,
+        "text": "pu",
+        "gloss": "inscribe",
+        "pos": "V"
+    },
+    {
+        "id": 649,
+        "text": "χahba",
+        "gloss": "grandchild",
+        "pos": "N"
+    },
+    {
+        "id": 650,
+        "text": "wazzije",
+        "pos": "NP"
+    },
+    {
+        "id": 653,
+        "text": "n"
+    },
+    {
+        "id": 655,
+        "text": "wazala",
+        "pos": "NP"
+    },
+    {
+        "id": 656,
+        "text": "eppleme",
+        "pos": "NP"
+    },
+    {
+        "id": 657,
+        "text": "awasi",
+        "notes": "Christiansen 2020: probably consists of the element awa- and si- so that it is likely a term designating the burial and its result (\"lying down\")"
+    },
+    {
+        "id": 660,
+        "text": "awaha.i",
+        "notes": "Christiansen 2020: agents or representatives of the miñti; presumably a nominal derivative of univerbation *awa- and ha- \"the one who lets down/off/away\""
+    },
+    {
+        "id": 663,
+        "text": "pẽmudijah"
+    },
+    {
+        "id": 664,
+        "text": "pẽmudija",
+        "pos": "NP"
+    },
+    {
+        "id": 665,
+        "text": "kumaza",
+        "gloss": "priest",
+        "pos": "N"
+    },
+    {
+        "id": 666,
+        "text": "qelehi"
+    },
+    {
+        "id": 667,
+        "text": "qele",
+        "fullGloss": "(god of) grain",
+        "pos": "NP",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "55"
+            }
+        ]
+    },
+    {
+        "id": 669,
+        "text": "tãtẽ"
+    },
+    {
+        "id": 670,
+        "text": "sejaladahali"
+    },
+    {
+        "id": 672,
+        "text": "upazijẽne"
+    },
+    {
+        "id": 673,
+        "text": "upazi",
+        "pos": "NP"
+    },
+    {
+        "id": 675,
+        "text": "ẽne"
+    },
+    {
+        "id": 676,
+        "text": "miñta"
+    },
+    {
+        "id": 677,
+        "text": "meleime",
+        "notes": "Neumann 2007 apud Christiansen 2020: probably a dat.pl. of a stem meleima/i- which might be related to Hittite malai- \"to approve/accept\" and CLuw *malāimi- \"approved, accepted\""
+    },
+    {
+        "id": 680,
+        "text": "armanazah"
+    },
+    {
+        "id": 681,
+        "text": "armanaza",
+        "pos": "NP"
+    },
+    {
+        "id": 682,
+        "text": "ikuweh"
+    },
+    {
+        "id": 683,
+        "text": "ikuwe",
+        "pos": "NP"
+    },
+    {
+        "id": 684,
+        "text": "tedi",
+        "gloss": "father",
+        "pos": "N"
+    },
+    {
+        "id": 685,
+        "text": "ipresida",
+        "pos": "NP"
+    },
+    {
+        "id": 686,
+        "text": "sejaitẽ"
+    },
+    {
+        "id": 688,
+        "text": "aitẽ"
+    },
+    {
+        "id": 689,
+        "text": "awahãi",
+        "notes": "Christiansen 2020: agents or representatives of the miñti; presumably a nominal derivative of univerbation *awa- and ha- \"the one who lets down/off/away\""
+    },
+    {
+        "id": 692,
+        "text": "ahqqadi",
+        "pos": "NP"
+    },
+    {
+        "id": 693,
+        "text": "pizibideh"
+    },
+    {
+        "id": 694,
+        "text": "pizibide",
+        "pos": "NP"
+    },
+    {
+        "id": 695,
+        "text": "hm͂prãmeh"
+    },
+    {
+        "id": 696,
+        "text": "hm͂prãme",
+        "pos": "NP"
+    },
+    {
+        "id": 697,
+        "text": "sejẽtri"
+    },
+    {
+        "id": 699,
+        "text": "ẽtri",
+        "gloss": "lower"
+    },
+    {
+        "id": 700,
+        "text": "pijetẽ"
+    },
+    {
+        "id": 701,
+        "text": "pije",
+        "gloss": "give",
+        "fullGloss": "give; allocate; assign",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "49"
+            }
+        ]
+    },
+    {
+        "id": 702,
+        "text": "hrzzi",
+        "gloss": "upper",
+        "pos": "ADJ"
+    },
+    {
+        "id": 703,
+        "text": "mñneτeidehe"
+    },
+    {
+        "id": 704,
+        "text": "mñneτeide",
+        "pos": "NP"
+    },
+    {
+        "id": 705,
+        "text": "esedẽñnewi"
+    },
+    {
+        "id": 706,
+        "text": "esedẽñnewe",
+        "gloss": "consanguineal descendant(s)"
+    },
+    {
+        "id": 709,
+        "text": "ijetruχle",
+        "pos": "NP"
+    },
+    {
+        "id": 710,
+        "text": "hurttuweteh"
+    },
+    {
+        "id": 711,
+        "text": "hurttuwete",
+        "pos": "NP"
+    },
+    {
+        "id": 712,
+        "text": "wasaza",
+        "gloss": "(some kind of priest)",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "78"
+            }
+        ]
+    },
+    {
+        "id": 713,
+        "text": "tetẽ"
+    },
+    {
+        "id": 716,
+        "text": "mẽmruwi",
+        "pos": "NP"
+    },
+    {
+        "id": 717,
+        "text": "χñtenubeh"
+    },
+    {
+        "id": 718,
+        "text": "χñtenube",
+        "pos": "NP"
+    },
+    {
+        "id": 719,
+        "text": "esedeñnewi"
+    },
+    {
+        "id": 720,
+        "text": "χñnahi"
+    },
+    {
+        "id": 721,
+        "text": "χñna",
+        "gloss": "grandmother",
+        "pos": "N"
+    },
+    {
+        "id": 722,
+        "text": "ehbijehi"
+    },
+    {
+        "id": 723,
+        "text": "θurttãi"
+    },
+    {
+        "id": 725,
+        "text": "θurtta",
+        "gloss": "(title)"
+    },
+    {
+        "id": 726,
+        "text": "señne"
+    },
+    {
+        "id": 728,
+        "text": "ñne",
+        "gloss": "to/for them",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "44"
+            }
+        ]
+    },
+    {
+        "id": 729,
+        "text": "sm͂mati"
+    },
+    {
+        "id": 730,
+        "text": "sm͂ma",
+        "gloss": "bind, enjoin",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "58"
+            }
+        ]
+    },
+    {
+        "id": 731,
+        "text": "tijãi"
+    },
+    {
+        "id": 732,
+        "text": "tija",
+        "gloss": "penalty, amends (?)",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "67"
+            }
+        ]
+    },
+    {
+        "id": 733,
+        "text": "meñne"
+    },
+    {
+        "id": 735,
+        "text": "kbijehis"
+    },
+    {
+        "id": 736,
+        "text": "nijesu"
+    },
+    {
+        "id": 738,
+        "text": "esu"
+    },
+    {
+        "id": 740,
+        "text": "es",
+        "gloss": "be",
+        "pos": "V"
+    },
+    {
+        "id": 741,
+        "text": "ñtepitane"
+    },
+    {
+        "id": 743,
+        "text": "tane"
+    },
+    {
+        "id": 747,
+        "text": "tuwala",
+        "pos": "NP"
+    },
+    {
+        "id": 748,
+        "text": "ñtadẽ"
+    },
+    {
+        "id": 749,
+        "text": "ñ"
+    },
+    {
+        "id": 753,
+        "text": "hura",
+        "pos": "NP"
+    },
+    {
+        "id": 754,
+        "text": "ikezi",
+        "gloss": "the one of Ikos(?)",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "28"
+            }
+        ]
+    },
+    {
+        "id": 757,
+        "text": "idamaχzza",
+        "pos": "NP"
+    },
+    {
+        "id": 758,
+        "text": "sei"
+    },
+    {
+        "id": 760,
+        "text": "pijẽtẽ"
+    },
+    {
+        "id": 761,
+        "text": "pijatu"
+    },
+    {
+        "id": 762,
+        "text": "pijata",
+        "gloss": "gift",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "49"
+            }
+        ]
+    },
+    {
+        "id": 763,
+        "text": "siχli"
+    },
+    {
+        "id": 764,
+        "text": "siχla",
+        "gloss": "shekel",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "58"
+            }
+        ]
+    },
+    {
+        "id": 765,
+        "text": "aladehχχãne"
+    },
+    {
+        "id": 766,
+        "text": "aladehχχã",
+        "gloss": "prepare for laying out",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "3"
+            }
+        ],
+        "notes": "Possibly actually 'alahχχã' with 'de' element"
+    },
+    {
+        "id": 767,
+        "text": "tupm͂me",
+        "gloss": "two, pair"
+    },
+    {
+        "id": 768,
+        "text": "prñnawi"
+    },
+    {
+        "id": 769,
+        "text": "mei"
+    },
+    {
+        "id": 771,
+        "text": "idãmaχzzã"
+    },
+    {
+        "id": 773,
+        "text": "ne",
+        "gloss": "not"
+    },
+    {
+        "id": 774,
+        "text": "hrppijemei"
+    },
+    {
+        "id": 776,
+        "text": "je"
+    },
+    {
+        "id": 778,
+        "text": "ebidalahaditi"
+    },
+    {
+        "id": 779,
+        "text": "ebi",
+        "gloss": "or"
+    },
+    {
+        "id": 781,
+        "text": "ebei",
+        "gloss": "here"
+    },
+    {
+        "id": 782,
+        "text": "uherijeh"
+    },
+    {
+        "id": 783,
+        "text": "uherije",
+        "pos": "NP"
+    },
+    {
+        "id": 786,
+        "text": "mejadẽ"
+    },
+    {
+        "id": 789,
+        "text": "adẽ"
+    },
+    {
+        "id": 790,
+        "text": "seine"
+    },
+    {
+        "id": 792,
+        "text": "esedeplẽmeje"
+    },
+    {
+        "id": 795,
+        "text": "ijamara",
+        "pos": "NP"
+    },
+    {
+        "id": 797,
+        "text": "setteri"
+    },
+    {
+        "id": 799,
+        "text": "tteri"
+    },
+    {
+        "id": 800,
+        "text": "meine"
+    },
+    {
+        "id": 802,
+        "text": "meijene"
+    },
+    {
+        "id": 804,
+        "text": "sẽne"
+    },
+    {
+        "id": 806,
+        "text": "pddẽte"
+    },
+    {
+        "id": 807,
+        "text": "pddẽ",
+        "gloss": "place",
+        "fullGloss": "place, precinct",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "48"
+            }
+        ]
+    },
+    {
+        "id": 809,
+        "text": "hrppittãne"
+    },
+    {
+        "id": 811,
+        "text": "ttãne"
+    },
+    {
+        "id": 814,
+        "text": "trm̃misñ"
+    },
+    {
+        "id": 815,
+        "text": "trm̃mis",
+        "pos": "N"
+    },
+    {
+        "id": 816,
+        "text": "trm͂misñ"
+    },
+    {
+        "id": 817,
+        "text": "trm͂mis",
+        "gloss": "Lycia",
+        "pos": "N"
+    },
+    {
+        "id": 818,
+        "text": "pigesere",
+        "pos": "NP"
+    },
+    {
+        "id": 819,
+        "text": "katamlah"
+    },
+    {
+        "id": 820,
+        "text": "katamla",
+        "pos": "NP"
+    },
+    {
+        "id": 821,
+        "text": "sẽñneñtepddẽhadẽ"
+    },
+    {
+        "id": 822,
+        "text": "sẽ"
+    },
+    {
+        "id": 825,
+        "text": "hadẽ"
+    },
+    {
+        "id": 826,
+        "text": "ha",
+        "gloss": "release",
+        "fullGloss": "release, let go",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "23"
+            }
+        ]
+    },
+    {
+        "id": 827,
+        "text": "trm͂mile"
+    },
+    {
+        "id": 828,
+        "text": "ijeru"
+    },
+    {
+        "id": 829,
+        "text": "ijera",
+        "pos": "NP"
+    },
+    {
+        "id": 830,
+        "text": "senatrbbijẽmi"
+    },
+    {
+        "id": 832,
+        "text": "natrbbijẽmi"
+    },
+    {
+        "id": 833,
+        "text": "natrbbijẽmi",
+        "gloss": "Natrbbijẽmi",
+        "pos": "NP"
+    },
+    {
+        "id": 834,
+        "text": "sejarñna"
+    },
+    {
+        "id": 836,
+        "text": "arñna",
+        "gloss": "Xanthos/Xanthian"
+    },
+    {
+        "id": 837,
+        "text": "asaχlazu"
+    },
+    {
+        "id": 838,
+        "text": "asaχlaza",
+        "gloss": "governor",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "6"
+            }
+        ]
+    },
+    {
+        "id": 839,
+        "text": "erttimeli"
+    },
+    {
+        "id": 840,
+        "text": "erttimeli",
+        "gloss": "Erttimeli",
+        "pos": "NP"
+    },
+    {
+        "id": 841,
+        "text": "mehñtitubedẽ"
+    },
+    {
+        "id": 843,
+        "text": "hñti"
+    },
+    {
+        "id": 844,
+        "text": "tubedẽ"
+    },
+    {
+        "id": 845,
+        "text": "tube",
+        "pos": "V"
+    },
+    {
+        "id": 846,
+        "text": "arus",
+        "gloss": "citizen(ry)",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "5"
+            },
+            {
+                "refText": "https://www.ediana.gwi.uni-muenchen.de/dictionary.php?lemma=3342"
+            }
+        ]
+    },
+    {
+        "id": 847,
+        "text": "sejepewẽtlm̃mẽi"
+    },
+    {
+        "id": 849,
+        "text": "epewẽtlm̃mẽi"
+    },
+    {
+        "id": 850,
+        "text": "epewẽtlm̃me",
+        "gloss": "perioikos",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "14"
+            }
+        ]
+    },
+    {
+        "id": 851,
+        "text": "arñnãi"
+    },
+    {
+        "id": 852,
+        "text": "m͂maitẽ"
+    },
+    {
+        "id": 853,
+        "text": "m͂mai",
+        "gloss": "build",
+        "fullGloss": "build, install (or similar)",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "42"
+            }
+        ]
+    },
+    {
+        "id": 854,
+        "text": "kumezijẽ"
+    },
+    {
+        "id": 855,
+        "text": "kumezije",
+        "gloss": "sacred precinct",
+        "pos": "N"
+    },
+    {
+        "id": 856,
+        "text": "θθẽ"
+    },
+    {
+        "id": 857,
+        "text": "θθe",
+        "gloss": "altar",
+        "fullGloss": "place of sacrifice, altar",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "74"
+            }
+        ]
+    },
+    {
+        "id": 858,
+        "text": "χñtawati"
+    },
+    {
+        "id": 859,
+        "text": "χñtawati",
+        "gloss": "ruler",
+        "fullGloss": "ruler, king",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "84"
+            }
+        ]
+    },
+    {
+        "id": 860,
+        "text": "χbidẽñni"
+    },
+    {
+        "id": 861,
+        "text": "χbidẽñni",
+        "gloss": "Kaunian",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "82"
+            }
+        ]
+    },
+    {
+        "id": 862,
+        "text": "sejarKKazuma"
+    },
+    {
+        "id": 864,
+        "text": "arKKazuma",
+        "pos": "NP"
+    },
+    {
+        "id": 865,
+        "text": "sẽñnaitẽ"
+    },
+    {
+        "id": 867,
+        "text": "ñn"
+    },
+    {
+        "id": 868,
+        "text": "kumazu"
+    },
+    {
+        "id": 869,
+        "text": "mahãna"
+    },
+    {
+        "id": 870,
+        "text": "ebette",
+        "gloss": "this.DAT.PL"
+    },
+    {
+        "id": 871,
+        "text": "eseimiju"
+    },
+    {
+        "id": 872,
+        "text": "eseimija",
+        "pos": "NP"
+    },
+    {
+        "id": 873,
+        "text": "qñturahahñ"
+    },
+    {
+        "id": 874,
+        "text": "qnturahi",
+        "pos": "NP"
+    },
+    {
+        "id": 875,
+        "text": "sede"
+    },
+    {
+        "id": 877,
+        "text": "de",
+        "gloss": "PART",
+        "pos": "PART",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "8"
+            }
+        ],
+        "notes": "Probably = CLuv. -tar"
+    },
+    {
+        "id": 878,
+        "text": "eseimijaje"
+    },
+    {
+        "id": 879,
+        "text": "qñturahah",
+        "pos": "N"
+    },
+    {
+        "id": 880,
+        "text": "χuwatiti"
+    },
+    {
+        "id": 881,
+        "text": "χuwati"
+    },
+    {
+        "id": 883,
+        "text": "χuwa",
+        "gloss": "stand close to",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "86"
+            }
+        ]
+    },
+    {
+        "id": 884,
+        "text": "seipijẽtẽ"
+    },
+    {
+        "id": 886,
+        "text": "arawã"
+    },
+    {
+        "id": 887,
+        "text": "arawa",
+        "gloss": "freedom",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "refText": "https://www.ediana.gwi.uni-muenchen.de/dictionary.php?lemma=3341"
+            }
+        ]
+    },
+    {
+        "id": 888,
+        "text": "ehbijẽ"
+    },
+    {
+        "id": 890,
+        "text": "esiti"
+    },
+    {
+        "id": 891,
+        "text": "esi"
+    },
+    {
+        "id": 893,
+        "text": "sedeliñtãtẽ"
+    },
+    {
+        "id": 895,
+        "text": "ed"
+    },
+    {
+        "id": 896,
+        "text": "eli",
+        "gloss": "(preverb)",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "13"
+            }
+        ]
+    },
+    {
+        "id": 897,
+        "text": "ñtãtẽ"
+    },
+    {
+        "id": 899,
+        "text": "teteri",
+        "gloss": "city",
+        "pos": "N"
+    },
+    {
+        "id": 900,
+        "text": "hrm͂mada",
+        "gloss": "temenos.COLL.PL",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "25"
+            }
+        ]
+    },
+    {
+        "id": 901,
+        "text": "hrm͂ma",
+        "gloss": "temenos",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "25"
+            }
+        ]
+    },
+    {
+        "id": 903,
+        "text": "hrm͂mã"
+    },
+    {
+        "id": 904,
+        "text": "ttaraha"
+    },
+    {
+        "id": 906,
+        "text": "ttarahi",
+        "pos": "ADJ"
+    },
+    {
+        "id": 907,
+        "text": "meχbaitẽ"
+    },
+    {
+        "id": 909,
+        "text": "χbaitẽ"
+    },
+    {
+        "id": 910,
+        "text": "χbai",
+        "gloss": "irrigate",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "82"
+            }
+        ]
+    },
+    {
+        "id": 911,
+        "text": "zã"
+    },
+    {
+        "id": 912,
+        "text": "za",
+        "gloss": "allotment",
+        "fullGloss": "allotment, portion",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 2,
+                "refText": "87"
+            }
+        ]
+    },
+    {
+        "id": 913,
+        "text": "qñtati"
+    },
+    {
+        "id": 914,
+        "text": "qñta",
+        "pos": "V"
+    },
+    {
+        "id": 915,
+        "text": "sepigrẽi"
+    }
+]
