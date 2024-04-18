@@ -31,9 +31,9 @@ class LinkControllerTest {
         val linkController = LinkController()
         val word = fixture.graph.findOrAddWord("abc", fixture.q, "abc")
 
-        val ruleController = RuleController(fixture.graphService)
+        val ruleController = RuleController()
         ruleController.newRule(
-            "",
+            fixture.graph,
             RuleController.UpdateRuleParameters(
                 "q-pos",
                 "q", "q",
@@ -50,7 +50,7 @@ class LinkControllerTest {
         assertEquals("q-pos", relatedRuleViewModel.ruleName)
 
         val rule = fixture.graphService.resolveRule("", "q-pos")
-        val ruleViewModel = ruleController.rule("", rule.id)
+        val ruleViewModel = ruleController.rule(fixture.graph, rule.id)
         val linkViewModel = ruleViewModel.linkedWords.single()
         assertEquals("abc", linkViewModel.toWord.text)
     }
@@ -58,9 +58,9 @@ class LinkControllerTest {
     @Test
     fun linkRuleFromBase() {
         val fixture = QTestFixture()
-        val ruleController = RuleController(fixture.graphService)
+        val ruleController = RuleController()
         ruleController.newRule(
-            "",
+            fixture.graph,
             RuleController.UpdateRuleParameters(
                 "q-pos",
                 "q", "q",

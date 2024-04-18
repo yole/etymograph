@@ -40,8 +40,8 @@ class QTestFixture {
     }
 
     fun setupRuleSequence(): RuleSequence {
-        RuleController(graphService).newRule(
-            "",
+        RuleController().newRule(
+            graph,
             RuleController.UpdateRuleParameters(
                 "q-final-consonant",
                 "q", "q",

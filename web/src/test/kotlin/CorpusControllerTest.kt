@@ -104,9 +104,9 @@ class CorpusControllerTest {
             Phoneme(-1, listOf("e"), null, setOf("vowel"))
         )
 
-        val ruleController = RuleController(fixture.graphService)
+        val ruleController = RuleController()
         ruleController.newRule(
-            "",
+            fixture.graph,
             RuleController.UpdateRuleParameters(
                 "q-stress",
                 "q", "q",

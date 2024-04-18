@@ -355,8 +355,8 @@ class WordController(val graphService: GraphService) {
     @PostMapping("/{graph}/word/{id}/derive", consumes = ["application/json"])
     fun derive(@PathVariable graph: String, @PathVariable id: Int, @RequestBody params: DeriveThroughSequenceParams): WordViewModel {
         val word = graphService.resolveWord(graph, id)
-        val sequence = graphService.resolveRuleSequence(graph, params.sequenceId)
         val repo = graphService.resolveGraph(graph)
+        val sequence = repo.resolveRuleSequence(params.sequenceId)
         val newWord = repo.deriveThroughRuleSequence(word, sequence)
         return (newWord ?: word).toViewModel(repo)
     }
