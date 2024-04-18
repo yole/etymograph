@@ -1,0 +1,50 @@
+[
+    {
+        "id": 483,
+        "compoundId": 59,
+        "componentIds": [
+            52,
+            28
+        ]
+    },
+    {
+        "id": 484,
+        "compoundId": 78,
+        "componentIds": [
+            52,
+            79
+        ]
+    },
+    {
+        "id": 510,
+        "compoundId": 310,
+        "componentIds": [
+            311,
+            312
+        ]
+    },
+    {
+        "id": 1202,
+        "compoundId": 1200,
+        "componentIds": [
+            1201,
+            1203
+        ]
+    },
+    {
+        "id": 1221,
+        "compoundId": 1191,
+        "componentIds": [
+            298,
+            1127
+        ]
+    },
+    {
+        "id": 2243,
+        "compoundId": 306,
+        "componentIds": [
+            316,
+            2236
+        ]
+    }
+]

@@ -304,7 +304,6 @@ data class GraphRepositoryData(
     val rules: List<RuleData>,
     val links: List<LinkData>,
     val paradigms: List<ParadigmData>,
-    val compounds: List<CompoundData>,
     val ruleSequences: List<RuleSequenceData>
 )
 
@@ -357,6 +356,18 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
         saveLanguageDetails(consumer)
         saveWords(consumer)
         saveCorpus(consumer)
+        saveCompounds(consumer)
+    }
+
+    private fun saveCompounds(consumer: (String, String) -> Unit) {
+        for (language in languages.values) {
+            val compoundData = allLangEntities.filterIsInstance<Compound>()
+                .filter { it.compoundWord.language == language }
+                .map { c ->
+                    CompoundData(c.id, c.compoundWord.id, c.components.map { it.id }, c.source.sourceToSerializedFormat(), c.notes)
+                }
+            consumer("${language.shortName}/compounds.json", theJson.encodeToString(compoundData))
+        }
     }
 
     private fun saveLanguageDetails(consumer: (String, String) -> Unit) {
@@ -441,9 +452,6 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                     })
                 }, it.pos)
             },
-            allLangEntities.filterIsInstance<Compound>().map { c ->
-                CompoundData(c.id, c.compoundWord.id, c.components.map { it.id }, c.source.sourceToSerializedFormat(), c.notes)
-            },
             allLangEntities.filterIsInstance<RuleSequence>().map { s ->
                 RuleSequenceData(
                     s.id, s.name, s.fromLanguage.shortName, s.toLanguage.shortName,
@@ -466,6 +474,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
         loadPublications(contentProviderCallback)
         loadWords(contentProviderCallback)
         loadCorpus(contentProviderCallback)
+        loadCompounds(contentProviderCallback)
         for (rule in data.rules) {
             val fromLanguage = languageByShortName(rule.fromLanguageShortName)!!
             val addedRule = Rule(
@@ -518,13 +527,6 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                     link.notes
                 )
             }
-        }
-        for (compoundData in data.compounds) {
-            val compoundWord = allLangEntities[compoundData.compoundId] as? Word ?: throw IllegalStateException("No word with ID ${compoundData.compoundId}")
-            val componentWords = compoundData.componentIds.mapTo(ArrayList()) { allLangEntities[it] as Word }
-            val compound = Compound(compoundData.id, compoundWord, componentWords, loadSource(compoundData.sourceRefs), compoundData.notes)
-            compounds.getOrPut(compoundWord.id) { arrayListOf() }.add(compound)
-            setLangEntity(compound.id, compound)
         }
 
         for (paradigm in data.paradigms) {
@@ -635,6 +637,27 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                     setLangEntity(translation.id, translation)
                     storeTranslation(addedCorpusText, translation)
                 }
+            }
+        }
+    }
+
+    private fun loadCompounds(contentProviderCallback: (String) -> String) {
+        for (language in languages.values) {
+            val compoundList =
+                Json.decodeFromString<List<CompoundData>>(contentProviderCallback(language.shortName + "/compounds.json"))
+            for (compoundData in compoundList) {
+                val compoundWord = allLangEntities[compoundData.compoundId] as? Word
+                    ?: throw IllegalStateException("No word with ID ${compoundData.compoundId}")
+                val componentWords = compoundData.componentIds.mapTo(ArrayList()) { allLangEntities[it] as Word }
+                val compound = Compound(
+                    compoundData.id,
+                    compoundWord,
+                    componentWords,
+                    loadSource(compoundData.sourceRefs),
+                    compoundData.notes
+                )
+                compounds.getOrPut(compoundWord.id) { arrayListOf() }.add(compound)
+                setLangEntity(compound.id, compound)
             }
         }
     }

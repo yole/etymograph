@@ -1,0 +1,653 @@
+[
+    {
+        "id": 902,
+        "compoundId": 901,
+        "componentIds": [
+            19,
+            126
+        ]
+    },
+    {
+        "id": 903,
+        "compoundId": 29,
+        "componentIds": [
+            30,
+            31
+        ]
+    },
+    {
+        "id": 904,
+        "compoundId": 33,
+        "componentIds": [
+            34,
+            35
+        ]
+    },
+    {
+        "id": 905,
+        "compoundId": 59,
+        "componentIds": [
+            297,
+            61,
+            62
+        ]
+    },
+    {
+        "id": 906,
+        "compoundId": 77,
+        "componentIds": [
+            78,
+            79
+        ]
+    },
+    {
+        "id": 907,
+        "compoundId": 86,
+        "componentIds": [
+            54,
+            61
+        ]
+    },
+    {
+        "id": 908,
+        "compoundId": 95,
+        "componentIds": [
+            96,
+            97
+        ]
+    },
+    {
+        "id": 909,
+        "compoundId": 102,
+        "componentIds": [
+            103,
+            104
+        ]
+    },
+    {
+        "id": 910,
+        "compoundId": 119,
+        "componentIds": [
+            96,
+            120
+        ]
+    },
+    {
+        "id": 911,
+        "compoundId": 131,
+        "componentIds": [
+            132,
+            32
+        ]
+    },
+    {
+        "id": 912,
+        "compoundId": 133,
+        "componentIds": [
+            134,
+            164
+        ]
+    },
+    {
+        "id": 913,
+        "compoundId": 153,
+        "componentIds": [
+            154,
+            155
+        ]
+    },
+    {
+        "id": 914,
+        "compoundId": 155,
+        "componentIds": [
+            157,
+            94
+        ]
+    },
+    {
+        "id": 917,
+        "compoundId": 174,
+        "componentIds": [
+            175,
+            177
+        ]
+    },
+    {
+        "id": 919,
+        "compoundId": 183,
+        "componentIds": [
+            146,
+            104
+        ]
+    },
+    {
+        "id": 926,
+        "compoundId": 229,
+        "componentIds": [
+            226,
+            228
+        ]
+    },
+    {
+        "id": 927,
+        "compoundId": 234,
+        "componentIds": [
+            233,
+            235
+        ]
+    },
+    {
+        "id": 928,
+        "compoundId": 236,
+        "componentIds": [
+            231,
+            234
+        ]
+    },
+    {
+        "id": 929,
+        "compoundId": 237,
+        "componentIds": [
+            132,
+            104
+        ]
+    },
+    {
+        "id": 930,
+        "compoundId": 238,
+        "componentIds": [
+            175,
+            32
+        ]
+    },
+    {
+        "id": 933,
+        "compoundId": 122,
+        "componentIds": [
+            258,
+            260
+        ]
+    },
+    {
+        "id": 937,
+        "compoundId": 316,
+        "componentIds": [
+            317,
+            318
+        ]
+    },
+    {
+        "id": 938,
+        "compoundId": 326,
+        "componentIds": [
+            320,
+            327
+        ]
+    },
+    {
+        "id": 939,
+        "compoundId": 323,
+        "componentIds": [
+            328,
+            342
+        ]
+    },
+    {
+        "id": 940,
+        "compoundId": 334,
+        "componentIds": [
+            164,
+            336
+        ]
+    },
+    {
+        "id": 941,
+        "compoundId": 338,
+        "componentIds": [
+            320,
+            339
+        ]
+    },
+    {
+        "id": 942,
+        "compoundId": 340,
+        "componentIds": [
+            341,
+            342
+        ]
+    },
+    {
+        "id": 943,
+        "compoundId": 346,
+        "componentIds": [
+            347,
+            348
+        ]
+    },
+    {
+        "id": 944,
+        "compoundId": 367,
+        "componentIds": [
+            368,
+            330
+        ]
+    },
+    {
+        "id": 945,
+        "compoundId": 368,
+        "componentIds": [
+            341,
+            369
+        ]
+    },
+    {
+        "id": 946,
+        "compoundId": 372,
+        "componentIds": [
+            373,
+            374
+        ]
+    },
+    {
+        "id": 947,
+        "compoundId": 365,
+        "componentIds": [
+            373,
+            306
+        ]
+    },
+    {
+        "id": 948,
+        "compoundId": 377,
+        "componentIds": [
+            341,
+            330
+        ]
+    },
+    {
+        "id": 949,
+        "compoundId": 378,
+        "componentIds": [
+            379,
+            380
+        ]
+    },
+    {
+        "id": 950,
+        "compoundId": 39,
+        "componentIds": [
+            445,
+            446
+        ]
+    },
+    {
+        "id": 951,
+        "compoundId": 547,
+        "componentIds": [
+            546,
+            545
+        ]
+    },
+    {
+        "id": 952,
+        "compoundId": 556,
+        "componentIds": [
+            557,
+            558
+        ]
+    },
+    {
+        "id": 953,
+        "compoundId": 588,
+        "componentIds": [
+            539,
+            589
+        ]
+    },
+    {
+        "id": 954,
+        "compoundId": 594,
+        "componentIds": [
+            235,
+            595
+        ]
+    },
+    {
+        "id": 955,
+        "compoundId": 636,
+        "componentIds": [
+            637,
+            638
+        ]
+    },
+    {
+        "id": 956,
+        "compoundId": 651,
+        "componentIds": [
+            652,
+            653
+        ]
+    },
+    {
+        "id": 957,
+        "compoundId": 656,
+        "componentIds": [
+            657,
+            85
+        ]
+    },
+    {
+        "id": 958,
+        "compoundId": 655,
+        "componentIds": [
+            661,
+            662,
+            363
+        ]
+    },
+    {
+        "id": 959,
+        "compoundId": 663,
+        "componentIds": [
+            373,
+            336
+        ]
+    },
+    {
+        "id": 960,
+        "compoundId": 146,
+        "componentIds": [
+            678,
+            233
+        ]
+    },
+    {
+        "id": 961,
+        "compoundId": 734,
+        "componentIds": [
+            735,
+            736
+        ]
+    },
+    {
+        "id": 962,
+        "compoundId": 740,
+        "componentIds": [
+            702,
+            88
+        ]
+    },
+    {
+        "id": 963,
+        "compoundId": 749,
+        "componentIds": [
+            750,
+            549
+        ]
+    },
+    {
+        "id": 964,
+        "compoundId": 753,
+        "componentIds": [
+            754,
+            104
+        ]
+    },
+    {
+        "id": 965,
+        "compoundId": 70,
+        "componentIds": [
+            759,
+            71
+        ]
+    },
+    {
+        "id": 966,
+        "compoundId": 758,
+        "componentIds": [
+            759,
+            760
+        ]
+    },
+    {
+        "id": 967,
+        "compoundId": 774,
+        "componentIds": [
+            554,
+            78
+        ]
+    },
+    {
+        "id": 968,
+        "compoundId": 777,
+        "componentIds": [
+            772,
+            778
+        ]
+    },
+    {
+        "id": 969,
+        "compoundId": 781,
+        "componentIds": [
+            320,
+            321
+        ]
+    },
+    {
+        "id": 970,
+        "compoundId": 797,
+        "componentIds": [
+            347,
+            150
+        ]
+    },
+    {
+        "id": 971,
+        "compoundId": 817,
+        "componentIds": [
+            818,
+            819
+        ]
+    },
+    {
+        "id": 972,
+        "compoundId": 820,
+        "componentIds": [
+            821,
+            824
+        ]
+    },
+    {
+        "id": 973,
+        "compoundId": 832,
+        "componentIds": [
+            833,
+            623
+        ]
+    },
+    {
+        "id": 974,
+        "compoundId": 838,
+        "componentIds": [
+            839,
+            444
+        ]
+    },
+    {
+        "id": 975,
+        "compoundId": 840,
+        "componentIds": [
+            52,
+            841
+        ]
+    },
+    {
+        "id": 976,
+        "compoundId": 842,
+        "componentIds": [
+            843
+        ]
+    },
+    {
+        "id": 977,
+        "compoundId": 849,
+        "componentIds": [
+            79,
+            850
+        ]
+    },
+    {
+        "id": 978,
+        "compoundId": 855,
+        "componentIds": [
+            4,
+            6,
+            856
+        ]
+    },
+    {
+        "id": 979,
+        "compoundId": 879,
+        "componentIds": [
+            379,
+            880
+        ]
+    },
+    {
+        "id": 984,
+        "compoundId": 983,
+        "componentIds": [
+            539,
+            177
+        ]
+    },
+    {
+        "id": 1020,
+        "compoundId": 1019,
+        "componentIds": [
+            52,
+            1021
+        ]
+    },
+    {
+        "id": 1024,
+        "compoundId": 1023,
+        "componentIds": [
+            1021,
+            1025
+        ]
+    },
+    {
+        "id": 1692,
+        "compoundId": 1688,
+        "componentIds": [
+            154,
+            1689
+        ],
+        "sourceRefs": [
+            {
+                "pubId": 0,
+                "refText": "14"
+            }
+        ],
+        "notes": "from *wōdab-, in which *dab- means 'be yielding or permissive, make allowances'"
+    },
+    {
+        "id": 1702,
+        "compoundId": 1701,
+        "componentIds": [
+            154,
+            1703
+        ],
+        "sourceRefs": [
+            {
+                "pubId": 3,
+                "refText": "29"
+            }
+        ]
+    },
+    {
+        "id": 1709,
+        "compoundId": 1708,
+        "componentIds": [
+            320,
+            1710
+        ],
+        "sourceRefs": [
+            {
+                "pubId": 0,
+                "refText": "17"
+            }
+        ]
+    },
+    {
+        "id": 1713,
+        "compoundId": 1711,
+        "componentIds": [
+            1712,
+            1714
+        ]
+    },
+    {
+        "id": 1725,
+        "compoundId": 1723,
+        "componentIds": [
+            1724,
+            330
+        ],
+        "sourceRefs": [
+            {
+                "pubId": 3,
+                "refText": "33"
+            }
+        ]
+    },
+    {
+        "id": 1736,
+        "compoundId": 1735,
+        "componentIds": [
+            649,
+            850
+        ]
+    },
+    {
+        "id": 1739,
+        "compoundId": 1738,
+        "componentIds": [
+            216,
+            358
+        ]
+    },
+    {
+        "id": 1742,
+        "compoundId": 1740,
+        "componentIds": [
+            1741,
+            52
+        ]
+    },
+    {
+        "id": 1756,
+        "compoundId": 1755,
+        "componentIds": [
+            310,
+            1754
+        ]
+    },
+    {
+        "id": 1789,
+        "compoundId": 1788,
+        "componentIds": [
+            1780,
+            177
+        ]
+    },
+    {
+        "id": 1811,
+        "compoundId": 1810,
+        "componentIds": [
+            297,
+            1812
+        ]
+    }
+]

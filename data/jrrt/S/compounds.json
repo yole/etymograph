@@ -1,0 +1,430 @@
+[
+    {
+        "id": 915,
+        "compoundId": 165,
+        "componentIds": [
+            166,
+            167
+        ]
+    },
+    {
+        "id": 916,
+        "compoundId": 171,
+        "componentIds": [
+            172,
+            173
+        ]
+    },
+    {
+        "id": 918,
+        "compoundId": 182,
+        "componentIds": [
+            181,
+            167
+        ]
+    },
+    {
+        "id": 920,
+        "compoundId": 190,
+        "componentIds": [
+            188,
+            187
+        ]
+    },
+    {
+        "id": 921,
+        "compoundId": 195,
+        "componentIds": [
+            196,
+            197
+        ]
+    },
+    {
+        "id": 922,
+        "compoundId": 199,
+        "componentIds": [
+            200,
+            201
+        ]
+    },
+    {
+        "id": 923,
+        "compoundId": 210,
+        "componentIds": [
+            209,
+            206
+        ]
+    },
+    {
+        "id": 924,
+        "compoundId": 213,
+        "componentIds": [
+            214,
+            215
+        ]
+    },
+    {
+        "id": 925,
+        "compoundId": 221,
+        "componentIds": [
+            222,
+            223
+        ]
+    },
+    {
+        "id": 931,
+        "compoundId": 240,
+        "componentIds": [
+            241,
+            242
+        ]
+    },
+    {
+        "id": 932,
+        "compoundId": 247,
+        "componentIds": [
+            172,
+            246
+        ]
+    },
+    {
+        "id": 935,
+        "compoundId": 272,
+        "componentIds": [
+            273,
+            274
+        ]
+    },
+    {
+        "id": 936,
+        "compoundId": 278,
+        "componentIds": [
+            279,
+            280
+        ]
+    },
+    {
+        "id": 1142,
+        "compoundId": 266,
+        "componentIds": [
+            192,
+            1141
+        ]
+    },
+    {
+        "id": 1159,
+        "compoundId": 1157,
+        "componentIds": [
+            1158,
+            1160,
+            1161
+        ]
+    },
+    {
+        "id": 1174,
+        "compoundId": 1173,
+        "componentIds": [
+            273,
+            1175
+        ]
+    },
+    {
+        "id": 1182,
+        "compoundId": 1180,
+        "componentIds": [
+            1181,
+            1183
+        ]
+    },
+    {
+        "id": 1186,
+        "compoundId": 1184,
+        "componentIds": [
+            1185,
+            1188
+        ]
+    },
+    {
+        "id": 1205,
+        "compoundId": 1203,
+        "componentIds": [
+            1204,
+            1206
+        ]
+    },
+    {
+        "id": 1226,
+        "compoundId": 1223,
+        "componentIds": [
+            1225,
+            1227
+        ]
+    },
+    {
+        "id": 1234,
+        "compoundId": 1224,
+        "componentIds": [
+            1233,
+            1229
+        ]
+    },
+    {
+        "id": 1253,
+        "compoundId": 1252,
+        "componentIds": [
+            1251,
+            1249
+        ]
+    },
+    {
+        "id": 1268,
+        "compoundId": 1267,
+        "componentIds": [
+            1266,
+            1265
+        ]
+    },
+    {
+        "id": 1274,
+        "compoundId": 1272,
+        "componentIds": [
+            1273,
+            1275
+        ]
+    },
+    {
+        "id": 1278,
+        "compoundId": 1277,
+        "componentIds": [
+            257,
+            1279
+        ]
+    },
+    {
+        "id": 1299,
+        "compoundId": 1298,
+        "componentIds": [
+            1251,
+            166
+        ]
+    },
+    {
+        "id": 1301,
+        "compoundId": 1300,
+        "componentIds": [
+            259,
+            1251,
+            1237
+        ]
+    },
+    {
+        "id": 1308,
+        "compoundId": 1305,
+        "componentIds": [
+            1307,
+            1309
+        ]
+    },
+    {
+        "id": 1355,
+        "compoundId": 1353,
+        "componentIds": [
+            1354,
+            1356
+        ]
+    },
+    {
+        "id": 1364,
+        "compoundId": 1362,
+        "componentIds": [
+            1363,
+            1365
+        ]
+    },
+    {
+        "id": 1379,
+        "compoundId": 1378,
+        "componentIds": [
+            1237,
+            1380
+        ]
+    },
+    {
+        "id": 1384,
+        "compoundId": 1381,
+        "componentIds": [
+            1382,
+            1383
+        ]
+    },
+    {
+        "id": 1387,
+        "compoundId": 1386,
+        "componentIds": [
+            1237,
+            1275
+        ]
+    },
+    {
+        "id": 1398,
+        "compoundId": 1395,
+        "componentIds": [
+            1397,
+            1396
+        ]
+    },
+    {
+        "id": 1400,
+        "compoundId": 1399,
+        "componentIds": [
+            1150,
+            1401
+        ]
+    },
+    {
+        "id": 1410,
+        "compoundId": 1409,
+        "componentIds": [
+            1251,
+            1411
+        ]
+    },
+    {
+        "id": 1416,
+        "compoundId": 1414,
+        "componentIds": [
+            1415,
+            1417
+        ]
+    },
+    {
+        "id": 1443,
+        "compoundId": 1442,
+        "componentIds": [
+            1286,
+            1444
+        ]
+    },
+    {
+        "id": 1445,
+        "compoundId": 1306,
+        "componentIds": [
+            1307,
+            1310
+        ]
+    },
+    {
+        "id": 1454,
+        "compoundId": 1452,
+        "componentIds": [
+            1453,
+            1309
+        ]
+    },
+    {
+        "id": 1458,
+        "compoundId": 1455,
+        "componentIds": [
+            1312,
+            1444
+        ]
+    },
+    {
+        "id": 1462,
+        "compoundId": 1461,
+        "componentIds": [
+            209,
+            205,
+            1463
+        ]
+    },
+    {
+        "id": 1464,
+        "compoundId": 247,
+        "componentIds": [
+            172,
+            245,
+            1463
+        ]
+    },
+    {
+        "id": 1470,
+        "compoundId": 1468,
+        "componentIds": [
+            1469,
+            1309
+        ]
+    },
+    {
+        "id": 1479,
+        "compoundId": 1478,
+        "componentIds": [
+            256,
+            1480
+        ]
+    },
+    {
+        "id": 1499,
+        "compoundId": 1497,
+        "componentIds": [
+            109,
+            1498
+        ]
+    },
+    {
+        "id": 1505,
+        "compoundId": 1503,
+        "componentIds": [
+            1504,
+            1506
+        ]
+    },
+    {
+        "id": 1511,
+        "compoundId": 1509,
+        "componentIds": [
+            1510,
+            1463
+        ]
+    },
+    {
+        "id": 1515,
+        "compoundId": 1514,
+        "componentIds": [
+            1130,
+            1073
+        ]
+    },
+    {
+        "id": 1518,
+        "compoundId": 1516,
+        "componentIds": [
+            1517,
+            192
+        ]
+    },
+    {
+        "id": 1523,
+        "compoundId": 1522,
+        "componentIds": [
+            1358,
+            1524
+        ]
+    },
+    {
+        "id": 1827,
+        "compoundId": 1826,
+        "componentIds": [
+            1324,
+            1828
+        ]
+    },
+    {
+        "id": 1878,
+        "compoundId": 1394,
+        "componentIds": [
+            1877,
+            1879
+        ]
+    }
+]
