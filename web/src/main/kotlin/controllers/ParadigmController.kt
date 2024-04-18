@@ -1,12 +1,14 @@
 package ru.yole.etymograph.web.controllers
 
-import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
-import ru.yole.etymograph.*
-import ru.yole.etymograph.web.GraphService
+import ru.yole.etymograph.GraphRepository
+import ru.yole.etymograph.Paradigm
+import ru.yole.etymograph.ParadigmCell
+import ru.yole.etymograph.ParadigmColumn
+import ru.yole.etymograph.web.resolveLanguage
 
 @RestController
-class ParadigmController(val graphService: GraphService) {
+class ParadigmController {
     data class ParadigmCellViewModel(
         val alternativeRuleNames: List<String>,
         val alternativeRuleSummaries: List<String>,
@@ -35,15 +37,15 @@ class ParadigmController(val graphService: GraphService) {
     )
 
     @GetMapping("/{graph}/paradigms")
-    fun allParadigms(@PathVariable graph: String): List<ParadigmViewModel> {
-        return graphService.resolveGraph(graph).allParadigms().map { it.toViewModel() }
+    fun allParadigms(repo: GraphRepository): List<ParadigmViewModel> {
+        return repo.allParadigms().map { it.toViewModel() }
     }
 
     @GetMapping("/{graph}/paradigms/{lang}")
-    fun paradigms(@PathVariable graph: String, @PathVariable lang: String): ParadigmListViewModel {
-        val language = graphService.resolveLanguage(graph, lang)
+    fun paradigms(repo: GraphRepository, @PathVariable lang: String): ParadigmListViewModel {
+        val language = repo.resolveLanguage(lang)
 
-        val paradigms = graphService.resolveGraph(graph).paradigmsForLanguage(language).map {
+        val paradigms = repo.paradigmsForLanguage(language).map {
             it.toViewModel()
         }
         return ParadigmListViewModel(language.name, paradigms)
@@ -69,10 +71,13 @@ class ParadigmController(val graphService: GraphService) {
         )
 
     @GetMapping("/{graph}/paradigm/{id}")
-    fun paradigm(@PathVariable graph: String, @PathVariable id: Int): ParadigmViewModel {
-        val paradigmById = graphService.resolveGraph(graph).paradigmById(id) ?: throw NoParadigmException()
+    fun paradigm(repo: GraphRepository, @PathVariable id: Int): ParadigmViewModel {
+        val paradigmById = repo.resolveParadigm(id)
         return paradigmById.toViewModel()
     }
+
+    private fun GraphRepository.resolveParadigm(id: Int): Paradigm =
+        paradigmById(id) ?: notFound("No paradigm with ID $id")
 
     data class UpdateParadigmParameters(
         val name: String,
@@ -82,9 +87,8 @@ class ParadigmController(val graphService: GraphService) {
 
     @PostMapping("/{graph}/paradigms/{lang}", consumes = ["application/json"])
     @ResponseBody
-    fun newParadigm(@PathVariable graph: String, @PathVariable lang: String, @RequestBody params: UpdateParadigmParameters): ParadigmViewModel {
-        val repo = graphService.resolveGraph(graph)
-        val language = graphService.resolveLanguage(graph, lang)
+    fun newParadigm(repo: GraphRepository, @PathVariable lang: String, @RequestBody params: UpdateParadigmParameters): ParadigmViewModel {
+        val language = repo.resolveLanguage(lang)
 
         val p = repo.addParadigm(params.name, language, parseList(params.pos))
         p.parse(params.text, repo::ruleByName)
@@ -93,9 +97,8 @@ class ParadigmController(val graphService: GraphService) {
 
     @PostMapping("/{graph}/paradigm/{id}", consumes = ["application/json"])
     @ResponseBody
-    fun updateParadigm(@PathVariable graph: String, @PathVariable id: Int, @RequestBody params: UpdateParadigmParameters) {
-        val repo = graphService.resolveGraph(graph)
-        val paradigm = repo.paradigmById(id) ?: throw NoParadigmException()
+    fun updateParadigm(repo: GraphRepository, @PathVariable id: Int, @RequestBody params: UpdateParadigmParameters) {
+        val paradigm = repo.resolveParadigm(id)
         paradigm.parse(params.text, repo::ruleByName)
         paradigm.name = params.name
         paradigm.pos = parseList(params.pos)
@@ -103,12 +106,8 @@ class ParadigmController(val graphService: GraphService) {
 
     @PostMapping("/{graph}/paradigm/{id}/delete")
     @ResponseBody
-    fun deleteParadigm(@PathVariable graph: String, @PathVariable id: Int) {
-        val repo = graphService.resolveGraph(graph)
-        val paradigm = repo.paradigmById(id) ?: throw NoParadigmException()
+    fun deleteParadigm(repo: GraphRepository, @PathVariable id: Int) {
+        val paradigm = repo.resolveParadigm(id)
         repo.deleteParadigm(paradigm)
     }
 }
-
-@ResponseStatus(value = HttpStatus.NOT_FOUND, reason = "No such paradigm")
-class NoParadigmException : RuntimeException()
