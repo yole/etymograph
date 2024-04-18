@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import {allowEdit, fetchAllLanguagePaths, fetchBackend} from "@/api";
 import Link from "next/link";
 import {useRouter} from "next/router";
@@ -10,7 +10,7 @@ export const config = {
 }
 
 export async function getStaticProps(context) {
-    return fetchBackend(context.params.graph, `rules/${context.params.lang}`)
+    return fetchBackend(context.params.graph, `rules/${context.params.lang}`, true)
 }
 
 export const getStaticPaths = fetchAllLanguagePaths

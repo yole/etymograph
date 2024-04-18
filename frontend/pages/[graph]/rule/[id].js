@@ -1,13 +1,10 @@
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import {
-    addRuleLink,
     addWordSequence,
     allowEdit,
     deleteLink,
     deleteRule,
-    deleteWord,
-    fetchAllGraphs, fetchPathsForAllGraphs,
-    updateRule
+    fetchPathsForAllGraphs
 } from "@/api";
 import WordLink from "@/components/WordLink";
 import {fetchBackend} from "@/api";
@@ -60,43 +57,38 @@ export default function Rule(params) {
         }
     }
 
-    function deleteLinkClicked(entityId, linkType) {
+    async function deleteLinkClicked(entityId, linkType) {
         if (window.confirm("Delete this link?")) {
-            deleteLink(graph, entityId, rule.id, linkType)
-                .then(r => {
-                    if (r.status === 200) {
-                        router.replace(router.asPath)
-                    }
-                    else {
-                        r.json().then(r => setErrorText(r.message))
-                    }
-                })
+            const r = await deleteLink(graph, entityId, rule.id, linkType)
+            if (r.status === 200) {
+                router.replace(router.asPath)
+            }
+            else {
+                r.json().then(r => setErrorText(r.message))
+            }
         }
     }
 
-    function exampleSubmitted() {
-        addWordSequence(graph, exampleText, exampleSource)
-            .then(r => {
-                if (r.status === 200) {
-                    r.json().then(r => {
-                        setShowExampleForm(false)
-                        setExampleText("")
-                        if (r.ruleIds.indexOf(rule.id) >= 0) {
-                            setErrorText("")
-                            setExampleUnmatched([])
-                            router.replace(router.asPath)
-                        }
-                        else {
-                            setErrorText("Example does not match rule")
-                            setExampleUnmatched(r.words)
-                        }
-                    })
+    async function exampleSubmitted() {
+        const r = await addWordSequence(graph, exampleText, exampleSource)
+        if (r.status === 200) {
+            r.json().then(r => {
+                setShowExampleForm(false)
+                setExampleText("")
+                if (r.ruleIds.indexOf(rule.id) >= 0) {
+                    setErrorText("")
+                    setExampleUnmatched([])
+                    router.replace(router.asPath)
                 }
                 else {
-                    r.json().then(r => setErrorText(r.message))
+                    setErrorText("Example does not match rule")
+                    setExampleUnmatched(r.words)
                 }
             })
-
+        }
+        else {
+            r.json().then(r => setErrorText(r.message))
+        }
     }
 
     return <>

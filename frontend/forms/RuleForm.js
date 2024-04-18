@@ -1,15 +1,14 @@
-import {useState} from "react";
+import {useContext, useState} from "react";
 import {addRule, updateRule} from "@/api";
 import EtymographForm from "@/components/EtymographForm";
 import FormRow from "@/components/FormRow";
 import FormTextArea from "@/components/FormTextArea";
 import LanguageSelect from "@/components/LanguageSelect";
-import {useRouter} from "next/router";
+import {GraphContext} from "@/components/Contexts";
 
 export default function RuleForm(props) {
     const [ruleType, setRuleType] = useState(props.initialType !== undefined ? props.initialType : "phono")
-    const router = useRouter()
-    const graph = router.query.graph
+    const graph = useContext(GraphContext)
 
     return <>
         Rule type:{' '}
