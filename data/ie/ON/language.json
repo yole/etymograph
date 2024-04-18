@@ -312,5 +312,10 @@
                 "vowel"
             ]
         }
+    ],
+    "diphthongs": [
+        "ei",
+        "au",
+        "ey"
     ]
 }

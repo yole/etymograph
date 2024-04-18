@@ -15,34 +15,6 @@
             "shortName": "CE"
         }
     ],
-    "diphthongs": [
-        {
-            "lang": "Q",
-            "diphthongs": [
-                "ai",
-                "oi",
-                "ui",
-                "au",
-                "eu",
-                "iu"
-            ]
-        },
-        {
-            "lang": "S",
-            "diphthongs": [
-                "ai",
-                "ei",
-                "ui",
-                "au",
-                "oe",
-                "ae"
-            ]
-        },
-        {
-            "lang": "CE",
-            "diphthongs": []
-        }
-    ],
     "stressRules": [
         {
             "lang": "Q",

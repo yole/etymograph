@@ -544,5 +544,13 @@
             ],
             "historical": true
         }
+    ],
+    "diphthongs": [
+        "ai",
+        "oi",
+        "ui",
+        "au",
+        "eu",
+        "iu"
     ]
 }

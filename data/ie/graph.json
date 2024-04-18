@@ -30,52 +30,6 @@
             "reconstructed": true
         }
     ],
-    "diphthongs": [
-        {
-            "lang": "OE",
-            "diphthongs": [
-                "ea",
-                "ēa",
-                "eo",
-                "ēo",
-                "ie",
-                "īe"
-            ]
-        },
-        {
-            "lang": "Lyc",
-            "diphthongs": []
-        },
-        {
-            "lang": "ON",
-            "diphthongs": [
-                "ei",
-                "au",
-                "ey"
-            ]
-        },
-        {
-            "lang": "PGmc",
-            "diphthongs": [
-                "eu",
-                "ai",
-                "au",
-                "ōu"
-            ]
-        },
-        {
-            "lang": "PNWGmc",
-            "diphthongs": []
-        },
-        {
-            "lang": "PWGmc",
-            "diphthongs": [
-                "au",
-                "ōu",
-                "ai"
-            ]
-        }
-    ],
     "stressRules": [
         {
             "lang": "OE",

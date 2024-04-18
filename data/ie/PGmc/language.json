@@ -399,5 +399,11 @@
                 "vowel"
             ]
         }
+    ],
+    "diphthongs": [
+        "eu",
+        "ai",
+        "au",
+        "ōu"
     ]
 }

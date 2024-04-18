@@ -486,5 +486,13 @@
             ],
             "historical": true
         }
+    ],
+    "diphthongs": [
+        "ea",
+        "ēa",
+        "eo",
+        "ēo",
+        "ie",
+        "īe"
     ]
 }
