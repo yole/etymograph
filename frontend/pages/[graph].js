@@ -27,6 +27,6 @@ export default function Home(props) {
     </ul>
 
     <p><Link href={`${graph}/publications`}>Bibliography</Link></p>
-    {allowEdit() && <Link href={`${graph}/languages/new`}>Add language</Link>}
+    {allowEdit() && <button onClick={() => router.push(`${graph}/languages/new`)}>Add language</button>}
   </>
 }
