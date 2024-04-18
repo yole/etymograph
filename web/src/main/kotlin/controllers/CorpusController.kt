@@ -8,24 +8,24 @@ import ru.yole.etymograph.web.*
 import ru.yole.etymograph.web.controllers.CorpusController.TranslationViewModel
 
 @RestController
-@CrossOrigin(origins = ["http://localhost:3000"])
-class CorpusController(val graphService: GraphService) {
+@RequestMapping("/{graph}/corpus")
+class CorpusController {
     data class CorpusLangTextViewModel(val id: Int, val title: String)
     data class CorpusLangViewModel(val language: Language, val corpusTexts: List<CorpusLangTextViewModel>)
 
-    @GetMapping("/{graph}/corpus")
-    fun indexJson(@PathVariable graph: String): List<CorpusLangTextViewModel> {
-        return graphService.resolveGraph(graph).allCorpusTexts()
-                .sortedBy { it.title }
-                .map { it.toLangViewModel() }
+    @GetMapping("")
+    fun indexJson(repo: GraphRepository): List<CorpusLangTextViewModel> {
+        return repo.allCorpusTexts()
+            .sortedBy { it.title }
+            .map { it.toLangViewModel() }
     }
 
-    @GetMapping("/{graph}/corpus/{lang}")
-    fun langIndexJson(@PathVariable graph: String, @PathVariable lang: String): CorpusLangViewModel {
-        val language = graphService.resolveLanguage(graph, lang)
+    @GetMapping("/{lang}")
+    fun langIndexJson(repo: GraphRepository, @PathVariable lang: String): CorpusLangViewModel {
+        val language = repo.resolveLanguage(lang)
         return CorpusLangViewModel(
             language,
-            graphService.resolveGraph(graph).corpusTextsInLanguage(language)
+            repo.corpusTextsInLanguage(language)
                 .sortedBy { it.title }
                 .map { it.toLangViewModel() }
         )
@@ -63,10 +63,9 @@ class CorpusController(val graphService: GraphService) {
         val translations: List<TranslationViewModel>
     )
 
-    @GetMapping("/{graph}/corpus/text/{id}")
-    fun textJson(@PathVariable graph: String, @PathVariable id: Int): CorpusTextViewModel {
-        val repo = graphService.resolveGraph(graph)
-        return graphService.resolveCorpusText(graph, id).toViewModel(repo)
+    @GetMapping("/text/{id}")
+    fun textJson(repo: GraphRepository, @PathVariable id: Int): CorpusTextViewModel {
+        return repo.resolveCorpusText(id).toViewModel(repo)
     }
 
     private fun CorpusText.toViewModel(repo: GraphRepository): CorpusTextViewModel {
@@ -97,11 +96,10 @@ class CorpusController(val graphService: GraphService) {
 
     data class CorpusTextParams(val title: String = "", val text: String = "", val source: String = "", val notes: String = "")
 
-    @PostMapping("/{graph}/corpus/{lang}/new", consumes = ["application/json"])
+    @PostMapping("/{lang}/new", consumes = ["application/json"])
     @ResponseBody
-    fun newText(@PathVariable graph: String, @PathVariable lang: String, @RequestBody params: CorpusTextParams): CorpusTextViewModel {
-        val repo = graphService.resolveGraph(graph)
-        val language = graphService.resolveLanguage(graph, lang)
+    fun newText(repo: GraphRepository, @PathVariable lang: String, @RequestBody params: CorpusTextParams): CorpusTextViewModel {
+        val language = repo.resolveLanguage(lang)
         val text = repo.addCorpusText(
             params.text, params.title.nullize(), language, emptyList(),
             parseSourceRefs(repo, params.source), params.notes.nullize()
@@ -109,10 +107,9 @@ class CorpusController(val graphService: GraphService) {
         return text.toViewModel(repo)
     }
 
-    @PostMapping("/{graph}/corpus/text/{id}")
-    fun editText(@PathVariable graph: String, @PathVariable id: Int, @RequestBody params: CorpusTextParams) {
-        val corpusText = graphService.resolveCorpusText(graph, id)
-        val repo = graphService.resolveGraph(graph)
+    @PostMapping("/text/{id}")
+    fun editText(repo: GraphRepository, @PathVariable id: Int, @RequestBody params: CorpusTextParams) {
+        val corpusText = repo.resolveCorpusText(id)
         corpusText.text = params.text
         corpusText.title = params.title.nullize()
         corpusText.source = parseSourceRefs(repo, params.source)
@@ -121,19 +118,18 @@ class CorpusController(val graphService: GraphService) {
 
     data class AssociateWordParameters(val index: Int, val wordId: Int = -1)
 
-    @PostMapping("/{graph}/corpus/text/{id}/associate")
-    fun associateWord(@PathVariable graph: String, @PathVariable id: Int, @RequestBody params: AssociateWordParameters) {
-        val corpusText = graphService.resolveCorpusText(graph, id)
-        val word = graphService.resolveWord(graph, params.wordId)
+    @PostMapping("/text/{id}/associate")
+    fun associateWord(repo: GraphRepository, @PathVariable id: Int, @RequestBody params: AssociateWordParameters) {
+        val corpusText = repo.resolveCorpusText(id)
+        val word = repo.resolveWord(params.wordId)
         corpusText.associateWord(params.index, word)
     }
 
     data class AlternativeViewModel(val gloss: String, val wordId: Int, val ruleId: Int)
 
-    @GetMapping("/{graph}/corpus/text/{id}/alternatives/{index}")
-    fun requestAlternatives(@PathVariable graph: String, @PathVariable id: Int, @PathVariable index: Int): List<AlternativeViewModel> {
-        val repo = graphService.resolveGraph(graph)
-        val corpusText = graphService.resolveCorpusText(graph, id)
+    @GetMapping("/text/{id}/alternatives/{index}")
+    fun requestAlternatives(repo: GraphRepository, @PathVariable id: Int, @PathVariable index: Int): List<AlternativeViewModel> {
+        val corpusText = repo.resolveCorpusText(id)
         val word = corpusText.words.getOrNull(index)
         val wordText = word?.text ?: corpusText.normalizedWordTextAt(index)
         val wordsWithMatchingText = repo.wordsByText(corpusText.language, wordText)
@@ -163,19 +159,18 @@ class CorpusController(val graphService: GraphService) {
 
     data class AcceptAlternativeParameters(val index: Int, val wordId: Int, val ruleId: Int)
 
-    @PostMapping("/{graph}/corpus/text/{id}/accept")
-    fun acceptAlternative(@PathVariable graph: String, @PathVariable id: Int, @RequestBody params: AcceptAlternativeParameters) {
-        val corpusText = graphService.resolveCorpusText(graph, id)
-        val word = graphService.resolveWord(graph, params.wordId)
-        val repo = graphService.resolveGraph(graph)
+    @PostMapping("/text/{id}/accept")
+    fun acceptAlternative(repo: GraphRepository, @PathVariable id: Int, @RequestBody params: AcceptAlternativeParameters) {
+        val corpusText = repo.resolveCorpusText(id)
+        val word = repo.resolveWord(params.wordId)
 
         if (params.ruleId == -1) {
             corpusText.associateWord(params.index, word)
         }
         else {
-            val rule = graphService.resolveRule(graph, params.ruleId)
+            val rule = repo.resolveRule(params.ruleId)
             val gloss = word.glossOrNP()
-                ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST, "Accepting alternative with unglossed word ${word.id}")
+                ?: badRequest("Accepting alternative with unglossed word ${word.id}")
 
             val linkedWord = repo.getLinksTo(word).singleOrNull { it.rules == listOf(rule) }?.fromEntity as? Word
             if (linkedWord != null) {
@@ -189,7 +184,6 @@ class CorpusController(val graphService: GraphService) {
 
                 corpusText.associateWord(params.index, newWord)
             }
-
         }
     }
 }

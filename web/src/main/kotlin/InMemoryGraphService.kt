@@ -74,3 +74,11 @@ fun GraphRepository.resolveLanguage(lang: String): Language {
 fun GraphRepository.resolveWord(id: Int): Word {
     return wordById(id) ?: notFound("No word with ID $id")
 }
+
+fun GraphRepository.resolveCorpusText(id: Int): CorpusText {
+    return corpusTextById(id) ?: notFound("No corpus text with ID $id")
+}
+
+fun GraphRepository.resolveRule(id: Int): Rule {
+    return ruleById(id) ?: notFound("No rule with ID $id")
+}
