@@ -6,6 +6,7 @@ import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import java.nio.file.Path
 import kotlin.io.path.createParentDirectories
+import kotlin.io.path.exists
 import kotlin.io.path.readText
 import kotlin.io.path.writeText
 
@@ -359,17 +360,6 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
         saveCompounds(consumer)
     }
 
-    private fun saveCompounds(consumer: (String, String) -> Unit) {
-        for (language in languages.values) {
-            val compoundData = allLangEntities.filterIsInstance<Compound>()
-                .filter { it.compoundWord.language == language }
-                .map { c ->
-                    CompoundData(c.id, c.compoundWord.id, c.components.map { it.id }, c.source.sourceToSerializedFormat(), c.notes)
-                }
-            consumer("${language.shortName}/compounds.json", theJson.encodeToString(compoundData))
-        }
-    }
-
     private fun saveLanguageDetails(consumer: (String, String) -> Unit) {
         for (lang in languages.values) {
             val phonemes = lang.phonemes.map {
@@ -421,7 +411,9 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                     collectTranslations(it)
                 )
             }
-            consumer(language.shortName + "/corpus.json", theJson.encodeToString(corpusData))
+            if (corpusData.isNotEmpty()) {
+                consumer(language.shortName + "/corpus.json", theJson.encodeToString(corpusData))
+            }
         }
     }
 
@@ -430,6 +422,20 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             TranslationData(t.id, t.text, t.source.sourceToSerializedFormat(), t.notes)
         }
     }
+
+    private fun saveCompounds(consumer: (String, String) -> Unit) {
+        for (language in languages.values) {
+            val compoundData = allLangEntities.filterIsInstance<Compound>()
+                .filter { it.compoundWord.language == language }
+                .map { c ->
+                    CompoundData(c.id, c.compoundWord.id, c.components.map { it.id }, c.source.sourceToSerializedFormat(), c.notes)
+                }
+            if (compoundData.isNotEmpty()) {
+                consumer("${language.shortName}/compounds.json", theJson.encodeToString(compoundData))
+            }
+        }
+    }
+
 
     private fun createGraphRepositoryData(): GraphRepositoryData {
         return GraphRepositoryData(
@@ -461,8 +467,8 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
         )
     }
 
-    private fun loadJson(contentProviderCallback: (String) -> String) {
-        val data = Json.decodeFromString<GraphRepositoryData>(contentProviderCallback("graph.json"))
+    private fun loadJson(contentProviderCallback: (String) -> String?) {
+        val data = Json.decodeFromString<GraphRepositoryData>(contentProviderCallback("graph.json")!!)
         _id = data.id
         _name = data.name
         for (languageData in data.languages) {
@@ -556,9 +562,9 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
         }
     }
 
-    private fun loadLanguageDetails(contentProviderCallback: (String) -> String) {
+    private fun loadLanguageDetails(contentProviderCallback: (String) -> String?) {
         for (language in languages.values) {
-            val data = Json.decodeFromString<LanguageDetailsData>(contentProviderCallback(language.shortName + "/language.json"))
+            val data = Json.decodeFromString<LanguageDetailsData>(contentProviderCallback(language.shortName + "/language.json")!!)
             for (phonemeData in data.phonemes) {
                 val phoneme = Phoneme(
                     phonemeData.id,
@@ -584,9 +590,9 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
         }
     }
 
-    private fun loadWords(contentProviderCallback: (String) -> String) {
+    private fun loadWords(contentProviderCallback: (String) -> String?) {
         for (language in languages.values) {
-            val data = Json.decodeFromString<List<WordData>>(contentProviderCallback(language.shortName + "/words.json"))
+            val data = Json.decodeFromString<List<WordData>>(contentProviderCallback(language.shortName + "/words.json")!!)
             for (wordData in data) {
                 val wordsByText = mapOfWordsByText(language, wordData.text)
                 val word = Word(
@@ -610,9 +616,10 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
         }
     }
 
-    private fun loadCorpus(contentProviderCallback: (String) -> String) {
+    private fun loadCorpus(contentProviderCallback: (String) -> String?) {
         for (language in languages.values) {
-            val corpusTextList = Json.decodeFromString<List<CorpusTextData>>(contentProviderCallback(language.shortName + "/corpus.json"))
+            val corpusJson = contentProviderCallback(language.shortName + "/corpus.json") ?: continue
+            val corpusTextList = Json.decodeFromString<List<CorpusTextData>>(corpusJson)
             for (corpusText in corpusTextList) {
                 val addedCorpusText = CorpusText(
                     corpusText.id,
@@ -641,10 +648,10 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
         }
     }
 
-    private fun loadCompounds(contentProviderCallback: (String) -> String) {
+    private fun loadCompounds(contentProviderCallback: (String) -> String?) {
         for (language in languages.values) {
-            val compoundList =
-                Json.decodeFromString<List<CompoundData>>(contentProviderCallback(language.shortName + "/compounds.json"))
+            val compoundJson = contentProviderCallback(language.shortName + "/compounds.json") ?: continue
+            val compoundList = Json.decodeFromString<List<CompoundData>>(compoundJson)
             for (compoundData in compoundList) {
                 val compoundWord = allLangEntities[compoundData.compoundId] as? Word
                     ?: throw IllegalStateException("No word with ID ${compoundData.compoundId}")
@@ -662,8 +669,8 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
         }
     }
 
-    private fun loadPublications(contentProviderCallback: (String) -> String) {
-        val publicationsData = Json.decodeFromString<List<PublicationData>>(contentProviderCallback("publications.json"))
+    private fun loadPublications(contentProviderCallback: (String) -> String?) {
+        val publicationsData = Json.decodeFromString<List<PublicationData>>(contentProviderCallback("publications.json")!!)
         for (pubData in publicationsData) {
             while (pubData.id > publications.size) {
                 publications.add(null)
@@ -688,7 +695,8 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
         fun fromJson(path: Path): JsonGraphRepository {
             val result = JsonGraphRepository(path)
             result.loadJson {
-                path.resolve(it).readText()
+                val filePath = path.resolve(it)
+                if (filePath.exists()) filePath.readText() else null
             }
             return result
         }
