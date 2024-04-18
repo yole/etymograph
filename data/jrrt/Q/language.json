@@ -555,5 +555,15 @@
     ],
     "stressRuleId": 535,
     "phonotacticsRuleId": 1042,
-    "orthographyRuleId": 1673
+    "orthographyRuleId": 1673,
+    "syllableStructures": [
+        "V",
+        "VV",
+        "CV",
+        "CVV",
+        "VC",
+        "VVC",
+        "CVC",
+        "CVVC"
+    ]
 }

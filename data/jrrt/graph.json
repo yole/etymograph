@@ -32198,21 +32198,6 @@
             ]
         }
     ],
-    "syllableStructures": [
-        {
-            "lang": "Q",
-            "syllableStructures": [
-                "V",
-                "VV",
-                "CV",
-                "CVV",
-                "VC",
-                "VVC",
-                "CVC",
-                "CVVC"
-            ]
-        }
-    ],
     "compounds": [
         {
             "id": 902,

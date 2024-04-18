@@ -43,14 +43,12 @@ data class PhonemeData(
 @Serializable
 data class LanguageDetailsData(
     val phonemes: List<PhonemeData>,
-    val diphthongs: List<String>,
+    val diphthongs: List<String> = emptyList(),
     val stressRuleId: Int? = null,
     val phonotacticsRuleId: Int? = null,
-    val orthographyRuleId: Int? = null
+    val orthographyRuleId: Int? = null,
+    val syllableStructures: List<String> = emptyList()
 )
-
-@Serializable
-data class SyllableStructureData(@SerialName("lang") val languageShortName: String, val syllableStructures: List<String>)
 
 @Serializable
 sealed class RuleConditionData {
@@ -309,7 +307,6 @@ data class GraphRepositoryData(
     val links: List<LinkData>,
     val corpusTexts: List<CorpusTextData>,
     val paradigms: List<ParadigmData>,
-    val syllableStructures: List<SyllableStructureData>,
     val compounds: List<CompoundData>,
     val translations: List<TranslationData>,
     val grammaticalCategories: List<WordCategoryData>,
@@ -379,16 +376,14 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                 lang.diphthongs,
                 lang.stressRule?.resolve()?.id,
                 lang.phonotacticsRule?.resolve()?.id,
-                lang.orthographyRule?.resolve()?.id
+                lang.orthographyRule?.resolve()?.id,
+                lang.syllableStructures
             )
             consumer(lang.shortName + "/language.json", theJson.encodeToString(languageDetailsData))
         }
     }
 
     private fun createGraphRepositoryData(): GraphRepositoryData {
-        val syllableStructureData = languages.values.mapNotNull { lang ->
-            lang.syllableStructures.takeIf { it.isNotEmpty() }?.let { SyllableStructureData(lang.shortName, it) }
-        }
         val grammarCategoryData = mapWordCategories { it.grammaticalCategories }
         val wordClassData = mapWordCategories { it.wordClasses }
         return GraphRepositoryData(
@@ -424,7 +419,6 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                     })
                 }, it.pos)
             },
-            syllableStructureData,
             allLangEntities.filterIsInstance<Compound>().map { c ->
                 CompoundData(c.id, c.compoundWord.id, c.components.map { it.id }, c.source.sourceToSerializedFormat(), c.notes)
             },
@@ -461,9 +455,6 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
         }
         loadLanguageDetails(contentProviderCallback)
 
-        for (syllableStructureData in data.syllableStructures) {
-            languageByShortName(syllableStructureData.languageShortName)!!.syllableStructures = syllableStructureData.syllableStructures
-        }
         loadPublications(contentProviderCallback)
         for (wordData in data.words) {
             val language = languageByShortName(wordData.languageShortName)!!
@@ -618,6 +609,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             language.stressRule = data.stressRuleId?.let { ruleRef(this, it) }
             language.phonotacticsRule = data.phonotacticsRuleId?.let { ruleRef(this, it) }
             language.orthographyRule = data.orthographyRuleId?.let { ruleRef(this, it) }
+            language.syllableStructures = data.syllableStructures
         }
     }
 
