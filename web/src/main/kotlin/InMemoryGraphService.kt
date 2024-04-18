@@ -12,31 +12,6 @@ import java.nio.file.Path
 abstract class GraphService {
     abstract fun allGraphs(): List<GraphRepository>
     abstract fun resolveGraph(name: String): GraphRepository
-
-    fun resolveLanguage(graph: String, lang: String): Language {
-        return resolveGraph(graph).languageByShortName(lang)
-            ?: throw ResponseStatusException(HttpStatus.NOT_FOUND, "No language with short name $lang")
-    }
-
-    fun resolveWord(graph: String, id: Int): Word {
-        return resolveGraph(graph).wordById(id)
-            ?: throw ResponseStatusException(HttpStatus.NOT_FOUND, "No word with ID $id")
-    }
-
-    fun resolveRule(graph: String, name: String): Rule {
-        return resolveGraph(graph).ruleByName(name.trim())
-            ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST, "No rule named '$name'")
-    }
-
-    fun resolveRule(graph: String, id: Int): Rule {
-        return resolveGraph(graph).ruleById(id)
-            ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST, "No rule with ID '$id'")
-    }
-
-    fun resolveCorpusText(graph: String, id: Int): CorpusText {
-        return resolveGraph(graph).corpusTextById(id)
-            ?: throw ResponseStatusException(HttpStatus.NOT_FOUND, "No corpus text with ID $id")
-    }
 }
 
 @Service

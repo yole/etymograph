@@ -18,8 +18,8 @@ class LinkControllerTest {
 
         linkController.addLink(fixture.graph, LinkController.LinkParams(word1.id, word2.id, Link.Related.id, source = "src"))
 
-        val wordController = WordController(fixture.graphService)
-        val json = wordController.singleWordJson("", "q", "abc", word1.id)
+        val wordController = WordController()
+        val json = wordController.singleWordJson(fixture.graph, "q", "abc", word1.id)
         assertEquals("src", json.linksFrom.single().words.single().source.single().refText)
         assertEquals("src", json.linksFrom.single().words.single().sourceEditableText)
     }
@@ -42,14 +42,14 @@ class LinkControllerTest {
 
         linkController.addRuleLink(fixture.graph, LinkController.RuleLinkParams(word.id, "q-pos", Link.Related.id))
 
-        val wordController = WordController(fixture.graphService)
-        val wordViewModel = wordController.singleWordJson("", "q", "abc", word.id)
+        val wordController = WordController()
+        val wordViewModel = wordController.singleWordJson(fixture.graph, "q", "abc", word.id)
         assertEquals(0, wordViewModel.linksFrom.size)
         assertEquals(0, wordViewModel.linksTo.size)
         val relatedRuleViewModel = wordViewModel.linkedRules.single()
         assertEquals("q-pos", relatedRuleViewModel.ruleName)
 
-        val rule = fixture.graphService.resolveRule("", "q-pos")
+        val rule = fixture.graph.ruleByName("q-pos")!!
         val ruleViewModel = ruleController.rule(fixture.graph, rule.id)
         val linkViewModel = ruleViewModel.linkedWords.single()
         assertEquals("abc", linkViewModel.toWord.text)

@@ -34,7 +34,7 @@ fun Word.toRefViewModel(graph: GraphRepository) =
     )
 
 @RestController
-class WordController(val graphService: GraphService) {
+class WordController {
     data class RuleSequenceViewModel(
         val name: String,
         val id: Int
@@ -99,21 +99,19 @@ class WordController(val graphService: GraphService) {
     )
 
     @GetMapping("/{graph}/word/{lang}/{text}")
-    fun wordJson(@PathVariable graph: String, @PathVariable lang: String, @PathVariable text: String): List<WordViewModel> {
-        val repo = graphService.resolveGraph(graph)
-
-        val language = graphService.resolveLanguage(graph, lang)
+    fun wordJson(repo: GraphRepository, @PathVariable lang: String, @PathVariable text: String): List<WordViewModel> {
+        val language = repo.resolveLanguage(lang)
 
         val words = repo.wordsByText(language, text)
         if (words.isEmpty())
-            throw ResponseStatusException(HttpStatus.NOT_FOUND, "No word with text $text")
+            notFound("No word with text $text")
 
         return words.map { it.toViewModel(repo) }
     }
 
     @GetMapping("/{graph}/word/{lang}/{text}/{id}")
-    fun singleWordJson(@PathVariable graph: String, @PathVariable lang: String, @PathVariable text: String, @PathVariable id: Int): WordViewModel {
-        return graphService.resolveWord(graph, id).toViewModel(graphService.resolveGraph(graph))
+    fun singleWordJson(repo: GraphRepository, @PathVariable lang: String, @PathVariable text: String, @PathVariable id: Int): WordViewModel {
+        return repo.resolveWord(id).toViewModel(repo)
     }
 
     private fun Word.toViewModel(graph: GraphRepository): WordViewModel {
@@ -214,9 +212,8 @@ class WordController(val graphService: GraphService) {
 
     @PostMapping("/{graph}/word/{lang}", consumes = ["application/json"])
     @ResponseBody
-    fun addWord(@PathVariable graph: String, @PathVariable lang: String, @RequestBody params: AddWordParameters): WordViewModel {
-        val repo = graphService.resolveGraph(graph)
-        val language = graphService.resolveLanguage(graph, lang)
+    fun addWord(repo: GraphRepository, @PathVariable lang: String, @RequestBody params: AddWordParameters): WordViewModel {
+        val language = repo.resolveLanguage(lang)
         val text = params.text?.nullize() ?: badRequest("No word text specified")
 
         val (pos, classes) = parseWordClasses(language, params.posClasses)
@@ -251,9 +248,8 @@ class WordController(val graphService: GraphService) {
 
     @PostMapping("/{graph}/word/{id}/update", consumes = ["application/json"])
     @ResponseBody
-    fun updateWord(@PathVariable graph: String, @PathVariable id: Int, @RequestBody params: AddWordParameters): WordViewModel {
-        val repo = graphService.resolveGraph(graph)
-        val word = repo.wordById(id) ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST, "No word with ID $id")
+    fun updateWord(repo: GraphRepository, @PathVariable id: Int, @RequestBody params: AddWordParameters): WordViewModel {
+        val word = repo.resolveWord(id)
         val text = params.text
         if (text != null && text != word.text) {
             repo.updateWordText(word, text)
@@ -275,9 +271,8 @@ class WordController(val graphService: GraphService) {
 
     @PostMapping("/{graph}/word/{id}/delete", consumes = ["application/json"])
     @ResponseBody
-    fun deleteWord(@PathVariable graph: String, @PathVariable id: Int) {
-        val repo = graphService.resolveGraph(graph)
-        val word = repo.wordById(id) ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST, "No word with ID $id")
+    fun deleteWord(repo: GraphRepository, @PathVariable id: Int) {
+        val word = repo.resolveWord(id)
         repo.deleteWord(word)
     }
 
@@ -302,9 +297,8 @@ class WordController(val graphService: GraphService) {
     )
 
     @GetMapping("/{graph}/word/{id}/paradigms")
-    fun wordParadigms(@PathVariable graph: String, @PathVariable id: Int): WordParadigmListModel {
-        val repo = graphService.resolveGraph(graph)
-        val word = graphService.resolveWord(graph, id)
+    fun wordParadigms(repo: GraphRepository, @PathVariable id: Int): WordParadigmListModel {
+        val word = repo.resolveWord(id)
         val paradigmModels = repo.paradigmsForLanguage(word.language).filter { word.pos in it.pos }.map { paradigm ->
             val generatedParadigm = paradigm.generate(word, repo)
             val substitutedParadigm = generatedParadigm.map { colWords ->
@@ -327,15 +321,14 @@ class WordController(val graphService: GraphService) {
     data class UpdateParadigmParameters(var items: Array<Array<Any>> = emptyArray())
 
     @PostMapping("/{graph}/word/{id}/paradigm", consumes = ["application/json"])
-    fun updateParadigm(@PathVariable graph: String, @PathVariable id: Int, @RequestBody paradigm: UpdateParadigmParameters) {
-        val repo = graphService.resolveGraph(graph)
-        val word = graphService.resolveWord(graph, id)
+    fun updateParadigm(repo: GraphRepository, @PathVariable id: Int, @RequestBody paradigm: UpdateParadigmParameters) {
+        val word = repo.resolveWord(id)
         val gloss = word.glossOrNP() ?: badRequest("Trying to update paradigm for unglossed word ${word.text}")
         val derivedWordLinks = repo.getLinksTo(word).filter { it.type == Link.Derived && it.fromEntity is Word }
         for ((ruleIdAny, textAny) in paradigm.items) {
             val ruleId = ruleIdAny as Int
             val text = textAny as String
-            val rule = graphService.resolveRule(graph, ruleId)
+            val rule = repo.resolveRule(ruleId)
             val existingLink = derivedWordLinks.find { it.rules == listOf(rule) }
             if (existingLink != null) {
                 // TODO what if word is used in corpus texts?
@@ -353,9 +346,8 @@ class WordController(val graphService: GraphService) {
     data class DeriveThroughSequenceParams(val sequenceId: Int = -1)
 
     @PostMapping("/{graph}/word/{id}/derive", consumes = ["application/json"])
-    fun derive(@PathVariable graph: String, @PathVariable id: Int, @RequestBody params: DeriveThroughSequenceParams): WordViewModel {
-        val word = graphService.resolveWord(graph, id)
-        val repo = graphService.resolveGraph(graph)
+    fun derive(repo: GraphRepository, @PathVariable id: Int, @RequestBody params: DeriveThroughSequenceParams): WordViewModel {
+        val word = repo.resolveWord(id)
         val sequence = repo.resolveRuleSequence(params.sequenceId)
         val newWord = repo.deriveThroughRuleSequence(word, sequence)
         return (newWord ?: word).toViewModel(repo)
@@ -368,9 +360,8 @@ class WordController(val graphService: GraphService) {
     )
 
     @PostMapping("/{graph}/wordSequence")
-    fun addWordSequence(@PathVariable graph: String, @RequestBody params: WordSequenceParams): WordSequenceResults {
+    fun addWordSequence(repo: GraphRepository, @RequestBody params: WordSequenceParams): WordSequenceResults {
         val stepText = params.sequence
-        val repo = graphService.resolveGraph(graph)
         val source = parseSourceRefs(repo, params.source)
         val steps = stepText.split('>').map { it.trim() }
         var lastGloss: String? = null
@@ -381,7 +372,7 @@ class WordController(val graphService: GraphService) {
         for (step in steps) {
             val match = sequenceStepPattern.matchEntire(step)
                 ?: badRequest("Can't parse sequence step: $step")
-            val language = graphService.resolveLanguage(graph, match.groupValues[1])
+            val language = repo.resolveLanguage(match.groupValues[1])
 
             var gloss: String? = match.groupValues[3].trim(' ', '\'')
             if (!gloss.isNullOrEmpty()) {

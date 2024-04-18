@@ -7,12 +7,11 @@ import org.springframework.web.bind.annotation.RestController
 import ru.yole.etymograph.GraphRepository
 import ru.yole.etymograph.Language
 import ru.yole.etymograph.WordKind
-import ru.yole.etymograph.web.GraphService
 import ru.yole.etymograph.web.resolveLanguage
 
 @RestController
 @RequestMapping("/{graph}/dictionary")
-class DictionaryController(val graphService: GraphService) {
+class DictionaryController {
     data class DictionaryWordViewModel(val id: Int, val text: String, val gloss: String, val fullGloss: String?, val homonym: Boolean)
     data class DictionaryViewModel(val language: Language, val words: List<DictionaryWordViewModel>)
 

@@ -20,17 +20,17 @@ class WordControllerTest {
     fun setup() {
         fixture = QTestFixture()
         graph = fixture.graph
-        wordController = WordController(fixture.graphService)
+        wordController = WordController()
     }
 
     @Test
     fun testEmptyPOS() {
         val addWordParams = WordController.AddWordParameters("ea", "be", "", "", false,"", "")
-        val wordViewModel = wordController.addWord("", "q", addWordParams)
+        val wordViewModel = wordController.addWord(graph, "q", addWordParams)
 
         assertNull(fixture.graph.wordsByText(fixture.q, "ea").single().pos)
 
-        wordController.updateWord("", wordViewModel.id, addWordParams)
+        wordController.updateWord(graph, wordViewModel.id, addWordParams)
         assertNull(fixture.graph.wordsByText(fixture.q, "ea").single().pos)
     }
 
@@ -39,11 +39,11 @@ class WordControllerTest {
         fixture.q.wordClasses.add(WordCategory("Gender", listOf("N"), listOf(WordCategoryValue("Male", "m"))))
 
         val addWordParams = WordController.AddWordParameters("ea", "be", "", "N m", false, "", "")
-        val wordViewModel = wordController.addWord("", "q", addWordParams)
+        val wordViewModel = wordController.addWord(graph, "q", addWordParams)
         assertEquals(listOf("m"), wordViewModel.classes)
 
         val badAddWordParams = WordController.AddWordParameters("ea", "be", "", "N f", false, "", "")
-        Assert.assertThrows("Unknown word class 'f'", Exception::class.java) { wordController.addWord("", "q", badAddWordParams) }
+        Assert.assertThrows("Unknown word class 'f'", Exception::class.java) { wordController.addWord(graph, "q", badAddWordParams) }
     }
 
     @Test
@@ -51,10 +51,10 @@ class WordControllerTest {
         val accRule = fixture.setupParadigm()
         val elen = fixture.graph.findOrAddWord("elen", fixture.q, "star", pos = "N")
 
-        val wordParadigms = wordController.wordParadigms("", elen.id)
+        val wordParadigms = wordController.wordParadigms(graph, elen.id)
         assertEquals(1, wordParadigms.paradigms.size)
 
-        wordController.updateParadigm("", elen.id, WordController.UpdateParadigmParameters(arrayOf(arrayOf(accRule.id, "elena"))))
+        wordController.updateParadigm(graph, elen.id, WordController.UpdateParadigmParameters(arrayOf(arrayOf(accRule.id, "elena"))))
         val elena = fixture.graph.wordsByText(fixture.q, "elena").single()
         assertEquals("star.ACC", elena.getOrComputeGloss(fixture.graph))
     }
@@ -66,10 +66,10 @@ class WordControllerTest {
         val elena = graph.findOrAddWord("elena", fixture.q, null, pos = "N")
         graph.addLink(elena, elen, Link.Derived, listOf(accRule), emptyList(), null)
 
-        val wordParadigms = wordController.wordParadigms("", elen.id)
+        val wordParadigms = wordController.wordParadigms(graph, elen.id)
         assertEquals(1, wordParadigms.paradigms.size)
 
-        wordController.updateParadigm("", elen.id, WordController.UpdateParadigmParameters(arrayOf(arrayOf(accRule.id, "elenna"))))
+        wordController.updateParadigm(graph, elen.id, WordController.UpdateParadigmParameters(arrayOf(arrayOf(accRule.id, "elenna"))))
         assertEquals(elena, fixture.graph.wordsByText(fixture.q, "elenna").single())
     }
 
@@ -81,7 +81,7 @@ class WordControllerTest {
         val w2 = graph.findOrAddWord("an", fixture.q, null)
         val link = graph.addLink(w2, w1, Link.Origin, emptyList(), emptyList(), null)
 
-        val wordViewModel = wordController.singleWordJson("", "q", "an", w2.id)
+        val wordViewModel = wordController.singleWordJson(graph, "q", "an", w2.id)
         val linkTypeViewModel = wordViewModel.linksFrom.single()
         val linkViewModel = linkTypeViewModel.words.single()
         val seqViewModel = linkViewModel.suggestedSequences.single()
@@ -96,7 +96,7 @@ class WordControllerTest {
         val w2 = graph.findOrAddWord("an", fixture.q, null)
         val link = graph.addLink(w2, w1, Link.Origin, emptyList(), emptyList(), null)
 
-        val wordViewModel = wordController.singleWordJson("", "ce", "am", w1.id)
+        val wordViewModel = wordController.singleWordJson(graph, "ce", "am", w1.id)
         val linkTypeViewModel = wordViewModel.linksTo.single()
         val linkViewModel = linkTypeViewModel.words.single()
         val seqViewModel = linkViewModel.suggestedSequences.single()
@@ -107,10 +107,10 @@ class WordControllerTest {
     fun deriveThroughSequence() {
         val seq = fixture.setupRuleSequence()
         val cew = graph.findOrAddWord("am", fixture.ce, null)
-        val wordViewModel = wordController.singleWordJson("", "ce", "am", cew.id)
+        val wordViewModel = wordController.singleWordJson(graph, "ce", "am", cew.id)
         assertEquals(1, wordViewModel.suggestedDeriveSequences.size)
 
-        val qWordViewModel = wordController.derive("", cew.id, WordController.DeriveThroughSequenceParams(seq.id))
+        val qWordViewModel = wordController.derive(graph, cew.id, WordController.DeriveThroughSequenceParams(seq.id))
         assertEquals("an", qWordViewModel.text)
 
         val qw = graph.wordById(qWordViewModel.id)!!
@@ -122,7 +122,7 @@ class WordControllerTest {
     fun addWordSequence() {
         val seq = fixture.setupRuleSequence()
 
-        wordController.addWordSequence("", WordController.WordSequenceParams("ce am 'smth, other' > q an", "PE xx"))
+        wordController.addWordSequence(graph, WordController.WordSequenceParams("ce am 'smth, other' > q an", "PE xx"))
         val ceWord = graph.wordsByText(fixture.ce, "am").single()
         assertEquals("smth, other", ceWord.gloss)
         assertEquals("PE xx", ceWord.source.single().refText)
