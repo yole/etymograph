@@ -1,9 +1,9 @@
-import {allowEdit, fetchAllLanguagePaths, fetchBackend, updateParadigm, updateWordParadigm} from "@/api";
-import Link from "next/link";
+import {allowEdit, fetchAllLanguagePaths, fetchBackend, updateWordParadigm} from "@/api";
 import {useRouter} from "next/router";
-import {useEffect, useState} from "react";
+import {useContext, useState} from "react";
 import WordLink from "@/components/WordLink";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import {GraphContext} from "@/components/Contexts";
 
 export const config = {
     unstable_runtimeJS: true
@@ -52,7 +52,7 @@ function WordParadigm(params) {
     function saveParadigm() {
         updateWordParadigm(router.query.graph, params.wordId, editedParadigm).then(r => {
             setEditMode(false)
-            params.router.replace(params.router.asPath)
+            router.replace(router.asPath)
         })
     }
 
@@ -77,7 +77,7 @@ function WordParadigm(params) {
                 {p.cells.map(columnWords => <td>
                     {columnWords[i]?.map((alt, ai) => <>
                         {ai > 0 && <>&nbsp;|&nbsp;</>}
-                        <WordParadigmCell lang={params.router.query.lang} alt={alt} editMode={editMode}
+                        <WordParadigmCell lang={router.query.lang} alt={alt} editMode={editMode}
                                           editedParadigm={editedParadigm} setEditedParadigm={setEditedParadigm}/>
                     </>)}
                 </td>)}
@@ -94,8 +94,7 @@ function WordParadigm(params) {
 
 export default function WordParadigms(params) {
     const paradigmList = params.loaderData
-    const router = useRouter()
-    const graph = router.query.graph
+    const graph = useContext(GraphContext)
 
     return <>
         <Breadcrumbs langId={paradigmList.language} langName={paradigmList.languageFullName}
@@ -105,7 +104,7 @@ export default function WordParadigms(params) {
                      ]}
                      title="Paradigms"/>
         {paradigmList.paradigms.map(p => <>
-            <WordParadigm router={router} wordId={paradigmList.wordId} paradigm={p}/>
+            <WordParadigm wordId={paradigmList.wordId} paradigm={p}/>
         </>)}
     </>
 }
