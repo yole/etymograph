@@ -642,5 +642,31 @@
                 }
             ]
         }
+    ],
+    "wordClasses": [
+        {
+            "name": "Phonology",
+            "pos": [
+                "N"
+            ],
+            "values": [
+                {
+                    "name": "initial-s-syllabic",
+                    "abbreviation": "initial-s-syllabic"
+                }
+            ]
+        },
+        {
+            "name": "Class plural type",
+            "pos": [
+                "N"
+            ],
+            "values": [
+                {
+                    "name": "cpl-rim",
+                    "abbreviation": "cpl-rim"
+                }
+            ]
+        }
     ]
 }

@@ -457,5 +457,132 @@
                 }
             ]
         }
+    ],
+    "wordClasses": [
+        {
+            "name": "Gender",
+            "pos": [
+                "N",
+                "NP"
+            ],
+            "values": [
+                {
+                    "name": "Masculine",
+                    "abbreviation": "m"
+                },
+                {
+                    "name": "Feminine",
+                    "abbreviation": "f"
+                },
+                {
+                    "name": "Neuter",
+                    "abbreviation": "n"
+                }
+            ]
+        },
+        {
+            "name": "Declension type",
+            "pos": [
+                "N",
+                "NP",
+                "V"
+            ],
+            "values": [
+                {
+                    "name": "Strong",
+                    "abbreviation": "strong"
+                },
+                {
+                    "name": "Strong Type 2",
+                    "abbreviation": "strong-type2"
+                },
+                {
+                    "name": "Weak",
+                    "abbreviation": "weak"
+                }
+            ]
+        },
+        {
+            "name": "Conjugation",
+            "pos": [
+                "V"
+            ],
+            "values": [
+                {
+                    "name": "1st Conjugation",
+                    "abbreviation": "1conj"
+                },
+                {
+                    "name": "2nd Conjugation",
+                    "abbreviation": "2conj"
+                },
+                {
+                    "name": "3rd Conjugation",
+                    "abbreviation": "3conj"
+                },
+                {
+                    "name": "4th Conjugation",
+                    "abbreviation": "4conj"
+                }
+            ]
+        },
+        {
+            "name": "Genitive type",
+            "pos": [
+                "N",
+                "NP"
+            ],
+            "values": [
+                {
+                    "name": "-ar",
+                    "abbreviation": "gen-ar"
+                }
+            ]
+        },
+        {
+            "name": "Stem type",
+            "pos": [
+                "N",
+                "NP"
+            ],
+            "values": [
+                {
+                    "name": "-v",
+                    "abbreviation": "v-stem"
+                },
+                {
+                    "name": "-j",
+                    "abbreviation": "j-stem"
+                },
+                {
+                    "name": "-r",
+                    "abbreviation": "r-stem"
+                },
+                {
+                    "name": "-a-",
+                    "abbreviation": "uml-stem"
+                }
+            ]
+        },
+        {
+            "name": "Weak preterite suffix",
+            "pos": [
+                "V"
+            ],
+            "values": [
+                {
+                    "name": "-d-",
+                    "abbreviation": "pret-d"
+                },
+                {
+                    "name": "-t-",
+                    "abbreviation": "pret-t"
+                },
+                {
+                    "name": "-ð-",
+                    "abbreviation": "pret-ð"
+                }
+            ]
+        }
     ]
 }

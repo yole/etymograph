@@ -596,5 +596,67 @@
                 }
             ]
         }
+    ],
+    "wordClasses": [
+        {
+            "name": "Gender",
+            "pos": [
+                "N"
+            ],
+            "values": [
+                {
+                    "name": "masculine",
+                    "abbreviation": "masc"
+                },
+                {
+                    "name": "feminine",
+                    "abbreviation": "fem"
+                },
+                {
+                    "name": "neuter",
+                    "abbreviation": "neut"
+                }
+            ]
+        },
+        {
+            "name": "Stem class",
+            "pos": [
+                "N"
+            ],
+            "values": [
+                {
+                    "name": "a-stem",
+                    "abbreviation": "a-stem"
+                },
+                {
+                    "name": "o-stem",
+                    "abbreviation": "o-stem"
+                }
+            ]
+        },
+        {
+            "name": "Weak preterite suffix",
+            "pos": [
+                "V"
+            ],
+            "values": [
+                {
+                    "name": "-d-",
+                    "abbreviation": "pret-d"
+                },
+                {
+                    "name": "-ed-",
+                    "abbreviation": "pret-ed"
+                },
+                {
+                    "name": "-t-",
+                    "abbreviation": "pret-t"
+                },
+                {
+                    "name": "-od-",
+                    "abbreviation": "pret-od"
+                }
+            ]
+        }
     ]
 }

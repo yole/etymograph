@@ -48,7 +48,8 @@ data class LanguageDetailsData(
     val phonotacticsRuleId: Int? = null,
     val orthographyRuleId: Int? = null,
     val syllableStructures: List<String> = emptyList(),
-    val grammaticalCategories: List<WordCategoryData> = emptyList()
+    val grammaticalCategories: List<WordCategoryData> = emptyList(),
+    val wordClasses: List<WordCategoryData> = emptyList()
 )
 
 @Serializable
@@ -292,7 +293,6 @@ data class WordCategoryValueData(
 
 @Serializable
 data class WordCategoryData(
-    @SerialName("lang") val languageShortName: String? = null,
     val name: String,
     val pos: List<String>,
     val values: List<WordCategoryValueData>
@@ -310,7 +310,6 @@ data class GraphRepositoryData(
     val paradigms: List<ParadigmData>,
     val compounds: List<CompoundData>,
     val translations: List<TranslationData>,
-    val wordClasses: List<WordCategoryData>,
     val ruleSequences: List<RuleSequenceData>
 )
 
@@ -378,21 +377,21 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                 lang.phonotacticsRule?.resolve()?.id,
                 lang.orthographyRule?.resolve()?.id,
                 lang.syllableStructures,
-                serializeWordCategories(lang, lang.grammaticalCategories)
+                serializeWordCategories(lang.grammaticalCategories),
+                serializeWordCategories(lang.wordClasses)
             )
             consumer(lang.shortName + "/language.json", theJson.encodeToString(languageDetailsData))
         }
     }
 
-    private fun serializeWordCategories(lang: Language, categories: List<WordCategory>) =
+    private fun serializeWordCategories(categories: List<WordCategory>) =
         categories.map {
-            WordCategoryData(null, it.name, it.pos, it.values.map { v ->
+            WordCategoryData(it.name, it.pos, it.values.map { v ->
                 WordCategoryValueData(v.name, v.abbreviation)
             })
         }
 
     private fun createGraphRepositoryData(): GraphRepositoryData {
-        val wordClassData = mapWordCategories { it.wordClasses }
         return GraphRepositoryData(
             id,
             name,
@@ -432,7 +431,6 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             allLangEntities.filterIsInstance<Translation>().map { t ->
                 TranslationData(t.id, t.corpusText.id, t.text, t.source.sourceToSerializedFormat(), t.notes)
             },
-            wordClassData,
             allLangEntities.filterIsInstance<RuleSequence>().map { s ->
                 RuleSequenceData(
                     s.id, s.name, s.fromLanguage.shortName, s.toLanguage.shortName,
@@ -440,14 +438,6 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                     s.source.sourceToSerializedFormat(), s.notes)
             }
         )
-    }
-
-    private fun mapWordCategories(prop: (Language) -> List<WordCategory>) = languages.values.flatMap { lang ->
-        prop(lang).map {
-            WordCategoryData(lang.shortName, it.name, it.pos, it.values.map { v ->
-                WordCategoryValueData(v.name, v.abbreviation)
-            })
-        }
     }
 
     private fun loadJson(contentProviderCallback: (String) -> String) {
@@ -563,7 +553,6 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             setLangEntity(translation.id, translation)
             storeTranslation(corpusText, translation)
         }
-        loadWordCategoryData(data.wordClasses) { it.wordClasses }
 
         for (paradigm in data.paradigms) {
             while (paradigm.id > paradigms.size) {
@@ -616,6 +605,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             language.orthographyRule = data.orthographyRuleId?.let { ruleRef(this, it) }
             language.syllableStructures = data.syllableStructures
             language.grammaticalCategories = deserializeWordCategories(data.grammaticalCategories)
+            language.wordClasses = deserializeWordCategories(data.wordClasses)
         }
     }
 
@@ -632,17 +622,6 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                 publications.add(null)
             }
             publications.add(Publication(pubData.id, pubData.name, pubData.refId))
-        }
-    }
-
-    private fun loadWordCategoryData(wordCategoryData: List<WordCategoryData>, prop: (Language) -> MutableList<WordCategory>) {
-        for (gc in wordCategoryData) {
-            val language = languageByShortName(gc.languageShortName!!)
-            prop(language!!).add(WordCategory(
-                gc.name,
-                gc.pos,
-                gc.values.map { WordCategoryValue(it.name, it.abbreviation) }
-            ))
         }
     }
 

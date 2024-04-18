@@ -33334,52 +33334,6 @@
             "text": "Elvish gate open now for us,\ndoorway of the Dwarf-folk listen to the word of my tongue"
         }
     ],
-    "wordClasses": [
-        {
-            "lang": "S",
-            "name": "Phonology",
-            "pos": [
-                "N"
-            ],
-            "values": [
-                {
-                    "name": "initial-s-syllabic",
-                    "abbreviation": "initial-s-syllabic"
-                }
-            ]
-        },
-        {
-            "lang": "S",
-            "name": "Class plural type",
-            "pos": [
-                "N"
-            ],
-            "values": [
-                {
-                    "name": "cpl-rim",
-                    "abbreviation": "cpl-rim"
-                }
-            ]
-        },
-        {
-            "lang": "CE",
-            "name": "Phonology",
-            "pos": [
-                "N",
-                "V"
-            ],
-            "values": [
-                {
-                    "name": "initial-s-syllabic",
-                    "abbreviation": "initial-s-syllabic"
-                },
-                {
-                    "name": "initial-nasal-syllabic",
-                    "abbreviation": "initial-nasal-syllabic"
-                }
-            ]
-        }
-    ],
     "ruleSequences": [
         {
             "id": 1072,

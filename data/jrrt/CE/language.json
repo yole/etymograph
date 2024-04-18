@@ -407,5 +407,24 @@
                 "consonant"
             ]
         }
+    ],
+    "wordClasses": [
+        {
+            "name": "Phonology",
+            "pos": [
+                "N",
+                "V"
+            ],
+            "values": [
+                {
+                    "name": "initial-s-syllabic",
+                    "abbreviation": "initial-s-syllabic"
+                },
+                {
+                    "name": "initial-nasal-syllabic",
+                    "abbreviation": "initial-nasal-syllabic"
+                }
+            ]
+        }
     ]
 }
