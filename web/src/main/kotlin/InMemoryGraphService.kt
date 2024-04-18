@@ -67,7 +67,8 @@ fun GraphRepository.resolveWord(id: Int): Word {
     return wordById(id) ?: notFound("No word with ID $id")
 }
 
-fun GraphRepository.resolveCorpusText(id: Int): CorpusText {
+fun GraphRepository.resolveCorpusText(id: Int?): CorpusText {
+    if (id == null) badRequest("Corpus text ID not specified")
     return corpusTextById(id) ?: notFound("No corpus text with ID $id")
 }
 

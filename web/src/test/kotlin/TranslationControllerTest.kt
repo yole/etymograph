@@ -14,9 +14,9 @@ class TranslationControllerTest {
         val corpusParams = CorpusController.CorpusTextParams(text = "Elen sila...")
         val corpusTextViewModel = corpusController.newText(fixture.graph, "q", corpusParams)
 
-        val translationController = TranslationController(fixture.graphService)
+        val translationController = TranslationController()
         val translationParams = TranslationController.TranslationParams(corpusTextViewModel.id, "The star shines...", "")
-        translationController.addTranslation("", translationParams)
+        translationController.addTranslation(fixture.graph, translationParams)
 
         val corpusTextViewModel2 = corpusController.textJson(fixture.graph, corpusTextViewModel.id)
         Assert.assertEquals(1, corpusTextViewModel2.translations.size)
