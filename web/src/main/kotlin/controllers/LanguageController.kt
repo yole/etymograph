@@ -1,17 +1,12 @@
 package ru.yole.etymograph.web.controllers
 
-import org.springframework.http.HttpStatus
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PathVariable
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RestController
-import org.springframework.web.server.ResponseStatusException
+import org.springframework.web.bind.annotation.*
 import ru.yole.etymograph.*
-import ru.yole.etymograph.web.GraphService
+import ru.yole.etymograph.web.resolveLanguage
+import ru.yole.etymograph.web.resolveRule
 
 @RestController
-class LanguageController(val graphService: GraphService) {
+class LanguageController {
     data class PhonemeTableCellViewModel(
         val phonemes: List<PhonemeViewModel>
     )
@@ -50,16 +45,15 @@ class LanguageController(val graphService: GraphService) {
     )
 
     @GetMapping("/{graph}/language")
-    fun indexJson(@PathVariable graph: String): List<LanguageShortViewModel> {
-        return graphService.resolveGraph(graph).allLanguages().sortedBy { it.name }.map {
+    fun indexJson(repo: GraphRepository): List<LanguageShortViewModel> {
+        return repo.allLanguages().sortedBy { it.name }.map {
             LanguageShortViewModel(it.name, it.shortName)
         }
     }
 
     @GetMapping("/{graph}/language/{lang}")
-    fun language(@PathVariable graph: String, @PathVariable lang: String): LanguageViewModel {
-        val language = graphService.resolveLanguage(graph, lang)
-        val repo = graphService.resolveGraph(graph)
+    fun language(repo: GraphRepository, @PathVariable lang: String): LanguageViewModel {
+        val language = repo.resolveLanguage(lang)
         return language.toViewModel(repo)
     }
 
@@ -106,29 +100,27 @@ class LanguageController(val graphService: GraphService) {
     )
 
     @PostMapping("/{graph}/languages", consumes = ["application/json"])
-    fun addLanguage(@PathVariable graph: String, @RequestBody params: UpdateLanguageParameters): LanguageViewModel {
-        val name = params.name ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST, "Language name must be provided")
-        val shortName = params.shortName ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST, "Language short name must be provided")
+    fun addLanguage(repo: GraphRepository, @RequestBody params: UpdateLanguageParameters): LanguageViewModel {
+        val name = params.name.takeIf { !it.isNullOrBlank() } ?: badRequest("Language name must be provided")
+        val shortName = params.shortName.takeIf { !it.isNullOrBlank() } ?: badRequest("Language short name must be provided")
         val language = Language(name, shortName)
-        val repo = graphService.resolveGraph(graph)
         repo.addLanguage(language)
-        updateLanguageDetails(graph, language, params)
+        updateLanguageDetails(repo, language, params)
         return language.toViewModel(repo)
     }
 
     @PostMapping("/{graph}/language/{lang}", consumes = ["application/json"])
-    fun updateLanguage(@PathVariable graph: String, @PathVariable lang: String, @RequestBody params: UpdateLanguageParameters) {
-        val language = graphService.resolveLanguage(graph, lang)
-        updateLanguageDetails(graph, language, params)
+    fun updateLanguage(repo: GraphRepository, @PathVariable lang: String, @RequestBody params: UpdateLanguageParameters) {
+        val language = repo.resolveLanguage(lang)
+        updateLanguageDetails(repo, language, params)
     }
 
     data class CopyPhonemesParams(val fromLang: String = "")
 
     @PostMapping("/{graph}/language/{lang}/copyPhonemes", consumes = ["application/json"])
-    fun copyPhonemes(@PathVariable graph: String, @PathVariable lang: String, @RequestBody params: CopyPhonemesParams) {
-        val toLanguage = graphService.resolveLanguage(graph, lang)
-        val fromLanguage = graphService.resolveLanguage(graph, params.fromLang)
-        val repo = graphService.resolveGraph(graph)
+    fun copyPhonemes(repo: GraphRepository, @PathVariable lang: String, @RequestBody params: CopyPhonemesParams) {
+        val toLanguage = repo.resolveLanguage(lang)
+        val fromLanguage = repo.resolveLanguage(params.fromLang)
         for (phoneme in fromLanguage.phonemes) {
             if (toLanguage.phonemes.none { phoneme.graphemes.intersect(it.graphemes).isNotEmpty() }) {
                 repo.addPhoneme(toLanguage, phoneme.graphemes, phoneme.sound, phoneme.classes)
@@ -137,7 +129,7 @@ class LanguageController(val graphService: GraphService) {
     }
 
     private fun updateLanguageDetails(
-        graph: String,
+        repo: GraphRepository,
         language: Language,
         params: UpdateLanguageParameters
     ) {
@@ -150,14 +142,14 @@ class LanguageController(val graphService: GraphService) {
         language.grammaticalCategories = params.grammaticalCategories.nullize()?.let { parseWordCategories(it) } ?: mutableListOf()
         language.wordClasses = params.wordClasses.nullize()?.let { parseWordCategories(it) } ?: mutableListOf()
 
-        language.stressRule = parseRuleRef(graph, params.stressRuleName)
-        language.phonotacticsRule = parseRuleRef(graph, params.phonotacticsRuleName)
-        language.orthographyRule = parseRuleRef(graph, params.orthographyRuleName)
+        language.stressRule = parseRuleRef(repo, params.stressRuleName)
+        language.phonotacticsRule = parseRuleRef(repo, params.phonotacticsRuleName)
+        language.orthographyRule = parseRuleRef(repo, params.orthographyRuleName)
     }
 
-    private fun parseRuleRef(graph: String, name: String?): RuleRef? {
-        val stressRule = name?.nullize()?.let { graphService.resolveRule(graph, it) }
-        return stressRule?.let { RuleRef.to(it) }
+    private fun parseRuleRef(repo: GraphRepository, name: String?): RuleRef? {
+        val rule = name?.nullize()?.let { repo.resolveRule(it) }
+        return rule?.let { RuleRef.to(it) }
     }
 
     private fun List<WordCategory>.toEditableText(): String {
@@ -187,7 +179,7 @@ class LanguageController(val graphService: GraphService) {
 
     private fun parseWordCategoryName(s: String): Pair<String, List<String>> {
         val p = parenthesized.matchEntire(s)
-            ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST, "Unrecognized grammatical category name format $s")
+            ?: badRequest("Unrecognized grammatical category name format $s")
         return p.groupValues[1] to p.groupValues[2].split(',').map { it.trim() }
     }
 

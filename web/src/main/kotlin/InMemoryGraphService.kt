@@ -82,3 +82,7 @@ fun GraphRepository.resolveCorpusText(id: Int): CorpusText {
 fun GraphRepository.resolveRule(id: Int): Rule {
     return ruleById(id) ?: notFound("No rule with ID $id")
 }
+
+fun GraphRepository.resolveRule(name: String): Rule {
+    return ruleByName(name) ?: notFound("No rule with name $name")
+}
