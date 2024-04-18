@@ -10,7 +10,7 @@ export const config = {
 }
 
 export async function getStaticProps(context){
-    return fetchBackend(context.params.graph, `word/${context.params.id}/paradigms`, { headers: { 'Accept': 'application/json'} })
+    return fetchBackend(context.params.graph, `word/${context.params.id}/paradigms`, true)
 }
 
 export async function getStaticPaths() {
