@@ -1,5 +1,5 @@
 import Link from "next/link";
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import {fetchBackend, updateLanguage, fetchAllLanguagePaths, allowEdit, copyPhonemes} from "@/api";
 import {useRouter} from "next/router";
 import Breadcrumbs from "@/components/Breadcrumbs";
@@ -30,7 +30,6 @@ export default function LanguageIndex(props) {
     const [copyPhonemesFrom, setCopyPhonemesFrom] = useState("")
     const router = useRouter()
     const graph = router.query.graph
-    useEffect(() => { document.title = "Etymograph : " + lang.name })
 
     function saveLanguage() {
         updateLanguage(graph, langId, diphthongs, syllableStructures, stressRule, phonotacticsRule, orthographyRule, grammaticalCategories, wordClasses)
@@ -46,17 +45,15 @@ export default function LanguageIndex(props) {
             })
     }
 
-    function copyPhonemesClicked() {
-        copyPhonemes(graph, langId, copyPhonemesFrom)
-            .then((r) => {
-                if (r.status === 200) {
-                    setErrorText("")
-                    router.replace(router.asPath)
-                }
-                else {
-                    r.json().then(r => setErrorText(r.message))
-                }
-            })
+    async function copyPhonemesClicked() {
+        const r = await copyPhonemes(graph, langId, copyPhonemesFrom)
+        if (r.status === 200) {
+            setErrorText("")
+            router.replace(router.asPath)
+        }
+        else {
+            r.json().then(r => setErrorText(r.message))
+        }
     }
 
     return <>
@@ -101,7 +98,7 @@ export default function LanguageIndex(props) {
             </ul>)}
         </>)}
         {allowEdit() && <>
-            <Link href={`/${graph}/phonemes/${langId}/new`}>Add phoneme</Link>
+            <button onClick={() => router.push(`/${graph}/phonemes/${langId}/new`)}>Add phoneme</button>
             {lang.phonemes.length === 0 &&<>
                 {' '}
                 <button className="inlineButton" onClick={() => setShowCopyPhonemesForm(!showCopyPhonemesForm)}>Copy phonemes</button>
