@@ -1,68 +1,24 @@
-import {useState} from "react";
 import {addPhoneme, updatePhoneme} from "@/api";
-import {useRouter} from "next/router";
+import EtymographForm from "@/components/EtymographForm";
+import FormRow from "@/components/FormRow";
+import FormCheckbox from "@/components/FormCheckbox";
+import {useContext} from "react";
+import {GraphContext} from "@/components/Contexts";
 
 export default function PhonemeForm(props) {
-    const [graphemes, setGraphemes] = useState(props.initialGraphemes !== undefined ? props.initialGraphemes : "")
-    const [sound, setSound] = useState(props.initialSound !== undefined ? props.initialSound : "")
-    const [classes, setClasses] = useState(props.initialClasses !== undefined ? props.initialClasses : "")
-    const [historical, setHistorical] = useState(props.initialHistorical !== undefined ? props.initialHistorical : false)
-    const [source, setSource] = useState(props.initialSource !== undefined ? props.initialSource : "")
-    const [errorText, setErrorText] = useState("")
-    const router = useRouter()
-    const graph = router.query.graph
+    const graph = useContext(GraphContext)
 
-    function savePhoneme() {
-        if (props.updateId !== undefined) {
-            updatePhoneme(graph, props.updateId, graphemes, sound, classes, historical, source).then(handleResponse)
-        }
-        else {
-            addPhoneme(graph, props.language, graphemes, sound, classes, historical, source).then(handleResponse)
-        }
-    }
-
-    function handleResponse(r) {
-        if (r.status === 200) {
-            if (props.updateId !== undefined) {
-                props.submitted()
-            }
-            else {
-                r.json().then(r => props.submitted(r.id))
-            }
-        }
-        else {
-            r.json().then(r => setErrorText(r.message.length > 0 ? r.message : "Failed to save phoneme"))
-        }
-    }
-
-    return <>
-        <table>
-            <tbody>
-            <tr>
-                <td><label>Graphemes:</label></td>
-                <td><input type="text" value={graphemes} onChange={(e) => setGraphemes(e.target.value)}/></td>
-            </tr>
-            <tr>
-                <td><label>Sound:</label></td>
-                <td><input type="text" value={sound} onChange={(e) => setSound(e.target.value)}/></td>
-            </tr>
-            <tr>
-                <td><label>Classes:</label></td>
-                <td><input type="text" value={classes} onChange={(e) => setClasses(e.target.value)}/></td>
-            </tr>
-            <tr>
-                <td><label>Source:</label></td>
-                <td><input type="text" value={source} onChange={(e) => setSource(e.target.value)}/></td>
-            </tr>
-            </tbody>
-        </table>
-        <label>
-            <input type="checkbox" checked={historical} onChange={(e) => setHistorical(!historical)}/>
-            Historical
-        </label>
-        <p/>
-        <button onClick={savePhoneme}>Save</button>
-        <br/>
-        {errorText !== "" && <div className="errorText">{errorText}</div>}
-    </>
+    return <EtymographForm
+        create={(data) => addPhoneme(graph, props.language, data)}
+        update={(data) => updatePhoneme(graph, props.updateId, data)}
+        {...props}
+    >
+        <table><tbody>
+            <FormRow label="Graphemes" id="graphemes"/>
+            <FormRow label="Sound" id="sound"/>
+            <FormRow label="Classes" id="classes"/>
+            <FormRow label="Source" id="source"/>
+        </tbody></table>
+        <FormCheckbox label="Historical" id="historical"/>
+    </EtymographForm>
 }

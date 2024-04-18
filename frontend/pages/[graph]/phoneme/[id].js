@@ -11,7 +11,7 @@ export const config = {
 }
 
 export async function getStaticProps(context) {
-    return fetchBackend(context.params.graph, `phoneme/${context.params.id}`)
+    return fetchBackend(context.params.graph, `phoneme/${context.params.id}`, true)
 }
 
 export async function getStaticPaths() {
@@ -54,18 +54,21 @@ export default function Phoneme(props) {
         </>}
         {editMode && <PhonemeForm
             updateId={phoneme.id}
-            initialGraphemes={phoneme.graphemes.join(", ")}
-            initialSound={phoneme.sound}
-            initialClasses={phoneme.classes}
-            initialHistorical={phoneme.historical}
-            initialSource={phoneme.sourceEditableText}
+            defaultValues={{
+                graphemes: phoneme.graphemes.join(", "),
+                sound: phoneme.sound,
+                classes: phoneme.classes,
+                historical: phoneme.historical,
+                source: phoneme.sourceEditableText
+            }}
             submitted={submitted}
+            cancelled={() => setEditMode(false)}
         />}
 
         {allowEdit() && <>
-            <button onClick={() => setEditMode(!editMode)}>{editMode ? "Cancel" : "Edit"}</button>
+            {!editMode && <button onClick={() => setEditMode(true)}>Edit</button>}
             {' '}
-            <button onClick={() => deletePhonemeClicked()}>{"Delete"}</button>
+            <button onClick={() => deletePhonemeClicked()}>Delete</button>
         </>}
 
         {phoneme.relatedRules.length > 0 && <>

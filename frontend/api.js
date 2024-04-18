@@ -227,24 +227,12 @@ export function updateLanguage(
     )
 }
 
-export function addPhoneme(graph, lang, graphemes, sound, classes, historical, source) {
-    return postToBackend(`${graph}/phonemes/${lang}`, {
-        graphemes: graphemes,
-        sound: sound,
-        classes: classes,
-        historical: historical,
-        source: source
-    })
+export function addPhoneme(graph, lang, data) {
+    return postToBackend(`${graph}/phonemes/${lang}`, data)
 }
 
-export function updatePhoneme(graph, id, graphemes, sound, classes, historical, source) {
-    return postToBackend(`${graph}/phoneme/${id}`, {
-        graphemes: graphemes,
-        sound: sound,
-        classes: classes,
-        historical: historical,
-        source: source
-    })
+export function updatePhoneme(graph, id, data) {
+    return postToBackend(`${graph}/phoneme/${id}`, data)
 }
 
 export function deletePhoneme(graph, id) {
