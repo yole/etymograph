@@ -1,0 +1,491 @@
+[
+    {
+        "id": 0,
+        "name": "Noun",
+        "rows": [
+            "Nom",
+            "Gen",
+            "Dat",
+            "Poss",
+            "All",
+            "Abl",
+            "Loc",
+            "Ins"
+        ],
+        "columns": [
+            {
+                "title": "Sg",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            null
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            397
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            404
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            408
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            399
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            398
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            410
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            406
+                        ]
+                    }
+                ]
+            },
+            {
+                "title": "Pl",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            396
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            405
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            427
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            564
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            479
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            488,
+                            708
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            409
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            521
+                        ]
+                    }
+                ]
+            },
+            {
+                "title": "Part-Pl",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            412
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            462
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            478
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            563
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            484,
+                            486
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            505
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            516
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            531
+                        ]
+                    }
+                ]
+            },
+            {
+                "title": "Dual",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            411
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            470
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            428
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            562
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            482
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            514
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            519
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            532
+                        ]
+                    }
+                ]
+            }
+        ],
+        "posList": [
+            "N"
+        ]
+    },
+    {
+        "id": 1,
+        "name": "Subject Pronouns",
+        "rows": [
+            "1st Person Exclusive",
+            "1st Person Inclusive",
+            "2nd Person Formal",
+            "2nd Person Familiar",
+            "3rd Person"
+        ],
+        "columns": [
+            {
+                "title": "Singular",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            402,
+                            544
+                        ]
+                    },
+                    {},
+                    {
+                        "ruleAlternatives": [
+                            401
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            403
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            686,
+                            687
+                        ]
+                    }
+                ]
+            },
+            {
+                "title": "Plural",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            420
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            698
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            645
+                        ]
+                    },
+                    {},
+                    {
+                        "ruleAlternatives": [
+                            647,
+                            766
+                        ]
+                    }
+                ]
+            },
+            {
+                "title": "Dual",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            713
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            714
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            715
+                        ]
+                    },
+                    {},
+                    {
+                        "ruleAlternatives": [
+                            716
+                        ]
+                    }
+                ]
+            }
+        ],
+        "posList": [
+            "V.TENSE"
+        ]
+    },
+    {
+        "id": 2,
+        "name": "Possessive Pronouns",
+        "rows": [
+            "1st Person Exclusive",
+            "1st Person Inclusive",
+            "2nd Person Formal",
+            "2nd Person Familiar",
+            "3rd Person"
+        ],
+        "columns": [
+            {
+                "title": "Singular",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            552
+                        ]
+                    },
+                    {},
+                    {
+                        "ruleAlternatives": [
+                            414
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            741
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            400
+                        ]
+                    }
+                ]
+            },
+            {
+                "title": "Plural",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            415
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            742
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            743
+                        ]
+                    }
+                ]
+            },
+            {
+                "title": "Dual",
+                "cells": [
+                    {},
+                    {},
+                    {
+                        "ruleAlternatives": [
+                            1004
+                        ]
+                    }
+                ]
+            }
+        ],
+        "posList": [
+            "N"
+        ]
+    },
+    {
+        "id": 3,
+        "name": "Object Suffixes",
+        "rows": [
+            "3rd Person"
+        ],
+        "columns": [
+            {
+                "title": "Singular",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            744
+                        ]
+                    }
+                ]
+            },
+            {
+                "title": "Plural",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            423
+                        ]
+                    }
+                ]
+            }
+        ],
+        "posList": [
+            "V.TENSE"
+        ]
+    },
+    {
+        "id": 4,
+        "name": "Adjective",
+        "rows": [
+            "Nom"
+        ],
+        "columns": [
+            {
+                "title": "Sg",
+                "cells": []
+            },
+            {
+                "title": "Pl",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            407
+                        ]
+                    }
+                ]
+            }
+        ],
+        "posList": [
+            "ADJ"
+        ]
+    },
+    {
+        "id": 5,
+        "name": "Verb",
+        "rows": [
+            "Aorist",
+            "Present",
+            "Past",
+            "Perfect",
+            "Future",
+            "Gerund",
+            "Passive Participle"
+        ],
+        "columns": [
+            {
+                "title": "Form",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            424,
+                            421
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            430
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            666
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            543
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            416
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            757
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            717
+                        ]
+                    }
+                ]
+            }
+        ],
+        "posList": [
+            "V"
+        ]
+    }
+]

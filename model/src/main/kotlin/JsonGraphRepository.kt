@@ -271,7 +271,6 @@ data class ParadigmColumnData(
 data class ParadigmData(
     val id: Int,
     val name: String,
-    @SerialName("lang") val languageShortName: String,
     val rows: List<String>,
     val columns: List<ParadigmColumnData>,
     val posList: List<String>
@@ -304,7 +303,6 @@ data class GraphRepositoryData(
     val languages: List<LanguageData>,
     val rules: List<RuleData>,
     val links: List<LinkData>,
-    val paradigms: List<ParadigmData>,
     val ruleSequences: List<RuleSequenceData>
 )
 
@@ -358,6 +356,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
         saveWords(consumer)
         saveCorpus(consumer)
         saveCompounds(consumer)
+        saveParadigms(consumer)
     }
 
     private fun saveLanguageDetails(consumer: (String, String) -> Unit) {
@@ -436,6 +435,20 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
         }
     }
 
+    private fun saveParadigms(consumer: (String, String) -> Unit) {
+        for (language in languages.values) {
+            val paradigmData = paradigms.filterNotNull().filter { it.language == language }.map {
+                ParadigmData(it.id, it.name, it.rowTitles, it.columns.map { col ->
+                    ParadigmColumnData(col.title, col.cells.map { cell ->
+                        ParadigmCellData(ruleAlternatives = cell?.ruleAlternatives?.map { r -> r?.id })
+                    })
+                }, it.pos)
+            }
+            if (paradigmData.isNotEmpty()) {
+                consumer("${language.shortName}/paradigms.json", theJson.encodeToString(paradigmData))
+            }
+        }
+    }
 
     private fun createGraphRepositoryData(): GraphRepositoryData {
         return GraphRepositoryData(
@@ -450,13 +463,6 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                     link.source.sourceToSerializedFormat(),
                     link.notes
                 )
-            },
-            paradigms.filterNotNull().map {
-                ParadigmData(it.id, it.name, it.language.shortName, it.rowTitles, it.columns.map { col ->
-                    ParadigmColumnData(col.title, col.cells.map { cell ->
-                        ParadigmCellData(ruleAlternatives = cell?.ruleAlternatives?.map { r -> r?.id })
-                    })
-                }, it.pos)
             },
             allLangEntities.filterIsInstance<RuleSequence>().map { s ->
                 RuleSequenceData(
@@ -504,6 +510,8 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             rules.add(addedRule)
             setLangEntity(rule.id, addedRule)
         }
+        loadParadigms(contentProviderCallback)
+
         for (sequence in data.ruleSequences) {
             val ruleSequence = RuleSequence(
                 sequence.id,
@@ -527,37 +535,13 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                     Link.allLinkTypes.first { it.id == link.type },
                     link.ruleIds
                         ?.takeIf { it.isNotEmpty() }
-                        ?.map { allLangEntities[it] as? Rule ?: throw IllegalStateException("Broken rule ID reference $it") }
+                        ?.map {
+                            allLangEntities[it] as? Rule ?: throw IllegalStateException("Broken rule ID reference $it")
+                        }
                         ?: emptyList(),
                     loadSource(link.sourceRefs),
                     link.notes
                 )
-            }
-        }
-
-        for (paradigm in data.paradigms) {
-            while (paradigm.id > paradigms.size) {
-                paradigms.add(null)
-            }
-
-            addParadigm(
-                paradigm.name,
-                languageByShortName(paradigm.languageShortName)!!,
-                paradigm.posList
-            ).apply {
-                for (row in paradigm.rows) {
-                    addRow(row)
-                }
-                for ((colIndex, column) in paradigm.columns.withIndex()) {
-                    addColumn(column.title)
-                    for ((rowIndex, cell) in column.cells.withIndex()) {
-                        val alternatives = cell.ruleAlternatives
-                        if (alternatives != null) {
-                            val rules = alternatives.map { id -> id?.let { ruleById(it) } }
-                            setRule(rowIndex, colIndex, rules)
-                        }
-                    }
-                }
             }
         }
     }
@@ -668,6 +652,36 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             }
         }
     }
+
+    private fun loadParadigms(contentProviderCallback: (String) -> String?) {
+        for (language in languages.values) {
+            val paradigmJson = contentProviderCallback(language.shortName + "/paradigms.json") ?: continue
+            val paradigmList = Json.decodeFromString<List<ParadigmData>>(paradigmJson)
+
+            for (paradigm in paradigmList) {
+                while (paradigm.id > paradigms.size) {
+                    paradigms.add(null)
+                }
+
+                addParadigm(paradigm.name, language, paradigm.posList).apply {
+                    for (row in paradigm.rows) {
+                        addRow(row)
+                    }
+                    for ((colIndex, column) in paradigm.columns.withIndex()) {
+                        addColumn(column.title)
+                        for ((rowIndex, cell) in column.cells.withIndex()) {
+                            val alternatives = cell.ruleAlternatives
+                            if (alternatives != null) {
+                                val rules = alternatives.map { id -> id?.let { ruleById(it) } }
+                                setRule(rowIndex, colIndex, rules)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
 
     private fun loadPublications(contentProviderCallback: (String) -> String?) {
         val publicationsData = Json.decodeFromString<List<PublicationData>>(contentProviderCallback("publications.json")!!)

@@ -1,0 +1,38 @@
+[
+    {
+        "id": 6,
+        "name": "Nouns",
+        "rows": [
+            "Nom"
+        ],
+        "columns": [
+            {
+                "title": "Sg",
+                "cells": []
+            },
+            {
+                "title": "Pl",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            1149
+                        ]
+                    }
+                ]
+            },
+            {
+                "title": "CPl",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            1145
+                        ]
+                    }
+                ]
+            }
+        ],
+        "posList": [
+            "N"
+        ]
+    }
+]

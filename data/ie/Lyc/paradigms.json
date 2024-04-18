@@ -1,0 +1,67 @@
+[
+    {
+        "id": 2,
+        "name": "Noun",
+        "rows": [
+            "Nom.",
+            "Acc.",
+            "Gen.",
+            "Gen.Adj.",
+            "Dat./Loc."
+        ],
+        "columns": [
+            {
+                "title": "Sg.",
+                "cells": [
+                    {},
+                    {
+                        "ruleAlternatives": [
+                            116,
+                            118
+                        ]
+                    },
+                    {},
+                    {
+                        "ruleAlternatives": [
+                            266
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            119
+                        ]
+                    }
+                ]
+            },
+            {
+                "title": "Pl.",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            269
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            207
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            724
+                        ]
+                    },
+                    {},
+                    {
+                        "ruleAlternatives": [
+                            123
+                        ]
+                    }
+                ]
+            }
+        ],
+        "posList": [
+            "N"
+        ]
+    }
+]

@@ -1,0 +1,67 @@
+[
+    {
+        "id": 0,
+        "name": "Noun",
+        "rows": [
+            "Nom",
+            "Acc",
+            "Gen",
+            "Dat/Instr"
+        ],
+        "columns": [
+            {
+                "title": "Sg",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            null
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            468
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            467
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            469
+                        ]
+                    }
+                ]
+            },
+            {
+                "title": "Pl",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            470
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            471
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            472
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            473
+                        ]
+                    }
+                ]
+            }
+        ],
+        "posList": [
+            "N"
+        ]
+    }
+]
