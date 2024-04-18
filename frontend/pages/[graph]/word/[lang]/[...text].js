@@ -100,13 +100,13 @@ function WordLinkComponent(params) {
             {linkWord.ruleResults.length > 0 && <>
                 {params.directionFrom ? linkWord.word.text : baseWord.text}
                 {linkWord.ruleIds.map((ruleId, index) => <>
-                    {' '}<Link href={`/rule/${ruleId}`} title={linkWord.ruleNames[index]}>{'>'}</Link>{' '}
+                    {' '}<Link href={`/${graph}/rule/${ruleId}`} title={linkWord.ruleNames[index]}>{'>'}</Link>{' '}
                     {linkWord.ruleResults[index]}
                 </>)}
             </>}
             {linkWord.ruleResults.length === 0 && linkWord.ruleIds.map((ruleId, index) => <>
                 {index > 0 && ", "}
-                <Link href={`/rule/${ruleId}`}>{linkWord.ruleNames[index]}</Link>
+                <Link href={`/${graph}/rule/${ruleId}`}>{linkWord.ruleNames[index]}</Link>
             </>)}
             )</>}
         {linkWord.notes && <> &ndash; {linkWord.notes}</>}
