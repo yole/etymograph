@@ -353,7 +353,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
         if (path == null) {
             throw IllegalStateException("Can't save: path not specified")
         }
-        path.writeText(toJson())
+        path.resolve("graph.json").writeText(toJson())
     }
 
     fun toJson(): String {
@@ -652,7 +652,8 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
 
         fun fromJson(path: Path): JsonGraphRepository {
             val result = JsonGraphRepository(path)
-            result.loadJson(path.readText())
+            val graphPath = path.resolve("graph.json")
+            result.loadJson(graphPath.readText())
             return result
         }
 
@@ -811,6 +812,6 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
 }
 
 fun main() {
-    val repo = JsonGraphRepository.fromJson(Path.of("ie.json"))
+    val repo = JsonGraphRepository.fromJson(Path.of("data/ie"))
     repo.save()
 }
