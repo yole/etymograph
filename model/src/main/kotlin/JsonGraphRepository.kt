@@ -353,12 +353,12 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
         if (path == null) {
             throw IllegalStateException("Can't save: path not specified")
         }
-        path.resolve("graph.json").writeText(toJson())
+        saveToJson { relativePath, content -> path.resolve(relativePath).writeText(content) }
     }
 
-    fun toJson(): String {
+    fun saveToJson(consumer: (String, String) -> Unit) {
         val repoData = createGraphRepositoryData()
-        return theJson.encodeToString(repoData)
+        consumer("graph.json", theJson.encodeToString(repoData))
     }
 
     private fun createGraphRepositoryData(): GraphRepositoryData {
@@ -448,8 +448,8 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
         }
     }
 
-    private fun loadJson(string: String) {
-        val data = Json.decodeFromString<GraphRepositoryData>(string)
+    private fun loadJson(callback: (String) -> String) {
+        val data = Json.decodeFromString<GraphRepositoryData>(callback("graph.json"))
         _id = data.id
         _name = data.name
         for (languageData in data.languages) {
@@ -652,14 +652,15 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
 
         fun fromJson(path: Path): JsonGraphRepository {
             val result = JsonGraphRepository(path)
-            val graphPath = path.resolve("graph.json")
-            result.loadJson(graphPath.readText())
+            result.loadJson {
+                path.resolve(it).readText()
+            }
             return result
         }
 
-        fun fromJsonString(string: String): JsonGraphRepository {
+        fun fromJsonProvider(jsonProvider: (String) -> String): JsonGraphRepository {
             val result = JsonGraphRepository(null)
-            result.loadJson(string)
+            result.loadJson(jsonProvider)
             return result
         }
 
