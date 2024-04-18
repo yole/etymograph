@@ -553,5 +553,6 @@
         "eu",
         "iu"
     ],
-    "stressRuleId": 535
+    "stressRuleId": 535,
+    "phonotacticsRuleId": 1042
 }

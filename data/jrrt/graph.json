@@ -33715,12 +33715,6 @@
             ]
         }
     ],
-    "phonotacticsRules": [
-        {
-            "lang": "Q",
-            "ruleId": 1042
-        }
-    ],
     "ruleSequences": [
         {
             "id": 1072,

@@ -32699,12 +32699,6 @@
             ]
         }
     ],
-    "phonotacticsRules": [
-        {
-            "lang": "ON",
-            "ruleId": 1649
-        }
-    ],
     "ruleSequences": [
         {
             "id": 1867,
