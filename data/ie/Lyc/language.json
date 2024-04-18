@@ -1,0 +1,17 @@
+{
+    "phonemes": [
+        {
+            "id": 1791,
+            "graphemes": [
+                "x",
+                "χ"
+            ],
+            "classes": [
+                "voiceless",
+                "velar",
+                "fricative",
+                "consonant"
+            ]
+        }
+    ]
+}

@@ -1,0 +1,529 @@
+{
+    "phonemes": [
+        {
+            "id": 1583,
+            "graphemes": [
+                "a",
+                "ä"
+            ],
+            "classes": [
+                "short",
+                "open",
+                "front",
+                "unrounded",
+                "vowel"
+            ]
+        },
+        {
+            "id": 1584,
+            "graphemes": [
+                "á",
+                "â"
+            ],
+            "classes": [
+                "long",
+                "open",
+                "front",
+                "unrounded",
+                "vowel"
+            ]
+        },
+        {
+            "id": 1585,
+            "graphemes": [
+                "o",
+                "ö"
+            ],
+            "classes": [
+                "short",
+                "close-mid",
+                "back",
+                "rounded",
+                "vowel"
+            ]
+        },
+        {
+            "id": 1586,
+            "graphemes": [
+                "ó",
+                "ô"
+            ],
+            "classes": [
+                "long",
+                "close-mid",
+                "back",
+                "rounded",
+                "vowel"
+            ]
+        },
+        {
+            "id": 1587,
+            "graphemes": [
+                "ǭ"
+            ],
+            "classes": [
+                "long",
+                "vowel"
+            ]
+        },
+        {
+            "id": 1588,
+            "graphemes": [
+                "u",
+                "ü"
+            ],
+            "classes": [
+                "short",
+                "close",
+                "back",
+                "rounded",
+                "vowel"
+            ]
+        },
+        {
+            "id": 1589,
+            "graphemes": [
+                "ú",
+                "û"
+            ],
+            "classes": [
+                "long",
+                "close",
+                "back",
+                "rounded",
+                "vowel"
+            ]
+        },
+        {
+            "id": 1590,
+            "graphemes": [
+                "i",
+                "ï"
+            ],
+            "classes": [
+                "short",
+                "close",
+                "front",
+                "unrounded",
+                "vowel"
+            ]
+        },
+        {
+            "id": 1591,
+            "graphemes": [
+                "í",
+                "î"
+            ],
+            "classes": [
+                "long",
+                "close",
+                "front",
+                "unrounded",
+                "vowel"
+            ]
+        },
+        {
+            "id": 1592,
+            "graphemes": [
+                "e",
+                "ë"
+            ],
+            "classes": [
+                "short",
+                "close-mid",
+                "front",
+                "unrounded",
+                "vowel"
+            ]
+        },
+        {
+            "id": 1593,
+            "graphemes": [
+                "é",
+                "ê"
+            ],
+            "classes": [
+                "long",
+                "close-mid",
+                "front",
+                "unrounded",
+                "vowel"
+            ]
+        },
+        {
+            "id": 1594,
+            "graphemes": [
+                "y"
+            ],
+            "classes": [
+                "short",
+                "close",
+                "front",
+                "rounded",
+                "vowel"
+            ]
+        },
+        {
+            "id": 1595,
+            "graphemes": [
+                "ý"
+            ],
+            "classes": [
+                "long",
+                "close",
+                "front",
+                "rounded",
+                "vowel"
+            ]
+        },
+        {
+            "id": 1596,
+            "graphemes": [
+                "b"
+            ],
+            "classes": [
+                "voiced",
+                "bilabial",
+                "stop",
+                "consonant"
+            ]
+        },
+        {
+            "id": 1597,
+            "graphemes": [
+                "d"
+            ],
+            "classes": [
+                "voiced",
+                "alveolar",
+                "stop",
+                "consonant"
+            ]
+        },
+        {
+            "id": 1598,
+            "graphemes": [
+                "dh"
+            ],
+            "sound": "ð",
+            "classes": [
+                "voiced",
+                "dental",
+                "fricative",
+                "consonant"
+            ]
+        },
+        {
+            "id": 1599,
+            "graphemes": [
+                "f",
+                "ph"
+            ],
+            "classes": [
+                "voiceless",
+                "bilabial",
+                "fricative",
+                "consonant"
+            ]
+        },
+        {
+            "id": 1600,
+            "graphemes": [
+                "g"
+            ],
+            "classes": [
+                "voiced",
+                "velar",
+                "stop",
+                "consonant"
+            ]
+        },
+        {
+            "id": 1601,
+            "graphemes": [
+                "gh"
+            ],
+            "sound": "ɣ",
+            "classes": [
+                "voiced",
+                "velar",
+                "fricative",
+                "consonant"
+            ]
+        },
+        {
+            "id": 1602,
+            "graphemes": [
+                "hw"
+            ],
+            "sound": "w̥",
+            "classes": [
+                "voiceless",
+                "velar",
+                "approximant",
+                "consonant"
+            ]
+        },
+        {
+            "id": 1603,
+            "graphemes": [
+                "c",
+                "k"
+            ],
+            "sound": "k",
+            "classes": [
+                "voiceless",
+                "velar",
+                "stop",
+                "consonant"
+            ]
+        },
+        {
+            "id": 1604,
+            "graphemes": [
+                "ch",
+                "kh"
+            ],
+            "sound": "x",
+            "classes": [
+                "voiceless",
+                "uvular",
+                "fricative",
+                "consonant"
+            ]
+        },
+        {
+            "id": 1605,
+            "graphemes": [
+                "l"
+            ],
+            "classes": [
+                "voiced",
+                "alveolar",
+                "lateral",
+                "approximant",
+                "liquid",
+                "consonant"
+            ]
+        },
+        {
+            "id": 1606,
+            "graphemes": [
+                "lh"
+            ],
+            "sound": "l̥",
+            "classes": [
+                "voiceless",
+                "alveolar",
+                "lateral",
+                "approximant",
+                "liquid",
+                "consonant"
+            ]
+        },
+        {
+            "id": 1607,
+            "graphemes": [
+                "m"
+            ],
+            "classes": [
+                "voiced",
+                "bilabial",
+                "nasal",
+                "consonant"
+            ]
+        },
+        {
+            "id": 1608,
+            "graphemes": [
+                "n"
+            ],
+            "classes": [
+                "voiced",
+                "alveolar",
+                "nasal",
+                "consonant"
+            ]
+        },
+        {
+            "id": 1609,
+            "graphemes": [
+                "ñ"
+            ],
+            "sound": "ŋ",
+            "classes": [
+                "voiced",
+                "velar",
+                "nasal",
+                "consonant"
+            ]
+        },
+        {
+            "id": 1610,
+            "graphemes": [
+                "p"
+            ],
+            "classes": [
+                "voiceless",
+                "bilabial",
+                "stop",
+                "consonant"
+            ]
+        },
+        {
+            "id": 1611,
+            "graphemes": [
+                "r"
+            ],
+            "classes": [
+                "voiced",
+                "alveolar",
+                "trill",
+                "liquid",
+                "consonant"
+            ]
+        },
+        {
+            "id": 1612,
+            "graphemes": [
+                "rh"
+            ],
+            "sound": "r̥",
+            "classes": [
+                "voiceless",
+                "alveolar",
+                "trill",
+                "liquid",
+                "consonant"
+            ],
+            "sourceRefs": [
+                {
+                    "refText": "https://eldamo.org/content/words/word-3504318431.html"
+                }
+            ]
+        },
+        {
+            "id": 1613,
+            "graphemes": [
+                "t"
+            ],
+            "classes": [
+                "voiceless",
+                "alveolar",
+                "stop",
+                "consonant"
+            ]
+        },
+        {
+            "id": 1614,
+            "graphemes": [
+                "th"
+            ],
+            "sound": "θ",
+            "classes": [
+                "voiceless",
+                "dental",
+                "fricative",
+                "consonant"
+            ]
+        },
+        {
+            "id": 1615,
+            "graphemes": [
+                "kʰ"
+            ],
+            "classes": [
+                "aspirated",
+                "velar",
+                "consonant"
+            ]
+        },
+        {
+            "id": 1616,
+            "graphemes": [
+                "tʰ"
+            ],
+            "classes": [
+                "aspirated",
+                "alveolar",
+                "consonant"
+            ]
+        },
+        {
+            "id": 1617,
+            "graphemes": [
+                "pʰ"
+            ],
+            "classes": [
+                "aspirated",
+                "bilabial",
+                "consonant"
+            ]
+        },
+        {
+            "id": 1647,
+            "graphemes": [
+                "s"
+            ],
+            "classes": [
+                "voiceless",
+                "alveolar",
+                "fricative",
+                "consonant"
+            ]
+        },
+        {
+            "id": 1648,
+            "graphemes": [
+                "h"
+            ],
+            "classes": [
+                "voiceless",
+                "glottal",
+                "fricative",
+                "consonant"
+            ]
+        },
+        {
+            "id": 1649,
+            "graphemes": [
+                "v"
+            ],
+            "classes": [
+                "voiced",
+                "bilabial",
+                "fricative",
+                "consonant"
+            ]
+        },
+        {
+            "id": 1650,
+            "graphemes": [
+                "w"
+            ],
+            "classes": [
+                "voiced",
+                "velar",
+                "approximant",
+                "consonant"
+            ]
+        },
+        {
+            "id": 1651,
+            "graphemes": [
+                "j"
+            ],
+            "classes": [
+                "voiced",
+                "palatal",
+                "approximant",
+                "consonant"
+            ],
+            "sourceRefs": [
+                {
+                    "refText": "https://eldamo.org/content/words/word-1590307365.html"
+                }
+            ]
+        }
+    ]
+}

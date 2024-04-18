@@ -1,0 +1,316 @@
+{
+    "phonemes": [
+        {
+            "id": 1792,
+            "graphemes": [
+                "a"
+            ],
+            "classes": [
+                "vowel"
+            ]
+        },
+        {
+            "id": 1793,
+            "graphemes": [
+                "á"
+            ],
+            "classes": [
+                "long",
+                "vowel"
+            ]
+        },
+        {
+            "id": 1794,
+            "graphemes": [
+                "b"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "id": 1795,
+            "graphemes": [
+                "d"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "id": 1796,
+            "graphemes": [
+                "ð"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "id": 1797,
+            "graphemes": [
+                "e"
+            ],
+            "classes": [
+                "vowel"
+            ]
+        },
+        {
+            "id": 1798,
+            "graphemes": [
+                "é"
+            ],
+            "classes": [
+                "long",
+                "vowel"
+            ]
+        },
+        {
+            "id": 1799,
+            "graphemes": [
+                "f"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "id": 1800,
+            "graphemes": [
+                "g"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "id": 1801,
+            "graphemes": [
+                "h"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "id": 1802,
+            "graphemes": [
+                "i"
+            ],
+            "classes": [
+                "vowel"
+            ]
+        },
+        {
+            "id": 1803,
+            "graphemes": [
+                "í"
+            ],
+            "classes": [
+                "long",
+                "vowel"
+            ]
+        },
+        {
+            "id": 1804,
+            "graphemes": [
+                "j"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "id": 1805,
+            "graphemes": [
+                "k"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "id": 1806,
+            "graphemes": [
+                "l"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "id": 1807,
+            "graphemes": [
+                "m"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "id": 1808,
+            "graphemes": [
+                "n"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "id": 1809,
+            "graphemes": [
+                "o"
+            ],
+            "classes": [
+                "vowel"
+            ]
+        },
+        {
+            "id": 1810,
+            "graphemes": [
+                "ó"
+            ],
+            "classes": [
+                "long",
+                "vowel"
+            ]
+        },
+        {
+            "id": 1811,
+            "graphemes": [
+                "p"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "id": 1812,
+            "graphemes": [
+                "r"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "id": 1813,
+            "graphemes": [
+                "s"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "id": 1814,
+            "graphemes": [
+                "t"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "id": 1815,
+            "graphemes": [
+                "u"
+            ],
+            "classes": [
+                "vowel"
+            ]
+        },
+        {
+            "id": 1816,
+            "graphemes": [
+                "ú"
+            ],
+            "classes": [
+                "long",
+                "vowel"
+            ]
+        },
+        {
+            "id": 1817,
+            "graphemes": [
+                "v"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "id": 1818,
+            "graphemes": [
+                "y"
+            ],
+            "classes": [
+                "vowel"
+            ]
+        },
+        {
+            "id": 1819,
+            "graphemes": [
+                "ý"
+            ],
+            "classes": [
+                "long",
+                "vowel"
+            ]
+        },
+        {
+            "id": 1820,
+            "graphemes": [
+                "x"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "id": 1821,
+            "graphemes": [
+                "z"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "id": 1822,
+            "graphemes": [
+                "þ"
+            ],
+            "classes": [
+                "consonant"
+            ]
+        },
+        {
+            "id": 1823,
+            "graphemes": [
+                "æ"
+            ],
+            "classes": [
+                "vowel"
+            ]
+        },
+        {
+            "id": 1824,
+            "graphemes": [
+                "œ"
+            ],
+            "classes": [
+                "vowel"
+            ]
+        },
+        {
+            "id": 1825,
+            "graphemes": [
+                "ö"
+            ],
+            "classes": [
+                "vowel"
+            ]
+        }
+    ]
+}
