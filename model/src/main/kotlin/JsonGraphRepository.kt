@@ -43,7 +43,8 @@ data class PhonemeData(
 @Serializable
 data class LanguageDetailsData(
     val phonemes: List<PhonemeData>,
-    val diphthongs: List<String>
+    val diphthongs: List<String>,
+    val stressRuleId: Int? = null
 )
 
 @Serializable
@@ -304,7 +305,6 @@ data class GraphRepositoryData(
     val id: String,
     val name: String,
     val languages: List<LanguageData>,
-    val stressRules: List<LanguageRuleData>,
     val words: List<WordData>,
     val rules: List<RuleData>,
     val links: List<LinkData>,
@@ -379,14 +379,14 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             }
             val languageDetailsData = LanguageDetailsData(
                 phonemes,
-                lang.diphthongs
+                lang.diphthongs,
+                lang.stressRule?.resolve()?.id
             )
             consumer(lang.shortName + "/language.json", theJson.encodeToString(languageDetailsData))
         }
     }
 
     private fun createGraphRepositoryData(): GraphRepositoryData {
-        val stressRuleData = mapLanguageRules { lang -> lang.stressRule }
         val phonotacticsRuleData = mapLanguageRules { lang -> lang.phonotacticsRule }
         val orthographyRulesData = mapLanguageRules { lang -> lang.orthographyRule }
         val syllableStructureData = languages.values.mapNotNull { lang ->
@@ -398,7 +398,6 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             id,
             name,
             languages.values.map { LanguageData(it.name, it.shortName, it.reconstructed) },
-            stressRuleData,
             allLangEntities.filterIsInstance<Word>().map {
                 WordData(it.id, it.text, it.language.shortName, it.gloss, it.fullGloss, it.pos,
                     it.classes.takeIf { it.isNotEmpty() },
@@ -471,9 +470,6 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
         }
         loadLanguageDetails(contentProviderCallback)
 
-        for (stressRuleData in data.stressRules) {
-            languageByShortName(stressRuleData.languageShortName)!!.stressRule = ruleRef(this, stressRuleData.ruleId)
-        }
         for (ruleData in data.phonotacticsRules) {
             languageByShortName(ruleData.languageShortName)!!.phonotacticsRule= ruleRef(this, ruleData.ruleId)
         }
@@ -635,6 +631,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                 }
             }
             language.diphthongs = data.diphthongs
+            language.stressRule = data.stressRuleId?.let { ruleRef(this, it) }
         }
     }
 

@@ -30,24 +30,6 @@
             "reconstructed": true
         }
     ],
-    "stressRules": [
-        {
-            "lang": "OE",
-            "ruleId": 2292
-        },
-        {
-            "lang": "PGmc",
-            "ruleId": 1956
-        },
-        {
-            "lang": "PNWGmc",
-            "ruleId": 1873
-        },
-        {
-            "lang": "PWGmc",
-            "ruleId": 2064
-        }
-    ],
     "words": [
         {
             "id": 1,

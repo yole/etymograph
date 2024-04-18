@@ -15,16 +15,6 @@
             "shortName": "CE"
         }
     ],
-    "stressRules": [
-        {
-            "lang": "Q",
-            "ruleId": 535
-        },
-        {
-            "lang": "S",
-            "ruleId": 535
-        }
-    ],
     "words": [
         {
             "id": 0,
