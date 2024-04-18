@@ -554,5 +554,6 @@
         "iu"
     ],
     "stressRuleId": 535,
-    "phonotacticsRuleId": 1042
+    "phonotacticsRuleId": 1042,
+    "orthographyRuleId": 1673
 }

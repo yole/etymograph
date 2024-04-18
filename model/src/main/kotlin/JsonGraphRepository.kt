@@ -46,10 +46,8 @@ data class LanguageDetailsData(
     val diphthongs: List<String>,
     val stressRuleId: Int? = null,
     val phonotacticsRuleId: Int? = null,
+    val orthographyRuleId: Int? = null
 )
-
-@Serializable
-data class LanguageRuleData(@SerialName("lang") val languageShortName: String, val ruleId: Int)
 
 @Serializable
 data class SyllableStructureData(@SerialName("lang") val languageShortName: String, val syllableStructures: List<String>)
@@ -316,8 +314,7 @@ data class GraphRepositoryData(
     val translations: List<TranslationData>,
     val grammaticalCategories: List<WordCategoryData>,
     val wordClasses: List<WordCategoryData>,
-    val ruleSequences: List<RuleSequenceData>,
-    val orthographyRules: List<LanguageRuleData>? = null
+    val ruleSequences: List<RuleSequenceData>
 )
 
 class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
@@ -381,14 +378,14 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                 phonemes,
                 lang.diphthongs,
                 lang.stressRule?.resolve()?.id,
-                lang.phonotacticsRule?.resolve()?.id
+                lang.phonotacticsRule?.resolve()?.id,
+                lang.orthographyRule?.resolve()?.id
             )
             consumer(lang.shortName + "/language.json", theJson.encodeToString(languageDetailsData))
         }
     }
 
     private fun createGraphRepositoryData(): GraphRepositoryData {
-        val orthographyRulesData = mapLanguageRules { lang -> lang.orthographyRule }
         val syllableStructureData = languages.values.mapNotNull { lang ->
             lang.syllableStructures.takeIf { it.isNotEmpty() }?.let { SyllableStructureData(lang.shortName, it) }
         }
@@ -441,13 +438,8 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                     s.id, s.name, s.fromLanguage.shortName, s.toLanguage.shortName,
                     s.ruleIds,
                     s.source.sourceToSerializedFormat(), s.notes)
-            },
-            orthographyRulesData
+            }
         )
-    }
-
-    private fun mapLanguageRules(prop: (Language) -> RuleRef?) = languages.values.mapNotNull { lang ->
-        prop(lang)?.let { LanguageRuleData(lang.shortName, it.resolve().id) }
     }
 
     private fun mapWordCategories(prop: (Language) -> List<WordCategory>) = languages.values.flatMap { lang ->
@@ -468,10 +460,6 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             addLanguage(language)
         }
         loadLanguageDetails(contentProviderCallback)
-
-        for (ruleData in data.orthographyRules ?: emptyList()) {
-            languageByShortName(ruleData.languageShortName)!!.orthographyRule= ruleRef(this, ruleData.ruleId)
-        }
 
         for (syllableStructureData in data.syllableStructures) {
             languageByShortName(syllableStructureData.languageShortName)!!.syllableStructures = syllableStructureData.syllableStructures
@@ -629,6 +617,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             language.diphthongs = data.diphthongs
             language.stressRule = data.stressRuleId?.let { ruleRef(this, it) }
             language.phonotacticsRule = data.phonotacticsRuleId?.let { ruleRef(this, it) }
+            language.orthographyRule = data.orthographyRuleId?.let { ruleRef(this, it) }
         }
     }
 

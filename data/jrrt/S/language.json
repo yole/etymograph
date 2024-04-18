@@ -534,5 +534,6 @@
         "oe",
         "ae"
     ],
-    "stressRuleId": 535
+    "stressRuleId": 535,
+    "orthographyRuleId": 1232
 }
