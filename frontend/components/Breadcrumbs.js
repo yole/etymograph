@@ -7,6 +7,12 @@ export default function Breadcrumbs(props) {
     const globalState = useContext(GlobalStateContext)
     const theGraph = globalState !== undefined ? globalState.graphs.find((g) => g.id === graph) : undefined
 
+    const langName = props.langName !== undefined ? props.langName : (
+        (globalState !== undefined && props.langId !== undefined)
+            ? globalState.languages.find((g) => g.shortName === props.langId)?.name
+            : undefined
+    )
+
     useEffect(() => {
         document.title = "Etymograph : " + (props.langName !== undefined ? props.langName + " : " : "") +
             (props.steps !== undefined ? props.steps.map(s => s.title).join(": ") + " : " : "") +
@@ -21,7 +27,7 @@ export default function Breadcrumbs(props) {
                 <Link href={`/${graph}`}>{theGraph.name}</Link>{' > '}
             </>}
             {props.langId !== undefined && <>
-                <Link href={`/${graph}/language/${props.langId}`}>{props.langName}</Link> {'> '}
+                <Link href={`/${graph}/language/${props.langId}`}>{langName}</Link> {'> '}
             </>}
             {props.steps !== undefined && props.steps.map(s => <>
                 <Link href={s.url}>{s.title}</Link> {'> '}

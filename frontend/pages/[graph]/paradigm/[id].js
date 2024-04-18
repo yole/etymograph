@@ -1,8 +1,9 @@
-import {useEffect, useState} from "react";
-import {allowEdit, deleteParadigm, deleteRule, fetchBackend, fetchPathsForAllGraphs, updateParadigm} from "@/api";
+import {useState} from "react";
+import {allowEdit, deleteParadigm, fetchBackend, fetchPathsForAllGraphs} from "@/api";
 import {useRouter} from "next/router";
 import Link from "next/link";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import ParadigmForm from "@/forms/ParadigmForm";
 
 export const config = {
     unstable_runtimeJS: true
@@ -19,24 +20,13 @@ export async function getStaticPaths() {
 export default function Paradigm(params) {
     const paradigm = params.loaderData
     const [editMode, setEditMode] = useState(false)
-    const [editableText, setEditableText] = useState(paradigm.editableText)
-    const [name, setName] = useState(paradigm.name)
-    const [pos, setPos] = useState(paradigm.pos.join(", "))
-    const [errorText, setErrorText] = useState("")
 
     const router = useRouter()
     const graph = router.query.graph
 
-    function saveParadigm() {
-        updateParadigm(graph, paradigm.id, name, pos, editableText)
-            .then((r) => {
-                if (r.status === 200) {
-                    router.replace(router.asPath)
-                } else {
-                    r.json().then(r => setErrorText(r.message.length > 0 ? r.message : "Failed to save paradigm"))
-                }
-            })
+    function paradigmSubmitted() {
         setEditMode(false)
+        router.replace(router.asPath)
     }
 
     function deleteParadigmClicked() {
@@ -71,23 +61,20 @@ export default function Paradigm(params) {
             </table>
         </>}
         {editMode && <>
-            <table><tbody>
-            <tr>
-                <td><label>Name:</label></td>
-                <td><input type="text" value={name} onChange={(e) => setName(e.target.value)}/></td>
-            </tr>
-            <tr>
-                <td><label>POS:</label></td>
-                <td><input type="text" value={pos} onChange={(e) => setPos(e.target.value)}/></td>
-            </tr>
-            </tbody></table>
-            <textarea rows="10" cols="80" value={editableText} onChange={(e) => setEditableText(e.target.value)}/>
-            <br/>
-            <button onClick={() => saveParadigm()}>Save</button>
+            <ParadigmForm
+                updateId={paradigm.id}
+                lang={paradigm.language}
+                defaultValues={{
+                    name: paradigm.name,
+                    pos: paradigm.pos.join(","),
+                    text: paradigm.editableText
+                }}
+                submitted={paradigmSubmitted}
+                cancelled={() => setEditMode(false)}
+            />
         </>}
-        {errorText !== "" && <div className="errorText">{errorText}</div>}
         {allowEdit() && <>
-            <button onClick={() => setEditMode(!editMode)}>{editMode ? "Cancel" : "Edit"}</button>{' '}
+            {!editMode && <><button onClick={() => setEditMode(true)}>Edit</button>{' '}</>}
             <button onClick={() => deleteParadigmClicked()}>Delete</button>
         </>}
     </>

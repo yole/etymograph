@@ -1,41 +1,19 @@
-import {useState} from "react";
-import {addParadigm} from "@/api";
+import {fetchAllLanguagePaths, fetchBackend} from "@/api";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import ParadigmForm from "@/forms/ParadigmForm"
 import {useRouter} from "next/router";
 
+export async function getStaticProps(context) {
+    return fetchBackend(context.params.graph,`language/${context.params.lang}`, true)
+}
+
+export const getStaticPaths = fetchAllLanguagePaths
+
 export default function ParadigmEditor() {
-    const [name, setName] = useState("")
-    const [pos, setPos] = useState("")
-    const [editableText, setEditableText] = useState("")
-    const [errorText, setErrorText] = useState("")
     const router = useRouter()
     const graph = router.query.graph
-
-    function saveParadigm() {
-        addParadigm(graph, name, router.query.lang, pos, editableText)
-            .then(r => {
-                if (r.status === 200) {
-                    r.json().then(r => router.push(`/${graph}/paradigm/${r.id}`))
-                }
-                else {
-                    r.json().then(r => setErrorText(r.message.length > 0 ? r.message : "Failed to save paradigm"))
-                }
-            })
-    }
-
     return <>
-        <table><tbody>
-        <tr>
-            <td><label>Name:</label></td>
-            <td><input type="text" value={name} onChange={(e) => setName(e.target.value)}/></td>
-        </tr>
-        <tr>
-            <td><label>POS:</label></td>
-            <td><input type="text" value={pos} onChange={(e) => setPos(e.target.value)}/></td>
-        </tr>
-        </tbody></table>
-        <textarea rows="10" cols="50" value={editableText} onChange={e => setEditableText(e.target.value)}/>
-        <br/>
-        {errorText !== "" && <div className="errorText">{errorText}</div>}
-        <button onClick={saveParadigm}>Save</button>
+        <Breadcrumbs langId={router.query.lang} title="New Paradigm"/>
+        <ParadigmForm lang={router.query.lang} redirectOnCreate={(r) => `/${graph}/paradigm/${r.id}`}/>
     </>
 }
