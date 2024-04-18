@@ -1,10 +1,8 @@
 package ru.yole.etymograph.web.controllers
 
-import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
-import org.springframework.web.server.ResponseStatusException
+import ru.yole.etymograph.GraphRepository
 import ru.yole.etymograph.Publication
-import ru.yole.etymograph.web.GraphService
 
 data class PublicationViewModel(
     val id: Int,
@@ -18,10 +16,10 @@ data class AddPublicationParameters(
 )
 
 @RestController
-class PublicationController(val graphService: GraphService) {
+class PublicationController {
     @GetMapping("/{graph}/publications")
-    fun publications(@PathVariable graph: String): List<PublicationViewModel> {
-        return graphService.resolveGraph(graph).allPublications().sortedBy { it.refId }.map {
+    fun publications(repo: GraphRepository): List<PublicationViewModel> {
+        return repo.allPublications().sortedBy { it.refId }.map {
             it.toViewModel()
         }
     }
@@ -29,26 +27,27 @@ class PublicationController(val graphService: GraphService) {
     private fun Publication.toViewModel() = PublicationViewModel(id, name, refId)
 
     @GetMapping("/{graph}/publication/{id}")
-    fun publication(@PathVariable graph: String, @PathVariable id: Int): PublicationViewModel {
-        val publication = graphService.resolveGraph(graph).publicationById(id)
-            ?: throw ResponseStatusException(HttpStatus.NOT_FOUND, "No publication with ID $id")
+    fun publication(repo: GraphRepository, @PathVariable id: Int): PublicationViewModel {
+        val publication = repo.resolvePublication(id)
         return publication.toViewModel()
     }
 
+    private fun GraphRepository.resolvePublication(id: Int): Publication = (publicationById(id)
+        ?: notFound("No publication with ID $id"))
+
     @PostMapping("/{graph}/publications", consumes = ["application/json"])
     @ResponseBody
-    fun addPublication(@PathVariable graph: String, @RequestBody params: AddPublicationParameters): PublicationViewModel {
+    fun addPublication(repo: GraphRepository, @RequestBody params: AddPublicationParameters): PublicationViewModel {
         val name = params.name.nullize() ?: badRequest("Name is required")
         val refId = params.refId.nullize() ?: badRequest("refID is required")
-        val publication = graphService.resolveGraph(graph).addPublication(name, refId)
+        val publication = repo.addPublication(name, refId)
         return publication.toViewModel()
     }
 
     @PostMapping("/{graph}/publication/{id}", consumes = ["application/json"])
     @ResponseBody
-    fun updatePublication(@PathVariable graph: String, @PathVariable id: Int, @RequestBody params: AddPublicationParameters): PublicationViewModel {
-        val publication = graphService.resolveGraph(graph).publicationById(id)
-            ?: throw ResponseStatusException(HttpStatus.NOT_FOUND, "No publication with ID $id")
+    fun updatePublication(repo: GraphRepository, @PathVariable id: Int, @RequestBody params: AddPublicationParameters): PublicationViewModel {
+        val publication = repo.resolvePublication(id)
         publication.name = params.name.nullize() ?: badRequest("Name is required")
         publication.refId = params.refId.nullize() ?: badRequest("refID is required")
         return publication.toViewModel()
