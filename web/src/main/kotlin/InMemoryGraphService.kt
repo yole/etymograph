@@ -70,3 +70,7 @@ fun GraphRepository.resolveLanguage(lang: String): Language {
     return languageByShortName(lang)
         ?: notFound("No language with short name $lang")
 }
+
+fun GraphRepository.resolveWord(id: Int): Word {
+    return wordById(id) ?: notFound("No word with ID $id")
+}
