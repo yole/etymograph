@@ -98,7 +98,7 @@ class JsonGraphRepositoryTest : QBaseTest() {
     private fun JsonGraphRepository.roundtrip(): JsonGraphRepository {
         val jsonFiles = mutableMapOf<String, String>()
         saveToJson { path, content -> jsonFiles[path] = content }
-        return JsonGraphRepository.fromJsonProvider { jsonFiles[it]!! }
+        return JsonGraphRepository.fromJsonProvider { jsonFiles[it] }
     }
 
     @Test

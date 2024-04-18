@@ -1,0 +1,16 @@
+[
+    {
+        "id": 1867,
+        "name": "pgmc-to-pnwgmc",
+        "fromLang": "PGmc",
+        "toLang": "PNWGmc",
+        "ruleIds": [
+            1862,
+            1866,
+            1863,
+            1874,
+            1882,
+            1883
+        ]
+    }
+]

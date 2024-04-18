@@ -301,8 +301,7 @@ data class GraphRepositoryData(
     val id: String,
     val name: String,
     val languages: List<LanguageData>,
-    val links: List<LinkData>,
-    val ruleSequences: List<RuleSequenceData>
+    val links: List<LinkData>
 )
 
 class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
@@ -357,6 +356,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
         saveCorpus(consumer)
         saveCompounds(consumer)
         saveParadigms(consumer)
+        saveRuleSequences(consumer)
     }
 
     private fun saveLanguageDetails(consumer: (String, String) -> Unit) {
@@ -459,6 +459,20 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
         }
     }
 
+    private fun saveRuleSequences(consumer: (String, String) -> Unit) {
+        for (language in languages.values) {
+            val ruleSequenceData = allLangEntities.filterIsInstance<RuleSequence>().filter { it.toLanguage == language }.map { s ->
+                RuleSequenceData(
+                    s.id, s.name, s.fromLanguage.shortName, s.toLanguage.shortName,
+                    s.ruleIds,
+                    s.source.sourceToSerializedFormat(), s.notes)
+            }
+            if (ruleSequenceData.isNotEmpty()) {
+                consumer("${language.shortName}/ruleSequences.json", theJson.encodeToString(ruleSequenceData))
+            }
+        }
+    }
+
     private fun createGraphRepositoryData(): GraphRepositoryData {
         return GraphRepositoryData(
             id,
@@ -471,12 +485,6 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                     link.source.sourceToSerializedFormat(),
                     link.notes
                 )
-            },
-            allLangEntities.filterIsInstance<RuleSequence>().map { s ->
-                RuleSequenceData(
-                    s.id, s.name, s.fromLanguage.shortName, s.toLanguage.shortName,
-                    s.ruleIds,
-                    s.source.sourceToSerializedFormat(), s.notes)
             }
         )
     }
@@ -497,20 +505,8 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
         loadCorpus(contentProviderCallback)
         loadCompounds(contentProviderCallback)
         loadParadigms(contentProviderCallback)
+        loadRuleSequences(contentProviderCallback)
 
-        for (sequence in data.ruleSequences) {
-            val ruleSequence = RuleSequence(
-                sequence.id,
-                sequence.name,
-                languageByShortName(sequence.fromLanguageShortName)
-                    ?: throw IllegalStateException("Broken language ID reference ${sequence.fromLanguageShortName}"),
-                languageByShortName(sequence.toLanguageShortName)!!,
-                sequence.ruleIds,
-                loadSource(sequence.sourceRefs),
-                sequence.notes
-            )
-            setLangEntity(ruleSequence.id, ruleSequence)
-        }
         for (link in data.links) {
             val fromWord = allLangEntities[link.fromWordId]
             val toWord = allLangEntities[link.toWordId]
@@ -698,6 +694,26 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
         }
     }
 
+    private fun loadRuleSequences(contentProviderCallback: (String) -> String?) {
+        for (language in languages.values) {
+            val ruleSequenceJson = contentProviderCallback(language.shortName + "/ruleSequences.json") ?: continue
+            val ruleSequenceList = Json.decodeFromString<List<RuleSequenceData>>(ruleSequenceJson)
+
+            for (sequence in ruleSequenceList) {
+                val ruleSequence = RuleSequence(
+                    sequence.id,
+                    sequence.name,
+                    languageByShortName(sequence.fromLanguageShortName)
+                        ?: throw IllegalStateException("Broken language ID reference ${sequence.fromLanguageShortName}"),
+                    languageByShortName(sequence.toLanguageShortName)!!,
+                    sequence.ruleIds,
+                    loadSource(sequence.sourceRefs),
+                    sequence.notes
+                )
+                setLangEntity(ruleSequence.id, ruleSequence)
+            }
+        }
+    }
 
     private fun loadPublications(contentProviderCallback: (String) -> String?) {
         val publicationsData = Json.decodeFromString<List<PublicationData>>(contentProviderCallback("publications.json")!!)
@@ -731,7 +747,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             return result
         }
 
-        fun fromJsonProvider(jsonProvider: (String) -> String): JsonGraphRepository {
+        fun fromJsonProvider(jsonProvider: (String) -> String?): JsonGraphRepository {
             val result = JsonGraphRepository(null)
             result.loadJson(jsonProvider)
             return result

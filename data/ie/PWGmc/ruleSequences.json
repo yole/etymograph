@@ -1,0 +1,36 @@
+[
+    {
+        "id": 1885,
+        "name": "pgmc-to-pwgmc",
+        "fromLang": "PGmc",
+        "toLang": "PWGmc",
+        "ruleIds": [
+            1867,
+            2188
+        ]
+    },
+    {
+        "id": 2188,
+        "name": "pnwgmc-to-pwgmc",
+        "fromLang": "PNWGmc",
+        "toLang": "PWGmc",
+        "ruleIds": [
+            1884,
+            1889,
+            1958,
+            1963,
+            1966,
+            1976,
+            1969,
+            1978,
+            1982,
+            1983,
+            1990,
+            1995,
+            1997,
+            2011,
+            2014,
+            2018
+        ]
+    }
+]
