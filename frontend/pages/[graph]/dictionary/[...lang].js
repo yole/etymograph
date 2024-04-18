@@ -12,9 +12,9 @@ export async function getStaticProps(context) {
     const graph = context.params.graph
     const lang = context.params.lang
     if (lang.length === 2) {
-        return fetchBackend(graph, `dictionary/${lang[0]}/${lang[1]}`)
+        return fetchBackend(graph, `dictionary/${lang[0]}/${lang[1]}`, true)
     }
-    return fetchBackend(graph, `dictionary/${lang[0]}`)
+    return fetchBackend(graph, `dictionary/${lang[0]}`, true)
 }
 
 export async function getStaticPaths() {

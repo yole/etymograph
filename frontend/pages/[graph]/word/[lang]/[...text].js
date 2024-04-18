@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import WordForm from "@/forms/WordForm";
 import WordWithStress from "@/components/WordWithStress";
 import WordLink from "@/components/WordLink";
@@ -17,6 +17,7 @@ import {useRouter} from "next/router";
 import SourceRefs from "@/components/SourceRefs";
 import RuleLinkForm from "@/forms/RuleLinkForm";
 import EditLinkForm from "@/forms/EditLinkForm";
+import {GraphContext} from "@/components/Contexts";
 
 export const config = {
     unstable_runtimeJS: true
@@ -54,38 +55,33 @@ function WordLinkComponent(params) {
     const router = useRouter()
     const graph = router.query.graph
 
-    function deleteLinkClicked() {
+    async function deleteLinkClicked() {
         if (window.confirm("Delete this link?")) {
-            deleteLink(graph, baseWord.id, linkWord.word.id, params.linkType.typeId)
-                .then((r) => {
-                    if (r.status === 200) {
-                        setErrorText("")
-                        router.replace(router.asPath)
-                    }
-                    else {
-                        r.json().then(r => setErrorText(r.message))
-                    }
-                })
+            const r = await deleteLink(graph, baseWord.id, linkWord.word.id, params.linkType.typeId)
+            if (r.status === 200) {
+                setErrorText("")
+                router.replace(router.asPath)
+            }
+            else {
+                r.json().then(r => setErrorText(r.message))
+            }
         }
     }
 
-    function applySequenceClicked(seqId, fromWordId, toWordId) {
-        applyRuleSequence(graph, seqId, fromWordId, toWordId)
-            .then((response) => {
-                if (response.status === 200) {
-                    response.json().then(r => {
-                        if (r.ruleIds.length > 0) {
-                            router.replace(router.asPath)
-                        }
-                        else {
-                            setErrorText("No matching rules in this rule sequence")
-                        }
-                    })
-                }
-                else {
-                    response.json().then(r => setErrorText(r.message))
-                }
-            })
+    async function applySequenceClicked(seqId, fromWordId, toWordId) {
+        const response = await applyRuleSequence(graph, seqId, fromWordId, toWordId)
+        if (response.status === 200) {
+            const r = await response.json()
+            if (r.ruleIds.length > 0) {
+                router.replace(router.asPath)
+            }
+            else {
+                setErrorText("No matching rules in this rule sequence")
+            }
+        }
+        else {
+            response.json().then(r => setErrorText(r.message))
+        }
     }
 
     function linkSubmitted() {
@@ -131,7 +127,8 @@ function WordLinkComponent(params) {
             linkType={params.linkType.typeId}
             defaultValues={{
                 ruleNames: linkWord.ruleNames.join(","),
-                source: linkWord.sourceEditableText
+                source: linkWord.sourceEditableText,
+                notes: linkWord.notes
             }}
             submitted={linkSubmitted}
             cancelled={() => setEditMode(false)}/>
@@ -211,27 +208,23 @@ function SingleWord(params) {
         }
     }
 
-    function linkToParseCandidate(pc, wordId) {
-        addLink(graph, word.id, wordId, ">", pc.ruleNames.join(","))
-            .then((r) => {
-                if (r.status !== 200) {
-                    setErrorText(r.message)
-                }
-                router.replace(router.asPath)
-            })
+    async function linkToParseCandidate(pc, wordId) {
+        const r = await addLink(graph, word.id, wordId, ">", pc.ruleNames.join(","))
+        if (r.status !== 200) {
+            setErrorText(r.message)
+        }
+        router.replace(router.asPath)
     }
 
-    function acceptParseCandidate(pc) {
+    async function acceptParseCandidate(pc) {
         if (pc.wordId === null) {
-            addWord(graph, word.language, pc.text, "", "", pc.pos)
-                .then(r => {
-                    if (r.status === 200)
-                        r.json().then(r =>
-                            linkToParseCandidate(pc, r.id)
-                        )
-                    else
-                        setErrorText(r.message)
-                })
+           const r = await addWord(graph, word.language, pc.text, "", "", pc.pos)
+            if (r.status === 200)
+                r.json().then(r =>
+                    linkToParseCandidate(pc, r.id)
+                )
+            else
+                setErrorText(r.message)
         }
         else {
             linkToParseCandidate(pc, pc.wordId)
@@ -244,30 +237,26 @@ function SingleWord(params) {
         }
     }
 
-    function deleteRuleLinkClicked(ruleId, linkType) {
+    async function deleteRuleLinkClicked(ruleId, linkType) {
         if (window.confirm("Delete this link?")) {
-            deleteLink(graph, word.id, ruleId, linkType)
-                .then(r => {
-                    if (r.status === 200) {
-                        router.replace(router.asPath)
-                    }
-                    else {
-                        r.json().then(r => setErrorText(r.message))
-                    }
-                })
+            const r = await deleteLink(graph, word.id, ruleId, linkType)
+            if (r.status === 200) {
+                router.replace(router.asPath)
+            }
+            else {
+                r.json().then(r => setErrorText(r.message))
+            }
         }
     }
 
-    function deriveThroughSequenceClicked(seqId) {
-        deriveThroughRuleSequence(graph, word.id, seqId)
-            .then(r => {
-                if (r.status === 200) {
-                    router.replace(router.asPath)
-                }
-                else {
-                    r.json().then(r => setErrorText(r.message))
-                }
-            })
+    async function deriveThroughSequenceClicked(seqId) {
+        const r = await deriveThroughRuleSequence(graph, word.id, seqId)
+        if (r.status === 200) {
+            router.replace(router.asPath)
+        }
+        else {
+            r.json().then(r => setErrorText(r.message))
+        }
     }
 
 
@@ -419,8 +408,7 @@ function SingleWord(params) {
 
 export default function Word(params) {
     const words = params.loaderData
-    const router = useRouter()
-    const graph = router.query.graph
+    const graph = useContext(GraphContext)
     if (Array.isArray(words)) {
         if (words.length === 1) {
             return <SingleWord word={words[0]}/>
