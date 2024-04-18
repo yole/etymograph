@@ -1,0 +1,4028 @@
+[
+    {
+        "id": 1010,
+        "name": "on-acc",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            ""
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "strong"
+                        },
+                        {
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "leaf",
+                                    "cond": "EndsWith",
+                                    "characters": "v"
+                                },
+                                {
+                                    "type": "leaf",
+                                    "cond": "EndsWith",
+                                    "characters": "j"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ApplySoundRule",
+                        "args": [
+                            "1122",
+                            "first vowel"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "ClassMatches",
+                    "characters": "uml-stem"
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "NoChange",
+                        "args": []
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "ClassMatches",
+                    "characters": "strong"
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "a"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "i"
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "u"
+                        ]
+                    },
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1123"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "leaf",
+                                    "cond": "EndsWith",
+                                    "characters": "va"
+                                },
+                                {
+                                    "type": "leaf",
+                                    "cond": "EndsWith",
+                                    "characters": "a"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "f"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "NoChange",
+                        "args": []
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".ACC",
+        "fromPOS": "N",
+        "preInstructions": [
+            {
+                "type": "ApplyRule",
+                "args": [
+                    "1324"
+                ]
+            }
+        ]
+    },
+    {
+        "id": 1011,
+        "name": "on-dat",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            ""
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "strong-type2"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "j"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "NoChange",
+                        "args": []
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "strong-type2"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "m"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "NoChange",
+                        "args": []
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "strong"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "i"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "i"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "strong"
+                        },
+                        {
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "leaf",
+                                    "cond": "ClassMatches",
+                                    "characters": "m"
+                                },
+                                {
+                                    "type": "leaf",
+                                    "cond": "ClassMatches",
+                                    "characters": "n"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "j"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'i'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "strong"
+                        },
+                        {
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "leaf",
+                                    "cond": "ClassMatches",
+                                    "characters": "m"
+                                },
+                                {
+                                    "type": "leaf",
+                                    "cond": "ClassMatches",
+                                    "characters": "n"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "a"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "i"
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "u"
+                        ]
+                    },
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1123"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "leaf",
+                                    "cond": "EndsWith",
+                                    "characters": "va"
+                                },
+                                {
+                                    "type": "leaf",
+                                    "cond": "EndsWith",
+                                    "characters": "a"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "f"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'u'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "leaf",
+                                    "cond": "EndsWith",
+                                    "characters": "ing"
+                                },
+                                {
+                                    "type": "leaf",
+                                    "cond": "EndsWith",
+                                    "characters": "ung"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "syllableCount",
+                            "negated": true,
+                            "expectCount": 1
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ApplySoundRule",
+                        "args": [
+                            "1122",
+                            "first vowel"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "ClassMatches",
+                    "characters": "uml-stem"
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            ""
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "or",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "j"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "v"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "NoChange",
+                        "args": []
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".DAT",
+        "fromPOS": "N",
+        "preInstructions": [
+            {
+                "type": "ApplyRule",
+                "args": [
+                    "1324"
+                ]
+            }
+        ]
+    },
+    {
+        "id": 1012,
+        "name": "on-gen",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'ar'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "ClassMatches",
+                    "characters": "gen-ar"
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "s"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "strong"
+                        },
+                        {
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "leaf",
+                                    "cond": "EndsWith",
+                                    "characters": "v"
+                                },
+                                {
+                                    "type": "leaf",
+                                    "cond": "EndsWith",
+                                    "characters": "j"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "leaf",
+                                    "cond": "ClassMatches",
+                                    "characters": "m"
+                                },
+                                {
+                                    "type": "leaf",
+                                    "cond": "ClassMatches",
+                                    "characters": "n"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'s'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "leaf",
+                                    "cond": "ClassMatches",
+                                    "characters": "m"
+                                },
+                                {
+                                    "type": "leaf",
+                                    "cond": "ClassMatches",
+                                    "characters": "n"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "strong"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'ar'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "f"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "strong"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "a"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "i"
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "u"
+                        ]
+                    },
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1123"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "leaf",
+                                    "cond": "EndsWith",
+                                    "characters": "va"
+                                },
+                                {
+                                    "type": "leaf",
+                                    "cond": "EndsWith",
+                                    "characters": "a"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "f"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "NoChange",
+                        "args": []
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".GEN",
+        "fromPOS": "N",
+        "preInstructions": [
+            {
+                "type": "ApplyRule",
+                "args": [
+                    "1324"
+                ]
+            }
+        ]
+    },
+    {
+        "id": 1088,
+        "name": "on-nom-pl",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "ar"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "strong"
+                        },
+                        {
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "leaf",
+                                    "cond": "ClassMatches",
+                                    "characters": "m"
+                                },
+                                {
+                                    "type": "leaf",
+                                    "cond": "ClassMatches",
+                                    "characters": "f"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "i"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "ir"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "strong-type2"
+                        },
+                        {
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "leaf",
+                                    "cond": "ClassMatches",
+                                    "characters": "m"
+                                },
+                                {
+                                    "type": "leaf",
+                                    "cond": "ClassMatches",
+                                    "characters": "f"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "j"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'ir'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "strong-type2"
+                        },
+                        {
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "leaf",
+                                    "cond": "ClassMatches",
+                                    "characters": "m"
+                                },
+                                {
+                                    "type": "leaf",
+                                    "cond": "ClassMatches",
+                                    "characters": "f"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'ar'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "strong"
+                        },
+                        {
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "leaf",
+                                    "cond": "ClassMatches",
+                                    "characters": "m"
+                                },
+                                {
+                                    "type": "leaf",
+                                    "cond": "ClassMatches",
+                                    "characters": "f"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            ""
+                        ]
+                    },
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1394"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "strong"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "n"
+                        },
+                        {
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "leaf",
+                                    "cond": "EndsWith",
+                                    "characters": "j"
+                                },
+                                {
+                                    "type": "leaf",
+                                    "cond": "EndsWith",
+                                    "characters": "v"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1394"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "strong"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "n"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "ar"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "i"
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "ur"
+                        ]
+                    },
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1123"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "leaf",
+                                    "cond": "EndsWith",
+                                    "characters": "va"
+                                },
+                                {
+                                    "type": "leaf",
+                                    "cond": "EndsWith",
+                                    "characters": "a"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "f"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "u"
+                        ]
+                    },
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1123"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "a"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "n"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "NoChange",
+                        "args": []
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".NOM.PL",
+        "fromPOS": "N",
+        "preInstructions": [
+            {
+                "type": "ApplyRule",
+                "args": [
+                    "1324"
+                ]
+            }
+        ]
+    },
+    {
+        "id": 1089,
+        "name": "on-acc-pl",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "a"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "m"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "strong"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "i"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "i"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "m"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "strong-type2"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "j"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'i'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "m"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "strong-type2"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'a'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "m"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "strong"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            ""
+                        ]
+                    },
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1394"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "n"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "strong"
+                        },
+                        {
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "leaf",
+                                    "cond": "EndsWith",
+                                    "characters": "j"
+                                },
+                                {
+                                    "type": "leaf",
+                                    "cond": "EndsWith",
+                                    "characters": "v"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1394"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "n"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "strong"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'ir'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "f"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "strong-type2"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'ar'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "f"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "strong"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "a"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "i"
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "ur"
+                        ]
+                    },
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1123"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "leaf",
+                                    "cond": "EndsWith",
+                                    "characters": "va"
+                                },
+                                {
+                                    "type": "leaf",
+                                    "cond": "EndsWith",
+                                    "characters": "a"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "f"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "u"
+                        ]
+                    },
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1123"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "a"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "n"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "NoChange",
+                        "args": []
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".ACC.PL",
+        "fromPOS": "N",
+        "preInstructions": [
+            {
+                "type": "ApplyRule",
+                "args": [
+                    "1324"
+                ]
+            }
+        ]
+    },
+    {
+        "id": 1090,
+        "name": "on-dat-pl",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "um"
+                        ]
+                    },
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1123"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "or",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "v"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "i"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "va"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "a"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'um'"
+                        ]
+                    },
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1123"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".DAT.PL",
+        "fromPOS": "N",
+        "preInstructions": [
+            {
+                "type": "ApplyRule",
+                "args": [
+                    "1324"
+                ]
+            }
+        ]
+    },
+    {
+        "id": 1091,
+        "name": "on-gen-pl",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "a"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "i"
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'a'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "ClassMatches",
+                    "characters": "strong"
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "na"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "or",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "ja"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "a"
+                        }
+                    ]
+                }
+            }
+        ],
+        "addedCategories": ".GEN.PL",
+        "fromPOS": "N",
+        "preInstructions": [
+            {
+                "type": "ApplyRule",
+                "args": [
+                    "1324"
+                ]
+            }
+        ]
+    },
+    {
+        "id": 1122,
+        "name": "on-a-fronting",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "NoChange",
+                        "args": []
+                    }
+                ],
+                "condition": {
+                    "type": "relPhoneme",
+                    "cls": "diphthong",
+                    "relative": false
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "ö"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "relPhoneme",
+                    "parameter": "a",
+                    "relative": false
+                }
+            }
+        ]
+    },
+    {
+        "id": 1123,
+        "name": "on-u-umlaut",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplySoundRule",
+                        "args": [
+                            "1122",
+                            "first vowel"
+                        ]
+                    },
+                    {
+                        "type": "ApplySoundRule",
+                        "args": [
+                            "1396",
+                            "second vowel"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "syllable",
+                            "matchType": "Contains",
+                            "index": -1,
+                            "parameter": "u"
+                        },
+                        {
+                            "type": "syllableCount",
+                            "expectCount": 3
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ApplySoundRule",
+                        "args": [
+                            "1122",
+                            "first vowel"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "syllable",
+                    "matchType": "Contains",
+                    "index": -1,
+                    "parameter": "u"
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "NoChange",
+                        "args": []
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ]
+    },
+    {
+        "id": 1128,
+        "name": "on-pres-2sg",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1129"
+                        ]
+                    },
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'r'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".PRES.2SG",
+        "fromPOS": "V"
+    },
+    {
+        "id": 1129,
+        "name": "on-pres-1sg",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1579"
+                        ]
+                    },
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            ""
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "strong"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "a"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "NoChange",
+                        "args": []
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "ClassMatches",
+                    "characters": "1conj"
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "i"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "2conj"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "ja"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "i"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "2conj"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "a"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            ""
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "3conj"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "ja"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "i"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "4conj"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "ja"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "i"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "4conj"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "a"
+                        }
+                    ]
+                }
+            }
+        ],
+        "addedCategories": ".PRES.1SG",
+        "fromPOS": "V"
+    },
+    {
+        "id": 1130,
+        "name": "on-pres-3sg",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1129"
+                        ]
+                    },
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'r'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".PRES.3SG",
+        "fromPOS": "V"
+    },
+    {
+        "id": 1132,
+        "name": "on-pres-1pl",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "um"
+                        ]
+                    },
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1123"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "a"
+                }
+            }
+        ],
+        "addedCategories": ".PRES.1PL",
+        "fromPOS": "V"
+    },
+    {
+        "id": 1133,
+        "name": "on-pres-2pl",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "ið"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "ja"
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "ið"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "a"
+                }
+            }
+        ],
+        "addedCategories": ".PRES.2PL",
+        "fromPOS": "V"
+    },
+    {
+        "id": 1134,
+        "name": "on-pres-3pl",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "NoChange",
+                        "args": []
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".PRES.3PL",
+        "fromPOS": "V"
+    },
+    {
+        "id": 1324,
+        "name": "on-n-stem",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyClass",
+                        "args": [
+                            "strong"
+                        ]
+                    },
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "n"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "nn"
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyClass",
+                        "args": [
+                            "strong"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "ClassMatches",
+                    "characters": "r-stem"
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyClass",
+                        "args": [
+                            "strong"
+                        ]
+                    },
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "v"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "r"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "v-stem"
+                        },
+                        {
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "leaf",
+                                    "cond": "ClassMatches",
+                                    "characters": "m"
+                                },
+                                {
+                                    "type": "leaf",
+                                    "cond": "ClassMatches",
+                                    "characters": "n"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyClass",
+                        "args": [
+                            "strong"
+                        ]
+                    },
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'v'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "v-stem"
+                        },
+                        {
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "leaf",
+                                    "cond": "ClassMatches",
+                                    "characters": "f"
+                                },
+                                {
+                                    "type": "leaf",
+                                    "cond": "ClassMatches",
+                                    "characters": "n"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyClass",
+                        "args": [
+                            "strong"
+                        ]
+                    },
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "j"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "r"
+                        },
+                        {
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "leaf",
+                                    "cond": "ClassMatches",
+                                    "characters": "m"
+                                },
+                                {
+                                    "type": "leaf",
+                                    "cond": "ClassMatches",
+                                    "characters": "n"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "j-stem"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyClass",
+                        "args": [
+                            "strong"
+                        ]
+                    },
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            ""
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "r"
+                        },
+                        {
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "leaf",
+                                    "cond": "ClassMatches",
+                                    "characters": "m"
+                                },
+                                {
+                                    "type": "leaf",
+                                    "cond": "ClassMatches",
+                                    "characters": "n"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ApplySoundRule",
+                        "args": [
+                            "1389",
+                            "first vowel"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "ClassMatches",
+                    "characters": "uml-stem"
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "ji"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "j-stem"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "i"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'j'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "ClassMatches",
+                    "characters": "j-stem"
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "NoChange",
+                        "args": []
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ]
+    },
+    {
+        "id": 1389,
+        "name": "on-a-fronting-reverse",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "a"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "relPhoneme",
+                    "parameter": "ö",
+                    "relative": false
+                }
+            }
+        ],
+        "notes": ""
+    },
+    {
+        "id": 1394,
+        "name": "on-u-umlaut-always",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplySoundRule",
+                        "args": [
+                            "1122",
+                            "first vowel"
+                        ]
+                    },
+                    {
+                        "type": "ApplySoundRule",
+                        "args": [
+                            "1396",
+                            "second vowel"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "syllableCount",
+                    "expectCount": 2
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ApplySoundRule",
+                        "args": [
+                            "1122",
+                            "first vowel"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ]
+    },
+    {
+        "id": 1396,
+        "name": "on-a-fronting-unstressed",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "u"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "relPhoneme",
+                    "parameter": "a",
+                    "relative": false
+                }
+            }
+        ],
+        "notes": ""
+    },
+    {
+        "id": 1401,
+        "name": "on-past-stem",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "að"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "1conj"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "a"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "t"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "leaf",
+                                    "cond": "ClassMatches",
+                                    "characters": "2conj"
+                                },
+                                {
+                                    "type": "leaf",
+                                    "cond": "ClassMatches",
+                                    "characters": "4conj"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "a"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "pret-t"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "d"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "leaf",
+                                    "cond": "ClassMatches",
+                                    "characters": "2conj"
+                                },
+                                {
+                                    "type": "leaf",
+                                    "cond": "ClassMatches",
+                                    "characters": "4conj"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "a"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "pret-d"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "ð"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "leaf",
+                                    "cond": "ClassMatches",
+                                    "characters": "2conj"
+                                },
+                                {
+                                    "type": "leaf",
+                                    "cond": "ClassMatches",
+                                    "characters": "4conj"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "a"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "pret-ð"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "t"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "3conj"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "ja"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "pret-t"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "d"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "3conj"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "ja"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "pret-d"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "ð"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "3conj"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "ja"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "pret-ð"
+                        }
+                    ]
+                }
+            }
+        ],
+        "fromPOS": "V"
+    },
+    {
+        "id": 1402,
+        "name": "on-past-1sg",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'a'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "ClassMatches",
+                    "characters": "strong",
+                    "negated": true
+                }
+            }
+        ],
+        "addedCategories": ".PST.1SG",
+        "fromPOS": "V",
+        "preInstructions": [
+            {
+                "type": "ApplyRule",
+                "args": [
+                    "1401"
+                ]
+            }
+        ]
+    },
+    {
+        "id": 1403,
+        "name": "on-past-2sg",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'t'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "ClassMatches",
+                    "characters": "strong"
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'ir'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".PST.2SG",
+        "fromPOS": "V",
+        "preInstructions": [
+            {
+                "type": "ApplyRule",
+                "args": [
+                    "1401"
+                ]
+            }
+        ]
+    },
+    {
+        "id": 1404,
+        "name": "on-past-3sg",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'i'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "ClassMatches",
+                    "characters": "strong",
+                    "negated": true
+                }
+            }
+        ],
+        "addedCategories": ".PST.3SG",
+        "fromPOS": "V",
+        "preInstructions": [
+            {
+                "type": "ApplyRule",
+                "args": [
+                    "1401"
+                ]
+            }
+        ]
+    },
+    {
+        "id": 1405,
+        "name": "on-past-1pl",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1401"
+                        ]
+                    },
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'um'"
+                        ]
+                    },
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1123"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".PST.1PL",
+        "fromPOS": "V"
+    },
+    {
+        "id": 1406,
+        "name": "on-past-2pl",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1401"
+                        ]
+                    },
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'uð'"
+                        ]
+                    },
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1123"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".PST.2PL",
+        "fromPOS": "V"
+    },
+    {
+        "id": 1407,
+        "name": "on-past-3pl",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1401"
+                        ]
+                    },
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'u'"
+                        ]
+                    },
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1123"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".PST.3PL",
+        "fromPOS": "V"
+    },
+    {
+        "id": 1409,
+        "name": "on-pres-mid-1sg",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "umk"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "a"
+                }
+            }
+        ],
+        "addedCategories": ".MID.1SG",
+        "fromPOS": "V",
+        "notes": ""
+    },
+    {
+        "id": 1410,
+        "name": "on-pres-mid-2sg",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "sk"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "r"
+                }
+            }
+        ],
+        "addedCategories": ".MID.2SG",
+        "fromPOS": "V",
+        "notes": "",
+        "preInstructions": [
+            {
+                "type": "ApplyRule",
+                "args": [
+                    "1128"
+                ]
+            }
+        ]
+    },
+    {
+        "id": 1411,
+        "name": "on-pres-mid-3sg",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "sk"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "r"
+                }
+            }
+        ],
+        "addedCategories": ".MID.3SG",
+        "fromPOS": "V",
+        "notes": "",
+        "preInstructions": [
+            {
+                "type": "ApplyRule",
+                "args": [
+                    "1130"
+                ]
+            }
+        ]
+    },
+    {
+        "id": 1412,
+        "name": "on-pres-mid-1pl",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "umk"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "a"
+                }
+            }
+        ],
+        "addedCategories": ".MID.1PL",
+        "fromPOS": "V",
+        "notes": ""
+    },
+    {
+        "id": 1413,
+        "name": "on-pres-mid-2pl",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "zk"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "ð"
+                }
+            }
+        ],
+        "addedCategories": ".MID.2PL",
+        "fromPOS": "V",
+        "notes": "",
+        "preInstructions": [
+            {
+                "type": "ApplyRule",
+                "args": [
+                    "1133"
+                ]
+            }
+        ]
+    },
+    {
+        "id": 1414,
+        "name": "on-pres-mid-3pl",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1134"
+                        ]
+                    },
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'sk'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".MID.3PL",
+        "fromPOS": "V",
+        "notes": ""
+    },
+    {
+        "id": 1416,
+        "name": "on-past-mid-1sg",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "umk"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "a"
+                }
+            }
+        ],
+        "addedCategories": ".MID.PST.1SG",
+        "fromPOS": "V",
+        "notes": "",
+        "preInstructions": [
+            {
+                "type": "ApplyRule",
+                "args": [
+                    "1402"
+                ]
+            }
+        ]
+    },
+    {
+        "id": 1417,
+        "name": "on-past-mid-2sg",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "sk"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "r"
+                }
+            }
+        ],
+        "addedCategories": ".PST.MID.2SG",
+        "fromPOS": "V",
+        "notes": "",
+        "preInstructions": [
+            {
+                "type": "ApplyRule",
+                "args": [
+                    "1403"
+                ]
+            }
+        ]
+    },
+    {
+        "id": 1418,
+        "name": "on-past-mid-3sg",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1404"
+                        ]
+                    },
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'sk'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".PST.MID.3SG",
+        "fromPOS": "V",
+        "notes": ""
+    },
+    {
+        "id": 1419,
+        "name": "on-past-mid-1pl",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1405"
+                        ]
+                    },
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'sk'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".PST.MID.1PL",
+        "fromPOS": "V",
+        "notes": ""
+    },
+    {
+        "id": 1420,
+        "name": "on-past-mid-2pl",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "zk"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "ð"
+                }
+            }
+        ],
+        "addedCategories": ".PST.MID.2PL",
+        "fromPOS": "V",
+        "notes": "",
+        "preInstructions": [
+            {
+                "type": "ApplyRule",
+                "args": [
+                    "1406"
+                ]
+            }
+        ]
+    },
+    {
+        "id": 1421,
+        "name": "on-past-mid-3pl",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1407"
+                        ]
+                    },
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'sk'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".PST.MID.3PL",
+        "fromPOS": "V",
+        "notes": ""
+    },
+    {
+        "id": 1433,
+        "name": "on-ppart",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [],
+        "addedCategories": ".PPART",
+        "fromPOS": "V",
+        "notes": ""
+    },
+    {
+        "id": 1436,
+        "name": "on-adj-sup",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [],
+        "addedCategories": ".SUP",
+        "fromPOS": "ADJ",
+        "notes": ""
+    },
+    {
+        "id": 1498,
+        "name": "on-adj-strong-m-acc",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1502"
+                        ]
+                    },
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'an'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".M.ACC",
+        "fromPOS": "ADJ"
+    },
+    {
+        "id": 1499,
+        "name": "on-adj-strong-m-dat",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1502"
+                        ]
+                    },
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'um'"
+                        ]
+                    },
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1123"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".M.DAT",
+        "fromPOS": "ADJ"
+    },
+    {
+        "id": 1500,
+        "name": "on-adj-strong-m-gen",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1502"
+                        ]
+                    },
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'s'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".M.GEN",
+        "fromPOS": "ADJ"
+    },
+    {
+        "id": 1502,
+        "name": "on-adj-stem",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            ""
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "r"
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "NoChange",
+                        "args": []
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "fromPOS": "ADJ",
+        "notes": ""
+    },
+    {
+        "id": 1503,
+        "name": "on-adj-strong-f-nom",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1502"
+                        ]
+                    },
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1394"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".F.NOM",
+        "fromPOS": "ADJ",
+        "notes": ""
+    },
+    {
+        "id": 1504,
+        "name": "on-adj-strong-f-acc",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1502"
+                        ]
+                    },
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'a'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".F.ACC",
+        "fromPOS": "ADJ",
+        "notes": ""
+    },
+    {
+        "id": 1505,
+        "name": "on-adj-strong-f-dat",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1502"
+                        ]
+                    },
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'ri'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".F.DAT",
+        "fromPOS": "ADJ",
+        "notes": ""
+    },
+    {
+        "id": 1506,
+        "name": "on-adj-strong-f-gen",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1502"
+                        ]
+                    },
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'rar'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".F.GEN",
+        "fromPOS": "ADJ",
+        "notes": ""
+    },
+    {
+        "id": 1507,
+        "name": "on-adj-strong-n-nom",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1502"
+                        ]
+                    },
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'t'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".N.NOM",
+        "fromPOS": "ADJ",
+        "notes": ""
+    },
+    {
+        "id": 1508,
+        "name": "on-adj-strong-n-acc",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1507"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".N.ACC",
+        "fromPOS": "ADJ",
+        "notes": ""
+    },
+    {
+        "id": 1509,
+        "name": "on-adj-strong-n-dat",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1502"
+                        ]
+                    },
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'u'"
+                        ]
+                    },
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1123"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".N.DAT",
+        "fromPOS": "ADJ",
+        "notes": ""
+    },
+    {
+        "id": 1510,
+        "name": "on-adj-strong-n-gen",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1502"
+                        ]
+                    },
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'s'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".N.GEN",
+        "fromPOS": "ADJ",
+        "notes": ""
+    },
+    {
+        "id": 1535,
+        "name": "on-adj-strong-m-nom-pl",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1502"
+                        ]
+                    },
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'ir'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".M.NOM.PL",
+        "fromPOS": "ADJ",
+        "notes": ""
+    },
+    {
+        "id": 1536,
+        "name": "on-adj-strong-m-acc-pl",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1502"
+                        ]
+                    },
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'a'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".M.ACC.PL",
+        "fromPOS": "ADJ"
+    },
+    {
+        "id": 1537,
+        "name": "on-adj-strong-m-dat-pl",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1499"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".M.DAT.PL",
+        "fromPOS": "ON",
+        "notes": ""
+    },
+    {
+        "id": 1538,
+        "name": "on-adj-strong-m-gen-pl",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1502"
+                        ]
+                    },
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'ra'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".M.GEN.PL",
+        "fromPOS": "ADJ",
+        "notes": ""
+    },
+    {
+        "id": 1539,
+        "name": "on-adj-strong-f-nom-pl",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1502"
+                        ]
+                    },
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'ar'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".F.NOM.PL",
+        "fromPOS": "ADJ",
+        "notes": ""
+    },
+    {
+        "id": 1540,
+        "name": "on-adj-strong-f-acc-pl",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1539"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".F.ACC.PL",
+        "fromPOS": "ADJ",
+        "notes": ""
+    },
+    {
+        "id": 1541,
+        "name": "on-adj-strong-f-dat-pl",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1537"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".F.DAT.PL",
+        "fromPOS": "ADJ",
+        "notes": ""
+    },
+    {
+        "id": 1542,
+        "name": "on-adj-strong-f-gen-pl",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1538"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".F.GEN.PL",
+        "fromPOS": "ADJ",
+        "notes": ""
+    },
+    {
+        "id": 1543,
+        "name": "on-adj-strong-n-nom-pl",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1502"
+                        ]
+                    },
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1394"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".N.NOM.PL",
+        "fromPOS": "ADJ",
+        "notes": ""
+    },
+    {
+        "id": 1544,
+        "name": "on-adj-strong-n-acc-pl",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1543"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".N.ACC.PL",
+        "fromPOS": "ADJ",
+        "notes": ""
+    },
+    {
+        "id": 1545,
+        "name": "on-adj-strong-n-dat-pl",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1537"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".N.DAT.PL",
+        "fromPOS": "ADJ",
+        "notes": ""
+    },
+    {
+        "id": 1546,
+        "name": "on-adj-strong-n-gen-pl",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1538"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".N.GEN.PL",
+        "fromPOS": "ADJ",
+        "notes": ""
+    },
+    {
+        "id": 1578,
+        "name": "on-i-umlaut-change",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "e"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "relPhoneme",
+                    "parameter": "a",
+                    "relative": false
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "æ"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "relPhoneme",
+                    "parameter": "á",
+                    "relative": false
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "ø"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "relPhoneme",
+                    "parameter": "o",
+                    "relative": false
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "œ"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "relPhoneme",
+                    "parameter": "ó",
+                    "relative": false
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "y"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "relPhoneme",
+                    "parameter": "u",
+                    "relative": false
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "ý"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "relPhoneme",
+                    "parameter": "ú",
+                    "relative": false
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "ø"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "relPhoneme",
+                    "parameter": "ö",
+                    "relative": false
+                }
+            }
+        ],
+        "notes": ""
+    },
+    {
+        "id": 1579,
+        "name": "on-i-umlaut",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplySoundRule",
+                        "args": [
+                            "1578",
+                            "first vowel"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "notes": ""
+    },
+    {
+        "id": 1649,
+        "name": "on-phono",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "Disallow",
+                        "args": []
+                    }
+                ],
+                "condition": {
+                    "type": "or",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "j"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "v"
+                        }
+                    ]
+                }
+            }
+        ],
+        "notes": ""
+    }
+]

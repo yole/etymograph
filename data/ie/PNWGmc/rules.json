@@ -1,0 +1,298 @@
+[
+    {
+        "id": 1862,
+        "name": "pnwgmc-e-lowering",
+        "fromLang": "PGmc",
+        "toLang": "PNWGmc",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "ā"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "ē",
+                            "relative": false
+                        },
+                        {
+                            "type": "syllableIndex",
+                            "matchIndex": 1
+                        }
+                    ]
+                }
+            }
+        ],
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "10"
+            }
+        ],
+        "notes": ""
+    },
+    {
+        "id": 1863,
+        "name": "pnwgmc-final-high-vowel-shortening",
+        "fromLang": "PGmc",
+        "toLang": "PNWGmc",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSoundClass",
+                        "args": [
+                            "long",
+                            "short",
+                            "0"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "cls": "long close vowel",
+                            "relative": false
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "EndOfWord"
+                        },
+                        {
+                            "type": "syllableCount",
+                            "negated": true,
+                            "expectCount": 1
+                        }
+                    ]
+                }
+            }
+        ],
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "14"
+            },
+            {
+                "pubId": 5,
+                "refText": "16"
+            }
+        ]
+    },
+    {
+        "id": 1866,
+        "name": "pnwgmc-word-final-long-o",
+        "fromLang": "PGmc",
+        "toLang": "PNWGmc",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "ū"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "ō",
+                            "relative": false
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "EndOfWord"
+                        }
+                    ]
+                }
+            }
+        ],
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "16"
+            }
+        ]
+    },
+    {
+        "id": 1873,
+        "name": "pnwgmc-stress",
+        "fromLang": "PNWGmc",
+        "toLang": "PNWGmc",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyStress",
+                        "args": [
+                            "first"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "notes": ""
+    },
+    {
+        "id": 1874,
+        "name": "pnwgmc-w-before-u",
+        "fromLang": "PGmc",
+        "toLang": "PNWGmc",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "SoundDisappears",
+                        "args": [
+                            ""
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "w",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": -1,
+                            "cls": "consonant"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": -1,
+                            "negated": true,
+                            "parameter": "w"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": 1,
+                            "parameter": "u"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": 1,
+                            "negated": true,
+                            "cls": "stressed"
+                        }
+                    ]
+                }
+            }
+        ],
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "16"
+            }
+        ]
+    },
+    {
+        "id": 1882,
+        "name": "pnwgmc-a-before-m",
+        "fromLang": "PGmc",
+        "toLang": "PNWGmc",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "u"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "a",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": 1,
+                            "parameter": "m"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "negated": true,
+                            "cls": "stressed",
+                            "relative": false
+                        }
+                    ]
+                }
+            }
+        ],
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "17"
+            }
+        ],
+        "notes": ""
+    },
+    {
+        "id": 1883,
+        "name": "pnwgmc-er",
+        "fromLang": "PGmc",
+        "toLang": "PNWGmc",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "a"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "e",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": 1,
+                            "parameter": "r"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "negated": true,
+                            "cls": "stressed",
+                            "relative": false
+                        }
+                    ]
+                }
+            }
+        ],
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "18"
+            }
+        ],
+        "notes": ""
+    }
+]

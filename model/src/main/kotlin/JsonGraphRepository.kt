@@ -301,7 +301,6 @@ data class GraphRepositoryData(
     val id: String,
     val name: String,
     val languages: List<LanguageData>,
-    val rules: List<RuleData>,
     val links: List<LinkData>,
     val ruleSequences: List<RuleSequenceData>
 )
@@ -354,6 +353,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
         )
         saveLanguageDetails(consumer)
         saveWords(consumer)
+        saveRules(consumer)
         saveCorpus(consumer)
         saveCompounds(consumer)
         saveParadigms(consumer)
@@ -397,6 +397,15 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                     it.source.sourceToSerializedFormat(), it.notes)
             }
             consumer(language.shortName + "/words.json", theJson.encodeToString(wordData))
+        }
+    }
+
+    private fun saveRules(consumer: (String, String) -> Unit) {
+        for (language in languages.values) {
+            val ruleData = rules.filter { it.toLanguage == language }.map { it.ruleToSerializedFormat() }
+            if (ruleData.isNotEmpty()) {
+                consumer("${language.shortName}/rules.json", theJson.encodeToString(ruleData))
+            }
         }
     }
 
@@ -455,7 +464,6 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             id,
             name,
             languages.values.map { LanguageData(it.name, it.shortName, it.reconstructed) },
-            rules.map { it.ruleToSerializedFormat() },
             allLinks.map { link ->
                 LinkData(
                     link.fromEntity.id, link.toEntity.id,
@@ -485,31 +493,9 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
         loadLanguageDetails(contentProviderCallback)
         loadPublications(contentProviderCallback)
         loadWords(contentProviderCallback)
+        loadRules(contentProviderCallback)
         loadCorpus(contentProviderCallback)
         loadCompounds(contentProviderCallback)
-        for (rule in data.rules) {
-            val fromLanguage = languageByShortName(rule.fromLanguageShortName)!!
-            val addedRule = Rule(
-                rule.id,
-                rule.name ?: "",
-                fromLanguage,
-                languageByShortName(rule.toLanguageShortName)!!,
-                RuleLogic(
-                    rule.preInstructions?.let {
-                        ruleInstructionsFromSerializedFormat(this, fromLanguage, it)
-                    } ?: emptyList(),
-                    ruleBranchesFromSerializedFormat(this, fromLanguage, rule.branches)
-                ),
-                rule.addedCategories,
-                rule.replacedCategories,
-                rule.fromPOS,
-                rule.toPOS,
-                loadSource(rule.sourceRefs),
-                rule.notes
-            )
-            rules.add(addedRule)
-            setLangEntity(rule.id, addedRule)
-        }
         loadParadigms(contentProviderCallback)
 
         for (sequence in data.ruleSequences) {
@@ -597,6 +583,36 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
     private fun deserializeWordCategories(data: List<WordCategoryData>): MutableList<WordCategory> {
         return data.mapTo(mutableListOf()) {
             WordCategory(it.name, it.pos, it.values.map { dv -> WordCategoryValue(dv.name, dv.abbreviation) })
+        }
+    }
+
+    private fun loadRules(contentProviderCallback: (String) -> String?) {
+        for (language in languages.values) {
+            val ruleJson = contentProviderCallback(language.shortName + "/rules.json") ?: continue
+            val data = Json.decodeFromString<List<RuleData>>(ruleJson)
+            for (rule in data) {
+                val fromLanguage = languageByShortName(rule.fromLanguageShortName)!!
+                val addedRule = Rule(
+                    rule.id,
+                    rule.name ?: "",
+                    fromLanguage,
+                    languageByShortName(rule.toLanguageShortName)!!,
+                    RuleLogic(
+                        rule.preInstructions?.let {
+                            ruleInstructionsFromSerializedFormat(this, fromLanguage, it)
+                        } ?: emptyList(),
+                        ruleBranchesFromSerializedFormat(this, fromLanguage, rule.branches)
+                    ),
+                    rule.addedCategories,
+                    rule.replacedCategories,
+                    rule.fromPOS,
+                    rule.toPOS,
+                    loadSource(rule.sourceRefs),
+                    rule.notes
+                )
+                rules.add(addedRule)
+                setLangEntity(rule.id, addedRule)
+            }
         }
     }
 

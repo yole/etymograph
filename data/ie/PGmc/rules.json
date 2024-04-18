@@ -1,0 +1,24 @@
+[
+    {
+        "id": 1956,
+        "name": "pgmc-stress",
+        "fromLang": "PGmc",
+        "toLang": "PGmc",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyStress",
+                        "args": [
+                            "first"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "notes": ""
+    }
+]

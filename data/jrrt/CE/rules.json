@@ -1,0 +1,516 @@
+[
+    {
+        "id": 1045,
+        "name": "ce-final-i",
+        "fromLang": "CE",
+        "toLang": "CE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "e"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "EndOfWord"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "i",
+                            "relative": false
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "o"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "EndOfWord"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "u",
+                            "relative": false
+                        }
+                    ]
+                }
+            }
+        ]
+    },
+    {
+        "id": 1665,
+        "name": "ce-aspirated-to-stop",
+        "fromLang": "CE",
+        "toLang": "CE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "p"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "relPhoneme",
+                    "parameter": "pʰ",
+                    "relative": false
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "t"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "relPhoneme",
+                    "parameter": "tʰ",
+                    "relative": false
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "k"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "relPhoneme",
+                    "parameter": "kʰ",
+                    "relative": false
+                }
+            }
+        ]
+    },
+    {
+        "id": 1666,
+        "name": "ce-stop-to-aspirated",
+        "fromLang": "CE",
+        "toLang": "CE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "pʰ"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "relPhoneme",
+                    "parameter": "p",
+                    "relative": false
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "kʰ"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "relPhoneme",
+                    "parameter": "k",
+                    "relative": false
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "tʰ"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "relPhoneme",
+                    "parameter": "t",
+                    "relative": false
+                }
+            }
+        ],
+        "notes": ""
+    },
+    {
+        "id": 1667,
+        "name": "ce-aspiration-to-end",
+        "fromLang": "CE",
+        "toLang": "CE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplySoundRule",
+                        "args": [
+                            "1665"
+                        ]
+                    },
+                    {
+                        "type": "ApplySoundRule",
+                        "args": [
+                            "1666",
+                            "next sound"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "cls": "aspirated",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": 1,
+                            "cls": "voiceless stop"
+                        }
+                    ]
+                }
+            }
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://eldamo.org/content/words/word-3183451073.html"
+            }
+        ],
+        "notes": ""
+    },
+    {
+        "id": 1670,
+        "name": "ce-nasal-metathesis",
+        "fromLang": "CE",
+        "toLang": "CE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "m"
+                        ]
+                    },
+                    {
+                        "type": "ChangeNextSound",
+                        "args": [
+                            "b"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "b",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": 1,
+                            "parameter": "m"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "n"
+                        ]
+                    },
+                    {
+                        "type": "ChangeNextSound",
+                        "args": [
+                            "d"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "d",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": 1,
+                            "parameter": "n"
+                        }
+                    ]
+                }
+            }
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://eldamo.org/content/words/word-3882201769.html"
+            }
+        ],
+        "notes": ""
+    },
+    {
+        "id": 1674,
+        "name": "ce-unvoice-stops-before-voiceless",
+        "fromLang": "CE",
+        "toLang": "CE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSoundClass",
+                        "args": [
+                            "voiced",
+                            "voiceless",
+                            "0"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "cls": "voiced stop",
+                            "relative": false
+                        },
+                        {
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "relPhoneme",
+                                    "relativeIndex": 1,
+                                    "cls": "voiceless stop"
+                                },
+                                {
+                                    "type": "relPhoneme",
+                                    "relativeIndex": 1,
+                                    "parameter": "s"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://eldamo.org/content/words/word-1944249607.html"
+            }
+        ]
+    },
+    {
+        "id": 1677,
+        "name": "ce-medial-ng",
+        "fromLang": "CE",
+        "toLang": "CE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "ɣ"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "ŋ",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": -1,
+                            "cls": "vowel"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": 1,
+                            "cls": "vowel"
+                        }
+                    ]
+                }
+            }
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://eldamo.org/content/words/word-768986721.html"
+            }
+        ],
+        "notes": ""
+    },
+    {
+        "id": 1774,
+        "name": "ce-bm-dn",
+        "fromLang": "CE",
+        "toLang": "CE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "m"
+                        ]
+                    },
+                    {
+                        "type": "ChangeNextSound",
+                        "args": [
+                            "b"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "b",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": 1,
+                            "parameter": "m"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "n"
+                        ]
+                    },
+                    {
+                        "type": "ChangeNextSound",
+                        "args": [
+                            "d"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "d",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": 1,
+                            "parameter": "n"
+                        }
+                    ]
+                }
+            }
+        ],
+        "sourceRefs": [
+            {
+                "pubId": 12,
+                "refText": "12"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-3882201769.html"
+            }
+        ],
+        "notes": ""
+    },
+    {
+        "id": 1777,
+        "name": "ce-final-j-w-after-long-vowels",
+        "fromLang": "CE",
+        "toLang": "CE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "SoundDisappears",
+                        "args": [
+                            "0"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "relPhoneme",
+                                    "cls": "word-final",
+                                    "parameter": "j",
+                                    "relative": false
+                                },
+                                {
+                                    "type": "relPhoneme",
+                                    "cls": "word-final",
+                                    "parameter": "w",
+                                    "relative": false
+                                }
+                            ]
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": -1,
+                            "cls": "long vowel"
+                        },
+                        {
+                            "type": "syllableCount",
+                            "expectCount": 1
+                        }
+                    ]
+                }
+            }
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://eldamo.org/content/words/word-1539930001.html"
+            }
+        ],
+        "notes": ""
+    }
+]

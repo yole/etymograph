@@ -1,0 +1,1068 @@
+[
+    {
+        "id": 1884,
+        "name": "pwgmc-unstressed-ai",
+        "fromLang": "PWGmc",
+        "toLang": "PWGmc",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "ē"
+                        ]
+                    },
+                    {
+                        "type": "SoundDisappears",
+                        "args": [
+                            "1"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "a",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": 1,
+                            "parameter": "i"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "negated": true,
+                            "cls": "stressed",
+                            "relative": false
+                        }
+                    ]
+                }
+            }
+        ],
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "25"
+            }
+        ],
+        "notes": ""
+    },
+    {
+        "id": 1889,
+        "name": "pwgmc-stressed-u",
+        "fromLang": "PGmc",
+        "toLang": "PWGmc",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "o"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "u",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "cls": "stressed",
+                            "relative": false
+                        },
+                        {
+                            "type": "syllableCount",
+                            "negated": true,
+                            "expectCount": 1
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": 1,
+                            "negated": true,
+                            "tcls": "vowel",
+                            "parameter": "i"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": 1,
+                            "negated": true,
+                            "tcls": "vowel",
+                            "parameter": "u"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": 1,
+                            "negated": true,
+                            "tcls": "consonant",
+                            "cls": "nasal"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": 1,
+                            "negated": true,
+                            "tcls": "consonant",
+                            "parameter": "j"
+                        }
+                    ]
+                }
+            }
+        ],
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "27"
+            }
+        ]
+    },
+    {
+        "id": 1958,
+        "name": "pwgmc-zw-dw",
+        "fromLang": "PGmc",
+        "toLang": "PWGmc",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "w"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "relPhoneme",
+                                    "parameter": "z",
+                                    "relative": false
+                                },
+                                {
+                                    "type": "relPhoneme",
+                                    "parameter": "d",
+                                    "relative": false
+                                }
+                            ]
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": 1,
+                            "parameter": "w"
+                        }
+                    ]
+                }
+            }
+        ],
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "41"
+            }
+        ],
+        "notes": ""
+    },
+    {
+        "id": 1963,
+        "name": "pwgmc-final-z",
+        "fromLang": "PGmc",
+        "toLang": "PWGmc",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "SoundDisappears",
+                        "args": [
+                            ""
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "z",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": -1,
+                            "negated": true,
+                            "tcls": "vowel",
+                            "cls": "stressed"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "EndOfWord"
+                        }
+                    ]
+                }
+            }
+        ],
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "43"
+            }
+        ]
+    },
+    {
+        "id": 1966,
+        "name": "pwgmc-final-a",
+        "fromLang": "PGmc",
+        "toLang": "PWGmc",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "SoundDisappears",
+                        "args": [
+                            ""
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "relPhoneme",
+                                    "parameter": "a",
+                                    "relative": false
+                                },
+                                {
+                                    "type": "relPhoneme",
+                                    "parameter": "ą",
+                                    "relative": false
+                                }
+                            ]
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "EndOfWord"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "negated": true,
+                            "cls": "stressed",
+                            "relative": false
+                        }
+                    ]
+                }
+            }
+        ],
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "44"
+            }
+        ]
+    },
+    {
+        "id": 1969,
+        "name": "pwgmc-final-j-w",
+        "fromLang": "PGmc",
+        "toLang": "PWGmc",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "i"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "j",
+                            "relative": false
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "EndOfWord"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": -1,
+                            "cls": "consonant"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": -1,
+                            "negated": true,
+                            "parameter": "j"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "u"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "w",
+                            "relative": false
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "EndOfWord"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": -1,
+                            "cls": "consonant"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": -1,
+                            "negated": true,
+                            "parameter": "w"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "ī"
+                        ]
+                    },
+                    {
+                        "type": "SoundDisappears",
+                        "args": [
+                            "1"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "i",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": 1,
+                            "parameter": "j"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": 1,
+                            "cls": "word-final"
+                        }
+                    ]
+                }
+            }
+        ],
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "46"
+            }
+        ]
+    },
+    {
+        "id": 1976,
+        "name": "pwgmc-labiovelars",
+        "fromLang": "PGmc",
+        "toLang": "PWGmc",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "kw"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "relPhoneme",
+                    "parameter": "kʷ",
+                    "relative": false
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "gw"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "relPhoneme",
+                    "parameter": "ɡʷ",
+                    "relative": false
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "hw"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "relPhoneme",
+                    "parameter": "hʷ",
+                    "relative": false
+                }
+            }
+        ],
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "48"
+            }
+        ],
+        "notes": ""
+    },
+    {
+        "id": 1978,
+        "name": "pwgmc-gemination-by-j",
+        "fromLang": "PGmc",
+        "toLang": "PWGmc",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "SoundIsGeminated",
+                        "args": []
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "cls": "consonant",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "negated": true,
+                            "parameter": "r",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "negated": true,
+                            "parameter": "z",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "negated": true,
+                            "parameter": "j",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": 1,
+                            "parameter": "j"
+                        }
+                    ]
+                }
+            }
+        ],
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "50"
+            }
+        ]
+    },
+    {
+        "id": 1982,
+        "name": "pwgmc-word-final-high-nasals",
+        "fromLang": "PGmc",
+        "toLang": "PWGmc",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "i"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "EndOfWord"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "į",
+                            "relative": false
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "u"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "EndOfWord"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "ų",
+                            "relative": false
+                        }
+                    ]
+                }
+            }
+        ],
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "55"
+            }
+        ],
+        "notes": ""
+    },
+    {
+        "id": 1983,
+        "name": "pwgmc-word-final-i-u",
+        "fromLang": "PGmc",
+        "toLang": "PWGmc",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplySoundRule",
+                        "args": [
+                            "1984"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "relPhoneme",
+                                    "parameter": "i",
+                                    "relative": false
+                                },
+                                {
+                                    "type": "relPhoneme",
+                                    "parameter": "u",
+                                    "relative": false
+                                }
+                            ]
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "negated": true,
+                            "cls": "diphthong",
+                            "relative": false
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "EndOfWord"
+                        },
+                        {
+                            "type": "syllableCount",
+                            "condition": ">=",
+                            "expectCount": 3
+                        }
+                    ]
+                }
+            }
+        ],
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "55"
+            }
+        ]
+    },
+    {
+        "id": 1984,
+        "name": "pwgmc-word-final-i-u-deletion",
+        "fromLang": "PWGmc",
+        "toLang": "PWGmc",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "NoChange",
+                        "args": []
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": -1,
+                            "cls": "consonant"
+                        },
+                        {
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "relPhoneme",
+                                    "relativeIndex": -2,
+                                    "parameter": "i"
+                                },
+                                {
+                                    "type": "relPhoneme",
+                                    "relativeIndex": -2,
+                                    "parameter": "u"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "SoundDisappears",
+                        "args": [
+                            ""
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "55"
+            }
+        ],
+        "notes": ""
+    },
+    {
+        "id": 1990,
+        "name": "pwgmc-long-o",
+        "fromLang": "PGmc",
+        "toLang": "PWGmc",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "ā"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "ō",
+                            "relative": false
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "EndOfWord"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "ā"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "ō",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": 1,
+                            "parameter": "r"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": 1,
+                            "cls": "word-final"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "ō"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "relPhoneme",
+                    "parameter": "ô",
+                    "relative": false
+                }
+            }
+        ],
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "58"
+            }
+        ],
+        "notes": ""
+    },
+    {
+        "id": 1995,
+        "name": "pwgmc-shorten-before-final-r",
+        "fromLang": "PGmc",
+        "toLang": "PWGmc",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSoundClass",
+                        "args": [
+                            "long",
+                            "short",
+                            "0"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "cls": "long vowel",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": 1,
+                            "parameter": "r"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": 1,
+                            "cls": "word-final"
+                        }
+                    ]
+                }
+            }
+        ],
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "60"
+            }
+        ],
+        "notes": ""
+    },
+    {
+        "id": 1997,
+        "name": "pwgmc-unstressed-diphthongs",
+        "fromLang": "PGmc",
+        "toLang": "PWGmc",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "ō"
+                        ]
+                    },
+                    {
+                        "type": "SoundDisappears",
+                        "args": [
+                            "1"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "a",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": 1,
+                            "parameter": "u"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "negated": true,
+                            "cls": "stressed",
+                            "relative": false
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "SoundDisappears",
+                        "args": [
+                            "1"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "ō",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": 1,
+                            "parameter": "u"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "negated": true,
+                            "cls": "stressed",
+                            "relative": false
+                        }
+                    ]
+                }
+            }
+        ],
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "60"
+            }
+        ]
+    },
+    {
+        "id": 2011,
+        "name": "pwgmc-w-after-stressed-vowel-before-u",
+        "fromLang": "PGmc",
+        "toLang": "PWGmc",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "SoundDisappears",
+                        "args": [
+                            ""
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "w",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": -1,
+                            "cls": "stressed vowel"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": 1,
+                            "parameter": "u"
+                        }
+                    ]
+                }
+            }
+        ],
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "61"
+            }
+        ],
+        "notes": ""
+    },
+    {
+        "id": 2014,
+        "name": "pwgmc-stressed-final-vowels",
+        "fromLang": "PGmc",
+        "toLang": "PWGmc",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSoundClass",
+                        "args": [
+                            "short",
+                            "long",
+                            "0"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "relPhoneme",
+                    "cls": "word-final stressed short vowel",
+                    "relative": false
+                }
+            }
+        ],
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "65"
+            }
+        ]
+    },
+    {
+        "id": 2018,
+        "name": "pwgmc-jj-ww",
+        "fromLang": "PGmc",
+        "toLang": "PWGmc",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "u"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "w",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": 1,
+                            "parameter": "w"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "i"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "j",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": 1,
+                            "parameter": "j"
+                        }
+                    ]
+                }
+            }
+        ],
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "65"
+            }
+        ]
+    },
+    {
+        "id": 2064,
+        "name": "pwgmc-stress",
+        "fromLang": "PWGmc",
+        "toLang": "PWGmc",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyStress",
+                        "args": [
+                            "first"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "notes": ""
+    }
+]

@@ -1,0 +1,856 @@
+[
+    {
+        "id": 116,
+        "name": "lyc-acc",
+        "fromLang": "Lyc",
+        "toLang": "Lyc",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "ã"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "a"
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "ẽ"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "e"
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "NoChange",
+                        "args": []
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "i"
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'ñ'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".ACC",
+        "fromPOS": "N",
+        "toPOS": "N"
+    },
+    {
+        "id": 117,
+        "name": "lyc-np-gen",
+        "fromLang": "Lyc",
+        "toLang": "Lyc",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'h'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".GEN",
+        "fromPOS": "NP",
+        "toPOS": "NP"
+    },
+    {
+        "id": 118,
+        "name": "lyc-acc-u",
+        "fromLang": "Lyc",
+        "toLang": "Lyc",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "u"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "a"
+                }
+            }
+        ],
+        "addedCategories": ".ACC",
+        "fromPOS": "N",
+        "toPOS": "N"
+    },
+    {
+        "id": 119,
+        "name": "lyc-dat",
+        "fromLang": "Lyc",
+        "toLang": "Lyc",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "i"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "a"
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "i"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "ije"
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "i"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "e"
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "NoChange",
+                        "args": []
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "i"
+                }
+            }
+        ],
+        "addedCategories": ".DAT",
+        "fromPOS": "N",
+        "toPOS": "N"
+    },
+    {
+        "id": 123,
+        "name": "lyc-dat-pl",
+        "fromLang": "Lyc",
+        "toLang": "Lyc",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "ije"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "ije-stem"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "i"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "e"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "i"
+                }
+            }
+        ],
+        "addedCategories": ".DAT.PL",
+        "fromPOS": "N",
+        "toPOS": "N"
+    },
+    {
+        "id": 207,
+        "name": "lyc-acc-pl",
+        "fromLang": "Lyc",
+        "toLang": "Lyc",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "a"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "n"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "e"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'s'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".ACC.PL",
+        "fromPOS": "N",
+        "toPOS": "N"
+    },
+    {
+        "id": 253,
+        "name": "lyc-pt-3sg",
+        "fromLang": "Lyc",
+        "toLang": "Lyc",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'te'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".PRET.3SG",
+        "fromPOS": "V",
+        "toPOS": "V"
+    },
+    {
+        "id": 257,
+        "name": "lyc-pt-3sg-n",
+        "fromLang": "Lyc",
+        "toLang": "Lyc",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'tẽ'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".PRET.3SG",
+        "fromPOS": "V",
+        "toPOS": "V"
+    },
+    {
+        "id": 266,
+        "name": "lyc-gen-adj",
+        "fromLang": "Lyc",
+        "toLang": "Lyc",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'hi'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".GEN.ADJ",
+        "fromPOS": "N"
+    },
+    {
+        "id": 267,
+        "name": "lyc-3sg-lenited",
+        "fromLang": "Lyc",
+        "toLang": "Lyc",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'di'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".3SG",
+        "fromPOS": "V"
+    },
+    {
+        "id": 269,
+        "name": "lyc-nom-pl",
+        "fromLang": "Lyc",
+        "toLang": "Lyc",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "ãi"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "a"
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "ẽi"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "e"
+                }
+            }
+        ],
+        "addedCategories": ".NOM.PL",
+        "fromPOS": "N"
+    },
+    {
+        "id": 271,
+        "name": "lyc-3sg",
+        "fromLang": "Lyc",
+        "toLang": "Lyc",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'ti'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".3SG",
+        "fromPOS": "V",
+        "toPOS": "V"
+    },
+    {
+        "id": 273,
+        "name": "lyc-3pl",
+        "fromLang": "Lyc",
+        "toLang": "Lyc",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "ãti"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "a"
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "ẽti"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "e"
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'ti'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".3PL",
+        "fromPOS": "V",
+        "toPOS": "V"
+    },
+    {
+        "id": 547,
+        "name": "lyc-adj-suffix",
+        "fromLang": "Lyc",
+        "toLang": "Lyc",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "ije"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "i"
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'ije'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "toPOS": "ADJ"
+    },
+    {
+        "id": 565,
+        "name": "lyc-pt-3sg-n-lenited",
+        "fromLang": "Lyc",
+        "toLang": "Lyc",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'dẽ'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".PRET.3SG",
+        "fromPOS": "V",
+        "toPOS": "V"
+    },
+    {
+        "id": 576,
+        "name": "lyc-pt-3pl",
+        "fromLang": "Lyc",
+        "toLang": "Lyc",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "ãte"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "a"
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "ẽte"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "e"
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'te'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".PRET.3PL",
+        "fromPOS": "V",
+        "toPOS": "V"
+    },
+    {
+        "id": 577,
+        "name": "lyc-pt-3pl-n",
+        "fromLang": "Lyc",
+        "toLang": "Lyc",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "ãtẽ"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "a"
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "ẽtẽ"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "e"
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'tẽ'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".PRET.3PL",
+        "fromPOS": "V",
+        "toPOS": "V"
+    },
+    {
+        "id": 586,
+        "name": "lyc-np-gen-long",
+        "fromLang": "Lyc",
+        "toLang": "Lyc",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'he'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".GEN",
+        "replacedCategories": "",
+        "fromPOS": "NP",
+        "toPOS": "NP",
+        "notes": ""
+    },
+    {
+        "id": 724,
+        "name": "lyc-gen-pl",
+        "fromLang": "Lyc",
+        "toLang": "Lyc",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "ãi"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "a"
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "ẽ"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "i"
+                }
+            }
+        ],
+        "addedCategories": ".GEN.PL",
+        "replacedCategories": "",
+        "fromPOS": "N",
+        "toPOS": "N",
+        "notes": ""
+    },
+    {
+        "id": 739,
+        "name": "lyc-imp-3sg",
+        "fromLang": "Lyc",
+        "toLang": "Lyc",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'tu'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".IMPT.3SG",
+        "replacedCategories": "",
+        "fromPOS": "V",
+        "toPOS": "V",
+        "notes": ""
+    },
+    {
+        "id": 744,
+        "name": "lyc-inf",
+        "fromLang": "Lyc",
+        "toLang": "Lyc",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'ne'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".INF",
+        "replacedCategories": "",
+        "fromPOS": "V",
+        "toPOS": "V",
+        "notes": ""
+    },
+    {
+        "id": 889,
+        "name": "lyc-adj-acc-n",
+        "fromLang": "Lyc",
+        "toLang": "Lyc",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "ijẽ"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "i"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "ije-stem"
+                        }
+                    ]
+                }
+            }
+        ],
+        "addedCategories": ".ACC.N",
+        "replacedCategories": "",
+        "fromPOS": "ADJ",
+        "toPOS": "ADJ",
+        "notes": ""
+    },
+    {
+        "id": 905,
+        "name": "lyc-adj-n-pl",
+        "fromLang": "Lyc",
+        "toLang": "Lyc",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "a"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "i"
+                }
+            }
+        ],
+        "addedCategories": ".PL.N",
+        "replacedCategories": "",
+        "fromPOS": "ADJ",
+        "toPOS": "ADJ",
+        "notes": ""
+    }
+]
