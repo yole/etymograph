@@ -6,7 +6,10 @@ import Select from "react-select";
 export default function RuleListSelect(props) {
     const {control} = useFormContext()
     const globalState = useContext(GlobalStateContext)
-    const rules = globalState.rules.map((r) => ({value: r.name, label: `${r.name} (${r.summaryText})`}))
+    const rules = globalState.rules.map((r) => ({
+        value: r.name,
+        label: r.summaryText === null || r.summaryText === "" || r.summaryText.length > 15 ? r.name :`${r.name} (${r.summaryText})`})
+    )
 
     return <tr>
         <td><label htmlFor={props.id}>{props.label}:</label></td>
