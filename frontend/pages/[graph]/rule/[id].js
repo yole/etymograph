@@ -217,12 +217,12 @@ export default function Rule(params) {
             </tr>
             </tbody></table>
             <button onClick={() => exampleSubmitted()}>Submit</button>
-            {exampleUnmatched.length > 0 && <>
-                <p>Unmatched example: {exampleUnmatched.map((w, i) => <>
-                    {i > 0 && ' > '}
-                    <WordLink word={w} baseLanguage={rule.toLang}/>
-                </>)}</p>
-            </>}
+        </>}
+        {exampleUnmatched.length > 0 && <>
+            <p>Unmatched example: {exampleUnmatched.map((w, i) => <>
+                {i > 0 && ' > '}
+                <WordLink word={w} baseLanguage={rule.toLang}/>
+            </>)}</p>
         </>}
     </>
 }
