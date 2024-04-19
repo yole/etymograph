@@ -254,6 +254,8 @@ The following conditions can be used in phonological rules:
    ends with a vowel/a consonant
  * `sound is same as`: Checks whether the current phoneme is the same as the specified phoneme.
    Example: `sound is same as next vowel`
+* `<next|previous> sound is same as`: Checks whether the two specified phonemes are equal.
+  Example: `next sound is same as second next sound`
 
 The following instructions can be used in phonological rules:
 

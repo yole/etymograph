@@ -230,6 +230,7 @@ class LeafRuleCondition(
             }
             else {
                 val pattern = buffer.parsePhonemePattern(language)
+                    ?: buffer.fail("Can't parse phoneme pattern")
                 pattern.phonemeClass to pattern.literal
             }
 
@@ -304,6 +305,7 @@ class SyllableRuleCondition(
             val matchType = SyllableMatchType.parse(buffer) ?: return null
 
             val phonemePattern = buffer.parsePhonemePattern(language)
+                ?: buffer.fail("Can't parse phoneme pattern")
             return SyllableRuleCondition(matchType, index, phonemePattern)
         }
     }
@@ -481,9 +483,9 @@ class RelativePhonemeRuleCondition(
             language: Language,
             seekTarget: SeekTarget?,
             baseLanguageShortName: String?
-        ): RelativePhonemeRuleCondition {
+        ): RelativePhonemeRuleCondition? {
             val negated = buffer.consume(LeafRuleCondition.notPrefix)
-            val phonemePattern = buffer.parsePhonemePattern(language)
+            val phonemePattern = buffer.parsePhonemePattern(language) ?: return null
             return RelativePhonemeRuleCondition(
                 negated, seekTarget, phonemePattern, baseLanguageShortName
             )
@@ -491,26 +493,39 @@ class RelativePhonemeRuleCondition(
     }
 }
 
-class PhonemeEqualsRuleCondition(val target: SeekTarget) : RuleCondition() {
+class PhonemeEqualsRuleCondition(val target: SeekTarget, val matchTarget: SeekTarget?) : RuleCondition() {
     override fun isPhonemic(): Boolean = true
 
     override fun matches(word: Word, phonemes: PhonemeIterator, graph: GraphRepository): Boolean {
-        val matchIterator = phonemes.clone()
-        matchIterator.seek(target)
-        return phonemes.current == matchIterator.current
+        val targetIterator = phonemes.clone()
+        if (!targetIterator.seek(target)) return false
+        val matchPhoneme = if (matchTarget != null) {
+            val matchIterator = phonemes.clone()
+            if (!matchIterator.seek(matchTarget)) return false
+            matchIterator.current
+        }
+        else {
+            phonemes.current
+        }
+
+        return matchPhoneme == targetIterator.current
     }
 
     override fun toRichText(): RichText {
-        return "sound is same as ".richText() + target.toRichText()
+        if (matchTarget == null) {
+            return "sound is same as ".richText() + target.toRichText()
+        }
+        return matchTarget.toRichText() + " is same as " + target.toRichText()
     }
 
     companion object : RuleConditionParser {
         override fun tryParse(buffer: ParseBuffer, language: Language): PhonemeEqualsRuleCondition? {
-            if (!buffer.consume(LeafRuleCondition.soundIsSame)) {
+            val matchTarget = SeekTarget.parse(buffer, language)
+            if (!buffer.consume(if (matchTarget != null) "is same as" else LeafRuleCondition.soundIsSame)) {
                 return null
             }
             val target = SeekTarget.parse(buffer, language) ?: return null
-            return PhonemeEqualsRuleCondition(target)
+            return PhonemeEqualsRuleCondition(target, matchTarget)
         }
     }
 }

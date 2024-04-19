@@ -452,6 +452,16 @@ class PhonemeRuleTest : QBaseTest() {
     }
 
     @Test
+    fun phonemeEqualityRelative() {
+        val rule = parseRule(q, q, """
+            sound is 'a' and next sound is same as second next sound:
+            - new sound is 'o'
+        """.trimIndent())
+        assertEquals("ottale", rule.apply(q.word("attale"), emptyRepo).text)
+        assertEquals("sound is 'a' and next sound is same as second next sound", rule.logic.branches.single().condition.toEditableText())
+    }
+
+    @Test
     fun wordFinal() {
         val rule = parseRule(q, q, """
             sound is 'a' and next sound is word-final:

@@ -150,11 +150,15 @@ class RelativePhonemeRuleConditionData(
 class PhonemeEqualsRuleConditionData(
     val index: Int,
     @SerialName("cls") val phonemeClassName: String?,
-    val relative: Boolean
+    val relative: Boolean,
+    val matchIndex: Int? = null,
+    @SerialName("mcls") val matchPhonemeClassName: String? = null,
+    val matchRelative: Boolean? = null
 ) : RuleConditionData() {
     override fun toRuntimeFormat(result: InMemoryGraphRepository, fromLanguage: Language): RuleCondition {
         return PhonemeEqualsRuleCondition(
-            SeekTarget(index, phonemeClassName?.let { fromLanguage.phonemeClassByName(it) }, relative)
+            SeekTarget(index, phonemeClassName?.let { fromLanguage.phonemeClassByName(it) }, relative),
+            matchIndex?.let { SeekTarget(it, matchPhonemeClassName?.let { fromLanguage.phonemeClassByName(it) }, matchRelative == true) },
         )
     }
 
@@ -838,7 +842,10 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             is PhonemeEqualsRuleCondition -> PhonemeEqualsRuleConditionData(
                 target.index,
                 target.phonemeClass?.name,
-                target.relative
+                target.relative,
+                matchTarget?.index,
+                matchTarget?.phonemeClass?.name,
+                matchTarget?.relative
             )
             is LeafRuleCondition -> LeafRuleConditionData(
                 type,
