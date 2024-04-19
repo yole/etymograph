@@ -650,5 +650,71 @@
                 "refText": "267"
             }
         ]
+    },
+    {
+        "id": 2324,
+        "text": "saliþu",
+        "gloss": "dwelling",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "275"
+            }
+        ]
+    },
+    {
+        "id": 2327,
+        "text": "garwijan",
+        "gloss": "to prepare",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "258"
+            }
+        ]
+    },
+    {
+        "id": 2342,
+        "text": "mizdu",
+        "gloss": "reward",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "285"
+            }
+        ]
+    },
+    {
+        "id": 2345,
+        "text": "strālu",
+        "gloss": "arrow",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "285"
+            }
+        ]
+    },
+    {
+        "id": 2352,
+        "text": "daili",
+        "gloss": "part",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "287"
+            }
+        ]
+    },
+    {
+        "id": 2363,
+        "text": "blīþisi",
+        "gloss": "happiness",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "293"
+            }
+        ]
     }
 ]

@@ -143,5 +143,49 @@
                 "refText": "223"
             }
         ]
+    },
+    {
+        "id": 2329,
+        "text": "langizô",
+        "gloss": "longer",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "279"
+            }
+        ]
+    },
+    {
+        "id": 2338,
+        "text": "marku",
+        "gloss": "boundary",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "285"
+            }
+        ]
+    },
+    {
+        "id": 2348,
+        "text": "baunu",
+        "gloss": "bean",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "285"
+            }
+        ]
+    },
+    {
+        "id": 2356,
+        "text": "kussidē",
+        "gloss": "(s)he kissed",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "281"
+            }
+        ]
     }
 ]

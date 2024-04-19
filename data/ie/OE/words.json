@@ -2472,5 +2472,199 @@
                 "refText": "267"
             }
         ]
+    },
+    {
+        "id": 2322,
+        "text": "eln",
+        "gloss": "forearm",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "275"
+            }
+        ]
+    },
+    {
+        "id": 2325,
+        "text": "seld",
+        "gloss": "dwelling",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "275"
+            }
+        ]
+    },
+    {
+        "id": 2330,
+        "text": "lengra",
+        "gloss": "longer",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "279"
+            }
+        ]
+    },
+    {
+        "id": 2332,
+        "text": "gōdspell",
+        "gloss": "gospel",
+        "reconstructed": true,
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "282"
+            }
+        ]
+    },
+    {
+        "id": 2333,
+        "text": "godspell",
+        "gloss": "gospel",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "282"
+            }
+        ]
+    },
+    {
+        "id": 2334,
+        "text": "lǣssa",
+        "gloss": "less",
+        "reconstructed": true,
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "284"
+            }
+        ]
+    },
+    {
+        "id": 2335,
+        "text": "læssa",
+        "gloss": "less"
+    },
+    {
+        "id": 2339,
+        "text": "mearc",
+        "gloss": "boundary",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "285"
+            }
+        ]
+    },
+    {
+        "id": 2340,
+        "text": "heord",
+        "gloss": "herd",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "285"
+            }
+        ]
+    },
+    {
+        "id": 2343,
+        "text": "meord",
+        "gloss": "reward",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "285"
+            }
+        ]
+    },
+    {
+        "id": 2346,
+        "text": "strǣl",
+        "gloss": "arrow"
+    },
+    {
+        "id": 2347,
+        "text": "īeġ",
+        "gloss": "island"
+    },
+    {
+        "id": 2349,
+        "text": "bēan",
+        "gloss": "bean",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "285"
+            }
+        ]
+    },
+    {
+        "id": 2350,
+        "text": "ġiest",
+        "gloss": "guest"
+    },
+    {
+        "id": 2353,
+        "text": "dǣl",
+        "gloss": "part",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "287"
+            }
+        ]
+    },
+    {
+        "id": 2358,
+        "text": "kyste",
+        "gloss": "(s)he kissed"
+    },
+    {
+        "id": 2359,
+        "text": "mildisi",
+        "gloss": "mildness",
+        "reconstructed": true,
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "293"
+            }
+        ]
+    },
+    {
+        "id": 2360,
+        "text": "mildsi",
+        "gloss": "mildness",
+        "reconstructed": true,
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "293"
+            }
+        ]
+    },
+    {
+        "id": 2361,
+        "text": "milds",
+        "gloss": "mildness",
+        "reconstructed": true,
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "293"
+            }
+        ]
+    },
+    {
+        "id": 2362,
+        "text": "milts",
+        "gloss": "mildness"
+    },
+    {
+        "id": 2364,
+        "text": "bliss",
+        "gloss": "happiness"
     }
 ]

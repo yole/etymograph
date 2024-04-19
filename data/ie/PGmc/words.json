@@ -848,5 +848,71 @@
                 "refText": "265"
             }
         ]
+    },
+    {
+        "id": 2321,
+        "text": "alinō",
+        "gloss": "forearm",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "275"
+            }
+        ]
+    },
+    {
+        "id": 2323,
+        "text": "saliþwō",
+        "gloss": "dwelling",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "275"
+            }
+        ]
+    },
+    {
+        "id": 2337,
+        "text": "markō",
+        "gloss": "boundary",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "285"
+            }
+        ]
+    },
+    {
+        "id": 2341,
+        "text": "mizdō",
+        "gloss": "reward",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "285"
+            }
+        ]
+    },
+    {
+        "id": 2344,
+        "text": "strēlō",
+        "gloss": "arrow",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "285"
+            }
+        ]
+    },
+    {
+        "id": 2351,
+        "text": "dailiz",
+        "gloss": "part",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "287"
+            }
+        ]
     }
 ]

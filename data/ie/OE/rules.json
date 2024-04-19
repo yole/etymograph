@@ -3598,5 +3598,552 @@
                 "refText": "264"
             }
         ]
+    },
+    {
+        "id": 2320,
+        "name": "oe-i-syncope-near-l",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "SoundDisappears",
+                        "args": [
+                            "0"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "cls": "non-stressed",
+                            "parameter": "i",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": -1,
+                            "parameter": "l"
+                        },
+                        {
+                            "type": "syllableIndex",
+                            "matchClass": "open"
+                        }
+                    ]
+                }
+            }
+        ],
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "275"
+            }
+        ],
+        "notes": "Ringe 2014:276: the sound change responsible for these instances of syncope was arrested before it went to completion"
+    },
+    {
+        "id": 2326,
+        "name": "oe-postconsonantal-j",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "SoundDisappears",
+                        "args": [
+                            "0"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "j",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": -1,
+                            "cls": "consonant"
+                        }
+                    ]
+                }
+            }
+        ],
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "279"
+            }
+        ],
+        "notes": "TODO: according to Ringe this is restricted to heavy syllables, but isn't every syllable heavy if it ends with consonant and 'j'?"
+    },
+    {
+        "id": 2328,
+        "name": "oe-depalatalize-before-consonant",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "c"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "ċ",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": 1,
+                            "cls": "consonant"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "g"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "ġ",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": 1,
+                            "cls": "consonant"
+                        }
+                    ]
+                }
+            }
+        ],
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "279"
+            }
+        ],
+        "notes": ""
+    },
+    {
+        "id": 2331,
+        "name": "oe-shortening-before-consonants",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSoundClass",
+                        "args": [
+                            "long",
+                            "short",
+                            "0"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "cls": "long vowel",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": 1,
+                            "cls": "consonant"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": 2,
+                            "cls": "consonant"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": 3,
+                            "cls": "consonant"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSoundClass",
+                        "args": [
+                            "long",
+                            "short",
+                            "0"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "cls": "long vowel",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": 1,
+                            "cls": "consonant"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": 2,
+                            "cls": "consonant"
+                        },
+                        {
+                            "type": "syllableIndex",
+                            "matchIndex": 1
+                        },
+                        {
+                            "type": "syllableCount",
+                            "condition": ">=",
+                            "expectCount": 3
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSoundClass",
+                        "args": [
+                            "long",
+                            "short",
+                            "0"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "cls": "long vowel",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": 1,
+                            "cls": "consonant"
+                        },
+                        {
+                            "type": "phonemeEquals",
+                            "index": 1,
+                            "cls": null,
+                            "relative": true,
+                            "matchIndex": 2,
+                            "matchRelative": true
+                        }
+                    ]
+                }
+            }
+        ],
+        "sourceRefs": [
+            {
+                "refText": "RInge 2014:281"
+            }
+        ]
+    },
+    {
+        "id": 2336,
+        "name": "oe-apocope",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "SoundDisappears",
+                        "args": [
+                            "0"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "relPhoneme",
+                                    "cls": "word-final",
+                                    "parameter": "i",
+                                    "relative": false
+                                },
+                                {
+                                    "type": "relPhoneme",
+                                    "cls": "word-final",
+                                    "parameter": "u",
+                                    "relative": false
+                                }
+                            ]
+                        },
+                        {
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "syllableIndex",
+                                    "matchClass": "closed",
+                                    "relativeIndex": -1
+                                },
+                                {
+                                    "type": "relPhoneme",
+                                    "relativeIndex": -1,
+                                    "tcls": "vowel",
+                                    "cls": "long"
+                                },
+                                {
+                                    "type": "relPhoneme",
+                                    "relativeIndex": -1,
+                                    "tcls": "vowel",
+                                    "cls": "diphthong"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }
+        ],
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "284"
+            }
+        ],
+        "notes": ""
+    },
+    {
+        "id": 2354,
+        "name": "oe-voicing-assimilation",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "t"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "d",
+                            "relative": false
+                        },
+                        {
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "relPhoneme",
+                                    "relativeIndex": 1,
+                                    "cls": "voiceless obstruent"
+                                },
+                                {
+                                    "type": "relPhoneme",
+                                    "relativeIndex": -1,
+                                    "cls": "voiceless obstruent"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "s"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "þ",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": 1,
+                            "parameter": "s"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeNextSound",
+                        "args": [
+                            "t"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "s",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": 1,
+                            "parameter": "þ"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeNextSound",
+                        "args": [
+                            "t"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "t",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": 1,
+                            "parameter": "þ"
+                        }
+                    ]
+                }
+            }
+        ],
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "280"
+            }
+        ]
+    },
+    {
+        "id": 2355,
+        "name": "oe-degemination-before-consonant",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "SoundDisappears",
+                        "args": [
+                            "0"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "cls": "consonant",
+                            "relative": false
+                        },
+                        {
+                            "type": "phonemeEquals",
+                            "index": 1,
+                            "cls": null,
+                            "relative": true
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": 2,
+                            "cls": "consonant"
+                        }
+                    ]
+                }
+            }
+        ],
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "281"
+            }
+        ],
+        "notes": ""
+    },
+    {
+        "id": 2365,
+        "name": "oe-shortening-unstressed",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSoundClass",
+                        "args": [
+                            "long",
+                            "short",
+                            "0"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "relPhoneme",
+                    "cls": "non-stressed long vowel",
+                    "relative": false
+                }
+            }
+        ],
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "298"
+            }
+        ],
+        "notes": ""
     }
 ]
