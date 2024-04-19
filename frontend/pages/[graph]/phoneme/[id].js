@@ -2,7 +2,7 @@ import {allowEdit, deletePhoneme, fetchBackend, fetchPathsForAllGraphs} from "@/
 import {useState} from "react";
 import Link from "next/link";
 import {useRouter} from "next/router";
-import PhonemeForm from "@/components/PhonemeForm";
+import PhonemeForm from "@/forms/PhonemeForm";
 import SourceRefs from "@/components/SourceRefs";
 import Breadcrumbs from "@/components/Breadcrumbs";
 

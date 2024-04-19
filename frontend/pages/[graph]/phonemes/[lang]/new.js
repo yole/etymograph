@@ -1,5 +1,5 @@
 import {useRouter} from "next/router";
-import PhonemeForm from "@/components/PhonemeForm";
+import PhonemeForm from "@/forms/PhonemeForm";
 import {fetchAllLanguagePaths, fetchBackend} from "@/api";
 import Breadcrumbs from "@/components/Breadcrumbs";
 
