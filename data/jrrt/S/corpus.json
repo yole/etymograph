@@ -296,8 +296,8 @@
             null,
             null,
             null,
-            null,
-            null,
+            1906,
+            1895,
             null,
             1502,
             null,
@@ -444,9 +444,9 @@
         "wordIds": [
             1826,
             null,
+            1885,
             null,
-            null,
-            null
+            1886
         ],
         "sourceRefs": [
             {
@@ -467,12 +467,12 @@
         "id": 1880,
         "text": "alae! ered en Echoriath, ered e·mbar nín",
         "wordIds": [
-            null,
+            1894,
             1881,
+            1895,
+            1896,
             null,
-            null,
-            null,
-            null,
+            1904,
             null
         ],
         "sourceRefs": [

@@ -4348,5 +4348,211 @@
                 "refText": "https://eldamo.org/content/words/word-1491591289.html"
             }
         ]
+    },
+    {
+        "id": 1885,
+        "text": "Edhil",
+        "sourceRefs": [
+            {
+                "refText": "RGEO:62"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-1712116201.html"
+            }
+        ]
+    },
+    {
+        "id": 1886,
+        "text": "Imladris",
+        "pos": "NP",
+        "sourceRefs": [
+            {
+                "refText": "RGEO:62"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-764812911.html"
+            }
+        ]
+    },
+    {
+        "id": 1887,
+        "text": "imlad",
+        "gloss": "deep valley",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "87"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-4065221315.html"
+            }
+        ]
+    },
+    {
+        "id": 1889,
+        "text": "riss",
+        "gloss": "cleft",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "87"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-3901504895.html"
+            }
+        ]
+    },
+    {
+        "id": 1891,
+        "text": "im",
+        "gloss": "valley",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 12,
+                "refText": "14"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-2005550399.html"
+            }
+        ]
+    },
+    {
+        "id": 1893,
+        "text": "lad",
+        "gloss": "plain, valley",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "refText": "https://eldamo.org/content/words/word-45705445.html"
+            }
+        ]
+    },
+    {
+        "id": 1894,
+        "text": "alae",
+        "gloss": "behold",
+        "sourceRefs": [
+            {
+                "pubId": 8,
+                "refText": "40"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-3332359177.html"
+            }
+        ]
+    },
+    {
+        "id": 1895,
+        "text": "en",
+        "gloss": "of the",
+        "pos": "PREP",
+        "sourceRefs": [
+            {
+                "pubId": 8,
+                "refText": "40"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-3418180587.html"
+            }
+        ]
+    },
+    {
+        "id": 1896,
+        "text": "Echoriath",
+        "pos": "NP",
+        "sourceRefs": [
+            {
+                "pubId": 8,
+                "refText": "40"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-1521805291.html"
+            }
+        ]
+    },
+    {
+        "id": 1897,
+        "text": "echor",
+        "gloss": "encircling",
+        "sourceRefs": [
+            {
+                "refText": "RC:621"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-318284291.html"
+            }
+        ]
+    },
+    {
+        "id": 1899,
+        "text": "iath",
+        "gloss": "fence",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 6,
+                "refText": "370"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-660111331.html"
+            }
+        ]
+    },
+    {
+        "id": 1900,
+        "text": "ed",
+        "gloss": "out",
+        "pos": "PREP",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "51"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-3169907981.html"
+            }
+        ]
+    },
+    {
+        "id": 1902,
+        "text": "cor",
+        "gloss": "ring, circle",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "refText": "RC:625"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-1597654623.html"
+            }
+        ]
+    },
+    {
+        "id": 1904,
+        "text": "e·mbar",
+        "sourceRefs": [
+            {
+                "pubId": 8,
+                "refText": "40"
+            }
+        ]
+    },
+    {
+        "id": 1906,
+        "text": "chem",
+        "sourceRefs": [
+            {
+                "refText": "VT50:5"
+            }
+        ]
+    },
+    {
+        "id": 1907,
+        "text": "cam",
+        "gloss": "hand",
+        "pos": "N"
     }
 ]

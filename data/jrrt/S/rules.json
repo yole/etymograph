@@ -2899,6 +2899,13 @@
                         },
                         {
                             "type": "relPhoneme",
+                            "relativeIndex": -1,
+                            "negated": true,
+                            "parameter": "m",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
                             "relativeIndex": -2,
                             "cls": "vowel",
                             "relative": false
@@ -2925,7 +2932,8 @@
             {
                 "refText": "https://eldamo.org/content/words/word-2894407865.html"
             }
-        ]
+        ],
+        "notes": "'m' inhibits i-intrusion because it can only arise from an ancient cluster, and clusters inhibit i-intrusion"
     },
     {
         "id": 1151,

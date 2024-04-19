@@ -5096,12 +5096,47 @@
             "type": ">",
             "ruleIds": [
                 1149
-            ]
+            ],
+            "notes": "PE17:33 states that 'eryd > ered' is a late sound change"
         },
         {
             "from": 1422,
             "to": 1883,
             "type": "^"
+        },
+        {
+            "from": 1885,
+            "to": 1150,
+            "type": ">",
+            "ruleIds": [
+                1149
+            ]
+        },
+        {
+            "from": 1889,
+            "to": 1890,
+            "type": "^",
+            "ruleIds": [
+                1067,
+                1062,
+                1059,
+                1091
+            ],
+            "notes": "The expected a-affection is absent in this derivation"
+        },
+        {
+            "from": 1902,
+            "to": 1903,
+            "type": "^"
+        },
+        {
+            "from": 1906,
+            "to": 1907,
+            "type": ">",
+            "ruleIds": [
+                1149
+            ],
+            "notes": "This form apparently exhibits liquid mutation (affected by previous liquid)"
         }
     ]
 }

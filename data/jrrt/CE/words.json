@@ -2025,5 +2025,33 @@
                 "refText": "https://eldamo.org/content/words/word-3770763007.html"
             }
         ]
+    },
+    {
+        "id": 1890,
+        "text": "rinsa",
+        "gloss": "cleft",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "87"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-735854047.html"
+            }
+        ]
+    },
+    {
+        "id": 1903,
+        "text": "KOR-",
+        "gloss": "round",
+        "sourceRefs": [
+            {
+                "pubId": 1,
+                "refText": "158"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-3368191295.html"
+            }
+        ]
     }
 ]
