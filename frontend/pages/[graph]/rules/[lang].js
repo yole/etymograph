@@ -23,7 +23,7 @@ export default function RuleList(params) {
 
     function sequenceSubmitted(data) {
         setSequenceEditId(null)
-        router.push(`${graph}/rules/` + data.toLang)
+        router.push(`/${graph}/rules/${data.toLang}`)
     }
 
     return <>

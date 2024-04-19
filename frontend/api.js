@@ -122,7 +122,7 @@ export function addRuleSequence(graph, data) {
 }
 
 export function updateRuleSequence(graph, id, data) {
-    return postToBackend('rule/sequence/' + id, data)
+    return postToBackend(`${graph}/rule/sequence/${id}`, data)
 }
 
 export function applyRuleSequence(graph, seqId, fromWordId, toWordId) {
