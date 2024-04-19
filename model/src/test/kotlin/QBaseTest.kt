@@ -10,13 +10,13 @@ open class QBaseTest {
             Phoneme(-1, listOf(p), null, setOf("long", "vowel"))
         } + listOf("c", "f", "h", "j", "l", "m", "q", "r", "s", "v", "w", "x", "z").map { p ->
             Phoneme(-1, listOf(p), null, setOf("consonant"))
-        } + phoneme("p", "voiceless bilabial stop consonant") +
-            phoneme("t", "voiceless alveolar stop consonant") +
-            phoneme("b", "voiced bilabial stop consonant") +
-            phoneme("d", "voiced alveolar stop consonant") +
+        } + phoneme("p", "voiceless bilabial stop") +
+            phoneme("t", "voiceless alveolar stop") +
+            phoneme("b", "voiced bilabial stop") +
+            phoneme("d", "voiced alveolar stop") +
             phoneme("n", "voiced alveolar nasal consonant") +
-            phoneme("k", "voiceless velar stop consonant") +
-            phoneme("g", "voiced velar stop consonant")
+            phoneme("k", "voiceless velar stop") +
+            phoneme("g", "voiced velar stop")
 
         it.diphthongs = listOf("ai", "oi", "ui", "au", "eu", "iu")
     }

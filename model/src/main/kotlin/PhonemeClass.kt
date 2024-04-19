@@ -116,7 +116,7 @@ class PhonemeClassList {
     fun update(phonemes: List<Phoneme>) {
         val phonemeClassMap = mutableMapOf<String, MutableList<String>>()
         for (phoneme in phonemes) {
-            for (cls in phoneme.classes) {
+            for (cls in withImplicit(phoneme.classes)) {
                 phonemeClassMap.getOrPut(cls) { mutableListOf() }.add(phoneme.sound ?: phoneme.graphemes[0])
             }
         }
@@ -126,6 +126,9 @@ class PhonemeClassList {
                 ?: PhonemeClass(name, phonemes)
         }
     }
+
+    private fun withImplicit(classes: Set<String>): Set<String> =
+        classes + classes.map { implicitPhonemeClasses[it] ?: emptySet() }.flatten()
 
     fun findByName(name: String): PhonemeClass? {
         if (' ' in name) {
@@ -140,3 +143,13 @@ class PhonemeClassList {
         return classes.find { it.name == name } ?: PhonemeClass.specialPhonemeClasses.find { it.name == name }
     }
 }
+
+private val implicitPhonemeClasses = mapOf(
+    "plosive" to setOf("obstruent", "consonant"),
+    "stop" to setOf("obstruent", "consonant"),
+    "fricative" to setOf("obstruent", "consonant"),
+    "affricate" to setOf("obstruent", "consonant"),
+    "approximant" to setOf("sonorant", "consonant"),
+    "trill" to setOf("sonorant", "consonant"),
+    "lateral" to setOf("sonorant", "consonant")
+)
