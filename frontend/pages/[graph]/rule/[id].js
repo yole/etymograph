@@ -178,10 +178,10 @@ export default function Rule(params) {
             <h3>Examples</h3>
             <ul>
                 {rule.examples.map(ex => <li key={ex.toWord.id}>
-                    <WordLink word={ex.toWord} baseLanguage={ex.fromWord.language}/>
+                    <WordLink word={ex.toWord} baseLanguage={rule.toLang}/>
                     {ex.toWord.gloss && ` "${ex.toWord.gloss}"`}
                     &nbsp;&rarr;&nbsp;
-                    <WordLink word={ex.fromWord}/>
+                    <WordLink word={ex.fromWord} baseLanguage={rule.toLang}/>
                     {ex.allRules.length > 1 && ex.ruleResults.length === 0 && <>
                         {' '}(
                         {ex.allRules.map((rl, i) => <>
