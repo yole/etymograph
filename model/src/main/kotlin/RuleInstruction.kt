@@ -137,6 +137,7 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
             }
             else -> return null
         }
+        if (changeSummary == null) return null
         val context = summarizeContext(condition, includeRelativePhoneme) ?: return null
         return changeSummary + context
     }
