@@ -419,15 +419,15 @@ open class InMemoryGraphRepository : GraphRepository() {
             paradigm?.removeRule(rule)
         }
         for (ruleSequence in allLangEntities.filterIsInstance<RuleSequence>()) {
-            ruleSequence.ruleIds -= rule.id
+            ruleSequence.steps = ruleSequence.steps.filter { it.ruleId != rule.id }
         }
         rules.remove(rule)
         deleteLangEntity(rule)
     }
 
-    override fun addRuleSequence(name: String, fromLanguage: Language, toLanguage: Language, rules: List<LangEntity>): RuleSequence {
+    override fun addRuleSequence(name: String, fromLanguage: Language, toLanguage: Language, rules: List<RuleSequenceStep>): RuleSequence {
         return RuleSequence(allLangEntities.size, name, fromLanguage, toLanguage,
-            rules.map { it.id }, emptyList(), null
+            rules.map { RuleSequenceStepRef(it.rule.id, it.optional) }, emptyList(), null
         ).also {
             allLangEntities.add(it)
         }

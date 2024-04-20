@@ -111,7 +111,7 @@ class RuleControllerTest {
     fun editSequence() {
         val rule = graph.addRule("q-gen", fixture.q, fixture.q,
             RuleLogic(emptyList(), emptyList()))
-        val seq = graph.addRuleSequence("ce-to-q", fixture.ce, fixture.q, listOf(rule))
+        val seq = graph.addRuleSequence("ce-to-q", fixture.ce, fixture.q, listOf(rule.step()))
 
         val rule2 = graph.addRule("q-acc", fixture.q, fixture.q,
             RuleLogic(emptyList(), emptyList()))
@@ -155,7 +155,7 @@ class RuleControllerTest {
             )
         )
         val ceSequence = graph.addRuleSequence("ce-sequence", fixture.ce, fixture.ce,
-            listOf(graph.ruleByName(ceRule.name)!!))
+            listOf(graph.ruleByName(ceRule.name)!!.step()))
 
         val qRule = ruleController.newRule(
             fixture.graph,
@@ -176,8 +176,8 @@ class RuleControllerTest {
             )
         )
         val seq = graph.ruleSequencesForLanguage(fixture.q).single()
-        assertEquals(ceSequence.id, seq.ruleIds[0])
-        assertEquals(qRule.id, seq.ruleIds[1])
+        assertEquals(ceSequence.id, seq.steps[0].ruleId)
+        assertEquals(qRule.id, seq.steps[1].ruleId)
 
         val rules = ruleController.rules(fixture.graph, "q")
         val group = rules.ruleGroups.single()

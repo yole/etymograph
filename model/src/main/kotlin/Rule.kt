@@ -248,17 +248,27 @@ class Rule(
     }
 }
 
+data class RuleSequenceStepRef(
+    val ruleId: Int,
+    val optional: Boolean
+)
+
+data class RuleSequenceStep(
+    val rule: LangEntity,
+    val optional: Boolean
+)
+
 class RuleSequence(
     id: Int, var name: String,
     var fromLanguage: Language,
     var toLanguage: Language,
-    var ruleIds: List<Int>,
+    var steps: List<RuleSequenceStepRef>,
     source: List<SourceRef>, notes: String?
 ) : LangEntity(id, source, notes) {
 
     fun resolveRules(graph: GraphRepository): List<Rule> {
         val result = mutableListOf<Rule>()
-        for (ruleId in ruleIds) {
+        for ((ruleId, optional) in steps) {
             val entity = graph.langEntityById(ruleId)
             if (entity is Rule) {
                 result.add(entity)

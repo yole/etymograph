@@ -70,7 +70,7 @@ abstract class GraphRepository {
         name: String,
         fromLanguage: Language,
         toLanguage: Language,
-        rules: List<LangEntity>
+        rules: List<RuleSequenceStep>
     ): RuleSequence
 
     abstract fun ruleSequencesForLanguage(language: Language): List<RuleSequence>

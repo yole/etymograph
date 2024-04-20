@@ -4,13 +4,25 @@
         "name": "pgmc-to-pnwgmc",
         "fromLang": "PGmc",
         "toLang": "PNWGmc",
-        "ruleIds": [
-            1862,
-            1866,
-            1863,
-            1874,
-            1882,
-            1883
+        "steps": [
+            {
+                "ruleId": 1862
+            },
+            {
+                "ruleId": 1866
+            },
+            {
+                "ruleId": 1863
+            },
+            {
+                "ruleId": 1874
+            },
+            {
+                "ruleId": 1882
+            },
+            {
+                "ruleId": 1883
+            }
         ]
     }
 ]

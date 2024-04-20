@@ -108,7 +108,7 @@ class RuleController {
             val groupName = "Phonetics: ${sequence.name}"
             val group = ruleGroups.getOrPut(groupName) { mutableListOf() }
             ruleSeqMap[groupName] = sequence
-            val rules = sequence.ruleIds.map { repo.langEntityById(it)!! }
+            val rules = sequence.steps.map { repo.langEntityById(it.ruleId)!! }
             allSequenceRules.addAll(rules.filterIsInstance<Rule>())
             group.addAll(rules.map { it.toShortViewModel() })
         }
@@ -324,12 +324,15 @@ class RuleController {
         name, fromLanguage.shortName, toLanguage.shortName
     )
 
-    private fun resolveUpdateSequenceParams(repo: GraphRepository, params: UpdateSequenceParams): Triple<Language, Language, List<LangEntity>> {
+    private fun resolveUpdateSequenceParams(
+        repo: GraphRepository,
+        params: UpdateSequenceParams
+    ): Triple<Language, Language, List<RuleSequenceStep>> {
         val fromLanguage = repo.resolveLanguage(params.fromLang)
         val toLanguage = repo.resolveLanguage(params.toLang)
         val rules = params.ruleNames.split('\n').filter { it.isNotBlank() }.map {
             val name = it.trim()
-            if (name.startsWith("sequence:")) {
+            val rule = if (name.startsWith("sequence:")) {
                 val sequenceName = name.removePrefix("sequence:").trim()
                 repo.ruleSequenceByName(sequenceName)
                     ?: badRequest("Cannot find rule sequence $sequenceName")
@@ -337,6 +340,7 @@ class RuleController {
             else {
                 repo.resolveRule(name)
             }
+            RuleSequenceStep(rule, false)
         }
         return Triple(fromLanguage, toLanguage, rules)
     }
@@ -344,11 +348,11 @@ class RuleController {
     @PostMapping("/{graph}/rule/sequence/{id}", consumes = ["application/json"])
     fun updateSequence(repo: GraphRepository, @PathVariable id: Int, @RequestBody params: UpdateSequenceParams): RuleSequenceViewModel {
         val sequence = repo.resolveRuleSequence(id)
-        val (fromLanguage, toLanguage, rules) = resolveUpdateSequenceParams(repo, params)
+        val (fromLanguage, toLanguage, steps) = resolveUpdateSequenceParams(repo, params)
         sequence.name = params.name
         sequence.fromLanguage = fromLanguage
         sequence.toLanguage = toLanguage
-        sequence.ruleIds = rules.map { it.id }
+        sequence.steps = steps.map { RuleSequenceStepRef(it.rule.id, it.optional) }
         return sequence.toViewModel()
     }
 

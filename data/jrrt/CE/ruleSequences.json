@@ -4,14 +4,28 @@
         "name": "ce-common",
         "fromLang": "CE",
         "toLang": "CE",
-        "ruleIds": [
-            1667,
-            1774,
-            1777,
-            1670,
-            1677,
-            1045,
-            1674
+        "steps": [
+            {
+                "ruleId": 1667
+            },
+            {
+                "ruleId": 1774
+            },
+            {
+                "ruleId": 1777
+            },
+            {
+                "ruleId": 1670
+            },
+            {
+                "ruleId": 1677
+            },
+            {
+                "ruleId": 1045
+            },
+            {
+                "ruleId": 1674
+            }
         ]
     }
 ]

@@ -214,12 +214,18 @@ data class RuleData(
 )
 
 @Serializable
+data class RuleSequenceStepData(
+    val ruleId: Int,
+    val optional: Boolean = false
+)
+
+@Serializable
 data class RuleSequenceData(
     val id: Int,
     val name: String,
     @SerialName("fromLang") val fromLanguageShortName: String,
     @SerialName("toLang") val toLanguageShortName: String,
-    val ruleIds: List<Int>,
+    val steps: List<RuleSequenceStepData>,
     val sourceRefs: List<SourceRefData>? = null,
     val notes: String? = null,
 )
@@ -468,7 +474,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             val ruleSequenceData = allLangEntities.filterIsInstance<RuleSequence>().filter { it.toLanguage == language }.map { s ->
                 RuleSequenceData(
                     s.id, s.name, s.fromLanguage.shortName, s.toLanguage.shortName,
-                    s.ruleIds,
+                    s.steps.map { RuleSequenceStepData(it.ruleId, it.optional) },
                     s.source.sourceToSerializedFormat(), s.notes)
             }
             if (ruleSequenceData.isNotEmpty()) {
@@ -710,7 +716,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                     languageByShortName(sequence.fromLanguageShortName)
                         ?: throw IllegalStateException("Broken language ID reference ${sequence.fromLanguageShortName}"),
                     languageByShortName(sequence.toLanguageShortName)!!,
-                    sequence.ruleIds,
+                    sequence.steps.map { RuleSequenceStepRef(it.ruleId, it.optional )},
                     loadSource(sequence.sourceRefs),
                     sequence.notes
                 )

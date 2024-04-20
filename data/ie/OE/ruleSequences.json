@@ -4,38 +4,124 @@
         "name": "pwgmc-to-oe",
         "fromLang": "PWGmc",
         "toLang": "OE",
-        "ruleIds": [
-            1981,
-            2032,
-            2039,
-            2040,
-            2044,
-            2048,
-            2049,
-            2060,
-            2077,
-            2082,
-            2086,
-            2090,
-            2095,
-            2114,
-            2119,
-            2141,
-            2148,
-            2149,
-            2156,
-            2248,
-            2259,
-            2270,
-            2298,
-            2307,
-            2320,
-            2326,
-            2355,
-            2328,
-            2354,
-            2331,
-            2336
+        "steps": [
+            {
+                "ruleId": 1981
+            },
+            {
+                "ruleId": 2032
+            },
+            {
+                "ruleId": 2039
+            },
+            {
+                "ruleId": 2040
+            },
+            {
+                "ruleId": 2044
+            },
+            {
+                "ruleId": 2048
+            },
+            {
+                "ruleId": 2049
+            },
+            {
+                "ruleId": 2060
+            },
+            {
+                "ruleId": 2077
+            },
+            {
+                "ruleId": 2082
+            },
+            {
+                "ruleId": 2086
+            },
+            {
+                "ruleId": 2090
+            },
+            {
+                "ruleId": 2095
+            },
+            {
+                "ruleId": 2114
+            },
+            {
+                "ruleId": 2119
+            },
+            {
+                "ruleId": 2141
+            },
+            {
+                "ruleId": 2148
+            },
+            {
+                "ruleId": 2149
+            },
+            {
+                "ruleId": 2402
+            },
+            {
+                "ruleId": 2156
+            },
+            {
+                "ruleId": 2248
+            },
+            {
+                "ruleId": 2259
+            },
+            {
+                "ruleId": 2270
+            },
+            {
+                "ruleId": 2298
+            },
+            {
+                "ruleId": 2307
+            },
+            {
+                "ruleId": 2320
+            },
+            {
+                "ruleId": 2326
+            },
+            {
+                "ruleId": 2355
+            },
+            {
+                "ruleId": 2328
+            },
+            {
+                "ruleId": 2354
+            },
+            {
+                "ruleId": 2331
+            },
+            {
+                "ruleId": 2336
+            },
+            {
+                "ruleId": 2396
+            },
+            {
+                "ruleId": 2365
+            },
+            {
+                "ruleId": 2369
+            },
+            {
+                "ruleId": 2372
+            },
+            {
+                "ruleId": 2379
+            },
+            {
+                "ruleId": 2384
+            },
+            {
+                "ruleId": 2391
+            }
         ]
     },
     {
@@ -43,9 +129,13 @@
         "name": "pgmc-to-oe",
         "fromLang": "PGmc",
         "toLang": "OE",
-        "ruleIds": [
-            1885,
-            2027
+        "steps": [
+            {
+                "ruleId": 1885
+            },
+            {
+                "ruleId": 2027
+            }
         ]
     },
     {
@@ -53,9 +143,13 @@
         "name": "pnwgmc-to-oe",
         "fromLang": "PNWGmc",
         "toLang": "OE",
-        "ruleIds": [
-            2188,
-            2027
+        "steps": [
+            {
+                "ruleId": 2188
+            },
+            {
+                "ruleId": 2027
+            }
         ]
     }
 ]

@@ -50,8 +50,10 @@ class QTestFixture {
         )
         return graph.addRuleSequence(
             "ce-to-q", ce, q,
-            listOf(graph.ruleByName("q-final-consonant")!!)
+            listOf(graph.ruleByName("q-final-consonant")!!.step())
         )
     }
 
 }
+
+fun Rule.step() = RuleSequenceStep(this, false)

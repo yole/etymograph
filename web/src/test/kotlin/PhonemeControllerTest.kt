@@ -86,7 +86,7 @@ class PhonemeControllerTest {
             Rule.parseBranches("sound is 'w':\n- new sound is 'u'",
                 RuleParseContext(fixture.q, fixture.q) { throw RuleParseException("no such rule")})
         )
-        val seq = graph.addRuleSequence("ce-to-q", fixture.ce, fixture.q, listOf(rule))
+        val seq = graph.addRuleSequence("ce-to-q", fixture.ce, fixture.q, listOf(rule.step()))
 
         val wPhonemeViewModel = phonemeController.phoneme(graph, wPhoneme.id)
         assertEquals(1, wPhonemeViewModel.relatedRules.size)

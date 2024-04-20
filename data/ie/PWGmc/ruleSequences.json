@@ -4,9 +4,13 @@
         "name": "pgmc-to-pwgmc",
         "fromLang": "PGmc",
         "toLang": "PWGmc",
-        "ruleIds": [
-            1867,
-            2188
+        "steps": [
+            {
+                "ruleId": 1867
+            },
+            {
+                "ruleId": 2188
+            }
         ]
     },
     {
@@ -14,23 +18,55 @@
         "name": "pnwgmc-to-pwgmc",
         "fromLang": "PNWGmc",
         "toLang": "PWGmc",
-        "ruleIds": [
-            1884,
-            1889,
-            1958,
-            1963,
-            1966,
-            1976,
-            1969,
-            1978,
-            1982,
-            1983,
-            1990,
-            1995,
-            1997,
-            2011,
-            2014,
-            2018
+        "steps": [
+            {
+                "ruleId": 1884
+            },
+            {
+                "ruleId": 1889
+            },
+            {
+                "ruleId": 1958
+            },
+            {
+                "ruleId": 1963
+            },
+            {
+                "ruleId": 1966
+            },
+            {
+                "ruleId": 1976
+            },
+            {
+                "ruleId": 1969
+            },
+            {
+                "ruleId": 1978
+            },
+            {
+                "ruleId": 1982
+            },
+            {
+                "ruleId": 1983
+            },
+            {
+                "ruleId": 1990
+            },
+            {
+                "ruleId": 1995
+            },
+            {
+                "ruleId": 1997
+            },
+            {
+                "ruleId": 2011
+            },
+            {
+                "ruleId": 2014
+            },
+            {
+                "ruleId": 2018
+            }
         ]
     }
 ]
