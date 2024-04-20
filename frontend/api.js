@@ -164,9 +164,9 @@ export function addLink(graph, fromEntity, toEntity, linkType, ruleNames, source
     return postToBackend(`${graph}/link`, {fromEntity, toEntity, linkType, ruleNames, source, notes})
 }
 
-export function addRuleLink(graph, fromEntity, toRuleName, linkType, source) {
+export function addRuleLink(graph, fromEntity, toRuleName, linkType, source, notes) {
     return postToBackend(`${graph}/link/rule`,
-        {fromEntity: fromEntity, toRuleName: toRuleName, linkType: linkType, source: source}
+        {fromEntity, toRuleName, linkType, source, notes}
     )
 }
 

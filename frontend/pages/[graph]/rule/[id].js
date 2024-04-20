@@ -148,6 +148,7 @@ export default function Rule(params) {
             <h3>Related rules</h3>
             {rule.links.map(rl => <>
                 <Link href={`/${graph}/rule/${rl.toRuleId}`}>{rl.toRuleName}</Link>
+                {rl.notes && <> &ndash; {rl.notes}</>}
                 <SourceRefs source={rl.source} span={true}/>
                 {allowEdit() && <>
                     &nbsp;(<span className="inlineButtonLink">
