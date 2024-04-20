@@ -6,10 +6,15 @@ function RichTextFragment(params) {
     if (params.fragment.linkType === "rule") {
         return <Link href={`/${router.query.graph}/rule/${params.fragment.linkId}`}>{params.fragment.text}</Link>
     }
+
+    const textWithTooltip = (params.fragment.tooltip !== null)
+        ? <span className="richTextTooltip" title={params.fragment.tooltip}>{params.fragment.text}</span>
+        : params.fragment.text
+
     if (params.fragment.emph) {
-        return <span className="richTextEmph">{params.fragment.text}</span>
+        return <span className="richTextEmph">{textWithTooltip}</span>
     }
-    return params.fragment.text
+    return textWithTooltip
 }
 
 export default function RichText(params) {

@@ -92,6 +92,13 @@ class PhonemePattern(val phonemeClass: PhonemeClass?, val literal: String?) {
         (phonemeClass?.matchesCurrent(phonemes) ?: true) &&
          (literal == null || phonemes.current == literal)
 
+    fun toRichText(): RichText {
+        return listOf(
+            phonemeClass?.name?.rich(emph = true, tooltip = phonemeClass.matchingPhonemes.takeIf { it.isNotEmpty() }?.joinToString(", ")),
+            literal?.let { "'$it'" }?.rich(emph = true)
+        ).filterNotNull().joinToRichText(" ") { richText(it) }
+    }
+
     fun toEditableText(): String =
          arrayOf(
             phonemeClass?.name,

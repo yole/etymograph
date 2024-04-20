@@ -1,6 +1,12 @@
 package ru.yole.etymograph
 
-data class RichTextFragment(val text: String, val emph: Boolean = false, val linkType: String? = null, val linkId: Int? = null) {
+data class RichTextFragment(
+    val text: String,
+    val tooltip: String? = null,
+    val emph: Boolean = false,
+    val linkType: String? = null,
+    val linkId: Int? = null
+) {
     override fun toString(): String = text
 
     operator fun plus(fragment: RichTextFragment): RichText {
@@ -44,8 +50,8 @@ data class RichText(val fragments: List<RichTextFragment>) {
     }
 }
 
-fun String.rich(emph: Boolean = false, linkType: String? = null, linkId: Int? = null): RichTextFragment =
-    RichTextFragment(this, emph, linkType, linkId)
+fun String.rich(emph: Boolean = false, tooltip: String? = null, linkType: String? = null, linkId: Int? = null): RichTextFragment =
+    RichTextFragment(this, tooltip, emph, linkType, linkId)
 
 fun String.richText(): RichText = richText(RichTextFragment(this))
 

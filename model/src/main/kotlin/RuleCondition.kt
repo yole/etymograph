@@ -449,7 +449,7 @@ class RelativePhonemeRuleCondition(
             (if (baseLanguageShortName != null) " of base word in ".rich() else "".rich()) +
             (baseLanguageShortName?.rich(true) ?: "".rich()) +
             " is " + maybeNot +
-            phonemePattern.toEditableText().rich(true)
+            phonemePattern.toRichText()
     }
 
     override fun refersToPhoneme(phoneme: Phoneme): Boolean {
