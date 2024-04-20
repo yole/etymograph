@@ -114,11 +114,11 @@ class LeafRuleCondition(
     override fun matches(word: Word, graph: GraphRepository): Boolean {
         val matchWord = graph.findWordToMatch(word, baseLanguageShortName) ?: return false
         return when (type) {
-            ConditionType.EndsWith -> (phonemeClass?.let { PhonemeIterator(matchWord).last in it.matchingPhonemes }
+            ConditionType.EndsWith -> (phonemeClass?.let { PhonemeIterator(matchWord, graph).last in it.matchingPhonemes }
                 ?: matchWord.text.trimEnd('-').endsWith(parameter!!)).negateIfNeeded()
-            ConditionType.BeginsWith -> (phonemeClass?.let { PhonemeIterator(word).current in it.matchingPhonemes }
+            ConditionType.BeginsWith -> (phonemeClass?.let { PhonemeIterator(word, graph).current in it.matchingPhonemes }
                 ?: word.text.startsWith(parameter!!)).negateIfNeeded()
-            ConditionType.StressIs -> matchStress(word).negateIfNeeded()
+            ConditionType.StressIs -> matchStress(word, graph).negateIfNeeded()
             ConditionType.ClassMatches -> matchClass(word)
             else -> throw IllegalStateException()
         }
@@ -127,9 +127,9 @@ class LeafRuleCondition(
     private fun matchClass(word: Word) =
         (parameter in word.classes).negateIfNeeded() || word.classes == listOf("*")
 
-    private fun matchStress(word: Word): Boolean {
+    private fun matchStress(word: Word, graph: GraphRepository): Boolean {
         val (expectedIndex, _) = parameter?.let { Ordinals.parse(it) } ?: return false
-        val stress = word.calculateStress() ?: return false
+        val stress = word.calculateStress(graph) ?: return false
         val syllables = breakIntoSyllables(word)
         val expectedStressSyllable = Ordinals.at(syllables, expectedIndex) ?: return false
         return stress.index >= expectedStressSyllable.startIndex && stress.index < expectedStressSyllable.endIndex
@@ -270,7 +270,7 @@ class SyllableRuleCondition(
     override fun matches(word: Word, graph: GraphRepository): Boolean {
         val syllables = breakIntoSyllables(word)
         val syllable = Ordinals.at(syllables, index) ?: return false
-        val phonemes = PhonemeIterator(word)
+        val phonemes = PhonemeIterator(word, graph)
         if (matchType == SyllableMatchType.Contains) {
             if (phonemePattern.phonemeClass != null) {
                 return phonemes.findMatchInRange(syllable.startIndex, syllable.endIndex, phonemePattern.phonemeClass) != null
@@ -439,7 +439,7 @@ class RelativePhonemeRuleCondition(
         }
         val matchWord = graph.findWordToMatch(word, baseLanguageShortName) ?: return false
 
-        val phonemes = PhonemeIterator(matchWord)
+        val phonemes = PhonemeIterator(matchWord, graph)
         if (!phonemes.seek(seekTarget)) return negated
         return phonemePattern.matchesCurrent(phonemes) xor negated
     }

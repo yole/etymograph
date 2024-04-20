@@ -519,3 +519,5 @@ fun createParseContext(
         ?: rules.find { rule -> rule.name == ruleName }?.let { RuleRef.to(it) }
         ?: throw RuleParseException("no such rule")
 }
+
+val Rule.firstInstruction get() = logic.branches[0].instructions[0]

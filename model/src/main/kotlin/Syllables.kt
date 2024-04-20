@@ -9,7 +9,7 @@ fun breakIntoSyllables(word: Word): List<Syllable> {
         ?: return emptyList()
 
     val result = mutableListOf<MutableSyllable>()
-    val it = PhonemeIterator(word)
+    val it = PhonemeIterator(word, null)
     if (it.size == 0) return emptyList()
 
     var currentSyllableStart = 0

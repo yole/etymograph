@@ -109,14 +109,16 @@ class SeekTarget(val index: Int, val phonemeClass: PhonemeClass?, val relative: 
 class PhonemeIterator {
     val language: Language
     private val word: Word?
+    private val repo: GraphRepository?
     private val phonemes: List<String>
     private val resultPhonemes: MutableList<String>
     private var phonemeIndex = 0
     private val phonemeToResultIndexMap: IntArray
 
-    constructor(word: Word, resultPhonemic: Boolean? = null) : this(
+    constructor(word: Word, repo: GraphRepository?, resultPhonemic: Boolean? = null) : this(
         if (word.isPhonemic) word.text else word.normalizedText.trimEnd('-'),
         word.language,
+        repo,
         word,
         word.isPhonemic,
         resultPhonemic
@@ -125,12 +127,14 @@ class PhonemeIterator {
     constructor(
         text: String,
         language: Language,
+        repo: GraphRepository?,
         word: Word? = null,
         phonemic: Boolean = false,
         resultPhonemic: Boolean? = null
     ) {
         this.language = language
         this.word = word
+        this.repo = repo
 
         val sourcePhonemes = mutableListOf<String>()
         resultPhonemes = mutableListOf()
@@ -152,12 +156,14 @@ class PhonemeIterator {
         phonemes: List<String>,
         resultPhonemes: MutableList<String>,
         language: Language,
+        repo: GraphRepository?,
         word: Word?,
         phonemeToResultIndexMap: IntArray
     ) {
         this.phonemes = phonemes
         this.resultPhonemes = resultPhonemes
         this.language = language
+        this.repo = repo
         this.word = word
         this.phonemeToResultIndexMap = phonemeToResultIndexMap
     }
@@ -171,7 +177,7 @@ class PhonemeIterator {
     fun atRelative(relativeIndex: Int): String? = phonemes.getOrNull(phonemeIndex + relativeIndex)
 
     fun clone(): PhonemeIterator {
-        return PhonemeIterator(phonemes, resultPhonemes, language, word, phonemeToResultIndexMap).also {
+        return PhonemeIterator(phonemes, resultPhonemes, language, repo, word, phonemeToResultIndexMap).also {
             it.phonemeIndex = phonemeIndex
         }
     }
@@ -287,7 +293,7 @@ class PhonemeIterator {
     }
 
     val stressedPhonemeIndex: Int?
-        get() = word?.calcStressedPhonemeIndex()
+        get() = word?.calcStressedPhonemeIndex(repo)
 
     val syllables: List<Syllable>?
         get() = word?.let { breakIntoSyllables(it) }

@@ -6,6 +6,7 @@ class WordSegment(
     val firstCharacter: Int,
     val length: Int,
     val category: String?,
+    val sourceWord: Word?,
     val sourceRule: Rule?,
     val clitic: Boolean = false
 )
@@ -68,7 +69,7 @@ class Word(
         val orthoRule = language.orthographyRule?.resolve()
         val orthoText: String
         if (orthoRule != null) {
-            val it = PhonemeIterator(this, resultPhonemic = false)
+            val it = PhonemeIterator(this, null, resultPhonemic = false)
             while (true) {
                 orthoRule.applyToPhoneme(this, it, InMemoryGraphRepository.EMPTY)
                 if (!it.advance()) break
@@ -85,12 +86,12 @@ class Word(
         return derive(orthoText, phonemic = false)
     }
 
-    fun derive(text: String, newSegment: WordSegment? = null, newClasses: List<String>? = null, phonemic: Boolean? = null): Word {
+    fun derive(text: String, id: Int? = null, newSegment: WordSegment? = null, newClasses: List<String>? = null, phonemic: Boolean? = null): Word {
         val sourceSegments = segments
         return if (this.text == text && newClasses == null && phonemic == null)
             this
         else
-            Word(-1, text, language, gloss, fullGloss, pos, newClasses ?: classes).also {
+            Word(id ?: -1, text, language, gloss, fullGloss, pos, newClasses ?: classes).also {
                 it.stressedPhonemeIndex = stressedPhonemeIndex
                 it.segments = appendSegments(sourceSegments, newSegment)
                 if (phonemic != null) it.isPhonemic = phonemic
@@ -99,10 +100,9 @@ class Word(
 
     var stressedPhonemeIndex: Int = -1
 
-    fun calcStressedPhonemeIndex(): Int {
+    fun calcStressedPhonemeIndex(repo: GraphRepository?): Int {
         if (stressedPhonemeIndex < 0) {
-            // graph is used only for retrieving links of word and we don't need this for stress
-            val wordWithStress = language.stressRule?.resolve()?.apply(this, InMemoryGraphRepository.EMPTY)
+            val wordWithStress = language.stressRule?.resolve()?.apply(this, repo ?: InMemoryGraphRepository.EMPTY)
             if (wordWithStress != null) {
                 stressedPhonemeIndex = wordWithStress.stressedPhonemeIndex
             }
@@ -202,6 +202,7 @@ class Word(
                         beforeLast.firstCharacter,
                         beforeLast.length + last.length,
                         last.category,
+                        last.sourceWord,
                         last.sourceRule,
                         last.clitic
                     )
@@ -219,10 +220,10 @@ data class Attestation(val word: Word, val corpusText: CorpusText)
 
 data class StressData(val index: Int, val length: Int)
 
-fun Word.calculateStress(): StressData? {
-    val index = calcStressedPhonemeIndex()
+fun Word.calculateStress(graph: GraphRepository): StressData? {
+    val index = calcStressedPhonemeIndex(graph)
     return if (index >= 0) {
-        val phonemes = PhonemeIterator(this)
+        val phonemes = PhonemeIterator(this, graph)
         phonemes.advanceTo(index)
         val isDiphthong = PhonemeClass.diphthong.matchesCurrent(phonemes)
         StressData(phonemes.phonemeToCharacterIndex(index), (if (isDiphthong) 2 else 1))

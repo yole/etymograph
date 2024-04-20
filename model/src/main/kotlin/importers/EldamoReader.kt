@@ -38,7 +38,7 @@ fun main(args: Array<String>) {
     processEldamoWords(File(args[0]).reader()) { word, language, speech ->
         if (language == "q" && speech !in nonWordSpeechParts && "(" !in word && ' ' !in word) {
             val qWord = Word(-1, word.trimEnd('¹', '²', '³', '⁴', '-').replace('ē', 'é'), q)
-            val phonemes = PhonemeIterator(qWord)
+            val phonemes = PhonemeIterator(qWord, null)
             val syllables = breakIntoSyllables(qWord)
             for (syllable in syllables) {
                 val structure = analyzeSyllableStructure(vowels, phonemes, syllable)

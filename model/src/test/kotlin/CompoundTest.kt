@@ -1,6 +1,6 @@
 package ru.yole.etymograph
 
-import org.junit.Assert
+import org.junit.Assert.assertEquals
 import org.junit.Test
 
 class CompoundTest : QBaseTest() {
@@ -13,7 +13,7 @@ class CompoundTest : QBaseTest() {
         val compound = repo.createCompound(faramir, fara, emptyList(), null)
         compound.components.add(mir)
         val restored = repo.restoreSegments(faramir)
-        Assert.assertEquals("fara-mir", restored.segmentedText())
+        assertEquals("fara-mir", restored.segmentedText())
     }
 
     @Test
@@ -26,7 +26,7 @@ class CompoundTest : QBaseTest() {
         val compound = repo.createCompound(faramir, fara, emptyList(), null)
         compound.components.add(mir)
         val restored = repo.restoreSegments(faramir)
-        Assert.assertEquals("fara=mir", restored.segmentedText())
+        assertEquals("fara=mir", restored.segmentedText())
     }
 
     @Test
@@ -37,7 +37,7 @@ class CompoundTest : QBaseTest() {
         val faramir = repo.addWord("faramir")
         val compound = repo.createCompound(faramir, fara, emptyList(), null)
         compound.components.add(mir)
-        Assert.assertEquals(1, repo.filteredWords(q, WordKind.COMPOUND).size)
+        assertEquals(1, repo.filteredWords(q, WordKind.COMPOUND).size)
     }
 
     @Test
@@ -50,7 +50,7 @@ class CompoundTest : QBaseTest() {
         compound.components.add(mir)
 
         repo.deleteWord(mir)
-        Assert.assertEquals(1, repo.findComponentsByCompound(faramir).first().components.size)
+        assertEquals(1, repo.findComponentsByCompound(faramir).first().components.size)
     }
 
     @Test
@@ -63,7 +63,7 @@ class CompoundTest : QBaseTest() {
         compound.components.add(mir)
 
         repo.deleteWord(faramir)
-        Assert.assertEquals(null, repo.langEntityById(compound.id))
+        assertEquals(null, repo.langEntityById(compound.id))
     }
 
     @Test
@@ -75,9 +75,9 @@ class CompoundTest : QBaseTest() {
         val compound = repo.createCompound(faramir, fara, emptyList(), null)
         compound.components.add(mir)
         val restored = repo.restoreSegments(faramir)
-        Assert.assertEquals("fara-mir", restored.segmentedText())
+        assertEquals("fara-mir", restored.segmentedText())
         repo.deleteCompound(compound)
-        Assert.assertEquals("faramir", faramir.segmentedText())
+        assertEquals("faramir", faramir.segmentedText())
     }
 
     @Test
@@ -89,6 +89,22 @@ class CompoundTest : QBaseTest() {
         val compound = repo.createCompound(faramir, fara, emptyList(), null)
         compound.components.add(mir)
         val restored = repo.restoreSegments(faramir)
-        Assert.assertEquals("andaurenya", restored.segmentedText())
+        assertEquals("andaurenya", restored.segmentedText())
+    }
+
+    @Test
+    fun stressOnRootInCompound() {
+        val repo = InMemoryGraphRepository().apply { addLanguage(q) }
+        val stressRule = repo.rule("- stress is on first root syllable")
+        assertEquals("stress is on first root syllable", stressRule.firstInstruction.toEditableText())
+        q.stressRule = RuleRef.to(stressRule)
+
+        val na = repo.addWord("na", pos = "PV")
+        val pan = repo.addWord("pan-", pos = "V")
+        val napan = repo.addWord("napan-")
+        val compound = repo.createCompound(napan, na, emptyList(), null)
+        compound.components.add(pan)
+
+        assertEquals(3, napan.calculateStress(repo)!!.index)
     }
 }

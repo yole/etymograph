@@ -48,7 +48,8 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
             else {
                 word.text.dropLast(condition.parameter!!.length)
             }
-            return word.derive(textWithoutEnding + arg, WordSegment(textWithoutEnding.length, arg.length, rule.addedCategories, rule))
+            return word.derive(textWithoutEnding + arg,
+                newSegment = WordSegment(textWithoutEnding.length, arg.length, rule.addedCategories, null, rule))
         }
         return word
     }
@@ -268,7 +269,7 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
 }
 
 fun List<RuleInstruction>.apply(rule: Rule, branch: RuleBranch?, word: Word, graph: GraphRepository): Word {
-    val normalizedWord = word.derive(word.text.trimEnd('-'))
+    val normalizedWord = word.derive(word.text.trimEnd('-'), id = word.id)
     return fold(normalizedWord) { s, i -> i.apply(rule, branch, s, graph) }
 }
 
@@ -282,7 +283,7 @@ class ApplyRuleInstruction(val ruleRef: RuleRef)
         val result = targetRule.apply(word, graph).asOrthographic()
         return result.remapSegments { s ->
             if (s.sourceRule == targetRule)
-                WordSegment(s.firstCharacter, s.length, rule.addedCategories, rule)
+                WordSegment(s.firstCharacter, s.length, rule.addedCategories, null, rule)
             else
                 s
         }
@@ -319,7 +320,7 @@ class ApplySoundRuleInstruction(language: Language, val ruleRef: RuleRef, arg: S
 
     override fun apply(rule: Rule, branch: RuleBranch?, word: Word, graph: GraphRepository): Word {
         if (seekTarget == null) return word
-        val phonemes = PhonemeIterator(word.asPhonemic())
+        val phonemes = PhonemeIterator(word.asPhonemic(), graph)
         if (phonemes.seek(seekTarget)) {
             ruleRef.resolve().applyToPhoneme(word, phonemes, graph)
             return word.derive(phonemes.result(), phonemic = true).asOrthographic()
@@ -329,7 +330,7 @@ class ApplySoundRuleInstruction(language: Language, val ruleRef: RuleRef, arg: S
 
     override fun reverseApply(rule: Rule, text: String, language: Language, graph: GraphRepository): List<String> {
         if (seekTarget == null) return listOf(text)
-        val phonemes = PhonemeIterator(text, language)
+        val phonemes = PhonemeIterator(text, language, graph)
         if (phonemes.seek(seekTarget)) {
             return ruleRef.resolve().reverseApplyToPhoneme(phonemes)
         }
@@ -353,13 +354,38 @@ class ApplySoundRuleInstruction(language: Language, val ruleRef: RuleRef, arg: S
 }
 
 class ApplyStressInstruction(val language: Language, arg: String) : RuleInstruction(InstructionType.ApplyStress, arg) {
-    private val syllableIndex = Ordinals.parse(arg)?.first ?: throw RuleParseException("Can't parse ordinal '$arg'")
+    private val syllableIndex: Int
+    private val root: Boolean
+
+    init {
+        val ordinalParse = Ordinals.parse(arg) ?: throw RuleParseException("Can't parse ordinal '$arg'")
+        syllableIndex = ordinalParse.first
+        if (ordinalParse.second == "root") {
+            root = true
+        }
+        else if (ordinalParse.second.isEmpty()) {
+            root = false
+        }
+        else {
+            throw RuleParseException("Can't parse syllable type ${ordinalParse.second}")
+        }
+    }
+
 
     override fun apply(rule: Rule, branch: RuleBranch?, word: Word, graph: GraphRepository): Word {
-        val syllables = breakIntoSyllables(word)
+        var syllables = breakIntoSyllables(word)
+        if (root) {
+            val segments = graph.restoreSegments(word).segments
+            val rootSegment = segments?.firstOrNull {
+                it.sourceRule == null && (it.sourceWord == null || it.sourceWord.pos != "PV")
+            }
+            if (rootSegment != null) {
+                syllables = syllables.filter { it.startIndex >= rootSegment.firstCharacter }
+            }
+        }
         val vowel = language.phonemeClassByName(PhonemeClass.vowelClassName) ?: return word
         val syllable = Ordinals.at(syllables, syllableIndex) ?: return word
-        val stressIndex = PhonemeIterator(word).findMatchInRange(syllable.startIndex, syllable.endIndex, vowel)
+        val stressIndex = PhonemeIterator(word, graph).findMatchInRange(syllable.startIndex, syllable.endIndex, vowel)
             ?: return word
         word.stressedPhonemeIndex = stressIndex    // TODO create a copy of the word here?
         return word
@@ -381,15 +407,17 @@ class PrependAppendInstruction(type: InstructionType, language: Language, arg: S
             return if (type == InstructionType.Prepend)
                 word.derive(literalArg + word.text)
             else
-                word.derive(word.text + literalArg, WordSegment(word.text.length, literalArg.length, rule.addedCategories, rule))
+                word.derive(word.text + literalArg,
+                    newSegment = WordSegment(word.text.length, literalArg.length, rule.addedCategories, null, rule))
         }
-        val phonemes = PhonemeIterator(word)
+        val phonemes = PhonemeIterator(word, graph)
         if (phonemes.seek(seekTarget!!)) {
             val phoneme = phonemes.current
             if (type == InstructionType.Prepend) {
                 return word.derive(phoneme + word.text)
             }
-            return word.derive(word.text + phoneme, WordSegment(word.text.length, phoneme.length, rule.addedCategories, rule))
+            return word.derive(word.text + phoneme,
+                newSegment = WordSegment(word.text.length, phoneme.length, rule.addedCategories, null, rule))
         }
         return word
     }
@@ -414,7 +442,7 @@ class PrependAppendInstruction(type: InstructionType, language: Language, arg: S
 
 class InsertInstruction(arg: String, val relIndex: Int, val seekTarget: SeekTarget) : RuleInstruction(InstructionType.Insert, arg) {
     override fun apply(rule: Rule, branch: RuleBranch?, word: Word, graph: GraphRepository): Word {
-        val phonemes = PhonemeIterator(word)
+        val phonemes = PhonemeIterator(word, graph)
         if (!phonemes.seek(seekTarget)) return word
         if (relIndex == -1) {
             phonemes.insertAtRelative(0, arg)

@@ -71,7 +71,7 @@ class ReverseApplyTest : QBaseTest() {
     @Test
     fun reverseApplyToPhoneme() {
         val rule = parseRule(q, q, "sound is 'i':\n- new sound is 'í'")
-        val phonemes = PhonemeIterator(q.word("círa"))
+        val phonemes = PhonemeIterator(q.word("círa"), null)
         phonemes.advanceTo(1)
         assertEquals(listOf("cira"), rule.reverseApplyToPhoneme(phonemes))
 
@@ -82,7 +82,7 @@ class ReverseApplyTest : QBaseTest() {
     @Test
     fun reverseApplyToPhonemeClass() {
         val rule = parseRule(q, q, "sound is voiceless stop:\n- voiceless becomes voiced")
-        val phonemes = PhonemeIterator(q.word("bira"))
+        val phonemes = PhonemeIterator(q.word("bira"), null)
         assertEquals(listOf("pira"), rule.reverseApplyToPhoneme(phonemes))
 
         val applySoundRuleInstruction = ApplySoundRuleInstruction(q, RuleRef.to(rule), "first sound")
@@ -92,7 +92,7 @@ class ReverseApplyTest : QBaseTest() {
     @Test
     fun reverseApplyToPhonemeNoChange() {
         val rule = parseRule(q, q, "sound is 'e':\n- no change\nsound is 'i':\n- new sound is 'í'")
-        val phonemes = PhonemeIterator(q.word("círa"))
+        val phonemes = PhonemeIterator(q.word("círa"), null)
         phonemes.advanceTo(1)
         assertEquals(listOf("cira"), rule.reverseApplyToPhoneme(phonemes))
 

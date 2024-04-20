@@ -121,7 +121,7 @@ class WordController {
             .filter { it.fromEntity is Rule || it.toEntity is Rule }
         val attestations = graph.findAttestations(this)
 
-        val stressData = calculateStress()
+        val stressData = calculateStress(graph)
 
         val computedGloss = getOrComputeGloss(graph)
         return WordViewModel(

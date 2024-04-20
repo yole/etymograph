@@ -113,7 +113,7 @@ class Rule(
     fun apply(word: Word, graph: GraphRepository): Word {
         if (isPhonemic()) {
             val phonemic = word.asPhonemic()
-            val phonemes = PhonemeIterator(phonemic)
+            val phonemes = PhonemeIterator(phonemic, graph)
             var anyChanges = false
             while (true) {
                 anyChanges = anyChanges or applyToPhoneme(phonemic, phonemes, graph)

@@ -71,7 +71,7 @@ class CorpusText(
                     restoreCase(tw.normalizedText, tw.baseText)
                 sentenceStart = tw.baseText.endsWith('.')
                 if (word != null) {
-                    val stressData = word.calculateStress()
+                    val stressData = word.calculateStress(repo)
                     val leadingPunctuation = tw.baseText.takeWhile { it == '"' || it == '(' }
                     val trailingPunctuation = tw.baseText.takeLastWhile { it in punctuation }
                     val wordWithSegments = repo.restoreSegments(word)

@@ -6,7 +6,7 @@ import org.junit.Assert.*
 class PhonemeIteratorTest : QBaseTest() {
     @Test
     fun phonemeIterator() {
-        val it = PhonemeIterator(ce.word("khith"))
+        val it = PhonemeIterator(ce.word("khith"), null)
         assertEquals("kh", it.current)
         assertTrue(it.advance())
         assertEquals("i", it.current)
@@ -17,7 +17,7 @@ class PhonemeIteratorTest : QBaseTest() {
 
     @Test
     fun seekToVowel() {
-        val it = PhonemeIterator("lasse", q)
+        val it = PhonemeIterator("lasse", q, null)
         it.seek(SeekTarget(1, v))
         assertEquals("a", it.current)
         it.seek(SeekTarget(2, v))
@@ -47,7 +47,7 @@ class PhonemeIteratorTest : QBaseTest() {
 
     @Test
     fun seekToLastVowel() {
-        val it = PhonemeIterator("lasse", q)
+        val it = PhonemeIterator("lasse", q, null)
         assertTrue(it.seek(SeekTarget(-1, v)))
         assertEquals("e", it.current)
     }
@@ -55,7 +55,7 @@ class PhonemeIteratorTest : QBaseTest() {
     @Test
     fun digraphs() {
         q.phonemes = listOf(phoneme("hy", "voiceless glide"))
-        val it = PhonemeIterator("hyarmen", q)
+        val it = PhonemeIterator("hyarmen", q, null)
         assertEquals("hy", it.current)
     }
 
@@ -63,7 +63,7 @@ class PhonemeIteratorTest : QBaseTest() {
     fun phonemic() {
         q.phonemes = listOf(phoneme(listOf("c", "k"), "k", "consonant"))
         val w = q.word("calma").asPhonemic()
-        val it = PhonemeIterator(w)
+        val it = PhonemeIterator(w, null)
         assertEquals("kalma", it.result())
     }
 }

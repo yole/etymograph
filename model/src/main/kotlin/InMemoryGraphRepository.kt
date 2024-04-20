@@ -281,11 +281,12 @@ open class InMemoryGraphRepository : GraphRepository() {
             val segments = mutableListOf<WordSegment>()
             var index = 0
             for (component in compound.components) {
-                val componentLength = component.text.length
-                if (index + componentLength > word.text.length || word.text.substring(index, index + componentLength) != component.text) {
+                val noramalizedComponentText = component.text.removeSuffix("-")
+                val componentLength = noramalizedComponentText.length
+                if (index + componentLength > word.text.length || word.text.substring(index, index + componentLength) != noramalizedComponentText) {
                     break
                 }
-                segments.add(WordSegment(index, componentLength, null, null, "clitic" in component.classes))
+                segments.add(WordSegment(index, componentLength, null, component, null, "clitic" in component.classes))
                 index += componentLength
             }
             word.segments = segments
@@ -298,7 +299,7 @@ open class InMemoryGraphRepository : GraphRepository() {
         if (wordText.isEmpty()) return false
         val word = Word(-1, wordText, language)
         val vowels = language.phonemeClassByName(PhonemeClass.vowelClassName)
-        val phonemes = PhonemeIterator(word)
+        val phonemes = PhonemeIterator(word, this)
         if (language.syllableStructures.isNotEmpty() && vowels != null) {
             val syllables = breakIntoSyllables(word)
             if (syllables.isEmpty()) {
