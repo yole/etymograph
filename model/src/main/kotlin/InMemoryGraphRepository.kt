@@ -447,8 +447,9 @@ open class InMemoryGraphRepository : GraphRepository() {
 
     override fun applyRuleSequence(link: Link, sequence: RuleSequence) {
         val word = (link.toEntity as Word).normalized
+        val expectWord = (link.fromEntity as Word).normalized
         val applicableRules = mutableListOf<Rule>()
-        if (applyRuleSequence(word, sequence, applicableRules) == null) {
+        if (applyRuleSequence(word, sequence, expectWord, applicableRules) == null) {
             return
         }
         link.rules = applicableRules
@@ -467,7 +468,7 @@ open class InMemoryGraphRepository : GraphRepository() {
 
     override fun deriveThroughRuleSequence(word: Word, sequence: RuleSequence): Word? {
         val applicableRules = mutableListOf<Rule>()
-        val targetWord = applyRuleSequence(word, sequence, applicableRules) ?: return null
+        val targetWord = applyRuleSequence(word, sequence, null, applicableRules) ?: return null
         val newWord = findOrAddWord(
             targetWord.text,
             sequence.toLanguage,
@@ -479,9 +480,30 @@ open class InMemoryGraphRepository : GraphRepository() {
         return newWord
     }
 
-    private fun applyRuleSequence(word: Word, sequence: RuleSequence, applicableRules: MutableList<Rule>): Word? {
+    private fun applyRuleSequence(word: Word, sequence: RuleSequence, expectWord: Word?, applicableRules: MutableList<Rule>): Word? {
+        if (expectWord != null) {
+            val variants = sequence.resolveVariants(this)
+
+            for (variant in variants) {
+                val applicableRulesForVariant = mutableListOf<Rule>()
+                val targetWord = applyRuleSequenceVariant(word, variant, applicableRulesForVariant)
+                if (targetWord?.text == expectWord.text) {
+                    applicableRules.addAll(applicableRulesForVariant)
+                    return targetWord
+                }
+            }
+            return applyRuleSequenceVariant(word, variants.first(), applicableRules)
+        }
+        return applyRuleSequenceVariant(word, sequence.resolveRules(this), applicableRules)
+    }
+
+    private fun applyRuleSequenceVariant(
+        word: Word,
+        rules: List<Rule>,
+        applicableRules: MutableList<Rule>
+    ): Word? {
         var targetWord = word
-        for (rule in sequence.resolveRules(this)) {
+        for (rule in rules) {
             val newWord = rule.apply(targetWord, this)
             if ('?' in newWord.text) return null
             if (newWord !== targetWord) {

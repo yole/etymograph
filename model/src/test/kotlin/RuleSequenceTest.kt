@@ -20,6 +20,20 @@ class RuleSequenceTest : QBaseTest() {
     }
 
     @Test
+    fun optionalSteps() {
+        val repo = repoWithQ().with(ce)
+        val qAiE = repo.rule("sound is 'a' and next sound is 'i':\n- new sound is 'e'", name = "q-ai-e")
+        val qSfF = repo.rule("sound is 's' and next sound is 'f':\n- sound disappears") // inapplicable for this test
+        val qWV = repo.rule("beginning of word and sound is 'w':\n- new sound is 'v'", name = "q-w-v")
+        val seq = repo.addRuleSequence("ce-q", ce, q, listOf(qAiE.step(), qSfF.step(), qWV.step(true)))
+        val ceWord = repo.addWord("waiwai", language = ce)
+        val qWord = repo.addWord("weiwei", language = q)
+        val link = repo.addLink(qWord, ceWord, Link.Derived, emptyList(), emptyList(), null)
+        repo.applyRuleSequence(link, seq)
+        assertEquals(1, link.rules.size)
+    }
+
+    @Test
     fun normalize() {
         val repo = repoWithQ().with(ce)
         ce.phonemes += Phoneme(-1, listOf("c", "k"), null, setOf("voiceless", "velar", "stop", "consonant"))
@@ -45,4 +59,4 @@ class RuleSequenceTest : QBaseTest() {
     }
 }
 
-private fun Rule.step() = RuleSequenceStep(this, false)
+private fun Rule.step(optional: Boolean = false) = RuleSequenceStep(this, optional)

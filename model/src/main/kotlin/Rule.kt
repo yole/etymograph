@@ -266,15 +266,48 @@ class RuleSequence(
     source: List<SourceRef>, notes: String?
 ) : LangEntity(id, source, notes) {
 
-    fun resolveRules(graph: GraphRepository): List<Rule> {
-        val result = mutableListOf<Rule>()
+    fun resolveSteps(graph: GraphRepository): List<RuleSequenceStep> {
+        val result = mutableListOf<RuleSequenceStep>()
         for ((ruleId, optional) in steps) {
             val entity = graph.langEntityById(ruleId)
             if (entity is Rule) {
-                result.add(entity)
+                result.add(RuleSequenceStep(entity, optional))
             }
             else if (entity is RuleSequence) {
-                result.addAll(entity.resolveRules(graph))
+                result.addAll(entity.resolveSteps(graph))
+            }
+        }
+        return result
+    }
+
+    fun resolveRules(graph: GraphRepository): List<Rule> {
+        return resolveSteps(graph).map { it.rule as Rule }
+    }
+
+    fun resolveVariants(graph: GraphRepository): List<List<Rule>> {
+        val steps = resolveSteps(graph)
+        val maxOptionMask = 1 shl steps.count { it.optional }
+        if (maxOptionMask == 1) {
+            return listOf(steps.map { it.rule as Rule })
+        }
+        return (0 until maxOptionMask).map { mask ->
+            steps.filterOptionsByMask(mask)
+        }
+    }
+
+    private fun List<RuleSequenceStep>.filterOptionsByMask(mask: Int): List<Rule> {
+        val result = mutableListOf<Rule>()
+        var stepMask = 1
+        for (step in this) {
+            if (step.optional) {
+                // mask 0 should mean 'all optional rules are applied'
+                if (stepMask and mask == 0) {
+                    result.add(step.rule as Rule)
+                }
+                stepMask = stepMask shl 1
+            }
+            else {
+                result.add(step.rule as Rule)
             }
         }
         return result
