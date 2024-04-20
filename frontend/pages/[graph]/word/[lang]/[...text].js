@@ -171,6 +171,7 @@ function SingleWord(params) {
     const [showVariation, setShowVariation] = useState(false)
     const [showRuleLink, setShowRuleLink] = useState(false)
     const [addToCompound, setAddToCompound] = useState(undefined)
+    const [editCompound, setEditCompound] = useState(undefined)
     const [editMode, setEditMode] = useState(false)
     const [errorText, setErrorText] = useState("")
     useEffect(() => { document.title = "Etymograph : " + (word === undefined ? "Unknown Word" : word.text) })
@@ -184,6 +185,7 @@ function SingleWord(params) {
         setShowRelated(false)
         setShowVariation(false)
         setAddToCompound(undefined)
+        setEditCompound(undefined)
         router.replace(router.asPath)
     }
 
@@ -348,12 +350,24 @@ function SingleWord(params) {
                         </>)}
                         {m.notes && <> &ndash; {m.notes}</>}
                         <SourceRefs source={m.source} span={true}/>
-                        {addToCompound === m.compoundId && <WordForm submitted={submitted} addToCompound={m.compoundId} linkTarget={word} defaultValues={{language: word.language}} globalState={params.globalState}/>}
+                        {addToCompound === m.compoundId &&
+                            <WordForm submitted={submitted} cancelled={() => setAddToCompound(undefined)}
+                                      addToCompound={m.compoundId} linkTarget={word} defaultValues={{language: word.language}}/>
+                        }
+                        {editCompound === m.compoundId &&
+                            <EditLinkForm compoundId={m.compoundId}
+                                          defaultValues={{source: m.sourceEditableText, notes: m.notes}}
+                                          submitted={() => {
+                                              setEditCompound(undefined)
+                                              router.replace(router.asPath)
+                                          }}
+                                          cancelled={() => setEditCompound(undefined)}/>
+                        }
                         {allowEdit() && <>
                             {' '}
-                            {addToCompound === m.compoundId
-                                ? <button onClick={() => setAddToCompound(undefined)}>Cancel</button>
-                                : <button onClick={() => setAddToCompound(m.compoundId)}>Add component</button>}
+                            {addToCompound !== m.compoundId && <button onClick={() => setAddToCompound(m.compoundId)}>Add component</button>}
+                            {' '}
+                            {editCompound !== m.compoundId && <button onClick={() => setEditCompound(m.compoundId)}>Edit compound</button>}
                             {' '}
                             <button onClick={() => deleteCompoundClicked(m.compoundId)}>Delete</button>
                         </>}
