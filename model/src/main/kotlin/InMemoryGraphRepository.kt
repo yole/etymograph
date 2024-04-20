@@ -418,6 +418,9 @@ open class InMemoryGraphRepository : GraphRepository() {
         for (paradigm in paradigms) {
             paradigm?.removeRule(rule)
         }
+        for (ruleSequence in allLangEntities.filterIsInstance<RuleSequence>()) {
+            ruleSequence.ruleIds -= rule.id
+        }
         rules.remove(rule)
         deleteLangEntity(rule)
     }

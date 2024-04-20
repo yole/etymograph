@@ -33,6 +33,8 @@ open class QBaseTest {
     fun GraphRepository.addWord(text: String, gloss: String? = text, pos: String? = null, language: Language = q) =
         findOrAddWord(text, language, gloss, pos = pos)
 
+    fun GraphRepository.with(language: Language) = apply { addLanguage(language) }
+
     fun repoWithQ() = InMemoryGraphRepository().apply {
         addLanguage(q)
     }
