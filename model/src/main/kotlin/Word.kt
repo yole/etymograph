@@ -12,7 +12,7 @@ class WordSegment(
 
 class Word(
     id: Int,
-    var text: String,
+    text: String,
     val language: Language,
     var gloss: String? = null,
     var fullGloss: String? = null,
@@ -41,6 +41,12 @@ class Word(
         result = 31 * result + (gloss?.hashCode() ?: 0)
         return result
     }
+
+    var text = text
+        set(value) {
+            field = value
+            stressedPhonemeIndex = -1
+        }
 
     val normalizedText: String get() = language.normalizeWord(text)
     val normalized: Word get() = derive(normalizedText)
