@@ -151,5 +151,7 @@ private val implicitPhonemeClasses = mapOf(
     "affricate" to setOf("obstruent", "consonant"),
     "approximant" to setOf("sonorant", "consonant"),
     "trill" to setOf("sonorant", "consonant"),
-    "lateral" to setOf("sonorant", "consonant")
+    "lateral" to setOf("sonorant", "consonant"),
+    "dental" to setOf("coronal"),
+    "alveolar" to setOf("coronal")
 )
