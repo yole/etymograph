@@ -914,5 +914,258 @@
                 "refText": "287"
             }
         ]
+    },
+    {
+        "id": 2366,
+        "text": "fiskōþuz",
+        "gloss": "fishing",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "298"
+            }
+        ]
+    },
+    {
+        "id": 2380,
+        "text": "silubrą",
+        "gloss": "silver",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "321"
+            }
+        ]
+    },
+    {
+        "id": 2385,
+        "text": "akraz",
+        "gloss": "field",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "327"
+            }
+        ]
+    },
+    {
+        "id": 2388,
+        "text": "murþrą",
+        "gloss": "murder",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "327"
+            }
+        ]
+    },
+    {
+        "id": 2392,
+        "text": "uber",
+        "gloss": "over",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "333"
+            }
+        ]
+    },
+    {
+        "id": 2398,
+        "text": "lētaną",
+        "gloss": "to let go, to allow",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "11"
+            }
+        ]
+    },
+    {
+        "id": 2403,
+        "text": "rēdaną",
+        "gloss": "to consider, to advise",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "11"
+            }
+        ]
+    },
+    {
+        "id": 2406,
+        "text": "unlēdaz",
+        "gloss": "poor",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "11"
+            }
+        ]
+    },
+    {
+        "id": 2408,
+        "text": "un-",
+        "gloss": "not",
+        "pos": "PV"
+    },
+    {
+        "id": 2410,
+        "text": "lēdaz",
+        "gloss": "rich"
+    },
+    {
+        "id": 2412,
+        "text": "grēdagaz",
+        "gloss": "hungry, greedy",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "11"
+            }
+        ]
+    },
+    {
+        "id": 2415,
+        "text": "mēgaz",
+        "gloss": "kinsman",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "11"
+            }
+        ]
+    },
+    {
+        "id": 2418,
+        "text": "mēnô",
+        "gloss": "moon",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "11"
+            }
+        ]
+    },
+    {
+        "id": 2421,
+        "text": "mēlą",
+        "gloss": "(a) time",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "11"
+            }
+        ]
+    },
+    {
+        "id": 2424,
+        "text": "jērą",
+        "gloss": "year",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "11"
+            }
+        ]
+    },
+    {
+        "id": 2427,
+        "text": "swēraz",
+        "gloss": "heavy",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "11"
+            }
+        ]
+    },
+    {
+        "id": 2430,
+        "text": "fētijana",
+        "gloss": "to adorn",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "12"
+            }
+        ]
+    },
+    {
+        "id": 2433,
+        "text": "dēdiz",
+        "gloss": "deed",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "12"
+            }
+        ]
+    },
+    {
+        "id": 2436,
+        "text": "lēkinôna",
+        "gloss": "to heal",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "12"
+            }
+        ]
+    },
+    {
+        "id": 2439,
+        "text": "mēkijaz",
+        "gloss": "sword",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "12"
+            }
+        ]
+    },
+    {
+        "id": 2442,
+        "text": "mērijaz",
+        "gloss": "famous",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "12"
+            }
+        ]
+    },
+    {
+        "id": 2446,
+        "text": "blīþisī",
+        "gloss": "happiness",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "14"
+            }
+        ]
+    },
+    {
+        "id": 2448,
+        "text": "grasō",
+        "gloss": "grass.NOM.PL",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "15"
+            }
+        ]
+    },
+    {
+        "id": 2453,
+        "text": "huzdą",
+        "gloss": "treasure",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "27"
+            }
+        ]
     }
 ]

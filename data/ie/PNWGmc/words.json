@@ -187,5 +187,214 @@
                 "refText": "281"
             }
         ]
+    },
+    {
+        "id": 2370,
+        "text": "leuhmô",
+        "gloss": "light",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "305"
+            }
+        ]
+    },
+    {
+        "id": 2373,
+        "text": "taihōn-",
+        "gloss": "toe",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "314"
+            }
+        ]
+    },
+    {
+        "id": 2382,
+        "text": "eburaz",
+        "gloss": "wild boar",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "324"
+            }
+        ]
+    },
+    {
+        "id": 2399,
+        "text": "lātaną",
+        "gloss": "to let go, to allow",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "11"
+            }
+        ]
+    },
+    {
+        "id": 2404,
+        "text": "rādaną",
+        "gloss": "to consider, to advise",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "11"
+            }
+        ]
+    },
+    {
+        "id": 2407,
+        "text": "unlādaz",
+        "gloss": "poor",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "11"
+            }
+        ]
+    },
+    {
+        "id": 2413,
+        "text": "grādagaz",
+        "gloss": "hungry, greedy",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "11"
+            }
+        ]
+    },
+    {
+        "id": 2416,
+        "text": "māgaz",
+        "gloss": "kinsman",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "11"
+            }
+        ]
+    },
+    {
+        "id": 2419,
+        "text": "mānô",
+        "gloss": "moon",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "11"
+            }
+        ]
+    },
+    {
+        "id": 2422,
+        "text": "mālą",
+        "gloss": "(a) time",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "11"
+            }
+        ]
+    },
+    {
+        "id": 2425,
+        "text": "jārą",
+        "gloss": "year",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "11"
+            }
+        ]
+    },
+    {
+        "id": 2428,
+        "text": "swāraz",
+        "gloss": "heavy",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "11"
+            }
+        ]
+    },
+    {
+        "id": 2431,
+        "text": "fātijana",
+        "gloss": "to adorn",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "12"
+            }
+        ]
+    },
+    {
+        "id": 2434,
+        "text": "dādiz",
+        "gloss": "deed",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "12"
+            }
+        ]
+    },
+    {
+        "id": 2437,
+        "text": "lākinôna",
+        "gloss": "to heal",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "12"
+            }
+        ]
+    },
+    {
+        "id": 2440,
+        "text": "mākijaz",
+        "gloss": "sword",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "12"
+            }
+        ]
+    },
+    {
+        "id": 2443,
+        "text": "mārijaz",
+        "gloss": "famous",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "12"
+            }
+        ]
+    },
+    {
+        "id": 2447,
+        "text": "blīþisi",
+        "gloss": "happiness",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "14"
+            }
+        ]
+    },
+    {
+        "id": 2449,
+        "text": "grasu",
+        "gloss": "grass.NOM.PL",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "15"
+            }
+        ]
     }
 ]

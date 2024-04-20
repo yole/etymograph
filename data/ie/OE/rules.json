@@ -1653,7 +1653,7 @@
         "sourceRefs": [
             {
                 "pubId": 5,
-                "refText": "142"
+                "refText": "142 (5.1.2)"
             }
         ]
     },
@@ -2719,46 +2719,19 @@
                         }
                     ]
                 }
-            },
-            {
-                "instructions": [
-                    {
-                        "type": "ChangeSound",
-                        "args": [
-                            "ā"
-                        ]
-                    }
-                ],
-                "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "relPhoneme",
-                            "cls": "stressed",
-                            "parameter": "ǣ",
-                            "relative": false
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": 1,
-                            "cls": "consonant"
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": 2,
-                            "cls": "back vowel"
-                        }
-                    ]
-                }
             }
         ],
         "sourceRefs": [
             {
                 "pubId": 5,
-                "refText": "189"
+                "refText": "189 (6.3.1)"
+            },
+            {
+                "pubId": 6,
+                "refText": "5.35"
             }
         ],
-        "notes": "Ringe 2014:199: The stressed ǣ existed only in West Saxon dialects at the time."
+        "notes": ""
     },
     {
         "id": 2156,
@@ -3925,10 +3898,21 @@
                                     "cls": "long"
                                 },
                                 {
-                                    "type": "relPhoneme",
-                                    "relativeIndex": -1,
-                                    "tcls": "vowel",
-                                    "cls": "diphthong"
+                                    "type": "and",
+                                    "members": [
+                                        {
+                                            "type": "relPhoneme",
+                                            "relativeIndex": -1,
+                                            "tcls": "vowel",
+                                            "cls": "diphthong"
+                                        },
+                                        {
+                                            "type": "relPhoneme",
+                                            "relativeIndex": -2,
+                                            "tcls": "vowel",
+                                            "cls": "long"
+                                        }
+                                    ]
                                 }
                             ]
                         }
@@ -3939,10 +3923,9 @@
         "sourceRefs": [
             {
                 "pubId": 5,
-                "refText": "284"
+                "refText": "284 (6.8.1)"
             }
-        ],
-        "notes": ""
+        ]
     },
     {
         "id": 2354,
@@ -4141,9 +4124,509 @@
         "sourceRefs": [
             {
                 "pubId": 5,
-                "refText": "298"
+                "refText": "298 (6.8.3)"
+            }
+        ]
+    },
+    {
+        "id": 2369,
+        "name": "oe-h-voiced-consonants",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "SoundDisappears",
+                        "args": [
+                            "0"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "h",
+                            "relative": false
+                        },
+                        {
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "relPhoneme",
+                                    "relativeIndex": -1,
+                                    "cls": "voiced consonant"
+                                },
+                                {
+                                    "type": "relPhoneme",
+                                    "relativeIndex": 1,
+                                    "cls": "voiced consonant"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }
+        ],
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "305"
             }
         ],
         "notes": ""
+    },
+    {
+        "id": 2372,
+        "name": "oe-intervocalic-h",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSoundClass",
+                        "args": [
+                            "short",
+                            "long",
+                            "-2"
+                        ]
+                    },
+                    {
+                        "type": "SoundDisappears",
+                        "args": [
+                            "0"
+                        ]
+                    },
+                    {
+                        "type": "SoundDisappears",
+                        "args": [
+                            "1"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "h",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": -1,
+                            "cls": "diphthong"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": 1,
+                            "cls": "vowel"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSoundClass",
+                        "args": [
+                            "short",
+                            "long",
+                            "-1"
+                        ]
+                    },
+                    {
+                        "type": "SoundDisappears",
+                        "args": [
+                            "0"
+                        ]
+                    },
+                    {
+                        "type": "SoundDisappears",
+                        "args": [
+                            "1"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "h",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": -1,
+                            "cls": "back vowel"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": 1,
+                            "cls": "vowel"
+                        }
+                    ]
+                }
+            }
+        ],
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "314 (6.9.3)"
+            }
+        ]
+    },
+    {
+        "id": 2379,
+        "name": "oe-back-umlaut",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "io"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "i",
+                            "relative": false
+                        },
+                        {
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "relPhoneme",
+                                    "relativeIndex": 1,
+                                    "parameter": "l"
+                                },
+                                {
+                                    "type": "relPhoneme",
+                                    "relativeIndex": 1,
+                                    "parameter": "r"
+                                },
+                                {
+                                    "type": "relPhoneme",
+                                    "relativeIndex": 1,
+                                    "cls": "bilabial"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "relPhoneme",
+                                    "relativeIndex": 2,
+                                    "parameter": "u"
+                                },
+                                {
+                                    "type": "relPhoneme",
+                                    "relativeIndex": 2,
+                                    "parameter": "a"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "eo"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "e",
+                            "relative": false
+                        },
+                        {
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "relPhoneme",
+                                    "relativeIndex": 1,
+                                    "parameter": "l"
+                                },
+                                {
+                                    "type": "relPhoneme",
+                                    "relativeIndex": 1,
+                                    "parameter": "r"
+                                },
+                                {
+                                    "type": "relPhoneme",
+                                    "relativeIndex": 1,
+                                    "cls": "bilabial"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": 2,
+                            "parameter": "u"
+                        }
+                    ]
+                }
+            }
+        ],
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "319 (6.9.4)"
+            }
+        ],
+        "notes": "This is the WS version of the rule. In Anglian dialects, 'i' was umlauted to 'io' before all consonants except velars, and before all consonants in Kentish (Ringe 2014:320). In non-WS dialects, back-umlaut of *e was triggered by both and u and operated across any intervening consonant, except that in Anglian dialects it was blocked by velars (Ringe 2014:325)."
+    },
+    {
+        "id": 2384,
+        "name": "oe-epenthesis",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "SoundInserted",
+                        "args": [
+                            "e"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "cls": "word-final",
+                            "parameter": "r",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": -1,
+                            "cls": "consonant"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": -1,
+                            "tcls": "vowel",
+                            "cls": "front"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "SoundInserted",
+                        "args": [
+                            "o"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "cls": "word-final",
+                            "parameter": "r",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": -1,
+                            "cls": "consonant"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": -1,
+                            "tcls": "vowel",
+                            "cls": "back"
+                        }
+                    ]
+                }
+            }
+        ],
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "327 (6.9.5)"
+            }
+        ]
+    },
+    {
+        "id": 2391,
+        "name": "oe-unstressed-vowel-merger",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "e"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "cls": "non-stressed",
+                            "parameter": "æ",
+                            "relative": false
+                        },
+                        {
+                            "type": "syllableIndex",
+                            "matchIndex": -1
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "e"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "cls": "non-stressed",
+                            "parameter": "i",
+                            "relative": false
+                        },
+                        {
+                            "type": "syllableIndex",
+                            "matchIndex": -1
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": 1,
+                            "negated": true,
+                            "cls": "postalveolar"
+                        }
+                    ]
+                }
+            }
+        ],
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "332 (6.9.6)"
+            }
+        ]
+    },
+    {
+        "id": 2396,
+        "name": "oe-bilabial-fricative-devoicing",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "f"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "relPhoneme",
+                    "parameter": "β",
+                    "relative": false
+                }
+            }
+        ],
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "297"
+            }
+        ],
+        "notes": ""
+    },
+    {
+        "id": 2402,
+        "name": "oe-long-ae-retraction",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "ā"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "cls": "stressed",
+                            "parameter": "ǣ",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": 1,
+                            "cls": "consonant"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": 1,
+                            "negated": true,
+                            "cls": "coronal obstruent"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": 2,
+                            "cls": "back vowel"
+                        }
+                    ]
+                }
+            }
+        ],
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "199 (6.3.3)"
+            },
+            {
+                "pubId": 6,
+                "refText": "5.39"
+            }
+        ],
+        "notes": "Ringe 2014:199: The stressed ǣ existed only in West Saxon dialects at the time. The results of this sound change were mostly levelled out."
     }
 ]

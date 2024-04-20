@@ -15,28 +15,19 @@
                     }
                 ],
                 "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "relPhoneme",
-                            "parameter": "ē",
-                            "relative": false
-                        },
-                        {
-                            "type": "syllableIndex",
-                            "matchIndex": 1
-                        }
-                    ]
+                    "type": "relPhoneme",
+                    "cls": "stressed",
+                    "parameter": "ē",
+                    "relative": false
                 }
             }
         ],
         "sourceRefs": [
             {
                 "pubId": 5,
-                "refText": "10"
+                "refText": "10 (2.1.1)"
             }
-        ],
-        "notes": ""
+        ]
     },
     {
         "id": 1863,
@@ -56,23 +47,9 @@
                     }
                 ],
                 "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "relPhoneme",
-                            "cls": "long close vowel",
-                            "relative": false
-                        },
-                        {
-                            "type": "leaf",
-                            "cond": "EndOfWord"
-                        },
-                        {
-                            "type": "syllableCount",
-                            "negated": true,
-                            "expectCount": 1
-                        }
-                    ]
+                    "type": "relPhoneme",
+                    "cls": "non-stressed word-final long close vowel",
+                    "relative": false
                 }
             }
         ],

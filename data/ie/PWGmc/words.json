@@ -16,11 +16,6 @@
         "gloss": "otter"
     },
     {
-        "id": 1957,
-        "text": "otraz",
-        "gloss": "otter"
-    },
-    {
         "id": 1960,
         "text": "feuwar",
         "gloss": "four"
@@ -714,6 +709,83 @@
             {
                 "pubId": 5,
                 "refText": "293"
+            }
+        ]
+    },
+    {
+        "id": 2367,
+        "text": "fiskōþ",
+        "gloss": "fishing",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "298"
+            }
+        ]
+    },
+    {
+        "id": 2374,
+        "text": "taihā",
+        "gloss": "toe",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "314"
+            }
+        ]
+    },
+    {
+        "id": 2376,
+        "text": "slahaną",
+        "gloss": "to strike",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "315"
+            }
+        ]
+    },
+    {
+        "id": 2377,
+        "text": "slahan",
+        "gloss": "to strike",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "315"
+            }
+        ]
+    },
+    {
+        "id": 2386,
+        "text": "akr",
+        "gloss": "field",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "327"
+            }
+        ]
+    },
+    {
+        "id": 2389,
+        "text": "morþr",
+        "gloss": "murder",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "327"
+            }
+        ]
+    },
+    {
+        "id": 2393,
+        "text": "obar",
+        "gloss": "over",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "333"
             }
         ]
     }

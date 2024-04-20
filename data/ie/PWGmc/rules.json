@@ -25,6 +25,7 @@
                     "members": [
                         {
                             "type": "relPhoneme",
+                            "cls": "non-stressed",
                             "parameter": "a",
                             "relative": false
                         },
@@ -32,12 +33,6 @@
                             "type": "relPhoneme",
                             "relativeIndex": 1,
                             "parameter": "i"
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "negated": true,
-                            "cls": "stressed",
-                            "relative": false
                         }
                     ]
                 }
@@ -48,8 +43,7 @@
                 "pubId": 5,
                 "refText": "25"
             }
-        ],
-        "notes": ""
+        ]
     },
     {
         "id": 1889,
@@ -796,7 +790,7 @@
                     "members": [
                         {
                             "type": "relPhoneme",
-                            "cls": "long vowel",
+                            "cls": "non-stressed long vowel",
                             "relative": false
                         },
                         {
@@ -818,8 +812,7 @@
                 "pubId": 5,
                 "refText": "60"
             }
-        ],
-        "notes": ""
+        ]
     },
     {
         "id": 1997,

@@ -1174,7 +1174,7 @@
     },
     {
         "id": 475,
-        "text": "giefu",
+        "text": "ġiefu",
         "gloss": "gift",
         "pos": "N",
         "classes": [
@@ -2666,5 +2666,201 @@
         "id": 2364,
         "text": "bliss",
         "gloss": "happiness"
+    },
+    {
+        "id": 2368,
+        "text": "fiscoþ",
+        "gloss": "fishing",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "298"
+            }
+        ]
+    },
+    {
+        "id": 2371,
+        "text": "lēoma",
+        "gloss": "light",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "305"
+            }
+        ]
+    },
+    {
+        "id": 2375,
+        "text": "tā",
+        "gloss": "toe",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "314"
+            }
+        ]
+    },
+    {
+        "id": 2378,
+        "text": "slēan",
+        "gloss": "to strike",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "315"
+            }
+        ]
+    },
+    {
+        "id": 2381,
+        "text": "siolfor",
+        "gloss": "silver",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "321"
+            }
+        ]
+    },
+    {
+        "id": 2383,
+        "text": "eofor",
+        "gloss": "wild boar",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "324"
+            }
+        ]
+    },
+    {
+        "id": 2387,
+        "text": "æcer",
+        "gloss": "field",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "327"
+            }
+        ]
+    },
+    {
+        "id": 2390,
+        "text": "morþor",
+        "gloss": "murder",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "327"
+            }
+        ]
+    },
+    {
+        "id": 2394,
+        "text": "ofer",
+        "gloss": "over",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "333"
+            }
+        ]
+    },
+    {
+        "id": 2397,
+        "text": "wǣpn",
+        "gloss": "weapon"
+    },
+    {
+        "id": 2401,
+        "text": "lǣtan",
+        "gloss": "to let go, to allow"
+    },
+    {
+        "id": 2405,
+        "text": "rǣdan",
+        "gloss": "to consider, to advise"
+    },
+    {
+        "id": 2411,
+        "text": "unled",
+        "gloss": "poor"
+    },
+    {
+        "id": 2414,
+        "text": "grǣdiġ",
+        "gloss": "hungry, greedy"
+    },
+    {
+        "id": 2417,
+        "text": "mǣġ",
+        "gloss": "kinsman"
+    },
+    {
+        "id": 2420,
+        "text": "mōna",
+        "gloss": "moon"
+    },
+    {
+        "id": 2423,
+        "text": "mǣl",
+        "gloss": "(a) time"
+    },
+    {
+        "id": 2426,
+        "text": "ġēar",
+        "gloss": "year"
+    },
+    {
+        "id": 2429,
+        "text": "swǣr",
+        "gloss": "heavy"
+    },
+    {
+        "id": 2432,
+        "text": "fǣtan",
+        "gloss": "to load, to adorn"
+    },
+    {
+        "id": 2435,
+        "text": "dǣd",
+        "gloss": "deed"
+    },
+    {
+        "id": 2438,
+        "text": "lācnian",
+        "gloss": "to heal"
+    },
+    {
+        "id": 2444,
+        "text": "mǣre",
+        "gloss": "famous"
+    },
+    {
+        "id": 2450,
+        "text": "grasu",
+        "gloss": "grass.NOM.PL",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "15"
+            }
+        ]
+    },
+    {
+        "id": 2452,
+        "text": "otor",
+        "gloss": "otter"
+    },
+    {
+        "id": 2454,
+        "text": "hord",
+        "gloss": "treasure",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "27"
+            }
+        ]
     }
 ]

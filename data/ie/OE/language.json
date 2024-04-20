@@ -489,6 +489,19 @@
                 "vowel"
             ],
             "historical": true
+        },
+        {
+            "id": 2395,
+            "graphemes": [
+                "β"
+            ],
+            "classes": [
+                "voiced",
+                "bilabial",
+                "fricative",
+                "consonant"
+            ],
+            "historical": true
         }
     ],
     "diphthongs": [
