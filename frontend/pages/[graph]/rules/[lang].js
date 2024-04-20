@@ -35,6 +35,7 @@ export default function RuleList(params) {
                     {g.rules.map(r => <li key={r.id}>
                         {!r.name.startsWith("sequence: ") && <Link href={`/${graph}/rule/${r.id}`}>{r.name}</Link>}
                         {r.name.startsWith("sequence: ") && r.name}
+                        {r.optional && " (optional)"}
                         {r.summaryText.length > 0 ? ": " + r.summaryText : ""}
                     </li>)}
                 </ul>

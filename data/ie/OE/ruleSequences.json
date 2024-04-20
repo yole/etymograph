@@ -60,7 +60,8 @@
                 "ruleId": 2149
             },
             {
-                "ruleId": 2402
+                "ruleId": 2402,
+                "optional": true
             },
             {
                 "ruleId": 2156

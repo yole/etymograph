@@ -63,7 +63,8 @@ class RuleController {
     data class RuleShortViewModel(
         val id: Int,
         val name: String,
-        val summaryText: String
+        val summaryText: String,
+        val optional: Boolean
     )
 
     data class RuleGroupViewModel(
@@ -108,9 +109,13 @@ class RuleController {
             val groupName = "Phonetics: ${sequence.name}"
             val group = ruleGroups.getOrPut(groupName) { mutableListOf() }
             ruleSeqMap[groupName] = sequence
-            val rules = sequence.steps.map { repo.langEntityById(it.ruleId)!! }
-            allSequenceRules.addAll(rules.filterIsInstance<Rule>())
-            group.addAll(rules.map { it.toShortViewModel() })
+            for (step in sequence.steps) {
+                val rule = repo.langEntityById(step.ruleId)!!
+                if (rule is Rule) {
+                    allSequenceRules.add(rule)
+                }
+                group.add(rule.toShortViewModel(step.optional))
+            }
         }
 
         for (rule in repo.allRules().filter { it.toLanguage == language }) {
@@ -134,10 +139,10 @@ class RuleController {
         return repo.resolveRule(id).toViewModel(repo)
     }
 
-    private fun LangEntity.toShortViewModel(): RuleShortViewModel {
+    private fun LangEntity.toShortViewModel(optional: Boolean = false): RuleShortViewModel {
         return when (this) {
-            is Rule -> RuleShortViewModel(id, name, toSummaryText())
-            is RuleSequence -> RuleShortViewModel(id, "sequence: $name", "")
+            is Rule -> RuleShortViewModel(id, name, toSummaryText(), optional)
+            is RuleSequence -> RuleShortViewModel(id, "sequence: $name", "", optional)
             else -> throw IllegalStateException("Unknown entity type")
         }
     }
@@ -331,7 +336,9 @@ class RuleController {
         val fromLanguage = repo.resolveLanguage(params.fromLang)
         val toLanguage = repo.resolveLanguage(params.toLang)
         val rules = params.ruleNames.split('\n').filter { it.isNotBlank() }.map {
-            val name = it.trim()
+            var name = it.trim()
+            val optional = name.endsWith("?")
+            name = name.removeSuffix("?")
             val rule = if (name.startsWith("sequence:")) {
                 val sequenceName = name.removePrefix("sequence:").trim()
                 repo.ruleSequenceByName(sequenceName)
@@ -340,7 +347,7 @@ class RuleController {
             else {
                 repo.resolveRule(name)
             }
-            RuleSequenceStep(rule, false)
+            RuleSequenceStep(rule, optional)
         }
         return Triple(fromLanguage, toLanguage, rules)
     }
