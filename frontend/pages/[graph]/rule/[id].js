@@ -205,7 +205,7 @@ export default function Rule(params) {
                 </li>)}
             </ul>
         </>}
-        {allowEdit() && <button onClick={() => setShowExampleForm(!showExampleForm)}>Add example</button>}
+        {allowEdit() && !showExampleForm && <button onClick={() => setShowExampleForm(true)}>Add example</button>}
         {showExampleForm && <>
             <table><tbody>
             <tr>
@@ -217,7 +217,8 @@ export default function Rule(params) {
                 <td><input type="text" value={exampleSource} onChange={(e) => setExampleSource(e.target.value)}/></td>
             </tr>
             </tbody></table>
-            <button onClick={() => exampleSubmitted()}>Submit</button>
+            <button onClick={() => exampleSubmitted()}>Submit</button>{' '}
+            <button onClick={() => setShowExampleForm(false)}>Cancel</button>
         </>}
         {exampleUnmatched.length > 0 && <>
             <p>Unmatched example: {exampleUnmatched.map((w, i) => <>
