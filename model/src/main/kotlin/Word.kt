@@ -43,6 +43,10 @@ class Word(
         return result
     }
 
+    override fun toString(): String {
+        return "${language.shortName} $text '$gloss'"
+    }
+
     var text = text
         set(value) {
             field = value
