@@ -3273,5 +3273,87 @@
                 "refText": "49"
             }
         ]
+    },
+    {
+        "id": 2545,
+        "text": "hweorfan",
+        "gloss": "to turn",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "49"
+            }
+        ]
+    },
+    {
+        "id": 2548,
+        "text": "hwǣte",
+        "gloss": "wheat",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "50"
+            }
+        ]
+    },
+    {
+        "id": 2551,
+        "text": "hwearfian",
+        "gloss": "to wander around",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "50"
+            }
+        ]
+    },
+    {
+        "id": 2554,
+        "text": "hwōsta",
+        "gloss": "cough",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "50"
+            }
+        ]
+    },
+    {
+        "id": 2557,
+        "text": "hwæl",
+        "gloss": "whale",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "50"
+            }
+        ]
+    },
+    {
+        "id": 2560,
+        "text": "cweorn",
+        "gloss": "mill",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "50"
+            }
+        ]
+    },
+    {
+        "id": 2563,
+        "text": "cwānian",
+        "gloss": "to lament",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "50"
+            }
+        ]
+    },
+    {
+        "id": 2564,
+        "text": "sittan",
+        "gloss": "sit"
     }
 ]

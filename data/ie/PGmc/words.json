@@ -1475,5 +1475,82 @@
                 "refText": "49"
             }
         ]
+    },
+    {
+        "id": 2543,
+        "text": "hʷerbaną",
+        "gloss": "to turn",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "49"
+            }
+        ]
+    },
+    {
+        "id": 2546,
+        "text": "hʷaitijaz",
+        "gloss": "wheat",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "50"
+            }
+        ]
+    },
+    {
+        "id": 2549,
+        "text": "hʷarbôną",
+        "gloss": "to wander around",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "50"
+            }
+        ]
+    },
+    {
+        "id": 2552,
+        "text": "hʷōstô",
+        "gloss": "cough",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "50"
+            }
+        ]
+    },
+    {
+        "id": 2555,
+        "text": "hʷalaz",
+        "gloss": "whale",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "50"
+            }
+        ]
+    },
+    {
+        "id": 2558,
+        "text": "kʷernuz",
+        "gloss": "mill",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "50"
+            }
+        ]
+    },
+    {
+        "id": 2561,
+        "text": "kʷainôną",
+        "gloss": "to lament",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "50"
+            }
+        ]
     }
 ]

@@ -399,6 +399,18 @@
                 "close",
                 "vowel"
             ]
+        },
+        {
+            "id": 2565,
+            "graphemes": [
+                "β"
+            ],
+            "classes": [
+                "voiced",
+                "bilabial",
+                "fricative",
+                "consonant"
+            ]
         }
     ],
     "diphthongs": [
