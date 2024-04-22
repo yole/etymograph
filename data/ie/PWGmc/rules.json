@@ -65,12 +65,8 @@
                     "members": [
                         {
                             "type": "relPhoneme",
-                            "parameter": "u",
-                            "relative": false
-                        },
-                        {
-                            "type": "relPhoneme",
                             "cls": "stressed",
+                            "parameter": "u",
                             "relative": false
                         },
                         {
@@ -83,14 +79,7 @@
                             "relativeIndex": 1,
                             "negated": true,
                             "tcls": "vowel",
-                            "parameter": "i"
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": 1,
-                            "negated": true,
-                            "tcls": "vowel",
-                            "parameter": "u"
+                            "cls": "close"
                         },
                         {
                             "type": "relPhoneme",
@@ -103,7 +92,7 @@
                             "type": "relPhoneme",
                             "relativeIndex": 1,
                             "negated": true,
-                            "tcls": "consonant",
+                            "tcls": "vocalic",
                             "parameter": "j"
                         }
                     ]
@@ -178,7 +167,7 @@
                     {
                         "type": "SoundDisappears",
                         "args": [
-                            ""
+                            "0"
                         ]
                     }
                 ],
@@ -187,6 +176,7 @@
                     "members": [
                         {
                             "type": "relPhoneme",
+                            "cls": "word-final",
                             "parameter": "z",
                             "relative": false
                         },
@@ -196,10 +186,6 @@
                             "negated": true,
                             "tcls": "vowel",
                             "cls": "stressed"
-                        },
-                        {
-                            "type": "leaf",
-                            "cond": "EndOfWord"
                         }
                     ]
                 }
@@ -223,39 +209,31 @@
                     {
                         "type": "SoundDisappears",
                         "args": [
-                            ""
+                            "0"
                         ]
                     }
                 ],
                 "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "or",
-                            "members": [
-                                {
-                                    "type": "relPhoneme",
-                                    "parameter": "a",
-                                    "relative": false
-                                },
-                                {
-                                    "type": "relPhoneme",
-                                    "parameter": "ą",
-                                    "relative": false
-                                }
-                            ]
-                        },
-                        {
-                            "type": "leaf",
-                            "cond": "EndOfWord"
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "negated": true,
-                            "cls": "stressed",
-                            "relative": false
-                        }
-                    ]
+                    "type": "relPhoneme",
+                    "cls": "word-final non-stressed",
+                    "parameter": "a",
+                    "relative": false
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "SoundDisappears",
+                        "args": [
+                            "0"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "relPhoneme",
+                    "cls": "word-final non-stressed",
+                    "parameter": "ą",
+                    "relative": false
                 }
             }
         ],
@@ -286,12 +264,9 @@
                     "members": [
                         {
                             "type": "relPhoneme",
+                            "cls": "word-final",
                             "parameter": "j",
                             "relative": false
-                        },
-                        {
-                            "type": "leaf",
-                            "cond": "EndOfWord"
                         },
                         {
                             "type": "relPhoneme",
@@ -321,12 +296,9 @@
                     "members": [
                         {
                             "type": "relPhoneme",
+                            "cls": "word-final",
                             "parameter": "w",
                             "relative": false
-                        },
-                        {
-                            "type": "leaf",
-                            "cond": "EndOfWord"
                         },
                         {
                             "type": "relPhoneme",
@@ -368,12 +340,8 @@
                         {
                             "type": "relPhoneme",
                             "relativeIndex": 1,
+                            "cls": "word-final",
                             "parameter": "j"
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": 1,
-                            "cls": "word-final"
                         }
                     ]
                 }

@@ -80,18 +80,10 @@
                     }
                 ],
                 "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "relPhoneme",
-                            "parameter": "ō",
-                            "relative": false
-                        },
-                        {
-                            "type": "leaf",
-                            "cond": "EndOfWord"
-                        }
-                    ]
+                    "type": "relPhoneme",
+                    "cls": "word-final",
+                    "parameter": "ō",
+                    "relative": false
                 }
             }
         ],
@@ -135,7 +127,7 @@
                     {
                         "type": "SoundDisappears",
                         "args": [
-                            ""
+                            "0"
                         ]
                     }
                 ],
@@ -161,13 +153,8 @@
                         {
                             "type": "relPhoneme",
                             "relativeIndex": 1,
+                            "cls": "non-stressed",
                             "parameter": "u"
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": 1,
-                            "negated": true,
-                            "cls": "stressed"
                         }
                     ]
                 }
@@ -200,6 +187,7 @@
                     "members": [
                         {
                             "type": "relPhoneme",
+                            "cls": "non-stressed",
                             "parameter": "a",
                             "relative": false
                         },
@@ -207,12 +195,6 @@
                             "type": "relPhoneme",
                             "relativeIndex": 1,
                             "parameter": "m"
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "negated": true,
-                            "cls": "stressed",
-                            "relative": false
                         }
                     ]
                 }
@@ -223,8 +205,7 @@
                 "pubId": 5,
                 "refText": "17"
             }
-        ],
-        "notes": ""
+        ]
     },
     {
         "id": 1883,
@@ -246,6 +227,7 @@
                     "members": [
                         {
                             "type": "relPhoneme",
+                            "cls": "non-stressed",
                             "parameter": "e",
                             "relative": false
                         },
@@ -253,12 +235,6 @@
                             "type": "relPhoneme",
                             "relativeIndex": 1,
                             "parameter": "r"
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "negated": true,
-                            "cls": "stressed",
-                            "relative": false
                         }
                     ]
                 }
@@ -269,7 +245,6 @@
                 "pubId": 5,
                 "refText": "18"
             }
-        ],
-        "notes": ""
+        ]
     }
 ]

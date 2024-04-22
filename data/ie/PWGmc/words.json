@@ -788,5 +788,82 @@
                 "refText": "333"
             }
         ]
+    },
+    {
+        "id": 2521,
+        "text": "saru",
+        "gloss": "device, tool, weapon",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "46"
+            }
+        ]
+    },
+    {
+        "id": 2525,
+        "text": "hasu",
+        "gloss": "gray",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "46"
+            }
+        ]
+    },
+    {
+        "id": 2529,
+        "text": "hirdī",
+        "gloss": "herdsman",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "46"
+            }
+        ]
+    },
+    {
+        "id": 2532,
+        "text": "arbī",
+        "gloss": "inheritance",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "47"
+            }
+        ]
+    },
+    {
+        "id": 2535,
+        "text": "irzī",
+        "gloss": "mistaken, wrong",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "47"
+            }
+        ]
+    },
+    {
+        "id": 2538,
+        "text": "wītī",
+        "gloss": "punishment",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "47"
+            }
+        ]
+    },
+    {
+        "id": 2541,
+        "text": "hwīt",
+        "gloss": "white",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "49"
+            }
+        ]
     }
 ]

@@ -229,6 +229,7 @@
                 "voiced",
                 "palatal",
                 "approximant",
+                "vocalic",
                 "consonant"
             ]
         },
@@ -413,6 +414,18 @@
                 "long",
                 "back",
                 "open",
+                "vowel"
+            ]
+        },
+        {
+            "id": 2459,
+            "graphemes": [
+                "o"
+            ],
+            "classes": [
+                "short",
+                "mid",
+                "back",
                 "vowel"
             ]
         }

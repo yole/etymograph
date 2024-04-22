@@ -867,7 +867,7 @@
     },
     {
         "id": 411,
-        "text": "þyncan",
+        "text": "þynċan",
         "gloss": "think",
         "pos": "V"
     },
@@ -2860,6 +2860,417 @@
             {
                 "pubId": 5,
                 "refText": "27"
+            }
+        ]
+    },
+    {
+        "id": 2456,
+        "text": "beadu",
+        "gloss": "battle"
+    },
+    {
+        "id": 2458,
+        "text": "ġeoc",
+        "gloss": "yoke",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "27"
+            }
+        ]
+    },
+    {
+        "id": 2461,
+        "text": "hol",
+        "gloss": "hollow",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "27"
+            }
+        ]
+    },
+    {
+        "id": 2464,
+        "text": "sorg",
+        "gloss": "worry, sorrow",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "27"
+            }
+        ]
+    },
+    {
+        "id": 2466,
+        "text": "open",
+        "gloss": "open",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "27"
+            }
+        ]
+    },
+    {
+        "id": 2468,
+        "text": "broþ",
+        "gloss": "broth",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "27"
+            }
+        ]
+    },
+    {
+        "id": 2470,
+        "text": "hors",
+        "gloss": "horse",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "27"
+            }
+        ]
+    },
+    {
+        "id": 2472,
+        "text": "boga",
+        "gloss": "bow",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "28"
+            }
+        ]
+    },
+    {
+        "id": 2474,
+        "text": "holm",
+        "gloss": "island",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "28"
+            }
+        ]
+    },
+    {
+        "id": 2476,
+        "text": "folc",
+        "gloss": "troop, tribe",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "28"
+            }
+        ]
+    },
+    {
+        "id": 2478,
+        "text": "hund",
+        "gloss": "dog",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "29"
+            }
+        ]
+    },
+    {
+        "id": 2480,
+        "text": "pund",
+        "gloss": "pound",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "29"
+            }
+        ]
+    },
+    {
+        "id": 2482,
+        "text": "mūþ",
+        "gloss": "mouth",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "29"
+            }
+        ]
+    },
+    {
+        "id": 2484,
+        "text": "hūsl",
+        "gloss": "eucharist",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "29"
+            }
+        ]
+    },
+    {
+        "id": 2486,
+        "text": "iung",
+        "gloss": "young",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "29"
+            }
+        ]
+    },
+    {
+        "id": 2488,
+        "text": "dumb",
+        "gloss": "mute, dumb",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "29"
+            }
+        ]
+    },
+    {
+        "id": 2490,
+        "text": "cumbol",
+        "gloss": "banner",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "29"
+            }
+        ]
+    },
+    {
+        "id": 2494,
+        "text": "byre",
+        "gloss": "son, young man",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "30"
+            }
+        ]
+    },
+    {
+        "id": 2496,
+        "text": "hype",
+        "gloss": "hip",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "30"
+            }
+        ]
+    },
+    {
+        "id": 2498,
+        "text": "hyċġan",
+        "gloss": "to think",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "30"
+            }
+        ]
+    },
+    {
+        "id": 2500,
+        "text": "wyrċan",
+        "gloss": "to work, to make",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "30"
+            }
+        ]
+    },
+    {
+        "id": 2502,
+        "text": "fyllan",
+        "gloss": "to fill",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "30"
+            }
+        ]
+    },
+    {
+        "id": 2504,
+        "text": "cynn",
+        "gloss": "lineage",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "30"
+            }
+        ]
+    },
+    {
+        "id": 2506,
+        "text": "gylden",
+        "gloss": "golden",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "30"
+            }
+        ]
+    },
+    {
+        "id": 2507,
+        "text": "sunu",
+        "gloss": "son"
+    },
+    {
+        "id": 2509,
+        "text": "lust",
+        "gloss": "desire",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "30"
+            }
+        ]
+    },
+    {
+        "id": 2511,
+        "text": "ymbe",
+        "gloss": "around",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "30"
+            }
+        ]
+    },
+    {
+        "id": 2514,
+        "text": "þynne",
+        "gloss": "thin",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "31"
+            }
+        ]
+    },
+    {
+        "id": 2515,
+        "text": "guma",
+        "gloss": "human",
+        "pos": "N"
+    },
+    {
+        "id": 2517,
+        "text": "sumor",
+        "gloss": "summer",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "31"
+            }
+        ]
+    },
+    {
+        "id": 2519,
+        "text": "huniġ",
+        "gloss": "honey",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "31"
+            }
+        ]
+    },
+    {
+        "id": 2522,
+        "text": "searu",
+        "gloss": "device, tool, weapon",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "46"
+            }
+        ]
+    },
+    {
+        "id": 2523,
+        "text": "ġeolu",
+        "gloss": "yellow"
+    },
+    {
+        "id": 2526,
+        "text": "hasu",
+        "gloss": "gray",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "46"
+            }
+        ]
+    },
+    {
+        "id": 2527,
+        "text": "ende",
+        "gloss": "end"
+    },
+    {
+        "id": 2530,
+        "text": "hierde",
+        "gloss": "herdsman",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "46"
+            }
+        ]
+    },
+    {
+        "id": 2533,
+        "text": "ierfe",
+        "gloss": "inheritance",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "47"
+            }
+        ]
+    },
+    {
+        "id": 2536,
+        "text": "ierre",
+        "gloss": "mistaken, wrong",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "47"
+            }
+        ]
+    },
+    {
+        "id": 2539,
+        "text": "wīte",
+        "gloss": "punishment",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "47"
+            }
+        ]
+    },
+    {
+        "id": 2542,
+        "text": "hwīt",
+        "gloss": "white",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "49"
             }
         ]
     }

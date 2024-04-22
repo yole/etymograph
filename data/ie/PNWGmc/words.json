@@ -396,5 +396,115 @@
                 "refText": "15"
             }
         ]
+    },
+    {
+        "id": 2465,
+        "text": "upanaz",
+        "gloss": "open",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "27"
+            }
+        ]
+    },
+    {
+        "id": 2467,
+        "text": "bruþą",
+        "gloss": "broth",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "27"
+            }
+        ]
+    },
+    {
+        "id": 2469,
+        "text": "hrussą",
+        "gloss": "horse",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "27"
+            }
+        ]
+    },
+    {
+        "id": 2471,
+        "text": "bugô",
+        "gloss": "bow",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "28"
+            }
+        ]
+    },
+    {
+        "id": 2473,
+        "text": "hulmaz",
+        "gloss": "island",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "28"
+            }
+        ]
+    },
+    {
+        "id": 2475,
+        "text": "fulką",
+        "gloss": "troop, tribe",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "28"
+            }
+        ]
+    },
+    {
+        "id": 2489,
+        "text": "kumlą",
+        "gloss": "sign",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "29"
+            }
+        ]
+    },
+    {
+        "id": 2518,
+        "text": "hunagą",
+        "gloss": "honey",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "31"
+            }
+        ]
+    },
+    {
+        "id": 2524,
+        "text": "haswaz",
+        "gloss": "gray",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "46"
+            }
+        ]
+    },
+    {
+        "id": 2537,
+        "text": "wītiją",
+        "gloss": "punishment",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "47"
+            }
+        ]
     }
 ]

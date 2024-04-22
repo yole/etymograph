@@ -225,6 +225,7 @@
             "classes": [
                 "voiced",
                 "palatal",
+                "vocalic",
                 "approximant",
                 "consonant"
             ]

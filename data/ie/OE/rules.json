@@ -1564,7 +1564,7 @@
                         {
                             "type": "relPhoneme",
                             "relativeIndex": -1,
-                            "cls": "vowel"
+                            "cls": "stressed open vowel"
                         }
                     ]
                 }
@@ -1573,7 +1573,7 @@
         "sourceRefs": [
             {
                 "pubId": 5,
-                "refText": "139"
+                "refText": "139 (5.1.2)"
             }
         ]
     },
@@ -4157,7 +4157,22 @@
                                 {
                                     "type": "relPhoneme",
                                     "relativeIndex": -1,
+                                    "cls": "vowel"
+                                },
+                                {
+                                    "type": "relPhoneme",
+                                    "relativeIndex": -1,
                                     "cls": "voiced consonant"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "relPhoneme",
+                                    "relativeIndex": 1,
+                                    "cls": "vowel"
                                 },
                                 {
                                     "type": "relPhoneme",
@@ -4175,8 +4190,7 @@
                 "pubId": 5,
                 "refText": "305"
             }
-        ],
-        "notes": ""
+        ]
     },
     {
         "id": 2372,
@@ -4527,10 +4541,20 @@
                             "matchIndex": -1
                         },
                         {
-                            "type": "relPhoneme",
-                            "relativeIndex": 1,
-                            "negated": true,
-                            "cls": "postalveolar"
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "relPhoneme",
+                                    "cls": "word-final",
+                                    "relative": false
+                                },
+                                {
+                                    "type": "relPhoneme",
+                                    "relativeIndex": 1,
+                                    "negated": true,
+                                    "cls": "postalveolar"
+                                }
+                            ]
                         }
                     ]
                 }
@@ -4628,5 +4652,45 @@
             }
         ],
         "notes": "Ringe 2014:199: The stressed ǣ existed only in West Saxon dialects at the time. The results of this sound change were mostly levelled out."
+    },
+    {
+        "id": 2455,
+        "name": "post-pwgmc-z-before-coronal",
+        "fromLang": "PWGmc",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "r"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "z",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": 1,
+                            "cls": "coronal"
+                        }
+                    ]
+                }
+            }
+        ],
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "84"
+            }
+        ],
+        "notes": ""
     }
 ]

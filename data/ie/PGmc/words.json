@@ -1167,5 +1167,313 @@
                 "refText": "27"
             }
         ]
+    },
+    {
+        "id": 2457,
+        "text": "yuką",
+        "gloss": "yoke",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "27"
+            }
+        ]
+    },
+    {
+        "id": 2460,
+        "text": "hulaz",
+        "gloss": "hollow",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "27"
+            }
+        ]
+    },
+    {
+        "id": 2462,
+        "text": "wurdą",
+        "gloss": "word",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "27"
+            }
+        ]
+    },
+    {
+        "id": 2463,
+        "text": "surgō",
+        "gloss": "worry, sorrow",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "27"
+            }
+        ]
+    },
+    {
+        "id": 2477,
+        "text": "hundaz",
+        "gloss": "dog",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "29"
+            }
+        ]
+    },
+    {
+        "id": 2479,
+        "text": "pundą",
+        "gloss": "pound",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "29"
+            }
+        ]
+    },
+    {
+        "id": 2481,
+        "text": "munþaz",
+        "gloss": "mouth",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "29"
+            }
+        ]
+    },
+    {
+        "id": 2483,
+        "text": "hunslą",
+        "gloss": "sacrifice",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "29"
+            }
+        ]
+    },
+    {
+        "id": 2485,
+        "text": "jungaz",
+        "gloss": "young",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "29"
+            }
+        ]
+    },
+    {
+        "id": 2487,
+        "text": "dumbaz",
+        "gloss": "mute, dumb",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "29"
+            }
+        ]
+    },
+    {
+        "id": 2491,
+        "text": "ubilaz",
+        "gloss": "evil, bad",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "30"
+            }
+        ]
+    },
+    {
+        "id": 2493,
+        "text": "buriz",
+        "gloss": "born",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "30"
+            }
+        ]
+    },
+    {
+        "id": 2495,
+        "text": "hupiz",
+        "gloss": "hip",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "30"
+            }
+        ]
+    },
+    {
+        "id": 2497,
+        "text": "hugjaną",
+        "gloss": "to think",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "30"
+            }
+        ]
+    },
+    {
+        "id": 2499,
+        "text": "wurkijaną",
+        "gloss": "to work, to make",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "30"
+            }
+        ]
+    },
+    {
+        "id": 2501,
+        "text": "fullijaną",
+        "gloss": "to fill",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "30"
+            }
+        ]
+    },
+    {
+        "id": 2503,
+        "text": "kunją",
+        "gloss": "lineage",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "30"
+            }
+        ]
+    },
+    {
+        "id": 2505,
+        "text": "gulþīnaz",
+        "gloss": "golden",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "30"
+            }
+        ]
+    },
+    {
+        "id": 2508,
+        "text": "lustuz",
+        "gloss": "desire",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "30"
+            }
+        ]
+    },
+    {
+        "id": 2510,
+        "text": "umbi",
+        "gloss": "around",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "30"
+            }
+        ]
+    },
+    {
+        "id": 2512,
+        "text": "þunkijaną",
+        "gloss": "to seem",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "30"
+            }
+        ]
+    },
+    {
+        "id": 2513,
+        "text": "þunnuz",
+        "gloss": "thin",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "31"
+            }
+        ]
+    },
+    {
+        "id": 2516,
+        "text": "sumaraz",
+        "gloss": "summer",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "31"
+            }
+        ]
+    },
+    {
+        "id": 2520,
+        "text": "sarwą",
+        "gloss": "device, tool, weapon",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "46"
+            }
+        ]
+    },
+    {
+        "id": 2528,
+        "text": "hirdijaz",
+        "gloss": "herdsman",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "46"
+            }
+        ]
+    },
+    {
+        "id": 2531,
+        "text": "arbiją",
+        "gloss": "inheritance",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "47"
+            }
+        ]
+    },
+    {
+        "id": 2534,
+        "text": "irzijaz",
+        "gloss": "mistaken, wrong",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "47"
+            }
+        ]
+    },
+    {
+        "id": 2540,
+        "text": "hʷītaz",
+        "gloss": "white",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "49"
+            }
+        ]
     }
 ]
