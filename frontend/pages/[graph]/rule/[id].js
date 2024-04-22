@@ -173,7 +173,6 @@ export default function Rule(params) {
             </>)}
         </>}
         {linkMode && <RuleLinkForm fromEntityId={rule.id} submitted={linkSubmitted} cancelled={() => setLinkMode(false)}/>}
-        {errorText !== "" && <div className="errorText">{errorText}</div>}
         {rule.examples.length > 0 && <>
             <h3>Examples</h3>
             <ul>
@@ -220,6 +219,7 @@ export default function Rule(params) {
             <button onClick={() => exampleSubmitted()}>Submit</button>{' '}
             <button onClick={() => setShowExampleForm(false)}>Cancel</button>
         </>}
+        {errorText !== "" && <div className="errorText">{errorText}</div>}
         {exampleUnmatched.length > 0 && <>
             <p>Unmatched example: {exampleUnmatched.map((w, i) => <>
                 {i > 0 && ' > '}
