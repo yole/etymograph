@@ -70,7 +70,7 @@ export default function LanguageIndex(props) {
         <h3>Phonetics</h3>
         {lang.phonemes.map(pt => <>
             <h4>{pt.title}</h4>
-            {(pt.rows.length > 1 || pt.columnTitles.length > 0) && <table className="phonemeTable">
+            {(pt.rows.length > 1 || pt.columnTitles.length > 0) && <table className="tableWithBorders phonemeTable">
                 <thead><tr>
                     <th/>
                     {pt.columnTitles.map(ct => <th>{ct}</th>)}

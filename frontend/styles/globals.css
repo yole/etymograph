@@ -67,19 +67,22 @@ code {
   text-decoration: underline dotted;
 }
 
-.phonemeTable {
+.tableWithBorders {
   border-collapse: collapse;
 }
 
-.phonemeTable tr {
+.tableWithBorders tr {
   padding: 0;
   margin: 0;
 }
 
-.phonemeTable td, .phonemeTable th {
-  text-align: center;
+.tableWithBorders td, .tableWithBorders th {
   border: 1px solid black;
   padding: 5px;
+}
+
+.phonemeTable {
+  text-align: center;
 }
 
 .footer {

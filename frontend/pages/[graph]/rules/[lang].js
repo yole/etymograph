@@ -31,14 +31,18 @@ export default function RuleList(params) {
         {ruleList.ruleGroups.map(g => <>
             <h2 key={g.groupName}>{g.groupName}</h2>
             {(g.sequenceId === null || sequenceEditId !== g.sequenceId) && <>
-                <ul>
-                    {g.rules.map(r => <li key={r.id}>
-                        {!r.name.startsWith("sequence: ") && <Link href={`/${graph}/rule/${r.id}`}>{r.name}</Link>}
-                        {r.name.startsWith("sequence: ") && r.name}
-                        {r.optional && " (optional)"}
-                        {r.summaryText.length > 0 ? ": " + r.summaryText : ""}
-                    </li>)}
-                </ul>
+                <table className="tableWithBorders"><tbody>
+                    {g.rules.map(r => <tr key={r.id}>
+                        <td>
+                            {!r.name.startsWith("sequence: ") && <Link href={`/${graph}/rule/${r.id}`}>{r.name}</Link>}
+                            {r.name.startsWith("sequence: ") && r.name}
+                            {r.optional && " (optional)"}
+                        </td>
+                        <td>
+                            {r.summaryText.length > 0 ? r.summaryText : ""}
+                        </td>
+                    </tr>)}
+                </tbody></table>
                 {allowEdit() && g.sequenceId !== null &&
                     <button onClick={() => setSequenceEditId(g.sequenceId)}>Edit sequence</button>
                 }
