@@ -175,35 +175,49 @@ export default function Rule(params) {
         {linkMode && <RuleLinkForm fromEntityId={rule.id} submitted={linkSubmitted} cancelled={() => setLinkMode(false)}/>}
         {rule.examples.length > 0 && <>
             <h3>Examples</h3>
-            <ul>
-                {rule.examples.map(ex => <li key={ex.toWord.id}>
-                    <WordLink word={ex.toWord} baseLanguage={rule.toLang}/>
-                    {ex.toWord.gloss && ` "${ex.toWord.gloss}"`}
-                    &nbsp;&rarr;&nbsp;
-                    <WordLink word={ex.fromWord} baseLanguage={rule.toLang}/>
+            <table className="tableWithBorders">
+                <thead><tr>
+                    <th>From</th>
+                    <th>To</th>
+                    <th>Gloss</th>
+                    <th>Steps</th>
+                    <th>Expected</th>
+                </tr></thead>
+                <tbody>
+                {rule.examples.map(ex => <tr key={ex.toWord.id}>
+                    <td>
+                        <WordLink word={ex.toWord} baseLanguage={rule.toLang}/>
+                    </td>
+                    <td>
+                        <WordLink word={ex.fromWord} baseLanguage={rule.toLang}/>
+                    </td>
+                    <td>
+                        {ex.toWord.gloss}
+                    </td>
+                    <td>
                     {ex.allRules.length > 1 && ex.ruleResults.length === 0 && <>
-                        {' '}(
                         {ex.allRules.map((rl, i) => <>
                             {i > 0 && ", "}
                             {rl.toRuleId !== rule.id && <Link href={`/${graph}/rule/${rl.toRuleId}`}>{rl.toRuleName}</Link>}
                             {rl.toRuleId === rule.id && rl.toRuleName}
                         </>)}
-                        )
                     </>}
                     {ex.allRules.length > 1 && ex.ruleResults.length > 0 && <>
-                        {' '}(
                         {ex.toWord.text}
                         {ex.allRules.map((rl, i) => <>
                             {' '}<Link href={`/${graph}/rule/${rl.toRuleId}`} title={rl.toRuleName}>&gt;</Link>{' '}
                             {rl.toRuleId === rule.id && <b>{ex.ruleResults[i]}</b>}
                             {rl.toRuleId !== rule.id && ex.ruleResults[i]}
                         </>)}
-                        )
                     </>}
-                    {ex.expectedWord !== null && ex.expectedWord !== ex.fromWord && " [expected: " + ex.expectedWord + "]"}
-                </li>)}
-            </ul>
+                    </td>
+                    <td>
+                    {ex.expectedWord !== null && ex.expectedWord !== ex.fromWord && ex.expectedWord}
+                    </td>
+                </tr>)}
+            </tbody></table>
         </>}
+        <p/>
         {allowEdit() && !showExampleForm && <button onClick={() => setShowExampleForm(true)}>Add example</button>}
         {showExampleForm && <>
             <table><tbody>
