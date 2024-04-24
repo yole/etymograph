@@ -31,4 +31,15 @@ class OrthographyTest : QBaseTest() {
         val iayn = ce.word("jajn").apply { isPhonemic = true }
         assertEquals("iayn", iayn.asOrthographic().text)
     }
+
+    @Test fun pronunciationRule() {
+        ce.phonemes = listOf(
+            phoneme(listOf("y"), "j", "semivowel"),
+            phoneme("a", "vowel")
+        )
+        val rule = parseRule(ce, ce, "sound is word-initial 'i' and next sound is vowel:\n- new sound is 'j'")
+        ce.pronunciationRule = RuleRef.to(rule)
+        val iayn = ce.word("iayn")
+        assertEquals("jajn", iayn.asPhonemic().text)
+    }
 }

@@ -135,6 +135,7 @@ class Language(val name: String, val shortName: String) {
     var syllableStructures: List<String> = emptyList()
     var stressRule: RuleRef? = null
     var phonotacticsRule: RuleRef? = null
+    var pronunciationRule: RuleRef? = null
     var orthographyRule: RuleRef? = null
     var grammaticalCategories = mutableListOf<WordCategory>()
     var wordClasses = mutableListOf<WordCategory>()

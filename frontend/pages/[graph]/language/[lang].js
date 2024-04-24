@@ -99,6 +99,7 @@ export default function LanguageIndex(props) {
                 {lang.syllableStructures.length > 0 && <p>Syllable structures: {lang.syllableStructures.join(", ")}</p>}
                 {lang.stressRuleName != null && <p>Stress rule: <Link href={`/${graph}/rule/${lang.stressRuleId}`}>{lang.stressRuleName}</Link></p>}
                 {lang.phonotacticsRuleName != null && <p>Phonotactics rule: <Link href={`/${graph}/rule/${lang.phonotacticsRuleId}`}>{lang.phonotacticsRuleName}</Link></p>}
+                {lang.pronunciationRuleName != null && <p>Pronunciation rule: <Link href={`/${graph}/rule/${lang.pronunciationRuleId}`}>{lang.pronunciationRuleName}</Link></p>}
                 {lang.orthographyRuleName != null && <p>Orthography rule: <Link href={`/${graph}/rule/${lang.orthographyRuleId}`}>{lang.orthographyRuleName}</Link></p>}
 
                 <h3>Grammar</h3>
@@ -121,9 +122,10 @@ export default function LanguageIndex(props) {
                     defaultValues={{
                         diphthongs: lang.diphthongs.join(", "),
                         syllableStructures: lang.syllableStructures.join(", "),
-                        stressRule: lang.stressRuleName,
-                        phonotacticsRule: lang.phonotacticsRuleName,
-                        orthographyRule: lang.orthographyRuleName,
+                        stressRuleName: lang.stressRuleName,
+                        phonotacticsRuleName: lang.phonotacticsRuleName,
+                        pronunciationRuleName: lang.pronunciationRuleName,
+                        orthographyRuleName: lang.orthographyRuleName,
                         grammaticalCategories: lang.grammaticalCategories,
                         wordClasses: lang.wordClasses
                     }}
@@ -131,9 +133,10 @@ export default function LanguageIndex(props) {
                 <table><tbody>
                     <FormRow label="Diphthongs" id="diphthongs"/>
                     <FormRow label="Syllable structures" id="syllableStructures"/>
-                    <FormRow label="Stress rule" id="stressRule"/>
-                    <FormRow label="Phonotactics rule" id="phonotacticsRule"/>
-                    <FormRow label="Orthography rule" id="orthographyRule"/>
+                    <FormRow label="Stress rule" id="stressRuleName"/>
+                    <FormRow label="Phonotactics rule" id="phonotacticsRuleName"/>
+                    <FormRow label="Pronunciation rule" id="pronunciationRuleName"/>
+                    <FormRow label="Orthography rule" id="orthographyRuleName"/>
                 </tbody></table>
                 <h3>Grammar</h3>
                 <h4>Grammatical categories</h4>

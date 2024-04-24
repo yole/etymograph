@@ -60,9 +60,20 @@ class Word(
 
     fun asPhonemic(): Word {
         if (isPhonemic) return this
-        val phonemicText = buildString {
-            language.orthoPhonemeLookup.iteratePhonemes(text.lowercase(Locale.FRANCE)) { s, phoneme ->
-                append(phoneme?.sound ?: phoneme?.graphemes?.first() ?: s)
+        val pronunciationRule = language.pronunciationRule?.resolve()
+        val phonemicText = if (pronunciationRule != null) {
+            val it = PhonemeIterator(this, null, resultPhonemic = true)
+            while (true) {
+                pronunciationRule.applyToPhoneme(this, it, InMemoryGraphRepository.EMPTY)
+                if (!it.advance()) break
+            }
+            it.result()
+        }
+        else {
+            buildString {
+                language.orthoPhonemeLookup.iteratePhonemes(text.lowercase(Locale.FRANCE)) { s, phoneme ->
+                    append(phoneme?.sound ?: phoneme?.graphemes?.first() ?: s)
+                }
             }
         }
         return derive(phonemicText, phonemic = true)
@@ -71,17 +82,16 @@ class Word(
     fun asOrthographic(): Word {
         if (!isPhonemic) return this
         val orthoRule = language.orthographyRule?.resolve()
-        val orthoText: String
-        if (orthoRule != null) {
+        val orthoText: String = if (orthoRule != null) {
             val it = PhonemeIterator(this, null, resultPhonemic = false)
             while (true) {
                 orthoRule.applyToPhoneme(this, it, InMemoryGraphRepository.EMPTY)
                 if (!it.advance()) break
             }
-            orthoText = it.result()
+            it.result()
         }
         else {
-            orthoText = buildString {
+            buildString {
                 language.phonoPhonemeLookup.iteratePhonemes(text) { s, phoneme ->
                     append(phoneme?.graphemes?.get(0) ?: s)
                 }

@@ -32,6 +32,8 @@ class LanguageController {
         val stressRuleName: String?,
         val phonotacticsRuleId: Int?,
         val phonotacticsRuleName: String?,
+        val pronunciationRuleId: Int?,
+        val pronunciationRuleName: String?,
         val orthographyRuleId: Int?,
         val orthographyRuleName: String?,
         val syllableStructures: List<String>,
@@ -60,6 +62,7 @@ class LanguageController {
     private fun Language.toViewModel(repo: GraphRepository): LanguageViewModel {
         val stressRule = stressRule?.resolve()
         val phonotacticsRule = phonotacticsRule?.resolve()
+        val pronunciationRule = pronunciationRule?.resolve()
         val orthographyRule = orthographyRule?.resolve()
         return LanguageViewModel(
             name,
@@ -77,6 +80,8 @@ class LanguageController {
             stressRule?.name,
             phonotacticsRule?.id,
             phonotacticsRule?.name,
+            pronunciationRule?.id,
+            pronunciationRule?.name,
             orthographyRule?.id,
             orthographyRule?.name,
             syllableStructures,
@@ -93,6 +98,7 @@ class LanguageController {
         val diphthongs: String? = null,
         val stressRuleName: String? = null,
         val phonotacticsRuleName: String? = null,
+        val pronunciationRuleName: String? = null,
         val orthographyRuleName: String? = null,
         val syllableStructures: String? = null,
         val grammaticalCategories: String? = null,
@@ -144,6 +150,7 @@ class LanguageController {
 
         language.stressRule = parseRuleRef(repo, params.stressRuleName)
         language.phonotacticsRule = parseRuleRef(repo, params.phonotacticsRuleName)
+        language.pronunciationRule = parseRuleRef(repo, params.pronunciationRuleName)
         language.orthographyRule = parseRuleRef(repo, params.orthographyRuleName)
     }
 

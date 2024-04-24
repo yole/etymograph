@@ -46,6 +46,7 @@ data class LanguageDetailsData(
     val diphthongs: List<String> = emptyList(),
     val stressRuleId: Int? = null,
     val phonotacticsRuleId: Int? = null,
+    val pronunciationRuleId: Int? = null,
     val orthographyRuleId: Int? = null,
     val syllableStructures: List<String> = emptyList(),
     val grammaticalCategories: List<WordCategoryData> = emptyList(),
@@ -382,6 +383,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                 lang.diphthongs,
                 lang.stressRule?.resolve()?.id,
                 lang.phonotacticsRule?.resolve()?.id,
+                lang.pronunciationRule?.resolve()?.id,
                 lang.orthographyRule?.resolve()?.id,
                 lang.syllableStructures,
                 serializeWordCategories(lang.grammaticalCategories),
@@ -559,6 +561,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             language.diphthongs = data.diphthongs
             language.stressRule = data.stressRuleId?.let { ruleRef(this, it) }
             language.phonotacticsRule = data.phonotacticsRuleId?.let { ruleRef(this, it) }
+            language.pronunciationRule = data.pronunciationRuleId?.let { ruleRef(this, it) }
             language.orthographyRule = data.orthographyRuleId?.let { ruleRef(this, it) }
             language.syllableStructures = data.syllableStructures
             language.grammaticalCategories = deserializeWordCategories(data.grammaticalCategories)

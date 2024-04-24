@@ -97,10 +97,11 @@ or forms, you can specify which one is used in the given context.
 
 ### Phonemes
 
-The language definition specifies the list of phonemes that exist in a language. Etymograph assumes
-a mostly phonemic writing system, where every phoneme is expressed either by a single character (for example,
-`a`) or a di- or trigraph (for example, `sh` or `eau`). Context-dependent rules for mapping graphemes to 
-phonemes are currently not supported.
+The language definition specifies the list of phonemes that exist in a language. To specify how the orthography
+of a word (its set of graphemes) corresponds to its pronunciation (set of phonemes), you can specify a list
+of graphemes for each phoneme. A grapheme is either a single character (`a`) or a di- or trigraph (for example,
+`sh` or `eau`). For context-dependent correspondences, you can define a pronunciation rule (specifying the mapping
+of graphemes to phonemes) as well as an orthography rule (defining the mapping of phonemes to graphemes).
 
 For every phoneme, a set of classes (features) is specified: whether it's a vowel or a consonant, and
 how it's articulated (back/front, open/closed for vowels, voiced/voiceless, labial/velar etc. for consonants).
