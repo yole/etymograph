@@ -7,6 +7,7 @@ import EtymographFormView, {View} from "@/components/EtymographFormView";
 import EtymographForm from "@/components/EtymographForm";
 import FormRow from "@/components/FormRow";
 import FormTextArea from "@/components/FormTextArea";
+import RuleListSelect from "@/components/RuleListSelect";
 
 export const config = {
     unstable_runtimeJS: true
@@ -133,10 +134,10 @@ export default function LanguageIndex(props) {
                 <table><tbody>
                     <FormRow label="Diphthongs" id="diphthongs"/>
                     <FormRow label="Syllable structures" id="syllableStructures"/>
-                    <FormRow label="Stress rule" id="stressRuleName"/>
-                    <FormRow label="Phonotactics rule" id="phonotacticsRuleName"/>
-                    <FormRow label="Pronunciation rule" id="pronunciationRuleName"/>
-                    <FormRow label="Orthography rule" id="orthographyRuleName"/>
+                    <RuleListSelect label="Stress rule" id="stressRuleName"/>
+                    <RuleListSelect label="Phonotactics rule" id="phonotacticsRuleName"/>
+                    <RuleListSelect label="Pronunciation rule" id="pronunciationRuleName"/>
+                    <RuleListSelect label="Orthography rule" id="orthographyRuleName"/>
                 </tbody></table>
                 <h3>Grammar</h3>
                 <h4>Grammatical categories</h4>

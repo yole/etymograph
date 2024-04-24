@@ -22,7 +22,7 @@ export default function EditLinkForm(props) {
         {...props}
     >
         <table><tbody>
-            {props.compoundId === undefined && <RuleListSelect id="ruleNames" label="Rule names"/>}
+            {props.compoundId === undefined && <RuleListSelect id="ruleNames" label="Rule names" isMulti={true}/>}
             <FormRow id="source" label="Source"/>
             <FormRow id="notes" label="Notes"/>
         </tbody></table>

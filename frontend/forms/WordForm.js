@@ -80,7 +80,8 @@ export default function WordForm(props) {
         <FormRow id="posClasses" label="POS/classes"/>
         <FormRow id="gloss" label="Gloss"/>
         <FormRow id="fullGloss" label="Full gloss"/>
-        {(props.linkType === '>' || props.linkType === '^') && <RuleListSelect id="linkRuleNames" label="Link rule names"/>}
+        {(props.linkType === '>' || props.linkType === '^') &&
+            <RuleListSelect id="linkRuleNames" label="Link rule names" isMulti={true}/>}
         <FormRow id="source" label="Source"/>
         <tr>
             <td>Notes:</td>
