@@ -214,21 +214,8 @@ export function addLanguage(graph, name, shortName, reconstructed) {
     return postToBackend(`${graph}/languages`, {name: name, shortName: shortName, reconstructed: reconstructed})
 }
 
-export function updateLanguage(
-    graph, lang, diphthongs, syllableStructures, stressRule, phonotacticsRule, orthographyRule,
-    grammaticalCategories, wordClasses
-) {
-    return postToBackend(`${graph}/language/${lang}`,
-        {
-            diphthongs: diphthongs,
-            syllableStructures: syllableStructures,
-            stressRuleName: stressRule,
-            phonotacticsRuleName: phonotacticsRule,
-            orthographyRuleName: orthographyRule,
-            grammaticalCategories: grammaticalCategories,
-            wordClasses: wordClasses
-        }
-    )
+export function updateLanguage(graph, lang, data) {
+    return postToBackend(`${graph}/language/${lang}`, data)
 }
 
 export function addPhoneme(graph, lang, data) {

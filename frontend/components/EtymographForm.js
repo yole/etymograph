@@ -8,7 +8,7 @@ export default function EtymographForm(props) {
     const [errorText, setErrorText] = useState("")
     const router = useRouter()
     const editMode = useContext(EditModeContext)
-    const setEditMode = useContext(SetEditModeContext)
+    const setEditMode = props.setEditMode ?? useContext(SetEditModeContext)
 
     async function saveForm(data) {
         const r = props.updateId !== undefined ? await props.update(data) : await props.create(data)
@@ -33,9 +33,9 @@ export default function EtymographForm(props) {
             else if (props.submitted !== undefined) {
                 props.submitted()
             }
-            else if (props.setEditMode !== undefined) {
+            else if (setEditMode !== undefined) {
                 router.replace(router.asPath)
-                props.setEditMode(false)
+                setEditMode(false)
             }
         }
         else {

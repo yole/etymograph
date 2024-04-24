@@ -46,6 +46,18 @@
                     "abbreviation": "PL"
                 }
             ]
+        },
+        {
+            "name": "Tense",
+            "pos": [
+                "V"
+            ],
+            "values": [
+                {
+                    "name": "Preterite",
+                    "abbreviation": "PRET"
+                }
+            ]
         }
     ]
 }

@@ -3,6 +3,10 @@ import {useState} from "react";
 import {fetchBackend, updateLanguage, fetchAllLanguagePaths, allowEdit, copyPhonemes} from "@/api";
 import {useRouter} from "next/router";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import EtymographFormView, {View} from "@/components/EtymographFormView";
+import EtymographForm from "@/components/EtymographForm";
+import FormRow from "@/components/FormRow";
+import FormTextArea from "@/components/FormTextArea";
 
 export const config = {
     unstable_runtimeJS: true
@@ -17,33 +21,11 @@ export const getStaticPaths = fetchAllLanguagePaths
 export default function LanguageIndex(props) {
     const lang = props.loaderData
     const langId = lang.shortName
-    const [editMode, setEditMode] = useState(false)
-    const [grammaticalCategories, setGrammaticalCategories] = useState(lang.grammaticalCategories)
-    const [wordClasses, setWordClasses] = useState(lang.wordClasses)
-    const [diphthongs, setDiphthongs] = useState(lang.diphthongs.join(", "))
-    const [syllableStructures, setSyllableStructures] = useState(lang.syllableStructures.join(", "))
-    const [stressRule, setStressRule] = useState(lang.stressRuleName)
-    const [phonotacticsRule, setPhonotacticsRule] = useState(lang.phonotacticsRuleName)
-    const [orthographyRule, setOrthographyRule] = useState(lang.orthographyRuleName)
     const [errorText, setErrorText] = useState("")
     const [showCopyPhonemesForm, setShowCopyPhonemesForm] = useState(false)
     const [copyPhonemesFrom, setCopyPhonemesFrom] = useState("")
     const router = useRouter()
     const graph = router.query.graph
-
-    function saveLanguage() {
-        updateLanguage(graph, langId, diphthongs, syllableStructures, stressRule, phonotacticsRule, orthographyRule, grammaticalCategories, wordClasses)
-            .then((r) => {
-                if (r.status === 200) {
-                    setErrorText("")
-                    setEditMode(false)
-                    router.replace(router.asPath)
-                }
-                else {
-                    r.json().then(r => setErrorText(r.message))
-                }
-            })
-    }
 
     async function copyPhonemesClicked() {
         const r = await copyPhonemes(graph, langId, copyPhonemesFrom)
@@ -98,6 +80,7 @@ export default function LanguageIndex(props) {
             </ul>)}
         </>)}
         {allowEdit() && <>
+            <p/>
             <button onClick={() => router.push(`/${graph}/phonemes/${langId}/new`)}>Add phoneme</button>
             {lang.phonemes.length === 0 &&<>
                 {' '}
@@ -110,67 +93,55 @@ export default function LanguageIndex(props) {
             </>}
         </>}
 
-        {!editMode && <>
-            {lang.diphthongs.length > 0 && <p>Diphthongs: {lang.diphthongs.join(", ")}</p>}
-            {lang.syllableStructures.length > 0 && <p>Syllable structures: {lang.syllableStructures.join(", ")}</p>}
-            {lang.stressRuleName != null && <p>Stress rule: <Link href={`/${graph}/rule/${lang.stressRuleId}`}>{lang.stressRuleName}</Link></p>}
-            {lang.phonotacticsRuleName != null && <p>Phonotactics rule: <Link href={`/${graph}/rule/${lang.phonotacticsRuleId}`}>{lang.phonotacticsRuleName}</Link></p>}
-            {lang.orthographyRuleName != null && <p>Orthography rule: <Link href={`/${graph}/rule/${lang.orthographyRuleId}`}>{lang.orthographyRuleName}</Link></p>}
-        </>}
-        {editMode && <>
-            <table><tbody>
-            <tr>
-                <td><label>Diphthongs:</label></td>
-                <td><input type="text" value={diphthongs} onChange={(e) => setDiphthongs(e.target.value)}/></td>
-            </tr>
-            <tr>
-                <td><label>Syllable structures:</label></td>
-                <td><input type="text" value={syllableStructures} onChange={(e) => setSyllableStructures(e.target.value)}/></td>
-            </tr>
-            <tr>
-                <td><label>Stress rule:</label></td>
-                <td><input type="text" value={stressRule} onChange={(e) => setStressRule(e.target.value)}/></td>
-            </tr>
-            <tr>
-                <td><label>Phonotactics rule:</label></td>
-                <td><input type="text" value={phonotacticsRule} onChange={(e) => setPhonotacticsRule(e.target.value)}/></td>
-            </tr>
-            <tr>
-                <td><label>Orthography rule:</label></td>
-                <td><input type="text" value={orthographyRule} onChange={(e) => setOrthographyRule(e.target.value)}/></td>
-            </tr>
-            </tbody></table>
-        </>}
+        <EtymographFormView>
+            <View>
+                {lang.diphthongs.length > 0 && <p>Diphthongs: {lang.diphthongs.join(", ")}</p>}
+                {lang.syllableStructures.length > 0 && <p>Syllable structures: {lang.syllableStructures.join(", ")}</p>}
+                {lang.stressRuleName != null && <p>Stress rule: <Link href={`/${graph}/rule/${lang.stressRuleId}`}>{lang.stressRuleName}</Link></p>}
+                {lang.phonotacticsRuleName != null && <p>Phonotactics rule: <Link href={`/${graph}/rule/${lang.phonotacticsRuleId}`}>{lang.phonotacticsRuleName}</Link></p>}
+                {lang.orthographyRuleName != null && <p>Orthography rule: <Link href={`/${graph}/rule/${lang.orthographyRuleId}`}>{lang.orthographyRuleName}</Link></p>}
 
-        <h3>Grammar</h3>
-        {(editMode || grammaticalCategories.trim().length > 0) && <h4>Grammatical categories</h4>}
-        {!editMode && grammaticalCategories.trim().length > 0 && <>
-            <ul>
-                {grammaticalCategories.split('\n').map(s => <li>{s}</li>)}
-            </ul>
-        </>}
-        {editMode && <>
-            <textarea rows={5} cols={50} value={grammaticalCategories} onChange={(e) => setGrammaticalCategories(e.target.value)}/>
-            <br/>
-        </>}
-
-        {(editMode || wordClasses.trim().length > 0) && <h4>Word classes</h4>}
-        {!editMode && wordClasses.trim().length > 0 && <>
-            <ul>
-                {wordClasses.split('\n').map(s => <li>{s}</li>)}
-            </ul>
-        </>}
-        {editMode && <>
-            <textarea rows={5} cols={50} value={wordClasses} onChange={(e) => setWordClasses(e.target.value)}/>
-            <br/>
-        </>}
-
-        {editMode && <>
-            <button onClick={() => saveLanguage()}>Save</button>&nbsp;
-        </>}
-        {allowEdit() &&
-           <button onClick={() => setEditMode(!editMode)}>{editMode ? "Cancel" : "Edit"}</button>
-        }
+                <h3>Grammar</h3>
+                {lang.grammaticalCategories.trim().length > 0 && <>
+                    <h4>Grammatical categories</h4>
+                    <ul>
+                        {lang.grammaticalCategories.split('\n').map(s => <li>{s}</li>)}
+                    </ul>
+                </>}
+                {lang.wordClasses.trim().length > 0 && <>
+                    <h4>Word classes</h4>
+                    <ul>
+                        {lang.wordClasses.split('\n').map(s => <li>{s}</li>)}
+                    </ul>
+                </>}
+            </View>
+            <EtymographForm
+                    updateId={langId}
+                    update={(data) => updateLanguage(graph, langId, data)}
+                    defaultValues={{
+                        diphthongs: lang.diphthongs.join(", "),
+                        syllableStructures: lang.syllableStructures.join(", "),
+                        stressRule: lang.stressRuleName,
+                        phonotacticsRule: lang.phonotacticsRuleName,
+                        orthographyRule: lang.orthographyRuleName,
+                        grammaticalCategories: lang.grammaticalCategories,
+                        wordClasses: lang.wordClasses
+                    }}
+            >
+                <table><tbody>
+                    <FormRow label="Diphthongs" id="diphthongs"/>
+                    <FormRow label="Syllable structures" id="syllableStructures"/>
+                    <FormRow label="Stress rule" id="stressRule"/>
+                    <FormRow label="Phonotactics rule" id="phonotacticsRule"/>
+                    <FormRow label="Orthography rule" id="orthographyRule"/>
+                </tbody></table>
+                <h3>Grammar</h3>
+                <h4>Grammatical categories</h4>
+                <FormTextArea rows="5" cols="50" id="grammaticalCategories"/>
+                <h4>Word classes</h4>
+                <FormTextArea rows="5" cols="50" id="wordClasses"/>
+            </EtymographForm>
+        </EtymographFormView>
         <p/>
         {errorText !== "" && <div className="errorText">{errorText}</div>}
     </>
