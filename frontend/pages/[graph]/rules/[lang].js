@@ -54,7 +54,7 @@ export default function RuleList(params) {
                         name: g.sequenceName,
                         fromLang: g.sequenceFromLang,
                         toLang: g.sequenceToLang,
-                        ruleNames: g.rules.map(r => r.name).join("\n")
+                        ruleNames: g.rules.map(r => r.name + (r.optional ? "?" : "")).join("\n")
                     }}
                     submitted={sequenceSubmitted}
                     cancelled={() => setSequenceEditId(null)}
