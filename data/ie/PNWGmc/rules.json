@@ -246,5 +246,44 @@
                 "refText": "18"
             }
         ]
+    },
+    {
+        "id": 2589,
+        "name": "pnwgmc-pronunciation",
+        "fromLang": "PNWGmc",
+        "toLang": "PNWGmc",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "β"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "b",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": -1,
+                            "cls": "vowel"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": 1,
+                            "cls": "vowel"
+                        }
+                    ]
+                }
+            }
+        ],
+        "notes": ""
     }
 ]

@@ -485,18 +485,10 @@
                     }
                 ],
                 "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "leaf",
-                            "cond": "EndOfWord"
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "parameter": "į",
-                            "relative": false
-                        }
-                    ]
+                    "type": "relPhoneme",
+                    "cls": "word-final",
+                    "parameter": "į",
+                    "relative": false
                 }
             },
             {
@@ -509,18 +501,10 @@
                     }
                 ],
                 "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "leaf",
-                            "cond": "EndOfWord"
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "parameter": "ų",
-                            "relative": false
-                        }
-                    ]
+                    "type": "relPhoneme",
+                    "cls": "word-final",
+                    "parameter": "ų",
+                    "relative": false
                 }
             }
         ],
@@ -529,8 +513,7 @@
                 "pubId": 5,
                 "refText": "55"
             }
-        ],
-        "notes": ""
+        ]
     },
     {
         "id": 1983,
@@ -668,16 +651,19 @@
                     }
                 ],
                 "condition": {
-                    "type": "and",
+                    "type": "or",
                     "members": [
                         {
                             "type": "relPhoneme",
+                            "cls": "word-final",
                             "parameter": "ō",
                             "relative": false
                         },
                         {
-                            "type": "leaf",
-                            "cond": "EndOfWord"
+                            "type": "relPhoneme",
+                            "cls": "word-final",
+                            "parameter": "ǭ",
+                            "relative": false
                         }
                     ]
                 }
@@ -695,19 +681,25 @@
                     "type": "and",
                     "members": [
                         {
-                            "type": "relPhoneme",
-                            "parameter": "ō",
-                            "relative": false
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "relPhoneme",
+                                    "parameter": "ō",
+                                    "relative": false
+                                },
+                                {
+                                    "type": "relPhoneme",
+                                    "parameter": "ǭ",
+                                    "relative": false
+                                }
+                            ]
                         },
                         {
                             "type": "relPhoneme",
                             "relativeIndex": 1,
+                            "cls": "word-final",
                             "parameter": "r"
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": 1,
-                            "cls": "word-final"
                         }
                     ]
                 }
@@ -733,8 +725,7 @@
                 "pubId": 5,
                 "refText": "58"
             }
-        ],
-        "notes": ""
+        ]
     },
     {
         "id": 1995,
@@ -764,12 +755,8 @@
                         {
                             "type": "relPhoneme",
                             "relativeIndex": 1,
+                            "cls": "word-final",
                             "parameter": "r"
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": 1,
-                            "cls": "word-final"
                         }
                     ]
                 }
@@ -808,6 +795,7 @@
                     "members": [
                         {
                             "type": "relPhoneme",
+                            "cls": "non-stressed",
                             "parameter": "a",
                             "relative": false
                         },
@@ -815,12 +803,6 @@
                             "type": "relPhoneme",
                             "relativeIndex": 1,
                             "parameter": "u"
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "negated": true,
-                            "cls": "stressed",
-                            "relative": false
                         }
                     ]
                 }
@@ -839,6 +821,7 @@
                     "members": [
                         {
                             "type": "relPhoneme",
+                            "cls": "non-stressed",
                             "parameter": "ō",
                             "relative": false
                         },
@@ -846,12 +829,6 @@
                             "type": "relPhoneme",
                             "relativeIndex": 1,
                             "parameter": "u"
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "negated": true,
-                            "cls": "stressed",
-                            "relative": false
                         }
                     ]
                 }
@@ -967,6 +944,12 @@
                             "type": "relPhoneme",
                             "relativeIndex": 1,
                             "parameter": "w"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": 2,
+                            "negated": true,
+                            "parameter": "j"
                         }
                     ]
                 }

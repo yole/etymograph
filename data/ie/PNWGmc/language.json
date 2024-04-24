@@ -385,7 +385,32 @@
                 "open",
                 "vowel"
             ]
+        },
+        {
+            "id": 2568,
+            "graphemes": [
+                "β"
+            ],
+            "classes": [
+                "voiced",
+                "bilabial",
+                "fricative",
+                "consonant"
+            ]
+        },
+        {
+            "id": 2619,
+            "graphemes": [
+                "ǭ"
+            ],
+            "classes": [
+                "long",
+                "mid",
+                "back",
+                "vowel"
+            ]
         }
     ],
-    "stressRuleId": 1873
+    "stressRuleId": 1873,
+    "pronunciationRuleId": 2589
 }

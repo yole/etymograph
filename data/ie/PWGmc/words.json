@@ -307,11 +307,6 @@
         "gloss": "red"
     },
     {
-        "id": 2109,
-        "text": "auwju",
-        "gloss": "island"
-    },
-    {
         "id": 2111,
         "text": "deup",
         "gloss": "deep"
@@ -940,6 +935,248 @@
             {
                 "pubId": 5,
                 "refText": "50"
+            }
+        ]
+    },
+    {
+        "id": 2570,
+        "text": "skappjan",
+        "gloss": "to make, to create",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "51"
+            }
+        ]
+    },
+    {
+        "id": 2573,
+        "text": "habbjan",
+        "gloss": "to lift",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "51"
+            }
+        ]
+    },
+    {
+        "id": 2576,
+        "text": "sattjan",
+        "gloss": "to seat, to set",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "51"
+            }
+        ]
+    },
+    {
+        "id": 2579,
+        "text": "biddjan",
+        "gloss": "to ask for",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "51"
+            }
+        ]
+    },
+    {
+        "id": 2581,
+        "text": "midi",
+        "gloss": "middle",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "51"
+            }
+        ]
+    },
+    {
+        "id": 2584,
+        "text": "hrissjan",
+        "gloss": "to shake",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "51"
+            }
+        ]
+    },
+    {
+        "id": 2587,
+        "text": "wakkjan",
+        "gloss": "to waken",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "51"
+            }
+        ]
+    },
+    {
+        "id": 2591,
+        "text": "liggjan",
+        "gloss": "to lie",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "51"
+            }
+        ]
+    },
+    {
+        "id": 2594,
+        "text": "laggjan",
+        "gloss": "to lay",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "51"
+            }
+        ]
+    },
+    {
+        "id": 2597,
+        "text": "buggjan",
+        "gloss": "to buy",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "51"
+            }
+        ]
+    },
+    {
+        "id": 2600,
+        "text": "hlahhjan",
+        "gloss": "to laugh",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "51"
+            }
+        ]
+    },
+    {
+        "id": 2603,
+        "text": "þannjan",
+        "gloss": "to extend",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "52"
+            }
+        ]
+    },
+    {
+        "id": 2606,
+        "text": "hallju",
+        "gloss": "hell",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "52"
+            }
+        ]
+    },
+    {
+        "id": 2609,
+        "text": "alljan",
+        "gloss": "zeal",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "52"
+            }
+        ]
+    },
+    {
+        "id": 2612,
+        "text": "willjan",
+        "gloss": "to want",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "52"
+            }
+        ]
+    },
+    {
+        "id": 2614,
+        "text": "frammjan",
+        "gloss": "to further",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "52"
+            }
+        ]
+    },
+    {
+        "id": 2617,
+        "text": "awwju",
+        "gloss": "island",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "173"
+            }
+        ]
+    },
+    {
+        "id": 2623,
+        "text": "hertā",
+        "gloss": "heart",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "59"
+            }
+        ]
+    },
+    {
+        "id": 2626,
+        "text": "swā",
+        "gloss": "so, thus",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "65"
+            }
+        ]
+    },
+    {
+        "id": 2633,
+        "text": "hauzijan",
+        "gloss": "to hear",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "83"
+            }
+        ]
+    },
+    {
+        "id": 2636,
+        "text": "laizijan",
+        "gloss": "to teach",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "83"
+            }
+        ]
+    },
+    {
+        "id": 2639,
+        "text": "hazjan",
+        "gloss": "to praise",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "83"
             }
         ]
     }

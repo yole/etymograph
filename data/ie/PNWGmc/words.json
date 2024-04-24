@@ -506,5 +506,49 @@
                 "refText": "47"
             }
         ]
+    },
+    {
+        "id": 2613,
+        "text": "framjaną",
+        "gloss": "to further",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "52"
+            }
+        ]
+    },
+    {
+        "id": 2616,
+        "text": "awju",
+        "gloss": "island",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "173"
+            }
+        ]
+    },
+    {
+        "id": 2620,
+        "text": "tungǭ",
+        "gloss": "tongue",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "59"
+            }
+        ]
+    },
+    {
+        "id": 2622,
+        "text": "hertǭ",
+        "gloss": "heart",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "59"
+            }
+        ]
     }
 ]

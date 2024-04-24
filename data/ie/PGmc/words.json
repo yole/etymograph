@@ -1552,5 +1552,214 @@
                 "refText": "50"
             }
         ]
+    },
+    {
+        "id": 2569,
+        "text": "skapjaną",
+        "gloss": "to make, to create",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "51"
+            }
+        ]
+    },
+    {
+        "id": 2572,
+        "text": "habjaną",
+        "gloss": "to lift",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "51"
+            }
+        ]
+    },
+    {
+        "id": 2575,
+        "text": "satjaną",
+        "gloss": "to seat, to set",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "51"
+            }
+        ]
+    },
+    {
+        "id": 2578,
+        "text": "bidjaną",
+        "gloss": "to ask for",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "51"
+            }
+        ]
+    },
+    {
+        "id": 2580,
+        "text": "midjaz",
+        "gloss": "middle",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "51"
+            }
+        ]
+    },
+    {
+        "id": 2583,
+        "text": "hrisjaną",
+        "gloss": "to shake",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "51"
+            }
+        ]
+    },
+    {
+        "id": 2586,
+        "text": "wakjaną",
+        "gloss": "to waken",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "51"
+            }
+        ]
+    },
+    {
+        "id": 2590,
+        "text": "ligjaną",
+        "gloss": "to lie",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "51"
+            }
+        ]
+    },
+    {
+        "id": 2593,
+        "text": "lagjaną",
+        "gloss": "to lay",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "51"
+            }
+        ]
+    },
+    {
+        "id": 2596,
+        "text": "bugjaną",
+        "gloss": "to buy",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "51"
+            }
+        ]
+    },
+    {
+        "id": 2599,
+        "text": "hlahjaną",
+        "gloss": "to laugh",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "51"
+            }
+        ]
+    },
+    {
+        "id": 2602,
+        "text": "þanjaną",
+        "gloss": "to extend",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "52"
+            }
+        ]
+    },
+    {
+        "id": 2605,
+        "text": "haljō",
+        "gloss": "hell",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "52"
+            }
+        ]
+    },
+    {
+        "id": 2608,
+        "text": "aljaną",
+        "gloss": "zeal",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "52"
+            }
+        ]
+    },
+    {
+        "id": 2611,
+        "text": "wiljaną",
+        "gloss": "to want",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "52"
+            }
+        ]
+    },
+    {
+        "id": 2625,
+        "text": "swa",
+        "gloss": "so, thus",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "65"
+            }
+        ]
+    },
+    {
+        "id": 2632,
+        "text": "hauzijaną",
+        "gloss": "to hear",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "83"
+            }
+        ]
+    },
+    {
+        "id": 2635,
+        "text": "laizijaną",
+        "gloss": "to teach",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "83"
+            }
+        ]
+    },
+    {
+        "id": 2638,
+        "text": "hazjaną",
+        "gloss": "to praise",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "83"
+            }
+        ]
     }
 ]

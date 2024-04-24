@@ -19,5 +19,43 @@
                 }
             }
         ]
+    },
+    {
+        "id": 2566,
+        "name": "pgmc-pronunciation",
+        "fromLang": "PGmc",
+        "toLang": "PGmc",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "β"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "b",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": -1,
+                            "cls": "vowel"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": 1,
+                            "cls": "vowel"
+                        }
+                    ]
+                }
+            }
+        ]
     }
 ]

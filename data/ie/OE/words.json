@@ -3355,5 +3355,234 @@
         "id": 2564,
         "text": "sittan",
         "gloss": "sit"
+    },
+    {
+        "id": 2571,
+        "text": "sċieppan",
+        "gloss": "to make, to create",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "51"
+            }
+        ]
+    },
+    {
+        "id": 2574,
+        "text": "hebban",
+        "gloss": "to lift",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "51"
+            }
+        ]
+    },
+    {
+        "id": 2577,
+        "text": "settan",
+        "gloss": "to seat, to set",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "51"
+            }
+        ]
+    },
+    {
+        "id": 2582,
+        "text": "midd",
+        "gloss": "middle",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "51"
+            }
+        ]
+    },
+    {
+        "id": 2585,
+        "text": "hrissan",
+        "gloss": "to shake",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "51"
+            }
+        ]
+    },
+    {
+        "id": 2588,
+        "text": "weċċan",
+        "gloss": "to waken",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "51"
+            }
+        ]
+    },
+    {
+        "id": 2592,
+        "text": "liċġan",
+        "gloss": "to lie",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "51"
+            }
+        ]
+    },
+    {
+        "id": 2595,
+        "text": "leċġan",
+        "gloss": "to lay",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "51"
+            }
+        ]
+    },
+    {
+        "id": 2598,
+        "text": "byċġan",
+        "gloss": "to buy",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "51"
+            }
+        ]
+    },
+    {
+        "id": 2601,
+        "text": "hliehhan",
+        "gloss": "to laugh",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "51"
+            }
+        ]
+    },
+    {
+        "id": 2604,
+        "text": "þennan",
+        "gloss": "to extend",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "52"
+            }
+        ]
+    },
+    {
+        "id": 2607,
+        "text": "hell",
+        "gloss": "hell",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "52"
+            }
+        ]
+    },
+    {
+        "id": 2610,
+        "text": "ellen",
+        "gloss": "zeal",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "52"
+            }
+        ]
+    },
+    {
+        "id": 2615,
+        "text": "fremman",
+        "gloss": "to further",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "52"
+            }
+        ]
+    },
+    {
+        "id": 2621,
+        "text": "tunge",
+        "gloss": "tongue",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "59"
+            }
+        ]
+    },
+    {
+        "id": 2624,
+        "text": "heorte",
+        "gloss": "heart",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "59"
+            }
+        ]
+    },
+    {
+        "id": 2628,
+        "text": "swā",
+        "gloss": "so, thus"
+    },
+    {
+        "id": 2629,
+        "text": "ǣġ",
+        "gloss": "egg"
+    },
+    {
+        "id": 2630,
+        "text": "glēaw",
+        "gloss": "exact"
+    },
+    {
+        "id": 2631,
+        "text": "hēawan",
+        "gloss": "chop"
+    },
+    {
+        "id": 2634,
+        "text": "hīeran",
+        "gloss": "to hear",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "83"
+            }
+        ]
+    },
+    {
+        "id": 2637,
+        "text": "lǣran",
+        "gloss": "to teach",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "83"
+            }
+        ]
+    },
+    {
+        "id": 2640,
+        "text": "herian",
+        "gloss": "to praise",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "83"
+            }
+        ]
     }
 ]
