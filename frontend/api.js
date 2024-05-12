@@ -18,13 +18,16 @@ export async function fetchBackend(graph, url, withGlobalState) {
         const allLanguagesJson = await allLanguages.json()
         const allRules = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}${graph}/rules`, { headers: { 'Accept': 'application/json'} })
         const alllRulesJson = await allRules.json()
+        const allInputAssists = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}${graph}/inputAssist`, { headers: { 'Accept': 'application/json'} })
+        const allInputAssistsJson = await allInputAssists.json()
         return {
             props: {
                 loaderData,
                 globalState: {
                     graphs: allGraphsJson,
                     languages: allLanguagesJson,
-                    rules: alllRulesJson
+                    rules: alllRulesJson,
+                    inputAssists: allInputAssistsJson
                 }
             }
         }

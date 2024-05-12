@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.*
 import ru.yole.etymograph.*
 import ru.yole.etymograph.web.resolveLanguage
 import ru.yole.etymograph.web.resolveRule
+import java.text.Normalizer
 
 @RestController
 class LanguageController {
@@ -132,6 +133,28 @@ class LanguageController {
                 repo.addPhoneme(toLanguage, phoneme.graphemes, phoneme.sound, phoneme.classes)
             }
         }
+    }
+
+    data class InputAssistGraphemeViewModel(val text: String, val languages: List<String>)
+    data class InputAssistViewModel(val graphemes: List<InputAssistGraphemeViewModel>)
+
+    @GetMapping("/{graph}/inputAssist")
+    fun inputAssist(repo: GraphRepository): InputAssistViewModel {
+        val graphemes = mutableMapOf<String, MutableList<String>>()
+        for (language in repo.allLanguages()) {
+            for (phoneme in language.phonemes) {
+                val grapheme = phoneme.graphemes.first()
+                if (grapheme.any { it !in 'a'..'z'}) {
+                    val langList = graphemes.getOrPut(grapheme) { mutableListOf() }
+                    langList.add(language.shortName)
+                }
+            }
+        }
+        return InputAssistViewModel(
+            graphemes
+                .map { (text, langs) -> InputAssistGraphemeViewModel(text, langs)}
+                .sortedBy { Normalizer.normalize(it.text, Normalizer.Form.NFD) }
+        )
     }
 
     private fun updateLanguageDetails(

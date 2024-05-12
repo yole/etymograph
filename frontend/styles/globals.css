@@ -102,3 +102,13 @@ code {
   margin-left: 5pt;
   font-size: small;
 }
+
+.inputAssist {
+  padding-left: 10pt;
+}
+
+.inputAssistButton {
+  font-size: medium;
+  padding-left: 1pt;
+  padding-right: 1pt;
+}

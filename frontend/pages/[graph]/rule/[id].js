@@ -221,7 +221,7 @@ export default function Rule(params) {
                  submitted={exampleSubmitted}
                  cancelled={() => setShowExampleForm(false)}>
                 <table><tbody>
-                    <FormRow id="exampleText" label="Example" size="50"/>
+                    <FormRow id="exampleText" label="Example" size="50" inputAssist={true}/>
                     <FormRow id="exampleSource" label="Source"/>
                 </tbody></table>
             </EtymographForm>
