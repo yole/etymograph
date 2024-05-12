@@ -15,6 +15,8 @@ import SourceRefs from "@/components/SourceRefs";
 import RichText from "@/components/RichText";
 import RuleLinkForm from "@/forms/RuleLinkForm";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import EtymographForm from "@/components/EtymographForm";
+import FormRow from "@/components/FormRow";
 
 export const config = {
     unstable_runtimeJS: true
@@ -34,8 +36,6 @@ export default function Rule(params) {
     const [linkMode, setLinkMode] = useState(false)
     const [errorText, setErrorText] = useState("")
     const [showExampleForm, setShowExampleForm] = useState(false)
-    const [exampleText, setExampleText] = useState("")
-    const [exampleSource, setExampleSource] = useState("")
     const [exampleUnmatched, setExampleUnmatched] = useState([])
     const router = useRouter()
     const graph = router.query.graph
@@ -69,25 +69,21 @@ export default function Rule(params) {
         }
     }
 
-    async function exampleSubmitted() {
-        const r = await addWordSequence(graph, exampleText, exampleSource)
-        if (r.status === 200) {
-            r.json().then(r => {
-                setShowExampleForm(false)
-                setExampleText("")
-                if (r.ruleIds.indexOf(rule.id) >= 0) {
-                    setErrorText("")
-                    setExampleUnmatched([])
-                    router.replace(router.asPath)
-                }
-                else {
-                    setErrorText("Example does not match rule")
-                    setExampleUnmatched(r.words)
-                }
-            })
+    function createExample(data) {
+        return addWordSequence(graph, data.exampleText, data.exampleSource)
+    }
+
+    async function exampleSubmitted(r) {
+        setShowExampleForm(false)
+        setExampleText("")
+        if (r.ruleIds.indexOf(rule.id) >= 0) {
+            setErrorText("")
+            setExampleUnmatched([])
+            router.replace(router.asPath)
         }
         else {
-            r.json().then(r => setErrorText(r.message))
+            setErrorText("Example does not match rule")
+            setExampleUnmatched(r.words)
         }
     }
 
@@ -219,20 +215,17 @@ export default function Rule(params) {
         </>}
         <p/>
         {allowEdit() && !showExampleForm && <button onClick={() => setShowExampleForm(true)}>Add example</button>}
-        {showExampleForm && <>
-            <table><tbody>
-            <tr>
-                <td>Example:</td>
-                <td><input type="text" size="50" value={exampleText} onChange={(e) => setExampleText(e.target.value)}/></td>
-            </tr>
-            <tr>
-                <td>Source:</td>
-                <td><input type="text" value={exampleSource} onChange={(e) => setExampleSource(e.target.value)}/></td>
-            </tr>
-            </tbody></table>
-            <button onClick={() => exampleSubmitted()}>Submit</button>{' '}
-            <button onClick={() => setShowExampleForm(false)}>Cancel</button>
-        </>}
+        {showExampleForm &&
+            <EtymographForm
+                 create={createExample}
+                 submitted={exampleSubmitted}
+                 cancelled={() => setShowExampleForm(false)}>
+                <table><tbody>
+                    <FormRow id="exampleText" label="Example" size="50"/>
+                    <FormRow id="exampleSource" label="Source"/>
+                </tbody></table>
+            </EtymographForm>
+        }
         {errorText !== "" && <div className="errorText">{errorText}</div>}
         {exampleUnmatched.length > 0 && <>
             <p>Unmatched example: {exampleUnmatched.map((w, i) => <>

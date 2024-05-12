@@ -7,7 +7,7 @@ export default function FormRow(props) {
         }}>
         <td><label htmlFor={props.id}>{props.label}:</label></td>
         <td>
-            <input id={props.id} readOnly={props.readOnly} type="text" {...register(props.id)}/>
+            <input id={props.id} readOnly={props.readOnly} size={props.size} type="text" {...register(props.id)}/>
             {props.children}
         </td>
     </tr>
