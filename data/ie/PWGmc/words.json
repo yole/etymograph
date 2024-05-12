@@ -1179,5 +1179,60 @@
                 "refText": "83"
             }
         ]
+    },
+    {
+        "id": 2642,
+        "text": "wazjan",
+        "gloss": "to clothe",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "83"
+            }
+        ]
+    },
+    {
+        "id": 2645,
+        "text": "snuzu",
+        "gloss": "daughter in law",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "83"
+            }
+        ]
+    },
+    {
+        "id": 2648,
+        "text": "marzijan",
+        "gloss": "to disturb, to hinder",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "83"
+            }
+        ]
+    },
+    {
+        "id": 2651,
+        "text": "liznōn",
+        "gloss": "to learn",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "84"
+            }
+        ]
+    },
+    {
+        "id": 2653,
+        "text": "samft",
+        "gloss": "soft, gentle",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "140"
+            }
+        ]
     }
 ]

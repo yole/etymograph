@@ -3584,5 +3584,115 @@
                 "refText": "83"
             }
         ]
+    },
+    {
+        "id": 2643,
+        "text": "werian",
+        "gloss": "to clothe",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "83"
+            }
+        ]
+    },
+    {
+        "id": 2646,
+        "text": "snoru",
+        "gloss": "daughter in law",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "83"
+            }
+        ]
+    },
+    {
+        "id": 2649,
+        "text": "mierran",
+        "gloss": "to disturb, to hinder",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "83"
+            }
+        ]
+    },
+    {
+        "id": 2652,
+        "text": "liornian",
+        "gloss": "to learn",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "84"
+            }
+        ]
+    },
+    {
+        "id": 2654,
+        "text": "sōft",
+        "gloss": "soft, gentle",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "140"
+            }
+        ]
+    },
+    {
+        "id": 2656,
+        "text": "ōþer",
+        "gloss": "other",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "140"
+            }
+        ]
+    },
+    {
+        "id": 2658,
+        "text": "nēþan",
+        "gloss": "to venture, to risk",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "140"
+            }
+        ]
+    },
+    {
+        "id": 2660,
+        "text": "swīþ",
+        "gloss": "strong",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "140"
+            }
+        ]
+    },
+    {
+        "id": 2664,
+        "text": "sīþ",
+        "gloss": "going, journey",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "140"
+            }
+        ]
+    },
+    {
+        "id": 2666,
+        "text": "cȳþan",
+        "gloss": "to make known",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "140"
+            }
+        ]
     }
 ]

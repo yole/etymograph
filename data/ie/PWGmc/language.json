@@ -254,6 +254,7 @@
                 "short",
                 "close",
                 "front",
+                "unrounded",
                 "vowel"
             ]
         },
@@ -302,6 +303,7 @@
                 "long",
                 "close",
                 "front",
+                "unrounded",
                 "vowel"
             ]
         },
@@ -439,6 +441,20 @@
                 "bilabial",
                 "fricative",
                 "consonant"
+            ]
+        },
+        {
+            "id": 2662,
+            "graphemes": [
+                "į̄"
+            ],
+            "classes": [
+                "long",
+                "front",
+                "close",
+                "unrounded",
+                "nasal",
+                "vowel"
             ]
         }
     ],

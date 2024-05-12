@@ -1761,5 +1761,104 @@
                 "refText": "83"
             }
         ]
+    },
+    {
+        "id": 2641,
+        "text": "wazjaną",
+        "gloss": "to clothe",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "83"
+            }
+        ]
+    },
+    {
+        "id": 2644,
+        "text": "snuzō",
+        "gloss": "daughter in law",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "83"
+            }
+        ]
+    },
+    {
+        "id": 2647,
+        "text": "marzijaną",
+        "gloss": "to disturb, to hinder",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "83"
+            }
+        ]
+    },
+    {
+        "id": 2650,
+        "text": "liznôną",
+        "gloss": "to learn",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "84"
+            }
+        ]
+    },
+    {
+        "id": 2655,
+        "text": "anþeraz",
+        "gloss": "other",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "140"
+            }
+        ]
+    },
+    {
+        "id": 2657,
+        "text": "nanþijaną",
+        "gloss": "to be bold",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "140"
+            }
+        ]
+    },
+    {
+        "id": 2659,
+        "text": "swinþaz",
+        "gloss": "strong",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "140"
+            }
+        ]
+    },
+    {
+        "id": 2663,
+        "text": "sinþaz",
+        "gloss": "going, journey",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "140"
+            }
+        ]
+    },
+    {
+        "id": 2665,
+        "text": "kunþijaną",
+        "gloss": "to make known",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "140"
+            }
+        ]
     }
 ]

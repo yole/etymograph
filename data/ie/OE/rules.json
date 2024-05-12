@@ -1415,12 +1415,8 @@
                         {
                             "type": "relPhoneme",
                             "relativeIndex": 2,
+                            "cls": "word-final",
                             "parameter": "z"
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": 2,
-                            "cls": "word-final"
                         },
                         {
                             "type": "syllableCount",
@@ -1455,12 +1451,8 @@
                         {
                             "type": "relPhoneme",
                             "relativeIndex": 1,
+                            "cls": "word-final",
                             "parameter": "z"
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": 1,
-                            "cls": "word-final"
                         },
                         {
                             "type": "syllableCount",
@@ -1497,23 +1489,15 @@
                     "members": [
                         {
                             "type": "relPhoneme",
+                            "cls": "word-final",
                             "parameter": "n",
                             "relative": false
                         },
                         {
-                            "type": "leaf",
-                            "cond": "EndOfWord"
-                        },
-                        {
                             "type": "relPhoneme",
                             "relativeIndex": -1,
+                            "cls": "non-stressed",
                             "parameter": "ī"
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": -1,
-                            "negated": true,
-                            "cls": "stressed"
                         }
                     ]
                 }
@@ -1568,12 +1552,54 @@
                         }
                     ]
                 }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "SoundDisappears",
+                        "args": [
+                            "0"
+                        ]
+                    },
+                    {
+                        "type": "ChangeSoundClass",
+                        "args": [
+                            "short",
+                            "long",
+                            "-1"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "cls": "nasal consonant",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": 1,
+                            "cls": "fricative"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": -1,
+                            "cls": "stressed vowel"
+                        }
+                    ]
+                }
             }
         ],
         "sourceRefs": [
             {
                 "pubId": 5,
                 "refText": "139 (5.1.2)"
+            },
+            {
+                "pubId": 6,
+                "refText": "3.14"
             }
         ]
     },
