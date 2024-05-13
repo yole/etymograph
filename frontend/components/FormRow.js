@@ -15,6 +15,7 @@ export default function FormRow(props) {
         const currentValue = inputField.value
         const newValue = currentValue.substring(0, inputField.selectionStart) + char + currentValue.substring(inputField.selectionEnd)
         setValue(id, newValue)
+        inputField.focus()
     }
 
     return <tr onBlur={() => {
