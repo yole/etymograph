@@ -75,7 +75,6 @@ export default function Rule(params) {
 
     async function exampleSubmitted(r) {
         setShowExampleForm(false)
-        setExampleText("")
         if (r.ruleIds.indexOf(rule.id) >= 0) {
             setErrorText("")
             setExampleUnmatched([])
