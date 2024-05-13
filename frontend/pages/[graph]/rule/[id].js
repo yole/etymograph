@@ -35,6 +35,7 @@ export default function Rule(params) {
     const [editMode, setEditMode] = useState(false)
     const [linkMode, setLinkMode] = useState(false)
     const [errorText, setErrorText] = useState("")
+    const [lastExampleSource, setLastExampleSource] = useState("")
     const [showExampleForm, setShowExampleForm] = useState(false)
     const [exampleUnmatched, setExampleUnmatched] = useState([])
     const router = useRouter()
@@ -73,8 +74,9 @@ export default function Rule(params) {
         return addWordSequence(graph, data.exampleText, data.exampleSource)
     }
 
-    async function exampleSubmitted(r) {
+    async function exampleSubmitted(r, data) {
         setShowExampleForm(false)
+        setLastExampleSource(data.exampleSource)
         if (r.ruleIds.indexOf(rule.id) >= 0) {
             setErrorText("")
             setExampleUnmatched([])
@@ -218,7 +220,8 @@ export default function Rule(params) {
             <EtymographForm
                  create={createExample}
                  submitted={exampleSubmitted}
-                 cancelled={() => setShowExampleForm(false)}>
+                 cancelled={() => setShowExampleForm(false)}
+                 defaultValues={{exampleSource: lastExampleSource}}>
                 <table><tbody>
                     <FormRow id="exampleText" label="Example" size="50" inputAssist={true}/>
                     <FormRow id="exampleSource" label="Source"/>
