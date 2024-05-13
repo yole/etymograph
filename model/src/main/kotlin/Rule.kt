@@ -120,7 +120,7 @@ class Rule(
                 if (!phonemes.advance()) break
             }
             return if (anyChanges)
-                deriveWord(phonemic, phonemes.result(), toLanguage, word.stressedPhonemeIndex, null, word.classes)
+                deriveWord(phonemic, phonemes.result(), toLanguage, -1, null, word.classes)
             else
                 word
         }
