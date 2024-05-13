@@ -3694,5 +3694,218 @@
                 "refText": "140"
             }
         ]
+    },
+    {
+        "id": 2668,
+        "text": "gūþ",
+        "gloss": "battle",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "140"
+            }
+        ]
+    },
+    {
+        "id": 2670,
+        "text": "mīþl",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "140"
+            }
+        ]
+    },
+    {
+        "id": 2672,
+        "text": "stīþ",
+        "gloss": "stiff",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "140"
+            }
+        ]
+    },
+    {
+        "id": 2674,
+        "text": "ȳþ",
+        "gloss": "wave",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "140"
+            }
+        ]
+    },
+    {
+        "id": 2676,
+        "text": "fēþa",
+        "gloss": "footsoldier",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "141"
+            }
+        ]
+    },
+    {
+        "id": 2678,
+        "text": "līþe",
+        "gloss": "gentle",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "141"
+            }
+        ]
+    },
+    {
+        "id": 2680,
+        "text": "ēst",
+        "gloss": "favor",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "141"
+            }
+        ]
+    },
+    {
+        "id": 2682,
+        "text": "hōs",
+        "gloss": "company, crowd",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "141"
+            }
+        ]
+    },
+    {
+        "id": 2685,
+        "text": "gōs",
+        "gloss": "goose",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "141"
+            }
+        ]
+    },
+    {
+        "id": 2688,
+        "text": "ōs",
+        "gloss": "(pagan) god",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "141"
+            }
+        ]
+    },
+    {
+        "id": 2690,
+        "text": "fūs",
+        "gloss": "ready, eager",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "141"
+            }
+        ]
+    },
+    {
+        "id": 2691,
+        "text": "ȳst",
+        "gloss": "storm",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "141"
+            }
+        ]
+    },
+    {
+        "id": 2693,
+        "text": "ōsle",
+        "gloss": "blackbird",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "141"
+            }
+        ]
+    },
+    {
+        "id": 2694,
+        "text": "niman",
+        "gloss": "take"
+    },
+    {
+        "id": 2696,
+        "text": "cuman",
+        "gloss": "to come",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "141"
+            }
+        ]
+    },
+    {
+        "id": 2698,
+        "text": "cwēn",
+        "gloss": "woman, wife",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "143"
+            }
+        ]
+    },
+    {
+        "id": 2701,
+        "text": "wēnan",
+        "gloss": "to expect, to hope",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "143"
+            }
+        ]
+    },
+    {
+        "id": 2703,
+        "text": "spōn",
+        "gloss": "wood-chip, shaving",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "143"
+            }
+        ]
+    },
+    {
+        "id": 2705,
+        "text": "glōm",
+        "gloss": "twilight",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "143"
+            }
+        ]
+    },
+    {
+        "id": 2707,
+        "text": "ġeōmor",
+        "gloss": "sad",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "143"
+            }
+        ]
     }
 ]

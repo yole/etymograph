@@ -550,5 +550,70 @@
                 "refText": "59"
             }
         ]
+    },
+    {
+        "id": 2669,
+        "text": "minþlą",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "140"
+            }
+        ]
+    },
+    {
+        "id": 2671,
+        "text": "stinþaz",
+        "gloss": "stiff",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "140"
+            }
+        ]
+    },
+    {
+        "id": 2673,
+        "text": "unþiz",
+        "gloss": "wave",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "140"
+            }
+        ]
+    },
+    {
+        "id": 2700,
+        "text": "wānijaną",
+        "gloss": "to expect, to hope",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "143"
+            }
+        ]
+    },
+    {
+        "id": 2702,
+        "text": "spānuz",
+        "gloss": "wood-chip, shaving",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "143"
+            }
+        ]
+    },
+    {
+        "id": 2704,
+        "text": "glāmaz",
+        "gloss": "faint light",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "143"
+            }
+        ]
     }
 ]

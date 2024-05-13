@@ -413,6 +413,19 @@
                 "fricative",
                 "consonant"
             ]
+        },
+        {
+            "id": 2686,
+            "graphemes": [
+                "ą̄"
+            ],
+            "classes": [
+                "long",
+                "back",
+                "open",
+                "nasal",
+                "vowel"
+            ]
         }
     ],
     "diphthongs": [

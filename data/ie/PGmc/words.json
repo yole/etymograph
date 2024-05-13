@@ -1860,5 +1860,82 @@
                 "refText": "140"
             }
         ]
+    },
+    {
+        "id": 2667,
+        "text": "gunþiz",
+        "gloss": "battle",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "140"
+            }
+        ]
+    },
+    {
+        "id": 2679,
+        "text": "anstiz",
+        "gloss": "favor",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "141"
+            }
+        ]
+    },
+    {
+        "id": 2681,
+        "text": "hansō",
+        "gloss": "company, crowd",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "141"
+            }
+        ]
+    },
+    {
+        "id": 2684,
+        "text": "gans",
+        "gloss": "goose",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "141"
+            }
+        ]
+    },
+    {
+        "id": 2687,
+        "text": "ansuz",
+        "gloss": "(pagan) god",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "141"
+            }
+        ]
+    },
+    {
+        "id": 2689,
+        "text": "funsaz",
+        "gloss": "ready, eager",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "141"
+            }
+        ]
+    },
+    {
+        "id": 2697,
+        "text": "kʷēniz",
+        "gloss": "woman, wife",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "143"
+            }
+        ]
     }
 ]

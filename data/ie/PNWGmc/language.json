@@ -409,6 +409,19 @@
                 "back",
                 "vowel"
             ]
+        },
+        {
+            "id": 2683,
+            "graphemes": [
+                "ą̄"
+            ],
+            "classes": [
+                "long",
+                "back",
+                "open",
+                "nasal",
+                "vowel"
+            ]
         }
     ],
     "stressRuleId": 1873,

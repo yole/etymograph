@@ -1234,5 +1234,71 @@
                 "refText": "140"
             }
         ]
+    },
+    {
+        "id": 2675,
+        "text": "fanþijō",
+        "gloss": "traveller on foot",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "141"
+            }
+        ]
+    },
+    {
+        "id": 2677,
+        "text": "linþī",
+        "gloss": "gentle",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "141"
+            }
+        ]
+    },
+    {
+        "id": 2692,
+        "text": "anslā",
+        "gloss": "blackbird",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "141"
+            }
+        ]
+    },
+    {
+        "id": 2695,
+        "text": "kweman",
+        "gloss": "to come",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "141"
+            }
+        ]
+    },
+    {
+        "id": 2699,
+        "text": "wēnijaną",
+        "gloss": "to expect, to hope",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "143"
+            }
+        ]
+    },
+    {
+        "id": 2706,
+        "text": "jāmar",
+        "gloss": "lamentation; sad",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "143"
+            }
+        ]
     }
 ]

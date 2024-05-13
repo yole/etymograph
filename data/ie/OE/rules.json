@@ -1674,12 +1674,42 @@
                         }
                     ]
                 }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "ą̄"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "cls": "stressed",
+                            "parameter": "ā",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": 1,
+                            "cls": "nasal consonant"
+                        }
+                    ]
+                }
             }
         ],
         "sourceRefs": [
             {
                 "pubId": 5,
                 "refText": "142 (5.1.2)"
+            },
+            {
+                "pubId": 6,
+                "refText": "5.3"
             }
         ]
     },
@@ -1988,6 +2018,10 @@
             {
                 "pubId": 5,
                 "refText": "146"
+            },
+            {
+                "pubId": 6,
+                "refText": "5.10"
             }
         ],
         "notes": "The fronting to ǣ is specific to West Saxon; Kentish and Anglian dialects had ē instead (Ringe 2014:149)"
