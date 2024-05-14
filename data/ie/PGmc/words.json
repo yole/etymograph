@@ -1937,5 +1937,423 @@
                 "refText": "143"
             }
         ]
+    },
+    {
+        "id": 2709,
+        "text": "aiþaz",
+        "gloss": "oath",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "170"
+            }
+        ]
+    },
+    {
+        "id": 2711,
+        "text": "hailaz",
+        "gloss": "unhurt, healthy",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "171"
+            }
+        ]
+    },
+    {
+        "id": 2713,
+        "text": "sairą",
+        "gloss": "pain, wound",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "171"
+            }
+        ]
+    },
+    {
+        "id": 2715,
+        "text": "snaiwaz",
+        "gloss": "snow",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "171"
+            }
+        ]
+    },
+    {
+        "id": 2723,
+        "text": "hafraz",
+        "gloss": "he-goat",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "147"
+            }
+        ]
+    },
+    {
+        "id": 2726,
+        "text": "stabaz",
+        "gloss": "staff, letter",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "147"
+            }
+        ]
+    },
+    {
+        "id": 2729,
+        "text": "paþaz",
+        "gloss": "path",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "147"
+            }
+        ]
+    },
+    {
+        "id": 2732,
+        "text": "fastaz",
+        "gloss": "fixed, firm",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "147"
+            }
+        ]
+    },
+    {
+        "id": 2735,
+        "text": "þaką",
+        "gloss": "roof",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "147"
+            }
+        ]
+    },
+    {
+        "id": 2738,
+        "text": "naglaz",
+        "gloss": "nail",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "148"
+            }
+        ]
+    },
+    {
+        "id": 2741,
+        "text": "waraz",
+        "gloss": "aware, alert",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "148"
+            }
+        ]
+    },
+    {
+        "id": 2744,
+        "text": "smalaz",
+        "gloss": "small",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "148"
+            }
+        ]
+    },
+    {
+        "id": 2757,
+        "text": "lētaną̄",
+        "gloss": "to let go, to allow",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "149"
+            }
+        ]
+    },
+    {
+        "id": 2759,
+        "text": "rēdaną",
+        "gloss": "to advise",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "149"
+            }
+        ]
+    },
+    {
+        "id": 2765,
+        "text": "lēwijaną",
+        "gloss": "to betray",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "150"
+            }
+        ]
+    },
+    {
+        "id": 2768,
+        "text": "bindaną",
+        "gloss": "to tie",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "153"
+            }
+        ]
+    },
+    {
+        "id": 2771,
+        "text": "falþaną",
+        "gloss": "to roll up, to fold",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "156"
+            }
+        ]
+    },
+    {
+        "id": 2775,
+        "text": "balþaz",
+        "gloss": "bold, brave",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "156"
+            }
+        ]
+    },
+    {
+        "id": 2778,
+        "text": "wulþraz",
+        "gloss": "worth",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "156"
+            }
+        ]
+    },
+    {
+        "id": 2782,
+        "text": "sōkijaną",
+        "gloss": "to look for, to seek",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "157"
+            }
+        ]
+    },
+    {
+        "id": 2789,
+        "text": "hlaupaną",
+        "gloss": "to run, to jump",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "172"
+            }
+        ]
+    },
+    {
+        "id": 2791,
+        "text": "laubaz",
+        "gloss": "leaf",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "172"
+            }
+        ]
+    },
+    {
+        "id": 2793,
+        "text": "straumaz",
+        "gloss": "stream",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "172"
+            }
+        ]
+    },
+    {
+        "id": 2795,
+        "text": "dauþuz",
+        "gloss": "death",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "172"
+            }
+        ]
+    },
+    {
+        "id": 2796,
+        "text": "daudaz",
+        "gloss": "dead",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "172"
+            }
+        ]
+    },
+    {
+        "id": 2798,
+        "text": "lausaz",
+        "gloss": "free (from)",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "172"
+            }
+        ]
+    },
+    {
+        "id": 2800,
+        "text": "auk",
+        "gloss": "also",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "172"
+            }
+        ]
+    },
+    {
+        "id": 2801,
+        "text": "hauhaz",
+        "gloss": "high",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "172"
+            }
+        ]
+    },
+    {
+        "id": 2807,
+        "text": "freusaną",
+        "gloss": "to freeze",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "173"
+            }
+        ]
+    },
+    {
+        "id": 2809,
+        "text": "seukaz",
+        "gloss": "sick",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "174"
+            }
+        ]
+    },
+    {
+        "id": 2811,
+        "text": "fleuganą",
+        "gloss": "to fly",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "174"
+            }
+        ]
+    },
+    {
+        "id": 2813,
+        "text": "teuhaną",
+        "gloss": "to pull",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "174"
+            }
+        ]
+    },
+    {
+        "id": 2821,
+        "text": "trewą",
+        "gloss": "tree, wood",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "174"
+            }
+        ]
+    },
+    {
+        "id": 2833,
+        "text": "þwahaną",
+        "gloss": "to wash",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "176"
+            }
+        ]
+    },
+    {
+        "id": 2839,
+        "text": "ahʷō",
+        "gloss": "river",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "177"
+            }
+        ]
+    },
+    {
+        "id": 2851,
+        "text": "tīhaną",
+        "gloss": "to announce",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "178"
+            }
+        ]
+    },
+    {
+        "id": 2853,
+        "text": "lihʷaną",
+        "gloss": "to lend",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "178"
+            }
+        ]
+    },
+    {
+        "id": 2854,
+        "text": "līhwan",
+        "gloss": "to lend",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "178"
+            }
+        ]
     }
 ]

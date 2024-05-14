@@ -910,12 +910,6 @@
         "gloss": "that"
     },
     {
-        "id": 419,
-        "text": "wyrm",
-        "gloss": "serpent",
-        "pos": "N"
-    },
-    {
         "id": 420,
         "text": "forswealg",
         "gloss": "swallow.PRET.3SG"
@@ -1727,11 +1721,6 @@
         "id": 2123,
         "text": "earm",
         "gloss": "arm"
-    },
-    {
-        "id": 2131,
-        "text": "weorþan",
-        "gloss": "to become"
     },
     {
         "id": 2137,
@@ -2768,7 +2757,7 @@
     },
     {
         "id": 2397,
-        "text": "wǣpn",
+        "text": "wǣpen",
         "gloss": "weapon"
     },
     {
@@ -3533,11 +3522,6 @@
         ]
     },
     {
-        "id": 2628,
-        "text": "swā",
-        "gloss": "so, thus"
-    },
-    {
         "id": 2629,
         "text": "ǣġ",
         "gloss": "egg"
@@ -3905,6 +3889,664 @@
             {
                 "pubId": 5,
                 "refText": "143"
+            }
+        ]
+    },
+    {
+        "id": 2708,
+        "text": "hlāf",
+        "gloss": "bread",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "170"
+            }
+        ]
+    },
+    {
+        "id": 2710,
+        "text": "āþ",
+        "gloss": "oath",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "170"
+            }
+        ]
+    },
+    {
+        "id": 2712,
+        "text": "hāl",
+        "gloss": "unhurt, healthy",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "171"
+            }
+        ]
+    },
+    {
+        "id": 2714,
+        "text": "sār",
+        "gloss": "pain, wound",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "171"
+            }
+        ]
+    },
+    {
+        "id": 2716,
+        "text": "snāw",
+        "gloss": "snow",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "171"
+            }
+        ]
+    },
+    {
+        "id": 2718,
+        "text": "sāpe",
+        "gloss": "soap",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "171"
+            }
+        ]
+    },
+    {
+        "id": 2720,
+        "text": "gāst",
+        "gloss": "spirit",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "171"
+            }
+        ]
+    },
+    {
+        "id": 2722,
+        "text": "āscian",
+        "gloss": "to ask",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "171"
+            }
+        ]
+    },
+    {
+        "id": 2725,
+        "text": "hæfer",
+        "gloss": "he-goat",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "147"
+            }
+        ]
+    },
+    {
+        "id": 2728,
+        "text": "stæf",
+        "gloss": "staff, letter",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "147"
+            }
+        ]
+    },
+    {
+        "id": 2731,
+        "text": "pæþ",
+        "gloss": "path",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "147"
+            }
+        ]
+    },
+    {
+        "id": 2734,
+        "text": "fæst",
+        "gloss": "fixed, firm",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "147"
+            }
+        ]
+    },
+    {
+        "id": 2737,
+        "text": "þæc",
+        "gloss": "roof",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "147"
+            }
+        ]
+    },
+    {
+        "id": 2740,
+        "text": "næġl",
+        "gloss": "nail",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "148"
+            }
+        ]
+    },
+    {
+        "id": 2743,
+        "text": "wær",
+        "gloss": "aware, alert",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "148"
+            }
+        ]
+    },
+    {
+        "id": 2746,
+        "text": "smæl",
+        "gloss": "small",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "148"
+            }
+        ]
+    },
+    {
+        "id": 2752,
+        "text": "awel",
+        "gloss": "hook, fork",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "148"
+            }
+        ]
+    },
+    {
+        "id": 2762,
+        "text": "rǣdan",
+        "gloss": "to advise",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "149"
+            }
+        ]
+    },
+    {
+        "id": 2764,
+        "text": "strǣt",
+        "gloss": "paved road",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "150"
+            }
+        ]
+    },
+    {
+        "id": 2767,
+        "text": "lǣwan",
+        "gloss": "to betray",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "150"
+            }
+        ]
+    },
+    {
+        "id": 2770,
+        "text": "bindan",
+        "gloss": "to tie",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "153"
+            }
+        ]
+    },
+    {
+        "id": 2773,
+        "text": "fealdan",
+        "gloss": "to roll up, to fold",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "156"
+            }
+        ]
+    },
+    {
+        "id": 2774,
+        "text": "wilde",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "156"
+            }
+        ]
+    },
+    {
+        "id": 2777,
+        "text": "beald",
+        "gloss": "bold, brave",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "156"
+            }
+        ]
+    },
+    {
+        "id": 2780,
+        "text": "wuldor",
+        "gloss": "worth",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "156"
+            }
+        ]
+    },
+    {
+        "id": 2781,
+        "text": "dēman",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "157"
+            }
+        ]
+    },
+    {
+        "id": 2784,
+        "text": "sēċan",
+        "gloss": "to look for, to seek",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "157"
+            }
+        ]
+    },
+    {
+        "id": 2786,
+        "text": "rǣċan",
+        "gloss": "to reach",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "157"
+            }
+        ]
+    },
+    {
+        "id": 2788,
+        "text": "cempa",
+        "gloss": "warrior",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "157"
+            }
+        ]
+    },
+    {
+        "id": 2790,
+        "text": "hlēapan",
+        "gloss": "to run, to jump",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "172"
+            }
+        ]
+    },
+    {
+        "id": 2792,
+        "text": "lēaf",
+        "gloss": "leaf",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "172"
+            }
+        ]
+    },
+    {
+        "id": 2794,
+        "text": "strēam",
+        "gloss": "stream",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "172"
+            }
+        ]
+    },
+    {
+        "id": 2797,
+        "text": "dēad",
+        "gloss": "dead",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "172"
+            }
+        ]
+    },
+    {
+        "id": 2799,
+        "text": "lēas",
+        "gloss": "free (from)",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "172"
+            }
+        ]
+    },
+    {
+        "id": 2802,
+        "text": "hēah",
+        "gloss": "high",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "172"
+            }
+        ]
+    },
+    {
+        "id": 2804,
+        "text": "ēar",
+        "gloss": "earth",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "172"
+            }
+        ]
+    },
+    {
+        "id": 2806,
+        "text": "nēat",
+        "gloss": "bovine, ox",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "172"
+            }
+        ]
+    },
+    {
+        "id": 2808,
+        "text": "frēosan",
+        "gloss": "to freeze",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "173"
+            }
+        ]
+    },
+    {
+        "id": 2810,
+        "text": "sēoc",
+        "gloss": "sick",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "174"
+            }
+        ]
+    },
+    {
+        "id": 2812,
+        "text": "flēogan",
+        "gloss": "to fly",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "174"
+            }
+        ]
+    },
+    {
+        "id": 2814,
+        "text": "tēon",
+        "gloss": "to pull",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "174"
+            }
+        ]
+    },
+    {
+        "id": 2816,
+        "text": "brēost",
+        "gloss": "breast",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "174"
+            }
+        ]
+    },
+    {
+        "id": 2818,
+        "text": "lēoþ",
+        "gloss": "song",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "174"
+            }
+        ]
+    },
+    {
+        "id": 2820,
+        "text": "bēor",
+        "gloss": "beer",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "174"
+            }
+        ]
+    },
+    {
+        "id": 2822,
+        "text": "trēo",
+        "gloss": "tree, wood",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "174"
+            }
+        ]
+    },
+    {
+        "id": 2825,
+        "text": "eaxl",
+        "gloss": "shoulder-joint",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "176"
+            }
+        ]
+    },
+    {
+        "id": 2827,
+        "text": "weaxan",
+        "gloss": "to grow",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "176"
+            }
+        ]
+    },
+    {
+        "id": 2830,
+        "text": "hleahtor",
+        "gloss": "laughter",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "176"
+            }
+        ]
+    },
+    {
+        "id": 2832,
+        "text": "fleax",
+        "gloss": "flax",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "176"
+            }
+        ]
+    },
+    {
+        "id": 2834,
+        "text": "þwēan",
+        "gloss": "to wash",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "176"
+            }
+        ]
+    },
+    {
+        "id": 2836,
+        "text": "flēan",
+        "gloss": "to skin",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "177"
+            }
+        ]
+    },
+    {
+        "id": 2838,
+        "text": "lēan",
+        "gloss": "to reproach",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "177"
+            }
+        ]
+    },
+    {
+        "id": 2840,
+        "text": "ēa",
+        "gloss": "river",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "177"
+            }
+        ]
+    },
+    {
+        "id": 2842,
+        "text": "ġefēon",
+        "gloss": "to rejoice",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "178"
+            }
+        ]
+    },
+    {
+        "id": 2844,
+        "text": "feohtan",
+        "gloss": "to fight",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "178"
+            }
+        ]
+    },
+    {
+        "id": 2846,
+        "text": "meox",
+        "gloss": "dung",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "178"
+            }
+        ]
+    },
+    {
+        "id": 2848,
+        "text": "seohhe",
+        "gloss": "sieve",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "178"
+            }
+        ]
+    },
+    {
+        "id": 2850,
+        "text": "wēoh",
+        "gloss": "idol",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "178"
+            }
+        ]
+    },
+    {
+        "id": 2852,
+        "text": "tēon",
+        "gloss": "to announce",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "178"
+            }
+        ]
+    },
+    {
+        "id": 2855,
+        "text": "lēon",
+        "gloss": "to lend",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "178"
             }
         ]
     }

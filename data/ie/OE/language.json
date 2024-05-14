@@ -528,6 +528,7 @@
         "ai"
     ],
     "stressRuleId": 2292,
+    "orthographyRuleId": 2222,
     "grammaticalCategories": [
         {
             "name": "Case",

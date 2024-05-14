@@ -2524,19 +2524,9 @@
                             "relative": false
                         },
                         {
-                            "type": "or",
-                            "members": [
-                                {
-                                    "type": "relPhoneme",
-                                    "relativeIndex": 1,
-                                    "parameter": "r"
-                                },
-                                {
-                                    "type": "relPhoneme",
-                                    "relativeIndex": 1,
-                                    "parameter": "l"
-                                }
-                            ]
+                            "type": "relPhoneme",
+                            "relativeIndex": 1,
+                            "parameter": "r"
                         },
                         {
                             "type": "relPhoneme",
@@ -2548,6 +2538,66 @@
                             "relativeIndex": 2,
                             "negated": true,
                             "parameter": "j"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "eo"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "e",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": 1,
+                            "parameter": "l"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": 2,
+                            "parameter": "h"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "ie"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "i",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": 1,
+                            "parameter": "l"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": 2,
+                            "parameter": "h"
                         }
                     ]
                 }
@@ -2925,18 +2975,33 @@
                     {
                         "type": "ChangeSound",
                         "args": [
-                            "c"
+                            "x"
+                        ]
+                    },
+                    {
+                        "type": "SoundDisappears",
+                        "args": [
+                            "1"
                         ]
                     }
                 ],
                 "condition": {
-                    "type": "relPhoneme",
-                    "parameter": "k",
-                    "relative": false
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "k",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": 1,
+                            "parameter": "s"
+                        }
+                    ]
                 }
             }
-        ],
-        "notes": ""
+        ]
     },
     {
         "id": 2248,
@@ -3004,6 +3069,7 @@
                     "members": [
                         {
                             "type": "relPhoneme",
+                            "cls": "stressed",
                             "parameter": "æ",
                             "relative": false
                         },
@@ -3039,6 +3105,7 @@
                     "members": [
                         {
                             "type": "relPhoneme",
+                            "cls": "stressed",
                             "parameter": "ǣ",
                             "relative": false
                         },
@@ -3074,6 +3141,7 @@
                     "members": [
                         {
                             "type": "relPhoneme",
+                            "cls": "non-diphthong stressed",
                             "parameter": "e",
                             "relative": false
                         },

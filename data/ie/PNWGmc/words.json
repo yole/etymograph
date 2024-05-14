@@ -615,5 +615,104 @@
                 "refText": "143"
             }
         ]
+    },
+    {
+        "id": 2747,
+        "text": "fatą",
+        "gloss": "container",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "148"
+            }
+        ]
+    },
+    {
+        "id": 2750,
+        "text": "awalaz",
+        "gloss": "hook, fork",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "148"
+            }
+        ]
+    },
+    {
+        "id": 2760,
+        "text": "rādaną",
+        "gloss": "to advise",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "149"
+            }
+        ]
+    },
+    {
+        "id": 2803,
+        "text": "auraz",
+        "gloss": "earth",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "172"
+            }
+        ]
+    },
+    {
+        "id": 2805,
+        "text": "nautą",
+        "gloss": "bovine, ox",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "172"
+            }
+        ]
+    },
+    {
+        "id": 2815,
+        "text": "breustą",
+        "gloss": "breast",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "174"
+            }
+        ]
+    },
+    {
+        "id": 2826,
+        "text": "wahsaną",
+        "gloss": "to grow",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "176"
+            }
+        ]
+    },
+    {
+        "id": 2828,
+        "text": "hlahtraz",
+        "gloss": "laughter",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "176"
+            }
+        ]
+    },
+    {
+        "id": 2835,
+        "text": "flahaną",
+        "gloss": "to skin",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "177"
+            }
+        ]
     }
 ]
