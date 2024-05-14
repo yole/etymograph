@@ -397,12 +397,18 @@ class WordController {
                 reconstructed = reconstructed)
             resultWords.add(word.toRefViewModel(repo))
             if (lastWord != null) {
-                val link = repo.addLink(word, lastWord, Link.Origin, emptyList(), source, null)
-                val ruleSequence = repo.ruleSequencesForLanguage(word.language)
-                    .singleOrNull { it.fromLanguage == lastWord!!.language }
-                if (ruleSequence != null) {
-                    repo.applyRuleSequence(link, ruleSequence)
-                    resultRules.addAll(link.rules.map { it.id })
+                val existingLink = repo.findLink(word, lastWord, Link.Origin)
+                if (existingLink == null) {
+                    val link = repo.addLink(word, lastWord, Link.Origin, emptyList(), source, null)
+                    val ruleSequence = repo.ruleSequencesForLanguage(word.language)
+                        .singleOrNull { it.fromLanguage == lastWord!!.language }
+                    if (ruleSequence != null) {
+                        repo.applyRuleSequence(link, ruleSequence)
+                        resultRules.addAll(link.rules.map { it.id })
+                    }
+                }
+                else {
+                    resultRules.addAll(existingLink.rules.map { it.id })
                 }
             }
             lastWord = word
