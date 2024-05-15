@@ -16,6 +16,20 @@ class RuleParseContext(
     val ruleRefFactory: (String) -> RuleRef
 )
 
+class RuleTraceData(val matchedBranch: RuleBranch)
+
+class RuleTrace {
+    val traceData = mutableMapOf<Pair<Int, Int>, RuleTraceData>()
+
+    fun logMatchedBranch(rule: Rule, word: Word, branch: RuleBranch) {
+        traceData[rule.id to word.id] = RuleTraceData(branch)
+    }
+
+    fun findMatchedBranch(rule: Rule, word: Word): RuleBranch? {
+        return traceData[rule.id to word.id]?.matchedBranch
+    }
+}
+
 data class ParseCandidate(val text: String, val rules: List<Rule>, val pos: String?, val word: Word?) {
     val categories: String
         get() = rules.fold("") { t, rule -> t + rule.addedCategories.orEmpty() }
@@ -110,13 +124,13 @@ class Rule(
 ) : LangEntity(id, source, notes) {
     fun isPhonemic(): Boolean = logic.branches.any { it.condition.isPhonemic() }
 
-    fun apply(word: Word, graph: GraphRepository): Word {
+    fun apply(word: Word, graph: GraphRepository, trace: RuleTrace? = null): Word {
         if (isPhonemic()) {
             val phonemic = word.asPhonemic()
             val phonemes = PhonemeIterator(phonemic, graph)
             var anyChanges = false
             while (true) {
-                anyChanges = anyChanges or applyToPhoneme(phonemic, phonemes, graph)
+                anyChanges = anyChanges or applyToPhoneme(phonemic, phonemes, graph, trace)
                 if (!phonemes.advance()) break
             }
             return if (anyChanges)
@@ -128,6 +142,7 @@ class Rule(
         val preWord = if (logic.preInstructions.isEmpty()) word else logic.preInstructions.apply(this, null, word, graph)
         for (branch in logic.branches) {
             if (branch.matches(preWord, graph)) {
+                trace?.logMatchedBranch(this, word, branch)
                 val resultWord = branch.apply(this, preWord, graph)
                 return deriveWord(word, resultWord.text, toLanguage, resultWord.stressedPhonemeIndex, resultWord.segments, resultWord.classes)
             }
@@ -145,9 +160,10 @@ class Rule(
         }
     }
 
-    fun applyToPhoneme(word: Word, phonemes: PhonemeIterator, graph: GraphRepository): Boolean {
+    fun applyToPhoneme(word: Word, phonemes: PhonemeIterator, graph: GraphRepository, trace: RuleTrace? = null): Boolean {
         for (branch in logic.branches) {
             if (branch.condition.matches(word, phonemes, graph)) {
+                trace?.logMatchedBranch(this, word, branch)
                 for (instruction in branch.instructions) {
                     instruction.apply(word, phonemes, graph)
                 }

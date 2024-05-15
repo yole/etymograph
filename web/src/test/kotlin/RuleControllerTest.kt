@@ -226,7 +226,7 @@ class RuleControllerTest {
         graph.addLink(word2, word1, Link.Derived, listOf(rule), emptyList(), null)
 
         val ruleViewModel = ruleController.rule(fixture.graph, rule.id)
-        val example = ruleViewModel.examples.single()
+        val example = ruleViewModel.branches.single().examples.single()
         assertNull(example.expectedWord)
     }
 }

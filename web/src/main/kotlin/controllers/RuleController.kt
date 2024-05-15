@@ -1,14 +1,16 @@
 package ru.yole.etymograph.web.controllers
 
-import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
-import org.springframework.web.server.ResponseStatusException
 import ru.yole.etymograph.*
 import ru.yole.etymograph.web.*
 
 @RestController
 class RuleController {
-    data class RuleBranchViewModel(val conditions: RichText, val instructions: List<RichText>)
+    data class RuleBranchViewModel(
+        val conditions: RichText,
+        val instructions: List<RichText>,
+        val examples: List<RuleExampleViewModel>
+    )
 
     data class RuleLinkViewModel(
         val toRuleId: Int,
@@ -57,7 +59,7 @@ class RuleController {
         val branches: List<RuleBranchViewModel>,
         val links: List<RuleLinkViewModel>,
         val linkedWords: List<RuleWordLinkViewModel>,
-        val examples: List<RuleExampleViewModel>
+        val orphanExamples: List<RuleExampleViewModel>
     )
 
     data class RuleShortViewModel(
@@ -147,10 +149,16 @@ class RuleController {
         }
     }
 
+    private class RuleExampleData(val link: Link, val steps: List<RuleStepData>, val branch: RuleBranch?)
+
     private fun Rule.toViewModel(repo: GraphRepository): RuleViewModel {
         val paradigm = repo.paradigmForRule(this)
         val links = (repo.getLinksFrom(this).map { it to it.toEntity } +
                 repo.getLinksTo(this).map { it to it.fromEntity })
+        val examples = repo.findRuleExamples(this).map { link ->
+            val steps = buildIntermediateSteps(repo, link)
+            RuleExampleData(link, steps, steps.find { it.rule == this }?.matchedBranch)
+        }
         return RuleViewModel(
             id, name,
             fromLanguage.shortName, toLanguage.shortName,
@@ -169,7 +177,9 @@ class RuleController {
             paradigm?.name,
             isPhonemic(),
             logic.preInstructions.map { it.toRichText() },
-            logic.branches.map { it.toViewModel(isUnconditional()) },
+            logic.branches.map { branch ->
+                branch.toViewModel(isUnconditional(), examples.filter { it.branch == branch }, repo)
+            },
             links.mapNotNull { (link, langEntity) ->
                 val rule = langEntity as? Rule
                 rule?.let {
@@ -185,13 +195,12 @@ class RuleController {
                     )
                 }
             },
-            repo.findRuleExamples(this).map { link ->
-                exampleToViewModel(link, repo)
-            }
+            examples.filter { it.branch == null }.map { exampleToViewModel(it, repo) }
         )
     }
 
-    private fun exampleToViewModel(link: Link, graph: GraphRepository): RuleExampleViewModel {
+    private fun exampleToViewModel(example: RuleExampleData, graph: GraphRepository): RuleExampleViewModel {
+        val link = example.link
         val fromWord = link.fromEntity as Word
         val toWord = link.toEntity as Word
         return RuleExampleViewModel(
@@ -200,7 +209,7 @@ class RuleController {
             link.applyRules(toWord, graph).asOrthographic()
                 .takeIf { !fromWord.language.isNormalizedEqual(it, fromWord) }?.text,
             link.rules.map { RuleLinkViewModel(it.id, it.name, link.type.id, link.source.toViewModel(graph), link.notes) },
-            buildIntermediateSteps(graph, link)
+            example.steps.map { it.result }
         )
     }
 
@@ -212,10 +221,11 @@ class RuleController {
         }
     }
 
-    private fun RuleBranch.toViewModel(isUnconditional: Boolean): RuleBranchViewModel {
+    private fun RuleBranch.toViewModel(isUnconditional: Boolean, examples: List<RuleExampleData>, repo: GraphRepository): RuleBranchViewModel {
         return RuleBranchViewModel(
             if (isUnconditional) RichText(emptyList()) else condition.toRichText(),
-            instructions.map { it.toRichText() }
+            instructions.map { it.toRichText() },
+            examples.map { exampleToViewModel(it, repo) }
         )
     }
 

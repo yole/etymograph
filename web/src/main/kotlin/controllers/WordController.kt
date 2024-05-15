@@ -427,11 +427,15 @@ fun linkToViewModel(
     fromSide: Boolean
 ): WordController.LinkWordViewModel {
     val toWord = if (fromSide) link.toEntity as Word else link.fromEntity as Word
+    val steps = if (link.type == Link.Origin)
+        buildIntermediateSteps(graph, link).map { it.result }.takeIf { it.size > 1 } ?: emptyList()
+    else
+        emptyList()
     return WordController.LinkWordViewModel(
         toWord.toRefViewModel(graph),
         link.rules.map { it.id },
         link.rules.map { it.name },
-        buildIntermediateSteps(graph, link),
+        steps,
         link.source.toViewModel(graph),
         link.source.toEditableText(graph),
         link.notes,
@@ -439,13 +443,15 @@ fun linkToViewModel(
     )
 }
 
-fun buildIntermediateSteps(graph: GraphRepository, link: Link): List<String> {
-    if (link.type != Link.Origin || link.rules.size <= 1) return emptyList()
+class RuleStepData(val result: String, val rule: Rule, val matchedBranch: RuleBranch?)
+
+fun buildIntermediateSteps(graph: GraphRepository, link: Link): List<RuleStepData> {
     var word = link.toEntity as Word
-    val result = mutableListOf<String>()
+    val result = mutableListOf<RuleStepData>()
+    val trace = RuleTrace()
     for (rule in link.rules) {
-        word = rule.apply(word, graph)
-        result.add(word.text)
+        word = rule.apply(word, graph, trace)
+        result.add(RuleStepData(word.text, rule, trace.findMatchedBranch(rule, word)))
     }
     return result
 }
