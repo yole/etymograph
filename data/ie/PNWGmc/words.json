@@ -714,5 +714,126 @@
                 "refText": "177"
             }
         ]
+    },
+    {
+        "id": 2869,
+        "text": "argaz",
+        "gloss": "cowardly, effeminate",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "180"
+            }
+        ]
+    },
+    {
+        "id": 2880,
+        "text": "herdu",
+        "gloss": "herd",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "182"
+            }
+        ]
+    },
+    {
+        "id": 2883,
+        "text": "erlaz",
+        "gloss": "nobleman",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "182"
+            }
+        ]
+    },
+    {
+        "id": 2896,
+        "text": "fallaną",
+        "gloss": "to fall",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "185"
+            }
+        ]
+    },
+    {
+        "id": 2899,
+        "text": "hallu",
+        "gloss": "hall",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "185"
+            }
+        ]
+    },
+    {
+        "id": 2907,
+        "text": "selhaz",
+        "gloss": "seal",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "187"
+            }
+        ]
+    },
+    {
+        "id": 2912,
+        "text": "nabulô",
+        "gloss": "navel",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "191"
+            }
+        ]
+    },
+    {
+        "id": 2914,
+        "text": "habukaz",
+        "gloss": "hawk",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "191"
+            }
+        ]
+    },
+    {
+        "id": 2916,
+        "text": "sadulaz",
+        "gloss": "saddle",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "191"
+            }
+        ]
+    },
+    {
+        "id": 2918,
+        "text": "stapulaz",
+        "gloss": "post, pillar",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "191"
+            }
+        ]
+    },
+    {
+        "id": 2927,
+        "text": "laguz",
+        "gloss": "water, the sea",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "191"
+            }
+        ]
     }
 ]

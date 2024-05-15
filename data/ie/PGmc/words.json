@@ -2355,5 +2355,148 @@
                 "refText": "178"
             }
         ]
+    },
+    {
+        "id": 2856,
+        "text": "arbaiþiz",
+        "gloss": "hardship, hard labor",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "180"
+            }
+        ]
+    },
+    {
+        "id": 2859,
+        "text": "barną",
+        "gloss": "child",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "180"
+            }
+        ]
+    },
+    {
+        "id": 2862,
+        "text": "arsaz",
+        "gloss": "arse",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "180"
+            }
+        ]
+    },
+    {
+        "id": 2864,
+        "text": "farhaz",
+        "gloss": "piglet",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "180"
+            }
+        ]
+    },
+    {
+        "id": 2866,
+        "text": "sparwô",
+        "gloss": "sparrow",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "180"
+            }
+        ]
+    },
+    {
+        "id": 2875,
+        "text": "werpaną",
+        "gloss": "to throw",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "182"
+            }
+        ]
+    },
+    {
+        "id": 2877,
+        "text": "werką",
+        "gloss": "work",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "182"
+            }
+        ]
+    },
+    {
+        "id": 2878,
+        "text": "berhtaz",
+        "gloss": "bright",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "182"
+            }
+        ]
+    },
+    {
+        "id": 2881,
+        "text": "swerdą",
+        "gloss": "sword",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "182"
+            }
+        ]
+    },
+    {
+        "id": 2891,
+        "text": "saltą",
+        "gloss": "salt",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "184"
+            }
+        ]
+    },
+    {
+        "id": 2893,
+        "text": "haldaną",
+        "gloss": "to keep, to protect",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "184"
+            }
+        ]
+    },
+    {
+        "id": 2905,
+        "text": "felhaną",
+        "gloss": "to push in",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "187"
+            }
+        ]
+    },
+    {
+        "id": 2924,
+        "text": "maguz",
+        "gloss": "boy",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "191"
+            }
+        ]
     }
 ]

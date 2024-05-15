@@ -4549,5 +4549,357 @@
                 "refText": "178"
             }
         ]
+    },
+    {
+        "id": 2858,
+        "text": "earfoþ",
+        "gloss": "hardship, hard labor",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "180"
+            }
+        ]
+    },
+    {
+        "id": 2861,
+        "text": "beard",
+        "gloss": "beard",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "180"
+            }
+        ]
+    },
+    {
+        "id": 2863,
+        "text": "ears",
+        "gloss": "arse",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "180"
+            }
+        ]
+    },
+    {
+        "id": 2865,
+        "text": "fearh",
+        "gloss": "piglet",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "180"
+            }
+        ]
+    },
+    {
+        "id": 2868,
+        "text": "spearwa",
+        "gloss": "sparrow",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "180"
+            }
+        ]
+    },
+    {
+        "id": 2870,
+        "text": "earg",
+        "gloss": "cowardly, slothful, useless",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "180"
+            }
+        ]
+    },
+    {
+        "id": 2872,
+        "text": "hwearf",
+        "gloss": "turning; exchange; gathering; crowd",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "180"
+            }
+        ]
+    },
+    {
+        "id": 2874,
+        "text": "fearr",
+        "gloss": "bull",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "181"
+            }
+        ]
+    },
+    {
+        "id": 2876,
+        "text": "weorpan",
+        "gloss": "to throw",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "182"
+            }
+        ]
+    },
+    {
+        "id": 2879,
+        "text": "beorht",
+        "gloss": "bright",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "182"
+            }
+        ]
+    },
+    {
+        "id": 2882,
+        "text": "sweord",
+        "gloss": "sword",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "182"
+            }
+        ]
+    },
+    {
+        "id": 2884,
+        "text": "eorl",
+        "gloss": "nobleman",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "182"
+            }
+        ]
+    },
+    {
+        "id": 2886,
+        "text": "steorfan",
+        "gloss": "to die",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "182"
+            }
+        ]
+    },
+    {
+        "id": 2888,
+        "text": "smeortan",
+        "gloss": "to be painful",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "182"
+            }
+        ]
+    },
+    {
+        "id": 2890,
+        "text": "eornost",
+        "gloss": "seriousness, zeal",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "182"
+            }
+        ]
+    },
+    {
+        "id": 2892,
+        "text": "sealt",
+        "gloss": "salt",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "184"
+            }
+        ]
+    },
+    {
+        "id": 2895,
+        "text": "healdan",
+        "gloss": "to keep, to protect",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "184"
+            }
+        ]
+    },
+    {
+        "id": 2897,
+        "text": "feallan",
+        "gloss": "to fall",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "185"
+            }
+        ]
+    },
+    {
+        "id": 2900,
+        "text": "heall",
+        "gloss": "hall",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "185"
+            }
+        ]
+    },
+    {
+        "id": 2902,
+        "text": "anfealt",
+        "gloss": "anvil",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "185"
+            }
+        ]
+    },
+    {
+        "id": 2904,
+        "text": "swealwe",
+        "gloss": "swallow",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "185"
+            }
+        ]
+    },
+    {
+        "id": 2906,
+        "text": "fēolan",
+        "gloss": "to succeed in reaching",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "187"
+            }
+        ]
+    },
+    {
+        "id": 2908,
+        "text": "seolh",
+        "gloss": "seal",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "187"
+            }
+        ]
+    },
+    {
+        "id": 2911,
+        "text": "nacod",
+        "gloss": "naked",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "191"
+            }
+        ]
+    },
+    {
+        "id": 2913,
+        "text": "nafola",
+        "gloss": "navel",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "191"
+            }
+        ]
+    },
+    {
+        "id": 2915,
+        "text": "hafoc",
+        "gloss": "hawk",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "191"
+            }
+        ]
+    },
+    {
+        "id": 2917,
+        "text": "sadol",
+        "gloss": "saddle",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "191"
+            }
+        ]
+    },
+    {
+        "id": 2919,
+        "text": "stapol",
+        "gloss": "post, pillar",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "191"
+            }
+        ]
+    },
+    {
+        "id": 2921,
+        "text": "wacol",
+        "gloss": "wakeful, vigilant",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "191"
+            }
+        ]
+    },
+    {
+        "id": 2923,
+        "text": "gafol",
+        "gloss": "fork",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "191"
+            }
+        ]
+    },
+    {
+        "id": 2926,
+        "text": "magu",
+        "gloss": "young man, son (poet.)",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "191"
+            }
+        ]
+    },
+    {
+        "id": 2929,
+        "text": "lagu",
+        "gloss": "water, the sea",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "191"
+            }
+        ]
     }
 ]

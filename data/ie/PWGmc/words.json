@@ -1705,5 +1705,203 @@
                 "refText": "178"
             }
         ]
+    },
+    {
+        "id": 2857,
+        "text": "arbaiþi",
+        "gloss": "hardship, hard labor",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "180"
+            }
+        ]
+    },
+    {
+        "id": 2860,
+        "text": "bard",
+        "gloss": "beard",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "180"
+            }
+        ]
+    },
+    {
+        "id": 2867,
+        "text": "sparwō",
+        "gloss": "sparrow",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "180"
+            }
+        ]
+    },
+    {
+        "id": 2871,
+        "text": "hwarb",
+        "gloss": "turning; exchange; gathering; crowd",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "180"
+            }
+        ]
+    },
+    {
+        "id": 2873,
+        "text": "farr",
+        "gloss": "bull",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "181"
+            }
+        ]
+    },
+    {
+        "id": 2885,
+        "text": "sterban",
+        "gloss": "to die",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "182"
+            }
+        ]
+    },
+    {
+        "id": 2887,
+        "text": "smertan",
+        "gloss": "to be painful",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "182"
+            }
+        ]
+    },
+    {
+        "id": 2889,
+        "text": "ernust",
+        "gloss": "seriousness, zeal",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "182"
+            }
+        ]
+    },
+    {
+        "id": 2894,
+        "text": "haldan",
+        "gloss": "to keep, to protect",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "184"
+            }
+        ]
+    },
+    {
+        "id": 2898,
+        "text": "galgō",
+        "gloss": "gallows",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "184"
+            }
+        ]
+    },
+    {
+        "id": 2901,
+        "text": "anafalt",
+        "gloss": "anvil",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "185"
+            }
+        ]
+    },
+    {
+        "id": 2903,
+        "text": "swalwā",
+        "gloss": "swallow",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "185"
+            }
+        ]
+    },
+    {
+        "id": 2909,
+        "text": "nakʷadaz",
+        "gloss": "naked",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "191"
+            }
+        ]
+    },
+    {
+        "id": 2910,
+        "text": "nakwad",
+        "gloss": "naked",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "191"
+            }
+        ]
+    },
+    {
+        "id": 2920,
+        "text": "wakul",
+        "gloss": "wakeful, vigilant",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "191"
+            }
+        ]
+    },
+    {
+        "id": 2922,
+        "text": "gabulu",
+        "gloss": "fork",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "191"
+            }
+        ]
+    },
+    {
+        "id": 2925,
+        "text": "magu",
+        "gloss": "boy",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "191"
+            }
+        ]
+    },
+    {
+        "id": 2928,
+        "text": "lagu",
+        "gloss": "water, the sea",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "191"
+            }
+        ]
     }
 ]
