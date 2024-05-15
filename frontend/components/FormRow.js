@@ -26,11 +26,8 @@ export default function FormRow(props) {
             <input id={props.id} readOnly={props.readOnly} size={props.size} type="text" {...register(props.id)}/>
             {props.inputAssist && globalState.inputAssists && <span className="inputAssist">
                 {collectInputAssists(globalState.inputAssists).map(assist =>
-                    <button className="inlineButton inputAssistButton"
-                            onClick={(e) => {
-                                e.preventDefault()
-                                handleInputAssist(props.id, assist)
-                            }}
+                    <button type="button" className="inlineButton inputAssistButton"
+                            onClick={() => handleInputAssist(props.id, assist) }
                     >{assist}</button>
                 )}
             </span>}
