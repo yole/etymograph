@@ -1,5 +1,5 @@
 import {FormProvider, useForm} from "react-hook-form";
-import {useContext, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import {useRouter} from "next/router";
 import {EditModeContext, SetEditModeContext} from "@/components/EtymographFormView";
 
@@ -9,6 +9,12 @@ export default function EtymographForm(props) {
     const router = useRouter()
     const editMode = useContext(EditModeContext)
     const setEditMode = props.setEditMode ?? useContext(SetEditModeContext)
+
+    useEffect(() => { if (props.focusTarget) methods.setFocus(props.focusTarget) }, []);
+
+    if (props.focusTarget) {
+        props.setFocusTarget(null)
+    }
 
     async function saveForm(data) {
         const r = props.updateId !== undefined ? await props.update(data) : await props.create(data)

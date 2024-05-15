@@ -38,6 +38,7 @@ export default function Rule(params) {
     const [lastExampleSource, setLastExampleSource] = useState("")
     const [showExampleForm, setShowExampleForm] = useState(false)
     const [exampleUnmatched, setExampleUnmatched] = useState([])
+    const [focusTarget, setFocusTarget] = useState(null)
     const router = useRouter()
     const graph = router.query.graph
 
@@ -215,13 +216,20 @@ export default function Rule(params) {
             </tbody></table>
         </>}
         <p/>
-        {allowEdit() && !showExampleForm && <button onClick={() => setShowExampleForm(true)}>Add example</button>}
+        {allowEdit() && !showExampleForm &&
+            <button onClick={() => {
+                setShowExampleForm(true)
+                setFocusTarget("exampleText")
+            }}>Add example</button>
+        }
         {showExampleForm &&
             <EtymographForm
                  create={createExample}
                  submitted={exampleSubmitted}
                  cancelled={() => setShowExampleForm(false)}
-                 defaultValues={{exampleSource: lastExampleSource}}>
+                 defaultValues={{exampleSource: lastExampleSource}}
+                 focusTarget={focusTarget}
+                 setFocusTarget={setFocusTarget}>
                 <table><tbody>
                     <FormRow id="exampleText" label="Example" size="50" inputAssist={true}/>
                     <FormRow id="exampleSource" label="Source"/>
