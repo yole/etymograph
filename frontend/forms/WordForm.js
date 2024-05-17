@@ -73,7 +73,8 @@ export default function WordForm(props) {
 
         <table><tbody>
         {props.languageReadOnly !== true && <LanguageSelect id="language" label="Language"/>}
-        <FormRow id="text" label="Text" readOnly={props.textReadOnly === true} handleBlur={updateWordStatus}>
+        <FormRow id="text" label="Text" readOnly={props.textReadOnly === true} inputAssist={true}
+                 handleBlur={updateWordStatus}>
             {isNewWord && <span className="newWord">New</span>}
             {wordDefinitions.length > 0 && <span className="wordDefinitions">{wordDefinitions.join(", ")}</span>}
         </FormRow>
