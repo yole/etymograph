@@ -504,7 +504,7 @@
     },
     {
         "id": 2216,
-        "text": "skauni",
+        "text": "skaunī",
         "gloss": "beautiful"
     },
     {
@@ -530,14 +530,15 @@
         ]
     },
     {
-        "id": 2231,
-        "text": "lēkijaz",
-        "gloss": "physician"
-    },
-    {
         "id": 2232,
-        "text": "lāki",
-        "gloss": "physician"
+        "text": "lākī",
+        "gloss": "physician",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "207"
+            }
+        ]
     },
     {
         "id": 2235,
@@ -1467,7 +1468,7 @@
     {
         "id": 2761,
         "text": "rādan",
-        "gloss": "to advise",
+        "gloss": "to consider, to advise",
         "sourceRefs": [
             {
                 "pubId": 5,
@@ -1901,6 +1902,290 @@
             {
                 "pubId": 5,
                 "refText": "191"
+            }
+        ]
+    },
+    {
+        "id": 2933,
+        "text": "maþō",
+        "gloss": "worm",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "192"
+            }
+        ]
+    },
+    {
+        "id": 2936,
+        "text": "rakkō",
+        "gloss": "sailyard ring",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "192"
+            }
+        ]
+    },
+    {
+        "id": 2939,
+        "text": "krabbō",
+        "gloss": "crab",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "192"
+            }
+        ]
+    },
+    {
+        "id": 2944,
+        "text": "nakwō",
+        "gloss": "ship",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "192"
+            }
+        ]
+    },
+    {
+        "id": 2947,
+        "text": "skaþō",
+        "gloss": "samage, destruction",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "192"
+            }
+        ]
+    },
+    {
+        "id": 2949,
+        "text": "knabō",
+        "gloss": "boy",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "192"
+            }
+        ]
+    },
+    {
+        "id": 2954,
+        "text": "kawwjan",
+        "gloss": "to call",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "206"
+            }
+        ]
+    },
+    {
+        "id": 2957,
+        "text": "skaban",
+        "gloss": "to cut (hair), to shave",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "207"
+            }
+        ]
+    },
+    {
+        "id": 2961,
+        "text": "skamu",
+        "gloss": "shame",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "207"
+            }
+        ]
+    },
+    {
+        "id": 2965,
+        "text": "skrūd",
+        "gloss": "gear, outfit",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "207"
+            }
+        ]
+    },
+    {
+        "id": 2968,
+        "text": "mākī",
+        "gloss": "sword",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "207"
+            }
+        ]
+    },
+    {
+        "id": 2988,
+        "text": "gangī",
+        "gloss": "passable",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "209"
+            }
+        ]
+    },
+    {
+        "id": 2995,
+        "text": "gafrāgī",
+        "gloss": "known, famous",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "209"
+            }
+        ]
+    },
+    {
+        "id": 2997,
+        "text": "ga",
+        "pos": "PV"
+    },
+    {
+        "id": 2999,
+        "text": "frāgī"
+    },
+    {
+        "id": 3004,
+        "text": "sprāki",
+        "gloss": "speech",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "209"
+            }
+        ]
+    },
+    {
+        "id": 3005,
+        "text": "bruki",
+        "gloss": "(a) break",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "209"
+            }
+        ]
+    },
+    {
+        "id": 3007,
+        "text": "flaiski",
+        "gloss": "flesh, meat",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "209"
+            }
+        ]
+    },
+    {
+        "id": 3009,
+        "text": "þrukkijan",
+        "gloss": "to press, to oppress",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "209"
+            }
+        ]
+    },
+    {
+        "id": 3011,
+        "text": "waigī",
+        "gloss": "cup",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "209"
+            }
+        ]
+    },
+    {
+        "id": 3015,
+        "text": "hangist",
+        "gloss": "stallion",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "210"
+            }
+        ]
+    },
+    {
+        "id": 3017,
+        "text": "tikkīn",
+        "gloss": "kid",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "210"
+            }
+        ]
+    },
+    {
+        "id": 3019,
+        "text": "angil",
+        "gloss": "angel",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "210"
+            }
+        ]
+    },
+    {
+        "id": 3021,
+        "text": "līk",
+        "gloss": "body",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "210"
+            }
+        ]
+    },
+    {
+        "id": 3024,
+        "text": "sīk",
+        "gloss": "watercourse",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "210"
+            }
+        ]
+    },
+    {
+        "id": 3027,
+        "text": "spik",
+        "gloss": "bacon",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "210"
+            }
+        ]
+    },
+    {
+        "id": 3029,
+        "text": "āswik",
+        "gloss": "offence, deceit",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "210"
             }
         ]
     }

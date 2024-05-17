@@ -1615,7 +1615,7 @@
     },
     {
         "id": 1250,
-        "text": "engel",
+        "text": "enġel",
         "gloss": "angel",
         "pos": "N",
         "classes": [
@@ -2764,11 +2764,6 @@
         "id": 2401,
         "text": "lǣtan",
         "gloss": "to let go, to allow"
-    },
-    {
-        "id": 2405,
-        "text": "rǣdan",
-        "gloss": "to consider, to advise"
     },
     {
         "id": 2411,
@@ -4082,7 +4077,7 @@
     {
         "id": 2762,
         "text": "rǣdan",
-        "gloss": "to advise",
+        "gloss": "to consider, to advise",
         "sourceRefs": [
             {
                 "pubId": 5,
@@ -4899,6 +4894,440 @@
             {
                 "pubId": 5,
                 "refText": "191"
+            }
+        ]
+    },
+    {
+        "id": 2931,
+        "text": "staþol",
+        "gloss": "base, foundation",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "191"
+            }
+        ]
+    },
+    {
+        "id": 2934,
+        "text": "maþa",
+        "gloss": "worm",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "192"
+            }
+        ]
+    },
+    {
+        "id": 2937,
+        "text": "racca",
+        "gloss": "sailyard ring",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "192"
+            }
+        ]
+    },
+    {
+        "id": 2940,
+        "text": "crabba",
+        "gloss": "crab",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "192"
+            }
+        ]
+    },
+    {
+        "id": 2942,
+        "text": "maga",
+        "gloss": "stomach",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "192"
+            }
+        ]
+    },
+    {
+        "id": 2945,
+        "text": "naca",
+        "gloss": "ship",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "192"
+            }
+        ]
+    },
+    {
+        "id": 2948,
+        "text": "sċaþa",
+        "gloss": "evildoer",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "192"
+            }
+        ]
+    },
+    {
+        "id": 2950,
+        "text": "cnafa",
+        "gloss": "boy",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "192"
+            }
+        ]
+    },
+    {
+        "id": 2955,
+        "text": "ċīeġan",
+        "gloss": "to call",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "206"
+            }
+        ]
+    },
+    {
+        "id": 2958,
+        "text": "sċafan",
+        "gloss": "to cut (hair), to shave",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "207"
+            }
+        ]
+    },
+    {
+        "id": 2960,
+        "text": "sċōh",
+        "gloss": "shoe",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "207"
+            }
+        ]
+    },
+    {
+        "id": 2962,
+        "text": "sċamu",
+        "gloss": "shame",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "207"
+            }
+        ]
+    },
+    {
+        "id": 2966,
+        "text": "sċrūd",
+        "gloss": "clothing",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "207"
+            }
+        ]
+    },
+    {
+        "id": 2969,
+        "text": "mēċe",
+        "gloss": "sword"
+    },
+    {
+        "id": 2971,
+        "text": "drenċan",
+        "gloss": "to give to drink, to make drunk, to saturate",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "208"
+            }
+        ]
+    },
+    {
+        "id": 2973,
+        "text": "bielġ",
+        "gloss": "leather bag",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "208"
+            }
+        ]
+    },
+    {
+        "id": 2975,
+        "text": "hyġe",
+        "gloss": "thought, understanding",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "208"
+            }
+        ]
+    },
+    {
+        "id": 2977,
+        "text": "benċ",
+        "gloss": "bench",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "208"
+            }
+        ]
+    },
+    {
+        "id": 2979,
+        "text": "rīeċan",
+        "gloss": "to fumigate, to burn incąense",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "209"
+            }
+        ]
+    },
+    {
+        "id": 2981,
+        "text": "fliċċe",
+        "gloss": "side of bacon",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "209"
+            }
+        ]
+    },
+    {
+        "id": 2983,
+        "text": "styċċe",
+        "gloss": "piece",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "209"
+            }
+        ]
+    },
+    {
+        "id": 2985,
+        "text": "fenġ",
+        "gloss": "grasp, booty",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "209"
+            }
+        ]
+    },
+    {
+        "id": 2987,
+        "text": "strenġ",
+        "gloss": "string",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "209"
+            }
+        ]
+    },
+    {
+        "id": 2989,
+        "text": "genġe",
+        "gloss": "apprioriate, agreeable",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "209"
+            }
+        ]
+    },
+    {
+        "id": 2991,
+        "text": "līeġ",
+        "gloss": "flame",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "209"
+            }
+        ]
+    },
+    {
+        "id": 2994,
+        "text": "swēġ",
+        "gloss": "sound",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "209"
+            }
+        ]
+    },
+    {
+        "id": 2996,
+        "text": "ġefrǣġe",
+        "gloss": "known, famous",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "209"
+            }
+        ]
+    },
+    {
+        "id": 3001,
+        "text": "bīeġan",
+        "gloss": "to bend",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "209"
+            }
+        ]
+    },
+    {
+        "id": 3003,
+        "text": "hnǣġan",
+        "gloss": "to lower, to cause to bow",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "209"
+            }
+        ]
+    },
+    {
+        "id": 3006,
+        "text": "bryċe",
+        "gloss": "(a) break",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "209"
+            }
+        ]
+    },
+    {
+        "id": 3008,
+        "text": "flǣsċ",
+        "gloss": "flesh, meat",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "209"
+            }
+        ]
+    },
+    {
+        "id": 3010,
+        "text": "þryċċan",
+        "gloss": "to press, to oppress",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "209"
+            }
+        ]
+    },
+    {
+        "id": 3012,
+        "text": "wǣġe",
+        "gloss": "cup",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "209"
+            }
+        ]
+    },
+    {
+        "id": 3014,
+        "text": "þenġel",
+        "gloss": "prince",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "209"
+            }
+        ]
+    },
+    {
+        "id": 3016,
+        "text": "henġest",
+        "gloss": "stallion",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "210"
+            }
+        ]
+    },
+    {
+        "id": 3018,
+        "text": "tiċċen",
+        "gloss": "kid",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "210"
+            }
+        ]
+    },
+    {
+        "id": 3022,
+        "text": "līċ",
+        "gloss": "body",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "210"
+            }
+        ]
+    },
+    {
+        "id": 3025,
+        "text": "sīċ",
+        "gloss": "brook",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "210"
+            }
+        ]
+    },
+    {
+        "id": 3028,
+        "text": "spiċ",
+        "gloss": "bacon",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "210"
+            }
+        ]
+    },
+    {
+        "id": 3030,
+        "text": "ǣswiċ",
+        "gloss": "offence, deceit",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "210"
             }
         ]
     }

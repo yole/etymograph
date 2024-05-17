@@ -2071,28 +2071,6 @@
         ]
     },
     {
-        "id": 2757,
-        "text": "lētaną̄",
-        "gloss": "to let go, to allow",
-        "sourceRefs": [
-            {
-                "pubId": 5,
-                "refText": "149"
-            }
-        ]
-    },
-    {
-        "id": 2759,
-        "text": "rēdaną",
-        "gloss": "to advise",
-        "sourceRefs": [
-            {
-                "pubId": 5,
-                "refText": "149"
-            }
-        ]
-    },
-    {
         "id": 2765,
         "text": "lēwijaną",
         "gloss": "to betray",
@@ -2496,6 +2474,105 @@
             {
                 "pubId": 5,
                 "refText": "191"
+            }
+        ]
+    },
+    {
+        "id": 2932,
+        "text": "maþô",
+        "gloss": "worm",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "192"
+            }
+        ]
+    },
+    {
+        "id": 2952,
+        "text": "mēgôz",
+        "gloss": "kinsman.NOM.PL",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "199"
+            }
+        ]
+    },
+    {
+        "id": 2956,
+        "text": "skabaną",
+        "gloss": "to cut (hair), to shave",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "207"
+            }
+        ]
+    },
+    {
+        "id": 2959,
+        "text": "skōhaz",
+        "gloss": "shoe",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "207"
+            }
+        ]
+    },
+    {
+        "id": 2967,
+        "text": "lēkijaz",
+        "gloss": "physician",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "207"
+            }
+        ]
+    },
+    {
+        "id": 2970,
+        "text": "drankijaną",
+        "gloss": "to give to drink",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "208"
+            }
+        ]
+    },
+    {
+        "id": 2972,
+        "text": "balgiz",
+        "gloss": "leather bag",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "208"
+            }
+        ]
+    },
+    {
+        "id": 2974,
+        "text": "hugiz",
+        "gloss": "thought, understanding",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "208"
+            }
+        ]
+    },
+    {
+        "id": 3020,
+        "text": "līką",
+        "gloss": "body",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "210"
             }
         ]
     }

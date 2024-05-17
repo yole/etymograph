@@ -639,17 +639,6 @@
         ]
     },
     {
-        "id": 2760,
-        "text": "rādaną",
-        "gloss": "to advise",
-        "sourceRefs": [
-            {
-                "pubId": 5,
-                "refText": "149"
-            }
-        ]
-    },
-    {
         "id": 2803,
         "text": "auraz",
         "gloss": "earth",
@@ -833,6 +822,226 @@
             {
                 "pubId": 5,
                 "refText": "191"
+            }
+        ]
+    },
+    {
+        "id": 2930,
+        "text": "staþulaz",
+        "gloss": "act of standing; standing thng",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "191"
+            }
+        ]
+    },
+    {
+        "id": 2935,
+        "text": "rakkô",
+        "gloss": "sailyard ring",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "192"
+            }
+        ]
+    },
+    {
+        "id": 2938,
+        "text": "krabbô",
+        "gloss": "crab",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "192"
+            }
+        ]
+    },
+    {
+        "id": 2941,
+        "text": "magô",
+        "gloss": "stomach",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "192"
+            }
+        ]
+    },
+    {
+        "id": 2943,
+        "text": "nakʷô",
+        "gloss": "ship",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "192"
+            }
+        ]
+    },
+    {
+        "id": 2946,
+        "text": "skaþô",
+        "gloss": "samage, destruction",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "192"
+            }
+        ]
+    },
+    {
+        "id": 2964,
+        "text": "skrūda",
+        "gloss": "gear, outfit",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "207"
+            }
+        ]
+    },
+    {
+        "id": 2976,
+        "text": "bankiz",
+        "gloss": "bench",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "208"
+            }
+        ]
+    },
+    {
+        "id": 2978,
+        "text": "raukijaną",
+        "gloss": "to cause smoke, to smoke (meat etc.)",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "209"
+            }
+        ]
+    },
+    {
+        "id": 2980,
+        "text": "flikkiją",
+        "gloss": "side of bacon",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "209"
+            }
+        ]
+    },
+    {
+        "id": 2982,
+        "text": "stukkiją",
+        "gloss": "piece",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "209"
+            }
+        ]
+    },
+    {
+        "id": 2984,
+        "text": "fangiz",
+        "gloss": "grasp, booty",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "209"
+            }
+        ]
+    },
+    {
+        "id": 2986,
+        "text": "strangiz",
+        "gloss": "string",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "209"
+            }
+        ]
+    },
+    {
+        "id": 2990,
+        "text": "laugiz",
+        "gloss": "flame",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "209"
+            }
+        ]
+    },
+    {
+        "id": 2993,
+        "text": "swōgiz",
+        "gloss": "sound",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "209"
+            }
+        ]
+    },
+    {
+        "id": 3000,
+        "text": "baugijaną",
+        "gloss": "to bend",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "209"
+            }
+        ]
+    },
+    {
+        "id": 3002,
+        "text": "hnaigijaną",
+        "gloss": "to lower, to cause to bow",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "209"
+            }
+        ]
+    },
+    {
+        "id": 3013,
+        "text": "þangilaz",
+        "gloss": "prince",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "209"
+            }
+        ]
+    },
+    {
+        "id": 3023,
+        "text": "sīką",
+        "gloss": "watercourse",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "210"
+            }
+        ]
+    },
+    {
+        "id": 3026,
+        "text": "spiką",
+        "gloss": "hard fat",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "210"
             }
         ]
     }

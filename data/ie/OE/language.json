@@ -515,6 +515,20 @@
                 "vowel"
             ],
             "historical": true
+        },
+        {
+            "id": 2963,
+            "graphemes": [
+                "ą"
+            ],
+            "classes": [
+                "nasal",
+                "short",
+                "back",
+                "open",
+                "vowel"
+            ],
+            "historical": true
         }
     ],
     "diphthongs": [

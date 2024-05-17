@@ -998,12 +998,50 @@
                     {
                         "type": "ApplyStress",
                         "args": [
-                            "first"
+                            "first root"
                         ]
                     }
                 ],
                 "condition": {
                     "type": "otherwise"
+                }
+            }
+        ]
+    },
+    {
+        "id": 2951,
+        "name": "pwgmc-pronunciation",
+        "fromLang": "PWGmc",
+        "toLang": "PWGmc",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "β"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "b",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": -1,
+                            "cls": "vowel"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": 1,
+                            "cls": "vowel"
+                        }
+                    ]
                 }
             }
         ],
