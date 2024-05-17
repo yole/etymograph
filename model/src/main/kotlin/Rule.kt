@@ -16,17 +16,18 @@ class RuleParseContext(
     val ruleRefFactory: (String) -> RuleRef
 )
 
-class RuleTraceData(val matchedBranch: RuleBranch)
+class RuleTraceData(val matchedBranches: MutableSet<RuleBranch>)
 
 class RuleTrace {
     val traceData = mutableMapOf<Pair<Int, Int>, RuleTraceData>()
 
     fun logMatchedBranch(rule: Rule, word: Word, branch: RuleBranch) {
-        traceData[rule.id to word.id] = RuleTraceData(branch)
+        val data = traceData.getOrPut(rule.id to word.id) { RuleTraceData(mutableSetOf()) }
+        data.matchedBranches.add(branch)
     }
 
-    fun findMatchedBranch(rule: Rule, word: Word): RuleBranch? {
-        return traceData[rule.id to word.id]?.matchedBranch
+    fun findMatchedBranches(rule: Rule, word: Word): Set<RuleBranch> {
+        return traceData[rule.id to word.id]?.matchedBranches ?: emptySet()
     }
 }
 
