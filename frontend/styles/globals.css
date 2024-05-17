@@ -116,3 +116,7 @@ code {
 .glossAbbreviation {
   font-variant: small-caps;
 }
+
+.ruleText {
+  font-size: medium;
+}

@@ -32,7 +32,7 @@ export default function RuleForm(props) {
                 </>}
                 <FormRow label="Source" id="source"/>
             </tbody></table>
-            <FormTextArea rows="10" cols="50" id="text"/>
+            <FormTextArea rows="10" cols="70" id="text" className="ruleText"/>
             <br/>
             <h3>Notes</h3>
             <FormTextArea rows="5" cols="50" id="notes"/>
