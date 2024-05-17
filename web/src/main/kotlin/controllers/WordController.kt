@@ -366,6 +366,9 @@ class WordController {
         val stepText = params.sequence
         val source = parseSourceRefs(repo, params.source)
         val steps = stepText.split('>').map { it.trim() }
+        if (steps.size < 2) {
+            badRequest("Need at least one step in the sequence")
+        }
         var lastGloss: String? = null
         var lastWord: Word? = null
         val resultWords = mutableListOf<WordRefViewModel>()
