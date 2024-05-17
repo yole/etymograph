@@ -18,6 +18,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import EtymographForm from "@/components/EtymographForm";
 import FormRow from "@/components/FormRow";
 import {GraphContext} from "@/components/Contexts";
+import WordGloss from "@/components/WordGloss";
 
 export const config = {
     unstable_runtimeJS: true
@@ -53,7 +54,7 @@ function ExampleList(params) {
                 <WordLink word={ex.fromWord} baseLanguage={rule.toLang}/>
             </td>
             <td>
-                {ex.toWord.gloss}
+                <WordGloss gloss={ex.toWord.gloss}/>
             </td>
             <td>
                 {ex.allRules.length > 1 && ex.ruleResults.length === 0 && <>

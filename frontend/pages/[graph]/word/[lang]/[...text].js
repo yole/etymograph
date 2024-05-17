@@ -19,6 +19,7 @@ import RuleLinkForm from "@/forms/RuleLinkForm";
 import EditLinkForm from "@/forms/EditLinkForm";
 import {GraphContext} from "@/components/Contexts";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import WordGloss from "@/components/WordGloss";
 
 export const config = {
     unstable_runtimeJS: true
@@ -91,8 +92,7 @@ function WordLinkComponent(params) {
     }
 
     return <div>
-        <WordLink word={linkWord.word} baseLanguage={baseWord.language}/>
-        {linkWord.word.gloss != null && ' "' + linkWord.word.gloss + '"' }
+        <WordLink word={linkWord.word} baseLanguage={baseWord.language} gloss={true}/>
         {linkWord.ruleIds.length > 0 && <>&nbsp;(
             {linkWord.ruleResults.length > 0 && <>
                 {params.directionFrom ? linkWord.word.text : baseWord.text}
@@ -142,10 +142,7 @@ function CompoundRefComponent(params) {
     const baseWord = params.baseWord
     const linkWord = params.linkWord
 
-    return <span>
-        <WordLink word={linkWord} baseLanguage={baseWord.language}/>
-        {linkWord.gloss != null && ' "' + linkWord.gloss + '"' }
-    </span>
+    return <WordLink word={linkWord} baseLanguage={baseWord.language} gloss={true}/>
 }
 
 function WordLinkTypeComponent(params) {
@@ -284,7 +281,7 @@ function SingleWord(params) {
 
         {!editMode && <>
             {word.pos && <div>{word.pos} {word.classes.length > 0 && "(" + word.classes.join(", ") + ")"}</div>}
-            <p>{word.fullGloss !== null && word.fullGloss !== "" ? word.fullGloss : word.gloss}</p>
+            <p>{word.fullGloss !== null && word.fullGloss !== "" ? word.fullGloss : <WordGloss gloss={word.gloss}/>}</p>
             {word.notes && <p>{word.notes}</p>}
             <SourceRefs source={word.source}/>
             {allowEdit() && word.parseCandidates.map(pc => <>

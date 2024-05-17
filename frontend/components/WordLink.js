@@ -1,5 +1,6 @@
 import Link from "next/link";
 import {useRouter} from "next/router";
+import WordGloss from "@/components/WordGloss";
 
 export default function WordLink(params) {
     const router = useRouter()
@@ -13,6 +14,7 @@ export default function WordLink(params) {
     return <>
         {params.baseLanguage !== undefined && word.language !== params.baseLanguage && word.displayLanguage + " "}
         <Link href={linkTarget}>{word.reconstructed && "*"}{word.text}</Link>
+        {params.gloss && <>{' '}"<WordGloss gloss={word.gloss}/>"</>}
     </>
 }
 

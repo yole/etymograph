@@ -112,3 +112,7 @@ code {
   padding-left: 1pt;
   padding-right: 1pt;
 }
+
+.glossAbbreviation {
+  font-variant: small-caps;
+}

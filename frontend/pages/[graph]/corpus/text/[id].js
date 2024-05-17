@@ -17,6 +17,7 @@ import SourceRefs from "@/components/SourceRefs";
 import CorpusTextForm from "@/forms/CorpusTextForm";
 import TranslationForm from "@/forms/TranslationForm";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import WordGloss from "@/components/WordGloss";
 
 export const config = {
     unstable_runtimeJS: true
@@ -130,7 +131,7 @@ export default function CorpusText(params) {
                             </td>)}
                         </tr>
                         <tr>
-                            {l.words.map(w => <td key={w.index}>{w.gloss}</td>)}
+                            {l.words.map(w => <td key={w.index}><WordGloss gloss={w.gloss}/></td>)}
                         </tr>
                     </tbody></table>
                     {wordIndex >= l.words[0].index && wordIndex <= l.words[l.words.length - 1].index && wordFormVisible &&
