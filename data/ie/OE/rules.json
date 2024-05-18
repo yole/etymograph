@@ -3205,6 +3205,57 @@
                     {
                         "type": "ChangeSound",
                         "args": [
+                            "ċ"
+                        ]
+                    },
+                    {
+                        "type": "ChangeNextSound",
+                        "args": [
+                            "ġ"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "g",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": 1,
+                            "parameter": "g"
+                        },
+                        {
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "relPhoneme",
+                                    "relativeIndex": 2,
+                                    "parameter": "i"
+                                },
+                                {
+                                    "type": "relPhoneme",
+                                    "relativeIndex": 2,
+                                    "parameter": "ī"
+                                },
+                                {
+                                    "type": "relPhoneme",
+                                    "relativeIndex": 2,
+                                    "parameter": "j"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
                             "ġ"
                         ]
                     }
@@ -3244,7 +3295,7 @@
                     "members": [
                         {
                             "type": "relPhoneme",
-                            "cls": "syllable-final",
+                            "cls": "word-final",
                             "parameter": "g",
                             "relative": false
                         },
@@ -3252,6 +3303,36 @@
                             "type": "relPhoneme",
                             "relativeIndex": -1,
                             "cls": "front vowel"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "ġ"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "g",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": -1,
+                            "cls": "front vowel"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": 1,
+                            "cls": "consonant"
                         }
                     ]
                 }
@@ -3333,13 +3414,7 @@
                         {
                             "type": "relPhoneme",
                             "relativeIndex": -1,
-                            "cls": "velar"
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": -1,
-                            "negated": true,
-                            "cls": "word-initial"
+                            "cls": "non-word-initial velar"
                         }
                     ]
                 }
@@ -3350,8 +3425,7 @@
                 "pubId": 5,
                 "refText": "214"
             }
-        ],
-        "notes": ""
+        ]
     },
     {
         "id": 2259,
@@ -3808,6 +3882,13 @@
                         "args": [
                             "0"
                         ]
+                    },
+                    {
+                        "type": "ApplySoundRule",
+                        "args": [
+                            "2328",
+                            "previous sound"
+                        ]
                     }
                 ],
                 "condition": {
@@ -3850,6 +3931,13 @@
                         "args": [
                             "0"
                         ]
+                    },
+                    {
+                        "type": "ApplySoundRule",
+                        "args": [
+                            "2328",
+                            "previous sound"
+                        ]
                     }
                 ],
                 "condition": {
@@ -3891,6 +3979,13 @@
                         "type": "SoundDisappears",
                         "args": [
                             "0"
+                        ]
+                    },
+                    {
+                        "type": "ApplySoundRule",
+                        "args": [
+                            "2328",
+                            "previous sound"
                         ]
                     }
                 ],
@@ -3956,6 +4051,13 @@
                         "args": [
                             "0"
                         ]
+                    },
+                    {
+                        "type": "ApplySoundRule",
+                        "args": [
+                            "2328",
+                            "previous sound"
+                        ]
                     }
                 ],
                 "condition": {
@@ -4019,6 +4121,13 @@
                         "type": "SoundDisappears",
                         "args": [
                             "0"
+                        ]
+                    },
+                    {
+                        "type": "ApplySoundRule",
+                        "args": [
+                            "2328",
+                            "previous sound"
                         ]
                     }
                 ],
@@ -4238,7 +4347,8 @@
                 "pubId": 5,
                 "refText": "279"
             }
-        ]
+        ],
+        "notes": "This rule actually applies only to palatal stops brought into contact with a following consonant by syncope."
     },
     {
         "id": 2331,

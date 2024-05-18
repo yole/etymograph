@@ -5330,5 +5330,192 @@
                 "refText": "210"
             }
         ]
+    },
+    {
+        "id": 3033,
+        "text": "wǣġ",
+        "gloss": "wave",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "212"
+            }
+        ]
+    },
+    {
+        "id": 3036,
+        "text": "weġ",
+        "gloss": "way",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "212"
+            }
+        ]
+    },
+    {
+        "id": 3039,
+        "text": "sweġer",
+        "gloss": "mother-in-law",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "212"
+            }
+        ]
+    },
+    {
+        "id": 3042,
+        "text": "reġn",
+        "gloss": "rain",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "212"
+            }
+        ]
+    },
+    {
+        "id": 3044,
+        "text": "riġnan",
+        "gloss": "to rain",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "212"
+            }
+        ]
+    },
+    {
+        "id": 3046,
+        "text": "breġdan",
+        "gloss": "to brandish",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "213"
+            }
+        ]
+    },
+    {
+        "id": 3048,
+        "text": "þeġn",
+        "gloss": "retainer, follower",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "213"
+            }
+        ]
+    },
+    {
+        "id": 3050,
+        "text": "seġl",
+        "gloss": "sail",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "213"
+            }
+        ]
+    },
+    {
+        "id": 3052,
+        "text": "siġlan",
+        "gloss": "to sail",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "213"
+            }
+        ]
+    },
+    {
+        "id": 3054,
+        "text": "siġle",
+        "gloss": "necklace",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "213"
+            }
+        ]
+    },
+    {
+        "id": 3058,
+        "text": "eċġ",
+        "gloss": "edge",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "213"
+            }
+        ]
+    },
+    {
+        "id": 3060,
+        "text": "þeċċan",
+        "gloss": "to cover",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "213"
+            }
+        ]
+    },
+    {
+        "id": 3062,
+        "text": "bryċġ",
+        "gloss": "bridge",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "214"
+            }
+        ]
+    },
+    {
+        "id": 3065,
+        "text": "stincan",
+        "gloss": "to smell",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "215"
+            }
+        ]
+    },
+    {
+        "id": 3067,
+        "text": "sċieran",
+        "gloss": "to cut, to shear",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "216"
+            }
+        ]
+    },
+    {
+        "id": 3069,
+        "text": "sċēacere",
+        "gloss": "robber",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "216"
+            }
+        ]
+    },
+    {
+        "id": 3071,
+        "text": "ċiefes",
+        "gloss": "concubine",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "216"
+            }
+        ]
     }
 ]

@@ -2188,5 +2188,104 @@
                 "refText": "210"
             }
         ]
+    },
+    {
+        "id": 3035,
+        "text": "weg",
+        "gloss": "way",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "212"
+            }
+        ]
+    },
+    {
+        "id": 3038,
+        "text": "swegru",
+        "gloss": "mother-in-law",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "212"
+            }
+        ]
+    },
+    {
+        "id": 3041,
+        "text": "regn",
+        "gloss": "rain",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "212"
+            }
+        ]
+    },
+    {
+        "id": 3057,
+        "text": "aggju",
+        "gloss": "edge",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "213"
+            }
+        ]
+    },
+    {
+        "id": 3061,
+        "text": "bruggju",
+        "gloss": "bridge",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "214"
+            }
+        ]
+    },
+    {
+        "id": 3063,
+        "text": "stinkʷaną",
+        "gloss": "to knock into",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "215"
+            }
+        ]
+    },
+    {
+        "id": 3064,
+        "text": "stinkwan",
+        "gloss": "to smell",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "215"
+            }
+        ]
+    },
+    {
+        "id": 3068,
+        "text": "skākārī",
+        "gloss": "robber",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "216"
+            }
+        ]
+    },
+    {
+        "id": 3070,
+        "text": "kabisi",
+        "gloss": "concubine",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "216"
+            }
+        ]
     }
 ]

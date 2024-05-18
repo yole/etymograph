@@ -1044,5 +1044,93 @@
                 "refText": "210"
             }
         ]
+    },
+    {
+        "id": 3032,
+        "text": "wāgaz",
+        "gloss": "wave",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "212"
+            }
+        ]
+    },
+    {
+        "id": 3045,
+        "text": "bregdaną",
+        "gloss": "to brandish",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "213"
+            }
+        ]
+    },
+    {
+        "id": 3047,
+        "text": "þegnaz",
+        "gloss": "retainer, follower",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "213"
+            }
+        ]
+    },
+    {
+        "id": 3049,
+        "text": "seglą",
+        "gloss": "sail",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "213"
+            }
+        ]
+    },
+    {
+        "id": 3051,
+        "text": "siglijaną",
+        "gloss": "to sail",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "213"
+            }
+        ]
+    },
+    {
+        "id": 3053,
+        "text": "sigliją",
+        "gloss": "jewelry",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "213"
+            }
+        ]
+    },
+    {
+        "id": 3059,
+        "text": "þakkjan",
+        "gloss": "to cover",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "213"
+            }
+        ]
+    },
+    {
+        "id": 3066,
+        "text": "skeraną",
+        "gloss": "to cut, to shear",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "216"
+            }
+        ]
     }
 ]

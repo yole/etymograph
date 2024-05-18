@@ -2575,5 +2575,71 @@
                 "refText": "210"
             }
         ]
+    },
+    {
+        "id": 3031,
+        "text": "wēgaz",
+        "gloss": "wave",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "212"
+            }
+        ]
+    },
+    {
+        "id": 3034,
+        "text": "wegaz",
+        "gloss": "way",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "212"
+            }
+        ]
+    },
+    {
+        "id": 3037,
+        "text": "swegrō",
+        "gloss": "mother-in-law",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "212"
+            }
+        ]
+    },
+    {
+        "id": 3040,
+        "text": "regną",
+        "gloss": "rain",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "212"
+            }
+        ]
+    },
+    {
+        "id": 3043,
+        "text": "rignijaną",
+        "gloss": "to rain",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "212"
+            }
+        ]
+    },
+    {
+        "id": 3056,
+        "text": "agjō",
+        "gloss": "edge",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "213"
+            }
+        ]
     }
 ]
