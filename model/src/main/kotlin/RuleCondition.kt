@@ -182,6 +182,7 @@ class LeafRuleCondition(
         const val syllableIs = "syllable is "
         const val indefiniteArticle = "a "
         const val soundIsSame = "sound is same as "
+        const val soundIsNotSame = "sound is not same as "
 
         fun parse(buffer: ParseBuffer, language: Language): RuleCondition {
             for (parser in arrayOf(
@@ -493,7 +494,9 @@ class RelativePhonemeRuleCondition(
     }
 }
 
-class PhonemeEqualsRuleCondition(val target: SeekTarget, val matchTarget: SeekTarget?) : RuleCondition() {
+class PhonemeEqualsRuleCondition(val target: SeekTarget, val matchTarget: SeekTarget?, negated: Boolean)
+    : RuleCondition(negated)
+{
     override fun isPhonemic(): Boolean = true
 
     override fun matches(word: Word, phonemes: PhonemeIterator, graph: GraphRepository): Boolean {
@@ -508,24 +511,32 @@ class PhonemeEqualsRuleCondition(val target: SeekTarget, val matchTarget: SeekTa
             phonemes.current
         }
 
-        return matchPhoneme == targetIterator.current
+        return (matchPhoneme == targetIterator.current).negateIfNeeded()
     }
 
     override fun toRichText(): RichText {
         if (matchTarget == null) {
-            return "sound is same as ".richText() + target.toRichText()
+            return ("sound is " + maybeNot + "same as ").richText() + target.toRichText()
         }
-        return matchTarget.toRichText() + " is same as " + target.toRichText()
+        return matchTarget.toRichText() + " is " + maybeNot + "same as " + target.toRichText()
     }
 
     companion object : RuleConditionParser {
         override fun tryParse(buffer: ParseBuffer, language: Language): PhonemeEqualsRuleCondition? {
             val matchTarget = SeekTarget.parse(buffer, language)
-            if (!buffer.consume(if (matchTarget != null) "is same as" else LeafRuleCondition.soundIsSame)) {
+            val negated: Boolean
+
+            if (buffer.consume(if (matchTarget != null) "is same as" else LeafRuleCondition.soundIsSame)) {
+                negated = false
+            }
+            else if (buffer.consume(if (matchTarget != null) "is not same as" else LeafRuleCondition.soundIsNotSame)) {
+                negated = true
+            }
+            else {
                 return null
             }
             val target = SeekTarget.parse(buffer, language) ?: return null
-            return PhonemeEqualsRuleCondition(target, matchTarget)
+            return PhonemeEqualsRuleCondition(target, matchTarget, negated)
         }
     }
 }

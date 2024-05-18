@@ -467,6 +467,17 @@ class PhonemeRuleTest : QBaseTest() {
     }
 
     @Test
+    fun phonemeEqualityNegated() {
+        val rule = parseRule(q, q, """
+            sound is 'a' and sound is not same as previous vowel:
+            - sound disappears
+        """.trimIndent())
+        assertEquals("glaware", applyRule(rule, q.word("glaware")))
+        assertEquals("glewre", applyRule(rule, q.word("gleware")))
+        assertEquals("sound is 'a' and sound is not same as previous vowel", rule.logic.branches.single().condition.toEditableText())
+    }
+
+    @Test
     fun phonemeEqualityRelative() {
         val rule = parseRule(q, q, """
             sound is 'a' and next sound is same as second next sound:
