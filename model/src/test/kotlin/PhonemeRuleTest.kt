@@ -442,6 +442,21 @@ class PhonemeRuleTest : QBaseTest() {
     }
 
     @Test
+    fun applySoundRuleSeesResultOfPreviousInstructions() {
+        val soundRule = parseRule(q, q, """
+            sound is 't' and next sound is consonant:
+            - new sound is 'd'
+        """.trimIndent(), name = "q-voicing")
+        val parseContext = q.parseContext(null, soundRule)
+        val rule = parseRule(q, q, """
+            sound is 'a':
+            - sound disappears
+            - apply sound rule 'q-voicing' to previous sound
+        """.trimIndent(), context = parseContext)
+        assertEquals("dmo", applyRule(rule, q.word("tamo")))
+    }
+
+    @Test
     fun phonemeEquality() {
         val rule = parseRule(q, q, """
             sound is 'a' and sound is same as previous vowel:

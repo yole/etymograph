@@ -313,10 +313,12 @@ class ApplySoundRuleInstruction(language: Language, val ruleRef: RuleRef, arg: S
     val seekTarget = arg?.let { SeekTarget.parse(it, language) }
 
     override fun apply(word: Word, phonemes: PhonemeIterator, graph: GraphRepository) {
+        phonemes.commit()
+        val targetIt = phonemes.clone()
         if (seekTarget != null && seekTarget.relative) {
-            phonemes.seek(seekTarget)
+            targetIt.seek(seekTarget)
         }
-        ruleRef.resolve().applyToPhoneme(word, phonemes, graph)
+        ruleRef.resolve().applyToPhoneme(word, targetIt, graph)
     }
 
     override fun apply(rule: Rule, branch: RuleBranch?, word: Word, graph: GraphRepository): Word {

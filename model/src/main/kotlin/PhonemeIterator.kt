@@ -110,10 +110,10 @@ class PhonemeIterator {
     val language: Language
     private val word: Word?
     private val repo: GraphRepository?
-    private val phonemes: List<String>
+    private val phonemes: MutableList<String>
     private val resultPhonemes: MutableList<String>
     private var phonemeIndex = 0
-    private val phonemeToResultIndexMap: IntArray
+    private var phonemeToResultIndexMap: IntArray
 
     constructor(word: Word, repo: GraphRepository?, resultPhonemic: Boolean? = null) : this(
         if (word.isPhonemic) word.text else word.normalizedText.trimEnd('-'),
@@ -160,7 +160,7 @@ class PhonemeIterator {
         word: Word?,
         phonemeToResultIndexMap: IntArray
     ) {
-        this.phonemes = phonemes
+        this.phonemes = phonemes.toMutableList()
         this.resultPhonemes = resultPhonemes
         this.language = language
         this.repo = repo
@@ -180,6 +180,18 @@ class PhonemeIterator {
         return PhonemeIterator(phonemes, resultPhonemes, language, repo, word, phonemeToResultIndexMap).also {
             it.phonemeIndex = phonemeIndex
         }
+    }
+
+    fun commit() {
+        var newIndex = phonemeIndex
+        while (newIndex < phonemeToResultIndexMap.size && phonemeToResultIndexMap[newIndex] == -1) {
+            newIndex++
+        }
+        val index = phonemeToResultIndexMap[newIndex]
+        phonemes.clear()
+        phonemes.addAll(resultPhonemes)
+        phonemeIndex = index
+        phonemeToResultIndexMap = IntArray(phonemes.size) { it }
     }
 
     fun advanceTo(index: Int) {
