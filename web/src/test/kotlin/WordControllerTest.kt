@@ -135,4 +135,26 @@ class WordControllerTest {
         assertEquals("q-final-consonant", link!!.rules.single().name)
         assertEquals("PE xx", link.source.single().refText)
     }
+
+    @Test
+    fun explicitStress() {
+        val word = wordController.addWord(graph, "q", WordController.AddWordParameters(
+            "eˈa", null, null, null, false, null, null)
+        )
+        assertEquals("ea", word.text)
+        assertEquals(1, word.stressIndex)
+        assertEquals(1, word.stressLength)
+
+        val wordModel = wordController.wordJson(graph, "q", "ea").single()
+        assertEquals(1, wordModel.stressIndex)
+        assertEquals(1, wordModel.stressLength)
+        assertEquals("eˈa", wordModel.textWithExplicitStress)
+
+        wordController.updateWord(graph, word.id, WordController.AddWordParameters(
+            "ˈea",null, null, null, false, null, null)
+        )
+        val wordById = graph.wordById(word.id)!!
+        assertEquals("ea", wordById.text)
+        assertEquals(0, wordById.stressedPhonemeIndex)
+    }
 }

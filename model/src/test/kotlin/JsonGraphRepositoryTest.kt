@@ -150,5 +150,18 @@ class JsonGraphRepositoryTest : QBaseTest() {
 
         val repo2 = repo.roundtrip()
         assertEquals("q-ortho", repo2.languageByShortName("Q")!!.orthographyRule!!.resolve().name)
-   }
+    }
+
+    @Test
+    fun serializeExpicitStress() {
+        val repo = JsonGraphRepository(null)
+        repo.addLanguage(q)
+        val word = repo.findOrAddWord("ea", q, null)
+        word.stressedPhonemeIndex = 1
+        word.explicitStress = true
+        val repo2 = repo.roundtrip()
+        val word2 = repo2.wordsByText(repo2.languageByShortName("Q")!!, "ea").single()
+        assertEquals(1, word2.stressedPhonemeIndex)
+        assertEquals(true, word2.explicitStress)
+    }
 }

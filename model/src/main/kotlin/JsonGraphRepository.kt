@@ -26,7 +26,8 @@ data class WordData(
     val classes: List<String>? = null,
     val reconstructed: Boolean = false,
     val sourceRefs: List<SourceRefData>? = null,
-    val notes: String? = null
+    val notes: String? = null,
+    val stress: Int? = null
 )
 
 @Serializable
@@ -410,7 +411,9 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                 WordData(it.id, it.text, it.gloss, it.fullGloss, it.pos,
                     it.classes.takeIf { it.isNotEmpty() },
                     it.reconstructed,
-                    it.source.sourceToSerializedFormat(), it.notes)
+                    it.source.sourceToSerializedFormat(), it.notes,
+                    if (it.explicitStress) it.stressedPhonemeIndex else null
+                )
             }
             consumer(language.shortName + "/words.json", theJson.encodeToString(wordData))
         }
@@ -587,6 +590,10 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                     loadSource(wordData.sourceRefs),
                     wordData.notes
                 )
+                if (wordData.stress != null) {
+                    word.stressedPhonemeIndex = wordData.stress
+                    word.explicitStress = true
+                }
                 setLangEntity(word.id, word)
                 wordsByText.add(word)
             }

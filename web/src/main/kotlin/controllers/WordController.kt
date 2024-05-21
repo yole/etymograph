@@ -6,6 +6,8 @@ import org.springframework.web.server.ResponseStatusException
 import ru.yole.etymograph.*
 import ru.yole.etymograph.web.*
 
+const val explicitStressMark = 'ˈ'
+
 data class WordRefViewModel(
     val id: Int,
     val text: String,
@@ -77,6 +79,7 @@ class WordController {
         val languageFullName: String,
         val languageReconstructed: Boolean,
         val text: String,
+        val textWithExplicitStress: String,
         val gloss: String,
         val glossComputed: Boolean,
         val fullGloss: String?,
@@ -123,6 +126,10 @@ class WordController {
         val attestations = graph.findAttestations(this)
 
         val stressData = calculateStress(graph)
+        val textWithExplicitStress = if (explicitStress && stressData != null)
+            text.substring(0, stressData.index) + explicitStressMark + text.substring(stressData.index)
+        else
+            text
 
         val computedGloss = getOrComputeGloss(graph)
         return WordViewModel(
@@ -131,6 +138,7 @@ class WordController {
             language.name,
             language.reconstructed,
             text,
+            textWithExplicitStress,
             computedGloss ?: "",
             gloss == null,
             fullGloss,
@@ -216,7 +224,8 @@ class WordController {
     @ResponseBody
     fun addWord(repo: GraphRepository, @PathVariable lang: String, @RequestBody params: AddWordParameters): WordViewModel {
         val language = repo.resolveLanguage(lang)
-        val text = params.text?.nullize() ?: badRequest("No word text specified")
+        val (text, stressedPhonemeIndex) = parseStress(params.text?.nullize() ?: badRequest("No word text specified"),
+            repo, language)
 
         val (pos, classes) = parseWordClasses(language, params.posClasses)
 
@@ -230,7 +239,21 @@ class WordController {
             parseSourceRefs(repo, params.source),
             params.notes.nullize()
         )
+        if (stressedPhonemeIndex != null) {
+            word.stressedPhonemeIndex = stressedPhonemeIndex
+            word.explicitStress = true
+        }
         return word.toViewModel(repo)
+    }
+
+    private fun parseStress(text: String, repo: GraphRepository, language: Language): Pair<String, Int?> {
+        val explicitStressIndex = text.indexOf(explicitStressMark)
+        if (explicitStressIndex >= 0) {
+            val textWithoutStress = text.removeRange(explicitStressIndex, explicitStressIndex + 1)
+            val phonemes = PhonemeIterator(textWithoutStress, language, repo)
+            return textWithoutStress to phonemes.characterToPhonemeIndex(explicitStressIndex)
+        }
+        return text to null
     }
 
     private fun parseWordClasses(language: Language, posClasses: String?): Pair<String?, List<String>> {
@@ -252,9 +275,15 @@ class WordController {
     @ResponseBody
     fun updateWord(repo: GraphRepository, @PathVariable id: Int, @RequestBody params: AddWordParameters): WordViewModel {
         val word = repo.resolveWord(id)
-        val text = params.text
-        if (text != null && text != word.text) {
-            repo.updateWordText(word, text)
+        if (params.text != null) {
+            val (text, stressedPhonemeIndex) = parseStress(params.text, repo, word.language)
+            if (text != word.text) {
+                repo.updateWordText(word, text)
+            }
+            if (stressedPhonemeIndex != null) {
+                word.stressedPhonemeIndex = stressedPhonemeIndex
+                word.explicitStress = true
+            }
         }
 
         val (pos, classes) = parseWordClasses(word.language, params.posClasses)

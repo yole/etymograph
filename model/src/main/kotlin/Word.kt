@@ -23,6 +23,9 @@ class Word(
     source: List<SourceRef> = emptyList(),
     notes: String? = null
 ) : LangEntity(id, source, notes) {
+    var stressedPhonemeIndex: Int = -1
+    var explicitStress: Boolean = false
+
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false
@@ -111,8 +114,6 @@ class Word(
                 if (phonemic != null) it.isPhonemic = phonemic
             }
     }
-
-    var stressedPhonemeIndex: Int = -1
 
     fun calcStressedPhonemeIndex(repo: GraphRepository?): Int {
         if (stressedPhonemeIndex < 0) {

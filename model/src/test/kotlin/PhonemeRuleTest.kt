@@ -52,6 +52,20 @@ class PhonemeRuleTest : QBaseTest() {
     }
 
     @Test
+    fun soundDisappearsPreserveStress() {
+        val rule = parseRule(ce, q, """
+            sound is 'i':
+            - sound disappears
+        """)
+        val word = ce.word("miena")
+        word.stressedPhonemeIndex = 2
+        word.explicitStress = true
+        val newWord = rule.apply(word, emptyRepo)
+        assertEquals("mena", newWord.text)
+        assertEquals(1, newWord.stressedPhonemeIndex)
+    }
+
+    @Test
     fun nextSoundDisappears() {
         val rule = parseRule(ce, q, """
             sound is 'm' and next sound is 'b':

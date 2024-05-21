@@ -150,9 +150,10 @@ class LanguageController {
                 }
             }
         }
+        graphemes.getOrPut(explicitStressMark.toString()) { mutableListOf() }
         return InputAssistViewModel(
             graphemes
-                .map { (text, langs) -> InputAssistGraphemeViewModel(text, langs)}
+                .map { (text, langs) -> InputAssistGraphemeViewModel(text, langs) }
                 .sortedBy { Normalizer.normalize(it.text, Normalizer.Form.NFD) }
         )
     }

@@ -287,6 +287,10 @@ class PhonemeIterator {
         return resultPhonemes.joinToString("")
     }
 
+    fun mapIndex(index: Int): Int {
+        return phonemeToResultIndexMap[index]
+    }
+
     fun atBeginning(): Boolean = phonemeIndex == 0
     fun atEnd(): Boolean = phonemeIndex == phonemes.size - 1
 
@@ -302,6 +306,17 @@ class PhonemeIterator {
 
     fun phonemeToCharacterIndex(phonemeIndex: Int): Int {
         return phonemes.subList(0, phonemeIndex).sumOf { it.length }
+    }
+
+    fun characterToPhonemeIndex(characterIndex: Int): Int {
+        var length = 0
+        for ((index, phoneme) in phonemes.withIndex()) {
+            if (length >= characterIndex) {
+                return index
+            }
+            length += phoneme.length
+        }
+        throw IndexOutOfBoundsException("Character index $index outside of phoneme index range")
     }
 
     val stressedPhonemeIndex: Int?

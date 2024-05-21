@@ -134,8 +134,14 @@ class Rule(
                 anyChanges = anyChanges or applyToPhoneme(phonemic, phonemes, graph, trace)
                 if (!phonemes.advance()) break
             }
-            return if (anyChanges)
-                deriveWord(phonemic, phonemes.result(), toLanguage, -1, null, word.classes)
+            return if (anyChanges) {
+                val stress = if (word.explicitStress)
+                    phonemes.mapIndex(word.stressedPhonemeIndex)
+                else
+                    null
+
+                deriveWord(phonemic, phonemes.result(), toLanguage, -1, null, word.classes, stress)
+            }
             else
                 word
         }
@@ -184,7 +190,7 @@ class Rule(
     }
 
     private fun deriveWord(word: Word, text: String, language: Language, stressIndex: Int, segments: List<WordSegment>?,
-                           classes: List<String>): Word {
+                           classes: List<String>, stress: Int? = null): Word {
         val gloss = word.glossOrNP()?.let { baseGloss ->
             applyCategories(baseGloss, segments?.any { it.sourceRule == this} == true)
         }
@@ -198,6 +204,11 @@ class Rule(
                 it.segments = sourceSegments
             }
             it.isPhonemic = word.isPhonemic
+        }.apply {
+            if (stress != null) {
+                stressedPhonemeIndex = stress
+                explicitStress = true
+            }
         }
     }
 

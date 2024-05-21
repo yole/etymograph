@@ -298,7 +298,7 @@ function SingleWord(params) {
             updateId={word.id}
             defaultValues={{
                 language: word.language,
-                text: word.text,
+                text: word.textWithExplicitStress,
                 gloss: word.glossComputed ? undefined : word.gloss,
                 fullGloss: word.fullGloss,
                 posClasses: posClassesEditable,
