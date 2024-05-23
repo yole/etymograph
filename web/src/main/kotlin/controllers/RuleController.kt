@@ -9,6 +9,7 @@ class RuleController {
     data class RuleBranchViewModel(
         val conditions: RichText,
         val instructions: List<RichText>,
+        val comment: String?,
         val examples: List<RuleExampleViewModel>
     )
 
@@ -225,6 +226,7 @@ class RuleController {
         return RuleBranchViewModel(
             if (isUnconditional) RichText(emptyList()) else condition.toRichText(),
             instructions.map { it.toRichText() },
+            comment,
             examples.map { exampleToViewModel(it, repo) }
         )
     }

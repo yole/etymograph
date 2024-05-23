@@ -138,15 +138,18 @@ The following general attributes are specified for a rule:
    rule can remove the "nominative case" category value and add "genitive case" instead)
 
 The main body of a rule consists of *conditions* and *instructions*. Each condition or instruction is written
-on a separate line. Condition lines end with a colon (`:`), and instruction lines start with a dash (`-`). 
+on a separate line. Condition lines end with a colon (`:`), and instruction lines start with a dash (`-`).
+Comment lines can be used before a rule branch and start with `#`.
 Here's an example (the rule for putting a Quenya noun into the genitive case):
 
 ```
  - apply rule 'q-noun-stem'
  
+# Change 'a' to 'o'
 word ends with 'a':
  - change ending to 'o'
 
+# 'o' remains unchanged
 word ends with 'o':
  - no change
 

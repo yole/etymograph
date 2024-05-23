@@ -94,12 +94,28 @@ class RuleTest : QBaseTest() {
 
     @Test
     fun branchParse() {
-        val b = RuleBranch.parse("""
+        val b = RuleBranch.parse(LineBuffer("""
             word ends with 'e':
             - append 'a'
-        """.trimIndent(), q.parseContext())
+        """.trimIndent()), q.parseContext())
         assertEquals("e", (b.condition as LeafRuleCondition).parameter)
         assertEquals("'a'", b.instructions[0].arg)
+    }
+
+    @Test
+    fun branchParseComment() {
+        val branchText = """
+            # this is a comment
+            # second line
+            word ends with 'e':
+             - append 'a'
+        """.trimIndent()
+        val b = RuleBranch.parse(LineBuffer(branchText), q.parseContext())
+        assertEquals("this is a comment\nsecond line", b.comment)
+        assertEquals("e", (b.condition as LeafRuleCondition).parameter)
+        assertEquals("'a'", b.instructions[0].arg)
+
+        assertEquals(branchText, b.toEditableText())
     }
 
     @Test
@@ -114,6 +130,22 @@ class RuleTest : QBaseTest() {
         assertEquals(1, branches[0].instructions.size)
         assertEquals(1, branches[1].instructions.size)
     }
+
+    @Test
+    fun ruleParseComment() {
+        val branches = Rule.parseBranches("""
+            # this is e
+            word ends with 'e':
+            - append 'a'
+            # this is a
+            word ends with 'i':
+            - append 'r'
+        """.trimIndent(), q.parseContext()).branches
+        assertEquals(2, branches.size)
+        assertEquals("this is e", branches[0].comment)
+        assertEquals("this is a", branches[1].comment)
+    }
+
 
     @Test
     fun ruleParseWithoutConditions() {

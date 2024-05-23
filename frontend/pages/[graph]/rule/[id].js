@@ -156,6 +156,7 @@ export default function Rule(params) {
                 {rule.preInstructions.map(r => <li><RichText richText={r}></RichText></li>)}
             </ul>
             {rule.branches.map(b => <>
+                {b.comment != null && <div className="ruleComment">{b.comment}</div> }
                 {b.conditions.fragments.length > 0 && <div><RichText richText={b.conditions}/>:</div>}
                 <ul>
                     {b.instructions.map(i => <li><RichText richText={i}></RichText></li>)}

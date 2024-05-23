@@ -85,6 +85,19 @@ class JsonGraphRepositoryTest : QBaseTest() {
     }
 
     @Test
+    fun serializeBranchComment() {
+        val repo = JsonGraphRepository(null)
+        val rule = parseRule(q, q, """
+            # This is a comment
+            - insert 'i' before last consonant
+        """.trimIndent())
+
+        val serializedData = rule.ruleToSerializedFormat()
+        val branches = ruleBranchesFromSerializedFormat(repo, q, serializedData.branches)
+        assertEquals("This is a comment", branches[0].comment)
+    }
+
+    @Test
     fun serializeTranslation() {
         val repo = JsonGraphRepository(null)
         repo.addLanguage(q)

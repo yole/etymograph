@@ -36,7 +36,33 @@ data class ParseCandidate(val text: String, val rules: List<Rule>, val pos: Stri
         get() = rules.fold("") { t, rule -> t + rule.addedCategories.orEmpty() }
 }
 
-class RuleBranch(val condition: RuleCondition, val instructions: List<RuleInstruction>) {
+class LineBuffer(s: String) {
+    private val lines: List<String> = s.split('\n').map { it.trim() }.filter { it.isNotEmpty() }
+    private var index = 0
+
+    fun peek(): String? {
+        return lines.elementAtOrNull(index)
+    }
+
+    fun next(): String? {
+        return lines.elementAtOrNull(index++)
+    }
+
+    fun nextIf(condition: (String) -> Boolean): String? {
+        if (index < lines.size && condition(lines[index])) {
+            return lines[index++]
+        }
+        return null
+    }
+
+    fun nextWhile(condition: (String) -> Boolean, callback: (String) -> Unit) {
+        while (index < lines.size && condition(lines[index])) {
+            callback(lines[index++])
+        }
+    }
+}
+
+class RuleBranch(val condition: RuleCondition, val instructions: List<RuleInstruction>, val comment: String? = null) {
     fun matches(word: Word, graph: GraphRepository) = condition.matches(word, graph)
 
     fun apply(rule: Rule, word: Word, graph: GraphRepository): Word {
@@ -68,7 +94,8 @@ class RuleBranch(val condition: RuleCondition, val instructions: List<RuleInstru
     }
 
     fun toEditableText(): String {
-        return condition.toEditableText() + ":\n" +
+        val commentString = (comment?.split('\n')?.joinToString("") { "# $it\n" }) ?: ""
+        return commentString + condition.toEditableText() + ":\n" +
                 instructions.joinToString("\n") { " - " + it.toEditableText() }
     }
 
@@ -86,24 +113,30 @@ class RuleBranch(val condition: RuleCondition, val instructions: List<RuleInstru
     }
 
     companion object {
-        fun parse(s: String, context: RuleParseContext): RuleBranch {
-            var lines = s.split("\n").map { it.trim() }.filter { it.isNotEmpty() }
-            val condition = if (lines[0].endsWith(":")) {
-                val buffer = ParseBuffer(lines[0])
-                lines = lines.drop(1)
+        fun parse(lines: LineBuffer, context: RuleParseContext): RuleBranch {
+            val comment = mutableListOf<String>()
+            lines.nextWhile({ line -> line.startsWith("#") }) { line ->
+                comment.add(line.removePrefix("#").trim())
+            }
+
+            val condition = lines.nextIf { it.endsWith(":") }?.let { line ->
+                val buffer = ParseBuffer(line)
                 RuleCondition.parse(buffer, context.fromLanguage).also {
                     if (!buffer.consume(":")) {
                         buffer.fail("':' expected after condition")
                     }
                 }
+            } ?: OtherwiseCondition
+
+            val instructions = mutableListOf<RuleInstruction>()
+            while (true) {
+                val line = lines.nextIf { !it.startsWith("#") && !it.endsWith(":") } ?: break
+                instructions.add(RuleInstruction.parse(line, context))
             }
-            else {
-                OtherwiseCondition
+            if (instructions.isEmpty()) {
+                throw RuleParseException("Rule must contain at least one instruction")
             }
-            val instructions = lines.map {
-                RuleInstruction.parse(it, context)
-            }
-            return RuleBranch(condition, instructions)
+            return RuleBranch(condition, instructions, comment.takeIf { it.isNotEmpty() }?.joinToString("\n"))
         }
     }
 }
@@ -252,25 +285,23 @@ class Rule(
     companion object {
         fun parseBranches(s: String, context: RuleParseContext): RuleLogic {
             if (s.isBlank()) return RuleLogic(emptyList(), emptyList())
-            val lines = s.split('\n').map { it.trim() }.filter { it.isNotEmpty() }
-            val branchTexts = mutableListOf<List<String>>()
-            var currentBranchText = mutableListOf<String>()
-            val preInstructionsText = mutableListOf<String>()
-            for (l in lines) {
-                if (l.endsWith(':')) {
-                    if (branchTexts.isEmpty()) {
-                        preInstructionsText.addAll(currentBranchText)
-                    }
-                    currentBranchText = mutableListOf()
-                    branchTexts.add(currentBranchText)
+            val preInstructions = mutableListOf<RuleInstruction>()
+            val branches = mutableListOf<RuleBranch>()
+            val lines = LineBuffer(s)
+            lines.nextWhile({ line -> line.startsWith("-") }) { line ->
+                preInstructions.add(RuleInstruction.parse(line, context))
+            }
+
+            while (true) {
+                if (lines.peek() == null) {
+                    break
                 }
-                currentBranchText.add(l)
+                branches.add(RuleBranch.parse(lines, context))
             }
-            if (branchTexts.isEmpty()) {   // rule with no conditions
-                branchTexts.add(currentBranchText)
+            if (branches.isEmpty() && preInstructions.isNotEmpty()) {
+                return RuleLogic(emptyList(), listOf(RuleBranch(OtherwiseCondition, preInstructions, null)))
             }
-            val preInstructions = preInstructionsText.map { RuleInstruction.parse(it, context) }
-            val branches = branchTexts.map { RuleBranch.parse(it.joinToString("\n"), context) }
+
             return RuleLogic(preInstructions, branches)
         }
     }

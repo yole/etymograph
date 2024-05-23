@@ -200,7 +200,8 @@ data class RuleInstructionData(val type: InstructionType, val args: Array<String
 @Serializable
 data class RuleBranchData(
     val instructions: List<RuleInstructionData>,
-    val condition: RuleConditionData? = null
+    val condition: RuleConditionData? = null,
+    val comment: String? = null
 )
 
 @Serializable
@@ -794,7 +795,8 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                 logic.branches.map { branch ->
                     RuleBranchData(
                         branch.instructions.toSerializedFormat(),
-                        branch.condition.toSerializedFormat()
+                        branch.condition.toSerializedFormat(),
+                        branch.comment
                     )
                 },
                 addedCategories,
@@ -888,7 +890,8 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             return branches.map { branchData ->
                 RuleBranch(
                     branchData.condition!!.toRuntimeFormat(result, fromLanguage),
-                    ruleInstructionsFromSerializedFormat(result, fromLanguage, branchData.instructions)
+                    ruleInstructionsFromSerializedFormat(result, fromLanguage, branchData.instructions),
+                    branchData.comment
                 )
             }
         }
