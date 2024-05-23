@@ -271,19 +271,38 @@
                             "relative": false
                         },
                         {
-                            "type": "relPhoneme",
-                            "relativeIndex": -1,
-                            "cls": "vowel"
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": 1,
-                            "cls": "vowel"
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "and",
+                                    "members": [
+                                        {
+                                            "type": "relPhoneme",
+                                            "relativeIndex": -1,
+                                            "cls": "vowel"
+                                        },
+                                        {
+                                            "type": "relPhoneme",
+                                            "relativeIndex": 1,
+                                            "cls": "vowel"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "relPhoneme",
+                                    "relativeIndex": -1,
+                                    "parameter": "r"
+                                },
+                                {
+                                    "type": "relPhoneme",
+                                    "relativeIndex": -1,
+                                    "parameter": "l"
+                                }
+                            ]
                         }
                     ]
                 }
             }
-        ],
-        "notes": ""
+        ]
     }
 ]

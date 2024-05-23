@@ -1132,5 +1132,281 @@
                 "refText": "216"
             }
         ]
+    },
+    {
+        "id": 3075,
+        "text": "dunjaną",
+        "gloss": "to make a loud noise",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "223"
+            }
+        ]
+    },
+    {
+        "id": 3087,
+        "text": "dūbijaną",
+        "gloss": "to dip, to immerse",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "224"
+            }
+        ]
+    },
+    {
+        "id": 3089,
+        "text": "rūmijaną",
+        "gloss": "to make room, to clear out",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "224"
+            }
+        ]
+    },
+    {
+        "id": 3091,
+        "text": "snūtijaną",
+        "gloss": "to blow one's nose",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "224"
+            }
+        ]
+    },
+    {
+        "id": 3093,
+        "text": "sūliz",
+        "gloss": "pillar",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "224"
+            }
+        ]
+    },
+    {
+        "id": 3095,
+        "text": "þrūþiz",
+        "gloss": "power",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "224"
+            }
+        ]
+    },
+    {
+        "id": 3107,
+        "text": "funsijaną",
+        "gloss": "to make ready to go",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "225"
+            }
+        ]
+    },
+    {
+        "id": 3109,
+        "text": "wunskijaną",
+        "gloss": "to wish",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "225"
+            }
+        ]
+    },
+    {
+        "id": 3121,
+        "text": "bōniz",
+        "gloss": "prayer, request",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "227"
+            }
+        ]
+    },
+    {
+        "id": 3133,
+        "text": "kanipaz",
+        "gloss": "moustache",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "229"
+            }
+        ]
+    },
+    {
+        "id": 3138,
+        "text": "wāniz",
+        "gloss": "hope, expectation",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "230"
+            }
+        ]
+    },
+    {
+        "id": 3140,
+        "text": "sanþijaną",
+        "gloss": "to declare true",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "230"
+            }
+        ]
+    },
+    {
+        "id": 3244,
+        "text": "klawiþô",
+        "gloss": "itch",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "237"
+            }
+        ]
+    },
+    {
+        "id": 3246,
+        "text": "fatilaz",
+        "gloss": "strap",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "237"
+            }
+        ]
+    },
+    {
+        "id": 3248,
+        "text": "hadinaz",
+        "gloss": "hooded jacket",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "237"
+            }
+        ]
+    },
+    {
+        "id": 3250,
+        "text": "hrappijaną",
+        "gloss": "to grasp",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "237"
+            }
+        ]
+    },
+    {
+        "id": 3266,
+        "text": "taljaną",
+        "gloss": "to count, to narrate",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "238"
+            }
+        ]
+    },
+    {
+        "id": 3272,
+        "text": "fardiz",
+        "gloss": "journey",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "242"
+            }
+        ]
+    },
+    {
+        "id": 3274,
+        "text": "hʷarbijaną",
+        "gloss": "to turn, to change",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "242"
+            }
+        ]
+    },
+    {
+        "id": 3276,
+        "text": "bargijaną",
+        "gloss": "to taste",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "242"
+            }
+        ]
+    },
+    {
+        "id": 3292,
+        "text": "gamarkiją",
+        "gloss": "mark",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "243"
+            }
+        ],
+        "stress": 3
+    },
+    {
+        "id": 3294,
+        "text": "marhi",
+        "gloss": "mare",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "243"
+            }
+        ]
+    },
+    {
+        "id": 3296,
+        "text": "halþijaną",
+        "gloss": "to tilt, to incline",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "243"
+            }
+        ]
+    },
+    {
+        "id": 3298,
+        "text": "albiz",
+        "gloss": "elf",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "243"
+            }
+        ]
+    },
+    {
+        "id": 3300,
+        "text": "aldijaną",
+        "gloss": "to make old",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "243"
+            }
+        ]
     }
 ]

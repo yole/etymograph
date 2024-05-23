@@ -44,18 +44,39 @@
                             "relative": false
                         },
                         {
-                            "type": "relPhoneme",
-                            "relativeIndex": -1,
-                            "cls": "vowel"
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": 1,
-                            "cls": "vowel"
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "and",
+                                    "members": [
+                                        {
+                                            "type": "relPhoneme",
+                                            "relativeIndex": -1,
+                                            "cls": "vowel"
+                                        },
+                                        {
+                                            "type": "relPhoneme",
+                                            "relativeIndex": 1,
+                                            "cls": "vowel"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "relPhoneme",
+                                    "relativeIndex": -1,
+                                    "parameter": "r"
+                                },
+                                {
+                                    "type": "relPhoneme",
+                                    "relativeIndex": -1,
+                                    "parameter": "l"
+                                }
+                            ]
                         }
                     ]
                 }
             }
-        ]
+        ],
+        "notes": "The rule given by Ringe is that all non-word-initial 'b' are actually β"
     }
 ]

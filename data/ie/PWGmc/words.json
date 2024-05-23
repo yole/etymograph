@@ -2287,5 +2287,292 @@
                 "refText": "216"
             }
         ]
+    },
+    {
+        "id": 3076,
+        "text": "dunnjan",
+        "gloss": "to make a loud noise",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "223"
+            }
+        ]
+    },
+    {
+        "id": 3078,
+        "text": "wunnju",
+        "gloss": "joy",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "223"
+            }
+        ]
+    },
+    {
+        "id": 3080,
+        "text": "tussjā",
+        "gloss": "coarse cloth",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "223"
+            }
+        ]
+    },
+    {
+        "id": 3085,
+        "text": "garūnī",
+        "gloss": "(secret) meeting, conspiracy",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "224"
+            }
+        ],
+        "stress": 3
+    },
+    {
+        "id": 3097,
+        "text": "fūliþu",
+        "gloss": "rottenness",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "224"
+            }
+        ]
+    },
+    {
+        "id": 3099,
+        "text": "fūsti",
+        "gloss": "fist",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "224"
+            }
+        ]
+    },
+    {
+        "id": 3101,
+        "text": "hlūdijan",
+        "gloss": "to make a loud noise",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "224"
+            }
+        ]
+    },
+    {
+        "id": 3103,
+        "text": "sūbrī",
+        "gloss": "sober, chaste, clean",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "224"
+            }
+        ]
+    },
+    {
+        "id": 3105,
+        "text": "tūnijan",
+        "gloss": "to enclose",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "224"
+            }
+        ]
+    },
+    {
+        "id": 3111,
+        "text": "hunþijan",
+        "gloss": "to plunder, to make captive",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "225"
+            }
+        ]
+    },
+    {
+        "id": 3123,
+        "text": "grōnī",
+        "gloss": "green",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "227"
+            }
+        ]
+    },
+    {
+        "id": 3125,
+        "text": "fōgijan",
+        "gloss": "to fit together",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "227"
+            }
+        ]
+    },
+    {
+        "id": 3127,
+        "text": "brōgijan",
+        "gloss": "to terrify",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "227"
+            }
+        ]
+    },
+    {
+        "id": 3135,
+        "text": "hamiþī",
+        "gloss": "shirt",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "229"
+            }
+        ]
+    },
+    {
+        "id": 3142,
+        "text": "samftī",
+        "gloss": "soft, gentle",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "230"
+            }
+        ]
+    },
+    {
+        "id": 3157,
+        "text": "þaisimō",
+        "gloss": "yeast",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "235"
+            }
+        ]
+    },
+    {
+        "id": 3252,
+        "text": "habīg",
+        "gloss": "heavy",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "237"
+            }
+        ]
+    },
+    {
+        "id": 3254,
+        "text": "agiþā",
+        "gloss": "rake, harrow",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "237"
+            }
+        ]
+    },
+    {
+        "id": 3256,
+        "text": "rafsijan",
+        "gloss": "to reproach, to blame",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "237"
+            }
+        ]
+    },
+    {
+        "id": 3258,
+        "text": "rastijan",
+        "gloss": "to rest",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "237"
+            }
+        ]
+    },
+    {
+        "id": 3278,
+        "text": "harstijan",
+        "gloss": "to roast",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "242"
+            }
+        ]
+    },
+    {
+        "id": 3280,
+        "text": "armiþu",
+        "gloss": "poverty, misery",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "242"
+            }
+        ]
+    },
+    {
+        "id": 3282,
+        "text": "skarpijan",
+        "gloss": "to sharpen",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "242"
+            }
+        ]
+    },
+    {
+        "id": 3284,
+        "text": "warnijan",
+        "gloss": "to refuse, to deny",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "242"
+            }
+        ]
+    },
+    {
+        "id": 3286,
+        "text": "darnī",
+        "gloss": "secret",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "242"
+            }
+        ]
+    },
+    {
+        "id": 3288,
+        "text": "gazdi",
+        "gloss": "rod",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "242"
+            }
+        ]
     }
 ]

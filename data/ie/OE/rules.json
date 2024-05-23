@@ -2505,6 +2505,22 @@
                             "relativeIndex": 2,
                             "negated": true,
                             "parameter": "j"
+                        },
+                        {
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "relPhoneme",
+                                    "relativeIndex": 1,
+                                    "cls": "non-geminate"
+                                },
+                                {
+                                    "type": "relPhoneme",
+                                    "relativeIndex": 3,
+                                    "negated": true,
+                                    "parameter": "j"
+                                }
+                            ]
                         }
                     ]
                 }
@@ -2541,6 +2557,22 @@
                             "relativeIndex": 2,
                             "negated": true,
                             "parameter": "j"
+                        },
+                        {
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "relPhoneme",
+                                    "relativeIndex": 1,
+                                    "cls": "non-geminate"
+                                },
+                                {
+                                    "type": "relPhoneme",
+                                    "relativeIndex": 3,
+                                    "negated": true,
+                                    "parameter": "j"
+                                }
+                            ]
                         }
                     ]
                 }
@@ -3689,7 +3721,8 @@
                             "cls": "close front"
                         }
                     ]
-                }
+                },
+                "comment": "Ringe 2011:236 (6.6.2): Raising of æ"
             },
             {
                 "instructions": [

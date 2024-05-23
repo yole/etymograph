@@ -737,7 +737,8 @@
                 "pubId": 5,
                 "refText": "223"
             }
-        ]
+        ],
+        "stress": 3
     },
     {
         "id": 2275,
@@ -2639,6 +2640,303 @@
             {
                 "pubId": 5,
                 "refText": "213"
+            }
+        ]
+    },
+    {
+        "id": 3073,
+        "text": "furhtijaną",
+        "gloss": "to frighten",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "223"
+            }
+        ]
+    },
+    {
+        "id": 3082,
+        "text": "būsniz",
+        "gloss": "thing offered",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "224"
+            }
+        ]
+    },
+    {
+        "id": 3084,
+        "text": "garūniją",
+        "gloss": "(secret) meeting, conspiracy",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "224"
+            }
+        ]
+    },
+    {
+        "id": 3113,
+        "text": "fōdijaną",
+        "gloss": "to feed",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "226"
+            }
+        ]
+    },
+    {
+        "id": 3115,
+        "text": "wōpijaną",
+        "gloss": "to call",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "226"
+            }
+        ]
+    },
+    {
+        "id": 3117,
+        "text": "mōtijaną",
+        "gloss": "to meet",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "227"
+            }
+        ]
+    },
+    {
+        "id": 3119,
+        "text": "grōtijaną",
+        "gloss": "to cause to weep",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "227"
+            }
+        ]
+    },
+    {
+        "id": 3129,
+        "text": "sandijaną",
+        "gloss": "to send",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "229"
+            }
+        ]
+    },
+    {
+        "id": 3131,
+        "text": "banjō",
+        "gloss": "wound",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "229"
+            }
+        ]
+    },
+    {
+        "id": 3137,
+        "text": "wēniz",
+        "gloss": "hope, expectation",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "230"
+            }
+        ]
+    },
+    {
+        "id": 3144,
+        "text": "airiz",
+        "gloss": "earlier",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "234"
+            }
+        ]
+    },
+    {
+        "id": 3145,
+        "text": "hailijaną",
+        "gloss": "to heal, to cure",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "234"
+            }
+        ]
+    },
+    {
+        "id": 3147,
+        "text": "laibijaną",
+        "gloss": "to leave (over)",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "234"
+            }
+        ]
+    },
+    {
+        "id": 3149,
+        "text": "laidijaną",
+        "gloss": "to make go",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "234"
+            }
+        ]
+    },
+    {
+        "id": 3151,
+        "text": "laistijaną",
+        "gloss": "to follow",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "234"
+            }
+        ]
+    },
+    {
+        "id": 3153,
+        "text": "aihtiz",
+        "gloss": "property, possessions",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "234"
+            }
+        ]
+    },
+    {
+        "id": 3155,
+        "text": "haiþī",
+        "gloss": "open country",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "234"
+            }
+        ]
+    },
+    {
+        "id": 3234,
+        "text": "satīniz",
+        "gloss": "setting, seating",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "236"
+            }
+        ]
+    },
+    {
+        "id": 3236,
+        "text": "aglijaną",
+        "gloss": "to treat badly, to harm",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "236"
+            }
+        ]
+    },
+    {
+        "id": 3238,
+        "text": "asnijaz",
+        "gloss": "harvest-worker, hired man",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "236"
+            }
+        ]
+    },
+    {
+        "id": 3242,
+        "text": "arjaną",
+        "gloss": "to plow",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "237"
+            }
+        ]
+    },
+    {
+        "id": 3260,
+        "text": "rakjaną",
+        "gloss": "to stretch out",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "238"
+            }
+        ]
+    },
+    {
+        "id": 3262,
+        "text": "saljaną",
+        "gloss": "to hand over, to give",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "238"
+            }
+        ]
+    },
+    {
+        "id": 3264,
+        "text": "sagjaną",
+        "gloss": "to say",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "238"
+            }
+        ]
+    },
+    {
+        "id": 3268,
+        "text": "warmijaną",
+        "gloss": "to warm",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "241"
+            }
+        ]
+    },
+    {
+        "id": 3270,
+        "text": "wargijaną",
+        "gloss": "to condemn",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "241"
+            }
+        ]
+    },
+    {
+        "id": 3290,
+        "text": "hardijaną",
+        "gloss": "to harden",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "242"
             }
         ]
     }
