@@ -52,8 +52,14 @@ open class PhonemeClass(val name: String, var matchingPhonemes: List<String>) {
             }
         }
 
+        val geminate = object  : PhonemeClass("geminate", emptyList()) {
+            override fun matchesCurrent(it: PhonemeIterator): Boolean {
+                return it.current == it.atRelative(1) || it.current == it.atRelative(-1)
+            }
+        }
+
         val specialPhonemeClasses = listOf(
-            diphthong, stressed, wordInitial, wordFinal, syllableInitial, syllableFinal
+            diphthong, stressed, wordInitial, wordFinal, syllableInitial, syllableFinal, geminate
         )
 
         const val vowelClassName = "vowel"
