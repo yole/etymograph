@@ -482,8 +482,10 @@ fun buildIntermediateSteps(graph: GraphRepository, link: Link): List<RuleStepDat
     val result = mutableListOf<RuleStepData>()
     val trace = RuleTrace()
     for (rule in link.rules) {
-        word = rule.apply(word, graph, trace)
-        result.add(RuleStepData(word.text, rule, trace.findMatchedBranches(rule, word)))
+        val newWord = rule.apply(word, graph, trace)
+        val matchedBranches = trace.findMatchedBranches(rule, word).ifEmpty { trace.findMatchedBranches(rule, newWord) }
+        word = newWord
+        result.add(RuleStepData(word.text, rule, matchedBranches))
     }
     return result
 }
