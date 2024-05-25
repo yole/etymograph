@@ -1661,7 +1661,8 @@
                 "pubId": 5,
                 "refText": "178"
             }
-        ]
+        ],
+        "stress": 3
     },
     {
         "id": 2843,
@@ -2572,6 +2573,169 @@
             {
                 "pubId": 5,
                 "refText": "242"
+            }
+        ]
+    },
+    {
+        "id": 3303,
+        "text": "katil",
+        "gloss": "kettle",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "244"
+            }
+        ]
+    },
+    {
+        "id": 3313,
+        "text": "auþī",
+        "gloss": "easy",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "246"
+            }
+        ]
+    },
+    {
+        "id": 3317,
+        "text": "kāsī",
+        "gloss": "chieese",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "246"
+            }
+        ]
+    },
+    {
+        "id": 3327,
+        "text": "hirtijan",
+        "gloss": "to put heart in (someone)",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "248"
+            }
+        ]
+    },
+    {
+        "id": 3337,
+        "text": "niudi",
+        "gloss": "desire, eagerness",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "250"
+            }
+        ]
+    },
+    {
+        "id": 3339,
+        "text": "kliuwīn",
+        "gloss": "little ball",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "250"
+            }
+        ]
+    },
+    {
+        "id": 3341,
+        "text": "striunijan",
+        "gloss": "to acquire, to gain",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "250"
+            }
+        ]
+    },
+    {
+        "id": 3343,
+        "text": "laiwazikā",
+        "gloss": "lark",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "265"
+            }
+        ]
+    },
+    {
+        "id": 3345,
+        "text": "skuldihaitijō",
+        "gloss": "deputy, bailiff",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "267"
+            }
+        ]
+    },
+    {
+        "id": 3354,
+        "text": "ubisu",
+        "gloss": "hall",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "285"
+            }
+        ]
+    },
+    {
+        "id": 3358,
+        "text": "fihlu",
+        "gloss": "file",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "285"
+            }
+        ]
+    },
+    {
+        "id": 3361,
+        "text": "firinu",
+        "gloss": "crime",
+        "sourceRefs": [
+            {
+                "refText": "RInge 2014:286"
+            }
+        ]
+    },
+    {
+        "id": 3363,
+        "text": "luginu",
+        "gloss": "lie",
+        "sourceRefs": [
+            {
+                "refText": "RInge 2014:286"
+            }
+        ]
+    },
+    {
+        "id": 3367,
+        "text": "wurti",
+        "gloss": "root, plant",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "287"
+            }
+        ]
+    },
+    {
+        "id": 3370,
+        "text": "hanapi",
+        "gloss": "hemp",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "287"
             }
         ]
     }

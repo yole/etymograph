@@ -2939,5 +2939,181 @@
                 "refText": "242"
             }
         ]
+    },
+    {
+        "id": 3302,
+        "text": "katilaz",
+        "gloss": "kettle",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "244"
+            }
+        ]
+    },
+    {
+        "id": 3305,
+        "text": "hauhiþō",
+        "gloss": "height",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "245"
+            }
+        ]
+    },
+    {
+        "id": 3307,
+        "text": "galaubijaną",
+        "gloss": "to believe",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "245"
+            }
+        ],
+        "stress": 3
+    },
+    {
+        "id": 3309,
+        "text": "lausijaną",
+        "gloss": "to release, to set free",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "246"
+            }
+        ]
+    },
+    {
+        "id": 3311,
+        "text": "hlautiz",
+        "gloss": "lot",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "246"
+            }
+        ]
+    },
+    {
+        "id": 3321,
+        "text": "girnijaną",
+        "gloss": "to be eager for, to desire",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "248"
+            }
+        ]
+    },
+    {
+        "id": 3323,
+        "text": "firriz",
+        "gloss": "further",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "248"
+            }
+        ]
+    },
+    {
+        "id": 3329,
+        "text": "siuniz",
+        "gloss": "sight",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "249"
+            }
+        ]
+    },
+    {
+        "id": 3331,
+        "text": "liuhtijaną",
+        "gloss": "to shine",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "249"
+            }
+        ]
+    },
+    {
+        "id": 3347,
+        "text": "razdō",
+        "gloss": "voice",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "285"
+            }
+        ]
+    },
+    {
+        "id": 3350,
+        "text": "feþrō",
+        "gloss": "feather",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "285"
+            }
+        ]
+    },
+    {
+        "id": 3353,
+        "text": "ubiswō",
+        "gloss": "hall",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "285"
+            }
+        ]
+    },
+    {
+        "id": 3360,
+        "text": "firinō",
+        "gloss": "crime",
+        "sourceRefs": [
+            {
+                "refText": "RInge 2014:286"
+            }
+        ]
+    },
+    {
+        "id": 3366,
+        "text": "wurtiz",
+        "gloss": "root, plant",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "287"
+            }
+        ]
+    },
+    {
+        "id": 3369,
+        "text": "hanapiz",
+        "gloss": "hemp",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "287"
+            }
+        ]
+    },
+    {
+        "id": 3372,
+        "text": "mēriþō",
+        "gloss": "fame, reputation",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "293"
+            }
+        ]
     }
 ]

@@ -1408,5 +1408,82 @@
                 "refText": "243"
             }
         ]
+    },
+    {
+        "id": 3325,
+        "text": "smirwijaną",
+        "gloss": "to smear, to anoint",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "248"
+            }
+        ]
+    },
+    {
+        "id": 3333,
+        "text": "diurijaz",
+        "gloss": "valuable",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "249"
+            }
+        ]
+    },
+    {
+        "id": 3335,
+        "text": "stiurijaną",
+        "gloss": "to steer, to direct",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "250"
+            }
+        ]
+    },
+    {
+        "id": 3348,
+        "text": "razdu",
+        "gloss": "voice",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "285"
+            }
+        ]
+    },
+    {
+        "id": 3351,
+        "text": "feþru",
+        "gloss": "feather",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "285"
+            }
+        ]
+    },
+    {
+        "id": 3356,
+        "text": "raidu",
+        "gloss": "act of raiding",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "285"
+            }
+        ]
+    },
+    {
+        "id": 3373,
+        "text": "māriþu",
+        "gloss": "fame, reputation",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "293"
+            }
+        ]
     }
 ]

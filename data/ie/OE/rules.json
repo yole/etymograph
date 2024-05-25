@@ -2304,6 +2304,38 @@
                             "parameter": "u"
                         }
                     ]
+                },
+                "comment": "Ringe 2014:173"
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "ī"
+                        ]
+                    },
+                    {
+                        "type": "ChangeNextSound",
+                        "args": [
+                            "o"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "i",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": 1,
+                            "parameter": "u"
+                        }
+                    ]
                 }
             }
         ],
@@ -2603,6 +2635,36 @@
                             "type": "relPhoneme",
                             "relativeIndex": 2,
                             "parameter": "h"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "io"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "i",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": 1,
+                            "parameter": "r"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": 2,
+                            "cls": "consonant"
                         }
                     ]
                 }
@@ -4259,6 +4321,11 @@
                         {
                             "type": "syllableIndex",
                             "matchClass": "open"
+                        },
+                        {
+                            "type": "syllableIndex",
+                            "matchIndex": -1,
+                            "negated": true
                         }
                     ]
                 }
@@ -4310,7 +4377,7 @@
                 "refText": "279"
             }
         ],
-        "notes": "TODO: according to Ringe this is restricted to heavy syllables, but isn't every syllable heavy if it ends with consonant and 'j'?"
+        "notes": "TODO: according to Ringe this applies only to results of syncope, but looks like 'j' actually disappeared in many more cases"
     },
     {
         "id": 2328,
@@ -4576,6 +4643,61 @@
                                     ]
                                 }
                             ]
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "SoundDisappears",
+                        "args": [
+                            "0"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "relPhoneme",
+                                    "cls": "word-final",
+                                    "parameter": "i",
+                                    "relative": false
+                                },
+                                {
+                                    "type": "relPhoneme",
+                                    "cls": "word-final",
+                                    "parameter": "u",
+                                    "relative": false
+                                }
+                            ]
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": -1,
+                            "tcls": "vowel",
+                            "cls": "non-stressed"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": -2,
+                            "tcls": "vowel",
+                            "cls": "stressed"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": -2,
+                            "tcls": "vowel",
+                            "cls": "short"
+                        },
+                        {
+                            "type": "syllableIndex",
+                            "matchClass": "open",
+                            "relativeIndex": -2
                         }
                     ]
                 }
@@ -5501,6 +5623,70 @@
                         }
                     ]
                 }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeNextSound",
+                        "args": [
+                            "e"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "i",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": 1,
+                            "parameter": "o"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": 2,
+                            "tcls": "vocalic",
+                            "cls": "close front"
+                        }
+                    ]
+                },
+                "comment": "Ringe 2014:247"
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeNextSound",
+                        "args": [
+                            "e"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "ī",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": 1,
+                            "parameter": "o"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": 2,
+                            "tcls": "vocalic",
+                            "cls": "close front"
+                        }
+                    ]
+                },
+                "comment": "Ringe 2014:249"
             }
         ],
         "sourceRefs": [
@@ -5510,5 +5696,91 @@
             }
         ],
         "notes": "This is the West Saxon version of the rule."
+    },
+    {
+        "id": 3315,
+        "name": "oe-awwj",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeNextSound",
+                        "args": [
+                            "u"
+                        ]
+                    },
+                    {
+                        "type": "SoundDisappears",
+                        "args": [
+                            "2"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "a",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": 1,
+                            "parameter": "w"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": 2,
+                            "parameter": "w"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": 3,
+                            "parameter": "j"
+                        }
+                    ]
+                }
+            }
+        ],
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "173"
+            }
+        ],
+        "notes": ""
+    },
+    {
+        "id": 3319,
+        "name": "oe-j-g",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "ġ"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "relPhoneme",
+                    "parameter": "j",
+                    "relative": false
+                }
+            }
+        ],
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "204"
+            }
+        ],
+        "notes": ""
     }
 ]

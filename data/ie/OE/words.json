@@ -2439,18 +2439,6 @@
         ]
     },
     {
-        "id": 2318,
-        "text": "gryndilæ",
-        "gloss": "name of a species of fish",
-        "reconstructed": true,
-        "sourceRefs": [
-            {
-                "pubId": 5,
-                "refText": "267"
-            }
-        ]
-    },
-    {
         "id": 2319,
         "text": "gryndle",
         "gloss": "herring",
@@ -2606,7 +2594,7 @@
     },
     {
         "id": 2358,
-        "text": "kyste",
+        "text": "cyste",
         "gloss": "(s)he kissed"
     },
     {
@@ -6971,6 +6959,350 @@
             {
                 "pubId": 5,
                 "refText": "243"
+            }
+        ]
+    },
+    {
+        "id": 3304,
+        "text": "ċytel",
+        "gloss": "kettle",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "244"
+            }
+        ]
+    },
+    {
+        "id": 3306,
+        "text": "hīehþ",
+        "gloss": "height",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "245"
+            }
+        ]
+    },
+    {
+        "id": 3308,
+        "text": "ġelīefan",
+        "gloss": "to believe",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "245"
+            }
+        ]
+    },
+    {
+        "id": 3310,
+        "text": "līesan",
+        "gloss": "to release, to set free",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "246"
+            }
+        ]
+    },
+    {
+        "id": 3312,
+        "text": "hlīet",
+        "gloss": "lot",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "246"
+            }
+        ]
+    },
+    {
+        "id": 3314,
+        "text": "īeþe",
+        "gloss": "easy",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "246"
+            }
+        ]
+    },
+    {
+        "id": 3318,
+        "text": "ċȳse",
+        "gloss": "chieese",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "246"
+            }
+        ]
+    },
+    {
+        "id": 3320,
+        "text": "ierre",
+        "gloss": "angry",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "248"
+            }
+        ]
+    },
+    {
+        "id": 3322,
+        "text": "ġiernan",
+        "gloss": "to be eager for, to desire",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "248"
+            }
+        ]
+    },
+    {
+        "id": 3324,
+        "text": "fierr",
+        "gloss": "further",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "248"
+            }
+        ]
+    },
+    {
+        "id": 3326,
+        "text": "smierwan",
+        "gloss": "to smear, to anoint",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "248"
+            }
+        ]
+    },
+    {
+        "id": 3328,
+        "text": "hiertan",
+        "gloss": "to put heart in (someone)",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "248"
+            }
+        ]
+    },
+    {
+        "id": 3330,
+        "text": "sīen",
+        "gloss": "sight",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "249"
+            }
+        ]
+    },
+    {
+        "id": 3332,
+        "text": "līehtan",
+        "gloss": "to shine",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "249"
+            }
+        ]
+    },
+    {
+        "id": 3334,
+        "text": "dīere",
+        "gloss": "valuable",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "249"
+            }
+        ]
+    },
+    {
+        "id": 3336,
+        "text": "stīeran",
+        "gloss": "to steer, to direct",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "250"
+            }
+        ]
+    },
+    {
+        "id": 3338,
+        "text": "nīed",
+        "gloss": "desire, eagerness",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "250"
+            }
+        ]
+    },
+    {
+        "id": 3340,
+        "text": "clīewen",
+        "gloss": "ball",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "250"
+            }
+        ]
+    },
+    {
+        "id": 3342,
+        "text": "strīenan",
+        "gloss": "to acquire, to gain",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "250"
+            }
+        ]
+    },
+    {
+        "id": 3344,
+        "text": "lāwriċe",
+        "gloss": "lark",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "265"
+            }
+        ]
+    },
+    {
+        "id": 3346,
+        "text": "sċyldhǣta",
+        "gloss": "deputy, bailiff",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "267"
+            }
+        ]
+    },
+    {
+        "id": 3349,
+        "text": "reord",
+        "gloss": "voice",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "285"
+            }
+        ]
+    },
+    {
+        "id": 3352,
+        "text": "feþer",
+        "gloss": "feather",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "285"
+            }
+        ]
+    },
+    {
+        "id": 3355,
+        "text": "yfes",
+        "gloss": "eaves",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "285"
+            }
+        ]
+    },
+    {
+        "id": 3357,
+        "text": "rād",
+        "gloss": "riding, expedition",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "285"
+            }
+        ]
+    },
+    {
+        "id": 3359,
+        "text": "fēol",
+        "gloss": "file",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "285"
+            }
+        ]
+    },
+    {
+        "id": 3362,
+        "text": "firen",
+        "gloss": "crime",
+        "sourceRefs": [
+            {
+                "refText": "RInge 2014:286"
+            }
+        ]
+    },
+    {
+        "id": 3364,
+        "text": "lyġen",
+        "gloss": "lie",
+        "sourceRefs": [
+            {
+                "refText": "RInge 2014:286"
+            }
+        ]
+    },
+    {
+        "id": 3365,
+        "text": "bend",
+        "gloss": "fetter"
+    },
+    {
+        "id": 3368,
+        "text": "wyrt",
+        "gloss": "root, plant",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "287"
+            }
+        ]
+    },
+    {
+        "id": 3371,
+        "text": "henep",
+        "gloss": "hemp",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "287"
+            }
+        ]
+    },
+    {
+        "id": 3374,
+        "text": "mǣrþ",
+        "gloss": "fame, reputation",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "293"
             }
         ]
     }

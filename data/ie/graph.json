@@ -5822,6 +5822,7 @@
             "to": 2314,
             "type": "^",
             "ruleIds": [
+                2156,
                 2307
             ],
             "sourceRefs": [
@@ -5837,35 +5838,6 @@
             "sourceRefs": [
                 {
                     "refText": "RInge 2014:265"
-                }
-            ]
-        },
-        {
-            "from": 2318,
-            "to": 2317,
-            "type": "^",
-            "ruleIds": [
-                2060,
-                2270
-            ],
-            "sourceRefs": [
-                {
-                    "pubId": 5,
-                    "refText": "267"
-                }
-            ]
-        },
-        {
-            "from": 2319,
-            "to": 2318,
-            "type": "^",
-            "ruleIds": [
-                2307
-            ],
-            "sourceRefs": [
-                {
-                    "pubId": 5,
-                    "refText": "267"
                 }
             ]
         },
@@ -6022,6 +5994,7 @@
             "type": "^",
             "ruleIds": [
                 2455,
+                2119,
                 2336
             ],
             "sourceRefs": [
@@ -6106,7 +6079,7 @@
             "ruleIds": [
                 2095,
                 2270,
-                2320
+                2336
             ],
             "sourceRefs": [
                 {
@@ -6123,7 +6096,8 @@
                 2270,
                 2307,
                 2355,
-                2354
+                2354,
+                2365
             ]
         },
         {
@@ -6375,6 +6349,7 @@
             "type": "^",
             "ruleIds": [
                 2060,
+                2396,
                 2391
             ],
             "sourceRefs": [
@@ -7246,7 +7221,8 @@
                     "pubId": 5,
                     "refText": "30"
                 }
-            ]
+            ],
+            "notes": "Ringe 2014:288: Apocope doesn't happen because the preposition formed a single phonological word with a following nominal"
         },
         {
             "from": 411,
@@ -7428,6 +7404,8 @@
             "to": 2529,
             "type": "^",
             "ruleIds": [
+                2119,
+                2953,
                 2365,
                 2391
             ],
@@ -8306,8 +8284,10 @@
             "to": 2617,
             "type": "^",
             "ruleIds": [
-                2618,
+                3315,
                 2095,
+                2953,
+                3319,
                 2336
             ]
         },
@@ -10274,7 +10254,6 @@
                 2060,
                 2114,
                 2156,
-                2259,
                 2369
             ],
             "sourceRefs": [
@@ -10803,7 +10782,8 @@
             "ruleIds": [
                 2048,
                 2060,
-                2119
+                2119,
+                2307
             ],
             "sourceRefs": [
                 {
@@ -10981,6 +10961,7 @@
             "ruleIds": [
                 2060,
                 2149,
+                2336,
                 2396
             ],
             "sourceRefs": [
@@ -11262,20 +11243,6 @@
             "from": 2952,
             "to": 2415,
             "type": ">"
-        },
-        {
-            "from": 2955,
-            "to": 2954,
-            "type": "^",
-            "ruleIds": [
-                2326
-            ],
-            "sourceRefs": [
-                {
-                    "pubId": 5,
-                    "refText": "206"
-                }
-            ]
         },
         {
             "from": 2957,
@@ -12484,7 +12451,7 @@
             "ruleIds": [
                 1963,
                 2270,
-                2320
+                2336
             ],
             "sourceRefs": [
                 {
@@ -13397,7 +13364,8 @@
                     "pubId": 5,
                     "refText": "237"
                 }
-            ]
+            ],
+            "notes": "Ringe 2014: 260: 'w' did not drop due to lexical analogy with 'clāwan'"
         },
         {
             "from": 3247,
@@ -13915,6 +13883,714 @@
                 {
                     "pubId": 5,
                     "refText": "243"
+                }
+            ]
+        },
+        {
+            "from": 3303,
+            "to": 3302,
+            "type": "^",
+            "ruleIds": [
+                1963,
+                1966
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "244"
+                }
+            ]
+        },
+        {
+            "from": 3304,
+            "to": 3303,
+            "type": "^",
+            "ruleIds": [
+                2060,
+                2156,
+                2259,
+                2953,
+                2391
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "244"
+                }
+            ]
+        },
+        {
+            "from": 3306,
+            "to": 3305,
+            "type": "^",
+            "ruleIds": [
+                1866,
+                1863,
+                1983,
+                2095,
+                2953,
+                2369
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "245"
+                }
+            ]
+        },
+        {
+            "from": 3308,
+            "to": 3307,
+            "type": "^",
+            "ruleIds": [
+                1966,
+                2060,
+                2086,
+                2095,
+                2156,
+                2953,
+                2326,
+                2396
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "245"
+                }
+            ]
+        },
+        {
+            "from": 3310,
+            "to": 3309,
+            "type": "^",
+            "ruleIds": [
+                1966,
+                2086,
+                2095,
+                2953,
+                2326
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "246"
+                }
+            ]
+        },
+        {
+            "from": 3312,
+            "to": 3311,
+            "type": "^",
+            "ruleIds": [
+                1963,
+                2095,
+                2953,
+                2336
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "246"
+                }
+            ]
+        },
+        {
+            "from": 3314,
+            "to": 3313,
+            "type": "^",
+            "ruleIds": [
+                2095,
+                2953,
+                2365,
+                2391
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "246"
+                }
+            ]
+        },
+        {
+            "from": 3318,
+            "to": 3317,
+            "type": "^",
+            "ruleIds": [
+                2060,
+                2156,
+                2259,
+                2953,
+                2365,
+                2391
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "246"
+                }
+            ]
+        },
+        {
+            "from": 2955,
+            "to": 2954,
+            "type": "^",
+            "ruleIds": [
+                3315,
+                2095,
+                2156,
+                2953,
+                3319
+            ]
+        },
+        {
+            "from": 3320,
+            "to": 2534,
+            "type": "^",
+            "ruleIds": [
+                1963,
+                1966,
+                1969,
+                1981,
+                2119,
+                2953,
+                2365,
+                2391
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "248"
+                }
+            ]
+        },
+        {
+            "from": 3322,
+            "to": 3321,
+            "type": "^",
+            "ruleIds": [
+                1966,
+                2086,
+                2119,
+                2156,
+                2953,
+                2326
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "248"
+                }
+            ]
+        },
+        {
+            "from": 3324,
+            "to": 3323,
+            "type": "^",
+            "ruleIds": [
+                1963,
+                2119,
+                2953,
+                2336,
+                2384
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "248"
+                }
+            ]
+        },
+        {
+            "from": 3326,
+            "to": 3325,
+            "type": "^",
+            "ruleIds": [
+                1966,
+                2086,
+                2119,
+                2953,
+                2326
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "248"
+                }
+            ]
+        },
+        {
+            "from": 3328,
+            "to": 3327,
+            "type": "^",
+            "ruleIds": [
+                2086,
+                2119,
+                2953,
+                2326
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "248"
+                }
+            ]
+        },
+        {
+            "from": 3330,
+            "to": 3329,
+            "type": "^",
+            "ruleIds": [
+                1963,
+                1983,
+                2095,
+                2953,
+                2336
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "249"
+                }
+            ]
+        },
+        {
+            "from": 3332,
+            "to": 3331,
+            "type": "^",
+            "ruleIds": [
+                1966,
+                2086,
+                2095,
+                2953,
+                2326
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "249"
+                }
+            ]
+        },
+        {
+            "from": 3334,
+            "to": 3333,
+            "type": "^",
+            "ruleIds": [
+                1963,
+                1966,
+                1969,
+                2095,
+                2953,
+                2365,
+                2391
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "249"
+                }
+            ]
+        },
+        {
+            "from": 3336,
+            "to": 3335,
+            "type": "^",
+            "ruleIds": [
+                1966,
+                2086,
+                2095,
+                2953,
+                2326
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "250"
+                }
+            ]
+        },
+        {
+            "from": 3338,
+            "to": 3337,
+            "type": "^",
+            "ruleIds": [
+                2095,
+                2953,
+                2336
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "250"
+                }
+            ]
+        },
+        {
+            "from": 3340,
+            "to": 3339,
+            "type": "^",
+            "ruleIds": [
+                2039,
+                2095,
+                2953,
+                2298,
+                2365,
+                2391
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "250"
+                }
+            ]
+        },
+        {
+            "from": 3342,
+            "to": 3341,
+            "type": "^",
+            "ruleIds": [
+                2086,
+                2095,
+                2953,
+                2326
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "250"
+                }
+            ]
+        },
+        {
+            "from": 3344,
+            "to": 3343,
+            "type": "^",
+            "ruleIds": [
+                1981,
+                2060,
+                2095,
+                2156,
+                2307,
+                2331,
+                2365,
+                2391
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "265"
+                }
+            ]
+        },
+        {
+            "from": 2319,
+            "to": 2317,
+            "type": "^",
+            "ruleIds": [
+                2060,
+                2270,
+                2307,
+                2365,
+                2391
+            ]
+        },
+        {
+            "from": 3346,
+            "to": 3345,
+            "type": "^",
+            "ruleIds": [
+                2077,
+                2086,
+                2095,
+                2114,
+                2156,
+                2270,
+                2307,
+                2326,
+                2365,
+                2369
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "267"
+                }
+            ]
+        },
+        {
+            "from": 3348,
+            "to": 3347,
+            "type": "^",
+            "ruleIds": [
+                1866,
+                1863
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "285"
+                }
+            ]
+        },
+        {
+            "from": 3349,
+            "to": 3348,
+            "type": "^",
+            "ruleIds": [
+                2455,
+                2060,
+                2119,
+                2336
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "285"
+                }
+            ]
+        },
+        {
+            "from": 3351,
+            "to": 3350,
+            "type": "^",
+            "ruleIds": [
+                1866,
+                1863
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "285"
+                }
+            ]
+        },
+        {
+            "from": 3352,
+            "to": 3351,
+            "type": "^",
+            "ruleIds": [
+                2336,
+                2384
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "285"
+                }
+            ]
+        },
+        {
+            "from": 3354,
+            "to": 3353,
+            "type": "^",
+            "ruleIds": [
+                1866,
+                1863,
+                1874,
+                1983
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "285"
+                }
+            ]
+        },
+        {
+            "from": 3355,
+            "to": 3354,
+            "type": "^",
+            "ruleIds": [
+                2270,
+                2336,
+                2396,
+                2391
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "285"
+                }
+            ]
+        },
+        {
+            "from": 3357,
+            "to": 3356,
+            "type": "^",
+            "ruleIds": [
+                1983,
+                2095,
+                2336
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "285"
+                }
+            ]
+        },
+        {
+            "from": 3359,
+            "to": 3358,
+            "type": "^",
+            "ruleIds": [
+                2114,
+                2336,
+                2369
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "285"
+                }
+            ]
+        },
+        {
+            "from": 3361,
+            "to": 3360,
+            "type": "^",
+            "ruleIds": [
+                1866,
+                1863,
+                1983
+            ],
+            "sourceRefs": [
+                {
+                    "refText": "RInge 2014:286"
+                }
+            ]
+        },
+        {
+            "from": 3362,
+            "to": 3361,
+            "type": "^",
+            "ruleIds": [
+                2336,
+                2391
+            ],
+            "sourceRefs": [
+                {
+                    "refText": "RInge 2014:286"
+                }
+            ]
+        },
+        {
+            "from": 3364,
+            "to": 3363,
+            "type": "^",
+            "ruleIds": [
+                2156,
+                2270,
+                2336,
+                2391
+            ],
+            "sourceRefs": [
+                {
+                    "refText": "RInge 2014:286"
+                }
+            ]
+        },
+        {
+            "from": 3365,
+            "to": 1865,
+            "type": "^",
+            "ruleIds": [
+                2048,
+                2270,
+                2336
+            ]
+        },
+        {
+            "from": 3367,
+            "to": 3366,
+            "type": "^",
+            "ruleIds": [
+                1963
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "287"
+                }
+            ]
+        },
+        {
+            "from": 3368,
+            "to": 3367,
+            "type": "^",
+            "ruleIds": [
+                2270,
+                2336
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "287"
+                }
+            ]
+        },
+        {
+            "from": 3370,
+            "to": 3369,
+            "type": "^",
+            "ruleIds": [
+                1963,
+                1983
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "287"
+                }
+            ]
+        },
+        {
+            "from": 3371,
+            "to": 3370,
+            "type": "^",
+            "ruleIds": [
+                2048,
+                2060,
+                2307,
+                2336
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "287"
+                }
+            ]
+        },
+        {
+            "from": 3373,
+            "to": 3372,
+            "type": "^",
+            "ruleIds": [
+                1862,
+                1866,
+                1863
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "28"
+                }
+            ]
+        },
+        {
+            "from": 3374,
+            "to": 3373,
+            "type": "^",
+            "ruleIds": [
+                1983,
+                2060,
+                2307,
+                2336
+            ],
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "28"
                 }
             ]
         }
