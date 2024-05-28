@@ -58,6 +58,7 @@ class RuleController {
         val phonemic: Boolean,
         val preInstructions: List<RichText>,
         val branches: List<RuleBranchViewModel>,
+        val postInstructions: List<RichText>,
         val links: List<RuleLinkViewModel>,
         val linkedWords: List<RuleWordLinkViewModel>,
         val orphanExamples: List<RuleExampleViewModel>
@@ -181,6 +182,7 @@ class RuleController {
             logic.branches.map { branch ->
                 branch.toViewModel(isUnconditional(), examples.filter { branch in it.branches }, repo)
             },
+            logic.postInstructions.map { it.toRichText() },
             links.mapNotNull { (link, langEntity) ->
                 val rule = langEntity as? Rule
                 rule?.let {

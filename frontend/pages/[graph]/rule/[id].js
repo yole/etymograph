@@ -184,6 +184,12 @@ export default function Rule(params) {
                     <p/>
                 </>}
             </>)}
+            {rule.postInstructions.length > 0 && <>
+                <h3>Post instructions</h3>
+                <ul>
+                    {rule.postInstructions.map(r => <li><RichText richText={r}></RichText></li>)}
+                </ul>
+            </>}
             {rule.notes != null && <>
                 <h3>Notes</h3>
                 <p>{rule.notes}</p>

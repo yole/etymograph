@@ -14,7 +14,8 @@ class AlternativesTest : QBaseTest() {
             "q-acc", q, q,
             RuleLogic(
                 emptyList(),
-                listOf(RuleBranch(OtherwiseCondition, listOf(RuleInstruction(InstructionType.NoChange, ""))))
+                listOf(RuleBranch(OtherwiseCondition, listOf(RuleInstruction(InstructionType.NoChange, "")))),
+                emptyList()
             )
         )
 

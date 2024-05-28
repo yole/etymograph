@@ -146,7 +146,6 @@ class RuleTest : QBaseTest() {
         assertEquals("this is a", branches[1].comment)
     }
 
-
     @Test
     fun ruleParseWithoutConditions() {
         val branches = Rule.parseBranches("""
@@ -175,6 +174,24 @@ class RuleTest : QBaseTest() {
         assertThrows("Unknown word class 'm'", RuleParseException::class.java) {
             Rule.parseBranches("word is m:\n- no change", q.parseContext())
         }
+    }
+
+    @Test
+    fun postInstructions() {
+        val text = """
+            word ends with 'e':
+             - append 'a'
+            
+            word ends with 'i':
+             - append 'r'
+            
+             = append 'e'
+        """.trimIndent()
+        val rule = parseRule(q, q, text)
+        assertEquals(1, rule.logic.postInstructions.size)
+        assertEquals("laureae", applyRule(rule, q.word("laure")))
+        assertEquals("lomire", applyRule(rule, q.word("lomi")))
+        assertEquals(text, rule.toEditableText())
     }
 
     @Test

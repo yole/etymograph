@@ -217,7 +217,8 @@ data class RuleData(
     val toPOS: String? = null,
     val sourceRefs: List<SourceRefData>? = null,
     val notes: String? = null,
-    val preInstructions: List<RuleInstructionData>? = null
+    val preInstructions: List<RuleInstructionData>? = null,
+    val postInstructions: List<RuleInstructionData>? = null
 )
 
 @Serializable
@@ -613,29 +614,37 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             val data = Json.decodeFromString<List<RuleData>>(ruleJson)
             for (rule in data) {
                 val fromLanguage = languageByShortName(rule.fromLanguageShortName)!!
-                val addedRule = Rule(
-                    rule.id,
-                    rule.name ?: "",
-                    fromLanguage,
-                    languageByShortName(rule.toLanguageShortName)!!,
-                    RuleLogic(
-                        rule.preInstructions?.let {
-                            ruleInstructionsFromSerializedFormat(this, fromLanguage, it)
-                        } ?: emptyList(),
-                        ruleBranchesFromSerializedFormat(this, fromLanguage, rule.branches)
-                    ),
-                    rule.addedCategories,
-                    rule.replacedCategories,
-                    rule.fromPOS,
-                    rule.toPOS,
-                    loadSource(rule.sourceRefs),
-                    rule.notes
-                )
+                val addedRule = ruleFromSerializedFormat(rule, fromLanguage)
                 rules.add(addedRule)
                 setLangEntity(rule.id, addedRule)
             }
         }
     }
+
+    fun ruleFromSerializedFormat(
+        rule: RuleData,
+        fromLanguage: Language
+    ) = Rule(
+        rule.id,
+        rule.name ?: "",
+        fromLanguage,
+        languageByShortName(rule.toLanguageShortName)!!,
+        RuleLogic(
+            rule.preInstructions?.let {
+                ruleInstructionsFromSerializedFormat(this, fromLanguage, it)
+            } ?: emptyList(),
+            ruleBranchesFromSerializedFormat(this, fromLanguage, rule.branches),
+            rule.postInstructions?.let {
+                ruleInstructionsFromSerializedFormat(this, fromLanguage, it)
+            } ?: emptyList()
+        ),
+        rule.addedCategories,
+        rule.replacedCategories,
+        rule.fromPOS,
+        rule.toPOS,
+        loadSource(rule.sourceRefs),
+        rule.notes
+    )
 
     private fun loadCorpus(contentProviderCallback: (String) -> String?) {
         for (language in languages.values) {
@@ -805,7 +814,8 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                 toPOS,
                 source.sourceToSerializedFormat(),
                 notes.takeIf { it != null },
-                preInstructions = logic.preInstructions.toSerializedFormat().takeIf { it.isNotEmpty() }
+                preInstructions = logic.preInstructions.toSerializedFormat().takeIf { it.isNotEmpty() },
+                postInstructions = logic.postInstructions.toSerializedFormat().takeIf { it.isNotEmpty() }
             )
 
         private fun List<RuleInstruction>.toSerializedFormat(): List<RuleInstructionData> {

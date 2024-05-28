@@ -1,16 +1,22 @@
 package ru.yole.etymograph
 
 import org.junit.Assert.assertEquals
+import org.junit.Before
 import org.junit.Test
 import ru.yole.etymograph.JsonGraphRepository.Companion.ruleBranchesFromSerializedFormat
 import ru.yole.etymograph.JsonGraphRepository.Companion.ruleToSerializedFormat
 
 class JsonGraphRepositoryTest : QBaseTest() {
+    lateinit var repo: JsonGraphRepository
+
+    @Before
+    fun setup() {
+        repo = JsonGraphRepository(null)
+        repo.addLanguage(q)
+    }
+
     @Test
     fun deletedWords() {
-        val repo = JsonGraphRepository(null)
-        repo.addLanguage(q)
-
         val abc = repo.addWord("abc")
         val def = repo.addWord("def")
         repo.deleteWord(abc)
@@ -22,7 +28,6 @@ class JsonGraphRepositoryTest : QBaseTest() {
 
     @Test
     fun serializeApplySoundRule() {
-        val repo = JsonGraphRepository(null)
         val soundRule = repo.addRule(
             "q-lengthen", q, q,
             Rule.parseBranches("""
@@ -48,7 +53,6 @@ class JsonGraphRepositoryTest : QBaseTest() {
 
     @Test
     fun serializeRelativePhonemeRule() {
-        val repo = JsonGraphRepository(null)
         val rule = parseRule(q, q, """
             sound is 'i' and previous sound is not vowel:
             - sound disappears
@@ -61,7 +65,6 @@ class JsonGraphRepositoryTest : QBaseTest() {
 
     @Test
     fun serializeInsertSoundInstruction() {
-        val repo = JsonGraphRepository(null)
         val rule = parseRule(q, q, """
             sound is 'i' and previous sound is not vowel:
             - 'e' is inserted before
@@ -74,7 +77,6 @@ class JsonGraphRepositoryTest : QBaseTest() {
 
     @Test
     fun serializeInsertInstruction() {
-        val repo = JsonGraphRepository(null)
         val rule = parseRule(q, q, """
             - insert 'i' before last consonant
         """.trimIndent())
@@ -86,7 +88,6 @@ class JsonGraphRepositoryTest : QBaseTest() {
 
     @Test
     fun serializeBranchComment() {
-        val repo = JsonGraphRepository(null)
         val rule = parseRule(q, q, """
             # This is a comment
             - insert 'i' before last consonant
@@ -98,9 +99,19 @@ class JsonGraphRepositoryTest : QBaseTest() {
     }
 
     @Test
+    fun serializePostInstructions() {
+        val rule = parseRule(q, q, """
+            word ends with 'i':
+            - append 'r'
+            = append 'e'
+        """.trimIndent())
+        val serializedData = rule.ruleToSerializedFormat()
+        val rule2 = repo.ruleFromSerializedFormat(serializedData, q)
+        assertEquals(1, rule2.logic.postInstructions.size)
+    }
+
+    @Test
     fun serializeTranslation() {
-        val repo = JsonGraphRepository(null)
-        repo.addLanguage(q)
         val corpusText = repo.addCorpusText("abc", null, q)
         repo.addTranslation(corpusText, "def", emptyList())
         val repo2 = repo.roundtrip()
@@ -116,8 +127,6 @@ class JsonGraphRepositoryTest : QBaseTest() {
 
     @Test
     fun serializeDeleteParadigm() {
-        val repo = JsonGraphRepository(null)
-        repo.addLanguage(q)
         val np = repo.addParadigm("Noun", q, listOf("N"))
         val vp = repo.addParadigm("Verb", q, listOf("V"))
         repo.deleteParadigm(np)
@@ -129,8 +138,6 @@ class JsonGraphRepositoryTest : QBaseTest() {
 
     @Test
     fun serializePhonemes() {
-        val repo = JsonGraphRepository(null)
-        repo.addLanguage(q)
         q.phonemes = mutableListOf(phoneme("a", "front open vowel"))
         val repo2 = repo.roundtrip()
         assertEquals(1, repo2.languageByShortName("Q")!!.phonemes.size)
@@ -138,9 +145,7 @@ class JsonGraphRepositoryTest : QBaseTest() {
 
     @Test
     fun serializeRuleSequence() {
-        val repo = JsonGraphRepository(null)
         repo.addLanguage(ce)
-        repo.addLanguage(q)
         val rule = repo.addRule("i-disappears", ce, q,
             Rule.parseBranches("""
             sound is 'i' and previous sound is 'a':
@@ -155,8 +160,6 @@ class JsonGraphRepositoryTest : QBaseTest() {
 
     @Test
     fun serializeOrthographyRule() {
-        val repo = JsonGraphRepository(null)
-        repo.addLanguage(q)
         val rule = repo.addRule("q-ortho", q, q,
             Rule.parseBranches("sound is 'j' and beginning of word:\n - new sound is 'y'", q.parseContext(repo)))
         q.orthographyRule = RuleRef.to(rule)
@@ -167,8 +170,6 @@ class JsonGraphRepositoryTest : QBaseTest() {
 
     @Test
     fun serializeExpicitStress() {
-        val repo = JsonGraphRepository(null)
-        repo.addLanguage(q)
         val word = repo.findOrAddWord("ea", q, null)
         word.stressedPhonemeIndex = 1
         word.explicitStress = true

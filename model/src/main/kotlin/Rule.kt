@@ -152,7 +152,8 @@ class RuleBranch(val condition: RuleCondition, val instructions: List<RuleInstru
 
             val instructions = mutableListOf<RuleInstruction>()
             while (true) {
-                val line = lines.nextIf { !it.startsWith("#") && !it.endsWith(":") } ?: break
+                val line = lines.nextIf { !it.startsWith("#") && !it.startsWith("=" )&& !it.endsWith(":") }
+                    ?: break
                 instructions.add(RuleInstruction.parse(line, context))
             }
             if (instructions.isEmpty()) {
@@ -163,7 +164,11 @@ class RuleBranch(val condition: RuleCondition, val instructions: List<RuleInstru
     }
 }
 
-class RuleLogic(val preInstructions: List<RuleInstruction>, val branches: List<RuleBranch>)
+class RuleLogic(
+    val preInstructions: List<RuleInstruction>,
+    val branches: List<RuleBranch>,
+    val postInstructions: List<RuleInstruction>
+)
 
 class Rule(
     id: Int,
@@ -201,11 +206,12 @@ class Rule(
                 word
         }
 
-        val preWord = if (logic.preInstructions.isEmpty()) word else logic.preInstructions.apply(this, null, word, graph)
+        val preWord = logic.preInstructions.apply(this, null, word, graph)
         for (branch in logic.branches) {
             if (branch.matches(preWord, graph, trace)) {
                 trace?.logMatchedBranch(this, word, null, branch)
-                val resultWord = branch.apply(this, preWord, graph)
+                var resultWord = branch.apply(this, preWord, graph)
+                resultWord = logic.postInstructions.apply(this, null, resultWord, graph)
                 return deriveWord(word, resultWord.text, toLanguage, resultWord.stressedPhonemeIndex, resultWord.segments, resultWord.classes)
             }
             else {
@@ -231,6 +237,9 @@ class Rule(
                 trace?.logMatchedBranch(this, word, phonemes.current, branch)
                 for (instruction in branch.instructions) {
                     instruction.apply(word, phonemes, graph)
+                }
+                for (postInstruction in logic.postInstructions) {
+                    postInstruction.apply(word, phonemes, graph)
                 }
                 return true
             }
@@ -286,7 +295,9 @@ class Rule(
             return logic.branches[0].instructions.joinToString("\n") { " - " + it.toEditableText() }
         }
         return logic.preInstructions.joinToString("") { " - " + it.toEditableText() + "\n" } +
-                logic.branches.joinToString("\n\n") { it.toEditableText() }
+               logic.branches.joinToString("\n\n") { it.toEditableText() } +
+               (if (logic.postInstructions.isNotEmpty()) "\n\n" else "") +
+               logic.postInstructions.joinToString("\n") { " = " + it.toEditableText() }
     }
 
     fun isUnconditional() =
@@ -312,8 +323,9 @@ class Rule(
 
     companion object {
         fun parseBranches(s: String, context: RuleParseContext): RuleLogic {
-            if (s.isBlank()) return RuleLogic(emptyList(), emptyList())
+            if (s.isBlank()) return RuleLogic(emptyList(), emptyList(), emptyList())
             val preInstructions = mutableListOf<RuleInstruction>()
+            val postInstructions = mutableListOf<RuleInstruction>()
             val branches = mutableListOf<RuleBranch>()
             val lines = LineBuffer(s)
             lines.nextWhile({ line -> line.startsWith("-") }) { line ->
@@ -321,16 +333,25 @@ class Rule(
             }
 
             while (true) {
-                if (lines.peek() == null) {
+                val nextLine = lines.peek()
+                if (nextLine == null || nextLine.startsWith("=")) {
                     break
                 }
                 branches.add(RuleBranch.parse(lines, context))
             }
+            while (true) {
+                val next = lines.next() ?: break
+                postInstructions.add(RuleInstruction.parse(next, context, "="))
+            }
             if (branches.isEmpty() && preInstructions.isNotEmpty()) {
-                return RuleLogic(emptyList(), listOf(RuleBranch(OtherwiseCondition, preInstructions, null)))
+                return RuleLogic(
+                    emptyList(),
+                    listOf(RuleBranch(OtherwiseCondition, preInstructions, null)),
+                    postInstructions
+                )
             }
 
-            return RuleLogic(preInstructions, branches)
+            return RuleLogic(preInstructions, branches, postInstructions)
         }
     }
 }

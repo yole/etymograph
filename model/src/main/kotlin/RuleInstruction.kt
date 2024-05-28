@@ -230,11 +230,11 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
     }
 
     companion object {
-        fun parse(s: String, context: RuleParseContext): RuleInstruction {
-            if (!s.startsWith("-")) {
-                throw RuleParseException("Instructions must start with -")
+        fun parse(s: String, context: RuleParseContext, prefix: String = "-"): RuleInstruction {
+            if (!s.startsWith(prefix)) {
+                throw RuleParseException("Instructions must start with $prefix")
             }
-            val trimmed = s.removePrefix("-").trim()
+            val trimmed = s.removePrefix(prefix).trim()
             for (type in InstructionType.entries) {
                 val match = type.regex.matchEntire(trimmed)
                 if (match != null) {
@@ -270,6 +270,7 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
 }
 
 fun List<RuleInstruction>.apply(rule: Rule, branch: RuleBranch?, word: Word, graph: GraphRepository): Word {
+    if (isEmpty()) return word
     val normalizedWord = word.derive(word.text.trimEnd('-'), id = word.id)
     return fold(normalizedWord) { s, i -> i.apply(rule, branch, s, graph) }
 }

@@ -139,7 +139,8 @@ The following general attributes are specified for a rule:
 
 The main body of a rule consists of *conditions* and *instructions*. Each condition or instruction is written
 on a separate line. Condition lines end with a colon (`:`), and instruction lines start with a dash (`-`).
-Comment lines can be used before a rule branch and start with `#`.
+Comment lines can be used before a rule branch and start with `#`. Post-instruction lines start with `=`;
+those lines must be at the end of the rule.
 Here's an example (the rule for putting a Quenya noun into the genitive case):
 
 ```
@@ -155,13 +156,16 @@ word ends with 'o':
 
 otherwise:
  - append 'o'
+ 
+= apply rule 'q-syncope'
 ```
 
 When applying a rule to a word, Etymograph starts with executing the instructions before the first condition 
 (the "pre-instructions"). Then, it looks for a condition matching the word. If it finds one, it executes the 
-corresponding instructions and completes the rule execution (it doesn't look for other matching conditions). 
+corresponding instructions and completes the rule execution (it doesn't look for other matching conditions).
+Post-instructions (instructions prefixed with `=`) are executed after the instructions of any matched branch.
 If none of the conditions match, the result of applying the rule is unknown. (The `otherwise` condition, 
-shown in the example above, matches all words not matched by any previous conditions.)
+shown in the example above, matches all words not matched by any previous conditions.) 
 
 In addition to simple conditions shown above, Etymograph supports compound conditions, which consist of multiple
 simple conditions combined with `and` and `or` operators (parentheses can be used to control the precedence).

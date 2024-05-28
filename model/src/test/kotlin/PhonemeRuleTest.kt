@@ -545,4 +545,14 @@ class PhonemeRuleTest : QBaseTest() {
         """.trimIndent())
         assertEquals("inomdem", applyRule(rule, q.word("inonden")))
     }
+
+    @Test
+    fun postInstructions() {
+        val rule = parseRule(q, q, """
+            sound is syllable-final 'n':
+            - new sound is 'm'
+            = previous sound disappears
+        """.trimIndent())
+        assertEquals("inmdm", applyRule(rule, q.word("inonden")))
+    }
 }
