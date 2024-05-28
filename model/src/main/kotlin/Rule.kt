@@ -40,6 +40,10 @@ class RuleTrace {
         }
     }
 
+    fun logInstruction(callback: () -> String) {
+        log.append(callback()).append("\n")
+    }
+
     fun findMatchedBranches(rule: Rule, word: Word): Set<RuleBranch> {
         return traceData[rule.id to word.id]?.matchedBranches ?: emptySet()
     }
@@ -236,10 +240,10 @@ class Rule(
             if (branch.condition.matches(word, phonemes, graph, trace)) {
                 trace?.logMatchedBranch(this, word, phonemes.current, branch)
                 for (instruction in branch.instructions) {
-                    instruction.apply(word, phonemes, graph)
+                    instruction.apply(word, phonemes, graph, trace)
                 }
                 for (postInstruction in logic.postInstructions) {
-                    postInstruction.apply(word, phonemes, graph)
+                    postInstruction.apply(word, phonemes, graph, trace)
                 }
                 return true
             }

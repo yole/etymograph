@@ -76,7 +76,7 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
         return emptyList()
     }
 
-    open fun apply(word: Word, phonemes: PhonemeIterator, graph: GraphRepository) {
+    open fun apply(word: Word, phonemes: PhonemeIterator, graph: GraphRepository, trace: RuleTrace? = null) {
         when (type) {
             InstructionType.ChangeSound -> phonemes.replace(arg)
             InstructionType.ChangeNextSound -> phonemes.replaceAtRelative(1, arg)
@@ -313,7 +313,7 @@ class ApplySoundRuleInstruction(language: Language, val ruleRef: RuleRef, arg: S
 {
     val seekTarget = arg?.let { SeekTarget.parse(it, language) }
 
-    override fun apply(word: Word, phonemes: PhonemeIterator, graph: GraphRepository) {
+    override fun apply(word: Word, phonemes: PhonemeIterator, graph: GraphRepository, trace: RuleTrace?) {
         phonemes.commit()
         val targetIt = phonemes.clone()
         if (seekTarget != null && seekTarget.relative) {
@@ -476,17 +476,29 @@ class InsertInstruction(arg: String, val relIndex: Int, val seekTarget: SeekTarg
 class ChangePhonemeClassInstruction(val relativeIndex: Int, val oldClass: String, val newClass: String)
     : RuleInstruction(InstructionType.ChangeSoundClass, "")
 {
-    override fun apply(word: Word, phonemes: PhonemeIterator, graph: GraphRepository) {
-        replacePhonemeClass(phonemes, oldClass, newClass)
+    override fun apply(word: Word, phonemes: PhonemeIterator, graph: GraphRepository, trace: RuleTrace?) {
+        replacePhonemeClass(phonemes, oldClass, newClass, trace)
     }
 
-    private fun replacePhonemeClass(phonemes: PhonemeIterator, fromClass: String, toClass: String): Boolean {
-        val phoneme = phonemes.language.phonemes.find { phonemes.atRelative(relativeIndex) in it.graphemes } ?: return false
+    private fun replacePhonemeClass(phonemes: PhonemeIterator, fromClass: String, toClass: String, trace: RuleTrace?): Boolean {
+        val phonemeText = phonemes.atRelative(relativeIndex)
+        val phoneme = phonemes.language.phonemes.find { phonemeText in it.graphemes }
+        if (phoneme == null) {
+            trace?.logInstruction { "replace phoneme class: no phoneme found for $phonemeText" }
+            return false
+        }
         val newClasses = phoneme.classes.toMutableSet()
-        if (fromClass !in newClasses) return false
+        if (fromClass !in newClasses) {
+            trace?.logInstruction { "replace phoneme class: classes of $phonemeText ($newClasses) do not match $fromClass" }
+            return false
+        }
         newClasses.remove(fromClass)
         newClasses.addAll(toClass.split(' '))
-        val newPhoneme = phonemes.language.phonemes.singleOrNull { it.classes == newClasses } ?: return false
+        val newPhoneme = phonemes.language.phonemes.singleOrNull { it.classes == newClasses }
+        if (newPhoneme == null) {
+            trace?.logInstruction { "replace phoneme class: no phoneme with classes $newClasses" }
+            return false
+        }
         phonemes.replaceAtRelative(relativeIndex, newPhoneme.graphemes[0])
         return true
     }
@@ -500,7 +512,7 @@ class ChangePhonemeClassInstruction(val relativeIndex: Int, val oldClass: String
         val newClassRef = phonemes.language.phonemeClassByName(newClass) ?: return null
         if (newClassRef.matchesCurrent(phonemes)) {
             val newPhonemes = phonemes.clone()
-            if (!replacePhonemeClass(newPhonemes, newClass, oldClass)) return null
+            if (!replacePhonemeClass(newPhonemes, newClass, oldClass, null)) return null
             return listOf(newPhonemes.result())
         }
         return emptyList()
