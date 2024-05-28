@@ -2738,5 +2738,212 @@
                 "refText": "287"
             }
         ]
+    },
+    {
+        "id": 3376,
+        "text": "salbu",
+        "gloss": "ointment, salve",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "297"
+            }
+        ]
+    },
+    {
+        "id": 3379,
+        "text": "laibu",
+        "gloss": "what is left, remainder",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "297"
+            }
+        ]
+    },
+    {
+        "id": 3382,
+        "text": "līb",
+        "gloss": "life",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "298"
+            }
+        ]
+    },
+    {
+        "id": 3384,
+        "text": "nāhawisti",
+        "gloss": "neighborhood",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "305"
+            }
+        ]
+    },
+    {
+        "id": 3386,
+        "text": "stahlī",
+        "gloss": "steel weapon",
+        "sourceRefs": [
+            {
+                "refText": "Ringe 2013:306"
+            }
+        ]
+    },
+    {
+        "id": 3390,
+        "text": "þurhil",
+        "gloss": "perforated",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "308"
+            }
+        ]
+    },
+    {
+        "id": 3394,
+        "text": "raihō",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "314"
+            }
+        ]
+    },
+    {
+        "id": 3396,
+        "text": "slaihā",
+        "gloss": "sloe, blackthorn fruit",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "314"
+            }
+        ]
+    },
+    {
+        "id": 3402,
+        "text": "sehwā",
+        "gloss": "pupil (of the eye)",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "316"
+            }
+        ]
+    },
+    {
+        "id": 3404,
+        "text": "auhaim",
+        "gloss": "uncle",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "316"
+            }
+        ]
+    },
+    {
+        "id": 3409,
+        "text": "fōdr",
+        "gloss": "sheath",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "327"
+            }
+        ]
+    },
+    {
+        "id": 3412,
+        "text": "hleuþr",
+        "gloss": "noise",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "327"
+            }
+        ]
+    },
+    {
+        "id": 3415,
+        "text": "fagr",
+        "gloss": "beautiful",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "327"
+            }
+        ]
+    },
+    {
+        "id": 3418,
+        "text": "snotr",
+        "gloss": "wise",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "328"
+            }
+        ]
+    },
+    {
+        "id": 3421,
+        "text": "hlūtr",
+        "gloss": "clean",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "328"
+            }
+        ]
+    },
+    {
+        "id": 3426,
+        "text": "þunr",
+        "gloss": "thunder",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "328"
+            }
+        ]
+    },
+    {
+        "id": 3429,
+        "text": "wintru",
+        "gloss": "winter",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "328"
+            }
+        ]
+    },
+    {
+        "id": 3432,
+        "text": "hwaþar",
+        "gloss": "which (of the two)",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "333"
+            }
+        ]
+    },
+    {
+        "id": 3437,
+        "text": "hailag",
+        "gloss": "holy",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "335"
+            }
+        ]
     }
 ]

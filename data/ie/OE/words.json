@@ -626,14 +626,17 @@
     },
     {
         "id": 302,
-        "text": "meotodes",
-        "gloss": "God.GEN"
+        "text": "meotodes"
     },
     {
         "id": 303,
         "text": "meotod",
         "gloss": "god",
-        "pos": "N"
+        "pos": "N",
+        "classes": [
+            "masc",
+            "a-stem"
+        ]
     },
     {
         "id": 304,
@@ -659,8 +662,7 @@
     },
     {
         "id": 308,
-        "text": "meahte",
-        "gloss": "power.DAT"
+        "text": "meahte"
     },
     {
         "id": 309,
@@ -729,7 +731,11 @@
         "id": 320,
         "text": "hrōf",
         "gloss": "roof",
-        "pos": "N"
+        "pos": "N",
+        "classes": [
+            "masc",
+            "a-stem"
+        ]
     },
     {
         "id": 321,
@@ -829,8 +835,7 @@
     },
     {
         "id": 355,
-        "text": "wundra",
-        "gloss": "wonder.GEN"
+        "text": "wundra"
     },
     {
         "id": 405,
@@ -842,7 +847,11 @@
         "id": 406,
         "text": "word",
         "gloss": "word",
-        "pos": "N"
+        "pos": "N",
+        "classes": [
+            "neut",
+            "a-stem"
+        ]
     },
     {
         "id": 407,
@@ -1293,7 +1302,8 @@
         "gloss": "king",
         "pos": "N",
         "classes": [
-            "masc"
+            "masc",
+            "a-stem"
         ],
         "sourceRefs": [
             {
@@ -1504,6 +1514,10 @@
         "text": "beorg",
         "gloss": "hill",
         "pos": "N",
+        "classes": [
+            "masc",
+            "a-stem"
+        ],
         "sourceRefs": [
             {
                 "refText": "https://bosworthtoller.com/3728"
@@ -1659,7 +1673,7 @@
     },
     {
         "id": 1886,
-        "text": "dæge"
+        "text": "dæġe"
     },
     {
         "id": 2034,
@@ -2069,18 +2083,6 @@
             {
                 "pubId": 5,
                 "refText": "208"
-            }
-        ]
-    },
-    {
-        "id": 2251,
-        "text": "seohąn",
-        "gloss": "to see",
-        "reconstructed": true,
-        "sourceRefs": [
-            {
-                "pubId": 5,
-                "refText": "215"
             }
         ]
     },
@@ -6183,6 +6185,10 @@
         "text": "bisċop",
         "gloss": "bishop",
         "pos": "N",
+        "classes": [
+            "masc",
+            "a-stem"
+        ],
         "sourceRefs": [
             {
                 "refText": "Fulk 2014:19"
@@ -6316,7 +6322,8 @@
         "gloss": "monk",
         "pos": "N",
         "classes": [
-            "masc"
+            "masc",
+            "a-stem"
         ]
     },
     {
@@ -6578,7 +6585,11 @@
         "id": 3232,
         "text": "māðum",
         "gloss": "treasure",
-        "pos": "N"
+        "pos": "N",
+        "classes": [
+            "masc",
+            "a-stem"
+        ]
     },
     {
         "id": 3233,
@@ -7303,6 +7314,279 @@
             {
                 "pubId": 5,
                 "refText": "293"
+            }
+        ]
+    },
+    {
+        "id": 3377,
+        "text": "sealf",
+        "gloss": "ointment, salve",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "297"
+            }
+        ]
+    },
+    {
+        "id": 3380,
+        "text": "lāf",
+        "gloss": "what is left, remainder",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "297"
+            }
+        ]
+    },
+    {
+        "id": 3383,
+        "text": "līf",
+        "gloss": "life",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "298"
+            }
+        ]
+    },
+    {
+        "id": 3385,
+        "text": "nēawist",
+        "gloss": "neighborhood",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "305"
+            }
+        ]
+    },
+    {
+        "id": 3387,
+        "text": "stīele",
+        "gloss": "steel weapon",
+        "sourceRefs": [
+            {
+                "refText": "Ringe 2013:306"
+            }
+        ]
+    },
+    {
+        "id": 3389,
+        "text": "þwēal",
+        "gloss": "washing, bath",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "306"
+            }
+        ]
+    },
+    {
+        "id": 3391,
+        "text": "þȳrel",
+        "gloss": "perforated",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "308"
+            }
+        ]
+    },
+    {
+        "id": 3393,
+        "text": "fōn",
+        "gloss": "to catch, to seize",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "314"
+            }
+        ]
+    },
+    {
+        "id": 3395,
+        "text": "rā",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "314"
+            }
+        ]
+    },
+    {
+        "id": 3397,
+        "text": "slā",
+        "gloss": "sloe, blackthorn fruit",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "314"
+            }
+        ]
+    },
+    {
+        "id": 3399,
+        "text": "þīon",
+        "gloss": "to thrive",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "315"
+            }
+        ]
+    },
+    {
+        "id": 3401,
+        "text": "flēon",
+        "gloss": "to flee",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "315"
+            }
+        ]
+    },
+    {
+        "id": 3403,
+        "text": "sēo",
+        "gloss": "pupil (of the eye)",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "316"
+            }
+        ]
+    },
+    {
+        "id": 3405,
+        "text": "ēam",
+        "gloss": "uncle",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "316"
+            }
+        ]
+    },
+    {
+        "id": 3407,
+        "text": "heorot",
+        "gloss": "stag",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "324"
+            }
+        ]
+    },
+    {
+        "id": 3410,
+        "text": "fōdor",
+        "gloss": "sheath",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "327"
+            }
+        ]
+    },
+    {
+        "id": 3413,
+        "text": "hlēoþor",
+        "gloss": "noise",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "327"
+            }
+        ]
+    },
+    {
+        "id": 3416,
+        "text": "fæġer",
+        "gloss": "beautiful",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "327"
+            }
+        ]
+    },
+    {
+        "id": 3419,
+        "text": "snotor",
+        "gloss": "wise",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "328"
+            }
+        ]
+    },
+    {
+        "id": 3422,
+        "text": "hlūtor",
+        "gloss": "clean",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "328"
+            }
+        ]
+    },
+    {
+        "id": 3424,
+        "text": "leġer",
+        "gloss": "bed, lair",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "328"
+            }
+        ]
+    },
+    {
+        "id": 3427,
+        "text": "þunor",
+        "gloss": "thunder",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "328"
+            }
+        ]
+    },
+    {
+        "id": 3430,
+        "text": "winter",
+        "gloss": "winter",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "328"
+            }
+        ]
+    },
+    {
+        "id": 3433,
+        "text": "hwæþer",
+        "gloss": "which (of the two)",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "333"
+            }
+        ]
+    },
+    {
+        "id": 3435,
+        "text": "wine",
+        "gloss": "friend",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "333"
             }
         ]
     }

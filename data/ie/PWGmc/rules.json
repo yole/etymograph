@@ -70,6 +70,12 @@
                             "relative": false
                         },
                         {
+                            "type": "relPhoneme",
+                            "negated": true,
+                            "cls": "diphthong",
+                            "relative": false
+                        },
+                        {
                             "type": "syllableCount",
                             "negated": true,
                             "expectCount": 1

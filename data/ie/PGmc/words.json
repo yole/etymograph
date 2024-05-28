@@ -3115,5 +3115,148 @@
                 "refText": "293"
             }
         ]
+    },
+    {
+        "id": 3375,
+        "text": "salbō",
+        "gloss": "ointment, salve",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "297"
+            }
+        ]
+    },
+    {
+        "id": 3378,
+        "text": "laibō",
+        "gloss": "what is left, remainder",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "297"
+            }
+        ]
+    },
+    {
+        "id": 3388,
+        "text": "þwahlą",
+        "gloss": "washing, bath",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "306"
+            }
+        ]
+    },
+    {
+        "id": 3392,
+        "text": "fanhaną",
+        "gloss": "to catch, to seize",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "314"
+            }
+        ]
+    },
+    {
+        "id": 3398,
+        "text": "þinhaną",
+        "gloss": "to thrive",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "315"
+            }
+        ]
+    },
+    {
+        "id": 3400,
+        "text": "fleuhaną",
+        "gloss": "to flee",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "315"
+            }
+        ]
+    },
+    {
+        "id": 3408,
+        "text": "fōdrą",
+        "gloss": "sheath",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "327"
+            }
+        ]
+    },
+    {
+        "id": 3411,
+        "text": "hleuþrą",
+        "gloss": "noise",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "327"
+            }
+        ]
+    },
+    {
+        "id": 3414,
+        "text": "fagraz",
+        "gloss": "beautiful",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "327"
+            }
+        ]
+    },
+    {
+        "id": 3417,
+        "text": "snutraz",
+        "gloss": "wise",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "328"
+            }
+        ]
+    },
+    {
+        "id": 3420,
+        "text": "hlūtraz",
+        "gloss": "clean",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "328"
+            }
+        ]
+    },
+    {
+        "id": 3428,
+        "text": "wintruz",
+        "gloss": "winter",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "328"
+            }
+        ]
+    },
+    {
+        "id": 3431,
+        "text": "hʷaþeraz",
+        "gloss": "which (of the two)",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "333"
+            }
+        ]
     }
 ]

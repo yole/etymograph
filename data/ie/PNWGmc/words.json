@@ -1485,5 +1485,71 @@
                 "refText": "293"
             }
         ]
+    },
+    {
+        "id": 3381,
+        "text": "lībą",
+        "gloss": "life",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "298"
+            }
+        ]
+    },
+    {
+        "id": 3406,
+        "text": "herutaz",
+        "gloss": "stag",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "324"
+            }
+        ]
+    },
+    {
+        "id": 3423,
+        "text": "legrą",
+        "gloss": "bed, lair",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "328"
+            }
+        ]
+    },
+    {
+        "id": 3425,
+        "text": "þunraz",
+        "gloss": "thunder",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "328"
+            }
+        ]
+    },
+    {
+        "id": 3434,
+        "text": "winiz",
+        "gloss": "friend",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "333"
+            }
+        ]
+    },
+    {
+        "id": 3436,
+        "text": "hailagaz",
+        "gloss": "holy",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "335"
+            }
+        ]
     }
 ]

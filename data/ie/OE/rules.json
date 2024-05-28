@@ -8,15 +8,15 @@
             {
                 "instructions": [
                     {
-                        "type": "ApplyRule",
-                        "args": [
-                            "1249"
-                        ]
-                    },
-                    {
                         "type": "Append",
                         "args": [
                             "'es'"
+                        ]
+                    },
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "2307"
                         ]
                     }
                 ],
@@ -39,15 +39,15 @@
             {
                 "instructions": [
                     {
-                        "type": "ApplyRule",
-                        "args": [
-                            "1249"
-                        ]
-                    },
-                    {
                         "type": "Append",
                         "args": [
                             "'es'"
+                        ]
+                    },
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "2307"
                         ]
                     }
                 ],
@@ -95,15 +95,15 @@
             {
                 "instructions": [
                     {
-                        "type": "ApplyRule",
-                        "args": [
-                            "1249"
-                        ]
-                    },
-                    {
                         "type": "Append",
                         "args": [
                             "'e'"
+                        ]
+                    },
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "2307"
                         ]
                     }
                 ],
@@ -193,15 +193,15 @@
             {
                 "instructions": [
                     {
-                        "type": "ApplyRule",
-                        "args": [
-                            "1249"
-                        ]
-                    },
-                    {
                         "type": "Append",
                         "args": [
                             "'e'"
+                        ]
+                    },
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "2307"
                         ]
                     }
                 ],
@@ -224,15 +224,15 @@
             {
                 "instructions": [
                     {
-                        "type": "ApplyRule",
-                        "args": [
-                            "1249"
-                        ]
-                    },
-                    {
                         "type": "Append",
                         "args": [
                             "'e'"
+                        ]
+                    },
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "2307"
                         ]
                     }
                 ],
@@ -280,15 +280,15 @@
             {
                 "instructions": [
                     {
-                        "type": "ApplyRule",
-                        "args": [
-                            "1249"
-                        ]
-                    },
-                    {
                         "type": "Append",
                         "args": [
                             "'e'"
+                        ]
+                    },
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "2307"
                         ]
                     }
                 ],
@@ -311,15 +311,15 @@
             {
                 "instructions": [
                     {
-                        "type": "ApplyRule",
-                        "args": [
-                            "1249"
-                        ]
-                    },
-                    {
                         "type": "Append",
                         "args": [
                             "'as'"
+                        ]
+                    },
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "2307"
                         ]
                     },
                     {
@@ -377,15 +377,15 @@
             {
                 "instructions": [
                     {
-                        "type": "ApplyRule",
-                        "args": [
-                            "1249"
-                        ]
-                    },
-                    {
                         "type": "Append",
                         "args": [
                             "'u'"
+                        ]
+                    },
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "2307"
                         ]
                     },
                     {
@@ -439,15 +439,15 @@
             {
                 "instructions": [
                     {
-                        "type": "ApplyRule",
-                        "args": [
-                            "1249"
-                        ]
-                    },
-                    {
                         "type": "Append",
                         "args": [
                             "'a'"
+                        ]
+                    },
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "2307"
                         ]
                     }
                 ],
@@ -493,15 +493,15 @@
             {
                 "instructions": [
                     {
-                        "type": "ApplyRule",
-                        "args": [
-                            "1249"
-                        ]
-                    },
-                    {
                         "type": "Append",
                         "args": [
                             "'a'"
+                        ]
+                    },
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "2307"
                         ]
                     },
                     {
@@ -530,15 +530,15 @@
             {
                 "instructions": [
                     {
-                        "type": "ApplyRule",
-                        "args": [
-                            "1249"
-                        ]
-                    },
-                    {
                         "type": "Append",
                         "args": [
                             "'a'"
+                        ]
+                    },
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "2307"
                         ]
                     },
                     {
@@ -592,15 +592,15 @@
             {
                 "instructions": [
                     {
-                        "type": "ApplyRule",
-                        "args": [
-                            "1249"
-                        ]
-                    },
-                    {
                         "type": "Append",
                         "args": [
                             "'a'"
+                        ]
+                    },
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "2307"
                         ]
                     }
                 ],
@@ -623,15 +623,15 @@
             {
                 "instructions": [
                     {
-                        "type": "ApplyRule",
-                        "args": [
-                            "1249"
-                        ]
-                    },
-                    {
                         "type": "Append",
                         "args": [
                             "'um'"
+                        ]
+                    },
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "2307"
                         ]
                     },
                     {
@@ -660,15 +660,15 @@
             {
                 "instructions": [
                     {
-                        "type": "ApplyRule",
-                        "args": [
-                            "1249"
-                        ]
-                    },
-                    {
                         "type": "Append",
                         "args": [
                             "'um'"
+                        ]
+                    },
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "2307"
                         ]
                     },
                     {
@@ -728,15 +728,15 @@
             {
                 "instructions": [
                     {
-                        "type": "ApplyRule",
-                        "args": [
-                            "1249"
-                        ]
-                    },
-                    {
                         "type": "Append",
                         "args": [
                             "'um'"
+                        ]
+                    },
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "2307"
                         ]
                     },
                     {
@@ -2457,7 +2457,7 @@
                     {
                         "type": "ChangeSound",
                         "args": [
-                            "ēah"
+                            "ēa"
                         ]
                     }
                 ],
@@ -3977,13 +3977,6 @@
                         "args": [
                             "0"
                         ]
-                    },
-                    {
-                        "type": "ApplySoundRule",
-                        "args": [
-                            "2328",
-                            "previous sound"
-                        ]
                     }
                 ],
                 "condition": {
@@ -4025,13 +4018,6 @@
                         "type": "SoundDisappears",
                         "args": [
                             "0"
-                        ]
-                    },
-                    {
-                        "type": "ApplySoundRule",
-                        "args": [
-                            "2328",
-                            "previous sound"
                         ]
                     }
                 ],
@@ -4075,12 +4061,48 @@
                         "args": [
                             "0"
                         ]
-                    },
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "cls": "non-stressed",
+                            "parameter": "o",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "negated": true,
+                            "cls": "diphthong",
+                            "relative": false
+                        },
+                        {
+                            "type": "syllableIndex",
+                            "matchClass": "open"
+                        },
+                        {
+                            "type": "syllableIndex",
+                            "matchIndex": -1,
+                            "negated": true
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": -1,
+                            "tcls": "vowel",
+                            "cls": "stressed"
+                        }
+                    ]
+                },
+                "comment": "this comes up only in synchronous contexts"
+            },
+            {
+                "instructions": [
                     {
-                        "type": "ApplySoundRule",
+                        "type": "SoundDisappears",
                         "args": [
-                            "2328",
-                            "previous sound"
+                            "0"
                         ]
                     }
                 ],
@@ -4146,13 +4168,6 @@
                         "args": [
                             "0"
                         ]
-                    },
-                    {
-                        "type": "ApplySoundRule",
-                        "args": [
-                            "2328",
-                            "previous sound"
-                        ]
                     }
                 ],
                 "condition": {
@@ -4217,13 +4232,6 @@
                         "args": [
                             "0"
                         ]
-                    },
-                    {
-                        "type": "ApplySoundRule",
-                        "args": [
-                            "2328",
-                            "previous sound"
-                        ]
                     }
                 ],
                 "condition": {
@@ -4286,6 +4294,19 @@
             {
                 "pubId": 5,
                 "refText": "264"
+            },
+            {
+                "pubId": 6,
+                "refText": "6.13"
+            }
+        ],
+        "postInstructions": [
+            {
+                "type": "ApplySoundRule",
+                "args": [
+                    "2328",
+                    "previous sound"
+                ]
             }
         ]
     },
@@ -4924,6 +4945,102 @@
                         "args": [
                             "0"
                         ]
+                    },
+                    {
+                        "type": "ChangeSoundClass",
+                        "args": [
+                            "short",
+                            "long",
+                            "-2"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "h",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": -1,
+                            "cls": "diphthong"
+                        },
+                        {
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "relPhoneme",
+                                    "relativeIndex": 1,
+                                    "parameter": "l"
+                                },
+                                {
+                                    "type": "relPhoneme",
+                                    "relativeIndex": 1,
+                                    "parameter": "r"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "SoundDisappears",
+                        "args": [
+                            "0"
+                        ]
+                    },
+                    {
+                        "type": "ChangeSoundClass",
+                        "args": [
+                            "short",
+                            "long",
+                            "-1"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "h",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": -1,
+                            "cls": "vowel"
+                        },
+                        {
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "relPhoneme",
+                                    "relativeIndex": 1,
+                                    "parameter": "l"
+                                },
+                                {
+                                    "type": "relPhoneme",
+                                    "relativeIndex": 1,
+                                    "parameter": "r"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "SoundDisappears",
+                        "args": [
+                            "0"
+                        ]
                     }
                 ],
                 "condition": {
@@ -4948,6 +5065,162 @@
                                     "cls": "voiced consonant"
                                 }
                             ]
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": 1,
+                            "cls": "voiced consonant"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "SoundDisappears",
+                        "args": [
+                            "0"
+                        ]
+                    },
+                    {
+                        "type": "ChangeSoundClass",
+                        "args": [
+                            "short",
+                            "long",
+                            "-3"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "h",
+                            "relative": false
+                        },
+                        {
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "relPhoneme",
+                                    "relativeIndex": -1,
+                                    "parameter": "l"
+                                },
+                                {
+                                    "type": "relPhoneme",
+                                    "relativeIndex": -1,
+                                    "parameter": "r"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": -2,
+                            "cls": "diphthong"
+                        },
+                        {
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "relPhoneme",
+                                    "relativeIndex": 1,
+                                    "cls": "vowel"
+                                },
+                                {
+                                    "type": "relPhoneme",
+                                    "relativeIndex": 1,
+                                    "cls": "voiced consonant"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "SoundDisappears",
+                        "args": [
+                            "0"
+                        ]
+                    },
+                    {
+                        "type": "ChangeSoundClass",
+                        "args": [
+                            "short",
+                            "long",
+                            "-2"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "h",
+                            "relative": false
+                        },
+                        {
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "relPhoneme",
+                                    "relativeIndex": -1,
+                                    "parameter": "l"
+                                },
+                                {
+                                    "type": "relPhoneme",
+                                    "relativeIndex": -1,
+                                    "parameter": "r"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": -2,
+                            "cls": "vowel"
+                        },
+                        {
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "relPhoneme",
+                                    "relativeIndex": 1,
+                                    "cls": "vowel"
+                                },
+                                {
+                                    "type": "relPhoneme",
+                                    "relativeIndex": 1,
+                                    "cls": "voiced consonant"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "SoundDisappears",
+                        "args": [
+                            "0"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "h",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": -1,
+                            "cls": "voiced consonant"
                         },
                         {
                             "type": "or",
@@ -5184,6 +5457,11 @@
                                     "type": "relPhoneme",
                                     "relativeIndex": 1,
                                     "cls": "bilabial"
+                                },
+                                {
+                                    "type": "relPhoneme",
+                                    "relativeIndex": 1,
+                                    "cls": "labiodental"
                                 }
                             ]
                         },
@@ -5293,6 +5571,56 @@
                     {
                         "type": "ChangeSound",
                         "args": [
+                            "i"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "cls": "non-stressed",
+                            "parameter": "æ",
+                            "relative": false
+                        },
+                        {
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "syllableIndex",
+                                    "matchIndex": -1
+                                },
+                                {
+                                    "type": "syllableIndex",
+                                    "matchIndex": 1
+                                }
+                            ]
+                        },
+                        {
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "relPhoneme",
+                                    "relativeIndex": 1,
+                                    "parameter": "ġ"
+                                },
+                                {
+                                    "type": "relPhoneme",
+                                    "relativeIndex": 1,
+                                    "parameter": "ċ"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "comment": "Ringe 2014: 334: inherited æ adjacent to palatals eventually became i"
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
                             "e"
                         ]
                     }
@@ -5307,11 +5635,21 @@
                             "relative": false
                         },
                         {
-                            "type": "syllableIndex",
-                            "matchIndex": -1
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "syllableIndex",
+                                    "matchIndex": -1
+                                },
+                                {
+                                    "type": "syllableIndex",
+                                    "matchIndex": 1
+                                }
+                            ]
                         }
                     ]
-                }
+                },
+                "comment": "merger of æ and i as e in unstressed word-final and other inflectional syllables"
             },
             {
                 "instructions": [
@@ -5779,6 +6117,37 @@
             {
                 "pubId": 5,
                 "refText": "204"
+            }
+        ],
+        "notes": ""
+    },
+    {
+        "id": 3438,
+        "name": "oe-unstressed-vowel-u",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "o"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "relPhoneme",
+                    "cls": "non-stressed",
+                    "parameter": "u",
+                    "relative": false
+                }
+            }
+        ],
+        "sourceRefs": [
+            {
+                "pubId": 7,
+                "refText": "155"
             }
         ],
         "notes": ""
