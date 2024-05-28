@@ -19,15 +19,33 @@ class RuleParseContext(
 class RuleTraceData(val matchedBranches: MutableSet<RuleBranch>)
 
 class RuleTrace {
-    val traceData = mutableMapOf<Pair<Int, Int>, RuleTraceData>()
+    private val traceData = mutableMapOf<Pair<Int, Int>, RuleTraceData>()
+    private val log = StringBuilder()
 
-    fun logMatchedBranch(rule: Rule, word: Word, branch: RuleBranch) {
+    fun logMatchedBranch(rule: Rule, word: Word, phoneme: String?, branch: RuleBranch) {
         val data = traceData.getOrPut(rule.id to word.id) { RuleTraceData(mutableSetOf()) }
         data.matchedBranches.add(branch)
+        val phonemeTrace = phoneme?.let { " for $it" } ?: ""
+        log.append("Branch '${branch.condition.toEditableText()}' matched$phonemeTrace\n")
+    }
+
+    fun logUnmatchedBranch(rule: Rule, word: Word, phoneme: String?, branch: RuleBranch) {
+        val phonemeTrace = phoneme?.let { " for $it" } ?: ""
+        log.append("Branch '${branch.condition.toEditableText()}' not matched$phonemeTrace\n")
+    }
+
+    fun logCondition(ruleCondition: RuleCondition, result: Boolean) {
+        if (ruleCondition !is CompositeRuleCondition) {
+            log.append("${ruleCondition.toEditableText()} -> $result\n")
+        }
     }
 
     fun findMatchedBranches(rule: Rule, word: Word): Set<RuleBranch> {
         return traceData[rule.id to word.id]?.matchedBranches ?: emptySet()
+    }
+
+    fun log(): String {
+        return log.toString()
     }
 }
 
@@ -63,7 +81,11 @@ class LineBuffer(s: String) {
 }
 
 class RuleBranch(val condition: RuleCondition, val instructions: List<RuleInstruction>, val comment: String? = null) {
-    fun matches(word: Word, graph: GraphRepository) = condition.matches(word, graph)
+    fun matches(word: Word, graph: GraphRepository, trace: RuleTrace? = null): Boolean {
+        val result = condition.matches(word, graph, trace)
+        trace?.logCondition(condition, result)
+        return result
+    }
 
     fun apply(rule: Rule, word: Word, graph: GraphRepository): Word {
         return instructions.apply(rule, this, word, graph)
@@ -181,10 +203,13 @@ class Rule(
 
         val preWord = if (logic.preInstructions.isEmpty()) word else logic.preInstructions.apply(this, null, word, graph)
         for (branch in logic.branches) {
-            if (branch.matches(preWord, graph)) {
-                trace?.logMatchedBranch(this, word, branch)
+            if (branch.matches(preWord, graph, trace)) {
+                trace?.logMatchedBranch(this, word, null, branch)
                 val resultWord = branch.apply(this, preWord, graph)
                 return deriveWord(word, resultWord.text, toLanguage, resultWord.stressedPhonemeIndex, resultWord.segments, resultWord.classes)
+            }
+            else {
+                trace?.logUnmatchedBranch(this, word, null, branch)
             }
         }
         return Word(-1, "?", word.language)
@@ -202,12 +227,15 @@ class Rule(
 
     fun applyToPhoneme(word: Word, phonemes: PhonemeIterator, graph: GraphRepository, trace: RuleTrace? = null): Boolean {
         for (branch in logic.branches) {
-            if (branch.condition.matches(word, phonemes, graph)) {
-                trace?.logMatchedBranch(this, word, branch)
+            if (branch.condition.matches(word, phonemes, graph, trace)) {
+                trace?.logMatchedBranch(this, word, phonemes.current, branch)
                 for (instruction in branch.instructions) {
                     instruction.apply(word, phonemes, graph)
                 }
                 return true
+            }
+            else {
+                trace?.logUnmatchedBranch(this, word, phonemes.current, branch)
             }
         }
         return false

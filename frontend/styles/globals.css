@@ -124,3 +124,7 @@ code {
 .ruleComment {
   font-style: italic;
 }
+
+.ruleTrace {
+  white-space: pre;
+}

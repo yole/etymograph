@@ -135,6 +135,10 @@ export function applyRuleSequence(graph, seqId, fromWordId, toWordId) {
     })
 }
 
+export function traceRule(graph, ruleId, word) {
+    return postToBackend(`${graph}/rule/${ruleId}/trace`, {word})
+}
+
 export function deriveThroughRuleSequence(graph, wordId, seqId) {
     return postToBackend(`${graph}/word/${wordId}/derive`, {sequenceId: seqId})
 }

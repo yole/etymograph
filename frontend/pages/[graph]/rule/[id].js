@@ -4,7 +4,8 @@ import {
     allowEdit,
     deleteLink,
     deleteRule,
-    fetchPathsForAllGraphs
+    fetchPathsForAllGraphs,
+    traceRule
 } from "@/api";
 import WordLink from "@/components/WordLink";
 import {fetchBackend} from "@/api";
@@ -88,6 +89,9 @@ export default function Rule(params) {
     const [errorText, setErrorText] = useState("")
     const [lastExampleSource, setLastExampleSource] = useState("")
     const [showExampleForm, setShowExampleForm] = useState(false)
+    const [showTraceForm, setShowTraceForm] = useState(false)
+    const [traceWord, setTraceWord] = useState("")
+    const [traceResult, setTraceResult] = useState("")
     const [exampleUnmatched, setExampleUnmatched] = useState([])
     const [focusTarget, setFocusTarget] = useState(null)
     const router = useRouter()
@@ -135,6 +139,19 @@ export default function Rule(params) {
         } else {
             setErrorText("Example does not match rule")
             setExampleUnmatched(r.words)
+        }
+    }
+
+    async function runTrace() {
+        const r = await traceRule(graph, rule.id, traceWord)
+        if (r.status === 200) {
+            const jr = await r.json()
+            setErrorText(null)
+            setTraceResult(jr.trace)
+        }
+        else {
+            const jr = await r.json()
+            setErrorText(jr.message)
         }
     }
 
@@ -258,5 +275,15 @@ export default function Rule(params) {
                 <WordLink word={w} baseLanguage={rule.toLang}/>
             </>)}</p>
         </>}
+        {allowEdit() && !showTraceForm &&
+            <>{' '}<button onClick={() => setShowTraceForm(true)}>Trace</button></>
+        }
+        {showTraceForm && <p>
+            Word:{' '}
+            <input type="text" value={traceWord} onChange={(e) => setTraceWord(e.target.value)}/>{' '}
+            <button onClick={() => runTrace()}>Trace</button>{' '}
+            <button onClick={() => setShowTraceForm(false)}>Cancel</button>
+            <div className="ruleTrace">{traceResult}</div>
+        </p>}
     </>
 }

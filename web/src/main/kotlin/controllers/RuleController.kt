@@ -391,4 +391,25 @@ class RuleController {
         repo.applyRuleSequence(link, sequence)
         return linkToViewModel(link, repo, true)
     }
+
+    data class RuleTraceParams(
+        val word: String = ""
+    )
+
+    data class RuleTraceResult(
+        val trace: String,
+        val result: String
+    )
+
+    @PostMapping("/{graph}/rule/{id}/trace", consumes = ["application/json"])
+    fun trace(repo: GraphRepository, @PathVariable id: Int, @RequestBody params: RuleTraceParams): RuleTraceResult {
+        val rule = repo.resolveRule(id)
+        if (params.word.isBlank()) {
+            badRequest("Cannot trace rule for empty word")
+        }
+        val word = Word(-1, params.word, rule.fromLanguage)
+        val trace = RuleTrace()
+        val result = rule.apply(word, repo, trace)
+        return RuleTraceResult(trace.log(), result.text)
+    }
 }

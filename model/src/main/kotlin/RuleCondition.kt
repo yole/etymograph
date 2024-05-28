@@ -34,13 +34,13 @@ interface RuleConditionParser {
 sealed class RuleCondition(val negated: Boolean = false) {
     open fun isPhonemic(): Boolean = false
 
-    open fun matches(word: Word, graph: GraphRepository): Boolean {
+    open fun matches(word: Word, graph: GraphRepository, trace: RuleTrace? = null): Boolean {
         if (isPhonemic()) throw IllegalStateException("Condition requires phonemic context")
         return false
     }
 
-    open fun matches(word: Word, phonemes: PhonemeIterator, graph: GraphRepository): Boolean {
-        return matches(word, graph)
+    open fun matches(word: Word, phonemes: PhonemeIterator, graph: GraphRepository, trace: RuleTrace? = null): Boolean {
+        return matches(word, graph, trace)
     }
 
     fun toEditableText(): String {
@@ -111,7 +111,7 @@ class LeafRuleCondition(
 ) : RuleCondition(negated) {
     override fun isPhonemic(): Boolean = type.phonemic
 
-    override fun matches(word: Word, graph: GraphRepository): Boolean {
+    override fun matches(word: Word, graph: GraphRepository, trace: RuleTrace?): Boolean {
         val matchWord = graph.findWordToMatch(word, baseLanguageShortName) ?: return false
         return when (type) {
             ConditionType.EndsWith -> (phonemeClass?.let { PhonemeIterator(matchWord, graph).last in it.matchingPhonemes }
@@ -135,7 +135,7 @@ class LeafRuleCondition(
         return stress.index >= expectedStressSyllable.startIndex && stress.index < expectedStressSyllable.endIndex
     }
 
-    override fun matches(word: Word, phonemes: PhonemeIterator, graph: GraphRepository): Boolean {
+    override fun matches(word: Word, phonemes: PhonemeIterator, graph: GraphRepository, trace: RuleTrace?): Boolean {
         return when (type) {
             ConditionType.BeginningOfWord -> phonemes.atBeginning().negateIfNeeded()
             ConditionType.EndOfWord -> phonemes.atEnd().negateIfNeeded()
@@ -268,7 +268,7 @@ class SyllableRuleCondition(
 ) : RuleCondition() {
     override fun isPhonemic(): Boolean = false
 
-    override fun matches(word: Word, graph: GraphRepository): Boolean {
+    override fun matches(word: Word, graph: GraphRepository, trace: RuleTrace?): Boolean {
         val syllables = breakIntoSyllables(word)
         val syllable = Ordinals.at(syllables, index) ?: return false
         val phonemes = PhonemeIterator(word, graph)
@@ -288,7 +288,7 @@ class SyllableRuleCondition(
         return false
     }
 
-    override fun matches(word: Word, phonemes: PhonemeIterator, graph: GraphRepository): Boolean {
+    override fun matches(word: Word, phonemes: PhonemeIterator, graph: GraphRepository, trace: RuleTrace?): Boolean {
         throw IllegalStateException("This condition is not phonemic")
     }
 
@@ -324,7 +324,7 @@ fun GraphRepository.findWordToMatch(word: Word, baseLanguageShortName: String?):
 class SyllableCountRuleCondition(val condition: String?, negated: Boolean, val expectCount: Int)
     : RuleCondition(negated)
 {
-    override fun matches(word: Word, graph: GraphRepository): Boolean {
+    override fun matches(word: Word, graph: GraphRepository, trace: RuleTrace?): Boolean {
         val compare = when (condition) {
             ">=" -> { a: Int, b: Int -> a >= b }
             "<=" -> { a: Int, b: Int -> a <= b }
@@ -365,7 +365,7 @@ class RelativeSyllableRuleCondition(val matchIndex: Int?, val matchClass: String
 {
     override fun isPhonemic(): Boolean = true
 
-    override fun matches(word: Word, phonemes: PhonemeIterator, graph: GraphRepository): Boolean {
+    override fun matches(word: Word, phonemes: PhonemeIterator, graph: GraphRepository, trace: RuleTrace?): Boolean {
         val syllables = phonemes.syllables
         if (syllables.isNullOrEmpty()) return false.negateIfNeeded()
 
@@ -423,7 +423,7 @@ class RelativePhonemeRuleCondition(
 ) : RuleCondition(negated) {
     override fun isPhonemic(): Boolean = seekTarget?.relative ?: true
 
-    override fun matches(word: Word, phonemes: PhonemeIterator, graph: GraphRepository): Boolean {
+    override fun matches(word: Word, phonemes: PhonemeIterator, graph: GraphRepository, trace: RuleTrace?): Boolean {
         val it = if (seekTarget == null)
             phonemes
         else {
@@ -434,7 +434,7 @@ class RelativePhonemeRuleCondition(
         return phonemePattern.matchesCurrent(it) xor negated
     }
 
-    override fun matches(word: Word, graph: GraphRepository): Boolean {
+    override fun matches(word: Word, graph: GraphRepository, trace: RuleTrace?): Boolean {
         if (seekTarget == null) {
             throw IllegalStateException("This condition is  phonemic")
         }
@@ -499,7 +499,7 @@ class PhonemeEqualsRuleCondition(val target: SeekTarget, val matchTarget: SeekTa
 {
     override fun isPhonemic(): Boolean = true
 
-    override fun matches(word: Word, phonemes: PhonemeIterator, graph: GraphRepository): Boolean {
+    override fun matches(word: Word, phonemes: PhonemeIterator, graph: GraphRepository, trace: RuleTrace?): Boolean {
         val targetIterator = phonemes.clone()
         if (!targetIterator.seek(target)) return false
         val matchPhoneme = if (matchTarget != null) {
@@ -541,19 +541,9 @@ class PhonemeEqualsRuleCondition(val target: SeekTarget, val matchTarget: SeekTa
     }
 }
 
-class OrRuleCondition(val members: List<RuleCondition>) : RuleCondition() {
+sealed class CompositeRuleCondition(val members: List<RuleCondition>) : RuleCondition() {
     override fun isPhonemic(): Boolean {
         return members.any { it.isPhonemic() }
-    }
-
-    override fun matches(word: Word, graph: GraphRepository): Boolean = members.any { it.matches(word, graph) }
-
-    override fun matches(word: Word, phonemes: PhonemeIterator, graph: GraphRepository) =
-        members.any { it.matches(word, phonemes, graph) }
-
-    override fun toRichText(): RichText = members.joinToRichText(OR) {
-        val et = it.toRichText()
-        if (it is AndRuleCondition) et.prepend("(").append(")") else et
     }
 
     override fun findLeafConditions(predicate: (RuleCondition) -> Boolean): List<RuleCondition> {
@@ -562,6 +552,19 @@ class OrRuleCondition(val members: List<RuleCondition>) : RuleCondition() {
 
     override fun refersToPhoneme(phoneme: Phoneme): Boolean {
         return members.any { it.refersToPhoneme(phoneme) }
+    }
+}
+
+class OrRuleCondition(members: List<RuleCondition>) : CompositeRuleCondition(members) {
+    override fun matches(word: Word, graph: GraphRepository, trace: RuleTrace?): Boolean =
+        members.any { c -> c.matches(word, graph, trace).also { trace?.logCondition(c, it) } }
+
+    override fun matches(word: Word, phonemes: PhonemeIterator, graph: GraphRepository, trace: RuleTrace?): Boolean =
+        members.any { c -> c.matches(word, phonemes, graph).also { trace?.logCondition(c, it) } }
+
+    override fun toRichText(): RichText = members.joinToRichText(OR) {
+        val et = it.toRichText()
+        if (it is AndRuleCondition) et.prepend("(").append(")") else et
     }
 
     companion object {
@@ -569,27 +572,16 @@ class OrRuleCondition(val members: List<RuleCondition>) : RuleCondition() {
     }
 }
 
-class AndRuleCondition(val members: List<RuleCondition>) : RuleCondition() {
-    override fun isPhonemic(): Boolean {
-        return members.any { it.isPhonemic() }
-    }
+class AndRuleCondition(members: List<RuleCondition>) : CompositeRuleCondition(members) {
+    override fun matches(word: Word, graph: GraphRepository, trace: RuleTrace?): Boolean =
+        members.all { c -> c.matches(word, graph, trace).also { trace?.logCondition(c, it)} }
 
-    override fun matches(word: Word, graph: GraphRepository): Boolean = members.all { it.matches(word, graph) }
-
-    override fun matches(word: Word, phonemes: PhonemeIterator, graph: GraphRepository) =
-        members.all { it.matches(word, phonemes, graph) }
+    override fun matches(word: Word, phonemes: PhonemeIterator, graph: GraphRepository, trace: RuleTrace?) =
+        members.all { c -> c.matches(word, phonemes, graph, trace).also { trace?.logCondition(c, it) } }
 
     override fun toRichText(): RichText = members.joinToRichText(AND) {
         val et = it.toRichText()
         if (it is OrRuleCondition) et.prepend("(").append(")") else et
-    }
-
-    override fun findLeafConditions(predicate: (RuleCondition) -> Boolean): List<RuleCondition> {
-        return members.flatMap { it.findLeafConditions(predicate) }
-    }
-
-    override fun refersToPhoneme(phoneme: Phoneme): Boolean {
-        return members.any { it.refersToPhoneme(phoneme) }
     }
 
     companion object {
@@ -599,8 +591,8 @@ class AndRuleCondition(val members: List<RuleCondition>) : RuleCondition() {
 
 object OtherwiseCondition : RuleCondition() {
     override fun isPhonemic(): Boolean = false
-    override fun matches(word: Word, graph: GraphRepository): Boolean = true
-    override fun matches(word: Word, phonemes: PhonemeIterator, graph: GraphRepository) = true
+    override fun matches(word: Word, graph: GraphRepository, trace: RuleTrace?): Boolean = true
+    override fun matches(word: Word, phonemes: PhonemeIterator, graph: GraphRepository, trace: RuleTrace?) = true
     override fun toRichText(): RichText = OTHERWISE.richText()
 
     const val OTHERWISE = "otherwise"
