@@ -281,6 +281,15 @@ class PhonemeRuleTest : QBaseTest() {
     }
 
     @Test
+    fun stressedDiphthongCondition() {
+        val rule = parseRule(q, q, """
+            sound is 'e' and previous vowel is stressed:
+            - new sound is 'i'
+        """.trimIndent())
+        assertEquals("lairi", rule.apply(q.word("laire").apply { stressedPhonemeIndex = 1 }, emptyRepo).text)
+    }
+
+    @Test
     fun nextSoundIs() {
         val rule = parseRule(q, q, """
             beginning of word and sound is 's' and next sound is 'p':

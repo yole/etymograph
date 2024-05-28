@@ -22,7 +22,11 @@ open class PhonemeClass(val name: String, var matchingPhonemes: List<String>) {
 
         val stressed = object : PhonemeClass("stressed", emptyList()) {
             override fun matchesCurrent(it: PhonemeIterator): Boolean {
-                return it.stressedPhonemeIndex == it.index
+                if (it.stressedPhonemeIndex == it.index) return true
+                if (it.index > 0 && it.stressedPhonemeIndex == it.index - 1) {
+                    return it.atRelative(-1) + it.current in it.language.diphthongs
+                }
+                return false
             }
         }
 
