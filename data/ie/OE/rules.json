@@ -24,40 +24,19 @@
                     "type": "and",
                     "members": [
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "masc"
-                        },
-                        {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "a-stem"
-                        }
-                    ]
-                }
-            },
-            {
-                "instructions": [
-                    {
-                        "type": "Append",
-                        "args": [
-                            "'es'"
-                        ]
-                    },
-                    {
-                        "type": "ApplyRule",
-                        "args": [
-                            "2307"
-                        ]
-                    }
-                ],
-                "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "neut"
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "leaf",
+                                    "cond": "ClassMatches",
+                                    "characters": "masc"
+                                },
+                                {
+                                    "type": "leaf",
+                                    "cond": "ClassMatches",
+                                    "characters": "neut"
+                                }
+                            ]
                         },
                         {
                             "type": "leaf",
@@ -112,10 +91,53 @@
                     "cond": "ClassMatches",
                     "characters": "o-stem"
                 }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "an"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "n-stem"
+                        },
+                        {
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "leaf",
+                                    "cond": "EndsWith",
+                                    "characters": "a"
+                                },
+                                {
+                                    "type": "leaf",
+                                    "cond": "EndsWith",
+                                    "characters": "e"
+                                }
+                            ]
+                        }
+                    ]
+                }
             }
         ],
         "addedCategories": ".GEN",
-        "fromPOS": "N"
+        "fromPOS": "N",
+        "preInstructions": [
+            {
+                "type": "ApplyRule",
+                "args": [
+                    "3462"
+                ]
+            }
+        ]
     },
     {
         "id": 468,
@@ -151,15 +173,15 @@
             {
                 "instructions": [
                     {
-                        "type": "ApplyRule",
-                        "args": [
-                            "1249"
-                        ]
-                    },
-                    {
                         "type": "Append",
                         "args": [
                             "'e'"
+                        ]
+                    },
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "2307"
                         ]
                     }
                 ],
@@ -167,6 +189,61 @@
                     "type": "leaf",
                     "cond": "ClassMatches",
                     "characters": "o-stem"
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'n'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "n-stem"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "a"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "an"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "n-stem"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "fem"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "e"
+                        }
+                    ]
                 }
             },
             {
@@ -182,7 +259,15 @@
             }
         ],
         "addedCategories": ".ACC",
-        "fromPOS": "N"
+        "fromPOS": "N",
+        "preInstructions": [
+            {
+                "type": "ApplyRule",
+                "args": [
+                    "3462"
+                ]
+            }
+        ]
     },
     {
         "id": 469,
@@ -297,10 +382,53 @@
                     "cond": "ClassMatches",
                     "characters": "o-stem"
                 }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "an"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "n-stem"
+                        },
+                        {
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "leaf",
+                                    "cond": "EndsWith",
+                                    "characters": "a"
+                                },
+                                {
+                                    "type": "leaf",
+                                    "cond": "EndsWith",
+                                    "characters": "e"
+                                }
+                            ]
+                        }
+                    ]
+                }
             }
         ],
         "addedCategories": ".DAT",
-        "fromPOS": "N"
+        "fromPOS": "N",
+        "preInstructions": [
+            {
+                "type": "ApplyRule",
+                "args": [
+                    "3462"
+                ]
+            }
+        ]
     },
     {
         "id": 470,
@@ -456,10 +584,53 @@
                     "cond": "ClassMatches",
                     "characters": "o-stem"
                 }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "an"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "n-stem"
+                        },
+                        {
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "leaf",
+                                    "cond": "EndsWith",
+                                    "characters": "e"
+                                },
+                                {
+                                    "type": "leaf",
+                                    "cond": "EndsWith",
+                                    "characters": "a"
+                                }
+                            ]
+                        }
+                    ]
+                }
             }
         ],
         "addedCategories": ".NOM.PL",
-        "fromPOS": "N"
+        "fromPOS": "N",
+        "preInstructions": [
+            {
+                "type": "ApplyRule",
+                "args": [
+                    "3462"
+                ]
+            }
+        ]
     },
     {
         "id": 471,
@@ -609,10 +780,53 @@
                     "cond": "ClassMatches",
                     "characters": "o-stem"
                 }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "ena"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "n-stem"
+                        },
+                        {
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "leaf",
+                                    "cond": "EndsWith",
+                                    "characters": "a"
+                                },
+                                {
+                                    "type": "leaf",
+                                    "cond": "EndsWith",
+                                    "characters": "e"
+                                }
+                            ]
+                        }
+                    ]
+                }
             }
         ],
         "addedCategories": ".GEN.PL",
-        "fromPOS": "N"
+        "fromPOS": "N",
+        "preInstructions": [
+            {
+                "type": "ApplyRule",
+                "args": [
+                    "3462"
+                ]
+            }
+        ]
     },
     {
         "id": 473,
@@ -645,46 +859,19 @@
                     "type": "and",
                     "members": [
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "masc"
-                        },
-                        {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "a-stem"
-                        }
-                    ]
-                }
-            },
-            {
-                "instructions": [
-                    {
-                        "type": "Append",
-                        "args": [
-                            "'um'"
-                        ]
-                    },
-                    {
-                        "type": "ApplyRule",
-                        "args": [
-                            "2307"
-                        ]
-                    },
-                    {
-                        "type": "ApplyRule",
-                        "args": [
-                            "1188"
-                        ]
-                    }
-                ],
-                "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "neut"
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "leaf",
+                                    "cond": "ClassMatches",
+                                    "characters": "masc"
+                                },
+                                {
+                                    "type": "leaf",
+                                    "cond": "ClassMatches",
+                                    "characters": "neut"
+                                }
+                            ]
                         },
                         {
                             "type": "leaf",
@@ -751,14 +938,57 @@
                     "cond": "ClassMatches",
                     "characters": "o-stem"
                 }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "um"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "n-stem"
+                        },
+                        {
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "leaf",
+                                    "cond": "EndsWith",
+                                    "characters": "a"
+                                },
+                                {
+                                    "type": "leaf",
+                                    "cond": "EndsWith",
+                                    "characters": "e"
+                                }
+                            ]
+                        }
+                    ]
+                }
             }
         ],
         "addedCategories": ".DAT.PL",
-        "fromPOS": "N"
+        "fromPOS": "N",
+        "preInstructions": [
+            {
+                "type": "ApplyRule",
+                "args": [
+                    "3462"
+                ]
+            }
+        ]
     },
     {
         "id": 920,
-        "name": "oe-adj-m-nom-pl",
+        "name": "oe-adj-strong-m-nom-pl",
         "fromLang": "OE",
         "toLang": "OE",
         "branches": [
@@ -776,10 +1006,8 @@
                 }
             }
         ],
-        "addedCategories": ".NOM.PL.M",
-        "replacedCategories": "",
-        "fromPOS": "ADJ",
-        "notes": ""
+        "addedCategories": ".M.NOM.PL",
+        "fromPOS": "ADJ"
     },
     {
         "id": 1188,
@@ -1099,7 +1327,7 @@
     },
     {
         "id": 1253,
-        "name": "oe-past-weak-1sg",
+        "name": "oe-past-1sg",
         "fromLang": "OE",
         "toLang": "OE",
         "branches": [
@@ -1128,7 +1356,7 @@
     },
     {
         "id": 1254,
-        "name": "oe-past-weak-2sg",
+        "name": "oe-past-2sg",
         "fromLang": "OE",
         "toLang": "OE",
         "branches": [
@@ -1157,7 +1385,7 @@
     },
     {
         "id": 1255,
-        "name": "oe-past-weak-3sg",
+        "name": "oe-past-3sg",
         "fromLang": "OE",
         "toLang": "OE",
         "branches": [
@@ -1186,7 +1414,7 @@
     },
     {
         "id": 1256,
-        "name": "oe-past-weak-1pl",
+        "name": "oe-past-1pl",
         "fromLang": "OE",
         "toLang": "OE",
         "branches": [
@@ -1215,7 +1443,7 @@
     },
     {
         "id": 1257,
-        "name": "oe-past-weak-2pl",
+        "name": "oe-past-2pl",
         "fromLang": "OE",
         "toLang": "OE",
         "branches": [
@@ -1244,7 +1472,7 @@
     },
     {
         "id": 1258,
-        "name": "oe-past-weak-3pl",
+        "name": "oe-past-3pl",
         "fromLang": "OE",
         "toLang": "OE",
         "branches": [
@@ -6150,6 +6378,537 @@
                 "refText": "155"
             }
         ],
+        "notes": ""
+    },
+    {
+        "id": 3439,
+        "name": "oe-1sg",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "e"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "an"
+                }
+            }
+        ],
+        "addedCategories": ".1SG",
+        "fromPOS": "V",
+        "notes": ""
+    },
+    {
+        "id": 3440,
+        "name": "oe-2sg",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "st"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "an"
+                }
+            }
+        ],
+        "addedCategories": ".2SG",
+        "fromPOS": "V",
+        "notes": ""
+    },
+    {
+        "id": 3441,
+        "name": "oe-3sg",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "þ"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "an"
+                }
+            }
+        ],
+        "addedCategories": ".3SG",
+        "fromPOS": "V",
+        "notes": ""
+    },
+    {
+        "id": 3442,
+        "name": "oe-1pl",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "aþ"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "an"
+                }
+            }
+        ],
+        "addedCategories": ".1PL",
+        "fromPOS": "V",
+        "notes": ""
+    },
+    {
+        "id": 3443,
+        "name": "oe-2pl",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "3442"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".2PL",
+        "fromPOS": "V",
+        "notes": ""
+    },
+    {
+        "id": 3444,
+        "name": "oe-3pl",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "3442"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".3PL",
+        "fromPOS": "V",
+        "notes": ""
+    },
+    {
+        "id": 3462,
+        "name": "oe-n-stem-class",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyClass",
+                        "args": [
+                            "n-stem"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "masc"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "a"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyClass",
+                        "args": [
+                            "n-stem"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "fem"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "e"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "NoChange",
+                        "args": []
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ]
+    },
+    {
+        "id": 3465,
+        "name": "oe-adj-strong-m-acc",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'ne'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".M.ACC",
+        "fromPOS": "ADJ",
+        "notes": ""
+    },
+    {
+        "id": 3466,
+        "name": "oe-adj-strong-m-gen",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'es'"
+                        ]
+                    },
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1188"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".M.GEN",
+        "fromPOS": "ADJ",
+        "notes": ""
+    },
+    {
+        "id": 3467,
+        "name": "oe-adj-strong-m-dat",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'um'"
+                        ]
+                    },
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1188"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".M.DAT",
+        "fromPOS": "ADJ",
+        "notes": ""
+    },
+    {
+        "id": 3468,
+        "name": "oe-adj-strong-m-inst",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'e'"
+                        ]
+                    },
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1188"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".M.INST",
+        "fromPOS": "ADJ",
+        "notes": ""
+    },
+    {
+        "id": 3470,
+        "name": "oe-adj-strong-m-acc-pl",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "920"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".M.ACC.PL",
+        "fromPOS": "ADJ",
+        "notes": ""
+    },
+    {
+        "id": 3471,
+        "name": "oe-adj-strong-m-gen-pl",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'ra'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".M.GEN.PL",
+        "notes": ""
+    },
+    {
+        "id": 3472,
+        "name": "oe-adj-strong-m-dat-pl",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "3467"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".M.DAT.PL",
+        "fromPOS": "ADJ",
+        "notes": ""
+    },
+    {
+        "id": 3473,
+        "name": "oe-adj-strong-f-nom",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "NoChange",
+                        "args": []
+                    }
+                ],
+                "condition": {
+                    "type": "syllable",
+                    "matchType": "Contains",
+                    "index": 1,
+                    "cls": "long vowel"
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'u'"
+                        ]
+                    },
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1188"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".F.NOM",
+        "fromPOS": "ADJ"
+    },
+    {
+        "id": 3475,
+        "name": "oe-adj-strong-f-nom-pl",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'a'"
+                        ]
+                    },
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1188"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".F.NOM.PL",
+        "fromPOS": "ADJ",
+        "notes": ""
+    },
+    {
+        "id": 3476,
+        "name": "oe-adj-strong-n-nom",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "NoChange",
+                        "args": []
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".N.NOM",
+        "fromPOS": "ADJ",
+        "notes": ""
+    },
+    {
+        "id": 3477,
+        "name": "oe-adj-strong-n-nom-pl",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'e'"
+                        ]
+                    },
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1188"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".N.NOM.PL",
+        "fromPOS": "ADJ",
         "notes": ""
     }
 ]

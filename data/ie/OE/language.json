@@ -567,6 +567,10 @@
                 {
                     "name": "Dative",
                     "abbreviation": "DAT"
+                },
+                {
+                    "name": "Instrumental",
+                    "abbreviation": "INST"
                 }
             ]
         },
@@ -679,6 +683,10 @@
                 {
                     "name": "o-stem",
                     "abbreviation": "o-stem"
+                },
+                {
+                    "name": "n-stem",
+                    "abbreviation": "n-stem"
                 }
             ]
         },

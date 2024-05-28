@@ -1,6 +1,6 @@
 [
     {
-        "id": 3,
+        "id": 14,
         "name": "Noun",
         "rows": [
             "Nom",
@@ -66,7 +66,7 @@
         ]
     },
     {
-        "id": 4,
+        "id": 15,
         "name": "Verb Present",
         "rows": [
             "1st",
@@ -120,7 +120,7 @@
         ]
     },
     {
-        "id": 7,
+        "id": 16,
         "name": "Verb Past",
         "rows": [
             "1st",
@@ -174,7 +174,7 @@
         ]
     },
     {
-        "id": 8,
+        "id": 17,
         "name": "Verb Present Mid",
         "rows": [
             "1st",
@@ -228,7 +228,7 @@
         ]
     },
     {
-        "id": 9,
+        "id": 18,
         "name": "Verb Past Mid",
         "rows": [
             "1st",
@@ -282,7 +282,7 @@
         ]
     },
     {
-        "id": 10,
+        "id": 19,
         "name": "Adjective Strong",
         "rows": [
             "Nom",

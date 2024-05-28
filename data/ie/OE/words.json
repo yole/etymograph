@@ -13,8 +13,7 @@
     },
     {
         "id": 3,
-        "text": "biddaþ",
-        "gloss": "ask.PRES.PL"
+        "text": "biddaþ"
     },
     {
         "id": 4,
@@ -111,8 +110,7 @@
     },
     {
         "id": 26,
-        "text": "sprecaþ",
-        "gloss": "speak.PRES.PL"
+        "text": "sprecaþ"
     },
     {
         "id": 27,
@@ -220,7 +218,8 @@
             {
                 "refText": "https://bosworthtoller.com/24432"
             }
-        ]
+        ],
+        "notes": " with dat. (location) or acc. (direction)"
     },
     {
         "id": 45,
@@ -313,8 +312,7 @@
     },
     {
         "id": 61,
-        "text": "swingla",
-        "gloss": "blow.ACC.PL"
+        "text": "swingla"
     },
     {
         "id": 62,
@@ -353,8 +351,7 @@
     },
     {
         "id": 69,
-        "text": "ācsiġe",
-        "gloss": "ask.PRES.1SG"
+        "text": "ācsiġe"
     },
     {
         "id": 70,
@@ -386,8 +383,7 @@
     },
     {
         "id": 75,
-        "text": "leornie",
-        "gloss": "learn.PRES.PL"
+        "text": "leornie"
     },
     {
         "id": 76,
@@ -407,8 +403,7 @@
     },
     {
         "id": 79,
-        "text": "willaþ",
-        "gloss": "want.PRES.PL"
+        "text": "willaþ"
     },
     {
         "id": 80,
@@ -418,15 +413,11 @@
     },
     {
         "id": 81,
-        "text": "stunte",
-        "gloss": "foolish",
-        "pos": "ADJ"
+        "text": "stunte"
     },
     {
         "id": 82,
-        "text": "nȳtenu",
-        "gloss": "cattle",
-        "pos": "N"
+        "text": "nȳtenu"
     },
     {
         "id": 83,
@@ -446,8 +437,7 @@
     },
     {
         "id": 86,
-        "text": "witaþ",
-        "gloss": "know.PRES.3SG"
+        "text": "witaþ"
     },
     {
         "id": 87,
@@ -525,14 +515,17 @@
     },
     {
         "id": 282,
-        "text": "þances",
-        "gloss": "thought.GEN"
+        "text": "þances"
     },
     {
         "id": 283,
         "text": "þanc",
         "gloss": "thought",
-        "pos": "N"
+        "pos": "N",
+        "classes": [
+            "masc",
+            "a-stem"
+        ]
     },
     {
         "id": 284,
@@ -584,7 +577,16 @@
     {
         "id": 293,
         "text": "yfel",
-        "gloss": "evil"
+        "gloss": "evil",
+        "pos": "N",
+        "classes": [
+            "neut"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/37057"
+            }
+        ]
     },
     {
         "id": 294,
@@ -744,8 +746,7 @@
     },
     {
         "id": 322,
-        "text": "monncynnes",
-        "gloss": "mankind.GEN"
+        "text": "monncynnes"
     },
     {
         "id": 323,
@@ -796,8 +797,7 @@
     },
     {
         "id": 331,
-        "text": "sceōp",
-        "gloss": "make.PST.3SG"
+        "text": "sceōp"
     },
     {
         "id": 332,
@@ -855,8 +855,7 @@
     },
     {
         "id": 407,
-        "text": "fræt",
-        "gloss": "devour.PRET.3SG"
+        "text": "fræt"
     },
     {
         "id": 408,
@@ -1007,11 +1006,6 @@
         "pos": "ADJ"
     },
     {
-        "id": 436,
-        "text": "staþol",
-        "gloss": "foundation"
-    },
-    {
         "id": 437,
         "text": "stælġiest",
         "gloss": "thievish spirit",
@@ -1098,24 +1092,34 @@
     },
     {
         "id": 455,
-        "text": "lāstas",
-        "gloss": "track.NOM.PL"
+        "text": "lāstas"
     },
     {
         "id": 456,
         "text": "lāst",
-        "gloss": "track"
+        "gloss": "track",
+        "pos": "N",
+        "classes": [
+            "masc"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/21193"
+            }
+        ]
     },
     {
         "id": 457,
-        "text": "swaþu",
-        "gloss": "trace.NOM.PL"
+        "text": "swaþu"
     },
     {
         "id": 458,
         "text": "swæþ",
         "gloss": "trace",
-        "pos": "N"
+        "pos": "N",
+        "classes": [
+            "neut"
+        ]
     },
     {
         "id": 459,
@@ -1147,7 +1151,7 @@
     {
         "id": 464,
         "text": "blacu",
-        "gloss": "black.ACC"
+        "gloss": "bright.NOM.PL"
     },
     {
         "id": 465,
@@ -1359,6 +1363,10 @@
         "id": 1212,
         "text": "ānga",
         "gloss": "sole",
+        "pos": "N",
+        "classes": [
+            "masc"
+        ],
         "sourceRefs": [
             {
                 "refText": "https://bosworthtoller.com/1805"
@@ -3136,7 +3144,10 @@
         "id": 2515,
         "text": "guma",
         "gloss": "human",
-        "pos": "N"
+        "pos": "N",
+        "classes": [
+            "masc"
+        ]
     },
     {
         "id": 2517,
@@ -7589,5 +7600,186 @@
                 "refText": "333"
             }
         ]
+    },
+    {
+        "id": 3445,
+        "text": "lēasungum"
+    },
+    {
+        "id": 3446,
+        "text": "lēasung",
+        "gloss": "deceit",
+        "pos": "N"
+    },
+    {
+        "id": 3447,
+        "text": "spreċende"
+    },
+    {
+        "id": 3449,
+        "text": "þenċende"
+    },
+    {
+        "id": 3450,
+        "text": "þenċan",
+        "gloss": "to think",
+        "pos": "V"
+    },
+    {
+        "id": 3451,
+        "text": "tȳddriende"
+    },
+    {
+        "id": 3452,
+        "text": "tȳddrian",
+        "gloss": "to produce, bring forth",
+        "pos": "V"
+    },
+    {
+        "id": 3453,
+        "text": "nis"
+    },
+    {
+        "id": 3455,
+        "text": "wuht",
+        "gloss": "creature",
+        "pos": "N"
+    },
+    {
+        "id": 3456,
+        "text": "fōre"
+    },
+    {
+        "id": 3457,
+        "text": "fōr",
+        "gloss": "journey",
+        "pos": "N",
+        "classes": [
+            "fem"
+        ]
+    },
+    {
+        "id": 3458,
+        "text": "fuglum"
+    },
+    {
+        "id": 3459,
+        "text": "fugol",
+        "gloss": "bird",
+        "pos": "N"
+    },
+    {
+        "id": 3460,
+        "text": "lyfte"
+    },
+    {
+        "id": 3461,
+        "text": "lyft",
+        "gloss": "air",
+        "pos": "N"
+    },
+    {
+        "id": 3463,
+        "text": "eorðe",
+        "gloss": "ground",
+        "pos": "N",
+        "classes": [
+            "fem"
+        ]
+    },
+    {
+        "id": 3464,
+        "text": "ēage",
+        "gloss": "eye",
+        "pos": "N",
+        "classes": [
+            "neut",
+            "n-stem"
+        ]
+    },
+    {
+        "id": 3469,
+        "text": "blæc",
+        "gloss": "black",
+        "pos": "ADJ"
+    },
+    {
+        "id": 3474,
+        "text": "nȳten",
+        "gloss": "cattle",
+        "pos": "N",
+        "classes": [
+            "neut",
+            "a-stem"
+        ]
+    },
+    {
+        "id": 3478,
+        "text": "stunt",
+        "gloss": "foolish",
+        "pos": "ADJ",
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/29225"
+            }
+        ]
+    },
+    {
+        "id": 3479,
+        "text": "prættiġe"
+    },
+    {
+        "id": 3480,
+        "text": "prættiġ",
+        "gloss": "cunning",
+        "pos": "ADJ"
+    },
+    {
+        "id": 3481,
+        "text": "lytiġe"
+    },
+    {
+        "id": 3482,
+        "text": "lytiġ",
+        "gloss": "crafty",
+        "pos": "ADJ"
+    },
+    {
+        "id": 3483,
+        "text": "sprǣcum"
+    },
+    {
+        "id": 3484,
+        "text": "onglǣwlīċe"
+    },
+    {
+        "id": 3485,
+        "text": "onglǣwlīċ",
+        "gloss": "artful",
+        "pos": "ADJ"
+    },
+    {
+        "id": 3486,
+        "text": "hinderġēpe"
+    },
+    {
+        "id": 3487,
+        "text": "hinderġēp",
+        "gloss": "wily",
+        "pos": "ADJ"
+    },
+    {
+        "id": 3488,
+        "text": "yfele"
+    },
+    {
+        "id": 3489,
+        "text": "dydrunge"
+    },
+    {
+        "id": 3490,
+        "text": "dydrung",
+        "gloss": "deceit",
+        "pos": "N"
     }
 ]
