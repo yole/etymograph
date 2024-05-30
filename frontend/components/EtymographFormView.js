@@ -2,7 +2,7 @@ import {createContext, useContext, useState} from "react";
 import {allowEdit} from "@/api";
 
 export const EditModeContext = createContext(undefined)
-export const SetEditModeContext = createContext((value) => {})
+export const SetEditModeContext = createContext(undefined)
 
 export function View(props) {
     const editMode = useContext(EditModeContext)
