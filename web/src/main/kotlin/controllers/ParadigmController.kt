@@ -1,10 +1,7 @@
 package ru.yole.etymograph.web.controllers
 
 import org.springframework.web.bind.annotation.*
-import ru.yole.etymograph.GraphRepository
-import ru.yole.etymograph.Paradigm
-import ru.yole.etymograph.ParadigmCell
-import ru.yole.etymograph.ParadigmColumn
+import ru.yole.etymograph.*
 import ru.yole.etymograph.web.resolveLanguage
 
 @RestController
@@ -109,5 +106,43 @@ class ParadigmController {
     fun deleteParadigm(repo: GraphRepository, @PathVariable id: Int) {
         val paradigm = repo.resolveParadigm(id)
         repo.deleteParadigm(paradigm)
+    }
+
+    data class GenerateParadigmParameters(
+        val name: String,
+        val lang: String,
+        val pos: String,
+        val prefix: String,
+        val rows: String,
+        val columns: String
+    )
+
+    @PostMapping("/{graph}/paradigm/generate")
+    @ResponseBody
+    fun generateParadigm(repo: GraphRepository, @RequestBody params: GenerateParadigmParameters): ParadigmViewModel {
+        val language = repo.resolveLanguage(params.lang)
+        val rowList = params.rows.split(',').map { it.trim() }
+        val colList = params.columns.split(',').map { it.trim() }
+
+        val paradigm = repo.addParadigm(params.name, language, params.pos.split(',').map { it.trim()} )
+        for (rowTitle in rowList) {
+            paradigm.addRow(rowTitle)
+        }
+        for (columnTitle in colList) {
+            paradigm.addColumn(columnTitle)
+        }
+
+        for ((rowIndex, rowTitle) in rowList.withIndex()) {
+            for ((colIndex, columnTitle) in colList.withIndex()) {
+                val ruleName = "${params.prefix}-${rowTitle.lowercase()}-${columnTitle.lowercase().replace(" ", "-")}"
+                val addedCategories = "." + rowTitle.uppercase() + "." + columnTitle.uppercase().replace(" ", ".")
+                val rule = repo.ruleByName(ruleName)
+                    ?: repo.addRule(ruleName, language, language, RuleLogic.empty(), addedCategories, null,
+                        params.pos)
+                paradigm.setRule(rowIndex, colIndex, listOf(rule))
+            }
+        }
+
+        return paradigm.toViewModel()
     }
 }

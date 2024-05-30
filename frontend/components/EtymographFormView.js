@@ -10,12 +10,13 @@ export function View(props) {
 }
 
 export default function EtymographFormView(props) {
+    const editButtonTitle = props.editButtonTitle ?? "Edit"
     const [editMode, setEditMode] = useState(false)
 
     return <EditModeContext.Provider value={editMode}>
         <SetEditModeContext.Provider value={setEditMode}>
             {props.children}
-            {allowEdit() && !editMode && <button onClick={() => setEditMode(true)}>Edit</button>}
+            {allowEdit() && !editMode && <button onClick={() => setEditMode(true)}>{editButtonTitle}</button>}
         </SetEditModeContext.Provider>
     </EditModeContext.Provider>
 }

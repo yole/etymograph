@@ -172,7 +172,11 @@ class RuleLogic(
     val preInstructions: List<RuleInstruction>,
     val branches: List<RuleBranch>,
     val postInstructions: List<RuleInstruction>
-)
+) {
+    companion object {
+        fun empty(): RuleLogic = RuleLogic(emptyList(), emptyList(), emptyList())
+    }
+}
 
 class Rule(
     id: Int,

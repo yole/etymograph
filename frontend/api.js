@@ -217,6 +217,10 @@ export function updateWordParadigm(graph, id, paradigm) {
     return postToBackend(`${graph}/word/${id}/paradigm`, {items: [...paradigm]})
 }
 
+export function generateParadigm(graph, lang, data) {
+    return postToBackend(`${graph}/paradigm/generate`, {lang: lang, ...data})
+}
+
 export function addLanguage(graph, name, shortName, reconstructed) {
     return postToBackend(`${graph}/languages`, {name: name, shortName: shortName, reconstructed: reconstructed})
 }
