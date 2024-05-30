@@ -304,8 +304,11 @@ class ApplyRuleInstruction(val ruleRef: RuleRef)
                 "'".rich()
     }
 
-    override fun toSummaryText(condition: RuleCondition): String =
-        ruleRef.resolve().toSummaryText()
+    override fun toSummaryText(condition: RuleCondition): String {
+        val rule = ruleRef.resolve()
+        if (rule.isPhonemic()) return ""
+        return rule.toSummaryText()
+    }
 }
 
 class ApplySoundRuleInstruction(language: Language, val ruleRef: RuleRef, arg: String?)
