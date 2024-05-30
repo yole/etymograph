@@ -704,16 +704,18 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             val paradigmJson = contentProviderCallback(language.shortName + "/paradigms.json") ?: continue
             val paradigmList = Json.decodeFromString<List<ParadigmData>>(paradigmJson)
 
-            for (paradigm in paradigmList) {
-                while (paradigm.id > paradigms.size) {
+            for (paradigmData in paradigmList) {
+                while (paradigmData.id >= paradigms.size) {
                     paradigms.add(null)
                 }
 
-                addParadigm(paradigm.name, language, paradigm.posList).apply {
-                    for (row in paradigm.rows) {
+                val paradigm = Paradigm(paradigmData.id, paradigmData.name, language, paradigmData.posList)
+                paradigms[paradigmData.id] = paradigm
+                paradigm.apply {
+                    for (row in paradigmData.rows) {
                         addRow(row)
                     }
-                    for ((colIndex, column) in paradigm.columns.withIndex()) {
+                    for ((colIndex, column) in paradigmData.columns.withIndex()) {
                         addColumn(column.title)
                         for ((rowIndex, cell) in column.cells.withIndex()) {
                             val alternatives = cell.ruleAlternatives
