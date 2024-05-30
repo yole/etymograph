@@ -36,6 +36,14 @@ export default function Paradigm(params) {
         }
     }
 
+    function ruleTitle(cell, index) {
+         const summary = cell.alternativeRuleSummaries[index]
+         if (summary.length > 0) {
+             return summary
+         }
+         return cell.alternativeRuleNames[index]
+    }
+
     return <>
         <Breadcrumbs langId={paradigm.language} langName={paradigm.languageFullName}
                      steps={[{url: `/${graph}/paradigms/${paradigm.language}`, title: "Paradigms"}]}
@@ -51,9 +59,9 @@ export default function Paradigm(params) {
             {paradigm.rowTitles.map((t, index) => <tr>
                 <td>{t}</td>
                 {paradigm.columns.map(col => <td>
-                    {col.cells[index].alternativeRuleIds.map((alt, ai) => <>
+                    {col.cells[index].alternativeRuleIds.filter((alt) => alt != null).map((alt, ai) => <>
                         {ai > 0 && <>&nbsp;|&nbsp;</>}
-                        <Link href={`/${graph}/rule/${alt}`}>{col.cells[index].alternativeRuleSummaries[ai]}</Link>
+                        <Link href={`/${graph}/rule/${alt}`}>{ruleTitle(col.cells[index], ai)}</Link>
                     </>)}
                 </td>)}
             </tr>)}
