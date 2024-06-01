@@ -56,8 +56,7 @@
     },
     {
         "id": 16,
-        "text": "tǣċe",
-        "gloss": "teach.2SG.SUBJ"
+        "text": "tǣċe"
     },
     {
         "id": 17,
@@ -119,8 +118,7 @@
     },
     {
         "id": 28,
-        "text": "wille",
-        "gloss": "want.PRES.PL"
+        "text": "wille"
     },
     {
         "id": 29,
@@ -130,8 +128,7 @@
     },
     {
         "id": 30,
-        "text": "rēċe",
-        "gloss": "care for.PRES.PL"
+        "text": "rēċe"
     },
     {
         "id": 31,
@@ -143,7 +140,8 @@
         "id": 32,
         "text": "būton",
         "gloss": "except",
-        "fullGloss": "except, provided that, unless, without"
+        "fullGloss": "except, provided that, unless, without",
+        "notes": "+ Dat"
     },
     {
         "id": 33,
@@ -165,8 +163,7 @@
     },
     {
         "id": 36,
-        "text": "sie",
-        "gloss": "be.SUBJ.PRES.3SG"
+        "text": "sie"
     },
     {
         "id": 37,
@@ -199,8 +196,7 @@
     },
     {
         "id": 42,
-        "text": "beswungen",
-        "gloss": "beat.PP"
+        "text": "beswungen"
     },
     {
         "id": 43,
@@ -280,8 +276,7 @@
     },
     {
         "id": 55,
-        "text": "witon",
-        "gloss": "know.PRES.PL"
+        "text": "witon"
     },
     {
         "id": 56,
@@ -291,8 +286,7 @@
     },
     {
         "id": 57,
-        "text": "eart",
-        "gloss": "be.PRES.2SG"
+        "text": "eart"
     },
     {
         "id": 58,
@@ -327,8 +321,7 @@
     },
     {
         "id": 64,
-        "text": "tōġenȳdd",
-        "gloss": "force.PP"
+        "text": "tōġenȳdd"
     },
     {
         "id": 65,
@@ -464,8 +457,7 @@
     },
     {
         "id": 91,
-        "text": "hwilcum",
-        "gloss": "what kind.DAT.PL"
+        "text": "hwilcum"
     },
     {
         "id": 92,
@@ -480,7 +472,10 @@
         "id": 94,
         "text": "wīsdōm",
         "gloss": "wisdom",
-        "pos": "N"
+        "pos": "N",
+        "classes": [
+            "masc"
+        ]
     },
     {
         "id": 276,
@@ -544,8 +539,7 @@
     },
     {
         "id": 287,
-        "text": "heonengange",
-        "gloss": "going hence"
+        "text": "heonengange"
     },
     {
         "id": 288,
@@ -3251,6 +3245,7 @@
         "id": 2542,
         "text": "hwīt",
         "gloss": "white",
+        "pos": "ADJ",
         "sourceRefs": [
             {
                 "pubId": 5,
@@ -4164,6 +4159,8 @@
     {
         "id": 2781,
         "text": "dēman",
+        "gloss": "to judge",
+        "pos": "V",
         "sourceRefs": [
             {
                 "pubId": 5,
@@ -5786,6 +5783,7 @@
         "id": 3124,
         "text": "grēne",
         "gloss": "green",
+        "pos": "ADJ",
         "sourceRefs": [
             {
                 "pubId": 5,
@@ -6501,7 +6499,10 @@
         "id": 3221,
         "text": "līefan",
         "gloss": "believe",
-        "pos": "V"
+        "pos": "V",
+        "classes": [
+            "pret-d"
+        ]
     },
     {
         "id": 3222,
@@ -7781,5 +7782,186 @@
         "text": "dydrung",
         "gloss": "deceit",
         "pos": "N"
+    },
+    {
+        "id": 3536,
+        "text": "ġehicgenne"
+    },
+    {
+        "id": 3537,
+        "text": "ġehicgan",
+        "gloss": "to think",
+        "fullGloss": "to think, to consider",
+        "pos": "V"
+    },
+    {
+        "id": 3538,
+        "text": "heonengang",
+        "gloss": "going hence"
+    },
+    {
+        "id": 3541,
+        "text": "brūcan",
+        "gloss": "use",
+        "fullGloss": "use, enjoy",
+        "pos": "V"
+    },
+    {
+        "id": 3559,
+        "text": "bīdan",
+        "gloss": "wait",
+        "pos": "V",
+        "classes": [
+            "v-strong-1"
+        ]
+    },
+    {
+        "id": 3565,
+        "text": "dēmed"
+    },
+    {
+        "id": 3570,
+        "text": "þūsenthīwe"
+    },
+    {
+        "id": 3571,
+        "text": "þūsenthīw",
+        "gloss": "shifty",
+        "fullGloss": "shifty (literally thousand-hued)",
+        "pos": "ADJ"
+    },
+    {
+        "id": 3572,
+        "text": "wel",
+        "gloss": "well",
+        "pos": "ADV"
+    },
+    {
+        "id": 3573,
+        "text": "swǣsum"
+    },
+    {
+        "id": 3574,
+        "text": "swǣs",
+        "gloss": "sweet",
+        "pos": "ADJ"
+    },
+    {
+        "id": 3575,
+        "text": "underþēodde"
+    },
+    {
+        "id": 3576,
+        "text": "underþēodan",
+        "gloss": "to subject",
+        "pos": "V"
+    },
+    {
+        "id": 3577,
+        "text": "fācn",
+        "gloss": "deceit",
+        "pos": "N"
+    },
+    {
+        "id": 3578,
+        "text": "fācn"
+    },
+    {
+        "id": 3579,
+        "text": "wiþinnan",
+        "gloss": "within",
+        "pos": "ADV"
+    },
+    {
+        "id": 3580,
+        "text": "full",
+        "gloss": "full",
+        "pos": "ADJ"
+    },
+    {
+        "id": 3581,
+        "text": "stenċe"
+    },
+    {
+        "id": 3582,
+        "text": "stenċ",
+        "gloss": "stench",
+        "pos": "N",
+        "classes": [
+            "masc",
+            "a-stem"
+        ]
+    },
+    {
+        "id": 3583,
+        "text": "bilewite"
+    },
+    {
+        "id": 3584,
+        "text": "līċetunge"
+    },
+    {
+        "id": 3585,
+        "text": "līċetung",
+        "gloss": "deceit",
+        "fullGloss": "deceit, hypocrisy",
+        "pos": "N"
+    },
+    {
+        "id": 3586,
+        "text": "wīs",
+        "gloss": "wise",
+        "pos": "ADJ"
+    },
+    {
+        "id": 3587,
+        "text": "wīse"
+    },
+    {
+        "id": 3588,
+        "text": "būgen"
+    },
+    {
+        "id": 3589,
+        "text": "būgan",
+        "gloss": "to turn away from",
+        "pos": "V"
+    },
+    {
+        "id": 3590,
+        "text": "beswīċeþ"
+    },
+    {
+        "id": 3591,
+        "text": "beswīċan",
+        "gloss": "to betray",
+        "pos": "V"
+    },
+    {
+        "id": 3592,
+        "text": "selfne"
+    },
+    {
+        "id": 3593,
+        "text": "self",
+        "gloss": "self",
+        "pos": "ADJ"
+    },
+    {
+        "id": 3594,
+        "text": "byrgels",
+        "gloss": "tomb",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/5605"
+            }
+        ]
+    },
+    {
+        "id": 3595,
+        "text": "hū",
+        "gloss": "how",
+        "pos": "ADV"
     }
 ]

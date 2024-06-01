@@ -439,6 +439,12 @@
             {
                 "instructions": [
                     {
+                        "type": "ApplyRule",
+                        "args": [
+                            "3534"
+                        ]
+                    },
+                    {
                         "type": "Append",
                         "args": [
                             "'as'"
@@ -504,6 +510,12 @@
             },
             {
                 "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "3534"
+                        ]
+                    },
                     {
                         "type": "Append",
                         "args": [
@@ -664,6 +676,12 @@
             {
                 "instructions": [
                     {
+                        "type": "ApplyRule",
+                        "args": [
+                            "3534"
+                        ]
+                    },
+                    {
                         "type": "Append",
                         "args": [
                             "'a'"
@@ -700,6 +718,12 @@
             },
             {
                 "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "3534"
+                        ]
+                    },
                     {
                         "type": "Append",
                         "args": [
@@ -836,6 +860,12 @@
         "branches": [
             {
                 "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "3534"
+                        ]
+                    },
                     {
                         "type": "Append",
                         "args": [
@@ -988,7 +1018,7 @@
     },
     {
         "id": 920,
-        "name": "oe-adj-strong-m-nom-pl",
+        "name": "oe-adj-strong-nom-pl-m",
         "fromLang": "OE",
         "toLang": "OE",
         "branches": [
@@ -998,6 +1028,12 @@
                         "type": "Append",
                         "args": [
                             "'e'"
+                        ]
+                    },
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "2307"
                         ]
                     }
                 ],
@@ -1320,6 +1356,38 @@
                         }
                     ]
                 }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ApplySoundRule",
+                        "args": [
+                            "3561",
+                            "second to last vowel"
+                        ]
+                    },
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            ""
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "v-strong"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "an"
+                        }
+                    ]
+                }
             }
         ],
         "addedCategories": ".PST",
@@ -1336,13 +1404,7 @@
                     {
                         "type": "ApplyRule",
                         "args": [
-                            "1252"
-                        ]
-                    },
-                    {
-                        "type": "Append",
-                        "args": [
-                            "'e'"
+                            "1255"
                         ]
                     }
                 ],
@@ -1363,12 +1425,6 @@
             {
                 "instructions": [
                     {
-                        "type": "ApplyRule",
-                        "args": [
-                            "1252"
-                        ]
-                    },
-                    {
                         "type": "Append",
                         "args": [
                             "'est'"
@@ -1376,27 +1432,13 @@
                     }
                 ],
                 "condition": {
-                    "type": "otherwise"
+                    "type": "leaf",
+                    "cond": "ClassMatches",
+                    "characters": "v-weak"
                 }
-            }
-        ],
-        "addedCategories": ".PST.2SG",
-        "fromPOS": "V"
-    },
-    {
-        "id": 1255,
-        "name": "oe-past-3sg",
-        "fromLang": "OE",
-        "toLang": "OE",
-        "branches": [
+            },
             {
                 "instructions": [
-                    {
-                        "type": "ApplyRule",
-                        "args": [
-                            "1252"
-                        ]
-                    },
                     {
                         "type": "Append",
                         "args": [
@@ -1409,8 +1451,66 @@
                 }
             }
         ],
+        "addedCategories": ".PST.2SG",
+        "fromPOS": "V",
+        "preInstructions": [
+            {
+                "type": "ApplyRule",
+                "args": [
+                    "3566"
+                ]
+            }
+        ]
+    },
+    {
+        "id": 1255,
+        "name": "oe-past-3sg",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'e'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "ClassMatches",
+                    "characters": "v-weak"
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "NoChange",
+                        "args": []
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
         "addedCategories": ".PST.3SG",
-        "fromPOS": "V"
+        "fromPOS": "V",
+        "preInstructions": [
+            {
+                "type": "ApplyRule",
+                "args": [
+                    "3560"
+                ]
+            },
+            {
+                "type": "ApplyRule",
+                "args": [
+                    "1252"
+                ]
+            }
+        ]
     },
     {
         "id": 1256,
@@ -1423,7 +1523,7 @@
                     {
                         "type": "ApplyRule",
                         "args": [
-                            "1252"
+                            "3566"
                         ]
                     },
                     {
@@ -1452,7 +1552,7 @@
                     {
                         "type": "ApplyRule",
                         "args": [
-                            "1252"
+                            "3566"
                         ]
                     },
                     {
@@ -1481,7 +1581,7 @@
                     {
                         "type": "ApplyRule",
                         "args": [
-                            "1252"
+                            "3566"
                         ]
                     },
                     {
@@ -6415,6 +6515,12 @@
             {
                 "instructions": [
                     {
+                        "type": "ApplyRule",
+                        "args": [
+                            "3540"
+                        ]
+                    },
+                    {
                         "type": "ChangeEnding",
                         "args": [
                             "st"
@@ -6429,8 +6535,7 @@
             }
         ],
         "addedCategories": ".2SG",
-        "fromPOS": "V",
-        "notes": ""
+        "fromPOS": "V"
     },
     {
         "id": 3441,
@@ -6440,6 +6545,12 @@
         "branches": [
             {
                 "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "3540"
+                        ]
+                    },
                     {
                         "type": "ChangeEnding",
                         "args": [
@@ -6455,8 +6566,7 @@
             }
         ],
         "addedCategories": ".3SG",
-        "fromPOS": "V",
-        "notes": ""
+        "fromPOS": "V"
     },
     {
         "id": 3442,
@@ -6603,10 +6713,25 @@
     },
     {
         "id": 3465,
-        "name": "oe-adj-strong-m-acc",
+        "name": "oe-adj-strong-acc-sg-m",
         "fromLang": "OE",
         "toLang": "OE",
         "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "ne"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "e"
+                }
+            },
             {
                 "instructions": [
                     {
@@ -6622,12 +6747,11 @@
             }
         ],
         "addedCategories": ".M.ACC",
-        "fromPOS": "ADJ",
-        "notes": ""
+        "fromPOS": "ADJ"
     },
     {
         "id": 3466,
-        "name": "oe-adj-strong-m-gen",
+        "name": "oe-adj-strong-gen-sg-m",
         "fromLang": "OE",
         "toLang": "OE",
         "branches": [
@@ -6637,6 +6761,12 @@
                         "type": "Append",
                         "args": [
                             "'es'"
+                        ]
+                    },
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "2307"
                         ]
                     },
                     {
@@ -6652,21 +6782,32 @@
             }
         ],
         "addedCategories": ".M.GEN",
-        "fromPOS": "ADJ",
-        "notes": ""
+        "fromPOS": "ADJ"
     },
     {
         "id": 3467,
-        "name": "oe-adj-strong-m-dat",
+        "name": "oe-adj-strong-dat-sg-m",
         "fromLang": "OE",
         "toLang": "OE",
         "branches": [
             {
                 "instructions": [
                     {
+                        "type": "ApplyRule",
+                        "args": [
+                            "3534"
+                        ]
+                    },
+                    {
                         "type": "Append",
                         "args": [
                             "'um'"
+                        ]
+                    },
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "2307"
                         ]
                     },
                     {
@@ -6682,42 +6823,11 @@
             }
         ],
         "addedCategories": ".M.DAT",
-        "fromPOS": "ADJ",
-        "notes": ""
-    },
-    {
-        "id": 3468,
-        "name": "oe-adj-strong-m-inst",
-        "fromLang": "OE",
-        "toLang": "OE",
-        "branches": [
-            {
-                "instructions": [
-                    {
-                        "type": "Append",
-                        "args": [
-                            "'e'"
-                        ]
-                    },
-                    {
-                        "type": "ApplyRule",
-                        "args": [
-                            "1188"
-                        ]
-                    }
-                ],
-                "condition": {
-                    "type": "otherwise"
-                }
-            }
-        ],
-        "addedCategories": ".M.INST",
-        "fromPOS": "ADJ",
-        "notes": ""
+        "fromPOS": "ADJ"
     },
     {
         "id": 3470,
-        "name": "oe-adj-strong-m-acc-pl",
+        "name": "oe-adj-strong-acc-pl-m",
         "fromLang": "OE",
         "toLang": "OE",
         "branches": [
@@ -6736,15 +6846,29 @@
             }
         ],
         "addedCategories": ".M.ACC.PL",
-        "fromPOS": "ADJ",
-        "notes": ""
+        "fromPOS": "ADJ"
     },
     {
         "id": 3471,
-        "name": "oe-adj-strong-m-gen-pl",
+        "name": "oe-adj-strong-gen-pl-m",
         "fromLang": "OE",
         "toLang": "OE",
         "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "ra"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "e"
+                }
+            },
             {
                 "instructions": [
                     {
@@ -6759,12 +6883,11 @@
                 }
             }
         ],
-        "addedCategories": ".M.GEN.PL",
-        "notes": ""
+        "addedCategories": ".M.GEN.PL"
     },
     {
         "id": 3472,
-        "name": "oe-adj-strong-m-dat-pl",
+        "name": "oe-adj-strong-dat-pl-m",
         "fromLang": "OE",
         "toLang": "OE",
         "branches": [
@@ -6783,12 +6906,11 @@
             }
         ],
         "addedCategories": ".M.DAT.PL",
-        "fromPOS": "ADJ",
-        "notes": ""
+        "fromPOS": "ADJ"
     },
     {
         "id": 3473,
-        "name": "oe-adj-strong-f-nom",
+        "name": "oe-adj-strong-nom-sg-f",
         "fromLang": "OE",
         "toLang": "OE",
         "branches": [
@@ -6831,10 +6953,25 @@
     },
     {
         "id": 3475,
-        "name": "oe-adj-strong-f-nom-pl",
+        "name": "oe-adj-strong-nom-pl-f",
         "fromLang": "OE",
         "toLang": "OE",
         "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "a"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "e"
+                }
+            },
             {
                 "instructions": [
                     {
@@ -6848,6 +6985,12 @@
                         "args": [
                             "1188"
                         ]
+                    },
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "2307"
+                        ]
                     }
                 ],
                 "condition": {
@@ -6856,12 +6999,11 @@
             }
         ],
         "addedCategories": ".F.NOM.PL",
-        "fromPOS": "ADJ",
-        "notes": ""
+        "fromPOS": "ADJ"
     },
     {
         "id": 3476,
-        "name": "oe-adj-strong-n-nom",
+        "name": "oe-adj-strong-nom-sg-n",
         "fromLang": "OE",
         "toLang": "OE",
         "branches": [
@@ -6878,15 +7020,27 @@
             }
         ],
         "addedCategories": ".N.NOM",
-        "fromPOS": "ADJ",
-        "notes": ""
+        "fromPOS": "ADJ"
     },
     {
         "id": 3477,
-        "name": "oe-adj-strong-n-nom-pl",
+        "name": "oe-adj-strong-nom-pl-n",
         "fromLang": "OE",
         "toLang": "OE",
         "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "NoChange",
+                        "args": []
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "e"
+                }
+            },
             {
                 "instructions": [
                     {
@@ -6908,7 +7062,1696 @@
             }
         ],
         "addedCategories": ".N.NOM.PL",
-        "fromPOS": "ADJ",
+        "fromPOS": "ADJ"
+    },
+    {
+        "id": 3491,
+        "name": "oe-adj-weak-nom-sg-m",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "a"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "e"
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'a'"
+                        ]
+                    },
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1188"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".NOM.SG.M",
+        "fromPOS": "ADJ"
+    },
+    {
+        "id": 3492,
+        "name": "oe-adj-weak-nom-pl-m",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [],
+        "addedCategories": ".NOM.PL.M",
+        "fromPOS": "ADJ"
+    },
+    {
+        "id": 3493,
+        "name": "oe-adj-weak-nom-sg-f",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [],
+        "addedCategories": ".NOM.SG.F",
+        "fromPOS": "ADJ"
+    },
+    {
+        "id": 3494,
+        "name": "oe-adj-weak-nom-pl-f",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [],
+        "addedCategories": ".NOM.PL.F",
+        "fromPOS": "ADJ"
+    },
+    {
+        "id": 3495,
+        "name": "oe-adj-weak-nom-sg-n",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [],
+        "addedCategories": ".NOM.SG.N",
+        "fromPOS": "ADJ"
+    },
+    {
+        "id": 3496,
+        "name": "oe-adj-weak-nom-pl-n",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [],
+        "addedCategories": ".NOM.PL.N",
+        "fromPOS": "ADJ"
+    },
+    {
+        "id": 3497,
+        "name": "oe-adj-weak-acc-sg-m",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "3491"
+                        ]
+                    },
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'n'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".ACC.SG.M",
+        "fromPOS": "ADJ"
+    },
+    {
+        "id": 3498,
+        "name": "oe-adj-weak-acc-pl-m",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [],
+        "addedCategories": ".ACC.PL.M",
+        "fromPOS": "ADJ"
+    },
+    {
+        "id": 3499,
+        "name": "oe-adj-weak-acc-sg-f",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [],
+        "addedCategories": ".ACC.SG.F",
+        "fromPOS": "ADJ"
+    },
+    {
+        "id": 3500,
+        "name": "oe-adj-weak-acc-pl-f",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [],
+        "addedCategories": ".ACC.PL.F",
+        "fromPOS": "ADJ"
+    },
+    {
+        "id": 3501,
+        "name": "oe-adj-weak-acc-sg-n",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [],
+        "addedCategories": ".ACC.SG.N",
+        "fromPOS": "ADJ"
+    },
+    {
+        "id": 3502,
+        "name": "oe-adj-weak-acc-pl-n",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [],
+        "addedCategories": ".ACC.PL.N",
+        "fromPOS": "ADJ"
+    },
+    {
+        "id": 3503,
+        "name": "oe-adj-weak-gen-sg-m",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "3497"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".GEN.SG.M",
+        "fromPOS": "ADJ"
+    },
+    {
+        "id": 3504,
+        "name": "oe-adj-weak-gen-pl-m",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [],
+        "addedCategories": ".GEN.PL.M",
+        "fromPOS": "ADJ"
+    },
+    {
+        "id": 3505,
+        "name": "oe-adj-weak-gen-sg-f",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [],
+        "addedCategories": ".GEN.SG.F",
+        "fromPOS": "ADJ"
+    },
+    {
+        "id": 3506,
+        "name": "oe-adj-weak-gen-pl-f",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [],
+        "addedCategories": ".GEN.PL.F",
+        "fromPOS": "ADJ"
+    },
+    {
+        "id": 3507,
+        "name": "oe-adj-weak-gen-sg-n",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [],
+        "addedCategories": ".GEN.SG.N",
+        "fromPOS": "ADJ"
+    },
+    {
+        "id": 3508,
+        "name": "oe-adj-weak-gen-pl-n",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [],
+        "addedCategories": ".GEN.PL.N",
+        "fromPOS": "ADJ"
+    },
+    {
+        "id": 3509,
+        "name": "oe-adj-weak-dat-sg-m",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "3497"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".DAT.SG.M",
+        "fromPOS": "ADJ"
+    },
+    {
+        "id": 3510,
+        "name": "oe-adj-weak-dat-pl-m",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [],
+        "addedCategories": ".DAT.PL.M",
+        "fromPOS": "ADJ"
+    },
+    {
+        "id": 3511,
+        "name": "oe-adj-weak-dat-sg-f",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [],
+        "addedCategories": ".DAT.SG.F",
+        "fromPOS": "ADJ"
+    },
+    {
+        "id": 3512,
+        "name": "oe-adj-weak-dat-pl-f",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [],
+        "addedCategories": ".DAT.PL.F",
+        "fromPOS": "ADJ"
+    },
+    {
+        "id": 3513,
+        "name": "oe-adj-weak-dat-sg-n",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [],
+        "addedCategories": ".DAT.SG.N",
+        "fromPOS": "ADJ"
+    },
+    {
+        "id": 3514,
+        "name": "oe-adj-weak-dat-pl-n",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [],
+        "addedCategories": ".DAT.PL.N",
+        "fromPOS": "ADJ"
+    },
+    {
+        "id": 3516,
+        "name": "oe-adj-strong-acc-sg-f",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "NoChange",
+                        "args": []
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "e"
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'e'"
+                        ]
+                    },
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1188"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".ACC.SG.F",
+        "fromPOS": "ADJ"
+    },
+    {
+        "id": 3517,
+        "name": "oe-adj-strong-acc-pl-f",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "3475"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".ACC.PL.F",
+        "fromPOS": "ADJ"
+    },
+    {
+        "id": 3518,
+        "name": "oe-adj-strong-acc-sg-n",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "3476"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".ACC.SG.N",
+        "fromPOS": "ADJ"
+    },
+    {
+        "id": 3519,
+        "name": "oe-adj-strong-acc-pl-n",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "3477"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".ACC.PL.N",
+        "fromPOS": "ADJ"
+    },
+    {
+        "id": 3520,
+        "name": "oe-adj-strong-gen-sg-f",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "re"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "e"
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'re'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".GEN.SG.F",
+        "fromPOS": "ADJ"
+    },
+    {
+        "id": 3521,
+        "name": "oe-adj-strong-gen-pl-f",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "3471"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".GEN.PL.F",
+        "fromPOS": "ADJ"
+    },
+    {
+        "id": 3522,
+        "name": "oe-adj-strong-gen-sg-n",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "3466"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".GEN.SG.N",
+        "fromPOS": "ADJ"
+    },
+    {
+        "id": 3523,
+        "name": "oe-adj-strong-gen-pl-n",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "3471"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".GEN.PL.N",
+        "fromPOS": "ADJ"
+    },
+    {
+        "id": 3524,
+        "name": "oe-adj-strong-dat-sg-f",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "re"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "e"
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'re'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".DAT.SG.F",
+        "fromPOS": "ADJ"
+    },
+    {
+        "id": 3525,
+        "name": "oe-adj-strong-dat-pl-f",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "3467"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".DAT.PL.F",
+        "fromPOS": "ADJ"
+    },
+    {
+        "id": 3526,
+        "name": "oe-adj-strong-dat-sg-n",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "3467"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".DAT.SG.N",
+        "fromPOS": "ADJ"
+    },
+    {
+        "id": 3527,
+        "name": "oe-adj-strong-dat-pl-n",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "3472"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".DAT.PL.N",
+        "fromPOS": "ADJ"
+    },
+    {
+        "id": 3528,
+        "name": "oe-adj-strong-inst-sg-m",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'e'"
+                        ]
+                    },
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "2307"
+                        ]
+                    },
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1188"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".INST.SG.M",
+        "fromPOS": "ADJ"
+    },
+    {
+        "id": 3529,
+        "name": "oe-adj-strong-inst-pl-m",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "3472"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".INST.PL.M",
+        "fromPOS": "ADJ"
+    },
+    {
+        "id": 3530,
+        "name": "oe-adj-strong-instr-sg-f",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "3524"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".INSTR.SG.F",
+        "fromPOS": "ADJ"
+    },
+    {
+        "id": 3531,
+        "name": "oe-adj-strong-instr-pl-f",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "3525"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".INSTR.PL.F",
+        "fromPOS": "ADJ"
+    },
+    {
+        "id": 3532,
+        "name": "oe-adj-strong-instr-sg-n",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "3528"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".INST.SG.N",
+        "fromPOS": "ADJ"
+    },
+    {
+        "id": 3533,
+        "name": "oe-adj-strong-instr-pl-n",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "3527"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".INSTR.PL.N",
+        "fromPOS": "ADJ"
+    },
+    {
+        "id": 3534,
+        "name": "oe-depalatalize-last",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "g"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "ġ"
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "NoChange",
+                        "args": []
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ]
+    },
+    {
+        "id": 3535,
+        "name": "oe-inflected-infinitive",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "enne"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "an"
+                }
+            }
+        ],
+        "addedCategories": ".INF",
+        "fromPOS": "V",
         "notes": ""
+    },
+    {
+        "id": 3539,
+        "name": "oe-front-mutate-vowel",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "i"
+                        ]
+                    },
+                    {
+                        "type": "ChangeNextSound",
+                        "args": [
+                            "e"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "e",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": 1,
+                            "parameter": "a"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "ī"
+                        ]
+                    },
+                    {
+                        "type": "ChangeNextSound",
+                        "args": [
+                            "e"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "ē",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": 1,
+                            "parameter": "a"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeNextSound",
+                        "args": [
+                            "e"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "relPhoneme",
+                                    "parameter": "i",
+                                    "relative": false
+                                },
+                                {
+                                    "type": "relPhoneme",
+                                    "parameter": "ī",
+                                    "relative": false
+                                }
+                            ]
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": 1,
+                            "parameter": "o"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "y"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "relPhoneme",
+                    "parameter": "u",
+                    "relative": false
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "ȳ"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "relPhoneme",
+                    "parameter": "ū",
+                    "relative": false
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "e"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "relPhoneme",
+                    "parameter": "o",
+                    "relative": false
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "ē"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "relPhoneme",
+                    "parameter": "ō",
+                    "relative": false
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "æ"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "relPhoneme",
+                    "parameter": "a",
+                    "relative": false
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "ǣ"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "relPhoneme",
+                    "parameter": "ā",
+                    "relative": false
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "e"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "relPhoneme",
+                    "parameter": "æ",
+                    "relative": false
+                }
+            }
+        ],
+        "notes": ""
+    },
+    {
+        "id": 3540,
+        "name": "oe-front-mutation",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplySoundRule",
+                        "args": [
+                            "3539",
+                            "first vowel"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "notes": ""
+    },
+    {
+        "id": 3542,
+        "name": "oe-subj-1sg",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "e"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "an"
+                }
+            }
+        ],
+        "addedCategories": ".SUBJ.1SG",
+        "fromPOS": "V"
+    },
+    {
+        "id": 3543,
+        "name": "oe-subj-1pl",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "en"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "an"
+                }
+            }
+        ],
+        "addedCategories": ".SUBJ.1PL",
+        "fromPOS": "V"
+    },
+    {
+        "id": 3544,
+        "name": "oe-subj-2sg",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "3542"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".SUBJ.2SG",
+        "fromPOS": "V"
+    },
+    {
+        "id": 3545,
+        "name": "oe-subj-2pl",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "3543"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".SUBJ.2PL",
+        "fromPOS": "V"
+    },
+    {
+        "id": 3546,
+        "name": "oe-subj-3sg",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "3542"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".SUBJ.3SG",
+        "fromPOS": "V"
+    },
+    {
+        "id": 3547,
+        "name": "oe-subj-3pl",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "3543"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".SUBJ.3PL",
+        "fromPOS": "V"
+    },
+    {
+        "id": 3553,
+        "name": "oe-subj-past-1sg",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "3542"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".SUBJ.PST.1SG",
+        "fromPOS": "V"
+    },
+    {
+        "id": 3554,
+        "name": "oe-subj-past-1pl",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "3543"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".SUBJ.PST.1PL",
+        "fromPOS": "V"
+    },
+    {
+        "id": 3555,
+        "name": "oe-subj-past-2sg",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "3544"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".SUBJ.PST.2SG",
+        "fromPOS": "V"
+    },
+    {
+        "id": 3556,
+        "name": "oe-subj-past-2pl",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "3545"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".SUBJ.PST.2PL",
+        "fromPOS": "V"
+    },
+    {
+        "id": 3557,
+        "name": "oe-subj-past-3sg",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "3546"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".SUBJ.PST.3SG",
+        "fromPOS": "V"
+    },
+    {
+        "id": 3558,
+        "name": "oe-subj-past-3pl",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "3547"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".SUBJ.PST.3PL",
+        "fromPOS": "V"
+    },
+    {
+        "id": 3560,
+        "name": "oe-verb-class",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyClass",
+                        "args": [
+                            "v-strong"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "or",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "v-strong-1"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "v-strong-2"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyClass",
+                        "args": [
+                            "v-weak"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ]
+    },
+    {
+        "id": 3561,
+        "name": "oe-past-singular-umlaut",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "ā"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "ī",
+                            "relative": false
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "v-strong-1"
+                        }
+                    ]
+                }
+            }
+        ]
+    },
+    {
+        "id": 3562,
+        "name": "oe-active-participle",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "ende"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "an"
+                }
+            }
+        ],
+        "addedCategories": ".PART",
+        "fromPOS": "V",
+        "notes": ""
+    },
+    {
+        "id": 3563,
+        "name": "oe-passive-participle-umlaut",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "i"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "v-strong-1"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "ī",
+                            "relative": false
+                        }
+                    ]
+                }
+            }
+        ]
+    },
+    {
+        "id": 3564,
+        "name": "oe-passive-participle",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplySoundRule",
+                        "args": [
+                            "3563",
+                            "second to last vowel"
+                        ]
+                    },
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "en"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "an"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "v-strong"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "ed"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "an"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "v-weak"
+                        }
+                    ]
+                }
+            }
+        ],
+        "addedCategories": ".PPART",
+        "fromPOS": "V",
+        "preInstructions": [
+            {
+                "type": "ApplyRule",
+                "args": [
+                    "3560"
+                ]
+            }
+        ]
+    },
+    {
+        "id": 3566,
+        "name": "oe-plural-past-stem",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1252"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "ClassMatches",
+                    "characters": "v-weak"
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "3567"
+                        ]
+                    },
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            ""
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "an"
+                }
+            }
+        ]
+    },
+    {
+        "id": 3567,
+        "name": "oe-past-plural-umlaut",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "i"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "v-strong-1"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "ī",
+                            "relative": false
+                        }
+                    ]
+                }
+            }
+        ],
+        "notes": ""
+    },
+    {
+        "id": 3568,
+        "name": "oe-1pl-before-pron",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "e"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "an"
+                }
+            }
+        ],
+        "addedCategories": ".1PL",
+        "fromPOS": "V"
+    },
+    {
+        "id": 3569,
+        "name": "oe-2pl-before-pron",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "e"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "an"
+                }
+            }
+        ],
+        "addedCategories": ".2PL",
+        "fromPOS": "V",
+        "notes": "Used when the verb is immediately followed by 2nd person plural pronoun."
     }
 ]

@@ -250,21 +250,13 @@
         {
             "id": 1777,
             "graphemes": [
-                "þ"
+                "þ",
+                "ð"
             ],
             "classes": [
                 "voiceless",
                 "dental",
                 "fricative",
-                "consonant"
-            ]
-        },
-        {
-            "id": 1778,
-            "graphemes": [
-                "ð"
-            ],
-            "classes": [
                 "consonant"
             ]
         },
@@ -647,6 +639,42 @@
                     "abbreviation": "3"
                 }
             ]
+        },
+        {
+            "name": "Mood",
+            "pos": [
+                "V"
+            ],
+            "values": [
+                {
+                    "name": "Indicative",
+                    "abbreviation": "IND"
+                },
+                {
+                    "name": "Subjunctive",
+                    "abbreviation": "SUBJ"
+                }
+            ]
+        },
+        {
+            "name": "Non-finite verb form",
+            "pos": [
+                "V"
+            ],
+            "values": [
+                {
+                    "name": "Inflected infinitive",
+                    "abbreviation": "INF"
+                },
+                {
+                    "name": "Active participle",
+                    "abbreviation": "PART"
+                },
+                {
+                    "name": "Passive participle",
+                    "abbreviation": "PPART"
+                }
+            ]
         }
     ],
     "wordClasses": [
@@ -691,6 +719,22 @@
             ]
         },
         {
+            "name": "Verb type",
+            "pos": [
+                "V"
+            ],
+            "values": [
+                {
+                    "name": "strong",
+                    "abbreviation": "v-strong"
+                },
+                {
+                    "name": "weak",
+                    "abbreviation": "v-weak"
+                }
+            ]
+        },
+        {
             "name": "Weak preterite suffix",
             "pos": [
                 "V"
@@ -711,6 +755,22 @@
                 {
                     "name": "-od-",
                     "abbreviation": "pret-od"
+                }
+            ]
+        },
+        {
+            "name": "Strong verb class",
+            "pos": [
+                "V"
+            ],
+            "values": [
+                {
+                    "name": "first",
+                    "abbreviation": "v-strong-1"
+                },
+                {
+                    "name": "second",
+                    "abbreviation": "v-strong-2"
                 }
             ]
         }

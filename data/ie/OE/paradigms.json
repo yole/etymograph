@@ -98,12 +98,14 @@
                 "cells": [
                     {
                         "ruleAlternatives": [
-                            3442
+                            3442,
+                            3568
                         ]
                     },
                     {
                         "ruleAlternatives": [
-                            3443
+                            3443,
+                            3569
                         ]
                     },
                     {
@@ -173,14 +175,179 @@
         ]
     },
     {
-        "id": 20,
+        "id": 21,
+        "name": "Adjective Weak",
+        "rows": [
+            "Nom",
+            "Acc",
+            "Gen",
+            "Dat"
+        ],
+        "columns": [
+            {
+                "title": "Sg M",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            3491
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            3497
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            3503
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            3509
+                        ]
+                    }
+                ]
+            },
+            {
+                "title": "Pl M",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            3492
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            3498
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            3504
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            3510
+                        ]
+                    }
+                ]
+            },
+            {
+                "title": "Sg F",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            3493
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            3499
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            3505
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            3511
+                        ]
+                    }
+                ]
+            },
+            {
+                "title": "Pl F",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            3494
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            3500
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            3506
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            3512
+                        ]
+                    }
+                ]
+            },
+            {
+                "title": "Sg N",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            3495
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            3501
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            3507
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            3513
+                        ]
+                    }
+                ]
+            },
+            {
+                "title": "Pl N",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            3496
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            3502
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            3508
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            3514
+                        ]
+                    }
+                ]
+            }
+        ],
+        "posList": [
+            "ADJ"
+        ]
+    },
+    {
+        "id": 22,
         "name": "Adjective Strong",
         "rows": [
             "Nom",
             "Acc",
             "Gen",
             "Dat",
-            "Inst"
+            "Instr"
         ],
         "columns": [
             {
@@ -208,7 +375,7 @@
                     },
                     {
                         "ruleAlternatives": [
-                            3468
+                            3528
                         ]
                     }
                 ]
@@ -235,6 +402,11 @@
                         "ruleAlternatives": [
                             3472
                         ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            3529
+                        ]
                     }
                 ]
             },
@@ -244,6 +416,26 @@
                     {
                         "ruleAlternatives": [
                             3473
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            3516
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            3520
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            3524
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            3530
                         ]
                     }
                 ]
@@ -255,6 +447,26 @@
                         "ruleAlternatives": [
                             3475
                         ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            3517
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            3521
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            3525
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            3531
+                        ]
                     }
                 ]
             },
@@ -264,6 +476,26 @@
                     {
                         "ruleAlternatives": [
                             3476
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            3518
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            3522
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            3526
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            3532
                         ]
                     }
                 ]
@@ -275,12 +507,174 @@
                         "ruleAlternatives": [
                             3477
                         ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            3519
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            3523
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            3527
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            3533
+                        ]
                     }
                 ]
             }
         ],
         "posList": [
             "ADJ"
+        ]
+    },
+    {
+        "id": 23,
+        "name": "Verb Subjunctive",
+        "rows": [
+            "1",
+            "2",
+            "3"
+        ],
+        "columns": [
+            {
+                "title": "Sg",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            3542
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            3544
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            3546
+                        ]
+                    }
+                ]
+            },
+            {
+                "title": "Pl",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            3543
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            3545
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            3547
+                        ]
+                    }
+                ]
+            }
+        ],
+        "posList": [
+            "V"
+        ]
+    },
+    {
+        "id": 25,
+        "name": "Verb Subjunctive Past",
+        "rows": [
+            "1",
+            "2",
+            "3"
+        ],
+        "columns": [
+            {
+                "title": "Sg",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            3553
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            3555
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            3557
+                        ]
+                    }
+                ]
+            },
+            {
+                "title": "Pl",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            3554
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            3556
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            3558
+                        ]
+                    }
+                ]
+            }
+        ],
+        "posList": [
+            "V"
+        ]
+    },
+    {
+        "id": 28,
+        "name": "Verb Non-finite Forms",
+        "rows": [
+            "Inflected infinitive",
+            "Active participle",
+            "Passive participle"
+        ],
+        "columns": [
+            {
+                "title": "Form",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            3535
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            3562
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            3564
+                        ]
+                    }
+                ]
+            }
+        ],
+        "posList": [
+            "V"
         ]
     }
 ]
