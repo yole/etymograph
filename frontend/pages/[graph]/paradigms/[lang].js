@@ -28,7 +28,7 @@ export default function ParadigmList(params) {
             {paradigmList.paradigms.map(p => <li key={p.id}><Link href={`/${graph}/paradigm/${p.id}`}>{p.name}</Link></li>)}
         </ul>
         {allowEdit() && <>
-            <button onClick={() => router.push(`/${graph}/paradigms/${lang}/new`)}>Add paradigm</button>{' '}
+            <button onClick={() => router.push(`/${graph}/paradigms/${lang}/new`)}>Add Paradigm</button>{' '}
 
             <EtymographFormView editButtonTitle="Generate">
                 <EtymographForm

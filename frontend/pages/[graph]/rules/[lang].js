@@ -44,7 +44,7 @@ export default function RuleList(params) {
                     </tr>)}
                 </tbody></table>
                 {allowEdit() && g.sequenceId !== null &&
-                    <button onClick={() => setSequenceEditId(g.sequenceId)}>Edit sequence</button>
+                    <button onClick={() => setSequenceEditId(g.sequenceId)}>Edit Sequence</button>
                 }
             </>}
             {g.sequenceId !== null && sequenceEditId === g.sequenceId && <>
@@ -62,9 +62,9 @@ export default function RuleList(params) {
             </>}
         </>)}
         {allowEdit() && <p>
-            <button onClick={() => router.push(`/${graph}/rules/${router.query.lang}/new`)}>Add rule</button>
+            <button onClick={() => router.push(`/${graph}/rules/${router.query.lang}/new`)}>Add Rule</button>
             {' '}
-            <button onClick={() => router.push(`/${graph}/rules/sequence/new`)}>Add rule sequence</button>
+            <button onClick={() => router.push(`/${graph}/rules/sequence/new`)}>Add Rule Sequence</button>
         </p>}
     </>
 }

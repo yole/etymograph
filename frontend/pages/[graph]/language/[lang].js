@@ -82,7 +82,7 @@ export default function LanguageIndex(props) {
         </>)}
         {allowEdit() && <>
             <p/>
-            <button onClick={() => router.push(`/${graph}/phonemes/${langId}/new`)}>Add phoneme</button>
+            <button onClick={() => router.push(`/${graph}/phonemes/${langId}/new`)}>Add Phoneme</button>
             {lang.phonemes.length === 0 &&<>
                 {' '}
                 <button className="inlineButton" onClick={() => setShowCopyPhonemesForm(!showCopyPhonemesForm)}>Copy phonemes</button>

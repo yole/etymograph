@@ -258,7 +258,7 @@ export default function Rule(params) {
             <button onClick={() => {
                 setShowExampleForm(true)
                 setFocusTarget("exampleText")
-            }}>Add example</button>
+            }}>Add Example</button>
         }
         {showExampleForm &&
             <EtymographForm
