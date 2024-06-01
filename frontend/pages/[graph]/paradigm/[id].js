@@ -50,7 +50,7 @@ export default function Paradigm(params) {
                      title={paradigm.name}/>
         {!editMode && <>
             <p>POS: {paradigm.pos.join(", ")}</p>
-            <table>
+            <table className="tableWithBorders">
             <thead><tr>
                 <td/>
                 {paradigm.columns.map(c => <td>{c.title}</td>)}
