@@ -36,14 +36,16 @@ export async function getStaticPaths() {
 function ExampleList(params) {
     const graph = useContext(GraphContext)
     const rule = params.rule
+    const haveSteps = params.examples.some(ex => ex.allRules.length > 1)
+    const haveExpected = params.examples.some(ex => ex.expectedWord !== null && ex.expectedWord !== ex.fromWord)
     return <table className="tableWithBorders">
         <thead>
         <tr>
             <th>From</th>
             <th>To</th>
             <th>Gloss</th>
-            <th>Steps</th>
-            <th>Expected</th>
+            {haveSteps && <th>Steps</th>}
+            {haveExpected && <th>Expected</th>}
         </tr>
         </thead>
         <tbody>
@@ -57,7 +59,7 @@ function ExampleList(params) {
             <td>
                 <WordGloss gloss={ex.toWord.gloss}/>
             </td>
-            <td>
+            {haveSteps && <td>
                 {ex.allRules.length > 1 && ex.ruleResults.length === 0 && <>
                     {ex.allRules.map((rl, i) => <>
                         {i > 0 && ", "}
@@ -73,10 +75,10 @@ function ExampleList(params) {
                         {rl.toRuleId !== rule.id && ex.ruleResults[i]}
                     </>)}
                 </>}
-            </td>
-            <td>
+            </td>}
+            {haveExpected && <td>
                 {ex.expectedWord !== null && ex.expectedWord !== ex.fromWord && ex.expectedWord}
-            </td>
+            </td>}
         </tr>)}
         </tbody>
     </table>
