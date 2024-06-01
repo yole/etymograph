@@ -1,10 +1,13 @@
-import {useContext} from "react";
+import {useContext, useState} from "react";
 import {GlobalStateContext} from "@/components/Contexts";
 import {useFormContext} from "react-hook-form";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faKeyboard } from '@fortawesome/free-solid-svg-icons'
 
 export default function InputAssist(props) {
     const globalState = useContext(GlobalStateContext)
     const {setValue} = useFormContext()
+    const [inputAssistVisible, setInputAssistVisible] = useState(false)
 
     if (!globalState.inputAssists) return <></>
 
@@ -21,7 +24,8 @@ export default function InputAssist(props) {
     }
 
     return <span className="inputAssist">
-        {collectInputAssists(globalState.inputAssists).map(assist =>
+        <span className="iconWithMarginRight"><FontAwesomeIcon icon={faKeyboard} onClick={() => setInputAssistVisible(!inputAssistVisible)}/></span>
+        {inputAssistVisible && collectInputAssists(globalState.inputAssists).map(assist =>
             <button type="button" className="inlineButton inputAssistButton"
                     onClick={() => handleInputAssist(props.id, assist) }
             >{assist}</button>

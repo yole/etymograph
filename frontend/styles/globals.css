@@ -54,6 +54,11 @@ code {
   cursor: pointer;
 }
 
+.iconWithMarginRight {
+  margin-right: 5px;
+  cursor: pointer;
+}
+
 .stressed {
   text-decoration: underline;
   font-weight: bold;
