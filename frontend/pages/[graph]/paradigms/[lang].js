@@ -5,6 +5,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import EtymographFormView from "@/components/EtymographFormView";
 import EtymographForm from "@/components/EtymographForm";
 import FormRow from "@/components/FormRow";
+import {Form} from "react-hook-form";
 
 export const config = {
     unstable_runtimeJS: true
@@ -38,6 +39,7 @@ export default function ParadigmList(params) {
                     <table><tbody>
                         <FormRow label="Name" id="name"/>
                         <FormRow label="POS" id="pos"/>
+                        <FormRow label="Added Categories" id="addedCategories"/>
                         <FormRow label="Prefix" id="prefix"/>
                         <FormRow label="Rows" id="rows"/>
                         <FormRow label="Columns" id="columns"/>

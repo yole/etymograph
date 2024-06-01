@@ -112,6 +112,7 @@ class ParadigmController {
         val name: String,
         val lang: String,
         val pos: String,
+        val addedCategories: String,
         val prefix: String,
         val rows: String,
         val columns: String
@@ -134,8 +135,10 @@ class ParadigmController {
 
         for ((rowIndex, rowTitle) in rowList.withIndex()) {
             for ((colIndex, columnTitle) in colList.withIndex()) {
-                val ruleName = "${params.prefix}-${rowTitle.lowercase()}-${columnTitle.lowercase().replace(" ", "-")}"
-                val addedCategories = "." + rowTitle.uppercase() + "." + columnTitle.uppercase().replace(" ", ".")
+                val ruleNameSeparator = if (rowTitle.all { it.isDigit() }) "" else "-"
+                val categorySeparator = if (rowTitle.all { it.isDigit() }) "" else "."
+                val ruleName = "${params.prefix}-${rowTitle.lowercase()}$ruleNameSeparator${columnTitle.lowercase().replace(" ", "-")}"
+                val addedCategories = params.addedCategories + "." + rowTitle.uppercase() + categorySeparator + columnTitle.uppercase().replace(" ", ".")
                 val rule = repo.ruleByName(ruleName)
                     ?: repo.addRule(ruleName, language, language, RuleLogic.empty(), addedCategories, null,
                         params.pos)
