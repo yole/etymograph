@@ -167,8 +167,8 @@ export default function Rule(params) {
             {rule.fromPOS && rule.fromPOS === rule.toPOS && <p>POS: {rule.fromPOS}</p>}
             {rule.fromPOS && rule.fromPOS !== rule.toPOS && <p>From POS: {rule.fromPOS}</p>}
             {rule.toPOS && rule.fromPOS !== rule.toPOS && <p>To POS: {rule.toPOS}</p>}
-            {rule.addedCategories && <p>Added category values: {rule.addedCategories} ({rule.addedCategoryDisplayNames})</p>}
-            {rule.replacedCategories && <p>Replaced category values: {rule.replacedCategories}</p>}
+            {rule.addedCategories && <p>Added category values: <span className="glossAbbreviation">{rule.addedCategories.toLowerCase()}</span> ({rule.addedCategoryDisplayNames})</p>}
+            {rule.replacedCategories && <p>Replaced category values: <span className="glossAbbreviation">{rule.replacedCategories.toLowerCase()}</span></p>}
             <SourceRefs source={rule.source}/>
             <p/>
             <ul>
