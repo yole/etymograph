@@ -147,7 +147,7 @@
         "id": 23,
         "text": "bēon",
         "gloss": "be",
-        "fullGloss": "To BE, exist, become; esse, fieri",
+        "fullGloss": "To BE, exist, become",
         "pos": "V",
         "sourceRefs": [
             {
@@ -4623,18 +4623,11 @@
         "id": 2511,
         "text": "ymbe",
         "gloss": "around",
-        "fullGloss": "A swarm of bees",
-        "pos": "N",
-        "classes": [
-            "masc"
-        ],
+        "pos": "ADV",
         "sourceRefs": [
             {
                 "pubId": 5,
                 "refText": "30"
-            },
-            {
-                "refText": "https://bosworthtoller.com/37115"
             }
         ]
     },
@@ -4671,12 +4664,16 @@
     },
     {
         "id": 2517,
-        "text": "sumor",
+        "text": "sumer",
         "gloss": "summer",
+        "pos": "N",
         "sourceRefs": [
             {
                 "pubId": 5,
                 "refText": "31"
+            },
+            {
+                "refText": "https://bosworthtoller.com/29315"
             }
         ]
     },
@@ -7925,10 +7922,14 @@
         "id": 3033,
         "text": "wǣġ",
         "gloss": "wave",
+        "fullGloss": "movement; a wave, water, the wave, sea",
         "sourceRefs": [
             {
                 "pubId": 5,
                 "refText": "212"
+            },
+            {
+                "refText": "https://bosworthtoller.com/34252"
             }
         ]
     },
