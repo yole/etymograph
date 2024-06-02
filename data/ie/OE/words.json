@@ -855,7 +855,10 @@
         "id": 408,
         "text": "fretan",
         "gloss": "devour",
-        "pos": "V"
+        "pos": "V",
+        "classes": [
+            "v-strong-5"
+        ]
     },
     {
         "id": 409,
@@ -864,8 +867,7 @@
     },
     {
         "id": 410,
-        "text": "þūhte",
-        "gloss": "think.PRET.3SG"
+        "text": "þūhte"
     },
     {
         "id": 411,
@@ -898,12 +900,12 @@
     },
     {
         "id": 416,
-        "text": "gefræġn",
-        "gloss": "learn.PRET.1SG"
+        "text": "gefræġn"
     },
     {
         "id": 417,
         "text": "gefrignan",
+        "gloss": "learn",
         "pos": "V"
     },
     {
@@ -913,8 +915,7 @@
     },
     {
         "id": 420,
-        "text": "forswealg",
-        "gloss": "swallow.PRET.3SG"
+        "text": "forswealg"
     },
     {
         "id": 421,
@@ -924,8 +925,7 @@
     },
     {
         "id": 422,
-        "text": "weres",
-        "gloss": "man.GEN"
+        "text": "weres"
     },
     {
         "id": 423,
@@ -940,8 +940,7 @@
     },
     {
         "id": 425,
-        "text": "sumes",
-        "gloss": "certain.GEN"
+        "text": "sumes"
     },
     {
         "id": 426,
@@ -968,8 +967,7 @@
     },
     {
         "id": 430,
-        "text": "þrymfæstne",
-        "gloss": "glorious.ACC"
+        "text": "þrymfæstne"
     },
     {
         "id": 431,
@@ -990,8 +988,7 @@
     },
     {
         "id": 434,
-        "text": "strangan",
-        "gloss": "strong.GEN"
+        "text": "strangan"
     },
     {
         "id": 435,
@@ -1042,8 +1039,7 @@
     },
     {
         "id": 445,
-        "text": "swealg",
-        "gloss": "swallow.PRET.3SG"
+        "text": "swealg"
     },
     {
         "id": 446,
@@ -1113,12 +1109,16 @@
         "pos": "N",
         "classes": [
             "neut"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/29526"
+            }
         ]
     },
     {
         "id": 459,
-        "text": "swearta",
-        "gloss": "black.NOM.PL"
+        "text": "swearta"
     },
     {
         "id": 460,
@@ -1144,8 +1144,7 @@
     },
     {
         "id": 464,
-        "text": "blacu",
-        "gloss": "bright.NOM.PL"
+        "text": "blacu"
     },
     {
         "id": 465,
@@ -3705,6 +3704,10 @@
         "id": 2674,
         "text": "ȳþ",
         "gloss": "wave",
+        "pos": "N",
+        "classes": [
+            "fem"
+        ],
         "sourceRefs": [
             {
                 "pubId": 5,
@@ -4315,6 +4318,10 @@
         "id": 2812,
         "text": "flēogan",
         "gloss": "to fly",
+        "pos": "V",
+        "classes": [
+            "v-strong-2"
+        ],
         "sourceRefs": [
             {
                 "pubId": 5,
@@ -7804,7 +7811,10 @@
         "text": "brūcan",
         "gloss": "use",
         "fullGloss": "use, enjoy",
-        "pos": "V"
+        "pos": "V",
+        "classes": [
+            "v-strong-2"
+        ]
     },
     {
         "id": 3559,
@@ -7963,5 +7973,144 @@
         "text": "hū",
         "gloss": "how",
         "pos": "ADV"
+    },
+    {
+        "id": 3596,
+        "text": "word"
+    },
+    {
+        "id": 3597,
+        "text": "wundor"
+    },
+    {
+        "id": 3598,
+        "text": "swift",
+        "gloss": "swift",
+        "pos": "ADJ"
+    },
+    {
+        "id": 3599,
+        "text": "dēaf"
+    },
+    {
+        "id": 3600,
+        "text": "dūfan",
+        "gloss": "dive",
+        "pos": "V",
+        "classes": [
+            "v-strong-2"
+        ]
+    },
+    {
+        "id": 3601,
+        "text": "under",
+        "gloss": "under",
+        "pos": "PREP"
+    },
+    {
+        "id": 3602,
+        "text": "ȳþe"
+    },
+    {
+        "id": 3603,
+        "text": "wǣran"
+    },
+    {
+        "id": 3604,
+        "text": "drēag"
+    },
+    {
+        "id": 3605,
+        "text": "drēogan",
+        "gloss": "to work",
+        "pos": "V",
+        "classes": [
+            "v-strong-2"
+        ]
+    },
+    {
+        "id": 3606,
+        "text": "unstille",
+        "gloss": "unquiet",
+        "pos": "ADJ",
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/33791"
+            }
+        ]
+    },
+    {
+        "id": 3607,
+        "text": "winnende"
+    },
+    {
+        "id": 3608,
+        "text": "winnan",
+        "gloss": "to toil",
+        "pos": "V"
+    },
+    {
+        "id": 3609,
+        "text": "wiga",
+        "gloss": "warrior",
+        "pos": "N"
+    },
+    {
+        "id": 3610,
+        "text": "tǣcneþ"
+    },
+    {
+        "id": 3611,
+        "text": "tǣcnian",
+        "gloss": "to show",
+        "pos": "V"
+    },
+    {
+        "id": 3612,
+        "text": "wegas"
+    },
+    {
+        "id": 3613,
+        "text": "weg",
+        "gloss": "way",
+        "pos": "N"
+    },
+    {
+        "id": 3614,
+        "text": "eallum"
+    },
+    {
+        "id": 3615,
+        "text": "fǣted",
+        "gloss": "beaten",
+        "pos": "ADJ"
+    },
+    {
+        "id": 3616,
+        "text": "gold",
+        "gloss": "gold",
+        "pos": "N",
+        "classes": [
+            "neut"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/17348"
+            }
+        ]
+    },
+    {
+        "id": 3619,
+        "text": "framra"
+    },
+    {
+        "id": 3620,
+        "text": "fram",
+        "gloss": "strong",
+        "pos": "ADJ"
+    },
+    {
+        "id": 3621,
+        "text": "flēag"
     }
 ]

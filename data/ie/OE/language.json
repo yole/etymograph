@@ -675,6 +675,22 @@
                     "abbreviation": "PPART"
                 }
             ]
+        },
+        {
+            "name": "Comparison degree",
+            "pos": [
+                "ADJ"
+            ],
+            "values": [
+                {
+                    "name": "Comparative",
+                    "abbreviation": "COMP"
+                },
+                {
+                    "name": "Superlative",
+                    "abbreviation": "SUP"
+                }
+            ]
         }
     ],
     "wordClasses": [
@@ -771,6 +787,26 @@
                 {
                     "name": "second",
                     "abbreviation": "v-strong-2"
+                },
+                {
+                    "name": "third",
+                    "abbreviation": "v-strong-3"
+                },
+                {
+                    "name": "fourth",
+                    "abbreviation": "v-strong-4"
+                },
+                {
+                    "name": "fifth",
+                    "abbreviation": "v-strong-5"
+                },
+                {
+                    "name": "sixth",
+                    "abbreviation": "v-strong-6"
+                },
+                {
+                    "name": "seventh",
+                    "abbreviation": "v-strong-7"
                 }
             ]
         }
