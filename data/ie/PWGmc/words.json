@@ -462,7 +462,13 @@
     {
         "id": 2199,
         "text": "kaldī",
-        "gloss": "coldness"
+        "gloss": "coldness",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "205"
+            }
+        ]
     },
     {
         "id": 2203,
