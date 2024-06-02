@@ -1505,7 +1505,7 @@
         "id": 431,
         "text": "þrymfæst",
         "gloss": "glorious",
-        "fullGloss": "1 as epithet of the Deity",
+        "fullGloss": "Glorious, majestic, illustrious, mighty",
         "pos": "ADJ",
         "sourceRefs": [
             {
@@ -2075,7 +2075,7 @@
     },
     {
         "id": 1220,
-        "text": "ungelíc",
+        "text": "ungelīc",
         "gloss": "unlike",
         "pos": "ADJ",
         "sourceRefs": [
@@ -2573,8 +2573,8 @@
     {
         "id": 2168,
         "text": "sċīnan",
-        "gloss": "shine",
-        "fullGloss": "I lit",
+        "gloss": "to shine",
+        "fullGloss": "to shine",
         "pos": "V",
         "sourceRefs": [
             {
@@ -3094,7 +3094,7 @@
         "id": 2258,
         "text": "singan",
         "gloss": "to sing",
-        "fullGloss": "used absolutely",
+        "fullGloss": "to sing",
         "pos": "V",
         "sourceRefs": [
             {
@@ -4724,7 +4724,7 @@
         "id": 2526,
         "text": "hasu",
         "gloss": "gray",
-        "fullGloss": "Grey, ash-coloured, tawny; cinereus, fulvo-cinereus",
+        "fullGloss": "Grey, ash-coloured, tawny",
         "pos": "ADJ",
         "sourceRefs": [
             {
@@ -5825,7 +5825,7 @@
         "id": 2718,
         "text": "sāpe",
         "gloss": "soap",
-        "fullGloss": "Soap, salve (? v. sáp)",
+        "fullGloss": "Soap, salve",
         "pos": "N",
         "classes": [
             "fem"
@@ -6137,7 +6137,7 @@
         "id": 2780,
         "text": "wuldor",
         "gloss": "worth",
-        "fullGloss": "1 in reference to earthly subjects",
+        "fullGloss": "glory",
         "pos": "N",
         "classes": [
             "neut"
