@@ -3,7 +3,7 @@
         "id": 1,
         "text": "wē",
         "gloss": "we",
-        "fullGloss": "I used of more than one person, 1 dual2 plural",
+        "fullGloss": "we",
         "pos": "PRON",
         "sourceRefs": [
             {
@@ -34,7 +34,7 @@
         "id": 4,
         "text": "biddan",
         "gloss": "ask",
-        "fullGloss": "BID, order, require; petere, poscere, orare, quærere, precari, deprecari,             rogare, postulare, præcipere, requirere",
+        "fullGloss": "BID, order, require",
         "pos": "V",
         "sourceRefs": [
             {
@@ -69,7 +69,7 @@
         "id": 14,
         "text": "ēalā",
         "gloss": "lo",
-        "fullGloss": "0! alas! Oh!",
+        "fullGloss": "O! alas! Oh!",
         "pos": "INTJ",
         "sourceRefs": [
             {
@@ -284,13 +284,7 @@
         "id": 38,
         "text": "næs",
         "gloss": "not at all",
-        "fullGloss": "was not",
-        "pos": "V",
-        "sourceRefs": [
-            {
-                "refText": "https://bosworthtoller.com/23394"
-            }
-        ]
+        "pos": "V"
     },
     {
         "id": 39,
@@ -410,7 +404,7 @@
         "id": 52,
         "text": "ne",
         "gloss": "not",
-        "fullGloss": "IaNotbno, nay",
+        "fullGloss": "not, no, nay",
         "pos": "ADV",
         "sourceRefs": [
             {
@@ -466,7 +460,7 @@
         "id": 58,
         "text": "bilewit",
         "gloss": "honest",
-        "fullGloss": "Merciful, mild, gentle, simple, honest; æquanimus, mansuetus, mitis,             simplex, honestus",
+        "fullGloss": "Merciful, mild, gentle, simple, honest",
         "pos": "ADJ",
         "sourceRefs": [
             {
@@ -585,7 +579,7 @@
         "id": 74,
         "text": "ġeornlīċe",
         "gloss": "eagerly",
-        "fullGloss": "Earnestly, diligently, zealously, strenuously, carefully, willingly; dīlĭgenter, stŭdiōse, obnixe, sollĭcĭte, lĭbenter",
+        "fullGloss": "Earnestly, diligently, zealously, strenuously, carefully, willingly",
         "pos": "ADV",
         "sourceRefs": [
             {
@@ -788,7 +782,7 @@
         "id": 281,
         "text": "weorþan",
         "gloss": "become",
-        "fullGloss": "I absolute, 1to come to be, to be made, to arise, come, be2to come to pass, to be done, to happen, to take place, befall, come, be",
+        "fullGloss": "to come to be, to be made, to arise, come, be",
         "pos": "V",
         "sourceRefs": [
             {
@@ -879,7 +873,7 @@
         "id": 293,
         "text": "yfel",
         "gloss": "evil",
-        "fullGloss": "I in a moral sense",
+        "fullGloss": "evil, ill",
         "pos": "N",
         "classes": [
             "neut"
@@ -1190,7 +1184,7 @@
         "id": 328,
         "text": "onstellan",
         "gloss": "establish",
-        "fullGloss": "an example)",
+        "fullGloss": "to institute, give rise to, set on foot, bring in, be the author of",
         "pos": "V",
         "classes": [
             "pret-d"
@@ -1361,7 +1355,7 @@
         "id": 414,
         "text": "wyrd",
         "gloss": "fate",
-        "fullGloss": "I the word is used to gloss the following Latin words",
+        "fullGloss": "What happens, fate, fortune, chance",
         "pos": "N",
         "classes": [
             "fem"
@@ -1547,7 +1541,7 @@
         "id": 435,
         "text": "strang",
         "gloss": "strong",
-        "fullGloss": "I of living beings, 1strong, powerful, mighty2strong, firm, resolute, hardy3hard, severe, fierce, stern",
+        "fullGloss": "strong",
         "pos": "ADJ",
         "sourceRefs": [
             {
@@ -1613,7 +1607,7 @@
         "id": 446,
         "text": "swelgan",
         "gloss": "swallow",
-        "fullGloss": "I in a physical sense, a of taking food, etc., by living creaturesb of absorption or reception by inanimate things, to swallow, take in, drink, absorb",
+        "fullGloss": "to swallow",
         "pos": "V",
         "sourceRefs": [
             {
@@ -1730,7 +1724,7 @@
         "id": 461,
         "text": "swīþe",
         "gloss": "very",
-        "fullGloss": "I with adjectives, 1 of quantity2 of quality",
+        "fullGloss": "Very, much, exceedingly",
         "pos": "ADV",
         "sourceRefs": [
             {
@@ -2217,7 +2211,7 @@
         "id": 1241,
         "text": "denn",
         "gloss": "den",
-        "fullGloss": "A DEN; [lustra MS.]",
+        "fullGloss": "A DEN",
         "pos": "N",
         "classes": [
             "neut"
@@ -2417,7 +2411,7 @@
         "id": 2102,
         "text": "hām",
         "gloss": "home",
-        "fullGloss": "Home, house, abode, dwelling, residence, habitation, house with land,                 estate, property; domus, domicilium, prædium, villa, mansio, possessio",
+        "fullGloss": "Home, house, abode, dwelling, residence, habitation, house with land, estate, property",
         "pos": "N",
         "classes": [
             "masc"
@@ -2596,7 +2590,7 @@
         "id": 2170,
         "text": "ċiriċe",
         "gloss": "church",
-        "fullGloss": "I the CHURCH as a temporal and spiritual body; ecclesia = ἐκκλησία",
+        "fullGloss": "church",
         "pos": "N",
         "classes": [
             "fem"
@@ -2797,7 +2791,7 @@
         "id": 2202,
         "text": "ġeorn",
         "gloss": "desirous, eager",
-        "fullGloss": "Desirous, eager, anxious, ardent, zealous, studious, intent, careful, diligent; cupĭdus, appĕtens, sollĭcĭtus, studiōsus, intentus, dīlĭgens",
+        "fullGloss": "Desirous, eager, anxious, ardent, zealous, studious, intent, careful, diligent",
         "pos": "N",
         "classes": [
             "fem"
@@ -2816,7 +2810,7 @@
         "id": 2204,
         "text": "ċeorfan",
         "gloss": "to carve, to cut",
-        "fullGloss": "To cut, cut down, hew, rend, tear, CARVE, engrave; secare,             concidere, succidere, excidere, conscindere, incidere, infindere",
+        "fullGloss": "To cut, cut down, hew, rend, tear, CARVE, engrave",
         "pos": "V",
         "sourceRefs": [
             {
@@ -2832,7 +2826,7 @@
         "id": 2206,
         "text": "sċeolh",
         "gloss": "oblique, crooked, squinting",
-        "fullGloss": "Oblique, wry: — Of ðæm sceolan de scevo. Wrt. Voc. ii. 26, 67 : 85",
+        "fullGloss": "Oblique, wry",
         "pos": "ADJ",
         "sourceRefs": [
             {
@@ -2848,7 +2842,7 @@
         "id": 2209,
         "text": "ċēosan",
         "gloss": "to choose",
-        "fullGloss": "CHOOSE, select, elect; legere, seligere, eligere",
+        "fullGloss": "CHOOSE, select, elect",
         "pos": "V",
         "sourceRefs": [
             {
@@ -2860,7 +2854,7 @@
         "id": 2212,
         "text": "ġēotan",
         "gloss": "to pour",
-        "fullGloss": "to pour, pour out, shed; fundere, effundere, profundere",
+        "fullGloss": "to pour, pour out, shed",
         "pos": "V",
         "sourceRefs": [
             {
@@ -3300,7 +3294,7 @@
         "id": 2285,
         "text": "brȳd",
         "gloss": "bride",
-        "fullGloss": "A BRIDE, woman about to be married or newly married, a             wife, spouse, woman; sponsa, nupta, uxor, mulier",
+        "fullGloss": "A BRIDE, woman about to be married or newly married, a wife, spouse, woman",
         "pos": "N",
         "classes": [
             "fem"
@@ -4377,7 +4371,7 @@
         "id": 2480,
         "text": "pund",
         "gloss": "pound",
-        "fullGloss": "I as a weight without reference to money",
+        "fullGloss": "pound",
         "pos": "N",
         "classes": [
             "neut"
@@ -4477,7 +4471,7 @@
         "id": 2494,
         "text": "byre",
         "gloss": "son, young man",
-        "fullGloss": "A son, child, descendant; natus, filius, soboles, proles",
+        "fullGloss": "A son, child, descendant",
         "pos": "N",
         "classes": [
             "masc"
@@ -4709,7 +4703,7 @@
         "id": 2522,
         "text": "searu",
         "gloss": "device, tool, weapon",
-        "fullGloss": "I in the following glosses it is uncertain whether the word is used with a good or with a bad meaning",
+        "fullGloss": "Device, design, contrivance, art",
         "pos": "N",
         "sourceRefs": [
             {
@@ -4981,7 +4975,7 @@
         "id": 2577,
         "text": "settan",
         "gloss": "to seat, to set",
-        "fullGloss": "XII)",
+        "fullGloss": "to set, place, put, cause to take a certain position",
         "pos": "V",
         "sourceRefs": [
             {
@@ -5408,7 +5402,7 @@
         "id": 2666,
         "text": "cȳþan",
         "gloss": "to make known",
-        "fullGloss": "to make known, tell, relate, proclaim, announce;nuntiare, annuntiare, narrare, referre, effari, prædicare",
+        "fullGloss": "to make known, tell, relate, proclaim, announce",
         "pos": "V",
         "sourceRefs": [
             {
@@ -6004,7 +5998,7 @@
         "id": 2746,
         "text": "smæl",
         "gloss": "small",
-        "fullGloss": "I in the following glosses",
+        "fullGloss": "small",
         "pos": "ADJ",
         "sourceRefs": [
             {
@@ -6504,7 +6498,7 @@
         "id": 2827,
         "text": "weaxan",
         "gloss": "to grow",
-        "fullGloss": "I glossing the following Latin words",
+        "fullGloss": "to wax, grow",
         "pos": "V",
         "sourceRefs": [
             {
@@ -6891,7 +6885,7 @@
         "id": 2879,
         "text": "beorht",
         "gloss": "bright",
-        "fullGloss": "bright, brilliant, magnificent, noble, glorious, sublime, divine, holy;                clarus, præclarus, eximius, augustus, divus, sanctus",
+        "fullGloss": "bright, brilliant, magnificent, noble, glorious, sublime, divine, holy",
         "pos": "ADJ",
         "sourceRefs": [
             {
@@ -7942,7 +7936,7 @@
         "id": 3036,
         "text": "weġ",
         "gloss": "way",
-        "fullGloss": "I of the direction in which motion (lit. or tig.) takes place",
+        "fullGloss": "way",
         "pos": "N",
         "classes": [
             "masc"
@@ -8015,7 +8009,7 @@
         "id": 3046,
         "text": "breġdan",
         "gloss": "to brandish",
-        "fullGloss": "To move to and fro, vibrate, cast, draw, drag, change, bend, weave;                vibrare, vibrare gladium, jactare, stringere, trahere, nectere, plectere",
+        "fullGloss": "To move to and fro, vibrate, cast, draw, drag, change, bend, weave",
         "pos": "V",
         "sourceRefs": [
             {
@@ -8259,7 +8253,7 @@
         "id": 3083,
         "text": "bȳsen",
         "gloss": "example",
-        "fullGloss": "a pattern, an example, model, resemblance, similitude, parable; norma,                exemplum, modellum, similitudo, parabola",
+        "fullGloss": "a pattern, an example, model, resemblance, similitude, parable",
         "pos": "N",
         "classes": [
             "fem"
@@ -8528,7 +8522,7 @@
         "id": 3116,
         "text": "wēpan",
         "gloss": "to call",
-        "fullGloss": "I intrans. 1 of persons2 of other than human beings",
+        "fullGloss": "To weep, wail, mourn, lament",
         "pos": "V",
         "sourceRefs": [
             {
@@ -8627,7 +8621,7 @@
         "id": 3128,
         "text": "brēġan",
         "gloss": "to terrify",
-        "fullGloss": "To give fear, frighten, make afraid, terrify, astonish; terrere, pavefacere,             stupefacere",
+        "fullGloss": "To give fear, frighten, make afraid, terrify, astonish",
         "pos": "V",
         "sourceRefs": [
             {
@@ -8901,7 +8895,6 @@
     {
         "id": 3162,
         "text": "wearð",
-        "gloss": "become.PRET.3SG",
         "sourceRefs": [
             {
                 "refText": "Fulk 2014:19"
@@ -8954,7 +8947,6 @@
     {
         "id": 3167,
         "text": "ġecoren",
-        "gloss": "choose.PTCP",
         "sourceRefs": [
             {
                 "refText": "Fulk 2014:19"
@@ -8974,7 +8966,7 @@
         "id": 3169,
         "text": "ċeaster",
         "gloss": "town",
-        "fullGloss": "I generally f. but sometimes n. vide",
+        "fullGloss": "A fortress; A city, fort, castle, town",
         "pos": "N",
         "sourceRefs": [
             {
@@ -9389,7 +9381,6 @@
     {
         "id": 3208,
         "text": "bæd",
-        "gloss": "ask.PRET.3SG",
         "sourceRefs": [
             {
                 "refText": "Fulk 2014:19"
@@ -9611,7 +9602,7 @@
         "id": 3230,
         "text": "mid",
         "gloss": "with",
-        "fullGloss": "having very nearly the same force as and",
+        "fullGloss": "with",
         "pos": "PREP",
         "sourceRefs": [
             {
@@ -9754,7 +9745,7 @@
         "id": 3245,
         "text": "cleweþa",
         "gloss": "itch",
-        "fullGloss": "A clawing, scratching; scalpturigo, scalpurigo",
+        "fullGloss": "A clawing, scratching",
         "pos": "N",
         "classes": [
             "masc"
@@ -9822,7 +9813,7 @@
         "id": 3253,
         "text": "hefiġ",
         "gloss": "heavy",
-        "fullGloss": "HEAVY, weighty, oppressive, grievous, difficult, serious, grieved, important; gravis, molestus",
+        "fullGloss": "HEAVY, weighty, oppressive, grievous, difficult, serious, grieved, important",
         "pos": "ADJ",
         "sourceRefs": [
             {
@@ -9867,7 +9858,7 @@
         "id": 3259,
         "text": "restan",
         "gloss": "to rest",
-        "fullGloss": "I intrans. a of persons1to cease from toil, be at rest2to rest on a couch, to sleep3to rest in death, lie dead, lie in the graveb of things, to remain unmoved or undisturbed, be still",
+        "fullGloss": "to rest",
         "pos": "V",
         "sourceRefs": [
             {
@@ -10514,7 +10505,7 @@
         "id": 3365,
         "text": "bend",
         "gloss": "fetter",
-        "fullGloss": "A band, bond, ribbon, a chaplet, crown, ornament; vinculum, ligamen, diadema",
+        "fullGloss": "A band, bond, ribbon, a chaplet, crown, ornament",
         "pos": "N",
         "classes": [
             "masc"
@@ -10806,7 +10797,7 @@
         "id": 3410,
         "text": "fōdor",
         "gloss": "sheath",
-        "fullGloss": "FODDER, dry food for cattle, hay, corn, provender, food generally",
+        "fullGloss": "FODDER, dry food for cattle, hay, corn, provender, food generally; a case from which anything is fed, a case, cover, sheath",
         "pos": "N",
         "classes": [
             "neut"
@@ -10963,7 +10954,7 @@
         "id": 3435,
         "text": "wine",
         "gloss": "friend",
-        "fullGloss": "1 applied to an equal",
+        "fullGloss": "a friend",
         "pos": "N",
         "classes": [
             "masc"
@@ -11260,7 +11251,7 @@
         "id": 3541,
         "text": "brūcan",
         "gloss": "use",
-        "fullGloss": "To use, make use of, to pass, spend, enjoy, have enjoyment of, to eat, bear,             discharge; uti, frui, possidere, habere, gaudere aliqua re, edere",
+        "fullGloss": "To use, make use of, to pass, spend, enjoy, have enjoyment of, to eat, bear, discharge",
         "pos": "V",
         "classes": [
             "v-strong-2"
@@ -11368,7 +11359,7 @@
         "id": 3579,
         "text": "wiþinnan",
         "gloss": "within",
-        "fullGloss": "1 as adverb",
+        "fullGloss": "within",
         "pos": "ADV",
         "sourceRefs": [
             {
@@ -11462,7 +11453,7 @@
         "id": 3591,
         "text": "beswīċan",
         "gloss": "to betray",
-        "fullGloss": "To deceive, entice, seduce, delude, betray, offend, supplant, weaken, evade;             decipere, illicere, seducere, illudere, prodere, scandalizare, supplantare, deficere,             evadere",
+        "fullGloss": "To deceive, entice, seduce, delude, betray, offend, supplant, weaken, evade",
         "pos": "V",
         "sourceRefs": [
             {
@@ -11490,7 +11481,7 @@
         "id": 3594,
         "text": "byrgels",
         "gloss": "tomb",
-        "fullGloss": "A BURIAL-place, sepulchre, tomb; sepulcrum, bustum",
+        "fullGloss": "A BURIAL-place, sepulchre, tomb",
         "pos": "N",
         "classes": [
             "masc"
