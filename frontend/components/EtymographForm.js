@@ -27,8 +27,15 @@ export default function EtymographForm(props) {
                 }
                 else if (props.submitted !== undefined) {
                     const result = props.submitted(jr, data)
-                    if (result !== undefined && result.message !== undefined) {
-                        setErrorText(result.message)
+                    if (result !== undefined) {
+                        if (result.message !== undefined) {
+                            setErrorText(result.message)
+                        }
+                        else if (result.then !== undefined) {
+                            result.then(r => {
+                                if (r !== undefined && r.message !== undefined) setErrorText(r.message)
+                            })
+                        }
                     }
                 }
                 else if (setEditMode !== undefined) {
