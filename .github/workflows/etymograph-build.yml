@@ -28,7 +28,7 @@ jobs:
         run: mkdir export
 
       - name: Generate exported data
-        run: docker compose up --build frontend-export
+        run: docker compose up --build frontend-export --exit-code-from frontend-export
 
       - name: Publish to Netlify
         uses: South-Paw/action-netlify-cli@v2
