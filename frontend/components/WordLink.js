@@ -15,7 +15,7 @@ export default function WordLink(params) {
     return <>
         {params.baseLanguage !== undefined && word.language !== params.baseLanguage && word.displayLanguage + " "}
         <Link href={linkTarget}>{wordText}</Link>
-        {params.gloss && word.gloss !== null && <>{' '}"<WordGloss gloss={word.gloss}/>"</>}
+        {params.gloss && word.gloss !== null && <>{' '}&quot;<WordGloss gloss={word.gloss}/>&quot;</>}
     </>
 }
 
