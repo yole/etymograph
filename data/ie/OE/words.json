@@ -1399,15 +1399,7 @@
     },
     {
         "id": 418,
-        "text": "se",
-        "gloss": "that",
-        "fullGloss": "the, that",
-        "pos": "PRON",
-        "sourceRefs": [
-            {
-                "refText": "https://bosworthtoller.com/27190"
-            }
-        ]
+        "text": "se"
     },
     {
         "id": 420,
@@ -1815,7 +1807,7 @@
         "id": 919,
         "text": "ċild",
         "gloss": "child",
-        "fullGloss": "CHILD, infant; infans, puer",
+        "fullGloss": "CHILD, infant",
         "pos": "N",
         "classes": [
             "neut"
@@ -1904,22 +1896,17 @@
         "gloss": "dale",
         "pos": "N",
         "classes": [
-            "neut",
-            "masc"
+            "neut"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/7369"
+            }
         ]
     },
     {
         "id": 1204,
         "text": "middangeardes"
-    },
-    {
-        "id": 1205,
-        "text": "middangeard",
-        "sourceRefs": [
-            {
-                "refText": "https://bosworthtoller.com/22797"
-            }
-        ]
     },
     {
         "id": 1206,
@@ -2294,16 +2281,15 @@
         "id": 1250,
         "text": "enġel",
         "gloss": "angel",
-        "fullGloss": "Anglen in Denmark             , the country from which the Angles came into             Britain",
+        "fullGloss": "angel",
         "pos": "N",
         "classes": [
             "masc",
-            "a-stem",
-            "fem"
+            "a-stem"
         ],
         "sourceRefs": [
             {
-                "refText": "https://bosworthtoller.com/9422"
+                "refText": "https://bosworthtoller.com/9421"
             }
         ]
     },
@@ -4032,7 +4018,7 @@
         "id": 2414,
         "text": "grǣdiġ",
         "gloss": "hungry, greedy",
-        "fullGloss": "GREEDY, covetous; avidus",
+        "fullGloss": "GREEDY, covetous",
         "pos": "ADJ",
         "sourceRefs": [
             {
@@ -4200,7 +4186,7 @@
         "id": 2458,
         "text": "ġeoc",
         "gloss": "yoke",
-        "fullGloss": "a YOKE; jugum",
+        "fullGloss": "a YOKE",
         "pos": "N",
         "classes": [
             "neut"
@@ -7014,7 +7000,7 @@
         "id": 2897,
         "text": "feallan",
         "gloss": "to fall",
-        "fullGloss": "To               FALL, fall down, fail;              cădĕre, decĭdĕre, procĭdĕre",
+        "fullGloss": "To FALL, fall down, fail",
         "pos": "V",
         "sourceRefs": [
             {
@@ -7233,7 +7219,7 @@
         "id": 2926,
         "text": "magu",
         "gloss": "young man, son (poet.)",
-        "fullGloss": "A childson",
+        "fullGloss": "A child, son",
         "pos": "N",
         "classes": [
             "masc"
@@ -10062,10 +10048,14 @@
         "id": 3289,
         "text": "ġierd",
         "gloss": "rod",
+        "fullGloss": "a rod",
         "sourceRefs": [
             {
                 "pubId": 5,
                 "refText": "242"
+            },
+            {
+                "refText": "https://bosworthtoller.com/51376"
             }
         ]
     },
@@ -10459,10 +10449,18 @@
         "id": 3359,
         "text": "fēol",
         "gloss": "file",
+        "fullGloss": "a file",
+        "pos": "N",
+        "classes": [
+            "fem"
+        ],
         "sourceRefs": [
             {
                 "pubId": 5,
                 "refText": "285"
+            },
+            {
+                "refText": "https://bosworthtoller.com/10352"
             }
         ]
     },
@@ -11759,6 +11757,48 @@
         "sourceRefs": [
             {
                 "refText": "https://bosworthtoller.com/10130"
+            }
+        ]
+    },
+    {
+        "id": 3631,
+        "text": "hēo",
+        "gloss": "she"
+    },
+    {
+        "id": 3632,
+        "text": "þurh",
+        "gloss": "through",
+        "pos": "PREP",
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/32252"
+            }
+        ]
+    },
+    {
+        "id": 3633,
+        "text": "þes",
+        "gloss": "this",
+        "pos": "PRON",
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/31816"
+            }
+        ]
+    },
+    {
+        "id": 3634,
+        "text": "gang",
+        "gloss": "journey",
+        "fullGloss": "going, journey, step, way, path, passage, course (of time)",
+        "pos": "N",
+        "classes": [
+            "masc"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/13268"
             }
         ]
     }

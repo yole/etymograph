@@ -576,7 +576,7 @@
             ],
             "values": [
                 {
-                    "name": "Singlular",
+                    "name": "Singular",
                     "abbreviation": "SG"
                 },
                 {
@@ -628,15 +628,15 @@
             ],
             "values": [
                 {
-                    "name": "1st",
+                    "name": "First person",
                     "abbreviation": "1"
                 },
                 {
-                    "name": "2nd",
+                    "name": "Second person",
                     "abbreviation": "2"
                 },
                 {
-                    "name": "3rd",
+                    "name": "Third person",
                     "abbreviation": "3"
                 }
             ]
@@ -684,12 +684,32 @@
             ],
             "values": [
                 {
+                    "name": "Positive",
+                    "abbreviation": "POS"
+                },
+                {
                     "name": "Comparative",
                     "abbreviation": "COMP"
                 },
                 {
                     "name": "Superlative",
                     "abbreviation": "SUP"
+                }
+            ]
+        },
+        {
+            "name": "Strength",
+            "pos": [
+                "ADJ"
+            ],
+            "values": [
+                {
+                    "name": "Strong",
+                    "abbreviation": "STRONG"
+                },
+                {
+                    "name": "Weak",
+                    "abbreviation": "WEAK"
                 }
             ]
         }
