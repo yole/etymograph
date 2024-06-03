@@ -8,7 +8,8 @@ export default function EtymographForm(props) {
     const [errorText, setErrorText] = useState("")
     const router = useRouter()
     const editMode = useContext(EditModeContext)
-    const setEditMode = props.setEditMode ?? useContext(SetEditModeContext)
+    const setEditModeContext = useContext(SetEditModeContext)
+    const setEditMode = props.setEditMode ?? setEditModeContext
 
     useEffect(() => { if (props.focusTarget) methods.setFocus(props.focusTarget) }, []);
 
