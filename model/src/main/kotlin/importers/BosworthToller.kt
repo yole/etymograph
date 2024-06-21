@@ -30,6 +30,7 @@ val genderMap = mapOf(
 class BosworthTollerEntry(
     val id: Int,
     val form: String,
+    val searchForm: String,
     val formVariants: List<String>?,
     val pos: List<String>,
     val gender: List<String>?,
@@ -54,6 +55,7 @@ class BosworthTollerEntry(
             }
             val formElement = root.getChild("form")
             val orthForm = formElement.getChildText("orth")
+            val searchForm = formElement.getChildText("search")
 
             val gramGrp = root.getChild("gramGrp")
             val pos = mutableListOf<String>()
@@ -110,7 +112,7 @@ class BosworthTollerEntry(
 
             val (inflections, variants) = parseGrammar(grammarElement, orthForm, pos, errorConsumer)
 
-            return BosworthTollerEntry(id, orthForm, variants.takeIf { it.isNotEmpty() },
+            return BosworthTollerEntry(id, orthForm, searchForm, variants.takeIf { it.isNotEmpty() },
                 pos, gender.takeIf { it.isNotEmpty() }, subclass.takeIf { it.isNotEmpty() }, defs)
         }
 
@@ -224,6 +226,7 @@ class BosworthTollerEntry(
 // Works with Bosworth-Toller CSV export from https://lindat.cz/repository/xmlui/handle/11234/1-3532
 class BosworthToller(dataPath: String) : Dictionary {
     private val entries = mutableMapOf<String, MutableList<BosworthTollerEntry>>()
+    private val entriesBySearchForm = mutableMapOf<String, MutableList<BosworthTollerEntry>>()
     private val entriesByVariant = mutableMapOf<String, MutableList<BosworthTollerEntry>>()
     private val entryById = mutableMapOf<Int, BosworthTollerEntry>()
     private val parseErrors = mutableMapOf<Int, String>()
@@ -244,6 +247,8 @@ class BosworthToller(dataPath: String) : Dictionary {
             val normalizedForm = normalizeText(entry.form)
             val entryList = entries.getOrPut(normalizedForm) { mutableListOf() }
             entryList.add(entry)
+            val searchEntryList = entriesBySearchForm.getOrPut(entry.searchForm) { mutableListOf() }
+            searchEntryList.add(entry)
             entry.formVariants?.let {
                 for (variant in it) {
                     val entryListByVariant = entriesByVariant.getOrPut(normalizeText(variant)) { mutableListOf() }
@@ -276,7 +281,7 @@ class BosworthToller(dataPath: String) : Dictionary {
             .replace("ċ", "c")
             .replace("ð", "þ")
             .replace("-", "")
-        val entryList = entries[lookupText] ?: entriesByVariant[lookupText]
+        val entryList = entries[lookupText] ?: entriesByVariant[lookupText] ?: entriesBySearchForm[lookupText]
         return entryList?.map { entryToWord(it, language) } ?: emptyList()
     }
 
@@ -290,8 +295,9 @@ class BosworthToller(dataPath: String) : Dictionary {
         if (genderClass != null) {
             classes.add(genderClass)
         }
+        val form = entry.form.replace("-", "")
         val gloss = entry.def.first()
-        return Word(-1, entry.form, language, gloss, fullGloss = gloss, pos = pos, classes = classes,
+        return Word(-1, form, language, gloss, fullGloss = gloss, pos = pos, classes = classes,
             source = listOf(SourceRef(null, "https://bosworthtoller.com/${entry.id}")))
     }
 }

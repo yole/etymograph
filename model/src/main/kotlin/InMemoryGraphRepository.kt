@@ -1,6 +1,7 @@
 package ru.yole.etymograph
 
 import java.text.Collator
+import java.text.Normalizer
 import java.util.*
 
 open class InMemoryGraphRepository : GraphRepository() {
@@ -94,6 +95,12 @@ open class InMemoryGraphRepository : GraphRepository() {
     override fun wordsByText(lang: Language, text: String): List<Word> {
         val wordsInLang = words[lang] ?: return emptyList()
         return wordsInLang[lang.normalizeWord(text)] ?: emptyList()
+    }
+
+    override fun wordsByTextFuzzy(lang: Language, text: String): List<Word> {
+        val wordsInLang = words[lang] ?: return emptyList()
+        val matchText = lang.normalizeWord(text).removeDiacritics()
+        return wordsInLang.values.flatten().filter { it.text.removeDiacritics() == matchText }
     }
 
     override fun wordById(id: Int): Word? {
@@ -709,3 +716,8 @@ open class InMemoryGraphRepository : GraphRepository() {
         val EMPTY = InMemoryGraphRepository()
     }
 }
+
+val diacriticPattern = Regex("\\p{M}")
+
+fun String.removeDiacritics() =
+    diacriticPattern.replace(Normalizer.normalize(this, Normalizer.Form.NFKD), "")
