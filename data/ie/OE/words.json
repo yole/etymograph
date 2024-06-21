@@ -11814,5 +11814,179 @@
                 "refText": "https://bosworthtoller.com/7821"
             }
         ]
+    },
+    {
+        "id": 3638,
+        "text": "gehyran",
+        "gloss": "to hear",
+        "fullGloss": "To hear, give ear to",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/14839"
+            }
+        ]
+    },
+    {
+        "id": 3639,
+        "text": "gehyran",
+        "gloss": "To hire",
+        "fullGloss": "To hire",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/14840"
+            }
+        ]
+    },
+    {
+        "id": 3640,
+        "text": "wyle"
+    },
+    {
+        "id": 3641,
+        "text": "þam"
+    },
+    {
+        "id": 3642,
+        "text": "halgan"
+    },
+    {
+        "id": 3643,
+        "text": "mædene"
+    },
+    {
+        "id": 3644,
+        "text": "Eugenia",
+        "pos": "NP"
+    },
+    {
+        "id": 3645,
+        "text": "Philippus",
+        "pos": "NP"
+    },
+    {
+        "id": 3646,
+        "text": "dæhter"
+    },
+    {
+        "id": 3648,
+        "text": "mægþhad",
+        "gloss": "Kinship, relationship",
+        "fullGloss": "Kinship, relationship",
+        "pos": "N",
+        "classes": [
+            "masc"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/22124"
+            }
+        ]
+    },
+    {
+        "id": 3649,
+        "text": "mægðhad"
+    },
+    {
+        "id": 3650,
+        "text": "mærlice",
+        "gloss": "magnificently",
+        "fullGloss": "Magnificently, excellently, nobly, splendidly, with distinction",
+        "pos": "ADV",
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/22185"
+            }
+        ]
+    },
+    {
+        "id": 3651,
+        "text": "þeon",
+        "gloss": "thrive",
+        "fullGloss": "To thrive, grow, flourish, prosper",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/31740"
+            }
+        ]
+    },
+    {
+        "id": 3652,
+        "text": "þeon",
+        "gloss": "To do, perform, effect",
+        "fullGloss": "To do, perform, effect",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/31741"
+            }
+        ]
+    },
+    {
+        "id": 3653,
+        "text": "þeah"
+    },
+    {
+        "id": 3654,
+        "text": "þeah"
+    },
+    {
+        "id": 3655,
+        "text": "martyrdom",
+        "gloss": "Martyrdom",
+        "fullGloss": "Martyrdom",
+        "pos": "N",
+        "classes": [
+            "masc"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/22420"
+            }
+        ]
+    },
+    {
+        "id": 3656,
+        "text": "martyrdom"
+    },
+    {
+        "id": 3657,
+        "text": "þisne"
+    },
+    {
+        "id": 3658,
+        "text": "middaneard"
+    },
+    {
+        "id": 3659,
+        "text": "oferswiðan",
+        "gloss": "overcome",
+        "fullGloss": "To prove stronger than or superior to another, to overcome, overpower, conquer, surpass",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/24248"
+            }
+        ]
+    },
+    {
+        "id": 3660,
+        "text": "oferswað"
+    },
+    {
+        "id": 3661,
+        "text": "mægþhad",
+        "gloss": "virginity",
+        "pos": "N",
+        "classes": [
+            "masc"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/22123"
+            }
+        ]
     }
 ]
