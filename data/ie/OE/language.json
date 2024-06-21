@@ -542,7 +542,9 @@
         {
             "name": "Case",
             "pos": [
-                "N"
+                "N",
+                "ADJ",
+                "PRON"
             ],
             "values": [
                 {
@@ -572,6 +574,7 @@
             "pos": [
                 "N",
                 "ADJ",
+                "PRON",
                 "V"
             ],
             "values": [
@@ -588,7 +591,8 @@
         {
             "name": "Gender",
             "pos": [
-                "ADJ"
+                "ADJ",
+                "PRON"
             ],
             "values": [
                 {

@@ -7188,17 +7188,55 @@
         "name": "oe-adj-weak-nom-sg-n",
         "fromLang": "OE",
         "toLang": "OE",
-        "branches": [],
-        "addedCategories": ".NOM.SG.N",
-        "fromPOS": "ADJ"
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "e"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "a"
+                }
+            }
+        ],
+        "addedCategories": ".WEAK.NOM.SG.N",
+        "fromPOS": "ADJ",
+        "preInstructions": [
+            {
+                "type": "ApplyRule",
+                "args": [
+                    "3491"
+                ]
+            }
+        ]
     },
     {
         "id": 3496,
         "name": "oe-adj-weak-nom-pl-n",
         "fromLang": "OE",
         "toLang": "OE",
-        "branches": [],
-        "addedCategories": ".NOM.PL.N",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "3492"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".WEAK.NOM.PL.N",
         "fromPOS": "ADJ"
     },
     {
@@ -7304,8 +7342,22 @@
         "name": "oe-adj-weak-acc-sg-n",
         "fromLang": "OE",
         "toLang": "OE",
-        "branches": [],
-        "addedCategories": ".ACC.SG.N",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "3495"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".WEAK.ACC.SG.N",
         "fromPOS": "ADJ"
     },
     {
@@ -7313,8 +7365,22 @@
         "name": "oe-adj-weak-acc-pl-n",
         "fromLang": "OE",
         "toLang": "OE",
-        "branches": [],
-        "addedCategories": ".ACC.PL.N",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "3498"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".WEAK.ACC.PL.N",
         "fromPOS": "ADJ"
     },
     {
@@ -7414,8 +7480,22 @@
         "name": "oe-adj-weak-gen-sg-n",
         "fromLang": "OE",
         "toLang": "OE",
-        "branches": [],
-        "addedCategories": ".GEN.SG.N",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "3503"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".WEAK.GEN.SG.N",
         "fromPOS": "ADJ"
     },
     {
@@ -7423,8 +7503,22 @@
         "name": "oe-adj-weak-gen-pl-n",
         "fromLang": "OE",
         "toLang": "OE",
-        "branches": [],
-        "addedCategories": ".GEN.PL.N",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "3504"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".WEAK.GEN.PL.N",
         "fromPOS": "ADJ"
     },
     {
@@ -7524,8 +7618,22 @@
         "name": "oe-adj-weak-dat-sg-n",
         "fromLang": "OE",
         "toLang": "OE",
-        "branches": [],
-        "addedCategories": ".DAT.SG.N",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "3509"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".WEAK.DAT.SG.N",
         "fromPOS": "ADJ"
     },
     {
@@ -7533,8 +7641,22 @@
         "name": "oe-adj-weak-dat-pl-n",
         "fromLang": "OE",
         "toLang": "OE",
-        "branches": [],
-        "addedCategories": ".DAT.PL.N",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "3510"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".WEAK.DAT.PL.N",
         "fromPOS": "ADJ"
     },
     {

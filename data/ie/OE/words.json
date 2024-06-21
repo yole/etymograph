@@ -761,7 +761,8 @@
         "id": 277,
         "text": "sē",
         "gloss": "the",
-        "fullGloss": "the, this, that"
+        "fullGloss": "the, this, that",
+        "pos": "PRON"
     },
     {
         "id": 278,
@@ -1728,7 +1729,7 @@
         "id": 462,
         "text": "þā",
         "gloss": "when",
-        "fullGloss": "then, at that time",
+        "fullGloss": "then, at that time, when",
         "pos": "ADV",
         "sourceRefs": [
             {
@@ -11763,7 +11764,8 @@
     {
         "id": 3631,
         "text": "hēo",
-        "gloss": "she"
+        "gloss": "she",
+        "pos": "PRON"
     },
     {
         "id": 3632,
@@ -11799,6 +11801,17 @@
         "sourceRefs": [
             {
                 "refText": "https://bosworthtoller.com/13268"
+            }
+        ]
+    },
+    {
+        "id": 3636,
+        "text": "dōn",
+        "gloss": "do",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/7821"
             }
         ]
     }
