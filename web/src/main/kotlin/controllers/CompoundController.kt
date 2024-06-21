@@ -3,7 +3,6 @@ package ru.yole.etymograph.web.controllers
 import org.springframework.web.bind.annotation.*
 import ru.yole.etymograph.Compound
 import ru.yole.etymograph.GraphRepository
-import ru.yole.etymograph.web.GraphService
 import ru.yole.etymograph.web.parseSourceRefs
 import ru.yole.etymograph.web.resolveWord
 

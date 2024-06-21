@@ -1,9 +1,7 @@
 package ru.yole.etymograph.web
 
 import org.springframework.beans.factory.annotation.Value
-import org.springframework.http.HttpStatus
 import org.springframework.stereotype.Service
-import org.springframework.web.server.ResponseStatusException
 import ru.yole.etymograph.*
 import ru.yole.etymograph.web.controllers.badRequest
 import ru.yole.etymograph.web.controllers.notFound
