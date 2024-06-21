@@ -756,6 +756,10 @@
                 {
                     "name": "n-stem",
                     "abbreviation": "n-stem"
+                },
+                {
+                    "name": "i-stem",
+                    "abbreviation": "i-stem"
                 }
             ]
         },
@@ -772,6 +776,10 @@
                 {
                     "name": "weak",
                     "abbreviation": "v-weak"
+                },
+                {
+                    "name": "preterite-present",
+                    "abbreviation": "v-pret-pres"
                 }
             ]
         },

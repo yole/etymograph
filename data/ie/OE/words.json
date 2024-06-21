@@ -446,6 +446,10 @@
         "gloss": "know",
         "fullGloss": "to wit, know, have knowledge, be aware",
         "pos": "V",
+        "classes": [
+            "v-pret-pres",
+            "v-strong-1"
+        ],
         "sourceRefs": [
             {
                 "refText": "https://bosworthtoller.com/36091"
@@ -499,7 +503,7 @@
     },
     {
         "id": 63,
-        "text": "siē"
+        "text": "sīe"
     },
     {
         "id": 64,
@@ -602,12 +606,6 @@
                 "refText": "https://bosworthtoller.com/21483"
             }
         ]
-    },
-    {
-        "id": 77,
-        "text": "we",
-        "gloss": "we.NOM",
-        "pos": "PRON"
     },
     {
         "id": 78,
@@ -813,8 +811,7 @@
     },
     {
         "id": 284,
-        "text": "snotera",
-        "gloss": "wiser"
+        "text": "snotera"
     },
     {
         "id": 285,
@@ -1671,7 +1668,8 @@
         "fullGloss": "A step, footstep, sole of the foot, track, trace",
         "pos": "N",
         "classes": [
-            "masc"
+            "masc",
+            "a-stem"
         ],
         "sourceRefs": [
             {
@@ -3319,7 +3317,8 @@
         "fullGloss": "HIDE, skin:",
         "pos": "N",
         "classes": [
-            "fem"
+            "fem",
+            "i-stem"
         ],
         "sourceRefs": [
             {
@@ -4511,8 +4510,8 @@
     {
         "id": 2500,
         "text": "wyrċan",
-        "gloss": "to work, to make",
-        "fullGloss": "to work, labour",
+        "gloss": "to work",
+        "fullGloss": "to work, labour, make",
         "pos": "V",
         "sourceRefs": [
             {
@@ -4547,7 +4546,8 @@
         "fullGloss": "A sort, kind",
         "pos": "N",
         "classes": [
-            "neut"
+            "neut",
+            "a-stem"
         ],
         "sourceRefs": [
             {
@@ -5831,7 +5831,8 @@
         "fullGloss": "the breath",
         "pos": "N",
         "classes": [
-            "masc"
+            "masc",
+            "a-stem"
         ],
         "sourceRefs": [
             {
@@ -9165,7 +9166,12 @@
     {
         "id": 3189,
         "text": "cleric",
-        "gloss": "cleric"
+        "gloss": "cleric",
+        "pos": "N",
+        "classes": [
+            "masc",
+            "a-stem"
+        ]
     },
     {
         "id": 3190,
@@ -9391,6 +9397,10 @@
         "gloss": "be obliged",
         "fullGloss": "to owe; debere",
         "pos": "V",
+        "classes": [
+            "v-pret-pres",
+            "v-strong-4"
+        ],
         "sourceRefs": [
             {
                 "refText": "https://bosworthtoller.com/27073"
@@ -11006,7 +11016,8 @@
     {
         "id": 3452,
         "text": "tȳddrian",
-        "gloss": "to produce, bring forth",
+        "gloss": "to produce",
+        "fullGloss": "to produce, bring forth",
         "pos": "V"
     },
     {
@@ -11988,5 +11999,184 @@
                 "refText": "https://bosworthtoller.com/22123"
             }
         ]
+    },
+    {
+        "id": 3662,
+        "text": "sculon"
+    },
+    {
+        "id": 3663,
+        "text": "foldan"
+    },
+    {
+        "id": 3664,
+        "text": "folde",
+        "gloss": "earth",
+        "pos": "N",
+        "classes": [
+            "fem"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/11140"
+            }
+        ]
+    },
+    {
+        "id": 3665,
+        "text": "eorþan"
+    },
+    {
+        "id": 3666,
+        "text": "fīrum",
+        "gloss": "living beings.DAT"
+    },
+    {
+        "id": 3667,
+        "text": "fíras",
+        "gloss": "living beings",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/10752"
+            }
+        ]
+    },
+    {
+        "id": 3668,
+        "text": "þearf",
+        "gloss": "need",
+        "pos": "N",
+        "classes": [
+            "fem"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/þearf#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 3669,
+        "text": "sȳ"
+    },
+    {
+        "id": 3670,
+        "text": "gāste"
+    },
+    {
+        "id": 3672,
+        "text": "witodlīċe",
+        "gloss": "truly",
+        "pos": "ADV"
+    },
+    {
+        "id": 3673,
+        "text": "wyrcst"
+    },
+    {
+        "id": 3674,
+        "text": "cræft",
+        "gloss": "power",
+        "fullGloss": "power, might, craft",
+        "pos": "N",
+        "classes": [
+            "masc",
+            "a-stem"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/6643"
+            }
+        ]
+    },
+    {
+        "id": 3675,
+        "text": "nēodþearf"
+    },
+    {
+        "id": 3677,
+        "text": "byċġe"
+    },
+    {
+        "id": 3678,
+        "text": "hȳda"
+    },
+    {
+        "id": 3679,
+        "text": "fell",
+        "gloss": "skin",
+        "pos": "N",
+        "classes": [
+            "neut",
+            "a-stem"
+        ]
+    },
+    {
+        "id": 3680,
+        "text": "fell"
+    },
+    {
+        "id": 3681,
+        "text": "ġearcie"
+    },
+    {
+        "id": 3682,
+        "text": "ġearcian",
+        "gloss": "to prepare",
+        "pos": "V"
+    },
+    {
+        "id": 3683,
+        "text": "cræfte"
+    },
+    {
+        "id": 3684,
+        "text": "cynnes"
+    },
+    {
+        "id": 3685,
+        "text": "ġesċȳ",
+        "gloss": "footwear",
+        "pos": "N"
+    },
+    {
+        "id": 3686,
+        "text": "mistliċes"
+    },
+    {
+        "id": 3687,
+        "text": "mistliċ",
+        "gloss": "various",
+        "pos": "ADJ"
+    },
+    {
+        "id": 3688,
+        "text": "swyftlēras"
+    },
+    {
+        "id": 3689,
+        "text": "swyftlēre",
+        "gloss": "slipper",
+        "pos": "N",
+        "classes": [
+            "masc",
+            "a-stem"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/029786"
+            }
+        ]
+    },
+    {
+        "id": 3690,
+        "text": "mæġ"
+    },
+    {
+        "id": 3691,
+        "text": "magan",
+        "gloss": "to be able to",
+        "pos": "V"
     }
 ]

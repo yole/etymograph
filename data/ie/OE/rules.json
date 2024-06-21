@@ -592,9 +592,19 @@
                     }
                 ],
                 "condition": {
-                    "type": "leaf",
-                    "cond": "ClassMatches",
-                    "characters": "o-stem"
+                    "type": "or",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "o-stem"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "i-stem"
+                        }
+                    ]
                 }
             },
             {
@@ -6573,6 +6583,38 @@
         "fromLang": "OE",
         "toLang": "OE",
         "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplySoundRule",
+                        "args": [
+                            "3567",
+                            "second to last vowel"
+                        ]
+                    },
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "on"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "v-pret-pres"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "an"
+                        }
+                    ]
+                }
+            },
             {
                 "instructions": [
                     {
