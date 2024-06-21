@@ -8,6 +8,7 @@ class CorpusWord(
     val normalizedText: String,
     val segmentedText: String,
     val word: Word?,
+    val wordCandidates: List<Word>?,
     val gloss: String?,
     val segmentedGloss: String?,
     val stressIndex: Int?,
@@ -79,12 +80,15 @@ class CorpusText(
                     val glossWithSegments = wordWithSegments.getOrComputeGloss(repo) ?: word.getOrComputeGloss(repo)
                     val stressIndex = adjustStressIndex(wordWithSegments, stressData?.index)?.plus(leadingPunctuation.length)
 
-                    CorpusWord(currentIndex++, tw.baseText, normalizedText, segmentedText, word, word.getOrComputeGloss(repo),
+                    CorpusWord(currentIndex++, tw.baseText, normalizedText, segmentedText, word, null,
+                        word.getOrComputeGloss(repo),
                         glossWithSegments, stressIndex, stressData?.length, repo.isHomonym(word))
                 }
                 else {
-                    val gloss = repo.wordsByText(language, tw.normalizedText).firstOrNull()?.getOrComputeGloss(repo)
-                    CorpusWord(currentIndex++, tw.baseText, normalizedText, tw.baseText,null, gloss, gloss, null, null,false)
+                    val wordCandidates = repo.wordsByText(language, tw.normalizedText)
+                    val gloss = wordCandidates.firstOrNull()?.getOrComputeGloss(repo)
+                    CorpusWord(currentIndex++, tw.baseText, normalizedText, tw.baseText,null, wordCandidates,
+                        gloss, gloss, null, null,false)
                 }
             })
         }

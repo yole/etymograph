@@ -1,7 +1,7 @@
 import {useState} from "react";
 import WordForm from "@/forms/WordForm";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEdit } from '@fortawesome/free-solid-svg-icons'
+import { faEdit, faCheck } from '@fortawesome/free-solid-svg-icons'
 import WordWithStress from "@/components/WordWithStress";
 import {
     fetchBackend,
@@ -38,7 +38,13 @@ export function CorpusTextWordLink(params) {
     const [hovered, setHovered] = useState(false)
     const router = useRouter()
 
-    if (w.wordText || w.gloss) {
+    if (w.wordCandidates && w.wordCandidates.length > 1) {
+        return <span onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
+            {w.text}
+            {hovered && allowEdit() && <span className="iconWithMargin"><FontAwesomeIcon icon={faEdit} onClick={() => showWordForm(w.normalizedText, w.index)}/></span>}
+        </span>
+    }
+    else if (w.wordText || w.gloss) {
         let linkText = (w.wordText ?? w.normalizedText).toLowerCase()
         if (w.wordId !== null && w.homonym) {
             linkText += `/${w.wordId}`
@@ -55,6 +61,24 @@ export function CorpusTextWordLink(params) {
             if (allowEdit()) showWordForm(w.normalizedText, w.index)
         }}>{w.text}</span>
     }
+}
+
+function CorpusTextGlossChoice(params) {
+    const router = useRouter()
+    const graph = router.query.graph
+    const lang = params.corpusText.language
+    const c = params.candidate
+    const [hovered, setHovered] = useState(false)
+
+    async function acceptGloss() {
+        await acceptAlternative(graph, params.corpusText.id, params.word.index, c.id, -1)
+        router.replace(router.asPath)
+    }
+
+    return <span onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
+        <Link href={`/${graph}/word/${lang}/${params.word.text.toLowerCase()}/${c.id}`}>{c.gloss}</Link>
+        {hovered && allowEdit() && <span className="iconWithMargin"><FontAwesomeIcon icon={faCheck} onClick={() => acceptGloss()}/></span>}
+    </span>
 }
 
 export default function CorpusText(params) {
@@ -131,7 +155,14 @@ export default function CorpusText(params) {
                             </td>)}
                         </tr>
                         <tr>
-                            {l.words.map(w => <td key={w.index}><WordGloss gloss={w.gloss}/></td>)}
+                            {l.words.map(w => <td key={w.index}>
+                                {w.wordCandidates && w.wordCandidates.length > 1 &&
+                                    w.wordCandidates.map((c, i) => <>
+                                        {i > 0 && " | "}
+                                        <CorpusTextGlossChoice corpusText={corpusText} word={w} candidate={c}/>
+                                    </>)}
+                                {(!w.wordCandidates || w.wordCandidates.length <= 1) && <WordGloss gloss={w.gloss}/>}
+                            </td>)}
                         </tr>
                     </tbody></table>
                     {wordIndex >= l.words[0].index && wordIndex <= l.words[l.words.length - 1].index && wordFormVisible &&

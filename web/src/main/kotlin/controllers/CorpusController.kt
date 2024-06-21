@@ -34,11 +34,14 @@ class CorpusController {
     private fun CorpusText.toLangViewModel() =
         CorpusLangTextViewModel(id, title ?: text)
 
+    data class CorpusWordCandidateViewModel(val id: Int, val gloss: String?)
+
     data class CorpusWordViewModel(
         val index: Int,
         val text: String,  // CorpusWord.segmentedText
         val normalizedText: String, // CorpusWord.normalizedText
         val gloss: String, val wordId: Int?, val wordText: String?,
+        val wordCandidates: List<CorpusWordCandidateViewModel>?,
         val stressIndex: Int?, val stressLength: Int?, val homonym: Boolean,
     )
 
@@ -82,6 +85,7 @@ class CorpusController {
                         cw.normalizedText,
                         cw.segmentedGloss ?: "",
                         cw.word?.id, cw.word?.text,
+                        cw.wordCandidates?.map { CorpusWordCandidateViewModel(it.id, it.getOrComputeGloss(repo)) },
                         cw.stressIndex, cw.stressLength, cw.homonym)
                 })
             },
