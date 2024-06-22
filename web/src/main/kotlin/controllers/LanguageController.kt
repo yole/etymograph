@@ -38,6 +38,7 @@ class LanguageController {
         val orthographyRuleId: Int?,
         val orthographyRuleName: String?,
         val syllableStructures: List<String>,
+        val pos: String,
         val grammaticalCategories: String,
         val wordClasses: String,
         val dictionarySettings: String?
@@ -87,6 +88,7 @@ class LanguageController {
             orthographyRule?.id,
             orthographyRule?.name,
             syllableStructures,
+            pos.valuesToEditableText(),
             grammaticalCategories.toEditableText(),
             wordClasses.toEditableText(),
             dictionarySettings
@@ -104,6 +106,7 @@ class LanguageController {
         val pronunciationRuleName: String? = null,
         val orthographyRuleName: String? = null,
         val syllableStructures: String? = null,
+        val pos: String? = null,
         val grammaticalCategories: String? = null,
         val wordClasses: String? = null,
         val dictionarySettings: String? = null
@@ -172,6 +175,7 @@ class LanguageController {
 
         language.diphthongs = parseList(params.diphthongs)
         language.syllableStructures = parseList(params.syllableStructures)
+        language.pos = params.pos.nullize()?.let { parseWordCategoryValues(it) } ?: mutableListOf()
         language.grammaticalCategories = params.grammaticalCategories.nullize()?.let { parseWordCategories(it) } ?: mutableListOf()
         language.wordClasses = params.wordClasses.nullize()?.let { parseWordCategories(it) } ?: mutableListOf()
 
@@ -191,9 +195,12 @@ class LanguageController {
     private fun List<WordCategory>.toEditableText(): String {
         return joinToString("\n") { gc ->
             val pos = gc.pos.joinToString(", ")
-            "${gc.name} ($pos): ${gc.values.joinToString(", ") { it.toEditableText() }}"
+            "${gc.name} ($pos): ${gc.values.valuesToEditableText()}"
         }
     }
+
+    private fun List<WordCategoryValue>.valuesToEditableText(): String =
+        joinToString(", ") { it.toEditableText() }
 
     private fun WordCategoryValue.toEditableText(): String {
         return if (name == abbreviation) name else "$name ($abbreviation)"
@@ -206,23 +213,21 @@ class LanguageController {
             WordCategory(
                 name,
                 pos,
-                valueStrings.split(',').map {
-                    parseWordCategoryValue(it.trim())
-                }
+                parseWordCategoryValues(valueStrings)
             )
         }
     }
+
+    private fun parseWordCategoryValues(valueStrings: String): MutableList<WordCategoryValue> =
+        valueStrings.split(',').map { it.trim() }.mapTo(mutableListOf()) { s ->
+            val p = parenthesized.matchEntire(s)
+            if (p != null) WordCategoryValue(p.groupValues[1], p.groupValues[2]) else WordCategoryValue(s, s)
+        }
 
     private fun parseWordCategoryName(s: String): Pair<String, List<String>> {
         val p = parenthesized.matchEntire(s)
             ?: badRequest("Unrecognized grammatical category name format $s")
         return p.groupValues[1] to p.groupValues[2].split(',').map { it.trim() }
-    }
-
-    private fun parseWordCategoryValue(s: String): WordCategoryValue {
-        val p = parenthesized.matchEntire(s)
-            ?: return WordCategoryValue(s, s)
-        return WordCategoryValue(p.groupValues[1], p.groupValues[2])
     }
 
     companion object {

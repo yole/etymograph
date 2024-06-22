@@ -104,6 +104,10 @@ export default function LanguageIndex(props) {
                 {lang.orthographyRuleName != null && <p>Orthography rule: <Link href={`/${graph}/rule/${lang.orthographyRuleId}`}>{lang.orthographyRuleName}</Link></p>}
 
                 <h3>Grammar</h3>
+                {lang.pos != null && lang.pos.trim().length > 0 && <>
+                    <h4>Parts of speech</h4>
+                    <p>{lang.pos}</p>
+                </>}
                 {lang.grammaticalCategories.trim().length > 0 && <>
                     <h4>Grammatical categories</h4>
                     <ul>
@@ -131,6 +135,7 @@ export default function LanguageIndex(props) {
                         phonotacticsRuleName: lang.phonotacticsRuleName,
                         pronunciationRuleName: lang.pronunciationRuleName,
                         orthographyRuleName: lang.orthographyRuleName,
+                        pos: lang.pos,
                         grammaticalCategories: lang.grammaticalCategories,
                         wordClasses: lang.wordClasses,
                         dictionarySettings: lang.dictionarySettings
@@ -145,6 +150,9 @@ export default function LanguageIndex(props) {
                     <RuleListSelect label="Orthography rule" id="orthographyRuleName"/>
                 </tbody></table>
                 <h3>Grammar</h3>
+                <table><tbody>
+                    <FormRow label="Parts of speech" id="pos" size="50"/>
+                </tbody></table>
                 <h4>Grammatical categories</h4>
                 <FormTextArea rows="5" cols="50" id="grammaticalCategories"/>
                 <h4>Word classes</h4>

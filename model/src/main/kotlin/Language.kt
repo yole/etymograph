@@ -137,6 +137,7 @@ class Language(val name: String, val shortName: String) {
     var phonotacticsRule: RuleRef? = null
     var pronunciationRule: RuleRef? = null
     var orthographyRule: RuleRef? = null
+    var pos = mutableListOf<WordCategoryValue>()
     var grammaticalCategories = mutableListOf<WordCategory>()
     var wordClasses = mutableListOf<WordCategory>()
 
