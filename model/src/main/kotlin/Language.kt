@@ -143,6 +143,8 @@ class Language(val name: String, val shortName: String) {
     var orthoPhonemeLookup = PhonemeLookup()
     var phonoPhonemeLookup = PhonemeLookup()
 
+    var dictionarySettings: String? = null
+
     private fun updateGraphemes() {
         orthoPhonemeLookup.clear()
         phonoPhonemeLookup.clear()

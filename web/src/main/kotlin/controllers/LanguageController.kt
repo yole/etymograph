@@ -39,7 +39,8 @@ class LanguageController {
         val orthographyRuleName: String?,
         val syllableStructures: List<String>,
         val grammaticalCategories: String,
-        val wordClasses: String
+        val wordClasses: String,
+        val dictionarySettings: String?
     )
 
     data class LanguageShortViewModel(
@@ -87,7 +88,8 @@ class LanguageController {
             orthographyRule?.name,
             syllableStructures,
             grammaticalCategories.toEditableText(),
-            wordClasses.toEditableText()
+            wordClasses.toEditableText(),
+            dictionarySettings
         )
     }
 
@@ -103,7 +105,8 @@ class LanguageController {
         val orthographyRuleName: String? = null,
         val syllableStructures: String? = null,
         val grammaticalCategories: String? = null,
-        val wordClasses: String? = null
+        val wordClasses: String? = null,
+        val dictionarySettings: String? = null
     )
 
     @PostMapping("/{graph}/languages", consumes = ["application/json"])
@@ -176,6 +179,8 @@ class LanguageController {
         language.phonotacticsRule = parseRuleRef(repo, params.phonotacticsRuleName)
         language.pronunciationRule = parseRuleRef(repo, params.pronunciationRuleName)
         language.orthographyRule = parseRuleRef(repo, params.orthographyRuleName)
+
+        language.dictionarySettings = params.dictionarySettings
     }
 
     private fun parseRuleRef(repo: GraphRepository, name: String?): RuleRef? {

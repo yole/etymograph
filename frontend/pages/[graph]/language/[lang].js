@@ -116,6 +116,10 @@ export default function LanguageIndex(props) {
                         {lang.wordClasses.split('\n').map(s => <li>{s}</li>)}
                     </ul>
                 </>}
+                {lang.dictionarySettings != null && <>
+                    <h3>Dictionary Settings</h3>
+                    <p className="languageSettings">{lang.dictionarySettings}</p>
+                </>}
             </View>
             <EtymographForm
                     updateId={langId}
@@ -128,7 +132,8 @@ export default function LanguageIndex(props) {
                         pronunciationRuleName: lang.pronunciationRuleName,
                         orthographyRuleName: lang.orthographyRuleName,
                         grammaticalCategories: lang.grammaticalCategories,
-                        wordClasses: lang.wordClasses
+                        wordClasses: lang.wordClasses,
+                        dictionarySettings: lang.dictionarySettings
                     }}
             >
                 <table><tbody>
@@ -144,6 +149,8 @@ export default function LanguageIndex(props) {
                 <FormTextArea rows="5" cols="50" id="grammaticalCategories"/>
                 <h4>Word classes</h4>
                 <FormTextArea rows="5" cols="50" id="wordClasses"/>
+                <h3>Dictionary settings</h3>
+                <FormTextArea rows="5" cols="50" id="dictionarySettings"/>
             </EtymographForm>
         </EtymographFormView>
         <p/>

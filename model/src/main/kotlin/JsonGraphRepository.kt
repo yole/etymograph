@@ -51,7 +51,8 @@ data class LanguageDetailsData(
     val orthographyRuleId: Int? = null,
     val syllableStructures: List<String> = emptyList(),
     val grammaticalCategories: List<WordCategoryData> = emptyList(),
-    val wordClasses: List<WordCategoryData> = emptyList()
+    val wordClasses: List<WordCategoryData> = emptyList(),
+    val dictionarySettings: String? = null
 )
 
 @Serializable
@@ -394,7 +395,8 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                 lang.orthographyRule?.resolve()?.id,
                 lang.syllableStructures,
                 serializeWordCategories(lang.grammaticalCategories),
-                serializeWordCategories(lang.wordClasses)
+                serializeWordCategories(lang.wordClasses),
+                lang.dictionarySettings
             )
             consumer(lang.shortName + "/language.json", theJson.encodeToString(languageDetailsData))
         }
@@ -575,6 +577,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             language.syllableStructures = data.syllableStructures
             language.grammaticalCategories = deserializeWordCategories(data.grammaticalCategories)
             language.wordClasses = deserializeWordCategories(data.wordClasses)
+            language.dictionarySettings = data.dictionarySettings
         }
     }
 

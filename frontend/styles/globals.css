@@ -133,3 +133,7 @@ code {
 .ruleTrace {
   white-space: pre;
 }
+
+.languageSettings {
+  white-space: pre;
+}
