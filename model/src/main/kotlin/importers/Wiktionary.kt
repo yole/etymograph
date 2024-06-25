@@ -25,8 +25,9 @@ val wiktionaryPosNames = setOf("Noun", "Adjective", "Verb", "Article", "Determin
 
 class WiktionaryPosSection(val pos: String) {
     val senses = mutableListOf<String>()
+    val classes = mutableListOf<String>()
 
-    fun parse(lines: LineBuffer) {
+    fun parse(lines: LineBuffer, dictionarySettings: Map<String, List<String>>) {
         var subsection: String? = null
         while (true) {
             val line = lines.peek() ?: return
@@ -34,6 +35,12 @@ class WiktionaryPosSection(val pos: String) {
                 return
             }
             lines.next()
+
+            for ((key, value) in dictionarySettings) {
+                if (key in line) {
+                    classes.addAll(value)
+                }
+            }
 
             if (line.startsWith("====")) {
                 subsection = line.trimStart('=').trimEnd('=')
@@ -64,7 +71,7 @@ class WiktionaryPage(source: String) {
         }
     }
 
-    fun parse(language: String): Boolean {
+    fun parse(language: String, dictionarySettings: Map<String, List<String>>): Boolean {
         if (!seekToLanguage(language)) return false
         var currentSection: String? = null
         while (true) {
@@ -72,7 +79,7 @@ class WiktionaryPage(source: String) {
             if (line.startsWith("===")) {
                 currentSection = line.trimStart('=').trimEnd('=')
                 if (currentSection in wiktionaryPosNames) {
-                    posSections.add(WiktionaryPosSection(currentSection).apply { parse(lines) })
+                    posSections.add(WiktionaryPosSection(currentSection).apply { parse(lines, dictionarySettings) })
                 }
             }
             else if (line.startsWith("==")) {
@@ -84,15 +91,32 @@ class WiktionaryPage(source: String) {
 }
 
 class Wiktionary : Dictionary {
+    private fun parseDictionarySettings(settings: String?): Map<String, List<String>> {
+        if (settings == null) return emptyMap()
+        return settings
+            .split('\n')
+            .mapNotNull { it.trim().takeIf { line -> line.isNotEmpty() } }
+            .mapNotNull { parseDictionarySettingsLine(it) }
+            .toMap()
+    }
+
+    private fun parseDictionarySettingsLine(line: String): Pair<String, List<String>>? {
+        val keyValue = line.split(':')
+        if (keyValue.size != 2) return null
+        return keyValue[0].trim() to keyValue[1].split(',').map { it.trim() }
+    }
+
     override fun lookup(language: Language, word: String): List<Word> {
         val pageJson = loadWiktionaryPage(word)
         val pageData = json.decodeFromString<WiktionaryPageData>(pageJson)
         val wiktionaryPage = WiktionaryPage(pageData.source)
-        if (!wiktionaryPage.parse(language.name)) {
+        if (!wiktionaryPage.parse(language.name, parseDictionarySettings(language.dictionarySettings))) {
             return emptyList()
         }
         return wiktionaryPage.posSections.map { section ->
-            Word(-1, word, language, section.senses.first(), section.senses.joinToString("; "))
+            Word(-1, word, language, section.senses.first(), section.senses.joinToString("; "),
+                pos = language.pos.find { it.name == section.pos }?.abbreviation,
+                classes = section.classes)
         }
     }
 
@@ -106,5 +130,8 @@ fun main() {
     val oe = ieRepo.languageByShortName("OE")!!
     val wiktionary = Wiktionary()
     val result = wiktionary.lookup(oe, "æcer")
-    println(result.single().fullGloss)
+    val word = result.single()
+    println(word.fullGloss)
+    println(word.pos)
+    println(word.classes)
 }
