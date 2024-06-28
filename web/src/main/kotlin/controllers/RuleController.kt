@@ -272,7 +272,7 @@ class RuleController {
             logic,
             params.addedCategories.nullize(),
             params.replacedCategories.nullize(),
-            parseList(params.fromPOS),
+            parsePOSList(params.fromPOS, fromLanguage),
             params.toPOS.nullize(),
             parseSourceRefs(repo, params.source),
             params.notes
@@ -306,7 +306,7 @@ class RuleController {
         rule.notes = params.notes
         rule.addedCategories = params.addedCategories.nullize()
         rule.replacedCategories = params.replacedCategories.nullize()
-        rule.fromPOS = parseList(params.fromPOS)
+        rule.fromPOS = parsePOSList(params.fromPOS, fromLanguage)
         rule.toPOS = params.toPOS.nullize()
         rule.source = parseSourceRefs(repo, params.source)
         return rule.toViewModel(repo)
@@ -414,4 +414,14 @@ class RuleController {
         val result = rule.apply(word, repo, trace)
         return RuleTraceResult(trace.log(), result.text)
     }
+}
+
+fun parsePOSList(pos: String?, language: Language): List<String> {
+    val posList = parseList(pos)
+    for (posEntry in posList) {
+        if (!language.pos.any { it.abbreviation == posEntry }) {
+            badRequest("Unknown POS '$posEntry'")
+        }
+    }
+    return posList
 }

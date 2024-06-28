@@ -1,7 +1,7 @@
 package ru.yole.etymograph.web
 
+import org.junit.Assert
 import org.junit.Assert.assertEquals
-import org.junit.Assert.assertThrows
 import org.junit.Before
 import org.junit.Test
 import org.springframework.web.server.ResponseStatusException
@@ -44,7 +44,7 @@ class PhonemeControllerTest {
     @Test
     fun duplicateGrapheme() {
         graph.addPhoneme(fixture.q, listOf("a"), null, setOf("vowel"))
-        assertThrows(ResponseStatusException::class.java) {
+        assertBadRequest("Duplicate graphemes [a]") {
             phonemeController.addPhoneme(graph, fixture.q.shortName, PhonemeController.UpdatePhonemeParameters(
                 "a", "", "vowel"
             ))
@@ -96,5 +96,22 @@ class PhonemeControllerTest {
 
         val uPhonemeViewModel = phonemeController.phoneme(graph, uPhoneme.id)
         assertEquals(1, uPhonemeViewModel.relatedRules.size)
+    }
+}
+
+fun assertBadRequest(message: String, block: () -> Unit) {
+    try {
+        block()
+        Assert.fail("Bad request exception expected")
+    }
+    catch(e: ResponseStatusException) {
+        assertEquals(400, e.body.status)
+        assertEquals(message, e.body.detail)
+    }
+    catch(e: AssertionError) {
+        throw e
+    }
+    catch(e: Throwable) {
+        Assert.fail("Unexpected exception $e")
     }
 }

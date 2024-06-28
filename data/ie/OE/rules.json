@@ -140,7 +140,8 @@
         ],
         "addedCategories": ".GEN",
         "fromPOS": [
-            "N"
+            "N",
+            "NP"
         ],
         "preInstructions": [
             {

@@ -64,6 +64,20 @@ class RuleControllerTest {
     }
 
     @Test
+    fun validateFromPOS() {
+        assertBadRequest("Unknown POS 'X'") {
+            ruleController.newRule(
+                fixture.graph,
+                RuleController.UpdateRuleParameters(
+                    "q-pos",
+                    "q", "q",
+                    "- no change",
+                    fromPOS = "X"
+                ))
+        }
+    }
+
+    @Test
     fun uniqueRuleName() {
         ruleController.newRule(
             fixture.graph,
