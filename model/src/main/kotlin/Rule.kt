@@ -184,12 +184,12 @@ class Rule(
     var fromLanguage: Language,
     var toLanguage: Language,
     var logic: RuleLogic,
-    var addedCategories: String?,
-    var replacedCategories: String?,
-    var fromPOS: String?,
-    var toPOS: String?,
-    source: List<SourceRef>,
-    notes: String?
+    var addedCategories: String? = null,
+    var replacedCategories: String? = null,
+    var fromPOS: List<String> = emptyList(),
+    var toPOS: String? = null,
+    source: List<SourceRef> = emptyList(),
+    notes: String? = null
 ) : LangEntity(id, source, notes) {
     fun isPhonemic(): Boolean = logic.branches.any { it.condition.isPhonemic() }
 

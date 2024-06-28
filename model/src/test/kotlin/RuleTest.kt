@@ -219,7 +219,7 @@ class RuleTest : QBaseTest() {
         val parseContext = q.parseContext(null, soundRule)
         val applySoundRule = Rule(-1, "q-lengthen-first", q, q, Rule.parseBranches("""
             - apply sound rule 'q-lengthen' to first vowel
-        """.trimIndent(), parseContext), null, null, null, null, emptyList(), null)
+        """.trimIndent(), parseContext))
         assertEquals("lásse", applySoundRule.apply(q.word("lasse"), emptyRepo).text)
     }
 
@@ -232,7 +232,7 @@ class RuleTest : QBaseTest() {
         val parseContext = q.parseContext(null, soundRule)
         val applySoundRule = Rule(-1, "q-lengthen", q, q, Rule.parseBranches("""
             - apply sound rule 'q-lengthen-sound' to first sound
-        """.trimIndent(), parseContext), null, null, null, null, emptyList(), null)
+        """.trimIndent(), parseContext))
         assertEquals("áire", applySoundRule.apply(q.word("aire"), emptyRepo).text)
         assertEquals("apply sound rule 'q-lengthen-sound' to first sound",
             applySoundRule.logic.branches[0].instructions[0].toEditableText())
@@ -251,7 +251,7 @@ class RuleTest : QBaseTest() {
         val parseContext = q.parseContext(null, soundRule)
         val applySoundRule = Rule(-1, "q-lengthen", q, q, Rule.parseBranches("""
             - apply sound rule 'q-lengthen-sound' to first sound
-        """.trimIndent(), parseContext), null, null, null, null, emptyList(), null)
+        """.trimIndent(), parseContext))
         assertEquals("chaered", applySoundRule.apply(q.word("caered"), emptyRepo).text)
     }
 
@@ -265,7 +265,7 @@ class RuleTest : QBaseTest() {
         val parseContext = q.parseContext(null, soundRule)
         val applySoundRule = Rule(-1, "q-lengthen", q, q, Rule.parseBranches("""
             - apply sound rule 'q-lengthen-sound' to first sound
-        """.trimIndent(), parseContext), null, null, null, null, emptyList(), null)
+        """.trimIndent(), parseContext))
         assertEquals("pherian", applySoundRule.apply(q.word("Perian"), emptyRepo).text)
     }
 
@@ -550,7 +550,7 @@ fun Language.parseContext(repo: GraphRepository? = null, vararg rules: Rule): Ru
 
 fun parseRule(
     fromLanguage: Language, toLanguage: Language, text: String, name: String = "q", repo: GraphRepository? = null,
-    addedCategories: String? = null, fromPOS: String? = null, toPOS: String? = null,
+    addedCategories: String? = null, fromPOS: List<String> = emptyList(), toPOS: String? = null,
     context: RuleParseContext? = null
 ): Rule = Rule(
     -1, name, fromLanguage, toLanguage,

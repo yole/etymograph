@@ -20,12 +20,7 @@ class ParadigmTest : QBaseTest() {
             q,
             q,
             Rule.parseBranches("- append 'o'", q.parseContext()),
-            ".GEN",
-            null,
-            null,
-            null,
-            emptyList(),
-            null
+            ".GEN"
         )
         paradigm.setRule(1, 0, listOf(genRule))
 
@@ -46,36 +41,21 @@ class ParadigmTest : QBaseTest() {
             q,
             q,
             Rule.parseBranches("- append 'r'", q.parseContext()),
-            ".PL",
-            null,
-            null,
-            null,
-            emptyList(),
-            null
+            ".PL"
         )
         val genRule = repo.addRule(
             "q-gen",
             q,
             q,
             Rule.parseBranches("- append 'o'", q.parseContext()),
-            ".GEN",
-            null,
-            null,
-            null,
-            emptyList(),
-            null
+            ".GEN"
         )
         val genPlRule = repo.addRule(
             "q-gen-pl",
             q,
             q,
             Rule.parseBranches("- append 'on'", q.parseContext()),
-            ".GEN.PL",
-            null,
-            null,
-            null,
-            emptyList(),
-            null
+            ".GEN.PL"
         )
 
         val paradigm = repo.addParadigm("Noun", q, listOf("N"))

@@ -48,7 +48,7 @@ class RuleController {
         val addedCategories: String?,
         val replacedCategories: String?,
         val addedCategoryDisplayNames: String?,
-        val fromPOS: String?,
+        val fromPOS: List<String>,
         val toPOS: String?,
         val source: List<SourceRefViewModel>,
         val sourceEditableText: String,
@@ -272,7 +272,7 @@ class RuleController {
             logic,
             params.addedCategories.nullize(),
             params.replacedCategories.nullize(),
-            params.fromPOS.nullize(),
+            parseList(params.fromPOS),
             params.toPOS.nullize(),
             parseSourceRefs(repo, params.source),
             params.notes
@@ -306,7 +306,7 @@ class RuleController {
         rule.notes = params.notes
         rule.addedCategories = params.addedCategories.nullize()
         rule.replacedCategories = params.replacedCategories.nullize()
-        rule.fromPOS = params.fromPOS.nullize()
+        rule.fromPOS = parseList(params.fromPOS)
         rule.toPOS = params.toPOS.nullize()
         rule.source = parseSourceRefs(repo, params.source)
         return rule.toViewModel(repo)

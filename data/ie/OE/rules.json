@@ -139,7 +139,9 @@
             }
         ],
         "addedCategories": ".GEN",
-        "fromPOS": "N",
+        "fromPOS": [
+            "N"
+        ],
         "preInstructions": [
             {
                 "type": "ApplyRule",
@@ -269,7 +271,10 @@
             }
         ],
         "addedCategories": ".ACC",
-        "fromPOS": "N",
+        "fromPOS": [
+            "N",
+            "PRON"
+        ],
         "preInstructions": [
             {
                 "type": "ApplyRule",
@@ -419,7 +424,9 @@
             }
         ],
         "addedCategories": ".DAT",
-        "fromPOS": "N",
+        "fromPOS": [
+            "N"
+        ],
         "preInstructions": [
             {
                 "type": "ApplyRule",
@@ -658,7 +665,9 @@
             }
         ],
         "addedCategories": ".NOM.PL",
-        "fromPOS": "N",
+        "fromPOS": [
+            "N"
+        ],
         "preInstructions": [
             {
                 "type": "ApplyRule",
@@ -688,8 +697,7 @@
                 }
             }
         ],
-        "addedCategories": ".ACC.PL",
-        "notes": ""
+        "addedCategories": ".ACC.PL"
     },
     {
         "id": 472,
@@ -881,7 +889,9 @@
             }
         ],
         "addedCategories": ".GEN.PL",
-        "fromPOS": "N",
+        "fromPOS": [
+            "N"
+        ],
         "preInstructions": [
             {
                 "type": "ApplyRule",
@@ -1060,7 +1070,10 @@
             }
         ],
         "addedCategories": ".DAT.PL",
-        "fromPOS": "N",
+        "fromPOS": [
+            "N",
+            "PRON"
+        ],
         "preInstructions": [
             {
                 "type": "ApplyRule",
@@ -1097,7 +1110,9 @@
             }
         ],
         "addedCategories": ".M.NOM.PL",
-        "fromPOS": "ADJ"
+        "fromPOS": [
+            "ADJ"
+        ]
     },
     {
         "id": 1188,
@@ -1156,8 +1171,7 @@
                     ]
                 }
             }
-        ],
-        "notes": ""
+        ]
     },
     {
         "id": 1195,
@@ -1182,8 +1196,9 @@
             }
         ],
         "addedCategories": ".PART",
-        "fromPOS": "V",
-        "notes": ""
+        "fromPOS": [
+            "V"
+        ]
     },
     {
         "id": 1248,
@@ -1445,7 +1460,9 @@
             }
         ],
         "addedCategories": ".PST",
-        "fromPOS": "V"
+        "fromPOS": [
+            "V"
+        ]
     },
     {
         "id": 1253,
@@ -1468,7 +1485,9 @@
             }
         ],
         "addedCategories": ".PST.1SG",
-        "fromPOS": "V"
+        "fromPOS": [
+            "V"
+        ]
     },
     {
         "id": 1254,
@@ -1506,7 +1525,9 @@
             }
         ],
         "addedCategories": ".PST.2SG",
-        "fromPOS": "V",
+        "fromPOS": [
+            "V"
+        ],
         "preInstructions": [
             {
                 "type": "ApplyRule",
@@ -1550,7 +1571,9 @@
             }
         ],
         "addedCategories": ".PST.3SG",
-        "fromPOS": "V",
+        "fromPOS": [
+            "V"
+        ],
         "preInstructions": [
             {
                 "type": "ApplyRule",
@@ -1593,7 +1616,9 @@
             }
         ],
         "addedCategories": ".PST.1PL",
-        "fromPOS": "V"
+        "fromPOS": [
+            "V"
+        ]
     },
     {
         "id": 1257,
@@ -1622,7 +1647,9 @@
             }
         ],
         "addedCategories": ".PST.2PL",
-        "fromPOS": "V"
+        "fromPOS": [
+            "V"
+        ]
     },
     {
         "id": 1258,
@@ -1651,7 +1678,9 @@
             }
         ],
         "addedCategories": ".PST.3PL",
-        "fromPOS": "V"
+        "fromPOS": [
+            "V"
+        ]
     },
     {
         "id": 1981,
@@ -2022,8 +2051,7 @@
                 "pubId": 5,
                 "refText": "141"
             }
-        ],
-        "notes": ""
+        ]
     },
     {
         "id": 2048,
@@ -2122,8 +2150,7 @@
                 "pubId": 5,
                 "refText": "142"
             }
-        ],
-        "notes": ""
+        ]
     },
     {
         "id": 2060,
@@ -2445,8 +2472,7 @@
                 "pubId": 5,
                 "refText": "154"
             }
-        ],
-        "notes": ""
+        ]
     },
     {
         "id": 2082,
@@ -2491,8 +2517,7 @@
                 "pubId": 5,
                 "refText": "156"
             }
-        ],
-        "notes": ""
+        ]
     },
     {
         "id": 2086,
@@ -2541,8 +2566,7 @@
                 "pubId": 5,
                 "refText": "156"
             }
-        ],
-        "notes": ""
+        ]
     },
     {
         "id": 2090,
@@ -2586,8 +2610,7 @@
                 "pubId": 5,
                 "refText": "157"
             }
-        ],
-        "notes": ""
+        ]
     },
     {
         "id": 2095,
@@ -4291,8 +4314,7 @@
                     "type": "otherwise"
                 }
             }
-        ],
-        "notes": ""
+        ]
     },
     {
         "id": 2298,
@@ -5280,8 +5302,7 @@
                 "pubId": 5,
                 "refText": "281"
             }
-        ],
-        "notes": ""
+        ]
     },
     {
         "id": 2365,
@@ -6109,8 +6130,7 @@
                 "pubId": 5,
                 "refText": "297"
             }
-        ],
-        "notes": ""
+        ]
     },
     {
         "id": 2402,
@@ -6205,8 +6225,7 @@
                 "pubId": 5,
                 "refText": "84"
             }
-        ],
-        "notes": ""
+        ]
     },
     {
         "id": 2618,
@@ -6261,8 +6280,7 @@
                 "pubId": 5,
                 "refText": "53"
             }
-        ],
-        "notes": ""
+        ]
     },
     {
         "id": 2953,
@@ -6470,8 +6488,7 @@
                 "pubId": 5,
                 "refText": "173"
             }
-        ],
-        "notes": ""
+        ]
     },
     {
         "id": 3319,
@@ -6500,8 +6517,7 @@
                 "pubId": 5,
                 "refText": "204"
             }
-        ],
-        "notes": ""
+        ]
     },
     {
         "id": 3438,
@@ -6531,8 +6547,7 @@
                 "pubId": 7,
                 "refText": "155"
             }
-        ],
-        "notes": ""
+        ]
     },
     {
         "id": 3439,
@@ -6557,7 +6572,9 @@
             }
         ],
         "addedCategories": ".PRES.1SG",
-        "fromPOS": "V"
+        "fromPOS": [
+            "V"
+        ]
     },
     {
         "id": 3440,
@@ -6588,7 +6605,9 @@
             }
         ],
         "addedCategories": ".PRES.2SG",
-        "fromPOS": "V"
+        "fromPOS": [
+            "V"
+        ]
     },
     {
         "id": 3441,
@@ -6619,7 +6638,9 @@
             }
         ],
         "addedCategories": ".PRES.3SG",
-        "fromPOS": "V"
+        "fromPOS": [
+            "V"
+        ]
     },
     {
         "id": 3442,
@@ -6676,7 +6697,9 @@
             }
         ],
         "addedCategories": ".PRES.1PL",
-        "fromPOS": "V"
+        "fromPOS": [
+            "V"
+        ]
     },
     {
         "id": 3443,
@@ -6699,7 +6722,9 @@
             }
         ],
         "addedCategories": ".PRES.2PL",
-        "fromPOS": "V"
+        "fromPOS": [
+            "V"
+        ]
     },
     {
         "id": 3444,
@@ -6722,7 +6747,9 @@
             }
         ],
         "addedCategories": ".PRES.3PL",
-        "fromPOS": "V"
+        "fromPOS": [
+            "V"
+        ]
     },
     {
         "id": 3462,
@@ -6829,7 +6856,9 @@
             }
         ],
         "addedCategories": ".M.ACC",
-        "fromPOS": "ADJ"
+        "fromPOS": [
+            "ADJ"
+        ]
     },
     {
         "id": 3466,
@@ -6864,7 +6893,9 @@
             }
         ],
         "addedCategories": ".M.GEN",
-        "fromPOS": "ADJ"
+        "fromPOS": [
+            "ADJ"
+        ]
     },
     {
         "id": 3467,
@@ -6905,7 +6936,9 @@
             }
         ],
         "addedCategories": ".M.DAT",
-        "fromPOS": "ADJ"
+        "fromPOS": [
+            "ADJ"
+        ]
     },
     {
         "id": 3470,
@@ -6928,7 +6961,9 @@
             }
         ],
         "addedCategories": ".M.ACC.PL",
-        "fromPOS": "ADJ"
+        "fromPOS": [
+            "ADJ"
+        ]
     },
     {
         "id": 3471,
@@ -6988,7 +7023,9 @@
             }
         ],
         "addedCategories": ".M.DAT.PL",
-        "fromPOS": "ADJ"
+        "fromPOS": [
+            "ADJ"
+        ]
     },
     {
         "id": 3473,
@@ -7031,7 +7068,9 @@
             }
         ],
         "addedCategories": ".F.NOM",
-        "fromPOS": "ADJ"
+        "fromPOS": [
+            "ADJ"
+        ]
     },
     {
         "id": 3475,
@@ -7081,7 +7120,9 @@
             }
         ],
         "addedCategories": ".F.NOM.PL",
-        "fromPOS": "ADJ"
+        "fromPOS": [
+            "ADJ"
+        ]
     },
     {
         "id": 3476,
@@ -7102,7 +7143,9 @@
             }
         ],
         "addedCategories": ".N.NOM",
-        "fromPOS": "ADJ"
+        "fromPOS": [
+            "ADJ"
+        ]
     },
     {
         "id": 3477,
@@ -7144,7 +7187,9 @@
             }
         ],
         "addedCategories": ".N.NOM.PL",
-        "fromPOS": "ADJ"
+        "fromPOS": [
+            "ADJ"
+        ]
     },
     {
         "id": 3491,
@@ -7188,7 +7233,9 @@
             }
         ],
         "addedCategories": ".NOM.SG.M.WEAK",
-        "fromPOS": "ADJ"
+        "fromPOS": [
+            "ADJ"
+        ]
     },
     {
         "id": 3492,
@@ -7211,7 +7258,9 @@
             }
         ],
         "addedCategories": ".NOM.PL.M.WEAK",
-        "fromPOS": "ADJ"
+        "fromPOS": [
+            "ADJ"
+        ]
     },
     {
         "id": 3493,
@@ -7236,7 +7285,9 @@
             }
         ],
         "addedCategories": ".NOM.SG.F.WEAK",
-        "fromPOS": "ADJ",
+        "fromPOS": [
+            "ADJ"
+        ],
         "preInstructions": [
             {
                 "type": "ApplyRule",
@@ -7267,7 +7318,9 @@
             }
         ],
         "addedCategories": ".NOM.PL.F.WEAK",
-        "fromPOS": "ADJ"
+        "fromPOS": [
+            "ADJ"
+        ]
     },
     {
         "id": 3495,
@@ -7292,7 +7345,9 @@
             }
         ],
         "addedCategories": ".WEAK.NOM.SG.N",
-        "fromPOS": "ADJ",
+        "fromPOS": [
+            "ADJ"
+        ],
         "preInstructions": [
             {
                 "type": "ApplyRule",
@@ -7323,7 +7378,9 @@
             }
         ],
         "addedCategories": ".WEAK.NOM.PL.N",
-        "fromPOS": "ADJ"
+        "fromPOS": [
+            "ADJ"
+        ]
     },
     {
         "id": 3497,
@@ -7352,7 +7409,9 @@
             }
         ],
         "addedCategories": ".ACC.SG.M.WEAK",
-        "fromPOS": "ADJ"
+        "fromPOS": [
+            "ADJ"
+        ]
     },
     {
         "id": 3498,
@@ -7375,7 +7434,9 @@
             }
         ],
         "addedCategories": ".ACC.PL.M.WEAK",
-        "fromPOS": "ADJ"
+        "fromPOS": [
+            "ADJ"
+        ]
     },
     {
         "id": 3499,
@@ -7398,7 +7459,9 @@
             }
         ],
         "addedCategories": ".ACC.SG.F.WEAK",
-        "fromPOS": "ADJ"
+        "fromPOS": [
+            "ADJ"
+        ]
     },
     {
         "id": 3500,
@@ -7421,7 +7484,9 @@
             }
         ],
         "addedCategories": ".ACC.PL.F.WEAK",
-        "fromPOS": "ADJ"
+        "fromPOS": [
+            "ADJ"
+        ]
     },
     {
         "id": 3501,
@@ -7444,7 +7509,9 @@
             }
         ],
         "addedCategories": ".WEAK.ACC.SG.N",
-        "fromPOS": "ADJ"
+        "fromPOS": [
+            "ADJ"
+        ]
     },
     {
         "id": 3502,
@@ -7467,7 +7534,9 @@
             }
         ],
         "addedCategories": ".WEAK.ACC.PL.N",
-        "fromPOS": "ADJ"
+        "fromPOS": [
+            "ADJ"
+        ]
     },
     {
         "id": 3503,
@@ -7490,7 +7559,9 @@
             }
         ],
         "addedCategories": ".GEN.SG.M.WEAK",
-        "fromPOS": "ADJ"
+        "fromPOS": [
+            "ADJ"
+        ]
     },
     {
         "id": 3504,
@@ -7513,7 +7584,9 @@
             }
         ],
         "addedCategories": ".GEN.PL.M.WEAK",
-        "fromPOS": "ADJ"
+        "fromPOS": [
+            "ADJ"
+        ]
     },
     {
         "id": 3505,
@@ -7536,7 +7609,9 @@
             }
         ],
         "addedCategories": ".GEN.SG.F.WEAK",
-        "fromPOS": "ADJ"
+        "fromPOS": [
+            "ADJ"
+        ]
     },
     {
         "id": 3506,
@@ -7559,7 +7634,9 @@
             }
         ],
         "addedCategories": ".GEN.PL.F.WEAK",
-        "fromPOS": "ADJ"
+        "fromPOS": [
+            "ADJ"
+        ]
     },
     {
         "id": 3507,
@@ -7582,7 +7659,9 @@
             }
         ],
         "addedCategories": ".WEAK.GEN.SG.N",
-        "fromPOS": "ADJ"
+        "fromPOS": [
+            "ADJ"
+        ]
     },
     {
         "id": 3508,
@@ -7605,7 +7684,9 @@
             }
         ],
         "addedCategories": ".WEAK.GEN.PL.N",
-        "fromPOS": "ADJ"
+        "fromPOS": [
+            "ADJ"
+        ]
     },
     {
         "id": 3509,
@@ -7628,7 +7709,9 @@
             }
         ],
         "addedCategories": ".DAT.SG.M.WEAK",
-        "fromPOS": "ADJ"
+        "fromPOS": [
+            "ADJ"
+        ]
     },
     {
         "id": 3510,
@@ -7651,7 +7734,9 @@
             }
         ],
         "addedCategories": ".DAT.PL.M.WEAK",
-        "fromPOS": "ADJ"
+        "fromPOS": [
+            "ADJ"
+        ]
     },
     {
         "id": 3511,
@@ -7674,7 +7759,9 @@
             }
         ],
         "addedCategories": ".DAT.SG.F",
-        "fromPOS": "ADJ"
+        "fromPOS": [
+            "ADJ"
+        ]
     },
     {
         "id": 3512,
@@ -7697,7 +7784,9 @@
             }
         ],
         "addedCategories": ".DAT.PL.F.WEAK",
-        "fromPOS": "ADJ"
+        "fromPOS": [
+            "ADJ"
+        ]
     },
     {
         "id": 3513,
@@ -7720,7 +7809,9 @@
             }
         ],
         "addedCategories": ".WEAK.DAT.SG.N",
-        "fromPOS": "ADJ"
+        "fromPOS": [
+            "ADJ"
+        ]
     },
     {
         "id": 3514,
@@ -7743,7 +7834,9 @@
             }
         ],
         "addedCategories": ".WEAK.DAT.PL.N",
-        "fromPOS": "ADJ"
+        "fromPOS": [
+            "ADJ"
+        ]
     },
     {
         "id": 3516,
@@ -7785,7 +7878,9 @@
             }
         ],
         "addedCategories": ".ACC.SG.F",
-        "fromPOS": "ADJ"
+        "fromPOS": [
+            "ADJ"
+        ]
     },
     {
         "id": 3517,
@@ -7808,7 +7903,9 @@
             }
         ],
         "addedCategories": ".ACC.PL.F",
-        "fromPOS": "ADJ"
+        "fromPOS": [
+            "ADJ"
+        ]
     },
     {
         "id": 3518,
@@ -7831,7 +7928,9 @@
             }
         ],
         "addedCategories": ".ACC.SG.N",
-        "fromPOS": "ADJ"
+        "fromPOS": [
+            "ADJ"
+        ]
     },
     {
         "id": 3519,
@@ -7854,7 +7953,9 @@
             }
         ],
         "addedCategories": ".ACC.PL.N",
-        "fromPOS": "ADJ"
+        "fromPOS": [
+            "ADJ"
+        ]
     },
     {
         "id": 3520,
@@ -7892,7 +7993,9 @@
             }
         ],
         "addedCategories": ".GEN.SG.F",
-        "fromPOS": "ADJ"
+        "fromPOS": [
+            "ADJ"
+        ]
     },
     {
         "id": 3521,
@@ -7915,7 +8018,9 @@
             }
         ],
         "addedCategories": ".GEN.PL.F",
-        "fromPOS": "ADJ"
+        "fromPOS": [
+            "ADJ"
+        ]
     },
     {
         "id": 3522,
@@ -7938,7 +8043,9 @@
             }
         ],
         "addedCategories": ".GEN.SG.N",
-        "fromPOS": "ADJ"
+        "fromPOS": [
+            "ADJ"
+        ]
     },
     {
         "id": 3523,
@@ -7961,7 +8068,9 @@
             }
         ],
         "addedCategories": ".GEN.PL.N",
-        "fromPOS": "ADJ"
+        "fromPOS": [
+            "ADJ"
+        ]
     },
     {
         "id": 3524,
@@ -7999,7 +8108,9 @@
             }
         ],
         "addedCategories": ".DAT.SG.F",
-        "fromPOS": "ADJ"
+        "fromPOS": [
+            "ADJ"
+        ]
     },
     {
         "id": 3525,
@@ -8022,7 +8133,9 @@
             }
         ],
         "addedCategories": ".DAT.PL.F",
-        "fromPOS": "ADJ"
+        "fromPOS": [
+            "ADJ"
+        ]
     },
     {
         "id": 3526,
@@ -8045,7 +8158,9 @@
             }
         ],
         "addedCategories": ".DAT.SG.N",
-        "fromPOS": "ADJ"
+        "fromPOS": [
+            "ADJ"
+        ]
     },
     {
         "id": 3527,
@@ -8068,7 +8183,9 @@
             }
         ],
         "addedCategories": ".DAT.PL.N",
-        "fromPOS": "ADJ"
+        "fromPOS": [
+            "ADJ"
+        ]
     },
     {
         "id": 3528,
@@ -8103,7 +8220,9 @@
             }
         ],
         "addedCategories": ".INST.SG.M",
-        "fromPOS": "ADJ"
+        "fromPOS": [
+            "ADJ"
+        ]
     },
     {
         "id": 3529,
@@ -8126,7 +8245,9 @@
             }
         ],
         "addedCategories": ".INST.PL.M",
-        "fromPOS": "ADJ"
+        "fromPOS": [
+            "ADJ"
+        ]
     },
     {
         "id": 3530,
@@ -8149,7 +8270,9 @@
             }
         ],
         "addedCategories": ".INSTR.SG.F",
-        "fromPOS": "ADJ"
+        "fromPOS": [
+            "ADJ"
+        ]
     },
     {
         "id": 3531,
@@ -8172,7 +8295,9 @@
             }
         ],
         "addedCategories": ".INSTR.PL.F",
-        "fromPOS": "ADJ"
+        "fromPOS": [
+            "ADJ"
+        ]
     },
     {
         "id": 3532,
@@ -8195,7 +8320,9 @@
             }
         ],
         "addedCategories": ".INST.SG.N",
-        "fromPOS": "ADJ"
+        "fromPOS": [
+            "ADJ"
+        ]
     },
     {
         "id": 3533,
@@ -8218,7 +8345,9 @@
             }
         ],
         "addedCategories": ".INSTR.PL.N",
-        "fromPOS": "ADJ"
+        "fromPOS": [
+            "ADJ"
+        ]
     },
     {
         "id": 3534,
@@ -8277,8 +8406,9 @@
             }
         ],
         "addedCategories": ".INF",
-        "fromPOS": "V",
-        "notes": ""
+        "fromPOS": [
+            "V"
+        ]
     },
     {
         "id": 3539,
@@ -8488,8 +8618,7 @@
                     "relative": false
                 }
             }
-        ],
-        "notes": ""
+        ]
     },
     {
         "id": 3540,
@@ -8511,8 +8640,7 @@
                     "type": "otherwise"
                 }
             }
-        ],
-        "notes": ""
+        ]
     },
     {
         "id": 3542,
@@ -8537,7 +8665,9 @@
             }
         ],
         "addedCategories": ".SUBJ.1SG",
-        "fromPOS": "V"
+        "fromPOS": [
+            "V"
+        ]
     },
     {
         "id": 3543,
@@ -8562,7 +8692,9 @@
             }
         ],
         "addedCategories": ".SUBJ.1PL",
-        "fromPOS": "V"
+        "fromPOS": [
+            "V"
+        ]
     },
     {
         "id": 3544,
@@ -8585,7 +8717,9 @@
             }
         ],
         "addedCategories": ".SUBJ.2SG",
-        "fromPOS": "V"
+        "fromPOS": [
+            "V"
+        ]
     },
     {
         "id": 3545,
@@ -8608,7 +8742,9 @@
             }
         ],
         "addedCategories": ".SUBJ.2PL",
-        "fromPOS": "V"
+        "fromPOS": [
+            "V"
+        ]
     },
     {
         "id": 3546,
@@ -8631,7 +8767,9 @@
             }
         ],
         "addedCategories": ".SUBJ.3SG",
-        "fromPOS": "V"
+        "fromPOS": [
+            "V"
+        ]
     },
     {
         "id": 3547,
@@ -8654,7 +8792,9 @@
             }
         ],
         "addedCategories": ".SUBJ.3PL",
-        "fromPOS": "V"
+        "fromPOS": [
+            "V"
+        ]
     },
     {
         "id": 3553,
@@ -8677,7 +8817,9 @@
             }
         ],
         "addedCategories": ".SUBJ.PST.1SG",
-        "fromPOS": "V"
+        "fromPOS": [
+            "V"
+        ]
     },
     {
         "id": 3554,
@@ -8700,7 +8842,9 @@
             }
         ],
         "addedCategories": ".SUBJ.PST.1PL",
-        "fromPOS": "V"
+        "fromPOS": [
+            "V"
+        ]
     },
     {
         "id": 3555,
@@ -8723,7 +8867,9 @@
             }
         ],
         "addedCategories": ".SUBJ.PST.2SG",
-        "fromPOS": "V"
+        "fromPOS": [
+            "V"
+        ]
     },
     {
         "id": 3556,
@@ -8746,7 +8892,9 @@
             }
         ],
         "addedCategories": ".SUBJ.PST.2PL",
-        "fromPOS": "V"
+        "fromPOS": [
+            "V"
+        ]
     },
     {
         "id": 3557,
@@ -8769,7 +8917,9 @@
             }
         ],
         "addedCategories": ".SUBJ.PST.3SG",
-        "fromPOS": "V"
+        "fromPOS": [
+            "V"
+        ]
     },
     {
         "id": 3558,
@@ -8792,7 +8942,9 @@
             }
         ],
         "addedCategories": ".SUBJ.PST.3PL",
-        "fromPOS": "V"
+        "fromPOS": [
+            "V"
+        ]
     },
     {
         "id": 3560,
@@ -9001,8 +9153,9 @@
             }
         ],
         "addedCategories": ".PART",
-        "fromPOS": "V",
-        "notes": ""
+        "fromPOS": [
+            "V"
+        ]
     },
     {
         "id": 3563,
@@ -9163,7 +9316,9 @@
             }
         ],
         "addedCategories": ".PPART",
-        "fromPOS": "V",
+        "fromPOS": [
+            "V"
+        ],
         "preInstructions": [
             {
                 "type": "ApplyRule",
@@ -9359,7 +9514,9 @@
             }
         ],
         "addedCategories": ".PRES.1PL",
-        "fromPOS": "V"
+        "fromPOS": [
+            "V"
+        ]
     },
     {
         "id": 3569,
@@ -9384,7 +9541,9 @@
             }
         ],
         "addedCategories": ".PRES.2PL",
-        "fromPOS": "V",
+        "fromPOS": [
+            "V"
+        ],
         "notes": "Used when the verb is immediately followed by 2nd person plural pronoun."
     },
     {
@@ -9408,7 +9567,9 @@
             }
         ],
         "addedCategories": ".COMP",
-        "fromPOS": "ADJ"
+        "fromPOS": [
+            "ADJ"
+        ]
     },
     {
         "id": 3618,
@@ -9431,7 +9592,8 @@
             }
         ],
         "addedCategories": ".SUP",
-        "fromPOS": "ADJ",
-        "notes": ""
+        "fromPOS": [
+            "ADJ"
+        ]
     }
 ]

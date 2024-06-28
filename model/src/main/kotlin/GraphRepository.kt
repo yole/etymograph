@@ -60,7 +60,7 @@ abstract class GraphRepository {
         logic: RuleLogic,
         addedCategories: String? = null,
         replacedCategories: String? = null,
-        fromPOS: String? = null,
+        fromPOS: List<String> = emptyList(),
         toPOS: String? = null,
         source: List<SourceRef> = emptyList(),
         notes: String? = null

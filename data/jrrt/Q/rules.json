@@ -77,7 +77,9 @@
             }
         ],
         "addedCategories": ".NOM.PL",
-        "fromPOS": "N",
+        "fromPOS": [
+            "N"
+        ],
         "toPOS": "N",
         "sourceRefs": [
             {
@@ -142,7 +144,9 @@
             }
         ],
         "addedCategories": ".GEN",
-        "fromPOS": "N",
+        "fromPOS": [
+            "N"
+        ],
         "toPOS": "N",
         "sourceRefs": [
             {
@@ -209,7 +213,9 @@
             }
         ],
         "addedCategories": ".ABL",
-        "fromPOS": "N",
+        "fromPOS": [
+            "N"
+        ],
         "toPOS": "N",
         "sourceRefs": [
             {
@@ -276,7 +282,9 @@
             }
         ],
         "addedCategories": ".ALL",
-        "fromPOS": "N",
+        "fromPOS": [
+            "N"
+        ],
         "toPOS": "N",
         "preInstructions": [
             {
@@ -345,7 +353,9 @@
             }
         ],
         "addedCategories": ".2SG",
-        "fromPOS": "V",
+        "fromPOS": [
+            "V"
+        ],
         "sourceRefs": [
             {
                 "refText": "https://eldamo.org/content/words/word-1020286637.html"
@@ -373,7 +383,9 @@
             }
         ],
         "addedCategories": ".1SG",
-        "fromPOS": "V",
+        "fromPOS": [
+            "V"
+        ],
         "toPOS": "V",
         "sourceRefs": [
             {
@@ -445,8 +457,9 @@
             }
         ],
         "addedCategories": ".DAT",
-        "fromPOS": "N",
-        "toPOS": "N",
+        "fromPOS": [
+            "N"
+        ],
         "sourceRefs": [
             {
                 "refText": "Plotz"
@@ -491,7 +504,9 @@
             }
         ],
         "addedCategories": ".GEN.PL",
-        "fromPOS": "N",
+        "fromPOS": [
+            "N"
+        ],
         "toPOS": "N"
     },
     {
@@ -580,7 +595,9 @@
             }
         ],
         "addedCategories": ".INS",
-        "fromPOS": "N",
+        "fromPOS": [
+            "N"
+        ],
         "toPOS": "N",
         "sourceRefs": [
             {
@@ -668,7 +685,9 @@
             }
         ],
         "addedCategories": ".PL",
-        "fromPOS": "ADJ",
+        "fromPOS": [
+            "ADJ"
+        ],
         "toPOS": "ADJ"
     },
     {
@@ -707,8 +726,9 @@
             }
         ],
         "addedCategories": ".POSS",
-        "fromPOS": "N",
-        "toPOS": "N",
+        "fromPOS": [
+            "N"
+        ],
         "sourceRefs": [
             {
                 "refText": "https://eldamo.org/content/words/word-3983087533.html"
@@ -765,7 +785,9 @@
             }
         ],
         "addedCategories": ".LOC.PL",
-        "fromPOS": "N",
+        "fromPOS": [
+            "N"
+        ],
         "toPOS": "N",
         "sourceRefs": [
             {
@@ -817,7 +839,9 @@
             }
         ],
         "addedCategories": ".LOC",
-        "fromPOS": "N",
+        "fromPOS": [
+            "N"
+        ],
         "toPOS": "N",
         "sourceRefs": [
             {
@@ -869,7 +893,9 @@
             }
         ],
         "addedCategories": ".DU",
-        "fromPOS": "N",
+        "fromPOS": [
+            "N"
+        ],
         "toPOS": "N",
         "sourceRefs": [
             {
@@ -931,7 +957,9 @@
             }
         ],
         "addedCategories": ".PPL",
-        "fromPOS": "N",
+        "fromPOS": [
+            "N"
+        ],
         "toPOS": "N",
         "sourceRefs": [
             {
@@ -1134,7 +1162,9 @@
             }
         ],
         "addedCategories": ".FUT",
-        "fromPOS": "V",
+        "fromPOS": [
+            "V"
+        ],
         "toPOS": "V",
         "sourceRefs": [
             {
@@ -1342,7 +1372,9 @@
             }
         ],
         "addedCategories": ".AOR",
-        "fromPOS": "V",
+        "fromPOS": [
+            "V"
+        ],
         "toPOS": "V",
         "sourceRefs": [
             {
@@ -1398,7 +1430,9 @@
             }
         ],
         "addedCategories": ".3PO",
-        "fromPOS": "V",
+        "fromPOS": [
+            "V"
+        ],
         "toPOS": "V"
     },
     {
@@ -1445,7 +1479,9 @@
             }
         ],
         "addedCategories": ".AOR",
-        "fromPOS": "V",
+        "fromPOS": [
+            "V"
+        ],
         "toPOS": "V",
         "sourceRefs": [
             {
@@ -1474,7 +1510,9 @@
             }
         ],
         "addedCategories": ".PL",
-        "fromPOS": "V",
+        "fromPOS": [
+            "V"
+        ],
         "toPOS": "V"
     },
     {
@@ -1536,7 +1574,9 @@
             }
         ],
         "addedCategories": ".DAT.PL",
-        "fromPOS": "N",
+        "fromPOS": [
+            "N"
+        ],
         "toPOS": "N",
         "sourceRefs": [
             {
@@ -1718,7 +1758,9 @@
             }
         ],
         "addedCategories": ".PRES",
-        "fromPOS": "V",
+        "fromPOS": [
+            "V"
+        ],
         "toPOS": "V",
         "sourceRefs": [
             {
@@ -1854,7 +1896,9 @@
             }
         ],
         "addedCategories": ".GEN.PPL",
-        "fromPOS": "N",
+        "fromPOS": [
+            "N"
+        ],
         "toPOS": "N",
         "sourceRefs": [
             {
@@ -1923,7 +1967,9 @@
             }
         ],
         "addedCategories": ".DAT.PPL",
-        "fromPOS": "N",
+        "fromPOS": [
+            "N"
+        ],
         "toPOS": "N",
         "sourceRefs": [
             {
@@ -1982,7 +2028,9 @@
             }
         ],
         "addedCategories": ".ALL.PL",
-        "fromPOS": "N",
+        "fromPOS": [
+            "N"
+        ],
         "toPOS": "N",
         "sourceRefs": [
             {
@@ -2034,7 +2082,9 @@
             }
         ],
         "addedCategories": ".ALL.DU",
-        "fromPOS": "N",
+        "fromPOS": [
+            "N"
+        ],
         "toPOS": "N",
         "sourceRefs": [
             {
@@ -2069,7 +2119,9 @@
             }
         ],
         "addedCategories": ".ALL.PPL",
-        "fromPOS": "N",
+        "fromPOS": [
+            "N"
+        ],
         "toPOS": "N",
         "sourceRefs": [
             {
@@ -2110,7 +2162,9 @@
             }
         ],
         "addedCategories": ".ALL.PPL",
-        "fromPOS": "N",
+        "fromPOS": [
+            "N"
+        ],
         "toPOS": "N",
         "sourceRefs": [
             {
@@ -2169,7 +2223,9 @@
             }
         ],
         "addedCategories": ".ABL.PL",
-        "fromPOS": "N",
+        "fromPOS": [
+            "N"
+        ],
         "toPOS": "N",
         "sourceRefs": [
             {
@@ -2212,7 +2268,9 @@
             }
         ],
         "addedCategories": ".ABL.PPL",
-        "fromPOS": "N",
+        "fromPOS": [
+            "N"
+        ],
         "toPOS": "N",
         "sourceRefs": [
             {
@@ -2257,7 +2315,9 @@
             }
         ],
         "addedCategories": ".ABL.DU",
-        "fromPOS": "N",
+        "fromPOS": [
+            "N"
+        ],
         "toPOS": "N",
         "sourceRefs": [
             {
@@ -2306,7 +2366,9 @@
             }
         ],
         "addedCategories": ".LOC.PPL",
-        "fromPOS": "N",
+        "fromPOS": [
+            "N"
+        ],
         "toPOS": "N",
         "sourceRefs": [
             {
@@ -2350,7 +2412,9 @@
             }
         ],
         "addedCategories": ".LOC.DU",
-        "fromPOS": "N",
+        "fromPOS": [
+            "N"
+        ],
         "toPOS": "N",
         "sourceRefs": [
             {
@@ -2410,8 +2474,9 @@
             }
         ],
         "addedCategories": ".INS.PL",
-        "fromPOS": "N",
-        "toPOS": "N",
+        "fromPOS": [
+            "N"
+        ],
         "sourceRefs": [
             {
                 "refText": "https://eldamo.org/content/words/word-1605931301.html"
@@ -2459,7 +2524,9 @@
             }
         ],
         "addedCategories": ".INS.PPL",
-        "fromPOS": "N",
+        "fromPOS": [
+            "N"
+        ],
         "toPOS": "N",
         "sourceRefs": [
             {
@@ -2503,7 +2570,9 @@
             }
         ],
         "addedCategories": ".INS.DU",
-        "fromPOS": "N",
+        "fromPOS": [
+            "N"
+        ],
         "toPOS": "N",
         "sourceRefs": [
             {
@@ -2644,7 +2713,9 @@
             }
         ],
         "addedCategories": ".PERF",
-        "fromPOS": "V",
+        "fromPOS": [
+            "V"
+        ],
         "toPOS": "V",
         "sourceRefs": [
             {
@@ -2688,7 +2759,9 @@
             }
         ],
         "addedCategories": ".1SG",
-        "fromPOS": "V",
+        "fromPOS": [
+            "V"
+        ],
         "toPOS": "V",
         "sourceRefs": [
             {
@@ -2732,7 +2805,9 @@
             }
         ],
         "addedCategories": ".1SPOSS",
-        "fromPOS": "N",
+        "fromPOS": [
+            "N"
+        ],
         "toPOS": "N",
         "sourceRefs": [
             {
@@ -2807,7 +2882,9 @@
             }
         ],
         "addedCategories": ".POSS.DU",
-        "fromPOS": "N",
+        "fromPOS": [
+            "N"
+        ],
         "toPOS": "N",
         "sourceRefs": [
             {
@@ -2842,7 +2919,9 @@
             }
         ],
         "addedCategories": ".POSS.PPL",
-        "fromPOS": "N",
+        "fromPOS": [
+            "N"
+        ],
         "toPOS": "N",
         "sourceRefs": [
             {
@@ -2901,7 +2980,9 @@
             }
         ],
         "addedCategories": ".POSS.PL",
-        "fromPOS": "N",
+        "fromPOS": [
+            "N"
+        ],
         "toPOS": "N",
         "sourceRefs": [
             {
@@ -2953,7 +3034,9 @@
             }
         ],
         "addedCategories": ".PART",
-        "fromPOS": "V",
+        "fromPOS": [
+            "V"
+        ],
         "sourceRefs": [
             {
                 "pubId": 2,
@@ -2983,7 +3066,9 @@
             }
         ],
         "addedCategories": ".2PL",
-        "fromPOS": "V",
+        "fromPOS": [
+            "V"
+        ],
         "toPOS": "V",
         "sourceRefs": [
             {
@@ -3017,8 +3102,7 @@
             {
                 "refText": "https://eldamo.org/content/words/word-1020286637.html"
             }
-        ],
-        "notes": ""
+        ]
     },
     {
         "id": 666,
@@ -3088,7 +3172,9 @@
             }
         ],
         "addedCategories": ".PST",
-        "fromPOS": "V",
+        "fromPOS": [
+            "V"
+        ],
         "toPOS": "V",
         "sourceRefs": [
             {
@@ -3139,7 +3225,9 @@
             }
         ],
         "addedCategories": ".3SG",
-        "fromPOS": "V",
+        "fromPOS": [
+            "V"
+        ],
         "sourceRefs": [
             {
                 "refText": "https://eldamo.org/content/words/word-1020286637.html"
@@ -3167,7 +3255,9 @@
             }
         ],
         "addedCategories": ".3SG",
-        "fromPOS": "V",
+        "fromPOS": [
+            "V"
+        ],
         "sourceRefs": [
             {
                 "refText": "https://eldamo.org/content/words/word-1020286637.html"
@@ -3195,7 +3285,9 @@
             }
         ],
         "addedCategories": ".1IN.PL",
-        "fromPOS": "V",
+        "fromPOS": [
+            "V"
+        ],
         "toPOS": "V",
         "sourceRefs": [
             {
@@ -3254,7 +3346,9 @@
             }
         ],
         "addedCategories": ".ABL.PL",
-        "fromPOS": "N",
+        "fromPOS": [
+            "N"
+        ],
         "toPOS": "N",
         "sourceRefs": [
             {
@@ -3291,7 +3385,9 @@
             }
         ],
         "addedCategories": ".1EX.DU",
-        "fromPOS": "V",
+        "fromPOS": [
+            "V"
+        ],
         "toPOS": "V",
         "sourceRefs": [
             {
@@ -3320,7 +3416,9 @@
             }
         ],
         "addedCategories": ".1IN.DU",
-        "fromPOS": "V",
+        "fromPOS": [
+            "V"
+        ],
         "toPOS": "V",
         "sourceRefs": [
             {
@@ -3350,14 +3448,15 @@
         ],
         "addedCategories": ".2DU",
         "replacedCategories": "",
-        "fromPOS": "V",
+        "fromPOS": [
+            "V"
+        ],
         "toPOS": "V",
         "sourceRefs": [
             {
                 "refText": "https://eldamo.org/content/words/word-1020286637.html"
             }
-        ],
-        "notes": ""
+        ]
     },
     {
         "id": 716,
@@ -3381,14 +3480,15 @@
         ],
         "addedCategories": ".3DU",
         "replacedCategories": "",
-        "fromPOS": "V",
+        "fromPOS": [
+            "V"
+        ],
         "toPOS": "V",
         "sourceRefs": [
             {
                 "refText": "https://eldamo.org/content/words/word-1020286637.html"
             }
-        ],
-        "notes": ""
+        ]
     },
     {
         "id": 717,
@@ -3427,14 +3527,15 @@
         ],
         "addedCategories": ".PPRT",
         "replacedCategories": "",
-        "fromPOS": "V",
+        "fromPOS": [
+            "V"
+        ],
         "toPOS": "",
         "sourceRefs": [
             {
                 "refText": "https://eldamo.org/content/words/word-2744508917.html"
             }
-        ],
-        "notes": ""
+        ]
     },
     {
         "id": 741,
@@ -3472,7 +3573,9 @@
             }
         ],
         "addedCategories": ".2SFAMPOSS",
-        "fromPOS": "N",
+        "fromPOS": [
+            "N"
+        ],
         "toPOS": "N",
         "sourceRefs": [
             {
@@ -3516,7 +3619,9 @@
             }
         ],
         "addedCategories": ".1PINPOSS",
-        "fromPOS": "N",
+        "fromPOS": [
+            "N"
+        ],
         "toPOS": "N",
         "sourceRefs": [
             {
@@ -3560,7 +3665,9 @@
             }
         ],
         "addedCategories": ".2PPOSS",
-        "fromPOS": "N",
+        "fromPOS": [
+            "N"
+        ],
         "toPOS": "N",
         "sourceRefs": [
             {
@@ -3589,7 +3696,9 @@
             }
         ],
         "addedCategories": "3SO",
-        "fromPOS": "V",
+        "fromPOS": [
+            "V"
+        ],
         "toPOS": "V",
         "sourceRefs": [
             {
@@ -3648,7 +3757,9 @@
             }
         ],
         "addedCategories": ".GER",
-        "fromPOS": "V",
+        "fromPOS": [
+            "V"
+        ],
         "toPOS": "N",
         "sourceRefs": [
             {
@@ -3678,14 +3789,15 @@
         ],
         "addedCategories": ".3PL",
         "replacedCategories": "",
-        "fromPOS": "V.TENSE",
+        "fromPOS": [
+            "V.TENSE"
+        ],
         "toPOS": "V.TENSE",
         "sourceRefs": [
             {
                 "refText": "https://eldamo.org/content/words/word-1020286637.html"
             }
-        ],
-        "notes": ""
+        ]
     },
     {
         "id": 788,
@@ -3709,14 +3821,15 @@
         ],
         "addedCategories": "",
         "replacedCategories": "",
-        "fromPOS": "V",
+        "fromPOS": [
+            "V"
+        ],
         "toPOS": "N",
         "sourceRefs": [
             {
                 "refText": "https://eldamo.org/content/words/word-1383826631.html"
             }
-        ],
-        "notes": ""
+        ]
     },
     {
         "id": 807,
@@ -3739,7 +3852,9 @@
             }
         ],
         "addedCategories": ".INF",
-        "fromPOS": "V",
+        "fromPOS": [
+            "V"
+        ],
         "sourceRefs": [
             {
                 "refText": "https://eldamo.org/content/words/word-3482070047.html"
@@ -3781,7 +3896,9 @@
             }
         ],
         "addedCategories": ".PST",
-        "fromPOS": "V",
+        "fromPOS": [
+            "V"
+        ],
         "toPOS": "V"
     },
     {
@@ -3806,9 +3923,10 @@
         ],
         "addedCategories": ".INT",
         "replacedCategories": "",
-        "fromPOS": "ADJ",
-        "toPOS": "ADJ",
-        "notes": ""
+        "fromPOS": [
+            "ADJ"
+        ],
+        "toPOS": "ADJ"
     },
     {
         "id": 1004,
@@ -3854,9 +3972,10 @@
         ],
         "addedCategories": ".DU",
         "replacedCategories": "",
-        "fromPOS": "V",
-        "toPOS": "V",
-        "notes": ""
+        "fromPOS": [
+            "V"
+        ],
+        "toPOS": "V"
     },
     {
         "id": 1042,
@@ -3951,8 +4070,7 @@
             {
                 "refText": "https://eldamo.org/content/words/word-1197128543.html"
             }
-        ],
-        "notes": ""
+        ]
     },
     {
         "id": 1047,
@@ -4211,8 +4329,7 @@
             {
                 "refText": "https://eldamo.org/content/words/word-2071843593.html"
             }
-        ],
-        "notes": ""
+        ]
     },
     {
         "id": 1527,
@@ -4256,8 +4373,7 @@
             {
                 "refText": "https://eldamo.org/content/words/word-2821506177.html"
             }
-        ],
-        "notes": ""
+        ]
     },
     {
         "id": 1528,
@@ -4338,8 +4454,7 @@
             {
                 "refText": "https://eldamo.org/content/words/word-3491983963.html"
             }
-        ],
-        "notes": ""
+        ]
     },
     {
         "id": 1530,
@@ -4430,8 +4545,7 @@
             {
                 "refText": "https://eldamo.org/content/words/word-2265073101.html"
             }
-        ],
-        "notes": ""
+        ]
     },
     {
         "id": 1535,
@@ -4512,8 +4626,7 @@
             {
                 "refText": "https://eldamo.org/content/words/word-3283441787.html"
             }
-        ],
-        "notes": ""
+        ]
     },
     {
         "id": 1538,
@@ -4556,8 +4669,7 @@
             {
                 "refText": "https://eldamo.org/content/words/word-14484545.html"
             }
-        ],
-        "notes": ""
+        ]
     },
     {
         "id": 1652,
@@ -4675,8 +4787,7 @@
             {
                 "refText": "https://eldamo.org/content/words/word-1556924193.html"
             }
-        ],
-        "notes": ""
+        ]
     },
     {
         "id": 1661,
@@ -4823,8 +4934,7 @@
             {
                 "refText": "https://eldamo.org/content/words/word-3116715705.html"
             }
-        ],
-        "notes": ""
+        ]
     },
     {
         "id": 1682,
@@ -4850,8 +4960,7 @@
             {
                 "refText": "https://eldamo.org/content/words/word-3407884905.html"
             }
-        ],
-        "notes": ""
+        ]
     },
     {
         "id": 1715,
@@ -4909,7 +5018,6 @@
             {
                 "refText": "https://eldamo.org/content/words/word-400062103.html"
             }
-        ],
-        "notes": ""
+        ]
     }
 ]

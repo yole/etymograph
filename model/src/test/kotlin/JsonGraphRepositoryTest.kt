@@ -40,7 +40,7 @@ class JsonGraphRepositoryTest : QBaseTest() {
         }
         val applySoundRule = Rule(-1, "lengthen-first-vowel", q, q, Rule.parseBranches("""
             - apply sound rule 'q-lengthen' to first vowel
-        """.trimIndent(), parseContext), null, null, null, null, emptyList(), null)
+        """.trimIndent(), parseContext))
 
         val serializedData = applySoundRule.ruleToSerializedFormat()
         assertEquals(2, serializedData.branches[0].instructions[0].args.size)

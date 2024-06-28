@@ -215,7 +215,7 @@ open class InMemoryGraphRepository : GraphRepository() {
                         if (w.isNotEmpty())
                             w.map { ParseCandidate(restoreCase(candidateText, text), listOf(rule) + prevRules, it.pos, it) }
                         else
-                            listOf(ParseCandidate(restoreCase(candidateText, text), listOf(rule) + prevRules, rule.fromPOS, null))
+                            listOf(ParseCandidate(restoreCase(candidateText, text), listOf(rule) + prevRules, rule.fromPOS.firstOrNull(), null))
                     }
                     .flatMap {
                         if (recurse) {
@@ -239,8 +239,14 @@ open class InMemoryGraphRepository : GraphRepository() {
         rule.toPOS != null || !rule.addedCategories.isNullOrEmpty()
 
     private fun ruleMatchesPOS(pos: String?, rule: Rule): Boolean {
-        val rulePOS = rule.toPOS ?: rule.fromPOS
-        return pos == null || rulePOS == null || rulePOS == pos
+        if (pos == null) return true
+        if (rule.toPOS != null) {
+            return rule.toPOS == pos
+        }
+        if (rule.fromPOS.isNotEmpty()) {
+            return pos in rule.fromPOS
+        }
+        return true
     }
 
     private fun collectDerivedWordGrammaticalCategories(word: Word): Set<WordCategory> {
@@ -636,7 +642,7 @@ open class InMemoryGraphRepository : GraphRepository() {
         logic: RuleLogic,
         addedCategories: String?,
         replacedCategories: String?,
-        fromPOS: String?,
+        fromPOS: List<String>,
         toPOS: String?,
         source: List<SourceRef>,
         notes: String?

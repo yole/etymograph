@@ -265,8 +265,7 @@
             {
                 "refText": "https://eldamo.org/content/words/word-813787869.html"
             }
-        ],
-        "notes": ""
+        ]
     },
     {
         "id": 1064,
@@ -305,8 +304,7 @@
             {
                 "refText": "https://eldamo.org/content/words/word-2753394075.html"
             }
-        ],
-        "notes": ""
+        ]
     },
     {
         "id": 1065,
@@ -536,8 +534,7 @@
             {
                 "refText": "https://eldamo.org/content/words/word-1593810649.html"
             }
-        ],
-        "notes": ""
+        ]
     },
     {
         "id": 1070,
@@ -703,8 +700,7 @@
             {
                 "refText": "https://eldamo.org/content/words/word-2240258959.html"
             }
-        ],
-        "notes": ""
+        ]
     },
     {
         "id": 1077,
@@ -855,8 +851,7 @@
             {
                 "refText": "https://eldamo.org/content/words/word-539122737.html"
             }
-        ],
-        "notes": ""
+        ]
     },
     {
         "id": 1083,
@@ -904,8 +899,7 @@
             {
                 "refText": "https://eldamo.org/content/words/word-941153689.html"
             }
-        ],
-        "notes": ""
+        ]
     },
     {
         "id": 1084,
@@ -1098,8 +1092,7 @@
             {
                 "refText": "https://eldamo.org/content/words/word-1951379117.html"
             }
-        ],
-        "notes": ""
+        ]
     },
     {
         "id": 1091,
@@ -1144,8 +1137,7 @@
             {
                 "refText": "https://eldamo.org/content/words/word-2083930569.html"
             }
-        ],
-        "notes": ""
+        ]
     },
     {
         "id": 1092,
@@ -1188,8 +1180,7 @@
             {
                 "refText": "https://eldamo.org/content/words/word-1679623085.html"
             }
-        ],
-        "notes": ""
+        ]
     },
     {
         "id": 1095,
@@ -1280,8 +1271,7 @@
             {
                 "refText": "https://eldamo.org/content/words/word-1660291111.html"
             }
-        ],
-        "notes": ""
+        ]
     },
     {
         "id": 1097,
@@ -1434,8 +1424,7 @@
             {
                 "refText": "https://eldamo.org/content/phonetic-indexes/phonetics-s.html"
             }
-        ],
-        "notes": ""
+        ]
     },
     {
         "id": 1106,
@@ -1563,8 +1552,7 @@
             {
                 "refText": "https://eldamo.org/content/words/word-890563133.html"
             }
-        ],
-        "notes": ""
+        ]
     },
     {
         "id": 1109,
@@ -1670,8 +1658,7 @@
             {
                 "refText": "https://eldamo.org/content/words/word-1683955225.html"
             }
-        ],
-        "notes": ""
+        ]
     },
     {
         "id": 1110,
@@ -1847,8 +1834,7 @@
             {
                 "refText": "https://eldamo.org/content/words/word-3889365613.html"
             }
-        ],
-        "notes": ""
+        ]
     },
     {
         "id": 1114,
@@ -1896,8 +1882,7 @@
             {
                 "refText": "https://eldamo.org/content/words/word-3258926163.html"
             }
-        ],
-        "notes": ""
+        ]
     },
     {
         "id": 1117,
@@ -1937,8 +1922,7 @@
             {
                 "refText": "https://eldamo.org/content/words/word-3463937975.html"
             }
-        ],
-        "notes": ""
+        ]
     },
     {
         "id": 1119,
@@ -1999,8 +1983,7 @@
             {
                 "refText": "https://eldamo.org/content/words/word-3707785609.html"
             }
-        ],
-        "notes": ""
+        ]
     },
     {
         "id": 1120,
@@ -2028,8 +2011,7 @@
             {
                 "refText": "https://eldamo.org/content/words/word-558704171.html"
             }
-        ],
-        "notes": ""
+        ]
     },
     {
         "id": 1124,
@@ -2088,8 +2070,7 @@
             {
                 "refText": "https://eldamo.org/content/words/word-2858643115.html"
             }
-        ],
-        "notes": ""
+        ]
     },
     {
         "id": 1125,
@@ -2210,8 +2191,7 @@
             {
                 "refText": "https://eldamo.org/content/words/word-916418731.html"
             }
-        ],
-        "notes": ""
+        ]
     },
     {
         "id": 1129,
@@ -2239,8 +2219,7 @@
             {
                 "refText": "https://eldamo.org/content/words/word-4164672875.html"
             }
-        ],
-        "notes": ""
+        ]
     },
     {
         "id": 1132,
@@ -2278,8 +2257,7 @@
             {
                 "refText": "https://eldamo.org/content/words/word-875184187.html"
             }
-        ],
-        "notes": ""
+        ]
     },
     {
         "id": 1135,
@@ -2322,8 +2300,7 @@
             {
                 "refText": "https://eldamo.org/content/words/word-1260484391.html"
             }
-        ],
-        "notes": ""
+        ]
     },
     {
         "id": 1136,
@@ -2622,8 +2599,7 @@
             {
                 "refText": "https://eldamo.org/content/words/word-769508253.html"
             }
-        ],
-        "notes": ""
+        ]
     },
     {
         "id": 1144,
@@ -3237,13 +3213,14 @@
             }
         ],
         "addedCategories": ".FUT",
-        "fromPOS": "V",
+        "fromPOS": [
+            "V"
+        ],
         "sourceRefs": [
             {
                 "refText": "https://eldamo.org/content/words/word-824238907.html"
             }
-        ],
-        "notes": ""
+        ]
     },
     {
         "id": 1164,
@@ -3281,8 +3258,9 @@
             }
         ],
         "addedCategories": ".1SG",
-        "fromPOS": "V",
-        "notes": ""
+        "fromPOS": [
+            "V"
+        ]
     },
     {
         "id": 1169,
@@ -3307,8 +3285,7 @@
                     "relative": false
                 }
             }
-        ],
-        "notes": ""
+        ]
     },
     {
         "id": 1170,
@@ -3347,8 +3324,7 @@
                     "type": "otherwise"
                 }
             }
-        ],
-        "notes": ""
+        ]
     },
     {
         "id": 1171,
@@ -3396,7 +3372,9 @@
             }
         ],
         "addedCategories": ".PPART",
-        "fromPOS": "V",
+        "fromPOS": [
+            "V"
+        ],
         "sourceRefs": [
             {
                 "refText": "https://eldamo.org/content/words/word-957492101.html"
@@ -3447,13 +3425,14 @@
             }
         ],
         "addedCategories": ".PART",
-        "fromPOS": "V",
+        "fromPOS": [
+            "V"
+        ],
         "sourceRefs": [
             {
                 "refText": "https://eldamo.org/content/words/word-957492101.html"
             }
-        ],
-        "notes": ""
+        ]
     },
     {
         "id": 1189,
@@ -3491,7 +3470,9 @@
             }
         ],
         "addedCategories": ".IMP",
-        "fromPOS": "V",
+        "fromPOS": [
+            "V"
+        ],
         "sourceRefs": [
             {
                 "refText": "https://eldamo.org/content/words/word-3326716807.html"
@@ -3536,7 +3517,9 @@
             }
         ],
         "addedCategories": ".PST",
-        "fromPOS": "V",
+        "fromPOS": [
+            "V"
+        ],
         "sourceRefs": [
             {
                 "refText": "https://eldamo.org/content/words/word-2212943647.html"
@@ -3579,13 +3562,14 @@
             }
         ],
         "addedCategories": ".PPP",
-        "fromPOS": "V",
+        "fromPOS": [
+            "V"
+        ],
         "sourceRefs": [
             {
                 "refText": "https://eldamo.org/content/words/word-3022208083.html"
             }
         ],
-        "notes": "",
         "preInstructions": [
             {
                 "type": "ApplyRule",
@@ -3700,8 +3684,7 @@
                 }
             }
         ],
-        "toPOS": "ADJ",
-        "notes": ""
+        "toPOS": "ADJ"
     },
     {
         "id": 1255,
@@ -3755,8 +3738,7 @@
             {
                 "refText": "https://eldamo.org/content/words/word-3958131179.html"
             }
-        ],
-        "notes": ""
+        ]
     },
     {
         "id": 1284,
@@ -3819,8 +3801,7 @@
             {
                 "refText": "https://eldamo.org/content/words/word-1206014597.html"
             }
-        ],
-        "notes": ""
+        ]
     },
     {
         "id": 1288,
@@ -3857,8 +3838,7 @@
             {
                 "refText": "https://eldamo.org/content/words/word-4287595571.html"
             }
-        ],
-        "notes": ""
+        ]
     },
     {
         "id": 1346,
@@ -3986,7 +3966,9 @@
             }
         ],
         "addedCategories": ".1PL",
-        "fromPOS": "V",
+        "fromPOS": [
+            "V"
+        ],
         "sourceRefs": [
             {
                 "pubId": 1,
@@ -3995,8 +3977,7 @@
             {
                 "refText": "https://eldamo.org/content/words/word-1090138655.html"
             }
-        ],
-        "notes": ""
+        ]
     },
     {
         "id": 1373,
@@ -4040,7 +4021,9 @@
             }
         ],
         "addedCategories": ".3PL",
-        "fromPOS": "V",
+        "fromPOS": [
+            "V"
+        ],
         "sourceRefs": [
             {
                 "refText": "https://eldamo.org/content/words/word-2515398979.html"
@@ -4083,13 +4066,14 @@
             }
         ],
         "addedCategories": ".GER",
-        "fromPOS": "V",
+        "fromPOS": [
+            "V"
+        ],
         "sourceRefs": [
             {
                 "refText": "https://eldamo.org/content/words/word-285541985.html"
             }
-        ],
-        "notes": ""
+        ]
     },
     {
         "id": 1508,
@@ -4189,8 +4173,7 @@
             {
                 "refText": "https://eldamo.org/content/words/word-1024355367.html"
             }
-        ],
-        "notes": ""
+        ]
     },
     {
         "id": 1643,

@@ -63,7 +63,9 @@
             }
         ],
         "addedCategories": ".ACC",
-        "fromPOS": "N",
+        "fromPOS": [
+            "N"
+        ],
         "toPOS": "N"
     },
     {
@@ -87,7 +89,9 @@
             }
         ],
         "addedCategories": ".GEN",
-        "fromPOS": "NP",
+        "fromPOS": [
+            "NP"
+        ],
         "toPOS": "NP"
     },
     {
@@ -113,7 +117,9 @@
             }
         ],
         "addedCategories": ".ACC",
-        "fromPOS": "N",
+        "fromPOS": [
+            "N"
+        ],
         "toPOS": "N"
     },
     {
@@ -182,7 +188,9 @@
             }
         ],
         "addedCategories": ".DAT",
-        "fromPOS": "N",
+        "fromPOS": [
+            "N"
+        ],
         "toPOS": "N"
     },
     {
@@ -233,7 +241,9 @@
             }
         ],
         "addedCategories": ".DAT.PL",
-        "fromPOS": "N",
+        "fromPOS": [
+            "N"
+        ],
         "toPOS": "N"
     },
     {
@@ -282,7 +292,9 @@
             }
         ],
         "addedCategories": ".ACC.PL",
-        "fromPOS": "N",
+        "fromPOS": [
+            "N"
+        ],
         "toPOS": "N"
     },
     {
@@ -306,7 +318,9 @@
             }
         ],
         "addedCategories": ".PRET.3SG",
-        "fromPOS": "V",
+        "fromPOS": [
+            "V"
+        ],
         "toPOS": "V"
     },
     {
@@ -330,7 +344,9 @@
             }
         ],
         "addedCategories": ".PRET.3SG",
-        "fromPOS": "V",
+        "fromPOS": [
+            "V"
+        ],
         "toPOS": "V"
     },
     {
@@ -354,7 +370,9 @@
             }
         ],
         "addedCategories": ".GEN.ADJ",
-        "fromPOS": "N"
+        "fromPOS": [
+            "N"
+        ]
     },
     {
         "id": 267,
@@ -377,7 +395,9 @@
             }
         ],
         "addedCategories": ".3SG",
-        "fromPOS": "V"
+        "fromPOS": [
+            "V"
+        ]
     },
     {
         "id": 269,
@@ -417,7 +437,9 @@
             }
         ],
         "addedCategories": ".NOM.PL",
-        "fromPOS": "N"
+        "fromPOS": [
+            "N"
+        ]
     },
     {
         "id": 271,
@@ -440,7 +462,9 @@
             }
         ],
         "addedCategories": ".3SG",
-        "fromPOS": "V",
+        "fromPOS": [
+            "V"
+        ],
         "toPOS": "V"
     },
     {
@@ -494,7 +518,9 @@
             }
         ],
         "addedCategories": ".3PL",
-        "fromPOS": "V",
+        "fromPOS": [
+            "V"
+        ],
         "toPOS": "V"
     },
     {
@@ -555,7 +581,9 @@
             }
         ],
         "addedCategories": ".PRET.3SG",
-        "fromPOS": "V",
+        "fromPOS": [
+            "V"
+        ],
         "toPOS": "V"
     },
     {
@@ -609,7 +637,9 @@
             }
         ],
         "addedCategories": ".PRET.3PL",
-        "fromPOS": "V",
+        "fromPOS": [
+            "V"
+        ],
         "toPOS": "V"
     },
     {
@@ -663,7 +693,9 @@
             }
         ],
         "addedCategories": ".PRET.3PL",
-        "fromPOS": "V",
+        "fromPOS": [
+            "V"
+        ],
         "toPOS": "V"
     },
     {
@@ -688,9 +720,10 @@
         ],
         "addedCategories": ".GEN",
         "replacedCategories": "",
-        "fromPOS": "NP",
-        "toPOS": "NP",
-        "notes": ""
+        "fromPOS": [
+            "NP"
+        ],
+        "toPOS": "NP"
     },
     {
         "id": 724,
@@ -731,9 +764,10 @@
         ],
         "addedCategories": ".GEN.PL",
         "replacedCategories": "",
-        "fromPOS": "N",
-        "toPOS": "N",
-        "notes": ""
+        "fromPOS": [
+            "N"
+        ],
+        "toPOS": "N"
     },
     {
         "id": 739,
@@ -757,9 +791,10 @@
         ],
         "addedCategories": ".IMPT.3SG",
         "replacedCategories": "",
-        "fromPOS": "V",
-        "toPOS": "V",
-        "notes": ""
+        "fromPOS": [
+            "V"
+        ],
+        "toPOS": "V"
     },
     {
         "id": 744,
@@ -783,9 +818,10 @@
         ],
         "addedCategories": ".INF",
         "replacedCategories": "",
-        "fromPOS": "V",
-        "toPOS": "V",
-        "notes": ""
+        "fromPOS": [
+            "V"
+        ],
+        "toPOS": "V"
     },
     {
         "id": 889,
@@ -821,9 +857,10 @@
         ],
         "addedCategories": ".ACC.N",
         "replacedCategories": "",
-        "fromPOS": "ADJ",
-        "toPOS": "ADJ",
-        "notes": ""
+        "fromPOS": [
+            "ADJ"
+        ],
+        "toPOS": "ADJ"
     },
     {
         "id": 905,
@@ -849,8 +886,9 @@
         ],
         "addedCategories": ".PL.N",
         "replacedCategories": "",
-        "fromPOS": "ADJ",
-        "toPOS": "ADJ",
-        "notes": ""
+        "fromPOS": [
+            "ADJ"
+        ],
+        "toPOS": "ADJ"
     }
 ]

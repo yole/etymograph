@@ -125,7 +125,8 @@ class ParadigmController {
         val rowList = params.rows.split(',').map { it.trim() }
         val colList = params.columns.split(',').map { it.trim() }
 
-        val paradigm = repo.addParadigm(params.name, language, params.pos.split(',').map { it.trim()} )
+        val pos = params.pos.split(',').map { it.trim() }
+        val paradigm = repo.addParadigm(params.name, language, pos)
         for (rowTitle in rowList) {
             paradigm.addRow(rowTitle)
         }
@@ -140,8 +141,7 @@ class ParadigmController {
                 val ruleName = "${params.prefix}-${rowTitle.lowercase()}$ruleNameSeparator${columnTitle.lowercase().replace(" ", "-")}"
                 val addedCategories = params.addedCategories + "." + rowTitle.uppercase() + categorySeparator + columnTitle.uppercase().replace(" ", ".")
                 val rule = repo.ruleByName(ruleName)
-                    ?: repo.addRule(ruleName, language, language, RuleLogic.empty(), addedCategories, null,
-                        params.pos)
+                    ?: repo.addRule(ruleName, language, language, RuleLogic.empty(), addedCategories, fromPOS = pos)
                 paradigm.setRule(rowIndex, colIndex, listOf(rule))
             }
         }

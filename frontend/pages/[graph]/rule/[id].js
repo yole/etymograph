@@ -164,9 +164,8 @@ export default function Rule(params) {
         {rule.fromLang !== rule.toLang && <p>From {rule.fromLangFullName} to {rule.toLangFullName}</p>}
         {rule.paradigmId !== null && <p>Paradigm: <Link href={`/${graph}/paradigm/${rule.paradigmId}`}>{rule.paradigmName}</Link></p>}
         {!editMode && <>
-            {rule.fromPOS && rule.fromPOS === rule.toPOS && <p>POS: {rule.fromPOS}</p>}
-            {rule.fromPOS && rule.fromPOS !== rule.toPOS && <p>From POS: {rule.fromPOS}</p>}
-            {rule.toPOS && rule.fromPOS !== rule.toPOS && <p>To POS: {rule.toPOS}</p>}
+            {rule.fromPOS.length > 0 && <p>From POS: {rule.fromPOS.join(", ")}</p>}
+            {rule.toPOS && <p>To POS: {rule.toPOS}</p>}
             {rule.addedCategories && <p>Added category values: <span className="glossAbbreviation">{rule.addedCategories.toLowerCase()}</span> ({rule.addedCategoryDisplayNames})</p>}
             {rule.replacedCategories && <p>Replaced category values: <span className="glossAbbreviation">{rule.replacedCategories.toLowerCase()}</span></p>}
             <SourceRefs source={rule.source}/>
@@ -206,7 +205,7 @@ export default function Rule(params) {
                 toLang: rule.toLang,
                 addedCategories: rule.addedCategories,
                 replacedCategories: rule.replacedCategories,
-                fromPOS: rule.fromPOS,
+                fromPOS: rule.fromPOS.join(", "),
                 toPOS: rule.toPOS,
                 source: rule.sourceEditableText,
                 notes: rule.notes,
