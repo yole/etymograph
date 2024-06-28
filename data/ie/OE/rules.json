@@ -39,9 +39,19 @@
                             ]
                         },
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "a-stem"
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "leaf",
+                                    "cond": "ClassMatches",
+                                    "characters": "a-stem"
+                                },
+                                {
+                                    "type": "leaf",
+                                    "cond": "ClassMatches",
+                                    "characters": "s-stem"
+                                }
+                            ]
                         }
                     ]
                 }
@@ -294,45 +304,34 @@
                     "type": "and",
                     "members": [
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "masc"
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "leaf",
+                                    "cond": "ClassMatches",
+                                    "characters": "masc"
+                                },
+                                {
+                                    "type": "leaf",
+                                    "cond": "ClassMatches",
+                                    "characters": "neut"
+                                }
+                            ]
                         },
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "a-stem"
-                        }
-                    ]
-                }
-            },
-            {
-                "instructions": [
-                    {
-                        "type": "Append",
-                        "args": [
-                            "'e'"
-                        ]
-                    },
-                    {
-                        "type": "ApplyRule",
-                        "args": [
-                            "2307"
-                        ]
-                    }
-                ],
-                "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "neut"
-                        },
-                        {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "a-stem"
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "leaf",
+                                    "cond": "ClassMatches",
+                                    "characters": "a-stem"
+                                },
+                                {
+                                    "type": "leaf",
+                                    "cond": "ClassMatches",
+                                    "characters": "s-stem"
+                                }
+                            ]
                         }
                     ]
                 }
@@ -610,6 +609,21 @@
             {
                 "instructions": [
                     {
+                        "type": "Append",
+                        "args": [
+                            "'ru'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "ClassMatches",
+                    "characters": "s-stem"
+                }
+            },
+            {
+                "instructions": [
+                    {
                         "type": "ChangeEnding",
                         "args": [
                             "an"
@@ -849,6 +863,21 @@
                         }
                     ]
                 }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'ra'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "ClassMatches",
+                    "characters": "s-stem"
+                }
             }
         ],
         "addedCategories": ".GEN.PL",
@@ -1012,6 +1041,21 @@
                             ]
                         }
                     ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'rum'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "ClassMatches",
+                    "characters": "s-stem"
                 }
             }
         ],

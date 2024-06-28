@@ -45,7 +45,7 @@
     {
         "id": 5,
         "text": "ġē",
-        "gloss": "you.NOM.PL",
+        "gloss": "you",
         "pos": "PRON"
     },
     {
@@ -1389,6 +1389,9 @@
         "gloss": "learn",
         "fullGloss": "to ask",
         "pos": "V",
+        "classes": [
+            "v-strong-3"
+        ],
         "sourceRefs": [
             {
                 "refText": "https://bosworthtoller.com/14434"
@@ -1599,6 +1602,9 @@
         "gloss": "swallow",
         "fullGloss": "to swallow",
         "pos": "V",
+        "classes": [
+            "v-strong-3"
+        ],
         "sourceRefs": [
             {
                 "refText": "https://bosworthtoller.com/29645"
@@ -1809,7 +1815,8 @@
         "fullGloss": "CHILD, infant",
         "pos": "N",
         "classes": [
-            "neut"
+            "neut",
+            "s-stem"
         ],
         "sourceRefs": [
             {
@@ -2345,8 +2352,7 @@
     },
     {
         "id": 2034,
-        "text": "we",
-        "gloss": "we"
+        "text": "we"
     },
     {
         "id": 2038,
@@ -2631,7 +2637,8 @@
         "fullGloss": "A CALF; vitulus, vitula",
         "pos": "N",
         "classes": [
-            "neut"
+            "neut",
+            "s-stem"
         ],
         "sourceRefs": [
             {
@@ -11972,10 +11979,13 @@
     },
     {
         "id": 3659,
-        "text": "oferswiðan",
+        "text": "oferswīðan",
         "gloss": "overcome",
         "fullGloss": "To prove stronger than or superior to another, to overcome, overpower, conquer, surpass",
         "pos": "V",
+        "classes": [
+            "v-strong-1"
+        ],
         "sourceRefs": [
             {
                 "refText": "https://bosworthtoller.com/24248"
@@ -11984,7 +11994,7 @@
     },
     {
         "id": 3660,
-        "text": "oferswað"
+        "text": "oferswāð"
     },
     {
         "id": 3661,
@@ -12177,6 +12187,202 @@
         "id": 3691,
         "text": "magan",
         "gloss": "to be able to",
+        "pos": "V"
+    },
+    {
+        "id": 3692,
+        "text": "wyrce"
+    },
+    {
+        "id": 3693,
+        "text": "brīdelþwangas"
+    },
+    {
+        "id": 3694,
+        "text": "brīdelþwang",
+        "gloss": "bridle rein",
+        "pos": "N"
+    },
+    {
+        "id": 3695,
+        "text": "flaxan"
+    },
+    {
+        "id": 3696,
+        "text": "flaxe",
+        "gloss": "flask",
+        "fullGloss": "flask, leather bottle"
+    },
+    {
+        "id": 3697,
+        "text": "fǣtelsas"
+    },
+    {
+        "id": 3698,
+        "text": "fǣtels",
+        "gloss": "bag",
+        "pos": "N"
+    },
+    {
+        "id": 3699,
+        "text": "oferwintran",
+        "gloss": "overwinter",
+        "pos": "V"
+    },
+    {
+        "id": 3700,
+        "text": "fremaþ"
+    },
+    {
+        "id": 3701,
+        "text": "fremian",
+        "gloss": "to help",
+        "pos": "V"
+    },
+    {
+        "id": 3702,
+        "text": "brȳcþ"
+    },
+    {
+        "id": 3703,
+        "text": "blisse"
+    },
+    {
+        "id": 3704,
+        "text": "efne",
+        "gloss": "indeed",
+        "pos": "ADV"
+    },
+    {
+        "id": 3705,
+        "text": "hwā",
+        "gloss": "how"
+    },
+    {
+        "id": 3706,
+        "text": "ġefylþ"
+    },
+    {
+        "id": 3707,
+        "text": "cleafan"
+    },
+    {
+        "id": 3708,
+        "text": "cleafa",
+        "gloss": "cellar",
+        "pos": "N"
+    },
+    {
+        "id": 3709,
+        "text": "losiaþ"
+    },
+    {
+        "id": 3710,
+        "text": "losian",
+        "gloss": "perish",
+        "pos": "V"
+    },
+    {
+        "id": 3711,
+        "text": "hēddernu"
+    },
+    {
+        "id": 3712,
+        "text": "hēddern",
+        "gloss": "storeroom",
+        "pos": "N"
+    },
+    {
+        "id": 3713,
+        "text": "mīn",
+        "gloss": "my",
+        "pos": "PRON"
+    },
+    {
+        "id": 3714,
+        "text": "mīnum"
+    },
+    {
+        "id": 3715,
+        "text": "þīn",
+        "gloss": "your",
+        "pos": "PRON"
+    },
+    {
+        "id": 3716,
+        "text": "manna"
+    },
+    {
+        "id": 3717,
+        "text": "mann",
+        "gloss": "person",
+        "pos": "N",
+        "classes": [
+            "masc"
+        ]
+    },
+    {
+        "id": 3718,
+        "text": "ǣlċ",
+        "gloss": "each",
+        "pos": "ADJ"
+    },
+    {
+        "id": 3719,
+        "text": "buter-ġeþwēor",
+        "gloss": "butter-mass",
+        "pos": "N"
+    },
+    {
+        "id": 3720,
+        "text": "ċȳs-ġerunn",
+        "gloss": "cheese-curd",
+        "pos": "N"
+    },
+    {
+        "id": 3721,
+        "text": "ætwese"
+    },
+    {
+        "id": 3722,
+        "text": "ætwesan",
+        "gloss": "to be present",
+        "pos": "V"
+    },
+    {
+        "id": 3723,
+        "text": "hyrde"
+    },
+    {
+        "id": 3724,
+        "text": "hyrd",
+        "gloss": "guard",
+        "fullGloss": "guard, keeper",
+        "pos": "N"
+    },
+    {
+        "id": 3726,
+        "text": "ēower",
+        "gloss": "you.GEN.PL"
+    },
+    {
+        "id": 3727,
+        "text": "ġereordunge"
+    },
+    {
+        "id": 3728,
+        "text": "ġereordung",
+        "gloss": "prepared meal",
+        "pos": "N"
+    },
+    {
+        "id": 3729,
+        "text": "þurh-brȳcþ"
+    },
+    {
+        "id": 3730,
+        "text": "þurh-brūcan",
+        "gloss": "fully enjoy",
         "pos": "V"
     }
 ]

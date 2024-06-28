@@ -538,6 +538,32 @@
     ],
     "stressRuleId": 2292,
     "orthographyRuleId": 2222,
+    "pos": [
+        {
+            "name": "Noun",
+            "abbreviation": "N"
+        },
+        {
+            "name": "Proper noun",
+            "abbreviation": "NP"
+        },
+        {
+            "name": "Adjective",
+            "abbreviation": "ADJ"
+        },
+        {
+            "name": "Adverb",
+            "abbreviation": "ADV"
+        },
+        {
+            "name": "Verb",
+            "abbreviation": "V"
+        },
+        {
+            "name": "Pronoun",
+            "abbreviation": "PRON"
+        }
+    ],
     "grammaticalCategories": [
         {
             "name": "Case",
@@ -760,6 +786,10 @@
                 {
                     "name": "i-stem",
                     "abbreviation": "i-stem"
+                },
+                {
+                    "name": "s-stem",
+                    "abbreviation": "s-stem"
                 }
             ]
         },
@@ -843,5 +873,6 @@
                 }
             ]
         }
-    ]
+    ],
+    "dictionarySettings": "ang-decl-noun-a-m: masc, a-stem\nang-decl-noun-a-n: neut, a-stem"
 }
