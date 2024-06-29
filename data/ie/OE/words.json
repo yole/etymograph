@@ -12517,7 +12517,7 @@
     {
         "id": 3735,
         "text": "þegen",
-        "gloss": "a servant",
+        "gloss": "servant",
         "fullGloss": "a servant, one who does service for another",
         "pos": "N",
         "classes": [
@@ -12528,10 +12528,6 @@
                 "refText": "https://bosworthtoller.com/31613"
             }
         ]
-    },
-    {
-        "id": 3736,
-        "text": "wæs"
     },
     {
         "id": 3737,
@@ -12763,5 +12759,498 @@
     {
         "id": 3767,
         "text": "gesætnysse"
+    },
+    {
+        "id": 3768,
+        "text": "na",
+        "gloss": "no",
+        "fullGloss": "no, not",
+        "pos": "ADV",
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/23359"
+            }
+        ]
+    },
+    {
+        "id": 3769,
+        "text": "gefullian",
+        "gloss": "to become full",
+        "fullGloss": "to become full, perfect",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/14450"
+            }
+        ]
+    },
+    {
+        "id": 3770,
+        "text": "gefullian",
+        "gloss": "to baptize",
+        "fullGloss": "to baptize",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/14451"
+            }
+        ]
+    },
+    {
+        "id": 3771,
+        "text": "gefullod"
+    },
+    {
+        "id": 3772,
+        "text": "gefullod"
+    },
+    {
+        "id": 3773,
+        "text": "Gode"
+    },
+    {
+        "id": 3774,
+        "text": "forðam",
+        "gloss": "for that",
+        "fullGloss": "for that, for that reason which, for, because",
+        "pos": "CONJ",
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/11806"
+            }
+        ]
+    },
+    {
+        "id": 3775,
+        "text": "forðam",
+        "gloss": "for that cause",
+        "fullGloss": "for that cause, consequently",
+        "pos": "ADV",
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/11807"
+            }
+        ]
+    },
+    {
+        "id": 3776,
+        "text": "Cristendom",
+        "gloss": "christianity",
+        "fullGloss": "christianity, CHRISTENDOM, the christian world; christianitas",
+        "pos": "N",
+        "classes": [
+            "masc"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/6721"
+            }
+        ]
+    },
+    {
+        "id": 3777,
+        "text": "git",
+        "gloss": "you two",
+        "fullGloss": "you two,                  ,                  ; gen. incer                                  of you two,                  ,                  ; dat.                 inc                  to you two,                  ,                  ; acc.                 inc. incit                  you two,                  ,                  ; personal pron.                 dual of ðú                  thou",
+        "pos": "PRON",
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/17146"
+            }
+        ]
+    },
+    {
+        "id": 3778,
+        "text": "git",
+        "gloss": "still",
+        "fullGloss": "still,                  yet",
+        "pos": "ADV",
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/17147"
+            }
+        ]
+    },
+    {
+        "id": 3779,
+        "text": "git",
+        "gloss": "yet",
+        "fullGloss": "yet, still",
+        "pos": "ADV",
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/50865"
+            }
+        ]
+    },
+    {
+        "id": 3780,
+        "text": "geond",
+        "gloss": "through",
+        "fullGloss": "through, throughout, over, as far as, among, in, after, beyond; per, trans, inter, post, ultra; κατά",
+        "pos": "PREP",
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/15510"
+            }
+        ]
+    },
+    {
+        "id": 3781,
+        "text": "geond",
+        "gloss": "yond",
+        "fullGloss": "yond, yonder, thither, beyond; illuc",
+        "pos": "ADV",
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/15511"
+            }
+        ]
+    },
+    {
+        "id": 3782,
+        "text": "eal",
+        "gloss": "sometimes used indecl",
+        "fullGloss": "sometimes used indecl; adj",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/8380"
+            }
+        ]
+    },
+    {
+        "id": 3783,
+        "text": "eal",
+        "gloss": "an awl",
+        "fullGloss": "an awl",
+        "pos": "N",
+        "classes": [
+            "fem"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/8381"
+            }
+        ]
+    },
+    {
+        "id": 3784,
+        "text": "eall"
+    },
+    {
+        "id": 3785,
+        "text": "eall"
+    },
+    {
+        "id": 3786,
+        "text": "cuð"
+    },
+    {
+        "id": 3787,
+        "text": "seo"
+    },
+    {
+        "id": 3788,
+        "text": "reðe",
+        "gloss": "right",
+        "fullGloss": "right, just",
+        "pos": "ADJ",
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/25748"
+            }
+        ]
+    },
+    {
+        "id": 3789,
+        "text": "reþe"
+    },
+    {
+        "id": 3790,
+        "text": "eahtnes",
+        "gloss": "persecution",
+        "fullGloss": "persecution",
+        "pos": "N",
+        "classes": [
+            "fem"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/8376"
+            }
+        ]
+    },
+    {
+        "id": 3791,
+        "text": "gestillan",
+        "gloss": "to rest",
+        "fullGloss": "to rest, cease, be still, quiet, mute; quiescĕre, sĕdāri, sĭlēre, obmutescĕre, rētĭcēre",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/16172"
+            }
+        ]
+    },
+    {
+        "id": 3792,
+        "text": "gestylled"
+    },
+    {
+        "id": 3793,
+        "text": "forþan"
+    },
+    {
+        "id": 3794,
+        "text": "gyt"
+    },
+    {
+        "id": 3795,
+        "text": "næs",
+        "gloss": "was not"
+    },
+    {
+        "id": 3797,
+        "text": "wæs"
+    },
+    {
+        "id": 3798,
+        "text": "gecigan",
+        "gloss": "to call",
+        "fullGloss": "to call, name, call upon, invoke, call forth, provoke, incite",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/13898"
+            }
+        ]
+    },
+    {
+        "id": 3799,
+        "text": "gecyged"
+    },
+    {
+        "id": 3800,
+        "text": "Claudia",
+        "pos": "NP"
+    },
+    {
+        "id": 3801,
+        "text": "gestrynan",
+        "gloss": "to gain",
+        "fullGloss": "to gain, get, obtain, acquire, beget, procreate; lucrāri, acquīrĕre, gignĕre, procreāre",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/16205"
+            }
+        ]
+    },
+    {
+        "id": 3802,
+        "text": "gestrynde"
+    },
+    {
+        "id": 3803,
+        "text": "twegen",
+        "gloss": "two",
+        "fullGloss": "two",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/31196"
+            }
+        ]
+    },
+    {
+        "id": 3804,
+        "text": "twægen"
+    },
+    {
+        "id": 3805,
+        "text": "suna"
+    },
+    {
+        "id": 3806,
+        "text": "Auitus",
+        "pos": "NP"
+    },
+    {
+        "id": 3807,
+        "text": "Særgius",
+        "pos": "NP"
+    },
+    {
+        "id": 3808,
+        "text": "dohtor"
+    },
+    {
+        "id": 3809,
+        "text": "we"
+    },
+    {
+        "id": 3810,
+        "text": "ymb",
+        "gloss": "about",
+        "fullGloss": "about, by",
+        "pos": "PREP",
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/37098"
+            }
+        ]
+    },
+    {
+        "id": 3811,
+        "text": "Ða"
+    },
+    {
+        "id": 3812,
+        "text": "befæstan",
+        "gloss": "to fasten",
+        "fullGloss": "to fasten, make fast, fix",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/3364"
+            }
+        ]
+    },
+    {
+        "id": 3813,
+        "text": "befæste"
+    },
+    {
+        "id": 3814,
+        "text": "heo"
+    },
+    {
+        "id": 3815,
+        "text": "weoroldwisdom",
+        "gloss": "secular knowledge",
+        "fullGloss": "secular knowledge, science, learning",
+        "pos": "N",
+        "classes": [
+            "masc"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/35289"
+            }
+        ]
+    },
+    {
+        "id": 3816,
+        "text": "woruldwysdome"
+    },
+    {
+        "id": 3817,
+        "text": "wære"
+    },
+    {
+        "id": 3818,
+        "text": "geteon",
+        "gloss": "draw",
+        "fullGloss": "to draw, lead, incite, excite, constrain, restrain, bring up, instruct, bring to an end, complete, draw or bind together, string a musical instrument",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/16400"
+            }
+        ]
+    },
+    {
+        "id": 3819,
+        "text": "geteon",
+        "gloss": "to make",
+        "fullGloss": "to make, form, frame, appoint, determine, decree, ordain, assign; făcĕre, stătuĕre, constĭtuĕre, decernĕre",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/16401"
+            }
+        ]
+    },
+    {
+        "id": 3820,
+        "text": "getogen"
+    },
+    {
+        "id": 3821,
+        "text": "getogen"
+    },
+    {
+        "id": 3822,
+        "text": "Grecisc",
+        "gloss": "greek",
+        "fullGloss": "greek, Grecian",
+        "pos": "ADJ",
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/17481"
+            }
+        ]
+    },
+    {
+        "id": 3823,
+        "text": "greciscre"
+    },
+    {
+        "id": 3824,
+        "text": "uþwitigung",
+        "gloss": "the study of philosophy",
+        "fullGloss": "the study of philosophy, philosophy",
+        "pos": "N",
+        "classes": [
+            "fem"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/34143"
+            }
+        ]
+    },
+    {
+        "id": 3825,
+        "text": "uðwytegunge"
+    },
+    {
+        "id": 3826,
+        "text": "Læden",
+        "gloss": "latin",
+        "fullGloss": "latin, the Latin tongue",
+        "pos": "N",
+        "classes": [
+            "neut"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/20931"
+            }
+        ]
+    },
+    {
+        "id": 3827,
+        "text": "lædenre"
+    },
+    {
+        "id": 3828,
+        "text": "getingness",
+        "gloss": "eloquence",
+        "fullGloss": "eloquence,                  ease of speech",
+        "pos": "N",
+        "classes": [
+            "fem"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/16590"
+            }
+        ]
+    },
+    {
+        "id": 3829,
+        "text": "getingnysse"
     }
 ]

@@ -90,7 +90,7 @@ fun main() {
     val doc = SAXBuilder().build(File("corpus/æls.xml"))
     val proiel = ProielReader(doc)
     val div = proiel.divs[0]
-    val sentence = div.convertSentence(3)
+    val sentence = div.convertSentence(5)
 
     val ieRepo = JsonGraphRepository.fromJson(Path.of("data/ie"))
     val language = ieRepo.languageByShortName("OE")!!
