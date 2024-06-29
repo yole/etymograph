@@ -116,7 +116,8 @@ class Wiktionary : Dictionary {
         return wiktionaryPage.posSections.map { section ->
             Word(-1, word, language, section.senses.first(), section.senses.joinToString("; "),
                 pos = language.pos.find { it.name == section.pos }?.abbreviation,
-                classes = section.classes)
+                classes = section.classes,
+                source = listOf(SourceRef(null, "https://en.wiktionary.org/wiki/$word#${language.name.replace(' ', '_')}")))
         }
     }
 
