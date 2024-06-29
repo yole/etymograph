@@ -16,9 +16,9 @@ class ProielDiv(private val reader: ProielReader, private val element: Element) 
         val textBuilder = StringBuilder()
         val words = mutableListOf<LemmatizedWord>()
         for (token in sentenceElement.getChildren("token")) {
-            val form = token.getAttributeValue("form")
+            val form = token.getAttributeValue("form") ?: continue
             textBuilder
-                .append(form)
+                .append(form.replace(' ', '-'))
                 .append(token.getAttributeValue("presentation-after", ""))
             val pos = reader.pos[token.getAttributeValue("part-of-speech")]!!
             val morphology = convertMorphology(token.getAttributeValue("morphology"))
@@ -81,7 +81,7 @@ fun main() {
     val doc = SAXBuilder().build(File("corpus/æls.xml"))
     val proiel = ProielReader(doc)
     val div = proiel.divs[0]
-    val sentence = div.convertSentence(0)
+    val sentence = div.convertSentence(2)
 
     val ieRepo = JsonGraphRepository.fromJson(Path.of("data/ie"))
     val language = ieRepo.languageByShortName("OE")!!
