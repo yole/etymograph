@@ -5,7 +5,13 @@ class LemmatizedWord(val form: String, val lemma: String, val pos: String, val c
 class LemmatizedText(val text: String, val words: List<LemmatizedWord>)
 
 fun importLemmatizedText(repo: GraphRepository, language: Language, dictionary: Dictionary, title: String, text: LemmatizedText) {
-    val corpusText = repo.addCorpusText(text.text, title, language)
+    var relativeIndex = 0
+    val corpusText = repo.corpusTextsInLanguage(language).find { it.title == title }
+        ?.also { corpusText ->
+            relativeIndex = corpusText.wordCount()
+            corpusText.text += "\n${text.text}"
+        }
+        ?: repo.addCorpusText(text.text, title, language)
     for ((index, word) in text.words.withIndex()) {
         var lemmaWords = repo.wordsByTextFuzzy(language, word.lemma)
             .filter {
@@ -32,7 +38,7 @@ fun importLemmatizedText(repo: GraphRepository, language: Language, dictionary: 
         }
         else if (lemmaWords.size == 1) {
             val formWord = createWordForForm(lemmaWords.single(), repo, word)
-            corpusText.associateWord(index, formWord)
+            corpusText.associateWord(index + relativeIndex, formWord)
         }
     }
 }
@@ -52,7 +58,7 @@ private fun createWordForForm(lemmaWord: Word, repo: GraphRepository, word: Lemm
             .find { it.type == Link.Derived && it.rules == listOf(rule) }
             ?.fromEntity as? Word
         if (existingFormWord != null) {
-            println("here")
+            return existingFormWord
         }
     }
 

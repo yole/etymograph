@@ -123,6 +123,8 @@ class CorpusText(
         return false
     }
 
+    fun wordCount(): Int = iterateWords().count()
+
     private fun iterateWords(): Sequence<WordText> {
         var currentIndex = 0
         return sequence {
