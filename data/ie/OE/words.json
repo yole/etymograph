@@ -7032,7 +7032,7 @@
     {
         "id": 2895,
         "text": "healdan",
-        "gloss": "to keep, to protect",
+        "gloss": "to keep",
         "fullGloss": "HOLD, keep, grasp, retain,                     restrain, confine, contain",
         "pos": "V",
         "sourceRefs": [
@@ -12645,5 +12645,123 @@
         "id": 3752,
         "text": "Alexandria",
         "pos": "NP"
+    },
+    {
+        "id": 3753,
+        "text": "hine"
+    },
+    {
+        "id": 3754,
+        "text": "gesettan",
+        "gloss": "to set",
+        "fullGloss": "to set, put, fix, confirm, restore, appoint, decree, settle, possess, occupy, place together, compose, make, compare, expose, allay",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/15985"
+            }
+        ]
+    },
+    {
+        "id": 3755,
+        "text": "gesette"
+    },
+    {
+        "id": 3756,
+        "text": "heahgerefa",
+        "gloss": "high reeve",
+        "fullGloss": "a high reeve, reeve of high rank",
+        "pos": "N",
+        "classes": [
+            "masc"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/18337"
+            }
+        ]
+    },
+    {
+        "id": 3757,
+        "text": "Egipte",
+        "pos": "NP"
+    },
+    {
+        "id": 3758,
+        "text": "land",
+        "gloss": "land",
+        "fullGloss": "LAND as opposed to water or air, earth",
+        "pos": "N",
+        "classes": [
+            "neut"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/21076"
+            }
+        ]
+    },
+    {
+        "id": 3759,
+        "text": "lande"
+    },
+    {
+        "id": 3760,
+        "text": "hatan",
+        "gloss": "to be called",
+        "fullGloss": "to be called or named, have for a name",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/18214"
+            }
+        ]
+    },
+    {
+        "id": 3761,
+        "text": "het"
+    },
+    {
+        "id": 3762,
+        "text": "heolde"
+    },
+    {
+        "id": 3763,
+        "text": "þa"
+    },
+    {
+        "id": 3764,
+        "text": "Romanisc",
+        "gloss": "roman",
+        "fullGloss": "roman",
+        "pos": "ADJ",
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/25961"
+            }
+        ]
+    },
+    {
+        "id": 3765,
+        "text": "romaniscan"
+    },
+    {
+        "id": 3766,
+        "text": "gesetnes",
+        "gloss": "position",
+        "fullGloss": "position, foundation, tradition, an institution, constitution, composition, ordinance, decree, law",
+        "pos": "N",
+        "classes": [
+            "fem"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/15983"
+            }
+        ]
+    },
+    {
+        "id": 3767,
+        "text": "gesætnysse"
     }
 ]
