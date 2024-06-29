@@ -214,7 +214,8 @@ class WordController {
         val text: String?,
         val gloss: String?,
         val fullGloss: String?,
-        val posClasses: String?,
+        val pos: String?,
+        val classes: String?,
         val reconstructed: Boolean?,
         val source: String?,
         val notes: String?
@@ -227,13 +228,13 @@ class WordController {
         val (text, stressedPhonemeIndex) = parseStress(params.text?.nullize() ?: badRequest("No word text specified"),
             repo, language)
 
-        val (pos, classes) = parseWordClasses(language, params.posClasses)
+        val classes = parseWordClasses(language, params.pos, params.classes)
 
         val word = repo.findOrAddWord(
             text, language,
             params.gloss.nullize(),
             params.fullGloss.nullize(),
-            pos,
+            params.pos.nullize(),
             classes,
             params.reconstructed ?: false,
             parseSourceRefs(repo, params.source),
@@ -256,19 +257,16 @@ class WordController {
         return text to null
     }
 
-    private fun parseWordClasses(language: Language, posClasses: String?): Pair<String?, List<String>> {
-        val posClassList = posClasses.orEmpty().split(' ')
-        val pos = posClassList.firstOrNull().nullize()
-        val classes = posClassList.drop(1)
-        if (pos != null) {
-            for (cls in classes) {
-                val (wc, _) = language.findWordClass(cls) ?: badRequest("Unknown word class '$cls'")
-                if (pos !in wc.pos) {
-                    badRequest("Word class '$cls' does not apply to POS '$pos'")
-                }
+    private fun parseWordClasses(language: Language, pos: String?, classes: String?): List<String> {
+        if (classes.isNullOrBlank()) return emptyList()
+        val posClassList = classes.split(' ')
+        for (cls in posClassList) {
+            val (wc, _) = language.findWordClass(cls) ?: badRequest("Unknown word class '$cls'")
+            if (pos !in wc.pos) {
+                badRequest("Word class '$cls' does not apply to POS '$pos'")
             }
         }
-        return pos to classes
+        return posClassList
     }
 
     @PostMapping("/{graph}/word/{id}/update", consumes = ["application/json"])
@@ -286,11 +284,11 @@ class WordController {
             }
         }
 
-        val (pos, classes) = parseWordClasses(word.language, params.posClasses)
+        val classes = parseWordClasses(word.language, params.pos, params.classes)
 
         word.gloss = params.gloss.nullize()
         word.fullGloss = params.fullGloss.nullize()
-        word.pos = pos
+        word.pos = params.pos.nullize()
         word.classes = classes
         if (params.reconstructed != null) {
             word.reconstructed = params.reconstructed

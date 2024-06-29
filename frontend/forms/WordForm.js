@@ -7,6 +7,7 @@ import FormCheckbox from "@/components/FormCheckbox";
 import {useState} from "react";
 import RuleListSelect from "@/components/RuleListSelect";
 import {useRouter} from "next/router";
+import PosSelect from "@/components/PosSelect";
 
 export default function WordForm(props) {
     const router = useRouter()
@@ -63,9 +64,9 @@ export default function WordForm(props) {
     }
 
     return <EtymographForm
-        create={(data) => addWord(graph, data.language, data.text, data.gloss, data.fullGloss, data.posClasses,
+        create={(data) => addWord(graph, data.language, data.text, data.gloss, data.fullGloss, data.pos, data.classes,
             data.reconstructed, data.source, data.notes)}
-        update={(data) => updateWord(graph, props.updateId, data.text, data.gloss, data.fullGloss, data.posClasses,
+        update={(data) => updateWord(graph, props.updateId, data.text, data.gloss, data.fullGloss, data.pos, data.classes,
             data.reconstructed, data.source, data.notes)}
         {...props}
         submitted={submitted}
@@ -78,7 +79,8 @@ export default function WordForm(props) {
             {isNewWord && <span className="newWord">New</span>}
             {wordDefinitions.length > 0 && <span className="wordDefinitions">{wordDefinitions.join(", ")}</span>}
         </FormRow>
-        <FormRow id="posClasses" label="POS/classes"/>
+        <PosSelect id="pos" label="POS" language={props.defaultValues.language} languageProp={props.languageReadOnly !== true ? 'language' : undefined}/>
+        <FormRow id="classes" label="Classes"/>
         <FormRow id="gloss" label="Gloss"/>
         <FormRow id="fullGloss" label="Full gloss"/>
         {(props.linkType === '>' || props.linkType === '^') &&

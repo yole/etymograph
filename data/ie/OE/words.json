@@ -2534,21 +2534,16 @@
         "id": 2159,
         "text": "ċinn",
         "gloss": "chin",
-        "fullGloss": "A kind; genus",
         "pos": "N",
         "classes": [
             "neut"
-        ],
-        "sourceRefs": [
-            {
-                "refText": "https://bosworthtoller.com/6183"
-            }
         ]
     },
     {
         "id": 2161,
         "text": "ċisel",
-        "gloss": "gravel"
+        "gloss": "gravel",
+        "pos": "N"
     },
     {
         "id": 2164,
@@ -5855,12 +5850,13 @@
         "id": 2722,
         "text": "āscian",
         "gloss": "to ask",
+        "pos": "V",
         "sourceRefs": [
             {
-                "pubId": 5,
-                "refText": "171"
+                "refText": "false"
             }
-        ]
+        ],
+        "notes": "Ringe 2014:171"
     },
     {
         "id": 2725,
@@ -6195,6 +6191,7 @@
         "id": 2788,
         "text": "cempa",
         "gloss": "warrior",
+        "pos": "N",
         "sourceRefs": [
             {
                 "pubId": 5,
@@ -7044,6 +7041,7 @@
         "id": 2902,
         "text": "anfealt",
         "gloss": "anvil",
+        "pos": "N",
         "sourceRefs": [
             {
                 "pubId": 5,
@@ -12270,7 +12268,11 @@
         "id": 3708,
         "text": "cleafa",
         "gloss": "cellar",
-        "pos": "N"
+        "pos": "N",
+        "classes": [
+            "masc",
+            "n-stem"
+        ]
     },
     {
         "id": 3709,
@@ -12290,7 +12292,11 @@
         "id": 3712,
         "text": "hēddern",
         "gloss": "storeroom",
-        "pos": "N"
+        "pos": "N",
+        "classes": [
+            "neut",
+            "a-stem"
+        ]
     },
     {
         "id": 3713,

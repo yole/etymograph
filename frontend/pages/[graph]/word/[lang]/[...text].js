@@ -266,7 +266,7 @@ function SingleWord(params) {
 
     const isName = word.pos === "NP"
     const isCompound = word.compound
-    const posClassesEditable = (word.pos !== null ? word.pos : "") + (word.classes.length > 0 ? " " + word.classes.join(" ") : "")
+    const classesEditable = word.classes.join(" ")
 
     const [dictionaryTitle, dictionaryLink] =
         isName ? ["Names", "/names"] :
@@ -301,7 +301,8 @@ function SingleWord(params) {
                 text: word.textWithExplicitStress,
                 gloss: word.glossComputed ? undefined : word.gloss,
                 fullGloss: word.fullGloss,
-                posClasses: posClassesEditable,
+                pos: word.pos,
+                classes: classesEditable,
                 reconstructed: word.reconstructed,
                 source: word.sourceEditableText,
                 notes: word.notes

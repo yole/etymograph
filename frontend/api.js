@@ -87,16 +87,16 @@ function postToBackend(endpoint, data) {
     })
 }
 
-export function addWord(graph, lang, text, gloss, fullGloss, posClasses, reconstructed, source, notes) {
+export function addWord(graph, lang, text, gloss, fullGloss, pos, classes, reconstructed, source, notes) {
     return postToBackend(`${graph}/word/${lang}`,
-        {text: text, gloss: gloss, fullGloss: fullGloss, posClasses: posClasses, reconstructed, source: source, notes: notes}
+        {text: text, gloss: gloss, fullGloss: fullGloss, pos, classes, reconstructed, source: source, notes: notes}
     )
 }
 
-export function updateWord(graph, id, text, gloss, fullGloss, posClasses, reconstructed, source, notes) {
+export function updateWord(graph, id, text, gloss, fullGloss, pos, classes, reconstructed, source, notes) {
     return postToBackend(`${graph}/word/${id}/update`,
         {
-            text: text, gloss: gloss, fullGloss: fullGloss, posClasses: posClasses, reconstructed, source: source, notes
+            text: text, gloss: gloss, fullGloss: fullGloss, pos, classes, reconstructed, source: source, notes
         })
 }
 

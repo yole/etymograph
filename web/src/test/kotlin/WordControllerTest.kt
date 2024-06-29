@@ -25,7 +25,7 @@ class WordControllerTest {
 
     @Test
     fun testEmptyPOS() {
-        val addWordParams = WordController.AddWordParameters("ea", "be", "", "", false,"", "")
+        val addWordParams = WordController.AddWordParameters("ea", "be", "", "", "",false,"", "")
         val wordViewModel = wordController.addWord(graph, "q", addWordParams)
 
         assertNull(fixture.graph.wordsByText(fixture.q, "ea").single().pos)
@@ -38,11 +38,11 @@ class WordControllerTest {
     fun testValidateWordClass() {
         fixture.q.wordClasses.add(WordCategory("Gender", listOf("N"), listOf(WordCategoryValue("Male", "m"))))
 
-        val addWordParams = WordController.AddWordParameters("ea", "be", "", "N m", false, "", "")
+        val addWordParams = WordController.AddWordParameters("ea", "be", "", "N", "m", false, "", "")
         val wordViewModel = wordController.addWord(graph, "q", addWordParams)
         assertEquals(listOf("m"), wordViewModel.classes)
 
-        val badAddWordParams = WordController.AddWordParameters("ea", "be", "", "N f", false, "", "")
+        val badAddWordParams = WordController.AddWordParameters("ea", "be", "", "N", "f", false, "", "")
         Assert.assertThrows("Unknown word class 'f'", Exception::class.java) { wordController.addWord(graph, "q", badAddWordParams) }
     }
 
@@ -139,7 +139,7 @@ class WordControllerTest {
     @Test
     fun explicitStress() {
         val word = wordController.addWord(graph, "q", WordController.AddWordParameters(
-            "eˈa", null, null, null, false, null, null)
+            "eˈa", null, null, null, null, false, null, null)
         )
         assertEquals("ea", word.text)
         assertEquals(1, word.stressIndex)
@@ -151,7 +151,7 @@ class WordControllerTest {
         assertEquals("eˈa", wordModel.textWithExplicitStress)
 
         wordController.updateWord(graph, word.id, WordController.AddWordParameters(
-            "ˈea",null, null, null, false, null, null)
+            "ˈea",null, null, null, null,false, null, null)
         )
         val wordById = graph.wordById(word.id)!!
         assertEquals("ea", wordById.text)

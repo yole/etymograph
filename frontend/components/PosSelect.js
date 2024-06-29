@@ -8,7 +8,7 @@ export default function PosSelect(props) {
     const globalState = useContext(GlobalStateContext)
     const lang = props.languageProp !== undefined
         ? watch(props.languageProp)
-        : props.languageProp
+        : props.language
     const language = globalState.languages.find(l => l.shortName === lang)
 
     const pos = language === null ? [] : language.pos.map((p) => ({
@@ -18,7 +18,7 @@ export default function PosSelect(props) {
 
     const valueFn = props.isMulti
         ? (value) => value === undefined ? [] : value.split(",").map(s => pos.find(r => r.value === s))
-        : (value) => language.pos.find((r) => r.value === value)
+        : (value) => pos.find((r) => r.value === value)
 
     function changeFn(onChange) {
         return props.isMulti
