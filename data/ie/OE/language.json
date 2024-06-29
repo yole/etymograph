@@ -698,12 +698,8 @@
                     "abbreviation": "INF"
                 },
                 {
-                    "name": "Active participle",
+                    "name": "Participle",
                     "abbreviation": "PART"
-                },
-                {
-                    "name": "Passive participle",
-                    "abbreviation": "PPART"
                 }
             ]
         },

@@ -12501,5 +12501,149 @@
     {
         "id": 3733,
         "text": "sealtes"
+    },
+    {
+        "id": 3734,
+        "text": "æþelboren",
+        "gloss": "noble-born",
+        "fullGloss": "noble-born, free-born, noble",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/933"
+            }
+        ]
+    },
+    {
+        "id": 3735,
+        "text": "þegen",
+        "gloss": "a servant",
+        "fullGloss": "a servant, one who does service for another",
+        "pos": "N",
+        "classes": [
+            "masc"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/31613"
+            }
+        ]
+    },
+    {
+        "id": 3736,
+        "text": "wæs"
+    },
+    {
+        "id": 3737,
+        "text": "gehatan",
+        "gloss": "to call",
+        "fullGloss": "to call, name",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/14611"
+            }
+        ]
+    },
+    {
+        "id": 3738,
+        "text": "gehaten"
+    },
+    {
+        "id": 3739,
+        "text": "ðone"
+    },
+    {
+        "id": 3740,
+        "text": "asendan",
+        "gloss": "to send forth",
+        "fullGloss": "to send forth, send out, send",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/2265"
+            }
+        ]
+    },
+    {
+        "id": 3741,
+        "text": "asende"
+    },
+    {
+        "id": 3742,
+        "text": "Casere",
+        "gloss": "cæsar",
+        "fullGloss": "cæsar, an emperor; imperator",
+        "pos": "N",
+        "classes": [
+            "masc"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/5874"
+            }
+        ]
+    },
+    {
+        "id": 3743,
+        "text": "Commodus",
+        "pos": "NP"
+    },
+    {
+        "id": 3744,
+        "text": "ðam"
+    },
+    {
+        "id": 3745,
+        "text": "ricsian",
+        "gloss": "have power",
+        "fullGloss": "have power, to rule, govern, reign",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/25784"
+            }
+        ]
+    },
+    {
+        "id": 3746,
+        "text": "rixode"
+    },
+    {
+        "id": 3747,
+        "text": "Romeburh",
+        "pos": "NP"
+    },
+    {
+        "id": 3748,
+        "text": "ðære"
+    },
+    {
+        "id": 3749,
+        "text": "burh",
+        "gloss": "castle",
+        "fullGloss": "castle",
+        "pos": "N",
+        "classes": [
+            "fem"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/5434"
+            }
+        ]
+    },
+    {
+        "id": 3750,
+        "text": "byrig"
+    },
+    {
+        "id": 3751,
+        "text": "is"
+    },
+    {
+        "id": 3752,
+        "text": "Alexandria",
+        "pos": "NP"
     }
 ]
