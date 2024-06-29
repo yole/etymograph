@@ -493,11 +493,15 @@
         "fullGloss": "blow of a rod or a whip",
         "pos": "N",
         "classes": [
-            "fem"
+            "fem",
+            "o-stem"
         ],
         "sourceRefs": [
             {
                 "refText": "https://bosworthtoller.com/29829"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/swingel#Old_English"
             }
         ]
     },
@@ -548,7 +552,12 @@
         "id": 70,
         "text": "ācsian",
         "gloss": "ask",
-        "pos": "V"
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/acsian#Old_English"
+            }
+        ]
     },
     {
         "id": 71,
@@ -742,11 +751,15 @@
         "fullGloss": "wisdom, discretion",
         "pos": "N",
         "classes": [
-            "masc"
+            "masc",
+            "a-stem"
         ],
         "sourceRefs": [
             {
                 "refText": "https://bosworthtoller.com/36041"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/wisdom#Old_English"
             }
         ]
     },
@@ -874,7 +887,8 @@
         "fullGloss": "evil, ill",
         "pos": "N",
         "classes": [
-            "neut"
+            "neut",
+            "a-stem"
         ],
         "sourceRefs": [
             {
@@ -1010,6 +1024,9 @@
         "sourceRefs": [
             {
                 "refText": "https://bosworthtoller.com/22461"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/meaht#Old_English"
             }
         ]
     },
@@ -1376,6 +1393,9 @@
         "sourceRefs": [
             {
                 "refText": "https://bosworthtoller.com/36845"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/wundor#Old_English"
             }
         ]
     },
@@ -1691,13 +1711,18 @@
         "id": 458,
         "text": "swæþ",
         "gloss": "trace",
+        "fullGloss": "track, trace; footprint",
         "pos": "N",
         "classes": [
-            "neut"
+            "neut",
+            "a-stem"
         ],
         "sourceRefs": [
             {
                 "refText": "https://bosworthtoller.com/29526"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/swæþ#Old_English"
             }
         ]
     },
@@ -2000,11 +2025,15 @@
         "fullGloss": "A HOUSE,              a family",
         "pos": "N",
         "classes": [
-            "neut"
+            "neut",
+            "a-stem"
         ],
         "sourceRefs": [
             {
                 "refText": "https://bosworthtoller.com/19996"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/hus#Old_English"
             }
         ]
     },
@@ -2207,11 +2236,15 @@
         "fullGloss": "A DEN",
         "pos": "N",
         "classes": [
-            "neut"
+            "neut",
+            "a-stem"
         ],
         "sourceRefs": [
             {
                 "refText": "https://bosworthtoller.com/7570"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/denn#Old_English"
             }
         ]
     },
@@ -5449,14 +5482,19 @@
         "id": 2674,
         "text": "ȳþ",
         "gloss": "wave",
+        "fullGloss": "wave (of water)",
         "pos": "N",
         "classes": [
-            "fem"
+            "fem",
+            "i-stem"
         ],
         "sourceRefs": [
             {
                 "pubId": 5,
                 "refText": "140"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/yþ#Old_English"
             }
         ]
     },
@@ -6979,6 +7017,11 @@
         "id": 2892,
         "text": "sealt",
         "gloss": "salt",
+        "pos": "N",
+        "classes": [
+            "neut",
+            "a-stem"
+        ],
         "sourceRefs": [
             {
                 "pubId": 5,
@@ -7933,7 +7976,8 @@
         "fullGloss": "way",
         "pos": "N",
         "classes": [
-            "masc"
+            "masc",
+            "a-stem"
         ],
         "sourceRefs": [
             {
@@ -7942,6 +7986,9 @@
             },
             {
                 "refText": "https://bosworthtoller.com/34964"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/weg#Old_English"
             }
         ]
     },
@@ -9450,11 +9497,15 @@
         "fullGloss": "a monastery, a place where a body of monks or of nuns resided",
         "pos": "N",
         "classes": [
-            "neut"
+            "neut",
+            "a-stem"
         ],
         "sourceRefs": [
             {
                 "refText": "https://bosworthtoller.com/23322"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/mynster#Old_English"
             }
         ]
     },
@@ -11033,7 +11084,12 @@
         "id": 3455,
         "text": "wuht",
         "gloss": "creature",
-        "pos": "N"
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/wuht#Old_English"
+            }
+        ]
     },
     {
         "id": 3456,
@@ -11051,6 +11107,9 @@
         "sourceRefs": [
             {
                 "refText": "https://bosworthtoller.com/11167"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/for#Old_English"
             }
         ]
     },
@@ -11084,11 +11143,15 @@
         "fullGloss": "Air, atmosphere, breeze, sky, heavens, cloud",
         "pos": "N",
         "classes": [
-            "masc"
+            "masc",
+            "a-stem"
         ],
         "sourceRefs": [
             {
                 "refText": "https://bosworthtoller.com/21932"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/lyft#Old_English"
             }
         ]
     },
@@ -12209,7 +12272,13 @@
         "id": 3696,
         "text": "flaxe",
         "gloss": "flask",
-        "fullGloss": "flask, leather bottle"
+        "fullGloss": "flask, leather bottle",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/flaxe#Old_English"
+            }
+        ]
     },
     {
         "id": 3697,
@@ -12219,7 +12288,13 @@
         "id": 3698,
         "text": "fǣtels",
         "gloss": "bag",
-        "pos": "N"
+        "fullGloss": "a bag",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/fætels#Old_English"
+            }
+        ]
     },
     {
         "id": 3699,
@@ -12322,9 +12397,15 @@
         "id": 3717,
         "text": "mann",
         "gloss": "person",
+        "fullGloss": "person; man meaning mankind; ''(rare or non-literary)'' man meaning adult male; the rune {{lang|und|sc=Runr|ᛗ}}, representing the sound {{IPAchar|/m/}}",
         "pos": "N",
         "classes": [
             "masc"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/mann#Old_English"
+            }
         ]
     },
     {
@@ -12390,5 +12471,35 @@
         "text": "þurh-brūcan",
         "gloss": "fully enjoy",
         "pos": "V"
+    },
+    {
+        "id": 3731,
+        "text": "sealtere",
+        "gloss": "salt-worker",
+        "pos": "N",
+        "classes": [
+            "masc"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/27232"
+            }
+        ]
+    },
+    {
+        "id": 3732,
+        "text": "Þearle",
+        "gloss": "severely",
+        "fullGloss": "severely, sorely, strictly, hard",
+        "pos": "ADV",
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/31576"
+            }
+        ]
+    },
+    {
+        "id": 3733,
+        "text": "sealtes"
     }
 ]
