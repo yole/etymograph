@@ -6,9 +6,11 @@ import org.jdom2.Element
 import org.jdom2.Text
 import org.jdom2.input.SAXBuilder
 import ru.yole.etymograph.*
+import ru.yole.etymograph.Dictionary
 import java.io.FileReader
 import java.io.StringReader
 import java.nio.file.Path
+import java.util.*
 
 val posMap = mapOf(
     "noun" to "N",
@@ -296,9 +298,31 @@ class BosworthToller(dataPath: String) : Dictionary {
             classes.add(genderClass)
         }
         val form = entry.form.replace("-", "")
-        val gloss = entry.def.first()
-        return Word(-1, form, language, gloss, fullGloss = gloss, pos = pos, classes = classes,
+        val gloss = entry.def.first().replaceFirstChar { it.lowercase(Locale.getDefault()) }
+        return Word(-1, form, language, extractShortGloss(gloss), fullGloss = gloss, pos = pos, classes = classes,
             source = listOf(SourceRef(null, "https://bosworthtoller.com/${entry.id}")))
+    }
+
+    private fun extractShortGloss(gloss: String): String {
+        val words = gloss.split(' ').filter { it.isNotBlank() }
+        val uppercaseWord = words.find { it.all { c -> c.isUpperCase() } }
+        if (uppercaseWord != null) {
+            return uppercaseWord.lowercase()
+        }
+        if (';' in gloss) {
+            val beforeSemi = gloss.split(';').first()
+            if (beforeSemi.isNotBlank()) {
+                if (',' in beforeSemi) {
+                    val firstWord = beforeSemi.split(',').first()
+                    if (firstWord.isNotBlank()) {
+                        return firstWord
+                    }
+                }
+                return beforeSemi
+            }
+        }
+        val firstWord = gloss.split(',').first()
+        return firstWord.ifBlank { gloss }
     }
 }
 
