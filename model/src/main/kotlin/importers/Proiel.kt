@@ -15,14 +15,23 @@ class ProielDiv(private val reader: ProielReader, private val element: Element) 
         val sentenceElement = element.getChildren("sentence")[index]
         val textBuilder = StringBuilder()
         val words = mutableListOf<LemmatizedWord>()
+        var tokens = mutableListOf<LemmatizedToken>()
+        var wordForm = ""
         for (token in sentenceElement.getChildren("token")) {
             val form = token.getAttributeValue("form") ?: continue
+            wordForm += form
+            val presentationAfter = token.getAttributeValue("presentation-after", "")
             textBuilder
                 .append(form.replace(' ', '-'))
-                .append(token.getAttributeValue("presentation-after", ""))
+                .append(presentationAfter)
             val pos = reader.pos[token.getAttributeValue("part-of-speech")]!!
             val morphology = convertMorphology(token.getAttributeValue("morphology"))
-            words.add(LemmatizedWord(form, token.getAttributeValue("lemma"), pos, morphology))
+            tokens.add(LemmatizedToken(form, token.getAttributeValue("lemma"), pos, morphology))
+            if (presentationAfter.isNotEmpty()) {
+                words.add(LemmatizedWord(wordForm, tokens))
+                wordForm = ""
+                tokens = mutableListOf()
+            }
         }
         return LemmatizedText(textBuilder.toString(), words)
     }
@@ -81,7 +90,7 @@ fun main() {
     val doc = SAXBuilder().build(File("corpus/æls.xml"))
     val proiel = ProielReader(doc)
     val div = proiel.divs[0]
-    val sentence = div.convertSentence(2)
+    val sentence = div.convertSentence(3)
 
     val ieRepo = JsonGraphRepository.fromJson(Path.of("data/ie"))
     val language = ieRepo.languageByShortName("OE")!!

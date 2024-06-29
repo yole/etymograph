@@ -1,6 +1,8 @@
 package ru.yole.etymograph
 
-class LemmatizedWord(val form: String, val lemma: String, val pos: String, val categories: List<String>)
+class LemmatizedToken(val form: String, val lemma: String, val pos: String, val categories: List<String>)
+
+class LemmatizedWord(val form: String, val tokens: List<LemmatizedToken>)
 
 class LemmatizedText(val text: String, val words: List<LemmatizedWord>)
 
@@ -13,37 +15,38 @@ fun importLemmatizedText(repo: GraphRepository, language: Language, dictionary: 
         }
         ?: repo.addCorpusText(text.text, title, language)
     for ((index, word) in text.words.withIndex()) {
-        var lemmaWords = repo.wordsByTextFuzzy(language, word.lemma)
+        val token = word.tokens.singleOrNull() ?: continue
+        var lemmaWords = repo.wordsByTextFuzzy(language, token.lemma)
             .filter {
                 repo.getLinksFrom(it).none { link -> link.type == Link.Variation } &&
                 it.grammaticalCategorySuffix(repo) == null
             }
         if (lemmaWords.isEmpty()) {
-            if (word.pos == "proper noun") {
-                val baseWord = repo.findOrAddWord(word.lemma, language, null, pos = "NP")
+            if (token.pos == "proper noun") {
+                val baseWord = repo.findOrAddWord(token.lemma, language, null, pos = "NP")
                 lemmaWords = listOf(baseWord)
             }
             else {
-                val dictionaryWords = dictionary.lookup(language, word.lemma)
+                val dictionaryWords = dictionary.lookup(language, token.lemma)
                 lemmaWords = dictionaryWords.map {
-                    repo.findOrAddWord(word.lemma, language, it.gloss, it.fullGloss, it.pos, it.classes, it.reconstructed, it.source, it.notes)
+                    repo.findOrAddWord(token.lemma, language, it.gloss, it.fullGloss, it.pos, it.classes, it.reconstructed, it.source, it.notes)
                 }
             }
         }
 
         if (lemmaWords.size > 1) {
             for (lemmaWord in lemmaWords) {
-                createWordForForm(lemmaWord, repo, word)
+                createWordForForm(lemmaWord, repo, token)
             }
         }
         else if (lemmaWords.size == 1) {
-            val formWord = createWordForForm(lemmaWords.single(), repo, word)
+            val formWord = createWordForForm(lemmaWords.single(), repo, token)
             corpusText.associateWord(index + relativeIndex, formWord)
         }
     }
 }
 
-private fun createWordForForm(lemmaWord: Word, repo: GraphRepository, word: LemmatizedWord): Word {
+private fun createWordForForm(lemmaWord: Word, repo: GraphRepository, word: LemmatizedToken): Word {
     val categories = mapCategoryValues(lemmaWord, word.categories)
     if (categories.isEmpty() || categories.all { isDefaultCategoryValue(lemmaWord.language, it) }) {
         return lemmaWord
