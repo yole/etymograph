@@ -31,7 +31,7 @@ class WiktionaryPosSection(val pos: String) {
         var subsection: String? = null
         while (true) {
             val line = lines.peek() ?: return
-            if (line.startsWith("===") && !line.startsWith("====")) {
+            if (line.startsWith("==") && !line.startsWith("====")) {
                 return
             }
             lines.next()
@@ -129,9 +129,10 @@ fun main() {
     val ieRepo = JsonGraphRepository.fromJson(Path.of("data/ie"))
     val oe = ieRepo.languageByShortName("OE")!!
     val wiktionary = Wiktionary()
-    val result = wiktionary.lookup(oe, "æcer")
-    val word = result.single()
-    println(word.fullGloss)
-    println(word.pos)
-    println(word.classes)
+    val result = wiktionary.lookup(oe, "wer")
+    for (word in result) {
+        println(word.fullGloss)
+        println(word.pos)
+        println(word.classes)
+    }
 }
