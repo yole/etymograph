@@ -107,7 +107,8 @@ class Wiktionary : Dictionary {
     }
 
     override fun lookup(language: Language, word: String): List<Word> {
-        val pageJson = loadWiktionaryPage(word)
+        val normalizedWord = word.removeDiacritics()
+        val pageJson = loadWiktionaryPage(normalizedWord)
         val pageData = json.decodeFromString<WiktionaryPageData>(pageJson)
         val wiktionaryPage = WiktionaryPage(pageData.source)
         if (!wiktionaryPage.parse(language.name, parseDictionarySettings(language.dictionarySettings))) {
@@ -117,7 +118,7 @@ class Wiktionary : Dictionary {
             Word(-1, word, language, section.senses.first(), section.senses.joinToString("; "),
                 pos = language.pos.find { it.name == section.pos }?.abbreviation,
                 classes = section.classes,
-                source = listOf(SourceRef(null, "https://en.wiktionary.org/wiki/$word#${language.name.replace(' ', '_')}")))
+                source = listOf(SourceRef(null, "https://en.wiktionary.org/wiki/$normalizedWord#${language.name.replace(' ', '_')}")))
         }
     }
 
