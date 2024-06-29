@@ -4,6 +4,7 @@ import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.server.ResponseStatusException
 import ru.yole.etymograph.*
+import ru.yole.etymograph.importers.Wiktionary
 import ru.yole.etymograph.web.*
 
 const val explicitStressMark = 'ˈ'
@@ -380,6 +381,16 @@ class WordController {
         val sequence = repo.resolveRuleSequence(params.sequenceId)
         val newWord = repo.deriveThroughRuleSequence(word, sequence)
         return (newWord ?: word).toViewModel(repo)
+    }
+
+    data class LookupResult(val status: String?)
+
+    @PostMapping("/{graph}/word/{id}/lookup", consumes = ["application/json"])
+    fun lookup(repo: GraphRepository, @PathVariable id: Int): LookupResult {
+        val word = repo.resolveWord(id)
+        val dictionary = Wiktionary()
+        val status = augmentWordWithDictionary(dictionary, word)
+        return LookupResult(status)
     }
 
     data class WordSequenceParams(val sequence: String = "", val source: String = "")

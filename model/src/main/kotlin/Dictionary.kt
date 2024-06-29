@@ -6,26 +6,29 @@ interface Dictionary {
 
 fun augmentWithDictionary(repo: GraphRepository, language: Language, dictionary: Dictionary) {
     for (word in repo.dictionaryWords(language)) {
-        val lookupResult = dictionary.lookup(language, word.text)
-        if (lookupResult.isEmpty()) {
-            println("Found no matching word for ${word.text}")
-        }
-        else if (lookupResult.size > 1) {
-            val bestMatch = tryFindBestMatch(word, lookupResult)
-            if (bestMatch != null) {
-                augmentWord(word, bestMatch)
-            }
-            else {
-                println("Found multiple matching words for ${word.text}:")
-                for (lookupWord in lookupResult) {
-                    println(lookupWord.source.first().refText)
-                }
-            }
-        }
-        else {
-            augmentWord(word, lookupResult.single())
+        val result = augmentWordWithDictionary(dictionary, word)
+        if (result != null) {
+            println(result)
         }
     }
+}
+
+fun augmentWordWithDictionary(dictionary: Dictionary, word: Word): String? {
+    val lookupResult = dictionary.lookup(word.language, word.text)
+    if (lookupResult.isEmpty()) {
+        return "Found no matching word for ${word.text}"
+    } else if (lookupResult.size > 1) {
+        val bestMatch = tryFindBestMatch(word, lookupResult)
+        if (bestMatch != null) {
+            augmentWord(word, bestMatch)
+        } else {
+            return "Found multiple matching words for ${word.text}: " +
+                    lookupResult.joinToString(", ") { it.source.first().refText }
+        }
+    } else {
+        augmentWord(word, lookupResult.single())
+    }
+    return null
 }
 
 private fun tryFindBestMatch(word: Word, dictionaryWords: List<Word>): Word? {

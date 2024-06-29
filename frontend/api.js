@@ -100,6 +100,10 @@ export function updateWord(graph, id, text, gloss, fullGloss, pos, classes, reco
         })
 }
 
+export function lookupWord(graph, id) {
+    return postToBackend(`${graph}/word/${id}/lookup`)
+}
+
 export function deleteWord(graph, id) {
     return postToBackend(`${graph}/word/${id}/delete`, {})
 }

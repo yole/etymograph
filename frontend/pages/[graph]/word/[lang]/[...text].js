@@ -10,7 +10,7 @@ import {
     fetchBackend,
     allowEdit,
     deleteCompound,
-    applyRuleSequence, deriveThroughRuleSequence, fetchAllLanguagePaths
+    applyRuleSequence, deriveThroughRuleSequence, fetchAllLanguagePaths, lookupWord
 } from "@/api";
 import Link from "next/link";
 import {useRouter} from "next/router";
@@ -171,6 +171,7 @@ function SingleWord(params) {
     const [editCompound, setEditCompound] = useState(undefined)
     const [editMode, setEditMode] = useState(false)
     const [errorText, setErrorText] = useState("")
+    const [lookupErrorText, setLookupErrorText] = useState("")
     useEffect(() => { document.title = "Etymograph : " + (word === undefined ? "Unknown Word" : word.text) })
 
     function submitted(r) {
@@ -193,6 +194,23 @@ function SingleWord(params) {
         }
         else {
             router.replace(router.asPath)
+        }
+    }
+
+    async function lookupWordClicked() {
+        const r = await lookupWord(graph, word.id)
+        if (r.status !== 200) {
+            const jr = await r.json()
+            setLookupErrorText(jr.message)
+        }
+        else {
+            const jr = await r.json()
+            if (jr.status !== null) {
+                setLookupErrorText(jr.status)
+            }
+            else {
+                router.replace(router.asPath)
+            }
         }
     }
 
@@ -284,6 +302,12 @@ function SingleWord(params) {
             <p>{word.fullGloss !== null && word.fullGloss !== "" ? word.fullGloss : <WordGloss gloss={word.gloss}/>}</p>
             {word.notes && <p>{word.notes}</p>}
             <SourceRefs source={word.source}/>
+
+            {allowEdit() && <p>
+                <button className="inlineButton" onClick={() => lookupWordClicked()}>Look up in Wiktionary</button><br/>
+                {lookupErrorText !== "" && <div className="errorText">{lookupErrorText}</div>}
+            </p>}
+
             {allowEdit() && word.parseCandidates.map(pc => <>
                 <p>
                     {pc.wordId !== null && <Link href={`/${graph}/word/${word.language}/${pc.text}/${pc.wordId}`}>{pc.text}</Link>}
