@@ -5,6 +5,7 @@ import FormRow from "@/components/FormRow";
 import FormTextArea from "@/components/FormTextArea";
 import LanguageSelect from "@/components/LanguageSelect";
 import {GraphContext} from "@/components/Contexts";
+import PosSelect from "@/components/PosSelect";
 
 export default function RuleForm(props) {
     const [ruleType, setRuleType] = useState(props.initialType !== undefined ? props.initialType : "phono")
@@ -27,7 +28,7 @@ export default function RuleForm(props) {
                 {ruleType === "morpho" && <>
                     <FormRow label="Added category values" id="addedCategories"/>
                     <FormRow label="Replaced category values" id="replacedCategories"/>
-                    <FormRow label="From POS" id="fromPOS"/>
+                    <PosSelect label="From POS" id="fromPOS" languageProp="toLang" isMulti={true}/>
                     <FormRow label="To POS" id="toPOS"/>
                 </>}
                 <FormRow label="Source" id="source"/>

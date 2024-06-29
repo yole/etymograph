@@ -23,6 +23,11 @@ class LanguageController {
         val rows: List<PhonemeTableRowViewModel>
     )
 
+    data class WordCategoryValueViewModel(
+        val name: String,
+        val abbreviation: String
+    )
+
     data class LanguageViewModel(
         val name: String,
         val shortName: String,
@@ -46,13 +51,18 @@ class LanguageController {
 
     data class LanguageShortViewModel(
         val name: String,
-        val shortName: String
+        val shortName: String,
+        val pos: List<WordCategoryValueViewModel>
     )
 
     @GetMapping("/{graph}/language")
     fun indexJson(repo: GraphRepository): List<LanguageShortViewModel> {
-        return repo.allLanguages().sortedBy { it.name }.map {
-            LanguageShortViewModel(it.name, it.shortName)
+        return repo.allLanguages().sortedBy { it.name }.map { lang ->
+            LanguageShortViewModel(
+                lang.name,
+                lang.shortName,
+                lang.pos.map { WordCategoryValueViewModel(it.name, it.abbreviation) }
+            )
         }
     }
 

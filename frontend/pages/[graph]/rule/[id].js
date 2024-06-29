@@ -205,7 +205,7 @@ export default function Rule(params) {
                 toLang: rule.toLang,
                 addedCategories: rule.addedCategories,
                 replacedCategories: rule.replacedCategories,
-                fromPOS: rule.fromPOS.join(", "),
+                fromPOS: rule.fromPOS.join(","),
                 toPOS: rule.toPOS,
                 source: rule.sourceEditableText,
                 notes: rule.notes,
