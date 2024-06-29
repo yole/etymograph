@@ -9,13 +9,15 @@ import java.net.http.HttpRequest
 import java.net.http.HttpResponse.BodyHandlers
 import java.nio.file.Path
 
-fun loadWiktionaryPage(title: String): String {
+fun loadWiktionaryPage(title: String): String? {
     val client = HttpClient.newHttpClient()
     val request = HttpRequest.newBuilder()
         .header("User-Agent", "https://github.com/yole/etymograph")
         .uri(URI.create("https://en.wiktionary.org/w/rest.php/v1/page/$title"))
         .build()
-    return client.send(request, BodyHandlers.ofString()).body()
+    val response = client.send(request, BodyHandlers.ofString())
+    if (response.statusCode() == 404) return null
+    return response.body()
 }
 
 @Serializable
@@ -108,7 +110,7 @@ class Wiktionary : Dictionary {
 
     override fun lookup(language: Language, word: String): List<Word> {
         val normalizedWord = word.removeDiacritics()
-        val pageJson = loadWiktionaryPage(normalizedWord)
+        val pageJson = loadWiktionaryPage(normalizedWord) ?: return emptyList()
         val pageData = json.decodeFromString<WiktionaryPageData>(pageJson)
         val wiktionaryPage = WiktionaryPage(pageData.source)
         if (!wiktionaryPage.parse(language.name, parseDictionarySettings(language.dictionarySettings))) {

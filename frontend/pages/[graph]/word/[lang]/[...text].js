@@ -305,7 +305,7 @@ function SingleWord(params) {
 
             {allowEdit() && <p>
                 <button className="inlineButton" onClick={() => lookupWordClicked()}>Look up in Wiktionary</button><br/>
-                {lookupErrorText !== "" && <div className="errorText">{lookupErrorText}</div>}
+                {lookupErrorText !== "" && <span className="errorText">{lookupErrorText}</span>}
             </p>}
 
             {allowEdit() && word.parseCandidates.map(pc => <>
