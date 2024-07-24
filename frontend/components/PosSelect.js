@@ -11,7 +11,7 @@ export default function PosSelect(props) {
         : props.language
     const language = globalState.languages.find(l => l.shortName === lang)
 
-    const pos = language === null ? [] : language.pos.map((p) => ({
+    const pos = !language ? [] : language.pos.map((p) => ({
         value: p.abbreviation,
         label: `${p.name} (${p.abbreviation})`})
     )
