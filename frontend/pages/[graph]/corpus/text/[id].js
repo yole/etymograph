@@ -177,8 +177,7 @@ export default function CorpusText(params) {
                             <WordForm key={predefWord} submitted={wordSubmitted}
                                       defaultValues={{
                                           language: corpusText.language,
-                                          text: predefWord,
-                                          source: corpusText.sourceEditableText
+                                          text: predefWord
                                       }}
                                       languageReadOnly={true}
                                       textReadOnly={true}/>
