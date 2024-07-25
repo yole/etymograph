@@ -66,14 +66,14 @@ class CorpusText(
             val textWords = splitIntoNormalizedWords(line, currentIndex)
             CorpusTextLine(textWords.map { tw ->
                 val word = _words.getOrNull(currentIndex)
-                val normalizedText = if (sentenceStart || tw.baseText.startsWith("\"") || tw.baseText.startsWith("("))
+                val normalizedText = if (sentenceStart || leadingPunctuation.any { tw.baseText.startsWith(it) })
                     tw.normalizedText
                 else
                     restoreCase(tw.normalizedText, tw.baseText)
                 sentenceStart = tw.baseText.endsWith('.')
                 if (word != null) {
                     val stressData = word.calculateStress(repo)
-                    val leadingPunctuation = tw.baseText.takeWhile { it == '"' || it == '(' }
+                    val leadingPunctuation = tw.baseText.takeWhile { it in leadingPunctuation }
                     val trailingPunctuation = tw.baseText.takeLastWhile { it in punctuation }
                     val wordWithSegments = repo.restoreSegments(word)
                     val segmentedText = leadingPunctuation + restoreCase(wordWithSegments.segmentedText(), tw.baseText) + trailingPunctuation
@@ -109,7 +109,7 @@ class CorpusText(
     private fun splitIntoNormalizedWords(line: String, lineStartIndex: Int): List<WordText> {
         var currentIndex = lineStartIndex
         return line.split(' ').map {
-            val cleanText = it.trimStart('"', '(').trimEnd(*punctuation)
+            val cleanText = it.trimStart(*leadingPunctuation).trimEnd(*punctuation)
                 .replace("[", "").replace("]", "")
             WordText(it, language.normalizeWord(cleanText), currentIndex++)
         }
@@ -151,7 +151,8 @@ class CorpusText(
     }
 
     companion object {
-        val punctuation = charArrayOf('!', ',', '.', '?', ':', ';', '\"', '(', ')')
+        val punctuation = charArrayOf('!', ',', '.', '?', ':', ';', '\"', '\'', '(', ')')
+        val leadingPunctuation = charArrayOf('\"', '(', '\'')
     }
 }
 
