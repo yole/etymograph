@@ -1,0 +1,196 @@
+[
+    {
+        "id": 4022,
+        "compoundId": 4020,
+        "componentIds": [
+            4021,
+            4023
+        ]
+    },
+    {
+        "id": 4027,
+        "compoundId": 4026,
+        "componentIds": [
+            3975,
+            4023
+        ]
+    },
+    {
+        "id": 4036,
+        "compoundId": 3885,
+        "componentIds": [
+            4035,
+            4037
+        ]
+    },
+    {
+        "id": 4039,
+        "compoundId": 4038,
+        "componentIds": [
+            3877,
+            4023
+        ]
+    },
+    {
+        "id": 4044,
+        "compoundId": 4043,
+        "componentIds": [
+            3871,
+            3871
+        ]
+    },
+    {
+        "id": 4051,
+        "compoundId": 3911,
+        "componentIds": [
+            3951,
+            4052
+        ]
+    },
+    {
+        "id": 4056,
+        "compoundId": 4055,
+        "componentIds": [
+            3951,
+            4057
+        ]
+    },
+    {
+        "id": 4060,
+        "compoundId": 4059,
+        "componentIds": [
+            3903,
+            3868
+        ]
+    },
+    {
+        "id": 4068,
+        "compoundId": 3934,
+        "componentIds": [
+            4067,
+            4069,
+            4070
+        ]
+    },
+    {
+        "id": 4129,
+        "compoundId": 4127,
+        "componentIds": [
+            4128,
+            4130
+        ]
+    },
+    {
+        "id": 4156,
+        "compoundId": 4154,
+        "componentIds": [
+            4155,
+            4142
+        ]
+    },
+    {
+        "id": 4161,
+        "compoundId": 4160,
+        "componentIds": [
+            3879,
+            3856
+        ]
+    },
+    {
+        "id": 4167,
+        "compoundId": 4166,
+        "componentIds": [
+            3879,
+            3882
+        ]
+    },
+    {
+        "id": 4195,
+        "compoundId": 4194,
+        "componentIds": [
+            4176,
+            4196
+        ]
+    },
+    {
+        "id": 4227,
+        "compoundId": 4226,
+        "componentIds": [
+            3857,
+            4228
+        ]
+    },
+    {
+        "id": 4235,
+        "compoundId": 4233,
+        "componentIds": [
+            4234,
+            4236
+        ]
+    },
+    {
+        "id": 4238,
+        "compoundId": 4237,
+        "componentIds": [
+            3879,
+            4236
+        ]
+    },
+    {
+        "id": 4302,
+        "compoundId": 4300,
+        "componentIds": [
+            3950,
+            4303
+        ]
+    },
+    {
+        "id": 4306,
+        "compoundId": 4305,
+        "componentIds": [
+            3875,
+            4303
+        ]
+    },
+    {
+        "id": 4309,
+        "compoundId": 4308,
+        "componentIds": [
+            3871,
+            4303,
+            4228
+        ]
+    },
+    {
+        "id": 4311,
+        "compoundId": 4297,
+        "componentIds": [
+            4310,
+            4303
+        ]
+    },
+    {
+        "id": 4317,
+        "compoundId": 4315,
+        "componentIds": [
+            4316,
+            4303
+        ]
+    },
+    {
+        "id": 4394,
+        "compoundId": 4392,
+        "componentIds": [
+            4393,
+            4303
+        ]
+    },
+    {
+        "id": 4402,
+        "compoundId": 4400,
+        "componentIds": [
+            4401,
+            4303
+        ]
+    }
+]

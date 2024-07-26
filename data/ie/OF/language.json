@@ -1,0 +1,284 @@
+{
+    "phonemes": [],
+    "pos": [
+        {
+            "name": "Noun",
+            "abbreviation": "N"
+        },
+        {
+            "name": "Proper noun",
+            "abbreviation": "NP"
+        },
+        {
+            "name": "Pronoun",
+            "abbreviation": "PRON"
+        },
+        {
+            "name": "Adjective",
+            "abbreviation": "ADJ"
+        },
+        {
+            "name": "Numeral",
+            "abbreviation": "NUM"
+        },
+        {
+            "name": "Adverb",
+            "abbreviation": "ADV"
+        },
+        {
+            "name": "Verb",
+            "abbreviation": "V"
+        },
+        {
+            "name": "Preposition",
+            "abbreviation": "PREP"
+        },
+        {
+            "name": "Conjunction",
+            "abbreviation": "CONJ"
+        },
+        {
+            "name": "Interjection",
+            "abbreviation": "INTJ"
+        },
+        {
+            "name": "Affix",
+            "abbreviation": "AFF"
+        }
+    ],
+    "grammaticalCategories": [
+        {
+            "name": "Number",
+            "pos": [
+                "N",
+                "PRON",
+                "ADJ",
+                "V"
+            ],
+            "values": [
+                {
+                    "name": "Singular",
+                    "abbreviation": "SG"
+                },
+                {
+                    "name": "Plural",
+                    "abbreviation": "PL"
+                }
+            ]
+        },
+        {
+            "name": "Case",
+            "pos": [
+                "N"
+            ],
+            "values": [
+                {
+                    "name": "Nominative",
+                    "abbreviation": "NOM"
+                },
+                {
+                    "name": "Accusative",
+                    "abbreviation": "ACC"
+                },
+                {
+                    "name": "Genitive",
+                    "abbreviation": "GEN"
+                },
+                {
+                    "name": "Dative",
+                    "abbreviation": "DAT"
+                }
+            ]
+        },
+        {
+            "name": "Tense",
+            "pos": [
+                "V"
+            ],
+            "values": [
+                {
+                    "name": "Present",
+                    "abbreviation": "PRES"
+                },
+                {
+                    "name": "Past",
+                    "abbreviation": "PST"
+                }
+            ]
+        },
+        {
+            "name": "Mood",
+            "pos": [
+                "V"
+            ],
+            "values": [
+                {
+                    "name": "Indicative",
+                    "abbreviation": "IND"
+                },
+                {
+                    "name": "Subjunctive",
+                    "abbreviation": "SUBJ"
+                },
+                {
+                    "name": "Imperative",
+                    "abbreviation": "IMP"
+                }
+            ]
+        },
+        {
+            "name": "Person",
+            "pos": [
+                "V"
+            ],
+            "values": [
+                {
+                    "name": "1st",
+                    "abbreviation": "1"
+                },
+                {
+                    "name": "2nd",
+                    "abbreviation": "2"
+                },
+                {
+                    "name": "3rd",
+                    "abbreviation": "3"
+                }
+            ]
+        },
+        {
+            "name": "Non-finite verb form",
+            "pos": [
+                "V"
+            ],
+            "values": [
+                {
+                    "name": "Inflected infinitive",
+                    "abbreviation": "INF"
+                },
+                {
+                    "name": "Participle",
+                    "abbreviation": "PART"
+                }
+            ]
+        },
+        {
+            "name": "Gender",
+            "pos": [
+                "ADJ"
+            ],
+            "values": [
+                {
+                    "name": "Masculine",
+                    "abbreviation": "M"
+                },
+                {
+                    "name": "Feminine",
+                    "abbreviation": "F"
+                },
+                {
+                    "name": "Neuter",
+                    "abbreviation": "N"
+                }
+            ]
+        },
+        {
+            "name": "Strength",
+            "pos": [
+                "ADJ"
+            ],
+            "values": [
+                {
+                    "name": "Strong",
+                    "abbreviation": "STRONG"
+                },
+                {
+                    "name": "Weak",
+                    "abbreviation": "WEAK"
+                }
+            ]
+        }
+    ],
+    "wordClasses": [
+        {
+            "name": "Noun gender",
+            "pos": [
+                "N"
+            ],
+            "values": [
+                {
+                    "name": "m",
+                    "abbreviation": "m"
+                },
+                {
+                    "name": "f",
+                    "abbreviation": "f"
+                },
+                {
+                    "name": "n",
+                    "abbreviation": "n"
+                }
+            ]
+        },
+        {
+            "name": "Noun class",
+            "pos": [
+                "N"
+            ],
+            "values": [
+                {
+                    "name": "a-stem",
+                    "abbreviation": "a-stem"
+                },
+                {
+                    "name": "n-stem",
+                    "abbreviation": "n-stem"
+                }
+            ]
+        },
+        {
+            "name": "Verb class",
+            "pos": [
+                "V"
+            ],
+            "values": [
+                {
+                    "name": "v-I",
+                    "abbreviation": "v-I"
+                },
+                {
+                    "name": "v-II",
+                    "abbreviation": "v-II"
+                },
+                {
+                    "name": "v-III",
+                    "abbreviation": "v-III"
+                },
+                {
+                    "name": "v-IV",
+                    "abbreviation": "v-IV"
+                },
+                {
+                    "name": "v-V",
+                    "abbreviation": "v-V"
+                },
+                {
+                    "name": "v-VI",
+                    "abbreviation": "v-VI"
+                },
+                {
+                    "name": "v-VII",
+                    "abbreviation": "v-VII"
+                },
+                {
+                    "name": "v-1",
+                    "abbreviation": "v-1"
+                },
+                {
+                    "name": "v-2",
+                    "abbreviation": "v-2"
+                }
+            ]
+        }
+    ]
+}

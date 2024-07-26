@@ -1,0 +1,18 @@
+[
+    {
+        "id": 3982,
+        "compoundId": 3980,
+        "componentIds": [
+            3981,
+            3983
+        ]
+    },
+    {
+        "id": 4001,
+        "compoundId": 3998,
+        "componentIds": [
+            4000,
+            4002
+        ]
+    }
+]

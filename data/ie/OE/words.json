@@ -13103,7 +13103,7 @@
     },
     {
         "id": 3811,
-        "text": "Ða"
+        "text": "þa"
     },
     {
         "id": 3812,
@@ -13252,5 +13252,21 @@
     {
         "id": 3829,
         "text": "getingnysse"
+    },
+    {
+        "id": 3830,
+        "text": "þæt"
+    },
+    {
+        "id": 3831,
+        "text": "æðele",
+        "gloss": "noble",
+        "fullGloss": "noble, eminent, not only in blood or by descent, but in mind, excellent,                     famous, singular",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/940"
+            }
+        ]
     }
 ]

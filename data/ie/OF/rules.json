@@ -1,0 +1,846 @@
+[
+    {
+        "id": 4004,
+        "name": "ofr-nom-pl",
+        "fromLang": "OF",
+        "toLang": "OF",
+        "branches": [],
+        "addedCategories": ".NOM.PL",
+        "fromPOS": [
+            "N"
+        ]
+    },
+    {
+        "id": 4005,
+        "name": "ofr-acc-sg",
+        "fromLang": "OF",
+        "toLang": "OF",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "a"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "f"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "n-stem"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "e"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "NoChange",
+                        "args": []
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".ACC",
+        "fromPOS": [
+            "N"
+        ]
+    },
+    {
+        "id": 4006,
+        "name": "ofr-acc-pl",
+        "fromLang": "OF",
+        "toLang": "OF",
+        "branches": [],
+        "addedCategories": ".ACC.PL",
+        "fromPOS": [
+            "N"
+        ]
+    },
+    {
+        "id": 4007,
+        "name": "ofr-gen-sg",
+        "fromLang": "OF",
+        "toLang": "OF",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "a"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "leaf",
+                                    "cond": "ClassMatches",
+                                    "characters": "f"
+                                },
+                                {
+                                    "type": "leaf",
+                                    "cond": "ClassMatches",
+                                    "characters": "n"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "n-stem"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "e"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'es'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "ClassMatches",
+                    "characters": "a-stem"
+                }
+            }
+        ],
+        "addedCategories": ".GEN",
+        "fromPOS": [
+            "N"
+        ]
+    },
+    {
+        "id": 4008,
+        "name": "ofr-gen-pl",
+        "fromLang": "OF",
+        "toLang": "OF",
+        "branches": [],
+        "addedCategories": ".GEN.PL",
+        "fromPOS": [
+            "N"
+        ]
+    },
+    {
+        "id": 4009,
+        "name": "ofr-dat-sg",
+        "fromLang": "OF",
+        "toLang": "OF",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "a"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "leaf",
+                                    "cond": "ClassMatches",
+                                    "characters": "f"
+                                },
+                                {
+                                    "type": "leaf",
+                                    "cond": "ClassMatches",
+                                    "characters": "n"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "n-stem"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "e"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'e'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "ClassMatches",
+                    "characters": "a-stem"
+                }
+            }
+        ],
+        "addedCategories": ".DAT",
+        "fromPOS": [
+            "N"
+        ]
+    },
+    {
+        "id": 4010,
+        "name": "ofr-dat-pl",
+        "fromLang": "OF",
+        "toLang": "OF",
+        "branches": [],
+        "addedCategories": ".DAT.PL",
+        "fromPOS": [
+            "N"
+        ]
+    },
+    {
+        "id": 4090,
+        "name": "ofr-1sg",
+        "fromLang": "OF",
+        "toLang": "OF",
+        "branches": [],
+        "addedCategories": ".1SG",
+        "fromPOS": [
+            "V"
+        ]
+    },
+    {
+        "id": 4091,
+        "name": "ofr-1pl",
+        "fromLang": "OF",
+        "toLang": "OF",
+        "branches": [],
+        "addedCategories": ".1PL",
+        "fromPOS": [
+            "V"
+        ]
+    },
+    {
+        "id": 4092,
+        "name": "ofr-2sg",
+        "fromLang": "OF",
+        "toLang": "OF",
+        "branches": [],
+        "addedCategories": ".2SG",
+        "fromPOS": [
+            "V"
+        ]
+    },
+    {
+        "id": 4093,
+        "name": "ofr-2pl",
+        "fromLang": "OF",
+        "toLang": "OF",
+        "branches": [],
+        "addedCategories": ".2PL",
+        "fromPOS": [
+            "V"
+        ]
+    },
+    {
+        "id": 4094,
+        "name": "ofr-3sg",
+        "fromLang": "OF",
+        "toLang": "OF",
+        "branches": [],
+        "addedCategories": ".3SG",
+        "fromPOS": [
+            "V"
+        ]
+    },
+    {
+        "id": 4095,
+        "name": "ofr-3pl",
+        "fromLang": "OF",
+        "toLang": "OF",
+        "branches": [],
+        "addedCategories": ".3PL",
+        "fromPOS": [
+            "V"
+        ]
+    },
+    {
+        "id": 4153,
+        "name": "ofr-passive-participle",
+        "fromLang": "OF",
+        "toLang": "OF",
+        "branches": [],
+        "addedCategories": ".PST.PART",
+        "fromPOS": [
+            "V"
+        ]
+    },
+    {
+        "id": 4198,
+        "name": "ofr-adj-strong-nom-pl",
+        "fromLang": "OF",
+        "toLang": "OF",
+        "branches": [],
+        "addedCategories": ".NOM.PL",
+        "fromPOS": [
+            "ADJ"
+        ]
+    },
+    {
+        "id": 4199,
+        "name": "ofr-adj-strong-nom-sg-f",
+        "fromLang": "OF",
+        "toLang": "OF",
+        "branches": [],
+        "addedCategories": ".NOM.SG.F",
+        "fromPOS": [
+            "ADJ"
+        ]
+    },
+    {
+        "id": 4201,
+        "name": "ofr-adj-strong-nom-sg-n",
+        "fromLang": "OF",
+        "toLang": "OF",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "NoChange",
+                        "args": []
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".NOM.SG.N",
+        "fromPOS": [
+            "ADJ"
+        ]
+    },
+    {
+        "id": 4203,
+        "name": "ofr-adj-strong-acc-sg-m",
+        "fromLang": "OF",
+        "toLang": "OF",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'ene'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".ACC.SG.M",
+        "fromPOS": [
+            "ADJ"
+        ]
+    },
+    {
+        "id": 4205,
+        "name": "ofr-adj-strong-acc-sg-f",
+        "fromLang": "OF",
+        "toLang": "OF",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'e'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".ACC.SG.F",
+        "fromPOS": [
+            "ADJ"
+        ]
+    },
+    {
+        "id": 4207,
+        "name": "ofr-adj-strong-acc-sg-n",
+        "fromLang": "OF",
+        "toLang": "OF",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "NoChange",
+                        "args": []
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".ACC.SG.N",
+        "fromPOS": [
+            "ADJ"
+        ]
+    },
+    {
+        "id": 4209,
+        "name": "ofr-adj-strong-gen-sg-m",
+        "fromLang": "OF",
+        "toLang": "OF",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "es"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "e"
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'es'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".GEN.SG.M",
+        "fromPOS": [
+            "ADJ"
+        ]
+    },
+    {
+        "id": 4211,
+        "name": "ofr-adj-strong-gen-sg-f",
+        "fromLang": "OF",
+        "toLang": "OF",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'ere'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".GEN.SG.F",
+        "fromPOS": [
+            "ADJ"
+        ]
+    },
+    {
+        "id": 4213,
+        "name": "ofr-adj-strong-gen-sg-n",
+        "fromLang": "OF",
+        "toLang": "OF",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'es'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".GEN.SG.N",
+        "fromPOS": [
+            "ADJ"
+        ]
+    },
+    {
+        "id": 4215,
+        "name": "ofr-adj-strong-dat-sg-m",
+        "fromLang": "OF",
+        "toLang": "OF",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'e'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".DAT.SG.M",
+        "fromPOS": [
+            "ADJ"
+        ]
+    },
+    {
+        "id": 4217,
+        "name": "ofr-adj-strong-dat-sg-f",
+        "fromLang": "OF",
+        "toLang": "OF",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'ere'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".DAT.SG.F",
+        "fromPOS": [
+            "ADJ"
+        ]
+    },
+    {
+        "id": 4219,
+        "name": "ofr-adj-strong-dat-sg-n",
+        "fromLang": "OF",
+        "toLang": "OF",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'e'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".DAT.SG.N",
+        "fromPOS": [
+            "ADJ"
+        ]
+    },
+    {
+        "id": 4326,
+        "name": "ofr-adj-strong-acc-pl",
+        "fromLang": "OF",
+        "toLang": "OF",
+        "branches": [],
+        "addedCategories": ".ACC.PL",
+        "fromPOS": [
+            "ADJ"
+        ]
+    },
+    {
+        "id": 4327,
+        "name": "ofr-adj-strong-gen-pl",
+        "fromLang": "OF",
+        "toLang": "OF",
+        "branches": [],
+        "addedCategories": ".GEN.PL",
+        "fromPOS": [
+            "ADJ"
+        ]
+    },
+    {
+        "id": 4328,
+        "name": "ofr-adj-strong-dat-pl",
+        "fromLang": "OF",
+        "toLang": "OF",
+        "branches": [],
+        "addedCategories": ".DAT.PL",
+        "fromPOS": [
+            "ADJ"
+        ]
+    },
+    {
+        "id": 4331,
+        "name": "ofr-adj-weak-nom-sg-m",
+        "fromLang": "OF",
+        "toLang": "OF",
+        "branches": [],
+        "addedCategories": ".WEAK.NOM.SG.M",
+        "fromPOS": [
+            "ADJ"
+        ]
+    },
+    {
+        "id": 4332,
+        "name": "ofr-adj-weak-nom-sg-f",
+        "fromLang": "OF",
+        "toLang": "OF",
+        "branches": [],
+        "addedCategories": ".WEAK.NOM.SG.F",
+        "fromPOS": [
+            "ADJ"
+        ]
+    },
+    {
+        "id": 4333,
+        "name": "ofr-adj-weak-nom-sg-n",
+        "fromLang": "OF",
+        "toLang": "OF",
+        "branches": [],
+        "addedCategories": ".WEAK.NOM.SG.N",
+        "fromPOS": [
+            "ADJ"
+        ]
+    },
+    {
+        "id": 4334,
+        "name": "ofr-adj-weak-nom-pl",
+        "fromLang": "OF",
+        "toLang": "OF",
+        "branches": [],
+        "addedCategories": ".WEAK.NOM.PL",
+        "fromPOS": [
+            "ADJ"
+        ]
+    },
+    {
+        "id": 4335,
+        "name": "ofr-adj-weak-acc-sg-m",
+        "fromLang": "OF",
+        "toLang": "OF",
+        "branches": [],
+        "addedCategories": ".WEAK.ACC.SG.M",
+        "fromPOS": [
+            "ADJ"
+        ]
+    },
+    {
+        "id": 4336,
+        "name": "ofr-adj-weak-acc-sg-f",
+        "fromLang": "OF",
+        "toLang": "OF",
+        "branches": [],
+        "addedCategories": ".WEAK.ACC.SG.F",
+        "fromPOS": [
+            "ADJ"
+        ]
+    },
+    {
+        "id": 4337,
+        "name": "ofr-adj-weak-acc-sg-n",
+        "fromLang": "OF",
+        "toLang": "OF",
+        "branches": [],
+        "addedCategories": ".WEAK.ACC.SG.N",
+        "fromPOS": [
+            "ADJ"
+        ]
+    },
+    {
+        "id": 4338,
+        "name": "ofr-adj-weak-acc-pl",
+        "fromLang": "OF",
+        "toLang": "OF",
+        "branches": [],
+        "addedCategories": ".WEAK.ACC.PL",
+        "fromPOS": [
+            "ADJ"
+        ]
+    },
+    {
+        "id": 4339,
+        "name": "ofr-adj-weak-gen-sg-m",
+        "fromLang": "OF",
+        "toLang": "OF",
+        "branches": [],
+        "addedCategories": ".WEAK.GEN.SG.M",
+        "fromPOS": [
+            "ADJ"
+        ]
+    },
+    {
+        "id": 4340,
+        "name": "ofr-adj-weak-gen-sg-f",
+        "fromLang": "OF",
+        "toLang": "OF",
+        "branches": [],
+        "addedCategories": ".WEAK.GEN.SG.F",
+        "fromPOS": [
+            "ADJ"
+        ]
+    },
+    {
+        "id": 4341,
+        "name": "ofr-adj-weak-gen-sg-n",
+        "fromLang": "OF",
+        "toLang": "OF",
+        "branches": [],
+        "addedCategories": ".WEAK.GEN.SG.N",
+        "fromPOS": [
+            "ADJ"
+        ]
+    },
+    {
+        "id": 4342,
+        "name": "ofr-adj-weak-gen-pl",
+        "fromLang": "OF",
+        "toLang": "OF",
+        "branches": [],
+        "addedCategories": ".WEAK.GEN.PL",
+        "fromPOS": [
+            "ADJ"
+        ]
+    },
+    {
+        "id": 4343,
+        "name": "ofr-adj-weak-dat-sg-m",
+        "fromLang": "OF",
+        "toLang": "OF",
+        "branches": [],
+        "addedCategories": ".WEAK.DAT.SG.M",
+        "fromPOS": [
+            "ADJ"
+        ]
+    },
+    {
+        "id": 4344,
+        "name": "ofr-adj-weak-dat-sg-f",
+        "fromLang": "OF",
+        "toLang": "OF",
+        "branches": [],
+        "addedCategories": ".WEAK.DAT.SG.F",
+        "fromPOS": [
+            "ADJ"
+        ]
+    },
+    {
+        "id": 4345,
+        "name": "ofr-adj-weak-dat-sg-n",
+        "fromLang": "OF",
+        "toLang": "OF",
+        "branches": [],
+        "addedCategories": ".WEAK.DAT.SG.N",
+        "fromPOS": [
+            "ADJ"
+        ]
+    },
+    {
+        "id": 4346,
+        "name": "ofr-adj-weak-dat-pl",
+        "fromLang": "OF",
+        "toLang": "OF",
+        "branches": [],
+        "addedCategories": ".WEAK.DAT.PL",
+        "fromPOS": [
+            "ADJ"
+        ]
+    },
+    {
+        "id": 4383,
+        "name": "ofr-past-sg",
+        "fromLang": "OF",
+        "toLang": "OF",
+        "branches": [],
+        "addedCategories": ".PST",
+        "fromPOS": [
+            "V"
+        ]
+    },
+    {
+        "id": 4384,
+        "name": "ofr-past-pl",
+        "fromLang": "OF",
+        "toLang": "OF",
+        "branches": [],
+        "addedCategories": ".PST.PL",
+        "fromPOS": [
+            "V"
+        ]
+    },
+    {
+        "id": 4452,
+        "name": "ofr-subj",
+        "fromLang": "OF",
+        "toLang": "OF",
+        "branches": [],
+        "addedCategories": ".SUBJ",
+        "fromPOS": [
+            "V"
+        ]
+    },
+    {
+        "id": 4516,
+        "name": "ofr-inflected-infinitive",
+        "fromLang": "OF",
+        "toLang": "OF",
+        "branches": [],
+        "addedCategories": ".INF",
+        "fromPOS": [
+            "V"
+        ]
+    }
+]

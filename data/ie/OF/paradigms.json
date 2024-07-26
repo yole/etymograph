@@ -1,0 +1,343 @@
+[
+    {
+        "id": 29,
+        "name": "Noun",
+        "rows": [
+            "nom",
+            "acc",
+            "gen",
+            "dat"
+        ],
+        "columns": [
+            {
+                "title": "sg",
+                "cells": [
+                    {},
+                    {
+                        "ruleAlternatives": [
+                            4005
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            4007
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            4009
+                        ]
+                    }
+                ]
+            },
+            {
+                "title": "pl",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            4004
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            4006
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            4008
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            4010
+                        ]
+                    }
+                ]
+            }
+        ],
+        "posList": [
+            "N"
+        ]
+    },
+    {
+        "id": 30,
+        "name": "Verb Present",
+        "rows": [
+            "1",
+            "2",
+            "3"
+        ],
+        "columns": [
+            {
+                "title": "Sg",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            4090
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            4092
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            4094
+                        ]
+                    }
+                ]
+            },
+            {
+                "title": "Pl",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            4091
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            4093
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            4095
+                        ]
+                    }
+                ]
+            }
+        ],
+        "posList": [
+            "V"
+        ]
+    },
+    {
+        "id": 32,
+        "name": "Adjective Strong",
+        "rows": [
+            "Nom",
+            "Acc",
+            "Gen",
+            "Dat"
+        ],
+        "columns": [
+            {
+                "title": "Sg M",
+                "cells": [
+                    {},
+                    {
+                        "ruleAlternatives": [
+                            4203
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            4209
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            4215
+                        ]
+                    }
+                ]
+            },
+            {
+                "title": "Sg F",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            4199
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            4205
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            4211
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            4217
+                        ]
+                    }
+                ]
+            },
+            {
+                "title": "Sg N",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            4201
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            4207
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            4213
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            4219
+                        ]
+                    }
+                ]
+            },
+            {
+                "title": "Pl",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            4198
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            4326
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            4327
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            4328
+                        ]
+                    }
+                ]
+            }
+        ],
+        "posList": [
+            "ADJ"
+        ]
+    },
+    {
+        "id": 33,
+        "name": "Adjective Weak",
+        "rows": [
+            "Nom",
+            "Acc",
+            "Gen",
+            "Dat"
+        ],
+        "columns": [
+            {
+                "title": "Sg M",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            4331
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            4335
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            4339
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            4343
+                        ]
+                    }
+                ]
+            },
+            {
+                "title": "Sg F",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            4332
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            4336
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            4340
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            4344
+                        ]
+                    }
+                ]
+            },
+            {
+                "title": "Sg N",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            4333
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            4337
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            4341
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            4345
+                        ]
+                    }
+                ]
+            },
+            {
+                "title": "Pl",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            4334
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            4338
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            4342
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            4346
+                        ]
+                    }
+                ]
+            }
+        ],
+        "posList": [
+            "ADJ"
+        ]
+    }
+]

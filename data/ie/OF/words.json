@@ -1,0 +1,3782 @@
+[
+    {
+        "id": 3833,
+        "text": "macht",
+        "gloss": "power; genitals",
+        "pos": "N",
+        "classes": [
+            "f"
+        ]
+    },
+    {
+        "id": 3834,
+        "text": "undad",
+        "gloss": "wound.3SG",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 3835,
+        "text": "nawit",
+        "gloss": "not at all"
+    },
+    {
+        "id": 3836,
+        "text": "tia",
+        "gloss": "pull",
+        "fullGloss": "pull, draw; bring forth, beget, procreate; march against; appeal to, plead",
+        "pos": "V",
+        "classes": [
+            "v-II"
+        ]
+    },
+    {
+        "id": 3837,
+        "text": "bote",
+        "gloss": "compensation.GEN",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 3838,
+        "text": "bōt",
+        "gloss": "compensation"
+    },
+    {
+        "id": 3839,
+        "text": "machte",
+        "gloss": "can.PRET"
+    },
+    {
+        "id": 3840,
+        "text": "muga",
+        "gloss": "can",
+        "fullGloss": "can, be able",
+        "pos": "V",
+        "classes": [
+            "v-V"
+        ]
+    },
+    {
+        "id": 3841,
+        "text": "niugen",
+        "gloss": "nine"
+    },
+    {
+        "id": 3842,
+        "text": "berna",
+        "gloss": "born one",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 3843,
+        "text": "unberna",
+        "gloss": "unborn one",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 3844,
+        "text": "ac",
+        "gloss": "also",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 3845,
+        "text": "winstera",
+        "gloss": "left.ACC"
+    },
+    {
+        "id": 3846,
+        "text": "winster",
+        "gloss": "left"
+    },
+    {
+        "id": 3847,
+        "text": "pralling",
+        "gloss": "testicle",
+        "fullGloss": "testicle, ball"
+    },
+    {
+        "id": 3848,
+        "text": "behalden",
+        "gloss": "keep.PP",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 3849,
+        "text": "behalda",
+        "gloss": "retain, keep",
+        "pos": "V",
+        "classes": [
+            "v-VII"
+        ]
+    },
+    {
+        "id": 3850,
+        "text": "ferra",
+        "gloss": "right",
+        "pos": "ADJ",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 3851,
+        "text": "urlerin",
+        "gloss": "lose.PP",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 3852,
+        "text": "ūrliāsa",
+        "gloss": "lose",
+        "pos": "V",
+        "classes": [
+            "v-II"
+        ]
+    },
+    {
+        "id": 3853,
+        "text": "thach",
+        "gloss": "yet",
+        "pos": "ADV"
+    },
+    {
+        "id": 3854,
+        "text": "winstere",
+        "gloss": "left.ACC",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 3855,
+        "text": "winster",
+        "gloss": "left.ACC"
+    },
+    {
+        "id": 3856,
+        "text": "thes",
+        "gloss": "that.GEN",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 3857,
+        "text": "hi",
+        "gloss": "he",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 3858,
+        "text": "tuchtelas",
+        "gloss": "infertile"
+    },
+    {
+        "id": 3859,
+        "text": "blodrene",
+        "gloss": "flowing of blood",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 3860,
+        "text": "torent",
+        "gloss": "rend apart.PP"
+    },
+    {
+        "id": 3861,
+        "text": "tōrenda",
+        "gloss": "rend apart"
+    },
+    {
+        "id": 3862,
+        "text": "skillingar",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 3863,
+        "text": "ewart",
+        "gloss": "injure.PP"
+    },
+    {
+        "id": 3864,
+        "text": "mese",
+        "gloss": "urine",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 3865,
+        "text": "thrimen",
+        "gloss": "one-third",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 3866,
+        "text": "lif",
+        "gloss": "life",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 3867,
+        "text": "thī",
+        "gloss": "the",
+        "pos": "PRON"
+    },
+    {
+        "id": 3868,
+        "text": "tha",
+        "gloss": "the.PL"
+    },
+    {
+        "id": 3869,
+        "text": "fiower",
+        "gloss": "four",
+        "pos": "NUM",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 3870,
+        "text": "fiftene",
+        "gloss": "fifteen",
+        "pos": "NUM",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 3871,
+        "text": "thet",
+        "gloss": "that",
+        "pos": "CONJ",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 3872,
+        "text": "hiu",
+        "gloss": "she",
+        "pos": "PRON",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 3873,
+        "text": "ne",
+        "gloss": "not",
+        "pos": "CONJ",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 3874,
+        "text": "hire",
+        "gloss": "her",
+        "pos": "PRON",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 3875,
+        "text": "heth",
+        "gloss": "have.3SG",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 3876,
+        "text": "hebba",
+        "gloss": "have",
+        "pos": "V",
+        "classes": [
+            "v-1"
+        ]
+    },
+    {
+        "id": 3877,
+        "text": "is",
+        "gloss": "be.3SG",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 3878,
+        "text": "wesa",
+        "gloss": "be",
+        "pos": "V"
+    },
+    {
+        "id": 3879,
+        "text": "and",
+        "gloss": "and",
+        "pos": "CONJ",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 3880,
+        "text": "thene",
+        "gloss": "the.ACC",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 3881,
+        "text": "thī",
+        "gloss": "the.ACC"
+    },
+    {
+        "id": 3882,
+        "text": "thi",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 3883,
+        "text": "fir",
+        "gloss": "far",
+        "pos": "ADJ",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 3884,
+        "text": "sex",
+        "gloss": "six",
+        "pos": "NUM",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 3885,
+        "text": "blodelsa",
+        "gloss": "bleeding wound",
+        "pos": "N"
+    },
+    {
+        "id": 3886,
+        "text": "kere",
+        "gloss": "cut, carf",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 3887,
+        "text": "basfeng",
+        "gloss": "groping",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 3888,
+        "text": "thre",
+        "gloss": "three",
+        "pos": "NUM",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 3889,
+        "text": "buta",
+        "gloss": "outside",
+        "pos": "ADV",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 3890,
+        "text": "clathim",
+        "gloss": "clothes",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 3891,
+        "text": "binna",
+        "gloss": "inside",
+        "pos": "ADV",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 3892,
+        "text": "stilnese",
+        "gloss": "stillness",
+        "fullGloss": "stillness, monthly period",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 3893,
+        "text": "ur",
+        "gloss": "over",
+        "pos": "PREP",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 3894,
+        "text": "bank",
+        "gloss": "bench",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 3895,
+        "text": "benitha",
+        "gloss": "beneath",
+        "pos": "PREP",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 3896,
+        "text": "frouwa",
+        "gloss": "lady.DAT",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 3897,
+        "text": "frōwe",
+        "gloss": "lady",
+        "pos": "N"
+    },
+    {
+        "id": 3898,
+        "text": "machtem",
+        "gloss": "power.DAT",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 3900,
+        "text": "en",
+        "gloss": "one",
+        "pos": "NUM",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 3901,
+        "text": "den",
+        "gloss": "do.PP",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 3902,
+        "text": "dwā",
+        "gloss": "do",
+        "pos": "V"
+    },
+    {
+        "id": 3903,
+        "text": "mith",
+        "gloss": "with",
+        "pos": "PREP",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 3904,
+        "text": "wurpen",
+        "gloss": "throw.PP",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 3905,
+        "text": "werpa",
+        "gloss": "throw",
+        "pos": "V"
+    },
+    {
+        "id": 3906,
+        "text": "gerdle",
+        "gloss": "girdle",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 3907,
+        "text": "iefta",
+        "gloss": "or",
+        "pos": "CONJ",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 3908,
+        "text": "ursie",
+        "gloss": "(over)see.3PL",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 3909,
+        "text": "ūrsiā",
+        "gloss": "(over)see",
+        "pos": "V"
+    },
+    {
+        "id": 3910,
+        "text": "twintich",
+        "gloss": "twenty",
+        "pos": "NUM",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 3911,
+        "text": "thruchskinich",
+        "gloss": "transparent",
+        "pos": "ADJ",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 3912,
+        "text": "inra",
+        "gloss": "inner",
+        "pos": "ADJ",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 3913,
+        "text": "hemethe",
+        "gloss": "shirt",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 3914,
+        "text": "wach",
+        "gloss": "wall",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 3915,
+        "text": "merc",
+        "gloss": "mark",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 3916,
+        "text": "merk",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 3917,
+        "text": "forthera",
+        "gloss": "furthermore",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 3918,
+        "text": "ene",
+        "gloss": "one.F"
+    },
+    {
+        "id": 3919,
+        "text": "thruchsnithin",
+        "gloss": "cut through.3SG",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 3920,
+        "text": "thruchsnītha",
+        "gloss": "cut through",
+        "pos": "V"
+    },
+    {
+        "id": 3921,
+        "text": "saxe",
+        "gloss": "knife.DAT",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 3922,
+        "text": "sax",
+        "gloss": "knife",
+        "fullGloss": "knife with single edge",
+        "pos": "N"
+    },
+    {
+        "id": 3923,
+        "text": "maga",
+        "gloss": "stomach",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 3924,
+        "text": "bereda",
+        "gloss": "prove",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 3925,
+        "text": "letsa",
+        "gloss": "doctor",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 3926,
+        "text": "briastem",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 3927,
+        "text": "briāst",
+        "gloss": "breast",
+        "pos": "N"
+    },
+    {
+        "id": 3928,
+        "text": "befuchten",
+        "gloss": "attack.PP",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 3929,
+        "text": "befiuchta",
+        "gloss": "attack",
+        "pos": "V"
+    },
+    {
+        "id": 3930,
+        "text": "omme",
+        "gloss": "breath",
+        "pos": "N"
+    },
+    {
+        "id": 3931,
+        "text": "warte",
+        "gloss": "wart",
+        "fullGloss": "wart, nipple",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 3932,
+        "text": "briast",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 3933,
+        "text": "alwene",
+        "gloss": "eleven",
+        "pos": "NUM",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 3934,
+        "text": "lungirnsiama",
+        "gloss": "lung discharge",
+        "pos": "NUM"
+    },
+    {
+        "id": 3935,
+        "text": "buclamethe",
+        "gloss": "paraplegia",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 3936,
+        "text": "bethe",
+        "pos": "N"
+    },
+    {
+        "id": 3937,
+        "text": "beth",
+        "gloss": "bath",
+        "pos": "N",
+        "classes": [
+            "n",
+            "a-stem"
+        ]
+    },
+    {
+        "id": 3938,
+        "text": "widzie",
+        "gloss": "horse",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 3939,
+        "text": "weine"
+    },
+    {
+        "id": 3940,
+        "text": "wein",
+        "gloss": "cart",
+        "pos": "N",
+        "classes": [
+            "m",
+            "a-stem"
+        ]
+    },
+    {
+        "id": 3941,
+        "text": "wei",
+        "gloss": "way",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 3942,
+        "text": "wetere"
+    },
+    {
+        "id": 3943,
+        "text": "weter",
+        "pos": "N"
+    },
+    {
+        "id": 3944,
+        "text": "smere",
+        "gloss": "pus",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 3945,
+        "text": "ofkerft",
+        "gloss": "draw off.3SG",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 3946,
+        "text": "ofkerva",
+        "gloss": "draw off",
+        "pos": "V"
+    },
+    {
+        "id": 3947,
+        "text": "muge",
+        "gloss": "can.3SG",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 3948,
+        "text": "bern",
+        "gloss": "child",
+        "pos": "N"
+    },
+    {
+        "id": 3949,
+        "text": "sa",
+        "gloss": "so",
+        "fullGloss": "then, so, in that case",
+        "pos": "CONJ"
+    },
+    {
+        "id": 3950,
+        "text": "alsa",
+        "gloss": "thus"
+    },
+    {
+        "id": 3951,
+        "text": "thruch",
+        "gloss": "through",
+        "pos": "PREP"
+    },
+    {
+        "id": 3952,
+        "text": "thriu",
+        "gloss": "three.F",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 3953,
+        "text": "werth",
+        "gloss": "be.3SG.SUBJ",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 3954,
+        "text": "wertha",
+        "gloss": "become",
+        "fullGloss": "become, be",
+        "pos": "V",
+        "classes": [
+            "v-III"
+        ]
+    },
+    {
+        "id": 3955,
+        "text": "mon",
+        "gloss": "man",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 3956,
+        "text": "monne"
+    },
+    {
+        "id": 3957,
+        "text": "berne",
+        "gloss": "child.DAT"
+    },
+    {
+        "id": 3958,
+        "text": "se",
+        "gloss": "be.3SG.SUBJ"
+    },
+    {
+        "id": 3959,
+        "text": "enza",
+        "gloss": "ounce.NOM.PL",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 3960,
+        "text": "enze",
+        "gloss": "ounce",
+        "pos": "N"
+    },
+    {
+        "id": 3961,
+        "text": "forma",
+        "gloss": "first",
+        "pos": "ADJ",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 3962,
+        "text": "sogen",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 3963,
+        "text": "sawen",
+        "gloss": "seven",
+        "pos": "NUM"
+    },
+    {
+        "id": 3964,
+        "text": "liude",
+        "gloss": "people"
+    },
+    {
+        "id": 3965,
+        "text": "ief",
+        "gloss": "if",
+        "pos": "CONJ"
+    },
+    {
+        "id": 3966,
+        "text": "hwersa",
+        "gloss": "whenever",
+        "pos": "ADV"
+    },
+    {
+        "id": 3967,
+        "text": "send",
+        "gloss": "be.3PL",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 3968,
+        "text": "ther",
+        "gloss": "which",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 3969,
+        "text": "twa",
+        "gloss": "two",
+        "pos": "NUM",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 3970,
+        "text": "inwretsa",
+        "gloss": "piercing.NOM.PL",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 3971,
+        "text": "inwrētse",
+        "gloss": "piercing",
+        "pos": "ADJ"
+    },
+    {
+        "id": 3972,
+        "text": "in",
+        "gloss": "in",
+        "pos": "PREP"
+    },
+    {
+        "id": 3973,
+        "text": "dede",
+        "gloss": "deed.NOM.PL",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 3974,
+        "text": "dēd",
+        "gloss": "deed",
+        "fullGloss": "deed; action; wound, injury",
+        "pos": "N"
+    },
+    {
+        "id": 3975,
+        "text": "ma",
+        "gloss": "one",
+        "pos": "PRON"
+    },
+    {
+        "id": 4011,
+        "text": "enre",
+        "gloss": "one.F.DAT",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 4012,
+        "text": "sin",
+        "gloss": "his",
+        "pos": "PRON"
+    },
+    {
+        "id": 4013,
+        "text": "hir",
+        "gloss": "here",
+        "pos": "ADV",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 4014,
+        "text": "ene",
+        "gloss": "one.M.DAT"
+    },
+    {
+        "id": 4015,
+        "text": "sine",
+        "gloss": "his.F.ACC",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 4016,
+        "text": "to",
+        "gloss": "to",
+        "pos": "PREP"
+    },
+    {
+        "id": 4017,
+        "text": "etein",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 4018,
+        "text": "nime",
+        "gloss": "take.SUBJ.3SG",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 4019,
+        "text": "nima",
+        "gloss": "take",
+        "pos": "V",
+        "classes": [
+            "v-IV"
+        ]
+    },
+    {
+        "id": 4020,
+        "text": "retse’t",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 4021,
+        "text": "retse",
+        "gloss": "reach.SUBJ.3SG"
+    },
+    {
+        "id": 4023,
+        "text": "t"
+    },
+    {
+        "id": 4024,
+        "text": "retsa",
+        "gloss": "reach",
+        "pos": "V",
+        "classes": [
+            "v-1"
+        ]
+    },
+    {
+        "id": 4025,
+        "text": "hit",
+        "gloss": "it",
+        "pos": "PRON"
+    },
+    {
+        "id": 4026,
+        "text": "ma’t",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 4028,
+        "text": "of",
+        "gloss": "out of",
+        "pos": "PREP",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 4029,
+        "text": "mei",
+        "gloss": "can.3SG"
+    },
+    {
+        "id": 4030,
+        "text": "kindar",
+        "gloss": "child.ACC.PL",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 4031,
+        "text": "kind",
+        "gloss": "child",
+        "pos": "N",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 4032,
+        "text": "fon",
+        "gloss": "of",
+        "fullGloss": "of; by; out of; from",
+        "pos": "PREP"
+    },
+    {
+        "id": 4033,
+        "text": "blike",
+        "gloss": "be visible.SUBJ.3SG",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 4034,
+        "text": "blīka",
+        "gloss": "be visible",
+        "pos": "V"
+    },
+    {
+        "id": 4035,
+        "text": "blod",
+        "gloss": "blood",
+        "pos": "N"
+    },
+    {
+        "id": 4037,
+        "text": "-elsa",
+        "gloss": "abstract noun",
+        "pos": "AFF"
+    },
+    {
+        "id": 4038,
+        "text": "is’t",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 4040,
+        "text": "inna"
+    },
+    {
+        "id": 4041,
+        "text": "enra"
+    },
+    {
+        "id": 4042,
+        "text": "ana",
+        "gloss": "in",
+        "fullGloss": "in, into, on",
+        "pos": "PREP",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 4043,
+        "text": "thettet",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 4045,
+        "text": "clath",
+        "gloss": "cloth",
+        "pos": "N"
+    },
+    {
+        "id": 4046,
+        "text": "clathar"
+    },
+    {
+        "id": 4047,
+        "text": "penningar"
+    },
+    {
+        "id": 4048,
+        "text": "penning",
+        "gloss": "penny",
+        "pos": "N"
+    },
+    {
+        "id": 4049,
+        "text": "thritich",
+        "gloss": "thirty",
+        "pos": "NUM"
+    },
+    {
+        "id": 4050,
+        "text": "benithim",
+        "gloss": "beneath",
+        "pos": "ADV"
+    },
+    {
+        "id": 4052,
+        "text": "skinich",
+        "gloss": "visible"
+    },
+    {
+        "id": 4053,
+        "text": "skīna",
+        "gloss": "shine",
+        "pos": "V",
+        "classes": [
+            "v-I"
+        ]
+    },
+    {
+        "id": 4054,
+        "text": "thruchstet",
+        "gloss": "pierce.PP"
+    },
+    {
+        "id": 4055,
+        "text": "thruchstēta",
+        "gloss": "pierce",
+        "pos": "V"
+    },
+    {
+        "id": 4057,
+        "text": "stēta",
+        "gloss": "pierce",
+        "pos": "V",
+        "classes": [
+            "v-1"
+        ]
+    },
+    {
+        "id": 4058,
+        "text": "stet",
+        "gloss": "pierce.PP"
+    },
+    {
+        "id": 4059,
+        "text": "mittha",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 4061,
+        "text": "frowa",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 4062,
+        "text": "briaste",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 4063,
+        "text": "al",
+        "gloss": "entirely",
+        "pos": "ADV",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 4064,
+        "text": "lungirn"
+    },
+    {
+        "id": 4066,
+        "text": "sia"
+    },
+    {
+        "id": 4067,
+        "text": "lungirn",
+        "gloss": "lungs"
+    },
+    {
+        "id": 4069,
+        "text": "sia",
+        "gloss": "seep"
+    },
+    {
+        "id": 4070,
+        "text": "-ma",
+        "gloss": "abstract noun",
+        "pos": "AFF"
+    },
+    {
+        "id": 4071,
+        "text": "hageste",
+        "gloss": "high.SUP",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 4072,
+        "text": "glede",
+        "gloss": "slippery.ACC"
+    },
+    {
+        "id": 4073,
+        "text": "gled",
+        "gloss": "slippery",
+        "pos": "ADJ"
+    },
+    {
+        "id": 4074,
+        "text": "ise"
+    },
+    {
+        "id": 4075,
+        "text": "īs",
+        "gloss": "ice",
+        "pos": "N"
+    },
+    {
+        "id": 4076,
+        "text": "bi",
+        "gloss": "by",
+        "pos": "PREP"
+    },
+    {
+        "id": 4077,
+        "text": "fiure",
+        "sourceRefs": [
+            {
+                "refText": "Emsingo Register E2"
+            }
+        ]
+    },
+    {
+        "id": 4078,
+        "text": "fiūr",
+        "gloss": "fire",
+        "pos": "N"
+    },
+    {
+        "id": 4079,
+        "text": "bedde"
+    },
+    {
+        "id": 4080,
+        "text": "bed",
+        "gloss": "bed",
+        "pos": "N"
+    },
+    {
+        "id": 4081,
+        "text": "godishuse"
+    },
+    {
+        "id": 4082,
+        "text": "godishus",
+        "gloss": "church",
+        "pos": "N"
+    },
+    {
+        "id": 4083,
+        "text": "wive"
+    },
+    {
+        "id": 4084,
+        "text": "wīf",
+        "gloss": "wife",
+        "pos": "N"
+    },
+    {
+        "id": 4085,
+        "text": "half",
+        "gloss": "half",
+        "pos": "ADJ"
+    },
+    {
+        "id": 4086,
+        "text": "sinre"
+    },
+    {
+        "id": 4087,
+        "text": "sin",
+        "gloss": "his.DAT"
+    },
+    {
+        "id": 4088,
+        "text": "werda",
+        "gloss": "injure",
+        "pos": "V",
+        "classes": [
+            "v-1"
+        ]
+    },
+    {
+        "id": 4097,
+        "text": "oron",
+        "gloss": "other.DAT"
+    },
+    {
+        "id": 4098,
+        "text": "ōr",
+        "gloss": "other"
+    },
+    {
+        "id": 4099,
+        "text": "betent"
+    },
+    {
+        "id": 4100,
+        "text": "betēna",
+        "gloss": "block",
+        "fullGloss": "block (with osiery)",
+        "pos": "V"
+    },
+    {
+        "id": 4101,
+        "text": "betimbrath"
+    },
+    {
+        "id": 4102,
+        "text": "betimbria",
+        "gloss": "block",
+        "fullGloss": "block (with pilework)",
+        "pos": "V",
+        "classes": [
+            "v-2"
+        ]
+    },
+    {
+        "id": 4103,
+        "text": "inrosta",
+        "gloss": "inlander",
+        "fullGloss": "he who lives furthest removed from the sea",
+        "pos": "N"
+    },
+    {
+        "id": 4104,
+        "text": "utrosta",
+        "gloss": "outlander",
+        "fullGloss": "he who lives closest to the sea",
+        "pos": "N"
+    },
+    {
+        "id": 4105,
+        "text": "skatha",
+        "gloss": "harm"
+    },
+    {
+        "id": 4106,
+        "text": "brekth"
+    },
+    {
+        "id": 4107,
+        "text": "brēka",
+        "gloss": "break",
+        "fullGloss": "break; incur a fine",
+        "pos": "V",
+        "classes": [
+            "v-V"
+        ]
+    },
+    {
+        "id": 4108,
+        "text": "folgiath"
+    },
+    {
+        "id": 4109,
+        "text": "folgia",
+        "gloss": "follow",
+        "pos": "V",
+        "classes": [
+            "v-2"
+        ]
+    },
+    {
+        "id": 4110,
+        "text": "fiardahalf",
+        "gloss": "three and a half",
+        "pos": "NUM"
+    },
+    {
+        "id": 4111,
+        "text": "wed",
+        "gloss": "compensation",
+        "pos": "N"
+    },
+    {
+        "id": 4112,
+        "text": "inwetir",
+        "gloss": "inland waterway",
+        "pos": "N"
+    },
+    {
+        "id": 4113,
+        "text": "wetir",
+        "gloss": "water",
+        "pos": "N",
+        "classes": [
+            "n",
+            "a-stem"
+        ]
+    },
+    {
+        "id": 4114,
+        "text": "nathon"
+    },
+    {
+        "id": 4115,
+        "text": "nāthe",
+        "gloss": "mercy",
+        "fullGloss": "mercy, grace; favor",
+        "pos": "N"
+    },
+    {
+        "id": 4116,
+        "text": "seburch",
+        "gloss": "sea-fortification",
+        "pos": "N",
+        "classes": [
+            "f"
+        ]
+    },
+    {
+        "id": 4117,
+        "text": "stiftande",
+        "gloss": "found.INF"
+    },
+    {
+        "id": 4118,
+        "text": "stifta",
+        "gloss": "found",
+        "pos": "V",
+        "classes": [
+            "v-1"
+        ]
+    },
+    {
+        "id": 4119,
+        "text": "sterande",
+        "gloss": "fortify.INF"
+    },
+    {
+        "id": 4120,
+        "text": "stēra",
+        "gloss": "fortify",
+        "pos": "V"
+    },
+    {
+        "id": 4121,
+        "text": "geldene",
+        "gloss": "golden",
+        "pos": "ADJ"
+    },
+    {
+        "id": 4122,
+        "text": "hop",
+        "gloss": "hoop",
+        "fullGloss": "hoop, ring",
+        "pos": "N",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 4123,
+        "text": "umbe",
+        "gloss": "around",
+        "pos": "PREP"
+    },
+    {
+        "id": 4124,
+        "text": "Frislond",
+        "gloss": "Friesland",
+        "pos": "NP"
+    },
+    {
+        "id": 4125,
+        "text": "lith"
+    },
+    {
+        "id": 4126,
+        "text": "lidza",
+        "gloss": "lie",
+        "pos": "V",
+        "classes": [
+            "v-V"
+        ]
+    },
+    {
+        "id": 4127,
+        "text": "ierdik"
+    },
+    {
+        "id": 4128,
+        "text": "ierda"
+    },
+    {
+        "id": 4130,
+        "text": "ek",
+        "gloss": "each",
+        "pos": "PRON"
+    },
+    {
+        "id": 4131,
+        "text": "ierde",
+        "gloss": "rod",
+        "fullGloss": "rod; yard",
+        "pos": "N",
+        "classes": [
+            "f"
+        ]
+    },
+    {
+        "id": 4132,
+        "text": "ivinhar",
+        "gloss": "equally high",
+        "pos": "ADJ"
+    },
+    {
+        "id": 4133,
+        "text": "salta",
+        "gloss": "salty",
+        "pos": "ADJ"
+    },
+    {
+        "id": 4134,
+        "text": "swilth"
+    },
+    {
+        "id": 4135,
+        "text": "swella",
+        "gloss": "swell",
+        "pos": "V",
+        "classes": [
+            "v-III"
+        ]
+    },
+    {
+        "id": 4136,
+        "text": "plichtich",
+        "gloss": "responsible",
+        "pos": "ADJ"
+    },
+    {
+        "id": 4137,
+        "text": "wegke",
+        "gloss": "horse",
+        "pos": "N"
+    },
+    {
+        "id": 4138,
+        "text": "farande",
+        "gloss": "go.INF"
+    },
+    {
+        "id": 4139,
+        "text": "fara",
+        "gloss": "go",
+        "pos": "V",
+        "classes": [
+            "v-VI"
+        ]
+    },
+    {
+        "id": 4140,
+        "text": "meta",
+        "gloss": "meet",
+        "pos": "V",
+        "classes": [
+            "v-1"
+        ]
+    },
+    {
+        "id": 4141,
+        "text": "wi",
+        "gloss": "we",
+        "pos": "PRON"
+    },
+    {
+        "id": 4142,
+        "text": "riucht",
+        "gloss": "law",
+        "pos": "N",
+        "classes": [
+            "n"
+        ]
+    },
+    {
+        "id": 4143,
+        "text": "hwasa",
+        "gloss": "whoever",
+        "pos": "PRON"
+    },
+    {
+        "id": 4144,
+        "text": "ieftha"
+    },
+    {
+        "id": 4145,
+        "text": "werkes"
+    },
+    {
+        "id": 4146,
+        "text": "werk",
+        "gloss": "work",
+        "pos": "N",
+        "classes": [
+            "n"
+        ]
+    },
+    {
+        "id": 4147,
+        "text": "mastere",
+        "gloss": "master",
+        "pos": "N",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 4148,
+        "text": "stonda",
+        "gloss": "stand",
+        "pos": "V",
+        "classes": [
+            "v-VI"
+        ]
+    },
+    {
+        "id": 4149,
+        "text": "skilun"
+    },
+    {
+        "id": 4150,
+        "text": "skela",
+        "gloss": "will",
+        "fullGloss": "will, shall; have to, must",
+        "pos": "V"
+    },
+    {
+        "id": 4151,
+        "text": "eskipin"
+    },
+    {
+        "id": 4152,
+        "text": "skeppa",
+        "gloss": "create",
+        "pos": "V",
+        "classes": [
+            "v-VI"
+        ]
+    },
+    {
+        "id": 4154,
+        "text": "londriucht"
+    },
+    {
+        "id": 4155,
+        "text": "lond",
+        "gloss": "land",
+        "pos": "N",
+        "classes": [
+            "n"
+        ]
+    },
+    {
+        "id": 4157,
+        "text": "skil"
+    },
+    {
+        "id": 4158,
+        "text": "dis"
+    },
+    {
+        "id": 4159,
+        "text": "dei",
+        "gloss": "day",
+        "pos": "N",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 4160,
+        "text": "antes"
+    },
+    {
+        "id": 4162,
+        "text": "betha"
+    },
+    {
+        "id": 4163,
+        "text": "bethe",
+        "gloss": "both",
+        "pos": "ADJ"
+    },
+    {
+        "id": 4164,
+        "text": "nachtes"
+    },
+    {
+        "id": 4165,
+        "text": "nacht",
+        "gloss": "night",
+        "pos": "N",
+        "classes": [
+            "f"
+        ]
+    },
+    {
+        "id": 4166,
+        "text": "anti"
+    },
+    {
+        "id": 4168,
+        "text": "wiges"
+    },
+    {
+        "id": 4169,
+        "text": "wi",
+        "gloss": "way",
+        "pos": "N"
+    },
+    {
+        "id": 4170,
+        "text": "wintres"
+    },
+    {
+        "id": 4171,
+        "text": "winter",
+        "gloss": "winter",
+        "pos": "N",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 4172,
+        "text": "sumures"
+    },
+    {
+        "id": 4173,
+        "text": "sumur",
+        "gloss": "summer",
+        "pos": "N",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 4174,
+        "text": "strete",
+        "gloss": "street",
+        "pos": "N",
+        "classes": [
+            "f"
+        ]
+    },
+    {
+        "id": 4175,
+        "text": "dike"
+    },
+    {
+        "id": 4176,
+        "text": "dik",
+        "gloss": "dike",
+        "pos": "N",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 4177,
+        "text": "cumth"
+    },
+    {
+        "id": 4178,
+        "text": "kuma",
+        "gloss": "come",
+        "pos": "V",
+        "classes": [
+            "v-IV"
+        ]
+    },
+    {
+        "id": 4179,
+        "text": "opa",
+        "gloss": "on",
+        "pos": "PREP"
+    },
+    {
+        "id": 4180,
+        "text": "ova",
+        "gloss": "on",
+        "pos": "PREP"
+    },
+    {
+        "id": 4181,
+        "text": "wilasa",
+        "gloss": "unconsecrated.DAT"
+    },
+    {
+        "id": 4182,
+        "text": "wīlās",
+        "gloss": "unconsecrated",
+        "pos": "ADJ"
+    },
+    {
+        "id": 4183,
+        "text": "gratene",
+        "gloss": "great.M.ACC"
+    },
+    {
+        "id": 4184,
+        "text": "grāt",
+        "gloss": "great",
+        "pos": "ADJ"
+    },
+    {
+        "id": 4185,
+        "text": "fretho"
+    },
+    {
+        "id": 4186,
+        "text": "frethe",
+        "gloss": "peace",
+        "pos": "N"
+    },
+    {
+        "id": 4187,
+        "text": "werpe"
+    },
+    {
+        "id": 4188,
+        "text": "werp",
+        "gloss": "place of execution",
+        "pos": "N"
+    },
+    {
+        "id": 4189,
+        "text": "stherekhovi"
+    },
+    {
+        "id": 4190,
+        "text": "felo",
+        "gloss": "much",
+        "pos": "ADV"
+    },
+    {
+        "id": 4191,
+        "text": "turves"
+    },
+    {
+        "id": 4192,
+        "text": "turf",
+        "gloss": "grassland",
+        "pos": "N"
+    },
+    {
+        "id": 4193,
+        "text": "londes"
+    },
+    {
+        "id": 4194,
+        "text": "dikstathul"
+    },
+    {
+        "id": 4196,
+        "text": "stathul",
+        "gloss": "foundation",
+        "pos": "N"
+    },
+    {
+        "id": 4221,
+        "text": "heles"
+    },
+    {
+        "id": 4222,
+        "text": "hēl",
+        "gloss": "whole",
+        "fullGloss": "whole; firm; dry",
+        "pos": "ADJ"
+    },
+    {
+        "id": 4223,
+        "text": "grenes"
+    },
+    {
+        "id": 4224,
+        "text": "grēne",
+        "gloss": "green",
+        "pos": "ADJ"
+    },
+    {
+        "id": 4225,
+        "text": "halda",
+        "gloss": "hold",
+        "pos": "V",
+        "classes": [
+            "v-VII"
+        ]
+    },
+    {
+        "id": 4226,
+        "text": "hi’ne"
+    },
+    {
+        "id": 4228,
+        "text": "hine",
+        "gloss": "he.ACC"
+    },
+    {
+        "id": 4229,
+        "text": "fethma"
+    },
+    {
+        "id": 4230,
+        "text": "fethem",
+        "gloss": "fathom",
+        "pos": "N"
+    },
+    {
+        "id": 4231,
+        "text": "gerse"
+    },
+    {
+        "id": 4232,
+        "text": "gers",
+        "gloss": "grass",
+        "pos": "N",
+        "classes": [
+            "n"
+        ]
+    },
+    {
+        "id": 4233,
+        "text": "alla"
+    },
+    {
+        "id": 4234,
+        "text": "alle"
+    },
+    {
+        "id": 4236,
+        "text": "a",
+        "gloss": "in",
+        "fullGloss": "in, into; on, onto",
+        "pos": "PREP",
+        "notes": "+ dat/acc"
+    },
+    {
+        "id": 4237,
+        "text": "anda"
+    },
+    {
+        "id": 4239,
+        "text": "fennon",
+        "gloss": "drained pasture"
+    },
+    {
+        "id": 4240,
+        "text": "fili",
+        "gloss": "undrained grassland"
+    },
+    {
+        "id": 4241,
+        "text": "er",
+        "gloss": "before",
+        "pos": "PREP"
+    },
+    {
+        "id": 4242,
+        "text": "skel"
+    },
+    {
+        "id": 4243,
+        "text": "uta",
+        "gloss": "outwards"
+    },
+    {
+        "id": 4244,
+        "text": "tauwon"
+    },
+    {
+        "id": 4245,
+        "text": "tauw",
+        "gloss": "tool",
+        "pos": "N"
+    },
+    {
+        "id": 4246,
+        "text": "spada",
+        "gloss": "spade",
+        "pos": "N"
+    },
+    {
+        "id": 4247,
+        "text": "bera",
+        "gloss": "barrow",
+        "pos": "N"
+    },
+    {
+        "id": 4248,
+        "text": "skilu"
+    },
+    {
+        "id": 4249,
+        "text": "forke",
+        "gloss": "pitchfork",
+        "pos": "N"
+    },
+    {
+        "id": 4250,
+        "text": "wera",
+        "gloss": "defend",
+        "pos": "V",
+        "classes": [
+            "v-1"
+        ]
+    },
+    {
+        "id": 4251,
+        "text": "egge",
+        "gloss": "edge",
+        "fullGloss": "edge (of sword)",
+        "pos": "N"
+    },
+    {
+        "id": 4252,
+        "text": "orde"
+    },
+    {
+        "id": 4253,
+        "text": "ord",
+        "gloss": "point",
+        "fullGloss": "point (of spear)",
+        "pos": "N"
+    },
+    {
+        "id": 4254,
+        "text": "skelde"
+    },
+    {
+        "id": 4255,
+        "text": "skeld",
+        "gloss": "shield",
+        "pos": "N",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 4256,
+        "text": "bruna"
+    },
+    {
+        "id": 4257,
+        "text": "brun",
+        "gloss": "brown",
+        "pos": "ADJ"
+    },
+    {
+        "id": 4258,
+        "text": "with",
+        "gloss": "against",
+        "fullGloss": "against; towards",
+        "pos": "PREP"
+    },
+    {
+        "id": 4259,
+        "text": "helm",
+        "gloss": "helmet",
+        "pos": "N"
+    },
+    {
+        "id": 4260,
+        "text": "stapa"
+    },
+    {
+        "id": 4261,
+        "text": "stāp",
+        "gloss": "steep",
+        "pos": "ADJ"
+    },
+    {
+        "id": 4262,
+        "text": "rada"
+    },
+    {
+        "id": 4263,
+        "text": "rād",
+        "gloss": "red",
+        "pos": "ADJ"
+    },
+    {
+        "id": 4264,
+        "text": "herskipi",
+        "gloss": "authority",
+        "pos": "N"
+    },
+    {
+        "id": 4265,
+        "text": "ova",
+        "gloss": "landinwards",
+        "pos": "ADV"
+    },
+    {
+        "id": 4266,
+        "text": "God",
+        "gloss": "God",
+        "pos": "N"
+    },
+    {
+        "id": 4267,
+        "text": "helpa",
+        "gloss": "help",
+        "pos": "V",
+        "classes": [
+            "v-III"
+        ]
+    },
+    {
+        "id": 4268,
+        "text": "nauwet"
+    },
+    {
+        "id": 4269,
+        "text": "wieda",
+        "gloss": "consecrated.DAT"
+    },
+    {
+        "id": 4270,
+        "text": "wīa",
+        "gloss": "consecrate",
+        "pos": "V",
+        "classes": [
+            "v-1"
+        ]
+    },
+    {
+        "id": 4271,
+        "text": "use",
+        "gloss": "our",
+        "pos": "PRON"
+    },
+    {
+        "id": 4272,
+        "text": "Frisa",
+        "gloss": "Frieses",
+        "pos": "NP"
+    },
+    {
+        "id": 4292,
+        "text": "wralde"
+    },
+    {
+        "id": 4293,
+        "text": "wrald",
+        "gloss": "world",
+        "pos": "N",
+        "classes": [
+            "f"
+        ]
+    },
+    {
+        "id": 4294,
+        "text": "hagon"
+    },
+    {
+        "id": 4295,
+        "text": "āga",
+        "gloss": "must",
+        "pos": "V"
+    },
+    {
+        "id": 4296,
+        "text": "mugi",
+        "gloss": "can.3SG.SUBJ"
+    },
+    {
+        "id": 4297,
+        "text": "hag’ere"
+    },
+    {
+        "id": 4298,
+        "text": "hach",
+        "gloss": "high",
+        "pos": "ADJ"
+    },
+    {
+        "id": 4300,
+        "text": "alsa’re"
+    },
+    {
+        "id": 4303,
+        "text": "-er",
+        "gloss": "he",
+        "pos": "PRON"
+    },
+    {
+        "id": 4305,
+        "text": "heth’ere"
+    },
+    {
+        "id": 4307,
+        "text": "thenne",
+        "gloss": "then",
+        "pos": "ADV"
+    },
+    {
+        "id": 4308,
+        "text": "thetter’ne"
+    },
+    {
+        "id": 4310,
+        "text": "hach",
+        "gloss": "must.3SG"
+    },
+    {
+        "id": 4312,
+        "text": "aldus",
+        "gloss": "thus",
+        "pos": "V"
+    },
+    {
+        "id": 4313,
+        "text": "thermithi",
+        "gloss": "therewith",
+        "pos": "ADJ"
+    },
+    {
+        "id": 4314,
+        "text": "there",
+        "gloss": "the.F.DAT"
+    },
+    {
+        "id": 4315,
+        "text": "neth’ere"
+    },
+    {
+        "id": 4316,
+        "text": "neth"
+    },
+    {
+        "id": 4318,
+        "text": "nebba",
+        "gloss": "have not",
+        "pos": "V"
+    },
+    {
+        "id": 4319,
+        "text": "Frisesk",
+        "gloss": "Frisian",
+        "pos": "ADJ"
+    },
+    {
+        "id": 4320,
+        "text": "wetir"
+    },
+    {
+        "id": 4321,
+        "text": "ene",
+        "gloss": "one.F.ACC"
+    },
+    {
+        "id": 4323,
+        "text": "allera"
+    },
+    {
+        "id": 4324,
+        "text": "allerek",
+        "gloss": "each",
+        "pos": "PRON"
+    },
+    {
+        "id": 4325,
+        "text": "al",
+        "gloss": "all",
+        "pos": "ADJ"
+    },
+    {
+        "id": 4329,
+        "text": "enne",
+        "gloss": "one.M.ACC"
+    },
+    {
+        "id": 4330,
+        "text": "se",
+        "gloss": "sea",
+        "pos": "N",
+        "classes": [
+            "f"
+        ]
+    },
+    {
+        "id": 4347,
+        "text": "mithi"
+    },
+    {
+        "id": 4348,
+        "text": "fota"
+    },
+    {
+        "id": 4349,
+        "text": "fōt",
+        "gloss": "foot",
+        "pos": "N",
+        "classes": [
+            "f"
+        ]
+    },
+    {
+        "id": 4350,
+        "text": "wili",
+        "gloss": "wish.SUBJ.3SG"
+    },
+    {
+        "id": 4351,
+        "text": "wella",
+        "gloss": "wish",
+        "pos": "V"
+    },
+    {
+        "id": 4352,
+        "text": "him",
+        "gloss": "he.DAT"
+    },
+    {
+        "id": 4353,
+        "text": "stherkhof",
+        "gloss": "churchyard",
+        "pos": "N",
+        "classes": [
+            "n"
+        ]
+    },
+    {
+        "id": 4355,
+        "text": "koning",
+        "gloss": "king",
+        "pos": "N",
+        "notes": "The form is outside Frisia; Frisian form would be 'kening'"
+    },
+    {
+        "id": 4356,
+        "text": "aider",
+        "gloss": "each one"
+    },
+    {
+        "id": 4357,
+        "text": "bisette",
+        "gloss": "occupy.PST"
+    },
+    {
+        "id": 4358,
+        "text": "bisetta",
+        "gloss": "occupy",
+        "pos": "V",
+        "classes": [
+            "v-1"
+        ]
+    },
+    {
+        "id": 4359,
+        "text": "ina"
+    },
+    {
+        "id": 4360,
+        "text": "ga",
+        "gloss": "district",
+        "pos": "N",
+        "notes": "~ German gau"
+    },
+    {
+        "id": 4361,
+        "text": "hereskilde",
+        "gloss": "war-band",
+        "pos": "N"
+    },
+    {
+        "id": 4362,
+        "text": "quath",
+        "gloss": "say.PST"
+    },
+    {
+        "id": 4363,
+        "text": "quetha",
+        "gloss": "say",
+        "pos": "V",
+        "classes": [
+            "v-V"
+        ]
+    },
+    {
+        "id": 4364,
+        "text": "sena",
+        "gloss": "reconcile",
+        "pos": "V"
+    },
+    {
+        "id": 4365,
+        "text": "bifiuchta",
+        "gloss": "fight for",
+        "pos": "V",
+        "classes": [
+            "v-III"
+        ]
+    },
+    {
+        "id": 4366,
+        "text": "wisade",
+        "gloss": "decree.PST"
+    },
+    {
+        "id": 4367,
+        "text": "wīsia",
+        "gloss": "decree",
+        "pos": "V",
+        "classes": [
+            "v-2"
+        ]
+    },
+    {
+        "id": 4368,
+        "text": "sona"
+    },
+    {
+        "id": 4369,
+        "text": "sone",
+        "gloss": "reconciliation",
+        "pos": "N"
+    },
+    {
+        "id": 4370,
+        "text": "Karle",
+        "pos": "NP"
+    },
+    {
+        "id": 4371,
+        "text": "Redbad",
+        "pos": "NP"
+    },
+    {
+        "id": 4372,
+        "text": "hoder",
+        "gloss": "who (of two)"
+    },
+    {
+        "id": 4373,
+        "text": "stalle",
+        "gloss": "standing",
+        "pos": "N"
+    },
+    {
+        "id": 4374,
+        "text": "urstode",
+        "gloss": "excel in standing.PST"
+    },
+    {
+        "id": 4375,
+        "text": "urstanda",
+        "gloss": "excel in standing",
+        "pos": "V"
+    },
+    {
+        "id": 4376,
+        "text": "etmel",
+        "gloss": "a day and a night"
+    },
+    {
+        "id": 4377,
+        "text": "handskoch",
+        "gloss": "gauntlet",
+        "pos": "N"
+    },
+    {
+        "id": 4378,
+        "text": "alderumbe",
+        "gloss": "therefore"
+    },
+    {
+        "id": 4379,
+        "text": "land"
+    },
+    {
+        "id": 4380,
+        "text": "ande"
+    },
+    {
+        "id": 4381,
+        "text": "hlakkade"
+    },
+    {
+        "id": 4382,
+        "text": "hlakkia",
+        "gloss": "laugh",
+        "pos": "V"
+    },
+    {
+        "id": 4385,
+        "text": "wurth",
+        "gloss": "terp",
+        "fullGloss": "terp, dwelling mound",
+        "pos": "N"
+    },
+    {
+        "id": 4386,
+        "text": "hat"
+    },
+    {
+        "id": 4387,
+        "text": "hēta",
+        "gloss": "be called",
+        "pos": "V",
+        "classes": [
+            "v-VII"
+        ]
+    },
+    {
+        "id": 4388,
+        "text": "min",
+        "gloss": "my",
+        "pos": "PRON"
+    },
+    {
+        "id": 4389,
+        "text": "wach",
+        "gloss": "woe",
+        "pos": "INTJ"
+    },
+    {
+        "id": 4390,
+        "text": "for"
+    },
+    {
+        "id": 4391,
+        "text": "thingia",
+        "gloss": "speak justice",
+        "pos": "V",
+        "classes": [
+            "v-2"
+        ]
+    },
+    {
+        "id": 4392,
+        "text": "moste’re"
+    },
+    {
+        "id": 4393,
+        "text": "most"
+    },
+    {
+        "id": 4395,
+        "text": "mōta",
+        "gloss": "be allowed",
+        "pos": "V"
+    },
+    {
+        "id": 4396,
+        "text": "hwand",
+        "gloss": "because"
+    },
+    {
+        "id": 4397,
+        "text": "lethegis"
+    },
+    {
+        "id": 4398,
+        "text": "lethich",
+        "gloss": "empty",
+        "pos": "ADJ"
+    },
+    {
+        "id": 4399,
+        "text": "naut"
+    },
+    {
+        "id": 4400,
+        "text": "sante’re"
+    },
+    {
+        "id": 4401,
+        "text": "sant"
+    },
+    {
+        "id": 4403,
+        "text": "senda",
+        "gloss": "send",
+        "pos": "V",
+        "classes": [
+            "v-1"
+        ]
+    },
+    {
+        "id": 4404,
+        "text": "Seland",
+        "pos": "NP"
+    },
+    {
+        "id": 4405,
+        "text": "sto",
+        "gloss": "place",
+        "pos": "N"
+    },
+    {
+        "id": 4406,
+        "text": "kapeden"
+    },
+    {
+        "id": 4407,
+        "text": "kāpia",
+        "gloss": "buy",
+        "pos": "V",
+        "classes": [
+            "v-2"
+        ]
+    },
+    {
+        "id": 4408,
+        "text": "se",
+        "gloss": "they",
+        "pos": "PRON"
+    },
+    {
+        "id": 4409,
+        "text": "fri",
+        "gloss": "free",
+        "pos": "ADJ"
+    },
+    {
+        "id": 4410,
+        "text": "skette"
+    },
+    {
+        "id": 4411,
+        "text": "sket",
+        "gloss": "treasure",
+        "pos": "N",
+        "notes": "~ German schatz"
+    },
+    {
+        "id": 4412,
+        "text": "skillinge"
+    },
+    {
+        "id": 4413,
+        "text": "skilling",
+        "gloss": "shilling",
+        "pos": "N"
+    },
+    {
+        "id": 4414,
+        "text": "Deldamanes",
+        "pos": "NP"
+    },
+    {
+        "id": 4415,
+        "text": "lathade"
+    },
+    {
+        "id": 4416,
+        "text": "lathia",
+        "gloss": "summon",
+        "pos": "V"
+    },
+    {
+        "id": 4417,
+        "text": "keren",
+        "gloss": "choose.PST.SUBJ"
+    },
+    {
+        "id": 4418,
+        "text": "kiāsa",
+        "gloss": "choose",
+        "pos": "V",
+        "classes": [
+            "v-II"
+        ]
+    },
+    {
+        "id": 4419,
+        "text": "beden"
+    },
+    {
+        "id": 4420,
+        "text": "bidda",
+        "gloss": "ask",
+        "pos": "V",
+        "classes": [
+            "v-V"
+        ]
+    },
+    {
+        "id": 4421,
+        "text": "forespreka",
+        "gloss": "advocate",
+        "pos": "N"
+    },
+    {
+        "id": 4422,
+        "text": "tolif",
+        "gloss": "twelf",
+        "pos": "NUM"
+    },
+    {
+        "id": 4423,
+        "text": "foresprekan"
+    },
+    {
+        "id": 4424,
+        "text": "Selandum"
+    },
+    {
+        "id": 4425,
+        "text": "ieraden"
+    },
+    {
+        "id": 4426,
+        "text": "ieria",
+        "gloss": "desire",
+        "pos": "V",
+        "classes": [
+            "v-V"
+        ]
+    },
+    {
+        "id": 4427,
+        "text": "nedskin",
+        "gloss": "legal impediment"
+    },
+    {
+        "id": 4428,
+        "text": "thredda",
+        "gloss": "third",
+        "pos": "ADJ"
+    },
+    {
+        "id": 4429,
+        "text": "fiarda",
+        "gloss": "fourth",
+        "pos": "ADJ"
+    },
+    {
+        "id": 4430,
+        "text": "tegen"
+    },
+    {
+        "id": 4431,
+        "text": "komen"
+    },
+    {
+        "id": 4432,
+        "text": "deis"
+    },
+    {
+        "id": 4433,
+        "text": "fan"
+    },
+    {
+        "id": 4434,
+        "text": "het"
+    },
+    {
+        "id": 4435,
+        "text": "hia",
+        "gloss": "they",
+        "pos": "PRON"
+    },
+    {
+        "id": 4436,
+        "text": "ferst",
+        "gloss": "delay",
+        "pos": "N",
+        "notes": "~ German frist"
+    },
+    {
+        "id": 4437,
+        "text": "ferstes"
+    },
+    {
+        "id": 4438,
+        "text": "fifta",
+        "gloss": "fifth",
+        "pos": "ADJ"
+    },
+    {
+        "id": 4439,
+        "text": "habba"
+    },
+    {
+        "id": 4440,
+        "text": "riuchte"
+    },
+    {
+        "id": 4441,
+        "text": "fria"
+    },
+    {
+        "id": 4442,
+        "text": "sexta",
+        "gloss": "sixth",
+        "pos": "ADJ"
+    },
+    {
+        "id": 4443,
+        "text": "kuden"
+    },
+    {
+        "id": 4444,
+        "text": "kunna",
+        "gloss": "know how to",
+        "pos": "V"
+    },
+    {
+        "id": 4445,
+        "text": "ik",
+        "gloss": "I",
+        "pos": "PRON"
+    },
+    {
+        "id": 4446,
+        "text": "lidze"
+    },
+    {
+        "id": 4447,
+        "text": "lidza",
+        "gloss": "lay",
+        "pos": "V",
+        "classes": [
+            "v-1"
+        ]
+    },
+    {
+        "id": 4448,
+        "text": "keran"
+    },
+    {
+        "id": 4449,
+        "text": "kere",
+        "gloss": "choice",
+        "pos": "N"
+    },
+    {
+        "id": 4450,
+        "text": "haudie"
+    },
+    {
+        "id": 4451,
+        "text": "haudia",
+        "gloss": "decapitate",
+        "pos": "V"
+    },
+    {
+        "id": 4453,
+        "text": "ain",
+        "gloss": "serf",
+        "pos": "N"
+    },
+    {
+        "id": 4454,
+        "text": "fest",
+        "gloss": "firm",
+        "pos": "ADJ"
+    },
+    {
+        "id": 4455,
+        "text": "sterk",
+        "gloss": "strong",
+        "pos": "ADJ"
+    },
+    {
+        "id": 4456,
+        "text": "skip",
+        "gloss": "ship",
+        "pos": "N"
+    },
+    {
+        "id": 4457,
+        "text": "jowe"
+    },
+    {
+        "id": 4459,
+        "text": "iowa",
+        "gloss": "give",
+        "pos": "V",
+        "classes": [
+            "v-V"
+        ]
+    },
+    {
+        "id": 4460,
+        "text": "ebba"
+    },
+    {
+        "id": 4462,
+        "text": "ebbe",
+        "gloss": "low-tide",
+        "pos": "N"
+    },
+    {
+        "id": 4463,
+        "text": "flod",
+        "gloss": "high tide",
+        "pos": "N"
+    },
+    {
+        "id": 4464,
+        "text": "withstan",
+        "gloss": "resist",
+        "pos": "V",
+        "classes": [
+            "v-VII"
+        ]
+    },
+    {
+        "id": 4465,
+        "text": "sunder",
+        "gloss": "without",
+        "pos": "PREP"
+    },
+    {
+        "id": 4466,
+        "text": "rother",
+        "gloss": "rudder",
+        "pos": "N"
+    },
+    {
+        "id": 4467,
+        "text": "rema",
+        "gloss": "oar",
+        "pos": "N"
+    },
+    {
+        "id": 4468,
+        "text": "towe",
+        "gloss": "rigging",
+        "pos": "N"
+    },
+    {
+        "id": 4469,
+        "text": "aland",
+        "gloss": "coastal land",
+        "pos": "N"
+    },
+    {
+        "id": 4470,
+        "text": "lethe",
+        "gloss": "hateful",
+        "pos": "ADJ"
+    },
+    {
+        "id": 4471,
+        "text": "slachte"
+    },
+    {
+        "id": 4472,
+        "text": "slacht",
+        "gloss": "kin",
+        "pos": "N"
+    },
+    {
+        "id": 4473,
+        "text": "asega",
+        "gloss": "lawspeaker",
+        "pos": "N"
+    },
+    {
+        "id": 4474,
+        "text": "herd"
+    },
+    {
+        "id": 4475,
+        "text": "hēra",
+        "gloss": "hear",
+        "pos": "V",
+        "classes": [
+            "v-1"
+        ]
+    },
+    {
+        "id": 4476,
+        "text": "iungeran"
+    },
+    {
+        "id": 4477,
+        "text": "iungera",
+        "gloss": "younger"
+    },
+    {
+        "id": 4478,
+        "text": "threttundista",
+        "gloss": "thirteenth",
+        "pos": "ADJ"
+    },
+    {
+        "id": 4479,
+        "text": "sletena",
+        "gloss": "close.PST.PTCP.DAT.PL"
+    },
+    {
+        "id": 4480,
+        "text": "slūta",
+        "gloss": "close",
+        "pos": "V"
+    },
+    {
+        "id": 4481,
+        "text": "dorum"
+    },
+    {
+        "id": 4482,
+        "text": "dore",
+        "gloss": "door",
+        "pos": "N"
+    },
+    {
+        "id": 4483,
+        "text": "traste"
+    },
+    {
+        "id": 4484,
+        "text": "trāsta",
+        "gloss": "comfort",
+        "pos": "V",
+        "classes": [
+            "v-1"
+        ]
+    },
+    {
+        "id": 4485,
+        "text": "lerde"
+    },
+    {
+        "id": 4486,
+        "text": "lēra",
+        "gloss": "teach",
+        "pos": "V",
+        "classes": [
+            "v-1"
+        ]
+    },
+    {
+        "id": 4487,
+        "text": "kne",
+        "gloss": "knee",
+        "pos": "N"
+    },
+    {
+        "id": 4488,
+        "text": "inlike",
+        "gloss": "piously",
+        "pos": "ADV"
+    },
+    {
+        "id": 4489,
+        "text": "bedinge",
+        "gloss": "prayer",
+        "pos": "N"
+    },
+    {
+        "id": 4490,
+        "text": "segen"
+    },
+    {
+        "id": 4491,
+        "text": "siā",
+        "gloss": "see",
+        "pos": "V",
+        "classes": [
+            "v-V"
+        ]
+    },
+    {
+        "id": 4492,
+        "text": "stiorne",
+        "gloss": "helm",
+        "pos": "N"
+    },
+    {
+        "id": 4493,
+        "text": "goldene"
+    },
+    {
+        "id": 4494,
+        "text": "axe",
+        "gloss": "axe",
+        "pos": "N"
+    },
+    {
+        "id": 4495,
+        "text": "axla"
+    },
+    {
+        "id": 4496,
+        "text": "axle",
+        "gloss": "shoulder",
+        "pos": "N",
+        "classes": [
+            "f"
+        ]
+    },
+    {
+        "id": 4497,
+        "text": "wether",
+        "gloss": "again"
+    },
+    {
+        "id": 4498,
+        "text": "stram",
+        "gloss": "stream",
+        "pos": "N"
+    },
+    {
+        "id": 4499,
+        "text": "wind",
+        "gloss": "wind",
+        "pos": "N"
+    },
+    {
+        "id": 4500,
+        "text": "stiurde"
+    },
+    {
+        "id": 4501,
+        "text": "stiūra",
+        "gloss": "steer",
+        "pos": "V",
+        "classes": [
+            "v-1"
+        ]
+    },
+    {
+        "id": 4502,
+        "text": "ture",
+        "gloss": "piece of grass",
+        "pos": "N"
+    },
+    {
+        "id": 4503,
+        "text": "burna",
+        "gloss": "well",
+        "pos": "N"
+    },
+    {
+        "id": 4504,
+        "text": "hot",
+        "gloss": "what"
+    },
+    {
+        "id": 4505,
+        "text": "mer",
+        "gloss": "but"
+    },
+    {
+        "id": 4506,
+        "text": "wonnen"
+    },
+    {
+        "id": 4507,
+        "text": "winna",
+        "gloss": "win",
+        "pos": "V",
+        "classes": [
+            "v-III"
+        ]
+    },
+    {
+        "id": 4508,
+        "text": "hwerum",
+        "gloss": "why"
+    },
+    {
+        "id": 4509,
+        "text": "stille",
+        "gloss": "still"
+    },
+    {
+        "id": 4510,
+        "text": "fule",
+        "gloss": "much",
+        "pos": "ADV"
+    },
+    {
+        "id": 4511,
+        "text": "hara",
+        "gloss": "their",
+        "pos": "PRON"
+    },
+    {
+        "id": 4512,
+        "text": "domen"
+    },
+    {
+        "id": 4513,
+        "text": "dõm",
+        "gloss": "judgement",
+        "pos": "N"
+    },
+    {
+        "id": 4514,
+        "text": "agen"
+    },
+    {
+        "id": 4515,
+        "text": "delane"
+    },
+    {
+        "id": 4517,
+        "text": "dēla",
+        "gloss": "decide",
+        "pos": "V",
+        "classes": [
+            "v-1"
+        ]
+    },
+    {
+        "id": 4518,
+        "text": "threttene",
+        "gloss": "thirteen",
+        "pos": "NUM"
+    },
+    {
+        "id": 4519,
+        "text": "i",
+        "gloss": "you",
+        "pos": "PRON"
+    },
+    {
+        "id": 4520,
+        "text": "folen"
+    },
+    {
+        "id": 4521,
+        "text": "falla",
+        "gloss": "fall",
+        "pos": "V"
+    },
+    {
+        "id": 4522,
+        "text": "hwerso"
+    },
+    {
+        "id": 4523,
+        "text": "also",
+        "gloss": "so"
+    },
+    {
+        "id": 4524,
+        "text": "orlof",
+        "gloss": "permission",
+        "pos": "N"
+    },
+    {
+        "id": 4525,
+        "text": "ief",
+        "gloss": "give.PST"
+    },
+    {
+        "id": 4526,
+        "text": "ieva",
+        "gloss": "give",
+        "pos": "V",
+        "classes": [
+            "v-V"
+        ]
+    },
+    {
+        "id": 4527,
+        "text": "ti",
+        "gloss": "for",
+        "pos": "PREP"
+    },
+    {
+        "id": 4528,
+        "text": "Franekra"
+    },
+    {
+        "id": 4529,
+        "text": "Frānekere",
+        "pos": "NP"
+    },
+    {
+        "id": 4530,
+        "text": "wolden"
+    },
+    {
+        "id": 4531,
+        "text": "lange",
+        "gloss": "long",
+        "pos": "ADV"
+    },
+    {
+        "id": 4532,
+        "text": "hede",
+        "gloss": "have.PST.SUBJ"
+    },
+    {
+        "id": 4533,
+        "text": "heren"
+    },
+    {
+        "id": 4534,
+        "text": "hēr",
+        "gloss": "lord",
+        "pos": "N"
+    },
+    {
+        "id": 4535,
+        "text": "tha",
+        "gloss": "then",
+        "pos": "ADV"
+    },
+    {
+        "id": 4536,
+        "text": "hachense",
+        "pos": "NP"
+    },
+    {
+        "id": 4537,
+        "text": "wachense",
+        "pos": "NP"
+    },
+    {
+        "id": 4538,
+        "text": "man"
+    },
+    {
+        "id": 4539,
+        "text": "landis"
+    },
+    {
+        "id": 4540,
+        "text": "uppa",
+        "gloss": "upon",
+        "pos": "ADV"
+    },
+    {
+        "id": 4541,
+        "text": "boda",
+        "gloss": "messenger",
+        "pos": "N"
+    },
+    {
+        "id": 4542,
+        "text": "ora"
+    },
+    {
+        "id": 4543,
+        "text": "tofara",
+        "gloss": "before",
+        "pos": "PREP"
+    },
+    {
+        "id": 4544,
+        "text": "Hera"
+    },
+    {
+        "id": 4545,
+        "text": "wise"
+    },
+    {
+        "id": 4546,
+        "text": "wīsa",
+        "gloss": "show",
+        "pos": "V",
+        "classes": [
+            "v-1"
+        ]
+    },
+    {
+        "id": 4547,
+        "text": "Axenhove",
+        "pos": "NP"
+    },
+    {
+        "id": 4548,
+        "text": "Eswei",
+        "pos": "NP"
+    }
+]

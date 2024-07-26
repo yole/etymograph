@@ -1,0 +1,239 @@
+[
+    {
+        "id": 3977,
+        "text": "esuk",
+        "gloss": "thus"
+    },
+    {
+        "id": 3978,
+        "text": "frater",
+        "gloss": "brother.NOM.PL"
+    },
+    {
+        "id": 3979,
+        "text": "atiieřiur",
+        "gloss": "Atiedian.NOM.PL"
+    },
+    {
+        "id": 3980,
+        "text": "eitipes",
+        "gloss": "decree.PST.3SG"
+    },
+    {
+        "id": 3981,
+        "text": "eit-",
+        "gloss": "conclusion"
+    },
+    {
+        "id": 3983,
+        "text": "ipes",
+        "gloss": "having reached"
+    },
+    {
+        "id": 3984,
+        "text": "plenasier",
+        "gloss": "at the Ides",
+        "notes": "-asio- same as Lat. -arius"
+    },
+    {
+        "id": 3985,
+        "text": "urnasier",
+        "gloss": "of month Urna",
+        "notes": "from h1er- 'rise'?"
+    },
+    {
+        "id": 3986,
+        "text": "uhtretie",
+        "gloss": "in the uhtur-ship"
+    },
+    {
+        "id": 3987,
+        "text": "uhtur",
+        "gloss": "chief magistrate"
+    },
+    {
+        "id": 3988,
+        "text": "t",
+        "gloss": "Titus"
+    },
+    {
+        "id": 3989,
+        "text": "kastruçiie",
+        "pos": "NP"
+    },
+    {
+        "id": 3990,
+        "text": "ařfertur",
+        "gloss": "chief priest",
+        "notes": "from ad-fertor 'the one who brings to'"
+    },
+    {
+        "id": 3991,
+        "text": "pisi",
+        "gloss": "whom-",
+        "notes": "~ Lat quis"
+    },
+    {
+        "id": 3992,
+        "text": "pumpe",
+        "gloss": "-ever",
+        "notes": "~ Lat cumque"
+    },
+    {
+        "id": 3993,
+        "text": "fust",
+        "gloss": "be.FUT.3SG"
+    },
+    {
+        "id": 3994,
+        "text": "eikvasese",
+        "notes": "eikvases + encl. -e 'in'"
+    },
+    {
+        "id": 3995,
+        "text": "kuraia",
+        "gloss": "take care.SUBJ",
+        "notes": "< koisa-e-ad"
+    },
+    {
+        "id": 3996,
+        "text": "prehabia",
+        "gloss": "provide.SUBJ.3SG"
+    },
+    {
+        "id": 3997,
+        "text": "piře",
+        "gloss": "whatever"
+    },
+    {
+        "id": 3998,
+        "text": "uraku"
+    },
+    {
+        "id": 3999,
+        "text": "herte",
+        "gloss": "oportet.3SG.MED",
+        "notes": "her- ~ 'wish'"
+    },
+    {
+        "id": 4000,
+        "text": "ura"
+    },
+    {
+        "id": 4002,
+        "text": "ku",
+        "gloss": "at"
+    },
+    {
+        "id": 4089,
+        "text": "fratēres",
+        "gloss": "brother.NOM.PL",
+        "reconstructed": true
+    },
+    {
+        "id": 4273,
+        "text": "si",
+        "gloss": "be.SUBJ.3SG",
+        "notes": "< siet"
+    },
+    {
+        "id": 4274,
+        "text": "pure",
+        "gloss": "quos.3PL"
+    },
+    {
+        "id": 4275,
+        "text": "sis",
+        "gloss": "be.SUBJ.3PL",
+        "notes": "< sient"
+    },
+    {
+        "id": 4276,
+        "text": "sakreu",
+        "gloss": "sacred.N.ACC.PL",
+        "notes": "i-stem, vowel quality unknown. < sacria\n\nLat has sacer and sācer (i-stem vrddhi-derivative from sacer)"
+    },
+    {
+        "id": 4277,
+        "text": "perakneu",
+        "gloss": "<holy things>.ACC.PL",
+        "notes": "per- + aknī (derivative of 'year': Lat anus, Umb akenes < at-no)\n\nsometimes written as perakri (maybe contamination from sacri)\n\nrefers to sacrificial animals?"
+    },
+    {
+        "id": 4278,
+        "text": "upetu",
+        "gloss": "choose.SUBJ.3SG",
+        "notes": "related to Lat. 'victimarum probatio'\n\n< iter. from root h1p (lat. coēpi)"
+    },
+    {
+        "id": 4279,
+        "text": "revestu",
+        "gloss": "reexamine.3SG.SUBJ",
+        "notes": "< revissetod"
+    },
+    {
+        "id": 4280,
+        "text": "eru",
+        "gloss": "this.GEN.PL"
+    },
+    {
+        "id": 4281,
+        "text": "puře",
+        "gloss": "which.ACC"
+    },
+    {
+        "id": 4282,
+        "text": "emantur",
+        "gloss": "accept.M.3PL",
+        "notes": "~ Lat. emo 'buy' < 'take'"
+    },
+    {
+        "id": 4283,
+        "text": "teřte",
+        "gloss": "give.PASS.3SG"
+    },
+    {
+        "id": 4284,
+        "text": "et",
+        "gloss": "and"
+    },
+    {
+        "id": 4285,
+        "text": "pihaklu",
+        "gloss": "purefactory sacrifice",
+        "notes": "< pia- ~ Lat pius"
+    },
+    {
+        "id": 4286,
+        "text": "akrutu",
+        "gloss": "all over again",
+        "notes": "? Abl. from 'akroto'"
+    },
+    {
+        "id": 4287,
+        "text": "pune",
+        "gloss": "which.ACC"
+    },
+    {
+        "id": 4288,
+        "text": "tribřiçu",
+        "gloss": "threefold",
+        "notes": "< 'triplecium'"
+    },
+    {
+        "id": 4289,
+        "text": "fuiest",
+        "gloss": "be.FUT.SUBJ.3SG"
+    },
+    {
+        "id": 4290,
+        "text": "vepurus",
+        "gloss": "without fire"
+    },
+    {
+        "id": 4291,
+        "text": "ařputrati",
+        "gloss": "judgment",
+        "notes": "~ arbiter"
+    }
+]
