@@ -24,11 +24,26 @@ class LemmatizedTextTest {
     @Test
     fun importNoWordInDictionary() {
         val dictionary = TestDictionary()
-        val lWord = LemmatizedWord("mæg", listOf(LemmatizedToken("mæg", "mæg", "verb", emptyList())))
+        val lWord = lemmatizedWord("mæg", "verb")
         val lText = LemmatizedText("mæg", listOf(lWord))
 
         val text = importLemmatizedText(repo, oe, dictionary, "Test", lText)
         assertEquals("mæg", text.text)
         assertEquals(0, text.words.size)
+    }
+
+    @Test
+    fun importWordProperNoun() {
+        val dictionary = TestDictionary()
+        val lWord = lemmatizedWord("Maria", "proper noun")
+        val lText = LemmatizedText("Maria", listOf(lWord))
+        val text = importLemmatizedText(repo, oe, dictionary, "Test", lText)
+        assertEquals("Maria", text.text)
+        assertEquals(1, text.words.size)
+        assertEquals("NP", text.words[0]!!.pos)
+    }
+
+    private fun lemmatizedWord(text: String, pos: String): LemmatizedWord {
+        return  LemmatizedWord(text, listOf(LemmatizedToken(text, text, pos, emptyList())))
     }
 }
