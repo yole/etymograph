@@ -1,0 +1,25 @@
+==Old English==
+
+===Alternative forms===
+* {{alter|ang|nytwyrþnes}}
+* {{alter|ang|nytwyrðnes||edh spelling}}
+
+===Etymology===
+Equivalent to {{suffix|ang|nytwierþe|nes}}.
+
+===Pronunciation===
+* {{ang-IPA|nyt-wierþnes}}
+
+===Noun===
+{{ang-noun|f}}
+
+# [[usefulness]], [[utility]]
+
+====Declension====
+{{ang-decl-noun-o-f|nytwierþness|nomsg=nytwierþnes}}
+
+====Synonyms====
+* {{l|ang|nytlīċnes}}
+
+===References===
+* {{R:ang:BT|NYTWEORÞNESS|ref=023971}}

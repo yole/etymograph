@@ -40,4 +40,16 @@ class WiktionaryParserTest {
         assertEquals("brigdilaz", origin.relatedWord.text)
         assertEquals("strap, rein", origin.relatedWord.gloss)
     }
+
+    @Test
+    fun parseAlternativeForm() {
+        val oe = Language("Old English", "OE")
+        oe.dictionarySettings = "ang-decl-noun-o-f: fem, o-stem"
+        repo.addLanguage(oe)
+
+        val word = wiktionary.lookup(repo, oe, "nytwyrþnes").single()
+        val variation = word.relatedWords.single()
+        assertEquals("nytwierþnes", variation.relatedWord.text)
+        assertEquals(2, variation.relatedWord.classes.size)
+    }
 }

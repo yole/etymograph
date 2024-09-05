@@ -34,10 +34,15 @@ abstract class WiktionarySection {
             else if (subsection == null) {
                 parseSectionLine(line)
             }
+            else {
+                parseSubsectionLine(line, subsection)
+            }
         }
     }
 
     protected abstract fun parseSectionLine(line: String)
+    protected open fun parseSubsectionLine(line: String, subsection: String) {
+    }
 
     protected fun filterTemplates(s: String): String {
         return s.replace(templateRegex) { mr ->
@@ -61,17 +66,32 @@ class WiktionaryPosSection(
 ): WiktionarySection() {
     val senses = mutableListOf<String>()
     val classes = mutableListOf<String>()
+    var alternativeOf: String? = null
 
     override fun parseSectionLine(line: String) {
+        checkClasses(line)
+        if (line.startsWith("# ")) {
+            senses.add(filterTemplates(line.removePrefix("# ").replace("[[", "").replace("]]", "")).trim())
+        }
+    }
+
+    private fun checkClasses(line: String) {
         for ((key, value) in dictionarySettings) {
             if (key in line) {
                 classes.addAll(value)
             }
         }
+    }
 
-        if (line.startsWith("# ")) {
-            senses.add(filterTemplates(line.removePrefix("# ").replace("[[", "").replace("]]", "")).trim())
+    override fun parseSubsectionLine(line: String, subsection: String) {
+        checkClasses(line)
+    }
+
+    override fun processTemplate(name: String, parameters: List<String>): String {
+        if (name == "alternative form of") {
+            alternativeOf = parameters[1]
         }
+        return ""
     }
 }
 
@@ -163,6 +183,12 @@ open class Wiktionary : Dictionary {
                 source = "https://en.wiktionary.org/wiki/${langPrefix(language)}$normalizedWord#${language.name.replace(' ', '_')}")
                 .apply {
                     inheritedWords?.let { relatedWords.addAll(it) }
+                    section.alternativeOf?.let {
+                        val baseWord = lookup(repo, language, it).singleOrNull()
+                        if (baseWord != null) {
+                            relatedWords.add(DictionaryRelatedWord(Link.Variation, baseWord))
+                        }
+                    }
                 }
         }
     }

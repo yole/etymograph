@@ -1,0 +1,15 @@
+==Old English==
+
+===Alternative forms===
+* {{alter|ang|nytwyrðnes||edh spelling}}
+
+===Pronunciation===
+* {{ang-IPA|nyt-wyrþnes}}
+
+===Noun===
+{{ang-noun|f}}
+
+# {{alternative form of|ang|nytwierþnes}}
+
+====Declension====
+{{ang-decl-noun-o-f|nytwyrþness|nomsg=nytwyrþnes}}
