@@ -6,7 +6,7 @@ class LemmatizedWord(val form: String, val tokens: List<LemmatizedToken>)
 
 class LemmatizedText(val text: String, val words: List<LemmatizedWord>)
 
-fun importLemmatizedText(repo: GraphRepository, language: Language, dictionary: Dictionary, title: String, text: LemmatizedText) {
+fun importLemmatizedText(repo: GraphRepository, language: Language, dictionary: Dictionary, title: String, text: LemmatizedText): CorpusText {
     var relativeIndex = 0
     val corpusText = repo.corpusTextsInLanguage(language).find { it.title == title }
         ?.also { corpusText ->
@@ -44,6 +44,7 @@ fun importLemmatizedText(repo: GraphRepository, language: Language, dictionary: 
             corpusText.associateWord(index + relativeIndex, formWord)
         }
     }
+    return corpusText
 }
 
 private fun createWordForForm(lemmaWord: Word, repo: GraphRepository, word: LemmatizedToken): Word {
