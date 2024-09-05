@@ -208,7 +208,8 @@ class Rule(
                 else
                     null
 
-                deriveWord(phonemic, phonemes.result(), toLanguage, -1, null, word.classes, stress)
+                val segments = remapSegments(phonemes, word.segments)
+                deriveWord(phonemic, phonemes.result(), toLanguage, -1, segments, word.classes, stress)
             }
             else
                 word
@@ -227,6 +228,14 @@ class Rule(
             }
         }
         return Word(-1, "?", word.language)
+    }
+
+    private fun remapSegments(phonemes: PhonemeIterator, segments: List<WordSegment>?): List<WordSegment>? {
+        return segments?.map { segment ->
+            val start = phonemes.mapIndex(segment.firstCharacter)
+            val end = phonemes.mapIndex(segment.firstCharacter + segment.length)
+            WordSegment(start, end - start, segment.category, segment.sourceWord, segment.sourceRule, segment.clitic)
+        }
     }
 
     fun reverseApply(word: Word, graph: GraphRepository): List<String> {

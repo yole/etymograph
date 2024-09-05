@@ -136,4 +136,27 @@ class SegmentTest : QBaseTest() {
         assertEquals("falmalinnar", result.text)
         assertEquals(1, result.segments!!.size)
     }
+
+    @Test
+    fun deleteCharacterAdjustSegments() {
+        repo.rule("sound is 'e':\n- sound disappears", name = "oe-syncope")
+        val oeAcc = repo.rule("- append 'a'\n- apply rule 'oe-syncope'\n")
+        val result = oeAcc.apply(q.word("swingel"), repo)
+        assertEquals("swingla", result.text)
+        assertEquals(1, result.segments!!.size)
+        assertEquals(6, result.segments!![0].firstCharacter)
+        assertEquals(1, result.segments!![0].length)
+    }
+
+    @Test
+    fun deleteCharacterAdjustSegmentsWithApplySoundRule() {
+        repo.rule("sound is 'ć':\n- new sound is 'c'", name = "oe-depalatalize")
+        repo.rule("sound is 'e':\n- sound disappears\n- apply sound rule 'oe-depalatalize' to previous sound", name = "oe-syncope")
+        val oeAcc = repo.rule("- append 'a'\n- apply rule 'oe-syncope'\n")
+        val result = oeAcc.apply(q.word("swingel"), repo)
+        assertEquals("swingla", result.text)
+        assertEquals(1, result.segments!!.size)
+        assertEquals(6, result.segments!![0].firstCharacter)
+        assertEquals(1, result.segments!![0].length)
+    }
 }

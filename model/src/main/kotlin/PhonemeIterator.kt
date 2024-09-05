@@ -115,6 +115,7 @@ class PhonemeIterator {
     private val resultPhonemes: MutableList<String>
     private var phonemeIndex = 0
     private var phonemeToResultIndexMap: IntArray
+    private var indexMapStack: MutableList<IntArray>? = null
 
     constructor(word: Word, repo: GraphRepository?, resultPhonemic: Boolean? = null) : this(
         if (word.isPhonemic) word.text else word.normalizedText.trimEnd('-'),
@@ -184,6 +185,10 @@ class PhonemeIterator {
     }
 
     fun commit() {
+        if (indexMapStack == null) {
+            indexMapStack = mutableListOf()
+        }
+        indexMapStack!!.add(phonemeToResultIndexMap)
         var newIndex = phonemeIndex
         while (newIndex < phonemeToResultIndexMap.size && phonemeToResultIndexMap[newIndex] == -1) {
             newIndex++
@@ -289,7 +294,15 @@ class PhonemeIterator {
     }
 
     fun mapIndex(index: Int): Int {
-        return phonemeToResultIndexMap[index]
+        val i = indexMapStack?.fold(index) { i, map -> applyIndexMap(i, map) } ?: index
+        return applyIndexMap(i, phonemeToResultIndexMap)
+    }
+
+    private fun applyIndexMap(index: Int, map: IntArray): Int {
+        if (index == map.size) {
+            return map[index - 1] + 1
+        }
+        return map[index]
     }
 
     fun atBeginning(): Boolean = phonemeIndex == 0
