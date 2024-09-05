@@ -277,7 +277,7 @@ class BosworthToller(dataPath: String) : Dictionary {
             .replace("ð", "þ")
             .replace("-", "")
 
-    override fun lookup(language: Language, word: String): List<Word> {
+    override fun lookup(language: Language, word: String): List<DictionaryWord> {
         val lookupText = word
             .replace("ġ", "g")
             .replace("ċ", "c")
@@ -287,7 +287,7 @@ class BosworthToller(dataPath: String) : Dictionary {
         return entryList?.map { entryToWord(it, language) } ?: emptyList()
     }
 
-    private fun entryToWord(entry: BosworthTollerEntry, language: Language): Word {
+    private fun entryToWord(entry: BosworthTollerEntry, language: Language): DictionaryWord {
         val pos = posMap[entry.pos.first()]
         if (pos == null) {
             println("Unknown part of speech ${entry.pos.first()}")
@@ -297,10 +297,9 @@ class BosworthToller(dataPath: String) : Dictionary {
         if (genderClass != null) {
             classes.add(genderClass)
         }
-        val form = entry.form.replace("-", "")
         val gloss = entry.def.first().replaceFirstChar { it.lowercase(Locale.getDefault()) }
-        return Word(-1, form, language, extractShortGloss(gloss), fullGloss = gloss, pos = pos, classes = classes,
-            source = listOf(SourceRef(null, "https://bosworthtoller.com/${entry.id}")))
+        return DictionaryWord(extractShortGloss(gloss), fullGloss = gloss, pos = pos, classes = classes,
+            source = "https://bosworthtoller.com/${entry.id}")
     }
 
     private fun extractShortGloss(gloss: String): String {

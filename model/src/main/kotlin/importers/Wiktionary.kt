@@ -108,7 +108,7 @@ class Wiktionary : Dictionary {
         return keyValue[0].trim() to keyValue[1].split(',').map { it.trim() }
     }
 
-    override fun lookup(language: Language, word: String): List<Word> {
+    override fun lookup(language: Language, word: String): List<DictionaryWord> {
         val normalizedWord = word.removeDiacritics()
         val pageJson = loadWiktionaryPage(normalizedWord) ?: return emptyList()
         val pageData = json.decodeFromString<WiktionaryPageData>(pageJson)
@@ -117,10 +117,10 @@ class Wiktionary : Dictionary {
             return emptyList()
         }
         return wiktionaryPage.posSections.map { section ->
-            Word(-1, word, language, section.senses.first(), section.senses.joinToString("; "),
+            DictionaryWord(section.senses.first(), section.senses.joinToString("; "),
                 pos = language.pos.find { it.name == section.pos }?.abbreviation,
                 classes = section.classes,
-                source = listOf(SourceRef(null, "https://en.wiktionary.org/wiki/$normalizedWord#${language.name.replace(' ', '_')}")))
+                source = "https://en.wiktionary.org/wiki/$normalizedWord#${language.name.replace(' ', '_')}")
         }
     }
 

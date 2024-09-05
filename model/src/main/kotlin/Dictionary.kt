@@ -1,8 +1,17 @@
 package ru.yole.etymograph
 
 interface Dictionary {
-    fun lookup(language: Language, word: String): List<Word>
+    fun lookup(language: Language, word: String): List<DictionaryWord>
 }
+
+data class DictionaryWord(
+    val gloss: String?,
+    val fullGloss: String?,
+    val pos: String?,
+    val classes: List<String>,
+    val source: String,
+    var reconstructed: Boolean = false
+)
 
 fun augmentWithDictionary(repo: GraphRepository, language: Language, dictionary: Dictionary) {
     for (word in repo.dictionaryWords(language)) {
@@ -23,7 +32,7 @@ fun augmentWordWithDictionary(dictionary: Dictionary, word: Word): String? {
             augmentWord(word, bestMatch)
         } else {
             return "Found multiple matching words for ${word.text}: " +
-                    lookupResult.joinToString(", ") { it.source.first().refText }
+                    lookupResult.joinToString(", ") { it.source }
         }
     } else {
         augmentWord(word, lookupResult.single())
@@ -31,7 +40,7 @@ fun augmentWordWithDictionary(dictionary: Dictionary, word: Word): String? {
     return null
 }
 
-private fun tryFindBestMatch(word: Word, dictionaryWords: List<Word>): Word? {
+private fun tryFindBestMatch(word: Word, dictionaryWords: List<DictionaryWord>): DictionaryWord? {
     var candidates = dictionaryWords
     if (word.pos != null) {
         candidates = candidates.filter { it.pos == word.pos }
@@ -65,7 +74,7 @@ private fun wordSet(gloss: String): Set<String> =
         .filter { it != "to" && it != "the" && it != "a" }
         .toSet()
 
-fun augmentWord(word: Word, dictionaryWord: Word) {
+fun augmentWord(word: Word, dictionaryWord: DictionaryWord) {
     if (word.pos == null && dictionaryWord.pos != null) {
         word.pos = dictionaryWord.pos
     }
@@ -79,8 +88,9 @@ fun augmentWord(word: Word, dictionaryWord: Word) {
             word.fullGloss = fullGloss
         }
     }
-    val newSources = dictionaryWord.source.filter { it !in word.source }
-    if (newSources.isNotEmpty()) {
-        word.source += newSources
+
+
+    if (word.source.none { it.refText == dictionaryWord.source }) {
+        word.source += SourceRef(null, dictionaryWord.source)
     }
 }

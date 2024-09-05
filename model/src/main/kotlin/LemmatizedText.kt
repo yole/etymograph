@@ -29,7 +29,8 @@ fun importLemmatizedText(repo: GraphRepository, language: Language, dictionary: 
             else {
                 val dictionaryWords = dictionary.lookup(language, token.lemma)
                 lemmaWords = dictionaryWords.map {
-                    repo.findOrAddWord(token.lemma, language, it.gloss, it.fullGloss, it.pos, it.classes, it.reconstructed, it.source, it.notes)
+                    repo.findOrAddWord(token.lemma, language, it.gloss, it.fullGloss, it.pos, it.classes, it.reconstructed,
+                        listOf(SourceRef(null, it.source)))
                 }
             }
         }
