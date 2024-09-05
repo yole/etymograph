@@ -23,9 +23,9 @@ class CorpusText(
     text: String,
     var title: String?,
     val language: Language,
-    words: List<Word?>,
-    source: List<SourceRef>,
-    notes: String?
+    words: List<Word?> = emptyList(),
+    source: List<SourceRef> = emptyList(),
+    notes: String? = null
 ): LangEntity(id, source, notes) {
     private data class WordText(val baseText: String, val normalizedText: String, val index: Int)
 

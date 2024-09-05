@@ -6,7 +6,7 @@ import org.junit.Assert.*
 class CorpusTextTest : QBaseTest() {
     @Test
     fun testWordIndex() {
-        val corpusText = CorpusText(-1, "ai laurie lantar\nyeni unotime", null, q, mutableListOf(), emptyList(), null)
+        val corpusText = q.corpusText("ai laurie lantar\nyeni unotime")
         val lines = corpusText.mapToLines(emptyRepo)
         assertEquals(0, lines[0].corpusWords[0].index)
         assertEquals(3, lines[1].corpusWords[0].index)
@@ -14,7 +14,7 @@ class CorpusTextTest : QBaseTest() {
 
     @Test
     fun testAssociateWord() {
-        val corpusText = CorpusText(-1, "ai laurie lantar", null, q, mutableListOf(), emptyList(), null)
+        val corpusText = q.corpusText("ai laurie lantar")
         val repo = InMemoryGraphRepository()
         val laurie = q.word("laurie")
         corpusText.associateWord(1, laurie)
@@ -24,7 +24,7 @@ class CorpusTextTest : QBaseTest() {
 
     @Test
     fun testEditText() {
-        val corpusText = CorpusText(-1, "ai laurie lantar", null, q, mutableListOf(), emptyList(), null)
+        val corpusText = q.corpusText("ai laurie lantar")
         val repo = InMemoryGraphRepository()
         val laurie = q.word("laurie")
         corpusText.associateWord(1, laurie)
@@ -36,7 +36,7 @@ class CorpusTextTest : QBaseTest() {
 
     @Test
     fun testNormalizedText() {
-        val corpusText = CorpusText(-1, "ai lau[rie] lantar", null, q, mutableListOf(), emptyList(), null)
+        val corpusText = q.corpusText("ai lau[rie] lantar")
 
         val repo = InMemoryGraphRepository()
         val laurie = q.word("laurie")
@@ -47,7 +47,7 @@ class CorpusTextTest : QBaseTest() {
 
     @Test
     fun testNormalizedTextDecapitalized() {
-        val corpusText = CorpusText(-1, "Ai Laurie. Lantar", null, q, mutableListOf(), emptyList(), null)
+        val corpusText = q.corpusText("Ai Laurie. Lantar")
 
         val repo = InMemoryGraphRepository()
         val lines = corpusText.mapToLines(repo)
@@ -58,7 +58,7 @@ class CorpusTextTest : QBaseTest() {
 
     @Test
     fun testNormalizedTextRemoveQuotes() {
-        val corpusText = CorpusText(-1, "quet \"Ai laurie lantar,\"", null, q, mutableListOf(), emptyList(), null)
+        val corpusText = q.corpusText("quet \"Ai laurie lantar,\"")
 
         val repo = InMemoryGraphRepository()
         val lines = corpusText.mapToLines(repo)
@@ -68,7 +68,7 @@ class CorpusTextTest : QBaseTest() {
 
     @Test
     fun testNormalizedTextRemoveApostrophes() {
-        val corpusText = CorpusText(-1, "quet 'Ai laurie lantar,'", null, q, mutableListOf(), emptyList(), null)
+        val corpusText = q.corpusText("quet 'Ai laurie lantar,'")
 
         val repo = InMemoryGraphRepository()
         val lines = corpusText.mapToLines(repo)
@@ -78,7 +78,7 @@ class CorpusTextTest : QBaseTest() {
 
     @Test
     fun testNormalizedTextRemoveQuotesAssociate() {
-        val corpusText = CorpusText(-1, "quet \"Ai laurie lantar,\"", null, q, mutableListOf(), emptyList(), null)
+        val corpusText = q.corpusText("quet \"Ai laurie lantar,\"")
 
         val repo = repoWithQ()
         val ai = repo.addWord("ai")
@@ -90,8 +90,8 @@ class CorpusTextTest : QBaseTest() {
     }
 
     @Test
-    fun testNormalizedTextRemoveParenthees() {
-        val corpusText = CorpusText(-1, "Perhael (i sennui Panthael)", null, q, mutableListOf(), emptyList(), null)
+    fun testNormalizedTextRemoveParentheses() {
+        val corpusText = q.corpusText("Perhael (i sennui Panthael)")
 
         val repo = repoWithQ()
         val stressRule = repo.rule("- stress is on first syllable")
@@ -129,3 +129,5 @@ class CorpusTextTest : QBaseTest() {
         assertEquals(1, attestations.size)
     }
 }
+
+fun Language.corpusText(text: String) = CorpusText(-1, text, null, this)
