@@ -389,7 +389,7 @@ class WordController {
     fun lookup(repo: GraphRepository, @PathVariable id: Int): LookupResult {
         val word = repo.resolveWord(id)
         val dictionary = Wiktionary()
-        val status = augmentWordWithDictionary(dictionary, word)
+        val status = augmentWordWithDictionary(repo, dictionary, word)
         return LookupResult(status)
     }
 

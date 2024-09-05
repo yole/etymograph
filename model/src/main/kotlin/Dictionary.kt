@@ -1,7 +1,7 @@
 package ru.yole.etymograph
 
 interface Dictionary {
-    fun lookup(language: Language, word: String): List<DictionaryWord>
+    fun lookup(repo: GraphRepository, language: Language, word: String): List<DictionaryWord>
 }
 
 data class DictionaryRelatedWord(val relationship: String, val relatedWord: DictionaryWord)
@@ -19,15 +19,15 @@ data class DictionaryWord(
 
 fun augmentWithDictionary(repo: GraphRepository, language: Language, dictionary: Dictionary) {
     for (word in repo.dictionaryWords(language)) {
-        val result = augmentWordWithDictionary(dictionary, word)
+        val result = augmentWordWithDictionary(repo, dictionary, word)
         if (result != null) {
             println(result)
         }
     }
 }
 
-fun augmentWordWithDictionary(dictionary: Dictionary, word: Word): String? {
-    val lookupResult = dictionary.lookup(word.language, word.text)
+fun augmentWordWithDictionary(repo: GraphRepository, dictionary: Dictionary, word: Word): String? {
+    val lookupResult = dictionary.lookup(repo, word.language, word.text)
     if (lookupResult.isEmpty()) {
         return "Found no matching word for ${word.text}"
     } else if (lookupResult.size > 1) {

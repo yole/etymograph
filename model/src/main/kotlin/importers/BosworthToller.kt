@@ -277,7 +277,7 @@ class BosworthToller(dataPath: String) : Dictionary {
             .replace("ð", "þ")
             .replace("-", "")
 
-    override fun lookup(language: Language, word: String): List<DictionaryWord> {
+    override fun lookup(repo: GraphRepository, language: Language, word: String): List<DictionaryWord> {
         val lookupText = word
             .replace("ġ", "g")
             .replace("ċ", "c")

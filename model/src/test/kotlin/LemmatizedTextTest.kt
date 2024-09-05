@@ -5,7 +5,7 @@ import org.junit.Before
 import org.junit.Test
 
 class TestDictionary : Dictionary {
-    override fun lookup(language: Language, word: String): List<DictionaryWord> {
+    override fun lookup(repo: GraphRepository, language: Language, word: String): List<DictionaryWord> {
         return emptyList()
     }
 }

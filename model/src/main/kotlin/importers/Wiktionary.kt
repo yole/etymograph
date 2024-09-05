@@ -144,7 +144,7 @@ open class Wiktionary : Dictionary {
         return keyValue[0].trim() to keyValue[1].split(',').map { it.trim() }
     }
 
-    override fun lookup(language: Language, word: String): List<DictionaryWord> {
+    override fun lookup(repo: GraphRepository, language: Language, word: String): List<DictionaryWord> {
         val normalizedWord = word.removeDiacritics()
         val source = loadWiktionaryPageSource(language, normalizedWord) ?: return emptyList()
         val wiktionaryPage = WiktionaryPage(source)
@@ -194,7 +194,7 @@ fun main() {
     val ieRepo = JsonGraphRepository.fromJson(Path.of("data/ie"))
     val oe = ieRepo.languageByShortName("OE")!!
     val wiktionary = Wiktionary()
-    val result = wiktionary.lookup(oe, "wer")
+    val result = wiktionary.lookup(ieRepo, oe, "wer")
     for (word in result) {
         println(word.fullGloss)
         println(word.pos)
