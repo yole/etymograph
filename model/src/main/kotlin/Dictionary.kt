@@ -4,9 +4,10 @@ interface Dictionary {
     fun lookup(repo: GraphRepository, language: Language, word: String): List<DictionaryWord>
 }
 
-data class DictionaryRelatedWord(val relationship: String, val relatedWord: DictionaryWord)
+data class DictionaryRelatedWord(val linkType: LinkType, val relatedWord: DictionaryWord)
 
 data class DictionaryWord(
+    val text: String,
     val language: Language,
     val gloss: String?,
     val fullGloss: String?,
@@ -33,13 +34,13 @@ fun augmentWordWithDictionary(repo: GraphRepository, dictionary: Dictionary, wor
     } else if (lookupResult.size > 1) {
         val bestMatch = tryFindBestMatch(word, lookupResult)
         if (bestMatch != null) {
-            augmentWord(word, bestMatch)
+            augmentWord(repo, word, bestMatch)
         } else {
             return "Found multiple matching words for ${word.text}: " +
                     lookupResult.joinToString(", ") { it.source }
         }
     } else {
-        augmentWord(word, lookupResult.single())
+        augmentWord(repo, word, lookupResult.single())
     }
     return null
 }
@@ -78,7 +79,18 @@ private fun wordSet(gloss: String): Set<String> =
         .filter { it != "to" && it != "the" && it != "a" }
         .toSet()
 
-fun augmentWord(word: Word, dictionaryWord: DictionaryWord) {
+fun findOrCreateWordFromDictionary(
+    repo: GraphRepository,
+    text: String,
+    word: DictionaryWord,
+): Word {
+    return repo.findOrAddWord(
+        text, word.language, word.gloss, word.fullGloss, word.pos, word.classes, word.reconstructed,
+        listOf(SourceRef(null, word.source))
+    )
+}
+
+fun augmentWord(repo: GraphRepository, word: Word, dictionaryWord: DictionaryWord) {
     if (word.pos == null && dictionaryWord.pos != null) {
         word.pos = dictionaryWord.pos
     }
@@ -98,5 +110,13 @@ fun augmentWord(word: Word, dictionaryWord: DictionaryWord) {
 
     if (word.source.none { it.refText == dictionaryWord.source }) {
         word.source += SourceRef(null, dictionaryWord.source)
+    }
+
+    for (relatedDictionaryWord in dictionaryWord.relatedWords) {
+        val relatedWord = findOrCreateWordFromDictionary(repo, relatedDictionaryWord.relatedWord.text,
+            relatedDictionaryWord.relatedWord)
+        if (repo.findLink(word, relatedWord, relatedDictionaryWord.linkType) == null) {
+            repo.addLink(word, relatedWord, relatedDictionaryWord.linkType, emptyList(), emptyList(), null)
+        }
     }
 }

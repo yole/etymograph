@@ -1,0 +1,21 @@
+{{reconstructed}}
+==Proto-Germanic==
+
+===Etymology===
+From {{suffix|gem-pro|*bregdaną|t1=to tug, move, swing|*ilaz|id2=agent noun}}.
+
+===Pronunciation===
+* {{IPA|gem-pro|/ˈbriɣ.ði.lɑz/}}
+
+===Noun===
+{{gem-noun|m}}
+
+# [[strap]], [[rein]]
+# [[bridle]]
+
+====Inflection====
+{{gem-decl-noun}}
+
+====Descendants====
+* {{desctree|gmw-pro|*brigdil}}
+* {{desc|got|𐌱𐍂𐌹𐌲𐌳𐌹𐌻}}

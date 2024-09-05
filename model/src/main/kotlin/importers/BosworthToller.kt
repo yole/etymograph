@@ -297,8 +297,9 @@ class BosworthToller(dataPath: String) : Dictionary {
         if (genderClass != null) {
             classes.add(genderClass)
         }
+        val form = entry.form.replace("-", "")
         val gloss = entry.def.first().replaceFirstChar { it.lowercase(Locale.getDefault()) }
-        return DictionaryWord(language, extractShortGloss(gloss), fullGloss = gloss, pos = pos, classes = classes,
+        return DictionaryWord(form, language, extractShortGloss(gloss), fullGloss = gloss, pos = pos, classes = classes,
             source = "https://bosworthtoller.com/${entry.id}")
     }
 

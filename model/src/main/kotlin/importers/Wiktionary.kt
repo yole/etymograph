@@ -51,7 +51,7 @@ abstract class WiktionarySection {
     }
 
     companion object {
-        val templateRegex = Regex("\\{\\{(.+)}}")
+        val templateRegex = Regex("\\{\\{(.+?)}}")
     }
 }
 
@@ -146,17 +146,31 @@ open class Wiktionary : Dictionary {
 
     override fun lookup(repo: GraphRepository, language: Language, word: String): List<DictionaryWord> {
         val normalizedWord = word.removeDiacritics()
-        val source = loadWiktionaryPageSource(language, normalizedWord) ?: return emptyList()
+        val source = loadWiktionaryPageSource(language, word)
+            ?: loadWiktionaryPageSource(language, normalizedWord)
+            ?: return emptyList()
         val wiktionaryPage = WiktionaryPage(source)
         if (!wiktionaryPage.parse(language.name, parseDictionarySettings(language.dictionarySettings))) {
             return emptyList()
         }
+
+        val inheritedWords = wiktionaryPage.etymologySection?.inheritedWords?.mapNotNull { lookupInheritedWord(repo, it) }
+
         return wiktionaryPage.posSections.map { section ->
-            DictionaryWord(language, section.senses.first(), section.senses.joinToString("; "),
+            DictionaryWord(word, language, section.senses.first(), section.senses.joinToString("; "),
                 pos = language.pos.find { it.name == section.pos }?.abbreviation,
                 classes = section.classes,
                 source = "https://en.wiktionary.org/wiki/${langPrefix(language)}$normalizedWord#${language.name.replace(' ', '_')}")
+                .apply {
+                    inheritedWords?.let { relatedWords.addAll(it) }
+                }
         }
+    }
+
+    private fun lookupInheritedWord(repo: GraphRepository, word: InheritedWordTemplate): DictionaryRelatedWord? {
+        val language = repo.allLanguages().find { "wiktionary-id: ${word.language}" in (it.dictionarySettings ?: "") } ?: return null
+        val lookupResult = lookup(repo, language, word.word.trimStart('*')).singleOrNull() ?: return null
+        return DictionaryRelatedWord(Link.Origin, lookupResult)
     }
 
     protected open fun loadWiktionaryPageSource(language: Language, normalizedWord: String): String? {
@@ -179,7 +193,7 @@ open class Wiktionary : Dictionary {
 
     private fun langPrefix(language: Language): String {
         val langPrefix = if (language.reconstructed)
-            "Reconstruction:${language.name}/"
+            "Reconstruction:${language.name.replace(' ', '_')}/"
         else
             ""
         return langPrefix

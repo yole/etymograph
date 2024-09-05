@@ -36,6 +36,8 @@ class WiktionaryParserTest {
 
         val word = wiktionary.lookup(repo, oe, "bridel").single()
         assertEquals("bridle", word.gloss)
-//        val origin = word.relatedWords.single()
+        val origin = word.relatedWords.single()
+        assertEquals("brigdilaz", origin.relatedWord.text)
+        assertEquals("strap, rein", origin.relatedWord.gloss)
     }
 }
