@@ -1,9 +1,17 @@
 package ru.yole.etymograph
 
 import org.junit.Assert.assertEquals
+import org.junit.Before
 import org.junit.Test
 
 class SegmentTest : QBaseTest() {
+    lateinit var repo: InMemoryGraphRepository
+
+    @Before
+    fun setup() {
+        repo = InMemoryGraphRepository()
+    }
+
     @Test
     fun segment() {
         val rule = parseRule(q, q, "- append 'llo'")
@@ -42,7 +50,6 @@ class SegmentTest : QBaseTest() {
 
     @Test
     fun restoreSegments() {
-        val repo = InMemoryGraphRepository()
         val hresta = repo.addWord("hresta")
         val hrestallo = repo.addWord("hrestallo", gloss = null)
         val rule = parseRule(q, q, "- append 'llo'", addedCategories = ".ABL")
@@ -55,7 +62,6 @@ class SegmentTest : QBaseTest() {
 
     @Test
     fun restoreSegmentsNoChange() {
-        val repo = InMemoryGraphRepository()
         val hresta2 = repo.addWord("hresta", gloss = null)
         val hresta = repo.addWord("hresta", gloss = "hresta")
         val rule = parseRule(q, q, "word ends with 'a':\n- no change", addedCategories = ".ABL")
@@ -66,7 +72,6 @@ class SegmentTest : QBaseTest() {
 
     @Test
     fun restoreSegmentsNoChangeNP() {
-        val repo = InMemoryGraphRepository()
         val hresta2 = repo.addWord("hresta", gloss = "hresta.ABL")
         val hresta = repo.addWord("hresta", gloss = "hresta", pos = "NP")
         val rule = parseRule(q, q, "word ends with 'a':\n- no change", addedCategories = ".ABL")
@@ -79,7 +84,6 @@ class SegmentTest : QBaseTest() {
 
     @Test
     fun restoreSegmentsNoChangeNoRule() {
-        val repo = InMemoryGraphRepository()
         val hresta2 = repo.addWord("hresta", gloss = "hresta.ABL")
         val hresta = repo.addWord("hresta", gloss = "hresta")
         val rule = parseRule(q, q, "word ends with 'i':\n- no change", addedCategories = ".ABL")
@@ -90,7 +94,6 @@ class SegmentTest : QBaseTest() {
 
     @Test
     fun restoreSegmentsEmptyEnding() {
-        val repo = InMemoryGraphRepository()
         val hresta = repo.addWord("hresta")
         val hrestallo = repo.addWord("hrestallo", gloss = null)
         val rule = parseRule(q, q, "word ends with 'llo':\n- change ending to ''", addedCategories = ".ABL")
@@ -101,19 +104,17 @@ class SegmentTest : QBaseTest() {
 
     @Test
     fun chainedSegments() {
-        val qNomPl = parseRule(q, q, """
+        repo.rule("""
             word ends with a vowel:
             - append 'r'
             otherwise:
             - append 'i'
-        """.trimIndent(), "q-nom-pl")
-        val repo = InMemoryGraphRepository()
-        repo.addRule(qNomPl)
+        """.trimIndent(), name = "q-nom-pl")
 
-        val qGenPl = parseRule(q, q, """
+        val qGenPl = repo.rule("""
             - apply rule 'q-nom-pl'
             - append 'on'
-            """.trimIndent(), repo = repo)
+            """.trimIndent())
         val result = qGenPl.apply(q.word("alda"), repo)
         assertEquals(1, result.segments!!.size)
         val segment = result.segments!![0]
@@ -123,18 +124,16 @@ class SegmentTest : QBaseTest() {
 
     @Test
     fun testChainTwoSegments() {
-        val repo = InMemoryGraphRepository()
-        val qPpl = parseRule(q, q, "- append 'li'", "q-ppl")
-        repo.addRule(qPpl)
-        val qAll = parseRule(q, q, "- append 'nna'", "q-all")
-        repo.addRule(qAll)
+        repo.rule("- append 'li'", name = "q-ppl")
+        repo.rule("- append 'nna'", name = "q-all")
 
-        val qAllPpl = parseRule(q, q, """
+        val qAllPpl = repo.rule("""
             - apply rule 'q-ppl'
             - apply rule 'q-all'
             - append 'r'
-        """.trimIndent(), repo = repo)
+        """.trimIndent())
         val result = qAllPpl.apply(q.word("falma"), repo)
+        assertEquals("falmalinnar", result.text)
         assertEquals(1, result.segments!!.size)
     }
 }
