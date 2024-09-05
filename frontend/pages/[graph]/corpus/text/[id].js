@@ -180,7 +180,8 @@ export default function CorpusText(params) {
                                           text: predefWord
                                       }}
                                       languageReadOnly={true}
-                                      textReadOnly={true}/>
+                                      textReadOnly={true}
+                                      cancelled={() => setWordFormVisible(false)}/>
                         </>
                     }
                 </div>
