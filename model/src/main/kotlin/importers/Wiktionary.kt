@@ -8,28 +8,17 @@ import java.net.http.HttpClient
 import java.net.http.HttpRequest
 import java.net.http.HttpResponse.BodyHandlers
 import java.nio.file.Path
-
-fun loadWiktionaryPage(title: String): String? {
-    val client = HttpClient.newHttpClient()
-    val request = HttpRequest.newBuilder()
-        .header("User-Agent", "https://github.com/yole/etymograph")
-        .uri(URI.create("https://en.wiktionary.org/w/rest.php/v1/page/$title"))
-        .build()
-    val response = client.send(request, BodyHandlers.ofString())
-    if (response.statusCode() == 404) return null
-    return response.body()
-}
+import kotlin.collections.component1
+import kotlin.collections.component2
+import kotlin.collections.iterator
 
 @Serializable
 data class WiktionaryPageData(val source: String)
 
 val wiktionaryPosNames = setOf("Noun", "Adjective", "Verb", "Article", "Determiner", "Pronoun", "Adverb", "Conjunction")
 
-class WiktionaryPosSection(val pos: String) {
-    val senses = mutableListOf<String>()
-    val classes = mutableListOf<String>()
-
-    fun parse(lines: LineBuffer, dictionarySettings: Map<String, List<String>>) {
+abstract class WiktionarySection {
+    fun parse(lines: LineBuffer) {
         var subsection: String? = null
         while (true) {
             val line = lines.peek() ?: return
@@ -38,31 +27,74 @@ class WiktionaryPosSection(val pos: String) {
             }
             lines.next()
 
-            for ((key, value) in dictionarySettings) {
-                if (key in line) {
-                    classes.addAll(value)
-                }
-            }
-
             if (line.startsWith("====")) {
                 subsection = line.trimStart('=').trimEnd('=')
             }
             else if (subsection == null) {
-                parseSenseLine(line)
+                parseSectionLine(line)
             }
         }
     }
 
-    private fun parseSenseLine(line: String) {
-        if (line.startsWith("# ")) {
-            senses.add(line.removePrefix("# ").replace("[[", "").replace("]]", ""))
+    protected abstract fun parseSectionLine(line: String)
+
+    protected fun filterTemplates(s: String): String {
+        return s.replace(templateRegex) { mr ->
+            val templateData = mr.groupValues[1].split('|')
+            processTemplate(templateData[0].trim(), templateData.drop(1).map { it.trim() })
         }
+    }
+
+    protected open fun processTemplate(name: String, parameters: List<String>): String {
+        return ""
+    }
+
+    companion object {
+        val templateRegex = Regex("\\{\\{(.+)}}")
+    }
+}
+
+class WiktionaryPosSection(
+    val pos: String,
+    private val dictionarySettings: Map<String, List<String>>
+): WiktionarySection() {
+    val senses = mutableListOf<String>()
+    val classes = mutableListOf<String>()
+
+    override fun parseSectionLine(line: String) {
+        for ((key, value) in dictionarySettings) {
+            if (key in line) {
+                classes.addAll(value)
+            }
+        }
+
+        if (line.startsWith("# ")) {
+            senses.add(filterTemplates(line.removePrefix("# ").replace("[[", "").replace("]]", "")).trim())
+        }
+    }
+}
+
+data class InheritedWordTemplate(val language: String, val word: String)
+
+class WiktionaryEtymologySection : WiktionarySection() {
+    val inheritedWords = mutableListOf<InheritedWordTemplate>()
+
+    override fun parseSectionLine(line: String) {
+        filterTemplates(line)
+    }
+
+    override fun processTemplate(name: String, parameters: List<String>): String {
+        if (name == "inh") {
+            inheritedWords.add(InheritedWordTemplate(parameters[1], parameters[2]))
+        }
+        return ""
     }
 }
 
 class WiktionaryPage(source: String) {
     val lines = LineBuffer(source)
     val posSections = mutableListOf<WiktionaryPosSection>()
+    var etymologySection: WiktionaryEtymologySection? = null
 
     private fun seekToLanguage(language: String): Boolean {
         while (true) {
@@ -81,7 +113,10 @@ class WiktionaryPage(source: String) {
             if (line.startsWith("===")) {
                 currentSection = line.trimStart('=').trimEnd('=')
                 if (currentSection in wiktionaryPosNames) {
-                    posSections.add(WiktionaryPosSection(currentSection).apply { parse(lines, dictionarySettings) })
+                    posSections.add(WiktionaryPosSection(currentSection, dictionarySettings).apply { parse(lines) })
+                }
+                else if (currentSection == "Etymology") {
+                    etymologySection = WiktionaryEtymologySection().apply { parse(lines) }
                 }
             }
             else if (line.startsWith("==")) {
@@ -92,7 +127,7 @@ class WiktionaryPage(source: String) {
     }
 }
 
-class Wiktionary : Dictionary {
+open class Wiktionary : Dictionary {
     private fun parseDictionarySettings(settings: String?): Map<String, List<String>> {
         if (settings == null) return emptyMap()
         return settings
@@ -110,18 +145,34 @@ class Wiktionary : Dictionary {
 
     override fun lookup(language: Language, word: String): List<DictionaryWord> {
         val normalizedWord = word.removeDiacritics()
-        val pageJson = loadWiktionaryPage(normalizedWord) ?: return emptyList()
-        val pageData = json.decodeFromString<WiktionaryPageData>(pageJson)
-        val wiktionaryPage = WiktionaryPage(pageData.source)
+        val source = loadWiktionaryPageSource(normalizedWord) ?: return emptyList()
+        val wiktionaryPage = WiktionaryPage(source)
         if (!wiktionaryPage.parse(language.name, parseDictionarySettings(language.dictionarySettings))) {
             return emptyList()
         }
         return wiktionaryPage.posSections.map { section ->
-            DictionaryWord(section.senses.first(), section.senses.joinToString("; "),
+            DictionaryWord(language, section.senses.first(), section.senses.joinToString("; "),
                 pos = language.pos.find { it.name == section.pos }?.abbreviation,
                 classes = section.classes,
                 source = "https://en.wiktionary.org/wiki/$normalizedWord#${language.name.replace(' ', '_')}")
         }
+    }
+
+    protected open fun loadWiktionaryPageSource(normalizedWord: String): String? {
+        val pageJson = loadWiktionaryPage(normalizedWord) ?: return null
+        val pageData = json.decodeFromString<WiktionaryPageData>(pageJson)
+        return pageData.source
+    }
+
+    protected open fun loadWiktionaryPage(title: String): String? {
+        val client = HttpClient.newHttpClient()
+        val request = HttpRequest.newBuilder()
+            .header("User-Agent", "https://github.com/yole/etymograph")
+            .uri(URI.create("https://en.wiktionary.org/w/rest.php/v1/page/$title"))
+            .build()
+        val response = client.send(request, BodyHandlers.ofString())
+        if (response.statusCode() == 404) return null
+        return response.body()
     }
 
     companion object {

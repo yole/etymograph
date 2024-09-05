@@ -4,13 +4,17 @@ interface Dictionary {
     fun lookup(language: Language, word: String): List<DictionaryWord>
 }
 
+data class DictionaryRelatedWord(val relationship: String, val relatedWord: DictionaryWord)
+
 data class DictionaryWord(
+    val language: Language,
     val gloss: String?,
     val fullGloss: String?,
     val pos: String?,
     val classes: List<String>,
     val source: String,
-    var reconstructed: Boolean = false
+    var reconstructed: Boolean = false,
+    val relatedWords: MutableList<DictionaryRelatedWord> = mutableListOf()
 )
 
 fun augmentWithDictionary(repo: GraphRepository, language: Language, dictionary: Dictionary) {

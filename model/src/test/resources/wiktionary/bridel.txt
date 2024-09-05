@@ -1,0 +1,21 @@
+==Old English==
+
+===Alternative forms===
+* {{alter|ang|briġdel}}
+
+===Etymology===
+From {{inh|ang|gem-pro|*brigdilaz}}.
+
+===Pronunciation===
+* {{ang-IPA|brīdel}}
+
+===Noun===
+{{ang-noun|m|head=brīdel}}
+
+# {{topics|ang|Horses}} [[bridle]]
+
+====Declension====
+{{ang-decl-noun-a-m|brīdel}}
+
+====Descendants====
+* {{desctree|enm|bridel}}
