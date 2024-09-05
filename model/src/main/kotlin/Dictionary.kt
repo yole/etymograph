@@ -82,13 +82,15 @@ fun augmentWord(word: Word, dictionaryWord: DictionaryWord) {
     if (newClasses.isNotEmpty()) {
         word.classes += newClasses
     }
+    if (word.gloss == null) {
+        word.gloss = dictionaryWord.gloss
+    }
     if (word.fullGloss == null) {
         val fullGloss = dictionaryWord.fullGloss
         if (fullGloss != null && fullGloss.length <= 200) {
             word.fullGloss = fullGloss
         }
     }
-
 
     if (word.source.none { it.refText == dictionaryWord.source }) {
         word.source += SourceRef(null, dictionaryWord.source)
