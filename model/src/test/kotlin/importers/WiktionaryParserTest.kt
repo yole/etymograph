@@ -6,7 +6,7 @@ import org.junit.Test
 import ru.yole.etymograph.Language
 
 class TestWiktionary : Wiktionary() {
-    override fun loadWiktionaryPageSource(title: String): String? {
+    override fun loadWiktionaryPageSource(language: Language, title: String): String? {
         WiktionaryParserTest::class.java.getResourceAsStream("/wiktionary/$title.txt").use {
             return it?.reader()?.readText()
         }

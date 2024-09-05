@@ -4,6 +4,7 @@ import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 import ru.yole.etymograph.*
 import java.net.URI
+import java.net.URLEncoder
 import java.net.http.HttpClient
 import java.net.http.HttpRequest
 import java.net.http.HttpResponse.BodyHandlers
@@ -145,7 +146,7 @@ open class Wiktionary : Dictionary {
 
     override fun lookup(language: Language, word: String): List<DictionaryWord> {
         val normalizedWord = word.removeDiacritics()
-        val source = loadWiktionaryPageSource(normalizedWord) ?: return emptyList()
+        val source = loadWiktionaryPageSource(language, normalizedWord) ?: return emptyList()
         val wiktionaryPage = WiktionaryPage(source)
         if (!wiktionaryPage.parse(language.name, parseDictionarySettings(language.dictionarySettings))) {
             return emptyList()
@@ -154,25 +155,34 @@ open class Wiktionary : Dictionary {
             DictionaryWord(language, section.senses.first(), section.senses.joinToString("; "),
                 pos = language.pos.find { it.name == section.pos }?.abbreviation,
                 classes = section.classes,
-                source = "https://en.wiktionary.org/wiki/$normalizedWord#${language.name.replace(' ', '_')}")
+                source = "https://en.wiktionary.org/wiki/${langPrefix(language)}$normalizedWord#${language.name.replace(' ', '_')}")
         }
     }
 
-    protected open fun loadWiktionaryPageSource(normalizedWord: String): String? {
-        val pageJson = loadWiktionaryPage(normalizedWord) ?: return null
+    protected open fun loadWiktionaryPageSource(language: Language, normalizedWord: String): String? {
+        val pageJson = loadWiktionaryPage(language, normalizedWord) ?: return null
         val pageData = json.decodeFromString<WiktionaryPageData>(pageJson)
         return pageData.source
     }
 
-    protected open fun loadWiktionaryPage(title: String): String? {
+    protected open fun loadWiktionaryPage(language: Language, title: String): String? {
+        val langPrefix = URLEncoder.encode(langPrefix(language), Charsets.UTF_8)
         val client = HttpClient.newHttpClient()
         val request = HttpRequest.newBuilder()
             .header("User-Agent", "https://github.com/yole/etymograph")
-            .uri(URI.create("https://en.wiktionary.org/w/rest.php/v1/page/$title"))
+            .uri(URI.create("https://en.wiktionary.org/w/rest.php/v1/page/$langPrefix$title"))
             .build()
         val response = client.send(request, BodyHandlers.ofString())
         if (response.statusCode() == 404) return null
         return response.body()
+    }
+
+    private fun langPrefix(language: Language): String {
+        val langPrefix = if (language.reconstructed)
+            "Reconstruction:${language.name}/"
+        else
+            ""
+        return langPrefix
     }
 
     companion object {
