@@ -28,6 +28,7 @@ class Compound(
     id: Int,
     val compoundWord: Word,
     val components: MutableList<Word>,
+    var headIndex: Int? = null,
     source: List<SourceRef>,
     notes: String?
 ) : LangEntity(id, source, notes)

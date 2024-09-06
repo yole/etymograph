@@ -169,7 +169,7 @@ class JsonGraphRepositoryTest : QBaseTest() {
     }
 
     @Test
-    fun serializeExpicitStress() {
+    fun serializeExplicitStress() {
         val word = repo.findOrAddWord("ea", q, null)
         word.stressedPhonemeIndex = 1
         word.explicitStress = true
@@ -177,5 +177,19 @@ class JsonGraphRepositoryTest : QBaseTest() {
         val word2 = repo2.wordsByText(repo2.languageByShortName("Q")!!, "ea").single()
         assertEquals(1, word2.stressedPhonemeIndex)
         assertEquals(true, word2.explicitStress)
+    }
+
+    @Test
+    fun serializeCompound() {
+        val baseWord = repo.addWord("mann")
+        val prefix = repo.addWord("sæ")
+        val compoundWord = repo.addWord("sæmann")
+        val compound = repo.createCompound(compoundWord, prefix, emptyList(), null)
+        compound.components.add(baseWord)
+        compound.headIndex = 1
+        val repo2 = repo.roundtrip()
+        val compoundWord2 = repo2.wordsByText(repo2.languageByShortName("Q")!!, "sæmann").single()
+        val compound2 = repo2.findComponentsByCompound(compoundWord2).single()
+        assertEquals(1, compound2.headIndex)
     }
 }

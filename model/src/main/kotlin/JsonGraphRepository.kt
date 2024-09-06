@@ -255,6 +255,7 @@ data class CompoundData(
     val id: Int,
     val compoundId: Int,
     val componentIds: List<Int>,
+    val headIndex: Int? = null,
     val sourceRefs: List<SourceRefData>? = null,
     val notes: String? = null
 )
@@ -462,7 +463,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             val compoundData = allLangEntities.filterIsInstance<Compound>()
                 .filter { it.compoundWord.language == language }
                 .map { c ->
-                    CompoundData(c.id, c.compoundWord.id, c.components.map { it.id }, c.source.sourceToSerializedFormat(), c.notes)
+                    CompoundData(c.id, c.compoundWord.id, c.components.map { it.id }, c.headIndex, c.source.sourceToSerializedFormat(), c.notes)
                 }
             if (compoundData.isNotEmpty()) {
                 consumer("${language.shortName}/compounds.json", theJson.encodeToString(compoundData))
@@ -700,6 +701,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                     compoundData.id,
                     compoundWord,
                     componentWords,
+                    compoundData.headIndex,
                     loadSource(compoundData.sourceRefs),
                     compoundData.notes
                 )

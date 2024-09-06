@@ -219,6 +219,23 @@ class RuleTest : QBaseTest() {
     }
 
     @Test
+    fun wordIsInheritFromCompound() {
+        val repo = InMemoryGraphRepository()
+        val oe = Language("Old English", "OE").also { repo.addLanguage(it) }
+        oe.wordClasses = mutableListOf(WordCategory("stem class", listOf("N"),
+            listOf(WordCategoryValue("o-stem", "o-stem"), WordCategoryValue("strong", "strong"))))
+        val rule = repo.rule("- mark word as strong\nword is o-stem:\n- append 'es'", oe)
+        val baseWord = repo.addWord("mann", language = oe, classes = listOf("o-stem"))
+        val prefix = repo.addWord("sæ", language = oe)
+        val compoundWord = repo.addWord("sæmann", language = oe)
+        val compound = repo.createCompound(compoundWord, prefix, emptyList(), null)
+        compound.components.add(baseWord)
+        compound.headIndex = 1
+        val result = rule.apply(compoundWord, repo)
+        assertEquals("sæmannes", result.text)
+    }
+
+    @Test
     fun postInstructions() {
         val text = """
             word ends with 'e':

@@ -130,6 +130,12 @@ class LeafRuleCondition(
         if (variationOf != null) {
             classes += variationOf.classes
         }
+        else {
+            val compound = graph.findComponentsByCompound(word).singleOrNull()
+            compound?.headIndex?.let {
+                classes += compound.components[it].classes
+            }
+        }
 
         return (parameter in classes).negateIfNeeded() || classes == listOf("*")
     }
