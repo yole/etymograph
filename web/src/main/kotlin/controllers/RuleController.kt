@@ -409,7 +409,8 @@ class RuleController {
         if (params.word.isBlank()) {
             badRequest("Cannot trace rule for empty word")
         }
-        val word = Word(-1, params.word, rule.fromLanguage)
+        val existingWord = repo.wordsByText(rule.fromLanguage, params.word).singleOrNull()
+        val word = existingWord ?: Word(-1, params.word, rule.fromLanguage)
         val trace = RuleTrace()
         val result = rule.apply(word, repo, trace)
         return RuleTraceResult(trace.log(), result.text)
