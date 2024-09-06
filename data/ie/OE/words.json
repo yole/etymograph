@@ -469,6 +469,9 @@
         "sourceRefs": [
             {
                 "refText": "https://bosworthtoller.com/4344"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/bilewit#Old_English"
             }
         ]
     },
@@ -1239,8 +1242,7 @@
     },
     {
         "id": 333,
-        "text": "bearnum",
-        "gloss": "child.DAT.PL"
+        "text": "bearnum"
     },
     {
         "id": 334,
@@ -1249,11 +1251,15 @@
         "fullGloss": "A BEARN, child, son, issue, offspring, progeny",
         "pos": "N",
         "classes": [
-            "neut"
+            "neut",
+            "a-stem"
         ],
         "sourceRefs": [
             {
                 "refText": "https://bosworthtoller.com/3167"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/bearn#Old_English"
             }
         ]
     },
@@ -1445,7 +1451,18 @@
     {
         "id": 423,
         "text": "wer",
-        "gloss": "man"
+        "gloss": "man",
+        "fullGloss": "man; male; husband; hero, warrior; civil",
+        "pos": "N",
+        "classes": [
+            "masc",
+            "a-stem"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/wer#Old_English"
+            }
+        ]
     },
     {
         "id": 424,
@@ -1925,13 +1942,18 @@
         "id": 1203,
         "text": "dǣl",
         "gloss": "dale",
+        "fullGloss": "valley, dale",
         "pos": "N",
         "classes": [
-            "neut"
+            "neut",
+            "a-stem"
         ],
         "sourceRefs": [
             {
                 "refText": "https://bosworthtoller.com/7369"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/dæl#Old_English"
             }
         ]
     },
@@ -3025,7 +3047,18 @@
     {
         "id": 2236,
         "text": "rīċe",
-        "gloss": "kingdom"
+        "gloss": "kingdom",
+        "fullGloss": "kingdom, empire; reign; authority, dominion",
+        "pos": "N",
+        "classes": [
+            "neut",
+            "a-stem"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/rice#Old_English"
+            }
+        ]
     },
     {
         "id": 2238,
@@ -4774,10 +4807,19 @@
         "id": 2530,
         "text": "hierde",
         "gloss": "herdsman",
+        "fullGloss": "herdsman; guardian, keeper, protector",
+        "pos": "N",
+        "classes": [
+            "masc",
+            "a-stem"
+        ],
         "sourceRefs": [
             {
                 "pubId": 5,
                 "refText": "46"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/hierde#Old_English"
             }
         ]
     },
@@ -7475,6 +7517,10 @@
         "gloss": "shoe",
         "fullGloss": "A shoe",
         "pos": "N",
+        "classes": [
+            "masc",
+            "a-stem"
+        ],
         "sourceRefs": [
             {
                 "pubId": 5,
@@ -7482,6 +7528,9 @@
             },
             {
                 "refText": "https://bosworthtoller.com/26951"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/scoh#Old_English"
             }
         ]
     },
@@ -9624,7 +9673,12 @@
         "id": 3226,
         "text": "ġetimbre",
         "gloss": "building",
-        "pos": "N"
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/getimbre#Old_English"
+            }
+        ]
     },
     {
         "id": 3227,
@@ -10589,7 +10643,8 @@
         "fullGloss": "plant, herb",
         "pos": "N",
         "classes": [
-            "fem"
+            "fem",
+            "i-stem"
         ],
         "sourceRefs": [
             {
@@ -11043,7 +11098,17 @@
         "id": 3446,
         "text": "lēasung",
         "gloss": "deceit",
-        "pos": "N"
+        "fullGloss": "release on giving an equivalent; compensation; lying, vain or frivolous speech, fiction; a false witness or testimony; falsehood, hypocrisy; deception, deceitfulness, trickery",
+        "pos": "N",
+        "classes": [
+            "fem",
+            "o-stem"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/leasung#Old_English"
+            }
+        ]
     },
     {
         "id": 3447,
@@ -11084,6 +11149,7 @@
         "id": 3455,
         "text": "wuht",
         "gloss": "creature",
+        "fullGloss": "",
         "pos": "N",
         "sourceRefs": [
             {
@@ -11102,7 +11168,8 @@
         "fullGloss": "A going, setting out, journey, course, way, approach",
         "pos": "N",
         "classes": [
-            "fem"
+            "fem",
+            "o-stem"
         ],
         "sourceRefs": [
             {
@@ -11875,11 +11942,15 @@
         "fullGloss": "going, journey, step, way, path, passage, course (of time)",
         "pos": "N",
         "classes": [
-            "masc"
+            "masc",
+            "a-stem"
         ],
         "sourceRefs": [
             {
                 "refText": "https://bosworthtoller.com/13268"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/gang#Old_English"
             }
         ]
     },
@@ -12177,10 +12248,16 @@
         "id": 3679,
         "text": "fell",
         "gloss": "skin",
+        "fullGloss": "fell; skin",
         "pos": "N",
         "classes": [
             "neut",
             "a-stem"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/fell#Old_English"
+            }
         ]
     },
     {
@@ -12261,7 +12338,6 @@
     {
         "id": 3694,
         "text": "brīdelþwang",
-        "gloss": "bridle rein",
         "pos": "N"
     },
     {
@@ -12397,7 +12473,7 @@
         "id": 3717,
         "text": "mann",
         "gloss": "person",
-        "fullGloss": "person; man meaning mankind; ''(rare or non-literary)'' man meaning adult male; the rune {{lang|und|sc=Runr|ᛗ}}, representing the sound {{IPAchar|/m/}}",
+        "fullGloss": "person; man meaning mankind; ''(rare or non-literary)'' man meaning adult male; the rune ᛗ, representing the sound /m/",
         "pos": "N",
         "classes": [
             "masc"
@@ -12417,13 +12493,11 @@
     {
         "id": 3719,
         "text": "buter-ġeþwēor",
-        "gloss": "butter-mass",
         "pos": "N"
     },
     {
         "id": 3720,
         "text": "ċȳs-ġerunn",
-        "gloss": "cheese-curd",
         "pos": "N"
     },
     {
@@ -12634,17 +12708,9 @@
         "text": "byrig"
     },
     {
-        "id": 3751,
-        "text": "is"
-    },
-    {
         "id": 3752,
         "text": "Alexandria",
         "pos": "NP"
-    },
-    {
-        "id": 3753,
-        "text": "hine"
     },
     {
         "id": 3754,
@@ -13011,10 +13077,6 @@
         "gloss": "was not"
     },
     {
-        "id": 3797,
-        "text": "wæs"
-    },
-    {
         "id": 3798,
         "text": "gecigan",
         "gloss": "to call",
@@ -13084,10 +13146,6 @@
     {
         "id": 3808,
         "text": "dohtor"
-    },
-    {
-        "id": 3809,
-        "text": "we"
     },
     {
         "id": 3810,
@@ -13266,7 +13324,319 @@
         "sourceRefs": [
             {
                 "refText": "https://bosworthtoller.com/940"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/æðele#Old_English"
             }
         ]
+    },
+    {
+        "id": 4549,
+        "text": "bile-",
+        "gloss": "kind, appropriate",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/bile-#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 4551,
+        "text": "witt",
+        "fullGloss": "mind, understanding, sense, sanity",
+        "pos": "N",
+        "classes": [
+            "neut",
+            "a-stem"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/witt#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 4552,
+        "text": "sċẹō-wyrhta"
+    },
+    {
+        "id": 4553,
+        "text": "sċeō-wyrhta"
+    },
+    {
+        "id": 4554,
+        "text": "sċeō"
+    },
+    {
+        "id": 4556,
+        "text": "wyrhta",
+        "gloss": "worker",
+        "fullGloss": "worker; maker; doer",
+        "pos": "N",
+        "classes": [
+            "masc",
+            "n-stem"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/wyrhta#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 4557,
+        "text": "brīdel",
+        "gloss": "bridle",
+        "pos": "N",
+        "classes": [
+            "masc",
+            "a-stem"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/bridel#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 4559,
+        "text": "þwang",
+        "gloss": "thong",
+        "fullGloss": "thong (of leather etc.)",
+        "pos": "N",
+        "classes": [
+            "masc",
+            "a-stem"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/þwang#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 4563,
+        "text": "nytwyrþnesse"
+    },
+    {
+        "id": 4564,
+        "text": "nytwyrþnes",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/nytwyrþnes#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 4565,
+        "text": "nytwierþnes",
+        "gloss": "usefulness",
+        "fullGloss": "usefulness, utility",
+        "pos": "N",
+        "classes": [
+            "fem",
+            "o-stem"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/nytwierþnes#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 4566,
+        "text": "þusend",
+        "gloss": "thousand"
+    },
+    {
+        "id": 4568,
+        "text": "hīw"
+    },
+    {
+        "id": 4569,
+        "text": "hīew",
+        "gloss": "form, appearance, likeness",
+        "fullGloss": "form, appearance, likeness; form, character; shape; colour / color",
+        "pos": "N",
+        "classes": [
+            "neut",
+            "a-stem"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/hiew#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 4571,
+        "text": "leþerhosa"
+    },
+    {
+        "id": 4572,
+        "text": "leþerhose"
+    },
+    {
+        "id": 4573,
+        "text": "leþer",
+        "gloss": "leather",
+        "fullGloss": "leather",
+        "pos": "N",
+        "classes": [
+            "neut",
+            "a-stem"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/leþer#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 4575,
+        "text": "hose",
+        "gloss": "pants",
+        "fullGloss": "pant leg, stocking; pants, trousers; see",
+        "pos": "N",
+        "classes": [
+            "fem",
+            "n-stem"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/hose#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 4578,
+        "text": "flasċe",
+        "gloss": "flask, bottle",
+        "fullGloss": "flask, bottle",
+        "pos": "N",
+        "classes": [
+            "fem",
+            "n-stem"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/flasce#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 4581,
+        "text": "mod",
+        "gloss": "mind",
+        "fullGloss": "mind; heart, spirit; state of mind, mood; ''(in poetry and compounds)'' courage, pride, zeal, or anger; affection",
+        "pos": "N",
+        "classes": [
+            "neut",
+            "a-stem"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/mod#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 4583,
+        "text": "ġeþanc",
+        "gloss": "thought",
+        "fullGloss": "thought, mind; intention, purpose; design, what is thought-out; act of thinking; imagination; opinion",
+        "pos": "N",
+        "classes": [
+            "masc",
+            "a-stem"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/geþanc#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 4585,
+        "text": "monn"
+    },
+    {
+        "id": 4589,
+        "text": "ġeþwēor"
+    },
+    {
+        "id": 4590,
+        "text": "butere",
+        "gloss": "butter",
+        "fullGloss": "butter",
+        "pos": "N",
+        "classes": [
+            "fem",
+            "n-stem"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/butere#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 4593,
+        "text": "ġeþwēor",
+        "gloss": "curd",
+        "pos": "N"
+    },
+    {
+        "id": 4597,
+        "text": "ġerunn",
+        "gloss": "curd",
+        "pos": "N"
+    },
+    {
+        "id": 4598,
+        "text": "brūcaþ"
+    },
+    {
+        "id": 4599,
+        "text": "wyrta"
+    },
+    {
+        "id": 4600,
+        "text": "ēowra"
+    },
+    {
+        "id": 4601,
+        "text": "ēower",
+        "gloss": "your",
+        "pos": "PRON"
+    },
+    {
+        "id": 4602,
+        "text": "swæcce"
+    },
+    {
+        "id": 4603,
+        "text": "swæcc",
+        "gloss": "taste",
+        "fullGloss": "taste; smell",
+        "pos": "N",
+        "classes": [
+            "masc",
+            "a-stem"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/swæcc#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 4605,
+        "text": "mettum"
+    },
+    {
+        "id": 4607,
+        "text": "sċẹōs"
     }
 ]

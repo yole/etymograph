@@ -562,6 +562,10 @@
         {
             "name": "Pronoun",
             "abbreviation": "PRON"
+        },
+        {
+            "name": "Preverb",
+            "abbreviation": "PV"
         }
     ],
     "grammaticalCategories": [
@@ -870,5 +874,5 @@
             ]
         }
     ],
-    "dictionarySettings": "ang-decl-noun-a-m: masc, a-stem\nang-decl-noun-a-n: neut, a-stem\nang-decl-noun-o-f: fem, o-stem\nang-decl-noun-i-f: fem, i-stem"
+    "dictionarySettings": "ang-decl-noun-a-m: masc, a-stem\nang-decl-noun-a-n: neut, a-stem\nang-decl-noun-ja-m: masc, a-stem\nang-decl-noun-ja-n: neut, a-stem\nang-decl-noun-o-f: fem, o-stem\nang-decl-noun-i-f: fem, i-stem\nang-decl-noun-n-m: masc, n-stem\nang-decl-noun-n-f: fem, n-stem"
 }

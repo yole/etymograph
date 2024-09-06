@@ -10,6 +10,63 @@
                     {
                         "type": "Append",
                         "args": [
+                            "'s'"
+                        ]
+                    },
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "2307"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "leaf",
+                                    "cond": "ClassMatches",
+                                    "characters": "masc"
+                                },
+                                {
+                                    "type": "leaf",
+                                    "cond": "ClassMatches",
+                                    "characters": "neut"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "leaf",
+                                    "cond": "ClassMatches",
+                                    "characters": "a-stem"
+                                },
+                                {
+                                    "type": "leaf",
+                                    "cond": "ClassMatches",
+                                    "characters": "s-stem"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "e"
+                        }
+                    ]
+                },
+                "comment": "ja-stem"
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "Append",
+                        "args": [
                             "'es'"
                         ]
                     },
@@ -452,6 +509,55 @@
                         ]
                     },
                     {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "as"
+                        ]
+                    },
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "2307"
+                        ]
+                    },
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1188"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "masc"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "a-stem"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "e"
+                        }
+                    ]
+                },
+                "comment": "ja-stem"
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "3534"
+                        ]
+                    },
+                    {
                         "type": "Append",
                         "args": [
                             "'as'"
@@ -715,9 +821,9 @@
                         ]
                     },
                     {
-                        "type": "Append",
+                        "type": "ChangeEnding",
                         "args": [
-                            "'a'"
+                            "a"
                         ]
                     },
                     {
@@ -737,14 +843,29 @@
                     "type": "and",
                     "members": [
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "masc"
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "leaf",
+                                    "cond": "ClassMatches",
+                                    "characters": "masc"
+                                },
+                                {
+                                    "type": "leaf",
+                                    "cond": "ClassMatches",
+                                    "characters": "neut"
+                                }
+                            ]
                         },
                         {
                             "type": "leaf",
                             "cond": "ClassMatches",
                             "characters": "a-stem"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "e"
                         }
                     ]
                 }
@@ -780,9 +901,19 @@
                     "type": "and",
                     "members": [
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "neut"
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "leaf",
+                                    "cond": "ClassMatches",
+                                    "characters": "masc"
+                                },
+                                {
+                                    "type": "leaf",
+                                    "cond": "ClassMatches",
+                                    "characters": "neut"
+                                }
+                            ]
                         },
                         {
                             "type": "leaf",
@@ -833,9 +964,19 @@
                     }
                 ],
                 "condition": {
-                    "type": "leaf",
-                    "cond": "ClassMatches",
-                    "characters": "o-stem"
+                    "type": "or",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "o-stem"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "i-stem"
+                        }
+                    ]
                 }
             },
             {

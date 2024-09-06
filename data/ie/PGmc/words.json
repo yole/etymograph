@@ -3258,5 +3258,82 @@
                 "refText": "333"
             }
         ]
+    },
+    {
+        "id": 4560,
+        "text": "brigdilaz",
+        "gloss": "strap, rein",
+        "fullGloss": "strap, rein; bridle",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-Germanic/brigdilaz#Proto-Germanic"
+            }
+        ]
+    },
+    {
+        "id": 4562,
+        "text": "fellą",
+        "gloss": "skin, hide",
+        "fullGloss": "skin, hide",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-Germanic/fella#Proto-Germanic"
+            }
+        ]
+    },
+    {
+        "id": 4570,
+        "text": "hiwją",
+        "gloss": "appearance, blee",
+        "fullGloss": "appearance, blee; form, shape; mold, mildew",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-Germanic/hiwja#Proto-Germanic"
+            }
+        ]
+    },
+    {
+        "id": 4580,
+        "text": "gangaz",
+        "gloss": "pace, step, gait",
+        "fullGloss": "pace, step, gait; walk; way, course",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-Germanic/gangaz#Proto-Germanic"
+            }
+        ]
+    },
+    {
+        "id": 4584,
+        "text": "mōdaz",
+        "gloss": "mind, sense",
+        "fullGloss": "mind, sense; zeal, boldness, courage; anger",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-Germanic/modaz#Proto-Germanic"
+            }
+        ]
+    },
+    {
+        "id": 4604,
+        "text": "swakkuz",
+        "gloss": "smell; odour; scent",
+        "fullGloss": "smell; odour; scent",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-Germanic/swakkuz#Proto-Germanic"
+            }
+        ]
+    },
+    {
+        "id": 4606,
+        "text": "lausungō",
+        "gloss": "releasing, liberation; removal",
+        "fullGloss": "releasing, liberation; removal; deficiency, want, lack; lack of truth, deceit, fraud",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-Germanic/lausungo#Proto-Germanic"
+            }
+        ]
     }
 ]

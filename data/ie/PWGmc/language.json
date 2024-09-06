@@ -464,5 +464,6 @@
         "ai"
     ],
     "stressRuleId": 2064,
-    "pronunciationRuleId": 2951
+    "pronunciationRuleId": 2951,
+    "dictionarySettings": "wiktionary-id: gmw-pro"
 }

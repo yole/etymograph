@@ -2951,5 +2951,71 @@
                 "refText": "335"
             }
         ]
+    },
+    {
+        "id": 4561,
+        "text": "fell",
+        "gloss": "skin, hide",
+        "fullGloss": "skin, hide",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-West_Germanic/fell#Proto-West_Germanic"
+            }
+        ]
+    },
+    {
+        "id": 4576,
+        "text": "leþr",
+        "gloss": "leather",
+        "fullGloss": "leather",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-West_Germanic/leþr#Proto-West_Germanic"
+            }
+        ]
+    },
+    {
+        "id": 4577,
+        "text": "hosā",
+        "gloss": "outer cover, shell",
+        "fullGloss": "outer cover, shell; leggings, trousers",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-West_Germanic/hosa#Proto-West_Germanic"
+            }
+        ]
+    },
+    {
+        "id": 4579,
+        "text": "gang",
+        "gloss": "pace, step, gait",
+        "fullGloss": "pace, step, gait; walk; way, course",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-West_Germanic/gang#Proto-West_Germanic"
+            }
+        ]
+    },
+    {
+        "id": 4592,
+        "text": "buterā",
+        "gloss": "butter",
+        "fullGloss": "butter",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-West_Germanic/butera#Proto-West_Germanic"
+            }
+        ]
+    },
+    {
+        "id": 4608,
+        "text": "skōh",
+        "gloss": "shoe",
+        "fullGloss": "shoe",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-West_Germanic/skoh#Proto-West_Germanic"
+            }
+        ]
     }
 ]
