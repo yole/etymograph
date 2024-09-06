@@ -16,7 +16,10 @@ class CompoundController {
         val notes: String? = null
     )
 
-    data class UpdateCompoundParams(val componentId: Int = -1)
+    data class UpdateCompoundParams(
+        val componentId: Int = -1,
+        val markHead: Boolean = false,
+    )
 
     @PostMapping("")
     fun createCompound(repo: GraphRepository, @RequestBody params: CompoundParams) {
@@ -31,6 +34,9 @@ class CompoundController {
         val compound = repo.resolveCompound(id)
         val componentWord = repo.resolveWord(params.componentId)
         compound.components.add(componentWord)
+        if (params.markHead) {
+            compound.headIndex = compound.components.size - 1
+        }
     }
 
     private fun GraphRepository.resolveCompound(id: Int): Compound {

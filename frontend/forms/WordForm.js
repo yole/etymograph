@@ -36,7 +36,7 @@ export default function WordForm(props) {
             await createCompound(graph, props.linkTarget.id, wordJson.id, data.linkSource, data.linkNotes)
         }
         else if (props.addToCompound !== undefined) {
-            await addToCompound(graph, props.addToCompound, wordJson.id)
+            await addToCompound(graph, props.addToCompound, wordJson.id, data.markHead)
         }
         if (props.submitted !== undefined) {
             props.submitted(wordJson)
@@ -96,5 +96,6 @@ export default function WordForm(props) {
         </>}
         </tbody></table>
         {!props.hideReconstructed && <FormCheckbox id="reconstructed" label="Reconstructed"/>}
+        {props.addToCompound !== undefined && <FormCheckbox id="markHead" label="Mark as head"/>}
     </EtymographForm>
 }

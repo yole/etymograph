@@ -193,8 +193,8 @@ export function createCompound(graph, compoundWord, firstComponentWord, source, 
     return postToBackend(`${graph}/compound`, {compoundId: compoundWord, firstComponentId: firstComponentWord, source, notes})
 }
 
-export function addToCompound(graph, compoundId, componentWord) {
-    return postToBackend(`${graph}/compound/${compoundId}/add`,{componentId: componentWord})
+export function addToCompound(graph, compoundId, componentWord, markHead) {
+    return postToBackend(`${graph}/compound/${compoundId}/add`,{componentId: componentWord, markHead})
 }
 
 export function updateCompound(graph, comppoundId, source, notes) {

@@ -369,6 +369,7 @@ function SingleWord(params) {
                         {m.components.map((mc, index) => <>
                             {index > 0 && " + "}
                             <CompoundRefComponent key={mc.id} baseWord={params.word} linkWord={mc} router={params.router}/>
+                            {index === m.headIndex && " (head)"}
                         </>)}
                         {m.notes && <> &ndash; {m.notes}</>}
                         <SourceRefs source={m.source} span={true}/>

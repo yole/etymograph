@@ -61,6 +61,7 @@ class WordController {
     data class CompoundComponentsViewModel(
         val compoundId: Int,
         val components: List<WordRefViewModel>,
+        val headIndex: Int? = null,
         val source: List<SourceRefViewModel>,
         val sourceEditableText: String,
         val notes: String?
@@ -191,6 +192,7 @@ class WordController {
                 CompoundComponentsViewModel(
                     compound.id,
                     compound.components.map { it.toRefViewModel(graph) },
+                    compound.headIndex,
                     compound.source.toViewModel(graph),
                     compound.source.toEditableText(graph),
                     compound.notes
