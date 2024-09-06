@@ -204,6 +204,21 @@ class RuleTest : QBaseTest() {
     }
 
     @Test
+    fun wordIsInheritFromVariantWithApplyRule() {
+        val repo = InMemoryGraphRepository()
+        val oe = Language("Old English", "OE").also { repo.addLanguage(it) }
+        oe.wordClasses = mutableListOf(WordCategory("stem class", listOf("N"),
+            listOf(WordCategoryValue("o-stem", "o-stem"), WordCategoryValue("strong", "strong"))))
+        repo.rule("- mark word as strong", oe, name = "oe-stem-class")
+        val rule = repo.rule("- apply rule 'oe-stem-class'\nword is o-stem:\n- append 'es'", oe)
+        val baseWord = repo.addWord("mann", language = oe, classes = listOf("o-stem"))
+        val variant = repo.addWord("monn", language = oe)
+        repo.addLink(variant, baseWord, Link.Variation, emptyList(), emptyList(), null)
+        val result = rule.apply(variant, repo)
+        assertEquals("monnes", result.text)
+    }
+
+    @Test
     fun postInstructions() {
         val text = """
             word ends with 'e':

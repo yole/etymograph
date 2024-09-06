@@ -55,7 +55,7 @@ open class QBaseTest {
     fun GraphRepository.rule(
         text: String,
         fromLanguage: Language = q,
-        toLanguage: Language = q,
+        toLanguage: Language = fromLanguage,
         name: String = "q", addedCategories: String? = null
     ): Rule {
         return addRule(name, fromLanguage, toLanguage,

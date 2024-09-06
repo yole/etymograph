@@ -283,7 +283,7 @@ class ApplyRuleInstruction(val ruleRef: RuleRef)
         val link = graph.getLinksTo(word).find { it.rules == listOf(targetRule) }
         (link?.fromEntity as? Word)?.let { return it }
         val result = targetRule.apply(word, graph).asOrthographic()
-        return result.remapSegments { s ->
+        return result.derive(result.text, word.id).remapSegments { s ->
             if (s.sourceRule == targetRule)
                 WordSegment(s.firstCharacter, s.length, rule.addedCategories, null, rule)
             else
