@@ -31,7 +31,7 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
     open fun apply(rule: Rule, branch: RuleBranch?, word: Word, graph: GraphRepository): Word = when(type) {
         InstructionType.NoChange -> word
         InstructionType.ChangeEnding -> changeEnding(word, rule, branch, graph)
-        InstructionType.ApplyClass -> word.derive(word.text, newClasses = (word.classes + arg).toSet().toList())
+        InstructionType.ApplyClass -> word.derive(word.text, newClasses = (word.classes + arg).toSet().toList(), id = word.id)
         InstructionType.Disallow -> word.derive(word.text, newClasses = (word.classes + DISALLOW_CLASS).toSet().toList())
         else -> throw IllegalStateException("Can't apply phoneme instruction to full word")
     }
