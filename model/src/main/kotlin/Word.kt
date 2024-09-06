@@ -129,9 +129,9 @@ class Word(
 
     fun getOrComputeGloss(graph: GraphRepository): String? {
         gloss?.let { return it }
-        val variationOf = graph.getLinksFrom(this).singleOrNull { it.type == Link.Variation && it.toEntity is Word }
+        val variationOf = getVariationOf(graph)
         if (variationOf != null) {
-            return (variationOf.toEntity as Word).getOrComputeGloss(graph)
+            return variationOf.getOrComputeGloss(graph)
         }
         val compound = graph.findComponentsByCompound(this).firstOrNull()
         if (compound != null) {
@@ -158,6 +158,9 @@ class Word(
 
     fun glossOrNP(): String? =
         gloss ?: if (pos == "NP") text.replaceFirstChar { c -> c.uppercase(Locale.FRANCE) } else null
+
+    fun getVariationOf(graph: GraphRepository): Word? =
+        graph.getLinksFrom(this).singleOrNull { it.type == Link.Variation && it.toEntity is Word }?.toEntity as Word?
 
     fun baseWordLink(graph: GraphRepository): Link? =
         graph.getLinksFrom(this).singleOrNull { it.type == Link.Derived && it.toEntity is Word }

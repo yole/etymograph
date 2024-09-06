@@ -119,13 +119,20 @@ class LeafRuleCondition(
             ConditionType.BeginsWith -> (phonemeClass?.let { PhonemeIterator(word, graph).current in it.matchingPhonemes }
                 ?: word.text.startsWith(parameter!!)).negateIfNeeded()
             ConditionType.StressIs -> matchStress(word, graph).negateIfNeeded()
-            ConditionType.ClassMatches -> matchClass(word)
+            ConditionType.ClassMatches -> matchClass(word, graph)
             else -> throw IllegalStateException()
         }
     }
 
-    private fun matchClass(word: Word) =
-        (parameter in word.classes).negateIfNeeded() || word.classes == listOf("*")
+    private fun matchClass(word: Word, graph: GraphRepository): Boolean {
+        var classes = word.classes
+        val variationOf = word.getVariationOf(graph)
+        if (variationOf != null) {
+            classes += variationOf.classes
+        }
+
+        return (parameter in classes).negateIfNeeded() || classes == listOf("*")
+    }
 
     private fun matchStress(word: Word, graph: GraphRepository): Boolean {
         val (expectedIndex, _) = parameter?.let { Ordinals.parse(it) } ?: return false
@@ -139,7 +146,7 @@ class LeafRuleCondition(
         return when (type) {
             ConditionType.BeginningOfWord -> phonemes.atBeginning().negateIfNeeded()
             ConditionType.EndOfWord -> phonemes.atEnd().negateIfNeeded()
-            ConditionType.ClassMatches -> matchClass(word)
+            ConditionType.ClassMatches -> matchClass(word, graph)
             else -> throw IllegalStateException("Trying to use a word condition for matching phonemes")
         }
     }
