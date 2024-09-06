@@ -12,6 +12,7 @@ class CompoundController {
     data class CompoundParams(
         val compoundId: Int,
         val firstComponentId: Int = -1,
+        val head: Int? = null,
         val source: String,
         val notes: String? = null
     )
@@ -48,6 +49,9 @@ class CompoundController {
         val compound = repo.resolveCompound(id)
         compound.source = parseSourceRefs(repo, params.source)
         compound.notes = params.notes
+        if (params.head != null) {
+            compound.headIndex = compound.components.indexOfFirst { it.id == params.head }.takeIf { it >= 0 }
+        }
     }
 
     @PostMapping("/{id}/delete")

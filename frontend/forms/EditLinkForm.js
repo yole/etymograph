@@ -4,6 +4,7 @@ import RuleListSelect from "@/components/RuleListSelect";
 import {updateCompound, updateLink} from "@/api";
 import {useContext} from "react";
 import {GraphContext} from "@/components/Contexts";
+import FormSelect from "@/components/FormSelect";
 
 export default function EditLinkForm(props) {
     const graph = useContext(GraphContext)
@@ -14,7 +15,7 @@ export default function EditLinkForm(props) {
     }
 
     function saveCompound(data) {
-        return updateCompound(graph, props.compoundId, data.source, data.notes)
+        return updateCompound(graph, props.compoundId, data.source, data.notes, data.head)
     }
 
     return <EtymographForm
@@ -25,6 +26,9 @@ export default function EditLinkForm(props) {
             {props.compoundId === undefined && <RuleListSelect id="ruleNames" label="Rule names" isMulti={true}/>}
             <FormRow id="source" label="Source"/>
             <FormRow id="notes" label="Notes"/>
+            {props.compoundComponents !== undefined &&
+                <FormSelect id="head" label="Head" options={props.compoundComponents} selection={props.compoundHead}/>
+            }
         </tbody></table>
     </EtymographForm>
 }

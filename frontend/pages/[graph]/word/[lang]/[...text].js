@@ -379,6 +379,8 @@ function SingleWord(params) {
                         }
                         {editCompound === m.compoundId &&
                             <EditLinkForm compoundId={m.compoundId}
+                                          compoundComponents={m.components}
+                                          compoundHead={m.headIndex === null ? -1 : m.components[m.headIndex].id}
                                           defaultValues={{source: m.sourceEditableText, notes: m.notes}}
                                           submitted={() => {
                                               setEditCompound(undefined)

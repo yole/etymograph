@@ -197,8 +197,8 @@ export function addToCompound(graph, compoundId, componentWord, markHead) {
     return postToBackend(`${graph}/compound/${compoundId}/add`,{componentId: componentWord, markHead})
 }
 
-export function updateCompound(graph, comppoundId, source, notes) {
-    return postToBackend(`${graph}/compound/${comppoundId}`, {source, notes})
+export function updateCompound(graph, compoundId, source, notes, head) {
+    return postToBackend(`${graph}/compound/${compoundId}`, {source, notes, head})
 }
 
 export function deleteCompound(graph, compoundId) {
