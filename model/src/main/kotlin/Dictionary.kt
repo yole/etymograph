@@ -113,9 +113,9 @@ fun augmentWord(repo: GraphRepository, word: Word, dictionaryWord: DictionaryWor
     }
 
     for (relatedDictionaryWord in dictionaryWord.relatedWords) {
-        val relatedWord = findOrCreateWordFromDictionary(repo, relatedDictionaryWord.relatedWord.text,
-            relatedDictionaryWord.relatedWord)
-        if (repo.findLink(word, relatedWord, relatedDictionaryWord.linkType) == null) {
+        if (repo.getLinksFrom(word).filter { it.type == relatedDictionaryWord.linkType }.isEmpty()) {
+            val relatedWord = findOrCreateWordFromDictionary(repo, relatedDictionaryWord.relatedWord.text,
+                relatedDictionaryWord.relatedWord)
             repo.addLink(word, relatedWord, relatedDictionaryWord.linkType, emptyList(), emptyList(), null)
         }
     }
