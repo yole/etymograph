@@ -150,14 +150,19 @@ class Word(
                 }
             }
         }
-        if (pos == "NP") {
+        if (pos == KnownPartsOfSpeech.properName.abbreviation) {
             return text.replaceFirstChar { it.uppercase(Locale.FRANCE) }
         }
         return null
     }
 
     fun glossOrNP(): String? =
-        gloss ?: if (pos == "NP") text.replaceFirstChar { c -> c.uppercase(Locale.FRANCE) } else null
+        gloss ?: (
+                if (pos == KnownPartsOfSpeech.properName.abbreviation)
+                    text.replaceFirstChar { c -> c.uppercase(Locale.FRANCE) }
+                else
+                    null
+                )
 
     fun getVariationOf(graph: GraphRepository): Word? =
         graph.getLinksFrom(this).singleOrNull { it.type == Link.Variation && it.toEntity is Word }?.toEntity as Word?

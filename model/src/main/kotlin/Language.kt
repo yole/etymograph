@@ -6,6 +6,11 @@ class WordCategoryValue(val name: String, val abbreviation: String)
 
 class WordCategory(var name: String, var pos: List<String>, var values: List<WordCategoryValue>)
 
+object KnownPartsOfSpeech {
+    val preverb = WordCategoryValue("Preverb", "PV")
+    val properName = WordCategoryValue("Proper Name", "NP")
+}
+
 class Phoneme(
     id: Int, var graphemes: List<String>, var sound: String?, var classes: Set<String>, var historical: Boolean = false,
     source: List<SourceRef> = emptyList(), notes: String? = null
