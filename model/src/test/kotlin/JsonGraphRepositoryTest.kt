@@ -189,7 +189,7 @@ class JsonGraphRepositoryTest : QBaseTest() {
         compound.headIndex = 1
         val repo2 = repo.roundtrip()
         val compoundWord2 = repo2.wordsByText(repo2.languageByShortName("Q")!!, "sæmann").single()
-        val compound2 = repo2.findComponentsByCompound(compoundWord2).single()
+        val compound2 = repo2.findCompoundsByCompoundWord(compoundWord2).single()
         assertEquals(1, compound2.headIndex)
     }
 }

@@ -289,7 +289,7 @@ open class InMemoryGraphRepository : GraphRepository() {
             }
         }
 
-        val compound = findComponentsByCompound(word).singleOrNull()
+        val compound = findCompoundsByCompoundWord(word).singleOrNull()
         if (compound != null) {
             val segments = mutableListOf<WordSegment>()
             var index = 0
@@ -621,7 +621,7 @@ open class InMemoryGraphRepository : GraphRepository() {
         return allLangEntities.filterIsInstance<Compound>().filter { component.id in it.components.map { c -> c.id } }
     }
 
-    override fun findComponentsByCompound(compoundWord: Word): List<Compound> {
+    override fun findCompoundsByCompoundWord(compoundWord: Word): List<Compound> {
         return compounds[compoundWord.id] ?: emptyList()
     }
 

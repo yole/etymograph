@@ -50,7 +50,7 @@ class CompoundTest : QBaseTest() {
         compound.components.add(mir)
 
         repo.deleteWord(mir)
-        assertEquals(1, repo.findComponentsByCompound(faramir).first().components.size)
+        assertEquals(1, repo.findCompoundsByCompoundWord(faramir).first().components.size)
     }
 
     @Test

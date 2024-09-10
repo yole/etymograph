@@ -62,6 +62,7 @@ class WordController {
         val compoundId: Int,
         val components: List<WordRefViewModel>,
         val headIndex: Int? = null,
+        val derivation: Boolean,
         val source: List<SourceRefViewModel>,
         val sourceEditableText: String,
         val notes: String?
@@ -96,6 +97,7 @@ class WordController {
         val linksFrom: List<LinkTypeViewModel>,
         val linksTo: List<LinkTypeViewModel>,
         val compounds: List<WordRefViewModel>,
+        val derivationalCompounds: List<WordRefViewModel>,
         val components: List<CompoundComponentsViewModel>,
         val linkedRules: List<LinkedRuleViewModel>,
         val stressIndex: Int?,
@@ -134,6 +136,7 @@ class WordController {
             text
 
         val computedGloss = getOrComputeGloss(graph)
+        val compounds = graph.findCompoundsByComponent(this)
         return WordViewModel(
             id,
             language.shortName,
@@ -187,12 +190,14 @@ class WordController {
                         }
                     )
             },
-            graph.findCompoundsByComponent(this).map { it.compoundWord.toRefViewModel(graph) },
-            graph.findComponentsByCompound(this).map { compound ->
+            compounds.filter { !it.isDerivation() }.map { it.compoundWord.toRefViewModel(graph) },
+            compounds.filter { it.isDerivation() }.map { it.compoundWord.toRefViewModel(graph) },
+            graph.findCompoundsByCompoundWord(this).map { compound ->
                 CompoundComponentsViewModel(
                     compound.id,
                     compound.components.map { it.toRefViewModel(graph) },
                     compound.headIndex,
+                    compound.isDerivation(),
                     compound.source.toViewModel(graph),
                     compound.source.toEditableText(graph),
                     compound.notes

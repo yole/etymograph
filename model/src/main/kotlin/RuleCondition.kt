@@ -131,7 +131,7 @@ class LeafRuleCondition(
             classes += variationOf.classes
         }
         else {
-            val compound = graph.findComponentsByCompound(word).singleOrNull()
+            val compound = graph.findCompoundsByCompoundWord(word).singleOrNull()
             compound?.headIndex?.let {
                 classes += compound.components[it].classes
             }

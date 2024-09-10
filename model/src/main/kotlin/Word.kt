@@ -133,7 +133,7 @@ class Word(
         if (variationOf != null) {
             return variationOf.getOrComputeGloss(graph)
         }
-        val compound = graph.findComponentsByCompound(this).firstOrNull()
+        val compound = graph.findCompoundsByCompoundWord(this).firstOrNull()
         if (compound != null) {
             return compound.components.joinToString("-") {
                 it.getOrComputeGloss(graph)?.substringBefore(", ") ?: "?"

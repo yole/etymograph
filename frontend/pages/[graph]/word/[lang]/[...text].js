@@ -167,7 +167,7 @@ function CompoundListComponent(params) {
     }
 
     return <>
-        <div>Compound:</div>
+        <div>{params.derivation ? "Derived with prefix/suffix from:" : "Compound:"}</div>
         {components.map(m =>
             <div>
                 {m.components.map((mc, index) => <>
@@ -340,6 +340,9 @@ function SingleWord(params) {
         isName ? ["Names", "/names"] :
             (isCompound ? ["Compounds", "/compounds"] : ["Dictionary", ""])
 
+    const componentsOfDerivational = word.components.filter(c => c.derivation)
+    const componentsOfNonDerivational = word.components.filter(c => !c.derivation)
+
     return <>
         <Breadcrumbs langId={word.language} langName={word.languageFullName}
                      steps={[{title: dictionaryTitle, url: `/${graph}/dictionary/${word.language}${dictionaryLink}`}]}>
@@ -411,7 +414,15 @@ function SingleWord(params) {
                 <p/>
             </>
         }
-        {word.components.length > 0 && <CompoundListComponent word={word} components={word.components}/>}
+        {word.derivationalCompounds.length > 0 &&
+            <>
+                <div>{word.pos === "PV" ? "Prefix/suffix in:" : "Words derived with prefix/suffix:"}</div>
+                {word.derivationalCompounds.map(m => <div><CompoundRefComponent graph={graph} key={m.id} baseWord={params.word} linkWord={m} router={params.router}/></div>)}
+                <p/>
+            </>
+        }
+        {componentsOfDerivational.length > 0 && <CompoundListComponent word={word} components={componentsOfDerivational} derivation={true}/>}
+        {componentsOfNonDerivational.length > 0 && <CompoundListComponent word={word} components={componentsOfNonDerivational} derivation={false}/>}
 
         {word.linkedRules.length > 0 &&
             <>
