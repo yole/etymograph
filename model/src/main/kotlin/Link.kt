@@ -31,4 +31,7 @@ class Compound(
     var headIndex: Int? = null,
     source: List<SourceRef>,
     notes: String?
-) : LangEntity(id, source, notes)
+) : LangEntity(id, source, notes) {
+    fun isDerivation(): Boolean =
+        components.any { c -> c.pos == KnownPartsOfSpeech.preverb.abbreviation }
+}

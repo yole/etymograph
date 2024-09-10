@@ -129,7 +129,7 @@ open class InMemoryGraphRepository : GraphRepository() {
     override fun isCompound(word: Word): Boolean {
         val compounds = compounds[word.id] ?: return false
         return compounds.any {
-            it.components.any { c -> !c.isRoot() }
+            it.components.any { c -> !c.isRoot() } && !it.isDerivation()
         }
     }
 
