@@ -145,6 +145,66 @@ function CompoundRefComponent(params) {
     return <WordLink word={linkWord} baseLanguage={baseWord.language} gloss={true}/>
 }
 
+function CompoundListComponent(params) {
+    const components = params.components
+    const word = params.word
+    const router = useRouter()
+    const graph = router.query.graph
+
+    const [addToCompound, setAddToCompound] = useState(undefined)
+    const [editCompound, setEditCompound] = useState(undefined)
+
+    function deleteCompoundClicked(compoundId) {
+        if (window.confirm("Delete this compound?")) {
+            deleteCompound(graph, compoundId).then(() => router.replace(router.asPath))
+        }
+    }
+
+    function submitted() {
+        setAddToCompound(undefined)
+        setEditCompound(undefined)
+        router.replace(router.asPath)
+    }
+
+    return <>
+        <div>Compound:</div>
+        {components.map(m =>
+            <div>
+                {m.components.map((mc, index) => <>
+                    {index > 0 && " + "}
+                    <CompoundRefComponent key={mc.id} baseWord={word} linkWord={mc} router={params.router}/>
+                    {index === m.headIndex && " (head)"}
+                </>)}
+                {m.notes && <> &ndash; {m.notes}</>}
+                <SourceRefs source={m.source} span={true}/>
+                {addToCompound === m.compoundId &&
+                    <WordForm submitted={submitted} cancelled={() => setAddToCompound(undefined)}
+                              addToCompound={m.compoundId} linkTarget={word} defaultValues={{language: word.language}}/>
+                }
+                {editCompound === m.compoundId &&
+                    <EditLinkForm compoundId={m.compoundId}
+                                  compoundComponents={m.components}
+                                  compoundHead={m.headIndex === null ? -1 : m.components[m.headIndex].id}
+                                  defaultValues={{source: m.sourceEditableText, notes: m.notes}}
+                                  submitted={() => {
+                                      setEditCompound(undefined)
+                                      router.replace(router.asPath)
+                                  }}
+                                  cancelled={() => setEditCompound(undefined)}/>
+                }
+                {allowEdit() && <>
+                    {' '}
+                    {addToCompound !== m.compoundId && <button onClick={() => setAddToCompound(m.compoundId)}>Add component</button>}
+                    {' '}
+                    {editCompound !== m.compoundId && <button onClick={() => setEditCompound(m.compoundId)}>Edit compound</button>}
+                    {' '}
+                    <button onClick={() => deleteCompoundClicked(m.compoundId)}>Delete</button>
+                </>}
+            </div>
+        )}
+    </>
+}
+
 function WordLinkTypeComponent(params) {
     return params.links.map(l => <>
         <div>{l.type}</div>
@@ -167,8 +227,6 @@ function SingleWord(params) {
     const [showRelated, setShowRelated] = useState(false)
     const [showVariation, setShowVariation] = useState(false)
     const [showRuleLink, setShowRuleLink] = useState(false)
-    const [addToCompound, setAddToCompound] = useState(undefined)
-    const [editCompound, setEditCompound] = useState(undefined)
     const [editMode, setEditMode] = useState(false)
     const [errorText, setErrorText] = useState("")
     const [lookupErrorText, setLookupErrorText] = useState("")
@@ -182,8 +240,6 @@ function SingleWord(params) {
         setShowCompoundComponent(false)
         setShowRelated(false)
         setShowVariation(false)
-        setAddToCompound(undefined)
-        setEditCompound(undefined)
         router.replace(router.asPath)
     }
 
@@ -246,12 +302,6 @@ function SingleWord(params) {
         }
         else {
             linkToParseCandidate(pc, pc.wordId)
-        }
-    }
-
-    function deleteCompoundClicked(compoundId) {
-        if (window.confirm("Delete this compound?")) {
-            deleteCompound(graph, compoundId).then(() => router.replace(router.asPath))
         }
     }
 
@@ -361,45 +411,7 @@ function SingleWord(params) {
                 <p/>
             </>
         }
-        {word.components.length > 0 &&
-            <>
-                <div>Compound:</div>
-                {word.components.map(m =>
-                    <div>
-                        {m.components.map((mc, index) => <>
-                            {index > 0 && " + "}
-                            <CompoundRefComponent key={mc.id} baseWord={params.word} linkWord={mc} router={params.router}/>
-                            {index === m.headIndex && " (head)"}
-                        </>)}
-                        {m.notes && <> &ndash; {m.notes}</>}
-                        <SourceRefs source={m.source} span={true}/>
-                        {addToCompound === m.compoundId &&
-                            <WordForm submitted={submitted} cancelled={() => setAddToCompound(undefined)}
-                                      addToCompound={m.compoundId} linkTarget={word} defaultValues={{language: word.language}}/>
-                        }
-                        {editCompound === m.compoundId &&
-                            <EditLinkForm compoundId={m.compoundId}
-                                          compoundComponents={m.components}
-                                          compoundHead={m.headIndex === null ? -1 : m.components[m.headIndex].id}
-                                          defaultValues={{source: m.sourceEditableText, notes: m.notes}}
-                                          submitted={() => {
-                                              setEditCompound(undefined)
-                                              router.replace(router.asPath)
-                                          }}
-                                          cancelled={() => setEditCompound(undefined)}/>
-                        }
-                        {allowEdit() && <>
-                            {' '}
-                            {addToCompound !== m.compoundId && <button onClick={() => setAddToCompound(m.compoundId)}>Add component</button>}
-                            {' '}
-                            {editCompound !== m.compoundId && <button onClick={() => setEditCompound(m.compoundId)}>Edit compound</button>}
-                            {' '}
-                            <button onClick={() => deleteCompoundClicked(m.compoundId)}>Delete</button>
-                        </>}
-                    </div>
-                )}
-            </>
-        }
+        {word.components.length > 0 && <CompoundListComponent word={word} components={word.components}/>}
 
         {word.linkedRules.length > 0 &&
             <>
