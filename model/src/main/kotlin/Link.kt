@@ -11,7 +11,7 @@ class Link(
     var notes: String?
 ) {
     companion object {
-        val Derived = LinkType(">", "derived from", "Words derived from this one")
+        val Derived = LinkType(">", "Lemma", "Inflected forms")
         val Origin = LinkType("^", "originates from", "Words originating from this one")
         val Related = LinkType("~", "Related to", "Related to")
         val Variation = LinkType("=", "Variation of", "Variations")

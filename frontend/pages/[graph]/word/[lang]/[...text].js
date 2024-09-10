@@ -442,9 +442,9 @@ function SingleWord(params) {
 
         <p/>
         {allowEdit() && <>
-            {!isCompound && <><button onClick={() => setShowBaseWord(!showBaseWord)}>Add base word</button><br/></>}
+            {!isCompound && <><button onClick={() => setShowBaseWord(!showBaseWord)}>Add lemma</button><br/></>}
             {showBaseWord && <WordForm submitted={submitted} linkType='>' linkTarget={word} reverseLink={true} defaultValues={{language: word.language, gloss: word.gloss}} cancelled={() => setShowBaseWord(false)}/>}
-            <button onClick={() => setShowDerivedWord(!showDerivedWord)}>Add derived word</button><br/>
+            <button onClick={() => setShowDerivedWord(!showDerivedWord)}>Add inflected form</button><br/>
             {showDerivedWord && <WordForm submitted={submitted} linkType='>' linkTarget={word} defaultValues={{language: word.language}} cancelled={() => setShowDerivedWord(false)} />}
             <button onClick={() => setShowOriginWord(!showOriginWord)}>Add origin word</button><br/>
             {showOriginWord && <WordForm submitted={submitted} linkType='^' linkTarget={word} reverseLink={true} defaultValues={{gloss: word.gloss}} cancelled={() => setShowOriginWord(false)}/>}
