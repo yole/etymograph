@@ -56,21 +56,21 @@ private fun tryFindBestMatch(word: Word, dictionaryWords: List<DictionaryWord>):
     }
     val gloss = word.gloss
     if (!gloss.isNullOrEmpty()) {
-        val glossWords = wordSet(gloss)
-        candidates = candidates.filter { candidate ->
-            val dictGloss = candidate.gloss
-            if (dictGloss.isNullOrEmpty())
-                false
-            else
-                wordSet(dictGloss)
-                    .intersect(glossWords)
-                    .isNotEmpty()
-        }
+        candidates = candidates.filter { candidate -> isGlossSimilar(candidate.gloss, gloss) }
         if (candidates.size == 1) {
             return candidates[0]
         }
     }
     return null
+}
+
+private fun isGlossSimilar(candidateGloss: String?, gloss: String?): Boolean {
+    return if (candidateGloss.isNullOrEmpty() || gloss.isNullOrEmpty())
+        false
+    else
+        wordSet(candidateGloss)
+            .intersect(wordSet(gloss))
+            .isNotEmpty()
 }
 
 private fun wordSet(gloss: String): Set<String> =
@@ -84,9 +84,12 @@ fun findOrCreateWordFromDictionary(
     repo: GraphRepository,
     word: DictionaryWord,
 ): Word {
-    return repo.findOrAddWord(
-        word.text, word.language, word.gloss, word.fullGloss, word.pos, word.classes, word.reconstructed,
-        listOf(SourceRef(null, word.source))
+    val existingWords = repo.wordsByText(word.language, word.text)
+    return existingWords.find { isGlossSimilar(it.gloss, word.gloss) }
+        ?: repo.findOrAddWord(
+            word.text, word.language, word.gloss, word.fullGloss, word.pos, word.classes, word.reconstructed,
+            listOf(SourceRef(null, word.source)
+        )
     )
 }
 
