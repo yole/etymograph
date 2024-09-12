@@ -52,4 +52,13 @@ class WiktionaryParserTest {
         assertEquals("nytwierþnes", variation.relatedWord.text)
         assertEquals(2, variation.relatedWord.classes.size)
     }
+
+    @Test
+    fun parseCompound() {
+        val oe = Language("Old English", "OE")
+        repo.addLanguage(oe)
+
+        val word = wiktionary.lookup(repo, oe, "æþelboren").single()
+        assertEquals(2, word.compoundComponents.size)
+    }
 }

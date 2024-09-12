@@ -128,8 +128,8 @@ abstract class GraphRepository {
     abstract fun createCompound(
         compoundWord: Word,
         firstComponent: Word,
-        source: List<SourceRef>,
-        notes: String?
+        source: List<SourceRef> = emptyList(),
+        notes: String? = null
     ): Compound
     abstract fun findCompoundsByComponent(component: Word): List<Compound>
     abstract fun findCompoundsByCompoundWord(compoundWord: Word): List<Compound>

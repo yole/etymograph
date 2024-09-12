@@ -1,0 +1,26 @@
+==Old English==
+
+===Alternative forms===
+* {{alter|ang|æðelboren}}
+
+===Etymology===
+{{compound|ang|æþele|boren|t1=noble|t2=born}}
+
+===Pronunciation===
+* {{ang-IPA|æþel-boren}}
+
+===Adjective===
+{{ang-adj}}
+
+# [[born]] a [[noble]] or [[aristocrat]]; [[highborn]]
+# {{lb|ang|rare}} [[innate]], [[natural]]
+
+====Declension====
+{{ang-adecl|æþelboren}}
+
+====Derived terms====
+* {{l|ang|æþelborennes}}
+* {{l|ang|unæþelboren}}
+
+====Descendants====
+* {{l|en|ethelborn}}

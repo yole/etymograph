@@ -16,7 +16,9 @@ import kotlin.collections.iterator
 @Serializable
 data class WiktionaryPageData(val source: String)
 
-val wiktionaryPosNames = setOf("Noun", "Adjective", "Verb", "Article", "Determiner", "Pronoun", "Adverb", "Conjunction")
+val wiktionaryPosNames = setOf(
+    "Noun", "Adjective", "Verb", "Article", "Determiner", "Pronoun", "Adverb", "Conjunction", "Prefix", "Suffix"
+)
 
 abstract class WiktionarySection {
     fun parse(lines: LineBuffer) {
@@ -99,6 +101,7 @@ data class InheritedWordTemplate(val language: String, val word: String)
 
 class WiktionaryEtymologySection : WiktionarySection() {
     val inheritedWords = mutableListOf<InheritedWordTemplate>()
+    var compoundComponents: List<String>? = null
 
     override fun parseSectionLine(line: String) {
         filterTemplates(line)
@@ -107,6 +110,15 @@ class WiktionaryEtymologySection : WiktionarySection() {
     override fun processTemplate(name: String, parameters: List<String>): String {
         if (name == "inh") {
             inheritedWords.add(InheritedWordTemplate(parameters[1], parameters[2]))
+        }
+        if (name == "compound" || name == "affix" || name == "af") {
+            compoundComponents = parameters.drop(1).filter { '=' !in it }
+        }
+        else if ((name == "prefix" || name == "pre") && parameters.size >= 3) {
+            compoundComponents = listOf(parameters[1] + "-", parameters[2])
+        }
+        else if (name == "suffix" && parameters.size >= 3) {
+            compoundComponents = listOf(parameters[1], "-" + parameters[2])
         }
         return ""
     }
@@ -174,7 +186,11 @@ open class Wiktionary : Dictionary {
             return emptyList()
         }
 
+
         val inheritedWords = wiktionaryPage.etymologySection?.inheritedWords?.mapNotNull { lookupInheritedWord(repo, it) }
+        val compoundComponents = wiktionaryPage.etymologySection?.compoundComponents?.map {
+            lookup(repo, language, it.trimStart('*')).singleOrNull()
+        }
 
         return wiktionaryPage.posSections.map { section ->
             DictionaryWord(word, language, section.senses.first(), section.senses.joinToString("; "),
@@ -187,6 +203,11 @@ open class Wiktionary : Dictionary {
                         val baseWord = lookup(repo, language, it).singleOrNull()
                         if (baseWord != null) {
                             relatedWords.add(DictionaryRelatedWord(Link.Variation, baseWord))
+                        }
+                    }
+                    compoundComponents?.let {
+                        if (it.all { c -> c != null }) {
+                            this.compoundComponents.addAll(it as Collection<DictionaryWord>)
                         }
                     }
                 }

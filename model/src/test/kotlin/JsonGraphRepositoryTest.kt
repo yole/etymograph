@@ -184,7 +184,7 @@ class JsonGraphRepositoryTest : QBaseTest() {
         val baseWord = repo.addWord("mann")
         val prefix = repo.addWord("sæ")
         val compoundWord = repo.addWord("sæmann")
-        val compound = repo.createCompound(compoundWord, prefix, emptyList(), null)
+        val compound = repo.createCompound(compoundWord, prefix)
         compound.components.add(baseWord)
         compound.headIndex = 1
         val repo2 = repo.roundtrip()

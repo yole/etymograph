@@ -1,0 +1,38 @@
+==Old English==
+
+===Alternative forms===
+* {{alt|ang|eþele|æðele}}
+* {{alt|ang|ᚫᚦᚦᛁᛚᚫ||{{w|Ruthwell Cross}}}}
+
+===Etymology===
+{{dercat|ang|gmw-pro|inh=1}}
+From {{inh|ang|gmw-pro|*aþuli}}, from {{inh|ang|gem-pro|*aþulijaz}}. Cognate with {{cog|goh|adal}} ({{cog|de|edel}}), {{cog|non|aðall}}.
+
+===Pronunciation===
+* {{ang-IPA|æþele}}
+
+===Adjective===
+{{ang-adj|sup=æþelest|sup2=æþelust|sup3=æþelast}}
+
+# [[noble]]
+#* '''c. 800''', {{w|Ruthwell Cross}}:
+#*: {{quote|ang|ᛣᚱᛁᛋᛏᚹᚫᛋᚩᚾᚱᚩᛞᛁᚻᚹᛖᚦᚱᚫᚦᛖᚱᚠᚢᛋᚫᚠᛠᚱᚱᚪᚾᛣᚹᚩᛗᚢ'''ᚫᚦᚦᛁᛚᚫ'''ᛏᛁᛚᚪᚾᚢᛗ|tr=Krist wæs on rōdi, hweþræ þēr fūsæ fearran kwōmu '''æþþilæ''' til ānum.|t=Christ was on the cross, yet there in haste from afar came '''noble men''' unto him.}}
+
+====Declension====
+{{ang-adecl|æþele}}
+
+====Derived terms====
+* {{l|ang|æþelu}}
+* {{l|ang|æþelian}}
+* {{l|ang|æþeling}}
+* {{l|ang|æþellīċ}}
+* {{l|ang|æþelnes}}
+* {{l|ang|æþelcund}}
+* {{l|ang|æþelboren}}
+* {{l|ang|æþelcyning}}
+* {{l|ang|Æþelred}}
+* {{l|ang|Æþelwulf}}
+
+====Descendants====
+* {{desc|enm|athel}}
+** {{desc|en|athel|Ethel}}

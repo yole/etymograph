@@ -15,7 +15,8 @@ data class DictionaryWord(
     val classes: List<String>,
     val source: String,
     var reconstructed: Boolean = false,
-    val relatedWords: MutableList<DictionaryRelatedWord> = mutableListOf()
+    val relatedWords: MutableList<DictionaryRelatedWord> = mutableListOf(),
+    val compoundComponents: MutableList<DictionaryWord> = mutableListOf()
 )
 
 fun augmentWithDictionary(repo: GraphRepository, language: Language, dictionary: Dictionary) {
@@ -81,11 +82,10 @@ private fun wordSet(gloss: String): Set<String> =
 
 fun findOrCreateWordFromDictionary(
     repo: GraphRepository,
-    text: String,
     word: DictionaryWord,
 ): Word {
     return repo.findOrAddWord(
-        text, word.language, word.gloss, word.fullGloss, word.pos, word.classes, word.reconstructed,
+        word.text, word.language, word.gloss, word.fullGloss, word.pos, word.classes, word.reconstructed,
         listOf(SourceRef(null, word.source))
     )
 }
@@ -114,9 +114,16 @@ fun augmentWord(repo: GraphRepository, word: Word, dictionaryWord: DictionaryWor
 
     for (relatedDictionaryWord in dictionaryWord.relatedWords) {
         if (repo.getLinksFrom(word).filter { it.type == relatedDictionaryWord.linkType }.isEmpty()) {
-            val relatedWord = findOrCreateWordFromDictionary(repo, relatedDictionaryWord.relatedWord.text,
-                relatedDictionaryWord.relatedWord)
+            val relatedWord = findOrCreateWordFromDictionary(repo, relatedDictionaryWord.relatedWord)
             repo.addLink(word, relatedWord, relatedDictionaryWord.linkType, emptyList(), emptyList(), null)
         }
+    }
+
+    if (repo.findCompoundsByCompoundWord(word).isEmpty() && dictionaryWord.compoundComponents.isNotEmpty()) {
+        val componentWords = dictionaryWord.compoundComponents.map {
+            findOrCreateWordFromDictionary(repo, it)
+        }
+        val compound = repo.createCompound(word, componentWords.first())
+        compound.components.addAll(componentWords.drop(1))
     }
 }

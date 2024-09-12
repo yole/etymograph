@@ -1,0 +1,6 @@
+==Old English==
+
+===Verb===
+{{head|ang|past participle}}
+
+# {{past participle of|ang|beran|nocat=1}}

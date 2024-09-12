@@ -228,7 +228,7 @@ class RuleTest : QBaseTest() {
         val baseWord = repo.addWord("mann", language = oe, classes = listOf("o-stem"))
         val prefix = repo.addWord("sæ", language = oe)
         val compoundWord = repo.addWord("sæmann", language = oe)
-        val compound = repo.createCompound(compoundWord, prefix, emptyList(), null)
+        val compound = repo.createCompound(compoundWord, prefix)
         compound.components.add(baseWord)
         compound.headIndex = 1
         val result = rule.apply(compoundWord, repo)
