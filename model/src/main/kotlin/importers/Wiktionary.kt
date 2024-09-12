@@ -177,10 +177,16 @@ open class Wiktionary : Dictionary {
     }
 
     override fun lookup(repo: GraphRepository, language: Language, word: String): LookupResult {
+        return lookup(repo, language, word, true)
+    }
+
+    fun lookup(repo: GraphRepository, language: Language, word: String, lookupRelatedWords: Boolean): LookupResult {
         val messages = mutableListOf<String>()
 
         fun lookupSingle(language: Language, string: String, wordKind: String): DictionaryWord? {
-            val compoundResult = lookup(repo, language, string.trimStart('*')).result
+            if (!lookupRelatedWords) return null
+
+            val compoundResult = lookup(repo, language, string.trimStart('*'), false).result
             if (compoundResult.isEmpty()) {
                 messages.add("Can't find $wordKind '$string'")
             } else if (compoundResult.size > 1) {
