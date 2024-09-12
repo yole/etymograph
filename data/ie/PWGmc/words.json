@@ -3017,5 +3017,104 @@
                 "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-West_Germanic/skoh#Proto-West_Germanic"
             }
         ]
+    },
+    {
+        "id": 4609,
+        "text": "haitan",
+        "gloss": "to address, to call",
+        "fullGloss": "to address, to call; to name; to promise; to be called",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-West_Germanic/haitan#Proto-West_Germanic"
+            }
+        ]
+    },
+    {
+        "id": 4610,
+        "text": "rīkisōn",
+        "gloss": "to rule, reign",
+        "fullGloss": "to rule, reign",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-West_Germanic/rikison#Proto-West_Germanic"
+            }
+        ]
+    },
+    {
+        "id": 4614,
+        "text": "fregnan",
+        "gloss": "to ask",
+        "fullGloss": "to ask",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-West_Germanic/fregnan#Proto-West_Germanic"
+            }
+        ]
+    },
+    {
+        "id": 4618,
+        "text": "hauh",
+        "gloss": "high",
+        "fullGloss": "high",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-West_Germanic/hauh#Proto-West_Germanic"
+            }
+        ]
+    },
+    {
+        "id": 4619,
+        "text": "garāfijō",
+        "gloss": "count (the male ruler of a county)",
+        "fullGloss": "count (the male ruler of a county); earl; reeve, bailiff; officer, official",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-West_Germanic/garafijo#Proto-West_Germanic"
+            }
+        ]
+    },
+    {
+        "id": 4624,
+        "text": "beran",
+        "gloss": "to carry, to bear",
+        "fullGloss": "to carry, to bear",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-West_Germanic/beran#Proto-West_Germanic"
+            }
+        ]
+    },
+    {
+        "id": 4629,
+        "text": "bifastijan",
+        "gloss": "to make fast, secure",
+        "fullGloss": "to make fast, secure",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-West_Germanic/bifastijan#Proto-West_Germanic"
+            }
+        ]
+    },
+    {
+        "id": 4633,
+        "text": "liʀnōn",
+        "gloss": "to learn",
+        "fullGloss": "to learn",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-West_Germanic/liʀnon#Proto-West_Germanic"
+            }
+        ]
+    },
+    {
+        "id": 4642,
+        "text": "weraldi",
+        "gloss": "world",
+        "fullGloss": "world",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-West_Germanic/weraldi#Proto-West_Germanic"
+            }
+        ]
     }
 ]
