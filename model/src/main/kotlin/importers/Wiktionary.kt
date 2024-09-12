@@ -176,24 +176,40 @@ open class Wiktionary : Dictionary {
         return keyValue[0].trim() to keyValue[1].split(',').map { it.trim() }
     }
 
-    override fun lookup(repo: GraphRepository, language: Language, word: String): List<DictionaryWord> {
+    override fun lookup(repo: GraphRepository, language: Language, word: String): LookupResult {
+        val messages = mutableListOf<String>()
+
+        fun lookupSingle(language: Language, string: String, wordKind: String): DictionaryWord? {
+            val compoundResult = lookup(repo, language, string.trimStart('*')).result
+            if (compoundResult.isEmpty()) {
+                messages.add("Can't find $wordKind '$string'")
+            } else if (compoundResult.size > 1) {
+                messages.add("Multiple variants for $wordKind '$string'")
+            }
+            return compoundResult.singleOrNull()
+        }
+
+        fun lookupInheritedWord(repo: GraphRepository, word: InheritedWordTemplate): DictionaryRelatedWord? {
+            val language = repo.allLanguages().find { "wiktionary-id: ${word.language}" in (it.dictionarySettings ?: "") } ?: return null
+            val lookupResult = lookupSingle(language, word.word.trimStart('*'), "origin word") ?: return null
+            return DictionaryRelatedWord(Link.Origin, lookupResult)
+        }
+
         val normalizedWord = word.removeDiacritics()
         val source = loadWiktionaryPageSource(language, word)
             ?: loadWiktionaryPageSource(language, normalizedWord)
-            ?: return emptyList()
+            ?: return LookupResult.empty
         val wiktionaryPage = WiktionaryPage(source)
         if (!wiktionaryPage.parse(language.name, parseDictionarySettings(language.dictionarySettings))) {
-            return emptyList()
+            return LookupResult.empty
         }
-
 
         val inheritedWords = wiktionaryPage.etymologySection?.inheritedWords?.mapNotNull { lookupInheritedWord(repo, it) }
         val compoundComponents = wiktionaryPage.etymologySection?.compoundComponents?.map {
-            lookup(repo, language, it.trimStart('*')).singleOrNull()
+            lookupSingle(language, it, "compound member")
         }
 
-
-        return wiktionaryPage.posSections.map { section ->
+        val result = wiktionaryPage.posSections.map { section ->
             val gloss = section.senses.first()
             DictionaryWord(word, language, gloss,
                 fullGloss = section.senses.joinToString("; ").takeIf { it != gloss },
@@ -203,7 +219,7 @@ open class Wiktionary : Dictionary {
                 .apply {
                     inheritedWords?.let { relatedWords.addAll(it) }
                     section.alternativeOf?.let {
-                        val baseWord = lookup(repo, language, it).singleOrNull()
+                        val baseWord = lookupSingle(language, it, "base alternative")
                         if (baseWord != null) {
                             relatedWords.add(DictionaryRelatedWord(Link.Variation, baseWord))
                         }
@@ -215,12 +231,7 @@ open class Wiktionary : Dictionary {
                     }
                 }
         }
-    }
-
-    private fun lookupInheritedWord(repo: GraphRepository, word: InheritedWordTemplate): DictionaryRelatedWord? {
-        val language = repo.allLanguages().find { "wiktionary-id: ${word.language}" in (it.dictionarySettings ?: "") } ?: return null
-        val lookupResult = lookup(repo, language, word.word.trimStart('*')).singleOrNull() ?: return null
-        return DictionaryRelatedWord(Link.Origin, lookupResult)
+        return LookupResult(result, messages)
     }
 
     protected open fun loadWiktionaryPageSource(language: Language, normalizedWord: String): String? {
@@ -259,7 +270,7 @@ fun main() {
     val oe = ieRepo.languageByShortName("OE")!!
     val wiktionary = Wiktionary()
     val result = wiktionary.lookup(ieRepo, oe, "wer")
-    for (word in result) {
+    for (word in result.result) {
         println(word.fullGloss)
         println(word.pos)
         println(word.classes)

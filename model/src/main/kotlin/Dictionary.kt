@@ -1,7 +1,13 @@
 package ru.yole.etymograph
 
+data class LookupResult(val result: List<DictionaryWord>, val messages: List<String>) {
+    companion object {
+        val empty = LookupResult(emptyList(), emptyList())
+    }
+}
+
 interface Dictionary {
-    fun lookup(repo: GraphRepository, language: Language, word: String): List<DictionaryWord>
+    fun lookup(repo: GraphRepository, language: Language, word: String): LookupResult
 }
 
 data class DictionaryRelatedWord(val linkType: LinkType, val relatedWord: DictionaryWord)
@@ -30,20 +36,20 @@ fun augmentWithDictionary(repo: GraphRepository, language: Language, dictionary:
 
 fun augmentWordWithDictionary(repo: GraphRepository, dictionary: Dictionary, word: Word): String? {
     val lookupResult = dictionary.lookup(repo, word.language, word.text)
-    if (lookupResult.isEmpty()) {
+    if (lookupResult.result.isEmpty()) {
         return "Found no matching word for ${word.text}"
-    } else if (lookupResult.size > 1) {
-        val bestMatch = tryFindBestMatch(word, lookupResult)
+    } else if (lookupResult.result.size > 1) {
+        val bestMatch = tryFindBestMatch(word, lookupResult.result)
         if (bestMatch != null) {
             augmentWord(repo, word, bestMatch)
         } else {
             return "Found multiple matching words for ${word.text}: " +
-                    lookupResult.joinToString(", ") { it.source }
+                    lookupResult.result.joinToString(", ") { it.source }
         }
     } else {
-        augmentWord(repo, word, lookupResult.single())
+        augmentWord(repo, word, lookupResult.result.single())
     }
-    return null
+    return lookupResult.messages.joinToString("\n").takeIf { it.isNotEmpty() }
 }
 
 private fun tryFindBestMatch(word: Word, dictionaryWords: List<DictionaryWord>): DictionaryWord? {

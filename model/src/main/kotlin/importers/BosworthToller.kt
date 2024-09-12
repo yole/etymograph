@@ -277,14 +277,14 @@ class BosworthToller(dataPath: String) : Dictionary {
             .replace("ð", "þ")
             .replace("-", "")
 
-    override fun lookup(repo: GraphRepository, language: Language, word: String): List<DictionaryWord> {
+    override fun lookup(repo: GraphRepository, language: Language, word: String): LookupResult {
         val lookupText = word
             .replace("ġ", "g")
             .replace("ċ", "c")
             .replace("ð", "þ")
             .replace("-", "")
         val entryList = entries[lookupText] ?: entriesByVariant[lookupText] ?: entriesBySearchForm[lookupText]
-        return entryList?.map { entryToWord(it, language) } ?: emptyList()
+        return LookupResult(entryList?.map { entryToWord(it, language) } ?: emptyList(), emptyList())
     }
 
     private fun entryToWord(entry: BosworthTollerEntry, language: Language): DictionaryWord {

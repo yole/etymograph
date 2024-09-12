@@ -34,7 +34,7 @@ class WiktionaryParserTest {
 
         pgmc.dictionarySettings = "wiktionary-id: gem-pro"
 
-        val word = wiktionary.lookup(repo, oe, "bridel").single()
+        val word = wiktionary.lookup(repo, oe, "bridel").result.single()
         assertEquals("bridle", word.gloss)
         val origin = word.relatedWords.single()
         assertEquals("brigdilaz", origin.relatedWord.text)
@@ -47,7 +47,7 @@ class WiktionaryParserTest {
         oe.dictionarySettings = "ang-decl-noun-o-f: fem, o-stem"
         repo.addLanguage(oe)
 
-        val word = wiktionary.lookup(repo, oe, "nytwyrþnes").single()
+        val word = wiktionary.lookup(repo, oe, "nytwyrþnes").result.single()
         val variation = word.relatedWords.single()
         assertEquals("nytwierþnes", variation.relatedWord.text)
         assertEquals(2, variation.relatedWord.classes.size)
@@ -58,7 +58,7 @@ class WiktionaryParserTest {
         val oe = Language("Old English", "OE")
         repo.addLanguage(oe)
 
-        val word = wiktionary.lookup(repo, oe, "æþelboren").single()
+        val word = wiktionary.lookup(repo, oe, "æþelboren").result.single()
         assertEquals(2, word.compoundComponents.size)
     }
 }
