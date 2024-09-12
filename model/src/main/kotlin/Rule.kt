@@ -331,7 +331,7 @@ class Rule(
     }
 
     fun addedGrammaticalCategories(): List<WordCategory> {
-        return addedCategories?.let { cv -> parseCategoryValues(fromLanguage, cv).mapNotNull { it.first } } ?: emptyList()
+        return addedCategories?.let { cv -> parseCategoryValues(fromLanguage, cv).mapNotNull { it?.category } } ?: emptyList()
     }
 
     fun refersToPhoneme(phoneme: Phoneme): Boolean {
@@ -439,10 +439,10 @@ class RuleSequence(
     }
 }
 
-fun parseCategoryValues(language: Language, categoryValues: String): List<Pair<WordCategory?, WordCategoryValue?>> {
+fun parseCategoryValues(language: Language, categoryValues: String): List<WordCategoryWithValue?> {
     return categoryValues.split('.').filter { it.isNotEmpty() }.flatMap {
         language.findGrammaticalCategory(it)?.let { listOf(it) }
             ?: language.findNumberPersonCategories(it)
-            ?: listOf(null to null)
+            ?: listOf(null)
     }
 }

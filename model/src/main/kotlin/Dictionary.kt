@@ -10,7 +10,11 @@ interface Dictionary {
     fun lookup(repo: GraphRepository, language: Language, word: String): LookupResult
 }
 
-data class DictionaryRelatedWord(val linkType: LinkType, val relatedWord: DictionaryWord)
+data class DictionaryRelatedWord(
+    val linkType: LinkType,
+    val relatedWord: DictionaryWord,
+    val linkDetails: List<String> = emptyList()
+)
 
 data class DictionaryWord(
     val text: String,
@@ -124,7 +128,15 @@ fun augmentWord(repo: GraphRepository, word: Word, dictionaryWord: DictionaryWor
     for (relatedDictionaryWord in dictionaryWord.relatedWords) {
         if (repo.getLinksFrom(word).filter { it.type == relatedDictionaryWord.linkType }.isEmpty()) {
             val relatedWord = findOrCreateWordFromDictionary(repo, relatedDictionaryWord.relatedWord)
-            repo.addLink(word, relatedWord, relatedDictionaryWord.linkType, emptyList(), emptyList(), null)
+            var rules = emptyList<Rule>()
+            if (relatedDictionaryWord.linkDetails.isNotEmpty() && relatedDictionaryWord.linkType == Link.Derived) {
+                val rule = findMatchingRule(repo, word, relatedDictionaryWord.linkDetails.toSet())
+                if (rule != null) {
+                    rules = listOf(rule)
+                }
+            }
+
+            repo.addLink(word, relatedWord, relatedDictionaryWord.linkType, rules, emptyList(), null)
         }
     }
 

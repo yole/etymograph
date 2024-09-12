@@ -1,0 +1,39 @@
+==Old English==
+
+===Alternative forms===
+* {{alter|ang|bīon}}
+
+===Pronunciation===
+* {{ang-IPA|bēon}}
+
+===Etymology===
+From {{inh|ang|gmw-pro|*beun}}, from {{inh|ang|gem-pro|*beuną||to be}}, related to {{m|ang|būan||to dwell}}, ultimately from {{inh|ang|ine-pro|*bʰew-}}, {{m|ine-pro|*bʰuH-}}. The past tense forms are from {{der|ang|gem-pro|*wesaną}} (from which also {{m|ang|wesan}}), from {{der|ang|ine-pro|*h₂wes-}}.
+
+====Verb====
+{{ang-verb|bēon}}
+
+# to [[be]]; [[exist]]
+#* '''c. 992''', [[w:Ælfric of Eynsham|Ælfric]], [https://en.wikisource.org/wiki/The_Homilies_of_the_Anglo-Saxon_Church/XVIII "On the Greater Litany"]
+#*: {{quote|ang|Sē ðe gōd '''bēon''' wile, clypiġe tō ðām þe ǣfre is gōd, þæt hē hine gōdne ġewyrċe.|Let the one who wishes '''to be''' good call to the one who is always good so that he [the good one] will make him [the wisher] good.}}
+#* '''late 9th century''', [[w:Alfred the Great|King Alfred's]] [https://books.google.com/books?id=8sy8OOmW-ZAC&pg=PA90 translation] of ''{{w|The Consolation of Philosophy}}''
+#*: {{quote|ang|Þā cwæþ hē, "Wāst þū hwæt mann sīe?" Þā cwæþ iċ, "Iċ wāt þæt hit '''biþ''' sāwol and līchama."|Then he said, "Do you know what a person is?" So I said, "I know it''''s''' a soul and a body."}}
+#* '''c. 992''', [[w:Ælfric of Eynsham|Ælfric]], [https://en.wikisource.org/wiki/The_Homilies_of_the_Anglo-Saxon_Church/XXI "On the Lord's Ascension"]
+#*: {{quote|ang|Eft hē cwæð, "Iċ '''bēo''' mid ēow eallum dagum, ōð þisre worulde ġeendunge," sēðe lyfað and rīxað mid þām Ælmihtiġan Fæder and ðām Hālġum Gāste ā on ēċnysse. Āmen.|Again he said, "I will '''be''' with you on all days, until the ending of this world," who liveth and reigneth with the Almighty Father and the Holy Ghost ever to eternity. Amen.}}
+#* '''c. 992''', [[w:Ælfric of Eynsham|Ælfric]], "[https://en.wikisource.org/wiki/The_Homilies_of_the_Anglo-Saxon_Church/III The Passion of the Blessed Stephen Protomartyr]"
+#*: {{quote|ang|Ǣlċ lof '''bið''' on ende ġesungen.|All praise will '''be''' sung at the end.}}
+#* {{w|Blickling Homilies}}, [https://books.google.com/books?id=uGk8CwAAQBAJ&pg=PA160 "St. Andrew"]
+#*: {{quote|ang|Wē '''bēoþ''' mid þē swā hwæder swā þū færest.|We'll '''be''' with you wherever you '''go'''.}}
+# to [[become]]
+
+=====Usage notes=====
+* The verbs {{m|ang|bēon}} and {{m|ang|wesan}} both mean to [[be]], but in different circumstances. For most purposes, {{m|ang|wesan}} is used; {{m|ang|bēon}} is used for what is known as the "[[Wikipedia:Gnomic_aspect|gnomic]] present" and the future tense of to [[be]].
+** The gnomic present, in short, refers to anything which is a general truth, like ''Winter <u>biþ</u> ċealdost'' ("Winter <u>is</u> coldest"), or ''Fēower sīðum seofon <u>bēoþ</u> eahta and twēntiġ'' ("Four times seven <u>is</u> (lit. "<u>are</u>") twenty-eight"). Generally, statements about the self will not be gnomic. For example, although it may seem that a statement like ''I <u>am</u> a person'' is always true, such a statement is nonetheless rendered with {{m|ang|wesan}}: ''Iċ <u>eom</u> mann''.
+** To [[be]] is the only verb in Old English for which the future tense may be indicated with morphology instead of adverbs or context clues, and for this purpose, {{m|ang|bēon}} is used. So, ''I <u>am</u> the king'' is rendered as ''Iċ <u>eom</u> sē cyning'', but ''I <u>will be</u> the king'' is rendered as ''Iċ <u>bēo</u> sē cyning''. Note that {{m|ang|bēon}} is ''not'' used for any other verb's future tense; both ''I <u>see</u> it'' and ''I <u>will see</u> it'' are written as ''Iċ hit <u>ġesēo</u>''.
+** Both {{m|ang|bēon}} and {{m|ang|wesan}} share past tense forms.
+* Both {{m|ang|bēon}} and {{m|ang|wesan}} are copulative verbs, which means they are not transitive and do not take a direct object. Because of this, predicate nouns and adjectives will be in the [[nominative]] case. For example: ''Hēo <u>is</u> iċ'' ("She <u>is</u> I"), not ''*Hēo <u>is</u> mē'' ("She <u>is</u> me").
+
+=====Conjugation=====
+{{ang-conj|bēon<i>}}
+
+=====Descendants=====
+* {{desctree|enm|been}}

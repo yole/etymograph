@@ -1,0 +1,12 @@
+==Old English==
+
+===Alternative forms===
+* {{l|ang|biþ}}
+
+===Pronunciation===
+* {{IPA|ang|/byθ/}}
+
+===Verb===
+{{head|ang|verb form}}
+
+# {{inflection of|ang|bēon||3|s|pres}}

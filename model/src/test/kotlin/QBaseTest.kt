@@ -54,12 +54,10 @@ open class QBaseTest {
 
     fun GraphRepository.rule(
         text: String,
-        fromLanguage: Language = q,
-        toLanguage: Language = fromLanguage,
         name: String = "q", addedCategories: String? = null
     ): Rule {
-        return addRule(name, fromLanguage, toLanguage,
-            Rule.parseBranches(text, createParseContext(fromLanguage, toLanguage, this)),
+        return addRule(name, q, q,
+            Rule.parseBranches(text, createParseContext(q, q, this)),
             addedCategories = addedCategories
         )
     }
@@ -67,4 +65,16 @@ open class QBaseTest {
     fun applyRule(rule: Rule, word: Word): String {
         return rule.apply(word, emptyRepo).text
     }
+}
+
+fun GraphRepository.rule(
+    text: String,
+    fromLanguage: Language,
+    toLanguage: Language = fromLanguage,
+    name: String = "q", addedCategories: String? = null
+): Rule {
+    return addRule(name, fromLanguage, toLanguage,
+        Rule.parseBranches(text, createParseContext(fromLanguage, toLanguage, this)),
+        addedCategories = addedCategories
+    )
 }

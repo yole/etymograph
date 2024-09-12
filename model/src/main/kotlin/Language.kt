@@ -6,6 +6,8 @@ class WordCategoryValue(val name: String, val abbreviation: String)
 
 class WordCategory(var name: String, var pos: List<String>, var values: List<WordCategoryValue>)
 
+data class WordCategoryWithValue(val category: WordCategory, val value: WordCategoryValue)
+
 object KnownPartsOfSpeech {
     val preverb = WordCategoryValue("Preverb", "PV")
     val affix = WordCategoryValue("Affix", "AFF")
@@ -179,25 +181,25 @@ class Language(val name: String, val shortName: String) {
         return normalizeWord(ruleProducedWord.asOrthographic().text) == normalizeWord(attestedWord.asOrthographic().text)
     }
 
-    fun findGrammaticalCategory(abbreviation: String): Pair<WordCategory, WordCategoryValue>? {
+    fun findGrammaticalCategory(abbreviation: String): WordCategoryWithValue? {
         return findWordCategory(abbreviation, grammaticalCategories)
     }
 
-    fun findWordClass(abbreviation: String): Pair<WordCategory, WordCategoryValue>? {
+    fun findWordClass(abbreviation: String): WordCategoryWithValue? {
         return findWordCategory(abbreviation, wordClasses)
     }
 
-    private fun findWordCategory(abbreviation: String, wordCategories: List<WordCategory>): Pair<WordCategory, WordCategoryValue>? {
+    private fun findWordCategory(abbreviation: String, wordCategories: List<WordCategory>): WordCategoryWithValue? {
         for (category in wordCategories) {
             val gcValue = category.values.find { it.abbreviation == abbreviation }
             if (gcValue != null) {
-                return category to gcValue
+                return WordCategoryWithValue(category, gcValue)
             }
         }
         return null
     }
 
-    fun findNumberPersonCategories(abbreviation: String): List<Pair<WordCategory, WordCategoryValue?>>? {
+    fun findNumberPersonCategories(abbreviation: String): List<WordCategoryWithValue>? {
         if (abbreviation.first().isDigit()) {
             val personCatValue = findGrammaticalCategory(abbreviation.take(1)) ?: return null
             val numberCatValue = findGrammaticalCategory(abbreviation.drop(1)) ?: return null

@@ -232,7 +232,7 @@ open class InMemoryGraphRepository : GraphRepository() {
     private fun grammaticalCategoriesIntersect(w: Word, addedGrammaticalCategories: List<WordCategory>): Boolean {
         val suffix = w.grammaticalCategorySuffix(this) ?: return false
         val gc = parseCategoryValues(w.language, suffix)
-        return gc.any { it.first != null && it.first in addedGrammaticalCategories }
+        return gc.any { it != null && it.category in addedGrammaticalCategories }
     }
 
     private fun considerForParseCandidates(rule: Rule) =
@@ -294,9 +294,9 @@ open class InMemoryGraphRepository : GraphRepository() {
             val segments = mutableListOf<WordSegment>()
             var index = 0
             for (component in compound.components) {
-                val noramalizedComponentText = component.text.removeSuffix("-")
-                val componentLength = noramalizedComponentText.length
-                if (index + componentLength > word.text.length || word.text.substring(index, index + componentLength) != noramalizedComponentText) {
+                val normalizedComponentText = component.text.removeSuffix("-")
+                val componentLength = normalizedComponentText.length
+                if (index + componentLength > word.text.length || word.text.substring(index, index + componentLength) != normalizedComponentText) {
                     break
                 }
                 segments.add(WordSegment(index, componentLength, null, component, null, "clitic" in component.classes))

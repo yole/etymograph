@@ -98,10 +98,12 @@ class WiktionaryPosSection(
 }
 
 data class InheritedWordTemplate(val language: String, val word: String)
+data class InflectionOfTemplate(val baseWord: String, val inflectionAttributes: List<String>)
 
 class WiktionaryEtymologySection : WiktionarySection() {
     val inheritedWords = mutableListOf<InheritedWordTemplate>()
     var compoundComponents: List<String>? = null
+    var inflectionOf: InflectionOfTemplate? = null
 
     override fun parseSectionLine(line: String) {
         filterTemplates(line)
@@ -120,7 +122,18 @@ class WiktionaryEtymologySection : WiktionarySection() {
         else if (name == "suffix" && parameters.size >= 3) {
             compoundComponents = listOf(parameters[1], "-" + parameters[2])
         }
+        else if (name == "inflection of" && parameters.size >= 3) {
+            inflectionOf = InflectionOfTemplate(parameters[1], remapInflectionAttributes(parameters.drop(3)))
+        }
         return ""
+    }
+
+    private fun remapInflectionAttributes(attributes: List<String>): List<String> {
+        return attributes.map { inflectionAttributesMap[it] ?: it }
+    }
+
+    companion object {
+        val inflectionAttributesMap = mapOf("s" to "s", "p" to "pl")
     }
 }
 
@@ -214,6 +227,9 @@ open class Wiktionary : Dictionary {
         val compoundComponents = wiktionaryPage.etymologySection?.compoundComponents?.map {
             lookupSingle(language, it, "compound member")
         }
+        val inflectionOf = wiktionaryPage.etymologySection?.inflectionOf?.let {
+            lookupSingle(language, it.baseWord, "inflection lemma")
+        }
 
         val result = wiktionaryPage.posSections.map { section ->
             val gloss = section.senses.first()
@@ -233,6 +249,11 @@ open class Wiktionary : Dictionary {
                     compoundComponents?.let {
                         if (it.all { c -> c != null }) {
                             this.compoundComponents.addAll(it as Collection<DictionaryWord>)
+                        }
+                    }
+                    wiktionaryPage.etymologySection?.inflectionOf?.let {
+                        if (inflectionOf != null) {
+                            relatedWords.add(DictionaryRelatedWord(Link.Derived, inflectionOf, it.inflectionAttributes))
                         }
                     }
                 }

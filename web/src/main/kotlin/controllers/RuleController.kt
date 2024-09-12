@@ -219,8 +219,8 @@ class RuleController {
     private fun toReadableCategories(language: Language, addedCategories: String?): String? {
         if (addedCategories == null) return null
         val gcValues = parseCategoryValues(language, addedCategories)
-        return gcValues.joinToString(", ") { (category, value) ->
-            if (category == null || value == null) "?" else "${category.name}: ${value.name}"
+        return gcValues.joinToString(", ") { categoryValue ->
+            if (categoryValue == null) "?" else "${categoryValue.category.name}: ${categoryValue.value.name}"
         }
     }
 

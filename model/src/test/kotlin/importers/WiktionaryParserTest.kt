@@ -6,6 +6,9 @@ import org.junit.Test
 import ru.yole.etymograph.GraphRepository
 import ru.yole.etymograph.InMemoryGraphRepository
 import ru.yole.etymograph.Language
+import ru.yole.etymograph.WordCategory
+import ru.yole.etymograph.WordCategoryValue
+import ru.yole.etymograph.rule
 
 class TestWiktionary : Wiktionary() {
     override fun loadWiktionaryPageSource(language: Language, title: String): String? {
@@ -18,17 +21,18 @@ class TestWiktionary : Wiktionary() {
 class WiktionaryParserTest {
     lateinit var wiktionary: TestWiktionary
     lateinit var repo: GraphRepository
+    lateinit var oe: Language
 
     @Before
     fun setUp() {
         wiktionary = TestWiktionary()
         repo = InMemoryGraphRepository()
+        oe = Language("Old English", "OE")
+        repo.addLanguage(oe)
     }
 
     @Test
     fun parseOrigin() {
-        val oe = Language("Old English", "OE")
-        repo.addLanguage(oe)
         val pgmc = Language("Proto-Germanic", "PGmc")
         repo.addLanguage(pgmc)
 
@@ -43,9 +47,7 @@ class WiktionaryParserTest {
 
     @Test
     fun parseAlternativeForm() {
-        val oe = Language("Old English", "OE")
         oe.dictionarySettings = "ang-decl-noun-o-f: fem, o-stem"
-        repo.addLanguage(oe)
 
         val word = wiktionary.lookup(repo, oe, "nytwyrþnes").result.single()
         val variation = word.relatedWords.single()
@@ -55,10 +57,24 @@ class WiktionaryParserTest {
 
     @Test
     fun parseCompound() {
-        val oe = Language("Old English", "OE")
-        repo.addLanguage(oe)
-
         val word = wiktionary.lookup(repo, oe, "æþelboren").result.single()
         assertEquals(2, word.compoundComponents.size)
+    }
+
+    @Test
+    fun parseInflectionOf() {
+        val word = wiktionary.lookup(repo, oe, "byþ").result.single()
+        val baseWord = word.relatedWords.single()
+        assertEquals(listOf("3", "sg", "pres"), baseWord.linkDetails)
+
+        /*
+        oe.grammaticalCategories.apply {
+            add(WordCategory("Tense", listOf("V"), listOf(WordCategoryValue("Present", "PRES"))))
+            add(WordCategory("Person", listOf("V"), listOf(WordCategoryValue("Third", "3"))))
+            add(WordCategory("Number", listOf("V"), listOf(WordCategoryValue("Singular", "SG"))))
+        }
+
+        val rule = repo.rule("- no change", oe, addedCategories = ".PRES.3SG")
+         */
     }
 }
