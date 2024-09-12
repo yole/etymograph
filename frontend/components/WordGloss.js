@@ -18,4 +18,17 @@ export default function WordGloss(params) {
     return <>
         {gloss}{glossCategory && <span className="glossAbbreviation">{glossCategory}</span>}
     </>
+
+}
+export function WordFullGloss(params) {
+    const word = params.word
+    const shortGlossIndex = word.fullGloss.toLowerCase().indexOf(word.gloss.toLowerCase())
+    if (shortGlossIndex >= 0) {
+        return <>
+            {word.fullGloss.substring(0, shortGlossIndex)}
+            <b>{word.gloss}</b>
+            {word.fullGloss.substring(shortGlossIndex + word.gloss.length)}
+        </>
+    }
+    return word.fullGloss
 }

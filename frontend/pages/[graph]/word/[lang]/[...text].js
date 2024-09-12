@@ -19,7 +19,7 @@ import RuleLinkForm from "@/forms/RuleLinkForm";
 import EditLinkForm from "@/forms/EditLinkForm";
 import {GraphContext} from "@/components/Contexts";
 import Breadcrumbs from "@/components/Breadcrumbs";
-import WordGloss from "@/components/WordGloss";
+import WordGloss, {WordFullGloss} from "@/components/WordGloss";
 
 export const config = {
     unstable_runtimeJS: true
@@ -357,7 +357,7 @@ function SingleWord(params) {
 
         {!editMode && <>
             {word.pos && <div>{word.pos} {word.classes.length > 0 && "(" + word.classes.join(", ") + ")"}</div>}
-            <p>{word.fullGloss !== null && word.fullGloss !== "" ? word.fullGloss : <WordGloss gloss={word.gloss}/>}</p>
+            <p>{word.fullGloss !== null && word.fullGloss !== "" ? <WordFullGloss word={word}/> : <WordGloss gloss={word.gloss}/>}</p>
             {word.notes && <p>{word.notes}</p>}
             <SourceRefs source={word.source}/>
 
