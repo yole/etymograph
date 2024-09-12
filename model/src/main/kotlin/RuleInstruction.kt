@@ -384,7 +384,9 @@ class ApplyStressInstruction(val language: Language, arg: String) : RuleInstruct
         if (root) {
             val segments = graph.restoreSegments(word).segments
             val rootSegment = segments?.firstOrNull {
-                it.sourceRule == null && (it.sourceWord == null || it.sourceWord.pos != KnownPartsOfSpeech.preverb.abbreviation)
+                it.sourceRule == null && (
+                        it.sourceWord == null || (it.sourceWord.pos != KnownPartsOfSpeech.preverb.abbreviation &&
+                        it.sourceWord.pos != KnownPartsOfSpeech.affix.abbreviation))
             }
             if (rootSegment != null) {
                 syllables = syllables.filter { it.startIndex >= rootSegment.firstCharacter }

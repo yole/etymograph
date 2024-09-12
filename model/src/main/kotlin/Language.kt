@@ -8,6 +8,7 @@ class WordCategory(var name: String, var pos: List<String>, var values: List<Wor
 
 object KnownPartsOfSpeech {
     val preverb = WordCategoryValue("Preverb", "PV")
+    val affix = WordCategoryValue("Affix", "AFF")
     val properName = WordCategoryValue("Proper Name", "NP")
 }
 

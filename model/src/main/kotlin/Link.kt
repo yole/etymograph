@@ -33,5 +33,5 @@ class Compound(
     notes: String?
 ) : LangEntity(id, source, notes) {
     fun isDerivation(): Boolean =
-        components.any { c -> c.pos == KnownPartsOfSpeech.preverb.abbreviation }
+        components.any { c -> c.pos == KnownPartsOfSpeech.preverb.abbreviation || c.pos == KnownPartsOfSpeech.affix.abbreviation }
 }
