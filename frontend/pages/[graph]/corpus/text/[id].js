@@ -98,11 +98,12 @@ export default function CorpusText(params) {
         router.replace(router.asPath)
     }
 
-    function wordSubmitted(word) {
+    function wordSubmitted(word, baseWord) {
         setWordFormVisible(false)
         associateWord(graph, router.query.id, word.id, wordIndex).then(() => {
-            if (word.gloss === "" || word.gloss === null) {
-                router.push(`/${graph}/word/${word.language}/${word.text}`)
+            const targetWord = baseWord !== undefined ? baseWord : word
+            if (targetWord.gloss === "" || targetWord.gloss === null) {
+                router.push(`/${graph}/word/${targetWord.language}/${targetWord.text}`)
             }
             else {
                 router.replace(router.asPath)
@@ -180,7 +181,9 @@ export default function CorpusText(params) {
                                           text: predefWord
                                       }}
                                       languageReadOnly={true}
-                                      textReadOnly={true}
+                                      linkType=">"
+                                      reverseLink={true}
+                                      linkTargetText={predefWord}
                                       cancelled={() => setWordFormVisible(false)}/>
                         </>
                     }

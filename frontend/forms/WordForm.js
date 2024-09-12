@@ -20,16 +20,34 @@ export default function WordForm(props) {
 
     async function submitted(wordJson, data) {
         if (isAddingLink) {
-            let fromId, toId
+            let linkTarget = props.linkTarget
+            if (props.linkTargetText !== undefined) {
+                if (wordJson.text === props.linkTargetText) {
+                    if (props.submitted !== undefined) {
+                        props.submitted(wordJson)
+                    }
+                    return
+                }
+                else {
+                    const addWordResponse = await addWord(graph, data.language, props.linkTargetText)
+                    linkTarget = await addWordResponse.json()
+                }
+            }
+
+            let fromId, toId;
             if (props.reverseLink === true) {
-                [fromId, toId] = [props.linkTarget.id, wordJson.id]
+                [fromId, toId] = [linkTarget.id, wordJson.id]
             } else {
-                [fromId, toId] = [wordJson.id, props.linkTarget.id]
+                [fromId, toId] = [wordJson.id, linkTarget.id]
             }
             const r = await addLink(graph, fromId, toId, props.linkType, data.linkRuleNames, data.linkSource, data.linkNotes)
             if (r.status !== 200) {
                 const jr = await r.json()
                 return {message: jr.message}
+            }
+            if (props.linkTargetText !== undefined && props.submitted !== undefined) {
+                props.submitted(linkTarget, wordJson)
+                return
             }
         }
         else if (props.newCompound === true) {
