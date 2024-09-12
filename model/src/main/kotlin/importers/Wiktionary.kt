@@ -192,8 +192,11 @@ open class Wiktionary : Dictionary {
             lookup(repo, language, it.trimStart('*')).singleOrNull()
         }
 
+
         return wiktionaryPage.posSections.map { section ->
-            DictionaryWord(word, language, section.senses.first(), section.senses.joinToString("; "),
+            val gloss = section.senses.first()
+            DictionaryWord(word, language, gloss,
+                fullGloss = section.senses.joinToString("; ").takeIf { it != gloss },
                 pos = language.pos.find { it.name == section.pos }?.abbreviation,
                 classes = section.classes,
                 source = "https://en.wiktionary.org/wiki/${langPrefix(language)}$normalizedWord#${language.name.replace(' ', '_')}")
