@@ -48,7 +48,7 @@ fun augmentWordWithDictionary(repo: GraphRepository, dictionary: Dictionary, wor
             augmentWord(repo, word, bestMatch)
         } else {
             return "Found multiple matching words for ${word.text}: " +
-                    lookupResult.result.joinToString(", ") { it.source }
+                    lookupResult.result.joinToString(", ") { it.gloss ?: "?" }
         }
     } else {
         augmentWord(repo, word, lookupResult.result.single())
