@@ -136,7 +136,7 @@ class Word(
         val compound = graph.findCompoundsByCompoundWord(this).firstOrNull()
         if (compound != null) {
             return compound.components.joinToString("-") {
-                it.getOrComputeGloss(graph)?.substringBefore(", ") ?: "?"
+                it.getOrComputeGloss(graph)?.substringBefore(", ")?.removePrefix("-")?.removeSuffix("-") ?: "?"
             }
         }
         val derivation = baseWordLink(graph)

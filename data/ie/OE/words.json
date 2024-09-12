@@ -677,11 +677,15 @@
         "fullGloss": "a thing",
         "pos": "N",
         "classes": [
-            "neut"
+            "neut",
+            "a-stem"
         ],
         "sourceRefs": [
             {
                 "refText": "https://bosworthtoller.com/31866"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/þing#Old_English"
             }
         ]
     },
@@ -10146,7 +10150,8 @@
     {
         "id": 3275,
         "text": "hwierfan",
-        "gloss": "to turn, to change",
+        "gloss": "to turn",
+        "fullGloss": "to turn, to change",
         "sourceRefs": [
             {
                 "pubId": 5,
@@ -13921,5 +13926,466 @@
                 "refText": "https://en.wiktionary.org/wiki/soþlice#Old_English"
             }
         ]
+    },
+    {
+        "id": 4651,
+        "text": "bēod",
+        "gloss": "table",
+        "fullGloss": "table; dish",
+        "pos": "N",
+        "classes": [
+            "masc",
+            "a-stem"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/beod#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 4652,
+        "text": "bēoda"
+    },
+    {
+        "id": 4654,
+        "text": "ǣmtiġ",
+        "gloss": "empty",
+        "fullGloss": "empty, vacant; free, idle; unmarried; barren",
+        "pos": "ADJ",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/æmtig#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 4655,
+        "text": "hlāfe"
+    },
+    {
+        "id": 4656,
+        "text": "wlǣtta",
+        "gloss": "nausea",
+        "fullGloss": "nausea; deformity, disfigurement",
+        "pos": "N",
+        "classes": [
+            "masc",
+            "n-stem"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/wlætta#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 4657,
+        "text": "wlǣttan"
+    },
+    {
+        "id": 4659,
+        "text": "ġehwyrfed"
+    },
+    {
+        "id": 4660,
+        "text": "byþ",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/byþ#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 4661,
+        "text": "mannes"
+    },
+    {
+        "id": 4662,
+        "text": "ġehwyrfan",
+        "gloss": "to turn"
+    },
+    {
+        "id": 4664,
+        "text": "heortan"
+    },
+    {
+        "id": 4665,
+        "text": "ġestrangian",
+        "gloss": "strengthen",
+        "pos": "V"
+    },
+    {
+        "id": 4666,
+        "text": "ġestrangie"
+    },
+    {
+        "id": 4667,
+        "text": "eom"
+    },
+    {
+        "id": 4668,
+        "text": "mæġen",
+        "gloss": "strength",
+        "fullGloss": "strength, power; force, army; virtue, efficacy, efficiency; very",
+        "pos": "N",
+        "classes": [
+            "neut",
+            "a-stem"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/mægen#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 4670,
+        "text": "wera"
+    },
+    {
+        "id": 4671,
+        "text": "furþon",
+        "gloss": "even"
+    },
+    {
+        "id": 4672,
+        "text": "litling",
+        "gloss": "child",
+        "pos": "N",
+        "classes": [
+            "masc",
+            "a-stem"
+        ]
+    },
+    {
+        "id": 4673,
+        "text": "litlingas"
+    },
+    {
+        "id": 4674,
+        "text": "forbīġan",
+        "gloss": "shun",
+        "pos": "V"
+    },
+    {
+        "id": 4675,
+        "text": "seċġe"
+    },
+    {
+        "id": 4676,
+        "text": "beþurfan"
+    },
+    {
+        "id": 4677,
+        "text": "beþurfon",
+        "gloss": "to need"
+    },
+    {
+        "id": 4678,
+        "text": "be-",
+        "gloss": "be-",
+        "pos": "AFF"
+    },
+    {
+        "id": 4680,
+        "text": "þurfan",
+        "gloss": "to need",
+        "fullGloss": "to need; to be obliged (to do something)",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/þurfan#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 4682,
+        "text": "cōc",
+        "gloss": "cook",
+        "pos": "N"
+    },
+    {
+        "id": 4683,
+        "text": "cōcce"
+    },
+    {
+        "id": 4684,
+        "text": "ǣnig",
+        "gloss": "any",
+        "fullGloss": "any; anyone",
+        "pos": "PRON",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/ænig#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 4685,
+        "text": "ǣnigum"
+    },
+    {
+        "id": 4687,
+        "text": "þinge"
+    },
+    {
+        "id": 4689,
+        "text": "ādrīfaþ"
+    },
+    {
+        "id": 4691,
+        "text": "ġif",
+        "gloss": "if"
+    },
+    {
+        "id": 4692,
+        "text": "ēowrum"
+    },
+    {
+        "id": 4693,
+        "text": "ġefērscype",
+        "gloss": "fellowship",
+        "pos": "N"
+    },
+    {
+        "id": 4694,
+        "text": "etan",
+        "gloss": "to eat",
+        "pos": "V",
+        "classes": [
+            "v-strong-5"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/etan#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 4695,
+        "text": "etaþ"
+    },
+    {
+        "id": 4697,
+        "text": "ēowre"
+    },
+    {
+        "id": 4698,
+        "text": "flæsċmette"
+    },
+    {
+        "id": 4699,
+        "text": "flæsċmettas"
+    },
+    {
+        "id": 4700,
+        "text": "flæsċ",
+        "gloss": "flesh",
+        "fullGloss": "flesh; meat",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/flæsc#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 4702,
+        "text": "mette"
+    },
+    {
+        "id": 4703,
+        "text": "hrēawe"
+    },
+    {
+        "id": 4704,
+        "text": "hrēaw",
+        "gloss": "raw",
+        "pos": "ADJ"
+    },
+    {
+        "id": 4706,
+        "text": "fǣtt",
+        "gloss": "fat",
+        "fullGloss": "fat; fattened",
+        "pos": "ADJ",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/fætt#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 4708,
+        "text": "reċċaþ"
+    },
+    {
+        "id": 4709,
+        "text": "cræftes"
+    },
+    {
+        "id": 4710,
+        "text": "sēoþan",
+        "gloss": "to cook",
+        "fullGloss": "to cook; to boil",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/seoþan#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 4712,
+        "text": "sēoþenne"
+    },
+    {
+        "id": 4713,
+        "text": "brǣdan",
+        "gloss": "to roast",
+        "fullGloss": "to roast, broil, warm",
+        "pos": "V"
+    },
+    {
+        "id": 4715,
+        "text": "brǣdenne"
+    },
+    {
+        "id": 4716,
+        "text": "synd",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/synd#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 4717,
+        "text": "hlāford",
+        "gloss": "lord",
+        "fullGloss": "lord, master of servants or slaves; male head of a household; master, owner of an animal",
+        "pos": "N",
+        "classes": [
+            "masc",
+            "a-stem"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/hlaford#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 4718,
+        "text": "þēahhwæþere",
+        "gloss": "nevertheless"
+    },
+    {
+        "id": 4719,
+        "text": "þrǣl",
+        "gloss": "slave",
+        "pos": "N",
+        "classes": [
+            "masc",
+            "a-stem"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/þræl#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 4720,
+        "text": "þrǣlas"
+    },
+    {
+        "id": 4721,
+        "text": "sylfe"
+    },
+    {
+        "id": 4722,
+        "text": "selfe"
+    },
+    {
+        "id": 4723,
+        "text": "bæcere",
+        "gloss": "baker",
+        "fullGloss": "baker (person who bakes and sells bread, etc)",
+        "pos": "N",
+        "classes": [
+            "masc",
+            "a-stem"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/bæcere#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 4725,
+        "text": "sume"
+    },
+    {
+        "id": 4726,
+        "text": "hwīle",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/hwile#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 4727,
+        "text": "hwīl",
+        "gloss": "time",
+        "pos": "N",
+        "classes": [
+            "fem",
+            "o-stem"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/hwil#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 4729,
+        "text": "nā",
+        "gloss": "not"
+    },
+    {
+        "id": 4730,
+        "text": "lange"
+    },
+    {
+        "id": 4732,
+        "text": "for-þȳ",
+        "gloss": "for this reason"
+    },
+    {
+        "id": 4733,
+        "text": "ādrȳfaþ"
+    },
+    {
+        "id": 4734,
+        "text": "hwām",
+        "pos": "PRON",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/hwam#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 4735,
+        "text": "hwā",
+        "gloss": "who"
     }
 ]

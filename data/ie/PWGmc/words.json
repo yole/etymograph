@@ -3116,5 +3116,77 @@
                 "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-West_Germanic/weraldi#Proto-West_Germanic"
             }
         ]
+    },
+    {
+        "id": 4653,
+        "text": "beud",
+        "gloss": "dish, table",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-West_Germanic/beud#Proto-West_Germanic"
+            }
+        ]
+    },
+    {
+        "id": 4658,
+        "text": "wlātiþō",
+        "gloss": "nausea, disgust, loathing",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-West_Germanic/wlatiþo#Proto-West_Germanic"
+            }
+        ]
+    },
+    {
+        "id": 4681,
+        "text": "þurban",
+        "gloss": "to need",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-West_Germanic/þurban#Proto-West_Germanic"
+            }
+        ]
+    },
+    {
+        "id": 4688,
+        "text": "þing",
+        "gloss": "court session, lawsuit",
+        "fullGloss": "court session, lawsuit; affair, matter; thing, object",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-West_Germanic/þing#Proto-West_Germanic"
+            }
+        ]
+    },
+    {
+        "id": 4696,
+        "text": "etan",
+        "gloss": "to eat",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-West_Germanic/etan#Proto-West_Germanic"
+            }
+        ]
+    },
+    {
+        "id": 4707,
+        "text": "faitid",
+        "gloss": "fattened, made fat",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-West_Germanic/faitid#Proto-West_Germanic"
+            }
+        ]
+    },
+    {
+        "id": 4728,
+        "text": "hwīlu",
+        "gloss": "period of rest, pause",
+        "fullGloss": "period of rest, pause; time, period of time, while",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-West_Germanic/hwilu#Proto-West_Germanic"
+            }
+        ]
     }
 ]

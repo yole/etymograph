@@ -3346,5 +3346,45 @@
                 "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-Germanic/alamahtigaz#Proto-Germanic"
             }
         ]
+    },
+    {
+        "id": 4669,
+        "text": "maganą",
+        "gloss": "to be able, may",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-Germanic/magana#Proto-Germanic"
+            }
+        ]
+    },
+    {
+        "id": 4686,
+        "text": "ainagaz",
+        "gloss": "only; sole; singular; unique",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-Germanic/ainagaz#Proto-Germanic"
+            }
+        ]
+    },
+    {
+        "id": 4711,
+        "text": "seuþaną",
+        "gloss": "to seethe; boil",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-Germanic/seuþana#Proto-Germanic"
+            }
+        ]
+    },
+    {
+        "id": 4724,
+        "text": "bakārijaz",
+        "gloss": "One who creates baked goods; baker",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-Germanic/bakarijaz#Proto-Germanic"
+            }
+        ]
     }
 ]
