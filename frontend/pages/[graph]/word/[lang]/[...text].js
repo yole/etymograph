@@ -92,6 +92,7 @@ function WordLinkComponent(params) {
     }
 
     return <div>
+        {params.showType && params.linkType.type + ": "}
         <WordLink word={linkWord.word} baseLanguage={baseWord.language} gloss={true}/>
         {linkWord.ruleIds.length > 0 && <>&nbsp;(
             {linkWord.ruleResults.length > 0 && <>
@@ -207,11 +208,15 @@ function CompoundListComponent(params) {
 
 function WordLinkTypeComponent(params) {
     return params.links.map(l => <>
-        <div>{l.type}</div>
-        {l.words.map(w => <WordLinkComponent key={w.id} baseWord={params.word} linkWord={w} linkType={l}
-                                             directionFrom={params.directionFrom}/>)}
-        <p/>
-    </>)
+        {l.words.length === 1 && params.directionFrom &&
+            <WordLinkComponent key={l.words[0].id} baseWord={params.word} linkWord={l.words[0]} linkType={l}
+                               directionFrom={params.directionFrom} showType={true}/>}
+        {(l.words.length !== 1 || !params.directionFrom) && <p>
+            <div>{l.type}</div>
+            {l.words.map(w => <WordLinkComponent key={w.id} baseWord={params.word} linkWord={w} linkType={l}
+                                                 directionFrom={params.directionFrom}/>)}
+        </p>}
+    </>);
 }
 
 function SingleWord(params) {
