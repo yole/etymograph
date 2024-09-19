@@ -1842,7 +1842,7 @@
     },
     {
         "id": 1744,
-        "text": "AW-",
+        "text": "AWA-",
         "gloss": "away",
         "pos": "away",
         "sourceRefs": [
@@ -2051,6 +2051,67 @@
             },
             {
                 "refText": "https://eldamo.org/content/words/word-3368191295.html"
+            }
+        ]
+    },
+    {
+        "id": 1922,
+        "text": "LUT-",
+        "gloss": "float",
+        "sourceRefs": [
+            {
+                "refText": "https://eldamo.org/content/words/word-907739005.html"
+            }
+        ]
+    },
+    {
+        "id": 1959,
+        "text": "RINGI-",
+        "gloss": "cold"
+    },
+    {
+        "id": 1965,
+        "text": "PHUY-",
+        "gloss": "breathe out",
+        "sourceRefs": [
+            {
+                "refText": "https://eldamo.org/content/words/word-274140471.html"
+            }
+        ]
+    },
+    {
+        "id": 1975,
+        "text": "LUT-",
+        "gloss": "flow",
+        "sourceRefs": [
+            {
+                "refText": "https://eldamo.org/content/words/word-907739005.html"
+            }
+        ]
+    },
+    {
+        "id": 1988,
+        "text": "KHAY-",
+        "gloss": "far, distant, remote",
+        "sourceRefs": [
+            {
+                "refText": "https://eldamo.org/content/words/word-3171535983.html"
+            }
+        ]
+    },
+    {
+        "id": 2009,
+        "text": "epe",
+        "gloss": "after",
+        "fullGloss": "after of time; after or behind of place"
+    },
+    {
+        "id": 2012,
+        "text": "PHEN-",
+        "gloss": "door",
+        "sourceRefs": [
+            {
+                "refText": "https://eldamo.org/content/words/word-1429547705.html"
             }
         ]
     }

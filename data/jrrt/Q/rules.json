@@ -3150,9 +3150,19 @@
                     }
                 ],
                 "condition": {
-                    "type": "leaf",
-                    "cond": "EndsWith",
-                    "characters": "r"
+                    "type": "or",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "r"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "n"
+                        }
+                    ]
                 }
             },
             {

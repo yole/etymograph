@@ -1443,6 +1443,9 @@
             {
                 "pubId": 7,
                 "refText": "8"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-3893088687.html"
             }
         ]
     },
@@ -2711,6 +2714,7 @@
         "id": 379,
         "text": "et-",
         "gloss": "out",
+        "pos": "AFF",
         "sourceRefs": [
             {
                 "pubId": 1,
@@ -3087,6 +3091,9 @@
             {
                 "pubId": 1,
                 "refText": "103"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-82428757.html"
             }
         ]
     },
@@ -3650,11 +3657,15 @@
         "id": 615,
         "text": "tir-",
         "gloss": "guard",
+        "fullGloss": "to watch (over), guard, heed; to look (at), gaze, observe",
         "pos": "V",
         "sourceRefs": [
             {
                 "pubId": 2,
                 "refText": "222"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-2692213205.html"
             }
         ]
     },
@@ -4827,6 +4838,7 @@
         "id": 759,
         "text": "en-",
         "gloss": "again",
+        "pos": "AFF",
         "sourceRefs": [
             {
                 "pubId": 1,
@@ -6083,9 +6095,14 @@
     },
     {
         "id": 991,
-        "text": "mél-",
+        "text": "mel-",
         "gloss": "love",
-        "pos": "V"
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "refText": "https://eldamo.org/content/words/word-1131725613.html"
+            }
+        ]
     },
     {
         "id": 992,
@@ -6120,10 +6137,6 @@
         "text": "mélië",
         "gloss": "loving",
         "pos": "N"
-    },
-    {
-        "id": 999,
-        "text": "mel-"
     },
     {
         "id": 1000,
@@ -7669,5 +7682,516 @@
                 "refText": "https://eldamo.org/content/words/word-1115019499.html"
             }
         ]
+    },
+    {
+        "id": 1909,
+        "text": "yucainen",
+        "gloss": "twenty"
+    },
+    {
+        "id": 1910,
+        "text": "yu-",
+        "gloss": "both",
+        "sourceRefs": [
+            {
+                "refText": "https://eldamo.org/content/words/word-615513863.html"
+            }
+        ]
+    },
+    {
+        "id": 1912,
+        "text": "cainen",
+        "gloss": "ten",
+        "sourceRefs": [
+            {
+                "refText": "https://eldamo.org/content/words/word-2620941289.html"
+            }
+        ]
+    },
+    {
+        "id": 1914,
+        "text": "ava-",
+        "gloss": "depart",
+        "fullGloss": "depart, disappear, go away, be lost",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "refText": "https://eldamo.org/content/words/word-864466721.html"
+            }
+        ]
+    },
+    {
+        "id": 1915,
+        "text": "Anduine",
+        "gloss": "Long River",
+        "sourceRefs": [
+            {
+                "refText": "https://eldamo.org/content/words/word-531245239.html"
+            }
+        ]
+    },
+    {
+        "id": 1918,
+        "text": "valútier"
+    },
+    {
+        "id": 1919,
+        "text": "valút-",
+        "pos": "V"
+    },
+    {
+        "id": 1920,
+        "text": "va",
+        "gloss": "away (from)",
+        "sourceRefs": [
+            {
+                "refText": "https://eldamo.org/content/words/word-2145570473.html"
+            }
+        ]
+    },
+    {
+        "id": 1923,
+        "text": "aluvar"
+    },
+    {
+        "id": 1924,
+        "text": "ala-",
+        "gloss": "deny",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "refText": "https://eldamo.org/content/words/word-1381089033.html"
+            }
+        ]
+    },
+    {
+        "id": 1925,
+        "text": "coivienyo"
+    },
+    {
+        "id": 1926,
+        "text": "coivie",
+        "gloss": "life",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "refText": "https://eldamo.org/content/words/word-2901136171.html"
+            }
+        ]
+    },
+    {
+        "id": 1927,
+        "text": "nantule"
+    },
+    {
+        "id": 1928,
+        "text": "nan-",
+        "gloss": "back (again)",
+        "sourceRefs": [
+            {
+                "refText": "https://eldamo.org/content/words/word-800769433.html"
+            }
+        ]
+    },
+    {
+        "id": 1931,
+        "text": "loar"
+    },
+    {
+        "id": 1932,
+        "text": "palantírienye"
+    },
+    {
+        "id": 1933,
+        "text": "palantírie",
+        "pos": "V"
+    },
+    {
+        "id": 1934,
+        "text": "palantir-",
+        "gloss": "look-far"
+    },
+    {
+        "id": 1936,
+        "text": "andavanwe"
+    },
+    {
+        "id": 1938,
+        "text": "vanwe"
+    },
+    {
+        "id": 1939,
+        "text": "yásier"
+    },
+    {
+        "id": 1940,
+        "text": "yásie",
+        "gloss": "age",
+        "pos": "N"
+    },
+    {
+        "id": 1941,
+        "text": "yá",
+        "gloss": "when",
+        "pos": "CONJ",
+        "sourceRefs": [
+            {
+                "refText": "https://eldamo.org/content/words/word-4177661279.html"
+            }
+        ]
+    },
+    {
+        "id": 1942,
+        "text": "aldar"
+    },
+    {
+        "id": 1943,
+        "text": "ólaner"
+    },
+    {
+        "id": 1944,
+        "text": "ola",
+        "gloss": "grow",
+        "fullGloss": "grow, become",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "refText": "https://eldamo.org/content/words/word-3004760479.html"
+            }
+        ]
+    },
+    {
+        "id": 1945,
+        "text": "landanóresse"
+    },
+    {
+        "id": 1946,
+        "text": "landanóre",
+        "pos": "N"
+    },
+    {
+        "id": 1948,
+        "text": "lente"
+    },
+    {
+        "id": 1949,
+        "text": "lenta",
+        "gloss": "free",
+        "pos": "ADJ"
+    },
+    {
+        "id": 1950,
+        "text": "lenda-",
+        "gloss": "go free",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "refText": "https://eldamo.org/content/words/word-3299650413.html"
+            }
+        ]
+    },
+    {
+        "id": 1952,
+        "text": "tó",
+        "gloss": "thence",
+        "sourceRefs": [
+            {
+                "refText": "https://eldamo.org/content/words/word-4269229253.html"
+            }
+        ]
+    },
+    {
+        "id": 1953,
+        "text": "menta",
+        "gloss": "intend",
+        "fullGloss": "have as object[ive], (in)tend, proceed, make for, go towards",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "refText": "https://eldamo.org/content/words/word-1004125715.html"
+            }
+        ]
+    },
+    {
+        "id": 1954,
+        "text": "hwirya",
+        "gloss": "wither",
+        "pos": "V"
+    },
+    {
+        "id": 1955,
+        "text": "hondoringe"
+    },
+    {
+        "id": 1956,
+        "text": "hondoringa",
+        "pos": "ADJ"
+    },
+    {
+        "id": 1957,
+        "text": "hondo",
+        "gloss": "heart",
+        "fullGloss": "heart; (seat of the) deepest feelings",
+        "sourceRefs": [
+            {
+                "refText": "https://eldamo.org/content/words/word-3136985703.html"
+            }
+        ]
+    },
+    {
+        "id": 1960,
+        "text": "fúmenen"
+    },
+    {
+        "id": 1961,
+        "text": "fúme",
+        "gloss": "breath",
+        "pos": "N"
+    },
+    {
+        "id": 1962,
+        "text": "fú"
+    },
+    {
+        "id": 1964,
+        "text": "-me",
+        "gloss": "abstract noun",
+        "sourceRefs": [
+            {
+                "refText": "https://eldamo.org/content/words/word-607489779.html"
+            }
+        ]
+    },
+    {
+        "id": 1966,
+        "text": "istarion"
+    },
+    {
+        "id": 1967,
+        "text": "istar",
+        "gloss": "Wizard",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "refText": "https://eldamo.org/content/words/word-649886723.html"
+            }
+        ]
+    },
+    {
+        "id": 1968,
+        "text": "ilyama"
+    },
+    {
+        "id": 1970,
+        "text": "ma",
+        "gloss": "something",
+        "fullGloss": "something, a thing, anything",
+        "sourceRefs": [
+            {
+                "refText": "https://eldamo.org/content/words/word-403463271.html"
+            }
+        ]
+    },
+    {
+        "id": 1972,
+        "text": "yénion"
+    },
+    {
+        "id": 1973,
+        "text": "lútie"
+    },
+    {
+        "id": 1974,
+        "text": "lut-",
+        "gloss": "float",
+        "pos": "V"
+    },
+    {
+        "id": 1977,
+        "text": "coiveanyo"
+    },
+    {
+        "id": 1978,
+        "text": "coivea",
+        "gloss": "life",
+        "pos": "N"
+    },
+    {
+        "id": 1979,
+        "text": "entule"
+    },
+    {
+        "id": 1980,
+        "text": "entul-",
+        "gloss": "come again",
+        "fullGloss": "come again, return",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "refText": "https://eldamo.org/content/words/word-3346199611.html"
+            }
+        ]
+    },
+    {
+        "id": 1981,
+        "text": "melle"
+    },
+    {
+        "id": 1982,
+        "text": "mella",
+        "gloss": "beloved",
+        "pos": "ADJ"
+    },
+    {
+        "id": 1984,
+        "text": "eccennen"
+    },
+    {
+        "id": 1985,
+        "text": "eccen-",
+        "gloss": "see"
+    },
+    {
+        "id": 1987,
+        "text": "haia",
+        "gloss": "far away"
+    },
+    {
+        "id": 1989,
+        "text": "palantírielya",
+        "notes": "The form in 'twenty years have flown away' seems to be an error for palantírienye, corrected by Tolkien in version C of the text."
+    },
+    {
+        "id": 1990,
+        "text": "yárier"
+    },
+    {
+        "id": 1991,
+        "text": "yárie",
+        "pos": "N"
+    },
+    {
+        "id": 1992,
+        "text": "endoresse"
+    },
+    {
+        "id": 1994,
+        "text": "ende",
+        "gloss": "centre",
+        "fullGloss": "centre, middle",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "refText": "https://eldamo.org/content/words/word-1541464741.html"
+            }
+        ]
+    },
+    {
+        "id": 1996,
+        "text": "marnie"
+    },
+    {
+        "id": 1997,
+        "text": "enwa",
+        "gloss": "still",
+        "pos": "ADV"
+    },
+    {
+        "id": 1998,
+        "text": "lumince"
+    },
+    {
+        "id": 2000,
+        "text": "-ince",
+        "gloss": "diminutive",
+        "pos": "AFF"
+    },
+    {
+        "id": 2001,
+        "text": "laiqavinye"
+    },
+    {
+        "id": 2002,
+        "text": "laiqavinya",
+        "pos": "ADJ"
+    },
+    {
+        "id": 2004,
+        "text": "vinya",
+        "gloss": "young",
+        "pos": "ADJ",
+        "sourceRefs": [
+            {
+                "refText": "https://eldamo.org/content/words/word-2167595199.html"
+            }
+        ]
+    },
+    {
+        "id": 2005,
+        "text": "ólar"
+    },
+    {
+        "id": 2006,
+        "text": "yallume"
+    },
+    {
+        "id": 2008,
+        "text": "epeni",
+        "gloss": "before"
+    },
+    {
+        "id": 2010,
+        "text": "fentane"
+    },
+    {
+        "id": 2011,
+        "text": "fenta",
+        "gloss": "begin",
+        "pos": "V"
+    },
+    {
+        "id": 2013,
+        "text": "sinna"
+    },
+    {
+        "id": 2014,
+        "text": "si",
+        "gloss": "this",
+        "pos": "PRON",
+        "sourceRefs": [
+            {
+                "refText": "https://eldamo.org/content/words/word-3501461407.html"
+            }
+        ]
+    },
+    {
+        "id": 2015,
+        "text": "nunn’"
+    },
+    {
+        "id": 2016,
+        "text": "nunna"
+    },
+    {
+        "id": 2018,
+        "text": "ar",
+        "gloss": "out",
+        "fullGloss": "beside, next to; out",
+        "pos": "PREP",
+        "sourceRefs": [
+            {
+                "refText": "https://eldamo.org/content/words/word-319149871.html"
+            }
+        ]
+    },
+    {
+        "id": 2019,
+        "text": "avar",
+        "gloss": "down",
+        "pos": "PREP"
+    },
+    {
+        "id": 2021,
+        "text": "tule"
     }
 ]
