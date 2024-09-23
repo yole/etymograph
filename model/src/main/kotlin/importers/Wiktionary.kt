@@ -247,7 +247,9 @@ open class  Wiktionary : Dictionary {
                     lookupSingle(language, it.baseWord, "inflection lemma")
                 }
 
-                val gloss = section.senses.first()
+                val gloss = section.senses.first().ifEmpty {
+                    section.inflectionOf?.let { "inflection of ${it.baseWord}"}
+                } ?: ""
                 DictionaryWord(word, language, gloss,
                     fullGloss = section.senses.joinToString("; ").takeIf { it != gloss },
                     pos = language.pos.find { it.name == section.pos }?.abbreviation,

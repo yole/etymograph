@@ -63,16 +63,7 @@ class WiktionaryParserTest {
         val word = wiktionary.lookup(repo, oe, "byþ").result.single()
         val baseWord = word.relatedWords.single()
         assertEquals(listOf("3", "sg", "pres"), baseWord.linkDetails)
-
-        /*
-        oe.grammaticalCategories.apply {
-            add(WordCategory("Tense", listOf("V"), listOf(WordCategoryValue("Present", "PRES"))))
-            add(WordCategory("Person", listOf("V"), listOf(WordCategoryValue("Third", "3"))))
-            add(WordCategory("Number", listOf("V"), listOf(WordCategoryValue("Singular", "SG"))))
-        }
-
-        val rule = repo.rule("- no change", oe, addedCategories = ".PRES.3SG")
-         */
+        assertEquals("inflection of bēon", word.gloss)
     }
 
     @Test
