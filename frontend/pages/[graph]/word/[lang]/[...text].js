@@ -17,7 +17,7 @@ import {useRouter} from "next/router";
 import SourceRefs from "@/components/SourceRefs";
 import RuleLinkForm from "@/forms/RuleLinkForm";
 import EditLinkForm from "@/forms/EditLinkForm";
-import {GraphContext} from "@/components/Contexts";
+import {GlobalStateContext, GraphContext} from "@/components/Contexts";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import WordGloss, {WordFullGloss} from "@/components/WordGloss";
 
@@ -211,16 +211,17 @@ function WordLinkTypeComponent(params) {
         {l.words.length === 1 && params.directionFrom &&
             <WordLinkComponent key={l.words[0].id} baseWord={params.word} linkWord={l.words[0]} linkType={l}
                                directionFrom={params.directionFrom} showType={true}/>}
-        {(l.words.length !== 1 || !params.directionFrom) && <p>
+        {(l.words.length !== 1 || !params.directionFrom) && <div>
             <div>{l.type}</div>
             {l.words.map(w => <WordLinkComponent key={w.id} baseWord={params.word} linkWord={w} linkType={l}
                                                  directionFrom={params.directionFrom}/>)}
-        </p>}
+        </div>}
     </>);
 }
 
 function SingleWord(params) {
     const word = params.word
+    const globalState = useContext(GlobalStateContext)
 
     const router = useRouter()
     const graph = router.query.graph
@@ -259,7 +260,7 @@ function SingleWord(params) {
     }
 
     async function lookupWordClicked() {
-        const r = await lookupWord(graph, word.id)
+        const r = await lookupWord(graph, word.id, {dictionaryId: "wiktionary"})
         if (r.status !== 200) {
             const jr = await r.json()
             setLookupErrorText(jr.message)
@@ -348,6 +349,8 @@ function SingleWord(params) {
     const componentsOfDerivational = word.components.filter(c => c.derivation)
     const componentsOfNonDerivational = word.components.filter(c => !c.derivation)
 
+    const dictionaries = globalState.languages.find((c) => c.shortName === word.language)?.dictionaries
+
     return <>
         <Breadcrumbs langId={word.language} langName={word.languageFullName}
                      steps={[{title: dictionaryTitle, url: `/${graph}/dictionary/${word.language}${dictionaryLink}`}]}>
@@ -361,7 +364,7 @@ function SingleWord(params) {
             {word.notes && <p>{word.notes}</p>}
             <SourceRefs source={word.source}/>
 
-            {allowEdit() && <p>
+            {allowEdit() && dictionaries.includes("wiktionary") && <p>
                 <button className="inlineButton" onClick={() => lookupWordClicked()}>Look up in Wiktionary</button><br/>
                 {lookupErrorText !== "" && <span className="errorText">{lookupErrorText}</span>}
             </p>}

@@ -52,7 +52,8 @@ class LanguageController {
     data class LanguageShortViewModel(
         val name: String,
         val shortName: String,
-        val pos: List<WordCategoryValueViewModel>
+        val pos: List<WordCategoryValueViewModel>,
+        val dictionaries: List<String>
     )
 
     @GetMapping("/{graph}/language")
@@ -61,7 +62,8 @@ class LanguageController {
             LanguageShortViewModel(
                 lang.name,
                 lang.shortName,
-                lang.pos.map { WordCategoryValueViewModel(it.name, it.abbreviation) }
+                lang.pos.map { WordCategoryValueViewModel(it.name, it.abbreviation) },
+                if ("wiktionary-id" in (lang.dictionarySettings ?: "")) listOf("wiktionary") else emptyList()
             )
         }
     }
