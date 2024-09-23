@@ -3,6 +3,7 @@ package ru.yole.etymograph.importers
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 import ru.yole.etymograph.*
+import ru.yole.etymograph.importers.WiktionaryEtymologySection.Companion.inflectionAttributesMap
 import java.net.URI
 import java.net.URLEncoder
 import java.net.http.HttpClient
@@ -12,6 +13,7 @@ import java.nio.file.Path
 import kotlin.collections.component1
 import kotlin.collections.component2
 import kotlin.collections.iterator
+import kotlin.collections.mutableListOf
 
 @Serializable
 data class WiktionaryPageData(val source: String)
@@ -26,6 +28,9 @@ abstract class WiktionarySection {
         while (true) {
             val line = lines.peek() ?: return
             if (line.startsWith("==") && !line.startsWith("====")) {
+                return
+            }
+            if (line.startsWith("====") && stopAtSubsection(line.trimStart('=').trimEnd('='))) {
                 return
             }
             lines.next()
@@ -45,6 +50,7 @@ abstract class WiktionarySection {
     protected abstract fun parseSectionLine(line: String)
     protected open fun parseSubsectionLine(line: String, subsection: String) {
     }
+    protected open fun stopAtSubsection(subsection: String): Boolean = false
 
     protected fun filterTemplates(s: String): String {
         return s.replace(templateRegex) { mr ->
@@ -69,6 +75,7 @@ class WiktionaryPosSection(
     val senses = mutableListOf<String>()
     val classes = mutableListOf<String>()
     var alternativeOf: String? = null
+    var inflectionOf: InflectionOfTemplate? = null
 
     override fun parseSectionLine(line: String) {
         checkClasses(line)
@@ -93,7 +100,15 @@ class WiktionaryPosSection(
         if (name == "alternative form of") {
             alternativeOf = parameters[1]
         }
+        else if (name == "inflection of" && parameters.size >= 3) {
+            inflectionOf = InflectionOfTemplate(parameters[1], remapInflectionAttributes(parameters.drop(3)))
+        }
+
         return ""
+    }
+
+    private fun remapInflectionAttributes(attributes: List<String>): List<String> {
+        return attributes.map { inflectionAttributesMap[it] ?: it }
     }
 }
 
@@ -101,9 +116,9 @@ data class InheritedWordTemplate(val language: String, val word: String)
 data class InflectionOfTemplate(val baseWord: String, val inflectionAttributes: List<String>)
 
 class WiktionaryEtymologySection : WiktionarySection() {
+    val posSections = mutableListOf<WiktionaryPosSection>()
     val inheritedWords = mutableListOf<InheritedWordTemplate>()
     var compoundComponents: List<String>? = null
-    var inflectionOf: InflectionOfTemplate? = null
 
     override fun parseSectionLine(line: String) {
         filterTemplates(line)
@@ -122,25 +137,19 @@ class WiktionaryEtymologySection : WiktionarySection() {
         else if (name == "suffix" && parameters.size >= 3) {
             compoundComponents = listOf(parameters[1], "-" + parameters[2])
         }
-        else if (name == "inflection of" && parameters.size >= 3) {
-            inflectionOf = InflectionOfTemplate(parameters[1], remapInflectionAttributes(parameters.drop(3)))
-        }
         return ""
     }
 
-    private fun remapInflectionAttributes(attributes: List<String>): List<String> {
-        return attributes.map { inflectionAttributesMap[it] ?: it }
-    }
+    override fun stopAtSubsection(subsection: String): Boolean = subsection in wiktionaryPosNames
 
     companion object {
-        val inflectionAttributesMap = mapOf("s" to "s", "p" to "pl")
+        val inflectionAttributesMap = mapOf("s" to "sg", "p" to "pl")
     }
 }
 
 class WiktionaryPage(source: String) {
     val lines = LineBuffer(source)
-    val posSections = mutableListOf<WiktionaryPosSection>()
-    var etymologySection: WiktionaryEtymologySection? = null
+    var etymologySections = mutableListOf<WiktionaryEtymologySection>()
 
     private fun seekToLanguage(language: String): Boolean {
         while (true) {
@@ -159,10 +168,14 @@ class WiktionaryPage(source: String) {
             if (line.startsWith("===")) {
                 currentSection = line.trimStart('=').trimEnd('=')
                 if (currentSection in wiktionaryPosNames) {
-                    posSections.add(WiktionaryPosSection(currentSection, dictionarySettings).apply { parse(lines) })
+                    val posSection = WiktionaryPosSection(currentSection, dictionarySettings).apply { parse(lines) }
+                    if (etymologySections.isEmpty()) {
+                        etymologySections.add(WiktionaryEtymologySection())
+                    }
+                    etymologySections.last().posSections.add(posSection)
                 }
-                else if (currentSection == "Etymology") {
-                    etymologySection = WiktionaryEtymologySection().apply { parse(lines) }
+                else if (currentSection.startsWith("Etymology")) {
+                    etymologySections.add(WiktionaryEtymologySection().apply { parse(lines) })
                 }
             }
             else if (line.startsWith("==")) {
@@ -173,7 +186,7 @@ class WiktionaryPage(source: String) {
     }
 }
 
-open class Wiktionary : Dictionary {
+open class  Wiktionary : Dictionary {
     private fun parseDictionarySettings(settings: String?): Map<String, List<String>> {
         if (settings == null) return emptyMap()
         return settings
@@ -223,40 +236,44 @@ open class Wiktionary : Dictionary {
             return LookupResult.empty
         }
 
-        val inheritedWords = wiktionaryPage.etymologySection?.inheritedWords?.mapNotNull { lookupInheritedWord(repo, it) }
-        val compoundComponents = wiktionaryPage.etymologySection?.compoundComponents?.map {
-            lookupSingle(language, it, "compound member")
-        }
-        val inflectionOf = wiktionaryPage.etymologySection?.inflectionOf?.let {
-            lookupSingle(language, it.baseWord, "inflection lemma")
-        }
+        val result = wiktionaryPage.etymologySections.flatMap { etymologySection ->
+            val inheritedWords = etymologySection.inheritedWords.mapNotNull { lookupInheritedWord(repo, it) }
+            val compoundComponents = etymologySection.compoundComponents?.map {
+                lookupSingle(language, it, "compound member")
+            }
 
-        val result = wiktionaryPage.posSections.map { section ->
-            val gloss = section.senses.first()
-            DictionaryWord(word, language, gloss,
-                fullGloss = section.senses.joinToString("; ").takeIf { it != gloss },
-                pos = language.pos.find { it.name == section.pos }?.abbreviation,
-                classes = section.classes,
-                source = "https://en.wiktionary.org/wiki/${langPrefix(language)}$normalizedWord#${language.name.replace(' ', '_')}")
-                .apply {
-                    inheritedWords?.let { relatedWords.addAll(it) }
-                    section.alternativeOf?.let {
-                        val baseWord = lookupSingle(language, it, "base alternative")
-                        if (baseWord != null) {
-                            relatedWords.add(DictionaryRelatedWord(Link.Variation, baseWord))
-                        }
-                    }
-                    compoundComponents?.let {
-                        if (it.all { c -> c != null }) {
-                            this.compoundComponents.addAll(it as Collection<DictionaryWord>)
-                        }
-                    }
-                    wiktionaryPage.etymologySection?.inflectionOf?.let {
-                        if (inflectionOf != null) {
-                            relatedWords.add(DictionaryRelatedWord(Link.Derived, inflectionOf, it.inflectionAttributes))
-                        }
-                    }
+            etymologySection.posSections.map { section ->
+                val inflectionOf = section.inflectionOf?.let {
+                    lookupSingle(language, it.baseWord, "inflection lemma")
                 }
+
+                val gloss = section.senses.first()
+                DictionaryWord(word, language, gloss,
+                    fullGloss = section.senses.joinToString("; ").takeIf { it != gloss },
+                    pos = language.pos.find { it.name == section.pos }?.abbreviation,
+                    classes = section.classes,
+                    source = "https://en.wiktionary.org/wiki/${langPrefix(language)}$normalizedWord#${language.name.replace(' ', '_')}")
+                    .apply {
+                        relatedWords.addAll(inheritedWords)
+                        section.alternativeOf?.let {
+                            val baseWord = lookupSingle(language, it, "base alternative")
+                            if (baseWord != null) {
+                                relatedWords.add(DictionaryRelatedWord(Link.Variation, baseWord))
+                            }
+                        }
+                        compoundComponents?.let {
+                            if (it.all { c -> c != null }) {
+                                this.compoundComponents.addAll(it as Collection<DictionaryWord>)
+                            }
+                        }
+                        section.inflectionOf?.let {
+                            if (inflectionOf != null) {
+                                relatedWords.add(DictionaryRelatedWord(Link.Derived, inflectionOf, it.inflectionAttributes))
+                            }
+                        }
+                    }
+
+            }
         }
         return LookupResult(result, messages)
     }

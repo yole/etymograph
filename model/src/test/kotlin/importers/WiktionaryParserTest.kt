@@ -6,13 +6,10 @@ import org.junit.Test
 import ru.yole.etymograph.GraphRepository
 import ru.yole.etymograph.InMemoryGraphRepository
 import ru.yole.etymograph.Language
-import ru.yole.etymograph.WordCategory
-import ru.yole.etymograph.WordCategoryValue
-import ru.yole.etymograph.rule
 
 class TestWiktionary : Wiktionary() {
     override fun loadWiktionaryPageSource(language: Language, title: String): String? {
-        WiktionaryParserTest::class.java.getResourceAsStream("/wiktionary/$title.txt").use {
+        WiktionaryParserTest::class.java.getResourceAsStream("/wiktionary/${language.shortName.lowercase()}/$title.txt").use {
             return it?.reader()?.readText()
         }
     }
@@ -29,15 +26,15 @@ class WiktionaryParserTest {
         repo = InMemoryGraphRepository()
         oe = Language("Old English", "OE")
         repo.addLanguage(oe)
-    }
 
-    @Test
-    fun parseOrigin() {
         val pgmc = Language("Proto-Germanic", "PGmc")
         repo.addLanguage(pgmc)
 
         pgmc.dictionarySettings = "wiktionary-id: gem-pro"
+    }
 
+    @Test
+    fun parseOrigin() {
         val word = wiktionary.lookup(repo, oe, "bridel").result.single()
         assertEquals("bridle", word.gloss)
         val origin = word.relatedWords.single()
@@ -76,5 +73,17 @@ class WiktionaryParserTest {
 
         val rule = repo.rule("- no change", oe, addedCategories = ".PRES.3SG")
          */
+    }
+
+    @Test
+    fun parseMultipleEtymologies() {
+        val words = wiktionary.lookup(repo, oe, "wesan").result
+        assertEquals(3, words.size)
+        val etymology1 = words[0].relatedWords
+        assertEquals(1, etymology1.size)
+        assertEquals("to be", etymology1.single().relatedWord.gloss)
+        val etymology3 = words[2].relatedWords
+        assertEquals(1, etymology3.size)
+        assertEquals("juice, moisture", etymology3.single().relatedWord.gloss)
     }
 }

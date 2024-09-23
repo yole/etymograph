@@ -1,0 +1,38 @@
+{{reconstructed}}
+==Proto-Germanic==
+
+===Pronunciation===
+* {{IPA|gem-pro|/ˈwe.sɑ.nɑ̃/}}
+
+===Etymology===
+{{root|gem-pro|ine-pro|*h₁es-|*h₂wes-}}
+From two different {{inh|gem-pro|ine-pro|-}} roots:
+* The present tense from {{m|ine-pro|*h₁ésti}}, from {{m|ine-pro|*h₁es-}}.
+* The past tense from {{m|ine-pro|*h₂wes-}}.
+
+====Verb====
+{{gem-verb}}
+
+# {{senseid|gem-pro|be}} to [[be]]
+#: {{syn|gem-pro|*beuną}}
+# to [[remain]]
+# to [[exist]]
+
+=====Inflection=====
+This verb is suppletive. The past and imperative are conjugated with the strong class 5 stem ''wes-'', the remainder with an irregular stem ''(i)s-''.
+{{gem-conj-irreg|wesaną}}
+
+=====Derived terms=====
+* {{l|gem-pro|*atwesaną}}
+* {{l|gem-pro|*furaiwesaną}}
+* {{l|gem-pro|*gawesaną}}
+* {{l|gem-pro|*wēziz}}
+* {{l|gem-pro|*wezōną}}
+* {{l|gem-pro|*wistiz}}
+
+=====Descendants=====
+This section only lists descendants of the infinitive form, {{m|gem-pro||*wesaną}}. For other inflections, see the [[#Inflection]] section above.
+* {{desctree|gmw-pro|*wesan}}
+* {{desc|gmq-pro|}}
+** {{desc|non|vesa}} {{q|early}}, {{desctree|non|vera|nolb=1}}
+* {{desc|got|𐍅𐌹𐍃𐌰𐌽}}

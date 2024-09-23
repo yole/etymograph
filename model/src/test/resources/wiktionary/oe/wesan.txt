@@ -1,0 +1,90 @@
+==Old English==
+
+===Alternative forms===
+* {{alter|ang|weosan||Anglian}}
+* {{alter|ang|wesa|wosa|uosa|wossa|uossa}}
+
+===Etymology 1===
+From {{inh|ang|gmw-pro|*wesan}}, from {{inh|ang|gem-pro|*wesaną}}, from {{der|ang|ine-pro|*h₂wes-}}.
+
+The simple present forms originate from {{der|ang|ine-pro|*h₁es-||to be}}, which had no infinitive or past tense in Proto-Germanic, but had already formed a single paradigm with {{m|gem-pro|*wesaną}} supplying the infinitive and past tense.
+
+====Pronunciation====
+* {{ang-IPA|wesan}}
+
+====Verb====
+{{head|ang|verb form|head=wesan}}
+
+# to [[be]], [[exist]]
+#* '''late 9th century''', [[w:Alfred the Great|King Alfred's]] [https://books.google.com/books?id=8sy8OOmW-ZAC&pg=PA90 translation] of ''{{w|The Consolation of Philosophy}}''
+#*: {{quote|ang|Þā cwæþ hē, "Wāst þū hwæt mann '''sīe'''?" Þā cwæþ iċ, "Iċ wāt þæt hit biþ sāwol and līchama."|Then he said, "Do you know what a person '''is'''?" So I said, "I know it's a soul and a body."}}
+#* '''c. 990''', ''{{w|Wessex Gospels}}'', [https://archive.org/stream/dahalgangodspelo00thor#page/n213/mode/2up John 9:12]
+#*: {{quote|ang|Þā cwǣdon hīe tō him, "Hwǣr '''is''' hē?" Þā cwæþ hē, "Iċ nāt."|Then they said to him, "Where '''is''' he?" And he said, "I don't know."}}
+
+=====Usage notes=====
+* The verbs {{m|ang|bēon}} and {{m|ang|wesan}} both mean to [[be]], but in different circumstances. For most purposes, {{m|ang|wesan}} is used; {{m|ang|bēon}} is used for what is known as the "[[Wikipedia:Gnomic_aspect|gnomic]] present" and the future tense of to [[be]].
+** The gnomic present, in short, refers to anything which is a general truth, like ''Winter <u>biþ</u> ċealdost'' ("Winter <u>is</u> coldest"), or ''Fēower sīðum seofon <u>bēoþ</u> eahta and twēntiġ'' ("Four times seven <u>is</u> (lit. "<u>are</u>") twenty-eight"). Generally, statements about the self will not be gnomic. For example, although it may seem that a statement like ''I <u>am</u> a person'' is always true, such a statement is nonetheless rendered with {{m|ang|wesan}}: ''Iċ <u>eom</u> mann''.
+** To [[be]] is the only verb in Old English for which the future tense may be indicated with morphology instead of adverbs or context clues, and for this purpose, {{m|ang|bēon}} is used. So, ''I <u>am</u> the king'' is rendered as ''Iċ <u>eom</u> sē cyning'', but ''I <u>will be</u> the king'' is rendered as ''Iċ <u>bēo</u> sē cyning''. Note that {{m|ang|bēon}} is ''not'' used for any other verb's future tense; both ''I <u>see</u> it'' and ''I <u>will see</u> it'' are written as ''Iċ hit <u>ġesēo</u>''.
+** Both {{m|ang|bēon}} and {{m|ang|wesan}} share past tense forms.
+* Both {{m|ang|bēon}} and {{m|ang|wesan}} are copulative verbs, which means they are not transitive and do not take a direct object. Because of this, predicate nouns and adjectives will be in the [[nominative]] case. For example: ''Hēo <u>is</u> iċ'' ("She <u>is</u> I"), not ''*Hēo <u>is</u> mē'' ("She <u>is</u> me").
+* In the Anglian dialects, the present plural indicative form {{m|ang|earon}} occurred alongside the {{m|ang|sind}}/{{m|ang|sindon}} forms. This may have been due to influence or loaning from the Old Norse cognate {{m|non|vera}}/{{m|non|vesa}}, or it may be an earlier native form that was lost entirely in the southern dialects.
+* A regularised form ''wesaþ'' is also rarely attested for the present plural indicative, perhaps representing a [[hypercorrection]] due to influence from the infinitive and/or the imperative plural form (the latter being identical to the present plural indicative for most other Old English verbs).
+
+=====Conjugation=====
+{{ang-conj|wesan<i>}}
+
+=====Synonyms=====
+* {{l|ang|bēon}}
+
+=====Derived terms=====
+* {{l|ang|ætwesan|gloss=to be present}}
+* {{l|ang|forewesan|gloss=to be before}}
+* {{l|ang|ġewesan|gloss=to be together}}
+* {{l|ang|wist|gloss=being}}
+
+===Etymology 2===
+From {{inh|ang|gmw-pro|*wesan}}, from {{inh|ang|gem-pro|*wesaną|t=to consume, feast|id=consume}}, derived from {{der|ang|ine-pro|*wes-|t=to graze|id=graze}}.<ref>{{R:gem:EDPG|head=Wesan- 2}}</ref> The only (possible) attestation is in the form {{m|ang|weaxan}} in line 3115 of ''[[s:Beowulf_(Harrison_and_Sharp)#WĪGLAF_SPEAKS._THE_BUILDING_OF_THE_BALE-FIRE.|Beowulf]]'', argued to be a misspelling of {{m|ang|weosan}}.<ref>{{R:gem:Seebold|head=WES-A- 2|passage=562-63}}</ref>
+
+====Pronunciation====
+* {{ang-IPA|wesan}}
+
+====Verb====
+{{ang-verb}}
+
+# to [[consume]] or [[feast]]
+#* {{RQ:Beowulf|lines=3114-15
+|passage="Nū sceal glēd fretan ('''weaxan''' wonna lēg) ⁠wigena strengel [...]"
+|translation=“Fire shall devour (and wan flames '''feed''') on the fearless warrior [...]"}}
+
+=====Usage notes=====
+* The precise verb class is unknown. It is shown here according to what would be its etymologically inherited form, a class 5 strong verb.
+
+=====Conjugation=====
+{{ang-conj|wesan<s5v>}}
+
+=====Descendants=====
+* {{desc|enm|wesen|t=to tend flocks, pasture|unc=1}}
+
+===Etymology 3===
+From {{inh|ang|gmw-pro|*wōsijan}}, from {{inh|ang|gem-pro|*wōsą}}.
+
+====Pronunciation====
+* {{ang-IPA|wēsan}}
+
+====Verb====
+{{ang-verb|wēsan}}
+
+# to [[soak]]; to [[macerate]]; to [[dye]]
+# to [[ooze]]
+
+=====Conjugation=====
+{{ang-conj|wēsan<w1>}}
+
+===Further reading===
+* {{R:ang:JCH|wesan|350}}
+* {{R:ang:BT|wesan|ref=35422}}
+
+===References===
+<references/>
+
+{{cln|ang|suppletive verbs}}

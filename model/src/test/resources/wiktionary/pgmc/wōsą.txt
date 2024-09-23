@@ -1,0 +1,36 @@
+{{reconstructed}}
+==Proto-Germanic==
+
+===Etymology===
+From {{inh|gem-pro|ine-pro|*wóseh₂||sap}}. Cognate with {{cog|sa|वसा|tr=vásā}}.
+
+===Pronunciation===
+* {{IPA|gem-pro|/ˈwɔː.sɑ̃/}}
+
+===Noun===
+{{gem-noun|n}}
+
+# [[juice]], [[moisture]]
+
+====Inflection====
+{{gem-decl-noun}}
+
+====Derived terms====
+* {{l|gem-pro|*wōsagaz}}
+* {{l|gem-pro|*wōsijaną}}
+
+====Descendants====
+* {{desc|ang|wōs}}
+** {{desc|enm|wos|woos}}
+*** {{desc|en|ooze}}
+*** {{desc|sco|woose|wuss}}
+*** {{desc|enm|*wosy|der=1}}
+**** {{desc|en|woosy}}
+* {{desc|osx|*wōs}}
+** {{desc|gml|wôs}}
+*** {{desc|nds|woos}}
+* {{desc|non|*ós}}
+** {{desc|da|os}}
+** {{desc|no|os}} {{q|dialectal}}
+** {{desc|gmq-osw|ōs}}
+*** {{desc|sv|os}}
