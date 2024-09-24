@@ -100,7 +100,7 @@ class WiktionaryPosSection(
         if (name == "alternative form of") {
             alternativeOf = parameters[1]
         }
-        else if (name == "inflection of" && parameters.size >= 3) {
+        else if ((name == "inflection of" || name == "infl of")  && parameters.size >= 3) {
             inflectionOf = InflectionOfTemplate(parameters[1], remapInflectionAttributes(parameters.drop(3)))
         }
 
