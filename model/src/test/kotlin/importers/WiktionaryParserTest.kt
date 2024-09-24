@@ -6,6 +6,7 @@ import org.junit.Test
 import ru.yole.etymograph.GraphRepository
 import ru.yole.etymograph.InMemoryGraphRepository
 import ru.yole.etymograph.Language
+import ru.yole.etymograph.WordCategoryValue
 
 class WiktionaryParserTest {
     lateinit var wiktionary: TestWiktionary
@@ -17,6 +18,11 @@ class WiktionaryParserTest {
         wiktionary = TestWiktionary(WiktionaryParserTest::class.java)
         repo = InMemoryGraphRepository()
         oe = Language("Old English", "OE")
+        oe.pos.addAll(listOf(
+            WordCategoryValue("Noun", "N"),
+            WordCategoryValue("Adjective", "ADJ"),
+            WordCategoryValue("Verb", "V")
+        ))
         repo.addLanguage(oe)
 
         val pgmc = Language("Proto-Germanic", "PGmc")
@@ -56,6 +62,15 @@ class WiktionaryParserTest {
         val baseWord = word.relatedWords.single()
         assertEquals(listOf("3", "sg", "pres"), baseWord.linkDetails)
         assertEquals("inflection of bēon", word.gloss)
+    }
+
+    @Test
+    fun parseInflectionOfMatchPOS() {
+        val word = wiktionary.lookup(repo, oe, "iserne").result
+        val baseNoun = word[0].relatedWords.single()
+        assertEquals("N", baseNoun.relatedWord.pos)
+        val baseAdj = word[1].relatedWords.single()
+        assertEquals("ADJ", baseAdj.relatedWord.pos)
     }
 
     @Test

@@ -1,5 +1,6 @@
 package ru.yole.etymograph.importers
 
+import com.sun.org.apache.xpath.internal.operations.Bool
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 import ru.yole.etymograph.*
@@ -209,10 +210,14 @@ open class  Wiktionary : Dictionary {
     fun lookup(repo: GraphRepository, language: Language, word: String, lookupRelatedWords: Boolean): LookupResult {
         val messages = mutableListOf<String>()
 
-        fun lookupSingle(language: Language, string: String, wordKind: String): DictionaryWord? {
+        fun lookupSingle(
+            language: Language, string: String, wordKind: String,
+            filterCallback: (DictionaryWord) -> Boolean = { true }
+        ): DictionaryWord? {
             if (!lookupRelatedWords) return null
 
             val compoundResult = lookup(repo, language, string.trimStart('*'), false).result
+                .filter(filterCallback)
             if (compoundResult.isEmpty()) {
                 messages.add("Can't find $wordKind '$string'")
             } else if (compoundResult.size > 1) {
@@ -236,6 +241,8 @@ open class  Wiktionary : Dictionary {
             return LookupResult.empty
         }
 
+        fun mapPos(section: WiktionaryPosSection): String? = language.pos.find { it.name == section.pos }?.abbreviation
+
         val result = wiktionaryPage.etymologySections.flatMap { etymologySection ->
             val inheritedWords = etymologySection.inheritedWords.mapNotNull { lookupInheritedWord(repo, it) }
             val compoundComponents = etymologySection.compoundComponents?.map {
@@ -244,7 +251,9 @@ open class  Wiktionary : Dictionary {
 
             etymologySection.posSections.map { section ->
                 val inflectionOf = section.inflectionOf?.let {
-                    lookupSingle(language, it.baseWord, "inflection lemma")
+                    lookupSingle(language, it.baseWord, "inflection lemma") {
+                        it.pos == mapPos(section)
+                    }
                 }
 
                 val gloss = section.senses.first().ifEmpty {
@@ -252,7 +261,7 @@ open class  Wiktionary : Dictionary {
                 } ?: ""
                 DictionaryWord(word, language, gloss,
                     fullGloss = section.senses.joinToString("; ").takeIf { it != gloss },
-                    pos = language.pos.find { it.name == section.pos }?.abbreviation,
+                    pos = mapPos(section),
                     classes = section.classes,
                     source = "https://en.wiktionary.org/wiki/${langPrefix(language)}$normalizedWord#${language.name.replace(' ', '_')}")
                     .apply {
