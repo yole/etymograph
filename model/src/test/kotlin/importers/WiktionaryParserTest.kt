@@ -7,14 +7,6 @@ import ru.yole.etymograph.GraphRepository
 import ru.yole.etymograph.InMemoryGraphRepository
 import ru.yole.etymograph.Language
 
-class TestWiktionary : Wiktionary() {
-    override fun loadWiktionaryPageSource(language: Language, title: String): String? {
-        WiktionaryParserTest::class.java.getResourceAsStream("/wiktionary/${language.shortName.lowercase()}/$title.txt").use {
-            return it?.reader()?.readText()
-        }
-    }
-}
-
 class WiktionaryParserTest {
     lateinit var wiktionary: TestWiktionary
     lateinit var repo: GraphRepository
@@ -22,7 +14,7 @@ class WiktionaryParserTest {
 
     @Before
     fun setUp() {
-        wiktionary = TestWiktionary()
+        wiktionary = TestWiktionary(WiktionaryParserTest::class.java)
         repo = InMemoryGraphRepository()
         oe = Language("Old English", "OE")
         repo.addLanguage(oe)

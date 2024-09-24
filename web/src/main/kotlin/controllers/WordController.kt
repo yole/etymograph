@@ -37,7 +37,7 @@ fun Word.toRefViewModel(graph: GraphRepository) =
     )
 
 @RestController
-class WordController {
+class WordController(val dictionaryService: DictionaryService) {
     data class RuleSequenceViewModel(
         val name: String,
         val id: Int
@@ -396,10 +396,7 @@ class WordController {
     @PostMapping("/{graph}/word/{id}/lookup", consumes = ["application/json"])
     fun lookup(repo: GraphRepository, @PathVariable id: Int, @RequestBody params: LookupParameters): LookupResult {
         val word = repo.resolveWord(id)
-        val dictionary = when (params.dictionaryId) {
-            "wiktionary" -> Wiktionary()
-            else -> badRequest("Unknown dictionary ID ${params.dictionaryId}")
-        }
+        val dictionary = dictionaryService.createDictionary(params.dictionaryId)
         val status = augmentWordWithDictionary(repo, dictionary, word)
         return LookupResult(status)
     }
@@ -453,7 +450,7 @@ class WordController {
                 if (existingLink == null) {
                     val link = repo.addLink(word, lastWord, Link.Origin, emptyList(), source, null)
                     val ruleSequence = repo.ruleSequencesForLanguage(word.language)
-                        .singleOrNull { it.fromLanguage == lastWord!!.language }
+                        .singleOrNull { it.fromLanguage == lastWord.language }
                     if (ruleSequence != null) {
                         repo.applyRuleSequence(link, ruleSequence)
                         resultRules.addAll(link.rules.map { it.id })

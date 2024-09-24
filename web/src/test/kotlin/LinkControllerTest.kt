@@ -1,6 +1,7 @@
 package ru.yole.etymograph.web
 
 import org.junit.Assert.assertEquals
+import org.junit.Before
 import org.junit.Test
 import ru.yole.etymograph.Link
 import ru.yole.etymograph.web.controllers.LinkController
@@ -8,17 +9,24 @@ import ru.yole.etymograph.web.controllers.RuleController
 import ru.yole.etymograph.web.controllers.WordController
 
 class LinkControllerTest {
+    lateinit var fixture: QTestFixture
+    lateinit var linkController: LinkController
+    lateinit var wordController: WordController
+
+    @Before
+    fun setup() {
+        fixture = QTestFixture()
+        linkController = LinkController()
+        wordController = WordController(DictionaryService())
+    }
+
     @Test
     fun testLinkSource() {
-        val fixture = QTestFixture()
-
-        val linkController = LinkController()
         val word1 = fixture.graph.findOrAddWord("abc", fixture.q, "abc")
         val word2 = fixture.graph.findOrAddWord("def", fixture.q, "def")
 
         linkController.addLink(fixture.graph, LinkController.LinkParams(word1.id, word2.id, Link.Related.id, source = "src"))
 
-        val wordController = WordController()
         val json = wordController.singleWordJson(fixture.graph, "q", "abc", word1.id)
         assertEquals("src", json.linksFrom.single().words.single().source.single().refText)
         assertEquals("src", json.linksFrom.single().words.single().sourceEditableText)
@@ -26,9 +34,6 @@ class LinkControllerTest {
 
     @Test
     fun linkWordToRule() {
-        val fixture = QTestFixture()
-
-        val linkController = LinkController()
         val word = fixture.graph.findOrAddWord("abc", fixture.q, "abc")
 
         val ruleController = RuleController()
@@ -42,7 +47,6 @@ class LinkControllerTest {
 
         linkController.addRuleLink(fixture.graph, LinkController.RuleLinkParams(word.id, "q-pos", Link.Related.id))
 
-        val wordController = WordController()
         val wordViewModel = wordController.singleWordJson(fixture.graph, "q", "abc", word.id)
         assertEquals(0, wordViewModel.linksFrom.size)
         assertEquals(0, wordViewModel.linksTo.size)
@@ -57,7 +61,6 @@ class LinkControllerTest {
 
     @Test
     fun linkRuleFromBase() {
-        val fixture = QTestFixture()
         val ruleController = RuleController()
         ruleController.newRule(
             fixture.graph,
@@ -67,7 +70,6 @@ class LinkControllerTest {
                 "sound is 't' and end of word:\n- new sound is 'θ'",
             ))
 
-        val linkController = LinkController()
         val baseWord = fixture.graph.findOrAddWord("mbar", fixture.ce, "home")
         val derivedWord = fixture.graph.findOrAddWord("mar", fixture.q, "home")
         val link = fixture.graph.addLink(derivedWord, baseWord, Link.Derived, emptyList(), emptyList(), null)

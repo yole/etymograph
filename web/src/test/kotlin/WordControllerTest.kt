@@ -20,7 +20,7 @@ class WordControllerTest {
     fun setup() {
         fixture = QTestFixture()
         graph = fixture.graph
-        wordController = WordController()
+        wordController = WordController(TestDictionaryService())
     }
 
     @Test
