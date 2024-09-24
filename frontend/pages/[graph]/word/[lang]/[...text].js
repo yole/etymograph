@@ -260,8 +260,8 @@ function SingleWord(params) {
         }
     }
 
-    async function lookupWordClicked() {
-        const r = await lookupWord(graph, word.id, {dictionaryId: "wiktionary"})
+    async function lookupWordClicked(disambiguation) {
+        const r = await lookupWord(graph, word.id, {dictionaryId: "wiktionary", disambiguation})
         if (r.status !== 200) {
             const jr = await r.json()
             setLookupErrorText(jr.message)
@@ -371,7 +371,12 @@ function SingleWord(params) {
                 <button className="inlineButton" onClick={() => lookupWordClicked()}>Look up in Wiktionary</button><br/>
                 {lookupErrorText !== "" && <span className="errorText">{lookupErrorText}</span>}
                 {lookupVariants.length > 0 && <ul>
-                    {lookupVariants.map(variant => (<li>{variant.text}</li>))}
+                    {lookupVariants.map(variant => (
+                        <li><button className="inlineButton inlineButtonNormal"
+                                    onClick={() => lookupWordClicked(variant.disambiguation)}>
+                            {variant.text}
+                        </button></li>)
+                    )}
                 </ul>}
             </p>}
 

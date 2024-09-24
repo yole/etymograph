@@ -41,6 +41,10 @@ code {
   cursor: pointer;
 }
 
+.inlineButtonNormal {
+  font-size: medium;
+}
+
 .inlineButtonActive {
   font-weight: bold;
 }

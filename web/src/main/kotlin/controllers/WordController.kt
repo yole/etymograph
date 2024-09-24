@@ -389,10 +389,16 @@ class WordController(val dictionaryService: DictionaryService) {
         return (newWord ?: word).toViewModel(repo)
     }
 
-    data class LookupParameters(val dictionaryId: String = "")
-    data class LookupVariantViewModel(
-        val text: String
+    data class LookupParameters(
+        val dictionaryId: String = "",
+        val disambiguation: String? = null
     )
+
+    data class LookupVariantViewModel(
+        val text: String,
+        val disambiguation: String?
+    )
+
     data class LookupResultViewModel(
         val status: String?,
         val variants: List<LookupVariantViewModel>
@@ -402,10 +408,10 @@ class WordController(val dictionaryService: DictionaryService) {
     fun lookup(repo: GraphRepository, @PathVariable id: Int, @RequestBody params: LookupParameters): LookupResultViewModel {
         val word = repo.resolveWord(id)
         val dictionary = dictionaryService.createDictionary(params.dictionaryId)
-        val status = augmentWordWithDictionary(repo, dictionary, word)
+        val status = augmentWordWithDictionary(repo, dictionary, word, params.disambiguation)
         return LookupResultViewModel(
             status.message,
-            status.variants.map { LookupVariantViewModel(it.text) }
+            status.variants.map { LookupVariantViewModel(it.text, it.disambiguation) }
         )
     }
 

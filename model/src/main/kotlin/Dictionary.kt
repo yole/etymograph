@@ -38,28 +38,41 @@ fun augmentWithDictionary(repo: GraphRepository, language: Language, dictionary:
     }
 }
 
-data class AugmentVariant(val text: String)
+data class AugmentVariant(val text: String, val disambiguation: String?)
 data class AugmentResult(val message: String?, val variants: List<AugmentVariant>)
 
-fun augmentWordWithDictionary(repo: GraphRepository, dictionary: Dictionary, word: Word): AugmentResult {
+fun augmentWordWithDictionary(
+    repo: GraphRepository, dictionary: Dictionary, word: Word,
+    disambiguation: String? = null
+): AugmentResult {
     val lookupResult = dictionary.lookup(repo, word.language, word.text)
     if (lookupResult.result.isEmpty()) {
         return AugmentResult("Found no matching word for ${word.text}", emptyList())
     } else if (lookupResult.result.size > 1) {
-        val bestMatch = tryFindBestMatch(word, lookupResult.result)
+        val bestMatch = selectLookupResult(word, lookupResult, disambiguation)
         if (bestMatch != null) {
             augmentWord(repo, word, bestMatch)
         } else {
             return AugmentResult("Found multiple matching words for ${word.text}",
-                    lookupResult.result.map {
-                        val pos = it.pos?.let { "$it " } ?: ""
-                        AugmentVariant(pos + (it.gloss ?: "?"))
-                    })
+                lookupResult.result.mapIndexed { index, it ->
+                    val pos = it.pos?.let { "$it " } ?: ""
+                    AugmentVariant(pos + (it.gloss ?: "?"), "${word.text}:$index")
+                })
         }
     } else {
         augmentWord(repo, word, lookupResult.result.single())
     }
     return AugmentResult(lookupResult.messages.joinToString("\n").takeIf { it.isNotEmpty() }, emptyList())
+}
+
+private fun selectLookupResult(word: Word, lookupResult: LookupResult, disambiguation: String?): DictionaryWord? {
+    if (disambiguation != null && disambiguation.startsWith(word.text + ":")) {
+        val index = disambiguation.substringAfterLast(':').toIntOrNull()
+        if (index != null && index >= 0 && index < lookupResult.result.size) {
+            return lookupResult.result[index]
+        }
+    }
+    return tryFindBestMatch(word, lookupResult.result)
 }
 
 private fun tryFindBestMatch(word: Word, dictionaryWords: List<DictionaryWord>): DictionaryWord? {

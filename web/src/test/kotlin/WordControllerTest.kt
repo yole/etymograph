@@ -174,5 +174,8 @@ class WordControllerTest {
         val word = graph.findOrAddWord("īsern", oe, null)
         val result = wordController.lookup(graph, word.id, WordController.LookupParameters("wiktionary"))
         assertEquals(2, result.variants.size)
+        val result2 = wordController.lookup(graph, word.id,
+            WordController.LookupParameters("wiktionary", result.variants[0].disambiguation))
+        assertEquals("the metal iron", word.gloss)
     }
 }
