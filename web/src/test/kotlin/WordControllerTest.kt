@@ -6,6 +6,7 @@ import org.junit.Assert.assertNull
 import org.junit.Before
 import org.junit.Test
 import ru.yole.etymograph.GraphRepository
+import ru.yole.etymograph.Language
 import ru.yole.etymograph.Link
 import ru.yole.etymograph.WordCategory
 import ru.yole.etymograph.WordCategoryValue
@@ -15,11 +16,16 @@ class WordControllerTest {
     private lateinit var fixture: QTestFixture
     private lateinit var graph: GraphRepository
     private lateinit var wordController: WordController
+    private lateinit var oe: Language
 
     @Before
     fun setup() {
         fixture = QTestFixture()
         graph = fixture.graph
+
+        oe = Language("Old English", "OE")
+        graph.addLanguage(oe)
+
         wordController = WordController(TestDictionaryService())
     }
 
@@ -150,11 +156,23 @@ class WordControllerTest {
         assertEquals(1, wordModel.stressLength)
         assertEquals("eˈa", wordModel.textWithExplicitStress)
 
-        wordController.updateWord(graph, word.id, WordController.AddWordParameters(
-            "ˈea",null, null, null, null,false, null, null)
-        )
+        wordController.updateWord(graph, word.id, WordController.AddWordParameters("ˈea"))
         val wordById = graph.wordById(word.id)!!
         assertEquals("ea", wordById.text)
         assertEquals(0, wordById.stressedPhonemeIndex)
+    }
+
+    @Test
+    fun lookup() {
+        val word = graph.findOrAddWord("brīdel", oe, null)
+        wordController.lookup(graph, word.id, WordController.LookupParameters("wiktionary"))
+        assertEquals("bridle", word.gloss)
+    }
+
+    @Test
+    fun lookupAmbiguous() {
+        val word = graph.findOrAddWord("īsern", oe, null)
+        val result = wordController.lookup(graph, word.id, WordController.LookupParameters("wiktionary"))
+        assertEquals(2, result.variants.size)
     }
 }

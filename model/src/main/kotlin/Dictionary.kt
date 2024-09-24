@@ -32,28 +32,34 @@ data class DictionaryWord(
 fun augmentWithDictionary(repo: GraphRepository, language: Language, dictionary: Dictionary) {
     for (word in repo.dictionaryWords(language)) {
         val result = augmentWordWithDictionary(repo, dictionary, word)
-        if (result != null) {
-            println(result)
+        if (result.message != null) {
+            println(result.message)
         }
     }
 }
 
-fun augmentWordWithDictionary(repo: GraphRepository, dictionary: Dictionary, word: Word): String? {
+data class AugmentVariant(val text: String)
+data class AugmentResult(val message: String?, val variants: List<AugmentVariant>)
+
+fun augmentWordWithDictionary(repo: GraphRepository, dictionary: Dictionary, word: Word): AugmentResult {
     val lookupResult = dictionary.lookup(repo, word.language, word.text)
     if (lookupResult.result.isEmpty()) {
-        return "Found no matching word for ${word.text}"
+        return AugmentResult("Found no matching word for ${word.text}", emptyList())
     } else if (lookupResult.result.size > 1) {
         val bestMatch = tryFindBestMatch(word, lookupResult.result)
         if (bestMatch != null) {
             augmentWord(repo, word, bestMatch)
         } else {
-            return "Found multiple matching words for ${word.text}: " +
-                    lookupResult.result.joinToString(", ") { it.gloss ?: "?" }
+            return AugmentResult("Found multiple matching words for ${word.text}",
+                    lookupResult.result.map {
+                        val pos = it.pos?.let { "$it " } ?: ""
+                        AugmentVariant(pos + (it.gloss ?: "?"))
+                    })
         }
     } else {
         augmentWord(repo, word, lookupResult.result.single())
     }
-    return lookupResult.messages.joinToString("\n").takeIf { it.isNotEmpty() }
+    return AugmentResult(lookupResult.messages.joinToString("\n").takeIf { it.isNotEmpty() }, emptyList())
 }
 
 private fun tryFindBestMatch(word: Word, dictionaryWords: List<DictionaryWord>): DictionaryWord? {

@@ -236,6 +236,7 @@ function SingleWord(params) {
     const [editMode, setEditMode] = useState(false)
     const [errorText, setErrorText] = useState("")
     const [lookupErrorText, setLookupErrorText] = useState("")
+    const [lookupVariants, setLookupVariants] = useState([])
     useEffect(() => { document.title = "Etymograph : " + (word === undefined ? "Unknown Word" : word.text) })
 
     function submitted(r) {
@@ -264,11 +265,13 @@ function SingleWord(params) {
         if (r.status !== 200) {
             const jr = await r.json()
             setLookupErrorText(jr.message)
+            setLookupVariants([])
         }
         else {
             const jr = await r.json()
             if (jr.status !== null) {
                 setLookupErrorText(jr.status)
+                setLookupVariants(jr.variants)
             }
             else {
                 router.replace(router.asPath)
@@ -367,6 +370,9 @@ function SingleWord(params) {
             {allowEdit() && dictionaries.includes("wiktionary") && <p>
                 <button className="inlineButton" onClick={() => lookupWordClicked()}>Look up in Wiktionary</button><br/>
                 {lookupErrorText !== "" && <span className="errorText">{lookupErrorText}</span>}
+                {lookupVariants.length > 0 && <ul>
+                    {lookupVariants.map(variant => (<li>{variant.text}</li>))}
+                </ul>}
             </p>}
 
             {allowEdit() && word.parseCandidates.map(pc => <>

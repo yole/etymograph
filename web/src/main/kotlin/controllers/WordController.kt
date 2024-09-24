@@ -4,7 +4,6 @@ import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.server.ResponseStatusException
 import ru.yole.etymograph.*
-import ru.yole.etymograph.importers.Wiktionary
 import ru.yole.etymograph.web.*
 
 const val explicitStressMark = 'ˈ'
@@ -220,13 +219,13 @@ class WordController(val dictionaryService: DictionaryService) {
 
     data class AddWordParameters(
         val text: String?,
-        val gloss: String?,
-        val fullGloss: String?,
-        val pos: String?,
-        val classes: String?,
-        val reconstructed: Boolean?,
-        val source: String?,
-        val notes: String?
+        val gloss: String? = null,
+        val fullGloss: String? = null,
+        val pos: String? = null,
+        val classes: String? = null,
+        val reconstructed: Boolean? = null,
+        val source: String? = null,
+        val notes: String? = null
     )
 
     @PostMapping("/{graph}/word/{lang}", consumes = ["application/json"])
@@ -391,14 +390,23 @@ class WordController(val dictionaryService: DictionaryService) {
     }
 
     data class LookupParameters(val dictionaryId: String = "")
-    data class LookupResult(val status: String?)
+    data class LookupVariantViewModel(
+        val text: String
+    )
+    data class LookupResultViewModel(
+        val status: String?,
+        val variants: List<LookupVariantViewModel>
+    )
 
     @PostMapping("/{graph}/word/{id}/lookup", consumes = ["application/json"])
-    fun lookup(repo: GraphRepository, @PathVariable id: Int, @RequestBody params: LookupParameters): LookupResult {
+    fun lookup(repo: GraphRepository, @PathVariable id: Int, @RequestBody params: LookupParameters): LookupResultViewModel {
         val word = repo.resolveWord(id)
         val dictionary = dictionaryService.createDictionary(params.dictionaryId)
         val status = augmentWordWithDictionary(repo, dictionary, word)
-        return LookupResult(status)
+        return LookupResultViewModel(
+            status.message,
+            status.variants.map { LookupVariantViewModel(it.text) }
+        )
     }
 
     data class WordSequenceParams(val sequence: String = "", val source: String = "")

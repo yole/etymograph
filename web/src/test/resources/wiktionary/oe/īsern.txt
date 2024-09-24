@@ -1,0 +1,63 @@
+==Old English==
+
+===Alternative forms===
+* {{alter|ang|īren|īsen}}
+
+===Etymology===
+{{dercat|ang|gem-pro|ine-pro|cel-pro|cel|inh=1}}
+From {{inh|ang|gmw-pro|*īsarn}}, from {{inh|ang|gem-pro|*īsarną}}.
+
+{{rel-top|Cognates:}}
+Cognates include {{cog|ofs|īsern}} ({{cog|fy|izer}}), {{cog|osx|īsarn}} ({{cog|nds|Iesen}}), {{cog|odt|*īsarn}} ({{cog|nl|ijzer}}), {{cog|goh|īsarn}} ({{cog|de|Eisen}}), {{cog|non|járn}} ({{cog|sv|järn}}), {{cog|got|𐌴𐌹𐍃𐌰𐍂𐌽}}, {{cog|sga|īärn}} ({{cog|ga|iarann}}, {{cog|cy|haearn}}). {{rel-bottom}}
+
+===Pronunciation===
+* {{ang-IPA|īsern}}
+
+===Noun===
+{{ang-noun|n|head=īsern|īsern}}
+
+# the metal [[iron]]
+# an instrument or tool made from iron, especially an iron [[sword]]
+#* {{quote-book|ang|text=''Iċ eom ānhaga '''īserne''' wund, bille ġebennod, beadoweorca sæd, eċġum wēriġ.''|t=I am a lone one wounded '''with iron''', wounded by sword, sated of battle-works, weary by edges.|title=Exeter Book Riddle 5|year=10th century|url=http://www.oldenglishaerobics.net/riddles.html#w0000003}}
+# an iron [[shackle]] or [[fetter]]
+
+====Declension====
+{{ang-decl-noun-a-n|īsern}}
+
+===Adjective===
+{{ang-adj|īsern}}
+
+# consisting or made of [[iron]]
+#* '''late 9th century''', [https://archive.org/details/kingalfredsorosi79oros/page/158/mode/2up translation] of [[w:Orosius|Orosius’]] ''History Against the Pagans''
+#*: {{quote|ang|''⁊ hæfdon ġeleornad mā cræfta hū hīe þā elpendas beswīcan mehton, mid þǣm þæt hīe nāmon trēowu, ⁊ slōgon on oþerne ende moniġe sċearpe '''īsene''' næġlas, ⁊ hīe mid flexe bewundon, ⁊ onbǣrndon hit, ⁊ beþyddan hit þonne on þone elpend hindan...''|And they had learned more tricks through which they could ensnare the elephants; they took stakes and drove into the other end many sharp '''iron''' nails, and wrapped them in flax, and set them on fire, and then thrust them into the elephant from behind...}}
+
+====Declension====
+{{ang-adecl|īsern}}
+
+====Derived terms====
+{{der4|ang|{{l|ang|bredīsern||a graving-iron}}
+|{{l|ang|hōcīsern||a reaping-hook, sickle}}
+|{{l|ang|īsernbyrne|g=f||iron breastplate or corselet}}
+|{{l|ang|īsernfeter|g=f||iron fetter or binding}}
+|{{l|ang|īsernġelōma|g=m||an iron tool}}
+|{{l|ang|īserngrǣġ||iron gray}}
+|{{l|ang|īsernhelm|g=m||an iron helmet}}
+|{{l|ang|īsernhere|g=m||an ironclad army}}
+|{{l|ang|īsernōre|g=f||an iron ore quarry}}
+|{{l|ang|īsernsċūr|g=m||shower of iron projectiles}}
+|{{l|ang|īsernsmiþ|g=m||blacksmith}}
+|{{l|ang|īsernwyrhta|g=m||an ironworker}}
+|{{l|ang|lēohtīsern||a candlestick}}
+|{{l|ang|mearcīsern||a branding-iron}}
+|{{l|ang|rīpīsern||a reaping-iron}}
+|{{l|ang|stempingīsern||a stamping-iron}}
+}}
+
+====Descendants====
+* {{desctree|enm|iren}}
+
+===References===
+* {{R:ang:BT|ĪSERN|ref=020817}}
+* {{R:ang:BT|ĪSERN|ref=020818}}
+
+{{C|ang|Metals}}
