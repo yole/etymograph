@@ -212,12 +212,13 @@ open class Wiktionary : Dictionary {
         return keyValue[0].trim() to keyValue[1].split(',').map { it.trim() }
     }
 
-    override fun lookup(repo: GraphRepository, language: Language, word: String): LookupResult {
-        return lookup(repo, language, word, true)
+    override fun lookup(repo: GraphRepository, language: Language, word: String, disambiguation: String?): LookupResult {
+        return lookup(repo, language, word, disambiguation, true)
     }
 
-    fun lookup(repo: GraphRepository, language: Language, word: String, lookupRelatedWords: Boolean): LookupResult {
+    fun lookup(repo: GraphRepository, language: Language, word: String, disambiguation: String?, lookupRelatedWords: Boolean): LookupResult {
         val messages = mutableListOf<String>()
+        val variants = mutableListOf<LookupVariant>()
 
         fun lookupSingle(
             language: Language, string: String, wordKind: String,
@@ -225,12 +226,17 @@ open class Wiktionary : Dictionary {
         ): DictionaryWord? {
             if (!lookupRelatedWords) return null
 
-            val compoundResult = lookup(repo, language, string.trimStart('*'), false).result
+            val compoundResult = lookup(repo, language, string.trimStart('*'), disambiguation, false).result
                 .filter(filterCallback)
             if (compoundResult.isEmpty()) {
                 messages.add("Can't find $wordKind '$string'")
             } else if (compoundResult.size > 1) {
+                if (disambiguation != null && disambiguation.startsWith("$string:")) {
+                    val index = disambiguation.substringAfter(':').toIntOrNull()
+                    index?.let { compoundResult.getOrNull(it) }?.let { return it }
+                }
                 messages.add("Multiple variants for $wordKind '$string'")
+                compoundResult.mapIndexedTo(variants) { i, w -> LookupVariant(w.gloss ?: "", "$string:$i") }
             }
             return compoundResult.singleOrNull()
         }
@@ -286,6 +292,7 @@ open class Wiktionary : Dictionary {
                         }
                         compoundComponents?.let {
                             if (it.all { c -> c != null }) {
+                                @Suppress("UNCHECKED_CAST")
                                 this.compoundComponents.addAll(it as Collection<DictionaryWord>)
                             }
                         }
@@ -298,7 +305,7 @@ open class Wiktionary : Dictionary {
 
             }
         }
-        return LookupResult(result, messages)
+        return LookupResult(result, messages, variants)
     }
 
     fun extractShortGloss(gloss: String): String {

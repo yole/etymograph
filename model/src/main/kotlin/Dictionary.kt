@@ -1,13 +1,19 @@
 package ru.yole.etymograph
 
-data class LookupResult(val result: List<DictionaryWord>, val messages: List<String>) {
+data class LookupVariant(val text: String, val disambiguation: String)
+
+data class LookupResult(
+    val result: List<DictionaryWord>,
+    val messages: List<String>,
+    val variants: List<LookupVariant> = emptyList()
+) {
     companion object {
         val empty = LookupResult(emptyList(), emptyList())
     }
 }
 
 interface Dictionary {
-    fun lookup(repo: GraphRepository, language: Language, word: String): LookupResult
+    fun lookup(repo: GraphRepository, language: Language, word: String, disambiguation: String? = null): LookupResult
 }
 
 data class DictionaryRelatedWord(
@@ -45,7 +51,7 @@ fun augmentWordWithDictionary(
     repo: GraphRepository, dictionary: Dictionary, word: Word,
     disambiguation: String? = null
 ): AugmentResult {
-    val lookupResult = dictionary.lookup(repo, word.language, word.text)
+    val lookupResult = dictionary.lookup(repo, word.language, word.text, disambiguation)
     if (lookupResult.result.isEmpty()) {
         return AugmentResult("Found no matching word for ${word.text}", emptyList())
     } else if (lookupResult.result.size > 1) {
@@ -62,7 +68,10 @@ fun augmentWordWithDictionary(
     } else {
         augmentWord(repo, word, lookupResult.result.single())
     }
-    return AugmentResult(lookupResult.messages.joinToString("\n").takeIf { it.isNotEmpty() }, emptyList())
+    return AugmentResult(
+        lookupResult.messages.joinToString("\n").takeIf { it.isNotEmpty() },
+        lookupResult.variants.map { AugmentVariant(it.text, it.disambiguation) }
+    )
 }
 
 private fun selectLookupResult(word: Word, lookupResult: LookupResult, disambiguation: String?): DictionaryWord? {

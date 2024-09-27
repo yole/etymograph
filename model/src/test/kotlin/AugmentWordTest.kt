@@ -27,7 +27,10 @@ class AugmentWordTest {
             "Case", listOf("N"), listOf(WordCategoryValue("Dative", "DAT"))
         ))
         oe.grammaticalCategories.add(WordCategory(
-            "Number", listOf("N"), listOf(WordCategoryValue("Singular", "SG"))
+            "Number", listOf("N"), listOf(
+                WordCategoryValue("Singular", "SG"),
+                WordCategoryValue("Plural", "PL")
+            )
         ))
         repo.addLanguage(oe)
     }
@@ -41,5 +44,18 @@ class AugmentWordTest {
         val link = bille.baseWordLink(repo)
         assertEquals("bil", (link!!.toEntity as Word).text)
         assertEquals(rule, link.rules.single())
+    }
+
+    @Test
+    fun augmentInflectionAmbiguous() {
+        val wyrtum = repo.findOrAddWord("wyrtum", oe, null)
+        val rule = repo.rule("- no change", oe, name = "oe-dat-pl", addedCategories = ".DAT.PL")
+        val result = augmentWordWithDictionary(repo, wiktionary, wyrtum)
+        assertEquals(2, result.variants.size)
+
+        augmentWordWithDictionary(repo, wiktionary, wyrtum, result.variants[0].disambiguation)
+        val link = wyrtum.baseWordLink(repo)
+        assertEquals("wyrt", (link!!.toEntity as Word).text)
+        assertEquals("plant", link.toEntity.gloss)
     }
 }

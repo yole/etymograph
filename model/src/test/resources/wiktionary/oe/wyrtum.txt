@@ -1,0 +1,6 @@
+==Old English==
+
+===Noun===
+{{head|ang|noun form}}
+
+# {{inflection of|ang|wyrt||dat|pl}}

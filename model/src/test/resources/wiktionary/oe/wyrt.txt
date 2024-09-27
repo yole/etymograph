@@ -1,0 +1,114 @@
+==Old English==
+
+===Etymology 1===
+From {{inh|ang|gmw-pro|*wurti}}, from {{inh|ang|gem-pro|*wurt-}}, the oblique stem of {{m|gem-pro|*wrōts}} (whence {{m|en|root}}).
+
+Cognate with {{cog|osx|wurt}}, {{cog|goh|wurz}}, {{cog|non|urt}}, {{cog|got|𐍅𐌰𐌿𐍂𐍄𐍃}}.
+
+====Alternative forms====
+* {{alter|ang|wert||Kentish}}
+* {{alter|ang|wirt||Late Old English}}
+
+====Pronunciation====
+* {{ang-IPA|wyrt}}
+
+====Noun====
+{{ang-noun|f}}
+
+# [[plant]]
+#* '''c. 992''', [[w:Ælfric of Eynsham|Ælfric]], [https://books.google.com/books?id=m2hVAAAAcAAJ&pg=PA464 "The 16th Sunday After Pentecost"]
+#*: {{quote|ang|'''Wyrta''' sind īeðelīca ġesċeafta and þurh winterlīcne ċiele simle forsēariaþ.|'''Plants''' are tender creatures, and they always wither in the winter cold.}}
+#* '''late 9th century''', [[w:Alfred the Great|King Alfred's]] [https://books.google.com/books?id=8sy8OOmW-ZAC&pg=PA91 translation] of [[w:Boethius|Boethius']] ''{{w|The Consolation of Philosophy}}''
+#*: {{quote|ang|Sumra '''wyrta''' oþþe sumes wuda eard biþ on dūnum, sumra on merscum, sumra on mōrum, sumra on clūdum, sumra on barum sandum.|Some '''plants''' and trees have their home on hills, some in marshes, some on moors, some on rocks, some on bare sand.}}
+#* '''late 9th century''', [[w:Alfred the Great|King Alfred's]] [https://books.google.com/books?id=qygPAAAAMAAJ&pg=PA10 translation] of [[w:Augustine of Hippo|Saint Augustine's]] ''[[w:Soliloquies of Augustine|Soliloquies]]''
+#*: {{quote|ang|Æppla, græs, and '''wyrta''', and treowu forealdiaþ and forsēariaþ, and ōðru cumaþ, grēnu weaxaþ, and ġierwaþ and rīpaþ, for þæt hīe eft onġinnaþ sēarian.|Apples, grass, and '''plants''', and trees grow old and wither, while others appear, grow green, reach maturity, and ripen, and with that they begin to wither as well.}}
+# [[vegetable]]
+#* '''c. 995''', [[w:Ælfric of Eynsham|Ælfric]], [https://archive.org/stream/grammatik00aelfuoft#page/n67/mode/2up ''Extracts on Grammar in English'']
+#*: {{quote|ang|Holus: "'''wyrt'''."|''Holus'': "'''vegetable'''."}}
+#* '''early 11th century''', anonymous {{w|gloss}} of [[w:Ælfric of Eynsham|Ælfric's]] {{w|Latin}} [https://en.wikisource.org/wiki/%C3%86lfric%27s_Colloquy Colloquy] (c. 995)
+#*: {{quote|ang|"Hwæt māre itst þū?" "'''Wyrta''' and ǣġru, fisċ and ċīese, buteran and bēana."|"What else do you eat?" "'''Vegetables''' and eggs, fish and cheese, butter and beans."}}
+#* '''early 11th century''', anonymous {{w|gloss}} of [[w:Ælfric of Eynsham|Ælfric's]] {{w|Latin}} [https://en.wikisource.org/wiki/%C3%86lfric%27s_Colloquy Colloquy] (c. 995)
+#*: {{quote|ang|Ġif ġē mē ūt ādrīfaþ fram ēowrum ġefērsċipe, ġē etaþ ēowre '''wyrta''' grēne and ēowre flǣsċmetas hrēawe.|If you drive me out of your society, you'll eat your '''vegetables''' uncooked and your meat raw. [Said by a cook.]}}
+#* '''unknown date and author''', [https://books.google.com/books?id=4dMxAAAAMAAJ&pg=PA123 monastic sign language guide]
+#*: {{quote|ang|Ġesodenra '''wyrta''' tācn is þæt þū dō mid þīnre ōðerre handa niðewearde be þǣre sīdan swelċe þū sċearfian wille. Þonne þū grēne '''wyrta''' habban wille, þonne sete þū þīnne finger on þīne winestran hand.|The sign for cooked '''vegetables''' is that you take your hand and make a downward motion along your side as if you're cutting them up. When you want raw '''vegetables''', place your finger on your left hand.}}
+# [[herb]], [[spice]]
+#* '''c. 992''', [[w:Ælfric of Eynsham|Ælfric]], [https://books.google.com/books?id=m2hVAAAAcAAJ&pg=PA584 "On the Dedication of a Church"]
+#*: {{quote|ang|Hire olfendas bǣron sūðerne '''wyrta''', and dīerwierðe ġimmas, and unġerīm goldes.|Her camels were carrying southern '''spices''', precious gems, and endless gold.}}
+#* {{w|Blickling Homilies}}, [https://books.google.com/books?id=uGk8CwAAQBAJ&pg=PA73 "Palm Sunday"]
+#*: {{quote|ang|Marīa ġenam ān pund dīerwierðre smierenesse and smierede mid þæs Hǣlendes fēt and mid hire loccum drȳġde. Þā wæs eall þæt hūs ġefylled mid þon swētan stenċe. Þēos smierenes wæs ġeworht of eahtatīene cynna '''wyrtum'''.|Mary took a pound of precious ointment and rubbed it on Jesus' feet and dried them with her hair. Then the whole house was filled with the sweet smell. This ointment was made from 18 kinds of '''herbs'''.}}
+# {{lb|ang|rare}} [[root]] of a plant
+#* '''c. 950–1050'''. Anonymous, "''{{w|Daniel (Old English poem)}}''", in {{w|Junius manuscript|Oxford, Boleian Library, Junius 11}}, ll. 497–499. Reprinted in '''2013''', Bintley, Michael D. J.; Shapland, Michael G. (eds.), ''Trees and Timber in the Anglo-Saxon World'', Oxford: Oxford University Press, {{ISBN|978-0-19-968079-5}}, [https://www.google.com/books/edition/Trees_and_Timber_in_the_Anglo_Saxon_Worl/3yNoAgAAQBAJ?hl=en&gbpv=1&pg=PA219&printsec=frontcover p. 219]. Translation from the same.
+#*: Þuhte him þæt on foldan | fægre stode / wudubeam wlitig, | se wæs '''wyrtum''' fæst, / beorht on blædum.
+#*:: It seemed to him that there stood, fair upon the earth, a peerless tree that was steadfast '''in its roots''' and bright in its fruits.
+#* '''975–1025''' (date of [[manuscript|MS]]). Anonymous, ''{{w|Beowulf}}'', in the {{w|Nowell Codex}}. Translated and reprinted in '''1999'''. {{w|Seamus Heaney|Heaney, Seamus}} (trans.), ''Beowulf: A New Verse Translation'', New York: Farrar, Straus and Giroux, {{ISBN|0-374-11119-7}}, [https://archive.org/details/beowulfnewverset00hean/page/94/mode/2up pp. 94–95], l. 1364.
+#*: wudu '''wyrtum''' fæst | wæter oferhelmað
+#*:: Woods secured '''by roots''' cover over the water
+
+=====Declension=====
+{{ang-decl-noun-i-f|wyrt}}
+
+=====Derived terms=====
+{{der4|ang|title=Derived terms|{{l|ang|ǣġwyrt}}
+|{{l|ang|bēowyrt}}
+|{{l|ang|bisċopwyrt}}
+|{{l|ang|broþorwyrt}}
+|{{l|ang|cyninges wyrt}}
+|{{l|ang|ēawyrt}}
+|{{l|ang|fīcwyrt}}
+|{{l|ang|feldwyrt}}
+|{{l|ang|feltwyrt}}
+|{{l|ang|ġelodwyrt}}
+|{{l|ang|ġewyrtbox}}
+|{{l|ang|hæselwyrt}}
+|{{l|ang|hrætelwyrt}}
+|{{l|ang|hyllwyrt}}
+|{{l|ang|lǣċewyrt}}
+|{{l|ang|nædrewyrt}}
+|{{l|ang|smeoruwyrt}}
+|{{l|ang|strǣlwyrt}}
+|{{l|ang|wealhwyrt}}
+|{{l|ang|wyrtcyn}}
+|{{l|ang|wyrtcynren}}
+|{{l|ang|wyrtġemang}}
+|{{l|ang|wyrtian}}
+|{{l|ang|wyrttūn}}
+|{{l|ang|wyrtwala}}
+|{{l|ang|wyrtwalian}}
+|{{l|ang|wyrtweard}}
+}}
+
+=====Descendants=====
+* {{desc|enm|wurt|worte|wort}}
+** {{desc|en|wort}}
+** {{desc|gmw-msc|*wort}} (attested in plural {{l|gmw-msc|wortis}})
+*** {{desc|sco|wirt}}
+** {{desc|der=1|enm|wurten|worten|pos2=adj|t2=resembling or pertaining to spice, herbal}}
+
+===Etymology 2===
+From a merger of {{inh|ang|gmw-pro|*wurtiju|t=spice}} and {{inh|ang|gmw-pro|*wurti|t=herb}}. Cognate with {{cog|osx|wurtia}}.
+
+====Pronunciation====
+* {{ang-IPA|wyrt}}
+
+====Noun====
+{{ang-noun|f}}
+
+# {{l|en|wort}} {{gloss|as in brewing}}
+
+=====Declension=====
+{{ang-decl-noun-o-f|wyrt}}
+
+=====Derived terms=====
+* {{l|ang|grēat wyrt}}
+* {{l|ang|māxwyrt}}
+* {{l|ang|mealtwyrt}}
+
+=====Descendants=====
+* {{desc|enm|wort|worte}}
+** {{desc|en|wort}}
+** {{desc|sco|wirt}}
+
+====References====
+* {{R:ang:BT|wyrt|ref=037017}}
+
+{{C|ang|Plants|Brewing}}
