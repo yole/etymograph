@@ -1,0 +1,40 @@
+==Old English==
+
+===Alternative forms===
+* {{alter|ang|hond}}
+
+===Etymology===
+From {{inh|ang|gmw-pro|*handu}}, from {{inh|ang|gem-pro|*handuz}}. Cognate with {{cog|ofs|hond}}, {{cog|osx|hand}}, {{cog|goh|hant}}, {{cog|non|hǫnd}}, {{cog|got|𐌷𐌰𐌽𐌳𐌿𐍃}}.
+
+===Pronunciation===
+* {{ang-IPA|hand}}
+
+===Noun===
+{{ang-noun|f}}
+
+# {{l|en|hand}}
+#* {{quote-book|ang|text=''Oft him ānhaga ·  āre gebīdeð, <br/>Metudes miltse, · þēah þe hē mōdċeariġ<br/>ġeond lagulāde · longe sċeolde <br/>hrēran mid '''hondum''' · hrīmċealde sǣ,<br/>wadan wræclāstas. · Wyrd bið ful ārǣd.''|t=A loner oft waits a grace for himself, <br/>Creator's mercy, even if he is sorrowful,<br/>through a sea-way he should for long<br/>stir the frost-cold sea with '''hands''',<br/>travel paths of exile. Fate is well stalwart.|title=The Wanderer|year=10th century}}
+
+====Declension====
+{{ang-decl-noun-u-f|hand}}
+
+====Derived terms====
+* {{l|ang|handæx||hatchet}}
+* {{l|ang|handbōc||manual}}
+* {{l|ang|handcræft||dexterity}}
+* {{l|ang|handgang||surrender}}
+* {{l|ang|handġewrit||handwriting}}
+* {{l|ang|handlian||to handle}}
+* {{l|ang|handprēost||chaplain}}
+* {{l|ang|handseten||signature}}
+* {{l|ang|handweorc||manual labor}}
+* {{l|ang|-hende||-handed}}
+* {{l|ang|on hand gān||to surrender}}
+
+====Descendants====
+* {{desc|enm|hond|hand}}
+** {{desc|en|hand}}
+** {{desc|sco|hand|haund}}
+** {{desc|yol|hoane}}
+
+{{topics|ang|Anatomy}}

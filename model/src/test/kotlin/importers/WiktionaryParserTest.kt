@@ -104,4 +104,10 @@ class WiktionaryParserTest {
         assertEquals(3, result.size)
         assertEquals("variant of frēcn", result[1].gloss)
     }
+
+    @Test
+    fun lTag() {
+        val result = wiktionary.lookup(repo, oe, "hand").result.single()
+        assertEquals("hand", result.gloss)
+    }
 }

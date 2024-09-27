@@ -1,6 +1,5 @@
 package ru.yole.etymograph.importers
 
-import com.sun.org.apache.xpath.internal.operations.Bool
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 import ru.yole.etymograph.*
@@ -113,6 +112,9 @@ class WiktionaryPosSection(
         else if ((name == "inflection of" || name == "infl of")  && parameters.size >= 3) {
             inflectionOf = InflectionOfTemplate(parameters[1], remapInflectionAttributes(parameters.drop(3)))
         }
+        else if (name == "l") {
+            return parameters.getOrNull(1) ?: ""
+        }
 
         return ""
     }
@@ -194,7 +196,7 @@ class WiktionaryPage(source: String) {
     }
 }
 
-open class  Wiktionary : Dictionary {
+open class Wiktionary : Dictionary {
     private fun parseDictionarySettings(settings: String?): Map<String, List<String>> {
         if (settings == null) return emptyMap()
         return settings
