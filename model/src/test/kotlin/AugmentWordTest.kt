@@ -1,6 +1,7 @@
 package ru.yole.etymograph
 
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNull
 import org.junit.Before
 import org.junit.Test
 import ru.yole.etymograph.importers.TestWiktionary
@@ -36,6 +37,7 @@ class AugmentWordTest {
         val bille = repo.findOrAddWord("bille", oe, null)
         val rule = repo.rule("- no change", oe, name = "oe-dat", addedCategories = ".DAT")
         augmentWordWithDictionary(repo, wiktionary, bille)
+        assertNull(bille.gloss)
         val link = bille.baseWordLink(repo)
         assertEquals("bil", (link!!.toEntity as Word).text)
         assertEquals(rule, link.rules.single())
