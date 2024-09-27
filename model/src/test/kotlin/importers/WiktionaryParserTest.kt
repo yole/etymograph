@@ -91,4 +91,10 @@ class WiktionaryParserTest {
         assertEquals("weary", word.gloss)
         assertEquals("weary, tired, exhausted, fatigued", word.fullGloss)
     }
+
+    @Test
+    fun languageLink() {
+        val word = wiktionary.lookup(repo, oe, "oft").result.single()
+        assertEquals("often, oft", word.fullGloss)
+    }
 }

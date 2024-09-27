@@ -1,0 +1,20 @@
+==Old English==
+
+===Etymology===
+From {{inh|ang|gem-pro|*ufta}}.
+
+===Pronunciation===
+* {{ang-IPA|oft}}
+
+===Adverb===
+{{ang-adv|comp=oftor|sup=oftost}}
+
+# [[often]], [[oft#English|oft]]
+#* {{quote-book|ang|text='''''Oft''' him ānhaga · āre gebīdeð, <br/>Metudes miltse, · þēah þe hē mōdċeariġ''|t=A loner '''oft''' waits a grace for himself, <br/>Creator's mercy, even if he is sorrowful|title=The Wanderer|year=10th century|url=https://www.oldenglishaerobics.net/wanderer.html#w0000001}}
+#* {{quote-book|ang|text='''''Oft''' iċ wīġ sēo, frēcne feohtan.''|t=I '''oft''' see a war, a dangerous battle.|title=Exeter Book Riddle 5|year=10th century|url=https://www.oldenglishaerobics.net/riddles.html#w0000012}}
+
+====Antonyms====
+* {{l|ang|seldan}}
+
+====Descendants====
+* {{desctree|enm|ofte}}

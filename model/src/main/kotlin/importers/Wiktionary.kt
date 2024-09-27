@@ -60,12 +60,20 @@ abstract class WiktionarySection {
         }
     }
 
+    protected fun filterLinks(s: String): String {
+        return s.replace(linkRegex) { mr ->
+            val r = mr.groupValues[1]
+            r.substringAfterLast('|', r)
+        }
+    }
+
     protected open fun processTemplate(name: String, parameters: List<String>): String {
         return ""
     }
 
     companion object {
         val templateRegex = Regex("\\{\\{(.+?)}}")
+        val linkRegex = Regex("\\[\\[(.+?)]]")
     }
 }
 
@@ -81,7 +89,7 @@ class WiktionaryPosSection(
     override fun parseSectionLine(line: String) {
         checkClasses(line)
         if (line.startsWith("# ")) {
-            senses.add(filterTemplates(line.removePrefix("# ").replace("[[", "").replace("]]", "")).trim())
+            senses.add(filterTemplates(filterLinks(line.removePrefix("# "))).trim())
         }
     }
 
