@@ -10,7 +10,11 @@ import {
     fetchBackend,
     allowEdit,
     deleteCompound,
-    applyRuleSequence, deriveThroughRuleSequence, fetchAllLanguagePaths, lookupWord
+    applyRuleSequence,
+    deriveThroughRuleSequence,
+    fetchAllLanguagePaths,
+    lookupWord,
+    suggestParseCandidates
 } from "@/api";
 import Link from "next/link";
 import {useRouter} from "next/router";
@@ -237,6 +241,7 @@ function SingleWord(params) {
     const [errorText, setErrorText] = useState("")
     const [lookupErrorText, setLookupErrorText] = useState("")
     const [lookupVariants, setLookupVariants] = useState([])
+    const [parseCandidates, setParseCandidates] = useState([])
     useEffect(() => { document.title = "Etymograph : " + (word === undefined ? "Unknown Word" : word.text) })
 
     function submitted(r) {
@@ -293,6 +298,12 @@ function SingleWord(params) {
             deleteWord(graph, word.id)
                 .then(() => router.push(`/${graph}/dictionary/${word.language}`))
         }
+    }
+
+    async function suggestParseCandidatesClicked() {
+        const r = await suggestParseCandidates(graph, word.id)
+        const jr = await r.json()
+        setParseCandidates(jr.parseCandidates)
     }
 
     async function linkToParseCandidate(pc, wordId) {
@@ -384,15 +395,20 @@ function SingleWord(params) {
                 </ul>}
             </p>}
 
-            {allowEdit() && word.parseCandidates.map(pc => <>
-                <p>
-                    {pc.wordId !== null && <Link href={`/${graph}/word/${word.language}/${pc.text}/${pc.wordId}`}>{pc.text}</Link>}
-                    {pc.wordId === null && <i>{pc.text}</i>}
-                    {pc.categories.length === 0 && ` (${pc.ruleNames.join(",")})`}
-                    {pc.categories}?{' '}
-                    <button onClick={() => acceptParseCandidate(pc)}>Accept</button>
-                </p>
-            </>)}
+            {allowEdit() && <>
+                <button className="inlineButton" onClick={() => suggestParseCandidatesClicked()}>Suggest parse candidates</button>
+                <br/>
+                {parseCandidates.map(pc => (
+                    <>
+                        <p>
+                            {pc.wordId !== null &&
+                                <Link href={`/${graph}/word/${word.language}/${pc.text}/${pc.wordId}`}>{pc.text}</Link>}
+                            {pc.wordId === null && <i>{pc.text}</i>}
+                            {pc.categories.length === 0 && ` (${pc.ruleNames.join(",")})`}
+                            {pc.categories}?{' '}
+                            <button onClick={() => acceptParseCandidate(pc)}>Accept</button>
+                        </p>
+                    </>))}</>}
         </>}
         {editMode && <WordForm
             updateId={word.id}

@@ -91,7 +91,6 @@ class WordController(val dictionaryService: DictionaryService) {
         val source: List<SourceRefViewModel>,
         val sourceEditableText: String,
         val notes: String?,
-        val parseCandidates: List<ParseCandidateViewModel>,
         val attestations: List<AttestationViewModel>,
         val linksFrom: List<LinkTypeViewModel>,
         val linksTo: List<LinkTypeViewModel>,
@@ -152,10 +151,6 @@ class WordController(val dictionaryService: DictionaryService) {
             source.toViewModel(graph),
             source.toEditableText(graph),
             notes,
-            if (computedGloss == null && linksFrom[Link.Derived].isNullOrEmpty())
-                graph.findParseCandidates(this).map { it.toViewModel() }
-            else
-                emptyList(),
             attestations.map { attestation ->
                 AttestationViewModel(
                     attestation.corpusText.id,
@@ -387,6 +382,17 @@ class WordController(val dictionaryService: DictionaryService) {
         val sequence = repo.resolveRuleSequence(params.sequenceId)
         val newWord = repo.deriveThroughRuleSequence(word, sequence)
         return (newWord ?: word).toViewModel(repo)
+    }
+
+    data class ParseCandidatesViewModel(
+        val parseCandidates: List<ParseCandidateViewModel>
+    )
+
+    @PostMapping("/{graph}/word/{id}/parse", consumes = ["application/json"])
+    fun suggestParseCandidates(repo: GraphRepository, @PathVariable id: Int): ParseCandidatesViewModel {
+        val word = repo.resolveWord(id)
+        val candidates = repo.findParseCandidates(word)
+        return ParseCandidatesViewModel(candidates.map { it.toViewModel() })
     }
 
     data class LookupParameters(

@@ -104,6 +104,10 @@ export function lookupWord(graph, id, data) {
     return postToBackend(`${graph}/word/${id}/lookup`, data)
 }
 
+export function suggestParseCandidates(graph, id) {
+    return postToBackend(`${graph}/word/${id}/parse`)
+}
+
 export function deleteWord(graph, id) {
     return postToBackend(`${graph}/word/${id}/delete`, {})
 }
