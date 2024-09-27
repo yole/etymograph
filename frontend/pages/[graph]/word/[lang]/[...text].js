@@ -252,6 +252,8 @@ function SingleWord(params) {
 
     function editSubmitted(r) {
         setEditMode(false)
+        setLookupErrorText(null)
+        setLookupVariants([])
         if (r.text !== word.text) {
             router.push(`/${graph}/word/${word.language}/${r.text}`)
         }
@@ -274,6 +276,8 @@ function SingleWord(params) {
                 setLookupVariants(jr.variants)
             }
             else {
+                setLookupErrorText(null)
+                setLookupVariants([])
                 router.replace(router.asPath)
             }
         }
