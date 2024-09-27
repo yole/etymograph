@@ -178,4 +178,19 @@ class WordControllerTest {
             WordController.LookupParameters("wiktionary", result.variants[0].disambiguation))
         assertEquals("the metal iron", word.gloss)
     }
+
+    @Test
+    fun suggestCompound() {
+        val laece = graph.findOrAddWord("lǣċe", oe, null)
+        val cynn = graph.findOrAddWord("cynn", oe, null)
+        val laececynn = graph.findOrAddWord("lǣċecynn", oe, null)
+
+        val result = wordController.suggestCompound(graph, laececynn.id, WordController.SuggestCompoundParameters(null))
+        assertEquals(1, result.suggestions.size)
+        assertEquals(laece.id, result.suggestions[0].id)
+
+        val compound = graph.createCompound(laececynn, laece)
+        val result2 = wordController.suggestCompound(graph, laececynn.id, WordController.SuggestCompoundParameters(compound.id))
+        assertEquals(cynn.id, result2.suggestions.single().id)
+    }
 }

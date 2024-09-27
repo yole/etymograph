@@ -1,15 +1,25 @@
 package ru.yole.etymograph
 
 import org.junit.Assert.assertEquals
+import org.junit.Before
 import org.junit.Test
 
 class CompoundTest : QBaseTest() {
+    lateinit var repo: GraphRepository
+    lateinit var fara: Word
+    lateinit var mir: Word
+    lateinit var faramir: Word
+
+    @Before
+    fun setup() {
+        repo = repoWithQ()
+        fara = repo.addWord("fara")
+        mir = repo.addWord("mir")
+        faramir = repo.addWord("faramir")
+    }
+
     @Test
     fun segmentedText() {
-        val repo = InMemoryGraphRepository().apply { addLanguage(q) }
-        val fara = repo.addWord("fara")
-        val mir = repo.addWord("mir")
-        val faramir = repo.addWord("faramir")
         val compound = repo.createCompound(faramir, fara)
         compound.components.add(mir)
         val restored = repo.restoreSegments(faramir)
@@ -18,11 +28,7 @@ class CompoundTest : QBaseTest() {
 
     @Test
     fun segmentedTextClitic() {
-        val repo = InMemoryGraphRepository().apply { addLanguage(q) }
-        val fara = repo.addWord("fara")
         fara.classes = listOf("clitic")
-        val mir = repo.addWord("mir")
-        val faramir = repo.addWord("faramir")
         val compound = repo.createCompound(faramir, fara)
         compound.components.add(mir)
         val restored = repo.restoreSegments(faramir)
@@ -31,10 +37,7 @@ class CompoundTest : QBaseTest() {
 
     @Test
     fun compoundsInDictionary() {
-        val repo = InMemoryGraphRepository().apply { addLanguage(q) }
         val fara = repo.addWord("fara", "fara.NOM")
-        val mir = repo.addWord("mir")
-        val faramir = repo.addWord("faramir")
         val compound = repo.createCompound(faramir, fara)
         compound.components.add(mir)
         assertEquals(1, repo.filteredWords(q, WordKind.COMPOUND).size)
@@ -42,10 +45,6 @@ class CompoundTest : QBaseTest() {
 
     @Test
     fun deleteWordFromCompound() {
-        val repo = InMemoryGraphRepository().apply { addLanguage(q) }
-        val fara = repo.addWord("fara")
-        val mir = repo.addWord("mir")
-        val faramir = repo.addWord("faramir")
         val compound = repo.createCompound(faramir, fara)
         compound.components.add(mir)
 
@@ -55,10 +54,6 @@ class CompoundTest : QBaseTest() {
 
     @Test
     fun deleteWordOfCompound() {
-        val repo = InMemoryGraphRepository().apply { addLanguage(q) }
-        val fara = repo.addWord("fara")
-        val mir = repo.addWord("mir")
-        val faramir = repo.addWord("faramir")
         val compound = repo.createCompound(faramir, fara)
         compound.components.add(mir)
 
@@ -68,10 +63,6 @@ class CompoundTest : QBaseTest() {
 
     @Test
     fun segmentedTextDeleteCompound() {
-        val repo = InMemoryGraphRepository().apply { addLanguage(q) }
-        val fara = repo.addWord("fara")
-        val mir = repo.addWord("mir")
-        val faramir = repo.addWord("faramir")
         val compound = repo.createCompound(faramir, fara)
         compound.components.add(mir)
         val restored = repo.restoreSegments(faramir)
@@ -82,7 +73,6 @@ class CompoundTest : QBaseTest() {
 
     @Test
     fun segmentedTextPartialMatch() {
-        val repo = InMemoryGraphRepository().apply { addLanguage(q) }
         val fara = repo.addWord("anda")
         val mir = repo.addWord("aurenya")
         val faramir = repo.addWord("andaurenya")
@@ -94,7 +84,6 @@ class CompoundTest : QBaseTest() {
 
     @Test
     fun stressOnRootInCompound() {
-        val repo = InMemoryGraphRepository().apply { addLanguage(q) }
         val stressRule = repo.rule("- stress is on first root syllable")
         assertEquals("stress is on first root syllable", stressRule.firstInstruction.toEditableText())
         q.stressRule = RuleRef.to(stressRule)
@@ -106,5 +95,14 @@ class CompoundTest : QBaseTest() {
         compound.components.add(pan)
 
         assertEquals(3, napan.calculateStress(repo)!!.index)
+    }
+
+    @Test
+    fun suggestCompound() {
+        val suggestions = repo.suggestCompound(faramir)
+        assertEquals(fara, suggestions.single())
+        val compound = repo.createCompound(faramir, fara)
+        val suggestions2 = repo.suggestCompound(faramir, compound)
+        assertEquals(mir, suggestions2.single())
     }
 }

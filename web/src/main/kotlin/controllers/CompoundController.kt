@@ -13,7 +13,7 @@ class CompoundController {
         val compoundId: Int,
         val firstComponentId: Int = -1,
         val head: Int? = null,
-        val source: String,
+        val source: String? = null,
         val notes: String? = null
     )
 
@@ -40,10 +40,6 @@ class CompoundController {
         }
     }
 
-    private fun GraphRepository.resolveCompound(id: Int): Compound {
-        return langEntityById(id) as? Compound ?: notFound("No compound with ID $id")
-    }
-
     @PostMapping("/{id}")
     fun editCompound(repo: GraphRepository, @PathVariable id: Int, @RequestBody params: CompoundParams) {
         val compound = repo.resolveCompound(id)
@@ -59,4 +55,8 @@ class CompoundController {
         val compound = repo.resolveCompound(id)
         repo.deleteCompound(compound)
     }
+}
+
+fun GraphRepository.resolveCompound(id: Int): Compound {
+    return langEntityById(id) as? Compound ?: notFound("No compound with ID $id")
 }

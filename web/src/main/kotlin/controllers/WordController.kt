@@ -421,6 +421,17 @@ class WordController(val dictionaryService: DictionaryService) {
         )
     }
 
+    data class SuggestCompoundViewModel(val suggestions: List<WordRefViewModel>)
+    data class SuggestCompoundParameters(val compoundId: Int? = null)
+
+    @PostMapping("/{graph}/word/{id}/suggestCompound", consumes = ["application/json"])
+    fun suggestCompound(repo: GraphRepository, @PathVariable id: Int, @RequestBody params: SuggestCompoundParameters): SuggestCompoundViewModel {
+        val word = repo.resolveWord(id)
+        val compound = params.compoundId?.let { repo.resolveCompound(it) }
+        val suggestions = repo.suggestCompound(word, compound)
+        return SuggestCompoundViewModel(suggestions.map { it.toRefViewModel(repo) })
+    }
+
     data class WordSequenceParams(val sequence: String = "", val source: String = "")
     data class WordSequenceResults(
         val words: List<WordRefViewModel>,
@@ -470,7 +481,7 @@ class WordController(val dictionaryService: DictionaryService) {
                 if (existingLink == null) {
                     val link = repo.addLink(word, lastWord, Link.Origin, emptyList(), source, null)
                     val ruleSequence = repo.ruleSequencesForLanguage(word.language)
-                        .singleOrNull { it.fromLanguage == lastWord.language }
+                        .singleOrNull { it.fromLanguage == lastWord!!.language }
                     if (ruleSequence != null) {
                         repo.applyRuleSequence(link, ruleSequence)
                         resultRules.addAll(link.rules.map { it.id })

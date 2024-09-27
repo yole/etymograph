@@ -14,7 +14,7 @@ import {
     deriveThroughRuleSequence,
     fetchAllLanguagePaths,
     lookupWord,
-    suggestParseCandidates
+    suggestParseCandidates, suggestCompound, createCompound, callApiAndRefresh, addToCompound
 } from "@/api";
 import Link from "next/link";
 import {useRouter} from "next/router";
@@ -151,13 +151,31 @@ function CompoundRefComponent(params) {
 }
 
 function CompoundListComponent(params) {
-    const components = params.components
+    const compounds = params.compounds
     const word = params.word
     const router = useRouter()
     const graph = router.query.graph
 
-    const [addToCompound, setAddToCompound] = useState(undefined)
+    const [addToCompoundId, setAddToCompoundId] = useState(undefined)
     const [editCompound, setEditCompound] = useState(undefined)
+    const [compoundSuggestions, setCompoundSuggestions] = useState([])
+    const [errorText, setErrorText] = useState("")
+
+    async function prepareAddToCompound(compoundId) {
+        setAddToCompoundId(compoundId)
+        const r = await suggestCompound(graph, word.id, compoundId)
+        if (r.status === 200) {
+            const jr = await r.json()
+            setCompoundSuggestions(jr.suggestions)
+        }
+    }
+
+    async function acceptCompoundSuggestion(id) {
+        const compoundId = addToCompoundId
+        setAddToCompoundId(undefined)
+        callApiAndRefresh(() => addToCompound(graph, compoundId, id, true),
+            router, setErrorText)
+    }
 
     function deleteCompoundClicked(compoundId) {
         if (window.confirm("Delete this compound?")) {
@@ -166,14 +184,14 @@ function CompoundListComponent(params) {
     }
 
     function submitted() {
-        setAddToCompound(undefined)
+        setAddToCompoundId(undefined)
         setEditCompound(undefined)
         router.replace(router.asPath)
     }
 
     return <>
         <div>{params.derivation ? "Derived with prefix/suffix from:" : "Compound:"}</div>
-        {components.map(m =>
+        {compounds.map(m =>
             <div>
                 {m.components.map((mc, index) => <>
                     {index > 0 && " + "}
@@ -182,10 +200,13 @@ function CompoundListComponent(params) {
                 </>)}
                 {m.notes && <> &ndash; {m.notes}</>}
                 <SourceRefs source={m.source} span={true}/>
-                {addToCompound === m.compoundId &&
-                    <WordForm submitted={submitted} cancelled={() => setAddToCompound(undefined)}
+                {addToCompoundId === m.compoundId && <>
+                    {compoundSuggestions.length > 0 && <br/>}
+                    {compoundSuggestions.map(c => <><button className="inlineButton" onClick={() => acceptCompoundSuggestion(c.id)}>{c.text}</button>{' '}</>)}
+                    {compoundSuggestions.length > 0 && <br/>}
+                    <WordForm submitted={submitted} cancelled={() => setAddToCompoundId(undefined)}
                               addToCompound={m.compoundId} linkTarget={word} defaultValues={{language: word.language}}/>
-                }
+                </>}
                 {editCompound === m.compoundId &&
                     <EditLinkForm compoundId={m.compoundId}
                                   compoundComponents={m.components}
@@ -199,7 +220,7 @@ function CompoundListComponent(params) {
                 }
                 {allowEdit() && <>
                     {' '}
-                    {addToCompound !== m.compoundId && <button onClick={() => setAddToCompound(m.compoundId)}>Add component</button>}
+                    {addToCompoundId !== m.compoundId && <button onClick={() => prepareAddToCompound(m.compoundId)}>Add component</button>}
                     {' '}
                     {editCompound !== m.compoundId && <button onClick={() => setEditCompound(m.compoundId)}>Edit compound</button>}
                     {' '}
@@ -242,6 +263,7 @@ function SingleWord(params) {
     const [lookupErrorText, setLookupErrorText] = useState("")
     const [lookupVariants, setLookupVariants] = useState([])
     const [parseCandidates, setParseCandidates] = useState([])
+    const [compoundSuggestions, setCompoundSuggestions] = useState([])
     useEffect(() => { document.title = "Etymograph : " + (word === undefined ? "Unknown Word" : word.text) })
 
     function submitted(r) {
@@ -327,6 +349,23 @@ function SingleWord(params) {
         else {
             linkToParseCandidate(pc, pc.wordId)
         }
+    }
+
+    async function defineAsCompoundClicked() {
+        let newState = !showCompoundComponent
+        setShowCompoundComponent(newState)
+        if (newState) {
+            const r = await suggestCompound(graph, word.id)
+            if (r.status === 200) {
+                const jr = await r.json()
+                setCompoundSuggestions(jr.suggestions)
+            }
+        }
+    }
+
+    async function acceptCompoundSuggestion(id) {
+        setShowCompoundComponent(false)
+        callApiAndRefresh(() => createCompound(graph, word.id, id), router, setErrorText)
     }
 
     async function deleteRuleLinkClicked(ruleId, linkType) {
@@ -460,8 +499,8 @@ function SingleWord(params) {
                 <p/>
             </>
         }
-        {componentsOfDerivational.length > 0 && <CompoundListComponent word={word} components={componentsOfDerivational} derivation={true}/>}
-        {componentsOfNonDerivational.length > 0 && <CompoundListComponent word={word} components={componentsOfNonDerivational} derivation={false}/>}
+        {componentsOfDerivational.length > 0 && <CompoundListComponent word={word} compounds={componentsOfDerivational} derivation={true}/>}
+        {componentsOfNonDerivational.length > 0 && <CompoundListComponent word={word} compounds={componentsOfNonDerivational} derivation={false}/>}
 
         {word.linkedRules.length > 0 &&
             <>
@@ -498,8 +537,14 @@ function SingleWord(params) {
                 <button className="inlineButton" onClick={() => deriveThroughSequenceClicked(seq.id)}>Derive through {seq.name}</button>
             </>)}
             <br/>
-            <button onClick={() => setShowCompoundComponent(!showCompoundComponent)}>Define as compound</button><br/>
-            {showCompoundComponent && <WordForm submitted={submitted} newCompound={true} linkTarget={word} defaultValues={{language: word.language}} cancelled={() => setShowCompoundComponent(false)}/>}
+            <button onClick={defineAsCompoundClicked}>Define as compound</button><br/>
+            {showCompoundComponent && <>
+                {compoundSuggestions.map(c => <><button className="inlineButton" onClick={() => acceptCompoundSuggestion(c.id)}>{c.text}</button>{' '}</>)}
+                {compoundSuggestions.length > 0 && <br/>}
+                <WordForm submitted={submitted} newCompound={true} linkTarget={word}
+                          defaultValues={{language: word.language}} cancelled={() => setShowCompoundComponent(false)}/>
+                </>
+            }
             <button onClick={() => setShowRelated(!showRelated)}>Add related word</button><br/>
             {showRelated && <WordForm submitted={submitted} linkType='~' linkTarget={word} defaultValues={{language: word.language}} languageReadOnly={true} cancelled={() => setShowRelated(false)}/>}
             {!isCompound && <><button onClick={() => setShowVariation(!showVariation)}>Add variation of</button><br/></>}

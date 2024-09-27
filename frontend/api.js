@@ -108,6 +108,10 @@ export function suggestParseCandidates(graph, id) {
     return postToBackend(`${graph}/word/${id}/parse`)
 }
 
+export function suggestCompound(graph, id, compoundId) {
+    return postToBackend(`${graph}/word/${id}/suggestCompound`, {compoundId})
+}
+
 export function deleteWord(graph, id) {
     return postToBackend(`${graph}/word/${id}/delete`, {})
 }
@@ -259,4 +263,15 @@ export function addPublication(graph, data) {
 
 export function updatePublication(graph, id, data) {
     return postToBackend(`${graph}/publication/${id}`, data)
+}
+
+export async function callApiAndRefresh(apiCall, router, setErrorText){
+    const result = await apiCall()
+    if (result.status === 200) {
+        router.replace(router.asPath)
+    }
+    else {
+        const jr = await r.json()
+        setErrorText(jr.message)
+    }
 }

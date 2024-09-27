@@ -635,6 +635,20 @@ open class InMemoryGraphRepository : GraphRepository() {
         allLangEntities[compound.id] = null
     }
 
+    override fun suggestCompound(compoundWord: Word, compound: Compound?): List<Word> {
+        var longestPrefix = ""
+        if (compound != null) {
+            val textSoFar = compound.components.joinToString("") { it.text }
+            if (compoundWord.text.startsWith(textSoFar) && textSoFar.length > longestPrefix.length) {
+                longestPrefix = textSoFar
+            }
+        }
+
+        return allWords(compoundWord.language).filter {
+            it != compoundWord && compoundWord.text.startsWith(longestPrefix + it.text)
+        }
+    }
+
     override fun addRule(
         name: String,
         fromLanguage: Language,
