@@ -1,0 +1,9 @@
+==Old English==
+
+===Pronunciation===
+* {{ang-IPA|bille}}
+
+===Noun===
+{{head|ang|noun form}}
+
+# {{infl of|ang|bil||dat|sg}}

@@ -1,0 +1,27 @@
+==Old English==
+
+===Etymology===
+From {{inh|ang|gmw-pro|*billi}}, from {{inh|ang|gem-pro|*bilją}}. Cognate with {{cog|osx|bil}}, {{cog|goh|bill}} ({{cog|de|Bille|t=pickaxe}}).
+
+===Pronunciation===
+* {{ang-IPA|bil}}
+
+===Noun===
+{{ang-noun|n}}
+
+# {{lb|ang|poetic}} a kind of [[sword]] or other bladed weapon, apparently having two edges
+#* {{quotei|ang|Abrægd mid ðy '''bille'''.|He brandished with his sword.}}
+#* {{quote-book|ang|text=''Iċ eom ānhaga īserne wund, '''bille''' ġebennod, beadoweorca sæd, eċġum wēriġ.''|t=I am a lone one wounded with iron, wounded '''by sword''', sated of battle-works, weary by edges.|title=Exeter Book Riddle 5|year=10th century|url=https://www.oldenglishaerobics.net/riddles.html#w0000005}}
+
+====Declension====
+{{ang-decl-noun-a-n|bill|nomsg=bil}}
+
+====Descendants====
+* {{desc|en|bill}}
+
+===See also===
+* {{l|ang|mēċe|g=m}}
+* {{l|ang|seċġ|g=m}}
+* {{l|ang|sweord|g=n}}
+
+{{topics|ang|Weapons}}

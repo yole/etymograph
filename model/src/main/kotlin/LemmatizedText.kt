@@ -97,7 +97,9 @@ fun Rule.addsCategories(categories: Set<String>): Boolean {
     val ruleCategories = addedCategories ?: return false
     val parsedRuleCategories = parseCategoryValues(fromLanguage, ruleCategories).toMutableList()
     for (category in categories) {
-        val parsedRuleCategory = parsedRuleCategories.find { it?.value?.abbreviation == category }
+        val parsedRuleCategory = parsedRuleCategories.find {
+            it?.value?.abbreviation.equals(category, ignoreCase = true)
+        }
         if (parsedRuleCategory != null) {
             parsedRuleCategories.remove(parsedRuleCategory)
         }
@@ -109,6 +111,8 @@ fun Rule.addsCategories(categories: Set<String>): Boolean {
 }
 
 fun isDefaultCategoryValue(language: Language, categoryValue: String): Boolean {
-    return language.grammaticalCategories.any { it.values.firstOrNull()?.abbreviation == categoryValue }
+    return language.grammaticalCategories.any {
+        it.values.firstOrNull()?.abbreviation.equals(categoryValue, ignoreCase = true)
+    }
 }
 
