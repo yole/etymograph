@@ -256,7 +256,7 @@ open class  Wiktionary : Dictionary {
                     }
                 }
 
-                val gloss = section.senses.first().ifEmpty {
+                val gloss = extractShortGloss(section.senses.first()).ifEmpty {
                     section.inflectionOf?.let { "inflection of ${it.baseWord}"}
                 } ?: ""
                 DictionaryWord(word, language, gloss,
@@ -287,6 +287,13 @@ open class  Wiktionary : Dictionary {
             }
         }
         return LookupResult(result, messages)
+    }
+
+    fun extractShortGloss(gloss: String): String {
+        if ("," in gloss) {
+            return gloss.split(',').first().trim()
+        }
+        return gloss
     }
 
     protected open fun loadWiktionaryPageSource(language: Language, normalizedWord: String): String? {

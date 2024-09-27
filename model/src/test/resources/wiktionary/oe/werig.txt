@@ -1,0 +1,22 @@
+==Old English==
+
+===Etymology===
+From {{inh|ang|gem-pro|*wōrīgaz}}, {{m|gem-pro|*wōrijaz}}, possibly from {{der|ang|ine-pro|*h₂weH-|t=spend night, sleep}}. Compare {{cog|non|ǿrr}}, {{cog|osx|wōrig}}.
+
+===Pronunciation===
+* {{ang-IPA|wēriġ}}
+
+===Adjective===
+{{ang-adj|wēriġ}}
+
+# [[weary]], [[tired]], [[exhausted]], [[fatigued]]
+#* {{w|Exeter Book}}, [https://www.helsinkicorpus.arts.gla.ac.uk/browse.py?fs=90&text=wand The Wanderer]
+#*: {{quote|ang|''Ne mæġ '''wēriġ''' mōd · wyrde wiðstondan,<br/>ne sē hrēo hyġe · helpe ġefremman.''
+|'''A weary''' mind cannot withstand fate, nor the worried mind help out.}}
+
+====Declension====
+{{ang-adecl|wēriġ}}
+
+====Descendants====
+* {{desc|enm|weri|wery}}
+** {{desc|en|weary}}

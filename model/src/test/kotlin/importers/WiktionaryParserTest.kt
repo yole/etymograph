@@ -37,7 +37,7 @@ class WiktionaryParserTest {
         assertEquals("bridle", word.gloss)
         val origin = word.relatedWords.single()
         assertEquals("brigdilaz", origin.relatedWord.text)
-        assertEquals("strap, rein", origin.relatedWord.gloss)
+        assertEquals("strap", origin.relatedWord.gloss)
     }
 
     @Test
@@ -82,6 +82,13 @@ class WiktionaryParserTest {
         assertEquals("to be", etymology1.single().relatedWord.gloss)
         val etymology3 = words[2].relatedWords
         assertEquals(1, etymology3.size)
-        assertEquals("juice, moisture", etymology3.single().relatedWord.gloss)
+        assertEquals("juice", etymology3.single().relatedWord.gloss)
+    }
+
+    @Test
+    fun commaSeparatedGloss() {
+        val word = wiktionary.lookup(repo, oe, "werig").result.single()
+        assertEquals("weary", word.gloss)
+        assertEquals("weary, tired, exhausted, fatigued", word.fullGloss)
     }
 }
