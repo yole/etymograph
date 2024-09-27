@@ -395,7 +395,8 @@ class RuleController {
     }
 
     data class RuleTraceParams(
-        val word: String = ""
+        val word: String = "",
+        val reverse: Boolean = false
     )
 
     data class RuleTraceResult(
@@ -412,8 +413,12 @@ class RuleController {
         val existingWord = repo.wordsByText(rule.fromLanguage, params.word).singleOrNull()
         val word = existingWord ?: Word(-1, params.word, rule.fromLanguage)
         val trace = RuleTrace()
-        val result = rule.apply(word, repo, trace)
-        return RuleTraceResult(trace.log(), result.text)
+        val result = if (params.reverse)
+            rule.reverseApply(word, repo, trace).joinToString(", ")
+        else
+            rule.apply(word, repo, trace).text
+
+        return RuleTraceResult(trace.log(), result)
     }
 }
 

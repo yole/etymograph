@@ -93,6 +93,7 @@ export default function Rule(params) {
     const [showExampleForm, setShowExampleForm] = useState(false)
     const [showTraceForm, setShowTraceForm] = useState(false)
     const [traceWord, setTraceWord] = useState("")
+    const [traceReverse, setTraceReverse] = useState(false)
     const [traceResult, setTraceResult] = useState("")
     const [exampleUnmatched, setExampleUnmatched] = useState([])
     const [focusTarget, setFocusTarget] = useState(null)
@@ -144,8 +145,13 @@ export default function Rule(params) {
         }
     }
 
+    function prepareTrace(reverse) {
+        setShowTraceForm(true)
+        setTraceReverse(reverse)
+    }
+
     async function runTrace() {
-        const r = await traceRule(graph, rule.id, traceWord)
+        const r = await traceRule(graph, rule.id, traceWord, traceReverse)
         if (r.status === 200) {
             const jr = await r.json()
             setErrorText(null)
@@ -283,7 +289,10 @@ export default function Rule(params) {
             </>)}</p>
         </>}
         {allowEdit() && !showTraceForm &&
-            <>{' '}<button onClick={() => setShowTraceForm(true)}>Trace</button></>
+            <>
+                {' '}<button onClick={() => prepareTrace(false)}>Trace</button>
+                {' '}<button onClick={() => prepareTrace(true)}>Trace Reverse</button>
+            </>
         }
         {showTraceForm && <p>
             Word:{' '}

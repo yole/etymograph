@@ -143,8 +143,8 @@ export function applyRuleSequence(graph, seqId, fromWordId, toWordId) {
     })
 }
 
-export function traceRule(graph, ruleId, word) {
-    return postToBackend(`${graph}/rule/${ruleId}/trace`, {word})
+export function traceRule(graph, ruleId, word, reverse) {
+    return postToBackend(`${graph}/rule/${ruleId}/trace`, {word, reverse})
 }
 
 export function deriveThroughRuleSequence(graph, wordId, seqId) {
