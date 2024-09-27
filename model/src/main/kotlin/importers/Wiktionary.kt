@@ -98,7 +98,7 @@ class WiktionaryPosSection(
     }
 
     override fun processTemplate(name: String, parameters: List<String>): String {
-        if (name == "alternative form of") {
+        if (name == "alternative form of" || name == "altform" || name == "alt form" || name == "alt form of") {
             alternativeOf = parameters[1]
         }
         else if ((name == "inflection of" || name == "infl of")  && parameters.size >= 3) {
