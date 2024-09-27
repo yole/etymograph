@@ -482,13 +482,17 @@ function SingleWord(params) {
         <p/>
         {allowEdit() && <>
             {!isCompound && <><button onClick={() => setShowBaseWord(!showBaseWord)}>Add lemma</button><br/></>}
-            {showBaseWord && <WordForm submitted={submitted} linkType='>' linkTarget={word} reverseLink={true} defaultValues={{language: word.language, gloss: word.gloss}} cancelled={() => setShowBaseWord(false)}/>}
+            {showBaseWord && <WordForm submitted={submitted} linkType='>' linkTarget={word} reverseLink={true}
+                                       defaultValues={{language: word.language}} cancelled={() => setShowBaseWord(false)}/>}
             <button onClick={() => setShowDerivedWord(!showDerivedWord)}>Add inflected form</button><br/>
-            {showDerivedWord && <WordForm submitted={submitted} linkType='>' linkTarget={word} defaultValues={{language: word.language}} cancelled={() => setShowDerivedWord(false)} />}
+            {showDerivedWord && <WordForm submitted={submitted} linkType='>' linkTarget={word}
+                                          defaultValues={{language: word.language}} cancelled={() => setShowDerivedWord(false)} />}
             <button onClick={() => setShowOriginWord(!showOriginWord)}>Add origin word</button><br/>
-            {showOriginWord && <WordForm submitted={submitted} linkType='^' linkTarget={word} reverseLink={true} defaultValues={{gloss: word.gloss}} cancelled={() => setShowOriginWord(false)}/>}
+            {showOriginWord && <WordForm submitted={submitted} linkType='^' linkTarget={word} reverseLink={true}
+                                         defaultValues={{gloss: word.gloss}} cancelled={() => setShowOriginWord(false)}/>}
             <button onClick={() => setShowDerivativeWord(!showDerivativeWord)}>Add derivative word</button>
-            {showDerivativeWord && <WordForm submitted={submitted} linkType='^' linkTarget={word} defaultValues={{gloss: word.gloss}} cancelled={() => setShowDerivativeWord(false)}/>}
+            {showDerivativeWord && <WordForm submitted={submitted} linkType='^' linkTarget={word}
+                                             defaultValues={{gloss: word.gloss}} cancelled={() => setShowDerivativeWord(false)}/>}
             {word.suggestedDeriveSequences.map(seq => <>
                 {' '}
                 <button className="inlineButton" onClick={() => deriveThroughSequenceClicked(seq.id)}>Derive through {seq.name}</button>
