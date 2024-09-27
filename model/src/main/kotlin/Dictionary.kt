@@ -155,6 +155,9 @@ fun augmentWord(repo: GraphRepository, word: Word, dictionaryWord: DictionaryWor
                 }
                 word.gloss = null
             }
+            else if (relatedDictionaryWord.linkType == Link.Variation) {
+                word.gloss = null
+            }
 
             repo.addLink(word, relatedWord, relatedDictionaryWord.linkType, rules, emptyList(), null)
         }

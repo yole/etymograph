@@ -51,7 +51,8 @@ abstract class WiktionarySection {
     protected abstract fun parseSectionLine(line: String)
     protected open fun parseSubsectionLine(line: String, subsection: String) {
     }
-    protected open fun stopAtSubsection(subsection: String): Boolean = false
+
+    protected open fun stopAtSubsection(subsection: String): Boolean = subsection in wiktionaryPosNames
 
     protected fun filterTemplates(s: String): String {
         return s.replace(templateRegex) { mr ->
@@ -148,8 +149,6 @@ class WiktionaryEtymologySection : WiktionarySection() {
         }
         return ""
     }
-
-    override fun stopAtSubsection(subsection: String): Boolean = subsection in wiktionaryPosNames
 
     companion object {
         val inflectionAttributesMap = mapOf("s" to "sg", "p" to "pl")
@@ -264,9 +263,12 @@ open class  Wiktionary : Dictionary {
                     }
                 }
 
-                val gloss = extractShortGloss(section.senses.first()).ifEmpty {
-                    section.inflectionOf?.let { "inflection of ${it.baseWord}"}
-                } ?: ""
+                val gloss = extractShortGloss(section.senses.first())
+                    .ifEmpty {
+                        section.inflectionOf?.let { "inflection of ${it.baseWord}"}
+                            ?: section.alternativeOf?.let { "variant of $it" }
+                            ?: ""
+                    }
                 DictionaryWord(word, language, gloss,
                     fullGloss = section.senses.joinToString("; ").takeIf { it != gloss },
                     pos = mapPos(section),

@@ -1,0 +1,43 @@
+==Old English==
+
+===Alternative forms===
+* {{alt|ang|frœ̄cne|frǣcne}}
+
+===Pronunciation===
+* {{ang-IPA|frēcne}}
+
+===Etymology 1===
+From {{inh|ang|gmw-pro|*frōkni}}, from {{inh|ang|gem-pro|*frōkniz}}.
+
+====Adjective====
+{{ang-adj|head=frēcne|sup=frēcnost}}
+
+# [[dangerous]]
+#* {{quote-book|ang|text=''Oft iċ wīġ sēo, '''frēcne''' feohtan.''|t=I oft see a war, a '''dangerous''' battle.|title=Exeter Book Riddle 5|year=10th century|url=https://www.oldenglishaerobics.net/riddles.html#w0000016}}
+# [[grievous]], [[dire]], [[horrible]]
+# [[severe]], [[fierce]], [[savage]]
+# [[daring]], [[bold]], [[brave]], [[audacious]]
+# [[wicked]]
+
+=====Declension=====
+{{ang-adecl|frēcne}}
+
+=====Derived terms=====
+* {{l|ang|frēcennes||danger}}
+* {{l|ang|frēcnian||to endanger}}
+
+===Etymology 2===
+From {{inh|ang|gmw-pro|*frōkni}}, from {{inh|ang|gem-pro|*frōkni|t=danger, peril}}.
+
+====Noun====
+{{ang-noun|n|head=frēcne}}
+
+# {{alternative form of|ang|frēcn}}
+
+=====Declension=====
+{{ang-decl-noun-ja-n|frēcn}}
+
+====Noun====
+{{ang-noun|n|head=frēcne}}
+
+# {{form of|ang|Dative singular form of|frēcn}}

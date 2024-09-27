@@ -97,4 +97,11 @@ class WiktionaryParserTest {
         val word = wiktionary.lookup(repo, oe, "oft").result.single()
         assertEquals("often, oft", word.fullGloss)
     }
+
+    @Test
+    fun alternativeAndInflection() {
+        val result = wiktionary.lookup(repo, oe, "frecne").result
+        assertEquals(3, result.size)
+        assertEquals("variant of frēcn", result[1].gloss)
+    }
 }
