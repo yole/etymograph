@@ -3188,5 +3188,68 @@
                 "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-West_Germanic/hwilu#Proto-West_Germanic"
             }
         ]
+    },
+    {
+        "id": 4753,
+        "text": "sad",
+        "gloss": "sated, full",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-West_Germanic/sad#Proto-West_Germanic"
+            }
+        ]
+    },
+    {
+        "id": 4762,
+        "text": "wīg",
+        "gloss": "battle",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-West_Germanic/wig#Proto-West_Germanic"
+            }
+        ]
+    },
+    {
+        "id": 4804,
+        "text": "hard(ī)",
+        "gloss": "hard",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-West_Germanic/hard(i)#Proto-West_Germanic"
+            }
+        ]
+    },
+    {
+        "id": 4810,
+        "text": "heru",
+        "gloss": "sword",
+        "fullGloss": "sword, dagger",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-West_Germanic/heru#Proto-West_Germanic"
+            }
+        ]
+    },
+    {
+        "id": 4815,
+        "text": "handu",
+        "gloss": "hand",
+        "fullGloss": "hand; a unit of length",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-West_Germanic/handu#Proto-West_Germanic"
+            }
+        ]
+    },
+    {
+        "id": 4826,
+        "text": "finþan",
+        "gloss": "to find",
+        "fullGloss": "to find, discover, come upon",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-West_Germanic/finþan#Proto-West_Germanic"
+            }
+        ]
     }
 ]

@@ -1012,7 +1012,7 @@
     },
     {
         "id": 306,
-        "text": "heofonrīce",
+        "text": "heofonrīċe",
         "gloss": "kingdom of heaven"
     },
     {
@@ -1173,7 +1173,8 @@
         "fullGloss": "the middle dwelling (between heaven and hell), the earth, world",
         "pos": "N",
         "classes": [
-            "masc"
+            "masc",
+            "a-stem"
         ],
         "sourceRefs": [
             {
@@ -1707,8 +1708,7 @@
     },
     {
         "id": 450,
-        "text": "seah",
-        "gloss": "see.1SG"
+        "text": "seah"
     },
     {
         "id": 452,
@@ -3160,7 +3160,7 @@
     {
         "id": 2252,
         "text": "sēon",
-        "gloss": "to see",
+        "gloss": "see",
         "fullGloss": "to see with the eyes",
         "pos": "V",
         "sourceRefs": [
@@ -5800,8 +5800,8 @@
     {
         "id": 2701,
         "text": "wēnan",
-        "gloss": "to expect, to hope",
-        "fullGloss": "to ween, suppose, think, imagine, opine, believe",
+        "gloss": "expect",
+        "fullGloss": "to ween, suppose, think, imagine, opine, believe, expect, hope",
         "pos": "V",
         "sourceRefs": [
             {
@@ -9641,9 +9641,15 @@
         "gloss": "ruin",
         "fullGloss": "to break in two, to                break to pieces, break up, to separate into parts by striking or pulling",
         "pos": "V",
+        "classes": [
+            "v-strong-4"
+        ],
         "sourceRefs": [
             {
                 "refText": "https://bosworthtoller.com/30607"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/tobrecan#Old_English"
             }
         ]
     },
@@ -10597,7 +10603,7 @@
         "id": 3352,
         "text": "feþer",
         "gloss": "feather",
-        "fullGloss": "aFEATHER",
+        "fullGloss": "a FEATHER",
         "pos": "N",
         "classes": [
             "fem"
@@ -12773,15 +12779,13 @@
     {
         "id": 3749,
         "text": "burh",
-        "gloss": "castle",
-        "fullGloss": "castle",
         "pos": "N",
-        "classes": [
-            "fem"
-        ],
         "sourceRefs": [
             {
                 "refText": "https://bosworthtoller.com/5434"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/burh#Old_English"
             }
         ]
     },
@@ -12933,6 +12937,9 @@
         "sourceRefs": [
             {
                 "refText": "https://bosworthtoller.com/14450"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/gefullian#Old_English"
             }
         ]
     },
@@ -13050,8 +13057,7 @@
     {
         "id": 3782,
         "text": "eal",
-        "gloss": "sometimes used indecl",
-        "fullGloss": "sometimes used indecl; adj",
+        "gloss": "all",
         "pos": "N",
         "sourceRefs": [
             {
@@ -13743,18 +13749,6 @@
         ]
     },
     {
-        "id": 4615,
-        "text": "heah",
-        "gloss": "high",
-        "fullGloss": "high, tall; exalted, important; proud; deep; right; main, principal, arch-; ",
-        "pos": "ADJ",
-        "sourceRefs": [
-            {
-                "refText": "https://en.wiktionary.org/wiki/heah#Old_English"
-            }
-        ]
-    },
-    {
         "id": 4617,
         "text": "gerefa",
         "gloss": "reeve",
@@ -14390,5 +14384,664 @@
         "id": 4735,
         "text": "hwā",
         "gloss": "who"
+    },
+    {
+        "id": 4738,
+        "text": "ānhaga",
+        "gloss": "recluse",
+        "fullGloss": "a recluse, a loner, a lone warrior not tied to a lord (meaning \"one-spear\" alone without battle companions)",
+        "pos": "N",
+        "classes": [
+            "masc",
+            "n-stem"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/anhaga#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 4744,
+        "text": "bille",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/bille#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 4745,
+        "text": "bil",
+        "gloss": "sword",
+        "fullGloss": "a kind of sword or other bladed weapon, apparently having two edges",
+        "pos": "N",
+        "classes": [
+            "neut",
+            "a-stem"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/bil#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 4746,
+        "text": "ġebennad"
+    },
+    {
+        "id": 4747,
+        "text": "bennian",
+        "gloss": "wound",
+        "pos": "V"
+    },
+    {
+        "id": 4748,
+        "text": "beadoweorca",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/beadoweorca#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 4749,
+        "text": "beadoweorc",
+        "pos": "N",
+        "classes": [
+            "neut",
+            "a-stem"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/beadoweorc#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 4750,
+        "text": "beaduweorc",
+        "gloss": "battle-work",
+        "fullGloss": "battle-work, warlike operation",
+        "pos": "N",
+        "classes": [
+            "neut",
+            "a-stem"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/beaduweorc#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 4752,
+        "text": "sæd",
+        "gloss": "sated",
+        "fullGloss": "full, sated; weary",
+        "pos": "ADJ",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/sæd#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 4754,
+        "text": "wund",
+        "gloss": "wounded",
+        "fullGloss": "wounded, injured, sore",
+        "pos": "ADJ",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/wund#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 4755,
+        "text": "īserne",
+        "fullGloss": "",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/iserne#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 4756,
+        "text": "īsern",
+        "gloss": "iron",
+        "fullGloss": "the metal iron; an instrument or tool made from iron, especially an iron sword; an iron shackle or fetter",
+        "pos": "N",
+        "classes": [
+            "neut",
+            "a-stem"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/isern#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 4757,
+        "text": "eċġum",
+        "fullGloss": "",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/ecgum#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 4758,
+        "text": "wēriġ",
+        "gloss": "weary",
+        "fullGloss": "weary, tired, exhausted, fatigued",
+        "pos": "ADJ",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/werig#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 4759,
+        "text": "oft",
+        "gloss": "often",
+        "fullGloss": "often, oft",
+        "pos": "ADV",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/oft#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 4761,
+        "text": "wīġ",
+        "gloss": "war",
+        "fullGloss": "''(poetic or in compounds)'' war, battle",
+        "pos": "N",
+        "classes": [
+            "neut",
+            "a-stem"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/wig#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 4763,
+        "text": "sēo"
+    },
+    {
+        "id": 4767,
+        "text": "frēcn",
+        "gloss": "danger; peril",
+        "pos": "N",
+        "classes": [
+            "neut",
+            "a-stem"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/frecn#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 4768,
+        "text": "frēcne",
+        "gloss": "dangerous",
+        "fullGloss": "dangerous; grievous, dire, horrible; severe, fierce, savage; daring, bold, brave, audacious; wicked",
+        "pos": "ADJ",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/frecne#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 4770,
+        "text": "frōfre",
+        "fullGloss": "",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/frofre#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 4771,
+        "text": "frōfor",
+        "gloss": "comfort",
+        "fullGloss": "comfort, consolation",
+        "pos": "N",
+        "classes": [
+            "fem",
+            "o-stem"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/frofor#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 4772,
+        "text": "wēne"
+    },
+    {
+        "id": 4773,
+        "text": "ġēoc",
+        "gloss": "help",
+        "fullGloss": "help, rescue",
+        "pos": "N",
+        "classes": [
+            "fem",
+            "o-stem"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/geoc#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 4776,
+        "text": "cyme"
+    },
+    {
+        "id": 4777,
+        "text": "gūþġewinnes"
+    },
+    {
+        "id": 4778,
+        "text": "gūþġewinn",
+        "pos": "N"
+    },
+    {
+        "id": 4780,
+        "text": "ġewinn",
+        "gloss": "war",
+        "fullGloss": "war; warfare; conflict, struggle; labour, toil; gain, profit",
+        "pos": "N",
+        "classes": [
+            "neut",
+            "a-stem"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/gewinn#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 4782,
+        "text": "ældum",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/ældum#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 4783,
+        "text": "ældu",
+        "fullGloss": "",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/ældu#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 4784,
+        "text": "ieldu",
+        "gloss": "age",
+        "fullGloss": "age; period; old age",
+        "pos": "N",
+        "classes": [
+            "fem",
+            "o-stem"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/ieldu#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 4785,
+        "text": "forwurþe"
+    },
+    {
+        "id": 4786,
+        "text": "forwurþan"
+    },
+    {
+        "id": 4787,
+        "text": "forweorþan",
+        "gloss": "perish",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/forweorþan#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 4789,
+        "text": "for-",
+        "gloss": "wrongly",
+        "fullGloss": "wrongly, away from, astray, abstention, prohibition, perversion, destruction; }}; very",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/for-#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 4791,
+        "text": "meċ",
+        "pos": "PRON",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/mec#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 4794,
+        "text": "hnossiaþ",
+        "fullGloss": "",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/hnossiaþ#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 4795,
+        "text": "hnossian",
+        "gloss": "strike",
+        "fullGloss": "to strike or beat",
+        "pos": "V",
+        "classes": [
+            "v-weak-2"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/hnossian#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 4796,
+        "text": "homera",
+        "fullGloss": "",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/homera#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 4797,
+        "text": "homer",
+        "fullGloss": "",
+        "pos": "N",
+        "classes": [
+            "masc",
+            "a-stem"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/homer#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 4798,
+        "text": "hamor",
+        "gloss": "hammer",
+        "pos": "N",
+        "classes": [
+            "masc",
+            "a-stem"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/hamor#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 4799,
+        "text": "lāfe",
+        "fullGloss": "",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/lafe#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 4800,
+        "text": "lāf",
+        "gloss": "remains",
+        "fullGloss": "remains, remainder, left; legacy; heirloom; widow",
+        "pos": "N",
+        "classes": [
+            "fem",
+            "o-stem"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/laf#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 4801,
+        "text": "heardeċġ"
+    },
+    {
+        "id": 4802,
+        "text": "heard",
+        "gloss": "hard",
+        "fullGloss": "hard, harsh, austere, severe, rigorous, stern, stubborn, firm, hardy, brave",
+        "pos": "ADJ",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/heard#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 4805,
+        "text": "heorosċearp"
+    },
+    {
+        "id": 4808,
+        "text": "heoru",
+        "gloss": "sword",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/heoru#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 4811,
+        "text": "hondweorc"
+    },
+    {
+        "id": 4812,
+        "text": "hond"
+    },
+    {
+        "id": 4814,
+        "text": "hand",
+        "gloss": "hand",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/hand#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 4816,
+        "text": "smiþa",
+        "fullGloss": "",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/smiþa#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 4817,
+        "text": "smiþ",
+        "gloss": "smith",
+        "pos": "N",
+        "classes": [
+            "masc",
+            "a-stem"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/smiþ#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 4818,
+        "text": "bītaþ",
+        "fullGloss": "",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/bitaþ#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 4819,
+        "text": "bītan",
+        "gloss": "to bite",
+        "pos": "V",
+        "classes": [
+            "v-strong-1"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/bitan#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 4820,
+        "text": "burgum",
+        "fullGloss": "",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/burgum#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 4821,
+        "text": "burg",
+        "gloss": "city or town",
+        "fullGloss": "city or town; fortified place: fortress, castle",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/burg#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 4822,
+        "text": "ābīdan",
+        "gloss": "wait",
+        "fullGloss": "to wait ''(+genitive for something)''; to remain",
+        "pos": "V",
+        "classes": [
+            "v-strong-1"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/abidan#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 4824,
+        "text": "sċeal",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/sceal#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 4825,
+        "text": "findan",
+        "gloss": "to find",
+        "fullGloss": "to find; to meet",
+        "pos": "V",
+        "classes": [
+            "v-strong-3"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/findan#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 4827,
+        "text": "folcstede",
+        "gloss": "public place",
+        "fullGloss": "public place, meeting-place; battle-place, battle-field",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/folcstede#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 4831,
+        "text": "wyrtum",
+        "fullGloss": "",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/wyrtum#Old_English"
+            }
+        ]
     }
 ]

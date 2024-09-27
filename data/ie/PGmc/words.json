@@ -3386,5 +3386,100 @@
                 "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-Germanic/bakarijaz#Proto-Germanic"
             }
         ]
+    },
+    {
+        "id": 4741,
+        "text": "wundō",
+        "gloss": "wound",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-Germanic/wundō#Proto-Germanic"
+            }
+        ]
+    },
+    {
+        "id": 4760,
+        "text": "ufta",
+        "gloss": "oft; often; frequently",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-Germanic/ufta#Proto-Germanic"
+            }
+        ]
+    },
+    {
+        "id": 4766,
+        "text": "frōkni",
+        "gloss": "<!----> danger",
+        "fullGloss": "<!----> danger, risk",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-Germanic/frokni#Proto-Germanic"
+            }
+        ]
+    },
+    {
+        "id": 4769,
+        "text": "frōkniz",
+        "gloss": "daring",
+        "fullGloss": "daring, valiant",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-Germanic/frokniz#Proto-Germanic"
+            }
+        ]
+    },
+    {
+        "id": 4775,
+        "text": "kumiz",
+        "gloss": "coming",
+        "fullGloss": "coming, arrival",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-Germanic/kumiz#Proto-Germanic"
+            }
+        ]
+    },
+    {
+        "id": 4781,
+        "text": "winnaną",
+        "gloss": "to labour",
+        "fullGloss": "to labour, toil; to win, gain; to fight, strive",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-Germanic/winnana#Proto-Germanic"
+            }
+        ]
+    },
+    {
+        "id": 4788,
+        "text": "frawerþaną",
+        "gloss": "to perish",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-Germanic/frawerþana#Proto-Germanic"
+            }
+        ]
+    },
+    {
+        "id": 4792,
+        "text": "mek",
+        "gloss": "me;",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-Germanic/mek#Proto-Germanic"
+            }
+        ]
+    },
+    {
+        "id": 4823,
+        "text": "uzbīdaną",
+        "gloss": "to wait out",
+        "fullGloss": "to wait out, be patient; to await, expect",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-Germanic/uzbidana#Proto-Germanic"
+            }
+        ]
     }
 ]
