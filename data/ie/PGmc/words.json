@@ -3481,5 +3481,92 @@
                 "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-Germanic/uzbidana#Proto-Germanic"
             }
         ]
+    },
+    {
+        "id": 4856,
+        "text": "mann-",
+        "gloss": "human",
+        "fullGloss": "human, human being, person, individual; man; ",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-Germanic/mann-#Proto-Germanic"
+            }
+        ]
+    },
+    {
+        "id": 4861,
+        "text": "starkuz",
+        "gloss": "stiff; rigid",
+        "fullGloss": "stiff; rigid; strong",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-Germanic/starkuz#Proto-Germanic"
+            }
+        ]
+    },
+    {
+        "id": 4862,
+        "text": "kwenǭ",
+        "gloss": "woman",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-Germanic/kweno#Proto-Germanic"
+            }
+        ]
+    },
+    {
+        "id": 4863,
+        "text": "fardiz",
+        "gloss": "journey",
+        "fullGloss": "journey, voyage",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-Germanic/fardiz#Proto-Germanic"
+            }
+        ]
+    },
+    {
+        "id": 4864,
+        "text": "maþlą",
+        "gloss": "gathering",
+        "fullGloss": "gathering; speech; legal case; agreement",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-Germanic/maþla#Proto-Germanic"
+            }
+        ]
+    },
+    {
+        "id": 4865,
+        "text": "þingą",
+        "gloss": "appointed time; date; appointment",
+        "fullGloss": "appointed time; date; appointment; meeting; assembly, council; case, matter, issue",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-Germanic/þinga#Proto-Germanic"
+            }
+        ]
+    },
+    {
+        "id": 4866,
+        "text": "nasją",
+        "gloss": "foothill",
+        "fullGloss": "foothill; headland; cape",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-Germanic/nasja#Proto-Germanic"
+            }
+        ]
+    },
+    {
+        "id": 4876,
+        "text": "rūnō",
+        "gloss": "secret",
+        "fullGloss": "secret, mystery; inscription written with runes (letters of the Germanic runic alphabet)",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-Germanic/runo#Proto-Germanic"
+            }
+        ]
     }
 ]

@@ -9777,5 +9777,28 @@
         "fromPOS": [
             "ADJ"
         ]
+    },
+    {
+        "id": 4855,
+        "name": "oe-pronunciation",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "ks"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "relPhoneme",
+                    "parameter": "x",
+                    "relative": false
+                }
+            }
+        ]
     }
 ]

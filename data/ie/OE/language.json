@@ -396,15 +396,6 @@
             ]
         },
         {
-            "id": 1790,
-            "graphemes": [
-                "x"
-            ],
-            "classes": [
-                "consonant"
-            ]
-        },
-        {
             "id": 1858,
             "graphemes": [
                 "ġ"
@@ -537,6 +528,7 @@
         "īo"
     ],
     "stressRuleId": 2292,
+    "pronunciationRuleId": 4855,
     "orthographyRuleId": 2222,
     "pos": [
         {

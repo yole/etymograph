@@ -8240,7 +8240,8 @@
         "fullGloss": "An EDGE, a sharpness, blade,             sword",
         "pos": "N",
         "classes": [
-            "fem"
+            "fem",
+            "o-stem"
         ],
         "sourceRefs": [
             {
@@ -10713,8 +10714,8 @@
     {
         "id": 3368,
         "text": "wyrt",
-        "gloss": "root, plant",
-        "fullGloss": "plant, herb",
+        "gloss": "plant",
+        "fullGloss": "root, plant, herb",
         "pos": "N",
         "classes": [
             "fem",
@@ -15042,6 +15043,93 @@
             {
                 "refText": "https://en.wiktionary.org/wiki/wyrtum#Old_English"
             }
+        ]
+    },
+    {
+        "id": 4832,
+        "text": "lāþra"
+    },
+    {
+        "id": 4833,
+        "text": "laþ",
+        "gloss": "hated",
+        "fullGloss": "hated, despised, detestable, inimical",
+        "pos": "ADJ"
+    },
+    {
+        "id": 4834,
+        "text": "nǣfre",
+        "gloss": "never",
+        "pos": "ADV"
+    },
+    {
+        "id": 4835,
+        "text": "lǣċecynn"
+    },
+    {
+        "id": 4837,
+        "text": "niht",
+        "gloss": "night",
+        "pos": "N"
+    },
+    {
+        "id": 4838,
+        "text": "nihtum"
+    },
+    {
+        "id": 4839,
+        "text": "dēaþsleġe"
+    },
+    {
+        "id": 4841,
+        "text": "dolg",
+        "gloss": "wound",
+        "pos": "N"
+    },
+    {
+        "id": 4842,
+        "text": "eċġa"
+    },
+    {
+        "id": 4843,
+        "text": "ēacen",
+        "gloss": "enlarged",
+        "pos": "ADJ"
+    },
+    {
+        "id": 4844,
+        "text": "weorþaþ"
+    },
+    {
+        "id": 4845,
+        "text": "wunde"
+    },
+    {
+        "id": 4846,
+        "text": "wund",
+        "gloss": "wound",
+        "pos": "N",
+        "classes": [
+            "fem"
+        ]
+    },
+    {
+        "id": 4847,
+        "text": "ġemōtes"
+    },
+    {
+        "id": 4848,
+        "text": "ġemōt",
+        "pos": "N"
+    },
+    {
+        "id": 4850,
+        "text": "mōt",
+        "gloss": "council",
+        "fullGloss": "council, assembly, meeting, encounter, union",
+        "pos": "N",
+        "classes": [
+            "neut"
         ]
     }
 ]

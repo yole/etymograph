@@ -111,6 +111,11 @@
         "pos": "N",
         "classes": [
             "f"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/kona#Old_Norse"
+            }
         ]
     },
     {
@@ -161,9 +166,15 @@
         "id": 951,
         "text": "maðr",
         "gloss": "man",
+        "fullGloss": "human, man, person; degree",
         "pos": "N",
         "classes": [
             "m"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/maðr#Old_Norse"
+            }
         ]
     },
     {
@@ -218,10 +229,16 @@
         "id": 959,
         "text": "ferð",
         "gloss": "journey",
+        "fullGloss": "journey; conduct, behaviour",
         "pos": "N",
         "classes": [
             "f",
             "strong"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/ferð#Old_Norse"
+            }
         ]
     },
     {
@@ -251,7 +268,8 @@
         "gloss": "bay",
         "pos": "N",
         "classes": [
-            "f"
+            "f",
+            "strong"
         ]
     },
     {
@@ -272,15 +290,27 @@
         "classes": [
             "n",
             "strong"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/skip#Old_Norse"
+            }
         ]
     },
     {
         "id": 965,
         "text": "mál",
         "gloss": "speech",
+        "fullGloss": "language; speech; matter, affair; syntactic unit, sentence; cause",
         "pos": "N",
         "classes": [
-            "n"
+            "n",
+            "strong"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/mal#Old_Norse"
+            }
         ]
     },
     {
@@ -289,16 +319,29 @@
         "gloss": "sword",
         "pos": "N",
         "classes": [
-            "n"
+            "n",
+            "strong"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/sverð#Old_Norse"
+            }
         ]
     },
     {
         "id": 967,
         "text": "þing",
         "gloss": "assembly",
+        "fullGloss": "a legal assembly; a tryst",
         "pos": "N",
         "classes": [
-            "n"
+            "n",
+            "strong"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/þing#Old_Norse"
+            }
         ]
     },
     {
@@ -442,7 +485,7 @@
     {
         "id": 989,
         "text": "hönd",
-        "gloss": "land",
+        "gloss": "hand",
         "pos": "N",
         "classes": [
             "m"
@@ -626,7 +669,11 @@
         "id": 1026,
         "text": "Ingólfr",
         "gloss": "Ingolf",
-        "pos": "NP"
+        "pos": "NP",
+        "classes": [
+            "m",
+            "strong"
+        ]
     },
     {
         "id": 1027,
@@ -669,7 +716,13 @@
         "gloss": "headland",
         "pos": "N",
         "classes": [
-            "n"
+            "n",
+            "strong"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/nes#Old_Norse"
+            }
         ]
     },
     {
@@ -777,13 +830,23 @@
     {
         "id": 1067,
         "text": "Hörda-Knútr",
-        "pos": "NP"
+        "gloss": "Hörda-Knút",
+        "pos": "NP",
+        "classes": [
+            "m",
+            "strong"
+        ]
     },
     {
         "id": 1068,
         "text": "sterkr",
         "gloss": "strong",
-        "pos": "ADJ"
+        "pos": "ADJ",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/sterkr#Old_Norse"
+            }
+        ]
     },
     {
         "id": 1069,
@@ -880,17 +943,6 @@
         "pos": "NP"
     },
     {
-        "id": 1084,
-        "text": "frið",
-        "gloss": "beautiful.F"
-    },
-    {
-        "id": 1085,
-        "text": "friðr",
-        "gloss": "beautiful",
-        "pos": "ADJ"
-    },
-    {
         "id": 1086,
         "text": "mestr",
         "gloss": "greatest",
@@ -909,10 +961,16 @@
         "id": 1092,
         "text": "rún",
         "gloss": "rune",
+        "fullGloss": "secret; rune",
         "pos": "N",
         "classes": [
             "f",
             "strong"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/rún#Old_Norse"
+            }
         ]
     },
     {
@@ -3559,8 +3617,7 @@
     },
     {
         "id": 1722,
-        "text": "þér",
-        "gloss": "you.DAT"
+        "text": "þér"
     },
     {
         "id": 1724,
@@ -3749,5 +3806,69 @@
         "classes": [
             "n"
         ]
+    },
+    {
+        "id": 4851,
+        "text": "afrek",
+        "gloss": "achievement",
+        "fullGloss": "great achievement, deed of prowess",
+        "sourceRefs": [
+            {
+                "refText": "https://old-icelandic.vercel.app/word/afrek"
+            }
+        ]
+    },
+    {
+        "id": 4857,
+        "text": "fríð"
+    },
+    {
+        "id": 4858,
+        "text": "atgervi"
+    },
+    {
+        "id": 4860,
+        "text": "atgörvi",
+        "gloss": "ability",
+        "fullGloss": "ability, talent, accomplishment",
+        "pos": "N"
+    },
+    {
+        "id": 4867,
+        "text": "mik"
+    },
+    {
+        "id": 4868,
+        "text": "mér"
+    },
+    {
+        "id": 4869,
+        "text": "mín"
+    },
+    {
+        "id": 4870,
+        "text": "þik"
+    },
+    {
+        "id": 4871,
+        "text": "þín"
+    },
+    {
+        "id": 4872,
+        "text": "vér",
+        "gloss": "we",
+        "pos": "PRON"
+    },
+    {
+        "id": 4873,
+        "text": "oss"
+    },
+    {
+        "id": 4874,
+        "text": "oss"
+    },
+    {
+        "id": 4875,
+        "text": "vár"
     }
 ]

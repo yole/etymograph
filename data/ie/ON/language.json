@@ -6,6 +6,9 @@
                 "a"
             ],
             "classes": [
+                "short",
+                "open",
+                "back",
                 "vowel"
             ]
         },
@@ -16,6 +19,8 @@
             ],
             "classes": [
                 "long",
+                "open",
+                "back",
                 "vowel"
             ]
         },
@@ -25,6 +30,9 @@
                 "b"
             ],
             "classes": [
+                "voiced",
+                "bilabial",
+                "stop",
                 "consonant"
             ]
         },
@@ -34,6 +42,9 @@
                 "d"
             ],
             "classes": [
+                "voiced",
+                "dental",
+                "stop",
                 "consonant"
             ]
         },
@@ -43,6 +54,9 @@
                 "ð"
             ],
             "classes": [
+                "voiced",
+                "dental",
+                "fricative",
                 "consonant"
             ]
         },
@@ -52,6 +66,9 @@
                 "e"
             ],
             "classes": [
+                "short",
+                "front",
+                "mid",
                 "vowel"
             ]
         },
@@ -62,6 +79,8 @@
             ],
             "classes": [
                 "long",
+                "front",
+                "mid",
                 "vowel"
             ]
         },
@@ -71,6 +90,9 @@
                 "f"
             ],
             "classes": [
+                "voiceless",
+                "bilabial",
+                "fricative",
                 "consonant"
             ]
         },
@@ -80,6 +102,9 @@
                 "g"
             ],
             "classes": [
+                "voiced",
+                "velar",
+                "stop",
                 "consonant"
             ]
         },
@@ -89,6 +114,9 @@
                 "h"
             ],
             "classes": [
+                "voiceless",
+                "glottal",
+                "fricative",
                 "consonant"
             ]
         },
@@ -98,6 +126,10 @@
                 "i"
             ],
             "classes": [
+                "short",
+                "front",
+                "close",
+                "unrounded",
                 "vowel"
             ]
         },
@@ -108,6 +140,9 @@
             ],
             "classes": [
                 "long",
+                "front",
+                "close",
+                "unrounded",
                 "vowel"
             ]
         },
@@ -117,15 +152,22 @@
                 "j"
             ],
             "classes": [
+                "voiced",
+                "palatal",
+                "approximant",
                 "consonant"
             ]
         },
         {
             "id": 1805,
             "graphemes": [
-                "k"
+                "k",
+                "c"
             ],
             "classes": [
+                "voiceless",
+                "velar",
+                "stop",
                 "consonant"
             ]
         },
@@ -135,6 +177,10 @@
                 "l"
             ],
             "classes": [
+                "voiced",
+                "alveolar",
+                "lateral",
+                "approximant",
                 "consonant"
             ]
         },
@@ -144,6 +190,9 @@
                 "m"
             ],
             "classes": [
+                "voiced",
+                "bilabial",
+                "nasal",
                 "consonant"
             ]
         },
@@ -153,6 +202,9 @@
                 "n"
             ],
             "classes": [
+                "voiced",
+                "dental",
+                "nasal",
                 "consonant"
             ]
         },
@@ -162,6 +214,9 @@
                 "o"
             ],
             "classes": [
+                "short",
+                "mid",
+                "back",
                 "vowel"
             ]
         },
@@ -172,6 +227,8 @@
             ],
             "classes": [
                 "long",
+                "mid",
+                "back",
                 "vowel"
             ]
         },
@@ -181,6 +238,9 @@
                 "p"
             ],
             "classes": [
+                "voiceless",
+                "bilabial",
+                "stop",
                 "consonant"
             ]
         },
@@ -190,6 +250,9 @@
                 "r"
             ],
             "classes": [
+                "voiced",
+                "alveolar",
+                "trill",
                 "consonant"
             ]
         },
@@ -199,6 +262,9 @@
                 "s"
             ],
             "classes": [
+                "voiceless",
+                "alveolar",
+                "fricative",
                 "consonant"
             ]
         },
@@ -208,6 +274,9 @@
                 "t"
             ],
             "classes": [
+                "voiceless",
+                "dental",
+                "stop",
                 "consonant"
             ]
         },
@@ -217,6 +286,9 @@
                 "u"
             ],
             "classes": [
+                "short",
+                "close",
+                "back",
                 "vowel"
             ]
         },
@@ -227,6 +299,8 @@
             ],
             "classes": [
                 "long",
+                "close",
+                "back",
                 "vowel"
             ]
         },
@@ -236,6 +310,9 @@
                 "v"
             ],
             "classes": [
+                "voiced",
+                "bilabial",
+                "fricative",
                 "consonant"
             ]
         },
@@ -245,6 +322,10 @@
                 "y"
             ],
             "classes": [
+                "short",
+                "close",
+                "front",
+                "rounded",
                 "vowel"
             ]
         },
@@ -255,25 +336,10 @@
             ],
             "classes": [
                 "long",
+                "close",
+                "front",
+                "rounded",
                 "vowel"
-            ]
-        },
-        {
-            "id": 1820,
-            "graphemes": [
-                "x"
-            ],
-            "classes": [
-                "consonant"
-            ]
-        },
-        {
-            "id": 1821,
-            "graphemes": [
-                "z"
-            ],
-            "classes": [
-                "consonant"
             ]
         },
         {
@@ -282,6 +348,9 @@
                 "þ"
             ],
             "classes": [
+                "voiceless",
+                "dental",
+                "fricative",
                 "consonant"
             ]
         },
@@ -291,6 +360,10 @@
                 "æ"
             ],
             "classes": [
+                "short",
+                "open",
+                "front",
+                "unrounded",
                 "vowel"
             ]
         },
@@ -300,6 +373,10 @@
                 "œ"
             ],
             "classes": [
+                "short",
+                "open",
+                "front",
+                "rounded",
                 "vowel"
             ]
         },
@@ -319,6 +396,46 @@
         "ey"
     ],
     "phonotacticsRuleId": 1649,
+    "pronunciationRuleId": 4853,
+    "orthographyRuleId": 4854,
+    "pos": [
+        {
+            "name": "Noun",
+            "abbreviation": "N"
+        },
+        {
+            "name": "Proper noun",
+            "abbreviation": "NP"
+        },
+        {
+            "name": "Adjective",
+            "abbreviation": "ADJ"
+        },
+        {
+            "name": "Adverb",
+            "abbreviation": "ADV"
+        },
+        {
+            "name": "Verb",
+            "abbreviation": "V"
+        },
+        {
+            "name": "Pronoun",
+            "abbreviation": "PRON"
+        },
+        {
+            "name": "Affix",
+            "abbreviation": "AFF"
+        },
+        {
+            "name": "Numeral",
+            "abbreviation": "NUM"
+        },
+        {
+            "name": "Preposition",
+            "abbreviation": "PREP"
+        }
+    ],
     "grammaticalCategories": [
         {
             "name": "Case",
@@ -584,5 +701,6 @@
                 }
             ]
         }
-    ]
+    ],
+    "dictionarySettings": "wiktionary-id: non\nnon-decl-m-c1: m, strong\nnon-decl-m-c2: m, strong, gen-ar\nnon-decl-f-i: f, strong\nnon-decl-n-a: n, strong\nnon-decl-n-ja: n, strong"
 }
