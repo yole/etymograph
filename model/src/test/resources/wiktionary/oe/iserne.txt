@@ -6,9 +6,9 @@
 ===Noun===
 {{head|ang|noun form|head=īserne}}
 
-# {{infl of|ang|īsern||dat|sg}}
+# {{infl of|ang|isern||dat|sg}}
 
 ===Adjective===
 {{head|ang|adjective form|head=īserne}}
 
-# {{infl of|ang|īsern||str|acc|m//f|s//p|;|str|ins|m//n|s|;|str|nom|m//f|p|;|wk|nom|f//n|s|;|wk|acc|n|s}}
+# {{infl of|ang|isern||str|acc|m//f|s//p|;|str|ins|m//n|s|;|str|nom|m//f|p|;|wk|nom|f//n|s|;|wk|acc|n|s}}

@@ -61,7 +61,7 @@ class WiktionaryParserTest {
         val word = wiktionary.lookup(repo, oe, "byþ").result.single()
         val baseWord = word.relatedWords.single()
         assertEquals(listOf("3", "sg", "pres"), baseWord.linkDetails)
-        assertEquals("inflection of bēon", word.gloss)
+        assertEquals("inflection of beon", word.gloss)
     }
 
     @Test

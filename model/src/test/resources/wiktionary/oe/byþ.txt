@@ -9,4 +9,4 @@
 ===Verb===
 {{head|ang|verb form}}
 
-# {{inflection of|ang|bēon||3|s|pres}}
+# {{inflection of|ang|beon||3|s|pres}}
