@@ -259,7 +259,6 @@
         "id": 35,
         "text": "sprǣċ",
         "gloss": "speech",
-        "fullGloss": "I in the following glosses",
         "pos": "N",
         "classes": [
             "fem"
@@ -9375,10 +9374,17 @@
         "id": 3192,
         "text": "ādrīfan",
         "gloss": "drive away",
+        "fullGloss": "to drive away, repel, pursue",
         "pos": "V",
+        "classes": [
+            "v-strong-1"
+        ],
         "sourceRefs": [
             {
                 "refText": "Fulk 2014:19"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/adrifan#Old_English"
             }
         ]
     },

@@ -641,7 +641,8 @@
     },
     {
         "id": 1017,
-        "text": "Bárðarson"
+        "text": "Bárðarson",
+        "pos": "NP"
     },
     {
         "id": 1018,
@@ -663,7 +664,8 @@
     },
     {
         "id": 1022,
-        "text": "Herjólfsson"
+        "text": "Herjólfsson",
+        "pos": "NP"
     },
     {
         "id": 1023,
@@ -1642,7 +1644,8 @@
     },
     {
         "id": 1290,
-        "text": "Egilsson"
+        "text": "Egilsson",
+        "pos": "NP"
     },
     {
         "id": 1291,
@@ -2297,10 +2300,17 @@
         "id": 1400,
         "text": "heiðr",
         "gloss": "heath",
+        "fullGloss": "heath, moor",
         "pos": "N",
         "classes": [
             "f",
-            "strong"
+            "strong",
+            "ijo-stem"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/heiðr#Old_Norse"
+            }
         ]
     },
     {
@@ -2377,7 +2387,6 @@
     {
         "id": 1438,
         "text": "ársæll",
-        "gloss": "fortunate",
         "fullGloss": "fortunate as to the seasonal harvest",
         "pos": "ADJ"
     },
@@ -2483,7 +2492,13 @@
         "gloss": "kingdom",
         "pos": "N",
         "classes": [
-            "n"
+            "n",
+            "strong"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/ríki#Old_Norse"
+            }
         ]
     },
     {
@@ -3520,7 +3535,6 @@
     {
         "id": 1687,
         "text": "fegrstr",
-        "gloss": "most beautiful",
         "pos": "ADJ"
     },
     {
@@ -3716,7 +3730,6 @@
     {
         "id": 1733,
         "text": "hreystimaðr",
-        "gloss": "valiant man",
         "pos": "N"
     },
     {
@@ -3728,7 +3741,6 @@
     {
         "id": 1735,
         "text": "sigrsæll",
-        "gloss": "victorious",
         "pos": "ADJ"
     },
     {
@@ -3797,8 +3809,6 @@
     {
         "id": 1746,
         "text": "undirhyggjumaðr",
-        "gloss": "deceitful person",
-        "fullGloss": "guileful or deceitful person",
         "pos": "N"
     },
     {
@@ -4106,7 +4116,8 @@
     },
     {
         "id": 4906,
-        "text": "Bjarnardóttir"
+        "text": "Bjarnardóttir",
+        "pos": "NP"
     },
     {
         "id": 4907,
@@ -4120,5 +4131,321 @@
             "m",
             "gen-ar"
         ]
+    },
+    {
+        "id": 4911,
+        "text": "at",
+        "gloss": "to"
+    },
+    {
+        "id": 4913,
+        "text": "er",
+        "gloss": "when"
+    },
+    {
+        "id": 4914,
+        "text": "fóru"
+    },
+    {
+        "id": 4915,
+        "text": "þótti"
+    },
+    {
+        "id": 4916,
+        "text": "þykkja",
+        "gloss": "seem",
+        "pos": "V"
+    },
+    {
+        "id": 4917,
+        "text": "árvænn",
+        "fullGloss": "promising good harvest",
+        "pos": "ADJ"
+    },
+    {
+        "id": 4918,
+        "text": "árvænt"
+    },
+    {
+        "id": 4920,
+        "text": "ná",
+        "gloss": "get",
+        "fullGloss": "get, obtain",
+        "pos": "V"
+    },
+    {
+        "id": 4921,
+        "text": "nædi"
+    },
+    {
+        "id": 4922,
+        "text": "sættusk"
+    },
+    {
+        "id": 4923,
+        "text": "sætta",
+        "gloss": "reconcile",
+        "pos": "V"
+    },
+    {
+        "id": 4924,
+        "text": "fjórir",
+        "gloss": "four",
+        "pos": "NUM"
+    },
+    {
+        "id": 4925,
+        "text": "fjóra"
+    },
+    {
+        "id": 4926,
+        "text": "allt",
+        "gloss": "everywhere",
+        "pos": "ADV"
+    },
+    {
+        "id": 4927,
+        "text": "hverr",
+        "gloss": "each",
+        "pos": "PRON"
+    },
+    {
+        "id": 4928,
+        "text": "hverir"
+    },
+    {
+        "id": 4929,
+        "text": "Hálfdanarhaugar"
+    },
+    {
+        "id": 4930,
+        "text": "Hálfdanarhaugr",
+        "pos": "NP"
+    },
+    {
+        "id": 4933,
+        "text": "orð",
+        "gloss": "word",
+        "fullGloss": "word; speech, saying",
+        "pos": "N",
+        "classes": [
+            "n",
+            "strong"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/orð#Old_Norse"
+            }
+        ]
+    },
+    {
+        "id": 4934,
+        "text": "langr",
+        "gloss": "long",
+        "pos": "ADJ"
+    },
+    {
+        "id": 4936,
+        "text": "haklangr"
+    },
+    {
+        "id": 4937,
+        "text": "haka",
+        "gloss": "chin",
+        "pos": "N",
+        "classes": [
+            "f",
+            "strong"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/haka#Old_Norse"
+            }
+        ]
+    },
+    {
+        "id": 4940,
+        "text": "sæll",
+        "gloss": "happy",
+        "fullGloss": "happy, blessed, fortunate",
+        "pos": "ADJ",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/sæll#Old_Norse"
+            }
+        ]
+    },
+    {
+        "id": 4941,
+        "text": "ár",
+        "gloss": "year",
+        "fullGloss": "a year; plenty, abundance (especially of crops)",
+        "pos": "N",
+        "classes": [
+            "n",
+            "strong"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/ár#Old_Norse"
+            }
+        ]
+    },
+    {
+        "id": 4944,
+        "text": "vænn",
+        "gloss": "likely",
+        "fullGloss": "likely, to be expected; bidding fair, likely to succeed; hopeful, promising; fine, beautiful",
+        "pos": "ADJ",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/vænn#Old_Norse"
+            }
+        ]
+    },
+    {
+        "id": 4946,
+        "text": "gestr",
+        "gloss": "guest",
+        "pos": "N",
+        "classes": [
+            "m",
+            "strong",
+            "strong-type2"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/gestr#Old_Norse"
+            }
+        ]
+    },
+    {
+        "id": 4948,
+        "text": "jörð",
+        "gloss": "earth",
+        "pos": "N",
+        "classes": [
+            "f",
+            "strong",
+            "strong-type2",
+            "uml-stem"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/jǫrð#Old_Norse"
+            }
+        ]
+    },
+    {
+        "id": 4950,
+        "text": "fagr",
+        "gloss": "fair",
+        "pos": "ADJ"
+    },
+    {
+        "id": 4951,
+        "text": "hjarta",
+        "gloss": "heart",
+        "pos": "N",
+        "classes": [
+            "n",
+            "weak"
+        ]
+    },
+    {
+        "id": 4952,
+        "text": "lunga",
+        "gloss": "lung",
+        "pos": "N",
+        "classes": [
+            "n",
+            "weak"
+        ]
+    },
+    {
+        "id": 4953,
+        "text": "eyra",
+        "gloss": "ear",
+        "pos": "N",
+        "classes": [
+            "n",
+            "weak"
+        ]
+    },
+    {
+        "id": 4955,
+        "text": "stundum",
+        "gloss": "sometimes",
+        "pos": "ADV"
+    },
+    {
+        "id": 4956,
+        "text": "út",
+        "gloss": "out"
+    },
+    {
+        "id": 4957,
+        "text": "skipit"
+    },
+    {
+        "id": 4959,
+        "text": "skip",
+        "gloss": "ship.ACC"
+    },
+    {
+        "id": 4961,
+        "text": "ef",
+        "gloss": "if",
+        "pos": "CONJ"
+    },
+    {
+        "id": 4962,
+        "text": "hreysti",
+        "gloss": "valor",
+        "pos": "N"
+    },
+    {
+        "id": 4964,
+        "text": "fergst"
+    },
+    {
+        "id": 4965,
+        "text": "fegrst"
+    },
+    {
+        "id": 4966,
+        "text": "undirhyggju"
+    },
+    {
+        "id": 4968,
+        "text": "undirhyggja",
+        "gloss": "deceitfulness",
+        "pos": "N",
+        "classes": [
+            "f"
+        ]
+    },
+    {
+        "id": 4969,
+        "text": "Gamli",
+        "pos": "NP"
+    },
+    {
+        "id": 4970,
+        "text": "ellstr"
+    },
+    {
+        "id": 4971,
+        "text": "mannvænn",
+        "fullGloss": "promising",
+        "pos": "ADJ"
+    },
+    {
+        "id": 4972,
+        "text": "mannvæn"
+    },
+    {
+        "id": 4974,
+        "text": "grimmasta"
     }
 ]

@@ -3663,5 +3663,59 @@
                 "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-Germanic/hluta#Proto-Germanic"
             }
         ]
+    },
+    {
+        "id": 4912,
+        "text": "haiþī",
+        "gloss": "heath",
+        "fullGloss": "heath, wasteland",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-Germanic/haiþi#Proto-Germanic"
+            }
+        ]
+    },
+    {
+        "id": 4935,
+        "text": "rīkiją",
+        "gloss": "rulership",
+        "fullGloss": "rulership, government, authority; realm, kingdom",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-Germanic/rikija#Proto-Germanic"
+            }
+        ]
+    },
+    {
+        "id": 4945,
+        "text": "wēniz",
+        "gloss": "likely",
+        "fullGloss": "likely, to be expected; promising, hopeful",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-Germanic/wēniz#Proto-Germanic"
+            }
+        ]
+    },
+    {
+        "id": 4947,
+        "text": "gastiz",
+        "gloss": "stranger",
+        "fullGloss": "stranger, guest",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-Germanic/gastiz#Proto-Germanic"
+            }
+        ]
+    },
+    {
+        "id": 4949,
+        "text": "erþō",
+        "gloss": "earth",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-Germanic/erþō#Proto-Germanic"
+            }
+        ]
     }
 ]

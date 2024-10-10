@@ -59,6 +59,21 @@
             {
                 "instructions": [
                     {
+                        "type": "Append",
+                        "args": [
+                            "'i'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "ClassMatches",
+                    "characters": "ijo-stem"
+                }
+            },
+            {
+                "instructions": [
+                    {
                         "type": "NoChange",
                         "args": []
                     }
@@ -296,6 +311,11 @@
                                     "type": "leaf",
                                     "cond": "ClassMatches",
                                     "characters": "n"
+                                },
+                                {
+                                    "type": "leaf",
+                                    "cond": "ClassMatches",
+                                    "characters": "ijo-stem"
                                 }
                             ]
                         }
@@ -2252,6 +2272,31 @@
                                     "characters": "n"
                                 }
                             ]
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            ""
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "ijo-stem"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "r"
                         }
                     ]
                 }
@@ -4288,6 +4333,29 @@
                     ]
                 }
             }
+        ]
+    },
+    {
+        "id": 4919,
+        "name": "on-subj-past-3sg",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "NoChange",
+                        "args": []
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".SUBJ.PST.3SG",
+        "fromPOS": [
+            "V"
         ]
     }
 ]

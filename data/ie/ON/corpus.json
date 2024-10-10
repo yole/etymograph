@@ -912,6 +912,10 @@
                 "id": 1350
             },
             {
+                "index": 26,
+                "id": 1475
+            },
+            {
                 "index": 27,
                 "id": 1352
             },
@@ -964,8 +968,16 @@
                 "id": 1367
             },
             {
+                "index": 49,
+                "id": 1475
+            },
+            {
                 "index": 50,
                 "id": 1369
+            },
+            {
+                "index": 51,
+                "id": 1354
             },
             {
                 "index": 52,
@@ -976,8 +988,13 @@
                 "id": 1372
             },
             {
+                "index": 60,
+                "id": 998
+            },
+            {
                 "index": 61,
-                "id": 1374
+                "id": 1374,
+                "contextGloss": "took"
             },
             {
                 "index": 62,
@@ -986,6 +1003,10 @@
             {
                 "index": 63,
                 "id": 1378
+            },
+            {
+                "index": 64,
+                "id": 1014
             },
             {
                 "index": 66,
@@ -1052,171 +1073,289 @@
                 "id": 1427
             },
             {
-                "index": 49,
-                "id": 1475
+                "index": 57,
+                "id": 4911
             },
             {
-                "index": 51,
-                "id": 1354
+                "index": 58,
+                "id": 1344,
+                "contextGloss": "begin"
             },
             {
-                "index": 26,
-                "id": 1475
+                "index": 59,
+                "id": 1347
             },
             {
-                "index": 64,
-                "id": 1014
+                "index": 48,
+                "id": 941,
+                "contextGloss": "and"
             },
             {
-                "index": 60,
-                "id": 998
+                "index": 71,
+                "id": 977
+            },
+            {
+                "index": 81,
+                "id": 977
+            }
+        ],
+        "sourceRefs": [
+            {
+                "refText": "Ynglinga saga (ch 15)"
             }
         ]
     },
     {
         "id": 1430,
-        "text": "Hálfdanar saga svarta\nHann hafði verit allra konunga ársælstr.\nSvá mikit gerðu menn sér um hann,\nat þá er þat spurðusk,\nat hann var dauðr ok lík hans var flutt á Hringaríki\nok var þar til graptar ætlat,\nþá fóru ríkismenn af Raumaríki ok af Vestfold ok Heiðmörk\nok beiddusk allir at hafa líkit með sér ok heygja í sínu fylki,\nok þótti þat vera árvænt þeim, er nædi.\nEn þeir sættusk svá, at líkinu var skipt í fjóra staði,\nok var höfuðit lagit í haug at Steini á Hringaríki,\nen hverir fluttu heim sinn hluta ok heygðu,\nok eru þat allt kallaðir Hálfdanarhaugar.",
+        "text": "Hann hafði verit allra konunga ársælstr.\nSvá mikit gerðu menn sér um hann,\nat þá er þat spurðusk,\nat hann var dauðr ok lík hans var flutt á Hringaríki\nok var þar til graptar ætlat,\nþá fóru ríkismenn af Raumaríki ok af Vestfold ok Heiðmörk\nok beiddusk allir at hafa líkit með sér ok heygja í sínu fylki,\nok þótti þat vera árvænt þeim, er nædi.\nEn þeir sættusk svá, at líkinu var skipt í fjóra staði,\nok var höfuðit lagit í haug at Steini á Hringaríki,\nen hverir fluttu heim sinn hluta ok heygðu,\nok eru þat allt kallaðir Hálfdanarhaugar.",
         "title": "Viking Language 6.13",
         "words": [
             {
-                "index": 4,
+                "index": 1,
                 "id": 1431
             },
             {
-                "index": 5,
+                "index": 2,
                 "id": 1432
             },
             {
-                "index": 6,
+                "index": 3,
                 "id": 1434
             },
             {
-                "index": 7,
+                "index": 4,
                 "id": 1435
             },
             {
-                "index": 8,
+                "index": 5,
                 "id": 1437
             },
             {
-                "index": 10,
+                "index": 7,
                 "id": 1439
             },
             {
-                "index": 12,
+                "index": 9,
                 "id": 1440
             },
             {
-                "index": 15,
+                "index": 12,
                 "id": 946
             },
             {
-                "index": 20,
-                "id": 1442
+                "index": 17,
+                "id": 1442,
+                "contextGloss": "found out"
             },
             {
-                "index": 24,
+                "index": 21,
                 "id": 1444
             },
             {
-                "index": 26,
+                "index": 23,
                 "id": 1445
             },
             {
-                "index": 29,
+                "index": 26,
                 "id": 1446
             },
             {
-                "index": 31,
+                "index": 28,
                 "id": 1448
             },
             {
-                "index": 36,
+                "index": 33,
                 "id": 1449
             },
             {
-                "index": 37,
+                "index": 34,
                 "id": 1451
             },
             {
-                "index": 40,
+                "index": 37,
                 "id": 1454
             },
             {
-                "index": 42,
+                "index": 39,
                 "id": 1458
             },
             {
-                "index": 45,
+                "index": 42,
                 "id": 1459
             },
             {
-                "index": 47,
+                "index": 44,
                 "id": 1460
             },
             {
-                "index": 49,
+                "index": 46,
                 "id": 1461
             },
             {
-                "index": 50,
+                "index": 47,
                 "id": 1463
             },
             {
-                "index": 53,
+                "index": 50,
                 "id": 1464
             },
             {
-                "index": 57,
+                "index": 54,
                 "id": 1466
             },
             {
-                "index": 60,
+                "index": 57,
                 "id": 1467
             },
             {
-                "index": 74,
+                "index": 71,
                 "id": 1478
             },
             {
-                "index": 76,
+                "index": 73,
                 "id": 1487
             },
             {
-                "index": 79,
+                "index": 76,
                 "id": 1489
             },
             {
-                "index": 82,
+                "index": 79,
                 "id": 1480
             },
             {
-                "index": 83,
+                "index": 80,
                 "id": 1483
             },
             {
-                "index": 87,
+                "index": 84,
                 "id": 1485
             },
             {
-                "index": 93,
+                "index": 90,
                 "id": 1490
             },
             {
-                "index": 94,
+                "index": 91,
                 "id": 1494
             },
             {
-                "index": 95,
+                "index": 92,
                 "id": 1493
             },
             {
-                "index": 97,
+                "index": 94,
                 "id": 1492
             },
             {
-                "index": 102,
+                "index": 99,
                 "id": 1491
+            },
+            {
+                "index": 0,
+                "id": 924
+            },
+            {
+                "index": 13,
+                "id": 977
+            },
+            {
+                "index": 14,
+                "id": 998
+            },
+            {
+                "index": 15,
+                "id": 4913
+            },
+            {
+                "index": 18,
+                "id": 977
+            },
+            {
+                "index": 19,
+                "id": 924
+            },
+            {
+                "index": 20,
+                "id": 923
+            },
+            {
+                "index": 25,
+                "id": 923
+            },
+            {
+                "index": 30,
+                "id": 923
+            },
+            {
+                "index": 35,
+                "id": 998
+            },
+            {
+                "index": 36,
+                "id": 4914
+            },
+            {
+                "index": 48,
+                "id": 4911
+            },
+            {
+                "index": 59,
+                "id": 4915
+            },
+            {
+                "index": 62,
+                "id": 4918
+            },
+            {
+                "index": 64,
+                "id": 1076
+            },
+            {
+                "index": 65,
+                "id": 4921
+            },
+            {
+                "index": 68,
+                "id": 4922
+            },
+            {
+                "index": 72,
+                "id": 923
+            },
+            {
+                "index": 70,
+                "id": 977
+            },
+            {
+                "index": 75,
+                "id": 4925,
+                "contextGloss": ""
+            },
+            {
+                "index": 78,
+                "id": 923
+            },
+            {
+                "index": 83,
+                "id": 1318
+            },
+            {
+                "index": 98,
+                "id": 4926
+            },
+            {
+                "index": 88,
+                "id": 4928
+            },
+            {
+                "index": 100,
+                "id": 4929
+            }
+        ],
+        "sourceRefs": [
+            {
+                "refText": "Hálfdanar saga svarta (ch 9)"
             }
         ]
     },
@@ -1388,6 +1527,59 @@
             {
                 "index": 94,
                 "id": 1647
+            },
+            {
+                "index": 2,
+                "id": 923
+            },
+            {
+                "index": 16,
+                "id": 924
+            },
+            {
+                "index": 17,
+                "id": 923
+            },
+            {
+                "index": 24,
+                "id": 924
+            },
+            {
+                "index": 35,
+                "id": 924
+            },
+            {
+                "index": 39,
+                "id": 924
+            },
+            {
+                "index": 50,
+                "id": 924
+            },
+            {
+                "index": 53,
+                "id": 4913
+            },
+            {
+                "index": 54,
+                "id": 924
+            },
+            {
+                "index": 70,
+                "id": 1321
+            },
+            {
+                "index": 74,
+                "id": 4936
+            },
+            {
+                "index": 91,
+                "id": 1076
+            }
+        ],
+        "sourceRefs": [
+            {
+                "refText": "Grettis saga Ásmundarsonar (ch 2)"
             }
         ]
     },
@@ -1409,6 +1601,10 @@
                 "id": 1666
             },
             {
+                "index": 5,
+                "id": 1076
+            },
+            {
                 "index": 6,
                 "id": 1668
             },
@@ -1419,6 +1615,10 @@
             {
                 "index": 9,
                 "id": 1672
+            },
+            {
+                "index": 10,
+                "id": 1440
             },
             {
                 "index": 12,
@@ -1441,6 +1641,10 @@
                 "id": 1679
             },
             {
+                "index": 29,
+                "id": 923
+            },
+            {
                 "index": 30,
                 "id": 1680
             },
@@ -1457,8 +1661,20 @@
                 "id": 1684
             },
             {
+                "index": 36,
+                "id": 923
+            },
+            {
+                "index": 37,
+                "id": 1320
+            },
+            {
                 "index": 38,
                 "id": 1686
+            },
+            {
+                "index": 40,
+                "id": 4913
             },
             {
                 "index": 44,
@@ -1489,8 +1705,16 @@
                 "id": 1697
             },
             {
+                "index": 58,
+                "id": 923
+            },
+            {
                 "index": 60,
                 "id": 1699
+            },
+            {
+                "index": 61,
+                "id": 4913
             },
             {
                 "index": 66,
@@ -1505,16 +1729,56 @@
                 "id": 1705
             },
             {
+                "index": 72,
+                "id": 977
+            },
+            {
                 "index": 74,
                 "id": 1707
+            },
+            {
+                "index": 75,
+                "id": 923
+            },
+            {
+                "index": 77,
+                "id": 924
             },
             {
                 "index": 78,
                 "id": 1710
             },
             {
+                "index": 79,
+                "id": 4955
+            },
+            {
+                "index": 81,
+                "id": 4957
+            },
+            {
+                "index": 82,
+                "id": 4956
+            },
+            {
+                "index": 86,
+                "id": 1027
+            },
+            {
+                "index": 88,
+                "id": 924
+            },
+            {
+                "index": 90,
+                "id": 998
+            },
+            {
                 "index": 92,
                 "id": 1711
+            },
+            {
+                "index": 94,
+                "id": 4957
             },
             {
                 "index": 97,
@@ -1571,14 +1835,63 @@
             {
                 "index": 131,
                 "id": 1730
+            },
+            {
+                "index": 19,
+                "id": 4959
+            },
+            {
+                "index": 96,
+                "id": 998
+            },
+            {
+                "index": 111,
+                "id": 924
+            },
+            {
+                "index": 112,
+                "id": 1693
+            },
+            {
+                "index": 113,
+                "id": 1513
+            },
+            {
+                "index": 114,
+                "id": 1320
+            },
+            {
+                "index": 117,
+                "id": 924
+            },
+            {
+                "index": 123,
+                "id": 4957
+            },
+            {
+                "index": 118,
+                "id": 998
+            },
+            {
+                "index": 126,
+                "id": 4961
+            }
+        ],
+        "sourceRefs": [
+            {
+                "refText": "Egilss saga Skalla-Grímssonar (ch 36)"
             }
         ]
     },
     {
         "id": 1731,
-        "text": "Eiríkr var mikill maðr ok fríðr, sterkr ok hreystimaðr mikill,\nhermaðr mikill ok sigrsæll, ákafamaðr í skapi, grimmr, óþýðr ok fálátr.\nGunnhildr, kona hans, var kvenna fergst, vitr ok margkunnig,\nglaðmælt ok undirhyggjumaðr mikill ok in grimmasta.\nÞau váru börn þeira Eiríks ok Gunnhildar: Gamli var ellstr,\nGuthormr, Haraldr, Ragnfrøðr, Ragnhildr, Erlingr, Guðrøðr, Sigurðr slefa.\nÖll váru börn Eiríks fríð ok mannvæn. ",
+        "text": "Eiríkr var mikill maðr ok fríðr, sterkr ok hreystimaðr mikill,\nhermaðr mikill ok sigrsæll, ákafamaðr í skapi, grimmr, óþýðr ok fálátr.\nGunnhildr, kona hans, var kvenna fegrst, vitr ok margkunnig,\nglaðmælt ok undirhyggjumaðr mikill ok in grimmasta.\nÞau váru börn þeira Eiríks ok Gunnhildar: Gamli var ellstr,\nGuthormr, Haraldr, Ragnfrøðr, Ragnhildr, Erlingr, Guðrøðr, Sigurðr slefa.\nÖll váru börn Eiríks fríð ok mannvæn. ",
         "title": "Viking Language 7.12",
         "words": [
+            {
+                "index": 1,
+                "id": 923
+            },
             {
                 "index": 5,
                 "id": 1732
@@ -1618,6 +1931,10 @@
             {
                 "index": 21,
                 "id": 1742
+            },
+            {
+                "index": 24,
+                "id": 923
             },
             {
                 "index": 29,
@@ -1670,6 +1987,39 @@
             {
                 "index": 57,
                 "id": 1756
+            },
+            {
+                "index": 26,
+                "id": 4965
+            },
+            {
+                "index": 44,
+                "id": 4969
+            },
+            {
+                "index": 45,
+                "id": 923
+            },
+            {
+                "index": 46,
+                "id": 4970
+            },
+            {
+                "index": 61,
+                "id": 4972
+            },
+            {
+                "index": 36,
+                "id": 4974
+            },
+            {
+                "index": 35,
+                "id": 1547
+            }
+        ],
+        "sourceRefs": [
+            {
+                "refText": "Haralds saga ins hárfagra (ch 43)"
             }
         ]
     }

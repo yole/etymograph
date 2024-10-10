@@ -434,6 +434,10 @@
         {
             "name": "Preposition",
             "abbreviation": "PREP"
+        },
+        {
+            "name": "Conjunction",
+            "abbreviation": "CONJ"
         }
     ],
     "grammaticalCategories": [
@@ -573,6 +577,22 @@
                     "abbreviation": "N"
                 }
             ]
+        },
+        {
+            "name": "Mood",
+            "pos": [
+                "V"
+            ],
+            "values": [
+                {
+                    "name": "Indicative",
+                    "abbreviation": "IND"
+                },
+                {
+                    "name": "Subjunctive",
+                    "abbreviation": "SUBJ"
+                }
+            ]
         }
     ],
     "wordClasses": [
@@ -678,6 +698,10 @@
                 {
                     "name": "-a-",
                     "abbreviation": "uml-stem"
+                },
+                {
+                    "name": "-ijo-",
+                    "abbreviation": "ijo-stem"
                 }
             ]
         },
@@ -702,5 +726,5 @@
             ]
         }
     ],
-    "dictionarySettings": "wiktionary-id: non\nnon-decl-m-c1: m, strong\nnon-decl-m-c2: m, strong, gen-ar\nnon-decl-m-an: m, weak\nnon-decl-f-i: f, strong\nnon-decl-f-o: f, strong\nnon-decl-f-on: f, weak\nnon-decl-n-an: n, weak\nnon-decl-n-a: n, strong\nnon-decl-n-ja: n, strong"
+    "dictionarySettings": "wiktionary-id: non\nwiktionary-orthography: ö=ǫ\nnon-decl-m-c1: m, strong\nnon-decl-m-c2: m, strong, gen-ar\nnon-decl-m-an: m, weak\nnon-decl-f-i: f, strong\nnon-decl-f-o: f, strong\nnon-decl-f-on: f, weak\nnon-decl-n-an: n, weak\nnon-decl-n-a: n, strong\nnon-decl-n-ja: n, strong"
 }
