@@ -247,9 +247,8 @@ open class Wiktionary : Dictionary {
             return DictionaryRelatedWord(Link.Origin, lookupResult)
         }
 
-        val normalizedWord = word.removeDiacritics()
-        val source = loadWiktionaryPageSource(language, word)
-            ?: loadWiktionaryPageSource(language, normalizedWord)
+        val normalizedWord = word.normalizeWithDictionarySettings(language)
+        val source = loadWiktionaryPageSource(language, normalizedWord)
             ?: return LookupResult.empty
         val wiktionaryPage = WiktionaryPage(source)
         if (!wiktionaryPage.parse(language.name, parseDictionarySettings(language.dictionarySettings))) {
@@ -308,11 +307,27 @@ open class Wiktionary : Dictionary {
         return LookupResult(result, messages, variants)
     }
 
-    fun extractShortGloss(gloss: String): String {
+    private fun extractShortGloss(gloss: String): String {
         if ("," in gloss) {
             return gloss.split(',').first().trim()
         }
         return gloss
+    }
+
+    private fun String.normalizeWithDictionarySettings(language: Language): String {
+        val setting = language.dictionarySettings
+            ?.split('\n')
+            ?.find { it.startsWith("wiktionary-orthography:") }
+            ?: return this
+
+        val settingValue = setting.substringAfter(':').trim().split(',').map { it.trim() }
+        return settingValue.fold(this) { s, rule ->
+            val kv = rule.split('=')
+            if (kv.size == 2)
+                s.replace(kv[0], kv[1])
+            else
+                s
+        }
     }
 
     protected open fun loadWiktionaryPageSource(language: Language, normalizedWord: String): String? {
