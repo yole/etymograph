@@ -263,7 +263,8 @@ data class CompoundData(
 @Serializable
 data class CorpusTextWordData(
     val index: Int,
-    val id: Int
+    val id: Int,
+    val contextGloss: String? = null
 )
 
 @Serializable
@@ -447,7 +448,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             val corpusData = corpus.filter { it.language == language}.map {
                 CorpusTextData(
                     it.id, it.text, it.title,
-                    it.words.map { wa -> CorpusTextWordData(wa.index, wa.word.id) },
+                    it.words.map { wa -> CorpusTextWordData(wa.index, wa.word.id, wa.contextGloss) },
                     it.source.sourceToSerializedFormat(), it.notes,
                     collectTranslations(it)
                 )
@@ -673,7 +674,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                     corpusText.text,
                     corpusText.title,
                     language,
-                    corpusText.words.map { CorpusWordAssociation(it.index, allLangEntities[it.id] as Word) },
+                    corpusText.words.map { CorpusWordAssociation(it.index, allLangEntities[it.id] as Word, it.contextGloss) },
                     loadSource(corpusText.sourceRefs),
                     corpusText.notes
                 )

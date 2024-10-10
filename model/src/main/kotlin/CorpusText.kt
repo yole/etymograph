@@ -10,6 +10,7 @@ class CorpusWord(
     val word: Word?,
     val wordCandidates: List<Word>?,
     val gloss: String?,
+    val contextGloss: String?,
     val segmentedGloss: String?,
     val stressIndex: Int?,
     val stressLength: Int?,
@@ -20,7 +21,8 @@ class CorpusTextLine(val corpusWords: List<CorpusWord>)
 
 class CorpusWordAssociation(
     val index: Int,
-    var word: Word
+    var word: Word,
+    var contextGloss: String? = null
 )
 
 class CorpusText(
@@ -73,7 +75,8 @@ class CorpusText(
         return text.split("\n").map { line ->
             val textWords = splitIntoNormalizedWords(line, currentIndex)
             CorpusTextLine(textWords.map { tw ->
-                val word = wordByIndex(currentIndex)
+                val assoc = words.find { it.index == currentIndex }
+                val word = assoc?.word
                 val normalizedText = if (sentenceStart || leadingPunctuation.any { tw.baseText.startsWith(it) })
                     tw.normalizedText
                 else
@@ -90,13 +93,14 @@ class CorpusText(
 
                     CorpusWord(currentIndex++, tw.baseText, normalizedText, segmentedText, word, null,
                         word.getOrComputeGloss(repo),
+                        assoc.contextGloss,
                         glossWithSegments, stressIndex, stressData?.length, repo.isHomonym(word))
                 }
                 else {
                     val wordCandidates = repo.wordsByText(language, tw.normalizedText)
                     val gloss = wordCandidates.firstOrNull()?.getOrComputeGloss(repo)
                     CorpusWord(currentIndex++, tw.baseText, normalizedText, tw.baseText,null, wordCandidates,
-                        gloss, gloss, null, null,false)
+                        gloss, null, gloss, null, null,false)
                 }
             })
         }
@@ -147,14 +151,15 @@ class CorpusText(
 
     fun normalizedWordTextAt(index: Int) = iterateWords().elementAt(index).normalizedText
 
-    fun associateWord(index: Int, word: Word) {
+    fun associateWord(index: Int, word: Word, contextGloss: String? = null) {
         for (assoc in _words) {
             if (assoc.index == index) {
                 assoc.word = word
+                assoc.contextGloss = contextGloss
                 return
             }
         }
-        _words.add(CorpusWordAssociation(index, word))
+        _words.add(CorpusWordAssociation(index, word, contextGloss))
     }
 
     fun removeWord(word: Word) {

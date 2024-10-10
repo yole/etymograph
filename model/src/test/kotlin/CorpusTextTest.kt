@@ -128,6 +128,15 @@ class CorpusTextTest : QBaseTest() {
         val attestations = repo.findAttestations(eaV)
         assertEquals(1, attestations.size)
     }
+
+    @Test
+    fun testAssociateContextGloss() {
+        val ct1 = repo.addCorpusText("ai laurie lantar", null, q)
+        val laurie = q.word("laurie", "golden")
+        ct1.associateWord(1, laurie, "goldenly")
+        val lines = ct1.mapToLines(repo)
+        assertEquals("goldenly", lines[0].corpusWords[1].contextGloss)
+    }
 }
 
 fun Language.corpusText(text: String) = CorpusText(-1, text, null, this)
