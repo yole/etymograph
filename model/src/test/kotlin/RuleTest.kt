@@ -602,8 +602,6 @@ class RuleTest : QBaseTest() {
      */
 }
 
-fun Language.word(text: String, gloss: String? = null, pos: String? = null) = Word(-1, text, this, gloss, pos = pos)
-
 fun Language.parseContext(repo: GraphRepository? = null, vararg rules: Rule): RuleParseContext =
     createParseContext(this, this, repo, *rules)
 
