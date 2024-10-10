@@ -133,4 +133,18 @@ class CorpusControllerTest {
         assertEquals(0, line.words[0].stressIndex)
         assertEquals(1, line.words[0].stressLength)
     }
+
+    @Test
+    fun contextGloss() {
+        val corpusParams = CorpusController.CorpusTextParams(text = "Ai laurie lantar")
+        val corpusTextViewModel = corpusController.newText(graph, "q", corpusParams)
+
+        val word = graph.findOrAddWord("laurie", fixture.q, "golden")
+        corpusController.associateWord(graph, corpusTextViewModel.id, CorpusController.AssociateWordParameters(
+            1, word.id, "goldenly"
+        ))
+
+        val textJson = corpusController.textJson(graph, corpusTextViewModel.id)
+        assertEquals("goldenly", textJson.lines.single().words[1].contextGloss)
+    }
 }

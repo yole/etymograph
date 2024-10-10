@@ -38,7 +38,9 @@ class CorpusController {
         val index: Int,
         val text: String,  // CorpusWord.segmentedText
         val normalizedText: String, // CorpusWord.normalizedText
-        val gloss: String, val wordId: Int?, val wordText: String?,
+        val gloss: String,
+        val contextGloss: String?,
+        val wordId: Int?, val wordText: String?,
         val wordCandidates: List<CorpusWordCandidateViewModel>?,
         val stressIndex: Int?, val stressLength: Int?, val homonym: Boolean,
     )
@@ -82,6 +84,7 @@ class CorpusController {
                         cw.segmentedText,
                         cw.normalizedText,
                         cw.segmentedGloss ?: "",
+                        cw.contextGloss,
                         cw.word?.id, cw.word?.text,
                         cw.wordCandidates?.map { CorpusWordCandidateViewModel(it.id, it.getOrComputeGloss(repo)) },
                         cw.stressIndex, cw.stressLength, cw.homonym)
@@ -118,13 +121,17 @@ class CorpusController {
         corpusText.notes = params.notes.nullize()
     }
 
-    data class AssociateWordParameters(val index: Int, val wordId: Int = -1)
+    data class AssociateWordParameters(
+        val index: Int,
+        val wordId: Int = -1,
+        val contextGloss: String? = null
+    )
 
     @PostMapping("/text/{id}/associate")
     fun associateWord(repo: GraphRepository, @PathVariable id: Int, @RequestBody params: AssociateWordParameters) {
         val corpusText = repo.resolveCorpusText(id)
         val word = repo.resolveWord(params.wordId)
-        corpusText.associateWord(params.index, word)
+        corpusText.associateWord(params.index, word, params.contextGloss)
     }
 
     data class AlternativeViewModel(val gloss: String, val wordId: Int, val ruleId: Int)

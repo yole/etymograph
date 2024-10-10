@@ -171,8 +171,8 @@ export function editTranslation(graph, id, data) {
     return postToBackend(`${graph}/translations/${id}`, data)
 }
 
-export function associateWord(graph, corpusTextId, wordId, index) {
-    return postToBackend(`${graph}/corpus/text/${corpusTextId}/associate`, {wordId: wordId, index: index})
+export function associateWord(graph, corpusTextId, wordId, index, contextGloss) {
+    return postToBackend(`${graph}/corpus/text/${corpusTextId}/associate`, {wordId, index, contextGloss})
 }
 
 export function acceptAlternative(graph, corpusTextId, index, wordId, ruleId) {

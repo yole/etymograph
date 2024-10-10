@@ -24,7 +24,7 @@ export default function WordForm(props) {
             if (props.linkTargetText !== undefined) {
                 if (wordJson.text === props.linkTargetText) {
                     if (props.submitted !== undefined) {
-                        props.submitted(wordJson)
+                        props.submitted(wordJson, undefined, data)
                     }
                     return
                 }
@@ -46,7 +46,7 @@ export default function WordForm(props) {
                 return {message: jr.message}
             }
             if (props.linkTargetText !== undefined && props.submitted !== undefined) {
-                props.submitted(linkTarget, wordJson)
+                props.submitted(linkTarget, wordJson, data)
                 return
             }
         }
@@ -57,7 +57,7 @@ export default function WordForm(props) {
             await addToCompound(graph, props.addToCompound, wordJson.id, data.markHead)
         }
         if (props.submitted !== undefined) {
-            props.submitted(wordJson)
+            props.submitted(wordJson, undefined, data)
         }
     }
 
@@ -101,6 +101,7 @@ export default function WordForm(props) {
         <FormRow id="classes" label="Classes"/>
         <FormRow id="gloss" label="Gloss"/>
         <FormRow id="fullGloss" label="Full gloss"/>
+        {props.showContextGloss && <FormRow id="contextGloss" label="Context gloss"/>}
         {(props.linkType === '>' || props.linkType === '^') &&
             <RuleListSelect id="linkRuleNames" label="Link rule names" isMulti={true}/>}
         <FormRow id="source" label="Source"/>

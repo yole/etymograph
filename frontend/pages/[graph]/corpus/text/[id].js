@@ -98,9 +98,9 @@ export default function CorpusText(params) {
         router.replace(router.asPath)
     }
 
-    function wordSubmitted(word, baseWord) {
+    function wordSubmitted(word, baseWord, data) {
         setWordFormVisible(false)
-        associateWord(graph, router.query.id, word.id, wordIndex).then(() => {
+        associateWord(graph, router.query.id, word.id, wordIndex, data.contextGloss).then(() => {
             const targetWord = baseWord !== undefined ? baseWord : word
             if (targetWord.gloss === "" || targetWord.gloss === null) {
                 router.push(`/${graph}/word/${targetWord.language}/${targetWord.text}`)
@@ -165,6 +165,9 @@ export default function CorpusText(params) {
                                 {(!w.wordCandidates || w.wordCandidates.length <= 1) && <WordGloss gloss={w.gloss}/>}
                             </td>)}
                         </tr>
+                        <tr>
+                            {l.words.map(w => <td key={w.index} className="contextGloss">{w.contextGloss}</td>)}
+                        </tr>
                     </tbody></table>
                     {wordIndex >= l.words[0].index && wordIndex <= l.words[l.words.length - 1].index && wordFormVisible &&
                         <>
@@ -178,12 +181,14 @@ export default function CorpusText(params) {
                             <WordForm key={predefWord} submitted={wordSubmitted}
                                       defaultValues={{
                                           language: corpusText.language,
-                                          text: predefWord
+                                          text: predefWord,
+                                          contextGloss: l.words[wordIndex - l.words[0].index].contextGloss
                                       }}
                                       languageReadOnly={true}
                                       linkType=">"
                                       reverseLink={true}
                                       linkTargetText={predefWord}
+                                      showContextGloss={true}
                                       cancelled={() => setWordFormVisible(false)}/>
                         </>
                     }
