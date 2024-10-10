@@ -202,7 +202,11 @@ function CompoundListComponent(params) {
                 <SourceRefs source={m.source} span={true}/>
                 {addToCompoundId === m.compoundId && <>
                     {compoundSuggestions.length > 0 && <br/>}
-                    {compoundSuggestions.map(c => <><button className="inlineButton" onClick={() => acceptCompoundSuggestion(c.id)}>{c.text}</button>{' '}</>)}
+                    {compoundSuggestions.map(c => <>
+                        <button className="inlineButton" onClick={() => acceptCompoundSuggestion(c.id)}>
+                            {c.text}{c.homonym && " '" + c.gloss + "'"}
+                        </button>{' '}
+                    </>)}
                     {compoundSuggestions.length > 0 && <br/>}
                     <WordForm submitted={submitted} cancelled={() => setAddToCompoundId(undefined)}
                               addToCompound={m.compoundId} linkTarget={word} defaultValues={{language: word.language}}/>
