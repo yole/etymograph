@@ -62,21 +62,19 @@ export default function WordForm(props) {
     }
 
     async function updateWordStatus(data) {
-        if (isAddingLink || props.newCompound === true || props.addToCompound !== undefined) {
-            const wordResponse = await fetchBackend(graph, `word/${data.language}/${data.text}`)
-            if (wordResponse.notFound !== undefined) {
-                setNewWord(true)
-                setWordDefinitions([])
+        const wordResponse = await fetchBackend(graph, `word/${data.language}/${data.text}`)
+        if (wordResponse.notFound !== undefined) {
+            setNewWord(true)
+            setWordDefinitions([])
+        }
+        else {
+            setNewWord(false)
+            const wordJson = wordResponse.props.loaderData
+            if (Array.isArray(wordJson)) {
+                setWordDefinitions(wordJson.map(w => w.gloss))
             }
             else {
-                setNewWord(false)
-                const wordJson = wordResponse.props.loaderData
-                if (Array.isArray(wordJson)) {
-                    setWordDefinitions(wordJson.map(w => w.gloss))
-                }
-                else {
-                    setWordDefinitions([wordJson.gloss])
-                }
+                setWordDefinitions([wordJson.gloss])
             }
         }
     }
