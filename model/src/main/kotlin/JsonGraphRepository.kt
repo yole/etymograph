@@ -261,9 +261,15 @@ data class CompoundData(
 )
 
 @Serializable
+data class CorpusTextWordData(
+    val index: Int,
+    val id: Int
+)
+
+@Serializable
 data class CorpusTextData(
     val id: Int, val text: String, val title: String? = null,
-    val wordIds: List<Int?>,
+    val words: List<CorpusTextWordData>,
     val sourceRefs: List<SourceRefData>? = null,
     val notes: String? = null,
     val translations: List<TranslationData> = emptyList()
@@ -441,7 +447,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             val corpusData = corpus.filter { it.language == language}.map {
                 CorpusTextData(
                     it.id, it.text, it.title,
-                    it.words.map { it?.id },
+                    it.words.mapIndexedNotNull { index, word -> word?.let { CorpusTextWordData(index, word.id) } },
                     it.source.sourceToSerializedFormat(), it.notes,
                     collectTranslations(it)
                 )
@@ -667,7 +673,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                     corpusText.text,
                     corpusText.title,
                     language,
-                    corpusText.wordIds.map { id -> id?.let { allLangEntities[id] as? Word } }.toMutableList(),
+                    loadWordIds(corpusText.words),
                     loadSource(corpusText.sourceRefs),
                     corpusText.notes
                 )
@@ -687,6 +693,17 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                 }
             }
         }
+    }
+
+    private fun loadWordIds(words: List<CorpusTextWordData>): List<Word?> {
+        val result = mutableListOf<Word?>()
+        for (word in words) {
+            while (result.size <= word.index) {
+                result.add(null)
+            }
+            result[word.index] = allLangEntities[word.id] as? Word
+        }
+        return result
     }
 
     private fun loadCompounds(contentProviderCallback: (String) -> String?) {

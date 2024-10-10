@@ -3,538 +3,1404 @@
         "id": 0,
         "text": "Wē ċildra biddaþ þē, ēalā lārēow, þæt þū tǣċe ūs sprecan for-þām unġelǣrede wē sindon and ġewæmmodlīċe wē sprecaþ.\nHwæt wille ġē sprecan?\nHwæt rēċe wē hwæt wē sprecan, būton hit riht sprǣċ sie and behēfe, næs īdel oþþe fracod.\nWille ġē bēon beswungen on leornunge?\nLēofre is ūs bēon beswungen for lāre þonne hit ne cunnan. \nAc wē witon þæt þū eart bilewit and nelle onbelǣdan swingla ūs, būton þū sīe tōġenȳdd fram ūs.",
         "title": "Aelfric's Colloquy 1",
-        "wordIds": [
-            1,
-            918,
-            3,
-            8,
-            14,
-            2,
-            15,
-            6,
-            16,
-            7,
-            18,
-            19,
-            20,
-            null,
-            22,
-            24,
-            25,
-            null,
-            26,
-            27,
-            28,
-            5,
-            18,
-            null,
-            30,
-            null,
-            null,
-            null,
-            18,
-            32,
-            33,
-            34,
-            35,
-            36,
-            null,
-            37,
-            38,
-            39,
-            40,
-            41,
-            null,
-            null,
-            null,
-            42,
-            44,
-            45,
-            46,
-            47,
-            null,
-            null,
-            42,
-            48,
-            49,
-            51,
-            null,
-            52,
-            53,
-            null,
-            54,
-            null,
-            55,
-            15,
-            6,
-            57,
-            58,
-            null,
-            59,
-            60,
-            61,
-            7,
-            null,
-            6,
-            63,
-            64,
-            66,
-            7
+        "words": [
+            {
+                "index": 0,
+                "id": 1
+            },
+            {
+                "index": 1,
+                "id": 918
+            },
+            {
+                "index": 2,
+                "id": 3
+            },
+            {
+                "index": 3,
+                "id": 8
+            },
+            {
+                "index": 4,
+                "id": 14
+            },
+            {
+                "index": 5,
+                "id": 2
+            },
+            {
+                "index": 6,
+                "id": 15
+            },
+            {
+                "index": 7,
+                "id": 6
+            },
+            {
+                "index": 8,
+                "id": 16
+            },
+            {
+                "index": 9,
+                "id": 7
+            },
+            {
+                "index": 10,
+                "id": 18
+            },
+            {
+                "index": 11,
+                "id": 19
+            },
+            {
+                "index": 12,
+                "id": 20
+            },
+            {
+                "index": 14,
+                "id": 22
+            },
+            {
+                "index": 15,
+                "id": 24
+            },
+            {
+                "index": 16,
+                "id": 25
+            },
+            {
+                "index": 18,
+                "id": 26
+            },
+            {
+                "index": 19,
+                "id": 27
+            },
+            {
+                "index": 20,
+                "id": 28
+            },
+            {
+                "index": 21,
+                "id": 5
+            },
+            {
+                "index": 22,
+                "id": 18
+            },
+            {
+                "index": 24,
+                "id": 30
+            },
+            {
+                "index": 28,
+                "id": 18
+            },
+            {
+                "index": 29,
+                "id": 32
+            },
+            {
+                "index": 30,
+                "id": 33
+            },
+            {
+                "index": 31,
+                "id": 34
+            },
+            {
+                "index": 32,
+                "id": 35
+            },
+            {
+                "index": 33,
+                "id": 36
+            },
+            {
+                "index": 35,
+                "id": 37
+            },
+            {
+                "index": 36,
+                "id": 38
+            },
+            {
+                "index": 37,
+                "id": 39
+            },
+            {
+                "index": 38,
+                "id": 40
+            },
+            {
+                "index": 39,
+                "id": 41
+            },
+            {
+                "index": 43,
+                "id": 42
+            },
+            {
+                "index": 44,
+                "id": 44
+            },
+            {
+                "index": 45,
+                "id": 45
+            },
+            {
+                "index": 46,
+                "id": 46
+            },
+            {
+                "index": 47,
+                "id": 47
+            },
+            {
+                "index": 50,
+                "id": 42
+            },
+            {
+                "index": 51,
+                "id": 48
+            },
+            {
+                "index": 52,
+                "id": 49
+            },
+            {
+                "index": 53,
+                "id": 51
+            },
+            {
+                "index": 55,
+                "id": 52
+            },
+            {
+                "index": 56,
+                "id": 53
+            },
+            {
+                "index": 58,
+                "id": 54
+            },
+            {
+                "index": 60,
+                "id": 55
+            },
+            {
+                "index": 61,
+                "id": 15
+            },
+            {
+                "index": 62,
+                "id": 6
+            },
+            {
+                "index": 63,
+                "id": 57
+            },
+            {
+                "index": 64,
+                "id": 58
+            },
+            {
+                "index": 66,
+                "id": 59
+            },
+            {
+                "index": 67,
+                "id": 60
+            },
+            {
+                "index": 68,
+                "id": 61
+            },
+            {
+                "index": 69,
+                "id": 7
+            },
+            {
+                "index": 71,
+                "id": 6
+            },
+            {
+                "index": 72,
+                "id": 63
+            },
+            {
+                "index": 73,
+                "id": 64
+            },
+            {
+                "index": 74,
+                "id": 66
+            },
+            {
+                "index": 75,
+                "id": 7
+            }
         ]
     },
     {
         "id": 67,
         "text": "Iċ ācsiġe ēow, for-hwī swā ġeornlīċe leornie ġē?\nFor-þām we nellaþ wesan swā stunte nȳtenu, þā nān þing witaþ, būton gærs ond wæter.\nOnd hwæt wille ġē?\nWē willaþ wesan wīse.\nOn hwilcum wīsdome? Wille ġē bēon prættiġe oþþe þūsenthīwe on lēasungum, lytiġe on sprǣcum, onglǣwlīċe, hinderġēpe, \nwel spreċende ond yfele þenċende, swǣsum wordum underþēodde, fācn wiðinnan tȳddriende, swā swā byrgels mēttum oferġeweorce, wiþinnan full stenċe?\nWē nellaþ swā wesan wīse, for-þām hē nis wīs, þe mid dydrunge hine selfne beswīċeð.\nAc hū wille ġē wesan?\nWe willaþ bēon bilewite būton līċetunge, ond wīse þæt wē būgen fram yfele ond dōn gōd.\n",
         "title": "Aelfric's Colloquy 2",
-        "wordIds": [
-            68,
-            69,
-            71,
-            72,
-            73,
-            74,
-            75,
-            5,
-            null,
-            null,
-            78,
-            80,
-            null,
-            81,
-            82,
-            83,
-            3198,
-            85,
-            86,
-            null,
-            87,
-            88,
-            89,
-            463,
-            null,
-            null,
-            5,
-            null,
-            null,
-            null,
-            90,
-            null,
-            91,
-            93,
-            null,
-            null,
-            null,
-            3479,
-            null,
-            3570,
-            null,
-            3445,
-            3481,
-            null,
-            3483,
-            3484,
-            3486,
-            null,
-            3572,
-            3447,
-            463,
-            3488,
-            3449,
-            3573,
-            null,
-            3575,
-            3578,
-            3579,
-            3451,
-            null,
-            null,
-            3594,
-            null,
-            null,
-            null,
-            3580,
-            3581,
-            null,
-            null,
-            null,
-            null,
-            3587,
-            null,
-            null,
-            3453,
-            3586,
-            null,
-            null,
-            3489,
-            null,
-            3592,
-            3590,
-            null,
-            3595,
-            null,
-            null,
-            80,
-            2034,
-            79,
-            23,
-            3583,
-            32,
-            3584,
-            463,
-            3587,
-            15,
-            null,
-            3588,
-            66,
-            3488,
-            463,
-            3636,
-            null,
-            null
+        "words": [
+            {
+                "index": 0,
+                "id": 68
+            },
+            {
+                "index": 1,
+                "id": 69
+            },
+            {
+                "index": 2,
+                "id": 71
+            },
+            {
+                "index": 3,
+                "id": 72
+            },
+            {
+                "index": 4,
+                "id": 73
+            },
+            {
+                "index": 5,
+                "id": 74
+            },
+            {
+                "index": 6,
+                "id": 75
+            },
+            {
+                "index": 7,
+                "id": 5
+            },
+            {
+                "index": 10,
+                "id": 78
+            },
+            {
+                "index": 11,
+                "id": 80
+            },
+            {
+                "index": 13,
+                "id": 81
+            },
+            {
+                "index": 14,
+                "id": 82
+            },
+            {
+                "index": 15,
+                "id": 83
+            },
+            {
+                "index": 16,
+                "id": 3198
+            },
+            {
+                "index": 17,
+                "id": 85
+            },
+            {
+                "index": 18,
+                "id": 86
+            },
+            {
+                "index": 20,
+                "id": 87
+            },
+            {
+                "index": 21,
+                "id": 88
+            },
+            {
+                "index": 22,
+                "id": 89
+            },
+            {
+                "index": 23,
+                "id": 463
+            },
+            {
+                "index": 26,
+                "id": 5
+            },
+            {
+                "index": 30,
+                "id": 90
+            },
+            {
+                "index": 32,
+                "id": 91
+            },
+            {
+                "index": 33,
+                "id": 93
+            },
+            {
+                "index": 37,
+                "id": 3479
+            },
+            {
+                "index": 39,
+                "id": 3570
+            },
+            {
+                "index": 41,
+                "id": 3445
+            },
+            {
+                "index": 42,
+                "id": 3481
+            },
+            {
+                "index": 44,
+                "id": 3483
+            },
+            {
+                "index": 45,
+                "id": 3484
+            },
+            {
+                "index": 46,
+                "id": 3486
+            },
+            {
+                "index": 48,
+                "id": 3572
+            },
+            {
+                "index": 49,
+                "id": 3447
+            },
+            {
+                "index": 50,
+                "id": 463
+            },
+            {
+                "index": 51,
+                "id": 3488
+            },
+            {
+                "index": 52,
+                "id": 3449
+            },
+            {
+                "index": 53,
+                "id": 3573
+            },
+            {
+                "index": 55,
+                "id": 3575
+            },
+            {
+                "index": 56,
+                "id": 3578
+            },
+            {
+                "index": 57,
+                "id": 3579
+            },
+            {
+                "index": 58,
+                "id": 3451
+            },
+            {
+                "index": 61,
+                "id": 3594
+            },
+            {
+                "index": 65,
+                "id": 3580
+            },
+            {
+                "index": 66,
+                "id": 3581
+            },
+            {
+                "index": 71,
+                "id": 3587
+            },
+            {
+                "index": 74,
+                "id": 3453
+            },
+            {
+                "index": 75,
+                "id": 3586
+            },
+            {
+                "index": 78,
+                "id": 3489
+            },
+            {
+                "index": 80,
+                "id": 3592
+            },
+            {
+                "index": 81,
+                "id": 3590
+            },
+            {
+                "index": 83,
+                "id": 3595
+            },
+            {
+                "index": 86,
+                "id": 80
+            },
+            {
+                "index": 87,
+                "id": 2034
+            },
+            {
+                "index": 88,
+                "id": 79
+            },
+            {
+                "index": 89,
+                "id": 23
+            },
+            {
+                "index": 90,
+                "id": 3583
+            },
+            {
+                "index": 91,
+                "id": 32
+            },
+            {
+                "index": 92,
+                "id": 3584
+            },
+            {
+                "index": 93,
+                "id": 463
+            },
+            {
+                "index": 94,
+                "id": 3587
+            },
+            {
+                "index": 95,
+                "id": 15
+            },
+            {
+                "index": 97,
+                "id": 3588
+            },
+            {
+                "index": 98,
+                "id": 66
+            },
+            {
+                "index": 99,
+                "id": 3488
+            },
+            {
+                "index": 100,
+                "id": 463
+            },
+            {
+                "index": 101,
+                "id": 3636
+            }
         ]
     },
     {
         "id": 275,
         "text": "For þām nēdfere nǣni wyrþeþ\nþances snotera, þonne him þearf sȳ\ntō ġehicgenne ǣr his heonengange\nhwæt his gāste gōdes oþþe yfeles\næfter dēaþe heonon dēmed weorþe",
         "title": "Bede's Death Song",
-        "wordIds": [
-            null,
-            276,
-            278,
-            279,
-            280,
-            282,
-            284,
-            null,
-            285,
-            3668,
-            3669,
-            null,
-            3536,
-            298,
-            288,
-            287,
-            null,
-            null,
-            3670,
-            289,
-            null,
-            292,
-            291,
-            296,
-            294,
-            3565,
-            295
+        "words": [
+            {
+                "index": 1,
+                "id": 276
+            },
+            {
+                "index": 2,
+                "id": 278
+            },
+            {
+                "index": 3,
+                "id": 279
+            },
+            {
+                "index": 4,
+                "id": 280
+            },
+            {
+                "index": 5,
+                "id": 282
+            },
+            {
+                "index": 6,
+                "id": 284
+            },
+            {
+                "index": 8,
+                "id": 285
+            },
+            {
+                "index": 9,
+                "id": 3668
+            },
+            {
+                "index": 10,
+                "id": 3669
+            },
+            {
+                "index": 12,
+                "id": 3536
+            },
+            {
+                "index": 13,
+                "id": 298
+            },
+            {
+                "index": 14,
+                "id": 288
+            },
+            {
+                "index": 15,
+                "id": 287
+            },
+            {
+                "index": 18,
+                "id": 3670
+            },
+            {
+                "index": 19,
+                "id": 289
+            },
+            {
+                "index": 21,
+                "id": 292
+            },
+            {
+                "index": 22,
+                "id": 291
+            },
+            {
+                "index": 23,
+                "id": 296
+            },
+            {
+                "index": 24,
+                "id": 294
+            },
+            {
+                "index": 25,
+                "id": 3565
+            },
+            {
+                "index": 26,
+                "id": 295
+            }
         ]
     },
     {
         "id": 299,
         "text": "Nū sculon heriġean heofonrīċes weard,\nMeotodes meahte ond his mōdġeþanc,\nweorc wuldorfæder, swā hē wundra ġehwæs,\nēċe Drihten, ōr onstealde.\nHē ǣrest sceōp eorðan bearnum\nheofon tō hrōfe, hāliġ Scyppend; \nþā middanġeard monncynnes weard,\nēċe Drihten, æfter tēode\nfīrum foldan, Frēa ælmihtiġ.",
         "title": "Caedmon's Hymn",
-        "wordIds": [
-            335,
-            3662,
-            301,
-            305,
-            304,
-            302,
-            null,
-            463,
-            null,
-            300,
-            307,
-            310,
-            null,
-            null,
-            355,
-            329,
-            313,
-            314,
-            315,
-            327,
-            null,
-            324,
-            331,
-            3665,
-            333,
-            316,
-            null,
-            319,
-            336,
-            337,
-            null,
-            462,
-            321,
-            322,
-            304,
-            null,
-            314,
-            null,
-            325,
-            3666,
-            3663,
-            317,
-            318
+        "words": [
+            {
+                "index": 0,
+                "id": 335
+            },
+            {
+                "index": 1,
+                "id": 3662
+            },
+            {
+                "index": 2,
+                "id": 301
+            },
+            {
+                "index": 3,
+                "id": 305
+            },
+            {
+                "index": 4,
+                "id": 304
+            },
+            {
+                "index": 5,
+                "id": 302
+            },
+            {
+                "index": 7,
+                "id": 463
+            },
+            {
+                "index": 9,
+                "id": 300
+            },
+            {
+                "index": 10,
+                "id": 307
+            },
+            {
+                "index": 11,
+                "id": 310
+            },
+            {
+                "index": 14,
+                "id": 355
+            },
+            {
+                "index": 15,
+                "id": 329
+            },
+            {
+                "index": 16,
+                "id": 313
+            },
+            {
+                "index": 17,
+                "id": 314
+            },
+            {
+                "index": 18,
+                "id": 315
+            },
+            {
+                "index": 19,
+                "id": 327
+            },
+            {
+                "index": 21,
+                "id": 324
+            },
+            {
+                "index": 22,
+                "id": 331
+            },
+            {
+                "index": 23,
+                "id": 3665
+            },
+            {
+                "index": 24,
+                "id": 333
+            },
+            {
+                "index": 25,
+                "id": 316
+            },
+            {
+                "index": 27,
+                "id": 319
+            },
+            {
+                "index": 28,
+                "id": 336
+            },
+            {
+                "index": 29,
+                "id": 337
+            },
+            {
+                "index": 31,
+                "id": 462
+            },
+            {
+                "index": 32,
+                "id": 321
+            },
+            {
+                "index": 33,
+                "id": 322
+            },
+            {
+                "index": 34,
+                "id": 304
+            },
+            {
+                "index": 36,
+                "id": 314
+            },
+            {
+                "index": 38,
+                "id": 325
+            },
+            {
+                "index": 39,
+                "id": 3666
+            },
+            {
+                "index": 40,
+                "id": 3663
+            },
+            {
+                "index": 41,
+                "id": 317
+            },
+            {
+                "index": 42,
+                "id": 318
+            }
         ]
     },
     {
         "id": 404,
         "text": "Moððe word fræt; mē þæt þūhte\nwrǣtlicu wyrd, þā iċ þæt wundor gefræġn,\nþæt se wyrm forswealg weres ġied sumes,\nþēof in þȳstro, þrymfæstne cwide\nond þæs strangan staþol. Stælġiest ne wæs\nwihte þȳ glēawra þē hē þām wordum swealg.",
         "title": "Exeter Book Riddle 47",
-        "wordIds": [
-            null,
-            3596,
-            407,
-            409,
-            null,
-            410,
-            412,
-            414,
-            462,
-            null,
-            null,
-            3597,
-            416,
-            15,
-            418,
-            2280,
-            420,
-            422,
-            424,
-            425,
-            429,
-            427,
-            428,
-            430,
-            432,
-            463,
-            433,
-            434,
-            2931,
-            437,
-            null,
-            438,
-            439,
-            442,
-            441,
-            440,
-            null,
-            443,
-            444,
-            445
+        "words": [
+            {
+                "index": 1,
+                "id": 3596
+            },
+            {
+                "index": 2,
+                "id": 407
+            },
+            {
+                "index": 3,
+                "id": 409
+            },
+            {
+                "index": 5,
+                "id": 410
+            },
+            {
+                "index": 6,
+                "id": 412
+            },
+            {
+                "index": 7,
+                "id": 414
+            },
+            {
+                "index": 8,
+                "id": 462
+            },
+            {
+                "index": 11,
+                "id": 3597
+            },
+            {
+                "index": 12,
+                "id": 416
+            },
+            {
+                "index": 13,
+                "id": 15
+            },
+            {
+                "index": 14,
+                "id": 418
+            },
+            {
+                "index": 15,
+                "id": 2280
+            },
+            {
+                "index": 16,
+                "id": 420
+            },
+            {
+                "index": 17,
+                "id": 422
+            },
+            {
+                "index": 18,
+                "id": 424
+            },
+            {
+                "index": 19,
+                "id": 425
+            },
+            {
+                "index": 20,
+                "id": 429
+            },
+            {
+                "index": 21,
+                "id": 427
+            },
+            {
+                "index": 22,
+                "id": 428
+            },
+            {
+                "index": 23,
+                "id": 430
+            },
+            {
+                "index": 24,
+                "id": 432
+            },
+            {
+                "index": 25,
+                "id": 463
+            },
+            {
+                "index": 26,
+                "id": 433
+            },
+            {
+                "index": 27,
+                "id": 434
+            },
+            {
+                "index": 28,
+                "id": 2931
+            },
+            {
+                "index": 29,
+                "id": 437
+            },
+            {
+                "index": 31,
+                "id": 438
+            },
+            {
+                "index": 32,
+                "id": 439
+            },
+            {
+                "index": 33,
+                "id": 442
+            },
+            {
+                "index": 34,
+                "id": 441
+            },
+            {
+                "index": 35,
+                "id": 440
+            },
+            {
+                "index": 37,
+                "id": 443
+            },
+            {
+                "index": 38,
+                "id": 444
+            },
+            {
+                "index": 39,
+                "id": 445
+            }
         ]
     },
     {
         "id": 447,
         "text": "Iċ seah wrǣtlīċe wuhte fēower\nsamed sīþian; swearta wǣran lāstas,\nswaþu swīþe blacu. Swift wæs on fōre,\nfuglum framra; flēag on lyfte,\ndēaf under ȳþe. Drēag unstille\nwinnende wiga se him wegas tǣcneþ\nofer fǣted gold fēower eallum.",
         "title": "Exeter Book Riddle 51",
-        "wordIds": [
-            null,
-            450,
-            452,
-            449,
-            453,
-            448,
-            454,
-            459,
-            3603,
-            455,
-            457,
-            461,
-            464,
-            3598,
-            null,
-            null,
-            3456,
-            3458,
-            3619,
-            3621,
-            null,
-            3460,
-            3599,
-            3601,
-            3602,
-            3604,
-            3606,
-            3607,
-            3609,
-            null,
-            null,
-            3612,
-            3610,
-            null,
-            3615,
-            3616,
-            null,
-            3614
+        "words": [
+            {
+                "index": 1,
+                "id": 450
+            },
+            {
+                "index": 2,
+                "id": 452
+            },
+            {
+                "index": 3,
+                "id": 449
+            },
+            {
+                "index": 4,
+                "id": 453
+            },
+            {
+                "index": 5,
+                "id": 448
+            },
+            {
+                "index": 6,
+                "id": 454
+            },
+            {
+                "index": 7,
+                "id": 459
+            },
+            {
+                "index": 8,
+                "id": 3603
+            },
+            {
+                "index": 9,
+                "id": 455
+            },
+            {
+                "index": 10,
+                "id": 457
+            },
+            {
+                "index": 11,
+                "id": 461
+            },
+            {
+                "index": 12,
+                "id": 464
+            },
+            {
+                "index": 13,
+                "id": 3598
+            },
+            {
+                "index": 16,
+                "id": 3456
+            },
+            {
+                "index": 17,
+                "id": 3458
+            },
+            {
+                "index": 18,
+                "id": 3619
+            },
+            {
+                "index": 19,
+                "id": 3621
+            },
+            {
+                "index": 21,
+                "id": 3460
+            },
+            {
+                "index": 22,
+                "id": 3599
+            },
+            {
+                "index": 23,
+                "id": 3601
+            },
+            {
+                "index": 24,
+                "id": 3602
+            },
+            {
+                "index": 25,
+                "id": 3604
+            },
+            {
+                "index": 26,
+                "id": 3606
+            },
+            {
+                "index": 27,
+                "id": 3607
+            },
+            {
+                "index": 28,
+                "id": 3609
+            },
+            {
+                "index": 31,
+                "id": 3612
+            },
+            {
+                "index": 32,
+                "id": 3610
+            },
+            {
+                "index": 34,
+                "id": 3615
+            },
+            {
+                "index": 35,
+                "id": 3616
+            },
+            {
+                "index": 37,
+                "id": 3614
+            }
         ]
     },
     {
         "id": 1189,
         "text": "On ǣrdagum wæs wuniende be norþdǣlum middangeardes sum cyning, þe āngan dohtor hæfde.\nOn his hūse wæs ēac ān cniht óþrum ungelíc.\nFor þam þe hit ǣr gelamp þæt þæs cyninges huntan miċelne beran gemētton on þam beorgum,\nond hie spyredon æfter him to his denne, and hine þǣr ofslōgon.",
         "title": "Sellic Spell",
-        "wordIds": [
-            null,
-            1190,
-            null,
-            1196,
-            1198,
-            1199,
-            1204,
-            null,
-            1206,
-            1207,
-            1211,
-            1208,
-            1209,
-            null,
-            null,
-            1213,
-            null,
-            1215,
-            1216,
-            1217,
-            1218,
-            1220,
-            null,
-            null,
-            null,
-            null,
-            null,
-            1222,
-            15,
-            null,
-            1224,
-            1225,
-            2242,
-            1229,
-            1231,
-            null,
-            3744,
-            1233,
-            463,
-            1235,
-            1236,
-            null,
-            null,
-            1238,
-            null,
-            1240,
-            null,
-            1242,
-            1243,
-            1244
+        "words": [
+            {
+                "index": 1,
+                "id": 1190
+            },
+            {
+                "index": 3,
+                "id": 1196
+            },
+            {
+                "index": 4,
+                "id": 1198
+            },
+            {
+                "index": 5,
+                "id": 1199
+            },
+            {
+                "index": 6,
+                "id": 1204
+            },
+            {
+                "index": 8,
+                "id": 1206
+            },
+            {
+                "index": 9,
+                "id": 1207
+            },
+            {
+                "index": 10,
+                "id": 1211
+            },
+            {
+                "index": 11,
+                "id": 1208
+            },
+            {
+                "index": 12,
+                "id": 1209
+            },
+            {
+                "index": 15,
+                "id": 1213
+            },
+            {
+                "index": 17,
+                "id": 1215
+            },
+            {
+                "index": 18,
+                "id": 1216
+            },
+            {
+                "index": 19,
+                "id": 1217
+            },
+            {
+                "index": 20,
+                "id": 1218
+            },
+            {
+                "index": 21,
+                "id": 1220
+            },
+            {
+                "index": 27,
+                "id": 1222
+            },
+            {
+                "index": 28,
+                "id": 15
+            },
+            {
+                "index": 30,
+                "id": 1224
+            },
+            {
+                "index": 31,
+                "id": 1225
+            },
+            {
+                "index": 32,
+                "id": 2242
+            },
+            {
+                "index": 33,
+                "id": 1229
+            },
+            {
+                "index": 34,
+                "id": 1231
+            },
+            {
+                "index": 36,
+                "id": 3744
+            },
+            {
+                "index": 37,
+                "id": 1233
+            },
+            {
+                "index": 38,
+                "id": 463
+            },
+            {
+                "index": 39,
+                "id": 1235
+            },
+            {
+                "index": 40,
+                "id": 1236
+            },
+            {
+                "index": 43,
+                "id": 1238
+            },
+            {
+                "index": 45,
+                "id": 1240
+            },
+            {
+                "index": 47,
+                "id": 1242
+            },
+            {
+                "index": 48,
+                "id": 1243
+            },
+            {
+                "index": 49,
+                "id": 1244
+            }
         ]
     },
     {
         "id": 3159,
         "text": "On Ēadgāres dagum, Engla cyninges, wearð Æðelwold tō þǣm bisċophāde ġecoren on Wintan ċeastre, and hine ġehālgode Dunstān sē ærċebisċop on\nCantwara byrġ on þone sunnandæġ sē wæs þæs hālgan Andrēas mæsseǣfenn.\nSōna ongonn sē bisċop Æþelwold þā clericas fram þǣm bisċoprīċe ūt ādrīfan,\nforþām þe hie noldon nānne regol healdan, ond hē sette munucas þǣr on heora\nstede. Siððan cōm hē tō þǣm cyninge ond bæd hine þæt hē sċolde him ġiefan\nealle þā mynsteru þe ǣr tōbrocene wǣron fram þām hǣðenum. Ond sē cyning\nlīefde þǣm bisċope þæt, ond sōna ongonn hē þāra munuca ġetimbru ġeedstaðolian ond Godes hūs mid māðmum ġefyllan.",
         "title": "Ætherlwold's Reforms",
-        "wordIds": [
-            null,
-            3160,
-            null,
-            null,
-            null,
-            3162,
-            3163,
-            null,
-            3164,
-            3165,
-            3167,
-            null,
-            null,
-            3168,
-            null,
-            null,
-            3170,
-            3171,
-            null,
-            3172,
-            null,
-            null,
-            3173,
-            null,
-            3174,
-            3175,
-            null,
-            null,
-            null,
-            3176,
-            3178,
-            3179,
-            3181,
-            3182,
-            null,
-            3187,
-            3180,
-            null,
-            3188,
-            66,
-            null,
-            3190,
-            3191,
-            3192,
-            3196,
-            null,
-            null,
-            3193,
-            3197,
-            3199,
-            null,
-            null,
-            null,
-            3200,
-            3201,
-            null,
-            null,
-            3203,
-            3204,
-            3205,
-            3206,
-            null,
-            null,
-            null,
-            3207,
-            463,
-            3208,
-            null,
-            15,
-            null,
-            3209,
-            null,
-            null,
-            3211,
-            null,
-            3213,
-            null,
-            null,
-            3215,
-            3217,
-            66,
-            443,
-            3218,
-            463,
-            null,
-            null,
-            3220,
-            null,
-            3222,
-            null,
-            463,
-            null,
-            null,
-            null,
-            3223,
-            3224,
-            3225,
-            3227,
-            463,
-            3228,
-            null,
-            3230,
-            3231,
-            3233
+        "words": [
+            {
+                "index": 1,
+                "id": 3160
+            },
+            {
+                "index": 5,
+                "id": 3162
+            },
+            {
+                "index": 6,
+                "id": 3163
+            },
+            {
+                "index": 8,
+                "id": 3164
+            },
+            {
+                "index": 9,
+                "id": 3165
+            },
+            {
+                "index": 10,
+                "id": 3167
+            },
+            {
+                "index": 13,
+                "id": 3168
+            },
+            {
+                "index": 16,
+                "id": 3170
+            },
+            {
+                "index": 17,
+                "id": 3171
+            },
+            {
+                "index": 19,
+                "id": 3172
+            },
+            {
+                "index": 22,
+                "id": 3173
+            },
+            {
+                "index": 24,
+                "id": 3174
+            },
+            {
+                "index": 25,
+                "id": 3175
+            },
+            {
+                "index": 29,
+                "id": 3176
+            },
+            {
+                "index": 30,
+                "id": 3178
+            },
+            {
+                "index": 31,
+                "id": 3179
+            },
+            {
+                "index": 32,
+                "id": 3181
+            },
+            {
+                "index": 33,
+                "id": 3182
+            },
+            {
+                "index": 35,
+                "id": 3187
+            },
+            {
+                "index": 36,
+                "id": 3180
+            },
+            {
+                "index": 38,
+                "id": 3188
+            },
+            {
+                "index": 39,
+                "id": 66
+            },
+            {
+                "index": 41,
+                "id": 3190
+            },
+            {
+                "index": 42,
+                "id": 3191
+            },
+            {
+                "index": 43,
+                "id": 3192
+            },
+            {
+                "index": 44,
+                "id": 3196
+            },
+            {
+                "index": 47,
+                "id": 3193
+            },
+            {
+                "index": 48,
+                "id": 3197
+            },
+            {
+                "index": 49,
+                "id": 3199
+            },
+            {
+                "index": 53,
+                "id": 3200
+            },
+            {
+                "index": 54,
+                "id": 3201
+            },
+            {
+                "index": 57,
+                "id": 3203
+            },
+            {
+                "index": 58,
+                "id": 3204
+            },
+            {
+                "index": 59,
+                "id": 3205
+            },
+            {
+                "index": 60,
+                "id": 3206
+            },
+            {
+                "index": 64,
+                "id": 3207
+            },
+            {
+                "index": 65,
+                "id": 463
+            },
+            {
+                "index": 66,
+                "id": 3208
+            },
+            {
+                "index": 68,
+                "id": 15
+            },
+            {
+                "index": 70,
+                "id": 3209
+            },
+            {
+                "index": 73,
+                "id": 3211
+            },
+            {
+                "index": 75,
+                "id": 3213
+            },
+            {
+                "index": 78,
+                "id": 3215
+            },
+            {
+                "index": 79,
+                "id": 3217
+            },
+            {
+                "index": 80,
+                "id": 66
+            },
+            {
+                "index": 81,
+                "id": 443
+            },
+            {
+                "index": 82,
+                "id": 3218
+            },
+            {
+                "index": 83,
+                "id": 463
+            },
+            {
+                "index": 86,
+                "id": 3220
+            },
+            {
+                "index": 88,
+                "id": 3222
+            },
+            {
+                "index": 90,
+                "id": 463
+            },
+            {
+                "index": 94,
+                "id": 3223
+            },
+            {
+                "index": 95,
+                "id": 3224
+            },
+            {
+                "index": 96,
+                "id": 3225
+            },
+            {
+                "index": 97,
+                "id": 3227
+            },
+            {
+                "index": 98,
+                "id": 463
+            },
+            {
+                "index": 99,
+                "id": 3228
+            },
+            {
+                "index": 101,
+                "id": 3230
+            },
+            {
+                "index": 102,
+                "id": 3231
+            },
+            {
+                "index": 103,
+                "id": 3233
+            }
         ],
         "sourceRefs": [
             {
@@ -546,515 +1412,1236 @@
         "id": 3637,
         "text": "Mæġ gehyran se ðe wyle be þam halgan mædene Eugenian, Philyppus dæhter; \nhu hēo ðurh mægðhad mærlice þeah, and þurh martyrdom þisne middaneard oferswað. \nSum æþelboren þægn wæs Philippus gehaten, ðone asende se casere Commodus, þe on ðam dagum rixode,\nfram Rome-byrig to ðære byrig ðe is gehaten Alexandria. \nAnd he hine gesette to heahgerefan ofer Alexandrian and Ægyfto lande, \nand het þæt he heolde þa romaniscan gesætnysse. \nÐæs ðægn Philippus næs na gefullod on Gode, forþan þe cristendom næs þa gyt geond eall cuð, and seo reþe æhtnyss þa gyt næs gestylled. \nHis wif wæs gecyged Claudia, be þære he gestrynde twægen suna, Auitum and Særgium, and ane dohtor, Eugenian, þe we embe spræcaþ. \nÐa befæste se fæder Philippus to lare þæt heo on woruldwysdome wære getogen, æfter greciscre uðwytegunge and lædenre getingnysse. \nEugenia þa, þæt æðele mæden, wel þeah on wisdome and on uðwytegunge. ",
         "title": "Ælfric's Lives of Saints - Saint Eugenia",
-        "wordIds": [
-            3690,
-            3638,
-            277,
-            null,
-            3640,
-            1198,
-            3641,
-            3642,
-            3643,
-            3644,
-            3645,
-            3646,
-            null,
-            3595,
-            null,
-            3632,
-            3661,
-            3650,
-            3653,
-            24,
-            3632,
-            3656,
-            3657,
-            3658,
-            3660,
-            null,
-            426,
-            3734,
-            3735,
-            null,
-            3645,
-            3738,
-            3739,
-            3741,
-            277,
-            3742,
-            3743,
-            null,
-            44,
-            3744,
-            1879,
-            3746,
-            66,
-            3747,
-            1239,
-            3748,
-            3750,
-            null,
-            null,
-            3738,
-            3752,
-            null,
-            24,
-            286,
-            null,
-            3755,
-            1239,
-            3756,
-            2394,
-            3752,
-            24,
-            3757,
-            3759,
-            null,
-            24,
-            3761,
-            15,
-            286,
-            3762,
-            3763,
-            3765,
-            3767,
-            null,
-            3633,
-            3735,
-            3645,
-            3795,
-            3768,
-            3772,
-            44,
-            3773,
-            3793,
-            null,
-            3776,
-            3795,
-            null,
-            3794,
-            3780,
-            3212,
-            3786,
-            24,
-            3787,
-            3789,
-            3790,
-            null,
-            3794,
-            3795,
-            3792,
-            null,
-            null,
-            1247,
-            null,
-            3799,
-            3800,
-            1198,
-            3748,
-            286,
-            3802,
-            3804,
-            3805,
-            3806,
-            24,
-            3807,
-            24,
-            1216,
-            3808,
-            3644,
-            null,
-            null,
-            3810,
-            26,
-            null,
-            3811,
-            3813,
-            277,
-            312,
-            3645,
-            1239,
-            50,
-            15,
-            3814,
-            44,
-            3816,
-            3817,
-            3820,
-            291,
-            3823,
-            3825,
-            24,
-            null,
-            3829,
-            null,
-            3644,
-            3811,
-            3830,
-            3831,
-            2316,
-            3572,
-            3653,
-            44,
-            93,
-            24,
-            44,
-            3824,
-            null
+        "words": [
+            {
+                "index": 0,
+                "id": 3690
+            },
+            {
+                "index": 1,
+                "id": 3638
+            },
+            {
+                "index": 2,
+                "id": 277
+            },
+            {
+                "index": 4,
+                "id": 3640
+            },
+            {
+                "index": 5,
+                "id": 1198
+            },
+            {
+                "index": 6,
+                "id": 3641
+            },
+            {
+                "index": 7,
+                "id": 3642
+            },
+            {
+                "index": 8,
+                "id": 3643
+            },
+            {
+                "index": 9,
+                "id": 3644
+            },
+            {
+                "index": 10,
+                "id": 3645
+            },
+            {
+                "index": 11,
+                "id": 3646
+            },
+            {
+                "index": 13,
+                "id": 3595
+            },
+            {
+                "index": 15,
+                "id": 3632
+            },
+            {
+                "index": 16,
+                "id": 3661
+            },
+            {
+                "index": 17,
+                "id": 3650
+            },
+            {
+                "index": 18,
+                "id": 3653
+            },
+            {
+                "index": 19,
+                "id": 24
+            },
+            {
+                "index": 20,
+                "id": 3632
+            },
+            {
+                "index": 21,
+                "id": 3656
+            },
+            {
+                "index": 22,
+                "id": 3657
+            },
+            {
+                "index": 23,
+                "id": 3658
+            },
+            {
+                "index": 24,
+                "id": 3660
+            },
+            {
+                "index": 26,
+                "id": 426
+            },
+            {
+                "index": 27,
+                "id": 3734
+            },
+            {
+                "index": 28,
+                "id": 3735
+            },
+            {
+                "index": 30,
+                "id": 3645
+            },
+            {
+                "index": 31,
+                "id": 3738
+            },
+            {
+                "index": 32,
+                "id": 3739
+            },
+            {
+                "index": 33,
+                "id": 3741
+            },
+            {
+                "index": 34,
+                "id": 277
+            },
+            {
+                "index": 35,
+                "id": 3742
+            },
+            {
+                "index": 36,
+                "id": 3743
+            },
+            {
+                "index": 38,
+                "id": 44
+            },
+            {
+                "index": 39,
+                "id": 3744
+            },
+            {
+                "index": 40,
+                "id": 1879
+            },
+            {
+                "index": 41,
+                "id": 3746
+            },
+            {
+                "index": 42,
+                "id": 66
+            },
+            {
+                "index": 43,
+                "id": 3747
+            },
+            {
+                "index": 44,
+                "id": 1239
+            },
+            {
+                "index": 45,
+                "id": 3748
+            },
+            {
+                "index": 46,
+                "id": 3750
+            },
+            {
+                "index": 49,
+                "id": 3738
+            },
+            {
+                "index": 50,
+                "id": 3752
+            },
+            {
+                "index": 52,
+                "id": 24
+            },
+            {
+                "index": 53,
+                "id": 286
+            },
+            {
+                "index": 55,
+                "id": 3755
+            },
+            {
+                "index": 56,
+                "id": 1239
+            },
+            {
+                "index": 57,
+                "id": 3756
+            },
+            {
+                "index": 58,
+                "id": 2394
+            },
+            {
+                "index": 59,
+                "id": 3752
+            },
+            {
+                "index": 60,
+                "id": 24
+            },
+            {
+                "index": 61,
+                "id": 3757
+            },
+            {
+                "index": 62,
+                "id": 3759
+            },
+            {
+                "index": 64,
+                "id": 24
+            },
+            {
+                "index": 65,
+                "id": 3761
+            },
+            {
+                "index": 66,
+                "id": 15
+            },
+            {
+                "index": 67,
+                "id": 286
+            },
+            {
+                "index": 68,
+                "id": 3762
+            },
+            {
+                "index": 69,
+                "id": 3763
+            },
+            {
+                "index": 70,
+                "id": 3765
+            },
+            {
+                "index": 71,
+                "id": 3767
+            },
+            {
+                "index": 73,
+                "id": 3633
+            },
+            {
+                "index": 74,
+                "id": 3735
+            },
+            {
+                "index": 75,
+                "id": 3645
+            },
+            {
+                "index": 76,
+                "id": 3795
+            },
+            {
+                "index": 77,
+                "id": 3768
+            },
+            {
+                "index": 78,
+                "id": 3772
+            },
+            {
+                "index": 79,
+                "id": 44
+            },
+            {
+                "index": 80,
+                "id": 3773
+            },
+            {
+                "index": 81,
+                "id": 3793
+            },
+            {
+                "index": 83,
+                "id": 3776
+            },
+            {
+                "index": 84,
+                "id": 3795
+            },
+            {
+                "index": 86,
+                "id": 3794
+            },
+            {
+                "index": 87,
+                "id": 3780
+            },
+            {
+                "index": 88,
+                "id": 3212
+            },
+            {
+                "index": 89,
+                "id": 3786
+            },
+            {
+                "index": 90,
+                "id": 24
+            },
+            {
+                "index": 91,
+                "id": 3787
+            },
+            {
+                "index": 92,
+                "id": 3789
+            },
+            {
+                "index": 93,
+                "id": 3790
+            },
+            {
+                "index": 95,
+                "id": 3794
+            },
+            {
+                "index": 96,
+                "id": 3795
+            },
+            {
+                "index": 97,
+                "id": 3792
+            },
+            {
+                "index": 100,
+                "id": 1247
+            },
+            {
+                "index": 102,
+                "id": 3799
+            },
+            {
+                "index": 103,
+                "id": 3800
+            },
+            {
+                "index": 104,
+                "id": 1198
+            },
+            {
+                "index": 105,
+                "id": 3748
+            },
+            {
+                "index": 106,
+                "id": 286
+            },
+            {
+                "index": 107,
+                "id": 3802
+            },
+            {
+                "index": 108,
+                "id": 3804
+            },
+            {
+                "index": 109,
+                "id": 3805
+            },
+            {
+                "index": 110,
+                "id": 3806
+            },
+            {
+                "index": 111,
+                "id": 24
+            },
+            {
+                "index": 112,
+                "id": 3807
+            },
+            {
+                "index": 113,
+                "id": 24
+            },
+            {
+                "index": 114,
+                "id": 1216
+            },
+            {
+                "index": 115,
+                "id": 3808
+            },
+            {
+                "index": 116,
+                "id": 3644
+            },
+            {
+                "index": 119,
+                "id": 3810
+            },
+            {
+                "index": 120,
+                "id": 26
+            },
+            {
+                "index": 122,
+                "id": 3811
+            },
+            {
+                "index": 123,
+                "id": 3813
+            },
+            {
+                "index": 124,
+                "id": 277
+            },
+            {
+                "index": 125,
+                "id": 312
+            },
+            {
+                "index": 126,
+                "id": 3645
+            },
+            {
+                "index": 127,
+                "id": 1239
+            },
+            {
+                "index": 128,
+                "id": 50
+            },
+            {
+                "index": 129,
+                "id": 15
+            },
+            {
+                "index": 130,
+                "id": 3814
+            },
+            {
+                "index": 131,
+                "id": 44
+            },
+            {
+                "index": 132,
+                "id": 3816
+            },
+            {
+                "index": 133,
+                "id": 3817
+            },
+            {
+                "index": 134,
+                "id": 3820
+            },
+            {
+                "index": 135,
+                "id": 291
+            },
+            {
+                "index": 136,
+                "id": 3823
+            },
+            {
+                "index": 137,
+                "id": 3825
+            },
+            {
+                "index": 138,
+                "id": 24
+            },
+            {
+                "index": 140,
+                "id": 3829
+            },
+            {
+                "index": 142,
+                "id": 3644
+            },
+            {
+                "index": 143,
+                "id": 3811
+            },
+            {
+                "index": 144,
+                "id": 3830
+            },
+            {
+                "index": 145,
+                "id": 3831
+            },
+            {
+                "index": 146,
+                "id": 2316
+            },
+            {
+                "index": 147,
+                "id": 3572
+            },
+            {
+                "index": 148,
+                "id": 3653
+            },
+            {
+                "index": 149,
+                "id": 44
+            },
+            {
+                "index": 150,
+                "id": 93
+            },
+            {
+                "index": 151,
+                "id": 24
+            },
+            {
+                "index": 152,
+                "id": 44
+            },
+            {
+                "index": 153,
+                "id": 3824
+            }
         ]
     },
     {
         "id": 3671,
         "text": "Þū, sċeō-wyrhta, hwæt wyrcst þū ūs nytwyrþnesse?\nWitodlīċe, cræft mīn is behēfe þearle ēow and nēodþearf.\nHū?\nIċ byċġe hȳda and fell, and ġearcie hie mid cræfte mīnum, \nand wyrce of him ġesċȳ mistliċes cynnes, swyftlēras ond sċẹōs, leþerhosa and brīdelþwangas,\nflaxan and fǣtelsas; and nān ēower ne mæġ oferwintran būton mīnum cræfte.\nSealtere, hū ūs fremaþ cræft þīn?\nÞearle fremaþ cræft mīn ēow eallum.\nNān ēower blisse brȳcð on ġereordunge oþþe mete, būton cræfte mīnum.\nHū?\nHwylċ manna þurh-werodum mettum þurh-brȳcþ būton swæcce\nsealtes? \nHwā ġefylþ his cleafan oþþe hēddernu būton cræfte mīnum?\nEfne, buter-ġeþwēor ǣlċ ond ċȳs-ġerunn losiaþ būton iċ hyrde ætwese for ēow, þe ne furþon nāne wyrta\nēowra brūcaþ būton mē.",
         "title": "Aelfric's Colloquy 3",
-        "wordIds": [
-            null,
-            4553,
-            null,
-            3673,
-            null,
-            null,
-            4563,
-            3672,
-            3674,
-            3713,
-            null,
-            null,
-            null,
-            null,
-            null,
-            3675,
-            null,
-            null,
-            3677,
-            3678,
-            null,
-            3680,
-            null,
-            3681,
-            null,
-            null,
-            3683,
-            3714,
-            null,
-            null,
-            3692,
-            null,
-            null,
-            3685,
-            3686,
-            3684,
-            3688,
-            463,
-            4607,
-            4571,
-            null,
-            3693,
-            3695,
-            null,
-            3697,
-            null,
-            null,
-            3726,
-            null,
-            3690,
-            3699,
-            null,
-            3714,
-            null,
-            3731,
-            null,
-            null,
-            3700,
-            null,
-            3715,
-            3732,
-            3700,
-            null,
-            null,
-            null,
-            3614,
-            null,
-            3726,
-            3703,
-            3702,
-            null,
-            3727,
-            null,
-            null,
-            null,
-            3683,
-            3714,
-            null,
-            null,
-            3716,
-            null,
-            4605,
-            3729,
-            32,
-            4602,
-            3733,
-            null,
-            3705,
-            3706,
-            null,
-            3707,
-            null,
-            3711,
-            null,
-            null,
-            3714,
-            3704,
-            3719,
-            3718,
-            463,
-            3720,
-            3709,
-            null,
-            null,
-            3723,
-            3721,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            4599,
-            4600,
-            4598,
-            null,
-            null
+        "words": [
+            {
+                "index": 1,
+                "id": 4553
+            },
+            {
+                "index": 3,
+                "id": 3673
+            },
+            {
+                "index": 6,
+                "id": 4563
+            },
+            {
+                "index": 7,
+                "id": 3672
+            },
+            {
+                "index": 8,
+                "id": 3674
+            },
+            {
+                "index": 9,
+                "id": 3713
+            },
+            {
+                "index": 15,
+                "id": 3675
+            },
+            {
+                "index": 18,
+                "id": 3677
+            },
+            {
+                "index": 19,
+                "id": 3678
+            },
+            {
+                "index": 21,
+                "id": 3680
+            },
+            {
+                "index": 23,
+                "id": 3681
+            },
+            {
+                "index": 26,
+                "id": 3683
+            },
+            {
+                "index": 27,
+                "id": 3714
+            },
+            {
+                "index": 30,
+                "id": 3692
+            },
+            {
+                "index": 33,
+                "id": 3685
+            },
+            {
+                "index": 34,
+                "id": 3686
+            },
+            {
+                "index": 35,
+                "id": 3684
+            },
+            {
+                "index": 36,
+                "id": 3688
+            },
+            {
+                "index": 37,
+                "id": 463
+            },
+            {
+                "index": 38,
+                "id": 4607
+            },
+            {
+                "index": 39,
+                "id": 4571
+            },
+            {
+                "index": 41,
+                "id": 3693
+            },
+            {
+                "index": 42,
+                "id": 3695
+            },
+            {
+                "index": 44,
+                "id": 3697
+            },
+            {
+                "index": 47,
+                "id": 3726
+            },
+            {
+                "index": 49,
+                "id": 3690
+            },
+            {
+                "index": 50,
+                "id": 3699
+            },
+            {
+                "index": 52,
+                "id": 3714
+            },
+            {
+                "index": 54,
+                "id": 3731
+            },
+            {
+                "index": 57,
+                "id": 3700
+            },
+            {
+                "index": 59,
+                "id": 3715
+            },
+            {
+                "index": 60,
+                "id": 3732
+            },
+            {
+                "index": 61,
+                "id": 3700
+            },
+            {
+                "index": 65,
+                "id": 3614
+            },
+            {
+                "index": 67,
+                "id": 3726
+            },
+            {
+                "index": 68,
+                "id": 3703
+            },
+            {
+                "index": 69,
+                "id": 3702
+            },
+            {
+                "index": 71,
+                "id": 3727
+            },
+            {
+                "index": 75,
+                "id": 3683
+            },
+            {
+                "index": 76,
+                "id": 3714
+            },
+            {
+                "index": 79,
+                "id": 3716
+            },
+            {
+                "index": 81,
+                "id": 4605
+            },
+            {
+                "index": 82,
+                "id": 3729
+            },
+            {
+                "index": 83,
+                "id": 32
+            },
+            {
+                "index": 84,
+                "id": 4602
+            },
+            {
+                "index": 85,
+                "id": 3733
+            },
+            {
+                "index": 87,
+                "id": 3705
+            },
+            {
+                "index": 88,
+                "id": 3706
+            },
+            {
+                "index": 90,
+                "id": 3707
+            },
+            {
+                "index": 92,
+                "id": 3711
+            },
+            {
+                "index": 95,
+                "id": 3714
+            },
+            {
+                "index": 96,
+                "id": 3704
+            },
+            {
+                "index": 97,
+                "id": 3719
+            },
+            {
+                "index": 98,
+                "id": 3718
+            },
+            {
+                "index": 99,
+                "id": 463
+            },
+            {
+                "index": 100,
+                "id": 3720
+            },
+            {
+                "index": 101,
+                "id": 3709
+            },
+            {
+                "index": 104,
+                "id": 3723
+            },
+            {
+                "index": 105,
+                "id": 3721
+            },
+            {
+                "index": 112,
+                "id": 4599
+            },
+            {
+                "index": 113,
+                "id": 4600
+            },
+            {
+                "index": 114,
+                "id": 4598
+            }
         ]
     },
     {
         "id": 4647,
         "text": "Bæcere, hwām fremaþ cræft þīn oþþe magon wē būton þē līf ādrēogan?\nĠē magon sume hwīle ac nā lange ne wel: sōþlīċe būton cræfte mīnum\nǣlċ bēoda ǣmtiġ byþ, and būton hlāfe ǣlċ mete tō wlǣttan byþ ġehwyrfed.\nIċ heortan mannes ġestrangie, iċ eom mæġen wera and furþon litlingas nellaþ forbīġan mē.\nHwæt seċġe wē be þām cōcce?\nBeþurfon wē hine on ǣnigum þinge?\nĠif ġē mē ūt ādrīfaþ fram ēowrum ġefērscype, etaþ ġē ēowre wyrta grēne, ond ēowre flæsċmettas hrēawe, \nond furþon fǣtt broþ ġē ne magon habban būton mīnum cræfte.\nWē ne reċċaþ his cræftes ne is hē ūs nēodþearf, for-þām wē sylfe\nmagon sēoþan þā þing þe tō sēoþenne synd, and brǣdan þā þing þe tō brǣdenne synd.\nĠif ġē for-þȳ mē ādrȳfaþ, þonne bēon ġē ealle þrǣlas, ond nān ēower\nne bēo hlāford; þēahhwæþere būton mē ġē ne etaþ",
         "title": "Aelfric's Colloquy 4",
-        "wordIds": [
-            4723,
-            4734,
-            null,
-            null,
-            null,
-            null,
-            4649,
-            null,
-            null,
-            8,
-            null,
-            4648,
-            null,
-            null,
-            4725,
-            4726,
-            null,
-            4729,
-            4730,
-            null,
-            null,
-            4650,
-            null,
-            null,
-            null,
-            null,
-            4652,
-            4654,
-            null,
-            null,
-            null,
-            4655,
-            null,
-            null,
-            null,
-            4657,
-            4660,
-            4659,
-            null,
-            4664,
-            4661,
-            4666,
-            null,
-            4667,
-            4668,
-            4670,
-            null,
-            4671,
-            4673,
-            null,
-            4674,
-            null,
-            null,
-            4675,
-            null,
-            1198,
-            276,
-            4683,
-            4677,
-            null,
-            null,
-            null,
-            4685,
-            4687,
-            4691,
-            null,
-            null,
-            null,
-            4689,
-            66,
-            4692,
-            4693,
-            4695,
-            null,
-            4697,
-            null,
-            null,
-            463,
-            null,
-            4699,
-            4703,
-            null,
-            463,
-            null,
-            4706,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            4708,
-            null,
-            4709,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            4721,
-            null,
-            4710,
-            83,
-            null,
-            null,
-            null,
-            4712,
-            null,
-            null,
-            null,
-            83,
-            null,
-            null,
-            null,
-            4715,
-            4716,
-            null,
-            null,
-            4732,
-            null,
-            4733,
-            null,
-            null,
-            null,
-            null,
-            4720,
-            463,
-            null,
-            3726,
-            null,
-            null,
-            4717,
-            4718,
-            null,
-            null,
-            null,
-            null,
-            null
+        "words": [
+            {
+                "index": 0,
+                "id": 4723
+            },
+            {
+                "index": 1,
+                "id": 4734
+            },
+            {
+                "index": 6,
+                "id": 4649
+            },
+            {
+                "index": 9,
+                "id": 8
+            },
+            {
+                "index": 11,
+                "id": 4648
+            },
+            {
+                "index": 14,
+                "id": 4725
+            },
+            {
+                "index": 15,
+                "id": 4726
+            },
+            {
+                "index": 17,
+                "id": 4729
+            },
+            {
+                "index": 18,
+                "id": 4730
+            },
+            {
+                "index": 21,
+                "id": 4650
+            },
+            {
+                "index": 26,
+                "id": 4652
+            },
+            {
+                "index": 27,
+                "id": 4654
+            },
+            {
+                "index": 31,
+                "id": 4655
+            },
+            {
+                "index": 35,
+                "id": 4657
+            },
+            {
+                "index": 36,
+                "id": 4660
+            },
+            {
+                "index": 37,
+                "id": 4659
+            },
+            {
+                "index": 39,
+                "id": 4664
+            },
+            {
+                "index": 40,
+                "id": 4661
+            },
+            {
+                "index": 41,
+                "id": 4666
+            },
+            {
+                "index": 43,
+                "id": 4667
+            },
+            {
+                "index": 44,
+                "id": 4668
+            },
+            {
+                "index": 45,
+                "id": 4670
+            },
+            {
+                "index": 47,
+                "id": 4671
+            },
+            {
+                "index": 48,
+                "id": 4673
+            },
+            {
+                "index": 50,
+                "id": 4674
+            },
+            {
+                "index": 53,
+                "id": 4675
+            },
+            {
+                "index": 55,
+                "id": 1198
+            },
+            {
+                "index": 56,
+                "id": 276
+            },
+            {
+                "index": 57,
+                "id": 4683
+            },
+            {
+                "index": 58,
+                "id": 4677
+            },
+            {
+                "index": 62,
+                "id": 4685
+            },
+            {
+                "index": 63,
+                "id": 4687
+            },
+            {
+                "index": 64,
+                "id": 4691
+            },
+            {
+                "index": 68,
+                "id": 4689
+            },
+            {
+                "index": 69,
+                "id": 66
+            },
+            {
+                "index": 70,
+                "id": 4692
+            },
+            {
+                "index": 71,
+                "id": 4693
+            },
+            {
+                "index": 72,
+                "id": 4695
+            },
+            {
+                "index": 74,
+                "id": 4697
+            },
+            {
+                "index": 77,
+                "id": 463
+            },
+            {
+                "index": 79,
+                "id": 4699
+            },
+            {
+                "index": 80,
+                "id": 4703
+            },
+            {
+                "index": 82,
+                "id": 463
+            },
+            {
+                "index": 84,
+                "id": 4706
+            },
+            {
+                "index": 95,
+                "id": 4708
+            },
+            {
+                "index": 97,
+                "id": 4709
+            },
+            {
+                "index": 105,
+                "id": 4721
+            },
+            {
+                "index": 107,
+                "id": 4710
+            },
+            {
+                "index": 108,
+                "id": 83
+            },
+            {
+                "index": 112,
+                "id": 4712
+            },
+            {
+                "index": 116,
+                "id": 83
+            },
+            {
+                "index": 120,
+                "id": 4715
+            },
+            {
+                "index": 121,
+                "id": 4716
+            },
+            {
+                "index": 124,
+                "id": 4732
+            },
+            {
+                "index": 126,
+                "id": 4733
+            },
+            {
+                "index": 131,
+                "id": 4720
+            },
+            {
+                "index": 132,
+                "id": 463
+            },
+            {
+                "index": 134,
+                "id": 3726
+            },
+            {
+                "index": 137,
+                "id": 4717
+            },
+            {
+                "index": 138,
+                "id": 4718
+            }
         ]
     },
     {
         "id": 4737,
         "text": "Iċ eom ānhaga īserne wund,\nbille ġebennad, beadoweorca sæd,\neċġum wēriġ. Oft iċ wīġ sēo,\nfrēcne feohtan. Frōfre ne wēne,\nþæt mē ġēoc cyme gūðġewinnes,\nǣr iċ mid ældum eal forwurðe,\nac meċ hnossiað homera lāfe,\nheardeċġ, heorosċearp, hondweorc smiþa,\nbītað in burgum; iċ ābīdan sċeal\nlāþra ġemōtes. Nǣfre lǣċecynn\non folcstede findan meahte,\nþāra þe mid wyrtum wunde ġehǣlde,\nac mē eċġa dolg ēacen weorðað\nþurh dēaðsleġe dagum ond nihtum.",
         "title": "Exeter Book Riddle 5",
-        "wordIds": [
-            null,
-            null,
-            4738,
-            4755,
-            4754,
-            4744,
-            4746,
-            4748,
-            4752,
-            4757,
-            4758,
-            4759,
-            null,
-            4761,
-            4763,
-            4768,
-            null,
-            4770,
-            null,
-            4772,
-            15,
-            null,
-            4773,
-            4776,
-            4777,
-            null,
-            null,
-            null,
-            4782,
-            3782,
-            4785,
-            null,
-            4791,
-            4794,
-            4796,
-            4799,
-            4801,
-            4805,
-            4811,
-            4816,
-            4818,
-            null,
-            4820,
-            null,
-            4822,
-            4824,
-            4832,
-            4847,
-            4834,
-            4835,
-            null,
-            4827,
-            4825,
-            null,
-            null,
-            null,
-            null,
-            4831,
-            4845,
-            null,
-            null,
-            null,
-            4842,
-            4841,
-            4843,
-            4844,
-            null,
-            4839,
-            null,
-            463,
-            4838
+        "words": [
+            {
+                "index": 2,
+                "id": 4738
+            },
+            {
+                "index": 3,
+                "id": 4755
+            },
+            {
+                "index": 4,
+                "id": 4754
+            },
+            {
+                "index": 5,
+                "id": 4744
+            },
+            {
+                "index": 6,
+                "id": 4746
+            },
+            {
+                "index": 7,
+                "id": 4748
+            },
+            {
+                "index": 8,
+                "id": 4752
+            },
+            {
+                "index": 9,
+                "id": 4757
+            },
+            {
+                "index": 10,
+                "id": 4758
+            },
+            {
+                "index": 11,
+                "id": 4759
+            },
+            {
+                "index": 13,
+                "id": 4761
+            },
+            {
+                "index": 14,
+                "id": 4763
+            },
+            {
+                "index": 15,
+                "id": 4768
+            },
+            {
+                "index": 17,
+                "id": 4770
+            },
+            {
+                "index": 19,
+                "id": 4772
+            },
+            {
+                "index": 20,
+                "id": 15
+            },
+            {
+                "index": 22,
+                "id": 4773
+            },
+            {
+                "index": 23,
+                "id": 4776
+            },
+            {
+                "index": 24,
+                "id": 4777
+            },
+            {
+                "index": 28,
+                "id": 4782
+            },
+            {
+                "index": 29,
+                "id": 3782
+            },
+            {
+                "index": 30,
+                "id": 4785
+            },
+            {
+                "index": 32,
+                "id": 4791
+            },
+            {
+                "index": 33,
+                "id": 4794
+            },
+            {
+                "index": 34,
+                "id": 4796
+            },
+            {
+                "index": 35,
+                "id": 4799
+            },
+            {
+                "index": 36,
+                "id": 4801
+            },
+            {
+                "index": 37,
+                "id": 4805
+            },
+            {
+                "index": 38,
+                "id": 4811
+            },
+            {
+                "index": 39,
+                "id": 4816
+            },
+            {
+                "index": 40,
+                "id": 4818
+            },
+            {
+                "index": 42,
+                "id": 4820
+            },
+            {
+                "index": 44,
+                "id": 4822
+            },
+            {
+                "index": 45,
+                "id": 4824
+            },
+            {
+                "index": 46,
+                "id": 4832
+            },
+            {
+                "index": 47,
+                "id": 4847
+            },
+            {
+                "index": 48,
+                "id": 4834
+            },
+            {
+                "index": 49,
+                "id": 4835
+            },
+            {
+                "index": 51,
+                "id": 4827
+            },
+            {
+                "index": 52,
+                "id": 4825
+            },
+            {
+                "index": 57,
+                "id": 4831
+            },
+            {
+                "index": 58,
+                "id": 4845
+            },
+            {
+                "index": 62,
+                "id": 4842
+            },
+            {
+                "index": 63,
+                "id": 4841
+            },
+            {
+                "index": 64,
+                "id": 4843
+            },
+            {
+                "index": 65,
+                "id": 4844
+            },
+            {
+                "index": 67,
+                "id": 4839
+            },
+            {
+                "index": 69,
+                "id": 463
+            },
+            {
+                "index": 70,
+                "id": 4838
+            }
         ]
     }
 ]

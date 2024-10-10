@@ -3,86 +3,319 @@
         "id": 523,
         "text": "Ai! laurië lantar lassi súrinen!\nYéni únótimë ve rámar aldaron!\nYéni ve lintë yuldar avánier\nmi oromardi lisse-miruvóreva\nAndúnë pella, Vardo tellumar\nnu luini yassen tintilar i eleni\nómaryo airetári-lírinen.\nSí man i yulma nin enquantuva?\nAn sí Tintalle Varda Oiolossëo\nve fanyar máryat Elentári ortanë\nar ilyë tier undulávë lumbulë\nar sindanóriello caita mornië\ni falmalinnar imbë met, ar hísië\nuntúpa Calaciryo míri oialë.\nSí vanwa na, Rómello vanwa, Valimar!\nNamárië! Nai hiruvalyë Valimar.\nNai elyë hiruva. Namárië!",
         "title": "Galadriel's Lament",
-        "wordIds": [
-            0,
-            1,
-            3,
-            5,
-            7,
-            9,
-            11,
-            15,
-            16,
-            18,
-            9,
-            15,
-            20,
-            22,
-            25,
-            28,
-            29,
-            33,
-            37,
-            39,
-            40,
-            42,
-            44,
-            45,
-            47,
-            49,
-            52,
-            53,
-            56,
-            59,
-            64,
-            65,
-            52,
-            66,
-            67,
-            69,
-            73,
-            64,
-            74,
-            null,
-            76,
-            15,
-            81,
-            83,
-            86,
-            87,
-            90,
-            91,
-            93,
-            95,
-            99,
-            90,
-            101,
-            105,
-            107,
-            52,
-            110,
-            115,
-            116,
-            90,
-            117,
-            119,
-            121,
-            125,
-            127,
-            64,
-            128,
-            164,
-            129,
-            128,
-            131,
-            133,
-            136,
-            137,
-            131,
-            136,
-            141,
-            138,
-            133
+        "words": [
+            {
+                "index": 0,
+                "id": 0
+            },
+            {
+                "index": 1,
+                "id": 1
+            },
+            {
+                "index": 2,
+                "id": 3
+            },
+            {
+                "index": 3,
+                "id": 5
+            },
+            {
+                "index": 4,
+                "id": 7
+            },
+            {
+                "index": 5,
+                "id": 9
+            },
+            {
+                "index": 6,
+                "id": 11
+            },
+            {
+                "index": 7,
+                "id": 15
+            },
+            {
+                "index": 8,
+                "id": 16
+            },
+            {
+                "index": 9,
+                "id": 18
+            },
+            {
+                "index": 10,
+                "id": 9
+            },
+            {
+                "index": 11,
+                "id": 15
+            },
+            {
+                "index": 12,
+                "id": 20
+            },
+            {
+                "index": 13,
+                "id": 22
+            },
+            {
+                "index": 14,
+                "id": 25
+            },
+            {
+                "index": 15,
+                "id": 28
+            },
+            {
+                "index": 16,
+                "id": 29
+            },
+            {
+                "index": 17,
+                "id": 33
+            },
+            {
+                "index": 18,
+                "id": 37
+            },
+            {
+                "index": 19,
+                "id": 39
+            },
+            {
+                "index": 20,
+                "id": 40
+            },
+            {
+                "index": 21,
+                "id": 42
+            },
+            {
+                "index": 22,
+                "id": 44
+            },
+            {
+                "index": 23,
+                "id": 45
+            },
+            {
+                "index": 24,
+                "id": 47
+            },
+            {
+                "index": 25,
+                "id": 49
+            },
+            {
+                "index": 26,
+                "id": 52
+            },
+            {
+                "index": 27,
+                "id": 53
+            },
+            {
+                "index": 28,
+                "id": 56
+            },
+            {
+                "index": 29,
+                "id": 59
+            },
+            {
+                "index": 30,
+                "id": 64
+            },
+            {
+                "index": 31,
+                "id": 65
+            },
+            {
+                "index": 32,
+                "id": 52
+            },
+            {
+                "index": 33,
+                "id": 66
+            },
+            {
+                "index": 34,
+                "id": 67
+            },
+            {
+                "index": 35,
+                "id": 69
+            },
+            {
+                "index": 36,
+                "id": 73
+            },
+            {
+                "index": 37,
+                "id": 64
+            },
+            {
+                "index": 38,
+                "id": 74
+            },
+            {
+                "index": 40,
+                "id": 76
+            },
+            {
+                "index": 41,
+                "id": 15
+            },
+            {
+                "index": 42,
+                "id": 81
+            },
+            {
+                "index": 43,
+                "id": 83
+            },
+            {
+                "index": 44,
+                "id": 86
+            },
+            {
+                "index": 45,
+                "id": 87
+            },
+            {
+                "index": 46,
+                "id": 90
+            },
+            {
+                "index": 47,
+                "id": 91
+            },
+            {
+                "index": 48,
+                "id": 93
+            },
+            {
+                "index": 49,
+                "id": 95
+            },
+            {
+                "index": 50,
+                "id": 99
+            },
+            {
+                "index": 51,
+                "id": 90
+            },
+            {
+                "index": 52,
+                "id": 101
+            },
+            {
+                "index": 53,
+                "id": 105
+            },
+            {
+                "index": 54,
+                "id": 107
+            },
+            {
+                "index": 55,
+                "id": 52
+            },
+            {
+                "index": 56,
+                "id": 110
+            },
+            {
+                "index": 57,
+                "id": 115
+            },
+            {
+                "index": 58,
+                "id": 116
+            },
+            {
+                "index": 59,
+                "id": 90
+            },
+            {
+                "index": 60,
+                "id": 117
+            },
+            {
+                "index": 61,
+                "id": 119
+            },
+            {
+                "index": 62,
+                "id": 121
+            },
+            {
+                "index": 63,
+                "id": 125
+            },
+            {
+                "index": 64,
+                "id": 127
+            },
+            {
+                "index": 65,
+                "id": 64
+            },
+            {
+                "index": 66,
+                "id": 128
+            },
+            {
+                "index": 67,
+                "id": 164
+            },
+            {
+                "index": 68,
+                "id": 129
+            },
+            {
+                "index": 69,
+                "id": 128
+            },
+            {
+                "index": 70,
+                "id": 131
+            },
+            {
+                "index": 71,
+                "id": 133
+            },
+            {
+                "index": 72,
+                "id": 136
+            },
+            {
+                "index": 73,
+                "id": 137
+            },
+            {
+                "index": 74,
+                "id": 131
+            },
+            {
+                "index": 75,
+                "id": 136
+            },
+            {
+                "index": 76,
+                "id": 141
+            },
+            {
+                "index": 77,
+                "id": 138
+            },
+            {
+                "index": 78,
+                "id": 133
+            }
         ],
         "sourceRefs": [
             {
@@ -94,11 +327,23 @@
     {
         "id": 524,
         "text": "Elen síla lúmenn' omentielmo",
-        "wordIds": [
-            54,
-            147,
-            815,
-            151
+        "words": [
+            {
+                "index": 0,
+                "id": 54
+            },
+            {
+                "index": 1,
+                "id": 147
+            },
+            {
+                "index": 2,
+                "id": 815
+            },
+            {
+                "index": 3,
+                "id": 151
+            }
         ],
         "sourceRefs": [
             {
@@ -123,38 +368,63 @@
         "id": 528,
         "text": "Aia María quanta Eruanno\ni Héru aselyë\naistana elyë imíca nísi\nar aistana i yávë mónalyo Yésus\nAirë María Eruo ontaril\ná hyamë rámen úcarindor\nsí ar lúmessë ya firuvammë: násië",
         "title": "Aia María",
-        "wordIds": [
-            1053,
-            null,
-            324,
-            325,
-            52,
-            null,
-            null,
-            null,
-            null,
-            null,
-            289,
-            null,
-            null,
-            52,
-            null,
-            292,
-            331,
-            null,
-            null,
-            319,
-            null,
-            null,
-            null,
-            323,
-            294,
-            null,
-            null,
-            296,
-            null,
-            332,
-            334
+        "words": [
+            {
+                "index": 0,
+                "id": 1053
+            },
+            {
+                "index": 2,
+                "id": 324
+            },
+            {
+                "index": 3,
+                "id": 325
+            },
+            {
+                "index": 4,
+                "id": 52
+            },
+            {
+                "index": 10,
+                "id": 289
+            },
+            {
+                "index": 13,
+                "id": 52
+            },
+            {
+                "index": 15,
+                "id": 292
+            },
+            {
+                "index": 16,
+                "id": 331
+            },
+            {
+                "index": 19,
+                "id": 319
+            },
+            {
+                "index": 23,
+                "id": 323
+            },
+            {
+                "index": 24,
+                "id": 294
+            },
+            {
+                "index": 27,
+                "id": 296
+            },
+            {
+                "index": 29,
+                "id": 332
+            },
+            {
+                "index": 30,
+                "id": 334
+            }
         ],
         "sourceRefs": [
             {
@@ -167,48 +437,143 @@
         "id": 529,
         "text": "Átaremma i ëa han Eä\nna airë esselya\naranielya na tuluva\nna carë indómelya\ncemendë tambe Erumandë\námen anta síra ilaurëa massamma\nar ámen apsenë úcaremmar\nsíve emmë apsenet tien i úcarir emmen\nálamë tulya úsahtienna\nmal ámë etelehta ulcullo: násië",
         "title": "Ataremma",
-        "wordIds": [
-            357,
-            363,
-            385,
-            356,
-            386,
-            null,
-            null,
-            298,
-            300,
-            null,
-            311,
-            null,
-            null,
-            307,
-            309,
-            313,
-            337,
-            340,
-            343,
-            344,
-            345,
-            349,
-            null,
-            340,
-            351,
-            353,
-            355,
-            359,
-            360,
-            361,
-            363,
-            364,
-            366,
-            367,
-            370,
-            371,
-            376,
-            377,
-            378,
-            383,
-            null
+        "words": [
+            {
+                "index": 0,
+                "id": 357
+            },
+            {
+                "index": 1,
+                "id": 363
+            },
+            {
+                "index": 2,
+                "id": 385
+            },
+            {
+                "index": 3,
+                "id": 356
+            },
+            {
+                "index": 4,
+                "id": 386
+            },
+            {
+                "index": 7,
+                "id": 298
+            },
+            {
+                "index": 8,
+                "id": 300
+            },
+            {
+                "index": 10,
+                "id": 311
+            },
+            {
+                "index": 13,
+                "id": 307
+            },
+            {
+                "index": 14,
+                "id": 309
+            },
+            {
+                "index": 15,
+                "id": 313
+            },
+            {
+                "index": 16,
+                "id": 337
+            },
+            {
+                "index": 17,
+                "id": 340
+            },
+            {
+                "index": 18,
+                "id": 343
+            },
+            {
+                "index": 19,
+                "id": 344
+            },
+            {
+                "index": 20,
+                "id": 345
+            },
+            {
+                "index": 21,
+                "id": 349
+            },
+            {
+                "index": 23,
+                "id": 340
+            },
+            {
+                "index": 24,
+                "id": 351
+            },
+            {
+                "index": 25,
+                "id": 353
+            },
+            {
+                "index": 26,
+                "id": 355
+            },
+            {
+                "index": 27,
+                "id": 359
+            },
+            {
+                "index": 28,
+                "id": 360
+            },
+            {
+                "index": 29,
+                "id": 361
+            },
+            {
+                "index": 30,
+                "id": 363
+            },
+            {
+                "index": 31,
+                "id": 364
+            },
+            {
+                "index": 32,
+                "id": 366
+            },
+            {
+                "index": 33,
+                "id": 367
+            },
+            {
+                "index": 34,
+                "id": 370
+            },
+            {
+                "index": 35,
+                "id": 371
+            },
+            {
+                "index": 36,
+                "id": 376
+            },
+            {
+                "index": 37,
+                "id": 377
+            },
+            {
+                "index": 38,
+                "id": 378
+            },
+            {
+                "index": 39,
+                "id": 383
+            }
         ],
         "sourceRefs": [
             {
@@ -221,17 +586,47 @@
         "id": 536,
         "text": "et Eärello Endorenna utúlien\nsinomë maruvan ar Hildinyar tenn’ Ambar-metta",
         "title": "Elendil's Oath",
-        "wordIds": [
-            537,
-            538,
-            540,
-            542,
-            547,
-            548,
-            90,
-            550,
-            553,
-            556
+        "words": [
+            {
+                "index": 0,
+                "id": 537
+            },
+            {
+                "index": 1,
+                "id": 538
+            },
+            {
+                "index": 2,
+                "id": 540
+            },
+            {
+                "index": 3,
+                "id": 542
+            },
+            {
+                "index": 4,
+                "id": 547
+            },
+            {
+                "index": 5,
+                "id": 548
+            },
+            {
+                "index": 6,
+                "id": 90
+            },
+            {
+                "index": 7,
+                "id": 550
+            },
+            {
+                "index": 8,
+                "id": 553
+            },
+            {
+                "index": 9,
+                "id": 556
+            }
         ],
         "sourceRefs": [
             {
@@ -244,100 +639,311 @@
         "id": 566,
         "text": "man cenuva fána cirya?\nmétima hrestallo círa\ni fairi nécë\nringa súmaryassë\nve maiwi yaimië\nman tiruva fána cirya?\nwilwarin wilwa\nëar-celumessen\nrámainen elvië\nëar falastala\nwinga hlápula\nrámar sisílala\ncálë fifírula\nman hlaruva rávëa súrë?\nve tauri lillassië\nninqui carcar yarra\nisilmë ilcalassë\nisilmë pícalassë\nisilmë lantalassë\nve loicolícuma\nraumo nurrua\nundumë rúma\nman cenuva lumbor ahosta?\nmenel acúna\nruxal’ ambonnar\nëar amortala\nundumë hácala\nenwina lúmë\nelenillor pella talta-taltala\natalantëa mindonnar\nman tiruva rácina cirya?\nondolissë mornë\nnu fanyarë rúcina\nanar púrëa tihta\naxor ilcalannar\nmétim’ auressë\nman cenuva métim’ andúnë?",
         "title": "Markirya",
-        "wordIds": [
-            null,
-            567,
-            null,
-            387,
-            570,
-            571,
-            587,
-            null,
-            574,
-            576,
-            578,
-            580,
-            null,
-            582,
-            584,
-            null,
-            614,
-            null,
-            387,
-            737,
-            596,
-            588,
-            592,
-            593,
-            539,
-            598,
-            600,
-            601,
-            null,
-            603,
-            605,
-            606,
-            null,
-            608,
-            610,
-            8,
-            null,
-            616,
-            619,
-            622,
-            625,
-            628,
-            629,
-            630,
-            null,
-            632,
-            null,
-            635,
-            null,
-            636,
-            690,
-            691,
-            693,
-            694,
-            null,
-            567,
-            696,
-            808,
-            234,
-            812,
-            804,
-            700,
-            539,
-            739,
-            693,
-            703,
-            705,
-            706,
-            707,
-            39,
-            734,
-            712,
-            709,
-            null,
-            614,
-            718,
-            387,
-            720,
-            722,
-            null,
-            723,
-            725,
-            726,
-            727,
-            728,
-            729,
-            731,
-            803,
-            573,
-            null,
-            567,
-            null,
-            733
+        "words": [
+            {
+                "index": 1,
+                "id": 567
+            },
+            {
+                "index": 3,
+                "id": 387
+            },
+            {
+                "index": 4,
+                "id": 570
+            },
+            {
+                "index": 5,
+                "id": 571
+            },
+            {
+                "index": 6,
+                "id": 587
+            },
+            {
+                "index": 8,
+                "id": 574
+            },
+            {
+                "index": 9,
+                "id": 576
+            },
+            {
+                "index": 10,
+                "id": 578
+            },
+            {
+                "index": 11,
+                "id": 580
+            },
+            {
+                "index": 13,
+                "id": 582
+            },
+            {
+                "index": 14,
+                "id": 584
+            },
+            {
+                "index": 16,
+                "id": 614
+            },
+            {
+                "index": 18,
+                "id": 387
+            },
+            {
+                "index": 19,
+                "id": 737
+            },
+            {
+                "index": 20,
+                "id": 596
+            },
+            {
+                "index": 21,
+                "id": 588
+            },
+            {
+                "index": 22,
+                "id": 592
+            },
+            {
+                "index": 23,
+                "id": 593
+            },
+            {
+                "index": 24,
+                "id": 539
+            },
+            {
+                "index": 25,
+                "id": 598
+            },
+            {
+                "index": 26,
+                "id": 600
+            },
+            {
+                "index": 27,
+                "id": 601
+            },
+            {
+                "index": 29,
+                "id": 603
+            },
+            {
+                "index": 30,
+                "id": 605
+            },
+            {
+                "index": 31,
+                "id": 606
+            },
+            {
+                "index": 33,
+                "id": 608
+            },
+            {
+                "index": 34,
+                "id": 610
+            },
+            {
+                "index": 35,
+                "id": 8
+            },
+            {
+                "index": 37,
+                "id": 616
+            },
+            {
+                "index": 38,
+                "id": 619
+            },
+            {
+                "index": 39,
+                "id": 622
+            },
+            {
+                "index": 40,
+                "id": 625
+            },
+            {
+                "index": 41,
+                "id": 628
+            },
+            {
+                "index": 42,
+                "id": 629
+            },
+            {
+                "index": 43,
+                "id": 630
+            },
+            {
+                "index": 45,
+                "id": 632
+            },
+            {
+                "index": 47,
+                "id": 635
+            },
+            {
+                "index": 49,
+                "id": 636
+            },
+            {
+                "index": 50,
+                "id": 690
+            },
+            {
+                "index": 51,
+                "id": 691
+            },
+            {
+                "index": 52,
+                "id": 693
+            },
+            {
+                "index": 53,
+                "id": 694
+            },
+            {
+                "index": 55,
+                "id": 567
+            },
+            {
+                "index": 56,
+                "id": 696
+            },
+            {
+                "index": 57,
+                "id": 808
+            },
+            {
+                "index": 58,
+                "id": 234
+            },
+            {
+                "index": 59,
+                "id": 812
+            },
+            {
+                "index": 60,
+                "id": 804
+            },
+            {
+                "index": 61,
+                "id": 700
+            },
+            {
+                "index": 62,
+                "id": 539
+            },
+            {
+                "index": 63,
+                "id": 739
+            },
+            {
+                "index": 64,
+                "id": 693
+            },
+            {
+                "index": 65,
+                "id": 703
+            },
+            {
+                "index": 66,
+                "id": 705
+            },
+            {
+                "index": 67,
+                "id": 706
+            },
+            {
+                "index": 68,
+                "id": 707
+            },
+            {
+                "index": 69,
+                "id": 39
+            },
+            {
+                "index": 70,
+                "id": 734
+            },
+            {
+                "index": 71,
+                "id": 712
+            },
+            {
+                "index": 72,
+                "id": 709
+            },
+            {
+                "index": 74,
+                "id": 614
+            },
+            {
+                "index": 75,
+                "id": 718
+            },
+            {
+                "index": 76,
+                "id": 387
+            },
+            {
+                "index": 77,
+                "id": 720
+            },
+            {
+                "index": 78,
+                "id": 722
+            },
+            {
+                "index": 80,
+                "id": 723
+            },
+            {
+                "index": 81,
+                "id": 725
+            },
+            {
+                "index": 82,
+                "id": 726
+            },
+            {
+                "index": 83,
+                "id": 727
+            },
+            {
+                "index": 84,
+                "id": 728
+            },
+            {
+                "index": 85,
+                "id": 729
+            },
+            {
+                "index": 86,
+                "id": 731
+            },
+            {
+                "index": 87,
+                "id": 803
+            },
+            {
+                "index": 88,
+                "id": 573
+            },
+            {
+                "index": 90,
+                "id": 567
+            },
+            {
+                "index": 92,
+                "id": 733
+            }
         ],
         "sourceRefs": [
             {
@@ -350,18 +956,19 @@
         "id": 639,
         "text": "alcar mi Tarmenel na Erun\nar mi cemen rainë i hínin",
         "title": "Alcar mi Tarmenel na Erun",
-        "wordIds": [
-            null,
-            null,
-            null,
-            null,
-            640,
-            null,
-            null,
-            null,
-            641,
-            null,
-            642
+        "words": [
+            {
+                "index": 4,
+                "id": 640
+            },
+            {
+                "index": 8,
+                "id": 641
+            },
+            {
+                "index": 10,
+                "id": 642
+            }
         ],
         "sourceRefs": [
             {
@@ -374,35 +981,79 @@
         "id": 644,
         "text": "eldar ataformaiti\nepetai i hyarma ú ten ulca símaryassen\núsië, an cé mo quernë cendelë númenna, ve senya\ni hyarma tentanë Melcorello\nar cé mo formenna tentanes Amanna",
         "title": "Ambidexters Sentence",
-        "wordIds": [
-            648,
-            650,
-            655,
-            null,
-            null,
-            null,
-            null,
-            659,
-            646,
-            663,
-            null,
-            664,
-            665,
-            668,
-            670,
-            676,
-            null,
-            679,
-            null,
-            656,
-            680,
-            682,
-            null,
-            null,
-            null,
-            684,
-            685,
-            688
+        "words": [
+            {
+                "index": 0,
+                "id": 648
+            },
+            {
+                "index": 1,
+                "id": 650
+            },
+            {
+                "index": 2,
+                "id": 655
+            },
+            {
+                "index": 7,
+                "id": 659
+            },
+            {
+                "index": 8,
+                "id": 646
+            },
+            {
+                "index": 9,
+                "id": 663
+            },
+            {
+                "index": 11,
+                "id": 664
+            },
+            {
+                "index": 12,
+                "id": 665
+            },
+            {
+                "index": 13,
+                "id": 668
+            },
+            {
+                "index": 14,
+                "id": 670
+            },
+            {
+                "index": 15,
+                "id": 676
+            },
+            {
+                "index": 17,
+                "id": 679
+            },
+            {
+                "index": 19,
+                "id": 656
+            },
+            {
+                "index": 20,
+                "id": 680
+            },
+            {
+                "index": 21,
+                "id": 682
+            },
+            {
+                "index": 25,
+                "id": 684
+            },
+            {
+                "index": 26,
+                "id": 685
+            },
+            {
+                "index": 27,
+                "id": 688
+            }
         ],
         "sourceRefs": [
             {
@@ -415,33 +1066,67 @@
         "id": 745,
         "text": "vanda sina termaruva Elenna·nóreo alcar enyalien\nar Elendil Vorondo voronwë\nnai tiruvantes i hárar mahalmassen mi Númen\nar i Eru i or ilyë mahalmar ëa tennoio",
         "title": "Cirion's Oath",
-        "wordIds": [
-            746,
-            747,
-            748,
-            752,
-            null,
-            755,
-            null,
-            null,
-            762,
-            764,
-            null,
-            765,
-            363,
-            767,
-            770,
-            null,
-            null,
-            null,
-            null,
-            null,
-            363,
-            772,
-            null,
-            773,
-            null,
-            774
+        "words": [
+            {
+                "index": 0,
+                "id": 746
+            },
+            {
+                "index": 1,
+                "id": 747
+            },
+            {
+                "index": 2,
+                "id": 748
+            },
+            {
+                "index": 3,
+                "id": 752
+            },
+            {
+                "index": 5,
+                "id": 755
+            },
+            {
+                "index": 8,
+                "id": 762
+            },
+            {
+                "index": 9,
+                "id": 764
+            },
+            {
+                "index": 11,
+                "id": 765
+            },
+            {
+                "index": 12,
+                "id": 363
+            },
+            {
+                "index": 13,
+                "id": 767
+            },
+            {
+                "index": 14,
+                "id": 770
+            },
+            {
+                "index": 20,
+                "id": 363
+            },
+            {
+                "index": 21,
+                "id": 772
+            },
+            {
+                "index": 23,
+                "id": 773
+            },
+            {
+                "index": 25,
+                "id": 774
+            }
         ],
         "sourceRefs": [
             {
@@ -454,26 +1139,67 @@
         "id": 775,
         "text": "ortírielyanna rucimmë, Aina Eruontari\nalalyë nattira arcandemmar sangiessemman\nono alyë eterúna me illumë ilya raxellor\nalcarin Vendë ar manaquenta",
         "title": "Ortírielyanna",
-        "wordIds": [
-            776,
-            779,
-            780,
-            781,
-            783,
-            785,
-            786,
-            790,
-            794,
-            795,
-            796,
-            null,
-            797,
-            null,
-            798,
-            null,
-            800,
-            null,
-            802
+        "words": [
+            {
+                "index": 0,
+                "id": 776
+            },
+            {
+                "index": 1,
+                "id": 779
+            },
+            {
+                "index": 2,
+                "id": 780
+            },
+            {
+                "index": 3,
+                "id": 781
+            },
+            {
+                "index": 4,
+                "id": 783
+            },
+            {
+                "index": 5,
+                "id": 785
+            },
+            {
+                "index": 6,
+                "id": 786
+            },
+            {
+                "index": 7,
+                "id": 790
+            },
+            {
+                "index": 8,
+                "id": 794
+            },
+            {
+                "index": 9,
+                "id": 795
+            },
+            {
+                "index": 10,
+                "id": 796
+            },
+            {
+                "index": 12,
+                "id": 797
+            },
+            {
+                "index": 14,
+                "id": 798
+            },
+            {
+                "index": 16,
+                "id": 800
+            },
+            {
+                "index": 18,
+                "id": 802
+            }
         ],
         "sourceRefs": [
             {
@@ -486,30 +1212,99 @@
         "id": 816,
         "text": "norolinda pirucendëa\nlendë tanna Nieliccilis\nsana wendë nieninquëa\nyan i wilyar antar miquelis\ni·oromandi tanna lendë\nar wingildi wilwarindië\nlosselië telerinwa\ntáli lantalasselingië",
         "title": "Nieninquë",
-        "wordIds": [
-            817,
-            820,
-            825,
-            827,
-            828,
-            829,
-            830,
-            831,
-            834,
-            52,
-            835,
-            837,
-            838,
-            840,
-            827,
-            825,
-            90,
-            846,
-            844,
-            849,
-            851,
-            853,
-            855
+        "words": [
+            {
+                "index": 0,
+                "id": 817
+            },
+            {
+                "index": 1,
+                "id": 820
+            },
+            {
+                "index": 2,
+                "id": 825
+            },
+            {
+                "index": 3,
+                "id": 827
+            },
+            {
+                "index": 4,
+                "id": 828
+            },
+            {
+                "index": 5,
+                "id": 829
+            },
+            {
+                "index": 6,
+                "id": 830
+            },
+            {
+                "index": 7,
+                "id": 831
+            },
+            {
+                "index": 8,
+                "id": 834
+            },
+            {
+                "index": 9,
+                "id": 52
+            },
+            {
+                "index": 10,
+                "id": 835
+            },
+            {
+                "index": 11,
+                "id": 837
+            },
+            {
+                "index": 12,
+                "id": 838
+            },
+            {
+                "index": 13,
+                "id": 840
+            },
+            {
+                "index": 14,
+                "id": 827
+            },
+            {
+                "index": 15,
+                "id": 825
+            },
+            {
+                "index": 16,
+                "id": 90
+            },
+            {
+                "index": 17,
+                "id": 846
+            },
+            {
+                "index": 18,
+                "id": 844
+            },
+            {
+                "index": 19,
+                "id": 849
+            },
+            {
+                "index": 20,
+                "id": 851
+            },
+            {
+                "index": 21,
+                "id": 853
+            },
+            {
+                "index": 22,
+                "id": 855
+            }
         ],
         "sourceRefs": [
             {
@@ -522,15 +1317,39 @@
         "id": 860,
         "text": "Ilu Ilúvatar en káre eldain a fírimoin\nar antaróta mannar Valion: númessier\ntoi aina, mána, meldielto — enga morion: talantie\nMelko Mardello lende: márie\nen kárielto eldain Isil, hildin Úr-anar; toi írimar\nilyain antalto annar lestanen Ilúvatáren\nIlu vanya, fanya, eari, i-mar, ar ilqa ímen\nírima ye Númenor\nnan úye sére indo-ninya símen, ullume\nten sí ye tyelma, yéva tyel ar i narqelion\níre ilqa yéva nótina, hostainiéva, yallume\nananta úva táre fárea, ufárea\nman táre antáva nin Ilúvatar, Ilúvatar?\nenyáre tar i tyel, íre Anarinya qeluva",
         "title": "Firiel's Song",
-        "wordIds": [
-            861,
-            862,
-            863,
-            864,
-            865,
-            866,
-            868,
-            90
+        "words": [
+            {
+                "index": 0,
+                "id": 861
+            },
+            {
+                "index": 1,
+                "id": 862
+            },
+            {
+                "index": 2,
+                "id": 863
+            },
+            {
+                "index": 3,
+                "id": 864
+            },
+            {
+                "index": 4,
+                "id": 865
+            },
+            {
+                "index": 5,
+                "id": 866
+            },
+            {
+                "index": 6,
+                "id": 868
+            },
+            {
+                "index": 7,
+                "id": 90
+            }
         ],
         "sourceRefs": [
             {
@@ -542,15 +1361,35 @@
     {
         "id": 871,
         "text": "ar súlë Manwëo etsurinyë ar Eldaron indor turyaner",
-        "wordIds": [
-            90,
-            872,
-            875,
-            877,
-            null,
-            882,
-            883,
-            888
+        "words": [
+            {
+                "index": 0,
+                "id": 90
+            },
+            {
+                "index": 1,
+                "id": 872
+            },
+            {
+                "index": 2,
+                "id": 875
+            },
+            {
+                "index": 3,
+                "id": 877
+            },
+            {
+                "index": 5,
+                "id": 882
+            },
+            {
+                "index": 6,
+                "id": 883
+            },
+            {
+                "index": 7,
+                "id": 888
+            }
         ],
         "sourceRefs": [
             {
@@ -562,11 +1401,23 @@
     {
         "id": 891,
         "text": "a vanimar, vanimálion nostari ",
-        "wordIds": [
-            892,
-            893,
-            896,
-            897
+        "words": [
+            {
+                "index": 0,
+                "id": 892
+            },
+            {
+                "index": 1,
+                "id": 893
+            },
+            {
+                "index": 2,
+                "id": 896
+            },
+            {
+                "index": 3,
+                "id": 897
+            }
         ],
         "sourceRefs": [
             {
@@ -599,11 +1450,23 @@
     {
         "id": 981,
         "text": "aiya Eärendil elenion ancalima",
-        "wordIds": [
-            982,
-            983,
-            985,
-            987
+        "words": [
+            {
+                "index": 0,
+                "id": 982
+            },
+            {
+                "index": 1,
+                "id": 983
+            },
+            {
+                "index": 2,
+                "id": 985
+            },
+            {
+                "index": 3,
+                "id": 987
+            }
         ],
         "sourceRefs": [
             {
@@ -616,22 +1479,55 @@
         "id": 989,
         "text": "sínen i·anda nyarnë metta ar taina andaurenya na quanta\nmélima yondion, lenna antanyes mélio cenwa",
         "title": "Christopher Tolkien dedication",
-        "wordIds": [
-            1017,
-            1019,
-            1026,
-            null,
-            null,
-            1022,
-            1023,
-            null,
-            324,
-            990,
-            992,
-            994,
-            996,
-            997,
-            1000
+        "words": [
+            {
+                "index": 0,
+                "id": 1017
+            },
+            {
+                "index": 1,
+                "id": 1019
+            },
+            {
+                "index": 2,
+                "id": 1026
+            },
+            {
+                "index": 5,
+                "id": 1022
+            },
+            {
+                "index": 6,
+                "id": 1023
+            },
+            {
+                "index": 8,
+                "id": 324
+            },
+            {
+                "index": 9,
+                "id": 990
+            },
+            {
+                "index": 10,
+                "id": 992
+            },
+            {
+                "index": 11,
+                "id": 994
+            },
+            {
+                "index": 12,
+                "id": 996
+            },
+            {
+                "index": 13,
+                "id": 997
+            },
+            {
+                "index": 14,
+                "id": 1000
+            }
         ],
         "sourceRefs": [
             {
@@ -642,13 +1538,23 @@
     {
         "id": 1001,
         "text": "nai laurë lantuva parmastanna lúmissen tengwiesto",
-        "wordIds": [
-            null,
-            null,
-            1002,
-            1003,
-            1005,
-            1007
+        "words": [
+            {
+                "index": 2,
+                "id": 1002
+            },
+            {
+                "index": 3,
+                "id": 1003
+            },
+            {
+                "index": 4,
+                "id": 1005
+            },
+            {
+                "index": 5,
+                "id": 1007
+            }
         ],
         "sourceRefs": [
             {
@@ -660,13 +1566,23 @@
     {
         "id": 1010,
         "text": "nai elen atta siluvat aurenna veryanwesto",
-        "wordIds": [
-            null,
-            null,
-            1011,
-            1012,
-            1014,
-            1015
+        "words": [
+            {
+                "index": 2,
+                "id": 1011
+            },
+            {
+                "index": 3,
+                "id": 1012
+            },
+            {
+                "index": 4,
+                "id": 1014
+            },
+            {
+                "index": 5,
+                "id": 1015
+            }
         ],
         "sourceRefs": [
             {
@@ -678,10 +1594,15 @@
     {
         "id": 1028,
         "text": "Anar caluva tielyanna",
-        "wordIds": [
-            null,
-            1029,
-            1030
+        "words": [
+            {
+                "index": 1,
+                "id": 1029
+            },
+            {
+                "index": 2,
+                "id": 1030
+            }
         ],
         "sourceRefs": [
             {
@@ -693,13 +1614,27 @@
     {
         "id": 1031,
         "text": "Elainen tárin Periandion ar meldenya anyáran",
-        "wordIds": [
-            1032,
-            1034,
-            1035,
-            null,
-            1038,
-            1041
+        "words": [
+            {
+                "index": 0,
+                "id": 1032
+            },
+            {
+                "index": 1,
+                "id": 1034
+            },
+            {
+                "index": 2,
+                "id": 1035
+            },
+            {
+                "index": 4,
+                "id": 1038
+            },
+            {
+                "index": 5,
+                "id": 1041
+            }
         ],
         "sourceRefs": [
             {
@@ -712,17 +1647,23 @@
         "id": 1679,
         "text": "a laita te, laita te\nandavë laituvalmet\na laita tárienna",
         "title": "Praises of Cormallen",
-        "wordIds": [
-            null,
-            1680,
-            null,
-            null,
-            null,
-            1681,
-            1683,
-            null,
-            null,
-            1684
+        "words": [
+            {
+                "index": 1,
+                "id": 1680
+            },
+            {
+                "index": 5,
+                "id": 1681
+            },
+            {
+                "index": 6,
+                "id": 1683
+            },
+            {
+                "index": 9,
+                "id": 1684
+            }
         ],
         "sourceRefs": [
             {
@@ -735,54 +1676,127 @@
         "id": 1686,
         "text": "Heru órava omessë\na Hrísto órava ómessë\nAtar meneldëa Eru órava omessë\na Eruion Mardorunando, Eru órava omessë\na Aina Fairë, Eru órava omessë\na Aina Neldië Eru Er órava omessë\na Aina Maria arca atarmë\nAina Eruontarië\nAina Wendë mi Wenderon\nAmillë Hristo\nAmillë Eruva lissëo",
         "title": "Litany of Loreto",
-        "wordIds": [
-            null,
-            1688,
-            1701,
-            892,
-            1705,
-            1688,
-            1704,
-            358,
-            1706,
-            320,
-            1688,
-            null,
-            892,
-            1708,
-            1711,
-            320,
-            null,
-            null,
-            892,
-            null,
-            null,
-            null,
-            null,
-            null,
-            892,
-            null,
-            1720,
-            null,
-            1722,
-            null,
-            null,
-            892,
-            null,
-            1694,
-            789,
-            1723,
-            null,
-            1727,
-            null,
-            830,
-            null,
-            1728,
-            1730,
-            1729,
-            1730,
-            1732,
-            1733
+        "words": [
+            {
+                "index": 1,
+                "id": 1688
+            },
+            {
+                "index": 2,
+                "id": 1701
+            },
+            {
+                "index": 3,
+                "id": 892
+            },
+            {
+                "index": 4,
+                "id": 1705
+            },
+            {
+                "index": 5,
+                "id": 1688
+            },
+            {
+                "index": 6,
+                "id": 1704
+            },
+            {
+                "index": 7,
+                "id": 358
+            },
+            {
+                "index": 8,
+                "id": 1706
+            },
+            {
+                "index": 9,
+                "id": 320
+            },
+            {
+                "index": 10,
+                "id": 1688
+            },
+            {
+                "index": 12,
+                "id": 892
+            },
+            {
+                "index": 13,
+                "id": 1708
+            },
+            {
+                "index": 14,
+                "id": 1711
+            },
+            {
+                "index": 15,
+                "id": 320
+            },
+            {
+                "index": 18,
+                "id": 892
+            },
+            {
+                "index": 24,
+                "id": 892
+            },
+            {
+                "index": 26,
+                "id": 1720
+            },
+            {
+                "index": 28,
+                "id": 1722
+            },
+            {
+                "index": 31,
+                "id": 892
+            },
+            {
+                "index": 33,
+                "id": 1694
+            },
+            {
+                "index": 34,
+                "id": 789
+            },
+            {
+                "index": 35,
+                "id": 1723
+            },
+            {
+                "index": 37,
+                "id": 1727
+            },
+            {
+                "index": 39,
+                "id": 830
+            },
+            {
+                "index": 41,
+                "id": 1728
+            },
+            {
+                "index": 42,
+                "id": 1730
+            },
+            {
+                "index": 43,
+                "id": 1729
+            },
+            {
+                "index": 44,
+                "id": 1730
+            },
+            {
+                "index": 45,
+                "id": 1732
+            },
+            {
+                "index": 46,
+                "id": 1733
+            }
         ],
         "sourceRefs": [
             {
@@ -794,13 +1808,27 @@
     {
         "id": 1693,
         "text": "aiya Eldalië ar Atanatári, utúlie’n aurë",
-        "wordIds": [
-            982,
-            1735,
-            null,
-            1737,
-            1740,
-            348
+        "words": [
+            {
+                "index": 0,
+                "id": 982
+            },
+            {
+                "index": 1,
+                "id": 1735
+            },
+            {
+                "index": 3,
+                "id": 1737
+            },
+            {
+                "index": 4,
+                "id": 1740
+            },
+            {
+                "index": 5,
+                "id": 348
+            }
         ],
         "sourceRefs": [
             {
@@ -811,10 +1839,15 @@
     {
         "id": 1695,
         "text": "auta i lómë",
-        "wordIds": [
-            1743,
-            null,
-            1745
+        "words": [
+            {
+                "index": 0,
+                "id": 1743
+            },
+            {
+                "index": 2,
+                "id": 1745
+            }
         ],
         "sourceRefs": [
             {
@@ -826,11 +1859,23 @@
     {
         "id": 1696,
         "text": "i carir quettar ómainen",
-        "wordIds": [
-            363,
-            1748,
-            1749,
-            1752
+        "words": [
+            {
+                "index": 0,
+                "id": 363
+            },
+            {
+                "index": 1,
+                "id": 1748
+            },
+            {
+                "index": 2,
+                "id": 1749
+            },
+            {
+                "index": 3,
+                "id": 1752
+            }
         ],
         "sourceRefs": [
             {
@@ -842,12 +1887,23 @@
     {
         "id": 1697,
         "text": "imbi Menel Cemenyë menë Ráno tië",
-        "wordIds": [
-            1753,
-            null,
-            1755,
-            1757,
-            1758
+        "words": [
+            {
+                "index": 0,
+                "id": 1753
+            },
+            {
+                "index": 2,
+                "id": 1755
+            },
+            {
+                "index": 3,
+                "id": 1757
+            },
+            {
+                "index": 4,
+                "id": 1758
+            }
         ],
         "sourceRefs": [
             {
@@ -859,14 +1915,35 @@
     {
         "id": 1762,
         "text": "merin sa haryalyë alassë nó vanyalyë Ambarello",
-        "wordIds": [
-            1763,
-            1765,
-            1766,
-            1768,
-            1769,
-            1770,
-            1772
+        "words": [
+            {
+                "index": 0,
+                "id": 1763
+            },
+            {
+                "index": 1,
+                "id": 1765
+            },
+            {
+                "index": 2,
+                "id": 1766
+            },
+            {
+                "index": 3,
+                "id": 1768
+            },
+            {
+                "index": 4,
+                "id": 1769
+            },
+            {
+                "index": 5,
+                "id": 1770
+            },
+            {
+                "index": 6,
+                "id": 1772
+            }
         ],
         "sourceRefs": [
             {
@@ -877,29 +1954,47 @@
     {
         "id": 1790,
         "text": "sanomë tarnë Olórin, Aracorno, Eomer, Imrahil, mi mísë, mi telepta yo morna, mi laiqua yo ninquë, mi luinë, ta Gimli mi lossëa",
-        "wordIds": [
-            null,
-            1801,
-            1798,
-            1805,
-            1794,
-            1792,
-            null,
-            1793,
-            null,
-            1795,
-            null,
-            null,
-            null,
-            1791,
-            null,
-            null,
-            null,
-            null,
-            null,
-            1797,
-            null,
-            1800
+        "words": [
+            {
+                "index": 1,
+                "id": 1801
+            },
+            {
+                "index": 2,
+                "id": 1798
+            },
+            {
+                "index": 3,
+                "id": 1805
+            },
+            {
+                "index": 4,
+                "id": 1794
+            },
+            {
+                "index": 5,
+                "id": 1792
+            },
+            {
+                "index": 7,
+                "id": 1793
+            },
+            {
+                "index": 9,
+                "id": 1795
+            },
+            {
+                "index": 13,
+                "id": 1791
+            },
+            {
+                "index": 19,
+                "id": 1797
+            },
+            {
+                "index": 21,
+                "id": 1800
+            }
         ],
         "sourceRefs": [
             {
@@ -924,18 +2019,23 @@
         "id": 1806,
         "text": "alcar i Ataren ar i Yondon ar i Airefëan\ntambë engë i et...",
         "title": "Alcar i Ataren",
-        "wordIds": [
-            null,
-            null,
-            1807,
-            null,
-            null,
-            1808,
-            null,
-            null,
-            1809,
-            null,
-            1813
+        "words": [
+            {
+                "index": 2,
+                "id": 1807
+            },
+            {
+                "index": 5,
+                "id": 1808
+            },
+            {
+                "index": 8,
+                "id": 1809
+            },
+            {
+                "index": 10,
+                "id": 1813
+            }
         ],
         "sourceRefs": [
             {
@@ -947,11 +2047,19 @@
     {
         "id": 1814,
         "text": "Eldarinwë Leperi ar Notessi",
-        "wordIds": [
-            1815,
-            1817,
-            null,
-            1819
+        "words": [
+            {
+                "index": 0,
+                "id": 1815
+            },
+            {
+                "index": 1,
+                "id": 1817
+            },
+            {
+                "index": 3,
+                "id": 1819
+            }
         ],
         "sourceRefs": [
             {
@@ -964,92 +2072,214 @@
         "id": 1908,
         "text": "Loä yukainen avar Anduinë sí valútier:\ni aluvar koivienyo eärello nantule. \nAi! loär yassen palantírienye\nandavanwë yásier — yá tenn’ aldar\nlente landanóressë ólaner: ai tó sí\nilyama menta hwirya hondoringe fúmenen\nistarion.\n",
         "title": "Twenty years have flown away",
-        "wordIds": [
-            null,
-            1909,
-            2019,
-            1915,
-            null,
-            1918,
-            363,
-            1923,
-            1925,
-            null,
-            1927,
-            null,
-            null,
-            1931,
-            null,
-            1932,
-            1936,
-            1939,
-            null,
-            1941,
-            553,
-            1942,
-            1948,
-            1945,
-            1943,
-            null,
-            1952,
-            null,
-            1968,
-            1953,
-            1954,
-            1955,
-            1960,
-            1966
+        "words": [
+            {
+                "index": 1,
+                "id": 1909
+            },
+            {
+                "index": 2,
+                "id": 2019
+            },
+            {
+                "index": 3,
+                "id": 1915
+            },
+            {
+                "index": 5,
+                "id": 1918
+            },
+            {
+                "index": 6,
+                "id": 363
+            },
+            {
+                "index": 7,
+                "id": 1923
+            },
+            {
+                "index": 8,
+                "id": 1925
+            },
+            {
+                "index": 10,
+                "id": 1927
+            },
+            {
+                "index": 13,
+                "id": 1931
+            },
+            {
+                "index": 15,
+                "id": 1932
+            },
+            {
+                "index": 16,
+                "id": 1936
+            },
+            {
+                "index": 17,
+                "id": 1939
+            },
+            {
+                "index": 19,
+                "id": 1941
+            },
+            {
+                "index": 20,
+                "id": 553
+            },
+            {
+                "index": 21,
+                "id": 1942
+            },
+            {
+                "index": 22,
+                "id": 1948
+            },
+            {
+                "index": 23,
+                "id": 1945
+            },
+            {
+                "index": 24,
+                "id": 1943
+            },
+            {
+                "index": 26,
+                "id": 1952
+            },
+            {
+                "index": 28,
+                "id": 1968
+            },
+            {
+                "index": 29,
+                "id": 1953
+            },
+            {
+                "index": 30,
+                "id": 1954
+            },
+            {
+                "index": 31,
+                "id": 1955
+            },
+            {
+                "index": 32,
+                "id": 1960
+            },
+            {
+                "index": 33,
+                "id": 1966
+            }
         ]
     },
     {
         "id": 1971,
         "text": "Yénion yukainen nunn’ ar anduine lútie \nloar! loar aluvallie koiveanyo entule\n?naina: Ai loar melle yassen ekkennen\nhaia palantírielya yárier andavanwe yallume\nEldalie enwa marnie endoresse luminke ar laiqavinye\nólar i aldar epeni ilya fentane hwirya. \nAn sí sinna ’ekkene opá ni",
         "title": "Twenty years have flown away (draft)",
-        "wordIds": [
-            1972,
-            null,
-            2015,
-            2018,
-            null,
-            1973,
-            null,
-            null,
-            null,
-            null,
-            1977,
-            1979,
-            null,
-            null,
-            null,
-            1981,
-            47,
-            1984,
-            1987,
-            1989,
-            1990,
-            null,
-            2006,
-            1735,
-            1997,
-            1996,
-            1992,
-            1998,
-            null,
-            2001,
-            2005,
-            363,
-            1942,
-            2008,
-            null,
-            2010,
-            null,
-            null,
-            null,
-            null,
-            2013,
-            null,
-            null,
-            null
+        "words": [
+            {
+                "index": 0,
+                "id": 1972
+            },
+            {
+                "index": 2,
+                "id": 2015
+            },
+            {
+                "index": 3,
+                "id": 2018
+            },
+            {
+                "index": 5,
+                "id": 1973
+            },
+            {
+                "index": 10,
+                "id": 1977
+            },
+            {
+                "index": 11,
+                "id": 1979
+            },
+            {
+                "index": 15,
+                "id": 1981
+            },
+            {
+                "index": 16,
+                "id": 47
+            },
+            {
+                "index": 17,
+                "id": 1984
+            },
+            {
+                "index": 18,
+                "id": 1987
+            },
+            {
+                "index": 19,
+                "id": 1989
+            },
+            {
+                "index": 20,
+                "id": 1990
+            },
+            {
+                "index": 22,
+                "id": 2006
+            },
+            {
+                "index": 23,
+                "id": 1735
+            },
+            {
+                "index": 24,
+                "id": 1997
+            },
+            {
+                "index": 25,
+                "id": 1996
+            },
+            {
+                "index": 26,
+                "id": 1992
+            },
+            {
+                "index": 27,
+                "id": 1998
+            },
+            {
+                "index": 29,
+                "id": 2001
+            },
+            {
+                "index": 30,
+                "id": 2005
+            },
+            {
+                "index": 31,
+                "id": 363
+            },
+            {
+                "index": 32,
+                "id": 1942
+            },
+            {
+                "index": 33,
+                "id": 2008
+            },
+            {
+                "index": 35,
+                "id": 2010
+            },
+            {
+                "index": 40,
+                "id": 2013
+            }
         ],
         "sourceRefs": [
             {

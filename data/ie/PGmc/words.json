@@ -3568,5 +3568,100 @@
                 "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-Germanic/runo#Proto-Germanic"
             }
         ]
+    },
+    {
+        "id": 4877,
+        "text": "kumblą",
+        "gloss": "token",
+        "fullGloss": "token, image, sign; banner, standard, ensign",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-Germanic/kumbla#Proto-Germanic"
+            }
+        ]
+    },
+    {
+        "id": 4878,
+        "text": "gudjô",
+        "gloss": "one who invokes; a (pagan) priest (responsible for sacrifices and temple custodian)",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-Germanic/gudjo#Proto-Germanic"
+            }
+        ]
+    },
+    {
+        "id": 4879,
+        "text": "tungǭ",
+        "gloss": "tongue",
+        "fullGloss": "tongue; speech, language",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-Germanic/tungo#Proto-Germanic"
+            }
+        ]
+    },
+    {
+        "id": 4880,
+        "text": "augô",
+        "gloss": "eye",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-Germanic/augo#Proto-Germanic"
+            }
+        ]
+    },
+    {
+        "id": 4882,
+        "text": "brōþēr",
+        "gloss": "brother",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-Germanic/broþer#Proto-Germanic"
+            }
+        ]
+    },
+    {
+        "id": 4887,
+        "text": "taljaną",
+        "gloss": "to enumerate",
+        "fullGloss": "to enumerate, count; to account, recount, tell",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-Germanic/taljana#Proto-Germanic"
+            }
+        ]
+    },
+    {
+        "id": 4894,
+        "text": "ansuz",
+        "gloss": "deity",
+        "fullGloss": "deity, god; ",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-Germanic/ansuz#Proto-Germanic"
+            }
+        ]
+    },
+    {
+        "id": 4897,
+        "text": "hrabnaz",
+        "gloss": "raven",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-Germanic/hrabnaz#Proto-Germanic"
+            }
+        ]
+    },
+    {
+        "id": 4910,
+        "text": "hlutą",
+        "gloss": "lot",
+        "fullGloss": "lot, share; fate",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-Germanic/hluta#Proto-Germanic"
+            }
+        ]
     }
 ]

@@ -2,13 +2,27 @@
     {
         "id": 525,
         "text": "Ai na vedui Dúnadan! Mae g'ovannen.",
-        "wordIds": [
-            191,
-            null,
-            194,
-            195,
-            198,
-            199
+        "words": [
+            {
+                "index": 0,
+                "id": 191
+            },
+            {
+                "index": 2,
+                "id": 194
+            },
+            {
+                "index": 3,
+                "id": 195
+            },
+            {
+                "index": 4,
+                "id": 198
+            },
+            {
+                "index": 5,
+                "id": 199
+            }
         ],
         "sourceRefs": [
             {
@@ -20,62 +34,80 @@
     {
         "id": 526,
         "text": "noro lim, noro lim Asfaloth",
-        "wordIds": [
-            null,
-            null,
-            null,
-            null,
-            null
-        ]
+        "words": []
     },
     {
         "id": 527,
         "text": "A Elbereth Gilthoniel\nsilevren penna míriel\no menel aglar elenath!\nNa-chaered palan-díriel\no galadh-remmin Ennorath\nFanuilos, le linnathon\nnef aear, sí nef aearon",
         "title": "A Elbereth Gilthoniel",
-        "wordIds": [
-            239,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            1146,
-            1157,
-            1162,
-            1165,
-            1078,
-            1139,
-            1167,
-            null,
-            null
+        "words": [
+            {
+                "index": 0,
+                "id": 239
+            },
+            {
+                "index": 14,
+                "id": 1146
+            },
+            {
+                "index": 15,
+                "id": 1157
+            },
+            {
+                "index": 16,
+                "id": 1162
+            },
+            {
+                "index": 17,
+                "id": 1165
+            },
+            {
+                "index": 18,
+                "id": 1078
+            },
+            {
+                "index": 19,
+                "id": 1139
+            },
+            {
+                "index": 20,
+                "id": 1167
+            }
         ]
     },
     {
         "id": 1168,
         "text": "A Elbereth Gilthoniel\no menel palan-diriel\nle nallon sí di’nguruthos\na tiro nin, Fanuilos",
         "title": "A Elbereth Gilthoniel (Two Towers)",
-        "wordIds": [
-            239,
-            null,
-            null,
-            null,
-            null,
-            1173,
-            null,
-            1178,
-            null,
-            1180,
-            239,
-            1191,
-            1193
+        "words": [
+            {
+                "index": 0,
+                "id": 239
+            },
+            {
+                "index": 5,
+                "id": 1173
+            },
+            {
+                "index": 7,
+                "id": 1178
+            },
+            {
+                "index": 9,
+                "id": 1180
+            },
+            {
+                "index": 10,
+                "id": 239
+            },
+            {
+                "index": 11,
+                "id": 1191
+            },
+            {
+                "index": 12,
+                "id": 1193
+            }
         ],
         "sourceRefs": [
             {
@@ -88,27 +120,79 @@
         "id": 1198,
         "text": "Ennyn Durin Aran Moria\npedo mellon a minno\nim Narvi hain echant \nCelebrimbor o Eregion teithant i thiw hin",
         "title": "Moria Gate Inscription",
-        "wordIds": [
-            1199,
-            1244,
-            1201,
-            1203,
-            1209,
-            1211,
-            1212,
-            1213,
-            1216,
-            1218,
-            1219,
-            1221,
-            null,
-            1223,
-            null,
-            1224,
-            1235,
-            1237,
-            1238,
-            1239
+        "words": [
+            {
+                "index": 0,
+                "id": 1199
+            },
+            {
+                "index": 1,
+                "id": 1244
+            },
+            {
+                "index": 2,
+                "id": 1201
+            },
+            {
+                "index": 3,
+                "id": 1203
+            },
+            {
+                "index": 4,
+                "id": 1209
+            },
+            {
+                "index": 5,
+                "id": 1211
+            },
+            {
+                "index": 6,
+                "id": 1212
+            },
+            {
+                "index": 7,
+                "id": 1213
+            },
+            {
+                "index": 8,
+                "id": 1216
+            },
+            {
+                "index": 9,
+                "id": 1218
+            },
+            {
+                "index": 10,
+                "id": 1219
+            },
+            {
+                "index": 11,
+                "id": 1221
+            },
+            {
+                "index": 13,
+                "id": 1223
+            },
+            {
+                "index": 15,
+                "id": 1224
+            },
+            {
+                "index": 16,
+                "id": 1235
+            },
+            {
+                "index": 17,
+                "id": 1237
+            },
+            {
+                "index": 18,
+                "id": 1238
+            },
+            {
+                "index": 19,
+                "id": 1239
+            }
         ],
         "sourceRefs": [
             {
@@ -121,17 +205,47 @@
         "id": 1241,
         "text": "annon edhellen, edro hi ammen\nfennas nogothrim, lasto beth lammen",
         "title": "Moria Gate Spell",
-        "wordIds": [
-            1200,
-            1242,
-            1245,
-            1248,
-            1252,
-            1254,
-            1257,
-            1260,
-            1263,
-            1267
+        "words": [
+            {
+                "index": 0,
+                "id": 1200
+            },
+            {
+                "index": 1,
+                "id": 1242
+            },
+            {
+                "index": 2,
+                "id": 1245
+            },
+            {
+                "index": 3,
+                "id": 1248
+            },
+            {
+                "index": 4,
+                "id": 1252
+            },
+            {
+                "index": 5,
+                "id": 1254
+            },
+            {
+                "index": 6,
+                "id": 1257
+            },
+            {
+                "index": 7,
+                "id": 1260
+            },
+            {
+                "index": 8,
+                "id": 1263
+            },
+            {
+                "index": 9,
+                "id": 1267
+            }
         ],
         "sourceRefs": [
             {
@@ -150,28 +264,63 @@
         "id": 1269,
         "text": "ir Ithil ammen Eruchín\nmenel-vîr síla díriel\nsi loth a galadh lasto dîn\na Hîr Annûn Gilthoniel\nle linnon im Tinúviel",
         "title": "Lúthien’s Song",
-        "wordIds": [
-            1270,
-            1271,
-            null,
-            1272,
-            1277,
-            1280,
-            null,
-            1281,
-            1282,
-            1212,
-            null,
-            null,
-            1285,
-            239,
-            1286,
-            1289,
-            null,
-            null,
-            1290,
-            null,
-            1291
+        "words": [
+            {
+                "index": 0,
+                "id": 1270
+            },
+            {
+                "index": 1,
+                "id": 1271
+            },
+            {
+                "index": 3,
+                "id": 1272
+            },
+            {
+                "index": 4,
+                "id": 1277
+            },
+            {
+                "index": 5,
+                "id": 1280
+            },
+            {
+                "index": 7,
+                "id": 1281
+            },
+            {
+                "index": 8,
+                "id": 1282
+            },
+            {
+                "index": 9,
+                "id": 1212
+            },
+            {
+                "index": 12,
+                "id": 1285
+            },
+            {
+                "index": 13,
+                "id": 239
+            },
+            {
+                "index": 14,
+                "id": 1286
+            },
+            {
+                "index": 15,
+                "id": 1289
+            },
+            {
+                "index": 18,
+                "id": 1290
+            },
+            {
+                "index": 20,
+                "id": 1291
+            }
         ],
         "sourceRefs": [
             {
@@ -183,20 +332,51 @@
         "id": 1292,
         "text": "cuio i Pheriain anann\naglar’ni Pheriannath\nDaur a Berhael, Conin en Annûn\neglerio",
         "title": "Praises of Cormallen",
-        "wordIds": [
-            1293,
-            1237,
-            1296,
-            1298,
-            1300,
-            1302,
-            1303,
-            1212,
-            1305,
-            1311,
-            null,
-            null,
-            1313
+        "words": [
+            {
+                "index": 0,
+                "id": 1293
+            },
+            {
+                "index": 1,
+                "id": 1237
+            },
+            {
+                "index": 2,
+                "id": 1296
+            },
+            {
+                "index": 3,
+                "id": 1298
+            },
+            {
+                "index": 4,
+                "id": 1300
+            },
+            {
+                "index": 5,
+                "id": 1302
+            },
+            {
+                "index": 6,
+                "id": 1303
+            },
+            {
+                "index": 7,
+                "id": 1212
+            },
+            {
+                "index": 8,
+                "id": 1305
+            },
+            {
+                "index": 9,
+                "id": 1311
+            },
+            {
+                "index": 12,
+                "id": 1313
+            }
         ],
         "sourceRefs": [
             {
@@ -208,52 +388,131 @@
         "id": 1315,
         "text": "ae Adar nín i vi Menel\nno aer i eneth lín\ntolo i arnad lín\ncaro den i innas lin\nbo Ceven sui vi Menel\nanno ammen sír i mbas ilaurui vín\nar díheno ammen i úgerth vin\nsui mín i gohenam di ai gerir úgerth ammen",
         "title": "Ae Adar Nín",
-        "wordIds": [
-            1316,
-            1317,
-            1318,
-            1319,
-            1320,
-            null,
-            1322,
-            1324,
-            null,
-            1325,
-            1326,
-            1327,
-            null,
-            1331,
-            null,
-            1332,
-            null,
-            null,
-            1336,
-            1335,
-            1339,
-            1340,
-            1342,
-            null,
-            null,
-            1343,
-            null,
-            1347,
-            null,
-            1349,
-            1353,
-            1357,
-            1358,
-            1359,
-            null,
-            null,
-            1361,
-            1366,
-            null,
-            null,
-            1319,
-            1368,
-            1370,
-            1372,
-            1374
+        "words": [
+            {
+                "index": 0,
+                "id": 1316
+            },
+            {
+                "index": 1,
+                "id": 1317
+            },
+            {
+                "index": 2,
+                "id": 1318
+            },
+            {
+                "index": 3,
+                "id": 1319
+            },
+            {
+                "index": 4,
+                "id": 1320
+            },
+            {
+                "index": 6,
+                "id": 1322
+            },
+            {
+                "index": 7,
+                "id": 1324
+            },
+            {
+                "index": 9,
+                "id": 1325
+            },
+            {
+                "index": 10,
+                "id": 1326
+            },
+            {
+                "index": 11,
+                "id": 1327
+            },
+            {
+                "index": 13,
+                "id": 1331
+            },
+            {
+                "index": 15,
+                "id": 1332
+            },
+            {
+                "index": 18,
+                "id": 1336
+            },
+            {
+                "index": 19,
+                "id": 1335
+            },
+            {
+                "index": 20,
+                "id": 1339
+            },
+            {
+                "index": 21,
+                "id": 1340
+            },
+            {
+                "index": 22,
+                "id": 1342
+            },
+            {
+                "index": 25,
+                "id": 1343
+            },
+            {
+                "index": 27,
+                "id": 1347
+            },
+            {
+                "index": 29,
+                "id": 1349
+            },
+            {
+                "index": 30,
+                "id": 1353
+            },
+            {
+                "index": 31,
+                "id": 1357
+            },
+            {
+                "index": 32,
+                "id": 1358
+            },
+            {
+                "index": 33,
+                "id": 1359
+            },
+            {
+                "index": 36,
+                "id": 1361
+            },
+            {
+                "index": 37,
+                "id": 1366
+            },
+            {
+                "index": 40,
+                "id": 1319
+            },
+            {
+                "index": 41,
+                "id": 1368
+            },
+            {
+                "index": 42,
+                "id": 1370
+            },
+            {
+                "index": 43,
+                "id": 1372
+            },
+            {
+                "index": 44,
+                "id": 1374
+            }
         ],
         "sourceRefs": [
             {
@@ -266,74 +525,111 @@
         "id": 1375,
         "text": " i-Veleglind i eithro en estar i-Chîn Húrin\ni glinn hen agorer Edain mi Velerian, ach hí in Ellath îr ed epholar\nar-phent Rían Tuor-na: man agorech?\nsí il chem en i Naugrim en ir Ellath thor den ammen\nTúrin ion Húrin Túramarth\nar Nienor sel Morwen Níniel \ni chîn Húrin\nos i Veleglinn i edain agorer vi Veleriann\nar in Ellath epholar eno vi Eressai",
         "title": "Turin Wrapper",
-        "wordIds": [
-            null,
-            1378,
-            null,
-            1385,
-            null,
-            1491,
-            1386,
-            null,
-            null,
-            null,
-            1389,
-            null,
-            1388,
-            null,
-            1492,
-            1494,
-            null,
-            null,
-            1495,
-            null,
-            null,
-            null,
-            1522,
-            1514,
-            1516,
-            1519,
-            null,
-            null,
-            null,
-            1906,
-            1895,
-            null,
-            1502,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            1377,
-            1396,
-            null,
-            1503,
-            null,
-            null,
-            1390,
-            1497,
-            1509,
-            null,
-            null,
-            null,
-            1376,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            1501,
-            null,
-            null,
-            1495,
-            null,
-            null,
-            null,
-            1512
+        "words": [
+            {
+                "index": 1,
+                "id": 1378
+            },
+            {
+                "index": 3,
+                "id": 1385
+            },
+            {
+                "index": 5,
+                "id": 1491
+            },
+            {
+                "index": 6,
+                "id": 1386
+            },
+            {
+                "index": 10,
+                "id": 1389
+            },
+            {
+                "index": 12,
+                "id": 1388
+            },
+            {
+                "index": 14,
+                "id": 1492
+            },
+            {
+                "index": 15,
+                "id": 1494
+            },
+            {
+                "index": 18,
+                "id": 1495
+            },
+            {
+                "index": 22,
+                "id": 1522
+            },
+            {
+                "index": 23,
+                "id": 1514
+            },
+            {
+                "index": 24,
+                "id": 1516
+            },
+            {
+                "index": 25,
+                "id": 1519
+            },
+            {
+                "index": 29,
+                "id": 1906
+            },
+            {
+                "index": 30,
+                "id": 1895
+            },
+            {
+                "index": 32,
+                "id": 1502
+            },
+            {
+                "index": 39,
+                "id": 1377
+            },
+            {
+                "index": 40,
+                "id": 1396
+            },
+            {
+                "index": 42,
+                "id": 1503
+            },
+            {
+                "index": 45,
+                "id": 1390
+            },
+            {
+                "index": 46,
+                "id": 1497
+            },
+            {
+                "index": 47,
+                "id": 1509
+            },
+            {
+                "index": 51,
+                "id": 1376
+            },
+            {
+                "index": 59,
+                "id": 1501
+            },
+            {
+                "index": 62,
+                "id": 1495
+            },
+            {
+                "index": 66,
+                "id": 1512
+            }
         ],
         "sourceRefs": [
             {
@@ -345,89 +641,231 @@
         "id": 1393,
         "text": "Aragorn Arathornion Edhelharn\naran Gondor ar Arnor ar Hîr i Mbair Annui\nanglennatha i Varanduiniant erin dolothen Ethuil\negor ben genediad Drannail erin Gwirith edwen\nar e aníra ennas suilannad mhellyn în phain\nedregol e aníra tírad i Cherdir Perhael (i sennui Panthael estathar aen) Condir i Drann\nar Meril bess dîn, ar Elanor, Meril, Glorfinniel, ar Eirien sellath dîn\nar Iorhael, Gelir, Cordof, ar Baravorn, ionnath dîn\na Pherhael ar am Meril suilad uin aran o Minas Tirith nelchaenen ned Echuir",
         "title": "King's Letter",
-        "wordIds": [
-            1394,
-            1395,
-            1399,
-            1201,
-            1403,
-            null,
-            1404,
-            null,
-            null,
-            null,
-            1405,
-            1407,
-            1408,
-            null,
-            1413,
-            null,
-            1419,
-            1422,
-            1423,
-            null,
-            1424,
-            null,
-            null,
-            1427,
-            1428,
-            null,
-            1429,
-            1430,
-            1431,
-            1432,
-            1434,
-            1435,
-            1436,
-            1438,
-            null,
-            null,
-            1439,
-            null,
-            1441,
-            1306,
-            1319,
-            null,
-            1452,
-            1489,
-            1487,
-            1455,
-            null,
-            1459,
-            null,
-            1446,
-            1449,
-            1450,
-            null,
-            1447,
-            null,
-            1461,
-            null,
-            1466,
-            1467,
-            1450,
-            null,
-            1468,
-            1471,
-            1472,
-            null,
-            1473,
-            1474,
-            1450,
-            1476,
-            1448,
-            null,
-            1475,
-            null,
-            1477,
-            1478,
-            null,
-            null,
-            1481,
-            1482,
-            null,
-            1486,
-            1483
+        "words": [
+            {
+                "index": 0,
+                "id": 1394
+            },
+            {
+                "index": 1,
+                "id": 1395
+            },
+            {
+                "index": 2,
+                "id": 1399
+            },
+            {
+                "index": 3,
+                "id": 1201
+            },
+            {
+                "index": 4,
+                "id": 1403
+            },
+            {
+                "index": 6,
+                "id": 1404
+            },
+            {
+                "index": 10,
+                "id": 1405
+            },
+            {
+                "index": 11,
+                "id": 1407
+            },
+            {
+                "index": 12,
+                "id": 1408
+            },
+            {
+                "index": 14,
+                "id": 1413
+            },
+            {
+                "index": 16,
+                "id": 1419
+            },
+            {
+                "index": 17,
+                "id": 1422
+            },
+            {
+                "index": 18,
+                "id": 1423
+            },
+            {
+                "index": 20,
+                "id": 1424
+            },
+            {
+                "index": 23,
+                "id": 1427
+            },
+            {
+                "index": 24,
+                "id": 1428
+            },
+            {
+                "index": 26,
+                "id": 1429
+            },
+            {
+                "index": 27,
+                "id": 1430
+            },
+            {
+                "index": 28,
+                "id": 1431
+            },
+            {
+                "index": 29,
+                "id": 1432
+            },
+            {
+                "index": 30,
+                "id": 1434
+            },
+            {
+                "index": 31,
+                "id": 1435
+            },
+            {
+                "index": 32,
+                "id": 1436
+            },
+            {
+                "index": 33,
+                "id": 1438
+            },
+            {
+                "index": 36,
+                "id": 1439
+            },
+            {
+                "index": 38,
+                "id": 1441
+            },
+            {
+                "index": 39,
+                "id": 1306
+            },
+            {
+                "index": 40,
+                "id": 1319
+            },
+            {
+                "index": 42,
+                "id": 1452
+            },
+            {
+                "index": 43,
+                "id": 1489
+            },
+            {
+                "index": 44,
+                "id": 1487
+            },
+            {
+                "index": 45,
+                "id": 1455
+            },
+            {
+                "index": 47,
+                "id": 1459
+            },
+            {
+                "index": 49,
+                "id": 1446
+            },
+            {
+                "index": 50,
+                "id": 1449
+            },
+            {
+                "index": 51,
+                "id": 1450
+            },
+            {
+                "index": 53,
+                "id": 1447
+            },
+            {
+                "index": 55,
+                "id": 1461
+            },
+            {
+                "index": 57,
+                "id": 1466
+            },
+            {
+                "index": 58,
+                "id": 1467
+            },
+            {
+                "index": 59,
+                "id": 1450
+            },
+            {
+                "index": 61,
+                "id": 1468
+            },
+            {
+                "index": 62,
+                "id": 1471
+            },
+            {
+                "index": 63,
+                "id": 1472
+            },
+            {
+                "index": 65,
+                "id": 1473
+            },
+            {
+                "index": 66,
+                "id": 1474
+            },
+            {
+                "index": 67,
+                "id": 1450
+            },
+            {
+                "index": 68,
+                "id": 1476
+            },
+            {
+                "index": 69,
+                "id": 1448
+            },
+            {
+                "index": 71,
+                "id": 1475
+            },
+            {
+                "index": 73,
+                "id": 1477
+            },
+            {
+                "index": 74,
+                "id": 1478
+            },
+            {
+                "index": 77,
+                "id": 1481
+            },
+            {
+                "index": 78,
+                "id": 1482
+            },
+            {
+                "index": 80,
+                "id": 1486
+            },
+            {
+                "index": 81,
+                "id": 1483
+            }
         ],
         "sourceRefs": [
             {
@@ -441,12 +879,19 @@
     {
         "id": 1824,
         "text": "Aerlinn in Edhil o Imladris",
-        "wordIds": [
-            1826,
-            null,
-            1885,
-            null,
-            1886
+        "words": [
+            {
+                "index": 0,
+                "id": 1826
+            },
+            {
+                "index": 2,
+                "id": 1885
+            },
+            {
+                "index": 4,
+                "id": 1886
+            }
         ],
         "sourceRefs": [
             {
@@ -466,14 +911,27 @@
     {
         "id": 1880,
         "text": "alae! ered en Echoriath, ered e·mbar nín",
-        "wordIds": [
-            1894,
-            1881,
-            1895,
-            1896,
-            null,
-            1904,
-            null
+        "words": [
+            {
+                "index": 0,
+                "id": 1894
+            },
+            {
+                "index": 1,
+                "id": 1881
+            },
+            {
+                "index": 2,
+                "id": 1895
+            },
+            {
+                "index": 3,
+                "id": 1896
+            },
+            {
+                "index": 5,
+                "id": 1904
+            }
         ],
         "sourceRefs": [
             {
