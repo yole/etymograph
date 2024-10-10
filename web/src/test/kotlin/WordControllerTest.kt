@@ -164,7 +164,7 @@ class WordControllerTest {
 
     @Test
     fun lookup() {
-        val word = graph.findOrAddWord("brīdel", oe, null)
+        val word = graph.findOrAddWord("bridel", oe, null)
         wordController.lookup(graph, word.id, WordController.LookupParameters("wiktionary"))
         assertEquals("bridle", word.gloss)
     }
