@@ -112,8 +112,10 @@ class CorpusTextTest : QBaseTest() {
         val repo = InMemoryGraphRepository()
         val eaV = q.word("ea", "be")
         val eaN = q.word("ea", "being")
-        val ct1 = repo.addCorpusText("ea", null, q, listOf(eaV))
-        val ct2 = repo.addCorpusText("ea", null, q, listOf(eaN))
+        val ct1 = repo.addCorpusText("ea", null, q)
+        ct1.associateWord(0, eaV)
+        val ct2 = repo.addCorpusText("ea", null, q)
+        ct2.associateWord(0, eaN)
 
         val attestations = repo.findAttestations(eaV)
         assertEquals(1, attestations.size)

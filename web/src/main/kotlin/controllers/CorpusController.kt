@@ -103,7 +103,7 @@ class CorpusController {
     fun newText(repo: GraphRepository, @PathVariable lang: String, @RequestBody params: CorpusTextParams): CorpusTextViewModel {
         val language = repo.resolveLanguage(lang)
         val text = repo.addCorpusText(
-            params.text, params.title.nullize(), language, emptyList(),
+            params.text, params.title.nullize(), language,
             parseSourceRefs(repo, params.source), params.notes.nullize()
         )
         return text.toViewModel(repo)
@@ -132,7 +132,7 @@ class CorpusController {
     @GetMapping("/text/{id}/alternatives/{index}")
     fun requestAlternatives(repo: GraphRepository, @PathVariable id: Int, @PathVariable index: Int): List<AlternativeViewModel> {
         val corpusText = repo.resolveCorpusText(id)
-        val word = corpusText.words.getOrNull(index)
+        val word = corpusText.wordByIndex(index)
         val wordText = word?.text ?: corpusText.normalizedWordTextAt(index)
         val wordsWithMatchingText = repo.wordsByText(corpusText.language, wordText)
         val allVariants = wordsWithMatchingText.flatMap {

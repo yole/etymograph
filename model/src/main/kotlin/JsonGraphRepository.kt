@@ -447,7 +447,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             val corpusData = corpus.filter { it.language == language}.map {
                 CorpusTextData(
                     it.id, it.text, it.title,
-                    it.words.mapIndexedNotNull { index, word -> word?.let { CorpusTextWordData(index, word.id) } },
+                    it.words.map { wa -> CorpusTextWordData(wa.index, wa.word.id) },
                     it.source.sourceToSerializedFormat(), it.notes,
                     collectTranslations(it)
                 )
@@ -673,7 +673,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                     corpusText.text,
                     corpusText.title,
                     language,
-                    loadWordIds(corpusText.words),
+                    corpusText.words.map { CorpusWordAssociation(it.index, allLangEntities[it.id] as Word) },
                     loadSource(corpusText.sourceRefs),
                     corpusText.notes
                 )
@@ -693,17 +693,6 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                 }
             }
         }
-    }
-
-    private fun loadWordIds(words: List<CorpusTextWordData>): List<Word?> {
-        val result = mutableListOf<Word?>()
-        for (word in words) {
-            while (result.size <= word.index) {
-                result.add(null)
-            }
-            result[word.index] = allLangEntities[word.id] as? Word
-        }
-        return result
     }
 
     private fun loadCompounds(contentProviderCallback: (String) -> String?) {

@@ -99,7 +99,6 @@ abstract class GraphRepository {
         text: String,
         title: String?,
         language: Language,
-        words: List<Word> = emptyList(),
         source: List<SourceRef> = emptyList(),
         notes: String? = null
     ): CorpusText

@@ -40,7 +40,7 @@ class LemmatizedTextTest {
         val text = importLemmatizedText(repo, oe, dictionary, "Test", lText)
         assertEquals("Maria", text.text)
         assertEquals(1, text.words.size)
-        assertEquals("NP", text.words[0]!!.pos)
+        assertEquals("NP", text.wordByIndex(0)!!.pos)
     }
 
     private fun lemmatizedWord(text: String, pos: String): LemmatizedWord {

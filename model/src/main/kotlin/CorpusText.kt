@@ -18,12 +18,17 @@ class CorpusWord(
 
 class CorpusTextLine(val corpusWords: List<CorpusWord>)
 
+class CorpusWordAssociation(
+    val index: Int,
+    var word: Word
+)
+
 class CorpusText(
     id: Int,
     text: String,
     var title: String?,
     val language: Language,
-    words: List<Word?> = emptyList(),
+    words: List<CorpusWordAssociation> = emptyList(),
     source: List<SourceRef> = emptyList(),
     notes: String? = null
 ): LangEntity(id, source, notes) {
@@ -32,12 +37,19 @@ class CorpusText(
     private val _words = words.toMutableList()
     private var _text: String = text
 
+    val words: List<CorpusWordAssociation>
+        get() = _words
+
+    fun wordByIndex(index: Int): Word? {
+        return _words.find { it.index == index }?.word
+    }
+
     var text: String
         get() = _text
         set(value) {
             val wordMap = mutableMapOf<String, MutableList<Word?>>()
             for (word in iterateWords()) {
-                wordMap.getOrPut(word.normalizedText) { arrayListOf() }.add(_words.getOrNull(word.index))
+                wordMap.getOrPut(word.normalizedText) { arrayListOf() }.add(wordByIndex(word.index))
             }
 
             _text = value
@@ -45,19 +57,15 @@ class CorpusText(
             _words.clear()
             for (word in iterateWords()) {
                 val list = wordMap[word.normalizedText]
-                if (list.isNullOrEmpty()) {
-                    _words.add(null)
-                }
-                else {
-                    _words.add(list.first())
+                if (!list.isNullOrEmpty()) {
+                    val assocWord = list.first()
+                    if (assocWord != null) {
+                        _words.add(CorpusWordAssociation(word.index, assocWord))
+                    }
                     list.removeAt(0)
                 }
             }
-            _words.dropLastWhile { it == null }
         }
-
-    val words: List<Word?>
-        get() = _words
 
     fun mapToLines(repo: GraphRepository): List<CorpusTextLine> {
         var currentIndex = 0
@@ -65,7 +73,7 @@ class CorpusText(
         return text.split("\n").map { line ->
             val textWords = splitIntoNormalizedWords(line, currentIndex)
             CorpusTextLine(textWords.map { tw ->
-                val word = _words.getOrNull(currentIndex)
+                val word = wordByIndex(currentIndex)
                 val normalizedText = if (sentenceStart || leadingPunctuation.any { tw.baseText.startsWith(it) })
                     tw.normalizedText
                 else
@@ -116,7 +124,7 @@ class CorpusText(
     }
 
     fun containsWord(word: Word): Boolean {
-        if (word in _words) return true
+        if (_words.any { it.word == word }) return true
         for (wordText in iterateWords()) {
             if (wordText.normalizedText == word.text && _words.getOrNull(wordText.index) == null) return true
         }
@@ -140,14 +148,17 @@ class CorpusText(
     fun normalizedWordTextAt(index: Int) = iterateWords().elementAt(index).normalizedText
 
     fun associateWord(index: Int, word: Word) {
-        while (_words.size <= index) {
-            _words.add(null)
+        for (assoc in _words) {
+            if (assoc.index == index) {
+                assoc.word = word
+                return
+            }
         }
-        _words[index] = word
+        _words.add(CorpusWordAssociation(index, word))
     }
 
     fun removeWord(word: Word) {
-        _words.replaceAll { if (it?.id == word.id) null else it }
+        _words.removeIf { it.word == word }
     }
 
     companion object {

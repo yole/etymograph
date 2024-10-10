@@ -24,7 +24,7 @@ class CorpusControllerTest {
 
         corpusController.acceptAlternative(fixture.graph, corpusTextViewModel.id,
             CorpusController.AcceptAlternativeParameters(0, alternatives[0].wordId, alternatives[0].ruleId))
-        val word = fixture.graph.corpusTextById(corpusTextViewModel.id)!!.words[0]!!
+        val word = fixture.graph.corpusTextById(corpusTextViewModel.id)!!.wordByIndex(0)!!
         assertEquals("star.ACC", word.getOrComputeGloss(fixture.graph))
     }
 
@@ -48,7 +48,7 @@ class CorpusControllerTest {
         corpusController.acceptAlternative(fixture.graph, corpusTextViewModel.id,
             CorpusController.AcceptAlternativeParameters(0, alternatives[0].wordId, alternatives[0].ruleId))
 
-        val word = fixture.graph.corpusTextById(corpusTextViewModel.id)!!.words[0]!!
+        val word = fixture.graph.corpusTextById(corpusTextViewModel.id)!!.wordByIndex(0)!!
         assertEquals(elenAcc.id, word.id)
         assertEquals(1, fixture.graph.getLinksFrom(elenAcc).count())
     }
@@ -70,7 +70,7 @@ class CorpusControllerTest {
 
         corpusController.acceptAlternative(fixture.graph, corpusTextViewModel.id,
             CorpusController.AcceptAlternativeParameters(0, alternatives[0].wordId, alternatives[0].ruleId))
-        val word = fixture.graph.corpusTextById(corpusTextViewModel.id)!!.words[0]!!
+        val word = fixture.graph.corpusTextById(corpusTextViewModel.id)!!.wordByIndex(0)!!
         assertEquals("Elen.ACC", word.getOrComputeGloss(fixture.graph))
     }
 
@@ -91,7 +91,7 @@ class CorpusControllerTest {
 
         corpusController.acceptAlternative(fixture.graph, corpusTextViewModel.id,
             CorpusController.AcceptAlternativeParameters(0, alternatives[0].wordId, alternatives[0].ruleId))
-        val word = fixture.graph.corpusTextById(corpusTextViewModel.id)!!.words[0]!!
+        val word = fixture.graph.corpusTextById(corpusTextViewModel.id)!!.wordByIndex(0)!!
         assertEquals("scar", word.getOrComputeGloss(fixture.graph))
     }
 

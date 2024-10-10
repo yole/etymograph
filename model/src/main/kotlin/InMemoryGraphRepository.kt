@@ -62,11 +62,10 @@ open class InMemoryGraphRepository : GraphRepository() {
         text: String,
         title: String?,
         language: Language,
-        words: List<Word>,
         source: List<SourceRef>,
         notes: String?
     ): CorpusText {
-        return CorpusText(allLangEntities.size, text, title, language, words, source, notes).also {
+        return CorpusText(allLangEntities.size, text, title, language, emptyList(), source, notes).also {
             corpus += it
             allLangEntities += it
         }
