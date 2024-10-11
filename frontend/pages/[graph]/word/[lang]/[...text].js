@@ -543,7 +543,11 @@ function SingleWord(params) {
             <br/>
             <button onClick={defineAsCompoundClicked}>Define as compound</button><br/>
             {showCompoundComponent && <>
-                {compoundSuggestions.map(c => <><button className="inlineButton" onClick={() => acceptCompoundSuggestion(c.id)}>{c.text}</button>{' '}</>)}
+                {compoundSuggestions.map(c => <>
+                    <button className="inlineButton" onClick={() => acceptCompoundSuggestion(c.id)}>
+                        {c.text}{c.homonym && " '" + c.gloss + "'"}
+                    </button>{' '}
+                </>)}
                 {compoundSuggestions.length > 0 && <br/>}
                 <WordForm submitted={submitted} newCompound={true} linkTarget={word}
                           defaultValues={{language: word.language}} cancelled={() => setShowCompoundComponent(false)}/>
