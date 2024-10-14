@@ -2022,5 +2022,334 @@
                 "refText": "Haralds saga ins hárfagra (ch 43)"
             }
         ]
+    },
+    {
+        "id": 4975,
+        "text": "Þá réð fyrir Griklandi Zóe dróttning in ríka ok með henni Michael kátalaktús.\nEn er Haraldr kom til Miklagarðs ok á fund dróttningar,\nþá gekk hann þar á mála ok fór þegar um haustit á galeiðr með hermönnum þeim.\nÞeir fóru út í Griklandshaf.\nHélt Haraldr sveit af sínum mönnum.\nHöfðingi yfir herinum hét Gyrgir.\nHann var frændi dróttningar.\nHaraldr var lítla hríð í herinum, ok allir Væringjar fóru saman, þegar er bardagar váru.\nKom þá svá, at Haraldr varð höfðingi yfir öllum Væringjum.\nFóru þeir Gyrgir víða um Griklandseyjar, unnu þar herskap mikinn á kussurum.",
+        "title": "Viking Language 8.2",
+        "words": [
+            {
+                "index": 0,
+                "id": 998
+            },
+            {
+                "index": 1,
+                "id": 1333,
+                "contextGloss": "ruled"
+            },
+            {
+                "index": 4,
+                "id": 4976
+            },
+            {
+                "index": 5,
+                "id": 4977
+            },
+            {
+                "index": 11,
+                "id": 4978
+            },
+            {
+                "index": 14,
+                "id": 4913
+            },
+            {
+                "index": 18,
+                "id": 4979
+            },
+            {
+                "index": 21,
+                "id": 4981
+            },
+            {
+                "index": 22,
+                "id": 4982
+            },
+            {
+                "index": 23,
+                "id": 998
+            },
+            {
+                "index": 25,
+                "id": 924
+            },
+            {
+                "index": 28,
+                "id": 4984
+            },
+            {
+                "index": 31,
+                "id": 4985
+            },
+            {
+                "index": 33,
+                "id": 4986
+            },
+            {
+                "index": 35,
+                "id": 4989
+            },
+            {
+                "index": 55,
+                "id": 924
+            },
+            {
+                "index": 56,
+                "id": 923
+            },
+            {
+                "index": 37,
+                "id": 4992
+            },
+            {
+                "index": 44,
+                "id": 4994
+            },
+            {
+                "index": 46,
+                "id": 4995
+            },
+            {
+                "index": 51,
+                "id": 4997
+            },
+            {
+                "index": 60,
+                "id": 923
+            },
+            {
+                "index": 75,
+                "id": 998
+            },
+            {
+                "index": 77,
+                "id": 977
+            },
+            {
+                "index": 54,
+                "id": 4998
+            },
+            {
+                "index": 52,
+                "id": 4999
+            },
+            {
+                "index": 62,
+                "id": 5003
+            },
+            {
+                "index": 61,
+                "id": 5004
+            },
+            {
+                "index": 69,
+                "id": 5005
+            },
+            {
+                "index": 71,
+                "id": 1076
+            },
+            {
+                "index": 72,
+                "id": 5007
+            },
+            {
+                "index": 67,
+                "id": 5009
+            },
+            {
+                "index": 83,
+                "id": 5010
+            },
+            {
+                "index": 82,
+                "id": 5011
+            },
+            {
+                "index": 87,
+                "id": 5012
+            },
+            {
+                "index": 89,
+                "id": 5013
+            },
+            {
+                "index": 90,
+                "id": 5019
+            },
+            {
+                "index": 92,
+                "id": 5021
+            },
+            {
+                "index": 95,
+                "id": 5023
+            },
+            {
+                "index": 93,
+                "id": 5024
+            },
+            {
+                "index": 6,
+                "id": 1558
+            },
+            {
+                "index": 7,
+                "id": 5025
+            },
+            {
+                "index": 49,
+                "id": 1533
+            }
+        ],
+        "sourceRefs": [
+            {
+                "refText": "Haralds saga Sigurðarsonar (ch 3)"
+            }
+        ]
+    },
+    {
+        "id": 5035,
+        "text": "Haraldr konungr var maðr rikr ok stjórnsamr innan lands, spekingr mikill at viti,\nsvá at þat er alþýðu mál, at engi höfðingi hefir sá verit á Norðlöndum,\ner jafndjúpvitr hefir verit sem Haraldr eða ráðsnjallr.\nHann var orrustumaðr mikill ok inn vápndjarfasti.\nHann var sterkr ok vápnfœrr betr en hverr maðr annarra, svá sem fyrr er ritat.\nHann var ok inn mesti vinr hegat til allra landsmanna. Ok þá er var mikit hallæri á Íslandi, þá leyfði Haraldr konungr fjórum skipum mjölleyfi til Íslands.",
+        "title": "Viking Language 8.12",
+        "words": [
+            {
+                "index": 2,
+                "id": 923
+            },
+            {
+                "index": 3,
+                "id": 951
+            },
+            {
+                "index": 4,
+                "id": 5036
+            },
+            {
+                "index": 6,
+                "id": 5037
+            },
+            {
+                "index": 7,
+                "id": 5038
+            },
+            {
+                "index": 8,
+                "id": 5039
+            },
+            {
+                "index": 9,
+                "id": 5040
+            },
+            {
+                "index": 11,
+                "id": 1318
+            },
+            {
+                "index": 12,
+                "id": 5041
+            },
+            {
+                "index": 35,
+                "id": 924
+            },
+            {
+                "index": 36,
+                "id": 923
+            },
+            {
+                "index": 42,
+                "id": 924
+            },
+            {
+                "index": 43,
+                "id": 923
+            },
+            {
+                "index": 57,
+                "id": 924
+            },
+            {
+                "index": 58,
+                "id": 923
+            },
+            {
+                "index": 22,
+                "id": 5043
+            },
+            {
+                "index": 28,
+                "id": 5044
+            },
+            {
+                "index": 34,
+                "id": 5045
+            },
+            {
+                "index": 27,
+                "id": 1076
+            },
+            {
+                "index": 16,
+                "id": 1513
+            },
+            {
+                "index": 19,
+                "id": 977
+            },
+            {
+                "index": 14,
+                "id": 977
+            },
+            {
+                "index": 37,
+                "id": 5049
+            },
+            {
+                "index": 40,
+                "id": 1321
+            },
+            {
+                "index": 41,
+                "id": 5052
+            },
+            {
+                "index": 46,
+                "id": 5056
+            },
+            {
+                "index": 47,
+                "id": 5060
+            },
+            {
+                "index": 51,
+                "id": 5062
+            },
+            {
+                "index": 69,
+                "id": 4913
+            },
+            {
+                "index": 68,
+                "id": 998
+            },
+            {
+                "index": 70,
+                "id": 923
+            },
+            {
+                "index": 75,
+                "id": 998
+            },
+            {
+                "index": 54,
+                "id": 5063
+            }
+        ],
+        "sourceRefs": [
+            {
+                "refText": "Haralds saga Sigurðarsonar (ch 36)"
+            }
+        ]
     }
 ]

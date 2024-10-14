@@ -15,7 +15,8 @@
         "gloss": "kinsman",
         "pos": "N",
         "classes": [
-            "m"
+            "m",
+            "nd-stem"
         ]
     },
     {
@@ -45,7 +46,8 @@
         "gloss": "give",
         "pos": "V",
         "classes": [
-            "strong"
+            "strong",
+            "v-strong-5"
         ]
     },
     {
@@ -449,7 +451,7 @@
         "fullGloss": "go, travel, move",
         "pos": "V",
         "classes": [
-            "strong"
+            "v-strong-6"
         ]
     },
     {
@@ -1075,6 +1077,11 @@
         "pos": "N",
         "classes": [
             "m"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/faðir#Old_Norse"
+            }
         ]
     },
     {
@@ -1909,7 +1916,10 @@
         "text": "ráða",
         "gloss": "advise",
         "fullGloss": "advise, counsel; rule, govern, manage",
-        "pos": "V"
+        "pos": "V",
+        "classes": [
+            "v-strong-7"
+        ]
     },
     {
         "id": 1335,
@@ -2074,8 +2084,7 @@
     },
     {
         "id": 1362,
-        "text": "annat",
-        "gloss": "other"
+        "text": "annat"
     },
     {
         "id": 1363,
@@ -3251,7 +3260,11 @@
         "text": "verða",
         "gloss": "become",
         "fullGloss": "become, happen, take place",
-        "pos": "V"
+        "pos": "V",
+        "classes": [
+            "strong",
+            "v-strong-3"
+        ]
     },
     {
         "id": 1643,
@@ -3681,7 +3694,11 @@
         "id": 1721,
         "text": "líta",
         "gloss": "look",
-        "pos": "V"
+        "pos": "V",
+        "classes": [
+            "strong",
+            "v-strong-1"
+        ]
     },
     {
         "id": 1722,
@@ -4447,5 +4464,392 @@
     {
         "id": 4974,
         "text": "grimmasta"
+    },
+    {
+        "id": 4976,
+        "text": "Zóe",
+        "pos": "NP"
+    },
+    {
+        "id": 4977,
+        "text": "dróttning",
+        "gloss": "queen",
+        "pos": "N",
+        "classes": [
+            "f"
+        ]
+    },
+    {
+        "id": 4978,
+        "text": "Mikhael",
+        "pos": "NP"
+    },
+    {
+        "id": 4979,
+        "text": "Miklagarðs"
+    },
+    {
+        "id": 4980,
+        "text": "Mikligarðr",
+        "pos": "NP"
+    },
+    {
+        "id": 4981,
+        "text": "fund"
+    },
+    {
+        "id": 4982,
+        "text": "dróttningar"
+    },
+    {
+        "id": 4983,
+        "text": "máli",
+        "gloss": "service",
+        "pos": "N",
+        "classes": [
+            "m",
+            "weak"
+        ]
+    },
+    {
+        "id": 4984,
+        "text": "mála"
+    },
+    {
+        "id": 4985,
+        "text": "þegar",
+        "gloss": "at once",
+        "pos": "ADV"
+    },
+    {
+        "id": 4986,
+        "text": "haustit"
+    },
+    {
+        "id": 4988,
+        "text": "galeið",
+        "gloss": "galley",
+        "pos": "N",
+        "classes": [
+            "f"
+        ]
+    },
+    {
+        "id": 4989,
+        "text": "galeiðr"
+    },
+    {
+        "id": 4992,
+        "text": "hermönnum"
+    },
+    {
+        "id": 4993,
+        "text": "halda",
+        "gloss": "hold",
+        "pos": "V"
+    },
+    {
+        "id": 4994,
+        "text": "hélt"
+    },
+    {
+        "id": 4995,
+        "text": "sveit",
+        "pos": "N"
+    },
+    {
+        "id": 4996,
+        "text": "sveit",
+        "gloss": "troop",
+        "pos": "N"
+    },
+    {
+        "id": 4997,
+        "text": "yfir",
+        "gloss": "over",
+        "pos": "PREP"
+    },
+    {
+        "id": 4998,
+        "text": "Gyrgir",
+        "pos": "NP"
+    },
+    {
+        "id": 4999,
+        "text": "herinum"
+    },
+    {
+        "id": 5000,
+        "text": "herr",
+        "gloss": "troop",
+        "pos": "N"
+    },
+    {
+        "id": 5002,
+        "text": "hríð",
+        "gloss": "time",
+        "pos": "N",
+        "classes": [
+            "f"
+        ]
+    },
+    {
+        "id": 5003,
+        "text": "hríð"
+    },
+    {
+        "id": 5004,
+        "text": "lítla"
+    },
+    {
+        "id": 5005,
+        "text": "saman",
+        "gloss": "together",
+        "pos": "ADV"
+    },
+    {
+        "id": 5006,
+        "text": "bardagi",
+        "gloss": "battle",
+        "pos": "N",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 5007,
+        "text": "bardagar"
+    },
+    {
+        "id": 5008,
+        "text": "Væringi",
+        "gloss": "Varangian",
+        "pos": "N",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 5009,
+        "text": "Væringjar"
+    },
+    {
+        "id": 5010,
+        "text": "Væringjum"
+    },
+    {
+        "id": 5011,
+        "text": "öllum"
+    },
+    {
+        "id": 5012,
+        "text": "víða",
+        "gloss": "widely",
+        "pos": "ADV"
+    },
+    {
+        "id": 5013,
+        "text": "Griklandseyjar"
+    },
+    {
+        "id": 5014,
+        "text": "Griklands"
+    },
+    {
+        "id": 5016,
+        "text": "eyjar"
+    },
+    {
+        "id": 5017,
+        "text": "ey",
+        "gloss": "island",
+        "pos": "N"
+    },
+    {
+        "id": 5018,
+        "text": "Grikland",
+        "gloss": "Greece",
+        "pos": "NP"
+    },
+    {
+        "id": 5019,
+        "text": "unnu"
+    },
+    {
+        "id": 5020,
+        "text": "herskapr",
+        "gloss": "warfare",
+        "pos": "N"
+    },
+    {
+        "id": 5021,
+        "text": "herskap"
+    },
+    {
+        "id": 5022,
+        "text": "kussari",
+        "gloss": "corsair",
+        "pos": "N"
+    },
+    {
+        "id": 5023,
+        "text": "kussurum"
+    },
+    {
+        "id": 5024,
+        "text": "mikinn"
+    },
+    {
+        "id": 5025,
+        "text": "ríka"
+    },
+    {
+        "id": 5027,
+        "text": "gefandi",
+        "gloss": "giver",
+        "pos": "N",
+        "classes": [
+            "m",
+            "nd-stem"
+        ]
+    },
+    {
+        "id": 5029,
+        "text": "bjóða",
+        "gloss": "offer",
+        "pos": "V",
+        "classes": [
+            "strong"
+        ]
+    },
+    {
+        "id": 5030,
+        "text": "bera",
+        "gloss": "carry",
+        "pos": "V",
+        "classes": [
+            "strong",
+            "v-strong-4"
+        ]
+    },
+    {
+        "id": 5036,
+        "text": "rikr",
+        "gloss": "powerful",
+        "pos": "ADJ"
+    },
+    {
+        "id": 5037,
+        "text": "stjórnsamr",
+        "gloss": "ambitious",
+        "pos": "ADJ"
+    },
+    {
+        "id": 5038,
+        "text": "innan",
+        "gloss": "within",
+        "pos": "PREP"
+    },
+    {
+        "id": 5039,
+        "text": "lands"
+    },
+    {
+        "id": 5040,
+        "text": "spekingr",
+        "gloss": "wise person",
+        "pos": "N"
+    },
+    {
+        "id": 5041,
+        "text": "viti"
+    },
+    {
+        "id": 5042,
+        "text": "vit",
+        "gloss": "wit",
+        "pos": "N"
+    },
+    {
+        "id": 5043,
+        "text": "hefir"
+    },
+    {
+        "id": 5044,
+        "text": "jafndjúpvitr",
+        "fullGloss": "deep-witted"
+    },
+    {
+        "id": 5045,
+        "text": "ráðsnjallr",
+        "gloss": "wise in council",
+        "pos": "ADJ"
+    },
+    {
+        "id": 5046,
+        "text": "jafn",
+        "gloss": "equal",
+        "pos": "ADJ"
+    },
+    {
+        "id": 5048,
+        "text": "djúpr",
+        "gloss": "deep",
+        "pos": "ADJ"
+    },
+    {
+        "id": 5049,
+        "text": "orrustumaðr"
+    },
+    {
+        "id": 5051,
+        "text": "vápndjarfr",
+        "pos": "ADJ"
+    },
+    {
+        "id": 5052,
+        "text": "vápndjarfasti"
+    },
+    {
+        "id": 5053,
+        "text": "vápn",
+        "gloss": "weapon",
+        "pos": "N"
+    },
+    {
+        "id": 5055,
+        "text": "djarfr",
+        "gloss": "daring",
+        "pos": "ADJ"
+    },
+    {
+        "id": 5056,
+        "text": "vápnfœrr"
+    },
+    {
+        "id": 5058,
+        "text": "fœrr",
+        "gloss": "capable",
+        "pos": "ADJ"
+    },
+    {
+        "id": 5060,
+        "text": "betr"
+    },
+    {
+        "id": 5061,
+        "text": "annarr",
+        "gloss": "other",
+        "pos": "ADJ"
+    },
+    {
+        "id": 5062,
+        "text": "annarra"
+    },
+    {
+        "id": 5063,
+        "text": "fyrr",
+        "gloss": "before",
+        "pos": "ADV"
     }
 ]

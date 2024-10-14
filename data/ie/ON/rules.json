@@ -740,6 +740,31 @@
                     {
                         "type": "ChangeEnding",
                         "args": [
+                            "r"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "nd-stem"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "i"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
                             "ar"
                         ]
                     }
@@ -1074,6 +1099,31 @@
         "fromLang": "ON",
         "toLang": "ON",
         "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "r"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "nd-stem"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "i"
+                        }
+                    ]
+                }
+            },
             {
                 "instructions": [
                     {
@@ -1887,6 +1937,14 @@
         "addedCategories": ".PRES.1SG",
         "fromPOS": [
             "V"
+        ],
+        "preInstructions": [
+            {
+                "type": "ApplyRule",
+                "args": [
+                    "5034"
+                ]
+            }
         ]
     },
     {
@@ -1951,6 +2009,14 @@
         "addedCategories": ".PRES.1PL",
         "fromPOS": [
             "V"
+        ],
+        "preInstructions": [
+            {
+                "type": "ApplyRule",
+                "args": [
+                    "5034"
+                ]
+            }
         ]
     },
     {
@@ -1993,6 +2059,14 @@
         "addedCategories": ".PRES.2PL",
         "fromPOS": [
             "V"
+        ],
+        "preInstructions": [
+            {
+                "type": "ApplyRule",
+                "args": [
+                    "5034"
+                ]
+            }
         ]
     },
     {
@@ -2700,10 +2774,50 @@
                         }
                     ]
                 }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ApplySoundRule",
+                        "args": [
+                            "5031",
+                            "second to last vowel"
+                        ]
+                    },
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            ""
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "strong"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "a"
+                        }
+                    ]
+                }
             }
         ],
         "fromPOS": [
             "V"
+        ],
+        "preInstructions": [
+            {
+                "type": "ApplyRule",
+                "args": [
+                    "5034"
+                ]
+            }
         ]
     },
     {
@@ -2727,6 +2841,17 @@
                     "characters": "strong",
                     "negated": true
                 }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "NoChange",
+                        "args": []
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
             }
         ],
         "addedCategories": ".PST.1SG",
@@ -2748,6 +2873,81 @@
         "fromLang": "ON",
         "toLang": "ON",
         "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "rt"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "strong"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "rð"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "tt"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "strong"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "ð"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "zt"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "strong"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "t"
+                        }
+                    ]
+                }
+            },
             {
                 "instructions": [
                     {
@@ -2811,6 +3011,17 @@
                     "characters": "strong",
                     "negated": true
                 }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "NoChange",
+                        "args": []
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
             }
         ],
         "addedCategories": ".PST.3SG",
@@ -2837,7 +3048,7 @@
                     {
                         "type": "ApplyRule",
                         "args": [
-                            "1401"
+                            "5032"
                         ]
                     },
                     {
@@ -2874,7 +3085,7 @@
                     {
                         "type": "ApplyRule",
                         "args": [
-                            "1401"
+                            "5032"
                         ]
                     },
                     {
@@ -2911,7 +3122,7 @@
                     {
                         "type": "ApplyRule",
                         "args": [
-                            "1401"
+                            "5032"
                         ]
                     },
                     {
@@ -4186,7 +4397,7 @@
                         "type": "ApplySoundRule",
                         "args": [
                             "1578",
-                            "first vowel"
+                            "first stressed vowel"
                         ]
                     }
                 ],
@@ -4356,6 +4567,495 @@
         "addedCategories": ".SUBJ.PST.3SG",
         "fromPOS": [
             "V"
+        ]
+    },
+    {
+        "id": 5028,
+        "name": "on-stress",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyStress",
+                        "args": [
+                            "first root"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ]
+    },
+    {
+        "id": 5031,
+        "name": "on-past-singular-umlaut",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "ei"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "v-strong-1"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "í",
+                            "relative": false
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "a"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "v-strong-3"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "e",
+                            "relative": false
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "a"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "v-strong-4"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "e",
+                            "relative": false
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "a"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "v-strong-5"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "e",
+                            "relative": false
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "ó"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "v-strong-6"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "a",
+                            "relative": false
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "é"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "v-strong-7"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "á",
+                            "relative": false
+                        }
+                    ]
+                }
+            }
+        ]
+    },
+    {
+        "id": 5032,
+        "name": "on-plural-past-stem",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplySoundRule",
+                        "args": [
+                            "5033",
+                            "second to last vowel"
+                        ]
+                    },
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            ""
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "strong"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "a"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1401"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "preInstructions": [
+            {
+                "type": "ApplyRule",
+                "args": [
+                    "5034"
+                ]
+            }
+        ]
+    },
+    {
+        "id": 5033,
+        "name": "on-past-plural-umlaut",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "i"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "v-strong-1"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "í",
+                            "relative": false
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "u"
+                        ]
+                    },
+                    {
+                        "type": "SoundDisappears",
+                        "args": [
+                            "-1"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "v-strong-3"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "e",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": -1,
+                            "parameter": "v"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "á"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "v-strong-4"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "e",
+                            "relative": false
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "á"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "v-strong-5"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "e",
+                            "relative": false
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "ó"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "v-strong-6"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "a",
+                            "relative": false
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "é"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "v-strong-7"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "á",
+                            "relative": false
+                        }
+                    ]
+                }
+            }
+        ]
+    },
+    {
+        "id": 5034,
+        "name": "on-v-strong",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyClass",
+                        "args": [
+                            "strong"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "or",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "v-strong-1"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "v-strong-2"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "v-strong-3"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "v-strong-4"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "v-strong-5"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "v-strong-6"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "v-strong-7"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "NoChange",
+                        "args": []
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ]
+    },
+    {
+        "id": 5059,
+        "name": "on-adj-comp",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [],
+        "addedCategories": ".COMP",
+        "fromPOS": [
+            "ADJ"
         ]
     }
 ]

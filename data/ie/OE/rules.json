@@ -9534,9 +9534,10 @@
             {
                 "instructions": [
                     {
-                        "type": "ApplyRule",
+                        "type": "ApplySoundRule",
                         "args": [
-                            "3567"
+                            "3567",
+                            "second to last vowel"
                         ]
                     },
                     {

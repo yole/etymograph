@@ -395,6 +395,7 @@
         "au",
         "ey"
     ],
+    "stressRuleId": 5028,
     "phonotacticsRuleId": 1649,
     "pronunciationRuleId": 4853,
     "orthographyRuleId": 4854,
@@ -549,9 +550,14 @@
         {
             "name": "Comparative degree",
             "pos": [
-                "ADJ"
+                "ADJ",
+                "ADV"
             ],
             "values": [
+                {
+                    "name": "Comparative",
+                    "abbreviation": "COMP"
+                },
                 {
                     "name": "Superlative",
                     "abbreviation": "SUP"
@@ -664,6 +670,42 @@
             ]
         },
         {
+            "name": "Strong verb class",
+            "pos": [
+                "V"
+            ],
+            "values": [
+                {
+                    "name": "v-strong-1",
+                    "abbreviation": "v-strong-1"
+                },
+                {
+                    "name": "v-strong-2",
+                    "abbreviation": "v-strong-2"
+                },
+                {
+                    "name": "v-strong-3",
+                    "abbreviation": "v-strong-3"
+                },
+                {
+                    "name": "v-strong-4",
+                    "abbreviation": "v-strong-4"
+                },
+                {
+                    "name": "v-strong-5",
+                    "abbreviation": "v-strong-5"
+                },
+                {
+                    "name": "v-strong-6",
+                    "abbreviation": "v-strong-6"
+                },
+                {
+                    "name": "v-strong-7",
+                    "abbreviation": "v-strong-7"
+                }
+            ]
+        },
+        {
             "name": "Genitive type",
             "pos": [
                 "N",
@@ -702,6 +744,10 @@
                 {
                     "name": "-ijo-",
                     "abbreviation": "ijo-stem"
+                },
+                {
+                    "name": "-nd-",
+                    "abbreviation": "nd-stem"
                 }
             ]
         },
