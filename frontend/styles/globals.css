@@ -146,3 +146,7 @@ code {
   font-style: italic;
   font-size: smaller;
 }
+
+.paradigmRuleLink {
+  font-size: small;
+}

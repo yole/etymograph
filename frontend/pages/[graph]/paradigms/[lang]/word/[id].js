@@ -4,6 +4,7 @@ import {useContext, useState} from "react";
 import WordLink from "@/components/WordLink";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import {GraphContext} from "@/components/Contexts";
+import Link from "next/link";
 
 export const config = {
     unstable_runtimeJS: true
@@ -27,6 +28,7 @@ export async function getStaticPaths() {
 }
 
 function WordParadigmCell(params) {
+    const graph = useContext(GraphContext)
     const alt = params.alt
     if (params.editMode && alt.ruleId) {
         return <input type="text" size="10"
@@ -40,8 +42,10 @@ function WordParadigmCell(params) {
                       }}
         />
     }
-    return alt?.word?.id > 0 ?
-        <WordLink word={alt.word}></WordLink> : alt?.word?.text
+    return <>
+        {alt?.word?.id > 0 ? <WordLink word={alt.word}></WordLink> : alt?.word?.text}
+        {alt.ruleId && <span className="paradigmRuleLink">  (<Link href={`/${graph}/rule/${alt.ruleId}`}>rule</Link>)</span>}
+    </>
 }
 
 function WordParadigm(params) {
