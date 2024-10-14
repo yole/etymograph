@@ -144,10 +144,10 @@ export default function LanguageIndex(props) {
                 <table><tbody>
                     <FormRow label="Diphthongs" id="diphthongs"/>
                     <FormRow label="Syllable structures" id="syllableStructures"/>
-                    <RuleListSelect label="Stress rule" id="stressRuleName"/>
-                    <RuleListSelect label="Phonotactics rule" id="phonotacticsRuleName"/>
-                    <RuleListSelect label="Pronunciation rule" id="pronunciationRuleName"/>
-                    <RuleListSelect label="Orthography rule" id="orthographyRuleName"/>
+                    <RuleListSelect label="Stress rule" id="stressRuleName" language={langId}/>
+                    <RuleListSelect label="Phonotactics rule" id="phonotacticsRuleName" language={langId}/>
+                    <RuleListSelect label="Pronunciation rule" id="pronunciationRuleName" language={langId}/>
+                    <RuleListSelect label="Orthography rule" id="orthographyRuleName" language={langId}/>
                 </tbody></table>
                 <h3>Grammar</h3>
                 <table><tbody>

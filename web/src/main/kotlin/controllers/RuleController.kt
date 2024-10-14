@@ -67,6 +67,7 @@ class RuleController {
     data class RuleShortViewModel(
         val id: Int,
         val name: String,
+        val toLang: String,
         val summaryText: String,
         val optional: Boolean
     )
@@ -145,8 +146,8 @@ class RuleController {
 
     private fun LangEntity.toShortViewModel(optional: Boolean = false): RuleShortViewModel {
         return when (this) {
-            is Rule -> RuleShortViewModel(id, name, toSummaryText(), optional)
-            is RuleSequence -> RuleShortViewModel(id, "sequence: $name", "", optional)
+            is Rule -> RuleShortViewModel(id, name, toLanguage.shortName, toSummaryText(), optional)
+            is RuleSequence -> RuleShortViewModel(id, "sequence: $name", toLanguage.shortName, "", optional)
             else -> throw IllegalStateException("Unknown entity type")
         }
     }

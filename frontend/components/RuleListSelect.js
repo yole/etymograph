@@ -4,9 +4,13 @@ import {GlobalStateContext} from "@/components/Contexts";
 import Select from "react-select";
 
 export default function RuleListSelect(props) {
-    const {control} = useFormContext()
+    const {control, watch} = useFormContext()
     const globalState = useContext(GlobalStateContext)
-    const rules = globalState.rules.map((r) => ({
+    const lang = props.languageProp !== undefined
+        ? watch(props.languageProp)
+        : props.language
+    console.log(globalState.rules)
+    const rules = globalState.rules.filter(r => !lang || lang === r.toLang).map((r) => ({
         value: r.name,
         label: r.summaryText === null || r.summaryText === "" || r.summaryText.length > 15 ? r.name :`${r.name} (${r.summaryText})`})
     )
