@@ -638,9 +638,10 @@ open class InMemoryGraphRepository : GraphRepository() {
         var longestPrefix = ""
         if (compound != null) {
             val textSoFar = compound.components.joinToString("") { it.text }
-            if (compoundWord.text.startsWith(textSoFar) && textSoFar.length > longestPrefix.length) {
-                longestPrefix = textSoFar
+            if (!compoundWord.text.startsWith(textSoFar)) {
+                return emptyList()
             }
+            longestPrefix = textSoFar
         }
 
         return allWords(compoundWord.language).filter {
