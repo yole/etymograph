@@ -291,6 +291,10 @@ conditions as morphological rules, and it uses just one instruction:
 
  * `stress is on`: Specifies the stressed syllable (for example, `stress is on second to last syllable`).
 
+The instruction can also refer to the **root** syllable of the word. In a compound word, the root is the first
+component with the part of speech other than Affix (AFF); in other words, the root is the word itself. 
+An example for this is `stress is on first root syllable`.
+
 Here's an example of a stress rule:
 
 ```
