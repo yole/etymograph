@@ -8,6 +8,7 @@ import {useState} from "react";
 import RuleListSelect from "@/components/RuleListSelect";
 import {useRouter} from "next/router";
 import PosSelect from "@/components/PosSelect";
+import WordClassSelect from "@/components/WordClassSelect";
 
 export default function WordForm(props) {
     const router = useRouter()
@@ -96,7 +97,7 @@ export default function WordForm(props) {
             {wordDefinitions.length > 0 && <span className="wordDefinitions">{wordDefinitions.join(", ")}</span>}
         </FormRow>
         <PosSelect id="pos" label="POS" language={props.defaultValues.language} languageProp={props.languageReadOnly !== true ? 'language' : undefined}/>
-        <FormRow id="classes" label="Classes"/>
+        <WordClassSelect id="classes" label="Classes" language={props.defaultValues.language} languageProp={props.languageReadOnly !== true ? 'language' : undefined}/>
         <FormRow id="gloss" label="Gloss"/>
         <FormRow id="fullGloss" label="Full gloss"/>
         {props.showContextGloss && <FormRow id="contextGloss" label="Context gloss"/>}

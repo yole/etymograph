@@ -28,6 +28,12 @@ class LanguageController {
         val abbreviation: String
     )
 
+    data class WordCategoryViewModel(
+        val name: String,
+        val pos: List<String>,
+        val values: List<WordCategoryValueViewModel>
+    )
+
     data class LanguageViewModel(
         val name: String,
         val shortName: String,
@@ -53,6 +59,7 @@ class LanguageController {
         val name: String,
         val shortName: String,
         val pos: List<WordCategoryValueViewModel>,
+        val wordClasses: List<WordCategoryViewModel>,
         val dictionaries: List<String>
     )
 
@@ -63,6 +70,11 @@ class LanguageController {
                 lang.name,
                 lang.shortName,
                 lang.pos.map { WordCategoryValueViewModel(it.name, it.abbreviation) },
+                lang.wordClasses.map {
+                    WordCategoryViewModel(it.name, it.pos, it.values.map {
+                        WordCategoryValueViewModel(it.name, it.abbreviation)
+                    })
+                },
                 if ("wiktionary-id" in (lang.dictionarySettings ?: "")) listOf("wiktionary") else emptyList()
             )
         }
