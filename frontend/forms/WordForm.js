@@ -102,7 +102,8 @@ export default function WordForm(props) {
         <FormRow id="fullGloss" label="Full gloss"/>
         {props.showContextGloss && <FormRow id="contextGloss" label="Context gloss"/>}
         {(props.linkType === '>' || props.linkType === '^') &&
-            <RuleListSelect id="linkRuleNames" label="Link rule names" isMulti={true}/>}
+            <RuleListSelect id="linkRuleNames" label="Link rule names" isMulti={true}
+                            language={props.defaultValues.language} languageProp={props.languageReadOnly !== true ? 'language' : undefined}/>}
         <FormRow id="source" label="Source"/>
         <tr>
             <td>Notes:</td>
