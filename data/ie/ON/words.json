@@ -3764,7 +3764,10 @@
         "id": 1736,
         "text": "ákafamaðr",
         "gloss": "aggressive man",
-        "pos": "N"
+        "pos": "N",
+        "classes": [
+            "m"
+        ]
     },
     {
         "id": 1737,
@@ -4851,5 +4854,78 @@
         "text": "fyrr",
         "gloss": "before",
         "pos": "ADV"
+    },
+    {
+        "id": 5064,
+        "text": "ákafa"
+    },
+    {
+        "id": 5066,
+        "text": "ákafi",
+        "gloss": "eagerness",
+        "pos": "N",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 5067,
+        "text": "landsmaðr"
+    },
+    {
+        "id": 5068,
+        "text": "landsmanna"
+    },
+    {
+        "id": 5070,
+        "text": "leyfa",
+        "gloss": "allow",
+        "pos": "V"
+    },
+    {
+        "id": 5071,
+        "text": "leyfði"
+    },
+    {
+        "id": 5072,
+        "text": "skipum"
+    },
+    {
+        "id": 5073,
+        "text": "fjórum"
+    },
+    {
+        "id": 5074,
+        "text": "Íslandi"
+    },
+    {
+        "id": 5075,
+        "text": "mjölleyfi",
+        "fullGloss": "license to export meal",
+        "pos": "N"
+    },
+    {
+        "id": 5076,
+        "text": "mjöl",
+        "gloss": "flour",
+        "pos": "N"
+    },
+    {
+        "id": 5078,
+        "text": "leyfi",
+        "gloss": "permission",
+        "pos": "N",
+        "classes": [
+            "n"
+        ]
+    },
+    {
+        "id": 5079,
+        "text": "ríta",
+        "gloss": "write",
+        "pos": "V",
+        "classes": [
+            "weak"
+        ]
     }
 ]
