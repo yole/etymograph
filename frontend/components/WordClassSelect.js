@@ -17,7 +17,6 @@ export default function WordClassSelect(props) {
             label: v.name === v.abbreviation ? v.name : `${v.name} (${v.abbreviation})`})
         )
     ))
-    console.log(wordClasses)
 
     const valueFn = (value) => value === undefined ? [] : value.split(" ").map(s => wordClasses.find(r => r.value === s))
 
