@@ -109,8 +109,8 @@ class CorpusTextTest : QBaseTest() {
 
     @Test
     fun testAttestations() {
-        val eaV = q.word("ea", "be")
-        val eaN = q.word("ea", "being")
+        val eaV = repo.addWord("ea", "be")
+        val eaN = repo.addWord("ea", "being")
         val ct1 = repo.addCorpusText("ea", null, q)
         ct1.associateWord(0, eaV)
         val ct2 = repo.addCorpusText("ea", null, q)

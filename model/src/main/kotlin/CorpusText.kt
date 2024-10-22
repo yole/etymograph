@@ -128,7 +128,7 @@ class CorpusText(
     }
 
     fun containsWord(word: Word): Boolean {
-        if (_words.any { it.word == word }) return true
+        if (_words.any { it.word.id == word.id }) return true
         for (wordText in iterateWords()) {
             if (wordText.normalizedText == word.text && _words.getOrNull(wordText.index) == null) return true
         }
