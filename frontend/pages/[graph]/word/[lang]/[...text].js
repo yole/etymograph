@@ -14,7 +14,7 @@ import {
     deriveThroughRuleSequence,
     fetchAllLanguagePaths,
     lookupWord,
-    suggestParseCandidates, suggestCompound, createCompound, callApiAndRefresh, addToCompound
+    suggestParseCandidates, suggestCompound, createCompound, callApiAndRefresh, addToCompound, updateWord
 } from "@/api";
 import Link from "next/link";
 import {useRouter} from "next/router";
@@ -395,6 +395,16 @@ function SingleWord(params) {
         }
     }
 
+    function canClearGloss() {
+        return !word.glossComputed && word.linksFrom.find(l => l.typeId === '>')
+    }
+
+    function clearGloss() {
+        callApiAndRefresh(
+            () => updateWord(graph, word.id, word.text, null, null, null, null, word.reconstructed, null, null),
+            router, setErrorText
+        )
+    }
 
     if (word === undefined) {
         return <div>No such word in the dictionary</div>
@@ -422,7 +432,9 @@ function SingleWord(params) {
 
         {!editMode && <>
             {word.pos && <div>{word.pos} {word.classes.length > 0 && "(" + word.classes.join(", ") + ")"}</div>}
-            <p>{word.fullGloss !== null && word.fullGloss !== "" ? <WordFullGloss word={word}/> : <WordGloss gloss={word.gloss}/>}</p>
+            <p>{word.fullGloss !== null && word.fullGloss !== "" ? <WordFullGloss word={word}/> : <WordGloss gloss={word.gloss}/>}
+                {canClearGloss() && <>{' '}<button className="inlineButton" onClick={() => clearGloss()}>clear</button></>}
+            </p>
             {word.notes && <p>{word.notes}</p>}
             <SourceRefs source={word.source}/>
 
