@@ -5057,5 +5057,213 @@
         "fromPOS": [
             "ADJ"
         ]
+    },
+    {
+        "id": 5080,
+        "name": "on-pres-subj-1sg",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "NoChange",
+                        "args": []
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".SUBJ.1SG",
+        "fromPOS": [
+            "V"
+        ]
+    },
+    {
+        "id": 5081,
+        "name": "on-pres-subj-1pl",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "im"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "or",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "ja"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "a"
+                        }
+                    ]
+                }
+            }
+        ],
+        "addedCategories": ".SUBJ.1PL",
+        "fromPOS": [
+            "V"
+        ]
+    },
+    {
+        "id": 5082,
+        "name": "on-pres-subj-2sg",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "ir"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "or",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "ja"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "a"
+                        }
+                    ]
+                }
+            }
+        ],
+        "addedCategories": ".SUBJ.2SG",
+        "fromPOS": [
+            "V"
+        ]
+    },
+    {
+        "id": 5083,
+        "name": "on-pres-subj-2pl",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "ið"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "or",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "ja"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "a"
+                        }
+                    ]
+                }
+            }
+        ],
+        "addedCategories": ".SUBJ.2PL",
+        "fromPOS": [
+            "V"
+        ]
+    },
+    {
+        "id": 5084,
+        "name": "on-pres-subj-3sg",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "i"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "or",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "ja"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "a"
+                        }
+                    ]
+                }
+            }
+        ],
+        "addedCategories": ".SUBJ.3SG",
+        "fromPOS": [
+            "V"
+        ]
+    },
+    {
+        "id": 5085,
+        "name": "on-pres-subj-3pl",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "i"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "or",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "ja"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "a"
+                        }
+                    ]
+                }
+            }
+        ],
+        "addedCategories": ".SUBJ.3PL",
+        "fromPOS": [
+            "V"
+        ]
     }
 ]

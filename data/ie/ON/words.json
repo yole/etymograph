@@ -400,7 +400,8 @@
         "id": 975,
         "text": "til",
         "gloss": "to",
-        "pos": "PREP"
+        "pos": "PREP",
+        "notes": "w/Gen"
     },
     {
         "id": 976,
@@ -560,7 +561,8 @@
         "id": 1000,
         "text": "um",
         "gloss": "about",
-        "pos": "PREP"
+        "pos": "PREP",
+        "notes": "w/acc"
     },
     {
         "id": 1001,
@@ -4927,5 +4929,272 @@
         "classes": [
             "weak"
         ]
+    },
+    {
+        "id": 5087,
+        "text": "Önundr",
+        "pos": "NP",
+        "classes": [
+            "m",
+            "gen-ar"
+        ]
+    },
+    {
+        "id": 5088,
+        "text": "Ófeigs"
+    },
+    {
+        "id": 5089,
+        "text": "Ófeigr",
+        "pos": "NP"
+    },
+    {
+        "id": 5090,
+        "text": "burlufótar"
+    },
+    {
+        "id": 5092,
+        "text": "burlufótr",
+        "gloss": "Clumsy-foot",
+        "pos": "N"
+    },
+    {
+        "id": 5093,
+        "text": "Ívars"
+    },
+    {
+        "id": 5094,
+        "text": "Ívar",
+        "pos": "NP"
+    },
+    {
+        "id": 5095,
+        "text": "beytill",
+        "gloss": "horse-prick"
+    },
+    {
+        "id": 5096,
+        "text": "beytils"
+    },
+    {
+        "id": 5097,
+        "text": "broðir",
+        "gloss": "brother",
+        "pos": "N"
+    },
+    {
+        "id": 5098,
+        "text": "móður"
+    },
+    {
+        "id": 5099,
+        "text": "Guðbjargar"
+    },
+    {
+        "id": 5100,
+        "text": "Guðbjarg",
+        "pos": "NP"
+    },
+    {
+        "id": 5101,
+        "text": "kúlu"
+    },
+    {
+        "id": 5102,
+        "text": "kúla",
+        "gloss": "hunchback",
+        "pos": "N",
+        "classes": [
+            "f"
+        ]
+    },
+    {
+        "id": 5103,
+        "text": "Guðbrands"
+    },
+    {
+        "id": 5104,
+        "text": "Guðbrandr",
+        "pos": "NP",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 5105,
+        "text": "Ástu"
+    },
+    {
+        "id": 5106,
+        "text": "Ásta",
+        "pos": "NP",
+        "classes": [
+            "f"
+        ]
+    },
+    {
+        "id": 5107,
+        "text": "Óláfs"
+    },
+    {
+        "id": 5108,
+        "text": "Óláfr",
+        "pos": "NP",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 5109,
+        "text": "upplenzkr",
+        "gloss": "of Uplands",
+        "pos": "ADJ"
+    },
+    {
+        "id": 5110,
+        "text": "Rogaland"
+    },
+    {
+        "id": 5111,
+        "text": "móðurætt"
+    },
+    {
+        "id": 5113,
+        "text": "ætt",
+        "gloss": "kindred",
+        "pos": "N",
+        "classes": [
+            "f"
+        ]
+    },
+    {
+        "id": 5114,
+        "text": "föðurkyn"
+    },
+    {
+        "id": 5116,
+        "text": "mest",
+        "gloss": "mostly",
+        "pos": "ADV"
+    },
+    {
+        "id": 5117,
+        "text": "vestr",
+        "gloss": "westward",
+        "pos": "ADV"
+    },
+    {
+        "id": 5118,
+        "text": "haf",
+        "gloss": "sea",
+        "pos": "N",
+        "classes": [
+            "n"
+        ]
+    },
+    {
+        "id": 5119,
+        "text": "Bálki",
+        "pos": "NP"
+    },
+    {
+        "id": 5120,
+        "text": "Blæingsson",
+        "pos": "NP"
+    },
+    {
+        "id": 5121,
+        "text": "Sótanesi"
+    },
+    {
+        "id": 5122,
+        "text": "Sótanes",
+        "pos": "NP"
+    },
+    {
+        "id": 5123,
+        "text": "Hallvarðr",
+        "pos": "NP"
+    },
+    {
+        "id": 5124,
+        "text": "félagi",
+        "gloss": "companion",
+        "pos": "N",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 5125,
+        "text": "priði",
+        "gloss": "third",
+        "pos": "NUM"
+    },
+    {
+        "id": 5126,
+        "text": "fimm",
+        "gloss": "five",
+        "pos": "NUM"
+    },
+    {
+        "id": 5127,
+        "text": "herjuðu"
+    },
+    {
+        "id": 5128,
+        "text": "Suðreyjar"
+    },
+    {
+        "id": 5129,
+        "text": "suðr",
+        "gloss": "south",
+        "pos": "N"
+    },
+    {
+        "id": 5131,
+        "text": "Kjarvalr",
+        "pos": "NP"
+    },
+    {
+        "id": 5132,
+        "text": "lögðu"
+    },
+    {
+        "id": 5133,
+        "text": "bardaga"
+    },
+    {
+        "id": 5134,
+        "text": "Önundar"
+    },
+    {
+        "id": 5135,
+        "text": "harðr",
+        "gloss": "hard",
+        "pos": "ADJ"
+    },
+    {
+        "id": 5136,
+        "text": "hörð"
+    },
+    {
+        "id": 5137,
+        "text": "hrið",
+        "gloss": "battle",
+        "pos": "N",
+        "classes": [
+            "f"
+        ]
+    },
+    {
+        "id": 5138,
+        "text": "ákafr",
+        "gloss": "fierce",
+        "pos": "ADJ"
+    },
+    {
+        "id": 5139,
+        "text": "ákafir"
     }
 ]

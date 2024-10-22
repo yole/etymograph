@@ -2379,5 +2379,273 @@
                 "refText": "Haralds saga Sigurðarsonar (ch 36)"
             }
         ]
+    },
+    {
+        "id": 5086,
+        "text": "Önundr hét maðr; hann var Ófeigs sonr burlufótar, Ívars sonar beytils.\nÖnundr var broðir Guðbjargar, móður Guðbrands kúlu, föður Ástu, móður Óláfs konungs ins helga.\nÖnundr var upplenzkr at móðurætt, en föðurkyn hans var mest um Rogaland ok um Hörðaland.\nÖnundr var víkingr mikill ok herjaði vestr um haf.\nMeð honum var í hernaði  Bálki Blæingsson af Sótanesi ok Ormr inn auðgi;\nHallvarðr hét inn priði félagi þeira; þeir höfðu fimm skip.\n\nÞeir herjuðu um Suðreyjar, ok er þeir kómu í Barreyjar, var þar fyrir konungr sá, er Kjarvalr hét;\nhann hafði ok fimm skip.\nþeir lögðu til bardaga við hann ok varð þar hörð hrið;\nváru Önundar menn ákafir.\nFéll mart af hvárumtveggjum, en svá lauk, at konungr flýði einskipa;\ntóku þeir Önundr þar bæði skip ok fé mikit ok sátu þar um vetrinn.\nÞrjú sumur herjuðu þeir um Írland ok Skotland; síðan fóru þeir til Nóregs.",
+        "title": "Viking Language 9.1",
+        "words": [
+            {
+                "index": 0,
+                "id": 5087
+            },
+            {
+                "index": 1,
+                "id": 937
+            },
+            {
+                "index": 3,
+                "id": 924
+            },
+            {
+                "index": 4,
+                "id": 923
+            },
+            {
+                "index": 5,
+                "id": 5088
+            },
+            {
+                "index": 7,
+                "id": 5090
+            },
+            {
+                "index": 8,
+                "id": 5093
+            },
+            {
+                "index": 10,
+                "id": 5096
+            },
+            {
+                "index": 12,
+                "id": 923
+            },
+            {
+                "index": 13,
+                "id": 5097
+            },
+            {
+                "index": 14,
+                "id": 5099
+            },
+            {
+                "index": 15,
+                "id": 5098
+            },
+            {
+                "index": 16,
+                "id": 5103
+            },
+            {
+                "index": 17,
+                "id": 5101
+            },
+            {
+                "index": 18,
+                "id": 1276
+            },
+            {
+                "index": 19,
+                "id": 5105
+            },
+            {
+                "index": 20,
+                "id": 5098
+            },
+            {
+                "index": 21,
+                "id": 5107
+            },
+            {
+                "index": 23,
+                "id": 1474
+            },
+            {
+                "index": 26,
+                "id": 923
+            },
+            {
+                "index": 27,
+                "id": 5109
+            },
+            {
+                "index": 28,
+                "id": 1318
+            },
+            {
+                "index": 29,
+                "id": 5111
+            },
+            {
+                "index": 31,
+                "id": 5114
+            },
+            {
+                "index": 33,
+                "id": 923
+            },
+            {
+                "index": 34,
+                "id": 5116
+            },
+            {
+                "index": 36,
+                "id": 5110
+            },
+            {
+                "index": 39,
+                "id": 1629
+            },
+            {
+                "index": 41,
+                "id": 923
+            },
+            {
+                "index": 42,
+                "id": 958
+            },
+            {
+                "index": 43,
+                "id": 968
+            },
+            {
+                "index": 45,
+                "id": 1165
+            },
+            {
+                "index": 46,
+                "id": 5117
+            },
+            {
+                "index": 48,
+                "id": 5118
+            },
+            {
+                "index": 51,
+                "id": 923
+            },
+            {
+                "index": 55,
+                "id": 5119
+            },
+            {
+                "index": 56,
+                "id": 5120
+            },
+            {
+                "index": 58,
+                "id": 5121
+            },
+            {
+                "index": 61,
+                "id": 1321
+            },
+            {
+                "index": 63,
+                "id": 5123
+            },
+            {
+                "index": 65,
+                "id": 1321
+            },
+            {
+                "index": 66,
+                "id": 5125
+            },
+            {
+                "index": 67,
+                "id": 5124
+            },
+            {
+                "index": 71,
+                "id": 5126
+            },
+            {
+                "index": 72,
+                "id": 4959
+            },
+            {
+                "index": 75,
+                "id": 5127
+            },
+            {
+                "index": 77,
+                "id": 5128
+            },
+            {
+                "index": 79,
+                "id": 4913
+            },
+            {
+                "index": 84,
+                "id": 923
+            },
+            {
+                "index": 89,
+                "id": 1076
+            },
+            {
+                "index": 90,
+                "id": 5131
+            },
+            {
+                "index": 92,
+                "id": 924
+            },
+            {
+                "index": 93,
+                "id": 1431
+            },
+            {
+                "index": 95,
+                "id": 5126
+            },
+            {
+                "index": 96,
+                "id": 4959
+            },
+            {
+                "index": 91,
+                "id": 937
+            },
+            {
+                "index": 98,
+                "id": 5132
+            },
+            {
+                "index": 102,
+                "id": 946
+            },
+            {
+                "index": 100,
+                "id": 5133
+            },
+            {
+                "index": 109,
+                "id": 5134
+            },
+            {
+                "index": 110,
+                "id": 1440
+            },
+            {
+                "index": 106,
+                "id": 5136
+            },
+            {
+                "index": 107,
+                "id": 5137
+            },
+            {
+                "index": 111,
+                "id": 5139
+            }
+        ],
+        "sourceRefs": [
+            {
+                "refText": "Grettis saga Ásmundarsonar (ch 1)"
+            }
+        ]
     }
 ]

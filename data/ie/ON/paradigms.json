@@ -446,5 +446,59 @@
             "ADJ",
             "PRON"
         ]
+    },
+    {
+        "id": 34,
+        "name": "Verb Present Subjunctive",
+        "rows": [
+            "1",
+            "2",
+            "3"
+        ],
+        "columns": [
+            {
+                "title": "sg",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            5080
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            5082
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            5084
+                        ]
+                    }
+                ]
+            },
+            {
+                "title": "pl",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            5081
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            5083
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            5085
+                        ]
+                    }
+                ]
+            }
+        ],
+        "posList": [
+            "V"
+        ]
     }
 ]
