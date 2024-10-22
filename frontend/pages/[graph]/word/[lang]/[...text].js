@@ -337,6 +337,7 @@ function SingleWord(params) {
         if (r.status !== 200) {
             setErrorText(r.message)
         }
+        setParseCandidates([])
         router.replace(router.asPath)
     }
 
