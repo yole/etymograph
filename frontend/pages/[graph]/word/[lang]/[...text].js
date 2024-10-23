@@ -131,6 +131,7 @@ function WordLinkComponent(params) {
             baseWordId={baseWord.id}
             linkWordId={linkWord.word.id}
             linkType={params.linkType.typeId}
+            language={baseWord.language === linkWord.word.language ? baseWord.language : undefined}
             defaultValues={{
                 ruleNames: linkWord.ruleNames.join(","),
                 source: linkWord.sourceEditableText,

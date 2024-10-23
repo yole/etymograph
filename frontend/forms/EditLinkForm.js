@@ -23,7 +23,9 @@ export default function EditLinkForm(props) {
         {...props}
     >
         <table><tbody>
-            {props.compoundId === undefined && <RuleListSelect id="ruleNames" label="Rule names" isMulti={true}/>}
+            {props.compoundId === undefined &&
+                <RuleListSelect id="ruleNames" label="Rule names" isMulti={true} language={props.language}/>
+            }
             <FormRow id="source" label="Source"/>
             <FormRow id="notes" label="Notes"/>
             {props.compoundComponents !== undefined &&
