@@ -220,7 +220,7 @@ class Word(
             if (sourceSegments == null) {
                 return listOf(newSegment)
             }
-            return normalizeSegments(sourceSegments + newSegment)
+            return sourceSegments + newSegment
         }
 
         fun normalizeSegments(segments: List<WordSegment>): List<WordSegment> {

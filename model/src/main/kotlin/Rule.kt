@@ -300,7 +300,7 @@ class Rule(
             it.stressedPhonemeIndex = stressIndex
             val sourceSegments = word.segments
             if (segments != null) {
-                it.segments = segments
+                it.segments = Word.normalizeSegments(segments)
             }
             else if (sourceSegments != null) {
                 it.segments = sourceSegments
