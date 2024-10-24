@@ -5333,13 +5333,75 @@
     },
     {
         "id": 5170,
-        "name": "noun-def-nom-pl",
+        "name": "on-def-nom-pl",
         "fromLang": "ON",
         "toLang": "ON",
-        "branches": [],
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'nir'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "ClassMatches",
+                    "characters": "m"
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'nar'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "ClassMatches",
+                    "characters": "f"
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "AppendMorpheme",
+                        "args": [
+                            "1557"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "ClassMatches",
+                    "characters": "n"
+                }
+            }
+        ],
         "addedCategories": ".DEF.NOM.PL",
         "fromPOS": [
             "N"
+        ],
+        "preInstructions": [
+            {
+                "type": "ApplyRule",
+                "args": [
+                    "1088"
+                ]
+            }
+        ],
+        "postInstructions": [
+            {
+                "type": "ApplyRule",
+                "args": [
+                    "5177"
+                ]
+            }
         ]
     },
     {
@@ -5417,13 +5479,75 @@
     },
     {
         "id": 5172,
-        "name": "noun-def-acc-pl",
+        "name": "on-def-acc-pl",
         "fromLang": "ON",
         "toLang": "ON",
-        "branches": [],
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "AppendMorpheme",
+                        "args": [
+                            "1552"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "ClassMatches",
+                    "characters": "m"
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'nar'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "ClassMatches",
+                    "characters": "f"
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "AppendMorpheme",
+                        "args": [
+                            "1558"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "ClassMatches",
+                    "characters": "n"
+                }
+            }
+        ],
         "addedCategories": ".DEF.ACC.PL",
         "fromPOS": [
             "N"
+        ],
+        "preInstructions": [
+            {
+                "type": "ApplyRule",
+                "args": [
+                    "1089"
+                ]
+            }
+        ],
+        "postInstructions": [
+            {
+                "type": "ApplyRule",
+                "args": [
+                    "5177"
+                ]
+            }
         ]
     },
     {
@@ -5501,35 +5625,183 @@
     },
     {
         "id": 5174,
-        "name": "noun-def-dat-pl",
+        "name": "on-def-dat-pl",
         "fromLang": "ON",
         "toLang": "ON",
-        "branches": [],
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "num"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "m"
+                }
+            }
+        ],
         "addedCategories": ".DEF.DAT.PL",
         "fromPOS": [
             "N"
+        ],
+        "preInstructions": [
+            {
+                "type": "ApplyRule",
+                "args": [
+                    "1090"
+                ]
+            }
         ]
     },
     {
         "id": 5175,
-        "name": "noun-def-gen-sg",
+        "name": "on-def-gen-sg",
         "fromLang": "ON",
         "toLang": "ON",
-        "branches": [],
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "AppendMorpheme",
+                        "args": [
+                            "1474"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "ClassMatches",
+                    "characters": "m"
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "AppendMorpheme",
+                        "args": [
+                            "1550"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "ClassMatches",
+                    "characters": "f"
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "AppendMorpheme",
+                        "args": [
+                            "1477"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "ClassMatches",
+                    "characters": "n"
+                }
+            }
+        ],
         "addedCategories": ".DEF.GEN.SG",
         "fromPOS": [
             "N"
+        ],
+        "preInstructions": [
+            {
+                "type": "ApplyRule",
+                "args": [
+                    "1012"
+                ]
+            }
+        ],
+        "postInstructions": [
+            {
+                "type": "ApplyRule",
+                "args": [
+                    "5177"
+                ]
+            }
         ]
     },
     {
         "id": 5176,
-        "name": "noun-def-gen-pl",
+        "name": "on-def-gen-pl",
         "fromLang": "ON",
         "toLang": "ON",
-        "branches": [],
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "AppendMorpheme",
+                        "args": [
+                            "1553"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "ClassMatches",
+                    "characters": "m"
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "AppendMorpheme",
+                        "args": [
+                            "1556"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "ClassMatches",
+                    "characters": "f"
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "AppendMorpheme",
+                        "args": [
+                            "1559"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "ClassMatches",
+                    "characters": "n"
+                }
+            }
+        ],
         "addedCategories": ".DEF.GEN.PL",
         "fromPOS": [
             "N"
+        ],
+        "preInstructions": [
+            {
+                "type": "ApplyRule",
+                "args": [
+                    "1091"
+                ]
+            }
+        ],
+        "postInstructions": [
+            {
+                "type": "ApplyRule",
+                "args": [
+                    "5177"
+                ]
+            }
         ]
     },
     {
