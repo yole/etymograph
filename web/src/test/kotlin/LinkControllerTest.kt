@@ -72,7 +72,7 @@ class LinkControllerTest {
 
         val baseWord = fixture.graph.findOrAddWord("mbar", fixture.ce, "home")
         val derivedWord = fixture.graph.findOrAddWord("mar", fixture.q, "home")
-        val link = fixture.graph.addLink(derivedWord, baseWord, Link.Derived, emptyList(), emptyList(), null)
+        val link = fixture.graph.addLink(derivedWord, baseWord, Link.Derived, emptyList())
 
         linkController.updateLink(fixture.graph, LinkController.LinkParams(
             fromEntity = baseWord.id,

@@ -47,7 +47,7 @@ class CorpusControllerTest {
         val elen = graph.findOrAddWord("elen", fixture.q, "star", pos = "N")
         val elenAcc =  graph.findOrAddWord("elen", fixture.q, "star.ACC", pos = "N")
         elenAcc.gloss = null
-        graph.addLink(elenAcc, elen, Link.Derived, listOf(accRule), emptyList(), null)
+        graph.addLink(elenAcc, elen, Link.Derived, listOf(accRule))
 
         val alternatives = corpusController.requestAlternatives(graph, corpusTextViewModel.id, 0)
         assertEquals(1, alternatives.size)

@@ -692,6 +692,20 @@ class RuleTest : QBaseTest() {
         assertEquals("hallærit", result.text)
     }
 
+    @Test
+    fun applyRuleUseExistingLink() {
+        val on = Language("Old Norse", "ON")
+        on.wordClasses = mutableListOf(WordCategory("Gender", listOf("N"), listOf(WordCategoryValue("Neuter", "n"))))
+        val repo = InMemoryGraphRepository().with(on)
+        val haust = repo.addWord("haust", "autumn", classes = listOf("n"), language = on)
+        val accRule = repo.rule("- no change", fromLanguage = on, name = "on-acc", addedCategories = ".ACC")
+        val haustAcc = repo.addWord("haust", "autumn.ACC", language = on)
+        repo.addLink(haustAcc, haust, Link.Derived, listOf(accRule), emptyList(), null)
+        val defRule = repo.rule("- apply rule 'on-acc'\nword is n:\n- append 'it'", fromLanguage = on)
+        val result = defRule.apply(haust, repo)
+        assertEquals("haustit", result.text)
+    }
+
     /*
 
     @Test

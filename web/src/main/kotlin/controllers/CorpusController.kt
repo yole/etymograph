@@ -188,7 +188,7 @@ class CorpusController {
             else {
                 val newGloss = rule.applyCategories(gloss)
                 val newWord = repo.findOrAddWord(word.text, word.language, newGloss)
-                repo.addLink(newWord, word, Link.Derived, listOf(rule), emptyList(), null)
+                repo.addLink(newWord, word, Link.Derived, listOf(rule))
                 newWord.gloss = null
 
                 corpusText.associateWord(params.index, newWord)

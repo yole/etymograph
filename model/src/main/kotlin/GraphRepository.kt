@@ -118,7 +118,7 @@ abstract class GraphRepository {
 
     abstract fun addLink(
         fromEntity: LangEntity, toEntity: LangEntity, type: LinkType, rules: List<Rule>,
-        source: List<SourceRef>, notes: String?
+        source: List<SourceRef> = emptyList(), notes: String? = null
     ): Link
 
     abstract fun deleteLink(fromEntity: LangEntity, toEntity: LangEntity, type: LinkType): Boolean

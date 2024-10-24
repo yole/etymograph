@@ -85,7 +85,7 @@ class WordControllerTest {
 
         val w1 = graph.findOrAddWord("am", fixture.ce, null)
         val w2 = graph.findOrAddWord("an", fixture.q, null)
-        val link = graph.addLink(w2, w1, Link.Origin, emptyList(), emptyList(), null)
+        val link = graph.addLink(w2, w1, Link.Origin, emptyList())
 
         val wordViewModel = wordController.singleWordJson(graph, "q", "an", w2.id)
         val linkTypeViewModel = wordViewModel.linksFrom.single()
@@ -100,7 +100,7 @@ class WordControllerTest {
 
         val w1 = graph.findOrAddWord("am", fixture.ce, null)
         val w2 = graph.findOrAddWord("an", fixture.q, null)
-        val link = graph.addLink(w2, w1, Link.Origin, emptyList(), emptyList(), null)
+        val link = graph.addLink(w2, w1, Link.Origin, emptyList())
 
         val wordViewModel = wordController.singleWordJson(graph, "ce", "am", w1.id)
         val linkTypeViewModel = wordViewModel.linksTo.single()

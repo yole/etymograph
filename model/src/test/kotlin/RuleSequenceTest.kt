@@ -14,7 +14,7 @@ class RuleSequenceTest : QBaseTest() {
         val seq = repo.addRuleSequence("ce-q", ce, q, listOf(qAiE.step(), qSfF.step(), qWV.step()))
         val ceWord = repo.addWord("waiwai", language = ce)
         val qWord = repo.addWord("vaiwe", language = q)
-        val link = repo.addLink(qWord, ceWord, Link.Derived, emptyList(), emptyList(), null)
+        val link = repo.addLink(qWord, ceWord, Link.Derived, emptyList())
         repo.applyRuleSequence(link, seq)
         assertEquals(2, link.rules.size)
     }
@@ -28,7 +28,7 @@ class RuleSequenceTest : QBaseTest() {
         val seq = repo.addRuleSequence("ce-q", ce, q, listOf(qAiE.step(), qSfF.step(), qWV.step(true)))
         val ceWord = repo.addWord("waiwai", language = ce)
         val qWord = repo.addWord("weiwei", language = q)
-        val link = repo.addLink(qWord, ceWord, Link.Derived, emptyList(), emptyList(), null)
+        val link = repo.addLink(qWord, ceWord, Link.Derived, emptyList())
         repo.applyRuleSequence(link, seq)
         assertEquals(1, link.rules.size)
     }
@@ -44,7 +44,7 @@ class RuleSequenceTest : QBaseTest() {
         val seq = repo.addRuleSequence("ce-q", ce, q, listOf(qVoiceless.step()))
         val ceWord = repo.addWord("aklar", language = ce)
         val qWord = repo.addWord("aglar", language = q)
-        val link = repo.addLink(qWord, ceWord, Link.Derived, emptyList(), emptyList(), null)
+        val link = repo.addLink(qWord, ceWord, Link.Derived, emptyList())
         repo.applyRuleSequence(link, seq)
         assertEquals(1, link.rules.size)
     }

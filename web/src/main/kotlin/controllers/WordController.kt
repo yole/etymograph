@@ -368,7 +368,7 @@ class WordController(val dictionaryService: DictionaryService) {
             else {
                 val newGloss = rule.applyCategories(gloss)
                 val newWord = repo.findOrAddWord(text, word.language, newGloss)
-                repo.addLink(newWord, word, Link.Derived, listOf(rule), emptyList(), null)
+                repo.addLink(newWord, word, Link.Derived, listOf(rule))
                 newWord.gloss = null
             }
         }
@@ -479,7 +479,7 @@ class WordController(val dictionaryService: DictionaryService) {
             if (lastWord != null) {
                 val existingLink = repo.findLink(word, lastWord, Link.Origin)
                 if (existingLink == null) {
-                    val link = repo.addLink(word, lastWord, Link.Origin, emptyList(), source, null)
+                    val link = repo.addLink(word, lastWord, Link.Origin, emptyList(), source)
                     val ruleSequence = repo.ruleSequencesForLanguage(word.language)
                         .singleOrNull { it.fromLanguage == lastWord!!.language }
                     if (ruleSequence != null) {

@@ -296,11 +296,14 @@ class ApplyRuleInstruction(val ruleRef: RuleRef)
     override fun apply(rule: Rule, branch: RuleBranch?, word: Word, graph: GraphRepository): Word {
         val targetRule = ruleRef.resolve()
         val link = graph.getLinksTo(word).find { it.rules == listOf(targetRule) }
-        (link?.fromEntity as? Word)?.let { return it }
+        val existingFormText = (link?.fromEntity as? Word)?.text
         val result = targetRule.apply(word, graph).asOrthographic()
+        if (existingFormText != null && existingFormText != result.text) {
+            return word.derive(existingFormText, word.id)
+        }
         return result.derive(result.text, word.id).remapSegments { s ->
-            if (s.sourceRule == targetRule)
-                WordSegment(s.firstCharacter, s.length, rule.addedCategories, null, rule)
+            if (s.sourceRule == targetRule){
+                WordSegment(s.firstCharacter, s.length, rule.addedCategories, null, rule)}
             else
                 s
         }

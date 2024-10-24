@@ -175,7 +175,7 @@ class RuleControllerTest {
         val seq = fixture.setupRuleSequence()
         val w1 = graph.findOrAddWord("am", fixture.ce, null)
         val w2 = graph.findOrAddWord("an", fixture.q, null)
-        val link = graph.addLink(w2, w1, Link.Origin, emptyList(), emptyList(), null)
+        val link = graph.addLink(w2, w1, Link.Origin, emptyList())
 
         val result = ruleController.applySequence(fixture.graph, seq.id, RuleController.ApplySequenceParams(w2.id, w1.id))
         assertEquals(1, result.ruleIds.size)
@@ -237,7 +237,7 @@ class RuleControllerTest {
 
         val word1 = graph.findOrAddWord("ait", fixture.q, "")
         val word2 = graph.findOrAddWord("aith", fixture.q, "")
-        graph.addLink(word2, word1, Link.Derived, listOf(rule), emptyList(), null)
+        graph.addLink(word2, word1, Link.Derived, listOf(rule))
 
         val ruleViewModel = ruleController.rule(fixture.graph, rule.id)
         val example = ruleViewModel.branches.single().examples.single()
