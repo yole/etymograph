@@ -9,7 +9,13 @@ class WordSegment(
     val sourceWord: Word?,
     val sourceRule: Rule?,
     val clitic: Boolean = false
-)
+) {
+    init {
+        if (firstCharacter < 0) {
+            throw IllegalArgumentException("Invalid segment start index")
+        }
+    }
+}
 
 class Word(
     id: Int,
@@ -187,6 +193,9 @@ class Word(
                         append("-")
                     }
                 }
+            }
+            if (index < 0) {
+                println("here")
             }
             append(text.substring(index))
         }

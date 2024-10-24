@@ -241,10 +241,15 @@ class Rule(
     }
 
     private fun remapSegments(phonemes: PhonemeIterator, segments: List<WordSegment>?): List<WordSegment>? {
-        return segments?.map { segment ->
+        return segments?.mapNotNull { segment ->
             val start = phonemes.mapIndex(segment.firstCharacter)
             val end = phonemes.mapIndex(segment.firstCharacter + segment.length)
-            WordSegment(start, end - start, segment.category, segment.sourceWord, segment.sourceRule, segment.clitic)
+            if (start < 0) {
+                null
+            }
+            else {
+                WordSegment(start, end - start, segment.category, segment.sourceWord, segment.sourceRule, segment.clitic)
+            }
         }
     }
 
