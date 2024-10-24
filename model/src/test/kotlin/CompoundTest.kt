@@ -85,7 +85,7 @@ class CompoundTest : QBaseTest() {
     @Test
     fun stressOnRootInCompound() {
         val stressRule = repo.rule("- stress is on first root syllable")
-        assertEquals("stress is on first root syllable", stressRule.firstInstruction.toEditableText())
+        assertEquals("stress is on first root syllable", stressRule.firstInstruction.toEditableText(repo))
         q.stressRule = RuleRef.to(stressRule)
 
         val na = repo.addWord("na", pos = "PV")

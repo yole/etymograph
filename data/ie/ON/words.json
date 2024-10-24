@@ -5196,5 +5196,122 @@
     {
         "id": 5139,
         "text": "ákafir"
+    },
+    {
+        "id": 5140,
+        "text": "falla",
+        "gloss": "fall",
+        "pos": "V"
+    },
+    {
+        "id": 5141,
+        "text": "féll"
+    },
+    {
+        "id": 5142,
+        "text": "mart"
+    },
+    {
+        "id": 5143,
+        "text": "hvárumtveggjum"
+    },
+    {
+        "id": 5144,
+        "text": "hvárum"
+    },
+    {
+        "id": 5146,
+        "text": "tveggjum"
+    },
+    {
+        "id": 5147,
+        "text": "hvárr",
+        "gloss": "each",
+        "pos": "PRON"
+    },
+    {
+        "id": 5148,
+        "text": "lúka",
+        "gloss": "end",
+        "pos": "V"
+    },
+    {
+        "id": 5149,
+        "text": "lauk"
+    },
+    {
+        "id": 5150,
+        "text": "flýja",
+        "gloss": "flee",
+        "pos": "V",
+        "classes": [
+            "pret-ð"
+        ]
+    },
+    {
+        "id": 5151,
+        "text": "flýði"
+    },
+    {
+        "id": 5152,
+        "text": "einskipa"
+    },
+    {
+        "id": 5154,
+        "text": "skipa"
+    },
+    {
+        "id": 5155,
+        "text": "tóku"
+    },
+    {
+        "id": 5156,
+        "text": "báðir",
+        "gloss": "both",
+        "pos": "ADJ"
+    },
+    {
+        "id": 5157,
+        "text": "bæði"
+    },
+    {
+        "id": 5158,
+        "text": "sitja",
+        "gloss": "sit",
+        "pos": "V"
+    },
+    {
+        "id": 5159,
+        "text": "sátu"
+    },
+    {
+        "id": 5160,
+        "text": "vetrinn"
+    },
+    {
+        "id": 5162,
+        "text": "vetr"
+    },
+    {
+        "id": 5164,
+        "text": "Írland",
+        "pos": "NP"
+    },
+    {
+        "id": 5165,
+        "text": "Skotland",
+        "pos": "NP"
+    },
+    {
+        "id": 5166,
+        "text": "Nóregs"
+    },
+    {
+        "id": 5167,
+        "text": "þrjú"
+    },
+    {
+        "id": 5168,
+        "text": "sumur"
     }
 ]

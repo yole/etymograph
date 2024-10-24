@@ -11,6 +11,7 @@ fun interface RuleRef {
 }
 
 class RuleParseContext(
+    val repo: GraphRepository,
     val fromLanguage: Language,
     val toLanguage: Language,
     val ruleRefFactory: (String) -> RuleRef
@@ -48,8 +49,8 @@ class RuleTrace {
         log.append("${condition.toEditableText()} candidates: [${candidates.joinToString(", ")}]\n")
     }
 
-    fun logReverseApplyInstruction(instruction: RuleInstruction, base: String, candidates: List<String>) {
-        log.append("${instruction.toEditableText()}: $base -> [${candidates.joinToString(", ")}]\n")
+    fun logReverseApplyInstruction(graph: GraphRepository, instruction: RuleInstruction, base: String, candidates: List<String>) {
+        log.append("${instruction.toEditableText(graph)}: $base -> [${candidates.joinToString(", ")}]\n")
     }
 
     fun findMatchedBranches(rule: Rule, word: Word): Set<RuleBranch> {
@@ -128,18 +129,18 @@ class RuleBranch(val condition: RuleCondition, val instructions: List<RuleInstru
         return null
     }
 
-    fun toEditableText(): String {
+    fun toEditableText(graph: GraphRepository): String {
         val commentString = (comment?.split('\n')?.joinToString("") { "# $it\n" }) ?: ""
         return commentString + condition.toEditableText() + ":\n" +
-                instructions.joinToString("\n") { " - " + it.toEditableText() }
+                instructions.joinToString("\n") { " - " + it.toEditableText(graph) }
     }
 
-    fun toSummaryText(phonemic: Boolean): String? {
+    fun toSummaryText(graph: GraphRepository, phonemic: Boolean): String? {
         if (phonemic) {
             val insn = instructions.singleOrNull() ?: return null
-            return insn.toSummaryText(condition)
+            return insn.toSummaryText(graph, condition)
         }
-        val summaries = instructions.map { it.toSummaryText(condition) ?: return null }
+        val summaries = instructions.map { it.toSummaryText(graph, condition) ?: return null }
         return summaries.joinToString("")
     }
 
@@ -316,21 +317,21 @@ class Rule(
         return replacedGloss
     }
 
-    fun toEditableText(): String {
+    fun toEditableText(graph: GraphRepository): String {
         if (isUnconditional()) {
-            return logic.branches[0].instructions.joinToString("\n") { " - " + it.toEditableText() }
+            return logic.branches[0].instructions.joinToString("\n") { " - " + it.toEditableText(graph) }
         }
-        return logic.preInstructions.joinToString("") { " - " + it.toEditableText() + "\n" } +
-               logic.branches.joinToString("\n\n") { it.toEditableText() } +
+        return logic.preInstructions.joinToString("") { " - " + it.toEditableText(graph) + "\n" } +
+               logic.branches.joinToString("\n\n") { it.toEditableText(graph) } +
                (if (logic.postInstructions.isNotEmpty()) "\n\n" else "") +
-               logic.postInstructions.joinToString("\n") { " = " + it.toEditableText() }
+               logic.postInstructions.joinToString("\n") { " = " + it.toEditableText(graph) }
     }
 
     fun isUnconditional() =
         logic.branches.size == 1 && logic.branches[0].condition is OtherwiseCondition && logic.preInstructions.isEmpty()
 
-    fun toSummaryText(): String {
-        val summaries = logic.branches.map { it.toSummaryText(isPhonemic()) }
+    fun toSummaryText(graph: GraphRepository): String {
+        val summaries = logic.branches.map { it.toSummaryText(graph, isPhonemic()) }
         if (summaries.any { it == null }) return ""
         val filteredSummaries = summaries.filter { !it.isNullOrEmpty() }
         if (isPhonemic()) {

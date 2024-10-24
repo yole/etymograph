@@ -35,7 +35,7 @@ class JsonGraphRepositoryTest : QBaseTest() {
             - new sound is 'á'
         """.trimIndent(), q.parseContext()))
 
-        val parseContext = RuleParseContext(q, q) {
+        val parseContext = RuleParseContext(repo, q, q) {
             if (it == "q-lengthen") RuleRef.to(soundRule) else throw RuleParseException("no such rule")
         }
         val applySoundRule = Rule(-1, "lengthen-first-vowel", q, q, Rule.parseBranches("""
@@ -72,7 +72,7 @@ class JsonGraphRepositoryTest : QBaseTest() {
 
         val serializedData = rule.ruleToSerializedFormat()
         val branches = ruleBranchesFromSerializedFormat(repo, q, serializedData.branches)
-        assertEquals("'e' is inserted before", branches[0].instructions[0].toEditableText())
+        assertEquals("'e' is inserted before", branches[0].instructions[0].toEditableText(repo))
     }
 
     @Test
@@ -83,7 +83,7 @@ class JsonGraphRepositoryTest : QBaseTest() {
 
         val serializedData = rule.ruleToSerializedFormat()
         val branches = ruleBranchesFromSerializedFormat(repo, q, serializedData.branches)
-        assertEquals("insert 'i' before last consonant", branches[0].instructions[0].toEditableText())
+        assertEquals("insert 'i' before last consonant", branches[0].instructions[0].toEditableText(repo))
     }
 
     @Test

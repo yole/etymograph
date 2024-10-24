@@ -5,10 +5,7 @@ import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
 import org.springframework.web.server.ResponseStatusException
-import ru.yole.etymograph.GraphRepository
-import ru.yole.etymograph.Rule
-import ru.yole.etymograph.RuleParseContext
-import ru.yole.etymograph.RuleParseException
+import ru.yole.etymograph.*
 import ru.yole.etymograph.web.controllers.PhonemeController
 
 class PhonemeControllerTest {
@@ -82,10 +79,7 @@ class PhonemeControllerTest {
     fun relatedRules() {
         val wPhoneme = graph.addPhoneme(fixture.q, listOf("w"), null, setOf())
         val uPhoneme = graph.addPhoneme(fixture.q, listOf("u"), null, setOf())
-        val rule = graph.addRule("q-gen", fixture.ce, fixture.q,
-            Rule.parseBranches("sound is 'w':\n- new sound is 'u'",
-                RuleParseContext(fixture.q, fixture.q) { throw RuleParseException("no such rule")})
-        )
+        val rule = graph.rule("sound is 'w':\n- new sound is 'u'", fixture.ce, fixture.q, "q-gen")
         val seq = graph.addRuleSequence("ce-to-q", fixture.ce, fixture.q, listOf(rule.step()))
 
         val wPhonemeViewModel = phonemeController.phoneme(graph, wPhoneme.id)

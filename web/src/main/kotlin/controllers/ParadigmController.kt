@@ -35,7 +35,7 @@ class ParadigmController {
 
     @GetMapping("/{graph}/paradigms")
     fun allParadigms(repo: GraphRepository): List<ParadigmViewModel> {
-        return repo.allParadigms().map { it.toViewModel() }
+        return repo.allParadigms().map { it.toViewModel(repo) }
     }
 
     @GetMapping("/{graph}/paradigms/{lang}")
@@ -43,34 +43,34 @@ class ParadigmController {
         val language = repo.resolveLanguage(lang)
 
         val paradigms = repo.paradigmsForLanguage(language).map {
-            it.toViewModel()
+            it.toViewModel(repo)
         }
         return ParadigmListViewModel(language.name, paradigms)
     }
 
-    private fun Paradigm.toViewModel() =
+    private fun Paradigm.toViewModel(repo: GraphRepository) =
         ParadigmViewModel(id, name,
             language.shortName, language.name, pos, rowTitles,
-            columns.map { it.toViewModel(rowTitles.size) },
+            columns.map { it.toViewModel(repo, rowTitles.size) },
             toEditableText()
         )
 
-    private fun ParadigmColumn.toViewModel(rows: Int) =
+    private fun ParadigmColumn.toViewModel(repo: GraphRepository, rows: Int) =
         ParadigmColumnViewModel(title, (0 until rows).map {
-            cells.getOrNull(it)?.toViewModel() ?: ParadigmCellViewModel(emptyList(), emptyList(), emptyList())
+            cells.getOrNull(it)?.toViewModel(repo) ?: ParadigmCellViewModel(emptyList(), emptyList(), emptyList())
         })
 
-    private fun ParadigmCell.toViewModel() =
+    private fun ParadigmCell.toViewModel(repo: GraphRepository) =
         ParadigmCellViewModel(
             ruleAlternatives.map { it?.name ?: "." },
-            ruleAlternatives.map { it?.toSummaryText() ?: "" },
+            ruleAlternatives.map { it?.toSummaryText(repo) ?: "" },
             ruleAlternatives.map { it?.id },
         )
 
     @GetMapping("/{graph}/paradigm/{id}")
     fun paradigm(repo: GraphRepository, @PathVariable id: Int): ParadigmViewModel {
         val paradigmById = repo.resolveParadigm(id)
-        return paradigmById.toViewModel()
+        return paradigmById.toViewModel(repo)
     }
 
     private fun GraphRepository.resolveParadigm(id: Int): Paradigm =
@@ -89,7 +89,7 @@ class ParadigmController {
 
         val p = repo.addParadigm(params.name, language, parseList(params.pos))
         p.parse(params.text, repo::ruleByName)
-        return p.toViewModel()
+        return p.toViewModel(repo)
     }
 
     @PostMapping("/{graph}/paradigm/{id}", consumes = ["application/json"])
@@ -146,6 +146,6 @@ class ParadigmController {
             }
         }
 
-        return paradigm.toViewModel()
+        return paradigm.toViewModel(repo)
     }
 }

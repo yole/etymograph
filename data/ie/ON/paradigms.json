@@ -500,5 +500,70 @@
         "posList": [
             "V"
         ]
+    },
+    {
+        "id": 35,
+        "name": "Noun Definite",
+        "rows": [
+            "Nom",
+            "Acc",
+            "Dat",
+            "Gen"
+        ],
+        "columns": [
+            {
+                "title": "Sg",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            5169
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            5171
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            5173
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            5175
+                        ]
+                    }
+                ]
+            },
+            {
+                "title": "Pl",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            5170
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            5172
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            5174
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            5176
+                        ]
+                    }
+                ]
+            }
+        ],
+        "posList": [
+            "N"
+        ]
     }
 ]

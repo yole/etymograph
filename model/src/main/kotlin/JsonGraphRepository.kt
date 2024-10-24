@@ -936,7 +936,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
         }
 
         fun ruleInstructionFromSerializedFormat(
-            result: InMemoryGraphRepository,
+            result: GraphRepository,
             fromLanguage: Language,
             insnData: RuleInstructionData
         ): RuleInstruction =
@@ -954,11 +954,13 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                 InstructionType.ChangeSoundClass ->
                     ChangePhonemeClassInstruction(insnData.args.getOrNull(2)?.toInt() ?: 0,
                         insnData.args[0], insnData.args[1])
+                InstructionType.PrependMorpheme, InstructionType.AppendMorpheme ->
+                    MorphemeInstruction(insnData.type, insnData.args[0].toInt())
                 else ->
                     RuleInstruction(insnData.type, insnData.args.firstOrNull() ?: "")
             }
 
-        private fun ruleRef(repo: InMemoryGraphRepository, ruleId: Int) =
+        private fun ruleRef(repo: GraphRepository, ruleId: Int) =
             RuleRef { repo.ruleById(ruleId) ?: throw IllegalStateException("Broken rule ID reference $ruleId") }
     }
 }

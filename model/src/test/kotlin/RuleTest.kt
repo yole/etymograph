@@ -1,6 +1,7 @@
 package ru.yole.etymograph
 
 import org.junit.Assert.*
+import org.junit.Before
 import org.junit.Test
 import ru.yole.etymograph.JsonGraphRepository.Companion.ruleBranchesFromSerializedFormat
 import ru.yole.etymograph.JsonGraphRepository.Companion.ruleInstructionFromSerializedFormat
@@ -9,6 +10,13 @@ import ru.yole.etymograph.JsonGraphRepository.Companion.toSerializedFormat
 
 class RuleTest : QBaseTest() {
     private val dummyRule = parseRule(q, q, "- append 'a'")
+
+    lateinit var repo: GraphRepository
+
+    @Before
+    fun setup() {
+        repo = repoWithQ()
+    }
 
     @Test
     fun conditions() {
@@ -94,10 +102,14 @@ class RuleTest : QBaseTest() {
 
     @Test
     fun branchParse() {
-        val b = RuleBranch.parse(LineBuffer("""
+        val b = RuleBranch.parse(
+            LineBuffer(
+                """
             word ends with 'e':
             - append 'a'
-        """.trimIndent()), q.parseContext())
+        """.trimIndent()
+            ), q.parseContext()
+        )
         assertEquals("e", (b.condition as LeafRuleCondition).parameter)
         assertEquals("'a'", b.instructions[0].arg)
     }
@@ -115,17 +127,19 @@ class RuleTest : QBaseTest() {
         assertEquals("e", (b.condition as LeafRuleCondition).parameter)
         assertEquals("'a'", b.instructions[0].arg)
 
-        assertEquals(branchText, b.toEditableText())
+        assertEquals(branchText, b.toEditableText(repo))
     }
 
     @Test
     fun ruleParse() {
-        val branches = Rule.parseBranches("""
+        val branches = Rule.parseBranches(
+            """
             word ends with 'e':
             - append 'a'
             word ends with 'i':
             - append 'r'
-        """.trimIndent(), q.parseContext()).branches
+        """.trimIndent(), q.parseContext()
+        ).branches
         assertEquals(2, branches.size)
         assertEquals(1, branches[0].instructions.size)
         assertEquals(1, branches[1].instructions.size)
@@ -133,14 +147,16 @@ class RuleTest : QBaseTest() {
 
     @Test
     fun ruleParseComment() {
-        val branches = Rule.parseBranches("""
+        val branches = Rule.parseBranches(
+            """
             # this is e
             word ends with 'e':
             - append 'a'
             # this is a
             word ends with 'i':
             - append 'r'
-        """.trimIndent(), q.parseContext()).branches
+        """.trimIndent(), q.parseContext()
+        ).branches
         assertEquals(2, branches.size)
         assertEquals("this is e", branches[0].comment)
         assertEquals("this is a", branches[1].comment)
@@ -148,9 +164,11 @@ class RuleTest : QBaseTest() {
 
     @Test
     fun ruleParseWithoutConditions() {
-        val branches = Rule.parseBranches("""
+        val branches = Rule.parseBranches(
+            """
             - append 'lye'
-        """.trimIndent(), q.parseContext()).branches
+        """.trimIndent(), q.parseContext()
+        ).branches
         assertEquals(1, branches.size)
         assertEquals(1, branches[0].instructions.size)
         assertTrue(branches[0].matches(Word(0, "abc", q), emptyRepo))
@@ -158,12 +176,14 @@ class RuleTest : QBaseTest() {
 
     @Test
     fun ruleParseOtherwise() {
-        val branches = Rule.parseBranches("""
+        val branches = Rule.parseBranches(
+            """
             word ends with 'e':
             - append 'a'
             otherwise:
             - append 'r'
-        """.trimIndent(), q.parseContext()).branches
+        """.trimIndent(), q.parseContext()
+        ).branches
         assertEquals(2, branches.size)
         assertEquals(1, branches[0].instructions.size)
         assertEquals(OtherwiseCondition, branches[1].condition)
@@ -180,7 +200,8 @@ class RuleTest : QBaseTest() {
     fun wordIsInheritFromVariant() {
         val repo = InMemoryGraphRepository()
         val oe = Language("Old English", "OE").also { repo.addLanguage(it) }
-        oe.wordClasses = mutableListOf(WordCategory("stem class", listOf("N"), listOf(WordCategoryValue("o-stem", "o-stem"))))
+        oe.wordClasses =
+            mutableListOf(WordCategory("stem class", listOf("N"), listOf(WordCategoryValue("o-stem", "o-stem"))))
         val rule = repo.rule("word is o-stem:\n- append 'es'", oe)
         val baseWord = repo.addWord("mann", language = oe, classes = listOf("o-stem"))
         val variant = repo.addWord("monn", language = oe)
@@ -193,8 +214,12 @@ class RuleTest : QBaseTest() {
     fun wordIsInheritFromVariantWithPreActions() {
         val repo = InMemoryGraphRepository()
         val oe = Language("Old English", "OE").also { repo.addLanguage(it) }
-        oe.wordClasses = mutableListOf(WordCategory("stem class", listOf("N"),
-            listOf(WordCategoryValue("o-stem", "o-stem"), WordCategoryValue("strong", "strong"))))
+        oe.wordClasses = mutableListOf(
+            WordCategory(
+                "stem class", listOf("N"),
+                listOf(WordCategoryValue("o-stem", "o-stem"), WordCategoryValue("strong", "strong"))
+            )
+        )
         val rule = repo.rule("- mark word as strong\nword is o-stem:\n- append 'es'", oe)
         val baseWord = repo.addWord("mann", language = oe, classes = listOf("o-stem"))
         val variant = repo.addWord("monn", language = oe)
@@ -207,8 +232,12 @@ class RuleTest : QBaseTest() {
     fun wordIsInheritFromVariantWithApplyRule() {
         val repo = InMemoryGraphRepository()
         val oe = Language("Old English", "OE").also { repo.addLanguage(it) }
-        oe.wordClasses = mutableListOf(WordCategory("stem class", listOf("N"),
-            listOf(WordCategoryValue("o-stem", "o-stem"), WordCategoryValue("strong", "strong"))))
+        oe.wordClasses = mutableListOf(
+            WordCategory(
+                "stem class", listOf("N"),
+                listOf(WordCategoryValue("o-stem", "o-stem"), WordCategoryValue("strong", "strong"))
+            )
+        )
         repo.rule("- mark word as strong", oe, name = "oe-stem-class")
         val rule = repo.rule("- apply rule 'oe-stem-class'\nword is o-stem:\n- append 'es'", oe)
         val baseWord = repo.addWord("mann", language = oe, classes = listOf("o-stem"))
@@ -222,8 +251,12 @@ class RuleTest : QBaseTest() {
     fun wordIsInheritFromCompound() {
         val repo = InMemoryGraphRepository()
         val oe = Language("Old English", "OE").also { repo.addLanguage(it) }
-        oe.wordClasses = mutableListOf(WordCategory("stem class", listOf("N"),
-            listOf(WordCategoryValue("o-stem", "o-stem"), WordCategoryValue("strong", "strong"))))
+        oe.wordClasses = mutableListOf(
+            WordCategory(
+                "stem class", listOf("N"),
+                listOf(WordCategoryValue("o-stem", "o-stem"), WordCategoryValue("strong", "strong"))
+            )
+        )
         val rule = repo.rule("- mark word as strong\nword is o-stem:\n- append 'es'", oe)
         val baseWord = repo.addWord("mann", language = oe, classes = listOf("o-stem"))
         val prefix = repo.addWord("sæ", language = oe)
@@ -246,55 +279,71 @@ class RuleTest : QBaseTest() {
             
              = append 'e'
         """.trimIndent()
-        val rule = parseRule(q, q, text)
+        val rule = repo.rule(text, q)
         assertEquals(1, rule.logic.postInstructions.size)
         assertEquals("laureae", applyRule(rule, q.word("laure")))
         assertEquals("lomire", applyRule(rule, q.word("lomi")))
-        assertEquals(text, rule.toEditableText())
+        assertEquals(text, rule.toEditableText(repo))
     }
 
     @Test
     fun beginsWith() {
         val rule = parseRule(q, q, "word begins with 'b':\n- prepend 'm'")
-        assertEquals("mbar", rule.apply(q.word("bar"),emptyRepo).text)
+        assertEquals("mbar", rule.apply(q.word("bar"), emptyRepo).text)
     }
 
     @Test
     fun applySoundRule() {
-        val soundRule = parseRule(q, q, """
+        val soundRule = parseRule(
+            q, q, """
             sound is 'a':
             - new sound is 'á'
-        """.trimIndent())
+        """.trimIndent()
+        )
         val applySoundRuleInstruction = ApplySoundRuleInstruction(q, RuleRef.to(soundRule), "first vowel")
         assertEquals("lásse", applySoundRuleInstruction.apply(soundRule, null, q.word("lasse"), emptyRepo).text)
     }
 
     @Test
     fun parseApplySoundRule() {
-        val soundRule = parseRule(q, q, """
+        val soundRule = parseRule(
+            q, q, """
             sound is 'a':
             - new sound is 'á'
-        """.trimIndent(), name = "q-lengthen")
+        """.trimIndent(), name = "q-lengthen"
+        )
         val parseContext = q.parseContext(null, soundRule)
-        val applySoundRule = Rule(-1, "q-lengthen-first", q, q, Rule.parseBranches("""
+        val applySoundRule = Rule(
+            -1, "q-lengthen-first", q, q, Rule.parseBranches(
+                """
             - apply sound rule 'q-lengthen' to first vowel
-        """.trimIndent(), parseContext))
+        """.trimIndent(), parseContext
+            )
+        )
         assertEquals("lásse", applySoundRule.apply(q.word("lasse"), emptyRepo).text)
     }
 
     @Test
     fun applySoundRuleToSound() {
-        val soundRule = parseRule(q, q, """
+        val soundRule = parseRule(
+            q, q, """
             sound is 'a':
             - new sound is 'á'
-        """.trimIndent(), name = "q-lengthen-sound")
+        """.trimIndent(), name = "q-lengthen-sound"
+        )
         val parseContext = q.parseContext(null, soundRule)
-        val applySoundRule = Rule(-1, "q-lengthen", q, q, Rule.parseBranches("""
+        val applySoundRule = Rule(
+            -1, "q-lengthen", q, q, Rule.parseBranches(
+                """
             - apply sound rule 'q-lengthen-sound' to first sound
-        """.trimIndent(), parseContext))
+        """.trimIndent(), parseContext
+            )
+        )
         assertEquals("áire", applySoundRule.apply(q.word("aire"), emptyRepo).text)
-        assertEquals("apply sound rule 'q-lengthen-sound' to first sound",
-            applySoundRule.logic.branches[0].instructions[0].toEditableText())
+        assertEquals(
+            "apply sound rule 'q-lengthen-sound' to first sound",
+            applySoundRule.logic.branches[0].instructions[0].toEditableText(repo)
+        )
     }
 
     @Test
@@ -303,64 +352,83 @@ class RuleTest : QBaseTest() {
             phoneme(listOf("c", "k"), "k", ""),
             phoneme(listOf("ch"), "x", "")
         )
-        val soundRule = parseRule(q, q, """
+        val soundRule = parseRule(
+            q, q, """
             sound is 'k':
             - new sound is 'x'
-        """.trimIndent(), name = "q-lengthen-sound")
+        """.trimIndent(), name = "q-lengthen-sound"
+        )
         val parseContext = q.parseContext(null, soundRule)
-        val applySoundRule = Rule(-1, "q-lengthen", q, q, Rule.parseBranches("""
+        val applySoundRule = Rule(
+            -1, "q-lengthen", q, q, Rule.parseBranches(
+                """
             - apply sound rule 'q-lengthen-sound' to first sound
-        """.trimIndent(), parseContext))
+        """.trimIndent(), parseContext
+            )
+        )
         assertEquals("chaered", applySoundRule.apply(q.word("caered"), emptyRepo).text)
     }
 
     @Test
     fun applySoundRuleCase() {
         q.phonemes = listOf(phoneme(listOf("c", "k"), "k", ""), phoneme(listOf("ch"), "x", ""))
-        val soundRule = parseRule(q, q, """
+        val soundRule = parseRule(
+            q, q, """
             sound is 'p':
             - new sound is 'ph'
-        """.trimIndent(), name = "q-lengthen-sound")
+        """.trimIndent(), name = "q-lengthen-sound"
+        )
         val parseContext = q.parseContext(null, soundRule)
-        val applySoundRule = Rule(-1, "q-lengthen", q, q, Rule.parseBranches("""
+        val applySoundRule = Rule(
+            -1, "q-lengthen", q, q, Rule.parseBranches(
+                """
             - apply sound rule 'q-lengthen-sound' to first sound
-        """.trimIndent(), parseContext))
+        """.trimIndent(), parseContext
+            )
+        )
         assertEquals("pherian", applySoundRule.apply(q.word("Perian"), emptyRepo).text)
     }
 
     @Test
     fun soundRuleToEditableText() {
-        val soundRule = parseRule(q, q, """
+        val soundRule = parseRule(
+            q, q, """
             sound is 'a':
             - new sound is 'á'
-        """.trimIndent())
+        """.trimIndent()
+        )
         val applySoundRuleInstruction = ApplySoundRuleInstruction(q, RuleRef.to(soundRule), "first vowel")
-        assertEquals("apply sound rule 'q' to first vowel", applySoundRuleInstruction.toEditableText())
+        assertEquals("apply sound rule 'q' to first vowel", applySoundRuleInstruction.toEditableText(repo))
     }
 
     @Test
     fun beginningOfWord() {
-        val rule = parseRule(ce, q, """
+        val rule = parseRule(
+            ce, q, """
             beginning of word and sound is 'd':
             - new sound is 'l'
-        """.trimIndent())
+        """.trimIndent()
+        )
         assertEquals("lanta", rule.apply(ce.word("danta"), emptyRepo).text)
         assertEquals("beginning of word and sound is 'd'", rule.logic.branches[0].condition.toEditableText())
     }
 
     @Test
     fun endOfWord() {
-        val rule = parseRule(ce, q, """
+        val rule = parseRule(
+            ce, q, """
             end of word and sound is 'i':
             - new sound is 'e'
-        """.trimIndent())
+        """.trimIndent()
+        )
         assertEquals("limbe", rule.apply(ce.word("limbi"), emptyRepo).text)
         assertEquals("end of word and sound is 'i'", rule.logic.branches[0].condition.toEditableText())
     }
 
     @Test
     fun syllableMatcher() {
-        val condition = RuleCondition.parse(ParseBuffer("second to last syllable contains long vowel"), q) as SyllableRuleCondition
+        val condition =
+            RuleCondition.parse(ParseBuffer("second to last syllable contains long vowel"), q) as SyllableRuleCondition
         assertEquals(-2, condition.index)
         assertEquals("long vowel", condition.phonemePattern.phonemeClass!!.name)
         assertTrue(condition.matches(q.word("andúna"), emptyRepo))
@@ -371,7 +439,8 @@ class RuleTest : QBaseTest() {
 
     @Test
     fun syllableMatcherSpecific() {
-        val condition = RuleCondition.parse(ParseBuffer("second to last syllable contains 'ú'"), q) as SyllableRuleCondition
+        val condition =
+            RuleCondition.parse(ParseBuffer("second to last syllable contains 'ú'"), q) as SyllableRuleCondition
         assertEquals(-2, condition.index)
         assertEquals("ú", condition.phonemePattern.literal!!)
         assertTrue(condition.matches(q.word("andúna"), emptyRepo))
@@ -381,14 +450,16 @@ class RuleTest : QBaseTest() {
 
     @Test
     fun syllableMatcherDiphthong() {
-        val condition = RuleCondition.parse(ParseBuffer("first syllable contains a diphthong"), q) as SyllableRuleCondition
+        val condition =
+            RuleCondition.parse(ParseBuffer("first syllable contains a diphthong"), q) as SyllableRuleCondition
         assertTrue(condition.matches(q.word("rauca"), emptyRepo))
         assertFalse(condition.matches(q.word("tie"), emptyRepo))
     }
 
     @Test
     fun syllableMatcherEndsWith() {
-        val condition = RuleCondition.parse(ParseBuffer("first syllable ends with a consonant"), q) as SyllableRuleCondition
+        val condition =
+            RuleCondition.parse(ParseBuffer("first syllable ends with a consonant"), q) as SyllableRuleCondition
         assertTrue(condition.matches(q.word("ampa"), emptyRepo))
         assertFalse(condition.matches(q.word("tie"), emptyRepo))
     }
@@ -403,7 +474,8 @@ class RuleTest : QBaseTest() {
 
     @Test
     fun syllableCountAtLeast() {
-        val condition = RuleCondition.parse(ParseBuffer("number of syllables is at least 2"), q) as SyllableCountRuleCondition
+        val condition =
+            RuleCondition.parse(ParseBuffer("number of syllables is at least 2"), q) as SyllableCountRuleCondition
         assertEquals(">=", condition.condition)
         assertEquals(2, condition.expectCount)
         assertTrue(condition.matches(q.word("andúna"), emptyRepo))
@@ -414,7 +486,8 @@ class RuleTest : QBaseTest() {
 
     @Test
     fun syllableCountNegated() {
-        val condition = RuleCondition.parse(ParseBuffer("number of syllables is not 3"), q) as SyllableCountRuleCondition
+        val condition =
+            RuleCondition.parse(ParseBuffer("number of syllables is not 3"), q) as SyllableCountRuleCondition
         assertEquals(3, condition.expectCount)
         assertFalse(condition.matches(q.word("andúna"), emptyRepo))
         assertTrue(condition.matches(q.word("anca"), emptyRepo))
@@ -429,7 +502,8 @@ class RuleTest : QBaseTest() {
 
     @Test
     fun stress() {
-        val rule = parseRule(q, q, """
+        val rule = parseRule(
+            q, q, """
             number of syllables is 2:
             - stress is on first syllable
             """.trimIndent()
@@ -440,7 +514,8 @@ class RuleTest : QBaseTest() {
 
     @Test
     fun serializeStressRule() {
-        val rule = parseRule(q, q, """
+        val rule = parseRule(
+            q, q, """
             number of syllables is 2:
             - stress is on first syllable
             """.trimIndent()
@@ -458,13 +533,13 @@ class RuleTest : QBaseTest() {
             |word ends with 'r':
             | - append 'i'
         """.trimMargin("|")
-        val rule = parseRule(q, q, ruleText)
+        val rule = repo.rule(ruleText, q)
         assertEquals(1, rule.logic.preInstructions.size)
 
         val word = rule.apply(q.word("sur"), emptyRepo)
         assertEquals("asuri", word.text)
 
-        assertEquals(ruleText, rule.toEditableText())
+        assertEquals(ruleText, rule.toEditableText(repo))
     }
 
     @Test
@@ -475,7 +550,7 @@ class RuleTest : QBaseTest() {
         val data = instruction.toSerializedFormat()
         val deserialized = ruleInstructionFromSerializedFormat(emptyRepo, q, data)
         assertEquals("utul", deserialized.apply(rule, null, q.word("tul"), emptyRepo).text)
-        assertEquals("prepend first vowel", instruction.toEditableText())
+        assertEquals("prepend first vowel", instruction.toEditableText(repo))
     }
 
     @Test
@@ -483,8 +558,8 @@ class RuleTest : QBaseTest() {
         val rule = parseRule(q, q, "word ends with 'ea':\n- change ending to ''")
         val result = rule.apply(q.word("yaimea"), emptyRepo)
         assertEquals("yaim", result.text)
-        assertEquals("change ending to ''", rule.singleInstruction().toEditableText())
-        assertEquals("", rule.logic.branches[0].toSummaryText(false))
+        assertEquals("change ending to ''", rule.singleInstruction().toEditableText(repo))
+        assertEquals("", rule.logic.branches[0].toSummaryText(repo, false))
     }
 
     @Test
@@ -492,7 +567,7 @@ class RuleTest : QBaseTest() {
         val rule = parseRule(q, q, "word ends with 'r':\n- mark word as strong")
         val result = rule.apply(q.word("anar"), emptyRepo)
         assertEquals("strong", result.classes.single())
-        assertEquals("mark word as strong", rule.singleInstruction().toEditableText())
+        assertEquals("mark word as strong", rule.singleInstruction().toEditableText(repo))
     }
 
     private fun Rule.singleInstruction() = logic.branches.single().instructions.single()
@@ -511,17 +586,19 @@ class RuleTest : QBaseTest() {
     fun insert() {
         val rule = parseRule(q, q, "- insert 'i' before last consonant")
         assertEquals("adain", rule.apply(q.word("adan"), emptyRepo).text)
-        assertEquals("insert 'i' before last consonant", rule.singleInstruction().toEditableText())
+        assertEquals("insert 'i' before last consonant", rule.singleInstruction().toEditableText(repo))
     }
 
     @Test
     fun absolutePhonemeRuleCondition() {
-        val rule = parseRule(q, q, """
+        val rule = parseRule(
+            q, q, """
             last sound is consonant and second to last sound is vowel:
             - insert 'i' before last consonant
             otherwise:
             - no change
-         """.trimIndent())
+         """.trimIndent()
+        )
         assertEquals("adain", rule.apply(q.word("adan"), emptyRepo).text)
         assertEquals("fela", rule.apply(q.word("fela"), emptyRepo).text)
         assertFalse(rule.logic.branches.first().condition.refersToPhoneme(q.phonemes.find { "a" in it.graphemes }!!))
@@ -529,12 +606,14 @@ class RuleTest : QBaseTest() {
 
     @Test
     fun baseWord() {
-        val rule = parseRule(q, q, """
+        val rule = parseRule(
+            q, q, """
             first sound of base word in CE is 'm':
             - prepend 'm'
             otherwise:
             - no change
-         """.trimIndent())
+         """.trimIndent()
+        )
 
         val repo = repoWithQ().apply {
             addLanguage(ce)
@@ -549,10 +628,12 @@ class RuleTest : QBaseTest() {
 
     @Test
     fun baseWordEndsWith() {
-        val rule = parseRule(q, q, """
+        val rule = parseRule(
+            q, q, """
             base word in CE ends with 'm':
             - change ending to 'm'
-         """.trimIndent())
+         """.trimIndent()
+        )
 
         val repo = repoWithQ().apply {
             addLanguage(ce)
@@ -563,6 +644,40 @@ class RuleTest : QBaseTest() {
 
         assertEquals("talam", rule.apply(talan, repo).text)
         assertEquals("base word in CE ends with 'm'", rule.logic.branches[0].condition.toEditableText())
+    }
+
+    @Test
+    fun prependMorpheme() {
+        val oe = Language("Old English", "OE")
+        val repo = InMemoryGraphRepository().with(oe)
+        val gePrefix = repo.addWord("ge-", "Prefix: ge", language = oe)
+        val rule = repo.rule("- prepend morpheme 'ge-: Prefix: ge'", fromLanguage = oe)
+        val frignan = repo.addWord("frignan", language = oe)
+        val result = rule.apply(frignan, repo)
+        assertEquals("gefrignan", result.text)
+
+        assertEquals("prepend morpheme 'ge-: Prefix: ge'", rule.firstInstruction.toEditableText(repo))
+        assertEquals("ge-", rule.firstInstruction.toSummaryText(repo, rule.logic.branches[0].condition))
+
+        val instruction = rule.firstInstruction
+        val data = instruction.toSerializedFormat()
+        val deserialized = ruleInstructionFromSerializedFormat(repo, oe, data)
+        assertTrue(deserialized is MorphemeInstruction)
+        assertEquals(gePrefix.id, (deserialized as MorphemeInstruction).morphemeId)
+    }
+
+    @Test
+    fun appendMorpheme() {
+        val on = Language("Old Norse", "ON")
+        val repo = InMemoryGraphRepository().with(on)
+        val inn = repo.addWord("inn", "the", language = on)
+        val rule = repo.rule("- append morpheme 'inn: the'", fromLanguage = on)
+        val hestr = repo.addWord("hestr", language = on)
+        val result = rule.apply(hestr, repo)
+        assertEquals("hestrinn", result.text)
+        assertEquals(1, result.segments!!.size)
+        assertEquals(inn, result.segments!![0].sourceWord)
+        assertEquals(3, result.segments!![0].length)
     }
 
     /*
@@ -614,16 +729,5 @@ fun parseRule(
     Rule.parseBranches(text, context ?: createParseContext(fromLanguage, toLanguage, repo)),
     addedCategories, null, fromPOS, toPOS, emptyList(), null
 )
-
-fun createParseContext(
-    fromLanguage: Language,
-    toLanguage: Language,
-    repo: GraphRepository?,
-    vararg rules: Rule
-) = RuleParseContext(fromLanguage, toLanguage) { ruleName ->
-    repo?.ruleByName(ruleName)?.let { RuleRef.to(it) }
-        ?: rules.find { rule -> rule.name == ruleName }?.let { RuleRef.to(it) }
-        ?: throw RuleParseException("no such rule")
-}
 
 val Rule.firstInstruction get() = logic.branches[0].instructions[0]

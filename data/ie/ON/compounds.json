@@ -109,27 +109,11 @@
         ]
     },
     {
-        "id": 1383,
-        "compoundId": 1381,
-        "componentIds": [
-            1382,
-            1320
-        ]
-    },
-    {
         "id": 1457,
         "compoundId": 1455,
         "componentIds": [
             1456,
             951
-        ]
-    },
-    {
-        "id": 1465,
-        "compoundId": 1464,
-        "componentIds": [
-            1445,
-            1320
         ]
     },
     {
@@ -141,35 +125,11 @@
         ]
     },
     {
-        "id": 1482,
-        "compoundId": 1480,
-        "componentIds": [
-            1481,
-            1320
-        ]
-    },
-    {
         "id": 1621,
         "compoundId": 1620,
         "componentIds": [
             931,
             1476
-        ]
-    },
-    {
-        "id": 1678,
-        "compoundId": 1676,
-        "componentIds": [
-            1677,
-            1320
-        ]
-    },
-    {
-        "id": 1694,
-        "compoundId": 1693,
-        "componentIds": [
-            964,
-            1320
         ]
     },
     {
@@ -310,15 +270,6 @@
         "headIndex": 1
     },
     {
-        "id": 4987,
-        "compoundId": 4986,
-        "componentIds": [
-            1354,
-            1475
-        ],
-        "headIndex": 1
-    },
-    {
         "id": 5001,
         "compoundId": 4999,
         "componentIds": [
@@ -418,5 +369,30 @@
             5129,
             5016
         ]
+    },
+    {
+        "id": 5145,
+        "compoundId": 5143,
+        "componentIds": [
+            5144,
+            5146
+        ]
+    },
+    {
+        "id": 5153,
+        "compoundId": 5152,
+        "componentIds": [
+            972,
+            5154
+        ]
+    },
+    {
+        "id": 5163,
+        "compoundId": 5160,
+        "componentIds": [
+            5162,
+            1472
+        ],
+        "headIndex": 0
     }
 ]

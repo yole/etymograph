@@ -88,7 +88,7 @@ class RuleController {
 
     @GetMapping("/{graph}/rules")
     fun allRules(repo: GraphRepository): List<RuleShortViewModel> {
-        return repo.allRules().map { it.toShortViewModel() }
+        return repo.allRules().map { it.toShortViewModel(repo) }
     }
 
     @GetMapping("/{graph}/rules/{lang}")
@@ -105,7 +105,7 @@ class RuleController {
         for (paradigmRule in paradigmRules.entries) {
             ruleGroups
                 .getOrPut("Grammar: ${paradigmRule.key}") { mutableListOf() }
-                .addAll(paradigmRule.value.map { it.toShortViewModel() })
+                .addAll(paradigmRule.value.map { it.toShortViewModel(repo) })
         }
 
         val sequences = repo.ruleSequencesForLanguage(language)
@@ -119,14 +119,14 @@ class RuleController {
                 if (rule is Rule) {
                     allSequenceRules.add(rule)
                 }
-                group.add(rule.toShortViewModel(step.optional))
+                group.add(rule.toShortViewModel(repo, step.optional))
             }
         }
 
         for (rule in repo.allRules().filter { it.toLanguage == language }) {
             if (rule in allParadigmRules || rule in allSequenceRules) continue
             val categoryName = if (rule.isPhonemic()) "Phonetics" else "Grammar: Other"
-            ruleGroups.getOrPut(categoryName) { mutableListOf() }.add(rule.toShortViewModel())
+            ruleGroups.getOrPut(categoryName) { mutableListOf() }.add(rule.toShortViewModel(repo))
         }
 
         return RuleListViewModel(
@@ -144,9 +144,9 @@ class RuleController {
         return repo.resolveRule(id).toViewModel(repo)
     }
 
-    private fun LangEntity.toShortViewModel(optional: Boolean = false): RuleShortViewModel {
+    private fun LangEntity.toShortViewModel(repo: GraphRepository, optional: Boolean = false): RuleShortViewModel {
         return when (this) {
-            is Rule -> RuleShortViewModel(id, name, toLanguage.shortName, toSummaryText(), optional)
+            is Rule -> RuleShortViewModel(id, name, toLanguage.shortName, toSummaryText(repo), optional)
             is RuleSequence -> RuleShortViewModel(id, "sequence: $name", toLanguage.shortName, "", optional)
             else -> throw IllegalStateException("Unknown entity type")
         }
@@ -166,8 +166,8 @@ class RuleController {
             id, name,
             fromLanguage.shortName, toLanguage.shortName,
             fromLanguage.name, toLanguage.name,
-            toSummaryText(),
-            toEditableText(),
+            toSummaryText(repo),
+            toEditableText(repo),
             addedCategories,
             replacedCategories,
             toReadableCategories(fromLanguage, addedCategories),
@@ -179,11 +179,11 @@ class RuleController {
             paradigm?.id,
             paradigm?.name,
             isPhonemic(),
-            logic.preInstructions.map { it.toRichText() },
+            logic.preInstructions.map { it.toRichText(repo) },
             logic.branches.map { branch ->
                 branch.toViewModel(isUnconditional(), examples.filter { branch in it.branches }, repo)
             },
-            logic.postInstructions.map { it.toRichText() },
+            logic.postInstructions.map { it.toRichText(repo) },
             links.mapNotNull { (link, langEntity) ->
                 val rule = langEntity as? Rule
                 rule?.let {
@@ -228,7 +228,7 @@ class RuleController {
     private fun RuleBranch.toViewModel(isUnconditional: Boolean, examples: List<RuleExampleData>, repo: GraphRepository): RuleBranchViewModel {
         return RuleBranchViewModel(
             if (isUnconditional) RichText(emptyList()) else condition.toRichText(),
-            instructions.map { it.toRichText() },
+            instructions.map { it.toRichText(repo) },
             comment,
             examples.map { exampleToViewModel(it, repo) }
         )
@@ -282,7 +282,7 @@ class RuleController {
     }
 
     private fun parseContext(repo: GraphRepository, fromLanguage: Language, toLanguage: Language): RuleParseContext =
-        RuleParseContext(fromLanguage, toLanguage) {
+        RuleParseContext(repo, fromLanguage, toLanguage) {
             RuleRef.to(repo.resolveRule(it))
         }
 

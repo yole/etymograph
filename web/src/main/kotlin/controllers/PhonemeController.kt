@@ -152,7 +152,7 @@ fun buildPhonemeRuleGroup(graph: GraphRepository, title: String, phoneme: Phonem
     return PhonemeRuleGroupViewModel(
         title,
         rules.map {
-            PhonemeRuleViewModel(it.id, it.name, it.toSummaryText())
+            PhonemeRuleViewModel(it.id, it.name, it.toSummaryText(graph))
         }
     )
 }

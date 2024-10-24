@@ -3,8 +3,14 @@ import {useRouter} from "next/router";
 
 function RichTextFragment(params) {
     const router = useRouter()
+    const graph = router.query.graph
     if (params.fragment.linkType === "rule") {
-        return <Link href={`/${router.query.graph}/rule/${params.fragment.linkId}`}>{params.fragment.text}</Link>
+        return <Link href={`/${graph}/rule/${params.fragment.linkId}`}>{params.fragment.text}</Link>
+    }
+    if (params.fragment.linkType === "word") {
+        return <Link href={`/${graph}/word/${params.fragment.linkLanguage}/${params.fragment.linkData}/${params.fragment.linkId}`}>
+            {params.fragment.text}
+        </Link>
     }
 
     const textWithTooltip = (params.fragment.tooltip !== null)

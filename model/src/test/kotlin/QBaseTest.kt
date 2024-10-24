@@ -66,15 +66,3 @@ open class QBaseTest {
         return rule.apply(word, emptyRepo).text
     }
 }
-
-fun GraphRepository.rule(
-    text: String,
-    fromLanguage: Language,
-    toLanguage: Language = fromLanguage,
-    name: String = "q", addedCategories: String? = null
-): Rule {
-    return addRule(name, fromLanguage, toLanguage,
-        Rule.parseBranches(text, createParseContext(fromLanguage, toLanguage, this)),
-        addedCategories = addedCategories
-    )
-}

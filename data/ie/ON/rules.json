@@ -5265,5 +5265,293 @@
         "fromPOS": [
             "V"
         ]
+    },
+    {
+        "id": 5169,
+        "name": "on-def-nom-sg",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "AppendMorpheme",
+                        "args": [
+                            "1321"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "ClassMatches",
+                    "characters": "m"
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'n'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "f"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "cls": "vowel"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "AppendMorpheme",
+                        "args": [
+                            "1547"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "ClassMatches",
+                    "characters": "f"
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'t'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "n"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "cls": "vowel"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "AppendMorpheme",
+                        "args": [
+                            "1320"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "ClassMatches",
+                    "characters": "n"
+                }
+            }
+        ],
+        "addedCategories": ".DEF.NOM.SG",
+        "fromPOS": [
+            "N"
+        ]
+    },
+    {
+        "id": 5170,
+        "name": "noun-def-nom-pl",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [],
+        "addedCategories": ".DEF.NOM.PL",
+        "fromPOS": [
+            "N"
+        ]
+    },
+    {
+        "id": 5171,
+        "name": "on-def-acc-sg",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "AppendMorpheme",
+                        "args": [
+                            "1472"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "ClassMatches",
+                    "characters": "m"
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'na'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "f"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "cls": "vowel"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "AppendMorpheme",
+                        "args": [
+                            "1548"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "ClassMatches",
+                    "characters": "f"
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'t'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "n"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "cls": "vowel"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "AppendMorpheme",
+                        "args": [
+                            "1475"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "ClassMatches",
+                    "characters": "n"
+                }
+            }
+        ],
+        "addedCategories": ".DEF.ACC.SG",
+        "fromPOS": [
+            "N"
+        ],
+        "preInstructions": [
+            {
+                "type": "ApplyRule",
+                "args": [
+                    "1010"
+                ]
+            }
+        ]
+    },
+    {
+        "id": 5172,
+        "name": "noun-def-acc-pl",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [],
+        "addedCategories": ".DEF.ACC.PL",
+        "fromPOS": [
+            "N"
+        ]
+    },
+    {
+        "id": 5173,
+        "name": "noun-def-dat-sg",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [],
+        "addedCategories": ".DEF.DAT.SG",
+        "fromPOS": [
+            "N"
+        ]
+    },
+    {
+        "id": 5174,
+        "name": "noun-def-dat-pl",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [],
+        "addedCategories": ".DEF.DAT.PL",
+        "fromPOS": [
+            "N"
+        ]
+    },
+    {
+        "id": 5175,
+        "name": "noun-def-gen-sg",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [],
+        "addedCategories": ".DEF.GEN.SG",
+        "fromPOS": [
+            "N"
+        ]
+    },
+    {
+        "id": 5176,
+        "name": "noun-def-gen-pl",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [],
+        "addedCategories": ".DEF.GEN.PL",
+        "fromPOS": [
+            "N"
+        ]
     }
 ]
