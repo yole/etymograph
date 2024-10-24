@@ -117,14 +117,6 @@
         ]
     },
     {
-        "id": 1479,
-        "compoundId": 1478,
-        "componentIds": [
-            1445,
-            1476
-        ]
-    },
-    {
         "id": 1621,
         "compoundId": 1620,
         "componentIds": [
@@ -268,14 +260,6 @@
             4944
         ],
         "headIndex": 1
-    },
-    {
-        "id": 5001,
-        "compoundId": 4999,
-        "componentIds": [
-            5000,
-            1473
-        ]
     },
     {
         "id": 5015,

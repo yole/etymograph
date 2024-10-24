@@ -5428,13 +5428,75 @@
     },
     {
         "id": 5173,
-        "name": "noun-def-dat-sg",
+        "name": "on-def-dat-sg",
         "fromLang": "ON",
         "toLang": "ON",
-        "branches": [],
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "AppendMorpheme",
+                        "args": [
+                            "1473"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "ClassMatches",
+                    "characters": "m"
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "AppendMorpheme",
+                        "args": [
+                            "1549"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "ClassMatches",
+                    "characters": "f"
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "AppendMorpheme",
+                        "args": [
+                            "1476"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "ClassMatches",
+                    "characters": "n"
+                }
+            }
+        ],
         "addedCategories": ".DEF.DAT.SG",
         "fromPOS": [
             "N"
+        ],
+        "preInstructions": [
+            {
+                "type": "ApplyRule",
+                "args": [
+                    "1011"
+                ]
+            }
+        ],
+        "postInstructions": [
+            {
+                "type": "ApplyRule",
+                "args": [
+                    "5177"
+                ]
+            }
         ]
     },
     {

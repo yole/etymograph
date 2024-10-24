@@ -4587,7 +4587,10 @@
         "id": 5000,
         "text": "herr",
         "gloss": "troop",
-        "pos": "N"
+        "pos": "N",
+        "classes": [
+            "m"
+        ]
     },
     {
         "id": 5002,
