@@ -5290,31 +5290,6 @@
             {
                 "instructions": [
                     {
-                        "type": "Append",
-                        "args": [
-                            "'n'"
-                        ]
-                    }
-                ],
-                "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "f"
-                        },
-                        {
-                            "type": "leaf",
-                            "cond": "EndsWith",
-                            "cls": "vowel"
-                        }
-                    ]
-                }
-            },
-            {
-                "instructions": [
-                    {
                         "type": "AppendMorpheme",
                         "args": [
                             "1547"
@@ -5325,31 +5300,6 @@
                     "type": "leaf",
                     "cond": "ClassMatches",
                     "characters": "f"
-                }
-            },
-            {
-                "instructions": [
-                    {
-                        "type": "Append",
-                        "args": [
-                            "'t'"
-                        ]
-                    }
-                ],
-                "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "n"
-                        },
-                        {
-                            "type": "leaf",
-                            "cond": "EndsWith",
-                            "cls": "vowel"
-                        }
-                    ]
                 }
             },
             {
@@ -5371,6 +5321,14 @@
         "addedCategories": ".DEF.NOM.SG",
         "fromPOS": [
             "N"
+        ],
+        "postInstructions": [
+            {
+                "type": "ApplyRule",
+                "args": [
+                    "5177"
+                ]
+            }
         ]
     },
     {
@@ -5408,31 +5366,6 @@
             {
                 "instructions": [
                     {
-                        "type": "Append",
-                        "args": [
-                            "'na'"
-                        ]
-                    }
-                ],
-                "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "f"
-                        },
-                        {
-                            "type": "leaf",
-                            "cond": "EndsWith",
-                            "cls": "vowel"
-                        }
-                    ]
-                }
-            },
-            {
-                "instructions": [
-                    {
                         "type": "AppendMorpheme",
                         "args": [
                             "1548"
@@ -5443,31 +5376,6 @@
                     "type": "leaf",
                     "cond": "ClassMatches",
                     "characters": "f"
-                }
-            },
-            {
-                "instructions": [
-                    {
-                        "type": "Append",
-                        "args": [
-                            "'t'"
-                        ]
-                    }
-                ],
-                "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "n"
-                        },
-                        {
-                            "type": "leaf",
-                            "cond": "EndsWith",
-                            "cls": "vowel"
-                        }
-                    ]
                 }
             },
             {
@@ -5495,6 +5403,14 @@
                 "type": "ApplyRule",
                 "args": [
                     "1010"
+                ]
+            }
+        ],
+        "postInstructions": [
+            {
+                "type": "ApplyRule",
+                "args": [
+                    "5177"
                 ]
             }
         ]
@@ -5552,6 +5468,39 @@
         "addedCategories": ".DEF.GEN.PL",
         "fromPOS": [
             "N"
+        ]
+    },
+    {
+        "id": 5177,
+        "name": "on-article-vowel-deletion",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "SoundDisappears",
+                        "args": [
+                            "0"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "cls": "morpheme-initial vowel",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": -1,
+                            "cls": "vowel"
+                        }
+                    ]
+                }
+            }
         ]
     }
 ]

@@ -1,12 +1,12 @@
 package ru.yole.etymograph
 
-open class PhonemeClass(val name: String, var matchingPhonemes: List<String>) {
+open class PhonemeClass(val name: String, var matchingPhonemes: List<String> = emptyList()) {
     open fun matchesCurrent(it: PhonemeIterator): Boolean {
         return it.current in matchingPhonemes
     }
 
     companion object {
-        val diphthong = object : PhonemeClass("diphthong", emptyList()) {
+        val diphthong = object : PhonemeClass("diphthong") {
             override fun matchesCurrent(it: PhonemeIterator): Boolean {
                 val next = it.atRelative(1)
                 if (next != null && it.current + next in it.language.diphthongs) {
@@ -20,7 +20,7 @@ open class PhonemeClass(val name: String, var matchingPhonemes: List<String>) {
             }
         }
 
-        val stressed = object : PhonemeClass("stressed", emptyList()) {
+        val stressed = object : PhonemeClass("stressed") {
             override fun matchesCurrent(it: PhonemeIterator): Boolean {
                 if (it.stressedPhonemeIndex == it.index) return true
                 if (it.index > 0 && it.stressedPhonemeIndex == it.index - 1) {
@@ -30,40 +30,47 @@ open class PhonemeClass(val name: String, var matchingPhonemes: List<String>) {
             }
         }
 
-        val wordInitial = object : PhonemeClass("word-initial", emptyList()) {
+        val wordInitial = object : PhonemeClass("word-initial") {
             override fun matchesCurrent(it: PhonemeIterator): Boolean {
                 return it.index == 0
             }
         }
 
-        val wordFinal = object : PhonemeClass("word-final", emptyList()) {
+        val wordFinal = object : PhonemeClass("word-final") {
             override fun matchesCurrent(it: PhonemeIterator): Boolean {
                 return it.index == it.size - 1
             }
         }
 
-        val syllableInitial = object : PhonemeClass("syllable-initial", emptyList()) {
+        val syllableInitial = object : PhonemeClass("syllable-initial") {
             override fun matchesCurrent(it: PhonemeIterator): Boolean {
                 val syllables = it.syllables ?: return false
                 return syllables.any { s -> it.index == s.startIndex }
             }
         }
 
-        val syllableFinal = object : PhonemeClass("syllable-final", emptyList()) {
+        val syllableFinal = object : PhonemeClass("syllable-final") {
             override fun matchesCurrent(it: PhonemeIterator): Boolean {
                 val syllables = it.syllables ?: return false
                 return syllables.any { s -> it.index == s.endIndex - 1 }
             }
         }
 
-        val geminate = object  : PhonemeClass("geminate", emptyList()) {
+        val morphemeInitial = object : PhonemeClass("morpheme-initial") {
+            override fun matchesCurrent(it: PhonemeIterator): Boolean {
+                val segments = it.segments ?: return false
+                return segments.any { s -> it.index == s.firstCharacter }
+            }
+        }
+
+        val geminate = object  : PhonemeClass("geminate") {
             override fun matchesCurrent(it: PhonemeIterator): Boolean {
                 return it.current == it.atRelative(1) || it.current == it.atRelative(-1)
             }
         }
 
         val specialPhonemeClasses = listOf(
-            diphthong, stressed, wordInitial, wordFinal, syllableInitial, syllableFinal, geminate
+            diphthong, stressed, wordInitial, wordFinal, syllableInitial, syllableFinal, morphemeInitial, geminate
         )
 
         const val vowelClassName = "vowel"

@@ -449,7 +449,7 @@ class RelativePhonemeRuleCondition(
 
     override fun matches(word: Word, graph: GraphRepository, trace: RuleTrace?): Boolean {
         if (seekTarget == null) {
-            throw IllegalStateException("This condition is  phonemic")
+            throw IllegalStateException("This condition is phonemic")
         }
         val matchWord = graph.findWordToMatch(word, baseLanguageShortName) ?: return false
 

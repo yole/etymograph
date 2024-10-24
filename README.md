@@ -112,7 +112,8 @@ In addition to the classes defined in each language, you can use a number of spe
  * `word-initial` matches the first phoneme of a word;
  * `word-final` matches the last phoneme of a word;
  * `syllable-initial` matches the first phoneme in a syllable;
- * `syllable-final` matches the last phonene of a syllable;
+ * `syllable-final` matches the last phoneme of a syllable;
+ * `morpheme-initial` matches the first phoneme of a morpheme (portion of the word added with 'append morpheme' instruction);
  * `stressed` matches the vowel in the stressed syllable of a word.
 
 Any phoneme class can be inverted by prefixing it with `non-`, for example: `non-word-initial`.
@@ -213,6 +214,9 @@ The following instructions can be used in morphological rules:
    in single quotes (for example, `append 'a'`) or as a reference to a phoneme in the word
    (for example, `append last vowel`).
  * `prepend`: Prepend a prefix to the word. Argument is specified in the same way as with `append`.
+ * `append morpheme '<text>: <gloss>'`, `prepend morpheme '<text>: <gloss>'`: Appends or prepends the text of the
+   specified word. Referencing the word allows you to link to its origin and therefore to indicate how the morpheme
+   came to be.
  * `change ending to`: Change the part of the word matched by the `word ends with` condition in the preceding
    condition line to the specified ending (always specified as a literal string in single quotes).
  * `insert '<sound>' <before|after> <position>`: Inserts characters into the word at the given position.

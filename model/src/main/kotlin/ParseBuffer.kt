@@ -82,7 +82,7 @@ class ParseBuffer(val s: String) {
     }
 
     fun fail(message: String): Nothing {
-        throw RuleParseException("$message in $s")
+        throw RuleParseException("$message in $s at $pos")
     }
 
     companion object {

@@ -338,5 +338,8 @@ class PhonemeIterator {
 
     val syllables: List<Syllable>?
         get() = word?.let { breakIntoSyllables(it) }
+
+    val segments: List<WordSegment>?
+        get() = word?.segments
 }
 
