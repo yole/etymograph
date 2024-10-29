@@ -81,6 +81,30 @@ class CorpusControllerTest {
     }
 
     @Test
+    fun alternativesCompound() {
+        val corpusParams = CorpusController.CorpusTextParams(text = "elentari ortanen")
+        val corpusTextViewModel = corpusController.newText(graph, "q", corpusParams)
+
+        val elentari = graph.findOrAddWord("elentari", fixture.q, null, pos = "N")
+        val elen = graph.findOrAddWord("elen", fixture.q, "star", pos = "N")
+        val tari = graph.findOrAddWord("tari", fixture.q, "queen", pos = "N")
+        val compound = graph.createCompound(elentari, elen)
+        compound.components.add(tari)
+
+        val accRule = fixture.setupParadigm()
+
+        val alternatives = corpusController.requestAlternatives(graph, corpusTextViewModel.id, 0)
+        assertEquals(1, alternatives.size)
+        assertEquals("star-queen.ACC", alternatives[0].gloss)
+        assertEquals(accRule.id, alternatives[0].ruleId)
+
+        corpusController.acceptAlternative(graph, corpusTextViewModel.id,
+            CorpusController.AcceptAlternativeParameters(0, alternatives[0].wordId, alternatives[0].ruleId))
+        val word = graph.corpusTextById(corpusTextViewModel.id)!!.wordByIndex(0)!!
+        assertEquals("star-queen.ACC", word.getOrComputeGloss(graph))
+    }
+
+    @Test
     fun alternativesHomonym() {
         val corpusParams = CorpusController.CorpusTextParams(text = "Elen sila...")
         val corpusTextViewModel = corpusController.newText(graph, "q", corpusParams)

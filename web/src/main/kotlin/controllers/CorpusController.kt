@@ -151,7 +151,7 @@ class CorpusController {
                     emptyList()
                 else
                     listOf(AlternativeViewModel(gloss, it.id, -1))
-                if (it.glossOrNP() == null) {
+                if (it.glossOrNP() == null && !repo.isCompound(it)) {
                     baseWord
                 }
                 else {
@@ -179,6 +179,7 @@ class CorpusController {
         else {
             val rule = repo.resolveRule(params.ruleId)
             val gloss = word.glossOrNP()
+                ?: (if (repo.isCompound(word)) word.getOrComputeGloss(repo) else null)
                 ?: badRequest("Accepting alternative with unglossed word ${word.id}")
 
             val linkedWord = repo.getLinksTo(word).singleOrNull { it.rules == listOf(rule) }?.fromEntity as? Word
