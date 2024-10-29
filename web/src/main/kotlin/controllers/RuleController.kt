@@ -78,7 +78,8 @@ class RuleController {
         val sequenceId: Int? = null,
         val sequenceName: String? = null,
         val sequenceFromLang: String? = null,
-        val sequenceToLang: String? = null
+        val sequenceToLang: String? = null,
+        val paradigmId: Int? = null
     )
 
     data class RuleListViewModel(
@@ -95,46 +96,59 @@ class RuleController {
     fun rules(repo: GraphRepository, @PathVariable lang: String): RuleListViewModel {
         val language = repo.resolveLanguage(lang)
 
-        val ruleGroups = mutableMapOf<String, MutableList<RuleShortViewModel>>()
+        data class RuleGroup(
+            val name: String, val paradigm: Paradigm?, val sequence: RuleSequence?,
+            val rules: MutableList<RuleShortViewModel> = mutableListOf()
+        )
+
+        val ruleGroups = mutableListOf<RuleGroup>()
 
         val paradigms = repo.paradigmsForLanguage(language)
-        val paradigmRules = paradigms.associate { it.name to it.collectAllRules() }
+        val paradigmRules = paradigms.associateWith { it.collectAllRules() }
         val allParadigmRules = paradigmRules.values.flatten().toSet()
-        val ruleSeqMap = mutableMapOf<String, RuleSequence>()
 
-        for (paradigmRule in paradigmRules.entries) {
-            ruleGroups
-                .getOrPut("Grammar: ${paradigmRule.key}") { mutableListOf() }
-                .addAll(paradigmRule.value.map { it.toShortViewModel(repo) })
+        for (paradigm in paradigms) {
+            val rules = paradigm.collectAllRules()
+            ruleGroups.add(RuleGroup(
+                "Grammar: ${paradigm.name}", paradigm, null,
+                rules.mapTo(mutableListOf()) { it.toShortViewModel(repo) })
+            )
+        }
+        ruleGroups.sortBy { group ->
+            language.pos.indexOfFirst { pos -> pos.abbreviation == group.paradigm!!.pos.firstOrNull() }
         }
 
         val sequences = repo.ruleSequencesForLanguage(language)
         val allSequenceRules = mutableSetOf<Rule>()
         for (sequence in sequences) {
             val groupName = "Phonetics: ${sequence.name}"
-            val group = ruleGroups.getOrPut(groupName) { mutableListOf() }
-            ruleSeqMap[groupName] = sequence
+            val group = RuleGroup(groupName, null, sequence)
+            ruleGroups.add(group)
             for (step in sequence.steps) {
                 val rule = repo.langEntityById(step.ruleId)!!
                 if (rule is Rule) {
                     allSequenceRules.add(rule)
                 }
-                group.add(rule.toShortViewModel(repo, step.optional))
+                group.rules.add(rule.toShortViewModel(repo, step.optional))
             }
         }
 
+        val phoneticsGroup by lazy { RuleGroup("Phonetics", null, null).also { ruleGroups.add(it) } }
+        val grammarOtherGroup by lazy { RuleGroup("Grammar: Other", null, null).also { ruleGroups.add(it) } }
+
         for (rule in repo.allRules().filter { it.toLanguage == language }) {
             if (rule in allParadigmRules || rule in allSequenceRules) continue
-            val categoryName = if (rule.isPhonemic()) "Phonetics" else "Grammar: Other"
-            ruleGroups.getOrPut(categoryName) { mutableListOf() }.add(rule.toShortViewModel(repo))
+            val group = if (rule.isPhonemic()) phoneticsGroup else grammarOtherGroup
+            group.rules.add(rule.toShortViewModel(repo))
         }
 
         return RuleListViewModel(
             language.name,
-            ruleGroups.entries.map {
-                val seq = ruleSeqMap[it.key]
-                RuleGroupViewModel(it.key, it.value, seq?.id, seq?.name,
-                    seq?.fromLanguage?.shortName, seq?.toLanguage?.shortName)
+            ruleGroups.map {
+                RuleGroupViewModel(it.name, it.rules,
+                    it.sequence?.id, it.sequence?.name, it.sequence?.fromLanguage?.shortName, it.sequence?.toLanguage?.shortName,
+                    it.paradigm?.id
+                )
             }
         )
     }

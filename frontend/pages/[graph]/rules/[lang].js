@@ -30,6 +30,7 @@ export default function RuleList(params) {
         <Breadcrumbs langId={router.query.lang} langName={ruleList.toLangFullName} title="Rules"/>
         {ruleList.ruleGroups.map(g => <>
             <h2 key={g.groupName}>{g.groupName}</h2>
+            {g.paradigmId && <p><Link href={`/${graph}/paradigm/${g.paradigmId}`}>Paradigm</Link></p>}
             {(g.sequenceId === null || sequenceEditId !== g.sequenceId) && <>
                 <table className="tableWithBorders"><tbody>
                     {g.rules.map(r => <tr key={r.id}>
