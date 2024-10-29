@@ -4626,6 +4626,31 @@
                     {
                         "type": "ChangeSound",
                         "args": [
+                            "au"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "v-strong-2"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "ó",
+                            "relative": false
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
                             "a"
                         ]
                     }
@@ -4847,6 +4872,31 @@
                         "args": [
                             "u"
                         ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "v-strong-2"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "ó",
+                            "relative": false
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "u"
+                        ]
                     },
                     {
                         "type": "SoundDisappears",
@@ -4975,6 +5025,11 @@
                         }
                     ]
                 }
+            }
+        ],
+        "sourceRefs": [
+            {
+                "refText": "Viking Language 8.8"
             }
         ]
     },
@@ -5834,6 +5889,289 @@
                         }
                     ]
                 }
+            }
+        ]
+    },
+    {
+        "id": 5178,
+        "name": "on-past-subj-1sg",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'ja'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "or",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "k"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "g"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'a'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".PST.SUBJ.1SG",
+        "fromPOS": [
+            "V"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "Viking Language 9.10"
+            }
+        ],
+        "preInstructions": [
+            {
+                "type": "ApplyRule",
+                "args": [
+                    "5186"
+                ]
+            }
+        ]
+    },
+    {
+        "id": 5179,
+        "name": "on-past-subj-1pl",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "5186"
+                        ]
+                    },
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'im'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".PST.SUBJ.1PL",
+        "fromPOS": [
+            "V"
+        ]
+    },
+    {
+        "id": 5180,
+        "name": "on-past-subj-2sg",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "5186"
+                        ]
+                    },
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'ir'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".PST.SUBJ.2SG",
+        "fromPOS": [
+            "V"
+        ]
+    },
+    {
+        "id": 5181,
+        "name": "on-past-subj-2pl",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "5186"
+                        ]
+                    },
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'ið'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".PST.SUBJ.2PL",
+        "fromPOS": [
+            "V"
+        ]
+    },
+    {
+        "id": 5182,
+        "name": "on-past-subj-3sg",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "5186"
+                        ]
+                    },
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'i'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".PST.SUBJ.3SG",
+        "fromPOS": [
+            "V"
+        ]
+    },
+    {
+        "id": 5183,
+        "name": "on-past-subj-3pl",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "5186"
+                        ]
+                    },
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'i'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".PST.SUBJ.3PL",
+        "fromPOS": [
+            "V"
+        ]
+    },
+    {
+        "id": 5186,
+        "name": "on-past-subj-stem",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1579"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "or",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "3conj"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "4conj"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "strong"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "NoChange",
+                        "args": []
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "fromPOS": [
+            "V"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "Viking Language 9.10"
+            }
+        ],
+        "preInstructions": [
+            {
+                "type": "ApplyRule",
+                "args": [
+                    "5032"
+                ]
             }
         ]
     }

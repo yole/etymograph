@@ -2734,5 +2734,191 @@
                 "refText": "Grettis saga Ásmundarsonar (ch 1)"
             }
         ]
+    },
+    {
+        "id": 5188,
+        "text": "Þetta haust drap Grímr hersir Öndótt kráku fyrir þat,\ner hann náði eigi fénu til handa konungi;\nen Signý, kona Öndótts, bar á skip allt lausafé þeira þegar ina sömu nótt\nok fór með sonu sína, Ásmund ok Ásgrím, til Sighvats, föður síns.\nLitlu síðar sendi hon sonu sína í Sóknadal til Heðins, fóstra síns,\nok unðu þeir þar lítla hrið ok vildu fara aptr til móður sinnar.\nFóru þeir síðan ok kómu til Ingjalds tryggva í Hvini at jólum;\nhann tók við þeim fyrir áeggjun Gyðu, konu sinnar; váru þeir þar um vetrinn.",
+        "title": "Viking Language 9.12",
+        "words": [
+            {
+                "index": 1,
+                "id": 1354
+            },
+            {
+                "index": 2,
+                "id": 5189
+            },
+            {
+                "index": 3,
+                "id": 5190
+            },
+            {
+                "index": 5,
+                "id": 5192
+            },
+            {
+                "index": 6,
+                "id": 5196
+            },
+            {
+                "index": 9,
+                "id": 1076
+            },
+            {
+                "index": 10,
+                "id": 924
+            },
+            {
+                "index": 11,
+                "id": 5197
+            },
+            {
+                "index": 12,
+                "id": 5198
+            },
+            {
+                "index": 13,
+                "id": 5199
+            },
+            {
+                "index": 15,
+                "id": 5200
+            },
+            {
+                "index": 18,
+                "id": 5191
+            },
+            {
+                "index": 20,
+                "id": 5194
+            },
+            {
+                "index": 21,
+                "id": 5201
+            },
+            {
+                "index": 23,
+                "id": 4959
+            },
+            {
+                "index": 25,
+                "id": 5205
+            },
+            {
+                "index": 28,
+                "id": 1548
+            },
+            {
+                "index": 29,
+                "id": 5208
+            },
+            {
+                "index": 30,
+                "id": 5207
+            },
+            {
+                "index": 35,
+                "id": 1574
+            },
+            {
+                "index": 36,
+                "id": 5209
+            },
+            {
+                "index": 38,
+                "id": 5211
+            },
+            {
+                "index": 40,
+                "id": 5213
+            },
+            {
+                "index": 41,
+                "id": 1276
+            },
+            {
+                "index": 42,
+                "id": 1282
+            },
+            {
+                "index": 43,
+                "id": 5215
+            },
+            {
+                "index": 44,
+                "id": 5216
+            },
+            {
+                "index": 45,
+                "id": 5220
+            },
+            {
+                "index": 48,
+                "id": 1574
+            },
+            {
+                "index": 52,
+                "id": 5221
+            },
+            {
+                "index": 66,
+                "id": 5098
+            },
+            {
+                "index": 54,
+                "id": 1282
+            },
+            {
+                "index": 53,
+                "id": 5224,
+                "contextGloss": ""
+            },
+            {
+                "index": 56,
+                "id": 5226,
+                "contextGloss": ""
+            },
+            {
+                "index": 62,
+                "id": 5227
+            },
+            {
+                "index": 64,
+                "id": 5228
+            },
+            {
+                "index": 80,
+                "id": 924
+            },
+            {
+                "index": 50,
+                "id": 5229
+            },
+            {
+                "index": 74,
+                "id": 5231
+            },
+            {
+                "index": 78,
+                "id": 1318
+            },
+            {
+                "index": 79,
+                "id": 5232
+            },
+            {
+                "index": 85,
+                "id": 5234
+            },
+            {
+                "index": 86,
+                "id": 5236
+            }
+        ],
+        "sourceRefs": [
+            {
+                "refText": "Grettis saga Ásmundarsonar ch 7"
+            }
+        ]
     }
 ]

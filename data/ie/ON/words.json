@@ -1440,7 +1440,10 @@
         "id": 1179,
         "text": "taka",
         "gloss": "take",
-        "pos": "V"
+        "pos": "V",
+        "classes": [
+            "v-strong-6"
+        ]
     },
     {
         "id": 1180,
@@ -1541,7 +1544,8 @@
         "id": 1271,
         "text": "fyrir",
         "gloss": "for",
-        "pos": "PREP"
+        "pos": "PREP",
+        "notes": "w/Acc/Dat"
     },
     {
         "id": 1272,
@@ -2100,7 +2104,8 @@
     {
         "id": 1366,
         "text": "samr",
-        "pos": "same"
+        "gloss": "same",
+        "pos": "ADJ"
     },
     {
         "id": 1367,
@@ -2208,7 +2213,10 @@
         "text": "drepa",
         "gloss": "slay",
         "fullGloss": "slay, kill, smite",
-        "pos": "V"
+        "pos": "V",
+        "classes": [
+            "v-strong-4"
+        ]
     },
     {
         "id": 1387,
@@ -3145,7 +3153,11 @@
         "id": 1623,
         "text": "leggja",
         "gloss": "lay",
-        "pos": "V"
+        "pos": "V",
+        "classes": [
+            "3conj",
+            "pret-ð"
+        ]
     },
     {
         "id": 1624,
@@ -4193,7 +4205,11 @@
         "text": "ná",
         "gloss": "get",
         "fullGloss": "get, obtain",
-        "pos": "V"
+        "pos": "V",
+        "classes": [
+            "2conj",
+            "pret-ð"
+        ]
     },
     {
         "id": 4921,
@@ -4727,7 +4743,7 @@
         "gloss": "offer",
         "pos": "V",
         "classes": [
-            "strong"
+            "v-strong-2"
         ]
     },
     {
@@ -4736,7 +4752,6 @@
         "gloss": "carry",
         "pos": "V",
         "classes": [
-            "strong",
             "v-strong-4"
         ]
     },
@@ -4949,7 +4964,10 @@
     {
         "id": 5089,
         "text": "Ófeigr",
-        "pos": "NP"
+        "pos": "NP",
+        "classes": [
+            "m"
+        ]
     },
     {
         "id": 5090,
@@ -5316,5 +5334,277 @@
     {
         "id": 5168,
         "text": "sumur"
+    },
+    {
+        "id": 5184,
+        "text": "svara",
+        "gloss": "answer",
+        "pos": "V",
+        "classes": [
+            "pret-ð",
+            "1conj"
+        ]
+    },
+    {
+        "id": 5185,
+        "text": "lagð"
+    },
+    {
+        "id": 5187,
+        "text": "vær"
+    },
+    {
+        "id": 5189,
+        "text": "drap"
+    },
+    {
+        "id": 5190,
+        "text": "Grímr",
+        "pos": "NP"
+    },
+    {
+        "id": 5191,
+        "text": "Signý",
+        "pos": "NP"
+    },
+    {
+        "id": 5192,
+        "text": "Öndótt"
+    },
+    {
+        "id": 5193,
+        "text": "Öndóttr",
+        "pos": "NP",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 5194,
+        "text": "Öndótts"
+    },
+    {
+        "id": 5195,
+        "text": "kráka",
+        "gloss": "crow",
+        "pos": "N",
+        "classes": [
+            "f"
+        ]
+    },
+    {
+        "id": 5196,
+        "text": "kráku"
+    },
+    {
+        "id": 5197,
+        "text": "náði"
+    },
+    {
+        "id": 5198,
+        "text": "eigi",
+        "gloss": "not"
+    },
+    {
+        "id": 5199,
+        "text": "fénu"
+    },
+    {
+        "id": 5200,
+        "text": "handa"
+    },
+    {
+        "id": 5201,
+        "text": "bar"
+    },
+    {
+        "id": 5202,
+        "text": "lausafé",
+        "pos": "N"
+    },
+    {
+        "id": 5203,
+        "text": "lauss",
+        "gloss": "free",
+        "pos": "ADJ"
+    },
+    {
+        "id": 5205,
+        "text": "lausafé"
+    },
+    {
+        "id": 5206,
+        "text": "nótt",
+        "gloss": "night",
+        "pos": "N",
+        "classes": [
+            "f"
+        ]
+    },
+    {
+        "id": 5207,
+        "text": "nótt"
+    },
+    {
+        "id": 5208,
+        "text": "sömu"
+    },
+    {
+        "id": 5209,
+        "text": "Ásmund"
+    },
+    {
+        "id": 5210,
+        "text": "Ásmundr",
+        "pos": "NP",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 5211,
+        "text": "Ásgrím"
+    },
+    {
+        "id": 5212,
+        "text": "Ásgrímr",
+        "pos": "NP",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 5213,
+        "text": "Sighvats"
+    },
+    {
+        "id": 5214,
+        "text": "Sighvatr",
+        "pos": "NP",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 5215,
+        "text": "litlu"
+    },
+    {
+        "id": 5216,
+        "text": "síðar"
+    },
+    {
+        "id": 5217,
+        "text": "síðarr"
+    },
+    {
+        "id": 5218,
+        "text": "síð",
+        "gloss": "late",
+        "pos": "ADJ"
+    },
+    {
+        "id": 5219,
+        "text": "senda",
+        "gloss": "send",
+        "pos": "V",
+        "classes": [
+            "2conj",
+            "pret-d"
+        ]
+    },
+    {
+        "id": 5220,
+        "text": "sendi"
+    },
+    {
+        "id": 5221,
+        "text": "Heðins"
+    },
+    {
+        "id": 5222,
+        "text": "Heðinn",
+        "pos": "NP"
+    },
+    {
+        "id": 5223,
+        "text": "fóstri",
+        "gloss": "foster-son",
+        "pos": "N",
+        "classes": [
+            "weak"
+        ]
+    },
+    {
+        "id": 5224,
+        "text": "fóstra"
+    },
+    {
+        "id": 5225,
+        "text": "una",
+        "gloss": "dwell",
+        "pos": "V",
+        "classes": [
+            "2conj",
+            "pret-ð"
+        ]
+    },
+    {
+        "id": 5226,
+        "text": "unðu"
+    },
+    {
+        "id": 5227,
+        "text": "vildu"
+    },
+    {
+        "id": 5228,
+        "text": "aptr",
+        "gloss": "back",
+        "pos": "ADV"
+    },
+    {
+        "id": 5229,
+        "text": "Sóknadal",
+        "pos": "NP"
+    },
+    {
+        "id": 5230,
+        "text": "Ingjaldr",
+        "pos": "NP"
+    },
+    {
+        "id": 5231,
+        "text": "Ingjalds"
+    },
+    {
+        "id": 5232,
+        "text": "jólum",
+        "gloss": "Yuletide.GEN"
+    },
+    {
+        "id": 5233,
+        "text": "áeggjun",
+        "gloss": "urging",
+        "pos": "N",
+        "classes": [
+            "f"
+        ]
+    },
+    {
+        "id": 5234,
+        "text": "áeggjun"
+    },
+    {
+        "id": 5235,
+        "text": "Gyða",
+        "pos": "NP",
+        "classes": [
+            "f"
+        ]
+    },
+    {
+        "id": 5236,
+        "text": "Gyðu"
     }
 ]

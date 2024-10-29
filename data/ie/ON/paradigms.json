@@ -457,7 +457,7 @@
         ],
         "columns": [
             {
-                "title": "sg",
+                "title": "Sg",
                 "cells": [
                     {
                         "ruleAlternatives": [
@@ -477,7 +477,7 @@
                 ]
             },
             {
-                "title": "pl",
+                "title": "Pl",
                 "cells": [
                     {
                         "ruleAlternatives": [
@@ -564,6 +564,60 @@
         ],
         "posList": [
             "N"
+        ]
+    },
+    {
+        "id": 36,
+        "name": "Verb Past Subjunctive",
+        "rows": [
+            "1",
+            "2",
+            "3"
+        ],
+        "columns": [
+            {
+                "title": "Sg",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            5178
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            5180
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            5182
+                        ]
+                    }
+                ]
+            },
+            {
+                "title": "Pl",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            5179
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            5181
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            5183
+                        ]
+                    }
+                ]
+            }
+        ],
+        "posList": [
+            "V"
         ]
     }
 ]
