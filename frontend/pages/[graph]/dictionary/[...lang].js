@@ -3,6 +3,7 @@ import {useRouter} from "next/router";
 import Link from "next/link";
 import WordForm from "@/forms/WordForm";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import {useState} from "react";
 
 export const config = {
     unstable_runtimeJS: true
@@ -33,6 +34,7 @@ export default function Dictionary(params) {
     const router = useRouter()
     const graph = router.query.graph
     const filter = router.query.lang.length < 2 ? "" : router.query.lang[1]
+    const [showAddWord, setShowAddWord] = useState(false)
 
     const filterText = filter === "names" ? "Names" :
         (filter === "reconstructed" ? "Reconstructed" :
@@ -51,15 +53,16 @@ export default function Dictionary(params) {
         <Breadcrumbs langId={dict.language.shortName} langName={dict.language.name} title={filterText}/>
 
         {allowEdit() && <>
-            <h3>Add word</h3>
-            <WordForm languageReadOnly={true}
+            {!showAddWord && <button className="inlineButton inlineButtonNormal" onClick={() => setShowAddWord(!showAddWord)}>Add word</button>}
+            {showAddWord && <WordForm languageReadOnly={true}
                       submitted={submitted}
+                      cancelled={() => setShowAddWord(false)}
                       defaultValues={{
                           language: dict.language.shortName,
                           reconstructed: filter === "reconstructed",
                       }}
                       hideReconstructed={filter !== "reconstructed"}
-            />
+            />}
         </>}
         <ul>
             {dict.words.map(w => {
