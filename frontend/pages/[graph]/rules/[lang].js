@@ -1,9 +1,13 @@
 import {useState} from "react";
-import {allowEdit, fetchAllLanguagePaths, fetchBackend} from "@/api";
+import {allowEdit, fetchAllLanguagePaths, fetchBackend, generateParadigm} from "@/api";
 import Link from "next/link";
 import {useRouter} from "next/router";
 import RuleSequenceForm from "@/forms/RuleSequenceForm";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import EtymographFormView from "@/components/EtymographFormView";
+import EtymographForm from "@/components/EtymographForm";
+import FormRow from "@/components/FormRow";
+import PosSelect from "@/components/PosSelect";
 
 export const config = {
     unstable_runtimeJS: true
@@ -19,6 +23,7 @@ export default function RuleList(params) {
     const ruleList = params.loaderData
     const router = useRouter()
     const graph = router.query.graph
+    const lang = router.query.lang
     const [sequenceEditId, setSequenceEditId] = useState(null)
 
     function sequenceSubmitted(data) {
@@ -27,7 +32,7 @@ export default function RuleList(params) {
     }
 
     return <>
-        <Breadcrumbs langId={router.query.lang} langName={ruleList.toLangFullName} title="Rules"/>
+        <Breadcrumbs langId={lang} langName={ruleList.toLangFullName} title="Rules"/>
         {ruleList.ruleGroups.map(g => <>
             <h2 key={g.groupName}>{g.groupName}</h2>
             {g.paradigmId && <p><Link href={`/${graph}/paradigm/${g.paradigmId}`}>Paradigm</Link></p>}
@@ -63,9 +68,29 @@ export default function RuleList(params) {
             </>}
         </>)}
         {allowEdit() && <p>
-            <button onClick={() => router.push(`/${graph}/rules/${router.query.lang}/new`)}>Add Rule</button>
+            <button onClick={() => router.push(`/${graph}/rules/${lang}/new`)}>Add Rule</button>
             {' '}
             <button onClick={() => router.push(`/${graph}/rules/sequence/new`)}>Add Rule Sequence</button>
+            {' '}
+            <button onClick={() => router.push(`/${graph}/paradigms/${lang}/new`)}>Add Paradigm</button>
+            {' '}
+            <EtymographFormView editButtonTitle="Generate Paradigm">
+                <EtymographForm
+                    create={(data) => generateParadigm(graph, lang, data)}
+                    redirectOnCreate={(r) => `/${graph}/paradigm/${r.id}`}>
+
+                    <table>
+                        <tbody>
+                        <FormRow label="Name" id="name"/>
+                        <PosSelect label="POS" id="pos" language={lang}/>
+                        <FormRow label="Added Categories" id="addedCategories"/>
+                        <FormRow label="Prefix" id="prefix"/>
+                        <FormRow label="Rows" id="rows"/>
+                        <FormRow label="Columns" id="columns"/>
+                        </tbody>
+                    </table>
+                </EtymographForm>
+            </EtymographFormView>
         </p>}
     </>
 }

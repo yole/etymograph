@@ -28,24 +28,9 @@ class ParadigmController {
         val editableText: String
     )
 
-    data class ParadigmListViewModel(
-        val langFullName: String,
-        val paradigms: List<ParadigmViewModel>
-    )
-
     @GetMapping("/{graph}/paradigms")
     fun allParadigms(repo: GraphRepository): List<ParadigmViewModel> {
         return repo.allParadigms().map { it.toViewModel(repo) }
-    }
-
-    @GetMapping("/{graph}/paradigms/{lang}")
-    fun paradigms(repo: GraphRepository, @PathVariable lang: String): ParadigmListViewModel {
-        val language = repo.resolveLanguage(lang)
-
-        val paradigms = repo.paradigmsForLanguage(language).map {
-            it.toViewModel(repo)
-        }
-        return ParadigmListViewModel(language.name, paradigms)
     }
 
     private fun Paradigm.toViewModel(repo: GraphRepository) =

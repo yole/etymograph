@@ -46,7 +46,7 @@ export default function Paradigm(params) {
 
     return <>
         <Breadcrumbs langId={paradigm.language} langName={paradigm.languageFullName}
-                     steps={[{url: `/${graph}/paradigms/${paradigm.language}`, title: "Paradigms"}]}
+                     steps={[{url: `/${graph}/rules/${paradigm.language}`, title: "Rules"}]}
                      title={paradigm.name}/>
         {!editMode && <>
             <p>POS: {paradigm.pos.join(", ")}</p>
