@@ -10,7 +10,7 @@ export const config = {
 }
 
 export async function getStaticProps(context) {
-    return fetchBackend(context.params.graph, `paradigm/${context.params.id}`)
+    return fetchBackend(context.params.graph, `paradigm/${context.params.id}`, true)
 }
 
 export async function getStaticPaths() {

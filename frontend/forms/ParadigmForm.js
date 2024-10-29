@@ -4,6 +4,7 @@ import FormTextArea from "@/components/FormTextArea";
 import {addParadigm, updateParadigm} from "@/api";
 import {useContext} from "react";
 import {GraphContext} from "@/components/Contexts";
+import PosSelect from "@/components/PosSelect";
 
 export default function ParadigmForm(props) {
     const graph = useContext(GraphContext)
@@ -14,7 +15,7 @@ export default function ParadigmForm(props) {
     >
         <table><tbody>
             <FormRow label="Name" id="name"/>
-            <FormRow label="POS" id="pos"/>
+            <PosSelect label="POS" id="pos" language={props.lang} isMulti={true}/>
         </tbody></table>
         <FormTextArea rows="10" cols="80" id="text"/>
     </EtymographForm>
