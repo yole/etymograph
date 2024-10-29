@@ -413,6 +413,7 @@ function SingleWord(params) {
 
     const isName = word.pos === "NP"
     const isCompound = word.compound
+    const isInflectedForm = word.linksFrom.find(l => l.typeId === '>') !== undefined
     const classesEditable = word.classes.join(" ")
 
     const [dictionaryTitle, dictionaryLink] =
@@ -576,7 +577,7 @@ function SingleWord(params) {
             <p/>
             {errorText !== "" && <div className="errorText">{errorText}</div>}
         </>}
-        {word.pos && (!word.glossComputed || word.pos === 'NP') && <Link href={`/${graph}/paradigms/${word.language}/word/${word.id}`}>Paradigms</Link>}
+        {word.pos && !isInflectedForm && <Link href={`/${graph}/paradigms/${word.language}/word/${word.id}`}>Paradigms</Link>}
     </>
 }
 
