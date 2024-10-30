@@ -2200,6 +2200,18 @@
             {
                 "index": 49,
                 "id": 1533
+            },
+            {
+                "index": 39,
+                "id": 1368
+            },
+            {
+                "index": 38,
+                "id": 1563
+            },
+            {
+                "index": 85,
+                "id": 1368
             }
         ],
         "sourceRefs": [
@@ -2727,6 +2739,38 @@
             {
                 "index": 146,
                 "id": 4914
+            },
+            {
+                "index": 69,
+                "id": 1368
+            },
+            {
+                "index": 68,
+                "id": 943
+            },
+            {
+                "index": 80,
+                "id": 1368
+            },
+            {
+                "index": 140,
+                "id": 1368
+            },
+            {
+                "index": 147,
+                "id": 1368
+            },
+            {
+                "index": 74,
+                "id": 1368
+            },
+            {
+                "index": 97,
+                "id": 1368
+            },
+            {
+                "index": 124,
+                "id": 1368
             }
         ],
         "sourceRefs": [
@@ -2913,11 +2957,71 @@
             {
                 "index": 86,
                 "id": 5236
+            },
+            {
+                "index": 8,
+                "id": 5249
             }
         ],
         "sourceRefs": [
             {
                 "refText": "Grettis saga Ásmundarsonar ch 7"
+            }
+        ]
+    },
+    {
+        "id": 5237,
+        "text": "Í þann tíma kom hallæri svá mikit á Ísland, at ekki hefir jafnmikit komit.\nÞá tók af náliga allan sjávarafla ok reka. \nÞat stóð yfir mörg ár.\nÁ einu hausti urðu þangat sæhafa kaupmenn á hafskipi ok brutu þar í Víkinni.\nFlosi tók við þeim fjórum eða fimm.\nSteinn hét sá er fyrir þeim var...\nÚm várit kom veðr mikit af norðri; þat helzk nær viku.\nEptir veðrit könnuðu menn reka sína.\nÞorsteinn hét maðr, er bjó á Reykjanesi.\nHann fann hval rekinn innan fram á nesinu, þar sem hét at Rifskerjum:\nþat var reyðr mikill.\nHann sendi þegar mann til Flosa í Vík ok svá til næstu bœja...\nFlosi kom fyrst ok þeir Víkrmenn; \nþeir tóku þegar til skurdar ok var dreginn á land upp sá, er skorinn var...\nÍ því kómu Kaldbeklingar með fjögur skip. Þorgrimr veitti tilkall til hvalsins ok fyrirbauð Víkrmönnum skurð ok skipti ok brautflutning á hvalnum.",
+        "title": "Viking Language 10.2",
+        "words": [
+            {
+                "index": 9,
+                "id": 977
+            },
+            {
+                "index": 12,
+                "id": 5239
+            },
+            {
+                "index": 17,
+                "id": 5264
+            },
+            {
+                "index": 18,
+                "id": 5265
+            },
+            {
+                "index": 94,
+                "id": 923
+            },
+            {
+                "index": 19,
+                "id": 5267
+            },
+            {
+                "index": 21,
+                "id": 5269
+            },
+            {
+                "index": 14,
+                "id": 998
+            },
+            {
+                "index": 23,
+                "id": 5248
+            },
+            {
+                "index": 26,
+                "id": 5270
+            },
+            {
+                "index": 30,
+                "id": 5271
+            }
+        ],
+        "sourceRefs": [
+            {
+                "refText": "Grettis saga Ásmundarsonar (ch 12)"
             }
         ]
     }

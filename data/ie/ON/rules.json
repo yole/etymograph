@@ -2434,6 +2434,33 @@
             {
                 "instructions": [
                     {
+                        "type": "ApplyClass",
+                        "args": [
+                            "strong"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "a",
+                            "negated": true
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "i",
+                            "negated": true
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
                         "type": "NoChange",
                         "args": []
                     }
