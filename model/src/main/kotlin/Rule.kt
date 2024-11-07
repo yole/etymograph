@@ -207,7 +207,7 @@ class Rule(
 ) : LangEntity(id, source, notes) {
     fun isPhonemic(): Boolean = logic.branches.any { it.condition.isPhonemic() }
 
-    fun apply(word: Word, graph: GraphRepository, trace: RuleTrace? = null): Word {
+    fun apply(word: Word, graph: GraphRepository, trace: RuleTrace? = null, normalizeSegments: Boolean = true): Word {
         trace?.logRule(this, word)
         if (isPhonemic()) {
             val phonemic = word.asPhonemic()
@@ -236,7 +236,8 @@ class Rule(
                 trace?.logMatchedBranch(this, word, null, branch)
                 var resultWord = branch.apply(this, preWord, graph, trace)
                 resultWord = logic.postInstructions.apply(this, null, resultWord, graph)
-                return deriveWord(word, resultWord.text, toLanguage, resultWord.stressedPhonemeIndex, resultWord.segments, resultWord.classes)
+                return deriveWord(word, resultWord.text, toLanguage, resultWord.stressedPhonemeIndex,
+                    resultWord.segments, resultWord.classes, normalizeSegments = normalizeSegments)
             }
             else {
                 trace?.logUnmatchedBranch(this, word, null, branch)
@@ -297,7 +298,7 @@ class Rule(
     }
 
     private fun deriveWord(word: Word, text: String, language: Language, stressIndex: Int, segments: List<WordSegment>?,
-                           classes: List<String>, stress: Int? = null): Word {
+                           classes: List<String>, stress: Int? = null, normalizeSegments: Boolean = true): Word {
         val gloss = word.glossOrNP()?.let { baseGloss ->
             applyCategories(baseGloss, segments?.any { it.sourceRule == this} == true)
         }
@@ -305,7 +306,7 @@ class Rule(
             it.stressedPhonemeIndex = stressIndex
             val sourceSegments = word.segments
             if (segments != null) {
-                it.segments = Word.normalizeSegments(segments)
+                it.segments = if (normalizeSegments) Word.normalizeSegments(segments) else segments
             }
             else if (sourceSegments != null) {
                 it.segments = sourceSegments
