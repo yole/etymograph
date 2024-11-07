@@ -63,6 +63,15 @@ open class PhonemeClass(val name: String, var matchingPhonemes: List<String> = e
             }
         }
 
+        val morphemeFinal = object : PhonemeClass("morpheme-final") {
+            override fun matchesCurrent(it: PhonemeIterator): Boolean {
+                val segments = it.segments ?: return false
+                return segments.any {
+                    s -> it.index == s.firstCharacter - 1 || it.index == s.firstCharacter + s.length - 1
+                }
+            }
+        }
+
         val geminate = object  : PhonemeClass("geminate") {
             override fun matchesCurrent(it: PhonemeIterator): Boolean {
                 return it.current == it.atRelative(1) || it.current == it.atRelative(-1)
@@ -70,7 +79,10 @@ open class PhonemeClass(val name: String, var matchingPhonemes: List<String> = e
         }
 
         val specialPhonemeClasses = listOf(
-            diphthong, stressed, wordInitial, wordFinal, syllableInitial, syllableFinal, morphemeInitial, geminate
+            diphthong, stressed,
+            wordInitial, wordFinal,
+            syllableInitial, syllableFinal,
+            morphemeInitial, morphemeFinal, geminate
         )
 
         const val vowelClassName = "vowel"

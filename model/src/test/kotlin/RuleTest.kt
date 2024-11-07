@@ -693,6 +693,18 @@ class RuleTest : QBaseTest() {
     }
 
     @Test
+    fun morphemeFinal() {
+        val repo = InMemoryGraphRepository().with(q)
+        val it = repo.addWord("it", "the", language = q)
+        repo.rule("sound is morpheme-final vowel and next sound is vowel:\n- sound disappears",
+            fromLanguage = q, name = "on-sound-deletion")
+        val rule = repo.rule("- append morpheme 'it: the'\n- apply rule 'on-sound-deletion'", fromLanguage = q)
+        val hallæri = repo.addWord("hallæri", language = q)
+        val result = rule.apply(hallæri, repo)
+        assertEquals("hallærit", result.text)
+    }
+
+    @Test
     fun morphemeInitialNotNormalized() {
         val repo = InMemoryGraphRepository().with(q)
         val it = repo.addWord("it", "the", language = q)
