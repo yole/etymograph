@@ -619,5 +619,120 @@
         "posList": [
             "V"
         ]
+    },
+    {
+        "id": 37,
+        "name": "Adjective Weak",
+        "rows": [
+            "Nom",
+            "Acc",
+            "Dat",
+            "Gen"
+        ],
+        "columns": [
+            {
+                "title": "Sg M",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            5314
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            5318
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            5322
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            5326
+                        ]
+                    }
+                ]
+            },
+            {
+                "title": "Sg F",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            5315
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            5319
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            5323
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            5327
+                        ]
+                    }
+                ]
+            },
+            {
+                "title": "Sg N",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            5316
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            5320
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            5324
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            5328
+                        ]
+                    }
+                ]
+            },
+            {
+                "title": "Pl",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            5317
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            5321
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            5325
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            5329
+                        ]
+                    }
+                ]
+            }
+        ],
+        "posList": [
+            "ADJ"
+        ]
     }
 ]

@@ -611,6 +611,22 @@
                     "abbreviation": "DEF"
                 }
             ]
+        },
+        {
+            "name": "Strength",
+            "pos": [
+                "ADJ"
+            ],
+            "values": [
+                {
+                    "name": "Strong",
+                    "abbreviation": "STRONG"
+                },
+                {
+                    "name": "Weak",
+                    "abbreviation": "WEAK"
+                }
+            ]
         }
     ],
     "wordClasses": [

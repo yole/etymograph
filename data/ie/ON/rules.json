@@ -3625,24 +3625,27 @@
             {
                 "instructions": [
                     {
-                        "type": "ChangeEnding",
+                        "type": "ApplyRule",
                         "args": [
-                            "um"
+                            "1502"
                         ]
-                    }
-                ],
-                "condition": {
-                    "type": "leaf",
-                    "cond": "EndsWith",
-                    "characters": "v"
-                }
-            },
-            {
-                "instructions": [
+                    },
                     {
                         "type": "Append",
                         "args": [
                             "'um'"
+                        ]
+                    },
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1123"
+                        ]
+                    },
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "5330"
                         ]
                     }
                 ],
@@ -3654,22 +3657,6 @@
         "addedCategories": ".M.DAT",
         "fromPOS": [
             "ADJ"
-        ],
-        "preInstructions": [
-            {
-                "type": "ApplyRule",
-                "args": [
-                    "1502"
-                ]
-            }
-        ],
-        "postInstructions": [
-            {
-                "type": "ApplyRule",
-                "args": [
-                    "1123"
-                ]
-            }
         ]
     },
     {
@@ -4262,6 +4249,12 @@
                         "type": "ApplyRule",
                         "args": [
                             "1123"
+                        ]
+                    },
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "5330"
                         ]
                     }
                 ],
@@ -6622,6 +6615,634 @@
                 "args": [
                     "5032"
                 ]
+            }
+        ]
+    },
+    {
+        "id": 5314,
+        "name": "on-adj-weak-nom-sg-m",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1502"
+                        ]
+                    },
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'i'"
+                        ]
+                    },
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "5330"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".WEAK.NOM.SG.M",
+        "fromPOS": [
+            "ADJ"
+        ]
+    },
+    {
+        "id": 5315,
+        "name": "on-adj-weak-nom-sg-f",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1502"
+                        ]
+                    },
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'a'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".WEAK.NOM.SG.F",
+        "fromPOS": [
+            "ADJ"
+        ]
+    },
+    {
+        "id": 5316,
+        "name": "on-adj-weak-nom-sg-n",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1502"
+                        ]
+                    },
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'a'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".WEAK.NOM.SG.N",
+        "fromPOS": [
+            "ADJ"
+        ]
+    },
+    {
+        "id": 5317,
+        "name": "on-adj-weak-nom-pl",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1502"
+                        ]
+                    },
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'u'"
+                        ]
+                    },
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1123"
+                        ]
+                    },
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "5330"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".WEAK.NOM.PL",
+        "fromPOS": [
+            "ADJ"
+        ]
+    },
+    {
+        "id": 5318,
+        "name": "on-adj-weak-acc-sg-m",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1502"
+                        ]
+                    },
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'a'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".WEAK.ACC.SG.M",
+        "fromPOS": [
+            "ADJ"
+        ]
+    },
+    {
+        "id": 5319,
+        "name": "on-adj-weak-acc-sg-f",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1502"
+                        ]
+                    },
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'u'"
+                        ]
+                    },
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1123"
+                        ]
+                    },
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "5330"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".WEAK.ACC.SG.F",
+        "fromPOS": [
+            "ADJ"
+        ]
+    },
+    {
+        "id": 5320,
+        "name": "on-adj-weak-acc-sg-n",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1502"
+                        ]
+                    },
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'a'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".WEAK.ACC.SG.N",
+        "fromPOS": [
+            "ADJ"
+        ]
+    },
+    {
+        "id": 5321,
+        "name": "on-adj-weak-acc-pl",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "5317"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".WEAK.ACC.PL",
+        "fromPOS": [
+            "ADJ"
+        ]
+    },
+    {
+        "id": 5322,
+        "name": "on-adj-weak-dat-sg-m",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1502"
+                        ]
+                    },
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'a'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".WEAK.DAT.SG.M",
+        "fromPOS": [
+            "ADJ"
+        ]
+    },
+    {
+        "id": 5323,
+        "name": "on-adj-weak-dat-sg-f",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1502"
+                        ]
+                    },
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'u'"
+                        ]
+                    },
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1123"
+                        ]
+                    },
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "5330"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".WEAK.DAT.SG.F",
+        "fromPOS": [
+            "ADJ"
+        ]
+    },
+    {
+        "id": 5324,
+        "name": "on-adj-weak-dat-sg-n",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1502"
+                        ]
+                    },
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'a'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".WEAK.DAT.SG.N",
+        "fromPOS": [
+            "ADJ"
+        ]
+    },
+    {
+        "id": 5325,
+        "name": "on-adj-weak-dat-pl",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1502"
+                        ]
+                    },
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'um'"
+                        ]
+                    },
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1123"
+                        ]
+                    },
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "5330"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".WEAK.DAT.PL",
+        "fromPOS": [
+            "ADJ"
+        ]
+    },
+    {
+        "id": 5326,
+        "name": "on-adj-weak-gen-sg-m",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1502"
+                        ]
+                    },
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'a'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".WEAK.GEN.SG.M",
+        "fromPOS": [
+            "ADJ"
+        ]
+    },
+    {
+        "id": 5327,
+        "name": "on-adj-weak-gen-sg-f",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1502"
+                        ]
+                    },
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'u'"
+                        ]
+                    },
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1123"
+                        ]
+                    },
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "5330"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".WEAK.GEN.SG.F",
+        "fromPOS": [
+            "ADJ"
+        ]
+    },
+    {
+        "id": 5328,
+        "name": "on-adj-weak-gen-sg-n",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1502"
+                        ]
+                    },
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'a'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".WEAK.GEN.SG.N",
+        "fromPOS": [
+            "ADJ"
+        ]
+    },
+    {
+        "id": 5329,
+        "name": "on-adj-weak-gen-pl",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1502"
+                        ]
+                    },
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'u'"
+                        ]
+                    },
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1123"
+                        ]
+                    },
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "5330"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".WEAK.GEN.PL",
+        "fromPOS": [
+            "ADJ"
+        ]
+    },
+    {
+        "id": 5330,
+        "name": "on-morpheme-assimilation",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "SoundDisappears",
+                        "args": [
+                            "-1"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "cls": "morpheme-initial",
+                            "parameter": "u",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": -1,
+                            "parameter": "v"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "SoundDisappears",
+                        "args": [
+                            "-1"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "cls": "morpheme-initial",
+                            "parameter": "i",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": -1,
+                            "parameter": "j"
+                        }
+                    ]
+                }
             }
         ]
     }
