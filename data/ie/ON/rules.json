@@ -3587,7 +3587,7 @@
     },
     {
         "id": 1498,
-        "name": "on-adj-strong-m-acc",
+        "name": "on-adj-strong-acc-sg-m",
         "fromLang": "ON",
         "toLang": "ON",
         "branches": [
@@ -3618,7 +3618,7 @@
     },
     {
         "id": 1499,
-        "name": "on-adj-strong-m-dat",
+        "name": "on-adj-strong-dat-sg-m",
         "fromLang": "ON",
         "toLang": "ON",
         "branches": [
@@ -3661,41 +3661,28 @@
     },
     {
         "id": 1500,
-        "name": "on-adj-strong-m-gen",
+        "name": "on-adj-strong-gen-sg-m",
         "fromLang": "ON",
         "toLang": "ON",
         "branches": [
             {
                 "instructions": [
                     {
-                        "type": "ChangeEnding",
+                        "type": "ApplyRule",
                         "args": [
-                            "s"
+                            "1502"
                         ]
-                    }
-                ],
-                "condition": {
-                    "type": "or",
-                    "members": [
-                        {
-                            "type": "leaf",
-                            "cond": "EndsWith",
-                            "characters": "j"
-                        },
-                        {
-                            "type": "leaf",
-                            "cond": "EndsWith",
-                            "characters": "v"
-                        }
-                    ]
-                }
-            },
-            {
-                "instructions": [
+                    },
                     {
                         "type": "Append",
                         "args": [
                             "'s'"
+                        ]
+                    },
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "5330"
                         ]
                     }
                 ],
@@ -3707,14 +3694,6 @@
         "addedCategories": ".M.GEN",
         "fromPOS": [
             "ADJ"
-        ],
-        "preInstructions": [
-            {
-                "type": "ApplyRule",
-                "args": [
-                    "1502"
-                ]
-            }
         ]
     },
     {
@@ -3816,40 +3795,29 @@
     },
     {
         "id": 1503,
-        "name": "on-adj-strong-f-nom",
+        "name": "on-adj-strong-nom-sg-f",
         "fromLang": "ON",
         "toLang": "ON",
         "branches": [
             {
                 "instructions": [
                     {
-                        "type": "ChangeEnding",
+                        "type": "ApplyRule",
                         "args": [
-                            ""
+                            "1502"
                         ]
-                    }
-                ],
-                "condition": {
-                    "type": "or",
-                    "members": [
-                        {
-                            "type": "leaf",
-                            "cond": "EndsWith",
-                            "characters": "j"
-                        },
-                        {
-                            "type": "leaf",
-                            "cond": "EndsWith",
-                            "characters": "v"
-                        }
-                    ]
-                }
-            },
-            {
-                "instructions": [
+                    },
                     {
-                        "type": "NoChange",
-                        "args": []
+                        "type": "ApplyRule",
+                        "args": [
+                            "1394"
+                        ]
+                    },
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "5330"
+                        ]
                     }
                 ],
                 "condition": {
@@ -3860,27 +3828,11 @@
         "addedCategories": ".F.NOM",
         "fromPOS": [
             "ADJ"
-        ],
-        "preInstructions": [
-            {
-                "type": "ApplyRule",
-                "args": [
-                    "1502"
-                ]
-            }
-        ],
-        "postInstructions": [
-            {
-                "type": "ApplyRule",
-                "args": [
-                    "1394"
-                ]
-            }
         ]
     },
     {
         "id": 1504,
-        "name": "on-adj-strong-f-acc",
+        "name": "on-adj-strong-acc-sg-f",
         "fromLang": "ON",
         "toLang": "ON",
         "branches": [
@@ -3918,49 +3870,21 @@
             {
                 "instructions": [
                     {
-                        "type": "ChangeEnding",
+                        "type": "ApplyRule",
                         "args": [
-                            "ri"
+                            "1502"
                         ]
-                    }
-                ],
-                "condition": {
-                    "type": "or",
-                    "members": [
-                        {
-                            "type": "leaf",
-                            "cond": "EndsWith",
-                            "characters": "j"
-                        },
-                        {
-                            "type": "leaf",
-                            "cond": "EndsWith",
-                            "characters": "v"
-                        }
-                    ]
-                }
-            },
-            {
-                "instructions": [
-                    {
-                        "type": "Append",
-                        "args": [
-                            "'ni'"
-                        ]
-                    }
-                ],
-                "condition": {
-                    "type": "leaf",
-                    "cond": "EndsWith",
-                    "characters": "n"
-                }
-            },
-            {
-                "instructions": [
+                    },
                     {
                         "type": "Append",
                         "args": [
                             "'ri'"
+                        ]
+                    },
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "5330"
                         ]
                     }
                 ],
@@ -3972,14 +3896,6 @@
         "addedCategories": ".F.DAT",
         "fromPOS": [
             "ADJ"
-        ],
-        "preInstructions": [
-            {
-                "type": "ApplyRule",
-                "args": [
-                    "1502"
-                ]
-            }
         ]
     },
     {
@@ -3991,49 +3907,21 @@
             {
                 "instructions": [
                     {
-                        "type": "ChangeEnding",
+                        "type": "ApplyRule",
                         "args": [
-                            "rar"
+                            "1502"
                         ]
-                    }
-                ],
-                "condition": {
-                    "type": "or",
-                    "members": [
-                        {
-                            "type": "leaf",
-                            "cond": "EndsWith",
-                            "characters": "j"
-                        },
-                        {
-                            "type": "leaf",
-                            "cond": "EndsWith",
-                            "characters": "v"
-                        }
-                    ]
-                }
-            },
-            {
-                "instructions": [
-                    {
-                        "type": "Append",
-                        "args": [
-                            "'nar'"
-                        ]
-                    }
-                ],
-                "condition": {
-                    "type": "leaf",
-                    "cond": "EndsWith",
-                    "characters": "n"
-                }
-            },
-            {
-                "instructions": [
+                    },
                     {
                         "type": "Append",
                         "args": [
                             "'rar'"
+                        ]
+                    },
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "5330"
                         ]
                     }
                 ],
@@ -4045,14 +3933,6 @@
         "addedCategories": ".F.GEN",
         "fromPOS": [
             "ADJ"
-        ],
-        "preInstructions": [
-            {
-                "type": "ApplyRule",
-                "args": [
-                    "1502"
-                ]
-            }
         ]
     },
     {
@@ -4061,31 +3941,6 @@
         "fromLang": "ON",
         "toLang": "ON",
         "branches": [
-            {
-                "instructions": [
-                    {
-                        "type": "ChangeEnding",
-                        "args": [
-                            "t"
-                        ]
-                    }
-                ],
-                "condition": {
-                    "type": "or",
-                    "members": [
-                        {
-                            "type": "leaf",
-                            "cond": "EndsWith",
-                            "characters": "j"
-                        },
-                        {
-                            "type": "leaf",
-                            "cond": "EndsWith",
-                            "characters": "v"
-                        }
-                    ]
-                }
-            },
             {
                 "instructions": [
                     {
@@ -4196,6 +4051,14 @@
                 "type": "ApplyRule",
                 "args": [
                     "1502"
+                ]
+            }
+        ],
+        "postInstructions": [
+            {
+                "type": "ApplyRule",
+                "args": [
+                    "5330"
                 ]
             }
         ]
@@ -4406,49 +4269,21 @@
             {
                 "instructions": [
                     {
-                        "type": "ChangeEnding",
+                        "type": "ApplyRule",
                         "args": [
-                            "ra"
+                            "1502"
                         ]
-                    }
-                ],
-                "condition": {
-                    "type": "or",
-                    "members": [
-                        {
-                            "type": "leaf",
-                            "cond": "EndsWith",
-                            "characters": "j"
-                        },
-                        {
-                            "type": "leaf",
-                            "cond": "EndsWith",
-                            "characters": "v"
-                        }
-                    ]
-                }
-            },
-            {
-                "instructions": [
-                    {
-                        "type": "Append",
-                        "args": [
-                            "'na'"
-                        ]
-                    }
-                ],
-                "condition": {
-                    "type": "leaf",
-                    "cond": "EndsWith",
-                    "characters": "n"
-                }
-            },
-            {
-                "instructions": [
+                    },
                     {
                         "type": "Append",
                         "args": [
                             "'ra'"
+                        ]
+                    },
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "5330"
                         ]
                     }
                 ],
@@ -4460,14 +4295,6 @@
         "addedCategories": ".M.GEN.PL",
         "fromPOS": [
             "ADJ"
-        ],
-        "preInstructions": [
-            {
-                "type": "ApplyRule",
-                "args": [
-                    "1502"
-                ]
-            }
         ]
     },
     {
@@ -4585,33 +4412,22 @@
             {
                 "instructions": [
                     {
-                        "type": "ChangeEnding",
+                        "type": "ApplyRule",
                         "args": [
-                            ""
+                            "1502"
                         ]
-                    }
-                ],
-                "condition": {
-                    "type": "or",
-                    "members": [
-                        {
-                            "type": "leaf",
-                            "cond": "EndsWith",
-                            "characters": "j"
-                        },
-                        {
-                            "type": "leaf",
-                            "cond": "EndsWith",
-                            "characters": "v"
-                        }
-                    ]
-                }
-            },
-            {
-                "instructions": [
+                    },
                     {
-                        "type": "NoChange",
-                        "args": []
+                        "type": "ApplyRule",
+                        "args": [
+                            "1394"
+                        ]
+                    },
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "5330"
+                        ]
                     }
                 ],
                 "condition": {
@@ -4622,22 +4438,6 @@
         "addedCategories": ".N.NOM.PL",
         "fromPOS": [
             "ADJ"
-        ],
-        "preInstructions": [
-            {
-                "type": "ApplyRule",
-                "args": [
-                    "1502"
-                ]
-            }
-        ],
-        "postInstructions": [
-            {
-                "type": "ApplyRule",
-                "args": [
-                    "1394"
-                ]
-            }
         ]
     },
     {
@@ -4925,37 +4725,6 @@
         "fromLang": "ON",
         "toLang": "ON",
         "branches": [
-            {
-                "instructions": [
-                    {
-                        "type": "ChangeSound",
-                        "args": [
-                            "x"
-                        ]
-                    },
-                    {
-                        "type": "SoundDisappears",
-                        "args": [
-                            "1"
-                        ]
-                    }
-                ],
-                "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "relPhoneme",
-                            "parameter": "k",
-                            "relative": false
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": 1,
-                            "parameter": "s"
-                        }
-                    ]
-                }
-            },
             {
                 "instructions": [
                     {
@@ -7197,7 +6966,7 @@
                     {
                         "type": "SoundDisappears",
                         "args": [
-                            "-1"
+                            "0"
                         ]
                     }
                 ],
@@ -7206,14 +6975,29 @@
                     "members": [
                         {
                             "type": "relPhoneme",
-                            "cls": "morpheme-initial",
-                            "parameter": "u",
+                            "cls": "morpheme-final",
+                            "parameter": "v",
                             "relative": false
                         },
                         {
-                            "type": "relPhoneme",
-                            "relativeIndex": -1,
-                            "parameter": "v"
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "relPhoneme",
+                                    "relativeIndex": 1,
+                                    "parameter": "u"
+                                },
+                                {
+                                    "type": "relPhoneme",
+                                    "relativeIndex": 1,
+                                    "cls": "consonant"
+                                },
+                                {
+                                    "type": "relPhoneme",
+                                    "cls": "word-final",
+                                    "relative": false
+                                }
+                            ]
                         }
                     ]
                 }
@@ -7223,7 +7007,48 @@
                     {
                         "type": "SoundDisappears",
                         "args": [
-                            "-1"
+                            "0"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "cls": "morpheme-final",
+                            "parameter": "j",
+                            "relative": false
+                        },
+                        {
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "relPhoneme",
+                                    "relativeIndex": 1,
+                                    "parameter": "i"
+                                },
+                                {
+                                    "type": "relPhoneme",
+                                    "relativeIndex": 1,
+                                    "cls": "consonant"
+                                },
+                                {
+                                    "type": "relPhoneme",
+                                    "cls": "word-final",
+                                    "relative": false
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "n"
                         ]
                     }
                 ],
@@ -7233,13 +7058,13 @@
                         {
                             "type": "relPhoneme",
                             "cls": "morpheme-initial",
-                            "parameter": "i",
+                            "parameter": "r",
                             "relative": false
                         },
                         {
                             "type": "relPhoneme",
                             "relativeIndex": -1,
-                            "parameter": "j"
+                            "parameter": "n"
                         }
                     ]
                 }
