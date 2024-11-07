@@ -15,6 +15,10 @@ class WordSegment(
             throw IllegalArgumentException("Invalid segment start index")
         }
     }
+
+    override fun toString(): String {
+        return "[$firstCharacter,$length]"
+    }
 }
 
 class Word(

@@ -30,7 +30,7 @@ enum class InstructionType(
 const val DISALLOW_CLASS = "disallow"
 
 open class RuleInstruction(val type: InstructionType, val arg: String) {
-    open fun apply(rule: Rule, branch: RuleBranch?, word: Word, graph: GraphRepository): Word = when(type) {
+    open fun apply(rule: Rule, branch: RuleBranch?, word: Word, graph: GraphRepository, trace: RuleTrace? = null): Word = when(type) {
         InstructionType.NoChange -> word
         InstructionType.ChangeEnding -> changeEnding(word, rule, branch, graph)
         InstructionType.ApplyClass -> word.derive(word.text, newClasses = (word.classes + arg).toSet().toList(), id = word.id)
@@ -284,20 +284,20 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
     }
 }
 
-fun List<RuleInstruction>.apply(rule: Rule, branch: RuleBranch?, word: Word, graph: GraphRepository): Word {
+fun List<RuleInstruction>.apply(rule: Rule, branch: RuleBranch?, word: Word, graph: GraphRepository, trace: RuleTrace? = null): Word {
     if (isEmpty()) return word
     val normalizedWord = word.derive(word.text.trimEnd('-'), id = word.id)
-    return fold(normalizedWord) { s, i -> i.apply(rule, branch, s, graph) }
+    return fold(normalizedWord) { s, i -> i.apply(rule, branch, s, graph, trace) }
 }
 
 class ApplyRuleInstruction(val ruleRef: RuleRef)
     : RuleInstruction(InstructionType.ApplyRule, "")
 {
-    override fun apply(rule: Rule, branch: RuleBranch?, word: Word, graph: GraphRepository): Word {
+    override fun apply(rule: Rule, branch: RuleBranch?, word: Word, graph: GraphRepository, trace: RuleTrace?): Word {
         val targetRule = ruleRef.resolve()
         val link = graph.getLinksTo(word).find { it.rules == listOf(targetRule) }
         val existingFormText = (link?.fromEntity as? Word)?.text
-        val result = targetRule.apply(word, graph).asOrthographic()
+        val result = targetRule.apply(word, graph, trace).asOrthographic()
         if (existingFormText != null && existingFormText != result.text) {
             return word.derive(existingFormText, word.id)
         }
@@ -343,7 +343,7 @@ class ApplySoundRuleInstruction(language: Language, val ruleRef: RuleRef, arg: S
         ruleRef.resolve().applyToPhoneme(word, targetIt, graph)
     }
 
-    override fun apply(rule: Rule, branch: RuleBranch?, word: Word, graph: GraphRepository): Word {
+    override fun apply(rule: Rule, branch: RuleBranch?, word: Word, graph: GraphRepository, trace: RuleTrace?): Word {
         if (seekTarget == null) return word
         val phonemes = PhonemeIterator(word.asPhonemic(), graph)
         if (phonemes.seek(seekTarget)) {
@@ -397,7 +397,7 @@ class ApplyStressInstruction(val language: Language, arg: String) : RuleInstruct
     }
 
 
-    override fun apply(rule: Rule, branch: RuleBranch?, word: Word, graph: GraphRepository): Word {
+    override fun apply(rule: Rule, branch: RuleBranch?, word: Word, graph: GraphRepository, trace: RuleTrace?): Word {
         var syllables = breakIntoSyllables(word)
         if (root) {
             val segments = graph.restoreSegments(word).segments
@@ -429,7 +429,7 @@ class PrependAppendInstruction(type: InstructionType, language: Language, arg: S
         }
     }
 
-    override fun apply(rule: Rule, branch: RuleBranch?, word: Word, graph: GraphRepository): Word {
+    override fun apply(rule: Rule, branch: RuleBranch?, word: Word, graph: GraphRepository, trace: RuleTrace?): Word {
         if (literalArg != null) {
             return if (type == InstructionType.Prepend)
                 word.derive(literalArg + word.text)
@@ -468,7 +468,7 @@ class PrependAppendInstruction(type: InstructionType, language: Language, arg: S
 }
 
 class InsertInstruction(arg: String, val relIndex: Int, val seekTarget: SeekTarget) : RuleInstruction(InstructionType.Insert, arg) {
-    override fun apply(rule: Rule, branch: RuleBranch?, word: Word, graph: GraphRepository): Word {
+    override fun apply(rule: Rule, branch: RuleBranch?, word: Word, graph: GraphRepository, trace: RuleTrace?): Word {
         val phonemes = PhonemeIterator(word, graph)
         if (!phonemes.seek(seekTarget)) return word
         if (relIndex == -1) {
@@ -505,7 +505,7 @@ class MorphemeInstruction(type: InstructionType, val morphemeId: Int)
         }
     }
 
-    override fun apply(rule: Rule, branch: RuleBranch?, word: Word, graph: GraphRepository): Word {
+    override fun apply(rule: Rule, branch: RuleBranch?, word: Word, graph: GraphRepository, trace: RuleTrace?): Word {
         val morpheme = graph.wordById(morphemeId) ?: throw IllegalStateException("Target morpheme not found")
         return when (type) {
             InstructionType.PrependMorpheme ->
