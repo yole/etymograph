@@ -1,15 +1,30 @@
 import {useContext, useState} from "react";
-import {addRule, updateRule} from "@/api";
+import {addRule, previewRuleChanges, updateRule} from "@/api";
 import EtymographForm from "@/components/EtymographForm";
 import FormRow from "@/components/FormRow";
 import FormTextArea from "@/components/FormTextArea";
 import LanguageSelect from "@/components/LanguageSelect";
 import {GraphContext} from "@/components/Contexts";
 import PosSelect from "@/components/PosSelect";
+import WordLink from "@/components/WordLink";
 
 export default function RuleForm(props) {
     const [ruleType, setRuleType] = useState(props.initialType !== undefined ? props.initialType : "phono")
+    const [preview, setPreview] = useState([])
     const graph = useContext(GraphContext)
+
+    async function previewRuleChangesClicked(data) {
+        const r = await previewRuleChanges(graph, props.updateId, data.text)
+        if (r.status === 200) {
+            const jr = await r.json()
+            if (jr.results.length === 0) {
+                setPreview(["No words affected"])
+            }
+            else {
+                setPreview(jr.results.map(r => <><WordLink word={r.word}/>{`: ${r.oldForm} -> ${r.newForm}`}<br/></>))
+            }
+        }
+    }
 
     return <>
         Rule type:{' '}
@@ -19,6 +34,9 @@ export default function RuleForm(props) {
         <EtymographForm
             create={(data) => addRule(graph, data)}
             update={(data) => updateRule(graph, props.updateId, data)}
+            buttons={props.updateId !== undefined ? [
+                {text: 'Preview', callback: (data) => previewRuleChangesClicked(data)}
+            ] : []}
             {...props}>
 
             <table><tbody>
@@ -38,5 +56,6 @@ export default function RuleForm(props) {
             <h3>Notes</h3>
             <FormTextArea rows="5" cols="50" id="notes"/>
         </EtymographForm>
+        {preview.length > 0 && <p>{preview}</p>}
     </>
 }

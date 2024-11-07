@@ -151,6 +151,10 @@ export function traceRule(graph, ruleId, word, reverse) {
     return postToBackend(`${graph}/rule/${ruleId}/trace`, {word, reverse})
 }
 
+export function previewRuleChanges(graph, ruleId, newText) {
+    return postToBackend(`${graph}/rule/${ruleId}/preview`, {newText})
+}
+
 export function deriveThroughRuleSequence(graph, wordId, seqId) {
     return postToBackend(`${graph}/word/${wordId}/derive`, {sequenceId: seqId})
 }

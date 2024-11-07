@@ -353,6 +353,27 @@ class Rule(
         return logic.branches.any { branch -> branch.refersToPhoneme(phoneme) }
     }
 
+    data class RuleChangeResult(val word: Word, val oldResult: String, val newResult: String)
+
+    fun previewChanges(graph: GraphRepository, newText: String): List<RuleChangeResult> {
+        val newLogic = parseBranches(newText, RuleParseContext(graph, fromLanguage, toLanguage,) {
+            RuleRef.to(graph.ruleByName(it) ?: throw RuleParseException("No rule with name '$it'"))
+        })
+        val newRule = Rule(-1, name, fromLanguage, toLanguage, newLogic)
+        val results = mutableListOf<RuleChangeResult>()
+        for (word in graph.allWords(fromLanguage)) {
+            if (word.pos in fromPOS) {
+                val oldResult = apply(word, graph)
+                val newResult = newRule.apply(word, graph)
+                if (oldResult.text != newResult.text) {
+                    results.add(RuleChangeResult(word, oldResult.text, newResult.text))
+                }
+            }
+        }
+
+        return results
+    }
+
     companion object {
         fun parseBranches(s: String, context: RuleParseContext): RuleLogic {
             if (s.isBlank()) return RuleLogic(emptyList(), emptyList(), emptyList())

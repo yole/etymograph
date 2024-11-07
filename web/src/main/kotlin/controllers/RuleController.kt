@@ -435,6 +435,32 @@ class RuleController {
 
         return RuleTraceResult(trace.log(), result)
     }
+
+    data class RulePreviewParams(
+        val newText: String = ""
+    )
+
+    data class RulePreviewResultViewModel(
+        val word: WordRefViewModel,
+        val oldForm: String,
+        val newForm: String
+    )
+
+    data class RulePreviewResultListViewModel(
+        val results: List<RulePreviewResultViewModel>
+    )
+
+    @PostMapping("/{graph}/rule/{id}/preview", consumes = ["application/json"])
+    fun preview(repo: GraphRepository, @PathVariable id: Int, @RequestBody params: RulePreviewParams): RulePreviewResultListViewModel {
+        val rule = repo.resolveRule(id)
+        if (params.newText.isBlank()) {
+            badRequest("No rule text provided")
+        }
+        val results = rule.previewChanges(repo, params.newText)
+        return RulePreviewResultListViewModel(
+            results.map { RulePreviewResultViewModel(it.word.toRefViewModel(repo), it.oldResult, it.newResult) }
+        )
+    }
 }
 
 fun parsePOSList(pos: String?, language: Language): List<String> {

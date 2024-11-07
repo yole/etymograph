@@ -59,6 +59,7 @@ export default function EtymographForm(props) {
     }
 
     if (editMode === false) return <></>
+    const buttons = props.buttons || []
 
     return <FormProvider {...methods}>
         <form onSubmit={methods.handleSubmit(saveForm)}>
@@ -68,6 +69,7 @@ export default function EtymographForm(props) {
                 {(props.cancelled !== undefined || setEditMode !== undefined) && <>{' '}
                     <button onClick={() => props.cancelled !== undefined ? props.cancelled() : setEditMode(false)}>Cancel</button>
                 </>}
+                {buttons.map(b => <>{' '}<button type="button" onClick={() => b.callback(methods.getValues())}>{b.text}</button></>)}
             </p>
             {errorText !== "" && <div className="errorText">{errorText}</div>}
         </form>
