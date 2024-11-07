@@ -152,7 +152,10 @@ class PhonemeClassList {
     }
 
     private fun withImplicit(classes: Set<String>): Set<String> =
-        classes + classes.map { implicitPhonemeClasses[it] ?: emptySet() }.flatten()
+        classes + implicitClasses(classes)
+
+    fun implicitClasses(classes: Set<String>) =
+        classes.map { implicitPhonemeClasses[it] ?: emptySet() }.flatten() - classes
 
     fun findByName(name: String): PhonemeClass? {
         if (' ' in name) {

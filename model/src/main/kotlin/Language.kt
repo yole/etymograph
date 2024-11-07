@@ -169,6 +169,10 @@ class Language(val name: String, val shortName: String) {
         return phonemeClasses.findByName(name)
     }
 
+    fun implicitPhonemeClasses(classes: Set<String>): List<String> {
+        return phonemeClasses.implicitClasses(classes)
+    }
+
     fun normalizeWord(text: String): String {
         return buildString {
             orthoPhonemeLookup.iteratePhonemes(text.lowercase(Locale.FRANCE)) { s, phoneme ->
