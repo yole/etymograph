@@ -308,7 +308,7 @@ class SyllableRuleCondition(
     override fun toRichText(): RichText {
         val paramText = phonemePattern.toEditableText()
         return Ordinals.toString(index).rich(emph = true) +
-                " syllable ${matchType.condName}  ".rich() +
+                " syllable ${matchType.condName} ".rich() +
                 paramText.rich(emph = true)
     }
 
