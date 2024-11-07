@@ -949,7 +949,8 @@
         "text": "af",
         "gloss": "of",
         "fullGloss": "of, by, out of, from",
-        "pos": "PREP"
+        "pos": "PREP",
+        "notes": "w/Dat"
     },
     {
         "id": 1083,
@@ -4759,7 +4760,10 @@
         "id": 5036,
         "text": "rikr",
         "gloss": "powerful",
-        "pos": "ADJ"
+        "pos": "ADJ",
+        "classes": [
+            "j-stem"
+        ]
     },
     {
         "id": 5037,
@@ -5747,5 +5751,201 @@
     {
         "id": 5271,
         "text": "hausti"
+    },
+    {
+        "id": 5272,
+        "text": "einu"
+    },
+    {
+        "id": 5273,
+        "text": "urðu"
+    },
+    {
+        "id": 5274,
+        "text": "þangat",
+        "gloss": "thither",
+        "pos": "ADV"
+    },
+    {
+        "id": 5275,
+        "text": "sæhafa",
+        "gloss": "sea-tossed",
+        "pos": "ADJ"
+    },
+    {
+        "id": 5276,
+        "text": "kaupmaðr"
+    },
+    {
+        "id": 5277,
+        "text": "kaupmenn"
+    },
+    {
+        "id": 5278,
+        "text": "kaupa",
+        "gloss": "buy",
+        "pos": "V"
+    },
+    {
+        "id": 5280,
+        "text": "hafskip",
+        "pos": "N"
+    },
+    {
+        "id": 5281,
+        "text": "hafskipi"
+    },
+    {
+        "id": 5283,
+        "text": "brutu"
+    },
+    {
+        "id": 5284,
+        "text": "flosi",
+        "pos": "NP"
+    },
+    {
+        "id": 5285,
+        "text": "veðr",
+        "gloss": "weather",
+        "pos": "N",
+        "classes": [
+            "n"
+        ]
+    },
+    {
+        "id": 5286,
+        "text": "norðr",
+        "gloss": "north",
+        "pos": "N"
+    },
+    {
+        "id": 5287,
+        "text": "norðri"
+    },
+    {
+        "id": 5288,
+        "text": "veðrit"
+    },
+    {
+        "id": 5289,
+        "text": "Reykjanesi"
+    },
+    {
+        "id": 5290,
+        "text": "helzk"
+    },
+    {
+        "id": 5291,
+        "text": "vika",
+        "gloss": "week",
+        "pos": "N",
+        "classes": [
+            "f"
+        ]
+    },
+    {
+        "id": 5292,
+        "text": "viku"
+    },
+    {
+        "id": 5293,
+        "text": "kanna",
+        "gloss": "search",
+        "pos": "V"
+    },
+    {
+        "id": 5294,
+        "text": "könnuðu"
+    },
+    {
+        "id": 5296,
+        "text": "Flosa"
+    },
+    {
+        "id": 5297,
+        "text": "finna",
+        "gloss": "find",
+        "pos": "V"
+    },
+    {
+        "id": 5298,
+        "text": "fann"
+    },
+    {
+        "id": 5299,
+        "text": "hvalr",
+        "gloss": "whale",
+        "pos": "N"
+    },
+    {
+        "id": 5300,
+        "text": "hval"
+    },
+    {
+        "id": 5301,
+        "text": "fram",
+        "gloss": "forward",
+        "pos": "ADV"
+    },
+    {
+        "id": 5302,
+        "text": "nesinu"
+    },
+    {
+        "id": 5303,
+        "text": "Rifsker",
+        "pos": "NP"
+    },
+    {
+        "id": 5304,
+        "text": "Rifskerjum"
+    },
+    {
+        "id": 5305,
+        "text": "reyðr",
+        "gloss": "rorqual",
+        "pos": "N"
+    },
+    {
+        "id": 5306,
+        "text": "bœja"
+    },
+    {
+        "id": 5307,
+        "text": "næstr",
+        "gloss": "nearest"
+    },
+    {
+        "id": 5308,
+        "text": "næstu"
+    },
+    {
+        "id": 5309,
+        "text": "skurðr",
+        "gloss": "cutting",
+        "pos": "N"
+    },
+    {
+        "id": 5310,
+        "text": "skurðar"
+    },
+    {
+        "id": 5311,
+        "text": "fjögur"
+    },
+    {
+        "id": 5312,
+        "text": "þorgrimr",
+        "pos": "NP"
+    },
+    {
+        "id": 5313,
+        "text": "døkkr",
+        "gloss": "dark",
+        "pos": "ADJ",
+        "classes": [
+            "v-stem"
+        ]
     }
 ]

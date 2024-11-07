@@ -734,7 +734,8 @@
             "name": "Stem type",
             "pos": [
                 "N",
-                "NP"
+                "NP",
+                "ADJ"
             ],
             "values": [
                 {

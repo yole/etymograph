@@ -3625,21 +3625,24 @@
             {
                 "instructions": [
                     {
-                        "type": "ApplyRule",
+                        "type": "ChangeEnding",
                         "args": [
-                            "1502"
+                            "um"
                         ]
-                    },
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "v"
+                }
+            },
+            {
+                "instructions": [
                     {
                         "type": "Append",
                         "args": [
                             "'um'"
-                        ]
-                    },
-                    {
-                        "type": "ApplyRule",
-                        "args": [
-                            "1123"
                         ]
                     }
                 ],
@@ -3651,6 +3654,22 @@
         "addedCategories": ".M.DAT",
         "fromPOS": [
             "ADJ"
+        ],
+        "preInstructions": [
+            {
+                "type": "ApplyRule",
+                "args": [
+                    "1502"
+                ]
+            }
+        ],
+        "postInstructions": [
+            {
+                "type": "ApplyRule",
+                "args": [
+                    "1123"
+                ]
+            }
         ]
     },
     {
@@ -3662,11 +3681,30 @@
             {
                 "instructions": [
                     {
-                        "type": "ApplyRule",
+                        "type": "ChangeEnding",
                         "args": [
-                            "1502"
+                            "s"
                         ]
-                    },
+                    }
+                ],
+                "condition": {
+                    "type": "or",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "j"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "v"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
                     {
                         "type": "Append",
                         "args": [
@@ -3682,6 +3720,14 @@
         "addedCategories": ".M.GEN",
         "fromPOS": [
             "ADJ"
+        ],
+        "preInstructions": [
+            {
+                "type": "ApplyRule",
+                "args": [
+                    "1502"
+                ]
+            }
         ]
     },
     {
@@ -3695,14 +3741,74 @@
                     {
                         "type": "ChangeEnding",
                         "args": [
+                            "j"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "r"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "j-stem"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "v"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "r"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "v-stem"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
                             ""
                         ]
                     }
                 ],
                 "condition": {
-                    "type": "leaf",
-                    "cond": "EndsWith",
-                    "characters": "r"
+                    "type": "or",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "r"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "n"
+                        }
+                    ]
                 }
             },
             {
@@ -3730,16 +3836,33 @@
             {
                 "instructions": [
                     {
-                        "type": "ApplyRule",
+                        "type": "ChangeEnding",
                         "args": [
-                            "1502"
+                            ""
                         ]
-                    },
+                    }
+                ],
+                "condition": {
+                    "type": "or",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "j"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "v"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
                     {
-                        "type": "ApplyRule",
-                        "args": [
-                            "1394"
-                        ]
+                        "type": "NoChange",
+                        "args": []
                     }
                 ],
                 "condition": {
@@ -3750,6 +3873,22 @@
         "addedCategories": ".F.NOM",
         "fromPOS": [
             "ADJ"
+        ],
+        "preInstructions": [
+            {
+                "type": "ApplyRule",
+                "args": [
+                    "1502"
+                ]
+            }
+        ],
+        "postInstructions": [
+            {
+                "type": "ApplyRule",
+                "args": [
+                    "1394"
+                ]
+            }
         ]
     },
     {
@@ -3792,11 +3931,45 @@
             {
                 "instructions": [
                     {
-                        "type": "ApplyRule",
+                        "type": "ChangeEnding",
                         "args": [
-                            "1502"
+                            "ri"
                         ]
-                    },
+                    }
+                ],
+                "condition": {
+                    "type": "or",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "j"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "v"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'ni'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "n"
+                }
+            },
+            {
+                "instructions": [
                     {
                         "type": "Append",
                         "args": [
@@ -3812,6 +3985,14 @@
         "addedCategories": ".F.DAT",
         "fromPOS": [
             "ADJ"
+        ],
+        "preInstructions": [
+            {
+                "type": "ApplyRule",
+                "args": [
+                    "1502"
+                ]
+            }
         ]
     },
     {
@@ -3823,11 +4004,45 @@
             {
                 "instructions": [
                     {
-                        "type": "ApplyRule",
+                        "type": "ChangeEnding",
                         "args": [
-                            "1502"
+                            "rar"
                         ]
-                    },
+                    }
+                ],
+                "condition": {
+                    "type": "or",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "j"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "v"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'nar'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "n"
+                }
+            },
+            {
+                "instructions": [
                     {
                         "type": "Append",
                         "args": [
@@ -3843,6 +4058,14 @@
         "addedCategories": ".F.GEN",
         "fromPOS": [
             "ADJ"
+        ],
+        "preInstructions": [
+            {
+                "type": "ApplyRule",
+                "args": [
+                    "1502"
+                ]
+            }
         ]
     },
     {
@@ -3854,11 +4077,117 @@
             {
                 "instructions": [
                     {
-                        "type": "ApplyRule",
+                        "type": "ChangeEnding",
                         "args": [
-                            "1502"
+                            "t"
                         ]
-                    },
+                    }
+                ],
+                "condition": {
+                    "type": "or",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "j"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "v"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'tt'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "relPhoneme",
+                    "relativeIndex": -1,
+                    "cls": "long vowel",
+                    "relative": false
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "t"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "leaf",
+                                    "cond": "EndsWith",
+                                    "characters": "ð"
+                                },
+                                {
+                                    "type": "leaf",
+                                    "cond": "EndsWith",
+                                    "characters": "t"
+                                },
+                                {
+                                    "type": "leaf",
+                                    "cond": "EndsWith",
+                                    "characters": "d"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": -2,
+                            "cls": "consonant",
+                            "relative": false
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "tt"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "or",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "ð"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "t"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "d"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
                     {
                         "type": "Append",
                         "args": [
@@ -3874,6 +4203,14 @@
         "addedCategories": ".N.NOM",
         "fromPOS": [
             "ADJ"
+        ],
+        "preInstructions": [
+            {
+                "type": "ApplyRule",
+                "args": [
+                    "1502"
+                ]
+            }
         ]
     },
     {
@@ -3949,13 +4286,7 @@
                     {
                         "type": "ApplyRule",
                         "args": [
-                            "1502"
-                        ]
-                    },
-                    {
-                        "type": "Append",
-                        "args": [
-                            "'s'"
+                            "1500"
                         ]
                     }
                 ],
@@ -3978,11 +4309,20 @@
             {
                 "instructions": [
                     {
-                        "type": "ApplyRule",
+                        "type": "ChangeEnding",
                         "args": [
-                            "1502"
+                            "ir"
                         ]
-                    },
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "j"
+                }
+            },
+            {
+                "instructions": [
                     {
                         "type": "Append",
                         "args": [
@@ -3998,6 +4338,14 @@
         "addedCategories": ".M.NOM.PL",
         "fromPOS": [
             "ADJ"
+        ],
+        "preInstructions": [
+            {
+                "type": "ApplyRule",
+                "args": [
+                    "1502"
+                ]
+            }
         ]
     },
     {
@@ -4065,11 +4413,45 @@
             {
                 "instructions": [
                     {
-                        "type": "ApplyRule",
+                        "type": "ChangeEnding",
                         "args": [
-                            "1502"
+                            "ra"
                         ]
-                    },
+                    }
+                ],
+                "condition": {
+                    "type": "or",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "j"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "v"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'na'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "n"
+                }
+            },
+            {
+                "instructions": [
                     {
                         "type": "Append",
                         "args": [
@@ -4085,6 +4467,14 @@
         "addedCategories": ".M.GEN.PL",
         "fromPOS": [
             "ADJ"
+        ],
+        "preInstructions": [
+            {
+                "type": "ApplyRule",
+                "args": [
+                    "1502"
+                ]
+            }
         ]
     },
     {
@@ -4202,16 +4592,33 @@
             {
                 "instructions": [
                     {
-                        "type": "ApplyRule",
+                        "type": "ChangeEnding",
                         "args": [
-                            "1502"
+                            ""
                         ]
-                    },
+                    }
+                ],
+                "condition": {
+                    "type": "or",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "j"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "v"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
                     {
-                        "type": "ApplyRule",
-                        "args": [
-                            "1394"
-                        ]
+                        "type": "NoChange",
+                        "args": []
                     }
                 ],
                 "condition": {
@@ -4222,6 +4629,22 @@
         "addedCategories": ".N.NOM.PL",
         "fromPOS": [
             "ADJ"
+        ],
+        "preInstructions": [
+            {
+                "type": "ApplyRule",
+                "args": [
+                    "1502"
+                ]
+            }
+        ],
+        "postInstructions": [
+            {
+                "type": "ApplyRule",
+                "args": [
+                    "1394"
+                ]
+            }
         ]
     },
     {
