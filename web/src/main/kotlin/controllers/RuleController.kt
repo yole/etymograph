@@ -63,6 +63,8 @@ class RuleController {
         val notes: String?,
         val paradigmId: Int?,
         val paradigmName: String?,
+        val paradigmPreRule: RuleRefViewModel?,
+        val paradigmPostRule: RuleRefViewModel?,
         val phonemic: Boolean,
         val preInstructions: List<RichText>,
         val branches: List<RuleBranchViewModel>,
@@ -200,6 +202,8 @@ class RuleController {
             notes.nullize(),
             paradigm?.id,
             paradigm?.name,
+            paradigm?.preRule?.toRefViewModel(),
+            paradigm?.postRule?.toRefViewModel(),
             isPhonemic(),
             logic.preInstructions.map { it.toRichText(repo) },
             logic.branches.map { branch ->

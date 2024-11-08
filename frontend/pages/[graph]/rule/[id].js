@@ -20,6 +20,7 @@ import EtymographForm from "@/components/EtymographForm";
 import FormRow from "@/components/FormRow";
 import {GraphContext} from "@/components/Contexts";
 import WordGloss from "@/components/WordGloss";
+import RuleLink from "@/components/RuleLink";
 
 export const config = {
     unstable_runtimeJS: true
@@ -176,6 +177,7 @@ export default function Rule(params) {
             {rule.replacedCategories && <p>Replaced category values: <span className="glossAbbreviation">{rule.replacedCategories.toLowerCase()}</span></p>}
             <SourceRefs source={rule.source}/>
             <p/>
+            {rule.paradigmPreRule != null && <p>Paradigm pre rule: <RuleLink rule={rule.paradigmPreRule}/></p>}
             <ul>
                 {rule.preInstructions.map(r => <li><RichText richText={r}></RichText></li>)}
             </ul>
@@ -197,6 +199,7 @@ export default function Rule(params) {
                     {rule.postInstructions.map(r => <li><RichText richText={r}></RichText></li>)}
                 </ul>
             </>}
+            {rule.paradigmPostRule != null && <p>Paradigm post rule: <RuleLink rule={rule.paradigmPostRule}/></p>}
             {rule.notes != null && <>
                 <h3>Notes</h3>
                 <p>{rule.notes}</p>
