@@ -3,6 +3,7 @@ package ru.yole.etymograph.web.controllers
 import org.springframework.web.bind.annotation.*
 import ru.yole.etymograph.*
 import ru.yole.etymograph.web.resolveLanguage
+import ru.yole.etymograph.web.resolveRule
 
 @RestController
 class ParadigmController {
@@ -25,7 +26,9 @@ class ParadigmController {
         val pos: List<String>,
         val rowTitles: List<String>,
         val columns: List<ParadigmColumnViewModel>,
-        val editableText: String
+        val editableText: String,
+        val preRule: RuleRefViewModel?,
+        val postRule: RuleRefViewModel?
     )
 
     @GetMapping("/{graph}/paradigms")
@@ -34,10 +37,13 @@ class ParadigmController {
     }
 
     private fun Paradigm.toViewModel(repo: GraphRepository) =
-        ParadigmViewModel(id, name,
+        ParadigmViewModel(
+            id, name,
             language.shortName, language.name, pos, rowTitles,
             columns.map { it.toViewModel(repo, rowTitles.size) },
-            toEditableText()
+            toEditableText(),
+            preRule?.toRefViewModel(),
+            postRule?.toRefViewModel()
         )
 
     private fun ParadigmColumn.toViewModel(repo: GraphRepository, rows: Int) =
@@ -64,7 +70,9 @@ class ParadigmController {
     data class UpdateParadigmParameters(
         val name: String,
         val pos: String,
-        val text: String
+        val text: String,
+        val preRuleName: String? = null,
+        val postRuleName: String? = null
     )
 
     @PostMapping("/{graph}/paradigms/{lang}", consumes = ["application/json"])
@@ -74,6 +82,8 @@ class ParadigmController {
 
         val p = repo.addParadigm(params.name, language, parseList(params.pos))
         p.parse(params.text, repo::ruleByName)
+        p.preRule = params.preRuleName?.let { repo.resolveRule(it) }
+        p.postRule = params.postRuleName?.let { repo.resolveRule(it) }
         return p.toViewModel(repo)
     }
 
@@ -84,6 +94,8 @@ class ParadigmController {
         paradigm.parse(params.text, repo::ruleByName)
         paradigm.name = params.name
         paradigm.pos = parseList(params.pos)
+        paradigm.preRule = params.preRuleName?.let { repo.resolveRule(it) }
+        paradigm.postRule = params.postRuleName?.let { repo.resolveRule(it) }
     }
 
     @PostMapping("/{graph}/paradigm/{id}/delete")

@@ -4,6 +4,7 @@ import {useRouter} from "next/router";
 import Link from "next/link";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import ParadigmForm from "@/forms/ParadigmForm";
+import RuleLink from "@/components/RuleLink";
 
 export const config = {
     unstable_runtimeJS: true
@@ -50,6 +51,9 @@ export default function Paradigm(params) {
                      title={paradigm.name}/>
         {!editMode && <>
             <p>POS: {paradigm.pos.join(", ")}</p>
+            {paradigm.preRule && <>Pre rule: <RuleLink rule={paradigm.preRule}/></>}
+            {paradigm.postRule && <>Post rule: <RuleLink rule={paradigm.postRule}/></>}
+            <p/>
             <table className="tableWithBorders">
             <thead><tr>
                 <td/>
@@ -75,7 +79,9 @@ export default function Paradigm(params) {
                 defaultValues={{
                     name: paradigm.name,
                     pos: paradigm.pos.join(","),
-                    text: paradigm.editableText
+                    text: paradigm.editableText,
+                    preRuleName: paradigm.preRule?.name,
+                    postRuleName: paradigm.postRule?.name
                 }}
                 submitted={paradigmSubmitted}
                 cancelled={() => setEditMode(false)}

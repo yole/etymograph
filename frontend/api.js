@@ -217,12 +217,12 @@ export function deleteCompound(graph, compoundId) {
     return postToBackend(`${graph}/compound/${compoundId}/delete`)
 }
 
-export function addParadigm(graph, name, language, pos, text) {
-    return postToBackend(`${graph}/paradigms/${language}`, {name: name, pos: pos, text: text})
+export function addParadigm(graph, language, data) {
+    return postToBackend(`${graph}/paradigms/${language}`, data)
 }
 
-export function updateParadigm(graph, id, name, pos, text) {
-    return postToBackend(`${graph}/paradigm/${id}`, {name: name, pos: pos, text: text})
+export function updateParadigm(graph, id, data) {
+    return postToBackend(`${graph}/paradigm/${id}`, data)
 }
 
 export function deleteParadigm(graph, id) {
