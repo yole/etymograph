@@ -192,4 +192,16 @@ class JsonGraphRepositoryTest : QBaseTest() {
         val compound2 = repo2.findCompoundsByCompoundWord(compoundWord2).single()
         assertEquals(1, compound2.headIndex)
     }
+
+    @Test
+    fun serializeParadigmRules() {
+        val paradigm = repo.addParadigm("Noun", q, listOf("N"))
+        val preRule = repo.rule("word ends with 'a':\n- change ending to ''", name = "q-pre")
+        val postRule = repo.rule("word ends with 'oo':\n - change ending to 'o'", name = "q-post")
+        paradigm.preRule = preRule
+        paradigm.postRule = postRule
+        val repo2 = repo.roundtrip()
+        assertEquals("q-pre", repo2.paradigmById(paradigm.id)!!.preRule!!.name)
+        assertEquals("q-post", repo2.paradigmById(paradigm.id)!!.postRule!!.name)
+    }
 }

@@ -230,12 +230,15 @@ class Rule(
                 word
         }
 
-        val preWord = logic.preInstructions.apply(this, null, word, graph)
+        val paradigm = graph.paradigmForRule(this)
+        val paraPreWord = paradigm?.preRule?.apply(word, graph, trace) ?: word
+        val preWord = logic.preInstructions.apply(this, null, paraPreWord, graph)
         for (branch in logic.branches) {
             if (branch.matches(preWord, graph, trace)) {
                 trace?.logMatchedBranch(this, word, null, branch)
                 var resultWord = branch.apply(this, preWord, graph, trace)
                 resultWord = logic.postInstructions.apply(this, null, resultWord, graph)
+                resultWord = paradigm?.postRule?.apply(resultWord, graph, trace) ?: resultWord
                 return deriveWord(word, resultWord.text, toLanguage, resultWord.stressedPhonemeIndex,
                     resultWord.segments, resultWord.classes, normalizeSegments = normalizeSegments)
             }

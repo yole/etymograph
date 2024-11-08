@@ -48,7 +48,9 @@ data class Paradigm(
     val id: Int,
     var name: String,
     val language: Language,
-    var pos: List<String>
+    var pos: List<String>,
+    var preRule: Rule? = null,
+    var postRule: Rule? = null
 ) {
     val rowTitles = mutableListOf<String>()
     val columns = mutableListOf<ParadigmColumn>()

@@ -1,27 +1,26 @@
 package ru.yole.etymograph
 
 import org.junit.Assert.assertEquals
+import org.junit.Before
 import org.junit.Test
 
 class ParadigmTest : QBaseTest() {
+    lateinit var repo: GraphRepository
+
+    @Before
+    fun setup() {
+        repo = InMemoryGraphRepository().with(q)
+    }
+
     @Test
     fun paradigm() {
-        val repo = InMemoryGraphRepository()
-        repo.addLanguage(q)
-
         val paradigm = repo.addParadigm("Noun", q, listOf("N"))
         paradigm.addRow("Nom")
         paradigm.addRow("Gen")
         paradigm.addColumn("Sg")
 
         paradigm.setRule(0, 0, emptyList())
-        val genRule = repo.addRule(
-            "q-gen",
-            q,
-            q,
-            Rule.parseBranches("- append 'o'", q.parseContext()),
-            ".GEN"
-        )
+        val genRule = repo.rule("- append 'o'", name = "q-gen", addedCategories = ".GEN")
         paradigm.setRule(1, 0, listOf(genRule))
 
         val lasse = repo.findOrAddWord("lasse", q, "leaf", pos = "N")
@@ -33,9 +32,6 @@ class ParadigmTest : QBaseTest() {
 
     @Test
     fun paradigmParse() {
-        val repo = InMemoryGraphRepository()
-        repo.addLanguage(q)
-
         val plRule = repo.addRule(
             "q-nom-pl",
             q,
@@ -43,13 +39,7 @@ class ParadigmTest : QBaseTest() {
             Rule.parseBranches("- append 'r'", q.parseContext()),
             ".PL"
         )
-        val genRule = repo.addRule(
-            "q-gen",
-            q,
-            q,
-            Rule.parseBranches("- append 'o'", q.parseContext()),
-            ".GEN"
-        )
+        val genRule = repo.rule("- append 'o'", name = "q-gen", addedCategories = ".GEN")
         val genPlRule = repo.addRule(
             "q-gen-pl",
             q,
@@ -71,5 +61,41 @@ class ParadigmTest : QBaseTest() {
 
         val editableText = paradigm.toEditableText()
         assertEquals(paradigmText, editableText)
+    }
+
+    @Test
+    fun paradigmPreRule() {
+        val paradigm = repo.addParadigm("Noun", q, listOf("N"))
+        paradigm.addRow("Nom")
+        paradigm.addRow("Gen")
+        paradigm.addColumn("Sg")
+
+        val genRule = repo.rule("- append 'o'", name = "q-gen", addedCategories = ".GEN")
+        paradigm.setRule(1, 0, listOf(genRule))
+
+        val preRule = repo.rule("word ends with 'a':\n- change ending to ''", name = "q-pre")
+        paradigm.preRule = preRule
+
+        val cirya = repo.findOrAddWord("cirya", q, "ship", pos = "N")
+        val result = genRule.apply(cirya, repo)
+        assertEquals("ciryo", result.text)
+    }
+
+    @Test
+    fun paradigmPostRule() {
+        val paradigm = repo.addParadigm("Noun", q, listOf("N"))
+        paradigm.addRow("Nom")
+        paradigm.addRow("Gen")
+        paradigm.addColumn("Sg")
+
+        val genRule = repo.rule("- append 'o'", name = "q-gen", addedCategories = ".GEN")
+        paradigm.setRule(1, 0, listOf(genRule))
+
+        val postRule = repo.rule("word ends with 'ao':\n- change ending to 'o'", name = "q-post")
+        paradigm.postRule = postRule
+
+        val cirya = repo.findOrAddWord("cirya", q, "ship", pos = "N")
+        val result = genRule.apply(cirya, repo)
+        assertEquals("ciryo", result.text)
     }
 }

@@ -301,7 +301,9 @@ data class ParadigmData(
     val name: String,
     val rows: List<String>,
     val columns: List<ParadigmColumnData>,
-    val posList: List<String>
+    val posList: List<String>,
+    val preRule: Int? = null,
+    val postRule: Int? = null
 )
 
 @Serializable
@@ -485,7 +487,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                     ParadigmColumnData(col.title, col.cells.map { cell ->
                         ParadigmCellData(ruleAlternatives = cell?.ruleAlternatives?.map { r -> r?.id })
                     })
-                }, it.pos)
+                }, it.pos, it.preRule?.id, it.postRule?.id)
             }
             if (paradigmData.isNotEmpty()) {
                 consumer("${language.shortName}/paradigms.json", theJson.encodeToString(paradigmData))
@@ -730,6 +732,8 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
 
                 val paradigm = Paradigm(paradigmData.id, paradigmData.name, language, paradigmData.posList)
                 paradigms[paradigmData.id] = paradigm
+                paradigm.preRule = paradigmData.preRule?.let { ruleById(it) }
+                paradigm.postRule = paradigmData.postRule?.let { ruleById(it) }
                 paradigm.apply {
                     for (row in paradigmData.rows) {
                         addRow(row)
