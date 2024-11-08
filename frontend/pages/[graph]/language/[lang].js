@@ -8,6 +8,7 @@ import EtymographForm from "@/components/EtymographForm";
 import FormRow from "@/components/FormRow";
 import FormTextArea from "@/components/FormTextArea";
 import RuleListSelect from "@/components/RuleListSelect";
+import RuleLink from "@/components/RuleLink";
 
 export const config = {
     unstable_runtimeJS: true
@@ -100,7 +101,7 @@ export default function LanguageIndex(props) {
                 {lang.stressRuleName != null && <p>Stress rule: <Link href={`/${graph}/rule/${lang.stressRuleId}`}>{lang.stressRuleName}</Link></p>}
                 {lang.phonotacticsRuleName != null && <p>Phonotactics rule: <Link href={`/${graph}/rule/${lang.phonotacticsRuleId}`}>{lang.phonotacticsRuleName}</Link></p>}
                 {lang.pronunciationRuleName != null && <p>Pronunciation rule: <Link href={`/${graph}/rule/${lang.pronunciationRuleId}`}>{lang.pronunciationRuleName}</Link></p>}
-                {lang.orthographyRuleName != null && <p>Orthography rule: <Link href={`/${graph}/rule/${lang.orthographyRuleId}`}>{lang.orthographyRuleName}</Link></p>}
+                {lang.orthographyRule != null && <p>Orthography rule: <RuleLink rule={lang.orthographyRule}/></p>}
 
                 <h3>Grammar</h3>
                 {lang.pos != null && lang.pos.trim().length > 0 && <>
@@ -133,7 +134,7 @@ export default function LanguageIndex(props) {
                         stressRuleName: lang.stressRuleName,
                         phonotacticsRuleName: lang.phonotacticsRuleName,
                         pronunciationRuleName: lang.pronunciationRuleName,
-                        orthographyRuleName: lang.orthographyRuleName,
+                        orthographyRuleName: lang.orthographyRule?.name,
                         pos: lang.pos,
                         grammaticalCategories: lang.grammaticalCategories,
                         wordClasses: lang.wordClasses,

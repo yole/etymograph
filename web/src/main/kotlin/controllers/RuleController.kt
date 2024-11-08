@@ -4,6 +4,14 @@ import org.springframework.web.bind.annotation.*
 import ru.yole.etymograph.*
 import ru.yole.etymograph.web.*
 
+data class RuleRefViewModel(
+    val id: Int,
+    val name: String
+)
+
+fun Rule.toRefViewModel() =
+    RuleRefViewModel(id, name)
+
 @RestController
 class RuleController {
     data class RuleBranchViewModel(
