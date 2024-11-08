@@ -51,8 +51,8 @@ export default function Paradigm(params) {
                      title={paradigm.name}/>
         {!editMode && <>
             <p>POS: {paradigm.pos.join(", ")}</p>
-            {paradigm.preRule && <>Pre rule: <RuleLink rule={paradigm.preRule}/></>}
-            {paradigm.postRule && <>Post rule: <RuleLink rule={paradigm.postRule}/></>}
+            {paradigm.preRule && <p>Pre rule: <RuleLink rule={paradigm.preRule}/></p>}
+            {paradigm.postRule && <p>Post rule: <RuleLink rule={paradigm.postRule}/></p>}
             <p/>
             <table className="tableWithBorders">
             <thead><tr>
