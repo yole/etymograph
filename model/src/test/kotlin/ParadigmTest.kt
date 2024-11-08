@@ -98,4 +98,25 @@ class ParadigmTest : QBaseTest() {
         val result = genRule.apply(cirya, repo)
         assertEquals("ciryo", result.text)
     }
+
+    @Test
+    fun paradigmPostRuleDelegation() {
+        val paradigm = repo.addParadigm("Noun", q, listOf("N"))
+        paradigm.addRow("Nom")
+        paradigm.addRow("Gen")
+        paradigm.addColumn("Sg")
+        paradigm.addColumn("Pl")
+
+        val genRule = repo.rule("- append 'o'", name = "q-gen", addedCategories = ".GEN")
+        paradigm.setRule(1, 0, listOf(genRule))
+        val genPlRule = repo.rule("- apply rule 'q-gen'", name = "q-gen-pl")
+        paradigm.setRule(1, 1, listOf(genPlRule))
+
+        val postRule = repo.rule("word ends with 'o':\n- change ending to ''", name = "q-post")
+        paradigm.postRule = postRule
+
+        val cirya = repo.findOrAddWord("kiryamo", q, "mariner", pos = "N")
+        val result = genPlRule.apply(cirya, repo)
+        assertEquals("kiryamo", result.text)
+    }
 }

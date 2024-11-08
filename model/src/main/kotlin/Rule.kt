@@ -207,7 +207,7 @@ class Rule(
 ) : LangEntity(id, source, notes) {
     fun isPhonemic(): Boolean = logic.branches.any { it.condition.isPhonemic() }
 
-    fun apply(word: Word, graph: GraphRepository, trace: RuleTrace? = null, normalizeSegments: Boolean = true): Word {
+    fun apply(word: Word, graph: GraphRepository, trace: RuleTrace? = null, topLevelRule: Boolean = true): Word {
         trace?.logRule(this, word)
         if (isPhonemic()) {
             val phonemic = word.asPhonemic()
@@ -231,16 +231,18 @@ class Rule(
         }
 
         val paradigm = graph.paradigmForRule(this)
-        val paraPreWord = paradigm?.preRule?.apply(word, graph, trace) ?: word
+        val paraPreWord = if (topLevelRule) (paradigm?.preRule?.apply(word, graph, trace) ?: word) else word
         val preWord = logic.preInstructions.apply(this, null, paraPreWord, graph)
         for (branch in logic.branches) {
             if (branch.matches(preWord, graph, trace)) {
                 trace?.logMatchedBranch(this, word, null, branch)
                 var resultWord = branch.apply(this, preWord, graph, trace)
                 resultWord = logic.postInstructions.apply(this, null, resultWord, graph)
-                resultWord = paradigm?.postRule?.apply(resultWord, graph, trace) ?: resultWord
+                if (topLevelRule) {
+                    resultWord = paradigm?.postRule?.apply(resultWord, graph, trace) ?: resultWord
+                }
                 return deriveWord(word, resultWord.text, toLanguage, resultWord.stressedPhonemeIndex,
-                    resultWord.segments, resultWord.classes, normalizeSegments = normalizeSegments)
+                    resultWord.segments, resultWord.classes, normalizeSegments = topLevelRule)
             }
             else {
                 trace?.logUnmatchedBranch(this, word, null, branch)
