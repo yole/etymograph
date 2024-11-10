@@ -230,6 +230,19 @@ class Rule(
                 word
         }
 
+        val compound = graph.findCompoundsByCompoundWord(word).singleOrNull()
+        if (compound != null && compound.headIndex == compound.components.size - 1) {
+            val headWord = compound.components.last()
+            if (word.text.endsWith(headWord.text)) {
+                val headWordForm = graph.getLinksTo(headWord).find { it.rules == listOf(this) }?.fromEntity as? Word
+                if (headWordForm != null) {
+                    val derivedForm = word.text.substring(0, word.text.length-headWord.text.length) + headWordForm.text
+                    return deriveWord(word, derivedForm, toLanguage, -1, null, headWordForm.classes,
+                        normalizeSegments = topLevelRule)
+                }
+            }
+        }
+
         val paradigm = graph.paradigmForRule(this)
         val paraPreWord = if (topLevelRule) (paradigm?.preRule?.apply(word, graph, trace) ?: word) else word
         val preWord = logic.preInstructions.apply(this, null, paraPreWord, graph)

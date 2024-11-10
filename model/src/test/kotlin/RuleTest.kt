@@ -269,6 +269,25 @@ class RuleTest : QBaseTest() {
     }
 
     @Test
+    fun applyRuleToCompound() {
+        val repo = InMemoryGraphRepository()
+        val on = Language("Old Norse", "ON").also { repo.addLanguage(it) }
+        val rule = repo.rule("word ends with 'r':\n- change ending to 'ar'", name = "on-nom-pl")
+        val madr = repo.addWord("maðr", language = on, gloss = "man")
+        val menn = repo.addWord("menn", language = on)
+        repo.addLink(menn, madr, Link.Derived, listOf(rule))
+
+        val far = repo.addWord("go",  language = on, gloss = "go")
+        val farmadr = repo.addWord("farmaðr", language = on)
+        val compound = repo.createCompound(farmadr, far)
+        compound.components.add(madr)
+        compound.headIndex = 1
+
+        val result = rule.apply(farmadr, repo)
+        assertEquals("farmenn", result.text)
+    }
+
+    @Test
     fun postInstructions() {
         val text = """
             word ends with 'e':
