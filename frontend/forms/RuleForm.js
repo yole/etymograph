@@ -47,7 +47,7 @@ export default function RuleForm(props) {
                     <FormRow label="Added category values" id="addedCategories"/>
                     <FormRow label="Replaced category values" id="replacedCategories"/>
                     <PosSelect label="From POS" id="fromPOS" languageProp="toLang" isMulti={true}/>
-                    <FormRow label="To POS" id="toPOS"/>
+                    <PosSelect label="To POS" id="toPOS" languageProp="toLang" isMulti={false} showNone={true}/>
                 </>}
                 <FormRow label="Source" id="source"/>
             </tbody></table>

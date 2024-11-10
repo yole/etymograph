@@ -11,10 +11,13 @@ export default function PosSelect(props) {
         : props.language
     const language = globalState.languages.find(l => l.shortName === lang)
 
-    const pos = !language ? [] : language.pos.map((p) => ({
+    let pos = !language ? [] : language.pos.map((p) => ({
         value: p.abbreviation,
         label: `${p.name} (${p.abbreviation})`})
     )
+    if (props.showNone) {
+        pos = [{value: '', label: 'None'}].concat(pos)
+    }
 
     const valueFn = props.isMulti
         ? (value) => value === undefined ? [] : value.split(",").map(s => pos.find(r => r.value === s))
