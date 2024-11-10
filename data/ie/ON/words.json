@@ -2492,7 +2492,10 @@
         "id": 1452,
         "text": "ætla",
         "gloss": "intend",
-        "pos": "V"
+        "pos": "V",
+        "classes": [
+            "1conj"
+        ]
     },
     {
         "id": 1454,
@@ -4379,7 +4382,10 @@
         "id": 4950,
         "text": "fagr",
         "gloss": "fair",
-        "pos": "ADJ"
+        "pos": "ADJ",
+        "classes": [
+            "cc-stem"
+        ]
     },
     {
         "id": 4951,
@@ -5876,7 +5882,10 @@
         "id": 5299,
         "text": "hvalr",
         "gloss": "whale",
-        "pos": "N"
+        "pos": "N",
+        "classes": [
+            "m"
+        ]
     },
     {
         "id": 5300,
@@ -5947,5 +5956,120 @@
         "classes": [
             "v-stem"
         ]
+    },
+    {
+        "id": 5331,
+        "text": "hvass",
+        "gloss": "sharp",
+        "pos": "ADJ",
+        "classes": [
+            "cc-stem"
+        ]
+    },
+    {
+        "id": 5332,
+        "text": "veitti"
+    },
+    {
+        "id": 5333,
+        "text": "draga",
+        "gloss": "pull",
+        "fullGloss": "pull, draw, drag",
+        "pos": "V"
+    },
+    {
+        "id": 5334,
+        "text": "dreginn"
+    },
+    {
+        "id": 5335,
+        "text": "skera",
+        "gloss": "cut",
+        "pos": "V"
+    },
+    {
+        "id": 5336,
+        "text": "skorinn"
+    },
+    {
+        "id": 5337,
+        "text": "reka",
+        "gloss": "drive",
+        "pos": "V"
+    },
+    {
+        "id": 5338,
+        "text": "rekinn"
+    },
+    {
+        "id": 5339,
+        "text": "komit"
+    },
+    {
+        "id": 5340,
+        "text": "hvalsins"
+    },
+    {
+        "id": 5341,
+        "text": "tilkall",
+        "gloss": "claim",
+        "pos": "N",
+        "classes": [
+            "n",
+            "cc-stem"
+        ]
+    },
+    {
+        "id": 5342,
+        "text": "tilkall"
+    },
+    {
+        "id": 5343,
+        "text": "fyrirbjóða",
+        "gloss": "forbid",
+        "pos": "V"
+    },
+    {
+        "id": 5344,
+        "text": "fyrirbauð"
+    },
+    {
+        "id": 5345,
+        "text": "Víkrmaðr",
+        "pos": "NP"
+    },
+    {
+        "id": 5346,
+        "text": "Víkrmenn"
+    },
+    {
+        "id": 5348,
+        "text": "Víkrmönnum"
+    },
+    {
+        "id": 5349,
+        "text": "skurð"
+    },
+    {
+        "id": 5350,
+        "text": "skipti",
+        "gloss": "division",
+        "pos": "N",
+        "classes": [
+            "n"
+        ]
+    },
+    {
+        "id": 5351,
+        "text": "brautflutning",
+        "gloss": "carrying off",
+        "pos": "N",
+        "classes": [
+            "f"
+        ]
+    },
+    {
+        "id": 5352,
+        "text": "hvalnum"
     }
 ]

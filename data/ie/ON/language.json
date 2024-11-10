@@ -777,6 +777,10 @@
                 {
                     "name": "-nd-",
                     "abbreviation": "nd-stem"
+                },
+                {
+                    "name": "-CC",
+                    "abbreviation": "cc-stem"
                 }
             ]
         },

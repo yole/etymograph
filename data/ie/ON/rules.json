@@ -3568,11 +3568,38 @@
         "name": "on-ppart",
         "fromLang": "ON",
         "toLang": "ON",
-        "branches": [],
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "1401"
+                        ]
+                    },
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'r'"
+                        ]
+                    },
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "5330"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
         "addedCategories": ".PPART",
         "fromPOS": [
             "V"
-        ]
+        ],
+        "toPOS": "ADJ"
     },
     {
         "id": 1436,
@@ -3593,12 +3620,6 @@
         "branches": [
             {
                 "instructions": [
-                    {
-                        "type": "ApplyRule",
-                        "args": [
-                            "1502"
-                        ]
-                    },
                     {
                         "type": "Append",
                         "args": [
@@ -3625,12 +3646,6 @@
             {
                 "instructions": [
                     {
-                        "type": "ApplyRule",
-                        "args": [
-                            "1502"
-                        ]
-                    },
-                    {
                         "type": "Append",
                         "args": [
                             "'um'"
@@ -3640,12 +3655,6 @@
                         "type": "ApplyRule",
                         "args": [
                             "1123"
-                        ]
-                    },
-                    {
-                        "type": "ApplyRule",
-                        "args": [
-                            "5330"
                         ]
                     }
                 ],
@@ -3668,21 +3677,9 @@
             {
                 "instructions": [
                     {
-                        "type": "ApplyRule",
-                        "args": [
-                            "1502"
-                        ]
-                    },
-                    {
                         "type": "Append",
                         "args": [
                             "'s'"
-                        ]
-                    },
-                    {
-                        "type": "ApplyRule",
-                        "args": [
-                            "5330"
                         ]
                     }
                 ],
@@ -3702,6 +3699,29 @@
         "fromLang": "ON",
         "toLang": "ON",
         "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "NoChange",
+                        "args": []
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "r"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "cc-stem"
+                        }
+                    ]
+                }
+            },
             {
                 "instructions": [
                     {
@@ -3785,6 +3805,59 @@
                     }
                 ],
                 "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "ss"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "cc-stem"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "s"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "ss"
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "l"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "ll"
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "NoChange",
+                        "args": []
+                    }
+                ],
+                "condition": {
                     "type": "otherwise"
                 }
             }
@@ -3804,19 +3877,7 @@
                     {
                         "type": "ApplyRule",
                         "args": [
-                            "1502"
-                        ]
-                    },
-                    {
-                        "type": "ApplyRule",
-                        "args": [
                             "1394"
-                        ]
-                    },
-                    {
-                        "type": "ApplyRule",
-                        "args": [
-                            "5330"
                         ]
                     }
                 ],
@@ -3838,12 +3899,6 @@
         "branches": [
             {
                 "instructions": [
-                    {
-                        "type": "ApplyRule",
-                        "args": [
-                            "1502"
-                        ]
-                    },
                     {
                         "type": "Append",
                         "args": [
@@ -3870,21 +3925,9 @@
             {
                 "instructions": [
                     {
-                        "type": "ApplyRule",
-                        "args": [
-                            "1502"
-                        ]
-                    },
-                    {
                         "type": "Append",
                         "args": [
                             "'ri'"
-                        ]
-                    },
-                    {
-                        "type": "ApplyRule",
-                        "args": [
-                            "5330"
                         ]
                     }
                 ],
@@ -3907,21 +3950,9 @@
             {
                 "instructions": [
                     {
-                        "type": "ApplyRule",
-                        "args": [
-                            "1502"
-                        ]
-                    },
-                    {
                         "type": "Append",
                         "args": [
                             "'rar'"
-                        ]
-                    },
-                    {
-                        "type": "ApplyRule",
-                        "args": [
-                            "5330"
                         ]
                     }
                 ],
@@ -4045,22 +4076,6 @@
         "addedCategories": ".N.NOM",
         "fromPOS": [
             "ADJ"
-        ],
-        "preInstructions": [
-            {
-                "type": "ApplyRule",
-                "args": [
-                    "1502"
-                ]
-            }
-        ],
-        "postInstructions": [
-            {
-                "type": "ApplyRule",
-                "args": [
-                    "5330"
-                ]
-            }
         ]
     },
     {
@@ -4097,12 +4112,6 @@
             {
                 "instructions": [
                     {
-                        "type": "ApplyRule",
-                        "args": [
-                            "1502"
-                        ]
-                    },
-                    {
                         "type": "Append",
                         "args": [
                             "'u'"
@@ -4112,12 +4121,6 @@
                         "type": "ApplyRule",
                         "args": [
                             "1123"
-                        ]
-                    },
-                    {
-                        "type": "ApplyRule",
-                        "args": [
-                            "5330"
                         ]
                     }
                 ],
@@ -4165,21 +4168,6 @@
             {
                 "instructions": [
                     {
-                        "type": "ChangeEnding",
-                        "args": [
-                            "ir"
-                        ]
-                    }
-                ],
-                "condition": {
-                    "type": "leaf",
-                    "cond": "EndsWith",
-                    "characters": "j"
-                }
-            },
-            {
-                "instructions": [
-                    {
                         "type": "Append",
                         "args": [
                             "'ir'"
@@ -4194,14 +4182,6 @@
         "addedCategories": ".M.NOM.PL",
         "fromPOS": [
             "ADJ"
-        ],
-        "preInstructions": [
-            {
-                "type": "ApplyRule",
-                "args": [
-                    "1502"
-                ]
-            }
         ]
     },
     {
@@ -4212,12 +4192,6 @@
         "branches": [
             {
                 "instructions": [
-                    {
-                        "type": "ApplyRule",
-                        "args": [
-                            "1502"
-                        ]
-                    },
                     {
                         "type": "Append",
                         "args": [
@@ -4269,21 +4243,9 @@
             {
                 "instructions": [
                     {
-                        "type": "ApplyRule",
-                        "args": [
-                            "1502"
-                        ]
-                    },
-                    {
                         "type": "Append",
                         "args": [
                             "'ra'"
-                        ]
-                    },
-                    {
-                        "type": "ApplyRule",
-                        "args": [
-                            "5330"
                         ]
                     }
                 ],
@@ -4305,12 +4267,6 @@
         "branches": [
             {
                 "instructions": [
-                    {
-                        "type": "ApplyRule",
-                        "args": [
-                            "1502"
-                        ]
-                    },
                     {
                         "type": "Append",
                         "args": [
@@ -4414,19 +4370,7 @@
                     {
                         "type": "ApplyRule",
                         "args": [
-                            "1502"
-                        ]
-                    },
-                    {
-                        "type": "ApplyRule",
-                        "args": [
                             "1394"
-                        ]
-                    },
-                    {
-                        "type": "ApplyRule",
-                        "args": [
-                            "5330"
                         ]
                     }
                 ],
@@ -6396,21 +6340,9 @@
             {
                 "instructions": [
                     {
-                        "type": "ApplyRule",
-                        "args": [
-                            "1502"
-                        ]
-                    },
-                    {
                         "type": "Append",
                         "args": [
                             "'i'"
-                        ]
-                    },
-                    {
-                        "type": "ApplyRule",
-                        "args": [
-                            "5330"
                         ]
                     }
                 ],
@@ -6432,12 +6364,6 @@
         "branches": [
             {
                 "instructions": [
-                    {
-                        "type": "ApplyRule",
-                        "args": [
-                            "1502"
-                        ]
-                    },
                     {
                         "type": "Append",
                         "args": [
@@ -6464,12 +6390,6 @@
             {
                 "instructions": [
                     {
-                        "type": "ApplyRule",
-                        "args": [
-                            "1502"
-                        ]
-                    },
-                    {
                         "type": "Append",
                         "args": [
                             "'a'"
@@ -6495,12 +6415,6 @@
             {
                 "instructions": [
                     {
-                        "type": "ApplyRule",
-                        "args": [
-                            "1502"
-                        ]
-                    },
-                    {
                         "type": "Append",
                         "args": [
                             "'u'"
@@ -6510,12 +6424,6 @@
                         "type": "ApplyRule",
                         "args": [
                             "1123"
-                        ]
-                    },
-                    {
-                        "type": "ApplyRule",
-                        "args": [
-                            "5330"
                         ]
                     }
                 ],
@@ -6537,12 +6445,6 @@
         "branches": [
             {
                 "instructions": [
-                    {
-                        "type": "ApplyRule",
-                        "args": [
-                            "1502"
-                        ]
-                    },
                     {
                         "type": "Append",
                         "args": [
@@ -6569,12 +6471,6 @@
             {
                 "instructions": [
                     {
-                        "type": "ApplyRule",
-                        "args": [
-                            "1502"
-                        ]
-                    },
-                    {
                         "type": "Append",
                         "args": [
                             "'u'"
@@ -6584,12 +6480,6 @@
                         "type": "ApplyRule",
                         "args": [
                             "1123"
-                        ]
-                    },
-                    {
-                        "type": "ApplyRule",
-                        "args": [
-                            "5330"
                         ]
                     }
                 ],
@@ -6611,12 +6501,6 @@
         "branches": [
             {
                 "instructions": [
-                    {
-                        "type": "ApplyRule",
-                        "args": [
-                            "1502"
-                        ]
-                    },
                     {
                         "type": "Append",
                         "args": [
@@ -6668,12 +6552,6 @@
             {
                 "instructions": [
                     {
-                        "type": "ApplyRule",
-                        "args": [
-                            "1502"
-                        ]
-                    },
-                    {
                         "type": "Append",
                         "args": [
                             "'a'"
@@ -6699,12 +6577,6 @@
             {
                 "instructions": [
                     {
-                        "type": "ApplyRule",
-                        "args": [
-                            "1502"
-                        ]
-                    },
-                    {
                         "type": "Append",
                         "args": [
                             "'u'"
@@ -6714,12 +6586,6 @@
                         "type": "ApplyRule",
                         "args": [
                             "1123"
-                        ]
-                    },
-                    {
-                        "type": "ApplyRule",
-                        "args": [
-                            "5330"
                         ]
                     }
                 ],
@@ -6741,12 +6607,6 @@
         "branches": [
             {
                 "instructions": [
-                    {
-                        "type": "ApplyRule",
-                        "args": [
-                            "1502"
-                        ]
-                    },
                     {
                         "type": "Append",
                         "args": [
@@ -6773,12 +6633,6 @@
             {
                 "instructions": [
                     {
-                        "type": "ApplyRule",
-                        "args": [
-                            "1502"
-                        ]
-                    },
-                    {
                         "type": "Append",
                         "args": [
                             "'um'"
@@ -6788,12 +6642,6 @@
                         "type": "ApplyRule",
                         "args": [
                             "1123"
-                        ]
-                    },
-                    {
-                        "type": "ApplyRule",
-                        "args": [
-                            "5330"
                         ]
                     }
                 ],
@@ -6815,12 +6663,6 @@
         "branches": [
             {
                 "instructions": [
-                    {
-                        "type": "ApplyRule",
-                        "args": [
-                            "1502"
-                        ]
-                    },
                     {
                         "type": "Append",
                         "args": [
@@ -6847,12 +6689,6 @@
             {
                 "instructions": [
                     {
-                        "type": "ApplyRule",
-                        "args": [
-                            "1502"
-                        ]
-                    },
-                    {
                         "type": "Append",
                         "args": [
                             "'u'"
@@ -6862,12 +6698,6 @@
                         "type": "ApplyRule",
                         "args": [
                             "1123"
-                        ]
-                    },
-                    {
-                        "type": "ApplyRule",
-                        "args": [
-                            "5330"
                         ]
                     }
                 ],
@@ -6889,12 +6719,6 @@
         "branches": [
             {
                 "instructions": [
-                    {
-                        "type": "ApplyRule",
-                        "args": [
-                            "1502"
-                        ]
-                    },
                     {
                         "type": "Append",
                         "args": [
@@ -6921,12 +6745,6 @@
             {
                 "instructions": [
                     {
-                        "type": "ApplyRule",
-                        "args": [
-                            "1502"
-                        ]
-                    },
-                    {
                         "type": "Append",
                         "args": [
                             "'u'"
@@ -6936,12 +6754,6 @@
                         "type": "ApplyRule",
                         "args": [
                             "1123"
-                        ]
-                    },
-                    {
-                        "type": "ApplyRule",
-                        "args": [
-                            "5330"
                         ]
                     }
                 ],
@@ -7065,6 +6877,131 @@
                             "type": "relPhoneme",
                             "relativeIndex": -1,
                             "parameter": "n"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "l"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "cls": "morpheme-initial",
+                            "parameter": "r",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": -1,
+                            "parameter": "l"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "SoundDisappears",
+                        "args": [
+                            "0"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "cls": "morpheme-initial",
+                            "parameter": "r",
+                            "relative": false
+                        },
+                        {
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "relPhoneme",
+                                    "relativeIndex": -1,
+                                    "parameter": "s"
+                                },
+                                {
+                                    "type": "relPhoneme",
+                                    "relativeIndex": -1,
+                                    "parameter": "r"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": -2,
+                            "cls": "consonant"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "s"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "cls": "morpheme-initial",
+                            "parameter": "r",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": -1,
+                            "parameter": "s"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "SoundDisappears",
+                        "args": [
+                            "0"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "cls": "consonant",
+                            "relative": false
+                        },
+                        {
+                            "type": "phonemeEquals",
+                            "index": -1,
+                            "cls": null,
+                            "relative": true
+                        },
+                        {
+                            "type": "phonemeEquals",
+                            "index": -2,
+                            "cls": null,
+                            "relative": true
                         }
                     ]
                 }

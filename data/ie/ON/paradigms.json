@@ -445,7 +445,9 @@
         "posList": [
             "ADJ",
             "PRON"
-        ]
+        ],
+        "preRule": 1502,
+        "postRule": 5330
     },
     {
         "id": 34,
@@ -631,7 +633,7 @@
         ],
         "columns": [
             {
-                "title": "Sg M",
+                "title": "SgM",
                 "cells": [
                     {
                         "ruleAlternatives": [
@@ -656,7 +658,7 @@
                 ]
             },
             {
-                "title": "Sg F",
+                "title": "SgF",
                 "cells": [
                     {
                         "ruleAlternatives": [
@@ -681,7 +683,7 @@
                 ]
             },
             {
-                "title": "Sg N",
+                "title": "SgN",
                 "cells": [
                     {
                         "ruleAlternatives": [
@@ -733,6 +735,8 @@
         ],
         "posList": [
             "ADJ"
-        ]
+        ],
+        "preRule": 1502,
+        "postRule": 5330
     }
 ]
