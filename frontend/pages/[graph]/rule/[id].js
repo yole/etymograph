@@ -258,6 +258,12 @@ export default function Rule(params) {
                 }
             </>)}
         </>}
+        {rule.referencingParadigms.length > 0 && <>
+            <h3>Referencing paradigms</h3>
+            {rule.referencingParadigms.map(p => <>
+                <Link href={`/${graph}/paradigm/${p.id}`}>{p.name} ({p.refType})</Link>
+            <br/></>)}
+        </>}
         {linkMode && <RuleLinkForm fromEntityId={rule.id} submitted={linkSubmitted} cancelled={() => setLinkMode(false)}/>}
         {rule.orphanExamples.length > 0 && <>
             <h3>Orphan Examples</h3>

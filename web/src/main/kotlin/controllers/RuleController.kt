@@ -9,6 +9,12 @@ data class RuleRefViewModel(
     val name: String
 )
 
+data class ParadigmRefViewModel(
+    val id: Int,
+    val name: String,
+    val refType: String
+)
+
 fun Rule.toRefViewModel() =
     RuleRefViewModel(id, name)
 
@@ -71,7 +77,8 @@ class RuleController {
         val postInstructions: List<RichText>,
         val links: List<RuleLinkViewModel>,
         val linkedWords: List<RuleWordLinkViewModel>,
-        val orphanExamples: List<RuleExampleViewModel>
+        val orphanExamples: List<RuleExampleViewModel>,
+        val referencingParadigms: List<ParadigmRefViewModel>
     )
 
     data class RuleShortViewModel(
@@ -186,6 +193,7 @@ class RuleController {
             val steps = buildIntermediateSteps(repo, link)
             RuleExampleData(link, steps, steps.find { it.rule == this }?.matchedBranches ?: mutableSetOf())
         }
+        val paradigms = repo.findReferencingParadigms(this)
         return RuleViewModel(
             id, name,
             fromLanguage.shortName, toLanguage.shortName,
@@ -225,7 +233,8 @@ class RuleController {
                     )
                 }
             },
-            examples.filter { it.branches.isEmpty() }.map { exampleToViewModel(it, repo) }
+            examples.filter { it.branches.isEmpty() }.map { exampleToViewModel(it, repo) },
+            paradigms.map { ParadigmRefViewModel(it.first.id, it.first.name, it.second) }
         )
     }
 

@@ -15,6 +15,7 @@ open class InMemoryGraphRepository : GraphRepository() {
     protected val translations = mutableMapOf<Int, MutableList<Translation>>()
     protected val rules = mutableListOf<Rule>()
     protected val paradigms = mutableListOf<Paradigm?>()
+
     protected val publications = mutableListOf<Publication?>()
 
     override val id: String
@@ -435,6 +436,19 @@ open class InMemoryGraphRepository : GraphRepository() {
         }
         rules.remove(rule)
         deleteLangEntity(rule)
+    }
+
+    override fun findReferencingParadigms(rule: Rule): List<Pair<Paradigm, String>> {
+        val result = mutableListOf<Pair<Paradigm, String>>()
+        for (paradigm in paradigms) {
+            if (paradigm?.preRule == rule) {
+                result.add(paradigm to "pre-rule")
+            }
+            if (paradigm?.postRule == rule) {
+                result.add(paradigm to "post-rule")
+            }
+        }
+        return result
     }
 
     override fun addRuleSequence(name: String, fromLanguage: Language, toLanguage: Language, rules: List<RuleSequenceStep>): RuleSequence {
