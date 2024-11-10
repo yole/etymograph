@@ -97,7 +97,11 @@ export default function WordForm(props) {
             {wordDefinitions.length > 0 && <span className="wordDefinitions">{wordDefinitions.join(", ")}</span>}
         </FormRow>
         <PosSelect id="pos" label="POS" language={props.defaultValues.language} languageProp={props.languageReadOnly !== true ? 'language' : undefined}/>
-        <WordClassSelect id="classes" label="Classes" language={props.defaultValues.language} languageProp={props.languageReadOnly !== true ? 'language' : undefined}/>
+        <WordClassSelect
+            id="classes" label="Classes"
+            language={props.defaultValues.language} languageProp={props.languageReadOnly !== true ? 'language' : undefined}
+            posProp="pos"
+        />
         <FormRow id="gloss" label="Gloss"/>
         <FormRow id="fullGloss" label="Full gloss"/>
         {props.showContextGloss && <FormRow id="contextGloss" label="Context gloss"/>}

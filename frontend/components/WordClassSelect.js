@@ -9,14 +9,20 @@ export default function WordClassSelect(props) {
     const lang = props.languageProp !== undefined
         ? watch(props.languageProp)
         : props.language
+    const pos = props.posProp !== undefined
+        ? watch(props.posProp)
+        : props.pos
     const language = globalState.languages.find(l => l.shortName === lang)
 
-    const wordClasses = !language ? [] : language.wordClasses.flatMap((wc) => (
-        wc.values.map(v => ({
-            value: v.abbreviation,
-            label: v.name === v.abbreviation ? v.name : `${v.name} (${v.abbreviation})`})
-        )
-    ))
+    const wordClasses = !language
+        ? []
+        : language.wordClasses
+            .filter(wc => pos === undefined || wc.pos.includes(pos))
+            .flatMap((wc) => (
+                wc.values.map(v => ({
+                    value: v.abbreviation,
+                    label: v.name === v.abbreviation ? v.name : `${v.name} (${v.abbreviation})`})
+                )))
 
     const valueFn = (value) => value === undefined ? [] : value.split(" ").map(s => wordClasses.find(r => r.value === s))
 
