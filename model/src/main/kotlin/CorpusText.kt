@@ -166,6 +166,17 @@ class CorpusText(
         _words.removeIf { it.word == word }
     }
 
+    fun lockWordAssociations(repo: GraphRepository) {
+        for (w in iterateWords()) {
+            if (wordByIndex(w.index) == null) {
+                val candidate = repo.wordsByText(language, w.normalizedText).singleOrNull()
+                if (candidate != null) {
+                    _words.add(CorpusWordAssociation(w.index, candidate, null))
+                }
+            }
+        }
+    }
+
     companion object {
         val punctuation = charArrayOf('!', ',', '.', '?', ':', ';', '\"', '\'', '(', ')')
         val leadingPunctuation = charArrayOf('\"', '(', '\'')

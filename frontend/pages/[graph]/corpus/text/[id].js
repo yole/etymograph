@@ -9,7 +9,7 @@ import {
     allowEdit,
     fetchAlternatives,
     acceptAlternative,
-    fetchPathsForAllGraphs
+    fetchPathsForAllGraphs, callApiAndRefresh, lockWordAssociations
 } from "@/api";
 import {useRouter} from "next/router";
 import Link from "next/link";
@@ -90,6 +90,7 @@ export default function CorpusText(params) {
     const [showTranslationForm, setShowTranslationForm] = useState(false)
     const [editTranslationId, setEditTranslationId] = useState(undefined)
     const [alternatives, setAlternatives] = useState([])
+    const [errorText, setErrorText] = useState("")
     const router = useRouter()
     const graph = router.query.graph
 
@@ -139,6 +140,11 @@ export default function CorpusText(params) {
         setShowTranslationForm(false)
         setEditTranslationId(undefined)
         router.replace(router.asPath)
+    }
+
+    function lockAssociationsClicked() {
+        callApiAndRefresh(() => lockWordAssociations(graph, corpusText.id),
+            router, setErrorText)
     }
 
     return <>
@@ -230,8 +236,10 @@ export default function CorpusText(params) {
         </>}
         {allowEdit() && <p>
             {!editMode && <><button onClick={() => setEditMode(true)}>Edit</button>{' '}</>}
-            <button onClick={() => toggleTranslationForm(undefined)}>Add translation</button>
+            <button onClick={() => toggleTranslationForm(undefined)}>Add translation</button>{' '}
+            <button onClick={() => lockAssociationsClicked()}>Lock associations</button>
         </p>}
+        {errorText !== "" && <div className="errorText">{errorText}</div>}
         {showTranslationForm && editTranslationId === undefined &&
             <TranslationForm
                 corpusTextId={router.query.id}

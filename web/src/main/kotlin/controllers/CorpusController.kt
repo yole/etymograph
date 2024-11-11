@@ -134,6 +134,12 @@ class CorpusController {
         corpusText.associateWord(params.index, word, params.contextGloss)
     }
 
+    @PostMapping("/text/{id}/lockAssociations")
+    fun lockWordAssociations(repo: GraphRepository, @PathVariable id: Int) {
+        val corpusText = repo.resolveCorpusText(id)
+        corpusText.lockWordAssociations(repo)
+    }
+
     data class AlternativeViewModel(val gloss: String, val wordId: Int, val ruleId: Int)
 
     @GetMapping("/text/{id}/alternatives/{index}")

@@ -179,6 +179,10 @@ export function associateWord(graph, corpusTextId, wordId, index, contextGloss) 
     return postToBackend(`${graph}/corpus/text/${corpusTextId}/associate`, {wordId, index, contextGloss})
 }
 
+export function lockWordAssociations(graph, corpusTextId) {
+    return postToBackend(`${graph}/corpus/text/${corpusTextId}/lockAssociations`)
+}
+
 export function acceptAlternative(graph, corpusTextId, index, wordId, ruleId) {
     return postToBackend(`${graph}/corpus/text/${corpusTextId}/accept`, {wordId: wordId, ruleId: ruleId, index: index})
 }
