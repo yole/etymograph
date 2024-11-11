@@ -63,7 +63,9 @@
         "posList": [
             "N",
             "NP"
-        ]
+        ],
+        "preRule": 1324,
+        "postRule": 5330
     },
     {
         "id": 15,

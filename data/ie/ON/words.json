@@ -577,7 +577,10 @@
         "id": 1003,
         "text": "Gormr",
         "gloss": "Gorm",
-        "pos": "NP"
+        "pos": "NP",
+        "classes": [
+            "m"
+        ]
     },
     {
         "id": 1004,
@@ -707,7 +710,10 @@
         "id": 1030,
         "text": "Vagr",
         "gloss": "Vag Bay",
-        "pos": "NP"
+        "pos": "NP",
+        "classes": [
+            "m"
+        ]
     },
     {
         "id": 1031,
@@ -1012,8 +1018,7 @@
         "pos": "N",
         "classes": [
             "f",
-            "weak",
-            "strong"
+            "weak"
         ],
         "sourceRefs": [
             {
@@ -1374,20 +1379,23 @@
     {
         "id": 1167,
         "text": "austrveg",
-        "gloss": "east route",
         "pos": "N"
     },
     {
         "id": 1168,
         "text": "við",
         "gloss": "by",
-        "pos": "PREP"
+        "pos": "PREP",
+        "notes": "w/Acc"
     },
     {
         "id": 1169,
         "text": "Sjáland",
         "gloss": "Zealand",
-        "pos": "NP"
+        "pos": "NP",
+        "classes": [
+            "n"
+        ]
     },
     {
         "id": 1170,
@@ -1587,7 +1595,8 @@
         "text": "Sigrøðr",
         "pos": "NP",
         "classes": [
-            "gen-ar"
+            "gen-ar",
+            "m"
         ]
     },
     {
@@ -1654,7 +1663,10 @@
     {
         "id": 1289,
         "text": "Þorsteinn",
-        "pos": "NP"
+        "pos": "NP",
+        "classes": [
+            "m"
+        ]
     },
     {
         "id": 1290,
@@ -1871,7 +1883,7 @@
         "pos": "N",
         "classes": [
             "m",
-            "r-stem"
+            "cc-stem"
         ]
     },
     {
@@ -2025,8 +2037,7 @@
     },
     {
         "id": 1352,
-        "text": "fyrsta",
-        "gloss": "first.WEAK.ACC.SG"
+        "text": "fyrsta"
     },
     {
         "id": 1353,
@@ -2481,7 +2492,8 @@
         "fullGloss": "digging, burial",
         "pos": "N",
         "classes": [
-            "m"
+            "m",
+            "gen-ar"
         ]
     },
     {
@@ -3132,7 +3144,7 @@
         "pos": "N",
         "classes": [
             "m",
-            "r-stem"
+            "cc-stem"
         ]
     },
     {
@@ -3993,8 +4005,8 @@
         "classes": [
             "m",
             "strong",
-            "r-stem",
-            "gen-ar"
+            "gen-ar",
+            "cc-stem"
         ],
         "sourceRefs": [
             {
@@ -4595,7 +4607,8 @@
         "id": 4997,
         "text": "yfir",
         "gloss": "over",
-        "pos": "PREP"
+        "pos": "PREP",
+        "notes": "w/Acc+Dat"
     },
     {
         "id": 4998,
@@ -4657,7 +4670,8 @@
         "gloss": "Varangian",
         "pos": "N",
         "classes": [
-            "m"
+            "m",
+            "j-stem"
         ]
     },
     {
@@ -4694,7 +4708,10 @@
         "id": 5017,
         "text": "ey",
         "gloss": "island",
-        "pos": "N"
+        "pos": "N",
+        "classes": [
+            "j-stem"
+        ]
     },
     {
         "id": 5018,
@@ -4710,7 +4727,10 @@
         "id": 5020,
         "text": "herskapr",
         "gloss": "warfare",
-        "pos": "N"
+        "pos": "N",
+        "classes": [
+            "m"
+        ]
     },
     {
         "id": 5021,
@@ -5581,7 +5601,10 @@
     {
         "id": 5230,
         "text": "Ingjaldr",
-        "pos": "NP"
+        "pos": "NP",
+        "classes": [
+            "m"
+        ]
     },
     {
         "id": 5231,
@@ -5816,14 +5839,19 @@
         "gloss": "weather",
         "pos": "N",
         "classes": [
-            "n"
+            "n",
+            "cc-stem"
         ]
     },
     {
         "id": 5286,
         "text": "norðr",
         "gloss": "north",
-        "pos": "N"
+        "pos": "N",
+        "classes": [
+            "n",
+            "cc-stem"
+        ]
     },
     {
         "id": 5287,
@@ -5933,7 +5961,11 @@
         "id": 5309,
         "text": "skurðr",
         "gloss": "cutting",
-        "pos": "N"
+        "pos": "N",
+        "classes": [
+            "m",
+            "gen-ar"
+        ]
     },
     {
         "id": 5310,
@@ -6071,5 +6103,169 @@
     {
         "id": 5352,
         "text": "hvalnum"
+    },
+    {
+        "id": 5353,
+        "text": "Skalla-Gríms",
+        "pos": "NP"
+    },
+    {
+        "id": 5355,
+        "text": "Skalla-Grímr",
+        "pos": "NP",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 5356,
+        "text": "sverð"
+    },
+    {
+        "id": 5357,
+        "text": "austrvegr"
+    },
+    {
+        "id": 5358,
+        "text": "austr",
+        "gloss": "east",
+        "pos": "N",
+        "classes": [
+            "n"
+        ]
+    },
+    {
+        "id": 5360,
+        "text": "vegr",
+        "gloss": "way",
+        "pos": "N",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 5361,
+        "text": "Sjáland"
+    },
+    {
+        "id": 5362,
+        "text": "mikit"
+    },
+    {
+        "id": 5363,
+        "text": "Sóta",
+        "pos": "NP"
+    },
+    {
+        "id": 5365,
+        "text": "blót"
+    },
+    {
+        "id": 5366,
+        "text": "mikit"
+    },
+    {
+        "id": 5367,
+        "text": "reri"
+    },
+    {
+        "id": 5368,
+        "text": "fjörðu"
+    },
+    {
+        "id": 5369,
+        "text": "sœkja",
+        "gloss": "seek",
+        "pos": "V"
+    },
+    {
+        "id": 5370,
+        "text": "sóttu"
+    },
+    {
+        "id": 5371,
+        "text": "knáliga",
+        "gloss": "vigorously",
+        "pos": "ADV"
+    },
+    {
+        "id": 5372,
+        "text": "róðr",
+        "gloss": "rowing",
+        "pos": "N",
+        "classes": [
+            "m",
+            "cc-stem"
+        ]
+    },
+    {
+        "id": 5373,
+        "text": "róðrinn"
+    },
+    {
+        "id": 5374,
+        "text": "brátt",
+        "gloss": "soon",
+        "pos": "ADV"
+    },
+    {
+        "id": 5375,
+        "text": "Svanr",
+        "gloss": "Svan",
+        "pos": "NP"
+    },
+    {
+        "id": 5376,
+        "text": "húskarl"
+    },
+    {
+        "id": 5377,
+        "text": "húskarlar"
+    },
+    {
+        "id": 5378,
+        "text": "hús",
+        "gloss": "house",
+        "pos": "N",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 5380,
+        "text": "láta",
+        "gloss": "let",
+        "pos": "V"
+    },
+    {
+        "id": 5381,
+        "text": "ræna",
+        "gloss": "rob",
+        "pos": "V"
+    },
+    {
+        "id": 5382,
+        "text": "vinir"
+    },
+    {
+        "id": 5383,
+        "text": "miklir"
+    },
+    {
+        "id": 5384,
+        "text": "bauð"
+    },
+    {
+        "id": 5385,
+        "text": "lið",
+        "gloss": "troops",
+        "pos": "N",
+        "classes": [
+            "n"
+        ]
+    },
+    {
+        "id": 5386,
+        "text": "lið"
     }
 ]
