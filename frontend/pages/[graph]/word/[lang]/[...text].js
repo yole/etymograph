@@ -577,7 +577,7 @@ function SingleWord(params) {
             <p/>
             {errorText !== "" && <div className="errorText">{errorText}</div>}
         </>}
-        {word.pos && !isInflectedForm && <Link href={`/${graph}/paradigms/${word.language}/word/${word.id}`}>Paradigms</Link>}
+        {word.hasParadigms && <Link href={`/${graph}/paradigms/${word.language}/word/${word.id}`}>Paradigms</Link>}
     </>
 }
 

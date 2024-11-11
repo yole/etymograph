@@ -216,6 +216,17 @@ class Word(
         return this
     }
 
+    fun getOrComputePOS(graph: GraphRepository): String? {
+        if (pos != null) {
+            return pos
+        }
+        for (compound in graph.findCompoundsByCompoundWord(this)) {
+            val head = compound.headIndex?.let { compound.components[it] }
+            head?.pos?.let { return it }
+        }
+        return null
+    }
+
     companion object {
         fun appendSegments(sourceSegments: List<WordSegment>?, newSegment: WordSegment?): List<WordSegment>? {
             if (newSegment == null) {

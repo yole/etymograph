@@ -101,6 +101,7 @@ class WordController(val dictionaryService: DictionaryService) {
         val stressIndex: Int?,
         val stressLength: Int?,
         val compound: Boolean,
+        val hasParadigms: Boolean,
         val suggestedDeriveSequences: List<RuleSequenceViewModel>
     )
 
@@ -134,7 +135,12 @@ class WordController(val dictionaryService: DictionaryService) {
             text
 
         val computedGloss = getOrComputeGloss(graph)
-        val compounds = graph.findCompoundsByComponent(this)
+        val compoundsByComponent = graph.findCompoundsByComponent(this)
+        val compoundsByCompoundWord = graph.findCompoundsByCompoundWord(this)
+
+        val effectivePOS = getOrComputePOS(graph)
+        val hasParadigms = baseWordLink(graph) == null && graph.paradigmsForLanguage(language).any { effectivePOS in it.pos }
+
         return WordViewModel(
             id,
             language.shortName,
@@ -184,9 +190,9 @@ class WordController(val dictionaryService: DictionaryService) {
                         }
                     )
             },
-            compounds.filter { !it.isDerivation() }.map { it.compoundWord.toRefViewModel(graph) },
-            compounds.filter { it.isDerivation() }.map { it.compoundWord.toRefViewModel(graph) },
-            graph.findCompoundsByCompoundWord(this).map { compound ->
+            compoundsByComponent.filter { !it.isDerivation() }.map { it.compoundWord.toRefViewModel(graph) },
+            compoundsByComponent.filter { it.isDerivation() }.map { it.compoundWord.toRefViewModel(graph) },
+            compoundsByCompoundWord.map { compound ->
                 CompoundComponentsViewModel(
                     compound.id,
                     compound.components.map { it.toRefViewModel(graph) },
@@ -206,6 +212,7 @@ class WordController(val dictionaryService: DictionaryService) {
             stressData?.index,
             stressData?.length,
             graph.isCompound(this),
+            hasParadigms,
             graph.suggestDeriveRuleSequences(this).map {
                 RuleSequenceViewModel(it.name, it.id)
             }
@@ -330,7 +337,8 @@ class WordController(val dictionaryService: DictionaryService) {
     @GetMapping("/{graph}/word/{id}/paradigms")
     fun wordParadigms(repo: GraphRepository, @PathVariable id: Int): WordParadigmListModel {
         val word = repo.resolveWord(id)
-        val paradigmModels = repo.paradigmsForLanguage(word.language).filter { word.pos in it.pos }.map { paradigm ->
+        val pos = word.getOrComputePOS(repo)
+        val paradigmModels = repo.paradigmsForLanguage(word.language).filter { pos in it.pos }.map { paradigm ->
             val generatedParadigm = paradigm.generate(word, repo)
             val substitutedParadigm = generatedParadigm.map { colWords ->
                 colWords.map { cellWords ->
