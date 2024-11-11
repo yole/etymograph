@@ -82,8 +82,8 @@ class ParadigmController {
 
         val p = repo.addParadigm(params.name, language, parseList(params.pos))
         p.parse(params.text, repo::ruleByName)
-        p.preRule = params.preRuleName?.let { repo.resolveRule(it) }
-        p.postRule = params.postRuleName?.let { repo.resolveRule(it) }
+        p.preRule = params.preRuleName.nullize()?.let { repo.resolveRule(it) }
+        p.postRule = params.postRuleName.nullize()?.let { repo.resolveRule(it) }
         return p.toViewModel(repo)
     }
 
@@ -94,8 +94,8 @@ class ParadigmController {
         paradigm.parse(params.text, repo::ruleByName)
         paradigm.name = params.name
         paradigm.pos = parseList(params.pos)
-        paradigm.preRule = params.preRuleName?.let { repo.resolveRule(it) }
-        paradigm.postRule = params.postRuleName?.let { repo.resolveRule(it) }
+        paradigm.preRule = params.preRuleName.nullize()?.let { repo.resolveRule(it) }
+        paradigm.postRule = params.postRuleName.nullize()?.let { repo.resolveRule(it) }
     }
 
     @PostMapping("/{graph}/paradigm/{id}/delete")
