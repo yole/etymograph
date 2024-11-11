@@ -397,7 +397,7 @@ function SingleWord(params) {
     }
 
     function canClearGloss() {
-        return !word.glossComputed && word.linksFrom.find(l => l.typeId === '>')
+        return (!word.glossComputed || word.pos !== null) && word.linksFrom.find(l => l.typeId === '>')
     }
 
     function clearGloss() {
