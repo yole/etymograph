@@ -209,7 +209,8 @@ class Rule(
 
     fun apply(word: Word, graph: GraphRepository, trace: RuleTrace? = null,
               normalizeSegments: Boolean = true,
-              applyPrePostRules: Boolean = true): Word {
+              applyPrePostRules: Boolean = true,
+              preserveId: Boolean = false): Word {
         trace?.logRule(this, word)
         if (isPhonemic()) {
             val phonemic = word.asPhonemic()
@@ -246,7 +247,7 @@ class Rule(
         }
 
         val paradigm = graph.paradigmForRule(this)
-        val paraPreWord = if (applyPrePostRules) (paradigm?.preRule?.apply(word, graph, trace) ?: word) else word
+        val paraPreWord = if (applyPrePostRules) (paradigm?.preRule?.apply(word, graph, trace, preserveId = true) ?: word) else word
         val preWord = logic.preInstructions.apply(this, null, paraPreWord, graph)
         for (branch in logic.branches) {
             if (branch.matches(preWord, graph, trace)) {
@@ -254,10 +255,11 @@ class Rule(
                 var resultWord = branch.apply(this, preWord, graph, trace)
                 resultWord = logic.postInstructions.apply(this, null, resultWord, graph)
                 if (applyPrePostRules) {
-                    resultWord = paradigm?.postRule?.apply(resultWord, graph, trace) ?: resultWord
+                    resultWord = paradigm?.postRule?.apply(resultWord, graph, trace, preserveId = true) ?: resultWord
                 }
                 return deriveWord(word, resultWord.text, toLanguage, resultWord.stressedPhonemeIndex,
-                    resultWord.segments, resultWord.classes, normalizeSegments = normalizeSegments)
+                    resultWord.segments, resultWord.classes, normalizeSegments = normalizeSegments,
+                    id = if (preserveId) word.id else -1)
             }
             else {
                 trace?.logUnmatchedBranch(this, word, null, branch)
@@ -318,11 +320,11 @@ class Rule(
     }
 
     private fun deriveWord(word: Word, text: String, language: Language, stressIndex: Int, segments: List<WordSegment>?,
-                           classes: List<String>, stress: Int? = null, normalizeSegments: Boolean = true): Word {
+                           classes: List<String>, stress: Int? = null, normalizeSegments: Boolean = true, id: Int = -1): Word {
         val gloss = word.glossOrNP()?.let { baseGloss ->
             applyCategories(baseGloss, segments?.any { it.sourceRule == this} == true)
         }
-        return Word(-1, text, language, gloss, pos = word.pos, classes = classes).also {
+        return Word(id, text, language, gloss, pos = word.pos, classes = classes).also {
             it.stressedPhonemeIndex = stressIndex
             val sourceSegments = word.segments
             if (segments != null) {
