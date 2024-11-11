@@ -162,8 +162,7 @@
     },
     {
         "id": 949,
-        "text": "náms",
-        "gloss": "taking"
+        "text": "náms"
     },
     {
         "id": 951,
@@ -791,10 +790,6 @@
         ]
     },
     {
-        "id": 1052,
-        "text": "fjördr"
-    },
-    {
         "id": 1053,
         "text": "Herjólfsfjörð"
     },
@@ -880,7 +875,8 @@
     {
         "id": 1070,
         "text": "ekki",
-        "gloss": "not"
+        "gloss": "not",
+        "pos": "ADV"
     },
     {
         "id": 1071,
@@ -1238,10 +1234,6 @@
         ]
     },
     {
-        "id": 1137,
-        "text": "e"
-    },
-    {
         "id": 1138,
         "text": "herja",
         "gloss": "raid",
@@ -1326,10 +1318,6 @@
         "pos": "N"
     },
     {
-        "id": 1154,
-        "text": "far"
-    },
-    {
         "id": 1157,
         "text": "Íslands"
     },
@@ -1378,8 +1366,7 @@
     },
     {
         "id": 1167,
-        "text": "austrveg",
-        "pos": "N"
+        "text": "austrveg"
     },
     {
         "id": 1168,
@@ -2106,7 +2093,8 @@
     },
     {
         "id": 1363,
-        "text": "mannblót"
+        "text": "mannblót",
+        "pos": "N"
     },
     {
         "id": 1365,
@@ -3577,8 +3565,7 @@
     },
     {
         "id": 1687,
-        "text": "fegrstr",
-        "pos": "ADJ"
+        "text": "fegrstr"
     },
     {
         "id": 1688,
@@ -3926,6 +3913,10 @@
         "text": "afrek",
         "gloss": "achievement",
         "fullGloss": "great achievement, deed of prowess",
+        "pos": "N",
+        "classes": [
+            "n"
+        ],
         "sourceRefs": [
             {
                 "refText": "https://old-icelandic.vercel.app/word/afrek"
@@ -4190,7 +4181,8 @@
     {
         "id": 4913,
         "text": "er",
-        "gloss": "when"
+        "gloss": "when",
+        "pos": "CONJ"
     },
     {
         "id": 4914,
@@ -4438,7 +4430,8 @@
     {
         "id": 4956,
         "text": "út",
-        "gloss": "out"
+        "gloss": "out",
+        "pos": "PREP"
     },
     {
         "id": 4957,
@@ -4460,10 +4453,6 @@
         "text": "hreysti",
         "gloss": "valor",
         "pos": "N"
-    },
-    {
-        "id": 4964,
-        "text": "fergst"
     },
     {
         "id": 4965,
@@ -4594,8 +4583,7 @@
     },
     {
         "id": 4995,
-        "text": "sveit",
-        "pos": "N"
+        "text": "sveit"
     },
     {
         "id": 4996,
@@ -5021,7 +5009,8 @@
     {
         "id": 5095,
         "text": "beytill",
-        "gloss": "horse-prick"
+        "gloss": "horse-prick",
+        "pos": "N"
     },
     {
         "id": 5096,
@@ -5044,7 +5033,10 @@
     {
         "id": 5100,
         "text": "Guðbjarg",
-        "pos": "NP"
+        "pos": "NP",
+        "classes": [
+            "f"
+        ]
     },
     {
         "id": 5101,
@@ -5433,7 +5425,8 @@
     {
         "id": 5198,
         "text": "eigi",
-        "gloss": "not"
+        "gloss": "not",
+        "pos": "ADV"
     },
     {
         "id": 5199,
@@ -6106,8 +6099,7 @@
     },
     {
         "id": 5353,
-        "text": "Skalla-Gríms",
-        "pos": "NP"
+        "text": "Skalla-Gríms"
     },
     {
         "id": 5355,
@@ -6267,5 +6259,19 @@
     {
         "id": 5386,
         "text": "lið"
+    },
+    {
+        "id": 5387,
+        "text": "nám",
+        "gloss": "seizure",
+        "pos": "N",
+        "classes": [
+            "n"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://cleasby-vigfusson-dictionary.vercel.app/word/nam-2"
+            }
+        ]
     }
 ]

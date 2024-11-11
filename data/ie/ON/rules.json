@@ -3169,7 +3169,8 @@
         "addedCategories": ".SUP",
         "fromPOS": [
             "ADJ"
-        ]
+        ],
+        "toPOS": "ADJ"
     },
     {
         "id": 1498,
