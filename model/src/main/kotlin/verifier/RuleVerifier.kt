@@ -60,7 +60,7 @@ fun verify(repo: JsonGraphRepository, goldPath: String) {
 
 fun main(args: Array<String>) {
     if (args.size != 3 || (args[0] != "export" && args[0] != "verify")) {
-        println("Usage: verifier <export|verify> <repo file> <result file>")
+        println("Usage: verifier <export|verify> <repo dir> <result file>")
         return
     }
     val repo = JsonGraphRepository.fromJson(Path.of(args[1]))
