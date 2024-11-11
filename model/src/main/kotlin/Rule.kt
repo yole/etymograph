@@ -207,7 +207,9 @@ class Rule(
 ) : LangEntity(id, source, notes) {
     fun isPhonemic(): Boolean = logic.branches.any { it.condition.isPhonemic() }
 
-    fun apply(word: Word, graph: GraphRepository, trace: RuleTrace? = null, topLevelRule: Boolean = true): Word {
+    fun apply(word: Word, graph: GraphRepository, trace: RuleTrace? = null,
+              normalizeSegments: Boolean = true,
+              applyPrePostRules: Boolean = true): Word {
         trace?.logRule(this, word)
         if (isPhonemic()) {
             val phonemic = word.asPhonemic()
@@ -238,24 +240,24 @@ class Rule(
                 if (headWordForm != null) {
                     val derivedForm = word.text.substring(0, word.text.length-headWord.text.length) + headWordForm.text
                     return deriveWord(word, derivedForm, toLanguage, -1, null, headWordForm.classes,
-                        normalizeSegments = topLevelRule)
+                        normalizeSegments = normalizeSegments)
                 }
             }
         }
 
         val paradigm = graph.paradigmForRule(this)
-        val paraPreWord = if (topLevelRule) (paradigm?.preRule?.apply(word, graph, trace) ?: word) else word
+        val paraPreWord = if (applyPrePostRules) (paradigm?.preRule?.apply(word, graph, trace) ?: word) else word
         val preWord = logic.preInstructions.apply(this, null, paraPreWord, graph)
         for (branch in logic.branches) {
             if (branch.matches(preWord, graph, trace)) {
                 trace?.logMatchedBranch(this, word, null, branch)
                 var resultWord = branch.apply(this, preWord, graph, trace)
                 resultWord = logic.postInstructions.apply(this, null, resultWord, graph)
-                if (topLevelRule) {
+                if (applyPrePostRules) {
                     resultWord = paradigm?.postRule?.apply(resultWord, graph, trace) ?: resultWord
                 }
                 return deriveWord(word, resultWord.text, toLanguage, resultWord.stressedPhonemeIndex,
-                    resultWord.segments, resultWord.classes, normalizeSegments = topLevelRule)
+                    resultWord.segments, resultWord.classes, normalizeSegments = normalizeSegments)
             }
             else {
                 trace?.logUnmatchedBranch(this, word, null, branch)

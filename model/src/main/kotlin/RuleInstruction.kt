@@ -297,7 +297,9 @@ class ApplyRuleInstruction(val ruleRef: RuleRef)
         val targetRule = ruleRef.resolve()
         val link = graph.getLinksTo(word).find { it.rules == listOf(targetRule) }
         val existingFormText = (link?.fromEntity as? Word)?.text
-        val result = targetRule.apply(word, graph, trace, topLevelRule = false).asOrthographic()
+        val applyPrePostRules = graph.paradigmForRule(rule) != graph.paradigmForRule(targetRule)
+        val result = targetRule.apply(word, graph, trace, normalizeSegments = false, applyPrePostRules = applyPrePostRules)
+            .asOrthographic()
         if (existingFormText != null && existingFormText != result.text) {
             return word.derive(existingFormText, word.id)
         }
