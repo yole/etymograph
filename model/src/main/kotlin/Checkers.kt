@@ -43,6 +43,22 @@ object GlossChecker : ConsistencyChecker {
     }
 }
 
+object WordClassChecker : ConsistencyChecker {
+    override fun check(repo: GraphRepository, language: Language, report: (ConsistencyCheckerIssue) -> Unit) {
+        for (word in repo.allWords(language)) {
+            for (cls in word.classes) {
+                val wordClass = language.wordClasses.find { it.values.any { v -> v.abbreviation == cls } }
+                if (wordClass == null) {
+                    report(ConsistencyCheckerIssue("Word class not found for $word"))
+                }
+                else if (word.pos !in wordClass.pos) {
+                    report(ConsistencyCheckerIssue("Word POS does not match word class POS for $word"))
+                }
+            }
+        }
+    }
+}
+
 object LinkChecker : ConsistencyChecker {
     override fun check(repo: GraphRepository, language: Language, report: (ConsistencyCheckerIssue) -> Unit) {
         for (word in repo.allWords(language)) {
@@ -67,5 +83,5 @@ object LinkChecker : ConsistencyChecker {
 }
 
 val consistencyCheckers = listOf(
-    PosChecker, GlossChecker, LinkChecker
+    PosChecker, GlossChecker, WordClassChecker, LinkChecker
 )

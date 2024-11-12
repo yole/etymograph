@@ -763,10 +763,6 @@
                     "abbreviation": "j-stem"
                 },
                 {
-                    "name": "-r",
-                    "abbreviation": "r-stem"
-                },
-                {
                     "name": "-a-",
                     "abbreviation": "uml-stem"
                 },
