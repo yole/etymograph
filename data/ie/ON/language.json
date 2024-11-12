@@ -373,8 +373,8 @@
                 "œ"
             ],
             "classes": [
-                "short",
-                "open",
+                "long",
+                "mid",
                 "front",
                 "rounded",
                 "vowel"
@@ -386,6 +386,22 @@
                 "ö"
             ],
             "classes": [
+                "open",
+                "back",
+                "rounded",
+                "vowel"
+            ]
+        },
+        {
+            "id": 5388,
+            "graphemes": [
+                "ø"
+            ],
+            "classes": [
+                "short",
+                "front",
+                "mid",
+                "rounded",
                 "vowel"
             ]
         }

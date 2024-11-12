@@ -6,6 +6,20 @@ interface ConsistencyChecker {
     fun check(repo: GraphRepository, language: Language, report: (ConsistencyCheckerIssue) -> Unit)
 }
 
+object WordTextChecker : ConsistencyChecker {
+    override fun check(repo: GraphRepository, language: Language, report: (ConsistencyCheckerIssue) -> Unit) {
+        for (word in repo.allWords(language)) {
+            var charactersNotInInventory = false
+            language.phonoPhonemeLookup.iteratePhonemes(word.asPhonemic().text) { s, phoneme ->
+                if (phoneme == null && s != "-") charactersNotInInventory = true
+            }
+            if (charactersNotInInventory) {
+                report(ConsistencyCheckerIssue("Word text contains characters outside of inventory for $word"))
+            }
+        }
+    }
+}
+
 object PosChecker : ConsistencyChecker {
     override fun check(repo: GraphRepository, language: Language, report: (ConsistencyCheckerIssue) -> Unit) {
         for (word in repo.allWords(language)) {
@@ -83,5 +97,5 @@ object LinkChecker : ConsistencyChecker {
 }
 
 val consistencyCheckers = listOf(
-    PosChecker, GlossChecker, WordClassChecker, LinkChecker
+    WordTextChecker, PosChecker, GlossChecker, WordClassChecker, LinkChecker
 )
