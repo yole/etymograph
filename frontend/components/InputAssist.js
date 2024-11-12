@@ -2,15 +2,23 @@ import {useContext, useState} from "react";
 import {GlobalStateContext} from "@/components/Contexts";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faKeyboard} from '@fortawesome/free-solid-svg-icons'
+import {useFormContext} from "react-hook-form";
 
 export default function InputAssist(props) {
+    const {watch} = useFormContext()
     const globalState = useContext(GlobalStateContext)
     const [inputAssistVisible, setInputAssistVisible] = useState(false)
 
     if (!globalState.inputAssists) return <></>
 
+    const lang = props.languageProp !== undefined
+        ? watch(props.languageProp)
+        : props.language
+
     function collectInputAssists(assists) {
-        return assists.graphemes.map(g => g.text)
+        return assists.graphemes
+            .filter((g) => !lang || g.languages.includes(lang))
+            .map(g => g.text)
     }
 
     function handleInputAssist(id, char) {

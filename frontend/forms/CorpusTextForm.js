@@ -15,7 +15,7 @@ export default function CorpusTextForm(props) {
         <table><tbody>
             <FormRow id="title" label="Title"/>
         </tbody></table>
-        <FormTextArea rows="10" cols="50" id="text" inputAssist={true}/>
+        <FormTextArea rows="10" cols="50" id="text" inputAssist={true} inputAssistLang={props.lang}/>
         <table>
             <tbody>
             <FormRow id="source" label="Source" />
