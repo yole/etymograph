@@ -36,7 +36,7 @@ fun processParadigms(repo: JsonGraphRepository, callback: (Word, String, Rule) -
 fun export(repo: JsonGraphRepository, outputPath: String) {
     Path.of(outputPath).outputStream().bufferedWriter().use { outWriter ->
         processParadigms(repo) { word, expected, rule ->
-            outWriter.write("${word.id},${rule.name},${expected}\n")
+            outWriter.write("${word.id},${rule.name},${word.classes.joinToString(" ")},${expected}\n")
         }
     }
 }
@@ -44,16 +44,17 @@ fun export(repo: JsonGraphRepository, outputPath: String) {
 data class Key(val wordId: Int, val ruleName: String)
 
 fun verify(repo: JsonGraphRepository, goldPath: String) {
-    val gold = mutableMapOf<Key, String>()
+    val gold = mutableMapOf<Key, Pair<String, Set<String>>>()
     for (line in Path.of(goldPath).readLines()) {
-        val (id, ruleName, result) = line.split(',')
-        gold[Key(id.toInt(), ruleName)] = result
+        val (id, ruleName, classes, result) = line.split(',')
+        val classSet = classes.split(' ').toSet()
+        gold[Key(id.toInt(), ruleName)] = result to classSet
     }
 
     processParadigms(repo) { word, expected, rule ->
-        val goldWord = gold[Key(word.id, rule.name)]
-        if (goldWord != null && goldWord != expected) {
-            println("Changed result for rule ${rule.name} on word ${word.text}: previous $goldWord, now $expected")
+        val goldData = gold[Key(word.id, rule.name)]
+        if (goldData != null && goldData.first != expected && goldData.second == word.classes.toSet()) {
+            println("Changed result for rule ${rule.name} on word ${word.text}: previous ${goldData.first}, now $expected")
         }
     }
 }
