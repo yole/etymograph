@@ -36,7 +36,7 @@ object PosChecker : ConsistencyChecker {
                 report(ConsistencyCheckerIssue("No POS specified for word $word"))
             }
             else if (word.pos != null && language.pos.none { it.abbreviation == word.pos }) {
-                report(ConsistencyCheckerIssue("POS not in list for word $word"))
+                report(ConsistencyCheckerIssue("POS '${word.pos}' not in list for word $word"))
             }
         }
     }
@@ -65,10 +65,10 @@ object WordClassChecker : ConsistencyChecker {
             for (cls in word.classes) {
                 val wordClass = language.wordClasses.find { it.values.any { v -> v.abbreviation == cls } }
                 if (wordClass == null) {
-                    report(ConsistencyCheckerIssue("Word class not found for $word"))
+                    report(ConsistencyCheckerIssue("Word class '$cls''not found for $word"))
                 }
                 else if (word.pos !in wordClass.pos) {
-                    report(ConsistencyCheckerIssue("Word POS does not match word class POS for $word"))
+                    report(ConsistencyCheckerIssue("Word POS does not match POS of word class '$cls' for $word"))
                 }
             }
         }
@@ -87,7 +87,7 @@ object LinkChecker : ConsistencyChecker {
                 if (expectedPOS != null) {
                     for (rule in link.rules) {
                         val rulePOS = repo.paradigmForRule(rule)?.pos ?: rule.fromPOS
-                        if (expectedPOS !in rulePOS ) {
+                        if (rulePOS.isNotEmpty() && expectedPOS !in rulePOS) {
                             report(ConsistencyCheckerIssue("Word POS does not match rule POS for link from $word, rule ${rule.name}"))
                         }
                         expectedPOS = rule.toPOS
