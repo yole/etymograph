@@ -1,5 +1,7 @@
 package ru.yole.etymograph
 
+import java.util.*
+
 data class ConsistencyCheckerIssue(val description: String)
 
 interface ConsistencyChecker {
@@ -96,6 +98,22 @@ object LinkChecker : ConsistencyChecker {
     }
 }
 
+object CorpusTextChecker : ConsistencyChecker {
+    override fun check(repo: GraphRepository, language: Language, report: (ConsistencyCheckerIssue) -> Unit) {
+        for (corpusText in repo.corpusTextsInLanguage(language)) {
+            for (line in corpusText.mapToLines(repo)) {
+                for (corpusWord in line.corpusWords) {
+                    if (corpusWord.word != null &&
+                        corpusWord.word.text.lowercase(Locale.FRANCE) != corpusWord.normalizedText.lowercase(Locale.FRANCE))
+                    {
+                        report(ConsistencyCheckerIssue("Corpus word text '${corpusWord.normalizedText}' doesn't match word text '${corpusWord.word.text}' in ${corpusText.title}"))
+                    }
+                }
+            }
+        }
+    }
+}
+
 val consistencyCheckers = listOf(
-    WordTextChecker, PosChecker, GlossChecker, WordClassChecker, LinkChecker
+    WordTextChecker, PosChecker, GlossChecker, WordClassChecker, LinkChecker, CorpusTextChecker
 )
