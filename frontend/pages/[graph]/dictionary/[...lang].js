@@ -45,6 +45,7 @@ export default function Dictionary(params) {
             router.push(`/${graph}/word/${r.language}/${r.text}`)
         }
         else {
+            setShowAddWord(false)
             router.replace(router.asPath)
         }
     }
