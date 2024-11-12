@@ -2820,6 +2820,26 @@
             {
                 "index": 22,
                 "id": 1368
+            },
+            {
+                "index": 7,
+                "id": 936
+            },
+            {
+                "index": 108,
+                "id": 936
+            },
+            {
+                "index": 80,
+                "id": 936
+            },
+            {
+                "index": 85,
+                "id": 936
+            },
+            {
+                "index": 93,
+                "id": 936
             }
         ],
         "sourceRefs": [
@@ -3157,6 +3177,22 @@
             {
                 "index": 85,
                 "id": 1368
+            },
+            {
+                "index": 94,
+                "id": 936
+            },
+            {
+                "index": 34,
+                "id": 936
+            },
+            {
+                "index": 20,
+                "id": 936
+            },
+            {
+                "index": 27,
+                "id": 936
             }
         ],
         "sourceRefs": [
@@ -3329,6 +3365,22 @@
             {
                 "index": 81,
                 "id": 5075
+            },
+            {
+                "index": 73,
+                "id": 936
+            },
+            {
+                "index": 71,
+                "id": 5366
+            },
+            {
+                "index": 25,
+                "id": 936
+            },
+            {
+                "index": 23,
+                "id": 971
             }
         ],
         "sourceRefs": [
@@ -3716,6 +3768,14 @@
             {
                 "index": 124,
                 "id": 1368
+            },
+            {
+                "index": 131,
+                "id": 5362
+            },
+            {
+                "index": 88,
+                "id": 971
             }
         ],
         "sourceRefs": [
@@ -3926,6 +3986,10 @@
             {
                 "index": 69,
                 "id": 1368
+            },
+            {
+                "index": 22,
+                "id": 936
             }
         ],
         "sourceRefs": [
@@ -4710,11 +4774,210 @@
             {
                 "index": 201,
                 "id": 1570
+            },
+            {
+                "index": 135,
+                "id": 5421
             }
         ],
         "sourceRefs": [
             {
                 "refText": "Grettis saga Ásmundarsonar (ch 12)"
+            }
+        ]
+    },
+    {
+        "id": 5393,
+        "text": "Þorgeirr flöskubakr réð fyrst upp á hvalinn at húskörlum Flosa.\nÞorfinnr var fram við höfuðit hvalsins ok stóð í spori, er hann hafði gört sér.\nÞorgeirr mælti: \"Þar fœri ek þér øxi þína.\"\nSíðan hjó hann á hálsinn, svá at af tók höfuðit.\nFlosi var upp á mölinni, er hann sá þetta; hann eggjaði þá sína menn til móttöku.\nNú berjask þeir lengi, ok veitti Kaldbeklingum betr;\nfáir menn höfðu þar vápn, nema øxar þær, er þeir skáru með hvalinn, ok skálmir.\nHrukku Víkrmenn af hvalnum í fjöruna.\nAustmenn höfðu vápn ok urðu skeinuhættir;\nSteinn stýrimaðr hjó fót undan Ívari Kolbeinssyni,\nen Leifr, bróðir Ívars, laust félaga Steins í hel með hvalrifi.\nFellu þar menn af hvárumtveggjum.",
+        "title": "Viking Language 10.13",
+        "words": [
+            {
+                "index": 5,
+                "id": 936
+            },
+            {
+                "index": 6,
+                "id": 5394,
+                "contextGloss": ""
+            },
+            {
+                "index": 8,
+                "id": 5395
+            },
+            {
+                "index": 7,
+                "id": 1318
+            },
+            {
+                "index": 2,
+                "id": 1333,
+                "contextGloss": "attacked"
+            },
+            {
+                "index": 0,
+                "id": 5396
+            },
+            {
+                "index": 11,
+                "id": 923
+            },
+            {
+                "index": 10,
+                "id": 5397
+            },
+            {
+                "index": 19,
+                "id": 5399
+            },
+            {
+                "index": 21,
+                "id": 924
+            },
+            {
+                "index": 20,
+                "id": 1076
+            },
+            {
+                "index": 23,
+                "id": 5400
+            },
+            {
+                "index": 36,
+                "id": 936
+            },
+            {
+                "index": 28,
+                "id": 5402,
+                "contextGloss": ""
+            },
+            {
+                "index": 32,
+                "id": 5403
+            },
+            {
+                "index": 35,
+                "id": 924
+            },
+            {
+                "index": 34,
+                "id": 5406,
+                "contextGloss": ""
+            },
+            {
+                "index": 39,
+                "id": 977
+            },
+            {
+                "index": 37,
+                "id": 5408
+            },
+            {
+                "index": 44,
+                "id": 923
+            },
+            {
+                "index": 46,
+                "id": 936
+            },
+            {
+                "index": 47,
+                "id": 5410,
+                "contextGloss": ""
+            },
+            {
+                "index": 49,
+                "id": 924
+            },
+            {
+                "index": 52,
+                "id": 924
+            },
+            {
+                "index": 48,
+                "id": 4913
+            },
+            {
+                "index": 51,
+                "id": 5411
+            },
+            {
+                "index": 50,
+                "id": 5412
+            },
+            {
+                "index": 53,
+                "id": 5414
+            },
+            {
+                "index": 55,
+                "id": 1574
+            },
+            {
+                "index": 56,
+                "id": 1532
+            },
+            {
+                "index": 54,
+                "id": 998
+            },
+            {
+                "index": 58,
+                "id": 5416
+            },
+            {
+                "index": 61,
+                "id": 1368
+            },
+            {
+                "index": 60,
+                "id": 5418,
+                "contextGloss": ""
+            },
+            {
+                "index": 62,
+                "id": 5419
+            },
+            {
+                "index": 65,
+                "id": 5422
+            },
+            {
+                "index": 67,
+                "id": 5423
+            },
+            {
+                "index": 68,
+                "id": 1440
+            },
+            {
+                "index": 73,
+                "id": 5424
+            },
+            {
+                "index": 81,
+                "id": 5426,
+                "contextGloss": ""
+            },
+            {
+                "index": 75,
+                "id": 4913
+            },
+            {
+                "index": 76,
+                "id": 1368
+            },
+            {
+                "index": 77,
+                "id": 5427
+            },
+            {
+                "index": 74,
+                "id": 5257
+            }
+        ],
+        "sourceRefs": [
+            {
+                "refText": "Grettis saga Ásmundarsonar ch"
             }
         ]
     }

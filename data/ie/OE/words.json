@@ -189,9 +189,6 @@
         "gloss": "what",
         "fullGloss": "Why, what! ah!",
         "pos": "PRON",
-        "classes": [
-            "neut"
-        ],
         "sourceRefs": [
             {
                 "refText": "https://bosworthtoller.com/20051"
@@ -713,7 +710,8 @@
     {
         "id": 88,
         "text": "ond",
-        "gloss": "but"
+        "gloss": "but",
+        "pos": "CONJ"
     },
     {
         "id": 89,
@@ -929,8 +927,7 @@
     },
     {
         "id": 296,
-        "text": "dēaþe",
-        "gloss": "death.DAT"
+        "text": "dēaþe"
     },
     {
         "id": 297,
@@ -977,7 +974,8 @@
     {
         "id": 301,
         "text": "heriġean",
-        "gloss": "praise"
+        "gloss": "praise",
+        "pos": "V"
     },
     {
         "id": 302,
@@ -1132,9 +1130,6 @@
         "gloss": "almighty",
         "fullGloss": "Almighty",
         "pos": "ADJ",
-        "classes": [
-            "masc"
-        ],
         "sourceRefs": [
             {
                 "refText": "https://bosworthtoller.com/636"
@@ -1831,7 +1826,8 @@
     {
         "id": 463,
         "text": "ond",
-        "gloss": "and"
+        "gloss": "and",
+        "pos": "CONJ"
     },
     {
         "id": 464,
@@ -2175,8 +2171,7 @@
     },
     {
         "id": 1222,
-        "text": "gelamp",
-        "gloss": "occur.PST"
+        "text": "gelamp"
     },
     {
         "id": 1223,
@@ -2333,8 +2328,7 @@
     },
     {
         "id": 1244,
-        "text": "ofslōgon",
-        "gloss": "kill.PST"
+        "text": "ofslōgon"
     },
     {
         "id": 1245,
@@ -2469,7 +2463,8 @@
     {
         "id": 2059,
         "text": "hōhan",
-        "gloss": "hang"
+        "gloss": "hang",
+        "pos": "V"
     },
     {
         "id": 2065,
@@ -3123,8 +3118,8 @@
     {
         "id": 2240,
         "text": "miċel",
-        "gloss": "big, great",
-        "fullGloss": "of size",
+        "gloss": "big",
+        "fullGloss": "big, great",
         "pos": "ADJ",
         "sourceRefs": [
             {
@@ -3134,8 +3129,7 @@
     },
     {
         "id": 2242,
-        "text": "miċelne",
-        "gloss": "miċel.ACC"
+        "text": "miċelne"
     },
     {
         "id": 2246,
@@ -5552,6 +5546,8 @@
     {
         "id": 2670,
         "text": "mīþl",
+        "gloss": "bit",
+        "fullGloss": "bit (of a horse's bridle)",
         "sourceRefs": [
             {
                 "pubId": 5,
@@ -6233,6 +6229,8 @@
     {
         "id": 2774,
         "text": "wilde",
+        "gloss": "wild",
+        "pos": "ADJ",
         "sourceRefs": [
             {
                 "pubId": 5,
@@ -9270,13 +9268,7 @@
     },
     {
         "id": 3182,
-        "text": "ongonn",
-        "gloss": "begin.PRET.3SG",
-        "sourceRefs": [
-            {
-                "refText": "Fulk 2014:19"
-            }
-        ]
+        "text": "ongonn"
     },
     {
         "id": 3185,
@@ -9399,8 +9391,7 @@
     },
     {
         "id": 3195,
-        "text": "woldon",
-        "gloss": "want.PRET.3PL"
+        "text": "woldon"
     },
     {
         "id": 3196,
@@ -9530,13 +9521,7 @@
     },
     {
         "id": 3206,
-        "text": "cōm",
-        "gloss": "come.PRET.3SG",
-        "sourceRefs": [
-            {
-                "refText": "Fulk 2014:19"
-            }
-        ]
+        "text": "cōm"
     },
     {
         "id": 3207,
@@ -9558,13 +9543,7 @@
     },
     {
         "id": 3209,
-        "text": "sċolde",
-        "gloss": "ought.PRET.3SG",
-        "sourceRefs": [
-            {
-                "refText": "Fulk 2014:19"
-            }
-        ]
+        "text": "sċolde"
     },
     {
         "id": 3210,
@@ -9634,13 +9613,7 @@
     },
     {
         "id": 3215,
-        "text": "tōbrocene",
-        "gloss": "ruin.PTCP",
-        "sourceRefs": [
-            {
-                "refText": "Fulk 2014:19"
-            }
-        ]
+        "text": "tōbrocene"
     },
     {
         "id": 3216,
@@ -14083,8 +14056,7 @@
     },
     {
         "id": 4677,
-        "text": "beþurfon",
-        "gloss": "to need"
+        "text": "beþurfon"
     },
     {
         "id": 4678,
@@ -14095,7 +14067,7 @@
     {
         "id": 4680,
         "text": "þurfan",
-        "gloss": "to need",
+        "gloss": "need",
         "fullGloss": "to need; to be obliged (to do something)",
         "pos": "V",
         "sourceRefs": [

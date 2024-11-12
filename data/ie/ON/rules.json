@@ -83,19 +83,9 @@
                     "type": "and",
                     "members": [
                         {
-                            "type": "or",
-                            "members": [
-                                {
-                                    "type": "leaf",
-                                    "cond": "EndsWith",
-                                    "characters": "va"
-                                },
-                                {
-                                    "type": "leaf",
-                                    "cond": "EndsWith",
-                                    "characters": "a"
-                                }
-                            ]
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "a"
                         },
                         {
                             "type": "leaf",
@@ -6565,6 +6555,82 @@
                         }
                     ]
                 }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "SoundDisappears",
+                        "args": [
+                            "0"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "i",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": -1,
+                            "cls": "stressed long front vowel"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "SoundDisappears",
+                        "args": [
+                            "0"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "a",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": -1,
+                            "cls": "stressed long back open vowel"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "SoundDisappears",
+                        "args": [
+                            "0"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "u",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": -1,
+                            "cls": "stressed long back vowel"
+                        }
+                    ]
+                },
+                "comment": "the book says 'back, labial vowel' but this doesn't match example I think?"
             }
         ]
     }

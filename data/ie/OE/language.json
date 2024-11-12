@@ -562,6 +562,18 @@
         {
             "name": "Affix",
             "abbreviation": "AFF"
+        },
+        {
+            "name": "Preposition",
+            "abbreviation": "PREP"
+        },
+        {
+            "name": "Conjunction",
+            "abbreviation": "CONJ"
+        },
+        {
+            "name": "Numeral",
+            "abbreviation": "NUM"
         }
     ],
     "grammaticalCategories": [
