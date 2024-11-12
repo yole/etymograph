@@ -43,6 +43,29 @@ object GlossChecker : ConsistencyChecker {
     }
 }
 
+object LinkChecker : ConsistencyChecker {
+    override fun check(repo: GraphRepository, language: Language, report: (ConsistencyCheckerIssue) -> Unit) {
+        for (word in repo.allWords(language)) {
+            val links = repo.getLinksFrom(word)
+            for (link in links) {
+                if (link.type == Link.Derived && link.rules.isEmpty()) {
+                    report(ConsistencyCheckerIssue("Derived link with no rules for word $word"))
+                }
+                var expectedPOS = (link.toEntity as? Word)?.pos
+                if (expectedPOS != null) {
+                    for (rule in link.rules) {
+                        val rulePOS = repo.paradigmForRule(rule)?.pos ?: rule.fromPOS
+                        if (expectedPOS !in rulePOS ) {
+                            report(ConsistencyCheckerIssue("Word POS does not match rule POS for link from $word, rule ${rule.name}"))
+                        }
+                        expectedPOS = rule.toPOS
+                    }
+                }
+            }
+        }
+    }
+}
+
 val consistencyCheckers = listOf(
-    PosChecker, GlossChecker
+    PosChecker, GlossChecker, LinkChecker
 )
