@@ -3716,7 +3716,6 @@
         "gloss": "look",
         "pos": "V",
         "classes": [
-            "strong",
             "v-strong-1"
         ]
     },
@@ -4130,8 +4129,8 @@
         "gloss": "shine",
         "pos": "V",
         "classes": [
-            "strong",
-            "3conj"
+            "3conj",
+            "v-strong-1"
         ],
         "sourceRefs": [
             {
@@ -6336,7 +6335,8 @@
         "gloss": "track",
         "pos": "N",
         "classes": [
-            "n"
+            "n",
+            "cc-stem"
         ]
     },
     {
@@ -6487,5 +6487,163 @@
     {
         "id": 5427,
         "text": "skáru"
+    },
+    {
+        "id": 5428,
+        "text": "hrøkkva",
+        "gloss": "fall back",
+        "pos": "V"
+    },
+    {
+        "id": 5429,
+        "text": "hrukku"
+    },
+    {
+        "id": 5430,
+        "text": "fjara",
+        "gloss": "beach",
+        "pos": "N",
+        "classes": [
+            "f"
+        ]
+    },
+    {
+        "id": 5431,
+        "text": "fjöruna"
+    },
+    {
+        "id": 5432,
+        "text": "skeinuhættr",
+        "gloss": "likely to wound",
+        "pos": "ADJ"
+    },
+    {
+        "id": 5433,
+        "text": "skeinuhættir"
+    },
+    {
+        "id": 5434,
+        "text": "stýrimaðr",
+        "gloss": "steersman",
+        "pos": "N",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 5435,
+        "text": "fótr",
+        "gloss": "foot",
+        "pos": "N",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 5436,
+        "text": "fót"
+    },
+    {
+        "id": 5437,
+        "text": "undan",
+        "gloss": "from under",
+        "pos": "PREP"
+    },
+    {
+        "id": 5438,
+        "text": "Ívari"
+    },
+    {
+        "id": 5439,
+        "text": "Steins"
+    },
+    {
+        "id": 5440,
+        "text": "ljósta",
+        "gloss": "strike",
+        "pos": "V"
+    },
+    {
+        "id": 5441,
+        "text": "laust"
+    },
+    {
+        "id": 5442,
+        "text": "hel",
+        "gloss": "Hel",
+        "pos": "N",
+        "classes": [
+            "n"
+        ]
+    },
+    {
+        "id": 5443,
+        "text": "hel"
+    },
+    {
+        "id": 5444,
+        "text": "félaga"
+    },
+    {
+        "id": 5445,
+        "text": "hvalrif",
+        "gloss": "whale rib",
+        "pos": "N",
+        "classes": [
+            "n"
+        ]
+    },
+    {
+        "id": 5446,
+        "text": "hvalrifi"
+    },
+    {
+        "id": 5447,
+        "text": "fellu"
+    },
+    {
+        "id": 5449,
+        "text": "bíða",
+        "gloss": "wait",
+        "pos": "V",
+        "classes": [
+            "v-strong-1"
+        ]
+    },
+    {
+        "id": 5450,
+        "text": "bíta",
+        "gloss": "bite",
+        "pos": "V",
+        "classes": [
+            "v-strong-1"
+        ]
+    },
+    {
+        "id": 5451,
+        "text": "drífa",
+        "gloss": "drive",
+        "pos": "V",
+        "classes": [
+            "v-strong-1"
+        ]
+    },
+    {
+        "id": 5452,
+        "text": "ríða",
+        "gloss": "ride",
+        "pos": "V",
+        "classes": [
+            "v-strong-1"
+        ]
+    },
+    {
+        "id": 5453,
+        "text": "svíkja",
+        "gloss": "betray",
+        "pos": "V",
+        "classes": [
+            "v-strong-1"
+        ]
     }
 ]
