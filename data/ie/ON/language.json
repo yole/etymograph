@@ -817,5 +817,5 @@
             ]
         }
     ],
-    "dictionarySettings": "wiktionary-id: non\nwiktionary-orthography: ö=ǫ\nnon-decl-m-c1: m, strong\nnon-decl-m-c2: m, strong, gen-ar\nnon-decl-m-an: m, weak\nnon-decl-f-i: f, strong\nnon-decl-f-o: f, strong\nnon-decl-f-on: f, weak\nnon-decl-n-an: n, weak\nnon-decl-n-a: n, strong\nnon-decl-n-ja: n, strong"
+    "dictionarySettings": "wiktionary-id: non\nwiktionary-orthography: ö=ǫ\nnon-decl-m-c1: m, strong\nnon-decl-m-c2: m, strong, gen-ar\nnon-decl-m-an: m, weak\nnon-decl-f-i: f, strong\nnon-decl-f-o: f, strong\nnon-decl-f-on: f, weak\nnon-decl-n-an: n, weak\nnon-decl-n-a: n, strong\nnon-decl-n-ja: n, strong\nnon-conj-strong|class=1: v-strong-1\nnon-conj-strong|class=2: v-strong-2\nnon-conj-strong|class=3: v-strong-3\nnon-conj-strong|class=4: v-strong-4\nnon-conj-strong|class=5: v-strong-5\nnon-conj-strong|class=6: v-strong-6\nnon-conj-strong|class=7: v-strong-7"
 }

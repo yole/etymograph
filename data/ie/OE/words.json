@@ -7658,10 +7658,15 @@
         "id": 2973,
         "text": "bielġ",
         "gloss": "leather bag",
+        "fullGloss": "bag; bellows; belly",
+        "pos": "N",
         "sourceRefs": [
             {
                 "pubId": 5,
                 "refText": "208"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/bielg#Old_English"
             }
         ]
     },

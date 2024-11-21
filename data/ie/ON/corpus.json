@@ -3391,7 +3391,7 @@
     },
     {
         "id": 5086,
-        "text": "Önundr hét maðr; hann var Ófeigs sonr burlufótar, Ívars sonar beytils.\nÖnundr var broðir Guðbjargar, móður Guðbrands kúlu, föður Ástu, móður Óláfs konungs ins helga.\nÖnundr var upplenzkr at móðurætt, en föðurkyn hans var mest um Rogaland ok um Hörðaland.\nÖnundr var víkingr mikill ok herjaði vestr um haf.\nMeð honum var í hernaði  Bálki Blæingsson af Sótanesi ok Ormr inn auðgi;\nHallvarðr hét inn priði félagi þeira; þeir höfðu fimm skip.\n\nÞeir herjuðu um Suðreyjar, ok er þeir kómu í Barreyjar, var þar fyrir konungr sá, er Kjarvalr hét;\nhann hafði ok fimm skip.\nþeir lögðu til bardaga við hann ok varð þar hörð hrið;\nváru Önundar menn ákafir.\nFéll mart af hvárumtveggjum, en svá lauk, at konungr flýði einskipa;\ntóku þeir Önundr þar bæði skip ok fé mikit ok sátu þar um vetrinn.\nÞrjú sumur herjuðu þeir um Írland ok Skotland; síðan fóru þeir til Nóregs.",
+        "text": "Önundr hét maðr; hann var Ófeigs sonr burlufótar, Ívars sonar beytils.\nÖnundr var bróðir Guðbjargar, móður Guðbrands kúlu, föður Ástu, móður Óláfs konungs ins helga.\nÖnundr var upplenzkr at móðurætt, en föðurkyn hans var mest um Rogaland ok um Hörðaland.\nÖnundr var víkingr mikill ok herjaði vestr um haf.\nMeð honum var í hernaði  Bálki Blæingsson af Sótanesi ok Ormr inn auðgi;\nHallvarðr hét inn priði félagi þeira; þeir höfðu fimm skip.\n\nÞeir herjuðu um Suðreyjar, ok er þeir kómu í Barreyjar, var þar fyrir konungr sá, er Kjarvalr hét;\nhann hafði ok fimm skip.\nþeir lögðu til bardaga við hann ok varð þar hörð hrið;\nváru Önundar menn ákafir.\nFéll mart af hvárumtveggjum, en svá lauk, at konungr flýði einskipa;\ntóku þeir Önundr þar bæði skip ok fé mikit ok sátu þar um vetrinn.\nÞrjú sumur herjuðu þeir um Írland ok Skotland; síðan fóru þeir til Nóregs.",
         "title": "Viking Language 9.1",
         "words": [
             {
@@ -3429,10 +3429,6 @@
             {
                 "index": 12,
                 "id": 923
-            },
-            {
-                "index": 13,
-                "id": 5097
             },
             {
                 "index": 14,
@@ -3567,12 +3563,24 @@
                 "id": 5124
             },
             {
+                "index": 68,
+                "id": 943
+            },
+            {
+                "index": 69,
+                "id": 1368
+            },
+            {
                 "index": 71,
                 "id": 5126
             },
             {
                 "index": 72,
                 "id": 4959
+            },
+            {
+                "index": 74,
+                "id": 1368
             },
             {
                 "index": 75,
@@ -3587,8 +3595,16 @@
                 "id": 4913
             },
             {
+                "index": 80,
+                "id": 1368
+            },
+            {
                 "index": 84,
                 "id": 923
+            },
+            {
+                "index": 88,
+                "id": 971
             },
             {
                 "index": 89,
@@ -3597,6 +3613,10 @@
             {
                 "index": 90,
                 "id": 5131
+            },
+            {
+                "index": 91,
+                "id": 937
             },
             {
                 "index": 92,
@@ -3615,28 +3635,20 @@
                 "id": 4959
             },
             {
-                "index": 91,
-                "id": 937
+                "index": 97,
+                "id": 1368
             },
             {
                 "index": 98,
                 "id": 5132
             },
             {
-                "index": 102,
-                "id": 946
-            },
-            {
                 "index": 100,
                 "id": 5133
             },
             {
-                "index": 109,
-                "id": 5134
-            },
-            {
-                "index": 110,
-                "id": 1440
+                "index": 102,
+                "id": 946
             },
             {
                 "index": 106,
@@ -3647,21 +3659,20 @@
                 "id": 5137
             },
             {
+                "index": 109,
+                "id": 5134
+            },
+            {
+                "index": 110,
+                "id": 1440
+            },
+            {
                 "index": 111,
                 "id": 5139
             },
             {
-                "index": 130,
-                "id": 1590
-            },
-            {
-                "index": 128,
-                "id": 4959
-            },
-            {
                 "index": 112,
-                "id": 5141,
-                "contextGloss": ""
+                "id": 5141
             },
             {
                 "index": 113,
@@ -3685,8 +3696,7 @@
             },
             {
                 "index": 121,
-                "id": 5151,
-                "contextGloss": ""
+                "id": 5151
             },
             {
                 "index": 122,
@@ -3694,12 +3704,27 @@
             },
             {
                 "index": 123,
-                "id": 5155,
-                "contextGloss": ""
+                "id": 5155
+            },
+            {
+                "index": 124,
+                "id": 1368
             },
             {
                 "index": 127,
                 "id": 5157
+            },
+            {
+                "index": 128,
+                "id": 4959
+            },
+            {
+                "index": 130,
+                "id": 1590
+            },
+            {
+                "index": 131,
+                "id": 5362
             },
             {
                 "index": 133,
@@ -3708,18 +3733,6 @@
             {
                 "index": 136,
                 "id": 5160
-            },
-            {
-                "index": 142,
-                "id": 5164
-            },
-            {
-                "index": 144,
-                "id": 5165
-            },
-            {
-                "index": 149,
-                "id": 5166
             },
             {
                 "index": 137,
@@ -3734,48 +3747,28 @@
                 "id": 5127
             },
             {
-                "index": 146,
-                "id": 4914
-            },
-            {
-                "index": 69,
-                "id": 1368
-            },
-            {
-                "index": 68,
-                "id": 943
-            },
-            {
-                "index": 80,
-                "id": 1368
-            },
-            {
                 "index": 140,
                 "id": 1368
+            },
+            {
+                "index": 142,
+                "id": 5164
+            },
+            {
+                "index": 144,
+                "id": 5165
+            },
+            {
+                "index": 146,
+                "id": 4914
             },
             {
                 "index": 147,
                 "id": 1368
             },
             {
-                "index": 74,
-                "id": 1368
-            },
-            {
-                "index": 97,
-                "id": 1368
-            },
-            {
-                "index": 124,
-                "id": 1368
-            },
-            {
-                "index": 131,
-                "id": 5362
-            },
-            {
-                "index": 88,
-                "id": 971
+                "index": 149,
+                "id": 5166
             }
         ],
         "sourceRefs": [
@@ -5251,6 +5244,704 @@
         "sourceRefs": [
             {
                 "refText": "Grettis saga Ásmundarsonar ch 12"
+            }
+        ]
+    },
+    {
+        "id": 5454,
+        "text": "Konungr sá er Högni er nefndr átti dóttur, er Hildr hét.\nHana tók at herfangi konungr sá er Héðinn hét, Hjarrandason.\nÞá var Högni konungr farinn í konungastefnu;\nen er hann spurði at herjat var í ríki hans,\nok dóttir hans var í braut tekin,\nþá fór hann með sínu liði at leita Héðins,\nok spurði til hans at Héðinn hafði siglt norðr með landi.\nþá er Högni konungr kom í Nóreg, \nspurði hann at Héðinn hafði siglt vestr um haf.\nÞá siglir Högni eptir honum allt til Orkneyja;\nok er hann kom þar sem heitir Háey,\nþá var þar fyrir Héðinn með lið sitt.\nÞá fór Hildr á fund föður síns, \nok bauð honum men at sætt af hendi Héðins,\nen í öðru orði sagði hon at Héðinn væri búinn at berjask,\nok ætti Högni af honum engrar vægðar ván.\nHögni svarar stirt dóttur sinni; en er hon hitti Héðin,\nsagði hon honum, at Högni vildi enga sætt,\nok bað hann búask til orrostu, ok svá gøra þeir hvárirtveggju,\nganga upp á eyna, ok fylkja liðinu.",
+        "title": "Viking Language 11.1",
+        "words": [
+            {
+                "index": 1,
+                "id": 971
+            },
+            {
+                "index": 2,
+                "id": 1076
+            },
+            {
+                "index": 3,
+                "id": 5455
+            },
+            {
+                "index": 4,
+                "id": 1513
+            },
+            {
+                "index": 5,
+                "id": 5459
+            },
+            {
+                "index": 7,
+                "id": 5457
+            },
+            {
+                "index": 8,
+                "id": 1076
+            },
+            {
+                "index": 9,
+                "id": 5456
+            },
+            {
+                "index": 13,
+                "id": 4911
+            },
+            {
+                "index": 14,
+                "id": 5461
+            },
+            {
+                "index": 16,
+                "id": 971
+            },
+            {
+                "index": 17,
+                "id": 1076
+            },
+            {
+                "index": 18,
+                "id": 5462
+            },
+            {
+                "index": 20,
+                "id": 5463
+            },
+            {
+                "index": 21,
+                "id": 998
+            },
+            {
+                "index": 22,
+                "id": 923
+            },
+            {
+                "index": 25,
+                "id": 5464
+            },
+            {
+                "index": 27,
+                "id": 5466
+            },
+            {
+                "index": 29,
+                "id": 4913
+            },
+            {
+                "index": 30,
+                "id": 924
+            },
+            {
+                "index": 31,
+                "id": 5467,
+                "contextGloss": "learned"
+            },
+            {
+                "index": 32,
+                "id": 977
+            },
+            {
+                "index": 33,
+                "id": 5468
+            },
+            {
+                "index": 34,
+                "id": 923
+            },
+            {
+                "index": 41,
+                "id": 923
+            },
+            {
+                "index": 43,
+                "id": 5470
+            },
+            {
+                "index": 44,
+                "id": 5469
+            },
+            {
+                "index": 45,
+                "id": 998
+            },
+            {
+                "index": 47,
+                "id": 924
+            },
+            {
+                "index": 50,
+                "id": 5472
+            },
+            {
+                "index": 51,
+                "id": 4911
+            },
+            {
+                "index": 52,
+                "id": 5474
+            },
+            {
+                "index": 53,
+                "id": 5473
+            },
+            {
+                "index": 58,
+                "id": 977
+            },
+            {
+                "index": 61,
+                "id": 5477
+            },
+            {
+                "index": 62,
+                "id": 1611
+            },
+            {
+                "index": 64,
+                "id": 5475
+            },
+            {
+                "index": 65,
+                "id": 998
+            },
+            {
+                "index": 66,
+                "id": 4913
+            },
+            {
+                "index": 71,
+                "id": 5478
+            },
+            {
+                "index": 73,
+                "id": 5467
+            },
+            {
+                "index": 74,
+                "id": 924
+            },
+            {
+                "index": 75,
+                "id": 977
+            },
+            {
+                "index": 82,
+                "id": 998
+            },
+            {
+                "index": 83,
+                "id": 5479
+            },
+            {
+                "index": 91,
+                "id": 4913
+            },
+            {
+                "index": 92,
+                "id": 924
+            },
+            {
+                "index": 98,
+                "id": 998
+            },
+            {
+                "index": 99,
+                "id": 923
+            },
+            {
+                "index": 104,
+                "id": 5386
+            },
+            {
+                "index": 105,
+                "id": 5480
+            },
+            {
+                "index": 106,
+                "id": 998
+            },
+            {
+                "index": 109,
+                "id": 936
+            },
+            {
+                "index": 111,
+                "id": 1276
+            },
+            {
+                "index": 112,
+                "id": 1282
+            },
+            {
+                "index": 117,
+                "id": 5483
+            },
+            {
+                "index": 118,
+                "id": 1318
+            },
+            {
+                "index": 119,
+                "id": 5485
+            },
+            {
+                "index": 121,
+                "id": 5486
+            },
+            {
+                "index": 129,
+                "id": 977
+            },
+            {
+                "index": 126,
+                "id": 5487
+            },
+            {
+                "index": 131,
+                "id": 5488
+            },
+            {
+                "index": 133,
+                "id": 4911
+            },
+            {
+                "index": 132,
+                "id": 5489,
+                "contextGloss": "ready"
+            },
+            {
+                "index": 136,
+                "id": 5490
+            },
+            {
+                "index": 142,
+                "id": 5492
+            },
+            {
+                "index": 141,
+                "id": 5494
+            },
+            {
+                "index": 140,
+                "id": 5495
+            },
+            {
+                "index": 145,
+                "id": 5496
+            },
+            {
+                "index": 152,
+                "id": 5497
+            },
+            {
+                "index": 151,
+                "id": 5499
+            },
+            {
+                "index": 149,
+                "id": 4913
+            },
+            {
+                "index": 160,
+                "id": 5485
+            },
+            {
+                "index": 158,
+                "id": 5500
+            },
+            {
+                "index": 159,
+                "id": 5501
+            },
+            {
+                "index": 156,
+                "id": 977
+            },
+            {
+                "index": 144,
+                "id": 5502
+            },
+            {
+                "index": 170,
+                "id": 1368
+            },
+            {
+                "index": 166,
+                "id": 5503
+            },
+            {
+                "index": 163,
+                "id": 924
+            },
+            {
+                "index": 174,
+                "id": 936
+            },
+            {
+                "index": 177,
+                "id": 5504
+            },
+            {
+                "index": 178,
+                "id": 5505
+            },
+            {
+                "index": 169,
+                "id": 5506
+            },
+            {
+                "index": 0,
+                "id": 956
+            },
+            {
+                "index": 6,
+                "id": 1612
+            },
+            {
+                "index": 10,
+                "id": 937
+            },
+            {
+                "index": 11,
+                "id": 953
+            },
+            {
+                "index": 12,
+                "id": 1178
+            },
+            {
+                "index": 15,
+                "id": 956
+            },
+            {
+                "index": 19,
+                "id": 937
+            },
+            {
+                "index": 23,
+                "id": 5455
+            },
+            {
+                "index": 24,
+                "id": 956
+            },
+            {
+                "index": 26,
+                "id": 976
+            },
+            {
+                "index": 28,
+                "id": 941
+            },
+            {
+                "index": 35,
+                "id": 976
+            },
+            {
+                "index": 36,
+                "id": 1456
+            },
+            {
+                "index": 37,
+                "id": 940
+            },
+            {
+                "index": 38,
+                "id": 932
+            },
+            {
+                "index": 39,
+                "id": 979
+            },
+            {
+                "index": 40,
+                "id": 940
+            },
+            {
+                "index": 42,
+                "id": 976
+            },
+            {
+                "index": 46,
+                "id": 982
+            },
+            {
+                "index": 48,
+                "id": 981
+            },
+            {
+                "index": 49,
+                "id": 1571
+            },
+            {
+                "index": 54,
+                "id": 932
+            },
+            {
+                "index": 55,
+                "id": 5467
+            },
+            {
+                "index": 56,
+                "id": 975
+            },
+            {
+                "index": 57,
+                "id": 940
+            },
+            {
+                "index": 59,
+                "id": 5462
+            },
+            {
+                "index": 60,
+                "id": 1431
+            },
+            {
+                "index": 63,
+                "id": 981
+            },
+            {
+                "index": 67,
+                "id": 5455
+            },
+            {
+                "index": 68,
+                "id": 956
+            },
+            {
+                "index": 69,
+                "id": 1591
+            },
+            {
+                "index": 70,
+                "id": 976
+            },
+            {
+                "index": 76,
+                "id": 5462
+            },
+            {
+                "index": 77,
+                "id": 1431
+            },
+            {
+                "index": 78,
+                "id": 5477
+            },
+            {
+                "index": 79,
+                "id": 5117
+            },
+            {
+                "index": 80,
+                "id": 1000
+            },
+            {
+                "index": 81,
+                "id": 5118
+            },
+            {
+                "index": 84,
+                "id": 5455
+            },
+            {
+                "index": 85,
+                "id": 987
+            },
+            {
+                "index": 86,
+                "id": 947
+            },
+            {
+                "index": 87,
+                "id": 4926
+            },
+            {
+                "index": 88,
+                "id": 975
+            },
+            {
+                "index": 90,
+                "id": 932
+            },
+            {
+                "index": 93,
+                "id": 1591
+            },
+            {
+                "index": 94,
+                "id": 999
+            },
+            {
+                "index": 95,
+                "id": 1310
+            },
+            {
+                "index": 96,
+                "id": 1646
+            },
+            {
+                "index": 100,
+                "id": 999
+            },
+            {
+                "index": 101,
+                "id": 1271
+            },
+            {
+                "index": 102,
+                "id": 5462
+            },
+            {
+                "index": 103,
+                "id": 981
+            },
+            {
+                "index": 107,
+                "id": 982
+            },
+            {
+                "index": 108,
+                "id": 5456
+            },
+            {
+                "index": 110,
+                "id": 4981
+            },
+            {
+                "index": 114,
+                "id": 932
+            },
+            {
+                "index": 115,
+                "id": 5384
+            },
+            {
+                "index": 116,
+                "id": 947
+            },
+            {
+                "index": 120,
+                "id": 1082
+            },
+            {
+                "index": 122,
+                "id": 5473
+            },
+            {
+                "index": 123,
+                "id": 941
+            },
+            {
+                "index": 124,
+                "id": 976
+            },
+            {
+                "index": 127,
+                "id": 1727
+            },
+            {
+                "index": 128,
+                "id": 952
+            },
+            {
+                "index": 130,
+                "id": 5462
+            },
+            {
+                "index": 134,
+                "id": 5418
+            },
+            {
+                "index": 135,
+                "id": 932
+            },
+            {
+                "index": 137,
+                "id": 5455
+            },
+            {
+                "index": 138,
+                "id": 1082
+            },
+            {
+                "index": 139,
+                "id": 947
+            },
+            {
+                "index": 143,
+                "id": 5455
+            },
+            {
+                "index": 146,
+                "id": 5457
+            },
+            {
+                "index": 147,
+                "id": 1568
+            },
+            {
+                "index": 148,
+                "id": 941
+            },
+            {
+                "index": 150,
+                "id": 952
+            },
+            {
+                "index": 153,
+                "id": 1727
+            },
+            {
+                "index": 154,
+                "id": 952
+            },
+            {
+                "index": 155,
+                "id": 947
+            },
+            {
+                "index": 157,
+                "id": 5455
+            },
+            {
+                "index": 161,
+                "id": 932
+            },
+            {
+                "index": 162,
+                "id": 1103
+            },
+            {
+                "index": 165,
+                "id": 975
+            },
+            {
+                "index": 167,
+                "id": 932
+            },
+            {
+                "index": 168,
+                "id": 1387
+            },
+            {
+                "index": 172,
+                "id": 1701
+            },
+            {
+                "index": 173,
+                "id": 1627
+            },
+            {
+                "index": 176,
+                "id": 932
+            }
+        ],
+        "sourceRefs": [
+            {
+                "refText": "Skáldskaparmál"
             }
         ]
     }

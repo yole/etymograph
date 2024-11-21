@@ -1387,7 +1387,10 @@
         "id": 1170,
         "text": "brjóta",
         "gloss": "break",
-        "pos": "V"
+        "pos": "V",
+        "classes": [
+            "v-strong-2"
+        ]
     },
     {
         "id": 1171,
@@ -5018,12 +5021,6 @@
         "text": "beytils"
     },
     {
-        "id": 5097,
-        "text": "broðir",
-        "gloss": "brother",
-        "pos": "N"
-    },
-    {
         "id": 5098,
         "text": "móður"
     },
@@ -5277,7 +5274,16 @@
         "id": 5148,
         "text": "lúka",
         "gloss": "end",
-        "pos": "V"
+        "fullGloss": "to shut; to end, bring to an end, finish, conclude; to pay; to be at an end; to be shut",
+        "pos": "V",
+        "classes": [
+            "v-strong-2"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/lúka#Old_Norse"
+            }
+        ]
     },
     {
         "id": 5149,
@@ -6561,7 +6567,10 @@
         "id": 5440,
         "text": "ljósta",
         "gloss": "strike",
-        "pos": "V"
+        "pos": "V",
+        "classes": [
+            "v-strong-2"
+        ]
     },
     {
         "id": 5441,
@@ -6644,6 +6653,283 @@
         "pos": "V",
         "classes": [
             "v-strong-1"
+        ]
+    },
+    {
+        "id": 5455,
+        "text": "Högni",
+        "pos": "NP",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 5456,
+        "text": "Hildr",
+        "pos": "NP"
+    },
+    {
+        "id": 5457,
+        "text": "dóttur"
+    },
+    {
+        "id": 5458,
+        "text": "nefna",
+        "gloss": "name",
+        "pos": "V"
+    },
+    {
+        "id": 5459,
+        "text": "nefndr"
+    },
+    {
+        "id": 5460,
+        "text": "herfang",
+        "gloss": "booty",
+        "pos": "N",
+        "classes": [
+            "n"
+        ]
+    },
+    {
+        "id": 5461,
+        "text": "herfangi"
+    },
+    {
+        "id": 5462,
+        "text": "Héðinn",
+        "pos": "NP"
+    },
+    {
+        "id": 5463,
+        "text": "Hjarrandason",
+        "pos": "NP"
+    },
+    {
+        "id": 5464,
+        "text": "farinn"
+    },
+    {
+        "id": 5465,
+        "text": "konungastefna",
+        "gloss": "meeting of kings",
+        "pos": "N",
+        "classes": [
+            "f"
+        ]
+    },
+    {
+        "id": 5466,
+        "text": "konungastefnu"
+    },
+    {
+        "id": 5467,
+        "text": "spurði"
+    },
+    {
+        "id": 5468,
+        "text": "herjat"
+    },
+    {
+        "id": 5469,
+        "text": "tekin"
+    },
+    {
+        "id": 5470,
+        "text": "braut"
+    },
+    {
+        "id": 5471,
+        "text": "brott",
+        "gloss": "away",
+        "pos": "ADV"
+    },
+    {
+        "id": 5472,
+        "text": "liði"
+    },
+    {
+        "id": 5473,
+        "text": "Héðins"
+    },
+    {
+        "id": 5474,
+        "text": "leita",
+        "gloss": "seek",
+        "pos": "V"
+    },
+    {
+        "id": 5475,
+        "text": "landi"
+    },
+    {
+        "id": 5476,
+        "text": "sigla",
+        "gloss": "sail",
+        "pos": "V",
+        "classes": [
+            "pret-d",
+            "4conj"
+        ]
+    },
+    {
+        "id": 5477,
+        "text": "siglt"
+    },
+    {
+        "id": 5478,
+        "text": "Nóreg"
+    },
+    {
+        "id": 5479,
+        "text": "siglir"
+    },
+    {
+        "id": 5480,
+        "text": "sitt"
+    },
+    {
+        "id": 5482,
+        "text": "men",
+        "gloss": "necklace",
+        "pos": "N",
+        "classes": [
+            "n"
+        ]
+    },
+    {
+        "id": 5483,
+        "text": "men"
+    },
+    {
+        "id": 5484,
+        "text": "sætt",
+        "gloss": "settlement",
+        "pos": "N",
+        "classes": [
+            "f"
+        ]
+    },
+    {
+        "id": 5485,
+        "text": "sætt"
+    },
+    {
+        "id": 5486,
+        "text": "hendi"
+    },
+    {
+        "id": 5487,
+        "text": "orði"
+    },
+    {
+        "id": 5488,
+        "text": "væri"
+    },
+    {
+        "id": 5489,
+        "text": "búinn"
+    },
+    {
+        "id": 5490,
+        "text": "ætti"
+    },
+    {
+        "id": 5491,
+        "text": "ván",
+        "gloss": "hope",
+        "pos": "N",
+        "classes": [
+            "f"
+        ]
+    },
+    {
+        "id": 5492,
+        "text": "ván"
+    },
+    {
+        "id": 5493,
+        "text": "vægð",
+        "gloss": "mercy",
+        "pos": "N",
+        "classes": [
+            "f"
+        ]
+    },
+    {
+        "id": 5494,
+        "text": "vægðar"
+    },
+    {
+        "id": 5495,
+        "text": "engrar"
+    },
+    {
+        "id": 5496,
+        "text": "stirt",
+        "gloss": "harshly",
+        "pos": "ADV"
+    },
+    {
+        "id": 5497,
+        "text": "Héðin"
+    },
+    {
+        "id": 5498,
+        "text": "hitta",
+        "gloss": "meet with",
+        "pos": "V"
+    },
+    {
+        "id": 5499,
+        "text": "hitti"
+    },
+    {
+        "id": 5500,
+        "text": "vildi"
+    },
+    {
+        "id": 5501,
+        "text": "enga"
+    },
+    {
+        "id": 5502,
+        "text": "svarar"
+    },
+    {
+        "id": 5503,
+        "text": "orrostu"
+    },
+    {
+        "id": 5504,
+        "text": "fylkja",
+        "gloss": "draw up",
+        "pos": "V"
+    },
+    {
+        "id": 5505,
+        "text": "liðinu"
+    },
+    {
+        "id": 5506,
+        "text": "gøra"
+    },
+    {
+        "id": 5507,
+        "text": "krjúpa",
+        "gloss": "creep",
+        "pos": "V",
+        "classes": [
+            "v-strong-2"
+        ]
+    },
+    {
+        "id": 5509,
+        "text": "skjóta",
+        "gloss": "shoot",
+        "pos": "V",
+        "classes": [
+            "v-strong-2"
         ]
     }
 ]
