@@ -299,6 +299,9 @@ class PhonemeIterator {
     }
 
     private fun applyIndexMap(index: Int, map: IntArray): Int {
+        if (index < 0) {
+            return -1
+        }
         if (index == map.size) {
             return map[index - 1] + 1
         }
