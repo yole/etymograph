@@ -3779,7 +3779,7 @@
     },
     {
         "id": 5188,
-        "text": "Þetta haust drap Grímr hersir Öndótt kráku fyrir þat,\ner hann náði eigi fénu til handa konungi;\nen Signý, kona Öndótts, bar á skip allt lausafé þeira þegar ina sömu nótt\nok fór með sonu sína, Ásmund ok Ásgrím, til Sighvats, föður síns.\nLitlu síðar sendi hon sonu sína í Sóknadal til Heðins, fóstra síns,\nok unðu þeir þar lítla hrið ok vildu fara aptr til móður sinnar.\nFóru þeir síðan ok kómu til Ingjalds tryggva í Hvini at jólum;\nhann tók við þeim fyrir áeggjun Gyðu, konu sinnar; váru þeir þar um vetrinn.",
+        "text": "Þetta haust drap Grímr hersir Öndótt kráku fyrir þat,\ner hann náði eigi fénu til handa konungi;\nen Signý, kona Öndótts, bar á skip allt lausafé þeira þegar ina sömu nótt\nok fór með sonu sína, Ásmund ok Ásgrím, til Sighvats, föður síns.\nLitlu síðar sendi hon sonu sína í Sóknadal til Héðins, fóstra síns,\nok unðu þeir þar lítla hrið ok vildu fara aptr til móður sinnar.\nFóru þeir síðan ok kómu til Ingjalds tryggva í Hvini at jólum;\nhann tók við þeim fyrir áeggjun Gyðu, konu sinnar; váru þeir þar um vetrinn.",
         "title": "Viking Language 9.12",
         "words": [
             {
@@ -3801,6 +3801,10 @@
             {
                 "index": 6,
                 "id": 5196
+            },
+            {
+                "index": 8,
+                "id": 5249
             },
             {
                 "index": 9,
@@ -3839,12 +3843,20 @@
                 "id": 5201
             },
             {
+                "index": 22,
+                "id": 936
+            },
+            {
                 "index": 23,
                 "id": 4959
             },
             {
                 "index": 25,
                 "id": 5205
+            },
+            {
+                "index": 26,
+                "id": 943
             },
             {
                 "index": 28,
@@ -3899,26 +3911,24 @@
                 "id": 1574
             },
             {
-                "index": 52,
-                "id": 5221
+                "index": 50,
+                "id": 5229
             },
             {
-                "index": 66,
-                "id": 5098
+                "index": 53,
+                "id": 5224
             },
             {
                 "index": 54,
                 "id": 1282
             },
             {
-                "index": 53,
-                "id": 5224,
-                "contextGloss": ""
+                "index": 56,
+                "id": 5226
             },
             {
-                "index": 56,
-                "id": 5226,
-                "contextGloss": ""
+                "index": 57,
+                "id": 1368
             },
             {
                 "index": 62,
@@ -3929,12 +3939,12 @@
                 "id": 5228
             },
             {
-                "index": 80,
-                "id": 924
+                "index": 66,
+                "id": 5098
             },
             {
-                "index": 50,
-                "id": 5229
+                "index": 69,
+                "id": 1368
             },
             {
                 "index": 74,
@@ -3949,6 +3959,14 @@
                 "id": 5232
             },
             {
+                "index": 80,
+                "id": 924
+            },
+            {
+                "index": 83,
+                "id": 1563
+            },
+            {
                 "index": 85,
                 "id": 5234
             },
@@ -3957,32 +3975,8 @@
                 "id": 5236
             },
             {
-                "index": 8,
-                "id": 5249
-            },
-            {
-                "index": 57,
-                "id": 1368
-            },
-            {
-                "index": 83,
-                "id": 1563
-            },
-            {
                 "index": 90,
                 "id": 1368
-            },
-            {
-                "index": 26,
-                "id": 943
-            },
-            {
-                "index": 69,
-                "id": 1368
-            },
-            {
-                "index": 22,
-                "id": 936
             }
         ],
         "sourceRefs": [
@@ -5942,6 +5936,98 @@
         "sourceRefs": [
             {
                 "refText": "Skáldskaparmál"
+            }
+        ]
+    },
+    {
+        "id": 5523,
+        "text": "Þá kallar Héðinn á Högna, mág sinn, ok bauð honum sætt ok mikit gull at bótum.\nÞá svarar Högni: 'of síð bauztu þetta, ef þú vill sættask,\nþví at nú hefi dregit Dáinsleif, er dvergarnir gørðu, er manns bani skal verða,\nhvert sinn er bert er, ok aldri bilar í höggvi, ok ekki sár grœr.'\nÞá svarar Héðinn: 'sverði hœlir þú þar, en eigi sigri.'\nÞá hófu þeir orrostu þá er Hjaðningavíg er kallat, ok börðusk þann dag allan,\nok at kveldi fóru koningar til skipa.\nEn Hildr gekk of nóttina til valsins, ok vakði upp með fjölkyngi alla þá er dauðir váru;\nok annan dag gengu konungarnir á vígvöllinn ok börðusk,\nok svá allir þeir er fellu hinn fyrra daginn.\nFór svá sú orrosta hvern dag eptir annan, at allir þeir er fellu,\nok öll vápn þau er lágu á vígvelli, ok svá hlifar, urðu at grjóti.\nEn er dagaði, stóðu upp allir dauðir menn, ok börðusk, \nok öll vápn varu þá ny.\nSvá er sagt í kvæðum, at Hjaðningar skulu svá bíða ragnarøkrs.",
+        "title": "Viking Language 11.11",
+        "words": [
+            {
+                "index": 0,
+                "id": 998
+            },
+            {
+                "index": 1,
+                "id": 5524
+            },
+            {
+                "index": 3,
+                "id": 936
+            },
+            {
+                "index": 4,
+                "id": 5525
+            },
+            {
+                "index": 5,
+                "id": 5527
+            },
+            {
+                "index": 6,
+                "id": 1494
+            },
+            {
+                "index": 10,
+                "id": 5485
+            },
+            {
+                "index": 12,
+                "id": 5362
+            },
+            {
+                "index": 13,
+                "id": 5529
+            },
+            {
+                "index": 14,
+                "id": 4911
+            },
+            {
+                "index": 15,
+                "id": 5531
+            },
+            {
+                "index": 16,
+                "id": 998
+            },
+            {
+                "index": 19,
+                "id": 5533
+            },
+            {
+                "index": 21,
+                "id": 5534
+            },
+            {
+                "index": 26,
+                "id": 5538
+            },
+            {
+                "index": 27,
+                "id": 1147
+            },
+            {
+                "index": 28,
+                "id": 977
+            },
+            {
+                "index": 30,
+                "id": 5539
+            },
+            {
+                "index": 33,
+                "id": 1076
+            },
+            {
+                "index": 36,
+                "id": 1076
+            }
+        ],
+        "sourceRefs": [
+            {
+                "refText": "Hjaðningavíg from Skáldskaparmál"
             }
         ]
     }

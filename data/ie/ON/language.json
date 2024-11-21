@@ -560,6 +560,10 @@
                 {
                     "name": "Past participle",
                     "abbreviation": "PPART"
+                },
+                {
+                    "name": "Infinitive",
+                    "abbreviation": "INF"
                 }
             ]
         },

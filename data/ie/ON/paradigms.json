@@ -747,7 +747,8 @@
         "id": 38,
         "name": "Verb Non-finite Forms",
         "rows": [
-            "Past participle"
+            "Past participle",
+            "Middle infinitive"
         ],
         "columns": [
             {
@@ -756,6 +757,11 @@
                     {
                         "ruleAlternatives": [
                             1433
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            5537
                         ]
                     }
                 ]

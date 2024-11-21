@@ -1219,14 +1219,14 @@
                         "type": "ApplySoundRule",
                         "args": [
                             "1122",
-                            "first vowel"
+                            "third to last vowel"
                         ]
                     },
                     {
                         "type": "ApplySoundRule",
                         "args": [
                             "1396",
-                            "second vowel"
+                            "second to last vowel"
                         ]
                     }
                 ],
@@ -1240,8 +1240,10 @@
                             "parameter": "u"
                         },
                         {
-                            "type": "syllableCount",
-                            "expectCount": 3
+                            "type": "syllable",
+                            "matchType": "Contains",
+                            "index": -3,
+                            "cls": "stressed vowel"
                         }
                     ]
                 }
@@ -1252,7 +1254,7 @@
                         "type": "ApplySoundRule",
                         "args": [
                             "1122",
-                            "first vowel"
+                            "second to last vowel"
                         ]
                     }
                 ],
@@ -1654,6 +1656,21 @@
                         "args": [
                             "strong"
                         ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "ClassMatches",
+                    "characters": "cc-stem"
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyClass",
+                        "args": [
+                            "strong"
+                        ]
                     },
                     {
                         "type": "ChangeEnding",
@@ -1708,21 +1725,6 @@
                     "type": "leaf",
                     "cond": "EndsWith",
                     "characters": "ll"
-                }
-            },
-            {
-                "instructions": [
-                    {
-                        "type": "ApplyClass",
-                        "args": [
-                            "strong"
-                        ]
-                    }
-                ],
-                "condition": {
-                    "type": "leaf",
-                    "cond": "ClassMatches",
-                    "characters": "cc-stem"
                 }
             },
             {
@@ -1927,22 +1929,6 @@
             {
                 "instructions": [
                     {
-                        "type": "ApplySoundRule",
-                        "args": [
-                            "1389",
-                            "first vowel"
-                        ]
-                    }
-                ],
-                "condition": {
-                    "type": "leaf",
-                    "cond": "ClassMatches",
-                    "characters": "uml-stem"
-                }
-            },
-            {
-                "instructions": [
-                    {
                         "type": "ChangeEnding",
                         "args": [
                             "ji"
@@ -2017,6 +2003,14 @@
                 "condition": {
                     "type": "otherwise"
                 }
+            }
+        ],
+        "preInstructions": [
+            {
+                "type": "ApplyRule",
+                "args": [
+                    "5519"
+                ]
             }
         ]
     },
@@ -7040,6 +7034,66 @@
                     ]
                 }
             }
+        ]
+    },
+    {
+        "id": 5519,
+        "name": "on-restore-stem-vowel",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplySoundRule",
+                        "args": [
+                            "1389",
+                            "first vowel"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "ClassMatches",
+                    "characters": "uml-stem"
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "NoChange",
+                        "args": []
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ]
+    },
+    {
+        "id": 5537,
+        "name": "on-mid-inf",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'sk'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".MID.INF",
+        "fromPOS": [
+            "V"
         ]
     }
 ]
