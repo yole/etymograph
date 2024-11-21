@@ -114,6 +114,18 @@ object CorpusTextChecker : ConsistencyChecker {
     }
 }
 
+object RuleChecker : ConsistencyChecker {
+    override fun check(repo: GraphRepository, language: Language, report: (ConsistencyCheckerIssue) -> Unit) {
+        for (rule in repo.allRules().filter { it.toLanguage == language }) {
+            for (pos in rule.fromPOS) {
+                if (rule.fromLanguage.pos.none { it.abbreviation == pos }) {
+                    report(ConsistencyCheckerIssue("Unknown rule from POS '$pos' in ${rule.name}"))
+                }
+            }
+        }
+    }
+}
+
 val consistencyCheckers = listOf(
-    WordTextChecker, PosChecker, GlossChecker, WordClassChecker, LinkChecker, CorpusTextChecker
+    WordTextChecker, PosChecker, GlossChecker, WordClassChecker, LinkChecker, CorpusTextChecker, RuleChecker
 )
