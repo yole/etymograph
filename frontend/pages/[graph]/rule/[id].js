@@ -204,6 +204,11 @@ export default function Rule(params) {
                 <h3>Notes</h3>
                 <p>{rule.notes}</p>
             </>}
+            {rule.orphanExamples.length > 0 && <>
+                <h3>Orphan Examples</h3>
+                <ExampleList rule={rule} examples={rule.orphanExamples}/>
+                <p/>
+            </>}
         </>}
         {editMode && <RuleForm
             updateId={rule.id}
@@ -271,10 +276,6 @@ export default function Rule(params) {
             <br/></>)}
         </>}
         {linkMode && <RuleLinkForm fromEntityId={rule.id} submitted={linkSubmitted} cancelled={() => setLinkMode(false)}/>}
-        {rule.orphanExamples.length > 0 && <>
-            <h3>Orphan Examples</h3>
-            <ExampleList rule={rule} examples={rule.orphanExamples}/>
-        </>}
         <p/>
         {allowEdit() && !showExampleForm &&
             <button onClick={() => {
