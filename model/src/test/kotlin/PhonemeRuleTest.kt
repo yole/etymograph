@@ -562,4 +562,14 @@ class PhonemeRuleTest : QBaseTest() {
         """.trimIndent())
         assertEquals("inmdm", applyRule(rule, q.word("inonden")))
     }
+
+    @Test
+    fun applyRulePhonemic() {
+        val rule1 = repo.rule("sound is 'u' and previous sound is 'v':\n- previous sound disappears",
+            name = "q-v-removal")
+        val rule2 = repo.rule("sound is 'i':\n- new sound is 'u'\n - apply rule 'q-v-removal'",
+            name = "q-umlaut")
+        val rule3 = repo.rule("- apply sound rule 'q-umlaut' to first vowel")
+        assertEquals("unna", applyRule(rule3, q.word("vinna")))
+    }
 }
