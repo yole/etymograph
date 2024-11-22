@@ -76,6 +76,7 @@ class RuleController {
         val branches: List<RuleBranchViewModel>,
         val postInstructions: List<RichText>,
         val links: List<RuleLinkViewModel>,
+        val references: List<RuleRefViewModel>,
         val linkedWords: List<RuleWordLinkViewModel>,
         val orphanExamples: List<RuleExampleViewModel>,
         val referencingParadigms: List<ParadigmRefViewModel>
@@ -193,6 +194,7 @@ class RuleController {
             val steps = buildIntermediateSteps(repo, link)
             RuleExampleData(link, steps, steps.find { it.rule == this }?.matchedBranches ?: mutableSetOf())
         }
+        val references = repo.findReferencingRules(this)
         val paradigms = repo.findReferencingParadigms(this)
         return RuleViewModel(
             id, name,
@@ -224,6 +226,7 @@ class RuleController {
                     RuleLinkViewModel(it.id, it.name, link.type.id, link.source.toViewModel(repo), link.notes)
                 }
             },
+            references.map { it.toRefViewModel() },
             links.mapNotNull { (link, langEntity) ->
                 val word = langEntity as? Word
                 word?.let {

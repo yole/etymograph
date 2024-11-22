@@ -231,6 +231,10 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
         }
     }
 
+    open fun refersToRule(rule: Rule): Boolean {
+        return false
+    }
+
     companion object {
         fun parse(s: String, context: RuleParseContext, prefix: String = "-"): RuleInstruction {
             if (!s.startsWith(prefix)) {
@@ -329,6 +333,10 @@ class ApplyRuleInstruction(val ruleRef: RuleRef)
         if (rule.isPhonemic()) return ""
         return rule.toSummaryText(graph)
     }
+
+    override fun refersToRule(rule: Rule): Boolean {
+        return rule == ruleRef.resolve()
+    }
 }
 
 class ApplySoundRuleInstruction(language: Language, val ruleRef: RuleRef, arg: String?)
@@ -370,6 +378,10 @@ class ApplySoundRuleInstruction(language: Language, val ruleRef: RuleRef, arg: S
                 rule.name.rich(linkType = "rule", linkId = rule.id) + "'" +
                 (seekTarget?.let { " to "} ?: "") +
                 (seekTarget?.toEditableText()?.rich(emph = true) ?: "".rich())
+    }
+
+    override fun refersToRule(rule: Rule): Boolean {
+        return rule == ruleRef.resolve()
     }
 
     companion object {

@@ -258,6 +258,12 @@ export default function Rule(params) {
                 }
             </>)}
         </>}
+        {rule.references.length > 0 && <>
+            <h3>Referencing rules</h3>
+            {rule.references.map(r => <>
+                <RuleLink rule={r}/>
+                <br/></>)}
+        </>}
         {rule.referencingParadigms.length > 0 && <>
             <h3>Referencing paradigms</h3>
             {rule.referencingParadigms.map(p => <>

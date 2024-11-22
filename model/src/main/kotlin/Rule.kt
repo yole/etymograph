@@ -1,5 +1,7 @@
 package ru.yole.etymograph
 
+import kotlin.math.log
+
 class RuleParseException(msg: String): RuntimeException(msg)
 
 fun interface RuleRef {
@@ -384,7 +386,15 @@ class Rule(
     }
 
     fun refersToPhoneme(phoneme: Phoneme): Boolean {
-        return logic.branches.any { branch -> branch.refersToPhoneme(phoneme) }
+        return logic.preInstructions.any { it.refersToPhoneme(phoneme) } ||
+                logic.branches.any { branch -> branch.refersToPhoneme(phoneme) } ||
+                logic.postInstructions.any { it.refersToPhoneme(phoneme) }
+    }
+
+    fun refersToRule(rule: Rule): Boolean {
+        return logic.preInstructions.any { it.refersToRule(rule) } ||
+                logic.branches.any { branch -> branch.instructions.any { it.refersToRule(rule) } } ||
+                logic.postInstructions.any { it.refersToRule(rule) }
     }
 
     data class RuleChangeResult(val word: Word, val oldResult: String, val newResult: String)

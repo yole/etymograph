@@ -451,6 +451,10 @@ open class InMemoryGraphRepository : GraphRepository() {
         return result
     }
 
+    override fun findReferencingRules(rule: Rule): List<Rule> {
+        return allRules().filter { it.refersToRule(rule) }
+    }
+
     override fun addRuleSequence(name: String, fromLanguage: Language, toLanguage: Language, rules: List<RuleSequenceStep>): RuleSequence {
         return RuleSequence(allLangEntities.size, name, fromLanguage, toLanguage,
             rules.map { RuleSequenceStepRef(it.rule.id, it.optional) }, emptyList(), null
