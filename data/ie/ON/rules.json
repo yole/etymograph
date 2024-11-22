@@ -2359,6 +2359,12 @@
                         "args": [
                             ""
                         ]
+                    },
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "5599"
+                        ]
                     }
                 ],
                 "condition": {
@@ -2399,24 +2405,31 @@
             {
                 "instructions": [
                     {
-                        "type": "Append",
+                        "type": "ApplyRule",
                         "args": [
-                            "'a'"
+                            "1404"
                         ]
                     }
                 ],
                 "condition": {
                     "type": "leaf",
                     "cond": "ClassMatches",
-                    "characters": "strong",
-                    "negated": true
+                    "characters": "strong"
                 }
             },
             {
                 "instructions": [
                     {
-                        "type": "NoChange",
-                        "args": []
+                        "type": "ApplyRule",
+                        "args": [
+                            "1401"
+                        ]
+                    },
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'a'"
+                        ]
                     }
                 ],
                 "condition": {
@@ -2432,7 +2445,7 @@
             {
                 "type": "ApplyRule",
                 "args": [
-                    "1401"
+                    "5034"
                 ]
             }
         ]
@@ -4056,12 +4069,79 @@
                         "args": [
                             "e"
                         ]
+                    },
+                    {
+                        "type": "SoundDisappears",
+                        "args": [
+                            "-1"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "a",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": -1,
+                            "parameter": "j"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "e"
+                        ]
                     }
                 ],
                 "condition": {
                     "type": "relPhoneme",
                     "parameter": "a",
                     "relative": false
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "e"
+                        ]
+                    },
+                    {
+                        "type": "SoundDisappears",
+                        "args": [
+                            "-1"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "á",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": -1,
+                            "parameter": "j"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "v-strong-3"
+                        }
+                    ]
                 }
             },
             {
@@ -4424,9 +4504,19 @@
                             "characters": "v-strong-2"
                         },
                         {
-                            "type": "relPhoneme",
-                            "parameter": "ú",
-                            "relative": false
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "relPhoneme",
+                                    "parameter": "ú",
+                                    "relative": false
+                                },
+                                {
+                                    "type": "relPhoneme",
+                                    "parameter": "ó",
+                                    "relative": false
+                                }
+                            ]
                         },
                         {
                             "type": "relPhoneme",
@@ -4466,7 +4556,7 @@
                     {
                         "type": "ChangeSound",
                         "args": [
-                            "au"
+                            "a"
                         ]
                     },
                     {
@@ -4482,12 +4572,22 @@
                         {
                             "type": "leaf",
                             "cond": "ClassMatches",
-                            "characters": "v-strong-2"
+                            "characters": "v-strong-3"
                         },
                         {
-                            "type": "relPhoneme",
-                            "parameter": "ó",
-                            "relative": false
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "relPhoneme",
+                                    "parameter": "a",
+                                    "relative": false
+                                },
+                                {
+                                    "type": "relPhoneme",
+                                    "parameter": "á",
+                                    "relative": false
+                                }
+                            ]
                         },
                         {
                             "type": "relPhoneme",
@@ -4515,9 +4615,19 @@
                             "characters": "v-strong-3"
                         },
                         {
-                            "type": "relPhoneme",
-                            "parameter": "e",
-                            "relative": false
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "relPhoneme",
+                                    "parameter": "e",
+                                    "relative": false
+                                },
+                                {
+                                    "type": "relPhoneme",
+                                    "parameter": "i",
+                                    "relative": false
+                                }
+                            ]
                         }
                     ]
                 }
@@ -4750,9 +4860,19 @@
                             "characters": "v-strong-2"
                         },
                         {
-                            "type": "relPhoneme",
-                            "parameter": "ú",
-                            "relative": false
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "relPhoneme",
+                                    "parameter": "ú",
+                                    "relative": false
+                                },
+                                {
+                                    "type": "relPhoneme",
+                                    "parameter": "ó",
+                                    "relative": false
+                                }
+                            ]
                         },
                         {
                             "type": "relPhoneme",
@@ -4783,42 +4903,6 @@
                             "type": "relPhoneme",
                             "parameter": "ú",
                             "relative": false
-                        }
-                    ]
-                }
-            },
-            {
-                "instructions": [
-                    {
-                        "type": "ChangeSound",
-                        "args": [
-                            "u"
-                        ]
-                    },
-                    {
-                        "type": "SoundDisappears",
-                        "args": [
-                            "-1"
-                        ]
-                    }
-                ],
-                "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "v-strong-2"
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "parameter": "ó",
-                            "relative": false
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": -1,
-                            "parameter": "j"
                         }
                     ]
                 }
@@ -4847,14 +4931,59 @@
                             "characters": "v-strong-3"
                         },
                         {
-                            "type": "relPhoneme",
-                            "parameter": "e",
-                            "relative": false
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "relPhoneme",
+                                    "parameter": "a",
+                                    "relative": false
+                                },
+                                {
+                                    "type": "relPhoneme",
+                                    "parameter": "á",
+                                    "relative": false
+                                }
+                            ]
                         },
                         {
                             "type": "relPhoneme",
                             "relativeIndex": -1,
-                            "parameter": "v"
+                            "parameter": "j"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "u"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "v-strong-3"
+                        },
+                        {
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "relPhoneme",
+                                    "parameter": "e",
+                                    "relative": false
+                                },
+                                {
+                                    "type": "relPhoneme",
+                                    "parameter": "i",
+                                    "relative": false
+                                }
+                            ]
                         }
                     ]
                 }
@@ -4963,6 +5092,14 @@
         "sourceRefs": [
             {
                 "refText": "Viking Language 8.8"
+            }
+        ],
+        "postInstructions": [
+            {
+                "type": "ApplyRule",
+                "args": [
+                    "5604"
+                ]
             }
         ]
     },
@@ -7033,6 +7170,150 @@
                         }
                     ]
                 }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "u"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "v-strong-3"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "e",
+                            "relative": false
+                        },
+                        {
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "relPhoneme",
+                                    "relativeIndex": 1,
+                                    "parameter": "m"
+                                },
+                                {
+                                    "type": "relPhoneme",
+                                    "relativeIndex": 1,
+                                    "parameter": "n"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "o"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "v-strong-3"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "e",
+                            "relative": false
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "u"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "v-strong-3"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "i",
+                            "relative": false
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "o"
+                        ]
+                    },
+                    {
+                        "type": "SoundDisappears",
+                        "args": [
+                            "-1"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "v-strong-3"
+                        },
+                        {
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "relPhoneme",
+                                    "parameter": "a",
+                                    "relative": false
+                                },
+                                {
+                                    "type": "relPhoneme",
+                                    "parameter": "á",
+                                    "relative": false
+                                }
+                            ]
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": -1,
+                            "parameter": "j"
+                        }
+                    ]
+                }
+            }
+        ],
+        "postInstructions": [
+            {
+                "type": "ApplyRule",
+                "args": [
+                    "5604"
+                ]
             }
         ]
     },
@@ -7094,6 +7375,125 @@
         "addedCategories": ".MID.INF",
         "fromPOS": [
             "V"
+        ]
+    },
+    {
+        "id": 5599,
+        "name": "on-past-sg-stem-consonant",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "tt"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "nd"
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "t"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "d"
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "kk"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "ng"
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "NoChange",
+                        "args": []
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "sourceRefs": [
+            {
+                "pubId": 8,
+                "refText": "3.6.9.1 (3)"
+            }
+        ]
+    },
+    {
+        "id": 5604,
+        "name": "on-root-v",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "SoundDisappears",
+                        "args": [
+                            "-1"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "relPhoneme",
+                                    "parameter": "u",
+                                    "relative": false
+                                },
+                                {
+                                    "type": "relPhoneme",
+                                    "parameter": "o",
+                                    "relative": false
+                                }
+                            ]
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": -1,
+                            "parameter": "v"
+                        }
+                    ]
+                }
+            }
+        ],
+        "sourceRefs": [
+            {
+                "pubId": 8,
+                "refText": "3.6.9.1 (1)"
+            }
         ]
     }
 ]

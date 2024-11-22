@@ -1126,7 +1126,10 @@
         "text": "vinna",
         "gloss": "win",
         "fullGloss": "gain, win, work, perform, accomplish",
-        "pos": "V"
+        "pos": "V",
+        "classes": [
+            "v-strong-3"
+        ]
     },
     {
         "id": 1115,
@@ -3291,7 +3294,6 @@
         "fullGloss": "become, happen, take place",
         "pos": "V",
         "classes": [
-            "strong",
             "v-strong-3"
         ]
     },
@@ -4865,7 +4867,10 @@
         "id": 5053,
         "text": "vápn",
         "gloss": "weapon",
-        "pos": "N"
+        "pos": "N",
+        "classes": [
+            "n"
+        ]
     },
     {
         "id": 5055,
@@ -5901,7 +5906,10 @@
         "id": 5297,
         "text": "finna",
         "gloss": "find",
-        "pos": "V"
+        "pos": "V",
+        "classes": [
+            "v-strong-3"
+        ]
     },
     {
         "id": 5298,
@@ -7060,5 +7068,380 @@
     {
         "id": 5539,
         "text": "hefi"
+    },
+    {
+        "id": 5540,
+        "text": "dregit"
+    },
+    {
+        "id": 5541,
+        "text": "dvergr",
+        "gloss": "dwarf",
+        "pos": "N",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 5542,
+        "text": "dvergarnir"
+    },
+    {
+        "id": 5543,
+        "text": "gørðu"
+    },
+    {
+        "id": 5544,
+        "text": "bani",
+        "gloss": "death",
+        "pos": "N",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 5545,
+        "text": "hvert",
+        "gloss": "whither",
+        "pos": "ADV"
+    },
+    {
+        "id": 5546,
+        "text": "aldr",
+        "gloss": "age",
+        "pos": "N",
+        "classes": [
+            "m",
+            "cc-stem"
+        ]
+    },
+    {
+        "id": 5548,
+        "text": "aldri",
+        "gloss": "never",
+        "pos": "ADV"
+    },
+    {
+        "id": 5549,
+        "text": "bila",
+        "gloss": "fail",
+        "pos": "V",
+        "classes": [
+            "1conj"
+        ]
+    },
+    {
+        "id": 5550,
+        "text": "bilar"
+    },
+    {
+        "id": 5551,
+        "text": "höggvi"
+    },
+    {
+        "id": 5552,
+        "text": "sár",
+        "gloss": "wound",
+        "pos": "N",
+        "classes": [
+            "n"
+        ]
+    },
+    {
+        "id": 5553,
+        "text": "gróa",
+        "gloss": "grow",
+        "pos": "V"
+    },
+    {
+        "id": 5554,
+        "text": "grœr"
+    },
+    {
+        "id": 5555,
+        "text": "hœla",
+        "gloss": "praise",
+        "pos": "V"
+    },
+    {
+        "id": 5556,
+        "text": "hœlir"
+    },
+    {
+        "id": 5557,
+        "text": "sverði"
+    },
+    {
+        "id": 5558,
+        "text": "sigri"
+    },
+    {
+        "id": 5559,
+        "text": "orrostu"
+    },
+    {
+        "id": 5560,
+        "text": "kallat"
+    },
+    {
+        "id": 5561,
+        "text": "konungar"
+    },
+    {
+        "id": 5562,
+        "text": "kveld",
+        "gloss": "evening",
+        "pos": "N",
+        "classes": [
+            "n"
+        ]
+    },
+    {
+        "id": 5563,
+        "text": "kveldi"
+    },
+    {
+        "id": 5564,
+        "text": "nóttina"
+    },
+    {
+        "id": 5565,
+        "text": "valr",
+        "gloss": "the slain",
+        "pos": "N",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 5566,
+        "text": "valsins"
+    },
+    {
+        "id": 5567,
+        "text": "fjölkyngi",
+        "gloss": "magic",
+        "pos": "N",
+        "classes": [
+            "f"
+        ]
+    },
+    {
+        "id": 5568,
+        "text": "dauðir"
+    },
+    {
+        "id": 5569,
+        "text": "alla"
+    },
+    {
+        "id": 5570,
+        "text": "konungarnir"
+    },
+    {
+        "id": 5571,
+        "text": "annan"
+    },
+    {
+        "id": 5572,
+        "text": "vígvöllr",
+        "gloss": "battlefield",
+        "pos": "N",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 5573,
+        "text": "vígvöllinn"
+    },
+    {
+        "id": 5574,
+        "text": "hinn"
+    },
+    {
+        "id": 5575,
+        "text": "fyrra"
+    },
+    {
+        "id": 5576,
+        "text": "vápn"
+    },
+    {
+        "id": 5577,
+        "text": "daginn"
+    },
+    {
+        "id": 5578,
+        "text": "hvern"
+    },
+    {
+        "id": 5579,
+        "text": "vígvelli"
+    },
+    {
+        "id": 5580,
+        "text": "liggja",
+        "gloss": "lie",
+        "pos": "V"
+    },
+    {
+        "id": 5581,
+        "text": "lágu"
+    },
+    {
+        "id": 5582,
+        "text": "börðusk"
+    },
+    {
+        "id": 5583,
+        "text": "hlíf",
+        "gloss": "shield",
+        "pos": "N",
+        "classes": [
+            "f"
+        ]
+    },
+    {
+        "id": 5584,
+        "text": "hlífar"
+    },
+    {
+        "id": 5585,
+        "text": "grjót",
+        "gloss": "stone",
+        "pos": "N",
+        "classes": [
+            "n"
+        ]
+    },
+    {
+        "id": 5586,
+        "text": "grjóti"
+    },
+    {
+        "id": 5587,
+        "text": "daga",
+        "gloss": "dawn",
+        "pos": "V",
+        "classes": [
+            "1conj"
+        ]
+    },
+    {
+        "id": 5588,
+        "text": "dagaði"
+    },
+    {
+        "id": 5589,
+        "text": "stóðu"
+    },
+    {
+        "id": 5591,
+        "text": "nýr",
+        "gloss": "new",
+        "pos": "ADJ"
+    },
+    {
+        "id": 5592,
+        "text": "ný"
+    },
+    {
+        "id": 5593,
+        "text": "kvæðum"
+    },
+    {
+        "id": 5594,
+        "text": "sagt"
+    },
+    {
+        "id": 5595,
+        "text": "bresta",
+        "gloss": "break",
+        "pos": "V",
+        "classes": [
+            "v-strong-3"
+        ]
+    },
+    {
+        "id": 5596,
+        "text": "sleppa",
+        "gloss": "slip",
+        "pos": "V",
+        "classes": [
+            "v-strong-3"
+        ]
+    },
+    {
+        "id": 5597,
+        "text": "gjalla",
+        "gloss": "yell",
+        "pos": "V",
+        "classes": [
+            "v-strong-3"
+        ]
+    },
+    {
+        "id": 5598,
+        "text": "gjalda",
+        "gloss": "pay",
+        "pos": "V",
+        "classes": [
+            "v-strong-3"
+        ]
+    },
+    {
+        "id": 5600,
+        "text": "skjálfa",
+        "gloss": "shake",
+        "pos": "V",
+        "classes": [
+            "v-strong-3"
+        ]
+    },
+    {
+        "id": 5601,
+        "text": "hjálpa",
+        "gloss": "help",
+        "pos": "V",
+        "classes": [
+            "v-strong-3"
+        ]
+    },
+    {
+        "id": 5602,
+        "text": "binda",
+        "gloss": "bind",
+        "pos": "V",
+        "classes": [
+            "v-strong-3"
+        ]
+    },
+    {
+        "id": 5603,
+        "text": "springa",
+        "gloss": "jump",
+        "pos": "V",
+        "classes": [
+            "v-strong-3"
+        ]
+    },
+    {
+        "id": 5605,
+        "text": "brenna",
+        "gloss": "burn",
+        "pos": "V",
+        "classes": [
+            "v-strong-3"
+        ]
+    },
+    {
+        "id": 5606,
+        "text": "renna",
+        "gloss": "run",
+        "pos": "V",
+        "classes": [
+            "v-strong-3"
+        ]
     }
 ]
