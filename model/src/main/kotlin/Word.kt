@@ -113,13 +113,16 @@ class Word(
         return derive(orthoText, phonemic = false)
     }
 
-    fun derive(text: String, id: Int? = null, newSegment: WordSegment? = null, newClasses: List<String>? = null, phonemic: Boolean? = null): Word {
+    fun derive(text: String, id: Int? = null, newSegment: WordSegment? = null, newClasses: List<String>? = null,
+               phonemic: Boolean? = null, keepStress: Boolean = true): Word {
         val sourceSegments = segments
         return if (this.text == text && newClasses == null && phonemic == null && id == null)
             this
         else
             Word(id ?: -1, text, language, gloss, fullGloss, pos, newClasses ?: classes).also {
-                it.stressedPhonemeIndex = stressedPhonemeIndex
+                if (keepStress) {
+                    it.stressedPhonemeIndex = stressedPhonemeIndex
+                }
                 it.segments = appendSegments(sourceSegments, newSegment)
                 if (phonemic != null) it.isPhonemic = phonemic
             }

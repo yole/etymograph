@@ -304,7 +304,7 @@ class ApplyRuleInstruction(val ruleRef: RuleRef)
             return word.derive(existingFormText, word.id)
         }
         return result.derive(result.text, word.id).remapSegments { s ->
-            if (s.sourceRule == targetRule){
+            if (s.sourceRule == targetRule) {
                 WordSegment(s.firstCharacter, s.length, rule.addedCategories, null, rule)}
             else
                 s
@@ -342,15 +342,15 @@ class ApplySoundRuleInstruction(language: Language, val ruleRef: RuleRef, arg: S
         if (seekTarget != null && seekTarget.relative) {
             targetIt.seek(seekTarget)
         }
-        ruleRef.resolve().applyToPhoneme(word, targetIt, graph)
+        ruleRef.resolve().applyToPhoneme(word, targetIt, graph, trace)
     }
 
     override fun apply(rule: Rule, branch: RuleBranch?, word: Word, graph: GraphRepository, trace: RuleTrace?): Word {
         if (seekTarget == null) return word
         val phonemes = PhonemeIterator(word.asPhonemic(), graph)
         if (phonemes.seek(seekTarget)) {
-            ruleRef.resolve().applyToPhoneme(word, phonemes, graph)
-            return word.derive(phonemes.result(), phonemic = true).asOrthographic()
+            ruleRef.resolve().applyToPhoneme(word, phonemes, graph, trace)
+            return word.derive(phonemes.result(), phonemic = true, keepStress = false).asOrthographic()
         }
         return word
     }

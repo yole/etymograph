@@ -24,7 +24,11 @@ class RuleTrace {
     private val log = StringBuilder()
 
     fun logRule(rule: Rule, word: Word) {
-        log.append("Applying rule ${rule.name} to ${word.text} (segments ${word.segments})\n")
+        log.append("Applying rule ${rule.name} to ${word.text} (segments ${word.segments}, stress ${word.stressedPhonemeIndex})\n")
+    }
+
+    fun logRuleResult(rule: Rule, word: Word) {
+        log.append("Applied rule ${rule.name}, result is ${word.text} (segments ${word.segments}, stress ${word.stressedPhonemeIndex})\n")
     }
 
     fun logMatchedBranch(rule: Rule, word: Word, phoneme: String?, branch: RuleBranch) {
@@ -257,9 +261,11 @@ class Rule(
                 if (applyPrePostRules) {
                     resultWord = paradigm?.postRule?.apply(resultWord, graph, trace, preserveId = true) ?: resultWord
                 }
-                return deriveWord(word, resultWord.text, toLanguage, resultWord.stressedPhonemeIndex,
+                val result = deriveWord(word, resultWord.text, toLanguage, resultWord.stressedPhonemeIndex,
                     resultWord.segments, resultWord.classes, normalizeSegments = normalizeSegments,
                     id = if (preserveId) word.id else -1)
+                trace?.logRuleResult(this, result)
+                return result
             }
             else {
                 trace?.logUnmatchedBranch(this, word, null, branch)
