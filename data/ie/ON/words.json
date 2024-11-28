@@ -7443,5 +7443,395 @@
         "classes": [
             "v-strong-3"
         ]
+    },
+    {
+        "id": 5608,
+        "text": "Helgi",
+        "pos": "NP"
+    },
+    {
+        "id": 5609,
+        "text": "hefjum"
+    },
+    {
+        "id": 5610,
+        "text": "lendr",
+        "gloss": "landed",
+        "pos": "ADJ"
+    },
+    {
+        "id": 5611,
+        "text": "Ölvir",
+        "pos": "NP"
+    },
+    {
+        "id": 5612,
+        "text": "Þorkell",
+        "pos": "NP"
+    },
+    {
+        "id": 5613,
+        "text": "hvítr",
+        "gloss": "white",
+        "pos": "ADJ"
+    },
+    {
+        "id": 5614,
+        "text": "hvíti"
+    },
+    {
+        "id": 5615,
+        "text": "þegnskapr",
+        "gloss": "generosity",
+        "pos": "N",
+        "classes": [
+            "m",
+            "gen-ar"
+        ]
+    },
+    {
+        "id": 5616,
+        "text": "þegnskapar"
+    },
+    {
+        "id": 5617,
+        "text": "sakar"
+    },
+    {
+        "id": 5618,
+        "text": "keypti"
+    },
+    {
+        "id": 5619,
+        "text": "Steinbjörn",
+        "pos": "NP"
+    },
+    {
+        "id": 5620,
+        "text": "rauðr",
+        "gloss": "red",
+        "pos": "ADJ"
+    },
+    {
+        "id": 5621,
+        "text": "rauða"
+    },
+    {
+        "id": 5622,
+        "text": "hvíta"
+    },
+    {
+        "id": 5623,
+        "text": "eyða",
+        "gloss": "waste",
+        "pos": "V"
+    },
+    {
+        "id": 5624,
+        "text": "eyddisk"
+    },
+    {
+        "id": 5625,
+        "text": "Þorgils",
+        "pos": "NP"
+    },
+    {
+        "id": 5626,
+        "text": "vega",
+        "gloss": "kill",
+        "pos": "V"
+    },
+    {
+        "id": 5627,
+        "text": "vágu"
+    },
+    {
+        "id": 5628,
+        "text": "fœða",
+        "gloss": "feed",
+        "pos": "V"
+    },
+    {
+        "id": 5629,
+        "text": "fœddi"
+    },
+    {
+        "id": 5630,
+        "text": "Þorgils"
+    },
+    {
+        "id": 5631,
+        "text": "Þorgils"
+    },
+    {
+        "id": 5632,
+        "text": "Heðinn",
+        "pos": "NP"
+    },
+    {
+        "id": 5633,
+        "text": "bráðgörr",
+        "gloss": "precocious",
+        "pos": "ADJ"
+    },
+    {
+        "id": 5634,
+        "text": "stórmannligr",
+        "gloss": "magnificent",
+        "pos": "ADJ"
+    },
+    {
+        "id": 5635,
+        "text": "málugr",
+        "gloss": "talkative",
+        "pos": "ADJ"
+    },
+    {
+        "id": 5636,
+        "text": "barnœska",
+        "gloss": "childhood",
+        "pos": "N",
+        "classes": [
+            "f"
+        ]
+    },
+    {
+        "id": 5637,
+        "text": "barnœsku"
+    },
+    {
+        "id": 5638,
+        "text": "ódæll",
+        "gloss": "difficult",
+        "pos": "ADJ"
+    },
+    {
+        "id": 5639,
+        "text": "óvægr",
+        "gloss": "harsh",
+        "pos": "ADJ"
+    },
+    {
+        "id": 5640,
+        "text": "aldri"
+    },
+    {
+        "id": 5641,
+        "text": "ungr",
+        "gloss": "young",
+        "pos": "ADJ"
+    },
+    {
+        "id": 5642,
+        "text": "unga"
+    },
+    {
+        "id": 5643,
+        "text": "hugkvæmr",
+        "gloss": "crafty",
+        "pos": "ADJ"
+    },
+    {
+        "id": 5644,
+        "text": "margbreytinn",
+        "gloss": "fickle",
+        "pos": "ADJ"
+    },
+    {
+        "id": 5645,
+        "text": "naut",
+        "gloss": "cattle",
+        "pos": "N",
+        "classes": [
+            "n"
+        ]
+    },
+    {
+        "id": 5646,
+        "text": "stöðull",
+        "gloss": "milking pen",
+        "pos": "N",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 5647,
+        "text": "stöðli"
+    },
+    {
+        "id": 5648,
+        "text": "graðungr",
+        "gloss": "bull",
+        "pos": "N",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 5649,
+        "text": "stöðlinum"
+    },
+    {
+        "id": 5650,
+        "text": "frændr"
+    },
+    {
+        "id": 5651,
+        "text": "stöðulinn"
+    },
+    {
+        "id": 5652,
+        "text": "graðungarnir"
+    },
+    {
+        "id": 5653,
+        "text": "sveinninn"
+    },
+    {
+        "id": 5654,
+        "text": "úti",
+        "gloss": "outside",
+        "pos": "ADV"
+    },
+    {
+        "id": 5655,
+        "text": "sér"
+    },
+    {
+        "id": 5656,
+        "text": "duga",
+        "gloss": "do",
+        "pos": "V"
+    },
+    {
+        "id": 5657,
+        "text": "dugir"
+    },
+    {
+        "id": 5658,
+        "text": "verr",
+        "gloss": "worse",
+        "pos": "ADV"
+    },
+    {
+        "id": 5659,
+        "text": "ferr"
+    },
+    {
+        "id": 5660,
+        "text": "frá",
+        "gloss": "away",
+        "pos": "ADV"
+    },
+    {
+        "id": 5661,
+        "text": "frá",
+        "gloss": "from",
+        "pos": "PREP"
+    },
+    {
+        "id": 5662,
+        "text": "tekr"
+    },
+    {
+        "id": 5663,
+        "text": "mannbroddr",
+        "gloss": "spike",
+        "pos": "N",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 5664,
+        "text": "mannbrodd"
+    },
+    {
+        "id": 5665,
+        "text": "bindr"
+    },
+    {
+        "id": 5666,
+        "text": "graðunginum"
+    },
+    {
+        "id": 5667,
+        "text": "enni",
+        "gloss": "forehead",
+        "pos": "N",
+        "classes": [
+            "n"
+        ]
+    },
+    {
+        "id": 5668,
+        "text": "enni"
+    },
+    {
+        "id": 5669,
+        "text": "graðungi"
+    },
+    {
+        "id": 5670,
+        "text": "gengr"
+    },
+    {
+        "id": 5671,
+        "text": "þaðan",
+        "gloss": "thence",
+        "pos": "ADV"
+    },
+    {
+        "id": 5672,
+        "text": "Brodd-Helgi",
+        "pos": "NP"
+    },
+    {
+        "id": 5673,
+        "text": "Brodd-Helga"
+    },
+    {
+        "id": 5674,
+        "text": "þessum"
+    },
+    {
+        "id": 5675,
+        "text": "atburðr",
+        "gloss": "occurrence",
+        "pos": "N",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 5676,
+        "text": "atburði"
+    },
+    {
+        "id": 5677,
+        "text": "afbragð",
+        "gloss": "outstanding example",
+        "pos": "N",
+        "classes": [
+            "n"
+        ]
+    },
+    {
+        "id": 5678,
+        "text": "atgørvi",
+        "gloss": "ability",
+        "pos": "N",
+        "classes": [
+            "f"
+        ]
+    },
+    {
+        "id": 5679,
+        "text": "fœddusk"
+    },
+    {
+        "id": 5680,
+        "text": "heraðinu"
     }
 ]
