@@ -23,7 +23,7 @@ export default function WordForm(props) {
         if (isAddingLink) {
             let linkTarget = props.linkTarget
             if (props.linkTargetText !== undefined) {
-                if (wordJson.text === props.linkTargetText) {
+                if (wordJson.text.toLocaleLowerCase('fr') === props.linkTargetText.toLocaleLowerCase('fr')) {
                     if (props.submitted !== undefined) {
                         props.submitted(wordJson, undefined, data)
                     }
