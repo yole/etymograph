@@ -33,7 +33,7 @@ export default function Paradigm(params) {
     function deleteParadigmClicked() {
         if (window.confirm("Delete this paradigm?")) {
             deleteParadigm(graph, paradigm.id)
-                .then(() => router.push(`/${graph}/paradigms/` + paradigm.language))
+                .then(() => router.push(`/${graph}/rules/${paradigm.language}`))
         }
     }
 
