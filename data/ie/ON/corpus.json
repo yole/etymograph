@@ -7411,11 +7411,340 @@
             {
                 "index": 224,
                 "id": 976
+            },
+            {
+                "index": 12,
+                "id": 5684
             }
         ],
         "sourceRefs": [
             {
                 "refText": "Vápnfirðinga saga (ch 1)"
+            }
+        ]
+    },
+    {
+        "id": 5681,
+        "text": "Maðr hét Svartr, er kom út hingat ok gerði bú í Vápnafirði.\nIt næsta honum bjó sá maðr,  er Skíði hét.\nHann var félítill.\nSvartr var mikill maðr ok rammr at afli ok vel vígr ok óeirðarmaðr inn mesti.\nÞá Svart ok Skíða skilði á um beitingar, ok lauk því svá, at Svartr vá Skíða.\nEn Brodd-Helgi mælti eptir vígit ok gerði Svart sekan.\nÞá var Brodd-Helgi tólf vetra gamall.\nEptir þat lagðisk Svartr út á heiði þá, er vér köllum Smjörvatnsheiði,\nskammt frá Sunnudal, ok leggsk á fé Hofsverja ok gerði miklu meira\nat en honum var nauðsyn til.\nSauðamaðr at Hofi kom inn einn aptan ok gekk inn í lokrekkjugólf Þorsteins karls,\nþar sem hann lá sjónlauss.\nOk mælti Þorsteinn: \"Hversu hefir at farit í dag, félagi?\" segir hann.\n\"Sem verst,\" segir hinn; \"horfinn er geldingrinn þinn inn bezti\",\nsegir sauðamaðr, \"ok þrír aðrir\".\n\"Komnir munu til sauða annarra manna\", segir hann, \"ok munu aptr koma\".\n\"Nei, nei\", segir sauðamaðr, \"þeir munu aldri aptr koma\".\n\"Mæl við mik slíkt, er þér líkar\", segir Þorsteinn, \"en tala ekki slíkt við Brodd-Helga\".",
+        "title": "Viking Language 12.9",
+        "words": [
+            {
+                "index": 3,
+                "id": 1076
+            },
+            {
+                "index": 6,
+                "id": 5682
+            },
+            {
+                "index": 12,
+                "id": 1475
+            },
+            {
+                "index": 13,
+                "id": 5688
+            },
+            {
+                "index": 16,
+                "id": 971
+            },
+            {
+                "index": 19,
+                "id": 1076
+            },
+            {
+                "index": 20,
+                "id": 5685
+            },
+            {
+                "index": 22,
+                "id": 924
+            },
+            {
+                "index": 23,
+                "id": 923
+            },
+            {
+                "index": 24,
+                "id": 5686
+            },
+            {
+                "index": 26,
+                "id": 923
+            },
+            {
+                "index": 30,
+                "id": 5689
+            },
+            {
+                "index": 31,
+                "id": 1318
+            },
+            {
+                "index": 32,
+                "id": 5690
+            },
+            {
+                "index": 35,
+                "id": 5691
+            },
+            {
+                "index": 37,
+                "id": 5692
+            },
+            {
+                "index": 38,
+                "id": 1321
+            },
+            {
+                "index": 39,
+                "id": 5693
+            },
+            {
+                "index": 40,
+                "id": 998
+            },
+            {
+                "index": 43,
+                "id": 5694
+            },
+            {
+                "index": 44,
+                "id": 5696
+            },
+            {
+                "index": 45,
+                "id": 936
+            },
+            {
+                "index": 47,
+                "id": 5698
+            },
+            {
+                "index": 50,
+                "id": 1147
+            },
+            {
+                "index": 52,
+                "id": 977
+            },
+            {
+                "index": 54,
+                "id": 5699
+            },
+            {
+                "index": 65,
+                "id": 998
+            },
+            {
+                "index": 66,
+                "id": 923
+            },
+            {
+                "index": 72,
+                "id": 5249
+            },
+            {
+                "index": 60,
+                "id": 5701
+            },
+            {
+                "index": 64,
+                "id": 5703
+            },
+            {
+                "index": 76,
+                "id": 936
+            },
+            {
+                "index": 69,
+                "id": 5704
+            },
+            {
+                "index": 73,
+                "id": 5705
+            },
+            {
+                "index": 81,
+                "id": 5706
+            },
+            {
+                "index": 79,
+                "id": 1076
+            },
+            {
+                "index": 77,
+                "id": 5707
+            },
+            {
+                "index": 78,
+                "id": 5245
+            },
+            {
+                "index": 83,
+                "id": 5708
+            },
+            {
+                "index": 84,
+                "id": 5661
+            },
+            {
+                "index": 88,
+                "id": 936
+            },
+            {
+                "index": 89,
+                "id": 1590
+            },
+            {
+                "index": 98,
+                "id": 923
+            },
+            {
+                "index": 131,
+                "id": 924
+            },
+            {
+                "index": 87,
+                "id": 5709
+            },
+            {
+                "index": 99,
+                "id": 5710
+            },
+            {
+                "index": 95,
+                "id": 977
+            },
+            {
+                "index": 102,
+                "id": 4911
+            },
+            {
+                "index": 101,
+                "id": 5711
+            },
+            {
+                "index": 105,
+                "id": 1321
+            },
+            {
+                "index": 107,
+                "id": 5713
+            },
+            {
+                "index": 114,
+                "id": 5714
+            },
+            {
+                "index": 112,
+                "id": 5716
+            },
+            {
+                "index": 117,
+                "id": 924
+            },
+            {
+                "index": 118,
+                "id": 5717
+            },
+            {
+                "index": 110,
+                "id": 1321
+            },
+            {
+                "index": 119,
+                "id": 5718
+            },
+            {
+                "index": 126,
+                "id": 5719
+            },
+            {
+                "index": 125,
+                "id": 4911
+            },
+            {
+                "index": 165,
+                "id": 5548
+            },
+            {
+                "index": 163,
+                "id": 1368
+            },
+            {
+                "index": 133,
+                "id": 5720
+            },
+            {
+                "index": 136,
+                "id": 5722
+            },
+            {
+                "index": 137,
+                "id": 1513
+            },
+            {
+                "index": 140,
+                "id": 1321
+            },
+            {
+                "index": 138,
+                "id": 5724,
+                "contextGloss": ""
+            },
+            {
+                "index": 154,
+                "id": 924
+            },
+            {
+                "index": 141,
+                "id": 5726
+            },
+            {
+                "index": 146,
+                "id": 5727
+            },
+            {
+                "index": 147,
+                "id": 5728
+            },
+            {
+                "index": 150,
+                "id": 5730
+            },
+            {
+                "index": 160,
+                "id": 5731
+            },
+            {
+                "index": 168,
+                "id": 5733
+            },
+            {
+                "index": 169,
+                "id": 1168
+            },
+            {
+                "index": 181,
+                "id": 1168
+            },
+            {
+                "index": 172,
+                "id": 1076
+            },
+            {
+                "index": 171,
+                "id": 5735
+            },
+            {
+                "index": 174,
+                "id": 5737
+            }
+        ],
+        "sourceRefs": [
+            {
+                "refText": "Vápnfirðinga saga ch 2"
             }
         ]
     }

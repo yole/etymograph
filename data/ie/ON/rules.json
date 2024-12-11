@@ -3833,7 +3833,7 @@
     },
     {
         "id": 1538,
-        "name": "on-adj-strong-m-gen-pl",
+        "name": "on-adj-strong-gen-pl-m",
         "fromLang": "ON",
         "toLang": "ON",
         "branches": [
@@ -3858,7 +3858,7 @@
     },
     {
         "id": 1539,
-        "name": "on-adj-strong-f-nom-pl",
+        "name": "on-adj-strong-nom-pl-f",
         "fromLang": "ON",
         "toLang": "ON",
         "branches": [
@@ -3883,7 +3883,7 @@
     },
     {
         "id": 1540,
-        "name": "on-adj-strong-f-acc-pl",
+        "name": "on-adj-strong-acc-pl-f",
         "fromLang": "ON",
         "toLang": "ON",
         "branches": [
@@ -7494,6 +7494,46 @@
                 "pubId": 8,
                 "refText": "3.6.9.1 (1)"
             }
+        ]
+    },
+    {
+        "id": 5732,
+        "name": "on-imp",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "NoChange",
+                        "args": []
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "ClassMatches",
+                    "characters": "1conj"
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            ""
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "a"
+                }
+            }
+        ],
+        "addedCategories": ".IMP",
+        "fromPOS": [
+            "V"
         ]
     }
 ]

@@ -6386,7 +6386,7 @@
         "id": 5405,
         "text": "höggva",
         "gloss": "strike",
-        "pos": "PREP"
+        "pos": "V"
     },
     {
         "id": 5406,
@@ -7833,5 +7833,294 @@
     {
         "id": 5680,
         "text": "heraðinu"
+    },
+    {
+        "id": 5682,
+        "text": "hingat",
+        "gloss": "hither",
+        "pos": "ADV"
+    },
+    {
+        "id": 5683,
+        "text": "Vápnafjörðr",
+        "pos": "NP"
+    },
+    {
+        "id": 5684,
+        "text": "Vápnafirði"
+    },
+    {
+        "id": 5685,
+        "text": "Skíði",
+        "pos": "NP"
+    },
+    {
+        "id": 5686,
+        "text": "félítill",
+        "pos": "ADJ"
+    },
+    {
+        "id": 5688,
+        "text": "næsta"
+    },
+    {
+        "id": 5689,
+        "text": "rammr",
+        "gloss": "strong",
+        "pos": "ADJ"
+    },
+    {
+        "id": 5690,
+        "text": "afli"
+    },
+    {
+        "id": 5691,
+        "text": "vígr",
+        "gloss": "able to fight",
+        "pos": "ADJ"
+    },
+    {
+        "id": 5692,
+        "text": "óeirðarmaðr",
+        "gloss": "unruly man",
+        "pos": "N"
+    },
+    {
+        "id": 5693,
+        "text": "mesti"
+    },
+    {
+        "id": 5694,
+        "text": "Skíða"
+    },
+    {
+        "id": 5695,
+        "text": "skilja",
+        "gloss": "separate",
+        "pos": "V"
+    },
+    {
+        "id": 5696,
+        "text": "skilði"
+    },
+    {
+        "id": 5697,
+        "text": "beiting",
+        "gloss": "grazing",
+        "pos": "N",
+        "classes": [
+            "f"
+        ]
+    },
+    {
+        "id": 5698,
+        "text": "beitingar"
+    },
+    {
+        "id": 5699,
+        "text": "vá"
+    },
+    {
+        "id": 5700,
+        "text": "víg",
+        "gloss": "battle",
+        "pos": "N",
+        "classes": [
+            "n"
+        ]
+    },
+    {
+        "id": 5701,
+        "text": "vígit"
+    },
+    {
+        "id": 5702,
+        "text": "sekr",
+        "gloss": "guilty",
+        "pos": "ADJ"
+    },
+    {
+        "id": 5703,
+        "text": "sekan"
+    },
+    {
+        "id": 5704,
+        "text": "vetra"
+    },
+    {
+        "id": 5705,
+        "text": "lagðisk"
+    },
+    {
+        "id": 5706,
+        "text": "köllum"
+    },
+    {
+        "id": 5707,
+        "text": "heiði"
+    },
+    {
+        "id": 5708,
+        "text": "skammt",
+        "gloss": "a short distance",
+        "pos": "ADV"
+    },
+    {
+        "id": 5709,
+        "text": "leggsk"
+    },
+    {
+        "id": 5710,
+        "text": "nauðsyn",
+        "gloss": "necessity",
+        "pos": "N",
+        "classes": [
+            "f"
+        ]
+    },
+    {
+        "id": 5711,
+        "text": "sauðamaðr",
+        "gloss": "shepherd",
+        "pos": "N"
+    },
+    {
+        "id": 5712,
+        "text": "aptann",
+        "gloss": "evening",
+        "pos": "N",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 5713,
+        "text": "aptan"
+    },
+    {
+        "id": 5714,
+        "text": "karls"
+    },
+    {
+        "id": 5715,
+        "text": "lokrekkjugólf",
+        "gloss": "locking bed closet",
+        "pos": "N",
+        "classes": [
+            "n"
+        ]
+    },
+    {
+        "id": 5716,
+        "text": "lokrekkjugólf"
+    },
+    {
+        "id": 5717,
+        "text": "lá"
+    },
+    {
+        "id": 5718,
+        "text": "sjónlauss",
+        "gloss": "sightless",
+        "pos": "ADJ"
+    },
+    {
+        "id": 5719,
+        "text": "farit"
+    },
+    {
+        "id": 5720,
+        "text": "verst",
+        "gloss": "worst",
+        "pos": "ADV"
+    },
+    {
+        "id": 5721,
+        "text": "hverfa",
+        "gloss": "disappear",
+        "pos": "V"
+    },
+    {
+        "id": 5722,
+        "text": "horfinn"
+    },
+    {
+        "id": 5723,
+        "text": "geldingr",
+        "gloss": "wether",
+        "pos": "N",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 5724,
+        "text": "geldingrinn"
+    },
+    {
+        "id": 5725,
+        "text": "beztr",
+        "gloss": "best",
+        "pos": "ADJ"
+    },
+    {
+        "id": 5726,
+        "text": "bezti"
+    },
+    {
+        "id": 5727,
+        "text": "aðrir"
+    },
+    {
+        "id": 5728,
+        "text": "komnir"
+    },
+    {
+        "id": 5729,
+        "text": "sauðr",
+        "gloss": "sheep",
+        "pos": "N",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 5730,
+        "text": "sauða"
+    },
+    {
+        "id": 5731,
+        "text": "nei",
+        "gloss": "no",
+        "pos": "ADV"
+    },
+    {
+        "id": 5733,
+        "text": "mæl"
+    },
+    {
+        "id": 5734,
+        "text": "tala",
+        "gloss": "talk",
+        "pos": "V",
+        "classes": [
+            "1conj"
+        ]
+    },
+    {
+        "id": 5735,
+        "text": "slíkt",
+        "gloss": "in such a way",
+        "pos": "ADV"
+    },
+    {
+        "id": 5736,
+        "text": "líka",
+        "gloss": "like",
+        "pos": "V"
+    },
+    {
+        "id": 5737,
+        "text": "líkar"
     }
 ]

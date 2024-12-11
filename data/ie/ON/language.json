@@ -617,6 +617,10 @@
                 {
                     "name": "Subjunctive",
                     "abbreviation": "SUBJ"
+                },
+                {
+                    "name": "Imperative",
+                    "abbreviation": "IMP"
                 }
             ]
         },

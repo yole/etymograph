@@ -770,5 +770,28 @@
         "posList": [
             "V"
         ]
+    },
+    {
+        "id": 40,
+        "name": "Verb Imperative",
+        "rows": [
+            "2nd"
+        ],
+        "columns": [
+            {
+                "title": "Sg",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            5732
+                        ]
+                    }
+                ]
+            }
+        ],
+        "posList": [
+            "V"
+        ],
+        "postRule": 5330
     }
 ]
