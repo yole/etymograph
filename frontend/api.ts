@@ -1,3 +1,5 @@
+import {PublicationData} from "@/model";
+
 export function allowEdit() {
     return process.env.NEXT_PUBLIC_READONLY !== "true";
 }
@@ -265,11 +267,11 @@ export function copyPhonemes(graph: string, toLang, fromLang) {
     return postToBackend(`${graph}/language/${toLang}/copyPhonemes`, {fromLang: fromLang})
 }
 
-export function addPublication(graph: string, data) {
+export function addPublication(graph: string, data: PublicationData) {
     return postToBackend(`${graph}/publications`, data)
 }
 
-export function updatePublication(graph: string, id: number, data) {
+export function updatePublication(graph: string, id: number, data: PublicationData) {
     return postToBackend(`${graph}/publication/${id}`, data)
 }
 

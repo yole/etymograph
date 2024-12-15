@@ -2,10 +2,11 @@ import {addPublication, updatePublication} from "@/api";
 import FormRow from "@/components/FormRow";
 import EtymographForm from "@/components/EtymographForm";
 import {useRouter} from "next/router";
+import {PublicationData} from "@/model";
 
 interface PublicationFormProps {
     updateId?: number;
-    defaultValues?: any;
+    defaultValues?: PublicationData;
 }
 
 export default function PublicationForm(props: PublicationFormProps) {
