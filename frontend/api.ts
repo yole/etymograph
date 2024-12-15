@@ -77,7 +77,7 @@ export async function fetchAlternatives(graph, corpusTextId, index) {
     return await res.json()
 }
 
-function postToBackend(endpoint: string, data: any) {
+function postToBackend(endpoint: string, data: any): Promise<Response> {
     let url = process.env.NEXT_PUBLIC_BACKEND_URL + endpoint;
     console.log(url)
     return fetch(url, {
@@ -267,11 +267,11 @@ export function copyPhonemes(graph: string, toLang, fromLang) {
     return postToBackend(`${graph}/language/${toLang}/copyPhonemes`, {fromLang: fromLang})
 }
 
-export function addPublication(graph: string, data: PublicationData) {
+export function addPublication(graph: string, data: PublicationData): Promise<Response> {
     return postToBackend(`${graph}/publications`, data)
 }
 
-export function updatePublication(graph: string, id: number, data: PublicationData) {
+export function updatePublication(graph: string, id: number, data: PublicationData): Promise<Response> {
     return postToBackend(`${graph}/publication/${id}`, data)
 }
 

@@ -3,8 +3,23 @@ import {useContext, useEffect, useState} from "react";
 import {useRouter} from "next/router";
 import {EditModeContext, SetEditModeContext} from "@/components/EtymographFormView";
 
-export default function EtymographForm(props) {
-    const methods = useForm({defaultValues: props.defaultValues});
+interface EtymographFormProps<Data> {
+    defaultValues?: Data;
+    setEditMode?: (newEditMode: boolean) => void;
+    focusTarget?: any;
+    updateId?: number;
+    update?: (Data: Data) => Promise<Response>;
+    create?: (Data: Data) => Promise<Response>;
+    children?: React.ReactNode;
+    submitted?: (response: Response, data: any) => any;
+    setFocusTarget?: (newFocusTarget: any) => void;
+    redirectOnCreate?: any;
+    buttons?: any;
+    cancelled?: any;
+}
+
+export default function EtymographForm<Data>(props: EtymographFormProps<Data>) {
+    const methods = useForm({defaultValues: props.defaultValues as any});
     const [errorText, setErrorText] = useState("")
     const router = useRouter()
     const editMode = useContext(EditModeContext)
@@ -17,7 +32,7 @@ export default function EtymographForm(props) {
         props.setFocusTarget(null)
     }
 
-    async function saveForm(data) {
+    async function saveForm(data: Data) {
         const r = props.updateId !== undefined ? await props.update(data) : await props.create(data)
         if (r.status === 200) {
             if (r.headers.get("content-type") === "application/json") {
@@ -45,7 +60,7 @@ export default function EtymographForm(props) {
                 }
             }
             else if (props.submitted !== undefined) {
-                props.submitted()
+                props.submitted(undefined, undefined)
             }
             else if (setEditMode !== undefined) {
                 router.replace(router.asPath)

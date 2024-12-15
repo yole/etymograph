@@ -13,7 +13,7 @@ export default function PublicationForm(props: PublicationFormProps) {
     const router = useRouter()
     const graph = router.query.graph as string;
 
-    return <EtymographForm
+    return <EtymographForm<PublicationData>
         create={(data) => addPublication(graph, data)}
         update={(data) => updatePublication(graph, props.updateId, data)}
         {...props}
