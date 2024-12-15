@@ -1,15 +1,20 @@
 import {createContext, useContext, useState} from "react";
 import {allowEdit} from "@/api";
 
-export const EditModeContext = createContext(undefined)
-export const SetEditModeContext = createContext(undefined)
+export const EditModeContext = createContext<boolean | undefined>(undefined)
+export const SetEditModeContext = createContext<((newState: boolean) => void) | undefined>(undefined)
 
 export function View(props) {
     const editMode = useContext(EditModeContext)
     return !editMode ? props.children : <></>
 }
 
-export default function EtymographFormView(props) {
+interface EtymographFormViewProps {
+    editButtonTitle?: string;
+    children?: React.ReactNode;
+}
+
+export default function EtymographFormView(props: EtymographFormViewProps) {
     const editButtonTitle = props.editButtonTitle ?? "Edit"
     const [editMode, setEditMode] = useState(false)
 

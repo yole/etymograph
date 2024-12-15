@@ -2,7 +2,20 @@ import Link from "next/link";
 import {useContext, useEffect} from "react";
 import {GlobalStateContext, GraphContext} from "@/components/Contexts";
 
-export default function Breadcrumbs(props) {
+interface BreadcrumbStep {
+    title: string;
+    url: string;
+}
+
+interface BreadcrumbsProps {
+    langName?: string;
+    langId?: string;
+    steps?: BreadcrumbStep[];
+    title?: any;
+    children?: React.ReactNode;
+}
+
+export default function Breadcrumbs(props: BreadcrumbsProps) {
     const graph = useContext(GraphContext)
     const globalState = useContext(GlobalStateContext)
     const theGraph = globalState !== undefined ? globalState.graphs.find((g) => g.id === graph) : undefined
