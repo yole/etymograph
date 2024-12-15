@@ -2,7 +2,7 @@ export function allowEdit() {
     return process.env.NEXT_PUBLIC_READONLY !== "true";
 }
 
-export async function fetchBackend(graph: string, url, withGlobalState) {
+export async function fetchBackend(graph: string, url, withGlobalState = false) {
     const fullUrl = `${process.env.NEXT_PUBLIC_BACKEND_URL}${graph}/${url}`
     const res = await fetch(fullUrl, { headers: { 'Accept': 'application/json'} })
     if (res.status === 404) {
@@ -269,7 +269,7 @@ export function addPublication(graph: string, data) {
     return postToBackend(`${graph}/publications`, data)
 }
 
-export function updatePublication(graph: string, id, data) {
+export function updatePublication(graph: string, id: number, data) {
     return postToBackend(`${graph}/publication/${id}`, data)
 }
 

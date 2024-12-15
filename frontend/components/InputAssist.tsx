@@ -5,8 +5,8 @@ import {faKeyboard} from '@fortawesome/free-solid-svg-icons'
 import {useFormContext} from "react-hook-form";
 
 interface InputAssistProps {
-    languageProp: string | undefined;
-    language: string | undefined;
+    languageProp?: string;
+    language?: string;
     inline: boolean;
     id: string;
 }

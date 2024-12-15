@@ -1,7 +1,17 @@
 import {useFormContext} from "react-hook-form";
 import InputAssist from "@/components/InputAssist";
 
-export default function FormRow(props) {
+interface FormRowProps {
+    id: string;
+    label: string;
+    readOnly?: boolean;
+    size?: number;
+    inputAssist?: boolean;
+    children?: React.ReactNode;
+    handleBlur?: (data: any) => void;
+}
+
+export default function FormRow(props: FormRowProps) {
     const {register, getValues} = useFormContext()
 
     return <tr onBlur={() => {

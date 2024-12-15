@@ -3,9 +3,14 @@ import FormRow from "@/components/FormRow";
 import EtymographForm from "@/components/EtymographForm";
 import {useRouter} from "next/router";
 
-export default function PublicationForm(props) {
+interface PublicationFormProps {
+    updateId?: number;
+    defaultValues?: any;
+}
+
+export default function PublicationForm(props: PublicationFormProps) {
     const router = useRouter()
-    const graph = router.query.graph
+    const graph = router.query.graph as string;
 
     return <EtymographForm
         create={(data) => addPublication(graph, data)}
