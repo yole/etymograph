@@ -1,10 +1,17 @@
 import {useContext, useState} from "react";
-import {GlobalStateContext} from "@/components/Contexts";
+import {GlobalStateContext, InputAssistType} from "@/components/Contexts";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faKeyboard} from '@fortawesome/free-solid-svg-icons'
 import {useFormContext} from "react-hook-form";
 
-export default function InputAssist(props) {
+interface InputAssistProps {
+    languageProp: string | undefined;
+    language: string | undefined;
+    inline: boolean;
+    id: string;
+}
+
+export default function InputAssist(props: InputAssistProps) {
     const {watch} = useFormContext()
     const globalState = useContext(GlobalStateContext)
     const [inputAssistVisible, setInputAssistVisible] = useState(false)
@@ -15,14 +22,14 @@ export default function InputAssist(props) {
         ? watch(props.languageProp)
         : props.language
 
-    function collectInputAssists(assists) {
+    function collectInputAssists(assists: InputAssistType): string[] {
         return assists.graphemes
             .filter((g) => !lang || g.languages.includes(lang))
             .map(g => g.text)
     }
 
     function handleInputAssist(id, char) {
-        const inputField = document.getElementById(id)
+        const inputField = document.getElementById(id) as HTMLInputElement
         const currentValue = inputField.value
         const selectionEnd = inputField.selectionEnd;
         inputField.value = currentValue.substring(0, inputField.selectionStart) + char + currentValue.substring(selectionEnd)
