@@ -1,8 +1,9 @@
 import {useContext, useState} from "react";
-import {GlobalStateContext, InputAssistType} from "@/components/Contexts";
+import {GlobalStateContext} from "@/components/Contexts";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faKeyboard} from '@fortawesome/free-solid-svg-icons'
 import {useFormContext} from "react-hook-form";
+import {InputAssistViewModel} from "@/models";
 
 interface InputAssistProps {
     languageProp?: string;
@@ -22,7 +23,7 @@ export default function InputAssist(props: InputAssistProps) {
         ? watch(props.languageProp)
         : props.language
 
-    function collectInputAssists(assists: InputAssistType): string[] {
+    function collectInputAssists(assists: InputAssistViewModel): string[] {
         return assists.graphemes
             .filter((g) => !lang || g.languages.includes(lang))
             .map(g => g.text)
