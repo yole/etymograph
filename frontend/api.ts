@@ -1,4 +1,4 @@
-import {AddPublicationParameters} from "@/models";
+import {AddPublicationParameters, CorpusTextParams} from "@/models";
 
 export function allowEdit() {
     return process.env.NEXT_PUBLIC_READONLY !== "true";
@@ -170,11 +170,11 @@ export function deriveThroughRuleSequence(graph, wordId, seqId) {
     return postToBackend(`${graph}/word/${wordId}/derive`, {sequenceId: seqId})
 }
 
-export function addCorpusText(graph, lang, data) {
+export function addCorpusText(graph: string, lang: string, data: CorpusTextParams) {
     return postToBackend(`${graph}/corpus/${lang}/new`, data)
 }
 
-export function updateCorpusText(graph, id, data) {
+export function updateCorpusText(graph: string, id: number, data: CorpusTextParams) {
     return postToBackend(`${graph}/corpus/text/${id}`, data)
 }
 

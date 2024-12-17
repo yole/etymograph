@@ -1,13 +1,18 @@
 import {addCorpusText, updateCorpusText} from "@/api";
 import FormRow from "@/components/FormRow";
-import EtymographForm from "@/components/EtymographForm";
+import EtymographForm, {EtymographFormProps} from "@/components/EtymographForm";
 import FormTextArea from "@/components/FormTextArea";
 import {useContext} from "react";
 import {GraphContext} from "@/components/Contexts";
+import {CorpusTextParams, CorpusTextViewModel} from "@/models";
 
-export default function CorpusTextForm(props) {
+interface CorpusTextFormProps extends EtymographFormProps<CorpusTextParams, CorpusTextViewModel> {
+    lang: string;
+}
+
+export default function CorpusTextForm(props: CorpusTextFormProps) {
     const graph = useContext(GraphContext)
-    return <EtymographForm
+    return <EtymographForm<CorpusTextParams, CorpusTextViewModel>
         create={(data) => addCorpusText(graph, props.lang, data)}
         update={(data) => updateCorpusText(graph, props.updateId, data)}
         {...props}

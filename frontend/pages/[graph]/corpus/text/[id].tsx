@@ -18,6 +18,7 @@ import CorpusTextForm from "@/forms/CorpusTextForm";
 import TranslationForm from "@/forms/TranslationForm";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import WordGloss from "@/components/WordGloss";
+import {CorpusTextViewModel} from "@/models";
 
 export const config = {
     unstable_runtimeJS: true
@@ -82,7 +83,7 @@ function CorpusTextGlossChoice(params) {
 }
 
 export default function CorpusText(params) {
-    const corpusText = params.loaderData
+    const corpusText = params.loaderData as CorpusTextViewModel
     const [editMode, setEditMode] = useState(false)
     const [wordFormVisible, setWordFormVisible] = useState(false);
     const [predefWord, setPredefWord] = useState("")
@@ -126,7 +127,7 @@ export default function CorpusText(params) {
         setWordFormVisible(false)
     }
 
-    function toggleTranslationForm(id) {
+    function toggleTranslationForm(id?: number) {
         if (showTranslationForm && editTranslationId === id) {
             setShowTranslationForm(false)
         }
@@ -206,7 +207,7 @@ export default function CorpusText(params) {
             <h3>Notes</h3>
             <p>{corpusText.notes}</p>
         </>}
-        {editMode && <CorpusTextForm lang={corpusText.lang}
+        {editMode && <CorpusTextForm lang={corpusText.language}
                                      updateId={corpusText.id}
                                      defaultValues={{
                                          title: corpusText.title === "Untitled" ? "" : corpusText.title,
