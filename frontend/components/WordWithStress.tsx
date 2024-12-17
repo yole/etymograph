@@ -17,5 +17,6 @@ export default function WordWithStress(params: WordWithStressProps) {
             {text.substring(stressIndex+stressLength)}
         </>
     }
-    return params.reconstructed === true ? "*" + text : text
+    const result = params.reconstructed === true ? "*" + text : text
+    return <>{result}</>
 }
