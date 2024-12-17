@@ -3,7 +3,7 @@ import {useContext, useEffect, useState} from "react";
 import {useRouter} from "next/router";
 import {EditModeContext, SetEditModeContext} from "@/components/EtymographFormView";
 
-interface EtymographFormProps<Data> {
+export interface EtymographFormProps<Data> {
     defaultValues?: Data;
     setEditMode?: (newEditMode: boolean) => void;
     focusTarget?: any;

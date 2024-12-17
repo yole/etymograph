@@ -1,16 +1,17 @@
 import {allowEdit, fetchAllGraphs, fetchBackend} from "@/api";
 import Link from "next/link";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import {PublicationData} from "@/model";
 import {useRouter} from "next/router";
 
 export const getStaticPaths = fetchAllGraphs
 
 export async function getStaticProps(context) {
-    return fetchBackend(context.params.graph,`publications`)
+    return fetchBackend(context.params.graph, `publications`)
 }
 
 export default function Publications(props) {
-    const publications = props.loaderData
+    const publications = props.loaderData as PublicationData[];
     const router = useRouter()
     const graph = router.query.graph
 
@@ -22,6 +23,6 @@ export default function Publications(props) {
             <br/>
         </>)}
 
-        <p>{allowEdit() && <Link href={`/${graph}/publications/new`}>Add publication</Link>}</p>
+        <p>{allowEdit() && <button onClick={() => router.push(`/${graph}/publications/new`)}>Add publication</button>}</p>
     </>
 }

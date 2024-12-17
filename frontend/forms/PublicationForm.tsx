@@ -1,17 +1,15 @@
 import {addPublication, updatePublication} from "@/api";
 import FormRow from "@/components/FormRow";
-import EtymographForm from "@/components/EtymographForm";
-import {useRouter} from "next/router";
+import EtymographForm, {EtymographFormProps} from "@/components/EtymographForm";
 import {PublicationData} from "@/model";
+import {useContext} from "react";
+import {GraphContext} from "@/components/Contexts";
 
-interface PublicationFormProps {
-    updateId?: number;
-    defaultValues?: PublicationData;
+interface PublicationFormProps extends EtymographFormProps<PublicationData>{
 }
 
 export default function PublicationForm(props: PublicationFormProps) {
-    const router = useRouter()
-    const graph = router.query.graph as string;
+    const graph = useContext(GraphContext);
 
     return <EtymographForm<PublicationData>
         create={(data) => addPublication(graph, data)}
