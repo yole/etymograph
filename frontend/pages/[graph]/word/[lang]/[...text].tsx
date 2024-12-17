@@ -254,7 +254,7 @@ function SingleWord(params) {
     const globalState = useContext(GlobalStateContext)
 
     const router = useRouter()
-    const graph = router.query.graph
+    const graph = router.query.graph as string
     const [showBaseWord, setShowBaseWord] = useState(false)
     const [showDerivedWord, setShowDerivedWord] = useState(false)
     const [showOriginWord, setShowOriginWord] = useState(false)

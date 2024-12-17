@@ -1318,6 +1318,178 @@ paths:
             '*/*':
               schema:
                 $ref: "#/components/schemas/PhonemeViewModel"
+  /{graph}/dictionary/{lang}:
+    get:
+      summary: "GET {graph}/dictionary/{lang}"
+      operationId: "dictionary"
+      parameters:
+        - name: "graph"
+          in: "path"
+          required: false
+        - name: "lang"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/DictionaryViewModel"
+  /{graph}/dictionary/{lang}/all:
+    get:
+      summary: "GET {graph}/dictionary/{lang}/all"
+      operationId: "allWords"
+      parameters:
+        - name: "graph"
+          in: "path"
+          required: false
+        - name: "lang"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/DictionaryViewModel"
+  /{graph}/dictionary/{lang}/compounds:
+    get:
+      summary: "GET {graph}/dictionary/{lang}/compounds"
+      operationId: "dictionaryCompound"
+      parameters:
+        - name: "graph"
+          in: "path"
+          required: false
+        - name: "lang"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/DictionaryViewModel"
+  /{graph}/dictionary/{lang}/names:
+    get:
+      summary: "GET {graph}/dictionary/{lang}/names"
+      operationId: "dictionaryNames"
+      parameters:
+        - name: "graph"
+          in: "path"
+          required: false
+        - name: "lang"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/DictionaryViewModel"
+  /{graph}/dictionary/{lang}/reconstructed:
+    get:
+      summary: "GET {graph}/dictionary/{lang}/reconstructed"
+      operationId: "dictionaryReconstructed"
+      parameters:
+        - name: "graph"
+          in: "path"
+          required: false
+        - name: "lang"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/DictionaryViewModel"
+  /{graph}/link/:
+    post:
+      summary: "POST {graph}/link/"
+      operationId: "addLink"
+      parameters:
+        - name: "graph"
+          in: "path"
+          required: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LinkParams"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+  /{graph}/link/delete:
+    post:
+      summary: "POST {graph}/link/delete"
+      operationId: "deleteLink"
+      parameters:
+        - name: "graph"
+          in: "path"
+          required: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LinkParams"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                type: "boolean"
+  /{graph}/link/rule:
+    post:
+      summary: "POST {graph}/link/rule"
+      operationId: "addRuleLink"
+      parameters:
+        - name: "graph"
+          in: "path"
+          required: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RuleLinkParams"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+  /{graph}/link/update:
+    post:
+      summary: "POST {graph}/link/update"
+      operationId: "updateLink"
+      parameters:
+        - name: "graph"
+          in: "path"
+          required: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LinkParams"
+        required: true
+      responses:
+        "200":
+          description: "OK"
 components:
   schemas:
     InputAssistGraphemeViewModel:
@@ -2956,3 +3128,76 @@ components:
         - "sound"
         - "classes"
         - "historical"
+    DictionaryWordViewModel:
+      type: "object"
+      properties:
+        id:
+          type: "integer"
+          format: "int32"
+        text:
+          type: "string"
+        gloss:
+          type: "string"
+        fullGloss:
+          type: "string"
+        homonym:
+          type: "boolean"
+      required:
+        - "id"
+        - "text"
+        - "gloss"
+        - "homonym"
+    DictionaryViewModel:
+      type: "object"
+      properties:
+        language:
+          $ref: "#/components/schemas/Language"
+        words:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/DictionaryWordViewModel"
+      required:
+        - "language"
+        - "words"
+    LinkParams:
+      type: "object"
+      properties:
+        fromEntity:
+          type: "integer"
+          format: "int32"
+        toEntity:
+          type: "integer"
+          format: "int32"
+        linkType:
+          type: "string"
+        ruleNames:
+          type: "string"
+        source:
+          type: "string"
+        notes:
+          type: "string"
+      required:
+        - "fromEntity"
+        - "toEntity"
+        - "linkType"
+        - "ruleNames"
+        - "source"
+    RuleLinkParams:
+      type: "object"
+      properties:
+        fromEntity:
+          type: "integer"
+          format: "int32"
+        toRuleName:
+          type: "string"
+        linkType:
+          type: "string"
+        source:
+          type: "string"
+        notes:
+          type: "string"
+      required:
+        - "fromEntity"
+        - "toRuleName"
+        - "linkType"
+        - "source"

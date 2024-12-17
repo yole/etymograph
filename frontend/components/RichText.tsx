@@ -21,7 +21,7 @@ function RichTextFragment(params: { fragment: RichTextFragmentModel }) {
     if (params.fragment.emph) {
         return <span className="richTextEmph">{textWithTooltip}</span>
     }
-    return textWithTooltip
+    return <>{textWithTooltip}</>
 }
 
 export default function RichText(params: { richText: RichTextModel }) {

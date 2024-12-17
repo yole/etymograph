@@ -1,4 +1,4 @@
-import EtymographForm from "@/components/EtymographForm";
+import EtymographForm, {EtymographFormProps} from "@/components/EtymographForm";
 import FormRow from "@/components/FormRow";
 import RuleListSelect from "@/components/RuleListSelect";
 import {updateCompound, updateLink} from "@/api";

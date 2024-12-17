@@ -8,7 +8,7 @@ interface EtymographFormButton {
     callback: (data: any) => void;
 }
 
-export interface EtymographFormProps<Data> {
+export interface EtymographFormProps<Data, ResponseData=Data> {
     defaultValues?: Data;
     setEditMode?: (newEditMode: boolean) => void;
     focusTarget?: any;
@@ -18,12 +18,12 @@ export interface EtymographFormProps<Data> {
     children?: React.ReactNode;
     submitted?: (response: Response, data: any) => any;
     setFocusTarget?: (newFocusTarget: any) => void;
-    redirectOnCreate?: (Data: Data) => string;
+    redirectOnCreate?: (Data: ResponseData) => string;
     buttons?: EtymographFormButton[];
     cancelled?: () => void;
 }
 
-export default function EtymographForm<Data>(props: EtymographFormProps<Data>) {
+export default function EtymographForm<Data, ResponseData=Data>(props: EtymographFormProps<Data, ResponseData>) {
     const methods = useForm({defaultValues: props.defaultValues as any});
     const [errorText, setErrorText] = useState("")
     const router = useRouter()

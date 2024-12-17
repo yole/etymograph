@@ -124,6 +124,19 @@ export type DeriveThroughSequenceParams = {
     sequenceId: number;
 };
 
+export type DictionaryViewModel = {
+    language: Language;
+    words: Array<DictionaryWordViewModel>;
+};
+
+export type DictionaryWordViewModel = {
+    id: number;
+    text: string;
+    gloss: string;
+    fullGloss?: string;
+    homonym: boolean;
+};
+
 export type GenerateParadigmParameters = {
     name: string;
     lang: string;
@@ -200,6 +213,15 @@ export type LinkedRuleViewModel = {
     ruleName: string;
     linkType: string;
     source: Array<SourceRefViewModel>;
+    notes?: string;
+};
+
+export type LinkParams = {
+    fromEntity: number;
+    toEntity: number;
+    linkType: string;
+    ruleNames: string;
+    source: string;
     notes?: string;
 };
 
@@ -375,6 +397,14 @@ export type RuleGroupViewModel = {
     sequenceFromLang?: string;
     sequenceToLang?: string;
     paradigmId?: number;
+};
+
+export type RuleLinkParams = {
+    fromEntity: number;
+    toRuleName: string;
+    linkType: string;
+    source: string;
+    notes?: string;
 };
 
 export type RuleLinkViewModel = {

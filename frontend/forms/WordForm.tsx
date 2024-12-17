@@ -9,10 +9,15 @@ import RuleListSelect from "@/components/RuleListSelect";
 import {useRouter} from "next/router";
 import PosSelect from "@/components/PosSelect";
 import WordClassSelect from "@/components/WordClassSelect";
+import {AddWordParameters} from "@/models";
+
+interface WordFormData extends AddWordParameters {
+    language: string;
+}
 
 export default function WordForm(props) {
     const router = useRouter()
-    const graph = router.query.graph
+    const graph = router.query.graph as string
 
     const isAddingLink = props.linkType !== undefined
 
@@ -80,7 +85,7 @@ export default function WordForm(props) {
         }
     }
 
-    return <EtymographForm
+    return <EtymographForm<WordFormData>
         create={(data) => addWord(graph, data.language, data.text, data.gloss, data.fullGloss, data.pos, data.classes,
             data.reconstructed, data.source, data.notes)}
         update={(data) => updateWord(graph, props.updateId, data.text, data.gloss, data.fullGloss, data.pos, data.classes,

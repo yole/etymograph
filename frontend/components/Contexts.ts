@@ -1,19 +1,10 @@
 import {createContext} from "react";
-import {GraphViewModel, LanguageShortViewModel, RuleShortViewModel} from "@/models";
-
-type InputAssistGraphemeType = {
-    text: string;
-    languages: string[];
-}
-
-export type InputAssistType = {
-    graphemes: InputAssistGraphemeType[];
-}
+import {GraphViewModel, InputAssistViewModel, LanguageShortViewModel, RuleShortViewModel} from "@/models";
 
 interface GlobalContextType {
     graphs: GraphViewModel[];
     languages: LanguageShortViewModel[];
-    inputAssists: InputAssistType;
+    inputAssists: InputAssistViewModel;
     rules: RuleShortViewModel[];
 }
 

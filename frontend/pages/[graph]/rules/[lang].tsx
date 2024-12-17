@@ -8,7 +8,9 @@ import EtymographFormView from "@/components/EtymographFormView";
 import EtymographForm from "@/components/EtymographForm";
 import FormRow from "@/components/FormRow";
 import PosSelect from "@/components/PosSelect";
+import {GenerateParadigmParameters, ParadigmViewModel} from "@/models";
 
+// noinspection JSUnusedGlobalSymbols
 export const config = {
     unstable_runtimeJS: true
 }
@@ -75,7 +77,7 @@ export default function RuleList(params) {
             <button onClick={() => router.push(`/${graph}/paradigms/${lang}/new`)}>Add Paradigm</button>
             {' '}
             <EtymographFormView editButtonTitle="Generate Paradigm">
-                <EtymographForm
+                <EtymographForm<GenerateParadigmParameters, ParadigmViewModel>
                     create={(data) => generateParadigm(graph, lang, data)}
                     redirectOnCreate={(r) => `/${graph}/paradigm/${r.id}`}>
 

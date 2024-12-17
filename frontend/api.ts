@@ -89,7 +89,16 @@ function postToBackend(endpoint: string, data: any): Promise<Response> {
     })
 }
 
-export function addWord(graph, lang, text, gloss, fullGloss, pos, classes, reconstructed: boolean = false, source: string = null, notes: string = null) {
+export function addWord(
+    graph: string, lang, text,
+    gloss?: string,
+    fullGloss?: string,
+    pos?: string,
+    classes?: string,
+    reconstructed: boolean = false,
+    source: string = null,
+    notes: string = null
+) {
     return postToBackend(`${graph}/word/${lang}`,
         {text: text, gloss: gloss, fullGloss: fullGloss, pos, classes, reconstructed, source: source, notes: notes}
     )
