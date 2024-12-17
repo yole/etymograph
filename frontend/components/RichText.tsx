@@ -25,5 +25,5 @@ function RichTextFragment(params: { fragment: RichTextFragmentModel }) {
 }
 
 export default function RichText(params: { richText: RichTextModel }) {
-    return params.richText.fragments.map(fragment => <RichTextFragment fragment={fragment}/>)
+    return <>{params.richText.fragments.map(fragment => <RichTextFragment fragment={fragment}/>)}</>
 }
