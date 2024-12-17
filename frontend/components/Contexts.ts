@@ -1,5 +1,5 @@
 import {createContext} from "react";
-import {GraphViewModel, LanguageShortViewModel} from "@/model";
+import {GraphViewModel, LanguageShortViewModel, RuleShortViewModel} from "@/model";
 
 type InputAssistGraphemeType = {
     text: string;
@@ -14,6 +14,7 @@ interface GlobalContextType {
     graphs: GraphViewModel[];
     languages: LanguageShortViewModel[];
     inputAssists: InputAssistType;
+    rules: RuleShortViewModel[];
 }
 
 export const GraphContext = createContext<string | undefined>(undefined)

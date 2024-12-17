@@ -1,9 +1,12 @@
 import {useFormContext} from "react-hook-form";
 import InputAssist from "@/components/InputAssist";
 
-interface FormRowProps {
+export interface FormFieldProps {
     id: string;
     label: string;
+}
+
+interface FormRowProps extends FormFieldProps{
     readOnly?: boolean;
     size?: number;
     inputAssist?: boolean;

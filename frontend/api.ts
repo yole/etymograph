@@ -89,7 +89,7 @@ function postToBackend(endpoint: string, data: any): Promise<Response> {
     })
 }
 
-export function addWord(graph, lang, text, gloss, fullGloss, pos, classes, reconstructed, source, notes) {
+export function addWord(graph, lang, text, gloss, fullGloss, pos, classes, reconstructed: boolean = false, source: string = null, notes: string = null) {
     return postToBackend(`${graph}/word/${lang}`,
         {text: text, gloss: gloss, fullGloss: fullGloss, pos, classes, reconstructed, source: source, notes: notes}
     )
@@ -110,7 +110,7 @@ export function suggestParseCandidates(graph, id) {
     return postToBackend(`${graph}/word/${id}/parse`, {})
 }
 
-export function suggestCompound(graph, id, compoundId) {
+export function suggestCompound(graph, id, compoundId?: number) {
     return postToBackend(`${graph}/word/${id}/suggestCompound`, {compoundId})
 }
 
@@ -189,7 +189,7 @@ export function acceptAlternative(graph, corpusTextId, index, wordId, ruleId) {
     return postToBackend(`${graph}/corpus/text/${corpusTextId}/accept`, {wordId: wordId, ruleId: ruleId, index: index})
 }
 
-export function addLink(graph, fromEntity, toEntity, linkType, ruleNames, source, notes) {
+export function addLink(graph, fromEntity, toEntity, linkType, ruleNames, source = null, notes = null) {
     return postToBackend(`${graph}/link`, {fromEntity, toEntity, linkType, ruleNames, source, notes})
 }
 
@@ -207,7 +207,7 @@ export function updateLink(graph, fromWord, toWord, linkType, ruleNames, source,
     return postToBackend(`${graph}/link/update`, {fromEntity: fromWord, toEntity: toWord, linkType: linkType, ruleNames: ruleNames, source: source, notes: notes})
 }
 
-export function createCompound(graph, compoundWord, firstComponentWord, source, notes) {
+export function createCompound(graph, compoundWord, firstComponentWord, source: string = null, notes: string = null) {
     return postToBackend(`${graph}/compound`, {compoundId: compoundWord, firstComponentId: firstComponentWord, source, notes})
 }
 
@@ -247,23 +247,23 @@ export function addLanguage(graph: string, name, shortName, reconstructed) {
     return postToBackend(`${graph}/languages`, {name: name, shortName: shortName, reconstructed: reconstructed})
 }
 
-export function updateLanguage(graph: string, lang, data) {
+export function updateLanguage(graph: string, lang: string, data) {
     return postToBackend(`${graph}/language/${lang}`, data)
 }
 
-export function addPhoneme(graph: string, lang, data) {
+export function addPhoneme(graph: string, lang: string, data) {
     return postToBackend(`${graph}/phonemes/${lang}`, data)
 }
 
-export function updatePhoneme(graph: string, id, data) {
+export function updatePhoneme(graph: string, id: number, data) {
     return postToBackend(`${graph}/phoneme/${id}`, data)
 }
 
-export function deletePhoneme(graph: string, id) {
+export function deletePhoneme(graph: string, id: number) {
     return postToBackend(`${graph}/phoneme/${id}/delete`, {})
 }
 
-export function copyPhonemes(graph: string, toLang, fromLang) {
+export function copyPhonemes(graph: string, toLang: string, fromLang: string) {
     return postToBackend(`${graph}/language/${toLang}/copyPhonemes`, {fromLang: fromLang})
 }
 

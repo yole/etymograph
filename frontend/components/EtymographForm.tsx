@@ -3,6 +3,11 @@ import {useContext, useEffect, useState} from "react";
 import {useRouter} from "next/router";
 import {EditModeContext, SetEditModeContext} from "@/components/EtymographFormView";
 
+interface EtymographFormButton {
+    text: string;
+    callback: (data: any) => void;
+}
+
 export interface EtymographFormProps<Data> {
     defaultValues?: Data;
     setEditMode?: (newEditMode: boolean) => void;
@@ -13,9 +18,9 @@ export interface EtymographFormProps<Data> {
     children?: React.ReactNode;
     submitted?: (response: Response, data: any) => any;
     setFocusTarget?: (newFocusTarget: any) => void;
-    redirectOnCreate?: any;
-    buttons?: any;
-    cancelled?: any;
+    redirectOnCreate?: (Data: Data) => string;
+    buttons?: EtymographFormButton[];
+    cancelled?: () => void;
 }
 
 export default function EtymographForm<Data>(props: EtymographFormProps<Data>) {

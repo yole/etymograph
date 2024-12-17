@@ -7,7 +7,7 @@ import {useFormContext} from "react-hook-form";
 interface InputAssistProps {
     languageProp?: string;
     language?: string;
-    inline: boolean;
+    inline?: boolean;
     id: string;
 }
 
