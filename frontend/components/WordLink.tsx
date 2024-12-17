@@ -1,7 +1,7 @@
 import Link from "next/link";
 import {useRouter} from "next/router";
 import WordGloss from "@/components/WordGloss";
-import {WordRefViewModel} from "@/model";
+import {WordRefViewModel} from "@/models";
 
 interface WordLinkProps {
     word: WordRefViewModel;

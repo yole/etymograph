@@ -1,0 +1,2958 @@
+openapi: "3.1.0"
+info:
+  title: "etymograph API"
+  description: "etymograph API"
+  version: "1.0.0"
+servers:
+  - url: "https://etymograph"
+paths:
+  /{graph}/inputAssist:
+    get:
+      summary: "GET {graph}/inputAssist"
+      operationId: "inputAssist"
+      parameters:
+        - name: "graph"
+          in: "path"
+          required: false
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/InputAssistViewModel"
+  /{graph}/language:
+    get:
+      summary: "GET {graph}/language"
+      operationId: "indexJson"
+      parameters:
+        - name: "graph"
+          in: "path"
+          required: false
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/LanguageShortViewModel"
+  /{graph}/language/{lang}:
+    get:
+      summary: "GET {graph}/language/{lang}"
+      operationId: "language"
+      parameters:
+        - name: "graph"
+          in: "path"
+          required: false
+        - name: "lang"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/LanguageViewModel"
+    post:
+      summary: "POST {graph}/language/{lang}"
+      operationId: "updateLanguage"
+      parameters:
+        - name: "graph"
+          in: "path"
+          required: false
+        - name: "lang"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateLanguageParameters"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+  /{graph}/language/{lang}/copyPhonemes:
+    post:
+      summary: "POST {graph}/language/{lang}/copyPhonemes"
+      operationId: "copyPhonemes"
+      parameters:
+        - name: "graph"
+          in: "path"
+          required: false
+        - name: "lang"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CopyPhonemesParams"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+  /{graph}/languages:
+    post:
+      summary: "POST {graph}/languages"
+      operationId: "addLanguage"
+      parameters:
+        - name: "graph"
+          in: "path"
+          required: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateLanguageParameters"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/LanguageViewModel"
+  /{graph}/paradigm/generate:
+    post:
+      summary: "POST {graph}/paradigm/generate"
+      operationId: "generateParadigm"
+      parameters:
+        - name: "graph"
+          in: "path"
+          required: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/GenerateParadigmParameters"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ParadigmViewModel"
+  /{graph}/paradigm/{id}:
+    get:
+      summary: "GET {graph}/paradigm/{id}"
+      operationId: "paradigm"
+      parameters:
+        - name: "graph"
+          in: "path"
+          required: false
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int32"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ParadigmViewModel"
+    post:
+      summary: "POST {graph}/paradigm/{id}"
+      operationId: "updateParadigm"
+      parameters:
+        - name: "graph"
+          in: "path"
+          required: false
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int32"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateParadigmParameters"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+  /{graph}/paradigm/{id}/delete:
+    post:
+      summary: "POST {graph}/paradigm/{id}/delete"
+      operationId: "deleteParadigm"
+      parameters:
+        - name: "graph"
+          in: "path"
+          required: false
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int32"
+      responses:
+        "200":
+          description: "OK"
+  /{graph}/paradigms:
+    get:
+      summary: "GET {graph}/paradigms"
+      operationId: "allParadigms"
+      parameters:
+        - name: "graph"
+          in: "path"
+          required: false
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/ParadigmViewModel"
+  /{graph}/paradigms/{lang}:
+    post:
+      summary: "POST {graph}/paradigms/{lang}"
+      operationId: "newParadigm"
+      parameters:
+        - name: "graph"
+          in: "path"
+          required: false
+        - name: "lang"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateParadigmParameters"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ParadigmViewModel"
+  /{graph}/rule:
+    post:
+      summary: "POST {graph}/rule"
+      operationId: "newRule"
+      parameters:
+        - name: "graph"
+          in: "path"
+          required: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateRuleParameters"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/RuleViewModel"
+  /{graph}/rule/sequence:
+    post:
+      summary: "POST {graph}/rule/sequence"
+      operationId: "newSequence"
+      parameters:
+        - name: "graph"
+          in: "path"
+          required: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateSequenceParams"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/RuleSequenceViewModel"
+  /{graph}/rule/sequence/{id}:
+    post:
+      summary: "POST {graph}/rule/sequence/{id}"
+      operationId: "updateSequence"
+      parameters:
+        - name: "graph"
+          in: "path"
+          required: false
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int32"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateSequenceParams"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/RuleSequenceViewModel"
+  /{graph}/rule/sequence/{id}/apply:
+    post:
+      summary: "POST {graph}/rule/sequence/{id}/apply"
+      operationId: "applySequence"
+      parameters:
+        - name: "graph"
+          in: "path"
+          required: false
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int32"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ApplySequenceParams"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/LinkWordViewModel"
+  /{graph}/rule/{id}:
+    get:
+      summary: "GET {graph}/rule/{id}"
+      operationId: "rule"
+      parameters:
+        - name: "graph"
+          in: "path"
+          required: false
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int32"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/RuleViewModel"
+    post:
+      summary: "POST {graph}/rule/{id}"
+      operationId: "updateRule"
+      parameters:
+        - name: "graph"
+          in: "path"
+          required: false
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int32"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateRuleParameters"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/RuleViewModel"
+  /{graph}/rule/{id}/delete:
+    post:
+      summary: "POST {graph}/rule/{id}/delete"
+      operationId: "deleteRule"
+      parameters:
+        - name: "graph"
+          in: "path"
+          required: false
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int32"
+      responses:
+        "200":
+          description: "OK"
+  /{graph}/rule/{id}/preview:
+    post:
+      summary: "POST {graph}/rule/{id}/preview"
+      operationId: "preview"
+      parameters:
+        - name: "graph"
+          in: "path"
+          required: false
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int32"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RulePreviewParams"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/RulePreviewResultListViewModel"
+  /{graph}/rule/{id}/trace:
+    post:
+      summary: "POST {graph}/rule/{id}/trace"
+      operationId: "trace"
+      parameters:
+        - name: "graph"
+          in: "path"
+          required: false
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int32"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RuleTraceParams"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/RuleTraceResult"
+  /{graph}/rules:
+    get:
+      summary: "GET {graph}/rules"
+      operationId: "allRules"
+      parameters:
+        - name: "graph"
+          in: "path"
+          required: false
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/RuleShortViewModel"
+  /{graph}/rules/{lang}:
+    get:
+      summary: "GET {graph}/rules/{lang}"
+      operationId: "rules"
+      parameters:
+        - name: "graph"
+          in: "path"
+          required: false
+        - name: "lang"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/RuleListViewModel"
+  /{graph}/corpus/:
+    get:
+      summary: "GET {graph}/corpus/"
+      operationId: "indexJson"
+      parameters:
+        - name: "graph"
+          in: "path"
+          required: false
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/CorpusLangTextViewModel"
+  /{graph}/corpus/text/{id}:
+    get:
+      summary: "GET {graph}/corpus/text/{id}"
+      operationId: "textJson"
+      parameters:
+        - name: "graph"
+          in: "path"
+          required: false
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int32"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/CorpusTextViewModel"
+    post:
+      summary: "POST {graph}/corpus/text/{id}"
+      operationId: "editText"
+      parameters:
+        - name: "graph"
+          in: "path"
+          required: false
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int32"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CorpusTextParams"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+  /{graph}/corpus/text/{id}/accept:
+    post:
+      summary: "POST {graph}/corpus/text/{id}/accept"
+      operationId: "acceptAlternative"
+      parameters:
+        - name: "graph"
+          in: "path"
+          required: false
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int32"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AcceptAlternativeParameters"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+  /{graph}/corpus/text/{id}/alternatives/{index}:
+    get:
+      summary: "GET {graph}/corpus/text/{id}/alternatives/{index}"
+      operationId: "requestAlternatives"
+      parameters:
+        - name: "graph"
+          in: "path"
+          required: false
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int32"
+        - name: "index"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int32"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/AlternativeViewModel"
+  /{graph}/corpus/text/{id}/associate:
+    post:
+      summary: "POST {graph}/corpus/text/{id}/associate"
+      operationId: "associateWord"
+      parameters:
+        - name: "graph"
+          in: "path"
+          required: false
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int32"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AssociateWordParameters"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+  /{graph}/corpus/text/{id}/lockAssociations:
+    post:
+      summary: "POST {graph}/corpus/text/{id}/lockAssociations"
+      operationId: "lockWordAssociations"
+      parameters:
+        - name: "graph"
+          in: "path"
+          required: false
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int32"
+      responses:
+        "200":
+          description: "OK"
+  /{graph}/corpus/{lang}:
+    get:
+      summary: "GET {graph}/corpus/{lang}"
+      operationId: "langIndexJson"
+      parameters:
+        - name: "graph"
+          in: "path"
+          required: false
+        - name: "lang"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/CorpusLangViewModel"
+  /{graph}/corpus/{lang}/new:
+    post:
+      summary: "POST {graph}/corpus/{lang}/new"
+      operationId: "newText"
+      parameters:
+        - name: "graph"
+          in: "path"
+          required: false
+        - name: "lang"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CorpusTextParams"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/CorpusTextViewModel"
+  /{graph}/word/{id}/delete:
+    post:
+      summary: "POST {graph}/word/{id}/delete"
+      operationId: "deleteWord"
+      parameters:
+        - name: "graph"
+          in: "path"
+          required: false
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int32"
+      responses:
+        "200":
+          description: "OK"
+  /{graph}/word/{id}/derive:
+    post:
+      summary: "POST {graph}/word/{id}/derive"
+      operationId: "derive"
+      parameters:
+        - name: "graph"
+          in: "path"
+          required: false
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int32"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DeriveThroughSequenceParams"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/WordViewModel"
+  /{graph}/word/{id}/lookup:
+    post:
+      summary: "POST {graph}/word/{id}/lookup"
+      operationId: "lookup"
+      parameters:
+        - name: "graph"
+          in: "path"
+          required: false
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int32"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LookupParameters"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/LookupResultViewModel"
+  /{graph}/word/{id}/paradigm:
+    post:
+      summary: "POST {graph}/word/{id}/paradigm"
+      operationId: "updateParadigm"
+      parameters:
+        - name: "graph"
+          in: "path"
+          required: false
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int32"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateParadigmParameters"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+  /{graph}/word/{id}/paradigms:
+    get:
+      summary: "GET {graph}/word/{id}/paradigms"
+      operationId: "wordParadigms"
+      parameters:
+        - name: "graph"
+          in: "path"
+          required: false
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int32"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/WordParadigmListModel"
+  /{graph}/word/{id}/parse:
+    post:
+      summary: "POST {graph}/word/{id}/parse"
+      operationId: "suggestParseCandidates"
+      parameters:
+        - name: "graph"
+          in: "path"
+          required: false
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int32"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ParseCandidatesViewModel"
+  /{graph}/word/{id}/suggestCompound:
+    post:
+      summary: "POST {graph}/word/{id}/suggestCompound"
+      operationId: "suggestCompound"
+      parameters:
+        - name: "graph"
+          in: "path"
+          required: false
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int32"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SuggestCompoundParameters"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/SuggestCompoundViewModel"
+  /{graph}/word/{id}/update:
+    post:
+      summary: "POST {graph}/word/{id}/update"
+      operationId: "updateWord"
+      parameters:
+        - name: "graph"
+          in: "path"
+          required: false
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int32"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AddWordParameters"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/WordViewModel"
+  /{graph}/word/{lang}:
+    post:
+      summary: "POST {graph}/word/{lang}"
+      operationId: "addWord"
+      parameters:
+        - name: "graph"
+          in: "path"
+          required: false
+        - name: "lang"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AddWordParameters"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/WordViewModel"
+  /{graph}/word/{lang}/{text}:
+    get:
+      summary: "GET {graph}/word/{lang}/{text}"
+      operationId: "wordJson"
+      parameters:
+        - name: "graph"
+          in: "path"
+          required: false
+        - name: "lang"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+        - name: "text"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/WordViewModel"
+  /{graph}/word/{lang}/{text}/{id}:
+    get:
+      summary: "GET {graph}/word/{lang}/{text}/{id}"
+      operationId: "singleWordJson"
+      parameters:
+        - name: "graph"
+          in: "path"
+          required: false
+        - name: "lang"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+        - name: "text"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int32"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/WordViewModel"
+  /{graph}/wordSequence:
+    post:
+      summary: "POST {graph}/wordSequence"
+      operationId: "addWordSequence"
+      parameters:
+        - name: "graph"
+          in: "path"
+          required: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/WordSequenceParams"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/WordSequenceResults"
+  /graphs:
+    get:
+      summary: "GET graphs"
+      operationId: "list"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/GraphViewModel"
+  /{graph}/translation:
+    post:
+      summary: "POST {graph}/translation"
+      operationId: "addTranslation"
+      parameters:
+        - name: "graph"
+          in: "path"
+          required: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TranslationParams"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/TranslationViewModel"
+  /{graph}/translations/{id}:
+    post:
+      summary: "POST {graph}/translations/{id}"
+      operationId: "editTranslation"
+      parameters:
+        - name: "graph"
+          in: "path"
+          required: false
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int32"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TranslationParams"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/TranslationViewModel"
+  /{graph}/compound/:
+    post:
+      summary: "POST {graph}/compound/"
+      operationId: "createCompound"
+      parameters:
+        - name: "graph"
+          in: "path"
+          required: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CompoundParams"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+  /{graph}/compound/{id}:
+    post:
+      summary: "POST {graph}/compound/{id}"
+      operationId: "editCompound"
+      parameters:
+        - name: "graph"
+          in: "path"
+          required: false
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int32"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CompoundParams"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+  /{graph}/compound/{id}/add:
+    post:
+      summary: "POST {graph}/compound/{id}/add"
+      operationId: "addToCompound"
+      parameters:
+        - name: "graph"
+          in: "path"
+          required: false
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int32"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateCompoundParams"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+  /{graph}/compound/{id}/delete:
+    post:
+      summary: "POST {graph}/compound/{id}/delete"
+      operationId: "deleteCompound"
+      parameters:
+        - name: "graph"
+          in: "path"
+          required: false
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int32"
+      responses:
+        "200":
+          description: "OK"
+  /{graph}/publication/{id}:
+    get:
+      summary: "GET {graph}/publication/{id}"
+      operationId: "publication"
+      parameters:
+        - name: "graph"
+          in: "path"
+          required: false
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int32"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/PublicationViewModel"
+    post:
+      summary: "POST {graph}/publication/{id}"
+      operationId: "updatePublication"
+      parameters:
+        - name: "graph"
+          in: "path"
+          required: false
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int32"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AddPublicationParameters"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/PublicationViewModel"
+  /{graph}/publications:
+    get:
+      summary: "GET {graph}/publications"
+      operationId: "publications"
+      parameters:
+        - name: "graph"
+          in: "path"
+          required: false
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/PublicationViewModel"
+    post:
+      summary: "POST {graph}/publications"
+      operationId: "addPublication"
+      parameters:
+        - name: "graph"
+          in: "path"
+          required: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AddPublicationParameters"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/PublicationViewModel"
+  /{graph}/phoneme/{id}:
+    get:
+      summary: "GET {graph}/phoneme/{id}"
+      operationId: "phoneme"
+      parameters:
+        - name: "graph"
+          in: "path"
+          required: false
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int32"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/PhonemeViewModel"
+    post:
+      summary: "POST {graph}/phoneme/{id}"
+      operationId: "updatePhoneme"
+      parameters:
+        - name: "graph"
+          in: "path"
+          required: false
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int32"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdatePhonemeParameters"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+  /{graph}/phoneme/{id}/delete:
+    post:
+      summary: "POST {graph}/phoneme/{id}/delete"
+      operationId: "deletePhoneme"
+      parameters:
+        - name: "graph"
+          in: "path"
+          required: false
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int32"
+      responses:
+        "200":
+          description: "OK"
+  /{graph}/phonemes:
+    get:
+      summary: "GET {graph}/phonemes"
+      operationId: "phonemes"
+      parameters:
+        - name: "graph"
+          in: "path"
+          required: false
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/PhonemeViewModel"
+  /{graph}/phonemes/{lang}:
+    post:
+      summary: "POST {graph}/phonemes/{lang}"
+      operationId: "addPhoneme"
+      parameters:
+        - name: "graph"
+          in: "path"
+          required: false
+        - name: "lang"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdatePhonemeParameters"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/PhonemeViewModel"
+components:
+  schemas:
+    InputAssistGraphemeViewModel:
+      type: "object"
+      properties:
+        text:
+          type: "string"
+        languages:
+          type: "array"
+          items:
+            type: "string"
+      required:
+        - "text"
+        - "languages"
+    InputAssistViewModel:
+      type: "object"
+      properties:
+        graphemes:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/InputAssistGraphemeViewModel"
+      required:
+        - "graphemes"
+    WordCategoryValueViewModel:
+      type: "object"
+      properties:
+        name:
+          type: "string"
+        abbreviation:
+          type: "string"
+      required:
+        - "name"
+        - "abbreviation"
+    WordCategoryViewModel:
+      type: "object"
+      properties:
+        name:
+          type: "string"
+        pos:
+          type: "array"
+          items:
+            type: "string"
+        values:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/WordCategoryValueViewModel"
+      required:
+        - "name"
+        - "pos"
+        - "values"
+    LanguageShortViewModel:
+      type: "object"
+      properties:
+        name:
+          type: "string"
+        shortName:
+          type: "string"
+        pos:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/WordCategoryValueViewModel"
+        wordClasses:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/WordCategoryViewModel"
+        dictionaries:
+          type: "array"
+          items:
+            type: "string"
+      required:
+        - "name"
+        - "shortName"
+        - "pos"
+        - "wordClasses"
+        - "dictionaries"
+    SourceRefViewModel:
+      type: "object"
+      properties:
+        pubId:
+          type: "integer"
+          format: "int32"
+        pubRefId:
+          type: "string"
+        refText:
+          type: "string"
+      required:
+        - "refText"
+    PhonemeRuleViewModel:
+      type: "object"
+      properties:
+        id:
+          type: "integer"
+          format: "int32"
+        name:
+          type: "string"
+        summary:
+          type: "string"
+      required:
+        - "id"
+        - "name"
+        - "summary"
+    PhonemeRuleGroupViewModel:
+      type: "object"
+      properties:
+        title:
+          type: "string"
+        rules:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/PhonemeRuleViewModel"
+      required:
+        - "title"
+        - "rules"
+    PhonemeViewModel:
+      type: "object"
+      properties:
+        id:
+          type: "integer"
+          format: "int32"
+        languageShortName:
+          type: "string"
+        languageFullName:
+          type: "string"
+        graphemes:
+          type: "array"
+          items:
+            type: "string"
+        sound:
+          type: "string"
+        classes:
+          type: "string"
+        implicitClasses:
+          type: "string"
+        historical:
+          type: "boolean"
+        source:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/SourceRefViewModel"
+        sourceEditableText:
+          type: "string"
+        notes:
+          type: "string"
+        relatedRules:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/PhonemeRuleGroupViewModel"
+      required:
+        - "id"
+        - "languageShortName"
+        - "languageFullName"
+        - "graphemes"
+        - "sound"
+        - "classes"
+        - "implicitClasses"
+        - "historical"
+        - "source"
+        - "sourceEditableText"
+        - "relatedRules"
+    PhonemeTableCellViewModel:
+      type: "object"
+      properties:
+        phonemes:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/PhonemeViewModel"
+      required:
+        - "phonemes"
+    PhonemeTableRowViewModel:
+      type: "object"
+      properties:
+        title:
+          type: "string"
+        cells:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/PhonemeTableCellViewModel"
+      required:
+        - "title"
+        - "cells"
+    PhonemeTableViewModel:
+      type: "object"
+      properties:
+        title:
+          type: "string"
+        columnTitles:
+          type: "array"
+          items:
+            type: "string"
+        rows:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/PhonemeTableRowViewModel"
+      required:
+        - "title"
+        - "columnTitles"
+        - "rows"
+    RuleRefViewModel:
+      type: "object"
+      properties:
+        id:
+          type: "integer"
+          format: "int32"
+        name:
+          type: "string"
+      required:
+        - "id"
+        - "name"
+    LanguageViewModel:
+      type: "object"
+      properties:
+        name:
+          type: "string"
+        shortName:
+          type: "string"
+        reconstructed:
+          type: "boolean"
+        diphthongs:
+          type: "array"
+          items:
+            type: "string"
+        phonemes:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/PhonemeTableViewModel"
+        stressRuleId:
+          type: "integer"
+          format: "int32"
+        stressRuleName:
+          type: "string"
+        phonotacticsRuleId:
+          type: "integer"
+          format: "int32"
+        phonotacticsRuleName:
+          type: "string"
+        pronunciationRuleId:
+          type: "integer"
+          format: "int32"
+        pronunciationRuleName:
+          type: "string"
+        orthographyRule:
+          $ref: "#/components/schemas/RuleRefViewModel"
+        syllableStructures:
+          type: "array"
+          items:
+            type: "string"
+        pos:
+          type: "string"
+        grammaticalCategories:
+          type: "string"
+        wordClasses:
+          type: "string"
+        dictionarySettings:
+          type: "string"
+      required:
+        - "name"
+        - "shortName"
+        - "reconstructed"
+        - "diphthongs"
+        - "phonemes"
+        - "syllableStructures"
+        - "pos"
+        - "grammaticalCategories"
+        - "wordClasses"
+    UpdateLanguageParameters:
+      type: "object"
+      properties:
+        name:
+          type: "string"
+        shortName:
+          type: "string"
+        reconstructed:
+          type: "boolean"
+        phonemes:
+          type: "string"
+        diphthongs:
+          type: "string"
+        stressRuleName:
+          type: "string"
+        phonotacticsRuleName:
+          type: "string"
+        pronunciationRuleName:
+          type: "string"
+        orthographyRuleName:
+          type: "string"
+        syllableStructures:
+          type: "string"
+        pos:
+          type: "string"
+        grammaticalCategories:
+          type: "string"
+        wordClasses:
+          type: "string"
+        dictionarySettings:
+          type: "string"
+    CopyPhonemesParams:
+      type: "object"
+      properties:
+        fromLang:
+          type: "string"
+      required:
+        - "fromLang"
+    GenerateParadigmParameters:
+      type: "object"
+      properties:
+        name:
+          type: "string"
+        lang:
+          type: "string"
+        pos:
+          type: "string"
+        addedCategories:
+          type: "string"
+        prefix:
+          type: "string"
+        rows:
+          type: "string"
+        columns:
+          type: "string"
+      required:
+        - "name"
+        - "lang"
+        - "pos"
+        - "addedCategories"
+        - "prefix"
+        - "rows"
+        - "columns"
+    ParadigmCellViewModel:
+      type: "object"
+      properties:
+        alternativeRuleNames:
+          type: "array"
+          items:
+            type: "string"
+        alternativeRuleSummaries:
+          type: "array"
+          items:
+            type: "string"
+        alternativeRuleIds:
+          type: "array"
+          items:
+            type: "integer"
+            format: "int32"
+      required:
+        - "alternativeRuleNames"
+        - "alternativeRuleSummaries"
+        - "alternativeRuleIds"
+    ParadigmColumnViewModel:
+      type: "object"
+      properties:
+        title:
+          type: "string"
+        cells:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/ParadigmCellViewModel"
+      required:
+        - "title"
+        - "cells"
+    ParadigmViewModel:
+      type: "object"
+      properties:
+        id:
+          type: "integer"
+          format: "int32"
+        name:
+          type: "string"
+        language:
+          type: "string"
+        languageFullName:
+          type: "string"
+        pos:
+          type: "array"
+          items:
+            type: "string"
+        rowTitles:
+          type: "array"
+          items:
+            type: "string"
+        columns:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/ParadigmColumnViewModel"
+        editableText:
+          type: "string"
+        preRule:
+          $ref: "#/components/schemas/RuleRefViewModel"
+        postRule:
+          $ref: "#/components/schemas/RuleRefViewModel"
+      required:
+        - "id"
+        - "name"
+        - "language"
+        - "languageFullName"
+        - "pos"
+        - "rowTitles"
+        - "columns"
+        - "editableText"
+    UpdateParadigmParameters:
+      type: "object"
+      properties:
+        items:
+          type: "array"
+          items:
+            type: "array"
+      required:
+        - "items"
+    UpdateRuleParameters:
+      type: "object"
+      properties:
+        name:
+          type: "string"
+        fromLang:
+          type: "string"
+        toLang:
+          type: "string"
+        text:
+          type: "string"
+        addedCategories:
+          type: "string"
+        replacedCategories:
+          type: "string"
+        fromPOS:
+          type: "string"
+        toPOS:
+          type: "string"
+        source:
+          type: "string"
+        notes:
+          type: "string"
+      required:
+        - "name"
+        - "fromLang"
+        - "toLang"
+        - "text"
+    RichTextFragment:
+      type: "object"
+      properties:
+        text:
+          type: "string"
+        tooltip:
+          type: "string"
+        emph:
+          type: "boolean"
+        linkType:
+          type: "string"
+        linkId:
+          type: "integer"
+          format: "int32"
+        linkLanguage:
+          type: "string"
+        linkData:
+          type: "string"
+      required:
+        - "text"
+        - "emph"
+    RichText:
+      type: "object"
+      properties:
+        fragments:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/RichTextFragment"
+      required:
+        - "fragments"
+    WordRefViewModel:
+      type: "object"
+      properties:
+        id:
+          type: "integer"
+          format: "int32"
+        text:
+          type: "string"
+        language:
+          type: "string"
+        displayLanguage:
+          type: "string"
+        gloss:
+          type: "string"
+        homonym:
+          type: "boolean"
+        reconstructed:
+          type: "boolean"
+      required:
+        - "id"
+        - "text"
+        - "language"
+        - "displayLanguage"
+        - "homonym"
+        - "reconstructed"
+    RuleLinkViewModel:
+      type: "object"
+      properties:
+        toRuleId:
+          type: "integer"
+          format: "int32"
+        toRuleName:
+          type: "string"
+        linkType:
+          type: "string"
+        source:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/SourceRefViewModel"
+        notes:
+          type: "string"
+      required:
+        - "toRuleId"
+        - "toRuleName"
+        - "linkType"
+        - "source"
+    RuleExampleViewModel:
+      type: "object"
+      properties:
+        fromWord:
+          $ref: "#/components/schemas/WordRefViewModel"
+        toWord:
+          $ref: "#/components/schemas/WordRefViewModel"
+        expectedWord:
+          type: "string"
+        allRules:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/RuleLinkViewModel"
+        ruleResults:
+          type: "array"
+          items:
+            type: "string"
+      required:
+        - "fromWord"
+        - "toWord"
+        - "allRules"
+        - "ruleResults"
+    RuleBranchViewModel:
+      type: "object"
+      properties:
+        conditions:
+          $ref: "#/components/schemas/RichText"
+        instructions:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/RichText"
+        comment:
+          type: "string"
+        examples:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/RuleExampleViewModel"
+      required:
+        - "conditions"
+        - "instructions"
+        - "examples"
+    RuleWordLinkViewModel:
+      type: "object"
+      properties:
+        toWord:
+          $ref: "#/components/schemas/WordRefViewModel"
+        linkType:
+          type: "string"
+        source:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/SourceRefViewModel"
+        notes:
+          type: "string"
+      required:
+        - "toWord"
+        - "linkType"
+        - "source"
+    ParadigmRefViewModel:
+      type: "object"
+      properties:
+        id:
+          type: "integer"
+          format: "int32"
+        name:
+          type: "string"
+        refType:
+          type: "string"
+      required:
+        - "id"
+        - "name"
+        - "refType"
+    RuleViewModel:
+      type: "object"
+      properties:
+        id:
+          type: "integer"
+          format: "int32"
+        name:
+          type: "string"
+        fromLang:
+          type: "string"
+        toLang:
+          type: "string"
+        fromLangFullName:
+          type: "string"
+        toLangFullName:
+          type: "string"
+        summaryText:
+          type: "string"
+        editableText:
+          type: "string"
+        addedCategories:
+          type: "string"
+        replacedCategories:
+          type: "string"
+        addedCategoryDisplayNames:
+          type: "string"
+        fromPOS:
+          type: "array"
+          items:
+            type: "string"
+        toPOS:
+          type: "string"
+        source:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/SourceRefViewModel"
+        sourceEditableText:
+          type: "string"
+        notes:
+          type: "string"
+        paradigmId:
+          type: "integer"
+          format: "int32"
+        paradigmName:
+          type: "string"
+        paradigmPreRule:
+          $ref: "#/components/schemas/RuleRefViewModel"
+        paradigmPostRule:
+          $ref: "#/components/schemas/RuleRefViewModel"
+        phonemic:
+          type: "boolean"
+        preInstructions:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/RichText"
+        branches:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/RuleBranchViewModel"
+        postInstructions:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/RichText"
+        links:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/RuleLinkViewModel"
+        references:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/RuleRefViewModel"
+        linkedWords:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/RuleWordLinkViewModel"
+        orphanExamples:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/RuleExampleViewModel"
+        referencingParadigms:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/ParadigmRefViewModel"
+      required:
+        - "id"
+        - "name"
+        - "fromLang"
+        - "toLang"
+        - "fromLangFullName"
+        - "toLangFullName"
+        - "summaryText"
+        - "editableText"
+        - "fromPOS"
+        - "source"
+        - "sourceEditableText"
+        - "phonemic"
+        - "preInstructions"
+        - "branches"
+        - "postInstructions"
+        - "links"
+        - "references"
+        - "linkedWords"
+        - "orphanExamples"
+        - "referencingParadigms"
+    UpdateSequenceParams:
+      type: "object"
+      properties:
+        name:
+          type: "string"
+        fromLang:
+          type: "string"
+        toLang:
+          type: "string"
+        ruleNames:
+          type: "string"
+      required:
+        - "name"
+        - "fromLang"
+        - "toLang"
+        - "ruleNames"
+    RuleSequenceViewModel:
+      type: "object"
+      properties:
+        name:
+          type: "string"
+        id:
+          type: "integer"
+          format: "int32"
+      required:
+        - "name"
+        - "id"
+    ApplySequenceParams:
+      type: "object"
+      properties:
+        linkFromId:
+          type: "integer"
+          format: "int32"
+        linkToId:
+          type: "integer"
+          format: "int32"
+      required:
+        - "linkFromId"
+        - "linkToId"
+    LinkWordViewModel:
+      type: "object"
+      properties:
+        word:
+          $ref: "#/components/schemas/WordRefViewModel"
+        ruleIds:
+          type: "array"
+          items:
+            type: "integer"
+            format: "int32"
+        ruleNames:
+          type: "array"
+          items:
+            type: "string"
+        ruleResults:
+          type: "array"
+          items:
+            type: "string"
+        source:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/SourceRefViewModel"
+        sourceEditableText:
+          type: "string"
+        notes:
+          type: "string"
+        suggestedSequences:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/RuleSequenceViewModel"
+      required:
+        - "word"
+        - "ruleIds"
+        - "ruleNames"
+        - "ruleResults"
+        - "source"
+        - "sourceEditableText"
+        - "suggestedSequences"
+    RulePreviewParams:
+      type: "object"
+      properties:
+        newText:
+          type: "string"
+      required:
+        - "newText"
+    RulePreviewResultViewModel:
+      type: "object"
+      properties:
+        word:
+          $ref: "#/components/schemas/WordRefViewModel"
+        oldForm:
+          type: "string"
+        newForm:
+          type: "string"
+      required:
+        - "word"
+        - "oldForm"
+        - "newForm"
+    RulePreviewResultListViewModel:
+      type: "object"
+      properties:
+        results:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/RulePreviewResultViewModel"
+      required:
+        - "results"
+    RuleTraceParams:
+      type: "object"
+      properties:
+        word:
+          type: "string"
+        reverse:
+          type: "boolean"
+      required:
+        - "word"
+        - "reverse"
+    RuleTraceResult:
+      type: "object"
+      properties:
+        trace:
+          type: "string"
+        result:
+          type: "string"
+      required:
+        - "trace"
+        - "result"
+    RuleShortViewModel:
+      type: "object"
+      properties:
+        id:
+          type: "integer"
+          format: "int32"
+        name:
+          type: "string"
+        toLang:
+          type: "string"
+        summaryText:
+          type: "string"
+        optional:
+          type: "boolean"
+      required:
+        - "id"
+        - "name"
+        - "toLang"
+        - "summaryText"
+        - "optional"
+    RuleGroupViewModel:
+      type: "object"
+      properties:
+        groupName:
+          type: "string"
+        rules:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/RuleShortViewModel"
+        sequenceId:
+          type: "integer"
+          format: "int32"
+        sequenceName:
+          type: "string"
+        sequenceFromLang:
+          type: "string"
+        sequenceToLang:
+          type: "string"
+        paradigmId:
+          type: "integer"
+          format: "int32"
+      required:
+        - "groupName"
+        - "rules"
+    RuleListViewModel:
+      type: "object"
+      properties:
+        toLangFullName:
+          type: "string"
+        ruleGroups:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/RuleGroupViewModel"
+      required:
+        - "toLangFullName"
+        - "ruleGroups"
+    CorpusLangTextViewModel:
+      type: "object"
+      properties:
+        id:
+          type: "integer"
+          format: "int32"
+        title:
+          type: "string"
+      required:
+        - "id"
+        - "title"
+    CorpusWordCandidateViewModel:
+      type: "object"
+      properties:
+        id:
+          type: "integer"
+          format: "int32"
+        gloss:
+          type: "string"
+      required:
+        - "id"
+    CorpusWordViewModel:
+      type: "object"
+      properties:
+        index:
+          type: "integer"
+          format: "int32"
+        text:
+          type: "string"
+        normalizedText:
+          type: "string"
+        gloss:
+          type: "string"
+        contextGloss:
+          type: "string"
+        wordId:
+          type: "integer"
+          format: "int32"
+        wordText:
+          type: "string"
+        wordCandidates:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/CorpusWordCandidateViewModel"
+        stressIndex:
+          type: "integer"
+          format: "int32"
+        stressLength:
+          type: "integer"
+          format: "int32"
+        homonym:
+          type: "boolean"
+      required:
+        - "index"
+        - "text"
+        - "normalizedText"
+        - "gloss"
+        - "homonym"
+    CorpusLineViewModel:
+      type: "object"
+      properties:
+        words:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/CorpusWordViewModel"
+      required:
+        - "words"
+    TranslationViewModel:
+      type: "object"
+      properties:
+        id:
+          type: "integer"
+          format: "int32"
+        text:
+          type: "string"
+        source:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/SourceRefViewModel"
+        sourceEditableText:
+          type: "string"
+      required:
+        - "id"
+        - "text"
+        - "source"
+        - "sourceEditableText"
+    CorpusTextViewModel:
+      type: "object"
+      properties:
+        id:
+          type: "integer"
+          format: "int32"
+        title:
+          type: "string"
+        language:
+          type: "string"
+        languageFullName:
+          type: "string"
+        text:
+          type: "string"
+        lines:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/CorpusLineViewModel"
+        source:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/SourceRefViewModel"
+        sourceEditableText:
+          type: "string"
+        notes:
+          type: "string"
+        translations:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/TranslationViewModel"
+      required:
+        - "id"
+        - "title"
+        - "language"
+        - "languageFullName"
+        - "text"
+        - "lines"
+        - "source"
+        - "sourceEditableText"
+        - "translations"
+    CorpusTextParams:
+      type: "object"
+      properties:
+        title:
+          type: "string"
+        text:
+          type: "string"
+        source:
+          type: "string"
+        notes:
+          type: "string"
+      required:
+        - "title"
+        - "text"
+        - "source"
+        - "notes"
+    AcceptAlternativeParameters:
+      type: "object"
+      properties:
+        index:
+          type: "integer"
+          format: "int32"
+        wordId:
+          type: "integer"
+          format: "int32"
+        ruleId:
+          type: "integer"
+          format: "int32"
+      required:
+        - "index"
+        - "wordId"
+        - "ruleId"
+    AlternativeViewModel:
+      type: "object"
+      properties:
+        gloss:
+          type: "string"
+        wordId:
+          type: "integer"
+          format: "int32"
+        ruleId:
+          type: "integer"
+          format: "int32"
+      required:
+        - "gloss"
+        - "wordId"
+        - "ruleId"
+    AssociateWordParameters:
+      type: "object"
+      properties:
+        index:
+          type: "integer"
+          format: "int32"
+        wordId:
+          type: "integer"
+          format: "int32"
+        contextGloss:
+          type: "string"
+      required:
+        - "index"
+        - "wordId"
+    SourceRef:
+      type: "object"
+      properties:
+        pubId:
+          type: "integer"
+          format: "int32"
+        refText:
+          type: "string"
+      required:
+        - "refText"
+    Phoneme:
+      type: "object"
+      properties:
+        graphemes:
+          type: "array"
+          items:
+            type: "string"
+        sound:
+          type: "string"
+        classes:
+          type: "array"
+          items:
+            type: "string"
+        historical:
+          type: "boolean"
+        id:
+          type: "integer"
+          format: "int32"
+        source:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/SourceRef"
+        notes:
+          type: "string"
+      required:
+        - "graphemes"
+        - "classes"
+        - "historical"
+        - "id"
+        - "source"
+    RuleRef:
+      type: "object"
+      properties: { }
+    WordCategoryValue:
+      type: "object"
+      properties:
+        name:
+          type: "string"
+        abbreviation:
+          type: "string"
+      required:
+        - "name"
+        - "abbreviation"
+    WordCategory:
+      type: "object"
+      properties:
+        name:
+          type: "string"
+        pos:
+          type: "array"
+          items:
+            type: "string"
+        values:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/WordCategoryValue"
+      required:
+        - "name"
+        - "pos"
+        - "values"
+    PhonemeLookup:
+      type: "object"
+      properties: { }
+    Language:
+      type: "object"
+      properties:
+        name:
+          type: "string"
+        shortName:
+          type: "string"
+        reconstructed:
+          type: "boolean"
+        phonemes:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/Phoneme"
+        diphthongs:
+          type: "array"
+          items:
+            type: "string"
+        syllableStructures:
+          type: "array"
+          items:
+            type: "string"
+        stressRule:
+          $ref: "#/components/schemas/RuleRef"
+        phonotacticsRule:
+          $ref: "#/components/schemas/RuleRef"
+        pronunciationRule:
+          $ref: "#/components/schemas/RuleRef"
+        orthographyRule:
+          $ref: "#/components/schemas/RuleRef"
+        pos:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/WordCategoryValue"
+        grammaticalCategories:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/WordCategory"
+        wordClasses:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/WordCategory"
+        orthoPhonemeLookup:
+          $ref: "#/components/schemas/PhonemeLookup"
+        phonoPhonemeLookup:
+          $ref: "#/components/schemas/PhonemeLookup"
+        dictionarySettings:
+          type: "string"
+      required:
+        - "name"
+        - "shortName"
+        - "reconstructed"
+        - "diphthongs"
+        - "syllableStructures"
+    CorpusLangViewModel:
+      type: "object"
+      properties:
+        language:
+          $ref: "#/components/schemas/Language"
+        corpusTexts:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/CorpusLangTextViewModel"
+      required:
+        - "language"
+        - "corpusTexts"
+    DeriveThroughSequenceParams:
+      type: "object"
+      properties:
+        sequenceId:
+          type: "integer"
+          format: "int32"
+      required:
+        - "sequenceId"
+    AttestationViewModel:
+      type: "object"
+      properties:
+        textId:
+          type: "integer"
+          format: "int32"
+        textTitle:
+          type: "string"
+        word:
+          type: "string"
+      required:
+        - "textId"
+        - "textTitle"
+    LinkTypeViewModel:
+      type: "object"
+      properties:
+        typeId:
+          type: "string"
+        type:
+          type: "string"
+        words:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/LinkWordViewModel"
+      required:
+        - "typeId"
+        - "type"
+        - "words"
+    CompoundComponentsViewModel:
+      type: "object"
+      properties:
+        compoundId:
+          type: "integer"
+          format: "int32"
+        components:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/WordRefViewModel"
+        headIndex:
+          type: "integer"
+          format: "int32"
+        derivation:
+          type: "boolean"
+        source:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/SourceRefViewModel"
+        sourceEditableText:
+          type: "string"
+        notes:
+          type: "string"
+      required:
+        - "compoundId"
+        - "components"
+        - "derivation"
+        - "source"
+        - "sourceEditableText"
+    LinkedRuleViewModel:
+      type: "object"
+      properties:
+        ruleId:
+          type: "integer"
+          format: "int32"
+        ruleName:
+          type: "string"
+        linkType:
+          type: "string"
+        source:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/SourceRefViewModel"
+        notes:
+          type: "string"
+      required:
+        - "ruleId"
+        - "ruleName"
+        - "linkType"
+        - "source"
+    WordViewModel:
+      type: "object"
+      properties:
+        id:
+          type: "integer"
+          format: "int32"
+        language:
+          type: "string"
+        languageFullName:
+          type: "string"
+        languageReconstructed:
+          type: "boolean"
+        text:
+          type: "string"
+        textWithExplicitStress:
+          type: "string"
+        gloss:
+          type: "string"
+        glossComputed:
+          type: "boolean"
+        fullGloss:
+          type: "string"
+        pos:
+          type: "string"
+        classes:
+          type: "array"
+          items:
+            type: "string"
+        reconstructed:
+          type: "boolean"
+        source:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/SourceRefViewModel"
+        sourceEditableText:
+          type: "string"
+        notes:
+          type: "string"
+        attestations:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/AttestationViewModel"
+        linksFrom:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/LinkTypeViewModel"
+        linksTo:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/LinkTypeViewModel"
+        compounds:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/WordRefViewModel"
+        derivationalCompounds:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/WordRefViewModel"
+        components:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/CompoundComponentsViewModel"
+        linkedRules:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/LinkedRuleViewModel"
+        stressIndex:
+          type: "integer"
+          format: "int32"
+        stressLength:
+          type: "integer"
+          format: "int32"
+        compound:
+          type: "boolean"
+        hasParadigms:
+          type: "boolean"
+        suggestedDeriveSequences:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/RuleSequenceViewModel"
+      required:
+        - "id"
+        - "language"
+        - "languageFullName"
+        - "languageReconstructed"
+        - "text"
+        - "textWithExplicitStress"
+        - "gloss"
+        - "glossComputed"
+        - "classes"
+        - "reconstructed"
+        - "source"
+        - "sourceEditableText"
+        - "attestations"
+        - "linksFrom"
+        - "linksTo"
+        - "compounds"
+        - "derivationalCompounds"
+        - "components"
+        - "linkedRules"
+        - "compound"
+        - "hasParadigms"
+        - "suggestedDeriveSequences"
+    LookupParameters:
+      type: "object"
+      properties:
+        dictionaryId:
+          type: "string"
+        disambiguation:
+          type: "string"
+      required:
+        - "dictionaryId"
+    LookupVariantViewModel:
+      type: "object"
+      properties:
+        text:
+          type: "string"
+        disambiguation:
+          type: "string"
+      required:
+        - "text"
+    LookupResultViewModel:
+      type: "object"
+      properties:
+        status:
+          type: "string"
+        variants:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/LookupVariantViewModel"
+      required:
+        - "variants"
+    WordParadigmModel:
+      type: "object"
+      properties:
+        name:
+          type: "string"
+        rowTitles:
+          type: "array"
+          items:
+            type: "string"
+        columnTitles:
+          type: "array"
+          items:
+            type: "string"
+        cells:
+          type: "array"
+          items:
+            type: "array"
+      required:
+        - "name"
+        - "rowTitles"
+        - "columnTitles"
+        - "cells"
+    WordParadigmListModel:
+      type: "object"
+      properties:
+        word:
+          type: "string"
+        wordId:
+          type: "integer"
+          format: "int32"
+        language:
+          type: "string"
+        languageFullName:
+          type: "string"
+        paradigms:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/WordParadigmModel"
+      required:
+        - "word"
+        - "wordId"
+        - "language"
+        - "languageFullName"
+        - "paradigms"
+    ParseCandidateViewModel:
+      type: "object"
+      properties:
+        text:
+          type: "string"
+        categories:
+          type: "string"
+        ruleNames:
+          type: "array"
+          items:
+            type: "string"
+        pos:
+          type: "string"
+        wordId:
+          type: "integer"
+          format: "int32"
+      required:
+        - "text"
+        - "categories"
+        - "ruleNames"
+    ParseCandidatesViewModel:
+      type: "object"
+      properties:
+        parseCandidates:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/ParseCandidateViewModel"
+      required:
+        - "parseCandidates"
+    SuggestCompoundParameters:
+      type: "object"
+      properties:
+        compoundId:
+          type: "integer"
+          format: "int32"
+    SuggestCompoundViewModel:
+      type: "object"
+      properties:
+        suggestions:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/WordRefViewModel"
+      required:
+        - "suggestions"
+    AddWordParameters:
+      type: "object"
+      properties:
+        text:
+          type: "string"
+        gloss:
+          type: "string"
+        fullGloss:
+          type: "string"
+        pos:
+          type: "string"
+        classes:
+          type: "string"
+        reconstructed:
+          type: "boolean"
+        source:
+          type: "string"
+        notes:
+          type: "string"
+    WordSequenceParams:
+      type: "object"
+      properties:
+        sequence:
+          type: "string"
+        source:
+          type: "string"
+      required:
+        - "sequence"
+        - "source"
+    WordSequenceResults:
+      type: "object"
+      properties:
+        words:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/WordRefViewModel"
+        ruleIds:
+          type: "array"
+          items:
+            type: "integer"
+            format: "int32"
+      required:
+        - "words"
+        - "ruleIds"
+    GraphViewModel:
+      type: "object"
+      properties:
+        id:
+          type: "string"
+        name:
+          type: "string"
+      required:
+        - "id"
+        - "name"
+    TranslationParams:
+      type: "object"
+      properties:
+        corpusTextId:
+          type: "integer"
+          format: "int32"
+        text:
+          type: "string"
+        source:
+          type: "string"
+      required:
+        - "text"
+        - "source"
+    CompoundParams:
+      type: "object"
+      properties:
+        compoundId:
+          type: "integer"
+          format: "int32"
+        firstComponentId:
+          type: "integer"
+          format: "int32"
+        head:
+          type: "integer"
+          format: "int32"
+        source:
+          type: "string"
+        notes:
+          type: "string"
+      required:
+        - "compoundId"
+        - "firstComponentId"
+    UpdateCompoundParams:
+      type: "object"
+      properties:
+        componentId:
+          type: "integer"
+          format: "int32"
+        markHead:
+          type: "boolean"
+      required:
+        - "componentId"
+        - "markHead"
+    PublicationViewModel:
+      type: "object"
+      properties:
+        id:
+          type: "integer"
+          format: "int32"
+        name:
+          type: "string"
+        refId:
+          type: "string"
+      required:
+        - "id"
+        - "name"
+        - "refId"
+    AddPublicationParameters:
+      type: "object"
+      properties:
+        name:
+          type: "string"
+        refId:
+          type: "string"
+    UpdatePhonemeParameters:
+      type: "object"
+      properties:
+        graphemes:
+          type: "string"
+        sound:
+          type: "string"
+        classes:
+          type: "string"
+        historical:
+          type: "boolean"
+        source:
+          type: "string"
+        notes:
+          type: "string"
+      required:
+        - "graphemes"
+        - "sound"
+        - "classes"
+        - "historical"

@@ -1,4 +1,4 @@
-import {PublicationData} from "@/model";
+import {AddPublicationParameters} from "@/models";
 
 export function allowEdit() {
     return process.env.NEXT_PUBLIC_READONLY !== "true";
@@ -267,11 +267,11 @@ export function copyPhonemes(graph: string, toLang: string, fromLang: string) {
     return postToBackend(`${graph}/language/${toLang}/copyPhonemes`, {fromLang: fromLang})
 }
 
-export function addPublication(graph: string, data: PublicationData): Promise<Response> {
+export function addPublication(graph: string, data: AddPublicationParameters): Promise<Response> {
     return postToBackend(`${graph}/publications`, data)
 }
 
-export function updatePublication(graph: string, id: number, data: PublicationData): Promise<Response> {
+export function updatePublication(graph: string, id: number, data: AddPublicationParameters): Promise<Response> {
     return postToBackend(`${graph}/publication/${id}`, data)
 }
 

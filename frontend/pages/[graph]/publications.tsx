@@ -1,8 +1,8 @@
 import {allowEdit, fetchAllGraphs, fetchBackend} from "@/api";
 import Link from "next/link";
 import Breadcrumbs from "@/components/Breadcrumbs";
-import {PublicationData} from "@/model";
 import {useRouter} from "next/router";
+import {PublicationViewModel} from "@/models";
 
 export const getStaticPaths = fetchAllGraphs
 
@@ -11,7 +11,7 @@ export async function getStaticProps(context) {
 }
 
 export default function Publications(props) {
-    const publications = props.loaderData as PublicationData[];
+    const publications = props.loaderData as PublicationViewModel[];
     const router = useRouter()
     const graph = router.query.graph
 

@@ -1,5 +1,5 @@
 import {createContext} from "react";
-import {GraphViewModel, LanguageShortViewModel, RuleShortViewModel} from "@/model";
+import {GraphViewModel, LanguageShortViewModel, RuleShortViewModel} from "@/models";
 
 type InputAssistGraphemeType = {
     text: string;

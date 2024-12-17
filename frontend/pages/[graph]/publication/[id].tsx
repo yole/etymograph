@@ -4,7 +4,7 @@ import PublicationForm from "@/forms/PublicationForm";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import EtymographFormView, {View} from "@/components/EtymographFormView";
 import {GraphContext} from "@/components/Contexts";
-import { PublicationData } from "@/model";
+import {PublicationViewModel} from "@/models";
 
 export const config = {
     unstable_runtimeJS: true
@@ -19,7 +19,7 @@ export async function getStaticPaths() {
 }
 
 export default function Publication(props) {
-    const publication = props.loaderData as PublicationData;
+    const publication = props.loaderData as PublicationViewModel;
     const graph = useContext(GraphContext)
 
     return <>

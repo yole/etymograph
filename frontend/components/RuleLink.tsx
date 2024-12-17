@@ -1,7 +1,7 @@
 import Link from "next/link";
-import {RuleRefViewModel} from "@/model";
 import {useContext} from "react";
 import {GraphContext} from "@/components/Contexts";
+import {RuleRefViewModel} from "@/models";
 
 export default function RuleLink(params: { rule: RuleRefViewModel }) {
     const graph = useContext(GraphContext)

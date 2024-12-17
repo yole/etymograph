@@ -1,5 +1,5 @@
 import Link from "next/link";
-import {RichTextFragmentModel, RichTextModel} from "@/model";
+import {RichTextFragment as RichTextFragmentModel, RichText as RichTextModel} from "@/models";
 import {useContext} from "react";
 import {GraphContext} from "@/components/Contexts";
 
