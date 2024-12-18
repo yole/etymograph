@@ -11,7 +11,7 @@ interface PublicationFormProps extends EtymographFormProps<AddPublicationParamet
 export default function PublicationForm(props: PublicationFormProps) {
     const graph = useContext(GraphContext);
 
-    return <EtymographForm<AddPublicationParameters, PublicationViewModel>
+    return <EtymographForm
         create={(data) => addPublication(graph, data)}
         update={(data) => updatePublication(graph, props.updateId, data)}
         {...props}

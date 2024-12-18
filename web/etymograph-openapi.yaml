@@ -784,7 +784,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/UpdateParadigmParameters"
+              $ref: "#/components/schemas/UpdateWordParadigmParameters"
         required: true
       responses:
         "200":
@@ -1891,12 +1891,20 @@ components:
     UpdateParadigmParameters:
       type: "object"
       properties:
-        items:
-          type: "array"
-          items:
-            type: "array"
+        name:
+          type: "string"
+        pos:
+          type: "string"
+        text:
+          type: "string"
+        preRuleName:
+          type: "string"
+        postRuleName:
+          type: "string"
       required:
-        - "items"
+        - "name"
+        - "pos"
+        - "text"
     UpdateRuleParameters:
       type: "object"
       properties:
@@ -2198,12 +2206,14 @@ components:
       properties:
         name:
           type: "string"
-        id:
-          type: "integer"
-          format: "int32"
+        fromLang:
+          type: "string"
+        toLang:
+          type: "string"
       required:
         - "name"
-        - "id"
+        - "fromLang"
+        - "toLang"
     ApplySequenceParams:
       type: "object"
       properties:
@@ -2216,6 +2226,17 @@ components:
       required:
         - "linkFromId"
         - "linkToId"
+    WordRuleSequenceViewModel:
+      type: "object"
+      properties:
+        name:
+          type: "string"
+        id:
+          type: "integer"
+          format: "int32"
+      required:
+        - "name"
+        - "id"
     LinkWordViewModel:
       type: "object"
       properties:
@@ -2245,7 +2266,7 @@ components:
         suggestedSequences:
           type: "array"
           items:
-            $ref: "#/components/schemas/RuleSequenceViewModel"
+            $ref: "#/components/schemas/WordRuleSequenceViewModel"
       required:
         - "word"
         - "ruleIds"
@@ -2849,7 +2870,7 @@ components:
         suggestedDeriveSequences:
           type: "array"
           items:
-            $ref: "#/components/schemas/RuleSequenceViewModel"
+            $ref: "#/components/schemas/WordRuleSequenceViewModel"
       required:
         - "id"
         - "language"
@@ -2902,6 +2923,15 @@ components:
             $ref: "#/components/schemas/LookupVariantViewModel"
       required:
         - "variants"
+    UpdateWordParadigmParameters:
+      type: "object"
+      properties:
+        items:
+          type: "array"
+          items:
+            type: "array"
+      required:
+        - "items"
     WordParadigmModel:
       type: "object"
       properties:

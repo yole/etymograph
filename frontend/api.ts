@@ -3,7 +3,13 @@ import {
     CorpusTextParams,
     LookupParameters,
     LookupResultViewModel,
-    SuggestCompoundViewModel
+    RuleSequenceViewModel,
+    RuleTraceResult,
+    SuggestCompoundViewModel,
+    UpdateLanguageParameters,
+    UpdateParadigmParameters, UpdatePhonemeParameters,
+    UpdateRuleParameters,
+    UpdateSequenceParams
 } from "@/models";
 
 export function allowEdit() {
@@ -159,27 +165,27 @@ export function deleteWord(graph: string, id: number) {
     return postToBackend(`${graph}/word/${id}/delete`, {})
 }
 
-export function addWordSequence(graph, text, source) {
+export function addWordSequence(graph: string, text: string, source: string) {
     return postToBackend(`${graph}/wordSequence`, {sequence: text, source})
 }
 
-export function addRule(graph, data) {
+export function addRule(graph: string, data: UpdateRuleParameters) {
     return postToBackend(`${graph}/rule`, data)
 }
 
-export function updateRule(graph, id, data) {
+export function updateRule(graph: string, id: number, data: UpdateRuleParameters) {
     return postToBackend(`${graph}/rule/${id}`, data)
 }
 
-export function deleteRule(graph, id) {
+export function deleteRule(graph: string, id: number) {
     return postToBackend(`${graph}/rule/${id}/delete`, {})
 }
 
-export function addRuleSequence(graph, data) {
+export function addRuleSequence(graph: string, data: UpdateSequenceParams) {
     return postToBackend(`${graph}/rule/sequence`, data)
 }
 
-export function updateRuleSequence(graph, id, data) {
+export function updateRuleSequence(graph: string, id: number, data: UpdateSequenceParams): Promise<Response> {
     return postToBackend(`${graph}/rule/sequence/${id}`, data)
 }
 
@@ -190,11 +196,11 @@ export function applyRuleSequence(graph: string, seqId: number, fromWordId: numb
     })
 }
 
-export function traceRule(graph, ruleId, word, reverse) {
-    return postToBackend(`${graph}/rule/${ruleId}/trace`, {word, reverse})
+export function traceRule(graph: string, ruleId: number, word: string, reverse: boolean): Promise<TypedResponse<RuleTraceResult>> {
+    return postToBackendTyped(`${graph}/rule/${ruleId}/trace`, {word, reverse})
 }
 
-export function previewRuleChanges(graph, ruleId, newText) {
+export function previewRuleChanges(graph: string, ruleId: number, newText: string) {
     return postToBackend(`${graph}/rule/${ruleId}/preview`, {newText})
 }
 
@@ -210,7 +216,7 @@ export function updateCorpusText(graph: string, id: number, data: CorpusTextPara
     return postToBackend(`${graph}/corpus/text/${id}`, data)
 }
 
-export function addTranslation(graph, corpusTextId, data) {
+export function addTranslation(graph: string, corpusTextId, data) {
     return postToBackend(`${graph}/translation`, {corpusTextId: corpusTextId, ...data})
 }
 
@@ -218,7 +224,7 @@ export function editTranslation(graph: string, id: number, data: any) {
     return postToBackend(`${graph}/translations/${id}`, data)
 }
 
-export function associateWord(graph, corpusTextId, wordId, index, contextGloss) {
+export function associateWord(graph: string, corpusTextId: number, wordId: number, index: number, contextGloss?: string) {
     return postToBackend(`${graph}/corpus/text/${corpusTextId}/associate`, {wordId, index, contextGloss})
 }
 
@@ -226,7 +232,7 @@ export function lockWordAssociations(graph: string, corpusTextId: number) {
     return postToBackend(`${graph}/corpus/text/${corpusTextId}/lockAssociations`, {})
 }
 
-export function acceptAlternative(graph, corpusTextId, index, wordId, ruleId) {
+export function acceptAlternative(graph: string, corpusTextId: number, index: number, wordId: number, ruleId: number) {
     return postToBackend(`${graph}/corpus/text/${corpusTextId}/accept`, {wordId: wordId, ruleId: ruleId, index: index})
 }
 
@@ -234,7 +240,7 @@ export function addLink(graph: string, fromEntity: number, toEntity: number, lin
     return postToBackend(`${graph}/link`, {fromEntity, toEntity, linkType, ruleNames, source, notes})
 }
 
-export function addRuleLink(graph, fromEntity, toRuleName, linkType, source, notes) {
+export function addRuleLink(graph: string, fromEntity: number, toRuleName: string, linkType: string, source?: string, notes?: string) {
     return postToBackend(`${graph}/link/rule`,
         {fromEntity, toRuleName, linkType, source, notes}
     )
@@ -244,11 +250,11 @@ export function deleteLink(graph: string, fromEntity: number, toEntity: number, 
     return postToBackend(`${graph}/link/delete`, {fromEntity: fromEntity, toEntity: toEntity, linkType: linkType})
 }
 
-export function updateLink(graph, fromWord, toWord, linkType, ruleNames, source, notes) {
+export function updateLink(graph: string, fromWord: number, toWord: number, linkType: string, ruleNames: string, source, notes) {
     return postToBackend(`${graph}/link/update`, {fromEntity: fromWord, toEntity: toWord, linkType: linkType, ruleNames: ruleNames, source: source, notes: notes})
 }
 
-export function createCompound(graph, compoundWord, firstComponentWord, source: string = null, notes: string = null) {
+export function createCompound(graph: string, compoundWord: number, firstComponentWord: number, source: string = null, notes: string = null) {
     return postToBackend(`${graph}/compound`, {compoundId: compoundWord, firstComponentId: firstComponentWord, source, notes})
 }
 
@@ -256,7 +262,7 @@ export function addToCompound(graph: string, compoundId: number, componentWord: 
     return postToBackend(`${graph}/compound/${compoundId}/add`,{componentId: componentWord, markHead})
 }
 
-export function updateCompound(graph, compoundId, source, notes, head) {
+export function updateCompound(graph: string, compoundId: number, source?: string, notes?: string, head?: boolean) {
     return postToBackend(`${graph}/compound/${compoundId}`, {source, notes, head})
 }
 
@@ -264,39 +270,39 @@ export function deleteCompound(graph: string, compoundId: number) {
     return postToBackend(`${graph}/compound/${compoundId}/delete`, {})
 }
 
-export function addParadigm(graph, language, data) {
+export function addParadigm(graph: string, language: string, data: UpdateParadigmParameters) {
     return postToBackend(`${graph}/paradigms/${language}`, data)
 }
 
-export function updateParadigm(graph, id, data) {
+export function updateParadigm(graph: string, id: number, data: UpdateParadigmParameters) {
     return postToBackend(`${graph}/paradigm/${id}`, data)
 }
 
-export function deleteParadigm(graph, id) {
+export function deleteParadigm(graph: string, id: UpdateParadigmParameters) {
     return postToBackend(`${graph}/paradigm/${id}/delete`, {})
 }
 
-export function updateWordParadigm(graph, id, paradigm) {
+export function updateWordParadigm(graph: string, id: number, paradigm: any) {
     return postToBackend(`${graph}/word/${id}/paradigm`, {items: [...paradigm]})
 }
 
-export function generateParadigm(graph, lang, data) {
+export function generateParadigm(graph: string, lang: string, data) {
     return postToBackend(`${graph}/paradigm/generate`, {lang: lang, ...data})
 }
 
-export function addLanguage(graph: string, name, shortName, reconstructed) {
+export function addLanguage(graph: string, name: string, shortName: string, reconstructed: boolean) {
     return postToBackend(`${graph}/languages`, {name: name, shortName: shortName, reconstructed: reconstructed})
 }
 
-export function updateLanguage(graph: string, lang: string, data) {
+export function updateLanguage(graph: string, lang: string, data: UpdateLanguageParameters) {
     return postToBackend(`${graph}/language/${lang}`, data)
 }
 
-export function addPhoneme(graph: string, lang: string, data) {
+export function addPhoneme(graph: string, lang: string, data: UpdatePhonemeParameters) {
     return postToBackend(`${graph}/phonemes/${lang}`, data)
 }
 
-export function updatePhoneme(graph: string, id: number, data) {
+export function updatePhoneme(graph: string, id: number, data: UpdatePhonemeParameters) {
     return postToBackend(`${graph}/phoneme/${id}`, data)
 }
 

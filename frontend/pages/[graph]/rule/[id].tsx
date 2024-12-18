@@ -21,6 +21,7 @@ import FormRow from "@/components/FormRow";
 import {GraphContext} from "@/components/Contexts";
 import WordGloss from "@/components/WordGloss";
 import RuleLink from "@/components/RuleLink";
+import {RuleExampleViewModel, RuleViewModel} from "@/models";
 
 export const config = {
     unstable_runtimeJS: true
@@ -34,11 +35,11 @@ export async function getStaticPaths() {
     return fetchPathsForAllGraphs("rules", (r) => ({id: r.id.toString()}))
 }
 
-function ExampleList(params) {
+function ExampleList(params: {rule: RuleViewModel, examples: RuleExampleViewModel[]}) {
+    const {rule, examples} = params
     const graph = useContext(GraphContext)
-    const rule = params.rule
-    const haveSteps = params.examples.some(ex => ex.allRules.length > 1)
-    const haveExpected = params.examples.some(ex => ex.expectedWord !== null && ex.expectedWord !== ex.fromWord)
+    const haveSteps = examples.some(ex => ex.allRules.length > 1)
+    const haveExpected = examples.some(ex => ex.expectedWord !== null && ex.expectedWord !== ex.fromWord.text)
     return <table className="tableWithBorders">
         <thead>
         <tr>
@@ -78,7 +79,7 @@ function ExampleList(params) {
                 </>}
             </td>}
             {haveExpected && <td>
-                {ex.expectedWord !== null && ex.expectedWord !== ex.fromWord && ex.expectedWord}
+                {ex.expectedWord !== null && ex.expectedWord !== ex.fromWord.text && ex.expectedWord}
             </td>}
         </tr>)}
         </tbody>
@@ -86,7 +87,7 @@ function ExampleList(params) {
 }
 
 export default function Rule(params) {
-    const rule = params.loaderData
+    const rule = params.loaderData as RuleViewModel
     const [editMode, setEditMode] = useState(false)
     const [linkMode, setLinkMode] = useState(false)
     const [errorText, setErrorText] = useState("")
@@ -118,7 +119,7 @@ export default function Rule(params) {
         }
     }
 
-    async function deleteLinkClicked(entityId, linkType) {
+    async function deleteLinkClicked(entityId: number, linkType: string) {
         if (window.confirm("Delete this link?")) {
             const r = await deleteLink(graph, entityId, rule.id, linkType)
             if (r.status === 200) {
@@ -153,14 +154,14 @@ export default function Rule(params) {
 
     async function runTrace() {
         const r = await traceRule(graph, rule.id, traceWord, traceReverse)
-        if (r.status === 200) {
-            const jr = await r.json()
+        if (r.ok()) {
+            const jr = await r.result()
             setErrorText(null)
             setTraceResult(jr.trace)
         }
         else {
-            const jr = await r.json()
-            setErrorText(jr.message)
+            const jr = await r.error()
+            setErrorText(jr)
         }
     }
 
@@ -226,7 +227,6 @@ export default function Rule(params) {
                 text: rule.editableText
             }}
             submitted={submitted}
-            globalState={params.globalState}
             cancelled={() => setEditMode(false)}
         />}
 

@@ -17,6 +17,6 @@ export default function RuleEditor(params) {
     return <>
         <Breadcrumbs langId={lang} langName={langData.name} title="New Rule"/>
         <RuleForm redirectOnCreate={(r) => `/${router.query.graph}/rule/${r.id}`}
-                  defaultValues={{fromLang: lang, toLang: lang}}/>
+                  defaultValues={{name: '', text: '', fromLang: lang, toLang: lang}}/>
     </>
 }

@@ -1,11 +1,16 @@
 import {addPhoneme, updatePhoneme} from "@/api";
-import EtymographForm from "@/components/EtymographForm";
+import EtymographForm, {EtymographFormProps} from "@/components/EtymographForm";
 import FormRow from "@/components/FormRow";
 import FormCheckbox from "@/components/FormCheckbox";
 import {useContext} from "react";
 import {GraphContext} from "@/components/Contexts";
+import {PhonemeViewModel, UpdatePhonemeParameters} from "@/models";
 
-export default function PhonemeForm(props) {
+interface PhonemeFormProps extends EtymographFormProps<UpdatePhonemeParameters, PhonemeViewModel> {
+    language?: string
+}
+
+export default function PhonemeForm(props: PhonemeFormProps) {
     const graph = useContext(GraphContext)
 
     return <EtymographForm

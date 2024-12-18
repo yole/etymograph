@@ -12,7 +12,7 @@ interface CorpusTextFormProps extends EtymographFormProps<CorpusTextParams, Corp
 
 export default function CorpusTextForm(props: CorpusTextFormProps) {
     const graph = useContext(GraphContext)
-    return <EtymographForm<CorpusTextParams, CorpusTextViewModel>
+    return <EtymographForm
         create={(data) => addCorpusText(graph, props.lang, data)}
         update={(data) => updateCorpusText(graph, props.updateId, data)}
         {...props}

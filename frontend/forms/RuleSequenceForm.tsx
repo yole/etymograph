@@ -1,12 +1,16 @@
 import {addRuleSequence, updateRuleSequence} from "@/api";
-import EtymographForm from "@/components/EtymographForm";
+import EtymographForm, {EtymographFormProps} from "@/components/EtymographForm";
 import FormRow from "@/components/FormRow";
 import FormTextArea from "@/components/FormTextArea";
 import {useContext} from "react";
 import {GraphContext} from "@/components/Contexts";
 import LanguageSelect from "@/components/LanguageSelect";
+import {RuleSequenceViewModel, UpdateSequenceParams} from "@/models";
 
-export default function RuleSequenceForm(props) {
+interface RuleSequenceFormProps extends EtymographFormProps<UpdateSequenceParams, RuleSequenceViewModel> {
+}
+
+export default function RuleSequenceForm(props: RuleSequenceFormProps) {
     const graph = useContext(GraphContext)
     return <EtymographForm
         create={(data) => addRuleSequence(graph, data)}

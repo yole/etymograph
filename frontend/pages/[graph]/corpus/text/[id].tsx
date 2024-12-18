@@ -1,7 +1,7 @@
 import {useState} from "react";
 import WordForm, {WordFormData} from "@/forms/WordForm";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEdit, faCheck } from '@fortawesome/free-solid-svg-icons'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {faEdit, faCheck} from '@fortawesome/free-solid-svg-icons'
 import WordWithStress from "@/components/WordWithStress";
 import {
     fetchBackend,
@@ -18,7 +18,7 @@ import CorpusTextForm from "@/forms/CorpusTextForm";
 import TranslationForm from "@/forms/TranslationForm";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import WordGloss from "@/components/WordGloss";
-import {CorpusTextViewModel, WordViewModel} from "@/models";
+import {CorpusTextViewModel, CorpusWordCandidateViewModel, CorpusWordViewModel, WordViewModel} from "@/models";
 
 export const config = {
     unstable_runtimeJS: true
@@ -32,7 +32,13 @@ export async function getStaticPaths() {
     return fetchPathsForAllGraphs("corpus", (corpusText => ({id: corpusText.id.toString()})))
 }
 
-export function CorpusTextWordLink(params) {
+interface CorpusTextWordLinkProps {
+    word: CorpusWordViewModel
+    corpusText: CorpusTextViewModel
+    showWordForm: (text: string, index: number) => void
+}
+
+export function CorpusTextWordLink(params: CorpusTextWordLinkProps) {
     const w = params.word
     const corpusText = params.corpusText
     const showWordForm = params.showWordForm
@@ -42,10 +48,10 @@ export function CorpusTextWordLink(params) {
     if (w.wordCandidates && w.wordCandidates.length > 1) {
         return <span onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
             {w.text}
-            {hovered && allowEdit() && <span className="iconWithMargin"><FontAwesomeIcon icon={faEdit} onClick={() => showWordForm(w.normalizedText, w.index)}/></span>}
+            {hovered && allowEdit() && <span className="iconWithMargin"><FontAwesomeIcon icon={faEdit}
+                                                                                         onClick={() => showWordForm(w.normalizedText, w.index)}/></span>}
         </span>
-    }
-    else if (w.wordText || w.gloss) {
+    } else if (w.wordText || w.gloss) {
         let linkText = (w.wordText ?? w.normalizedText).toLowerCase()
         if (w.wordId !== null && w.homonym) {
             linkText += `/${w.wordId}`
@@ -54,19 +60,25 @@ export function CorpusTextWordLink(params) {
             <Link href={`/${router.query.graph}/word/${corpusText.language}/${linkText}`}>
                 <WordWithStress text={w.text} stressIndex={w.stressIndex} stressLength={w.stressLength}/>
             </Link>
-            {hovered && allowEdit() && <span className="iconWithMargin"><FontAwesomeIcon icon={faEdit} onClick={() => showWordForm(w.normalizedText, w.index)}/></span>}
+            {hovered && allowEdit() && <span className="iconWithMargin"><FontAwesomeIcon icon={faEdit}
+                                                                                         onClick={() => showWordForm(w.normalizedText, w.index)}/></span>}
         </span>
-    }
-    else {
+    } else {
         return <span className="undefWord" onClick={() => {
             if (allowEdit()) showWordForm(w.normalizedText, w.index)
         }}>{w.text}</span>
     }
 }
 
-function CorpusTextGlossChoice(params) {
+interface CorpusTextGlossChoiceProps {
+    corpusText: CorpusTextViewModel,
+    word: CorpusWordViewModel,
+    candidate?: CorpusWordCandidateViewModel
+}
+
+function CorpusTextGlossChoice(params: CorpusTextGlossChoiceProps) {
     const router = useRouter()
-    const graph = router.query.graph
+    const graph = router.query.graph as string
     const lang = params.corpusText.language
     const c = params.candidate
     const [hovered, setHovered] = useState(false)
@@ -78,7 +90,8 @@ function CorpusTextGlossChoice(params) {
 
     return <span onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
         <Link href={`/${graph}/word/${lang}/${params.word.text.toLowerCase()}/${c.id}`}>{c.gloss}</Link>
-        {hovered && allowEdit() && <span className="iconWithMargin"><FontAwesomeIcon icon={faCheck} onClick={() => acceptGloss()}/></span>}
+        {hovered && allowEdit() &&
+            <span className="iconWithMargin"><FontAwesomeIcon icon={faCheck} onClick={() => acceptGloss()}/></span>}
     </span>
 }
 
@@ -102,12 +115,11 @@ export default function CorpusText(params) {
 
     function wordSubmitted(word: WordViewModel, baseWord: WordViewModel, data: WordFormData) {
         setWordFormVisible(false)
-        associateWord(graph, router.query.id, word.id, wordIndex, data.contextGloss).then(() => {
+        associateWord(graph, Number.parseInt(router.query.id as string), word.id, wordIndex, data.contextGloss).then(() => {
             const targetWord = baseWord !== undefined ? baseWord : word
             if (targetWord.gloss === "" || targetWord.gloss === null) {
                 router.push(`/${graph}/word/${targetWord.language}/${targetWord.text}`)
-            }
-            else {
+            } else {
                 router.replace(router.asPath)
             }
         })
@@ -130,8 +142,7 @@ export default function CorpusText(params) {
     function toggleTranslationForm(id?: number) {
         if (showTranslationForm && editTranslationId === id) {
             setShowTranslationForm(false)
-        }
-        else {
+        } else {
             setShowTranslationForm(true)
             setEditTranslationId(id)
         }
@@ -156,7 +167,8 @@ export default function CorpusText(params) {
         {!editMode && <>
             {corpusText.lines.map(l => (
                 <div key={l.words[0].index}>
-                    <table><tbody>
+                    <table>
+                        <tbody>
                         <tr>
                             {l.words.map(w => <td key={w.index}>
                                 <CorpusTextWordLink word={w} corpusText={corpusText} showWordForm={showWordForm}/>
@@ -175,7 +187,8 @@ export default function CorpusText(params) {
                         <tr>
                             {l.words.map(w => <td key={w.index} className="contextGloss">{w.contextGloss}</td>)}
                         </tr>
-                    </tbody></table>
+                        </tbody>
+                    </table>
                     {wordIndex >= l.words[0].index && wordIndex <= l.words[l.words.length - 1].index && wordFormVisible &&
                         <>
                             <div>{alternatives.map(alt => <>
@@ -236,8 +249,11 @@ export default function CorpusText(params) {
             </>)}
         </>}
         {allowEdit() && <p>
-            {!editMode && <><button onClick={() => setEditMode(true)}>Edit</button>{' '}</>}
-            <button onClick={() => toggleTranslationForm(undefined)}>Add translation</button>{' '}
+            {!editMode && <>
+                <button onClick={() => setEditMode(true)}>Edit</button>
+                {' '}</>}
+            <button onClick={() => toggleTranslationForm(undefined)}>Add translation</button>
+            {' '}
             <button onClick={() => lockAssociationsClicked()}>Lock associations</button>
         </p>}
         {errorText !== "" && <div className="errorText">{errorText}</div>}

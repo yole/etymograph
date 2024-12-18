@@ -60,7 +60,7 @@ class WordControllerTest {
         val wordParadigms = wordController.wordParadigms(graph, elen.id)
         assertEquals(1, wordParadigms.paradigms.size)
 
-        wordController.updateParadigm(graph, elen.id, WordController.UpdateParadigmParameters(arrayOf(arrayOf(accRule.id, "elena"))))
+        wordController.updateParadigm(graph, elen.id, WordController.UpdateWordParadigmParameters(arrayOf(arrayOf(accRule.id, "elena"))))
         val elena = fixture.graph.wordsByText(fixture.q, "elena").single()
         assertEquals("star.ACC", elena.getOrComputeGloss(fixture.graph))
     }
@@ -75,7 +75,7 @@ class WordControllerTest {
         val wordParadigms = wordController.wordParadigms(graph, elen.id)
         assertEquals(1, wordParadigms.paradigms.size)
 
-        wordController.updateParadigm(graph, elen.id, WordController.UpdateParadigmParameters(arrayOf(arrayOf(accRule.id, "elenna"))))
+        wordController.updateParadigm(graph, elen.id, WordController.UpdateWordParadigmParameters(arrayOf(arrayOf(accRule.id, "elenna"))))
         assertEquals(elena, fixture.graph.wordsByText(fixture.q, "elenna").single())
     }
 

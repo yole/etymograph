@@ -1,4 +1,4 @@
-import EtymographForm from "@/components/EtymographForm";
+import EtymographForm, {EtymographFormProps} from "@/components/EtymographForm";
 import FormRow from "@/components/FormRow";
 import FormTextArea from "@/components/FormTextArea";
 import {addParadigm, updateParadigm} from "@/api";
@@ -6,8 +6,13 @@ import {useContext} from "react";
 import {GraphContext} from "@/components/Contexts";
 import PosSelect from "@/components/PosSelect";
 import RuleListSelect from "@/components/RuleListSelect";
+import {ParadigmViewModel, UpdateParadigmParameters} from "@/models";
 
-export default function ParadigmForm(props) {
+interface ParadigmFormProps extends EtymographFormProps<UpdateParadigmParameters, ParadigmViewModel> {
+    lang: string
+}
+
+export default function ParadigmForm(props: ParadigmFormProps) {
     const graph = useContext(GraphContext)
     return <EtymographForm
         create={(data) => addParadigm(graph, props.lang, data)}

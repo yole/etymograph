@@ -8,7 +8,7 @@ import EtymographFormView from "@/components/EtymographFormView";
 import EtymographForm from "@/components/EtymographForm";
 import FormRow from "@/components/FormRow";
 import PosSelect from "@/components/PosSelect";
-import {GenerateParadigmParameters, ParadigmViewModel} from "@/models";
+import {GenerateParadigmParameters, ParadigmViewModel, RuleListViewModel, RuleSequenceViewModel} from "@/models";
 
 // noinspection JSUnusedGlobalSymbols
 export const config = {
@@ -22,13 +22,13 @@ export async function getStaticProps(context) {
 export const getStaticPaths = fetchAllLanguagePaths
 
 export default function RuleList(params) {
-    const ruleList = params.loaderData
+    const ruleList = params.loaderData as RuleListViewModel
     const router = useRouter()
-    const graph = router.query.graph
+    const graph = router.query.graph as string
     const lang = router.query.lang as string
     const [sequenceEditId, setSequenceEditId] = useState(null)
 
-    function sequenceSubmitted(data) {
+    function sequenceSubmitted(data: RuleSequenceViewModel) {
         setSequenceEditId(null)
         router.push(`/${graph}/rules/${data.toLang}`)
     }

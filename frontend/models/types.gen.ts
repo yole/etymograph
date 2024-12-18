@@ -239,7 +239,7 @@ export type LinkWordViewModel = {
     source: Array<SourceRefViewModel>;
     sourceEditableText: string;
     notes?: string;
-    suggestedSequences: Array<RuleSequenceViewModel>;
+    suggestedSequences: Array<WordRuleSequenceViewModel>;
 };
 
 export type LookupParameters = {
@@ -445,7 +445,8 @@ export type RuleRefViewModel = {
 
 export type RuleSequenceViewModel = {
     name: string;
-    id: number;
+    fromLang: string;
+    toLang: string;
 };
 
 export type RuleShortViewModel = {
@@ -560,7 +561,11 @@ export type UpdateLanguageParameters = {
 };
 
 export type UpdateParadigmParameters = {
-    items: Array<(unknown[])>;
+    name: string;
+    pos: string;
+    text: string;
+    preRuleName?: string;
+    postRuleName?: string;
 };
 
 export type UpdatePhonemeParameters = {
@@ -590,6 +595,10 @@ export type UpdateSequenceParams = {
     fromLang: string;
     toLang: string;
     ruleNames: string;
+};
+
+export type UpdateWordParadigmParameters = {
+    items: Array<(unknown[])>;
 };
 
 export type WordCategory = {
@@ -639,6 +648,11 @@ export type WordRefViewModel = {
     reconstructed: boolean;
 };
 
+export type WordRuleSequenceViewModel = {
+    name: string;
+    id: number;
+};
+
 export type WordSequenceParams = {
     sequence: string;
     source: string;
@@ -676,5 +690,5 @@ export type WordViewModel = {
     stressLength?: number;
     compound: boolean;
     hasParadigms: boolean;
-    suggestedDeriveSequences: Array<RuleSequenceViewModel>;
+    suggestedDeriveSequences: Array<WordRuleSequenceViewModel>;
 };

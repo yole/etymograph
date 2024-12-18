@@ -1,14 +1,19 @@
 import {useContext, useState} from "react";
 import {addRule, previewRuleChanges, updateRule} from "@/api";
-import EtymographForm from "@/components/EtymographForm";
+import EtymographForm, {EtymographFormProps} from "@/components/EtymographForm";
 import FormRow from "@/components/FormRow";
 import FormTextArea from "@/components/FormTextArea";
 import LanguageSelect from "@/components/LanguageSelect";
 import {GraphContext} from "@/components/Contexts";
 import PosSelect from "@/components/PosSelect";
 import WordLink from "@/components/WordLink";
+import {RuleViewModel, UpdateRuleParameters} from "@/models";
 
-export default function RuleForm(props) {
+interface RuleFormProps extends EtymographFormProps<UpdateRuleParameters, RuleViewModel> {
+    initialType?: string
+}
+
+export default function RuleForm(props: RuleFormProps) {
     const [ruleType, setRuleType] = useState(props.initialType !== undefined ? props.initialType : "phono")
     const [preview, setPreview] = useState([])
     const graph = useContext(GraphContext)

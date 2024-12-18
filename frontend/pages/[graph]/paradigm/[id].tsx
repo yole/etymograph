@@ -23,7 +23,7 @@ export default function Paradigm(params) {
     const [editMode, setEditMode] = useState(false)
 
     const router = useRouter()
-    const graph = router.query.graph
+    const graph = router.query.graph as string
 
     function paradigmSubmitted() {
         setEditMode(false)

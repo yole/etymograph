@@ -1,19 +1,24 @@
 import {addRuleLink} from "@/api";
-import EtymographForm from "@/components/EtymographForm";
+import EtymographForm, {EtymographFormProps} from "@/components/EtymographForm";
 import FormRow from "@/components/FormRow";
 import {useRouter} from "next/router";
 
-interface LinkRuleData {
-    linkRuleName: string;
-    source: string;
-    notes: string;
+interface RuleLinkFormProps extends EtymographFormProps<LinkRuleData>{
+    fromEntityId: number
 }
 
-export default function RuleLinkForm(props) {
+interface LinkRuleData {
+    linkRuleName: string
+    source: string
+    notes: string
+}
+
+export default function RuleLinkForm(props: RuleLinkFormProps) {
     const router = useRouter()
+    const graph = router.query.graph as string
 
     return <EtymographForm<LinkRuleData>
-        create={(data) => addRuleLink(router.query.graph, props.fromEntityId, data.linkRuleName, '~', data.source, data.notes)}
+        create={(data) => addRuleLink(graph, props.fromEntityId, data.linkRuleName, '~', data.source, data.notes)}
         {...props}
     >
         <table><tbody>

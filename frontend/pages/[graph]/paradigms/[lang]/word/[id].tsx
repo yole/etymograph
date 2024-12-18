@@ -5,6 +5,7 @@ import WordLink from "@/components/WordLink";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import {GraphContext} from "@/components/Contexts";
 import Link from "next/link";
+import {WordParadigmListModel, WordParadigmModel} from "@/models";
 
 export const config = {
     unstable_runtimeJS: true
@@ -54,7 +55,7 @@ function WordParadigm(params) {
     const router = useRouter()
 
     function saveParadigm() {
-        updateWordParadigm(router.query.graph, params.wordId, editedParadigm).then(r => {
+        updateWordParadigm(router.query.graph as string, params.wordId, editedParadigm).then(r => {
             setEditMode(false)
             router.replace(router.asPath)
         })
@@ -97,7 +98,7 @@ function WordParadigm(params) {
 }
 
 export default function WordParadigms(params) {
-    const paradigmList = params.loaderData
+    const paradigmList = params.loaderData as WordParadigmListModel
     const graph = useContext(GraphContext)
 
     return <>

@@ -37,7 +37,7 @@ fun Word.toRefViewModel(graph: GraphRepository) =
 
 @RestController
 class WordController(val dictionaryService: DictionaryService) {
-    data class RuleSequenceViewModel(
+    data class WordRuleSequenceViewModel(
         val name: String,
         val id: Int
     )
@@ -50,7 +50,7 @@ class WordController(val dictionaryService: DictionaryService) {
         val source: List<SourceRefViewModel>,
         val sourceEditableText: String,
         val notes: String?,
-        val suggestedSequences: List<RuleSequenceViewModel>
+        val suggestedSequences: List<WordRuleSequenceViewModel>
     )
 
     data class LinkTypeViewModel(val typeId: String, val type: String, val words: List<LinkWordViewModel>)
@@ -102,7 +102,7 @@ class WordController(val dictionaryService: DictionaryService) {
         val stressLength: Int?,
         val compound: Boolean,
         val hasParadigms: Boolean,
-        val suggestedDeriveSequences: List<RuleSequenceViewModel>
+        val suggestedDeriveSequences: List<WordRuleSequenceViewModel>
     )
 
     @GetMapping("/{graph}/word/{lang}/{text}")
@@ -214,7 +214,7 @@ class WordController(val dictionaryService: DictionaryService) {
             graph.isCompound(this),
             hasParadigms,
             graph.suggestDeriveRuleSequences(this).map {
-                RuleSequenceViewModel(it.name, it.id)
+                WordRuleSequenceViewModel(it.name, it.id)
             }
         )
     }
@@ -357,10 +357,10 @@ class WordController(val dictionaryService: DictionaryService) {
         return WordParadigmListModel(word.text, word.id, word.language.shortName, word.language.name, paradigmModels)
     }
 
-    data class UpdateParadigmParameters(var items: Array<Array<Any>> = emptyArray())
+    data class UpdateWordParadigmParameters(var items: Array<Array<Any>> = emptyArray())
 
     @PostMapping("/{graph}/word/{id}/paradigm", consumes = ["application/json"])
-    fun updateParadigm(repo: GraphRepository, @PathVariable id: Int, @RequestBody paradigm: UpdateParadigmParameters) {
+    fun updateParadigm(repo: GraphRepository, @PathVariable id: Int, @RequestBody paradigm: UpdateWordParadigmParameters) {
         val word = repo.resolveWord(id)
         val gloss = word.glossOrNP() ?: badRequest("Trying to update paradigm for unglossed word ${word.text}")
         val derivedWordLinks = repo.getLinksTo(word).filter { it.type == Link.Derived && it.fromEntity is Word }
@@ -546,12 +546,12 @@ fun buildIntermediateSteps(graph: GraphRepository, link: Link): List<RuleStepDat
     return result
 }
 
-fun suggestedSequences(graph: GraphRepository, link: Link): List<WordController.RuleSequenceViewModel> {
+fun suggestedSequences(graph: GraphRepository, link: Link): List<WordController.WordRuleSequenceViewModel> {
     if (link.type != Link.Origin || link.rules.isNotEmpty()) return emptyList()
     val word = link.fromEntity as Word
     val baseWord = link.toEntity as Word
     return graph.ruleSequencesForLanguage(word.language).filter { it.fromLanguage == baseWord.language }.map {
-        WordController.RuleSequenceViewModel(it.name, it.id)
+        WordController.WordRuleSequenceViewModel(it.name, it.id)
     }
 }
 
