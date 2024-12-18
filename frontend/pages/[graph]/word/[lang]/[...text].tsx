@@ -25,10 +25,9 @@ import {GlobalStateContext, GraphContext} from "@/components/Contexts";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import WordGloss, {WordFullGloss} from "@/components/WordGloss";
 import {
-    CompoundComponentsViewModel,
-    LookupResultViewModel,
+    CompoundComponentsViewModel, LinkTypeViewModel, LinkWordViewModel,
     LookupVariantViewModel,
-    ParseCandidateViewModel,
+    ParseCandidateViewModel, WordRefViewModel,
     WordViewModel
 } from "@/models";
 
@@ -60,7 +59,15 @@ export async function getStaticPaths() {
     return {paths, fallback: allowEdit()}
 }
 
-function WordLinkComponent(params) {
+interface WordLinkProps {
+    baseWord: WordViewModel
+    linkWord: LinkWordViewModel
+    linkType: LinkTypeViewModel
+    showType?: boolean
+    directionFrom: boolean
+}
+
+function WordLinkComponent(params: WordLinkProps) {
     const baseWord = params.baseWord
     const linkWord = params.linkWord
     const [editMode, setEditMode] = useState(false)
@@ -81,7 +88,7 @@ function WordLinkComponent(params) {
         }
     }
 
-    async function applySequenceClicked(seqId, fromWordId, toWordId) {
+    async function applySequenceClicked(seqId: number, fromWordId: number, toWordId: number) {
         const response = await applyRuleSequence(graph, seqId, fromWordId, toWordId)
         if (response.status === 200) {
             const r = await response.json()
@@ -151,10 +158,8 @@ function WordLinkComponent(params) {
     </div>
 }
 
-function CompoundRefComponent(params) {
-    const baseWord = params.baseWord
-    const linkWord = params.linkWord
-
+function CompoundRefComponent(params: {baseWord: WordViewModel, linkWord: WordRefViewModel}) {
+    const {baseWord, linkWord} = params
     return <WordLink word={linkWord} baseLanguage={baseWord.language} gloss={true}/>
 }
 
@@ -166,26 +171,26 @@ function CompoundListComponent(
 
     const [addToCompoundId, setAddToCompoundId] = useState(undefined)
     const [editCompound, setEditCompound] = useState(undefined)
-    const [compoundSuggestions, setCompoundSuggestions] = useState([])
+    const [compoundSuggestions, setCompoundSuggestions] = useState([] as WordRefViewModel[])
     const [errorText, setErrorText] = useState("")
 
     async function prepareAddToCompound(compoundId: number) {
         setAddToCompoundId(compoundId)
         const r = await suggestCompound(graph, word.id, compoundId)
-        if (r.status === 200) {
-            const jr = await r.json()
+        if (r.ok()) {
+            const jr = await r.result()
             setCompoundSuggestions(jr.suggestions)
         }
     }
 
-    async function acceptCompoundSuggestion(id) {
+    async function acceptCompoundSuggestion(id: number) {
         const compoundId = addToCompoundId
         setAddToCompoundId(undefined)
         callApiAndRefresh(() => addToCompound(graph, compoundId, id, true),
             router, setErrorText)
     }
 
-    function deleteCompoundClicked(compoundId) {
+    function deleteCompoundClicked(compoundId: number) {
         if (window.confirm("Delete this compound?")) {
             deleteCompound(graph, compoundId).then(() => router.replace(router.asPath))
         }
@@ -203,7 +208,7 @@ function CompoundListComponent(
             <div>
                 {m.components.map((mc, index) => <>
                     {index > 0 && " + "}
-                    <CompoundRefComponent key={mc.id} baseWord={word} linkWord={mc} router={router}/>
+                    <CompoundRefComponent key={mc.id} baseWord={word} linkWord={mc}/>
                     {index === m.headIndex && " (head)"}
                 </>)}
                 {m.notes && <> &ndash; {m.notes}</>}
@@ -243,17 +248,23 @@ function CompoundListComponent(
     </>
 }
 
-function WordLinkTypeComponent(params) {
-    return params.links.map(l => <>
+interface WordLinkTypeProps {
+    word: WordViewModel
+    links: LinkTypeViewModel[]
+    directionFrom: boolean
+}
+
+function WordLinkTypeComponent(params: WordLinkTypeProps) {
+    return <>{params.links.map(l => <>
         {l.words.length === 1 && params.directionFrom &&
-            <WordLinkComponent key={l.words[0].id} baseWord={params.word} linkWord={l.words[0]} linkType={l}
+            <WordLinkComponent key={l.words[0].word.id} baseWord={params.word} linkWord={l.words[0]} linkType={l}
                                directionFrom={params.directionFrom} showType={true}/>}
         {(l.words.length !== 1 || !params.directionFrom) && <div>
             <div>{l.type}</div>
-            {l.words.map(w => <WordLinkComponent key={w.id} baseWord={params.word} linkWord={w} linkType={l}
+            {l.words.map(w => <WordLinkComponent key={w.word.id} baseWord={params.word} linkWord={w} linkType={l}
                                                  directionFrom={params.directionFrom}/>)}
         </div>}
-    </>);
+    </>)}</>
 }
 
 function SingleWord({word}: { word: WordViewModel }) {
@@ -274,7 +285,7 @@ function SingleWord({word}: { word: WordViewModel }) {
     const [lookupErrorText, setLookupErrorText] = useState("")
     const [lookupVariants, setLookupVariants] = useState([] as LookupVariantViewModel[])
     const [parseCandidates, setParseCandidates] = useState([] as ParseCandidateViewModel[])
-    const [compoundSuggestions, setCompoundSuggestions] = useState([])
+    const [compoundSuggestions, setCompoundSuggestions] = useState([] as WordRefViewModel[])
     useEffect(() => { document.title = "Etymograph : " + (word === undefined ? "Unknown Word" : word.text) })
 
     function submitted() {
@@ -371,8 +382,8 @@ function SingleWord({word}: { word: WordViewModel }) {
         setShowCompoundComponent(newState)
         if (newState) {
             const r = await suggestCompound(graph, word.id)
-            if (r.status === 200) {
-                const jr = await r.json()
+            if (r.ok()) {
+                const jr = await r.result()
                 setCompoundSuggestions(jr.suggestions)
             }
         }
@@ -509,20 +520,20 @@ function SingleWord({word}: { word: WordViewModel }) {
             </p>
         }
 
-        <WordLinkTypeComponent graph={graph} word={word} links={word.linksFrom} directionFrom={true}/>
-        <WordLinkTypeComponent graph={graph} word={word} links={word.linksTo} directionFrom={false}/>
+        <WordLinkTypeComponent word={word} links={word.linksFrom} directionFrom={true}/>
+        <WordLinkTypeComponent word={word} links={word.linksTo} directionFrom={false}/>
 
         {word.compounds.length > 0 &&
             <>
                 <div>Component of compounds</div>
-                {word.compounds.map(m => <div><CompoundRefComponent graph={graph} key={m.id} baseWord={word} linkWord={m} router={router}/></div>)}
+                {word.compounds.map(m => <div><CompoundRefComponent key={m.id} baseWord={word} linkWord={m}/></div>)}
                 <p/>
             </>
         }
         {word.derivationalCompounds.length > 0 &&
             <>
                 <div>{word.pos === "PV" ? "Prefix/suffix in:" : "Words derived with prefix/suffix:"}</div>
-                {word.derivationalCompounds.map(m => <div><CompoundRefComponent graph={graph} key={m.id} baseWord={word} linkWord={m} router={router}/></div>)}
+                {word.derivationalCompounds.map(m => <div><CompoundRefComponent key={m.id} baseWord={word} linkWord={m}/></div>)}
                 <p/>
             </>
         }

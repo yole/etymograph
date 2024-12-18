@@ -1,4 +1,10 @@
-import {AddPublicationParameters, CorpusTextParams, LookupParameters, LookupResultViewModel} from "@/models";
+import {
+    AddPublicationParameters,
+    CorpusTextParams,
+    LookupParameters,
+    LookupResultViewModel,
+    SuggestCompoundViewModel
+} from "@/models";
 
 export function allowEdit() {
     return process.env.NEXT_PUBLIC_READONLY !== "true";
@@ -138,15 +144,15 @@ export function updateWord(graph: string, id: number, text, gloss, fullGloss, po
 }
 
 export function lookupWord(graph: string, id: number, data: LookupParameters): Promise<TypedResponse<LookupResultViewModel>> {
-    return postToBackendTyped<LookupResultViewModel>(`${graph}/word/${id}/lookup`, data)
+    return postToBackendTyped(`${graph}/word/${id}/lookup`, data)
 }
 
 export function suggestParseCandidates(graph: string, id: number) {
     return postToBackend(`${graph}/word/${id}/parse`, {})
 }
 
-export function suggestCompound(graph: string, id: number, compoundId?: number) {
-    return postToBackend(`${graph}/word/${id}/suggestCompound`, {compoundId})
+export function suggestCompound(graph: string, id: number, compoundId?: number): Promise<TypedResponse<SuggestCompoundViewModel>> {
+    return postToBackendTyped(`${graph}/word/${id}/suggestCompound`, {compoundId})
 }
 
 export function deleteWord(graph: string, id: number) {
@@ -177,7 +183,7 @@ export function updateRuleSequence(graph, id, data) {
     return postToBackend(`${graph}/rule/sequence/${id}`, data)
 }
 
-export function applyRuleSequence(graph, seqId, fromWordId, toWordId) {
+export function applyRuleSequence(graph: string, seqId: number, fromWordId: number, toWordId: number) {
     return postToBackend(`${graph}/rule/sequence/${seqId}/apply`, {
         linkFromId: fromWordId,
         linkToId: toWordId
@@ -246,7 +252,7 @@ export function createCompound(graph, compoundWord, firstComponentWord, source: 
     return postToBackend(`${graph}/compound`, {compoundId: compoundWord, firstComponentId: firstComponentWord, source, notes})
 }
 
-export function addToCompound(graph, compoundId, componentWord, markHead) {
+export function addToCompound(graph: string, compoundId: number, componentWord: number, markHead: boolean) {
     return postToBackend(`${graph}/compound/${compoundId}/add`,{componentId: componentWord, markHead})
 }
 
@@ -254,7 +260,7 @@ export function updateCompound(graph, compoundId, source, notes, head) {
     return postToBackend(`${graph}/compound/${compoundId}`, {source, notes, head})
 }
 
-export function deleteCompound(graph, compoundId) {
+export function deleteCompound(graph: string, compoundId: number) {
     return postToBackend(`${graph}/compound/${compoundId}/delete`, {})
 }
 
