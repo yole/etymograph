@@ -99,7 +99,7 @@ export default function Rule(params) {
     const [exampleUnmatched, setExampleUnmatched] = useState([])
     const [focusTarget, setFocusTarget] = useState(null)
     const router = useRouter()
-    const graph = router.query.graph
+    const graph = router.query.graph as string
 
     function linkSubmitted() {
         setLinkMode(false)

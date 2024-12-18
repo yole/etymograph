@@ -1,4 +1,4 @@
-import {AddPublicationParameters, CorpusTextParams} from "@/models";
+import {AddPublicationParameters, CorpusTextParams, LookupParameters} from "@/models";
 
 export function allowEdit() {
     return process.env.NEXT_PUBLIC_READONLY !== "true";
@@ -104,26 +104,26 @@ export function addWord(
     )
 }
 
-export function updateWord(graph, id, text, gloss, fullGloss, pos, classes, reconstructed, source, notes) {
+export function updateWord(graph: string, id: number, text, gloss, fullGloss, pos, classes, reconstructed, source, notes) {
     return postToBackend(`${graph}/word/${id}/update`,
         {
             text: text, gloss: gloss, fullGloss: fullGloss, pos, classes, reconstructed, source: source, notes
         })
 }
 
-export function lookupWord(graph, id, data) {
+export function lookupWord(graph: string, id: number, data: LookupParameters) {
     return postToBackend(`${graph}/word/${id}/lookup`, data)
 }
 
-export function suggestParseCandidates(graph, id) {
+export function suggestParseCandidates(graph: string, id: number) {
     return postToBackend(`${graph}/word/${id}/parse`, {})
 }
 
-export function suggestCompound(graph, id, compoundId?: number) {
+export function suggestCompound(graph: string, id: number, compoundId?: number) {
     return postToBackend(`${graph}/word/${id}/suggestCompound`, {compoundId})
 }
 
-export function deleteWord(graph, id) {
+export function deleteWord(graph: string, id: number) {
     return postToBackend(`${graph}/word/${id}/delete`, {})
 }
 
@@ -166,7 +166,7 @@ export function previewRuleChanges(graph, ruleId, newText) {
     return postToBackend(`${graph}/rule/${ruleId}/preview`, {newText})
 }
 
-export function deriveThroughRuleSequence(graph, wordId, seqId) {
+export function deriveThroughRuleSequence(graph: string, wordId: number, seqId: number) {
     return postToBackend(`${graph}/word/${wordId}/derive`, {sequenceId: seqId})
 }
 
@@ -198,7 +198,7 @@ export function acceptAlternative(graph, corpusTextId, index, wordId, ruleId) {
     return postToBackend(`${graph}/corpus/text/${corpusTextId}/accept`, {wordId: wordId, ruleId: ruleId, index: index})
 }
 
-export function addLink(graph, fromEntity, toEntity, linkType, ruleNames, source = null, notes = null) {
+export function addLink(graph: string, fromEntity: number, toEntity: number, linkType: string, ruleNames: string, source = null, notes = null) {
     return postToBackend(`${graph}/link`, {fromEntity, toEntity, linkType, ruleNames, source, notes})
 }
 
@@ -208,7 +208,7 @@ export function addRuleLink(graph, fromEntity, toRuleName, linkType, source, not
     )
 }
 
-export function deleteLink(graph, fromEntity, toEntity, linkType) {
+export function deleteLink(graph: string, fromEntity: number, toEntity: number, linkType: string) {
     return postToBackend(`${graph}/link/delete`, {fromEntity: fromEntity, toEntity: toEntity, linkType: linkType})
 }
 

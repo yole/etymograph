@@ -1,5 +1,5 @@
 import {useState} from "react";
-import WordForm from "@/forms/WordForm";
+import WordForm, {WordFormData} from "@/forms/WordForm";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit, faCheck } from '@fortawesome/free-solid-svg-icons'
 import WordWithStress from "@/components/WordWithStress";
@@ -18,7 +18,7 @@ import CorpusTextForm from "@/forms/CorpusTextForm";
 import TranslationForm from "@/forms/TranslationForm";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import WordGloss from "@/components/WordGloss";
-import {CorpusTextViewModel} from "@/models";
+import {CorpusTextViewModel, WordViewModel} from "@/models";
 
 export const config = {
     unstable_runtimeJS: true
@@ -100,7 +100,7 @@ export default function CorpusText(params) {
         router.replace(router.asPath)
     }
 
-    function wordSubmitted(word, baseWord, data) {
+    function wordSubmitted(word: WordViewModel, baseWord: WordViewModel, data: WordFormData) {
         setWordFormVisible(false)
         associateWord(graph, router.query.id, word.id, wordIndex, data.contextGloss).then(() => {
             const targetWord = baseWord !== undefined ? baseWord : word
@@ -185,7 +185,7 @@ export default function CorpusText(params) {
                                 </button>
                                 {' '}
                             </>)}</div>
-                            <WordForm key={predefWord} submitted={wordSubmitted}
+                            <WordForm key={predefWord} wordSubmitted={wordSubmitted}
                                       defaultValues={{
                                           language: corpusText.language,
                                           text: predefWord,

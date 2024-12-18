@@ -24,6 +24,13 @@ import EditLinkForm from "@/forms/EditLinkForm";
 import {GlobalStateContext, GraphContext} from "@/components/Contexts";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import WordGloss, {WordFullGloss} from "@/components/WordGloss";
+import {
+    CompoundComponentsViewModel,
+    LookupResultViewModel,
+    LookupVariantViewModel,
+    ParseCandidateViewModel,
+    WordViewModel
+} from "@/models";
 
 export const config = {
     unstable_runtimeJS: true
@@ -59,7 +66,7 @@ function WordLinkComponent(params) {
     const [editMode, setEditMode] = useState(false)
     const [errorText, setErrorText] = useState("")
     const router = useRouter()
-    const graph = router.query.graph
+    const graph = router.query.graph as string
 
     async function deleteLinkClicked() {
         if (window.confirm("Delete this link?")) {
@@ -151,18 +158,18 @@ function CompoundRefComponent(params) {
     return <WordLink word={linkWord} baseLanguage={baseWord.language} gloss={true}/>
 }
 
-function CompoundListComponent(params) {
-    const compounds = params.compounds
-    const word = params.word
+function CompoundListComponent(
+    {compounds, word, derivation}: {compounds: CompoundComponentsViewModel[], word: WordViewModel, derivation: boolean}
+) {
     const router = useRouter()
-    const graph = router.query.graph
+    const graph = router.query.graph as string
 
     const [addToCompoundId, setAddToCompoundId] = useState(undefined)
     const [editCompound, setEditCompound] = useState(undefined)
     const [compoundSuggestions, setCompoundSuggestions] = useState([])
     const [errorText, setErrorText] = useState("")
 
-    async function prepareAddToCompound(compoundId) {
+    async function prepareAddToCompound(compoundId: number) {
         setAddToCompoundId(compoundId)
         const r = await suggestCompound(graph, word.id, compoundId)
         if (r.status === 200) {
@@ -191,12 +198,12 @@ function CompoundListComponent(params) {
     }
 
     return <>
-        <div>{params.derivation ? "Derived with prefix/suffix from:" : "Compound:"}</div>
+        <div>{derivation ? "Derived with prefix/suffix from:" : "Compound:"}</div>
         {compounds.map(m =>
             <div>
                 {m.components.map((mc, index) => <>
                     {index > 0 && " + "}
-                    <CompoundRefComponent key={mc.id} baseWord={word} linkWord={mc} router={params.router}/>
+                    <CompoundRefComponent key={mc.id} baseWord={word} linkWord={mc} router={router}/>
                     {index === m.headIndex && " (head)"}
                 </>)}
                 {m.notes && <> &ndash; {m.notes}</>}
@@ -209,7 +216,7 @@ function CompoundListComponent(params) {
                         </button>{' '}
                     </>)}
                     {compoundSuggestions.length > 0 && <br/>}
-                    <WordForm submitted={submitted} cancelled={() => setAddToCompoundId(undefined)}
+                    <WordForm wordSubmitted={submitted} cancelled={() => setAddToCompoundId(undefined)}
                               addToCompound={m.compoundId} linkTarget={word} defaultValues={{language: word.language}}/>
                 </>}
                 {editCompound === m.compoundId &&
@@ -249,8 +256,7 @@ function WordLinkTypeComponent(params) {
     </>);
 }
 
-function SingleWord(params) {
-    const word = params.word
+function SingleWord({word}: { word: WordViewModel }) {
     const globalState = useContext(GlobalStateContext)
 
     const router = useRouter()
@@ -266,12 +272,12 @@ function SingleWord(params) {
     const [editMode, setEditMode] = useState(false)
     const [errorText, setErrorText] = useState("")
     const [lookupErrorText, setLookupErrorText] = useState("")
-    const [lookupVariants, setLookupVariants] = useState([])
-    const [parseCandidates, setParseCandidates] = useState([])
+    const [lookupVariants, setLookupVariants] = useState([] as LookupVariantViewModel[])
+    const [parseCandidates, setParseCandidates] = useState([] as ParseCandidateViewModel[])
     const [compoundSuggestions, setCompoundSuggestions] = useState([])
     useEffect(() => { document.title = "Etymograph : " + (word === undefined ? "Unknown Word" : word.text) })
 
-    function submitted(r) {
+    function submitted() {
         setShowBaseWord(false)
         setShowDerivedWord(false)
         setShowOriginWord(false)
@@ -282,7 +288,7 @@ function SingleWord(params) {
         router.replace(router.asPath)
     }
 
-    function editSubmitted(r) {
+    function editSubmitted(r: WordViewModel) {
         setEditMode(false)
         setLookupErrorText(null)
         setLookupVariants([])
@@ -302,7 +308,7 @@ function SingleWord(params) {
             setLookupVariants([])
         }
         else {
-            const jr = await r.json()
+            const jr = await r.json() as LookupResultViewModel
             if (jr.status !== null) {
                 setLookupErrorText(jr.status)
                 setLookupVariants(jr.variants)
@@ -333,7 +339,7 @@ function SingleWord(params) {
         setParseCandidates(jr.parseCandidates)
     }
 
-    async function linkToParseCandidate(pc, wordId) {
+    async function linkToParseCandidate(pc: ParseCandidateViewModel, wordId: number) {
         const r = await addLink(graph, word.id, wordId, ">", pc.ruleNames.join(","))
         if (r.status !== 200) {
             const jr = await r.json()
@@ -343,7 +349,7 @@ function SingleWord(params) {
         router.replace(router.asPath)
     }
 
-    async function acceptParseCandidate(pc) {
+    async function acceptParseCandidate(pc: ParseCandidateViewModel) {
         if (pc.wordId === null) {
             const r = await addWord(graph, word.language, pc.text, "", "", pc.pos)
             if (r.status === 200)
@@ -372,12 +378,12 @@ function SingleWord(params) {
         }
     }
 
-    async function acceptCompoundSuggestion(id) {
+    async function acceptCompoundSuggestion(id: number) {
         setShowCompoundComponent(false)
         callApiAndRefresh(() => createCompound(graph, word.id, id), router, setErrorText)
     }
 
-    async function deleteRuleLinkClicked(ruleId, linkType) {
+    async function deleteRuleLinkClicked(ruleId: number, linkType: string) {
         if (window.confirm("Delete this link?")) {
             const r = await deleteLink(graph, word.id, ruleId, linkType)
             if (r.status === 200) {
@@ -389,7 +395,7 @@ function SingleWord(params) {
         }
     }
 
-    async function deriveThroughSequenceClicked(seqId) {
+    async function deriveThroughSequenceClicked(seqId: number) {
         const r = await deriveThroughRuleSequence(graph, word.id, seqId)
         if (r.status === 200) {
             router.replace(router.asPath)
@@ -416,7 +422,6 @@ function SingleWord(params) {
 
     const isName = word.pos === "NP"
     const isCompound = word.compound
-    const isInflectedForm = word.linksFrom.find(l => l.typeId === '>') !== undefined
     const classesEditable = word.classes.join(" ")
 
     const [dictionaryTitle, dictionaryLink] =
@@ -485,7 +490,7 @@ function SingleWord(params) {
                 notes: word.notes
             }}
             languageReadOnly={true}
-            submitted={editSubmitted}
+            wordSubmitted={editSubmitted}
             cancelled={() => setEditMode(false)}
             />}
         {allowEdit() && !editMode && <>
@@ -510,14 +515,14 @@ function SingleWord(params) {
         {word.compounds.length > 0 &&
             <>
                 <div>Component of compounds</div>
-                {word.compounds.map(m => <div><CompoundRefComponent graph={graph} key={m.id} baseWord={params.word} linkWord={m} router={params.router}/></div>)}
+                {word.compounds.map(m => <div><CompoundRefComponent graph={graph} key={m.id} baseWord={word} linkWord={m} router={router}/></div>)}
                 <p/>
             </>
         }
         {word.derivationalCompounds.length > 0 &&
             <>
                 <div>{word.pos === "PV" ? "Prefix/suffix in:" : "Words derived with prefix/suffix:"}</div>
-                {word.derivationalCompounds.map(m => <div><CompoundRefComponent graph={graph} key={m.id} baseWord={params.word} linkWord={m} router={params.router}/></div>)}
+                {word.derivationalCompounds.map(m => <div><CompoundRefComponent graph={graph} key={m.id} baseWord={word} linkWord={m} router={router}/></div>)}
                 <p/>
             </>
         }
@@ -543,16 +548,16 @@ function SingleWord(params) {
         <p/>
         {allowEdit() && <>
             {!isCompound && <><button onClick={() => setShowBaseWord(!showBaseWord)}>Add lemma</button><br/></>}
-            {showBaseWord && <WordForm submitted={submitted} linkType='>' linkTarget={word} reverseLink={true}
+            {showBaseWord && <WordForm wordSubmitted={submitted} linkType='>' linkTarget={word} reverseLink={true}
                                        defaultValues={{language: word.language}} cancelled={() => setShowBaseWord(false)}/>}
             <button onClick={() => setShowDerivedWord(!showDerivedWord)}>Add inflected form</button><br/>
-            {showDerivedWord && <WordForm submitted={submitted} linkType='>' linkTarget={word}
+            {showDerivedWord && <WordForm wordSubmitted={submitted} linkType='>' linkTarget={word}
                                           defaultValues={{language: word.language}} cancelled={() => setShowDerivedWord(false)} />}
             <button onClick={() => setShowOriginWord(!showOriginWord)}>Add origin word</button><br/>
-            {showOriginWord && <WordForm submitted={submitted} linkType='^' linkTarget={word} reverseLink={true}
+            {showOriginWord && <WordForm wordSubmitted={submitted} linkType='^' linkTarget={word} reverseLink={true}
                                          defaultValues={{gloss: word.gloss}} cancelled={() => setShowOriginWord(false)}/>}
             <button onClick={() => setShowDerivativeWord(!showDerivativeWord)}>Add derivative word</button>
-            {showDerivativeWord && <WordForm submitted={submitted} linkType='^' linkTarget={word}
+            {showDerivativeWord && <WordForm wordSubmitted={submitted} linkType='^' linkTarget={word}
                                              defaultValues={{gloss: word.gloss}} cancelled={() => setShowDerivativeWord(false)}/>}
             {word.suggestedDeriveSequences.map(seq => <>
                 {' '}
@@ -567,14 +572,14 @@ function SingleWord(params) {
                     </button>{' '}
                 </>)}
                 {compoundSuggestions.length > 0 && <br/>}
-                <WordForm submitted={submitted} newCompound={true} linkTarget={word}
+                <WordForm wordSubmitted={submitted} newCompound={true} linkTarget={word}
                           defaultValues={{language: word.language}} cancelled={() => setShowCompoundComponent(false)}/>
                 </>
             }
             <button onClick={() => setShowRelated(!showRelated)}>Add related word</button><br/>
-            {showRelated && <WordForm submitted={submitted} linkType='~' linkTarget={word} defaultValues={{language: word.language}} languageReadOnly={true} cancelled={() => setShowRelated(false)}/>}
+            {showRelated && <WordForm wordSubmitted={submitted} linkType='~' linkTarget={word} defaultValues={{language: word.language}} languageReadOnly={true} cancelled={() => setShowRelated(false)}/>}
             {!isCompound && <><button onClick={() => setShowVariation(!showVariation)}>Add variation of</button><br/></>}
-            {showVariation && <WordForm submitted={submitted} linkType='=' reverseLink={true} linkTarget={word} defaultValues={{language: word.language}} languageReadOnly={true} cancelled={() => setShowVariation(false)}/>}
+            {showVariation && <WordForm wordSubmitted={submitted} linkType='=' reverseLink={true} linkTarget={word} defaultValues={{language: word.language}} languageReadOnly={true} cancelled={() => setShowVariation(false)}/>}
             <button onClick={() => setShowRuleLink(!showRuleLink)}>Add related rule</button><br/>
             {showRuleLink && <RuleLinkForm submitted={ruleLinkSubmitted} fromEntityId={word.id}/>}
             <p/>

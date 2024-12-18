@@ -4,6 +4,7 @@ import Link from "next/link";
 import WordForm from "@/forms/WordForm";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import {useState} from "react";
+import {WordViewModel} from "@/models";
 
 export const config = {
     unstable_runtimeJS: true
@@ -40,7 +41,7 @@ export default function Dictionary(params) {
         (filter === "reconstructed" ? "Reconstructed" :
         (filter === "compounds" ? "Compounds" : "Dictionary"))
 
-    function submitted(r) {
+    function submitted(r: WordViewModel) {
         if (r.gloss === "" || r.gloss === null) {
             router.push(`/${graph}/word/${r.language}/${r.text}`)
         }
@@ -56,7 +57,7 @@ export default function Dictionary(params) {
         {allowEdit() && <>
             {!showAddWord && <button className="inlineButton inlineButtonNormal" onClick={() => setShowAddWord(!showAddWord)}>Add word</button>}
             {showAddWord && <WordForm languageReadOnly={true}
-                      submitted={submitted}
+                      wordSubmitted={submitted}
                       cancelled={() => setShowAddWord(false)}
                       defaultValues={{
                           language: dict.language.shortName,

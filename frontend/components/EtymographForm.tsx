@@ -16,7 +16,7 @@ export interface EtymographFormProps<Data, ResponseData=Data> {
     update?: (Data: Data) => Promise<Response>;
     create?: (Data: Data) => Promise<Response>;
     children?: React.ReactNode;
-    submitted?: (response: Response, data: any) => any;
+    submitted?: (responseData: ResponseData, data: Data) => any;
     setFocusTarget?: (newFocusTarget: any) => void;
     redirectOnCreate?: (Data: ResponseData) => string;
     buttons?: EtymographFormButton[];
@@ -41,7 +41,7 @@ export default function EtymographForm<Data, ResponseData=Data>(props: Etymograp
         const r = props.updateId !== undefined ? await props.update(data) : await props.create(data)
         if (r.status === 200) {
             if (r.headers.get("content-type") === "application/json") {
-                const jr = await r.json()
+                const jr = await r.json() as ResponseData
                 if (props.redirectOnCreate !== undefined) {
                     const url = props.redirectOnCreate(jr)
                     router.push(url)

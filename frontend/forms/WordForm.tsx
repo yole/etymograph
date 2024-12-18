@@ -1,5 +1,5 @@
 import {addLink, addToCompound, addWord, createCompound, fetchBackend, updateWord} from "@/api";
-import EtymographForm from "@/components/EtymographForm";
+import EtymographForm, {EtymographFormProps} from "@/components/EtymographForm";
 import LanguageSelect from "@/components/LanguageSelect";
 import FormRow from "@/components/FormRow";
 import FormTextArea from "@/components/FormTextArea";
@@ -9,13 +9,32 @@ import RuleListSelect from "@/components/RuleListSelect";
 import {useRouter} from "next/router";
 import PosSelect from "@/components/PosSelect";
 import WordClassSelect from "@/components/WordClassSelect";
-import {AddWordParameters} from "@/models";
+import {AddWordParameters, WordViewModel} from "@/models";
 
-interface WordFormData extends AddWordParameters {
-    language: string;
+export interface WordFormData extends AddWordParameters {
+    language?: string
+    contextGloss?: string
+    linkRuleNames?: string
+    markHead?: boolean
+    linkSource?: string
+    linkNotes?: string
 }
 
-export default function WordForm(props) {
+interface WordFormProps extends EtymographFormProps<WordFormData, WordViewModel> {
+    linkType?: string
+    languageReadOnly?: boolean
+    linkTarget?: WordViewModel
+    reverseLink?: boolean
+    newCompound?: boolean
+    addToCompound?: number
+    linkTargetText?: string
+    textReadOnly?: boolean
+    showContextGloss?: boolean
+    hideReconstructed?: boolean
+    wordSubmitted?: (word: WordViewModel, baseWord: WordViewModel | undefined, formData: WordFormData) => any
+}
+
+export default function WordForm(props: WordFormProps) {
     const router = useRouter()
     const graph = router.query.graph as string
 
@@ -24,13 +43,13 @@ export default function WordForm(props) {
     const [isNewWord, setNewWord] = useState(false)
     const [wordDefinitions, setWordDefinitions] = useState([])
 
-    async function submitted(wordJson, data) {
+    async function submitted(wordJson: WordViewModel, data: WordFormData) {
         if (isAddingLink) {
             let linkTarget = props.linkTarget
             if (props.linkTargetText !== undefined) {
                 if (wordJson.text.toLocaleLowerCase('fr') === props.linkTargetText.toLocaleLowerCase('fr')) {
-                    if (props.submitted !== undefined) {
-                        props.submitted(wordJson, undefined, data)
+                    if (props.wordSubmitted !== undefined) {
+                        props.wordSubmitted(wordJson, undefined, data)
                     }
                     return
                 }
@@ -51,8 +70,8 @@ export default function WordForm(props) {
                 const jr = await r.json()
                 return {message: jr.message}
             }
-            if (props.linkTargetText !== undefined && props.submitted !== undefined) {
-                props.submitted(linkTarget, wordJson, data)
+            if (props.linkTargetText !== undefined && props.wordSubmitted !== undefined) {
+                props.wordSubmitted(linkTarget, wordJson, data)
                 return
             }
         }
@@ -62,8 +81,8 @@ export default function WordForm(props) {
         else if (props.addToCompound !== undefined) {
             await addToCompound(graph, props.addToCompound, wordJson.id, data.markHead)
         }
-        if (props.submitted !== undefined) {
-            props.submitted(wordJson, undefined, data)
+        if (props.wordSubmitted !== undefined) {
+            props.wordSubmitted(wordJson, undefined, data)
         }
     }
 
@@ -85,7 +104,7 @@ export default function WordForm(props) {
         }
     }
 
-    return <EtymographForm<WordFormData>
+    return <EtymographForm<WordFormData, WordViewModel>
         create={(data) => addWord(graph, data.language, data.text, data.gloss, data.fullGloss, data.pos, data.classes,
             data.reconstructed, data.source, data.notes)}
         update={(data) => updateWord(graph, props.updateId, data.text, data.gloss, data.fullGloss, data.pos, data.classes,
