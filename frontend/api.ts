@@ -1,4 +1,4 @@
-import {AddPublicationParameters, CorpusTextParams, LookupParameters} from "@/models";
+import {AddPublicationParameters, CorpusTextParams, LookupParameters, LookupResultViewModel} from "@/models";
 
 export function allowEdit() {
     return process.env.NEXT_PUBLIC_READONLY !== "true";
@@ -89,6 +89,32 @@ function postToBackend(endpoint: string, data: any): Promise<Response> {
     })
 }
 
+class TypedResponse<Result> {
+    private response: Response
+
+    constructor(response: Response) {
+        this.response = response
+    }
+
+    ok(): boolean {
+        return this.response.status === 200
+    }
+
+    async result(): Promise<Result> {
+        return await this.response.json() as Result
+    }
+
+    async error(): Promise<string> {
+        const jr = await this.response.json()
+        return jr.message
+    }
+}
+
+async function postToBackendTyped<Result>(endpoint: string, data: any): Promise<TypedResponse<Result>> {
+    const result = await postToBackend(endpoint, data)
+    return new TypedResponse(result)
+}
+
 export function addWord(
     graph: string, lang, text,
     gloss?: string,
@@ -111,8 +137,8 @@ export function updateWord(graph: string, id: number, text, gloss, fullGloss, po
         })
 }
 
-export function lookupWord(graph: string, id: number, data: LookupParameters) {
-    return postToBackend(`${graph}/word/${id}/lookup`, data)
+export function lookupWord(graph: string, id: number, data: LookupParameters): Promise<TypedResponse<LookupResultViewModel>> {
+    return postToBackendTyped<LookupResultViewModel>(`${graph}/word/${id}/lookup`, data)
 }
 
 export function suggestParseCandidates(graph: string, id: number) {

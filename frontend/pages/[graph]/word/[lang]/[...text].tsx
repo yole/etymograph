@@ -302,13 +302,13 @@ function SingleWord({word}: { word: WordViewModel }) {
 
     async function lookupWordClicked(disambiguation: string = null) {
         const r = await lookupWord(graph, word.id, {dictionaryId: "wiktionary", disambiguation})
-        if (r.status !== 200) {
-            const jr = await r.json()
-            setLookupErrorText(jr.message)
+        if (!r.ok()) {
+            const error = await r.error()
+            setLookupErrorText(error)
             setLookupVariants([])
         }
         else {
-            const jr = await r.json() as LookupResultViewModel
+            const jr = await r.result()
             if (jr.status !== null) {
                 setLookupErrorText(jr.status)
                 setLookupVariants(jr.variants)
