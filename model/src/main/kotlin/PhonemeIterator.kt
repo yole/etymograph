@@ -270,6 +270,9 @@ class PhonemeIterator {
 
     fun deleteAtRelative(relativeIndex: Int) {
         val targetIndex = phonemeIndex + relativeIndex
+        if (targetIndex !in phonemeToResultIndexMap.indices) {
+            return
+        }
         val resultIndex = phonemeToResultIndexMap[targetIndex]
         if (resultIndex >= 0) {
             resultPhonemes.removeAt(resultIndex)
