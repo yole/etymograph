@@ -575,7 +575,7 @@ class OrRuleCondition(members: List<RuleCondition>) : CompositeRuleCondition(mem
         members.any { c -> c.matches(word, graph, trace).also { trace?.logCondition(c, it) } }
 
     override fun matches(word: Word, phonemes: PhonemeIterator, graph: GraphRepository, trace: RuleTrace?): Boolean =
-        members.any { c -> c.matches(word, phonemes, graph).also { trace?.logCondition(c, it) } }
+        members.any { c -> c.matches(word, phonemes, graph, trace).also { trace?.logCondition(c, it) } }
 
     override fun toRichText(): RichText = members.joinToRichText(OR) {
         val et = it.toRichText()
