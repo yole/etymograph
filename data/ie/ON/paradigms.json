@@ -793,5 +793,61 @@
             "V"
         ],
         "postRule": 5330
+    },
+    {
+        "id": 41,
+        "name": "Adjective Degrees",
+        "rows": [
+            "Comp",
+            "Sup"
+        ],
+        "columns": [
+            {
+                "title": "Degree",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            5059
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            1436
+                        ]
+                    }
+                ]
+            }
+        ],
+        "posList": [
+            "ADJ"
+        ]
+    },
+    {
+        "id": 42,
+        "name": "Adverb Degrees",
+        "rows": [
+            "Comp",
+            "Sup"
+        ],
+        "columns": [
+            {
+                "title": "Degree",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            5870
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            5872
+                        ]
+                    }
+                ]
+            }
+        ],
+        "posList": [
+            "ADV"
+        ]
     }
 ]

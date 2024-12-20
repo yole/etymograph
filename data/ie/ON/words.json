@@ -24,7 +24,10 @@
         "text": "vera",
         "gloss": "be",
         "fullGloss": "be",
-        "pos": "V"
+        "pos": "V",
+        "classes": [
+            "v-strong-5"
+        ]
     },
     {
         "id": 927,
@@ -471,7 +474,10 @@
         "id": 986,
         "text": "nema",
         "gloss": "take",
-        "pos": "V"
+        "pos": "V",
+        "classes": [
+            "v-strong-4"
+        ]
     },
     {
         "id": 987,
@@ -505,7 +511,8 @@
     {
         "id": 991,
         "text": "illr",
-        "gloss": "bad; ill",
+        "gloss": "bad",
+        "fullGloss": "bad; ill",
         "pos": "ADJ"
     },
     {
@@ -538,14 +545,17 @@
         "gloss": "come",
         "pos": "V",
         "classes": [
-            "strong"
+            "v-strong-4"
         ]
     },
     {
         "id": 997,
         "text": "munu",
         "gloss": "will",
-        "pos": "V"
+        "pos": "V",
+        "classes": [
+            "v-pret-pres"
+        ]
     },
     {
         "id": 998,
@@ -962,9 +972,7 @@
     },
     {
         "id": 1086,
-        "text": "mestr",
-        "gloss": "greatest",
-        "pos": "ADJ"
+        "text": "mestr"
     },
     {
         "id": 1087,
@@ -1065,7 +1073,10 @@
         "text": "biðja",
         "gloss": "ask",
         "fullGloss": "ask, beg, command, tell",
-        "pos": "V"
+        "pos": "V",
+        "classes": [
+            "v-strong-5"
+        ]
     },
     {
         "id": 1105,
@@ -2230,7 +2241,7 @@
         "fullGloss": "slay, kill, smite",
         "pos": "V",
         "classes": [
-            "v-strong-4"
+            "v-strong-5"
         ]
     },
     {
@@ -2421,7 +2432,10 @@
         "id": 1438,
         "text": "ársæll",
         "fullGloss": "fortunate as to the seasonal harvest",
-        "pos": "ADJ"
+        "pos": "ADJ",
+        "classes": [
+            "adj-comp-ri"
+        ]
     },
     {
         "id": 1439,
@@ -4063,7 +4077,10 @@
         "id": 4892,
         "text": "kveða",
         "gloss": "speak",
-        "pos": "V"
+        "pos": "V",
+        "classes": [
+            "v-strong-5"
+        ]
     },
     {
         "id": 4893,
@@ -4301,7 +4318,10 @@
         "id": 4934,
         "text": "langr",
         "gloss": "long",
-        "pos": "ADJ"
+        "pos": "ADJ",
+        "classes": [
+            "adj-comp-ri"
+        ]
     },
     {
         "id": 4936,
@@ -4328,6 +4348,9 @@
         "gloss": "happy",
         "fullGloss": "happy, blessed, fortunate",
         "pos": "ADJ",
+        "classes": [
+            "adj-comp-ri"
+        ],
         "sourceRefs": [
             {
                 "refText": "https://en.wiktionary.org/wiki/sæll#Old_Norse"
@@ -4356,6 +4379,9 @@
         "gloss": "likely",
         "fullGloss": "likely, to be expected; bidding fair, likely to succeed; hopeful, promising; fine, beautiful",
         "pos": "ADJ",
+        "classes": [
+            "adj-comp-ri"
+        ],
         "sourceRefs": [
             {
                 "refText": "https://en.wiktionary.org/wiki/vænn#Old_Norse"
@@ -4401,7 +4427,8 @@
         "gloss": "fair",
         "pos": "ADJ",
         "classes": [
-            "cc-stem"
+            "cc-stem",
+            "adj-comp-ri"
         ]
     },
     {
@@ -5129,9 +5156,7 @@
     },
     {
         "id": 5116,
-        "text": "mest",
-        "gloss": "mostly",
-        "pos": "ADV"
+        "text": "mest"
     },
     {
         "id": 5117,
@@ -5343,7 +5368,10 @@
         "id": 5158,
         "text": "sitja",
         "gloss": "sit",
-        "pos": "V"
+        "pos": "V",
+        "classes": [
+            "v-strong-5"
+        ]
     },
     {
         "id": 5159,
@@ -5546,7 +5574,7 @@
         "id": 5218,
         "text": "síð",
         "gloss": "late",
-        "pos": "ADJ"
+        "pos": "ADV"
     },
     {
         "id": 5219,
@@ -6026,7 +6054,10 @@
         "id": 5335,
         "text": "skera",
         "gloss": "cut",
-        "pos": "V"
+        "pos": "V",
+        "classes": [
+            "v-strong-4"
+        ]
     },
     {
         "id": 5336,
@@ -6463,7 +6494,10 @@
         "id": 5419,
         "text": "lengi",
         "gloss": "long",
-        "pos": "ADV"
+        "pos": "ADV",
+        "classes": [
+            "adj-comp-ri"
+        ]
     },
     {
         "id": 5420,
@@ -7034,15 +7068,6 @@
         "text": "gull"
     },
     {
-        "id": 5530,
-        "text": "bót",
-        "gloss": "bettering",
-        "pos": "N",
-        "classes": [
-            "f"
-        ]
-    },
-    {
         "id": 5531,
         "text": "bótum"
     },
@@ -7283,7 +7308,10 @@
         "id": 5580,
         "text": "liggja",
         "gloss": "lie",
-        "pos": "V"
+        "pos": "V",
+        "classes": [
+            "v-strong-5"
+        ]
     },
     {
         "id": 5581,
@@ -7539,7 +7567,10 @@
         "id": 5626,
         "text": "vega",
         "gloss": "kill",
-        "pos": "V"
+        "pos": "V",
+        "classes": [
+            "v-strong-5"
+        ]
     },
     {
         "id": 5627,
@@ -7619,7 +7650,10 @@
         "id": 5641,
         "text": "ungr",
         "gloss": "young",
-        "pos": "ADJ"
+        "pos": "ADJ",
+        "classes": [
+            "adj-comp-ri"
+        ]
     },
     {
         "id": 5642,
@@ -8030,9 +8064,7 @@
     },
     {
         "id": 5720,
-        "text": "verst",
-        "gloss": "worst",
-        "pos": "ADV"
+        "text": "verst"
     },
     {
         "id": 5721,
@@ -8059,9 +8091,7 @@
     },
     {
         "id": 5725,
-        "text": "beztr",
-        "gloss": "best",
-        "pos": "ADJ"
+        "text": "beztr"
     },
     {
         "id": 5726,
@@ -8122,5 +8152,704 @@
     {
         "id": 5737,
         "text": "líkar"
+    },
+    {
+        "id": 5739,
+        "text": "sauðamanninn"
+    },
+    {
+        "id": 5741,
+        "text": "Þorstein"
+    },
+    {
+        "id": 5742,
+        "text": "hefði"
+    },
+    {
+        "id": 5743,
+        "text": "flakka",
+        "gloss": "wander",
+        "pos": "V"
+    },
+    {
+        "id": 5744,
+        "text": "flakkat"
+    },
+    {
+        "id": 5745,
+        "text": "svar",
+        "gloss": "answer",
+        "pos": "N",
+        "classes": [
+            "n"
+        ]
+    },
+    {
+        "id": 5746,
+        "text": "svör"
+    },
+    {
+        "id": 5747,
+        "text": "sömu"
+    },
+    {
+        "id": 5748,
+        "text": "lét"
+    },
+    {
+        "id": 5749,
+        "text": "heyra",
+        "gloss": "hear",
+        "pos": "V"
+    },
+    {
+        "id": 5750,
+        "text": "heyrði"
+    },
+    {
+        "id": 5751,
+        "text": "rekkja",
+        "gloss": "bed",
+        "pos": "N",
+        "classes": [
+            "f"
+        ]
+    },
+    {
+        "id": 5752,
+        "text": "rekkju"
+    },
+    {
+        "id": 5753,
+        "text": "kveldit"
+    },
+    {
+        "id": 5754,
+        "text": "sofna",
+        "gloss": "fall asleep",
+        "pos": "V",
+        "classes": [
+            "1conj"
+        ]
+    },
+    {
+        "id": 5755,
+        "text": "sofnaðir"
+    },
+    {
+        "id": 5756,
+        "text": "rísa",
+        "gloss": "rise",
+        "pos": "V",
+        "classes": [
+            "v-strong-1"
+        ]
+    },
+    {
+        "id": 5757,
+        "text": "reis"
+    },
+    {
+        "id": 5758,
+        "text": "skjöldr",
+        "gloss": "shield",
+        "pos": "N",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 5759,
+        "text": "skjöld"
+    },
+    {
+        "id": 5760,
+        "text": "geta",
+        "gloss": "get",
+        "pos": "V",
+        "classes": [
+            "v-strong-5"
+        ]
+    },
+    {
+        "id": 5761,
+        "text": "getit"
+    },
+    {
+        "id": 5762,
+        "text": "hellusteinn",
+        "gloss": "flagstone",
+        "pos": "N",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 5763,
+        "text": "hellustein"
+    },
+    {
+        "id": 5764,
+        "text": "þunnr",
+        "gloss": "thin",
+        "pos": "ADJ"
+    },
+    {
+        "id": 5765,
+        "text": "þunnan"
+    },
+    {
+        "id": 5766,
+        "text": "endi",
+        "gloss": "end",
+        "pos": "N",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 5767,
+        "text": "enda"
+    },
+    {
+        "id": 5768,
+        "text": "brœkr",
+        "gloss": "breeches"
+    },
+    {
+        "id": 5769,
+        "text": "brjóst",
+        "gloss": "breast",
+        "pos": "N",
+        "classes": [
+            "n"
+        ]
+    },
+    {
+        "id": 5770,
+        "text": "brjóst"
+    },
+    {
+        "id": 5771,
+        "text": "mikla"
+    },
+    {
+        "id": 5772,
+        "text": "boløx",
+        "gloss": "broad-axe",
+        "pos": "N",
+        "classes": [
+            "f"
+        ]
+    },
+    {
+        "id": 5773,
+        "text": "boløxi"
+    },
+    {
+        "id": 5774,
+        "text": "hár",
+        "gloss": "high",
+        "pos": "ADJ",
+        "classes": [
+            "adj-comp-ri"
+        ]
+    },
+    {
+        "id": 5775,
+        "text": "hávu"
+    },
+    {
+        "id": 5776,
+        "text": "skapt",
+        "gloss": "shaft",
+        "pos": "N",
+        "classes": [
+            "n"
+        ]
+    },
+    {
+        "id": 5777,
+        "text": "skapti"
+    },
+    {
+        "id": 5778,
+        "text": "unz",
+        "gloss": "until",
+        "pos": "CONJ"
+    },
+    {
+        "id": 5779,
+        "text": "kemr"
+    },
+    {
+        "id": 5780,
+        "text": "sauðahús"
+    },
+    {
+        "id": 5782,
+        "text": "sauðahús"
+    },
+    {
+        "id": 5783,
+        "text": "rekr"
+    },
+    {
+        "id": 5784,
+        "text": "spor"
+    },
+    {
+        "id": 5785,
+        "text": "snjór",
+        "gloss": "snow",
+        "pos": "N",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 5786,
+        "text": "jörðu"
+    },
+    {
+        "id": 5787,
+        "text": "knáligr",
+        "gloss": "vigorous",
+        "pos": "ADJ"
+    },
+    {
+        "id": 5788,
+        "text": "knáligan"
+    },
+    {
+        "id": 5789,
+        "text": "kominn"
+    },
+    {
+        "id": 5790,
+        "text": "ørendislaust",
+        "gloss": "in vain",
+        "pos": "ADV"
+    },
+    {
+        "id": 5791,
+        "text": "hlaupa",
+        "gloss": "leap",
+        "pos": "V"
+    },
+    {
+        "id": 5792,
+        "text": "hljóp"
+    },
+    {
+        "id": 5793,
+        "text": "leggr"
+    },
+    {
+        "id": 5794,
+        "text": "höggspjót",
+        "gloss": "broad-bladed-spear",
+        "pos": "N",
+        "classes": [
+            "n"
+        ]
+    },
+    {
+        "id": 5795,
+        "text": "höggspjóti"
+    },
+    {
+        "id": 5796,
+        "text": "miklu"
+    },
+    {
+        "id": 5797,
+        "text": "bregða",
+        "gloss": "move quickly",
+        "pos": "V"
+    },
+    {
+        "id": 5798,
+        "text": "brá"
+    },
+    {
+        "id": 5799,
+        "text": "skildinum"
+    },
+    {
+        "id": 5800,
+        "text": "útanverðr",
+        "gloss": "outward",
+        "pos": "ADJ"
+    },
+    {
+        "id": 5801,
+        "text": "útanverðan"
+    },
+    {
+        "id": 5802,
+        "text": "skjöldinn"
+    },
+    {
+        "id": 5803,
+        "text": "hella",
+        "gloss": "flat stone",
+        "pos": "N",
+        "classes": [
+            "f"
+        ]
+    },
+    {
+        "id": 5804,
+        "text": "helluna"
+    },
+    {
+        "id": 5805,
+        "text": "sneiða",
+        "gloss": "slice",
+        "pos": "V"
+    },
+    {
+        "id": 5806,
+        "text": "sneiddi"
+    },
+    {
+        "id": 5807,
+        "text": "hellunni"
+    },
+    {
+        "id": 5808,
+        "text": "hart"
+    },
+    {
+        "id": 5809,
+        "text": "lag",
+        "gloss": "thrust",
+        "pos": "N",
+        "classes": [
+            "n"
+        ]
+    },
+    {
+        "id": 5810,
+        "text": "laginu"
+    },
+    {
+        "id": 5811,
+        "text": "høggr"
+    },
+    {
+        "id": 5812,
+        "text": "fótinn"
+    },
+    {
+        "id": 5813,
+        "text": "gæfumunr",
+        "gloss": "difference in fortune",
+        "pos": "N",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 5814,
+        "text": "gæfumun"
+    },
+    {
+        "id": 5815,
+        "text": "vit",
+        "gloss": "we two",
+        "pos": "PRON"
+    },
+    {
+        "id": 5816,
+        "text": "okkar"
+    },
+    {
+        "id": 5817,
+        "text": "banamaðr",
+        "gloss": "killer",
+        "pos": "N",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 5818,
+        "text": "minn",
+        "gloss": "my",
+        "pos": "PRON"
+    },
+    {
+        "id": 5819,
+        "text": "ættangr",
+        "gloss": "family misfortune",
+        "pos": "N",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 5820,
+        "text": "kyni"
+    },
+    {
+        "id": 5821,
+        "text": "yðarr",
+        "gloss": "your",
+        "pos": "PRON"
+    },
+    {
+        "id": 5822,
+        "text": "yðru"
+    },
+    {
+        "id": 5823,
+        "text": "héðan"
+    },
+    {
+        "id": 5824,
+        "text": "heðan",
+        "gloss": "hence",
+        "pos": "ADV"
+    },
+    {
+        "id": 5825,
+        "text": "ævi",
+        "gloss": "age",
+        "pos": "N"
+    },
+    {
+        "id": 5826,
+        "text": "uppi",
+        "gloss": "up",
+        "pos": "ADV"
+    },
+    {
+        "id": 5827,
+        "text": "meðan",
+        "gloss": "while",
+        "pos": "CONJ"
+    },
+    {
+        "id": 5828,
+        "text": "landit"
+    },
+    {
+        "id": 5829,
+        "text": "byggva",
+        "gloss": "settle",
+        "pos": "V"
+    },
+    {
+        "id": 5830,
+        "text": "byggt"
+    },
+    {
+        "id": 5831,
+        "text": "banahögg",
+        "gloss": "death blow",
+        "pos": "N",
+        "classes": [
+            "n"
+        ]
+    },
+    {
+        "id": 5832,
+        "text": "banahögg"
+    },
+    {
+        "id": 5833,
+        "text": "vakna",
+        "gloss": "awake",
+        "pos": "V"
+    },
+    {
+        "id": 5834,
+        "text": "vaknar"
+    },
+    {
+        "id": 5835,
+        "text": "heima",
+        "gloss": "at home",
+        "pos": "ADV"
+    },
+    {
+        "id": 5836,
+        "text": "rúm",
+        "gloss": "bed",
+        "pos": "N",
+        "classes": [
+            "n"
+        ]
+    },
+    {
+        "id": 5837,
+        "text": "rúm"
+    },
+    {
+        "id": 5838,
+        "text": "kaldr",
+        "gloss": "cold",
+        "pos": "ADV"
+    },
+    {
+        "id": 5839,
+        "text": "kalt"
+    },
+    {
+        "id": 5840,
+        "text": "orðit"
+    },
+    {
+        "id": 5841,
+        "text": "vekja",
+        "gloss": "wake",
+        "pos": "V"
+    },
+    {
+        "id": 5842,
+        "text": "vekr"
+    },
+    {
+        "id": 5843,
+        "text": "húskarla"
+    },
+    {
+        "id": 5844,
+        "text": "biðr"
+    },
+    {
+        "id": 5845,
+        "text": "rekja",
+        "gloss": "trace",
+        "pos": "V"
+    },
+    {
+        "id": 5846,
+        "text": "rökðu"
+    },
+    {
+        "id": 5847,
+        "text": "fundu"
+    },
+    {
+        "id": 5848,
+        "text": "hræ",
+        "gloss": "dead body",
+        "pos": "N",
+        "classes": [
+            "n"
+        ]
+    },
+    {
+        "id": 5849,
+        "text": "hræ"
+    },
+    {
+        "id": 5850,
+        "text": "hylja",
+        "gloss": "bury",
+        "pos": "V"
+    },
+    {
+        "id": 5851,
+        "text": "hulðu"
+    },
+    {
+        "id": 5852,
+        "text": "fémætr",
+        "gloss": "valuable",
+        "pos": "ADJ"
+    },
+    {
+        "id": 5853,
+        "text": "fémætt"
+    },
+    {
+        "id": 5854,
+        "text": "víðfrægr",
+        "gloss": "famous",
+        "pos": "ADJ"
+    },
+    {
+        "id": 5855,
+        "text": "lofa",
+        "gloss": "praise",
+        "pos": "V",
+        "classes": [
+            "1conj"
+        ]
+    },
+    {
+        "id": 5856,
+        "text": "lofaðr"
+    },
+    {
+        "id": 5857,
+        "text": "þrekvirki",
+        "gloss": "courageous deed",
+        "pos": "N",
+        "classes": [
+            "n"
+        ]
+    },
+    {
+        "id": 5858,
+        "text": "unnit"
+    },
+    {
+        "id": 5859,
+        "text": "jafnungr",
+        "gloss": "as young",
+        "pos": "ADJ"
+    },
+    {
+        "id": 5860,
+        "text": "enn",
+        "gloss": "yet",
+        "pos": "ADV"
+    },
+    {
+        "id": 5861,
+        "text": "stela",
+        "gloss": "steal",
+        "pos": "V",
+        "classes": [
+            "v-strong-4"
+        ]
+    },
+    {
+        "id": 5866,
+        "text": "fregna",
+        "gloss": "hear of",
+        "pos": "V",
+        "classes": [
+            "v-strong-5"
+        ]
+    },
+    {
+        "id": 5867,
+        "text": "mun"
+    },
+    {
+        "id": 5868,
+        "text": "hellu"
+    },
+    {
+        "id": 5871,
+        "text": "opt",
+        "gloss": "often",
+        "pos": "ADV"
+    },
+    {
+        "id": 5873,
+        "text": "skal"
+    },
+    {
+        "id": 5874,
+        "text": "tómliga",
+        "gloss": "slowly",
+        "pos": "ADV"
     }
 ]

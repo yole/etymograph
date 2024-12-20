@@ -360,7 +360,7 @@
                 "æ"
             ],
             "classes": [
-                "short",
+                "long",
                 "open",
                 "front",
                 "unrounded",
@@ -694,6 +694,10 @@
                 {
                     "name": "Weak",
                     "abbreviation": "weak"
+                },
+                {
+                    "name": "Preterite Present",
+                    "abbreviation": "v-pret-pres"
                 }
             ]
         },
@@ -821,6 +825,19 @@
                 {
                     "name": "-ð-",
                     "abbreviation": "pret-ð"
+                }
+            ]
+        },
+        {
+            "name": "Comparative formation",
+            "pos": [
+                "ADJ",
+                "ADV"
+            ],
+            "values": [
+                {
+                    "name": "adj-comp-ri",
+                    "abbreviation": "adj-comp-ri"
                 }
             ]
         }

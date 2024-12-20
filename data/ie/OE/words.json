@@ -6877,7 +6877,8 @@
         "fullGloss": "a BEARD",
         "pos": "N",
         "classes": [
-            "masc"
+            "masc",
+            "a-stem"
         ],
         "sourceRefs": [
             {
@@ -6886,6 +6887,9 @@
             },
             {
                 "refText": "https://bosworthtoller.com/3154"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/beard#Old_English"
             }
         ]
     },
