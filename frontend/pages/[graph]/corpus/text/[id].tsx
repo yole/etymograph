@@ -167,28 +167,19 @@ export default function CorpusText(params) {
         {!editMode && <>
             {corpusText.lines.map(l => (
                 <div key={l.words[0].index}>
-                    <table>
-                        <tbody>
-                        <tr>
-                            {l.words.map(w => <td key={w.index}>
-                                <CorpusTextWordLink word={w} corpusText={corpusText} showWordForm={showWordForm}/>
-                            </td>)}
-                        </tr>
-                        <tr>
-                            {l.words.map(w => <td key={w.index}>
+                    <div>
+                        {l.words.map((w, index) =>
+                            <span className="corpusTextWord">
+                                <CorpusTextWordLink word={w} corpusText={corpusText} showWordForm={showWordForm}/><br/>
                                 {w.wordCandidates && w.wordCandidates.length > 1 &&
                                     w.wordCandidates.map((c, i) => <>
                                         {i > 0 && " | "}
                                         <CorpusTextGlossChoice corpusText={corpusText} word={w} candidate={c}/>
                                     </>)}
                                 {(!w.wordCandidates || w.wordCandidates.length <= 1) && <WordGloss gloss={w.gloss}/>}
-                            </td>)}
-                        </tr>
-                        <tr>
-                            {l.words.map(w => <td key={w.index} className="contextGloss">{w.contextGloss}</td>)}
-                        </tr>
-                        </tbody>
-                    </table>
+                                {w.contextGloss && <><br/><span className="contextGloss">{w.contextGloss}</span></>}
+                            </span>)}
+                    </div>
                     {wordIndex >= l.words[0].index && wordIndex <= l.words[l.words.length - 1].index && wordFormVisible &&
                         <>
                             <div>{alternatives.map(alt => <>

@@ -150,3 +150,9 @@ code {
 .paradigmRuleLink {
   font-size: small;
 }
+
+.corpusTextWord {
+  display: inline-block;
+  padding: 5px;
+  vertical-align: top;
+}
