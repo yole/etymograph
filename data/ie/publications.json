@@ -1,23 +1,35 @@
 [
     {
         "id": 0,
-        "name": "Christiansen, Birgit (2019). Editions of Lycian Inscriptions not Included in Melchert’s Corpus from 2001. In: Adiego, Ignasi-Xavier, García Trabazo, José Virgilio, Vernet, Mariona, Obrador-Cursach, Bartomeu and Martínez Rodríguez, Elena (eds.): Luwic dialects in Anatolian: Inheritance and Diffusion, Edicions de la Universitat de Barcelona, Barcelona. ",
-        "refId": "Christiansen 2019"
+        "name": "Editions of Lycian Inscriptions not Included in Melchert’s Corpus from 2001",
+        "refId": "Christiansen 2019",
+        "author": "Christiansen, Birgit",
+        "date": "2019",
+        "publisher": " In: Adiego, Ignasi-Xavier, García Trabazo, José Virgilio, Vernet, Mariona, Obrador-Cursach, Bartomeu and Martínez Rodríguez, Elena (eds.): Luwic dialects in Anatolian: Inheritance and Diffusion, Edicions de la Universitat de Barcelona, Barcelona"
     },
     {
         "id": 1,
-        "name": "Christiansen, Birgit (2020). Grave Matters. Legal Provisions for a Proper Final Rest in Classical Lycia. In: Zimmermann, Martin (ed.): Das Xanthostal in archaisch-klassischer Zeit. Eine archäologisch-historische Bestandsaufnahme. Die hellenistische Polis als Lebensform, Vol. 7. Göttingen: Vandenhoeck & Ruprecht, 166-261.",
-        "refId": "Christiansen 2020"
+        "name": "Grave Matters. Legal Provisions for a Proper Final Rest in Classical Lycia",
+        "refId": "Christiansen 2020",
+        "author": "Christiansen, Birgit",
+        "date": "2020",
+        "publisher": "In: Zimmermann, Martin (ed.): Das Xanthostal in archaisch-klassischer Zeit. Eine archäologisch-historische Bestandsaufnahme. Die hellenistische Polis als Lebensform, Vol. 7. Göttingen: Vandenhoeck & Ruprecht, 166-261."
     },
     {
         "id": 2,
-        "name": "Melchert, H. Craig (2004). A Dictionary of the Lycian Language. Ann Arbor: Beach Stave.",
-        "refId": "Melchert 2004"
+        "name": "A Dictionary of the Lycian Language",
+        "refId": "Melchert 2004",
+        "author": "Melchert, H. Craig",
+        "date": "2004",
+        "publisher": "Ann Arbor: Beach Stave"
     },
     {
         "id": 3,
-        "name": "Kloekhorst, Alwin (2011). The opening formula of Lycian funerary inscriptions: mẽti vs. mẽne. In: Journal of Near Eastern Studies 70, 13–23.",
-        "refId": "Kloekhorst 2011"
+        "name": "The opening formula of Lycian funerary inscriptions: mẽti vs. mẽne",
+        "refId": "Kloekhorst 2011",
+        "author": "Kloekhorst, Alwin",
+        "date": "2011",
+        "publisher": "In: Journal of Near Eastern Studies 70, 13–23."
     },
     {
         "id": 4,
@@ -26,22 +38,32 @@
     },
     {
         "id": 5,
-        "name": "Ringe, Don; Taylor, Ann. The Development of Old English (A Linguistic History of English)",
-        "refId": "Ringe 2014"
+        "name": "The Development of Old English (A Linguistic History of English)",
+        "refId": "Ringe 2014",
+        "author": "Ringe, Don; Taylor, Ann",
+        "date": "2014"
     },
     {
         "id": 6,
-        "name": "A Grammar of Old English, Volume 1: Phonology; Richard M. Hogg",
-        "refId": "Hogg 2011"
+        "name": "A Grammar of Old English, Volume 1: Phonology",
+        "refId": "Hogg 2011",
+        "author": "Hogg, Richard M.",
+        "date": "2011"
     },
     {
         "id": 7,
-        "name": "A. Campbell. Old English Grammar. Oxford, 1962",
-        "refId": "Campbell 1962"
+        "name": "Old English Grammar",
+        "refId": "Campbell 1962",
+        "author": "Campbell, A.",
+        "date": "1962",
+        "publisher": "Oxford"
     },
     {
         "id": 8,
-        "name": "A New Introduction to Old Norse. Michael Barnes 2008",
-        "refId": "Barnes 2008"
+        "name": "A New Introduction to Old Norse",
+        "refId": "Barnes 2008",
+        "author": "Barnes, Michael",
+        "date": "2008",
+        "publisher": "University College London"
     }
 ]

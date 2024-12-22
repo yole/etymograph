@@ -8851,5 +8851,196 @@
         "text": "tómliga",
         "gloss": "slowly",
         "pos": "ADV"
+    },
+    {
+        "id": 5876,
+        "text": "vaxa",
+        "gloss": "grow",
+        "pos": "V"
+    },
+    {
+        "id": 5877,
+        "text": "óx"
+    },
+    {
+        "id": 5878,
+        "text": "ýtri",
+        "gloss": "outer",
+        "pos": "ADJ"
+    },
+    {
+        "id": 5879,
+        "text": "auðugr"
+    },
+    {
+        "id": 5880,
+        "text": "tvá"
+    },
+    {
+        "id": 5881,
+        "text": "sögu"
+    },
+    {
+        "id": 5882,
+        "text": "önnur"
+    },
+    {
+        "id": 5883,
+        "text": "gipta",
+        "gloss": "give away in marriage",
+        "pos": "V"
+    },
+    {
+        "id": 5884,
+        "text": "gipt"
+    },
+    {
+        "id": 5885,
+        "text": "jafngamall",
+        "pos": "ADJ"
+    },
+    {
+        "id": 5886,
+        "text": "jafngamlir"
+    },
+    {
+        "id": 5888,
+        "text": "brœðr"
+    },
+    {
+        "id": 5889,
+        "text": "vinfengi",
+        "gloss": "friendship",
+        "pos": "N",
+        "classes": [
+            "n"
+        ]
+    },
+    {
+        "id": 5890,
+        "text": "brœðra"
+    },
+    {
+        "id": 5891,
+        "text": "systir",
+        "gloss": "sister",
+        "pos": "N",
+        "classes": [
+            "f"
+        ]
+    },
+    {
+        "id": 5892,
+        "text": "systur"
+    },
+    {
+        "id": 5893,
+        "text": "yngri"
+    },
+    {
+        "id": 5894,
+        "text": "ellri"
+    },
+    {
+        "id": 5895,
+        "text": "hallr",
+        "gloss": "leaning",
+        "pos": "ADJ"
+    },
+    {
+        "id": 5896,
+        "text": "göngu"
+    },
+    {
+        "id": 5897,
+        "text": "nökkut",
+        "gloss": "somewhat",
+        "pos": "ADV"
+    },
+    {
+        "id": 5898,
+        "text": "vingóðr",
+        "gloss": "friendly",
+        "pos": "ADJ"
+    },
+    {
+        "id": 5899,
+        "text": "vingott"
+    },
+    {
+        "id": 5900,
+        "text": "leikr",
+        "gloss": "game",
+        "pos": "N",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 5901,
+        "text": "leik"
+    },
+    {
+        "id": 5902,
+        "text": "öll"
+    },
+    {
+        "id": 5903,
+        "text": "ráð",
+        "gloss": "counsel",
+        "pos": "N",
+        "classes": [
+            "n"
+        ]
+    },
+    {
+        "id": 5904,
+        "text": "ráð"
+    },
+    {
+        "id": 5905,
+        "text": "hittusk"
+    },
+    {
+        "id": 5907,
+        "text": "fannsk"
+    },
+    {
+        "id": 5908,
+        "text": "vinátta",
+        "gloss": "friendship",
+        "pos": "N",
+        "classes": [
+            "f"
+        ]
+    },
+    {
+        "id": 5909,
+        "text": "mikil"
+    },
+    {
+        "id": 5910,
+        "text": "samför",
+        "gloss": "relationship",
+        "pos": "N",
+        "classes": [
+            "f"
+        ]
+    },
+    {
+        "id": 5911,
+        "text": "samfarar"
+    },
+    {
+        "id": 5912,
+        "text": "Halla",
+        "pos": "NP",
+        "classes": [
+            "f"
+        ]
+    },
+    {
+        "id": 5913,
+        "text": "Höllu"
     }
 ]
