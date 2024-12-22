@@ -3125,6 +3125,12 @@ components:
           format: "int32"
         name:
           type: "string"
+        author:
+          type: "string"
+        date:
+          type: "string"
+        publisher:
+          type: "string"
         refId:
           type: "string"
       required:
@@ -3137,6 +3143,12 @@ components:
         name:
           type: "string"
         refId:
+          type: "string"
+        author:
+          type: "string"
+        date:
+          type: "string"
+        publisher:
           type: "string"
     UpdatePhonemeParameters:
       type: "object"

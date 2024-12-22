@@ -3,6 +3,7 @@ import Link from "next/link";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import {useRouter} from "next/router";
 import {PublicationViewModel} from "@/models";
+import {PublicationText} from "@/pages/[graph]/publication/[id]";
 
 export const getStaticPaths = fetchAllGraphs
 
@@ -19,7 +20,7 @@ export default function Publications(props) {
         <Breadcrumbs title="Bibliography"/>
 
         {publications.map(p => <>
-            <Link href={`/${graph}/publication/${p.id}`}>{p.refId}</Link>: {p.name}
+            <Link href={`/${graph}/publication/${p.id}`}>{p.refId}</Link>: <PublicationText publication={p}/>
             <br/>
         </>)}
 

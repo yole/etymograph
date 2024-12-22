@@ -310,7 +310,10 @@ data class ParadigmData(
 data class PublicationData(
     val id: Int,
     val name: String,
-    val refId: String
+    val refId: String,
+    val author: String? = null,
+    val date: String? = null,
+    val publisher: String? = null
 )
 
 @Serializable
@@ -378,7 +381,9 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
         val repoData = createGraphRepositoryData()
         consumer("graph.json", theJson.encodeToString(repoData))
         consumer("publications.json", theJson.encodeToString(
-            publications.filterNotNull().map { PublicationData(it.id, it.name, it.refId) })
+            publications.filterNotNull().map {
+                PublicationData(it.id, it.name, it.refId, it.author, it.date, it.publisher)
+            })
         )
         saveLanguageDetails(consumer)
         saveWords(consumer)
@@ -780,7 +785,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             while (pubData.id > publications.size) {
                 publications.add(null)
             }
-            publications.add(Publication(pubData.id, pubData.name, pubData.refId))
+            publications.add(Publication(pubData.id, pubData.name, pubData.author, pubData.date, pubData.publisher, pubData.refId))
         }
     }
 

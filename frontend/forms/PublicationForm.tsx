@@ -19,6 +19,9 @@ export default function PublicationForm(props: PublicationFormProps) {
         <table><tbody>
             <FormRow label="Name" id="name"/>
             <FormRow label="Reference ID" id="refId"/>
+            <FormRow label="Author" id="author"/>
+            <FormRow label="Date" id="date"/>
+            <FormRow label="Publisher" id="publisher"/>
         </tbody></table>
     </EtymographForm>
 }

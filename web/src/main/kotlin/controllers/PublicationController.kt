@@ -7,12 +7,18 @@ import ru.yole.etymograph.Publication
 data class PublicationViewModel(
     val id: Int,
     val name: String,
+    val author: String?,
+    val date: String?,
+    val publisher: String?,
     val refId: String
 )
 
 data class AddPublicationParameters(
     val name: String?,
-    val refId: String?
+    val refId: String?,
+    val author: String?,
+    val date: String?,
+    val publisher: String?,
 )
 
 @RestController
@@ -24,7 +30,7 @@ class PublicationController {
         }
     }
 
-    private fun Publication.toViewModel() = PublicationViewModel(id, name, refId)
+    private fun Publication.toViewModel() = PublicationViewModel(id, name, author, date, publisher, refId)
 
     @GetMapping("/{graph}/publication/{id}")
     fun publication(repo: GraphRepository, @PathVariable id: Int): PublicationViewModel {
@@ -41,7 +47,14 @@ class PublicationController {
         val name = params.name.nullize() ?: badRequest("Name is required")
         val refId = params.refId.nullize() ?: badRequest("refID is required")
         val publication = repo.addPublication(name, refId)
+        updatePublicationParameters(publication, params)
         return publication.toViewModel()
+    }
+
+    private fun updatePublicationParameters(publication: Publication, params: AddPublicationParameters) {
+        publication.author = params.author.nullize()
+        publication.date = params.date.nullize()
+        publication.publisher = params.publisher.nullize()
     }
 
     @PostMapping("/{graph}/publication/{id}", consumes = ["application/json"])
@@ -50,6 +63,7 @@ class PublicationController {
         val publication = repo.resolvePublication(id)
         publication.name = params.name.nullize() ?: badRequest("Name is required")
         publication.refId = params.refId.nullize() ?: badRequest("refID is required")
+        updatePublicationParameters(publication, params)
         return publication.toViewModel()
     }
 }

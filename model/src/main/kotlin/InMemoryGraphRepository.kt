@@ -745,7 +745,7 @@ open class InMemoryGraphRepository : GraphRepository() {
     }
 
     override fun addPublication(name: String, refId: String): Publication {
-        val publication = Publication(publications.size, name, refId)
+        val publication = Publication(publications.size, name, null, null, null, refId)
         publications.add(publication)
         return publication
     }

@@ -9,6 +9,9 @@ export type AcceptAlternativeParameters = {
 export type AddPublicationParameters = {
     name?: string;
     refId?: string;
+    author?: string;
+    date?: string;
+    publisher?: string;
 };
 
 export type AddWordParameters = {
@@ -357,6 +360,9 @@ export type PhonemeViewModel = {
 export type PublicationViewModel = {
     id: number;
     name: string;
+    author?: string;
+    date?: string;
+    publisher?: string;
     refId: string;
 };
 

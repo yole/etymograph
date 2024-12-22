@@ -18,6 +18,14 @@ export async function getStaticPaths() {
     return fetchPathsForAllGraphs("publications", (p) => ({id: p.id.toString()}))
 }
 
+export function PublicationText(props: {publication: PublicationViewModel}) {
+    const {publication} = props;
+    return <>{publication.author} {publication.date}
+        {(publication.author || publication.date) && ". "}
+        <i>{publication.name}.</i>
+        {' '}{publication.publisher}</>
+}
+
 export default function Publication(props) {
     const publication = props.loaderData as PublicationViewModel;
     const graph = useContext(GraphContext)
@@ -27,11 +35,11 @@ export default function Publication(props) {
 
         <EtymographFormView>
             <View>
-                <p>{publication.name}</p>
+                <p><PublicationText publication={publication} /></p>
             </View>
             <PublicationForm
                 updateId={publication.id}
-                defaultValues={{name: publication.name, refId: publication.refId}}
+                defaultValues={publication}
             />
         </EtymographFormView>
     </>
