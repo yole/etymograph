@@ -1,7 +1,5 @@
 package ru.yole.etymograph
 
-import kotlin.math.log
-
 class RuleParseException(msg: String): RuntimeException(msg)
 
 fun interface RuleRef {
@@ -153,6 +151,9 @@ class RuleBranch(val condition: RuleCondition, val instructions: List<RuleInstru
             return insn.toSummaryText(graph, condition)
         }
         val summaries = instructions.map { it.toSummaryText(graph, condition) ?: return null }
+        if (instructions.any { it is SpeInstruction }) {
+            return summaries.joinToString(", ")
+        }
         return summaries.joinToString("")
     }
 

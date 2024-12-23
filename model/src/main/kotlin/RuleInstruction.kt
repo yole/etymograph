@@ -616,21 +616,15 @@ class SpeInstruction(val pattern: SpePattern)
     : RuleInstruction(InstructionType.Spe, pattern.toString())
 {
     override fun toRichText(graph: GraphRepository): RichText {
-        return toPrettyText().richText()
+        return pattern.toRichText()
     }
 
     override fun toEditableText(graph: GraphRepository): String {
         return pattern.toString()
     }
 
-    override fun toSummaryText(graph: GraphRepository, condition: RuleCondition): String? {
-        return toPrettyText()
-    }
-
-    private fun toPrettyText(): String {
-        return pattern.toString()
-            .replace("->", "→")
-            .replace('0', '∅')
+    override fun toSummaryText(graph: GraphRepository, condition: RuleCondition): String {
+        return pattern.toRichText().toString()
     }
 
     override fun apply(rule: Rule, branch: RuleBranch?, word: Word, graph: GraphRepository, trace: RuleTrace?): Word {

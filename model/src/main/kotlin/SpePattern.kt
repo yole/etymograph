@@ -29,14 +29,14 @@ class SpeNode(val text: String?, val wordBoundary: Boolean, val phonemeClass: Ph
         return text == it.current
     }
 
-    override fun toString(): String {
+    fun toRichText(): RichText {
         if (wordBoundary) {
-            return "#"
+            return "#".richText()
         }
         if (phonemeClass != null) {
-            return "[" + phonemeClass.name + "]"
+            return "[".rich() + phonemeClass.name.rich(tooltip = phonemeClass.matchingPhonemes.takeIf { it.isNotEmpty() }?.joinToString(", "))+ "]".rich()
         }
-        return text ?: ""
+        return (text ?: "").richText()
     }
 }
 
@@ -81,14 +81,39 @@ class SpePattern(
         return nodes.reversed().all { node -> node.matchBackwards(it) }
     }
 
-    override fun toString(): String {
-        val beforeAfter = before.joinToString("").ifEmpty { "0" } +
-                " -> " +
-                after.joinToString("").ifEmpty { "0" }
-        if (preceding.isEmpty() && following.isEmpty()) {
-            return beforeAfter
+    fun toRichText(): RichText {
+        var result = RichText(emptyList())
+        for (node in before) {
+            result += node.toRichText()
         }
-        return beforeAfter + " / " + preceding.joinToString("") + "_" + following.joinToString("")
+        if (before.isEmpty()) {
+            result += "∅".rich()
+        }
+        result += " → ".rich()
+        for (node in after) {
+            result += node.toRichText()
+        }
+        if (after.isEmpty()) {
+            result += "∅".rich()
+        }
+        if (preceding.isEmpty() && following.isEmpty()) {
+            return result
+        }
+        result += " / ".rich()
+        for (node in preceding) {
+            result += node.toRichText()
+        }
+        result += "_".rich()
+        for (node in following) {
+            result += node.toRichText()
+       }
+        return result
+    }
+
+    override fun toString(): String {
+        return toRichText().toString()
+            .replace("→", "->")
+            .replace('∅', '0')
     }
 
     companion object {
