@@ -86,6 +86,7 @@ open class PhonemeClass(val name: String, var matchingPhonemes: List<String> = e
         )
 
         const val vowelClassName = "vowel"
+        const val consonantClassName = "consonant"
     }
 }
 

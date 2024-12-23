@@ -34,7 +34,14 @@ class SpeNode(val text: String?, val wordBoundary: Boolean, val phonemeClass: Ph
             return "#".richText()
         }
         if (phonemeClass != null) {
-            return "[".rich() + phonemeClass.name.rich(tooltip = phonemeClass.matchingPhonemes.takeIf { it.isNotEmpty() }?.joinToString(", "))+ "]".rich()
+            val matchingPhonemes = phonemeClass.matchingPhonemes.takeIf { it.isNotEmpty() }?.joinToString(", ")
+            if (phonemeClass.name == PhonemeClass.consonantClassName) {
+                return richText("C".rich(tooltip = matchingPhonemes))
+            }
+            if (phonemeClass.name == PhonemeClass.vowelClassName) {
+                return richText("V".rich(tooltip = matchingPhonemes))
+            }
+            return "[".rich() + phonemeClass.name.rich(tooltip = matchingPhonemes)+ "]".rich()
         }
         return (text ?: "").richText()
     }
@@ -165,12 +172,15 @@ class SpePattern(
                     result.add(SpeNode(null, false, parseClass(language, classText)))
                     pos = classEnd + 1
                 }
-                else if (text[pos] == '#') {
-                    result.add(SpeNode(null, true, null))
-                    pos++
-                }
                 else {
-                    result.add(SpeNode(text.substring(pos, pos + 1), false, null))
+                    result.add(when(text[pos]) {
+                        '#' -> SpeNode(null, true, null)
+                        'C' -> SpeNode(null, false,
+                            language.phonemeClassByName(PhonemeClass.consonantClassName) ?: throw SpeParseException("Consonant class not found"))
+                        'V' -> SpeNode(null, false,
+                            language.phonemeClassByName(PhonemeClass.vowelClassName) ?: throw SpeParseException("Vowel class not found"))
+                        else -> SpeNode(text.substring(pos, pos + 1), false, null)
+                    })
                     pos++
                 }
             }
