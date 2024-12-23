@@ -43,16 +43,19 @@ class PhonemeLookup {
     fun iteratePhonemes(text: String, callback: (String, Phoneme?) -> Unit) {
         var offset = 0
         while (offset < text.length) {
-            val digraph = digraphs.keys.firstOrNull { text.startsWith(it, offset) }
-            if (digraph != null) {
-                callback(digraph, digraphs[digraph])
-                offset += digraph.length
-            }
-            else {
-                callback(text.substring(offset, offset + 1), singleGraphemes[text[offset]])
-                offset++
-            }
+            val phonemeText = nextPhoneme(text, offset)
+            callback(phonemeText,
+                if (phonemeText.length > 1)
+                    digraphs[phonemeText]
+                else
+                    singleGraphemes[phonemeText[0]])
+            offset += phonemeText.length
         }
+    }
+
+    fun nextPhoneme(text: String, offset: Int): String {
+        val digraph = digraphs.keys.firstOrNull { text.startsWith(it, offset) }
+        return digraph ?: text.substring(offset, offset + 1)
     }
 }
 

@@ -209,15 +209,16 @@ class SpePattern(
                     pos = classEnd + 1
                 }
                 else {
-                    result.add(when(text[pos]) {
-                        '#' -> SpeNode(null, true, null)
-                        'C' -> SpeNode(null, false,
+                    val nextPhoneme = language.phonoPhonemeLookup.nextPhoneme(text, pos)
+                    result.add(when(nextPhoneme) {
+                        "#"-> SpeNode(null, true, null)
+                        "C" -> SpeNode(null, false,
                             language.phonemeClassByName(PhonemeClass.consonantClassName) ?: throw SpeParseException("Consonant class not found"))
-                        'V' -> SpeNode(null, false,
+                        "V" -> SpeNode(null, false,
                             language.phonemeClassByName(PhonemeClass.vowelClassName) ?: throw SpeParseException("Vowel class not found"))
-                        else -> SpeNode(text.substring(pos, pos + 1), false, null)
+                        else -> SpeNode(nextPhoneme, false, null)
                     })
-                    pos++
+                    pos += nextPhoneme.length
                 }
             }
             return result

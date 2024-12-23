@@ -16,7 +16,8 @@ open class QBaseTest {
             phoneme("d", "voiced alveolar stop") +
             phoneme("n", "voiced alveolar nasal consonant") +
             phoneme("k", "voiceless velar stop") +
-            phoneme("g", "voiced velar stop")
+            phoneme("g", "voiced velar stop") +
+            phoneme("hr", "voiceless alveolar trill consonant")
 
         it.diphthongs = listOf("ai", "oi", "ui", "au", "eu", "iu")
     }

@@ -54,6 +54,12 @@ class SpePatternTest : QBaseTest() {
     }
 
     @Test
+    fun parsePhonemeInText() {
+        val pattern = SpePattern.parse(q, "r -> hr / hr_hr")
+        assertEquals("hr", pattern.after.single().text)
+    }
+
+    @Test
     fun replaceWithoutContext() {
         val pattern = SpePattern.parse(q, "a -> o")
         assertEquals("bo", pattern.apply(q, "ba"))

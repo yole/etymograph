@@ -14,7 +14,7 @@ class PhonemeTableTest : QBaseTest() {
         val cell = nasalRow.columns[alveolarColumnIndex]
         assertEquals("n", cell.phonemes.first().graphemes.first())
 
-        assertNull(consonants.rows.find { it.title == "trill" })
+        assertNull(consonants.rows.find { it.title == "lateral" })
         assertEquals(-1, consonants.columnTitles.indexOf("labial"))
 
         val otherConsonants = tables[1]
