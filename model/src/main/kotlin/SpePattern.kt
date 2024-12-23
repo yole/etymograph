@@ -29,7 +29,7 @@ class SpeNode(val text: String?, val wordBoundary: Boolean, val phonemeClass: Ph
         return text == it.current
     }
 
-    fun toRichText(language: Language): RichText {
+    fun toRichText(language: Language?): RichText {
         if (wordBoundary) {
             return "#".richText()
         }
@@ -44,13 +44,17 @@ class SpeNode(val text: String?, val wordBoundary: Boolean, val phonemeClass: Ph
             return "[".rich() + phonemeClass.name.rich(tooltip = matchingPhonemes)+ "]".rich()
         }
         if (text != null) {
-            val phoneme = language.phonemes.find { text in it.graphemes }
+            val phoneme = language?.phonemes?.find { text in it.graphemes }
             if (phoneme != null) {
                 return richText(text.rich(linkType = "phoneme", linkId = phoneme.id))
             }
             return text.richText()
         }
         return "".richText()
+    }
+
+    override fun toString(): String {
+        return toRichText(null).toString()
     }
 }
 
@@ -62,11 +66,14 @@ class SpePattern(
     val preceding: List<SpeNode>,
     val following: List<SpeNode>
 )  {
-    fun apply(language: Language, text: String): String {
+    fun apply(language: Language, text: String, trace: RuleTrace? = null): String {
         val it = PhonemeIterator(text, language, null)
         while (true) {
             val itCopy = it.clone()
-            if (matchNodes(itCopy, before) && matchNodes(itCopy, following) && matchNodesBackwards(it.clone(), preceding)) {
+            if (matchNodes(itCopy, before, trace) &&
+                matchNodes(itCopy, following, trace) &&
+                matchNodesBackwards(it.clone(), preceding, trace))
+            {
                 val beforeLength = before.size
                 val afterLength = after.size
                 for (i in 0..<Math.min(beforeLength, afterLength)) {
@@ -115,12 +122,16 @@ class SpePattern(
         }
     }
 
-    private fun matchNodes(it: PhonemeIterator, nodes: List<SpeNode>): Boolean {
-        return nodes.all { node -> node.match(it) }
+    private fun matchNodes(it: PhonemeIterator, nodes: List<SpeNode>, trace: RuleTrace? = null): Boolean {
+        return nodes.all {
+            node -> node.match(it).also { result -> trace?.logNodeMatch(it, node, result) }
+        }
     }
 
-    private fun matchNodesBackwards(it: PhonemeIterator, nodes: List<SpeNode>): Boolean {
-        return nodes.reversed().all { node -> node.matchBackwards(it) }
+    private fun matchNodesBackwards(it: PhonemeIterator, nodes: List<SpeNode>, trace: RuleTrace? = null): Boolean {
+        return nodes.reversed().all {
+            node -> node.matchBackwards(it).also { result -> trace?.logNodeMatch(it, node, result) }
+        }
     }
 
     fun toRichText(): RichText {

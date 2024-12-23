@@ -43,6 +43,10 @@ class RuleTrace {
         log.append("Branch '${branch.condition.toEditableText()}' not matched$phonemeTrace\n")
     }
 
+    fun logNodeMatch(it: PhonemeIterator, node: SpeNode, result: Boolean) {
+        log.append("Node $node match result at ${it.current}: $result\n")
+    }
+
     fun logCondition(ruleCondition: RuleCondition, result: Boolean) {
         if (ruleCondition !is CompositeRuleCondition) {
             log.append("${ruleCondition.toEditableText()} -> $result\n")

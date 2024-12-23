@@ -628,7 +628,7 @@ class SpeInstruction(val pattern: SpePattern)
     }
 
     override fun apply(rule: Rule, branch: RuleBranch?, word: Word, graph: GraphRepository, trace: RuleTrace?): Word {
-        val result = pattern.apply(word.language, word.text)
+        val result = pattern.apply(word.language, word.text, trace)
         if (result != word.text) {
             return word.derive(result)
         }
