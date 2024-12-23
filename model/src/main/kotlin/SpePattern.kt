@@ -29,7 +29,7 @@ class SpeNode(val text: String?, val wordBoundary: Boolean, val phonemeClass: Ph
         return text == it.current
     }
 
-    fun toRichText(): RichText {
+    fun toRichText(language: Language): RichText {
         if (wordBoundary) {
             return "#".richText()
         }
@@ -43,11 +43,19 @@ class SpeNode(val text: String?, val wordBoundary: Boolean, val phonemeClass: Ph
             }
             return "[".rich() + phonemeClass.name.rich(tooltip = matchingPhonemes)+ "]".rich()
         }
-        return (text ?: "").richText()
+        if (text != null) {
+            val phoneme = language.phonemes.find { text in it.graphemes }
+            if (phoneme != null) {
+                return richText(text.rich(linkType = "phoneme", linkId = phoneme.id))
+            }
+            return text.richText()
+        }
+        return "".richText()
     }
 }
 
 class SpePattern(
+    private val language: Language,
     val before: List<SpeNode>,
     val after: List<SpeNode>,
     val preceding: List<SpeNode>,
@@ -117,14 +125,14 @@ class SpePattern(
     fun toRichText(): RichText {
         var result = RichText(emptyList())
         for (node in before) {
-            result += node.toRichText()
+            result += node.toRichText(language)
         }
         if (before.isEmpty()) {
             result += "∅".rich()
         }
         result += " → ".rich()
         for (node in after) {
-            result += node.toRichText()
+            result += node.toRichText(language)
         }
         if (after.isEmpty()) {
             result += "∅".rich()
@@ -134,11 +142,11 @@ class SpePattern(
         }
         result += " / ".rich()
         for (node in preceding) {
-            result += node.toRichText()
+            result += node.toRichText(language)
         }
         result += "_".rich()
         for (node in following) {
-            result += node.toRichText()
+            result += node.toRichText(language)
        }
         return result
     }
@@ -160,6 +168,7 @@ class SpePattern(
             val slash = afterTextWithContext.indexOf('/')
             if (slash < 0) {
                 return SpePattern(
+                    language,
                     parseNodes(language, beforeText),
                     parseNodes(language, afterTextWithContext),
                     emptyList(),
@@ -175,6 +184,7 @@ class SpePattern(
             val precedeText = context.substring(0, underscore).trim()
             val followText = context.substring(underscore + 1).trim()
             return SpePattern(
+                language,
                 parseNodes(language, beforeText),
                 parseNodes(language, afterText),
                 parseNodes(language, precedeText),
