@@ -164,12 +164,6 @@ class PhonemeClassList {
         }
     }
 
-    private fun withImplicit(classes: Set<String>): Set<String> =
-        classes + implicitClasses(classes)
-
-    fun implicitClasses(classes: Set<String>) =
-        classes.map { implicitPhonemeClasses[it] ?: emptySet() }.flatten() - classes
-
     fun findByName(name: String): PhonemeClass? {
         if (' ' in name) {
             val subclassNames = name.split(' ')
@@ -183,6 +177,12 @@ class PhonemeClassList {
         return classes.find { it.name == name } ?: PhonemeClass.specialPhonemeClasses.find { it.name == name }
     }
 }
+
+fun withImplicit(classes: Set<String>): Set<String> =
+    classes + implicitPhonemeClasses(classes)
+
+fun implicitPhonemeClasses(classes: Set<String>) =
+    classes.map { implicitPhonemeClasses[it] ?: emptySet() }.flatten() - classes
 
 private val implicitPhonemeClasses = mapOf(
     "plosive" to setOf("obstruent", "consonant"),

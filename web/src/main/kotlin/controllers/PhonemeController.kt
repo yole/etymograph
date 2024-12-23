@@ -119,7 +119,7 @@ fun Phoneme.toViewModel(graph: GraphRepository, language: Language): PhonemeView
         graphemes,
         sound ?: "",
         classes.joinToString(" "),
-        language.implicitPhonemeClasses(classes).joinToString(" "),
+        implicitPhonemeClasses(classes).joinToString(" "),
         historical,
         source.toViewModel(graph),
         source.toEditableText(graph),
