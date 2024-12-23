@@ -67,7 +67,11 @@ class SpePattern(
     val following: List<SpeNode>
 )  {
     fun apply(language: Language, text: String, trace: RuleTrace? = null): String {
-        val it = PhonemeIterator(text, language, null)
+        return apply(Word(-1, text, language), trace)
+    }
+
+    fun apply(word: Word, trace: RuleTrace? = null): String {
+        val it = PhonemeIterator(word, null)
         while (true) {
             val itCopy = it.clone()
             if (matchNodes(itCopy, before, trace) &&

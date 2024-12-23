@@ -628,9 +628,10 @@ class SpeInstruction(val pattern: SpePattern)
     }
 
     override fun apply(rule: Rule, branch: RuleBranch?, word: Word, graph: GraphRepository, trace: RuleTrace?): Word {
-        val result = pattern.apply(word.language, word.text, trace)
-        if (result != word.text) {
-            return word.derive(result)
+        val phonemicWord = word.asPhonemic()
+        val result = pattern.apply(phonemicWord, trace)
+        if (result != phonemicWord.text) {
+            return phonemicWord.derive(result)
         }
         return word
     }
