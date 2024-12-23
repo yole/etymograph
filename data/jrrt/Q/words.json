@@ -7665,6 +7665,9 @@
             {
                 "pubId": 1,
                 "refText": "168"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-1938961599.html"
             }
         ]
     },
@@ -8193,5 +8196,27 @@
     {
         "id": 2021,
         "text": "tule"
+    },
+    {
+        "id": 2022,
+        "text": "aica",
+        "gloss": "fell",
+        "fullGloss": "fell, terrible, dire",
+        "pos": "ADJ",
+        "sourceRefs": [
+            {
+                "refText": "https://eldamo.org/content/words/word-2936799251.html"
+            }
+        ]
+    },
+    {
+        "id": 2024,
+        "text": "laia",
+        "sourceRefs": [
+            {
+                "pubId": 4,
+                "refText": "153"
+            }
+        ]
     }
 ]

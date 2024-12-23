@@ -2114,5 +2114,34 @@
                 "refText": "https://eldamo.org/content/words/word-1429547705.html"
             }
         ]
+    },
+    {
+        "id": 2023,
+        "text": "gayakā",
+        "gloss": "fell",
+        "sourceRefs": [
+            {
+                "refText": "https://eldamo.org/content/words/word-2489404363.html"
+            }
+        ]
+    },
+    {
+        "id": 2025,
+        "text": "lājā",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "13"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-1882535733.html"
+            }
+        ]
+    },
+    {
+        "id": 2026,
+        "text": "eŋa",
+        "gloss": "exist",
+        "fullGloss": "PE22:166, https://eldamo.org/content/words/word-3635887209.html"
     }
 ]

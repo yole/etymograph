@@ -388,6 +388,7 @@
             "graphemes": [
                 "ñ"
             ],
+            "sound": "ŋ",
             "classes": [
                 "voiced",
                 "velar",
@@ -474,9 +475,14 @@
             ],
             "classes": [
                 "voiceless",
-                "uvular",
+                "velar",
                 "fricative",
                 "consonant"
+            ],
+            "sourceRefs": [
+                {
+                    "refText": "https://eldamo.org/content/words/word-4256650359.html"
+                }
             ]
         },
         {
@@ -511,6 +517,7 @@
                 "kʰ"
             ],
             "classes": [
+                "voiceless",
                 "aspirated",
                 "velar",
                 "stop",
@@ -524,6 +531,7 @@
                 "tʰ"
             ],
             "classes": [
+                "voiceless",
                 "aspirated",
                 "alveolar",
                 "stop",
@@ -537,10 +545,37 @@
                 "pʰ"
             ],
             "classes": [
+                "voiceless",
                 "aspirated",
                 "bilabial",
                 "stop",
                 "consonant"
+            ],
+            "historical": true
+        },
+        {
+            "id": 2029,
+            "graphemes": [
+                "ɸ"
+            ],
+            "sound": "ɸ",
+            "classes": [
+                "voiceless",
+                "bilabial",
+                "fricative"
+            ],
+            "historical": true
+        },
+        {
+            "id": 2030,
+            "graphemes": [
+                "β"
+            ],
+            "sound": "β",
+            "classes": [
+                "voiced",
+                "bilabial",
+                "fricative"
             ],
             "historical": true
         }

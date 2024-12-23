@@ -8,50 +8,26 @@
             {
                 "instructions": [
                     {
-                        "type": "ChangeSound",
+                        "type": "Spe",
                         "args": [
-                            "e"
+                            "i -> e / _#"
                         ]
-                    }
-                ],
-                "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "leaf",
-                            "cond": "EndOfWord"
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "parameter": "i",
-                            "relative": false
-                        }
-                    ]
-                }
-            },
-            {
-                "instructions": [
+                    },
                     {
-                        "type": "ChangeSound",
+                        "type": "Spe",
                         "args": [
-                            "o"
+                            "u -> o / _#"
                         ]
                     }
                 ],
                 "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "leaf",
-                            "cond": "EndOfWord"
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "parameter": "u",
-                            "relative": false
-                        }
-                    ]
+                    "type": "otherwise"
                 }
+            }
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://eldamo.org/content/words/word-3064357955.html"
             }
         ]
     },
@@ -215,63 +191,20 @@
             {
                 "instructions": [
                     {
-                        "type": "ChangeSound",
+                        "type": "Spe",
                         "args": [
-                            "m"
+                            "bm -> mb"
                         ]
                     },
                     {
-                        "type": "ChangeNextSound",
+                        "type": "Spe",
                         "args": [
-                            "b"
+                            "dn -> nd"
                         ]
                     }
                 ],
                 "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "relPhoneme",
-                            "parameter": "b",
-                            "relative": false
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": 1,
-                            "parameter": "m"
-                        }
-                    ]
-                }
-            },
-            {
-                "instructions": [
-                    {
-                        "type": "ChangeSound",
-                        "args": [
-                            "n"
-                        ]
-                    },
-                    {
-                        "type": "ChangeNextSound",
-                        "args": [
-                            "d"
-                        ]
-                    }
-                ],
-                "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "relPhoneme",
-                            "parameter": "d",
-                            "relative": false
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": 1,
-                            "parameter": "n"
-                        }
-                    ]
+                    "type": "otherwise"
                 }
             }
         ],
@@ -340,116 +273,20 @@
             {
                 "instructions": [
                     {
-                        "type": "ChangeSound",
+                        "type": "Spe",
                         "args": [
-                            "ɣ"
+                            "ŋ -> ɣ / V_V"
                         ]
                     }
                 ],
                 "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "relPhoneme",
-                            "parameter": "ŋ",
-                            "relative": false
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": -1,
-                            "cls": "vowel"
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": 1,
-                            "cls": "vowel"
-                        }
-                    ]
+                    "type": "otherwise"
                 }
             }
         ],
         "sourceRefs": [
             {
                 "refText": "https://eldamo.org/content/words/word-768986721.html"
-            }
-        ]
-    },
-    {
-        "id": 1774,
-        "name": "ce-bm-dn",
-        "fromLang": "CE",
-        "toLang": "CE",
-        "branches": [
-            {
-                "instructions": [
-                    {
-                        "type": "ChangeSound",
-                        "args": [
-                            "m"
-                        ]
-                    },
-                    {
-                        "type": "ChangeNextSound",
-                        "args": [
-                            "b"
-                        ]
-                    }
-                ],
-                "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "relPhoneme",
-                            "parameter": "b",
-                            "relative": false
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": 1,
-                            "parameter": "m"
-                        }
-                    ]
-                }
-            },
-            {
-                "instructions": [
-                    {
-                        "type": "ChangeSound",
-                        "args": [
-                            "n"
-                        ]
-                    },
-                    {
-                        "type": "ChangeNextSound",
-                        "args": [
-                            "d"
-                        ]
-                    }
-                ],
-                "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "relPhoneme",
-                            "parameter": "d",
-                            "relative": false
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": 1,
-                            "parameter": "n"
-                        }
-                    ]
-                }
-            }
-        ],
-        "sourceRefs": [
-            {
-                "pubId": 12,
-                "refText": "12"
-            },
-            {
-                "refText": "https://eldamo.org/content/words/word-3882201769.html"
             }
         ]
     },
