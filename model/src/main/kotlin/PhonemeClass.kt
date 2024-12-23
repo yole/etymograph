@@ -222,7 +222,8 @@ private val implicitPhonemeClasses = mapOf(
     "short" to setOf("-long"),
     "vowel" to setOf("+syllabic"),
     "palatalized" to setOf("+high"),
-    "labialized" to setOf("+round")
+    "labialized" to setOf("+round"),
+    "aspirated" to setOf("+SG")
 )
 
 private val implicitPhonemeClasses2 = mapOf(

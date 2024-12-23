@@ -42,7 +42,7 @@ class SpeNode(val text: String?, val wordBoundary: Boolean, val phonemeClass: Ph
                 return richText("V".rich(tooltip = matchingPhonemes))
             }
             val name = if (phonemeClass is NegatedPhonemeClass)
-                "-" + phonemeClass.baseClass.name
+                "-" + phonemeClass.baseClass.name.trimStart('+')
             else if (!phonemeClass.name.startsWith("+") &&
                 language?.phonemeClassByName("-" + phonemeClass.name) != null)
             {
@@ -136,13 +136,18 @@ class SpePattern(
         val features = fromLanguage.phonemeFeatures(phoneme).toMutableSet()
         val newClasses = (newClass as? IntersectionPhonemeClass)?.classList ?: listOf(newClass)
         for (newPhonemeClass in newClasses) {
-            features.removeAll(fromLanguage.contradictingFeatures(newPhonemeClass.name))
-            features.add(newPhonemeClass.name)
+            if (newPhonemeClass is NegatedPhonemeClass) {
+                features.remove(newPhonemeClass.baseClass.name)
+            }
+            else {
+                features.removeAll(fromLanguage.contradictingFeatures(newPhonemeClass.name))
+                features.add(newPhonemeClass.name)
+            }
         }
         val newPhoneme = toLanguage.phonemes.filter { p ->
             toLanguage.phonemeFeatures(p) == features
         }
-         return newPhoneme.singleOrNull()
+        return newPhoneme.singleOrNull()
     }
 
     private fun matchNodes(it: PhonemeIterator, nodes: List<SpeNode>, trace: RuleTrace? = null): Boolean {
@@ -203,7 +208,10 @@ class SpePattern(
             }
         }.joinToString(", ")
 
-        val name = if (afterClass is NegatedPhonemeClass) "-" + afterClass.baseClass.name else afterClass.name
+        val name = if (afterClass is NegatedPhonemeClass)
+            "-" + afterClass.baseClass.name.trimStart('+')
+        else
+            afterClass.name
         return "[".rich() + name.rich(tooltip = tooltip)+ "]".rich()
     }
 
@@ -296,6 +304,9 @@ class SpePattern(
             language.phonemeClassByName(text)?.let { return it }
             if (text.startsWith("-")) {
                 language.phonemeClassByName(text.substring(1))?.let {
+                    return NegatedPhonemeClass(it)
+                }
+                language.phonemeClassByName("+" + text.substring(1))?.let {
                     return NegatedPhonemeClass(it)
                 }
             }
