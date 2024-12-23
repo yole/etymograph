@@ -113,18 +113,27 @@ class SpePattern(
         if (phoneme == null) {
             return
         }
-        val features = it.language.phonemeFeatures(phoneme).toMutableSet()
+        val newPhoneme = findReplacementPhoneme(it.language, phoneme, newClass)
+        newPhoneme?.let { p ->
+            it.replaceAtRelative(relativeIndex, p.graphemes[0])
+        }
+    }
+
+    private fun findReplacementPhoneme(
+        fromLanguage: Language,
+        phoneme: Phoneme,
+        newClass: PhonemeClass
+    ): Phoneme? {
+        val features = fromLanguage.phonemeFeatures(phoneme).toMutableSet()
         val newClasses = (newClass as? IntersectionPhonemeClass)?.classList ?: listOf(newClass)
         for (newPhonemeClass in newClasses) {
-            features.removeAll(it.language.contradictingFeatures(newPhonemeClass.name))
+            features.removeAll(fromLanguage.contradictingFeatures(newPhonemeClass.name))
             features.add(newPhonemeClass.name)
         }
         val newPhoneme = toLanguage.phonemes.filter { p ->
-            it.language.phonemeFeatures(p) == features
+            toLanguage.phonemeFeatures(p) == features
         }
-        newPhoneme.singleOrNull()?.let { p ->
-            it.replaceAtRelative(relativeIndex, p.graphemes[0])
-        }
+        return newPhoneme.singleOrNull()
     }
 
     private fun matchNodes(it: PhonemeIterator, nodes: List<SpeNode>, trace: RuleTrace? = null): Boolean {
@@ -149,7 +158,13 @@ class SpePattern(
         }
         result += " → ".rich()
         for (node in after) {
-            result += node.toRichText(toLanguage)
+            val beforeClass = before.singleOrNull()?.phonemeClass
+            if (node.phonemeClass != null && beforeClass != null) {
+                result += buildReplacementTooltip(beforeClass, node.phonemeClass)
+            }
+            else {
+                result += node.toRichText(toLanguage)
+            }
         }
         if (after.isEmpty()) {
             result += "∅".rich()
@@ -166,6 +181,21 @@ class SpePattern(
             result += node.toRichText(fromLanguage)
        }
         return result
+    }
+
+    private fun buildReplacementTooltip(beforeClass: PhonemeClass, afterClass: PhonemeClass): RichText {
+        val tooltip = fromLanguage.phonemes.mapNotNull { p ->
+            if (p.effectiveSound in beforeClass.matchingPhonemes) {
+                val replacement = findReplacementPhoneme(fromLanguage, p, afterClass)
+                "${p.effectiveSound} -> ${replacement?.effectiveSound ?: "?"}"
+            }
+            else {
+                null
+            }
+        }.joinToString(", ")
+
+        val name = if (afterClass is NegatedPhonemeClass) "-" + afterClass.baseClass.name else afterClass.name
+        return "[".rich() + name.rich(tooltip = tooltip)+ "]".rich()
     }
 
     override fun toString(): String {
