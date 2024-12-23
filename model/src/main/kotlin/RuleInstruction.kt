@@ -225,7 +225,7 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
         return null
     }
 
-    fun refersToPhoneme(phoneme: Phoneme): Boolean {
+    open fun refersToPhoneme(phoneme: Phoneme): Boolean {
         return when (type) {
             InstructionType.ChangeSound, InstructionType.ChangeNextSound -> phoneme.effectiveSound == arg
             else -> false
@@ -633,5 +633,10 @@ class SpeInstruction(val pattern: SpePattern)
             return word.derive(result)
         }
         return word
+    }
+
+    override fun refersToPhoneme(phoneme: Phoneme): Boolean {
+        return pattern.before.any { it.text == phoneme.graphemes[0] } ||
+                pattern.after.any { it.text == phoneme.graphemes[0] }
     }
 }

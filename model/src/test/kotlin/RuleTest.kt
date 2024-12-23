@@ -764,6 +764,7 @@ class RuleTest : QBaseTest() {
         val rule = parseRule(q, q, " * d -> l / #_")
         val result = rule.apply(q.word("danta"), repo)
         assertEquals("lanta", result.text)
+        assertTrue(rule.refersToPhoneme(q.phonemes.find { it.graphemes[0] == "d" }!!))
     }
 
     /*
