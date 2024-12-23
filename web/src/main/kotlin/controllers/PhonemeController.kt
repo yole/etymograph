@@ -1,10 +1,7 @@
 package ru.yole.etymograph.web.controllers
 
 import org.springframework.web.bind.annotation.*
-import ru.yole.etymograph.GraphRepository
-import ru.yole.etymograph.Language
-import ru.yole.etymograph.Phoneme
-import ru.yole.etymograph.RuleSequence
+import ru.yole.etymograph.*
 import ru.yole.etymograph.web.*
 
 data class PhonemeRuleViewModel(
@@ -78,11 +75,13 @@ class PhonemeController {
             }
         }
 
+        val sound = params.sound.nullize()
+        val classes = parseClasses(params).ifEmpty { sound?.let { defaultPhonemeClasses[it] } ?: emptySet() }
         val phoneme = repo.addPhoneme(
             language,
             graphemes,
-            params.sound.nullize(),
-            parseClasses(params),
+            sound,
+            classes,
             params.historical,
             parseSourceRefs(repo, params.source),
             params.notes
@@ -102,7 +101,7 @@ class PhonemeController {
     }
 
     private fun parseClasses(params: UpdatePhonemeParameters) =
-        params.classes.trim().split(' ').toSet()
+        params.classes.trim().takeIf { it.isNotEmpty() }?.split(' ')?.toSet() ?: emptySet()
 
     @PostMapping("/{graph}/phoneme/{id}/delete", consumes = ["application/json"])
     fun deletePhoneme(repo: GraphRepository, @PathVariable id: Int) {
