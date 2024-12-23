@@ -186,7 +186,7 @@ class PhonemeClassList {
 
 private val implicitPhonemeClasses = mapOf(
     "plosive" to setOf("obstruent", "consonant"),
-    "stop" to setOf("obstruent", "consonant"),
+    "stop" to setOf("obstruent", "consonant", "-sonorant", "-continuant"),
     "fricative" to setOf("obstruent", "consonant"),
     "affricate" to setOf("obstruent", "consonant"),
     "approximant" to setOf("sonorant", "consonant"),
@@ -196,5 +196,8 @@ private val implicitPhonemeClasses = mapOf(
     "alveolar" to setOf("coronal"),
     "vowel" to setOf("vocalic"),
     "voiced" to setOf("+voice"),
-    "voiceless" to setOf("-voice")
+    "voiceless" to setOf("-voice"),
+    "long" to setOf("+long"),
+    "short" to setOf("-long"),
+    "vowel" to setOf("+syllabic")
 )

@@ -188,6 +188,13 @@ class SpePattern(
         }
 
         private fun parseClass(language: Language, text: String): PhonemeClass {
+            val items = text.split(',')
+            if (items.size > 1) {
+                val subclasses = items.map { language.phonemeClassByName(it.trim())
+                    ?: throw SpeParseException("Can't find phoneme class $text") }
+                return IntersectionPhonemeClass(text, subclasses)
+            }
+
             return language.phonemeClassByName(text)
                 ?: throw SpeParseException("Can't find phoneme class $text")
         }

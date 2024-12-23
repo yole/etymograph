@@ -30,6 +30,15 @@ class SpePatternTest : QBaseTest() {
     }
 
     @Test
+    fun testParseMultipleClass() {
+        val pattern = SpePattern.parse(q, "a -> o / [+voice,-sonorant,-continuant]_")
+        val precede = pattern.preceding.single()
+        val phonemeClass = precede.phonemeClass!! as IntersectionPhonemeClass
+        assertEquals(3, phonemeClass.classList.size)
+        assertEquals("a -> o / [+voice,-sonorant,-continuant]_", pattern.toString())
+    }
+
+    @Test
     fun testParseEmptySet() {
         val pattern = SpePattern.parse(q, "a -> 0 / [+voice]_")
         assertEquals(0, pattern.after.size)
