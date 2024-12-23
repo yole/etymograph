@@ -93,7 +93,7 @@ class SpePattern(
                 for (i in 0..<Math.min(beforeLength, afterLength)) {
                     val afterClass = after[i].phonemeClass
                     if (afterClass != null) {
-                        replacePhonemeByFeatures(it, i, afterClass)
+                        replacePhonemeByFeatures(it, i, afterClass, trace)
                     }
                     else {
                         it.replaceAtRelative(i, after[i].text!!)
@@ -116,15 +116,19 @@ class SpePattern(
         return it.result()
     }
 
-    private fun replacePhonemeByFeatures(it: PhonemeIterator, relativeIndex: Int, newClass: PhonemeClass) {
+    private fun replacePhonemeByFeatures(it: PhonemeIterator, relativeIndex: Int, newClass: PhonemeClass, trace: RuleTrace? = null) {
         val phonemeText = it.atRelative(relativeIndex)
-        val phoneme = it.language.phonemes.find { phonemeText in it.graphemes }
+        val phoneme = fromLanguage.phonemes.find { phonemeText in it.graphemes }
         if (phoneme == null) {
+            trace?.logInstruction { "Not found matching phoneme" }
             return
         }
         val newPhoneme = findReplacementPhoneme(it.language, phoneme, newClass)
         newPhoneme?.let { p ->
+            trace?.logInstruction { "Replacing phoneme with ${p.graphemes[0]}" }
             it.replaceAtRelative(relativeIndex, p.graphemes[0])
+        } ?: run {
+            trace?.logInstruction { "No replacement phoneme for ${phoneme.effectiveSound} with ${newClass.name}" }
         }
     }
 
