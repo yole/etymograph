@@ -193,5 +193,7 @@ private val implicitPhonemeClasses = mapOf(
     "lateral" to setOf("sonorant", "consonant"),
     "dental" to setOf("coronal"),
     "alveolar" to setOf("coronal"),
-    "vowel" to setOf("vocalic")
+    "vowel" to setOf("vocalic"),
+    "voiced" to setOf("+voice"),
+    "voiceless" to setOf("-voice")
 )

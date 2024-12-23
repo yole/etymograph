@@ -1786,25 +1786,14 @@
             {
                 "instructions": [
                     {
-                        "type": "ChangeSound",
+                        "type": "Spe",
                         "args": [
-                            "l"
+                            "d -> l / #_"
                         ]
                     }
                 ],
                 "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "leaf",
-                            "cond": "BeginningOfWord"
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "parameter": "d",
-                            "relative": false
-                        }
-                    ]
+                    "type": "otherwise"
                 }
             }
         ],
@@ -4053,26 +4042,14 @@
             {
                 "instructions": [
                     {
-                        "type": "ChangeSound",
+                        "type": "Spe",
                         "args": [
-                            "w"
+                            "m -> w / n_"
                         ]
                     }
                 ],
                 "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "relPhoneme",
-                            "parameter": "m",
-                            "relative": false
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": -1,
-                            "parameter": "n"
-                        }
-                    ]
+                    "type": "otherwise"
                 }
             }
         ],
@@ -4447,16 +4424,14 @@
             {
                 "instructions": [
                     {
-                        "type": "ChangeSound",
+                        "type": "Spe",
                         "args": [
-                            "s"
+                            "θ -> s"
                         ]
                     }
                 ],
                 "condition": {
-                    "type": "relPhoneme",
-                    "parameter": "θ",
-                    "relative": false
+                    "type": "otherwise"
                 }
             }
         ],
@@ -4475,16 +4450,14 @@
             {
                 "instructions": [
                     {
-                        "type": "ChangeSound",
+                        "type": "Spe",
                         "args": [
-                            "r"
+                            "z -> r"
                         ]
                     }
                 ],
                 "condition": {
-                    "type": "relPhoneme",
-                    "parameter": "z",
-                    "relative": false
+                    "type": "otherwise"
                 }
             }
         ],

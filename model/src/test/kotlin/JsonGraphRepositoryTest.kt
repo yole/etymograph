@@ -1,6 +1,7 @@
 package ru.yole.etymograph
 
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
 import ru.yole.etymograph.JsonGraphRepository.Companion.ruleBranchesFromSerializedFormat
@@ -61,6 +62,17 @@ class JsonGraphRepositoryTest : QBaseTest() {
         val serializedData = rule.ruleToSerializedFormat()
         val branches = ruleBranchesFromSerializedFormat(repo, q, serializedData.branches)
         assertEquals("sound is 'i' and previous sound is not vowel", branches[0].condition.toEditableText())
+    }
+
+    @Test
+    fun serializeSpeRule() {
+        val rule = parseRule(q, q, "* d -> l / #_")
+
+        val serializedData = rule.ruleToSerializedFormat()
+        val branches = ruleBranchesFromSerializedFormat(repo, q, serializedData.branches)
+        val insn = branches[0].instructions[0]
+        assertTrue(insn is SpeInstruction)
+        assertEquals("d -> l / #_", insn.toEditableText(repo))
     }
 
     @Test

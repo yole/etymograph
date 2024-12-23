@@ -142,7 +142,9 @@ class RuleBranch(val condition: RuleCondition, val instructions: List<RuleInstru
     fun toEditableText(graph: GraphRepository): String {
         val commentString = (comment?.split('\n')?.joinToString("") { "# $it\n" }) ?: ""
         return commentString + condition.toEditableText() + ":\n" +
-                instructions.joinToString("\n") { " - " + it.toEditableText(graph) }
+                instructions.joinToString("\n") {
+                    (if (it is SpeInstruction) "* " else " - ") + it.toEditableText(graph)
+                }
     }
 
     fun toSummaryText(graph: GraphRepository, phonemic: Boolean): String? {
@@ -360,7 +362,9 @@ class Rule(
 
     fun toEditableText(graph: GraphRepository): String {
         if (isUnconditional()) {
-            return logic.branches[0].instructions.joinToString("\n") { " - " + it.toEditableText(graph) }
+            return logic.branches[0].instructions.joinToString("\n") {
+                (if (it is SpeInstruction) "* " else " - ") + it.toEditableText(graph)
+            }
         }
         return logic.preInstructions.joinToString("") { " - " + it.toEditableText(graph) + "\n" } +
                logic.branches.joinToString("\n\n") { it.toEditableText(graph) } +

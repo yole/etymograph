@@ -190,6 +190,15 @@ class RuleTest : QBaseTest() {
     }
 
     @Test
+    fun ruleParseSPE() {
+        val rule = parseRule(q, q, " * d -> l / #_")
+        assertEquals(1, rule.logic.branches.size)
+        val speInstruction = rule.logic.branches[0].instructions.single() as SpeInstruction
+        assertEquals("l", speInstruction.pattern.after.single().text)
+        assertEquals("* d -> l / #_", rule.toEditableText(repo))
+    }
+
+    @Test
     fun wordIsUnknownClass() {
         assertThrows("Unknown word class 'm'", RuleParseException::class.java) {
             Rule.parseBranches("word is m:\n- no change", q.parseContext())
@@ -748,6 +757,13 @@ class RuleTest : QBaseTest() {
         val defRule = repo.rule("- apply rule 'on-acc'\nword is n:\n- append 'it'", fromLanguage = on)
         val result = defRule.apply(haust, repo)
         assertEquals("haustit", result.text)
+    }
+
+    @Test
+    fun speRule() {
+        val rule = parseRule(q, q, " * d -> l / #_")
+        val result = rule.apply(q.word("danta"), repo)
+        assertEquals("lanta", result.text)
     }
 
     /*

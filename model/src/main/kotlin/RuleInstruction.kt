@@ -22,7 +22,8 @@ enum class InstructionType(
     ChangeSoundClass("becomes", RelativeOrdinals.toPattern() + "?(.+) becomes (.+)", true),
     SoundDisappears("sound disappears", RelativeOrdinals.toPattern() + "?sound disappears", true),
     SoundIsGeminated("sound is geminated"),
-    SoundInserted("is inserted", "'(.+)' is inserted before", true);
+    SoundInserted("is inserted", "'(.+)' is inserted before", true),
+    Spe("SPE pattern", "", true);
 
     val regex = Regex(pattern ?: Regex.escape(insnName))
 }
@@ -237,6 +238,9 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
 
     companion object {
         fun parse(s: String, context: RuleParseContext, prefix: String = "-"): RuleInstruction {
+            if (s.startsWith("*")) {
+                return SpeInstruction(SpePattern.parse(context.fromLanguage, s.removePrefix("*").trim()))
+            }
             if (!s.startsWith(prefix)) {
                 throw RuleParseException("Instructions must start with $prefix")
             }
@@ -605,5 +609,25 @@ class ChangePhonemeClassInstruction(val relativeIndex: Int, val oldClass: String
             val relativeIndex = RelativeOrdinals.parseMatch(match, 1)
             return ChangePhonemeClassInstruction(relativeIndex, match.groupValues[2], match.groupValues[3])
         }
+    }
+}
+
+class SpeInstruction(val pattern: SpePattern)
+    : RuleInstruction(InstructionType.Spe, pattern.toString())
+{
+    override fun toRichText(graph: GraphRepository): RichText {
+        return pattern.toString().richText()
+    }
+
+    override fun toSummaryText(graph: GraphRepository, condition: RuleCondition): String? {
+        return pattern.toString().replace("->", "→")
+    }
+
+    override fun apply(rule: Rule, branch: RuleBranch?, word: Word, graph: GraphRepository, trace: RuleTrace?): Word {
+        val result = pattern.apply(word.language, word.text)
+        if (result != word.text) {
+            return word.derive(result)
+        }
+        return word
     }
 }
