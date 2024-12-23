@@ -188,8 +188,18 @@ class PhonemeClassList {
 fun withImplicit(classes: Set<String>): Set<String> =
     classes + implicitPhonemeClasses(classes)
 
-fun implicitPhonemeClasses(classes: Set<String>) =
-    classes.map { implicitPhonemeClasses[it] ?: emptySet() }.flatten() - classes
+fun implicitPhonemeClasses(classes: Set<String>): Set<String> {
+    val result = classes.toMutableSet()
+    for (s in classes) {
+        implicitPhonemeClasses[s]?.let { result += it }
+    }
+    for (entry in implicitPhonemeClasses2) {
+        if (result.containsAll(entry.key)) {
+            result.addAll(entry.value)
+        }
+    }
+    return result - classes
+}
 
 private val implicitPhonemeClasses = mapOf(
     "plosive" to setOf("obstruent", "consonant"),
@@ -199,7 +209,9 @@ private val implicitPhonemeClasses = mapOf(
     "approximant" to setOf("sonorant", "consonant"),
     "trill" to setOf("sonorant", "consonant"),
     "lateral" to setOf("sonorant", "consonant"),
+    "nasal" to setOf("sonorant", "consonant", "-continuant"),
     "bilabial" to setOf("labial"),
+    "labiodental" to setOf("labial"),
     "velar" to setOf("dorsal"),
     "dental" to setOf("coronal"),
     "alveolar" to setOf("coronal"),
@@ -208,9 +220,18 @@ private val implicitPhonemeClasses = mapOf(
     "voiceless" to setOf("-voice"),
     "long" to setOf("+long"),
     "short" to setOf("-long"),
-    "vowel" to setOf("+syllabic")
+    "vowel" to setOf("+syllabic"),
+    "palatalized" to setOf("+high"),
+    "labialized" to setOf("+round")
+)
+
+private val implicitPhonemeClasses2 = mapOf(
+    setOf("bilabial", "fricative") to setOf("-strident"),
+    setOf("labiodental", "fricative") to setOf("+strident")
 )
 
 val defaultPhonemeClasses = mapOf(
-    "ɸ" to setOf("voiceless", "bilabial", "fricative")
+    "ɸ" to setOf("voiceless", "bilabial", "fricative"),
+    "β" to setOf("voiced", "bilabial", "fricative"),
+    "θ" to setOf("voiceless", "dental", "fricative")
 )

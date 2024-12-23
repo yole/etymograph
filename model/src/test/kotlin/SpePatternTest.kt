@@ -47,6 +47,15 @@ class SpePatternTest : QBaseTest() {
     }
 
     @Test
+    fun parsePlusBinaryClass() {
+        val pattern = SpePattern.parse(q, q, "a -> o / [+sonorant]_")
+        val cls = pattern.preceding.single().phonemeClass!!
+        assertEquals("sonorant", cls.name)
+        assertEquals("a -> o / [+sonorant]_", pattern.toString())
+    }
+
+
+    @Test
     fun parseEmptySet() {
         val pattern = SpePattern.parse(q, q,"a -> 0 / [+voice]_")
         assertEquals(0, pattern.after.size)

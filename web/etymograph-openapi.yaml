@@ -1623,6 +1623,8 @@ components:
           type: "string"
         implicitClasses:
           type: "string"
+        features:
+          type: "string"
         historical:
           type: "boolean"
         source:
@@ -1645,6 +1647,7 @@ components:
         - "sound"
         - "classes"
         - "implicitClasses"
+        - "features"
         - "historical"
         - "source"
         - "sourceEditableText"

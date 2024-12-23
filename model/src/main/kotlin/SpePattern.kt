@@ -41,7 +41,16 @@ class SpeNode(val text: String?, val wordBoundary: Boolean, val phonemeClass: Ph
             if (phonemeClass.name == PhonemeClass.vowelClassName) {
                 return richText("V".rich(tooltip = matchingPhonemes))
             }
-            val name = if (phonemeClass is NegatedPhonemeClass) "-" + phonemeClass.baseClass.name else phonemeClass.name
+            val name = if (phonemeClass is NegatedPhonemeClass)
+                "-" + phonemeClass.baseClass.name
+            else if (!phonemeClass.name.startsWith("+") &&
+                language?.phonemeClassByName("-" + phonemeClass.name) != null)
+            {
+                "+" + phonemeClass.name
+            }
+            else
+                phonemeClass.name
+
             return "[".rich() + name.rich(tooltip = matchingPhonemes)+ "]".rich()
         }
         if (text != null) {
@@ -133,7 +142,7 @@ class SpePattern(
         val newPhoneme = toLanguage.phonemes.filter { p ->
             toLanguage.phonemeFeatures(p) == features
         }
-        return newPhoneme.singleOrNull()
+         return newPhoneme.singleOrNull()
     }
 
     private fun matchNodes(it: PhonemeIterator, nodes: List<SpeNode>, trace: RuleTrace? = null): Boolean {
@@ -288,6 +297,13 @@ class SpePattern(
             if (text.startsWith("-")) {
                 language.phonemeClassByName(text.substring(1))?.let {
                     return NegatedPhonemeClass(it)
+                }
+            }
+            if (text.startsWith("+")) {
+                val baseName = text.substring(1)
+                val baseClass = language.phonemeClassByName(baseName)
+                if (baseClass != null && language.phonemeClassByName("-$baseName") != null) {
+                    return baseClass
                 }
             }
 
