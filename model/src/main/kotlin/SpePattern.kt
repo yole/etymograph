@@ -51,7 +51,21 @@ class SpePattern(
         while (true) {
             val itCopy = it.clone()
             if (matchNodes(itCopy, before) && matchNodes(itCopy, following) && matchNodesBackwards(it.clone(), preceding)) {
-                it.replace(after.single().text!!)
+                val beforeLength = before.size
+                val afterLength = after.size
+                for (i in 0..<Math.min(beforeLength, afterLength)) {
+                    it.replaceAtRelative(i, after[i].text!!)
+                }
+                if (beforeLength < afterLength) {
+                    for (i in beforeLength..<afterLength) {
+                        it.insertAtRelative(i, after[i].text!!)
+                    }
+                }
+                if (beforeLength > afterLength) {
+                    for (i in afterLength..<beforeLength) {
+                        it.deleteAtRelative(i)
+                    }
+                }
             }
             if (!it.advance()) break
         }
@@ -126,7 +140,7 @@ class SpePattern(
                     pos++
                 }
                 else {
-                    result.add(SpeNode(text.substring(pos, 1), false, null))
+                    result.add(SpeNode(text.substring(pos, pos + 1), false, null))
                     pos++
                 }
             }

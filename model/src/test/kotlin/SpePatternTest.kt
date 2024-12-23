@@ -66,6 +66,12 @@ class SpePatternTest : QBaseTest() {
     }
 
     @Test
+    fun replaceMultipleTokens() {
+        val pattern = SpePattern.parse(q, "sr -> l / #_")
+        assertEquals("lon", pattern.apply(q, "sron"))
+    }
+
+    @Test
     fun toStringSimple() {
         val pattern = SpePattern.parse(q, "a -> o")
         assertEquals("a -> o", pattern.toString())
