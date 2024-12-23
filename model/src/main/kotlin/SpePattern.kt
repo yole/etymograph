@@ -41,7 +41,8 @@ class SpeNode(val text: String?, val wordBoundary: Boolean, val phonemeClass: Ph
             if (phonemeClass.name == PhonemeClass.vowelClassName) {
                 return richText("V".rich(tooltip = matchingPhonemes))
             }
-            return "[".rich() + phonemeClass.name.rich(tooltip = matchingPhonemes)+ "]".rich()
+            val name = if (phonemeClass is NegatedPhonemeClass) "-" + phonemeClass.baseClass.name else phonemeClass.name
+            return "[".rich() + name.rich(tooltip = matchingPhonemes)+ "]".rich()
         }
         if (text != null) {
             val phoneme = language?.phonemes?.find { text in it.graphemes }
@@ -245,13 +246,22 @@ class SpePattern(
         private fun parseClass(language: Language, text: String): PhonemeClass {
             val items = text.split(',')
             if (items.size > 1) {
-                val subclasses = items.map { language.phonemeClassByName(it.trim())
-                    ?: throw SpeParseException("Can't find phoneme class $text") }
+                val subclasses = items.map { parseSingleClass(language, it.trim()) }
                 return IntersectionPhonemeClass(text, subclasses)
             }
 
-            return language.phonemeClassByName(text)
-                ?: throw SpeParseException("Can't find phoneme class $text")
+            return parseSingleClass(language, text)
+        }
+
+        private fun parseSingleClass(language: Language, text: String): PhonemeClass {
+            language.phonemeClassByName(text)?.let { return it }
+            if (text.startsWith("-")) {
+                language.phonemeClassByName(text.substring(1))?.let {
+                    return NegatedPhonemeClass(it)
+                }
+            }
+
+            throw SpeParseException("Can't find phoneme class $text")
         }
     }
 }

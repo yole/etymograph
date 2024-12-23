@@ -5,7 +5,7 @@ import org.junit.Test
 
 class SpePatternTest : QBaseTest() {
     @Test
-    fun testParseSimple() {
+    fun parseSimple() {
         val pattern = SpePattern.parse(q, q, "a -> o")
         val beforeNode = pattern.before.single()
         assertEquals("a", beforeNode.text)
@@ -14,7 +14,7 @@ class SpePatternTest : QBaseTest() {
     }
 
     @Test
-    fun testParseContext() {
+    fun parseContext() {
         val pattern = SpePattern.parse(q, q,"a -> o / b_c")
         val precede = pattern.preceding.single()
         assertEquals("b", precede.text)
@@ -23,14 +23,14 @@ class SpePatternTest : QBaseTest() {
     }
 
     @Test
-    fun testParseClass() {
+    fun parseClass() {
         val pattern = SpePattern.parse(q, q, "a -> o / [+voice]_")
         val precede = pattern.preceding.single()
         assertEquals("+voice", precede.phonemeClass!!.name)
     }
 
     @Test
-    fun testParseMultipleClass() {
+    fun parseMultipleClass() {
         val pattern = SpePattern.parse(q, q,"a -> o / [+voice,-sonorant,-continuant]_")
         val precede = pattern.preceding.single()
         val phonemeClass = precede.phonemeClass!! as IntersectionPhonemeClass
@@ -39,14 +39,22 @@ class SpePatternTest : QBaseTest() {
     }
 
     @Test
-    fun testParseEmptySet() {
+    fun parseNegatedClass() {
+        val pattern = SpePattern.parse(q, q, "a -> o / [-coronal]_")
+        val cls = pattern.preceding.single().phonemeClass!!
+        assertEquals("coronal", (cls as NegatedPhonemeClass).baseClass.name)
+        assertEquals("a -> o / [-coronal]_", pattern.toString())
+    }
+
+    @Test
+    fun parseEmptySet() {
         val pattern = SpePattern.parse(q, q,"a -> 0 / [+voice]_")
         assertEquals(0, pattern.after.size)
         assertEquals("a -> 0 / [+voice]_", pattern.toString())
     }
 
     @Test
-    fun testParseCV() {
+    fun parseCV() {
         val pattern = SpePattern.parse(q, q, "a -> 0 / C_V")
         assertEquals("consonant", pattern.preceding.single().phonemeClass!!.name)
         assertEquals("vowel", pattern.following.single().phonemeClass!!.name)

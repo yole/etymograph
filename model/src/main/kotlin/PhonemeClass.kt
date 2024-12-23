@@ -98,18 +98,25 @@ class IntersectionPhonemeClass(name: String, val classList: List<PhonemeClass>)
 
     companion object {
         private fun mergePhonemeClasses(classList: List<PhonemeClass>): List<String> {
-            return classList.fold(emptySet<String>()) { set, cls ->
+            val result = classList.fold(emptySet<String>()) { set, cls ->
                 if (set.isEmpty())
                     cls.matchingPhonemes.toSet()
                 else
                     set.intersect(cls.matchingPhonemes)
 
+            }
+
+            return classList.fold(result) { set, cls ->
+                if (cls is NegatedPhonemeClass)
+                    set - cls.baseClass.matchingPhonemes
+                else
+                    set
             }.toList()
         }
     }
 }
 
-class NegatedPhonemeClass(private val baseClass: PhonemeClass)
+class NegatedPhonemeClass(val baseClass: PhonemeClass)
     : PhonemeClass("non-" + baseClass.name, emptyList())
 {
     override fun matchesCurrent(it: PhonemeIterator): Boolean {
