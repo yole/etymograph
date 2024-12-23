@@ -30,6 +30,13 @@ class SpePatternTest : QBaseTest() {
     }
 
     @Test
+    fun testParseEmptySet() {
+        val pattern = SpePattern.parse(q, "a -> 0 / [+voice]_")
+        assertEquals(0, pattern.after.size)
+        assertEquals("a -> 0 / [+voice]_", pattern.toString())
+    }
+
+    @Test
     fun replaceWithoutContext() {
         val pattern = SpePattern.parse(q, "a -> o")
         assertEquals("bo", pattern.apply(q, "ba"))

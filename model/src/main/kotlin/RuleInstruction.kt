@@ -91,7 +91,7 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
         }
     }
 
-    fun toEditableText(graph: GraphRepository): String = toRichText(graph).toString()
+    open fun toEditableText(graph: GraphRepository): String = toRichText(graph).toString()
 
     open fun toRichText(graph: GraphRepository): RichText {
         if (type == InstructionType.SoundDisappears && arg != "0" && arg.isNotEmpty()) {
@@ -616,11 +616,21 @@ class SpeInstruction(val pattern: SpePattern)
     : RuleInstruction(InstructionType.Spe, pattern.toString())
 {
     override fun toRichText(graph: GraphRepository): RichText {
-        return pattern.toString().richText()
+        return toPrettyText().richText()
+    }
+
+    override fun toEditableText(graph: GraphRepository): String {
+        return pattern.toString()
     }
 
     override fun toSummaryText(graph: GraphRepository, condition: RuleCondition): String? {
-        return pattern.toString().replace("->", "→")
+        return toPrettyText()
+    }
+
+    private fun toPrettyText(): String {
+        return pattern.toString()
+            .replace("->", "→")
+            .replace('0', '∅')
     }
 
     override fun apply(rule: Rule, branch: RuleBranch?, word: Word, graph: GraphRepository, trace: RuleTrace?): Word {

@@ -82,7 +82,9 @@ class SpePattern(
     }
 
     override fun toString(): String {
-        val beforeAfter = before.joinToString("") + " -> " + after.joinToString("")
+        val beforeAfter = before.joinToString("").ifEmpty { "0" } +
+                " -> " +
+                after.joinToString("").ifEmpty { "0" }
         if (preceding.isEmpty() && following.isEmpty()) {
             return beforeAfter
         }
@@ -123,6 +125,9 @@ class SpePattern(
         }
 
         private fun parseNodes(language: Language, text: String): List<SpeNode> {
+            if (text == "0") {
+                return emptyList()
+            }
             val result = mutableListOf<SpeNode>()
             var pos = 0
             while (pos < text.length) {
