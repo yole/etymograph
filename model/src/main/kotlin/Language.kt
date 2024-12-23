@@ -173,6 +173,25 @@ class Language(val name: String, val shortName: String) {
         return phonemeClasses.implicitClasses(classes)
     }
 
+    fun phonemeFeatures(phoneme: Phoneme): Set<String> {
+        return (phoneme.classes + phonemeClasses.implicitClasses(phoneme.classes)).filterTo(mutableSetOf()) {
+            it.startsWith('+') || it.startsWith('-') || it in placeFeatures
+        }
+    }
+
+    fun contradictingFeatures(name: String): Collection<String> {
+        if (name.startsWith("+")) {
+            return listOf("-" + name.substring(1))
+        }
+        if (name.startsWith("-")) {
+            return listOf("+" + name.substring(1))
+        }
+        if (name in placeFeatures) {
+            return placeFeatures.filter { it != name }
+        }
+        return emptyList()
+    }
+
     fun normalizeWord(text: String): String {
         return buildString {
             orthoPhonemeLookup.iteratePhonemes(text.lowercase(Locale.FRANCE)) { s, phoneme ->
@@ -279,5 +298,6 @@ class Language(val name: String, val shortName: String) {
         )
         val vowelHeights = listOf("close", "near-close", "close-mid", "mid", "open-mid", "near-open", "open")
         val vowelBackness = listOf("front", "near-front", "central", "near-back", "back")
+        val placeFeatures = listOf("labial", "coronal", "dorsal", "pharyngeal", "laryngeal")
     }
 }

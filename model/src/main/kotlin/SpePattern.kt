@@ -61,7 +61,13 @@ class SpePattern(
                 val beforeLength = before.size
                 val afterLength = after.size
                 for (i in 0..<Math.min(beforeLength, afterLength)) {
-                    it.replaceAtRelative(i, after[i].text!!)
+                    val afterClass = after[i].phonemeClass
+                    if (afterClass != null) {
+                        replacePhonemeByFeatures(it, i, afterClass)
+                    }
+                    else {
+                        it.replaceAtRelative(i, after[i].text!!)
+                    }
                 }
                 if (beforeLength < afterLength) {
                     for (i in beforeLength..<afterLength) {
@@ -78,6 +84,26 @@ class SpePattern(
         }
 
         return it.result()
+    }
+
+    private fun replacePhonemeByFeatures(it: PhonemeIterator, relativeIndex: Int, newClass: PhonemeClass) {
+        val phonemeText = it.atRelative(relativeIndex)
+        val phoneme = it.language.phonemes.find { phonemeText in it.graphemes }
+        if (phoneme == null) {
+            return
+        }
+        val features = it.language.phonemeFeatures(phoneme).toMutableSet()
+        val newClasses = (newClass as? IntersectionPhonemeClass)?.classList ?: listOf(newClass)
+        for (newPhonemeClass in newClasses) {
+            features.removeAll(it.language.contradictingFeatures(newPhonemeClass.name))
+            features.add(newPhonemeClass.name)
+        }
+        val newPhoneme = it.language.phonemes.filter { p ->
+            it.language.phonemeFeatures(p) == features
+        }
+        newPhoneme.singleOrNull()?.let { p ->
+            it.replaceAtRelative(relativeIndex, p.graphemes[0])
+        }
     }
 
     private fun matchNodes(it: PhonemeIterator, nodes: List<SpeNode>): Boolean {

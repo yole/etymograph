@@ -96,6 +96,12 @@ class SpePatternTest : QBaseTest() {
     }
 
     @Test
+    fun transform() {
+        val pattern = SpePattern.parse(q, "[-sonorant,-continuant,+voice] -> [-voice] / _#")
+        assertEquals("obat", pattern.apply(q, "obad"))
+    }
+
+    @Test
     fun toStringSimple() {
         val pattern = SpePattern.parse(q, "a -> o")
         assertEquals("a -> o", pattern.toString())
