@@ -55,7 +55,8 @@ class SpeNode(val text: String?, val wordBoundary: Boolean, val phonemeClass: Ph
 }
 
 class SpePattern(
-    private val language: Language,
+    private val fromLanguage: Language,
+    private val toLanguage: Language,
     val before: List<SpeNode>,
     val after: List<SpeNode>,
     val preceding: List<SpeNode>,
@@ -106,7 +107,7 @@ class SpePattern(
             features.removeAll(it.language.contradictingFeatures(newPhonemeClass.name))
             features.add(newPhonemeClass.name)
         }
-        val newPhoneme = it.language.phonemes.filter { p ->
+        val newPhoneme = toLanguage.phonemes.filter { p ->
             it.language.phonemeFeatures(p) == features
         }
         newPhoneme.singleOrNull()?.let { p ->
@@ -125,14 +126,14 @@ class SpePattern(
     fun toRichText(): RichText {
         var result = RichText(emptyList())
         for (node in before) {
-            result += node.toRichText(language)
+            result += node.toRichText(fromLanguage)
         }
         if (before.isEmpty()) {
             result += "∅".rich()
         }
         result += " → ".rich()
         for (node in after) {
-            result += node.toRichText(language)
+            result += node.toRichText(toLanguage)
         }
         if (after.isEmpty()) {
             result += "∅".rich()
@@ -142,11 +143,11 @@ class SpePattern(
         }
         result += " / ".rich()
         for (node in preceding) {
-            result += node.toRichText(language)
+            result += node.toRichText(fromLanguage)
         }
         result += "_".rich()
         for (node in following) {
-            result += node.toRichText(language)
+            result += node.toRichText(fromLanguage)
        }
         return result
     }
@@ -158,7 +159,7 @@ class SpePattern(
     }
 
     companion object {
-        fun parse(language: Language, text: String): SpePattern {
+        fun parse(fromLanguage: Language, toLanguage: Language, text: String): SpePattern {
             val arrow = text.indexOf("->")
             if (arrow < 0) {
                 throw SpeParseException("-> required in SPE pattern")
@@ -168,9 +169,10 @@ class SpePattern(
             val slash = afterTextWithContext.indexOf('/')
             if (slash < 0) {
                 return SpePattern(
-                    language,
-                    parseNodes(language, beforeText),
-                    parseNodes(language, afterTextWithContext),
+                    fromLanguage,
+                    toLanguage,
+                    parseNodes(fromLanguage, beforeText),
+                    parseNodes(toLanguage, afterTextWithContext),
                     emptyList(),
                     emptyList()
                 )
@@ -184,11 +186,12 @@ class SpePattern(
             val precedeText = context.substring(0, underscore).trim()
             val followText = context.substring(underscore + 1).trim()
             return SpePattern(
-                language,
-                parseNodes(language, beforeText),
-                parseNodes(language, afterText),
-                parseNodes(language, precedeText),
-                parseNodes(language, followText)
+                fromLanguage,
+                toLanguage,
+                parseNodes(fromLanguage, beforeText),
+                parseNodes(toLanguage, afterText),
+                parseNodes(fromLanguage, precedeText),
+                parseNodes(fromLanguage, followText)
             )
         }
 

@@ -46,7 +46,7 @@ class JsonGraphRepositoryTest : QBaseTest() {
         val serializedData = applySoundRule.ruleToSerializedFormat()
         assertEquals(2, serializedData.branches[0].instructions[0].args.size)
 
-        val branches = ruleBranchesFromSerializedFormat(repo, q, serializedData.branches)
+        val branches = ruleBranchesFromSerializedFormat(repo, q, q, serializedData.branches)
         val insn = branches[0].instructions[0] as ApplySoundRuleInstruction
         assertEquals("q-lengthen", insn.ruleRef.resolve().name)
         assertEquals("vowel", insn.seekTarget!!.phonemeClass!!.name)
@@ -60,7 +60,7 @@ class JsonGraphRepositoryTest : QBaseTest() {
         """.trimIndent())
 
         val serializedData = rule.ruleToSerializedFormat()
-        val branches = ruleBranchesFromSerializedFormat(repo, q, serializedData.branches)
+        val branches = ruleBranchesFromSerializedFormat(repo, q, q, serializedData.branches)
         assertEquals("sound is 'i' and previous sound is not vowel", branches[0].condition.toEditableText())
     }
 
@@ -69,7 +69,7 @@ class JsonGraphRepositoryTest : QBaseTest() {
         val rule = parseRule(q, q, "* d -> l / #_")
 
         val serializedData = rule.ruleToSerializedFormat()
-        val branches = ruleBranchesFromSerializedFormat(repo, q, serializedData.branches)
+        val branches = ruleBranchesFromSerializedFormat(repo, q, q, serializedData.branches)
         val insn = branches[0].instructions[0]
         assertTrue(insn is SpeInstruction)
         assertEquals("d -> l / #_", insn.toEditableText(repo))
@@ -83,7 +83,7 @@ class JsonGraphRepositoryTest : QBaseTest() {
         """.trimIndent())
 
         val serializedData = rule.ruleToSerializedFormat()
-        val branches = ruleBranchesFromSerializedFormat(repo, q, serializedData.branches)
+        val branches = ruleBranchesFromSerializedFormat(repo, q, q, serializedData.branches)
         assertEquals("'e' is inserted before", branches[0].instructions[0].toEditableText(repo))
     }
 
@@ -94,7 +94,7 @@ class JsonGraphRepositoryTest : QBaseTest() {
         """.trimIndent())
 
         val serializedData = rule.ruleToSerializedFormat()
-        val branches = ruleBranchesFromSerializedFormat(repo, q, serializedData.branches)
+        val branches = ruleBranchesFromSerializedFormat(repo, q, q, serializedData.branches)
         assertEquals("insert 'i' before last consonant", branches[0].instructions[0].toEditableText(repo))
     }
 
@@ -106,7 +106,7 @@ class JsonGraphRepositoryTest : QBaseTest() {
         """.trimIndent())
 
         val serializedData = rule.ruleToSerializedFormat()
-        val branches = ruleBranchesFromSerializedFormat(repo, q, serializedData.branches)
+        val branches = ruleBranchesFromSerializedFormat(repo, q, q, serializedData.branches)
         assertEquals("This is a comment", branches[0].comment)
     }
 
@@ -118,7 +118,7 @@ class JsonGraphRepositoryTest : QBaseTest() {
             = append 'e'
         """.trimIndent())
         val serializedData = rule.ruleToSerializedFormat()
-        val rule2 = repo.ruleFromSerializedFormat(serializedData, q)
+        val rule2 = repo.ruleFromSerializedFormat(serializedData, q, q)
         assertEquals(1, rule2.logic.postInstructions.size)
     }
 

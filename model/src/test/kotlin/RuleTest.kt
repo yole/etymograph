@@ -550,7 +550,7 @@ class RuleTest : QBaseTest() {
         )
 
         val serializedRule = rule.ruleToSerializedFormat()
-        val branches = ruleBranchesFromSerializedFormat(emptyRepo, q, serializedRule.branches)
+        val branches = ruleBranchesFromSerializedFormat(emptyRepo, q, q, serializedRule.branches)
         assertTrue(branches[0].instructions[0] is ApplyStressInstruction)
     }
 
@@ -576,7 +576,7 @@ class RuleTest : QBaseTest() {
         val instruction = rule.logic.branches[0].instructions[0]
         assertEquals("utul", instruction.apply(rule, null, q.word("tul"), emptyRepo).text)
         val data = instruction.toSerializedFormat()
-        val deserialized = ruleInstructionFromSerializedFormat(emptyRepo, q, data)
+        val deserialized = ruleInstructionFromSerializedFormat(emptyRepo, q, q, data)
         assertEquals("utul", deserialized.apply(rule, null, q.word("tul"), emptyRepo).text)
         assertEquals("prepend first vowel", instruction.toEditableText(repo))
     }
@@ -689,7 +689,7 @@ class RuleTest : QBaseTest() {
 
         val instruction = rule.firstInstruction
         val data = instruction.toSerializedFormat()
-        val deserialized = ruleInstructionFromSerializedFormat(repo, oe, data)
+        val deserialized = ruleInstructionFromSerializedFormat(repo, oe, oe, data)
         assertTrue(deserialized is MorphemeInstruction)
         assertEquals(gePrefix.id, (deserialized as MorphemeInstruction).morphemeId)
     }

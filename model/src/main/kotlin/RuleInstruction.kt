@@ -239,7 +239,7 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
     companion object {
         fun parse(s: String, context: RuleParseContext, prefix: String = "-"): RuleInstruction {
             if (s.startsWith("*")) {
-                return SpeInstruction(SpePattern.parse(context.fromLanguage, s.removePrefix("*").trim()))
+                return SpeInstruction(SpePattern.parse(context.fromLanguage, context.toLanguage, s.removePrefix("*").trim()))
             }
             if (!s.startsWith(prefix)) {
                 throw RuleParseException("Instructions must start with $prefix")

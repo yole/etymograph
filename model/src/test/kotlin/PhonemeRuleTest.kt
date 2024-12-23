@@ -214,7 +214,7 @@ class PhonemeRuleTest : QBaseTest() {
         assertEquals("voiceless becomes voiced", ruleInstruction.toEditableText(repo))
 
         val data = ruleInstruction.toSerializedFormat()
-        val deserialized = JsonGraphRepository.ruleInstructionFromSerializedFormat(repo, q, data)
+        val deserialized = JsonGraphRepository.ruleInstructionFromSerializedFormat(repo, q, q, data)
         assertEquals("voiceless becomes voiced", deserialized.toEditableText(repo))
     }
 
@@ -244,7 +244,7 @@ class PhonemeRuleTest : QBaseTest() {
         assertEquals("previous voiceless becomes voiced", ruleInstruction.toEditableText(repo))
 
         val data = ruleInstruction.toSerializedFormat()
-        val deserialized = JsonGraphRepository.ruleInstructionFromSerializedFormat(emptyRepo, q, data)
+        val deserialized = JsonGraphRepository.ruleInstructionFromSerializedFormat(emptyRepo, q, q, data)
         assertEquals("previous voiceless becomes voiced", deserialized.toEditableText(repo))
     }
 

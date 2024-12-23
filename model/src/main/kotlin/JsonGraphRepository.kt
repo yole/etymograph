@@ -639,7 +639,8 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             val data = Json.decodeFromString<List<RuleData>>(ruleJson)
             for (rule in data) {
                 val fromLanguage = languageByShortName(rule.fromLanguageShortName)!!
-                val addedRule = ruleFromSerializedFormat(rule, fromLanguage)
+                val toLanguage = languageByShortName(rule.toLanguageShortName)!!
+                val addedRule = ruleFromSerializedFormat(rule, fromLanguage, toLanguage)
                 rules.add(addedRule)
                 setLangEntity(rule.id, addedRule)
             }
@@ -648,7 +649,8 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
 
     fun ruleFromSerializedFormat(
         rule: RuleData,
-        fromLanguage: Language
+        fromLanguage: Language,
+        toLanguage: Language
     ) = Rule(
         rule.id,
         rule.name ?: "",
@@ -656,11 +658,11 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
         languageByShortName(rule.toLanguageShortName)!!,
         RuleLogic(
             rule.preInstructions?.let {
-                ruleInstructionsFromSerializedFormat(this, fromLanguage, it)
+                ruleInstructionsFromSerializedFormat(this, fromLanguage, toLanguage, it)
             } ?: emptyList(),
-            ruleBranchesFromSerializedFormat(this, fromLanguage, rule.branches),
+            ruleBranchesFromSerializedFormat(this, fromLanguage, toLanguage, rule.branches),
             rule.postInstructions?.let {
-                ruleInstructionsFromSerializedFormat(this, fromLanguage, it)
+                ruleInstructionsFromSerializedFormat(this, fromLanguage, toLanguage, it)
             } ?: emptyList()
         ),
         rule.addedCategories,
@@ -925,12 +927,13 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
         fun ruleBranchesFromSerializedFormat(
             result: InMemoryGraphRepository,
             fromLanguage: Language,
+            toLanguage: Language,
             branches: List<RuleBranchData>
         ): List<RuleBranch> {
             return branches.map { branchData ->
                 RuleBranch(
                     branchData.condition!!.toRuntimeFormat(result, fromLanguage),
-                    ruleInstructionsFromSerializedFormat(result, fromLanguage, branchData.instructions),
+                    ruleInstructionsFromSerializedFormat(result, fromLanguage, toLanguage, branchData.instructions),
                     branchData.comment
                 )
             }
@@ -939,14 +942,16 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
         private fun ruleInstructionsFromSerializedFormat(
             result: InMemoryGraphRepository,
             fromLanguage: Language,
+            toLanguage: Language,
             ruleInstructionData: List<RuleInstructionData>
         ) = ruleInstructionData.map { insnData ->
-            ruleInstructionFromSerializedFormat(result, fromLanguage, insnData)
+            ruleInstructionFromSerializedFormat(result, fromLanguage, toLanguage, insnData)
         }
 
         fun ruleInstructionFromSerializedFormat(
             result: GraphRepository,
             fromLanguage: Language,
+            toLanguage: Language,
             insnData: RuleInstructionData
         ): RuleInstruction =
             when (insnData.type) {
@@ -966,7 +971,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                 InstructionType.PrependMorpheme, InstructionType.AppendMorpheme ->
                     MorphemeInstruction(insnData.type, insnData.args[0].toInt())
                 InstructionType.Spe ->
-                    SpeInstruction(SpePattern.parse(fromLanguage, insnData.args[0]))
+                    SpeInstruction(SpePattern.parse(fromLanguage, toLanguage, insnData.args[0]))
                 else ->
                     RuleInstruction(insnData.type, insnData.args.firstOrNull() ?: "")
             }

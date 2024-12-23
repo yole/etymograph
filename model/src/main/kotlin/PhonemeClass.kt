@@ -187,11 +187,12 @@ fun implicitPhonemeClasses(classes: Set<String>) =
 private val implicitPhonemeClasses = mapOf(
     "plosive" to setOf("obstruent", "consonant"),
     "stop" to setOf("obstruent", "consonant", "-sonorant", "-continuant"),
-    "fricative" to setOf("obstruent", "consonant"),
+    "fricative" to setOf("obstruent", "consonant", "-sonorant", "+continuant"),
     "affricate" to setOf("obstruent", "consonant"),
     "approximant" to setOf("sonorant", "consonant"),
     "trill" to setOf("sonorant", "consonant"),
     "lateral" to setOf("sonorant", "consonant"),
+    "velar" to setOf("dorsal"),
     "dental" to setOf("coronal"),
     "alveolar" to setOf("coronal"),
     "vowel" to setOf("vocalic"),
