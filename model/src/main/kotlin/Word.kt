@@ -204,9 +204,6 @@ class Word(
                     }
                 }
             }
-            if (index < 0) {
-                println("here")
-            }
             append(text.substring(index))
         }
     }
