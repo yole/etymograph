@@ -435,7 +435,7 @@
             "classes": [
                 "aspirated",
                 "velar",
-                "consonant"
+                "stop"
             ]
         },
         {
@@ -446,7 +446,7 @@
             "classes": [
                 "aspirated",
                 "alveolar",
-                "consonant"
+                "stop"
             ]
         },
         {
@@ -457,7 +457,7 @@
             "classes": [
                 "aspirated",
                 "bilabial",
-                "consonant"
+                "stop"
             ]
         },
         {

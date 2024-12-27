@@ -1218,52 +1218,20 @@
     {
         "id": 418,
         "name": "ce-q-spirants",
-        "fromLang": "CE",
+        "fromLang": "Q",
         "toLang": "Q",
         "branches": [
             {
                 "instructions": [
                     {
-                        "type": "ChangeSound",
+                        "type": "Spe",
                         "args": [
-                            "ɸ"
+                            "[+SG] -> [-SG, +continuant, -strident]"
                         ]
                     }
                 ],
                 "condition": {
-                    "type": "relPhoneme",
-                    "parameter": "pʰ",
-                    "relative": false
-                }
-            },
-            {
-                "instructions": [
-                    {
-                        "type": "ChangeSound",
-                        "args": [
-                            "x"
-                        ]
-                    }
-                ],
-                "condition": {
-                    "type": "relPhoneme",
-                    "parameter": "kʰ",
-                    "relative": false
-                }
-            },
-            {
-                "instructions": [
-                    {
-                        "type": "ChangeSound",
-                        "args": [
-                            "θ"
-                        ]
-                    }
-                ],
-                "condition": {
-                    "type": "relPhoneme",
-                    "parameter": "tʰ",
-                    "relative": false
+                    "type": "otherwise"
                 }
             }
         ],
@@ -1271,7 +1239,8 @@
             {
                 "refText": "https://eldamo.org/content/words/word-3262991621.html"
             }
-        ]
+        ],
+        "notes": "AQ 01900"
     },
     {
         "id": 419,
@@ -1803,7 +1772,8 @@
             {
                 "refText": "https://eldamo.org/content/words/word-3325625207.html"
             }
-        ]
+        ],
+        "notes": "AQ 02800"
     },
     {
         "id": 442,
@@ -4055,7 +4025,8 @@
             {
                 "refText": "https://eldamo.org/content/words/word-1197128543.html"
             }
-        ]
+        ],
+        "notes": "Q 00100"
     },
     {
         "id": 1047,
@@ -4126,7 +4097,8 @@
             {
                 "refText": "https://eldamo.org/content/words/word-2123493145.html"
             }
-        ]
+        ],
+        "notes": "AQ 04400"
     },
     {
         "id": 1049,
@@ -4152,7 +4124,8 @@
             {
                 "refText": "https://eldamo.org/content/words/word-2830908887.html"
             }
-        ]
+        ],
+        "notes": "AQ 02400"
     },
     {
         "id": 1052,
@@ -4329,41 +4302,14 @@
             {
                 "instructions": [
                     {
-                        "type": "ChangeSound",
+                        "type": "Spe",
                         "args": [
-                            "z"
+                            "s -> z / V_[+voice]"
                         ]
                     }
                 ],
                 "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "relPhoneme",
-                            "parameter": "s",
-                            "relative": false
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": -1,
-                            "cls": "vowel"
-                        },
-                        {
-                            "type": "or",
-                            "members": [
-                                {
-                                    "type": "relPhoneme",
-                                    "relativeIndex": 1,
-                                    "cls": "vowel"
-                                },
-                                {
-                                    "type": "relPhoneme",
-                                    "relativeIndex": 1,
-                                    "cls": "voiced"
-                                }
-                            ]
-                        }
-                    ]
+                    "type": "otherwise"
                 }
             }
         ],
@@ -4371,7 +4317,8 @@
             {
                 "refText": "https://eldamo.org/content/words/word-127393503.html"
             }
-        ]
+        ],
+        "notes": "AQ 04500"
     },
     {
         "id": 1529,
@@ -4518,106 +4465,26 @@
             {
                 "instructions": [
                     {
-                        "type": "SoundDisappears",
+                        "type": "Spe",
                         "args": [
-                            ""
+                            "sr -> r̥ / #_"
                         ]
                     },
                     {
-                        "type": "ChangeNextSound",
+                        "type": "Spe",
                         "args": [
-                            "r̥"
+                            "sl -> l̥ / #_"
+                        ]
+                    },
+                    {
+                        "type": "Spe",
+                        "args": [
+                            "sw -> w̥ / #_"
                         ]
                     }
                 ],
                 "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "relPhoneme",
-                            "parameter": "s",
-                            "relative": false
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": 1,
-                            "parameter": "r"
-                        },
-                        {
-                            "type": "leaf",
-                            "cond": "BeginningOfWord"
-                        }
-                    ]
-                }
-            },
-            {
-                "instructions": [
-                    {
-                        "type": "SoundDisappears",
-                        "args": [
-                            ""
-                        ]
-                    },
-                    {
-                        "type": "ChangeNextSound",
-                        "args": [
-                            "l̥"
-                        ]
-                    }
-                ],
-                "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "relPhoneme",
-                            "parameter": "s",
-                            "relative": false
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": 1,
-                            "parameter": "l"
-                        },
-                        {
-                            "type": "leaf",
-                            "cond": "BeginningOfWord"
-                        }
-                    ]
-                }
-            },
-            {
-                "instructions": [
-                    {
-                        "type": "SoundDisappears",
-                        "args": [
-                            ""
-                        ]
-                    },
-                    {
-                        "type": "ChangeNextSound",
-                        "args": [
-                            "w̥"
-                        ]
-                    }
-                ],
-                "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "relPhoneme",
-                            "parameter": "s",
-                            "relative": false
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": 1,
-                            "parameter": "w"
-                        },
-                        {
-                            "type": "leaf",
-                            "cond": "BeginningOfWord"
-                        }
-                    ]
+                    "type": "otherwise"
                 }
             }
         ],
@@ -4625,7 +4492,8 @@
             {
                 "refText": "https://eldamo.org/content/words/word-1556924193.html"
             }
-        ]
+        ],
+        "notes": "AQ 02200"
     },
     {
         "id": 1661,
@@ -4651,7 +4519,8 @@
             {
                 "refText": "https://eldamo.org/content/words/word-2190887743.html"
             }
-        ]
+        ],
+        "notes": "AQ 01800"
     },
     {
         "id": 1673,
@@ -4845,5 +4714,125 @@
                 "refText": "https://eldamo.org/content/words/word-400062103.html"
             }
         ]
+    },
+    {
+        "id": 2034,
+        "name": "q-j-w-reduced",
+        "fromLang": "Q",
+        "toLang": "Q",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "Spe",
+                        "args": [
+                            "aj -> e / _a"
+                        ]
+                    },
+                    {
+                        "type": "Spe",
+                        "args": [
+                            "aj -> i / _e"
+                        ]
+                    },
+                    {
+                        "type": "Spe",
+                        "args": [
+                            "aj -> e / _o"
+                        ]
+                    },
+                    {
+                        "type": "Spe",
+                        "args": [
+                            "ej -> i / _a"
+                        ]
+                    },
+                    {
+                        "type": "Spe",
+                        "args": [
+                            "ej -> i / _e"
+                        ]
+                    },
+                    {
+                        "type": "Spe",
+                        "args": [
+                            "ij -> i / _a"
+                        ]
+                    },
+                    {
+                        "type": "Spe",
+                        "args": [
+                            "ij -> i / _e"
+                        ]
+                    },
+                    {
+                        "type": "Spe",
+                        "args": [
+                            "oj -> o / _a"
+                        ]
+                    },
+                    {
+                        "type": "Spe",
+                        "args": [
+                            "aw -> o / _[+syllabic,-back]"
+                        ]
+                    },
+                    {
+                        "type": "Spe",
+                        "args": [
+                            "ew -> e / _o"
+                        ]
+                    },
+                    {
+                        "type": "Spe",
+                        "args": [
+                            "ow -> u / _o"
+                        ]
+                    },
+                    {
+                        "type": "Spe",
+                        "args": [
+                            "aw -> a / _[+syllabic,+back]"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://eldamo.org/content/words/word-3978101829.html"
+            }
+        ],
+        "notes": "AQ 03800"
+    },
+    {
+        "id": 2035,
+        "name": "q-voiced-stops-to-spirants",
+        "fromLang": "Q",
+        "toLang": "Q",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "Spe",
+                        "args": [
+                            "[+voice,-sonorant,-continuant] -> [+continuant,-strident] / _[-nasal]"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://eldamo.org/content/words/word-1141570065.html"
+            }
+        ],
+        "notes": "AQ 02900"
     }
 ]

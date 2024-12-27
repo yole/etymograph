@@ -534,7 +534,8 @@
             {
                 "refText": "https://eldamo.org/content/words/word-1593810649.html"
             }
-        ]
+        ],
+        "notes": "S 00800"
     },
     {
         "id": 1070,
@@ -788,7 +789,8 @@
             {
                 "refText": "https://eldamo.org/content/words/word-1726791627.html"
             }
-        ]
+        ],
+        "notes": "S 00900"
     },
     {
         "id": 1080,
@@ -799,51 +801,14 @@
             {
                 "instructions": [
                     {
-                        "type": "ChangeSound",
+                        "type": "Spe",
                         "args": [
-                            "i"
+                            "ɣ -> i / V_[+sonorant]"
                         ]
                     }
                 ],
                 "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "relPhoneme",
-                            "parameter": "gh",
-                            "relative": false
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": -1,
-                            "cls": "vowel"
-                        },
-                        {
-                            "type": "or",
-                            "members": [
-                                {
-                                    "type": "relPhoneme",
-                                    "relativeIndex": 1,
-                                    "parameter": "m"
-                                },
-                                {
-                                    "type": "relPhoneme",
-                                    "relativeIndex": 1,
-                                    "parameter": "n"
-                                },
-                                {
-                                    "type": "relPhoneme",
-                                    "relativeIndex": 1,
-                                    "parameter": "r"
-                                },
-                                {
-                                    "type": "relPhoneme",
-                                    "relativeIndex": 1,
-                                    "parameter": "l"
-                                }
-                            ]
-                        }
-                    ]
+                    "type": "otherwise"
                 }
             }
         ],
@@ -851,7 +816,8 @@
             {
                 "refText": "https://eldamo.org/content/words/word-539122737.html"
             }
-        ]
+        ],
+        "notes": "S 02900"
     },
     {
         "id": 1083,
@@ -2160,30 +2126,14 @@
             {
                 "instructions": [
                     {
-                        "type": "ChangeSound",
+                        "type": "Spe",
                         "args": [
-                            "a"
+                            "ɣ -> a / C_#"
                         ]
                     }
                 ],
                 "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "relPhoneme",
-                            "parameter": "ɣ",
-                            "relative": false
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": -1,
-                            "cls": "consonant"
-                        },
-                        {
-                            "type": "leaf",
-                            "cond": "EndOfWord"
-                        }
-                    ]
+                    "type": "otherwise"
                 }
             }
         ],
@@ -2191,7 +2141,8 @@
             {
                 "refText": "https://eldamo.org/content/words/word-916418731.html"
             }
-        ]
+        ],
+        "notes": "S 02800"
     },
     {
         "id": 1129,
@@ -2202,16 +2153,14 @@
             {
                 "instructions": [
                     {
-                        "type": "SoundDisappears",
+                        "type": "Spe",
                         "args": [
-                            ""
+                            "ɣ -> 0"
                         ]
                     }
                 ],
                 "condition": {
-                    "type": "relPhoneme",
-                    "parameter": "ɣ",
-                    "relative": false
+                    "type": "otherwise"
                 }
             }
         ],
@@ -2219,7 +2168,8 @@
             {
                 "refText": "https://eldamo.org/content/words/word-4164672875.html"
             }
-        ]
+        ],
+        "notes": "S 03000"
     },
     {
         "id": 1132,

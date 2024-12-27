@@ -558,7 +558,6 @@
             "graphemes": [
                 "ɸ"
             ],
-            "sound": "ɸ",
             "classes": [
                 "voiceless",
                 "bilabial",
@@ -571,10 +570,45 @@
             "graphemes": [
                 "β"
             ],
-            "sound": "β",
             "classes": [
                 "voiced",
                 "bilabial",
+                "fricative"
+            ],
+            "historical": true
+        },
+        {
+            "id": 2031,
+            "graphemes": [
+                "θ"
+            ],
+            "classes": [
+                "voiceless",
+                "dental",
+                "fricative"
+            ],
+            "historical": true
+        },
+        {
+            "id": 2036,
+            "graphemes": [
+                "ð"
+            ],
+            "classes": [
+                "voiced",
+                "dental",
+                "fricative"
+            ],
+            "historical": true
+        },
+        {
+            "id": 2038,
+            "graphemes": [
+                "ɣ"
+            ],
+            "classes": [
+                "voiced",
+                "velar",
                 "fricative"
             ],
             "historical": true
@@ -829,7 +863,7 @@
             "values": [
                 {
                     "name": "Active participle",
-                    "abbreviation": ".PART"
+                    "abbreviation": "PART"
                 },
                 {
                     "name": "Infinitive",

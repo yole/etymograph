@@ -8218,5 +8218,16 @@
                 "refText": "153"
             }
         ]
+    },
+    {
+        "id": 2032,
+        "text": "hröa",
+        "gloss": "body",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "refText": "https://eldamo.org/content/words/word-1260023323.html"
+            }
+        ]
     }
 ]
