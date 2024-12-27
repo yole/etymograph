@@ -123,7 +123,7 @@ class SpePattern(
             trace?.logInstruction { "Not found matching phoneme" }
             return
         }
-        val newPhoneme = findReplacementPhoneme(it.language, phoneme, newClass)
+        val newPhoneme = findReplacementPhoneme(it.language, phoneme, newClass).singleOrNull()
         newPhoneme?.let { p ->
             trace?.logInstruction { "Replacing phoneme with ${p.graphemes[0]}" }
             it.replaceAtRelative(relativeIndex, p.graphemes[0])
@@ -136,7 +136,7 @@ class SpePattern(
         fromLanguage: Language,
         phoneme: Phoneme,
         newClass: PhonemeClass
-    ): Phoneme? {
+    ): List<Phoneme> {
         val features = fromLanguage.phonemeFeatures(phoneme).toMutableSet()
         val newClasses = (newClass as? IntersectionPhonemeClass)?.classList ?: listOf(newClass)
         for (newPhonemeClass in newClasses) {
@@ -148,10 +148,9 @@ class SpePattern(
                 features.add(newPhonemeClass.name)
             }
         }
-        val newPhoneme = toLanguage.phonemes.filter { p ->
+        return toLanguage.phonemes.filter { p ->
             toLanguage.phonemeFeatures(p) == features
         }
-        return newPhoneme.singleOrNull()
     }
 
     private fun matchNodes(it: PhonemeIterator, nodes: List<SpeNode>, trace: RuleTrace? = null): Boolean {
@@ -205,7 +204,10 @@ class SpePattern(
         val tooltip = fromLanguage.phonemes.mapNotNull { p ->
             if (p.effectiveSound in beforeClass.matchingPhonemes) {
                 val replacement = findReplacementPhoneme(fromLanguage, p, afterClass)
-                "${p.effectiveSound} -> ${replacement?.effectiveSound ?: "?"}"
+                val replacementText = replacement.singleOrNull()?.effectiveSound
+                    ?: (replacement.takeIf { it.isNotEmpty() }?.joinToString { it.effectiveSound }?.plus("?"))
+                    ?: "?"
+                "${p.effectiveSound} -> $replacementText"
             }
             else {
                 null
