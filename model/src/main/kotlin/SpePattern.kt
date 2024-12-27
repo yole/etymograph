@@ -54,7 +54,7 @@ class SpeNode(val text: String?, val wordBoundary: Boolean, val phonemeClass: Ph
             return "[".rich() + name.rich(tooltip = matchingPhonemes)+ "]".rich()
         }
         if (text != null) {
-            val phoneme = language?.phonemes?.find { text in it.graphemes }
+            val phoneme = language?.phonemes?.find { text == it.effectiveSound }
             if (phoneme != null) {
                 return richText(text.rich(linkType = "phoneme", linkId = phoneme.id))
             }
