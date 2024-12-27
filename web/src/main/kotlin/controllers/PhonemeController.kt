@@ -104,11 +104,30 @@ class PhonemeController {
     private fun parseClasses(params: UpdatePhonemeParameters) =
         params.classes.trim().takeIf { it.isNotEmpty() }?.split(' ')?.toSet() ?: emptySet()
 
-    @PostMapping("/{graph}/phoneme/{id}/delete", consumes = ["application/json"])
+    @PostMapping("/{graph}/phoneme/{id}/delete")
     fun deletePhoneme(repo: GraphRepository, @PathVariable id: Int) {
         val phoneme = repo.resolvePhoneme(id)
         val language = findLanguage(repo, phoneme, id)
         repo.deletePhoneme(language, phoneme)
+    }
+
+    data class ComparePhonemesParameters(
+        val toPhoneme: String = ""
+    )
+
+    data class ComparePhonemesResult(
+        val message: String
+    )
+
+    @PostMapping("/{graph}/phoneme/{id}/compare", consumes = ["application/json"])
+    fun comparePhonemes(repo: GraphRepository, @PathVariable id: Int, @RequestBody params: ComparePhonemesParameters): ComparePhonemesResult {
+        val phoneme = repo.resolvePhoneme(id)
+        val language = findLanguage(repo, phoneme, id)
+        val targetPhoneme = language.phonemes.find { it.effectiveSound == params.toPhoneme }
+            ?: badRequest("Phoneme with sound ${params.toPhoneme} not found")
+
+        val result = language.comparePhonemes(phoneme, targetPhoneme)
+        return ComparePhonemesResult(result.joinToString())
     }
 }
 

@@ -182,21 +182,37 @@ class Language(val name: String, val shortName: String) {
         }
     }
 
-    fun contradictingFeatures(name: String): Collection<String> {
+    fun comparePhonemes(oldPhoneme: Phoneme, newPhoneme: Phoneme): Collection<String> {
+        val oldFeatures = phonemeFeatures(oldPhoneme)
+        val newFeatures = phonemeFeatures(newPhoneme)
+
+        return (oldFeatures - newFeatures).mapNotNull { invertFeature(it) }.toSet() + (newFeatures - oldFeatures)
+    }
+
+    private fun invertFeature(name: String): String? {
         if (name.startsWith("+")) {
-            return listOf("-" + name.substring(1))
+            return "-" + name.substring(1)
         }
         if (name.startsWith("-")) {
-            return listOf("+" + name.substring(1), name.substring(1))
-        }
-        if (name in placeFeatures) {
-            return placeFeatures.filter { it != name }
+            val plus = "+${name.substring(1)}"
+            if (phonemeClassByName(plus) != null) {
+                return plus
+            }
+            return name.substring(1)
         }
         val negatedClass = phonemeClassByName("-$name")
         if (negatedClass != null) {
-            return listOf(negatedClass.name)
+            return negatedClass.name
         }
-        return emptyList()
+        return null
+    }
+
+    fun contradictingFeatures(name: String): Collection<String> {
+        if (name in placeFeatures) {
+            return placeFeatures.filter { it != name }
+        }
+        val inverted = invertFeature(name)
+        return inverted?.let { listOf(it) } ?: emptyList()
     }
 
     fun normalizeWord(text: String): String {

@@ -1,5 +1,5 @@
 import {
-    AddPublicationParameters,
+    AddPublicationParameters, ComparePhonemesResult,
     CorpusTextParams,
     LookupParameters,
     LookupResultViewModel,
@@ -308,6 +308,11 @@ export function updatePhoneme(graph: string, id: number, data: UpdatePhonemePara
 
 export function deletePhoneme(graph: string, id: number) {
     return postToBackend(`${graph}/phoneme/${id}/delete`, {})
+}
+
+export function comparePhonemes(graph: string, id: number, toPhoneme: string) {
+    return postToBackendTyped<ComparePhonemesResult>(`${graph}/phoneme/${id}/compare`, {toPhoneme})
+
 }
 
 export function copyPhonemes(graph: string, toLang: string, fromLang: string) {

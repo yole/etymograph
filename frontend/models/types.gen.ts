@@ -48,6 +48,14 @@ export type AttestationViewModel = {
     word?: string;
 };
 
+export type ComparePhonemesParameters = {
+    toPhoneme: string;
+};
+
+export type ComparePhonemesResult = {
+    message: string;
+};
+
 export type CompoundComponentsViewModel = {
     compoundId: number;
     components: Array<WordRefViewModel>;
@@ -350,6 +358,7 @@ export type PhonemeViewModel = {
     sound: string;
     classes: string;
     implicitClasses: string;
+    features: string;
     historical: boolean;
     source: Array<SourceRefViewModel>;
     sourceEditableText: string;

@@ -1,4 +1,4 @@
-import {allowEdit, deletePhoneme, fetchBackend, fetchPathsForAllGraphs} from "@/api";
+import {allowEdit, comparePhonemes, deletePhoneme, fetchBackend, fetchPathsForAllGraphs} from "@/api";
 import {useState} from "react";
 import Link from "next/link";
 import {useRouter} from "next/router";
@@ -21,6 +21,9 @@ export async function getStaticPaths() {
 export default function Phoneme(props) {
     const phoneme = props.loaderData
     const [editMode, setEditMode] = useState(false)
+    const [showCompareForm, setShowCompareForm] = useState(false)
+    const [compareTarget, setCompareTarget] = useState('')
+    const [compareResult, setCompareResult] = useState('')
     const router = useRouter()
     const graph = router.query.graph as string;
 
@@ -33,6 +36,18 @@ export default function Phoneme(props) {
         if (window.confirm("Delete this phoneme?")) {
             deletePhoneme(graph, phoneme.id)
                 .then(() => router.push(`/${graph}/language/` + phoneme.languageShortName))
+        }
+    }
+
+    async function runCompare() {
+        const result = await comparePhonemes(graph, phoneme.id, compareTarget)
+        if (result.ok()) {
+            const r = await result.result()
+            setCompareResult(r.message)
+        }
+        else {
+            const err = await result.error()
+            setCompareResult(err)
         }
     }
 
@@ -71,6 +86,18 @@ export default function Phoneme(props) {
             {!editMode && <button onClick={() => setEditMode(true)}>Edit</button>}
             {' '}
             <button onClick={() => deletePhonemeClicked()}>Delete</button>
+            {' '}
+            {!showCompareForm && <button onClick={() => setShowCompareForm(!showCompareForm)}>Compare</button>}
+        </>}
+
+        {showCompareForm && <>
+            <br/>
+            Compare to phoneme:
+            <input type="text" value={compareTarget} onChange={(e) => setCompareTarget(e.target.value)}/>{' '}
+            <button onClick={() => runCompare()}>Compare</button>
+            {' '}
+            <button onClick={() => setShowCompareForm(false)}>Cancel</button>
+            <div>{compareResult}</div>
         </>}
 
         {phoneme.relatedRules.length > 0 && <>
