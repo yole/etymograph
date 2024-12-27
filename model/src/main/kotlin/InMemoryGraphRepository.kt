@@ -663,7 +663,8 @@ open class InMemoryGraphRepository : GraphRepository() {
         }
 
         return allWords(compoundWord.language).filter {
-            it != compoundWord && compoundWord.text.startsWith(longestPrefix + it.text)
+            it != compoundWord && compoundWord.text.startsWith(longestPrefix + it.text) &&
+                    it.baseWordLink(this)?.toEntity != compoundWord
         }
     }
 

@@ -105,4 +105,14 @@ class CompoundTest : QBaseTest() {
         val suggestions2 = repo.suggestCompound(faramir, compound)
         assertEquals(mir, suggestions2.single())
     }
+
+    @Test
+    fun suggestCompoundExcludeInflectedForm() {
+        val onAcc = repo.rule("word ends with 'r':\n- change ending to ''", name = "on-acc")
+        val stadr = repo.addWord("stadr", "city")
+        val stad = repo.addWord("stad")
+        repo.addLink(stad, stadr, Link.Derived, listOf(onAcc))
+        val suggestions = repo.suggestCompound(stadr)
+        assertEquals(0, suggestions.size)
+    }
 }
