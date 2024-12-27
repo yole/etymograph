@@ -156,7 +156,7 @@ class RuleController {
 
         for (rule in repo.allRules().filter { it.toLanguage == language }) {
             if (rule in allParadigmRules || rule in allSequenceRules) continue
-            val group = if (rule.isPhonemic()) phoneticsGroup else grammarOtherGroup
+            val group = if (rule.isPhonemic() || rule.isSPE()) phoneticsGroup else grammarOtherGroup
             group.rules.add(rule.toShortViewModel(repo))
         }
 

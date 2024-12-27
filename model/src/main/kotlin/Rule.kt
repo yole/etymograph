@@ -219,6 +219,7 @@ class Rule(
     notes: String? = null
 ) : LangEntity(id, source, notes) {
     fun isPhonemic(): Boolean = logic.branches.any { it.condition.isPhonemic() }
+    fun isSPE(): Boolean = logic.branches.any { it.instructions.any { i -> i.type == InstructionType.Spe } }
 
     fun apply(word: Word, graph: GraphRepository, trace: RuleTrace? = null,
               normalizeSegments: Boolean = true,
