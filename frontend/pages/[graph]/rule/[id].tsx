@@ -275,6 +275,16 @@ export default function Rule(params) {
                 <Link href={`/${graph}/paradigm/${p.id}`}>{p.name} ({p.refType})</Link>
             <br/></>)}
         </>}
+        {rule.sequenceLinks.length > 0 && <>
+            <h3>Sequences</h3>
+            {rule.sequenceLinks.map(sl => <>
+                {sl.sequenceName + ": "}
+                {sl.prev && <>previous <RuleLink rule={sl.prev}/></>}
+                {sl.prev && sl.next && ", "}
+                {sl.next && <>next <RuleLink rule={sl.next}/></>}
+                <br/>
+            </>)}
+        </>}
         {linkMode && <RuleLinkForm fromEntityId={rule.id} submitted={linkSubmitted} cancelled={() => setLinkMode(false)}/>}
         <p/>
         {allowEdit() && !showExampleForm &&

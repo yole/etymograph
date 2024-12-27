@@ -498,6 +498,18 @@ class RuleSequence(
         return result
     }
 
+    fun previousRule(graph: GraphRepository, rule: Rule): Rule? {
+        val rules = resolveRules(graph)
+        val index = rules.indexOf(rule)
+        return if (index <= 0) null else rules[index-1]
+    }
+
+    fun nextRule(graph: GraphRepository, rule: Rule): Rule? {
+        val rules = resolveRules(graph)
+        val index = rules.indexOf(rule)
+        return if (index < 0 || index == rules.size - 1) null else rules[index+1]
+    }
+
     fun resolveRules(graph: GraphRepository): List<Rule> {
         return resolveSteps(graph).map { it.rule as Rule }
     }

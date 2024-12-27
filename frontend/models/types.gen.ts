@@ -458,6 +458,12 @@ export type RuleRefViewModel = {
     name: string;
 };
 
+export type RuleSequenceLinkViewModel = {
+    sequenceName: string;
+    prev?: RuleRefViewModel;
+    next?: RuleRefViewModel;
+};
+
 export type RuleSequenceViewModel = {
     name: string;
     fromLang: string;
@@ -509,6 +515,7 @@ export type RuleViewModel = {
     postInstructions: Array<RichText>;
     links: Array<RuleLinkViewModel>;
     references: Array<RuleRefViewModel>;
+    sequenceLinks: Array<RuleSequenceLinkViewModel>;
     linkedWords: Array<RuleWordLinkViewModel>;
     orphanExamples: Array<RuleExampleViewModel>;
     referencingParadigms: Array<ParadigmRefViewModel>;

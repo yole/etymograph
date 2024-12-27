@@ -2080,6 +2080,17 @@ components:
         - "conditions"
         - "instructions"
         - "examples"
+    RuleSequenceLinkViewModel:
+      type: "object"
+      properties:
+        sequenceName:
+          type: "string"
+        prev:
+          $ref: "#/components/schemas/RuleRefViewModel"
+        next:
+          $ref: "#/components/schemas/RuleRefViewModel"
+      required:
+        - "sequenceName"
     RuleWordLinkViewModel:
       type: "object"
       properties:
@@ -2182,6 +2193,10 @@ components:
           type: "array"
           items:
             $ref: "#/components/schemas/RuleRefViewModel"
+        sequenceLinks:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/RuleSequenceLinkViewModel"
         linkedWords:
           type: "array"
           items:
@@ -2212,6 +2227,7 @@ components:
         - "postInstructions"
         - "links"
         - "references"
+        - "sequenceLinks"
         - "linkedWords"
         - "orphanExamples"
         - "referencingParadigms"

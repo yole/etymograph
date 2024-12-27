@@ -50,6 +50,12 @@ class RuleController {
         val ruleResults: List<String>
     )
 
+    data class RuleSequenceLinkViewModel(
+        val sequenceName: String,
+        val prev: RuleRefViewModel?,
+        val next: RuleRefViewModel?
+    )
+
     data class RuleViewModel(
         val id: Int,
         val name: String,
@@ -77,6 +83,7 @@ class RuleController {
         val postInstructions: List<RichText>,
         val links: List<RuleLinkViewModel>,
         val references: List<RuleRefViewModel>,
+        val sequenceLinks: List<RuleSequenceLinkViewModel>,
         val linkedWords: List<RuleWordLinkViewModel>,
         val orphanExamples: List<RuleExampleViewModel>,
         val referencingParadigms: List<ParadigmRefViewModel>
@@ -196,6 +203,17 @@ class RuleController {
         }
         val references = repo.findReferencingRules(this)
         val paradigms = repo.findReferencingParadigms(this)
+
+        val sequenceLinks = mutableListOf<RuleSequenceLinkViewModel>()
+        val sequences = repo.findSequencesContainingRule(this)
+        for (sequence in sequences) {
+            sequenceLinks.add(RuleSequenceLinkViewModel(
+                sequence.name,
+                sequence.previousRule(repo, this)?.toRefViewModel(),
+                sequence.nextRule(repo, this)?.toRefViewModel()
+            ))
+        }
+
         return RuleViewModel(
             id, name,
             fromLanguage.shortName, toLanguage.shortName,
@@ -227,6 +245,7 @@ class RuleController {
                 }
             },
             references.map { it.toRefViewModel() },
+            sequenceLinks,
             links.mapNotNull { (link, langEntity) ->
                 val word = langEntity as? Word
                 word?.let {

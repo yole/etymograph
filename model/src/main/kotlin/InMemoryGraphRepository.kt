@@ -510,6 +510,10 @@ open class InMemoryGraphRepository : GraphRepository() {
         return newWord
     }
 
+    override fun findSequencesContainingRule(rule: Rule): List<RuleSequence> {
+        return allLangEntities.filterIsInstance<RuleSequence>().filter { rule in it.resolveRules(this) }
+    }
+
     private fun applyRuleSequence(word: Word, sequence: RuleSequence, expectWord: Word?, applicableRules: MutableList<Rule>): Word? {
         if (expectWord != null) {
             val variants = sequence.resolveVariants(this)
