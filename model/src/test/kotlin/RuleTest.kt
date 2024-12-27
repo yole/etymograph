@@ -767,6 +767,13 @@ class RuleTest : QBaseTest() {
         assertTrue(rule.refersToPhoneme(q.phonemes.find { it.graphemes[0] == "d" }!!))
     }
 
+    @Test
+    fun speRuleComment() {
+        val ruleText = "# SPE rule\n* d -> l / #_"
+        val rule = parseRule(q, q, ruleText)
+        assertEquals(ruleText,rule.toEditableText(repo))
+    }
+
     /*
 
     @Test

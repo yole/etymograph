@@ -367,7 +367,9 @@ class Rule(
 
     fun toEditableText(graph: GraphRepository): String {
         if (isUnconditional()) {
-            return logic.branches[0].instructions.joinToString("\n") {
+            val branch = logic.branches[0]
+            val commentString = (branch.comment?.split('\n')?.joinToString("") { "# $it\n" }) ?: ""
+            return commentString + branch.instructions.joinToString("\n") {
                 (if (it is SpeInstruction) "* " else " - ") + it.toEditableText(graph)
             }
         }
