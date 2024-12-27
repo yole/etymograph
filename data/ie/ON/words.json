@@ -1465,7 +1465,8 @@
         "id": 1180,
         "text": "ór",
         "gloss": "from",
-        "pos": "PREP"
+        "pos": "PREP",
+        "notes": "w/Dat"
     },
     {
         "id": 1181,
@@ -2178,7 +2179,10 @@
         "text": "eiga",
         "gloss": "own",
         "fullGloss": "own, have, possess",
-        "pos": "V"
+        "pos": "V",
+        "classes": [
+            "v-pret-pres"
+        ]
     },
     {
         "id": 1376,
@@ -4085,7 +4089,7 @@
     {
         "id": 4893,
         "text": "áss",
-        "gloss": "one of the gods",
+        "gloss": "god",
         "fullGloss": "one of the gods, Æsir",
         "pos": "N",
         "classes": [
@@ -9042,5 +9046,403 @@
     {
         "id": 5913,
         "text": "Höllu"
+    },
+    {
+        "id": 5915,
+        "text": "höfuðstaðr",
+        "pos": "N",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 5916,
+        "text": "höfuðstaðrinn"
+    },
+    {
+        "id": 5918,
+        "text": "helgistaðrinn",
+        "gloss": "holy place",
+        "pos": "N",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 5919,
+        "text": "goð",
+        "gloss": "god",
+        "pos": "N",
+        "classes": [
+            "n"
+        ]
+    },
+    {
+        "id": 5920,
+        "text": "goðin"
+    },
+    {
+        "id": 5921,
+        "text": "askr",
+        "gloss": "ash",
+        "pos": "N",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 5922,
+        "text": "aski"
+    },
+    {
+        "id": 5923,
+        "text": "dómr",
+        "gloss": "judgement",
+        "pos": "N",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 5924,
+        "text": "dóma"
+    },
+    {
+        "id": 5925,
+        "text": "Gangleri",
+        "pos": "NP"
+    },
+    {
+        "id": 5926,
+        "text": "hvat",
+        "gloss": "what",
+        "pos": "PRON"
+    },
+    {
+        "id": 5927,
+        "text": "askrinn"
+    },
+    {
+        "id": 5928,
+        "text": "stað"
+    },
+    {
+        "id": 5929,
+        "text": "limar",
+        "gloss": "branches",
+        "pos": "N"
+    },
+    {
+        "id": 5930,
+        "text": "dreifa",
+        "gloss": "spread",
+        "pos": "V",
+        "classes": [
+            "1conj"
+        ]
+    },
+    {
+        "id": 5931,
+        "text": "dreifask"
+    },
+    {
+        "id": 5932,
+        "text": "himinn",
+        "gloss": "sky",
+        "pos": "N",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 5933,
+        "text": "himni"
+    },
+    {
+        "id": 5934,
+        "text": "þrjár"
+    },
+    {
+        "id": 5935,
+        "text": "rót",
+        "gloss": "root",
+        "pos": "N",
+        "classes": [
+            "f"
+        ]
+    },
+    {
+        "id": 5936,
+        "text": "rœtr"
+    },
+    {
+        "id": 5937,
+        "text": "tré"
+    },
+    {
+        "id": 5938,
+        "text": "trésins"
+    },
+    {
+        "id": 5939,
+        "text": "afar",
+        "gloss": "extremely",
+        "pos": "ADV",
+        "classes": [
+            "adj-comp-ri"
+        ]
+    },
+    {
+        "id": 5940,
+        "text": "breiðr",
+        "gloss": "broad",
+        "pos": "ADJ"
+    },
+    {
+        "id": 5941,
+        "text": "breitt"
+    },
+    {
+        "id": 5942,
+        "text": "ein"
+    },
+    {
+        "id": 5943,
+        "text": "Ásum"
+    },
+    {
+        "id": 5944,
+        "text": "Hrímþursr",
+        "gloss": "frost giant",
+        "pos": "N",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 5945,
+        "text": "Hrímþursum"
+    },
+    {
+        "id": 5946,
+        "text": "forðum",
+        "gloss": "formerly",
+        "pos": "ADV"
+    },
+    {
+        "id": 5947,
+        "text": "hinn",
+        "gloss": "the other one",
+        "pos": "PRON"
+    },
+    {
+        "id": 5948,
+        "text": "hin"
+    },
+    {
+        "id": 5949,
+        "text": "stendr"
+    },
+    {
+        "id": 5950,
+        "text": "rót"
+    },
+    {
+        "id": 5951,
+        "text": "gnaga",
+        "gloss": "gnaw",
+        "pos": "V",
+        "classes": [
+            "1conj"
+        ]
+    },
+    {
+        "id": 5952,
+        "text": "gnagar"
+    },
+    {
+        "id": 5953,
+        "text": "rótina"
+    },
+    {
+        "id": 5954,
+        "text": "neðan",
+        "gloss": "from below",
+        "pos": "ADV"
+    },
+    {
+        "id": 5955,
+        "text": "Níðhöggr",
+        "pos": "NP"
+    },
+    {
+        "id": 5956,
+        "text": "horfir"
+    },
+    {
+        "id": 5957,
+        "text": "spekt",
+        "gloss": "peace",
+        "pos": "N",
+        "classes": [
+            "f"
+        ]
+    },
+    {
+        "id": 5958,
+        "text": "mannvit",
+        "gloss": "intelligence",
+        "pos": "N",
+        "classes": [
+            "n"
+        ]
+    },
+    {
+        "id": 5959,
+        "text": "fela",
+        "gloss": "hide",
+        "pos": "V"
+    },
+    {
+        "id": 5960,
+        "text": "fólgit"
+    },
+    {
+        "id": 5961,
+        "text": "fullr",
+        "gloss": "full",
+        "pos": "ADJ"
+    },
+    {
+        "id": 5962,
+        "text": "á"
+    },
+    {
+        "id": 5963,
+        "text": "brunnr",
+        "gloss": "well",
+        "pos": "N",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 5964,
+        "text": "brunninn"
+    },
+    {
+        "id": 5965,
+        "text": "Mímir",
+        "pos": "NP"
+    },
+    {
+        "id": 5966,
+        "text": "Mímisbrunnr"
+    },
+    {
+        "id": 5967,
+        "text": "Mímis"
+    },
+    {
+        "id": 5969,
+        "text": "vísindi",
+        "gloss": "knowledge.NOM.PL",
+        "pos": "N"
+    },
+    {
+        "id": 5970,
+        "text": "vísindum"
+    },
+    {
+        "id": 5971,
+        "text": "drekka",
+        "gloss": "drink",
+        "pos": "V"
+    },
+    {
+        "id": 5972,
+        "text": "drekkr"
+    },
+    {
+        "id": 5973,
+        "text": "brunninum"
+    },
+    {
+        "id": 5974,
+        "text": "horn",
+        "gloss": "horn",
+        "pos": "N",
+        "classes": [
+            "n"
+        ]
+    },
+    {
+        "id": 5975,
+        "text": "horninu"
+    },
+    {
+        "id": 5976,
+        "text": "beiddisk"
+    },
+    {
+        "id": 5977,
+        "text": "drykkr",
+        "gloss": "drink",
+        "pos": "N",
+        "classes": [
+            "m",
+            "gen-ar"
+        ]
+    },
+    {
+        "id": 5978,
+        "text": "drykkjar"
+    },
+    {
+        "id": 5980,
+        "text": "veð",
+        "gloss": "pledge",
+        "pos": "N",
+        "classes": [
+            "n"
+        ]
+    },
+    {
+        "id": 5981,
+        "text": "veði"
+    },
+    {
+        "id": 5982,
+        "text": "asksins"
+    },
+    {
+        "id": 5983,
+        "text": "heilagr",
+        "gloss": "holy",
+        "pos": "ADJ"
+    },
+    {
+        "id": 5984,
+        "text": "eigu"
+    },
+    {
+        "id": 5985,
+        "text": "dómstaðr"
+    },
+    {
+        "id": 5986,
+        "text": "dómstað"
+    },
+    {
+        "id": 5988,
+        "text": "Æsir"
+    },
+    {
+        "id": 5989,
+        "text": "ríða"
+    },
+    {
+        "id": 5990,
+        "text": "Ásbrú"
     }
 ]
