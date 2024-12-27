@@ -12,7 +12,7 @@ class CorpusController {
     data class CorpusLangViewModel(val language: Language, val corpusTexts: List<CorpusLangTextViewModel>)
 
     @GetMapping("")
-    fun indexJson(repo: GraphRepository): List<CorpusLangTextViewModel> {
+    fun allCorpusTexts(repo: GraphRepository): List<CorpusLangTextViewModel> {
         return repo.allCorpusTexts()
             .sortedBy { it.title }
             .map { it.toLangViewModel() }

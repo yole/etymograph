@@ -360,7 +360,7 @@ class WordController(val dictionaryService: DictionaryService) {
     data class UpdateWordParadigmParameters(var items: Array<Array<Any>> = emptyArray())
 
     @PostMapping("/{graph}/word/{id}/paradigm", consumes = ["application/json"])
-    fun updateParadigm(repo: GraphRepository, @PathVariable id: Int, @RequestBody paradigm: UpdateWordParadigmParameters) {
+    fun updateWordParadigm(repo: GraphRepository, @PathVariable id: Int, @RequestBody paradigm: UpdateWordParadigmParameters) {
         val word = repo.resolveWord(id)
         val gloss = word.glossOrNP() ?: badRequest("Trying to update paradigm for unglossed word ${word.text}")
         val derivedWordLinks = repo.getLinksTo(word).filter { it.type == Link.Derived && it.fromEntity is Word }

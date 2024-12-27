@@ -500,7 +500,7 @@ paths:
   /{graph}/corpus/:
     get:
       summary: "GET {graph}/corpus/"
-      operationId: "indexJson"
+      operationId: "allCorpusTexts"
       parameters:
         - name: "graph"
           in: "path"
@@ -769,7 +769,7 @@ paths:
   /{graph}/word/{id}/paradigm:
     post:
       summary: "POST {graph}/word/{id}/paradigm"
-      operationId: "updateParadigm"
+      operationId: "updateWordParadigm"
       parameters:
         - name: "graph"
           in: "path"
