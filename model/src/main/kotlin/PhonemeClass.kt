@@ -232,7 +232,10 @@ private val implicitPhonemeClasses = mapOf(
 
 private val implicitPhonemeClasses2 = mapOf(
     setOf("bilabial", "fricative") to setOf("-strident"),
-    setOf("labiodental", "fricative") to setOf("+strident")
+    setOf("labiodental", "fricative") to setOf("+strident"),
+    setOf("alveolar", "fricative") to setOf("+strident"),
+    setOf("velar", "fricative") to setOf("-strident"),
+    setOf("dental", "fricative") to setOf("-strident")
 )
 
 val defaultPhonemeClasses = mapOf(
