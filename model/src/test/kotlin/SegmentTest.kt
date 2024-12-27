@@ -159,4 +159,12 @@ class SegmentTest : QBaseTest() {
         assertEquals(6, result.segments!![0].firstCharacter)
         assertEquals(1, result.segments!![0].length)
     }
+
+    @Test
+    fun normalizeSegmentsIntersecting() {
+        repo.rule("word ends with 'a':\n- change ending to 'r'", name = "on-3sg")
+        val onMid = repo.rule("- apply rule 'on-3sg'\nword ends with 'r':\n- change ending to 'sk'")
+        val result = onMid.apply(q.word("dreifa"), repo)
+        assertEquals(1, result.segments!!.size)
+    }
 }

@@ -247,7 +247,7 @@ class Word(
                 val beforeLast = result[result.size - 2]
                 val last = result.last()
                 if (beforeLast.sourceRule == last.sourceRule &&
-                    beforeLast.firstCharacter + beforeLast.length == last.firstCharacter) {
+                    beforeLast.firstCharacter + beforeLast.length >= last.firstCharacter) {
                     result = result.dropLast(2) + WordSegment(
                         beforeLast.firstCharacter,
                         beforeLast.length + last.length,
