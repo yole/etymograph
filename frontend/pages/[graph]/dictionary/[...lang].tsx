@@ -55,7 +55,7 @@ export default function Dictionary(params) {
         <Breadcrumbs langId={dict.language.shortName} langName={dict.language.name} title={filterText}/>
 
         {allowEdit() && <>
-            {!showAddWord && <button className="inlineButton inlineButtonNormal" onClick={() => setShowAddWord(!showAddWord)}>Add word</button>}
+            {!showAddWord && <button onClick={() => setShowAddWord(!showAddWord)}>Add word</button>}
             {showAddWord && <WordForm languageReadOnly={true}
                       wordSubmitted={submitted}
                       cancelled={() => setShowAddWord(false)}
