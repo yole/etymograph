@@ -241,7 +241,7 @@ class Rule(
                     null
 
                 val segments = remapSegments(phonemes, word.segments)
-                deriveWord(phonemic, phonemes.result(), toLanguage, -1, segments, word.classes, stress)
+                deriveWord(phonemic, phonemes.result(), toLanguage, true, -1, segments, word.classes, stress)
             }
             else
                 word
@@ -254,7 +254,7 @@ class Rule(
                 val headWordForm = graph.getLinksTo(headWord).find { it.rules == listOf(this) }?.fromEntity as? Word
                 if (headWordForm != null) {
                     val derivedForm = word.text.substring(0, word.text.length-headWord.text.length) + headWordForm.text
-                    return deriveWord(word, derivedForm, toLanguage, -1, null, headWordForm.classes,
+                    return deriveWord(word, derivedForm, toLanguage, word.isPhonemic, -1, null, headWordForm.classes,
                         normalizeSegments = normalizeSegments)
                 }
             }
@@ -271,7 +271,7 @@ class Rule(
                 if (applyPrePostRules) {
                     resultWord = paradigm?.postRule?.apply(resultWord, graph, trace, preserveId = true) ?: resultWord
                 }
-                val result = deriveWord(word, resultWord.text, toLanguage, resultWord.stressedPhonemeIndex,
+                val result = deriveWord(word, resultWord.text, toLanguage, resultWord.isPhonemic, resultWord.stressedPhonemeIndex,
                     resultWord.segments, resultWord.classes, normalizeSegments = normalizeSegments,
                     id = if (preserveId) word.id else -1)
                 trace?.logRuleResult(this, result)
@@ -335,8 +335,9 @@ class Rule(
         return listOf(phonemes.result())
     }
 
-    private fun deriveWord(word: Word, text: String, language: Language, stressIndex: Int, segments: List<WordSegment>?,
-                           classes: List<String>, stress: Int? = null, normalizeSegments: Boolean = true, id: Int = -1): Word {
+    private fun deriveWord(word: Word, text: String, language: Language, phonemic: Boolean, stressIndex: Int, segments: List<WordSegment>?,
+                           classes: List<String>, stress: Int? = null, normalizeSegments: Boolean = true,
+                           id: Int = -1): Word {
         val gloss = word.glossOrNP()?.let { baseGloss ->
             applyCategories(baseGloss, segments?.any { it.sourceRule == this} == true)
         }
@@ -349,7 +350,7 @@ class Rule(
             else if (sourceSegments != null) {
                 it.segments = sourceSegments
             }
-            it.isPhonemic = word.isPhonemic
+            it.isPhonemic = phonemic
         }.apply {
             if (stress != null) {
                 stressedPhonemeIndex = stress

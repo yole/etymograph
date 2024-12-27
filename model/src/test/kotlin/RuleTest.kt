@@ -774,6 +774,14 @@ class RuleTest : QBaseTest() {
         assertEquals(ruleText,rule.toEditableText(repo))
     }
 
+    @Test
+    fun speRulePhonemic() {
+        val rule = parseRule(q, q, " * z -> r")
+        val result = rule.apply(q.word("thuzya"), repo)
+        assertEquals("thurja", result.text)
+        assertTrue(result.isPhonemic)
+    }
+
     /*
 
     @Test

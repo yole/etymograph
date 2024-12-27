@@ -8,9 +8,10 @@ open class QBaseTest {
             Phoneme(-1, listOf(p), null, setOf("short", "vowel"))
         } + listOf("á", "ó", "ú", "í", "é").map { p ->
             Phoneme(-1, listOf(p), null, setOf("long", "vowel"))
-        } + listOf("c", "f", "h", "j", "l", "m", "q", "r", "s", "v", "w", "x", "z").map { p ->
+        } + listOf("c", "f", "h", "l", "m", "q", "r", "s", "v", "w", "x", "z").map { p ->
             Phoneme(-1, listOf(p), null, setOf("consonant"))
-        } + phoneme("p", "voiceless bilabial stop") +
+        } + Phoneme(-1, listOf("y"), "j", setOf("consonant")) +
+            phoneme("p", "voiceless bilabial stop") +
             phoneme("t", "voiceless alveolar stop") +
             phoneme("b", "voiced bilabial stop") +
             phoneme("d", "voiced alveolar stop") +

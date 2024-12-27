@@ -541,7 +541,7 @@ class PhonemeRuleTest : QBaseTest() {
             sound is 'k' and next sound is 'w':
             - sound is geminated
         """.trimIndent())
-        assertEquals("kkwenya", applyRule(rule, q.word("kwenya")))
+        assertEquals("kkwenia", applyRule(rule, q.word("kwenia")))
     }
 
     @Test
