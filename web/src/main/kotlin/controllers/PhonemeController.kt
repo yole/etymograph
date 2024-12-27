@@ -77,7 +77,10 @@ class PhonemeController {
         }
 
         val sound = params.sound.nullize()
-        val classes = parseClasses(params).ifEmpty { sound?.let { defaultPhonemeClasses[it] } ?: emptySet() }
+        val classes = parseClasses(params).ifEmpty {
+            val effectiveSound = sound ?: graphemes.first()
+            defaultPhonemeClasses[effectiveSound] ?: emptySet()
+        }
         val phoneme = repo.addPhoneme(
             language,
             graphemes,
