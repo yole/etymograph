@@ -301,12 +301,24 @@ class PhonemeIterator {
         return applyIndexMap(i, phonemeToResultIndexMap)
     }
 
-    private fun applyIndexMap(index: Int, map: IntArray): Int {
+    fun mapNextValidIndex(index: Int): Int {
+        val i = indexMapStack?.fold(index) { i, map -> applyIndexMap(i, map, true) } ?: index
+        return applyIndexMap(i, phonemeToResultIndexMap, true)
+    }
+
+    private fun applyIndexMap(index: Int, map: IntArray, nextValid: Boolean = false): Int {
         if (index < 0) {
             return -1
         }
         if (index == map.size) {
             return map[index - 1] + 1
+        }
+        if (nextValid) {
+            var validIndex = index
+            while (validIndex < map.size - 1 && map[validIndex] == -1) {
+                validIndex++
+            }
+            return map[validIndex]
         }
         return map[index]
     }

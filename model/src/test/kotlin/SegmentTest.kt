@@ -167,4 +167,13 @@ class SegmentTest : QBaseTest() {
         val result = onMid.apply(q.word("dreifa"), repo)
         assertEquals(1, result.segments!!.size)
     }
+
+    @Test
+    fun segmentsAfterDeleteVowel() {
+        repo.rule("sound is morpheme-initial vowel and previous sound is vowel:\n-sound disappears",
+            name = "on-article-vowel-deletion")
+        val onDefDatDg = repo.rule("- append 'inu'\n= apply rule 'on-article-vowel-deletion'")
+        val result = onDefDatDg.apply(q.word("horni"), repo)
+        assertEquals(1, result.segments!!.size)
+    }
 }

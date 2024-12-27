@@ -14,6 +14,9 @@ class WordSegment(
         if (firstCharacter < 0) {
             throw IllegalArgumentException("Invalid segment start index")
         }
+        if (length < 0) {
+            throw IllegalArgumentException("Invalid segment length")
+        }
     }
 
     override fun toString(): String {

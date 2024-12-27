@@ -285,9 +285,9 @@ class Rule(
 
     private fun remapSegments(phonemes: PhonemeIterator, segments: List<WordSegment>?): List<WordSegment>? {
         return segments?.mapNotNull { segment ->
-            val start = phonemes.mapIndex(segment.firstCharacter)
+            val start = phonemes.mapNextValidIndex(segment.firstCharacter)
             val end = phonemes.mapIndex(segment.firstCharacter + segment.length)
-            if (start < 0) {
+            if (start < 0 || end < 0) {
                 null
             }
             else {
