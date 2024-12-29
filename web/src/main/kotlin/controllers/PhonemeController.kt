@@ -135,6 +135,7 @@ class PhonemeController {
 }
 
 fun Phoneme.toViewModel(graph: GraphRepository, language: Language): PhonemeViewModel {
+    val features = language.phonemeFeatures(this)
     return PhonemeViewModel(
         id,
         language.shortName,
@@ -142,8 +143,8 @@ fun Phoneme.toViewModel(graph: GraphRepository, language: Language): PhonemeView
         graphemes,
         sound ?: "",
         classes.joinToString(" "),
-        implicitPhonemeClasses(classes).joinToString(" "),
-        language.phonemeFeatures(this).joinToString( " "),
+        (implicitPhonemeClasses(classes) - features).joinToString(" "),
+        features.joinToString( " "),
         historical,
         source.toViewModel(graph),
         source.toEditableText(graph),
