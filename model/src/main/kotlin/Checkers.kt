@@ -185,6 +185,16 @@ object RuleChecker : ConsistencyChecker {
                 report(ConsistencyCheckerIssue("Rule ${rule.name} refers to unknown phoneme ${speNode.text}"))
             }
         }
+        if (speNode is SpeAlternativeNode) {
+            if (speNode.choices.size == 1) {
+                report(ConsistencyCheckerIssue("Rule ${rule.name} contains alternative node with single choice: $speNode"))
+            }
+            for (choice in speNode.choices) {
+                for (element in choice) {
+                    checkSpeNode(rule, language, element, report)
+                }
+            }
+        }
     }
 }
 
