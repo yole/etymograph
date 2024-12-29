@@ -125,8 +125,8 @@ class SpePattern(
         }
         val newPhoneme = findReplacementPhoneme(it.language, phoneme, newClass).singleOrNull()
         newPhoneme?.let { p ->
-            trace?.logInstruction { "Replacing phoneme with ${p.graphemes[0]}" }
-            it.replaceAtRelative(relativeIndex, p.graphemes[0])
+            trace?.logInstruction { "Replacing phoneme with ${p.effectiveSound}" }
+            it.replaceAtRelative(relativeIndex, p.effectiveSound)
         } ?: run {
             trace?.logInstruction { "No replacement phoneme for ${phoneme.effectiveSound} with ${newClass.name}" }
         }
