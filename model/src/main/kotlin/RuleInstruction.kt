@@ -568,7 +568,7 @@ class ChangePhonemeClassInstruction(val relativeIndex: Int, val oldClass: String
 
     private fun replacePhonemeClass(phonemes: PhonemeIterator, fromClass: String, toClass: String, trace: RuleTrace?): Boolean {
         val phonemeText = phonemes.atRelative(relativeIndex)
-        val phoneme = phonemes.language.phonemes.find { phonemeText in it.graphemes }
+        val phoneme = phonemes.language.phonemes.find { phonemeText == it.effectiveSound }
         if (phoneme == null) {
             trace?.logInstruction { "replace phoneme class: no phoneme found for $phonemeText" }
             return false
