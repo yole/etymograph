@@ -151,7 +151,7 @@ class LeafRuleCondition(
     override fun matches(word: Word, phonemes: PhonemeIterator, graph: GraphRepository, trace: RuleTrace?): Boolean {
         return when (type) {
             ConditionType.BeginningOfWord -> phonemes.atBeginning().negateIfNeeded()
-            ConditionType.EndOfWord -> phonemes.atEnd().negateIfNeeded()
+            ConditionType.EndOfWord -> (phonemes.index == phonemes.size - 1).negateIfNeeded()
             ConditionType.ClassMatches -> matchClass(word, graph)
             else -> throw IllegalStateException("Trying to use a word condition for matching phonemes")
         }

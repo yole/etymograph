@@ -1,5 +1,7 @@
 package ru.yole.etymograph
 
+import kotlin.math.min
+
 class SpeNode(val text: String?, val wordBoundary: Boolean, val phonemeClass: PhonemeClass?) {
     fun match(it: PhonemeIterator): Boolean {
         if (wordBoundary) {
@@ -90,7 +92,7 @@ class SpePattern(
             {
                 val beforeLength = before.size
                 val afterLength = after.size
-                for (i in 0..<Math.min(beforeLength, afterLength)) {
+                for (i in 0..<min(beforeLength, afterLength)) {
                     val afterClass = after[i].phonemeClass
                     if (afterClass != null) {
                         replacePhonemeByFeatures(it, i, afterClass, trace)

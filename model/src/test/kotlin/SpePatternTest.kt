@@ -101,6 +101,12 @@ class SpePatternTest : QBaseTest() {
     }
 
     @Test
+    fun replaceMatchWordBoundaryForwardPenultimate() {
+        val pattern = SpePattern.parse(q, q, "a -> o / _#")
+        assertEquals("bad", pattern.apply(q, "bad"))
+    }
+
+    @Test
     fun replaceMatchWordBoundaryBackward() {
         val pattern = SpePattern.parse(q, q, "a -> o / #_")
         assertEquals("obad", pattern.apply(q, "abad"))

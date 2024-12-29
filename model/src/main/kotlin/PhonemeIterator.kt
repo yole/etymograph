@@ -116,6 +116,7 @@ class PhonemeIterator {
     private var phonemeIndex = 0
     private var phonemeToResultIndexMap: IntArray
     private var indexMapStack: MutableList<IntArray>? = null
+    private var atEnd: Boolean = false
 
     constructor(word: Word, repo: GraphRepository?, resultPhonemic: Boolean? = null) : this(
         if (word.isPhonemic) word.text else word.normalizedText.trimEnd('-'),
@@ -202,6 +203,7 @@ class PhonemeIterator {
 
     fun advanceTo(index: Int) {
         phonemeIndex = index
+        atEnd = false
     }
 
     fun advance(): Boolean {
@@ -212,7 +214,11 @@ class PhonemeIterator {
         val newIndex = phonemeIndex + relativeIndex
         if (newIndex >= 0 && newIndex < phonemes.size) {
             phonemeIndex = newIndex
+            atEnd = false
             return true
+        }
+        else if (newIndex >= phonemes.size) {
+            atEnd = true
         }
         return false
     }
@@ -251,6 +257,7 @@ class PhonemeIterator {
         }
         val result = Ordinals.at(matchingIndexes, seekTarget.index) ?: return false
         phonemeIndex = result
+        atEnd = false
         return true
     }
 
@@ -324,7 +331,7 @@ class PhonemeIterator {
     }
 
     fun atBeginning(): Boolean = phonemeIndex == 0
-    fun atEnd(): Boolean = phonemeIndex == phonemes.size - 1
+    fun atEnd(): Boolean = atEnd
 
     fun findMatchInRange(start: Int, end: Int, phonemeClass: PhonemeClass): Int? {
         for (i in start until end) {
