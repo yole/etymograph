@@ -17,11 +17,8 @@ sealed class SpeTargetNode : SpeNode() {
     abstract fun insert(it: PhonemeIterator, i: Int)
 }
 
-class SpeLiteralNode(val language: Language, val text: String?, val wordBoundary: Boolean, val phonemeClass: PhonemeClass?): SpeTargetNode() {
+class SpeLiteralNode(val language: Language, val text: String?, val phonemeClass: PhonemeClass?): SpeTargetNode() {
     override fun match(it: PhonemeIterator): Boolean {
-        if (wordBoundary) {
-            return it.atEnd()
-        }
         if (matchCurrent(it)) {
             it.advance()
             return true
@@ -30,9 +27,6 @@ class SpeLiteralNode(val language: Language, val text: String?, val wordBoundary
     }
 
     override fun matchBackwards(it: PhonemeIterator): Boolean {
-        if (wordBoundary) {
-            return it.atBeginning()
-        }
         if (!it.advanceBy(-1)) {
             return false
         }
@@ -47,9 +41,6 @@ class SpeLiteralNode(val language: Language, val text: String?, val wordBoundary
     }
 
     override fun toRichText(language: Language?): RichText {
-        if (wordBoundary) {
-            return "#".richText()
-        }
         if (phonemeClass != null) {
             val matchingPhonemes = phonemeClass.matchingPhonemes.takeIf { it.isNotEmpty() }?.joinToString(", ")
             if (phonemeClass.name == PhonemeClass.consonantClassName) {
@@ -165,6 +156,20 @@ class SpeLiteralNode(val language: Language, val text: String?, val wordBoundary
 
     override fun refersToPhoneme(phoneme: Phoneme): Boolean {
         return text == phoneme.effectiveSound
+    }
+}
+
+object SpeWordBoundaryNode : SpeNode() {
+    override fun match(it: PhonemeIterator): Boolean {
+        return it.atEnd()
+    }
+
+    override fun matchBackwards(it: PhonemeIterator): Boolean {
+        return it.atBeginning()
+    }
+
+    override fun toRichText(language: Language?): RichText {
+        return "#".richText()
     }
 }
 
@@ -316,18 +321,18 @@ class SpePattern(
                         throw SpeParseException("Missing closing bracket in character class")
                     }
                     val classText = text.substring(pos + 1, classEnd)
-                    result.add(SpeLiteralNode(language, null, false, parseClass(language, classText)))
+                    result.add(SpeLiteralNode(language, null, parseClass(language, classText)))
                     pos = classEnd + 1
                 }
                 else {
                     val nextPhoneme = language.phonoPhonemeLookup.nextPhoneme(text, pos)
                     result.add(when(nextPhoneme) {
-                        "#"-> SpeLiteralNode(language, null, true, null)
-                        "C" -> SpeLiteralNode(language, null, false,
+                        "#"-> SpeWordBoundaryNode
+                        "C" -> SpeLiteralNode(language, null,
                             language.phonemeClassByName(PhonemeClass.consonantClassName) ?: throw SpeParseException("Consonant class not found"))
-                        "V" -> SpeLiteralNode(language, null, false,
+                        "V" -> SpeLiteralNode(language, null,
                             language.phonemeClassByName(PhonemeClass.vowelClassName) ?: throw SpeParseException("Vowel class not found"))
-                        else -> SpeLiteralNode(language, nextPhoneme, false, null)
+                        else -> SpeLiteralNode(language, nextPhoneme,  null)
                     })
                     pos += nextPhoneme.length
                 }
