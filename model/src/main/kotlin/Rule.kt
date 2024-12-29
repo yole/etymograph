@@ -24,7 +24,7 @@ class RuleTrace {
     private val log = StringBuilder()
 
     fun logRule(rule: Rule, word: Word) {
-        log.append("Applying rule ${rule.name} to ${word.text} (segments ${word.segments}, stress ${word.stressedPhonemeIndex})\n")
+        log.append("Applying rule ${rule.name} to ${word.text} (language ${word.language.shortName}, phonemic ${word.isPhonemic}, segments ${word.segments}, stress ${word.stressedPhonemeIndex})\n")
     }
 
     fun logRuleResult(rule: Rule, word: Word) {
