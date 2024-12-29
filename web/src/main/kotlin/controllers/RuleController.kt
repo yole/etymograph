@@ -454,6 +454,7 @@ class RuleController {
 
     data class RuleTraceParams(
         val word: String = "",
+        val language: String? = "",
         val reverse: Boolean = false
     )
 
@@ -468,8 +469,9 @@ class RuleController {
         if (params.word.isBlank()) {
             badRequest("Cannot trace rule for empty word")
         }
-        val existingWord = repo.wordsByText(rule.fromLanguage, params.word).singleOrNull()
-        val word = existingWord ?: Word(-1, params.word, rule.fromLanguage)
+        val lang = params.language.nullize()?.let { repo.resolveLanguage(it) } ?: rule.fromLanguage
+        val existingWord = repo.wordsByText(lang, params.word).singleOrNull()
+        val word = existingWord ?: Word(-1, params.word, lang)
         val trace = RuleTrace()
         val result = if (params.reverse)
             rule.reverseApply(word, repo, trace).joinToString(", ")

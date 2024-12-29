@@ -2355,6 +2355,8 @@ components:
       properties:
         word:
           type: "string"
+        language:
+          type: "string"
         reverse:
           type: "boolean"
       required:

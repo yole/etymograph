@@ -196,8 +196,8 @@ export function applyRuleSequence(graph: string, seqId: number, fromWordId: numb
     })
 }
 
-export function traceRule(graph: string, ruleId: number, word: string, reverse: boolean): Promise<TypedResponse<RuleTraceResult>> {
-    return postToBackendTyped(`${graph}/rule/${ruleId}/trace`, {word, reverse})
+export function traceRule(graph: string, ruleId: number, word: string, reverse: boolean, language?: string): Promise<Response> {
+    return postToBackend(`${graph}/rule/${ruleId}/trace`, {word, reverse, language})
 }
 
 export function previewRuleChanges(graph: string, ruleId: number, newText: string) {

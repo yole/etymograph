@@ -480,6 +480,7 @@ export type RuleShortViewModel = {
 
 export type RuleTraceParams = {
     word: string;
+    language?: string;
     reverse: boolean;
 };
 

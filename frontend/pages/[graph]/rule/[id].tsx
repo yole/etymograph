@@ -21,7 +21,9 @@ import FormRow from "@/components/FormRow";
 import {GraphContext} from "@/components/Contexts";
 import WordGloss from "@/components/WordGloss";
 import RuleLink from "@/components/RuleLink";
-import {RuleExampleViewModel, RuleViewModel} from "@/models";
+import {RuleExampleViewModel, RuleTraceResult, RuleViewModel} from "@/models";
+import LanguageSelect from "@/components/LanguageSelect";
+import {Form} from "react-hook-form";
 
 export const config = {
     unstable_runtimeJS: true
@@ -86,6 +88,11 @@ function ExampleList(params: {rule: RuleViewModel, examples: RuleExampleViewMode
     </table>
 }
 
+interface TraceFormData {
+    traceLanguage?: string
+    traceWord?: string
+}
+
 export default function Rule(params) {
     const rule = params.loaderData as RuleViewModel
     const [editMode, setEditMode] = useState(false)
@@ -95,6 +102,7 @@ export default function Rule(params) {
     const [showExampleForm, setShowExampleForm] = useState(false)
     const [showTraceForm, setShowTraceForm] = useState(false)
     const [traceWord, setTraceWord] = useState("")
+    const [traceLanguage, setTraceLanguage] = useState(rule.toLang)
     const [traceReverse, setTraceReverse] = useState(false)
     const [traceResult, setTraceResult] = useState("")
     const [exampleUnmatched, setExampleUnmatched] = useState([])
@@ -152,17 +160,12 @@ export default function Rule(params) {
         setTraceReverse(reverse)
     }
 
-    async function runTrace() {
-        const r = await traceRule(graph, rule.id, traceWord, traceReverse)
-        if (r.ok()) {
-            const jr = await r.result()
-            setErrorText(null)
-            setTraceResult(jr.trace)
-        }
-        else {
-            const jr = await r.error()
-            setErrorText(jr)
-        }
+    async function runTrace(data: TraceFormData): Promise<Response> {
+        return traceRule(graph, rule.id, data.traceWord, traceReverse, data.traceLanguage)
+    }
+
+    function showTrace(result: RuleTraceResult) {
+        setTraceResult(result.trace)
     }
 
     return <>
@@ -321,10 +324,17 @@ export default function Rule(params) {
             </>
         }
         {showTraceForm && <p>
-            Word:{' '}
-            <input type="text" value={traceWord} onChange={(e) => setTraceWord(e.target.value)}/>{' '}
-            <button onClick={() => runTrace()}>Trace</button>{' '}
-            <button onClick={() => setShowTraceForm(false)}>Cancel</button>
+            <EtymographForm<TraceFormData, RuleTraceResult>
+                defaultValues={{traceLanguage: rule.toLang}}
+                create={runTrace}
+                submitted={showTrace}
+                cancelled={() => setShowTraceForm(false)}
+            >
+                <table><tbody>
+                    <LanguageSelect id="traceLanguage" label="Language"/>
+                    <FormRow id="traceWord" label="Word"/>
+                </tbody></table>
+            </EtymographForm>
             <div className="ruleTrace">{traceResult}</div>
         </p>}
     </>
