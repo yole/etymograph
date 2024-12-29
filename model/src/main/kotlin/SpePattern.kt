@@ -6,15 +6,18 @@ sealed class SpeNode {
     abstract fun match(it: PhonemeIterator): Boolean
     abstract fun matchBackwards(it: PhonemeIterator): Boolean
     abstract fun toRichText(language: Language?): RichText
-    abstract fun replace(it: PhonemeIterator, i: Int, trace: RuleTrace?)
-    abstract fun insert(it: PhonemeIterator, i: Int)
     open fun buildReplacementTooltip(beforeNode: SpeNode?, language: Language?): RichText {
         return toRichText(language)
     }
     open fun refersToPhoneme(phoneme: Phoneme) = false
 }
 
-class SpeLiteralNode(val language: Language, val text: String?, val wordBoundary: Boolean, val phonemeClass: PhonemeClass?): SpeNode() {
+sealed class SpeTargetNode : SpeNode() {
+    abstract fun replace(it: PhonemeIterator, i: Int, trace: RuleTrace?)
+    abstract fun insert(it: PhonemeIterator, i: Int)
+}
+
+class SpeLiteralNode(val language: Language, val text: String?, val wordBoundary: Boolean, val phonemeClass: PhonemeClass?): SpeTargetNode() {
     override fun match(it: PhonemeIterator): Boolean {
         if (wordBoundary) {
             return it.atEnd()
@@ -169,7 +172,7 @@ class SpePattern(
     private val fromLanguage: Language,
     private val toLanguage: Language,
     val before: List<SpeNode>,
-    val after: List<SpeNode>,
+    val after: List<SpeTargetNode>,
     val preceding: List<SpeNode>,
     val following: List<SpeNode>
 )  {
@@ -268,7 +271,7 @@ class SpePattern(
                     fromLanguage,
                     toLanguage,
                     parseNodes(fromLanguage, beforeText),
-                    parseNodes(toLanguage, afterTextWithContext),
+                    parseTargetNodes(toLanguage, afterTextWithContext),
                     emptyList(),
                     emptyList()
                 )
@@ -285,10 +288,19 @@ class SpePattern(
                 fromLanguage,
                 toLanguage,
                 parseNodes(fromLanguage, beforeText),
-                parseNodes(toLanguage, afterText),
+                parseTargetNodes(toLanguage, afterText),
                 parseNodes(fromLanguage, precedeText),
                 parseNodes(fromLanguage, followText)
             )
+        }
+
+        private fun parseTargetNodes(language: Language, text: String): List<SpeTargetNode> {
+            val nodes = parseNodes(language, text)
+            nodes.find { it !is SpeTargetNode}?.let {
+                throw IllegalArgumentException("Node $it cannot be used in 'after' position")
+            }
+            @Suppress("UNCHECKED_CAST")
+            return nodes as List<SpeTargetNode>
         }
 
         private fun parseNodes(language: Language, text: String): List<SpeNode> {
