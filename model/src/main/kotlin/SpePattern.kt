@@ -181,6 +181,56 @@ object SpeWordBoundaryNode : SpeNode() {
     }
 }
 
+class SpeAlternativeNode(val choices: List<List<SpeNode>>) : SpeNode() {
+    override fun match(it: PhonemeIterator): Boolean {
+        for (choice in choices) {
+            val copy = it.clone()
+            if (choice.matchNodes(copy)) {
+                it.advanceTo(copy.index)
+                return true
+            }
+        }
+        return false
+    }
+
+    override fun matchBackwards(it: PhonemeIterator): Boolean {
+        for (choice in choices) {
+            val copy = it.clone()
+            if (choice.matchNodesBackwards(copy)) {
+                it.advanceTo(copy.index)
+                return true
+            }
+        }
+        return false
+    }
+
+    override fun toRichText(language: Language?): RichText {
+        var result = "{".richText()
+        for ((index, choice) in choices.withIndex()) {
+            if (index > 0) {
+                result += "|"
+            }
+            result += choice.joinToRichText("") {
+                it.toRichText(language)
+            }
+        }
+        result += "}"
+        return result
+    }
+}
+
+private fun List<SpeNode>.matchNodes(it: PhonemeIterator, trace: RuleTrace? = null): Boolean {
+    return all {
+        node -> node.match(it).also { result -> trace?.logNodeMatch(it, node, result) }
+    }
+}
+
+private fun List<SpeNode>.matchNodesBackwards(it: PhonemeIterator, trace: RuleTrace? = null): Boolean {
+    return reversed().all {
+        node -> node.matchBackwards(it).also { result -> trace?.logNodeMatch(it, node, result) }
+    }
+}
+
 class SpePattern(
     private val fromLanguage: Language,
     private val toLanguage: Language,
@@ -197,9 +247,10 @@ class SpePattern(
         val it = PhonemeIterator(word, null)
         while (true) {
             val itCopy = it.clone()
-            if (matchNodes(itCopy, before, trace) &&
-                matchNodes(itCopy, following, trace) &&
-                matchNodesBackwards(it.clone(), preceding, trace))
+            if (before.matchNodes(itCopy, trace) &&
+                following.matchNodes(itCopy, trace) &&
+                preceding.matchNodesBackwards(it.clone(), trace)
+            )
             {
                 val beforeLength = before.size
                 val afterLength = after.size
@@ -221,18 +272,6 @@ class SpePattern(
         }
 
         return it.result()
-    }
-
-    private fun matchNodes(it: PhonemeIterator, nodes: List<SpeNode>, trace: RuleTrace? = null): Boolean {
-        return nodes.all {
-            node -> node.match(it).also { result -> trace?.logNodeMatch(it, node, result) }
-        }
-    }
-
-    private fun matchNodesBackwards(it: PhonemeIterator, nodes: List<SpeNode>, trace: RuleTrace? = null): Boolean {
-        return nodes.reversed().all {
-            node -> node.matchBackwards(it).also { result -> trace?.logNodeMatch(it, node, result) }
-        }
     }
 
     fun toRichText(): RichText {
@@ -331,6 +370,15 @@ class SpePattern(
                     val classText = text.substring(pos + 1, classEnd)
                     result.add(SpePhonemeClassNode(language, parseClass(language, classText)))
                     pos = classEnd + 1
+                }
+                else if (text[pos] == '{') {
+                    val alternativeEnd = text.indexOf('}', pos)
+                    if (alternativeEnd < 0) {
+                        throw SpeParseException("Missing curly brace in alternative")
+                    }
+                    val choices = text.substring(pos + 1, alternativeEnd).split('|')
+                    result.add(SpeAlternativeNode(choices.map { parseNodes(language, it) }))
+                    pos = alternativeEnd + 1
                 }
                 else {
                     val nextPhoneme = language.phonoPhonemeLookup.nextPhoneme(text, pos)

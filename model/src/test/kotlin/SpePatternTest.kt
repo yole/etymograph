@@ -76,13 +76,15 @@ class SpePatternTest : QBaseTest() {
         assertEquals("hr", (pattern.after.single() as SpeLiteralNode).text)
     }
 
-    /*
     @Test
     fun parseAlternative() {
-        val pattern = SpePattern.parse(q, q, "i -> e / {a|o}_")
-        assertEquals(S)
+        val text = "i -> e / {a|o}_"
+        val pattern = SpePattern.parse(q, q, text)
+        val node = pattern.preceding.single() as SpeAlternativeNode
+        assertEquals("a", (node.choices[0].single() as SpeLiteralNode).text)
+        assertEquals("o", (node.choices[1].single() as SpeLiteralNode).text)
+        assertEquals(text, pattern.toString())
     }
-     */
 
     @Test
     fun replaceWithoutContext() {
@@ -136,6 +138,18 @@ class SpePatternTest : QBaseTest() {
     fun transform() {
         val pattern = SpePattern.parse(q, q, "[-sonorant,-continuant,+voice] -> [-voice] / _#")
         assertEquals("obat", pattern.apply(q,  "obad"))
+    }
+
+    @Test
+    fun alternative() {
+        val pattern = SpePattern.parse(q, q, "e -> i / _{a|o}")
+        assertEquals("biabiobeu", pattern.apply(q, "beabeobeu"))
+    }
+
+    @Test
+    fun alternativeBackwards() {
+        val pattern = SpePattern.parse(q, q, "e -> i / {a|o}_")
+        assertEquals("aiboibueb", pattern.apply(q, "aeboebueb"))
     }
 
     @Test
