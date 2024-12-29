@@ -102,7 +102,7 @@ class SpePhonemeClassNode(val language: Language, val phonemeClass: PhonemeClass
 
     private fun replacePhonemeByFeatures(it: PhonemeIterator, relativeIndex: Int, newClass: PhonemeClass, trace: RuleTrace? = null) {
         val phonemeText = it.atRelative(relativeIndex)
-        val phoneme = language.phonemes.find { phonemeText in it.graphemes }
+        val phoneme = language.phonemes.find { phonemeText == it.effectiveSound }
         if (phoneme == null) {
             trace?.logInstruction { "Not found matching phoneme" }
             return
