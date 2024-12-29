@@ -159,6 +159,12 @@ class SpePatternTest : QBaseTest() {
     }
 
     @Test
+    fun longContext() {
+        val pattern = SpePattern.parse(q, q, "i -> e / _CC")
+        assertEquals("dir", pattern.apply(q, "dir"))
+    }
+
+    @Test
     fun toStringSimple() {
         val pattern = SpePattern.parse(q, q, "a -> o")
         assertEquals("a -> o", pattern.toString())

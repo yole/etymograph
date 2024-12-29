@@ -23,6 +23,9 @@ sealed class SpeTargetNode : SpeNode() {
 
 abstract class SpePhonemeNode : SpeTargetNode() {
     override fun match(it: PhonemeIterator): Boolean {
+        if (it.atEnd()) {
+            return false
+        }
         if (matchCurrent(it)) {
             it.advance()
             return true
