@@ -101,6 +101,8 @@ class IntersectionPhonemeClass(name: String, val classList: List<PhonemeClass>)
             val result = classList.fold(emptySet<String>()) { set, cls ->
                 if (set.isEmpty())
                     cls.matchingPhonemes.toSet()
+                else if (cls is NegatedPhonemeClass)
+                    set
                 else
                     set.intersect(cls.matchingPhonemes)
 

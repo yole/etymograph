@@ -153,4 +153,12 @@ class SpePatternTest : QBaseTest() {
         val pattern = SpePattern.parse(q, q, "a -> o / _[+voice]")
         assertEquals("a -> o / _[+voice]", pattern.toString())
     }
+
+    @Test
+    fun tooltip() {
+        val pattern = SpePattern.parse(q, q, "m -> w / [nasal,-labial]_")
+        val richText = pattern.toRichText()
+        val fragment = richText.fragments.find { it.text.startsWith("nasal") }!!
+        assertEquals("n", fragment.tooltip)
+    }
 }
