@@ -161,8 +161,14 @@ class SpePhonemeClassNode(val language: Language, val phonemeClass: PhonemeClass
                 features.add(newPhonemeClass.name)
             }
         }
-        return language.phonemes.filter { p ->
+        val matching = language.phonemes.filter { p ->
             language.phonemeFeatures(p).containsAll(features)
+        }
+        if (matching.size == 1) {
+            return matching
+        }
+        return language.phonemes.filter { p ->
+            language.phonemeFeatures(p) == features
         }
     }
 }
