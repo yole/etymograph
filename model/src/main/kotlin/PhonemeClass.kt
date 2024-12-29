@@ -213,6 +213,7 @@ private val implicitPhonemeClasses = mapOf(
     "bilabial" to setOf("labial"),
     "labiodental" to setOf("labial"),
     "velar" to setOf("dorsal"),
+    "uvular" to setOf("dorsal"),
     "dental" to setOf("coronal"),
     "alveolar" to setOf("coronal"),
     "vowel" to setOf("vocalic"),
@@ -222,7 +223,10 @@ private val implicitPhonemeClasses = mapOf(
     "short" to setOf("-long"),
     "vowel" to setOf("+syllabic", "+voice"),
     "front" to setOf("-back"),
+    "back" to setOf("+back"),
     "open" to setOf("+low", "-high"),
+    "close-mid" to setOf("-high", "-low"),
+    "close" to setOf("+high", "-low"),
     "rounded" to setOf("+round"),
     "unrounded" to setOf("-round"),
     "palatalized" to setOf("+high"),
@@ -235,13 +239,25 @@ private val implicitPhonemeClasses2 = mapOf(
     setOf("labiodental", "fricative") to setOf("+strident"),
     setOf("alveolar", "fricative") to setOf("+strident"),
     setOf("velar", "fricative") to setOf("-strident"),
-    setOf("dental", "fricative") to setOf("-strident")
+    setOf("dental", "fricative") to setOf("-strident"),
+    setOf("uvular", "fricative") to setOf("-strident")
 )
 
 val defaultPhonemeClasses = mapOf(
+    "p" to setOf("voiceless", "bilabial", "stop"),
     "ɸ" to setOf("voiceless", "bilabial", "fricative"),
+    "b" to setOf("voiced", "bilabial", "stop"),
     "β" to setOf("voiced", "bilabial", "fricative"),
+    "f" to setOf("voiceless", "labiodental", "fricative"),
+    "v" to setOf("voiced", "labiodental", "fricative"),
+    "t" to setOf("voiceless", "alveolar", "stop"),
+    "d" to setOf("voiced", "alveolar", "stop"),
     "θ" to setOf("voiceless", "dental", "fricative"),
     "ð" to setOf("voiced", "dental", "fricative"),
-    "ɣ" to setOf("voiced", "velar", "fricative")
+    "s" to setOf("voiceless", "alveolar", "fricative"),
+    "k" to setOf("voiceless", "velar", "stop"),
+    "g" to setOf("voiced", "velar", "stop"),
+    "ɣ" to setOf("voiced", "velar", "fricative"),
+    "m" to setOf("voiced", "bilabial", "nasal"),
+    "n" to setOf("voiced", "alveolar", "nasal")
 )

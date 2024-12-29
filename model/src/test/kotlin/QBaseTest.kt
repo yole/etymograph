@@ -8,16 +8,10 @@ open class QBaseTest {
             Phoneme(-1, listOf(p), null, setOf("short", "vowel"))
         } + listOf("á", "ó", "ú", "í", "é").map { p ->
             Phoneme(-1, listOf(p), null, setOf("long", "vowel"))
-        } + listOf("c", "f", "h", "l", "m", "q", "r", "s", "v", "w", "x", "z").map { p ->
+        } + listOf("c", "h", "l", "q", "r", "w", "x", "z").map { p ->
             Phoneme(-1, listOf(p), null, setOf("consonant"))
         } + Phoneme(-1, listOf("y"), "j", setOf("consonant")) +
-            phoneme("p", "voiceless bilabial stop") +
-            phoneme("t", "voiceless alveolar stop") +
-            phoneme("b", "voiced bilabial stop") +
-            phoneme("d", "voiced alveolar stop") +
-            phoneme("n", "voiced alveolar nasal consonant") +
-            phoneme("k", "voiceless velar stop") +
-            phoneme("g", "voiced velar stop") +
+            listOf("p", "t", "b", "d", "f", "m", "n", "k", "g", "s").map { p -> phoneme(p) } +
             phoneme("hr", "voiceless alveolar trill consonant")
 
         it.diphthongs = listOf("ai", "oi", "ui", "au", "eu", "iu")
@@ -46,8 +40,9 @@ open class QBaseTest {
         addLanguage(q)
     }
 
-    fun phoneme(grapheme: String, classes: String): Phoneme {
-        return Phoneme(-1, listOf(grapheme), null, classes.split(' ').toSet())
+    fun phoneme(grapheme: String, classes: String? = null): Phoneme {
+        return Phoneme(-1, listOf(grapheme), null,
+            classes?.split(' ')?.toSet() ?: defaultPhonemeClasses[grapheme]!!)
     }
 
     fun phoneme(graphemes: List<String>, sound: String?, classes: String): Phoneme {
