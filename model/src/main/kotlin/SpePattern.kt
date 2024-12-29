@@ -283,8 +283,8 @@ class SpePattern(
             result += "∅".rich()
         }
         result += " → ".rich()
-        for (node in after) {
-            result += node.buildReplacementTooltip(before.singleOrNull(), toLanguage)
+        for ((index, node) in after.withIndex()) {
+            result += node.buildReplacementTooltip(before.getOrNull(index), toLanguage)
         }
         if (after.isEmpty()) {
             result += "∅".rich()
