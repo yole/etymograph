@@ -20,6 +20,7 @@
                 "á",
                 "ā"
             ],
+            "sound": "aː",
             "classes": [
                 "long",
                 "open",
@@ -48,6 +49,7 @@
                 "ó",
                 "ō"
             ],
+            "sound": "oː",
             "classes": [
                 "long",
                 "close-mid",
@@ -86,6 +88,7 @@
                 "ú",
                 "ū"
             ],
+            "sound": "uː",
             "classes": [
                 "long",
                 "close",
@@ -114,6 +117,7 @@
                 "í",
                 "ī"
             ],
+            "sound": "iː",
             "classes": [
                 "long",
                 "close",
@@ -142,6 +146,7 @@
                 "é",
                 "ē"
             ],
+            "sound": "eː",
             "classes": [
                 "long",
                 "close-mid",

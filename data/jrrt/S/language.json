@@ -20,6 +20,7 @@
                 "á",
                 "â"
             ],
+            "sound": "aː",
             "classes": [
                 "long",
                 "open",
@@ -48,6 +49,7 @@
                 "ó",
                 "ô"
             ],
+            "sound": "oː",
             "classes": [
                 "long",
                 "close-mid",
@@ -62,9 +64,12 @@
                 "ǭ"
             ],
             "classes": [
+                "open",
                 "long",
+                "back",
                 "vowel"
-            ]
+            ],
+            "historical": true
         },
         {
             "id": 1588,
@@ -86,6 +91,7 @@
                 "ú",
                 "û"
             ],
+            "sound": "uː",
             "classes": [
                 "long",
                 "close",
@@ -114,6 +120,7 @@
                 "í",
                 "î"
             ],
+            "sound": "iː",
             "classes": [
                 "long",
                 "close",
@@ -142,6 +149,7 @@
                 "é",
                 "ê"
             ],
+            "sound": "eː",
             "classes": [
                 "long",
                 "close-mid",
@@ -168,6 +176,7 @@
             "graphemes": [
                 "ý"
             ],
+            "sound": "yː",
             "classes": [
                 "long",
                 "close",
@@ -221,7 +230,7 @@
             ],
             "classes": [
                 "voiceless",
-                "bilabial",
+                "labiodental",
                 "fricative",
                 "consonant"
             ]
@@ -433,10 +442,12 @@
                 "kʰ"
             ],
             "classes": [
+                "voiceless",
                 "aspirated",
                 "velar",
                 "stop"
-            ]
+            ],
+            "historical": true
         },
         {
             "id": 1616,
@@ -444,10 +455,12 @@
                 "tʰ"
             ],
             "classes": [
+                "voiceless",
                 "aspirated",
                 "alveolar",
                 "stop"
-            ]
+            ],
+            "historical": true
         },
         {
             "id": 1617,
@@ -455,10 +468,12 @@
                 "pʰ"
             ],
             "classes": [
+                "voiceless",
                 "aspirated",
                 "bilabial",
                 "stop"
-            ]
+            ],
+            "historical": true
         },
         {
             "id": 1647,
@@ -491,7 +506,7 @@
             ],
             "classes": [
                 "voiced",
-                "bilabial",
+                "labiodental",
                 "fricative",
                 "consonant"
             ]
@@ -524,6 +539,30 @@
                     "refText": "https://eldamo.org/content/words/word-1590307365.html"
                 }
             ]
+        },
+        {
+            "id": 2041,
+            "graphemes": [
+                "ɸ"
+            ],
+            "classes": [
+                "voiceless",
+                "bilabial",
+                "fricative"
+            ],
+            "historical": true
+        },
+        {
+            "id": 2042,
+            "graphemes": [
+                "β"
+            ],
+            "classes": [
+                "voiced",
+                "bilabial",
+                "fricative"
+            ],
+            "historical": true
         }
     ],
     "diphthongs": [
@@ -536,6 +575,36 @@
     ],
     "stressRuleId": 535,
     "orthographyRuleId": 1232,
+    "pos": [
+        {
+            "name": "Noun",
+            "abbreviation": "N"
+        },
+        {
+            "name": "Proper noun",
+            "abbreviation": "NP"
+        },
+        {
+            "name": "Adjective",
+            "abbreviation": "ADJ"
+        },
+        {
+            "name": "Pronoun",
+            "abbreviation": "PRON"
+        },
+        {
+            "name": "Preposition",
+            "abbreviation": "PREP"
+        },
+        {
+            "name": "Verb",
+            "abbreviation": "V"
+        },
+        {
+            "name": "Conjunction",
+            "abbreviation": "CONJ"
+        }
+    ],
     "grammaticalCategories": [
         {
             "name": "Number",

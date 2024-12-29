@@ -989,7 +989,10 @@
         "sourceRefs": [
             {
                 "pubId": 1,
-                "refText": "27; https://eldamo.org/content/words/word-3828168149.html"
+                "refText": "27"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-3828168149.html"
             }
         ]
     },
@@ -1170,6 +1173,9 @@
             {
                 "pubId": 4,
                 "refText": "149"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-2655469239.html"
             }
         ]
     },
@@ -1696,7 +1702,7 @@
     {
         "id": 1645,
         "text": "srāwe",
-        "gloss": "flrsh",
+        "gloss": "flesh",
         "pos": "N",
         "sourceRefs": [
             {
@@ -2142,11 +2148,29 @@
         "id": 2026,
         "text": "eŋa",
         "gloss": "exist",
-        "fullGloss": "PE22:166, https://eldamo.org/content/words/word-3635887209.html"
+        "sourceRefs": [
+            {
+                "pubId": 4,
+                "refText": "166"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-3635887209.html"
+            }
+        ]
     },
     {
         "id": 2033,
         "text": "srawā",
         "gloss": "body"
+    },
+    {
+        "id": 2040,
+        "text": "okma",
+        "gloss": "evil deed",
+        "sourceRefs": [
+            {
+                "refText": "https://eldamo.org/content/words/word-2767447875.html"
+            }
+        ]
     }
 ]
