@@ -178,7 +178,7 @@ class Language(val name: String, val shortName: String) {
                     it.startsWith('-') ||
                     it in placeFeatures ||
                     it in unaryFeatures ||
-                    phonemeClassByName("-$it") != null
+                    (phonemeClassByName("-$it") != null && phonemeClassByName("+$it") == null)
         }
     }
 
