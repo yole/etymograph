@@ -149,7 +149,7 @@ class SpePattern(
             }
         }
         return toLanguage.phonemes.filter { p ->
-            toLanguage.phonemeFeatures(p) == features
+            toLanguage.phonemeFeatures(p).containsAll(features)
         }
     }
 
