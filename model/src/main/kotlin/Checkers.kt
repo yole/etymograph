@@ -122,6 +122,68 @@ object RuleChecker : ConsistencyChecker {
                     report(ConsistencyCheckerIssue("Unknown rule from POS '$pos' in ${rule.name}"))
                 }
             }
+            checkLogic(rule, report)
+        }
+    }
+
+    private fun checkLogic(rule: Rule, report: (ConsistencyCheckerIssue) -> Unit) {
+        for (preInstruction in rule.logic.preInstructions) {
+            checkInstruction(rule, preInstruction, report)
+        }
+        for (branch in rule.logic.branches) {
+            checkCondition(rule, branch.condition, report)
+            for (instruction in branch.instructions) {
+                checkInstruction(rule, instruction, report)
+            }
+        }
+        for (postInstruction in rule.logic.postInstructions) {
+            checkInstruction(rule, postInstruction, report)
+        }
+    }
+
+    private fun checkInstruction(rule: Rule, instruction: RuleInstruction, report: (ConsistencyCheckerIssue) -> Unit) {
+        if (instruction is SpeInstruction) {
+            checkSpePattern(rule, instruction.pattern, report)
+        }
+    }
+
+    private fun checkCondition(rule: Rule, condition: RuleCondition, report: (ConsistencyCheckerIssue) -> Unit) {
+        if (condition is RelativePhonemeRuleCondition) {
+            val pattern = condition.phonemePattern
+            if (pattern.literal != null &&
+                rule.fromLanguage.phonemes.find { it.effectiveSound == pattern.literal } == null)
+            {
+                report(ConsistencyCheckerIssue("Rule ${rule.name} refers to unknown phoneme ${pattern.literal}"))
+            }
+        }
+    }
+
+    private fun checkSpePattern(rule: Rule, pattern: SpePattern, report: (ConsistencyCheckerIssue) -> Unit) {
+        for (speNode in pattern.before) {
+            checkSpeNode(rule, rule.fromLanguage, speNode, report)
+        }
+        for (speNode in pattern.after) {
+            checkSpeNode(rule, rule.toLanguage, speNode, report)
+        }
+        for (speNode in pattern.preceding) {
+            checkSpeNode(rule, rule.fromLanguage, speNode, report)
+        }
+        for (speNode in pattern.following) {
+            checkSpeNode(rule, rule.fromLanguage, speNode, report)
+        }
+    }
+
+    private fun checkSpeNode(
+        rule: Rule,
+        language: Language,
+        speNode: SpeNode,
+        report: (ConsistencyCheckerIssue) -> Unit
+    ) {
+        if (speNode is SpeLiteralNode) {
+            val phoneme = language.phonemes.find { it.effectiveSound == speNode.text }
+            if (phoneme == null) {
+                report(ConsistencyCheckerIssue("Rule ${rule.name} refers to unknown phoneme ${speNode.text}"))
+            }
         }
     }
 }
