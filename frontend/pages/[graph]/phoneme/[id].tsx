@@ -58,9 +58,9 @@ export default function Phoneme(props) {
             <p>
             Graphemes: {phoneme.graphemes.join(", ")}<br/>
             {phoneme.sound.length > 0 && <>Sound: {phoneme.sound}<br/></>}
-            {phoneme.classes.length > 0 && "Classes: " + phoneme.classes}<br/>
-            {phoneme.implicitClasses.length > 0 && "Implicit classes: " + phoneme.implicitClasses}<br/>
-            {phoneme.features.length > 0 && "Features: " + phoneme.features}<br/>
+            {phoneme.classes.length > 0 && <>Classes: {phoneme.classes}<br/></>}
+            {phoneme.implicitClasses.length > 0 && <>Implicit classes: {phoneme.implicitClasses}<br/></>}
+            {phoneme.features.length > 0 && <>Features {phoneme.features}<br/></>}
             {phoneme.historical && "Historical"}
             </p>
             <SourceRefs source={phoneme.source}/>
