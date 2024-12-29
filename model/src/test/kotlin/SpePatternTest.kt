@@ -7,32 +7,32 @@ class SpePatternTest : QBaseTest() {
     @Test
     fun parseSimple() {
         val pattern = SpePattern.parse(q, q, "a -> o")
-        val beforeNode = pattern.before.single()
+        val beforeNode = pattern.before.single() as SpeLiteralNode
         assertEquals("a", beforeNode.text)
-        val afterNode = pattern.after.single()
+        val afterNode = pattern.after.single() as SpeLiteralNode
         assertEquals("o", afterNode.text)
     }
 
     @Test
     fun parseContext() {
         val pattern = SpePattern.parse(q, q,"a -> o / b_c")
-        val precede = pattern.preceding.single()
+        val precede = pattern.preceding.single() as SpeLiteralNode
         assertEquals("b", precede.text)
-        val follow = pattern.following.single()
+        val follow = pattern.following.single()  as SpeLiteralNode
         assertEquals("c", follow.text)
     }
 
     @Test
     fun parseClass() {
         val pattern = SpePattern.parse(q, q, "a -> o / [+voice]_")
-        val precede = pattern.preceding.single()
+        val precede = pattern.preceding.single() as SpeLiteralNode
         assertEquals("+voice", precede.phonemeClass!!.name)
     }
 
     @Test
     fun parseMultipleClass() {
         val pattern = SpePattern.parse(q, q,"a -> o / [+voice,-sonorant,-continuant]_")
-        val precede = pattern.preceding.single()
+        val precede = pattern.preceding.single() as SpeLiteralNode
         val phonemeClass = precede.phonemeClass!! as IntersectionPhonemeClass
         assertEquals(3, phonemeClass.classList.size)
         assertEquals("a -> o / [+voice,-sonorant,-continuant]_", pattern.toString())
@@ -41,7 +41,7 @@ class SpePatternTest : QBaseTest() {
     @Test
     fun parseNegatedClass() {
         val pattern = SpePattern.parse(q, q, "a -> o / [-coronal]_")
-        val cls = pattern.preceding.single().phonemeClass!!
+        val cls = (pattern.preceding.single() as SpeLiteralNode).phonemeClass!!
         assertEquals("coronal", (cls as NegatedPhonemeClass).baseClass.name)
         assertEquals("a -> o / [-coronal]_", pattern.toString())
     }
@@ -49,7 +49,7 @@ class SpePatternTest : QBaseTest() {
     @Test
     fun parsePlusBinaryClass() {
         val pattern = SpePattern.parse(q, q, "a -> o / [+sonorant]_")
-        val cls = pattern.preceding.single().phonemeClass!!
+        val cls = (pattern.preceding.single() as SpeLiteralNode).phonemeClass!!
         assertEquals("sonorant", cls.name)
         assertEquals("a -> o / [+sonorant]_", pattern.toString())
     }
@@ -65,16 +65,24 @@ class SpePatternTest : QBaseTest() {
     @Test
     fun parseCV() {
         val pattern = SpePattern.parse(q, q, "a -> 0 / C_V")
-        assertEquals("consonant", pattern.preceding.single().phonemeClass!!.name)
-        assertEquals("vowel", pattern.following.single().phonemeClass!!.name)
+        assertEquals("consonant", (pattern.preceding.single() as SpeLiteralNode).phonemeClass!!.name)
+        assertEquals("vowel", (pattern.following.single() as SpeLiteralNode).phonemeClass!!.name)
         assertEquals("a -> 0 / C_V", pattern.toString())
     }
 
     @Test
     fun parsePhonemeInText() {
         val pattern = SpePattern.parse(q, q, "r -> hr / hr_hr")
-        assertEquals("hr", pattern.after.single().text)
+        assertEquals("hr", (pattern.after.single() as SpeLiteralNode).text)
     }
+
+    /*
+    @Test
+    fun parseAlternative() {
+        val pattern = SpePattern.parse(q, q, "i -> e / {a|o}_")
+        assertEquals(S)
+    }
+     */
 
     @Test
     fun replaceWithoutContext() {

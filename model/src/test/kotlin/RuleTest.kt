@@ -194,7 +194,7 @@ class RuleTest : QBaseTest() {
         val rule = parseRule(q, q, " * d -> l / #_")
         assertEquals(1, rule.logic.branches.size)
         val speInstruction = rule.logic.branches[0].instructions.single() as SpeInstruction
-        assertEquals("l", speInstruction.pattern.after.single().text)
+        assertEquals("l", (speInstruction.pattern.after.single() as SpeLiteralNode).text)
         assertEquals("* d -> l / #_", rule.toEditableText(repo))
     }
 

@@ -637,7 +637,7 @@ class SpeInstruction(val pattern: SpePattern)
     }
 
     override fun refersToPhoneme(phoneme: Phoneme): Boolean {
-        return pattern.before.any { it.text == phoneme.graphemes[0] } ||
-                pattern.after.any { it.text == phoneme.graphemes[0] }
+        return pattern.before.any { it.refersToPhoneme(phoneme) } ||
+                pattern.after.any { it.refersToPhoneme(phoneme) }
     }
 }
