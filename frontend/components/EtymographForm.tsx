@@ -9,18 +9,19 @@ interface EtymographFormButton {
 }
 
 export interface EtymographFormProps<Data, ResponseData=Data> {
-    defaultValues?: Data;
-    setEditMode?: (newEditMode: boolean) => void;
-    focusTarget?: any;
-    updateId?: number;
-    update?: (Data: Data) => Promise<Response>;
-    create?: (Data: Data) => Promise<Response>;
-    children?: React.ReactNode;
-    submitted?: (responseData: ResponseData, data: Data) => any;
-    setFocusTarget?: (newFocusTarget: any) => void;
-    redirectOnCreate?: (Data: ResponseData) => string;
-    buttons?: EtymographFormButton[];
-    cancelled?: () => void;
+    defaultValues?: Data
+    setEditMode?: (newEditMode: boolean) => void
+    focusTarget?: any
+    updateId?: number
+    update?: (Data: Data) => Promise<Response>
+    create?: (Data: Data) => Promise<Response>
+    children?: React.ReactNode
+    submitted?: (responseData: ResponseData, data: Data) => any
+    setFocusTarget?: (newFocusTarget: any) => void
+    redirectOnCreate?: (Data: ResponseData) => string
+    buttons?: EtymographFormButton[]
+    cancelled?: () => void
+    saveButtonText?: string
 }
 
 export default function EtymographForm<Data, ResponseData=Data>(props: EtymographFormProps<Data, ResponseData>) {
@@ -85,7 +86,7 @@ export default function EtymographForm<Data, ResponseData=Data>(props: Etymograp
         <form onSubmit={methods.handleSubmit(saveForm)}>
             {props.children}
             <p>
-                <input type="submit" value="Save"/>
+                <input type="submit" value={props.saveButtonText ?? "Save"}/>
                 {(props.cancelled !== undefined || setEditMode !== undefined) && <>{' '}
                     <button onClick={() => props.cancelled !== undefined ? props.cancelled() : setEditMode(false)}>Cancel</button>
                 </>}

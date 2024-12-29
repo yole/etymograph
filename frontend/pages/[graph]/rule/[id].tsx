@@ -326,6 +326,7 @@ export default function Rule(params) {
         {showTraceForm && <p>
             <EtymographForm<TraceFormData, RuleTraceResult>
                 defaultValues={{traceLanguage: rule.toLang}}
+                saveButtonText="Trace"
                 create={runTrace}
                 submitted={showTrace}
                 cancelled={() => setShowTraceForm(false)}
