@@ -186,7 +186,7 @@ class SpeAlternativeNode(val choices: List<List<SpeNode>>) : SpeNode() {
         for (choice in choices) {
             val copy = it.clone()
             if (choice.matchNodes(copy)) {
-                it.advanceTo(copy.index)
+                it.catchUp(copy)
                 return true
             }
         }
@@ -197,7 +197,7 @@ class SpeAlternativeNode(val choices: List<List<SpeNode>>) : SpeNode() {
         for (choice in choices) {
             val copy = it.clone()
             if (choice.matchNodesBackwards(copy)) {
-                it.advanceTo(copy.index)
+                it.catchUp(copy)
                 return true
             }
         }

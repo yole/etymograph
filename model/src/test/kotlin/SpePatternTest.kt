@@ -153,6 +153,12 @@ class SpePatternTest : QBaseTest() {
     }
 
     @Test
+    fun alternativeBefore() {
+        val pattern = SpePattern.parse(q, q, "{w|v} -> 0 / u_#")
+        assertEquals("rau", pattern.apply(q, "rauw"))
+    }
+
+    @Test
     fun toStringSimple() {
         val pattern = SpePattern.parse(q, q, "a -> o")
         assertEquals("a -> o", pattern.toString())

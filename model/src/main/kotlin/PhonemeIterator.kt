@@ -233,6 +233,11 @@ class PhonemeIterator {
         return false
     }
 
+    fun catchUp(it: PhonemeIterator) {
+        phonemeIndex = it.index
+        atEnd = it.atEnd()
+    }
+
     fun seek(seekTarget: SeekTarget): Boolean {
         if (seekTarget.relative) {
             return if (seekTarget.phonemeClass != null)
