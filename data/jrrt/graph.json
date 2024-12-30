@@ -5104,10 +5104,9 @@
             "to": 1890,
             "type": "^",
             "ruleIds": [
+                2044,
                 1067,
-                1062,
-                1059,
-                1091
+                1062
             ],
             "notes": "The expected a-affection is absent in this derivation"
         },
@@ -5511,6 +5510,37 @@
                 1083,
                 1090,
                 2043
+            ]
+        },
+        {
+            "from": 2046,
+            "to": 2047,
+            "type": "^",
+            "ruleIds": [
+                2045,
+                1064,
+                1110,
+                1124,
+                1077,
+                1120,
+                1062,
+                1288
+            ]
+        },
+        {
+            "from": 2050,
+            "to": 2049,
+            "type": "^",
+            "ruleIds": [
+                2048,
+                1064,
+                1062,
+                1075
+            ],
+            "sourceRefs": [
+                {
+                    "refText": "https://eldamo.org/content/words/word-3570525553.html"
+                }
             ]
         }
     ]

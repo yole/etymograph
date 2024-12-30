@@ -2172,5 +2172,21 @@
                 "refText": "https://eldamo.org/content/words/word-2767447875.html"
             }
         ]
+    },
+    {
+        "id": 2047,
+        "text": "khabdā",
+        "gloss": "mound",
+        "fullGloss": "https://eldamo.org/content/words/word-3281043275.html"
+    },
+    {
+        "id": 2049,
+        "text": "heklanā",
+        "gloss": "forsaken",
+        "sourceRefs": [
+            {
+                "refText": "https://eldamo.org/content/words/word-3570525553.html"
+            }
+        ]
     }
 ]

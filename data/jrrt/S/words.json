@@ -4570,5 +4570,27 @@
                 "refText": "https://eldamo.org/content/words/word-1277414107.html"
             }
         ]
+    },
+    {
+        "id": 2046,
+        "text": "haudh",
+        "gloss": "mound",
+        "fullGloss": "(funeral) mound, grave; heap, piled mound",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "refText": "https://eldamo.org/content/words/word-292514129.html"
+            }
+        ]
+    },
+    {
+        "id": 2050,
+        "text": "eglan",
+        "gloss": "forsaken",
+        "sourceRefs": [
+            {
+                "refText": "https://eldamo.org/content/words/word-3570525553.html"
+            }
+        ]
     }
 ]

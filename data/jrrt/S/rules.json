@@ -3161,7 +3161,8 @@
             {
                 "refText": "https://eldamo.org/content/words/word-1024355367.html"
             }
-        ]
+        ],
+        "notes": "OS 01000"
     },
     {
         "id": 1643,
@@ -3255,5 +3256,92 @@
             }
         ],
         "notes": "S 06500"
+    },
+    {
+        "id": 2044,
+        "name": "s-ns-ss",
+        "fromLang": "S",
+        "toLang": "S",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "Spe",
+                        "args": [
+                            "ns -> ss"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://eldamo.org/content/words/word-1254562549.html"
+            }
+        ],
+        "notes": "OS 00200"
+    },
+    {
+        "id": 2045,
+        "name": "s-vocalize-voiceless-stop",
+        "fromLang": "S",
+        "toLang": "S",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "Spe",
+                        "args": [
+                            "b -> u / V_[+voice,-sonorant,-continuant]"
+                        ]
+                    },
+                    {
+                        "type": "Spe",
+                        "args": [
+                            "g -> i / V_[+voice,-sonorant,-continuant]"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://eldamo.org/content/words/word-4282797219.html"
+            }
+        ],
+        "notes": "OS 00400"
+    },
+    {
+        "id": 2048,
+        "name": "s-initial-h",
+        "fromLang": "S",
+        "toLang": "S",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "Spe",
+                        "args": [
+                            "{ɣ|h} -> 0 / #_"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://eldamo.org/content/words/word-1117448055.html"
+            }
+        ],
+        "notes": "OS 00600"
     }
 ]
