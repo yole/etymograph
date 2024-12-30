@@ -8,88 +8,26 @@
             {
                 "instructions": [
                     {
-                        "type": "SoundDisappears",
+                        "type": "Spe",
                         "args": [
-                            "0"
+                            "m -> 0 / #_b"
                         ]
-                    }
-                ],
-                "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "leaf",
-                            "cond": "BeginningOfWord"
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "parameter": "m",
-                            "relative": false
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": 1,
-                            "parameter": "b"
-                        }
-                    ]
-                }
-            },
-            {
-                "instructions": [
+                    },
                     {
-                        "type": "SoundDisappears",
+                        "type": "Spe",
                         "args": [
-                            "0"
+                            "n -> 0 / #_d"
                         ]
-                    }
-                ],
-                "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "leaf",
-                            "cond": "BeginningOfWord"
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "parameter": "n",
-                            "relative": false
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": 1,
-                            "parameter": "d"
-                        }
-                    ]
-                }
-            },
-            {
-                "instructions": [
+                    },
                     {
-                        "type": "SoundDisappears",
+                        "type": "Spe",
                         "args": [
-                            "0"
+                            "ŋ -> 0 / #_g"
                         ]
                     }
                 ],
                 "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "leaf",
-                            "cond": "BeginningOfWord"
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "parameter": "ŋ",
-                            "relative": false
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": 1,
-                            "parameter": "g"
-                        }
-                    ]
+                    "type": "otherwise"
                 }
             }
         ],
@@ -621,54 +559,14 @@
             {
                 "instructions": [
                     {
-                        "type": "ChangeSound",
+                        "type": "Spe",
                         "args": [
-                            "v"
+                            "m -> v / {V|[+sonorant,-nasal]}_{#|[-labial]}"
                         ]
                     }
                 ],
                 "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "relPhoneme",
-                            "parameter": "m",
-                            "relative": false
-                        },
-                        {
-                            "type": "or",
-                            "members": [
-                                {
-                                    "type": "relPhoneme",
-                                    "relativeIndex": -1,
-                                    "cls": "vowel"
-                                },
-                                {
-                                    "type": "relPhoneme",
-                                    "relativeIndex": -1,
-                                    "cls": "liquid"
-                                }
-                            ]
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": 1,
-                            "negated": true,
-                            "parameter": "m"
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": 1,
-                            "negated": true,
-                            "parameter": "b"
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": 1,
-                            "negated": true,
-                            "parameter": "p"
-                        }
-                    ]
+                    "type": "otherwise"
                 }
             }
         ],
@@ -793,30 +691,14 @@
             {
                 "instructions": [
                     {
-                        "type": "ChangeSound",
+                        "type": "Spe",
                         "args": [
-                            "a"
+                            "e -> a / _iC0#"
                         ]
                     }
                 ],
                 "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "relPhoneme",
-                            "parameter": "e",
-                            "relative": false
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": 1,
-                            "parameter": "i"
-                        },
-                        {
-                            "type": "syllableIndex",
-                            "matchIndex": -1
-                        }
-                    ]
+                    "type": "otherwise"
                 }
             }
         ],
@@ -949,35 +831,27 @@
             {
                 "instructions": [
                     {
-                        "type": "SoundInserted",
+                        "type": "Spe",
                         "args": [
-                            "e"
+                            "s -> es / #_[-sonorant,-continuant,-voice]"
                         ]
                     }
                 ],
                 "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "relPhoneme",
-                            "parameter": "s",
-                            "relative": false
-                        },
-                        {
-                            "type": "leaf",
-                            "cond": "BeginningOfWord"
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": 1,
-                            "cls": "voiceless stop"
-                        },
-                        {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "initial-s-syllabic"
-                        }
-                    ]
+                    "type": "leaf",
+                    "cond": "ClassMatches",
+                    "characters": "initial-s-syllabic"
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "NoChange",
+                        "args": []
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
                 }
             }
         ],
@@ -2951,51 +2825,20 @@
             {
                 "instructions": [
                     {
-                        "type": "SoundDisappears",
+                        "type": "Spe",
                         "args": [
-                            "0"
+                            "θθ -> θ"
                         ]
-                    }
-                ],
-                "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "relPhoneme",
-                            "parameter": "θ",
-                            "relative": false
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": 1,
-                            "parameter": "θ"
-                        }
-                    ]
-                }
-            },
-            {
-                "instructions": [
+                    },
                     {
-                        "type": "SoundDisappears",
+                        "type": "Spe",
                         "args": [
-                            "0"
+                            "xx -> x"
                         ]
                     }
                 ],
                 "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "relPhoneme",
-                            "parameter": "x",
-                            "relative": false
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": 1,
-                            "parameter": "x"
-                        }
-                    ]
+                    "type": "otherwise"
                 }
             }
         ],
@@ -3278,88 +3121,39 @@
             {
                 "instructions": [
                     {
-                        "type": "ChangeSound",
+                        "type": "Spe",
                         "args": [
-                            "am"
+                            "m -> am / #_"
+                        ]
+                    },
+                    {
+                        "type": "Spe",
+                        "args": [
+                            "n -> an / #_"
+                        ]
+                    },
+                    {
+                        "type": "Spe",
+                        "args": [
+                            "ŋ -> aŋ / #_"
                         ]
                     }
                 ],
                 "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "relPhoneme",
-                            "parameter": "m",
-                            "relative": false
-                        },
-                        {
-                            "type": "leaf",
-                            "cond": "BeginningOfWord"
-                        },
-                        {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "initial-nasal-syllabic"
-                        }
-                    ]
+                    "type": "leaf",
+                    "cond": "ClassMatches",
+                    "characters": "initial-nasal-syllabic"
                 }
             },
             {
                 "instructions": [
                     {
-                        "type": "ChangeSound",
-                        "args": [
-                            "an"
-                        ]
+                        "type": "NoChange",
+                        "args": []
                     }
                 ],
                 "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "relPhoneme",
-                            "parameter": "n",
-                            "relative": false
-                        },
-                        {
-                            "type": "leaf",
-                            "cond": "BeginningOfWord"
-                        },
-                        {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "initial-nasal-syllabic"
-                        }
-                    ]
-                }
-            },
-            {
-                "instructions": [
-                    {
-                        "type": "ChangeSound",
-                        "args": [
-                            "aŋ"
-                        ]
-                    }
-                ],
-                "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "relPhoneme",
-                            "parameter": "ŋ",
-                            "relative": false
-                        },
-                        {
-                            "type": "leaf",
-                            "cond": "BeginningOfWord"
-                        },
-                        {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "initial-nasal-syllabic"
-                        }
-                    ]
+                    "type": "otherwise"
                 }
             }
         ],
@@ -3419,7 +3213,7 @@
                     {
                         "type": "Spe",
                         "args": [
-                            "w -> 0 / u_#"
+                            "{w|v} -> 0 / u_#"
                         ]
                     }
                 ],
