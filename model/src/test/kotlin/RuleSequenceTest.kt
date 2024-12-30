@@ -34,6 +34,22 @@ class RuleSequenceTest : QBaseTest() {
     }
 
     @Test
+    fun simpleSequencePhonemic() {
+        val repo = repoWithQ().with(ce)
+        val vowelLengthening = repo.rule("sound is 'a' and next sound is voiced:\n- short becomes long",
+            name = "q-vowel-lengthening")
+        val rule1 = repo.rule("sound is 'a' and next sound is 'i':\n- new sound is 'e'", name = "q-ai-e")
+        val rule2 = repo.rule("* z -> r")
+        val rule3 = repo.rule("- apply sound rule 'q-vowel-lengthening' to first vowel", name = "q-w-v")
+        val seq = repo.addRuleSequence("ce-q", ce, q, listOf(rule1.step(), rule2.step(), rule3.step()))
+        val ceWord = repo.addWord("suzja", language = ce)
+        val qWord = repo.addWord("surya", language = q)
+        val link = repo.addLink(qWord, ceWord, Link.Derived, emptyList())
+        repo.applyRuleSequence(link, seq)
+        assertEquals(1, link.rules.size)
+    }
+
+    @Test
     fun optionalSteps() {
         val repo = repoWithQ().with(ce)
         val qAiE = repo.rule("sound is 'a' and next sound is 'i':\n- new sound is 'e'", name = "q-ai-e")
