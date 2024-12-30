@@ -4,6 +4,7 @@ data class RichTextFragment(
     val text: String,
     val tooltip: String? = null,
     val emph: Boolean = false,
+    val subscript: Boolean = false,
     val linkType: String? = null,
     val linkId: Int? = null,
     val linkLanguage: String? = null,
@@ -53,10 +54,10 @@ data class RichText(val fragments: List<RichTextFragment>) {
 }
 
 fun String.rich(
-    emph: Boolean = false, tooltip: String? = null,
+    emph: Boolean = false, subscript: Boolean = false, tooltip: String? = null,
     linkType: String? = null, linkId: Int? = null, linkLanguage: String? = null, linkData: String? = null
 ): RichTextFragment =
-    RichTextFragment(this, tooltip, emph, linkType, linkId, linkLanguage, linkData)
+    RichTextFragment(this, tooltip, emph, subscript, linkType, linkId, linkLanguage, linkData)
 
 fun String.richText(): RichText = richText(RichTextFragment(this))
 

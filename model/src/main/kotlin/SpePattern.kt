@@ -228,6 +228,22 @@ class SpeAlternativeNode(val choices: List<List<SpeNode>>) : SpeNode() {
     }
 }
 
+class SpeRepeatNode(val base: SpeNode): SpeNode() {
+    override fun match(it: PhonemeIterator, trace: RuleTrace?): Boolean {
+        while (base.match(it, trace));
+        return true
+    }
+
+    override fun matchBackwards(it: PhonemeIterator, trace: RuleTrace?): Boolean {
+        while (base.matchBackwards(it, trace));
+        return true
+    }
+
+    override fun toRichText(language: Language?): RichText {
+        return base.toRichText(language) + "0".rich(subscript = true)
+    }
+}
+
 private fun List<SpeNode>.matchNodes(it: PhonemeIterator, trace: RuleTrace? = null): Boolean {
     return all {
         node -> node.match(it, trace).also { result -> trace?.logNodeMatch(it, node, result) }
@@ -391,14 +407,19 @@ class SpePattern(
                 }
                 else {
                     val nextPhoneme = language.phonoPhonemeLookup.nextPhoneme(text, pos)
-                    result.add(when(nextPhoneme) {
-                        "#"-> SpeWordBoundaryNode
-                        "C" -> SpePhonemeClassNode(language,
-                            language.phonemeClassByName(PhonemeClass.consonantClassName) ?: throw SpeParseException("Consonant class not found"))
-                        "V" -> SpePhonemeClassNode(language,
-                            language.phonemeClassByName(PhonemeClass.vowelClassName) ?: throw SpeParseException("Vowel class not found"))
-                        else -> SpeLiteralNode(nextPhoneme)
-                    })
+                    if (nextPhoneme == "0") {
+                        result[result.size - 1] = SpeRepeatNode(result.last())
+                    }
+                    else {
+                        result.add(when(nextPhoneme) {
+                            "#"-> SpeWordBoundaryNode
+                            "C" -> SpePhonemeClassNode(language,
+                                language.phonemeClassByName(PhonemeClass.consonantClassName) ?: throw SpeParseException("Consonant class not found"))
+                            "V" -> SpePhonemeClassNode(language,
+                                language.phonemeClassByName(PhonemeClass.vowelClassName) ?: throw SpeParseException("Vowel class not found"))
+                            else -> SpeLiteralNode(nextPhoneme)
+                        })
+                    }
                     pos += nextPhoneme.length
                 }
             }

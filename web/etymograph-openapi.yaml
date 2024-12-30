@@ -1972,6 +1972,8 @@ components:
           type: "string"
         emph:
           type: "boolean"
+        subscript:
+          type: "boolean"
         linkType:
           type: "string"
         linkId:
@@ -1984,6 +1986,7 @@ components:
       required:
         - "text"
         - "emph"
+        - "subscript"
     RichText:
       type: "object"
       properties:

@@ -383,6 +383,7 @@ export type RichTextFragment = {
     text: string;
     tooltip?: string;
     emph: boolean;
+    subscript: boolean;
     linkType?: string;
     linkId?: number;
     linkLanguage?: string;
