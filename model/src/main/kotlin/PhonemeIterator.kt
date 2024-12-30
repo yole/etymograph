@@ -182,6 +182,7 @@ class PhonemeIterator {
     fun clone(): PhonemeIterator {
         return PhonemeIterator(phonemes, resultPhonemes, language, repo, word, phonemeToResultIndexMap).also {
             it.phonemeIndex = phonemeIndex
+            it.atEnd = atEnd
         }
     }
 

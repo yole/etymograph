@@ -159,6 +159,12 @@ class SpePatternTest : QBaseTest() {
     }
 
     @Test
+    fun alternativeEndOfWord() {
+        val pattern = SpePattern.parse(q, q, "m -> v / _{#|[-labial]}")
+        assertEquals("ylv", pattern.apply(q, "ylm"))
+    }
+
+    @Test
     fun longContext() {
         val pattern = SpePattern.parse(q, q, "i -> e / _CC")
         assertEquals("dir", pattern.apply(q, "dir"))
