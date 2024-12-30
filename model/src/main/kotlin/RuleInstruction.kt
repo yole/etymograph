@@ -294,7 +294,7 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
 
 fun List<RuleInstruction>.apply(rule: Rule, branch: RuleBranch?, word: Word, graph: GraphRepository, trace: RuleTrace? = null): Word {
     if (isEmpty()) return word
-    val normalizedWord = word.derive(word.text.trimEnd('-'), id = word.id)
+    val normalizedWord = word.derive(word.text.trimEnd('-'), id = word.id, phonemic = word.isPhonemic)
     return fold(normalizedWord) { s, i -> i.apply(rule, branch, s, graph, trace) }
 }
 
