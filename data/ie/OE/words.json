@@ -11320,11 +11320,14 @@
         "id": 3469,
         "text": "blæc",
         "gloss": "black",
-        "fullGloss": "BLACK, swarthy; niger, fuscus",
+        "fullGloss": "BLACK, swarthy",
         "pos": "ADJ",
         "sourceRefs": [
             {
                 "refText": "https://bosworthtoller.com/4570"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/blæc#Old_English"
             }
         ]
     },
@@ -15118,5 +15121,12 @@
         "classes": [
             "neut"
         ]
+    },
+    {
+        "id": 5993,
+        "text": "ā-",
+        "gloss": "from",
+        "fullGloss": "from, away, out",
+        "pos": "AFF"
     }
 ]

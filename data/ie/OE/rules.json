@@ -4448,7 +4448,7 @@
                     {
                         "type": "ApplyStress",
                         "args": [
-                            "first"
+                            "first root"
                         ]
                     }
                 ],
