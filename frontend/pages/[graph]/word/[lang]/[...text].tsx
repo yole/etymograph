@@ -203,7 +203,7 @@ function CompoundListComponent(
     }
 
     return <>
-        <div>{derivation ? "Derived with prefix/suffix from:" : "Compound:"}</div>
+        <div>{derivation ? "Derived with affix from:" : "Compound:"}</div>
         {compounds.map(m =>
             <div>
                 {m.components.map((mc, index) => <>
@@ -532,7 +532,7 @@ function SingleWord({word}: { word: WordViewModel }) {
         }
         {word.derivationalCompounds.length > 0 &&
             <>
-                <div>{word.pos === "PV" ? "Prefix/suffix in:" : "Words derived with prefix/suffix:"}</div>
+                <div>{word.pos === "PV" ? "Affix in:" : "Words derived with affix:"}</div>
                 {word.derivationalCompounds.map(m => <div><CompoundRefComponent key={m.id} baseWord={word} linkWord={m}/></div>)}
                 <p/>
             </>
