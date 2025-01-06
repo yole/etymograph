@@ -211,7 +211,6 @@ private val implicitPhonemeClasses = mapOf(
     "approximant" to setOf("sonorant", "consonant"),
     "trill" to setOf("sonorant", "consonant"),
     "lateral" to setOf("sonorant", "consonant"),
-    "nasal" to setOf("sonorant", "consonant", "-continuant"),
     "bilabial" to setOf("labial"),
     "labiodental" to setOf("labial"),
     "velar" to setOf("dorsal"),
@@ -242,7 +241,8 @@ private val implicitPhonemeClasses2 = mapOf(
     setOf("alveolar", "fricative") to setOf("+strident"),
     setOf("velar", "fricative") to setOf("-strident"),
     setOf("dental", "fricative") to setOf("-strident"),
-    setOf("uvular", "fricative") to setOf("-strident")
+    setOf("uvular", "fricative") to setOf("-strident"),
+    setOf("nasal", "consonant") to setOf("sonorant", "-continuant"),
 )
 
 val defaultPhonemeClasses = mapOf(
@@ -260,6 +260,6 @@ val defaultPhonemeClasses = mapOf(
     "k" to setOf("voiceless", "velar", "stop"),
     "g" to setOf("voiced", "velar", "stop"),
     "ɣ" to setOf("voiced", "velar", "fricative"),
-    "m" to setOf("voiced", "bilabial", "nasal"),
-    "n" to setOf("voiced", "alveolar", "nasal")
+    "m" to setOf("voiced", "bilabial", "nasal", "consonant"),
+    "n" to setOf("voiced", "alveolar", "nasal", "consonant")
 )
