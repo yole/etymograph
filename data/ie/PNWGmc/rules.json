@@ -73,17 +73,14 @@
             {
                 "instructions": [
                     {
-                        "type": "ChangeSound",
+                        "type": "Spe",
                         "args": [
-                            "ū"
+                            "ō -> ū / _#"
                         ]
                     }
                 ],
                 "condition": {
-                    "type": "relPhoneme",
-                    "cls": "word-final",
-                    "parameter": "ō",
-                    "relative": false
+                    "type": "otherwise"
                 }
             }
         ],

@@ -245,7 +245,9 @@
                 "v"
             ],
             "classes": [
-                "consonant"
+                "voiced",
+                "labiodental",
+                "fricative"
             ]
         },
         {
