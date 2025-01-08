@@ -1,6 +1,7 @@
 package ru.yole.etymograph
 
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNull
 import org.junit.Before
 import org.junit.Test
 
@@ -19,7 +20,7 @@ class AlternativesTest : QBaseTest() {
 
         val accRule = setupNoChangeRule(repo)
 
-        val alts = Alternatives.requestAlternatives(repo, word)
+        val alts = Alternatives.request(repo, word)
         assertEquals(1, alts.size)
         assertEquals(accRule, alts[0].rules[0])
     }
@@ -36,9 +37,26 @@ class AlternativesTest : QBaseTest() {
 
         val accRule = setupNoChangeRule(repo)
 
-        val alts = Alternatives.requestAlternatives(repo, elentari)
+        val alts = Alternatives.request(repo, elentari)
         assertEquals(1, alts.size)
         assertEquals(accRule, alts[0].rules[0])
+    }
+
+    @Test
+    fun homonym() {
+        repo.addWord("elen", "star", pos = "N")
+        repo.addWord("elen", "scar", pos = "N")
+
+        val ct1 = repo.addCorpusText("elen sila", null, q)
+
+        val alternatives = Alternatives.requestByText(repo, q, "elen", null)
+        assertEquals(1, alternatives.size)
+        assertEquals("scar", alternatives[0].gloss)
+        assertNull(alternatives[0].rule)
+
+        Alternatives.accept(repo, ct1, 0, alternatives[0].word, alternatives[0].rule)
+        val word = ct1.wordByIndex(0)!!
+        assertEquals("scar", word.getOrComputeGloss(repo))
     }
 
     private fun setupNoChangeRule(repo: InMemoryGraphRepository): Rule {

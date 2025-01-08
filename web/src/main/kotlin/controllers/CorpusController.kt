@@ -147,7 +147,7 @@ class CorpusController {
         val corpusText = repo.resolveCorpusText(id)
         val word = corpusText.wordByIndex(index)
         val wordText = word?.text ?: corpusText.normalizedWordTextAt(index)
-        val results = Alternatives.requestAlternativesByText(repo, corpusText.language, wordText, word)
+        val results = Alternatives.requestByText(repo, corpusText.language, wordText, word)
         return results.map {
             AlternativeViewModel(it.gloss, it.word.id, it.rule?.id ?: -1)
         }
@@ -159,29 +159,9 @@ class CorpusController {
     fun acceptAlternative(repo: GraphRepository, @PathVariable id: Int, @RequestBody params: AcceptAlternativeParameters) {
         val corpusText = repo.resolveCorpusText(id)
         val word = repo.resolveWord(params.wordId)
+        val rule = if (params.ruleId == -1) null else repo.resolveRule(params.ruleId)
 
-        if (params.ruleId == -1) {
-            corpusText.associateWord(params.index, word)
-        }
-        else {
-            val rule = repo.resolveRule(params.ruleId)
-            val gloss = word.glossOrNP()
-                ?: (if (repo.isCompound(word)) word.getOrComputeGloss(repo) else null)
-                ?: badRequest("Accepting alternative with unglossed word ${word.id}")
-
-            val linkedWord = repo.getLinksTo(word).singleOrNull { it.rules == listOf(rule) }?.fromEntity as? Word
-            if (linkedWord != null) {
-                corpusText.associateWord(params.index, linkedWord)
-            }
-            else {
-                val newGloss = rule.applyCategories(gloss)
-                val newWord = repo.findOrAddWord(word.text, word.language, newGloss)
-                repo.addLink(newWord, word, Link.Derived, listOf(rule))
-                newWord.gloss = null
-
-                corpusText.associateWord(params.index, newWord)
-            }
-        }
+        Alternatives.accept(repo, corpusText, params.index, word, rule)
     }
 }
 
