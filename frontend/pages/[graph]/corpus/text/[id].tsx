@@ -89,7 +89,9 @@ function CorpusTextGlossChoice(params: CorpusTextGlossChoiceProps) {
     }
 
     return <span onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
-        <Link href={`/${graph}/word/${lang}/${params.word.text.toLowerCase()}/${c.id}`}>{c.gloss}</Link>
+        <Link href={`/${graph}/word/${lang}/${params.word.text.toLowerCase()}/${c.id}`}>
+            <WordGloss gloss={c.gloss}/>
+        </Link>
         {hovered && allowEdit() &&
             <span className="iconWithMargin"><FontAwesomeIcon icon={faCheck} onClick={() => acceptGloss()}/></span>}
     </span>
