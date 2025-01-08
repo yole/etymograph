@@ -274,7 +274,7 @@
         "id": 37,
         "text": "behēfe",
         "gloss": "useful",
-        "fullGloss": "Necessary, behoveful; necessarius",
+        "fullGloss": "Necessary, useful",
         "pos": "ADJ",
         "sourceRefs": [
             {
@@ -7697,7 +7697,6 @@
         "id": 2977,
         "text": "benċ",
         "gloss": "bench",
-        "fullGloss": "A BENCH; scamnum, abacus",
         "pos": "N",
         "classes": [
             "fem"
