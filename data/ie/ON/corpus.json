@@ -10935,11 +10935,779 @@
             {
                 "index": 192,
                 "id": 5990
+            },
+            {
+                "index": 89,
+                "id": 6042
+            },
+            {
+                "index": 175,
+                "id": 6049
             }
         ],
         "sourceRefs": [
             {
                 "refText": "Gylfaginning ch 15"
+            }
+        ]
+    },
+    {
+        "id": 5995,
+        "text": "Þá mælti Gangleri: \"Hvat er fleira at segja stórmerkja frá askinum?\"\nHár segir: \"Mart er þar af at segja. Örn einn sitr í limum asksins, ok er hann margs vitandi; en í milli augna honum sitr haukr sá, er heitir Veðrfölnir. Íkorni sá, er heitir Ratatoskr, rennr upp ok niðr eptir askinum, ok berr öfundarorð milli arnarins ok Níðhöggs. En fjórir hirtir renna í limum asksins ok bíta barr. Enn svá margr ormar eru í Hvergelmi með Níðhögg, at engi tunga má telja.\"\n\"Enn er þat sagt, at nornir þær, er byggja Urðarbrunn, taka hvern dag vatn í brunninum, ok með aurinn þann er liggr um brunninn, ok ausa upp yfir askinn, til þess at eigi skyli limar hans tréna eða fúna. En þat vatn er svá heilagt, at allir hlutir, þeir sem þar koma í brunninn, verða svá hvítir sem hinna sú, er skjall heitir, er innan liggr við eggskurn. Sú dögg, er þaðan af fellr á jörðina, þat kalla menn hunangsfall, ok þar af fœðask býflugur. Fuglar tveir fœðask í Urðarbrunn; þeir heita svanir, ok af þeim fuglum hefir komit þat fuglakyn, er svá heitir.",
+        "title": "Viking Language 14.3",
+        "words": [
+            {
+                "index": 0,
+                "id": 998
+            },
+            {
+                "index": 4,
+                "id": 1513
+            },
+            {
+                "index": 5,
+                "id": 5998
+            },
+            {
+                "index": 6,
+                "id": 4911
+            },
+            {
+                "index": 8,
+                "id": 6000
+            },
+            {
+                "index": 9,
+                "id": 5661
+            },
+            {
+                "index": 10,
+                "id": 6006
+            },
+            {
+                "index": 14,
+                "id": 1513
+            },
+            {
+                "index": 17,
+                "id": 4911
+            },
+            {
+                "index": 19,
+                "id": 6007
+            },
+            {
+                "index": 21,
+                "id": 6008
+            },
+            {
+                "index": 23,
+                "id": 6009
+            },
+            {
+                "index": 26,
+                "id": 1513
+            },
+            {
+                "index": 27,
+                "id": 924
+            },
+            {
+                "index": 28,
+                "id": 6010
+            },
+            {
+                "index": 29,
+                "id": 6013
+            },
+            {
+                "index": 33,
+                "id": 6014
+            },
+            {
+                "index": 36,
+                "id": 6015
+            },
+            {
+                "index": 37,
+                "id": 971
+            },
+            {
+                "index": 38,
+                "id": 1076
+            },
+            {
+                "index": 40,
+                "id": 6017
+            },
+            {
+                "index": 41,
+                "id": 6018
+            },
+            {
+                "index": 42,
+                "id": 971
+            },
+            {
+                "index": 43,
+                "id": 1076
+            },
+            {
+                "index": 45,
+                "id": 6020
+            },
+            {
+                "index": 46,
+                "id": 6021
+            },
+            {
+                "index": 49,
+                "id": 6022
+            },
+            {
+                "index": 53,
+                "id": 6024
+            },
+            {
+                "index": 54,
+                "id": 6029
+            },
+            {
+                "index": 56,
+                "id": 6030
+            },
+            {
+                "index": 58,
+                "id": 6031
+            },
+            {
+                "index": 61,
+                "id": 6033
+            },
+            {
+                "index": 62,
+                "id": 6037
+            },
+            {
+                "index": 67,
+                "id": 6038
+            },
+            {
+                "index": 68,
+                "id": 6036
+            },
+            {
+                "index": 72,
+                "id": 6040
+            },
+            {
+                "index": 75,
+                "id": 6043
+            },
+            {
+                "index": 77,
+                "id": 6041
+            },
+            {
+                "index": 78,
+                "id": 977
+            },
+            {
+                "index": 81,
+                "id": 6045
+            },
+            {
+                "index": 84,
+                "id": 1076
+            },
+            {
+                "index": 85,
+                "id": 5248
+            },
+            {
+                "index": 87,
+                "id": 977
+            },
+            {
+                "index": 88,
+                "id": 6046
+            },
+            {
+                "index": 89,
+                "id": 5256
+            },
+            {
+                "index": 90,
+                "id": 1076
+            },
+            {
+                "index": 91,
+                "id": 6048
+            },
+            {
+                "index": 92,
+                "id": 6050
+            },
+            {
+                "index": 93,
+                "id": 1179
+            },
+            {
+                "index": 96,
+                "id": 6052
+            },
+            {
+                "index": 101,
+                "id": 6054
+            },
+            {
+                "index": 103,
+                "id": 1076
+            },
+            {
+                "index": 104,
+                "id": 6056
+            },
+            {
+                "index": 108,
+                "id": 6059
+            },
+            {
+                "index": 111,
+                "id": 6060
+            },
+            {
+                "index": 113,
+                "id": 5243
+            },
+            {
+                "index": 114,
+                "id": 977
+            },
+            {
+                "index": 116,
+                "id": 6061
+            },
+            {
+                "index": 119,
+                "id": 6062
+            },
+            {
+                "index": 121,
+                "id": 6063
+            },
+            {
+                "index": 123,
+                "id": 5248
+            },
+            {
+                "index": 124,
+                "id": 6051
+            },
+            {
+                "index": 125,
+                "id": 1076
+            },
+            {
+                "index": 127,
+                "id": 6064
+            },
+            {
+                "index": 128,
+                "id": 977
+            },
+            {
+                "index": 130,
+                "id": 6065
+            },
+            {
+                "index": 131,
+                "id": 5252
+            },
+            {
+                "index": 139,
+                "id": 6066
+            },
+            {
+                "index": 141,
+                "id": 6067
+            },
+            {
+                "index": 143,
+                "id": 1076
+            },
+            {
+                "index": 144,
+                "id": 6068
+            },
+            {
+                "index": 146,
+                "id": 1076
+            },
+            {
+                "index": 149,
+                "id": 1168
+            },
+            {
+                "index": 150,
+                "id": 6073
+            },
+            {
+                "index": 152,
+                "id": 6074
+            },
+            {
+                "index": 153,
+                "id": 1076
+            },
+            {
+                "index": 156,
+                "id": 6076
+            },
+            {
+                "index": 157,
+                "id": 936
+            },
+            {
+                "index": 158,
+                "id": 6075
+            },
+            {
+                "index": 159,
+                "id": 5249
+            },
+            {
+                "index": 160,
+                "id": 6077
+            },
+            {
+                "index": 161,
+                "id": 1440
+            },
+            {
+                "index": 162,
+                "id": 6078
+            },
+            {
+                "index": 166,
+                "id": 6079
+            },
+            {
+                "index": 167,
+                "id": 6081
+            },
+            {
+                "index": 168,
+                "id": 6083
+            },
+            {
+                "index": 173,
+                "id": 1368
+            },
+            {
+                "index": 175,
+                "id": 6085
+            },
+            {
+                "index": 178,
+                "id": 5254
+            },
+            {
+                "index": 179,
+                "id": 6086
+            },
+            {
+                "index": 182,
+                "id": 5248
+            },
+            {
+                "index": 183,
+                "id": 6087
+            },
+            {
+                "index": 184,
+                "id": 1076
+            },
+            {
+                "index": 1,
+                "id": 1713
+            },
+            {
+                "index": 2,
+                "id": 5925
+            },
+            {
+                "index": 3,
+                "id": 5926
+            },
+            {
+                "index": 7,
+                "id": 974
+            },
+            {
+                "index": 11,
+                "id": 5774
+            },
+            {
+                "index": 12,
+                "id": 1725
+            },
+            {
+                "index": 13,
+                "id": 5142
+            },
+            {
+                "index": 15,
+                "id": 999
+            },
+            {
+                "index": 16,
+                "id": 1082
+            },
+            {
+                "index": 18,
+                "id": 974
+            },
+            {
+                "index": 20,
+                "id": 972
+            },
+            {
+                "index": 22,
+                "id": 976
+            },
+            {
+                "index": 24,
+                "id": 5982
+            },
+            {
+                "index": 25,
+                "id": 932
+            },
+            {
+                "index": 30,
+                "id": 941
+            },
+            {
+                "index": 31,
+                "id": 976
+            },
+            {
+                "index": 32,
+                "id": 1028
+            },
+            {
+                "index": 34,
+                "id": 947
+            },
+            {
+                "index": 35,
+                "id": 6008
+            },
+            {
+                "index": 39,
+                "id": 1646
+            },
+            {
+                "index": 44,
+                "id": 1646
+            },
+            {
+                "index": 47,
+                "id": 1627
+            },
+            {
+                "index": 48,
+                "id": 932
+            },
+            {
+                "index": 50,
+                "id": 987
+            },
+            {
+                "index": 51,
+                "id": 6006
+            },
+            {
+                "index": 52,
+                "id": 932
+            },
+            {
+                "index": 55,
+                "id": 1028
+            },
+            {
+                "index": 57,
+                "id": 932
+            },
+            {
+                "index": 59,
+                "id": 941
+            },
+            {
+                "index": 60,
+                "id": 4924
+            },
+            {
+                "index": 63,
+                "id": 976
+            },
+            {
+                "index": 64,
+                "id": 6009
+            },
+            {
+                "index": 65,
+                "id": 5982
+            },
+            {
+                "index": 66,
+                "id": 932
+            },
+            {
+                "index": 69,
+                "id": 5860
+            },
+            {
+                "index": 70,
+                "id": 1387
+            },
+            {
+                "index": 71,
+                "id": 969
+            },
+            {
+                "index": 73,
+                "id": 1516
+            },
+            {
+                "index": 74,
+                "id": 976
+            },
+            {
+                "index": 76,
+                "id": 981
+            },
+            {
+                "index": 79,
+                "id": 1303
+            },
+            {
+                "index": 80,
+                "id": 1094
+            },
+            {
+                "index": 82,
+                "id": 1135
+            },
+            {
+                "index": 83,
+                "id": 5860
+            },
+            {
+                "index": 86,
+                "id": 5594
+            },
+            {
+                "index": 94,
+                "id": 5578
+            },
+            {
+                "index": 95,
+                "id": 1699
+            },
+            {
+                "index": 97,
+                "id": 976
+            },
+            {
+                "index": 98,
+                "id": 5973
+            },
+            {
+                "index": 99,
+                "id": 932
+            },
+            {
+                "index": 100,
+                "id": 981
+            },
+            {
+                "index": 102,
+                "id": 5241
+            },
+            {
+                "index": 105,
+                "id": 1000
+            },
+            {
+                "index": 106,
+                "id": 5964
+            },
+            {
+                "index": 107,
+                "id": 932
+            },
+            {
+                "index": 109,
+                "id": 1627
+            },
+            {
+                "index": 110,
+                "id": 4997
+            },
+            {
+                "index": 112,
+                "id": 975
+            },
+            {
+                "index": 115,
+                "id": 5198
+            },
+            {
+                "index": 117,
+                "id": 5929
+            },
+            {
+                "index": 118,
+                "id": 940
+            },
+            {
+                "index": 120,
+                "id": 1307
+            },
+            {
+                "index": 122,
+                "id": 941
+            },
+            {
+                "index": 126,
+                "id": 1387
+            },
+            {
+                "index": 129,
+                "id": 1463
+            },
+            {
+                "index": 132,
+                "id": 1310
+            },
+            {
+                "index": 133,
+                "id": 999
+            },
+            {
+                "index": 134,
+                "id": 996
+            },
+            {
+                "index": 135,
+                "id": 976
+            },
+            {
+                "index": 136,
+                "id": 5964
+            },
+            {
+                "index": 137,
+                "id": 1642
+            },
+            {
+                "index": 138,
+                "id": 1387
+            },
+            {
+                "index": 140,
+                "id": 1310
+            },
+            {
+                "index": 142,
+                "id": 5244
+            },
+            {
+                "index": 145,
+                "id": 1646
+            },
+            {
+                "index": 147,
+                "id": 5038
+            },
+            {
+                "index": 148,
+                "id": 6056
+            },
+            {
+                "index": 151,
+                "id": 5244
+            },
+            {
+                "index": 154,
+                "id": 5671
+            },
+            {
+                "index": 155,
+                "id": 1082
+            },
+            {
+                "index": 163,
+                "id": 932
+            },
+            {
+                "index": 164,
+                "id": 999
+            },
+            {
+                "index": 165,
+                "id": 1082
+            },
+            {
+                "index": 169,
+                "id": 995
+            },
+            {
+                "index": 170,
+                "id": 6079
+            },
+            {
+                "index": 171,
+                "id": 976
+            },
+            {
+                "index": 172,
+                "id": 6050
+            },
+            {
+                "index": 174,
+                "id": 938
+            },
+            {
+                "index": 176,
+                "id": 932
+            },
+            {
+                "index": 177,
+                "id": 1082
+            },
+            {
+                "index": 180,
+                "id": 5043
+            },
+            {
+                "index": 181,
+                "id": 5339
+            },
+            {
+                "index": 185,
+                "id": 1387
+            },
+            {
+                "index": 186,
+                "id": 1646
+            }
+        ],
+        "sourceRefs": [
+            {
+                "refText": "Gylfaginning (ch 16)"
             }
         ]
     }

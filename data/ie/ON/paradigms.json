@@ -747,6 +747,7 @@
         "id": 38,
         "name": "Verb Non-finite Forms",
         "rows": [
+            "Participle",
             "Past participle",
             "Middle infinitive"
         ],
@@ -754,6 +755,11 @@
             {
                 "title": "Form",
                 "cells": [
+                    {
+                        "ruleAlternatives": [
+                            6011
+                        ]
+                    },
                     {
                         "ruleAlternatives": [
                             1433

@@ -3770,5 +3770,58 @@
                 "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-Germanic/blakaz#Proto-Germanic"
             }
         ]
+    },
+    {
+        "id": 6016,
+        "text": "habukaz",
+        "gloss": "hawk",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-Germanic/habukaz#Proto-Germanic"
+            }
+        ]
+    },
+    {
+        "id": 6019,
+        "text": "aikwernô",
+        "gloss": "squirrel",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-Germanic/aikwernô#Proto-Germanic"
+            }
+        ]
+    },
+    {
+        "id": 6023,
+        "text": "niþer",
+        "gloss": "down",
+        "fullGloss": "down, downwards",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-Germanic/niþer#Proto-Germanic"
+            }
+        ]
+    },
+    {
+        "id": 6034,
+        "text": "herutaz",
+        "gloss": "hart",
+        "fullGloss": "hart, stag",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-Germanic/herutaz#Proto-Germanic"
+            }
+        ]
+    },
+    {
+        "id": 6055,
+        "text": "auraz",
+        "gloss": "wet sand or earth",
+        "fullGloss": "wet sand or earth, mud; liquid, water, sea",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-Germanic/auraz#Proto-Germanic"
+            }
+        ]
     }
 ]

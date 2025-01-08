@@ -710,7 +710,8 @@
         "id": 1028,
         "text": "milli",
         "gloss": "between",
-        "pos": "PREP"
+        "pos": "PREP",
+        "notes": "w/Gen\n"
     },
     {
         "id": 1029,
@@ -922,7 +923,7 @@
     {
         "id": 1076,
         "text": "er",
-        "gloss": "that",
+        "gloss": "which",
         "fullGloss": "who, which, that"
     },
     {
@@ -9273,6 +9274,7 @@
     {
         "id": 5955,
         "text": "Níðhöggr",
+        "gloss": "Níðhögg",
         "pos": "NP"
     },
     {
@@ -9444,5 +9446,487 @@
     {
         "id": 5990,
         "text": "Ásbrú"
+    },
+    {
+        "id": 5998,
+        "text": "fleira",
+        "pos": "ADJ",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/fleira#Old_Norse"
+            }
+        ]
+    },
+    {
+        "id": 5999,
+        "text": "fleiri"
+    },
+    {
+        "id": 6000,
+        "text": "stórmerkja"
+    },
+    {
+        "id": 6001,
+        "text": "stórmerki"
+    },
+    {
+        "id": 6003,
+        "text": "merki",
+        "gloss": "token",
+        "pos": "N",
+        "classes": [
+            "j-stem",
+            "n"
+        ]
+    },
+    {
+        "id": 6004,
+        "text": "stór"
+    },
+    {
+        "id": 6006,
+        "text": "askinum"
+    },
+    {
+        "id": 6007,
+        "text": "örn",
+        "gloss": "eagle",
+        "pos": "N",
+        "classes": [
+            "m",
+            "uml-stem",
+            "gen-ar"
+        ]
+    },
+    {
+        "id": 6008,
+        "text": "sitr"
+    },
+    {
+        "id": 6009,
+        "text": "limum"
+    },
+    {
+        "id": 6010,
+        "text": "margs"
+    },
+    {
+        "id": 6012,
+        "text": "vita",
+        "gloss": "know",
+        "pos": "V",
+        "classes": [
+            "v-pret-pres"
+        ]
+    },
+    {
+        "id": 6013,
+        "text": "vitandi"
+    },
+    {
+        "id": 6014,
+        "text": "augna"
+    },
+    {
+        "id": 6015,
+        "text": "haukr",
+        "gloss": "hawk",
+        "pos": "N",
+        "classes": [
+            "m",
+            "strong"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/haukr#Old_Norse"
+            }
+        ]
+    },
+    {
+        "id": 6017,
+        "text": "Veðrfölnir",
+        "pos": "NP"
+    },
+    {
+        "id": 6018,
+        "text": "íkorni",
+        "gloss": "squirrel",
+        "pos": "N",
+        "classes": [
+            "m",
+            "weak"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/íkorni#Old_Norse"
+            }
+        ]
+    },
+    {
+        "id": 6020,
+        "text": "Ratatoskr",
+        "pos": "NP"
+    },
+    {
+        "id": 6021,
+        "text": "rennr"
+    },
+    {
+        "id": 6022,
+        "text": "niðr",
+        "gloss": "down",
+        "pos": "ADV",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/niðr#Old_Norse"
+            }
+        ]
+    },
+    {
+        "id": 6024,
+        "text": "berr"
+    },
+    {
+        "id": 6025,
+        "text": "öfundarorð"
+    },
+    {
+        "id": 6026,
+        "text": "öfundar"
+    },
+    {
+        "id": 6028,
+        "text": "öfund",
+        "gloss": "envy",
+        "pos": "N",
+        "classes": [
+            "f",
+            "gen-ar"
+        ]
+    },
+    {
+        "id": 6029,
+        "text": "öfundarorð"
+    },
+    {
+        "id": 6030,
+        "text": "arnarins"
+    },
+    {
+        "id": 6031,
+        "text": "Níðhöggs"
+    },
+    {
+        "id": 6032,
+        "text": "hjörtr",
+        "gloss": "deer",
+        "pos": "N",
+        "classes": [
+            "m"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/hjǫrtr#Old_Norse"
+            }
+        ]
+    },
+    {
+        "id": 6033,
+        "text": "hirtir"
+    },
+    {
+        "id": 6035,
+        "text": "barr",
+        "gloss": "foliage",
+        "pos": "N",
+        "classes": [
+            "n",
+            "cc-stem"
+        ]
+    },
+    {
+        "id": 6036,
+        "text": "barr"
+    },
+    {
+        "id": 6037,
+        "text": "renna"
+    },
+    {
+        "id": 6038,
+        "text": "bíta"
+    },
+    {
+        "id": 6039,
+        "text": "ormr",
+        "gloss": "snake",
+        "pos": "N",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 6040,
+        "text": "ormar"
+    },
+    {
+        "id": 6041,
+        "text": "Níðhögg"
+    },
+    {
+        "id": 6042,
+        "text": "Hvergelmir",
+        "pos": "NP",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 6043,
+        "text": "Hvergelmi"
+    },
+    {
+        "id": 6044,
+        "text": "mega",
+        "gloss": "can",
+        "pos": "V",
+        "classes": [
+            "v-pret-pres"
+        ]
+    },
+    {
+        "id": 6045,
+        "text": "má"
+    },
+    {
+        "id": 6046,
+        "text": "nornir"
+    },
+    {
+        "id": 6047,
+        "text": "byggja"
+    },
+    {
+        "id": 6048,
+        "text": "byggja"
+    },
+    {
+        "id": 6049,
+        "text": "Urðarbrunnr",
+        "pos": "NP",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 6050,
+        "text": "Urðarbrunn"
+    },
+    {
+        "id": 6051,
+        "text": "vatn",
+        "gloss": "water",
+        "fullGloss": "water; a body of freshwater; lake, waterway; fresh water (in contrast with seawater)",
+        "pos": "N",
+        "classes": [
+            "n",
+            "strong"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/vatn#Old_Norse"
+            }
+        ]
+    },
+    {
+        "id": 6052,
+        "text": "vatn"
+    },
+    {
+        "id": 6053,
+        "text": "aurr",
+        "gloss": "moist earth",
+        "fullGloss": "moist earth, wet clay, mud",
+        "pos": "N",
+        "classes": [
+            "m",
+            "strong"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/aurr#Old_Norse"
+            }
+        ]
+    },
+    {
+        "id": 6054,
+        "text": "aurinn"
+    },
+    {
+        "id": 6056,
+        "text": "liggr"
+    },
+    {
+        "id": 6058,
+        "text": "ausa",
+        "gloss": "pour",
+        "pos": "V"
+    },
+    {
+        "id": 6059,
+        "text": "ausa"
+    },
+    {
+        "id": 6060,
+        "text": "askinn"
+    },
+    {
+        "id": 6061,
+        "text": "skyli"
+    },
+    {
+        "id": 6062,
+        "text": "tréna",
+        "gloss": "dry up",
+        "pos": "V"
+    },
+    {
+        "id": 6063,
+        "text": "fúna",
+        "gloss": "rot",
+        "pos": "V"
+    },
+    {
+        "id": 6064,
+        "text": "heilagt"
+    },
+    {
+        "id": 6065,
+        "text": "hlutir"
+    },
+    {
+        "id": 6066,
+        "text": "hvítir"
+    },
+    {
+        "id": 6067,
+        "text": "hinna",
+        "gloss": "membrane",
+        "pos": "N",
+        "classes": [
+            "f"
+        ]
+    },
+    {
+        "id": 6068,
+        "text": "skjall",
+        "gloss": "white membrane of an egg"
+    },
+    {
+        "id": 6069,
+        "text": "eggskurn"
+    },
+    {
+        "id": 6070,
+        "text": "egg",
+        "gloss": "egg",
+        "pos": "N",
+        "classes": [
+            "n"
+        ]
+    },
+    {
+        "id": 6072,
+        "text": "skurn",
+        "gloss": "shell",
+        "pos": "N",
+        "classes": [
+            "f"
+        ]
+    },
+    {
+        "id": 6073,
+        "text": "eggskurn"
+    },
+    {
+        "id": 6074,
+        "text": "dögg",
+        "gloss": "dew",
+        "pos": "N",
+        "classes": [
+            "f"
+        ]
+    },
+    {
+        "id": 6075,
+        "text": "jörðina"
+    },
+    {
+        "id": 6076,
+        "text": "fellr"
+    },
+    {
+        "id": 6077,
+        "text": "kalla"
+    },
+    {
+        "id": 6078,
+        "text": "hunangsfall",
+        "gloss": "honey-dew",
+        "pos": "N",
+        "classes": [
+            "f"
+        ]
+    },
+    {
+        "id": 6079,
+        "text": "fœðask"
+    },
+    {
+        "id": 6080,
+        "text": "býfluga",
+        "gloss": "bee",
+        "pos": "N",
+        "classes": [
+            "f"
+        ]
+    },
+    {
+        "id": 6081,
+        "text": "býflugur"
+    },
+    {
+        "id": 6082,
+        "text": "fugl",
+        "gloss": "bird",
+        "pos": "N",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 6083,
+        "text": "fuglar"
+    },
+    {
+        "id": 6084,
+        "text": "svanr",
+        "gloss": "swan",
+        "pos": "N",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 6085,
+        "text": "svanir"
+    },
+    {
+        "id": 6086,
+        "text": "fuglum"
+    },
+    {
+        "id": 6087,
+        "text": "fuglakyn"
     }
 ]

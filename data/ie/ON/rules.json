@@ -8195,5 +8195,31 @@
             "ADV"
         ],
         "toPOS": "ADV"
+    },
+    {
+        "id": 6011,
+        "name": "on-part",
+        "fromLang": "ON",
+        "toLang": "ON",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'ndi'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".PART",
+        "fromPOS": [
+            "V"
+        ],
+        "toPOS": "ADJ"
     }
 ]
