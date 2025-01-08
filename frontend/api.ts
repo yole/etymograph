@@ -83,7 +83,7 @@ export async function fetchPathsForAllGraphs(url, callback) {
     return {paths, fallback: allowEdit()}
 }
 
-export async function fetchAlternatives(graph, corpusTextId, index) {
+export async function fetchAlternatives(graph: string, corpusTextId: number, index: number) {
     const fullUrl = process.env.NEXT_PUBLIC_BACKEND_URL + `${graph}/corpus/text/${corpusTextId}/alternatives/${index}`
     const res= await fetch(fullUrl, { headers: { 'Accept': 'application/json'} })
     return await res.json()
@@ -219,7 +219,7 @@ export function updateCorpusText(graph: string, id: number, data: CorpusTextPara
     return postToBackend(`${graph}/corpus/text/${id}`, data)
 }
 
-export function addTranslation(graph: string, corpusTextId, data) {
+export function addTranslation(graph: string, corpusTextId: number, data) {
     return postToBackend(`${graph}/translation`, {corpusTextId: corpusTextId, ...data})
 }
 

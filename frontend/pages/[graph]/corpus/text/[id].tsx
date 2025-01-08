@@ -127,7 +127,7 @@ export default function CorpusText(params) {
         })
     }
 
-    async function showWordForm(text, index) {
+    async function showWordForm(text: string, index: number) {
         const r = await fetchAlternatives(graph, corpusText.id, index)
         setAlternatives(r)
         setWordFormVisible(true)
@@ -135,7 +135,7 @@ export default function CorpusText(params) {
         setWordIndex(index)
     }
 
-    async function acceptAlternativeClicked(index, wordId, ruleId) {
+    async function acceptAlternativeClicked(index: number, wordId: number, ruleId: number) {
         await acceptAlternative(graph, corpusText.id, index, wordId, ruleId)
         router.replace(router.asPath)
         setWordFormVisible(false)
