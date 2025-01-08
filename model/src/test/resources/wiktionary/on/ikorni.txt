@@ -1,0 +1,15 @@
+==Old Norse==
+
+===Etymology===
+From {{inh|non|gem-pro|*aikwernô}}, ultimately from {{der|non|ine-pro|*wer-}}. Compare {{cog|ang|ācweorna}}, {{cog|osx|ēkhorn}}, {{cog|goh|eihhorno}}.
+
+===Pronunciation===
+* {{IPA|non|/ˈiːkornɪ̃/|a=9th century West Norse,12th century Icelandic}}
+
+===Noun===
+{{non-noun|m|íkorna|íkornar}}
+
+# [[squirrel]]
+
+====Declension====
+{{non-decl-m-an|íkorn|íkorni}}

@@ -128,4 +128,11 @@ class WiktionaryParserTest {
         assertEquals(2, result.relatedWords.size)
         assertNull(result.fullGloss)
     }
+
+    @Test
+    fun ikorni() {
+        on.dictionarySettings = "non-decl-m-a: m, strong\nnon-decl-m-an: m, weak"
+        val result = wiktionary.lookup(repo, on, "ikorni").result.single()
+        assertEquals(listOf("m", "weak"), result.classes)
+    }
 }

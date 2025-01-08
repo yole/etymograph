@@ -95,7 +95,8 @@ class WiktionaryPosSection(
 
     private fun checkClasses(line: String) {
         for ((key, value) in dictionarySettings) {
-            if (key in line) {
+            val pos = line.indexOf(key)
+            if (pos >= 0 && !line[pos+key.length].isLetterOrDigit()) {
                 classes.addAll(value)
             }
         }
