@@ -42,6 +42,7 @@ export default function WordForm(props: WordFormProps) {
 
     const [isNewWord, setNewWord] = useState(false)
     const [wordDefinitions, setWordDefinitions] = useState([])
+    const [forceNew, setForceNew] = useState(false)
 
     async function submitted(wordJson: WordViewModel, data: WordFormData) {
         if (isAddingLink) {
@@ -106,7 +107,7 @@ export default function WordForm(props: WordFormProps) {
 
     return <EtymographForm<WordFormData, WordViewModel>
         create={(data) => addWord(graph, data.language, data.text, data.gloss, data.fullGloss, data.pos, data.classes,
-            data.reconstructed, data.source, data.notes)}
+            data.reconstructed, data.source, data.notes, forceNew)}
         update={(data) => updateWord(graph, props.updateId, data.text, data.gloss, data.fullGloss, data.pos, data.classes,
             data.reconstructed, data.source, data.notes)}
         {...props}
@@ -118,7 +119,13 @@ export default function WordForm(props: WordFormProps) {
         <FormRow id="text" label="Text" readOnly={props.textReadOnly === true} inputAssist={true}
                  handleBlur={updateWordStatus}>
             {isNewWord && <span className="newWord">New</span>}
-            {wordDefinitions.length > 0 && <span className="wordDefinitions">{wordDefinitions.join(", ")}</span>}
+            {wordDefinitions.length > 0 && <>
+                <span className="wordDefinitions">{wordDefinitions.join(", ")}</span>
+                {' '}
+                <button type="button" className="inlineButton inlineButtonLink" onClick={() => setForceNew(!forceNew)}>
+                    {forceNew ? <b>New</b> : "New"}
+                </button>
+            </>}
         </FormRow>
         <PosSelect id="pos" label="POS" language={props.defaultValues.language} languageProp={props.languageReadOnly !== true ? 'language' : undefined}/>
         <WordClassSelect

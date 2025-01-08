@@ -128,17 +128,20 @@ async function postToBackendTyped<Result>(endpoint: string, data: any): Promise<
 }
 
 export function addWord(
-    graph: string, lang, text,
+    graph: string,
+    lang: string,
+    text: string,
     gloss?: string,
     fullGloss?: string,
     pos?: string,
     classes?: string,
     reconstructed: boolean = false,
     source: string = null,
-    notes: string = null
+    notes: string = null,
+    forceNew: boolean = false
 ) {
     return postToBackend(`${graph}/word/${lang}`,
-        {text: text, gloss: gloss, fullGloss: fullGloss, pos, classes, reconstructed, source: source, notes: notes}
+        {text: text, gloss: gloss, fullGloss: fullGloss, pos, classes, reconstructed, source, notes, forceNew}
     )
 }
 

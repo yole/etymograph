@@ -3090,6 +3090,8 @@ components:
           type: "string"
         notes:
           type: "string"
+        forceNew:
+          type: "boolean"
     WordSequenceParams:
       type: "object"
       properties:

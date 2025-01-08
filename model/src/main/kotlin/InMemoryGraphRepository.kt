@@ -363,7 +363,7 @@ open class InMemoryGraphRepository : GraphRepository() {
         wordsByText.find { it.getOrComputeGloss(this) == gloss || gloss.isNullOrEmpty() }?.let {
             return it
         }
-        return addWord(language, text, gloss, fullGloss, pos, classes, reconstructed, source, notes)
+        return addWord(text, language, gloss, fullGloss, pos, classes, reconstructed, source, notes)
     }
 
     override fun updateWordText(word: Word, text: String) {
@@ -372,9 +372,9 @@ open class InMemoryGraphRepository : GraphRepository() {
         mapOfWordsByText(word.language, text).add(word)
     }
 
-    protected fun addWord(
-        language: Language,
+    override fun addWord(
         text: String,
+        language: Language,
         gloss: String?,
         fullGloss: String?,
         pos: String?,

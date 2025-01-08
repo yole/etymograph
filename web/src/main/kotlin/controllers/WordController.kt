@@ -227,7 +227,8 @@ class WordController(val dictionaryService: DictionaryService) {
         val classes: String? = null,
         val reconstructed: Boolean? = null,
         val source: String? = null,
-        val notes: String? = null
+        val notes: String? = null,
+        val forceNew: Boolean? = false
     )
 
     @PostMapping("/{graph}/word/{lang}", consumes = ["application/json"])
@@ -238,17 +239,32 @@ class WordController(val dictionaryService: DictionaryService) {
             repo, language)
 
         val classes = parseWordClasses(language, params.pos, params.classes)
+        val sourceRefs = parseSourceRefs(repo, params.source)
 
-        val word = repo.findOrAddWord(
-            text, language,
-            params.gloss.nullize(),
-            params.fullGloss.nullize(),
-            params.pos.nullize(),
-            classes,
-            params.reconstructed ?: false,
-            parseSourceRefs(repo, params.source),
-            params.notes.nullize()
-        )
+        val word = if (params.forceNew == true) {
+            repo.addWord(
+                text, language,
+                params.gloss.nullize(),
+                params.fullGloss.nullize(),
+                params.pos.nullize(),
+                classes,
+                params.reconstructed ?: false,
+                sourceRefs,
+                params.notes.nullize()
+            )
+        }
+        else {
+            repo.findOrAddWord(
+                text, language,
+                params.gloss.nullize(),
+                params.fullGloss.nullize(),
+                params.pos.nullize(),
+                classes,
+                params.reconstructed ?: false,
+                sourceRefs,
+                params.notes.nullize()
+            )
+        }
         if (stressedPhonemeIndex != null) {
             word.stressedPhonemeIndex = stressedPhonemeIndex
             word.explicitStress = true

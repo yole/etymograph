@@ -23,6 +23,7 @@ export type AddWordParameters = {
     reconstructed?: boolean;
     source?: string;
     notes?: string;
+    forceNew?: boolean;
 };
 
 export type AlternativeViewModel = {

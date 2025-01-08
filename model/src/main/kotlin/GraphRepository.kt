@@ -96,6 +96,18 @@ abstract class GraphRepository {
         notes: String? = null
     ): Word
 
+    abstract fun addWord(
+        text: String,
+        language: Language,
+        gloss: String?,
+        fullGloss: String? = null,
+        pos: String? = null,
+        classes: List<String> = emptyList(),
+        reconstructed: Boolean = false,
+        source: List<SourceRef> = emptyList(),
+        notes: String? = null
+    ): Word
+
     abstract fun deleteWord(word: Word)
 
     abstract fun addCorpusText(
