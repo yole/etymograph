@@ -78,10 +78,48 @@ class AlternativesTest : QBaseTest() {
         assertEquals("scar", word.getOrComputeGloss(repo))
     }
 
+    @Test
+    fun np() {
+        val corpusText = repo.addCorpusText("Elen sila...", null, q)
+
+        repo.addWord("elen", null, pos = "NP")
+        val accRule = setupNoChangeRule()
+
+        val alternatives = Alternatives.request(repo, q, "elen", null)
+        assertEquals(1, alternatives.size)
+        assertEquals("Elen.ACC", alternatives[0].gloss)
+        assertEquals(accRule, alternatives[0].rule)
+
+        Alternatives.accept(repo, corpusText, 0, alternatives[0].word, alternatives[0].rule)
+        val word = corpusText.wordByIndex(0)!!
+        assertEquals("Elen.ACC", word.getOrComputeGloss(repo))
+    }
+
+    @Test
+    fun existingLink() {
+        val corpusText = repo.addCorpusText("Elen sila...", null, q)
+
+        val accRule = setupNoChangeRule()
+        val elen = repo.addWord("elen","star", pos = "N")
+        val elenAcc =  repo.addWord("elen", "star.ACC", pos = "N")
+        elenAcc.gloss = null
+        repo.addLink(elenAcc, elen, Link.Derived, listOf(accRule))
+
+        val alternatives = Alternatives.request(repo, q, "elen", null)
+        assertEquals(1, alternatives.size)
+        assertEquals("star.ACC", alternatives[0].gloss)
+
+        Alternatives.accept(repo, corpusText, 0, alternatives[0].word, alternatives[0].rule)
+
+        val word = corpusText.wordByIndex(0)!!
+        assertEquals(elenAcc.id, word.id)
+        assertEquals(1, repo.getLinksFrom(elenAcc).count())
+    }
+
     private fun setupNoChangeRule(): Rule {
         val accRule = repo.rule("otherwise:\n - no change", name = "q-acc", addedCategories = ".ACC", fromLanguage = q)
 
-        val paradigm = repo.addParadigm("Noun", q, listOf("N"))
+        val paradigm = repo.addParadigm("Noun", q, listOf("N", "NP"))
         paradigm.addRow("Nom")
         paradigm.addRow("Acc")
         paradigm.addColumn("Sg")

@@ -39,48 +39,6 @@ class CorpusControllerTest {
     }
 
     @Test
-    fun alternativesExistingLink() {
-        val corpusParams = CorpusController.CorpusTextParams(text = "Elen sila...")
-        val corpusTextViewModel = corpusController.newText(graph, "q", corpusParams)
-
-        val accRule = fixture.setupParadigm()
-        val elen = graph.findOrAddWord("elen", fixture.q, "star", pos = "N")
-        val elenAcc =  graph.findOrAddWord("elen", fixture.q, "star.ACC", pos = "N")
-        elenAcc.gloss = null
-        graph.addLink(elenAcc, elen, Link.Derived, listOf(accRule))
-
-        val alternatives = corpusController.requestAlternatives(graph, corpusTextViewModel.id, 0)
-        assertEquals(1, alternatives.size)
-        assertEquals("star.ACC", alternatives[0].gloss)
-
-        corpusController.acceptAlternative(graph, corpusTextViewModel.id,
-            CorpusController.AcceptAlternativeParameters(0, alternatives[0].wordId, alternatives[0].ruleId))
-
-        val word = graph.corpusTextById(corpusTextViewModel.id)!!.wordByIndex(0)!!
-        assertEquals(elenAcc.id, word.id)
-        assertEquals(1, graph.getLinksFrom(elenAcc).count())
-    }
-
-    @Test
-    fun alternativesNP() {
-        val corpusParams = CorpusController.CorpusTextParams(text = "Elen sila...")
-        val corpusTextViewModel = corpusController.newText(graph, "q", corpusParams)
-
-        graph.findOrAddWord("elen", fixture.q, null, pos = "NP")
-        val accRule = fixture.setupParadigm()
-
-        val alternatives = corpusController.requestAlternatives(graph, corpusTextViewModel.id, 0)
-        assertEquals(1, alternatives.size)
-        assertEquals("Elen.ACC", alternatives[0].gloss)
-        assertEquals(accRule.id, alternatives[0].ruleId)
-
-        corpusController.acceptAlternative(graph, corpusTextViewModel.id,
-            CorpusController.AcceptAlternativeParameters(0, alternatives[0].wordId, alternatives[0].ruleId))
-        val word = graph.corpusTextById(corpusTextViewModel.id)!!.wordByIndex(0)!!
-        assertEquals("Elen.ACC", word.getOrComputeGloss(graph))
-    }
-
-    @Test
     fun stress() {
         fixture.q.phonemes = listOf(
             Phoneme(-1, listOf("a"), null, setOf("vowel")),
