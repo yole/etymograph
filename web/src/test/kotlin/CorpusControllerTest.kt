@@ -88,8 +88,7 @@ class CorpusControllerTest {
         val elentari = graph.findOrAddWord("elentari", fixture.q, null, pos = "N")
         val elen = graph.findOrAddWord("elen", fixture.q, "star", pos = "N")
         val tari = graph.findOrAddWord("tari", fixture.q, "queen", pos = "N")
-        val compound = graph.createCompound(elentari, elen)
-        compound.components.add(tari)
+        graph.createCompound(elentari, listOf(elen, tari))
 
         val accRule = fixture.setupParadigm()
 

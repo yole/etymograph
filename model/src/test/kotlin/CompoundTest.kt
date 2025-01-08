@@ -5,10 +5,10 @@ import org.junit.Before
 import org.junit.Test
 
 class CompoundTest : QBaseTest() {
-    lateinit var repo: GraphRepository
-    lateinit var fara: Word
-    lateinit var mir: Word
-    lateinit var faramir: Word
+    private lateinit var repo: GraphRepository
+    private lateinit var fara: Word
+    private lateinit var mir: Word
+    private lateinit var faramir: Word
 
     @Before
     fun setup() {
@@ -20,8 +20,7 @@ class CompoundTest : QBaseTest() {
 
     @Test
     fun segmentedText() {
-        val compound = repo.createCompound(faramir, fara)
-        compound.components.add(mir)
+        repo.createCompound(faramir, listOf(fara, mir))
         val restored = repo.restoreSegments(faramir)
         assertEquals("fara-mir", restored.segmentedText())
     }
@@ -29,8 +28,7 @@ class CompoundTest : QBaseTest() {
     @Test
     fun segmentedTextClitic() {
         fara.classes = listOf("clitic")
-        val compound = repo.createCompound(faramir, fara)
-        compound.components.add(mir)
+        repo.createCompound(faramir, listOf(fara, mir))
         val restored = repo.restoreSegments(faramir)
         assertEquals("fara=mir", restored.segmentedText())
     }
@@ -38,15 +36,13 @@ class CompoundTest : QBaseTest() {
     @Test
     fun compoundsInDictionary() {
         val fara = repo.addWord("fara", "fara.NOM")
-        val compound = repo.createCompound(faramir, fara)
-        compound.components.add(mir)
+        repo.createCompound(faramir, listOf(fara, mir))
         assertEquals(1, repo.filteredWords(q, WordKind.COMPOUND).size)
     }
 
     @Test
     fun deleteWordFromCompound() {
-        val compound = repo.createCompound(faramir, fara)
-        compound.components.add(mir)
+        repo.createCompound(faramir, listOf(fara, mir))
 
         repo.deleteWord(mir)
         assertEquals(1, repo.findCompoundsByCompoundWord(faramir).first().components.size)
@@ -54,8 +50,7 @@ class CompoundTest : QBaseTest() {
 
     @Test
     fun deleteWordOfCompound() {
-        val compound = repo.createCompound(faramir, fara)
-        compound.components.add(mir)
+        val compound = repo.createCompound(faramir, listOf(fara, mir))
 
         repo.deleteWord(faramir)
         assertEquals(null, repo.langEntityById(compound.id))
@@ -63,8 +58,7 @@ class CompoundTest : QBaseTest() {
 
     @Test
     fun segmentedTextDeleteCompound() {
-        val compound = repo.createCompound(faramir, fara)
-        compound.components.add(mir)
+        val compound = repo.createCompound(faramir, listOf(fara, mir))
         val restored = repo.restoreSegments(faramir)
         assertEquals("fara-mir", restored.segmentedText())
         repo.deleteCompound(compound)
@@ -76,8 +70,7 @@ class CompoundTest : QBaseTest() {
         val fara = repo.addWord("anda")
         val mir = repo.addWord("aurenya")
         val faramir = repo.addWord("andaurenya")
-        val compound = repo.createCompound(faramir, fara)
-        compound.components.add(mir)
+        repo.createCompound(faramir, listOf(fara, mir))
         val restored = repo.restoreSegments(faramir)
         assertEquals("andaurenya", restored.segmentedText())
     }
@@ -91,8 +84,7 @@ class CompoundTest : QBaseTest() {
         val na = repo.addWord("na", pos = "PV")
         val pan = repo.addWord("pan-", pos = "V")
         val napan = repo.addWord("napan-")
-        val compound = repo.createCompound(napan, na)
-        compound.components.add(pan)
+        repo.createCompound(napan, listOf(na, pan))
 
         assertEquals(3, napan.calculateStress(repo)!!.index)
     }
@@ -101,7 +93,7 @@ class CompoundTest : QBaseTest() {
     fun suggestCompound() {
         val suggestions = repo.suggestCompound(faramir)
         assertEquals(fara, suggestions.single())
-        val compound = repo.createCompound(faramir, fara)
+        val compound = repo.createCompound(faramir, listOf(fara))
         val suggestions2 = repo.suggestCompound(faramir, compound)
         assertEquals(mir, suggestions2.single())
     }

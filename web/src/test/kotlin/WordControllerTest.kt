@@ -189,7 +189,7 @@ class WordControllerTest {
         assertEquals(1, result.suggestions.size)
         assertEquals(laece.id, result.suggestions[0].id)
 
-        val compound = graph.createCompound(laececynn, laece)
+        val compound = graph.createCompound(laececynn, listOf(laece))
         val result2 = wordController.suggestCompound(graph, laececynn.id, WordController.SuggestCompoundParameters(compound.id))
         assertEquals(cynn.id, result2.suggestions.single().id)
     }

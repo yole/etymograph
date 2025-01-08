@@ -270,9 +270,7 @@ class RuleTest : QBaseTest() {
         val baseWord = repo.addWord("mann", language = oe, classes = listOf("o-stem"))
         val prefix = repo.addWord("sæ", language = oe)
         val compoundWord = repo.addWord("sæmann", language = oe)
-        val compound = repo.createCompound(compoundWord, prefix)
-        compound.components.add(baseWord)
-        compound.headIndex = 1
+        repo.createCompound(compoundWord, listOf(prefix, baseWord), headIndex = 1)
         val result = rule.apply(compoundWord, repo)
         assertEquals("sæmannes", result.text)
     }
@@ -288,9 +286,7 @@ class RuleTest : QBaseTest() {
 
         val far = repo.addWord("go",  language = on, gloss = "go")
         val farmadr = repo.addWord("farmaðr", language = on)
-        val compound = repo.createCompound(farmadr, far)
-        compound.components.add(madr)
-        compound.headIndex = 1
+        repo.createCompound(farmadr, listOf(far, madr), headIndex = 1)
 
         val result = rule.apply(farmadr, repo)
         assertEquals("farmenn", result.text)

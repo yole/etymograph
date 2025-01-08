@@ -140,7 +140,8 @@ abstract class GraphRepository {
 
     abstract fun createCompound(
         compoundWord: Word,
-        firstComponent: Word,
+        components: List<Word>,
+        headIndex: Int? = null,
         source: List<SourceRef> = emptyList(),
         notes: String? = null
     ): Compound

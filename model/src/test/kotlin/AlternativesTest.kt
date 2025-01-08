@@ -31,9 +31,7 @@ class AlternativesTest : QBaseTest() {
         val elen = repo.addWord("elen", "star", "N")
         val tari = repo.addWord("tari", "queen", "N")
         val elentari = repo.addWord("elentari")
-        val compound = repo.createCompound(elentari, elen)
-        compound.components.add(tari)
-        compound.headIndex = 1
+        repo.createCompound(elentari, listOf(elen, tari), headIndex = 1)
 
         val accRule = setupNoChangeRule(repo)
 

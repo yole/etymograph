@@ -615,8 +615,14 @@ open class InMemoryGraphRepository : GraphRepository() {
         return linksTo[entity.id] ?: emptyList()
     }
 
-    override fun createCompound(compoundWord: Word, firstComponent: Word, source: List<SourceRef>, notes: String?): Compound {
-        val compound = Compound(allLangEntities.size, compoundWord, mutableListOf(firstComponent), null, source, notes)
+    override fun createCompound(
+        compoundWord: Word,
+        components: List<Word>,
+        headIndex: Int?,
+        source: List<SourceRef>,
+        notes: String?
+    ): Compound {
+        val compound = Compound(allLangEntities.size, compoundWord, components.toMutableList(), headIndex, source, notes)
         compounds.getOrPut(compoundWord.id) { arrayListOf() }.add(compound)
         allLangEntities.add(compound)
         return compound

@@ -176,7 +176,6 @@ fun augmentWord(repo: GraphRepository, word: Word, dictionaryWord: DictionaryWor
         val componentWords = dictionaryWord.compoundComponents.map {
             findOrCreateWordFromDictionary(repo, it)
         }
-        val compound = repo.createCompound(word, componentWords.first())
-        compound.components.addAll(componentWords.drop(1))
+        repo.createCompound(word, componentWords)
     }
 }

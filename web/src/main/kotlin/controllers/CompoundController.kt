@@ -27,7 +27,7 @@ class CompoundController {
         val compoundWord = repo.resolveWord(params.compoundId)
         val componentWord = repo.resolveWord(params.firstComponentId)
         val source = parseSourceRefs(repo, params.source)
-        repo.createCompound(compoundWord, componentWord, source, params.notes.nullize())
+        repo.createCompound(compoundWord, listOf(componentWord), null, source, params.notes.nullize())
     }
 
     @PostMapping("/{id}/add")

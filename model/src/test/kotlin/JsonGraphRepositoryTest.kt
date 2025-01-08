@@ -196,9 +196,7 @@ class JsonGraphRepositoryTest : QBaseTest() {
         val baseWord = repo.addWord("mann")
         val prefix = repo.addWord("sæ")
         val compoundWord = repo.addWord("sæmann")
-        val compound = repo.createCompound(compoundWord, prefix)
-        compound.components.add(baseWord)
-        compound.headIndex = 1
+        repo.createCompound(compoundWord, listOf(prefix, baseWord), headIndex = 1)
         val repo2 = repo.roundtrip()
         val compoundWord2 = repo2.wordsByText(repo2.languageByShortName("Q")!!, "sæmann").single()
         val compound2 = repo2.findCompoundsByCompoundWord(compoundWord2).single()
