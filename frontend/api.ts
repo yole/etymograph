@@ -3,8 +3,6 @@ import {
     CorpusTextParams,
     LookupParameters,
     LookupResultViewModel,
-    RuleSequenceViewModel,
-    RuleTraceResult,
     SuggestCompoundViewModel,
     UpdateLanguageParameters,
     UpdateParadigmParameters, UpdatePhonemeParameters,
@@ -16,7 +14,7 @@ export function allowEdit() {
     return process.env.NEXT_PUBLIC_READONLY !== "true";
 }
 
-export async function fetchBackend(graph: string, url, withGlobalState = false) {
+export async function fetchBackend(graph: string, url: string, withGlobalState = false) {
     const fullUrl = `${process.env.NEXT_PUBLIC_BACKEND_URL}${graph}/${url}`
     const res = await fetch(fullUrl, { headers: { 'Accept': 'application/json'} })
     if (res.status === 404) {
@@ -31,7 +29,7 @@ export async function fetchBackend(graph: string, url, withGlobalState = false) 
         const allLanguages = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}${graph}/language`, { headers: { 'Accept': 'application/json'} })
         const allLanguagesJson = await allLanguages.json()
         const allRules = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}${graph}/rules`, { headers: { 'Accept': 'application/json'} })
-        const alllRulesJson = await allRules.json()
+        const allRulesJson = await allRules.json()
         const allInputAssists = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}${graph}/inputAssist`, { headers: { 'Accept': 'application/json'} })
         const allInputAssistsJson = await allInputAssists.json()
         return {
@@ -40,7 +38,7 @@ export async function fetchBackend(graph: string, url, withGlobalState = false) 
                 globalState: {
                     graphs: allGraphsJson,
                     languages: allLanguagesJson,
-                    rules: alllRulesJson,
+                    rules: allRulesJson,
                     inputAssists: allInputAssistsJson
                 }
             }

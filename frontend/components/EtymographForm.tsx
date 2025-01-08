@@ -32,7 +32,7 @@ export default function EtymographForm<Data, ResponseData=Data>(props: Etymograp
     const setEditModeContext = useContext(SetEditModeContext)
     const setEditMode = props.setEditMode ?? setEditModeContext
 
-    useEffect(() => { if (props.focusTarget) methods.setFocus(props.focusTarget) }, []);
+    useEffect(() => { if (props.focusTarget) methods.setFocus(props.focusTarget) });
 
     if (props.focusTarget) {
         props.setFocusTarget(null)
