@@ -19,7 +19,7 @@ class AlternativesTest : QBaseTest() {
 
         val accRule = setupNoChangeRule(repo)
 
-        val alts = repo.requestAlternatives(word)
+        val alts = Alternatives.requestAlternatives(repo, word)
         assertEquals(1, alts.size)
         assertEquals(accRule, alts[0].rules[0])
     }
@@ -36,7 +36,7 @@ class AlternativesTest : QBaseTest() {
 
         val accRule = setupNoChangeRule(repo)
 
-        val alts = repo.requestAlternatives(elentari)
+        val alts = Alternatives.requestAlternatives(repo, elentari)
         assertEquals(1, alts.size)
         assertEquals(accRule, alts[0].rules[0])
     }

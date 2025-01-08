@@ -147,29 +147,10 @@ class CorpusController {
         val corpusText = repo.resolveCorpusText(id)
         val word = corpusText.wordByIndex(index)
         val wordText = word?.text ?: corpusText.normalizedWordTextAt(index)
-        val wordsWithMatchingText = repo.wordsByText(corpusText.language, wordText)
-        val allVariants = wordsWithMatchingText.flatMap {
-            val gloss = it.getOrComputeGloss(repo)
-            if (gloss == null)
-                emptyList()
-            else {
-                val baseWord = if (it == wordsWithMatchingText.first())
-                    emptyList()
-                else
-                    listOf(AlternativeViewModel(gloss, it.id, -1))
-                if (it.glossOrNP() == null && !repo.isCompound(it)) {
-                    baseWord
-                }
-                else {
-                    val alts = repo.requestAlternatives(it)
-                    baseWord + alts.map { pc ->
-                        val rule = pc.rules.single()
-                        AlternativeViewModel(rule.applyCategories(gloss), it.id, rule.id)
-                    }
-                }
-            }
+        val results = Alternatives.requestAlternativesByText(repo, corpusText.language, wordText, word)
+        return results.map {
+            AlternativeViewModel(it.gloss, it.word.id, it.rule?.id ?: -1)
         }
-        return allVariants.associateBy { it.gloss }.values.toList()
     }
 
     data class AcceptAlternativeParameters(val index: Int, val wordId: Int, val ruleId: Int)

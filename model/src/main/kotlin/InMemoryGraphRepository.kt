@@ -256,23 +256,6 @@ open class InMemoryGraphRepository : GraphRepository() {
             .toSet()
     }
 
-    override fun requestAlternatives(word: Word): List<ParseCandidate> {
-        val pos = word.getOrComputePOS(this)
-        return paradigmsForLanguage(word.language).filter { pos in it.pos }.flatMap { paradigm ->
-            val wordParadigm = paradigm.generate(word, this)
-            wordParadigm.flatMap { column ->
-                column.flatMap { alts ->
-                    alts?.mapNotNull {
-                        if (it.word.text == word.text && it.rule != null)
-                            ParseCandidate(word.text, listOf(it.rule), null, it.word.takeIf { w -> w.id >= 0 })
-                        else
-                            null
-                    } ?: emptyList()
-                }
-            }
-        }
-    }
-
     override fun restoreSegments(word: Word): Word {
         val baseWordLink = word.baseWordLink(this)
         if (baseWordLink != null) {
