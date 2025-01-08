@@ -68,7 +68,7 @@ private fun createWordForForm(lemmaWord: Word, repo: GraphRepository, word: Lemm
 
     val newWord = repo.findOrAddWord(word.form, lemmaWord.language, glossWithCategories)
     if (rule != null) {
-        repo.addLink(newWord, lemmaWord, Link.Derived, listOf(rule), emptyList(), null)
+        repo.addLink(newWord, lemmaWord, Link.Derived, listOf(rule))
         newWord.gloss = null
     }
 

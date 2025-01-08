@@ -168,7 +168,7 @@ fun augmentWord(repo: GraphRepository, word: Word, dictionaryWord: DictionaryWor
                 word.gloss = null
             }
 
-            repo.addLink(word, relatedWord, relatedDictionaryWord.linkType, rules, emptyList(), null)
+            repo.addLink(word, relatedWord, relatedDictionaryWord.linkType, rules)
         }
     }
 

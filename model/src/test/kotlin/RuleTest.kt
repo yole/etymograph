@@ -214,7 +214,7 @@ class RuleTest : QBaseTest() {
         val rule = repo.rule("word is o-stem:\n- append 'es'", oe)
         val baseWord = repo.addWord("mann", language = oe, classes = listOf("o-stem"))
         val variant = repo.addWord("monn", language = oe)
-        repo.addLink(variant, baseWord, Link.Variation, emptyList(), emptyList(), null)
+        repo.addLink(variant, baseWord, Link.Variation)
         val result = rule.apply(variant, repo)
         assertEquals("monnes", result.text)
     }
@@ -232,7 +232,7 @@ class RuleTest : QBaseTest() {
         val rule = repo.rule("- mark word as strong\nword is o-stem:\n- append 'es'", oe)
         val baseWord = repo.addWord("mann", language = oe, classes = listOf("o-stem"))
         val variant = repo.addWord("monn", language = oe)
-        repo.addLink(variant, baseWord, Link.Variation, emptyList(), emptyList(), null)
+        repo.addLink(variant, baseWord, Link.Variation)
         val result = rule.apply(variant, repo)
         assertEquals("monnes", result.text)
     }
@@ -251,7 +251,7 @@ class RuleTest : QBaseTest() {
         val rule = repo.rule("- apply rule 'oe-stem-class'\nword is o-stem:\n- append 'es'", oe)
         val baseWord = repo.addWord("mann", language = oe, classes = listOf("o-stem"))
         val variant = repo.addWord("monn", language = oe)
-        repo.addLink(variant, baseWord, Link.Variation, emptyList(), emptyList(), null)
+        repo.addLink(variant, baseWord, Link.Variation)
         val result = rule.apply(variant, repo)
         assertEquals("monnes", result.text)
     }
@@ -644,7 +644,7 @@ class RuleTest : QBaseTest() {
         }
         val mbar = repo.addWord("mbar", language = ce)
         val bar = repo.addWord("bar")
-        repo.addLink(bar, mbar, Link.Origin, emptyList(), emptyList(), null)
+        repo.addLink(bar, mbar, Link.Origin)
 
         assertEquals("mbar", rule.apply(bar, repo).text)
         assertEquals("first sound of base word in CE is 'm'", rule.logic.branches[0].condition.toEditableText())
@@ -664,7 +664,7 @@ class RuleTest : QBaseTest() {
         }
         val talam = repo.addWord("talam", language = ce)
         val talan = repo.addWord("talan")
-        repo.addLink(talan, talam, Link.Origin, emptyList(), emptyList(), null)
+        repo.addLink(talan, talam, Link.Origin)
 
         assertEquals("talam", rule.apply(talan, repo).text)
         assertEquals("base word in CE ends with 'm'", rule.logic.branches[0].condition.toEditableText())
@@ -749,7 +749,7 @@ class RuleTest : QBaseTest() {
         val haust = repo.addWord("haust", "autumn", classes = listOf("n"), language = on)
         val accRule = repo.rule("- no change", fromLanguage = on, name = "on-acc", addedCategories = ".ACC")
         val haustAcc = repo.addWord("haust", "autumn.ACC", language = on)
-        repo.addLink(haustAcc, haust, Link.Derived, listOf(accRule), emptyList(), null)
+        repo.addLink(haustAcc, haust, Link.Derived, listOf(accRule))
         val defRule = repo.rule("- apply rule 'on-acc'\nword is n:\n- append 'it'", fromLanguage = on)
         val result = defRule.apply(haust, repo)
         assertEquals("haustit", result.text)

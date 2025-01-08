@@ -131,7 +131,8 @@ abstract class GraphRepository {
     abstract fun paradigmForRule(rule: Rule): Paradigm?
 
     abstract fun addLink(
-        fromEntity: LangEntity, toEntity: LangEntity, type: LinkType, rules: List<Rule>,
+        fromEntity: LangEntity, toEntity: LangEntity, type: LinkType,
+        rules: List<Rule> = emptyList(),
         source: List<SourceRef> = emptyList(), notes: String? = null
     ): Link
 

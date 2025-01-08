@@ -490,7 +490,7 @@ open class InMemoryGraphRepository : GraphRepository() {
             pos = word.pos,
             classes = word.classes
         )
-        addLink(newWord, word, Link.Origin, applicableRules, emptyList(), null)
+        addLink(newWord, word, Link.Origin, applicableRules)
         return newWord
     }
 

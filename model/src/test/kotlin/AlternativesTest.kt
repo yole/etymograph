@@ -114,7 +114,7 @@ class AlternativesTest : QBaseTest() {
     fun variantRule() {
         val byggva = repo.addWord("byggva","settle", pos = "V")
         val byggjaInf = repo.addWord("byggja", null)
-        repo.addLink(byggjaInf, byggva, Link.Variation, emptyList())
+        repo.addLink(byggjaInf, byggva, Link.Variation)
 
         val byggjaAcc = repo.addWord("byggja", "settle.ACC")
         byggjaAcc.gloss = null

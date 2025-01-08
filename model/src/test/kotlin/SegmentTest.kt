@@ -53,7 +53,7 @@ class SegmentTest : QBaseTest() {
         val hresta = repo.addWord("hresta")
         val hrestallo = repo.addWord("hrestallo", gloss = null)
         val rule = parseRule(q, q, "- append 'llo'", addedCategories = ".ABL")
-        val link = repo.addLink(hrestallo, hresta, Link.Derived, listOf(rule), emptyList(), null)
+        repo.addLink(hrestallo, hresta, Link.Derived, listOf(rule))
         val restored = repo.restoreSegments(hrestallo)
         assertEquals(1, restored.segments!!.size)
         assertEquals("hresta-llo", restored.segmentedText())
@@ -65,7 +65,7 @@ class SegmentTest : QBaseTest() {
         val hresta2 = repo.addWord("hresta", gloss = null)
         val hresta = repo.addWord("hresta", gloss = "hresta")
         val rule = parseRule(q, q, "word ends with 'a':\n- no change", addedCategories = ".ABL")
-        val link = repo.addLink(hresta2, hresta, Link.Derived, listOf(rule), emptyList(), null)
+        repo.addLink(hresta2, hresta, Link.Derived, listOf(rule))
         val restored = repo.restoreSegments(hresta2)
         assertEquals("hresta.ABL", restored.getOrComputeGloss(repo))
     }
@@ -75,7 +75,7 @@ class SegmentTest : QBaseTest() {
         val hresta2 = repo.addWord("hresta", gloss = "hresta.ABL")
         val hresta = repo.addWord("hresta", gloss = "hresta", pos = "NP")
         val rule = parseRule(q, q, "word ends with 'a':\n- no change", addedCategories = ".ABL")
-        val link = repo.addLink(hresta2, hresta, Link.Derived, listOf(rule), emptyList(), null)
+        repo.addLink(hresta2, hresta, Link.Derived, listOf(rule))
         hresta2.gloss = null
         hresta.gloss = null
         val restored = repo.restoreSegments(hresta2)
@@ -87,7 +87,7 @@ class SegmentTest : QBaseTest() {
         val hresta2 = repo.addWord("hresta", gloss = "hresta.ABL")
         val hresta = repo.addWord("hresta", gloss = "hresta")
         val rule = parseRule(q, q, "word ends with 'i':\n- no change", addedCategories = ".ABL")
-        val link = repo.addLink(hresta2, hresta, Link.Derived, emptyList(), emptyList(), null)
+        repo.addLink(hresta2, hresta, Link.Derived)
         val restored = repo.restoreSegments(hresta2)
         assertEquals("hresta.ABL", restored.getOrComputeGloss(repo))
     }
@@ -97,7 +97,7 @@ class SegmentTest : QBaseTest() {
         val hresta = repo.addWord("hresta")
         val hrestallo = repo.addWord("hrestallo", gloss = null)
         val rule = parseRule(q, q, "word ends with 'llo':\n- change ending to ''", addedCategories = ".ABL")
-        val link = repo.addLink(hresta, hrestallo, Link.Derived, listOf(rule), emptyList(), null)
+        repo.addLink(hresta, hrestallo, Link.Derived, listOf(rule))
         val restored = repo.restoreSegments(hresta)
         assertEquals("hresta", restored.segmentedText())
     }

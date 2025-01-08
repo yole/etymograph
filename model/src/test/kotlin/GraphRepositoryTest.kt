@@ -9,7 +9,7 @@ class GraphRepositoryTest : QBaseTest() {
         val repo = repoWithQ()
         val abc = repo.addWord("abc")
         val def = repo.addWord("def")
-        repo.addLink(abc, def, Link.Derived, emptyList())
+        repo.addLink(abc, def, Link.Derived)
         assertEquals(1, repo.getLinksTo(def).count())
         assertTrue(repo.deleteLink(abc, def, Link.Derived))
         assertEquals(0, repo.getLinksTo(def).count())
