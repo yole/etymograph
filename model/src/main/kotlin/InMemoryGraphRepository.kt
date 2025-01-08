@@ -257,7 +257,8 @@ open class InMemoryGraphRepository : GraphRepository() {
     }
 
     override fun requestAlternatives(word: Word): List<ParseCandidate> {
-        return paradigmsForLanguage(word.language).filter { word.pos in it.pos }.flatMap { paradigm ->
+        val pos = word.getOrComputePOS(this)
+        return paradigmsForLanguage(word.language).filter { pos in it.pos }.flatMap { paradigm ->
             val wordParadigm = paradigm.generate(word, this)
             wordParadigm.flatMap { column ->
                 column.flatMap { alts ->

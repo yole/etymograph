@@ -5,7 +5,7 @@ import org.junit.Before
 import org.junit.Test
 
 class AlternativesTest : QBaseTest() {
-    lateinit var repo: GraphRepository
+    lateinit var repo: InMemoryGraphRepository
 
     @Before
     fun setup() {
@@ -14,13 +14,29 @@ class AlternativesTest : QBaseTest() {
 
     @Test
     fun simple() {
-        val repo = InMemoryGraphRepository()
         val ct1 = repo.addCorpusText("elen sila", null, q)
         val word = repo.addWord("elen", "star", "N")
 
         val accRule = setupNoChangeRule(repo)
 
         val alts = repo.requestAlternatives(word)
+        assertEquals(1, alts.size)
+        assertEquals(accRule, alts[0].rules[0])
+    }
+
+    @Test
+    fun compound() {
+        val ct1 = repo.addCorpusText("elentari sila", null, q)
+        val elen = repo.addWord("elen", "star", "N")
+        val tari = repo.addWord("tari", "queen", "N")
+        val elentari = repo.addWord("elentari")
+        val compound = repo.createCompound(elentari, elen)
+        compound.components.add(tari)
+        compound.headIndex = 1
+
+        val accRule = setupNoChangeRule(repo)
+
+        val alts = repo.requestAlternatives(elentari)
         assertEquals(1, alts.size)
         assertEquals(accRule, alts[0].rules[0])
     }
