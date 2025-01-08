@@ -18,26 +18,47 @@ class AlternativesTest : QBaseTest() {
         val ct1 = repo.addCorpusText("elen sila", null, q)
         val word = repo.addWord("elen", "star", "N")
 
-        val accRule = setupNoChangeRule(repo)
+        val accRule = setupNoChangeRule()
 
-        val alts = Alternatives.request(repo, word)
+        val alts = Alternatives.request(repo, q, "elen", null)
         assertEquals(1, alts.size)
-        assertEquals(accRule, alts[0].rules[0])
+        assertEquals(accRule, alts[0].rule)
     }
 
     @Test
     fun compound() {
-        val ct1 = repo.addCorpusText("elentari sila", null, q)
+        val corpusText = repo.addCorpusText("elentari ortanen", null, q)
+
+        val elentari = repo.addWord("elentari", null, pos = "N")
+        val elen = repo.addWord("elen", "star", pos = "N")
+        val tari = repo.addWord("tari", "queen", pos = "N")
+        repo.createCompound(elentari, listOf(elen, tari))
+
+        val accRule = setupNoChangeRule()
+
+        val alternatives = Alternatives.request(repo, q, "elentari", null)
+        assertEquals(1, alternatives.size)
+        assertEquals("star-queen.ACC", alternatives[0].gloss)
+        assertEquals(accRule, alternatives[0].rule)
+
+        Alternatives.accept(repo, corpusText, 0, alternatives[0].word, alternatives[0].rule)
+        val word = corpusText.wordByIndex(0)!!
+        assertEquals("star-queen.ACC", word.getOrComputeGloss(repo))
+    }
+
+    @Test
+    fun compoundNoPOS() {
+        repo.addCorpusText("elentari sila", null, q)
         val elen = repo.addWord("elen", "star", "N")
         val tari = repo.addWord("tari", "queen", "N")
         val elentari = repo.addWord("elentari")
         repo.createCompound(elentari, listOf(elen, tari), headIndex = 1)
 
-        val accRule = setupNoChangeRule(repo)
+        val accRule = setupNoChangeRule()
 
-        val alts = Alternatives.request(repo, elentari)
+        val alts = Alternatives.request(repo, q, "elentari", null)
         assertEquals(1, alts.size)
-        assertEquals(accRule, alts[0].rules[0])
+        assertEquals(accRule, alts[0].rule)
     }
 
     @Test
@@ -47,7 +68,7 @@ class AlternativesTest : QBaseTest() {
 
         val ct1 = repo.addCorpusText("elen sila", null, q)
 
-        val alternatives = Alternatives.requestByText(repo, q, "elen", null)
+        val alternatives = Alternatives.request(repo, q, "elen", null)
         assertEquals(1, alternatives.size)
         assertEquals("scar", alternatives[0].gloss)
         assertNull(alternatives[0].rule)
@@ -57,8 +78,8 @@ class AlternativesTest : QBaseTest() {
         assertEquals("scar", word.getOrComputeGloss(repo))
     }
 
-    private fun setupNoChangeRule(repo: InMemoryGraphRepository): Rule {
-        val accRule = repo.rule("otherwise:\n - no change", name = "q-acc", fromLanguage = q)
+    private fun setupNoChangeRule(): Rule {
+        val accRule = repo.rule("otherwise:\n - no change", name = "q-acc", addedCategories = ".ACC", fromLanguage = q)
 
         val paradigm = repo.addParadigm("Noun", q, listOf("N"))
         paradigm.addRow("Nom")

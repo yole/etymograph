@@ -147,7 +147,7 @@ class CorpusController {
         val corpusText = repo.resolveCorpusText(id)
         val word = corpusText.wordByIndex(index)
         val wordText = word?.text ?: corpusText.normalizedWordTextAt(index)
-        val results = Alternatives.requestByText(repo, corpusText.language, wordText, word)
+        val results = Alternatives.request(repo, corpusText.language, wordText, word)
         return results.map {
             AlternativeViewModel(it.gloss, it.word.id, it.rule?.id ?: -1)
         }

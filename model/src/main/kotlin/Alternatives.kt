@@ -3,7 +3,7 @@ package ru.yole.etymograph
 data class AlternativeModel(val gloss: String, val word: Word, val rule: Rule?)
 
 object Alternatives {
-    fun requestByText(repo: GraphRepository, language: Language, wordText: String, word: Word?): List<AlternativeModel> {
+    fun request(repo: GraphRepository, language: Language, wordText: String, word: Word?): List<AlternativeModel> {
         val wordsWithMatchingText = repo.wordsByText(language, wordText)
         val allVariants = wordsWithMatchingText.flatMap {
             val gloss = it.getOrComputeGloss(repo)
@@ -18,18 +18,14 @@ object Alternatives {
                     baseWord
                 }
                 else {
-                    val alts = request(repo, it)
-                    baseWord + alts.map { pc ->
-                        val rule = pc.rules.single()
-                        AlternativeModel(rule.applyCategories(gloss), it, rule)
-                    }
+                    baseWord + requestForms(repo, it, gloss)
                 }
             }
         }
         return allVariants.associateBy { it.gloss }.values.toList()
     }
 
-    fun request(repo: GraphRepository, word: Word): List<ParseCandidate> {
+    private fun requestForms(repo: GraphRepository, word: Word, gloss: String): List<AlternativeModel> {
         val pos = word.getOrComputePOS(repo)
         return repo.paradigmsForLanguage(word.language).filter { pos in it.pos }.flatMap { paradigm ->
             val wordParadigm = paradigm.generate(word, repo)
@@ -37,7 +33,7 @@ object Alternatives {
                 column.flatMap { alts ->
                     alts?.mapNotNull {
                         if (it.word.text == word.text && it.rule != null)
-                            ParseCandidate(word.text, listOf(it.rule), null, it.word.takeIf { w -> w.id >= 0 })
+                            AlternativeModel(it.rule.applyCategories(gloss), word, it.rule)
                         else
                             null
                     } ?: emptyList()
