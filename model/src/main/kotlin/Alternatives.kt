@@ -10,7 +10,7 @@ object Alternatives {
             if (gloss == null)
                 emptyList()
             else {
-                val baseWord = if (it == wordsWithMatchingText.first())
+                val baseWord = if (it === (word ?: wordsWithMatchingText.first()))
                     emptyList()
                 else
                     listOf(AlternativeModel(gloss, it, null))

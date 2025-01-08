@@ -7,18 +7,18 @@ import org.junit.Test
 
 class AlternativesTest : QBaseTest() {
     lateinit var repo: InMemoryGraphRepository
+    lateinit var accRule: Rule
 
     @Before
     fun setup() {
         repo = InMemoryGraphRepository()
+        accRule = setupNoChangeRule()
     }
 
     @Test
     fun simple() {
         val ct1 = repo.addCorpusText("elen sila", null, q)
         val word = repo.addWord("elen", "star", "N")
-
-        val accRule = setupNoChangeRule()
 
         val alts = Alternatives.request(repo, q, "elen", null)
         assertEquals(1, alts.size)
@@ -33,8 +33,6 @@ class AlternativesTest : QBaseTest() {
         val elen = repo.addWord("elen", "star", pos = "N")
         val tari = repo.addWord("tari", "queen", pos = "N")
         repo.createCompound(elentari, listOf(elen, tari))
-
-        val accRule = setupNoChangeRule()
 
         val alternatives = Alternatives.request(repo, q, "elentari", null)
         assertEquals(1, alternatives.size)
@@ -54,8 +52,6 @@ class AlternativesTest : QBaseTest() {
         val elentari = repo.addWord("elentari")
         repo.createCompound(elentari, listOf(elen, tari), headIndex = 1)
 
-        val accRule = setupNoChangeRule()
-
         val alts = Alternatives.request(repo, q, "elentari", null)
         assertEquals(1, alts.size)
         assertEquals(accRule, alts[0].rule)
@@ -63,8 +59,8 @@ class AlternativesTest : QBaseTest() {
 
     @Test
     fun homonym() {
-        repo.addWord("elen", "star", pos = "N")
-        repo.addWord("elen", "scar", pos = "N")
+        repo.addWord("elen", "star")
+        repo.addWord("elen", "scar")
 
         val ct1 = repo.addCorpusText("elen sila", null, q)
 
@@ -83,7 +79,6 @@ class AlternativesTest : QBaseTest() {
         val corpusText = repo.addCorpusText("Elen sila...", null, q)
 
         repo.addWord("elen", null, pos = "NP")
-        val accRule = setupNoChangeRule()
 
         val alternatives = Alternatives.request(repo, q, "elen", null)
         assertEquals(1, alternatives.size)
@@ -99,7 +94,6 @@ class AlternativesTest : QBaseTest() {
     fun existingLink() {
         val corpusText = repo.addCorpusText("Elen sila...", null, q)
 
-        val accRule = setupNoChangeRule()
         val elen = repo.addWord("elen","star", pos = "N")
         val elenAcc =  repo.addWord("elen", "star.ACC", pos = "N")
         elenAcc.gloss = null
@@ -114,6 +108,21 @@ class AlternativesTest : QBaseTest() {
         val word = corpusText.wordByIndex(0)!!
         assertEquals(elenAcc.id, word.id)
         assertEquals(1, repo.getLinksFrom(elenAcc).count())
+    }
+
+    @Test
+    fun variantRule() {
+        val byggva = repo.addWord("byggva","settle", pos = "V")
+        val byggjaInf = repo.addWord("byggja", null)
+        repo.addLink(byggjaInf, byggva, Link.Variation, emptyList())
+
+        val byggjaAcc = repo.addWord("byggja", "settle.ACC")
+        byggjaAcc.gloss = null
+        repo.addLink(byggjaAcc, byggjaInf, Link.Derived, listOf(accRule))
+
+        val alternatives = Alternatives.request(repo, q, "byggja", byggjaInf)
+        assertEquals(1, alternatives.size)
+        assertEquals(byggjaAcc, alternatives[0].word)
     }
 
     private fun setupNoChangeRule(): Rule {
