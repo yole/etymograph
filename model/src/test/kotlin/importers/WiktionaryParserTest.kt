@@ -1,6 +1,7 @@
 package ru.yole.etymograph.importers
 
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNull
 import org.junit.Before
 import org.junit.Test
 import ru.yole.etymograph.GraphRepository
@@ -12,23 +13,33 @@ class WiktionaryParserTest {
     lateinit var wiktionary: TestWiktionary
     lateinit var repo: GraphRepository
     lateinit var oe: Language
+    lateinit var on: Language
 
     @Before
     fun setUp() {
         wiktionary = TestWiktionary(WiktionaryParserTest::class.java)
         repo = InMemoryGraphRepository()
-        oe = Language("Old English", "OE")
-        oe.pos.addAll(listOf(
-            WordCategoryValue("Noun", "N"),
-            WordCategoryValue("Adjective", "ADJ"),
-            WordCategoryValue("Verb", "V")
-        ))
+        oe = Language("Old English", "OE").withPartsOfSpeech()
         repo.addLanguage(oe)
+
+        on = Language("Old Norse", "ON").withPartsOfSpeech()
+        repo.addLanguage(on)
 
         val pgmc = Language("Proto-Germanic", "PGmc")
         repo.addLanguage(pgmc)
 
         pgmc.dictionarySettings = "wiktionary-id: gem-pro"
+    }
+
+    private fun Language.withPartsOfSpeech(): Language {
+        pos.addAll(
+            listOf(
+                WordCategoryValue("Noun", "N"),
+                WordCategoryValue("Adjective", "ADJ"),
+                WordCategoryValue("Verb", "V")
+            )
+        )
+        return this
     }
 
     @Test
@@ -109,5 +120,12 @@ class WiktionaryParserTest {
     fun lTag() {
         val result = wiktionary.lookup(repo, oe, "hand").result.single()
         assertEquals("hand", result.gloss)
+    }
+
+    @Test
+    fun fleira() {
+        val result = wiktionary.lookup(repo, on, "fleira").result.single()
+        assertEquals(2, result.relatedWords.size)
+        assertNull(result.fullGloss)
     }
 }

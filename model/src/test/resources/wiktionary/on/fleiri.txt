@@ -1,0 +1,25 @@
+==Old Norse==
+
+===Etymology===
+From {{inh|non|gem-pro|*flaizô}}. Related to {{cog|la|plus|plūs}}.
+
+===Adjective===
+{{head|non|comparative adjective|superlative|flestr}}
+
+# {{infl of|non|margr||comd}}
+# [[more]], [[most]]
+
+====Declension====
+{{non-decl-adj-comp|fleir}}
+
+====Descendants====
+* {{desc|is|fleiri}}
+* {{desc|fo|fleiri}}
+* {{desc|nn|fleire}}
+* {{desc|nb|fler|flere}}
+* {{desc|gmq-osw|flere}}
+** {{desc|sv|fler|flera}}
+* {{desc|da|flere}}
+
+===Further reading===
+* {{R:non:Zoega}}

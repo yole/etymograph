@@ -84,7 +84,7 @@ class WiktionaryPosSection(
     val senses = mutableListOf<String>()
     val classes = mutableListOf<String>()
     var alternativeOf: String? = null
-    var inflectionOf: InflectionOfTemplate? = null
+    var inflectionOf = mutableListOf<InflectionOfTemplate>()
 
     override fun parseSectionLine(line: String) {
         checkClasses(line)
@@ -110,7 +110,7 @@ class WiktionaryPosSection(
             alternativeOf = parameters[1]
         }
         else if ((name == "inflection of" || name == "infl of")  && parameters.size >= 3) {
-            inflectionOf = InflectionOfTemplate(parameters[1], remapInflectionAttributes(parameters.drop(3)))
+            inflectionOf.add(InflectionOfTemplate(parameters[1], remapInflectionAttributes(parameters.drop(3))))
         }
         else if (name == "l") {
             return parameters.getOrNull(1) ?: ""
@@ -242,8 +242,8 @@ open class Wiktionary : Dictionary {
         }
 
         fun lookupInheritedWord(repo: GraphRepository, word: InheritedWordTemplate): DictionaryRelatedWord? {
-            val language = repo.allLanguages().find { "wiktionary-id: ${word.language}" in (it.dictionarySettings ?: "") } ?: return null
-            val lookupResult = lookupSingle(language, word.word.trimStart('*'), "origin word") ?: return null
+            val originLanguage = repo.allLanguages().find { "wiktionary-id: ${word.language}" in (it.dictionarySettings ?: "") } ?: return null
+            val lookupResult = lookupSingle(originLanguage, word.word.trimStart('*'), "origin word") ?: return null
             return DictionaryRelatedWord(Link.Origin, lookupResult)
         }
 
@@ -264,20 +264,16 @@ open class Wiktionary : Dictionary {
             }
 
             etymologySection.posSections.map { section ->
-                val inflectionOf = section.inflectionOf?.let {
-                    lookupSingle(language, it.baseWord, "inflection lemma") {
-                        it.pos == mapPos(section)
-                    }
-                }
-
                 val gloss = extractShortGloss(section.senses.first())
                     .ifEmpty {
-                        section.inflectionOf?.let { "inflection of ${it.baseWord}"}
+                        section.inflectionOf.firstOrNull()?.let { "inflection of ${it.baseWord}"}
                             ?: section.alternativeOf?.let { "variant of $it" }
                             ?: ""
                     }
                 DictionaryWord(word, language, gloss,
-                    fullGloss = section.senses.joinToString("; ").takeIf { it != gloss },
+                    fullGloss = section.senses.filter { it.isNotBlank() }
+                        .joinToString("; ")
+                        .takeIf { it.isNotBlank() && it != gloss },
                     pos = mapPos(section),
                     classes = section.classes,
                     source = "https://en.wiktionary.org/wiki/${langPrefix(language)}$normalizedWord#${language.name.replace(' ', '_')}")
@@ -295,9 +291,12 @@ open class Wiktionary : Dictionary {
                                 this.compoundComponents.addAll(it as Collection<DictionaryWord>)
                             }
                         }
-                        section.inflectionOf?.let {
-                            if (inflectionOf != null) {
-                                relatedWords.add(DictionaryRelatedWord(Link.Derived, inflectionOf, it.inflectionAttributes))
+                        for (inflectionOf in section.inflectionOf) {
+                            val inflectionLemma = lookupSingle(language, inflectionOf.baseWord, "inflection lemma") {
+                                it.pos == mapPos(section)
+                            }
+                            if (inflectionLemma != null) {
+                                relatedWords.add(DictionaryRelatedWord(Link.Derived, inflectionLemma, inflectionOf.inflectionAttributes))
                             }
                         }
                     }

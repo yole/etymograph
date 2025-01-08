@@ -1,0 +1,7 @@
+==Old Norse==
+
+===Adjective===
+{{head|non|comparative adjective form}}
+
+# {{infl of|non|fleiri||m|obl|cases|s}}
+# {{infl of|non|fleiri||n|all cases|s}}
