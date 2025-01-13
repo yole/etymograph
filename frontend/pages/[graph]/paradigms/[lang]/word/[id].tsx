@@ -89,7 +89,7 @@ function WordParadigm(params) {
             </tr>)}
             </tbody>
         </table>
-        {!editMode && <button onClick={() => setEditMode(true)}>Edit</button>}
+        {allowEdit() && !editMode && <button onClick={() => setEditMode(true)}>Edit</button>}
         {editMode && <>
             <button onClick={saveParadigm}>Save</button>
             <button onClick={cancelEditing}>Cancel</button>
