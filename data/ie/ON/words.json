@@ -2009,7 +2009,10 @@
         "text": "hefja",
         "gloss": "lift",
         "fullGloss": "lift, raise, heave; begin",
-        "pos": "V"
+        "pos": "V",
+        "classes": [
+            "v-strong-6"
+        ]
     },
     {
         "id": 1345,
@@ -3033,7 +3036,7 @@
         "gloss": "stand",
         "pos": "V",
         "classes": [
-            "strong"
+            "v-strong-6"
         ]
     },
     {
@@ -6049,7 +6052,10 @@
         "text": "draga",
         "gloss": "pull",
         "fullGloss": "pull, draw, drag",
-        "pos": "V"
+        "pos": "V",
+        "classes": [
+            "v-strong-6"
+        ]
     },
     {
         "id": 5334,
@@ -9928,5 +9934,251 @@
     {
         "id": 6087,
         "text": "fuglakyn"
+    },
+    {
+        "id": 6090,
+        "text": "mælir"
+    },
+    {
+        "id": 6091,
+        "text": "Óðinn",
+        "pos": "NP",
+        "classes": [
+            "m"
+        ]
+    },
+    {
+        "id": 6092,
+        "text": "Óðins"
+    },
+    {
+        "id": 6093,
+        "text": "Baldr",
+        "pos": "NP"
+    },
+    {
+        "id": 6094,
+        "text": "gott"
+    },
+    {
+        "id": 6095,
+        "text": "álit",
+        "gloss": "appearance",
+        "pos": "N",
+        "classes": [
+            "n"
+        ]
+    },
+    {
+        "id": 6096,
+        "text": "álitum"
+    },
+    {
+        "id": 6097,
+        "text": "bjartr",
+        "gloss": "bright",
+        "pos": "ADJ"
+    },
+    {
+        "id": 6098,
+        "text": "lýsa",
+        "gloss": "illuminate",
+        "pos": "V"
+    },
+    {
+        "id": 6099,
+        "text": "lýsir"
+    },
+    {
+        "id": 6100,
+        "text": "eitt"
+    },
+    {
+        "id": 6101,
+        "text": "gras",
+        "gloss": "grass",
+        "pos": "N",
+        "classes": [
+            "n"
+        ]
+    },
+    {
+        "id": 6102,
+        "text": "hvítt"
+    },
+    {
+        "id": 6103,
+        "text": "jafna",
+        "gloss": "smooth",
+        "pos": "V"
+    },
+    {
+        "id": 6104,
+        "text": "jafnat"
+    },
+    {
+        "id": 6105,
+        "text": "Baldrs"
+    },
+    {
+        "id": 6106,
+        "text": "brá",
+        "gloss": "eyelash",
+        "pos": "N",
+        "classes": [
+            "f"
+        ]
+    },
+    {
+        "id": 6107,
+        "text": "brár"
+    },
+    {
+        "id": 6108,
+        "text": "grasa"
+    },
+    {
+        "id": 6109,
+        "text": "hvítast"
+    },
+    {
+        "id": 6110,
+        "text": "mátt"
+    },
+    {
+        "id": 6111,
+        "text": "marka",
+        "gloss": "mark",
+        "pos": "V"
+    },
+    {
+        "id": 6112,
+        "text": "fegrð",
+        "gloss": "beauty",
+        "pos": "N",
+        "classes": [
+            "f"
+        ]
+    },
+    {
+        "id": 6113,
+        "text": "fegrð"
+    },
+    {
+        "id": 6114,
+        "text": "hár",
+        "gloss": "hair",
+        "pos": "N",
+        "classes": [
+            "n",
+            "cc-stem"
+        ]
+    },
+    {
+        "id": 6115,
+        "text": "hár"
+    },
+    {
+        "id": 6117,
+        "text": "líki",
+        "gloss": "body",
+        "pos": "N",
+        "classes": [
+            "n"
+        ]
+    },
+    {
+        "id": 6118,
+        "text": "vitrastr"
+    },
+    {
+        "id": 6119,
+        "text": "talaðr"
+    },
+    {
+        "id": 6120,
+        "text": "líknsamr",
+        "gloss": "merciful",
+        "pos": "ADJ"
+    },
+    {
+        "id": 6121,
+        "text": "líknsamastr"
+    },
+    {
+        "id": 6122,
+        "text": "náttúra",
+        "gloss": "natural ability",
+        "pos": "N",
+        "classes": [
+            "f"
+        ]
+    },
+    {
+        "id": 6123,
+        "text": "fylgir"
+    },
+    {
+        "id": 6124,
+        "text": "haldask"
+    },
+    {
+        "id": 6125,
+        "text": "býr"
+    },
+    {
+        "id": 6126,
+        "text": "Breiðablik",
+        "pos": "NP"
+    },
+    {
+        "id": 6127,
+        "text": "aka",
+        "gloss": "drive",
+        "pos": "V",
+        "classes": [
+            "v-strong-6"
+        ]
+    },
+    {
+        "id": 6128,
+        "text": "flá",
+        "gloss": "flay",
+        "pos": "V",
+        "classes": [
+            "v-strong-6"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/flá#Old_Norse"
+            }
+        ]
+    },
+    {
+        "id": 6130,
+        "text": "slá",
+        "gloss": "strike",
+        "pos": "V",
+        "classes": [
+            "v-strong-6"
+        ]
+    },
+    {
+        "id": 6131,
+        "text": "sverja",
+        "gloss": "swear",
+        "pos": "V",
+        "classes": [
+            "v-strong-6"
+        ]
+    },
+    {
+        "id": 6132,
+        "text": "hlæja",
+        "gloss": "laugh",
+        "pos": "V",
+        "classes": [
+            "v-strong-6"
+        ]
     }
 ]

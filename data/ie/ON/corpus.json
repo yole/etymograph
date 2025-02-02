@@ -11710,5 +11710,417 @@
                 "refText": "Gylfaginning (ch 16)"
             }
         ]
+    },
+    {
+        "id": 6089,
+        "text": "Þá mælir Gangleri: \"Spyrja vil ek tíðinda af fleiri Ásunum.\"\nHár segir: \"Annarr sonr Óðins er Baldr, ok er frá honum gott at segja. Hann er beztr, ok hann lofa allir. Hann er svá fagr álitum ok bjartr, svá at lýsir af honum, ok eitt gras er svá hvítt, at jafnat er til Baldrs brár. Þat er allra grasa hvítast, ok þar eptir mátt þú marka fegrð hans, bæði á hár ok á líki. Hann er vitrastr ásanna ok fegrst talaðr ok líknsamastr. En sú náttúra fylgir honum at engi má haldask dómr hans. Hann býr þar, sem heitir Breiðablik. Þat er á himni.",
+        "title": "Viking Language 14.3.2",
+        "words": [
+            {
+                "index": 0,
+                "id": 998
+            },
+            {
+                "index": 1,
+                "id": 6090
+            },
+            {
+                "index": 14,
+                "id": 6092
+            },
+            {
+                "index": 15,
+                "id": 1513
+            },
+            {
+                "index": 16,
+                "id": 6093
+            },
+            {
+                "index": 18,
+                "id": 1513
+            },
+            {
+                "index": 19,
+                "id": 5661
+            },
+            {
+                "index": 21,
+                "id": 6094
+            },
+            {
+                "index": 22,
+                "id": 4911
+            },
+            {
+                "index": 24,
+                "id": 924
+            },
+            {
+                "index": 25,
+                "id": 1513
+            },
+            {
+                "index": 28,
+                "id": 946
+            },
+            {
+                "index": 31,
+                "id": 924
+            },
+            {
+                "index": 32,
+                "id": 1513
+            },
+            {
+                "index": 35,
+                "id": 6096
+            },
+            {
+                "index": 37,
+                "id": 6097
+            },
+            {
+                "index": 39,
+                "id": 977
+            },
+            {
+                "index": 40,
+                "id": 6099
+            },
+            {
+                "index": 44,
+                "id": 6100
+            },
+            {
+                "index": 45,
+                "id": 6101
+            },
+            {
+                "index": 46,
+                "id": 1513
+            },
+            {
+                "index": 48,
+                "id": 6102
+            },
+            {
+                "index": 49,
+                "id": 977
+            },
+            {
+                "index": 50,
+                "id": 6104
+            },
+            {
+                "index": 51,
+                "id": 1513
+            },
+            {
+                "index": 53,
+                "id": 6105
+            },
+            {
+                "index": 54,
+                "id": 6107
+            },
+            {
+                "index": 55,
+                "id": 5248
+            },
+            {
+                "index": 56,
+                "id": 1513
+            },
+            {
+                "index": 58,
+                "id": 6108
+            },
+            {
+                "index": 59,
+                "id": 6109
+            },
+            {
+                "index": 63,
+                "id": 6110
+            },
+            {
+                "index": 65,
+                "id": 6111
+            },
+            {
+                "index": 66,
+                "id": 6113
+            },
+            {
+                "index": 69,
+                "id": 936
+            },
+            {
+                "index": 70,
+                "id": 6115
+            },
+            {
+                "index": 72,
+                "id": 936
+            },
+            {
+                "index": 73,
+                "id": 6117
+            },
+            {
+                "index": 74,
+                "id": 924
+            },
+            {
+                "index": 75,
+                "id": 1513
+            },
+            {
+                "index": 76,
+                "id": 6118
+            },
+            {
+                "index": 80,
+                "id": 6119
+            },
+            {
+                "index": 82,
+                "id": 6121
+            },
+            {
+                "index": 85,
+                "id": 6122
+            },
+            {
+                "index": 86,
+                "id": 6123
+            },
+            {
+                "index": 88,
+                "id": 977
+            },
+            {
+                "index": 91,
+                "id": 6124
+            },
+            {
+                "index": 94,
+                "id": 924
+            },
+            {
+                "index": 95,
+                "id": 6125
+            },
+            {
+                "index": 99,
+                "id": 6126
+            },
+            {
+                "index": 100,
+                "id": 5248
+            },
+            {
+                "index": 101,
+                "id": 1513
+            },
+            {
+                "index": 102,
+                "id": 936
+            },
+            {
+                "index": 2,
+                "id": 5925
+            },
+            {
+                "index": 3,
+                "id": 1443
+            },
+            {
+                "index": 4,
+                "id": 1730
+            },
+            {
+                "index": 5,
+                "id": 993
+            },
+            {
+                "index": 7,
+                "id": 1082
+            },
+            {
+                "index": 8,
+                "id": 5999
+            },
+            {
+                "index": 11,
+                "id": 1725
+            },
+            {
+                "index": 12,
+                "id": 5061
+            },
+            {
+                "index": 13,
+                "id": 942
+            },
+            {
+                "index": 17,
+                "id": 932
+            },
+            {
+                "index": 20,
+                "id": 947
+            },
+            {
+                "index": 23,
+                "id": 974
+            },
+            {
+                "index": 26,
+                "id": 5725
+            },
+            {
+                "index": 27,
+                "id": 932
+            },
+            {
+                "index": 29,
+                "id": 5855
+            },
+            {
+                "index": 30,
+                "id": 1463
+            },
+            {
+                "index": 33,
+                "id": 1387
+            },
+            {
+                "index": 34,
+                "id": 4950
+            },
+            {
+                "index": 36,
+                "id": 932
+            },
+            {
+                "index": 38,
+                "id": 1387
+            },
+            {
+                "index": 41,
+                "id": 1082
+            },
+            {
+                "index": 42,
+                "id": 947
+            },
+            {
+                "index": 43,
+                "id": 932
+            },
+            {
+                "index": 47,
+                "id": 1387
+            },
+            {
+                "index": 52,
+                "id": 975
+            },
+            {
+                "index": 57,
+                "id": 1434
+            },
+            {
+                "index": 60,
+                "id": 932
+            },
+            {
+                "index": 61,
+                "id": 999
+            },
+            {
+                "index": 62,
+                "id": 987
+            },
+            {
+                "index": 64,
+                "id": 994
+            },
+            {
+                "index": 67,
+                "id": 940
+            },
+            {
+                "index": 68,
+                "id": 5157
+            },
+            {
+                "index": 71,
+                "id": 932
+            },
+            {
+                "index": 78,
+                "id": 932
+            },
+            {
+                "index": 79,
+                "id": 4965
+            },
+            {
+                "index": 81,
+                "id": 932
+            },
+            {
+                "index": 83,
+                "id": 941
+            },
+            {
+                "index": 84,
+                "id": 5244
+            },
+            {
+                "index": 87,
+                "id": 947
+            },
+            {
+                "index": 89,
+                "id": 1303
+            },
+            {
+                "index": 90,
+                "id": 6045
+            },
+            {
+                "index": 92,
+                "id": 5923
+            },
+            {
+                "index": 93,
+                "id": 940
+            },
+            {
+                "index": 96,
+                "id": 999
+            },
+            {
+                "index": 97,
+                "id": 1310
+            },
+            {
+                "index": 98,
+                "id": 1646
+            },
+            {
+                "index": 103,
+                "id": 5933
+            }
+        ],
+        "sourceRefs": [
+            {
+                "refText": "Snorra Edda ch 22"
+            }
+        ]
     }
 ]

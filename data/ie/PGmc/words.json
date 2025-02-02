@@ -3823,5 +3823,16 @@
                 "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-Germanic/auraz#Proto-Germanic"
             }
         ]
+    },
+    {
+        "id": 6129,
+        "text": "flahaną",
+        "gloss": "to skin",
+        "fullGloss": "to skin, to flay",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-Germanic/flahaną#Proto-Germanic"
+            }
+        ]
     }
 ]
