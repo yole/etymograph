@@ -257,9 +257,19 @@ val defaultPhonemeClasses = mapOf(
     "θ" to setOf("voiceless", "dental", "fricative"),
     "ð" to setOf("voiced", "dental", "fricative"),
     "s" to setOf("voiceless", "alveolar", "fricative"),
+    "z" to setOf("voiced", "alveolar", "fricative"),
     "k" to setOf("voiceless", "velar", "stop"),
     "g" to setOf("voiced", "velar", "stop"),
+    "x" to setOf("voiceless", "velar", "fricative"),
     "ɣ" to setOf("voiced", "velar", "fricative"),
     "m" to setOf("voiced", "bilabial", "nasal", "consonant"),
-    "n" to setOf("voiced", "alveolar", "nasal", "consonant")
+    "n" to setOf("voiced", "alveolar", "nasal", "consonant"),
+    "i" to setOf("front", "close", "unrounded", "vowel"),
+    "y" to setOf("front", "close", "rounded", "vowel"),
+    "u" to setOf("back", "close", "rounded", "vowel"),
+    "a" to setOf("central", "open", "unrounded", "vowel"),
+    "ɛ" to setOf("open-mid", "front", "unrounded", "vowel"),
+    "ɔ" to setOf("open-mid", "back", "rounded", "vowel"),
+    "e" to setOf("close-mid", "front", "unrounded", "vowel"),
+    "o" to setOf("close-mid", "back", "rounded", "vowel")
 )
