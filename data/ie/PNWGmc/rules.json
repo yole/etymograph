@@ -300,5 +300,28 @@
                 }
             }
         ]
+    },
+    {
+        "id": 6171,
+        "name": "pnwgmc-orthography",
+        "fromLang": "PNWGmc",
+        "toLang": "PNWGmc",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "b"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "relPhoneme",
+                    "parameter": "β",
+                    "relative": false
+                }
+            }
+        ]
     }
 ]

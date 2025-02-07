@@ -36,6 +36,10 @@
         {
             "name": "Umbrian",
             "shortName": "Umb"
+        },
+        {
+            "name": "Gothic",
+            "shortName": "GO"
         }
     ],
     "links": [
@@ -4200,7 +4204,8 @@
             "type": "^",
             "ruleIds": [
                 1862
-            ]
+            ],
+            "sequenceId": 1867
         },
         {
             "from": 1865,
@@ -4519,15 +4524,6 @@
             "type": "^",
             "ruleIds": [
                 1963
-            ]
-        },
-        {
-            "from": 2072,
-            "to": 2071,
-            "type": "^",
-            "ruleIds": [
-                1862,
-                1966
             ]
         },
         {
@@ -5512,6 +5508,7 @@
                 2259,
                 2396
             ],
+            "sequenceId": 2162,
             "sourceRefs": [
                 {
                     "pubId": 5,
@@ -6488,6 +6485,7 @@
             "ruleIds": [
                 1862
             ],
+            "sequenceId": 1867,
             "sourceRefs": [
                 {
                     "pubId": 5,
@@ -6523,6 +6521,7 @@
             "ruleIds": [
                 1862
             ],
+            "sequenceId": 1867,
             "sourceRefs": [
                 {
                     "pubId": 5,
@@ -6537,6 +6536,7 @@
             "ruleIds": [
                 1862
             ],
+            "sequenceId": 1867,
             "sourceRefs": [
                 {
                     "pubId": 5,
@@ -6551,6 +6551,7 @@
             "ruleIds": [
                 1862
             ],
+            "sequenceId": 1867,
             "sourceRefs": [
                 {
                     "pubId": 5,
@@ -9086,13 +9087,17 @@
                 1976,
                 2048,
                 2049,
-                2270,
                 2336
             ],
+            "sequenceId": 2162,
             "sourceRefs": [
                 {
                     "pubId": 5,
                     "refText": "143"
+                },
+                {
+                    "pubId": 6,
+                    "refText": "5.78 (2)"
                 }
             ]
         },
@@ -9595,7 +9600,8 @@
             "type": "^",
             "ruleIds": [
                 2060
-            ]
+            ],
+            "sequenceId": 2027
         },
         {
             "from": 281,
@@ -23489,6 +23495,86 @@
             "from": 6128,
             "to": 6129,
             "type": "^"
+        },
+        {
+            "from": 6166,
+            "to": 2071,
+            "type": "^",
+            "ruleIds": [
+                1862
+            ],
+            "sequenceId": 1867
+        },
+        {
+            "from": 2072,
+            "to": 6166,
+            "type": "^",
+            "ruleIds": [
+                1966
+            ],
+            "sequenceId": 2188
+        },
+        {
+            "from": 6168,
+            "to": 2260,
+            "type": ">",
+            "ruleIds": [
+                6167
+            ]
+        },
+        {
+            "from": 6169,
+            "to": 2261,
+            "type": ">",
+            "ruleIds": [
+                1258
+            ]
+        },
+        {
+            "from": 6170,
+            "to": 6168,
+            "type": "^",
+            "ruleIds": [
+                1862
+            ],
+            "sequenceId": 1867
+        },
+        {
+            "from": 6169,
+            "to": 6170,
+            "type": "^"
+        },
+        {
+            "from": 6173,
+            "to": 6172,
+            "type": "^",
+            "ruleIds": [
+                1862
+            ],
+            "sequenceId": 1867,
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "11"
+                }
+            ]
+        },
+        {
+            "from": 6174,
+            "to": 6173,
+            "type": "^",
+            "ruleIds": [
+                1963,
+                1966,
+                2060
+            ],
+            "sequenceId": 2189,
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "11"
+                }
+            ]
         }
     ]
 }

@@ -78,5 +78,13 @@
             }
         ],
         "notes": "The rule given by Ringe is that all non-word-initial 'b' are actually β"
+    },
+    {
+        "id": 6167,
+        "name": "pgmc-default-past",
+        "fromLang": "PGmc",
+        "toLang": "PGmc",
+        "branches": [],
+        "addedCategories": ".PST.PL"
     }
 ]

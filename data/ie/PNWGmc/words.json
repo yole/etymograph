@@ -1551,5 +1551,32 @@
                 "refText": "335"
             }
         ]
+    },
+    {
+        "id": 6166,
+        "text": "slāpaną",
+        "gloss": "sleep",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "11"
+            }
+        ]
+    },
+    {
+        "id": 6170,
+        "text": "gābun",
+        "gloss": "to give.PST.PL"
+    },
+    {
+        "id": 6173,
+        "text": "swāsaz",
+        "gloss": "ones own",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "11"
+            }
+        ]
     }
 ]

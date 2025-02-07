@@ -436,5 +436,50 @@
     ],
     "stressRuleId": 1956,
     "pronunciationRuleId": 2566,
+    "pos": [
+        {
+            "name": "Noun",
+            "abbreviation": "N"
+        },
+        {
+            "name": "Verb",
+            "abbreviation": "V"
+        }
+    ],
+    "grammaticalCategories": [
+        {
+            "name": "Number",
+            "pos": [
+                "N",
+                "V"
+            ],
+            "values": [
+                {
+                    "name": "Singular",
+                    "abbreviation": "SG"
+                },
+                {
+                    "name": "Plural",
+                    "abbreviation": "PL"
+                }
+            ]
+        },
+        {
+            "name": "Tense",
+            "pos": [
+                "V"
+            ],
+            "values": [
+                {
+                    "name": "Present",
+                    "abbreviation": "PRES"
+                },
+                {
+                    "name": "Past",
+                    "abbreviation": "PST"
+                }
+            ]
+        }
+    ],
     "dictionarySettings": "wiktionary-id: gem-pro"
 }

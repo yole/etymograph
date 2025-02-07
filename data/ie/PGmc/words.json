@@ -2,7 +2,13 @@
     {
         "id": 1860,
         "text": "wēpną",
-        "gloss": "weapon"
+        "gloss": "weapon",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "10"
+            }
+        ]
     },
     {
         "id": 1864,
@@ -3832,6 +3838,27 @@
         "sourceRefs": [
             {
                 "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-Germanic/flahaną#Proto-Germanic"
+            }
+        ]
+    },
+    {
+        "id": 6168,
+        "text": "gēbun",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "11"
+            }
+        ]
+    },
+    {
+        "id": 6172,
+        "text": "swēsaz",
+        "gloss": "ones own",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "11"
             }
         ]
     }

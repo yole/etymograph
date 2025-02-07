@@ -425,5 +425,6 @@
         }
     ],
     "stressRuleId": 1873,
-    "pronunciationRuleId": 2589
+    "pronunciationRuleId": 2589,
+    "orthographyRuleId": 6171
 }

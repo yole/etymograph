@@ -15127,5 +15127,20 @@
         "gloss": "from",
         "fullGloss": "from, away, out",
         "pos": "AFF"
+    },
+    {
+        "id": 6169,
+        "text": "ġēafon"
+    },
+    {
+        "id": 6174,
+        "text": "swǣs",
+        "gloss": "ones own",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "11"
+            }
+        ]
     }
 ]
