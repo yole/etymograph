@@ -1,4 +1,4 @@
-import {fetchGraphs} from "@/api";
+import {fetchGraphs} from "../api";
 import Link from "next/link";
 
 export const config = {
