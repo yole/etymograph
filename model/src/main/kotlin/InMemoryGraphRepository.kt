@@ -556,7 +556,7 @@ open class InMemoryGraphRepository : GraphRepository() {
         }
 
         val allLinkedEntities = mutableSetOf<Int>()
-        collectLinkedEntitiesRecursive(fromEntity, allLinkedEntities)
+        collectLinkedEntitiesRecursive(fromEntity, allLinkedEntities, type)
         if (toEntity.id in allLinkedEntities) {
             throw IllegalArgumentException("Cycles in links are not allowed")
         }
@@ -567,14 +567,18 @@ open class InMemoryGraphRepository : GraphRepository() {
         }
     }
 
-    private fun collectLinkedEntitiesRecursive(fromEntity: LangEntity, seenEntities: MutableSet<Int>) {
+    private fun collectLinkedEntitiesRecursive(fromEntity: LangEntity, seenEntities: MutableSet<Int>, linkType: LinkType) {
         if (fromEntity.id in seenEntities) return
         seenEntities.add(fromEntity.id)
         for (link in getLinksFrom(fromEntity)) {
-            collectLinkedEntitiesRecursive(link.toEntity, seenEntities)
+            if (link.type == linkType) {
+                collectLinkedEntitiesRecursive(link.toEntity, seenEntities, linkType)
+            }
         }
         for (link in getLinksTo(fromEntity)) {
-            collectLinkedEntitiesRecursive(link.fromEntity, seenEntities)
+            if (link.type == linkType) {
+                collectLinkedEntitiesRecursive(link.fromEntity, seenEntities, linkType)
+            }
         }
     }
 
