@@ -157,17 +157,25 @@ class JsonGraphRepositoryTest : QBaseTest() {
 
     @Test
     fun serializeRuleSequence() {
-        repo.addLanguage(ce)
-        val rule = repo.addRule("i-disappears", ce, q,
-            Rule.parseBranches("""
-            sound is 'i' and previous sound is 'a':
-            - sound disappears
-        """.trimIndent(), q.parseContext(repo)))
-        repo.addRuleSequence("ce-to-q", ce, q, listOf(RuleSequenceStep(rule, false)))
+        setupRuleSequence()
         val repo2 = repo.roundtrip()
         val sequences = repo2.ruleSequencesForLanguage(repo2.languageByShortName("Q")!!)
         assertEquals(1, sequences.size)
         assertEquals("i-disappears", sequences[0].resolveRules(repo2).single().name)
+    }
+
+    private fun setupRuleSequence(): RuleSequence {
+        repo.addLanguage(ce)
+        val rule = repo.addRule(
+            "i-disappears", ce, q,
+            Rule.parseBranches(
+                """
+                sound is 'i' and previous sound is 'a':
+                - sound disappears
+            """.trimIndent(), q.parseContext(repo)
+            )
+        )
+        return repo.addRuleSequence("ce-to-q", ce, q, listOf(RuleSequenceStep(rule, false)))
     }
 
     @Test
@@ -213,5 +221,18 @@ class JsonGraphRepositoryTest : QBaseTest() {
         val repo2 = repo.roundtrip()
         assertEquals("q-pre", repo2.paradigmById(paradigm.id)!!.preRule!!.name)
         assertEquals("q-post", repo2.paradigmById(paradigm.id)!!.postRule!!.name)
+    }
+
+    @Test
+    fun serializeLinkRuleSequence() {
+        val seq = setupRuleSequence()
+        val lai = repo.addWord("lai", language = ce)
+        val la = repo.addWord("la", language = q)
+        val link = repo.addLink(la, lai, Link.Origin)
+        repo.applyRuleSequence(link, seq)
+        val repo2 = repo.roundtrip()
+        val la2 = repo2.wordById(la.id)!!
+        val link2 = repo2.getLinksFrom(la2).single()
+        assertEquals(seq.name, link2.sequence!!.name)
     }
 }

@@ -133,6 +133,7 @@ abstract class GraphRepository {
     abstract fun addLink(
         fromEntity: LangEntity, toEntity: LangEntity, type: LinkType,
         rules: List<Rule> = emptyList(),
+        sequence: RuleSequence? = null,
         source: List<SourceRef> = emptyList(), notes: String? = null
     ): Link
 

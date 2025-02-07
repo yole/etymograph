@@ -246,6 +246,7 @@ data class LinkData(
     @SerialName("to") val toWordId: Int,
     val type: String,
     val ruleIds: List<Int>? = null,
+    val sequenceId: Int? = null,
     val sourceRefs: List<SourceRefData>? = null,
     val notes: String? = null
 )
@@ -354,10 +355,11 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
         toEntity: LangEntity,
         type: LinkType,
         rules: List<Rule>,
+        sequence: RuleSequence?,
         source: List<SourceRef>,
         notes: String?
     ): Link {
-        return super.createLink(fromEntity, toEntity, type, rules, source, notes).also {
+        return super.createLink(fromEntity, toEntity, type, rules, sequence, source, notes).also {
             allLinks.add(it)
         }
     }
@@ -523,6 +525,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                 LinkData(
                     link.fromEntity.id, link.toEntity.id,
                     link.type.id, link.rules.takeIf { it.isNotEmpty() }?.map { it.id },
+                    link.sequence?.id,
                     link.source.sourceToSerializedFormat(),
                     link.notes
                 )
@@ -562,6 +565,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                             allLangEntities[it] as? Rule ?: throw IllegalStateException("Broken rule ID reference $it")
                         }
                         ?: emptyList(),
+                    link.sequenceId?.let { allLangEntities[it] as RuleSequence },
                     loadSource(link.sourceRefs),
                     link.notes
                 )

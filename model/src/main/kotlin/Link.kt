@@ -7,6 +7,7 @@ class Link(
     val toEntity: LangEntity,
     val type: LinkType,
     var rules: List<Rule>,
+    var sequence: RuleSequence?,
     var source: List<SourceRef>,
     var notes: String?
 ) {

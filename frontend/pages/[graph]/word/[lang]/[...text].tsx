@@ -125,6 +125,7 @@ function WordLinkComponent(params: WordLinkProps) {
                 <Link href={`/${graph}/rule/${ruleId}`}>{linkWord.ruleNames[index]}</Link>
             </>)}
             )</>}
+        {linkWord.ruleSequence && <>&nbsp;through {linkWord.ruleSequence.name}</>}
         {linkWord.notes && <> &ndash; {linkWord.notes}</>}
         <SourceRefs source={linkWord.source} span={true}/>
         {allowEdit() && <>

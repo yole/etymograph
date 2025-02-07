@@ -2304,6 +2304,8 @@ components:
           type: "array"
           items:
             type: "string"
+        ruleSequence:
+          $ref: "#/components/schemas/WordRuleSequenceViewModel"
         source:
           type: "array"
           items:

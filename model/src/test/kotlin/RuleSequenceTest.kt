@@ -17,6 +17,7 @@ class RuleSequenceTest : QBaseTest() {
         val link = repo.addLink(qWord, ceWord, Link.Origin)
         repo.applyRuleSequence(link, seq)
         assertEquals(2, link.rules.size)
+        assertEquals(seq, link.sequence)
     }
 
     @Test

@@ -47,6 +47,7 @@ class WordController(val dictionaryService: DictionaryService) {
         val ruleIds: List<Int>,
         val ruleNames: List<String>,
         val ruleResults: List<String>,
+        val ruleSequence: WordRuleSequenceViewModel?,
         val source: List<SourceRefViewModel>,
         val sourceEditableText: String,
         val notes: String?,
@@ -503,7 +504,7 @@ class WordController(val dictionaryService: DictionaryService) {
             if (lastWord != null) {
                 val existingLink = repo.findLink(word, lastWord, Link.Origin)
                 if (existingLink == null) {
-                    val link = repo.addLink(word, lastWord, Link.Origin, emptyList(), source)
+                    val link = repo.addLink(word, lastWord, Link.Origin, source = source)
                     val ruleSequence = repo.ruleSequencesForLanguage(word.language)
                         .singleOrNull { it.fromLanguage == lastWord!!.language }
                     if (ruleSequence != null) {
@@ -540,6 +541,7 @@ fun linkToViewModel(
         link.rules.map { it.id },
         link.rules.map { it.name },
         steps,
+        link.sequence?.let { WordController.WordRuleSequenceViewModel(it.name, it.id) },
         link.source.toViewModel(graph),
         link.source.toEditableText(graph),
         link.notes,

@@ -248,6 +248,7 @@ export type LinkWordViewModel = {
     ruleIds: Array<(number)>;
     ruleNames: Array<(string)>;
     ruleResults: Array<(string)>;
+    ruleSequence?: WordRuleSequenceViewModel;
     source: Array<SourceRefViewModel>;
     sourceEditableText: string;
     notes?: string;

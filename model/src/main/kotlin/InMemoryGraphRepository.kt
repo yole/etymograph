@@ -467,6 +467,7 @@ open class InMemoryGraphRepository : GraphRepository() {
             return
         }
         link.rules = applicableRules
+        link.sequence = sequence
     }
 
     override fun suggestDeriveRuleSequences(word: Word): List<RuleSequence> {
@@ -546,6 +547,7 @@ open class InMemoryGraphRepository : GraphRepository() {
 
     override fun addLink(
         fromEntity: LangEntity, toEntity: LangEntity, type: LinkType, rules: List<Rule>,
+        sequence: RuleSequence?,
         source: List<SourceRef>, notes: String?
     ): Link {
         val existingLink = findLink(fromEntity, toEntity, type)
@@ -559,7 +561,7 @@ open class InMemoryGraphRepository : GraphRepository() {
             throw IllegalArgumentException("Cycles in links are not allowed")
         }
 
-        return createLink(fromEntity, toEntity, type, rules, source, notes).also {
+        return createLink(fromEntity, toEntity, type, rules, sequence, source, notes).also {
             linksFrom.getOrPut(it.fromEntity.id) { mutableListOf() }.add(it)
             linksTo.getOrPut(it.toEntity.id) { mutableListOf() }.add(it)
         }
@@ -602,9 +604,10 @@ open class InMemoryGraphRepository : GraphRepository() {
 
     protected open fun createLink(
         fromEntity: LangEntity, toEntity: LangEntity, type: LinkType, rules: List<Rule>,
+        sequence: RuleSequence?,
         source: List<SourceRef>, notes: String?
     ): Link {
-        return Link(fromEntity, toEntity, type, rules, source, notes)
+        return Link(fromEntity, toEntity, type, rules, sequence, source, notes)
     }
 
     override fun getLinksFrom(entity: LangEntity): Iterable<Link> {

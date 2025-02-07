@@ -11,7 +11,7 @@ class LinkTest : QBaseTest() {
         val word2 = repo.addWord("sila")
         repo.addLink(word1, word2, Link.Related)
         assertThrows(IllegalArgumentException::class.java) {
-            repo.addLink(word1, word2, Link.Related, emptyList(), emptyList(), null)
+            repo.addLink(word1, word2, Link.Related)
         }
     }
 

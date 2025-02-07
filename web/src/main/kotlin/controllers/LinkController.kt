@@ -29,7 +29,7 @@ class LinkController {
         val rules = resolveRuleNames(repo, params)
         val source = parseSourceRefs(repo, params.source)
 
-        repo.addLink(fromEntity, toEntity, linkType, rules, source, params.notes.nullize())
+        repo.addLink(fromEntity, toEntity, linkType, rules, null, source, params.notes.nullize())
     }
 
     data class RuleLinkParams(
@@ -47,7 +47,7 @@ class LinkController {
         val linkType = resolveLinkType(params.linkType)
         val source = parseSourceRefs(repo, params.source)
 
-        repo.addLink(fromEntity, toRule, linkType, emptyList(), source, params.notes.nullize())
+        repo.addLink(fromEntity, toRule, linkType, emptyList(), null, source, params.notes.nullize())
     }
 
     private fun resolveLinkParams(repo: GraphRepository, params: LinkParams): ResolvedLinkParams {
