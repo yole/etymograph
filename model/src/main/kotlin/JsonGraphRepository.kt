@@ -579,7 +579,9 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
 
     private fun loadLanguageDetails(contentProviderCallback: (String) -> String?) {
         for (language in languages.values) {
-            val data = Json.decodeFromString<LanguageDetailsData>(contentProviderCallback(language.shortName + "/language.json")!!)
+            val content = contentProviderCallback(language.shortName + "/language.json")
+                ?: throw IllegalStateException("Can't find language details file for language ${language.shortName}")
+            val data = Json.decodeFromString<LanguageDetailsData>(content)
             for (phonemeData in data.phonemes) {
                 val phoneme = Phoneme(
                     phonemeData.id,
