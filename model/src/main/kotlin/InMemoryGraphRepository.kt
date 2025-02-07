@@ -439,6 +439,10 @@ open class InMemoryGraphRepository : GraphRepository() {
         return allRules().filter { it.refersToRule(rule) }
     }
 
+    override fun allSequences(): List<RuleSequence> {
+        return allLangEntities.filterIsInstance<RuleSequence>()
+    }
+
     override fun addRuleSequence(name: String, fromLanguage: Language, toLanguage: Language, rules: List<RuleSequenceStep>): RuleSequence {
         return RuleSequence(allLangEntities.size, name, fromLanguage, toLanguage,
             rules.map { RuleSequenceStepRef(it.rule.id, it.optional) }, emptyList(), null
@@ -497,6 +501,10 @@ open class InMemoryGraphRepository : GraphRepository() {
 
     override fun findSequencesContainingRule(rule: Rule): List<RuleSequence> {
         return allLangEntities.filterIsInstance<RuleSequence>().filter { rule in it.resolveRules(this) }
+    }
+
+    override fun findLinksWithSequence(sequence: RuleSequence): List<Link> {
+        return linksFrom.values.flatten().filter { it.sequence == sequence }
     }
 
     private fun applyRuleSequence(word: Word, sequence: RuleSequence, expectWord: Word?, applicableRules: MutableList<Rule>): Word? {

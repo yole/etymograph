@@ -132,6 +132,12 @@ export type CorpusWordViewModel = {
     homonym: boolean;
 };
 
+export type DerivationViewModel = {
+    baseWord: WordRefViewModel;
+    derivation: LinkWordViewModel;
+    expectedWord?: string;
+};
+
 export type DeriveThroughSequenceParams = {
     sequenceId: number;
 };
@@ -468,6 +474,7 @@ export type RuleSequenceLinkViewModel = {
 };
 
 export type RuleSequenceViewModel = {
+    id: number;
     name: string;
     fromLang: string;
     toLang: string;
@@ -530,6 +537,11 @@ export type RuleWordLinkViewModel = {
     linkType: string;
     source: Array<SourceRefViewModel>;
     notes?: string;
+};
+
+export type SequenceDerivationsViewModel = {
+    sequence: RuleSequenceViewModel;
+    derivations: Array<DerivationViewModel>;
 };
 
 export type SourceRef = {

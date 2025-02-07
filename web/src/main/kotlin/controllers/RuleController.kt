@@ -3,6 +3,7 @@ package ru.yole.etymograph.web.controllers
 import org.springframework.web.bind.annotation.*
 import ru.yole.etymograph.*
 import ru.yole.etymograph.web.*
+import kotlin.math.exp
 
 data class RuleRefViewModel(
     val id: Int,
@@ -378,6 +379,7 @@ class RuleController {
     }
 
     data class RuleSequenceViewModel(
+        val id: Int,
         val name: String,
         val fromLang: String,
         val toLang: String
@@ -390,6 +392,11 @@ class RuleController {
         val ruleNames: String
     )
 
+    @GetMapping("/{graph}/rules/sequences")
+    fun allSequences(repo: GraphRepository): List<RuleSequenceViewModel> {
+        return repo.allSequences().map { it.toViewModel() }
+    }
+
     @PostMapping("/{graph}/rule/sequence", consumes = ["application/json"])
     fun newSequence(repo: GraphRepository, @RequestBody params: UpdateSequenceParams): RuleSequenceViewModel {
         val (fromLanguage, toLanguage, rules) = resolveUpdateSequenceParams(repo, params)
@@ -398,7 +405,7 @@ class RuleController {
     }
 
     private fun RuleSequence.toViewModel() = RuleSequenceViewModel(
-        name, fromLanguage.shortName, toLanguage.shortName
+        id, name, fromLanguage.shortName, toLanguage.shortName
     )
 
     private fun resolveUpdateSequenceParams(
@@ -504,6 +511,36 @@ class RuleController {
         val results = rule.previewChanges(repo, params.newText)
         return RulePreviewResultListViewModel(
             results.map { RulePreviewResultViewModel(it.word.toRefViewModel(repo), it.oldResult, it.newResult) }
+        )
+    }
+
+    data class DerivationViewModel(
+        val baseWord: WordRefViewModel,
+        val derivation: WordController.LinkWordViewModel,
+        val expectedWord: String?
+    )
+
+    data class SequenceDerivationsViewModel(
+        val sequence: RuleSequenceViewModel,
+        val derivations: List<DerivationViewModel>
+    )
+
+    @GetMapping("/{graph}/rule/sequence/{id}/derivations")
+    @ResponseBody
+    fun sequenceDerivations(repo: GraphRepository, @PathVariable id: Int): SequenceDerivationsViewModel {
+        val sequence = repo.resolveRuleSequence(id)
+        val links = repo.findLinksWithSequence(sequence)
+        return SequenceDerivationsViewModel(
+            sequence.toViewModel(),
+            links.map {
+                val expectedWord = it.applyRules(it.toEntity as Word, repo).asOrthographic()
+                val fromWord = it.fromEntity as Word
+                DerivationViewModel(
+                    (it.toEntity as Word).toRefViewModel(repo),
+                    linkToViewModel(it, repo, false),
+                    expectedWord.takeIf { !fromWord.language.isNormalizedEqual(expectedWord, fromWord) }?.text
+                )
+            }
         )
     }
 }

@@ -156,3 +156,7 @@ code {
   padding: 5px;
   vertical-align: top;
 }
+
+.derivationLinkChain {
+  display: inline;
+}

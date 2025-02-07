@@ -60,14 +60,16 @@ export async function getStaticPaths() {
 }
 
 interface WordLinkProps {
-    baseWord: WordViewModel
+    baseWord: { id: number, language: string, text: string }
     linkWord: LinkWordViewModel
-    linkType: LinkTypeViewModel
+    linkType: { typeId: string, type: string }
     showType?: boolean
+    showSequence?: boolean
     directionFrom: boolean
+    linkClassName?: string
 }
 
-function WordLinkComponent(params: WordLinkProps) {
+export function WordLinkComponent(params: WordLinkProps) {
     const baseWord = params.baseWord
     const linkWord = params.linkWord
     const [editMode, setEditMode] = useState(false)
@@ -109,7 +111,7 @@ function WordLinkComponent(params: WordLinkProps) {
         router.replace(router.asPath)
     }
 
-    return <div>
+    return <div className={params.linkClassName}>
         {params.showType && params.linkType.type + ": "}
         <WordLink word={linkWord.word} baseLanguage={baseWord.language} gloss={true}/>
         {linkWord.ruleIds.length > 0 && <>&nbsp;(
@@ -125,7 +127,7 @@ function WordLinkComponent(params: WordLinkProps) {
                 <Link href={`/${graph}/rule/${ruleId}`}>{linkWord.ruleNames[index]}</Link>
             </>)}
             )</>}
-        {linkWord.ruleSequence && <>&nbsp;through {linkWord.ruleSequence.name}</>}
+        {params.showSequence && linkWord.ruleSequence && <>&nbsp;through {linkWord.ruleSequence.name}</>}
         {linkWord.notes && <> &ndash; {linkWord.notes}</>}
         <SourceRefs source={linkWord.source} span={true}/>
         {allowEdit() && <>
@@ -259,11 +261,11 @@ function WordLinkTypeComponent(params: WordLinkTypeProps) {
     return <>{params.links.map(l => <>
         {l.words.length === 1 && params.directionFrom &&
             <WordLinkComponent key={l.words[0].word.id} baseWord={params.word} linkWord={l.words[0]} linkType={l}
-                               directionFrom={params.directionFrom} showType={true}/>}
+                               directionFrom={params.directionFrom} showType={true} showSequence={true}/>}
         {(l.words.length !== 1 || !params.directionFrom) && <div>
             <div>{l.type}</div>
             {l.words.map(w => <WordLinkComponent key={w.word.id} baseWord={params.word} linkWord={w} linkType={l}
-                                                 directionFrom={params.directionFrom}/>)}
+                                                 directionFrom={params.directionFrom} showSequence={true}/>)}
         </div>}
     </>)}</>
 }

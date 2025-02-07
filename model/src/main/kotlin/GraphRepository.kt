@@ -68,6 +68,7 @@ abstract class GraphRepository {
     abstract fun findReferencingParadigms(rule: Rule): List<Pair<Paradigm, String>>
     abstract fun findReferencingRules(rule: Rule): List<Rule>
 
+    abstract fun allSequences(): List<RuleSequence>
     abstract fun addRuleSequence(
         name: String,
         fromLanguage: Language,
@@ -82,6 +83,7 @@ abstract class GraphRepository {
     abstract fun suggestDeriveRuleSequences(word: Word): List<RuleSequence>
     abstract fun deriveThroughRuleSequence(word: Word, sequence: RuleSequence): Word?
     abstract fun findSequencesContainingRule(rule: Rule): List<RuleSequence>
+    abstract fun findLinksWithSequence(sequence: RuleSequence): List<Link>
 
     abstract fun findOrAddWord(
         text: String,
