@@ -555,20 +555,24 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             val fromWord = allLangEntities[link.fromWordId]
             val toWord = allLangEntities[link.toWordId]
             if (fromWord != null && toWord != null) {
-                addLink(
-                    fromWord,
-                    toWord,
-                    Link.allLinkTypes.first { it.id == link.type },
-                    link.ruleIds
-                        ?.takeIf { it.isNotEmpty() }
-                        ?.map {
-                            allLangEntities[it] as? Rule ?: throw IllegalStateException("Broken rule ID reference $it")
-                        }
-                        ?: emptyList(),
-                    link.sequenceId?.let { allLangEntities[it] as RuleSequence },
-                    loadSource(link.sourceRefs),
-                    link.notes
-                )
+                try {
+                    addLink(
+                        fromWord,
+                        toWord,
+                        Link.allLinkTypes.first { it.id == link.type },
+                        link.ruleIds
+                            ?.takeIf { it.isNotEmpty() }
+                            ?.map {
+                                allLangEntities[it] as? Rule ?: throw IllegalStateException("Broken rule ID reference $it")
+                            }
+                            ?: emptyList(),
+                        link.sequenceId?.let { allLangEntities[it] as RuleSequence },
+                        loadSource(link.sourceRefs),
+                        link.notes
+                    )
+                } catch (e: IllegalArgumentException) {
+                    throw IllegalArgumentException("Cycle when loading links: from entity ${link.fromWordId}, to entity ${link.toWordId}")
+                }
             }
         }
     }
