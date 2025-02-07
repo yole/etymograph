@@ -1,0 +1,357 @@
+{
+    "phonemes": [
+        {
+            "id": 6133,
+            "graphemes": [
+                "p"
+            ],
+            "classes": [
+                "voiceless",
+                "bilabial",
+                "stop"
+            ]
+        },
+        {
+            "id": 6134,
+            "graphemes": [
+                "b"
+            ],
+            "classes": [
+                "voiced",
+                "bilabial",
+                "stop"
+            ]
+        },
+        {
+            "id": 6135,
+            "graphemes": [
+                "t"
+            ],
+            "classes": [
+                "voiceless",
+                "alveolar",
+                "stop"
+            ]
+        },
+        {
+            "id": 6136,
+            "graphemes": [
+                "d"
+            ],
+            "classes": [
+                "voiced",
+                "alveolar",
+                "stop"
+            ]
+        },
+        {
+            "id": 6137,
+            "graphemes": [
+                "k"
+            ],
+            "classes": [
+                "voiceless",
+                "velar",
+                "stop"
+            ]
+        },
+        {
+            "id": 6138,
+            "graphemes": [
+                "g"
+            ],
+            "classes": [
+                "voiced",
+                "velar",
+                "stop"
+            ]
+        },
+        {
+            "id": 6139,
+            "graphemes": [
+                "q"
+            ],
+            "classes": [
+                "voiceless",
+                "labiovelar",
+                "stop"
+            ]
+        },
+        {
+            "id": 6140,
+            "graphemes": [
+                "gw"
+            ],
+            "classes": [
+                "voiced",
+                "labiovelar",
+                "stop"
+            ]
+        },
+        {
+            "id": 6141,
+            "graphemes": [
+                "f"
+            ],
+            "classes": [
+                "voiceless",
+                "labial",
+                "fricative"
+            ]
+        },
+        {
+            "id": 6142,
+            "graphemes": [
+                "v"
+            ],
+            "classes": [
+                "voiced",
+                "labial",
+                "fricative"
+            ]
+        },
+        {
+            "id": 6144,
+            "graphemes": [
+                "þ"
+            ],
+            "sound": "θ",
+            "classes": [
+                "voiceless",
+                "dental",
+                "fricative"
+            ]
+        },
+        {
+            "id": 6145,
+            "graphemes": [
+                "s"
+            ],
+            "classes": [
+                "voiceless",
+                "alveolar",
+                "fricative"
+            ]
+        },
+        {
+            "id": 6146,
+            "graphemes": [
+                "z"
+            ],
+            "classes": [
+                "voiced",
+                "alveolar",
+                "fricative"
+            ]
+        },
+        {
+            "id": 6147,
+            "graphemes": [
+                "x"
+            ],
+            "classes": [
+                "voiceless",
+                "velar",
+                "fricative"
+            ]
+        },
+        {
+            "id": 6148,
+            "graphemes": [
+                "ƕ"
+            ],
+            "classes": [
+                "voiceless",
+                "labiovelar",
+                "fricative"
+            ]
+        },
+        {
+            "id": 6149,
+            "graphemes": [
+                "h"
+            ],
+            "classes": [
+                "voiceless",
+                "uvular",
+                "fricative"
+            ]
+        },
+        {
+            "id": 6150,
+            "graphemes": [
+                "m"
+            ],
+            "classes": [
+                "voiced",
+                "labial",
+                "nasal",
+                "consonant"
+            ]
+        },
+        {
+            "id": 6151,
+            "graphemes": [
+                "n"
+            ],
+            "classes": [
+                "voiced",
+                "dental",
+                "nasal",
+                "consonant"
+            ]
+        },
+        {
+            "id": 6152,
+            "graphemes": [
+                "l"
+            ],
+            "classes": [
+                "voiced",
+                "dental",
+                "lateral",
+                "consonant"
+            ]
+        },
+        {
+            "id": 6153,
+            "graphemes": [
+                "r"
+            ],
+            "classes": [
+                "voiced",
+                "alveolar",
+                "lateral",
+                "consonant"
+            ]
+        },
+        {
+            "id": 6154,
+            "graphemes": [
+                "w"
+            ],
+            "classes": [
+                "voiced",
+                "labial",
+                "approximant"
+            ]
+        },
+        {
+            "id": 6155,
+            "graphemes": [
+                "j"
+            ],
+            "classes": [
+                "voiced",
+                "palatal",
+                "approximant"
+            ]
+        },
+        {
+            "id": 6158,
+            "graphemes": [
+                "a"
+            ],
+            "classes": [
+                "central",
+                "open",
+                "vowel"
+            ]
+        },
+        {
+            "id": 6159,
+            "graphemes": [
+                "u"
+            ],
+            "classes": [
+                "back",
+                "close",
+                "rounded",
+                "vowel"
+            ]
+        },
+        {
+            "id": 6160,
+            "graphemes": [
+                "i"
+            ],
+            "classes": [
+                "front",
+                "close",
+                "unrounded",
+                "vowel"
+            ]
+        },
+        {
+            "id": 6161,
+            "graphemes": [
+                "ai"
+            ],
+            "sound": "ɛ",
+            "classes": [
+                "open-mid",
+                "front",
+                "unrounded",
+                "vowel"
+            ]
+        },
+        {
+            "id": 6162,
+            "graphemes": [
+                "au"
+            ],
+            "sound": "ɔ",
+            "classes": [
+                "open-mid",
+                "back",
+                "rounded",
+                "vowel"
+            ]
+        },
+        {
+            "id": 6163,
+            "graphemes": [
+                "ei"
+            ],
+            "sound": "i:",
+            "classes": [
+                "long",
+                "front",
+                "close",
+                "unrounded",
+                "vowel"
+            ]
+        },
+        {
+            "id": 6164,
+            "graphemes": [
+                "e"
+            ],
+            "sound": "e:",
+            "classes": [
+                "long",
+                "close-mid",
+                "front",
+                "unrounded",
+                "vowel"
+            ]
+        },
+        {
+            "id": 6165,
+            "graphemes": [
+                "o"
+            ],
+            "sound": "o:",
+            "classes": [
+                "long",
+                "close-mid",
+                "back",
+                "rounded",
+                "vowel"
+            ]
+        }
+    ],
+    "diphthongs": [
+        "iu"
+    ]
+}
