@@ -60,7 +60,7 @@ export async function fetchGraphs() {
 export async function fetchAllGraphs() {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}graphs`, { headers: { 'Accept': 'application/json'} })
     if (response.status !== 200) {
-        throw new Error(response.statusText)
+        throw new Error(response.status.toString())
     }
     const graphs = await response.json()
     const paths = graphs.map(graph => ({params: {graph: graph.id}}))
