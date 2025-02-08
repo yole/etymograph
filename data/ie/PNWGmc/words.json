@@ -1571,12 +1571,28 @@
     {
         "id": 6173,
         "text": "swāsaz",
-        "gloss": "ones own",
+        "gloss": "one's own",
         "sourceRefs": [
             {
                 "pubId": 5,
                 "refText": "11"
             }
         ]
+    },
+    {
+        "id": 6176,
+        "text": "nāhʷ-",
+        "gloss": "near",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "11"
+            }
+        ]
+    },
+    {
+        "id": 6178,
+        "text": "kʷāniz",
+        "gloss": "woman, wife"
     }
 ]

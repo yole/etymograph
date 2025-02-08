@@ -486,17 +486,6 @@
         ]
     },
     {
-        "id": 2142,
-        "text": "trewa-",
-        "gloss": "tree",
-        "sourceRefs": [
-            {
-                "pubId": 5,
-                "refText": "187"
-            }
-        ]
-    },
-    {
         "id": 2146,
         "text": "gelwaz",
         "gloss": "yellow",
@@ -510,7 +499,13 @@
     {
         "id": 2157,
         "text": "kinnuz",
-        "gloss": "cheek"
+        "gloss": "cheek",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "204"
+            }
+        ]
     },
     {
         "id": 2163,
@@ -3416,8 +3411,8 @@
     {
         "id": 4766,
         "text": "frōkni",
-        "gloss": "<!----> danger",
-        "fullGloss": "<!----> danger, risk",
+        "gloss": "danger",
+        "fullGloss": "danger, risk",
         "sourceRefs": [
             {
                 "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-Germanic/frokni#Proto-Germanic"
@@ -3639,17 +3634,6 @@
         ]
     },
     {
-        "id": 4894,
-        "text": "ansuz",
-        "gloss": "deity",
-        "fullGloss": "deity, god; ",
-        "sourceRefs": [
-            {
-                "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-Germanic/ansuz#Proto-Germanic"
-            }
-        ]
-    },
-    {
         "id": 4897,
         "text": "hrabnaz",
         "gloss": "raven",
@@ -3667,17 +3651,6 @@
         "sourceRefs": [
             {
                 "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-Germanic/hluta#Proto-Germanic"
-            }
-        ]
-    },
-    {
-        "id": 4912,
-        "text": "haiþī",
-        "gloss": "heath",
-        "fullGloss": "heath, wasteland",
-        "sourceRefs": [
-            {
-                "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-Germanic/haiþi#Proto-Germanic"
             }
         ]
     },
@@ -3700,17 +3673,6 @@
         "sourceRefs": [
             {
                 "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-Germanic/wēniz#Proto-Germanic"
-            }
-        ]
-    },
-    {
-        "id": 4947,
-        "text": "gastiz",
-        "gloss": "stranger",
-        "fullGloss": "stranger, guest",
-        "sourceRefs": [
-            {
-                "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-Germanic/gastiz#Proto-Germanic"
             }
         ]
     },
@@ -3854,7 +3816,18 @@
     {
         "id": 6172,
         "text": "swēsaz",
-        "gloss": "ones own",
+        "gloss": "one's own",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "11"
+            }
+        ]
+    },
+    {
+        "id": 6175,
+        "text": "nēhʷ-",
+        "gloss": "near",
         "sourceRefs": [
             {
                 "pubId": 5,

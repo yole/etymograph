@@ -2610,11 +2610,6 @@
         ]
     },
     {
-        "id": 2145,
-        "text": "treow-",
-        "gloss": "tree"
-    },
-    {
         "id": 2151,
         "text": "latost",
         "gloss": "most recently"
@@ -2967,7 +2962,13 @@
     {
         "id": 2217,
         "text": "sċīene",
-        "gloss": "beautiful"
+        "gloss": "beautiful",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "206"
+            }
+        ]
     },
     {
         "id": 2219,
@@ -4121,8 +4122,14 @@
     },
     {
         "id": 2411,
-        "text": "unled",
-        "gloss": "poor"
+        "text": "unlǣd",
+        "gloss": "poor",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "11"
+            }
+        ]
     },
     {
         "id": 2414,
@@ -15135,7 +15142,18 @@
     {
         "id": 6174,
         "text": "swǣs",
-        "gloss": "ones own",
+        "gloss": "one's own",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "11"
+            }
+        ]
+    },
+    {
+        "id": 6177,
+        "text": "nēah",
+        "gloss": "near",
         "sourceRefs": [
             {
                 "pubId": 5,

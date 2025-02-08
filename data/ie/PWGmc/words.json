@@ -347,11 +347,6 @@
         "gloss": "neck"
     },
     {
-        "id": 2143,
-        "text": "trewa-",
-        "gloss": "tree"
-    },
-    {
         "id": 2147,
         "text": "gelu",
         "gloss": "yellow"
@@ -391,8 +386,14 @@
     },
     {
         "id": 2158,
-        "text": "kinn",
-        "gloss": "jaw"
+        "text": "kinnu",
+        "gloss": "jaw",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "204"
+            }
+        ]
     },
     {
         "id": 2160,
@@ -511,7 +512,13 @@
     {
         "id": 2216,
         "text": "skaunī",
-        "gloss": "beautiful"
+        "gloss": "beautiful",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "206"
+            }
+        ]
     },
     {
         "id": 2227,

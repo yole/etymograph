@@ -913,9 +913,20 @@
                     }
                 ],
                 "condition": {
-                    "type": "relPhoneme",
-                    "cls": "word-final stressed short vowel",
-                    "relative": false
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "cls": "word-final stressed short vowel",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "negated": true,
+                            "cls": "diphthong",
+                            "relative": false
+                        }
+                    ]
                 }
             }
         ],
@@ -1071,6 +1082,29 @@
                             ]
                         }
                     ]
+                }
+            }
+        ]
+    },
+    {
+        "id": 6179,
+        "name": "pwgmc-orthography",
+        "fromLang": "PWGmc",
+        "toLang": "PWGmc",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "b"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "relPhoneme",
+                    "parameter": "β",
+                    "relative": false
                 }
             }
         ]
