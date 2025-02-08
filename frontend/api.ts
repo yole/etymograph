@@ -201,6 +201,10 @@ export function applyRuleSequence(graph: string, seqId: number, fromWordId: numb
     })
 }
 
+export function reapplyRuleSequence(graph: string, seqId: number) {
+    return postToBackend(`${graph}/rule/sequence/${seqId}/reapply`, {})
+}
+
 export function traceRule(graph: string, ruleId: number, word: string, reverse: boolean, language?: string): Promise<Response> {
     return postToBackend(`${graph}/rule/${ruleId}/trace`, {word, reverse, language})
 }

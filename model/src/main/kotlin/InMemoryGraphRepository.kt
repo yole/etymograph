@@ -474,6 +474,13 @@ open class InMemoryGraphRepository : GraphRepository() {
         link.sequence = sequence
     }
 
+    override fun reapplyRuleSequence(sequence: RuleSequence) {
+        val directLinks = linksFrom.values.flatten().filter { it.sequence == sequence }
+        for (directLink in directLinks) {
+            applyRuleSequence(directLink, sequence)
+        }
+    }
+
     override fun suggestDeriveRuleSequences(word: Word): List<RuleSequence> {
         val existingDerivedWordLanguages = getLinksTo(word)
             .filter { it.type == Link.Origin }

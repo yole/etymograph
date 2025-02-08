@@ -529,7 +529,7 @@ class RuleController {
     fun sequenceDerivations(repo: GraphRepository, @PathVariable id: Int): SequenceDerivationsViewModel {
         val sequence = repo.resolveRuleSequence(id)
         val derivations = repo.findDerivationsWithSequence(sequence)
-            return SequenceDerivationsViewModel(
+        return SequenceDerivationsViewModel(
             sequence.toViewModel(),
             derivations.map { derivation ->
                 val link = derivation.first()
@@ -557,6 +557,14 @@ class RuleController {
                 )
             }
         )
+    }
+
+    @PostMapping("/{graph}/rule/sequence/{id}/reapply")
+    @ResponseBody
+    fun reapplySequence(repo: GraphRepository, @PathVariable id: Int): SequenceDerivationsViewModel {
+        val sequence = repo.resolveRuleSequence(id)
+        repo.reapplyRuleSequence(sequence)
+        return sequenceDerivations(repo, id)
     }
 }
 
