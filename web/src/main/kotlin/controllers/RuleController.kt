@@ -3,7 +3,6 @@ package ru.yole.etymograph.web.controllers
 import org.springframework.web.bind.annotation.*
 import ru.yole.etymograph.*
 import ru.yole.etymograph.web.*
-import kotlin.math.exp
 
 data class RuleRefViewModel(
     val id: Int,
@@ -529,15 +528,28 @@ class RuleController {
     @ResponseBody
     fun sequenceDerivations(repo: GraphRepository, @PathVariable id: Int): SequenceDerivationsViewModel {
         val sequence = repo.resolveRuleSequence(id)
-        val links = repo.findLinksWithSequence(sequence)
+        val derivations = repo.findDerivationsWithSequence(sequence)
         return SequenceDerivationsViewModel(
             sequence.toViewModel(),
-            links.map {
-                val expectedWord = it.applyRules(it.toEntity as Word, repo).asOrthographic()
-                val fromWord = it.fromEntity as Word
+            derivations.map { derivation ->
+                val link = derivation.first()
+                val expectedWord = link.applyRules(link.toEntity as Word, repo).asOrthographic()
+                val fromWord = link.fromEntity as Word
+                val steps = derivation.flatMap { buildIntermediateSteps(repo, it) }
+                val rules = derivation.flatMap { it.rules }
                 DerivationViewModel(
-                    (it.toEntity as Word).toRefViewModel(repo),
-                    linkToViewModel(it, repo, false),
+                    (derivation.first().toEntity as Word).toRefViewModel(repo),
+                    WordController.LinkWordViewModel(
+                        (derivation.last().fromEntity as Word).toRefViewModel(repo),
+                        rules.map { it.id },
+                        rules.map { it.name },
+                        steps.map { it.result },
+                        null,
+                        derivation.flatMap { it.source.toViewModel(repo) },
+                        "",
+                        null,
+                        emptyList()
+                    ),
                     expectedWord.takeIf { !fromWord.language.isNormalizedEqual(expectedWord, fromWord) }?.text
                 )
             }

@@ -11,17 +11,24 @@ class RuleControllerTest {
     private lateinit var fixture: QTestFixture
     private lateinit var ruleController: RuleController
     private lateinit var graph: GraphRepository
+    private lateinit var q: Language
+    private lateinit var ce: Language
+    private lateinit var aq: Language
 
     @Before
     fun setup() {
         fixture = QTestFixture()
+        q = fixture.q
+        ce = fixture.ce
+        aq = Language("Ancient Quenya", "AQ").also { fixture.graph.addLanguage(it) }
+
         ruleController = RuleController()
         graph = fixture.graph
     }
 
     @Test
     fun testGrammaticalCategories() {
-        fixture.q.grammaticalCategories.add(
+        q.grammaticalCategories.add(
             WordCategory("Case", listOf("N"),
                 listOf(WordCategoryValue("Genitive", "GEN"))))
 
@@ -34,10 +41,10 @@ class RuleControllerTest {
 
     @Test
     fun testGrammaticalCategoriesExtractNumber() {
-        fixture.q.grammaticalCategories.add(
+        q.grammaticalCategories.add(
             WordCategory("Person", listOf("V"),
                 listOf(WordCategoryValue("1st person", "1"))))
-        fixture.q.grammaticalCategories.add(
+        q.grammaticalCategories.add(
             WordCategory("Number", listOf("V"),
                 listOf(WordCategoryValue("Singular", "SG"))))
 
@@ -100,7 +107,7 @@ class RuleControllerTest {
 
     @Test
     fun newSequence() {
-        val rule = graph.addRule("q-gen", fixture.q, fixture.q,
+        val rule = graph.addRule("q-gen", q, q,
             RuleLogic(emptyList(), emptyList(), emptyList()))
 
         ruleController.newSequence(
@@ -242,5 +249,32 @@ class RuleControllerTest {
         val ruleViewModel = ruleController.rule(fixture.graph, rule.id)
         val example = ruleViewModel.branches.single().examples.single()
         assertNull(example.expectedWord)
+    }
+
+    @Test
+    fun derivationsForChainedSequence() {
+        val qAiE = graph.rule("sound is 'a' and next sound is 'i':\n- new sound is 'e'", name = "q-ai-e", fromLanguage = ce, toLanguage = aq)
+        val aqSeq = graph.addRuleSequence("ce-aq", ce, aq, listOf(qAiE.step()))
+        val qWV = graph.rule("beginning of word and sound is 'w':\n- new sound is 'v'", name = "q-w-v", fromLanguage = aq, toLanguage = q)
+        val qSeq = graph.addRuleSequence("aq-q", aq, q, listOf(qWV.step()))
+
+        val ceSeq = graph.addRuleSequence("ce-q", ce, q, listOf(aqSeq.step(), qSeq.step()))
+
+        val ceWord = graph.addWord("waiwai", language = ce, gloss = "w")
+        val aqWord = graph.addWord("weiwei", language = aq, gloss = "w")
+        val aqLink = graph.addLink(aqWord, ceWord, Link.Origin)
+        graph.applyRuleSequence(aqLink, aqSeq)
+
+        val qWord = graph.addWord("veiwei", language = q, gloss = "w")
+        val qLink = graph.addLink(qWord, aqWord, Link.Origin)
+        graph.applyRuleSequence(qLink, qSeq)
+
+        val derivationViewModel = ruleController.sequenceDerivations(graph, ceSeq.id)
+        assertEquals(1, derivationViewModel.derivations.size)
+        val d = derivationViewModel.derivations.single()
+        assertEquals(ceWord.id, d.baseWord.id)
+        assertEquals(qWord.id, d.derivation.word.id)
+        assertEquals(2, d.derivation.ruleIds.size)
+
     }
 }

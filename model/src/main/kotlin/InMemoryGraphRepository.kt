@@ -503,8 +503,29 @@ open class InMemoryGraphRepository : GraphRepository() {
         return allLangEntities.filterIsInstance<RuleSequence>().filter { rule in it.resolveRules(this) }
     }
 
-    override fun findLinksWithSequence(sequence: RuleSequence): List<Link> {
-        return linksFrom.values.flatten().filter { it.sequence == sequence }
+    override fun findDerivationsWithSequence(sequence: RuleSequence): List<List<Link>> {
+        val directLinks = linksFrom.values.flatten().filter { it.sequence == sequence }.map { listOf(it) }
+        val steps = sequence.steps.map { langEntityById(it.ruleId) }
+        if (steps.all { it is RuleSequence }) {
+            val linksWithFirstSequence = findDerivationsWithSequence(steps.first() as RuleSequence)
+            @Suppress("UNCHECKED_CAST")
+            return directLinks + buildFollowupSteps(linksWithFirstSequence, steps as List<RuleSequence>)
+        }
+        return directLinks
+    }
+
+    private fun buildFollowupSteps(links: List<List<Link>>, steps: List<RuleSequence>): List<List<Link>> {
+        return links.mapNotNull { linkList ->
+            var target = linkList.last().fromEntity as Word
+            val result = linkList.toMutableList()
+            for (ruleSequence in steps.drop(1)) {
+                val nextLink = getLinksTo(target).find { it.sequence == ruleSequence }
+                    ?: return@mapNotNull null
+                result.add(nextLink)
+                target = nextLink.fromEntity as Word
+            }
+            result
+        }
     }
 
     private fun applyRuleSequence(word: Word, sequence: RuleSequence, expectWord: Word?, applicableRules: MutableList<Rule>): Word? {

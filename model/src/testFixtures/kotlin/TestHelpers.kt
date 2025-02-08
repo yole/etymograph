@@ -24,3 +24,6 @@ fun GraphRepository.rule(
         addedCategories = addedCategories
     )
 }
+
+fun Rule.step(optional: Boolean = false) = RuleSequenceStep(this, optional)
+fun RuleSequence.step() = RuleSequenceStep(this, false)

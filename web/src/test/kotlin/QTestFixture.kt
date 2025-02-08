@@ -11,16 +11,6 @@ class QTestFixture {
         addLanguage(q)
     }
 
-    val graphService = object : GraphService() {
-        override fun allGraphs(): List<GraphRepository> {
-            return listOf(graph)
-        }
-
-        override fun resolveGraph(name: String): GraphRepository {
-            return graph
-        }
-    }
-
     fun setupParadigm(): Rule {
         val accRule = graph.addRule(
             "q-acc", q, q,
