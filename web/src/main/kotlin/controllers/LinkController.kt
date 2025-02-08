@@ -78,6 +78,9 @@ class LinkController {
             ?: badRequest("No such link")
         val rules = resolveRuleNames(repo, params)
 
+        if (link.rules != rules) {
+            link.sequence = null
+        }
         link.rules = rules
         link.source = parseSourceRefs(repo, params.source)
         link.notes = params.notes.nullize()
