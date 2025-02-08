@@ -565,7 +565,7 @@ fun buildIntermediateSteps(graph: GraphRepository, link: Link): List<RuleStepDat
 }
 
 fun suggestedSequences(graph: GraphRepository, link: Link): List<WordController.WordRuleSequenceViewModel> {
-    if (link.type != Link.Origin || link.rules.isNotEmpty()) return emptyList()
+    if (link.type != Link.Origin || link.sequence != null) return emptyList()
     val word = link.fromEntity as Word
     val baseWord = link.toEntity as Word
     return graph.ruleSequencesForLanguage(word.language).filter { it.fromLanguage == baseWord.language }.map {
