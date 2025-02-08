@@ -529,7 +529,7 @@ class RuleController {
     fun sequenceDerivations(repo: GraphRepository, @PathVariable id: Int): SequenceDerivationsViewModel {
         val sequence = repo.resolveRuleSequence(id)
         val derivations = repo.findDerivationsWithSequence(sequence)
-        return SequenceDerivationsViewModel(
+            return SequenceDerivationsViewModel(
             sequence.toViewModel(),
             derivations.map { derivation ->
                 val link = derivation.first()
@@ -548,7 +548,10 @@ class RuleController {
                         derivation.flatMap { it.source.toViewModel(repo) },
                         "",
                         null,
-                        emptyList()
+                        if (link.sequence == null)
+                            listOf(WordController.WordRuleSequenceViewModel(sequence.name, sequence.id))
+                        else
+                            emptyList()
                     ),
                     expectedWord.takeIf { !fromWord.language.isNormalizedEqual(expectedWord, fromWord) }?.text
                 )

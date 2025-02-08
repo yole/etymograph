@@ -41,10 +41,14 @@ export default function RuleSequence(params) {
     return <>
         <Breadcrumbs title={ruleSequence.sequence.name}></Breadcrumbs>
         <h3>Consistent Derivations</h3>
-        <DerivationListComponent derivations={ruleSequence.derivations.filter(derivation => derivation.expectedWord == null)} />
-        {ruleSequence.derivations.find(d => d.expectedWord !== null) && <>
+        <DerivationListComponent derivations={ruleSequence.derivations.filter(derivation => derivation.derivation.suggestedSequences.length == 0 && derivation.expectedWord == null)} />
+        {ruleSequence.derivations.find(d => d.derivation.suggestedSequences.length == 0 && d.expectedWord !== null) && <>
             <h3>Inconsistent Derivations</h3>
-            <DerivationListComponent derivations={ruleSequence.derivations.filter(derivation => derivation.expectedWord !== null)} />
+            <DerivationListComponent derivations={ruleSequence.derivations.filter(derivation => derivation.derivation.suggestedSequences.length == 0 && derivation.expectedWord !== null)} />
+        </>}
+        {ruleSequence.derivations.find(d => d.derivation.suggestedSequences.length > 0) && <>
+            <h3>Candidates</h3>
+            <DerivationListComponent derivations={ruleSequence.derivations.filter(derivation => derivation.derivation.suggestedSequences.length > 0)} />
         </>}
     </>
 }

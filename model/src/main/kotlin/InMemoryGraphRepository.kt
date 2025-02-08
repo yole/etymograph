@@ -505,13 +505,21 @@ open class InMemoryGraphRepository : GraphRepository() {
 
     override fun findDerivationsWithSequence(sequence: RuleSequence): List<List<Link>> {
         val directLinks = linksFrom.values.flatten().filter { it.sequence == sequence }.map { listOf(it) }
+        val candidates = linksFrom.values.flatten()
+            .filter {
+                it.type == Link.Origin &&
+                    it.sequence == null &&
+                    (it.toEntity as? Word)?.language == sequence.fromLanguage &&
+                    (it.fromEntity as? Word)?.language == sequence.toLanguage
+            }
+            .map { listOf(it) }
         val steps = sequence.steps.map { langEntityById(it.ruleId) }
         if (steps.all { it is RuleSequence }) {
             val linksWithFirstSequence = findDerivationsWithSequence(steps.first() as RuleSequence)
             @Suppress("UNCHECKED_CAST")
-            return directLinks + buildFollowupSteps(linksWithFirstSequence, steps as List<RuleSequence>)
+            return directLinks + candidates + buildFollowupSteps(linksWithFirstSequence, steps as List<RuleSequence>)
         }
-        return directLinks
+        return directLinks + candidates
     }
 
     private fun buildFollowupSteps(links: List<List<Link>>, steps: List<RuleSequence>): List<List<Link>> {
