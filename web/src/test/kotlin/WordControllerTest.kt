@@ -122,6 +122,7 @@ class WordControllerTest {
         val qw = graph.wordById(qWordViewModel.id)!!
         val link = graph.findLink(qw, cew, Link.Origin)!!
         assertEquals("q-final-consonant", link.rules.single().name)
+        assertEquals(seq, link.sequence)
     }
 
     @Test
