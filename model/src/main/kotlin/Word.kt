@@ -92,7 +92,7 @@ class Word(
                 }
             }
         }
-        return derive(phonemicText, phonemic = true)
+        return derive(phonemicText, id = id, phonemic = true)
     }
 
     fun asOrthographic(): Word {
@@ -113,7 +113,7 @@ class Word(
                 }
             }
         }
-        return derive(orthoText, phonemic = false)
+        return derive(orthoText, id = id, phonemic = false)
     }
 
     fun derive(text: String, id: Int? = null, newSegment: WordSegment? = null, newClasses: List<String>? = null,

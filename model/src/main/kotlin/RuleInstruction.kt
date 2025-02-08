@@ -423,14 +423,9 @@ class ApplyStressInstruction(val language: Language, arg: String) : RuleInstruct
     override fun apply(rule: Rule, branch: RuleBranch?, word: Word, graph: GraphRepository, trace: RuleTrace?): Word {
         var syllables = breakIntoSyllables(word)
         if (root) {
-            val segments = graph.restoreSegments(word).segments
-            val rootSegment = segments?.firstOrNull {
-                it.sourceRule == null && (
-                        it.sourceWord == null || (it.sourceWord.pos != KnownPartsOfSpeech.preverb.abbreviation &&
-                        it.sourceWord.pos != KnownPartsOfSpeech.affix.abbreviation))
-            }
-            if (rootSegment != null) {
-                syllables = syllables.filter { it.startIndex >= rootSegment.firstCharacter }
+            val firstRootSyllable = findFirstRootSyllable(graph, word)
+            if (firstRootSyllable != null) {
+                syllables = syllables.drop(firstRootSyllable)
             }
         }
         val vowel = language.phonemeClassByName(PhonemeClass.vowelClassName) ?: return word
@@ -439,6 +434,24 @@ class ApplyStressInstruction(val language: Language, arg: String) : RuleInstruct
             ?: return word
         word.stressedPhonemeIndex = stressIndex    // TODO create a copy of the word here?
         return word
+    }
+
+    private fun findFirstRootSyllable(graph: GraphRepository, word: Word): Int? {
+        val orthoWord = word.asOrthographic()
+        val segments = graph.restoreSegments(orthoWord).segments
+        val rootSegment = segments?.firstOrNull {
+            it.sourceRule == null &&
+                    (it.sourceWord == null ||
+                     (it.sourceWord.pos != KnownPartsOfSpeech.preverb.abbreviation &&
+                      it.sourceWord.pos != KnownPartsOfSpeech.affix.abbreviation))
+        }
+        if (rootSegment != null) {
+            val syllable = breakIntoSyllables(word).indexOfFirst { it.startIndex >= rootSegment.firstCharacter }
+            if (syllable >= 0) {
+                return syllable
+            }
+        }
+        return null
     }
 }
 

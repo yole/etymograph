@@ -90,6 +90,22 @@ class CompoundTest : QBaseTest() {
     }
 
     @Test
+    fun stressOnRootInCompoundWithRule() {
+        val stressRule = repo.rule("- stress is on first root syllable")
+        assertEquals("stress is on first root syllable", stressRule.firstInstruction.toEditableText(repo))
+        q.stressRule = RuleRef.to(stressRule)
+
+        val na = repo.addWord("na", pos = "PV")
+        val pan = repo.addWord("pan", pos = "V")
+        val napan = repo.addWord("napan")
+        repo.createCompound(napan, listOf(na, pan))
+
+        val soundRule = repo.rule("sound is stressed 'a':\n- new sound is 'e'")
+        val newWord = soundRule.apply(napan, repo)
+        assertEquals("napen", newWord.text)
+    }
+
+    @Test
     fun suggestCompound() {
         val suggestions = repo.suggestCompound(faramir)
         assertEquals(fara, suggestions.single())
