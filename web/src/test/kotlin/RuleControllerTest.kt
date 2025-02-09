@@ -275,6 +275,33 @@ class RuleControllerTest {
         assertEquals(ceWord.id, d.baseWord.id)
         assertEquals(qWord.id, d.derivation.word.id)
         assertEquals(2, d.derivation.ruleIds.size)
+        assertNull(d.expectedWord)
+    }
 
+    @Test
+    fun derivationsForChainedSequenceExpectedRule() {
+        val qAiE = graph.rule("sound is 'a' and next sound is 'i':\n- new sound is 'e'", name = "q-ai-e", fromLanguage = ce, toLanguage = aq)
+        val aqSeq = graph.addRuleSequence("ce-aq", ce, aq, listOf(qAiE.step()))
+        val qWV = graph.rule("beginning of word and sound is 'w':\n- new sound is 'v'", name = "q-w-v", fromLanguage = aq, toLanguage = q)
+        val qSeq = graph.addRuleSequence("aq-q", aq, q, listOf(qWV.step()))
+
+        val ceSeq = graph.addRuleSequence("ce-q", ce, q, listOf(aqSeq.step(), qSeq.step()))
+
+        val ceWord = graph.addWord("waiwai", language = ce, gloss = "w")
+        val aqWord = graph.addWord("weiwei", language = aq, gloss = "w")
+        val aqLink = graph.addLink(aqWord, ceWord, Link.Origin)
+        graph.applyRuleSequence(aqLink, aqSeq)
+
+        val qWord = graph.addWord("veivei", language = q, gloss = "w")
+        val qLink = graph.addLink(qWord, aqWord, Link.Origin)
+        graph.applyRuleSequence(qLink, qSeq)
+
+        val derivationViewModel = ruleController.sequenceDerivations(graph, ceSeq.id)
+        assertEquals(1, derivationViewModel.derivations.size)
+        val d = derivationViewModel.derivations.single()
+        assertEquals(ceWord.id, d.baseWord.id)
+        assertEquals(qWord.id, d.derivation.word.id)
+        assertEquals(2, d.derivation.ruleIds.size)
+        assertEquals("veiwei", d.expectedWord)
     }
 }
