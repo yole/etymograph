@@ -557,7 +557,7 @@ class RuleController {
                     ),
                     expectedWord.takeIf { !resultWord.language.isNormalizedEqual(expectedWord, resultWord) }?.text
                 )
-            }
+            }.sortedBy { it.baseWord.text }
         )
     }
 
