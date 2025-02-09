@@ -72,7 +72,11 @@ export default function RuleSequence(params) {
         : consistent.length / (consistent.length + inconsistent.length)
 
     return <>
-        <Breadcrumbs title={ruleSequence.sequence.name}></Breadcrumbs>
+        <Breadcrumbs
+            title={ruleSequence.sequence.name}
+            langId={ruleSequence.sequence.toLang}
+            steps={[{title: "Rules", url: `/${graph}/rules/${ruleSequence.sequence.toLang}`}]}
+        />
 
         <button type="button" onClick={reapplySequenceClicked}>Reapply</button>
 
