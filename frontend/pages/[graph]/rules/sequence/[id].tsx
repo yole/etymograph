@@ -25,6 +25,7 @@ function DerivationListComponent(params: {
 }) {
     const router = useRouter()
     const graph = router.query.graph as string
+    const haveNotes = params.derivations.find(d => d.derivation.notes)
 
     return <>
         <table className="tableWithBorders"><tbody>
@@ -43,6 +44,9 @@ function DerivationListComponent(params: {
                     {derivation.derivation.ruleResults[index]}
                 </>)}
             </td>
+            {haveNotes && <td>
+                {derivation.derivation.notes}
+            </td>}
         </tr>)}
         </tbody></table>
     </>
