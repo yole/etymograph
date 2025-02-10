@@ -537,6 +537,10 @@ class RuleController {
                     link.applyRules(word, repo).asOrthographic()
                 }
                 val resultWord = derivation.last().fromEntity as Word
+                val expectedText = resultWord.language.normalizeWord(expectedWord.asOrthographic().text)
+                val resultWordVariations = resultWord.getTextVariations(repo).map {
+                    resultWord.language.normalizeWord(it)
+                }
                 val steps = derivation.flatMap { buildIntermediateSteps(repo, it) }
                 val rules = derivation.flatMap { it.rules }
                 DerivationViewModel(
@@ -555,7 +559,7 @@ class RuleController {
                         else
                             emptyList()
                     ),
-                    expectedWord.takeIf { !resultWord.language.isNormalizedEqual(expectedWord, resultWord) }?.text
+                    expectedWord.takeIf { expectedText !in resultWordVariations }?.text
                 )
             }.sortedBy { it.baseWord.text }
         )
