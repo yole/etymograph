@@ -65,5 +65,13 @@
         "author": "Barnes, Michael",
         "date": "2008",
         "publisher": "University College London"
+    },
+    {
+        "id": 9,
+        "name": "Etymological Dictionary of Proto-Germanic",
+        "refId": "Kroonen 2013",
+        "author": "Guus Kroonen",
+        "date": "2013",
+        "publisher": "Brill"
     }
 ]

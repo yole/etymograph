@@ -3834,5 +3834,27 @@
                 "refText": "11"
             }
         ]
+    },
+    {
+        "id": 6180,
+        "text": "aba",
+        "gloss": "(away) from, off",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "1"
+            }
+        ]
+    },
+    {
+        "id": 6182,
+        "text": "abnjaną",
+        "gloss": "execute",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "1"
+            }
+        ]
     }
 ]

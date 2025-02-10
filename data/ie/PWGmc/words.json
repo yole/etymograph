@@ -2065,6 +2065,7 @@
     {
         "id": 2997,
         "text": "ga",
+        "gloss": "ge-",
         "pos": "PV"
     },
     {
@@ -3099,17 +3100,6 @@
         "sourceRefs": [
             {
                 "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-West_Germanic/bifastijan#Proto-West_Germanic"
-            }
-        ]
-    },
-    {
-        "id": 4633,
-        "text": "liʀnōn",
-        "gloss": "to learn",
-        "fullGloss": "to learn",
-        "sourceRefs": [
-            {
-                "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-West_Germanic/liʀnon#Proto-West_Germanic"
             }
         ]
     },

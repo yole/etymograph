@@ -1,0 +1,22 @@
+[10]
+PGmc *wēpną ‘weapon’, pl. *wēpnō (Goth. pl. wepna) > PNWGmc *wāpną > ON vápn, OE wæ¯ pen, OF wēpen, OS wāpan, OHG wāfan;
+[11]
+PGmc *slēpaną ‘to sleep’ (Goth. slepan) > PNWGmc *slāpaną > OE slæ¯ pan ~ slāpan, OF slēpa, OS slāpan, OHG slāfan;
+PGmc *gēbun ‘they gave’ (Goth. gebun) > PNWGmc *gābun > ON gáfu, OE ġēafon, OF jēvon, OS, OHG gābun;
+PGmc *lētaną ‘to let go, to allow’ (Goth. letan) > PNWGmc *lātaną > ON láta, OE læ¯tan, OF lēta, OS lātan, OHG lāʒan;
+PGmc *ētun ‘they ate’ (Goth. etun) > PNWGmc *ātun > ON átu, OE æ¯ton, OHG āʒun;
+PGmc *rēdaną ‘to consider, to advise’ (Goth. ga-redan ‘to take thought for’) > PNWGmc *rādaną > ON ráða, OE ræ¯dan, OF rēda, OS rādan, OHG rātan;
+PGmc *unlēdaz ‘poor’ (Goth. unleds) > PNWGmc *unlādaz > OE unlæ¯d; deriv. of
+PGmc *lēþą ‘allotment of land’ > PNWGmc * lāþą (ON láð ‘land’ (poet.), OE læ¯þ ‘lathe’ (a division of Kent containing several hundreds));
+PGmc *grēdagaz ‘hungry, greedy’ (Goth. gredags) > PNWGmc *grādagaz > ON gráðugr, OE græ¯diġ, OS grādag, OHG grātag;
+PGmc *dēdun ‘they made, they did’ (cf. Goth. weak past pl. -dedun) > PNWGmc *dādun > OS dādun, OHG tātun;
+PGmc *swēsaz ‘one’s own’ (Goth. swes) > PNWGmc *swāsaz ‘one’s own, dear’ > ON sváss ‘dear, beloved’, OE swæ¯s, OF swēs ‘related’, OS swās, OHG swās ‘private, secret’;
+PGmc *blēsaną ‘to blow’ (Goth uf-blesan ‘to inflate’) > ON blása, OHG blāsan;
+PGmc *wēzun ‘they were’ (Goth. wesun with voiceless Verner’s Law alternant levelled in from the sg.) > PNWGmc *wāzun > ON váru, OE wæ¯ron, OF wēron, OS, OHG wārun;
+PGmc *wrēkun ‘they drove out, they persecuted’ (Goth. wrekun) > PNWGmc *wrākun > ON ráku, OE wræ¯con, OS wrākun, OHG rāhhun;
+PGmc *mēgaz ‘kinsman’ (Goth. megs ‘son-in-law’) > PNWGmc *māgaz > ON mágr ‘kinsman by marriage’, OE mæ¯ġ (pl. māgas), OF feder-mēch ‘paternal relative’, OS, OHG māg;
+PGmc *sēgun ‘they saw’, subj. *sēwī- (Goth. seƕun, seƕei- with ƕ levelled in from the sg.) > PNWGmc *sāgun, *sāwī- >! ONorw., OSwed. ságu, OIcel. sáu, OE (WS) sāwon, (Angl.) sēgon, OF sēgon, OS sā(w)un, OHG sāhun; all the reflexes of the stressed vowel are normal, though the root-final consonant alternation has been levelled (or, in OHG, h levelled in from the sg.);
+PGmc *nēhw- ‘near’ (Goth. neƕa) > PNWGmc *nāhw- > ON ná-, OE nēah, OS, OHG nāh;
+PGmc *kwēmun ‘they came’ (Goth. qemun) > PNWGmc *kwāmun > ON kvámu, OE c(w)ōmon, OF kōmon, OS, OHG quāmun;
+PGmc *mēnō¯ ‘moon’, *mēnōþ- ‘month’ (Goth. mena, menoþs) > PNWGmc *mānō¯, *mānōþ- > ON máni (poet.), mánaðr, OE mōna, mōnaþ, OF mōna, mōnath, OS māno, mānuđ, OHG māno, mānōd;
+PGmc *mēlą ‘(a) time’ (Goth. mel) > PNWGmc *mālą > ON mál, OE mæ¯l, OF mēl ‘mealtime’, OHG māl;

@@ -3476,30 +3476,6 @@
         ]
     },
     {
-        "id": 2300,
-        "text": "sāwi",
-        "gloss": "sea",
-        "reconstructed": true,
-        "sourceRefs": [
-            {
-                "pubId": 5,
-                "refText": "259"
-            }
-        ]
-    },
-    {
-        "id": 2301,
-        "text": "sǣi",
-        "gloss": "sea",
-        "reconstructed": true,
-        "sourceRefs": [
-            {
-                "pubId": 5,
-                "refText": "259"
-            }
-        ]
-    },
-    {
         "id": 2302,
         "text": "sǣ",
         "gloss": "sea",
@@ -3555,30 +3531,6 @@
             },
             {
                 "refText": "https://bosworthtoller.com/307"
-            }
-        ]
-    },
-    {
-        "id": 2309,
-        "text": "sāwælu",
-        "gloss": "soul",
-        "reconstructed": true,
-        "sourceRefs": [
-            {
-                "pubId": 5,
-                "refText": "265"
-            }
-        ]
-    },
-    {
-        "id": 2310,
-        "text": "sāwlu",
-        "gloss": "soul",
-        "reconstructed": true,
-        "sourceRefs": [
-            {
-                "pubId": 5,
-                "refText": "265"
             }
         ]
     },
@@ -13608,7 +13560,7 @@
     },
     {
         "id": 4581,
-        "text": "mod",
+        "text": "mōd",
         "gloss": "mind",
         "fullGloss": "mind; heart, spirit; state of mind, mood; ''(in poetry and compounds)'' courage, pride, zeal, or anger; affection",
         "pos": "N",
@@ -15160,5 +15112,25 @@
                 "refText": "11"
             }
         ]
+    },
+    {
+        "id": 6181,
+        "text": "of",
+        "gloss": "(away) from, off"
+    },
+    {
+        "id": 6183,
+        "text": "efnan",
+        "gloss": "execute",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "1"
+            }
+        ]
+    },
+    {
+        "id": 6184,
+        "text": "slāpan"
     }
 ]
