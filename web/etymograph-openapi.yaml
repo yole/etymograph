@@ -363,6 +363,27 @@ paths:
             '*/*':
               schema:
                 $ref: "#/components/schemas/SequenceDerivationsViewModel"
+  /{graph}/rule/sequence/{id}/reapply:
+    post:
+      summary: "POST {graph}/rule/sequence/{id}/reapply"
+      operationId: "reapplySequence"
+      parameters:
+        - name: "graph"
+          in: "path"
+          required: false
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int32"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/SequenceDerivationsViewModel"
   /{graph}/rule/{id}:
     get:
       summary: "GET {graph}/rule/{id}"
@@ -2376,6 +2397,8 @@ components:
         derivation:
           $ref: "#/components/schemas/LinkWordViewModel"
         expectedWord:
+          type: "string"
+        singlePhonemeDifference:
           type: "string"
       required:
         - "baseWord"

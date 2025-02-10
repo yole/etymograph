@@ -288,3 +288,28 @@ fun Word.calculateStress(graph: GraphRepository): StressData? {
     } else
         null
 }
+
+fun getSinglePhonemeDifference(word1: String, word2: String): String? {
+    if (word1.length == word2.length) {
+        var result: String? = null
+        for ((c1, c2) in word1.zip(word2)) {
+            if (c1 != c2) {
+                if (result != null) return null
+                result = "$c1 > $c2"
+            }
+        }
+        return result
+    }
+    if (word1.length == word2.length + 1 || word1.length == word2.length - 1) {
+        val matchingPrefix = (word1 zip word2).takeWhile { (c1, c2) -> c1 == c2 }.size
+        val matchingSuffix = (word1.reversed() zip word2.reversed()).takeWhile { (c1, c2) -> c1 == c2 }.size
+        if (word1.length == word2.length + 1 && matchingPrefix + matchingSuffix == word2.length) {
+            return "∅ -> ${word1[matchingPrefix]}"
+        }
+        if (word1.length == word2.length - 1 && matchingPrefix + matchingSuffix == word1.length) {
+            return "${word2[matchingPrefix]} -> ∅"
+        }
+    }
+
+    return null
+}

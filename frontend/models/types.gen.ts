@@ -136,6 +136,7 @@ export type DerivationViewModel = {
     baseWord: WordRefViewModel;
     derivation: LinkWordViewModel;
     expectedWord?: string;
+    singlePhonemeDifference?: string;
 };
 
 export type DeriveThroughSequenceParams = {

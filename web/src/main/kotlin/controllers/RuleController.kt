@@ -516,7 +516,8 @@ class RuleController {
     data class DerivationViewModel(
         val baseWord: WordRefViewModel,
         val derivation: WordController.LinkWordViewModel,
-        val expectedWord: String?
+        val expectedWord: String?,
+        val singlePhonemeDifference: String?
     )
 
     data class SequenceDerivationsViewModel(
@@ -559,7 +560,11 @@ class RuleController {
                         else
                             emptyList()
                     ),
-                    expectedWord.takeIf { expectedText !in resultWordVariations }?.text
+                    expectedWord.takeIf { expectedText !in resultWordVariations }?.text,
+                    if (expectedText !in resultWordVariations)
+                        getSinglePhonemeDifference(expectedWord.text, resultWord.text)
+                    else
+                        null
                 )
             }.sortedBy { it.baseWord.text }
         )

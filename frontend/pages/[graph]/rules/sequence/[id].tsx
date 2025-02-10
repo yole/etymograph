@@ -63,13 +63,15 @@ export default function RuleSequence(params) {
 
     const consistent = ruleSequence.derivations.filter(derivation =>
         derivation.derivation.suggestedSequences.length == 0 && derivation.expectedWord == null)
+    const singlePhonemeInconsistent = ruleSequence.derivations.filter(derivation =>
+        derivation.derivation.suggestedSequences.length == 0 && derivation.expectedWord != null && derivation.singlePhonemeDifference != null)
     const inconsistent = ruleSequence.derivations.filter(derivation =>
-        derivation.derivation.suggestedSequences.length == 0 && derivation.expectedWord != null)
+        derivation.derivation.suggestedSequences.length == 0 && derivation.expectedWord != null && derivation.singlePhonemeDifference == null)
+    const total = consistent.length + inconsistent.length + singlePhonemeInconsistent.length
     const candidates = ruleSequence.derivations.filter(derivation =>
         derivation.derivation.suggestedSequences.length > 0)
-    const rate = consistent.length + inconsistent.length == 0
-        ? 0
-        : consistent.length / (consistent.length + inconsistent.length)
+    const consistentRate = total == 0 ? 0 : consistent.length / total
+    const singlePhonemeRate = total == 0 ? 0 : singlePhonemeInconsistent.length / total
 
     return <>
         <Breadcrumbs
@@ -82,12 +84,20 @@ export default function RuleSequence(params) {
 
         <h3>Consistent Derivations</h3>
         <DerivationListComponent derivations={consistent} showExpectedWord={false}/>
+        {singlePhonemeInconsistent.length > 0 && <>
+            <h3>Single-phoneme Inconsistent Derivations</h3>
+            <DerivationListComponent derivations={singlePhonemeInconsistent} showExpectedWord={true}/>
+        </>}
         {inconsistent.length > 0 && <>
             <h3>Inconsistent Derivations</h3>
             <DerivationListComponent derivations={inconsistent} showExpectedWord={true}/>
         </>}
         <h3>Statistics</h3>
-        Consistent: {consistent.length}; inconsistent: {inconsistent.length}; rate: {Math.round(rate * 100)}%
+        Consistent: {consistent.length} ({Math.round(consistentRate * 100)}%);
+        single-phoneme inconsistent: {singlePhonemeInconsistent.length} ({Math.round(singlePhonemeRate * 100)}%);
+        inconsistent: {inconsistent.length};
+        total: {total}
+
         {candidates.length > 0 && <>
             <h3>Candidates</h3>
             {candidates.map(derivation =>
