@@ -116,6 +116,17 @@ class Word(
         return derive(orthoText, id = id, phonemic = false)
     }
 
+    fun asOrthographic(asLanguage: Language): Word {
+        if (language != asLanguage) {
+            val phonemic = asPhonemic()
+            val targetWord = Word(-1, phonemic.text, asLanguage).also {
+                it.isPhonemic = true
+            }
+            return targetWord.asOrthographic()
+        }
+        return asOrthographic()
+    }
+
     fun derive(text: String, id: Int? = null, newSegment: WordSegment? = null, newClasses: List<String>? = null,
                phonemic: Boolean? = null, keepStress: Boolean = true): Word {
         val sourceSegments = segments

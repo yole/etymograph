@@ -534,11 +534,11 @@ class RuleController {
             sequence.toViewModel(),
             derivations.map { derivation ->
                 val firstLink = derivation.first()
+                val resultWord = derivation.last().fromEntity as Word
                 val expectedWord = derivation.fold(firstLink.toEntity as Word) { word, link ->
                     link.applyRules(word, repo).asOrthographic()
                 }
-                val resultWord = derivation.last().fromEntity as Word
-                val expectedText = resultWord.language.normalizeWord(expectedWord.asOrthographic().text)
+                val expectedText = resultWord.language.normalizeWord(expectedWord.asOrthographic(resultWord.language).text)
                 val resultWordVariations = resultWord.getTextVariations(repo).map {
                     resultWord.language.normalizeWord(it)
                 }

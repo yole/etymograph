@@ -600,7 +600,7 @@ open class InMemoryGraphRepository : GraphRepository() {
         for (rule in rules) {
             val newWord = rule.apply(targetWord, this)
             if ('?' in newWord.text) return null
-            if (newWord.asOrthographic().text != targetWord.asOrthographic().text) {
+            if (newWord.asPhonemic().text != targetWord.asPhonemic().text) {
                 applicableRules.add(rule)
                 targetWord = newWord
             }
