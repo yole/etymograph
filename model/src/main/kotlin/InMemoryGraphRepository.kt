@@ -487,10 +487,11 @@ open class InMemoryGraphRepository : GraphRepository() {
     }
 
     override fun reapplyRuleSequence(sequence: RuleSequence): Map<Consistency, Int> {
-        val directLinks = linksFrom.values.flatten().filter { it.sequence == sequence }
+        val allSequences = findSequencesContainingSequence(sequence)
+        val directLinks = linksFrom.values.flatten().filter { it.sequence in allSequences }
         val result = mutableMapOf<Consistency, Int>()
         for (directLink in directLinks) {
-            val consistency = applyRuleSequence(directLink, sequence)
+            val consistency = applyRuleSequence(directLink, directLink.sequence!!)
             result[consistency] = result.getOrDefault(consistency, 0) + 1
         }
         return result
@@ -523,6 +524,21 @@ open class InMemoryGraphRepository : GraphRepository() {
 
     override fun findSequencesContainingRule(rule: Rule): List<RuleSequence> {
         return allLangEntities.filterIsInstance<RuleSequence>().filter { rule in it.resolveRules(this) }
+    }
+
+    override fun findSequencesContainingSequence(ruleSequence: RuleSequence): List<RuleSequence> {
+        val result = mutableListOf<RuleSequence>()
+        collectSequencesContainingSequence(ruleSequence, result)
+        return result
+    }
+
+    private fun collectSequencesContainingSequence(ruleSequence: RuleSequence, result: MutableList<RuleSequence>) {
+        result.add(ruleSequence)
+        for (sequence in allLangEntities.filterIsInstance<RuleSequence>()) {
+            if (sequence.steps.any { it.ruleId == ruleSequence.id }) {
+                collectSequencesContainingSequence(sequence, result)
+            }
+        }
     }
 
     override fun findDerivationsWithSequence(sequence: RuleSequence): List<List<Link>> {
