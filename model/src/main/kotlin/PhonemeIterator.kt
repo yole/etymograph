@@ -192,8 +192,11 @@ class PhonemeIterator {
         }
         indexMapStack!!.add(phonemeToResultIndexMap)
         var newIndex = phonemeIndex
-        while (newIndex < phonemeToResultIndexMap.size && phonemeToResultIndexMap[newIndex] == -1) {
+        while (newIndex < phonemeToResultIndexMap.size - 1 && phonemeToResultIndexMap[newIndex] == -1) {
             newIndex++
+        }
+        while (newIndex > 0 && phonemeToResultIndexMap[newIndex] == -1) {
+            newIndex--
         }
         val index = phonemeToResultIndexMap[newIndex]
         phonemes.clear()
