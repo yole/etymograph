@@ -5497,6 +5497,10 @@
             {
                 "pubId": 5,
                 "refText": "298 (6.8.3)"
+            },
+            {
+                "pubId": 6,
+                "refText": "6.27"
             }
         ]
     },
@@ -6354,30 +6358,12 @@
                     }
                 ],
                 "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "relPhoneme",
-                            "cls": "non-stressed",
-                            "parameter": "æ",
-                            "relative": false
-                        },
-                        {
-                            "type": "or",
-                            "members": [
-                                {
-                                    "type": "syllableIndex",
-                                    "matchIndex": -1
-                                },
-                                {
-                                    "type": "syllableIndex",
-                                    "matchIndex": 1
-                                }
-                            ]
-                        }
-                    ]
+                    "type": "relPhoneme",
+                    "cls": "non-stressed",
+                    "parameter": "æ",
+                    "relative": false
                 },
-                "comment": "merger of æ and i as e in unstressed word-final and other inflectional syllables"
+                "comment": "merger of æ and i as e in unstressed word-final and other inflectional syllables\nHogg 2011:6.48"
             },
             {
                 "instructions": [
@@ -6418,13 +6404,18 @@
                             ]
                         }
                     ]
-                }
+                },
+                "comment": "Hogg 2011:6.50"
             }
         ],
         "sourceRefs": [
             {
                 "pubId": 5,
                 "refText": "332 (6.9.6)"
+            },
+            {
+                "pubId": 6,
+                "refText": "6.46"
             }
         ]
     },

@@ -2616,9 +2616,8 @@
     },
     {
         "id": 2154,
-        "text": "ārundī",
-        "gloss": "message, errand",
-        "reconstructed": true
+        "text": "ǣrende",
+        "gloss": "message, errand"
     },
     {
         "id": 2159,
@@ -7602,6 +7601,10 @@
         "sourceRefs": [
             {
                 "refText": "https://bosworthtoller.com/22520"
+            },
+            {
+                "pubId": 5,
+                "refText": "207"
             }
         ]
     },
@@ -15135,6 +15138,7 @@
     {
         "id": 6190,
         "text": "biter",
+        "gloss": "bitter",
         "sourceRefs": [
             {
                 "pubId": 5,
