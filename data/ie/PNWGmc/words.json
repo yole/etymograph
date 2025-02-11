@@ -1594,5 +1594,48 @@
         "id": 6178,
         "text": "kʷāniz",
         "gloss": "woman, wife"
+    },
+    {
+        "id": 6188,
+        "text": "bitraz",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "328"
+            }
+        ]
+    },
+    {
+        "id": 6191,
+        "text": "wundrą",
+        "gloss": "marvel, wonder",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "328"
+            }
+        ]
+    },
+    {
+        "id": 6196,
+        "text": "libru",
+        "gloss": "liver",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "328"
+            }
+        ]
+    },
+    {
+        "id": 6211,
+        "text": "faikną",
+        "gloss": "hostility, evil",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "331"
+            }
+        ]
     }
 ]

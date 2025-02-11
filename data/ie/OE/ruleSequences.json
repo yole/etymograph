@@ -138,6 +138,9 @@
             {
                 "ruleId": 3438,
                 "optional": true
+            },
+            {
+                "ruleId": 6218
             }
         ]
     },

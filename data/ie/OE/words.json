@@ -5394,6 +5394,10 @@
             {
                 "pubId": 5,
                 "refText": "84"
+            },
+            {
+                "pubId": 5,
+                "refText": "183"
             }
         ]
     },
@@ -12594,7 +12598,7 @@
     },
     {
         "id": 3732,
-        "text": "Þearle",
+        "text": "þearle",
         "gloss": "severely",
         "fullGloss": "severely, sorely, strictly, hard",
         "pos": "ADV",
@@ -14791,22 +14795,6 @@
         ]
     },
     {
-        "id": 4800,
-        "text": "lāf",
-        "gloss": "remains",
-        "fullGloss": "remains, remainder, left; legacy; heirloom; widow",
-        "pos": "N",
-        "classes": [
-            "fem",
-            "o-stem"
-        ],
-        "sourceRefs": [
-            {
-                "refText": "https://en.wiktionary.org/wiki/laf#Old_English"
-            }
-        ]
-    },
-    {
         "id": 4801,
         "text": "heardeċġ"
     },
@@ -15132,5 +15120,125 @@
     {
         "id": 6184,
         "text": "slāpan"
+    },
+    {
+        "id": 6187,
+        "text": "timber",
+        "gloss": "timber",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "327"
+            }
+        ]
+    },
+    {
+        "id": 6190,
+        "text": "biter",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "328"
+            }
+        ]
+    },
+    {
+        "id": 6195,
+        "text": "rōþor",
+        "gloss": "oar",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "328"
+            }
+        ]
+    },
+    {
+        "id": 6197,
+        "text": "lifer",
+        "gloss": "liver",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "328"
+            }
+        ]
+    },
+    {
+        "id": 6202,
+        "text": "tungol",
+        "gloss": "luminary",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "330"
+            }
+        ]
+    },
+    {
+        "id": 6205,
+        "text": "æppel",
+        "gloss": "apple",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "330"
+            }
+        ]
+    },
+    {
+        "id": 6207,
+        "text": "spinel",
+        "gloss": "spindle",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "330"
+            }
+        ]
+    },
+    {
+        "id": 6210,
+        "text": "tācen",
+        "gloss": "sign",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "331"
+            }
+        ]
+    },
+    {
+        "id": 6213,
+        "text": "fācen",
+        "gloss": "treachery",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "331"
+            }
+        ]
+    },
+    {
+        "id": 6215,
+        "text": "bēacen",
+        "gloss": "sign",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "331"
+            }
+        ]
+    },
+    {
+        "id": 6217,
+        "text": "wolcen",
+        "gloss": "cloud",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "331"
+            }
+        ]
     }
 ]

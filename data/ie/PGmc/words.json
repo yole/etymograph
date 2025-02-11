@@ -3856,5 +3856,55 @@
                 "refText": "1"
             }
         ]
+    },
+    {
+        "id": 6185,
+        "text": "timrą",
+        "gloss": "timber",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "327"
+            }
+        ]
+    },
+    {
+        "id": 6199,
+        "text": "fuglaz",
+        "gloss": "bird",
+        "pos": "N"
+    },
+    {
+        "id": 6200,
+        "text": "tunglą",
+        "gloss": "luminary",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "330"
+            }
+        ]
+    },
+    {
+        "id": 6203,
+        "text": "apluz",
+        "gloss": "apple",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "330"
+            }
+        ]
+    },
+    {
+        "id": 6208,
+        "text": "taikną",
+        "gloss": "sign",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "331"
+            }
+        ]
     }
 ]

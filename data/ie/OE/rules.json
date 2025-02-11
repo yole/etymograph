@@ -2997,7 +2997,8 @@
                             "parameter": "h"
                         }
                     ]
-                }
+                },
+                "comment": "Hogg 2011:5.25"
             },
             {
                 "instructions": [
@@ -4933,6 +4934,28 @@
                             "type": "relPhoneme",
                             "relativeIndex": -1,
                             "cls": "consonant"
+                        },
+                        {
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "relPhoneme",
+                                    "relativeIndex": -1,
+                                    "tcls": "vowel",
+                                    "cls": "long"
+                                },
+                                {
+                                    "type": "relPhoneme",
+                                    "relativeIndex": -1,
+                                    "tcls": "vowel",
+                                    "cls": "diphthong"
+                                },
+                                {
+                                    "type": "relPhoneme",
+                                    "relativeIndex": -2,
+                                    "cls": "consonant"
+                                }
+                            ]
                         }
                     ]
                 }
@@ -6093,6 +6116,166 @@
                             "relativeIndex": -1,
                             "tcls": "vowel",
                             "cls": "back"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "SoundInserted",
+                        "args": [
+                            "e"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "cls": "word-final",
+                            "parameter": "l",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": -1,
+                            "cls": "consonant"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": -1,
+                            "negated": true,
+                            "cls": "coronal obstruent"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": -1,
+                            "negated": true,
+                            "cls": "labial fricative"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": -1,
+                            "negated": true,
+                            "parameter": "ġ"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": -1,
+                            "tcls": "vowel",
+                            "cls": "front"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "SoundInserted",
+                        "args": [
+                            "o"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "cls": "word-final",
+                            "parameter": "l",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": -1,
+                            "cls": "consonant"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": -1,
+                            "negated": true,
+                            "cls": "coronal obstruent"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": -1,
+                            "negated": true,
+                            "cls": "labial fricative"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": -1,
+                            "negated": true,
+                            "parameter": "ġ"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": -1,
+                            "tcls": "vowel",
+                            "cls": "back"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "SoundInserted",
+                        "args": [
+                            "e"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "cls": "word-final",
+                            "parameter": "n",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": -1,
+                            "cls": "consonant"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": -1,
+                            "negated": true,
+                            "parameter": "r"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": -1,
+                            "negated": true,
+                            "parameter": "l"
+                        },
+                        {
+                            "type": "or",
+                            "members": [
+                                {
+                                    "type": "relPhoneme",
+                                    "relativeIndex": -1,
+                                    "tcls": "vowel",
+                                    "cls": "long"
+                                },
+                                {
+                                    "type": "relPhoneme",
+                                    "relativeIndex": -1,
+                                    "tcls": "vowel",
+                                    "cls": "diphthong"
+                                },
+                                {
+                                    "type": "relPhoneme",
+                                    "relativeIndex": -2,
+                                    "cls": "consonant"
+                                }
+                            ]
                         }
                     ]
                 }
@@ -9799,6 +9982,43 @@
                     "parameter": "x",
                     "relative": false
                 }
+            }
+        ]
+    },
+    {
+        "id": 6218,
+        "name": "oe-io-eo-merger",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "Spe",
+                        "args": [
+                            "i -> e / _o"
+                        ]
+                    },
+                    {
+                        "type": "Spe",
+                        "args": [
+                            "ī -> ē / _o"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "338"
+            },
+            {
+                "pubId": 6,
+                "refText": "5.155"
             }
         ]
     }

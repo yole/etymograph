@@ -1360,17 +1360,6 @@
         ]
     },
     {
-        "id": 2727,
-        "text": "stab",
-        "gloss": "staff, letter",
-        "sourceRefs": [
-            {
-                "pubId": 5,
-                "refText": "147"
-            }
-        ]
-    },
-    {
         "id": 2730,
         "text": "paþ",
         "gloss": "path",
@@ -2776,17 +2765,6 @@
         ]
     },
     {
-        "id": 3382,
-        "text": "līb",
-        "gloss": "life",
-        "sourceRefs": [
-            {
-                "pubId": 5,
-                "refText": "298"
-            }
-        ]
-    },
-    {
         "id": 3384,
         "text": "nāhawisti",
         "gloss": "neighborhood",
@@ -3246,6 +3224,137 @@
         "sourceRefs": [
             {
                 "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-West_Germanic/finþan#Proto-West_Germanic"
+            }
+        ]
+    },
+    {
+        "id": 6186,
+        "text": "timr",
+        "gloss": "timber",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "327"
+            }
+        ]
+    },
+    {
+        "id": 6189,
+        "text": "bitr",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "328"
+            }
+        ]
+    },
+    {
+        "id": 6192,
+        "text": "wundr",
+        "gloss": "marvel, wonder",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "328"
+            }
+        ]
+    },
+    {
+        "id": 6194,
+        "text": "rōþr",
+        "gloss": "oar",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "328"
+            }
+        ]
+    },
+    {
+        "id": 6198,
+        "text": "fugl",
+        "gloss": "bird",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "330"
+            }
+        ]
+    },
+    {
+        "id": 6201,
+        "text": "tungl",
+        "gloss": "luminary",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "330"
+            }
+        ]
+    },
+    {
+        "id": 6204,
+        "text": "applu",
+        "gloss": "apple",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "330"
+            }
+        ]
+    },
+    {
+        "id": 6206,
+        "text": "spinnilu",
+        "gloss": "spindle",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "330"
+            }
+        ]
+    },
+    {
+        "id": 6209,
+        "text": "taikn",
+        "gloss": "sign",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "331"
+            }
+        ]
+    },
+    {
+        "id": 6212,
+        "text": "faikn",
+        "gloss": "hostility, evil",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "331"
+            }
+        ]
+    },
+    {
+        "id": 6214,
+        "text": "baukn",
+        "gloss": "sign",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "331"
+            }
+        ]
+    },
+    {
+        "id": 6216,
+        "text": "wolkn",
+        "gloss": "cloud",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "331"
             }
         ]
     }
