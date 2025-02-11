@@ -1,10 +1,11 @@
 import {callApiAndRefresh, fetchBackend, fetchPathsForAllGraphs, reapplyRuleSequence} from "@/api";
 import Breadcrumbs from "@/components/Breadcrumbs";
-import {DerivationViewModel, SequenceDerivationsViewModel} from "@/models";
+import {DerivationViewModel, ReapplyResultViewModel, SequenceDerivationsViewModel} from "@/models";
 import WordLink from "@/components/WordLink";
 import {useRouter} from "next/router";
 import Link from "next/link";
 import {WordLinkComponent} from "@/pages/[graph]/word/[lang]/[...text]";
+import {useState} from "react";
 
 // noinspection JSUnusedGlobalSymbols
 export const config = {
@@ -56,13 +57,14 @@ export default function RuleSequence(params) {
     const ruleSequence = params.loaderData as SequenceDerivationsViewModel
     const router = useRouter()
     const graph = router.query.graph as string
+    const [reapplyResult, setReapplyResult] = useState(null)
 
     async function reapplySequenceClicked() {
-        callApiAndRefresh(
-            () => reapplyRuleSequence(graph, ruleSequence.sequence.id),
-            router,
-            (message) => {}
-        )
+        const result = await reapplyRuleSequence(graph, ruleSequence.sequence.id)
+        if (result.status === 200) {
+            const jr = await result.json()
+            setReapplyResult(jr as ReapplyResultViewModel)
+        }
     }
 
     const consistent = ruleSequence.derivations.filter(derivation =>
@@ -85,6 +87,13 @@ export default function RuleSequence(params) {
         />
 
         <button type="button" onClick={reapplySequenceClicked}>Reapply</button>
+
+        {reapplyResult && <div>
+            Consistent: {reapplyResult.consistent};
+            becomes consistent: {reapplyResult.becomesConsistent};
+            becomes inconsistent: {reapplyResult.becomesInconsistent};
+            inconsistent: {reapplyResult.inconsistent}
+        </div>}
 
         <h3>Consistent Derivations</h3>
         <DerivationListComponent derivations={consistent} showExpectedWord={false}/>

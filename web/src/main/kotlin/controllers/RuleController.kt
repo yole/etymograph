@@ -570,12 +570,24 @@ class RuleController {
         )
     }
 
+    data class ReapplyResultViewModel(
+        val consistent: Int,
+        val becomesConsistent: Int,
+        val becomesInconsistent: Int,
+        val inconsistent: Int
+    )
+
     @PostMapping("/{graph}/rule/sequence/{id}/reapply")
     @ResponseBody
-    fun reapplySequence(repo: GraphRepository, @PathVariable id: Int): SequenceDerivationsViewModel {
+    fun reapplySequence(repo: GraphRepository, @PathVariable id: Int): ReapplyResultViewModel {
         val sequence = repo.resolveRuleSequence(id)
-        repo.reapplyRuleSequence(sequence)
-        return sequenceDerivations(repo, id)
+        val result = repo.reapplyRuleSequence(sequence)
+        return ReapplyResultViewModel(
+            result.getOrDefault(Consistency.CONSISTENT, 0),
+            result.getOrDefault(Consistency.BECOMES_CONSISTENT, 0),
+            result.getOrDefault(Consistency.BECOMES_INCONSISTENT, 0),
+            result.getOrDefault(Consistency.INCONSISTENT, 0)
+        )
     }
 }
 

@@ -383,7 +383,7 @@ paths:
           content:
             '*/*':
               schema:
-                $ref: "#/components/schemas/SequenceDerivationsViewModel"
+                $ref: "#/components/schemas/ReapplyResultViewModel"
   /{graph}/rule/{id}:
     get:
       summary: "GET {graph}/rule/{id}"
@@ -3401,3 +3401,23 @@ components:
         - "toRuleName"
         - "linkType"
         - "source"
+    ReapplyResultViewModel:
+      type: "object"
+      properties:
+        consistent:
+          type: "integer"
+          format: "int32"
+        becomesConsistent:
+          type: "integer"
+          format: "int32"
+        becomesInconsistent:
+          type: "integer"
+          format: "int32"
+        inconsistent:
+          type: "integer"
+          format: "int32"
+      required:
+        - "consistent"
+        - "becomesConsistent"
+        - "becomesInconsistent"
+        - "inconsistent"

@@ -384,6 +384,13 @@ export type PublicationViewModel = {
     refId: string;
 };
 
+export type ReapplyResultViewModel = {
+    consistent: number;
+    becomesConsistent: number;
+    becomesInconsistent: number;
+    inconsistent: number;
+};
+
 export type RichText = {
     fragments: Array<RichTextFragment>;
 };

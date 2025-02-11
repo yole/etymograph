@@ -3,6 +3,7 @@ package ru.yole.etymograph
 import java.text.Collator
 import java.text.Normalizer
 import java.util.*
+import kotlin.math.exp
 
 open class InMemoryGraphRepository : GraphRepository() {
     protected val languages = mutableMapOf<String, Language>()
@@ -463,22 +464,36 @@ open class InMemoryGraphRepository : GraphRepository() {
         return allLangEntities.filterIsInstance<RuleSequence>().find { it.name == name }
     }
 
-    override fun applyRuleSequence(link: Link, sequence: RuleSequence) {
+    override fun applyRuleSequence(link: Link, sequence: RuleSequence): Consistency {
         val word = (link.toEntity as Word).normalized
         val expectWord = (link.fromEntity as Word).normalized
+        val wasConsistent = expectWord.language.isNormalizedEqual(link.applyRules(word, this), expectWord)
+
         val applicableRules = mutableListOf<Rule>()
-        if (applyRuleSequence(word, sequence, expectWord, applicableRules) == null) {
-            return
+        var isConsistent = false
+        val targetWord = applyRuleSequence(word, sequence, expectWord, applicableRules)
+        if (targetWord != null) {
+            link.rules = applicableRules
+            link.sequence = sequence
+            isConsistent = expectWord.language.isNormalizedEqual(targetWord, expectWord)
         }
-        link.rules = applicableRules
-        link.sequence = sequence
+
+        return when {
+            wasConsistent && isConsistent -> Consistency.CONSISTENT
+            !wasConsistent && isConsistent -> Consistency.BECOMES_CONSISTENT
+            wasConsistent && !isConsistent -> Consistency.BECOMES_INCONSISTENT
+            else -> Consistency.INCONSISTENT
+        }
     }
 
-    override fun reapplyRuleSequence(sequence: RuleSequence) {
+    override fun reapplyRuleSequence(sequence: RuleSequence): Map<Consistency, Int> {
         val directLinks = linksFrom.values.flatten().filter { it.sequence == sequence }
+        val result = mutableMapOf<Consistency, Int>()
         for (directLink in directLinks) {
-            applyRuleSequence(directLink, sequence)
+            val consistency = applyRuleSequence(directLink, sequence)
+            result[consistency] = result.getOrDefault(consistency, 0) + 1
         }
+        return result
     }
 
     override fun suggestDeriveRuleSequences(word: Word): List<RuleSequence> {

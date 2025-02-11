@@ -2,6 +2,8 @@ package ru.yole.etymograph
 
 enum class WordKind { NAME, COMPOUND, DERIVED, RECONSTRUCTED, NORMAL }
 
+enum class Consistency { CONSISTENT, INCONSISTENT, BECOMES_CONSISTENT, BECOMES_INCONSISTENT }
+
 abstract class GraphRepository {
     abstract val id: String
     abstract val name: String
@@ -79,12 +81,12 @@ abstract class GraphRepository {
     abstract fun ruleSequencesForLanguage(language: Language): List<RuleSequence>
     abstract fun ruleSequencesFromLanguage(language: Language): List<RuleSequence>
     abstract fun ruleSequenceByName(name: String): RuleSequence?
-    abstract fun applyRuleSequence(link: Link, sequence: RuleSequence)
+    abstract fun applyRuleSequence(link: Link, sequence: RuleSequence): Consistency
     abstract fun suggestDeriveRuleSequences(word: Word): List<RuleSequence>
     abstract fun deriveThroughRuleSequence(word: Word, sequence: RuleSequence): Word?
     abstract fun findSequencesContainingRule(rule: Rule): List<RuleSequence>
     abstract fun findDerivationsWithSequence(sequence: RuleSequence): List<List<Link>>
-    abstract fun reapplyRuleSequence(sequence: RuleSequence)
+    abstract fun reapplyRuleSequence(sequence: RuleSequence): Map<Consistency, Int>
 
     abstract fun findOrAddWord(
         text: String,
