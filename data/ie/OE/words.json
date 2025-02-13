@@ -953,6 +953,9 @@
         "sourceRefs": [
             {
                 "refText": "https://bosworthtoller.com/734"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/ær#Old_English"
             }
         ]
     },
@@ -15242,6 +15245,262 @@
             {
                 "pubId": 5,
                 "refText": "331"
+            }
+        ]
+    },
+    {
+        "id": 6221,
+        "text": "adesa",
+        "gloss": "adze",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "2"
+            }
+        ]
+    },
+    {
+        "id": 6223,
+        "text": "afol",
+        "gloss": "strength, power",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "2"
+            }
+        ]
+    },
+    {
+        "id": 6225,
+        "text": "eġe",
+        "gloss": "fear",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "4"
+            }
+        ]
+    },
+    {
+        "id": 6227,
+        "text": "egle",
+        "gloss": "difficult",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "5"
+            }
+        ]
+    },
+    {
+        "id": 6229,
+        "text": "ægnan",
+        "gloss": "awns, chaff, refuse",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "5"
+            },
+            {
+                "refText": "https://bosworthtoller.com/37738"
+            }
+        ]
+    },
+    {
+        "id": 6231,
+        "text": "egl",
+        "gloss": "mote",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "5"
+            }
+        ]
+    },
+    {
+        "id": 6233,
+        "text": "eax",
+        "gloss": "axle",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "6"
+            }
+        ]
+    },
+    {
+        "id": 6235,
+        "text": "eahto\u001dda",
+        "gloss": "eighth",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "7"
+            }
+        ]
+    },
+    {
+        "id": 6237,
+        "text": "āfor",
+        "gloss": "vehement, dire, hateful",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "7"
+            }
+        ]
+    },
+    {
+        "id": 6239,
+        "text": "ād",
+        "gloss": "pyre, fire",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "8"
+            }
+        ]
+    },
+    {
+        "id": 6241,
+        "text": "āgan",
+        "gloss": "own, possess",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "8"
+            }
+        ]
+    },
+    {
+        "id": 6243,
+        "text": "āgen",
+        "gloss": "own",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "8"
+            }
+        ]
+    },
+    {
+        "id": 6245,
+        "text": "ācweorn",
+        "gloss": "squirrel",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "10"
+            }
+        ]
+    },
+    {
+        "id": 6247,
+        "text": "ǣled",
+        "gloss": "fire; fire blight",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "11"
+            }
+        ]
+    },
+    {
+        "id": 6249,
+        "text": "ǣmyrie",
+        "gloss": "embers",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "11"
+            }
+        ]
+    },
+    {
+        "id": 6251,
+        "text": "endlufon",
+        "gloss": "eleven",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "11"
+            }
+        ]
+    },
+    {
+        "id": 6253,
+        "text": "ār",
+        "gloss": "before",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "12"
+            }
+        ]
+    },
+    {
+        "id": 6255,
+        "text": "ā̆ttor",
+        "gloss": "poison",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "14"
+            }
+        ]
+    },
+    {
+        "id": 6257,
+        "text": "ǣðe",
+        "gloss": "qualified to swear an oath",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "15"
+            }
+        ]
+    },
+    {
+        "id": 6259,
+        "text": "āðum",
+        "gloss": "son-in-law; brother-in-law",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "15"
+            }
+        ]
+    },
+    {
+        "id": 6261,
+        "text": "ǣce",
+        "gloss": "eternal",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "17"
+            }
+        ]
+    },
+    {
+        "id": 6263,
+        "text": "acan",
+        "gloss": "ache",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "18"
+            }
+        ]
+    },
+    {
+        "id": 6265,
+        "text": "æcern",
+        "gloss": "tree fruit, acorn",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "18"
             }
         ]
     }

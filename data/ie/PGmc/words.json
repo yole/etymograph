@@ -3750,16 +3750,6 @@
         ]
     },
     {
-        "id": 6019,
-        "text": "aikwernô",
-        "gloss": "squirrel",
-        "sourceRefs": [
-            {
-                "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-Germanic/aikwernô#Proto-Germanic"
-            }
-        ]
-    },
-    {
         "id": 6023,
         "text": "niþer",
         "gloss": "down",
@@ -3911,5 +3901,258 @@
         "id": 6219,
         "text": "ahslō",
         "gloss": "shoulder-joint"
+    },
+    {
+        "id": 6220,
+        "text": "adesan-",
+        "gloss": "adze",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "2"
+            }
+        ]
+    },
+    {
+        "id": 6222,
+        "text": "afla-",
+        "gloss": "strength, power",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "2"
+            }
+        ]
+    },
+    {
+        "id": 6224,
+        "text": "agiz-",
+        "gloss": "fear",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "4"
+            }
+        ]
+    },
+    {
+        "id": 6226,
+        "text": "aglu-",
+        "gloss": "difficult",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "5"
+            }
+        ]
+    },
+    {
+        "id": 6228,
+        "text": "ahanō-",
+        "gloss": "chaff, awns",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "5"
+            }
+        ]
+    },
+    {
+        "id": 6230,
+        "text": "ahila-",
+        "gloss": "awn",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "5"
+            }
+        ]
+    },
+    {
+        "id": 6232,
+        "text": "ahsō-",
+        "gloss": "axle",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "6"
+            }
+        ]
+    },
+    {
+        "id": 6234,
+        "text": "ahtudan-",
+        "gloss": "eighth",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "7"
+            }
+        ]
+    },
+    {
+        "id": 6236,
+        "text": "aibra-",
+        "gloss": "harsh",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "7"
+            }
+        ]
+    },
+    {
+        "id": 6238,
+        "text": "aida-",
+        "gloss": "pyre",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "8"
+            }
+        ]
+    },
+    {
+        "id": 6240,
+        "text": "aigan-",
+        "gloss": "own, possess",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "8"
+            }
+        ]
+    },
+    {
+        "id": 6242,
+        "text": "aigena-",
+        "gloss": "own",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "8"
+            }
+        ]
+    },
+    {
+        "id": 6244,
+        "text": "aikwernan-",
+        "gloss": "squirrel",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "10"
+            }
+        ]
+    },
+    {
+        "id": 6246,
+        "text": "ailida-",
+        "gloss": "fire",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "11"
+            }
+        ]
+    },
+    {
+        "id": 6248,
+        "text": "aima-uzjōn-",
+        "gloss": "embers",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "11"
+            }
+        ]
+    },
+    {
+        "id": 6250,
+        "text": "ainalifa-",
+        "gloss": "eleven",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "11"
+            }
+        ]
+    },
+    {
+        "id": 6252,
+        "text": "airi",
+        "gloss": "early",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "12"
+            }
+        ]
+    },
+    {
+        "id": 6254,
+        "text": "aitra-",
+        "gloss": "poison; pus",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "14"
+            }
+        ]
+    },
+    {
+        "id": 6256,
+        "text": "aiþja-",
+        "gloss": "capable of taking an oath",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "15"
+            }
+        ]
+    },
+    {
+        "id": 6258,
+        "text": "aiþma-",
+        "gloss": "son-in-law",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "15"
+            }
+        ]
+    },
+    {
+        "id": 6260,
+        "text": "ajuki-",
+        "gloss": "eternal",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "17"
+            }
+        ]
+    },
+    {
+        "id": 6262,
+        "text": "akan-",
+        "gloss": "ache",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "18"
+            }
+        ]
+    },
+    {
+        "id": 6264,
+        "text": "akrana-",
+        "gloss": "tree fruit, acorn",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "18"
+            }
+        ]
     }
 ]
