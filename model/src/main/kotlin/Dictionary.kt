@@ -102,7 +102,7 @@ private fun tryFindBestMatch(word: Word, dictionaryWords: List<DictionaryWord>):
     return null
 }
 
-private fun isGlossSimilar(candidateGloss: String?, gloss: String?): Boolean {
+fun isGlossSimilar(candidateGloss: String?, gloss: String?): Boolean {
     return if (candidateGloss.isNullOrEmpty() || gloss.isNullOrEmpty())
         false
     else
