@@ -40,7 +40,7 @@ data class StarlingWord(
 
 fun parseStarlingWord(word: String): StarlingWord? {
     val m = wordPattern.matchEntire(word) ?: return null
-    val text = m.groupValues[1].removeMarkup().decodeStarling().removePrefix("*").substringBefore(' ')
+    val text = m.groupValues[1].removeMarkup().decodeStarling()
     val textVariants = if ('~' in text) {
         text.split('~').map { it.trim() }
     }
@@ -60,7 +60,12 @@ fun parseStarlingWord(word: String): StarlingWord? {
     } else {
         listOf(text)
     }
-    return StarlingWord(textVariants, m.groupValues[2], m.groupValues[3])
+    return StarlingWord(
+        textVariants.map {
+            it.substringBefore(' ').removePrefix("*")
+        },
+        m.groupValues[2], m.groupValues[3]
+    )
 }
 
 fun findWord(repo: GraphRepository, language: Language, starlingWord: StarlingWord): Word? {
