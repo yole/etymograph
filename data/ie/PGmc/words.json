@@ -3901,7 +3901,7 @@
     {
         "id": 6219,
         "text": "ahslō",
-        "gloss": "shoulder-joint"
+        "gloss": "shoulder-joint, shoulder, armpit"
     },
     {
         "id": 6220,
@@ -4268,8 +4268,7 @@
                 "pubId": 9,
                 "refText": "26"
             }
-        ],
-        "notes": "Ringe 2014:144 reconstructs 'anud-'"
+        ]
     },
     {
         "id": 6300,
@@ -4314,5 +4313,329 @@
                 "refText": "28"
             }
         ]
+    },
+    {
+        "id": 6310,
+        "text": "apan-",
+        "gloss": "monkey, ape",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "31"
+            }
+        ]
+    },
+    {
+        "id": 6312,
+        "text": "apla-"
+    },
+    {
+        "id": 6314,
+        "text": "aran-",
+        "gloss": "eagle",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "32"
+            }
+        ]
+    },
+    {
+        "id": 6316,
+        "text": "arhʷō-",
+        "gloss": "arrow",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "34"
+            }
+        ]
+    },
+    {
+        "id": 6318,
+        "text": "arwa-",
+        "gloss": "ready, fast",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "37"
+            }
+        ]
+    },
+    {
+        "id": 6320,
+        "text": "anud-",
+        "gloss": "duck",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "144"
+            }
+        ]
+    },
+    {
+        "id": 6321,
+        "text": "aska-",
+        "gloss": "ash",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "38"
+            }
+        ]
+    },
+    {
+        "id": 6323,
+        "text": "askōn-",
+        "gloss": "ashes",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "38"
+            }
+        ]
+    },
+    {
+        "id": 6325,
+        "text": "at",
+        "gloss": "at, to",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "39"
+            }
+        ]
+    },
+    {
+        "id": 6327,
+        "text": "audana-",
+        "gloss": "granted",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "41"
+            }
+        ]
+    },
+    {
+        "id": 6329,
+        "text": "aukan-",
+        "gloss": "grow",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "42"
+            }
+        ]
+    },
+    {
+        "id": 6331,
+        "text": "aujō-",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "42"
+            }
+        ]
+    },
+    {
+        "id": 6332,
+        "text": "augōn-",
+        "gloss": "eye",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "41"
+            }
+        ]
+    },
+    {
+        "id": 6333,
+        "text": "aþulja-",
+        "gloss": "noble",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "40"
+            }
+        ]
+    },
+    {
+        "id": 6334,
+        "text": "arga-",
+        "gloss": "cowardly, effeminate",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "34"
+            }
+        ]
+    },
+    {
+        "id": 6335,
+        "text": "arbja-",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "33"
+            }
+        ]
+    },
+    {
+        "id": 6336,
+        "text": "arbaidi-",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "33"
+            }
+        ]
+    },
+    {
+        "id": 6337,
+        "text": "ahtau",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "6"
+            }
+        ]
+    },
+    {
+        "id": 6338,
+        "text": "airi",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "12"
+            }
+        ]
+    },
+    {
+        "id": 6339,
+        "text": "airu-",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "13"
+            }
+        ]
+    },
+    {
+        "id": 6340,
+        "text": "aiza-",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "16"
+            }
+        ]
+    },
+    {
+        "id": 6341,
+        "text": "aizō-",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "17"
+            }
+        ]
+    },
+    {
+        "id": 6342,
+        "text": "ahiz-",
+        "gloss": "ear",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "5"
+            }
+        ]
+    },
+    {
+        "id": 6344,
+        "text": "ahslō-"
+    },
+    {
+        "id": 6346,
+        "text": "ahtō-",
+        "gloss": "consideration, attention",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "7"
+            }
+        ]
+    },
+    {
+        "id": 6348,
+        "text": "aik-",
+        "gloss": "oak",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "9"
+            }
+        ]
+    },
+    {
+        "id": 6350,
+        "text": "aina-",
+        "gloss": "one",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "11"
+            }
+        ]
+    },
+    {
+        "id": 6351,
+        "text": "ainahan-",
+        "gloss": "single",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "11"
+            }
+        ]
+    },
+    {
+        "id": 6353,
+        "text": "airu-",
+        "gloss": "messenger",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "13"
+            }
+        ]
+    },
+    {
+        "id": 6355,
+        "text": "aiza-",
+        "gloss": "ore, brass",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "16"
+            }
+        ]
+    },
+    {
+        "id": 6357,
+        "text": "aizō-",
+        "gloss": "respect, benevolence",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "17"
+            }
+        ]
+    },
+    {
+        "id": 6359,
+        "text": "ainahan-",
+        "gloss": "sole"
     }
 ]

@@ -15673,5 +15673,185 @@
                 "refText": "28"
             }
         ]
+    },
+    {
+        "id": 6311,
+        "text": "apa",
+        "gloss": "monkey, ape",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "31"
+            }
+        ]
+    },
+    {
+        "id": 6313,
+        "text": "æpl"
+    },
+    {
+        "id": 6315,
+        "text": "earn",
+        "gloss": "eagle",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "32"
+            }
+        ]
+    },
+    {
+        "id": 6317,
+        "text": "earh",
+        "gloss": "arrow",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "34"
+            }
+        ]
+    },
+    {
+        "id": 6319,
+        "text": "earu",
+        "gloss": "quick, ready, prepared",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "37"
+            }
+        ]
+    },
+    {
+        "id": 6322,
+        "text": "æsc",
+        "gloss": "ash",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "38"
+            }
+        ]
+    },
+    {
+        "id": 6324,
+        "text": "æsce",
+        "gloss": "ashes",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "38"
+            }
+        ]
+    },
+    {
+        "id": 6326,
+        "text": "æt",
+        "gloss": "at",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "39"
+            }
+        ]
+    },
+    {
+        "id": 6328,
+        "text": "ēaden",
+        "gloss": "granted",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "41"
+            }
+        ]
+    },
+    {
+        "id": 6330,
+        "text": "ēacian",
+        "gloss": "grow",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "42"
+            }
+        ]
+    },
+    {
+        "id": 6343,
+        "text": "ēar",
+        "gloss": "ear",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "5"
+            }
+        ]
+    },
+    {
+        "id": 6345,
+        "text": "eaxl",
+        "gloss": "armpit",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "6"
+            }
+        ]
+    },
+    {
+        "id": 6347,
+        "text": "eaht",
+        "gloss": "deliberation",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "7"
+            }
+        ]
+    },
+    {
+        "id": 6349,
+        "text": "āc",
+        "gloss": "oak",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "9"
+            }
+        ]
+    },
+    {
+        "id": 6354,
+        "text": "ār",
+        "gloss": "messenger",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "13"
+            }
+        ]
+    },
+    {
+        "id": 6356,
+        "text": "ār",
+        "gloss": "ore, brass, copper",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "16"
+            }
+        ]
+    },
+    {
+        "id": 6358,
+        "text": "ār",
+        "gloss": "honor, dignity; kindness, mercy",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "17"
+            }
+        ]
     }
 ]
