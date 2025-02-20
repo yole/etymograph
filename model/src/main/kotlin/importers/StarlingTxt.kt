@@ -68,11 +68,11 @@ fun parseStarlingWord(word: String): StarlingWord? {
     )
 }
 
-fun findWord(repo: GraphRepository, language: Language, starlingWord: StarlingWord): Word? {
+fun findWord(repo: GraphRepository, language: Language, starlingWord: StarlingWord): List<Word> {
     val text = starlingWord.textVariants[0]
     val words = repo.wordsByText(language, text)
     if (words.isNotEmpty()) {
-        return words.first()
+        return words.filter { isGlossSimilar(starlingWord.gloss, it.getOrComputeGloss(repo)) }
     }
     val fuzzyMatches = repo.allWords(language).filter {
         val normText = it.text.replace('ċ', 'c').replace('ġ', 'g')
@@ -84,9 +84,9 @@ fun findWord(repo: GraphRepository, language: Language, starlingWord: StarlingWo
         }
     }
     if (fuzzyMatches.isNotEmpty()) {
-        return fuzzyMatches.first()
+        return fuzzyMatches.filter { isGlossSimilar(starlingWord.gloss, it.getOrComputeGloss(repo)) }
     }
-    return null
+    return emptyList()
 }
 
 fun findEtymology(repo: GraphRepository, word: Word, language: Language): Word? {
@@ -133,8 +133,20 @@ fun main(args: Array<String>) {
             continue
         }
 
-        val pgmcWord = findWord(ieRepo, pgmc, baseWord)
-        val oeWord = findWord(ieRepo, oe, translationWord)
+        val pgmcWords = findWord(ieRepo, pgmc, baseWord)
+        if (pgmcWords.size > 1) {
+            println("Ambiguous PGmc word: $line")
+            continue
+        }
+        val pgmcWord = pgmcWords.singleOrNull()
+
+        val oeWords = findWord(ieRepo, oe, translationWord)
+        if (oeWords.size > 1) {
+            println("Ambiguous OE word: $line")
+            continue
+        }
+        val oeWord = oeWords.singleOrNull()
+
         val oeEtymology = oeWord?.let { findEtymology(ieRepo, it, pgmc) }
         val pgmcNew = if (pgmcWord == null) { if (oeEtymology != null) " [<->]" else " [NEW]" } else ""
         val oeNew = if (oeWord == null) " [NEW]" else ""
@@ -144,10 +156,10 @@ fun main(args: Array<String>) {
             continue
         }
 
-        println("${baseWord.textVariants[0]} [${baseWord.classes}] '${baseWord.gloss}'$pgmcNew > ${translationWord.textVariants[0]}$oeNew '${translationGloss}'")
-
         if (pgmcWord == null && oeWord == null) {
-            if ("egede" in translationWord.textVariants) continue
+            if ("airi" in baseWord.textVariants || "egede" in translationWord.textVariants) {
+                continue
+            }
 
             val pgmcNewWord = ieRepo.findOrAddWord(baseWord.textVariants[0], pgmc, baseWord.gloss,
                 source = listOf(SourceRef(kroonen.id, page)))
@@ -156,10 +168,28 @@ fun main(args: Array<String>) {
             val link = ieRepo.addLink(oeNewWord, pgmcNewWord, Link.Origin)
             ieRepo.applyRuleSequence(link, sequence)
 
+            println("IMPORT ${baseWord.textVariants[0]} [${baseWord.classes}] '${baseWord.gloss}'$pgmcNew > ${translationWord.textVariants[0]}$oeNew '${translationGloss}'")
+
             imported++
             if (imported == 5) {
                 break
             }
+        }
+        else if (pgmcWord == null && oeEtymology != null) {
+            val pgmcNewWord = ieRepo.findOrAddWord(baseWord.textVariants[0], pgmc, null,
+                source = listOf(SourceRef(kroonen.id, page)))
+            ieRepo.addLink(pgmcNewWord, oeEtymology, Link.Variation)
+
+            println("VARIANT ${baseWord.textVariants[0]} [${baseWord.classes}] '${baseWord.gloss}'$pgmcNew > ${translationWord.textVariants[0]}$oeNew '${translationGloss}'")
+
+            imported++
+            if (imported == 5) {
+                break
+            }
+
+        }
+        else {
+            println("SKIP ${baseWord.textVariants[0]} [${baseWord.classes}] '${baseWord.gloss}'$pgmcNew > ${translationWord.textVariants[0]}$oeNew '${translationGloss}'")
         }
     }
 
