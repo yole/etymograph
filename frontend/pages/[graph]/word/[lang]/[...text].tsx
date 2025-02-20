@@ -420,7 +420,8 @@ function SingleWord({word}: { word: WordViewModel }) {
     }
 
     function canClearGloss() {
-        return (!word.glossComputed || word.pos !== null) && word.linksFrom.find(l => l.typeId === '>')
+        return (!word.glossComputed || word.pos !== null) &&
+            word.linksFrom.find(l => l.typeId === '>' || l.typeId == '=')
     }
 
     function clearGloss() {
