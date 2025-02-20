@@ -2763,7 +2763,8 @@
                 "pubId": 5,
                 "refText": "234"
             }
-        ]
+        ],
+        "notes": "Kroonen 2013:12 cites this as 'airi'"
     },
     {
         "id": 3145,
@@ -3948,7 +3949,7 @@
     },
     {
         "id": 6228,
-        "text": "ahanō-",
+        "text": "aganō-",
         "gloss": "chaff, awns",
         "sourceRefs": [
             {
@@ -3959,7 +3960,7 @@
     },
     {
         "id": 6230,
-        "text": "ahila-",
+        "text": "agila-",
         "gloss": "awn",
         "sourceRefs": [
             {
@@ -4036,7 +4037,7 @@
     },
     {
         "id": 6244,
-        "text": "aikwernan-",
+        "text": "aikʷernan-",
         "gloss": "squirrel",
         "sourceRefs": [
             {
@@ -4075,17 +4076,6 @@
             {
                 "pubId": 9,
                 "refText": "11"
-            }
-        ]
-    },
-    {
-        "id": 6252,
-        "text": "airi",
-        "gloss": "early",
-        "sourceRefs": [
-            {
-                "pubId": 9,
-                "refText": "12"
             }
         ]
     },
@@ -4130,6 +4120,10 @@
             {
                 "pubId": 9,
                 "refText": "17"
+            },
+            {
+                "pubId": 5,
+                "refText": "252"
             }
         ]
     },
@@ -4152,6 +4146,172 @@
             {
                 "pubId": 9,
                 "refText": "18"
+            }
+        ]
+    },
+    {
+        "id": 6278,
+        "text": "akwesī-",
+        "gloss": "axe",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "19"
+            }
+        ]
+    },
+    {
+        "id": 6280,
+        "text": "albut-",
+        "gloss": "swan",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "20"
+            }
+        ]
+    },
+    {
+        "id": 6282,
+        "text": "alda-",
+        "gloss": "(grown) old",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "20"
+            }
+        ]
+    },
+    {
+        "id": 6284,
+        "text": "aldra-",
+        "gloss": "age, life(span)",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "21"
+            }
+        ]
+    },
+    {
+        "id": 6286,
+        "text": "algōjan-",
+        "gloss": "protect",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "21"
+            }
+        ]
+    },
+    {
+        "id": 6288,
+        "text": "airō-",
+        "gloss": "oar",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "13"
+            }
+        ]
+    },
+    {
+        "id": 6290,
+        "text": "alh-",
+        "gloss": "temple",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "22"
+            }
+        ]
+    },
+    {
+        "id": 6292,
+        "text": "alkōn-",
+        "gloss": "auk",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "23"
+            }
+        ]
+    },
+    {
+        "id": 6294,
+        "text": "aluþ-",
+        "gloss": "ale, beer",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "23"
+            }
+        ]
+    },
+    {
+        "id": 6296,
+        "text": "amaitjō-",
+        "gloss": "ant",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "24"
+            }
+        ]
+    },
+    {
+        "id": 6298,
+        "text": "anad-",
+        "gloss": "duck",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "26"
+            }
+        ],
+        "notes": "Ringe 2014:144 reconstructs 'anud-'"
+    },
+    {
+        "id": 6300,
+        "text": "anadan-",
+        "gloss": "breath; spirit",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "26"
+            }
+        ]
+    },
+    {
+        "id": 6302,
+        "text": "andiz",
+        "gloss": "earlier, rather",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "27"
+            }
+        ]
+    },
+    {
+        "id": 6304,
+        "text": "angula-",
+        "gloss": "hook, tip",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "28"
+            }
+        ]
+    },
+    {
+        "id": 6306,
+        "text": "angwu-",
+        "gloss": "narrow",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "28"
             }
         ]
     }

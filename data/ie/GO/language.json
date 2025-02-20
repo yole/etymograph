@@ -339,7 +339,8 @@
         {
             "id": 6165,
             "graphemes": [
-                "o"
+                "o",
+                "ō"
             ],
             "sound": "o:",
             "classes": [
@@ -353,5 +354,116 @@
     ],
     "diphthongs": [
         "iu"
+    ],
+    "pos": [
+        {
+            "name": "Noun",
+            "abbreviation": "N"
+        },
+        {
+            "name": "Verb",
+            "abbreviation": "V"
+        }
+    ],
+    "grammaticalCategories": [
+        {
+            "name": "Number",
+            "pos": [
+                "N",
+                "V"
+            ],
+            "values": [
+                {
+                    "name": "Singular",
+                    "abbreviation": "SG"
+                },
+                {
+                    "name": "Dual",
+                    "abbreviation": "DU"
+                },
+                {
+                    "name": "Plural",
+                    "abbreviation": "PL"
+                }
+            ]
+        },
+        {
+            "name": "Person",
+            "pos": [
+                "V"
+            ],
+            "values": [
+                {
+                    "name": "First person",
+                    "abbreviation": "1"
+                },
+                {
+                    "name": "Second person",
+                    "abbreviation": "2"
+                },
+                {
+                    "name": "Third person",
+                    "abbreviation": "3"
+                }
+            ]
+        }
+    ],
+    "wordClasses": [
+        {
+            "name": "Strong verb class",
+            "pos": [
+                "V"
+            ],
+            "values": [
+                {
+                    "name": "first",
+                    "abbreviation": "v-strong-1"
+                },
+                {
+                    "name": "second",
+                    "abbreviation": "v-strong-2"
+                },
+                {
+                    "name": "third",
+                    "abbreviation": "v-strong-3"
+                },
+                {
+                    "name": "fourth",
+                    "abbreviation": "v-strong-4"
+                },
+                {
+                    "name": "fifth",
+                    "abbreviation": "v-strong-5"
+                },
+                {
+                    "name": "sixth",
+                    "abbreviation": "v-strong-6"
+                },
+                {
+                    "name": "seventh",
+                    "abbreviation": "v-strong-7"
+                }
+            ]
+        },
+        {
+            "name": "Weak verb class",
+            "pos": [
+                "V"
+            ],
+            "values": [
+                {
+                    "name": "weak-first",
+                    "abbreviation": "v-weak-1"
+                },
+                {
+                    "name": "weak-second",
+                    "abbreviation": "v-weak-2"
+                },
+                {
+                    "name": "weak-third",
+                    "abbreviation": "v-weak-3"
+                }
+            ]
+        }
     ]
 }

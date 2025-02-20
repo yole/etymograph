@@ -10836,6 +10836,7 @@
     {
         "id": 3395,
         "text": "rā",
+        "gloss": "red deer",
         "sourceRefs": [
             {
                 "pubId": 5,
@@ -15255,7 +15256,7 @@
         "sourceRefs": [
             {
                 "pubId": 9,
-                "refText": "2"
+                "refText": "2; https://bosworthtoller.com/258"
             }
         ]
     },
@@ -15314,6 +15315,9 @@
             {
                 "pubId": 9,
                 "refText": "5"
+            },
+            {
+                "refText": "https://bosworthtoller.com/43900"
             }
         ]
     },
@@ -15428,19 +15432,8 @@
         ]
     },
     {
-        "id": 6253,
-        "text": "ār",
-        "gloss": "before",
-        "sourceRefs": [
-            {
-                "pubId": 9,
-                "refText": "12"
-            }
-        ]
-    },
-    {
         "id": 6255,
-        "text": "ā̆ttor",
+        "text": "āttor",
         "gloss": "poison",
         "sourceRefs": [
             {
@@ -15479,6 +15472,10 @@
             {
                 "pubId": 9,
                 "refText": "17"
+            },
+            {
+                "pubId": 5,
+                "refText": "252"
             }
         ]
     },
@@ -15501,6 +15498,179 @@
             {
                 "pubId": 9,
                 "refText": "18"
+            }
+        ]
+    },
+    {
+        "id": 6279,
+        "text": "æx",
+        "gloss": "axe",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "19"
+            }
+        ]
+    },
+    {
+        "id": 6281,
+        "text": "ielfetu",
+        "gloss": "swan",
+        "pos": "N",
+        "classes": [
+            "fem",
+            "o-stem"
+        ],
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "20"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/ielfetu#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 6283,
+        "text": "eald",
+        "gloss": "(grown) old",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "20"
+            }
+        ]
+    },
+    {
+        "id": 6285,
+        "text": "aldor",
+        "gloss": "life; age",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "21"
+            }
+        ]
+    },
+    {
+        "id": 6287,
+        "text": "ealgian",
+        "gloss": "defend",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "21"
+            }
+        ]
+    },
+    {
+        "id": 6289,
+        "text": "ār",
+        "gloss": "oar",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "13"
+            }
+        ]
+    },
+    {
+        "id": 6291,
+        "text": "ealh",
+        "gloss": "temple",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "22"
+            }
+        ]
+    },
+    {
+        "id": 6293,
+        "text": "ealce",
+        "gloss": "auk",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "23"
+            }
+        ]
+    },
+    {
+        "id": 6295,
+        "text": "ealoþ",
+        "gloss": "ale",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "23"
+            }
+        ]
+    },
+    {
+        "id": 6297,
+        "text": "æmette",
+        "gloss": "ant",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "24"
+            }
+        ]
+    },
+    {
+        "id": 6299,
+        "text": "ænid",
+        "gloss": "duck",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "26"
+            }
+        ]
+    },
+    {
+        "id": 6301,
+        "text": "anda",
+        "gloss": "envy, anger, zeal",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "26"
+            }
+        ]
+    },
+    {
+        "id": 6303,
+        "text": "end",
+        "gloss": "formerly, of old",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "27"
+            }
+        ]
+    },
+    {
+        "id": 6305,
+        "text": "ongel",
+        "gloss": "fishing-rod",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "28"
+            }
+        ]
+    },
+    {
+        "id": 6307,
+        "text": "enge",
+        "gloss": "narrow",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "28"
             }
         ]
     }

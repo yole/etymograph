@@ -1,1 +1,29 @@
-[]
+[
+    {
+        "id": 6266,
+        "text": "hilpan",
+        "gloss": "help",
+        "pos": "V",
+        "classes": [
+            "v-strong-1"
+        ]
+    },
+    {
+        "id": 6276,
+        "text": "nasjan",
+        "gloss": "save",
+        "pos": "V",
+        "classes": [
+            "v-weak-1"
+        ]
+    },
+    {
+        "id": 6277,
+        "text": "sōkjan",
+        "gloss": "seek",
+        "pos": "V",
+        "classes": [
+            "v-weak-1"
+        ]
+    }
+]

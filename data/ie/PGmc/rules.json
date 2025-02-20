@@ -40,44 +40,20 @@
                     "members": [
                         {
                             "type": "relPhoneme",
+                            "cls": "non-word-initial",
                             "parameter": "b",
                             "relative": false
                         },
                         {
-                            "type": "or",
-                            "members": [
-                                {
-                                    "type": "and",
-                                    "members": [
-                                        {
-                                            "type": "relPhoneme",
-                                            "relativeIndex": -1,
-                                            "cls": "vowel"
-                                        },
-                                        {
-                                            "type": "relPhoneme",
-                                            "relativeIndex": 1,
-                                            "cls": "vowel"
-                                        }
-                                    ]
-                                },
-                                {
-                                    "type": "relPhoneme",
-                                    "relativeIndex": -1,
-                                    "parameter": "r"
-                                },
-                                {
-                                    "type": "relPhoneme",
-                                    "relativeIndex": -1,
-                                    "parameter": "l"
-                                }
-                            ]
+                            "type": "relPhoneme",
+                            "relativeIndex": -1,
+                            "negated": true,
+                            "parameter": "m"
                         }
                     ]
                 }
             }
-        ],
-        "notes": "The rule given by Ringe is that all non-word-initial 'b' are actually β"
+        ]
     },
     {
         "id": 6167,

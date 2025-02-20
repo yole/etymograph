@@ -2291,6 +2291,10 @@
             {
                 "pubId": 5,
                 "refText": "142"
+            },
+            {
+                "pubId": 6,
+                "refText": "5.3"
             }
         ]
     },
@@ -5919,6 +5923,10 @@
             {
                 "pubId": 5,
                 "refText": "314 (6.9.3)"
+            },
+            {
+                "pubId": 6,
+                "refText": "7.45"
             }
         ]
     },
@@ -6283,6 +6291,40 @@
                         }
                     ]
                 }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "SoundInserted",
+                        "args": [
+                            "u"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "cls": "word-final",
+                            "parameter": "m",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": -1,
+                            "negated": true,
+                            "parameter": "r"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": -1,
+                            "negated": true,
+                            "parameter": "l"
+                        }
+                    ]
+                },
+                "comment": "Ringe 2014:331"
             }
         ],
         "sourceRefs": [
@@ -10010,6 +10052,66 @@
             {
                 "pubId": 6,
                 "refText": "5.155"
+            }
+        ]
+    },
+    {
+        "id": 6308,
+        "name": "north-pwgmc-nasalized-rounding-short",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "o"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "relPhoneme",
+                    "cls": "stressed",
+                    "parameter": "ą",
+                    "relative": false
+                }
+            }
+        ],
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "145"
+            }
+        ]
+    },
+    {
+        "id": 6309,
+        "name": "north-pwgmc-nasalized-unrounding",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "a"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "relPhoneme",
+                    "cls": "stressed",
+                    "parameter": "ą",
+                    "relative": false
+                }
+            }
+        ],
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "145"
             }
         ]
     }
