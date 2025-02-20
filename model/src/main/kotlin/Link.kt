@@ -35,4 +35,8 @@ class Compound(
 ) : LangEntity(id, source, notes) {
     fun isDerivation(): Boolean =
         components.any { c -> c.pos == KnownPartsOfSpeech.preverb.abbreviation || c.pos == KnownPartsOfSpeech.affix.abbreviation }
+
+    fun headComponent(): Word? {
+        return headIndex?.let { components.getOrNull(it) }
+    }
 }

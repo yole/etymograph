@@ -132,8 +132,8 @@ class LeafRuleCondition(
         }
         else {
             val compound = graph.findCompoundsByCompoundWord(word).singleOrNull()
-            compound?.headIndex?.let {
-                classes += compound.components[it].classes
+            compound?.headComponent()?.let {
+                classes += it.classes
             }
         }
 

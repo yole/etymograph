@@ -243,8 +243,7 @@ class Word(
             return pos
         }
         for (compound in graph.findCompoundsByCompoundWord(this)) {
-            val head = compound.headIndex?.let { compound.components[it] }
-            head?.pos?.let { return it }
+            compound.headComponent()?.pos?.let { return it }
         }
         return null
     }

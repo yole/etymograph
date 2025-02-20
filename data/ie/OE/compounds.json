@@ -25,14 +25,6 @@
         "headIndex": 1
     },
     {
-        "id": 1221,
-        "compoundId": 1191,
-        "componentIds": [
-            1127
-        ],
-        "headIndex": 1
-    },
-    {
         "id": 2243,
         "compoundId": 306,
         "componentIds": [
@@ -386,5 +378,14 @@
             5993,
             3605
         ]
+    },
+    {
+        "id": 6360,
+        "compoundId": 1191,
+        "componentIds": [
+            298,
+            1127
+        ],
+        "headIndex": 1
     }
 ]
