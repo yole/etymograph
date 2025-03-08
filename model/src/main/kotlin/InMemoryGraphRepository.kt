@@ -625,6 +625,9 @@ open class InMemoryGraphRepository : GraphRepository() {
         sequence: RuleSequence?,
         source: List<SourceRef>, notes: String?
     ): Link {
+        if (fromEntity.id == toEntity.id) {
+            throw IllegalArgumentException("Cannot link entity to itself ($fromEntity)")
+        }
         val existingLink = findLink(fromEntity, toEntity, type)
         if (existingLink != null) {
             throw IllegalArgumentException("Link already exists")
@@ -633,7 +636,7 @@ open class InMemoryGraphRepository : GraphRepository() {
         val allLinkedEntities = mutableSetOf<Int>()
         collectLinkedEntitiesRecursive(fromEntity, allLinkedEntities, type)
         if (toEntity.id in allLinkedEntities) {
-            throw IllegalArgumentException("Cycles in links are not allowed")
+            throw IllegalArgumentException("Cycles in links are not allowed ($fromEntity <-> $toEntity)")
         }
 
         return createLink(fromEntity, toEntity, type, rules, sequence, source, notes).also {
