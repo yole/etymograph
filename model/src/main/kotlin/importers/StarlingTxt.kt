@@ -3,6 +3,7 @@ package ru.yole.etymograph.importers
 import ru.yole.etymograph.*
 import java.io.File
 import java.nio.charset.Charset
+import java.nio.file.Files
 import java.nio.file.Path
 
 val wordPattern = Regex("(.+?)( \\[(.+)])? `(.+)'")
@@ -106,6 +107,8 @@ fun main(args: Array<String>) {
     val starlingFile = File(args[0])
     val lines = starlingFile.readLines(Charset.forName("iso-8859-1")).drop(1)
 
+    val skiplist = if (args.size > 1) Files.readAllLines(Path.of(args[1])) else emptyList()
+
     var imported = 0
 
     val kroonen = ieRepo.allPublications().find { it.refId == "Kroonen 2013" }!!
@@ -153,15 +156,15 @@ fun main(args: Array<String>) {
         val pgmcNew = if (pgmcWord == null) { if (oeEtymology != null) " [<->]" else " [NEW]" } else ""
         val oeNew = if (oeWord == null) " [NEW]" else ""
 
+        if (baseWord.textVariants.any { it in skiplist } || translationWord.textVariants.any { it in skiplist }) {
+            continue
+        }
+
         if (pgmcWord != null && oeWord != null) {
             continue
         }
 
         if (pgmcWord == null && oeWord == null) {
-            if ("airi" in baseWord.textVariants || "egede" in translationWord.textVariants) {
-                continue
-            }
-
             val pgmcNewWord = ieRepo.findOrAddWord(baseWord.textVariants[0], pgmc, baseWord.gloss,
                 source = listOf(SourceRef(kroonen.id, page)))
             val oeNewWord = ieRepo.findOrAddWord(translationWord.textVariants[0], oe, translationGloss,
