@@ -5,7 +5,7 @@ import java.io.File
 import java.nio.charset.Charset
 import java.nio.file.Path
 
-val wordPattern = Regex("(.+) \\[(.+)] `(.+)'")
+val wordPattern = Regex("(.+?)( \\[(.+)])? `(.+)'")
 
 fun String.removeMarkup(): String {
     return replace("\\B", "")
@@ -64,7 +64,7 @@ fun parseStarlingWord(word: String): StarlingWord? {
         textVariants.map {
             it.substringBefore(' ').removePrefix("*")
         },
-        m.groupValues[2], m.groupValues[3]
+        m.groupValues[3], m.groupValues[4]
     )
 }
 
