@@ -125,7 +125,7 @@ class StarlingImporter(
 
     fun importLine(line: String) {
         var importLogged = false
-        val (base, translation, page) = line.trim().split('#')
+        val (base, translation, page) = line.replace("%Á", "`").trim().split('#')
         if (translation.isEmpty()) {
             return
 
