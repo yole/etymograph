@@ -184,6 +184,8 @@ class StarlingImporter(
                 source = source)
             if (pgmcNewWord.id != oeEtymology.id) {
                 repo.addLink(pgmcNewWord, oeEtymology, Link.Variation)
+                val link = repo.addLink(oeWord, pgmcNewWord, Link.Origin, source = source)
+                repo.applyRuleSequence(link, sequence)
                 println("VARIANT ${baseWord.textVariants[0]} [${baseWord.classes}] '${baseWord.gloss}'$pgmcNew > ${translationWord.textVariants[0]}$oeNew '${translationGloss}'")
                 importLogged = true
             }
