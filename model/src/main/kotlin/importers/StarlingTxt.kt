@@ -70,22 +70,23 @@ fun parseStarlingWord(word: String): StarlingWord? {
 }
 
 fun findWord(repo: GraphRepository, language: Language, starlingWord: StarlingWord, gloss: String): List<Word> {
-    val text = starlingWord.textVariants[0]
-    val words = repo.wordsByText(language, text)
-    if (words.isNotEmpty()) {
-        return words.filter { isGlossSimilar(gloss, it.getOrComputeGloss(repo)) || isGlossSimilar(gloss, it.fullGloss) }
-    }
-    val fuzzyMatches = repo.allWords(language).filter {
-        val normText = it.text.replace('ċ', 'c').replace('ġ', 'g')
-        if (text.endsWith('-')) {
-            normText.startsWith(text.removeSuffix("-"))
+    for (text in starlingWord.textVariants) {
+        val words = repo.wordsByText(language, text)
+        if (words.isNotEmpty()) {
+            return words.filter { isGlossSimilar(gloss, it.getOrComputeGloss(repo)) || isGlossSimilar(gloss, it.fullGloss) }
         }
-        else {
-            normText == text
+        val fuzzyMatches = repo.allWords(language).filter {
+            val normText = it.text.replace('ċ', 'c').replace('ġ', 'g')
+            if (text.endsWith('-')) {
+                normText.startsWith(text.removeSuffix("-"))
+            }
+            else {
+                normText == text
+            }
         }
-    }
-    if (fuzzyMatches.isNotEmpty()) {
-        return fuzzyMatches.filter { isGlossSimilar(gloss, it.getOrComputeGloss(repo)) || isGlossSimilar(gloss, it.fullGloss) }
+        if (fuzzyMatches.isNotEmpty()) {
+            return fuzzyMatches.filter { isGlossSimilar(gloss, it.getOrComputeGloss(repo)) || isGlossSimilar(gloss, it.fullGloss) }
+        }
     }
     return emptyList()
 }
@@ -165,6 +166,13 @@ fun main(args: Array<String>) {
         if (pgmcWord == null && oeWord == null) {
             val pgmcNewWord = ieRepo.findOrAddWord(baseWord.textVariants[0], pgmc, baseWord.gloss,
                 source = listOf(SourceRef(kroonen.id, page)))
+
+            for (variant in baseWord.textVariants.drop(1)) {
+                val pgmcVariant = ieRepo.findOrAddWord(variant, pgmc, null,
+                    source = listOf(SourceRef(kroonen.id, page)))
+                ieRepo.addLink(pgmcVariant, pgmcNewWord, Link.Variation)
+            }
+
             val oeNewWord = ieRepo.findOrAddWord(translationWord.textVariants[0], oe, translationGloss,
                 source = listOf(SourceRef(kroonen.id, page)))
             val link = ieRepo.addLink(oeNewWord, pgmcNewWord, Link.Origin)
@@ -186,6 +194,11 @@ fun main(args: Array<String>) {
         else if (pgmcWord == null) {
             val pgmcNewWord = ieRepo.findOrAddWord(baseWord.textVariants[0], pgmc, baseWord.gloss,
                 source = listOf(SourceRef(kroonen.id, page)))
+            for (variant in baseWord.textVariants.drop(1)) {
+                val pgmcVariant = ieRepo.findOrAddWord(variant, pgmc, null,
+                    source = listOf(SourceRef(kroonen.id, page)))
+                ieRepo.addLink(pgmcVariant, pgmcNewWord, Link.Variation)
+            }
 
             val link = ieRepo.addLink(oeWord!!, pgmcNewWord, Link.Origin)
             ieRepo.applyRuleSequence(link, sequence)
