@@ -145,16 +145,16 @@ class StarlingImporter(
 
         val pgmcWords = findWord(fromLang, baseWord, baseWord.gloss)
         if (pgmcWords.size > 1) {
-            println("Ambiguous PGmc word: $line")
+            println("Ambiguous PGmc word: ${pgmcWords.joinToString(", ")} in $line")
             return
         }
         val pgmcWord = pgmcWords.singleOrNull()
 
         val translationGloss = if (translationWord.gloss == "id.") baseWord.gloss else translationWord.gloss
 
-        val oeWords = findWord(toLang   , translationWord, translationGloss)
+        val oeWords = findWord(toLang, translationWord, translationGloss)
         if (oeWords.size > 1) {
-            println("Ambiguous OE word: $line")
+            println("Ambiguous OE word: ${oeWords.joinToString(", ")} in $line")
             return
         }
         val oeWord = oeWords.singleOrNull()
