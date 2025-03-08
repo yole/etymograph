@@ -111,6 +111,18 @@ class StarlingImporter(
         }
     }
 
+    fun createWordWithVariants(baseWord: StarlingWord, language: Language, source: List<SourceRef>, gloss: String? = null): Word {
+        val newWord = repo.findOrAddWord(baseWord.textVariants[0], language, gloss ?: baseWord.gloss,
+            source = source)
+
+        for (variant in baseWord.textVariants.drop(1)) {
+            val pgmcVariant = repo.findOrAddWord(variant, fromLang, null,
+                source = source)
+            repo.addLink(pgmcVariant, newWord, Link.Variation)
+        }
+        return newWord
+    }
+
     fun importLine(line: String) {
         var importLogged = false
         val (base, translation, page) = line.trim().split('#')
@@ -162,17 +174,8 @@ class StarlingImporter(
         val source = listOf(SourceRef(sourcePub, page))
 
         if (pgmcWord == null && oeWord == null) {
-            val pgmcNewWord = repo.findOrAddWord(baseWord.textVariants[0], fromLang, baseWord.gloss,
-                source = source)
-
-            for (variant in baseWord.textVariants.drop(1)) {
-                val pgmcVariant = repo.findOrAddWord(variant, fromLang, null,
-                    source = source)
-                repo.addLink(pgmcVariant, pgmcNewWord, Link.Variation)
-            }
-
-            val oeNewWord = repo.findOrAddWord(translationWord.textVariants[0], toLang, translationGloss,
-                source = source)
+            val pgmcNewWord = createWordWithVariants(baseWord, fromLang, source)
+            val oeNewWord = createWordWithVariants(translationWord, toLang, source, translationGloss)
             val link = repo.addLink(oeNewWord, pgmcNewWord, Link.Origin, source = source)
             repo.applyRuleSequence(link, sequence)
         }
@@ -190,13 +193,7 @@ class StarlingImporter(
             }
         }
         else if (pgmcWord == null) {
-            val pgmcNewWord = repo.findOrAddWord(baseWord.textVariants[0], fromLang, baseWord.gloss,
-                source = source)
-            for (variant in baseWord.textVariants.drop(1)) {
-                val pgmcVariant = repo.findOrAddWord(variant, fromLang, null,
-                    source = source)
-                repo.addLink(pgmcVariant, pgmcNewWord, Link.Variation)
-            }
+            val pgmcNewWord = createWordWithVariants(baseWord, fromLang, source)
 
             val link = repo.addLink(oeWord!!, pgmcNewWord, Link.Origin, source = source)
             repo.applyRuleSequence(link, sequence)
