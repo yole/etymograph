@@ -164,9 +164,11 @@ fun main(args: Array<String>) {
             continue
         }
 
+        val source = listOf(SourceRef(kroonen.id, page))
+
         if (pgmcWord == null && oeWord == null) {
             val pgmcNewWord = ieRepo.findOrAddWord(baseWord.textVariants[0], pgmc, baseWord.gloss,
-                source = listOf(SourceRef(kroonen.id, page)))
+                source = source)
 
             for (variant in baseWord.textVariants.drop(1)) {
                 val pgmcVariant = ieRepo.findOrAddWord(variant, pgmc, null,
@@ -176,12 +178,12 @@ fun main(args: Array<String>) {
 
             val oeNewWord = ieRepo.findOrAddWord(translationWord.textVariants[0], oe, translationGloss,
                 source = listOf(SourceRef(kroonen.id, page)))
-            val link = ieRepo.addLink(oeNewWord, pgmcNewWord, Link.Origin)
+            val link = ieRepo.addLink(oeNewWord, pgmcNewWord, Link.Origin, source = source)
             ieRepo.applyRuleSequence(link, sequence)
         }
         else if (pgmcWord == null && oeEtymology != null) {
             val pgmcNewWord = ieRepo.findOrAddWord(baseWord.textVariants[0], pgmc, null,
-                source = listOf(SourceRef(kroonen.id, page)))
+                source = source)
             if (pgmcNewWord.id != oeEtymology.id) {
                 ieRepo.addLink(pgmcNewWord, oeEtymology, Link.Variation)
                 println("VARIANT ${baseWord.textVariants[0]} [${baseWord.classes}] '${baseWord.gloss}'$pgmcNew > ${translationWord.textVariants[0]}$oeNew '${translationGloss}'")
@@ -194,14 +196,14 @@ fun main(args: Array<String>) {
         }
         else if (pgmcWord == null) {
             val pgmcNewWord = ieRepo.findOrAddWord(baseWord.textVariants[0], pgmc, baseWord.gloss,
-                source = listOf(SourceRef(kroonen.id, page)))
+                source = source)
             for (variant in baseWord.textVariants.drop(1)) {
                 val pgmcVariant = ieRepo.findOrAddWord(variant, pgmc, null,
-                    source = listOf(SourceRef(kroonen.id, page)))
+                    source = source)
                 ieRepo.addLink(pgmcVariant, pgmcNewWord, Link.Variation)
             }
 
-            val link = ieRepo.addLink(oeWord!!, pgmcNewWord, Link.Origin)
+            val link = ieRepo.addLink(oeWord!!, pgmcNewWord, Link.Origin, source = source)
             ieRepo.applyRuleSequence(link, sequence)
         }
         else {
