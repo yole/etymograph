@@ -4151,7 +4151,7 @@
     },
     {
         "id": 6278,
-        "text": "akwesī-",
+        "text": "akʷesī-",
         "gloss": "axe",
         "sourceRefs": [
             {
@@ -4463,7 +4463,8 @@
     {
         "id": 6334,
         "text": "arga-",
-        "gloss": "cowardly, effeminate",
+        "gloss": "cowardly",
+        "fullGloss": "cowardly, effeminate, unmanly",
         "sourceRefs": [
             {
                 "pubId": 9,
@@ -4553,10 +4554,6 @@
         ]
     },
     {
-        "id": 6344,
-        "text": "ahslō-"
-    },
-    {
         "id": 6346,
         "text": "ahtō-",
         "gloss": "consideration, attention",
@@ -4637,5 +4634,473 @@
         "id": 6359,
         "text": "ainahan-",
         "gloss": "sole"
+    },
+    {
+        "id": 6361,
+        "text": "ajja-"
+    },
+    {
+        "id": 6365,
+        "text": "aljana-"
+    },
+    {
+        "id": 6367,
+        "text": "amslōn-",
+        "gloss": "blackbird",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "25"
+            }
+        ]
+    },
+    {
+        "id": 6368,
+        "text": "andja-",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "27"
+            }
+        ]
+    },
+    {
+        "id": 6369,
+        "text": "arbjan-",
+        "gloss": "heir",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "33"
+            }
+        ]
+    },
+    {
+        "id": 6371,
+        "text": "austera-",
+        "gloss": "east, eastwards",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "43"
+            }
+        ]
+    },
+    {
+        "id": 6373,
+        "text": "alīnō-",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "22"
+            }
+        ]
+    },
+    {
+        "id": 6374,
+        "text": "agra-",
+        "gloss": "flood",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "5"
+            }
+        ]
+    },
+    {
+        "id": 6376,
+        "text": "amazan-",
+        "gloss": "bunting",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "24"
+            }
+        ]
+    },
+    {
+        "id": 6378,
+        "text": "anhulō-",
+        "gloss": "strap",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "29"
+            }
+        ]
+    },
+    {
+        "id": 6380,
+        "text": "austrōn-",
+        "gloss": "Easter",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "43"
+            }
+        ]
+    },
+    {
+        "id": 6382,
+        "text": "ana",
+        "gloss": "on(to), to, by",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "26"
+            }
+        ]
+    },
+    {
+        "id": 6384,
+        "text": "ana",
+        "gloss": "on"
+    },
+    {
+        "id": 6385,
+        "text": "auzōn-",
+        "gloss": "ear",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "44"
+            }
+        ]
+    },
+    {
+        "id": 6387,
+        "text": "alla-",
+        "gloss": "all",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "23"
+            }
+        ]
+    },
+    {
+        "id": 6388,
+        "text": "after",
+        "gloss": "behind",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "3"
+            }
+        ]
+    },
+    {
+        "id": 6389,
+        "text": "afteri",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "3"
+            }
+        ]
+    },
+    {
+        "id": 6391,
+        "text": "agkōn-",
+        "gloss": "magpie",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "4"
+            }
+        ]
+    },
+    {
+        "id": 6392,
+        "text": "akkōn-",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "4"
+            }
+        ]
+    },
+    {
+        "id": 6394,
+        "text": "aista-",
+        "gloss": "kiln",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "14"
+            }
+        ]
+    },
+    {
+        "id": 6395,
+        "text": "aistō-",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "14"
+            }
+        ]
+    },
+    {
+        "id": 6397,
+        "text": "aiwa-",
+        "gloss": "law",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "16"
+            }
+        ]
+    },
+    {
+        "id": 6398,
+        "text": "aiwō-",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "16"
+            }
+        ]
+    },
+    {
+        "id": 6399,
+        "text": "aldō-",
+        "gloss": "hollow (of a tree)",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "21"
+            }
+        ]
+    },
+    {
+        "id": 6400,
+        "text": "aldōn-",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "21"
+            }
+        ]
+    },
+    {
+        "id": 6402,
+        "text": "alis-",
+        "gloss": "alder",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "22"
+            }
+        ]
+    },
+    {
+        "id": 6403,
+        "text": "aliz-",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "22"
+            }
+        ]
+    },
+    {
+        "id": 6405,
+        "text": "ampran-",
+        "gloss": "sorrel, dock",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "25"
+            }
+        ]
+    },
+    {
+        "id": 6406,
+        "text": "amprōn-",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "25"
+            }
+        ]
+    },
+    {
+        "id": 6408,
+        "text": "ompre",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "25"
+            }
+        ]
+    },
+    {
+        "id": 6409,
+        "text": "apaldra-",
+        "gloss": "apple-tree",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "31"
+            }
+        ]
+    },
+    {
+        "id": 6410,
+        "text": "apaldrō-",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "31"
+            }
+        ]
+    },
+    {
+        "id": 6412,
+        "text": "artō-",
+        "gloss": "wagtail?",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "36"
+            }
+        ]
+    },
+    {
+        "id": 6413,
+        "text": "artōn-",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "36"
+            }
+        ]
+    },
+    {
+        "id": 6415,
+        "text": "anþara-",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "30"
+            }
+        ]
+    },
+    {
+        "id": 6416,
+        "text": "arundja-",
+        "gloss": "errand",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "36"
+            }
+        ]
+    },
+    {
+        "id": 6417,
+        "text": "arfan-",
+        "gloss": "chickweed",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "34"
+            }
+        ]
+    },
+    {
+        "id": 6418,
+        "text": "arfan-?",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "34"
+            }
+        ]
+    },
+    {
+        "id": 6420,
+        "text": "aspō-",
+        "gloss": "aspen",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "39"
+            }
+        ]
+    },
+    {
+        "id": 6421,
+        "text": "apsō-",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "39"
+            }
+        ]
+    },
+    {
+        "id": 6423,
+        "text": "æps",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "39"
+            }
+        ]
+    },
+    {
+        "id": 6424,
+        "text": "aþlan-",
+        "gloss": "liquid manure",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "40"
+            }
+        ]
+    },
+    {
+        "id": 6425,
+        "text": "adlan-",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "40"
+            }
+        ]
+    },
+    {
+        "id": 6427,
+        "text": "adela",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "40"
+            }
+        ]
+    },
+    {
+        "id": 6428,
+        "text": "auke",
+        "gloss": "and; again, but",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "42"
+            }
+        ]
+    },
+    {
+        "id": 6429,
+        "text": "auþu-",
+        "gloss": "easy",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "43"
+            }
+        ]
     }
 ]

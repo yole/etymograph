@@ -2107,7 +2107,7 @@
         "id": 1215,
         "text": "ēac",
         "gloss": "also",
-        "fullGloss": "EKE, also, likewise, moreover,                and",
+        "fullGloss": "EKE, also, likewise, moreover, and, besides",
         "pos": "CONJ",
         "sourceRefs": [
             {
@@ -2148,18 +2148,6 @@
     {
         "id": 1218,
         "text": "ōþrum"
-    },
-    {
-        "id": 1219,
-        "text": "ōðer",
-        "gloss": "other",
-        "fullGloss": "one of two",
-        "pos": "N",
-        "sourceRefs": [
-            {
-                "refText": "https://bosworthtoller.com/25044"
-            }
-        ]
     },
     {
         "id": 1220,
@@ -3497,17 +3485,6 @@
         ]
     },
     {
-        "id": 2304,
-        "text": "āwi",
-        "gloss": "law",
-        "reconstructed": true,
-        "sourceRefs": [
-            {
-                "refText": "RInge 2014:259"
-            }
-        ]
-    },
-    {
         "id": 2305,
         "text": "ǣi",
         "gloss": "law",
@@ -4830,10 +4807,18 @@
         "id": 2533,
         "text": "ierfe",
         "gloss": "inheritance",
+        "pos": "N",
+        "classes": [
+            "neut",
+            "a-stem"
+        ],
         "sourceRefs": [
             {
                 "pubId": 5,
                 "refText": "47"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/ierfe#Old_English"
             }
         ]
     },
@@ -5195,10 +5180,21 @@
         "id": 2610,
         "text": "ellen",
         "gloss": "zeal",
+        "fullGloss": "zeal, strength, courage, bravery",
+        "pos": "N",
+        "classes": [
+            "neut",
+            "a-stem",
+            "masc",
+            "a-stem"
+        ],
         "sourceRefs": [
             {
                 "pubId": 5,
                 "refText": "52"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/ellen#Old_English"
             }
         ]
     },
@@ -5260,15 +5256,9 @@
         "id": 2629,
         "text": "ǣġ",
         "gloss": "egg",
-        "fullGloss": "water, water land, an island",
         "pos": "N",
         "classes": [
             "fem"
-        ],
-        "sourceRefs": [
-            {
-                "refText": "https://bosworthtoller.com/497"
-            }
         ]
     },
     {
@@ -6569,7 +6559,8 @@
         "fullGloss": "The shoulder",
         "pos": "N",
         "classes": [
-            "fem"
+            "fem",
+            "o-stem"
         ],
         "sourceRefs": [
             {
@@ -6578,6 +6569,9 @@
             },
             {
                 "refText": "https://bosworthtoller.com/8812"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/eaxl#Old_English"
             }
         ]
     },
@@ -15334,7 +15328,7 @@
     },
     {
         "id": 6235,
-        "text": "eahto\u001dda",
+        "text": "eahtoða",
         "gloss": "eighth",
         "sourceRefs": [
             {
@@ -15781,21 +15775,11 @@
         "id": 6343,
         "text": "ēar",
         "gloss": "ear",
+        "fullGloss": "ear of corn",
         "sourceRefs": [
             {
                 "pubId": 9,
                 "refText": "5"
-            }
-        ]
-    },
-    {
-        "id": 6345,
-        "text": "eaxl",
-        "gloss": "armpit",
-        "sourceRefs": [
-            {
-                "pubId": 9,
-                "refText": "6"
             }
         ]
     },
@@ -15851,6 +15835,208 @@
             {
                 "pubId": 9,
                 "refText": "17"
+            }
+        ]
+    },
+    {
+        "id": 6370,
+        "text": "ierfe",
+        "gloss": "heir",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "33"
+            }
+        ]
+    },
+    {
+        "id": 6372,
+        "text": "ēast",
+        "gloss": "east, eastwards",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "43"
+            }
+        ]
+    },
+    {
+        "id": 6375,
+        "text": "eagor",
+        "gloss": "sea, flood",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "5"
+            }
+        ]
+    },
+    {
+        "id": 6377,
+        "text": "omer",
+        "gloss": "\\Iscorellus\\i (unidentified bird)",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "24"
+            }
+        ]
+    },
+    {
+        "id": 6379,
+        "text": "ōl-þwang",
+        "gloss": "halter, snare, strap",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "29"
+            }
+        ]
+    },
+    {
+        "id": 6381,
+        "text": "ēastre",
+        "gloss": "spring goddess",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "43"
+            }
+        ]
+    },
+    {
+        "id": 6386,
+        "text": "ēare",
+        "gloss": "ear",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "44"
+            }
+        ]
+    },
+    {
+        "id": 6390,
+        "text": "æfter",
+        "gloss": "behind",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "3"
+            }
+        ]
+    },
+    {
+        "id": 6393,
+        "text": "age",
+        "gloss": "magpie",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "4"
+            }
+        ]
+    },
+    {
+        "id": 6396,
+        "text": "āst",
+        "gloss": "oven",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "14"
+            }
+        ]
+    },
+    {
+        "id": 6401,
+        "text": "aldaht",
+        "gloss": "trough(?), channel(?)",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "21"
+            }
+        ]
+    },
+    {
+        "id": 6404,
+        "text": "alor",
+        "gloss": "alder",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "22"
+            }
+        ]
+    },
+    {
+        "id": 6407,
+        "text": "ampre",
+        "gloss": "sorrel; varicose vein",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "25"
+            }
+        ]
+    },
+    {
+        "id": 6411,
+        "text": "apuldre",
+        "gloss": "apple-tree",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "31"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/apuldre#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 6414,
+        "text": "earte",
+        "gloss": "pied wagtail",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "36"
+            }
+        ]
+    },
+    {
+        "id": 6419,
+        "text": "earfan",
+        "gloss": "chickweed",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "34"
+            }
+        ]
+    },
+    {
+        "id": 6422,
+        "text": "æsp",
+        "gloss": "aspen",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "39"
+            }
+        ]
+    },
+    {
+        "id": 6426,
+        "text": "adel",
+        "gloss": "mud, dirt",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "40"
             }
         ]
     }
