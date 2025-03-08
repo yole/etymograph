@@ -9836,10 +9836,14 @@
         "id": 3240,
         "text": "eowu",
         "gloss": "ewe",
+        "pos": "N",
         "sourceRefs": [
             {
                 "pubId": 5,
                 "refText": "148"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/eowu#Old_English"
             }
         ]
     },
@@ -16039,5 +16043,13 @@
                 "refText": "40"
             }
         ]
+    },
+    {
+        "id": 6432,
+        "text": "awul"
+    },
+    {
+        "id": 6434,
+        "text": "ēow"
     }
 ]

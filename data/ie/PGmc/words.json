@@ -5102,5 +5102,30 @@
                 "refText": "43"
             }
         ]
+    },
+    {
+        "id": 6430,
+        "text": "awala-",
+        "gloss": "awl",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "44"
+            }
+        ]
+    },
+    {
+        "id": 6431,
+        "text": "awalō-",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "44"
+            }
+        ]
+    },
+    {
+        "id": 6433,
+        "text": "awi-"
     }
 ]
