@@ -68,11 +68,11 @@ fun parseStarlingWord(word: String): StarlingWord? {
     )
 }
 
-fun findWord(repo: GraphRepository, language: Language, starlingWord: StarlingWord): List<Word> {
+fun findWord(repo: GraphRepository, language: Language, starlingWord: StarlingWord, gloss: String): List<Word> {
     val text = starlingWord.textVariants[0]
     val words = repo.wordsByText(language, text)
     if (words.isNotEmpty()) {
-        return words.filter { isGlossSimilar(starlingWord.gloss, it.getOrComputeGloss(repo)) }
+        return words.filter { isGlossSimilar(gloss, it.getOrComputeGloss(repo)) }
     }
     val fuzzyMatches = repo.allWords(language).filter {
         val normText = it.text.replace('ċ', 'c').replace('ġ', 'g')
@@ -84,7 +84,7 @@ fun findWord(repo: GraphRepository, language: Language, starlingWord: StarlingWo
         }
     }
     if (fuzzyMatches.isNotEmpty()) {
-        return fuzzyMatches.filter { isGlossSimilar(starlingWord.gloss, it.getOrComputeGloss(repo)) }
+        return fuzzyMatches.filter { isGlossSimilar(gloss, it.getOrComputeGloss(repo)) }
     }
     return emptyList()
 }
@@ -133,14 +133,16 @@ fun main(args: Array<String>) {
             continue
         }
 
-        val pgmcWords = findWord(ieRepo, pgmc, baseWord)
+        val pgmcWords = findWord(ieRepo, pgmc, baseWord, baseWord.gloss)
         if (pgmcWords.size > 1) {
             println("Ambiguous PGmc word: $line")
             continue
         }
         val pgmcWord = pgmcWords.singleOrNull()
 
-        val oeWords = findWord(ieRepo, oe, translationWord)
+        val translationGloss = if (translationWord.gloss == "id.") baseWord.gloss else translationWord.gloss
+
+        val oeWords = findWord(ieRepo, oe, translationWord, translationGloss)
         if (oeWords.size > 1) {
             println("Ambiguous OE word: $line")
             continue
@@ -150,7 +152,6 @@ fun main(args: Array<String>) {
         val oeEtymology = oeWord?.let { findEtymology(ieRepo, it, pgmc) }
         val pgmcNew = if (pgmcWord == null) { if (oeEtymology != null) " [<->]" else " [NEW]" } else ""
         val oeNew = if (oeWord == null) " [NEW]" else ""
-        val translationGloss = if (translationWord.gloss == "id.") baseWord.gloss else translationWord.gloss
 
         if (pgmcWord != null && oeWord != null) {
             continue
