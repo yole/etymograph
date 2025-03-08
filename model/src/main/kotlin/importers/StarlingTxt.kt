@@ -108,6 +108,7 @@ fun main(args: Array<String>) {
     val lines = starlingFile.readLines(Charset.forName("iso-8859-1")).drop(1)
 
     val skiplist = if (args.size > 1) Files.readAllLines(Path.of(args[1])) else emptyList()
+    val maxImport = if (args.size > 2) args[2].toIntOrNull() else null
 
     var imported = 0
 
@@ -115,6 +116,7 @@ fun main(args: Array<String>) {
     val sequence = ieRepo.ruleSequenceByName("pgmc-to-oe")!!
 
     for (line in lines) {
+        var importLogged = false
         val (base, translation, page) = line.trim().split('#')
         if (translation.isEmpty()) {
             continue
@@ -123,10 +125,6 @@ fun main(args: Array<String>) {
         val baseWord = parseStarlingWord(base)
         if (baseWord == null) {
             println("Pattern not matched for base word: $line")
-            continue
-        }
-        if (baseWord.textVariants.size > 1) {
-            println("Multiple text variants for base word: $line")
             continue
         }
 
@@ -171,29 +169,39 @@ fun main(args: Array<String>) {
                 source = listOf(SourceRef(kroonen.id, page)))
             val link = ieRepo.addLink(oeNewWord, pgmcNewWord, Link.Origin)
             ieRepo.applyRuleSequence(link, sequence)
-
-            println("IMPORT ${baseWord.textVariants[0]} [${baseWord.classes}] '${baseWord.gloss}'$pgmcNew > ${translationWord.textVariants[0]}$oeNew '${translationGloss}'")
-
-            imported++
-            if (imported == 5) {
-                break
-            }
         }
         else if (pgmcWord == null && oeEtymology != null) {
             val pgmcNewWord = ieRepo.findOrAddWord(baseWord.textVariants[0], pgmc, null,
                 source = listOf(SourceRef(kroonen.id, page)))
-            ieRepo.addLink(pgmcNewWord, oeEtymology, Link.Variation)
-
-            println("VARIANT ${baseWord.textVariants[0]} [${baseWord.classes}] '${baseWord.gloss}'$pgmcNew > ${translationWord.textVariants[0]}$oeNew '${translationGloss}'")
-
-            imported++
-            if (imported == 5) {
-                break
+            if (pgmcNewWord.id != oeEtymology.id) {
+                ieRepo.addLink(pgmcNewWord, oeEtymology, Link.Variation)
+                println("VARIANT ${baseWord.textVariants[0]} [${baseWord.classes}] '${baseWord.gloss}'$pgmcNew > ${translationWord.textVariants[0]}$oeNew '${translationGloss}'")
+                importLogged = true
             }
+            else {
+                println("GLOSS-MISMATCH ${baseWord.textVariants[0]} [${baseWord.classes}] '${baseWord.gloss}'$pgmcNew > ${translationWord.textVariants[0]}$oeNew '${translationGloss}'")
+                continue
+            }
+        }
+        else if (pgmcWord == null) {
+            val pgmcNewWord = ieRepo.findOrAddWord(baseWord.textVariants[0], pgmc, baseWord.gloss,
+                source = listOf(SourceRef(kroonen.id, page)))
 
+            val link = ieRepo.addLink(oeWord!!, pgmcNewWord, Link.Origin)
+            ieRepo.applyRuleSequence(link, sequence)
         }
         else {
             println("SKIP ${baseWord.textVariants[0]} [${baseWord.classes}] '${baseWord.gloss}'$pgmcNew > ${translationWord.textVariants[0]}$oeNew '${translationGloss}'")
+            continue
+        }
+
+        if (!importLogged) {
+            println("IMPORT ${baseWord.textVariants[0]} [${baseWord.classes}] '${baseWord.gloss}'$pgmcNew > ${translationWord.textVariants[0]}$oeNew '${translationGloss}'")
+        }
+
+        imported++
+        if (imported == maxImport) {
+            break
         }
     }
 
