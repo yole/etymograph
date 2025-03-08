@@ -31,6 +31,7 @@ fun String.decodeStarling(): String {
         .replace('\u00DF', '\u0306') // combining breve
         .replace("{U+01E3}", "ǣ") // I think this is an artifact of how the particular file I got was generated, not a Starling thing
         .replace("hw", "hʷ")
+        .replace("kw", "kʷ")
 }
 
 data class StarlingWord(
