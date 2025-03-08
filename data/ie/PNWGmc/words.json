@@ -17,7 +17,13 @@
     {
         "id": 1875,
         "text": "badu",
-        "gloss": "battle"
+        "gloss": "battle",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "16"
+            }
+        ]
     },
     {
         "id": 1880,

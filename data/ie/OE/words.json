@@ -4217,18 +4217,7 @@
     },
     {
         "id": 2456,
-        "text": "beadu",
-        "gloss": "battle",
-        "fullGloss": "Battle, war, etc",
-        "pos": "N",
-        "classes": [
-            "fem"
-        ],
-        "sourceRefs": [
-            {
-                "refText": "https://bosworthtoller.com/3054"
-            }
-        ]
+        "text": "beadu"
     },
     {
         "id": 2458,
@@ -16051,5 +16040,159 @@
     {
         "id": 6434,
         "text": "ēow"
+    },
+    {
+        "id": 6436,
+        "text": "eowde",
+        "gloss": "flock of sheep",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "45"
+            }
+        ]
+    },
+    {
+        "id": 6440,
+        "text": "ēowestre",
+        "gloss": "sheepfold",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "45"
+            }
+        ]
+    },
+    {
+        "id": 6442,
+        "text": "bēgen",
+        "gloss": "both",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "46"
+            }
+        ]
+    },
+    {
+        "id": 6444,
+        "text": "bed",
+        "gloss": "bed",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "46"
+            }
+        ]
+    },
+    {
+        "id": 6446,
+        "text": "bēam",
+        "gloss": "tree, pillar, beam, post",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "47"
+            }
+        ]
+    },
+    {
+        "id": 6447,
+        "text": "beado",
+        "fullGloss": "battle, war",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/beado#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 6449,
+        "text": "bǣdan",
+        "gloss": "demand; to force",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "47"
+            }
+        ]
+    },
+    {
+        "id": 6451,
+        "text": "bān",
+        "gloss": "bone",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "48"
+            }
+        ]
+    },
+    {
+        "id": 6453,
+        "text": "bār",
+        "gloss": "boar",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "48"
+            }
+        ]
+    },
+    {
+        "id": 6455,
+        "text": "bāt",
+        "gloss": "boat",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "48"
+            }
+        ]
+    },
+    {
+        "id": 6457,
+        "text": "bæc",
+        "gloss": "back",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "48"
+            }
+        ]
+    },
+    {
+        "id": 6459,
+        "text": "bece",
+        "gloss": "creek",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "49"
+            }
+        ]
+    },
+    {
+        "id": 6462,
+        "text": "bacan",
+        "gloss": "bake",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "49"
+            }
+        ]
+    },
+    {
+        "id": 6464,
+        "text": "ā-belgan",
+        "gloss": "anger, to irritate",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "50"
+            }
+        ]
     }
 ]

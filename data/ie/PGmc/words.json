@@ -23,7 +23,17 @@
     {
         "id": 1876,
         "text": "badwō",
-        "gloss": "battle"
+        "gloss": "battle",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "47"
+            },
+            {
+                "pubId": 5,
+                "refText": "16"
+            }
+        ]
     },
     {
         "id": 1881,
@@ -5127,5 +5137,178 @@
     {
         "id": 6433,
         "text": "awi-"
+    },
+    {
+        "id": 6435,
+        "text": "awidja-",
+        "gloss": "flock of sheep",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "45"
+            }
+        ]
+    },
+    {
+        "id": 6437,
+        "text": "eowede",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "45"
+            }
+        ]
+    },
+    {
+        "id": 6438,
+        "text": "awista-",
+        "gloss": "sheepfold",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "45"
+            }
+        ]
+    },
+    {
+        "id": 6439,
+        "text": "awistra-",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "45"
+            }
+        ]
+    },
+    {
+        "id": 6441,
+        "text": "ba-",
+        "gloss": "both",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "46"
+            }
+        ]
+    },
+    {
+        "id": 6443,
+        "text": "badja-",
+        "gloss": "bed, bedding",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "46"
+            }
+        ]
+    },
+    {
+        "id": 6445,
+        "text": "bagma-",
+        "gloss": "beam, tree",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "47"
+            }
+        ]
+    },
+    {
+        "id": 6448,
+        "text": "baidjan-",
+        "gloss": "force, demand",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "47"
+            }
+        ]
+    },
+    {
+        "id": 6450,
+        "text": "baina-",
+        "gloss": "bone, leg",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "48"
+            }
+        ]
+    },
+    {
+        "id": 6452,
+        "text": "baira-",
+        "gloss": "boar",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "48"
+            }
+        ]
+    },
+    {
+        "id": 6454,
+        "text": "baita-",
+        "gloss": "boat",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "48"
+            }
+        ]
+    },
+    {
+        "id": 6456,
+        "text": "baka-",
+        "gloss": "back",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "48"
+            }
+        ]
+    },
+    {
+        "id": 6458,
+        "text": "bakja-",
+        "gloss": "creek",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "49"
+            }
+        ]
+    },
+    {
+        "id": 6460,
+        "text": "bakan-",
+        "gloss": "bake, fry",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "49"
+            }
+        ]
+    },
+    {
+        "id": 6461,
+        "text": "bakkan-",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "49"
+            }
+        ]
+    },
+    {
+        "id": 6463,
+        "text": "balgjan-",
+        "gloss": "make swell, make angry",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "50"
+            }
+        ]
     }
 ]
