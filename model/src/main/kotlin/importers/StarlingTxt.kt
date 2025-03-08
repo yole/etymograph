@@ -70,34 +70,147 @@ fun parseStarlingWord(word: String): StarlingWord? {
     )
 }
 
-fun findWord(repo: GraphRepository, language: Language, starlingWord: StarlingWord, gloss: String): List<Word> {
-    for (text in starlingWord.textVariants) {
-        val words = repo.wordsByText(language, text)
-        if (words.isNotEmpty()) {
-            return words.filter { isGlossSimilar(gloss, it.getOrComputeGloss(repo)) || isGlossSimilar(gloss, it.fullGloss) }
-        }
-        val fuzzyMatches = repo.allWords(language).filter {
-            val normText = it.text.replace('ċ', 'c').replace('ġ', 'g')
-            if (text.endsWith('-')) {
-                normText.startsWith(text.removeSuffix("-"))
+class StarlingImporter(
+    private val repo: GraphRepository,
+    private val fromLang: Language,
+    private val toLang: Language,
+    private val skipList: Collection<String>,
+    private val sourcePub: Int,
+    private val sequence: RuleSequence
+) {
+    var imported = 0
+
+    private fun findWord(language: Language, starlingWord: StarlingWord, gloss: String): List<Word> {
+        for (text in starlingWord.textVariants) {
+            val words = repo.wordsByText(language, text)
+            if (words.isNotEmpty()) {
+                return words.filter { isGlossSimilar(gloss, it.getOrComputeGloss(repo)) || isGlossSimilar(gloss, it.fullGloss) }
             }
-            else {
-                normText == text
+            val fuzzyMatches = repo.allWords(language).filter {
+                val normText = it.text.replace('ċ', 'c').replace('ġ', 'g')
+                if (text.endsWith('-')) {
+                    normText.startsWith(text.removeSuffix("-"))
+                }
+                else {
+                    normText == text
+                }
+            }
+            if (fuzzyMatches.isNotEmpty()) {
+                return fuzzyMatches.filter { isGlossSimilar(gloss, it.getOrComputeGloss(repo)) || isGlossSimilar(gloss, it.fullGloss) }
             }
         }
-        if (fuzzyMatches.isNotEmpty()) {
-            return fuzzyMatches.filter { isGlossSimilar(gloss, it.getOrComputeGloss(repo)) || isGlossSimilar(gloss, it.fullGloss) }
+        return emptyList()
+    }
+
+    private fun findEtymology(word: Word): Word? {
+        var targetWord = word
+        while (true) {
+            val origin = repo.getLinksFrom(targetWord).singleOrNull { it.type == Link.Origin }?.toEntity as? Word ?: return null
+            if (origin.language == fromLang) return origin
+            targetWord = origin
         }
     }
-    return emptyList()
-}
 
-fun findEtymology(repo: GraphRepository, word: Word, language: Language): Word? {
-    var targetWord = word
-    while (true) {
-        val origin = repo.getLinksFrom(targetWord).singleOrNull { it.type == Link.Origin }?.toEntity as? Word ?: return null
-        if (origin.language == language) return origin
-        targetWord = origin
+    fun importLine(line: String) {
+        var importLogged = false
+        val (base, translation, page) = line.trim().split('#')
+        if (translation.isEmpty()) {
+            return
+
+        }
+
+        val baseWord = parseStarlingWord(base)
+        if (baseWord == null) {
+            println("Pattern not matched for base word: $line")
+            return
+        }
+
+        val translationWord = parseStarlingWord(translation.removePrefix("OE").trim())
+        if (translationWord == null) {
+            println("Pattern not matched for translation word: $line")
+            return
+        }
+
+        val pgmcWords = findWord(fromLang, baseWord, baseWord.gloss)
+        if (pgmcWords.size > 1) {
+            println("Ambiguous PGmc word: $line")
+            return
+        }
+        val pgmcWord = pgmcWords.singleOrNull()
+
+        val translationGloss = if (translationWord.gloss == "id.") baseWord.gloss else translationWord.gloss
+
+        val oeWords = findWord(toLang   , translationWord, translationGloss)
+        if (oeWords.size > 1) {
+            println("Ambiguous OE word: $line")
+            return
+        }
+        val oeWord = oeWords.singleOrNull()
+
+        val oeEtymology = oeWord?.let { findEtymology(it) }
+        val pgmcNew = if (pgmcWord == null) { if (oeEtymology != null) " [<->]" else " [NEW]" } else ""
+        val oeNew = if (oeWord == null) " [NEW]" else ""
+
+        if (baseWord.textVariants.any { it in skipList } || translationWord.textVariants.any { it in skipList }) {
+            return
+        }
+
+        if (pgmcWord != null && oeWord != null) {
+            return
+        }
+
+        val source = listOf(SourceRef(sourcePub, page))
+
+        if (pgmcWord == null && oeWord == null) {
+            val pgmcNewWord = repo.findOrAddWord(baseWord.textVariants[0], fromLang, baseWord.gloss,
+                source = source)
+
+            for (variant in baseWord.textVariants.drop(1)) {
+                val pgmcVariant = repo.findOrAddWord(variant, fromLang, null,
+                    source = source)
+                repo.addLink(pgmcVariant, pgmcNewWord, Link.Variation)
+            }
+
+            val oeNewWord = repo.findOrAddWord(translationWord.textVariants[0], toLang, translationGloss,
+                source = source)
+            val link = repo.addLink(oeNewWord, pgmcNewWord, Link.Origin, source = source)
+            repo.applyRuleSequence(link, sequence)
+        }
+        else if (pgmcWord == null && oeEtymology != null) {
+            val pgmcNewWord = repo.findOrAddWord(baseWord.textVariants[0], fromLang, null,
+                source = source)
+            if (pgmcNewWord.id != oeEtymology.id) {
+                repo.addLink(pgmcNewWord, oeEtymology, Link.Variation)
+                println("VARIANT ${baseWord.textVariants[0]} [${baseWord.classes}] '${baseWord.gloss}'$pgmcNew > ${translationWord.textVariants[0]}$oeNew '${translationGloss}'")
+                importLogged = true
+            }
+            else {
+                println("GLOSS-MISMATCH ${baseWord.textVariants[0]} [${baseWord.classes}] '${baseWord.gloss}'$pgmcNew > ${translationWord.textVariants[0]}$oeNew '${translationGloss}'")
+                return
+            }
+        }
+        else if (pgmcWord == null) {
+            val pgmcNewWord = repo.findOrAddWord(baseWord.textVariants[0], fromLang, baseWord.gloss,
+                source = source)
+            for (variant in baseWord.textVariants.drop(1)) {
+                val pgmcVariant = repo.findOrAddWord(variant, fromLang, null,
+                    source = source)
+                repo.addLink(pgmcVariant, pgmcNewWord, Link.Variation)
+            }
+
+            val link = repo.addLink(oeWord!!, pgmcNewWord, Link.Origin, source = source)
+            repo.applyRuleSequence(link, sequence)
+        }
+        else {
+            println("SKIP ${baseWord.textVariants[0]} [${baseWord.classes}] '${baseWord.gloss}'$pgmcNew > ${translationWord.textVariants[0]}$oeNew '${translationGloss}'")
+            return
+        }
+
+        if (!importLogged) {
+            println("IMPORT ${baseWord.textVariants[0]} [${baseWord.classes}] '${baseWord.gloss}'$pgmcNew > ${translationWord.textVariants[0]}$oeNew '${translationGloss}'")
+        }
+
+        imported++
     }
 }
 
@@ -112,111 +225,14 @@ fun main(args: Array<String>) {
     val skiplist = if (args.size > 1) Files.readAllLines(Path.of(args[1])) else emptyList()
     val maxImport = if (args.size > 2) args[2].toIntOrNull() else null
 
-    var imported = 0
-
     val kroonen = ieRepo.allPublications().find { it.refId == "Kroonen 2013" }!!
     val sequence = ieRepo.ruleSequenceByName("pgmc-to-oe")!!
 
+    val importer = StarlingImporter(ieRepo, pgmc, oe, skiplist, kroonen.id, sequence)
+
     for (line in lines) {
-        var importLogged = false
-        val (base, translation, page) = line.trim().split('#')
-        if (translation.isEmpty()) {
-            continue
-        }
-
-        val baseWord = parseStarlingWord(base)
-        if (baseWord == null) {
-            println("Pattern not matched for base word: $line")
-            continue
-        }
-
-        val translationWord = parseStarlingWord(translation.removePrefix("OE").trim())
-        if (translationWord == null) {
-            println("Pattern not matched for translation word: $line")
-            continue
-        }
-
-        val pgmcWords = findWord(ieRepo, pgmc, baseWord, baseWord.gloss)
-        if (pgmcWords.size > 1) {
-            println("Ambiguous PGmc word: $line")
-            continue
-        }
-        val pgmcWord = pgmcWords.singleOrNull()
-
-        val translationGloss = if (translationWord.gloss == "id.") baseWord.gloss else translationWord.gloss
-
-        val oeWords = findWord(ieRepo, oe, translationWord, translationGloss)
-        if (oeWords.size > 1) {
-            println("Ambiguous OE word: $line")
-            continue
-        }
-        val oeWord = oeWords.singleOrNull()
-
-        val oeEtymology = oeWord?.let { findEtymology(ieRepo, it, pgmc) }
-        val pgmcNew = if (pgmcWord == null) { if (oeEtymology != null) " [<->]" else " [NEW]" } else ""
-        val oeNew = if (oeWord == null) " [NEW]" else ""
-
-        if (baseWord.textVariants.any { it in skiplist } || translationWord.textVariants.any { it in skiplist }) {
-            continue
-        }
-
-        if (pgmcWord != null && oeWord != null) {
-            continue
-        }
-
-        val source = listOf(SourceRef(kroonen.id, page))
-
-        if (pgmcWord == null && oeWord == null) {
-            val pgmcNewWord = ieRepo.findOrAddWord(baseWord.textVariants[0], pgmc, baseWord.gloss,
-                source = source)
-
-            for (variant in baseWord.textVariants.drop(1)) {
-                val pgmcVariant = ieRepo.findOrAddWord(variant, pgmc, null,
-                    source = listOf(SourceRef(kroonen.id, page)))
-                ieRepo.addLink(pgmcVariant, pgmcNewWord, Link.Variation)
-            }
-
-            val oeNewWord = ieRepo.findOrAddWord(translationWord.textVariants[0], oe, translationGloss,
-                source = listOf(SourceRef(kroonen.id, page)))
-            val link = ieRepo.addLink(oeNewWord, pgmcNewWord, Link.Origin, source = source)
-            ieRepo.applyRuleSequence(link, sequence)
-        }
-        else if (pgmcWord == null && oeEtymology != null) {
-            val pgmcNewWord = ieRepo.findOrAddWord(baseWord.textVariants[0], pgmc, null,
-                source = source)
-            if (pgmcNewWord.id != oeEtymology.id) {
-                ieRepo.addLink(pgmcNewWord, oeEtymology, Link.Variation)
-                println("VARIANT ${baseWord.textVariants[0]} [${baseWord.classes}] '${baseWord.gloss}'$pgmcNew > ${translationWord.textVariants[0]}$oeNew '${translationGloss}'")
-                importLogged = true
-            }
-            else {
-                println("GLOSS-MISMATCH ${baseWord.textVariants[0]} [${baseWord.classes}] '${baseWord.gloss}'$pgmcNew > ${translationWord.textVariants[0]}$oeNew '${translationGloss}'")
-                continue
-            }
-        }
-        else if (pgmcWord == null) {
-            val pgmcNewWord = ieRepo.findOrAddWord(baseWord.textVariants[0], pgmc, baseWord.gloss,
-                source = source)
-            for (variant in baseWord.textVariants.drop(1)) {
-                val pgmcVariant = ieRepo.findOrAddWord(variant, pgmc, null,
-                    source = source)
-                ieRepo.addLink(pgmcVariant, pgmcNewWord, Link.Variation)
-            }
-
-            val link = ieRepo.addLink(oeWord!!, pgmcNewWord, Link.Origin, source = source)
-            ieRepo.applyRuleSequence(link, sequence)
-        }
-        else {
-            println("SKIP ${baseWord.textVariants[0]} [${baseWord.classes}] '${baseWord.gloss}'$pgmcNew > ${translationWord.textVariants[0]}$oeNew '${translationGloss}'")
-            continue
-        }
-
-        if (!importLogged) {
-            println("IMPORT ${baseWord.textVariants[0]} [${baseWord.classes}] '${baseWord.gloss}'$pgmcNew > ${translationWord.textVariants[0]}$oeNew '${translationGloss}'")
-        }
-
-        imported++
-        if (imported == maxImport) {
+        importer.importLine(line)
+        if (importer.imported == maxImport) {
             break
         }
     }
