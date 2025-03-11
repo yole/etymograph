@@ -125,7 +125,7 @@ class StarlingImporter(
             source = source)
 
         for (variant in baseWord.textVariants.drop(1)) {
-            if (variant != baseWord.textVariants[0]) {
+            if (variant != baseWord.textVariants[0] && variant.isNotBlank()) {
                 val pgmcVariant = repo.findOrAddWord(variant, language, null,
                     source = source)
                 repo.addLink(pgmcVariant, newWord, Link.Variation)
