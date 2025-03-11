@@ -111,6 +111,15 @@ class StarlingImporter(
         }
     }
 
+    private fun findDerivation(word: Word): Word? {
+        var targetWord = word
+        while (true) {
+            val origin = repo.getLinksTo(targetWord).singleOrNull { it.type == Link.Origin }?.fromEntity as? Word ?: return null
+            if (origin.language == toLang) return origin
+            targetWord = origin
+        }
+    }
+
     fun createWordWithVariants(baseWord: StarlingWord, language: Language, source: List<SourceRef>, gloss: String? = null): Word {
         val newWord = repo.findOrAddWord(baseWord.textVariants[0], language, gloss ?: baseWord.gloss,
             source = source)
@@ -201,8 +210,20 @@ class StarlingImporter(
             repo.applyRuleSequence(link, sequence)
         }
         else {
-            println("SKIP ${baseWord.textVariants[0]} [${baseWord.classes}] '${baseWord.gloss}'$pgmcNew > ${translationWord.textVariants[0]}$oeNew '${translationGloss}'")
-            return
+            val oeDerivation = findDerivation(pgmcWord)
+            if (oeDerivation != null) {
+                val oeVariant = repo.findOrAddWord(translationWord.textVariants[0], toLang,
+                    translationGloss, source = source)
+                repo.addLink(oeVariant, oeDerivation, Link.Variation)
+                val link = repo.addLink(oeVariant, pgmcWord, Link.Origin, source = source)
+                repo.applyRuleSequence(link, sequence)
+                println("VARIANT ${baseWord.textVariants[0]} [${baseWord.classes}] '${baseWord.gloss}'$pgmcNew > ${translationWord.textVariants[0]}$oeNew '${translationGloss}'")
+                importLogged = true
+            }
+            else {
+                println("SKIP ${baseWord.textVariants[0]} [${baseWord.classes}] '${baseWord.gloss}'$pgmcNew > ${translationWord.textVariants[0]}$oeNew '${translationGloss}'")
+                return
+            }
         }
 
         if (!importLogged) {
