@@ -2744,7 +2744,8 @@
     {
         "id": 2183,
         "text": "ġeard",
-        "gloss": "enclosure"
+        "gloss": "enclosure",
+        "fullGloss": "enclosure, courtyard"
     },
     {
         "id": 2185,
@@ -14056,7 +14057,7 @@
     },
     {
         "id": 4684,
-        "text": "ǣnig",
+        "text": "ǣniġ",
         "gloss": "any",
         "fullGloss": "any; anyone",
         "pos": "PRON",
@@ -16164,7 +16165,7 @@
     },
     {
         "id": 6459,
-        "text": "bece",
+        "text": "beċe",
         "gloss": "creek",
         "sourceRefs": [
             {
@@ -16984,7 +16985,7 @@
     },
     {
         "id": 6623,
-        "text": "brægen",
+        "text": "bræġen",
         "gloss": "brain",
         "sourceRefs": [
             {
@@ -17190,28 +17191,6 @@
         ]
     },
     {
-        "id": 6660,
-        "text": "brȳd",
-        "gloss": "bride",
-        "sourceRefs": [
-            {
-                "pubId": 9,
-                "refText": "79"
-            }
-        ]
-    },
-    {
-        "id": 6662,
-        "text": "bryce",
-        "gloss": "breach",
-        "sourceRefs": [
-            {
-                "pubId": 9,
-                "refText": "79"
-            }
-        ]
-    },
-    {
         "id": 6664,
         "text": "byrne",
         "gloss": "breastplate",
@@ -17408,7 +17387,7 @@
     },
     {
         "id": 6707,
-        "text": "ge-byrian",
+        "text": "ġebyrian",
         "gloss": "raise; to come to pass",
         "sourceRefs": [
             {
@@ -17452,7 +17431,7 @@
     },
     {
         "id": 6716,
-        "text": "bogian,",
+        "text": "bogian",
         "gloss": "inhabit",
         "sourceRefs": [
             {
@@ -17496,7 +17475,7 @@
     },
     {
         "id": 6724,
-        "text": "dencgan",
+        "text": "denċġan",
         "gloss": "knock",
         "sourceRefs": [
             {
@@ -17529,7 +17508,7 @@
     },
     {
         "id": 6730,
-        "text": "ge-dīegan",
+        "text": "gedīegan",
         "gloss": "endure",
         "sourceRefs": [
             {
@@ -17540,7 +17519,7 @@
     },
     {
         "id": 6732,
-        "text": "dīegan",
+        "text": "dīeġan",
         "gloss": "die",
         "sourceRefs": [
             {
@@ -17660,7 +17639,7 @@
     },
     {
         "id": 6756,
-        "text": "dīc",
+        "text": "dīċ",
         "gloss": "dike, ditch",
         "sourceRefs": [
             {
@@ -17857,7 +17836,7 @@
     },
     {
         "id": 6798,
-        "text": "ge-drītan",
+        "text": "ġedrītan",
         "gloss": "shit",
         "sourceRefs": [
             {
@@ -17879,7 +17858,7 @@
     },
     {
         "id": 6803,
-        "text": "drync",
+        "text": "drynċ",
         "gloss": "drink; draught",
         "sourceRefs": [
             {
@@ -18357,7 +18336,7 @@
     },
     {
         "id": 6898,
-        "text": "fǣge",
+        "text": "fǣġe",
         "gloss": "bound to die",
         "sourceRefs": [
             {
@@ -18594,19 +18573,8 @@
         ]
     },
     {
-        "id": 6948,
-        "text": "ge-fēon",
-        "gloss": "be glad, rejoice, exult",
-        "sourceRefs": [
-            {
-                "pubId": 9,
-                "refText": "133"
-            }
-        ]
-    },
-    {
         "id": 6949,
-        "text": "-feohan",
+        "text": "gefeohan",
         "sourceRefs": [
             {
                 "pubId": 9,
@@ -18756,10 +18724,19 @@
         "id": 6976,
         "text": "fiersn",
         "gloss": "heel",
+        "fullGloss": "heel, calx",
+        "pos": "N",
+        "classes": [
+            "fem",
+            "i-stem"
+        ],
         "sourceRefs": [
             {
                 "pubId": 9,
                 "refText": "137"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/fiersn#Old_English"
             }
         ]
     },
@@ -18895,7 +18872,7 @@
     },
     {
         "id": 7007,
-        "text": "finc",
+        "text": "finċ",
         "gloss": "finch",
         "sourceRefs": [
             {
@@ -19232,17 +19209,6 @@
         ]
     },
     {
-        "id": 7077,
-        "text": "ge-frǣge",
-        "gloss": "renowned, celebrated",
-        "sourceRefs": [
-            {
-                "pubId": 9,
-                "refText": "153"
-            }
-        ]
-    },
-    {
         "id": 7080,
         "text": "frec",
         "gloss": "eager, greedy, bold",
@@ -19255,7 +19221,7 @@
     },
     {
         "id": 7082,
-        "text": "ā-frēoðan",
+        "text": "āfrēoðan",
         "gloss": "froth",
         "sourceRefs": [
             {
@@ -19470,17 +19436,6 @@
         ]
     },
     {
-        "id": 7124,
-        "text": "fȳst",
-        "gloss": "fist",
-        "sourceRefs": [
-            {
-                "pubId": 9,
-                "refText": "160"
-            }
-        ]
-    },
-    {
         "id": 7126,
         "text": "fūht",
         "gloss": "humid, moist",
@@ -19547,7 +19502,7 @@
     },
     {
         "id": 7139,
-        "text": "fȳran",
+        "text": "fȳran",
         "gloss": "castrate",
         "sourceRefs": [
             {
@@ -19623,7 +19578,7 @@
     },
     {
         "id": 7154,
-        "text": "gielde",
+        "text": "ġielde",
         "gloss": "barren, not (yet) pregnant",
         "sourceRefs": [
             {
@@ -19633,19 +19588,8 @@
         ]
     },
     {
-        "id": 7156,
-        "text": "gealga",
-        "gloss": "stake?",
-        "sourceRefs": [
-            {
-                "pubId": 9,
-                "refText": "165"
-            }
-        ]
-    },
-    {
         "id": 7159,
-        "text": "gealla",
+        "text": "ġealla",
         "gloss": "bile",
         "sourceRefs": [
             {
@@ -19728,17 +19672,6 @@
         ]
     },
     {
-        "id": 7172,
-        "text": "genge",
-        "gloss": "effective",
-        "sourceRefs": [
-            {
-                "pubId": 9,
-                "refText": "167"
-            }
-        ]
-    },
-    {
         "id": 7175,
         "text": "ganot",
         "gloss": "gander",
@@ -19761,17 +19694,6 @@
         ]
     },
     {
-        "id": 7180,
-        "text": "geard",
-        "gloss": "courtyard",
-        "sourceRefs": [
-            {
-                "pubId": 9,
-                "refText": "169"
-            }
-        ]
-    },
-    {
         "id": 7182,
         "text": "gearo",
         "gloss": "ready, finished",
@@ -19784,7 +19706,7 @@
     },
     {
         "id": 7185,
-        "text": "geat",
+        "text": "ġeat",
         "gloss": "gate",
         "sourceRefs": [
             {
@@ -19806,7 +19728,7 @@
     },
     {
         "id": 7190,
-        "text": "giellan",
+        "text": "ġiellan",
         "gloss": "to yell",
         "sourceRefs": [
             {
@@ -19860,7 +19782,7 @@
     },
     {
         "id": 7198,
-        "text": "bi-gietan",
+        "text": "biġietan",
         "gloss": "beget",
         "sourceRefs": [
             {
@@ -19871,7 +19793,7 @@
     },
     {
         "id": 7200,
-        "text": "gēopan",
+        "text": "ġēopan",
         "gloss": "take up, swallow",
         "sourceRefs": [
             {
@@ -19881,19 +19803,8 @@
         ]
     },
     {
-        "id": 7201,
-        "text": "gēotan",
-        "gloss": "pout (out)",
-        "sourceRefs": [
-            {
-                "pubId": 9,
-                "refText": "177"
-            }
-        ]
-    },
-    {
         "id": 7203,
-        "text": "tō-gīnan",
+        "text": "tōgīnan",
         "gloss": "gape, yawn",
         "sourceRefs": [
             {
@@ -19904,7 +19815,7 @@
     },
     {
         "id": 7205,
-        "text": "be-ginnan",
+        "text": "beginnan",
         "gloss": "begin",
         "sourceRefs": [
             {
@@ -20175,7 +20086,7 @@
     },
     {
         "id": 7256,
-        "text": "grǣd*",
+        "text": "grǣd",
         "gloss": "hunger, desire",
         "sourceRefs": [
             {
@@ -20763,7 +20674,7 @@
     },
     {
         "id": 7382,
-        "text": "hīeg",
+        "text": "hīeġ",
         "gloss": "hay",
         "sourceRefs": [
             {
@@ -21078,7 +20989,7 @@
     },
     {
         "id": 7448,
-        "text": "ge-hlencan",
+        "text": "ġehlencan",
         "gloss": "braid",
         "sourceRefs": [
             {
@@ -21187,7 +21098,7 @@
     {
         "id": 7466,
         "text": "hlyn",
-        "gloss": "id.(?)",
+        "gloss": "maple tree(?)",
         "sourceRefs": [
             {
                 "pubId": 9,
@@ -21241,7 +21152,7 @@
     },
     {
         "id": 7479,
-        "text": "ā-hnēopan",
+        "text": "āhnēopan",
         "gloss": "pluck off",
         "sourceRefs": [
             {
@@ -21329,7 +21240,7 @@
     },
     {
         "id": 7497,
-        "text": "hēcen",
+        "text": "hēċen",
         "gloss": "kid, young goat",
         "sourceRefs": [
             {
@@ -21438,7 +21349,7 @@
     },
     {
         "id": 7519,
-        "text": "hrǣ,",
+        "text": "hrǣ",
         "gloss": "dead body, death",
         "sourceRefs": [
             {
@@ -21449,7 +21360,7 @@
     },
     {
         "id": 7520,
-        "text": "hrǣw,",
+        "text": "hrǣw",
         "sourceRefs": [
             {
                 "pubId": 9,
@@ -21826,17 +21737,6 @@
         ]
     },
     {
-        "id": 7591,
-        "text": "hy±d",
-        "gloss": "skin",
-        "sourceRefs": [
-            {
-                "pubId": 9,
-                "refText": "251"
-            }
-        ]
-    },
-    {
         "id": 7593,
         "text": "hof",
         "gloss": "house, hall",
@@ -21981,7 +21881,7 @@
     },
     {
         "id": 7623,
-        "text": "horh,",
+        "text": "horh",
         "gloss": "spit",
         "sourceRefs": [
             {
@@ -22024,7 +21924,7 @@
     },
     {
         "id": 7633,
-        "text": "hȳran",
+        "text": "hȳran",
         "gloss": "hire",
         "sourceRefs": [
             {
@@ -22036,17 +21936,6 @@
     {
         "id": 7634,
         "text": "hȳrian",
-        "sourceRefs": [
-            {
-                "pubId": 9,
-                "refText": "261"
-            }
-        ]
-    },
-    {
-        "id": 7636,
-        "text": "hʷā",
-        "gloss": "who? what?",
         "sourceRefs": [
             {
                 "pubId": 9,
@@ -22078,7 +21967,7 @@
     },
     {
         "id": 7643,
-        "text": "hʷealf",
+        "text": "hwealf",
         "gloss": "arched covering",
         "sourceRefs": [
             {
@@ -22143,19 +22032,8 @@
     },
     {
         "id": 7654,
-        "text": "hʷæt",
+        "text": "hwæt",
         "gloss": "fast, bold",
-        "sourceRefs": [
-            {
-                "pubId": 9,
-                "refText": "264"
-            }
-        ]
-    },
-    {
-        "id": 7656,
-        "text": "hʷæðer",
-        "gloss": "who of two?",
         "sourceRefs": [
             {
                 "pubId": 9,
@@ -22206,7 +22084,7 @@
     },
     {
         "id": 7664,
-        "text": "hʷer",
+        "text": "hwer",
         "gloss": "kettle",
         "sourceRefs": [
             {
@@ -22216,19 +22094,8 @@
         ]
     },
     {
-        "id": 7665,
-        "text": "hʷeorfan",
-        "gloss": "turn, change",
-        "sourceRefs": [
-            {
-                "pubId": 9,
-                "refText": "265"
-            }
-        ]
-    },
-    {
         "id": 7667,
-        "text": "hʷerhʷette",
+        "text": "hwerhwette",
         "gloss": "cucumber",
         "sourceRefs": [
             {
@@ -22239,7 +22106,7 @@
     },
     {
         "id": 7669,
-        "text": "hʷǣsan",
+        "text": "hwǣsan",
         "gloss": "wheeze",
         "sourceRefs": [
             {
@@ -22289,17 +22156,6 @@
             {
                 "pubId": 9,
                 "refText": "267"
-            }
-        ]
-    },
-    {
-        "id": 7678,
-        "text": "hʷōsta",
-        "gloss": "cough",
-        "sourceRefs": [
-            {
-                "pubId": 9,
-                "refText": "268"
             }
         ]
     },
@@ -22360,7 +22216,7 @@
     },
     {
         "id": 7696,
-        "text": "gyccan",
+        "text": "ġyċċan",
         "gloss": "itch",
         "sourceRefs": [
             {
@@ -22556,7 +22412,7 @@
     },
     {
         "id": 7734,
-        "text": "cēo",
+        "text": "ċēo",
         "gloss": "jackdaw",
         "sourceRefs": [
             {
@@ -22621,7 +22477,7 @@
     },
     {
         "id": 7748,
-        "text": "ceorl",
+        "text": "ċeorl",
         "gloss": "man, low freeman, peasant",
         "sourceRefs": [
             {
@@ -22632,7 +22488,7 @@
     },
     {
         "id": 7750,
-        "text": "ceorran",
+        "text": "ċeorran",
         "gloss": "creak",
         "sourceRefs": [
             {
@@ -22643,7 +22499,7 @@
     },
     {
         "id": 7753,
-        "text": "cēowan",
+        "text": "ċēowan",
         "gloss": "chew",
         "sourceRefs": [
             {
@@ -22665,7 +22521,7 @@
     },
     {
         "id": 7757,
-        "text": "cīnan",
+        "text": "ċīnan",
         "gloss": "gape, break into chinks",
         "sourceRefs": [
             {
@@ -22676,7 +22532,7 @@
     },
     {
         "id": 7759,
-        "text": "cippian",
+        "text": "ċippian",
         "gloss": "chop, cut",
         "sourceRefs": [
             {
@@ -22729,7 +22585,7 @@
     },
     {
         "id": 7768,
-        "text": "cīð",
+        "text": "ċīð",
         "gloss": "young shoot, sprig",
         "sourceRefs": [
             {
@@ -22762,7 +22618,7 @@
     },
     {
         "id": 7774,
-        "text": "clōð",
+        "text": "clōþ",
         "gloss": "cloth",
         "sourceRefs": [
             {
@@ -22794,7 +22650,7 @@
     },
     {
         "id": 7779,
-        "text": "clǣg",
+        "text": "clǣġ",
         "gloss": "clay",
         "sourceRefs": [
             {
@@ -23097,18 +22953,8 @@
     },
     {
         "id": 7842,
-        "text": "cart?)",
+        "text": "cræt",
         "gloss": "chariot",
-        "sourceRefs": [
-            {
-                "pubId": 9,
-                "refText": "302"
-            }
-        ]
-    },
-    {
-        "id": 7843,
-        "text": "OE",
         "sourceRefs": [
             {
                 "pubId": 9,
@@ -23400,7 +23246,7 @@
     },
     {
         "id": 7906,
-        "text": "cwidu,",
+        "text": "cwidu",
         "gloss": "cud, mastix",
         "sourceRefs": [
             {
@@ -23465,7 +23311,7 @@
     },
     {
         "id": 7919,
-        "text": "ā-cwīnan",
+        "text": "ācwīnan",
         "gloss": "waste, dwindle away",
         "sourceRefs": [
             {
@@ -23531,7 +23377,7 @@
     },
     {
         "id": 7938,
-        "text": "læccan",
+        "text": "læċċan",
         "gloss": "take, grasp, seize, catch",
         "sourceRefs": [
             {
@@ -23552,7 +23398,7 @@
     },
     {
         "id": 7941,
-        "text": "leccan",
+        "text": "leċċan",
         "gloss": "cause to leak, moisten",
         "sourceRefs": [
             {
@@ -23705,7 +23551,7 @@
     },
     {
         "id": 7972,
-        "text": "lēow,",
+        "text": "lēow",
         "gloss": "ham, thigh",
         "sourceRefs": [
             {
@@ -23740,17 +23586,6 @@
         "id": 7979,
         "text": "lǣcnian",
         "gloss": "heal",
-        "sourceRefs": [
-            {
-                "pubId": 9,
-                "refText": "331"
-            }
-        ]
-    },
-    {
-        "id": 7981,
-        "text": "lǣce",
-        "gloss": "doctor; leech",
         "sourceRefs": [
             {
                 "pubId": 9,
@@ -23815,7 +23650,7 @@
     },
     {
         "id": 7996,
-        "text": "for-lēosan",
+        "text": "forlēosan",
         "gloss": "lose",
         "sourceRefs": [
             {
@@ -23945,7 +23780,7 @@
     },
     {
         "id": 8025,
-        "text": "lið",
+        "text": "liþ",
         "gloss": "joint",
         "sourceRefs": [
             {
@@ -24130,7 +23965,7 @@
     },
     {
         "id": 8063,
-        "text": "mæger",
+        "text": "mæġer",
         "gloss": "lean",
         "sourceRefs": [
             {
@@ -24261,7 +24096,7 @@
     },
     {
         "id": 8086,
-        "text": "manig",
+        "text": "maniġ",
         "gloss": "many",
         "sourceRefs": [
             {
@@ -24305,17 +24140,6 @@
         "id": 8092,
         "text": "mene",
         "gloss": "necklace",
-        "sourceRefs": [
-            {
-                "pubId": 9,
-                "refText": "353"
-            }
-        ]
-    },
-    {
-        "id": 8094,
-        "text": "mann,",
-        "gloss": "man",
         "sourceRefs": [
             {
                 "pubId": 9,
@@ -24433,7 +24257,7 @@
     },
     {
         "id": 8115,
-        "text": "mæsling,",
+        "text": "mæsling",
         "gloss": "brass",
         "sourceRefs": [
             {
@@ -24497,7 +24321,7 @@
     },
     {
         "id": 8126,
-        "text": "mearh,",
+        "text": "mearh",
         "gloss": "marrow",
         "sourceRefs": [
             {
@@ -25461,7 +25285,7 @@
     },
     {
         "id": 8317,
-        "text": "on-\u001degan",
+        "text": "on-œegan",
         "gloss": "fear",
         "sourceRefs": [
             {
@@ -25549,7 +25373,7 @@
     },
     {
         "id": 8335,
-        "text": "plyccean",
+        "text": "plyċċean",
         "gloss": "pluck",
         "sourceRefs": [
             {
@@ -26008,7 +25832,7 @@
     },
     {
         "id": 8430,
-        "text": "rēcan,",
+        "text": "rēcan",
         "gloss": "heed",
         "sourceRefs": [
             {
@@ -26659,7 +26483,7 @@
     },
     {
         "id": 8563,
-        "text": "scacan",
+        "text": "sċacan",
         "gloss": "shake, shiver; to run, leave, flee",
         "sourceRefs": [
             {
@@ -26670,7 +26494,7 @@
     },
     {
         "id": 8565,
-        "text": "scealc",
+        "text": "sċealc",
         "gloss": "servant",
         "sourceRefs": [
             {
@@ -26681,7 +26505,7 @@
     },
     {
         "id": 8568,
-        "text": "scearn",
+        "text": "sċearn",
         "gloss": "dung, muck",
         "sourceRefs": [
             {
@@ -26703,7 +26527,7 @@
     },
     {
         "id": 8573,
-        "text": "sceþþan",
+        "text": "sċeþþan",
         "gloss": "harm, do wrong",
         "sourceRefs": [
             {
@@ -26714,7 +26538,7 @@
     },
     {
         "id": 8575,
-        "text": "scēat",
+        "text": "sċēat",
         "gloss": "corner, angle; projection, promontory",
         "sourceRefs": [
             {
@@ -26725,7 +26549,7 @@
     },
     {
         "id": 8577,
-        "text": "scēon",
+        "text": "sċēon",
         "gloss": "go quickly, fly",
         "sourceRefs": [
             {
@@ -26736,7 +26560,7 @@
     },
     {
         "id": 8581,
-        "text": "scēp",
+        "text": "sċēp",
         "gloss": "sheep",
         "sourceRefs": [
             {
@@ -26757,7 +26581,7 @@
     },
     {
         "id": 8584,
-        "text": "scēara",
+        "text": "sċēara",
         "gloss": "pair of scissors",
         "sourceRefs": [
             {
@@ -26778,7 +26602,7 @@
     },
     {
         "id": 8590,
-        "text": "sceorfan",
+        "text": "sċeorfan",
         "gloss": "to scratch, bite, vex",
         "sourceRefs": [
             {
@@ -26809,7 +26633,7 @@
     },
     {
         "id": 8595,
-        "text": "scēofan",
+        "text": "sċēofan",
         "gloss": "shove",
         "sourceRefs": [
             {
@@ -26862,19 +26686,8 @@
     },
     {
         "id": 8607,
-        "text": "scītan",
+        "text": "sċītan",
         "gloss": "shit",
-        "sourceRefs": [
-            {
-                "pubId": 9,
-                "refText": "446"
-            }
-        ]
-    },
-    {
-        "id": 8608,
-        "text": "scōh,",
-        "gloss": "shoe",
         "sourceRefs": [
             {
                 "pubId": 9,
@@ -26917,7 +26730,7 @@
     },
     {
         "id": 8618,
-        "text": "scrimman",
+        "text": "sċrimman",
         "gloss": "shrink, contract",
         "sourceRefs": [
             {
@@ -26928,7 +26741,7 @@
     },
     {
         "id": 8620,
-        "text": "scrincan",
+        "text": "sċrincan",
         "gloss": "shrink up, dry up, dwindle",
         "sourceRefs": [
             {
@@ -26939,7 +26752,7 @@
     },
     {
         "id": 8623,
-        "text": "scrīðan",
+        "text": "sċrīðan",
         "gloss": "go, take one's way",
         "sourceRefs": [
             {
@@ -26961,7 +26774,7 @@
     },
     {
         "id": 8628,
-        "text": "scyld",
+        "text": "sċyld",
         "gloss": "guilt, fault",
         "sourceRefs": [
             {
@@ -26983,7 +26796,7 @@
     },
     {
         "id": 8634,
-        "text": "scyte",
+        "text": "sċyte",
         "gloss": "shooting",
         "sourceRefs": [
             {
@@ -27212,7 +27025,7 @@
     },
     {
         "id": 8686,
-        "text": "ge-sneorcan",
+        "text": "ġesneorcan",
         "gloss": "shrivel",
         "sourceRefs": [
             {
@@ -27289,14 +27102,15 @@
     },
     {
         "id": 8704,
-        "text": "Nrth.",
+        "text": "spātan",
         "gloss": "spit",
         "sourceRefs": [
             {
                 "pubId": 9,
                 "refText": "465"
             }
-        ]
+        ],
+        "notes": "Northumbrian form"
     },
     {
         "id": 8706,
@@ -27993,17 +27807,6 @@
         ]
     },
     {
-        "id": 8854,
-        "text": "sȳl",
-        "gloss": "pillar, column",
-        "sourceRefs": [
-            {
-                "pubId": 9,
-                "refText": "491"
-            }
-        ]
-    },
-    {
         "id": 8856,
         "text": "sum",
         "gloss": "some(one)",
@@ -28136,7 +27939,7 @@
     },
     {
         "id": 8882,
-        "text": "be-swemman",
+        "text": "beswemman",
         "gloss": "make swim",
         "sourceRefs": [
             {
@@ -28405,7 +28208,7 @@
     },
     {
         "id": 8932,
-        "text": "tægl",
+        "text": "tæġl",
         "gloss": "hair",
         "sourceRefs": [
             {
@@ -29075,7 +28878,7 @@
     {
         "id": 9057,
         "text": "tylg",
-        "gloss": "rather' (< *\\Itulg-iz\\i), OS \\Itulgo\\i [adv.] `very",
+        "gloss": "rather",
         "sourceRefs": [
             {
                 "pubId": 9,
@@ -29097,7 +28900,7 @@
     {
         "id": 9061,
         "text": "tynder",
-        "gloss": "tinder, fuel' (< *\\ItundrjÒ-\\i), MLG \\Itunder\\i `id.",
+        "gloss": "tinder, fuel",
         "sourceRefs": [
             {
                 "pubId": 9,
@@ -29161,7 +28964,7 @@
     },
     {
         "id": 9073,
-        "text": "tusc,",
+        "text": "tusc",
         "gloss": "tusk, fang",
         "sourceRefs": [
             {
@@ -29216,7 +29019,7 @@
     },
     {
         "id": 9085,
-        "text": "Nhb.",
+        "text": "twigge",
         "gloss": "twig",
         "sourceRefs": [
             {
@@ -29259,7 +29062,7 @@
     },
     {
         "id": 9093,
-        "text": "þeccan",
+        "text": "þeċċan",
         "gloss": "burn",
         "sourceRefs": [
             {
@@ -29345,7 +29148,7 @@
     },
     {
         "id": 9108,
-        "text": "þicgan",
+        "text": "þiċġan",
         "gloss": "request",
         "sourceRefs": [
             {
@@ -29389,7 +29192,7 @@
     },
     {
         "id": 9118,
-        "text": "þerh,",
+        "text": "þerh",
         "gloss": "through",
         "sourceRefs": [
             {
@@ -29400,7 +29203,7 @@
     },
     {
         "id": 9119,
-        "text": "þerih,",
+        "text": "þerih",
         "sourceRefs": [
             {
                 "pubId": 9,
@@ -29496,7 +29299,7 @@
     },
     {
         "id": 9138,
-        "text": "þēon,",
+        "text": "þēon",
         "gloss": "thrive, prosper",
         "sourceRefs": [
             {
@@ -29683,17 +29486,6 @@
         "id": 9172,
         "text": "þroht",
         "gloss": "oppression, hardship",
-        "sourceRefs": [
-            {
-                "pubId": 9,
-                "refText": "548"
-            }
-        ]
-    },
-    {
-        "id": 9174,
-        "text": "þrȳð",
-        "gloss": "strength",
         "sourceRefs": [
             {
                 "pubId": 9,
@@ -29897,17 +29689,6 @@
         ]
     },
     {
-        "id": 9213,
-        "text": "þwēal,",
-        "gloss": "washing",
-        "sourceRefs": [
-            {
-                "pubId": 9,
-                "refText": "555"
-            }
-        ]
-    },
-    {
         "id": 9216,
         "text": "þweran",
         "gloss": "twirl, stir",
@@ -30018,28 +29799,6 @@
         "id": 9234,
         "text": "unnan",
         "gloss": "grant",
-        "sourceRefs": [
-            {
-                "pubId": 9,
-                "refText": "560"
-            }
-        ]
-    },
-    {
-        "id": 9236,
-        "text": "ȳst",
-        "gloss": "storm",
-        "sourceRefs": [
-            {
-                "pubId": 9,
-                "refText": "560"
-            }
-        ]
-    },
-    {
-        "id": 9239,
-        "text": "ȳð",
-        "gloss": "wave",
         "sourceRefs": [
             {
                 "pubId": 9,
@@ -30159,7 +29918,7 @@
     },
     {
         "id": 9261,
-        "text": "wægn",
+        "text": "wæġn",
         "gloss": "wagon",
         "sourceRefs": [
             {
@@ -30259,17 +30018,6 @@
         "id": 9280,
         "text": "wacan",
         "gloss": "be born",
-        "sourceRefs": [
-            {
-                "pubId": 9,
-                "refText": "568"
-            }
-        ]
-    },
-    {
-        "id": 9282,
-        "text": "weccan",
-        "gloss": "awaken",
         "sourceRefs": [
             {
                 "pubId": 9,
@@ -30472,17 +30220,6 @@
             {
                 "pubId": 9,
                 "refText": "575"
-            }
-        ]
-    },
-    {
-        "id": 9323,
-        "text": "werian",
-        "gloss": "dress",
-        "sourceRefs": [
-            {
-                "pubId": 9,
-                "refText": "576"
             }
         ]
     },
@@ -30918,7 +30655,7 @@
     },
     {
         "id": 9407,
-        "text": "ge-wītan",
+        "text": "ġewītan",
         "gloss": "see, look; to go",
         "sourceRefs": [
             {
@@ -31059,7 +30796,7 @@
     },
     {
         "id": 9432,
-        "text": "wēðe",
+        "text": "wēþe",
         "gloss": "sweet, pleasant",
         "sourceRefs": [
             {
@@ -31081,7 +30818,7 @@
     },
     {
         "id": 9436,
-        "text": "wrecca",
+        "text": "wreċċa",
         "gloss": "exile, stranger",
         "sourceRefs": [
             {
@@ -31263,5 +31000,126 @@
                 "refText": "600"
             }
         ]
+    },
+    {
+        "id": 9474,
+        "text": "ōl",
+        "gloss": "strap"
+    },
+    {
+        "id": 9480,
+        "text": "drītan",
+        "gloss": "shit",
+        "reconstructed": true
+    },
+    {
+        "id": 9482,
+        "text": "byrian",
+        "gloss": "raise; come to pass",
+        "reconstructed": true
+    },
+    {
+        "id": 9485,
+        "text": "dīegan",
+        "gloss": "endure",
+        "reconstructed": true
+    },
+    {
+        "id": 9487,
+        "text": "dēfe",
+        "gloss": "fit, mild",
+        "reconstructed": true
+    },
+    {
+        "id": 9489,
+        "text": "frēoðan",
+        "gloss": "froth",
+        "reconstructed": true
+    },
+    {
+        "id": 9491,
+        "text": "frǣġe",
+        "gloss": "known",
+        "reconstructed": true
+    },
+    {
+        "id": 9493,
+        "text": "bi-",
+        "gloss": "be-",
+        "pos": "AFF"
+    },
+    {
+        "id": 9495,
+        "text": "ġietan",
+        "gloss": "get",
+        "reconstructed": true
+    },
+    {
+        "id": 9497,
+        "text": "ginnan",
+        "gloss": "begin",
+        "reconstructed": true
+    },
+    {
+        "id": 9500,
+        "text": "hnēopan",
+        "gloss": "pluck",
+        "reconstructed": true
+    },
+    {
+        "id": 9502,
+        "text": "hlencan",
+        "gloss": "braid",
+        "reconstructed": true
+    },
+    {
+        "id": 9504,
+        "text": "to-",
+        "gloss": "to-",
+        "pos": "AFF"
+    },
+    {
+        "id": 9506,
+        "text": "gīnan",
+        "gloss": "gape",
+        "fullGloss": "gape, yawn",
+        "reconstructed": true
+    },
+    {
+        "id": 9510,
+        "text": "cwīnan",
+        "gloss": "waste",
+        "fullGloss": "waste, dwindle away",
+        "reconstructed": true
+    },
+    {
+        "id": 9511,
+        "text": "for-",
+        "gloss": "fore-",
+        "pos": "AFF"
+    },
+    {
+        "id": 9513,
+        "text": "lēosan",
+        "gloss": "lose",
+        "reconstructed": true
+    },
+    {
+        "id": 9515,
+        "text": "wītan",
+        "gloss": "see",
+        "reconstructed": true
+    },
+    {
+        "id": 9520,
+        "text": "swemman",
+        "gloss": "make swim",
+        "reconstructed": true
+    },
+    {
+        "id": 9524,
+        "text": "sneorcan",
+        "gloss": "shrivel",
+        "reconstructed": true
     }
 ]

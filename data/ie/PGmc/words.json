@@ -5853,16 +5853,6 @@
         ]
     },
     {
-        "id": 6554,
-        "text": "bindan-",
-        "sourceRefs": [
-            {
-                "pubId": 9,
-                "refText": "64"
-            }
-        ]
-    },
-    {
         "id": 6555,
         "text": "bindan-",
         "gloss": "bind",
@@ -6476,7 +6466,7 @@
     },
     {
         "id": 6669,
-        "text": "bru(w)ī-",
+        "text": "bruwī-",
         "gloss": "bridge",
         "sourceRefs": [
             {
@@ -6693,16 +6683,6 @@
         "id": 6703,
         "text": "burgjan-",
         "gloss": "hide(?)",
-        "sourceRefs": [
-            {
-                "pubId": 9,
-                "refText": "85"
-            }
-        ]
-    },
-    {
-        "id": 6705,
-        "text": "buri-",
         "sourceRefs": [
             {
                 "pubId": 9,
@@ -10646,7 +10626,7 @@
     },
     {
         "id": 7378,
-        "text": "ha(u)beda-",
+        "text": "haubeda-",
         "gloss": "head",
         "sourceRefs": [
             {
@@ -13048,7 +13028,7 @@
     },
     {
         "id": 7799,
-        "text": "kling(w)an-",
+        "text": "klingan-",
         "gloss": "shrink",
         "sourceRefs": [
             {
@@ -18875,7 +18855,7 @@
     },
     {
         "id": 8769,
-        "text": "stera/ōn-",
+        "text": "steran-",
         "gloss": "star",
         "sourceRefs": [
             {
@@ -18886,7 +18866,7 @@
     },
     {
         "id": 8770,
-        "text": "sterra/ōn-",
+        "text": "sterran-",
         "sourceRefs": [
             {
                 "pubId": 9,
@@ -19835,7 +19815,7 @@
     },
     {
         "id": 8938,
-        "text": "taihʷō(n)-",
+        "text": "taihʷō-",
         "gloss": "toe",
         "sourceRefs": [
             {
@@ -22319,7 +22299,7 @@
     },
     {
         "id": 9384,
-        "text": "wī̆han-",
+        "text": "wīhan-",
         "gloss": "fight",
         "sourceRefs": [
             {
@@ -22829,5 +22809,83 @@
                 "refText": "600"
             }
         ]
+    },
+    {
+        "id": 9476,
+        "text": "garda-",
+        "gloss": "enclosure",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "169"
+            }
+        ]
+    },
+    {
+        "id": 9477,
+        "text": "wazjan-",
+        "gloss": "to clothe",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "576"
+            }
+        ]
+    },
+    {
+        "id": 9478,
+        "text": "bruī-"
+    },
+    {
+        "id": 9492,
+        "text": "galgan-",
+        "gloss": "gallows"
+    },
+    {
+        "id": 9498,
+        "text": "habeda-"
+    },
+    {
+        "id": 9507,
+        "text": "gīnan-",
+        "gloss": "gape"
+    },
+    {
+        "id": 9508,
+        "text": "klinɡʷan-"
+    },
+    {
+        "id": 9516,
+        "text": "þrūþi-",
+        "gloss": "power",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "548"
+            }
+        ]
+    },
+    {
+        "id": 9517,
+        "text": "taihʷōn-"
+    },
+    {
+        "id": 9518,
+        "text": "wakjan-",
+        "gloss": "to waken",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "568"
+            }
+        ]
+    },
+    {
+        "id": 9521,
+        "text": "sterōn-"
+    },
+    {
+        "id": 9522,
+        "text": "sterrōn-"
     }
 ]
