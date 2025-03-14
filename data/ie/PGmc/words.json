@@ -2773,8 +2773,7 @@
                 "pubId": 5,
                 "refText": "234"
             }
-        ],
-        "notes": "Kroonen 2013:12 cites this as 'airi'"
+        ]
     },
     {
         "id": 3145,
@@ -4523,36 +4522,6 @@
         ]
     },
     {
-        "id": 6339,
-        "text": "airu-",
-        "sourceRefs": [
-            {
-                "pubId": 9,
-                "refText": "13"
-            }
-        ]
-    },
-    {
-        "id": 6340,
-        "text": "aiza-",
-        "sourceRefs": [
-            {
-                "pubId": 9,
-                "refText": "16"
-            }
-        ]
-    },
-    {
-        "id": 6341,
-        "text": "aizō-",
-        "sourceRefs": [
-            {
-                "pubId": 9,
-                "refText": "17"
-            }
-        ]
-    },
-    {
         "id": 6342,
         "text": "ahiz-",
         "gloss": "ear",
@@ -5012,16 +4981,6 @@
         "id": 6417,
         "text": "arfan-",
         "gloss": "chickweed",
-        "sourceRefs": [
-            {
-                "pubId": 9,
-                "refText": "34"
-            }
-        ]
-    },
-    {
-        "id": 6418,
-        "text": "arfan-?",
         "sourceRefs": [
             {
                 "pubId": 9,
@@ -10636,16 +10595,6 @@
         ]
     },
     {
-        "id": 7379,
-        "text": "ha(u)buda-",
-        "sourceRefs": [
-            {
-                "pubId": 9,
-                "refText": "215"
-            }
-        ]
-    },
-    {
         "id": 7381,
         "text": "hauja-",
         "gloss": "hay",
@@ -11211,7 +11160,7 @@
     },
     {
         "id": 7476,
-        "text": "hnakka(n)-",
+        "text": "hnakka-",
         "sourceRefs": [
             {
                 "pubId": 9,
@@ -11568,16 +11517,6 @@
         "id": 7540,
         "text": "hreþra-",
         "gloss": "bat",
-        "sourceRefs": [
-            {
-                "pubId": 9,
-                "refText": "245"
-            }
-        ]
-    },
-    {
-        "id": 7541,
-        "text": "hreþra-?",
         "sourceRefs": [
             {
                 "pubId": 9,
@@ -13007,7 +12946,7 @@
     },
     {
         "id": 7794,
-        "text": "klimb/pan-",
+        "text": "klimban-",
         "sourceRefs": [
             {
                 "pubId": 9,
@@ -14918,16 +14857,6 @@
         ]
     },
     {
-        "id": 8114,
-        "text": "masjinga-?",
-        "sourceRefs": [
-            {
-                "pubId": 9,
-                "refText": "356"
-            }
-        ]
-    },
-    {
         "id": 8117,
         "text": "maska-",
         "gloss": "mesh; stain(?)",
@@ -16486,7 +16415,7 @@
     },
     {
         "id": 8382,
-        "text": "ratta(n)-",
+        "text": "ratta-",
         "sourceRefs": [
             {
                 "pubId": 9,
@@ -16660,7 +16589,7 @@
     },
     {
         "id": 8411,
-        "text": "rauma(n)-",
+        "text": "rauma-",
         "sourceRefs": [
             {
                 "pubId": 9,
@@ -18747,7 +18676,7 @@
     },
     {
         "id": 8752,
-        "text": "stap(p)an-",
+        "text": "stappan-",
         "gloss": "step, pace",
         "sourceRefs": [
             {
@@ -18779,7 +18708,7 @@
     },
     {
         "id": 8758,
-        "text": "stara(n)-",
+        "text": "stara-",
         "gloss": "starling",
         "sourceRefs": [
             {
@@ -18790,7 +18719,7 @@
     },
     {
         "id": 8759,
-        "text": "starra(n)-",
+        "text": "starra-",
         "sourceRefs": [
             {
                 "pubId": 9,
@@ -19826,7 +19755,7 @@
     },
     {
         "id": 8939,
-        "text": "taiwō(n)-",
+        "text": "taiwō-",
         "sourceRefs": [
             {
                 "pubId": 9,
@@ -21192,7 +21121,7 @@
     },
     {
         "id": 9187,
-        "text": "þū̆man-",
+        "text": "þūman-",
         "gloss": "thumb",
         "sourceRefs": [
             {
@@ -22595,16 +22524,6 @@
         ]
     },
     {
-        "id": 9438,
-        "text": "wrandan-?",
-        "sourceRefs": [
-            {
-                "pubId": 9,
-                "refText": "594"
-            }
-        ]
-    },
-    {
         "id": 9441,
         "text": "wranga-",
         "gloss": "twisted, wrong",
@@ -22887,5 +22806,91 @@
     {
         "id": 9522,
         "text": "sterrōn-"
+    },
+    {
+        "id": 9525,
+        "text": "klimpan-"
+    },
+    {
+        "id": 9526,
+        "text": "habuda-"
+    },
+    {
+        "id": 9527,
+        "text": "haubuda-"
+    },
+    {
+        "id": 9528,
+        "text": "hnakkan-"
+    },
+    {
+        "id": 9529,
+        "text": "rattan-",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "405"
+            }
+        ]
+    },
+    {
+        "id": 9530,
+        "text": "rauman-",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "411"
+            }
+        ]
+    },
+    {
+        "id": 9531,
+        "text": "stapan-",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "474"
+            }
+        ]
+    },
+    {
+        "id": 9532,
+        "text": "staran-",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "475"
+            }
+        ]
+    },
+    {
+        "id": 9533,
+        "text": "starran-",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "475"
+            }
+        ]
+    },
+    {
+        "id": 9534,
+        "text": "taiwōn-",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "505"
+            }
+        ]
+    },
+    {
+        "id": 9535,
+        "text": "þuman-",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "550"
+            }
+        ]
     }
 ]

@@ -15432,7 +15432,7 @@
     },
     {
         "id": 6257,
-        "text": "ǣðe",
+        "text": "ǣþe",
         "gloss": "qualified to swear an oath",
         "sourceRefs": [
             {
@@ -26719,7 +26719,7 @@
     },
     {
         "id": 8615,
-        "text": "scrēadian",
+        "text": "sċrēadian",
         "gloss": "shred, cut off, prune",
         "sourceRefs": [
             {
@@ -30170,7 +30170,7 @@
     },
     {
         "id": 9312,
-        "text": "ā-wierdan",
+        "text": "āwierdan",
         "gloss": "damage",
         "sourceRefs": [
             {
@@ -30807,7 +30807,7 @@
     },
     {
         "id": 9434,
-        "text": "wrǣð",
+        "text": "wrǣþ",
         "gloss": "twisted; angry",
         "sourceRefs": [
             {
@@ -31120,6 +31120,12 @@
         "id": 9524,
         "text": "sneorcan",
         "gloss": "shrivel",
+        "reconstructed": true
+    },
+    {
+        "id": 9537,
+        "text": "wierdan",
+        "gloss": "damage",
         "reconstructed": true
     }
 ]
