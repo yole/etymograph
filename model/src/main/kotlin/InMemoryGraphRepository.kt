@@ -371,6 +371,9 @@ open class InMemoryGraphRepository : GraphRepository() {
         if (text.isBlank()) {
             throw IllegalArgumentException("Cannot create word with empty text")
         }
+        if ('?' in text || '/' in text) {
+            throw IllegalArgumentException("Word text may not contain ? or /")
+        }
         val wordsByText = mapOfWordsByText(language, text)
         return Word(allLangEntities.size, text, language, gloss, fullGloss, pos, classes, reconstructed, source, notes).also {
             allLangEntities.add(it)
