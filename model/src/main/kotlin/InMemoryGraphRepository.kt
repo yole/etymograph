@@ -3,7 +3,7 @@ package ru.yole.etymograph
 import java.text.Collator
 import java.text.Normalizer
 import java.util.*
-import kotlin.math.exp
+import kotlin.math.sin
 
 open class InMemoryGraphRepository : GraphRepository() {
     protected val languages = mutableMapOf<String, Language>()
@@ -583,14 +583,22 @@ open class InMemoryGraphRepository : GraphRepository() {
     private fun applyRuleSequence(word: Word, sequence: RuleSequence, expectWord: Word?, applicableRules: MutableList<Rule>): Word? {
         if (expectWord != null) {
             val variants = sequence.resolveVariants(this)
+            var singlePhonemeDifferenceVariant: List<Rule>? = null
 
             for (variant in variants) {
                 val applicableRulesForVariant = mutableListOf<Rule>()
-                val targetWord = applyRuleSequenceVariant(word, variant, applicableRulesForVariant)
+                val targetWord = applyRuleSequenceVariant(word, variant, applicableRulesForVariant)?.asOrthographic()
                 if (targetWord?.text == expectWord.text) {
                     applicableRules.addAll(applicableRulesForVariant)
                     return targetWord
                 }
+                if (targetWord != null && getSinglePhonemeDifference(targetWord.text, expectWord.text) != null) {
+                    singlePhonemeDifferenceVariant = variant
+                }
+            }
+
+            if (singlePhonemeDifferenceVariant != null) {
+                return applyRuleSequenceVariant(word, singlePhonemeDifferenceVariant, applicableRules)
             }
             return applyRuleSequenceVariant(word, variants.first(), applicableRules)
         }
