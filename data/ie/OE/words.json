@@ -16811,7 +16811,7 @@
     },
     {
         "id": 6591,
-        "text": "blīðe",
+        "text": "blīþe",
         "gloss": "joyful, glad",
         "sourceRefs": [
             {
@@ -17170,7 +17170,7 @@
     },
     {
         "id": 6657,
-        "text": "brōðor",
+        "text": "brōþor",
         "gloss": "brother",
         "sourceRefs": [
             {
@@ -17891,7 +17891,7 @@
     },
     {
         "id": 6810,
-        "text": "duguð",
+        "text": "duguþ",
         "gloss": "manhood; glory, advantage; multitude",
         "sourceRefs": [
             {
@@ -20657,7 +20657,7 @@
     },
     {
         "id": 7377,
-        "text": "heaðo-",
+        "text": "heaþo-",
         "gloss": "battle",
         "sourceRefs": [
             {
@@ -21732,7 +21732,7 @@
     },
     {
         "id": 7590,
-        "text": "hryðða",
+        "text": "hryþþa",
         "gloss": "male dog",
         "sourceRefs": [
             {
@@ -22122,7 +22122,7 @@
     },
     {
         "id": 7671,
-        "text": "hʷīl",
+        "text": "hwīl",
         "gloss": "while",
         "sourceRefs": [
             {
@@ -22133,7 +22133,7 @@
     },
     {
         "id": 7673,
-        "text": "hʷīnan",
+        "text": "hwīnan",
         "gloss": "whistle, whiz",
         "sourceRefs": [
             {
@@ -22155,7 +22155,7 @@
     },
     {
         "id": 7676,
-        "text": "hʷōsan",
+        "text": "hwōsan",
         "gloss": "cough",
         "sourceRefs": [
             {
@@ -25011,7 +25011,7 @@
     },
     {
         "id": 8266,
-        "text": "nǣ̆dre",
+        "text": "nǣdre",
         "gloss": "viper",
         "sourceRefs": [
             {
@@ -26768,7 +26768,7 @@
     },
     {
         "id": 8625,
-        "text": "scriðe",
+        "text": "sċriþe",
         "gloss": "course",
         "sourceRefs": [
             {
@@ -31131,6 +31131,22 @@
         "id": 9537,
         "text": "wierdan",
         "gloss": "damage",
+        "reconstructed": true
+    },
+    {
+        "id": 9540,
+        "text": "belgan",
+        "gloss": "irritate",
+        "reconstructed": true
+    },
+    {
+        "id": 9541,
+        "text": "ǣger"
+    },
+    {
+        "id": 9543,
+        "text": "felma",
+        "gloss": "membrane",
         "reconstructed": true
     }
 ]

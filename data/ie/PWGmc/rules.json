@@ -149,6 +149,16 @@
                             "type": "relPhoneme",
                             "relativeIndex": 1,
                             "parameter": "w"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": -1,
+                            "cls": "vowel"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": 2,
+                            "cls": "vowel"
                         }
                     ]
                 }
