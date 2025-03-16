@@ -534,6 +534,7 @@ class RuleController {
             sequence.toViewModel(),
             derivations.map { derivation ->
                 val firstLink = derivation.first()
+                val sourceWord = firstLink.toEntity as Word
                 val resultWord = derivation.last().fromEntity as Word
                 val expectedWord = derivation.fold(firstLink.toEntity as Word) { word, link ->
                     link.applyRules(word, repo).asOrthographic()
@@ -545,9 +546,9 @@ class RuleController {
                 val steps = derivation.flatMap { buildIntermediateSteps(repo, it) }
                 val rules = derivation.flatMap { it.rules }
                 DerivationViewModel(
-                    (derivation.first().toEntity as Word).toRefViewModel(repo),
+                    sourceWord.toRefViewModel(repo),
                     WordController.LinkWordViewModel(
-                        (derivation.last().fromEntity as Word).toRefViewModel(repo),
+                        resultWord.toRefViewModel(repo),
                         rules.map { it.id },
                         rules.map { it.name },
                         steps.map { it.result },

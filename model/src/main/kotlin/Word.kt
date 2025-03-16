@@ -196,7 +196,7 @@ class Word(
 
     fun getTextVariations(graph: GraphRepository): List<String> {
         val baseWord = getVariationOf(graph) ?: this
-        val variations = graph.getLinksTo(this)
+        val variations = graph.getLinksTo(baseWord)
             .filter { it.type == Link.Variation }
             .mapNotNull { (it.fromEntity as? Word)?.text }
         return listOf(baseWord.text) + variations
