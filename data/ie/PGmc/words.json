@@ -3910,7 +3910,13 @@
     {
         "id": 6219,
         "text": "ahslō",
-        "gloss": "shoulder-joint, shoulder, armpit"
+        "gloss": "shoulder-joint, shoulder, armpit",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "176"
+            }
+        ]
     },
     {
         "id": 6220,
@@ -4780,7 +4786,7 @@
     },
     {
         "id": 6391,
-        "text": "agkōn-",
+        "text": "agōn-",
         "gloss": "magpie",
         "sourceRefs": [
             {

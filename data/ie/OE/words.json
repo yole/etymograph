@@ -15297,7 +15297,7 @@
     },
     {
         "id": 6231,
-        "text": "egl",
+        "text": "eġl",
         "gloss": "mote",
         "sourceRefs": [
             {
@@ -18338,10 +18338,15 @@
         "id": 6898,
         "text": "fǣġe",
         "gloss": "bound to die",
+        "fullGloss": "fey, doomed to die",
+        "pos": "ADJ",
         "sourceRefs": [
             {
                 "pubId": 9,
                 "refText": "123"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/fæge#Old_English"
             }
         ]
     },
