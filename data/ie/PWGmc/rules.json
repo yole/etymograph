@@ -468,11 +468,9 @@
                             "relative": false
                         },
                         {
-                            "type": "phonemeEquals",
-                            "index": -1,
-                            "cls": null,
-                            "relative": true,
-                            "negated": true
+                            "type": "relPhoneme",
+                            "relativeIndex": -1,
+                            "cls": "vowel"
                         },
                         {
                             "type": "relPhoneme",

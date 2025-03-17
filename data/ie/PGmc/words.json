@@ -3470,7 +3470,8 @@
             {
                 "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-Germanic/frawerþana#Proto-Germanic"
             }
-        ]
+        ],
+        "stress": 4
     },
     {
         "id": 4792,
@@ -8970,7 +8971,7 @@
     },
     {
         "id": 7098,
-        "text": "frugkan-",
+        "text": "frugan-",
         "gloss": "frog",
         "sourceRefs": [
             {
@@ -11339,7 +11340,7 @@
     },
     {
         "id": 7506,
-        "text": "hrabpan-",
+        "text": "hraban-",
         "gloss": "raven",
         "sourceRefs": [
             {
@@ -13005,7 +13006,7 @@
     },
     {
         "id": 7805,
-        "text": "knabpan-",
+        "text": "knaban-",
         "gloss": "knob; boy",
         "sourceRefs": [
             {
@@ -19428,7 +19429,7 @@
     },
     {
         "id": 8877,
-        "text": "swambpan-",
+        "text": "swamban-",
         "gloss": "sponge, mushroom",
         "sourceRefs": [
             {
@@ -22898,5 +22899,15 @@
                 "refText": "550"
             }
         ]
+    },
+    {
+        "id": 9549,
+        "text": "fagra-",
+        "gloss": "beautiful"
+    },
+    {
+        "id": 9550,
+        "text": "hʷarbjan-",
+        "gloss": "to turn"
     }
 ]

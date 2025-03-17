@@ -16015,11 +16015,14 @@
     {
         "id": 6422,
         "text": "æsp",
-        "gloss": "aspen",
+        "pos": "N",
         "sourceRefs": [
             {
                 "pubId": 9,
                 "refText": "39"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/æsp#Old_English"
             }
         ]
     },
@@ -18302,17 +18305,6 @@
         ]
     },
     {
-        "id": 6892,
-        "text": "fæger",
-        "gloss": "fit (good, beautiful)",
-        "sourceRefs": [
-            {
-                "pubId": 9,
-                "refText": "122"
-            }
-        ]
-    },
-    {
         "id": 6894,
         "text": "feax",
         "gloss": "hair of the head",
@@ -18790,7 +18782,7 @@
     },
     {
         "id": 6988,
-        "text": "fēorða",
+        "text": "fēorþa",
         "gloss": "fourth",
         "sourceRefs": [
             {
@@ -19290,7 +19282,7 @@
     },
     {
         "id": 7095,
-        "text": "freoðo",
+        "text": "freoþo",
         "gloss": "friendship, peace",
         "sourceRefs": [
             {
@@ -20547,17 +20539,6 @@
         ]
     },
     {
-        "id": 7356,
-        "text": "hengest",
-        "gloss": "gelding; horse",
-        "sourceRefs": [
-            {
-                "pubId": 9,
-                "refText": "209"
-            }
-        ]
-    },
-    {
         "id": 7357,
         "text": "hengst",
         "sourceRefs": [
@@ -20897,10 +20878,18 @@
         "id": 7429,
         "text": "hīgian",
         "gloss": "hie, haste, strive",
+        "fullGloss": "to strive, exert oneself",
+        "pos": "V",
+        "classes": [
+            "v-weak-2"
+        ],
         "sourceRefs": [
             {
                 "pubId": 9,
                 "refText": "225"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/higian#Old_English"
             }
         ]
     },
@@ -21601,7 +21590,7 @@
     },
     {
         "id": 7565,
-        "text": "hrīðer",
+        "text": "hrīþer",
         "gloss": "cow, bovine",
         "sourceRefs": [
             {
@@ -21949,19 +21938,8 @@
         ]
     },
     {
-        "id": 7638,
-        "text": "hʷǣte",
-        "gloss": "wheat",
-        "sourceRefs": [
-            {
-                "pubId": 9,
-                "refText": "261"
-            }
-        ]
-    },
-    {
         "id": 7641,
-        "text": "hʷæg",
+        "text": "hwæġ",
         "gloss": "whey",
         "sourceRefs": [
             {
@@ -21982,19 +21960,8 @@
         ]
     },
     {
-        "id": 7645,
-        "text": "hʷæl",
-        "gloss": "whale",
-        "sourceRefs": [
-            {
-                "pubId": 9,
-                "refText": "262"
-            }
-        ]
-    },
-    {
         "id": 7647,
-        "text": "hʷār",
+        "text": "hwār",
         "gloss": "where",
         "sourceRefs": [
             {
@@ -22005,18 +21972,7 @@
     },
     {
         "id": 7648,
-        "text": "hʷǣ̆r",
-        "sourceRefs": [
-            {
-                "pubId": 9,
-                "refText": "263"
-            }
-        ]
-    },
-    {
-        "id": 7650,
-        "text": "hʷierfan",
-        "gloss": "turn, to revolve",
+        "text": "hwær",
         "sourceRefs": [
             {
                 "pubId": 9,
@@ -22026,7 +21982,7 @@
     },
     {
         "id": 7652,
-        "text": "hʷæs",
+        "text": "hwæs",
         "gloss": "sharp",
         "sourceRefs": [
             {
@@ -22048,7 +22004,7 @@
     },
     {
         "id": 7659,
-        "text": "hʷeohhol",
+        "text": "hweohhol",
         "gloss": "wheel",
         "sourceRefs": [
             {
@@ -22059,7 +22015,7 @@
     },
     {
         "id": 7660,
-        "text": "hʷēol",
+        "text": "hwēol",
         "sourceRefs": [
             {
                 "pubId": 9,
@@ -22069,7 +22025,7 @@
     },
     {
         "id": 7661,
-        "text": "hʷeowol",
+        "text": "hweowol",
         "sourceRefs": [
             {
                 "pubId": 9,
@@ -22079,7 +22035,7 @@
     },
     {
         "id": 7662,
-        "text": "hʷeogol",
+        "text": "hweogol",
         "sourceRefs": [
             {
                 "pubId": 9,
@@ -22677,7 +22633,7 @@
     },
     {
         "id": 7784,
-        "text": "clengen",
+        "text": "clenġen",
         "gloss": "adhere, remain",
         "sourceRefs": [
             {
@@ -23949,12 +23905,16 @@
     },
     {
         "id": 8060,
-        "text": "mægð",
+        "text": "mæġð",
         "gloss": "girl, maiden",
+        "pos": "N",
         "sourceRefs": [
             {
                 "pubId": 9,
                 "refText": "346"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/mægð#Old_English"
             }
         ]
     },
@@ -24240,7 +24200,7 @@
     },
     {
         "id": 8110,
-        "text": "mearð",
+        "text": "mearþ",
         "gloss": "marten",
         "sourceRefs": [
             {
@@ -24315,7 +24275,7 @@
     },
     {
         "id": 8124,
-        "text": "mæðel",
+        "text": "mæþel",
         "gloss": "assembly, council; speech, address",
         "sourceRefs": [
             {
@@ -24781,17 +24741,6 @@
         ]
     },
     {
-        "id": 8214,
-        "text": "ge-mynd",
-        "gloss": "mind, memory, memorial",
-        "sourceRefs": [
-            {
-                "pubId": 9,
-                "refText": "375"
-            }
-        ]
-    },
-    {
         "id": 8216,
         "text": "mund",
         "gloss": "hand; protection",
@@ -25226,7 +25175,7 @@
     },
     {
         "id": 8305,
-        "text": "ge-nōh",
+        "text": "ġenōh",
         "gloss": "enough",
         "sourceRefs": [
             {
@@ -25323,7 +25272,7 @@
     },
     {
         "id": 8324,
-        "text": "pægel",
+        "text": "pæġel",
         "gloss": "wine-vessel",
         "sourceRefs": [
             {
@@ -26521,7 +26470,7 @@
     },
     {
         "id": 8571,
-        "text": "sceat",
+        "text": "sċeat",
         "gloss": "property, goods, wealth",
         "sourceRefs": [
             {
@@ -26659,7 +26608,7 @@
     },
     {
         "id": 8599,
-        "text": "scīma",
+        "text": "sċīma",
         "gloss": "splendor, brightness",
         "sourceRefs": [
             {
@@ -26702,7 +26651,7 @@
     },
     {
         "id": 8611,
-        "text": "scrætte",
+        "text": "sċrætte",
         "gloss": "adulteress",
         "sourceRefs": [
             {
@@ -26713,7 +26662,7 @@
     },
     {
         "id": 8613,
-        "text": "ge-screncan",
+        "text": "ġesċrencan",
         "gloss": "cause to shrink, destroy, supplant",
         "sourceRefs": [
             {
@@ -26790,7 +26739,7 @@
     },
     {
         "id": 8630,
-        "text": "sculdor",
+        "text": "sċuldor",
         "gloss": "shoulder",
         "sourceRefs": [
             {
@@ -28363,7 +28312,7 @@
     },
     {
         "id": 8961,
-        "text": "on-tendan",
+        "text": "ontendan",
         "gloss": "kindle",
         "sourceRefs": [
             {
@@ -31147,6 +31096,59 @@
         "id": 9543,
         "text": "felma",
         "gloss": "membrane",
+        "reconstructed": true
+    },
+    {
+        "id": 9545,
+        "text": "līfan",
+        "gloss": "stay, remain",
+        "reconstructed": true
+    },
+    {
+        "id": 9547,
+        "text": "mynd",
+        "gloss": "mind, memory, memorial",
+        "reconstructed": true
+    },
+    {
+        "id": 9551,
+        "text": "æspe",
+        "gloss": "an aspen",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/æspe#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 9552,
+        "text": "on-",
+        "gloss": "on-",
+        "pos": "AFF"
+    },
+    {
+        "id": 9554,
+        "text": "tendan",
+        "gloss": "kindle",
+        "reconstructed": true
+    },
+    {
+        "id": 9556,
+        "text": "nōh",
+        "gloss": "enough",
+        "reconstructed": true
+    },
+    {
+        "id": 9558,
+        "text": "sċrencan",
+        "gloss": "cause to shrink",
+        "reconstructed": true
+    },
+    {
+        "id": 9560,
+        "text": "trum",
+        "gloss": "root-stock?",
         "reconstructed": true
     }
 ]
