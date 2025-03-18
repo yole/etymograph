@@ -71,6 +71,13 @@ export default function RuleSequence(params) {
         derivation.derivation.suggestedSequences.length == 0 && derivation.expectedWord == null)
     const singlePhonemeInconsistent = ruleSequence.derivations.filter(derivation =>
         derivation.derivation.suggestedSequences.length == 0 && derivation.expectedWord != null && derivation.singlePhonemeDifference != null)
+
+    const spiMap = Map.groupBy(singlePhonemeInconsistent,
+        (d) => d.singlePhonemeDifference)
+    const spiGroups = []
+    spiMap.forEach((v, k) => spiGroups.push({title: k, group: v}))
+    spiGroups.sort((e1, e2) => e2.group.length - e1.group.length)
+
     const inconsistent = ruleSequence.derivations.filter(derivation =>
         derivation.derivation.suggestedSequences.length == 0 && derivation.expectedWord != null && derivation.singlePhonemeDifference == null)
     const total = consistent.length + inconsistent.length + singlePhonemeInconsistent.length
@@ -97,10 +104,12 @@ export default function RuleSequence(params) {
 
         <h3>Consistent Derivations</h3>
         <DerivationListComponent derivations={consistent} showExpectedWord={false}/>
-        {singlePhonemeInconsistent.length > 0 && <>
-            <h3>Single-phoneme Inconsistent Derivations</h3>
-            <DerivationListComponent derivations={singlePhonemeInconsistent} showExpectedWord={true}/>
-        </>}
+
+        {spiGroups.map(group => <>
+            <h3>{group.title}</h3>
+            <DerivationListComponent derivations={group.group} showExpectedWord={true}/>
+        </>)}
+
         {inconsistent.length > 0 && <>
             <h3>Inconsistent Derivations</h3>
             <DerivationListComponent derivations={inconsistent} showExpectedWord={true}/>
