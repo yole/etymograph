@@ -304,7 +304,7 @@ class RuleControllerTest {
         assertEquals(qWord.id, d.derivation.word.id)
         assertEquals(2, d.derivation.ruleIds.size)
         assertEquals("veiwei", d.expectedWord)
-        assertEquals("w > v", d.singlePhonemeDifference)
+        assertEquals("w -> v", d.singlePhonemeDifference)
     }
 
     @Test
