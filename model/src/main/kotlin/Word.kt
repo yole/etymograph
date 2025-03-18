@@ -300,16 +300,22 @@ fun Word.calculateStress(graph: GraphRepository): StressData? {
         null
 }
 
-fun getSinglePhonemeDifference(word1: Word, word2: Word): String? {
+data class PhonemeDelta(val before: String?, val after: String?) {
+    override fun toString(): String {
+        return (before ?: "∅") + " -> " + (after ?: "∅")
+    }
+}
+
+fun getSinglePhonemeDifference(word1: Word, word2: Word): PhonemeDelta? {
     val phonemes1 = PhonemeIterator(word1, null, mergeDiphthongs = true)
     val phonemes2 = PhonemeIterator(word2, null, mergeDiphthongs = true)
 
     if (phonemes1.size == phonemes2.size) {
-        var result: String? = null
+        var result: PhonemeDelta? = null
         while (true) {
             if (phonemes1.current != phonemes2.current) {
                 if (result != null) return null
-                result = "${phonemes1.current} -> ${phonemes2.current}"
+                result = PhonemeDelta(phonemes1.current, phonemes2.current)
             }
             if (!phonemes1.advance() || !phonemes2.advance()) {
                 break
@@ -326,12 +332,12 @@ fun getSinglePhonemeDifference(word1: Word, word2: Word): String? {
         if (phonemes1.size + 1 == phonemes2.size &&
             phonemes2.range(matchingPrefix + 1, phonemes2.size) == phonemes1.range(matchingPrefix, phonemes1.size))
         {
-            return "∅ -> ${phonemes2[matchingPrefix]}"
+            return PhonemeDelta(null, phonemes2[matchingPrefix])
         }
         if (phonemes1.size - 1 == phonemes2.size &&
             phonemes1.range(matchingPrefix + 1, phonemes1.size) == phonemes2.range(matchingPrefix, phonemes2.size))
         {
-            return "${phonemes1[matchingPrefix]} -> ∅"
+            return PhonemeDelta(phonemes1[matchingPrefix], null)
         }
     }
 

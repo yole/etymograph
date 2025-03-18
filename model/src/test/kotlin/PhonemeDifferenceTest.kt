@@ -18,19 +18,19 @@ class PhonemeDifferenceTest {
 
     @Test
     fun singlePhonemeDifference() {
-        assertEquals("∅ -> d", getSinglePhonemeDifference(oe.word("wierdan"), oe.word("wierddan")))
-        assertEquals("d -> ∅", getSinglePhonemeDifference(oe.word("wierddan"), oe.word("wierdan")))
-        assertEquals("∅ -> e", getSinglePhonemeDifference(oe.word("aldor"), oe.word("ealdor")))
-        assertEquals("∅ -> n", getSinglePhonemeDifference(oe.word("haca"), oe.word("hacan")))
+        assertEquals("∅ -> d", getSinglePhonemeDifference(oe.word("wierdan"), oe.word("wierddan")).toString())
+        assertEquals("d -> ∅", getSinglePhonemeDifference(oe.word("wierddan"), oe.word("wierdan")).toString())
+        assertEquals("∅ -> e", getSinglePhonemeDifference(oe.word("aldor"), oe.word("ealdor")).toString())
+        assertEquals("∅ -> n", getSinglePhonemeDifference(oe.word("haca"), oe.word("hacan")).toString())
     }
 
     @Test
     fun normalizeSpelling() {
-        assertEquals("e -> a", getSinglePhonemeDifference(oe.word("wrīðen"), oe.word("wrīþan-")))
+        assertEquals("e -> a", getSinglePhonemeDifference(oe.word("wrīðen"), oe.word("wrīþan-")).toString())
     }
 
     @Test
     fun diphthong() {
-        assertEquals("īe -> ēo", getSinglePhonemeDifference(oe.word("tīen"), oe.word("tēon")))
+        assertEquals("īe -> ēo", getSinglePhonemeDifference(oe.word("tīen"), oe.word("tēon")).toString())
     }
 }
