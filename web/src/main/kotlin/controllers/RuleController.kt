@@ -267,7 +267,7 @@ class RuleController {
         return RuleExampleViewModel(
             fromWord.toRefViewModel(graph),
             toWord.toRefViewModel(graph),
-            link.applyRules(toWord, graph).asOrthographic()
+            link.applyRules(toWord, graph).asOrthographic(fromWord.language)
                 .takeIf { !fromWord.language.isNormalizedEqual(it, fromWord) }?.text,
             link.rules.map { RuleLinkViewModel(it.id, it.name, link.type.id, link.source.toViewModel(graph), link.notes) },
             example.steps.map { it.result }
