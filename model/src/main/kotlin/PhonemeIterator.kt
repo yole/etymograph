@@ -118,13 +118,14 @@ class PhonemeIterator {
     private var indexMapStack: MutableList<IntArray>? = null
     private var atEnd: Boolean = false
 
-    constructor(word: Word, repo: GraphRepository?, resultPhonemic: Boolean? = null) : this(
+    constructor(word: Word, repo: GraphRepository?, resultPhonemic: Boolean? = null, mergeDiphthongs: Boolean = false) : this(
         if (word.isPhonemic) word.text else word.normalizedText.trimEnd('-'),
         word.language,
         repo,
         word,
         word.isPhonemic,
-        resultPhonemic
+        resultPhonemic,
+        mergeDiphthongs
     )
 
     constructor(
@@ -133,7 +134,8 @@ class PhonemeIterator {
         repo: GraphRepository?,
         word: Word? = null,
         phonemic: Boolean = false,
-        resultPhonemic: Boolean? = null
+        resultPhonemic: Boolean? = null,
+        mergeDiphthongs: Boolean = false
     ) {
         this.language = language
         this.word = word
@@ -144,11 +146,16 @@ class PhonemeIterator {
         val lookup = if (phonemic) this.language.phonoPhonemeLookup else this.language.orthoPhonemeLookup
 
         lookup.iteratePhonemes(text) { phonemeText, phoneme ->
-            val normalizedText = if (phonemic) phoneme?.sound else phoneme?.graphemes?.first()
-            sourcePhonemes.add(normalizedText ?: phonemeText)
-
             val normalizedResultText = if (resultPhonemic ?: phonemic) phoneme?.sound else phoneme?.graphemes?.first()
-            resultPhonemes.add(normalizedResultText ?: phonemeText)
+            val normalizedText = if (phonemic) phoneme?.sound else phoneme?.graphemes?.first()
+            if (mergeDiphthongs && sourcePhonemes.size > 0 && sourcePhonemes.last() + (phoneme?.sound ?: phonemeText) in language.diphthongs) {
+                sourcePhonemes[sourcePhonemes.size - 1] = sourcePhonemes[sourcePhonemes.size - 1] + (normalizedText ?: phonemeText)
+                resultPhonemes[resultPhonemes.size - 1] = resultPhonemes[resultPhonemes.size - 1] + (normalizedResultText ?: phonemeText)
+            }
+            else {
+                sourcePhonemes.add(normalizedText ?: phonemeText)
+                resultPhonemes.add(normalizedResultText ?: phonemeText)
+            }
         }
 
         phonemes = sourcePhonemes

@@ -13,6 +13,7 @@ class PhonemeDifferenceTest {
         oe.phonemes = listOf(
             phoneme(listOf("þ", "ð"))
         )
+        oe.diphthongs = listOf("īe", "ēo")
     }
 
     @Test
@@ -26,5 +27,10 @@ class PhonemeDifferenceTest {
     @Test
     fun normalizeSpelling() {
         assertEquals("e -> a", getSinglePhonemeDifference(oe.word("wrīðen"), oe.word("wrīþan-")))
+    }
+
+    @Test
+    fun diphthong() {
+        assertEquals("īe -> ēo", getSinglePhonemeDifference(oe.word("tīen"), oe.word("tēon")))
     }
 }

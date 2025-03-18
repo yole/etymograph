@@ -303,8 +303,8 @@ fun Word.calculateStress(graph: GraphRepository): StressData? {
 fun getSinglePhonemeDifference(word1: Word, word2: Word): String? {
     val text1 = word1.text.trimEnd('-')
     val text2 = word2.text.trimEnd('-')
-    val phonemes1 = PhonemeIterator(word1, null, null)
-    val phonemes2 = PhonemeIterator(word2, null, null)
+    val phonemes1 = PhonemeIterator(word1, null, mergeDiphthongs = true)
+    val phonemes2 = PhonemeIterator(word2, null, mergeDiphthongs = true)
 
     if (phonemes1.size == phonemes2.size) {
         var result: String? = null
