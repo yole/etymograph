@@ -177,6 +177,8 @@ class PhonemeIterator {
     val index: Int get() = phonemeIndex
 
     operator fun get(index: Int): String = phonemes[index]
+    fun range(fromIndex: Int, toIndex: Int) = phonemes.subList(fromIndex, toIndex)
+
     fun atRelative(relativeIndex: Int): String? = phonemes.getOrNull(phonemeIndex + relativeIndex)
 
     fun clone(): PhonemeIterator {

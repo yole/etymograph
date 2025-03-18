@@ -27,3 +27,12 @@ fun GraphRepository.rule(
 
 fun Rule.step(optional: Boolean = false) = RuleSequenceStep(this, optional)
 fun RuleSequence.step() = RuleSequenceStep(this, false)
+
+fun phoneme(grapheme: String, classes: String? = null): Phoneme {
+    return Phoneme(-1, listOf(grapheme), null,
+        classes?.split(' ')?.toSet() ?: defaultPhonemeClasses[grapheme]!!)
+}
+
+fun phoneme(graphemes: List<String>, sound: String? = null, classes: String? = null): Phoneme {
+    return Phoneme(-1, graphemes, sound, classes?.split(' ')?.toSet() ?: emptySet())
+}

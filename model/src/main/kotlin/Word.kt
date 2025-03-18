@@ -1,6 +1,7 @@
 package ru.yole.etymograph
 
 import java.util.*
+import kotlin.math.min
 
 class WordSegment(
     val firstCharacter: Int,
@@ -302,23 +303,36 @@ fun Word.calculateStress(graph: GraphRepository): StressData? {
 fun getSinglePhonemeDifference(word1: Word, word2: Word): String? {
     val text1 = word1.text.trimEnd('-')
     val text2 = word2.text.trimEnd('-')
-    if (text1.length == text2.length) {
+    val phonemes1 = PhonemeIterator(word1, null, null)
+    val phonemes2 = PhonemeIterator(word2, null, null)
+
+    if (phonemes1.size == phonemes2.size) {
         var result: String? = null
-        for ((c1, c2) in text1.zip(text2)) {
-            if (c1 != c2) {
+        while (true) {
+            if (phonemes1.current != phonemes2.current) {
                 if (result != null) return null
-                result = "$c1 > $c2"
+                result = "${phonemes1.current} -> ${phonemes2.current}"
+            }
+            if (!phonemes1.advance() || !phonemes2.advance()) {
+                break
             }
         }
         return result
     }
-    if (text1.length == text2.length + 1 || text1.length == text2.length - 1) {
-        val matchingPrefix = (text1 zip text2).takeWhile { (c1, c2) -> c1 == c2 }.size
+    if (phonemes1.size == phonemes2.size + 1 || phonemes1.size == phonemes2.size - 1) {
+        val commonLength = min(phonemes1.size, phonemes2.size)
+        val matchingPrefix = (0..<commonLength).firstOrNull {
+            phonemes1[it] != phonemes2[it]
+        } ?: commonLength
 
-        if (text1.length + 1 == text2.length && text2.substring(matchingPrefix + 1) == text1.substring(matchingPrefix)) {
+        if (phonemes1.size + 1 == phonemes2.size &&
+            phonemes2.range(matchingPrefix + 1, phonemes2.size) == phonemes1.range(matchingPrefix, phonemes1.size))
+        {
             return "∅ -> ${text2[matchingPrefix]}"
         }
-        if (text1.length - 1 == text2.length && text1.substring(matchingPrefix + 1) == text2.substring(matchingPrefix)) {
+        if (phonemes1.size - 1 == phonemes2.size &&
+            phonemes1.range(matchingPrefix + 1, phonemes1.size) == phonemes2.range(matchingPrefix, phonemes2.size))
+        {
             return "${text1[matchingPrefix]} -> ∅"
         }
     }

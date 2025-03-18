@@ -40,15 +40,6 @@ open class QBaseTest {
         addLanguage(q)
     }
 
-    fun phoneme(grapheme: String, classes: String? = null): Phoneme {
-        return Phoneme(-1, listOf(grapheme), null,
-            classes?.split(' ')?.toSet() ?: defaultPhonemeClasses[grapheme]!!)
-    }
-
-    fun phoneme(graphemes: List<String>, sound: String?, classes: String): Phoneme {
-        return Phoneme(-1, graphemes, sound, classes.split(' ').toSet())
-    }
-
     fun GraphRepository.rule(
         text: String,
         name: String = "q", addedCategories: String? = null

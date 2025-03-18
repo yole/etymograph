@@ -10,6 +10,9 @@ class PhonemeDifferenceTest {
     @Before
     fun setup() {
         oe = Language("Old English", "OE")
+        oe.phonemes = listOf(
+            phoneme(listOf("þ", "ð"))
+        )
     }
 
     @Test
@@ -17,5 +20,11 @@ class PhonemeDifferenceTest {
         assertEquals("∅ -> d", getSinglePhonemeDifference(oe.word("wierdan"), oe.word("wierddan")))
         assertEquals("d -> ∅", getSinglePhonemeDifference(oe.word("wierddan"), oe.word("wierdan")))
         assertEquals("∅ -> e", getSinglePhonemeDifference(oe.word("aldor"), oe.word("ealdor")))
+        assertEquals("∅ -> n", getSinglePhonemeDifference(oe.word("haca"), oe.word("hacan")))
+    }
+
+    @Test
+    fun normalizeSpelling() {
+        assertEquals("e -> a", getSinglePhonemeDifference(oe.word("wrīðen"), oe.word("wrīþan-")))
     }
 }
