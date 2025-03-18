@@ -592,7 +592,7 @@ open class InMemoryGraphRepository : GraphRepository() {
                     applicableRules.addAll(applicableRulesForVariant)
                     return targetWord
                 }
-                if (targetWord != null && getSinglePhonemeDifference(targetWord.text, expectWord.text) != null) {
+                if (targetWord != null && getSinglePhonemeDifference(targetWord, expectWord) != null) {
                     singlePhonemeDifferenceVariant = variant
                 }
             }

@@ -563,7 +563,7 @@ class RuleController {
                     ),
                     expectedWord.takeIf { expectedText !in resultWordVariations }?.text,
                     if (expectedText !in resultWordVariations)
-                        getSinglePhonemeDifference(expectedWord.text.trimEnd('-'), resultWord.text.trimEnd('-'))
+                        getSinglePhonemeDifference(expectedWord, resultWord)
                     else
                         null
                 )

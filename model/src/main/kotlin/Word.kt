@@ -299,10 +299,12 @@ fun Word.calculateStress(graph: GraphRepository): StressData? {
         null
 }
 
-fun getSinglePhonemeDifference(word1: String, word2: String): String? {
-    if (word1.length == word2.length) {
+fun getSinglePhonemeDifference(word1: Word, word2: Word): String? {
+    val text1 = word1.text.trimEnd('-')
+    val text2 = word2.text.trimEnd('-')
+    if (text1.length == text2.length) {
         var result: String? = null
-        for ((c1, c2) in word1.zip(word2)) {
+        for ((c1, c2) in text1.zip(text2)) {
             if (c1 != c2) {
                 if (result != null) return null
                 result = "$c1 > $c2"
@@ -310,14 +312,14 @@ fun getSinglePhonemeDifference(word1: String, word2: String): String? {
         }
         return result
     }
-    if (word1.length == word2.length + 1 || word1.length == word2.length - 1) {
-        val matchingPrefix = (word1 zip word2).takeWhile { (c1, c2) -> c1 == c2 }.size
+    if (text1.length == text2.length + 1 || text1.length == text2.length - 1) {
+        val matchingPrefix = (text1 zip text2).takeWhile { (c1, c2) -> c1 == c2 }.size
 
-        if (word1.length + 1 == word2.length && word2.substring(matchingPrefix + 1) == word1.substring(matchingPrefix)) {
-            return "∅ -> ${word2[matchingPrefix]}"
+        if (text1.length + 1 == text2.length && text2.substring(matchingPrefix + 1) == text1.substring(matchingPrefix)) {
+            return "∅ -> ${text2[matchingPrefix]}"
         }
-        if (word1.length - 1 == word2.length && word1.substring(matchingPrefix + 1) == word2.substring(matchingPrefix)) {
-            return "${word1[matchingPrefix]} -> ∅"
+        if (text1.length - 1 == text2.length && text1.substring(matchingPrefix + 1) == text2.substring(matchingPrefix)) {
+            return "${text1[matchingPrefix]} -> ∅"
         }
     }
 
