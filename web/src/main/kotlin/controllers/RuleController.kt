@@ -538,8 +538,8 @@ class RuleController {
                 val resultWord = derivation.last().fromEntity as Word
                 val expectedWord = derivation.fold(firstLink.toEntity as Word) { word, link ->
                     link.applyRules(word, repo).asOrthographic()
-                }
-                val expectedText = resultWord.language.normalizeWord(expectedWord.asOrthographic(resultWord.language).text)
+                }.asOrthographic(resultWord.language)
+                val expectedText = resultWord.language.normalizeWord(expectedWord.text)
                 val resultWordVariations = resultWord.getTextVariations(repo).map {
                     resultWord.language.normalizeWord(it)
                 }
