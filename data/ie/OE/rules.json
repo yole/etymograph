@@ -6924,10 +6924,21 @@
                     }
                 ],
                 "condition": {
-                    "type": "relPhoneme",
-                    "cls": "non-stressed",
-                    "parameter": "u",
-                    "relative": false
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "cls": "non-stressed",
+                            "parameter": "u",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "negated": true,
+                            "cls": "diphthong",
+                            "relative": false
+                        }
+                    ]
                 }
             }
         ],

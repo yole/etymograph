@@ -23644,7 +23644,7 @@
     },
     {
         "id": 8007,
-        "text": "ge-līc",
+        "text": "ġelīc",
         "gloss": "similar, equal",
         "sourceRefs": [
             {
@@ -24028,7 +24028,7 @@
     },
     {
         "id": 8080,
-        "text": "ge-maca",
+        "text": "ġemaca",
         "gloss": "mate, equal, companion",
         "sourceRefs": [
             {
@@ -24546,7 +24546,7 @@
     },
     {
         "id": 8175,
-        "text": "ge-mǣte",
+        "text": "ġemǣte",
         "gloss": "moderate; low",
         "sourceRefs": [
             {
@@ -25186,18 +25186,8 @@
     },
     {
         "id": 8308,
-        "text": "ge-nugan",
+        "text": "ġenugan",
         "gloss": "suffice",
-        "sourceRefs": [
-            {
-                "pubId": 9,
-                "refText": "392"
-            }
-        ]
-    },
-    {
-        "id": 8309,
-        "text": "3sg.",
         "sourceRefs": [
             {
                 "pubId": 9,
@@ -25239,7 +25229,7 @@
     },
     {
         "id": 8317,
-        "text": "on-œegan",
+        "text": "onœgan",
         "gloss": "fear",
         "sourceRefs": [
             {
@@ -25567,7 +25557,7 @@
     },
     {
         "id": 8387,
-        "text": "be-rīefan",
+        "text": "berīefan",
         "gloss": "rob",
         "sourceRefs": [
             {
@@ -26426,7 +26416,7 @@
     },
     {
         "id": 8561,
-        "text": "sceadu",
+        "text": "sċeadu",
         "gloss": "shadow",
         "sourceRefs": [
             {
@@ -26619,7 +26609,7 @@
     },
     {
         "id": 8603,
-        "text": "sceanca",
+        "text": "sċeanca",
         "gloss": "shank, ham",
         "sourceRefs": [
             {
@@ -27178,7 +27168,7 @@
     },
     {
         "id": 8733,
-        "text": "ā-sprūtan",
+        "text": "āsprūtan",
         "gloss": "bud, sprout",
         "sourceRefs": [
             {
@@ -27516,7 +27506,7 @@
     },
     {
         "id": 8806,
-        "text": "be-strīepan",
+        "text": "bestrīepan",
         "gloss": "strip",
         "sourceRefs": [
             {
@@ -28323,7 +28313,7 @@
     },
     {
         "id": 8963,
-        "text": "ge-tenge",
+        "text": "ġetenġe",
         "gloss": "close to, pressing upon",
         "sourceRefs": [
             {
@@ -28658,7 +28648,7 @@
     },
     {
         "id": 9025,
-        "text": "ge-tingan",
+        "text": "ġetingan",
         "gloss": "press upon, throng",
         "sourceRefs": [
             {
@@ -29525,7 +29515,7 @@
     },
     {
         "id": 9190,
-        "text": "ge-þȳwan",
+        "text": "ġeþȳwan",
         "gloss": "press, impel, urge",
         "sourceRefs": [
             {
@@ -30914,19 +30904,8 @@
     },
     {
         "id": 9463,
-        "text": "ge-wun",
+        "text": "ġewun",
         "gloss": "accustomed",
-        "sourceRefs": [
-            {
-                "pubId": 9,
-                "refText": "599"
-            }
-        ]
-    },
-    {
-        "id": 9467,
-        "text": "wȳscan",
-        "gloss": "wish",
         "sourceRefs": [
             {
                 "pubId": 9,
@@ -31149,6 +31128,72 @@
         "id": 9560,
         "text": "trum",
         "gloss": "root-stock?",
+        "reconstructed": true
+    },
+    {
+        "id": 9562,
+        "text": "wun",
+        "gloss": "accustomed",
+        "reconstructed": true
+    },
+    {
+        "id": 9564,
+        "text": "tingan",
+        "gloss": "press upon, thong",
+        "reconstructed": true
+    },
+    {
+        "id": 9566,
+        "text": "þȳwan",
+        "gloss": "press",
+        "reconstructed": true
+    },
+    {
+        "id": 9568,
+        "text": "nugan",
+        "gloss": "suffice",
+        "reconstructed": true
+    },
+    {
+        "id": 9570,
+        "text": "strīepan",
+        "gloss": "strip",
+        "reconstructed": true
+    },
+    {
+        "id": 9572,
+        "text": "sprūtan",
+        "gloss": "bud, sprout",
+        "reconstructed": true
+    },
+    {
+        "id": 9574,
+        "text": "rīefan",
+        "gloss": "rob",
+        "reconstructed": true
+    },
+    {
+        "id": 9576,
+        "text": "līċ",
+        "gloss": "similar, equal",
+        "reconstructed": true
+    },
+    {
+        "id": 9578,
+        "text": "maca",
+        "gloss": "match",
+        "reconstructed": true
+    },
+    {
+        "id": 9580,
+        "text": "tenġe",
+        "gloss": "approximate",
+        "reconstructed": true
+    },
+    {
+        "id": 9582,
+        "text": "mǣte",
+        "gloss": "estimable",
         "reconstructed": true
     }
 ]

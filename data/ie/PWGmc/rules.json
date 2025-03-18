@@ -956,6 +956,48 @@
                     {
                         "type": "ChangeSound",
                         "args": [
+                            "ū"
+                        ]
+                    },
+                    {
+                        "type": "SoundDisappears",
+                        "args": [
+                            "1"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "u",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": 1,
+                            "parameter": "w"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": 2,
+                            "parameter": "w"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": 3,
+                            "negated": true,
+                            "parameter": "j"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
                             "u"
                         ]
                     }
