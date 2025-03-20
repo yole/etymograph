@@ -40,6 +40,12 @@ data class StarlingWord(
     val gloss: String
 )
 
+data class StarlingLine(
+    val base: StarlingWord,
+    val translation: StarlingWord,
+    val page: String
+)
+
 fun parseStarlingWord(word: String): StarlingWord? {
     val m = wordPattern.matchEntire(word) ?: return null
     val text = m.groupValues[1].removeMarkup().decodeStarling()
@@ -134,25 +140,32 @@ class StarlingImporter(
         return newWord
     }
 
-    fun importLine(line: String) {
-        var importLogged = false
+    private fun parseLine(line: String): StarlingLine? {
         val (base, translation, page) = line.replace("%Á", "`").trim().split('#')
         if (translation.isEmpty()) {
-            return
-
+            return null
         }
 
         val baseWord = parseStarlingWord(base)
         if (baseWord == null) {
             println("Pattern not matched for base word: $line")
-            return
+            return null
         }
 
         val translationWord = parseStarlingWord(translation.removePrefix("OE").trim())
         if (translationWord == null) {
             println("Pattern not matched for translation word: $line")
-            return
+            return null
         }
+
+        return StarlingLine(baseWord, translationWord, page)
+    }
+
+    fun importLine(line: String) {
+        var importLogged = false
+        val starlingLine = parseLine(line) ?: return
+
+        val (baseWord, translationWord, page) = starlingLine
 
         val pgmcWords = findWord(fromLang, baseWord, baseWord.gloss)
         if (pgmcWords.size > 1) {
@@ -234,6 +247,46 @@ class StarlingImporter(
 
         imported++
     }
+
+    fun importPOSTags(line: String) {
+        val starlingLine = parseLine(line) ?: return
+        val (baseWord, translationWord) = starlingLine
+        importPOSTag(baseWord)
+    }
+
+    private fun importPOSTag(baseWord: StarlingWord) {
+        val (posTag, classes) = convertClasses(baseWord.classes)
+        val pgmcWords = findWord(fromLang, baseWord, baseWord.gloss)
+        if (pgmcWords.size == 1) {
+            posTag?.let {
+                if (pgmcWords[0].pos == null && pgmcWords[0].classes.isEmpty()) {
+                    pgmcWords [0].pos = it
+                    pgmcWords [0].classes = classes
+                }
+            }
+        }
+        else if (pgmcWords.isEmpty()) {
+            println("No PGmc word for ${baseWord.textVariants.first()}")
+        }
+        else {
+            println("Ambiguous PGmc word: ${pgmcWords.joinToString(", ")}")
+        }
+    }
+
+    private fun convertClasses(classes: String): Pair<String?, List<String>> {
+        return when (classes) {
+            "s.v.", "w.v." -> "V" to emptyList()
+            "m." -> "N" to listOf("m")
+            "f." -> "N" to listOf("f")
+            "n." -> "N" to listOf("n")
+            "adj." -> "ADJ" to emptyList()
+            "adv." -> "ADV" to emptyList()
+            else -> {
+                println("Unknown POS tag $classes")
+                null to emptyList()
+            }
+        }
+    }
 }
 
 fun main(args: Array<String>) {
@@ -253,10 +306,11 @@ fun main(args: Array<String>) {
     val importer = StarlingImporter(ieRepo, pgmc, oe, skiplist, kroonen.id, sequence)
 
     for (line in lines) {
-        importer.importLine(line)
-        if (importer.imported == maxImport) {
-            break
-        }
+        importer.importPOSTags(line)
+//        importer.importLine(line)
+//        if (importer.imported == maxImport) {
+//            break
+//        }
     }
 
     ieRepo.save()
