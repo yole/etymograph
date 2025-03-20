@@ -20,9 +20,10 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.51.3",
-    "react-select": "^5.8.0"
+    "react-select": "^5.8.0",
+    "typescript": "^5.8.2"
   },
   "devDependencies": {
-    "@types/node": "22.10.2"
+    "@types/node": "22.13.0"
   }
 }
