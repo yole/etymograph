@@ -2937,7 +2937,7 @@
     {
         "id": 2214,
         "text": "ġīeman",
-        "gloss": "to observe",
+        "gloss": "observe",
         "fullGloss": "To care for, take care of, take heed to, heed, observe, regard, keep; cum                 gen. acc",
         "pos": "V",
         "sourceRefs": [
@@ -3313,6 +3313,7 @@
         "id": 2276,
         "text": "hyngran",
         "gloss": "to be hungry",
+        "pos": "V",
         "sourceRefs": [
             {
                 "pubId": 5,
@@ -4564,7 +4565,7 @@
     {
         "id": 2502,
         "text": "fyllan",
-        "gloss": "to fill",
+        "gloss": "fill",
         "fullGloss": "To FILL, replenish, satisfy, cram, stuff, finish, complete, fulfil",
         "pos": "V",
         "sourceRefs": [
@@ -5057,6 +5058,7 @@
         "id": 2585,
         "text": "hrissan",
         "gloss": "to shake",
+        "pos": "V",
         "sourceRefs": [
             {
                 "pubId": 5,
@@ -5132,6 +5134,7 @@
         "id": 2601,
         "text": "hliehhan",
         "gloss": "to laugh",
+        "pos": "V",
         "sourceRefs": [
             {
                 "pubId": 5,
@@ -5279,6 +5282,7 @@
         "id": 2634,
         "text": "hīeran",
         "gloss": "to hear",
+        "pos": "V",
         "sourceRefs": [
             {
                 "pubId": 5,
@@ -6097,10 +6101,19 @@
         "id": 2762,
         "text": "rǣdan",
         "gloss": "to consider, to advise",
+        "fullGloss": "to read; to advise; to guess; to interpret, explain; to decide",
+        "pos": "V",
+        "classes": [
+            "v-strong-7",
+            "v-weak-1"
+        ],
         "sourceRefs": [
             {
                 "pubId": 5,
                 "refText": "149"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/rædan#Old_English"
             }
         ]
     },
@@ -6221,7 +6234,7 @@
     {
         "id": 2781,
         "text": "dēman",
-        "gloss": "to judge",
+        "gloss": "judge",
         "fullGloss": "To DEEM, judge, think, consider, estimate, reckon, determine, examine, prove, doom, condemn",
         "pos": "V",
         "sourceRefs": [
@@ -6777,10 +6790,17 @@
         "id": 2852,
         "text": "tēon",
         "gloss": "to announce",
+        "pos": "V",
+        "classes": [
+            "v-strong-1"
+        ],
         "sourceRefs": [
             {
                 "pubId": 5,
                 "refText": "178"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/teon#Old_English"
             }
         ]
     },
@@ -8665,8 +8685,11 @@
         "id": 3120,
         "text": "grētan",
         "gloss": "to cause to weep",
-        "fullGloss": "To bewail, deplore, weep; plorare, deplorare, flere",
+        "fullGloss": "To bewail, deplore, weep",
         "pos": "V",
+        "classes": [
+            "v-weak-1"
+        ],
         "sourceRefs": [
             {
                 "pubId": 5,
@@ -8674,6 +8697,9 @@
             },
             {
                 "refText": "https://bosworthtoller.com/17501"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/gretan#Old_English"
             }
         ]
     },
@@ -10425,6 +10451,7 @@
         "id": 3332,
         "text": "līehtan",
         "gloss": "to shine",
+        "pos": "V",
         "sourceRefs": [
             {
                 "pubId": 5,
@@ -15357,10 +15384,15 @@
         "id": 6241,
         "text": "āgan",
         "gloss": "own, possess",
+        "fullGloss": "to own, possess; to cause to own: to give, to deliver",
+        "pos": "V",
         "sourceRefs": [
             {
                 "pubId": 9,
                 "refText": "8"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/agan#Old_English"
             }
         ]
     },
@@ -17885,10 +17917,15 @@
         "id": 6808,
         "text": "dugan",
         "gloss": "be fit, avail",
+        "fullGloss": "to avail, to be of use, to serve; to be fit or strong; to be good, for a purpose",
+        "pos": "V",
         "sourceRefs": [
             {
                 "pubId": 9,
                 "refText": "106"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/dugan#Old_English"
             }
         ]
     },
@@ -17961,10 +17998,14 @@
         "id": 6822,
         "text": "durran",
         "gloss": "dare, be brave",
+        "pos": "V",
         "sourceRefs": [
             {
                 "pubId": 9,
                 "refText": "111"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/durran#Old_English"
             }
         ]
     },
@@ -19749,6 +19790,7 @@
         "id": 7193,
         "text": "gān",
         "gloss": "to go",
+        "pos": "V",
         "sourceRefs": [
             {
                 "pubId": 9,
@@ -20507,7 +20549,7 @@
     },
     {
         "id": 7349,
-        "text": "hengan",
+        "text": "henġan",
         "gloss": "to (make) hang",
         "sourceRefs": [
             {
@@ -21819,17 +21861,6 @@
         ]
     },
     {
-        "id": 7612,
-        "text": "hunt",
-        "gloss": "dog",
-        "sourceRefs": [
-            {
-                "pubId": 9,
-                "refText": "256"
-            }
-        ]
-    },
-    {
         "id": 7614,
         "text": "hungor",
         "gloss": "hunger",
@@ -22720,10 +22751,18 @@
         "id": 7798,
         "text": "clingan",
         "gloss": "stick, cling",
+        "fullGloss": "to wither, pine, shrink up, shrink together from heat or cold; to cling",
+        "pos": "V",
+        "classes": [
+            "v-strong-3"
+        ],
         "sourceRefs": [
             {
                 "pubId": 9,
                 "refText": "293"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/clingan#Old_English"
             }
         ]
     },
@@ -24210,17 +24249,6 @@
         ]
     },
     {
-        "id": 8112,
-        "text": "mierran",
-        "gloss": "impede; to get lost",
-        "sourceRefs": [
-            {
-                "pubId": 9,
-                "refText": "356"
-            }
-        ]
-    },
-    {
         "id": 8115,
         "text": "mæsling",
         "gloss": "brass",
@@ -24625,6 +24653,7 @@
         "id": 8191,
         "text": "miscian",
         "gloss": "to mix",
+        "pos": "V",
         "sourceRefs": [
             {
                 "pubId": 9,
@@ -24733,10 +24762,15 @@
         "id": 8212,
         "text": "munan",
         "gloss": "remember; to consider, think",
+        "fullGloss": "to remember, be mindful of, be careful of; to think, consider",
+        "pos": "V",
         "sourceRefs": [
             {
                 "pubId": 9,
                 "refText": "375"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/munan#Old_English"
             }
         ]
     },
@@ -25079,6 +25113,7 @@
         "id": 8286,
         "text": "nēosan",
         "gloss": "search out",
+        "pos": "V",
         "sourceRefs": [
             {
                 "pubId": 9,
@@ -25188,10 +25223,15 @@
         "id": 8308,
         "text": "ġenugan",
         "gloss": "suffice",
+        "fullGloss": "to be sufficient, be enough, suffice; to not lack",
+        "pos": "V",
         "sourceRefs": [
             {
                 "pubId": 9,
                 "refText": "392"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/genugan#Old_English"
             }
         ]
     },
@@ -25596,17 +25636,6 @@
             {
                 "pubId": 9,
                 "refText": "407"
-            }
-        ]
-    },
-    {
-        "id": 8395,
-        "text": "rǣdan",
-        "gloss": "counsel, decide, interpret",
-        "sourceRefs": [
-            {
-                "pubId": 9,
-                "refText": "408"
             }
         ]
     },
@@ -28592,17 +28621,6 @@
         ]
     },
     {
-        "id": 9014,
-        "text": "tēon",
-        "gloss": "accuse",
-        "sourceRefs": [
-            {
-                "pubId": 9,
-                "refText": "517"
-            }
-        ]
-    },
-    {
         "id": 9016,
         "text": "til",
         "gloss": "fitness, station, standing-place",
@@ -30247,10 +30265,19 @@
         "id": 9340,
         "text": "willa",
         "gloss": "will, wish",
+        "fullGloss": "will; ''denotes something welcome or desired''",
+        "pos": "N",
+        "classes": [
+            "masc",
+            "n-stem"
+        ],
         "sourceRefs": [
             {
                 "pubId": 9,
                 "refText": "578"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/willa#Old_English"
             }
         ]
     },

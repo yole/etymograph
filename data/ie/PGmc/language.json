@@ -444,6 +444,14 @@
         {
             "name": "Verb",
             "abbreviation": "V"
+        },
+        {
+            "name": "Adjective",
+            "abbreviation": "ADJ"
+        },
+        {
+            "name": "Adverb",
+            "abbreviation": "ADV"
         }
     ],
     "grammaticalCategories": [
@@ -477,6 +485,28 @@
                 {
                     "name": "Past",
                     "abbreviation": "PST"
+                }
+            ]
+        }
+    ],
+    "wordClasses": [
+        {
+            "name": "Gender",
+            "pos": [
+                "N"
+            ],
+            "values": [
+                {
+                    "name": "Masculine",
+                    "abbreviation": "m"
+                },
+                {
+                    "name": "Feminine",
+                    "abbreviation": "f"
+                },
+                {
+                    "name": "Neuter",
+                    "abbreviation": "n"
                 }
             ]
         }
