@@ -147,7 +147,18 @@ export function addWord(
     )
 }
 
-export function updateWord(graph: string, id: number, text, gloss, fullGloss, pos, classes, reconstructed, source, notes) {
+export function updateWord(
+    graph: string,
+    id: number,
+    text: string,
+    gloss: string,
+    fullGloss: string,
+    pos: string,
+    classes: string,
+    reconstructed: boolean,
+    source: string,
+    notes: string
+) {
     return postToBackend(`${graph}/word/${id}/update`,
         {
             text: text, gloss: gloss, fullGloss: fullGloss, pos, classes, reconstructed, source: source, notes
