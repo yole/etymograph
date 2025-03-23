@@ -1,0 +1,245 @@
+[
+    {
+        "id": 6267,
+        "name": "go-1sg",
+        "fromLang": "GO",
+        "toLang": "GO",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "a"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "an"
+                }
+            }
+        ],
+        "addedCategories": ".1SG",
+        "fromPOS": [
+            "V"
+        ]
+    },
+    {
+        "id": 6268,
+        "name": "go-1du",
+        "fromLang": "GO",
+        "toLang": "GO",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "ōs"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "an"
+                }
+            }
+        ],
+        "addedCategories": ".1DU",
+        "fromPOS": [
+            "V"
+        ]
+    },
+    {
+        "id": 6269,
+        "name": "go-1pl",
+        "fromLang": "GO",
+        "toLang": "GO",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "am"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "an"
+                }
+            }
+        ],
+        "addedCategories": ".1PL",
+        "fromPOS": [
+            "V"
+        ]
+    },
+    {
+        "id": 6270,
+        "name": "go-2sg",
+        "fromLang": "GO",
+        "toLang": "GO",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "eis"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "jan"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": -2,
+                            "tcls": "vowel",
+                            "cls": "long",
+                            "relative": false
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "is"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "an"
+                }
+            }
+        ],
+        "addedCategories": ".2SG",
+        "fromPOS": [
+            "V"
+        ]
+    },
+    {
+        "id": 6271,
+        "name": "go-2du",
+        "fromLang": "GO",
+        "toLang": "GO",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "ats"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "an"
+                }
+            }
+        ],
+        "addedCategories": ".2DU",
+        "fromPOS": [
+            "V"
+        ]
+    },
+    {
+        "id": 6272,
+        "name": "go-2pl",
+        "fromLang": "GO",
+        "toLang": "GO",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "iþ"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "an"
+                }
+            }
+        ],
+        "addedCategories": ".2PL",
+        "fromPOS": [
+            "V"
+        ]
+    },
+    {
+        "id": 6273,
+        "name": "go-3sg",
+        "fromLang": "GO",
+        "toLang": "GO",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "iþ"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "an"
+                }
+            }
+        ],
+        "addedCategories": ".3SG",
+        "fromPOS": [
+            "V"
+        ]
+    },
+    {
+        "id": 6275,
+        "name": "go-3pl",
+        "fromLang": "GO",
+        "toLang": "GO",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "and"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "an"
+                }
+            }
+        ],
+        "addedCategories": ".3PL",
+        "fromPOS": [
+            "V"
+        ]
+    }
+]

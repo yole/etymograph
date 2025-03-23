@@ -1,0 +1,71 @@
+[
+    {
+        "id": 43,
+        "name": "Verb Present",
+        "rows": [
+            "1",
+            "2",
+            "3"
+        ],
+        "columns": [
+            {
+                "title": "Sg",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            6267
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            6270
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            6273
+                        ]
+                    }
+                ]
+            },
+            {
+                "title": "Du",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            6268
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            6271
+                        ]
+                    }
+                ]
+            },
+            {
+                "title": "Pl",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            6269
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            6272
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            6275
+                        ]
+                    }
+                ]
+            }
+        ],
+        "posList": [
+            "V"
+        ]
+    }
+]
