@@ -531,44 +531,48 @@ class RuleController {
     fun sequenceDerivations(repo: GraphRepository, @PathVariable id: Int): SequenceDerivationsViewModel {
         val sequence = repo.resolveRuleSequence(id)
         val derivations = repo.findDerivationsWithSequence(sequence)
+            .groupBy { it.last().fromEntity.id }
         return SequenceDerivationsViewModel(
             sequence.toViewModel(),
-            derivations.map { derivation ->
-                val firstLink = derivation.first()
-                val sourceWord = firstLink.toEntity as Word
-                val resultWord = derivation.last().fromEntity as Word
-                val expectedWord = derivation.fold(firstLink.toEntity as Word) { word, link ->
-                    link.applyRules(word, repo).asOrthographic()
-                }.asOrthographic(resultWord.language)
-                val expectedText = resultWord.language.normalizeWord(expectedWord.text)
-                val resultWordVariations = resultWord.getTextVariations(repo).map {
-                    resultWord.language.normalizeWord(it)
-                }
-                val steps = derivation.flatMap { buildIntermediateSteps(repo, it) }
-                val rules = derivation.flatMap { it.rules }
-                DerivationViewModel(
-                    sourceWord.toRefViewModel(repo),
-                    WordController.LinkWordViewModel(
-                        resultWord.toRefViewModel(repo),
-                        rules.map { it.id },
-                        rules.map { it.name },
-                        steps.map { it.result },
-                        null,
-                        derivation.flatMap { it.source.toViewModel(repo) },
-                        "",
-                        derivation.firstNotNullOfOrNull { it.notes },
-                        if (firstLink.sequence == null)
-                            listOf(WordController.WordRuleSequenceViewModel(sequence.name, sequence.id))
+            derivations.map { (_, derivationList) ->
+                val models = derivationList.map { derivation ->
+                    val firstLink = derivation.first()
+                    val sourceWord = firstLink.toEntity as Word
+                    val resultWord = derivation.last().fromEntity as Word
+                    val expectedWord = derivation.fold(firstLink.toEntity as Word) { word, link ->
+                        link.applyRules(word, repo).asOrthographic()
+                    }.asOrthographic(resultWord.language)
+                    val expectedText = resultWord.language.normalizeWord(expectedWord.text)
+                    val resultWordVariations = resultWord.getTextVariations(repo).map {
+                        resultWord.language.normalizeWord(it)
+                    }
+                    val steps = derivation.flatMap { buildIntermediateSteps(repo, it) }
+                    val rules = derivation.flatMap { it.rules }
+                    DerivationViewModel(
+                        sourceWord.toRefViewModel(repo),
+                        WordController.LinkWordViewModel(
+                            resultWord.toRefViewModel(repo),
+                            rules.map { it.id },
+                            rules.map { it.name },
+                            steps.map { it.result },
+                            null,
+                            derivation.flatMap { it.source.toViewModel(repo) },
+                            "",
+                            derivation.firstNotNullOfOrNull { it.notes },
+                            if (firstLink.sequence == null)
+                                listOf(WordController.WordRuleSequenceViewModel(sequence.name, sequence.id))
+                            else
+                                emptyList()
+                        ),
+                        expectedWord.takeIf { expectedText !in resultWordVariations }?.text,
+                        if (expectedText !in resultWordVariations)
+                            getSinglePhonemeDifference(expectedWord, resultWord)?.toString()
                         else
-                            emptyList()
-                    ),
-                    expectedWord.takeIf { expectedText !in resultWordVariations }?.text,
-                    if (expectedText !in resultWordVariations)
-                        getSinglePhonemeDifference(expectedWord, resultWord)?.toString()
-                    else
-                        null,
-                    sourceWord.pos ?: resultWord.pos
-                )
+                            null,
+                        sourceWord.pos ?: resultWord.pos
+                    )
+                }
+                models.firstOrNull { it.expectedWord == null } ?: models.firstOrNull { it.singlePhonemeDifference != null } ?: models.first()
             }.sortedBy { it.baseWord.text }
         )
     }
