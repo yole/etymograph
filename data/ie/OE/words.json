@@ -17335,7 +17335,7 @@
     },
     {
         "id": 6689,
-        "text": "bylgian",
+        "text": "bylġian",
         "gloss": "bellow",
         "sourceRefs": [
             {
@@ -18043,7 +18043,7 @@
     },
     {
         "id": 6829,
-        "text": "ge-dwolen",
+        "text": "ġedwolen",
         "gloss": "wrong",
         "sourceRefs": [
             {
@@ -20256,7 +20256,7 @@
     },
     {
         "id": 7286,
-        "text": "ofer-gumian",
+        "text": "ofergumian",
         "gloss": "neglect",
         "sourceRefs": [
             {
@@ -22730,6 +22730,7 @@
         "id": 7795,
         "text": "climban",
         "gloss": "climb",
+        "pos": "V",
         "sourceRefs": [
             {
                 "pubId": 9,
@@ -22800,7 +22801,7 @@
     },
     {
         "id": 7808,
-        "text": "ge-cnāwan",
+        "text": "ġecnāwan",
         "gloss": "know, perceive, understand, recognise",
         "sourceRefs": [
             {
@@ -24131,7 +24132,7 @@
     },
     {
         "id": 8090,
-        "text": "mengan",
+        "text": "menġan",
         "gloss": "mix",
         "sourceRefs": [
             {
@@ -27186,7 +27187,7 @@
     },
     {
         "id": 8728,
-        "text": "sprengan",
+        "text": "sprenġan",
         "gloss": "spring",
         "sourceRefs": [
             {
@@ -28107,10 +28108,17 @@
         "id": 8917,
         "text": "swīgian",
         "gloss": "be silent",
+        "pos": "V",
+        "classes": [
+            "v-weak-2"
+        ],
         "sourceRefs": [
             {
                 "pubId": 9,
                 "refText": "501"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/swigian#Old_English"
             }
         ]
     },
@@ -28396,7 +28404,7 @@
     },
     {
         "id": 8973,
-        "text": "tiergan",
+        "text": "tierġan",
         "gloss": "irritate",
         "sourceRefs": [
             {
@@ -31016,7 +31024,7 @@
     },
     {
         "id": 9497,
-        "text": "ginnan",
+        "text": "ġinnan",
         "gloss": "begin",
         "reconstructed": true
     },
@@ -31040,7 +31048,7 @@
     },
     {
         "id": 9506,
-        "text": "gīnan",
+        "text": "ġīnan",
         "gloss": "gape",
         "fullGloss": "gape, yawn",
         "reconstructed": true
@@ -31221,6 +31229,74 @@
         "id": 9582,
         "text": "mǣte",
         "gloss": "estimable",
+        "reconstructed": true
+    },
+    {
+        "id": 9590,
+        "text": "berian",
+        "gloss": "beat",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/40066"
+            }
+        ]
+    },
+    {
+        "id": 9591,
+        "text": "dwelan",
+        "gloss": "err",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/8152"
+            }
+        ]
+    },
+    {
+        "id": 9592,
+        "text": "ofer-",
+        "gloss": "over-",
+        "pos": "AFF"
+    },
+    {
+        "id": 9594,
+        "text": "gumian",
+        "gloss": "pay attention",
+        "reconstructed": true
+    },
+    {
+        "id": 9595,
+        "text": "þyrrian",
+        "gloss": "make or become dry",
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/32442"
+            }
+        ]
+    },
+    {
+        "id": 9597,
+        "text": "œgan",
+        "gloss": "fear",
+        "reconstructed": true
+    },
+    {
+        "id": 9600,
+        "text": "hragan",
+        "gloss": "jut out",
+        "reconstructed": true
+    },
+    {
+        "id": 9602,
+        "text": "cnāwan",
+        "gloss": "know",
+        "reconstructed": true
+    },
+    {
+        "id": 9604,
+        "text": "loccian",
+        "gloss": "entice",
         "reconstructed": true
     }
 ]

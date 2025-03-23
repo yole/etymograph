@@ -9532,6 +9532,7 @@
         "id": 6982,
         "text": "fetura-",
         "gloss": "fetter",
+        "pos": "N",
         "sourceRefs": [
             {
                 "pubId": 9,
@@ -10747,6 +10748,7 @@
         "id": 7157,
         "text": "gallan-",
         "gloss": "bile",
+        "pos": "N",
         "sourceRefs": [
             {
                 "pubId": 9,
@@ -10864,7 +10866,7 @@
     },
     {
         "id": 7177,
-        "text": "gapbōn-",
+        "text": "gabōn-",
         "sourceRefs": [
             {
                 "pubId": 9,
@@ -13167,7 +13169,7 @@
     },
     {
         "id": 7510,
-        "text": "hragkōn-",
+        "text": "hragōn-",
         "gloss": "jut out",
         "pos": "V",
         "sourceRefs": [
@@ -15110,6 +15112,7 @@
         "id": 7799,
         "text": "klingan-",
         "gloss": "shrink",
+        "pos": "V",
         "sourceRefs": [
             {
                 "pubId": 9,
@@ -21862,6 +21865,7 @@
         "id": 8752,
         "text": "stappan-",
         "gloss": "step, pace",
+        "pos": "V",
         "sourceRefs": [
             {
                 "pubId": 9,
@@ -23464,6 +23468,7 @@
         "id": 8993,
         "text": "terwan-",
         "gloss": "tar",
+        "pos": "N",
         "sourceRefs": [
             {
                 "pubId": 9,
@@ -23878,7 +23883,7 @@
     },
     {
         "id": 9054,
-        "text": "tukgōn-",
+        "text": "tugōn-",
         "sourceRefs": [
             {
                 "pubId": 9,
@@ -24522,7 +24527,7 @@
     },
     {
         "id": 9150,
-        "text": "þrapbōn-",
+        "text": "þrabōn-",
         "sourceRefs": [
             {
                 "pubId": 9,
@@ -25050,6 +25055,7 @@
         "id": 9233,
         "text": "unnan-",
         "gloss": "grant",
+        "pos": "V",
         "sourceRefs": [
             {
                 "pubId": 9,
@@ -25401,7 +25407,7 @@
     },
     {
         "id": 9284,
-        "text": "wakgōn-",
+        "text": "wagōn-",
         "sourceRefs": [
             {
                 "pubId": 9,
@@ -26062,6 +26068,7 @@
         "id": 9384,
         "text": "wīhan-",
         "gloss": "fight",
+        "pos": "V",
         "sourceRefs": [
             {
                 "pubId": 9,
@@ -26675,7 +26682,8 @@
     {
         "id": 9507,
         "text": "gīnan-",
-        "gloss": "gape"
+        "gloss": "gape",
+        "pos": "V"
     },
     {
         "id": 9508,
@@ -26831,5 +26839,15 @@
                 "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-Germanic/ganuganą#Proto-Germanic"
             }
         ]
+    },
+    {
+        "id": 9598,
+        "text": "ōgjan-",
+        "gloss": "fear"
+    },
+    {
+        "id": 9605,
+        "text": "lukkōn-",
+        "gloss": "entice"
     }
 ]

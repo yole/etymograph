@@ -49,6 +49,12 @@
                             "relativeIndex": -1,
                             "negated": true,
                             "parameter": "m"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "negated": true,
+                            "cls": "geminate",
+                            "relative": false
                         }
                     ]
                 }

@@ -26547,23 +26547,6 @@
             ]
         },
         {
-            "from": 6486,
-            "to": 6485,
-            "type": "^",
-            "ruleIds": [
-                2060,
-                2270,
-                3319
-            ],
-            "sequenceId": 2162,
-            "sourceRefs": [
-                {
-                    "pubId": 9,
-                    "refText": "53"
-                }
-            ]
-        },
-        {
             "from": 6487,
             "to": 2859,
             "type": "="
@@ -29226,18 +29209,6 @@
             ]
         },
         {
-            "from": 6829,
-            "to": 6828,
-            "type": "^",
-            "sequenceId": 2162,
-            "sourceRefs": [
-                {
-                    "pubId": 9,
-                    "refText": "112"
-                }
-            ]
-        },
-        {
             "from": 6832,
             "to": 6831,
             "type": "="
@@ -30695,7 +30666,8 @@
                     "pubId": 9,
                     "refText": "142"
                 }
-            ]
+            ],
+            "notes": "Ringe 2014:344: voiced alternant generalized throughout paradigm"
         },
         {
             "from": 7010,
@@ -32845,21 +32817,6 @@
             ]
         },
         {
-            "from": 7286,
-            "to": 7285,
-            "type": "^",
-            "ruleIds": [
-                2365
-            ],
-            "sequenceId": 2162,
-            "sourceRefs": [
-                {
-                    "pubId": 9,
-                    "refText": "195"
-                }
-            ]
-        },
-        {
             "from": 7288,
             "to": 7287,
             "type": "^",
@@ -34757,24 +34714,6 @@
             "from": 7511,
             "to": 7510,
             "type": "="
-        },
-        {
-            "from": 7512,
-            "to": 7510,
-            "type": "^",
-            "ruleIds": [
-                2060,
-                2077,
-                2156,
-                2365
-            ],
-            "sequenceId": 2162,
-            "sourceRefs": [
-                {
-                    "pubId": 9,
-                    "refText": "241"
-                }
-            ]
         },
         {
             "from": 7514,
@@ -37058,22 +36997,6 @@
             ]
         },
         {
-            "from": 7808,
-            "to": 7807,
-            "type": "^",
-            "ruleIds": [
-                1862,
-                2060
-            ],
-            "sequenceId": 2162,
-            "sourceRefs": [
-                {
-                    "pubId": 9,
-                    "refText": "295"
-                }
-            ]
-        },
-        {
             "from": 7810,
             "to": 7809,
             "type": "="
@@ -39154,23 +39077,6 @@
             "from": 8042,
             "to": 8041,
             "type": "="
-        },
-        {
-            "from": 8043,
-            "to": 8041,
-            "type": "^",
-            "ruleIds": [
-                1889,
-                2077,
-                2365
-            ],
-            "sequenceId": 2162,
-            "sourceRefs": [
-                {
-                    "pubId": 9,
-                    "refText": "343"
-                }
-            ]
         },
         {
             "from": 8045,
@@ -41391,24 +41297,6 @@
             "type": "^",
             "ruleIds": [
                 1966
-            ],
-            "sequenceId": 2162,
-            "sourceRefs": [
-                {
-                    "pubId": 9,
-                    "refText": "394"
-                }
-            ]
-        },
-        {
-            "from": 8317,
-            "to": 8316,
-            "type": "^",
-            "ruleIds": [
-                1978,
-                2156,
-                2270,
-                2326
             ],
             "sequenceId": 2162,
             "sourceRefs": [
@@ -43956,22 +43844,6 @@
                 {
                     "pubId": 9,
                     "refText": "449"
-                }
-            ]
-        },
-        {
-            "from": 3662,
-            "to": 8626,
-            "type": "^",
-            "ruleIds": [
-                1889,
-                2156
-            ],
-            "sequenceId": 2162,
-            "sourceRefs": [
-                {
-                    "pubId": 9,
-                    "refText": "450"
                 }
             ]
         },
@@ -47162,23 +47034,6 @@
             "type": "="
         },
         {
-            "from": 9055,
-            "to": 9053,
-            "type": "^",
-            "ruleIds": [
-                1889,
-                2077,
-                2365
-            ],
-            "sequenceId": 2162,
-            "sourceRefs": [
-                {
-                    "pubId": 9,
-                    "refText": "525"
-                }
-            ]
-        },
-        {
             "from": 9057,
             "to": 9056,
             "type": "^",
@@ -47998,24 +47853,6 @@
             "type": "="
         },
         {
-            "from": 9151,
-            "to": 9149,
-            "type": "^",
-            "ruleIds": [
-                2060,
-                2077,
-                2149,
-                2365
-            ],
-            "sequenceId": 2162,
-            "sourceRefs": [
-                {
-                    "pubId": 9,
-                    "refText": "544"
-                }
-            ]
-        },
-        {
             "from": 9154,
             "to": 9153,
             "type": "="
@@ -48403,23 +48240,6 @@
                 {
                     "pubId": 9,
                     "refText": "553"
-                }
-            ]
-        },
-        {
-            "from": 9204,
-            "to": 9203,
-            "type": "^",
-            "ruleIds": [
-                1981,
-                2270,
-                2326
-            ],
-            "sequenceId": 2162,
-            "sourceRefs": [
-                {
-                    "pubId": 9,
-                    "refText": "554"
                 }
             ]
         },
@@ -49018,24 +48838,6 @@
             "from": 9284,
             "to": 9283,
             "type": "="
-        },
-        {
-            "from": 9285,
-            "to": 9283,
-            "type": "^",
-            "ruleIds": [
-                2060,
-                2077,
-                2149,
-                2365
-            ],
-            "sequenceId": 2162,
-            "sourceRefs": [
-                {
-                    "pubId": 9,
-                    "refText": "568"
-                }
-            ]
         },
         {
             "from": 9287,
@@ -51940,6 +51742,230 @@
             "from": 9586,
             "to": 2647,
             "type": "="
+        },
+        {
+            "from": 6486,
+            "to": 9590,
+            "type": ">",
+            "ruleIds": [
+                3564
+            ]
+        },
+        {
+            "from": 9590,
+            "to": 6485,
+            "type": "^",
+            "ruleIds": [
+                2060,
+                2270,
+                3319
+            ],
+            "sequenceId": 2162,
+            "sourceRefs": [
+                {
+                    "pubId": 9,
+                    "refText": "53"
+                }
+            ]
+        },
+        {
+            "from": 6829,
+            "to": 9591,
+            "type": ">",
+            "ruleIds": [
+                3564
+            ]
+        },
+        {
+            "from": 9591,
+            "to": 6828,
+            "type": "^",
+            "sequenceId": 2162,
+            "sourceRefs": [
+                {
+                    "pubId": 9,
+                    "refText": "112"
+                }
+            ]
+        },
+        {
+            "from": 9594,
+            "to": 7285,
+            "type": "^",
+            "ruleIds": [
+                2365
+            ],
+            "sequenceId": 2162,
+            "sourceRefs": [
+                {
+                    "pubId": 9,
+                    "refText": "195"
+                }
+            ]
+        },
+        {
+            "from": 9285,
+            "to": 9284,
+            "type": "^",
+            "ruleIds": [
+                2060,
+                2077,
+                2149,
+                2365
+            ],
+            "sequenceId": 2162,
+            "sourceRefs": [
+                {
+                    "pubId": 9,
+                    "refText": "568"
+                }
+            ]
+        },
+        {
+            "from": 9055,
+            "to": 9054,
+            "type": "^",
+            "ruleIds": [
+                1889,
+                2077,
+                2365
+            ],
+            "sequenceId": 2162,
+            "sourceRefs": [
+                {
+                    "pubId": 9,
+                    "refText": "525"
+                }
+            ]
+        },
+        {
+            "from": 9151,
+            "to": 9150,
+            "type": "^",
+            "ruleIds": [
+                2060,
+                2077,
+                2149,
+                2396,
+                2365
+            ],
+            "sequenceId": 2162,
+            "sourceRefs": [
+                {
+                    "pubId": 9,
+                    "refText": "544"
+                }
+            ]
+        },
+        {
+            "from": 9204,
+            "to": 9595,
+            "type": ">",
+            "ruleIds": [
+                3564
+            ]
+        },
+        {
+            "from": 9595,
+            "to": 9203,
+            "type": "^",
+            "ruleIds": [
+                1981,
+                2270,
+                2326
+            ],
+            "sequenceId": 2162,
+            "sourceRefs": [
+                {
+                    "pubId": 9,
+                    "refText": "554"
+                }
+            ]
+        },
+        {
+            "from": 9597,
+            "to": 9598,
+            "type": "^",
+            "ruleIds": [
+                1978,
+                2156,
+                2270,
+                2326
+            ],
+            "sequenceId": 2162,
+            "sourceRefs": [
+                {
+                    "pubId": 9,
+                    "refText": "394"
+                }
+            ]
+        },
+        {
+            "from": 9600,
+            "to": 7510,
+            "type": "^",
+            "ruleIds": [
+                2060,
+                2077,
+                2149,
+                2365
+            ],
+            "sequenceId": 2162,
+            "sourceRefs": [
+                {
+                    "pubId": 9,
+                    "refText": "241"
+                }
+            ]
+        },
+        {
+            "from": 9602,
+            "to": 7807,
+            "type": "^",
+            "ruleIds": [
+                1862,
+                2060
+            ],
+            "sequenceId": 2162,
+            "sourceRefs": [
+                {
+                    "pubId": 9,
+                    "refText": "295"
+                }
+            ]
+        },
+        {
+            "from": 9604,
+            "to": 9605,
+            "type": "^",
+            "ruleIds": [
+                1889,
+                2077,
+                2365
+            ],
+            "sequenceId": 2162,
+            "sourceRefs": [
+                {
+                    "pubId": 9,
+                    "refText": "343"
+                }
+            ]
+        },
+        {
+            "from": 3210,
+            "to": 8626,
+            "type": "^",
+            "ruleIds": [
+                1889,
+                2156
+            ],
+            "sequenceId": 2162,
+            "sourceRefs": [
+                {
+                    "pubId": 9,
+                    "refText": "450"
+                }
+            ]
         }
     ]
 }
