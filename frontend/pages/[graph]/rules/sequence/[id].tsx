@@ -58,6 +58,7 @@ export default function RuleSequence(params) {
     const router = useRouter()
     const graph = router.query.graph as string
     const [reapplyResult, setReapplyResult] = useState(null)
+    const [posFilter, setPosFilter] = useState(null)
 
     async function reapplySequenceClicked() {
         const result = await reapplyRuleSequence(graph, ruleSequence.sequence.id)
@@ -67,9 +68,20 @@ export default function RuleSequence(params) {
         }
     }
 
-    const consistent = ruleSequence.derivations.filter(derivation =>
+    const posSet = new Set(ruleSequence.derivations.map(d => d.pos))
+    const pos = []
+    for (const p of posSet.values()) {
+        pos.push(p)
+    }
+
+    const derivations = posFilter == null
+        ? ruleSequence.derivations
+        : ruleSequence.derivations.filter(d =>
+            (posFilter === "?") ? (d.pos == null) : (d.pos == posFilter))
+
+    const consistent = derivations.filter(derivation =>
         derivation.derivation.suggestedSequences.length == 0 && derivation.expectedWord == null)
-    const singlePhonemeInconsistent = ruleSequence.derivations.filter(derivation =>
+    const singlePhonemeInconsistent = derivations.filter(derivation =>
         derivation.derivation.suggestedSequences.length == 0 && derivation.expectedWord != null && derivation.singlePhonemeDifference != null)
 
     const spiMap = Map.groupBy(singlePhonemeInconsistent,
@@ -78,7 +90,7 @@ export default function RuleSequence(params) {
     spiMap.forEach((v, k) => spiGroups.push({title: k, group: v}))
     spiGroups.sort((e1, e2) => e2.group.length - e1.group.length)
 
-    const inconsistent = ruleSequence.derivations.filter(derivation =>
+    const inconsistent = derivations.filter(derivation =>
         derivation.derivation.suggestedSequences.length == 0 && derivation.expectedWord != null && derivation.singlePhonemeDifference == null)
     const total = consistent.length + inconsistent.length + singlePhonemeInconsistent.length
     const candidates = ruleSequence.derivations.filter(derivation =>
@@ -101,6 +113,14 @@ export default function RuleSequence(params) {
             becomes inconsistent: {reapplyResult.becomesInconsistent};
             inconsistent: {reapplyResult.inconsistent}
         </div>}
+
+        <div>
+            POS:
+            <select onChange={(e) => setPosFilter(e.target.value === "*" ? null : e.target.value)}>
+                <option value="*">Any</option>
+                {pos.map(p => <option value={p ?? "?"}>{p ?? "Unknown"}</option>)}
+             </select>
+        </div>
 
         <h3>Consistent Derivations</h3>
         <DerivationListComponent derivations={consistent} showExpectedWord={false}/>

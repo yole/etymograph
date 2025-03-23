@@ -137,6 +137,7 @@ export type DerivationViewModel = {
     derivation: LinkWordViewModel;
     expectedWord?: string;
     singlePhonemeDifference?: string;
+    pos?: string;
 };
 
 export type DeriveThroughSequenceParams = {

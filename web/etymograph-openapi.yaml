@@ -2400,6 +2400,8 @@ components:
           type: "string"
         singlePhonemeDifference:
           type: "string"
+        pos:
+          type: "string"
       required:
         - "baseWord"
         - "derivation"

@@ -20,7 +20,8 @@
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "isolatedModules": true
+    "isolatedModules": true,
+    "target": "ES6"
   },
   "include": [
     "next-env.d.ts",
