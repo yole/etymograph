@@ -2914,6 +2914,10 @@
             {
                 "pubId": 5,
                 "refText": "170"
+            },
+            {
+                "pubId": 6,
+                "refText": "5.41"
             }
         ]
     },
@@ -4341,6 +4345,39 @@
                     {
                         "type": "ChangeSound",
                         "args": [
+                            "i"
+                        ]
+                    },
+                    {
+                        "type": "SoundDisappears",
+                        "args": [
+                            "1"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "cls": "non-stressed",
+                            "parameter": "ō",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": 1,
+                            "parameter": "j"
+                        }
+                    ]
+                },
+                "comment": "Ringe 2014:227: -ōj- in present stems of class II weak verbs was unrounded and shortened"
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
                             "e"
                         ]
                     }
@@ -4697,6 +4734,12 @@
                             "negated": true,
                             "cls": "diphthong",
                             "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": 1,
+                            "negated": true,
+                            "cls": "vowel"
                         },
                         {
                             "type": "syllableIndex",
@@ -10154,6 +10197,52 @@
             {
                 "pubId": 5,
                 "refText": "145"
+            }
+        ]
+    },
+    {
+        "id": 9606,
+        "name": "oe-g-i",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "i"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "ġ",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": -1,
+                            "cls": "consonant"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": -1,
+                            "negated": true,
+                            "parameter": "ċ"
+                        }
+                    ]
+                },
+                "comment": "this is a purely orthographic convention"
+            }
+        ],
+        "sourceRefs": [
+            {
+                "pubId": 6,
+                "refText": "2.76"
             }
         ]
     }

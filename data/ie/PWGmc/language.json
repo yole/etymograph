@@ -466,5 +466,15 @@
     "stressRuleId": 2064,
     "pronunciationRuleId": 2951,
     "orthographyRuleId": 6179,
+    "pos": [
+        {
+            "name": "Noun",
+            "abbreviation": "N"
+        },
+        {
+            "name": "Verb",
+            "abbreviation": "V"
+        }
+    ],
     "dictionarySettings": "wiktionary-id: gmw-pro"
 }

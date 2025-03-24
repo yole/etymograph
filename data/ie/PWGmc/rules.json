@@ -109,6 +109,10 @@
             {
                 "pubId": 5,
                 "refText": "27"
+            },
+            {
+                "pubId": 6,
+                "refText": "3.10"
             }
         ]
     },
@@ -210,6 +214,10 @@
             {
                 "pubId": 5,
                 "refText": "43"
+            },
+            {
+                "pubId": 6,
+                "refText": "3.31"
             }
         ]
     },
@@ -256,6 +264,10 @@
             {
                 "pubId": 5,
                 "refText": "44"
+            },
+            {
+                "pubId": 6,
+                "refText": "3.28"
             }
         ]
     },
@@ -470,7 +482,13 @@
                         {
                             "type": "relPhoneme",
                             "relativeIndex": -1,
-                            "cls": "vowel"
+                            "cls": "short vowel"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": -1,
+                            "negated": true,
+                            "cls": "diphthong"
                         },
                         {
                             "type": "relPhoneme",
@@ -485,6 +503,10 @@
             {
                 "pubId": 5,
                 "refText": "50"
+            },
+            {
+                "pubId": 6,
+                "refText": "4.11"
             }
         ]
     },
@@ -590,6 +612,10 @@
             {
                 "pubId": 5,
                 "refText": "55"
+            },
+            {
+                "pubId": 6,
+                "refText": "3.29"
             }
         ]
     },
@@ -856,6 +882,10 @@
             {
                 "pubId": 5,
                 "refText": "60"
+            },
+            {
+                "pubId": 6,
+                "refText": "3.33"
             }
         ]
     },
@@ -870,7 +900,7 @@
                     {
                         "type": "SoundDisappears",
                         "args": [
-                            ""
+                            "0"
                         ]
                     }
                 ],
@@ -900,6 +930,10 @@
             {
                 "pubId": 5,
                 "refText": "61"
+            },
+            {
+                "pubId": 6,
+                "refText": "3.19 (1)"
             }
         ]
     },

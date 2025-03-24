@@ -901,6 +901,7 @@
         "id": 2550,
         "text": "hwarbōn",
         "gloss": "to wander around",
+        "pos": "V",
         "sourceRefs": [
             {
                 "pubId": 5,
@@ -1235,6 +1236,10 @@
             {
                 "pubId": 5,
                 "refText": "84"
+            },
+            {
+                "pubId": 5,
+                "refText": "95"
             }
         ]
     },

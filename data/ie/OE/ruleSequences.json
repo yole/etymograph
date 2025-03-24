@@ -149,6 +149,10 @@
             },
             {
                 "ruleId": 6218
+            },
+            {
+                "ruleId": 9606,
+                "optional": true
             }
         ]
     },

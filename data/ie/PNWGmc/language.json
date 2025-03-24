@@ -430,5 +430,15 @@
     ],
     "stressRuleId": 1873,
     "pronunciationRuleId": 2589,
-    "orthographyRuleId": 6171
+    "orthographyRuleId": 6171,
+    "pos": [
+        {
+            "name": "Noun",
+            "abbreviation": "N"
+        },
+        {
+            "name": "Verb",
+            "abbreviation": "V"
+        }
+    ]
 }

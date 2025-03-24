@@ -25130,6 +25130,10 @@
             {
                 "pubId": 9,
                 "refText": "389"
+            },
+            {
+                "pubId": 6,
+                "refText": "3.18"
             }
         ]
     },
@@ -26946,10 +26950,22 @@
         "id": 8671,
         "text": "smūgan",
         "gloss": "creep, crawl",
+        "fullGloss": "to creep, crawl, move gradually",
+        "pos": "V",
+        "classes": [
+            "v-strong-2"
+        ],
         "sourceRefs": [
             {
                 "pubId": 9,
                 "refText": "458"
+            },
+            {
+                "pubId": 5,
+                "refText": "40"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/smugan#Old_English"
             }
         ]
     },
@@ -31199,6 +31215,7 @@
         "id": 9572,
         "text": "sprūtan",
         "gloss": "bud, sprout",
+        "pos": "V",
         "reconstructed": true
     },
     {

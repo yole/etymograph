@@ -16224,7 +16224,7 @@
     },
     {
         "id": 7951,
-        "text": "lapbōn-",
+        "text": "labōn-",
         "sourceRefs": [
             {
                 "pubId": 9,
@@ -16781,6 +16781,7 @@
     {
         "id": 8028,
         "text": "liznōn-",
+        "pos": "V",
         "sourceRefs": [
             {
                 "pubId": 9,
@@ -23884,6 +23885,7 @@
     {
         "id": 9054,
         "text": "tugōn-",
+        "pos": "V",
         "sourceRefs": [
             {
                 "pubId": 9,
@@ -26848,6 +26850,7 @@
     {
         "id": 9605,
         "text": "lukkōn-",
-        "gloss": "entice"
+        "gloss": "entice",
+        "pos": "V"
     }
 ]
