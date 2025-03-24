@@ -569,7 +569,7 @@ class RuleController {
                             getSinglePhonemeDifference(expectedWord, resultWord)?.toString()
                         else
                             null,
-                        sourceWord.pos ?: resultWord.pos
+                        sourceWord.getOrComputePOS(repo) ?: resultWord.getOrComputePOS(repo)
                     )
                 }
                 models.firstOrNull { it.expectedWord == null } ?: models.firstOrNull { it.singlePhonemeDifference != null } ?: models.first()

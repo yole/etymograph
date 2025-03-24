@@ -243,6 +243,10 @@ class Word(
         if (pos != null) {
             return pos
         }
+        val variationOf = getVariationOf(graph)
+        if (variationOf != null) {
+            return variationOf.getOrComputePOS(graph)
+        }
         for (compound in graph.findCompoundsByCompoundWord(this)) {
             compound.headComponent()?.pos?.let { return it }
         }
