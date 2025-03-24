@@ -11,8 +11,8 @@ enum class ConditionType(
     BeginsWith(LeafRuleCondition.wordBeginsWith),
     ClassMatches(LeafRuleCondition.wordIs, parameterParseCallback = { buf, language ->
         val param = buf.nextWord() ?: throw RuleParseException("Word class expected")
-        if (language.findWordClass(param) == null)
-            throw RuleParseException("Unknown word class '$param'")
+        if (language.findWordClass(param) == null && language.pos.none { it.abbreviation == param })
+            throw RuleParseException("Unknown word class or POS '$param'")
         param
     }),
     StressIs(LeafRuleCondition.stressIs, parameterParseCallback = { buf, _ ->
@@ -125,15 +125,17 @@ class LeafRuleCondition(
     }
 
     private fun matchClass(word: Word, graph: GraphRepository): Boolean {
-        var classes = word.classes
+        var classes = word.classes + listOf(word.pos)
         val variationOf = word.getVariationOf(graph)
         if (variationOf != null) {
             classes += variationOf.classes
+            classes += variationOf.pos
         }
         else {
             val compound = graph.findCompoundsByCompoundWord(word).singleOrNull()
             compound?.headComponent()?.let {
                 classes += it.classes
+                classes += it.pos
             }
         }
 

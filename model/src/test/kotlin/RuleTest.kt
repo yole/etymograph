@@ -206,6 +206,14 @@ class RuleTest : QBaseTest() {
     }
 
     @Test
+    fun wordIsPOS() {
+        q.pos = mutableListOf(WordCategoryValue("Noun", "N"), WordCategoryValue("Verb", "V"))
+        val rule = repo.rule("word is V and word ends with 'ōn':\n- change ending to 'ōjan'\notherwise:\n- no change", q)
+        val baseWord = repo.addWord("bugōn-", language = q, pos = "V")
+        assertEquals("bugōjan", rule.apply(baseWord, repo).text)
+    }
+
+    @Test
     fun wordIsInheritFromVariant() {
         val repo = InMemoryGraphRepository()
         val oe = Language("Old English", "OE").also { repo.addLanguage(it) }

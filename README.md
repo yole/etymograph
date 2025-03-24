@@ -190,8 +190,9 @@ The following conditions can be used in morphological rules:
    or a phoneme of a specified class (for example, `base word in CE ends with a vowel`).
  * `word begins with`: Checks whether the word begins with the specified sequence of phonemes
    (for example, `word begins with 'm'`) or a phoneme of a specified class (for example, `word begins with a consonant`).
- * `word is`: Checks whether the word belongs to the given class (for example, `word is m`, where `m` is defined
-   as a possible value for the 'gender' class of nouns).
+ * `word is`: Checks whether the word belongs to the given part of speech or class (for example, `word is m`, 
+   where `m` is defined  as a possible value for the 'gender' class of nouns, or `word is V`, where `V`
+   is the abbreviation of the 'Verb' part of speech).
  * `number of syllables is `: Checks whether the word has exactly the specified number of syllables
    (for example, `number of syllables is 2`) 
  * `number of syllables is <at least|at most>`: Checks whether the word has at least or at most the specified number 
