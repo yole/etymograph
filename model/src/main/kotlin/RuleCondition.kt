@@ -129,13 +129,13 @@ class LeafRuleCondition(
         val variationOf = word.getVariationOf(graph)
         if (variationOf != null) {
             classes += variationOf.classes
-            classes += variationOf.pos
+            classes += variationOf.getOrComputePOS(graph)
         }
         else {
             val compound = graph.findCompoundsByCompoundWord(word).singleOrNull()
             compound?.headComponent()?.let {
                 classes += it.classes
-                classes += it.pos
+                classes += it.getOrComputePOS(graph)
             }
         }
 
