@@ -125,7 +125,7 @@ class LeafRuleCondition(
     }
 
     private fun matchClass(word: Word, graph: GraphRepository): Boolean {
-        var classes = word.classes + listOf(word.pos)
+        var classes = word.classes + listOf(word.getOrComputePOS(graph))
         val variationOf = word.getVariationOf(graph)
         if (variationOf != null) {
             classes += variationOf.classes
@@ -139,7 +139,7 @@ class LeafRuleCondition(
             }
         }
 
-        return (parameter in classes).negateIfNeeded() || classes == listOf("*")
+        return (parameter in classes).negateIfNeeded() || "*" in classes
     }
 
     private fun matchStress(word: Word, graph: GraphRepository): Boolean {
