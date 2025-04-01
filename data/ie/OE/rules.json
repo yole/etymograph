@@ -4960,6 +4960,11 @@
                             "parameter": "l"
                         },
                         {
+                            "type": "relPhoneme",
+                            "relativeIndex": 1,
+                            "cls": "consonant"
+                        },
+                        {
                             "type": "syllableIndex",
                             "matchClass": "open"
                         },
@@ -10243,6 +10248,130 @@
             {
                 "pubId": 6,
                 "refText": "2.76"
+            }
+        ]
+    },
+    {
+        "id": 9608,
+        "name": "oe-ej",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "i"
+                        ]
+                    },
+                    {
+                        "type": "SoundDisappears",
+                        "args": [
+                            "1"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "parameter": "e",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "negated": true,
+                            "cls": "diphthong",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": 1,
+                            "parameter": "ġ"
+                        }
+                    ]
+                }
+            }
+        ],
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "228"
+            }
+        ]
+    },
+    {
+        "id": 9609,
+        "name": "post-pwgmc-remaining-z",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "r"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "relPhoneme",
+                    "parameter": "z",
+                    "relative": false
+                }
+            }
+        ],
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "87"
+            }
+        ]
+    },
+    {
+        "id": 9610,
+        "name": "oe-hiatus",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "SoundInserted",
+                        "args": [
+                            "w"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "cls": "vowel",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": -1,
+                            "cls": "long vowel"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "negated": true,
+                            "cls": "diphthong",
+                            "relative": false
+                        }
+                    ]
+                }
+            }
+        ],
+        "sourceRefs": [
+            {
+                "refText": "Kroonen"
             }
         ]
     }

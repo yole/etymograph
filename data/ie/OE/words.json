@@ -17543,12 +17543,20 @@
     },
     {
         "id": 6730,
-        "text": "gedīegan",
+        "text": "ġedīeġan",
         "gloss": "endure",
+        "fullGloss": "to survive, endure",
+        "pos": "V",
+        "classes": [
+            "v-weak-1"
+        ],
         "sourceRefs": [
             {
                 "pubId": 9,
                 "refText": "90"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/gediegan#Old_English"
             }
         ]
     },
@@ -19876,18 +19884,26 @@
     },
     {
         "id": 7208,
-        "text": "giwian",
+        "text": "ġiwian",
         "gloss": "desire, long for",
+        "fullGloss": "to ask (for something), request; to demand",
+        "pos": "V",
+        "classes": [
+            "v-weak-2"
+        ],
         "sourceRefs": [
             {
                 "pubId": 9,
                 "refText": "179"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/giwian#Old_English"
             }
         ]
     },
     {
         "id": 7209,
-        "text": "giowian",
+        "text": "ġiowian",
         "sourceRefs": [
             {
                 "pubId": 9,
@@ -31004,7 +31020,7 @@
     },
     {
         "id": 9485,
-        "text": "dīegan",
+        "text": "dīeġan",
         "gloss": "endure",
         "reconstructed": true
     },
@@ -31315,5 +31331,10 @@
         "text": "loccian",
         "gloss": "entice",
         "reconstructed": true
+    },
+    {
+        "id": 9611,
+        "text": "weallian",
+        "gloss": "roll"
     }
 ]

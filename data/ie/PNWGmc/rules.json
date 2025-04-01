@@ -341,6 +341,31 @@
             {
                 "instructions": [
                     {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "ējan"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "V"
+                        },
+                        {
+                            "type": "leaf",
+                            "cond": "EndsWith",
+                            "characters": "ēn"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
                         "type": "NoChange",
                         "args": []
                     }
