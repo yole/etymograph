@@ -15577,10 +15577,17 @@
         "id": 6287,
         "text": "ealgian",
         "gloss": "defend",
+        "pos": "V",
+        "classes": [
+            "v-weak-2"
+        ],
         "sourceRefs": [
             {
                 "pubId": 9,
                 "refText": "21"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/ealgian#Old_English"
             }
         ]
     },
@@ -20934,7 +20941,7 @@
     },
     {
         "id": 7429,
-        "text": "hīgian",
+        "text": "hīġian",
         "gloss": "hie, haste, strive",
         "fullGloss": "to strive, exert oneself",
         "pos": "V",
@@ -26394,10 +26401,17 @@
         "id": 8549,
         "text": "sicerian",
         "gloss": "trickle",
+        "pos": "V",
+        "classes": [
+            "v-weak-2"
+        ],
         "sourceRefs": [
             {
                 "pubId": 9,
                 "refText": "436"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/sicerian#Old_English"
             }
         ]
     },
@@ -28138,7 +28152,7 @@
     },
     {
         "id": 8917,
-        "text": "swīgian",
+        "text": "swīġian",
         "gloss": "be silent",
         "pos": "V",
         "classes": [
@@ -31336,5 +31350,14 @@
         "id": 9611,
         "text": "weallian",
         "gloss": "roll"
+    },
+    {
+        "id": 9612,
+        "text": "wyrgan",
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/36964"
+            }
+        ]
     }
 ]

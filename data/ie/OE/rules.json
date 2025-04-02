@@ -10277,6 +10277,7 @@
                     "members": [
                         {
                             "type": "relPhoneme",
+                            "cls": "non-stressed",
                             "parameter": "e",
                             "relative": false
                         },

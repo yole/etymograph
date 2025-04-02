@@ -10867,6 +10867,7 @@
     {
         "id": 7177,
         "text": "gabōn-",
+        "pos": "V",
         "sourceRefs": [
             {
                 "pubId": 9,
@@ -24912,7 +24913,7 @@
     },
     {
         "id": 9210,
-        "text": "þutdōn-",
+        "text": "þudōn-",
         "sourceRefs": [
             {
                 "pubId": 9,
