@@ -22,7 +22,8 @@ enum class InstructionType(
     ChangeSoundClass("becomes", RelativeOrdinals.toPattern() + "?(.+) becomes (.+)", true),
     SoundDisappears("sound disappears", RelativeOrdinals.toPattern() + "?sound disappears", true),
     SoundIsGeminated("sound is geminated"),
-    SoundInserted("is inserted", "'(.+)' is inserted before", true),
+    SoundInserted("is inserted before", "'(.+)' is inserted before", true),
+    SoundInsertedAfter("is inserted after", "'(.+)' is inserted after", true),
     Spe("SPE pattern", "", true);
 
     val regex = Regex(pattern ?: Regex.escape(insnName))
@@ -85,6 +86,7 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
             InstructionType.ChangeNextSound -> phonemes.replaceAtRelative(1, arg)
             InstructionType.SoundDisappears -> phonemes.deleteAtRelative(if (arg.isEmpty()) 0 else arg.toInt())
             InstructionType.SoundInserted -> phonemes.insertAtRelative(0, arg)
+            InstructionType.SoundInsertedAfter -> phonemes.insertAtRelative(1, arg)
             InstructionType.SoundIsGeminated -> phonemes.insertAtRelative(1, phonemes.current)
             InstructionType.NoChange -> Unit
             else -> throw IllegalStateException("Can't apply word instruction to individual phoneme")

@@ -310,7 +310,10 @@ class PhonemeIterator {
 
     fun insertAtRelative(relativeIndex: Int, s: String) {
         val targetIndex = phonemeIndex + relativeIndex
-        val resultIndex = phonemeToResultIndexMap[targetIndex]
+        val resultIndex = if (targetIndex == phonemeToResultIndexMap.size)
+            phonemeToResultIndexMap.last() + 1
+        else
+            phonemeToResultIndexMap[targetIndex]
         resultPhonemes.add(resultIndex, s)
         for (i in targetIndex..<phonemes.size) {
             phonemeToResultIndexMap[i]++

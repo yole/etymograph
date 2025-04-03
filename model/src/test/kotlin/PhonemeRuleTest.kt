@@ -409,6 +409,18 @@ class PhonemeRuleTest : QBaseTest() {
     }
 
     @Test
+    fun soundIsInsertedAfter() {
+        val rule = parseRule(q, q, """
+            sound is a vowel and previous sound is 'r':
+            - 'r' is inserted after
+            - previous sound disappears
+        """.trimIndent())
+        assertEquals("birnan", rule.apply(q.word("brinan"), emptyRepo).text)
+        assertEquals("bar", rule.apply(q.word("bra"), emptyRepo).text)
+        assertEquals("'r' is inserted after", rule.logic.branches[0].instructions[0].toEditableText(repo))
+    }
+
+    @Test
     fun phonemeRulesWorkWithSoundValues() {
         val rule = parseRule(ce, q, """
             sound is 'j' and next sound is 'u':
