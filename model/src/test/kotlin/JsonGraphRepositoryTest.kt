@@ -175,7 +175,7 @@ class JsonGraphRepositoryTest : QBaseTest() {
             """.trimIndent(), q.parseContext(repo)
             )
         )
-        return repo.addRuleSequence("ce-to-q", ce, q, listOf(RuleSequenceStep(rule, false)))
+        return repo.addRuleSequence("ce-to-q", ce, q, listOf(RuleSequenceStep(rule, false, false)))
     }
 
     @Test

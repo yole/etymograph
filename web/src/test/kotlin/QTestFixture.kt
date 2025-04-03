@@ -47,4 +47,4 @@ class QTestFixture {
 
 }
 
-fun Rule.step() = RuleSequenceStep(this, false)
+fun Rule.step() = RuleSequenceStep(this, false, false)

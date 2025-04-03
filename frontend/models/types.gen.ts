@@ -495,6 +495,7 @@ export type RuleShortViewModel = {
     toLang: string;
     summaryText: string;
     optional: boolean;
+    dispreferred: boolean;
 };
 
 export type RuleTraceParams = {

@@ -452,7 +452,7 @@ open class InMemoryGraphRepository : GraphRepository() {
 
     override fun addRuleSequence(name: String, fromLanguage: Language, toLanguage: Language, rules: List<RuleSequenceStep>): RuleSequence {
         return RuleSequence(allLangEntities.size, name, fromLanguage, toLanguage,
-            rules.map { RuleSequenceStepRef(it.rule.id, it.optional) }, emptyList(), null
+            rules.map { RuleSequenceStepRef(it.rule.id, it.optional, it.dispreferred) }, emptyList(), null
         ).also {
             allLangEntities.add(it)
         }
@@ -600,7 +600,6 @@ open class InMemoryGraphRepository : GraphRepository() {
             if (singlePhonemeDifferenceVariant != null) {
                 return applyRuleSequenceVariant(word, singlePhonemeDifferenceVariant, applicableRules)
             }
-            return applyRuleSequenceVariant(word, variants.first(), applicableRules)
         }
         return applyRuleSequenceVariant(word, sequence.resolveRules(this), applicableRules)
     }

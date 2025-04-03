@@ -468,12 +468,14 @@ class Rule(
 
 data class RuleSequenceStepRef(
     val ruleId: Int,
-    val optional: Boolean
+    val optional: Boolean,
+    val dispreferred: Boolean
 )
 
 data class RuleSequenceStep(
     val rule: LangEntity,
-    val optional: Boolean
+    val optional: Boolean,
+    val dispreferred: Boolean
 )
 
 class RuleSequence(
@@ -486,10 +488,10 @@ class RuleSequence(
 
     fun resolveSteps(graph: GraphRepository): List<RuleSequenceStep> {
         val result = mutableListOf<RuleSequenceStep>()
-        for ((ruleId, optional) in steps) {
+        for ((ruleId, optional, dispreferred) in steps) {
             val entity = graph.langEntityById(ruleId)
             if (entity is Rule) {
-                result.add(RuleSequenceStep(entity, optional))
+                result.add(RuleSequenceStep(entity, optional, dispreferred))
             }
             else if (entity is RuleSequence) {
                 result.addAll(entity.resolveSteps(graph))
@@ -511,7 +513,7 @@ class RuleSequence(
     }
 
     fun resolveRules(graph: GraphRepository): List<Rule> {
-        return resolveSteps(graph).map { it.rule as Rule }
+        return resolveSteps(graph).filter { !it.dispreferred }.map { it.rule as Rule }
     }
 
     fun resolveVariants(graph: GraphRepository): List<List<Rule>> {

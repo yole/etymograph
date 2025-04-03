@@ -2482,12 +2482,15 @@ components:
           type: "string"
         optional:
           type: "boolean"
+        dispreferred:
+          type: "boolean"
       required:
         - "id"
         - "name"
         - "toLang"
         - "summaryText"
         - "optional"
+        - "dispreferred"
     RuleGroupViewModel:
       type: "object"
       properties:

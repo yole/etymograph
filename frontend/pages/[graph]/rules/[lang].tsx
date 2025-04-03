@@ -45,7 +45,8 @@ export default function RuleList(params) {
                         <td>
                             {!r.name.startsWith("sequence: ") && <Link href={`/${graph}/rule/${r.id}`}>{r.name}</Link>}
                             {r.name.startsWith("sequence: ") && r.name}
-                            {r.optional && " (optional)"}
+                            {r.dispreferred && " (dispreferred)"}
+                            {r.optional && !r.dispreferred && " (optional)"}
                         </td>
                         <td>
                             {r.summaryText.length > 0 ? r.summaryText : ""}
@@ -63,7 +64,7 @@ export default function RuleList(params) {
                         name: g.sequenceName,
                         fromLang: g.sequenceFromLang,
                         toLang: g.sequenceToLang,
-                        ruleNames: g.rules.map(r => r.name + (r.optional ? "?" : "")).join("\n")
+                        ruleNames: g.rules.map(r => r.name + (r.dispreferred ? "??" : (r.optional ? "?" : ""))).join("\n")
                     }}
                     submitted={sequenceSubmitted}
                     cancelled={() => setSequenceEditId(null)}

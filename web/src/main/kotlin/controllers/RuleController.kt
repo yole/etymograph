@@ -94,7 +94,8 @@ class RuleController {
         val name: String,
         val toLang: String,
         val summaryText: String,
-        val optional: Boolean
+        val optional: Boolean,
+        val dispreferred: Boolean
     )
 
     data class RuleGroupViewModel(
@@ -154,7 +155,7 @@ class RuleController {
                 if (rule is Rule) {
                     allSequenceRules.add(rule)
                 }
-                group.rules.add(rule.toShortViewModel(repo, step.optional))
+                group.rules.add(rule.toShortViewModel(repo, step.optional, step.dispreferred))
             }
         }
 
@@ -183,10 +184,10 @@ class RuleController {
         return repo.resolveRule(id).toViewModel(repo)
     }
 
-    private fun LangEntity.toShortViewModel(repo: GraphRepository, optional: Boolean = false): RuleShortViewModel {
+    private fun LangEntity.toShortViewModel(repo: GraphRepository, optional: Boolean = false, dispreferred: Boolean = false): RuleShortViewModel {
         return when (this) {
-            is Rule -> RuleShortViewModel(id, name, toLanguage.shortName, toSummaryText(repo), optional)
-            is RuleSequence -> RuleShortViewModel(id, "sequence: $name", toLanguage.shortName, "", optional)
+            is Rule -> RuleShortViewModel(id, name, toLanguage.shortName, toSummaryText(repo), optional, dispreferred)
+            is RuleSequence -> RuleShortViewModel(id, "sequence: $name", toLanguage.shortName, "", optional, dispreferred)
             else -> throw IllegalStateException("Unknown entity type")
         }
     }
@@ -417,6 +418,8 @@ class RuleController {
             var name = it.trim()
             val optional = name.endsWith("?")
             name = name.removeSuffix("?")
+            val dispreferred = name.endsWith("?")
+            name = name.removeSuffix("?")
             val rule = if (name.startsWith("sequence:")) {
                 val sequenceName = name.removePrefix("sequence:").trim()
                 repo.ruleSequenceByName(sequenceName)
@@ -425,7 +428,7 @@ class RuleController {
             else {
                 repo.resolveRule(name)
             }
-            RuleSequenceStep(rule, optional)
+            RuleSequenceStep(rule, optional, dispreferred)
         }
         return Triple(fromLanguage, toLanguage, rules)
     }
@@ -437,7 +440,7 @@ class RuleController {
         sequence.name = params.name
         sequence.fromLanguage = fromLanguage
         sequence.toLanguage = toLanguage
-        sequence.steps = steps.map { RuleSequenceStepRef(it.rule.id, it.optional) }
+        sequence.steps = steps.map { RuleSequenceStepRef(it.rule.id, it.optional, it.dispreferred) }
         return sequence.toViewModel()
     }
 

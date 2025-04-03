@@ -25,8 +25,8 @@ fun GraphRepository.rule(
     )
 }
 
-fun Rule.step(optional: Boolean = false) = RuleSequenceStep(this, optional)
-fun RuleSequence.step() = RuleSequenceStep(this, false)
+fun Rule.step(optional: Boolean = false, dispreferred: Boolean = false) = RuleSequenceStep(this, optional, dispreferred)
+fun RuleSequence.step() = RuleSequenceStep(this, false, false)
 
 fun phoneme(grapheme: String, classes: String? = null): Phoneme {
     return Phoneme(-1, listOf(grapheme), null,
