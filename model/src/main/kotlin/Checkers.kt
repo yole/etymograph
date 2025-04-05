@@ -12,8 +12,9 @@ object WordTextChecker : ConsistencyChecker {
     override fun check(repo: GraphRepository, language: Language, report: (ConsistencyCheckerIssue) -> Unit) {
         for (word in repo.allWords(language)) {
             var charactersNotInInventory = false
-            language.phonoPhonemeLookup.iteratePhonemes(word.asPhonemic().text) { s, phoneme ->
-                if (phoneme == null && s != "-") charactersNotInInventory = true
+            val text = word.asPhonemic().text
+            language.phonoPhonemeLookup.iteratePhonemes(text) { startIndex, endIndex, phoneme ->
+                if (phoneme == null && text.substring(startIndex, endIndex) != "-") charactersNotInInventory = true
             }
             if (charactersNotInInventory) {
                 report(ConsistencyCheckerIssue("Word text contains characters outside of inventory for $word"))

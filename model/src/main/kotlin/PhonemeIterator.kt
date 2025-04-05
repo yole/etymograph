@@ -145,16 +145,16 @@ class PhonemeIterator {
         resultPhonemes = mutableListOf()
         val lookup = if (phonemic) this.language.phonoPhonemeLookup else this.language.orthoPhonemeLookup
 
-        lookup.iteratePhonemes(text) { phonemeText, phoneme ->
+        lookup.iteratePhonemes(text) { startIndex, endIndex, phoneme ->
             val normalizedResultText = if (resultPhonemic ?: phonemic) phoneme?.sound else phoneme?.graphemes?.first()
             val normalizedText = if (phonemic) phoneme?.sound else phoneme?.graphemes?.first()
-            if (mergeDiphthongs && sourcePhonemes.size > 0 && sourcePhonemes.last() + (phoneme?.sound ?: phonemeText) in language.diphthongs) {
-                sourcePhonemes[sourcePhonemes.size - 1] = sourcePhonemes[sourcePhonemes.size - 1] + (normalizedText ?: phonemeText)
-                resultPhonemes[resultPhonemes.size - 1] = resultPhonemes[resultPhonemes.size - 1] + (normalizedResultText ?: phonemeText)
+            if (mergeDiphthongs && sourcePhonemes.size > 0 && sourcePhonemes.last() + (phoneme?.sound ?: text.substring(startIndex, endIndex)) in language.diphthongs) {
+                sourcePhonemes[sourcePhonemes.size - 1] = sourcePhonemes[sourcePhonemes.size - 1] + (normalizedText ?: text.substring(startIndex, endIndex))
+                resultPhonemes[resultPhonemes.size - 1] = resultPhonemes[resultPhonemes.size - 1] + (normalizedResultText ?: text.substring(startIndex, endIndex))
             }
             else {
-                sourcePhonemes.add(normalizedText ?: phonemeText)
-                resultPhonemes.add(normalizedResultText ?: phonemeText)
+                sourcePhonemes.add(normalizedText ?: text.substring(startIndex, endIndex))
+                resultPhonemes.add(normalizedResultText ?: text.substring(startIndex, endIndex))
             }
         }
 

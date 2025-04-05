@@ -23,38 +23,49 @@ class Phoneme(
 }
 
 class PhonemeLookup {
+    private val digraphLookup = arrayOfNulls<MutableMap<String, Phoneme>>(Char.MAX_VALUE.code)
     private var digraphs = mutableMapOf<String, Phoneme>()
-    private var singleGraphemes = mutableMapOf<Char, Phoneme>()
+    private var singleGraphemes = arrayOfNulls<Phoneme>(Char.MAX_VALUE.code)
 
     fun clear() {
         digraphs.clear()
-        singleGraphemes.clear()
+        for (i in 0..<Char.MAX_VALUE.code) {
+            digraphLookup[i] = mutableMapOf()
+            singleGraphemes[i] = null
+        }
     }
 
     fun add(key: String, phoneme: Phoneme) {
         if (key.length > 1) {
             digraphs[key] = phoneme
+            val c = key.first().code
+            if (digraphLookup[c] == null) {
+                digraphLookup[c] = mutableMapOf()
+            }
+            digraphLookup[c]!![key] = phoneme
         }
         else {
-            singleGraphemes[key[0]] = phoneme
+            singleGraphemes[key[0].code] = phoneme
         }
     }
 
-    fun iteratePhonemes(text: String, callback: (String, Phoneme?) -> Unit) {
+    fun iteratePhonemes(text: String, callback: (Int, Int, Phoneme?) -> Unit) {
         var offset = 0
         while (offset < text.length) {
-            val phonemeText = nextPhoneme(text, offset)
-            callback(phonemeText,
-                if (phonemeText.length > 1)
-                    digraphs[phonemeText]
-                else
-                    singleGraphemes[phonemeText[0]])
-            offset += phonemeText.length
+            val digraph = digraphLookup[text[offset].code]?.keys?.firstOrNull { text.startsWith(it, offset) }
+            if (digraph != null) {
+                callback(offset, offset + digraph.length, digraphs[digraph])
+                offset += digraph.length
+            }
+            else {
+                callback(offset, offset + 1, singleGraphemes[text[offset].code])
+                offset++
+            }
         }
     }
 
     fun nextPhoneme(text: String, offset: Int): String {
-        val digraph = digraphs.keys.firstOrNull { text.startsWith(it, offset) }
+        val digraph = digraphLookup[text[offset].code]?.keys?.firstOrNull { text.startsWith(it, offset) }
         return digraph ?: text.substring(offset, offset + 1)
     }
 }
@@ -158,6 +169,7 @@ class Language(val name: String, val shortName: String) {
     var dictionarySettings: String? = null
 
     private val normalizeCache = mutableMapOf<String, String>()
+    private val phonemicCache = mutableMapOf<String, String>()
 
     private fun updateGraphemes() {
         orthoPhonemeLookup.clear()
@@ -169,6 +181,7 @@ class Language(val name: String, val shortName: String) {
             phonoPhonemeLookup.add(phoneme.sound ?: phoneme.graphemes[0], phoneme)
         }
         normalizeCache.clear()
+        phonemicCache.clear()
     }
 
     fun phonemeClassByName(name: String): PhonemeClass? {
@@ -221,11 +234,16 @@ class Language(val name: String, val shortName: String) {
     fun normalizeWord(text: String): String {
         return normalizeCache.getOrPut(text) {
             buildString {
-                orthoPhonemeLookup.iteratePhonemes(text.lowercase(Locale.FRANCE)) { s, phoneme ->
-                    append(phoneme?.graphemes?.get(0) ?: s)
+                val lowerText = text.lowercase(Locale.FRANCE)
+                orthoPhonemeLookup.iteratePhonemes(lowerText) { startIndex, endIndex, phoneme ->
+                    append(phoneme?.graphemes?.get(0) ?: lowerText.substring(startIndex, endIndex))
                 }
             }.removeSuffix("-")
         }
+    }
+
+    fun cachePhonemicText(text: String, callback: () -> String): String {
+        return phonemicCache.getOrPut(text, callback)
     }
 
     fun isNormalizedEqual(ruleProducedWord: Word, attestedWord: Word): Boolean {

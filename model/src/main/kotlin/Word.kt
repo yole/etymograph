@@ -77,22 +77,26 @@ class Word(
 
     fun asPhonemic(): Word {
         if (isPhonemic) return this
-        val pronunciationRule = language.pronunciationRule?.resolve()
-        val phonemicText = if (pronunciationRule != null) {
-            val it = PhonemeIterator(this, null, resultPhonemic = true)
-            while (true) {
-                pronunciationRule.applyToPhoneme(this, it, InMemoryGraphRepository.EMPTY)
-                if (!it.advance()) break
+        val phonemicText = language.cachePhonemicText(text) {
+            val pronunciationRule = language.pronunciationRule?.resolve()
+            if (pronunciationRule != null) {
+                val it = PhonemeIterator(this, null, resultPhonemic = true)
+                while (true) {
+                    pronunciationRule.applyToPhoneme(this, it, InMemoryGraphRepository.EMPTY)
+                    if (!it.advance()) break
+                }
+                it.result()
             }
-            it.result()
-        }
-        else {
-            buildString {
-                language.orthoPhonemeLookup.iteratePhonemes(text.lowercase(Locale.FRANCE)) { s, phoneme ->
-                    append(phoneme?.sound ?: phoneme?.graphemes?.first() ?: s)
+            else {
+                buildString {
+                    val lowerText = text.lowercase(Locale.FRANCE)
+                    language.orthoPhonemeLookup.iteratePhonemes(lowerText) { startIndex, endIndex, phoneme ->
+                        append(phoneme?.effectiveSound ?: lowerText.substring(startIndex, endIndex))
+                    }
                 }
             }
         }
+
         return derive(phonemicText, id = id, phonemic = true)
     }
 
@@ -109,8 +113,8 @@ class Word(
         }
         else {
             buildString {
-                language.phonoPhonemeLookup.iteratePhonemes(text) { s, phoneme ->
-                    append(phoneme?.graphemes?.get(0) ?: s)
+                language.phonoPhonemeLookup.iteratePhonemes(text) { startIndex, endIndex, phoneme ->
+                    append(phoneme?.graphemes?.get(0) ?: text.substring(startIndex, endIndex))
                 }
             }
         }
