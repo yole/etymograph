@@ -16,6 +16,7 @@ open class InMemoryGraphRepository : GraphRepository() {
     protected val translations = mutableMapOf<Int, MutableList<Translation>>()
     protected val rules = mutableListOf<Rule>()
     protected val paradigms = mutableListOf<Paradigm?>()
+    private val paradigmsByLanguage = mutableMapOf<Language, MutableList<Paradigm>>()
 
     protected val publications = mutableListOf<Publication?>()
 
@@ -807,11 +808,15 @@ open class InMemoryGraphRepository : GraphRepository() {
     }
 
     override fun addParadigm(name: String, language: Language, pos: List<String>): Paradigm {
-        return Paradigm(paradigms.size, name, language, pos).also { paradigms += it }
+        return Paradigm(paradigms.size, name, language, pos).also {
+            paradigms += it
+            paradigmsByLanguage.getOrPut(language) { mutableListOf() }.add(it)
+        }
     }
 
     override fun deleteParadigm(paradigm: Paradigm) {
         paradigms[paradigm.id] = null
+        paradigmsByLanguage[paradigm.language]?.remove(paradigm)
     }
 
     override fun allParadigms(): List<Paradigm> {
@@ -819,7 +824,7 @@ open class InMemoryGraphRepository : GraphRepository() {
     }
 
     override fun paradigmsForLanguage(lang: Language): List<Paradigm> {
-        return paradigms.filterNotNull().filter { it.language == lang }
+        return paradigmsByLanguage[lang] ?: emptyList()
     }
 
     override fun paradigmById(id: Int): Paradigm? {
@@ -827,7 +832,7 @@ open class InMemoryGraphRepository : GraphRepository() {
     }
 
     override fun paradigmForRule(rule: Rule): Paradigm? {
-        return paradigmsForLanguage(rule.fromLanguage).find { rule in it.collectAllRules() }
+        return paradigmsForLanguage(rule.fromLanguage).find { rule in it.allRules }
     }
 
     override fun findRuleExamples(rule: Rule): List<Link> {

@@ -54,6 +54,8 @@ data class Paradigm(
 ) {
     val rowTitles = mutableListOf<String>()
     val columns = mutableListOf<ParadigmColumn>()
+    var allRules: Set<Rule> = emptySet()
+        private set
 
     fun addRow(title: String) {
         rowTitles.add(title)
@@ -69,6 +71,7 @@ data class Paradigm(
         }
 
         columns[column].setRule(row, rules)
+        allRules = collectAllRules()
     }
 
     fun removeRule(rule: Rule) {
@@ -77,7 +80,7 @@ data class Paradigm(
         }
     }
 
-    fun collectAllRules(): Set<Rule> {
+    private fun collectAllRules(): Set<Rule> {
         return columns
             .flatMap { col -> col.cells.flatMap {
                 cell -> cell?.ruleAlternatives ?: emptyList() }

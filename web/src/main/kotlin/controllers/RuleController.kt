@@ -130,11 +130,11 @@ class RuleController {
         val ruleGroups = mutableListOf<RuleGroup>()
 
         val paradigms = repo.paradigmsForLanguage(language)
-        val paradigmRules = paradigms.associateWith { it.collectAllRules() }
+        val paradigmRules = paradigms.associateWith { it.allRules }
         val allParadigmRules = paradigmRules.values.flatten().toSet()
 
         for (paradigm in paradigms) {
-            val rules = paradigm.collectAllRules()
+            val rules = paradigm.allRules
             ruleGroups.add(RuleGroup(
                 "Grammar: ${paradigm.name}", paradigm, null,
                 rules.mapTo(mutableListOf()) { it.toShortViewModel(repo) })
