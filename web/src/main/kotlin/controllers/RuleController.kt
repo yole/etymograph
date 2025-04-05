@@ -549,7 +549,7 @@ class RuleController {
                     val resultWordVariations = resultWord.getTextVariations(repo).map {
                         resultWord.language.normalizeWord(it)
                     }
-                    val steps = derivation.flatMap { buildIntermediateSteps(repo, it) }
+                    val steps = derivation.flatMap { buildIntermediateSteps(repo, it, false) }
                     val rules = derivation.flatMap { it.rules }
                     DerivationViewModel(
                         sourceWord.toRefViewModel(repo),

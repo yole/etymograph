@@ -549,15 +549,15 @@ fun linkToViewModel(
     )
 }
 
-class RuleStepData(val result: String, val rule: Rule, val matchedBranches: Set<RuleBranch>)
+class RuleStepData(val result: String, val rule: Rule, val matchedBranches: Set<RuleBranch>?)
 
-fun buildIntermediateSteps(graph: GraphRepository, link: Link): List<RuleStepData> {
+fun buildIntermediateSteps(graph: GraphRepository, link: Link, traceMatchedBranches: Boolean = true): List<RuleStepData> {
     var word = link.toEntity as Word
     val result = mutableListOf<RuleStepData>()
-    val trace = RuleTrace()
+    val trace = if (traceMatchedBranches) RuleTrace() else null
     for (rule in link.rules) {
         val newWord = rule.apply(word, graph, trace)
-        val matchedBranches = trace.findMatchedBranches(rule, word).ifEmpty { trace.findMatchedBranches(rule, newWord) }
+        val matchedBranches = trace?.findMatchedBranches(rule, word)?.ifEmpty { trace.findMatchedBranches(rule, newWord) }
         word = newWord
         result.add(RuleStepData(word.text, rule, matchedBranches))
     }
