@@ -157,7 +157,7 @@ class PhonemePattern(val phonemeClass: PhonemeClass?, val literal: String?) {
 }
 
 class PhonemeClassList {
-    private var classes: List<PhonemeClass> = listOf()
+    private var classes: Map<String, PhonemeClass> = mapOf()
 
     fun update(phonemes: List<Phoneme>) {
         val phonemeClassMap = mutableMapOf<String, MutableList<String>>()
@@ -168,9 +168,9 @@ class PhonemeClassList {
         }
         val oldPhonemeClasses = classes
         classes = phonemeClassMap.map { (name, phonemes) ->
-            oldPhonemeClasses.find { it.name == name }?.also { it.matchingPhonemes = phonemes }
-                ?: PhonemeClass(name, phonemes)
-        }
+            name to (oldPhonemeClasses[name]?.also { it.matchingPhonemes = phonemes }
+                ?: PhonemeClass(name, phonemes))
+        }.toMap()
     }
 
     fun findByName(name: String): PhonemeClass? {
@@ -183,7 +183,7 @@ class PhonemeClassList {
             val baseClass = findByName(name.removePrefix("non-")) ?: return null
             return NegatedPhonemeClass(baseClass)
         }
-        return classes.find { it.name == name } ?: PhonemeClass.specialPhonemeClasses.find { it.name == name }
+        return classes[name] ?: PhonemeClass.specialPhonemeClasses.find { it.name == name }
     }
 }
 
