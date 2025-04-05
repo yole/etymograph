@@ -157,6 +157,8 @@ class Language(val name: String, val shortName: String) {
 
     var dictionarySettings: String? = null
 
+    private val normalizeCache = mutableMapOf<String, String>()
+
     private fun updateGraphemes() {
         orthoPhonemeLookup.clear()
         phonoPhonemeLookup.clear()
@@ -166,6 +168,7 @@ class Language(val name: String, val shortName: String) {
             }
             phonoPhonemeLookup.add(phoneme.sound ?: phoneme.graphemes[0], phoneme)
         }
+        normalizeCache.clear()
     }
 
     fun phonemeClassByName(name: String): PhonemeClass? {
@@ -216,11 +219,13 @@ class Language(val name: String, val shortName: String) {
     }
 
     fun normalizeWord(text: String): String {
-        return buildString {
-            orthoPhonemeLookup.iteratePhonemes(text.lowercase(Locale.FRANCE)) { s, phoneme ->
-                append(phoneme?.graphemes?.get(0) ?: s)
-            }
-        }.removeSuffix("-")
+        return normalizeCache.getOrPut(text) {
+            buildString {
+                orthoPhonemeLookup.iteratePhonemes(text.lowercase(Locale.FRANCE)) { s, phoneme ->
+                    append(phoneme?.graphemes?.get(0) ?: s)
+                }
+            }.removeSuffix("-")
+        }
     }
 
     fun isNormalizedEqual(ruleProducedWord: Word, attestedWord: Word): Boolean {
