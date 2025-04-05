@@ -582,23 +582,44 @@ open class InMemoryGraphRepository : GraphRepository() {
 
     private fun applyRuleSequence(word: Word, sequence: RuleSequence, expectWord: Word?, applicableRules: MutableList<Rule>): Word? {
         if (expectWord != null) {
-            val variants = sequence.resolveVariants(this)
-            var singlePhonemeDifferenceVariant: List<Rule>? = null
+            data class RuleApplicationVariant(val word: Word, val rules: List<Rule>)
 
-            for (variant in variants) {
-                val applicableRulesForVariant = mutableListOf<Rule>()
-                val targetWord = applyRuleSequenceVariant(word, variant, applicableRulesForVariant)?.asOrthographic()
-                if (targetWord?.text == expectWord.text) {
-                    applicableRules.addAll(applicableRulesForVariant)
-                    return targetWord
+            val steps = sequence.resolveSteps(this)
+            var variants = listOf(RuleApplicationVariant(word, emptyList()))
+            for (step in steps) {
+                if (step.optional) {
+                    variants = variants.flatMap {
+                        val result = (step.rule as Rule).apply(it.word, this)
+                        if ('?' in result.text)
+                            emptyList()
+                        else if (result.asPhonemic().text != it.word.asPhonemic().text) {
+                            listOf(it, RuleApplicationVariant(result, it.rules + step.rule))
+                        }
+                        else {
+                            listOf(it)
+                        }
+                    }
                 }
-                if (targetWord != null && getSinglePhonemeDifference(targetWord, expectWord) != null) {
-                    singlePhonemeDifferenceVariant = variant
+                else {
+                    variants = variants.mapNotNull {
+                        val result = (step.rule as Rule).apply(it.word, this)
+                        if ('?' in result.text)
+                            null
+                        else if (result.asPhonemic().text != it.word.asPhonemic().text) {
+                            RuleApplicationVariant(result, it.rules + step.rule)
+                        }
+                        else {
+                            it
+                        }
+                    }
                 }
             }
 
-            if (singlePhonemeDifferenceVariant != null) {
-                return applyRuleSequenceVariant(word, singlePhonemeDifferenceVariant, applicableRules)
+            val bestMatch = variants.firstOrNull { it.word.asPhonemic().text == expectWord.text }
+                ?: variants.firstOrNull { getSinglePhonemeDifference(it.word, expectWord) != null }
+            if (bestMatch != null) {
+                applicableRules.addAll(bestMatch.rules)
+                return bestMatch.word
             }
         }
         return applyRuleSequenceVariant(word, sequence.resolveRules(this), applicableRules)

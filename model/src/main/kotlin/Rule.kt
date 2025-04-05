@@ -515,35 +515,6 @@ class RuleSequence(
     fun resolveRules(graph: GraphRepository): List<Rule> {
         return resolveSteps(graph).filter { !it.dispreferred }.map { it.rule as Rule }
     }
-
-    fun resolveVariants(graph: GraphRepository): List<List<Rule>> {
-        val steps = resolveSteps(graph)
-        val maxOptionMask = 1 shl steps.count { it.optional }
-        if (maxOptionMask == 1) {
-            return listOf(steps.map { it.rule as Rule })
-        }
-        return (0 until maxOptionMask).map { mask ->
-            steps.filterOptionsByMask(mask)
-        }
-    }
-
-    private fun List<RuleSequenceStep>.filterOptionsByMask(mask: Int): List<Rule> {
-        val result = mutableListOf<Rule>()
-        var stepMask = 1
-        for (step in this) {
-            if (step.optional) {
-                // mask 0 should mean 'all optional rules are applied'
-                if (stepMask and mask == 0) {
-                    result.add(step.rule as Rule)
-                }
-                stepMask = stepMask shl 1
-            }
-            else {
-                result.add(step.rule as Rule)
-            }
-        }
-        return result
-    }
 }
 
 fun parseCategoryValues(language: Language, categoryValues: String): List<WordCategoryWithValue?> {
