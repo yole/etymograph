@@ -234,7 +234,7 @@ class Rule(
                 anyChanges = anyChanges or applyToPhoneme(phonemic, phonemes, graph, trace)
                 if (!phonemes.advance()) break
             }
-            return if (anyChanges) {
+            val result = if (anyChanges) {
                 val stress = if (word.explicitStress)
                     phonemes.mapIndex(word.stressedPhonemeIndex)
                 else
@@ -245,6 +245,8 @@ class Rule(
             }
             else
                 word
+            trace?.logRuleResult(this, result)
+            return result
         }
 
         val compound = graph.findCompoundsByCompoundWord(word).singleOrNull()
