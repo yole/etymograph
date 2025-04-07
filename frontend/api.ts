@@ -270,6 +270,10 @@ export function deleteLink(graph: string, fromEntity: number, toEntity: number, 
     return postToBackend(`${graph}/link/delete`, {fromEntity: fromEntity, toEntity: toEntity, linkType: linkType})
 }
 
+export function refreshLinkSequence(graph: string, fromEntity: number, toEntity: number, linkType: string) {
+    return postToBackend(`${graph}/link/refreshSequence`, {fromEntity: fromEntity, toEntity: toEntity, linkType: linkType})
+}
+
 export function updateLink(graph: string, fromWord: number, toWord: number, linkType: string, ruleNames: string, source, notes) {
     return postToBackend(`${graph}/link/update`, {fromEntity: fromWord, toEntity: toWord, linkType: linkType, ruleNames: ruleNames, source: source, notes: notes})
 }

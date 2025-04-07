@@ -14,7 +14,13 @@ import {
     deriveThroughRuleSequence,
     fetchAllLanguagePaths,
     lookupWord,
-    suggestParseCandidates, suggestCompound, createCompound, callApiAndRefresh, addToCompound, updateWord
+    suggestParseCandidates,
+    suggestCompound,
+    createCompound,
+    callApiAndRefresh,
+    addToCompound,
+    updateWord,
+    refreshLinkSequence
 } from "@/api";
 import Link from "next/link";
 import {useRouter} from "next/router";
@@ -30,6 +36,7 @@ import {
     ParseCandidateViewModel, WordRefViewModel,
     WordViewModel
 } from "@/models";
+import {set} from "react-hook-form";
 
 export const config = {
     unstable_runtimeJS: true
@@ -106,6 +113,11 @@ export function WordLinkComponent(params: WordLinkProps) {
         }
     }
 
+    async function refreshSequenceClicked() {
+        callApiAndRefresh(() => refreshLinkSequence(graph, baseWord.id, linkWord.word.id, params.linkType.typeId),
+            router, setErrorText)
+    }
+
     function linkSubmitted() {
         setEditMode(false)
         router.replace(router.asPath)
@@ -137,6 +149,11 @@ export function WordLinkComponent(params: WordLinkProps) {
             &nbsp;|&nbsp;<span className="inlineButtonLink">
                     <button className="inlineButton" onClick={() => deleteLinkClicked()}>delete</button>
                 </span>
+            {params.showSequence && linkWord.ruleSequence && <>
+                &nbsp;|&nbsp;<span className="inlineButtonLink">
+                    <button className="inlineButton" onClick={() => refreshSequenceClicked()}>refresh</button>
+                </span>
+            </>}
             {linkWord.suggestedSequences.map(seq => <>
                 &nbsp;|&nbsp;<span className="inlineButtonLink">
                     <button className="inlineButton" onClick={() => applySequenceClicked(seq.id, baseWord.id, linkWord.word.id)}>apply sequence {seq.name}</button>

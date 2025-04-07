@@ -1542,6 +1542,23 @@ paths:
             '*/*':
               schema:
                 type: "boolean"
+  /{graph}/link/refreshSequence:
+    post:
+      summary: "POST {graph}/link/refreshSequence"
+      operationId: "refreshLinkSequence"
+      parameters:
+        - name: "graph"
+          in: "path"
+          required: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LinkParams"
+        required: true
+      responses:
+        "200":
+          description: "OK"
   /{graph}/link/rule:
     post:
       summary: "POST {graph}/link/rule"

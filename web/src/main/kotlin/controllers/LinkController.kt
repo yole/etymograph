@@ -92,4 +92,16 @@ class LinkController {
 
         return (repo.deleteLink(fromWord, toWord, linkType) || repo.deleteLink(toWord, fromWord, linkType))
     }
+
+    @PostMapping("/refreshSequence")
+    fun refreshLinkSequence(repo: GraphRepository, @RequestBody params: LinkParams) {
+        val (fromEntity, toEntity, linkType) = resolveLinkParams(repo, params)
+
+        val link = repo.findLink(fromEntity, toEntity, linkType)
+            ?: badRequest("No such link")
+
+        link.sequence?.let {
+            repo.applyRuleSequence(link, it)
+        }
+    }
 }
