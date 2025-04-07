@@ -281,6 +281,7 @@ function SingleWord({word}: { word: WordViewModel }) {
     const [showDerivativeWord, setShowDerivativeWord] = useState(false)
     const [showCompoundComponent, setShowCompoundComponent] = useState(false)
     const [showRelated, setShowRelated] = useState(false)
+    const [showVariationOf, setShowVariationOf] = useState(false)
     const [showVariation, setShowVariation] = useState(false)
     const [showRuleLink, setShowRuleLink] = useState(false)
     const [editMode, setEditMode] = useState(false)
@@ -298,6 +299,7 @@ function SingleWord({word}: { word: WordViewModel }) {
         setShowDerivativeWord(false)
         setShowCompoundComponent(false)
         setShowRelated(false)
+        setShowVariationOf(false)
         setShowVariation(false)
         router.replace(router.asPath)
     }
@@ -593,8 +595,10 @@ function SingleWord({word}: { word: WordViewModel }) {
             }
             <button onClick={() => setShowRelated(!showRelated)}>Add related word</button><br/>
             {showRelated && <WordForm wordSubmitted={submitted} linkType='~' linkTarget={word} defaultValues={{language: word.language}} languageReadOnly={true} cancelled={() => setShowRelated(false)}/>}
-            {!isCompound && <><button onClick={() => setShowVariation(!showVariation)}>Add variation of</button><br/></>}
-            {showVariation && <WordForm wordSubmitted={submitted} linkType='=' reverseLink={true} linkTarget={word} defaultValues={{language: word.language}} languageReadOnly={true} cancelled={() => setShowVariation(false)}/>}
+            {!isCompound && <><button onClick={() => setShowVariationOf(!showVariationOf)}>Add variation of</button><br/></>}
+            {showVariationOf && <WordForm wordSubmitted={submitted} linkType='=' reverseLink={true} linkTarget={word} defaultValues={{language: word.language}} languageReadOnly={true} cancelled={() => setShowVariationOf(false)}/>}
+            {!isCompound && <><button onClick={() => setShowVariation(!showVariation)}>Add variation</button><br/></>}
+            {showVariation && <WordForm wordSubmitted={submitted} linkType='=' linkTarget={word} defaultValues={{language: word.language}} languageReadOnly={true} cancelled={() => setShowVariation(false)}/>}
             <button onClick={() => setShowRuleLink(!showRuleLink)}>Add related rule</button><br/>
             {showRuleLink && <RuleLinkForm submitted={ruleLinkSubmitted} fromEntityId={word.id}/>}
             <p/>
