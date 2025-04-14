@@ -196,9 +196,13 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
 
         val after = summarizeRelativePhonemeParameters(relativePhonemes, -1)
             .takeIf { it.isNotEmpty() }?.let { " after $it" } ?: ""
+        val precededBy = summarizeRelativePhonemeParameters(relativePhonemes, -2)
+            .takeIf { it.isNotEmpty() }?.let { " preceded by $it" } ?: ""
         val before = summarizeRelativePhonemeParameters(relativePhonemes, 1)
             .takeIf { it.isNotEmpty() }?.let { " before $it" } ?: ""
-        return "$after$before"
+        val followedBy = summarizeRelativePhonemeParameters(relativePhonemes, 2)
+            .takeIf { it.isNotEmpty() }?.let { " followed by $it" } ?: ""
+        return "$after$precededBy$before$followedBy"
     }
 
     private fun summarizeRelativePhonemeParameters(relativePhonemes: List<RelativePhonemeRuleCondition>, relIndex: Int): String {

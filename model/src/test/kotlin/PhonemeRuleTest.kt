@@ -96,6 +96,15 @@ class PhonemeRuleTest : QBaseTest() {
     }
 
     @Test
+    fun previousSoundDisappearsSummary() {
+        val rule = parseRule(q, q, """
+            sound is 'z' and previous sound is 'i' and second previous sound is vowel:
+            - sound disappears
+        """.trimIndent())
+        assertEquals("'z' > Ø after 'i' preceded by vowel", rule.toSummaryText(repo))
+    }
+
+    @Test
     fun secondNextSoundDisappears() {
         val rule = parseRule(q, q, """
             second next sound is 'z':
