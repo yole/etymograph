@@ -128,10 +128,10 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
         val soundIsParameter = soundIs.phonemePattern.toEditableText()
         var includeRelativePhoneme = true
         val changeSummary = when (type) {
-            InstructionType.ChangeSound -> "$soundIsParameter -> '${arg}'"
-            InstructionType.ChangeSoundClass -> (this as ChangePhonemeClassInstruction).oldClass + " -> " + newClass
+            InstructionType.ChangeSound -> "$soundIsParameter > '${arg}'"
+            InstructionType.ChangeSoundClass -> (this as ChangePhonemeClassInstruction).oldClass + " > " + newClass
             InstructionType.SoundDisappears -> when (arg) {
-                "0" -> "$soundIsParameter -> Ø"
+                "0" -> "$soundIsParameter > Ø"
                 "1" -> summarizeNextSound(condition).also {
                     includeRelativePhoneme = false
                 }
@@ -158,13 +158,14 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
         }.singleOrNull() as? RelativePhonemeRuleCondition
             ?: return null
         if (nextPhonemeIs.seekTarget!!.phonemeClass != null ||
+            nextPhonemeIs.phonemePattern.phonemeClass != null ||
             nextPhonemeIs.seekTarget.index != 1 ||
             !nextPhonemeIs.seekTarget.relative)
         {
             return null
         }
         val nextSound = if (type == InstructionType.SoundDisappears) "" else arg
-        return "'${soundIs.phonemePattern.literal}${nextPhonemeIs.phonemePattern.literal}' -> '${soundIs.phonemePattern.literal}$nextSound'"
+        return "'${soundIs.phonemePattern.literal}${nextPhonemeIs.phonemePattern.literal}' > '${soundIs.phonemePattern.literal}$nextSound'"
     }
 
     private fun summarizeContext(condition: RuleCondition, includeRelativePhoneme: Boolean): String? {

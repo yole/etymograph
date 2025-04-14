@@ -509,6 +509,22 @@
                     "abbreviation": "n"
                 }
             ]
+        },
+        {
+            "name": "Verb type",
+            "pos": [
+                "V"
+            ],
+            "values": [
+                {
+                    "name": "v-strong",
+                    "abbreviation": "v-strong"
+                },
+                {
+                    "name": "v-weak",
+                    "abbreviation": "v-weak"
+                }
+            ]
         }
     ],
     "dictionarySettings": "wiktionary-id: gem-pro"

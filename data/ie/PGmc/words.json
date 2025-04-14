@@ -8443,6 +8443,9 @@
         "text": "dwaljan-",
         "gloss": "delay, hinder",
         "pos": "V",
+        "classes": [
+            "v-weak"
+        ],
         "sourceRefs": [
             {
                 "pubId": 9,
@@ -13267,7 +13270,8 @@
     },
     {
         "id": 7524,
-        "text": "hratdōn-",
+        "text": "hradōn-",
+        "pos": "V",
         "sourceRefs": [
             {
                 "pubId": 9,
@@ -18906,6 +18910,7 @@
     {
         "id": 8337,
         "text": "plukkōn-",
+        "pos": "V",
         "sourceRefs": [
             {
                 "pubId": 9,
@@ -20853,6 +20858,9 @@
         "text": "skraudan-",
         "gloss": "cut, shred",
         "pos": "V",
+        "classes": [
+            "v-strong"
+        ],
         "sourceRefs": [
             {
                 "pubId": 9,
@@ -21312,6 +21320,7 @@
     {
         "id": 8678,
         "text": "smittōn-",
+        "pos": "V",
         "sourceRefs": [
             {
                 "pubId": 9,
@@ -22543,7 +22552,7 @@
     },
     {
         "id": 8849,
-        "text": "sukgōn-",
+        "text": "sugōn-",
         "sourceRefs": [
             {
                 "pubId": 9,
@@ -23027,7 +23036,7 @@
     },
     {
         "id": 8924,
-        "text": "swipbōn-",
+        "text": "swibōn-",
         "sourceRefs": [
             {
                 "pubId": 9,
@@ -26855,5 +26864,17 @@
         "text": "lukkōn-",
         "gloss": "entice",
         "pos": "V"
+    },
+    {
+        "id": 9622,
+        "text": "felhaną",
+        "gloss": "to enter",
+        "fullGloss": "to enter, to go inside; to put inside, to conceal, to hide, to bury",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-Germanic/felhaną#Proto-Germanic"
+            }
+        ]
     }
 ]

@@ -41,7 +41,7 @@ class PhonemeRuleTest : QBaseTest() {
             """.trimIndent()
         )
         assertEquals("his", rule.apply(ce.word("khith"), emptyRepo).text)
-        assertEquals("'th' -> 's', 'kh' -> 'h'", rule.toSummaryText(repo))
+        assertEquals("'th' > 's', 'kh' > 'h'", rule.toSummaryText(repo))
     }
 
     @Test
@@ -53,7 +53,7 @@ class PhonemeRuleTest : QBaseTest() {
             - new sound is 's'
         """.trimIndent())
         assertEquals("khs", rule.apply(ce.word("khithi"), emptyRepo).text)
-        assertEquals("'i' -> Ø, 'th' -> 's'", rule.toSummaryText(repo))
+        assertEquals("'i' > Ø, 'th' > 's'", rule.toSummaryText(repo))
         assertTrue(rule.refersToPhoneme(ce.phonemes.find { "th" in it.graphemes }!!))
         assertFalse(rule.refersToPhoneme(q.phonemes.find { "t" in it.graphemes }!!))
     }
@@ -81,7 +81,7 @@ class PhonemeRuleTest : QBaseTest() {
             - new sound is 'w'
         """.trimIndent())
         assertEquals("mawa", rule.apply(ce.word("mbaba"), emptyRepo).text)
-        assertEquals("'mb' -> 'm', 'b' -> 'w'", rule.toSummaryText(repo))
+        assertEquals("'mb' > 'm', 'b' > 'w'", rule.toSummaryText(repo))
     }
 
     @Test
@@ -112,7 +112,7 @@ class PhonemeRuleTest : QBaseTest() {
             - sound disappears
         """.trimIndent())
         assertEquals("khthi", rule.apply(ce.word("khithi"), emptyRepo).text)
-        assertEquals("'i' -> Ø after 'kh'", rule.toSummaryText(repo))
+        assertEquals("'i' > Ø after 'kh'", rule.toSummaryText(repo))
     }
 
     @Test
@@ -122,7 +122,7 @@ class PhonemeRuleTest : QBaseTest() {
             - sound disappears
         """.trimIndent())
         assertEquals("khai", rule.apply(ce.word("khiai"), emptyRepo).text)
-        assertEquals("'i' -> Ø after not vowel", rule.toSummaryText(repo))
+        assertEquals("'i' > Ø after not vowel", rule.toSummaryText(repo))
     }
 
     @Test
@@ -154,7 +154,7 @@ class PhonemeRuleTest : QBaseTest() {
             - sound disappears
         """.trimIndent())
         assertEquals("khthis", rule.apply(ce.word("ikhthis"), emptyRepo).text)
-        assertEquals("'i' -> Ø before 'kh'", rule.toSummaryText(repo))
+        assertEquals("'i' > Ø before 'kh'", rule.toSummaryText(repo))
     }
 
     @Test
@@ -206,7 +206,7 @@ class PhonemeRuleTest : QBaseTest() {
             - voiceless becomes voiced
         """.trimIndent())
         assertEquals("utubnu", rule.apply(q.word("utupnu"), emptyRepo).text)
-        assertEquals("voiceless -> voiced before nasal", rule.toSummaryText(repo))
+        assertEquals("voiceless > voiced before nasal", rule.toSummaryText(repo))
         assertTrue(rule.refersToPhoneme(q.phonemes.first { "p" in it.graphemes }))
         assertFalse(rule.refersToPhoneme(q.phonemes.first { "b" in it.graphemes }))
 
@@ -266,7 +266,7 @@ class PhonemeRuleTest : QBaseTest() {
         assertEquals("wawo", rule.apply(q.word("wowo").apply { stressedPhonemeIndex = 1 }, emptyRepo).text)
         assertEquals("wiwo", rule.apply(q.word("wiwo").apply { stressedPhonemeIndex = 1 }, emptyRepo).text)
         assertEquals("sound is stressed 'o' and previous sound is 'w'", rule.logic.branches[0].condition.toEditableText())
-        assertEquals("stressed 'o' -> 'a' after 'w'", rule.toSummaryText(repo))
+        assertEquals("stressed 'o' > 'a' after 'w'", rule.toSummaryText(repo))
     }
 
     @Test
@@ -303,7 +303,7 @@ class PhonemeRuleTest : QBaseTest() {
             - new next sound is 'ph'
         """.trimIndent())
         assertEquals("sphin", rule.apply(q.word("spin"), emptyRepo).text)
-        assertEquals("'sp' -> 'sph' at beginning of word", rule.toSummaryText(repo))
+        assertEquals("'sp' > 'sph' at beginning of word", rule.toSummaryText(repo))
     }
 
     @Test
@@ -324,7 +324,7 @@ class PhonemeRuleTest : QBaseTest() {
         """.trimIndent())
         assertEquals("aistono", rule.apply(q.word("aistana"), emptyRepo).text)
         assertEquals("not beginning of word and sound is 'a'", rule.logic.branches[0].condition.toEditableText())
-        assertEquals("'a' -> 'o' not at beginning of word", rule.toSummaryText(repo))
+        assertEquals("'a' > 'o' not at beginning of word", rule.toSummaryText(repo))
     }
 
     @Test
@@ -349,7 +349,7 @@ class PhonemeRuleTest : QBaseTest() {
         assertEquals("yrch", rule.apply(q.word("orch"), emptyRepo).text)
         val ruleCondition = rule.logic.branches[0].condition
         assertEquals("syllable is not last and sound is 'o'", ruleCondition.toEditableText())
-        assertEquals("'o' -> 'e' in not last syllable", rule.logic.branches[0].toSummaryText(repo, true))
+        assertEquals("'o' > 'e' in not last syllable", rule.logic.branches[0].toSummaryText(repo, true))
     }
 
     @Test
@@ -358,7 +358,7 @@ class PhonemeRuleTest : QBaseTest() {
             syllable is second to last and sound is 'i' and next sound is 'a':
             - new sound is 'e'
         """.trimIndent())
-        assertEquals("'i' -> 'e' before 'a' in second to last syllable", rule.toSummaryText(repo))
+        assertEquals("'i' > 'e' before 'a' in second to last syllable", rule.toSummaryText(repo))
     }
 
     @Test
@@ -385,7 +385,7 @@ class PhonemeRuleTest : QBaseTest() {
             sound is 'i' and (previous sound is 'a' or previous sound is 'o'):
             - new sound is 'e'
         """.trimIndent())
-        assertEquals("'i' -> 'e' after 'a' or 'o'", rule.toSummaryText(repo))
+        assertEquals("'i' > 'e' after 'a' or 'o'", rule.toSummaryText(repo))
     }
 
     @Test
@@ -394,7 +394,7 @@ class PhonemeRuleTest : QBaseTest() {
             sound is 'kh' and previous sound is vowel and next sound is 'th':
             - new sound is 'i'
         """.trimIndent())
-        assertEquals("'kh' -> 'i' after vowel before 'th'", rule.toSummaryText(repo))
+        assertEquals("'kh' > 'i' after vowel before 'th'", rule.toSummaryText(repo))
     }
 
     @Test

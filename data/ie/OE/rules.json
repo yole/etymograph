@@ -2666,13 +2666,8 @@
                         {
                             "type": "relPhoneme",
                             "relativeIndex": 1,
+                            "cls": "non-word-final",
                             "parameter": "þ"
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": 1,
-                            "negated": true,
-                            "cls": "word-final"
                         }
                     ]
                 }
@@ -2694,36 +2689,14 @@
             {
                 "instructions": [
                     {
-                        "type": "SoundDisappears",
+                        "type": "Spe",
                         "args": [
-                            "0"
+                            "i -> 0 / C_jV"
                         ]
                     }
                 ],
                 "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "relPhoneme",
-                            "parameter": "i",
-                            "relative": false
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": 1,
-                            "parameter": "j"
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": -1,
-                            "cls": "consonant"
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": 2,
-                            "cls": "vowel"
-                        }
-                    ]
+                    "type": "otherwise"
                 }
             }
         ],
@@ -6881,42 +6854,14 @@
             {
                 "instructions": [
                     {
-                        "type": "ChangeNextSound",
+                        "type": "Spe",
                         "args": [
-                            "u"
-                        ]
-                    },
-                    {
-                        "type": "SoundDisappears",
-                        "args": [
-                            "2"
+                            "ww -> u / a_j"
                         ]
                     }
                 ],
                 "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "relPhoneme",
-                            "parameter": "a",
-                            "relative": false
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": 1,
-                            "parameter": "w"
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": 2,
-                            "parameter": "w"
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": 3,
-                            "parameter": "j"
-                        }
-                    ]
+                    "type": "otherwise"
                 }
             }
         ],
@@ -10373,6 +10318,74 @@
         "sourceRefs": [
             {
                 "refText": "Kroonen"
+            }
+        ]
+    },
+    {
+        "id": 9613,
+        "name": "oe-r-metathesis",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "SoundInsertedAfter",
+                        "args": [
+                            "r"
+                        ]
+                    },
+                    {
+                        "type": "SoundDisappears",
+                        "args": [
+                            "-1"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "cls": "short vowel",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": -1,
+                            "parameter": "r"
+                        }
+                    ]
+                }
+            }
+        ],
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "340"
+            }
+        ]
+    },
+    {
+        "id": 9614,
+        "name": "north-pwgmc-denasalization",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "a"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "relPhoneme",
+                    "parameter": "ą",
+                    "relative": false
+                }
             }
         ]
     }

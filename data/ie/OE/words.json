@@ -5366,7 +5366,7 @@
         "sourceRefs": [
             {
                 "pubId": 5,
-                "refText": "83"
+                "refText": "83;241"
             },
             {
                 "refText": "https://bosworthtoller.com/22924"
@@ -15796,11 +15796,14 @@
     {
         "id": 6330,
         "text": "ēacian",
-        "gloss": "grow",
+        "pos": "V",
         "sourceRefs": [
             {
                 "pubId": 9,
                 "refText": "42"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/eacian#Old_English"
             }
         ]
     },
@@ -16648,11 +16651,14 @@
     {
         "id": 6552,
         "text": "beofian",
-        "gloss": "tremble",
+        "pos": "V",
         "sourceRefs": [
             {
                 "pubId": 9,
                 "refText": "63"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/beofian#Old_English"
             }
         ]
     },
@@ -16757,10 +16763,18 @@
         "id": 6574,
         "text": "blandan",
         "gloss": "mix, mingle",
+        "fullGloss": "to blend; to mix, mingle; to corrupt, make impure; to harass, disturb, trouble",
+        "pos": "V",
+        "classes": [
+            "v-strong-7"
+        ],
         "sourceRefs": [
             {
                 "pubId": 9,
                 "refText": "67"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/blandan#Old_English"
             }
         ]
     },
@@ -17518,11 +17532,14 @@
     {
         "id": 6724,
         "text": "denċġan",
-        "gloss": "knock",
+        "pos": "V",
         "sourceRefs": [
             {
                 "pubId": 9,
                 "refText": "88"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/dencgan#Old_English"
             }
         ]
     },
@@ -17593,10 +17610,17 @@
         "id": 6737,
         "text": "darian",
         "gloss": "lie motionless, be appalled",
+        "pos": "V",
         "sourceRefs": [
             {
                 "pubId": 9,
                 "refText": "91"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/darian#Old_English"
+            },
+            {
+                "refText": "https://bosworthtoller.com/42593"
             }
         ]
     },
@@ -18049,10 +18073,18 @@
         "id": 6827,
         "text": "dwelian",
         "gloss": "lead astray",
+        "fullGloss": "to err, to go astray; to deceive, to lead astray",
+        "pos": "V",
+        "classes": [
+            "v-weak-2"
+        ],
         "sourceRefs": [
             {
                 "pubId": 9,
                 "refText": "111"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/dwelian#Old_English"
             }
         ]
     },
@@ -18444,11 +18476,14 @@
     {
         "id": 6907,
         "text": "fallan",
-        "gloss": "fall",
+        "pos": "V",
         "sourceRefs": [
             {
                 "pubId": 9,
                 "refText": "125"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/fallan#Old_English"
             }
         ]
     },
@@ -18456,10 +18491,14 @@
         "id": 6909,
         "text": "fiellan",
         "gloss": "fell",
+        "pos": "V",
         "sourceRefs": [
             {
                 "pubId": 9,
                 "refText": "126"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/fiellan#Old_English"
             }
         ]
     },
@@ -18650,16 +18689,6 @@
         "id": 6954,
         "text": "felan",
         "gloss": "stick, adhere; to proceed, go, reach; to undergo",
-        "sourceRefs": [
-            {
-                "pubId": 9,
-                "refText": "135"
-            }
-        ]
-    },
-    {
-        "id": 6955,
-        "text": "feolan",
         "sourceRefs": [
             {
                 "pubId": 9,
@@ -19254,10 +19283,18 @@
         "id": 7073,
         "text": "frāsian",
         "gloss": "ask, inquire, tempt",
+        "fullGloss": "to ask, inquire, interrogate; to try, tempt",
+        "pos": "V",
+        "classes": [
+            "v-weak-2"
+        ],
         "sourceRefs": [
             {
                 "pubId": 9,
                 "refText": "152"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/frasian#Old_English"
             }
         ]
     },
@@ -20121,6 +20158,9 @@
             {
                 "pubId": 9,
                 "refText": "186"
+            },
+            {
+                "refText": "https://bosworthtoller.com/17487"
             }
         ]
     },
@@ -20973,10 +21013,18 @@
         "id": 7433,
         "text": "hincian",
         "gloss": "limp, hobble",
+        "fullGloss": "to limp, hobble",
+        "pos": "V",
+        "classes": [
+            "v-weak-2"
+        ],
         "sourceRefs": [
             {
                 "pubId": 9,
                 "refText": "226"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/hincian#Old_English"
             }
         ]
     },
@@ -21061,10 +21109,17 @@
         "id": 7450,
         "text": "hladan",
         "gloss": "to heap, pile up, build, load",
+        "pos": "V",
+        "classes": [
+            "v-strong-6"
+        ],
         "sourceRefs": [
             {
                 "pubId": 9,
                 "refText": "229"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/hladan#Old_English"
             }
         ]
     },
@@ -21375,12 +21430,15 @@
     },
     {
         "id": 7512,
-        "text": "ofer-hragan",
+        "text": "oferhragan",
         "gloss": "loom over(?)",
         "sourceRefs": [
             {
                 "pubId": 9,
                 "refText": "241"
+            },
+            {
+                "refText": "https://bosworthtoller.com/24138"
             }
         ]
     },
@@ -21603,10 +21661,15 @@
         "id": 7554,
         "text": "hrēowan",
         "gloss": "make sorry, grieve",
+        "fullGloss": "to regret, rue, repent, or grieve ''(impersonal, with dative or accusative of subject)''",
+        "pos": "V",
         "sourceRefs": [
             {
                 "pubId": 9,
                 "refText": "246"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/hreowan#Old_English"
             }
         ]
     },
@@ -23403,10 +23466,19 @@
         "id": 7938,
         "text": "læċċan",
         "gloss": "take, grasp, seize, catch",
+        "fullGloss": "to grab (sometimes violently: snatch, catch, apprehend)",
+        "pos": "V",
         "sourceRefs": [
             {
                 "pubId": 9,
                 "refText": "325"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/læccan#Old_English"
+            },
+            {
+                "pubId": 5,
+                "refText": "98"
             }
         ]
     },
@@ -23446,10 +23518,17 @@
         "id": 7945,
         "text": "lemian",
         "gloss": "lame, cripple; to strike",
+        "pos": "V",
+        "classes": [
+            "v-weak-2"
+        ],
         "sourceRefs": [
             {
                 "pubId": 9,
                 "refText": "326"
+            },
+            {
+                "refText": "https://bosworthtoller.com/21355"
             }
         ]
     },
@@ -23468,10 +23547,18 @@
         "id": 7952,
         "text": "lapian",
         "gloss": "lick up, lap",
+        "fullGloss": "to lick, lap",
+        "pos": "V",
+        "classes": [
+            "v-weak-2"
+        ],
         "sourceRefs": [
             {
                 "pubId": 9,
                 "refText": "327"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/lapian#Old_English"
             }
         ]
     },
@@ -24682,6 +24769,9 @@
             {
                 "pubId": 9,
                 "refText": "370"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/miscian#Old_English"
             }
         ]
     },
@@ -25833,12 +25923,16 @@
     },
     {
         "id": 8430,
-        "text": "rēcan",
+        "text": "rēċan",
         "gloss": "heed",
+        "pos": "V",
         "sourceRefs": [
             {
                 "pubId": 9,
                 "refText": "415"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/recan#Old_English"
             }
         ]
     },
@@ -26041,12 +26135,16 @@
     },
     {
         "id": 8476,
-        "text": "sealten",
+        "text": "sealtan",
         "gloss": "salt (down), pickle",
+        "pos": "V",
         "sourceRefs": [
             {
                 "pubId": 9,
                 "refText": "425"
+            },
+            {
+                "refText": "https://bosworthtoller.com/57909"
             }
         ]
     },
@@ -26729,10 +26827,18 @@
         "id": 8615,
         "text": "sċrēadian",
         "gloss": "shred, cut off, prune",
+        "fullGloss": "to shred, cut up, cut off, prune",
+        "pos": "V",
+        "classes": [
+            "v-weak-2"
+        ],
         "sourceRefs": [
             {
                 "pubId": 9,
                 "refText": "447"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/screadian#Old_English"
             }
         ]
     },
@@ -27062,6 +27168,9 @@
             {
                 "pubId": 9,
                 "refText": "461"
+            },
+            {
+                "refText": "https://bosworthtoller.com/28229"
             }
         ]
     },
@@ -28015,10 +28124,18 @@
         "id": 8893,
         "text": "swefn",
         "gloss": "sleep; dream",
+        "pos": "N",
+        "classes": [
+            "neut",
+            "a-stem"
+        ],
         "sourceRefs": [
             {
                 "pubId": 9,
                 "refText": "497"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/swefn#Old_English"
             }
         ]
     },
@@ -28204,10 +28321,18 @@
         "id": 8925,
         "text": "swipian",
         "gloss": "strike, scourge, lash",
+        "fullGloss": "to scourge, strike, beat, lash",
+        "pos": "V",
+        "classes": [
+            "v-weak-2"
+        ],
         "sourceRefs": [
             {
                 "pubId": 9,
                 "refText": "502"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/swipian#Old_English"
             }
         ]
     },
@@ -28272,17 +28397,6 @@
             {
                 "pubId": 9,
                 "refText": "504"
-            }
-        ]
-    },
-    {
-        "id": 8941,
-        "text": "tǣcan",
-        "gloss": "show",
-        "sourceRefs": [
-            {
-                "pubId": 9,
-                "refText": "505"
             }
         ]
     },
@@ -29382,10 +29496,18 @@
         "id": 9151,
         "text": "þrafian",
         "gloss": "urge, press",
+        "fullGloss": "to urge; to rebuke, correct",
+        "pos": "V",
+        "classes": [
+            "v-weak-2"
+        ],
         "sourceRefs": [
             {
                 "pubId": 9,
                 "refText": "544"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/þrafian#Old_English"
             }
         ]
     },
@@ -30952,12 +31074,15 @@
     },
     {
         "id": 9456,
-        "text": "wrīðen",
+        "text": "wrīþan",
         "gloss": "twist, ring",
         "sourceRefs": [
             {
                 "pubId": 9,
                 "refText": "597"
+            },
+            {
+                "refText": "https://bosworthtoller.com/36666"
             }
         ]
     },
@@ -31357,6 +31482,85 @@
         "sourceRefs": [
             {
                 "refText": "https://bosworthtoller.com/36964"
+            }
+        ]
+    },
+    {
+        "id": 9615,
+        "text": "bylġan",
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/41198"
+            }
+        ]
+    },
+    {
+        "id": 9616,
+        "text": "denġan",
+        "gloss": "to ding",
+        "fullGloss": "to ding, beat, strike",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/dengan#Old_English"
+            },
+            {
+                "refText": "https://bosworthtoller.com/42682"
+            }
+        ]
+    },
+    {
+        "id": 9617,
+        "text": "ēacan",
+        "gloss": "to increase or enlarge",
+        "fullGloss": "to increase or enlarge; to conceive, become pregnant",
+        "pos": "V",
+        "classes": [
+            "v-strong-7"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/eacan#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 9618,
+        "text": "lígnian",
+        "gloss": "deny",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/21669"
+            }
+        ]
+    },
+    {
+        "id": 9619,
+        "text": "mǣnan",
+        "gloss": "mean",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/22154"
+            }
+        ]
+    },
+    {
+        "id": 9621,
+        "text": "bifian",
+        "gloss": "to tremble",
+        "fullGloss": "to tremble, shake",
+        "pos": "V",
+        "classes": [
+            "v-weak-2"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/bifian#Old_English"
+            },
+            {
+                "refText": "https://bosworthtoller.com/4261"
             }
         ]
     }
