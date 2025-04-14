@@ -32,7 +32,7 @@ class RuleSequenceTest : QBaseTest() {
     @Test
     fun simpleSequenceSPE() {
         val qAiE = repo.rule("sound is 'a' and next sound is 'i':\n- new sound is 'e'", name = "q-ai-e")
-        val qSfF = repo.rule("* s -> 0 / _f") // inapplicable for this test
+        val qSfF = repo.rule("* s > 0 / _f") // inapplicable for this test
         val qWV = repo.rule("beginning of word and sound is 'w':\n- new sound is 'v'", name = "q-w-v")
         val seq = repo.addRuleSequence("ce-q", ce, q, listOf(qAiE.step(), qSfF.step(), qWV.step()))
         val ceWord = repo.addWord("waiwai", language = ce)

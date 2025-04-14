@@ -307,7 +307,7 @@ class SpePattern(
         if (before.isEmpty()) {
             result += "∅".rich()
         }
-        result += " → ".rich()
+        result += " > ".rich()
         for ((index, node) in after.withIndex()) {
             result += node.buildReplacementTooltip(before.getOrNull(index), toLanguage)
         }
@@ -330,18 +330,18 @@ class SpePattern(
 
     override fun toString(): String {
         return toRichText().toString()
-            .replace("→", "->")
             .replace('∅', '0')
     }
 
     companion object {
         fun parse(fromLanguage: Language, toLanguage: Language, text: String): SpePattern {
-            val arrow = text.indexOf("->")
+            val text = text.replace("->", ">")
+            val arrow = text.indexOf(">")
             if (arrow < 0) {
-                throw SpeParseException("-> required in SPE pattern")
+                throw SpeParseException("> required in SPE pattern")
             }
             val beforeText = text.substring(0, arrow).trim()
-            val afterTextWithContext = text.substring(arrow + 2).trim()
+            val afterTextWithContext = text.substring(arrow + 1).trim()
             val slash = afterTextWithContext.indexOf('/')
             if (slash < 0) {
                 return SpePattern(

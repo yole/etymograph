@@ -195,7 +195,7 @@ class RuleTest : QBaseTest() {
         assertEquals(1, rule.logic.branches.size)
         val speInstruction = rule.logic.branches[0].instructions.single() as SpeInstruction
         assertEquals("l", (speInstruction.pattern.after.single() as SpeLiteralNode).text)
-        assertEquals("* d -> l / #_", rule.toEditableText(repo))
+        assertEquals("* d > l / #_", rule.toEditableText(repo))
     }
 
     @Test
@@ -773,14 +773,14 @@ class RuleTest : QBaseTest() {
 
     @Test
     fun speRuleComment() {
-        val ruleText = "# SPE rule\n* d -> l / #_"
+        val ruleText = "# SPE rule\n* d > l / #_"
         val rule = parseRule(q, q, ruleText)
         assertEquals(ruleText,rule.toEditableText(repo))
     }
 
     @Test
     fun speRulePhonemic() {
-        val rule = parseRule(q, q, " * z -> r")
+        val rule = parseRule(q, q, " * z > r")
         val result = rule.apply(q.word("thuzya"), repo)
         assertEquals("thurja", result.text)
         assertTrue(result.isPhonemic)
