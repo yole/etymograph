@@ -2691,7 +2691,7 @@
                     {
                         "type": "Spe",
                         "args": [
-                            "i -> 0 / C_jV"
+                            "i > 0 / C_jV"
                         ]
                     }
                 ],
@@ -6856,7 +6856,7 @@
                     {
                         "type": "Spe",
                         "args": [
-                            "ww -> u / a_j"
+                            "ww > u / a_j"
                         ]
                     }
                 ],
@@ -10064,13 +10064,13 @@
                     {
                         "type": "Spe",
                         "args": [
-                            "i -> e / _o"
+                            "i > e / _o"
                         ]
                     },
                     {
                         "type": "Spe",
                         "args": [
-                            "ī -> ē / _o"
+                            "ī > ē / _o"
                         ]
                     }
                 ],
@@ -10297,19 +10297,13 @@
                     "members": [
                         {
                             "type": "relPhoneme",
-                            "cls": "vowel",
+                            "cls": "non-diphthong vowel",
                             "relative": false
                         },
                         {
                             "type": "relPhoneme",
                             "relativeIndex": -1,
                             "cls": "long vowel"
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "negated": true,
-                            "cls": "diphthong",
-                            "relative": false
                         }
                     ]
                 }
