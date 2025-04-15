@@ -653,7 +653,7 @@ class SpeInstruction(val pattern: SpePattern)
         if (result != phonemicWord.text) {
             return phonemicWord.derive(result, phonemic = true)
         }
-        return word
+        return phonemicWord
     }
 
     override fun refersToPhoneme(phoneme: Phoneme): Boolean {
