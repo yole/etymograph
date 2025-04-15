@@ -25152,8 +25152,7 @@
             "ruleIds": [
                 2060,
                 2119,
-                2270,
-                2953
+                9623
             ],
             "sequenceId": 2162
         },
@@ -28091,7 +28090,7 @@
             "ruleIds": [
                 9607,
                 1889,
-                2270
+                9623
             ],
             "sequenceId": 2162,
             "sourceRefs": [
@@ -28289,7 +28288,7 @@
             "ruleIds": [
                 9607,
                 1889,
-                2270
+                9623
             ],
             "sequenceId": 2162,
             "sourceRefs": [
@@ -28305,7 +28304,7 @@
             "type": "^",
             "ruleIds": [
                 1889,
-                2270
+                9623
             ],
             "sequenceId": 2162,
             "sourceRefs": [
@@ -29964,7 +29963,7 @@
                 9607,
                 2048,
                 9614,
-                2270
+                9623
             ],
             "sequenceId": 2162,
             "sourceRefs": [
@@ -30205,7 +30204,7 @@
                 9607,
                 2060,
                 2149,
-                2270
+                9623
             ],
             "sequenceId": 2162,
             "sourceRefs": [
@@ -31022,7 +31021,7 @@
             "ruleIds": [
                 9607,
                 1889,
-                2270
+                9623
             ],
             "sequenceId": 2162,
             "sourceRefs": [
@@ -31341,7 +31340,7 @@
             "type": "^",
             "ruleIds": [
                 9607,
-                2270
+                9623
             ],
             "sequenceId": 2162,
             "sourceRefs": [
@@ -31598,7 +31597,7 @@
             "type": "^",
             "ruleIds": [
                 9607,
-                2270
+                9623
             ],
             "sequenceId": 2162,
             "sourceRefs": [
@@ -31759,7 +31758,7 @@
             "ruleIds": [
                 2060,
                 2149,
-                2270,
+                9623,
                 3438
             ],
             "sequenceId": 2162,
@@ -32514,7 +32513,7 @@
             "ruleIds": [
                 9607,
                 2095,
-                2270
+                9623
             ],
             "sequenceId": 2162,
             "sourceRefs": [
@@ -34552,7 +34551,7 @@
             "ruleIds": [
                 9607,
                 1889,
-                2270
+                9623
             ],
             "sequenceId": 2162,
             "sourceRefs": [
@@ -35460,7 +35459,7 @@
             "type": "^",
             "ruleIds": [
                 9607,
-                2270
+                9623
             ],
             "sequenceId": 2162,
             "sourceRefs": [
@@ -35482,7 +35481,7 @@
             "ruleIds": [
                 9607,
                 1889,
-                2270
+                9623
             ],
             "sequenceId": 2162,
             "sourceRefs": [
@@ -36216,8 +36215,7 @@
                 2060,
                 2119,
                 2156,
-                2270,
-                2953
+                9623
             ],
             "sequenceId": 2162,
             "sourceRefs": [
@@ -36330,7 +36328,7 @@
                 9607,
                 2060,
                 2149,
-                2270
+                9623
             ],
             "sequenceId": 2162,
             "sourceRefs": [
@@ -36620,7 +36618,7 @@
             "ruleIds": [
                 9607,
                 2156,
-                2270
+                9623
             ],
             "sequenceId": 2162,
             "sourceRefs": [
@@ -36669,7 +36667,7 @@
             "ruleIds": [
                 9607,
                 2156,
-                2270
+                9623
             ],
             "sequenceId": 2162,
             "sourceRefs": [
@@ -37193,7 +37191,7 @@
                 9607,
                 2048,
                 9614,
-                2270
+                9623
             ],
             "sequenceId": 2162,
             "sourceRefs": [
@@ -37689,7 +37687,7 @@
             "ruleIds": [
                 1976,
                 2095,
-                2270
+                9623
             ],
             "sequenceId": 2162,
             "sourceRefs": [
@@ -38244,7 +38242,7 @@
                 9607,
                 2060,
                 2149,
-                2270
+                9623
             ],
             "sequenceId": 2162,
             "sourceRefs": [
@@ -38301,7 +38299,7 @@
             "ruleIds": [
                 2060,
                 2149,
-                2270
+                9623
             ],
             "sequenceId": 2162,
             "sourceRefs": [
@@ -38496,7 +38494,7 @@
                 9607,
                 2060,
                 2156,
-                2270,
+                9623,
                 2307
             ],
             "sequenceId": 2162,
@@ -38754,7 +38752,7 @@
             "type": "^",
             "ruleIds": [
                 9607,
-                2270
+                9623
             ],
             "sequenceId": 2162,
             "sourceRefs": [
@@ -38928,8 +38926,8 @@
                 9607,
                 9609,
                 2119,
-                2270,
-                2953
+                9623,
+                6218
             ],
             "sequenceId": 2162,
             "sourceRefs": [
@@ -40148,7 +40146,7 @@
             "to": 8176,
             "type": "^",
             "ruleIds": [
-                2270
+                9623
             ],
             "sequenceId": 2162,
             "sourceRefs": [
@@ -41488,7 +41486,7 @@
             "type": "^",
             "ruleIds": [
                 9607,
-                2270
+                9623
             ],
             "sequenceId": 2162,
             "sourceRefs": [
@@ -41550,7 +41548,7 @@
             "ruleIds": [
                 9607,
                 1889,
-                2270
+                9623
             ],
             "sequenceId": 2162,
             "sourceRefs": [
@@ -42149,7 +42147,7 @@
             "ruleIds": [
                 9607,
                 1889,
-                2270
+                9623
             ],
             "sequenceId": 2162,
             "sourceRefs": [
@@ -43173,7 +43171,7 @@
             "type": "^",
             "ruleIds": [
                 9607,
-                2270
+                9623
             ],
             "sequenceId": 2162,
             "sourceRefs": [
@@ -43952,24 +43950,6 @@
             "type": "="
         },
         {
-            "from": 8644,
-            "to": 8642,
-            "type": "^",
-            "ruleIds": [
-                2095,
-                2953,
-                2326,
-                2396
-            ],
-            "sequenceId": 2162,
-            "sourceRefs": [
-                {
-                    "pubId": 9,
-                    "refText": "453"
-                }
-            ]
-        },
-        {
             "from": 8646,
             "to": 8645,
             "type": "="
@@ -44186,7 +44166,7 @@
             "ruleIds": [
                 9607,
                 1889,
-                2270
+                9623
             ],
             "sequenceId": 2162,
             "sourceRefs": [
@@ -44939,7 +44919,7 @@
             "type": "^",
             "ruleIds": [
                 9607,
-                2270
+                9623
             ],
             "sequenceId": 2162,
             "sourceRefs": [
@@ -45185,23 +45165,6 @@
             "from": 8815,
             "to": 8814,
             "type": "="
-        },
-        {
-            "from": 8816,
-            "to": 8814,
-            "type": "^",
-            "ruleIds": [
-                9607,
-                1889,
-                2270
-            ],
-            "sequenceId": 2162,
-            "sourceRefs": [
-                {
-                    "pubId": 9,
-                    "refText": "486"
-                }
-            ]
         },
         {
             "from": 8818,
@@ -45456,7 +45419,7 @@
             "ruleIds": [
                 9607,
                 1889,
-                2270
+                9623
             ],
             "sequenceId": 2162,
             "sourceRefs": [
@@ -45560,7 +45523,7 @@
             "ruleIds": [
                 9607,
                 1889,
-                2270
+                9623
             ],
             "sequenceId": 2162,
             "sourceRefs": [
@@ -46041,7 +46004,7 @@
             "type": "^",
             "ruleIds": [
                 9607,
-                2270
+                9623
             ],
             "sequenceId": 2162,
             "sourceRefs": [
@@ -47997,7 +47960,7 @@
             "ruleIds": [
                 9607,
                 1889,
-                2270
+                9623
             ],
             "sequenceId": 2162,
             "sourceRefs": [
@@ -49531,7 +49494,7 @@
             "type": "^",
             "ruleIds": [
                 9607,
-                2270
+                9623
             ],
             "sequenceId": 2162,
             "sourceRefs": [
@@ -49725,7 +49688,7 @@
             "ruleIds": [
                 9607,
                 2095,
-                2270
+                9623
             ],
             "sequenceId": 2162,
             "sourceRefs": [
@@ -50185,24 +50148,6 @@
             "from": 9472,
             "to": 9471,
             "type": "="
-        },
-        {
-            "from": 9471,
-            "to": 9470,
-            "type": "^",
-            "ruleIds": [
-                2156,
-                2270,
-                2326,
-                9606
-            ],
-            "sequenceId": 2162,
-            "sourceRefs": [
-                {
-                    "pubId": 9,
-                    "refText": "600"
-                }
-            ]
         },
         {
             "from": 9473,
@@ -51711,7 +51656,7 @@
                 9607,
                 2060,
                 2149,
-                2270
+                9623
             ],
             "sequenceId": 2162,
             "sourceRefs": [
@@ -51728,7 +51673,7 @@
             "ruleIds": [
                 9607,
                 1889,
-                2270
+                9623
             ],
             "sequenceId": 2162,
             "sourceRefs": [
@@ -51807,7 +51752,7 @@
                 9607,
                 2060,
                 2149,
-                2270
+                9623
             ],
             "sequenceId": 2162,
             "sourceRefs": [
@@ -51840,7 +51785,7 @@
             "ruleIds": [
                 9607,
                 1889,
-                2270
+                9623
             ],
             "sequenceId": 2162,
             "sourceRefs": [
@@ -51873,7 +51818,7 @@
             "ruleIds": [
                 1889,
                 9609,
-                2270
+                9623
             ],
             "sequenceId": 2162,
             "sourceRefs": [
@@ -51951,8 +51896,7 @@
                 9607,
                 2060,
                 2119,
-                2270,
-                2953
+                9623
             ],
             "sequenceId": 2162,
             "sourceRefs": [
@@ -51970,7 +51914,7 @@
                 9607,
                 2060,
                 2149,
-                2270,
+                9623,
                 2396
             ],
             "sequenceId": 2162,
@@ -52026,7 +51970,7 @@
             "type": "^",
             "ruleIds": [
                 9607,
-                2270
+                9623
             ],
             "sequenceId": 2162,
             "sourceRefs": [
@@ -52101,7 +52045,7 @@
             "ruleIds": [
                 9607,
                 1889,
-                2270
+                9623
             ],
             "sequenceId": 2162,
             "sourceRefs": [
@@ -52146,7 +52090,7 @@
                 9607,
                 2060,
                 2149,
-                2270
+                9623
             ],
             "sequenceId": 2162,
             "sourceRefs": [
@@ -52155,6 +52099,103 @@
                     "refText": "243"
                 }
             ]
+        },
+        {
+            "from": 8335,
+            "to": 9624,
+            "type": "="
+        },
+        {
+            "from": 8644,
+            "to": 8643,
+            "type": "^",
+            "ruleIds": [
+                2095,
+                2953,
+                2326
+            ],
+            "sequenceId": 2162,
+            "sourceRefs": [
+                {
+                    "pubId": 9,
+                    "refText": "453"
+                }
+            ]
+        },
+        {
+            "from": 8816,
+            "to": 8815,
+            "type": "^",
+            "ruleIds": [
+                9607,
+                1889,
+                9623
+            ],
+            "sequenceId": 2162,
+            "sourceRefs": [
+                {
+                    "pubId": 9,
+                    "refText": "486"
+                }
+            ]
+        },
+        {
+            "from": 9612,
+            "to": 9470,
+            "type": "^",
+            "ruleIds": [
+                2156,
+                2270,
+                2326
+            ],
+            "sequenceId": 2162,
+            "sourceRefs": [
+                {
+                    "pubId": 9,
+                    "refText": "600"
+                }
+            ]
+        },
+        {
+            "from": 9566,
+            "to": 9625,
+            "type": "="
+        },
+        {
+            "from": 9626,
+            "to": 6626,
+            "type": "="
+        },
+        {
+            "from": 6627,
+            "to": 9626,
+            "type": "^",
+            "ruleIds": [
+                1966,
+                2048,
+                6308,
+                2086,
+                2270,
+                2326
+            ],
+            "sequenceId": 2162,
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "229"
+                }
+            ],
+            "notes": "Ringe gives brannijan > brąnnjąn > OE brænnan > bærnan"
+        },
+        {
+            "from": 6651,
+            "to": 9627,
+            "type": "="
+        },
+        {
+            "from": 9630,
+            "to": 9627,
+            "type": "="
         }
     ]
 }

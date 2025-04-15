@@ -3371,5 +3371,17 @@
         "text": "hreuwan",
         "gloss": "to cause pain / regret",
         "pos": "V"
+    },
+    {
+        "id": 9629,
+        "text": "brinnan",
+        "gloss": "to burn",
+        "fullGloss": "to burn, be on fire",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-West_Germanic/brinnan#Proto-West_Germanic"
+            }
+        ]
     }
 ]

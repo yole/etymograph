@@ -16232,12 +16232,20 @@
     },
     {
         "id": 6464,
-        "text": "ā-belgan",
+        "text": "ābelgan",
         "gloss": "anger, to irritate",
+        "fullGloss": "to make angry, tick off, enrage, irritate, annoy, vex, grill, incense, cause anyone to swell with anger, offend; to hurt, distress; to be angry with",
+        "pos": "V",
+        "classes": [
+            "v-strong-3"
+        ],
         "sourceRefs": [
             {
                 "pubId": 9,
                 "refText": "50"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/abelgan#Old_English"
             }
         ]
     },
@@ -17065,10 +17073,18 @@
         "id": 6627,
         "text": "bærnan",
         "gloss": "make burn",
+        "fullGloss": "to burn; to cauterize",
+        "pos": "V",
+        "classes": [
+            "v-weak-1"
+        ],
         "sourceRefs": [
             {
                 "pubId": 9,
                 "refText": "74"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/bærnan#Old_English"
             }
         ]
     },
@@ -17194,11 +17210,17 @@
     {
         "id": 6651,
         "text": "beornan",
-        "gloss": "burn",
+        "pos": "V",
+        "classes": [
+            "v-strong-3"
+        ],
         "sourceRefs": [
             {
                 "pubId": 9,
                 "refText": "77"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/beornan#Old_English"
             }
         ]
     },
@@ -26635,10 +26657,18 @@
         "id": 8573,
         "text": "sċeþþan",
         "gloss": "harm, do wrong",
+        "fullGloss": "to injure, to harm, to scathe",
+        "pos": "V",
+        "classes": [
+            "v-strong-6"
+        ],
         "sourceRefs": [
             {
                 "pubId": 9,
                 "refText": "441"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/sceþþan#Old_English"
             }
         ]
     },
@@ -26956,10 +26986,17 @@
         "id": 8644,
         "text": "slīepan",
         "gloss": "roll up",
+        "pos": "V",
+        "classes": [
+            "v-weak-1"
+        ],
         "sourceRefs": [
             {
                 "pubId": 9,
                 "refText": "453"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/sliepan#Old_English"
             }
         ]
     },
@@ -27331,12 +27368,23 @@
     },
     {
         "id": 8726,
-        "text": "sprædan",
+        "text": "sprǣdan",
         "gloss": "spread, disperse",
+        "fullGloss": "to spread, expand; outspread, stretch forth",
+        "pos": "V",
+        "classes": [
+            "v-weak-1"
+        ],
         "sourceRefs": [
             {
                 "pubId": 9,
                 "refText": "469"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/sprædan#Old_English"
+            },
+            {
+                "refText": "https://bosworthtoller.com/28557"
             }
         ]
     },
@@ -29279,11 +29327,19 @@
     {
         "id": 9108,
         "text": "þiċġan",
-        "gloss": "request",
+        "gloss": "obtain, accept",
+        "fullGloss": "to receive, take, accept; to take (food), consume",
+        "pos": "V",
+        "classes": [
+            "v-strong-5"
+        ],
         "sourceRefs": [
             {
                 "pubId": 9,
                 "refText": "536"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/þicgan#Old_English"
             }
         ]
     },
@@ -31271,7 +31327,20 @@
         "id": 9540,
         "text": "belgan",
         "gloss": "irritate",
-        "reconstructed": true
+        "fullGloss": "to become angry, to swell with rage",
+        "pos": "V",
+        "classes": [
+            "v-strong-3"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/belgan#Old_English"
+            },
+            {
+                "pubId": 5,
+                "refText": "185"
+            }
+        ]
     },
     {
         "id": 9541,
@@ -31351,8 +31420,13 @@
     {
         "id": 9566,
         "text": "þȳwan",
-        "gloss": "press",
-        "reconstructed": true
+        "pos": "V",
+        "reconstructed": true,
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/þywan#Old_English"
+            }
+        ]
     },
     {
         "id": 9568,
@@ -31478,10 +31552,19 @@
     },
     {
         "id": 9612,
-        "text": "wyrgan",
+        "text": "wyrġan",
+        "gloss": "to strangle",
+        "fullGloss": "to strangle; to worry",
+        "pos": "V",
+        "classes": [
+            "v-weak-1"
+        ],
         "sourceRefs": [
             {
                 "refText": "https://bosworthtoller.com/36964"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/wyrgan#Old_English"
             }
         ]
     },
@@ -31563,5 +31646,52 @@
                 "refText": "https://bosworthtoller.com/4261"
             }
         ]
+    },
+    {
+        "id": 9624,
+        "text": "plyċċan",
+        "gloss": "pluck",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/56939"
+            }
+        ]
+    },
+    {
+        "id": 9625,
+        "text": "þēowan",
+        "gloss": "to press",
+        "fullGloss": "to press, impress, force; to urge, drive; to press or thrust with a weapon, pierce, stab; to threaten; to rebuke, check; to subjugate, overpower, oppress; to crush",
+        "pos": "V",
+        "classes": [
+            "v-weak-1"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/þeowan#Old_English"
+            },
+            {
+                "refText": "https://bosworthtoller.com/31778"
+            }
+        ]
+    },
+    {
+        "id": 9627,
+        "text": "birnan",
+        "gloss": "burn",
+        "pos": "V",
+        "classes": [
+            "v-strong-3"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/birnan#Old_English; https://bosworthtoller.com/40390"
+            }
+        ]
+    },
+    {
+        "id": 9630,
+        "text": "biernan"
     }
 ]

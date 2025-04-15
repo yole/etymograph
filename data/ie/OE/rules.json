@@ -4318,39 +4318,6 @@
                     {
                         "type": "ChangeSound",
                         "args": [
-                            "i"
-                        ]
-                    },
-                    {
-                        "type": "SoundDisappears",
-                        "args": [
-                            "1"
-                        ]
-                    }
-                ],
-                "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "relPhoneme",
-                            "cls": "non-stressed",
-                            "parameter": "ō",
-                            "relative": false
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": 1,
-                            "parameter": "j"
-                        }
-                    ]
-                },
-                "comment": "Ringe 2014:227: -ōj- in present stems of class II weak verbs was unrounded and shortened"
-            },
-            {
-                "instructions": [
-                    {
-                        "type": "ChangeSound",
-                        "args": [
                             "e"
                         ]
                     }
@@ -10380,6 +10347,53 @@
                     "parameter": "ą",
                     "relative": false
                 }
+            }
+        ]
+    },
+    {
+        "id": 9623,
+        "name": "oe-oj-i",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeSound",
+                        "args": [
+                            "i"
+                        ]
+                    },
+                    {
+                        "type": "SoundDisappears",
+                        "args": [
+                            "1"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "cls": "non-stressed",
+                            "parameter": "ō",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": 1,
+                            "parameter": "j"
+                        }
+                    ]
+                },
+                "comment": "Ringe 2014:227: -ōj- in present stems of class II weak verbs was unrounded and shortened"
+            }
+        ],
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "227"
             }
         ]
     }
