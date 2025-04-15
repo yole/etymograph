@@ -71,7 +71,7 @@ class Word(
         }
 
     val normalizedText: String get() = language.normalizeWord(text)
-    val normalized: Word get() = derive(normalizedText)
+    val normalized: Word get() = derive(normalizedText, id)
 
     var isPhonemic: Boolean = false
 
