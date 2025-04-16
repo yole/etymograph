@@ -38,7 +38,10 @@ export default function RuleList(params) {
         {ruleList.ruleGroups.map(g => <>
             <h2 key={g.groupName}>{g.groupName}</h2>
             {g.paradigmId !== null && <p><Link href={`/${graph}/paradigm/${g.paradigmId}`}>Paradigm</Link></p>}
-            {g.sequenceId !== null && <p><Link href={`/${graph}/rules/sequence/${g.sequenceId}`}>Derivations</Link></p>}
+            {g.sequenceId !== null && <p>
+                <Link href={`/${graph}/rules/sequence/${g.sequenceId}`}>Derivations</Link>{' | '}
+                <Link href={`/${graph}/rules/sequence/report/${g.sequenceId}`}>Report</Link>
+            </p>}
             {(g.sequenceId === null || sequenceEditId !== g.sequenceId) && <>
                 <table className="tableWithBorders"><tbody>
                     {g.rules.map(r => <tr key={r.id}>

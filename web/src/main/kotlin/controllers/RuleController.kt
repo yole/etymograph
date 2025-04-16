@@ -604,6 +604,61 @@ class RuleController {
             result.getOrDefault(Consistency.INCONSISTENT, 0)
         )
     }
+
+    data class SequenceRuleViewModel(
+        val ruleName: String,
+        val ruleSource: String,
+        val ruleIsSPE: Boolean,
+        val optional: Boolean,
+        val preInstructions: List<RichText>,
+        val branches: List<RuleBranchViewModel>,
+        val postInstructions: List<RichText>,
+    )
+
+    data class SequenceReportViewModel(
+        val name: String,
+        val toLang: String,
+        val rules: List<SequenceRuleViewModel>
+    )
+
+    @GetMapping("/{graph}/rule/sequence/{id}/rules")
+    @ResponseBody
+    fun sequenceRules(repo: GraphRepository, @PathVariable id: Int): SequenceReportViewModel {
+        val sequence = repo.resolveRuleSequence(id)
+        val steps = sequence.resolveSteps(repo)
+        val ruleViewModels = steps.map {
+            val rule = it.rule as Rule
+            val examples = repo.findRuleExamples(rule).map { link ->
+                val intermediateSteps = buildIntermediateSteps(repo, link)
+                RuleExampleData(link, intermediateSteps, intermediateSteps.find { it.rule == rule }?.matchedBranches ?: mutableSetOf())
+            }
+            val examplesToShow = examples.firstOrNull { it.steps.last().result == (it.link.fromEntity as Word).text }?.let { listOf(it) }
+                ?: examples.firstOrNull()?.let { listOf(it) }
+                ?: emptyList()
+
+            SequenceRuleViewModel(
+                rule.name,
+                rule.source.toEditableText(repo),
+                rule.isSPE(),
+                it.optional,
+                rule.logic.preInstructions.map { it.toRichText(repo) },
+                rule.logic.branches.map {
+                    RuleBranchViewModel(
+                        it.condition.toRichText(),
+                        it.instructions.map { insn -> insn.toRichText(repo) },
+                        it.comment,
+                        examplesToShow.map { exampleToViewModel(rule, it, repo )}
+                    )
+                },
+                rule.logic.postInstructions.map { it.toRichText(repo) }
+            )
+        }
+        return SequenceReportViewModel(
+            sequence.name,
+            sequence.toLanguage.shortName,
+            ruleViewModels
+        )
+    }
 }
 
 fun parsePOSList(pos: String?, language: Language): List<String> {

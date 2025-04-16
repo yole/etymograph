@@ -554,6 +554,22 @@ export type SequenceDerivationsViewModel = {
     derivations: Array<DerivationViewModel>;
 };
 
+export type SequenceReportViewModel = {
+    name: string;
+    toLang: string;
+    rules: Array<SequenceRuleViewModel>;
+};
+
+export type SequenceRuleViewModel = {
+    ruleName: string;
+    ruleSource: string;
+    ruleIsSPE: boolean;
+    optional: boolean;
+    preInstructions: Array<RichText>;
+    branches: Array<RuleBranchViewModel>;
+    postInstructions: Array<RichText>;
+};
+
 export type SourceRef = {
     pubId?: number;
     refText: string;

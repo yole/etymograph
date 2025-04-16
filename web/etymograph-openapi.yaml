@@ -363,6 +363,27 @@ paths:
             '*/*':
               schema:
                 $ref: "#/components/schemas/SequenceDerivationsViewModel"
+  /{graph}/rule/sequence/{id}/rules:
+    get:
+      summary: "GET {graph}/rule/sequence/{id}/rules"
+      operationId: "sequenceRules"
+      parameters:
+        - name: "graph"
+          in: "path"
+          required: false
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int32"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/SequenceReportViewModel"
   /{graph}/rule/sequence/{id}/reapply:
     post:
       summary: "POST {graph}/rule/sequence/{id}/reapply"
@@ -3442,3 +3463,49 @@ components:
         - "becomesConsistent"
         - "becomesInconsistent"
         - "inconsistent"
+    SequenceRuleViewModel:
+      type: "object"
+      properties:
+        ruleName:
+          type: "string"
+        ruleSource:
+          type: "string"
+        ruleIsSPE:
+          type: "boolean"
+        optional:
+          type: "boolean"
+        preInstructions:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/RichText"
+        branches:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/RuleBranchViewModel"
+        postInstructions:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/RichText"
+      required:
+        - "ruleName"
+        - "ruleSource"
+        - "ruleIsSPE"
+        - "optional"
+        - "preInstructions"
+        - "branches"
+        - "postInstructions"
+    SequenceReportViewModel:
+      type: "object"
+      properties:
+        name:
+          type: "string"
+        toLang:
+          type: "string"
+        rules:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/SequenceRuleViewModel"
+      required:
+        - "name"
+        - "toLang"
+        - "rules"
