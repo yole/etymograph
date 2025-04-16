@@ -1458,11 +1458,6 @@
         "gloss": "weapon"
     },
     {
-        "id": 2754,
-        "text": "werþan",
-        "gloss": "become"
-    },
-    {
         "id": 2755,
         "text": "swā",
         "gloss": "so"
@@ -3381,6 +3376,17 @@
         "sourceRefs": [
             {
                 "refText": "https://en.wiktionary.org/wiki/Reconstruction:Proto-West_Germanic/brinnan#Proto-West_Germanic"
+            }
+        ]
+    },
+    {
+        "id": 9639,
+        "text": "þringan-",
+        "gloss": "press",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "547"
             }
         ]
     }

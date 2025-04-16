@@ -2185,26 +2185,14 @@
             {
                 "instructions": [
                     {
-                        "type": "ChangeSound",
+                        "type": "Spe",
                         "args": [
-                            "i"
+                            "e > i / _m"
                         ]
                     }
                 ],
                 "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "relPhoneme",
-                            "parameter": "e",
-                            "relative": false
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": 1,
-                            "parameter": "m"
-                        }
-                    ]
+                    "type": "otherwise"
                 }
             }
         ],
@@ -3379,26 +3367,14 @@
             {
                 "instructions": [
                     {
-                        "type": "ChangeSound",
+                        "type": "Spe",
                         "args": [
-                            "k"
+                            "h > k / _s"
                         ]
                     }
                 ],
                 "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "relPhoneme",
-                            "parameter": "h",
-                            "relative": false
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": 1,
-                            "parameter": "s"
-                        }
-                    ]
+                    "type": "otherwise"
                 }
             }
         ],
@@ -6848,16 +6824,14 @@
             {
                 "instructions": [
                     {
-                        "type": "ChangeSound",
+                        "type": "Spe",
                         "args": [
-                            "ġ"
+                            "j > ġ"
                         ]
                     }
                 ],
                 "condition": {
-                    "type": "relPhoneme",
-                    "parameter": "j",
-                    "relative": false
+                    "type": "otherwise"
                 }
             }
         ],
@@ -10224,16 +10198,14 @@
             {
                 "instructions": [
                     {
-                        "type": "ChangeSound",
+                        "type": "Spe",
                         "args": [
-                            "r"
+                            "z > r"
                         ]
                     }
                 ],
                 "condition": {
-                    "type": "relPhoneme",
-                    "parameter": "z",
-                    "relative": false
+                    "type": "otherwise"
                 }
             }
         ],
@@ -10299,6 +10271,48 @@
                     {
                         "type": "SoundDisappears",
                         "args": [
+                            "1"
+                        ]
+                    },
+                    {
+                        "type": "SoundDisappears",
+                        "args": [
+                            "-1"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "and",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "cls": "short vowel",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": -1,
+                            "parameter": "r"
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": 1,
+                            "cls": "geminate consonant"
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "SoundInsertedAfter",
+                        "args": [
+                            "r"
+                        ]
+                    },
+                    {
+                        "type": "SoundDisappears",
+                        "args": [
                             "-1"
                         ]
                     }
@@ -10336,16 +10350,14 @@
             {
                 "instructions": [
                     {
-                        "type": "ChangeSound",
+                        "type": "Spe",
                         "args": [
-                            "a"
+                            "ą > a"
                         ]
                     }
                 ],
                 "condition": {
-                    "type": "relPhoneme",
-                    "parameter": "ą",
-                    "relative": false
+                    "type": "otherwise"
                 }
             }
         ]

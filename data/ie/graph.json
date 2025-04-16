@@ -9821,15 +9821,6 @@
             "sequenceId": 2027
         },
         {
-            "from": 281,
-            "to": 2754,
-            "type": "^",
-            "ruleIds": [
-                2119
-            ],
-            "sequenceId": 2027
-        },
-        {
             "from": 73,
             "to": 2755,
             "type": "^",
@@ -15292,8 +15283,7 @@
             "type": "^",
             "ruleIds": [
                 1866,
-                1863,
-                1983
+                1863
             ],
             "sequenceId": 1885,
             "sourceRefs": [
@@ -19189,17 +19179,6 @@
             "type": "="
         },
         {
-            "from": 4787,
-            "to": 4788,
-            "type": "^",
-            "ruleIds": [
-                1966,
-                2119,
-                9613
-            ],
-            "sequenceId": 2162
-        },
-        {
             "from": 4791,
             "to": 4792,
             "type": "^",
@@ -19301,19 +19280,6 @@
             "from": 3749,
             "to": 4821,
             "type": "="
-        },
-        {
-            "from": 4822,
-            "to": 4823,
-            "type": "^",
-            "ruleIds": [
-                1966,
-                9609,
-                2396,
-                2365,
-                3438
-            ],
-            "sequenceId": 2162
         },
         {
             "from": 4824,
@@ -27518,26 +27484,6 @@
             "type": "="
         },
         {
-            "from": 3589,
-            "to": 6604,
-            "type": "="
-        },
-        {
-            "from": 6604,
-            "to": 6602,
-            "type": "^",
-            "ruleIds": [
-                9610
-            ],
-            "sequenceId": 2162,
-            "sourceRefs": [
-                {
-                    "pubId": 9,
-                    "refText": "71"
-                }
-            ]
-        },
-        {
             "from": 6606,
             "to": 6605,
             "type": "^",
@@ -27699,9 +27645,9 @@
             "type": "^",
             "ruleIds": [
                 2048,
-                6308,
-                2270,
-                2326
+                9614,
+                2326,
+                9613
             ],
             "sequenceId": 2162,
             "sourceRefs": [
@@ -27869,18 +27815,6 @@
         {
             "from": 6649,
             "to": 6648,
-            "type": "^",
-            "sequenceId": 2162,
-            "sourceRefs": [
-                {
-                    "pubId": 9,
-                    "refText": "77"
-                }
-            ]
-        },
-        {
-            "from": 6651,
-            "to": 6650,
             "type": "^",
             "sequenceId": 2162,
             "sourceRefs": [
@@ -30599,23 +30533,6 @@
             "from": 6997,
             "to": 6996,
             "type": "="
-        },
-        {
-            "from": 6998,
-            "to": 6996,
-            "type": "^",
-            "ruleIds": [
-                9607,
-                3319,
-                2365
-            ],
-            "sequenceId": 2162,
-            "sourceRefs": [
-                {
-                    "pubId": 9,
-                    "refText": "140"
-                }
-            ]
         },
         {
             "from": 7000,
@@ -36128,24 +36045,6 @@
             ]
         },
         {
-            "from": 7709,
-            "to": 7708,
-            "type": "^",
-            "ruleIds": [
-                9609,
-                2095,
-                2270,
-                2326
-            ],
-            "sequenceId": 2162,
-            "sourceRefs": [
-                {
-                    "pubId": 9,
-                    "refText": "277"
-                }
-            ]
-        },
-        {
             "from": 7711,
             "to": 7710,
             "type": "^",
@@ -36675,7 +36574,8 @@
                     "pubId": 9,
                     "refText": "289"
                 }
-            ]
+            ],
+            "notes": "with frequentative -l- suffix"
         },
         {
             "from": 7768,
@@ -36813,26 +36713,6 @@
             "from": 7783,
             "to": 7782,
             "type": "="
-        },
-        {
-            "from": 7784,
-            "to": 7782,
-            "type": "^",
-            "ruleIds": [
-                2048,
-                6308,
-                2156,
-                2270,
-                2326,
-                9606
-            ],
-            "sequenceId": 2162,
-            "sourceRefs": [
-                {
-                    "pubId": 9,
-                    "refText": "291"
-                }
-            ]
         },
         {
             "from": 7787,
@@ -43179,7 +43059,8 @@
                     "pubId": 9,
                     "refText": "436"
                 }
-            ]
+            ],
+            "notes": "with frequentative suffix"
         },
         {
             "from": 8552,
@@ -43244,11 +43125,6 @@
                     "refText": "437"
                 }
             ]
-        },
-        {
-            "from": 8559,
-            "to": 8558,
-            "type": "="
         },
         {
             "from": 8558,
@@ -45340,7 +45216,8 @@
                     "pubId": 9,
                     "refText": "489"
                 }
-            ]
+            ],
+            "notes": "Zero-grade present *sufan replaced by a secondary full-grade form *swefan- in English"
         },
         {
             "from": 8838,
@@ -45687,22 +45564,6 @@
             "from": 8887,
             "to": 8886,
             "type": "="
-        },
-        {
-            "from": 8888,
-            "to": 8886,
-            "type": "^",
-            "ruleIds": [
-                2060,
-                2149
-            ],
-            "sequenceId": 2162,
-            "sourceRefs": [
-                {
-                    "pubId": 9,
-                    "refText": "496"
-                }
-            ]
         },
         {
             "from": 73,
@@ -47847,24 +47708,6 @@
             ]
         },
         {
-            "from": 9168,
-            "to": 9167,
-            "type": "^",
-            "ruleIds": [
-                2040,
-                2114,
-                2372,
-                6218
-            ],
-            "sequenceId": 2162,
-            "sourceRefs": [
-                {
-                    "pubId": 9,
-                    "refText": "547"
-                }
-            ]
-        },
-        {
             "from": 9170,
             "to": 9169,
             "type": "^",
@@ -47968,7 +47811,8 @@
                     "pubId": 9,
                     "refText": "549"
                 }
-            ]
+            ],
+            "notes": "with frequentative suffix"
         },
         {
             "from": 9184,
@@ -51688,11 +51532,11 @@
             "to": 9150,
             "type": "^",
             "ruleIds": [
+                9607,
                 2060,
-                2077,
                 2149,
-                2396,
-                2365
+                9623,
+                2396
             ],
             "sequenceId": 2162,
             "sourceRefs": [
@@ -51935,9 +51779,9 @@
             "to": 9210,
             "type": "^",
             "ruleIds": [
+                9607,
                 1889,
-                2077,
-                2365
+                9623
             ],
             "sequenceId": 2162,
             "sourceRefs": [
@@ -52173,10 +52017,10 @@
             "ruleIds": [
                 1966,
                 2048,
-                6308,
+                9614,
                 2086,
-                2270,
-                2326
+                2326,
+                9613
             ],
             "sequenceId": 2162,
             "sourceRefs": [
@@ -52196,6 +52040,203 @@
             "from": 9630,
             "to": 9627,
             "type": "="
+        },
+        {
+            "from": 9627,
+            "to": 6650,
+            "type": "^",
+            "ruleIds": [
+                9613
+            ],
+            "sequenceId": 2162,
+            "sourceRefs": [
+                {
+                    "pubId": 9,
+                    "refText": "77"
+                }
+            ]
+        },
+        {
+            "from": 8636,
+            "to": 9631,
+            "type": "="
+        },
+        {
+            "from": 6604,
+            "to": 6603,
+            "type": "^",
+            "ruleIds": [
+                9610
+            ],
+            "sequenceId": 2162,
+            "sourceRefs": [
+                {
+                    "pubId": 9,
+                    "refText": "71"
+                }
+            ]
+        },
+        {
+            "from": 6998,
+            "to": 9632,
+            "type": "="
+        },
+        {
+            "from": 9632,
+            "to": 6996,
+            "type": "^",
+            "ruleIds": [
+                9607,
+                3319,
+                2365
+            ],
+            "sequenceId": 2162,
+            "sourceRefs": [
+                {
+                    "pubId": 9,
+                    "refText": "140"
+                }
+            ]
+        },
+        {
+            "from": 7090,
+            "to": 7087,
+            "type": "^",
+            "ruleIds": [
+                9607,
+                9623
+            ],
+            "sequenceId": 2162
+        },
+        {
+            "from": 9634,
+            "to": 7708,
+            "type": "=",
+            "notes": "probably lost the *i due to dissimilation against *j in cluster *-izj-"
+        },
+        {
+            "from": 7709,
+            "to": 9634,
+            "type": "^",
+            "ruleIds": [
+                1981,
+                2060,
+                2156,
+                2259,
+                2953,
+                2326
+            ],
+            "sequenceId": 2162,
+            "sourceRefs": [
+                {
+                    "pubId": 9,
+                    "refText": "277"
+                }
+            ]
+        },
+        {
+            "from": 7784,
+            "to": 9635,
+            "type": "="
+        },
+        {
+            "from": 9635,
+            "to": 7782,
+            "type": "^",
+            "ruleIds": [
+                2048,
+                6308,
+                2156,
+                2270,
+                2326,
+                9606
+            ],
+            "sequenceId": 2162,
+            "sourceRefs": [
+                {
+                    "pubId": 9,
+                    "refText": "291"
+                }
+            ]
+        },
+        {
+            "from": 8558,
+            "to": 9636,
+            "type": "="
+        },
+        {
+            "from": 8804,
+            "to": 9637,
+            "type": "="
+        },
+        {
+            "from": 8888,
+            "to": 8887,
+            "type": "^",
+            "ruleIds": [
+                2060,
+                2270,
+                3319,
+                9606
+            ],
+            "sequenceId": 2162,
+            "sourceRefs": [
+                {
+                    "pubId": 9,
+                    "refText": "496"
+                }
+            ]
+        },
+        {
+            "from": 9639,
+            "to": 9167,
+            "type": "^"
+        },
+        {
+            "from": 9168,
+            "to": 9639,
+            "type": "^",
+            "sequenceId": 2027,
+            "sourceRefs": [
+                {
+                    "pubId": 9,
+                    "refText": "547"
+                }
+            ]
+        },
+        {
+            "from": 9640,
+            "to": 9211,
+            "type": "="
+        },
+        {
+            "from": 281,
+            "to": 2127,
+            "type": "^",
+            "ruleIds": [
+                2119
+            ],
+            "sequenceId": 2027,
+            "sourceRefs": [
+                {
+                    "pubId": 5,
+                    "refText": "182"
+                }
+            ]
+        },
+        {
+            "from": 8836,
+            "to": 9641,
+            "type": "^",
+            "ruleIds": [
+                1966
+            ],
+            "sequenceId": 2162
+        },
+        {
+            "from": 9641,
+            "to": 8868,
+            "type": "~"
         }
     ]
 }

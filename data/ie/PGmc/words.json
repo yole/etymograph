@@ -22683,6 +22683,10 @@
             {
                 "pubId": 9,
                 "refText": "494"
+            },
+            {
+                "pubId": 10,
+                "refText": "245"
             }
         ]
     },
@@ -26884,6 +26888,28 @@
             {
                 "pubId": 5,
                 "refText": "229"
+            }
+        ]
+    },
+    {
+        "id": 9634,
+        "text": "kazjan",
+        "sourceRefs": [
+            {
+                "pubId": 9,
+                "refText": "277"
+            }
+        ]
+    },
+    {
+        "id": 9641,
+        "text": "swefaną",
+        "gloss": "sleep",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "pubId": 10,
+                "refText": "245"
             }
         ]
     }

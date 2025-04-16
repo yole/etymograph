@@ -14721,7 +14721,8 @@
         "id": 4789,
         "text": "for-",
         "gloss": "wrongly",
-        "fullGloss": "wrongly, away from, astray, abstention, prohibition, perversion, destruction; }}; very",
+        "fullGloss": "wrongly, away from, astray, abstention, prohibition, perversion, destruction; very",
+        "pos": "AFF",
         "sourceRefs": [
             {
                 "refText": "https://en.wiktionary.org/wiki/for-#Old_English"
@@ -16943,10 +16944,15 @@
         "id": 6604,
         "text": "būan",
         "gloss": "live, dwell",
+        "fullGloss": "to live or dwell; to inhabit, to occupy",
+        "pos": "V",
         "sourceRefs": [
             {
                 "pubId": 9,
                 "refText": "71"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/buan#Old_English"
             }
         ]
     },
@@ -17514,7 +17520,7 @@
         "sourceRefs": [
             {
                 "pubId": 9,
-                "refText": "86"
+                "refText": "86; https://bosworthtoller.com/4820"
             }
         ]
     },
@@ -18933,11 +18939,14 @@
     {
         "id": 6998,
         "text": "fēon",
-        "gloss": "hate",
+        "pos": "V",
         "sourceRefs": [
             {
                 "pubId": 9,
                 "refText": "140"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/feon#Old_English"
             }
         ]
     },
@@ -19365,18 +19374,26 @@
     },
     {
         "id": 7089,
-        "text": "frēogan",
+        "text": "frēoġan",
         "gloss": "love, marry",
+        "fullGloss": "to free, to liberate; to like, to love, to honour",
+        "pos": "V",
         "sourceRefs": [
             {
                 "pubId": 9,
                 "refText": "155"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/freogan#Old_English"
+            },
+            {
+                "refText": "https://bosworthtoller.com/12286"
             }
         ]
     },
     {
         "id": 7090,
-        "text": "frīgan",
+        "text": "frīġan",
         "sourceRefs": [
             {
                 "pubId": 9,
@@ -20809,7 +20826,7 @@
     },
     {
         "id": 7385,
-        "text": "hīegan",
+        "text": "hīeġan",
         "sourceRefs": [
             {
                 "pubId": 9,
@@ -22391,12 +22408,17 @@
     },
     {
         "id": 7709,
-        "text": "cierran",
+        "text": "ċierran",
         "gloss": "turn, change",
+        "fullGloss": "to turn; to make move; to turn",
+        "pos": "V",
         "sourceRefs": [
             {
                 "pubId": 9,
                 "refText": "277"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/cierran#Old_English"
             }
         ]
     },
@@ -22424,8 +22446,9 @@
     },
     {
         "id": 7716,
-        "text": "ceallian",
+        "text": "ċeallian",
         "gloss": "call, shout",
+        "pos": "V",
         "sourceRefs": [
             {
                 "pubId": 9,
@@ -22676,10 +22699,20 @@
         "id": 7766,
         "text": "citelian",
         "gloss": "tickle",
+        "pos": "V",
+        "classes": [
+            "v-weak-2"
+        ],
         "sourceRefs": [
             {
                 "pubId": 9,
                 "refText": "289"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/citelian#Old_English"
+            },
+            {
+                "refText": "https://bosworthtoller.com/6254"
             }
         ]
     },
@@ -26580,21 +26613,17 @@
     {
         "id": 8558,
         "text": "seowian",
-        "gloss": "sew",
+        "pos": "V",
         "sourceRefs": [
             {
                 "pubId": 9,
                 "refText": "437"
-            }
-        ]
-    },
-    {
-        "id": 8559,
-        "text": "siwian",
-        "sourceRefs": [
+            },
             {
-                "pubId": 9,
-                "refText": "437"
+                "refText": "https://en.wiktionary.org/wiki/seowian#Old_English"
+            },
+            {
+                "refText": "https://bosworthtoller.com/27529"
             }
         ]
     },
@@ -26952,11 +26981,18 @@
     {
         "id": 8636,
         "text": "scuwa",
-        "gloss": "mirror",
+        "pos": "N",
+        "classes": [
+            "masc",
+            "n-stem"
+        ],
         "sourceRefs": [
             {
                 "pubId": 9,
                 "refText": "452"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/scuwa#Old_English"
             }
         ]
     },
@@ -27729,11 +27765,17 @@
     {
         "id": 8804,
         "text": "strēowian",
-        "gloss": "strew",
+        "pos": "V",
+        "classes": [
+            "v-weak-2"
+        ],
         "sourceRefs": [
             {
                 "pubId": 9,
                 "refText": "483"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/streowian#Old_English"
             }
         ]
     },
@@ -28053,10 +28095,21 @@
         "id": 8869,
         "text": "swebban",
         "gloss": "put to sleep",
+        "fullGloss": "to send to sleep, lull",
+        "pos": "V",
+        "classes": [
+            "v-weak-1"
+        ],
         "sourceRefs": [
             {
                 "pubId": 9,
                 "refText": "494"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/swebban#Old_English"
+            },
+            {
+                "refText": "https://bosworthtoller.com/29591"
             }
         ]
     },
@@ -28636,10 +28689,21 @@
         "id": 8977,
         "text": "tawian",
         "gloss": "prepare, make ready",
+        "fullGloss": "to prepare, make ready",
+        "pos": "V",
+        "classes": [
+            "v-weak-2"
+        ],
         "sourceRefs": [
             {
                 "pubId": 9,
                 "refText": "511"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/tawian#Old_English"
+            },
+            {
+                "refText": "https://bosworthtoller.com/30220"
             }
         ]
     },
@@ -29530,10 +29594,17 @@
         "id": 9146,
         "text": "þrægan",
         "gloss": "run",
+        "pos": "V",
         "sourceRefs": [
             {
                 "pubId": 9,
                 "refText": "544"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/þrægan#Old_English"
+            },
+            {
+                "refText": "https://bosworthtoller.com/31979"
             }
         ]
     },
@@ -29658,10 +29729,18 @@
         "id": 9168,
         "text": "þringan",
         "gloss": "press, crowd throng",
+        "fullGloss": "to press, constrict, push on or through",
+        "pos": "V",
+        "classes": [
+            "v-strong-3"
+        ],
         "sourceRefs": [
             {
                 "pubId": 9,
                 "refText": "547"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/þringan#Old_English"
             }
         ]
     },
@@ -29723,10 +29802,18 @@
         "id": 9182,
         "text": "þocerian",
         "gloss": "run to and fro, run about",
+        "fullGloss": "to run to and fro, run up and down, run about",
+        "pos": "V",
+        "classes": [
+            "v-weak-2"
+        ],
         "sourceRefs": [
             {
                 "pubId": 9,
                 "refText": "549"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/þocerian#Old_English"
             }
         ]
     },
@@ -30741,10 +30828,18 @@
         "id": 9385,
         "text": "wīgan",
         "gloss": "fight, do battle",
+        "fullGloss": "to fight, make war, do battle",
+        "pos": "V",
+        "classes": [
+            "v-strong-1"
+        ],
         "sourceRefs": [
             {
                 "pubId": 9,
                 "refText": "586"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/wigan#Old_English"
             }
         ]
     },
@@ -31693,5 +31788,87 @@
     {
         "id": 9630,
         "text": "biernan"
+    },
+    {
+        "id": 9631,
+        "text": "sċūa",
+        "gloss": "shadow",
+        "fullGloss": "shadow; shade; darkness; protection; a shady person",
+        "pos": "N",
+        "classes": [
+            "masc",
+            "n-stem"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/scua#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 9632,
+        "text": "fēoġan",
+        "gloss": "to hate; persecute",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/feogan#Old_English"
+            },
+            {
+                "refText": "https://bosworthtoller.com/10320"
+            }
+        ]
+    },
+    {
+        "id": 9633,
+        "text": "fēoġan "
+    },
+    {
+        "id": 9635,
+        "text": "clengan",
+        "gloss": "adhere, remain",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/41835"
+            }
+        ]
+    },
+    {
+        "id": 9636,
+        "text": "siwian",
+        "gloss": "to sew",
+        "pos": "V",
+        "classes": [
+            "v-weak-2"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/siwian#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 9637,
+        "text": "strēawian",
+        "gloss": "to strew",
+        "pos": "V",
+        "classes": [
+            "v-weak-2"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/streawian#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 9640,
+        "text": "þoddettan",
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/31908"
+            }
+        ]
     }
 ]
