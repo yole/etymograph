@@ -417,9 +417,9 @@ export type RuleBranchViewModel = {
 export type RuleExampleViewModel = {
     fromWord: WordRefViewModel;
     toWord: WordRefViewModel;
-    expectedWord?: string;
-    allRules: Array<RuleLinkViewModel>;
-    ruleResults: Array<(string)>;
+    expectedWord?: (string) | null;
+    wordBeforeRule?: (string) | null;
+    wordAfterRule?: (string) | null;
 };
 
 export type RuleGroupViewModel = {

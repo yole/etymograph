@@ -46,8 +46,8 @@ class RuleController {
         val fromWord: WordRefViewModel,
         val toWord: WordRefViewModel,
         val expectedWord: String?,
-        val allRules: List<RuleLinkViewModel>,
-        val ruleResults: List<String>
+        val wordBeforeRule: String?,
+        val wordAfterRule: String?
     )
 
     data class RuleSequenceLinkViewModel(
@@ -236,7 +236,7 @@ class RuleController {
             isPhonemic(),
             logic.preInstructions.map { it.toRichText(repo) },
             logic.branches.map { branch ->
-                branch.toViewModel(isUnconditional(), examples.filter { branch in it.branches }, repo)
+                branch.toViewModel(this, isUnconditional(), examples.filter { branch in it.branches }, repo)
             },
             logic.postInstructions.map { it.toRichText(repo) },
             links.mapNotNull { (link, langEntity) ->
@@ -256,22 +256,27 @@ class RuleController {
                     )
                 }
             },
-            examples.filter { it.branches.isEmpty() }.map { exampleToViewModel(it, repo) },
+            examples.filter { it.branches.isEmpty() }.map { exampleToViewModel(this, it, repo) },
             paradigms.map { ParadigmRefViewModel(it.first.id, it.first.name, it.second) }
         )
     }
 
-    private fun exampleToViewModel(example: RuleExampleData, graph: GraphRepository): RuleExampleViewModel {
+    private fun exampleToViewModel(rule: Rule, example: RuleExampleData, graph: GraphRepository): RuleExampleViewModel {
         val link = example.link
         val fromWord = link.fromEntity as Word
         val toWord = link.toEntity as Word
+
+        val ruleIndex = example.steps.indexOfFirst { it.rule == rule }
+        val wordBeforeRule = if (ruleIndex > 0) example.steps[ruleIndex-1].result else null
+        val wordAfterRule = if (ruleIndex < example.steps.size - 1) example.steps[ruleIndex].result else null
+
         return RuleExampleViewModel(
             fromWord.toRefViewModel(graph),
             toWord.toRefViewModel(graph),
             link.applyRules(toWord, graph).asOrthographic(fromWord.language)
                 .takeIf { !fromWord.language.isNormalizedEqual(it, fromWord) }?.text,
-            link.rules.map { RuleLinkViewModel(it.id, it.name, link.type.id, link.source.toViewModel(graph), link.notes) },
-            example.steps.map { it.result }
+            wordBeforeRule,
+            wordAfterRule
         )
     }
 
@@ -283,12 +288,12 @@ class RuleController {
         }
     }
 
-    private fun RuleBranch.toViewModel(isUnconditional: Boolean, examples: List<RuleExampleData>, repo: GraphRepository): RuleBranchViewModel {
+    private fun RuleBranch.toViewModel(rule: Rule, isUnconditional: Boolean, examples: List<RuleExampleData>, repo: GraphRepository): RuleBranchViewModel {
         return RuleBranchViewModel(
             if (isUnconditional) RichText(emptyList()) else condition.toRichText(),
             instructions.map { it.toRichText(repo) },
             comment,
-            examples.map { exampleToViewModel(it, repo) }
+            examples.map { exampleToViewModel(rule, it, repo) }
         )
     }
 

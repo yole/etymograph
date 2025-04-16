@@ -1,4 +1,4 @@
-import {useContext, useState} from "react";
+import {useState} from "react";
 import {
     addWordSequence,
     allowEdit,
@@ -18,12 +18,10 @@ import RuleLinkForm from "@/forms/RuleLinkForm";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import EtymographForm from "@/components/EtymographForm";
 import FormRow from "@/components/FormRow";
-import {GraphContext} from "@/components/Contexts";
 import WordGloss from "@/components/WordGloss";
 import RuleLink from "@/components/RuleLink";
 import {RuleExampleViewModel, RuleTraceResult, RuleViewModel} from "@/models";
 import LanguageSelect from "@/components/LanguageSelect";
-import {Form} from "react-hook-form";
 
 export const config = {
     unstable_runtimeJS: true
@@ -39,8 +37,7 @@ export async function getStaticPaths() {
 
 function ExampleList(params: {rule: RuleViewModel, examples: RuleExampleViewModel[]}) {
     const {rule, examples} = params
-    const graph = useContext(GraphContext)
-    const haveSteps = examples.some(ex => ex.allRules.length > 1)
+    const haveSteps = examples.some(ex => ex.wordBeforeRule !== null || ex.wordAfterRule !== null)
     const haveExpected = examples.some(ex => ex.expectedWord !== null && ex.expectedWord !== ex.fromWord.text)
     return <table className="tableWithBorders">
         <thead>
@@ -64,21 +61,11 @@ function ExampleList(params: {rule: RuleViewModel, examples: RuleExampleViewMode
                 <WordGloss gloss={ex.toWord.gloss}/>
             </td>
             {haveSteps && <td>
-                {ex.allRules.length > 1 && ex.ruleResults.length === 0 && <>
-                    {ex.allRules.map((rl, i) => <>
-                        {i > 0 && ", "}
-                        {rl.toRuleId !== rule.id && <Link href={`/${graph}/rule/${rl.toRuleId}`}>{rl.toRuleName}</Link>}
-                        {rl.toRuleId === rule.id && rl.toRuleName}
-                    </>)}
-                </>}
-                {ex.allRules.length > 1 && ex.ruleResults.length > 0 && <>
-                    {ex.toWord.text}
-                    {ex.allRules.map((rl, i) => <>
-                        {' '}<Link href={`/${graph}/rule/${rl.toRuleId}`} title={rl.toRuleName}>&gt;</Link>{' '}
-                        {rl.toRuleId === rule.id && <b>{ex.ruleResults[i]}</b>}
-                        {rl.toRuleId !== rule.id && ex.ruleResults[i]}
-                    </>)}
-                </>}
+                {ex.toWord.text}
+                {ex.wordBeforeRule && ' > ' + ex.wordBeforeRule}
+                {ex.wordAfterRule && <>{' > '}<b>{ex.wordAfterRule}</b></>}
+                {!ex.wordAfterRule && <>{' > '}<b>{ex.expectedWord ?? ex.fromWord.text}</b></>}
+                {ex.wordAfterRule && <>{' > '}{ex.expectedWord ?? ex.fromWord.text}</>}
             </td>}
             {haveExpected && <td>
                 {ex.expectedWord !== null && ex.expectedWord !== ex.fromWord.text && ex.expectedWord}
@@ -101,8 +88,6 @@ export default function Rule(params) {
     const [lastExampleSource, setLastExampleSource] = useState("")
     const [showExampleForm, setShowExampleForm] = useState(false)
     const [showTraceForm, setShowTraceForm] = useState(false)
-    const [traceWord, setTraceWord] = useState("")
-    const [traceLanguage, setTraceLanguage] = useState(rule.toLang)
     const [traceReverse, setTraceReverse] = useState(false)
     const [traceResult, setTraceResult] = useState("")
     const [exampleUnmatched, setExampleUnmatched] = useState([])

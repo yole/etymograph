@@ -2127,14 +2127,13 @@ components:
           $ref: "#/components/schemas/WordRefViewModel"
         expectedWord:
           type: "string"
-        allRules:
-          type: "array"
-          items:
-            $ref: "#/components/schemas/RuleLinkViewModel"
-        ruleResults:
-          type: "array"
-          items:
-            type: "string"
+          nullable: true
+        wordBeforeRule:
+          type: "string"
+          nullable: true
+        wordAfterRule:
+          type: "string"
+          nullable: true
       required:
         - "fromWord"
         - "toWord"
