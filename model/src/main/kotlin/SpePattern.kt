@@ -265,10 +265,10 @@ class SpePattern(
     val following: List<SpeNode>
 )  {
     fun apply(language: Language, text: String, trace: RuleTrace? = null): String {
-        return apply(Word(-1, text, language), trace)
+        return apply(Word(-1, text, language), trace).result()
     }
 
-    fun apply(word: Word, trace: RuleTrace? = null): String {
+    fun apply(word: Word, trace: RuleTrace? = null): PhonemeIterator {
         val it = PhonemeIterator(word, null)
         while (true) {
             val itCopy = it.clone()
@@ -296,7 +296,7 @@ class SpePattern(
             if (!it.advance()) break
         }
 
-        return it.result()
+        return it
     }
 
     fun toRichText(): RichText {

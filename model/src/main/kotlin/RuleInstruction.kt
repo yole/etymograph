@@ -649,10 +649,13 @@ class SpeInstruction(val pattern: SpePattern)
 
     override fun apply(rule: Rule, branch: RuleBranch?, word: Word, graph: GraphRepository, trace: RuleTrace?): Word {
         val phonemicWord = word.asPhonemic()
-        val result = pattern.apply(phonemicWord, trace)
-        if (result != phonemicWord.text) {
+        val it = pattern.apply(phonemicWord, trace)
+        if (it.result() != phonemicWord.text) {
             trace?.logMatchedInstruction(rule, word, this)
-            return phonemicWord.derive(result, phonemic = true)
+            val segments = remapSegments(it, word.segments)
+            return phonemicWord.derive(it.result(), phonemic = true).also {
+                it.segments = segments
+            }
         }
         return phonemicWord
     }

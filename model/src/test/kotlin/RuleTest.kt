@@ -794,6 +794,19 @@ class RuleTest : QBaseTest() {
         assertTrue(result.isPhonemic)
     }
 
+
+    @Test
+    fun speRuleSegments() {
+        val rule = parseRule(ce, q, """* ōj -> i""")
+        val word = ce.word("grapōjan").apply {
+            segments = listOf(WordSegment(4, 4, null, null, null, false))
+        }
+        val newWord = rule.apply(word, emptyRepo)
+        assertEquals(1, newWord.segments!!.size)
+        assertEquals(3, newWord.segments!![0].length)
+    }
+
+
     /*
 
     @Test
