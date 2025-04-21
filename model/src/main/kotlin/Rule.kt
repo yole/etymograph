@@ -17,7 +17,10 @@ class RuleParseContext(
     val ruleRefFactory: (String) -> RuleRef
 )
 
-class RuleTraceData(val matchedBranches: MutableSet<RuleBranch>)
+class RuleTraceData(
+    val matchedBranches: MutableSet<RuleBranch> = mutableSetOf(),
+    val matchedInstructions: MutableSet<RuleInstruction> = mutableSetOf()
+)
 
 class RuleTrace {
     private val traceData = mutableMapOf<Pair<Int, Int>, RuleTraceData>()
@@ -32,10 +35,15 @@ class RuleTrace {
     }
 
     fun logMatchedBranch(rule: Rule, word: Word, phoneme: String?, branch: RuleBranch) {
-        val data = traceData.getOrPut(rule.id to word.id) { RuleTraceData(mutableSetOf()) }
+        val data = traceData.getOrPut(rule.id to word.id) { RuleTraceData() }
         data.matchedBranches.add(branch)
         val phonemeTrace = phoneme?.let { " for $it" } ?: ""
         log.append("Branch '${branch.condition.toEditableText()}' matched$phonemeTrace\n")
+    }
+
+    fun logMatchedInstruction(rule: Rule, word: Word, instruction: RuleInstruction) {
+        val data = traceData.getOrPut(rule.id to word.id) { RuleTraceData() }
+        data.matchedInstructions.add(instruction)
     }
 
     fun logUnmatchedBranch(rule: Rule, word: Word, phoneme: String?, branch: RuleBranch) {
@@ -67,6 +75,10 @@ class RuleTrace {
 
     fun findMatchedBranches(rule: Rule, word: Word): Set<RuleBranch> {
         return traceData[rule.id to word.id]?.matchedBranches ?: emptySet()
+    }
+
+    fun findMatchedInstructions(rule: Rule, word: Word): Set<RuleInstruction> {
+        return traceData[rule.id to word.id]?.matchedInstructions ?: emptySet()
     }
 
     fun log(): String {

@@ -252,6 +252,31 @@ class RuleControllerTest {
     }
 
     @Test
+    fun speExamples() {
+        ruleController.newRule(
+            fixture.graph,
+            RuleController.UpdateRuleParameters(
+                "q-test", "q", "q",
+                "* e > i\n*a > o"
+            )
+        )
+        val rule = graph.ruleByName("q-test")!!
+
+        val word1 = graph.findOrAddWord("bet", fixture.q, "")
+        val word2 = graph.findOrAddWord("bit", fixture.q, "")
+        graph.addLink(word2, word1, Link.Derived, listOf(rule))
+
+        val word3 = graph.findOrAddWord("bat", fixture.q, "")
+        val word4 = graph.findOrAddWord("bot", fixture.q, "")
+        graph.addLink(word4, word3, Link.Derived, listOf(rule))
+
+        val ruleViewModel = ruleController.rule(fixture.graph, rule.id)
+        assertEquals(2, ruleViewModel.branches.size)
+        assertEquals(1, ruleViewModel.branches[0].examples.size)
+        assertEquals("bit", ruleViewModel.branches[0].examples[0].fromWord.text)
+    }
+
+    @Test
     fun derivationsForChainedSequence() {
         val (ceSeq, ceWord, qWord) = setupChainedSequenceDerivation("veiwei")
 

@@ -192,16 +192,18 @@ class RuleController {
         }
     }
 
-    private class RuleExampleData(val link: Link, val steps: List<RuleStepData>, val branches: Set<RuleBranch>)
+    private class RuleExampleData(
+        val link: Link,
+        val steps: List<RuleStepData>,
+        val branches: Set<RuleBranch>,
+        val instructions: Set<RuleInstruction>
+    )
 
     private fun Rule.toViewModel(repo: GraphRepository): RuleViewModel {
         val paradigm = repo.paradigmForRule(this)
         val links = (repo.getLinksFrom(this).map { it to it.toEntity } +
                 repo.getLinksTo(this).map { it to it.fromEntity })
-        val examples = repo.findRuleExamples(this).map { link ->
-            val steps = buildIntermediateSteps(repo, link)
-            RuleExampleData(link, steps, steps.find { it.rule == this }?.matchedBranches ?: mutableSetOf())
-        }
+        val examples = repo.findRuleExamples(this).map { link -> toExampleData(repo, link) }
         val references = repo.findReferencingRules(this)
         val paradigms = repo.findReferencingParadigms(this)
 
@@ -235,9 +237,7 @@ class RuleController {
             paradigm?.postRule?.toRefViewModel(),
             isPhonemic(),
             logic.preInstructions.map { it.toRichText(repo) },
-            logic.branches.map { branch ->
-                branch.toViewModel(this, isUnconditional(), examples.filter { branch in it.branches }, repo)
-            },
+            ruleBranchesToViewModel(repo, examples),
             logic.postInstructions.map { it.toRichText(repo) },
             links.mapNotNull { (link, langEntity) ->
                 val rule = langEntity as? Rule
@@ -259,6 +259,35 @@ class RuleController {
             examples.filter { it.branches.isEmpty() }.map { exampleToViewModel(this, it, repo) },
             paradigms.map { ParadigmRefViewModel(it.first.id, it.first.name, it.second) }
         )
+    }
+
+    private fun Rule.toExampleData(
+        repo: GraphRepository,
+        link: Link
+    ): RuleExampleData {
+        val steps = buildIntermediateSteps(repo, link)
+        val theStep = steps.find { it.rule == this }
+        return RuleExampleData(
+            link, steps,
+            theStep?.matchedBranches ?: setOf(),
+            theStep?.matchedInstructions ?: setOf()
+        )
+    }
+
+    private fun Rule.ruleBranchesToViewModel(
+        repo: GraphRepository,
+        examples: List<RuleExampleData>
+    ): List<RuleBranchViewModel> {
+        if (isSPE() && logic.branches.size == 1) {
+            val branch = logic.branches.single()
+            return branch.instructions.map { insn ->
+                RuleBranch(branch.condition, listOf(insn), branch.comment)
+                    .toViewModel(this, isUnconditional(), examples.filter { insn in it.instructions}, repo)
+            }
+        }
+        return logic.branches.map { branch ->
+            branch.toViewModel(this, isUnconditional(), examples.filter { branch in it.branches }, repo)
+        }
     }
 
     private fun exampleToViewModel(rule: Rule, example: RuleExampleData, graph: GraphRepository): RuleExampleViewModel {
@@ -628,10 +657,7 @@ class RuleController {
         val steps = sequence.resolveSteps(repo)
         val ruleViewModels = steps.map {
             val rule = it.rule as Rule
-            val examples = repo.findRuleExamples(rule).map { link ->
-                val intermediateSteps = buildIntermediateSteps(repo, link)
-                RuleExampleData(link, intermediateSteps, intermediateSteps.find { it.rule == rule }?.matchedBranches ?: mutableSetOf())
-            }
+            val examples = repo.findRuleExamples(rule).map { link -> rule.toExampleData(repo, link) }
             val examplesToShow = examples.firstOrNull { it.steps.last().result == (it.link.fromEntity as Word).text }?.let { listOf(it) }
                 ?: examples.firstOrNull()?.let { listOf(it) }
                 ?: emptyList()

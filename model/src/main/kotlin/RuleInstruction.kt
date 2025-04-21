@@ -651,6 +651,7 @@ class SpeInstruction(val pattern: SpePattern)
         val phonemicWord = word.asPhonemic()
         val result = pattern.apply(phonemicWord, trace)
         if (result != phonemicWord.text) {
+            trace?.logMatchedInstruction(rule, word, this)
             return phonemicWord.derive(result, phonemic = true)
         }
         return phonemicWord
