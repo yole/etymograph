@@ -1,6 +1,7 @@
 package ru.yole.etymograph
 
 import java.util.*
+import kotlin.math.exp
 import kotlin.math.min
 
 class WordSegment(
@@ -154,6 +155,7 @@ class Word(
             Word(id ?: -1, text, language, gloss, fullGloss, pos, newClasses ?: classes).also {
                 if (keepStress) {
                     it.stressedPhonemeIndex = stressedPhonemeIndex
+                    it.explicitStress = explicitStress
                 }
                 it.segments = appendSegments(sourceSegments, newSegment)
                 if (phonemic != null) it.isPhonemic = phonemic

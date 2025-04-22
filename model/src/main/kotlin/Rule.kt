@@ -287,7 +287,8 @@ class Rule(
                 }
                 val result = deriveWord(word, resultWord.text, toLanguage, resultWord.isPhonemic, resultWord.stressedPhonemeIndex,
                     resultWord.segments, resultWord.classes, normalizeSegments = normalizeSegments,
-                    id = if (preserveId) word.id else -1)
+                    id = if (preserveId) word.id else -1,
+                    stress = if (resultWord.explicitStress) resultWord.stressedPhonemeIndex else null)
                 trace?.logRuleResult(this, result)
                 return result
             }

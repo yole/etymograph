@@ -661,9 +661,17 @@ class SpeInstruction(val pattern: SpePattern, val condition: RuleCondition? = nu
         )
         if (it.result() != phonemicWord.text) {
             trace?.logMatchedInstruction(rule, word, this)
+            val stress = if (word.explicitStress)
+                it.mapIndex(word.stressedPhonemeIndex)
+            else
+                null
             val segments = remapSegments(it, word.segments)
             return phonemicWord.derive(it.result(), phonemic = true).also {
                 it.segments = segments
+                if (stress != null) {
+                    it.stressedPhonemeIndex = stress
+                    it.explicitStress = true
+                }
             }
         }
         return phonemicWord

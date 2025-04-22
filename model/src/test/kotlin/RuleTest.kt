@@ -800,10 +800,14 @@ class RuleTest : QBaseTest() {
         val rule = parseRule(ce, q, """* ōj -> i""")
         val word = ce.word("grapōjan").apply {
             segments = listOf(WordSegment(4, 4, null, null, null, false))
+            stressedPhonemeIndex = 7
+            explicitStress = true
         }
         val newWord = rule.apply(word, emptyRepo)
         assertEquals(1, newWord.segments!!.size)
         assertEquals(3, newWord.segments!![0].length)
+        assertEquals(6, newWord.stressedPhonemeIndex)
+        assertTrue(newWord.explicitStress)
     }
 
     @Test
