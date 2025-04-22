@@ -1833,106 +1833,20 @@
             {
                 "instructions": [
                     {
-                        "type": "ChangeSound",
+                        "type": "Spe",
                         "args": [
-                            "r"
+                            "z > r / {V|j}_{V|j}"
                         ]
-                    }
-                ],
-                "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "relPhoneme",
-                            "parameter": "z",
-                            "relative": false
-                        },
-                        {
-                            "type": "or",
-                            "members": [
-                                {
-                                    "type": "relPhoneme",
-                                    "relativeIndex": -1,
-                                    "cls": "vowel"
-                                },
-                                {
-                                    "type": "relPhoneme",
-                                    "relativeIndex": -1,
-                                    "parameter": "j"
-                                }
-                            ]
-                        },
-                        {
-                            "type": "or",
-                            "members": [
-                                {
-                                    "type": "relPhoneme",
-                                    "relativeIndex": 1,
-                                    "cls": "vowel"
-                                },
-                                {
-                                    "type": "relPhoneme",
-                                    "relativeIndex": 1,
-                                    "parameter": "j"
-                                }
-                            ]
-                        }
-                    ]
-                }
-            },
-            {
-                "instructions": [
+                    },
                     {
-                        "type": "ChangeSound",
+                        "type": "Spe",
                         "args": [
-                            "r"
+                            "z > r / {V|j}r_{V|j}"
                         ]
                     }
                 ],
                 "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "relPhoneme",
-                            "parameter": "z",
-                            "relative": false
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": -1,
-                            "parameter": "r"
-                        },
-                        {
-                            "type": "or",
-                            "members": [
-                                {
-                                    "type": "relPhoneme",
-                                    "relativeIndex": 1,
-                                    "cls": "vowel"
-                                },
-                                {
-                                    "type": "relPhoneme",
-                                    "relativeIndex": 1,
-                                    "parameter": "j"
-                                }
-                            ]
-                        },
-                        {
-                            "type": "or",
-                            "members": [
-                                {
-                                    "type": "relPhoneme",
-                                    "relativeIndex": -2,
-                                    "cls": "vowel"
-                                },
-                                {
-                                    "type": "relPhoneme",
-                                    "relativeIndex": -2,
-                                    "parameter": "j"
-                                }
-                            ]
-                        }
-                    ]
+                    "type": "otherwise"
                 }
             }
         ],
@@ -6350,26 +6264,14 @@
             {
                 "instructions": [
                     {
-                        "type": "ChangeSound",
+                        "type": "Spe",
                         "args": [
-                            "r"
+                            "z > r / _[coronal]"
                         ]
                     }
                 ],
                 "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "relPhoneme",
-                            "parameter": "z",
-                            "relative": false
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": 1,
-                            "cls": "coronal"
-                        }
-                    ]
+                    "type": "otherwise"
                 }
             }
         ],
