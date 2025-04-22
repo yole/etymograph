@@ -203,6 +203,14 @@ class SpePatternTest : QBaseTest() {
     }
 
     @Test
+    fun negate() {
+        val text = "i > e / _!f"
+        val pattern = SpePattern.parse(q, q, text)
+        assertEquals("ifend", pattern.apply(q, "ifind"))
+        assertEquals(text, pattern.toRichText().toString())
+    }
+
+    @Test
     fun toStringSimple() {
         val pattern = SpePattern.parse(q, q, "a > o")
         assertEquals("a > o", pattern.toString())

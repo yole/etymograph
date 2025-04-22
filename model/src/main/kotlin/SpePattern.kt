@@ -258,7 +258,7 @@ class SpeAlternativeNode(val choices: List<List<SpeNode>>) : SpeTargetNode() {
     }
 }
 
-class SpeRepeatNode(val base: SpeNode): SpeNode() {
+class SpeRepeatNode(private val base: SpeNode): SpeNode() {
     override fun match(it: PhonemeIterator, context: SpeContext, trace: RuleTrace?): Boolean {
         while (base.match(it, context, trace));
         return true
@@ -271,6 +271,20 @@ class SpeRepeatNode(val base: SpeNode): SpeNode() {
 
     override fun toRichText(language: Language?): RichText {
         return base.toRichText(language) + "0".rich(subscript = true)
+    }
+}
+
+class SpeNegateNode(private val baseNode: SpeNode): SpeNode() {
+    override fun match(it: PhonemeIterator, context: SpeContext, trace: RuleTrace?): Boolean {
+        return !baseNode.match(it, context, trace)
+    }
+
+    override fun matchBackwards(it: PhonemeIterator, trace: RuleTrace?): Boolean {
+        return !baseNode.matchBackwards(it, trace)
+    }
+
+    override fun toRichText(language: Language?): RichText {
+        return "!".richText() + baseNode.toRichText(language)
     }
 }
 
@@ -437,25 +451,39 @@ class SpePattern(
                     result.add(SpeAlternativeNode(choices.map { parseNodes(language, it) }))
                     pos = alternativeEnd + 1
                 }
+                else if (text[pos] == '!') {
+                    val nextPhoneme = language.phonoPhonemeLookup.nextPhoneme(text, pos + 1)
+                    result.add(SpeNegateNode(nodeFromPhoneme(nextPhoneme, language)))
+                    pos += nextPhoneme.length + 1
+                }
                 else {
                     val nextPhoneme = language.phonoPhonemeLookup.nextPhoneme(text, pos)
                     if (nextPhoneme == "0") {
                         result[result.size - 1] = SpeRepeatNode(result.last())
-                    }
-                    else {
-                        result.add(when(nextPhoneme) {
-                            "#"-> SpeWordBoundaryNode
-                            "C" -> SpePhonemeClassNode(language,
-                                language.phonemeClassByName(PhonemeClass.consonantClassName) ?: throw SpeParseException("Consonant class not found"))
-                            "V" -> SpePhonemeClassNode(language,
-                                language.phonemeClassByName(PhonemeClass.vowelClassName) ?: throw SpeParseException("Vowel class not found"))
-                            else -> SpeLiteralNode(nextPhoneme)
-                        })
+                    } else {
+                        result.add(nodeFromPhoneme(nextPhoneme, language))
                     }
                     pos += nextPhoneme.length
                 }
             }
             return result
+        }
+
+        private fun nodeFromPhoneme(nextPhoneme: String, language: Language) = when (nextPhoneme) {
+            "#" -> SpeWordBoundaryNode
+            "C" -> SpePhonemeClassNode(
+                language,
+                language.phonemeClassByName(PhonemeClass.consonantClassName)
+                    ?: throw SpeParseException("Consonant class not found")
+            )
+
+            "V" -> SpePhonemeClassNode(
+                language,
+                language.phonemeClassByName(PhonemeClass.vowelClassName)
+                    ?: throw SpeParseException("Vowel class not found")
+            )
+
+            else -> SpeLiteralNode(nextPhoneme)
         }
 
         private fun parseClass(language: Language, text: String): PhonemeClass {
