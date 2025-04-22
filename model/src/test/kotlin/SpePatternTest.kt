@@ -173,6 +173,18 @@ class SpePatternTest : QBaseTest() {
     }
 
     @Test
+    fun replaceAlternative() {
+        val pattern = SpePattern.parse(q, q, "{a|o} > {e|i}")
+        assertEquals("eli", pattern.apply(q, "alo"))
+    }
+
+    @Test
+    fun replaceAlternativeLonger() {
+        val pattern = SpePattern.parse(q, q, "{ai|ou} > {eu|ia}")
+        assertEquals("eleu", pattern.apply(q, "elai"))
+    }
+
+    @Test
     fun longContext() {
         val pattern = SpePattern.parse(q, q, "i > e / _CC")
         assertEquals("dir", pattern.apply(q, "dir"))
