@@ -246,7 +246,12 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
     companion object {
         fun parse(s: String, context: RuleParseContext, prefix: String = "-"): RuleInstruction {
             if (s.startsWith("*")) {
-                return SpeInstruction(SpePattern.parse(context.fromLanguage, context.toLanguage, s.removePrefix("*").trim()))
+                val conditionPos = s.indexOf(" if ")
+                val conditionText = if (conditionPos >= 0) s.substring(conditionPos + 4).trim() else null
+                val patternText = if (conditionPos >= 0) s.substring(0, conditionPos) else s
+                val pattern = SpePattern.parse(context.fromLanguage, context.toLanguage, patternText.removePrefix("*").trim())
+                val condition = conditionText?.let { RuleCondition.parse(ParseBuffer(conditionText), context.fromLanguage) }
+                return SpeInstruction(pattern, condition)
             }
             if (!s.startsWith(prefix)) {
                 throw RuleParseException("Instructions must start with $prefix")
@@ -632,15 +637,15 @@ class ChangePhonemeClassInstruction(val relativeIndex: Int, val oldClass: String
     }
 }
 
-class SpeInstruction(val pattern: SpePattern)
+class SpeInstruction(val pattern: SpePattern, val condition: RuleCondition? = null)
     : RuleInstruction(InstructionType.Spe, pattern.toString())
 {
     override fun toRichText(graph: GraphRepository): RichText {
-        return pattern.toRichText()
+        return pattern.toRichText() + (condition?.let { " if " + it.toRichText() } ?: "")
     }
 
     override fun toEditableText(graph: GraphRepository): String {
-        return pattern.toString()
+        return pattern.toString() + (condition?.let { " if " + it.toEditableText() } ?: "")
     }
 
     override fun toSummaryText(graph: GraphRepository, condition: RuleCondition): String {
@@ -649,7 +654,11 @@ class SpeInstruction(val pattern: SpePattern)
 
     override fun apply(rule: Rule, branch: RuleBranch?, word: Word, graph: GraphRepository, trace: RuleTrace?): Word {
         val phonemicWord = word.asPhonemic()
-        val it = pattern.apply(phonemicWord, trace)
+        val it = pattern.apply(
+            phonemicWord,
+            { condition == null || condition.matches(phonemicWord, it, graph, trace) },
+            trace
+        )
         if (it.result() != phonemicWord.text) {
             trace?.logMatchedInstruction(rule, word, this)
             val segments = remapSegments(it, word.segments)

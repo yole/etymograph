@@ -806,6 +806,18 @@ class RuleTest : QBaseTest() {
         assertEquals(3, newWord.segments!![0].length)
     }
 
+    @Test
+    fun speRuleWithCondition() {
+        val text = "* a > i / _# if number of syllables is 1"
+        val rule = parseRule(ce, q, text)
+        val instruction = rule.singleInstruction() as SpeInstruction
+        assertNotNull(instruction.condition)
+        assertEquals("mi", rule.apply(q.word("ma"), repo).text)
+        assertEquals("ama", rule.apply(q.word("ama"), repo).text)
+        assertEquals(text, rule.toEditableText(repo))
+        assertEquals(text.removePrefix("* "), instruction.toRichText(repo).toString())
+    }
+
 
     /*
 

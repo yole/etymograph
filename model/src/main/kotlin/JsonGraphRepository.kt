@@ -58,7 +58,7 @@ data class LanguageDetailsData(
 
 @Serializable
 sealed class RuleConditionData {
-    abstract fun toRuntimeFormat(result: InMemoryGraphRepository, fromLanguage: Language): RuleCondition
+    abstract fun toRuntimeFormat(result: GraphRepository, fromLanguage: Language): RuleCondition
 }
 
 private fun requiredPhonemeClassByName(language: Language, phonemeClassName: String?): PhonemeClass? =
@@ -79,7 +79,7 @@ data class LeafRuleConditionData(
     val negated: Boolean = false,
     val baseLanguageShortName: String? = null
 ) : RuleConditionData() {
-    override fun toRuntimeFormat(result: InMemoryGraphRepository, fromLanguage: Language): RuleCondition {
+    override fun toRuntimeFormat(result: GraphRepository, fromLanguage: Language): RuleCondition {
         val phonemeClass = requiredPhonemeClassByName(fromLanguage, phonemeClassName)
         return LeafRuleCondition(type, phonemeClass, characters, negated, baseLanguageShortName)
     }
@@ -93,7 +93,7 @@ class SyllableRuleConditionData(
     @SerialName("cls") val phonemeClassName: String? = null,
     val parameter: String? = null
 ) : RuleConditionData() {
-    override fun toRuntimeFormat(result: InMemoryGraphRepository, fromLanguage: Language): RuleCondition {
+    override fun toRuntimeFormat(result: GraphRepository, fromLanguage: Language): RuleCondition {
         return SyllableRuleCondition(
             matchType,
             index,
@@ -109,7 +109,7 @@ class SyllableCountConditionData(
     val negated: Boolean = false,
     val expectCount: Int
 ) : RuleConditionData() {
-    override fun toRuntimeFormat(result: InMemoryGraphRepository, fromLanguage: Language): RuleCondition {
+    override fun toRuntimeFormat(result: GraphRepository, fromLanguage: Language): RuleCondition {
         return SyllableCountRuleCondition(condition, negated, expectCount)
     }
 }
@@ -122,7 +122,7 @@ class RelativeSyllableConditionData(
     val relativeIndex: Int? = null,
     val negated: Boolean = false
 ) : RuleConditionData() {
-    override fun toRuntimeFormat(result: InMemoryGraphRepository, fromLanguage: Language): RuleCondition {
+    override fun toRuntimeFormat(result: GraphRepository, fromLanguage: Language): RuleCondition {
         return RelativeSyllableRuleCondition(matchIndex, matchClass, relativeIndex, negated)
     }
 }
@@ -138,7 +138,7 @@ class RelativePhonemeRuleConditionData(
     val relative: Boolean = true,
     val baseLanguageShortName: String? = null
 ): RuleConditionData() {
-    override fun toRuntimeFormat(result: InMemoryGraphRepository, fromLanguage: Language): RuleCondition {
+    override fun toRuntimeFormat(result: GraphRepository, fromLanguage: Language): RuleCondition {
         val targetPhonemeClass = requiredPhonemeClassByName(fromLanguage, targetPhonemeClassName)
         return RelativePhonemeRuleCondition(
             negated,
@@ -160,7 +160,7 @@ class PhonemeEqualsRuleConditionData(
     val matchRelative: Boolean? = null,
     val negated: Boolean = false
 ) : RuleConditionData() {
-    override fun toRuntimeFormat(result: InMemoryGraphRepository, fromLanguage: Language): RuleCondition {
+    override fun toRuntimeFormat(result: GraphRepository, fromLanguage: Language): RuleCondition {
         return PhonemeEqualsRuleCondition(
             SeekTarget(index, phonemeClassName?.let { fromLanguage.phonemeClassByName(it) }, relative),
             matchIndex?.let {
@@ -177,7 +177,7 @@ class PhonemeEqualsRuleConditionData(
 data class OrRuleConditionData(
     val members: List<RuleConditionData>
 ) : RuleConditionData() {
-    override fun toRuntimeFormat(result: InMemoryGraphRepository, fromLanguage: Language): RuleCondition =
+    override fun toRuntimeFormat(result: GraphRepository, fromLanguage: Language): RuleCondition =
         OrRuleCondition(members.map { it.toRuntimeFormat(result, fromLanguage) })
 }
 
@@ -186,18 +186,18 @@ data class OrRuleConditionData(
 data class AndRuleConditionData(
     val members: List<RuleConditionData>
 ) : RuleConditionData() {
-    override fun toRuntimeFormat(result: InMemoryGraphRepository, fromLanguage: Language): RuleCondition =
+    override fun toRuntimeFormat(result: GraphRepository, fromLanguage: Language): RuleCondition =
         AndRuleCondition(members.map { it.toRuntimeFormat(result, fromLanguage) })
 }
 
 @Serializable
 @SerialName("otherwise")
 class OtherwiseConditionData : RuleConditionData() {
-    override fun toRuntimeFormat(result: InMemoryGraphRepository, fromLanguage: Language): RuleCondition = OtherwiseCondition
+    override fun toRuntimeFormat(result: GraphRepository, fromLanguage: Language): RuleCondition = OtherwiseCondition
 }
 
 @Serializable
-data class RuleInstructionData(val type: InstructionType, val args: Array<String>)
+data class RuleInstructionData(val type: InstructionType, val condition: RuleConditionData? = null, val args: Array<String>)
 
 @Serializable
 data class RuleBranchData(
@@ -866,7 +866,11 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
         }
 
         fun RuleInstruction.toSerializedFormat() =
-            RuleInstructionData(type, args = argsToSerializedFormat())
+            RuleInstructionData(
+                type,
+                condition = if (this is SpeInstruction) condition?.toSerializedFormat() else null,
+                args = argsToSerializedFormat()
+            )
 
         private fun RuleInstruction.argsToSerializedFormat(): Array<String> =
             when (this) {
@@ -982,7 +986,8 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                 InstructionType.PrependMorpheme, InstructionType.AppendMorpheme ->
                     MorphemeInstruction(insnData.type, insnData.args[0].toInt())
                 InstructionType.Spe ->
-                    SpeInstruction(SpePattern.parse(fromLanguage, toLanguage, insnData.args[0]))
+                    SpeInstruction(SpePattern.parse(fromLanguage, toLanguage, insnData.args[0]),
+                        insnData.condition?.toRuntimeFormat(result, fromLanguage))
                 else ->
                     RuleInstruction(insnData.type, insnData.args.firstOrNull() ?: "")
             }

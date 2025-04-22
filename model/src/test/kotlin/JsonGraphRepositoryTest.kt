@@ -66,13 +66,13 @@ class JsonGraphRepositoryTest : QBaseTest() {
 
     @Test
     fun serializeSpeRule() {
-        val rule = parseRule(q, q, "* d > l / #_")
+        val rule = parseRule(q, q, "* d > l / #_ if number of syllables is 1")
 
         val serializedData = rule.ruleToSerializedFormat()
         val branches = ruleBranchesFromSerializedFormat(repo, q, q, serializedData.branches)
         val insn = branches[0].instructions[0]
         assertTrue(insn is SpeInstruction)
-        assertEquals("d > l / #_", insn.toEditableText(repo))
+        assertEquals("d > l / #_ if number of syllables is 1", insn.toEditableText(repo))
     }
 
     @Test

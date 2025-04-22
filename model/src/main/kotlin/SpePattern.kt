@@ -265,16 +265,17 @@ class SpePattern(
     val following: List<SpeNode>
 )  {
     fun apply(language: Language, text: String, trace: RuleTrace? = null): String {
-        return apply(Word(-1, text, language), trace).result()
+        return apply(Word(-1, text, language), null, trace).result()
     }
 
-    fun apply(word: Word, trace: RuleTrace? = null): PhonemeIterator {
+    fun apply(word: Word, condition: ((PhonemeIterator) -> Boolean)? = null, trace: RuleTrace? = null): PhonemeIterator {
         val it = PhonemeIterator(word, null)
         while (true) {
             val itCopy = it.clone()
             if (before.matchNodes(itCopy, trace) &&
                 following.matchNodes(itCopy, trace) &&
-                preceding.matchNodesBackwards(it.clone(), trace)
+                preceding.matchNodesBackwards(it.clone(), trace) &&
+                (condition == null || condition.invoke(it.clone()))
             )
             {
                 val beforeLength = before.size
