@@ -3,7 +3,6 @@ package ru.yole.etymograph
 import java.text.Collator
 import java.text.Normalizer
 import java.util.*
-import kotlin.math.sin
 
 open class InMemoryGraphRepository : GraphRepository() {
     protected val languages = mutableMapOf<String, Language>()
