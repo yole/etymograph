@@ -217,6 +217,10 @@ class RuleController {
             ))
         }
 
+        val orphanExamples = if (isSPE() && logic.branches.size == 1)
+            examples.filter { it.instructions.isEmpty() }
+        else
+            examples.filter { it.branches.isEmpty() }
         return RuleViewModel(
             id, name,
             fromLanguage.shortName, toLanguage.shortName,
@@ -256,7 +260,7 @@ class RuleController {
                     )
                 }
             },
-            examples.filter { it.branches.isEmpty() }.map { exampleToViewModel(this, it, repo) },
+            orphanExamples.map { exampleToViewModel(this, it, repo) },
             paradigms.map { ParadigmRefViewModel(it.first.id, it.first.name, it.second) }
         )
     }
