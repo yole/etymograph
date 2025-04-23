@@ -3450,11 +3450,13 @@ components:
           type: "integer"
           format: "int32"
         becomesConsistent:
-          type: "integer"
-          format: "int32"
+          type: "array"
+          items:
+            $ref: "#/components/schemas/WordRefViewModel"
         becomesInconsistent:
-          type: "integer"
-          format: "int32"
+          type: "array"
+          items:
+            $ref: "#/components/schemas/WordRefViewModel"
         inconsistent:
           type: "integer"
           format: "int32"

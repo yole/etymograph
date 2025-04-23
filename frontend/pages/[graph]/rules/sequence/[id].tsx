@@ -109,9 +109,13 @@ export default function RuleSequence(params) {
 
         {reapplyResult && <div>
             Consistent: {reapplyResult.consistent};
-            becomes consistent: {reapplyResult.becomesConsistent};
-            becomes inconsistent: {reapplyResult.becomesInconsistent};
-            inconsistent: {reapplyResult.inconsistent}
+            {reapplyResult.becomesConsistent.length &&
+                <> becomes consistent: {reapplyResult.becomesConsistent.map(c => <><WordLink word={c}/>{' '}</>)}</>
+            }
+            {reapplyResult.becomesInconsistent.length &&
+                <> becomes inconsistent: {reapplyResult.becomesInconsistent.map(c => <><WordLink word={c}/>{' '}</>)}</>
+            }
+            {' '}inconsistent: {reapplyResult.inconsistent}
         </div>}
 
         <div>

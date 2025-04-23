@@ -616,8 +616,8 @@ class RuleController {
 
     data class ReapplyResultViewModel(
         val consistent: Int,
-        val becomesConsistent: Int,
-        val becomesInconsistent: Int,
+        val becomesConsistent: List<WordRefViewModel>,
+        val becomesInconsistent: List<WordRefViewModel>,
         val inconsistent: Int
     )
 
@@ -627,10 +627,10 @@ class RuleController {
         val sequence = repo.resolveRuleSequence(id)
         val result = repo.reapplyRuleSequence(sequence)
         return ReapplyResultViewModel(
-            result.getOrDefault(Consistency.CONSISTENT, 0),
-            result.getOrDefault(Consistency.BECOMES_CONSISTENT, 0),
-            result.getOrDefault(Consistency.BECOMES_INCONSISTENT, 0),
-            result.getOrDefault(Consistency.INCONSISTENT, 0)
+            result.getOrDefault(Consistency.CONSISTENT, emptyList()).size,
+            result.getOrDefault(Consistency.BECOMES_CONSISTENT, emptyList()).map { it.toRefViewModel(repo) },
+            result.getOrDefault(Consistency.BECOMES_INCONSISTENT, emptyList()).map { it.toRefViewModel(repo) },
+            result.getOrDefault(Consistency.INCONSISTENT, emptyList()).size
         )
     }
 

@@ -87,7 +87,7 @@ abstract class GraphRepository {
     abstract fun findSequencesContainingRule(rule: Rule): List<RuleSequence>
     abstract fun findSequencesContainingSequence(ruleSequence: RuleSequence): List<RuleSequence>
     abstract fun findDerivationsWithSequence(sequence: RuleSequence): List<List<Link>>
-    abstract fun reapplyRuleSequence(sequence: RuleSequence): Map<Consistency, Int>
+    abstract fun reapplyRuleSequence(sequence: RuleSequence): Map<Consistency, List<Word>>
 
     abstract fun findOrAddWord(
         text: String,

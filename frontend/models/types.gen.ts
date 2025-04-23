@@ -387,8 +387,8 @@ export type PublicationViewModel = {
 
 export type ReapplyResultViewModel = {
     consistent: number;
-    becomesConsistent: number;
-    becomesInconsistent: number;
+    becomesConsistent: Array<WordRefViewModel>;
+    becomesInconsistent: Array<WordRefViewModel>;
     inconsistent: number;
 };
 

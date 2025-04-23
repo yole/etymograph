@@ -492,13 +492,13 @@ open class InMemoryGraphRepository : GraphRepository() {
         }
     }
 
-    override fun reapplyRuleSequence(sequence: RuleSequence): Map<Consistency, Int> {
+    override fun reapplyRuleSequence(sequence: RuleSequence): Map<Consistency, List<Word>> {
         val allSequences = findSequencesContainingSequence(sequence)
         val directLinks = linksFrom.values.flatten().filter { it.sequence in allSequences }
-        val result = mutableMapOf<Consistency, Int>()
+        val result = mutableMapOf<Consistency, MutableList<Word>>()
         for (directLink in directLinks) {
             val consistency = applyRuleSequence(directLink, directLink.sequence!!)
-            result[consistency] = result.getOrDefault(consistency, 0) + 1
+            result.getOrPut(consistency) { mutableListOf() }.add(directLink.fromEntity as Word)
         }
         return result
     }
