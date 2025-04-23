@@ -274,6 +274,28 @@ class SpeRepeatNode(private val base: SpeNode): SpeNode() {
     }
 }
 
+class SpeOptionalNode(private val base: List<SpeNode>): SpeNode() {
+    override fun match(it: PhonemeIterator, context: SpeContext, trace: RuleTrace?): Boolean {
+        val copy = it.clone()
+        if (base.matchNodes(copy, context, trace)) {
+            it.catchUp(copy)
+        }
+        return true
+    }
+
+    override fun matchBackwards(it: PhonemeIterator, trace: RuleTrace?): Boolean {
+        val copy = it.clone()
+        if (base.matchNodesBackwards(copy, trace)) {
+            it.catchUp(copy)
+        }
+        return true
+    }
+
+    override fun toRichText(language: Language?): RichText {
+        return "(".richText() + base.joinToRichText("") { it.toRichText(language) } + ")"
+    }
+}
+
 class SpeNegateNode(private val baseNode: SpeNode): SpeNode() {
     override fun match(it: PhonemeIterator, context: SpeContext, trace: RuleTrace?): Boolean {
         return !baseNode.match(it, context, trace)
@@ -450,6 +472,15 @@ class SpePattern(
                     val choices = text.substring(pos + 1, alternativeEnd).split('|')
                     result.add(SpeAlternativeNode(choices.map { parseNodes(language, it) }))
                     pos = alternativeEnd + 1
+                }
+                else if (text[pos] == '(') {
+                    val optionalEnd = text.indexOf(')', pos)
+                    if (optionalEnd < 0) {
+                        throw SpeParseException("Missing curly brace in alternative")
+                    }
+                    val optionalPart = text.substring(pos + 1, optionalEnd)
+                    result.add(SpeOptionalNode(parseNodes(language, optionalPart)))
+                    pos = optionalEnd + 1
                 }
                 else if (text[pos] == '!') {
                     val nextPhoneme = language.phonoPhonemeLookup.nextPhoneme(text, pos + 1)

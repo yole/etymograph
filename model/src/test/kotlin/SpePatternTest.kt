@@ -211,6 +211,16 @@ class SpePatternTest : QBaseTest() {
     }
 
     @Test
+    fun optional() {
+        val text = "i > e / _(r)#"
+        val pattern = SpePattern.parse(q, q, text)
+        assertEquals("ale", pattern.apply(q, "ali"))
+        assertEquals("aler", pattern.apply(q, "alir"))
+        assertEquals("alif", pattern.apply(q, "alif"))
+        assertEquals(text, pattern.toRichText().toString())
+    }
+
+    @Test
     fun toStringSimple() {
         val pattern = SpePattern.parse(q, q, "a > o")
         assertEquals("a > o", pattern.toString())
