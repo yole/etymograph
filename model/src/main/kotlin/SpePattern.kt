@@ -2,7 +2,7 @@ package ru.yole.etymograph
 
 import kotlin.math.min
 
-class SpeContext(private val pattern: SpePattern) {
+class SpeContext(val trace: RuleTrace?, private val pattern: SpePattern) {
     private val matchIndexes = mutableMapOf<Int, Int>()
 
     fun recordMatchedAlternative(node: SpeAlternativeNode, index: Int) {
@@ -13,13 +13,13 @@ class SpeContext(private val pattern: SpePattern) {
     }
 
     fun findMatchedAlternative(node: SpeAlternativeNode): Int? {
-        val nodeIndex = pattern.after.indexOf(node) ?: return null
-        return matchIndexes[nodeIndex]
+        val nodeIndex = pattern.after.indexOf(node)
+        return if (nodeIndex < 0) null else matchIndexes[nodeIndex]
     }
 
     fun getBeforeNode(node: SpeAlternativeNode): SpeAlternativeNode? {
-        val nodeIndex = pattern.after.indexOf(node) ?: return null
-        return pattern.before[nodeIndex] as? SpeAlternativeNode
+        val nodeIndex = pattern.after.indexOf(node)
+        return if (nodeIndex < 0) null else pattern.before[nodeIndex] as? SpeAlternativeNode
     }
 
     fun findIndexToCopy(node: SpeNode): Int? {
@@ -30,8 +30,8 @@ class SpeContext(private val pattern: SpePattern) {
 }
 
 sealed class SpeNode {
-    abstract fun match(it: PhonemeIterator, context: SpeContext, trace: RuleTrace? = null): Boolean
-    abstract fun matchBackwards(it: PhonemeIterator, trace: RuleTrace? = null): Boolean
+    abstract fun match(it: PhonemeIterator, context: SpeContext): Boolean
+    abstract fun matchBackwards(it: PhonemeIterator, context: SpeContext): Boolean
     abstract fun toRichText(language: Language?): RichText
     open fun buildReplacementTooltip(beforeNode: SpeNode?, language: Language?): RichText {
         return toRichText(language)
@@ -44,12 +44,12 @@ sealed class SpeNode {
 }
 
 sealed class SpeTargetNode : SpeNode() {
-    abstract fun replace(it: PhonemeIterator, relativeIndex: Int, context: SpeContext, trace: RuleTrace?)
+    abstract fun replace(it: PhonemeIterator, relativeIndex: Int, context: SpeContext)
     abstract fun insert(it: PhonemeIterator, relativeIndex: Int, context: SpeContext)
 }
 
 abstract class SpePhonemeNode : SpeTargetNode() {
-    override fun match(it: PhonemeIterator, context: SpeContext, trace: RuleTrace?): Boolean {
+    override fun match(it: PhonemeIterator, context: SpeContext): Boolean {
         if (it.atEnd()) {
             return false
         }
@@ -60,7 +60,7 @@ abstract class SpePhonemeNode : SpeTargetNode() {
         return false
     }
 
-    override fun matchBackwards(it: PhonemeIterator, trace: RuleTrace?): Boolean {
+    override fun matchBackwards(it: PhonemeIterator, context: SpeContext): Boolean {
         if (!it.advanceBy(-1)) {
             return false
         }
@@ -83,7 +83,7 @@ class SpeLiteralNode(val text: String) : SpePhonemeNode() {
         return text == it.current
     }
 
-    override fun replace(it: PhonemeIterator, relativeIndex: Int, context: SpeContext, trace: RuleTrace?) {
+    override fun replace(it: PhonemeIterator, relativeIndex: Int, context: SpeContext) {
         it.replaceAtRelative(relativeIndex, text)
     }
 
@@ -122,8 +122,8 @@ class SpePhonemeClassNode(val language: Language, val phonemeClass: PhonemeClass
         return "[".rich() + name.rich(tooltip = matchingPhonemes)+ "]".rich()
     }
 
-    override fun replace(it: PhonemeIterator, relativeIndex: Int, context: SpeContext, trace: RuleTrace?) {
-        replacePhonemeByFeatures(it, relativeIndex, phonemeClass, trace)
+    override fun replace(it: PhonemeIterator, relativeIndex: Int, context: SpeContext) {
+        replacePhonemeByFeatures(it, relativeIndex, phonemeClass, context.trace)
     }
 
     override fun insert(it: PhonemeIterator, relativeIndex: Int, context: SpeContext) {
@@ -205,11 +205,11 @@ class SpePhonemeClassNode(val language: Language, val phonemeClass: PhonemeClass
 }
 
 object SpeWordBoundaryNode : SpeNode() {
-    override fun match(it: PhonemeIterator, context: SpeContext, trace: RuleTrace?): Boolean {
+    override fun match(it: PhonemeIterator, context: SpeContext): Boolean {
         return it.atEnd()
     }
 
-    override fun matchBackwards(it: PhonemeIterator, trace: RuleTrace?): Boolean {
+    override fun matchBackwards(it: PhonemeIterator, context: SpeContext): Boolean {
         return it.atBeginning()
     }
 
@@ -219,10 +219,10 @@ object SpeWordBoundaryNode : SpeNode() {
 }
 
 class SpeAlternativeNode(val choices: List<List<SpeNode>>) : SpeTargetNode() {
-    override fun match(it: PhonemeIterator, context: SpeContext, trace: RuleTrace?): Boolean {
+    override fun match(it: PhonemeIterator, context: SpeContext): Boolean {
         for ((index, choice) in choices.withIndex()) {
             val copy = it.clone()
-            if (choice.matchNodes(copy, context, trace)) {
+            if (choice.matchNodes(copy, context)) {
                 context.recordMatchedAlternative(this, index)
                 it.catchUp(copy)
                 return true
@@ -231,10 +231,10 @@ class SpeAlternativeNode(val choices: List<List<SpeNode>>) : SpeTargetNode() {
         return false
     }
 
-    override fun matchBackwards(it: PhonemeIterator, trace: RuleTrace?): Boolean {
+    override fun matchBackwards(it: PhonemeIterator, context: SpeContext): Boolean {
         for (choice in choices) {
             val copy = it.clone()
-            if (choice.matchNodesBackwards(copy, trace)) {
+            if (choice.matchNodesBackwards(copy, context)) {
                 it.catchUp(copy)
                 return true
             }
@@ -256,11 +256,11 @@ class SpeAlternativeNode(val choices: List<List<SpeNode>>) : SpeTargetNode() {
         return result
     }
 
-    override fun replace(it: PhonemeIterator, relativeIndex: Int, context: SpeContext, trace: RuleTrace?) {
+    override fun replace(it: PhonemeIterator, relativeIndex: Int, context: SpeContext) {
         val index = context.findMatchedAlternative(this)
         val beforeNode = context.getBeforeNode(this)
         if (index != null && beforeNode != null) {
-            applyNodes(it, relativeIndex, context, trace, beforeNode.choices[index], choices[index] as List<SpeTargetNode>)
+            applyNodes(it, relativeIndex, context, beforeNode.choices[index], choices[index] as List<SpeTargetNode>)
         }
     }
 
@@ -270,13 +270,13 @@ class SpeAlternativeNode(val choices: List<List<SpeNode>>) : SpeTargetNode() {
 }
 
 class SpeRepeatNode(private val base: SpeNode): SpeNode() {
-    override fun match(it: PhonemeIterator, context: SpeContext, trace: RuleTrace?): Boolean {
-        while (base.match(it, context, trace));
+    override fun match(it: PhonemeIterator, context: SpeContext): Boolean {
+        while (base.match(it, context));
         return true
     }
 
-    override fun matchBackwards(it: PhonemeIterator, trace: RuleTrace?): Boolean {
-        while (base.matchBackwards(it, trace));
+    override fun matchBackwards(it: PhonemeIterator, context: SpeContext): Boolean {
+        while (base.matchBackwards(it, context));
         return true
     }
 
@@ -286,17 +286,17 @@ class SpeRepeatNode(private val base: SpeNode): SpeNode() {
 }
 
 class SpeOptionalNode(private val base: List<SpeNode>): SpeNode() {
-    override fun match(it: PhonemeIterator, context: SpeContext, trace: RuleTrace?): Boolean {
+    override fun match(it: PhonemeIterator, context: SpeContext): Boolean {
         val copy = it.clone()
-        if (base.matchNodes(copy, context, trace)) {
+        if (base.matchNodes(copy, context)) {
             it.catchUp(copy)
         }
         return true
     }
 
-    override fun matchBackwards(it: PhonemeIterator, trace: RuleTrace?): Boolean {
+    override fun matchBackwards(it: PhonemeIterator, context: SpeContext): Boolean {
         val copy = it.clone()
-        if (base.matchNodesBackwards(copy, trace)) {
+        if (base.matchNodesBackwards(copy, context)) {
             it.catchUp(copy)
         }
         return true
@@ -308,12 +308,12 @@ class SpeOptionalNode(private val base: List<SpeNode>): SpeNode() {
 }
 
 class SpeNegateNode(private val baseNode: SpeNode): SpeNode() {
-    override fun match(it: PhonemeIterator, context: SpeContext, trace: RuleTrace?): Boolean {
-        return !baseNode.match(it, context, trace)
+    override fun match(it: PhonemeIterator, context: SpeContext): Boolean {
+        return !baseNode.match(it, context)
     }
 
-    override fun matchBackwards(it: PhonemeIterator, trace: RuleTrace?): Boolean {
-        return !baseNode.matchBackwards(it, trace)
+    override fun matchBackwards(it: PhonemeIterator, context: SpeContext): Boolean {
+        return !baseNode.matchBackwards(it, context)
     }
 
     override fun toRichText(language: Language?): RichText {
@@ -321,23 +321,23 @@ class SpeNegateNode(private val baseNode: SpeNode): SpeNode() {
     }
 }
 
-private fun List<SpeNode>.matchNodes(it: PhonemeIterator, context: SpeContext, trace: RuleTrace? = null): Boolean {
+private fun List<SpeNode>.matchNodes(it: PhonemeIterator, context: SpeContext): Boolean {
     return all {
-        node -> node.match(it, context, trace).also { result -> trace?.logNodeMatch(it, node, result) }
+        node -> node.match(it, context).also { result -> context.trace?.logNodeMatch(it, node, result) }
     }
 }
 
-private fun List<SpeNode>.matchNodesBackwards(it: PhonemeIterator, trace: RuleTrace? = null): Boolean {
+private fun List<SpeNode>.matchNodesBackwards(it: PhonemeIterator, context: SpeContext): Boolean {
     return reversed().all {
-        node -> node.matchBackwards(it, trace).also { result -> trace?.logNodeMatch(it, node, result) }
+        node -> node.matchBackwards(it, context).also { result -> context.trace?.logNodeMatch(it, node, result) }
     }
 }
 
-private fun applyNodes(it: PhonemeIterator, relativeIndex: Int, context: SpeContext, trace: RuleTrace?, before: List<SpeNode>, after: List<SpeTargetNode>) {
+private fun applyNodes(it: PhonemeIterator, relativeIndex: Int, context: SpeContext, before: List<SpeNode>, after: List<SpeTargetNode>) {
     val beforeLength = before.size
     val afterLength = after.size
     for (i in 0..<min(beforeLength, afterLength)) {
-        after[i].replace(it, i + relativeIndex, context, trace)
+        after[i].replace(it, i + relativeIndex, context)
     }
     if (beforeLength < afterLength) {
         for (i in beforeLength..<afterLength) {
@@ -367,14 +367,14 @@ class SpePattern(
         val it = PhonemeIterator(word, null)
         while (true) {
             val itCopy = it.clone()
-            val context = SpeContext(this)
-            if (before.matchNodes(itCopy, context, trace) &&
-                following.matchNodes(itCopy, context, trace) &&
-                preceding.matchNodesBackwards(it.clone(), trace) &&
+            val context = SpeContext(trace, this)
+            if (before.matchNodes(itCopy, context) &&
+                following.matchNodes(itCopy, context) &&
+                preceding.matchNodesBackwards(it.clone(), context) &&
                 (condition == null || condition.invoke(it.clone()))
             )
             {
-                applyNodes(it, 0, context, trace, before, after)
+                applyNodes(it, 0, context, before, after)
             }
             if (!it.advance()) break
         }
