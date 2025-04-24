@@ -1907,28 +1907,19 @@
             {
                 "instructions": [
                     {
-                        "type": "SoundDisappears",
+                        "type": "Spe",
+                        "condition": {
+                            "type": "relPhoneme",
+                            "relativeIndex": -1,
+                            "cls": "non-stressed"
+                        },
                         "args": [
-                            "0"
+                            "n > 0 / ī_#"
                         ]
                     }
                 ],
                 "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "relPhoneme",
-                            "cls": "word-final",
-                            "parameter": "n",
-                            "relative": false
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": -1,
-                            "cls": "non-stressed",
-                            "parameter": "ī"
-                        }
-                    ]
+                    "type": "otherwise"
                 }
             }
         ],

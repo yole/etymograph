@@ -297,53 +297,42 @@
             {
                 "instructions": [
                     {
-                        "type": "SoundIsGeminated",
-                        "args": []
+                        "type": "Spe",
+                        "condition": {
+                            "type": "and",
+                            "members": [
+                                {
+                                    "type": "relPhoneme",
+                                    "negated": true,
+                                    "parameter": "r",
+                                    "relative": false
+                                },
+                                {
+                                    "type": "relPhoneme",
+                                    "negated": true,
+                                    "parameter": "z",
+                                    "relative": false
+                                },
+                                {
+                                    "type": "relPhoneme",
+                                    "negated": true,
+                                    "parameter": "j",
+                                    "relative": false
+                                },
+                                {
+                                    "type": "relPhoneme",
+                                    "relativeIndex": -1,
+                                    "cls": "non-diphthong short vowel"
+                                }
+                            ]
+                        },
+                        "args": [
+                            "C > CC / _j"
+                        ]
                     }
                 ],
                 "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "relPhoneme",
-                            "cls": "consonant",
-                            "relative": false
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "negated": true,
-                            "parameter": "r",
-                            "relative": false
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "negated": true,
-                            "parameter": "z",
-                            "relative": false
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "negated": true,
-                            "parameter": "j",
-                            "relative": false
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": -1,
-                            "cls": "short vowel"
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": -1,
-                            "negated": true,
-                            "cls": "diphthong"
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": 1,
-                            "parameter": "j"
-                        }
-                    ]
+                    "type": "otherwise"
                 }
             }
         ],
@@ -394,105 +383,53 @@
             {
                 "instructions": [
                     {
-                        "type": "ApplySoundRule",
-                        "args": [
-                            "1984"
-                        ]
-                    }
-                ],
-                "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "or",
+                        "type": "Spe",
+                        "condition": {
+                            "type": "and",
                             "members": [
                                 {
                                     "type": "relPhoneme",
-                                    "parameter": "i",
+                                    "negated": true,
+                                    "cls": "diphthong",
                                     "relative": false
                                 },
                                 {
-                                    "type": "relPhoneme",
-                                    "parameter": "u",
-                                    "relative": false
-                                }
-                            ]
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "negated": true,
-                            "cls": "diphthong",
-                            "relative": false
-                        },
-                        {
-                            "type": "leaf",
-                            "cond": "EndOfWord"
-                        },
-                        {
-                            "type": "syllableCount",
-                            "condition": ">=",
-                            "expectCount": 3
-                        }
-                    ]
-                }
-            }
-        ],
-        "sourceRefs": [
-            {
-                "pubId": 5,
-                "refText": "55"
-            },
-            {
-                "pubId": 6,
-                "refText": "3.29"
-            }
-        ]
-    },
-    {
-        "id": 1984,
-        "name": "pwgmc-word-final-i-u-deletion",
-        "fromLang": "PWGmc",
-        "toLang": "PWGmc",
-        "branches": [
-            {
-                "instructions": [
-                    {
-                        "type": "NoChange",
-                        "args": []
-                    }
-                ],
-                "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": -1,
-                            "cls": "consonant"
-                        },
-                        {
-                            "type": "or",
-                            "members": [
-                                {
-                                    "type": "relPhoneme",
-                                    "relativeIndex": -2,
-                                    "parameter": "i"
+                                    "type": "syllableCount",
+                                    "condition": ">=",
+                                    "expectCount": 3
                                 },
                                 {
-                                    "type": "relPhoneme",
-                                    "relativeIndex": -2,
-                                    "parameter": "u"
+                                    "type": "not",
+                                    "arg": {
+                                        "type": "and",
+                                        "members": [
+                                            {
+                                                "type": "relPhoneme",
+                                                "relativeIndex": -1,
+                                                "cls": "consonant"
+                                            },
+                                            {
+                                                "type": "or",
+                                                "members": [
+                                                    {
+                                                        "type": "relPhoneme",
+                                                        "relativeIndex": -2,
+                                                        "parameter": "i"
+                                                    },
+                                                    {
+                                                        "type": "relPhoneme",
+                                                        "relativeIndex": -2,
+                                                        "parameter": "u"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
                                 }
                             ]
-                        }
-                    ]
-                }
-            },
-            {
-                "instructions": [
-                    {
-                        "type": "SoundDisappears",
+                        },
                         "args": [
-                            ""
+                            "{i|u} > 0 / _#"
                         ]
                     }
                 ],
@@ -505,6 +442,10 @@
             {
                 "pubId": 5,
                 "refText": "55"
+            },
+            {
+                "pubId": 6,
+                "refText": "3.29"
             }
         ]
     },
