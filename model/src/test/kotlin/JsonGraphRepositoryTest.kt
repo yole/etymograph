@@ -101,7 +101,7 @@ class JsonGraphRepositoryTest : QBaseTest() {
     @Test
     fun serializeBranchComment() {
         val rule = parseRule(q, q, """
-            # This is a comment
+            $ This is a comment
             - insert 'i' before last consonant
         """.trimIndent())
 

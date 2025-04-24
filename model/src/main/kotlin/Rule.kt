@@ -154,7 +154,7 @@ class RuleBranch(val condition: RuleCondition, val instructions: List<RuleInstru
     }
 
     fun toEditableText(graph: GraphRepository): String {
-        val commentString = (comment?.split('\n')?.joinToString("") { "# $it\n" }) ?: ""
+        val commentString = (comment?.split('\n')?.joinToString("") { "$COMMENT_DELIMITER $it\n" }) ?: ""
         return commentString + condition.toEditableText() + ":\n" +
                 instructions.joinToString("\n") {
                     (if (it is SpeInstruction) "* " else " - ") + it.toEditableText(graph)
@@ -178,10 +178,12 @@ class RuleBranch(val condition: RuleCondition, val instructions: List<RuleInstru
     }
 
     companion object {
+        const val COMMENT_DELIMITER = "$"
+
         fun parse(lines: LineBuffer, context: RuleParseContext): RuleBranch {
             val comment = mutableListOf<String>()
-            lines.nextWhile({ line -> line.startsWith("#") }) { line ->
-                comment.add(line.removePrefix("#").trim())
+            lines.nextWhile({ line -> line.startsWith(COMMENT_DELIMITER) }) { line ->
+                comment.add(line.removePrefix(COMMENT_DELIMITER).trim())
             }
 
             val condition = lines.nextIf { it.endsWith(":") }?.let { line ->
@@ -195,7 +197,7 @@ class RuleBranch(val condition: RuleCondition, val instructions: List<RuleInstru
 
             val instructions = mutableListOf<RuleInstruction>()
             while (true) {
-                val line = lines.nextIf { !it.startsWith("#") && !it.startsWith("=" )&& !it.endsWith(":") }
+                val line = lines.nextIf { !it.startsWith(COMMENT_DELIMITER) && !it.startsWith("=" )&& !it.endsWith(":") }
                     ?: break
                 instructions.add(RuleInstruction.parse(line, context))
             }
@@ -372,7 +374,7 @@ class Rule(
     fun toEditableText(graph: GraphRepository): String {
         if (isUnconditional()) {
             val branch = logic.branches[0]
-            val commentString = (branch.comment?.split('\n')?.joinToString("") { "# $it\n" }) ?: ""
+            val commentString = (branch.comment?.split('\n')?.joinToString("") { "${RuleBranch.COMMENT_DELIMITER} $it\n" }) ?: ""
             return commentString + branch.instructions.joinToString("\n") {
                 (if (it is SpeInstruction) "* " else " - ") + it.toEditableText(graph)
             }

@@ -117,8 +117,8 @@ class RuleTest : QBaseTest() {
     @Test
     fun branchParseComment() {
         val branchText = """
-            # this is a comment
-            # second line
+            $ this is a comment
+            $ second line
             word ends with 'e':
              - append 'a'
         """.trimIndent()
@@ -149,10 +149,10 @@ class RuleTest : QBaseTest() {
     fun ruleParseComment() {
         val branches = Rule.parseBranches(
             """
-            # this is e
+            $ this is e
             word ends with 'e':
             - append 'a'
-            # this is a
+            $ this is a
             word ends with 'i':
             - append 'r'
         """.trimIndent(), q.parseContext()
@@ -773,7 +773,7 @@ class RuleTest : QBaseTest() {
 
     @Test
     fun speRuleComment() {
-        val ruleText = "# SPE rule\n* d > l / #_"
+        val ruleText = "$ SPE rule\n* d > l / #_"
         val rule = parseRule(q, q, ruleText)
         assertEquals(ruleText,rule.toEditableText(repo))
     }
