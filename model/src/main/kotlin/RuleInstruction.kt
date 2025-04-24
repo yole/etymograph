@@ -31,7 +31,7 @@ enum class InstructionType(
 
 const val DISALLOW_CLASS = "disallow"
 
-open class RuleInstruction(val type: InstructionType, val arg: String) {
+open class RuleInstruction(val type: InstructionType, val arg: String, val comment: String?)  {
     open fun apply(rule: Rule, branch: RuleBranch?, word: Word, graph: GraphRepository, trace: RuleTrace? = null): Word = when(type) {
         InstructionType.NoChange -> word
         InstructionType.ChangeEnding -> changeEnding(word, rule, branch, graph)
@@ -244,14 +244,14 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
     }
 
     companion object {
-        fun parse(s: String, context: RuleParseContext, prefix: String = "-"): RuleInstruction {
+        fun parse(s: String, context: RuleParseContext, prefix: String = "-", comment: String?): RuleInstruction {
             if (s.startsWith("*")) {
                 val conditionPos = s.indexOf(" if ")
                 val conditionText = if (conditionPos >= 0) s.substring(conditionPos + 4).trim() else null
                 val patternText = if (conditionPos >= 0) s.substring(0, conditionPos) else s
                 val pattern = SpePattern.parse(context.fromLanguage, context.toLanguage, patternText.removePrefix("*").trim())
                 val condition = conditionText?.let { RuleCondition.parse(ParseBuffer(conditionText), context.fromLanguage) }
-                return SpeInstruction(pattern, condition)
+                return SpeInstruction(pattern, condition, comment)
             }
             if (!s.startsWith(prefix)) {
                 throw RuleParseException("Instructions must start with $prefix")
@@ -262,23 +262,23 @@ open class RuleInstruction(val type: InstructionType, val arg: String) {
                 if (match != null) {
                     val arg = if (match.groups.size > 1) match.groupValues[1] else ""
                     return when(type) {
-                        InstructionType.ApplyRule -> ApplyRuleInstruction(context.ruleRefFactory(arg))
-                        InstructionType.ApplySoundRule -> ApplySoundRuleInstruction.parse(match, context)
-                        InstructionType.ApplyStress -> ApplyStressInstruction(context.fromLanguage, arg)
+                        InstructionType.ApplyRule -> ApplyRuleInstruction(context.ruleRefFactory(arg), comment)
+                        InstructionType.ApplySoundRule -> ApplySoundRuleInstruction.parse(match, context, comment)
+                        InstructionType.ApplyStress -> ApplyStressInstruction(context.fromLanguage, arg, comment)
                         InstructionType.Prepend, InstructionType.Append ->
-                            PrependAppendInstruction(type, context.fromLanguage, arg)
+                            PrependAppendInstruction(type, context.fromLanguage, arg, comment)
                         InstructionType.PrependMorpheme, InstructionType.AppendMorpheme -> {
                             val text = match.groupValues[1]
                             val gloss = match.groupValues[2]
                             val word = context.repo.wordsByText(context.fromLanguage, text)
                                 .firstOrNull { it.getOrComputeGloss(context.repo) == gloss }
                                 ?: throw RuleParseException("Cannot find word with text '$text' and gloss '$gloss'")
-                            MorphemeInstruction(type, word.id)
+                            MorphemeInstruction(type, word.id, comment)
                         }
-                        InstructionType.Insert -> InsertInstruction.parse(context.fromLanguage, match)
-                        InstructionType.ChangeSoundClass -> ChangePhonemeClassInstruction.parse(match)
-                        InstructionType.SoundDisappears -> RuleInstruction(type, RelativeOrdinals.parseMatch(match, 1).toString())
-                        else -> RuleInstruction(type, arg)
+                        InstructionType.Insert -> InsertInstruction.parse(context.fromLanguage, match, comment)
+                        InstructionType.ChangeSoundClass -> ChangePhonemeClassInstruction.parse(match, comment)
+                        InstructionType.SoundDisappears -> RuleInstruction(type, RelativeOrdinals.parseMatch(match, 1).toString(), comment)
+                        else -> RuleInstruction(type, arg, comment)
                     }
                 }
             }
@@ -310,8 +310,8 @@ fun List<RuleInstruction>.apply(rule: Rule, branch: RuleBranch?, word: Word, gra
     return fold(normalizedWord) { s, i -> i.apply(rule, branch, s, graph, trace) }
 }
 
-class ApplyRuleInstruction(val ruleRef: RuleRef)
-    : RuleInstruction(InstructionType.ApplyRule, "")
+class ApplyRuleInstruction(val ruleRef: RuleRef, comment: String?)
+    : RuleInstruction(InstructionType.ApplyRule, "", comment)
 {
     override fun apply(rule: Rule, branch: RuleBranch?, word: Word, graph: GraphRepository, trace: RuleTrace?): Word {
         val targetRule = ruleRef.resolve()
@@ -360,8 +360,8 @@ class ApplyRuleInstruction(val ruleRef: RuleRef)
     }
 }
 
-class ApplySoundRuleInstruction(language: Language, val ruleRef: RuleRef, arg: String?)
-    : RuleInstruction(InstructionType.ApplySoundRule, arg ?: "")
+class ApplySoundRuleInstruction(language: Language, val ruleRef: RuleRef, arg: String?, comment: String?)
+    : RuleInstruction(InstructionType.ApplySoundRule, arg ?: "", comment)
 {
     val seekTarget = arg?.let { SeekTarget.parse(it, language) }
 
@@ -406,14 +406,14 @@ class ApplySoundRuleInstruction(language: Language, val ruleRef: RuleRef, arg: S
     }
 
     companion object {
-        fun parse(match: MatchResult, context: RuleParseContext): ApplySoundRuleInstruction {
+        fun parse(match: MatchResult, context: RuleParseContext, comment: String?): ApplySoundRuleInstruction {
             val ruleRef = context.ruleRefFactory(match.groupValues[1])
-            return ApplySoundRuleInstruction(context.fromLanguage, ruleRef, match.groupValues[3].takeIf { it.isNotEmpty() })
+            return ApplySoundRuleInstruction(context.fromLanguage, ruleRef, match.groupValues[3].takeIf { it.isNotEmpty() }, comment)
         }
     }
 }
 
-class ApplyStressInstruction(val language: Language, arg: String) : RuleInstruction(InstructionType.ApplyStress, arg) {
+class ApplyStressInstruction(val language: Language, arg: String, comment: String?) : RuleInstruction(InstructionType.ApplyStress, arg, comment) {
     private val syllableIndex: Int
     private val root: Boolean
 
@@ -467,7 +467,9 @@ class ApplyStressInstruction(val language: Language, arg: String) : RuleInstruct
     }
 }
 
-class PrependAppendInstruction(type: InstructionType, language: Language, arg: String) : RuleInstruction(type, arg) {
+class PrependAppendInstruction(type: InstructionType, language: Language, arg: String, comment: String?)
+    : RuleInstruction(type, arg, comment)
+{
     val seekTarget = if (arg.startsWith('\'')) null else SeekTarget.parse(arg, language)
     val literalArg = if (arg.startsWith('\'')) arg.removePrefix("'").removeSuffix("'") else null
 
@@ -515,7 +517,9 @@ class PrependAppendInstruction(type: InstructionType, language: Language, arg: S
     }
 }
 
-class InsertInstruction(arg: String, val relIndex: Int, val seekTarget: SeekTarget) : RuleInstruction(InstructionType.Insert, arg) {
+class InsertInstruction(arg: String, val relIndex: Int, val seekTarget: SeekTarget, comment: String?)
+    : RuleInstruction(InstructionType.Insert, arg, comment)
+{
     override fun apply(rule: Rule, branch: RuleBranch?, word: Word, graph: GraphRepository, trace: RuleTrace?): Word {
         val phonemes = PhonemeIterator(word, graph)
         if (!phonemes.seek(seekTarget)) return word
@@ -534,18 +538,19 @@ class InsertInstruction(arg: String, val relIndex: Int, val seekTarget: SeekTarg
     }
 
     companion object {
-        fun parse(language: Language, match: MatchResult): InsertInstruction {
+        fun parse(language: Language, match: MatchResult, comment: String?): InsertInstruction {
             return InsertInstruction(
                 match.groupValues[1],
                 if (match.groupValues[2] == "before") -1 else 1,
-                SeekTarget.parse(match.groupValues[3], language)
+                SeekTarget.parse(match.groupValues[3], language),
+                comment
             )
         }
     }
 }
 
-class MorphemeInstruction(type: InstructionType, val morphemeId: Int)
-    : RuleInstruction(type, morphemeId.toString())
+class MorphemeInstruction(type: InstructionType, val morphemeId: Int, comment: String?)
+    : RuleInstruction(type, morphemeId.toString(), comment)
 {
     init {
         if (type != InstructionType.PrependMorpheme && type != InstructionType.AppendMorpheme) {
@@ -584,8 +589,8 @@ class MorphemeInstruction(type: InstructionType, val morphemeId: Int)
     }
 }
 
-class ChangePhonemeClassInstruction(val relativeIndex: Int, val oldClass: String, val newClass: String)
-    : RuleInstruction(InstructionType.ChangeSoundClass, "")
+class ChangePhonemeClassInstruction(val relativeIndex: Int, val oldClass: String, val newClass: String, comment: String?)
+    : RuleInstruction(InstructionType.ChangeSoundClass, "", comment)
 {
     override fun apply(word: Word, phonemes: PhonemeIterator, graph: GraphRepository, trace: RuleTrace?) {
         replacePhonemeClass(phonemes, oldClass, newClass, trace)
@@ -630,15 +635,15 @@ class ChangePhonemeClassInstruction(val relativeIndex: Int, val oldClass: String
     }
 
     companion object {
-        fun parse(match: MatchResult): ChangePhonemeClassInstruction {
+        fun parse(match: MatchResult, comment: String?): ChangePhonemeClassInstruction {
             val relativeIndex = RelativeOrdinals.parseMatch(match, 1)
-            return ChangePhonemeClassInstruction(relativeIndex, match.groupValues[2], match.groupValues[3])
+            return ChangePhonemeClassInstruction(relativeIndex, match.groupValues[2], match.groupValues[3], comment)
         }
     }
 }
 
-class SpeInstruction(val pattern: SpePattern, val condition: RuleCondition? = null)
-    : RuleInstruction(InstructionType.Spe, pattern.toString())
+class SpeInstruction(val pattern: SpePattern, val condition: RuleCondition? = null, comment: String?)
+    : RuleInstruction(InstructionType.Spe, pattern.toString(), comment)
 {
     override fun toRichText(graph: GraphRepository): RichText {
         return pattern.toRichText() + (condition?.let { " if " + it.toRichText() } ?: "")

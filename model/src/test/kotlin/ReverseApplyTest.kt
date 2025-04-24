@@ -75,7 +75,7 @@ class ReverseApplyTest : QBaseTest() {
         phonemes.advanceTo(1)
         assertEquals(listOf("cira"), rule.reverseApplyToPhoneme(phonemes))
 
-        val applySoundRuleInstruction = ApplySoundRuleInstruction(q, RuleRef.to(rule), "first vowel")
+        val applySoundRuleInstruction = ApplySoundRuleInstruction(q, RuleRef.to(rule), "first vowel", null)
         assertEquals("cira", applySoundRuleInstruction.reverseApply(rule, "círa", q, emptyRepo).single())
     }
 
@@ -85,7 +85,7 @@ class ReverseApplyTest : QBaseTest() {
         val phonemes = PhonemeIterator(q.word("bira"), null)
         assertEquals(listOf("pira"), rule.reverseApplyToPhoneme(phonemes))
 
-        val applySoundRuleInstruction = ApplySoundRuleInstruction(q, RuleRef.to(rule), "first sound")
+        val applySoundRuleInstruction = ApplySoundRuleInstruction(q, RuleRef.to(rule), "first sound", null)
         assertEquals("pira", applySoundRuleInstruction.reverseApply(rule, "bira", q, emptyRepo).single())
     }
 
@@ -96,7 +96,7 @@ class ReverseApplyTest : QBaseTest() {
         phonemes.advanceTo(1)
         assertEquals(listOf("cira"), rule.reverseApplyToPhoneme(phonemes))
 
-        val applySoundRuleInstruction = ApplySoundRuleInstruction(q, RuleRef.to(rule), "first vowel")
+        val applySoundRuleInstruction = ApplySoundRuleInstruction(q, RuleRef.to(rule), "first vowel", null)
         assertEquals("cira", applySoundRuleInstruction.reverseApply(rule, "círa", q, emptyRepo).single())
     }
 

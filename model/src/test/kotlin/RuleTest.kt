@@ -27,7 +27,7 @@ class RuleTest : QBaseTest() {
 
     @Test
     fun instructions() {
-        val i = PrependAppendInstruction(InstructionType.Append, q, "'a'")
+        val i = PrependAppendInstruction(InstructionType.Append, q, "'a'", null)
         assertEquals("parma", i.apply(dummyRule, null, q.word("parm"), emptyRepo).text)
     }
 
@@ -35,7 +35,7 @@ class RuleTest : QBaseTest() {
     fun rule() {
         val v = PhonemeClass("e", listOf("e", "ë"))
         val c = LeafRuleCondition(ConditionType.EndsWith, v, null, false, null)
-        val i2 = PrependAppendInstruction(InstructionType.Append, q, "'i'")
+        val i2 = PrependAppendInstruction(InstructionType.Append, q, "'i'", null)
         val r = RuleBranch(c, listOf(i2))
 
         assertTrue(r.matches(Word(0, "lasse", q), emptyRepo))
@@ -92,10 +92,10 @@ class RuleTest : QBaseTest() {
 
     @Test
     fun instructionParse() {
-        val i = RuleInstruction.parse("- sound disappears", q.parseContext())
+        val i = RuleInstruction.parse("- sound disappears", q.parseContext(), comment = null)
         assertEquals(InstructionType.SoundDisappears, i.type)
 
-        val i2 = RuleInstruction.parse("- append 'a'", q.parseContext())
+        val i2 = RuleInstruction.parse("- append 'a'", q.parseContext(), comment = null)
         assertEquals(InstructionType.Append, i2.type)
         assertEquals("'a'", i2.arg)
     }
@@ -332,7 +332,7 @@ class RuleTest : QBaseTest() {
             - new sound is 'á'
         """.trimIndent()
         )
-        val applySoundRuleInstruction = ApplySoundRuleInstruction(q, RuleRef.to(soundRule), "first vowel")
+        val applySoundRuleInstruction = ApplySoundRuleInstruction(q, RuleRef.to(soundRule), "first vowel", null)
         assertEquals("lásse", applySoundRuleInstruction.apply(soundRule, null, q.word("lasse"), emptyRepo).text)
     }
 
@@ -429,7 +429,7 @@ class RuleTest : QBaseTest() {
             - new sound is 'á'
         """.trimIndent()
         )
-        val applySoundRuleInstruction = ApplySoundRuleInstruction(q, RuleRef.to(soundRule), "first vowel")
+        val applySoundRuleInstruction = ApplySoundRuleInstruction(q, RuleRef.to(soundRule), "first vowel", null)
         assertEquals("apply sound rule 'q' to first vowel", applySoundRuleInstruction.toEditableText(repo))
     }
 
@@ -775,7 +775,14 @@ class RuleTest : QBaseTest() {
     fun speRuleComment() {
         val ruleText = "$ SPE rule\n* d > l / #_"
         val rule = parseRule(q, q, ruleText)
-        assertEquals(ruleText,rule.toEditableText(repo))
+        assertEquals(ruleText, rule.toEditableText(repo))
+    }
+
+    @Test
+    fun speRuleInstructionComment() {
+        val ruleText = "$ SPE rule\n* d > l / #_\n$ second instruction comment\n* a > i"
+        val rule = parseRule(q, q, ruleText)
+        assertEquals(ruleText, rule.toEditableText(repo))
     }
 
     @Test

@@ -204,7 +204,12 @@ class OtherwiseConditionData : RuleConditionData() {
 }
 
 @Serializable
-data class RuleInstructionData(val type: InstructionType, val condition: RuleConditionData? = null, val args: Array<String>)
+data class RuleInstructionData(
+    val type: InstructionType,
+    val condition: RuleConditionData? = null,
+    val args: Array<String>,
+    val comment: String? = null
+)
 
 @Serializable
 data class RuleBranchData(
@@ -876,7 +881,8 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             RuleInstructionData(
                 type,
                 condition = if (this is SpeInstruction) condition?.toSerializedFormat() else null,
-                args = argsToSerializedFormat()
+                args = argsToSerializedFormat(),
+                comment = comment
             )
 
         private fun RuleInstruction.argsToSerializedFormat(): Array<String> =
@@ -979,25 +985,25 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
         ): RuleInstruction =
             when (insnData.type) {
                 InstructionType.ApplyRule ->
-                    ApplyRuleInstruction(ruleRef(result, insnData.args[0].toInt()))
+                    ApplyRuleInstruction(ruleRef(result, insnData.args[0].toInt()), insnData.comment)
                 InstructionType.ApplySoundRule ->
-                    ApplySoundRuleInstruction(fromLanguage, ruleRef(result, insnData.args[0].toInt()), insnData.args.getOrNull(1))
+                    ApplySoundRuleInstruction(fromLanguage, ruleRef(result, insnData.args[0].toInt()), insnData.args.getOrNull(1), insnData.comment)
                 InstructionType.ApplyStress ->
-                    ApplyStressInstruction(fromLanguage, insnData.args[0])
+                    ApplyStressInstruction(fromLanguage, insnData.args[0], insnData.comment)
                 InstructionType.Prepend, InstructionType.Append ->
-                    PrependAppendInstruction(insnData.type, fromLanguage, insnData.args[0])
+                    PrependAppendInstruction(insnData.type, fromLanguage, insnData.args[0], insnData.comment)
                 InstructionType.Insert ->
-                    InsertInstruction(insnData.args[0], insnData.args[1].toInt(), SeekTarget.parse(insnData.args[2], fromLanguage))
+                    InsertInstruction(insnData.args[0], insnData.args[1].toInt(), SeekTarget.parse(insnData.args[2], fromLanguage), insnData.comment)
                 InstructionType.ChangeSoundClass ->
                     ChangePhonemeClassInstruction(insnData.args.getOrNull(2)?.toInt() ?: 0,
-                        insnData.args[0], insnData.args[1])
+                        insnData.args[0], insnData.args[1], insnData.comment)
                 InstructionType.PrependMorpheme, InstructionType.AppendMorpheme ->
-                    MorphemeInstruction(insnData.type, insnData.args[0].toInt())
+                    MorphemeInstruction(insnData.type, insnData.args[0].toInt(), insnData.comment)
                 InstructionType.Spe ->
                     SpeInstruction(SpePattern.parse(fromLanguage, toLanguage, insnData.args[0]),
-                        insnData.condition?.toRuntimeFormat(result, fromLanguage))
+                        insnData.condition?.toRuntimeFormat(result, fromLanguage), insnData.comment)
                 else ->
-                    RuleInstruction(insnData.type, insnData.args.firstOrNull() ?: "")
+                    RuleInstruction(insnData.type, insnData.args.firstOrNull() ?: "", insnData.comment)
             }
 
         private fun ruleRef(repo: GraphRepository, ruleId: Int) =

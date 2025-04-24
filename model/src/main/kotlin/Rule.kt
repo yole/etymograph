@@ -115,6 +115,12 @@ class LineBuffer(s: String) {
             callback(lines[index++])
         }
     }
+
+    fun mark(): Int = index
+
+    fun rollbackTo(mark: Int) {
+        index = mark
+    }
 }
 
 class RuleBranch(val condition: RuleCondition, val instructions: List<RuleInstruction>, val comment: String? = null) {
@@ -154,10 +160,9 @@ class RuleBranch(val condition: RuleCondition, val instructions: List<RuleInstru
     }
 
     fun toEditableText(graph: GraphRepository): String {
-        val commentString = (comment?.split('\n')?.joinToString("") { "$COMMENT_DELIMITER $it\n" }) ?: ""
-        return commentString + condition.toEditableText() + ":\n" +
+        return commentToString(comment) + condition.toEditableText() + ":\n" +
                 instructions.joinToString("\n") {
-                    (if (it is SpeInstruction) "* " else " - ") + it.toEditableText(graph)
+                    commentToString(it.comment) + (if (it is SpeInstruction) "* " else " - ") + it.toEditableText(graph)
                 }
     }
 
@@ -181,10 +186,7 @@ class RuleBranch(val condition: RuleCondition, val instructions: List<RuleInstru
         const val COMMENT_DELIMITER = "$"
 
         fun parse(lines: LineBuffer, context: RuleParseContext): RuleBranch {
-            val comment = mutableListOf<String>()
-            lines.nextWhile({ line -> line.startsWith(COMMENT_DELIMITER) }) { line ->
-                comment.add(line.removePrefix(COMMENT_DELIMITER).trim())
-            }
+            val comment = parseComment(lines)
 
             val condition = lines.nextIf { it.endsWith(":") }?.let { line ->
                 val buffer = ParseBuffer(line)
@@ -197,15 +199,30 @@ class RuleBranch(val condition: RuleCondition, val instructions: List<RuleInstru
 
             val instructions = mutableListOf<RuleInstruction>()
             while (true) {
-                val line = lines.nextIf { !it.startsWith(COMMENT_DELIMITER) && !it.startsWith("=" )&& !it.endsWith(":") }
-                    ?: break
-                instructions.add(RuleInstruction.parse(line, context))
+                val mark = lines.mark()
+                val insnComment = parseComment(lines)
+                val line = lines.nextIf { !it.startsWith("=" )&& !it.endsWith(":") }
+                if (line == null) {
+                    lines.rollbackTo(mark)
+                    break
+                }
+                instructions.add(RuleInstruction.parse(line, context, comment = insnComment))
             }
             if (instructions.isEmpty()) {
                 throw RuleParseException("Rule must contain at least one instruction")
             }
-            return RuleBranch(condition, instructions, comment.takeIf { it.isNotEmpty() }?.joinToString("\n"))
+            return RuleBranch(condition, instructions, comment)
         }
+
+        fun parseComment(lines: LineBuffer): String? {
+            val comment = mutableListOf<String>()
+            lines.nextWhile({ line -> line.startsWith(COMMENT_DELIMITER) }) { line ->
+                comment.add(line.removePrefix(COMMENT_DELIMITER).trim())
+            }
+            return comment.takeIf { it.isNotEmpty() }?.joinToString("\n")
+        }
+
+        fun commentToString(comment: String?) = (comment?.split('\n')?.joinToString("") { "$COMMENT_DELIMITER $it\n" }) ?: ""
     }
 }
 
@@ -374,9 +391,9 @@ class Rule(
     fun toEditableText(graph: GraphRepository): String {
         if (isUnconditional()) {
             val branch = logic.branches[0]
-            val commentString = (branch.comment?.split('\n')?.joinToString("") { "${RuleBranch.COMMENT_DELIMITER} $it\n" }) ?: ""
+            val commentString = RuleBranch.commentToString(branch.comment)
             return commentString + branch.instructions.joinToString("\n") {
-                (if (it is SpeInstruction) "* " else " - ") + it.toEditableText(graph)
+                RuleBranch.commentToString(it.comment) + (if (it is SpeInstruction) "* " else " - ") + it.toEditableText(graph)
             }
         }
         return logic.preInstructions.joinToString("") { " - " + it.toEditableText(graph) + "\n" } +
@@ -442,8 +459,9 @@ class Rule(
             val postInstructions = mutableListOf<RuleInstruction>()
             val branches = mutableListOf<RuleBranch>()
             val lines = LineBuffer(s)
+
             lines.nextWhile({ line -> line.startsWith("-") }) { line ->
-                preInstructions.add(RuleInstruction.parse(line, context))
+                preInstructions.add(RuleInstruction.parse(line, context, comment = null))
             }
 
             while (true) {
@@ -455,7 +473,7 @@ class Rule(
             }
             while (true) {
                 val next = lines.next() ?: break
-                postInstructions.add(RuleInstruction.parse(next, context, "="))
+                postInstructions.add(RuleInstruction.parse(next, context, "=", null))
             }
             if (branches.isEmpty() && preInstructions.isNotEmpty()) {
                 return RuleLogic(

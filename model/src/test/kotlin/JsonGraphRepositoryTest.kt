@@ -111,6 +111,20 @@ class JsonGraphRepositoryTest : QBaseTest() {
     }
 
     @Test
+    fun serializeInstructionComment() {
+        val rule = parseRule(q, q, """
+            $ This is a comment
+            - insert 'i' before last consonant
+            $ This is an instruction comment
+            - insert 'i' before last consonant
+        """.trimIndent())
+
+        val serializedData = rule.ruleToSerializedFormat()
+        val branches = ruleBranchesFromSerializedFormat(repo, q, q, serializedData.branches)
+        assertEquals("This is an instruction comment", branches[0].instructions[1].comment)
+    }
+
+    @Test
     fun serializePostInstructions() {
         val rule = parseRule(q, q, """
             word ends with 'i':

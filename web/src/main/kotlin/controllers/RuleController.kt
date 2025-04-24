@@ -285,7 +285,7 @@ class RuleController {
         if (isSPE() && logic.branches.size == 1) {
             val branch = logic.branches.single()
             return branch.instructions.map { insn ->
-                RuleBranch(branch.condition, listOf(insn), branch.comment)
+                RuleBranch(branch.condition, listOf(insn), insn.comment ?: branch.comment)
                     .toViewModel(this, isUnconditional(), examples.filter { insn in it.instructions}, repo)
             }
         }
