@@ -123,6 +123,15 @@ class JsonGraphRepositoryTest : QBaseTest() {
     }
 
     @Test
+    fun serializeNot() {
+        val text = "* a > i if not (previous sound is 'c')"
+        val rule = parseRule(q, q, text)
+        val serializedData = rule.ruleToSerializedFormat()
+        val rule2 = repo.ruleFromSerializedFormat(serializedData, q, q)
+        assertEquals(text, rule2.toEditableText(repo))
+    }
+
+    @Test
     fun serializeTranslation() {
         val corpusText = repo.addCorpusText("abc", null, q)
         repo.addTranslation(corpusText, "def", emptyList())

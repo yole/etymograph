@@ -191,6 +191,13 @@ data class AndRuleConditionData(
 }
 
 @Serializable
+@SerialName("not")
+class NotRuleConditionData(val arg: RuleConditionData) : RuleConditionData() {
+    override fun toRuntimeFormat(result: GraphRepository, fromLanguage: Language): RuleCondition =
+        NotRuleCondition(arg.toRuntimeFormat(result, fromLanguage))
+}
+
+@Serializable
 @SerialName("otherwise")
 class OtherwiseConditionData : RuleConditionData() {
     override fun toRuntimeFormat(result: GraphRepository, fromLanguage: Language): RuleCondition = OtherwiseCondition
@@ -936,6 +943,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             )
             is OrRuleCondition -> OrRuleConditionData(members.map { it.toSerializedFormat()} )
             is AndRuleCondition -> AndRuleConditionData(members.map { it.toSerializedFormat()} )
+            is NotRuleCondition -> NotRuleConditionData(arg.toSerializedFormat())
             is OtherwiseCondition -> OtherwiseConditionData()
         }
 

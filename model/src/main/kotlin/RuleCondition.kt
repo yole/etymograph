@@ -97,6 +97,10 @@ sealed class RuleCondition(val negated: Boolean = false) {
                 }
                 return inParentheses
             }
+            if (buffer.consume("not")) {
+                val base = parseOrClause(buffer, language)
+                return NotRuleCondition(base)
+            }
             return LeafRuleCondition.parse(buffer, language)
         }
     }
@@ -603,6 +607,20 @@ class AndRuleCondition(members: List<RuleCondition>) : CompositeRuleCondition(me
 
     companion object {
         const val AND = " and "
+    }
+}
+
+class NotRuleCondition(val arg: RuleCondition) : CompositeRuleCondition(listOf(arg)) {
+    override fun matches(word: Word, graph: GraphRepository, trace: RuleTrace?): Boolean {
+        return !arg.matches(word, graph, trace)
+    }
+
+    override fun matches(word: Word, phonemes: PhonemeIterator, graph: GraphRepository, trace: RuleTrace?): Boolean {
+        return !arg.matches(word, phonemes, graph, trace)
+    }
+
+    override fun toRichText(): RichText {
+        return "not (".richText() + arg.toRichText() + ")"
     }
 }
 

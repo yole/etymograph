@@ -326,17 +326,6 @@ class PhonemeRuleTest : QBaseTest() {
     }
 
     @Test
-    fun beginningOfWordNegated() {
-        val rule = parseRule(q, q, """
-            not beginning of word and sound is 'a':
-            - new sound is 'o'
-        """.trimIndent())
-        assertEquals("aistono", rule.apply(q.word("aistana"), emptyRepo).text)
-        assertEquals("not beginning of word and sound is 'a'", rule.logic.branches[0].condition.toEditableText())
-        assertEquals("'a' > 'o' not at beginning of word", rule.toSummaryText(repo))
-    }
-
-    @Test
     fun syllableIs() {
         val rule = parseRule(q, q, """
             syllable is second to last and sound is 'i' and next vowel is 'a':

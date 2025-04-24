@@ -822,6 +822,15 @@ class RuleTest : QBaseTest() {
         assertEquals(text.removePrefix("* "), instruction.toRichText(repo).toString())
     }
 
+    @Test
+    fun notRule() {
+        val text = "* a > i if not (previous sound is 'c')"
+        val rule = parseRule(ce, q, text)
+        assertEquals("mi", rule.apply(q.word("ma"), repo).text)
+        assertEquals("ca", rule.apply(q.word("ca"), repo).text)
+        assertEquals(text, rule.toEditableText(repo))
+    }
+
 
     /*
 
