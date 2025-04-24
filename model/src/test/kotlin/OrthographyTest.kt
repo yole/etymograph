@@ -25,7 +25,7 @@ class OrthographyTest : QBaseTest() {
 
     @Test
     fun orthographyRule() {
-        val rule = parseRule(ce, ce, "beginning of word and sound is 'j':\n- new sound is 'i'")
+        val rule = parseRule(ce, ce, "sound is word-initial 'j':\n- new sound is 'i'")
         ce.orthographyRule = RuleRef.to(rule)
         ce.phonemes = listOf(phoneme(listOf("y"), "j", "semivowel"))
         val iayn = ce.word("jajn").apply { isPhonemic = true }

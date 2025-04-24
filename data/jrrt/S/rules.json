@@ -10,19 +10,19 @@
                     {
                         "type": "Spe",
                         "args": [
-                            "m -> 0 / #_b"
+                            "m > 0 / #_b"
                         ]
                     },
                     {
                         "type": "Spe",
                         "args": [
-                            "n -> 0 / #_d"
+                            "n > 0 / #_d"
                         ]
                     },
                     {
                         "type": "Spe",
                         "args": [
-                            "ŋ -> 0 / #_g"
+                            "ŋ > 0 / #_g"
                         ]
                     }
                 ],
@@ -124,7 +124,7 @@
                     {
                         "type": "Spe",
                         "args": [
-                            "[nasal] -> 0 / V_#"
+                            "[nasal] > 0 / V_#"
                         ]
                     }
                 ],
@@ -151,7 +151,7 @@
                     {
                         "type": "Spe",
                         "args": [
-                            "[+syllabic,-high,-long] -> 0 / _#"
+                            "[+syllabic,-high,-long] > 0 / _#"
                         ]
                     }
                 ],
@@ -178,7 +178,7 @@
                     {
                         "type": "Spe",
                         "args": [
-                            "[+syllabic,+long] -> [-long] / _#"
+                            "[+syllabic,+long] > [-long] / _#"
                         ]
                     }
                 ],
@@ -205,7 +205,7 @@
                     {
                         "type": "Spe",
                         "args": [
-                            "[-voice,-continuant,-sonorant] -> [+continuant,-strident] / #s_"
+                            "[-voice,-continuant,-sonorant] > [+continuant,-strident] / #s_"
                         ]
                     }
                 ],
@@ -232,7 +232,7 @@
                     {
                         "type": "Spe",
                         "args": [
-                            "s -> 0 / #_[+continuant,-strident,-voice]"
+                            "s > 0 / #_[+continuant,-strident,-voice]"
                         ]
                     }
                 ],
@@ -333,7 +333,7 @@
                     {
                         "type": "Spe",
                         "args": [
-                            "[+voice,-sonorant,-continuant] -> [+continuant] / [+sonorant,-nasal]_"
+                            "[+voice,-sonorant,-continuant] > [+continuant] / [+sonorant,-nasal]_"
                         ]
                     }
                 ],
@@ -360,7 +360,7 @@
                     {
                         "type": "Spe",
                         "args": [
-                            "ð -> l / l_"
+                            "ð > l / l_"
                         ]
                     }
                 ],
@@ -387,7 +387,7 @@
                     {
                         "type": "Spe",
                         "args": [
-                            "[-voice,-sonorant,-continuant] -> [+voice] / V_"
+                            "[-voice,-sonorant,-continuant] > [+voice] / V_"
                         ]
                     }
                 ],
@@ -414,7 +414,7 @@
                     {
                         "type": "Spe",
                         "args": [
-                            "[+voice,-continuant,-sonorant] -> [+continuant,-strident] / V_"
+                            "[+voice,-continuant,-sonorant] > [+continuant,-strident] / V_"
                         ]
                     }
                 ],
@@ -441,7 +441,7 @@
                     {
                         "type": "Spe",
                         "args": [
-                            "ɣ -> i / V_[+sonorant]"
+                            "ɣ > i / V_[+sonorant]"
                         ]
                     }
                 ],
@@ -468,7 +468,7 @@
                     {
                         "type": "Spe",
                         "args": [
-                            "i -> e / {a|o}_"
+                            "i > e / {a|o}_"
                         ]
                     }
                 ],
@@ -495,13 +495,13 @@
                     {
                         "type": "Spe",
                         "args": [
-                            "x -> i / V_θ"
+                            "x > i / V_θ"
                         ]
                     },
                     {
                         "type": "Spe",
                         "args": [
-                            "ɸ -> u / V_θ"
+                            "ɸ > u / V_θ"
                         ]
                     }
                 ],
@@ -528,13 +528,13 @@
                     {
                         "type": "Spe",
                         "args": [
-                            "iu -> yː"
+                            "iu > yː"
                         ]
                     },
                     {
                         "type": "Spe",
                         "args": [
-                            "ju -> yː"
+                            "ju > yː"
                         ]
                     }
                 ],
@@ -561,7 +561,7 @@
                     {
                         "type": "Spe",
                         "args": [
-                            "m -> v / {V|[+sonorant,-nasal]}_{#|[-labial]}"
+                            "m > v / {V|[+sonorant,-nasal]}_{#|[-labial]}"
                         ]
                     }
                 ],
@@ -588,7 +588,7 @@
                     {
                         "type": "Spe",
                         "args": [
-                            "[+syllabic,+long] -> [-long] / _CC"
+                            "[+syllabic,+long] > [-long] / _CC"
                         ]
                     }
                 ],
@@ -615,7 +615,7 @@
                     {
                         "type": "Spe",
                         "args": [
-                            "j -> i / C_V"
+                            "j > i / C_V"
                         ]
                     }
                 ],
@@ -693,7 +693,7 @@
                     {
                         "type": "Spe",
                         "args": [
-                            "e -> a / _iC0#"
+                            "e > a / _iC0#"
                         ]
                     }
                 ],
@@ -773,13 +773,13 @@
                     {
                         "type": "Spe",
                         "args": [
-                            "b -> m / m_"
+                            "b > m / m_"
                         ]
                     },
                     {
                         "type": "Spe",
                         "args": [
-                            "d -> n / n_"
+                            "d > n / n_"
                         ]
                     }
                 ],
@@ -806,7 +806,7 @@
                     {
                         "type": "Spe",
                         "args": [
-                            "m -> 0 / _m"
+                            "m > 0 / _m"
                         ]
                     }
                 ],
@@ -833,7 +833,7 @@
                     {
                         "type": "Spe",
                         "args": [
-                            "s -> es / #_[-sonorant,-continuant,-voice]"
+                            "s > es / #_[-sonorant,-continuant,-voice]"
                         ]
                     }
                 ],
@@ -873,7 +873,7 @@
                     {
                         "type": "Spe",
                         "args": [
-                            "k -> g / s_"
+                            "k > g / s_"
                         ]
                     }
                 ],
@@ -900,7 +900,7 @@
                     {
                         "type": "Spe",
                         "args": [
-                            "[labial,-strident] -> [+strident]"
+                            "[labial,-strident] > [+strident]"
                         ]
                     }
                 ],
@@ -1034,13 +1034,13 @@
                     {
                         "type": "Spe",
                         "args": [
-                            "[-voice, -continuant, -sonorant] -> [+continuant, -strident] / _[+SG]"
+                            "[-voice, -continuant, -sonorant] > [+continuant, -strident] / _[+SG]"
                         ]
                     },
                     {
                         "type": "Spe",
                         "args": [
-                            "[+SG] -> [-SG, +continuant, -strident]"
+                            "[+SG] > [-SG, +continuant, -strident]"
                         ]
                     }
                 ],
@@ -1067,7 +1067,7 @@
                     {
                         "type": "Spe",
                         "args": [
-                            "[-high,-low,+long] -> [+high]"
+                            "[-high,-low,+long] > [+high]"
                         ]
                     }
                 ],
@@ -1094,7 +1094,7 @@
                     {
                         "type": "Spe",
                         "args": [
-                            "m -> w / [nasal, -labial]_"
+                            "m > w / [nasal, -labial]_"
                         ]
                     }
                 ],
@@ -1121,7 +1121,7 @@
                     {
                         "type": "Spe",
                         "args": [
-                            "[-sonorant,-continuant,-voice] -> [+voice] / _[nasal]"
+                            "[-sonorant,-continuant,-voice] > [+voice] / _[nasal]"
                         ]
                     }
                 ],
@@ -1148,7 +1148,7 @@
                     {
                         "type": "Spe",
                         "args": [
-                            "[+syllabic]ŋ -> [+long] / _{n|w}"
+                            "[+syllabic]ŋ > [+long] / _{n|w}"
                         ]
                     }
                 ],
@@ -1175,7 +1175,7 @@
                     {
                         "type": "Spe",
                         "args": [
-                            "ǭ -> au"
+                            "ǭ > au"
                         ]
                     }
                 ],
@@ -1202,13 +1202,13 @@
                     {
                         "type": "Spe",
                         "args": [
-                            "aː -> ǭ"
+                            "aː > ǭ"
                         ]
                     },
                     {
                         "type": "Spe",
                         "args": [
-                            "au -> ǭ"
+                            "au > ǭ"
                         ]
                     }
                 ],
@@ -1235,13 +1235,13 @@
                     {
                         "type": "Spe",
                         "args": [
-                            "au -> o"
+                            "au > o"
                         ]
                     },
                     {
                         "type": "Spe",
                         "args": [
-                            "ae -> e"
+                            "ae > e"
                         ]
                     }
                 ],
@@ -1281,7 +1281,7 @@
                     {
                         "type": "Spe",
                         "args": [
-                            "ɣ -> a / C_#"
+                            "ɣ > a / C_#"
                         ]
                     }
                 ],
@@ -1308,7 +1308,7 @@
                     {
                         "type": "Spe",
                         "args": [
-                            "ɣ -> 0"
+                            "ɣ > 0"
                         ]
                     }
                 ],
@@ -1335,7 +1335,7 @@
                     {
                         "type": "Spe",
                         "args": [
-                            "h -> 0 / V_"
+                            "h > 0 / V_"
                         ]
                     }
                 ],
@@ -1362,7 +1362,7 @@
                     {
                         "type": "Spe",
                         "args": [
-                            "s -> h / V_V"
+                            "s > h / V_V"
                         ]
                     }
                 ],
@@ -2671,18 +2671,10 @@
                     }
                 ],
                 "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "leaf",
-                            "cond": "BeginningOfWord"
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "parameter": "j",
-                            "relative": false
-                        }
-                    ]
+                    "type": "relPhoneme",
+                    "cls": "word-initial",
+                    "parameter": "j",
+                    "relative": false
                 }
             },
             {
@@ -2695,18 +2687,10 @@
                     }
                 ],
                 "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "leaf",
-                            "cond": "EndOfWord"
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "parameter": "v",
-                            "relative": false
-                        }
-                    ]
+                    "type": "relPhoneme",
+                    "cls": "word-final",
+                    "parameter": "v",
+                    "relative": false
                 }
             },
             {
@@ -2722,11 +2706,8 @@
                     "type": "and",
                     "members": [
                         {
-                            "type": "leaf",
-                            "cond": "EndOfWord"
-                        },
-                        {
                             "type": "relPhoneme",
+                            "cls": "word-final",
                             "parameter": "u",
                             "relative": false
                         },
@@ -2827,13 +2808,13 @@
                     {
                         "type": "Spe",
                         "args": [
-                            "θθ -> θ"
+                            "θθ > θ"
                         ]
                     },
                     {
                         "type": "Spe",
                         "args": [
-                            "xx -> x"
+                            "xx > x"
                         ]
                     }
                 ],
@@ -2860,7 +2841,7 @@
                     {
                         "type": "Spe",
                         "args": [
-                            "x -> h / #_"
+                            "x > h / #_"
                         ]
                     }
                 ],
@@ -2885,91 +2866,26 @@
             {
                 "instructions": [
                     {
-                        "type": "ChangeNextSound",
+                        "type": "Spe",
                         "args": [
-                            "m"
+                            "mf > mm / !#_"
                         ]
-                    }
-                ],
-                "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "relPhoneme",
-                            "parameter": "m",
-                            "relative": false
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": 1,
-                            "parameter": "f"
-                        },
-                        {
-                            "type": "leaf",
-                            "cond": "BeginningOfWord",
-                            "negated": true
-                        }
-                    ]
-                }
-            },
-            {
-                "instructions": [
+                    },
                     {
-                        "type": "ChangeNextSound",
+                        "type": "Spe",
                         "args": [
-                            "n"
+                            "nθ > nn / !#_"
                         ]
-                    }
-                ],
-                "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "relPhoneme",
-                            "parameter": "n",
-                            "relative": false
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": 1,
-                            "parameter": "θ"
-                        },
-                        {
-                            "type": "leaf",
-                            "cond": "BeginningOfWord",
-                            "negated": true
-                        }
-                    ]
-                }
-            },
-            {
-                "instructions": [
+                    },
                     {
-                        "type": "ChangeNextSound",
+                        "type": "Spe",
                         "args": [
-                            "g"
+                            "ŋx > ŋg / !#_"
                         ]
                     }
                 ],
                 "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "relPhoneme",
-                            "parameter": "ŋ",
-                            "relative": false
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": 1,
-                            "parameter": "x"
-                        },
-                        {
-                            "type": "leaf",
-                            "cond": "BeginningOfWord",
-                            "negated": true
-                        }
-                    ]
+                    "type": "otherwise"
                 }
             }
         ],
@@ -3123,19 +3039,19 @@
                     {
                         "type": "Spe",
                         "args": [
-                            "m -> am / #_"
+                            "m > am / #_"
                         ]
                     },
                     {
                         "type": "Spe",
                         "args": [
-                            "n -> an / #_"
+                            "n > an / #_"
                         ]
                     },
                     {
                         "type": "Spe",
                         "args": [
-                            "ŋ -> aŋ / #_"
+                            "ŋ > aŋ / #_"
                         ]
                     }
                 ],
@@ -3175,19 +3091,19 @@
                     {
                         "type": "Spe",
                         "args": [
-                            "sr -> r̥ / #_"
+                            "sr > r̥ / #_"
                         ]
                     },
                     {
                         "type": "Spe",
                         "args": [
-                            "sl -> l̥ / #_"
+                            "sl > l̥ / #_"
                         ]
                     },
                     {
                         "type": "Spe",
                         "args": [
-                            "sw -> w̥ / #_"
+                            "sw > w̥ / #_"
                         ]
                     }
                 ],
@@ -3214,7 +3130,7 @@
                     {
                         "type": "Spe",
                         "args": [
-                            "{w|v} -> 0 / u_#"
+                            "{w|v} > 0 / u_#"
                         ]
                     }
                 ],
@@ -3241,7 +3157,7 @@
                     {
                         "type": "Spe",
                         "args": [
-                            "v -> w / {i|ae|oe}_#"
+                            "v > w / {i|ae|oe}_#"
                         ]
                     }
                 ],
@@ -3268,7 +3184,7 @@
                     {
                         "type": "Spe",
                         "args": [
-                            "ns -> ss"
+                            "ns > ss"
                         ]
                     }
                 ],
@@ -3295,13 +3211,13 @@
                     {
                         "type": "Spe",
                         "args": [
-                            "b -> u / V_[+voice,-sonorant,-continuant]"
+                            "b > u / V_[+voice,-sonorant,-continuant]"
                         ]
                     },
                     {
                         "type": "Spe",
                         "args": [
-                            "g -> i / V_[+voice,-sonorant,-continuant]"
+                            "g > i / V_[+voice,-sonorant,-continuant]"
                         ]
                     }
                 ],
@@ -3328,7 +3244,7 @@
                     {
                         "type": "Spe",
                         "args": [
-                            "{ɣ|h} -> 0 / #_"
+                            "{ɣ|h} > 0 / #_"
                         ]
                     }
                 ],

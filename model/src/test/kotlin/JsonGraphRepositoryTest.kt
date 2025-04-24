@@ -190,7 +190,7 @@ class JsonGraphRepositoryTest : QBaseTest() {
     @Test
     fun serializeOrthographyRule() {
         val rule = repo.addRule("q-ortho", q, q,
-            Rule.parseBranches("sound is 'j' and beginning of word:\n - new sound is 'y'", q.parseContext(repo)))
+            Rule.parseBranches("sound is word-initial 'j':\n - new sound is 'y'", q.parseContext(repo)))
         q.orthographyRule = RuleRef.to(rule)
 
         val repo2 = repo.roundtrip()

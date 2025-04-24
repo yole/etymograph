@@ -10,13 +10,13 @@
                     {
                         "type": "Spe",
                         "args": [
-                            "i -> e / _#"
+                            "i > e / _#"
                         ]
                     },
                     {
                         "type": "Spe",
                         "args": [
-                            "u -> o / _#"
+                            "u > o / _#"
                         ]
                     }
                 ],
@@ -193,13 +193,13 @@
                     {
                         "type": "Spe",
                         "args": [
-                            "bm -> mb"
+                            "bm > mb"
                         ]
                     },
                     {
                         "type": "Spe",
                         "args": [
-                            "dn -> nd"
+                            "dn > nd"
                         ]
                     }
                 ],
@@ -275,7 +275,7 @@
                     {
                         "type": "Spe",
                         "args": [
-                            "ŋ -> ɣ / V_V"
+                            "ŋ > ɣ / V_V"
                         ]
                     }
                 ],
