@@ -17,6 +17,11 @@ class SpeContext(private val pattern: SpePattern) {
         return matchIndexes[nodeIndex]
     }
 
+    fun getBeforeNode(node: SpeAlternativeNode): SpeAlternativeNode? {
+        val nodeIndex = pattern.after.indexOf(node) ?: return null
+        return pattern.before[nodeIndex] as? SpeAlternativeNode
+    }
+
     fun findIndexToCopy(node: SpeNode): Int? {
         val targetIndex = pattern.after.indexOf(node)
         val beforeIndex = pattern.before.indexOfFirst { it.toString() == node.toString() }
@@ -253,10 +258,9 @@ class SpeAlternativeNode(val choices: List<List<SpeNode>>) : SpeTargetNode() {
 
     override fun replace(it: PhonemeIterator, relativeIndex: Int, context: SpeContext, trace: RuleTrace?) {
         val index = context.findMatchedAlternative(this)
-        if (index != null) {
-            for ((nIndex, n) in choices[index].withIndex()) {
-                (n as SpeTargetNode).replace(it, relativeIndex + nIndex, context, trace)
-            }
+        val beforeNode = context.getBeforeNode(this)
+        if (index != null && beforeNode != null) {
+            applyNodes(it, relativeIndex, context, trace, beforeNode.choices[index], choices[index] as List<SpeTargetNode>)
         }
     }
 
@@ -329,6 +333,24 @@ private fun List<SpeNode>.matchNodesBackwards(it: PhonemeIterator, trace: RuleTr
     }
 }
 
+private fun applyNodes(it: PhonemeIterator, relativeIndex: Int, context: SpeContext, trace: RuleTrace?, before: List<SpeNode>, after: List<SpeTargetNode>) {
+    val beforeLength = before.size
+    val afterLength = after.size
+    for (i in 0..<min(beforeLength, afterLength)) {
+        after[i].replace(it, i + relativeIndex, context, trace)
+    }
+    if (beforeLength < afterLength) {
+        for (i in beforeLength..<afterLength) {
+            after[i].insert(it, i + relativeIndex, context)
+        }
+    }
+    if (beforeLength > afterLength) {
+        for (i in afterLength..<beforeLength) {
+            it.deleteAtRelative(i + relativeIndex)
+        }
+    }
+}
+
 class SpePattern(
     private val fromLanguage: Language,
     private val toLanguage: Language,
@@ -352,21 +374,7 @@ class SpePattern(
                 (condition == null || condition.invoke(it.clone()))
             )
             {
-                val beforeLength = before.size
-                val afterLength = after.size
-                for (i in 0..<min(beforeLength, afterLength)) {
-                    after[i].replace(it, i, context, trace)
-                }
-                if (beforeLength < afterLength) {
-                    for (i in beforeLength..<afterLength) {
-                        after[i].insert(it, i, context)
-                    }
-                }
-                if (beforeLength > afterLength) {
-                    for (i in afterLength..<beforeLength) {
-                        it.deleteAtRelative(i)
-                    }
-                }
+                applyNodes(it, 0, context, trace, before, after)
             }
             if (!it.advance()) break
         }
