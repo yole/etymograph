@@ -653,10 +653,13 @@ class SpeInstruction(val pattern: SpePattern, val condition: RuleCondition? = nu
     }
 
     override fun apply(rule: Rule, branch: RuleBranch?, word: Word, graph: GraphRepository, trace: RuleTrace?): Word {
+        trace?.logInstruction {
+            "Matching pattern $pattern to ${word.text}"
+        }
         val phonemicWord = word.asPhonemic()
         val it = pattern.apply(
             phonemicWord,
-            { condition == null || condition.matches(phonemicWord, it, graph, trace) },
+            { condition == null || condition.matches(phonemicWord, it, graph, trace).also { result -> trace?.logCondition(condition, result) } },
             trace
         )
         if (it.result() != phonemicWord.text) {

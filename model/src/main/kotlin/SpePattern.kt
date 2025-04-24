@@ -327,14 +327,25 @@ class SpeNegateNode(private val baseNode: SpeNode): SpeNode() {
 }
 
 private fun List<SpeNode>.matchNodes(it: PhonemeIterator, context: SpeContext): Boolean {
-    return all {
-        node -> node.match(it, context).also { result -> context.trace?.logNodeMatch(it, node, result) }
+    return all { node ->
+        if (context.trace != null) {
+            val itCopy = it.clone()
+            node.match(it, context).also { result -> context.trace.logNodeMatch(itCopy, node, result) }
+        } else {
+            node.match(it, context)
+        }
     }
 }
 
 private fun List<SpeNode>.matchNodesBackwards(it: PhonemeIterator, context: SpeContext): Boolean {
-    return reversed().all {
-        node -> node.matchBackwards(it, context).also { result -> context.trace?.logNodeMatch(it, node, result) }
+    return reversed().all { node ->
+        if (context.trace != null) {
+            val itCopy = it.clone()
+            node.matchBackwards(it, context).also { result -> context.trace.logNodeMatch(itCopy, node, result) }
+        }
+        else {
+            node.matchBackwards(it, context)
+        }
     }
 }
 
