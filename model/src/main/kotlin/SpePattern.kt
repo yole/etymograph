@@ -162,7 +162,12 @@ class SpePhonemeClassNode(val language: Language, val phonemeClass: PhonemeClass
                 val replacementText = replacement.singleOrNull()?.effectiveSound
                     ?: (replacement.takeIf { it.isNotEmpty() }?.joinToString { it.effectiveSound }?.plus("?"))
                     ?: "?"
-                "${p.effectiveSound} -> $replacementText"
+                if (p.effectiveSound == replacementText) {
+                    null
+                }
+                else {
+                    "${p.effectiveSound} > $replacementText"
+                }
             }
             else {
                 null
