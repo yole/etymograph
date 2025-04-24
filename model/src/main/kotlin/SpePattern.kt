@@ -16,6 +16,12 @@ class SpeContext(private val pattern: SpePattern) {
         val nodeIndex = pattern.after.indexOf(node) ?: return null
         return matchIndexes[nodeIndex]
     }
+
+    fun findIndexToCopy(node: SpeNode): Int? {
+        val targetIndex = pattern.after.indexOf(node)
+        val beforeIndex = pattern.before.indexOfFirst { it.toString() == node.toString() }
+        return if (beforeIndex < 0) null else beforeIndex - targetIndex + 1
+    }
 }
 
 sealed class SpeNode {
@@ -33,8 +39,8 @@ sealed class SpeNode {
 }
 
 sealed class SpeTargetNode : SpeNode() {
-    abstract fun replace(it: PhonemeIterator, i: Int, context: SpeContext, trace: RuleTrace?)
-    abstract fun insert(it: PhonemeIterator, i: Int)
+    abstract fun replace(it: PhonemeIterator, relativeIndex: Int, context: SpeContext, trace: RuleTrace?)
+    abstract fun insert(it: PhonemeIterator, relativeIndex: Int, context: SpeContext)
 }
 
 abstract class SpePhonemeNode : SpeTargetNode() {
@@ -72,12 +78,12 @@ class SpeLiteralNode(val text: String) : SpePhonemeNode() {
         return text == it.current
     }
 
-    override fun replace(it: PhonemeIterator, i: Int, context: SpeContext, trace: RuleTrace?) {
-        it.replaceAtRelative(i, text)
+    override fun replace(it: PhonemeIterator, relativeIndex: Int, context: SpeContext, trace: RuleTrace?) {
+        it.replaceAtRelative(relativeIndex, text)
     }
 
-    override fun insert(it: PhonemeIterator, i: Int) {
-        it.insertAtRelative(i, text)
+    override fun insert(it: PhonemeIterator, relativeIndex: Int, context: SpeContext) {
+        it.insertAtRelative(relativeIndex, text)
     }
 
     override fun refersToPhoneme(phoneme: Phoneme): Boolean {
@@ -111,12 +117,13 @@ class SpePhonemeClassNode(val language: Language, val phonemeClass: PhonemeClass
         return "[".rich() + name.rich(tooltip = matchingPhonemes)+ "]".rich()
     }
 
-    override fun replace(it: PhonemeIterator, i: Int, context: SpeContext, trace: RuleTrace?) {
-        replacePhonemeByFeatures(it, i, phonemeClass, trace)
+    override fun replace(it: PhonemeIterator, relativeIndex: Int, context: SpeContext, trace: RuleTrace?) {
+        replacePhonemeByFeatures(it, relativeIndex, phonemeClass, trace)
     }
 
-    override fun insert(it: PhonemeIterator, i: Int) {
-        throw UnsupportedOperationException()
+    override fun insert(it: PhonemeIterator, relativeIndex: Int, context: SpeContext) {
+        val sourceIndex = context.findIndexToCopy(this) ?: return
+        it.atRelative(sourceIndex)?.let { s -> it.insertAtRelative(relativeIndex, s) }
     }
 
     private fun replacePhonemeByFeatures(it: PhonemeIterator, relativeIndex: Int, newClass: PhonemeClass, trace: RuleTrace? = null) {
@@ -244,16 +251,16 @@ class SpeAlternativeNode(val choices: List<List<SpeNode>>) : SpeTargetNode() {
         return result
     }
 
-    override fun replace(it: PhonemeIterator, i: Int, context: SpeContext, trace: RuleTrace?) {
+    override fun replace(it: PhonemeIterator, relativeIndex: Int, context: SpeContext, trace: RuleTrace?) {
         val index = context.findMatchedAlternative(this)
         if (index != null) {
             for ((nIndex, n) in choices[index].withIndex()) {
-                (n as SpeTargetNode).replace(it, i + nIndex, context, trace)
+                (n as SpeTargetNode).replace(it, relativeIndex + nIndex, context, trace)
             }
         }
     }
 
-    override fun insert(it: PhonemeIterator, i: Int) {
+    override fun insert(it: PhonemeIterator, relativeIndex: Int, context: SpeContext) {
         throw UnsupportedOperationException()
     }
 }
@@ -352,7 +359,7 @@ class SpePattern(
                 }
                 if (beforeLength < afterLength) {
                     for (i in beforeLength..<afterLength) {
-                        after[i].insert(it, i)
+                        after[i].insert(it, i, context)
                     }
                 }
                 if (beforeLength > afterLength) {
@@ -377,7 +384,13 @@ class SpePattern(
         }
         result += " > ".rich()
         for ((index, node) in after.withIndex()) {
-            result += node.buildReplacementTooltip(before.getOrNull(index), toLanguage)
+            val beforeNode = before.getOrNull(index)
+            if (beforeNode != null && beforeNode.toString() == node.toString()) {
+                result += node.toRichText(fromLanguage)
+            }
+            else {
+                result += node.buildReplacementTooltip(beforeNode, toLanguage)
+            }
         }
         if (after.isEmpty()) {
             result += "∅".rich()

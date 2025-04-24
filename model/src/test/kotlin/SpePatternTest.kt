@@ -221,6 +221,14 @@ class SpePatternTest : QBaseTest() {
     }
 
     @Test
+    fun gemination() {
+        val text = "C > CC / _j"
+        val pattern = SpePattern.parse(q, q, text)
+        assertEquals("allj", pattern.apply(q, "alj"))
+        assertEquals(text, pattern.toRichText().toString())
+    }
+
+    @Test
     fun toStringSimple() {
         val pattern = SpePattern.parse(q, q, "a > o")
         assertEquals("a > o", pattern.toString())
