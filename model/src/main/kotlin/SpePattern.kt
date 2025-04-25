@@ -72,10 +72,6 @@ abstract class SpePhonemeNode : SpeTargetNode() {
 
 class SpeLiteralNode(val text: String) : SpePhonemeNode() {
     override fun toRichText(language: Language?): RichText {
-        val phoneme = language?.phonemes?.find { text == it.effectiveSound }
-        if (phoneme != null) {
-            return richText(text.rich(linkType = "phoneme", linkId = phoneme.id))
-        }
         return text.richText()
     }
 
