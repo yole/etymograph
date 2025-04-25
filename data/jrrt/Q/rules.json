@@ -4097,39 +4097,14 @@
             {
                 "instructions": [
                     {
-                        "type": "ChangeSound",
+                        "type": "Spe",
                         "args": [
-                            "ij"
-                        ]
-                    },
-                    {
-                        "type": "ChangeSoundClass",
-                        "args": [
-                            "long",
-                            "short",
-                            "-1"
+                            "[+syllabic,+long]j > [-long]ij / _V"
                         ]
                     }
                 ],
                 "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "relPhoneme",
-                            "parameter": "j",
-                            "relative": false
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": -1,
-                            "cls": "long vowel"
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": 1,
-                            "cls": "vowel"
-                        }
-                    ]
+                    "type": "otherwise"
                 }
             }
         ],
@@ -4180,27 +4155,14 @@
             {
                 "instructions": [
                     {
-                        "type": "ChangeSound",
+                        "type": "Spe",
                         "args": [
-                            "h"
+                            "x > h / _!t"
                         ]
                     }
                 ],
                 "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "relPhoneme",
-                            "parameter": "x",
-                            "relative": false
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": 1,
-                            "negated": true,
-                            "parameter": "t"
-                        }
-                    ]
+                    "type": "otherwise"
                 }
             }
         ],
@@ -4543,33 +4505,31 @@
             {
                 "instructions": [
                     {
-                        "type": "SoundDisappears",
+                        "type": "Spe",
+                        "condition": {
+                            "type": "and",
+                            "members": [
+                                {
+                                    "type": "phonemeEquals",
+                                    "index": -1,
+                                    "cls": "vowel",
+                                    "relative": true
+                                },
+                                {
+                                    "type": "relPhoneme",
+                                    "relativeIndex": -1,
+                                    "tcls": "vowel",
+                                    "cls": "stressed"
+                                }
+                            ]
+                        },
                         "args": [
-                            ""
+                            "[+syllabic,-long] > 0"
                         ]
                     }
                 ],
                 "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "relPhoneme",
-                            "cls": "short vowel",
-                            "relative": false
-                        },
-                        {
-                            "type": "phonemeEquals",
-                            "index": -1,
-                            "cls": "vowel",
-                            "relative": true
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": -1,
-                            "tcls": "vowel",
-                            "cls": "stressed"
-                        }
-                    ]
+                    "type": "otherwise"
                 }
             }
         ],
