@@ -298,7 +298,7 @@ class RuleControllerTest {
         )
         val aqSeq = graph.addRuleSequence("ce-aq", ce, aq, listOf(qAiE.step()))
         val qWV = graph.rule(
-            "beginning of word and sound is 'w':\n- new sound is 'v'",
+            "sound is word-initial 'w':\n- new sound is 'v'",
             name = "q-w-v",
             fromLanguage = aq,
             toLanguage = q

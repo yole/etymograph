@@ -19,7 +19,7 @@ class RuleSequenceTest : QBaseTest() {
     fun simpleSequence() {
         val qAiE = repo.rule("sound is 'a' and next sound is 'i':\n- new sound is 'e'", name = "q-ai-e")
         val qSfF = repo.rule("sound is 's' and next sound is 'f':\n- sound disappears") // inapplicable for this test
-        val qWV = repo.rule("beginning of word and sound is 'w':\n- new sound is 'v'", name = "q-w-v")
+        val qWV = repo.rule("sound is word-initial 'w':\n- new sound is 'v'", name = "q-w-v")
         val seq = repo.addRuleSequence("ce-q", ce, q, listOf(qAiE.step(), qSfF.step(), qWV.step()))
         val ceWord = repo.addWord("waiwai", language = ce)
         val qWord = repo.addWord("vaiwe", language = q)
@@ -33,7 +33,7 @@ class RuleSequenceTest : QBaseTest() {
     fun simpleSequenceSPE() {
         val qAiE = repo.rule("sound is 'a' and next sound is 'i':\n- new sound is 'e'", name = "q-ai-e")
         val qSfF = repo.rule("* s > 0 / _f") // inapplicable for this test
-        val qWV = repo.rule("beginning of word and sound is 'w':\n- new sound is 'v'", name = "q-w-v")
+        val qWV = repo.rule("sound is word-initial 'w':\n- new sound is 'v'", name = "q-w-v")
         val seq = repo.addRuleSequence("ce-q", ce, q, listOf(qAiE.step(), qSfF.step(), qWV.step()))
         val ceWord = repo.addWord("waiwai", language = ce)
         val qWord = repo.addWord("vaiwe", language = q)
@@ -61,7 +61,7 @@ class RuleSequenceTest : QBaseTest() {
     fun optionalSteps() {
         val qAiE = repo.rule("sound is 'a' and next sound is 'i':\n- new sound is 'e'", name = "q-ai-e")
         val qSfF = repo.rule("sound is 's' and next sound is 'f':\n- sound disappears") // inapplicable for this test
-        val qWV = repo.rule("beginning of word and sound is 'w':\n- new sound is 'v'", name = "q-w-v")
+        val qWV = repo.rule("sound is word-initial 'w':\n- new sound is 'v'", name = "q-w-v")
         val seq = repo.addRuleSequence("ce-q", ce, q, listOf(qAiE.step(), qSfF.step(), qWV.step(true)))
         val ceWord = repo.addWord("waiwai", language = ce)
         val qWord = repo.addWord("weiwei", language = q)
@@ -97,7 +97,7 @@ class RuleSequenceTest : QBaseTest() {
     fun chainedSequence() {
         val qAiE = repo.rule("sound is 'a' and next sound is 'i':\n- new sound is 'e'", name = "q-ai-e")
         val aqSeq = repo.addRuleSequence("ce-aq", ce, aq, listOf(qAiE.step()))
-        val qWV = repo.rule("beginning of word and sound is 'w':\n- new sound is 'v'", name = "q-w-v")
+        val qWV = repo.rule("sound is word-initial 'w':\n- new sound is 'v'", name = "q-w-v")
         val qSeq = repo.addRuleSequence("aq-q", aq, q, listOf(qWV.step()))
 
         val ceSeq = repo.addRuleSequence("ce-q", ce, q, listOf(aqSeq.step(), qSeq.step()))

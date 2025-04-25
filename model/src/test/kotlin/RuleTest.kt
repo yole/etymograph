@@ -434,18 +434,6 @@ class RuleTest : QBaseTest() {
     }
 
     @Test
-    fun beginningOfWord() {
-        val rule = parseRule(
-            ce, q, """
-            beginning of word and sound is 'd':
-            - new sound is 'l'
-        """.trimIndent()
-        )
-        assertEquals("lanta", rule.apply(ce.word("danta"), emptyRepo).text)
-        assertEquals("beginning of word and sound is 'd'", rule.logic.branches[0].condition.toEditableText())
-    }
-
-    @Test
     fun endOfWord() {
         val rule = parseRule(
             ce, q, """

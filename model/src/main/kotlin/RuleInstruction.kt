@@ -175,8 +175,6 @@ open class RuleInstruction(val type: InstructionType, val arg: String, val comme
             summarizeRelativePhoneme(condition) ?: ""
         else
             ""
-        val bow = condition.findLeafConditions(ConditionType.BeginningOfWord).firstOrNull()
-        if (bow != null) return "$relativePhonemeContext ${bow.maybeNot()}at beginning of word"
         val eow = condition.findLeafConditions(ConditionType.EndOfWord).firstOrNull()
         if (eow != null) return "$relativePhonemeContext ${eow.maybeNot()}at end of word"
         val syllableIndexCondition = condition.findLeafConditions { it is RelativeSyllableRuleCondition }.singleOrNull() as RelativeSyllableRuleCondition?

@@ -308,11 +308,10 @@ class PhonemeRuleTest : QBaseTest() {
     @Test
     fun nextSoundIs() {
         val rule = parseRule(q, q, """
-            beginning of word and sound is 's' and next sound is 'p':
+            sound is word-initial 's' and next sound is 'p':
             - new next sound is 'ph'
         """.trimIndent())
         assertEquals("sphin", rule.apply(q.word("spin"), emptyRepo).text)
-        assertEquals("'sp' > 'sph' at beginning of word", rule.toSummaryText(repo))
     }
 
     @Test
