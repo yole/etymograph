@@ -134,6 +134,11 @@ code {
   font-style: italic;
 }
 
+.ruleMonospaced {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  monospace;
+}
+
 .ruleTrace {
   white-space: pre;
 }

@@ -2272,6 +2272,8 @@ components:
           $ref: "#/components/schemas/RuleRefViewModel"
         phonemic:
           type: "boolean"
+        spe:
+          type: "boolean"
         preInstructions:
           type: "array"
           items:
@@ -2321,6 +2323,7 @@ components:
         - "source"
         - "sourceEditableText"
         - "phonemic"
+        - "spe"
         - "preInstructions"
         - "branches"
         - "postInstructions"
