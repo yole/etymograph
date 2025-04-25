@@ -207,7 +207,7 @@ class RuleControllerTest {
             RuleController.UpdateRuleParameters(
                 "q-final-consonant",
                 "q", "q",
-                "end of word and sound is 'm':\n- new sound is 'n'"
+                "sound is word-final 'm':\n- new sound is 'n'"
             )
         )
 
@@ -238,7 +238,7 @@ class RuleControllerTest {
             RuleController.UpdateRuleParameters(
                 "q-pos",
                 "q", "q",
-                "sound is 't' and end of word:\n- new sound is 'θ'",
+                "sound is word-final 't':\n- new sound is 'θ'",
             ))
         val rule = graph.ruleByName("q-pos")!!
 

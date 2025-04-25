@@ -22,7 +22,6 @@ enum class ConditionType(
         }
         "${Ordinals.toString(ord)} syllable"
     }),
-    EndOfWord(LeafRuleCondition.endOfWord, phonemic = true, takesArgument = false),
     SoundEquals(LeafRuleCondition.soundIsSame, phonemic = true, takesArgument = true)
 }
 
@@ -155,7 +154,6 @@ class LeafRuleCondition(
 
     override fun matches(word: Word, phonemes: PhonemeIterator, graph: GraphRepository, trace: RuleTrace?): Boolean {
         return when (type) {
-            ConditionType.EndOfWord -> (phonemes.index == phonemes.size - 1).negateIfNeeded()
             ConditionType.ClassMatches -> matchClass(word, graph)
             else -> throw IllegalStateException("Trying to use a word condition for matching phonemes")
         }
@@ -194,7 +192,6 @@ class LeafRuleCondition(
         const val soundIs = "sound is "
         const val stressIs = "stress is on "
         const val notPrefix = "not "
-        const val endOfWord = "end of word"
         const val syllableIs = "syllable is "
         const val indefiniteArticle = "a "
         const val soundIsSame = "sound is same as "

@@ -4219,32 +4219,19 @@
             {
                 "instructions": [
                     {
-                        "type": "ChangeSoundClass",
+                        "type": "Spe",
+                        "condition": {
+                            "type": "syllableCount",
+                            "negated": true,
+                            "expectCount": 1
+                        },
                         "args": [
-                            "long",
-                            "short",
-                            "0"
+                            "[+syllabic] > [-long] / _#"
                         ]
                     }
                 ],
                 "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "relPhoneme",
-                            "cls": "long vowel",
-                            "relative": false
-                        },
-                        {
-                            "type": "leaf",
-                            "cond": "EndOfWord"
-                        },
-                        {
-                            "type": "syllableCount",
-                            "negated": true,
-                            "expectCount": 1
-                        }
-                    ]
+                    "type": "otherwise"
                 }
             }
         ],

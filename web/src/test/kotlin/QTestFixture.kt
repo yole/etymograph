@@ -36,7 +36,7 @@ class QTestFixture {
             RuleController.UpdateRuleParameters(
                 "q-final-consonant",
                 "q", "q",
-                "end of word and sound is 'm':\n- new sound is 'n'"
+                "sound is word-final 'm':\n- new sound is 'n'"
             )
         )
         return graph.addRuleSequence(
