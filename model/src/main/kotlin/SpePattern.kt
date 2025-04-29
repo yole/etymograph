@@ -372,20 +372,30 @@ class SpePattern(
     val following: List<SpeNode>
 )  {
     fun apply(language: Language, text: String, trace: RuleTrace? = null): String {
-        return apply(Word(-1, text, language), null, trace).result()
+        return apply(Word(-1, text, language), null, null, trace).result()
     }
 
-    fun apply(word: Word, condition: ((PhonemeIterator) -> Boolean)? = null, trace: RuleTrace? = null): PhonemeIterator {
+    fun apply(
+        word: Word,
+        condition: ((PhonemeIterator) -> Boolean)? = null,
+        postApply: ((PhonemeIterator) -> Unit)?,
+        trace: RuleTrace? = null
+    ): PhonemeIterator {
         val it = PhonemeIterator(word, null)
         while (true) {
-            applyAtCurrent(it, condition, trace)
+            applyAtCurrent(it, condition, postApply, trace)
             if (!it.advance()) break
         }
 
         return it
     }
 
-    fun applyAtCurrent(it: PhonemeIterator, condition: ((PhonemeIterator) -> Boolean)?, trace: RuleTrace?) {
+    fun applyAtCurrent(
+        it: PhonemeIterator,
+        condition: ((PhonemeIterator) -> Boolean)?,
+        postApply: ((PhonemeIterator) -> Unit)?,
+        trace: RuleTrace?
+    ) {
         val itCopy = it.clone()
         val context = SpeContext(trace, this)
         if (before.matchNodes(itCopy, context) &&
@@ -394,6 +404,7 @@ class SpePattern(
             (condition == null || condition.invoke(it.clone()))
         ) {
             applyNodes(it, 0, context, before, after)
+            postApply?.invoke(it)
         }
     }
 

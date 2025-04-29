@@ -813,6 +813,13 @@ class RuleTest : QBaseTest() {
     }
 
     @Test
+    fun speApplySoundRulePostInstruction() {
+        val postRule = repo.rule("* e > i", name = "q-e-i")
+        val baseRule = repo.rule("* a > 0\n= apply sound rule 'q-e-i' to previous vowel")
+        assertEquals("elin", baseRule.apply(q.word("elena"), repo).text)
+    }
+
+    @Test
     fun notRule() {
         val text = "* a > i if not (previous sound is 'c')"
         val rule = parseRule(ce, q, text)

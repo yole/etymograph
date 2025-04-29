@@ -300,7 +300,9 @@ class Rule(
             if (branch.matches(preWord, graph, trace)) {
                 trace?.logMatchedBranch(this, word, null, branch)
                 var resultWord = branch.apply(this, preWord, graph, trace)
-                resultWord = logic.postInstructions.apply(this, null, resultWord, graph)
+                if (!isSPE()) {
+                    resultWord = logic.postInstructions.apply(this, null, resultWord, graph)
+                }
                 if (applyPrePostRules) {
                     resultWord = paradigm?.postRule?.apply(resultWord, graph, trace, preserveId = true) ?: resultWord
                 }
