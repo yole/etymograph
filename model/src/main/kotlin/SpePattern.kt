@@ -378,20 +378,23 @@ class SpePattern(
     fun apply(word: Word, condition: ((PhonemeIterator) -> Boolean)? = null, trace: RuleTrace? = null): PhonemeIterator {
         val it = PhonemeIterator(word, null)
         while (true) {
-            val itCopy = it.clone()
-            val context = SpeContext(trace, this)
-            if (before.matchNodes(itCopy, context) &&
-                following.matchNodes(itCopy, context) &&
-                preceding.matchNodesBackwards(it.clone(), context) &&
-                (condition == null || condition.invoke(it.clone()))
-            )
-            {
-                applyNodes(it, 0, context, before, after)
-            }
+            applyAtCurrent(it, condition, trace)
             if (!it.advance()) break
         }
 
         return it
+    }
+
+    fun applyAtCurrent(it: PhonemeIterator, condition: ((PhonemeIterator) -> Boolean)?, trace: RuleTrace?) {
+        val itCopy = it.clone()
+        val context = SpeContext(trace, this)
+        if (before.matchNodes(itCopy, context) &&
+            following.matchNodes(itCopy, context) &&
+            preceding.matchNodesBackwards(it.clone(), context) &&
+            (condition == null || condition.invoke(it.clone()))
+        ) {
+            applyNodes(it, 0, context, before, after)
+        }
     }
 
     fun toRichText(): RichText {

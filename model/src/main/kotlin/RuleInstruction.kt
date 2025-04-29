@@ -681,6 +681,14 @@ class SpeInstruction(val pattern: SpePattern, val condition: RuleCondition? = nu
         return phonemicWord
     }
 
+    override fun apply(word: Word, phonemes: PhonemeIterator, graph: GraphRepository, trace: RuleTrace?) {
+        pattern.applyAtCurrent(
+            phonemes,
+            { condition == null || condition.matches(word, it, graph, trace).also { result -> trace?.logCondition(condition, result) } },
+            trace
+        )
+    }
+
     override fun refersToPhoneme(phoneme: Phoneme): Boolean {
         return pattern.before.any { it.refersToPhoneme(phoneme) } ||
                 pattern.after.any { it.refersToPhoneme(phoneme) }
