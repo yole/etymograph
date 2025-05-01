@@ -165,3 +165,8 @@ code {
 .derivationLinkChain {
   display: inline;
 }
+
+.ruleReport {
+  margin-top: 5pt;
+  margin-bottom: 10pt;
+}

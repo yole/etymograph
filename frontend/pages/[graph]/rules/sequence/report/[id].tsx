@@ -1,9 +1,10 @@
 // noinspection JSUnusedGlobalSymbols
 import {fetchBackend, fetchPathsForAllGraphs} from "@/api";
 import Breadcrumbs from "@/components/Breadcrumbs";
-import {SequenceReportViewModel} from "@/models";
+import {RuleExampleViewModel, SequenceReportViewModel} from "@/models";
 import {useRouter} from "next/router";
 import RichText from "@/components/RichText";
+import {Rule} from "postcss";
 
 export const config = {
     unstable_runtimeJS: true
@@ -15,6 +16,17 @@ export async function getStaticProps(context) {
 
 export async function getStaticPaths() {
     return fetchPathsForAllGraphs("rules/sequences", (r) => ({id: r.id.toString()}))
+}
+
+function RuleSequenceExample(params: {ex: RuleExampleViewModel}) {
+    const ex = params.ex
+    return <div>
+        <b>Example: </b>
+        {ex.toWord.displayLanguage} {ex.toWord.reconstructed && "*"}{ex.toWord.text} '{ex.toWord.gloss}'
+        {ex.wordBeforeRule && ' > *' + ex.wordBeforeRule}
+        {ex.wordAfterRule && <>{' > '}<b>{"*" + ex.wordAfterRule}</b></>}
+        {!ex.wordAfterRule && <>{' > '}<b>{(ex.expectedWord || ex.fromWord.reconstructed) && "*"}{ex.expectedWord ?? ex.fromWord.text}</b></>}
+    </div>
 }
 
 export default function RuleSequenceReport(params) {
@@ -30,6 +42,7 @@ export default function RuleSequenceReport(params) {
         {ruleSequence.rules.map(r => <>
             <h2>{r.ruleName} {r.optional && " (optional)"}</h2>
             <span className="source">{r.ruleSource}</span>
+            <div className="ruleReport">
             {r.preInstructions.map(i => <div>{'- '}<RichText richText={i}/></div>)}
             {r.ruleIsSPE && r.branches[0].instructions.map(i => <div><RichText richText={i}/></div>)}
             {!r.ruleIsSPE && r.branches.map(b => <>
@@ -39,6 +52,10 @@ export default function RuleSequenceReport(params) {
                 </ul>
             </>)}
             {r.postInstructions.map(i => <div>{'= '}<RichText richText={i}/></div>)}
+            </div>
+            {r.branches[0].examples[0] && <>
+                <RuleSequenceExample ex={r.branches[0].examples[0]}/>
+            </>}
         </>)}
     </>
 }
