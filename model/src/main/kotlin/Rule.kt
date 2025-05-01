@@ -427,10 +427,11 @@ class Rule(
                 logic.postInstructions.any { it.refersToPhoneme(phoneme) }
     }
 
-    fun refersToRule(rule: Rule): Boolean {
-        return logic.preInstructions.any { it.refersToRule(rule) } ||
-                logic.branches.any { branch -> branch.instructions.any { it.refersToRule(rule) } } ||
-                logic.postInstructions.any { it.refersToRule(rule) }
+    fun referencedRules(): Set<Rule> {
+        return (logic.preInstructions.flatMap { it.referencedRules() } +
+                logic.branches.flatMap {
+                    branch -> branch.instructions.flatMap { it.referencedRules() }
+                } + logic.postInstructions.flatMap { it.referencedRules() }).toSet()
     }
 
     data class RuleChangeResult(val word: Word, val oldResult: String, val newResult: String)

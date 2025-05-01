@@ -235,8 +235,8 @@ open class RuleInstruction(val type: InstructionType, val arg: String, val comme
         }
     }
 
-    open fun refersToRule(rule: Rule): Boolean {
-        return false
+    open fun referencedRules(): Set<Rule> {
+        return emptySet()
     }
 
     companion object {
@@ -351,8 +351,8 @@ class ApplyRuleInstruction(val ruleRef: RuleRef, comment: String?)
         return rule.toSummaryText(graph)
     }
 
-    override fun refersToRule(rule: Rule): Boolean {
-        return rule == ruleRef.resolve()
+    override fun referencedRules(): Set<Rule> {
+        return setOf(ruleRef.resolve())
     }
 }
 
@@ -397,8 +397,8 @@ class ApplySoundRuleInstruction(language: Language, val ruleRef: RuleRef, arg: S
                 (seekTarget?.toEditableText()?.rich(emph = true) ?: "".rich())
     }
 
-    override fun refersToRule(rule: Rule): Boolean {
-        return rule == ruleRef.resolve()
+    override fun referencedRules(): Set<Rule> {
+        return setOf(ruleRef.resolve())
     }
 
     companion object {
