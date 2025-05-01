@@ -2071,6 +2071,8 @@ components:
           type: "boolean"
         subscript:
           type: "boolean"
+        monospaced:
+          type: "boolean"
         linkType:
           type: "string"
         linkId:
@@ -2084,6 +2086,7 @@ components:
         - "text"
         - "emph"
         - "subscript"
+        - "monospaced"
     RichText:
       type: "object"
       properties:

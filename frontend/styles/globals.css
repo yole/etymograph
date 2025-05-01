@@ -134,7 +134,7 @@ code {
   font-style: italic;
 }
 
-.ruleMonospaced {
+.richTextMono {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
   monospace;
 }

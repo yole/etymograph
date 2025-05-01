@@ -642,7 +642,7 @@ class SpeInstruction(val pattern: SpePattern, val condition: RuleCondition? = nu
     : RuleInstruction(InstructionType.Spe, pattern.toString(), comment)
 {
     override fun toRichText(graph: GraphRepository): RichText {
-        return pattern.toRichText() + (condition?.let { " if " + it.toRichText() } ?: "")
+        return pattern.toRichText() + (condition?.let { " if ".richText() + it.toRichText() } ?: "".richText())
     }
 
     override fun toEditableText(graph: GraphRepository): String {

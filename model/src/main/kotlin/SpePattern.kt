@@ -442,7 +442,7 @@ class SpePattern(
             result += "∅".rich()
         }
         if (preceding.isEmpty() && following.isEmpty()) {
-            return result
+            return result.format(monospaced = true)
         }
         result += " / ".rich()
         for (node in preceding) {
@@ -452,7 +452,7 @@ class SpePattern(
         for (node in following) {
             result += node.toRichText(fromLanguage)
        }
-        return result
+        return result.format(monospaced = true)
     }
 
     override fun toString(): String {

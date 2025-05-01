@@ -173,9 +173,9 @@ export default function Rule(params) {
             {rule.branches.map(b => <>
                 {b.comment != null && <div className="ruleComment">{b.comment}</div> }
                 {b.conditions.fragments.length > 0 && <div><RichText richText={b.conditions}/>:</div>}
-                {rule.spe && b.instructions.length == 1 && <div className="ruleMonospaced"><RichText richText={b.instructions[0]}></RichText></div> }
+                {rule.spe && b.instructions.length == 1 && <div><RichText richText={b.instructions[0]}></RichText></div> }
                 {(!rule.spe || b.instructions.length > 1) && <ul>
-                    {b.instructions.map(i => <li className={rule.spe ? "ruleMonospaced" : ""}><RichText richText={i}></RichText></li>)}
+                    {b.instructions.map(i => <li><RichText richText={i}></RichText></li>)}
                 </ul>}
                 {b.examples.length > 0 && <>
                     <h3>Examples</h3>

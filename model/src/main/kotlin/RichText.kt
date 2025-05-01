@@ -5,6 +5,7 @@ data class RichTextFragment(
     val tooltip: String? = null,
     val emph: Boolean = false,
     val subscript: Boolean = false,
+    val monospaced: Boolean = false,
     val linkType: String? = null,
     val linkId: Int? = null,
     val linkLanguage: String? = null,
@@ -51,13 +52,22 @@ data class RichText(val fragments: List<RichTextFragment>) {
         }
         return RichText(fragments + s.rich())
     }
+
+    fun format(monospaced: Boolean? = null): RichText {
+        return RichText(fragments.map { f ->
+            RichTextFragment(f.text, f.tooltip, f.emph, f.subscript,
+                monospaced ?: f.monospaced,
+                f.linkType, f.linkId, f.linkLanguage, f.linkData
+            )
+        })
+    }
 }
 
 fun String.rich(
-    emph: Boolean = false, subscript: Boolean = false, tooltip: String? = null,
+    emph: Boolean = false, subscript: Boolean = false, monospaced: Boolean = false, tooltip: String? = null,
     linkType: String? = null, linkId: Int? = null, linkLanguage: String? = null, linkData: String? = null
 ): RichTextFragment =
-    RichTextFragment(this, tooltip, emph, subscript, linkType, linkId, linkLanguage, linkData)
+    RichTextFragment(this, tooltip, emph, subscript, monospaced, linkType, linkId, linkLanguage, linkData)
 
 fun String.richText(): RichText = richText(RichTextFragment(this))
 

@@ -29,6 +29,9 @@ function RichTextFragment(params: { fragment: RichTextFragmentModel }) {
     if (params.fragment.subscript) {
         return <sub>{textWithTooltip}</sub>
     }
+    if (params.fragment.monospaced) {
+        return <span className="richTextMono">{textWithTooltip}</span>
+    }
     return <>{textWithTooltip}</>;
 }
 

@@ -401,6 +401,7 @@ export type RichTextFragment = {
     tooltip?: string;
     emph: boolean;
     subscript: boolean;
+    monospaced: boolean;
     linkType?: string;
     linkId?: number;
     linkLanguage?: string;
