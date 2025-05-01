@@ -30,6 +30,7 @@ export default function RuleSequenceReport(params) {
         {ruleSequence.rules.map(r => <>
             <h2>{r.ruleName} {r.optional && " (optional)"}</h2>
             <span className="source">{r.ruleSource}</span>
+            {r.preInstructions.map(i => <div>{'- '}<RichText richText={i}/></div>)}
             {r.ruleIsSPE && r.branches[0].instructions.map(i => <div><RichText richText={i}/></div>)}
             {!r.ruleIsSPE && r.branches.map(b => <>
                 <div><RichText richText={b.conditions}/>:</div>
@@ -37,6 +38,7 @@ export default function RuleSequenceReport(params) {
                     {b.instructions.map(i => <li><RichText richText={i}/></li>)}
                 </ul>
             </>)}
+            {r.postInstructions.map(i => <div>{'= '}<RichText richText={i}/></div>)}
         </>)}
     </>
 }
