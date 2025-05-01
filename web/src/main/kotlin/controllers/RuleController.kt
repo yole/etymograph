@@ -660,7 +660,7 @@ class RuleController {
     @ResponseBody
     fun sequenceRules(repo: GraphRepository, @PathVariable id: Int): SequenceReportViewModel {
         val sequence = repo.resolveRuleSequence(id)
-        val steps = sequence.resolveSteps(repo)
+        val steps = sequence.resolveSteps(repo).withReferencedRules()
         val ruleViewModels = steps.map {
             val rule = it.rule as Rule
             val examples = repo.findRuleExamples(rule).map { link -> rule.toExampleData(repo, link) }
@@ -691,6 +691,21 @@ class RuleController {
             ruleViewModels
         )
     }
+}
+
+private fun List<RuleSequenceStep>.withReferencedRules(): List<RuleSequenceStep> {
+    val result = mutableListOf<RuleSequenceStep>()
+    val seenRules = mutableSetOf<Rule>()
+    for (step in this) {
+        result.add(step)
+        for (ref in (step.rule as Rule).referencedRules()) {
+            if (ref !in seenRules) {
+                seenRules.add(ref)
+                result.add(RuleSequenceStep(ref, optional = false, dispreferred = false))
+            }
+        }
+    }
+    return result
 }
 
 fun parsePOSList(pos: String?, language: Language): List<String> {
