@@ -235,6 +235,12 @@ class SpePatternTest : QBaseTest() {
     }
 
     @Test
+    fun metathesis() {
+        assertEquals("crava", SpePattern.parse(q, q, "Vr > rV").apply(q, "carva"))
+        assertEquals("fors", SpePattern.parse(q, q, "rVC > Vr").apply(q, "fross"))
+    }
+
+    @Test
     fun toStringSimple() {
         val pattern = SpePattern.parse(q, q, "a > o")
         assertEquals("a > o", pattern.toString())

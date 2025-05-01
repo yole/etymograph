@@ -4,6 +4,15 @@ import kotlin.math.min
 
 class SpeContext(val trace: RuleTrace?, private val pattern: SpePattern) {
     private val matchIndexes = mutableMapOf<Int, Int>()
+    private val matchedClasses = mutableMapOf<String, String>()
+
+    fun recordMatchedClass(node: SpeNode, current: String) {
+        matchedClasses[node.toString()] = current
+    }
+
+    fun findMatchForClass(node: SpeNode): String? {
+        return matchedClasses[node.toString()]
+    }
 
     fun recordMatchedAlternative(node: SpeAlternativeNode, index: Int) {
         val nodeIndex = pattern.before.indexOf(node)
@@ -20,12 +29,6 @@ class SpeContext(val trace: RuleTrace?, private val pattern: SpePattern) {
     fun getBeforeNode(node: SpeAlternativeNode): SpeAlternativeNode? {
         val nodeIndex = pattern.after.indexOf(node)
         return if (nodeIndex < 0) null else pattern.before[nodeIndex] as? SpeAlternativeNode
-    }
-
-    fun findIndexToCopy(node: SpeNode): Int? {
-        val targetIndex = pattern.after.indexOf(node)
-        val beforeIndex = pattern.before.indexOfFirst { it.toString() == node.toString() }
-        return if (beforeIndex < 0) null else beforeIndex - targetIndex + 1
     }
 }
 
@@ -53,7 +56,7 @@ abstract class SpePhonemeNode : SpeTargetNode() {
         if (it.atEnd()) {
             return false
         }
-        if (matchCurrent(it)) {
+        if (matchCurrent(it, context)) {
             it.advance()
             return true
         }
@@ -64,10 +67,10 @@ abstract class SpePhonemeNode : SpeTargetNode() {
         if (!it.advanceBy(-1)) {
             return false
         }
-        return matchCurrent(it)
+        return matchCurrent(it, context)
     }
 
-    abstract fun matchCurrent(it: PhonemeIterator): Boolean
+    abstract fun matchCurrent(it: PhonemeIterator, context: SpeContext): Boolean
 }
 
 class SpeLiteralNode(val text: String) : SpePhonemeNode() {
@@ -75,7 +78,7 @@ class SpeLiteralNode(val text: String) : SpePhonemeNode() {
         return text.richText()
     }
 
-    override fun matchCurrent(it: PhonemeIterator): Boolean {
+    override fun matchCurrent(it: PhonemeIterator, context: SpeContext): Boolean {
         return text == it.current
     }
 
@@ -93,8 +96,10 @@ class SpeLiteralNode(val text: String) : SpePhonemeNode() {
 }
 
 class SpePhonemeClassNode(val language: Language, val phonemeClass: PhonemeClass): SpePhonemeNode() {
-    override fun matchCurrent(it: PhonemeIterator): Boolean {
-        return phonemeClass.matchesCurrent(it)
+    override fun matchCurrent(it: PhonemeIterator, context: SpeContext): Boolean {
+        return phonemeClass.matchesCurrent(it).also { result ->
+            if (result && isCV()) context.recordMatchedClass(this, it.current)
+        }
     }
 
     override fun toRichText(language: Language?): RichText {
@@ -119,12 +124,19 @@ class SpePhonemeClassNode(val language: Language, val phonemeClass: PhonemeClass
     }
 
     override fun replace(it: PhonemeIterator, relativeIndex: Int, context: SpeContext) {
+        if (isCV()) {
+            val match = context.findMatchForClass(this) ?: return
+            it.replaceAtRelative(relativeIndex, match)
+        }
         replacePhonemeByFeatures(it, relativeIndex, phonemeClass, context.trace)
     }
 
+    private fun isCV() =
+        phonemeClass.name == PhonemeClass.consonantClassName || phonemeClass.name == PhonemeClass.vowelClassName
+
     override fun insert(it: PhonemeIterator, relativeIndex: Int, context: SpeContext) {
-        val sourceIndex = context.findIndexToCopy(this) ?: return
-        it.atRelative(sourceIndex)?.let { s -> it.insertAtRelative(relativeIndex, s) }
+        val match = context.findMatchForClass(this) ?: return
+        it.insertAtRelative(relativeIndex, match)
     }
 
     private fun replacePhonemeByFeatures(it: PhonemeIterator, relativeIndex: Int, newClass: PhonemeClass, trace: RuleTrace? = null) {
