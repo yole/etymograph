@@ -2887,327 +2887,153 @@
             {
                 "instructions": [
                     {
-                        "type": "SoundDisappears",
+                        "type": "Spe",
+                        "condition": {
+                            "type": "and",
+                            "members": [
+                                {
+                                    "type": "relPhoneme",
+                                    "cls": "non-stressed non-diphthong",
+                                    "relative": false
+                                },
+                                {
+                                    "type": "syllableIndex",
+                                    "matchClass": "open"
+                                },
+                                {
+                                    "type": "syllableIndex",
+                                    "matchIndex": -1,
+                                    "negated": true
+                                },
+                                {
+                                    "type": "relPhoneme",
+                                    "relativeIndex": -1,
+                                    "tcls": "vowel",
+                                    "cls": "stressed"
+                                }
+                            ]
+                        },
                         "args": [
-                            "0"
+                            "{æ|e|o} > 0"
                         ]
-                    }
-                ],
-                "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "relPhoneme",
-                            "cls": "non-stressed",
-                            "parameter": "æ",
-                            "relative": false
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "negated": true,
-                            "cls": "diphthong",
-                            "relative": false
-                        },
-                        {
-                            "type": "syllableIndex",
-                            "matchClass": "open"
-                        },
-                        {
-                            "type": "syllableIndex",
-                            "matchIndex": -1,
-                            "negated": true
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": -1,
-                            "tcls": "vowel",
-                            "cls": "stressed"
-                        }
-                    ]
-                }
-            },
-            {
-                "instructions": [
+                    },
                     {
-                        "type": "SoundDisappears",
+                        "type": "Spe",
+                        "condition": {
+                            "type": "and",
+                            "members": [
+                                {
+                                    "type": "relPhoneme",
+                                    "cls": "non-stressed non-diphthong",
+                                    "relative": false
+                                },
+                                {
+                                    "type": "relPhoneme",
+                                    "relativeIndex": 1,
+                                    "negated": true,
+                                    "cls": "vowel"
+                                },
+                                {
+                                    "type": "syllableIndex",
+                                    "matchClass": "open"
+                                },
+                                {
+                                    "type": "syllableIndex",
+                                    "matchIndex": -1,
+                                    "negated": true
+                                },
+                                {
+                                    "type": "relPhoneme",
+                                    "relativeIndex": -1,
+                                    "tcls": "vowel",
+                                    "cls": "stressed"
+                                },
+                                {
+                                    "type": "or",
+                                    "members": [
+                                        {
+                                            "type": "relPhoneme",
+                                            "relativeIndex": -1,
+                                            "tcls": "vowel",
+                                            "cls": "long"
+                                        },
+                                        {
+                                            "type": "relPhoneme",
+                                            "relativeIndex": -1,
+                                            "tcls": "vowel",
+                                            "cls": "diphthong"
+                                        },
+                                        {
+                                            "type": "syllableIndex",
+                                            "matchClass": "closed",
+                                            "relativeIndex": -1
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
                         "args": [
-                            "0"
+                            "i > 0"
                         ]
-                    }
-                ],
-                "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "relPhoneme",
-                            "cls": "non-stressed",
-                            "parameter": "e",
-                            "relative": false
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "negated": true,
-                            "cls": "diphthong",
-                            "relative": false
-                        },
-                        {
-                            "type": "syllableIndex",
-                            "matchClass": "open"
-                        },
-                        {
-                            "type": "syllableIndex",
-                            "matchIndex": -1,
-                            "negated": true
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": -1,
-                            "tcls": "vowel",
-                            "cls": "stressed"
-                        }
-                    ]
-                }
-            },
-            {
-                "instructions": [
+                    },
                     {
-                        "type": "SoundDisappears",
+                        "type": "Spe",
+                        "condition": {
+                            "type": "and",
+                            "members": [
+                                {
+                                    "type": "relPhoneme",
+                                    "cls": "non-stressed non-diphthong",
+                                    "relative": false
+                                },
+                                {
+                                    "type": "syllableIndex",
+                                    "matchClass": "open"
+                                },
+                                {
+                                    "type": "syllableIndex",
+                                    "matchIndex": -1,
+                                    "negated": true
+                                },
+                                {
+                                    "type": "relPhoneme",
+                                    "relativeIndex": -1,
+                                    "tcls": "vowel",
+                                    "cls": "stressed"
+                                },
+                                {
+                                    "type": "or",
+                                    "members": [
+                                        {
+                                            "type": "relPhoneme",
+                                            "relativeIndex": -1,
+                                            "tcls": "vowel",
+                                            "cls": "long"
+                                        },
+                                        {
+                                            "type": "relPhoneme",
+                                            "relativeIndex": -1,
+                                            "tcls": "vowel",
+                                            "cls": "diphthong"
+                                        },
+                                        {
+                                            "type": "syllableIndex",
+                                            "matchClass": "closed",
+                                            "relativeIndex": -1
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
                         "args": [
-                            "0"
+                            "{u|y} > 0"
                         ]
                     }
                 ],
                 "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "relPhoneme",
-                            "cls": "non-stressed",
-                            "parameter": "o",
-                            "relative": false
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "negated": true,
-                            "cls": "diphthong",
-                            "relative": false
-                        },
-                        {
-                            "type": "syllableIndex",
-                            "matchClass": "open"
-                        },
-                        {
-                            "type": "syllableIndex",
-                            "matchIndex": -1,
-                            "negated": true
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": -1,
-                            "tcls": "vowel",
-                            "cls": "stressed"
-                        }
-                    ]
+                    "type": "otherwise"
                 },
-                "comment": "this comes up only in synchronous contexts"
-            },
-            {
-                "instructions": [
-                    {
-                        "type": "SoundDisappears",
-                        "args": [
-                            "0"
-                        ]
-                    }
-                ],
-                "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "relPhoneme",
-                            "cls": "non-stressed",
-                            "parameter": "i",
-                            "relative": false
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "negated": true,
-                            "cls": "diphthong",
-                            "relative": false
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": 1,
-                            "negated": true,
-                            "cls": "vowel"
-                        },
-                        {
-                            "type": "syllableIndex",
-                            "matchClass": "open"
-                        },
-                        {
-                            "type": "syllableIndex",
-                            "matchIndex": -1,
-                            "negated": true
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": -1,
-                            "tcls": "vowel",
-                            "cls": "stressed"
-                        },
-                        {
-                            "type": "or",
-                            "members": [
-                                {
-                                    "type": "relPhoneme",
-                                    "relativeIndex": -1,
-                                    "tcls": "vowel",
-                                    "cls": "long"
-                                },
-                                {
-                                    "type": "relPhoneme",
-                                    "relativeIndex": -1,
-                                    "tcls": "vowel",
-                                    "cls": "diphthong"
-                                },
-                                {
-                                    "type": "syllableIndex",
-                                    "matchClass": "closed",
-                                    "relativeIndex": -1
-                                }
-                            ]
-                        }
-                    ]
-                }
-            },
-            {
-                "instructions": [
-                    {
-                        "type": "SoundDisappears",
-                        "args": [
-                            "0"
-                        ]
-                    }
-                ],
-                "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "relPhoneme",
-                            "cls": "non-stressed",
-                            "parameter": "u",
-                            "relative": false
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "negated": true,
-                            "cls": "diphthong",
-                            "relative": false
-                        },
-                        {
-                            "type": "syllableIndex",
-                            "matchClass": "open"
-                        },
-                        {
-                            "type": "syllableIndex",
-                            "matchIndex": -1,
-                            "negated": true
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": -1,
-                            "tcls": "vowel",
-                            "cls": "stressed"
-                        },
-                        {
-                            "type": "or",
-                            "members": [
-                                {
-                                    "type": "relPhoneme",
-                                    "relativeIndex": -1,
-                                    "tcls": "vowel",
-                                    "cls": "long"
-                                },
-                                {
-                                    "type": "relPhoneme",
-                                    "relativeIndex": -1,
-                                    "tcls": "vowel",
-                                    "cls": "diphthong"
-                                },
-                                {
-                                    "type": "syllableIndex",
-                                    "matchClass": "closed",
-                                    "relativeIndex": -1
-                                }
-                            ]
-                        }
-                    ]
-                }
-            },
-            {
-                "instructions": [
-                    {
-                        "type": "SoundDisappears",
-                        "args": [
-                            "0"
-                        ]
-                    }
-                ],
-                "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "relPhoneme",
-                            "cls": "non-stressed",
-                            "parameter": "y",
-                            "relative": false
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "negated": true,
-                            "cls": "diphthong",
-                            "relative": false
-                        },
-                        {
-                            "type": "syllableIndex",
-                            "matchClass": "open"
-                        },
-                        {
-                            "type": "syllableIndex",
-                            "matchIndex": -1,
-                            "negated": true
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": -1,
-                            "tcls": "vowel",
-                            "cls": "stressed"
-                        },
-                        {
-                            "type": "or",
-                            "members": [
-                                {
-                                    "type": "relPhoneme",
-                                    "relativeIndex": -1,
-                                    "tcls": "vowel",
-                                    "cls": "long"
-                                },
-                                {
-                                    "type": "relPhoneme",
-                                    "relativeIndex": -1,
-                                    "tcls": "vowel",
-                                    "cls": "diphthong"
-                                },
-                                {
-                                    "type": "syllableIndex",
-                                    "matchClass": "closed",
-                                    "relativeIndex": -1
-                                }
-                            ]
-                        }
-                    ]
-                }
+                "comment": "'o' comes up only in synchronous contexts"
             }
         ],
         "sourceRefs": [
@@ -3336,57 +3162,26 @@
             {
                 "instructions": [
                     {
-                        "type": "ChangeSound",
-                        "args": [
-                            "c"
-                        ]
-                    }
-                ],
-                "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "relPhoneme",
-                            "parameter": "ċ",
-                            "relative": false
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": 1,
-                            "cls": "consonant"
-                        },
-                        {
+                        "type": "Spe",
+                        "condition": {
                             "type": "relPhoneme",
                             "relativeIndex": 1,
                             "negated": true,
                             "parameter": "ċ"
-                        }
-                    ]
-                }
-            },
-            {
-                "instructions": [
-                    {
-                        "type": "ChangeSound",
+                        },
                         "args": [
-                            "g"
+                            "ċ > c / _C"
+                        ]
+                    },
+                    {
+                        "type": "Spe",
+                        "args": [
+                            "ġ > g / _C"
                         ]
                     }
                 ],
                 "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "relPhoneme",
-                            "parameter": "ġ",
-                            "relative": false
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": 1,
-                            "cls": "consonant"
-                        }
-                    ]
+                    "type": "otherwise"
                 }
             }
         ],
@@ -7725,74 +7520,40 @@
             {
                 "instructions": [
                     {
-                        "type": "SoundInsertedAfter",
+                        "type": "Spe",
+                        "condition": {
+                            "type": "and",
+                            "members": [
+                                {
+                                    "type": "relPhoneme",
+                                    "relativeIndex": 1,
+                                    "cls": "short vowel"
+                                },
+                                {
+                                    "type": "relPhoneme",
+                                    "relativeIndex": 2,
+                                    "cls": "geminate consonant"
+                                }
+                            ]
+                        },
                         "args": [
-                            "r"
+                            "rVC > Vr"
                         ]
                     },
                     {
-                        "type": "SoundDisappears",
-                        "args": [
-                            "1"
-                        ]
-                    },
-                    {
-                        "type": "SoundDisappears",
-                        "args": [
-                            "-1"
-                        ]
-                    }
-                ],
-                "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "relPhoneme",
-                            "cls": "short vowel",
-                            "relative": false
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": -1,
-                            "parameter": "r"
-                        },
-                        {
+                        "type": "Spe",
+                        "condition": {
                             "type": "relPhoneme",
                             "relativeIndex": 1,
-                            "cls": "geminate consonant"
-                        }
-                    ]
-                }
-            },
-            {
-                "instructions": [
-                    {
-                        "type": "SoundInsertedAfter",
+                            "cls": "short vowel"
+                        },
                         "args": [
-                            "r"
-                        ]
-                    },
-                    {
-                        "type": "SoundDisappears",
-                        "args": [
-                            "-1"
+                            "rV > Vr"
                         ]
                     }
                 ],
                 "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "relPhoneme",
-                            "cls": "short vowel",
-                            "relative": false
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": -1,
-                            "parameter": "r"
-                        }
-                    ]
+                    "type": "otherwise"
                 }
             }
         ],
