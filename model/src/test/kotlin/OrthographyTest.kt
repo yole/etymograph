@@ -32,6 +32,15 @@ class OrthographyTest : QBaseTest() {
         assertEquals("iayn", iayn.asOrthographic().text)
     }
 
+    @Test
+    fun orthographyRuleSPE() {
+        val rule = parseRule(ce, ce, "* j > i / #_")
+        ce.orthographyRule = RuleRef.to(rule)
+        ce.phonemes = listOf(phoneme(listOf("y"), "j", "semivowel"))
+        val iayn = ce.word("jajn").apply { isPhonemic = true }
+        assertEquals("iayn", iayn.asOrthographic().text)
+    }
+
     @Test fun pronunciationRule() {
         ce.phonemes = listOf(
             phoneme(listOf("y"), "j", "semivowel"),
