@@ -7338,38 +7338,6 @@
         ]
     },
     {
-        "id": 6309,
-        "name": "north-pwgmc-nasalized-unrounding",
-        "fromLang": "OE",
-        "toLang": "OE",
-        "branches": [
-            {
-                "instructions": [
-                    {
-                        "type": "Spe",
-                        "condition": {
-                            "type": "relPhoneme",
-                            "cls": "stressed",
-                            "relative": false
-                        },
-                        "args": [
-                            "ą > a"
-                        ]
-                    }
-                ],
-                "condition": {
-                    "type": "otherwise"
-                }
-            }
-        ],
-        "sourceRefs": [
-            {
-                "pubId": 5,
-                "refText": "145"
-            }
-        ]
-    },
-    {
         "id": 9606,
         "name": "oe-g-i",
         "fromLang": "OE",

@@ -40,10 +40,6 @@
                 "dispreferred": true
             },
             {
-                "ruleId": 6309,
-                "optional": true
-            },
-            {
                 "ruleId": 9610
             },
             {
