@@ -5,6 +5,9 @@ open class PhonemeClass(val name: String, var matchingPhonemes: List<String> = e
         return it.current in matchingPhonemes
     }
 
+    fun toRichText(): RichTextFragment =
+        name.rich(emph = true, tooltip = matchingPhonemes.takeIf { it.isNotEmpty() }?.joinToString(", "))
+
     companion object {
         val diphthong = object : PhonemeClass("diphthong") {
             override fun matchesCurrent(it: PhonemeIterator): Boolean {
@@ -133,7 +136,7 @@ class PhonemePattern(val phonemeClass: PhonemeClass?, val literal: String?) {
 
     fun toRichText(): RichText {
         return listOf(
-            phonemeClass?.name?.rich(emph = true, tooltip = phonemeClass.matchingPhonemes.takeIf { it.isNotEmpty() }?.joinToString(", ")),
+            phonemeClass?.toRichText(),
             literal?.let { "'$it'" }?.rich(emph = true)
         ).filterNotNull().joinToRichText(" ") { richText(it) }
     }

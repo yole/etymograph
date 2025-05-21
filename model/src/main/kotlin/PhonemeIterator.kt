@@ -76,7 +76,7 @@ class SeekTarget(val index: Int, val phonemeClass: PhonemeClass?, val relative: 
     fun toRichText(): RichText {
         return (if (relative) RelativeOrdinals.toString(index) else Ordinals.toString(index)).rich(true) +
             " ".rich() +
-            (phonemeClass?.name?.rich(true) ?: "sound".rich())
+            (phonemeClass?.toRichText() ?: "sound".rich())
     }
 
     companion object {
