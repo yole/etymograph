@@ -258,6 +258,16 @@ class Word(
         return this
     }
 
+    fun remapViaCharacterIndex(index: Int, toLanguage: Language, graph: GraphRepository): Int {
+        if (language == toLanguage || index < 0) {
+            return index
+        }
+        val fromIt = PhonemeIterator(this, graph)
+        val fromIndex = fromIt.phonemeToCharacterIndex(index)
+        val toIt = PhonemeIterator(text, toLanguage, graph)
+        return toIt.characterToPhonemeIndex(fromIndex)
+    }
+
     fun getOrComputePOS(graph: GraphRepository): String? {
         if (pos != null) {
             return pos

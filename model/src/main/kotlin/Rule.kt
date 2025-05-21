@@ -306,7 +306,9 @@ class Rule(
                 if (applyPrePostRules) {
                     resultWord = paradigm?.postRule?.apply(resultWord, graph, trace, preserveId = true) ?: resultWord
                 }
-                val result = deriveWord(word, resultWord.text, toLanguage, resultWord.isPhonemic, resultWord.stressedPhonemeIndex,
+
+                val stressIndex = resultWord.remapViaCharacterIndex(resultWord.stressedPhonemeIndex, toLanguage, graph)
+                val result = deriveWord(word, resultWord.text, toLanguage, resultWord.isPhonemic, stressIndex,
                     resultWord.segments, resultWord.classes, normalizeSegments = normalizeSegments,
                     id = if (preserveId) word.id else -1,
                     stress = if (resultWord.explicitStress) resultWord.stressedPhonemeIndex else null)

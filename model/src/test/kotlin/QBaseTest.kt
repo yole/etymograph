@@ -22,7 +22,9 @@ open class QBaseTest {
         it.phonemes = listOf(
             Phoneme(-1, listOf("kh"), null, setOf("voiceless", "consonant")),
             Phoneme(-1, listOf("th"), null, setOf("voiceless", "consonant"))
-        )
+        ) + listOf("a", "o", "u", "i").map { p ->
+            Phoneme(-1, listOf(p), null, setOf("short", "vowel"))
+        }
     }
     val emptyRepo = InMemoryGraphRepository()
 
