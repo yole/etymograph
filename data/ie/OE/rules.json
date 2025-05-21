@@ -2676,32 +2676,14 @@
             {
                 "instructions": [
                     {
-                        "type": "ChangeSound",
+                        "type": "Spe",
                         "args": [
-                            "x"
-                        ]
-                    },
-                    {
-                        "type": "SoundDisappears",
-                        "args": [
-                            "1"
+                            "ks > x"
                         ]
                     }
                 ],
                 "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "relPhoneme",
-                            "parameter": "k",
-                            "relative": false
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": 1,
-                            "parameter": "s"
-                        }
-                    ]
+                    "type": "otherwise"
                 }
             }
         ]
@@ -3549,7 +3531,7 @@
                             "relative": false
                         },
                         "args": [
-                            "VVhV > [+long]V"
+                            "VVh[+syllabic] > [+long]V"
                         ]
                     },
                     {
@@ -7398,10 +7380,27 @@
                     {
                         "type": "Spe",
                         "condition": {
-                            "type": "relPhoneme",
-                            "relativeIndex": -1,
-                            "negated": true,
-                            "parameter": "ċ"
+                            "type": "and",
+                            "members": [
+                                {
+                                    "type": "relPhoneme",
+                                    "relativeIndex": -1,
+                                    "negated": true,
+                                    "parameter": "ċ"
+                                },
+                                {
+                                    "type": "relPhoneme",
+                                    "relativeIndex": -1,
+                                    "negated": true,
+                                    "parameter": "n"
+                                },
+                                {
+                                    "type": "relPhoneme",
+                                    "relativeIndex": 1,
+                                    "negated": true,
+                                    "parameter": "n"
+                                }
+                            ]
                         },
                         "args": [
                             "ġ > i / C_"
@@ -7507,7 +7506,8 @@
         ],
         "sourceRefs": [
             {
-                "refText": "Kroonen"
+                "pubId": 11,
+                "refText": "127"
             }
         ]
     },

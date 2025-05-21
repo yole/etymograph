@@ -2381,6 +2381,9 @@
         "sourceRefs": [
             {
                 "refText": "https://bosworthtoller.com/9421"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/engel#Old_English"
             }
         ]
     },
@@ -4889,6 +4892,9 @@
         "gloss": "to wander around",
         "fullGloss": "To turn, change, roll about, revolve, wander, move, toss about",
         "pos": "V",
+        "classes": [
+            "v-weak-2"
+        ],
         "sourceRefs": [
             {
                 "pubId": 5,
@@ -4896,6 +4902,9 @@
             },
             {
                 "refText": "https://bosworthtoller.com/20102"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/hwearfian#Old_English"
             }
         ]
     },
@@ -9536,7 +9545,7 @@
         "id": 3210,
         "text": "sċulan",
         "gloss": "be obliged",
-        "fullGloss": "to owe; debere",
+        "fullGloss": "to owe",
         "pos": "V",
         "classes": [
             "v-pret-pres",
@@ -9545,6 +9554,9 @@
         "sourceRefs": [
             {
                 "refText": "https://bosworthtoller.com/27073"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/sculan#Old_English"
             }
         ]
     },
@@ -10136,6 +10148,9 @@
             {
                 "pubId": 5,
                 "refText": "242"
+            },
+            {
+                "refText": "https://bosworthtoller.com/14813"
             }
         ]
     },
@@ -13977,7 +13992,12 @@
     {
         "id": 4662,
         "text": "ġehwyrfan",
-        "gloss": "to turn"
+        "gloss": "to turn",
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/14813"
+            }
+        ]
     },
     {
         "id": 4664,
@@ -14069,6 +14089,10 @@
         "sourceRefs": [
             {
                 "refText": "https://en.wiktionary.org/wiki/þurfan#Old_English"
+            },
+            {
+                "pubId": 9,
+                "refText": "552"
             }
         ]
     },
@@ -16675,10 +16699,18 @@
         "id": 6557,
         "text": "bēo",
         "gloss": "bee",
+        "pos": "N",
+        "classes": [
+            "fem",
+            "n-stem"
+        ],
         "sourceRefs": [
             {
                 "pubId": 9,
                 "refText": "65"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/beo#Old_English"
             }
         ]
     },
@@ -16823,10 +16855,18 @@
         "id": 6581,
         "text": "blāwan",
         "gloss": "blow",
+        "fullGloss": "to blow; breathe; to be blown; to sound; to inflate",
+        "pos": "V",
+        "classes": [
+            "v-strong-7"
+        ],
         "sourceRefs": [
             {
                 "pubId": 9,
                 "refText": "67"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/blawan#Old_English"
             }
         ]
     },
@@ -16900,10 +16940,18 @@
         "id": 6595,
         "text": "blōwan",
         "gloss": "bloom, flourish",
+        "fullGloss": "to flower, blossom, bloom; to flourish, prosper",
+        "pos": "V",
+        "classes": [
+            "v-strong-7"
+        ],
         "sourceRefs": [
             {
                 "pubId": 9,
                 "refText": "69"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/blowan#Old_English"
             }
         ]
     },
@@ -16946,6 +16994,9 @@
         "gloss": "live, dwell",
         "fullGloss": "to live or dwell; to inhabit, to occupy",
         "pos": "V",
+        "classes": [
+            "v-weak-1"
+        ],
         "sourceRefs": [
             {
                 "pubId": 9,
@@ -16953,6 +17004,9 @@
             },
             {
                 "refText": "https://en.wiktionary.org/wiki/buan#Old_English"
+            },
+            {
+                "refText": "https://bosworthtoller.com/5362"
             }
         ]
     },
@@ -17609,6 +17663,9 @@
             },
             {
                 "refText": "https://en.wiktionary.org/wiki/gediegan#Old_English"
+            },
+            {
+                "refText": "https://bosworthtoller.com/14066"
             }
         ]
     },
@@ -19138,10 +19195,17 @@
         "id": 7034,
         "text": "flōwan",
         "gloss": "flow",
+        "pos": "V",
+        "classes": [
+            "v-strong-7"
+        ],
         "sourceRefs": [
             {
                 "pubId": 9,
                 "refText": "147"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/flowan#Old_English"
             }
         ]
     },
@@ -20063,10 +20127,17 @@
         "id": 7224,
         "text": "glōwan",
         "gloss": "glow",
+        "pos": "V",
+        "classes": [
+            "v-strong-7"
+        ],
         "sourceRefs": [
             {
                 "pubId": 9,
                 "refText": "182"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/glowan#Old_English"
             }
         ]
     },
@@ -20327,10 +20398,17 @@
         "id": 7274,
         "text": "grōwan",
         "gloss": "grow",
+        "pos": "V",
+        "classes": [
+            "v-strong-7"
+        ],
         "sourceRefs": [
             {
                 "pubId": 9,
                 "refText": "191"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/growan#Old_English"
             }
         ]
     },
@@ -21230,10 +21308,18 @@
         "id": 7462,
         "text": "hlōwan",
         "gloss": "low, bellow",
+        "fullGloss": "to moo, low, bellow",
+        "pos": "V",
+        "classes": [
+            "v-strong-7"
+        ],
         "sourceRefs": [
             {
                 "pubId": 9,
                 "refText": "231"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/hlowan#Old_English"
             }
         ]
     },
@@ -23827,12 +23913,16 @@
     },
     {
         "id": 8000,
-        "text": "be-līfan",
+        "text": "belīfan",
         "gloss": "stay, remain",
+        "pos": "V",
         "sourceRefs": [
             {
                 "pubId": 9,
                 "refText": "335"
+            },
+            {
+                "refText": "https://bosworthtoller.com/3603"
             }
         ]
     },
@@ -24493,10 +24583,17 @@
         "id": 8128,
         "text": "māwan",
         "gloss": "mow",
+        "pos": "V",
+        "classes": [
+            "v-strong-7"
+        ],
         "sourceRefs": [
             {
                 "pubId": 9,
                 "refText": "360"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/mawan#Old_English"
             }
         ]
     },
@@ -25405,6 +25502,9 @@
             },
             {
                 "refText": "https://en.wiktionary.org/wiki/genugan#Old_English"
+            },
+            {
+                "refText": "https://bosworthtoller.com/15417"
             }
         ]
     },
@@ -25969,10 +26069,17 @@
         "id": 8428,
         "text": "rōwan",
         "gloss": "row",
+        "pos": "V",
+        "classes": [
+            "v-strong-7"
+        ],
         "sourceRefs": [
             {
                 "pubId": 9,
                 "refText": "414"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/rowan#Old_English"
             }
         ]
     },
@@ -25995,10 +26102,19 @@
         "id": 8432,
         "text": "rōw",
         "gloss": "calm, rest",
+        "fullGloss": "quiet, rest, calm",
+        "pos": "N",
+        "classes": [
+            "fem",
+            "o-stem"
+        ],
         "sourceRefs": [
             {
                 "pubId": 9,
                 "refText": "415"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/row#Old_English"
             }
         ]
     },
@@ -26306,10 +26422,18 @@
         "id": 8500,
         "text": "sāwan",
         "gloss": "sow",
+        "fullGloss": "to sow (seed, etc.) (literally or figuratively)",
+        "pos": "V",
+        "classes": [
+            "v-strong-7"
+        ],
         "sourceRefs": [
             {
                 "pubId": 9,
                 "refText": "428"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/sawan#Old_English"
             }
         ]
     },
@@ -27384,10 +27508,18 @@
         "id": 8721,
         "text": "spōwan",
         "gloss": "succeed",
+        "fullGloss": "to succeed ''(+ genitive at something)'' ''(impersonal, with dative of person)''",
+        "pos": "V",
+        "classes": [
+            "v-strong-7"
+        ],
         "sourceRefs": [
             {
                 "pubId": 9,
                 "refText": "468"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/spowan#Old_English"
             }
         ]
     },
@@ -27754,7 +27886,6 @@
     {
         "id": 8802,
         "text": "strong",
-        "gloss": "powerful, hard",
         "sourceRefs": [
             {
                 "pubId": 9,
@@ -29034,10 +29165,18 @@
         "id": 9041,
         "text": "trūwian",
         "gloss": "trust, confide",
+        "fullGloss": "to trust, have faith in",
+        "pos": "V",
+        "classes": [
+            "v-weak-2"
+        ],
         "sourceRefs": [
             {
                 "pubId": 9,
                 "refText": "523"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/truwian#Old_English"
             }
         ]
     },
@@ -29555,6 +29694,9 @@
             {
                 "pubId": 9,
                 "refText": "542"
+            },
+            {
+                "refText": "https://bosworthtoller.com/31740"
             }
         ]
     },
@@ -29674,10 +29816,18 @@
         "id": 9158,
         "text": "þrāwan",
         "gloss": "twist, turn; to throw",
+        "fullGloss": "to twist, turn, writhe",
+        "pos": "V",
+        "classes": [
+            "v-strong-7"
+        ],
         "sourceRefs": [
             {
                 "pubId": 9,
                 "refText": "546"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/þrawan#Old_English"
             }
         ]
     },
@@ -29748,10 +29898,18 @@
         "id": 9170,
         "text": "þrōwian",
         "gloss": "endure",
+        "fullGloss": "to suffer, endure; to be martyred",
+        "pos": "V",
+        "classes": [
+            "v-weak-2"
+        ],
         "sourceRefs": [
             {
                 "pubId": 9,
                 "refText": "548"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/þrowian#Old_English"
             }
         ]
     },
@@ -30508,10 +30666,18 @@
         "id": 9325,
         "text": "wāwan",
         "gloss": "blow",
+        "fullGloss": "to blow, be moved by the wind",
+        "pos": "V",
+        "classes": [
+            "v-strong-7"
+        ],
         "sourceRefs": [
             {
                 "pubId": 9,
                 "refText": "576"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/wawan#Old_English"
             }
         ]
     },
@@ -31306,7 +31472,11 @@
         "id": 9482,
         "text": "byrian",
         "gloss": "raise; come to pass",
-        "reconstructed": true
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/5624"
+            }
+        ]
     },
     {
         "id": 9485,
@@ -31632,7 +31802,18 @@
         "id": 9602,
         "text": "cnāwan",
         "gloss": "know",
-        "reconstructed": true
+        "pos": "V",
+        "classes": [
+            "v-strong-7"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/cnawan#Old_English"
+            },
+            {
+                "refText": "https://bosworthtoller.com/6422"
+            }
+        ]
     },
     {
         "id": 9604,
@@ -31827,10 +32008,14 @@
         "id": 9635,
         "text": "clengan",
         "gloss": "adhere, remain",
+        "fullGloss": "to exhilarate; to adhere, remain",
         "pos": "V",
         "sourceRefs": [
             {
                 "refText": "https://bosworthtoller.com/41835"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/clengan#Old_English"
             }
         ]
     },

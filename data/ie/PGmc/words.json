@@ -10153,6 +10153,9 @@
         "text": "fraisan-",
         "gloss": "tempt",
         "pos": "V",
+        "classes": [
+            "v-strong"
+        ],
         "sourceRefs": [
             {
                 "pubId": 9,
@@ -12627,6 +12630,9 @@
         "text": "hinkan-",
         "gloss": "limp, hobble",
         "pos": "V",
+        "classes": [
+            "v-strong"
+        ],
         "sourceRefs": [
             {
                 "pubId": 9,
@@ -19524,6 +19530,9 @@
         "text": "rōan-",
         "gloss": "row",
         "pos": "V",
+        "classes": [
+            "v-strong"
+        ],
         "sourceRefs": [
             {
                 "pubId": 9,
@@ -20937,6 +20946,10 @@
             {
                 "pubId": 9,
                 "refText": "450"
+            },
+            {
+                "pubId": 10,
+                "refText": "291"
             }
         ]
     },

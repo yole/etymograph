@@ -36,7 +36,8 @@
             },
             {
                 "ruleId": 6308,
-                "optional": true
+                "optional": true,
+                "dispreferred": true
             },
             {
                 "ruleId": 6309,
