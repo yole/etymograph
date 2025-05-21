@@ -846,6 +846,22 @@ class RuleTest : QBaseTest() {
     }
 
 
+    @Test
+    fun remapStressSameLg() {
+        val stressRule = parseRule(
+            q, q, """
+            - stress is on first syllable
+            """.trimIndent()
+        )
+        q.stressRule = RuleRef.to(stressRule)
+
+        val word = q.word("krop")
+        assertEquals(2, word.calcStressedPhonemeIndex(repo))
+        val rule = parseRule(q, q, "* kr > hr")
+        val result = rule.apply(word, repo)
+        assertEquals(1, result.stressedPhonemeIndex)
+    }
+
     /*
 
     @Test

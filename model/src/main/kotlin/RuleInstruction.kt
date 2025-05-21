@@ -666,7 +666,7 @@ class SpeInstruction(val pattern: SpePattern, val condition: RuleCondition? = nu
         )
         if (it.result() != phonemicWord.text) {
             trace?.logMatchedInstruction(rule, word, this)
-            val stress = if (word.explicitStress)
+            val stress = if (word.stressedPhonemeIndex != -1)
                 it.mapIndex(word.stressedPhonemeIndex)
             else
                 null
@@ -675,7 +675,7 @@ class SpeInstruction(val pattern: SpePattern, val condition: RuleCondition? = nu
                 it.segments = segments
                 if (stress != null) {
                     it.stressedPhonemeIndex = stress
-                    it.explicitStress = true
+                    it.explicitStress = word.explicitStress
                 }
             }
         }
