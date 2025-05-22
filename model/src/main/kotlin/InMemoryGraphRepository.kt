@@ -452,7 +452,7 @@ open class InMemoryGraphRepository : GraphRepository() {
 
     override fun addRuleSequence(name: String, fromLanguage: Language, toLanguage: Language, rules: List<RuleSequenceStep>): RuleSequence {
         return RuleSequence(allLangEntities.size, name, fromLanguage, toLanguage,
-            rules.map { RuleSequenceStepRef(it.rule.id, it.optional, it.dispreferred) }, emptyList(), null
+            rules.map { RuleSequenceStepRef(it.rule.id, it.alternative?.id, it.optional, it.dispreferred) }, emptyList(), null
         ).also {
             allLangEntities.add(it)
         }
@@ -587,31 +587,24 @@ open class InMemoryGraphRepository : GraphRepository() {
             val steps = sequence.resolveSteps(this)
             var variants = listOf(RuleApplicationVariant(word, emptyList()))
             for (step in steps) {
-                if (step.optional) {
-                    variants = variants.flatMap {
-                        val result = (step.rule as Rule).apply(it.word, this)
-                        if ('?' in result.text)
-                            emptyList()
-                        else if (result.asPhonemic().text != it.word.asPhonemic().text) {
-                            listOf(it, RuleApplicationVariant(result, it.rules + step.rule))
+                variants = variants.flatMap {
+                    val next = mutableListOf<RuleApplicationVariant>()
+                    val result = (step.rule as Rule).apply(it.word, this)
+                    if ('?' !in result.text) {
+                        if (step.optional || result.asPhonemic().text == it.word.asPhonemic().text) {
+                            next.add(it)
                         }
-                        else {
-                            listOf(it)
+                        if (result.asPhonemic().text != it.word.asPhonemic().text) {
+                            next.add(RuleApplicationVariant(result, it.rules + step.rule))
                         }
-                    }
-                }
-                else {
-                    variants = variants.mapNotNull {
-                        val result = (step.rule as Rule).apply(it.word, this)
-                        if ('?' in result.text)
-                            null
-                        else if (result.asPhonemic().text != it.word.asPhonemic().text) {
-                            RuleApplicationVariant(result, it.rules + step.rule)
-                        }
-                        else {
-                            it
+                        if (step.alternative != null) {
+                            val altResult = (step.alternative as Rule).apply(it.word, this)
+                            if (altResult.asPhonemic().text != it.word.asPhonemic().text) {
+                                next.add(RuleApplicationVariant(altResult, it.rules + step.alternative))
+                            }
                         }
                     }
+                    next
                 }
             }
 

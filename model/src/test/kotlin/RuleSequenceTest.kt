@@ -62,12 +62,30 @@ class RuleSequenceTest : QBaseTest() {
         val qAiE = repo.rule("sound is 'a' and next sound is 'i':\n- new sound is 'e'", name = "q-ai-e")
         val qSfF = repo.rule("sound is 's' and next sound is 'f':\n- sound disappears") // inapplicable for this test
         val qWV = repo.rule("sound is word-initial 'w':\n- new sound is 'v'", name = "q-w-v")
-        val seq = repo.addRuleSequence("ce-q", ce, q, listOf(qAiE.step(), qSfF.step(), qWV.step(true)))
+        val seq = repo.addRuleSequence("ce-q", ce, q, listOf(qAiE.step(), qSfF.step(), qWV.step(optional = true)))
         val ceWord = repo.addWord("waiwai", language = ce)
         val qWord = repo.addWord("weiwei", language = q)
         val link = repo.addLink(qWord, ceWord, Link.Origin)
         repo.applyRuleSequence(link, seq)
         assertEquals(1, link.rules.size)
+    }
+
+    @Test
+    fun alternativeRules() {
+        val qAO = repo.rule("* a > o", name = "q-a-o")
+        val qAI = repo.rule("* a > i", name = "q-a-i")
+        val seq = repo.addRuleSequence("ce-q", ce, q, listOf(qAO.step(alternative = qAI)))
+        val ceWordA = repo.addWord("wawa", language = ce)
+        val qWordO = repo.addWord("wowo", language = q)
+        val link = repo.addLink(qWordO, ceWordA, Link.Origin)
+        repo.applyRuleSequence(link, seq)
+        assertEquals("q-a-o", link.rules[0].name)
+
+        val ceWordI = repo.addWord("lala", language = ce)
+        val qWordI = repo.addWord("lili", language = q)
+        val linkI = repo.addLink(qWordI, ceWordI, Link.Origin)
+        repo.applyRuleSequence(linkI, seq)
+        assertEquals("q-a-i", linkI.rules[0].name)
     }
 
     @Test

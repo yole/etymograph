@@ -25,7 +25,7 @@ function RuleSequenceExample(params: {ex: RuleExampleViewModel}) {
         {ex.toWord.displayLanguage} {ex.toWord.reconstructed && "*"}{ex.toWord.text} '{ex.toWord.gloss}'
         {ex.wordBeforeRule && ' > *' + ex.wordBeforeRule}
         {ex.wordAfterRule && <>{' > '}<b>{"*" + ex.wordAfterRule}</b></>}
-        {!ex.wordAfterRule && <>{' > '}<b>{(ex.expectedWord || ex.fromWord.reconstructed) && "*"}{ex.expectedWord ?? ex.fromWord.text}</b></>}
+        {<>{' > '}{ex.fromWord.displayLanguage} {(ex.expectedWord || ex.fromWord.reconstructed) && "*"}{ex.expectedWord ?? ex.fromWord.text}</>}
     </div>
 }
 
@@ -40,7 +40,10 @@ export default function RuleSequenceReport(params) {
             steps={[{title: "Rules", url: `/${graph}/rules/${ruleSequence.toLang}`}]}
         />
         {ruleSequence.rules.map(r => <>
-            <h2>{r.ruleName} {r.optional && " (optional)"}</h2>
+            <h2>{r.ruleName}
+                {r.dispreferred && " (dispreferred)"}
+                {r.optional && !r.dispreferred && " (optional)"}
+                {r.alternativeRuleName && (` (alternative: ${r.alternativeRuleName})`)}</h2>
             <span className="source">{r.ruleSource}</span>
             <div className="ruleReport">
             {r.preInstructions.map(i => <div>{'- '}<RichText richText={i}/></div>)}

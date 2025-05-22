@@ -94,6 +94,7 @@ class RuleController {
         val id: Int,
         val name: String,
         val toLang: String,
+        val alternative: RuleRefViewModel?,
         val summaryText: String,
         val optional: Boolean,
         val dispreferred: Boolean
@@ -156,7 +157,11 @@ class RuleController {
                 if (rule is Rule) {
                     allSequenceRules.add(rule)
                 }
-                group.rules.add(rule.toShortViewModel(repo, step.optional, step.dispreferred))
+                val altRule = step.alternativeRuleId?.let { repo.langEntityById(it) as Rule }
+                if (altRule != null) {
+                    allSequenceRules.add(altRule)
+                }
+                group.rules.add(rule.toShortViewModel(repo, altRule?.let { RuleRefViewModel(it.id, it.name) }, step.optional, step.dispreferred))
             }
         }
 
@@ -185,10 +190,10 @@ class RuleController {
         return repo.resolveRule(id).toViewModel(repo)
     }
 
-    private fun LangEntity.toShortViewModel(repo: GraphRepository, optional: Boolean = false, dispreferred: Boolean = false): RuleShortViewModel {
+    private fun LangEntity.toShortViewModel(repo: GraphRepository, alternative: RuleRefViewModel? = null, optional: Boolean = false, dispreferred: Boolean = false): RuleShortViewModel {
         return when (this) {
-            is Rule -> RuleShortViewModel(id, name, toLanguage.shortName, toSummaryText(repo), optional, dispreferred)
-            is RuleSequence -> RuleShortViewModel(id, "sequence: $name", toLanguage.shortName, "", optional, dispreferred)
+            is Rule -> RuleShortViewModel(id, name, toLanguage.shortName, alternative, toSummaryText(repo), optional, dispreferred)
+            is RuleSequence -> RuleShortViewModel(id, "sequence: $name", toLanguage.shortName, null, "", optional, dispreferred)
             else -> throw IllegalStateException("Unknown entity type")
         }
     }
@@ -460,6 +465,13 @@ class RuleController {
             name = name.removeSuffix("?")
             val dispreferred = name.endsWith("?")
             name = name.removeSuffix("?")
+
+            val altName = if ('|' in name) {
+                name.substringAfter('|').also { name = name.substringBefore('|') }
+            }
+            else {
+                null
+            }
             val rule = if (name.startsWith("sequence:")) {
                 val sequenceName = name.removePrefix("sequence:").trim()
                 repo.ruleSequenceByName(sequenceName)
@@ -468,7 +480,7 @@ class RuleController {
             else {
                 repo.resolveRule(name)
             }
-            RuleSequenceStep(rule, optional, dispreferred)
+            RuleSequenceStep(rule, altName?.let { n -> repo.resolveRule(n) }, optional, dispreferred)
         }
         return Triple(fromLanguage, toLanguage, rules)
     }
@@ -480,7 +492,7 @@ class RuleController {
         sequence.name = params.name
         sequence.fromLanguage = fromLanguage
         sequence.toLanguage = toLanguage
-        sequence.steps = steps.map { RuleSequenceStepRef(it.rule.id, it.optional, it.dispreferred) }
+        sequence.steps = steps.map { RuleSequenceStepRef(it.rule.id, it.alternative?.id, it.optional, it.dispreferred) }
         return sequence.toViewModel()
     }
 
@@ -645,6 +657,8 @@ class RuleController {
         val ruleSource: String,
         val ruleIsSPE: Boolean,
         val optional: Boolean,
+        val dispreferred: Boolean,
+        val alternativeRuleName: String?,
         val preInstructions: List<RichText>,
         val branches: List<RuleBranchViewModel>,
         val postInstructions: List<RichText>,
@@ -661,10 +675,15 @@ class RuleController {
     fun sequenceRules(repo: GraphRepository, @PathVariable id: Int): SequenceReportViewModel {
         val sequence = repo.resolveRuleSequence(id)
         val steps = sequence.resolveSteps(repo).withReferencedRules()
-        val ruleViewModels = steps.map {
-            val rule = it.rule as Rule
+        val ruleViewModels = steps.map { step ->
+            val rule = step.rule as Rule
             val examples = repo.findRuleExamples(rule).map { link -> rule.toExampleData(repo, link) }
-            val examplesToShow = examples.firstOrNull { it.steps.last().result == (it.link.fromEntity as Word).text }?.let { listOf(it) }
+            val examplesToShow = examples.firstOrNull {
+                it.steps.last().result == (it.link.fromEntity as Word).text && (it.link.fromEntity as Word).pos == "V"
+            }?.let { listOf(it) }
+                ?: examples.firstOrNull {
+                    it.steps.last().result == (it.link.fromEntity as Word).text
+                }?.let { listOf(it) }
                 ?: examples.firstOrNull()?.let { listOf(it) }
                 ?: emptyList()
 
@@ -672,7 +691,9 @@ class RuleController {
                 rule.name,
                 rule.source.toEditableText(repo),
                 rule.isSPE(),
-                it.optional,
+                step.optional,
+                step.dispreferred,
+                (step.alternative as? Rule)?.name,
                 rule.logic.preInstructions.map { it.toRichText(repo) },
                 rule.logic.branches.map {
                     RuleBranchViewModel(
@@ -701,8 +722,13 @@ private fun List<RuleSequenceStep>.withReferencedRules(): List<RuleSequenceStep>
         for (ref in (step.rule as Rule).referencedRules()) {
             if (ref !in seenRules) {
                 seenRules.add(ref)
-                result.add(RuleSequenceStep(ref, optional = false, dispreferred = false))
+                result.add(RuleSequenceStep(ref, null, optional = false, dispreferred = false))
             }
+        }
+        val alt = step.alternative
+        if (alt is Rule && alt !in seenRules) {
+            seenRules.add(alt)
+            result.add(RuleSequenceStep(alt, null, optional = false, dispreferred = false))
         }
     }
     return result

@@ -2521,6 +2521,9 @@ components:
           type: "string"
         toLang:
           type: "string"
+        alternative:
+          nullable: true
+          $ref: "#/components/schemas/RuleRefViewModel"
         summaryText:
           type: "string"
         optional:
@@ -3482,6 +3485,11 @@ components:
           type: "boolean"
         optional:
           type: "boolean"
+        dispreferred:
+          type: "boolean"
+        alternativeRuleName:
+          type: "string"
+          nullable: true
         preInstructions:
           type: "array"
           items:
@@ -3499,6 +3507,7 @@ components:
         - "ruleSource"
         - "ruleIsSPE"
         - "optional"
+        - "dispreferred"
         - "preInstructions"
         - "branches"
         - "postInstructions"

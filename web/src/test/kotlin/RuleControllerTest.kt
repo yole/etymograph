@@ -153,6 +153,32 @@ class RuleControllerTest {
     }
 
     @Test
+    fun newSequenceAlternative() {
+        val ruleO = graph.addRule("q-a-o", fixture.q, fixture.q,
+            RuleLogic(emptyList(), emptyList(), emptyList()))
+        val ruleI = graph.addRule("q-a-i", fixture.q, fixture.q,
+            RuleLogic(emptyList(), emptyList(), emptyList()))
+
+        ruleController.newSequence(
+            fixture.graph,
+            RuleController.UpdateSequenceParams(
+                "ce-to-q",
+                "ce",
+                "q",
+                "${ruleO.name}|${ruleI.name}"
+            )
+        )
+
+        val seq = graph.ruleSequencesForLanguage(fixture.q).single()
+
+        val ruleList = ruleController.rules(fixture.graph, "q")
+        assertEquals(1, ruleList.ruleGroups.size)
+        assertEquals("Phonetics: ce-to-q", ruleList.ruleGroups[0].groupName)
+        assertEquals(seq.id, ruleList.ruleGroups[0].sequenceId)
+        assertEquals("q-a-i", ruleList.ruleGroups[0].rules[0].alternative!!.name)
+    }
+
+    @Test
     fun editSequence() {
         val rule = graph.addRule("q-gen", fixture.q, fixture.q,
             RuleLogic(emptyList(), emptyList(), emptyList()))

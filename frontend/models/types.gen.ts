@@ -494,6 +494,7 @@ export type RuleShortViewModel = {
     id: number;
     name: string;
     toLang: string;
+    alternative?: (RuleRefViewModel) | null;
     summaryText: string;
     optional: boolean;
     dispreferred: boolean;
@@ -567,6 +568,8 @@ export type SequenceRuleViewModel = {
     ruleSource: string;
     ruleIsSPE: boolean;
     optional: boolean;
+    dispreferred: boolean;
+    alternativeRuleName?: (string) | null;
     preInstructions: Array<RichText>;
     branches: Array<RuleBranchViewModel>;
     postInstructions: Array<RichText>;

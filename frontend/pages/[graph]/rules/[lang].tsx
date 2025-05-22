@@ -8,7 +8,13 @@ import EtymographFormView from "@/components/EtymographFormView";
 import EtymographForm from "@/components/EtymographForm";
 import FormRow from "@/components/FormRow";
 import PosSelect from "@/components/PosSelect";
-import {GenerateParadigmParameters, ParadigmViewModel, RuleListViewModel, RuleSequenceViewModel} from "@/models";
+import {
+    GenerateParadigmParameters,
+    ParadigmViewModel,
+    RuleListViewModel,
+    RuleSequenceViewModel,
+    RuleShortViewModel
+} from "@/models";
 
 // noinspection JSUnusedGlobalSymbols
 export const config = {
@@ -33,6 +39,11 @@ export default function RuleList(params) {
         router.push(`/${graph}/rules/${data.toLang}`)
     }
 
+    function editableRuleName(r: RuleShortViewModel) {
+        return r.name + (r.alternative ? ("|" + r.alternative.name) : "") +
+            (r.dispreferred ? "??" : (r.optional ? "?" : ""));
+    }
+
     return <>
         <Breadcrumbs langId={lang} langName={ruleList.toLangFullName} title="Rules"/>
         {ruleList.ruleGroups.map(g => <>
@@ -48,6 +59,7 @@ export default function RuleList(params) {
                         <td>
                             {!r.name.startsWith("sequence: ") && <Link href={`/${graph}/rule/${r.id}`}>{r.name}</Link>}
                             {r.name.startsWith("sequence: ") && r.name}
+                            {r.alternative && <> | <Link href={`/${graph}/rule/${r.alternative.id}`}>{r.alternative.name}</Link></>}
                             {r.dispreferred && " (dispreferred)"}
                             {r.optional && !r.dispreferred && " (optional)"}
                         </td>
@@ -67,7 +79,7 @@ export default function RuleList(params) {
                         name: g.sequenceName,
                         fromLang: g.sequenceFromLang,
                         toLang: g.sequenceToLang,
-                        ruleNames: g.rules.map(r => r.name + (r.dispreferred ? "??" : (r.optional ? "?" : ""))).join("\n")
+                        ruleNames: g.rules.map(r => editableRuleName(r)).join("\n")
                     }}
                     submitted={sequenceSubmitted}
                     cancelled={() => setSequenceEditId(null)}
