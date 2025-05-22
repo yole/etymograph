@@ -214,9 +214,16 @@ class PhonemeIterator {
         phonemeToResultIndexMap = IntArray(phonemes.size) { it }
     }
 
-    fun advanceTo(index: Int) {
+    fun advanceTo(index: Int): Boolean {
+        if (index < 0) {
+            throw IllegalArgumentException("Can't advance to negative index")
+        }
+        if (index >= phonemes.size) {
+            return false
+        }
         phonemeIndex = index
         atEnd = false
+        return true
     }
 
     fun advance(): Boolean {

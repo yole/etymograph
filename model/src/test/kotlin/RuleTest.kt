@@ -783,13 +783,13 @@ class RuleTest : QBaseTest() {
         val rule = parseRule(ce, q, """* ōj -> i""")
         val word = ce.word("grapōjan").apply {
             segments = listOf(WordSegment(4, 4, null, null, null, false))
-            stressedPhonemeIndex = 7
+            stressedPhonemeIndex = 6
             explicitStress = true
         }
         val newWord = rule.apply(word, emptyRepo)
         assertEquals(1, newWord.segments!!.size)
         assertEquals(3, newWord.segments!![0].length)
-        assertEquals(6, newWord.stressedPhonemeIndex)
+        assertEquals(5, newWord.stressedPhonemeIndex)
         assertTrue(newWord.explicitStress)
     }
 
@@ -860,6 +860,22 @@ class RuleTest : QBaseTest() {
         val rule = parseRule(q, q, "* kr > hr")
         val result = rule.apply(word, repo)
         assertEquals(1, result.stressedPhonemeIndex)
+    }
+
+    @Test
+    fun remapStressMetathesis() {
+        val stressRule = parseRule(
+            q, q, """
+            - stress is on first syllable
+            """.trimIndent()
+        )
+        q.stressRule = RuleRef.to(stressRule)
+
+        val word = q.word("krop")
+        assertEquals(2, word.calcStressedPhonemeIndex(repo))
+        val rule = parseRule(q, q, "* Vp > pV")
+        val result = rule.apply(word, repo)
+        assertEquals(3, result.stressedPhonemeIndex)
     }
 
     /*

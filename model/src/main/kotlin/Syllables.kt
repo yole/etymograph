@@ -1,8 +1,8 @@
 package ru.yole.etymograph
 
-class Syllable(val startIndex: Int, val endIndex: Int, val closed: Boolean)
+class Syllable(val startIndex: Int, val endIndex: Int, val vowelIndex: Int, val closed: Boolean)
 
-data class MutableSyllable(var startIndex: Int, var endIndex: Int, var closed: Boolean)
+data class MutableSyllable(var startIndex: Int, var endIndex: Int, val vowelIndex: Int, var closed: Boolean)
 
 fun breakIntoSyllables(word: Word): List<Syllable> {
     val vowels = word.language.phonemeClassByName(PhonemeClass.vowelClassName)
@@ -25,7 +25,7 @@ fun breakIntoSyllables(word: Word): List<Syllable> {
             }
             else {
                 lastVowel = it.current
-                result.add(MutableSyllable(currentSyllableStart, index + 1, false))
+                result.add(MutableSyllable(currentSyllableStart, index + 1, index,false))
                 currentSyllableStart = index + 1
                 consonants = 0
             }
@@ -46,7 +46,7 @@ fun breakIntoSyllables(word: Word): List<Syllable> {
         result.last().endIndex = index
     }
 
-    return result.map { Syllable(it.startIndex, it.endIndex, it.closed) }
+    return result.map { Syllable(it.startIndex, it.endIndex, it.vowelIndex, it.closed) }
 }
 
 fun findSyllable(syllables: List<Syllable>, phonemeIndex: Int): Int {

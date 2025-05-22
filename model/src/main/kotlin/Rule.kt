@@ -256,6 +256,7 @@ class Rule(
               normalizeSegments: Boolean = true,
               applyPrePostRules: Boolean = true,
               preserveId: Boolean = false): Word {
+        println("$word ${word.stressedPhonemeIndex}")
         trace?.logRule(this, word)
         if (isPhonemic()) {
             val phonemic = word.asPhonemic()

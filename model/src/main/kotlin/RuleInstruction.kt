@@ -673,8 +673,22 @@ class SpeInstruction(val pattern: SpePattern, val condition: RuleCondition? = nu
             val segments = remapSegments(it, word.segments)
             return phonemicWord.derive(it.result(), phonemic = true).also {
                 it.segments = segments
-                if (stress != null) {
-                    it.stressedPhonemeIndex = stress
+                if (stress != null && stress >= 0) {
+                    val vowels = rule.toLanguage.phonemeClassByName(PhonemeClass.vowelClassName)
+                    val stressIt = PhonemeIterator(it, graph)
+                    if (vowels != null && stressIt.advanceTo(stress) && !vowels.matchesCurrent(stressIt)) {
+                        val syllables = breakIntoSyllables(it)
+                        val syllableIndex = findSyllable(syllables, stress)
+                        if (syllableIndex >= 0) {
+                            it.stressedPhonemeIndex = syllables[syllableIndex].vowelIndex
+                        }
+                        else {
+                            it.stressedPhonemeIndex = stress
+                        }
+                    }
+                    else {
+                        it.stressedPhonemeIndex = stress
+                    }
                     it.explicitStress = word.explicitStress
                 }
             }
