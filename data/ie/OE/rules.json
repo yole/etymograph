@@ -2791,7 +2791,7 @@
                             ]
                         },
                         "args": [
-                            "{u|ū|o|ō|æ|ā|ą|ą̄} > {y|ȳ|e|ē|e|ǣ|e|ǣ}"
+                            "{u|ū|o|ō|æ|ā} > {y|ȳ|e|ē|e|ǣ}"
                         ]
                     }
                 ],
@@ -7545,6 +7545,12 @@
                         "args": [
                             "ą > a"
                         ]
+                    },
+                    {
+                        "type": "Spe",
+                        "args": [
+                            "ą̄ > ō"
+                        ]
                     }
                 ],
                 "condition": {
@@ -7584,6 +7590,75 @@
             {
                 "pubId": 5,
                 "refText": "227"
+            }
+        ]
+    },
+    {
+        "id": 9643,
+        "name": "oe-i-umlaut-nasalized",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "Spe",
+                        "condition": {
+                            "type": "and",
+                            "members": [
+                                {
+                                    "type": "relPhoneme",
+                                    "cls": "stressed non-diphthong",
+                                    "relative": false
+                                },
+                                {
+                                    "type": "relPhoneme",
+                                    "relativeIndex": 1,
+                                    "tcls": "vocalic",
+                                    "cls": "close front"
+                                }
+                            ]
+                        },
+                        "args": [
+                            "{ą|ą̄} > {æ|ē}"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "228"
+            }
+        ]
+    },
+    {
+        "id": 9647,
+        "name": "oe-ae-raising",
+        "fromLang": "OE",
+        "toLang": "OE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "Spe",
+                        "args": [
+                            "æ > e / _[nasal,-syllabic]"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "sourceRefs": [
+            {
+                "refText": "Ringe 2013:229"
             }
         ]
     }

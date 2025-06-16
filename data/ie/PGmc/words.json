@@ -26914,5 +26914,18 @@
                 "refText": "245"
             }
         ]
+    },
+    {
+        "id": 9645,
+        "text": "wēnijaną",
+        "gloss": "expect",
+        "fullGloss": "to expect, to hope",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "143"
+            }
+        ]
     }
 ]

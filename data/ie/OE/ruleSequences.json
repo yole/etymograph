@@ -32,9 +32,6 @@
                 "ruleId": 2048
             },
             {
-                "ruleId": 2049
-            },
-            {
                 "ruleId": 6308,
                 "optional": true,
                 "dispreferred": true
@@ -95,7 +92,18 @@
                 "ruleId": 2270
             },
             {
+                "ruleId": 9643
+            },
+            {
                 "ruleId": 9614
+            },
+            {
+                "ruleId": 9613,
+                "optional": true,
+                "dispreferred": true
+            },
+            {
+                "ruleId": 9647
             },
             {
                 "ruleId": 2953
@@ -165,11 +173,6 @@
             {
                 "ruleId": 9606,
                 "optional": true
-            },
-            {
-                "ruleId": 9613,
-                "optional": true,
-                "dispreferred": true
             }
         ]
     },

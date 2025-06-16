@@ -15495,6 +15495,9 @@
             {
                 "pubId": 9,
                 "refText": "15"
+            },
+            {
+                "refText": "https://bosworthtoller.com/61123"
             }
         ]
     },
@@ -15707,7 +15710,6 @@
     {
         "id": 6305,
         "text": "ongel",
-        "gloss": "fishing-rod",
         "sourceRefs": [
             {
                 "pubId": 9,
@@ -15718,11 +15720,14 @@
     {
         "id": 6307,
         "text": "enge",
-        "gloss": "narrow",
+        "pos": "ADJ",
         "sourceRefs": [
             {
                 "pubId": 9,
                 "refText": "28"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/enge#Old_English"
             }
         ]
     },
@@ -18419,6 +18424,9 @@
             {
                 "pubId": 9,
                 "refText": "119"
+            },
+            {
+                "refText": "https://bosworthtoller.com/833"
             }
         ]
     },
@@ -18430,6 +18438,9 @@
             {
                 "pubId": 9,
                 "refText": "119"
+            },
+            {
+                "refText": "https://bosworthtoller.com/963"
             }
         ]
     },
@@ -21360,10 +21371,14 @@
         "id": 7472,
         "text": "hnesce",
         "gloss": "nesh, soft, delicate, tender, effeminate",
+        "pos": "ADJ",
         "sourceRefs": [
             {
                 "pubId": 9,
                 "refText": "233"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/hnesce#Old_English"
             }
         ]
     },
@@ -32056,6 +32071,41 @@
         "sourceRefs": [
             {
                 "refText": "https://bosworthtoller.com/31908"
+            }
+        ]
+    },
+    {
+        "id": 9646,
+        "text": "wǣn",
+        "sourceRefs": [
+            {
+                "pubId": 5,
+                "refText": "230"
+            }
+        ]
+    },
+    {
+        "id": 9648,
+        "text": "angel",
+        "gloss": "fishing-rod",
+        "sourceRefs": [
+            {
+                "refText": "https://bosworthtoller.com/1810"
+            }
+        ]
+    },
+    {
+        "id": 9649,
+        "text": "ange",
+        "gloss": "narrow",
+        "fullGloss": "narrow, confined, tight; vexed, troubled, anxious, sorrowful; painful, grievous, cruel",
+        "pos": "ADJ",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/ange#Old_English"
+            },
+            {
+                "refText": "https://bosworthtoller.com/1808"
             }
         ]
     }
