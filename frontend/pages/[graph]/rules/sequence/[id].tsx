@@ -23,13 +23,25 @@ export async function getStaticPaths() {
 function DerivationListComponent(params: {
     derivations: DerivationViewModel[],
     showExpectedWord: boolean,
+    showDerivations: boolean,
 }) {
     const router = useRouter()
     const graph = router.query.graph as string
     const haveNotes = params.derivations.find(d => d.derivation.notes)
 
     return <>
-        <table className="tableWithBorders"><tbody>
+        <table className="tableWithBorders">
+            <thead>
+            <tr>
+                <td>{params.derivations[0].baseWord.language}</td>
+                <td>{params.derivations[0].derivation.word.language}</td>
+                {params.showExpectedWord && <td>Expected</td>}
+                <td>Gloss</td>
+                {params.showDerivations && <td>Derivation</td>}
+                {haveNotes && <td>Notes</td>}
+            </tr>
+            </thead>
+        <tbody>
 
         {params.derivations.map(derivation =>
 
@@ -38,13 +50,13 @@ function DerivationListComponent(params: {
             <td><WordLink word={derivation.derivation.word}/></td>
             {params.showExpectedWord && <td>{derivation.expectedWord}</td>}
             <td>{derivation.derivation.word.gloss}</td>
-            <td>
+            {params.showDerivations && <td>
                 {derivation.baseWord.text}
                 {derivation.derivation.ruleIds.map((ruleId, index) => <>
                     {' '}<Link href={`/${graph}/rule/${ruleId}`} title={derivation.derivation.ruleNames[index]}>{'>'}</Link>{' '}
                     {derivation.derivation.ruleResults[index]}
                 </>)}
-            </td>
+            </td>}
             {haveNotes && <td>
                 {derivation.derivation.notes}
             </td>}
@@ -59,6 +71,7 @@ export default function RuleSequence(params) {
     const graph = router.query.graph as string
     const [reapplyResult, setReapplyResult] = useState(null)
     const [posFilter, setPosFilter] = useState(null)
+    const [showDerivations, setShowDerivations] = useState(true)
 
     async function reapplySequenceClicked() {
         const result = await reapplyRuleSequence(graph, ruleSequence.sequence.id)
@@ -125,18 +138,22 @@ export default function RuleSequence(params) {
                 {pos.map(p => <option value={p ?? "?"}>{p ?? "Unknown"}</option>)}
              </select>
         </div>
+        <div>
+            <input type="checkbox" defaultChecked={showDerivations} value={showDerivations} onChange={(e) => setShowDerivations(e.target.checked)} />
+            Show derivations
+        </div>
 
         <h3>Consistent Derivations</h3>
-        <DerivationListComponent derivations={consistent} showExpectedWord={false}/>
+        <DerivationListComponent derivations={consistent} showExpectedWord={false} showDerivations={showDerivations}/>
 
         {spiGroups.map(group => <>
             <h3>{group.title}</h3>
-            <DerivationListComponent derivations={group.group} showExpectedWord={true}/>
+            <DerivationListComponent derivations={group.group} showExpectedWord={true} showDerivations={showDerivations}/>
         </>)}
 
         {inconsistent.length > 0 && <>
             <h3>Inconsistent Derivations</h3>
-            <DerivationListComponent derivations={inconsistent} showExpectedWord={true}/>
+            <DerivationListComponent derivations={inconsistent} showExpectedWord={true} showDerivations={showDerivations}/>
         </>}
         <h3>Statistics</h3>
         Consistent: {consistent.length} ({Math.round(consistentRate * 100)}%);

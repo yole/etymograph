@@ -170,3 +170,7 @@ code {
   margin-top: 5pt;
   margin-bottom: 10pt;
 }
+
+thead {
+  font-weight: bold;
+}
