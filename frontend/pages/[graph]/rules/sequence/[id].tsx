@@ -48,7 +48,7 @@ function DerivationListComponent(params: {
         <tr>
             <td><WordLink word={derivation.baseWord}/></td>
             <td><WordLink word={derivation.derivation.word}/></td>
-            {params.showExpectedWord && <td>{derivation.expectedWord}</td>}
+            {params.showExpectedWord && <td>**{derivation.expectedWord}</td>}
             <td>{derivation.derivation.word.gloss}</td>
             {params.showDerivations && <td>
                 {derivation.baseWord.text}
