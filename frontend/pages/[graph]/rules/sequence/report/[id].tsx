@@ -22,7 +22,7 @@ function RuleSequenceExample(params: {ex: RuleExampleViewModel}) {
     const ex = params.ex
     return <div>
         <b>Example: </b>
-        {ex.toWord.displayLanguage} {ex.toWord.reconstructed && "*"}{ex.toWord.text} '{ex.toWord.gloss}'
+        {ex.toWord.displayLanguage} {ex.toWord.reconstructed && "*"}{ex.toWord.text} &apos;{ex.toWord.gloss}&apos;
         {ex.wordBeforeRule && ' > *' + ex.wordBeforeRule}
         {ex.wordAfterRule && <>{' > '}<b>{"*" + ex.wordAfterRule}</b></>}
         {<>{' > '}{ex.fromWord.displayLanguage} {(ex.expectedWord || ex.fromWord.reconstructed) && "*"}{ex.expectedWord ?? ex.fromWord.text}</>}
@@ -52,7 +52,7 @@ export default function RuleSequenceReport(params) {
                 <div><RichText richText={b.conditions}/>:</div>
                 <ul>
                     {b.instructions.map(i => <li><RichText richText={i}/></li>)}
-                </ul>
+                </ul>\
             </>)}
             {r.postInstructions.map(i => <div>{'= '}<RichText richText={i}/></div>)}
             </div>

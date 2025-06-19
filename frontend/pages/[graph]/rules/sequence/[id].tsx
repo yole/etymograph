@@ -139,7 +139,7 @@ export default function RuleSequence(params) {
              </select>
         </div>
         <div>
-            <input type="checkbox" defaultChecked={showDerivations} value={showDerivations} onChange={(e) => setShowDerivations(e.target.checked)} />
+            <input type="checkbox" defaultChecked={showDerivations} onChange={(e) => setShowDerivations(e.target.checked)} />
             Show derivations
         </div>
 
