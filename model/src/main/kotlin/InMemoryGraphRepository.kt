@@ -15,7 +15,7 @@ open class InMemoryGraphRepository : GraphRepository() {
     protected val translations = mutableMapOf<Int, MutableList<Translation>>()
     protected val rules = mutableListOf<Rule>()
     protected val paradigms = mutableListOf<Paradigm?>()
-    private val paradigmsByLanguage = mutableMapOf<Language, MutableList<Paradigm>>()
+    protected val paradigmsByLanguage = mutableMapOf<Language, MutableList<Paradigm>>()
 
     protected val publications = mutableListOf<Publication?>()
 

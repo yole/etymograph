@@ -242,6 +242,7 @@ class JsonGraphRepositoryTest : QBaseTest() {
         paradigm.preRule = preRule
         paradigm.postRule = postRule
         val repo2 = repo.roundtrip()
+        assertEquals(1, repo2.paradigmsForLanguage(repo2.languageByShortName("Q")!!).size)
         assertEquals("q-pre", repo2.paradigmById(paradigm.id)!!.preRule!!.name)
         assertEquals("q-post", repo2.paradigmById(paradigm.id)!!.postRule!!.name)
     }

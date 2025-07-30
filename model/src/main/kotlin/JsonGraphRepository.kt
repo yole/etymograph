@@ -763,6 +763,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
 
                 val paradigm = Paradigm(paradigmData.id, paradigmData.name, language, paradigmData.posList)
                 paradigms[paradigmData.id] = paradigm
+                paradigmsByLanguage.getOrPut(language) { mutableListOf() }.add(paradigm)
                 paradigm.preRule = paradigmData.preRule?.let { ruleById(it) }
                 paradigm.postRule = paradigmData.postRule?.let { ruleById(it) }
                 paradigm.apply {
