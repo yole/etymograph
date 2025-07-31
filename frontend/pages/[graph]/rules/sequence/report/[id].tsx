@@ -22,10 +22,10 @@ function RuleSequenceExample(params: {ex: RuleExampleViewModel}) {
     const ex = params.ex
     return <div>
         <b>Example: </b>
-        {ex.toWord.displayLanguage} {ex.toWord.reconstructed && "*"}{ex.toWord.text} &apos;{ex.toWord.gloss}&apos;
-        {ex.wordBeforeRule && ' > *' + ex.wordBeforeRule}
-        {ex.wordAfterRule && <>{' > '}<b>{"*" + ex.wordAfterRule}</b></>}
-        {<>{' > '}{ex.fromWord.displayLanguage} {(ex.expectedWord || ex.fromWord.reconstructed) && "*"}{ex.expectedWord ?? ex.fromWord.text}</>}
+        {ex.toWord.displayLanguage} {ex.toWord.reconstructed && "*"}<i>{ex.toWord.text}</i> &apos;{ex.toWord.gloss}&apos;
+        {ex.wordBeforeRule && <>{' > '}*<i>{ex.wordBeforeRule}</i></>}
+        {ex.wordAfterRule && <>{' > '}<i>{"*" + ex.wordAfterRule}</i></>}
+        {<>{' > '}{ex.fromWord.displayLanguage} {ex.expectedWord && "**"}{ex.fromWord.reconstructed && "*"}<i>{ex.expectedWord ?? ex.fromWord.text}</i></>}
     </div>
 }
 
@@ -40,19 +40,21 @@ export default function RuleSequenceReport(params) {
             steps={[{title: "Rules", url: `/${graph}/rules/${ruleSequence.toLang}`}]}
         />
         {ruleSequence.rules.map(r => <>
-            <h2>{r.ruleName}
+            <h3>{r.ruleName}
                 {r.dispreferred && " (dispreferred)"}
                 {r.optional && !r.dispreferred && " (optional)"}
-                {r.alternativeRuleName && (` (alternative: ${r.alternativeRuleName})`)}</h2>
-            <span className="source">{r.ruleSource}</span>
+                {r.alternativeRuleName && (` (alternative: ${r.alternativeRuleName})`)}</h3>
+            {r.ruleSource}
             <div className="ruleReport">
             {r.preInstructions.map(i => <div>{'- '}<RichText richText={i}/></div>)}
-            {r.ruleIsSPE && r.branches[0].instructions.map(i => <div><RichText richText={i}/></div>)}
+            {r.ruleIsSPE && r.branches[0].instructions.map(i =>
+                <div className="reportRichText"><RichText richText={i}/></div>)
+            }
             {!r.ruleIsSPE && r.branches.map(b => <>
                 <div><RichText richText={b.conditions}/>:</div>
                 <ul>
                     {b.instructions.map(i => <li><RichText richText={i}/></li>)}
-                </ul>\
+                </ul>
             </>)}
             {r.postInstructions.map(i => <div>{'= '}<RichText richText={i}/></div>)}
             </div>

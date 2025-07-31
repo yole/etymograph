@@ -137,6 +137,7 @@ code {
 .richTextMono {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
   monospace;
+  font-size: 10pt;
 }
 
 .ruleTrace {
@@ -173,4 +174,8 @@ code {
 
 thead {
   font-weight: bold;
+}
+
+.reportRichText {
+  font-size: 11pt;
 }
