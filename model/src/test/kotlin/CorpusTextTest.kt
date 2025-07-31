@@ -33,11 +33,12 @@ class CorpusTextTest : QBaseTest() {
     fun testEditText() {
         val corpusText = q.corpusText("ai laurie lantar")
         val laurie = q.word("laurie")
-        corpusText.associateWord(1, laurie)
+        corpusText.associateWord(1, laurie, "goldenly")
 
         corpusText.text = "laurie lantar"
         val line = corpusText.mapToLines(repo).single()
         assertEquals(laurie, line.corpusWords[0].word)
+        assertEquals("goldenly", line.corpusWords[0].contextGloss)
     }
 
     @Test

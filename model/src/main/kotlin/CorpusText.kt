@@ -49,9 +49,9 @@ class CorpusText(
     var text: String
         get() = _text
         set(value) {
-            val wordMap = mutableMapOf<String, MutableList<Word?>>()
+            val wordMap = mutableMapOf<String, MutableList<CorpusWordAssociation?>>()
             for (word in iterateWords()) {
-                wordMap.getOrPut(word.normalizedText) { arrayListOf() }.add(wordByIndex(word.index))
+                wordMap.getOrPut(word.normalizedText) { arrayListOf() }.add(_words.find { it.index == word.index })
             }
 
             _text = value
@@ -62,7 +62,7 @@ class CorpusText(
                 if (!list.isNullOrEmpty()) {
                     val assocWord = list.first()
                     if (assocWord != null) {
-                        _words.add(CorpusWordAssociation(word.index, assocWord))
+                        _words.add(CorpusWordAssociation(word.index, assocWord.word, assocWord.contextGloss))
                     }
                     list.removeAt(0)
                 }
