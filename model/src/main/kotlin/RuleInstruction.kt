@@ -369,7 +369,10 @@ class ApplySoundRuleInstruction(language: Language, val ruleRef: RuleRef, arg: S
         val phonemes = PhonemeIterator(word.asPhonemic(), graph)
         if (phonemes.seek(seekTarget)) {
             ruleRef.resolve().applyToPhoneme(word, phonemes, graph, trace)
-            return word.derive(phonemes.result(), phonemic = true, keepStress = false).asOrthographic()
+            val segments = remapSegments(phonemes, word.segments)
+            return word.derive(phonemes.result(), phonemic = true, keepStress = false)
+                .also { it.segments = segments }
+                .asOrthographic()
         }
         return word
     }

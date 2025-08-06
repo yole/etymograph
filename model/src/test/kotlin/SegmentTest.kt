@@ -139,13 +139,24 @@ class SegmentTest : QBaseTest() {
 
     @Test
     fun deleteCharacterAdjustSegments() {
-        repo.rule("sound is 'e':\n- sound disappears", name = "oe-syncope")
+        repo.rule("* e > 0", name = "oe-syncope")
         val oeAcc = repo.rule("- append 'a'\n- apply rule 'oe-syncope'\n")
         val result = oeAcc.apply(q.word("swingel"), repo)
         assertEquals("swingla", result.text)
         assertEquals(1, result.segments!!.size)
         assertEquals(6, result.segments!![0].firstCharacter)
         assertEquals(1, result.segments!![0].length)
+    }
+
+    @Test
+    fun deleteCharacterAdjustSegmentsLongPhoneme() {
+        repo.rule("* V > 0", name = "oe-syncope")
+        val oeAcc = repo.rule("- append 'es'\n- apply sound rule 'oe-syncope' to second to last vowel\n")
+        val result = oeAcc.apply(q.word("biscop"), repo)
+        assertEquals("biscpes", result.text)
+        assertEquals(1, result.segments!!.size)
+        assertEquals(5, result.segments!![0].firstCharacter)
+        assertEquals(2, result.segments!![0].length)
     }
 
     @Test
