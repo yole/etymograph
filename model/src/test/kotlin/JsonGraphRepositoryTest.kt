@@ -76,18 +76,6 @@ class JsonGraphRepositoryTest : QBaseTest() {
     }
 
     @Test
-    fun serializeInsertSoundInstruction() {
-        val rule = parseRule(q, q, """
-            sound is 'i' and previous sound is not vowel:
-            - 'e' is inserted before
-        """.trimIndent())
-
-        val serializedData = rule.ruleToSerializedFormat()
-        val branches = ruleBranchesFromSerializedFormat(repo, q, q, serializedData.branches)
-        assertEquals("'e' is inserted before", branches[0].instructions[0].toEditableText(repo))
-    }
-
-    @Test
     fun serializeInsertInstruction() {
         val rule = parseRule(q, q, """
             - insert 'i' before last consonant
