@@ -608,38 +608,14 @@
             {
                 "instructions": [
                     {
-                        "type": "SoundInserted",
+                        "type": "Spe",
                         "args": [
-                            "i"
-                        ]
-                    },
-                    {
-                        "type": "SoundDisappears",
-                        "args": [
-                            "1"
+                            "Ci > iC / V_#"
                         ]
                     }
                 ],
                 "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "relPhoneme",
-                            "cls": "consonant",
-                            "relative": false
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": -1,
-                            "cls": "vowel"
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": 1,
-                            "cls": "word-final",
-                            "parameter": "i"
-                        }
-                    ]
+                    "type": "otherwise"
                 }
             }
         ],
