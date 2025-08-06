@@ -522,15 +522,6 @@ class PhonemeRuleTest : QBaseTest() {
     }
 
     @Test
-    fun soundIsGeminated() {
-        val rule = parseRule(q, q, """
-            sound is 'k' and next sound is 'w':
-            - sound is geminated
-        """.trimIndent())
-        assertEquals("kkwenia", applyRule(rule, q.word("kwenia")))
-    }
-
-    @Test
     fun syllableFinal() {
         val rule = parseRule(q, q, """
             sound is syllable-final 'n':
