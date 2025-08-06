@@ -299,6 +299,17 @@
                     {
                         "type": "Spe",
                         "condition": {
+                            "type": "relPhoneme",
+                            "relativeIndex": -1,
+                            "cls": "non-diphthong short vowel"
+                        },
+                        "args": [
+                            "β > bb / _j"
+                        ]
+                    },
+                    {
+                        "type": "Spe",
+                        "condition": {
                             "type": "and",
                             "members": [
                                 {
@@ -503,7 +514,7 @@
                             "relative": false
                         },
                         "args": [
-                            "[+syllabic] > [-long] / _r#"
+                            "V > [-long] / _r#"
                         ]
                     }
                 ],
@@ -618,7 +629,7 @@
                             "relative": false
                         },
                         "args": [
-                            "[+syllabic] > [+long] / _#"
+                            "V > [+long] / _#"
                         ]
                     }
                 ],

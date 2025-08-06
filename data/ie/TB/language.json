@@ -1,0 +1,170 @@
+{
+    "phonemes": [],
+    "pos": [
+        {
+            "name": "Noun",
+            "abbreviation": "N"
+        },
+        {
+            "name": "Proper Name",
+            "abbreviation": "NP"
+        },
+        {
+            "name": "Verb",
+            "abbreviation": "V"
+        },
+        {
+            "name": "Pronoun",
+            "abbreviation": "PRON"
+        },
+        {
+            "name": "Adjective",
+            "abbreviation": "ADJ"
+        }
+    ],
+    "grammaticalCategories": [
+        {
+            "name": "Number",
+            "pos": [
+                "N",
+                "ADJ",
+                "V"
+            ],
+            "values": [
+                {
+                    "name": "Singular",
+                    "abbreviation": "SG"
+                },
+                {
+                    "name": "Plural",
+                    "abbreviation": "PL"
+                }
+            ]
+        },
+        {
+            "name": "Case",
+            "pos": [
+                "N",
+                "PRON"
+            ],
+            "values": [
+                {
+                    "name": "Nominative",
+                    "abbreviation": "NOM"
+                },
+                {
+                    "name": "Vocative",
+                    "abbreviation": "VOC"
+                },
+                {
+                    "name": "Oblique",
+                    "abbreviation": "OBL"
+                },
+                {
+                    "name": "Genitive",
+                    "abbreviation": "GEN"
+                },
+                {
+                    "name": "Locative",
+                    "abbreviation": "LOC"
+                },
+                {
+                    "name": "Ablative",
+                    "abbreviation": "ABL"
+                },
+                {
+                    "name": "Perlative",
+                    "abbreviation": "PERL"
+                },
+                {
+                    "name": "Comitative",
+                    "abbreviation": "COM"
+                },
+                {
+                    "name": "Allative",
+                    "abbreviation": "ALL"
+                },
+                {
+                    "name": "Causal",
+                    "abbreviation": "CAUS"
+                }
+            ]
+        },
+        {
+            "name": "Person",
+            "pos": [
+                "V"
+            ],
+            "values": [
+                {
+                    "name": "1st",
+                    "abbreviation": "1"
+                },
+                {
+                    "name": "2nd",
+                    "abbreviation": "2"
+                },
+                {
+                    "name": "3rd",
+                    "abbreviation": "3"
+                }
+            ]
+        },
+        {
+            "name": "Tense",
+            "pos": [
+                "V"
+            ],
+            "values": [
+                {
+                    "name": "Present",
+                    "abbreviation": "PRES"
+                }
+            ]
+        },
+        {
+            "name": "Mood",
+            "pos": [
+                "V"
+            ],
+            "values": [
+                {
+                    "name": "Indicative",
+                    "abbreviation": "IND"
+                },
+                {
+                    "name": "Subjunctive",
+                    "abbreviation": "SUBJ"
+                }
+            ]
+        },
+        {
+            "name": "Non-finite verb form",
+            "pos": [
+                "V"
+            ],
+            "values": [
+                {
+                    "name": "Verbal noun",
+                    "abbreviation": "VN"
+                }
+            ]
+        },
+        {
+            "name": "Gender",
+            "pos": [
+                "ADJ"
+            ],
+            "values": [
+                {
+                    "name": "Masculine",
+                    "abbreviation": "M"
+                },
+                {
+                    "name": "Feminine",
+                    "abbreviation": "F"
+                }
+            ]
+        }
+    ]
+}

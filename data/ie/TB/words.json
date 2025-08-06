@@ -1,0 +1,762 @@
+[
+    {
+        "id": 9687,
+        "text": "arai",
+        "gloss": "o"
+    },
+    {
+        "id": 9688,
+        "text": "srukalyñe",
+        "gloss": "death.VN"
+    },
+    {
+        "id": 9689,
+        "text": "cisa"
+    },
+    {
+        "id": 9690,
+        "text": "tuwe",
+        "gloss": "you",
+        "pos": "PRON"
+    },
+    {
+        "id": 9691,
+        "text": "nta",
+        "gloss": "ever"
+    },
+    {
+        "id": 9692,
+        "text": "kca"
+    },
+    {
+        "id": 9693,
+        "text": "mā",
+        "gloss": "not"
+    },
+    {
+        "id": 9694,
+        "text": "prāskau"
+    },
+    {
+        "id": 9695,
+        "text": "pontas",
+        "gloss": "all.GEN.PL.M"
+    },
+    {
+        "id": 9696,
+        "text": "po",
+        "gloss": "all"
+    },
+    {
+        "id": 9697,
+        "text": "srukelle",
+        "gloss": "die.GER"
+    },
+    {
+        "id": 9698,
+        "text": "sruka-",
+        "gloss": "die",
+        "pos": "V"
+    },
+    {
+        "id": 9699,
+        "text": "kā",
+        "gloss": "why",
+        "pos": "PRON"
+    },
+    {
+        "id": 9700,
+        "text": "srukalñe"
+    },
+    {
+        "id": 9701,
+        "text": "ñiś"
+    },
+    {
+        "id": 9702,
+        "text": "ñäś",
+        "gloss": "I",
+        "pos": "PRON"
+    },
+    {
+        "id": 9703,
+        "text": "ṣeske",
+        "gloss": "alone"
+    },
+    {
+        "id": 9704,
+        "text": "tañ"
+    },
+    {
+        "id": 9705,
+        "text": "s="
+    },
+    {
+        "id": 9706,
+        "text": "se",
+        "gloss": "this"
+    },
+    {
+        "id": 9707,
+        "text": "ārai"
+    },
+    {
+        "id": 9708,
+        "text": "ksa",
+        "gloss": "someone",
+        "pos": "PRON"
+    },
+    {
+        "id": 9709,
+        "text": "ñi"
+    },
+    {
+        "id": 9710,
+        "text": "palsko",
+        "gloss": "mind",
+        "pos": "N"
+    },
+    {
+        "id": 9712,
+        "text": "pon",
+        "gloss": "all.OBL.PL.M"
+    },
+    {
+        "id": 9713,
+        "text": "prekenne"
+    },
+    {
+        "id": 9714,
+        "text": "twe"
+    },
+    {
+        "id": 9715,
+        "text": "ṅke",
+        "gloss": "then"
+    },
+    {
+        "id": 9716,
+        "text": "kalatar-ñ",
+        "gloss": "bring.2SG.SUBJ-1SG.OBJ"
+    },
+    {
+        "id": 9717,
+        "text": "kala-",
+        "gloss": "bring",
+        "pos": "V"
+    },
+    {
+        "id": 9718,
+        "text": "apiś",
+        "gloss": "Avīci"
+    },
+    {
+        "id": 9719,
+        "text": "wärñai"
+    },
+    {
+        "id": 9720,
+        "text": "warñai",
+        "gloss": "like"
+    },
+    {
+        "id": 9721,
+        "text": "nreyentane"
+    },
+    {
+        "id": 9722,
+        "text": "nraintane",
+        "gloss": "hell.LOC.PL"
+    },
+    {
+        "id": 9723,
+        "text": "nrai",
+        "gloss": "hell",
+        "pos": "N"
+    },
+    {
+        "id": 9757,
+        "text": "praska-",
+        "gloss": "fear",
+        "pos": "V"
+    },
+    {
+        "id": 9758,
+        "text": "preke",
+        "gloss": "time",
+        "pos": "N"
+    },
+    {
+        "id": 9760,
+        "text": "ya)ltse"
+    },
+    {
+        "id": 9761,
+        "text": "yaltse",
+        "gloss": "thousand"
+    },
+    {
+        "id": 9762,
+        "text": "ñ(i"
+    },
+    {
+        "id": 9763,
+        "text": "ci)sa"
+    },
+    {
+        "id": 9764,
+        "text": "noṣ",
+        "gloss": "previously"
+    },
+    {
+        "id": 9765,
+        "text": "śomo"
+    },
+    {
+        "id": 9766,
+        "text": "śaumo",
+        "gloss": "human",
+        "pos": "N"
+    },
+    {
+        "id": 9767,
+        "text": "ñ(e)m"
+    },
+    {
+        "id": 9768,
+        "text": "ñem",
+        "gloss": "name",
+        "pos": "N"
+    },
+    {
+        "id": 9769,
+        "text": "ciṣṣe",
+        "gloss": "you.ADJ"
+    },
+    {
+        "id": 9770,
+        "text": "laraumñe",
+        "notes": "epenthetic m"
+    },
+    {
+        "id": 9771,
+        "text": "larauñe",
+        "gloss": "love",
+        "pos": "N"
+    },
+    {
+        "id": 9772,
+        "text": "ārtañye"
+    },
+    {
+        "id": 9773,
+        "text": "ārtalñe",
+        "gloss": "approve.VN"
+    },
+    {
+        "id": 9774,
+        "text": "pelke",
+        "gloss": "breath",
+        "fullGloss": "breath, spirit",
+        "pos": "N"
+    },
+    {
+        "id": 9775,
+        "text": "kaltta(r)r"
+    },
+    {
+        "id": 9776,
+        "text": "kaltär",
+        "gloss": "stand.PRES.MID.3SG"
+    },
+    {
+        "id": 9777,
+        "text": "śolämpa"
+    },
+    {
+        "id": 9778,
+        "text": "ṣṣe"
+    },
+    {
+        "id": 9779,
+        "text": "eṣe",
+        "gloss": "together",
+        "notes": "from e-ṣe 'in one'"
+    },
+    {
+        "id": 9780,
+        "text": "taṃ"
+    },
+    {
+        "id": 9781,
+        "text": "te",
+        "gloss": "this"
+    },
+    {
+        "id": 9782,
+        "text": "stālle",
+        "gloss": "changing?"
+    },
+    {
+        "id": 9783,
+        "text": "śol"
+    },
+    {
+        "id": 9784,
+        "text": "śaul",
+        "gloss": "life",
+        "pos": "N"
+    },
+    {
+        "id": 9785,
+        "text": "wno)lme"
+    },
+    {
+        "id": 9786,
+        "text": "wnolme",
+        "gloss": "being",
+        "pos": "N"
+    },
+    {
+        "id": 9787,
+        "text": "l)āre"
+    },
+    {
+        "id": 9788,
+        "text": "lāre",
+        "gloss": "dear",
+        "pos": "ADJ"
+    },
+    {
+        "id": 9789,
+        "text": "tāka",
+        "gloss": "be.PRET.3SG"
+    },
+    {
+        "id": 9790,
+        "text": "ra",
+        "gloss": "also"
+    },
+    {
+        "id": 9791,
+        "text": "postaṃ"
+    },
+    {
+        "id": 9792,
+        "text": "postäṃ",
+        "gloss": "later"
+    },
+    {
+        "id": 9793,
+        "text": "mäsketär-ñ",
+        "gloss": "be.3SG.PRES-1SG.OBJ"
+    },
+    {
+        "id": 9794,
+        "text": "taiysu"
+    },
+    {
+        "id": 9795,
+        "text": "taisa",
+        "gloss": "thus",
+        "notes": "tai 'demonstrative' su 'perlative'"
+    },
+    {
+        "id": 9796,
+        "text": "pälskanoym",
+        "gloss": "think.1SG.IMPF.ACT"
+    },
+    {
+        "id": 9797,
+        "text": "sanai",
+        "gloss": "one.OBL.SG.F"
+    },
+    {
+        "id": 9798,
+        "text": "ṣaryompa"
+    },
+    {
+        "id": 9799,
+        "text": "śāyau",
+        "gloss": "live.1SG.PRES.SUBJ"
+    },
+    {
+        "id": 9800,
+        "text": "karttse(ś"
+    },
+    {
+        "id": 9801,
+        "text": "karttseś",
+        "gloss": "good.ALL"
+    },
+    {
+        "id": 9802,
+        "text": "śaulu-wärñai",
+        "gloss": "life-long",
+        "notes": "linking 'u' before 'w'"
+    },
+    {
+        "id": 9803,
+        "text": "snai",
+        "gloss": "without"
+    },
+    {
+        "id": 9804,
+        "text": "tserekwa",
+        "gloss": "illusions"
+    },
+    {
+        "id": 9805,
+        "text": "tā(r)śai"
+    },
+    {
+        "id": 9806,
+        "text": "tārśai",
+        "gloss": "deceptions"
+    },
+    {
+        "id": 9808,
+        "text": "ṣarya",
+        "gloss": "dear",
+        "pos": "N"
+    },
+    {
+        "id": 9809,
+        "text": "yāmor-ñīkte",
+        "gloss": "god karman"
+    },
+    {
+        "id": 9810,
+        "text": "cau"
+    },
+    {
+        "id": 9811,
+        "text": "ñī"
+    },
+    {
+        "id": 9812,
+        "text": "palskañe"
+    },
+    {
+        "id": 9813,
+        "text": "palskalñe",
+        "gloss": "think.VN"
+    },
+    {
+        "id": 9814,
+        "text": "śarsa",
+        "gloss": "understand.3SG.PRES.ACT"
+    },
+    {
+        "id": 9815,
+        "text": "tusa",
+        "gloss": "therefore"
+    },
+    {
+        "id": 9816,
+        "text": "ysaly"
+    },
+    {
+        "id": 9817,
+        "text": "ysalye",
+        "gloss": "discord",
+        "pos": "N"
+    },
+    {
+        "id": 9818,
+        "text": "ersate",
+        "gloss": "cause.3SG.PRES.MID"
+    },
+    {
+        "id": 9819,
+        "text": "ciṣy"
+    },
+    {
+        "id": 9820,
+        "text": "araś"
+    },
+    {
+        "id": 9821,
+        "text": "arañc"
+    },
+    {
+        "id": 9822,
+        "text": "arañce",
+        "gloss": "heart",
+        "pos": "N"
+    },
+    {
+        "id": 9823,
+        "text": "ṣe",
+        "gloss": "one"
+    },
+    {
+        "id": 9824,
+        "text": "sälkāte",
+        "gloss": "pull out.PRES.MID.3SG"
+    },
+    {
+        "id": 9825,
+        "text": "yāmor",
+        "gloss": "karma"
+    },
+    {
+        "id": 9827,
+        "text": "ñīkte",
+        "gloss": "god"
+    },
+    {
+        "id": 9828,
+        "text": "wāya",
+        "gloss": "lead.3SG.PRET.ACT"
+    },
+    {
+        "id": 9829,
+        "text": "ci",
+        "gloss": "you.OBL"
+    },
+    {
+        "id": 9830,
+        "text": "lauke",
+        "gloss": "far"
+    },
+    {
+        "id": 9831,
+        "text": "tsyāra",
+        "gloss": "separate.3SG.PRES.ACT"
+    },
+    {
+        "id": 9832,
+        "text": "wetke",
+        "gloss": "separation",
+        "pos": "N"
+    },
+    {
+        "id": 9833,
+        "text": "lykautka-ñ"
+    },
+    {
+        "id": 9834,
+        "text": "pāke",
+        "gloss": "part",
+        "fullGloss": "part, share",
+        "pos": "N"
+    },
+    {
+        "id": 9835,
+        "text": "läklentas"
+    },
+    {
+        "id": 9836,
+        "text": "läklentants"
+    },
+    {
+        "id": 9837,
+        "text": "lakle",
+        "gloss": "sorrow",
+        "pos": "N"
+    },
+    {
+        "id": 9838,
+        "text": "klyautka-ñ",
+        "gloss": "turn into.3SG.PRET.ACT-1SG.OBJ"
+    },
+    {
+        "id": 9839,
+        "text": "tsārwo",
+        "gloss": "comfort",
+        "pos": "N"
+    },
+    {
+        "id": 9840,
+        "text": "ciṣe"
+    },
+    {
+        "id": 9841,
+        "text": "sampā(te-ñ"
+    },
+    {
+        "id": 9842,
+        "text": "sampāte-ñ",
+        "gloss": "take.3SG.PRET.MID-1SG.OBJ"
+    },
+    {
+        "id": 9844,
+        "text": "ṣletaś",
+        "gloss": "mountain commander",
+        "notes": "ṣale 'mountain'"
+    },
+    {
+        "id": 9845,
+        "text": "piṅkäṃ"
+    },
+    {
+        "id": 9846,
+        "text": "yuṣaiśco",
+        "gloss": "yuṣa.ALL"
+    },
+    {
+        "id": 9847,
+        "text": "yaitkorsa"
+    },
+    {
+        "id": 9848,
+        "text": "maṃt",
+        "gloss": "so"
+    },
+    {
+        "id": 9849,
+        "text": "pyām"
+    },
+    {
+        "id": 9850,
+        "text": "kaṣake",
+        "gloss": "Kashgarian",
+        "pos": "NP"
+    },
+    {
+        "id": 9851,
+        "text": "puttamitre",
+        "pos": "NP"
+    },
+    {
+        "id": 9852,
+        "text": "kuce",
+        "gloss": "that"
+    },
+    {
+        "id": 9853,
+        "text": "parra",
+        "gloss": "outside"
+    },
+    {
+        "id": 9854,
+        "text": "yaṃ"
+    },
+    {
+        "id": 9855,
+        "text": "caumpa",
+        "gloss": "su.COM"
+    },
+    {
+        "id": 9856,
+        "text": "śāmna"
+    },
+    {
+        "id": 9857,
+        "text": "ikäṃ",
+        "gloss": "20"
+    },
+    {
+        "id": 9858,
+        "text": "kercapaṃ"
+    },
+    {
+        "id": 9859,
+        "text": "trey",
+        "gloss": "3"
+    },
+    {
+        "id": 9860,
+        "text": "yakwe",
+        "gloss": "horse"
+    },
+    {
+        "id": 9861,
+        "text": "tārka"
+    },
+    {
+        "id": 9862,
+        "text": "tentsa",
+        "gloss": "sem.PERL.SG.N"
+    },
+    {
+        "id": 9863,
+        "text": "auṣap",
+        "gloss": "more"
+    },
+    {
+        "id": 9864,
+        "text": "tärkanat"
+    },
+    {
+        "id": 9865,
+        "text": "śak",
+        "gloss": "10"
+    },
+    {
+        "id": 9866,
+        "text": "kṣ(u)ṃntsa",
+        "gloss": "regal year.PERL.SG"
+    },
+    {
+        "id": 9867,
+        "text": "śtarce",
+        "gloss": "4th.OBL.SG"
+    },
+    {
+        "id": 9868,
+        "text": "meṃne",
+        "gloss": "month.LOC.SG"
+    },
+    {
+        "id": 9869,
+        "text": "yuṣaints(e",
+        "gloss": "yuṣa.GEN"
+    },
+    {
+        "id": 9870,
+        "text": "klāṣle",
+        "gloss": "bring.GER"
+    },
+    {
+        "id": 9871,
+        "text": "kercapañ"
+    },
+    {
+        "id": 9872,
+        "text": "kercapo",
+        "gloss": "donkey",
+        "pos": "N"
+    },
+    {
+        "id": 9873,
+        "text": "pik-",
+        "gloss": "write",
+        "pos": "V"
+    },
+    {
+        "id": 9874,
+        "text": "yaitkor",
+        "gloss": "command",
+        "pos": "N"
+    },
+    {
+        "id": 9877,
+        "text": "yam-",
+        "gloss": "do",
+        "pos": "V"
+    },
+    {
+        "id": 9878,
+        "text": "y-",
+        "gloss": "go",
+        "pos": "V"
+    },
+    {
+        "id": 9879,
+        "text": "ptārka"
+    },
+    {
+        "id": 9880,
+        "text": "tərka-",
+        "gloss": "let go",
+        "pos": "V"
+    },
+    {
+        "id": 9881,
+        "text": "su",
+        "gloss": "anaphoric pronoun",
+        "pos": "PRON"
+    }
+]

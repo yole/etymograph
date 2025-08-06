@@ -10852,6 +10852,9 @@
         "text": "gappōn-",
         "gloss": "joke",
         "pos": "V",
+        "classes": [
+            "v-weak"
+        ],
         "sourceRefs": [
             {
                 "pubId": 9,
@@ -20816,7 +20819,7 @@
     },
     {
         "id": 8609,
-        "text": "skradtan-",
+        "text": "skradan-",
         "gloss": "demon",
         "pos": "N",
         "classes": [
@@ -26927,5 +26930,9 @@
                 "refText": "143"
             }
         ]
+    },
+    {
+        "id": 9650,
+        "text": "setjan"
     }
 ]

@@ -2055,9 +2055,15 @@
         "gloss": "have",
         "fullGloss": "To HAVE, possess, hold,                     keep",
         "pos": "V",
+        "classes": [
+            "v-weak-3"
+        ],
         "sourceRefs": [
             {
                 "refText": "https://bosworthtoller.com/17802"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/habban#Old_English"
             }
         ]
     },
@@ -3831,18 +3837,6 @@
     {
         "id": 2360,
         "text": "mildsi",
-        "gloss": "mildness",
-        "reconstructed": true,
-        "sourceRefs": [
-            {
-                "pubId": 5,
-                "refText": "293"
-            }
-        ]
-    },
-    {
-        "id": 2361,
-        "text": "milds",
         "gloss": "mildness",
         "reconstructed": true,
         "sourceRefs": [
@@ -15231,6 +15225,9 @@
             {
                 "pubId": 5,
                 "refText": "330"
+            },
+            {
+                "refText": "https://bosworthtoller.com/707"
             }
         ]
     },
@@ -20056,6 +20053,9 @@
             },
             {
                 "refText": "https://en.wiktionary.org/wiki/giwian#Old_English"
+            },
+            {
+                "refText": "https://bosworthtoller.com/17161"
             }
         ]
     },
@@ -22830,12 +22830,20 @@
     },
     {
         "id": 7770,
-        "text": "cēn",
+        "text": "ċēn",
         "gloss": "pine tree, spruce",
+        "pos": "N",
+        "classes": [
+            "masc",
+            "a-stem"
+        ],
         "sourceRefs": [
             {
                 "pubId": 9,
                 "refText": "289"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/cen#Old_English"
             }
         ]
     },
@@ -25165,7 +25173,7 @@
     },
     {
         "id": 8238,
-        "text": "mycge",
+        "text": "myċġe",
         "gloss": "mosquito",
         "sourceRefs": [
             {
@@ -29722,10 +29730,19 @@
         "id": 9140,
         "text": "þīxl",
         "gloss": "beam or pole of a wagon",
+        "fullGloss": "a beam; the pole of a wagon",
+        "pos": "N",
+        "classes": [
+            "fem",
+            "o-stem"
+        ],
         "sourceRefs": [
             {
                 "pubId": 9,
                 "refText": "542"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/þixl#Old_English"
             }
         ]
     },
@@ -30672,11 +30689,17 @@
     {
         "id": 9320,
         "text": "wæscan",
-        "gloss": "wash",
+        "pos": "V",
         "sourceRefs": [
             {
                 "pubId": 9,
                 "refText": "575"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/wæscan#Old_English"
+            },
+            {
+                "refText": "https://bosworthtoller.com/34455"
             }
         ]
     },
@@ -30938,11 +30961,14 @@
     {
         "id": 9373,
         "text": "widu",
-        "gloss": "tree; wood",
+        "pos": "N",
         "sourceRefs": [
             {
                 "pubId": 9,
                 "refText": "585"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/widu#Old_English"
             }
         ]
     },
@@ -32106,6 +32132,35 @@
             },
             {
                 "refText": "https://bosworthtoller.com/1808"
+            }
+        ]
+    },
+    {
+        "id": 9652,
+        "text": "wascan",
+        "gloss": "to wash",
+        "pos": "V",
+        "classes": [
+            "v-strong-6"
+        ],
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/wascan#Old_English"
+            }
+        ]
+    },
+    {
+        "id": 9653,
+        "text": "wudu",
+        "gloss": "wood",
+        "fullGloss": "wood; forest, woods; tree",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "refText": "https://en.wiktionary.org/wiki/wudu#Old_English"
+            },
+            {
+                "refText": "https://bosworthtoller.com/36709"
             }
         ]
     }

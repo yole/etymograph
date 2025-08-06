@@ -1872,7 +1872,7 @@
                             "expectCount": 1
                         },
                         "args": [
-                            "aiz > ā / _#"
+                            "aiz > ā / C_"
                         ]
                     },
                     {
@@ -1882,7 +1882,17 @@
                             "expectCount": 1
                         },
                         "args": [
-                            "iz > e / _#"
+                            "iz > ē / C_"
+                        ]
+                    },
+                    {
+                        "type": "Spe",
+                        "condition": {
+                            "type": "syllableCount",
+                            "expectCount": 1
+                        },
+                        "args": [
+                            "uz > ū / C_"
                         ]
                     }
                 ],
@@ -1895,37 +1905,6 @@
             {
                 "pubId": 5,
                 "refText": "86"
-            }
-        ]
-    },
-    {
-        "id": 2039,
-        "name": "post-pwgmc-n-after-unstressed-i",
-        "fromLang": "PWGmc",
-        "toLang": "OE",
-        "branches": [
-            {
-                "instructions": [
-                    {
-                        "type": "Spe",
-                        "condition": {
-                            "type": "relPhoneme",
-                            "relativeIndex": -1,
-                            "cls": "non-stressed"
-                        },
-                        "args": [
-                            "n > 0 / ī_#"
-                        ]
-                    }
-                ],
-                "condition": {
-                    "type": "otherwise"
-                }
-            }
-        ],
-        "sourceRefs": [
-            {
-                "refText": "RInge 2014:88"
             }
         ]
     },
@@ -2032,37 +2011,6 @@
             {
                 "pubId": 5,
                 "refText": "142 (5.1.2)"
-            },
-            {
-                "pubId": 6,
-                "refText": "5.3"
-            }
-        ]
-    },
-    {
-        "id": 2049,
-        "name": "north-pwgmc-nasalized-rounding",
-        "fromLang": "PGmc",
-        "toLang": "OE",
-        "branches": [
-            {
-                "instructions": [
-                    {
-                        "type": "Spe",
-                        "args": [
-                            "ą̄ > ō"
-                        ]
-                    }
-                ],
-                "condition": {
-                    "type": "otherwise"
-                }
-            }
-        ],
-        "sourceRefs": [
-            {
-                "pubId": 5,
-                "refText": "142"
             },
             {
                 "pubId": 6,
@@ -2254,8 +2202,25 @@
                 "instructions": [
                     {
                         "type": "Spe",
+                        "condition": {
+                            "type": "and",
+                            "members": [
+                                {
+                                    "type": "relPhoneme",
+                                    "relativeIndex": 2,
+                                    "negated": true,
+                                    "parameter": "l"
+                                },
+                                {
+                                    "type": "relPhoneme",
+                                    "relativeIndex": 2,
+                                    "negated": true,
+                                    "parameter": "n"
+                                }
+                            ]
+                        },
                         "args": [
-                            "h > 0 / _CC"
+                            "h > 0 / _sC"
                         ]
                     }
                 ],
@@ -2494,6 +2459,11 @@
                 "instructions": [
                     {
                         "type": "Spe",
+                        "condition": {
+                            "type": "relPhoneme",
+                            "cls": "stressed",
+                            "relative": false
+                        },
                         "args": [
                             "{e|i} > {eo|io} / _w!i"
                         ]
@@ -3228,7 +3198,8 @@
         ],
         "sourceRefs": [
             {
-                "refText": "RInge 2014:281"
+                "pubId": 5,
+                "refText": "281"
             }
         ]
     },
@@ -3954,33 +3925,6 @@
             }
         ],
         "notes": "Ringe 2014:199: The stressed ǣ existed only in West Saxon dialects at the time. The results of this sound change were mostly levelled out."
-    },
-    {
-        "id": 2455,
-        "name": "post-pwgmc-z-before-coronal",
-        "fromLang": "PWGmc",
-        "toLang": "OE",
-        "branches": [
-            {
-                "instructions": [
-                    {
-                        "type": "Spe",
-                        "args": [
-                            "z > r / _[coronal]"
-                        ]
-                    }
-                ],
-                "condition": {
-                    "type": "otherwise"
-                }
-            }
-        ],
-        "sourceRefs": [
-            {
-                "pubId": 5,
-                "refText": "84"
-            }
-        ]
     },
     {
         "id": 2618,

@@ -834,7 +834,8 @@
     {
         "id": 2930,
         "text": "staþulaz",
-        "gloss": "act of standing; standing thng",
+        "gloss": "act of standing; standing thing",
+        "pos": "N",
         "sourceRefs": [
             {
                 "pubId": 5,

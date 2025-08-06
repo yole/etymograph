@@ -1,0 +1,365 @@
+[
+    {
+        "id": 44,
+        "name": "Noun",
+        "rows": [
+            "Nom",
+            "Voc",
+            "Obl",
+            "Gen",
+            "Loc",
+            "Abl",
+            "Perl",
+            "Com",
+            "All",
+            "Caus"
+        ],
+        "columns": [
+            {
+                "title": "Sg",
+                "cells": [
+                    {},
+                    {
+                        "ruleAlternatives": [
+                            9726
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            9728
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            9730
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            9732
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            9734
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            9736
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            9738
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            9740
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            9742
+                        ]
+                    }
+                ]
+            },
+            {
+                "title": "Pl",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            9725
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            9727
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            9729
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            9731
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            9733
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            9735
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            9737
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            9739
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            9741
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            9743
+                        ]
+                    }
+                ]
+            }
+        ],
+        "posList": [
+            "N",
+            "PRON",
+            "ADJ"
+        ]
+    },
+    {
+        "id": 45,
+        "name": "Verb Present",
+        "rows": [
+            "1",
+            "2",
+            "3"
+        ],
+        "columns": [
+            {
+                "title": "sg",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            9745
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            9747
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            9749
+                        ]
+                    }
+                ]
+            },
+            {
+                "title": "pl",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            9746
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            9748
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            9750
+                        ]
+                    }
+                ]
+            }
+        ],
+        "posList": [
+            "V"
+        ]
+    },
+    {
+        "id": 46,
+        "name": "Verb Present Subjunctive",
+        "rows": [
+            "1",
+            "2",
+            "3"
+        ],
+        "columns": [
+            {
+                "title": "sg",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            9751
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            9753
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            9755
+                        ]
+                    }
+                ]
+            },
+            {
+                "title": "pl",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            9752
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            9754
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            9756
+                        ]
+                    }
+                ]
+            }
+        ],
+        "posList": [
+            "V"
+        ]
+    },
+    {
+        "id": 47,
+        "name": "Verb Imperative",
+        "rows": [
+            "2"
+        ],
+        "columns": [
+            {
+                "title": "sg",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            9875
+                        ]
+                    }
+                ]
+            },
+            {
+                "title": "pl",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            9876
+                        ]
+                    }
+                ]
+            }
+        ],
+        "posList": [
+            "V"
+        ]
+    },
+    {
+        "id": 48,
+        "name": "Adjective",
+        "rows": [
+            "Nom",
+            "Obl",
+            "Gen"
+        ],
+        "columns": [
+            {
+                "title": "Sg M",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            9882
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            9886
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            9890
+                        ]
+                    }
+                ]
+            },
+            {
+                "title": "Pl M",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            9883
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            9887
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            9891
+                        ]
+                    }
+                ]
+            },
+            {
+                "title": "Sg F",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            9884
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            9888
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            9892
+                        ]
+                    }
+                ]
+            },
+            {
+                "title": "Pl F",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            9885
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            9889
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            9893
+                        ]
+                    }
+                ]
+            }
+        ],
+        "posList": [
+            "ADJ"
+        ]
+    }
+]
