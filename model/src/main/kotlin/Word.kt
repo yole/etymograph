@@ -28,8 +28,10 @@ class WordSegment(
 
 fun remapSegments(phonemes: PhonemeIterator, segments: List<WordSegment>?): List<WordSegment>? {
     return segments?.mapNotNull { segment ->
-        val start = phonemes.mapNextValidIndex(segment.firstCharacter)
-        val end = phonemes.mapIndex(segment.firstCharacter + segment.length)
+        val startPhoneme = phonemes.characterToPhonemeIndex(segment.firstCharacter, true)
+        val endPhoneme = phonemes.characterToPhonemeIndex(segment.firstCharacter + segment.length, true)
+        val start = phonemes.phonemeToCharacterIndex(phonemes.mapNextValidIndex(startPhoneme))
+        val end = phonemes.phonemeToCharacterIndex(phonemes.mapIndex(endPhoneme))
         if (start < 0 || end < 0) {
             null
         }

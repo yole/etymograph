@@ -112,6 +112,7 @@ class PhonemeIterator {
     private val word: Word?
     private val repo: GraphRepository?
     private val phonemes: MutableList<String>
+    private val origPhonemes: List<String>
     private val resultPhonemes: MutableList<String>
     private var phonemeIndex = 0
     private var phonemeToResultIndexMap: IntArray
@@ -159,11 +160,13 @@ class PhonemeIterator {
         }
 
         phonemes = sourcePhonemes
+        origPhonemes = phonemes.toList()
         phonemeToResultIndexMap = IntArray(phonemes.size) { it }
     }
 
     private constructor(
         phonemes: List<String>,
+        origPhonemes: List<String>,
         resultPhonemes: MutableList<String>,
         language: Language,
         repo: GraphRepository?,
@@ -171,6 +174,7 @@ class PhonemeIterator {
         phonemeToResultIndexMap: IntArray
     ) {
         this.phonemes = phonemes.toMutableList()
+        this.origPhonemes = origPhonemes
         this.resultPhonemes = resultPhonemes
         this.language = language
         this.repo = repo
@@ -189,7 +193,7 @@ class PhonemeIterator {
     fun atRelative(relativeIndex: Int): String? = phonemes.getOrNull(phonemeIndex + relativeIndex)
 
     fun clone(): PhonemeIterator {
-        return PhonemeIterator(phonemes, resultPhonemes, language, repo, word, phonemeToResultIndexMap).also {
+        return PhonemeIterator(phonemes, origPhonemes, resultPhonemes, language, repo, word, phonemeToResultIndexMap).also {
             it.phonemeIndex = phonemeIndex
             it.atEnd = atEnd
         }
@@ -375,13 +379,17 @@ class PhonemeIterator {
         return phonemes.subList(0, phonemeIndex).sumOf { it.length }
     }
 
-    fun characterToPhonemeIndex(characterIndex: Int): Int {
+    fun characterToPhonemeIndex(characterIndex: Int, indexIsOriginal: Boolean = false): Int {
         var length = 0
-        for ((index, phoneme) in phonemes.withIndex()) {
+        val phonemeList = if (indexIsOriginal) origPhonemes else phonemes
+        for ((index, phoneme) in phonemeList.withIndex()) {
             if (length >= characterIndex) {
                 return index
             }
             length += phoneme.length
+        }
+        if (characterIndex == length) {
+            return phonemeList.size
         }
         throw IndexOutOfBoundsException("Character index $index outside of phoneme index range")
     }
