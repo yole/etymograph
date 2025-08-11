@@ -198,4 +198,13 @@ class SegmentTest : QBaseTest() {
         val result = onDefDatDg.apply(q.word("horni"), repo)
         assertEquals(1, result.segments!!.size)
     }
+
+    @Test
+    fun segmentDisappears() {
+        repo.rule("sound is 'a' and previous sound is 'a':\n- sound disappears\n",
+            name = "on-vowel-assimilation")
+        val onGenPl = repo.rule("- append 'a'\n= apply rule 'on-vowel-assimilation'")
+        val result = onGenPl.apply(q.word("a"), repo)
+        assertEquals(0, result.segments!!.size)
+    }
 }
