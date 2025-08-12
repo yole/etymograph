@@ -4,7 +4,7 @@ import Link from "next/link";
 import WordForm from "@/forms/WordForm";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import {useState} from "react";
-import {WordViewModel} from "@/models";
+import {DictionaryWordViewModel, WordViewModel} from "@/models";
 
 export const config = {
     unstable_runtimeJS: true
@@ -51,6 +51,18 @@ export default function Dictionary(params) {
         }
     }
 
+
+    function renderWordItem(w: DictionaryWordViewModel) {
+        const gloss = w.fullGloss !== null && w.fullGloss !== "" ? w.fullGloss : w.gloss;
+        return <li key={w.id}>
+            <Link href={`/${graph}/word/${dict.language.shortName}/${w.text.toLowerCase()}${w.homonym ? "/" + w.id : ""}`}>{w.text}</Link>
+            {w.pos ? <> <i>{w.pos.toLowerCase()}.</i></> : ""} - {gloss}
+        </li>
+    }
+
+    const grouped = dict.wordsByLetter;
+    const letterKeys = Object.keys(grouped).sort();
+
     return <>
         <Breadcrumbs langId={dict.language.shortName} langName={dict.language.name} title={filterText}/>
 
@@ -66,15 +78,25 @@ export default function Dictionary(params) {
                       hideReconstructed={filter !== "reconstructed"}
             />}
         </>}
-        <ul>
-            {dict.words.map(w => {
-                let gloss = w.fullGloss !== null && w.fullGloss !== "" ? w.fullGloss : w.gloss;
 
-                return <li key={w.id}>
-                    <Link
-                        href={`/${graph}/word/${dict.language.shortName}/${w.text.toLowerCase()}${w.homonym ? "/" + w.id : ""}`}>{w.text}</Link>{w.pos ? <> <i>{w.pos.toLowerCase()}.</i></> : ""} - {gloss}
-                </li>;
-            })}
-        </ul>
+        {/* Letter navigation bar */}
+        <div style={{display: 'flex', flexWrap: 'wrap', gap: '0.5rem', margin: '0.5rem 0'}}>
+            {letterKeys.map(k => (
+                <a key={k} href={`#letter-${encodeURIComponent(k)}`}
+                   style={{textDecoration: 'none', padding: '0.25rem 0.5rem', border: '1px solid #ccc', borderRadius: '4px'}}>
+                    {k}
+                </a>
+            ))}
+        </div>
+
+        {/* Grouped sections */}
+        {letterKeys.map(k => (
+            <section key={k} id={`letter-${k}`}>
+                <h3>{k}</h3>
+                <ul>
+                    {grouped[k].map(w => renderWordItem(w))}
+                </ul>
+            </section>
+        ))}
     </>
 }
