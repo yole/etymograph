@@ -155,6 +155,7 @@ export type DictionaryWordViewModel = {
     gloss: string;
     fullGloss?: string;
     homonym: boolean;
+    pos?: string;
 };
 
 export type GenerateParadigmParameters = {

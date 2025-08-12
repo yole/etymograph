@@ -12,7 +12,7 @@ import ru.yole.etymograph.web.resolveLanguage
 @RestController
 @RequestMapping("/{graph}/dictionary")
 class DictionaryController {
-    data class DictionaryWordViewModel(val id: Int, val text: String, val gloss: String, val fullGloss: String?, val homonym: Boolean)
+    data class DictionaryWordViewModel(val id: Int, val text: String, val gloss: String, val fullGloss: String?, val homonym: Boolean, val pos: String?)
     data class DictionaryViewModel(val language: Language, val words: List<DictionaryWordViewModel>)
 
     @GetMapping("/{lang}")
@@ -50,7 +50,8 @@ class DictionaryController {
             DictionaryWordViewModel(
                 it.id, it.text,
                 it.getOrComputeGloss(repo) ?: "", it.fullGloss,
-                repo.isHomonym(it)
+                repo.isHomonym(it),
+                it.getOrComputePOS(repo)
             )
         })
     }

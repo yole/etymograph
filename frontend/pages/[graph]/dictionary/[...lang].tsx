@@ -72,7 +72,7 @@ export default function Dictionary(params) {
 
                 return <li key={w.id}>
                     <Link
-                        href={`/${graph}/word/${dict.language.shortName}/${w.text.toLowerCase()}${w.homonym ? "/" + w.id : ""}`}>{w.text}</Link> - {gloss}
+                        href={`/${graph}/word/${dict.language.shortName}/${w.text.toLowerCase()}${w.homonym ? "/" + w.id : ""}`}>{w.text}</Link>{w.pos ? <> <i>{w.pos.toLowerCase()}.</i></> : ""} - {gloss}
                 </li>;
             })}
         </ul>
