@@ -31,10 +31,7 @@ class JsonGraphRepositoryTest : QBaseTest() {
     fun serializeApplySoundRule() {
         val soundRule = repo.addRule(
             "q-lengthen", q, q,
-            Rule.parseBranches("""
-            sound is 'a':
-            - new sound is 'á'
-        """.trimIndent(), q.parseContext()))
+            Rule.parseBranches("* a > á", q.parseContext()))
 
         val parseContext = RuleParseContext(repo, q, q) {
             if (it == "q-lengthen") RuleRef.to(soundRule) else throw RuleParseException("no such rule")

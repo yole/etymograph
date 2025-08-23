@@ -474,59 +474,44 @@ class PhonemeRuleTest : QBaseTest() {
 
     @Test
     fun phonemeEquality() {
-        val rule = parseRule(q, q, """
-            sound is 'a' and sound is same as previous vowel:
-            - sound disappears
-        """.trimIndent())
+        val text = "* a > 0 if sound is same as previous vowel"
+        val rule = parseRule(q, q, text)
         assertEquals("glawre", rule.apply(q.word("glaware"), emptyRepo).text)
-        assertEquals("sound is 'a' and sound is same as previous vowel", rule.logic.branches.single().condition.toEditableText())
+        assertEquals(text, rule.toEditableText(repo))
     }
 
     @Test
     fun phonemeEqualityNegated() {
-        val rule = parseRule(q, q, """
-            sound is 'a' and sound is not same as previous vowel:
-            - sound disappears
-        """.trimIndent())
+        val text = "* a > 0 if sound is not same as previous vowel"
+        val rule = parseRule(q, q, text)
         assertEquals("glaware", applyRule(rule, q.word("glaware")))
         assertEquals("glewre", applyRule(rule, q.word("gleware")))
-        assertEquals("sound is 'a' and sound is not same as previous vowel", rule.logic.branches.single().condition.toEditableText())
+        assertEquals(text, rule.toEditableText(repo))
     }
 
     @Test
     fun phonemeEqualityRelative() {
-        val rule = parseRule(q, q, """
-            sound is 'a' and next sound is same as second next sound:
-            - new sound is 'o'
-        """.trimIndent())
+        val text = "* a > o if next sound is same as second next sound"
+        val rule = parseRule(q, q, text)
         assertEquals("ottale", rule.apply(q.word("attale"), emptyRepo).text)
-        assertEquals("sound is 'a' and next sound is same as second next sound", rule.logic.branches.single().condition.toEditableText())
+        assertEquals(text, rule.toEditableText(repo))
     }
 
     @Test
     fun wordFinal() {
-        val rule = parseRule(q, q, """
-            sound is 'a' and next sound is word-final:
-            - sound disappears
-        """.trimIndent())
+        val rule = parseRule(q, q, "* a > 0 if next sound is word-final")
         assertEquals("glawr", rule.apply(q.word("glawar"), emptyRepo).text)
     }
 
     @Test
-    fun nonWordInital() {
-        val rule = parseRule(q, q, """
-            sound is non-word-initial 'w' and next sound is 'i':
-            - sound disappears
-        """.trimIndent())
+    fun nonWordInitial() {
+        val rule = parseRule(q, q, "* w > 0 / _i if sound is non-word-initial")
         assertEquals("wii", applyRule(rule, q.word("wiwi")))
     }
 
     @Test
     fun syllableFinal() {
-        val rule = parseRule(q, q, """
-            sound is syllable-final 'n':
-            - new sound is 'm'
-        """.trimIndent())
+        val rule = parseRule(q, q, "* n > m if sound is syllable-final")
         assertEquals("inomdem", applyRule(rule, q.word("inonden")))
     }
 
