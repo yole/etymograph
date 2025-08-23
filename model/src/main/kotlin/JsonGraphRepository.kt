@@ -898,11 +898,6 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                         arrayOf(ruleId, it.toEditableText())
                     } ?: arrayOf(ruleId)
                 }
-                is ChangePhonemeClassInstruction -> arrayOf(
-                    oldClass,
-                    newClass,
-                    relativeIndex.toString()
-                )
                 is InsertInstruction -> arrayOf(
                     arg,
                     relIndex.toString(),
@@ -996,9 +991,6 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                     PrependAppendInstruction(insnData.type, fromLanguage, insnData.args[0], insnData.comment)
                 InstructionType.Insert ->
                     InsertInstruction(insnData.args[0], insnData.args[1].toInt(), SeekTarget.parse(insnData.args[2], fromLanguage), insnData.comment)
-                InstructionType.ChangeSoundClass ->
-                    ChangePhonemeClassInstruction(insnData.args.getOrNull(2)?.toInt() ?: 0,
-                        insnData.args[0], insnData.args[1], insnData.comment)
                 InstructionType.PrependMorpheme, InstructionType.AppendMorpheme ->
                     MorphemeInstruction(insnData.type, insnData.args[0].toInt(), insnData.comment)
                 InstructionType.Spe ->

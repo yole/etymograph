@@ -19,7 +19,6 @@ enum class InstructionType(
     Disallow("disallow", "disallow", false),
     ChangeSound("new sound is", "new sound is '(.+)'", true),
     ChangeNextSound("new next sound is", "new next sound is '(.+)'", true),
-    ChangeSoundClass("becomes", RelativeOrdinals.toPattern() + "?(.+) becomes (.+)", true),
     SoundDisappears("sound disappears", RelativeOrdinals.toPattern() + "?sound disappears", true),
     Spe("SPE pattern", "", true);
 
@@ -113,8 +112,7 @@ open class RuleInstruction(val type: InstructionType, val arg: String, val comme
         InstructionType.ChangeEnding ->
             if (arg.isNotEmpty()) "-$arg" else ""
         InstructionType.ChangeSound, InstructionType.ChangeNextSound,
-        InstructionType.SoundDisappears,
-        InstructionType.ChangeSoundClass ->
+        InstructionType.SoundDisappears ->
             toSummaryTextPhonemic(condition)
         else -> ""
     }
@@ -128,7 +126,6 @@ open class RuleInstruction(val type: InstructionType, val arg: String, val comme
         var includeRelativePhoneme = true
         val changeSummary = when (type) {
             InstructionType.ChangeSound -> "$soundIsParameter > '${arg}'"
-            InstructionType.ChangeSoundClass -> (this as ChangePhonemeClassInstruction).oldClass + " > " + newClass
             InstructionType.SoundDisappears -> when (arg) {
                 "0" -> "$soundIsParameter > Ø"
                 "1" -> summarizeNextSound(condition).also {
@@ -271,7 +268,6 @@ open class RuleInstruction(val type: InstructionType, val arg: String, val comme
                             MorphemeInstruction(type, word.id, comment)
                         }
                         InstructionType.Insert -> InsertInstruction.parse(context.fromLanguage, match, comment)
-                        InstructionType.ChangeSoundClass -> ChangePhonemeClassInstruction.parse(match, comment)
                         InstructionType.SoundDisappears -> RuleInstruction(type, RelativeOrdinals.parseMatch(match, 1).toString(), comment)
                         else -> RuleInstruction(type, arg, comment)
                     }
@@ -583,59 +579,6 @@ class MorphemeInstruction(type: InstructionType, val morphemeId: Int, comment: S
             "${word.text.trimEnd('-')}-"
         else
             "-${word.text.trimStart('-')}"
-    }
-}
-
-class ChangePhonemeClassInstruction(val relativeIndex: Int, val oldClass: String, val newClass: String, comment: String?)
-    : RuleInstruction(InstructionType.ChangeSoundClass, "", comment)
-{
-    override fun apply(word: Word, phonemes: PhonemeIterator, graph: GraphRepository, trace: RuleTrace?) {
-        replacePhonemeClass(phonemes, oldClass, newClass, trace)
-    }
-
-    private fun replacePhonemeClass(phonemes: PhonemeIterator, fromClass: String, toClass: String, trace: RuleTrace?): Boolean {
-        val phonemeText = phonemes.atRelative(relativeIndex)
-        val phoneme = phonemes.language.phonemes.find { phonemeText == it.effectiveSound }
-        if (phoneme == null) {
-            trace?.logInstruction { "replace phoneme class: no phoneme found for $phonemeText" }
-            return false
-        }
-        val newClasses = phoneme.classes.toMutableSet()
-        if (fromClass !in newClasses) {
-            trace?.logInstruction { "replace phoneme class: classes of $phonemeText ($newClasses) do not match $fromClass" }
-            return false
-        }
-        newClasses.remove(fromClass)
-        newClasses.addAll(toClass.split(' '))
-        val newPhoneme = phonemes.language.phonemes.singleOrNull { it.classes == newClasses }
-        if (newPhoneme == null) {
-            trace?.logInstruction { "replace phoneme class: no phoneme with classes $newClasses" }
-            return false
-        }
-        phonemes.replaceAtRelative(relativeIndex, newPhoneme.graphemes[0])
-        return true
-    }
-
-    override fun toRichText(graph: GraphRepository): RichText {
-        val relIndex = if (relativeIndex == 0) "" else RelativeOrdinals.toString(relativeIndex) + " "
-        return relIndex.rich() + oldClass.rich(emph = true) + " becomes ".rich() + newClass.rich(emph = true)
-    }
-
-    override fun reverseApplyToPhoneme(phonemes: PhonemeIterator, condition: RuleCondition): List<String>? {
-        val newClassRef = phonemes.language.phonemeClassByName(newClass) ?: return null
-        if (newClassRef.matchesCurrent(phonemes)) {
-            val newPhonemes = phonemes.clone()
-            if (!replacePhonemeClass(newPhonemes, newClass, oldClass, null)) return null
-            return listOf(newPhonemes.result())
-        }
-        return emptyList()
-    }
-
-    companion object {
-        fun parse(match: MatchResult, comment: String?): ChangePhonemeClassInstruction {
-            val relativeIndex = RelativeOrdinals.parseMatch(match, 1)
-            return ChangePhonemeClassInstruction(relativeIndex, match.groupValues[2], match.groupValues[3], comment)
-        }
     }
 }
 

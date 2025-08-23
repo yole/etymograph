@@ -209,55 +209,6 @@ class PhonemeRuleTest : QBaseTest() {
     }
 
     @Test
-    fun changePhonemeClass() {
-        val rule = parseRule(q, q, """
-            sound is voiceless stop and next sound is nasal:
-            - voiceless becomes voiced
-        """.trimIndent())
-        assertEquals("utubnu", rule.apply(q.word("utupnu"), emptyRepo).text)
-        assertEquals("voiceless > voiced before nasal", rule.toSummaryText(repo))
-        assertTrue(rule.refersToPhoneme(q.phonemes.first { "p" in it.graphemes }))
-        assertFalse(rule.refersToPhoneme(q.phonemes.first { "b" in it.graphemes }))
-
-        val ruleInstruction = rule.logic.branches[0].instructions[0]
-        assertEquals("voiceless becomes voiced", ruleInstruction.toEditableText(repo))
-
-        val data = ruleInstruction.toSerializedFormat()
-        val deserialized = JsonGraphRepository.ruleInstructionFromSerializedFormat(repo, q, q, data)
-        assertEquals("voiceless becomes voiced", deserialized.toEditableText(repo))
-    }
-
-    @Test
-    fun changePhonemeClassMultiple() {
-        q.phonemes = listOf(
-            phoneme("a", "short back open vowel"),
-            phoneme("á", "long back open vowel"),
-            phoneme("ã", "long back open nasal vowel")
-        )
-        val rule = parseRule(q, q, """
-            sound is 'a':
-            - short becomes long nasal
-        """.trimIndent())
-        assertEquals("ãi", applyRule(rule, q.word("ai")))
-    }
-
-    @Test
-    fun changePreviousPhonemeClass() {
-        val rule = parseRule(q, q, """
-            sound is nasal and previous sound is voiceless stop:
-            - previous voiceless becomes voiced
-        """.trimIndent())
-        assertEquals("utubnu", rule.apply(q.word("utupnu"), emptyRepo).text)
-
-        val ruleInstruction = rule.logic.branches[0].instructions[0]
-        assertEquals("previous voiceless becomes voiced", ruleInstruction.toEditableText(repo))
-
-        val data = ruleInstruction.toSerializedFormat()
-        val deserialized = JsonGraphRepository.ruleInstructionFromSerializedFormat(emptyRepo, q, q, data)
-        assertEquals("previous voiceless becomes voiced", deserialized.toEditableText(repo))
-    }
-
-    @Test
     fun stressedSoundCondition() {
         val rule = parseRule(q, q, """
             sound is 'o' and previous sound is 'w' and sound is stressed:
