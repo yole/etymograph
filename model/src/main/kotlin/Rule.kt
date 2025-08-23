@@ -372,7 +372,7 @@ class Rule(
             if (segments != null) {
                 it.segments = if (normalizeSegments) Word.normalizeSegments(segments) else segments
             }
-            else if (sourceSegments != null) {
+            else if (sourceSegments != null && word.text == text) {
                 it.segments = sourceSegments
             }
             it.isPhonemic = phonemic
