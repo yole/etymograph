@@ -3,7 +3,8 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 plugins {
     id 'java'
     id 'org.jetbrains.kotlin.jvm'
-    id 'org.jetbrains.kotlin.plugin.spring' version '2.1.0'
+    id 'org.jetbrains.kotlin.plugin.spring' version '2.2.0'
+    id 'org.jetbrains.kotlin.plugin.serialization' version '2.2.0'
     id 'org.springframework.boot' version '3.2.4'
     id 'io.spring.dependency-management' version '1.0.9.RELEASE'
 }
@@ -13,6 +14,7 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib"
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.9.0"
     testImplementation group: 'junit', name: 'junit', version: '4.13.1'
     testImplementation testFixtures(project(":model"))
 }

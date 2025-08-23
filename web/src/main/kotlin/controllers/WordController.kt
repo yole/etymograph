@@ -1,5 +1,6 @@
 package ru.yole.etymograph.web.controllers
 
+import kotlinx.serialization.Serializable
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.server.ResponseStatusException
@@ -8,14 +9,15 @@ import ru.yole.etymograph.web.*
 
 const val explicitStressMark = 'ˈ'
 
+@Serializable
 data class WordRefViewModel(
     val id: Int,
     val text: String,
     val language: String,
     val displayLanguage: String,
     val gloss: String?,
-    val homonym: Boolean,
-    val reconstructed: Boolean
+    val homonym: Boolean = false,
+    val reconstructed: Boolean = false
 )
 
 data class ParseCandidateViewModel(

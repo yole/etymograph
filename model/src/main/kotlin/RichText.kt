@@ -1,5 +1,8 @@
 package ru.yole.etymograph
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class RichTextFragment(
     val text: String,
     val tooltip: String? = null,
