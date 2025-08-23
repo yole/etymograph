@@ -50,7 +50,7 @@ open class RuleInstruction(val type: InstructionType, val arg: String, val comme
                 word.text.dropLast(condition.parameter!!.length)
             }
             return word.derive(textWithoutEnding + arg,
-                newSegment = WordSegment(textWithoutEnding.length, arg.length, rule.addedCategories, null, rule))
+                newSegment = WordSegment.create(textWithoutEnding.length, arg.length, rule.addedCategories, null, rule))
         }
         return word
     }

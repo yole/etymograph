@@ -16,13 +16,20 @@ class WordSegment(
         if (firstCharacter < 0) {
             throw IllegalArgumentException("Invalid segment start index")
         }
-        if (length < 0) {
+        if (length <= 0) {
             throw IllegalArgumentException("Invalid segment length")
         }
     }
 
     override fun toString(): String {
         return "[$firstCharacter,$length]"
+    }
+
+    companion object {
+        fun create(firstCharacter: Int, length: Int, category: String?, sourceWord: Word?, sourceRule: Rule?): WordSegment? {
+            if (length == 0) return null
+            return WordSegment(firstCharacter, length, category, sourceWord, sourceRule)
+        }
     }
 }
 
