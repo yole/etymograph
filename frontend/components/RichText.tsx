@@ -19,7 +19,7 @@ function RichTextFragment(params: { fragment: RichTextFragmentModel }) {
         </Link>
     }
 
-    const textWithTooltip = (params.fragment.tooltip !== null)
+    const textWithTooltip = params.fragment.tooltip
         ? <span className="richTextTooltip" title={params.fragment.tooltip}>{params.fragment.text}</span>
         : params.fragment.text
 
