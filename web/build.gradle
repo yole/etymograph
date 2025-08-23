@@ -14,7 +14,7 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib"
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.9.0"
+    implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3"
     testImplementation group: 'junit', name: 'junit', version: '4.13.1'
     testImplementation testFixtures(project(":model"))
 }
