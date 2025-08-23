@@ -1351,16 +1351,14 @@
             {
                 "instructions": [
                     {
-                        "type": "SoundDisappears",
+                        "type": "Spe",
                         "args": [
-                            ""
+                            "V > 0"
                         ]
                     }
                 ],
                 "condition": {
-                    "type": "relPhoneme",
-                    "cls": "vowel",
-                    "relative": false
+                    "type": "otherwise"
                 }
             }
         ]
@@ -3925,61 +3923,6 @@
             }
         ],
         "notes": "Ringe 2014:199: The stressed ǣ existed only in West Saxon dialects at the time. The results of this sound change were mostly levelled out."
-    },
-    {
-        "id": 2618,
-        "name": "pre-oe-awwj",
-        "fromLang": "OE",
-        "toLang": "OE",
-        "branches": [
-            {
-                "instructions": [
-                    {
-                        "type": "ChangeSound",
-                        "args": [
-                            "u"
-                        ]
-                    },
-                    {
-                        "type": "SoundDisappears",
-                        "args": [
-                            "1"
-                        ]
-                    }
-                ],
-                "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "relPhoneme",
-                            "parameter": "w",
-                            "relative": false
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": -1,
-                            "parameter": "a"
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": 1,
-                            "parameter": "w"
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": 2,
-                            "parameter": "j"
-                        }
-                    ]
-                }
-            }
-        ],
-        "sourceRefs": [
-            {
-                "pubId": 5,
-                "refText": "53"
-            }
-        ]
     },
     {
         "id": 2953,
