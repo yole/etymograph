@@ -51,12 +51,17 @@ fun verify(repo: JsonGraphRepository, goldPath: String) {
         gold[Key(id.toInt(), ruleName)] = result to classSet
     }
 
+    var verified = 0
     processParadigms(repo) { word, expected, rule ->
         val goldData = gold[Key(word.id, rule.name)]
         if (goldData != null && goldData.first != expected && goldData.second == word.classes.toSet()) {
             println("Changed result for rule ${rule.name} on word ${word.text}: previous ${goldData.first}, now $expected")
         }
+        else {
+            verified++
+        }
     }
+    println("Successfully verified $verified forms")
 }
 
 fun main(args: Array<String>) {
