@@ -19,7 +19,6 @@
             "graphemes": [
                 "á"
             ],
-            "sound": "aː",
             "classes": [
                 "long",
                 "open",
@@ -47,7 +46,6 @@
             "graphemes": [
                 "ó"
             ],
-            "sound": "oː",
             "classes": [
                 "long",
                 "close-mid",
@@ -75,7 +73,6 @@
             "graphemes": [
                 "ú"
             ],
-            "sound": "uː",
             "classes": [
                 "long",
                 "close",
@@ -103,7 +100,6 @@
             "graphemes": [
                 "í"
             ],
-            "sound": "iː",
             "classes": [
                 "long",
                 "close",
@@ -131,7 +127,6 @@
             "graphemes": [
                 "é"
             ],
-            "sound": "eː",
             "classes": [
                 "long",
                 "close-mid",
