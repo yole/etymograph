@@ -191,6 +191,14 @@ class SpePatternTest : QBaseTest() {
     }
 
     @Test
+    fun replaceAlternativeZero() {
+        val text = "{b|g} > {v|0}"
+        val pattern = SpePattern.parse(q, q, text)
+        assertEquals("va", pattern.apply(q, "bag"))
+        assertEquals(text, pattern.toString())
+    }
+
+    @Test
     fun longContext() {
         val pattern = SpePattern.parse(q, q, "i > e / _CC")
         assertEquals("dir", pattern.apply(q, "dir"))

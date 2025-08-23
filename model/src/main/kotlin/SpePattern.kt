@@ -261,8 +261,13 @@ class SpeAlternativeNode(val choices: List<List<SpeNode>>) : SpeTargetNode() {
             if (index > 0) {
                 result += "|"
             }
-            result += choice.joinToRichText("") {
-                it.toRichText(language)
+            if (choice.isEmpty()) {
+                result += "0"
+            }
+            else {
+                result += choice.joinToRichText("") {
+                    it.toRichText(language)
+                }
             }
         }
         result += "}"
