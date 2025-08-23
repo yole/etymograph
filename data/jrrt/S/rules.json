@@ -1571,113 +1571,29 @@
             {
                 "instructions": [
                     {
-                        "type": "ChangeSound",
-                        "args": [
-                            "e"
-                        ]
-                    }
-                ],
-                "condition": {
-                    "type": "relPhoneme",
-                    "parameter": "a",
-                    "relative": false
-                }
-            },
-            {
-                "instructions": [
-                    {
-                        "type": "ChangeSound",
-                        "args": [
-                            "e"
-                        ]
-                    }
-                ],
-                "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "relPhoneme",
-                            "parameter": "o",
-                            "relative": false
-                        },
-                        {
+                        "type": "Spe",
+                        "condition": {
                             "type": "syllableIndex",
                             "matchIndex": -1,
                             "negated": true
-                        }
-                    ]
-                }
-            },
-            {
-                "instructions": [
-                    {
-                        "type": "ChangeSound",
+                        },
                         "args": [
-                            "y"
+                            "{a|o|u} > {e|e|y}"
+                        ]
+                    },
+                    {
+                        "type": "Spe",
+                        "condition": {
+                            "type": "syllableIndex",
+                            "matchIndex": -1
+                        },
+                        "args": [
+                            "{a|e|é|o|u} > {e|i|í|y|y}"
                         ]
                     }
                 ],
                 "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "relPhoneme",
-                            "parameter": "o",
-                            "relative": false
-                        },
-                        {
-                            "type": "syllableIndex",
-                            "matchIndex": -1
-                        }
-                    ]
-                }
-            },
-            {
-                "instructions": [
-                    {
-                        "type": "ChangeSound",
-                        "args": [
-                            "i"
-                        ]
-                    }
-                ],
-                "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "relPhoneme",
-                            "parameter": "e",
-                            "relative": false
-                        },
-                        {
-                            "type": "syllableIndex",
-                            "matchIndex": -1
-                        }
-                    ]
-                }
-            },
-            {
-                "instructions": [
-                    {
-                        "type": "ChangeSound",
-                        "args": [
-                            "í"
-                        ]
-                    }
-                ],
-                "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "relPhoneme",
-                            "parameter": "é",
-                            "relative": false
-                        },
-                        {
-                            "type": "syllableIndex",
-                            "matchIndex": -1
-                        }
-                    ]
+                    "type": "otherwise"
                 }
             }
         ],
@@ -1758,254 +1674,39 @@
             {
                 "instructions": [
                     {
-                        "type": "ChangeSound",
-                        "args": [
-                            "e"
-                        ]
-                    }
-                ],
-                "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "relPhoneme",
-                            "parameter": "a",
-                            "relative": false
-                        },
-                        {
+                        "type": "Spe",
+                        "condition": {
                             "type": "syllableIndex",
                             "matchIndex": -1,
                             "negated": true
-                        }
-                    ]
-                }
-            },
-            {
-                "instructions": [
-                    {
-                        "type": "ChangeSound",
+                        },
                         "args": [
-                            "o"
+                            "{a|o|u} > {e|e|y}"
                         ]
                     },
                     {
-                        "type": "ChangeNextSound",
-                        "args": [
-                            "e"
-                        ]
-                    }
-                ],
-                "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "relPhoneme",
-                            "parameter": "a",
-                            "relative": false
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": 1,
-                            "parameter": "u"
-                        },
-                        {
+                        "type": "Spe",
+                        "condition": {
                             "type": "syllableIndex",
                             "matchIndex": -1
-                        }
-                    ]
-                }
-            },
-            {
-                "instructions": [
-                    {
-                        "type": "ChangeSound",
-                        "args": [
-                            "ai"
-                        ]
-                    }
-                ],
-                "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "relPhoneme",
-                            "parameter": "a",
-                            "relative": false
                         },
-                        {
-                            "type": "syllableIndex",
-                            "matchIndex": -1
-                        }
-                    ]
-                }
-            },
-            {
-                "instructions": [
-                    {
-                        "type": "ChangeSound",
                         "args": [
-                            "ai"
+                            "{au|a|á|o|e|é} > {oe|ai|ai|y|i|í}"
                         ]
-                    }
-                ],
-                "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "relPhoneme",
-                            "parameter": "á",
-                            "relative": false
-                        },
-                        {
-                            "type": "syllableIndex",
-                            "matchIndex": -1
-                        }
-                    ]
-                }
-            },
-            {
-                "instructions": [
+                    },
                     {
-                        "type": "ChangeSound",
-                        "args": [
-                            "e"
-                        ]
-                    }
-                ],
-                "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "relPhoneme",
-                            "parameter": "o",
-                            "relative": false
-                        },
-                        {
-                            "type": "syllableIndex",
-                            "matchIndex": -1,
-                            "negated": true
-                        }
-                    ]
-                }
-            },
-            {
-                "instructions": [
-                    {
-                        "type": "ChangeSound",
-                        "args": [
-                            "y"
-                        ]
-                    }
-                ],
-                "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "relPhoneme",
-                            "parameter": "o",
-                            "relative": false
-                        },
-                        {
-                            "type": "syllableIndex",
-                            "matchIndex": -1
-                        }
-                    ]
-                }
-            },
-            {
-                "instructions": [
-                    {
-                        "type": "ChangeSound",
-                        "args": [
-                            "ui"
-                        ]
-                    }
-                ],
-                "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "relPhoneme",
-                            "parameter": "ó",
-                            "relative": false
-                        },
-                        {
+                        "type": "Spe",
+                        "condition": {
                             "type": "syllableCount",
                             "expectCount": 1
-                        }
-                    ]
-                }
-            },
-            {
-                "instructions": [
-                    {
-                        "type": "ChangeSound",
+                        },
                         "args": [
-                            "ui"
+                            "{ó|ú} > ui"
                         ]
                     }
                 ],
                 "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "relPhoneme",
-                            "parameter": "ú",
-                            "relative": false
-                        },
-                        {
-                            "type": "syllableCount",
-                            "expectCount": 1
-                        }
-                    ]
-                }
-            },
-            {
-                "instructions": [
-                    {
-                        "type": "ChangeSound",
-                        "args": [
-                            "i"
-                        ]
-                    }
-                ],
-                "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "relPhoneme",
-                            "parameter": "e",
-                            "relative": false
-                        },
-                        {
-                            "type": "syllableIndex",
-                            "matchIndex": -1
-                        }
-                    ]
-                }
-            },
-            {
-                "instructions": [
-                    {
-                        "type": "ChangeSound",
-                        "args": [
-                            "í"
-                        ]
-                    }
-                ],
-                "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "relPhoneme",
-                            "parameter": "é",
-                            "relative": false
-                        },
-                        {
-                            "type": "syllableIndex",
-                            "matchIndex": -1
-                        }
-                    ]
+                    "type": "otherwise"
                 }
             }
         ],
