@@ -2123,59 +2123,26 @@
             {
                 "instructions": [
                     {
-                        "type": "ChangeSound",
+                        "type": "Spe",
                         "args": [
-                            "i"
+                            "j > i / #_"
                         ]
-                    }
-                ],
-                "condition": {
-                    "type": "relPhoneme",
-                    "cls": "word-initial",
-                    "parameter": "j",
-                    "relative": false
-                }
-            },
-            {
-                "instructions": [
+                    },
                     {
-                        "type": "ChangeSound",
+                        "type": "Spe",
                         "args": [
-                            "f"
+                            "v > f / _#"
                         ]
-                    }
-                ],
-                "condition": {
-                    "type": "relPhoneme",
-                    "cls": "word-final",
-                    "parameter": "v",
-                    "relative": false
-                }
-            },
-            {
-                "instructions": [
+                    },
                     {
-                        "type": "ChangeSound",
+                        "type": "Spe",
                         "args": [
-                            "w"
+                            "u > w / a_#"
                         ]
                     }
                 ],
                 "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "relPhoneme",
-                            "cls": "word-final",
-                            "parameter": "u",
-                            "relative": false
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": -1,
-                            "parameter": "a"
-                        }
-                    ]
+                    "type": "otherwise"
                 }
             }
         ]
