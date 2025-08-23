@@ -3,6 +3,7 @@ import {allowEdit, fetchAllGraphs, fetchBackend} from "@/api";
 import {useRouter} from "next/router";
 import {useContext} from "react";
 import {GlobalStateContext} from "@/components/Contexts";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 export const config = {
   unstable_runtimeJS: true
@@ -19,9 +20,8 @@ export default function Home(props) {
   const router = useRouter()
   const graph = router.query.graph
   const globalState = useContext(GlobalStateContext)
-  const theGraph = globalState.graphs.find((g) => g.id === graph)
   return <>
-    <h2><small><Link href="/">Etymograph</Link></small>{' > '}{theGraph.name}</h2>
+      <Breadcrumbs/>
     <ul>
       {languages.map(l => <li key={l.shortName}><Link href={`${graph}/language/${l.shortName}`}>{l.name}</Link></li>)}
     </ul>

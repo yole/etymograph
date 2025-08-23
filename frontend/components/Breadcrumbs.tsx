@@ -52,17 +52,17 @@ export default function Breadcrumbs(props: BreadcrumbsProps) {
                 {theGraph === undefined && <><Link href={`/${graph}`}>Etymograph</Link> {'> '}</>}
                 {theGraph !== undefined && <>
                     <Link href="/">Etymograph</Link>{' > '}
-                    <Link href={`/${graph}`}>{theGraph.name}</Link>{' > '}
+                    <Link href={`/${graph}`}>{theGraph.name}</Link>
                 </>}
                 {props.langId !== undefined && <>
-                    <Link href={`/${graph}/language/${props.langId}`}>{langName}</Link> {'> '}
+                    {' > '}<Link href={`/${graph}/language/${props.langId}`}>{langName}</Link>
                 </>}
                 {props.steps !== undefined && props.steps.map(s => <>
-                    <Link href={s.url}>{s.title}</Link> {'> '}
+                    {' > '}<Link href={s.url}>{s.title}</Link>
                 </>)}
             </small>
-            {props.title}
-            {props.children}
+            {props.title && ' > ' + props.title}
+            {props.children && <>{' > '}{props.children}</>}
         </h2>
         {allowEdit() && <form onSubmit={onSubmit} style={{marginLeft: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem'}}>
             <input ref={inputRef} type="search" name="q" aria-label="Search words" dir="auto"
