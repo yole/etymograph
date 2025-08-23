@@ -1,4 +1,4 @@
-import {callApiAndRefresh, fetchBackend, fetchPathsForAllGraphs, reapplyRuleSequence} from "@/api";
+import {fetchBackend, fetchPathsForAllGraphs, reapplyRuleSequence} from "@/api";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import {DerivationViewModel, ReapplyResultViewModel, SequenceDerivationsViewModel} from "@/models";
 import WordLink from "@/components/WordLink";
@@ -143,8 +143,10 @@ export default function RuleSequence(params) {
             Show derivations
         </div>
 
-        <h3>Consistent Derivations</h3>
-        <DerivationListComponent derivations={consistent} showExpectedWord={false} showDerivations={showDerivations}/>
+        {consistent.length > 0 && <>
+            <h3>Consistent Derivations</h3>
+            <DerivationListComponent derivations={consistent} showExpectedWord={false} showDerivations={showDerivations}/>
+        </>}
 
         {spiGroups.map(group => <>
             <h3>{group.title}</h3>
