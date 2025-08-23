@@ -104,7 +104,7 @@ class Word(
 
     fun asPhonemic(): Word {
         if (isPhonemic) return this
-        val phonemicText = language.cachePhonemicText(text) {
+        val (phonemicText, newSegments) = language.cachePhonemicText(text, segments) {
             val pronunciationRule = language.pronunciationRule?.resolve()
             if (pronunciationRule != null) {
                 val it = PhonemeIterator(this, null, resultPhonemic = true)
@@ -112,7 +112,7 @@ class Word(
                     pronunciationRule.applyToPhoneme(this, it, InMemoryGraphRepository.EMPTY)
                     if (!it.advance()) break
                 }
-                it.result()
+                it.result() to remapSegments(it, this.segments)
             }
             else {
                 buildString {
@@ -120,22 +120,24 @@ class Word(
                     language.orthoPhonemeLookup.iteratePhonemes(lowerText) { startIndex, endIndex, phoneme ->
                         append(phoneme?.effectiveSound ?: lowerText.substring(startIndex, endIndex))
                     }
-                }
+                } to this.segments
             }
         }
 
-        return derive(phonemicText, id = id, phonemic = true)
+        return derive(phonemicText, id = id, phonemic = true, segments = newSegments)
     }
 
     fun asOrthographic(): Word {
         if (!isPhonemic) return this
         val orthoRule = language.orthographyRule?.resolve()
+        var wordSegments = segments
         val orthoText: String = if (orthoRule != null) {
             val it = PhonemeIterator(this, null, resultPhonemic = false)
             while (true) {
                 orthoRule.applyToPhoneme(this, it, InMemoryGraphRepository.EMPTY)
                 if (!it.advance()) break
             }
+            wordSegments = remapSegments(it, wordSegments)
             it.result()
         }
         else {
@@ -145,7 +147,7 @@ class Word(
                 }
             }
         }
-        return derive(orthoText, id = id, phonemic = false)
+        return derive(orthoText, id = id, phonemic = false, segments = wordSegments)
     }
 
     fun asOrthographic(asLanguage: Language): Word {

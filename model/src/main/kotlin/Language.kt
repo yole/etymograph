@@ -242,8 +242,12 @@ class Language(val name: String, val shortName: String) {
         }
     }
 
-    fun cachePhonemicText(text: String, callback: () -> String): String {
-        return phonemicCache.getOrPut(text, callback)
+    fun cachePhonemicText(text: String, segments: List<WordSegment>?,
+                          callback: () -> Pair<String, List<WordSegment>?>): Pair<String, List<WordSegment>?> {
+        if (segments == null) {
+            return phonemicCache.getOrPut(text) { callback().first } to null
+        }
+        return callback()
     }
 
     fun isNormalizedEqual(ruleProducedWord: Word, attestedWord: Word): Boolean {

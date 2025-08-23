@@ -41,6 +41,19 @@ class OrthographyTest : QBaseTest() {
         assertEquals("iayn", iayn.asOrthographic().text)
     }
 
+    @Test
+    fun orthographyRuleRemapSegments() {
+        val rule = parseRule(ce, ce, "* ts > z")
+        ce.orthographyRule = RuleRef.to(rule)
+        val ats = ce.word("ats").apply {
+            isPhonemic = true
+            segments = listOf(WordSegment(1, 2, null, null, null, false))
+        }
+        val ortho = ats.asOrthographic()
+        assertEquals("az", ortho.text)
+        assertEquals(1, ortho.segments!![0].length)
+    }
+
     @Test fun pronunciationRule() {
         ce.phonemes = listOf(
             phoneme(listOf("y"), "j", "semivowel"),
@@ -50,5 +63,17 @@ class OrthographyTest : QBaseTest() {
         ce.pronunciationRule = RuleRef.to(rule)
         val iayn = ce.word("iayn")
         assertEquals("jajn", iayn.asPhonemic().text)
+    }
+
+    @Test
+    fun pronunciationRuleRemapSegments() {
+        val rule = parseRule(ce, ce, "* ts > z")
+        ce.pronunciationRule = RuleRef.to(rule)
+        val ats = ce.word("ats").apply {
+            segments = listOf(WordSegment(1, 2, null, null, null, false))
+        }
+        val phono = ats.asPhonemic()
+        assertEquals("az", phono.text)
+        assertEquals(1, phono.segments!![0].length)
     }
 }
