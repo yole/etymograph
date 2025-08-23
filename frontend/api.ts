@@ -365,3 +365,20 @@ export async function callApiAndRefresh(
         setErrorText(jr.message)
     }
 }
+
+
+export async function searchWords(graph: string, params: { q: string, lang?: string, limit?: number, offset?: number, mode?: 'auto'|'exact'|'prefix' }) {
+    const usp = new URLSearchParams()
+    usp.set('q', params.q)
+    if (params.lang) usp.set('lang', params.lang)
+    if (params.limit != null) usp.set('limit', String(params.limit))
+    if (params.offset != null) usp.set('offset', String(params.offset))
+    if (params.mode) usp.set('mode', params.mode)
+    const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}${graph}/search?${usp.toString()}`
+    const res = await fetch(url, { headers: { 'Accept': 'application/json'} })
+    if (res.status !== 200) {
+        return { props: { loaderData: { totalExact: 0, totalPrefix: 0, matches: [], usedMode: 'exact' } } }
+    }
+    const loaderData = await res.json()
+    return { props: { loaderData } }
+}
