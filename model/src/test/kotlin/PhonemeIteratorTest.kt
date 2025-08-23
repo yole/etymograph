@@ -66,4 +66,12 @@ class PhonemeIteratorTest : QBaseTest() {
         val it = PhonemeIterator(w, null)
         assertEquals("kalma", it.result())
     }
+
+    @Test
+    fun remapIndex() {
+        val it = PhonemeIterator(q.word("calma"), null)
+        it.deleteAtRelative(4)
+        val index = it.mapIndex(5)
+        assertEquals(4, index)
+    }
 }

@@ -350,7 +350,11 @@ class PhonemeIterator {
             return -1
         }
         if (index == map.size) {
-            return map[index - 1] + 1
+            var lastIndex = index - 1
+            while (lastIndex > 0 && map[lastIndex] == -1) {
+                lastIndex--
+            }
+            return map[lastIndex] + 1
         }
         if (nextValid) {
             var validIndex = index
