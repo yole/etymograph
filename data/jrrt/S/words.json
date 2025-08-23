@@ -823,7 +823,10 @@
         "sourceRefs": [
             {
                 "pubId": 1,
-                "refText": "90; https://eldamo.org/content/words/word-1284836923.html"
+                "refText": "90"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-1284836923.html"
             }
         ]
     },

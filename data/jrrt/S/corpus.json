@@ -527,117 +527,140 @@
     },
     {
         "id": 1375,
-        "text": " i-Veleglind i eithro en estar i-Chîn Húrin\ni glinn hen agorer Edain mi Velerian, ach hí in Ellath îr ed epholar\nar-phent Rían Tuor-na: man agorech?\nsí il chem en i Naugrim en ir Ellath thor den ammen\nTúrin ion Húrin Túramarth\nar Nienor sel Morwen Níniel \ni chîn Húrin\nos i Veleglinn i edain agorer vi Veleriann\nar in Ellath epholar eno vi Eressai",
+        "text": "i-Veleglind i eithro en estar i-Chîn Húrin\ni glinn hen agorer Edain mi Velerian, ach hí in Ellath îr ed epholar\nar-phent Rían Tuor-na: man agorech?\nsí il chem en i Naugrim en ir Ellath thor den ammen\nTúrin ion Húrin Túramarth\nar Nienor sel Morwen Níniel \ni chîn Húrin\nos i Veleglinn i edain agorer vi Veleriann\nar in Ellath epholar eno vi Eressai",
         "title": "Turin Wrapper",
         "words": [
             {
-                "index": 1,
+                "index": 0,
                 "id": 1378
             },
             {
-                "index": 3,
+                "index": 2,
                 "id": 1385
             },
             {
-                "index": 5,
+                "index": 4,
                 "id": 1491
             },
             {
-                "index": 6,
+                "index": 5,
                 "id": 1386
             },
             {
-                "index": 10,
+                "index": 9,
                 "id": 1389
             },
             {
-                "index": 12,
+                "index": 11,
                 "id": 1388
             },
             {
-                "index": 14,
+                "index": 13,
                 "id": 1492
             },
             {
-                "index": 15,
+                "index": 14,
                 "id": 1494
             },
             {
-                "index": 18,
+                "index": 17,
                 "id": 1495
             },
             {
-                "index": 22,
+                "index": 21,
                 "id": 1522
             },
             {
-                "index": 23,
+                "index": 22,
                 "id": 1514
             },
             {
-                "index": 24,
+                "index": 23,
                 "id": 1516
             },
             {
-                "index": 25,
+                "index": 24,
                 "id": 1519
             },
             {
-                "index": 29,
+                "index": 28,
                 "id": 1906
             },
             {
-                "index": 30,
+                "index": 29,
                 "id": 1895
             },
             {
-                "index": 32,
+                "index": 31,
                 "id": 1502
             },
             {
-                "index": 39,
+                "index": 38,
                 "id": 1377
             },
             {
-                "index": 40,
+                "index": 39,
                 "id": 1396
             },
             {
-                "index": 42,
+                "index": 41,
                 "id": 1503
             },
             {
-                "index": 45,
+                "index": 44,
                 "id": 1390
             },
             {
-                "index": 46,
+                "index": 45,
                 "id": 1497
             },
             {
-                "index": 47,
+                "index": 46,
                 "id": 1509
             },
             {
-                "index": 51,
+                "index": 50,
                 "id": 1376
             },
             {
-                "index": 59,
+                "index": 58,
                 "id": 1501
             },
             {
-                "index": 62,
+                "index": 61,
                 "id": 1495
             },
             {
-                "index": 66,
+                "index": 65,
                 "id": 1512
+            },
+            {
+                "index": 1,
+                "id": 1319
+            },
+            {
+                "index": 7,
+                "id": 1237
+            },
+            {
+                "index": 30,
+                "id": 1237
+            },
+            {
+                "index": 42,
+                "id": 1358
+            },
+            {
+                "index": 48,
+                "id": 1237
             }
         ],
         "sourceRefs": [
             {
                 "refText": "VT50:5"
+            },
+            {
+                "refText": "https://eldamo.org/content/words/word-1397828061.html"
             }
         ]
     },
