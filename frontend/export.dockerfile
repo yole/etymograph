@@ -3,4 +3,5 @@ WORKDIR /app
 COPY . .
 RUN npm ci
 RUN grep -rli --include \*.js 'unstable_runtimeJS: true' pages | xargs -i@ sed -i 's/unstable_runtimeJS: true/unstable_runtimeJS: false/g' @
+RUN rm pages/[graph]/search.tsx
 CMD npx next build && cp -r /app/out /export
