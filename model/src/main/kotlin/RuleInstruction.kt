@@ -18,7 +18,6 @@ enum class InstructionType(
     ApplyClass("mark word as", "mark word as (.*)", true),
     Disallow("disallow", "disallow", false),
     ChangeSound("new sound is", "new sound is '(.+)'", true),
-    ChangeNextSound("new next sound is", "new next sound is '(.+)'", true),
     SoundDisappears("sound disappears", RelativeOrdinals.toPattern() + "?sound disappears", true),
     Spe("SPE pattern", "", true);
 
@@ -84,7 +83,6 @@ open class RuleInstruction(val type: InstructionType, val arg: String, val comme
     open fun apply(word: Word, phonemes: PhonemeIterator, graph: GraphRepository, trace: RuleTrace? = null) {
         when (type) {
             InstructionType.ChangeSound -> phonemes.replace(arg)
-            InstructionType.ChangeNextSound -> phonemes.replaceAtRelative(1, arg)
             InstructionType.SoundDisappears -> phonemes.deleteAtRelative(if (arg.isEmpty()) 0 else arg.toInt())
             InstructionType.NoChange -> Unit
             else -> throw IllegalStateException("Can't apply word instruction to individual phoneme")
@@ -111,7 +109,7 @@ open class RuleInstruction(val type: InstructionType, val arg: String, val comme
     open fun toSummaryText(graph: GraphRepository, condition: RuleCondition): String? = when(type) {
         InstructionType.ChangeEnding ->
             if (arg.isNotEmpty()) "-$arg" else ""
-        InstructionType.ChangeSound, InstructionType.ChangeNextSound,
+        InstructionType.ChangeSound,
         InstructionType.SoundDisappears ->
             toSummaryTextPhonemic(condition)
         else -> ""
@@ -132,9 +130,6 @@ open class RuleInstruction(val type: InstructionType, val arg: String, val comme
                     includeRelativePhoneme = false
                 }
                 else -> null
-            }
-            InstructionType.ChangeNextSound -> summarizeNextSound(condition).also {
-                includeRelativePhoneme = false
             }
             else -> return null
         }
@@ -226,7 +221,7 @@ open class RuleInstruction(val type: InstructionType, val arg: String, val comme
 
     open fun refersToPhoneme(phoneme: Phoneme): Boolean {
         return when (type) {
-            InstructionType.ChangeSound, InstructionType.ChangeNextSound -> phoneme.effectiveSound == arg
+            InstructionType.ChangeSound -> phoneme.effectiveSound == arg
             else -> false
         }
     }
