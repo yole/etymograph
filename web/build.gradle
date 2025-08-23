@@ -18,15 +18,3 @@ dependencies {
     testImplementation group: 'junit', name: 'junit', version: '4.13.1'
     testImplementation testFixtures(project(":model"))
 }
-
-compileKotlin {
-    compilerOptions {
-        jvmTarget.set(JvmTarget.JVM_17)
-    }
-}
-
-compileTestKotlin {
-    compilerOptions {
-        jvmTarget.set(JvmTarget.JVM_17)
-    }
-}

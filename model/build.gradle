@@ -14,15 +14,3 @@ dependencies {
     implementation "org.jdom:jdom2:2.0.6.1"
     testImplementation group: 'junit', name: 'junit', version: '4.13.1'
 }
-
-compileKotlin {
-    compilerOptions {
-        jvmTarget.set(JvmTarget.JVM_17)
-    }
-}
-
-compileTestKotlin {
-    compilerOptions {
-        jvmTarget.set(JvmTarget.JVM_17)
-    }
-}
