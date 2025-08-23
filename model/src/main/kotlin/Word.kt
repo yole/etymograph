@@ -166,7 +166,7 @@ class Word(
                segments: List<WordSegment>? = null,
                newClasses: List<String>? = null,
                phonemic: Boolean? = null, keepStress: Boolean = true): Word {
-        val sourceSegments = this.segments
+        val sourceSegments = if (text == this.text || addSegment != null) this.segments else null
         return if (this.text == text && newClasses == null && phonemic == null && id == null)
             this
         else
