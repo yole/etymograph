@@ -383,6 +383,10 @@ class PhonemeIterator {
         return phonemes.subList(0, phonemeIndex).sumOf { it.length }
     }
 
+    fun resultPhonemeToCharacterIndex(phonemeIndex: Int): Int {
+        return resultPhonemes.subList(0, phonemeIndex).sumOf { it.length }
+    }
+
     fun characterToPhonemeIndex(characterIndex: Int, indexIsOriginal: Boolean = false): Int {
         var length = 0
         val phonemeList = if (indexIsOriginal) origPhonemes else phonemes

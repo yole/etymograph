@@ -7,9 +7,9 @@ import kotlin.math.min
 class WordSegment(
     val firstCharacter: Int,
     val length: Int,
-    val category: String?,
-    val sourceWord: Word?,
-    val sourceRule: Rule?,
+    val category: String? = null,
+    val sourceWord: Word? = null,
+    val sourceRule: Rule? = null,
     val clitic: Boolean = false
 ) {
     init {
@@ -43,9 +43,10 @@ fun remapSegments(phonemes: PhonemeIterator, segments: List<WordSegment>?): List
             null
         }
         else {
+            val startChar = phonemes.resultPhonemeToCharacterIndex(start)
+            val endChar = phonemes.resultPhonemeToCharacterIndex(end)
             WordSegment(
-                phonemes.phonemeToCharacterIndex(start),
-                phonemes.phonemeToCharacterIndex(end) - phonemes.phonemeToCharacterIndex(start),
+                startChar, endChar - startChar,
                 segment.category, segment.sourceWord, segment.sourceRule, segment.clitic)
         }
     }

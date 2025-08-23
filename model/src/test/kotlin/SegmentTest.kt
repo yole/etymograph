@@ -160,6 +160,16 @@ class SegmentTest : QBaseTest() {
     }
 
     @Test
+    fun insertCharacterAdjustSegmentsSpe() {
+        val breaking = repo.rule("* i > io", name = "oe-breaking")
+        val result = breaking.apply(q.word("lirnojan").also { it.segments = listOf(WordSegment(4, 4)) }, repo)
+        assertEquals("liornojan", result.text)
+        assertEquals(1, result.segments!!.size)
+        assertEquals(5, result.segments!![0].firstCharacter)
+        assertEquals(4, result.segments!![0].length)
+    }
+
+    @Test
     fun deleteCharacterAdjustSegmentsLongPhoneme() {
         repo.rule("* V > 0", name = "oe-syncope")
         val oeAcc = repo.rule("- append 'es'\n- apply sound rule 'oe-syncope' to second to last vowel\n")
