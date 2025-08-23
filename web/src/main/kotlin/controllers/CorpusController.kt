@@ -1,5 +1,6 @@
 package ru.yole.etymograph.web.controllers
 
+import kotlinx.serialization.Serializable
 import org.springframework.web.bind.annotation.*
 import ru.yole.etymograph.*
 import ru.yole.etymograph.web.*
@@ -32,19 +33,25 @@ class CorpusController {
     private fun CorpusText.toLangViewModel() =
         CorpusLangTextViewModel(id, title ?: text)
 
+    @Serializable
     data class CorpusWordCandidateViewModel(val id: Int, val gloss: String?)
 
+    @Serializable
     data class CorpusWordViewModel(
         val index: Int,
         val text: String,  // CorpusWord.segmentedText
         val normalizedText: String, // CorpusWord.normalizedText
         val gloss: String,
-        val contextGloss: String?,
-        val wordId: Int?, val wordText: String?,
-        val wordCandidates: List<CorpusWordCandidateViewModel>?,
-        val stressIndex: Int?, val stressLength: Int?, val homonym: Boolean,
+        val contextGloss: String? = null,
+        val wordId: Int? = null,
+        val wordText: String? = null,
+        val wordCandidates: List<CorpusWordCandidateViewModel>? = null,
+        val stressIndex: Int? = null,
+        val stressLength: Int? = null,
+        val homonym: Boolean = false,
     )
 
+    @Serializable
     data class TranslationViewModel(
         val id: Int,
         val text: String,
@@ -52,7 +59,10 @@ class CorpusController {
         val sourceEditableText: String
     )
 
+    @Serializable
     data class CorpusLineViewModel(val words: List<CorpusWordViewModel>)
+
+    @Serializable
     data class CorpusTextViewModel(
         val id: Int,
         val title: String,

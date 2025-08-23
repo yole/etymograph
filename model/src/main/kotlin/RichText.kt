@@ -27,6 +27,7 @@ data class RichTextFragment(
     }
 }
 
+@Serializable
 data class RichText(val fragments: List<RichTextFragment>) {
     override fun toString(): String = fragments.joinToString("")
 

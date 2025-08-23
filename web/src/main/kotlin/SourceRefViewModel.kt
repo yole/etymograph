@@ -1,9 +1,15 @@
 package ru.yole.etymograph.web
 
+import kotlinx.serialization.Serializable
 import ru.yole.etymograph.GraphRepository
 import ru.yole.etymograph.SourceRef
 
-class SourceRefViewModel(val pubId: Int?, val pubRefId: String?, val refText: String)
+@Serializable
+class SourceRefViewModel(
+    val pubId: Int? = null,
+    val pubRefId: String? = null,
+    val refText: String
+)
 
 fun List<SourceRef>.toViewModel(graph: GraphRepository): List<SourceRefViewModel>  {
     return map { ref ->

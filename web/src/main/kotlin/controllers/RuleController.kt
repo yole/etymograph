@@ -1,14 +1,17 @@
 package ru.yole.etymograph.web.controllers
 
+import kotlinx.serialization.Serializable
 import org.springframework.web.bind.annotation.*
 import ru.yole.etymograph.*
 import ru.yole.etymograph.web.*
 
+@Serializable
 data class RuleRefViewModel(
     val id: Int,
     val name: String
 )
 
+@Serializable
 data class ParadigmRefViewModel(
     val id: Int,
     val name: String,
@@ -20,21 +23,24 @@ fun Rule.toRefViewModel() =
 
 @RestController
 class RuleController {
+    @Serializable
     data class RuleBranchViewModel(
         val conditions: RichText,
         val instructions: List<RichText>,
-        val comment: String?,
+        val comment: String? = null,
         val examples: List<RuleExampleViewModel>
     )
 
+    @Serializable
     data class RuleLinkViewModel(
         val toRuleId: Int,
         val toRuleName: String,
         val linkType: String,
         val source: List<SourceRefViewModel>,
-        val notes: String?
+        val notes: String? = null
     )
 
+    @Serializable
     data class RuleWordLinkViewModel(
         val toWord: WordRefViewModel,
         val linkType: String,
@@ -42,20 +48,23 @@ class RuleController {
         val notes: String?
     )
 
+    @Serializable
     data class RuleExampleViewModel(
         val fromWord: WordRefViewModel,
         val toWord: WordRefViewModel,
-        val expectedWord: String?,
-        val wordBeforeRule: String?,
-        val wordAfterRule: String?
+        val expectedWord: String? = null,
+        val wordBeforeRule: String? = null,
+        val wordAfterRule: String? = null
     )
 
+    @Serializable
     data class RuleSequenceLinkViewModel(
         val sequenceName: String,
         val prev: RuleRefViewModel?,
         val next: RuleRefViewModel?
     )
 
+    @Serializable
     data class RuleViewModel(
         val id: Int,
         val name: String,
@@ -423,6 +432,7 @@ class RuleController {
         repo.deleteRule(rule)
     }
 
+    @Serializable
     data class RuleSequenceViewModel(
         val id: Int,
         val name: String,
@@ -568,6 +578,7 @@ class RuleController {
         )
     }
 
+    @Serializable
     data class DerivationViewModel(
         val baseWord: WordRefViewModel,
         val derivation: WordController.LinkWordViewModel,
@@ -576,6 +587,7 @@ class RuleController {
         val pos: String?
     )
 
+    @Serializable
     data class SequenceDerivationsViewModel(
         val sequence: RuleSequenceViewModel,
         val derivations: List<DerivationViewModel>
@@ -652,6 +664,7 @@ class RuleController {
         )
     }
 
+    @Serializable
     data class SequenceRuleViewModel(
         val ruleName: String,
         val ruleSource: String,
@@ -664,6 +677,7 @@ class RuleController {
         val postInstructions: List<RichText>,
     )
 
+    @Serializable
     data class SequenceReportViewModel(
         val name: String,
         val toLang: String,

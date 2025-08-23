@@ -39,11 +39,13 @@ fun Word.toRefViewModel(graph: GraphRepository) =
 
 @RestController
 class WordController(val dictionaryService: DictionaryService) {
+    @Serializable
     data class WordRuleSequenceViewModel(
         val name: String,
         val id: Int
     )
 
+    @Serializable
     data class LinkWordViewModel(
         val word: WordRefViewModel,
         val ruleIds: List<Int>,
