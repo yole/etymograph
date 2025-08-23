@@ -39,7 +39,7 @@ fun remapSegments(phonemes: PhonemeIterator, segments: List<WordSegment>?): List
         val endPhoneme = phonemes.characterToPhonemeIndex(segment.firstCharacter + segment.length, true)
         val start = phonemes.mapNextValidIndex(startPhoneme)
         val end = phonemes.mapIndex(endPhoneme)
-        if (start < 0 || end < 0) {
+        if (start < 0 || end < 0 || start == end) {
             null
         }
         else {
