@@ -19,7 +19,7 @@ export default function SourceRefs(props: SourceRefsProps) {
     return <div className={props.span ? "source-span" : "source"}>{props.span ? " (source: " : "Source:"}{' '}
         {source.map((s, index) => {
             const prefix = index > 0 ? ", " : ""
-            if (s.pubId !== null) {
+            if (s.pubId) {
                 return <>{prefix}<Link href={`/${graph}/publication/${s.pubId}`}>{s.pubRefId}</Link>{":" + s.refText}</>
             }
             else if (s.refText.startsWith("http")) {
