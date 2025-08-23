@@ -42,15 +42,20 @@ open class RuleInstruction(val type: InstructionType, val arg: String, val comme
             val condition = branch.condition.findLeafConditions(ConditionType.EndsWith)
                 .firstOrNull { it.matches(word, graph) }
                 ?: return word
-            val textWithoutEnding = if (condition.phonemeClass != null) {
-                // TODO parse with PhonemeIterator
-                word.text.dropLast(1)
+            val phonemes = PhonemeIterator(word, graph)
+            if (condition.phonemeClass != null) {
+                phonemes.deleteAtRelative(phonemes.size - 1)
             }
             else {
-                word.text.dropLast(condition.parameter!!.length)
+                val conditionPhonemes = PhonemeIterator(condition.parameter!!, word.language, graph)
+                val phonemesToDelete = conditionPhonemes.size
+                for (i in phonemes.size - 1 downTo phonemes.size - phonemesToDelete) {
+                    phonemes.deleteAtRelative(i)
+                }
             }
-            return word.derive(textWithoutEnding + arg,
-                newSegment = WordSegment.create(textWithoutEnding.length, arg.length, rule.addedCategories, null, rule))
+            return word.derive(phonemes.result() + arg,
+                segments = remapSegments(phonemes, word.segments),
+                addSegment = WordSegment.create(phonemes.result().length, arg.length, rule.addedCategories, null, rule))
         }
         return word
     }
@@ -370,8 +375,7 @@ class ApplySoundRuleInstruction(language: Language, val ruleRef: RuleRef, arg: S
         if (phonemes.seek(seekTarget)) {
             ruleRef.resolve().applyToPhoneme(word, phonemes, graph, trace)
             val segments = remapSegments(phonemes, word.segments)
-            return word.derive(phonemes.result(), phonemic = true, keepStress = false)
-                .also { it.segments = segments }
+            return word.derive(phonemes.result(), segments = segments, phonemic = true, keepStress = false)
                 .asOrthographic()
         }
         return word
@@ -478,7 +482,7 @@ class PrependAppendInstruction(type: InstructionType, language: Language, arg: S
                 word.derive(literalArg + word.text)
             else
                 word.derive(word.text + literalArg,
-                    newSegment = WordSegment(word.text.length, literalArg.length, rule.addedCategories, null, rule))
+                    addSegment = WordSegment(word.text.length, literalArg.length, rule.addedCategories, null, rule))
         }
         val phonemes = PhonemeIterator(word, graph)
         if (phonemes.seek(seekTarget!!)) {
@@ -487,7 +491,7 @@ class PrependAppendInstruction(type: InstructionType, language: Language, arg: S
                 return word.derive(phoneme + word.text)
             }
             return word.derive(word.text + phoneme,
-                newSegment = WordSegment(word.text.length, phoneme.length, rule.addedCategories, null, rule))
+                addSegment = WordSegment(word.text.length, phoneme.length, rule.addedCategories, null, rule))
         }
         return word
     }
@@ -558,7 +562,7 @@ class MorphemeInstruction(type: InstructionType, val morphemeId: Int, comment: S
                 word.derive(morpheme.text.trimEnd('-') + word.text)
             InstructionType.AppendMorpheme ->
                 word.derive(word.text + morpheme.text.trimStart('-'),
-                    newSegment = WordSegment(word.text.length, morpheme.text.length, rule.addedCategories, morpheme, rule))
+                    addSegment = WordSegment(word.text.length, morpheme.text.length, rule.addedCategories, morpheme, rule))
             else -> throw IllegalStateException("Unsupported instruction type for this instruction implementation")
         }
     }
@@ -668,8 +672,7 @@ class SpeInstruction(val pattern: SpePattern, val condition: RuleCondition? = nu
             else
                 null
             val segments = remapSegments(it, word.segments)
-            return phonemicWord.derive(it.result(), phonemic = true).also {
-                it.segments = segments
+            return phonemicWord.derive(it.result(), phonemic = true, segments = segments).also {
                 if (stress != null && stress >= 0) {
                     val vowels = rule.toLanguage.phonemeClassByName(PhonemeClass.vowelClassName)
                     val stressIt = PhonemeIterator(it, graph)

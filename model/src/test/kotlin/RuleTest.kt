@@ -571,6 +571,13 @@ class RuleTest : QBaseTest() {
     }
 
     @Test
+    fun changeEndingLongPhoneme() {
+        val rule = parseRule(ce, ce, "word ends with consonant:\n- change ending to ''")
+        val result = rule.apply(ce.word("mirth"), emptyRepo)
+        assertEquals("mir", result.text)
+    }
+
+    @Test
     fun applyClass() {
         val rule = parseRule(q, q, "word ends with 'r':\n- mark word as strong")
         val result = rule.apply(q.word("anar"), emptyRepo)

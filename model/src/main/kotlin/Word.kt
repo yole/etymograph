@@ -17,7 +17,7 @@ class WordSegment(
             throw IllegalArgumentException("Invalid segment start index")
         }
         if (length <= 0) {
-            throw IllegalArgumentException("Invalid segment length")
+            throw IllegalArgumentException("Invalid segment length $length")
         }
     }
 
@@ -158,9 +158,12 @@ class Word(
         return asOrthographic()
     }
 
-    fun derive(text: String, id: Int? = null, newSegment: WordSegment? = null, newClasses: List<String>? = null,
+    fun derive(text: String, id: Int? = null,
+               addSegment: WordSegment? = null,
+               segments: List<WordSegment>? = null,
+               newClasses: List<String>? = null,
                phonemic: Boolean? = null, keepStress: Boolean = true): Word {
-        val sourceSegments = segments
+        val sourceSegments = this.segments
         return if (this.text == text && newClasses == null && phonemic == null && id == null)
             this
         else
@@ -169,7 +172,7 @@ class Word(
                     it.stressedPhonemeIndex = stressedPhonemeIndex
                     it.explicitStress = explicitStress
                 }
-                it.segments = appendSegments(sourceSegments, newSegment)
+                it.segments = appendSegments(segments ?: sourceSegments, addSegment)
                 if (phonemic != null) it.isPhonemic = phonemic
             }
     }
@@ -185,6 +188,19 @@ class Word(
     }
 
     var segments: List<WordSegment>? = null
+        set(value) {
+            if (value != null) {
+                for (segment in value) {
+                    if (segment.firstCharacter !in text.indices) {
+                        throw IllegalArgumentException("Invalid segment start index: ${segment.firstCharacter}")
+                    }
+                    if (segment.firstCharacter + segment.length > text.length) {
+                        throw IllegalArgumentException("Invalid segment length: ${segment.length}")
+                    }
+                }
+            }
+            field = value
+        }
 
     fun getOrComputeGloss(graph: GraphRepository): String? {
         gloss?.let { return it }
