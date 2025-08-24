@@ -182,8 +182,8 @@ class SegmentTest : QBaseTest() {
 
     @Test
     fun deleteCharacterAdjustSegmentsWithApplySoundRule() {
-        repo.rule("sound is 'ć':\n- new sound is 'c'", name = "oe-depalatalize")
-        repo.rule("sound is 'e':\n- sound disappears\n- apply sound rule 'oe-depalatalize' to previous sound", name = "oe-syncope")
+        repo.rule("* ć > c", name = "oe-depalatalize")
+        repo.rule("* e > 0\n= apply sound rule 'oe-depalatalize' to previous sound", name = "oe-syncope")
         val oeAcc = repo.rule("- append 'a'\n- apply rule 'oe-syncope'\n")
         val result = oeAcc.apply(q.word("swingel"), repo)
         assertEquals("swingla", result.text)
@@ -202,7 +202,7 @@ class SegmentTest : QBaseTest() {
 
     @Test
     fun segmentsAfterDeleteVowel() {
-        repo.rule("sound is morpheme-initial vowel and previous sound is vowel:\n-sound disappears",
+        repo.rule("* V > 0 if sound is morpheme-initial and previous sound is vowel",
             name = "on-article-vowel-deletion")
         val onDefDatDg = repo.rule("- append 'inu'\n= apply rule 'on-article-vowel-deletion'")
         val result = onDefDatDg.apply(q.word("horni"), repo)
@@ -211,8 +211,7 @@ class SegmentTest : QBaseTest() {
 
     @Test
     fun segmentDisappears() {
-        repo.rule("sound is 'a' and previous sound is 'a':\n- sound disappears\n",
-            name = "on-vowel-assimilation")
+        repo.rule("* a > 0 / a_", name = "on-vowel-assimilation")
         val onGenPl = repo.rule("- append 'a'\n= apply rule 'on-vowel-assimilation'")
         val result = onGenPl.apply(q.word("a"), repo)
         assertEquals(0, result.segments!!.size)

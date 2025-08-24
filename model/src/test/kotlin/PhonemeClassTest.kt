@@ -18,59 +18,41 @@ class PhonemeClassTest : QBaseTest() {
 
     @Test
     fun diphthongSecondVowel() {
-        val rule = parseRule(q, q, """
-            sound is 'i' and sound is not diphthong:
-            - sound disappears
-        """.trimIndent())
+        val rule = parseRule(q, q, "* i > 0 if sound is not diphthong")
         assertEquals("ainu", rule.apply(q.word("ainu"), emptyRepo).text)
         assertEquals("sla", rule.apply(q.word("sila"), emptyRepo).text)
     }
 
     @Test
     fun stressedSoundCondition() {
-        val rule = parseRule(q, q, """
-            sound is 'o' and previous sound is 'w' and sound is stressed:
-            - new sound is 'a'
-        """.trimIndent())
+        val rule = parseRule(q, q, "* o > a if previous sound is 'w' and sound is stressed")
         assertEquals("wawo", rule.apply(q.word("wowo").apply { stressedPhonemeIndex = 1 }, emptyRepo).text)
     }
 
     @Test
     fun stressedSoundCombinedCondition() {
-        val rule = parseRule(q, q, """
-            sound is stressed 'o' and previous sound is 'w':
-            - new sound is 'a'
-        """.trimIndent())
-        assertEquals("wawo", rule.apply(q.word("wowo").apply { stressedPhonemeIndex = 1 }, emptyRepo).text)
+        val text = "* w > x if next sound is stressed 'o'"
+        val rule = parseRule(q, q, text)
+        assertEquals("xowo", rule.apply(q.word("wowo").apply { stressedPhonemeIndex = 1 }, emptyRepo).text)
         assertEquals("wiwo", rule.apply(q.word("wiwo").apply { stressedPhonemeIndex = 1 }, emptyRepo).text)
-        assertEquals("sound is stressed 'o' and previous sound is 'w'", rule.logic.branches[0].condition.toEditableText())
-        assertEquals("stressed 'o' > 'a' after 'w'", rule.toSummaryText(emptyRepo))
+        assertEquals(text, rule.toEditableText(emptyRepo))
     }
 
     @Test
     fun stressedSoundConditionNegated() {
-        val rule = parseRule(q, q, """
-            sound is 'o' and previous sound is 'w' and sound is not stressed:
-            - new sound is 'a'
-        """.trimIndent())
+        val rule = parseRule(q, q, "* o > a if previous sound is 'w' and sound is not stressed")
         assertEquals("wowa", rule.apply(q.word("wowo").apply { stressedPhonemeIndex = 1 }, emptyRepo).text)
     }
 
     @Test
     fun unstressedSoundCondition() {
-        val rule = parseRule(q, q, """
-            sound is non-stressed 'o' and previous sound is 'w':
-            - new sound is 'a'
-        """.trimIndent())
-        assertEquals("wowa", rule.apply(q.word("wowo").apply { stressedPhonemeIndex = 1 }, emptyRepo).text)
+        val rule = parseRule(q, q, "* w > x if next sound is non-stressed 'o'")
+        assertEquals("woxo", rule.apply(q.word("wowo").apply { stressedPhonemeIndex = 1 }, emptyRepo).text)
     }
 
     @Test
     fun stressedDiphthongCondition() {
-        val rule = parseRule(q, q, """
-            sound is 'e' and previous vowel is stressed:
-            - new sound is 'i'
-        """.trimIndent())
+        val rule = parseRule(q, q, "* e > i if previous vowel is stressed")
         assertEquals("lairi", rule.apply(q.word("laire").apply { stressedPhonemeIndex = 1 }, emptyRepo).text)
     }
 
@@ -102,7 +84,7 @@ class PhonemeClassTest : QBaseTest() {
     fun morphemeInitial() {
         val repo = InMemoryGraphRepository().with(q)
         val it = repo.addWord("it", "the", language = q)
-        val morphemeInitialRule = repo.rule("sound is morpheme-initial vowel:\n- sound disappears",
+        val morphemeInitialRule = repo.rule("* V > 0 if sound is morpheme-initial",
             fromLanguage = q, name = "on-sound-deletion")
         val rule = repo.rule("- append morpheme 'it: the'\n- apply rule 'on-sound-deletion'", fromLanguage = q)
         val hallæri = repo.addWord("hallæri", language = q)
@@ -114,7 +96,7 @@ class PhonemeClassTest : QBaseTest() {
     fun morphemeFinal() {
         val repo = InMemoryGraphRepository().with(q)
         val it = repo.addWord("it", "the", language = q)
-        repo.rule("sound is morpheme-final vowel and next sound is vowel:\n- sound disappears",
+        repo.rule("* V > 0 if sound is morpheme-final and next sound is vowel",
             fromLanguage = q, name = "on-sound-deletion")
         val rule = repo.rule("- append morpheme 'it: the'\n- apply rule 'on-sound-deletion'", fromLanguage = q)
         val hallæri = repo.addWord("hallæri", language = q)
@@ -127,7 +109,7 @@ class PhonemeClassTest : QBaseTest() {
         val repo = InMemoryGraphRepository().with(q)
         val it = repo.addWord("it", "the", language = q)
         val stemRule = repo.rule("word ends with 'r':\n- change ending to 'i'", fromLanguage = q, name = "on-stem")
-        val morphemeInitialRule = repo.rule("sound is morpheme-initial vowel and previous sound is vowel:\n- sound disappears",
+        val morphemeInitialRule = repo.rule("* V > 0 if sound is morpheme-initial and previous sound is vowel",
             fromLanguage = q, name = "on-sound-deletion")
         val rule = repo.rule("- apply rule 'on-stem'\n- append morpheme 'it: the'\n- apply rule 'on-sound-deletion'", fromLanguage = q)
         val hallæri = repo.addWord("herr", language = q)

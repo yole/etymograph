@@ -229,21 +229,14 @@ class PhonemeRuleTest : QBaseTest() {
 
     @Test
     fun phonemeRulesWorkWithSoundValues() {
-        val rule = parseRule(ce, q, """
-            sound is 'j' and next sound is 'u':
-            - new sound is 'y'
-            - next sound disappears
-        """.trimIndent())
+        val rule = parseRule(ce, q, "* ju > y")
         ce.phonemes = listOf(phoneme(listOf("y"), "j", "semivowel"))
         assertEquals("ylma", rule.apply(ce.word("yulma"), emptyRepo).asOrthographic().text)
     }
 
     @Test
     fun phonemeClassesWithSoundValues() {
-        val rule = parseRule(ce, ce, """
-            sound is 'i' and next sound is consonant:
-            - new sound is 'y'
-        """.trimIndent())
+        val rule = parseRule(ce, ce, "* i > y if next sound is consonant")
         ce.phonemes = listOf(phoneme(listOf("c", "k"), "k", "consonant"))
         assertEquals("ycra", rule.apply(ce.word("ikra"), emptyRepo).asOrthographic().text)
     }
@@ -302,15 +295,11 @@ class PhonemeRuleTest : QBaseTest() {
 
     @Test
     fun applySoundRuleSeesResultOfPreviousInstructions() {
-        val soundRule = parseRule(q, q, """
-            sound is 't' and next sound is consonant:
-            - new sound is 'd'
-        """.trimIndent(), name = "q-voicing")
+        val soundRule = parseRule(q, q, "* t > d / _C", name = "q-voicing")
         val parseContext = q.parseContext(null, soundRule)
         val rule = parseRule(q, q, """
-            sound is 'a':
-            - sound disappears
-            - apply sound rule 'q-voicing' to previous sound
+            * a > 0
+            = apply sound rule 'q-voicing' to previous sound
         """.trimIndent(), context = parseContext)
         assertEquals("dmo", applyRule(rule, q.word("tamo")))
     }
