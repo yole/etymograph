@@ -12679,9 +12679,15 @@
         "gloss": "to call",
         "fullGloss": "to call, name",
         "pos": "V",
+        "classes": [
+            "v-strong-7"
+        ],
         "sourceRefs": [
             {
                 "refText": "https://bosworthtoller.com/14611"
+            },
+            {
+                "refText": "https://en.wiktionary.org/wiki/gehatan#Old_English"
             }
         ]
     },
