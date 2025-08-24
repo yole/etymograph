@@ -93,6 +93,12 @@ class PhonemeClassTest : QBaseTest() {
     }
 
     @Test
+    fun nucleus() {
+        val rule = parseRule(q, q, "* i > j if sound is nucleus")
+        assertEquals("jkjukuik", applyRule(rule, q.word("ikiukuik")))
+    }
+
+    @Test
     fun morphemeInitial() {
         val repo = InMemoryGraphRepository().with(q)
         val it = repo.addWord("it", "the", language = q)

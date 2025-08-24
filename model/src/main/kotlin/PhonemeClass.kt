@@ -11,16 +11,24 @@ open class PhonemeClass(val name: String, var matchingPhonemes: List<String> = e
     companion object {
         val diphthong = object : PhonemeClass("diphthong") {
             override fun matchesCurrent(it: PhonemeIterator): Boolean {
-                val next = it.atRelative(1)
-                if (next != null && it.current + next in it.language.diphthongs) {
-                    return true
-                }
-                val previous = it.atRelative(-1)
-                if (previous != null && previous + it.current in it.language.diphthongs) {
-                    return true
-                }
-                return false
+                return isDiphthongHead(it) || isDiphthongTail(it)
             }
+        }
+
+        val nucleus = object : PhonemeClass("nucleus") {
+            override fun matchesCurrent(it: PhonemeIterator): Boolean {
+                return !isDiphthongTail(it)
+            }
+        }
+
+        private fun isDiphthongTail(it: PhonemeIterator): Boolean {
+            val previous = it.atRelative(-1)
+            return previous != null && previous + it.current in it.language.diphthongs
+        }
+
+        private fun isDiphthongHead(it: PhonemeIterator): Boolean {
+            val next = it.atRelative(1)
+            return next != null && it.current + next in it.language.diphthongs
         }
 
         val stressed = object : PhonemeClass("stressed") {
@@ -82,7 +90,7 @@ open class PhonemeClass(val name: String, var matchingPhonemes: List<String> = e
         }
 
         val specialPhonemeClasses = listOf(
-            diphthong, stressed,
+            diphthong, stressed, nucleus,
             wordInitial, wordFinal,
             syllableInitial, syllableFinal,
             morphemeInitial, morphemeFinal, geminate
