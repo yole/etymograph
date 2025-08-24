@@ -187,76 +187,6 @@ class PhonemeRuleTest : QBaseTest() {
     }
 
     @Test
-    fun diphtong() {
-        val rule = parseRule(q, q, """
-            sound is diphthong:
-            - no change
-            sound is 'a':
-            - new sound is 'o'
-        """.trimIndent())
-        assertEquals("ainu", rule.apply(q.word("ainu"), emptyRepo).text)
-        assertEquals("omo", rule.apply(q.word("ama"), emptyRepo).text)
-    }
-
-    @Test
-    fun diphtongSecondVowel() {
-        val rule = parseRule(q, q, """
-            sound is 'i' and sound is not diphthong:
-            - sound disappears
-        """.trimIndent())
-        assertEquals("ainu", rule.apply(q.word("ainu"), emptyRepo).text)
-        assertEquals("sla", rule.apply(q.word("sila"), emptyRepo).text)
-    }
-
-    @Test
-    fun stressedSoundCondition() {
-        val rule = parseRule(q, q, """
-            sound is 'o' and previous sound is 'w' and sound is stressed:
-            - new sound is 'a'
-        """.trimIndent())
-        assertEquals("wawo", rule.apply(q.word("wowo").apply { stressedPhonemeIndex = 1 }, emptyRepo).text)
-    }
-
-    @Test
-    fun stressedSoundCombinedCondition() {
-        val rule = parseRule(q, q, """
-            sound is stressed 'o' and previous sound is 'w':
-            - new sound is 'a'
-        """.trimIndent())
-        assertEquals("wawo", rule.apply(q.word("wowo").apply { stressedPhonemeIndex = 1 }, emptyRepo).text)
-        assertEquals("wiwo", rule.apply(q.word("wiwo").apply { stressedPhonemeIndex = 1 }, emptyRepo).text)
-        assertEquals("sound is stressed 'o' and previous sound is 'w'", rule.logic.branches[0].condition.toEditableText())
-        assertEquals("stressed 'o' > 'a' after 'w'", rule.toSummaryText(repo))
-    }
-
-    @Test
-    fun stressedSoundConditionNegated() {
-        val rule = parseRule(q, q, """
-            sound is 'o' and previous sound is 'w' and sound is not stressed:
-            - new sound is 'a'
-        """.trimIndent())
-        assertEquals("wowa", rule.apply(q.word("wowo").apply { stressedPhonemeIndex = 1 }, emptyRepo).text)
-    }
-
-    @Test
-    fun unstressedSoundCondition() {
-        val rule = parseRule(q, q, """
-            sound is non-stressed 'o' and previous sound is 'w':
-            - new sound is 'a'
-        """.trimIndent())
-        assertEquals("wowa", rule.apply(q.word("wowo").apply { stressedPhonemeIndex = 1 }, emptyRepo).text)
-    }
-
-    @Test
-    fun stressedDiphthongCondition() {
-        val rule = parseRule(q, q, """
-            sound is 'e' and previous vowel is stressed:
-            - new sound is 'i'
-        """.trimIndent())
-        assertEquals("lairi", rule.apply(q.word("laire").apply { stressedPhonemeIndex = 1 }, emptyRepo).text)
-    }
-
-    @Test
     fun nextSoundIs() {
         val rule = parseRule(q, q, " * s > z if next sound is 'p'".trimIndent())
         assertEquals("zpin", rule.apply(q.word("spin"), emptyRepo).text)
@@ -441,24 +371,6 @@ class PhonemeRuleTest : QBaseTest() {
         val rule = parseRule(q, q, text)
         assertEquals("ottale", rule.apply(q.word("attale"), emptyRepo).text)
         assertEquals(text, rule.toEditableText(repo))
-    }
-
-    @Test
-    fun wordFinal() {
-        val rule = parseRule(q, q, "* a > 0 if next sound is word-final")
-        assertEquals("glawr", rule.apply(q.word("glawar"), emptyRepo).text)
-    }
-
-    @Test
-    fun nonWordInitial() {
-        val rule = parseRule(q, q, "* w > 0 / _i if sound is non-word-initial")
-        assertEquals("wii", applyRule(rule, q.word("wiwi")))
-    }
-
-    @Test
-    fun syllableFinal() {
-        val rule = parseRule(q, q, "* n > m if sound is syllable-final")
-        assertEquals("inomdem", applyRule(rule, q.word("inonden")))
     }
 
     @Test

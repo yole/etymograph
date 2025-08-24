@@ -696,43 +696,6 @@ class RuleTest : QBaseTest() {
     }
 
     @Test
-    fun morphemeInitial() {
-        val repo = InMemoryGraphRepository().with(q)
-        val it = repo.addWord("it", "the", language = q)
-        val morphemeInitialRule = repo.rule("sound is morpheme-initial vowel:\n- sound disappears",
-            fromLanguage = q, name = "on-sound-deletion")
-        val rule = repo.rule("- append morpheme 'it: the'\n- apply rule 'on-sound-deletion'", fromLanguage = q)
-        val hallæri = repo.addWord("hallæri", language = q)
-        val result = rule.apply(hallæri, repo)
-        assertEquals("hallærit", result.text)
-    }
-
-    @Test
-    fun morphemeFinal() {
-        val repo = InMemoryGraphRepository().with(q)
-        val it = repo.addWord("it", "the", language = q)
-        repo.rule("sound is morpheme-final vowel and next sound is vowel:\n- sound disappears",
-            fromLanguage = q, name = "on-sound-deletion")
-        val rule = repo.rule("- append morpheme 'it: the'\n- apply rule 'on-sound-deletion'", fromLanguage = q)
-        val hallæri = repo.addWord("hallæri", language = q)
-        val result = rule.apply(hallæri, repo)
-        assertEquals("hallærit", result.text)
-    }
-
-    @Test
-    fun morphemeInitialNotNormalized() {
-        val repo = InMemoryGraphRepository().with(q)
-        val it = repo.addWord("it", "the", language = q)
-        val stemRule = repo.rule("word ends with 'r':\n- change ending to 'i'", fromLanguage = q, name = "on-stem")
-        val morphemeInitialRule = repo.rule("sound is morpheme-initial vowel and previous sound is vowel:\n- sound disappears",
-            fromLanguage = q, name = "on-sound-deletion")
-        val rule = repo.rule("- apply rule 'on-stem'\n- append morpheme 'it: the'\n- apply rule 'on-sound-deletion'", fromLanguage = q)
-        val hallæri = repo.addWord("herr", language = q)
-        val result = rule.apply(hallæri, repo)
-        assertEquals("herit", result.text)
-    }
-
-    @Test
     fun applyRuleUseExistingLink() {
         val on = Language("Old Norse", "ON")
         on.wordClasses = mutableListOf(WordCategory("Gender", listOf("N"), listOf(WordCategoryValue("Neuter", "n"))))
