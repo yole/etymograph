@@ -279,8 +279,10 @@ class PhonemeIterator {
         }
 
         val matchingIndexes = mutableListOf<Int>()
+        val copy = clone()
         for (targetPhonemeIndex in phonemes.indices) {
-            if (phonemes[targetPhonemeIndex] in targetPhonemeClass.matchingPhonemes) {
+            copy.advanceTo(targetPhonemeIndex)
+            if (targetPhonemeClass.matchesCurrent(copy)) {
                 matchingIndexes.add(targetPhonemeIndex)
             }
         }

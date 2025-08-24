@@ -334,6 +334,16 @@ class PhonemeRuleTest : QBaseTest() {
     }
 
     @Test
+    fun applySoundRuleSpecialClass() {
+        val soundRule = parseRule(q, q, "* V > x", name = "q-lengthen")
+        val parseContext = q.parseContext(null, soundRule)
+        val rule = parseRule(q, q, """
+            - apply sound rule 'q-lengthen' to second to last nucleus vowel
+        """.trimIndent(), context = parseContext)
+        assertEquals("lxita", rule.apply(q.word("laita"), emptyRepo).text)
+    }
+
+    @Test
     fun applySoundRuleSeesResultOfPreviousInstructions() {
         val soundRule = parseRule(q, q, """
             sound is 't' and next sound is consonant:
