@@ -3,7 +3,6 @@ package ru.yole.etymograph
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
-import ru.yole.etymograph.JsonGraphRepository.Companion.toSerializedFormat
 
 class PhonemeRuleTest : QBaseTest() {
     lateinit var repo: GraphRepository
@@ -116,74 +115,50 @@ class PhonemeRuleTest : QBaseTest() {
 
     @Test
     fun previousSound() {
-        val rule = parseRule(ce, q, """
-            sound is 'i' and previous sound is 'kh':
-            - sound disappears
-        """.trimIndent())
+        val rule = parseRule(ce, q, "* i > 0 if previous sound is 'kh'")
         assertEquals("khthi", rule.apply(ce.word("khithi"), emptyRepo).text)
-        assertEquals("'i' > Ø after 'kh'", rule.toSummaryText(repo))
     }
 
     @Test
     fun previousSoundPhonemeClass() {
-        val rule = parseRule(q, q, """
-            sound is 'i' and previous sound is not vowel:
-            - sound disappears
-        """.trimIndent())
+        val rule = parseRule(q, q, "* i > 0 if previous sound is not vowel")
         assertEquals("khai", rule.apply(ce.word("khiai"), emptyRepo).text)
-        assertEquals("'i' > Ø after not vowel", rule.toSummaryText(repo))
     }
 
     @Test
     fun previousSoundPhonemeClassFirst() {
-        val rule = parseRule(q, q, """
-            sound is 'i' and previous sound is not vowel:
-            - sound disappears
-        """.trimIndent())
+        val rule = parseRule(q, q, "* i > 0 if previous sound is not vowel")
         assertEquals("da", rule.apply(ce.word("ida"), emptyRepo).text)
     }
 
     @Test
     fun previousSoundNegated() {
-        val rule = parseRule(ce, q, """
-            sound is 'i' and previous sound is not 'kh':
-            - sound disappears
-        """.trimIndent())
+        val text = "* i > 0 if previous sound is not 'kh'"
+        val rule = parseRule(ce, q, text)
         assertEquals("khith", rule.apply(ce.word("khithi"), emptyRepo).text)
-        assertEquals(
-            "sound is 'i' and previous sound is not 'kh'",
-            rule.logic.branches[0].condition.toEditableText()
-        )
+        assertEquals(text, rule.toEditableText(repo))
     }
 
     @Test
     fun nextSound() {
-        val rule = parseRule(ce, q, """
-            sound is 'i' and next sound is 'kh':
-            - sound disappears
-        """.trimIndent())
+        val rule = parseRule(ce, q, "* i > 0 if next sound is 'kh'")
         assertEquals("khthis", rule.apply(ce.word("ikhthis"), emptyRepo).text)
-        assertEquals("'i' > Ø before 'kh'", rule.toSummaryText(repo))
     }
 
     @Test
     fun nextPhonemeClass() {
-        val rule = parseRule(q, q, """
-            sound is 'i' and next vowel is 'a':
-            - sound disappears
-        """.trimIndent())
+        val text = "* i > 0 if next vowel is 'a'"
+        val rule = parseRule(q, q, text)
         assertEquals("khtha", rule.apply(ce.word("khitha"), emptyRepo).text)
-        assertEquals("sound is 'i' and next vowel is 'a'", rule.logic.branches[0].condition.toEditableText())
+        assertEquals(text, rule.toEditableText(repo))
     }
 
     @Test
     fun nextPhonemeClassComplex() {
-        val rule = parseRule(q, q, """
-            sound is 'i' and next short vowel is 'a':
-            - sound disappears
-        """.trimIndent())
+        val text = "* i > 0 if next short vowel is 'a'"
+        val rule = parseRule(q, q, text)
         assertEquals("khtha", rule.apply(ce.word("khitha"), emptyRepo).text)
-        assertEquals("sound is 'i' and next short vowel is 'a'", rule.logic.branches[0].condition.toEditableText())
+        assertEquals(text, rule.toEditableText(repo))
     }
 
     @Test
@@ -202,13 +177,10 @@ class PhonemeRuleTest : QBaseTest() {
 
     @Test
     fun syllableIs() {
-        val rule = parseRule(q, q, """
-            syllable is second to last and sound is 'i' and next vowel is 'a':
-            - new sound is 'e'
-        """.trimIndent())
+        val text = "* i > e if syllable is second to last and next vowel is 'a'"
+        val rule = parseRule(q, q, text)
         assertEquals("findela", rule.apply(q.word("findila"), emptyRepo).text)
-        val ruleCondition = rule.logic.branches[0].condition
-        assertEquals("syllable is second to last and sound is 'i' and next vowel is 'a'", ruleCondition.toEditableText())
+        assertEquals(text, rule.toEditableText(repo))
     }
 
     @Test
@@ -226,29 +198,14 @@ class PhonemeRuleTest : QBaseTest() {
     }
 
     @Test
-    fun syllableIsSummary() {
-        val rule = parseRule(q, q, """
-            syllable is second to last and sound is 'i' and next sound is 'a':
-            - new sound is 'e'
-        """.trimIndent())
-        assertEquals("'i' > 'e' before 'a' in second to last syllable", rule.toSummaryText(repo))
-    }
-
-    @Test
     fun syllableIsOpen() {
-        val rule = parseRule(q, q, """
-            syllable is open and sound is 'i':
-            - new sound is 'e'
-        """.trimIndent())
+        val rule = parseRule(q, q, "* i > e if syllable is open")
         assertEquals("wilwe", applyRule(rule, q.word("wilwi")))
     }
 
     @Test
     fun prevSyllableIsClosed() {
-        val rule = parseRule(q, q, """
-            previous syllable is closed and sound is 'a':
-            - new sound is 'e'
-        """.trimIndent())
+        val rule = parseRule(q, q, "* a > e if previous syllable is closed")
         assertEquals("wilwena", applyRule(rule, q.word("wilwana")))
     }
 
