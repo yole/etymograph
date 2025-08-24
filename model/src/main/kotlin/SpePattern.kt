@@ -21,12 +21,12 @@ class SpeContext(val trace: RuleTrace?, private val pattern: SpePattern) {
         }
     }
 
-    fun findMatchedAlternative(node: SpeAlternativeNode): Int? {
+    fun findMatchedAlternative(node: SpeNode): Int? {
         val nodeIndex = pattern.after.indexOf(node)
         return if (nodeIndex < 0) null else matchIndexes[nodeIndex]
     }
 
-    fun getBeforeNode(node: SpeAlternativeNode): SpeAlternativeNode? {
+    fun getBeforeNode(node: SpeNode): SpeAlternativeNode? {
         val nodeIndex = pattern.after.indexOf(node)
         return if (nodeIndex < 0) null else pattern.before[nodeIndex] as? SpeAlternativeNode
     }
@@ -83,7 +83,15 @@ class SpeLiteralNode(val text: String) : SpePhonemeNode() {
     }
 
     override fun replace(it: PhonemeIterator, relativeIndex: Int, context: SpeContext) {
-        it.replaceAtRelative(relativeIndex, text)
+        val index = context.findMatchedAlternative(this)
+        val beforeNode = context.getBeforeNode(this)
+        if (index != null && beforeNode != null) {
+            // create copy of this node to make sure we don't find the before node again when doing the alternative replacement
+            applyNodes(it, relativeIndex, context, beforeNode.choices[index], listOf(SpeLiteralNode(text)))
+        }
+        else {
+            it.replaceAtRelative(relativeIndex, text)
+        }
     }
 
     override fun insert(it: PhonemeIterator, relativeIndex: Int, context: SpeContext) {

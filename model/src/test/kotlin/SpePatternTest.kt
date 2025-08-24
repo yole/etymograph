@@ -185,6 +185,12 @@ class SpePatternTest : QBaseTest() {
     }
 
     @Test
+    fun replaceAlternativeDifferentSize() {
+        val pattern = SpePattern.parse(q, q, "{ai|u} > e")
+        assertEquals("ele", pattern.apply(q, "elai"))
+    }
+
+    @Test
     fun replaceAlternativeInsert() {
         val pattern = SpePattern.parse(q, q, "{a|o} > {ew|iw}")
         assertEquals("ewliw", pattern.apply(q, "alo"))
