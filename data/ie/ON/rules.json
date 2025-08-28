@@ -2195,16 +2195,14 @@
             {
                 "instructions": [
                     {
-                        "type": "ChangeSound",
+                        "type": "Spe",
                         "args": [
-                            "a"
+                            "ö > a"
                         ]
                     }
                 ],
                 "condition": {
-                    "type": "relPhoneme",
-                    "parameter": "ö",
-                    "relative": false
+                    "type": "otherwise"
                 }
             }
         ]
@@ -2262,16 +2260,14 @@
             {
                 "instructions": [
                     {
-                        "type": "ChangeSound",
+                        "type": "Spe",
                         "args": [
-                            "u"
+                            "a > u"
                         ]
                     }
                 ],
                 "condition": {
-                    "type": "relPhoneme",
-                    "parameter": "a",
-                    "relative": false
+                    "type": "otherwise"
                 }
             }
         ]
@@ -5072,9 +5068,10 @@
         ],
         "postInstructions": [
             {
-                "type": "ApplyRule",
+                "type": "ApplySoundRule",
                 "args": [
-                    "5604"
+                    "5604",
+                    "previous sound"
                 ]
             }
         ]
@@ -5529,9 +5526,10 @@
         ],
         "postInstructions": [
             {
-                "type": "ApplyRule",
+                "type": "ApplySoundRule",
                 "args": [
-                    "5604"
+                    "5604",
+                    "previous sound"
                 ]
             }
         ]
@@ -7595,9 +7593,10 @@
         ],
         "postInstructions": [
             {
-                "type": "ApplyRule",
+                "type": "ApplySoundRule",
                 "args": [
-                    "5604"
+                    "5604",
+                    "previous sound"
                 ]
             }
         ]
@@ -7741,41 +7740,14 @@
             {
                 "instructions": [
                     {
-                        "type": "SoundDisappears",
+                        "type": "Spe",
                         "args": [
-                            "-1"
+                            "v > 0 / _{u|o|ó}"
                         ]
                     }
                 ],
                 "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "or",
-                            "members": [
-                                {
-                                    "type": "relPhoneme",
-                                    "parameter": "u",
-                                    "relative": false
-                                },
-                                {
-                                    "type": "relPhoneme",
-                                    "parameter": "o",
-                                    "relative": false
-                                },
-                                {
-                                    "type": "relPhoneme",
-                                    "parameter": "ó",
-                                    "relative": false
-                                }
-                            ]
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": -1,
-                            "parameter": "v"
-                        }
-                    ]
+                    "type": "otherwise"
                 }
             }
         ],
