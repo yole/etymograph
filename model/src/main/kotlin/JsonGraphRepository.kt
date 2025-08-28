@@ -548,7 +548,9 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
     }
 
     private fun loadJson(contentProviderCallback: (String) -> String?) {
-        val data = Json.decodeFromString<GraphRepositoryData>(contentProviderCallback("graph.json")!!)
+        val graphJsonContent = contentProviderCallback("graph.json")
+            ?: throw IllegalStateException("Cannot load 'graph.json'")
+        val data = Json.decodeFromString<GraphRepositoryData>(graphJsonContent)
         _id = data.id
         _name = data.name
         for (languageData in data.languages) {
