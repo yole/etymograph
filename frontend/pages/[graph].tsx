@@ -32,7 +32,7 @@ export default function Home(props) {
   const graph = router.query.graph
   const globalState = useContext(GlobalStateContext)
   return <>
-      <Breadcrumbs/>
+      <Breadcrumbs title="Languages"/>
       <LanguageList languages={languages} graph={graph} />
 
     <p><Link href={`${graph}/publications`}>Bibliography</Link></p>
