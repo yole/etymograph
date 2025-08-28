@@ -37,6 +37,7 @@ class LanguageController {
     data class LanguageViewModel(
         val name: String,
         val shortName: String,
+        val protoLanguageShortName: String?,
         val reconstructed: Boolean,
         val diphthongs: List<String>,
         val phonemes: List<PhonemeTableViewModel>,
@@ -59,26 +60,60 @@ class LanguageController {
         val shortName: String,
         val pos: List<WordCategoryValueViewModel>,
         val wordClasses: List<WordCategoryViewModel>,
-        val dictionaries: List<String>
+        val dictionaries: List<String>,
+        var descendantLanguages: List<LanguageShortViewModel>? = null
     )
 
     @GetMapping("/{graph}/language")
     fun indexJson(repo: GraphRepository): List<LanguageShortViewModel> {
         return repo.allLanguages().sortedBy { it.name }.map { lang ->
-            LanguageShortViewModel(
-                lang.name,
-                lang.shortName,
-                lang.pos.map { WordCategoryValueViewModel(it.name, it.abbreviation) },
-                lang.wordClasses.map {
-                    WordCategoryViewModel(it.name, it.pos, it.values.map {
-                        WordCategoryValueViewModel(it.name, it.abbreviation)
-                    })
-                },
-                if ("wiktionary-id" in (lang.dictionarySettings ?: "")) listOf("wiktionary") else emptyList()
-            )
+            lang.toShortViewModel()
         }
     }
 
+    @GetMapping("/{graph}/languages")
+    fun treeJson(repo: GraphRepository): List<LanguageShortViewModel> {
+        val languages = repo.allLanguages()
+        val shortViewModels = languages.associateBy(
+            { it.shortName },
+            { it.toShortViewModel() }
+        ).toMutableMap()
+
+        // Build a map from protoLanguageShortName to list of descendant languages
+        val protoToDescendants = mutableMapOf<String, MutableList<LanguageShortViewModel>>()
+        for (lang in languages) {
+            val proto = lang.protoLanguage?.shortName
+            if (proto != null) {
+                protoToDescendants.getOrPut(proto) { mutableListOf() }.add(shortViewModels[lang.shortName]!!)
+            }
+        }
+
+        // Set descendantLanguages for each language
+        for ((protoShortName, descendants) in protoToDescendants) {
+            shortViewModels[protoShortName]?.descendantLanguages = descendants.sortedBy { it.name }
+        }
+
+        // Return only top-level languages (those with no proto language)
+        return languages
+            .filter { it.protoLanguage == null }
+            .map { shortViewModels[it.shortName]!! }
+            .sortedBy { it.name }
+    }
+
+    private fun Language.toShortViewModel(): LanguageShortViewModel =
+        LanguageShortViewModel(
+            name,
+            shortName,
+            pos.map { WordCategoryValueViewModel(it.name, it.abbreviation) },
+            wordClasses.map {
+                WordCategoryViewModel(it.name, it.pos, it.values.map {
+                    WordCategoryValueViewModel(it.name, it.abbreviation)
+                })  
+            },
+            if ("wiktionary-id" in (dictionarySettings ?: "")) listOf("wiktionary") else emptyList(),
+            null
+        )
+    
     @GetMapping("/{graph}/language/{lang}")
     fun language(repo: GraphRepository, @PathVariable lang: String): LanguageViewModel {
         val language = repo.resolveLanguage(lang)
@@ -93,6 +128,7 @@ class LanguageController {
         return LanguageViewModel(
             name,
             shortName,
+            protoLanguage?.shortName,
             reconstructed,
             diphthongs,
             buildPhonemeTables().map { table ->
@@ -120,6 +156,7 @@ class LanguageController {
     data class UpdateLanguageParameters(
         val name: String? = null,
         val shortName: String? = null,
+        val protoLanguageShortName: String? = null,
         val reconstructed: Boolean? = null,
         val phonemes: String? = null,
         val diphthongs: String? = null,
@@ -194,6 +231,8 @@ class LanguageController {
         if (params.reconstructed != null) {
             language.reconstructed = params.reconstructed
         }
+
+        language.protoLanguage = params.protoLanguageShortName?.let { repo.resolveLanguage(it) }
 
         language.diphthongs = parseList(params.diphthongs)
         language.syllableStructures = parseList(params.syllableStructures)

@@ -12,7 +12,18 @@ export const config = {
 export const getStaticPaths = fetchAllGraphs
 
 export async function getStaticProps(context) {
-  return fetchBackend(context.params.graph, `language`, true)
+  return fetchBackend(context.params.graph, `languages`, true)
+}
+
+function LanguageList(props) {
+  const languages = props.languages
+  const graph = props.graph
+  return <ul>
+    {languages.map(l => <li key={l.shortName}>
+      <Link href={`${graph}/language/${l.shortName}`}>{l.name}</Link>
+      {l.descendantLanguages && <LanguageList languages={l.descendantLanguages} graph={graph} />}
+    </li>)}
+  </ul>
 }
 
 export default function Home(props) {
@@ -22,9 +33,7 @@ export default function Home(props) {
   const globalState = useContext(GlobalStateContext)
   return <>
       <Breadcrumbs/>
-    <ul>
-      {languages.map(l => <li key={l.shortName}><Link href={`${graph}/language/${l.shortName}`}>{l.name}</Link></li>)}
-    </ul>
+      <LanguageList languages={languages} graph={graph} />
 
     <p><Link href={`${graph}/publications`}>Bibliography</Link></p>
     {allowEdit() && <button onClick={() => router.push(`${graph}/languages/new`)}>Add language</button>}

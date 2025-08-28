@@ -45,6 +45,7 @@ data class PhonemeData(
 data class LanguageDetailsData(
     val phonemes: List<PhonemeData>,
     val diphthongs: List<String> = emptyList(),
+    val protoLanguageShortName: String? = null,
     val stressRuleId: Int? = null,
     val phonotacticsRuleId: Int? = null,
     val pronunciationRuleId: Int? = null,
@@ -421,6 +422,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             val languageDetailsData = LanguageDetailsData(
                 phonemes,
                 lang.diphthongs,
+                lang.protoLanguage?.shortName,
                 lang.stressRule?.resolve()?.id,
                 lang.phonotacticsRule?.resolve()?.id,
                 lang.pronunciationRule?.resolve()?.id,
@@ -594,6 +596,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
     }
 
     private fun loadLanguageDetails(contentProviderCallback: (String) -> String?) {
+        val protoShortByLanguage = mutableMapOf<Language, String>()
         for (language in languages.values) {
             val content = contentProviderCallback(language.shortName + "/language.json")
                 ?: throw IllegalStateException("Can't find language details file for language ${language.shortName}")
@@ -614,6 +617,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                 }
             }
             language.diphthongs = data.diphthongs
+            data.protoLanguageShortName?.let { protoShortByLanguage[language] = it }
             language.stressRule = data.stressRuleId?.let { ruleRef(this, it) }
             language.phonotacticsRule = data.phonotacticsRuleId?.let { ruleRef(this, it) }
             language.pronunciationRule = data.pronunciationRuleId?.let { ruleRef(this, it) }
@@ -623,6 +627,9 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             language.grammaticalCategories = deserializeWordCategories(data.grammaticalCategories)
             language.wordClasses = deserializeWordCategories(data.wordClasses)
             language.dictionarySettings = data.dictionarySettings
+        }
+        for ((lang, protoShort) in protoShortByLanguage) {
+            lang.protoLanguage = languageByShortName(protoShort)
         }
     }
 

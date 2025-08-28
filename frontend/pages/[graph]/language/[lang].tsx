@@ -1,5 +1,5 @@
 import Link from "next/link";
-import {useState} from "react";
+import {useContext, useState} from "react";
 import {fetchBackend, updateLanguage, fetchAllLanguagePaths, allowEdit, copyPhonemes} from "@/api";
 import {useRouter} from "next/router";
 import Breadcrumbs from "@/components/Breadcrumbs";
@@ -9,6 +9,8 @@ import FormRow from "@/components/FormRow";
 import FormTextArea from "@/components/FormTextArea";
 import RuleListSelect from "@/components/RuleListSelect";
 import RuleLink from "@/components/RuleLink";
+import { GlobalStateContext } from "@/components/Contexts";
+import LanguageSelect from "@/components/LanguageSelect";
 
 export const config = {
     unstable_runtimeJS: true
@@ -40,6 +42,12 @@ export default function LanguageIndex(props) {
         }
     }
 
+    const globalState = useContext(GlobalStateContext)
+    const protoLanguageName = 
+        (globalState !== undefined && lang.protoLanguageShortName  !== undefined)
+                ? globalState.languages.find((g) => g.shortName === lang.protoLanguageShortName)?.name
+                : lang.protoLanguageShortName
+
     return <>
         <Breadcrumbs title={lang.name + (lang.reconstructed ? " (reconstructed)" : "")}/>
 
@@ -50,52 +58,54 @@ export default function LanguageIndex(props) {
         {' '}| <Link href={`/${graph}/rules/${langId}`}>Rules</Link>
         {' '}| <Link href={`/${graph}/corpus/${langId}`}>Corpus</Link>
 
-        <h3>Phonetics</h3>
-        {lang.phonemes.map(pt => <>
-            <h4>{pt.title}</h4>
-            {(pt.rows.length > 1 || pt.columnTitles.length > 0) && <table className="tableWithBorders phonemeTable">
-                <thead><tr>
-                    <th/>
-                    {pt.columnTitles.map(ct => <th>{ct}</th>)}
-                </tr></thead>
-                <tbody>
-                {pt.rows.map(pr => <tr>
-                    <th scope="row">{pr.title}</th>
-                    {pr.cells.map(pc => <td>
-                        {pc.phonemes.map((p, i) => <>
-                            {i > 0 && ", "}
-                            <Link href={`/${graph}/phoneme/${p.id}`}>{p.graphemes[0]}</Link>
-                            {p.sound.length > 0 && ` /${p.sound}/`}
-                        </>)}
-                    </td>)}
-                </tr>)}
-                </tbody>
-            </table>}
-            {(pt.rows.length === 1 && pt.columnTitles.length === 0 && <ul>
-                {pt.rows[0].cells.map(c => <li>
-                    <Link href={`/${graph}/phoneme/${c.phonemes[0].id}`}>{c.phonemes[0].graphemes.join(", ")}</Link>
-                    {c.phonemes[0].sound.length > 0 && ` /${c.phonemes[0].sound}/`}
-                    {' '}&ndash;{' '}
-                    {c.phonemes[0].classes}
-                </li>)}
-            </ul>)}
-        </>)}
-        {allowEdit() && <>
-            <p/>
-            <button onClick={() => router.push(`/${graph}/phonemes/${langId}/new`)}>Add Phoneme</button>
-            {lang.phonemes.length === 0 &&<>
-                {' '}
-                <button className="inlineButton" onClick={() => setShowCopyPhonemesForm(!showCopyPhonemesForm)}>Copy phonemes</button>
-                {showCopyPhonemesForm && <>
-                    <p/>
-                    Copy phonemes from: <input type="text" value={copyPhonemesFrom} onChange={(e) => setCopyPhonemesFrom(e.target.value)}/><p/>
-                    <button onClick={() => copyPhonemesClicked()}>Copy</button>
-                </>}
-            </>}
-        </>}
-
         <EtymographFormView>
             <View>
+                {lang.protoLanguageShortName != null && <p>Proto-language: <Link href={`/${graph}/language/${lang.protoLanguageShortName}`}>{protoLanguageName}</Link></p>}
+
+                <h3>Phonetics</h3>
+                {lang.phonemes.map(pt => <>
+                    <h4>{pt.title}</h4>
+                    {(pt.rows.length > 1 || pt.columnTitles.length > 0) && <table className="tableWithBorders phonemeTable">
+                        <thead><tr>
+                            <th/>
+                            {pt.columnTitles.map(ct => <th>{ct}</th>)}
+                        </tr></thead>
+                        <tbody>
+                        {pt.rows.map(pr => <tr>
+                            <th scope="row">{pr.title}</th>
+                            {pr.cells.map(pc => <td>
+                                {pc.phonemes.map((p, i) => <>
+                                    {i > 0 && ", "}
+                                    <Link href={`/${graph}/phoneme/${p.id}`}>{p.graphemes[0]}</Link>
+                                    {p.sound.length > 0 && ` /${p.sound}/`}
+                                </>)}
+                            </td>)}
+                        </tr>)}
+                        </tbody>
+                    </table>}
+                    {(pt.rows.length === 1 && pt.columnTitles.length === 0 && <ul>
+                        {pt.rows[0].cells.map(c => <li>
+                            <Link href={`/${graph}/phoneme/${c.phonemes[0].id}`}>{c.phonemes[0].graphemes.join(", ")}</Link>
+                            {c.phonemes[0].sound.length > 0 && ` /${c.phonemes[0].sound}/`}
+                            {' '}&ndash;{' '}
+                            {c.phonemes[0].classes}
+                        </li>)}
+                    </ul>)}
+                </>)}
+                {allowEdit() && <>
+                    <p/>
+                    <button onClick={() => router.push(`/${graph}/phonemes/${langId}/new`)}>Add Phoneme</button>
+                    {lang.phonemes.length === 0 &&<>
+                        {' '}
+                        <button className="inlineButton" onClick={() => setShowCopyPhonemesForm(!showCopyPhonemesForm)}>Copy phonemes</button>
+                        {showCopyPhonemesForm && <>
+                            <p/>
+                            Copy phonemes from: <input type="text" value={copyPhonemesFrom} onChange={(e) => setCopyPhonemesFrom(e.target.value)}/><p/>
+                            <button onClick={() => copyPhonemesClicked()}>Copy</button>
+                        </>}
+                    </>}
+                </>}
+
                 {lang.diphthongs.length > 0 && <p>Diphthongs: {lang.diphthongs.join(", ")}</p>}
                 {lang.syllableStructures.length > 0 && <p>Syllable structures: {lang.syllableStructures.join(", ")}</p>}
                 {lang.stressRuleName != null && <p>Stress rule: <Link href={`/${graph}/rule/${lang.stressRuleId}`}>{lang.stressRuleName}</Link></p>}
@@ -142,6 +152,7 @@ export default function LanguageIndex(props) {
                     }}
             >
                 <table><tbody>
+                    <LanguageSelect label="Proto-language" id="protoLanguageShortName"/>
                     <FormRow label="Diphthongs" id="diphthongs"/>
                     <FormRow label="Syllable structures" id="syllableStructures"/>
                     <RuleListSelect label="Stress rule" id="stressRuleName" language={langId}/>

@@ -102,6 +102,22 @@ paths:
         "200":
           description: "OK"
   /{graph}/languages:
+    get:
+      summary: "GET {graph}/languages"
+      operationId: "treeJson"
+      parameters:
+        - name: "graph"
+          in: "path"
+          required: false
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/LanguageShortViewModel"
     post:
       summary: "POST {graph}/languages"
       operationId: "addLanguage"
@@ -1683,6 +1699,11 @@ components:
           type: "array"
           items:
             type: "string"
+        descendantLanguages:
+          nullable: true
+          type: "array"
+          items:
+            $ref: "#/components/schemas/LanguageShortViewModel"
       required:
         - "name"
         - "shortName"

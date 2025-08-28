@@ -207,6 +207,7 @@ export type LanguageShortViewModel = {
     pos: Array<WordCategoryValueViewModel>;
     wordClasses: Array<WordCategoryViewModel>;
     dictionaries: Array<(string)>;
+    descendantLanguages?: Array<LanguageShortViewModel> | null;
 };
 
 export type LanguageViewModel = {

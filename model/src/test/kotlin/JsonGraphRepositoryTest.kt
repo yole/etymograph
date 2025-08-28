@@ -244,4 +244,15 @@ class JsonGraphRepositoryTest : QBaseTest() {
         val link2 = repo2.getLinksFrom(la2).single()
         assertEquals(seq.name, link2.sequence!!.name)
     }
+
+    @Test
+    fun serializeProtoLanguage() {
+        repo.addLanguage(ce)
+        val qLang = repo.languageByShortName("Q")!!
+        qLang.protoLanguage = ce
+
+        val repo2 = repo.roundtrip()
+        val q2 = repo2.languageByShortName("Q")!!
+        assertEquals("CE", q2.protoLanguage?.shortName)
+    }
 }
