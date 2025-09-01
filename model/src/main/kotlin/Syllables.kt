@@ -1,6 +1,8 @@
 package ru.yole.etymograph
 
-class Syllable(val startIndex: Int, val endIndex: Int, val vowelIndex: Int, val closed: Boolean)
+class Syllable(val startIndex: Int, val endIndex: Int, val vowelIndex: Int, val closed: Boolean) {
+    val length = endIndex - startIndex
+}
 
 data class MutableSyllable(var startIndex: Int, var endIndex: Int, val vowelIndex: Int, var closed: Boolean)
 

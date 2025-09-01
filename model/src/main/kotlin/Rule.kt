@@ -127,7 +127,7 @@ class RuleApplyContext(
     val rule: Rule,
     val branch: RuleBranch?,
     val graph: GraphRepository,
-    val originalWord: Word?,
+    val originalWord: Word? = null,
     val trace: RuleTrace? = null
 )
 

@@ -231,7 +231,7 @@ open class RuleInstruction(val type: InstructionType, val arg: String, val comme
     }
 
     companion object {
-        fun parse(s: String, context: RuleParseContext, prefix: String = "-", comment: String?): RuleInstruction {
+        fun parse(s: String, context: RuleParseContext, prefix: String = "-", comment: String? = null): RuleInstruction {
             if (s.startsWith("*")) {
                 val conditionPos = s.indexOf(" if ")
                 val conditionText = if (conditionPos >= 0) s.substring(conditionPos + 4).trim() else null
@@ -363,8 +363,14 @@ class ApplySoundRuleInstruction(language: Language, val ruleRef: RuleRef, arg: S
     override fun apply(word: Word, context: RuleApplyContext): Word {
         if (seekTarget == null) return word
         val phonemes = PhonemeIterator(word.asPhonemic(), context.graph)
+
         if (phonemes.seek(seekTarget)) {
-            ruleRef.resolve().applyToPhoneme(word, phonemes, context.graph, context.trace)
+            val count = if (seekTarget.syllable) (seekTarget.targetSyllable(phonemes.syllables)?.length ?: 1) else 1
+            val rule = ruleRef.resolve()
+            for (i in 0..<count) {
+                rule.applyToPhoneme(word, phonemes, context.graph, context.trace)
+                if (!phonemes.advance()) break
+            }
             val segments = remapSegments(phonemes, word.segments)
             return word.derive(phonemes.result(), segments = segments, phonemic = true, keepStress = false)
                 .asOrthographic()

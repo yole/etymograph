@@ -66,9 +66,9 @@ object RelativeOrdinals : OrdinalTable(
     )
 )
 
-class SeekTarget(val index: Int, val phonemeClass: PhonemeClass?, val relative: Boolean = false) {
+class SeekTarget(val index: Int, val phonemeClass: PhonemeClass?, val relative: Boolean = false, val syllable: Boolean = false) {
     fun toEditableText(): String {
-        val targetSound = phonemeClass?.name ?: "sound"
+        val targetSound = phonemeClass?.name ?: (if (syllable) "syllable" else "sound")
         val indexAsString = if (relative) RelativeOrdinals.toString(index) else Ordinals.toString(index)
         return "$indexAsString $targetSound"
     }
@@ -76,7 +76,14 @@ class SeekTarget(val index: Int, val phonemeClass: PhonemeClass?, val relative: 
     fun toRichText(): RichText {
         return (if (relative) RelativeOrdinals.toString(index) else Ordinals.toString(index)).rich(true) +
             " ".rich() +
-            (phonemeClass?.toRichText() ?: "sound".rich())
+            (phonemeClass?.toRichText() ?: (if (syllable) "syllable" else "sound").rich())
+    }
+
+    fun targetSyllable(syllables: List<Syllable>?): Syllable? {
+        if (syllables == null) return null
+        val absIndex = Ordinals.toAbsoluteIndex(index, syllables.size)
+        if (absIndex >= syllables.size) return null
+        return syllables[absIndex]
     }
 
     companion object {
@@ -86,13 +93,18 @@ class SeekTarget(val index: Int, val phonemeClass: PhonemeClass?, val relative: 
                 ?: RelativeOrdinals.parse(s)?.also { relative = true }
                 ?: throw RuleParseException("Cannot parse seek target $s")
 
+            var syllable = false
             val phonemeClass = if (phonemeClassName == "sound")
                 null
+            else if (phonemeClassName == "syllable") {
+                syllable = true
+                null
+            }
             else {
                 language.phonemeClassByName(phonemeClassName)
                     ?: throw RuleParseException("Unknown phoneme class '$phonemeClassName'")
             }
-            return SeekTarget(index, phonemeClass, relative)
+            return SeekTarget(index, phonemeClass, relative, syllable)
         }
 
         fun parse(buffer: ParseBuffer, language: Language): SeekTarget? {
@@ -263,11 +275,18 @@ class PhonemeIterator {
     }
 
     fun seek(seekTarget: SeekTarget): Boolean {
+        if (seekTarget.syllable) {
+            val syllable = seekTarget.targetSyllable(syllables) ?: return false
+            advanceTo(syllable.startIndex)
+            return true
+        }
         if (seekTarget.relative) {
-            return if (seekTarget.phonemeClass != null)
+            return if (seekTarget.phonemeClass != null) {
                 advanceToClass(seekTarget.phonemeClass, seekTarget.index)
-            else
+            }
+            else {
                 advanceBy(seekTarget.index)
+            }
         }
 
         val targetPhonemeClass = seekTarget.phonemeClass

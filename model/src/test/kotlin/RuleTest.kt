@@ -94,10 +94,10 @@ class RuleTest : QBaseTest() {
 
     @Test
     fun instructionParse() {
-        val i = RuleInstruction.parse("- sound disappears", q.parseContext(), comment = null)
+        val i = RuleInstruction.parse("- sound disappears", q.parseContext())
         assertEquals(InstructionType.SoundDisappears, i.type)
 
-        val i2 = RuleInstruction.parse("- append 'a'", q.parseContext(), comment = null)
+        val i2 = RuleInstruction.parse("- append 'a'", q.parseContext())
         assertEquals(InstructionType.Append, i2.type)
         assertEquals("'a'", i2.arg)
     }
@@ -850,8 +850,6 @@ class RuleTest : QBaseTest() {
         assertEquals(3, result.stressedPhonemeIndex)
     }
 
-    /*
-
     @Test
     fun applyRuleToSyllable() {
         val soundRule = parseRule(q, q, """
@@ -861,10 +859,12 @@ class RuleTest : QBaseTest() {
         val repo = InMemoryGraphRepository()
         repo.addRule(soundRule)
 
-        val instruction = RuleInstruction.parse("- apply sound rule 'q-long' to first syllable", q.parseContext(repo))
-        assertEquals("túl", instruction.apply(q.word("tul"), emptyRepo).text)
+        val text = "apply sound rule 'q-long' to first syllable"
+        val instruction = RuleInstruction.parse("- $text", q.parseContext(repo))
+        val context = RuleApplyContext(soundRule, null, emptyRepo)
+        assertEquals("túl", instruction.apply(q.word("tul"), context).text)
+        assertEquals(text, instruction.toEditableText(repo))
     }
-     */
 
     /*
     @Test
