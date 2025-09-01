@@ -528,49 +528,55 @@ class SpePattern(
             val result = mutableListOf<SpeNode>()
             var pos = 0
             while (pos < text.length) {
-                if (text[pos] == '[') {
-                    val classEnd = text.indexOf(']', pos)
-                    if (classEnd < 0) {
-                        throw SpeParseException("Missing closing bracket in character class")
-                    }
-                    val classText = text.substring(pos + 1, classEnd)
-                    result.add(SpePhonemeClassNode(language, parseClass(language, classText)))
-                    pos = classEnd + 1
-                }
-                else if (text[pos] == '{') {
-                    val alternativeEnd = text.indexOf('}', pos)
-                    if (alternativeEnd < 0) {
-                        throw SpeParseException("Missing curly brace in alternative")
-                    }
-                    val choices = text.substring(pos + 1, alternativeEnd).split('|')
-                    result.add(SpeAlternativeNode(choices.map { parseNodes(language, it) }))
-                    pos = alternativeEnd + 1
-                }
-                else if (text[pos] == '(') {
-                    val optionalEnd = text.indexOf(')', pos)
-                    if (optionalEnd < 0) {
-                        throw SpeParseException("Missing closing parenthesis in optional")
-                    }
-                    val optionalPart = text.substring(pos + 1, optionalEnd)
-                    result.add(SpeOptionalNode(parseNodes(language, optionalPart)))
-                    pos = optionalEnd + 1
-                }
-                else if (text[pos] == '!') {
-                    val nextPhoneme = language.phonoPhonemeLookup.nextPhoneme(text, pos + 1)
-                    result.add(SpeNegateNode(nodeFromPhoneme(nextPhoneme, language)))
-                    pos += nextPhoneme.length + 1
+                val (nextPos, node) = parseNextNode(text, pos, language)
+                if (node is SpeRepeatNode) {
+                    result[result.size - 1] = SpeRepeatNode(result.last())
                 }
                 else {
-                    val nextPhoneme = language.phonoPhonemeLookup.nextPhoneme(text, pos)
-                    if (nextPhoneme == "0") {
-                        result[result.size - 1] = SpeRepeatNode(result.last())
-                    } else {
-                        result.add(nodeFromPhoneme(nextPhoneme, language))
-                    }
-                    pos += nextPhoneme.length
+                    result.add(node)
                 }
+                pos = nextPos
             }
             return result
+        }
+
+        private fun parseNextNode(text: String, pos: Int, language: Language): Pair<Int, SpeNode> {
+            if (text[pos] == '[') {
+                val classEnd = text.indexOf(']', pos)
+                if (classEnd < 0) {
+                    throw SpeParseException("Missing closing bracket in character class")
+                }
+                val classText = text.substring(pos + 1, classEnd)
+                return classEnd + 1 to SpePhonemeClassNode(language, parseClass(language, classText))
+            }
+            else if (text[pos] == '{') {
+                val alternativeEnd = text.indexOf('}', pos)
+                if (alternativeEnd < 0) {
+                    throw SpeParseException("Missing curly brace in alternative")
+                }
+                val choices = text.substring(pos + 1, alternativeEnd).split('|')
+                return alternativeEnd + 1 to SpeAlternativeNode(choices.map { parseNodes(language, it) })
+            }
+            else if (text[pos] == '(') {
+                val optionalEnd = text.indexOf(')', pos)
+                if (optionalEnd < 0) {
+                    throw SpeParseException("Missing closing parenthesis in optional")
+                }
+                val optionalPart = text.substring(pos + 1, optionalEnd)
+                return optionalEnd + 1 to SpeOptionalNode(parseNodes(language, optionalPart))
+            }
+            else if (text[pos] == '!') {
+                val (nextPos, nextNode) = parseNextNode(text, pos + 1, language)
+                return nextPos to SpeNegateNode(nextNode)
+            }
+            else {
+                val nextPhoneme = language.phonoPhonemeLookup.nextPhoneme(text, pos)
+                if (nextPhoneme == "0") {
+                    return pos + nextPhoneme.length to SpeRepeatNode(SpeLiteralNode(""))
+                } else {
+                    return pos + nextPhoneme.length to nodeFromPhoneme(nextPhoneme, language)
+                }
+            }
         }
 
         private fun nodeFromPhoneme(nextPhoneme: String, language: Language) = when (nextPhoneme) {
