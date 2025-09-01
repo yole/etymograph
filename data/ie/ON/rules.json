@@ -1180,29 +1180,20 @@
             {
                 "instructions": [
                     {
-                        "type": "NoChange",
-                        "args": []
-                    }
-                ],
-                "condition": {
-                    "type": "relPhoneme",
-                    "cls": "diphthong",
-                    "relative": false
-                }
-            },
-            {
-                "instructions": [
-                    {
-                        "type": "ChangeSound",
+                        "type": "Spe",
+                        "condition": {
+                            "type": "relPhoneme",
+                            "negated": true,
+                            "cls": "diphthong",
+                            "relative": false
+                        },
                         "args": [
-                            "ö"
+                            "a > ö"
                         ]
                     }
                 ],
                 "condition": {
-                    "type": "relPhoneme",
-                    "parameter": "a",
-                    "relative": false
+                    "type": "otherwise"
                 }
             }
         ]
@@ -2519,7 +2510,7 @@
                         "type": "ApplySoundRule",
                         "args": [
                             "5031",
-                            "second to last vowel"
+                            "second to last syllable"
                         ]
                     },
                     {
@@ -2557,7 +2548,7 @@
                         "type": "ApplySoundRule",
                         "args": [
                             "5031",
-                            "last vowel"
+                            "last syllable"
                         ]
                     },
                     {
@@ -3357,7 +3348,7 @@
                         "type": "ApplySoundRule",
                         "args": [
                             "5448",
-                            "second to last vowel"
+                            "second to last syllable"
                         ]
                     },
                     {
@@ -3389,7 +3380,7 @@
                         "type": "ApplySoundRule",
                         "args": [
                             "5448",
-                            "last vowel"
+                            "last syllable"
                         ]
                     },
                     {
@@ -4738,308 +4729,85 @@
             {
                 "instructions": [
                     {
-                        "type": "ChangeSound",
-                        "args": [
-                            "ei"
-                        ]
-                    }
-                ],
-                "condition": {
-                    "type": "and",
-                    "members": [
-                        {
+                        "type": "Spe",
+                        "condition": {
                             "type": "leaf",
                             "cond": "ClassMatches",
                             "characters": "v-strong-1"
                         },
-                        {
-                            "type": "relPhoneme",
-                            "parameter": "í",
-                            "relative": false
-                        }
-                    ]
-                }
-            },
-            {
-                "instructions": [
-                    {
-                        "type": "ChangeSound",
                         "args": [
-                            "au"
+                            "í > ei"
                         ]
                     },
                     {
-                        "type": "SoundDisappears",
-                        "args": [
-                            "-1"
-                        ]
-                    }
-                ],
-                "condition": {
-                    "type": "and",
-                    "members": [
-                        {
+                        "type": "Spe",
+                        "condition": {
                             "type": "leaf",
                             "cond": "ClassMatches",
                             "characters": "v-strong-2"
                         },
-                        {
-                            "type": "or",
-                            "members": [
-                                {
-                                    "type": "relPhoneme",
-                                    "parameter": "ú",
-                                    "relative": false
-                                },
-                                {
-                                    "type": "relPhoneme",
-                                    "parameter": "ó",
-                                    "relative": false
-                                }
-                            ]
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": -1,
-                            "parameter": "j"
-                        }
-                    ]
-                }
-            },
-            {
-                "instructions": [
-                    {
-                        "type": "ChangeSound",
                         "args": [
-                            "au"
-                        ]
-                    }
-                ],
-                "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "v-strong-2"
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "parameter": "ú",
-                            "relative": false
-                        }
-                    ]
-                }
-            },
-            {
-                "instructions": [
-                    {
-                        "type": "ChangeSound",
-                        "args": [
-                            "a"
+                            "{jú|jó|ú} > {au|au|au}"
                         ]
                     },
                     {
-                        "type": "SoundDisappears",
-                        "args": [
-                            "-1"
-                        ]
-                    }
-                ],
-                "condition": {
-                    "type": "and",
-                    "members": [
-                        {
+                        "type": "Spe",
+                        "condition": {
                             "type": "leaf",
                             "cond": "ClassMatches",
                             "characters": "v-strong-3"
                         },
-                        {
-                            "type": "or",
-                            "members": [
-                                {
-                                    "type": "relPhoneme",
-                                    "parameter": "a",
-                                    "relative": false
-                                },
-                                {
-                                    "type": "relPhoneme",
-                                    "parameter": "á",
-                                    "relative": false
-                                }
-                            ]
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": -1,
-                            "parameter": "j"
-                        }
-                    ]
-                }
-            },
-            {
-                "instructions": [
-                    {
-                        "type": "ChangeSound",
                         "args": [
-                            "a"
+                            "{ja|já|e|i} > a"
                         ]
-                    }
-                ],
-                "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "v-strong-3"
-                        },
-                        {
-                            "type": "or",
-                            "members": [
-                                {
-                                    "type": "relPhoneme",
-                                    "parameter": "e",
-                                    "relative": false
-                                },
-                                {
-                                    "type": "relPhoneme",
-                                    "parameter": "i",
-                                    "relative": false
-                                }
-                            ]
-                        }
-                    ]
-                }
-            },
-            {
-                "instructions": [
+                    },
                     {
-                        "type": "ChangeSound",
-                        "args": [
-                            "a"
-                        ]
-                    }
-                ],
-                "condition": {
-                    "type": "and",
-                    "members": [
-                        {
+                        "type": "Spe",
+                        "condition": {
                             "type": "leaf",
                             "cond": "ClassMatches",
                             "characters": "v-strong-4"
                         },
-                        {
-                            "type": "relPhoneme",
-                            "parameter": "e",
-                            "relative": false
-                        }
-                    ]
-                }
-            },
-            {
-                "instructions": [
-                    {
-                        "type": "ChangeSound",
                         "args": [
-                            "a"
+                            "e > a"
                         ]
-                    }
-                ],
-                "condition": {
-                    "type": "and",
-                    "members": [
-                        {
+                    },
+                    {
+                        "type": "Spe",
+                        "condition": {
                             "type": "leaf",
                             "cond": "ClassMatches",
                             "characters": "v-strong-5"
                         },
-                        {
-                            "type": "or",
-                            "members": [
-                                {
-                                    "type": "relPhoneme",
-                                    "parameter": "e",
-                                    "relative": false
-                                },
-                                {
-                                    "type": "relPhoneme",
-                                    "parameter": "i",
-                                    "relative": false
-                                }
-                            ]
-                        }
-                    ]
-                }
-            },
-            {
-                "instructions": [
-                    {
-                        "type": "ChangeSound",
                         "args": [
-                            "ó"
+                            "{e|i} > a"
                         ]
-                    }
-                ],
-                "condition": {
-                    "type": "and",
-                    "members": [
-                        {
+                    },
+                    {
+                        "type": "Spe",
+                        "condition": {
                             "type": "leaf",
                             "cond": "ClassMatches",
                             "characters": "v-strong-6"
                         },
-                        {
-                            "type": "or",
-                            "members": [
-                                {
-                                    "type": "relPhoneme",
-                                    "parameter": "a",
-                                    "relative": false
-                                },
-                                {
-                                    "type": "relPhoneme",
-                                    "parameter": "á",
-                                    "relative": false
-                                },
-                                {
-                                    "type": "relPhoneme",
-                                    "parameter": "e",
-                                    "relative": false
-                                },
-                                {
-                                    "type": "relPhoneme",
-                                    "parameter": "æ",
-                                    "relative": false
-                                }
-                            ]
-                        }
-                    ]
-                }
-            },
-            {
-                "instructions": [
-                    {
-                        "type": "ChangeSound",
                         "args": [
-                            "é"
+                            "{a|á|e|æ} > ó"
                         ]
-                    }
-                ],
-                "condition": {
-                    "type": "and",
-                    "members": [
-                        {
+                    },
+                    {
+                        "type": "Spe",
+                        "condition": {
                             "type": "leaf",
                             "cond": "ClassMatches",
                             "characters": "v-strong-7"
                         },
-                        {
-                            "type": "relPhoneme",
-                            "parameter": "á",
-                            "relative": false
-                        }
-                    ]
+                        "args": [
+                            "á > é"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
                 }
             }
         ],
@@ -5065,7 +4833,7 @@
                         "type": "ApplySoundRule",
                         "args": [
                             "5033",
-                            "second to last vowel"
+                            "second to last syllable"
                         ]
                     },
                     {
@@ -5097,7 +4865,7 @@
                         "type": "ApplySoundRule",
                         "args": [
                             "5033",
-                            "second to last vowel"
+                            "second to last syllable"
                         ]
                     },
                     {
@@ -5196,303 +4964,85 @@
             {
                 "instructions": [
                     {
-                        "type": "ChangeSound",
-                        "args": [
-                            "i"
-                        ]
-                    }
-                ],
-                "condition": {
-                    "type": "and",
-                    "members": [
-                        {
+                        "type": "Spe",
+                        "condition": {
                             "type": "leaf",
                             "cond": "ClassMatches",
                             "characters": "v-strong-1"
                         },
-                        {
-                            "type": "relPhoneme",
-                            "parameter": "í",
-                            "relative": false
-                        }
-                    ]
-                }
-            },
-            {
-                "instructions": [
-                    {
-                        "type": "ChangeSound",
                         "args": [
-                            "u"
+                            "í > i"
                         ]
                     },
                     {
-                        "type": "SoundDisappears",
-                        "args": [
-                            "-1"
-                        ]
-                    }
-                ],
-                "condition": {
-                    "type": "and",
-                    "members": [
-                        {
+                        "type": "Spe",
+                        "condition": {
                             "type": "leaf",
                             "cond": "ClassMatches",
                             "characters": "v-strong-2"
                         },
-                        {
-                            "type": "or",
-                            "members": [
-                                {
-                                    "type": "relPhoneme",
-                                    "parameter": "ú",
-                                    "relative": false
-                                },
-                                {
-                                    "type": "relPhoneme",
-                                    "parameter": "ó",
-                                    "relative": false
-                                }
-                            ]
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": -1,
-                            "parameter": "j"
-                        }
-                    ]
-                }
-            },
-            {
-                "instructions": [
-                    {
-                        "type": "ChangeSound",
                         "args": [
-                            "u"
-                        ]
-                    }
-                ],
-                "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "v-strong-2"
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "parameter": "ú",
-                            "relative": false
-                        }
-                    ]
-                }
-            },
-            {
-                "instructions": [
-                    {
-                        "type": "ChangeSound",
-                        "args": [
-                            "u"
+                            "{jú|jó|ú} > u"
                         ]
                     },
                     {
-                        "type": "SoundDisappears",
-                        "args": [
-                            "-1"
-                        ]
-                    }
-                ],
-                "condition": {
-                    "type": "and",
-                    "members": [
-                        {
+                        "type": "Spe",
+                        "condition": {
                             "type": "leaf",
                             "cond": "ClassMatches",
                             "characters": "v-strong-3"
                         },
-                        {
-                            "type": "or",
-                            "members": [
-                                {
-                                    "type": "relPhoneme",
-                                    "parameter": "a",
-                                    "relative": false
-                                },
-                                {
-                                    "type": "relPhoneme",
-                                    "parameter": "á",
-                                    "relative": false
-                                }
-                            ]
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": -1,
-                            "parameter": "j"
-                        }
-                    ]
-                }
-            },
-            {
-                "instructions": [
-                    {
-                        "type": "ChangeSound",
                         "args": [
-                            "u"
+                            "{ja|já|e|i} > u"
                         ]
-                    }
-                ],
-                "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "v-strong-3"
-                        },
-                        {
-                            "type": "or",
-                            "members": [
-                                {
-                                    "type": "relPhoneme",
-                                    "parameter": "e",
-                                    "relative": false
-                                },
-                                {
-                                    "type": "relPhoneme",
-                                    "parameter": "i",
-                                    "relative": false
-                                }
-                            ]
-                        }
-                    ]
-                }
-            },
-            {
-                "instructions": [
+                    },
                     {
-                        "type": "ChangeSound",
-                        "args": [
-                            "á"
-                        ]
-                    }
-                ],
-                "condition": {
-                    "type": "and",
-                    "members": [
-                        {
+                        "type": "Spe",
+                        "condition": {
                             "type": "leaf",
                             "cond": "ClassMatches",
                             "characters": "v-strong-4"
                         },
-                        {
-                            "type": "relPhoneme",
-                            "parameter": "e",
-                            "relative": false
-                        }
-                    ]
-                }
-            },
-            {
-                "instructions": [
-                    {
-                        "type": "ChangeSound",
                         "args": [
-                            "á"
+                            "e > á"
                         ]
-                    }
-                ],
-                "condition": {
-                    "type": "and",
-                    "members": [
-                        {
+                    },
+                    {
+                        "type": "Spe",
+                        "condition": {
                             "type": "leaf",
                             "cond": "ClassMatches",
                             "characters": "v-strong-5"
                         },
-                        {
-                            "type": "or",
-                            "members": [
-                                {
-                                    "type": "relPhoneme",
-                                    "parameter": "e",
-                                    "relative": false
-                                },
-                                {
-                                    "type": "relPhoneme",
-                                    "parameter": "i",
-                                    "relative": false
-                                }
-                            ]
-                        }
-                    ]
-                }
-            },
-            {
-                "instructions": [
-                    {
-                        "type": "ChangeSound",
                         "args": [
-                            "ó"
+                            "{e|i} > á"
                         ]
-                    }
-                ],
-                "condition": {
-                    "type": "and",
-                    "members": [
-                        {
+                    },
+                    {
+                        "type": "Spe",
+                        "condition": {
                             "type": "leaf",
                             "cond": "ClassMatches",
                             "characters": "v-strong-6"
                         },
-                        {
-                            "type": "or",
-                            "members": [
-                                {
-                                    "type": "relPhoneme",
-                                    "parameter": "a",
-                                    "relative": false
-                                },
-                                {
-                                    "type": "relPhoneme",
-                                    "parameter": "e",
-                                    "relative": false
-                                },
-                                {
-                                    "type": "relPhoneme",
-                                    "parameter": "æ",
-                                    "relative": false
-                                }
-                            ]
-                        }
-                    ]
-                }
-            },
-            {
-                "instructions": [
-                    {
-                        "type": "ChangeSound",
                         "args": [
-                            "é"
+                            "{a|e|æ} > ó"
                         ]
-                    }
-                ],
-                "condition": {
-                    "type": "and",
-                    "members": [
-                        {
+                    },
+                    {
+                        "type": "Spe",
+                        "condition": {
                             "type": "leaf",
                             "cond": "ClassMatches",
                             "characters": "v-strong-7"
                         },
-                        {
-                            "type": "relPhoneme",
-                            "parameter": "á",
-                            "relative": false
-                        }
-                    ]
+                        "args": [
+                            "á > é"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
                 }
             }
         ],
@@ -7187,384 +6737,130 @@
             {
                 "instructions": [
                     {
-                        "type": "ChangeSound",
-                        "args": [
-                            "i"
-                        ]
-                    }
-                ],
-                "condition": {
-                    "type": "and",
-                    "members": [
-                        {
+                        "type": "Spe",
+                        "condition": {
                             "type": "leaf",
                             "cond": "ClassMatches",
                             "characters": "v-strong-1"
                         },
-                        {
-                            "type": "relPhoneme",
-                            "parameter": "í",
-                            "relative": false
-                        }
-                    ]
-                }
-            },
-            {
-                "instructions": [
-                    {
-                        "type": "ChangeSound",
                         "args": [
-                            "o"
+                            "í > i"
                         ]
                     },
                     {
-                        "type": "SoundDisappears",
-                        "args": [
-                            "-1"
-                        ]
-                    }
-                ],
-                "condition": {
-                    "type": "and",
-                    "members": [
-                        {
+                        "type": "Spe",
+                        "condition": {
                             "type": "leaf",
                             "cond": "ClassMatches",
                             "characters": "v-strong-2"
                         },
-                        {
-                            "type": "or",
-                            "members": [
-                                {
-                                    "type": "relPhoneme",
-                                    "parameter": "ú",
-                                    "relative": false
-                                },
-                                {
-                                    "type": "relPhoneme",
-                                    "parameter": "ó",
-                                    "relative": false
-                                }
-                            ]
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": -1,
-                            "parameter": "j"
-                        }
-                    ]
-                }
-            },
-            {
-                "instructions": [
-                    {
-                        "type": "ChangeSound",
                         "args": [
-                            "o"
-                        ]
-                    }
-                ],
-                "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "v-strong-2"
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "parameter": "ú",
-                            "relative": false
-                        }
-                    ]
-                }
-            },
-            {
-                "instructions": [
-                    {
-                        "type": "ChangeSound",
-                        "args": [
-                            "u"
-                        ]
-                    }
-                ],
-                "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "v-strong-3"
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "parameter": "e",
-                            "relative": false
-                        },
-                        {
-                            "type": "or",
-                            "members": [
-                                {
-                                    "type": "relPhoneme",
-                                    "relativeIndex": 1,
-                                    "parameter": "m"
-                                },
-                                {
-                                    "type": "relPhoneme",
-                                    "relativeIndex": 1,
-                                    "parameter": "n"
-                                }
-                            ]
-                        }
-                    ]
-                }
-            },
-            {
-                "instructions": [
-                    {
-                        "type": "ChangeSound",
-                        "args": [
-                            "o"
-                        ]
-                    }
-                ],
-                "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "v-strong-3"
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "parameter": "e",
-                            "relative": false
-                        }
-                    ]
-                }
-            },
-            {
-                "instructions": [
-                    {
-                        "type": "ChangeSound",
-                        "args": [
-                            "u"
-                        ]
-                    }
-                ],
-                "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "v-strong-3"
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "parameter": "i",
-                            "relative": false
-                        }
-                    ]
-                }
-            },
-            {
-                "instructions": [
-                    {
-                        "type": "ChangeSound",
-                        "args": [
-                            "o"
+                            "{jú|jó|ú} > o"
                         ]
                     },
                     {
-                        "type": "SoundDisappears",
-                        "args": [
-                            "-1"
-                        ]
-                    }
-                ],
-                "condition": {
-                    "type": "and",
-                    "members": [
-                        {
+                        "type": "Spe",
+                        "condition": {
                             "type": "leaf",
                             "cond": "ClassMatches",
                             "characters": "v-strong-3"
                         },
-                        {
-                            "type": "or",
-                            "members": [
-                                {
-                                    "type": "relPhoneme",
-                                    "parameter": "a",
-                                    "relative": false
-                                },
-                                {
-                                    "type": "relPhoneme",
-                                    "parameter": "á",
-                                    "relative": false
-                                }
-                            ]
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": -1,
-                            "parameter": "j"
-                        }
-                    ]
-                }
-            },
-            {
-                "instructions": [
-                    {
-                        "type": "ChangeSound",
                         "args": [
-                            "o"
+                            "e > u / _{m|n}"
                         ]
-                    }
-                ],
-                "condition": {
-                    "type": "and",
-                    "members": [
-                        {
+                    },
+                    {
+                        "type": "Spe",
+                        "condition": {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "v-strong-3"
+                        },
+                        "args": [
+                            "e > o / _!{m|n}"
+                        ]
+                    },
+                    {
+                        "type": "Spe",
+                        "condition": {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "v-strong-3"
+                        },
+                        "args": [
+                            "i > u"
+                        ]
+                    },
+                    {
+                        "type": "Spe",
+                        "condition": {
+                            "type": "leaf",
+                            "cond": "ClassMatches",
+                            "characters": "v-strong-3"
+                        },
+                        "args": [
+                            "{ja|já} > o"
+                        ]
+                    },
+                    {
+                        "type": "Spe",
+                        "condition": {
                             "type": "leaf",
                             "cond": "ClassMatches",
                             "characters": "v-strong-4"
                         },
-                        {
-                            "type": "relPhoneme",
-                            "parameter": "e",
-                            "relative": false
-                        }
-                    ]
-                }
-            },
-            {
-                "instructions": [
-                    {
-                        "type": "ChangeSound",
                         "args": [
-                            "e"
+                            "e > o"
                         ]
-                    }
-                ],
-                "condition": {
-                    "type": "and",
-                    "members": [
-                        {
+                    },
+                    {
+                        "type": "Spe",
+                        "condition": {
                             "type": "leaf",
                             "cond": "ClassMatches",
                             "characters": "v-strong-5"
                         },
-                        {
-                            "type": "or",
-                            "members": [
-                                {
-                                    "type": "relPhoneme",
-                                    "parameter": "e",
-                                    "relative": false
-                                },
-                                {
-                                    "type": "relPhoneme",
-                                    "parameter": "i",
-                                    "relative": false
-                                }
-                            ]
-                        }
-                    ]
-                }
-            },
-            {
-                "instructions": [
-                    {
-                        "type": "ChangeSound",
                         "args": [
-                            "a"
+                            "{e|i} > e"
                         ]
-                    }
-                ],
-                "condition": {
-                    "type": "and",
-                    "members": [
-                        {
+                    },
+                    {
+                        "type": "Spe",
+                        "condition": {
                             "type": "leaf",
                             "cond": "ClassMatches",
                             "characters": "v-strong-6"
                         },
-                        {
-                            "type": "relPhoneme",
-                            "parameter": "e",
-                            "relative": false
-                        }
-                    ]
-                }
-            },
-            {
-                "instructions": [
-                    {
-                        "type": "ChangeSound",
                         "args": [
-                            "e"
+                            "e > a"
                         ]
-                    }
-                ],
-                "condition": {
-                    "type": "and",
-                    "members": [
-                        {
+                    },
+                    {
+                        "type": "Spe",
+                        "condition": {
                             "type": "leaf",
                             "cond": "ClassMatches",
                             "characters": "v-strong-6"
                         },
-                        {
-                            "type": "relPhoneme",
-                            "parameter": "a",
-                            "relative": false
-                        },
-                        {
-                            "type": "or",
-                            "members": [
-                                {
-                                    "type": "relPhoneme",
-                                    "relativeIndex": 1,
-                                    "parameter": "k"
-                                },
-                                {
-                                    "type": "relPhoneme",
-                                    "relativeIndex": 1,
-                                    "parameter": "g"
-                                }
-                            ]
-                        }
-                    ]
-                },
-                "comment": "Barnes 2008 3.6.9.1 (4)"
-            },
-            {
-                "instructions": [
-                    {
-                        "type": "ChangeSound",
                         "args": [
-                            "e"
-                        ]
-                    }
-                ],
-                "condition": {
-                    "type": "and",
-                    "members": [
-                        {
+                            "a > e / _{k|g}"
+                        ],
+                        "comment": "Barnes 2008 3.6.9.1 (4)"
+                    },
+                    {
+                        "type": "Spe",
+                        "condition": {
                             "type": "leaf",
                             "cond": "ClassMatches",
                             "characters": "v-strong-6"
                         },
-                        {
-                            "type": "relPhoneme",
-                            "parameter": "á",
-                            "relative": false
-                        }
-                    ]
+                        "args": [
+                            "á > e"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
                 }
             }
         ],
