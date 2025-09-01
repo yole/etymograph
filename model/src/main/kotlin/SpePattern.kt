@@ -549,7 +549,7 @@ class SpePattern(
                 else if (text[pos] == '(') {
                     val optionalEnd = text.indexOf(')', pos)
                     if (optionalEnd < 0) {
-                        throw SpeParseException("Missing curly brace in alternative")
+                        throw SpeParseException("Missing closing parenthesis in optional")
                     }
                     val optionalPart = text.substring(pos + 1, optionalEnd)
                     result.add(SpeOptionalNode(parseNodes(language, optionalPart)))
