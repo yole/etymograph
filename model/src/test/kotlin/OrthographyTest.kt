@@ -54,6 +54,21 @@ class OrthographyTest : QBaseTest() {
         assertEquals(1, ortho.segments!![0].length)
     }
 
+    @Test
+    fun orthographyRuleReference() {
+        val rule = parseRule(ce, ce, "* ks > x\n* ts > z")
+        ce.orthographyRule = RuleRef.to(rule)
+        val oksum = ce.word("oksum").apply { isPhonemic = true }
+        val oks = ce.word("oks")
+        val ox = ce.word("ox")
+        assertEquals("oksum", oksum.asOrthographic(oks).text)
+        assertEquals("oxum", oksum.asOrthographic(ox).text)
+
+        val voxtr = ce.word("voxtr")
+        val voxts = ce.word("voksts").apply { isPhonemic = true }
+        assertEquals("voxts", voxts.asOrthographic(voxtr).text)
+    }
+
     @Test fun pronunciationRule() {
         ce.phonemes = listOf(
             phoneme(listOf("y"), "j", "semivowel"),

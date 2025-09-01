@@ -123,6 +123,14 @@ class LineBuffer(s: String) {
     }
 }
 
+class RuleApplyContext(
+    val rule: Rule,
+    val branch: RuleBranch?,
+    val graph: GraphRepository,
+    val originalWord: Word?,
+    val trace: RuleTrace? = null
+)
+
 class RuleBranch(val condition: RuleCondition, val instructions: List<RuleInstruction>, val comment: String? = null) {
     fun matches(word: Word, graph: GraphRepository, trace: RuleTrace? = null): Boolean {
         val result = condition.matches(word, graph, trace)
@@ -130,8 +138,8 @@ class RuleBranch(val condition: RuleCondition, val instructions: List<RuleInstru
         return result
     }
 
-    fun apply(rule: Rule, word: Word, graph: GraphRepository, trace: RuleTrace? = null): Word {
-        return instructions.apply(rule, this, word, graph, trace)
+    fun apply(rule: Rule, word: Word, originalWord: Word, graph: GraphRepository, trace: RuleTrace? = null): Word {
+        return instructions.apply(word, RuleApplyContext(rule, this, graph, originalWord, trace))
     }
 
     fun reverseApply(rule: Rule, word: Word, graph: GraphRepository, trace: RuleTrace? = null): List<String> {
@@ -295,13 +303,14 @@ class Rule(
 
         val paradigm = graph.paradigmForRule(this)
         val paraPreWord = if (applyPrePostRules) (paradigm?.preRule?.apply(word, graph, trace, preserveId = true) ?: word) else word
-        val preWord = logic.preInstructions.apply(this, null, paraPreWord, graph)
+        val prePostApplyContext = RuleApplyContext(this, null, graph, word, trace)
+        val preWord = logic.preInstructions.apply(paraPreWord, prePostApplyContext)
         for (branch in logic.branches) {
             if (branch.matches(preWord, graph, trace)) {
                 trace?.logMatchedBranch(this, word, null, branch)
-                var resultWord = branch.apply(this, preWord, graph, trace)
+                var resultWord = branch.apply(this, preWord, word, graph, trace)
                 if (!isSPE()) {
-                    resultWord = logic.postInstructions.apply(this, null, resultWord, graph)
+                    resultWord = logic.postInstructions.apply(resultWord, prePostApplyContext)
                 }
                 if (applyPrePostRules) {
                     resultWord = paradigm?.postRule?.apply(resultWord, graph, trace, preserveId = true) ?: resultWord

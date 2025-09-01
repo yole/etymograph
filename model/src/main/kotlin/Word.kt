@@ -1,7 +1,6 @@
 package ru.yole.etymograph
 
 import java.util.*
-import kotlin.math.exp
 import kotlin.math.min
 
 class WordSegment(
@@ -127,14 +126,18 @@ class Word(
         return derive(phonemicText, id = id, phonemic = true, segments = newSegments)
     }
 
-    fun asOrthographic(): Word {
+    fun asOrthographic(referenceWord: Word? = null): Word {
         if (!isPhonemic) return this
         val orthoRule = language.orthographyRule?.resolve()
         var wordSegments = segments
         val orthoText: String = if (orthoRule != null) {
-            val it = PhonemeIterator(this, null, resultPhonemic = false)
+            var refIt = referenceWord?.let { PhonemeIterator(it, null) }
+            var it = PhonemeIterator(this, null, resultPhonemic = false)
             while (true) {
-                orthoRule.applyToPhoneme(this, it, InMemoryGraphRepository.EMPTY)
+                if (refIt?.current != it.current) {
+                    orthoRule.applyToPhoneme(this, it, InMemoryGraphRepository.EMPTY)
+                }
+                if (refIt?.advance() == false) refIt = null
                 if (!it.advance()) break
             }
             wordSegments = remapSegments(it, wordSegments)

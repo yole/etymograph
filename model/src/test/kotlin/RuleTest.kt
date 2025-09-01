@@ -10,6 +10,7 @@ import ru.yole.etymograph.JsonGraphRepository.Companion.toSerializedFormat
 
 class RuleTest : QBaseTest() {
     private val dummyRule = parseRule(q, q, "- append 'a'")
+    private val dummyContext = RuleApplyContext(dummyRule, null, emptyRepo, null)
 
     lateinit var repo: GraphRepository
 
@@ -28,7 +29,7 @@ class RuleTest : QBaseTest() {
     @Test
     fun instructions() {
         val i = PrependAppendInstruction(InstructionType.Append, q, "'a'", null)
-        assertEquals("parma", i.apply(dummyRule, null, q.word("parm"), emptyRepo).text)
+        assertEquals("parma", i.apply(q.word("parm"), dummyContext).text)
     }
 
     @Test
@@ -39,7 +40,8 @@ class RuleTest : QBaseTest() {
         val r = RuleBranch(c, listOf(i2))
 
         assertTrue(r.matches(Word(0, "lasse", q), emptyRepo))
-        assertEquals("atani", r.apply(dummyRule, q.word("atan"), emptyRepo).text)
+        val word = q.word("atan")
+        assertEquals("atani", r.apply(dummyRule, word, word, emptyRepo).text)
     }
 
     @Test
@@ -333,7 +335,7 @@ class RuleTest : QBaseTest() {
         """.trimIndent()
         )
         val applySoundRuleInstruction = ApplySoundRuleInstruction(q, RuleRef.to(soundRule), "first vowel", null)
-        assertEquals("lásse", applySoundRuleInstruction.apply(soundRule, null, q.word("lasse"), emptyRepo).text)
+        assertEquals("lásse", applySoundRuleInstruction.apply(q.word("lasse"), dummyContext).text)
     }
 
     @Test
@@ -554,10 +556,10 @@ class RuleTest : QBaseTest() {
     fun prepend() {
         val rule = parseRule(q, q, "- prepend first vowel")
         val instruction = rule.logic.branches[0].instructions[0]
-        assertEquals("utul", instruction.apply(rule, null, q.word("tul"), emptyRepo).text)
+        assertEquals("utul", instruction.apply(q.word("tul"), dummyContext).text)
         val data = instruction.toSerializedFormat()
         val deserialized = ruleInstructionFromSerializedFormat(emptyRepo, q, q, data)
-        assertEquals("utul", deserialized.apply(rule, null, q.word("tul"), emptyRepo).text)
+        assertEquals("utul", deserialized.apply(q.word("tul"), dummyContext).text)
         assertEquals("prepend first vowel", instruction.toEditableText(repo))
     }
 

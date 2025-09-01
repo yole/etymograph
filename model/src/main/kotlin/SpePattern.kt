@@ -385,6 +385,7 @@ private fun applyNodes(it: PhonemeIterator, relativeIndex: Int, context: SpeCont
         for (i in afterLength..<beforeLength) {
             it.deleteAtRelative(i + relativeIndex)
         }
+        it.advanceBy(beforeLength - afterLength)
     }
 }
 
