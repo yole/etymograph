@@ -212,6 +212,7 @@
                             "type": "relPhoneme",
                             "relativeIndex": -1,
                             "negated": true,
+                            "tcls": "sound",
                             "parameter": "j"
                         },
                         "args": [
@@ -224,6 +225,7 @@
                             "type": "relPhoneme",
                             "relativeIndex": -1,
                             "negated": true,
+                            "tcls": "sound",
                             "parameter": "w"
                         },
                         "args": [
@@ -301,6 +303,7 @@
                         "condition": {
                             "type": "relPhoneme",
                             "relativeIndex": -1,
+                            "tcls": "sound",
                             "cls": "non-diphthong short vowel"
                         },
                         "args": [
@@ -333,6 +336,7 @@
                                 {
                                     "type": "relPhoneme",
                                     "relativeIndex": -1,
+                                    "tcls": "sound",
                                     "cls": "non-diphthong short vowel"
                                 }
                             ]
@@ -417,6 +421,7 @@
                                             {
                                                 "type": "relPhoneme",
                                                 "relativeIndex": -1,
+                                                "tcls": "sound",
                                                 "cls": "consonant"
                                             },
                                             {
@@ -425,11 +430,13 @@
                                                     {
                                                         "type": "relPhoneme",
                                                         "relativeIndex": -2,
+                                                        "tcls": "sound",
                                                         "parameter": "i"
                                                     },
                                                     {
                                                         "type": "relPhoneme",
                                                         "relativeIndex": -2,
+                                                        "tcls": "sound",
                                                         "parameter": "u"
                                                     }
                                                 ]
@@ -590,6 +597,7 @@
                         "condition": {
                             "type": "relPhoneme",
                             "relativeIndex": -1,
+                            "tcls": "sound",
                             "cls": "stressed"
                         },
                         "args": [
@@ -733,6 +741,7 @@
                             "type": "relPhoneme",
                             "relativeIndex": -1,
                             "negated": true,
+                            "tcls": "sound",
                             "parameter": "m"
                         },
                         {

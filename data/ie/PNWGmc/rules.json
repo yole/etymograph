@@ -132,11 +132,13 @@
                                     "type": "relPhoneme",
                                     "relativeIndex": -1,
                                     "negated": true,
+                                    "tcls": "sound",
                                     "parameter": "w"
                                 },
                                 {
                                     "type": "relPhoneme",
                                     "relativeIndex": 1,
+                                    "tcls": "sound",
                                     "cls": "non-stressed"
                                 }
                             ]
@@ -250,6 +252,7 @@
                             "type": "relPhoneme",
                             "relativeIndex": -1,
                             "negated": true,
+                            "tcls": "sound",
                             "parameter": "m"
                         },
                         {

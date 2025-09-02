@@ -48,6 +48,7 @@
                             "type": "relPhoneme",
                             "relativeIndex": -1,
                             "negated": true,
+                            "tcls": "sound",
                             "parameter": "m"
                         },
                         {

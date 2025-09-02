@@ -3875,6 +3875,7 @@
                 "condition": {
                     "type": "relPhoneme",
                     "relativeIndex": -1,
+                    "tcls": "sound",
                     "cls": "long vowel",
                     "relative": false
                 }
@@ -3914,6 +3915,7 @@
                         {
                             "type": "relPhoneme",
                             "relativeIndex": -2,
+                            "tcls": "sound",
                             "cls": "consonant",
                             "relative": false
                         }
@@ -4382,6 +4384,7 @@
                         {
                             "type": "relPhoneme",
                             "relativeIndex": -1,
+                            "tcls": "sound",
                             "parameter": "j"
                         }
                     ]
@@ -4428,6 +4431,7 @@
                         {
                             "type": "relPhoneme",
                             "relativeIndex": -1,
+                            "tcls": "sound",
                             "parameter": "j"
                         },
                         {
@@ -4509,6 +4513,7 @@
                         {
                             "type": "relPhoneme",
                             "relativeIndex": -1,
+                            "tcls": "sound",
                             "parameter": "j"
                         }
                     ]
@@ -4555,6 +4560,7 @@
                         {
                             "type": "relPhoneme",
                             "relativeIndex": -1,
+                            "tcls": "sound",
                             "parameter": "j"
                         }
                     ]
@@ -5963,6 +5969,7 @@
                         {
                             "type": "relPhoneme",
                             "relativeIndex": -1,
+                            "tcls": "sound",
                             "cls": "vowel"
                         }
                     ]
@@ -7095,11 +7102,13 @@
                                         {
                                             "type": "relPhoneme",
                                             "relativeIndex": 1,
+                                            "tcls": "sound",
                                             "parameter": "u"
                                         },
                                         {
                                             "type": "relPhoneme",
                                             "relativeIndex": 1,
+                                            "tcls": "sound",
                                             "cls": "consonant"
                                         },
                                         {
@@ -7131,11 +7140,13 @@
                                         {
                                             "type": "relPhoneme",
                                             "relativeIndex": 1,
+                                            "tcls": "sound",
                                             "parameter": "i"
                                         },
                                         {
                                             "type": "relPhoneme",
                                             "relativeIndex": 1,
+                                            "tcls": "sound",
                                             "cls": "consonant"
                                         },
                                         {
@@ -7251,13 +7262,13 @@
                                 {
                                     "type": "phonemeEquals",
                                     "index": -1,
-                                    "cls": null,
+                                    "cls": "sound",
                                     "relative": true
                                 },
                                 {
                                     "type": "phonemeEquals",
                                     "index": -2,
-                                    "cls": null,
+                                    "cls": "sound",
                                     "relative": true
                                 }
                             ]
@@ -7313,6 +7324,7 @@
                         "condition": {
                             "type": "relPhoneme",
                             "relativeIndex": -1,
+                            "tcls": "sound",
                             "cls": "stressed long front vowel"
                         },
                         "args": [
@@ -7324,6 +7336,7 @@
                         "condition": {
                             "type": "relPhoneme",
                             "relativeIndex": -1,
+                            "tcls": "sound",
                             "cls": "stressed long back open vowel"
                         },
                         "args": [
@@ -7335,6 +7348,7 @@
                         "condition": {
                             "type": "relPhoneme",
                             "relativeIndex": -1,
+                            "tcls": "sound",
                             "cls": "stressed long back vowel"
                         },
                         "args": [
