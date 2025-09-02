@@ -148,10 +148,10 @@ class PhonemePattern(val phonemeClass: PhonemeClass?, val literal: String?) {
          (literal == null || phonemes.current == literal)
 
     fun toRichText(): RichText {
-        return listOf(
+        return listOfNotNull(
             phonemeClass?.toRichText(),
             literal?.let { "'$it'" }?.rich(emph = true)
-        ).filterNotNull().joinToRichText(" ") { richText(it) }
+        ).joinToRichText(" ") { richText(it) }
     }
 
     fun toEditableText(): String =
