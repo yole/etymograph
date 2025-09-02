@@ -140,7 +140,7 @@ class RelativePhonemeRuleConditionData(
     val baseLanguageShortName: String? = null
 ): RuleConditionData() {
     override fun toRuntimeFormat(result: GraphRepository, fromLanguage: Language): RuleCondition {
-        val targetPhonemeClass = requiredPhonemeClassByName(fromLanguage, targetPhonemeClassName)
+        val targetPhonemeClass = requiredPhonemeClassByName(fromLanguage, targetPhonemeClassName) ?: PhonemeClass.sound
         return RelativePhonemeRuleCondition(
             negated,
             relativeIndex?.let { SeekTarget(it, targetPhonemeClass, relative) },
@@ -163,9 +163,9 @@ class PhonemeEqualsRuleConditionData(
 ) : RuleConditionData() {
     override fun toRuntimeFormat(result: GraphRepository, fromLanguage: Language): RuleCondition {
         return PhonemeEqualsRuleCondition(
-            SeekTarget(index, phonemeClassName?.let { fromLanguage.phonemeClassByName(it) }, relative),
+            SeekTarget(index, phonemeClassName?.let { fromLanguage.phonemeClassByName(it) } ?: PhonemeClass.sound, relative),
             matchIndex?.let {
-                SeekTarget(it, matchPhonemeClassName?.let { fromLanguage.phonemeClassByName(it) }, matchRelative == true)
+                SeekTarget(it, matchPhonemeClassName?.let { fromLanguage.phonemeClassByName(it) } ?: PhonemeClass.sound, matchRelative == true)
             },
             negated
         )

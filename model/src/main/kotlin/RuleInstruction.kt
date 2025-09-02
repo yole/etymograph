@@ -365,7 +365,7 @@ class ApplySoundRuleInstruction(language: Language, val ruleRef: RuleRef, arg: S
         val phonemes = PhonemeIterator(word.asPhonemic(), context.graph)
 
         if (phonemes.seek(seekTarget)) {
-            val count = if (seekTarget.syllable) (seekTarget.targetSyllable(phonemes.syllables)?.length ?: 1) else 1
+            val count = if (seekTarget.phonemeClass == null) (seekTarget.targetSyllable(phonemes.syllables)?.length ?: 1) else 1
             val rule = ruleRef.resolve()
             for (i in 0..<count) {
                 rule.applyToPhoneme(word, phonemes, context.graph, context.trace)

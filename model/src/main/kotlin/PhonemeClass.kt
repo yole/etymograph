@@ -9,6 +9,10 @@ open class PhonemeClass(val name: String, var matchingPhonemes: List<String> = e
         name.rich(emph = true, tooltip = matchingPhonemes.takeIf { it.isNotEmpty() }?.joinToString(", "))
 
     companion object {
+        val sound = object : PhonemeClass("sound") {
+            override fun matchesCurrent(it: PhonemeIterator) = true
+        }
+
         val diphthong = object : PhonemeClass("diphthong") {
             override fun matchesCurrent(it: PhonemeIterator): Boolean {
                 return isDiphthongHead(it) || isDiphthongTail(it)
@@ -83,13 +87,14 @@ open class PhonemeClass(val name: String, var matchingPhonemes: List<String> = e
             }
         }
 
-        val geminate = object  : PhonemeClass("geminate") {
+        val geminate = object : PhonemeClass("geminate") {
             override fun matchesCurrent(it: PhonemeIterator): Boolean {
                 return it.current == it.atRelative(1) || it.current == it.atRelative(-1)
             }
         }
 
         val specialPhonemeClasses = listOf(
+            sound,
             diphthong, stressed, nucleus,
             wordInitial, wordFinal,
             syllableInitial, syllableFinal,

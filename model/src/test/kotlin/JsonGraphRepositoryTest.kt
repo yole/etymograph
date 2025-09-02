@@ -62,6 +62,16 @@ class JsonGraphRepositoryTest : QBaseTest() {
     }
 
     @Test
+    fun serializePhonemeEqualsCondition() {
+        val text = "C > 0 if sound is same as previous sound"
+        val rule = parseRule(q, q, "* $text")
+
+        val serializedData = rule.ruleToSerializedFormat()
+        val branches = ruleBranchesFromSerializedFormat(repo, q, q, serializedData.branches)
+        assertEquals(text, branches[0].instructions[0].toEditableText(repo))
+    }
+
+    @Test
     fun serializeSpeRule() {
         val rule = parseRule(q, q, "* d > l / #_ if number of syllables is 1")
 

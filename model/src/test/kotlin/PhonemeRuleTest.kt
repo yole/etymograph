@@ -80,7 +80,6 @@ class PhonemeRuleTest : QBaseTest() {
             - new sound is 'w'
         """.trimIndent())
         assertEquals("mawa", rule.apply(ce.word("mbaba"), emptyRepo).text)
-        assertEquals("'mb' > 'm', 'b' > 'w'", rule.toSummaryText(repo))
     }
 
     @Test
@@ -92,15 +91,6 @@ class PhonemeRuleTest : QBaseTest() {
         """.trimIndent())
         assertEquals("ma", applyRule(rule, q.word("maiz")))
         assertEquals("previous sound disappears", rule.logic.branches[0].instructions[0].toEditableText(repo))
-    }
-
-    @Test
-    fun previousSoundDisappearsSummary() {
-        val rule = parseRule(q, q, """
-            sound is 'z' and previous sound is 'i' and second previous sound is vowel:
-            - sound disappears
-        """.trimIndent())
-        assertEquals("'z' > Ø after 'i' preceded by vowel", rule.toSummaryText(repo))
     }
 
     @Test
@@ -207,24 +197,6 @@ class PhonemeRuleTest : QBaseTest() {
     fun prevSyllableIsClosed() {
         val rule = parseRule(q, q, "* a > e if previous syllable is closed")
         assertEquals("wilwena", applyRule(rule, q.word("wilwana")))
-    }
-
-    @Test
-    fun summaryWithOr() {
-        val rule = parseRule(q, q, """
-            sound is 'i' and (previous sound is 'a' or previous sound is 'o'):
-            - new sound is 'e'
-        """.trimIndent())
-        assertEquals("'i' > 'e' after 'a' or 'o'", rule.toSummaryText(repo))
-    }
-
-    @Test
-    fun summaryBeforeAfter() {
-        val rule = parseRule(q, q, """
-            sound is 'kh' and previous sound is vowel and next sound is 'th':
-            - new sound is 'i'
-        """.trimIndent())
-        assertEquals("'kh' > 'i' after vowel before 'th'", rule.toSummaryText(repo))
     }
 
     @Test

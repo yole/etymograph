@@ -36,34 +36,25 @@ class ParseBuffer(val s: String) {
     fun parsePhonemePattern(language: Language): PhonemePattern? {
         consumeQuoted()?.let { return PhonemePattern(null, it) }
         consume(LeafRuleCondition.indefiniteArticle)
-        val characterClass = parsePhonemeClass(language, false) ?: return null
+        val characterClass = parsePhonemeClass(language) ?: return null
         return PhonemePattern(characterClass, consumeQuoted())
     }
 
-    fun parsePhonemeClass(language: Language, allowSound: Boolean): PhonemeClass? {
-        if (consume("sound") && allowSound) {
-            return null
-        }
-        else {
-            var phonemeClassName = nextWord() ?: throw RuleParseException("Phoneme class name expected")
-            var mark = pos
-            while (true) {
-                val nextPhonemeClass = nextWord()
-                if (nextPhonemeClass == null || language.phonemeClassByName(nextPhonemeClass) == null) {
-                    pos = mark
-                    break
-                }
-                phonemeClassName = "$phonemeClassName $nextPhonemeClass"
-                mark = pos
+    fun parsePhonemeClass(language: Language): PhonemeClass? {
+        var phonemeClassName = nextWord() ?: throw RuleParseException("Phoneme class name expected")
+        var mark = pos
+        while (true) {
+            val nextPhonemeClass = nextWord()
+            if (nextPhonemeClass == null || language.phonemeClassByName(nextPhonemeClass) == null) {
+                pos = mark
+                break
             }
+            phonemeClassName = "$phonemeClassName $nextPhonemeClass"
+            mark = pos
+        }
 
-            val characterClass = language.phonemeClassByName(phonemeClassName)
-            if (characterClass == null) {
-                if (!allowSound) return null
-                throw RuleParseException("Unrecognized character class $phonemeClassName")
-            }
-            return characterClass
-        }
+        val characterClass = language.phonemeClassByName(phonemeClassName) ?: return null
+        return characterClass
     }
 
     fun nextWord(): String? {
