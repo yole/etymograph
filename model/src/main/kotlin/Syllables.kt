@@ -6,6 +6,29 @@ class Syllable(val startIndex: Int, val endIndex: Int, val vowelIndex: Int, val 
 
 data class MutableSyllable(var startIndex: Int, var endIndex: Int, val vowelIndex: Int, var closed: Boolean)
 
+abstract class SyllableClass(val name: String) {
+    abstract fun matches(word: Word?, syllable: Syllable): Boolean
+
+    override fun toString(): String = name
+
+    companion object {
+        val syllable = object : SyllableClass("syllable") {
+            override fun matches(word: Word?, syllable: Syllable) = true
+        }
+
+        val stressedSyllable = object : SyllableClass("stressed syllable") {
+            override fun matches(word: Word?, syllable: Syllable): Boolean {
+                val stress = word?.calcStressedPhonemeIndex(null) ?: return false
+                return stress in syllable.startIndex..<syllable.endIndex
+            }
+        }
+
+        val allClasses = listOf(syllable, stressedSyllable)
+
+        fun find(name: String) = allClasses.find { it.name == name }
+    }
+}
+
 fun breakIntoSyllables(word: Word): List<Syllable> {
     val vowels = word.language.phonemeClassByName(PhonemeClass.vowelClassName)
         ?: return emptyList()

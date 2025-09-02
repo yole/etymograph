@@ -852,10 +852,7 @@ class RuleTest : QBaseTest() {
 
     @Test
     fun applyRuleToSyllable() {
-        val soundRule = parseRule(q, q, """
-            sound is 'u':
-            - new sound is 'ú'
-        """.trimIndent(), "q-long")
+        val soundRule = parseRule(q, q, "* u > ú", "q-long")
         val repo = InMemoryGraphRepository()
         repo.addRule(soundRule)
 
@@ -865,6 +862,22 @@ class RuleTest : QBaseTest() {
         assertEquals("túl", instruction.apply(q.word("tul"), context).text)
         assertEquals(text, instruction.toEditableText(repo))
     }
+
+    @Test
+    fun applyRuleToStressedSyllable() {
+        val soundRule = parseRule(q, q, "* u > ú", "q-long")
+        val stressRule = parseRule(q, q, "- stress is on last syllable")
+        q.stressRule = RuleRef.to(stressRule)
+        val repo = InMemoryGraphRepository()
+        repo.addRule(soundRule)
+
+        val text = "apply sound rule 'q-long' to first stressed syllable"
+        val instruction = RuleInstruction.parse("- $text", q.parseContext(repo))
+        val context = RuleApplyContext(soundRule, null, repo)
+        assertEquals("tulún", instruction.apply(q.word("tulun"), context).text)
+        assertEquals(text, instruction.toEditableText(repo))
+    }
+
 
     /*
     @Test
