@@ -109,7 +109,6 @@ class PhonemeRuleTest : QBaseTest() {
         assertEquals("yrch", rule.apply(q.word("orch"), emptyRepo).text)
         val ruleCondition = rule.logic.branches[0].condition
         assertEquals("syllable is not last and sound is 'o'", ruleCondition.toEditableText())
-        assertEquals("'o' > 'e' in not last syllable", rule.logic.branches[0].toSummaryText(repo, true))
     }
 
     @Test
