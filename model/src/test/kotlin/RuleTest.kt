@@ -407,10 +407,7 @@ class RuleTest : QBaseTest() {
     fun applySoundRuleCase() {
         q.phonemes = listOf(phoneme(listOf("c", "k"), "k", ""), phoneme(listOf("ch"), "x", ""))
         val soundRule = parseRule(
-            q, q, """
-            sound is 'p':
-            - new sound is 'ph'
-        """.trimIndent(), name = "q-lengthen-sound"
+            q, q, "* p > ph", name = "q-lengthen-sound"
         )
         val parseContext = q.parseContext(null, soundRule)
         val applySoundRule = Rule(
@@ -420,7 +417,7 @@ class RuleTest : QBaseTest() {
         """.trimIndent(), parseContext
             )
         )
-        assertEquals("pherian", applySoundRule.apply(q.word("Perian"), emptyRepo).text)
+        assertEquals("Pherian", applySoundRule.apply(q.word("Perian"), emptyRepo).text)
     }
 
     @Test

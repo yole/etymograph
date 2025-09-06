@@ -1,5 +1,8 @@
 package ru.yole.etymograph
 
+import java.util.Locale
+import java.util.Locale.getDefault
+
 class RuleParseException(msg: String): RuntimeException(msg)
 
 fun interface RuleRef {
@@ -317,7 +320,13 @@ class Rule(
                 }
 
                 val stressIndex = resultWord.remapViaCharacterIndex(resultWord.stressedPhonemeIndex, toLanguage, graph)
-                val result = deriveWord(word, resultWord.text, toLanguage, resultWord.isPhonemic, stressIndex,
+                val resultText = if (word.text.first().isUpperCase()) {
+                    resultWord.text.replaceFirstChar { it.titlecase(Locale.FRANCE) }
+                }
+                else {
+                    resultWord.text
+                }
+                val result = deriveWord(word, resultText, toLanguage, resultWord.isPhonemic, stressIndex,
                     resultWord.segments, resultWord.classes, normalizeSegments = normalizeSegments,
                     id = if (preserveId) word.id else -1,
                     stress = if (resultWord.explicitStress) resultWord.stressedPhonemeIndex else null)
