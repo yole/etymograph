@@ -6742,16 +6742,14 @@
             {
                 "instructions": [
                     {
-                        "type": "ChangeSound",
+                        "type": "Spe",
                         "args": [
-                            "ks"
+                            "x > ks"
                         ]
                     }
                 ],
                 "condition": {
-                    "type": "relPhoneme",
-                    "parameter": "x",
-                    "relative": false
+                    "type": "otherwise"
                 }
             }
         ]

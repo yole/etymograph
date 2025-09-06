@@ -233,35 +233,37 @@
             {
                 "instructions": [
                     {
-                        "type": "ChangeSound",
+                        "type": "Spe",
+                        "condition": {
+                            "type": "and",
+                            "members": [
+                                {
+                                    "type": "relPhoneme",
+                                    "cls": "non-word-initial",
+                                    "relative": false
+                                },
+                                {
+                                    "type": "relPhoneme",
+                                    "relativeIndex": -1,
+                                    "negated": true,
+                                    "tcls": "sound",
+                                    "parameter": "m"
+                                },
+                                {
+                                    "type": "relPhoneme",
+                                    "negated": true,
+                                    "cls": "geminate",
+                                    "relative": false
+                                }
+                            ]
+                        },
                         "args": [
-                            "β"
+                            "b > β"
                         ]
                     }
                 ],
                 "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "relPhoneme",
-                            "cls": "non-word-initial",
-                            "parameter": "b",
-                            "relative": false
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": -1,
-                            "negated": true,
-                            "tcls": "sound",
-                            "parameter": "m"
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "negated": true,
-                            "cls": "geminate",
-                            "relative": false
-                        }
-                    ]
+                    "type": "otherwise"
                 }
             }
         ]
@@ -275,16 +277,14 @@
             {
                 "instructions": [
                     {
-                        "type": "ChangeSound",
+                        "type": "Spe",
                         "args": [
-                            "b"
+                            "β > b"
                         ]
                     }
                 ],
                 "condition": {
-                    "type": "relPhoneme",
-                    "parameter": "β",
-                    "relative": false
+                    "type": "otherwise"
                 }
             }
         ]

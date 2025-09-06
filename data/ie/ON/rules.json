@@ -5727,27 +5727,19 @@
             {
                 "instructions": [
                     {
-                        "type": "SoundDisappears",
+                        "type": "Spe",
+                        "condition": {
+                            "type": "relPhoneme",
+                            "cls": "morpheme-initial",
+                            "relative": false
+                        },
                         "args": [
-                            "0"
+                            "V > 0 / V_"
                         ]
                     }
                 ],
                 "condition": {
-                    "type": "and",
-                    "members": [
-                        {
-                            "type": "relPhoneme",
-                            "cls": "morpheme-initial vowel",
-                            "relative": false
-                        },
-                        {
-                            "type": "relPhoneme",
-                            "relativeIndex": -1,
-                            "tcls": "sound",
-                            "cls": "vowel"
-                        }
-                    ]
+                    "type": "otherwise"
                 }
             }
         ]
