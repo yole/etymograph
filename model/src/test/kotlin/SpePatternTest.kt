@@ -263,6 +263,12 @@ class SpePatternTest : QBaseTest() {
     }
 
     @Test
+    fun deleteMultiple() {
+        val pattern = SpePattern.parse(q, q, "i > 0")
+        assertEquals("bar", pattern.apply(q, "baiir"))
+    }
+
+    @Test
     fun toStringSimple() {
         val pattern = SpePattern.parse(q, q, "a > o")
         assertEquals("a > o", pattern.toString())
