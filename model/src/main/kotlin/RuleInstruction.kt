@@ -18,7 +18,6 @@ enum class InstructionType(
     ApplyClass("mark word as", "mark word as (.*)", true),
     Disallow("disallow", "disallow", false),
     ChangeSound("new sound is", "new sound is '(.+)'", true),
-    SoundDisappears("sound disappears", RelativeOrdinals.toPattern() + "?sound disappears", true),
     Spe("SPE pattern", "", true);
 
     val regex = Regex(pattern ?: Regex.escape(insnName))
@@ -83,7 +82,6 @@ open class RuleInstruction(val type: InstructionType, val arg: String, val comme
     open fun apply(word: Word, phonemes: PhonemeIterator, graph: GraphRepository, trace: RuleTrace? = null) {
         when (type) {
             InstructionType.ChangeSound -> phonemes.replace(arg)
-            InstructionType.SoundDisappears -> phonemes.deleteAtRelative(if (arg.isEmpty()) 0 else arg.toInt())
             InstructionType.NoChange -> Unit
             else -> throw IllegalStateException("Can't apply word instruction to individual phoneme")
         }
@@ -92,9 +90,6 @@ open class RuleInstruction(val type: InstructionType, val arg: String, val comme
     open fun toEditableText(graph: GraphRepository): String = toRichText(graph).toString()
 
     open fun toRichText(graph: GraphRepository): RichText {
-        if (type == InstructionType.SoundDisappears && arg != "0" && arg.isNotEmpty()) {
-            return RelativeOrdinals.toString(arg.toInt()).rich() + " ".rich() + type.insnName.rich()
-        }
         if (type.pattern != null) {
             val argIndex = type.pattern.indexOfAny(listOf("(.+)", "(.*)"))
             if (argIndex > 0) {
@@ -174,7 +169,6 @@ open class RuleInstruction(val type: InstructionType, val arg: String, val comme
                             MorphemeInstruction(type, word.id, comment)
                         }
                         InstructionType.Insert -> InsertInstruction.parse(context.fromLanguage, match, comment)
-                        InstructionType.SoundDisappears -> RuleInstruction(type, RelativeOrdinals.parseMatch(match, 1).toString(), comment)
                         else -> RuleInstruction(type, arg, comment)
                     }
                 }
