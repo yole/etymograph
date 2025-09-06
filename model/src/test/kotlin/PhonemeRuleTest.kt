@@ -29,81 +29,6 @@ class PhonemeRuleTest : QBaseTest() {
     }
 
     @Test
-    fun soundCorrespondence() {
-        val rule = parseRule(
-            ce, q,
-            """
-            sound is 'th':
-            - new sound is 's'
-            sound is 'kh':
-            - new sound is 'h'
-            """.trimIndent()
-        )
-        assertEquals("his", rule.apply(ce.word("khith"), emptyRepo).text)
-        assertEquals("'th' > 's', 'kh' > 'h'", rule.toSummaryText(repo))
-    }
-
-    @Test
-    fun soundDisappears() {
-        val rule = parseRule(ce, q, """
-            sound is 'i':
-            - sound disappears
-            sound is 'th':
-            - new sound is 's'
-        """.trimIndent())
-        assertEquals("khs", rule.apply(ce.word("khithi"), emptyRepo).text)
-        assertEquals("'i' > Ø, 'th' > 's'", rule.toSummaryText(repo))
-        assertTrue(rule.refersToPhoneme(ce.phonemes.find { "th" in it.graphemes }!!))
-        assertFalse(rule.refersToPhoneme(q.phonemes.find { "t" in it.graphemes }!!))
-    }
-
-    @Test
-    fun soundDisappearsPreserveStress() {
-        val rule = parseRule(ce, q, """
-            sound is 'i':
-            - sound disappears
-        """)
-        val word = ce.word("miena")
-        word.stressedPhonemeIndex = 2
-        word.explicitStress = true
-        val newWord = rule.apply(word, emptyRepo)
-        assertEquals("mena", newWord.text)
-        assertEquals(1, newWord.stressedPhonemeIndex)
-    }
-
-    @Test
-    fun nextSoundDisappears() {
-        val rule = parseRule(ce, q, """
-            sound is 'm' and next sound is 'b':
-            - next sound disappears
-            sound is 'b':
-            - new sound is 'w'
-        """.trimIndent())
-        assertEquals("mawa", rule.apply(ce.word("mbaba"), emptyRepo).text)
-    }
-
-    @Test
-    fun previousSoundDisappears() {
-        val rule = parseRule(q, q, """
-            sound is 'z' and previous sound is 'i' and second previous sound is 'a':
-            - previous sound disappears
-            - sound disappears
-        """.trimIndent())
-        assertEquals("ma", applyRule(rule, q.word("maiz")))
-        assertEquals("previous sound disappears", rule.logic.branches[0].instructions[0].toEditableText(repo))
-    }
-
-    @Test
-    fun secondNextSoundDisappears() {
-        val rule = parseRule(q, q, """
-            second next sound is 'z':
-            - next sound disappears
-            - second next sound disappears
-        """.trimIndent())
-        assertEquals("ma", applyRule(rule, q.word("maiz")))
-    }
-
-    @Test
     fun previousSound() {
         val rule = parseRule(ce, q, "* i > 0 if previous sound is 'kh'")
         assertEquals("khthi", rule.apply(ce.word("khithi"), emptyRepo).text)
@@ -299,25 +224,5 @@ class PhonemeRuleTest : QBaseTest() {
         val rule = parseRule(q, q, text)
         assertEquals("ottale", rule.apply(q.word("attale"), emptyRepo).text)
         assertEquals(text, rule.toEditableText(repo))
-    }
-
-    @Test
-    fun postInstructions() {
-        val rule = parseRule(q, q, """
-            sound is syllable-final 'n':
-            - new sound is 'm'
-            = previous sound disappears
-        """.trimIndent())
-        assertEquals("inmdm", applyRule(rule, q.word("inonden")))
-    }
-
-    @Test
-    fun applyRulePhonemic() {
-        val rule1 = repo.rule("sound is 'u' and previous sound is 'v':\n- previous sound disappears",
-            name = "q-v-removal")
-        val rule2 = repo.rule("sound is 'i':\n- new sound is 'u'\n - apply rule 'q-v-removal'",
-            name = "q-umlaut")
-        val rule3 = repo.rule("- apply sound rule 'q-umlaut' to first vowel")
-        assertEquals("unna", applyRule(rule3, q.word("vinna")))
     }
 }

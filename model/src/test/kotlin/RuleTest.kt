@@ -94,8 +94,8 @@ class RuleTest : QBaseTest() {
 
     @Test
     fun instructionParse() {
-        val i = RuleInstruction.parse("- sound disappears", q.parseContext())
-        assertEquals(InstructionType.SoundDisappears, i.type)
+        val i = RuleInstruction.parse("- disallow", q.parseContext())
+        assertEquals(InstructionType.Disallow, i.type)
 
         val i2 = RuleInstruction.parse("- append 'a'", q.parseContext())
         assertEquals(InstructionType.Append, i2.type)

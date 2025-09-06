@@ -51,14 +51,12 @@ class JsonGraphRepositoryTest : QBaseTest() {
 
     @Test
     fun serializeRelativePhonemeRule() {
-        val rule = parseRule(q, q, """
-            sound is 'i' and previous sound is not vowel:
-            - sound disappears
-        """.trimIndent())
+        val text = "i > 0 if previous sound is not vowel"
+        val rule = parseRule(q, q, "* $text")
 
         val serializedData = rule.ruleToSerializedFormat()
         val branches = ruleBranchesFromSerializedFormat(repo, q, q, serializedData.branches)
-        assertEquals("sound is 'i' and previous sound is not vowel", branches[0].condition.toEditableText())
+        assertEquals(text, branches[0].instructions[0].toEditableText(repo))
     }
 
     @Test
@@ -186,12 +184,7 @@ class JsonGraphRepositoryTest : QBaseTest() {
         repo.addLanguage(ce)
         val rule = repo.addRule(
             "i-disappears", ce, q,
-            Rule.parseBranches(
-                """
-                sound is 'i' and previous sound is 'a':
-                - sound disappears
-            """.trimIndent(), q.parseContext(repo)
-            )
+            Rule.parseBranches("* i > 0 / a_ ", q.parseContext(repo))
         )
         return repo.addRuleSequence("ce-to-q", ce, q, listOf(RuleSequenceStep(rule, null,false, false)))
     }
@@ -199,7 +192,7 @@ class JsonGraphRepositoryTest : QBaseTest() {
     @Test
     fun serializeOrthographyRule() {
         val rule = repo.addRule("q-ortho", q, q,
-            Rule.parseBranches("sound is word-initial 'j':\n - new sound is 'y'", q.parseContext(repo)))
+            Rule.parseBranches("* u > j / #_", q.parseContext(repo)))
         q.orthographyRule = RuleRef.to(rule)
 
         val repo2 = repo.roundtrip()
