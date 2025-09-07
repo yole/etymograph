@@ -328,24 +328,14 @@ class RuleTest : QBaseTest() {
 
     @Test
     fun applySoundRule() {
-        val soundRule = parseRule(
-            q, q, """
-            sound is 'a':
-            - new sound is 'á'
-        """.trimIndent()
-        )
+        val soundRule = parseRule(q, q, "* a > á")
         val applySoundRuleInstruction = ApplySoundRuleInstruction(q, RuleRef.to(soundRule), "first vowel", null)
         assertEquals("lásse", applySoundRuleInstruction.apply(q.word("lasse"), dummyContext).text)
     }
 
     @Test
     fun parseApplySoundRule() {
-        val soundRule = parseRule(
-            q, q, """
-            sound is 'a':
-            - new sound is 'á'
-        """.trimIndent(), name = "q-lengthen"
-        )
+        val soundRule = parseRule(q, q, "* a > á", name = "q-lengthen")
         val parseContext = q.parseContext(null, soundRule)
         val applySoundRule = Rule(
             -1, "q-lengthen-first", q, q, Rule.parseBranches(
@@ -359,12 +349,7 @@ class RuleTest : QBaseTest() {
 
     @Test
     fun applySoundRuleToSound() {
-        val soundRule = parseRule(
-            q, q, """
-            sound is 'a':
-            - new sound is 'á'
-        """.trimIndent(), name = "q-lengthen-sound"
-        )
+        val soundRule = parseRule(q, q, "* a > á", name = "q-lengthen-sound")
         val parseContext = q.parseContext(null, soundRule)
         val applySoundRule = Rule(
             -1, "q-lengthen", q, q, Rule.parseBranches(
@@ -387,10 +372,7 @@ class RuleTest : QBaseTest() {
             phoneme(listOf("ch"), "x", "")
         )
         val soundRule = parseRule(
-            q, q, """
-            sound is 'k':
-            - new sound is 'x'
-        """.trimIndent(), name = "q-lengthen-sound"
+            q, q, "* k > x", name = "q-lengthen-sound"
         )
         val parseContext = q.parseContext(null, soundRule)
         val applySoundRule = Rule(
@@ -422,12 +404,7 @@ class RuleTest : QBaseTest() {
 
     @Test
     fun soundRuleToEditableText() {
-        val soundRule = parseRule(
-            q, q, """
-            sound is 'a':
-            - new sound is 'á'
-        """.trimIndent()
-        )
+        val soundRule = parseRule(q, q, "* a > á", name = "q")
         val applySoundRuleInstruction = ApplySoundRuleInstruction(q, RuleRef.to(soundRule), "first vowel", null)
         assertEquals("apply sound rule 'q' to first vowel", applySoundRuleInstruction.toEditableText(repo))
     }

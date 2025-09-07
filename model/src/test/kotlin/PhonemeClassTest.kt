@@ -6,12 +6,7 @@ import org.junit.Test
 class PhonemeClassTest : QBaseTest() {
     @Test
     fun diphthong() {
-        val rule = parseRule(q, q, """
-            sound is diphthong:
-            - no change
-            sound is 'a':
-            - new sound is 'o'
-        """.trimIndent())
+        val rule = parseRule(q, q, "* a > o if sound is not diphthong")
         assertEquals("ainu", rule.apply(q.word("ainu"), emptyRepo).text)
         assertEquals("omo", rule.apply(q.word("ama"), emptyRepo).text)
     }

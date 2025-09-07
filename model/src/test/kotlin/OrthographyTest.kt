@@ -25,15 +25,6 @@ class OrthographyTest : QBaseTest() {
 
     @Test
     fun orthographyRule() {
-        val rule = parseRule(ce, ce, "sound is word-initial 'j':\n- new sound is 'i'")
-        ce.orthographyRule = RuleRef.to(rule)
-        ce.phonemes = listOf(phoneme(listOf("y"), "j", "semivowel"))
-        val iayn = ce.word("jajn").apply { isPhonemic = true }
-        assertEquals("iayn", iayn.asOrthographic().text)
-    }
-
-    @Test
-    fun orthographyRuleSPE() {
         val rule = parseRule(ce, ce, "* j > i / #_")
         ce.orthographyRule = RuleRef.to(rule)
         ce.phonemes = listOf(phoneme(listOf("y"), "j", "semivowel"))
@@ -74,7 +65,7 @@ class OrthographyTest : QBaseTest() {
             phoneme(listOf("y"), "j", "semivowel"),
             phoneme("a", "vowel")
         )
-        val rule = parseRule(ce, ce, "sound is word-initial 'i' and next sound is vowel:\n- new sound is 'j'")
+        val rule = parseRule(ce, ce, "* i > j / #_V")
         ce.pronunciationRule = RuleRef.to(rule)
         val iayn = ce.word("iayn")
         assertEquals("jajn", iayn.asPhonemic().text)

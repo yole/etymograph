@@ -17,7 +17,6 @@ enum class InstructionType(
     ApplyStress("stress is on", "stress is on (.+) syllable", true),
     ApplyClass("mark word as", "mark word as (.*)", true),
     Disallow("disallow", "disallow", false),
-    ChangeSound("new sound is", "new sound is '(.+)'", true),
     Spe("SPE pattern", "", true);
 
     val regex = Regex(pattern ?: Regex.escape(insnName))
@@ -80,11 +79,7 @@ open class RuleInstruction(val type: InstructionType, val arg: String, val comme
     }
 
     open fun apply(word: Word, phonemes: PhonemeIterator, graph: GraphRepository, trace: RuleTrace? = null) {
-        when (type) {
-            InstructionType.ChangeSound -> phonemes.replace(arg)
-            InstructionType.NoChange -> Unit
-            else -> throw IllegalStateException("Can't apply word instruction to individual phoneme")
-        }
+        throw IllegalStateException("Can't apply word instruction to individual phoneme")
     }
 
     open fun toEditableText(graph: GraphRepository): String = toRichText(graph).toString()
@@ -109,28 +104,10 @@ open class RuleInstruction(val type: InstructionType, val arg: String, val comme
 
     open fun reverseApplyToPhoneme(phonemes: PhonemeIterator, condition: RuleCondition): List<String>? {
         if (type == InstructionType.NoChange) return emptyList()
-        if (type == InstructionType.ChangeSound) {
-            if (arg == phonemes.current) {
-                val leafCondition = condition as? RelativePhonemeRuleCondition ?: return null
-                if (leafCondition.seekTarget == null && leafCondition.phonemePattern.literal != null) {
-                    phonemes.replace(leafCondition.phonemePattern.literal)
-                    return listOf(phonemes.result())
-                }
-                else {
-                    return null
-                }
-            }
-            return emptyList()
-        }
         return null
     }
 
-    open fun refersToPhoneme(phoneme: Phoneme): Boolean {
-        return when (type) {
-            InstructionType.ChangeSound -> phoneme.effectiveSound == arg
-            else -> false
-        }
-    }
+    open fun refersToPhoneme(phoneme: Phoneme): Boolean = false
 
     open fun referencedRules(): Set<Rule> {
         return emptySet()

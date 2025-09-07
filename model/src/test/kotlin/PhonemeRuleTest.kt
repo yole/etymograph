@@ -101,14 +101,12 @@ class PhonemeRuleTest : QBaseTest() {
     @Test
     fun syllableIsNegated() {
         val rule = parseRule(q, q, """
-            syllable is not last and sound is 'o':
-            - new sound is 'e'
-            syllable is last and sound is 'o':
-            - new sound is 'y'
+            * o > e if syllable is not last 
+            * o > y if syllable is last
         """.trimIndent())
         assertEquals("yrch", rule.apply(q.word("orch"), emptyRepo).text)
-        val ruleCondition = rule.logic.branches[0].condition
-        assertEquals("syllable is not last and sound is 'o'", ruleCondition.toEditableText())
+        val instruction = rule.logic.branches[0].instructions[0]
+        assertEquals("o > e if syllable is not last", instruction.toEditableText(repo))
     }
 
     @Test
@@ -139,10 +137,7 @@ class PhonemeRuleTest : QBaseTest() {
 
     @Test
     fun applySoundRulePhonemic() {
-        val soundRule = parseRule(q, q, """
-            sound is 'a':
-            - new sound is 'á'
-        """.trimIndent(), name = "q-lengthen")
+        val soundRule = parseRule(q, q, "* a > á", name = "q-lengthen")
         val parseContext = q.parseContext(null, soundRule)
         val rule = parseRule(q, q, """
             sound is vowel:
@@ -153,10 +148,7 @@ class PhonemeRuleTest : QBaseTest() {
 
     @Test
     fun applySoundRulePhonemicNext() {
-        val soundRule = parseRule(q, q, """
-            sound is 'a':
-            - new sound is 'á'
-        """.trimIndent(), name = "q-lengthen")
+        val soundRule = parseRule(q, q, "* a > á", name = "q-lengthen")
         val parseContext = q.parseContext(null, soundRule)
         val rule = parseRule(q, q, """
             sound is 'l':
@@ -167,10 +159,7 @@ class PhonemeRuleTest : QBaseTest() {
 
     @Test
     fun applySoundRulePhonemicNextComplexClass() {
-        val soundRule = parseRule(q, q, """
-            sound is 'a':
-            - new sound is 'á'
-        """.trimIndent(), name = "q-lengthen")
+        val soundRule = parseRule(q, q, "* a > á", name = "q-lengthen")
         val parseContext = q.parseContext(null, soundRule)
         val rule = parseRule(q, q, """
             sound is 's':

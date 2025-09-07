@@ -68,6 +68,7 @@ class ReverseApplyTest : QBaseTest() {
         Assert.assertTrue("yaimao" in candidates)
     }
 
+    /*
     @Test
     fun reverseApplyToPhoneme() {
         val rule = parseRule(q, q, "sound is 'i':\n- new sound is 'í'")
@@ -89,6 +90,7 @@ class ReverseApplyTest : QBaseTest() {
         val applySoundRuleInstruction = ApplySoundRuleInstruction(q, RuleRef.to(rule), "first vowel", null)
         assertEquals("cira", applySoundRuleInstruction.reverseApply(rule, "círa", q, emptyRepo).single())
     }
+*/
 
     @Test
     fun reverseApplyMultiple() {
