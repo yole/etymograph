@@ -3,7 +3,6 @@ package ru.yole.etymograph
 enum class ConditionType(
     val condName: String,
     val condNameAfterBaseLanguage: String? = null,
-    val phonemic: Boolean = false,
     val takesArgument: Boolean = true,
     val parameterParseCallback: ((ParseBuffer, Language) -> String)? = null
 ) {
@@ -16,7 +15,6 @@ enum class ConditionType(
         }
         "${Ordinals.toString(ord)} syllable"
     }),
-    SoundEquals(LeafRuleCondition.soundIsSame, phonemic = true, takesArgument = true)
 }
 
 interface RuleConditionParser {
@@ -105,7 +103,7 @@ class LeafRuleCondition(
     negated: Boolean,
     val baseLanguageShortName: String?
 ) : RuleCondition(negated) {
-    override fun isPhonemic(): Boolean = type.phonemic
+    override fun isPhonemic(): Boolean = false
 
     override fun matches(word: Word, graph: GraphRepository, trace: RuleTrace?): Boolean {
         val matchWord = graph.findWordToMatch(word, baseLanguageShortName) ?: return false
@@ -115,7 +113,6 @@ class LeafRuleCondition(
             ConditionType.BeginsWith -> (phonemeClass?.let { PhonemeIterator(word, graph).current in it.matchingPhonemes }
                 ?: word.text.startsWith(parameter!!)).negateIfNeeded()
             ConditionType.StressIs -> matchStress(word, graph).negateIfNeeded()
-            else -> throw IllegalStateException()
         }
     }
 
