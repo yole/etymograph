@@ -1,7 +1,6 @@
 package ru.yole.etymograph
 
 import java.util.Locale
-import java.util.Locale.getDefault
 
 class RuleParseException(msg: String): RuntimeException(msg)
 
@@ -177,11 +176,7 @@ class RuleBranch(val condition: RuleCondition, val instructions: List<RuleInstru
                 }
     }
 
-    fun toSummaryText(graph: GraphRepository, phonemic: Boolean): String? {
-        if (phonemic) {
-            val insn = instructions.singleOrNull() ?: return null
-            return insn.toSummaryText(graph, condition)
-        }
+    fun toSummaryText(graph: GraphRepository): String? {
         val summaries = instructions.map { it.toSummaryText(graph, condition) ?: return null }
         if (instructions.any { it is SpeInstruction }) {
             return summaries.joinToString(", ")
@@ -260,7 +255,6 @@ class Rule(
     source: List<SourceRef> = emptyList(),
     notes: String? = null
 ) : LangEntity(id, source, notes) {
-    fun isPhonemic(): Boolean = logic.branches.any { it.condition.isPhonemic() }
     fun isSPE(): Boolean = logic.branches.any { it.instructions.any { i -> i.type == InstructionType.Spe } }
 
     fun apply(word: Word, graph: GraphRepository, trace: RuleTrace? = null,
@@ -268,28 +262,6 @@ class Rule(
               applyPrePostRules: Boolean = true,
               preserveId: Boolean = false): Word {
         trace?.logRule(this, word)
-        if (isPhonemic()) {
-            val phonemic = word.asPhonemic()
-            val phonemes = PhonemeIterator(phonemic, graph)
-            var anyChanges = false
-            while (true) {
-                anyChanges = anyChanges or applyToPhoneme(phonemic, phonemes, graph, trace)
-                if (!phonemes.advance()) break
-            }
-            val result = if (anyChanges) {
-                val stress = if (word.explicitStress)
-                    phonemes.mapIndex(word.stressedPhonemeIndex)
-                else
-                    null
-
-                val segments = remapSegments(phonemes, word.segments)
-                deriveWord(phonemic, phonemes.result(), toLanguage, true, -1, segments, word.classes, stress)
-            }
-            else
-                word
-            trace?.logRuleResult(this, result)
-            return result
-        }
 
         val compound = graph.findCompoundsByCompoundWord(word).singleOrNull()
         if (compound != null && compound.headIndex == compound.components.size - 1) {
@@ -428,12 +400,9 @@ class Rule(
         logic.branches.size == 1 && logic.branches[0].condition is OtherwiseCondition && logic.preInstructions.isEmpty()
 
     fun toSummaryText(graph: GraphRepository): String {
-        val summaries = logic.branches.map { it.toSummaryText(graph, isPhonemic()) }
+        val summaries = logic.branches.map { it.toSummaryText(graph) }
         if (summaries.any { it == null }) return ""
         val filteredSummaries = summaries.filter { !it.isNullOrEmpty() }
-        if (isPhonemic()) {
-            return filteredSummaries.joinToString(", ")
-        }
         return filteredSummaries.toSet().joinToString("/")
     }
 

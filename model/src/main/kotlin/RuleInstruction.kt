@@ -219,7 +219,6 @@ class ApplyRuleInstruction(val ruleRef: RuleRef, comment: String?)
 
     override fun toSummaryText(graph: GraphRepository, condition: RuleCondition): String {
         val rule = ruleRef.resolve()
-        if (rule.isPhonemic()) return ""
         return rule.toSummaryText(graph)
     }
 

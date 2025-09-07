@@ -140,8 +140,8 @@ class PhonemeRuleTest : QBaseTest() {
         val soundRule = parseRule(q, q, "* a > á", name = "q-lengthen")
         val parseContext = q.parseContext(null, soundRule)
         val rule = parseRule(q, q, """
-            sound is vowel:
-            - apply sound rule 'q-lengthen'
+            * V > V
+            = apply sound rule 'q-lengthen'
         """.trimIndent(), context = parseContext)
         assertEquals("silá", rule.apply(q.word("sila"), emptyRepo).text)
     }
@@ -151,8 +151,8 @@ class PhonemeRuleTest : QBaseTest() {
         val soundRule = parseRule(q, q, "* a > á", name = "q-lengthen")
         val parseContext = q.parseContext(null, soundRule)
         val rule = parseRule(q, q, """
-            sound is 'l':
-            - apply sound rule 'q-lengthen' to next vowel
+            * l > l
+            = apply sound rule 'q-lengthen' to next vowel
         """.trimIndent(), context = parseContext)
         assertEquals("silá", rule.apply(q.word("sila"), emptyRepo).text)
     }
@@ -162,8 +162,8 @@ class PhonemeRuleTest : QBaseTest() {
         val soundRule = parseRule(q, q, "* a > á", name = "q-lengthen")
         val parseContext = q.parseContext(null, soundRule)
         val rule = parseRule(q, q, """
-            sound is 's':
-            - apply sound rule 'q-lengthen' to next short vowel
+            * s > s
+            = apply sound rule 'q-lengthen' to next short vowel
         """.trimIndent(), context = parseContext)
         assertEquals("sílá", rule.apply(q.word("síla"), emptyRepo).text)
     }

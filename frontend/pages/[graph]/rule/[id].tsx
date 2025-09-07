@@ -202,7 +202,7 @@ export default function Rule(params) {
         </>}
         {editMode && <RuleForm
             updateId={rule.id}
-            initialType={rule.phonemic || rule.spe ? "phono" : "morpho"}
+            initialType={rule.spe ? "phono" : "morpho"}
             defaultValues={{
                 name: rule.name,
                 fromLang: rule.fromLang,

@@ -534,7 +534,6 @@ export type RuleViewModel = {
     paradigmName?: string;
     paradigmPreRule?: RuleRefViewModel;
     paradigmPostRule?: RuleRefViewModel;
-    phonemic: boolean;
     spe: boolean;
     preInstructions: Array<RichText>;
     branches: Array<RuleBranchViewModel>;

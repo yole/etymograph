@@ -86,7 +86,6 @@ class RuleController {
         val paradigmName: String?,
         val paradigmPreRule: RuleRefViewModel?,
         val paradigmPostRule: RuleRefViewModel?,
-        val phonemic: Boolean,
         val spe: Boolean,
         val preInstructions: List<RichText>,
         val branches: List<RuleBranchViewModel>,
@@ -179,7 +178,7 @@ class RuleController {
 
         for (rule in repo.allRules().filter { it.toLanguage == language }) {
             if (rule in allParadigmRules || rule in allSequenceRules) continue
-            val group = if (rule.isPhonemic() || rule.isSPE()) phoneticsGroup else grammarOtherGroup
+            val group = if (rule.isSPE()) phoneticsGroup else grammarOtherGroup
             group.rules.add(rule.toShortViewModel(repo))
         }
 
@@ -254,7 +253,6 @@ class RuleController {
             paradigm?.name,
             paradigm?.preRule?.toRefViewModel(),
             paradigm?.postRule?.toRefViewModel(),
-            isPhonemic(),
             isSPE(),
             logic.preInstructions.map { it.toRichText(repo) },
             ruleBranchesToViewModel(repo, examples),

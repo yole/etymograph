@@ -543,7 +543,7 @@ class RuleTest : QBaseTest() {
         val result = rule.apply(q.word("yaimea"), emptyRepo)
         assertEquals("yaim", result.text)
         assertEquals("change ending to ''", rule.singleInstruction().toEditableText(repo))
-        assertEquals("", rule.logic.branches[0].toSummaryText(repo, false))
+        assertEquals("", rule.logic.branches[0].toSummaryText(repo))
     }
 
     @Test

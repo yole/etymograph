@@ -2294,8 +2294,6 @@ components:
           $ref: "#/components/schemas/RuleRefViewModel"
         paradigmPostRule:
           $ref: "#/components/schemas/RuleRefViewModel"
-        phonemic:
-          type: "boolean"
         spe:
           type: "boolean"
         preInstructions:
