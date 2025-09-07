@@ -212,9 +212,8 @@
                     "type": "and",
                     "members": [
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "ije-stem"
+                            "type": "wordIs",
+                            "wordClass": "ije-stem"
                         },
                         {
                             "type": "leaf",
@@ -265,9 +264,8 @@
                     "type": "and",
                     "members": [
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "n"
+                            "type": "wordIs",
+                            "wordClass": "n"
                         },
                         {
                             "type": "leaf",
@@ -847,9 +845,8 @@
                             "characters": "i"
                         },
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "ije-stem"
+                            "type": "wordIs",
+                            "wordClass": "ije-stem"
                         }
                     ]
                 }

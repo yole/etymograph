@@ -29,14 +29,12 @@
                     "type": "and",
                     "members": [
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "f"
+                            "type": "wordIs",
+                            "wordClass": "f"
                         },
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "n-stem"
+                            "type": "wordIs",
+                            "wordClass": "n-stem"
                         },
                         {
                             "type": "leaf",
@@ -96,21 +94,18 @@
                             "type": "or",
                             "members": [
                                 {
-                                    "type": "leaf",
-                                    "cond": "ClassMatches",
-                                    "characters": "f"
+                                    "type": "wordIs",
+                                    "wordClass": "f"
                                 },
                                 {
-                                    "type": "leaf",
-                                    "cond": "ClassMatches",
-                                    "characters": "n"
+                                    "type": "wordIs",
+                                    "wordClass": "n"
                                 }
                             ]
                         },
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "n-stem"
+                            "type": "wordIs",
+                            "wordClass": "n-stem"
                         },
                         {
                             "type": "leaf",
@@ -130,9 +125,8 @@
                     }
                 ],
                 "condition": {
-                    "type": "leaf",
-                    "cond": "ClassMatches",
-                    "characters": "a-stem"
+                    "type": "wordIs",
+                    "wordClass": "a-stem"
                 }
             }
         ],
@@ -174,21 +168,18 @@
                             "type": "or",
                             "members": [
                                 {
-                                    "type": "leaf",
-                                    "cond": "ClassMatches",
-                                    "characters": "f"
+                                    "type": "wordIs",
+                                    "wordClass": "f"
                                 },
                                 {
-                                    "type": "leaf",
-                                    "cond": "ClassMatches",
-                                    "characters": "n"
+                                    "type": "wordIs",
+                                    "wordClass": "n"
                                 }
                             ]
                         },
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "n-stem"
+                            "type": "wordIs",
+                            "wordClass": "n-stem"
                         },
                         {
                             "type": "leaf",
@@ -208,9 +199,8 @@
                     }
                 ],
                 "condition": {
-                    "type": "leaf",
-                    "cond": "ClassMatches",
-                    "characters": "a-stem"
+                    "type": "wordIs",
+                    "wordClass": "a-stem"
                 }
             }
         ],

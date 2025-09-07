@@ -16,9 +16,8 @@
                     }
                 ],
                 "condition": {
-                    "type": "leaf",
-                    "cond": "ClassMatches",
-                    "characters": "uml-stem"
+                    "type": "wordIs",
+                    "wordClass": "uml-stem"
                 }
             },
             {
@@ -31,9 +30,8 @@
                     }
                 ],
                 "condition": {
-                    "type": "leaf",
-                    "cond": "ClassMatches",
-                    "characters": "ijo-stem"
+                    "type": "wordIs",
+                    "wordClass": "ijo-stem"
                 }
             },
             {
@@ -44,9 +42,8 @@
                     }
                 ],
                 "condition": {
-                    "type": "leaf",
-                    "cond": "ClassMatches",
-                    "characters": "strong"
+                    "type": "wordIs",
+                    "wordClass": "strong"
                 }
             },
             {
@@ -88,9 +85,8 @@
                             "characters": "a"
                         },
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "f"
+                            "type": "wordIs",
+                            "wordClass": "f"
                         }
                     ]
                 }
@@ -129,14 +125,12 @@
                     "type": "and",
                     "members": [
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "strong-type2"
+                            "type": "wordIs",
+                            "wordClass": "strong-type2"
                         },
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "m"
+                            "type": "wordIs",
+                            "wordClass": "m"
                         }
                     ]
                 }
@@ -152,9 +146,8 @@
                     "type": "and",
                     "members": [
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "strong"
+                            "type": "wordIs",
+                            "wordClass": "strong"
                         },
                         {
                             "type": "leaf",
@@ -177,27 +170,23 @@
                     "type": "and",
                     "members": [
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "strong"
+                            "type": "wordIs",
+                            "wordClass": "strong"
                         },
                         {
                             "type": "or",
                             "members": [
                                 {
-                                    "type": "leaf",
-                                    "cond": "ClassMatches",
-                                    "characters": "m"
+                                    "type": "wordIs",
+                                    "wordClass": "m"
                                 },
                                 {
-                                    "type": "leaf",
-                                    "cond": "ClassMatches",
-                                    "characters": "n"
+                                    "type": "wordIs",
+                                    "wordClass": "n"
                                 },
                                 {
-                                    "type": "leaf",
-                                    "cond": "ClassMatches",
-                                    "characters": "ijo-stem"
+                                    "type": "wordIs",
+                                    "wordClass": "ijo-stem"
                                 }
                             ]
                         }
@@ -253,9 +242,8 @@
                             ]
                         },
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "f"
+                            "type": "wordIs",
+                            "wordClass": "f"
                         }
                     ]
                 }
@@ -306,9 +294,8 @@
                     }
                 ],
                 "condition": {
-                    "type": "leaf",
-                    "cond": "ClassMatches",
-                    "characters": "uml-stem"
+                    "type": "wordIs",
+                    "wordClass": "uml-stem"
                 }
             },
             {
@@ -344,9 +331,8 @@
                     }
                 ],
                 "condition": {
-                    "type": "leaf",
-                    "cond": "ClassMatches",
-                    "characters": "gen-ar"
+                    "type": "wordIs",
+                    "wordClass": "gen-ar"
                 }
             },
             {
@@ -365,21 +351,18 @@
                             "type": "or",
                             "members": [
                                 {
-                                    "type": "leaf",
-                                    "cond": "ClassMatches",
-                                    "characters": "m"
+                                    "type": "wordIs",
+                                    "wordClass": "m"
                                 },
                                 {
-                                    "type": "leaf",
-                                    "cond": "ClassMatches",
-                                    "characters": "n"
+                                    "type": "wordIs",
+                                    "wordClass": "n"
                                 }
                             ]
                         },
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "strong"
+                            "type": "wordIs",
+                            "wordClass": "strong"
                         }
                     ]
                 }
@@ -397,14 +380,12 @@
                     "type": "and",
                     "members": [
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "f"
+                            "type": "wordIs",
+                            "wordClass": "f"
                         },
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "strong"
+                            "type": "wordIs",
+                            "wordClass": "strong"
                         }
                     ]
                 }
@@ -458,9 +439,8 @@
                             ]
                         },
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "f"
+                            "type": "wordIs",
+                            "wordClass": "f"
                         }
                     ]
                 }
@@ -501,9 +481,8 @@
                     "type": "and",
                     "members": [
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "nd-stem"
+                            "type": "wordIs",
+                            "wordClass": "nd-stem"
                         },
                         {
                             "type": "leaf",
@@ -526,22 +505,19 @@
                     "type": "and",
                     "members": [
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "strong"
+                            "type": "wordIs",
+                            "wordClass": "strong"
                         },
                         {
                             "type": "or",
                             "members": [
                                 {
-                                    "type": "leaf",
-                                    "cond": "ClassMatches",
-                                    "characters": "m"
+                                    "type": "wordIs",
+                                    "wordClass": "m"
                                 },
                                 {
-                                    "type": "leaf",
-                                    "cond": "ClassMatches",
-                                    "characters": "f"
+                                    "type": "wordIs",
+                                    "wordClass": "f"
                                 }
                             ]
                         },
@@ -566,22 +542,19 @@
                     "type": "and",
                     "members": [
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "strong-type2"
+                            "type": "wordIs",
+                            "wordClass": "strong-type2"
                         },
                         {
                             "type": "or",
                             "members": [
                                 {
-                                    "type": "leaf",
-                                    "cond": "ClassMatches",
-                                    "characters": "m"
+                                    "type": "wordIs",
+                                    "wordClass": "m"
                                 },
                                 {
-                                    "type": "leaf",
-                                    "cond": "ClassMatches",
-                                    "characters": "f"
+                                    "type": "wordIs",
+                                    "wordClass": "f"
                                 }
                             ]
                         }
@@ -601,22 +574,19 @@
                     "type": "and",
                     "members": [
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "strong"
+                            "type": "wordIs",
+                            "wordClass": "strong"
                         },
                         {
                             "type": "or",
                             "members": [
                                 {
-                                    "type": "leaf",
-                                    "cond": "ClassMatches",
-                                    "characters": "m"
+                                    "type": "wordIs",
+                                    "wordClass": "m"
                                 },
                                 {
-                                    "type": "leaf",
-                                    "cond": "ClassMatches",
-                                    "characters": "f"
+                                    "type": "wordIs",
+                                    "wordClass": "f"
                                 }
                             ]
                         }
@@ -636,14 +606,12 @@
                     "type": "and",
                     "members": [
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "strong"
+                            "type": "wordIs",
+                            "wordClass": "strong"
                         },
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "n"
+                            "type": "wordIs",
+                            "wordClass": "n"
                         }
                     ]
                 }
@@ -697,9 +665,8 @@
                             ]
                         },
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "f"
+                            "type": "wordIs",
+                            "wordClass": "f"
                         }
                     ]
                 }
@@ -728,9 +695,8 @@
                             "characters": "a"
                         },
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "n"
+                            "type": "wordIs",
+                            "wordClass": "n"
                         }
                     ]
                 }
@@ -771,9 +737,8 @@
                     "type": "and",
                     "members": [
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "nd-stem"
+                            "type": "wordIs",
+                            "wordClass": "nd-stem"
                         },
                         {
                             "type": "leaf",
@@ -796,14 +761,12 @@
                     "type": "and",
                     "members": [
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "m"
+                            "type": "wordIs",
+                            "wordClass": "m"
                         },
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "strong"
+                            "type": "wordIs",
+                            "wordClass": "strong"
                         },
                         {
                             "type": "leaf",
@@ -826,14 +789,12 @@
                     "type": "and",
                     "members": [
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "m"
+                            "type": "wordIs",
+                            "wordClass": "m"
                         },
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "strong-type2"
+                            "type": "wordIs",
+                            "wordClass": "strong-type2"
                         }
                     ]
                 }
@@ -851,14 +812,12 @@
                     "type": "and",
                     "members": [
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "m"
+                            "type": "wordIs",
+                            "wordClass": "m"
                         },
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "strong"
+                            "type": "wordIs",
+                            "wordClass": "strong"
                         }
                     ]
                 }
@@ -876,14 +835,12 @@
                     "type": "and",
                     "members": [
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "n"
+                            "type": "wordIs",
+                            "wordClass": "n"
                         },
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "strong"
+                            "type": "wordIs",
+                            "wordClass": "strong"
                         }
                     ]
                 }
@@ -901,14 +858,12 @@
                     "type": "and",
                     "members": [
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "f"
+                            "type": "wordIs",
+                            "wordClass": "f"
                         },
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "strong-type2"
+                            "type": "wordIs",
+                            "wordClass": "strong-type2"
                         }
                     ]
                 }
@@ -926,14 +881,12 @@
                     "type": "and",
                     "members": [
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "f"
+                            "type": "wordIs",
+                            "wordClass": "f"
                         },
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "strong"
+                            "type": "wordIs",
+                            "wordClass": "strong"
                         }
                     ]
                 }
@@ -987,9 +940,8 @@
                             ]
                         },
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "f"
+                            "type": "wordIs",
+                            "wordClass": "f"
                         }
                     ]
                 }
@@ -1018,9 +970,8 @@
                             "characters": "a"
                         },
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "n"
+                            "type": "wordIs",
+                            "wordClass": "n"
                         }
                     ]
                 }
@@ -1135,9 +1086,8 @@
                     }
                 ],
                 "condition": {
-                    "type": "leaf",
-                    "cond": "ClassMatches",
-                    "characters": "strong"
+                    "type": "wordIs",
+                    "wordClass": "strong"
                 }
             },
             {
@@ -1285,9 +1235,8 @@
                     }
                 ],
                 "condition": {
-                    "type": "leaf",
-                    "cond": "ClassMatches",
-                    "characters": "v-pret-pres"
+                    "type": "wordIs",
+                    "wordClass": "v-pret-pres"
                 }
             },
             {
@@ -1342,9 +1291,8 @@
                     "type": "and",
                     "members": [
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "strong"
+                            "type": "wordIs",
+                            "wordClass": "strong"
                         },
                         {
                             "type": "or",
@@ -1377,9 +1325,8 @@
                     "type": "and",
                     "members": [
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "v-pret-pres"
+                            "type": "wordIs",
+                            "wordClass": "v-pret-pres"
                         },
                         {
                             "type": "or",
@@ -1407,9 +1354,8 @@
                     }
                 ],
                 "condition": {
-                    "type": "leaf",
-                    "cond": "ClassMatches",
-                    "characters": "1conj"
+                    "type": "wordIs",
+                    "wordClass": "1conj"
                 }
             },
             {
@@ -1425,9 +1371,8 @@
                     "type": "and",
                     "members": [
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "2conj"
+                            "type": "wordIs",
+                            "wordClass": "2conj"
                         },
                         {
                             "type": "leaf",
@@ -1450,9 +1395,8 @@
                     "type": "and",
                     "members": [
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "2conj"
+                            "type": "wordIs",
+                            "wordClass": "2conj"
                         },
                         {
                             "type": "leaf",
@@ -1475,9 +1419,8 @@
                     "type": "and",
                     "members": [
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "3conj"
+                            "type": "wordIs",
+                            "wordClass": "3conj"
                         },
                         {
                             "type": "leaf",
@@ -1500,9 +1443,8 @@
                     "type": "and",
                     "members": [
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "4conj"
+                            "type": "wordIs",
+                            "wordClass": "4conj"
                         },
                         {
                             "type": "leaf",
@@ -1525,9 +1467,8 @@
                     "type": "and",
                     "members": [
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "4conj"
+                            "type": "wordIs",
+                            "wordClass": "4conj"
                         },
                         {
                             "type": "leaf",
@@ -1565,9 +1506,8 @@
                     }
                 ],
                 "condition": {
-                    "type": "leaf",
-                    "cond": "ClassMatches",
-                    "characters": "v-pret-pres"
+                    "type": "wordIs",
+                    "wordClass": "v-pret-pres"
                 }
             },
             {
@@ -1630,9 +1570,8 @@
                             "type": "and",
                             "members": [
                                 {
-                                    "type": "leaf",
-                                    "cond": "ClassMatches",
-                                    "characters": "v-pret-pres"
+                                    "type": "wordIs",
+                                    "wordClass": "v-pret-pres"
                                 },
                                 {
                                     "type": "leaf",
@@ -1707,9 +1646,8 @@
                             ]
                         },
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "v-pret-pres"
+                            "type": "wordIs",
+                            "wordClass": "v-pret-pres"
                         }
                     ]
                 }
@@ -1777,9 +1715,8 @@
                     "type": "and",
                     "members": [
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "v-pret-pres"
+                            "type": "wordIs",
+                            "wordClass": "v-pret-pres"
                         },
                         {
                             "type": "leaf",
@@ -1822,9 +1759,8 @@
                     }
                 ],
                 "condition": {
-                    "type": "leaf",
-                    "cond": "ClassMatches",
-                    "characters": "cc-stem"
+                    "type": "wordIs",
+                    "wordClass": "cc-stem"
                 }
             },
             {
@@ -1914,22 +1850,19 @@
                             "characters": "r"
                         },
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "v-stem"
+                            "type": "wordIs",
+                            "wordClass": "v-stem"
                         },
                         {
                             "type": "or",
                             "members": [
                                 {
-                                    "type": "leaf",
-                                    "cond": "ClassMatches",
-                                    "characters": "m"
+                                    "type": "wordIs",
+                                    "wordClass": "m"
                                 },
                                 {
-                                    "type": "leaf",
-                                    "cond": "ClassMatches",
-                                    "characters": "n"
+                                    "type": "wordIs",
+                                    "wordClass": "n"
                                 }
                             ]
                         }
@@ -1955,22 +1888,19 @@
                     "type": "and",
                     "members": [
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "v-stem"
+                            "type": "wordIs",
+                            "wordClass": "v-stem"
                         },
                         {
                             "type": "or",
                             "members": [
                                 {
-                                    "type": "leaf",
-                                    "cond": "ClassMatches",
-                                    "characters": "f"
+                                    "type": "wordIs",
+                                    "wordClass": "f"
                                 },
                                 {
-                                    "type": "leaf",
-                                    "cond": "ClassMatches",
-                                    "characters": "n"
+                                    "type": "wordIs",
+                                    "wordClass": "n"
                                 }
                             ]
                         }
@@ -2004,21 +1934,18 @@
                             "type": "or",
                             "members": [
                                 {
-                                    "type": "leaf",
-                                    "cond": "ClassMatches",
-                                    "characters": "m"
+                                    "type": "wordIs",
+                                    "wordClass": "m"
                                 },
                                 {
-                                    "type": "leaf",
-                                    "cond": "ClassMatches",
-                                    "characters": "n"
+                                    "type": "wordIs",
+                                    "wordClass": "n"
                                 }
                             ]
                         },
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "j-stem"
+                            "type": "wordIs",
+                            "wordClass": "j-stem"
                         }
                     ]
                 }
@@ -2050,14 +1977,12 @@
                             "type": "or",
                             "members": [
                                 {
-                                    "type": "leaf",
-                                    "cond": "ClassMatches",
-                                    "characters": "m"
+                                    "type": "wordIs",
+                                    "wordClass": "m"
                                 },
                                 {
-                                    "type": "leaf",
-                                    "cond": "ClassMatches",
-                                    "characters": "n"
+                                    "type": "wordIs",
+                                    "wordClass": "n"
                                 }
                             ]
                         }
@@ -2077,9 +2002,8 @@
                     "type": "and",
                     "members": [
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "ijo-stem"
+                            "type": "wordIs",
+                            "wordClass": "ijo-stem"
                         },
                         {
                             "type": "leaf",
@@ -2102,9 +2026,8 @@
                     "type": "and",
                     "members": [
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "j-stem"
+                            "type": "wordIs",
+                            "wordClass": "j-stem"
                         },
                         {
                             "type": "leaf",
@@ -2124,9 +2047,8 @@
                     }
                 ],
                 "condition": {
-                    "type": "leaf",
-                    "cond": "ClassMatches",
-                    "characters": "j-stem"
+                    "type": "wordIs",
+                    "wordClass": "j-stem"
                 }
             },
             {
@@ -2282,9 +2204,8 @@
                     "type": "and",
                     "members": [
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "1conj"
+                            "type": "wordIs",
+                            "wordClass": "1conj"
                         },
                         {
                             "type": "leaf",
@@ -2310,14 +2231,12 @@
                             "type": "or",
                             "members": [
                                 {
-                                    "type": "leaf",
-                                    "cond": "ClassMatches",
-                                    "characters": "2conj"
+                                    "type": "wordIs",
+                                    "wordClass": "2conj"
                                 },
                                 {
-                                    "type": "leaf",
-                                    "cond": "ClassMatches",
-                                    "characters": "4conj"
+                                    "type": "wordIs",
+                                    "wordClass": "4conj"
                                 }
                             ]
                         },
@@ -2327,9 +2246,8 @@
                             "characters": "a"
                         },
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "pret-t"
+                            "type": "wordIs",
+                            "wordClass": "pret-t"
                         }
                     ]
                 }
@@ -2350,14 +2268,12 @@
                             "type": "or",
                             "members": [
                                 {
-                                    "type": "leaf",
-                                    "cond": "ClassMatches",
-                                    "characters": "2conj"
+                                    "type": "wordIs",
+                                    "wordClass": "2conj"
                                 },
                                 {
-                                    "type": "leaf",
-                                    "cond": "ClassMatches",
-                                    "characters": "4conj"
+                                    "type": "wordIs",
+                                    "wordClass": "4conj"
                                 }
                             ]
                         },
@@ -2367,9 +2283,8 @@
                             "characters": "a"
                         },
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "pret-d"
+                            "type": "wordIs",
+                            "wordClass": "pret-d"
                         }
                     ]
                 }
@@ -2390,14 +2305,12 @@
                             "type": "or",
                             "members": [
                                 {
-                                    "type": "leaf",
-                                    "cond": "ClassMatches",
-                                    "characters": "2conj"
+                                    "type": "wordIs",
+                                    "wordClass": "2conj"
                                 },
                                 {
-                                    "type": "leaf",
-                                    "cond": "ClassMatches",
-                                    "characters": "4conj"
+                                    "type": "wordIs",
+                                    "wordClass": "4conj"
                                 }
                             ]
                         },
@@ -2407,9 +2320,8 @@
                             "characters": "a"
                         },
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "pret-ð"
+                            "type": "wordIs",
+                            "wordClass": "pret-ð"
                         }
                     ]
                 }
@@ -2427,9 +2339,8 @@
                     "type": "and",
                     "members": [
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "3conj"
+                            "type": "wordIs",
+                            "wordClass": "3conj"
                         },
                         {
                             "type": "leaf",
@@ -2437,9 +2348,8 @@
                             "characters": "ja"
                         },
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "pret-t"
+                            "type": "wordIs",
+                            "wordClass": "pret-t"
                         }
                     ]
                 }
@@ -2457,9 +2367,8 @@
                     "type": "and",
                     "members": [
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "3conj"
+                            "type": "wordIs",
+                            "wordClass": "3conj"
                         },
                         {
                             "type": "leaf",
@@ -2467,9 +2376,8 @@
                             "characters": "ja"
                         },
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "pret-d"
+                            "type": "wordIs",
+                            "wordClass": "pret-d"
                         }
                     ]
                 }
@@ -2487,9 +2395,8 @@
                     "type": "and",
                     "members": [
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "3conj"
+                            "type": "wordIs",
+                            "wordClass": "3conj"
                         },
                         {
                             "type": "leaf",
@@ -2497,9 +2404,8 @@
                             "characters": "ja"
                         },
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "pret-ð"
+                            "type": "wordIs",
+                            "wordClass": "pret-ð"
                         }
                     ]
                 }
@@ -2530,9 +2436,8 @@
                     "type": "and",
                     "members": [
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "strong"
+                            "type": "wordIs",
+                            "wordClass": "strong"
                         },
                         {
                             "type": "leaf",
@@ -2562,9 +2467,8 @@
                     "type": "and",
                     "members": [
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "strong"
+                            "type": "wordIs",
+                            "wordClass": "strong"
                         },
                         {
                             "type": "leaf",
@@ -2603,9 +2507,8 @@
                     }
                 ],
                 "condition": {
-                    "type": "leaf",
-                    "cond": "ClassMatches",
-                    "characters": "strong"
+                    "type": "wordIs",
+                    "wordClass": "strong"
                 }
             },
             {
@@ -2660,9 +2563,8 @@
                     "type": "and",
                     "members": [
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "strong"
+                            "type": "wordIs",
+                            "wordClass": "strong"
                         },
                         {
                             "type": "leaf",
@@ -2685,9 +2587,8 @@
                     "type": "and",
                     "members": [
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "strong"
+                            "type": "wordIs",
+                            "wordClass": "strong"
                         },
                         {
                             "type": "leaf",
@@ -2710,9 +2611,8 @@
                     "type": "and",
                     "members": [
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "strong"
+                            "type": "wordIs",
+                            "wordClass": "strong"
                         },
                         {
                             "type": "leaf",
@@ -2735,9 +2635,8 @@
                     "type": "and",
                     "members": [
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "strong"
+                            "type": "wordIs",
+                            "wordClass": "strong"
                         },
                         {
                             "type": "leaf",
@@ -2758,9 +2657,8 @@
                     }
                 ],
                 "condition": {
-                    "type": "leaf",
-                    "cond": "ClassMatches",
-                    "characters": "strong"
+                    "type": "wordIs",
+                    "wordClass": "strong"
                 }
             },
             {
@@ -2806,9 +2704,8 @@
                     }
                 ],
                 "condition": {
-                    "type": "leaf",
-                    "cond": "ClassMatches",
-                    "characters": "strong",
+                    "type": "wordIs",
+                    "wordClass": "strong",
                     "negated": true
                 }
             },
@@ -3362,9 +3259,8 @@
                     "type": "and",
                     "members": [
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "strong"
+                            "type": "wordIs",
+                            "wordClass": "strong"
                         },
                         {
                             "type": "leaf",
@@ -3394,9 +3290,8 @@
                     "type": "and",
                     "members": [
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "strong"
+                            "type": "wordIs",
+                            "wordClass": "strong"
                         },
                         {
                             "type": "leaf",
@@ -3470,9 +3365,8 @@
                     }
                 ],
                 "condition": {
-                    "type": "leaf",
-                    "cond": "ClassMatches",
-                    "characters": "adj-comp-ri"
+                    "type": "wordIs",
+                    "wordClass": "adj-comp-ri"
                 }
             },
             {
@@ -3606,9 +3500,8 @@
                             "characters": "r"
                         },
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "cc-stem"
+                            "type": "wordIs",
+                            "wordClass": "cc-stem"
                         }
                     ]
                 }
@@ -3631,9 +3524,8 @@
                             "characters": "r"
                         },
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "j-stem"
+                            "type": "wordIs",
+                            "wordClass": "j-stem"
                         }
                     ]
                 }
@@ -3656,9 +3548,8 @@
                             "characters": "r"
                         },
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "v-stem"
+                            "type": "wordIs",
+                            "wordClass": "v-stem"
                         }
                     ]
                 }
@@ -3704,9 +3595,8 @@
                             "characters": "ss"
                         },
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "cc-stem"
+                            "type": "wordIs",
+                            "wordClass": "cc-stem"
                         }
                     ]
                 }
@@ -4512,9 +4402,8 @@
                     {
                         "type": "Spe",
                         "condition": {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "v-strong-1"
+                            "type": "wordIs",
+                            "wordClass": "v-strong-1"
                         },
                         "args": [
                             "í > ei"
@@ -4523,9 +4412,8 @@
                     {
                         "type": "Spe",
                         "condition": {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "v-strong-2"
+                            "type": "wordIs",
+                            "wordClass": "v-strong-2"
                         },
                         "args": [
                             "{jú|jó|ú} > {au|au|au}"
@@ -4534,9 +4422,8 @@
                     {
                         "type": "Spe",
                         "condition": {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "v-strong-3"
+                            "type": "wordIs",
+                            "wordClass": "v-strong-3"
                         },
                         "args": [
                             "{ja|já|e|i} > a"
@@ -4545,9 +4432,8 @@
                     {
                         "type": "Spe",
                         "condition": {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "v-strong-4"
+                            "type": "wordIs",
+                            "wordClass": "v-strong-4"
                         },
                         "args": [
                             "e > a"
@@ -4556,9 +4442,8 @@
                     {
                         "type": "Spe",
                         "condition": {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "v-strong-5"
+                            "type": "wordIs",
+                            "wordClass": "v-strong-5"
                         },
                         "args": [
                             "{e|i} > a"
@@ -4567,9 +4452,8 @@
                     {
                         "type": "Spe",
                         "condition": {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "v-strong-6"
+                            "type": "wordIs",
+                            "wordClass": "v-strong-6"
                         },
                         "args": [
                             "{a|á|e|æ} > ó"
@@ -4578,9 +4462,8 @@
                     {
                         "type": "Spe",
                         "condition": {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "v-strong-7"
+                            "type": "wordIs",
+                            "wordClass": "v-strong-7"
                         },
                         "args": [
                             "á > é"
@@ -4628,9 +4511,8 @@
                     "type": "and",
                     "members": [
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "strong"
+                            "type": "wordIs",
+                            "wordClass": "strong"
                         },
                         {
                             "type": "leaf",
@@ -4660,9 +4542,8 @@
                     "type": "and",
                     "members": [
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "strong"
+                            "type": "wordIs",
+                            "wordClass": "strong"
                         },
                         {
                             "type": "or",
@@ -4701,9 +4582,8 @@
                     "type": "and",
                     "members": [
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "strong"
+                            "type": "wordIs",
+                            "wordClass": "strong"
                         },
                         {
                             "type": "leaf",
@@ -4747,9 +4627,8 @@
                     {
                         "type": "Spe",
                         "condition": {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "v-strong-1"
+                            "type": "wordIs",
+                            "wordClass": "v-strong-1"
                         },
                         "args": [
                             "í > i"
@@ -4758,9 +4637,8 @@
                     {
                         "type": "Spe",
                         "condition": {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "v-strong-2"
+                            "type": "wordIs",
+                            "wordClass": "v-strong-2"
                         },
                         "args": [
                             "{jú|jó|ú} > u"
@@ -4769,9 +4647,8 @@
                     {
                         "type": "Spe",
                         "condition": {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "v-strong-3"
+                            "type": "wordIs",
+                            "wordClass": "v-strong-3"
                         },
                         "args": [
                             "{ja|já|e|i} > u"
@@ -4780,9 +4657,8 @@
                     {
                         "type": "Spe",
                         "condition": {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "v-strong-4"
+                            "type": "wordIs",
+                            "wordClass": "v-strong-4"
                         },
                         "args": [
                             "e > á"
@@ -4791,9 +4667,8 @@
                     {
                         "type": "Spe",
                         "condition": {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "v-strong-5"
+                            "type": "wordIs",
+                            "wordClass": "v-strong-5"
                         },
                         "args": [
                             "{e|i} > á"
@@ -4802,9 +4677,8 @@
                     {
                         "type": "Spe",
                         "condition": {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "v-strong-6"
+                            "type": "wordIs",
+                            "wordClass": "v-strong-6"
                         },
                         "args": [
                             "{a|e|æ} > ó"
@@ -4813,9 +4687,8 @@
                     {
                         "type": "Spe",
                         "condition": {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "v-strong-7"
+                            "type": "wordIs",
+                            "wordClass": "v-strong-7"
                         },
                         "args": [
                             "á > é"
@@ -4861,39 +4734,32 @@
                     "type": "or",
                     "members": [
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "v-strong-1"
+                            "type": "wordIs",
+                            "wordClass": "v-strong-1"
                         },
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "v-strong-2"
+                            "type": "wordIs",
+                            "wordClass": "v-strong-2"
                         },
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "v-strong-3"
+                            "type": "wordIs",
+                            "wordClass": "v-strong-3"
                         },
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "v-strong-4"
+                            "type": "wordIs",
+                            "wordClass": "v-strong-4"
                         },
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "v-strong-5"
+                            "type": "wordIs",
+                            "wordClass": "v-strong-5"
                         },
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "v-strong-6"
+                            "type": "wordIs",
+                            "wordClass": "v-strong-6"
                         },
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "v-strong-7"
+                            "type": "wordIs",
+                            "wordClass": "v-strong-7"
                         }
                     ]
                 }
@@ -4939,9 +4805,8 @@
                     }
                 ],
                 "condition": {
-                    "type": "leaf",
-                    "cond": "ClassMatches",
-                    "characters": "adj-comp-ri"
+                    "type": "wordIs",
+                    "wordClass": "adj-comp-ri"
                 }
             },
             {
@@ -5196,9 +5061,8 @@
                     }
                 ],
                 "condition": {
-                    "type": "leaf",
-                    "cond": "ClassMatches",
-                    "characters": "m"
+                    "type": "wordIs",
+                    "wordClass": "m"
                 }
             },
             {
@@ -5211,9 +5075,8 @@
                     }
                 ],
                 "condition": {
-                    "type": "leaf",
-                    "cond": "ClassMatches",
-                    "characters": "f"
+                    "type": "wordIs",
+                    "wordClass": "f"
                 }
             },
             {
@@ -5226,9 +5089,8 @@
                     }
                 ],
                 "condition": {
-                    "type": "leaf",
-                    "cond": "ClassMatches",
-                    "characters": "n"
+                    "type": "wordIs",
+                    "wordClass": "n"
                 }
             }
         ],
@@ -5261,9 +5123,8 @@
                     }
                 ],
                 "condition": {
-                    "type": "leaf",
-                    "cond": "ClassMatches",
-                    "characters": "m"
+                    "type": "wordIs",
+                    "wordClass": "m"
                 }
             },
             {
@@ -5276,9 +5137,8 @@
                     }
                 ],
                 "condition": {
-                    "type": "leaf",
-                    "cond": "ClassMatches",
-                    "characters": "f"
+                    "type": "wordIs",
+                    "wordClass": "f"
                 }
             },
             {
@@ -5291,9 +5151,8 @@
                     }
                 ],
                 "condition": {
-                    "type": "leaf",
-                    "cond": "ClassMatches",
-                    "characters": "n"
+                    "type": "wordIs",
+                    "wordClass": "n"
                 }
             }
         ],
@@ -5334,9 +5193,8 @@
                     }
                 ],
                 "condition": {
-                    "type": "leaf",
-                    "cond": "ClassMatches",
-                    "characters": "m"
+                    "type": "wordIs",
+                    "wordClass": "m"
                 }
             },
             {
@@ -5349,9 +5207,8 @@
                     }
                 ],
                 "condition": {
-                    "type": "leaf",
-                    "cond": "ClassMatches",
-                    "characters": "f"
+                    "type": "wordIs",
+                    "wordClass": "f"
                 }
             },
             {
@@ -5364,9 +5221,8 @@
                     }
                 ],
                 "condition": {
-                    "type": "leaf",
-                    "cond": "ClassMatches",
-                    "characters": "n"
+                    "type": "wordIs",
+                    "wordClass": "n"
                 }
             }
         ],
@@ -5407,9 +5263,8 @@
                     }
                 ],
                 "condition": {
-                    "type": "leaf",
-                    "cond": "ClassMatches",
-                    "characters": "m"
+                    "type": "wordIs",
+                    "wordClass": "m"
                 }
             },
             {
@@ -5422,9 +5277,8 @@
                     }
                 ],
                 "condition": {
-                    "type": "leaf",
-                    "cond": "ClassMatches",
-                    "characters": "f"
+                    "type": "wordIs",
+                    "wordClass": "f"
                 }
             },
             {
@@ -5437,9 +5291,8 @@
                     }
                 ],
                 "condition": {
-                    "type": "leaf",
-                    "cond": "ClassMatches",
-                    "characters": "n"
+                    "type": "wordIs",
+                    "wordClass": "n"
                 }
             }
         ],
@@ -5480,9 +5333,8 @@
                     }
                 ],
                 "condition": {
-                    "type": "leaf",
-                    "cond": "ClassMatches",
-                    "characters": "m"
+                    "type": "wordIs",
+                    "wordClass": "m"
                 }
             },
             {
@@ -5495,9 +5347,8 @@
                     }
                 ],
                 "condition": {
-                    "type": "leaf",
-                    "cond": "ClassMatches",
-                    "characters": "f"
+                    "type": "wordIs",
+                    "wordClass": "f"
                 }
             },
             {
@@ -5510,9 +5361,8 @@
                     }
                 ],
                 "condition": {
-                    "type": "leaf",
-                    "cond": "ClassMatches",
-                    "characters": "n"
+                    "type": "wordIs",
+                    "wordClass": "n"
                 }
             }
         ],
@@ -5588,9 +5438,8 @@
                     }
                 ],
                 "condition": {
-                    "type": "leaf",
-                    "cond": "ClassMatches",
-                    "characters": "m"
+                    "type": "wordIs",
+                    "wordClass": "m"
                 }
             },
             {
@@ -5603,9 +5452,8 @@
                     }
                 ],
                 "condition": {
-                    "type": "leaf",
-                    "cond": "ClassMatches",
-                    "characters": "f"
+                    "type": "wordIs",
+                    "wordClass": "f"
                 }
             },
             {
@@ -5618,9 +5466,8 @@
                     }
                 ],
                 "condition": {
-                    "type": "leaf",
-                    "cond": "ClassMatches",
-                    "characters": "n"
+                    "type": "wordIs",
+                    "wordClass": "n"
                 }
             }
         ],
@@ -5661,9 +5508,8 @@
                     }
                 ],
                 "condition": {
-                    "type": "leaf",
-                    "cond": "ClassMatches",
-                    "characters": "m"
+                    "type": "wordIs",
+                    "wordClass": "m"
                 }
             },
             {
@@ -5676,9 +5522,8 @@
                     }
                 ],
                 "condition": {
-                    "type": "leaf",
-                    "cond": "ClassMatches",
-                    "characters": "f"
+                    "type": "wordIs",
+                    "wordClass": "f"
                 }
             },
             {
@@ -5691,9 +5536,8 @@
                     }
                 ],
                 "condition": {
-                    "type": "leaf",
-                    "cond": "ClassMatches",
-                    "characters": "n"
+                    "type": "wordIs",
+                    "wordClass": "n"
                 }
             }
         ],
@@ -5981,19 +5825,16 @@
                     "type": "or",
                     "members": [
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "3conj"
+                            "type": "wordIs",
+                            "wordClass": "3conj"
                         },
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "4conj"
+                            "type": "wordIs",
+                            "wordClass": "4conj"
                         },
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "strong"
+                            "type": "wordIs",
+                            "wordClass": "strong"
                         }
                     ]
                 }
@@ -6513,9 +6354,8 @@
                     {
                         "type": "Spe",
                         "condition": {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "v-strong-1"
+                            "type": "wordIs",
+                            "wordClass": "v-strong-1"
                         },
                         "args": [
                             "í > i"
@@ -6524,9 +6364,8 @@
                     {
                         "type": "Spe",
                         "condition": {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "v-strong-2"
+                            "type": "wordIs",
+                            "wordClass": "v-strong-2"
                         },
                         "args": [
                             "{jú|jó|ú} > o"
@@ -6535,9 +6374,8 @@
                     {
                         "type": "Spe",
                         "condition": {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "v-strong-3"
+                            "type": "wordIs",
+                            "wordClass": "v-strong-3"
                         },
                         "args": [
                             "e > u / _{m|n}"
@@ -6546,9 +6384,8 @@
                     {
                         "type": "Spe",
                         "condition": {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "v-strong-3"
+                            "type": "wordIs",
+                            "wordClass": "v-strong-3"
                         },
                         "args": [
                             "e > o / _!{m|n}"
@@ -6557,9 +6394,8 @@
                     {
                         "type": "Spe",
                         "condition": {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "v-strong-3"
+                            "type": "wordIs",
+                            "wordClass": "v-strong-3"
                         },
                         "args": [
                             "i > u"
@@ -6568,9 +6404,8 @@
                     {
                         "type": "Spe",
                         "condition": {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "v-strong-3"
+                            "type": "wordIs",
+                            "wordClass": "v-strong-3"
                         },
                         "args": [
                             "{ja|já} > o"
@@ -6579,9 +6414,8 @@
                     {
                         "type": "Spe",
                         "condition": {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "v-strong-4"
+                            "type": "wordIs",
+                            "wordClass": "v-strong-4"
                         },
                         "args": [
                             "e > o"
@@ -6590,9 +6424,8 @@
                     {
                         "type": "Spe",
                         "condition": {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "v-strong-5"
+                            "type": "wordIs",
+                            "wordClass": "v-strong-5"
                         },
                         "args": [
                             "{e|i} > e"
@@ -6601,9 +6434,8 @@
                     {
                         "type": "Spe",
                         "condition": {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "v-strong-6"
+                            "type": "wordIs",
+                            "wordClass": "v-strong-6"
                         },
                         "args": [
                             "e > a"
@@ -6612,9 +6444,8 @@
                     {
                         "type": "Spe",
                         "condition": {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "v-strong-6"
+                            "type": "wordIs",
+                            "wordClass": "v-strong-6"
                         },
                         "args": [
                             "a > e / _{k|g}"
@@ -6624,9 +6455,8 @@
                     {
                         "type": "Spe",
                         "condition": {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "v-strong-6"
+                            "type": "wordIs",
+                            "wordClass": "v-strong-6"
                         },
                         "args": [
                             "á > e"
@@ -6665,9 +6495,8 @@
                     }
                 ],
                 "condition": {
-                    "type": "leaf",
-                    "cond": "ClassMatches",
-                    "characters": "uml-stem"
+                    "type": "wordIs",
+                    "wordClass": "uml-stem"
                 }
             },
             {
@@ -6819,9 +6648,8 @@
                     }
                 ],
                 "condition": {
-                    "type": "leaf",
-                    "cond": "ClassMatches",
-                    "characters": "1conj"
+                    "type": "wordIs",
+                    "wordClass": "1conj"
                 }
             },
             {
@@ -7146,9 +6974,8 @@
                     {
                         "type": "Spe",
                         "condition": {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "v-strong-5"
+                            "type": "wordIs",
+                            "wordClass": "v-strong-5"
                         },
                         "args": [
                             "ag(g) > á / _#"
@@ -7157,9 +6984,8 @@
                     {
                         "type": "Spe",
                         "condition": {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "v-strong-6"
+                            "type": "wordIs",
+                            "wordClass": "v-strong-6"
                         },
                         "args": [
                             "óg(g) > ó / _#"
@@ -7215,9 +7041,8 @@
                             ]
                         },
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "adj-comp-ri"
+                            "type": "wordIs",
+                            "wordClass": "adj-comp-ri"
                         }
                     ]
                 }
@@ -7257,9 +7082,8 @@
                     }
                 ],
                 "condition": {
-                    "type": "leaf",
-                    "cond": "ClassMatches",
-                    "characters": "adj-comp-ri"
+                    "type": "wordIs",
+                    "wordClass": "adj-comp-ri"
                 }
             },
             {
@@ -7316,9 +7140,8 @@
                             ]
                         },
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "adj-comp-ri"
+                            "type": "wordIs",
+                            "wordClass": "adj-comp-ri"
                         }
                     ]
                 }
@@ -7358,9 +7181,8 @@
                     }
                 ],
                 "condition": {
-                    "type": "leaf",
-                    "cond": "ClassMatches",
-                    "characters": "adj-comp-ri"
+                    "type": "wordIs",
+                    "wordClass": "adj-comp-ri"
                 }
             },
             {

@@ -9,12 +9,6 @@ enum class ConditionType(
 ) {
     EndsWith(LeafRuleCondition.wordEndsWith, condNameAfterBaseLanguage = LeafRuleCondition.endsWith),
     BeginsWith(LeafRuleCondition.wordBeginsWith),
-    ClassMatches(LeafRuleCondition.wordIs, parameterParseCallback = { buf, language ->
-        val param = buf.nextWord() ?: throw RuleParseException("Word class expected")
-        if (language.findWordClass(param) == null && language.pos.none { it.abbreviation == param })
-            throw RuleParseException("Unknown word class or POS '$param'")
-        param
-    }),
     StressIs(LeafRuleCondition.stressIs, parameterParseCallback = { buf, _ ->
         val ord = Ordinals.parse(buf)
         if (ord == null || !buf.consume("syllable")) {
@@ -121,27 +115,8 @@ class LeafRuleCondition(
             ConditionType.BeginsWith -> (phonemeClass?.let { PhonemeIterator(word, graph).current in it.matchingPhonemes }
                 ?: word.text.startsWith(parameter!!)).negateIfNeeded()
             ConditionType.StressIs -> matchStress(word, graph).negateIfNeeded()
-            ConditionType.ClassMatches -> matchClass(word, graph)
             else -> throw IllegalStateException()
         }
-    }
-
-    private fun matchClass(word: Word, graph: GraphRepository): Boolean {
-        var classes = word.classes + listOf(word.getOrComputePOS(graph))
-        val variationOf = word.getVariationOf(graph)
-        if (variationOf != null) {
-            classes += variationOf.classes
-            classes += variationOf.getOrComputePOS(graph)
-        }
-        else {
-            val compound = graph.findCompoundsByCompoundWord(word).singleOrNull()
-            compound?.headComponent()?.let {
-                classes += it.classes
-                classes += it.getOrComputePOS(graph)
-            }
-        }
-
-        return (parameter in classes).negateIfNeeded() || "*" in classes
     }
 
     private fun matchStress(word: Word, graph: GraphRepository): Boolean {
@@ -153,10 +128,7 @@ class LeafRuleCondition(
     }
 
     override fun matches(word: Word, phonemes: PhonemeIterator, graph: GraphRepository, trace: RuleTrace?): Boolean {
-        return when (type) {
-            ConditionType.ClassMatches -> matchClass(word, graph)
-            else -> throw IllegalStateException("Trying to use a word condition for matching phonemes")
-        }
+        throw IllegalStateException("Trying to use a word condition for matching phonemes")
     }
 
     override fun toRichText(): RichText {
@@ -203,7 +175,8 @@ class LeafRuleCondition(
                 SyllableCountRuleCondition,
                 RelativeSyllableRuleCondition,
                 PhonemeEqualsRuleCondition,
-                RelativePhonemeRuleCondition
+                RelativePhonemeRuleCondition,
+                WordClassCondition
             )) {
                 buffer.tryParse { parser.tryParse(buffer, language) }?.let { return it }
             }
@@ -255,6 +228,49 @@ class LeafRuleCondition(
             phonemeClass?.name,
             parameter?.let { "'$it'" }
         ).filterNotNull().joinToString(" ")
+    }
+}
+
+class WordClassCondition(val wordClass: String, negated: Boolean) : RuleCondition(negated) {
+    override fun matches(word: Word, graph: GraphRepository, trace: RuleTrace?): Boolean {
+        return matchClass(word, graph)
+    }
+
+    override fun matches(word: Word, phonemes: PhonemeIterator, graph: GraphRepository, trace: RuleTrace?): Boolean {
+        return matchClass(word, graph)
+    }
+
+    private fun matchClass(word: Word, graph: GraphRepository): Boolean {
+        var classes = word.classes + listOf(word.getOrComputePOS(graph))
+        val variationOf = word.getVariationOf(graph)
+        if (variationOf != null) {
+            classes += variationOf.classes
+            classes += variationOf.getOrComputePOS(graph)
+        }
+        else {
+            val compound = graph.findCompoundsByCompoundWord(word).singleOrNull()
+            compound?.headComponent()?.let {
+                classes += it.classes
+                classes += it.getOrComputePOS(graph)
+            }
+        }
+
+        return (wordClass in classes).negateIfNeeded() || "*" in classes
+    }
+
+    override fun toRichText(): RichText {
+        return LeafRuleCondition.wordIs.rich() + maybeNot + wordClass.rich(emph = true)
+    }
+
+    companion object : RuleConditionParser {
+        override fun tryParse(buffer: ParseBuffer, language: Language): RuleCondition? {
+            if (!buffer.consume(LeafRuleCondition.wordIs)) return null
+            val negated = buffer.consume(LeafRuleCondition.notPrefix)
+            val param = buffer.nextWord() ?: throw RuleParseException("Word class expected")
+            if (language.findWordClass(param) == null && language.pos.none { it.abbreviation == param })
+                throw RuleParseException("Unknown word class or POS '$param'")
+            return WordClassCondition(param, negated)
+        }
     }
 }
 

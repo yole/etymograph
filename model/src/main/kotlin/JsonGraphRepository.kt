@@ -170,7 +170,20 @@ class PhonemeEqualsRuleConditionData(
             negated
         )
     }
+}
 
+@Serializable
+@SerialName("wordIs")
+class WordClassConditionData(
+    val wordClass: String,
+    val negated: Boolean = false
+) : RuleConditionData() {
+    override fun toRuntimeFormat(
+        result: GraphRepository,
+        fromLanguage: Language
+    ): RuleCondition {
+        return WordClassCondition(wordClass, negated)
+    }
 }
 
 @Serializable
@@ -946,6 +959,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                 matchTarget?.relative,
                 negated
             )
+            is WordClassCondition -> WordClassConditionData(wordClass, negated)
             is LeafRuleCondition -> LeafRuleConditionData(
                 type,
                 phonemeClass?.name,

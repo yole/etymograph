@@ -768,9 +768,8 @@
                     }
                 ],
                 "condition": {
-                    "type": "leaf",
-                    "cond": "ClassMatches",
-                    "characters": "initial-s-syllabic"
+                    "type": "wordIs",
+                    "wordClass": "initial-s-syllabic"
                 }
             },
             {
@@ -1427,9 +1426,8 @@
                     }
                 ],
                 "condition": {
-                    "type": "leaf",
-                    "cond": "ClassMatches",
-                    "characters": "cpl-rim"
+                    "type": "wordIs",
+                    "wordClass": "cpl-rim"
                 }
             },
             {
@@ -2376,9 +2374,8 @@
                     }
                 ],
                 "condition": {
-                    "type": "leaf",
-                    "cond": "ClassMatches",
-                    "characters": "initial-nasal-syllabic"
+                    "type": "wordIs",
+                    "wordClass": "initial-nasal-syllabic"
                 }
             },
             {

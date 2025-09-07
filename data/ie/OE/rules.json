@@ -27,14 +27,12 @@
                             "type": "or",
                             "members": [
                                 {
-                                    "type": "leaf",
-                                    "cond": "ClassMatches",
-                                    "characters": "masc"
+                                    "type": "wordIs",
+                                    "wordClass": "masc"
                                 },
                                 {
-                                    "type": "leaf",
-                                    "cond": "ClassMatches",
-                                    "characters": "neut"
+                                    "type": "wordIs",
+                                    "wordClass": "neut"
                                 }
                             ]
                         },
@@ -42,14 +40,12 @@
                             "type": "or",
                             "members": [
                                 {
-                                    "type": "leaf",
-                                    "cond": "ClassMatches",
-                                    "characters": "a-stem"
+                                    "type": "wordIs",
+                                    "wordClass": "a-stem"
                                 },
                                 {
-                                    "type": "leaf",
-                                    "cond": "ClassMatches",
-                                    "characters": "s-stem"
+                                    "type": "wordIs",
+                                    "wordClass": "s-stem"
                                 }
                             ]
                         },
@@ -84,14 +80,12 @@
                             "type": "or",
                             "members": [
                                 {
-                                    "type": "leaf",
-                                    "cond": "ClassMatches",
-                                    "characters": "masc"
+                                    "type": "wordIs",
+                                    "wordClass": "masc"
                                 },
                                 {
-                                    "type": "leaf",
-                                    "cond": "ClassMatches",
-                                    "characters": "neut"
+                                    "type": "wordIs",
+                                    "wordClass": "neut"
                                 }
                             ]
                         },
@@ -99,14 +93,12 @@
                             "type": "or",
                             "members": [
                                 {
-                                    "type": "leaf",
-                                    "cond": "ClassMatches",
-                                    "characters": "a-stem"
+                                    "type": "wordIs",
+                                    "wordClass": "a-stem"
                                 },
                                 {
-                                    "type": "leaf",
-                                    "cond": "ClassMatches",
-                                    "characters": "s-stem"
+                                    "type": "wordIs",
+                                    "wordClass": "s-stem"
                                 }
                             ]
                         }
@@ -126,9 +118,8 @@
                     "type": "and",
                     "members": [
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "o-stem"
+                            "type": "wordIs",
+                            "wordClass": "o-stem"
                         },
                         {
                             "type": "leaf",
@@ -154,9 +145,8 @@
                     }
                 ],
                 "condition": {
-                    "type": "leaf",
-                    "cond": "ClassMatches",
-                    "characters": "o-stem"
+                    "type": "wordIs",
+                    "wordClass": "o-stem"
                 }
             },
             {
@@ -172,9 +162,8 @@
                     "type": "and",
                     "members": [
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "n-stem"
+                            "type": "wordIs",
+                            "wordClass": "n-stem"
                         },
                         {
                             "type": "or",
@@ -228,9 +217,8 @@
                     "type": "and",
                     "members": [
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "o-stem"
+                            "type": "wordIs",
+                            "wordClass": "o-stem"
                         },
                         {
                             "type": "leaf",
@@ -256,9 +244,8 @@
                     }
                 ],
                 "condition": {
-                    "type": "leaf",
-                    "cond": "ClassMatches",
-                    "characters": "o-stem"
+                    "type": "wordIs",
+                    "wordClass": "o-stem"
                 }
             },
             {
@@ -274,9 +261,8 @@
                     "type": "and",
                     "members": [
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "n-stem"
+                            "type": "wordIs",
+                            "wordClass": "n-stem"
                         },
                         {
                             "type": "leaf",
@@ -299,14 +285,12 @@
                     "type": "and",
                     "members": [
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "n-stem"
+                            "type": "wordIs",
+                            "wordClass": "n-stem"
                         },
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "fem"
+                            "type": "wordIs",
+                            "wordClass": "fem"
                         },
                         {
                             "type": "leaf",
@@ -370,14 +354,12 @@
                             "type": "or",
                             "members": [
                                 {
-                                    "type": "leaf",
-                                    "cond": "ClassMatches",
-                                    "characters": "masc"
+                                    "type": "wordIs",
+                                    "wordClass": "masc"
                                 },
                                 {
-                                    "type": "leaf",
-                                    "cond": "ClassMatches",
-                                    "characters": "neut"
+                                    "type": "wordIs",
+                                    "wordClass": "neut"
                                 }
                             ]
                         },
@@ -385,14 +367,12 @@
                             "type": "or",
                             "members": [
                                 {
-                                    "type": "leaf",
-                                    "cond": "ClassMatches",
-                                    "characters": "a-stem"
+                                    "type": "wordIs",
+                                    "wordClass": "a-stem"
                                 },
                                 {
-                                    "type": "leaf",
-                                    "cond": "ClassMatches",
-                                    "characters": "s-stem"
+                                    "type": "wordIs",
+                                    "wordClass": "s-stem"
                                 }
                             ]
                         }
@@ -412,9 +392,8 @@
                     "type": "and",
                     "members": [
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "o-stem"
+                            "type": "wordIs",
+                            "wordClass": "o-stem"
                         },
                         {
                             "type": "leaf",
@@ -440,9 +419,8 @@
                     }
                 ],
                 "condition": {
-                    "type": "leaf",
-                    "cond": "ClassMatches",
-                    "characters": "o-stem"
+                    "type": "wordIs",
+                    "wordClass": "o-stem"
                 }
             },
             {
@@ -458,9 +436,8 @@
                     "type": "and",
                     "members": [
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "n-stem"
+                            "type": "wordIs",
+                            "wordClass": "n-stem"
                         },
                         {
                             "type": "or",
@@ -531,14 +508,12 @@
                     "type": "and",
                     "members": [
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "masc"
+                            "type": "wordIs",
+                            "wordClass": "masc"
                         },
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "a-stem"
+                            "type": "wordIs",
+                            "wordClass": "a-stem"
                         },
                         {
                             "type": "leaf",
@@ -580,14 +555,12 @@
                     "type": "and",
                     "members": [
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "masc"
+                            "type": "wordIs",
+                            "wordClass": "masc"
                         },
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "a-stem"
+                            "type": "wordIs",
+                            "wordClass": "a-stem"
                         }
                     ]
                 }
@@ -603,14 +576,12 @@
                     "type": "and",
                     "members": [
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "neut"
+                            "type": "wordIs",
+                            "wordClass": "neut"
                         },
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "a-stem"
+                            "type": "wordIs",
+                            "wordClass": "a-stem"
                         },
                         {
                             "type": "syllable",
@@ -652,14 +623,12 @@
                     "type": "and",
                     "members": [
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "neut"
+                            "type": "wordIs",
+                            "wordClass": "neut"
                         },
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "a-stem"
+                            "type": "wordIs",
+                            "wordClass": "a-stem"
                         }
                     ]
                 }
@@ -677,9 +646,8 @@
                     "type": "and",
                     "members": [
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "o-stem"
+                            "type": "wordIs",
+                            "wordClass": "o-stem"
                         },
                         {
                             "type": "leaf",
@@ -708,14 +676,12 @@
                     "type": "or",
                     "members": [
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "o-stem"
+                            "type": "wordIs",
+                            "wordClass": "o-stem"
                         },
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "i-stem"
+                            "type": "wordIs",
+                            "wordClass": "i-stem"
                         }
                     ]
                 }
@@ -730,9 +696,8 @@
                     }
                 ],
                 "condition": {
-                    "type": "leaf",
-                    "cond": "ClassMatches",
-                    "characters": "s-stem"
+                    "type": "wordIs",
+                    "wordClass": "s-stem"
                 }
             },
             {
@@ -748,9 +713,8 @@
                     "type": "and",
                     "members": [
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "n-stem"
+                            "type": "wordIs",
+                            "wordClass": "n-stem"
                         },
                         {
                             "type": "or",
@@ -846,21 +810,18 @@
                             "type": "or",
                             "members": [
                                 {
-                                    "type": "leaf",
-                                    "cond": "ClassMatches",
-                                    "characters": "masc"
+                                    "type": "wordIs",
+                                    "wordClass": "masc"
                                 },
                                 {
-                                    "type": "leaf",
-                                    "cond": "ClassMatches",
-                                    "characters": "neut"
+                                    "type": "wordIs",
+                                    "wordClass": "neut"
                                 }
                             ]
                         },
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "a-stem"
+                            "type": "wordIs",
+                            "wordClass": "a-stem"
                         },
                         {
                             "type": "leaf",
@@ -904,21 +865,18 @@
                             "type": "or",
                             "members": [
                                 {
-                                    "type": "leaf",
-                                    "cond": "ClassMatches",
-                                    "characters": "masc"
+                                    "type": "wordIs",
+                                    "wordClass": "masc"
                                 },
                                 {
-                                    "type": "leaf",
-                                    "cond": "ClassMatches",
-                                    "characters": "neut"
+                                    "type": "wordIs",
+                                    "wordClass": "neut"
                                 }
                             ]
                         },
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "a-stem"
+                            "type": "wordIs",
+                            "wordClass": "a-stem"
                         }
                     ]
                 }
@@ -936,9 +894,8 @@
                     "type": "and",
                     "members": [
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "o-stem"
+                            "type": "wordIs",
+                            "wordClass": "o-stem"
                         },
                         {
                             "type": "leaf",
@@ -967,14 +924,12 @@
                     "type": "or",
                     "members": [
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "o-stem"
+                            "type": "wordIs",
+                            "wordClass": "o-stem"
                         },
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "i-stem"
+                            "type": "wordIs",
+                            "wordClass": "i-stem"
                         }
                     ]
                 }
@@ -992,9 +947,8 @@
                     "type": "and",
                     "members": [
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "n-stem"
+                            "type": "wordIs",
+                            "wordClass": "n-stem"
                         },
                         {
                             "type": "or",
@@ -1024,9 +978,8 @@
                     }
                 ],
                 "condition": {
-                    "type": "leaf",
-                    "cond": "ClassMatches",
-                    "characters": "s-stem"
+                    "type": "wordIs",
+                    "wordClass": "s-stem"
                 }
             }
         ],
@@ -1083,21 +1036,18 @@
                             "type": "or",
                             "members": [
                                 {
-                                    "type": "leaf",
-                                    "cond": "ClassMatches",
-                                    "characters": "masc"
+                                    "type": "wordIs",
+                                    "wordClass": "masc"
                                 },
                                 {
-                                    "type": "leaf",
-                                    "cond": "ClassMatches",
-                                    "characters": "neut"
+                                    "type": "wordIs",
+                                    "wordClass": "neut"
                                 }
                             ]
                         },
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "a-stem"
+                            "type": "wordIs",
+                            "wordClass": "a-stem"
                         }
                     ]
                 }
@@ -1121,9 +1071,8 @@
                     "type": "and",
                     "members": [
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "o-stem"
+                            "type": "wordIs",
+                            "wordClass": "o-stem"
                         },
                         {
                             "type": "leaf",
@@ -1155,9 +1104,8 @@
                     }
                 ],
                 "condition": {
-                    "type": "leaf",
-                    "cond": "ClassMatches",
-                    "characters": "o-stem"
+                    "type": "wordIs",
+                    "wordClass": "o-stem"
                 }
             },
             {
@@ -1173,9 +1121,8 @@
                     "type": "and",
                     "members": [
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "n-stem"
+                            "type": "wordIs",
+                            "wordClass": "n-stem"
                         },
                         {
                             "type": "or",
@@ -1205,9 +1152,8 @@
                     }
                 ],
                 "condition": {
-                    "type": "leaf",
-                    "cond": "ClassMatches",
-                    "characters": "s-stem"
+                    "type": "wordIs",
+                    "wordClass": "s-stem"
                 }
             }
         ],
@@ -1463,9 +1409,8 @@
                             "characters": "an"
                         },
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "pret-d"
+                            "type": "wordIs",
+                            "wordClass": "pret-d"
                         }
                     ]
                 }
@@ -1488,9 +1433,8 @@
                             "characters": "an"
                         },
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "pret-ed"
+                            "type": "wordIs",
+                            "wordClass": "pret-ed"
                         }
                     ]
                 }
@@ -1513,9 +1457,8 @@
                             "characters": "an"
                         },
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "pret-t"
+                            "type": "wordIs",
+                            "wordClass": "pret-t"
                         }
                     ]
                 }
@@ -1538,9 +1481,8 @@
                             "characters": "an"
                         },
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "pret-od"
+                            "type": "wordIs",
+                            "wordClass": "pret-od"
                         }
                     ]
                 }
@@ -1565,9 +1507,8 @@
                     "type": "and",
                     "members": [
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "v-strong"
+                            "type": "wordIs",
+                            "wordClass": "v-strong"
                         },
                         {
                             "type": "leaf",
@@ -1624,9 +1565,8 @@
                     }
                 ],
                 "condition": {
-                    "type": "leaf",
-                    "cond": "ClassMatches",
-                    "characters": "v-weak"
+                    "type": "wordIs",
+                    "wordClass": "v-weak"
                 }
             },
             {
@@ -1672,9 +1612,8 @@
                     }
                 ],
                 "condition": {
-                    "type": "leaf",
-                    "cond": "ClassMatches",
-                    "characters": "v-weak"
+                    "type": "wordIs",
+                    "wordClass": "v-weak"
                 }
             },
             {
@@ -4175,9 +4114,8 @@
                     "type": "and",
                     "members": [
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "v-pret-pres"
+                            "type": "wordIs",
+                            "wordClass": "v-pret-pres"
                         },
                         {
                             "type": "leaf",
@@ -4277,9 +4215,8 @@
                     "type": "and",
                     "members": [
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "masc"
+                            "type": "wordIs",
+                            "wordClass": "masc"
                         },
                         {
                             "type": "leaf",
@@ -4302,9 +4239,8 @@
                     "type": "and",
                     "members": [
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "fem"
+                            "type": "wordIs",
+                            "wordClass": "fem"
                         },
                         {
                             "type": "leaf",
@@ -6283,39 +6219,32 @@
                     "type": "or",
                     "members": [
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "v-strong-1"
+                            "type": "wordIs",
+                            "wordClass": "v-strong-1"
                         },
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "v-strong-2"
+                            "type": "wordIs",
+                            "wordClass": "v-strong-2"
                         },
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "v-strong-3"
+                            "type": "wordIs",
+                            "wordClass": "v-strong-3"
                         },
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "v-strong-4"
+                            "type": "wordIs",
+                            "wordClass": "v-strong-4"
                         },
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "v-strong-5"
+                            "type": "wordIs",
+                            "wordClass": "v-strong-5"
                         },
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "v-strong-6"
+                            "type": "wordIs",
+                            "wordClass": "v-strong-6"
                         },
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "v-strong-7"
+                            "type": "wordIs",
+                            "wordClass": "v-strong-7"
                         }
                     ]
                 }
@@ -6346,9 +6275,8 @@
                     {
                         "type": "Spe",
                         "condition": {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "v-strong-1"
+                            "type": "wordIs",
+                            "wordClass": "v-strong-1"
                         },
                         "args": [
                             "ī > ā"
@@ -6357,9 +6285,8 @@
                     {
                         "type": "Spe",
                         "condition": {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "v-strong-2"
+                            "type": "wordIs",
+                            "wordClass": "v-strong-2"
                         },
                         "args": [
                             "{ēo|ū} > {ēa|ēa}"
@@ -6368,9 +6295,8 @@
                     {
                         "type": "Spe",
                         "condition": {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "v-strong-5"
+                            "type": "wordIs",
+                            "wordClass": "v-strong-5"
                         },
                         "args": [
                             "e > æ"
@@ -6379,9 +6305,8 @@
                     {
                         "type": "Spe",
                         "condition": {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "v-strong-5"
+                            "type": "wordIs",
+                            "wordClass": "v-strong-5"
                         },
                         "args": [
                             "i > æ / _{d|t}"
@@ -6432,9 +6357,8 @@
                     {
                         "type": "Spe",
                         "condition": {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "v-strong-1"
+                            "type": "wordIs",
+                            "wordClass": "v-strong-1"
                         },
                         "args": [
                             "ī > i"
@@ -6443,9 +6367,8 @@
                     {
                         "type": "Spe",
                         "condition": {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "v-strong-2"
+                            "type": "wordIs",
+                            "wordClass": "v-strong-2"
                         },
                         "args": [
                             "{ēo|ū} > o"
@@ -6489,9 +6412,8 @@
                             "characters": "an"
                         },
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "v-strong"
+                            "type": "wordIs",
+                            "wordClass": "v-strong"
                         }
                     ]
                 }
@@ -6514,9 +6436,8 @@
                             "characters": "an"
                         },
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "v-weak"
+                            "type": "wordIs",
+                            "wordClass": "v-weak"
                         }
                     ]
                 }
@@ -6551,9 +6472,8 @@
                     }
                 ],
                 "condition": {
-                    "type": "leaf",
-                    "cond": "ClassMatches",
-                    "characters": "v-weak"
+                    "type": "wordIs",
+                    "wordClass": "v-weak"
                 }
             },
             {
@@ -6591,9 +6511,8 @@
                     {
                         "type": "Spe",
                         "condition": {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "v-strong-1"
+                            "type": "wordIs",
+                            "wordClass": "v-strong-1"
                         },
                         "args": [
                             "ī > i"
@@ -6602,9 +6521,8 @@
                     {
                         "type": "Spe",
                         "condition": {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "v-strong-2"
+                            "type": "wordIs",
+                            "wordClass": "v-strong-2"
                         },
                         "args": [
                             "{ēo|ū} > u"
@@ -6613,9 +6531,8 @@
                     {
                         "type": "Spe",
                         "condition": {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "v-strong-5"
+                            "type": "wordIs",
+                            "wordClass": "v-strong-5"
                         },
                         "args": [
                             "e > ǣ"

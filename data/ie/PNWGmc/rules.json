@@ -308,9 +308,8 @@
                     "type": "and",
                     "members": [
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "V"
+                            "type": "wordIs",
+                            "wordClass": "V"
                         },
                         {
                             "type": "leaf",
@@ -333,9 +332,8 @@
                     "type": "and",
                     "members": [
                         {
-                            "type": "leaf",
-                            "cond": "ClassMatches",
-                            "characters": "V"
+                            "type": "wordIs",
+                            "wordClass": "V"
                         },
                         {
                             "type": "leaf",
