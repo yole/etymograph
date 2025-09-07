@@ -15739,6 +15739,7 @@
         "id": 6311,
         "text": "apa",
         "gloss": "monkey, ape",
+        "pos": "N",
         "sourceRefs": [
             {
                 "pubId": 9,
@@ -23571,6 +23572,7 @@
         "id": 7919,
         "text": "ācwīnan",
         "gloss": "waste, dwindle away",
+        "pos": "V",
         "sourceRefs": [
             {
                 "pubId": 9,
