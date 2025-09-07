@@ -79,7 +79,7 @@ class PhonemeControllerTest {
     fun relatedRules() {
         val wPhoneme = graph.addPhoneme(fixture.q, listOf("w"), null, setOf())
         val uPhoneme = graph.addPhoneme(fixture.q, listOf("u"), null, setOf())
-        val rule = graph.rule("sound is 'w':\n- new sound is 'u'", fixture.ce, fixture.q, "q-gen")
+        val rule = graph.rule("* w > u / _#", fixture.ce, fixture.q, "q-gen")
         val seq = graph.addRuleSequence("ce-to-q", fixture.ce, fixture.q, listOf(rule.step()))
 
         val wPhonemeViewModel = phonemeController.phoneme(graph, wPhoneme.id)

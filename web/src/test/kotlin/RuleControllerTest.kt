@@ -222,7 +222,7 @@ class RuleControllerTest {
             RuleController.UpdateRuleParameters(
                 "ce-p-f",
                 "ce", "ce",
-                "sound is 'p':\n- new sound is 'f'"
+                "* p > f"
             )
         )
         val ceSequence = graph.addRuleSequence("ce-sequence", fixture.ce, fixture.ce,
@@ -233,7 +233,7 @@ class RuleControllerTest {
             RuleController.UpdateRuleParameters(
                 "q-final-consonant",
                 "q", "q",
-                "sound is word-final 'm':\n- new sound is 'n'"
+                "* m > n / _#"
             )
         )
 
@@ -264,7 +264,7 @@ class RuleControllerTest {
             RuleController.UpdateRuleParameters(
                 "q-pos",
                 "q", "q",
-                "sound is word-final 't':\n- new sound is 'θ'",
+                "* t > θ / _#",
             ))
         val rule = graph.ruleByName("q-pos")!!
 
@@ -317,14 +317,14 @@ class RuleControllerTest {
 
     private fun setupChainedSequenceDerivation(qWordText: String): Triple<RuleSequence, Word, Word> {
         val qAiE = graph.rule(
-            "sound is 'a' and next sound is 'i':\n- new sound is 'e'",
+            "* a > e / _i",
             name = "q-ai-e",
             fromLanguage = ce,
             toLanguage = aq
         )
         val aqSeq = graph.addRuleSequence("ce-aq", ce, aq, listOf(qAiE.step()))
         val qWV = graph.rule(
-            "sound is word-initial 'w':\n- new sound is 'v'",
+            "* w > v / #_",
             name = "q-w-v",
             fromLanguage = aq,
             toLanguage = q

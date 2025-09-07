@@ -42,7 +42,7 @@ class LinkControllerTest {
             RuleController.UpdateRuleParameters(
                 "q-pos",
                 "q", "q",
-                "sound is word-final 't':\n- new sound is 'θ'",
+                "* t > θ / _#",
             ))
 
         linkController.addRuleLink(fixture.graph, LinkController.RuleLinkParams(word.id, "q-pos", Link.Related.id))
@@ -67,7 +67,7 @@ class LinkControllerTest {
             RuleController.UpdateRuleParameters(
                 "q-pos",
                 "q", "q",
-                "sound is word-final 't':\n- new sound is 'θ'",
+                "* t > θ / _#",
             ))
 
         val baseWord = fixture.graph.findOrAddWord("mbar", fixture.ce, "home")
