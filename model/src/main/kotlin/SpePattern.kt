@@ -386,7 +386,9 @@ private fun applyNodes(it: PhonemeIterator, relativeIndex: Int, context: SpeCont
             it.deleteAtRelative(i + relativeIndex)
         }
     }
-    it.advanceBy(beforeLength - 1)
+    if (beforeLength > 1) {
+        it.advanceBy(beforeLength - 1)
+    }
 }
 
 class SpePattern(
