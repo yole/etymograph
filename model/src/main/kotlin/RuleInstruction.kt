@@ -199,11 +199,6 @@ class ApplyRuleInstruction(val ruleRef: RuleRef, comment: String?)
         }
     }
 
-    override fun apply(word: Word, phonemes: PhonemeIterator, graph: GraphRepository, trace: RuleTrace?) {
-        phonemes.commit()
-        ruleRef.resolve().applyToPhoneme(word, phonemes, graph, trace)
-    }
-
     override fun reverseApply(rule: Rule, text: String, language: Language, graph: GraphRepository, trace: RuleTrace?): List<String> {
         val targetRule = ruleRef.resolve()
         return targetRule.reverseApply(Word(-1, text, language), graph, trace)
