@@ -400,16 +400,17 @@ class SpePattern(
     val following: List<SpeNode>
 )  {
     fun apply(language: Language, text: String, trace: RuleTrace? = null): String {
-        return apply(Word(-1, text, language), null, null, trace).result()
+        return apply(Word(-1, text, language), null, null, trace = trace).result()
     }
 
     fun apply(
         word: Word,
         condition: ((PhonemeIterator) -> Boolean)? = null,
         postApply: ((PhonemeIterator) -> Unit)?,
+        repo: GraphRepository? = null,
         trace: RuleTrace? = null
     ): PhonemeIterator {
-        val it = PhonemeIterator(word, null)
+        val it = PhonemeIterator(word, repo)
         while (true) {
             applyAtCurrent(it, condition, postApply, trace)
             if (!it.advance()) break

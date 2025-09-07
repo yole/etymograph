@@ -100,7 +100,7 @@ class CompoundTest : QBaseTest() {
         val napan = repo.addWord("napan")
         repo.createCompound(napan, listOf(na, pan))
 
-        val soundRule = repo.rule("sound is stressed 'a':\n- new sound is 'e'")
+        val soundRule = repo.rule("* a > e if sound is stressed")
         val newWord = soundRule.apply(napan, repo)
         assertEquals("napen", newWord.text)
     }

@@ -513,6 +513,7 @@ class SpeInstruction(val pattern: SpePattern, val condition: RuleCondition? = nu
             phonemicWord,
             { condition == null || condition.matches(phonemicWord, it, context.graph, trace).also { result -> trace?.logCondition(condition, result) } },
             { context.rule.logic.postInstructions.forEach { insn -> insn.apply(word, it, context.graph, trace )} },
+            context.graph,
             trace
         )
         if (it.result() != phonemicWord.text) {
