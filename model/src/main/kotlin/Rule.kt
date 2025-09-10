@@ -177,7 +177,7 @@ class RuleBranch(val condition: RuleCondition, val instructions: List<RuleInstru
     }
 
     fun toSummaryText(graph: GraphRepository): String? {
-        val summaries = instructions.map { it.toSummaryText(graph, condition) ?: return null }
+        val summaries = instructions.map { it.toSummaryText(graph) ?: return null }
         if (instructions.any { it is SpeInstruction }) {
             return summaries.joinToString(", ")
         }

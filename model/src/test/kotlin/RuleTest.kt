@@ -648,7 +648,7 @@ class RuleTest : QBaseTest() {
         assertEquals("gefrignan", result.text)
 
         assertEquals("prepend morpheme 'ge-: Prefix: ge'", rule.firstInstruction.toEditableText(repo))
-        assertEquals("ge-", rule.firstInstruction.toSummaryText(repo, rule.logic.branches[0].condition))
+        assertEquals("ge-", rule.firstInstruction.toSummaryText(repo))
 
         val instruction = rule.firstInstruction
         val data = instruction.toSerializedFormat()

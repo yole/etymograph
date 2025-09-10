@@ -96,7 +96,7 @@ open class RuleInstruction(val type: InstructionType, val arg: String, val comme
         return type.insnName.richText()
     }
 
-    open fun toSummaryText(graph: GraphRepository, condition: RuleCondition): String? = when(type) {
+    open fun toSummaryText(graph: GraphRepository): String? = when(type) {
         InstructionType.ChangeEnding ->
             if (arg.isNotEmpty()) "-$arg" else ""
         else -> ""
@@ -212,7 +212,7 @@ class ApplyRuleInstruction(val ruleRef: RuleRef, comment: String?)
                 "'".rich()
     }
 
-    override fun toSummaryText(graph: GraphRepository, condition: RuleCondition): String {
+    override fun toSummaryText(graph: GraphRepository): String {
         val rule = ruleRef.resolve()
         return rule.toSummaryText(graph)
     }
@@ -379,11 +379,11 @@ class PrependAppendInstruction(type: InstructionType, language: Language, arg: S
         return emptyList()
     }
 
-    override fun toSummaryText(graph: GraphRepository, condition: RuleCondition): String? {
+    override fun toSummaryText(graph: GraphRepository): String? {
         if (literalArg != null) {
             return if (type == InstructionType.Prepend) "$literalArg-" else "-$literalArg"
         }
-        return super.toSummaryText(graph, condition)
+        return super.toSummaryText(graph)
     }
 }
 
@@ -450,7 +450,7 @@ class MorphemeInstruction(type: InstructionType, val morphemeId: Int, comment: S
         )
     }
 
-    override fun toSummaryText(graph: GraphRepository, condition: RuleCondition): String? {
+    override fun toSummaryText(graph: GraphRepository): String? {
         val word = graph.wordById(morphemeId) ?: return null
         return if (type == InstructionType.PrependMorpheme)
             "${word.text.trimEnd('-')}-"
@@ -470,7 +470,7 @@ class SpeInstruction(val pattern: SpePattern, val condition: RuleCondition? = nu
         return pattern.toString() + (condition?.let { " if " + it.toEditableText() } ?: "")
     }
 
-    override fun toSummaryText(graph: GraphRepository, condition: RuleCondition): String {
+    override fun toSummaryText(graph: GraphRepository): String {
         return pattern.toRichText().toString()
     }
 
