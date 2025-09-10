@@ -237,6 +237,138 @@ class RuleLogic(
     val branches: List<RuleBranch>,
     val postInstructions: List<RuleInstruction>
 ) {
+    fun isUnconditional() =
+        branches.size == 1 && branches[0].condition is OtherwiseCondition && preInstructions.isEmpty()
+
+    fun apply(
+        word: Word,
+        rule: Rule,
+        graph: GraphRepository,
+        trace: RuleTrace? = null,
+        normalizeSegments: Boolean = true,
+        applyPrePostRules: Boolean = true,
+        preserveId: Boolean = false
+    ): Word {
+        val paradigm = graph.paradigmForRule(rule)
+        val paraPreWord = if (applyPrePostRules) (paradigm?.preRule?.apply(word, graph, trace, preserveId = true) ?: word) else word
+        val prePostApplyContext = RuleApplyContext(rule, null, graph, word, trace)
+        val preWord = preInstructions.apply(paraPreWord, prePostApplyContext)
+        for (branch in branches) {
+            if (branch.matches(preWord, graph, trace)) {
+                trace?.logMatchedBranch(rule, word, null, branch)
+                var resultWord = branch.apply(rule, preWord, word, graph, trace)
+                if (!rule.isSPE()) {
+                    resultWord = postInstructions.apply(resultWord, prePostApplyContext)
+                }
+                if (applyPrePostRules) {
+                    resultWord = paradigm?.postRule?.apply(resultWord, graph, trace, preserveId = true) ?: resultWord
+                }
+
+                val stressIndex = resultWord.remapViaCharacterIndex(resultWord.stressedPhonemeIndex, rule.toLanguage, graph)
+                val resultText = if (word.text.first().isUpperCase()) {
+                    resultWord.text.replaceFirstChar { it.titlecase(Locale.FRANCE) }
+                }
+                else {
+                    resultWord.text
+                }
+                val gloss = word.glossOrNP()?.let { baseGloss ->
+                    rule.applyCategories(baseGloss, resultWord.segments?.any { it.sourceRule == rule } == true)
+                }
+                val result = word.derive(resultText,
+                    id = if (preserveId) word.id else -1,
+                    newLanguage = rule.toLanguage,
+                    newGloss = gloss,
+                    phonemic = resultWord.isPhonemic,
+                    stressIndex = stressIndex,
+                    segments = if (normalizeSegments) Word.normalizeSegments(resultWord.segments) else resultWord.segments,
+                    newClasses = resultWord.classes
+                )
+                trace?.logRuleResult(rule, result)
+                return result
+            }
+            else {
+                trace?.logUnmatchedBranch(rule, word, null, branch)
+            }
+        }
+        return Word(-1, "?", word.language)
+    }
+
+    fun reverseApply(word: Word, rule: Rule, graph: GraphRepository, trace: RuleTrace? = null): List<String> {
+        if (branches.isEmpty()) {
+            return listOf(word.text)
+        }
+        return branches.flatMap {
+            val candidates = it.reverseApply(rule, word, graph, trace)
+            RuleInstruction.reverseApplyInstructions(candidates, rule, word, preInstructions, graph)
+        }
+    }
+
+    fun applyToPhoneme(word: Word, rule: Rule, phonemes: PhonemeIterator, graph: GraphRepository, trace: RuleTrace? = null): Boolean {
+        for (branch in branches) {
+            if (branch.condition.matches(word, phonemes, graph, trace)) {
+                trace?.logMatchedBranch(rule, word, phonemes.current, branch)
+                for (instruction in branch.instructions) {
+                    instruction.apply(word, phonemes, graph, trace)
+                }
+                for (postInstruction in postInstructions) {
+                    postInstruction.apply(word, phonemes, graph, trace)
+                }
+                return true
+            }
+            else {
+                trace?.logUnmatchedBranch(rule, word, phonemes.current, branch)
+            }
+        }
+        return false
+    }
+
+    fun reverseApplyToPhoneme(phonemes: PhonemeIterator): List<String> {
+        for (branch in branches) {
+            val instruction = branch.instructions.singleOrNull() ?: return emptyList()
+            val result = instruction.reverseApplyToPhoneme(phonemes.clone(), branch.condition) ?: return emptyList()
+            if (result.isNotEmpty()) return result
+        }
+        return listOf(phonemes.result())
+    }
+
+    fun toEditableText(graph: GraphRepository): String {
+        if (isUnconditional()) {
+            val branch = branches[0]
+            val commentString = RuleBranch.commentToString(branch.comment)
+            return commentString + branch.instructions.joinToString("\n") {
+                RuleBranch.commentToString(it.comment) + (if (it is SpeInstruction) "* " else " - ") + it.toEditableText(graph)
+            }
+        }
+        return preInstructions.joinToString("") { " - " + it.toEditableText(graph) + "\n" } +
+                branches.joinToString("\n\n") { it.toEditableText(graph) } +
+                (if (postInstructions.isNotEmpty()) "\n\n" else "") +
+                postInstructions.joinToString("\n") { " = " + it.toEditableText(graph) }
+    }
+
+    fun toSummaryText(graph: GraphRepository): String {
+        val summaries = branches.map { it.toSummaryText(graph) }
+        if (summaries.any { it == null }) return ""
+        val filteredSummaries = summaries.filter { !it.isNullOrEmpty() }
+        return filteredSummaries.toSet().joinToString("/")
+    }
+
+    fun refersToPhoneme(phoneme: Phoneme): Boolean {
+        return preInstructions.any { it.refersToPhoneme(phoneme) } ||
+                branches.any { branch -> branch.refersToPhoneme(phoneme) } ||
+                postInstructions.any { it.refersToPhoneme(phoneme) }
+    }
+
+    fun referencedRules(): Set<Rule> {
+        return (preInstructions.flatMap { it.referencedRules() } +
+                branches.flatMap {
+                        branch -> branch.instructions.flatMap { it.referencedRules() }
+                } + postInstructions.flatMap { it.referencedRules() }).toSet()
+    }
+
+    fun findConditionForInstruction(instruction: RuleInstruction): RuleCondition? {
+        return branches.find { instruction in it.instructions }?.condition
+    }
+
     companion object {
         fun empty(): RuleLogic = RuleLogic(emptyList(), emptyList(), emptyList())
     }
@@ -282,87 +414,16 @@ class Rule(
             }
         }
 
-        val paradigm = graph.paradigmForRule(this)
-        val paraPreWord = if (applyPrePostRules) (paradigm?.preRule?.apply(word, graph, trace, preserveId = true) ?: word) else word
-        val prePostApplyContext = RuleApplyContext(this, null, graph, word, trace)
-        val preWord = logic.preInstructions.apply(paraPreWord, prePostApplyContext)
-        for (branch in logic.branches) {
-            if (branch.matches(preWord, graph, trace)) {
-                trace?.logMatchedBranch(this, word, null, branch)
-                var resultWord = branch.apply(this, preWord, word, graph, trace)
-                if (!isSPE()) {
-                    resultWord = logic.postInstructions.apply(resultWord, prePostApplyContext)
-                }
-                if (applyPrePostRules) {
-                    resultWord = paradigm?.postRule?.apply(resultWord, graph, trace, preserveId = true) ?: resultWord
-                }
-
-                val stressIndex = resultWord.remapViaCharacterIndex(resultWord.stressedPhonemeIndex, toLanguage, graph)
-                val resultText = if (word.text.first().isUpperCase()) {
-                    resultWord.text.replaceFirstChar { it.titlecase(Locale.FRANCE) }
-                }
-                else {
-                    resultWord.text
-                }
-                val gloss = word.glossOrNP()?.let { baseGloss ->
-                    applyCategories(baseGloss, resultWord.segments?.any { it.sourceRule == this} == true)
-                }
-                val result = word.derive(resultText,
-                    id = if (preserveId) word.id else -1,
-                    newLanguage = toLanguage,
-                    newGloss = gloss,
-                    phonemic = resultWord.isPhonemic,
-                    stressIndex = stressIndex,
-                    segments = if (normalizeSegments) Word.normalizeSegments(resultWord.segments) else resultWord.segments,
-                    newClasses = resultWord.classes
-                )
-                trace?.logRuleResult(this, result)
-                return result
-            }
-            else {
-                trace?.logUnmatchedBranch(this, word, null, branch)
-            }
-        }
-        return Word(-1, "?", word.language)
+        return logic.apply(word, this, graph, trace, normalizeSegments, applyPrePostRules, preserveId)
     }
 
-    fun reverseApply(word: Word, graph: GraphRepository, trace: RuleTrace? = null): List<String> {
-        if (logic.branches.isEmpty()) {
-            return listOf(word.text)
-        }
-        return logic.branches.flatMap {
-            val candidates = it.reverseApply(this, word, graph, trace)
-            RuleInstruction.reverseApplyInstructions(candidates, this, word, logic.preInstructions, graph)
-        }
-    }
 
     fun applyToPhoneme(word: Word, phonemes: PhonemeIterator, graph: GraphRepository, trace: RuleTrace? = null): Boolean {
-        for (branch in logic.branches) {
-            if (branch.condition.matches(word, phonemes, graph, trace)) {
-                trace?.logMatchedBranch(this, word, phonemes.current, branch)
-                for (instruction in branch.instructions) {
-                    instruction.apply(word, phonemes, graph, trace)
-                }
-                for (postInstruction in logic.postInstructions) {
-                    postInstruction.apply(word, phonemes, graph, trace)
-                }
-                return true
-            }
-            else {
-                trace?.logUnmatchedBranch(this, word, phonemes.current, branch)
-            }
-        }
-        return false
+        return logic.applyToPhoneme(word, this, phonemes, graph, trace)
     }
 
-    fun reverseApplyToPhoneme(phonemes: PhonemeIterator): List<String> {
-        for (branch in logic.branches) {
-            val instruction = branch.instructions.singleOrNull() ?: return emptyList()
-            val result = instruction.reverseApplyToPhoneme(phonemes.clone(), branch.condition) ?: return emptyList()
-            if (result.isNotEmpty()) return result
-        }
-        return listOf(phonemes.result())
-    }
+    fun reverseApply(word: Word, graph: GraphRepository, trace: RuleTrace? = null): List<String>  =
+        logic.reverseApply(word, this, graph, trace)
 
     fun applyCategories(baseGloss: String, fromSegment: Boolean = false): String {
         val replacedGloss = replacedCategories?.let { baseGloss.replace(it, "") } ?: baseGloss
@@ -372,45 +433,11 @@ class Rule(
         return replacedGloss
     }
 
-    fun toEditableText(graph: GraphRepository): String {
-        if (isUnconditional()) {
-            val branch = logic.branches[0]
-            val commentString = RuleBranch.commentToString(branch.comment)
-            return commentString + branch.instructions.joinToString("\n") {
-                RuleBranch.commentToString(it.comment) + (if (it is SpeInstruction) "* " else " - ") + it.toEditableText(graph)
-            }
-        }
-        return logic.preInstructions.joinToString("") { " - " + it.toEditableText(graph) + "\n" } +
-               logic.branches.joinToString("\n\n") { it.toEditableText(graph) } +
-               (if (logic.postInstructions.isNotEmpty()) "\n\n" else "") +
-               logic.postInstructions.joinToString("\n") { " = " + it.toEditableText(graph) }
-    }
-
-    fun isUnconditional() =
-        logic.branches.size == 1 && logic.branches[0].condition is OtherwiseCondition && logic.preInstructions.isEmpty()
-
-    fun toSummaryText(graph: GraphRepository): String {
-        val summaries = logic.branches.map { it.toSummaryText(graph) }
-        if (summaries.any { it == null }) return ""
-        val filteredSummaries = summaries.filter { !it.isNullOrEmpty() }
-        return filteredSummaries.toSet().joinToString("/")
-    }
+    fun toEditableText(graph: GraphRepository): String = logic.toEditableText(graph)
+    fun toSummaryText(graph: GraphRepository): String = logic.toSummaryText(graph)
 
     fun addedGrammaticalCategories(): List<WordCategory> {
         return addedCategories?.let { cv -> parseCategoryValues(fromLanguage, cv).mapNotNull { it?.category } } ?: emptyList()
-    }
-
-    fun refersToPhoneme(phoneme: Phoneme): Boolean {
-        return logic.preInstructions.any { it.refersToPhoneme(phoneme) } ||
-                logic.branches.any { branch -> branch.refersToPhoneme(phoneme) } ||
-                logic.postInstructions.any { it.refersToPhoneme(phoneme) }
-    }
-
-    fun referencedRules(): Set<Rule> {
-        return (logic.preInstructions.flatMap { it.referencedRules() } +
-                logic.branches.flatMap {
-                    branch -> branch.instructions.flatMap { it.referencedRules() }
-                } + logic.postInstructions.flatMap { it.referencedRules() }).toSet()
     }
 
     data class RuleChangeResult(val word: Word, val oldResult: String, val newResult: String)

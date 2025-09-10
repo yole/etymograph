@@ -19424,6 +19424,7 @@
         "id": 7082,
         "text": "āfrēoðan",
         "gloss": "froth",
+        "pos": "V",
         "sourceRefs": [
             {
                 "pubId": 9,
@@ -31548,6 +31549,7 @@
         "id": 9489,
         "text": "frēoðan",
         "gloss": "froth",
+        "pos": "V",
         "reconstructed": true
     },
     {

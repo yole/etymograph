@@ -67,12 +67,11 @@ open class RuleInstruction(val type: InstructionType, val arg: String, val comme
 
     private fun reverseChangeEnding(text: String, rule: Rule): List<String> {
         if (!text.endsWith(arg)) return emptyList()
-        for (branch in rule.logic.branches) {
-            if (this in branch.instructions) {
-                val conditions = branch.condition.findLeafConditions(ConditionType.EndsWith)
-                return conditions.map { condition ->
-                     text.removeSuffix(arg) + if (condition.phonemeClass != null) "*" else condition.parameter
-                }
+        val condition = rule.logic.findConditionForInstruction(this)
+        if (condition != null) {
+            val endsWithConditions = condition.findLeafConditions(ConditionType.EndsWith)
+            return endsWithConditions.map { condition ->
+                text.removeSuffix(arg) + if (condition.phonemeClass != null) "*" else condition.parameter
             }
         }
         return emptyList()
@@ -214,7 +213,7 @@ class ApplyRuleInstruction(val ruleRef: RuleRef, comment: String?)
 
     override fun toSummaryText(graph: GraphRepository): String {
         val rule = ruleRef.resolve()
-        return rule.toSummaryText(graph)
+        return rule.logic.toSummaryText(graph)
     }
 
     override fun referencedRules(): Set<Rule> {
@@ -258,7 +257,7 @@ class ApplySoundRuleInstruction(language: Language, val ruleRef: RuleRef, arg: S
         if (seekTarget == null) return listOf(text)
         val phonemes = PhonemeIterator(text, language, graph)
         if (phonemes.seek(seekTarget)) {
-            return ruleRef.resolve().reverseApplyToPhoneme(phonemes)
+            return ruleRef.resolve().logic.reverseApplyToPhoneme(phonemes)
         }
         return listOf(text)
     }

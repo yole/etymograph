@@ -443,7 +443,7 @@ open class InMemoryGraphRepository : GraphRepository() {
     }
 
     override fun findReferencingRules(rule: Rule): List<Rule> {
-        return allRules().filter { rule in it.referencedRules() }
+        return allRules().filter { rule in it.logic.referencedRules() }
     }
 
     override fun allSequences(): List<RuleSequence> {

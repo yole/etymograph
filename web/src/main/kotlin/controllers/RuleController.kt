@@ -300,11 +300,11 @@ class RuleController {
             val branch = logic.branches.single()
             return branch.instructions.map { insn ->
                 RuleBranch(branch.condition, listOf(insn), insn.comment ?: branch.comment)
-                    .toViewModel(this, isUnconditional(), examples.filter { insn in it.instructions}, repo)
+                    .toViewModel(this, logic.isUnconditional(), examples.filter { insn in it.instructions}, repo)
             }
         }
         return logic.branches.map { branch ->
-            branch.toViewModel(this, isUnconditional(), examples.filter { branch in it.branches }, repo)
+            branch.toViewModel(this, logic.isUnconditional(), examples.filter { branch in it.branches }, repo)
         }
     }
 
@@ -731,7 +731,7 @@ private fun List<RuleSequenceStep>.withReferencedRules(): List<RuleSequenceStep>
     val seenRules = mutableSetOf<Rule>()
     for (step in this) {
         result.add(step)
-        for (ref in (step.rule as Rule).referencedRules()) {
+        for (ref in (step.rule as Rule).logic.referencedRules()) {
             if (ref !in seenRules) {
                 seenRules.add(ref)
                 result.add(RuleSequenceStep(ref, null, optional = false, dispreferred = false))
