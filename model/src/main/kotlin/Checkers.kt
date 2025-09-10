@@ -128,16 +128,17 @@ object RuleChecker : ConsistencyChecker {
     }
 
     private fun checkLogic(rule: Rule, report: (ConsistencyCheckerIssue) -> Unit) {
-        for (preInstruction in rule.logic.preInstructions) {
+        val logic = rule.logic as? MorphoRuleLogic ?: return
+        for (preInstruction in logic.preInstructions) {
             checkInstruction(rule, preInstruction, report)
         }
-        for (branch in rule.logic.branches) {
+        for (branch in logic.branches) {
             checkCondition(rule, branch.condition, report)
             for (instruction in branch.instructions) {
                 checkInstruction(rule, instruction, report)
             }
         }
-        for (postInstruction in rule.logic.postInstructions) {
+        for (postInstruction in logic.postInstructions) {
             checkInstruction(rule, postInstruction, report)
         }
     }

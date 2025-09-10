@@ -697,27 +697,44 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
         rule: RuleData,
         fromLanguage: Language,
         toLanguage: Language
-    ) = Rule(
-        rule.id,
-        rule.name ?: "",
-        fromLanguage,
-        languageByShortName(rule.toLanguageShortName)!!,
-        RuleLogic(
-            rule.preInstructions?.let {
-                ruleInstructionsFromSerializedFormat(this, fromLanguage, toLanguage, it)
-            } ?: emptyList(),
-            ruleBranchesFromSerializedFormat(this, fromLanguage, toLanguage, rule.branches),
-            rule.postInstructions?.let {
-                ruleInstructionsFromSerializedFormat(this, fromLanguage, toLanguage, it)
-            } ?: emptyList()
-        ),
-        rule.addedCategories,
-        rule.replacedCategories,
-        rule.fromPOS ?: emptyList(),
-        rule.toPOS,
-        loadSource(rule.sourceRefs),
-        rule.notes
-    )
+    ): Rule {
+        val logic = if (rule.branches.singleOrNull()?.instructions?.any { it.type == InstructionType.Spe } == true) {
+            SpeRuleLogic(
+                ruleInstructionsFromSerializedFormat(this, fromLanguage, toLanguage,
+                    rule.branches[0].instructions,
+                    rule.branches[0].comment
+                ) as List<SpeInstruction>,
+                rule.postInstructions?.let {
+                    ruleInstructionsFromSerializedFormat(this, fromLanguage, toLanguage, it)
+                } ?: emptyList()
+            )
+        }
+        else {
+            MorphoRuleLogic(
+                rule.preInstructions?.let {
+                    ruleInstructionsFromSerializedFormat(this, fromLanguage, toLanguage, it)
+                } ?: emptyList(),
+                ruleBranchesFromSerializedFormat(this, fromLanguage, toLanguage, rule.branches),
+                rule.postInstructions?.let {
+                    ruleInstructionsFromSerializedFormat(this, fromLanguage, toLanguage, it)
+                } ?: emptyList()
+            )
+        }
+
+        return Rule(
+            rule.id,
+            rule.name ?: "",
+            fromLanguage,
+            languageByShortName(rule.toLanguageShortName)!!,
+            logic,
+            rule.addedCategories,
+            rule.replacedCategories,
+            rule.fromPOS ?: emptyList(),
+            rule.toPOS,
+            loadSource(rule.sourceRefs),
+            rule.notes
+        )
+    }
 
     private fun loadCorpus(contentProviderCallback: (String) -> String?) {
         for (language in languages.values) {
@@ -874,28 +891,40 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             return sourceRefs?.map { SourceRef(it.pubId, it.refText) } ?: emptyList()
         }
 
-        fun Rule.ruleToSerializedFormat() =
-            RuleData(
+        fun Rule.ruleToSerializedFormat(): RuleData {
+            val logic = this.logic
+            val logicData = when (logic) {
+                is MorphoRuleLogic ->
+                    logic.branches.map { branch ->
+                        RuleBranchData(
+                            branch.instructions.toSerializedFormat(),
+                            branch.condition.toSerializedFormat(),
+                            branch.comment
+                        )
+                    }
+                is SpeRuleLogic ->
+                    listOf(RuleBranchData(
+                        logic.instructions.toSerializedFormat(),
+                        OtherwiseConditionData(),
+                        null
+                    ))
+            }
+            return RuleData(
                 id,
                 name,
                 fromLanguage.shortName,
                 toLanguage.shortName,
-                logic.branches.map { branch ->
-                    RuleBranchData(
-                        branch.instructions.toSerializedFormat(),
-                        branch.condition.toSerializedFormat(),
-                        branch.comment
-                    )
-                },
+                logicData,
                 addedCategories,
                 replacedCategories,
                 fromPOS.takeIf { it.isNotEmpty() },
                 toPOS,
                 source.sourceToSerializedFormat(),
                 notes.takeIf { !it.isNullOrEmpty() },
-                preInstructions = logic.preInstructions.toSerializedFormat().takeIf { it.isNotEmpty() },
+                preInstructions = (logic as? MorphoRuleLogic)?.preInstructions?.toSerializedFormat()?.takeIf { it.isNotEmpty() },
                 postInstructions = logic.postInstructions.toSerializedFormat().takeIf { it.isNotEmpty() }
             )
+        }
 
         private fun List<RuleInstruction>.toSerializedFormat(): List<RuleInstructionData> {
             return map { it.toSerializedFormat() }
@@ -992,16 +1021,18 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             result: InMemoryGraphRepository,
             fromLanguage: Language,
             toLanguage: Language,
-            ruleInstructionData: List<RuleInstructionData>
-        ) = ruleInstructionData.map { insnData ->
-            ruleInstructionFromSerializedFormat(result, fromLanguage, toLanguage, insnData)
+            ruleInstructionData: List<RuleInstructionData>,
+            firstInstructionComment: String? = null
+        ) = ruleInstructionData.mapIndexed { index, insnData ->
+            ruleInstructionFromSerializedFormat(result, fromLanguage, toLanguage, insnData, firstInstructionComment?.takeIf { index == 0 } )
         }
 
         fun ruleInstructionFromSerializedFormat(
             result: GraphRepository,
             fromLanguage: Language,
             toLanguage: Language,
-            insnData: RuleInstructionData
+            insnData: RuleInstructionData,
+            extraComment: String? = null
         ): RuleInstruction =
             when (insnData.type) {
                 InstructionType.ApplyRule ->
@@ -1018,7 +1049,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                     MorphemeInstruction(insnData.type, insnData.args[0].toInt(), insnData.comment)
                 InstructionType.Spe ->
                     SpeInstruction(SpePattern.parse(fromLanguage, toLanguage, insnData.args[0]),
-                        insnData.condition?.toRuntimeFormat(result, fromLanguage), insnData.comment)
+                        insnData.condition?.toRuntimeFormat(result, fromLanguage), insnData.comment ?: extraComment)
                 else ->
                     RuleInstruction(insnData.type, insnData.args.firstOrNull() ?: "", insnData.comment)
             }

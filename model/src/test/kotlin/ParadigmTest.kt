@@ -36,7 +36,7 @@ class ParadigmTest : QBaseTest() {
             "q-nom-pl",
             q,
             q,
-            Rule.parseBranches("- append 'r'", q.parseContext()),
+            Rule.parseLogic("- append 'r'", q.parseContext()),
             ".PL"
         )
         val genRule = repo.rule("- append 'o'", name = "q-gen", addedCategories = ".GEN")
@@ -44,7 +44,7 @@ class ParadigmTest : QBaseTest() {
             "q-gen-pl",
             q,
             q,
-            Rule.parseBranches("- append 'on'", q.parseContext()),
+            Rule.parseLogic("- append 'on'", q.parseContext()),
             ".GEN.PL"
         )
 

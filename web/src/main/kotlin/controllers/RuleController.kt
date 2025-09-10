@@ -231,7 +231,7 @@ class RuleController {
             ))
         }
 
-        val orphanExamples = if (isSPE() && logic.branches.size == 1)
+        val orphanExamples = if (isSPE())
             examples.filter { it.instructions.isEmpty() }
         else
             examples.filter { it.branches.isEmpty() }
@@ -254,7 +254,7 @@ class RuleController {
             paradigm?.preRule?.toRefViewModel(),
             paradigm?.postRule?.toRefViewModel(),
             isSPE(),
-            logic.preInstructions.map { it.toRichText(repo) },
+            (logic as? MorphoRuleLogic)?.preInstructions?.map { it.toRichText(repo) } ?: emptyList(),
             ruleBranchesToViewModel(repo, examples),
             logic.postInstructions.map { it.toRichText(repo) },
             links.mapNotNull { (link, langEntity) ->
@@ -296,15 +296,15 @@ class RuleController {
         repo: GraphRepository,
         examples: List<RuleExampleData>
     ): List<RuleBranchViewModel> {
-        if (isSPE() && logic.branches.size == 1) {
-            val branch = logic.branches.single()
-            return branch.instructions.map { insn ->
-                RuleBranch(branch.condition, listOf(insn), insn.comment ?: branch.comment)
-                    .toViewModel(this, logic.isUnconditional(), examples.filter { insn in it.instructions}, repo)
+        val logic = this.logic
+        return when (logic) {
+            is SpeRuleLogic -> logic.instructions.map { insn ->
+                RuleBranch(OtherwiseCondition, listOf(insn), insn.comment)
+                    .toViewModel(this, true, examples.filter { insn in it.instructions}, repo)
             }
-        }
-        return logic.branches.map { branch ->
-            branch.toViewModel(this, logic.isUnconditional(), examples.filter { branch in it.branches }, repo)
+            is MorphoRuleLogic -> logic.branches.map { branch ->
+                branch.toViewModel(this, logic.isUnconditional(), examples.filter { branch in it.branches }, repo)
+            }
         }
     }
 
@@ -371,7 +371,7 @@ class RuleController {
         }
 
         val logic = try {
-            Rule.parseBranches(params.text, parseContext(repo, fromLanguage, toLanguage))
+            Rule.parseLogic(params.text, parseContext(repo, fromLanguage, toLanguage))
         } catch (e: RuleParseException) {
             badRequest(e.message ?: "Cannot parse rule")
         }
@@ -413,7 +413,7 @@ class RuleController {
         rule.name = params.name
         rule.fromLanguage = fromLanguage
         rule.toLanguage = toLanguage
-        rule.logic = Rule.parseBranches(params.text, parseContext(repo, rule.fromLanguage, rule.toLanguage))
+        rule.logic = Rule.parseLogic(params.text, parseContext(repo, rule.fromLanguage, rule.toLanguage))
         rule.notes = params.notes
         rule.addedCategories = params.addedCategories.nullize()
         rule.replacedCategories = params.replacedCategories.nullize()
@@ -706,15 +706,8 @@ class RuleController {
                 step.optional,
                 step.dispreferred,
                 (step.alternative as? Rule)?.name,
-                rule.logic.preInstructions.map { it.toRichText(repo) },
-                rule.logic.branches.map {
-                    RuleBranchViewModel(
-                        it.condition.toRichText(),
-                        it.instructions.map { insn -> insn.toRichText(repo) },
-                        it.comment,
-                        examplesToShow.map { exampleToViewModel(rule, it, repo )}
-                    )
-                },
+                (rule.logic as? MorphoRuleLogic)?.preInstructions?.map { it.toRichText(repo) } ?: emptyList(),
+                rule.ruleBranchesToViewModel(repo, examplesToShow),
                 rule.logic.postInstructions.map { it.toRichText(repo) }
             )
         }

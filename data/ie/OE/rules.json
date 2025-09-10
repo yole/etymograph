@@ -2797,7 +2797,8 @@
                         },
                         "args": [
                             "{æ|e|o} > 0"
-                        ]
+                        ],
+                        "comment": "'o' comes up only in synchronous contexts"
                     },
                     {
                         "type": "Spe",
@@ -2915,8 +2916,7 @@
                 ],
                 "condition": {
                     "type": "otherwise"
-                },
-                "comment": "'o' comes up only in synchronous contexts"
+                }
             }
         ],
         "sourceRefs": [
@@ -3739,7 +3739,8 @@
                         },
                         "args": [
                             "æ > i / _{ġ|ċ}"
-                        ]
+                        ],
+                        "comment": "Ringe 2014: 334: inherited æ adjacent to palatals eventually became i"
                     },
                     {
                         "type": "Spe",
@@ -3794,8 +3795,7 @@
                 ],
                 "condition": {
                     "type": "otherwise"
-                },
-                "comment": "Ringe 2014: 334: inherited æ adjacent to palatals eventually became i"
+                }
             }
         ],
         "sourceRefs": [
@@ -6778,13 +6778,13 @@
                         },
                         "args": [
                             "ġ > i / C_"
-                        ]
+                        ],
+                        "comment": "this is a purely orthographic convention"
                     }
                 ],
                 "condition": {
                     "type": "otherwise"
-                },
-                "comment": "this is a purely orthographic convention"
+                }
             }
         ],
         "sourceRefs": [
@@ -6986,13 +6986,13 @@
                         },
                         "args": [
                             "ōj > i"
-                        ]
+                        ],
+                        "comment": "Ringe 2014:227: -ōj- in present stems of class II weak verbs was unrounded and shortened"
                     }
                 ],
                 "condition": {
                     "type": "otherwise"
-                },
-                "comment": "Ringe 2014:227: -ōj- in present stems of class II weak verbs was unrounded and shortened"
+                }
             }
         ],
         "sourceRefs": [

@@ -138,7 +138,7 @@ class ParadigmController {
                 val ruleName = "${params.prefix}-${rowTitle.lowercase()}$ruleNameSeparator${columnTitle.lowercase().replace(" ", "-")}"
                 val addedCategories = params.addedCategories + "." + rowTitle.uppercase() + categorySeparator + columnTitle.uppercase().replace(" ", ".")
                 val rule = repo.ruleByName(ruleName)
-                    ?: repo.addRule(ruleName, language, language, RuleLogic.empty(), addedCategories, fromPOS = pos)
+                    ?: repo.addRule(ruleName, language, language, MorphoRuleLogic.empty(), addedCategories, fromPOS = pos)
                 paradigm.setRule(rowIndex, colIndex, listOf(rule))
             }
         }

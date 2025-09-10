@@ -14,7 +14,7 @@ class QTestFixture {
     fun setupParadigm(): Rule {
         val accRule = graph.addRule(
             "q-acc", q, q,
-            RuleLogic(
+            MorphoRuleLogic(
                 emptyList(),
                 listOf(RuleBranch(OtherwiseCondition, listOf(RuleInstruction(InstructionType.NoChange, "", null)))),
                 emptyList()

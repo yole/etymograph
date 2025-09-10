@@ -105,8 +105,7 @@ class PhonemeRuleTest : QBaseTest() {
             * o > y if syllable is last
         """.trimIndent())
         assertEquals("yrch", rule.apply(q.word("orch"), emptyRepo).text)
-        val instruction = rule.logic.branches[0].instructions[0]
-        assertEquals("o > e if syllable is not last", instruction.toEditableText(repo))
+        assertEquals("o > e if syllable is not last", rule.firstInstruction.toEditableText(repo))
     }
 
     @Test

@@ -101,11 +101,6 @@ open class RuleInstruction(val type: InstructionType, val arg: String, val comme
         else -> ""
     }
 
-    open fun reverseApplyToPhoneme(phonemes: PhonemeIterator, condition: RuleCondition): List<String>? {
-        if (type == InstructionType.NoChange) return emptyList()
-        return null
-    }
-
     open fun refersToPhoneme(phoneme: Phoneme): Boolean = false
 
     open fun referencedRules(): Set<Rule> {
@@ -114,14 +109,6 @@ open class RuleInstruction(val type: InstructionType, val arg: String, val comme
 
     companion object {
         fun parse(s: String, context: RuleParseContext, prefix: String = "-", comment: String? = null): RuleInstruction {
-            if (s.startsWith("*")) {
-                val conditionPos = s.indexOf(" if ")
-                val conditionText = if (conditionPos >= 0) s.substring(conditionPos + 4).trim() else null
-                val patternText = if (conditionPos >= 0) s.substring(0, conditionPos) else s
-                val pattern = SpePattern.parse(context.fromLanguage, context.toLanguage, patternText.removePrefix("*").trim())
-                val condition = conditionText?.let { RuleCondition.parse(ParseBuffer(conditionText), context.fromLanguage) }
-                return SpeInstruction(pattern, condition, comment)
-            }
             if (!s.startsWith(prefix)) {
                 throw RuleParseException("Instructions must start with $prefix")
             }
@@ -232,7 +219,8 @@ class ApplySoundRuleInstruction(language: Language, val ruleRef: RuleRef, arg: S
         if (seekTarget != null && seekTarget.relative) {
             targetIt.seek(seekTarget)
         }
-        ruleRef.resolve().applyToPhoneme(word, targetIt, graph, trace)
+        val rule = ruleRef.resolve()
+        (rule.logic as SpeRuleLogic).applyToPhoneme(word, targetIt, graph, trace)
     }
 
     override fun apply(word: Word, context: RuleApplyContext): Word {
@@ -243,7 +231,7 @@ class ApplySoundRuleInstruction(language: Language, val ruleRef: RuleRef, arg: S
             val count = if (seekTarget.syllableClass != null) (seekTarget.targetSyllable(word, phonemes.syllables)?.length ?: 1) else 1
             val rule = ruleRef.resolve()
             for (i in 0..<count) {
-                rule.applyToPhoneme(word, phonemes, context.graph, context.trace)
+                (rule.logic as SpeRuleLogic).applyToPhoneme(word, phonemes, context.graph, context.trace)
                 if (!phonemes.advance()) break
             }
             val segments = remapSegments(phonemes, word.segments)
@@ -257,7 +245,8 @@ class ApplySoundRuleInstruction(language: Language, val ruleRef: RuleRef, arg: S
         if (seekTarget == null) return listOf(text)
         val phonemes = PhonemeIterator(text, language, graph)
         if (phonemes.seek(seekTarget)) {
-            return ruleRef.resolve().logic.reverseApplyToPhoneme(phonemes)
+            val rule = ruleRef.resolve()
+            return (rule.logic as SpeRuleLogic).reverseApplyToPhoneme(phonemes)
         }
         return listOf(text)
     }
@@ -474,6 +463,10 @@ class SpeInstruction(val pattern: SpePattern, val condition: RuleCondition? = nu
     }
 
     override fun apply(word: Word, context: RuleApplyContext): Word {
+        return apply(word, context, emptyList())
+    }
+
+    fun apply(word: Word, context: RuleApplyContext, postInstructions: List<RuleInstruction>): Word {
         val trace = context.trace
         trace?.logInstruction {
             "Matching pattern $pattern to ${word.text}"
@@ -482,7 +475,7 @@ class SpeInstruction(val pattern: SpePattern, val condition: RuleCondition? = nu
         val it = pattern.apply(
             phonemicWord,
             { condition == null || condition.matches(phonemicWord, it, context.graph, trace).also { result -> trace?.logCondition(condition, result) } },
-            { context.rule.logic.postInstructions.forEach { insn -> insn.apply(word, it, context.graph, trace )} },
+            { postInstructions.forEach { insn -> insn.apply(word, it, context.graph, trace )} },
             context.graph,
             trace
         )
@@ -529,5 +522,16 @@ class SpeInstruction(val pattern: SpePattern, val condition: RuleCondition? = nu
     override fun refersToPhoneme(phoneme: Phoneme): Boolean {
         return pattern.before.any { it.refersToPhoneme(phoneme) } ||
                 pattern.after.any { it.refersToPhoneme(phoneme) }
+    }
+
+    companion object {
+        fun parse(s: String, context: RuleParseContext, comment: String?): SpeInstruction {
+            val conditionPos = s.indexOf(" if ")
+            val conditionText = if (conditionPos >= 0) s.substring(conditionPos + 4).trim() else null
+            val patternText = if (conditionPos >= 0) s.substring(0, conditionPos) else s
+            val pattern = SpePattern.parse(context.fromLanguage, context.toLanguage, patternText.removePrefix("*").trim())
+            val condition = conditionText?.let { RuleCondition.parse(ParseBuffer(conditionText), context.fromLanguage) }
+            return SpeInstruction(pattern, condition, comment)
+        }
     }
 }

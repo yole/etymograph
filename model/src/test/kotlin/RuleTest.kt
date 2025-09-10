@@ -134,7 +134,7 @@ class RuleTest : QBaseTest() {
 
     @Test
     fun ruleParse() {
-        val branches = Rule.parseBranches(
+        val branches = MorphoRuleLogic.parse(
             """
             word ends with 'e':
             - append 'a'
@@ -149,7 +149,7 @@ class RuleTest : QBaseTest() {
 
     @Test
     fun ruleParseComment() {
-        val branches = Rule.parseBranches(
+        val branches = MorphoRuleLogic.parse(
             """
             $ this is e
             word ends with 'e':
@@ -166,7 +166,7 @@ class RuleTest : QBaseTest() {
 
     @Test
     fun ruleParseWithoutConditions() {
-        val branches = Rule.parseBranches(
+        val branches = MorphoRuleLogic.parse(
             """
             - append 'lye'
         """.trimIndent(), q.parseContext()
@@ -178,7 +178,7 @@ class RuleTest : QBaseTest() {
 
     @Test
     fun ruleParseOtherwise() {
-        val branches = Rule.parseBranches(
+        val branches = MorphoRuleLogic.parse(
             """
             word ends with 'e':
             - append 'a'
@@ -194,8 +194,8 @@ class RuleTest : QBaseTest() {
     @Test
     fun ruleParseSPE() {
         val rule = parseRule(q, q, " * d -> l / #_")
-        assertEquals(1, rule.logic.branches.size)
-        val speInstruction = rule.logic.branches[0].instructions.single() as SpeInstruction
+        val logic = rule.logic as SpeRuleLogic
+        val speInstruction = logic.instructions.single()
         assertEquals("l", (speInstruction.pattern.after.single() as SpeLiteralNode).text)
         assertEquals("* d > l / #_", rule.toEditableText(repo))
     }
@@ -203,7 +203,7 @@ class RuleTest : QBaseTest() {
     @Test
     fun wordIsUnknownClass() {
         assertThrows("Unknown word class 'm'", RuleParseException::class.java) {
-            Rule.parseBranches("word is m:\n- no change", q.parseContext())
+            Rule.parseLogic("word is m:\n- no change", q.parseContext())
         }
     }
 
@@ -314,7 +314,7 @@ class RuleTest : QBaseTest() {
              = append 'e'
         """.trimIndent()
         val rule = repo.rule(text, q)
-        assertEquals(1, rule.logic.postInstructions.size)
+        assertEquals(1, (rule.logic as MorphoRuleLogic).postInstructions.size)
         assertEquals("laureae", applyRule(rule, q.word("laure")))
         assertEquals("lomire", applyRule(rule, q.word("lomi")))
         assertEquals(text, rule.toEditableText(repo))
@@ -338,7 +338,7 @@ class RuleTest : QBaseTest() {
         val soundRule = parseRule(q, q, "* a > á", name = "q-lengthen")
         val parseContext = q.parseContext(null, soundRule)
         val applySoundRule = Rule(
-            -1, "q-lengthen-first", q, q, Rule.parseBranches(
+            -1, "q-lengthen-first", q, q, Rule.parseLogic(
                 """
             - apply sound rule 'q-lengthen' to first vowel
         """.trimIndent(), parseContext
@@ -352,7 +352,7 @@ class RuleTest : QBaseTest() {
         val soundRule = parseRule(q, q, "* a > á", name = "q-lengthen-sound")
         val parseContext = q.parseContext(null, soundRule)
         val applySoundRule = Rule(
-            -1, "q-lengthen", q, q, Rule.parseBranches(
+            -1, "q-lengthen", q, q, Rule.parseLogic(
                 """
             - apply sound rule 'q-lengthen-sound' to first sound
         """.trimIndent(), parseContext
@@ -361,7 +361,7 @@ class RuleTest : QBaseTest() {
         assertEquals("áire", applySoundRule.apply(q.word("aire"), emptyRepo).text)
         assertEquals(
             "apply sound rule 'q-lengthen-sound' to first sound",
-            applySoundRule.logic.branches[0].instructions[0].toEditableText(repo)
+            applySoundRule.firstInstruction.toEditableText(repo)
         )
     }
 
@@ -376,7 +376,7 @@ class RuleTest : QBaseTest() {
         )
         val parseContext = q.parseContext(null, soundRule)
         val applySoundRule = Rule(
-            -1, "q-lengthen", q, q, Rule.parseBranches(
+            -1, "q-lengthen", q, q, Rule.parseLogic(
                 """
             - apply sound rule 'q-lengthen-sound' to first sound
         """.trimIndent(), parseContext
@@ -393,7 +393,7 @@ class RuleTest : QBaseTest() {
         )
         val parseContext = q.parseContext(null, soundRule)
         val applySoundRule = Rule(
-            -1, "q-lengthen", q, q, Rule.parseBranches(
+            -1, "q-lengthen", q, q, Rule.parseLogic(
                 """
             - apply sound rule 'q-lengthen-sound' to first sound
         """.trimIndent(), parseContext
@@ -518,7 +518,7 @@ class RuleTest : QBaseTest() {
             | - append 'i'
         """.trimMargin("|")
         val rule = repo.rule(ruleText, q)
-        assertEquals(1, rule.logic.preInstructions.size)
+        assertEquals(1, (rule.logic as MorphoRuleLogic).preInstructions.size)
 
         val word = rule.apply(q.word("sur"), emptyRepo)
         assertEquals("asuri", word.text)
@@ -529,7 +529,7 @@ class RuleTest : QBaseTest() {
     @Test
     fun prepend() {
         val rule = parseRule(q, q, "- prepend first vowel")
-        val instruction = rule.logic.branches[0].instructions[0]
+        val instruction = rule.firstInstruction
         assertEquals("utul", instruction.apply(q.word("tul"), dummyContext).text)
         val data = instruction.toSerializedFormat()
         val deserialized = ruleInstructionFromSerializedFormat(emptyRepo, q, q, data)
@@ -542,8 +542,8 @@ class RuleTest : QBaseTest() {
         val rule = parseRule(q, q, "word ends with 'ea':\n- change ending to ''")
         val result = rule.apply(q.word("yaimea"), emptyRepo)
         assertEquals("yaim", result.text)
-        assertEquals("change ending to ''", rule.singleInstruction().toEditableText(repo))
-        assertEquals("", rule.logic.branches[0].toSummaryText(repo))
+        assertEquals("change ending to ''", rule.firstInstruction.toEditableText(repo))
+        assertEquals("", (rule.logic as MorphoRuleLogic).branches[0].toSummaryText(repo))
     }
 
     @Test
@@ -558,10 +558,8 @@ class RuleTest : QBaseTest() {
         val rule = parseRule(q, q, "word ends with 'r':\n- mark word as strong")
         val result = rule.apply(q.word("anar"), emptyRepo)
         assertEquals("strong", result.classes.single())
-        assertEquals("mark word as strong", rule.singleInstruction().toEditableText(repo))
+        assertEquals("mark word as strong", rule.firstInstruction.toEditableText(repo))
     }
-
-    private fun Rule.singleInstruction() = logic.branches.single().instructions.single()
 
     @Test
     fun stressCondition() {
@@ -577,7 +575,7 @@ class RuleTest : QBaseTest() {
     fun insert() {
         val rule = parseRule(q, q, "- insert 'i' before last consonant")
         assertEquals("adain", rule.apply(q.word("adan"), emptyRepo).text)
-        assertEquals("insert 'i' before last consonant", rule.singleInstruction().toEditableText(repo))
+        assertEquals("insert 'i' before last consonant", rule.firstInstruction.toEditableText(repo))
     }
 
     @Test
@@ -592,7 +590,7 @@ class RuleTest : QBaseTest() {
         )
         assertEquals("adain", rule.apply(q.word("adan"), emptyRepo).text)
         assertEquals("fela", rule.apply(q.word("fela"), emptyRepo).text)
-        assertFalse(rule.logic.branches.first().condition.refersToPhoneme(q.phonemes.find { "a" in it.graphemes }!!))
+        assertFalse((rule.logic as MorphoRuleLogic).branches.first().condition.refersToPhoneme(q.phonemes.find { "a" in it.graphemes }!!))
     }
 
     @Test
@@ -614,7 +612,7 @@ class RuleTest : QBaseTest() {
         repo.addLink(bar, mbar, Link.Origin)
 
         assertEquals("mbar", rule.apply(bar, repo).text)
-        assertEquals("first sound of base word in CE is 'm'", rule.logic.branches[0].condition.toEditableText())
+        assertEquals("first sound of base word in CE is 'm'", rule.firstCondition.toEditableText())
     }
 
     @Test
@@ -634,7 +632,7 @@ class RuleTest : QBaseTest() {
         repo.addLink(talan, talam, Link.Origin)
 
         assertEquals("talam", rule.apply(talan, repo).text)
-        assertEquals("base word in CE ends with 'm'", rule.logic.branches[0].condition.toEditableText())
+        assertEquals("base word in CE ends with 'm'", rule.firstCondition.toEditableText())
     }
 
     @Test
@@ -743,7 +741,7 @@ class RuleTest : QBaseTest() {
     fun speRuleWithCondition() {
         val text = "* a > i / _# if number of syllables is 1"
         val rule = parseRule(ce, q, text)
-        val instruction = rule.singleInstruction() as SpeInstruction
+        val instruction = rule.firstInstruction as SpeInstruction
         assertNotNull(instruction.condition)
         assertEquals("mi", rule.apply(q.word("ma"), repo).text)
         assertEquals("ama", rule.apply(q.word("ama"), repo).text)
@@ -883,8 +881,6 @@ fun parseRule(
     context: RuleParseContext? = null
 ): Rule = Rule(
     -1, name, fromLanguage, toLanguage,
-    Rule.parseBranches(text, context ?: createParseContext(fromLanguage, toLanguage, repo)),
+    Rule.parseLogic(text, context ?: createParseContext(fromLanguage, toLanguage, repo)),
     addedCategories, null, fromPOS, toPOS, emptyList(), null
 )
-
-val Rule.firstInstruction get() = logic.branches[0].instructions[0]

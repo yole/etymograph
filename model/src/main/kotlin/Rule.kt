@@ -1,6 +1,8 @@
 package ru.yole.etymograph
 
+import ru.yole.etymograph.RuleBranch.Companion.parseComment
 import java.util.Locale
+import kotlin.collections.fold
 
 class RuleParseException(msg: String): RuntimeException(msg)
 
@@ -177,11 +179,7 @@ class RuleBranch(val condition: RuleCondition, val instructions: List<RuleInstru
     }
 
     fun toSummaryText(graph: GraphRepository): String? {
-        val summaries = instructions.map { it.toSummaryText(graph) ?: return null }
-        if (instructions.any { it is SpeInstruction }) {
-            return summaries.joinToString(", ")
-        }
-        return summaries.joinToString("")
+        return instructions.map { it.toSummaryText(graph) ?: return null }.joinToString("")
     }
 
     fun refersToPhoneme(phoneme: Phoneme): Boolean {
@@ -232,15 +230,10 @@ class RuleBranch(val condition: RuleCondition, val instructions: List<RuleInstru
     }
 }
 
-class RuleLogic(
-    val preInstructions: List<RuleInstruction>,
-    val branches: List<RuleBranch>,
-    val postInstructions: List<RuleInstruction>
-) {
-    fun isUnconditional() =
-        branches.size == 1 && branches[0].condition is OtherwiseCondition && preInstructions.isEmpty()
+sealed class RuleLogic {
+    abstract val postInstructions: List<RuleInstruction>
 
-    fun apply(
+    abstract fun apply(
         word: Word,
         rule: Rule,
         graph: GraphRepository,
@@ -248,6 +241,64 @@ class RuleLogic(
         normalizeSegments: Boolean = true,
         applyPrePostRules: Boolean = true,
         preserveId: Boolean = false
+    ): Word
+
+    abstract fun reverseApply(word: Word, rule: Rule, graph: GraphRepository, trace: RuleTrace? = null): List<String>
+    abstract fun toEditableText(graph: GraphRepository): String
+    abstract fun toSummaryText(graph: GraphRepository): String
+    open fun findConditionForInstruction(instruction: RuleInstruction): RuleCondition? = null
+    open fun referencedRules(): Set<Rule> = emptySet()
+    abstract fun refersToPhoneme(phoneme: Phoneme): Boolean
+
+    protected fun deriveResult(
+        resultWord: Word,
+        rule: Rule,
+        graph: GraphRepository,
+        word: Word,
+        preserveId: Boolean,
+        normalizeSegments: Boolean,
+        trace: RuleTrace?
+    ): Word {
+        val stressIndex = resultWord.remapViaCharacterIndex(resultWord.stressedPhonemeIndex, rule.toLanguage, graph)
+        val resultText = if (word.text.first().isUpperCase()) {
+            resultWord.text.replaceFirstChar { it.titlecase(Locale.FRANCE) }
+        } else {
+            resultWord.text
+        }
+        val gloss = word.glossOrNP()?.let { baseGloss ->
+            rule.applyCategories(baseGloss, resultWord.segments?.any { it.sourceRule == rule } == true)
+        }
+        val result = word.derive(
+            resultText,
+            id = if (preserveId) word.id else -1,
+            newLanguage = rule.toLanguage,
+            newGloss = gloss,
+            phonemic = resultWord.isPhonemic,
+            stressIndex = stressIndex,
+            segments = if (normalizeSegments) Word.normalizeSegments(resultWord.segments) else resultWord.segments,
+            newClasses = resultWord.classes
+        )
+        trace?.logRuleResult(rule, result)
+        return result
+    }
+}
+
+class MorphoRuleLogic(
+    val preInstructions: List<RuleInstruction>,
+    val branches: List<RuleBranch>,
+    override val postInstructions: List<RuleInstruction>
+): RuleLogic() {
+    fun isUnconditional() =
+        branches.size == 1 && branches[0].condition is OtherwiseCondition && preInstructions.isEmpty()
+
+    override fun apply(
+        word: Word,
+        rule: Rule,
+        graph: GraphRepository,
+        trace: RuleTrace?,
+        normalizeSegments: Boolean,
+        applyPrePostRules: Boolean,
+        preserveId: Boolean
     ): Word {
         val paradigm = graph.paradigmForRule(rule)
         val paraPreWord = if (applyPrePostRules) (paradigm?.preRule?.apply(word, graph, trace, preserveId = true) ?: word) else word
@@ -264,27 +315,7 @@ class RuleLogic(
                     resultWord = paradigm?.postRule?.apply(resultWord, graph, trace, preserveId = true) ?: resultWord
                 }
 
-                val stressIndex = resultWord.remapViaCharacterIndex(resultWord.stressedPhonemeIndex, rule.toLanguage, graph)
-                val resultText = if (word.text.first().isUpperCase()) {
-                    resultWord.text.replaceFirstChar { it.titlecase(Locale.FRANCE) }
-                }
-                else {
-                    resultWord.text
-                }
-                val gloss = word.glossOrNP()?.let { baseGloss ->
-                    rule.applyCategories(baseGloss, resultWord.segments?.any { it.sourceRule == rule } == true)
-                }
-                val result = word.derive(resultText,
-                    id = if (preserveId) word.id else -1,
-                    newLanguage = rule.toLanguage,
-                    newGloss = gloss,
-                    phonemic = resultWord.isPhonemic,
-                    stressIndex = stressIndex,
-                    segments = if (normalizeSegments) Word.normalizeSegments(resultWord.segments) else resultWord.segments,
-                    newClasses = resultWord.classes
-                )
-                trace?.logRuleResult(rule, result)
-                return result
+                return deriveResult(resultWord, rule, graph, word, preserveId, normalizeSegments, trace)
             }
             else {
                 trace?.logUnmatchedBranch(rule, word, null, branch)
@@ -293,7 +324,7 @@ class RuleLogic(
         return Word(-1, "?", word.language)
     }
 
-    fun reverseApply(word: Word, rule: Rule, graph: GraphRepository, trace: RuleTrace? = null): List<String> {
+    override fun reverseApply(word: Word, rule: Rule, graph: GraphRepository, trace: RuleTrace?): List<String> {
         if (branches.isEmpty()) {
             return listOf(word.text)
         }
@@ -303,40 +334,12 @@ class RuleLogic(
         }
     }
 
-    fun applyToPhoneme(word: Word, rule: Rule, phonemes: PhonemeIterator, graph: GraphRepository, trace: RuleTrace? = null): Boolean {
-        for (branch in branches) {
-            if (branch.condition.matches(word, phonemes, graph, trace)) {
-                trace?.logMatchedBranch(rule, word, phonemes.current, branch)
-                for (instruction in branch.instructions) {
-                    instruction.apply(word, phonemes, graph, trace)
-                }
-                for (postInstruction in postInstructions) {
-                    postInstruction.apply(word, phonemes, graph, trace)
-                }
-                return true
-            }
-            else {
-                trace?.logUnmatchedBranch(rule, word, phonemes.current, branch)
-            }
-        }
-        return false
-    }
-
-    fun reverseApplyToPhoneme(phonemes: PhonemeIterator): List<String> {
-        for (branch in branches) {
-            val instruction = branch.instructions.singleOrNull() ?: return emptyList()
-            val result = instruction.reverseApplyToPhoneme(phonemes.clone(), branch.condition) ?: return emptyList()
-            if (result.isNotEmpty()) return result
-        }
-        return listOf(phonemes.result())
-    }
-
-    fun toEditableText(graph: GraphRepository): String {
+    override fun toEditableText(graph: GraphRepository): String {
         if (isUnconditional()) {
             val branch = branches[0]
             val commentString = RuleBranch.commentToString(branch.comment)
             return commentString + branch.instructions.joinToString("\n") {
-                RuleBranch.commentToString(it.comment) + (if (it is SpeInstruction) "* " else " - ") + it.toEditableText(graph)
+                RuleBranch.commentToString(it.comment) + " - " + it.toEditableText(graph)
             }
         }
         return preInstructions.joinToString("") { " - " + it.toEditableText(graph) + "\n" } +
@@ -345,32 +348,147 @@ class RuleLogic(
                 postInstructions.joinToString("\n") { " = " + it.toEditableText(graph) }
     }
 
-    fun toSummaryText(graph: GraphRepository): String {
+    override fun toSummaryText(graph: GraphRepository): String {
         val summaries = branches.map { it.toSummaryText(graph) }
         if (summaries.any { it == null }) return ""
         val filteredSummaries = summaries.filter { !it.isNullOrEmpty() }
         return filteredSummaries.toSet().joinToString("/")
     }
 
-    fun refersToPhoneme(phoneme: Phoneme): Boolean {
+    override fun refersToPhoneme(phoneme: Phoneme): Boolean {
         return preInstructions.any { it.refersToPhoneme(phoneme) } ||
                 branches.any { branch -> branch.refersToPhoneme(phoneme) } ||
                 postInstructions.any { it.refersToPhoneme(phoneme) }
     }
 
-    fun referencedRules(): Set<Rule> {
+    override fun referencedRules(): Set<Rule> {
         return (preInstructions.flatMap { it.referencedRules() } +
                 branches.flatMap {
                         branch -> branch.instructions.flatMap { it.referencedRules() }
                 } + postInstructions.flatMap { it.referencedRules() }).toSet()
     }
 
-    fun findConditionForInstruction(instruction: RuleInstruction): RuleCondition? {
+    override fun findConditionForInstruction(instruction: RuleInstruction): RuleCondition? {
         return branches.find { instruction in it.instructions }?.condition
     }
 
     companion object {
-        fun empty(): RuleLogic = RuleLogic(emptyList(), emptyList(), emptyList())
+        fun empty(): RuleLogic = MorphoRuleLogic(emptyList(), emptyList(), emptyList())
+
+        fun parse(text: String, context: RuleParseContext): MorphoRuleLogic {
+            val lines = LineBuffer(text)
+            val preInstructions = mutableListOf<RuleInstruction>()
+            val postInstructions = mutableListOf<RuleInstruction>()
+            val branches = mutableListOf<RuleBranch>()
+
+            lines.nextWhile({ line -> line.startsWith("-") }) { line ->
+                preInstructions.add(RuleInstruction.parse(line, context, comment = null))
+            }
+
+            while (true) {
+                val nextLine = lines.peek()
+                if (nextLine == null || nextLine.startsWith("=")) {
+                    break
+                }
+                branches.add(RuleBranch.parse(lines, context))
+            }
+            while (true) {
+                val next = lines.next() ?: break
+                postInstructions.add(RuleInstruction.parse(next, context, "=", null))
+            }
+            if (branches.isEmpty() && preInstructions.isNotEmpty()) {
+                return MorphoRuleLogic(
+                    emptyList(),
+                    listOf(RuleBranch(OtherwiseCondition, preInstructions, null)),
+                    postInstructions
+                )
+            }
+
+            return MorphoRuleLogic(preInstructions, branches, postInstructions)
+        }
+    }
+}
+
+class SpeRuleLogic(
+    val instructions: List<SpeInstruction>,
+    override val postInstructions: List<RuleInstruction>
+) : RuleLogic() {
+    override fun apply(
+        word: Word,
+        rule: Rule,
+        graph: GraphRepository,
+        trace: RuleTrace?,
+        normalizeSegments: Boolean,
+        applyPrePostRules: Boolean,
+        preserveId: Boolean
+    ): Word {
+        val normalizedWord = word.derive(word.text.trimEnd('-'), id = word.id, phonemic = word.isPhonemic)
+        val context = RuleApplyContext(rule, null, graph, word, trace)
+        val resultWord = instructions.fold(normalizedWord) { s, i -> i.apply(s, context, postInstructions) }
+        return deriveResult(resultWord, rule, graph, word, preserveId, normalizeSegments, trace)
+    }
+
+    override fun reverseApply(word: Word, rule: Rule, graph: GraphRepository, trace: RuleTrace?): List<String> {
+        return emptyList()
+    }
+
+    fun applyToPhoneme(word: Word, phonemes: PhonemeIterator, graph: GraphRepository, trace: RuleTrace? = null): Boolean {
+        for (instruction in instructions) {
+            instruction.apply(word, phonemes, graph, trace)
+        }
+        for (postInstruction in postInstructions) {
+            postInstruction.apply(word, phonemes, graph, trace)
+        }
+        return true
+    }
+
+    fun reverseApplyToPhoneme(phonemes: PhonemeIterator): List<String> {
+        /*
+        for (branch in branches) {
+            val instruction = branch.instructions.singleOrNull() ?: return emptyList()
+            val result = instruction.reverseApplyToPhoneme(phonemes.clone(), branch.condition) ?: return emptyList()
+            if (result.isNotEmpty()) return result
+        }
+        return listOf(phonemes.result())
+         */
+        return emptyList()
+    }
+
+    override fun toEditableText(graph: GraphRepository): String {
+        return instructions.joinToString("\n") {
+            RuleBranch.commentToString(it.comment) + "* " + it.toEditableText(graph)
+        } + postInstructions.joinToString("\n") {
+            RuleBranch.commentToString(it.comment) + "= " + it.toEditableText(graph)
+        }
+    }
+
+    override fun toSummaryText(graph: GraphRepository): String {
+        val summaries = instructions.map { it.toSummaryText(graph)  }
+        return summaries.joinToString(", ")
+    }
+
+    override fun refersToPhoneme(phoneme: Phoneme): Boolean {
+        return instructions.any { it.refersToPhoneme(phoneme) } || postInstructions.any { it.refersToPhoneme(phoneme) }
+    }
+
+    companion object {
+        fun parse(lines: LineBuffer, context: RuleParseContext): RuleLogic {
+            val instructions = mutableListOf<SpeInstruction>()
+            val postInstructions = mutableListOf<RuleInstruction>()
+            while (true) {
+                val comment = parseComment(lines)
+                val nextLine = lines.peek()
+                if (nextLine == null || nextLine.startsWith("=")) {
+                    break
+                }
+                instructions.add(SpeInstruction.parse(lines.next()!!, context, comment))
+            }
+            while (true) {
+                val next = lines.next() ?: break
+                postInstructions.add(RuleInstruction.parse(next, context, "=", null))
+            }
+            return SpeRuleLogic(instructions, postInstructions)
+        }
     }
 }
 
@@ -387,7 +505,7 @@ class Rule(
     source: List<SourceRef> = emptyList(),
     notes: String? = null
 ) : LangEntity(id, source, notes) {
-    fun isSPE(): Boolean = logic.branches.any { it.instructions.any { i -> i.type == InstructionType.Spe } }
+    fun isSPE(): Boolean = logic is SpeRuleLogic
 
     fun apply(word: Word, graph: GraphRepository, trace: RuleTrace? = null,
               normalizeSegments: Boolean = true,
@@ -417,11 +535,6 @@ class Rule(
         return logic.apply(word, this, graph, trace, normalizeSegments, applyPrePostRules, preserveId)
     }
 
-
-    fun applyToPhoneme(word: Word, phonemes: PhonemeIterator, graph: GraphRepository, trace: RuleTrace? = null): Boolean {
-        return logic.applyToPhoneme(word, this, phonemes, graph, trace)
-    }
-
     fun reverseApply(word: Word, graph: GraphRepository, trace: RuleTrace? = null): List<String>  =
         logic.reverseApply(word, this, graph, trace)
 
@@ -443,7 +556,7 @@ class Rule(
     data class RuleChangeResult(val word: Word, val oldResult: String, val newResult: String)
 
     fun previewChanges(graph: GraphRepository, newText: String): List<RuleChangeResult> {
-        val newLogic = parseBranches(newText, RuleParseContext(graph, fromLanguage, toLanguage,) {
+        val newLogic = parseLogic(newText, RuleParseContext(graph, fromLanguage, toLanguage,) {
             RuleRef.to(graph.ruleByName(it) ?: throw RuleParseException("No rule with name '$it'"))
         })
         val newRule = Rule(-1, name, fromLanguage, toLanguage, newLogic)
@@ -462,37 +575,16 @@ class Rule(
     }
 
     companion object {
-        fun parseBranches(s: String, context: RuleParseContext): RuleLogic {
-            if (s.isBlank()) return RuleLogic(emptyList(), emptyList(), emptyList())
-            val preInstructions = mutableListOf<RuleInstruction>()
-            val postInstructions = mutableListOf<RuleInstruction>()
-            val branches = mutableListOf<RuleBranch>()
+        fun parseLogic(s: String, context: RuleParseContext): RuleLogic {
+            if (s.isBlank()) return MorphoRuleLogic.empty()
+
             val lines = LineBuffer(s)
-
-            lines.nextWhile({ line -> line.startsWith("-") }) { line ->
-                preInstructions.add(RuleInstruction.parse(line, context, comment = null))
+            parseComment(lines)
+            if (lines.peek()?.startsWith("*") == true) {
+                lines.rollbackTo(0)
+                return SpeRuleLogic.parse(lines, context)
             }
-
-            while (true) {
-                val nextLine = lines.peek()
-                if (nextLine == null || nextLine.startsWith("=")) {
-                    break
-                }
-                branches.add(RuleBranch.parse(lines, context))
-            }
-            while (true) {
-                val next = lines.next() ?: break
-                postInstructions.add(RuleInstruction.parse(next, context, "=", null))
-            }
-            if (branches.isEmpty() && preInstructions.isNotEmpty()) {
-                return RuleLogic(
-                    emptyList(),
-                    listOf(RuleBranch(OtherwiseCondition, preInstructions, null)),
-                    postInstructions
-                )
-            }
-
-            return RuleLogic(preInstructions, branches, postInstructions)
+            return MorphoRuleLogic.parse(s, context)
         }
     }
 }

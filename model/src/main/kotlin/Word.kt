@@ -1,7 +1,6 @@
 package ru.yole.etymograph
 
 import java.util.*
-import kotlin.math.exp
 import kotlin.math.min
 
 class WordSegment(
@@ -109,7 +108,7 @@ class Word(
             if (pronunciationRule != null) {
                 val it = PhonemeIterator(this, null, resultPhonemic = true)
                 while (true) {
-                    pronunciationRule.applyToPhoneme(this, it, InMemoryGraphRepository.EMPTY)
+                    (pronunciationRule.logic as SpeRuleLogic).applyToPhoneme(this, it, InMemoryGraphRepository.EMPTY)
                     if (!it.advance()) break
                 }
                 it.result() to remapSegments(it, this.segments)
@@ -136,7 +135,7 @@ class Word(
             var it = PhonemeIterator(this, null, resultPhonemic = false)
             while (true) {
                 if (refIt?.current != it.current) {
-                    orthoRule.applyToPhoneme(this, it, InMemoryGraphRepository.EMPTY)
+                    (orthoRule.logic as SpeRuleLogic).applyToPhoneme(this, it, InMemoryGraphRepository.EMPTY)
                 }
                 if (refIt?.advance() == false) refIt = null
                 if (!it.advance()) break

@@ -33,7 +33,7 @@ class RuleControllerTest {
                 listOf(WordCategoryValue("Genitive", "GEN"))))
 
         val rule = graph.addRule("q-gen", fixture.q, fixture.q,
-            RuleLogic(emptyList(), emptyList(), emptyList()), ".GEN")
+            MorphoRuleLogic.empty(), ".GEN")
 
         val ruleVM = ruleController.rule(fixture.graph, rule.id)
         assertEquals("Case: Genitive", ruleVM.addedCategoryDisplayNames)
@@ -49,7 +49,7 @@ class RuleControllerTest {
                 listOf(WordCategoryValue("Singular", "SG"))))
 
         val rule = graph.addRule("q-1sg", fixture.q, fixture.q,
-            RuleLogic(emptyList(), emptyList(), emptyList()), ".1SG")
+            MorphoRuleLogic.empty(), ".1SG")
 
         val ruleVM = ruleController.rule(fixture.graph, rule.id)
         assertEquals("Person: 1st person, Number: Singular", ruleVM.addedCategoryDisplayNames)
@@ -108,7 +108,7 @@ class RuleControllerTest {
     @Test
     fun newSequence() {
         val rule = graph.addRule("q-gen", q, q,
-            RuleLogic(emptyList(), emptyList(), emptyList()))
+            MorphoRuleLogic.empty())
 
         ruleController.newSequence(
             fixture.graph,
@@ -131,7 +131,7 @@ class RuleControllerTest {
     @Test
     fun newSequenceOptional() {
         val rule = graph.addRule("q-gen", fixture.q, fixture.q,
-            RuleLogic(emptyList(), emptyList(), emptyList()))
+            MorphoRuleLogic.empty())
 
         ruleController.newSequence(
             fixture.graph,
@@ -155,9 +155,9 @@ class RuleControllerTest {
     @Test
     fun newSequenceAlternative() {
         val ruleO = graph.addRule("q-a-o", fixture.q, fixture.q,
-            RuleLogic(emptyList(), emptyList(), emptyList()))
+            MorphoRuleLogic.empty())
         val ruleI = graph.addRule("q-a-i", fixture.q, fixture.q,
-            RuleLogic(emptyList(), emptyList(), emptyList()))
+            MorphoRuleLogic.empty())
 
         ruleController.newSequence(
             fixture.graph,
@@ -181,11 +181,11 @@ class RuleControllerTest {
     @Test
     fun editSequence() {
         val rule = graph.addRule("q-gen", fixture.q, fixture.q,
-            RuleLogic(emptyList(), emptyList(), emptyList()))
+            MorphoRuleLogic.empty())
         val seq = graph.addRuleSequence("ce-to-q", fixture.ce, fixture.q, listOf(rule.step()))
 
         val rule2 = graph.addRule("q-acc", fixture.q, fixture.q,
-            RuleLogic(emptyList(), emptyList(), emptyList()))
+            MorphoRuleLogic.empty())
 
         ruleController.updateSequence(
             fixture.graph,

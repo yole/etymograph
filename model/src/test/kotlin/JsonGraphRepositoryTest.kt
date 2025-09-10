@@ -31,12 +31,12 @@ class JsonGraphRepositoryTest : QBaseTest() {
     fun serializeApplySoundRule() {
         val soundRule = repo.addRule(
             "q-lengthen", q, q,
-            Rule.parseBranches("* a > á", q.parseContext()))
+            Rule.parseLogic("* a > á", q.parseContext()))
 
         val parseContext = RuleParseContext(repo, q, q) {
             if (it == "q-lengthen") RuleRef.to(soundRule) else throw RuleParseException("no such rule")
         }
-        val applySoundRule = Rule(-1, "lengthen-first-vowel", q, q, Rule.parseBranches("""
+        val applySoundRule = Rule(-1, "lengthen-first-vowel", q, q, Rule.parseLogic("""
             - apply sound rule 'q-lengthen' to first vowel
         """.trimIndent(), parseContext))
 
@@ -126,7 +126,7 @@ class JsonGraphRepositoryTest : QBaseTest() {
         """.trimIndent())
         val serializedData = rule.ruleToSerializedFormat()
         val rule2 = repo.ruleFromSerializedFormat(serializedData, q, q)
-        assertEquals(1, rule2.logic.postInstructions.size)
+        assertEquals(1, (rule2.logic as MorphoRuleLogic).postInstructions.size)
     }
 
     @Test
@@ -184,7 +184,7 @@ class JsonGraphRepositoryTest : QBaseTest() {
         repo.addLanguage(ce)
         val rule = repo.addRule(
             "i-disappears", ce, q,
-            Rule.parseBranches("* i > 0 / a_ ", q.parseContext(repo))
+            Rule.parseLogic("* i > 0 / a_ ", q.parseContext(repo))
         )
         return repo.addRuleSequence("ce-to-q", ce, q, listOf(RuleSequenceStep(rule, null,false, false)))
     }
@@ -192,7 +192,7 @@ class JsonGraphRepositoryTest : QBaseTest() {
     @Test
     fun serializeOrthographyRule() {
         val rule = repo.addRule("q-ortho", q, q,
-            Rule.parseBranches("* u > j / #_", q.parseContext(repo)))
+            Rule.parseLogic("* u > j / #_", q.parseContext(repo)))
         q.orthographyRule = RuleRef.to(rule)
 
         val repo2 = repo.roundtrip()

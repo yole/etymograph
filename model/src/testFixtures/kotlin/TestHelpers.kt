@@ -20,7 +20,7 @@ fun GraphRepository.rule(
     name: String = "q", addedCategories: String? = null
 ): Rule {
     return addRule(name, fromLanguage, toLanguage,
-        Rule.parseBranches(text, createParseContext(fromLanguage, toLanguage, this)),
+        Rule.parseLogic(text, createParseContext(fromLanguage, toLanguage, this)),
         addedCategories = addedCategories
     )
 }
@@ -37,3 +37,14 @@ fun phoneme(grapheme: String, classes: String? = null): Phoneme {
 fun phoneme(graphemes: List<String>, sound: String? = null, classes: String? = null): Phoneme {
     return Phoneme(-1, graphemes, sound, classes?.split(' ')?.toSet() ?: emptySet())
 }
+
+val Rule.firstInstruction: RuleInstruction
+    get() {
+        val logic = this.logic
+        return when (logic) {
+            is MorphoRuleLogic -> logic.branches[0].instructions[0]
+            is SpeRuleLogic -> logic.instructions[0]
+        }
+    }
+
+val Rule.firstCondition get() = (logic as MorphoRuleLogic).branches[0].condition

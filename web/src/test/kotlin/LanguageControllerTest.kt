@@ -3,6 +3,7 @@ package ru.yole.etymograph.web
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
+import ru.yole.etymograph.MorphoRuleLogic
 import ru.yole.etymograph.RuleLogic
 import ru.yole.etymograph.web.controllers.LanguageController
 
@@ -67,7 +68,7 @@ class LanguageControllerTest {
     @Test
     fun phonotacticsRules() {
         val rule = fixture.graph.addRule("q-phono", fixture.q, fixture.q,
-            RuleLogic(emptyList(), emptyList(), emptyList()))
+            MorphoRuleLogic.empty())
 
         val parameters = LanguageController.UpdateLanguageParameters(
             phonotacticsRuleName = "q-phono"
