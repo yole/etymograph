@@ -15440,6 +15440,7 @@
         "id": 6245,
         "text": "ācweorn",
         "gloss": "squirrel",
+        "pos": "N",
         "sourceRefs": [
             {
                 "pubId": 9,
@@ -16034,6 +16035,7 @@
         "id": 6404,
         "text": "alor",
         "gloss": "alder",
+        "pos": "N",
         "sourceRefs": [
             {
                 "pubId": 9,
