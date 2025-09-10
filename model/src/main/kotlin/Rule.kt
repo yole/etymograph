@@ -270,8 +270,14 @@ class Rule(
                 val headWordForm = graph.getLinksTo(headWord).find { it.rules == listOf(this) }?.fromEntity as? Word
                 if (headWordForm != null) {
                     val derivedForm = word.text.substring(0, word.text.length-headWord.text.length) + headWordForm.text
-                    return deriveWord(word, derivedForm, toLanguage, word.isPhonemic, -1, null, headWordForm.classes,
-                        normalizeSegments = normalizeSegments)
+                    val gloss = word.glossOrNP()?.let { baseGloss -> applyCategories(baseGloss) }
+                    return word.derive(
+                        derivedForm,
+                        id = if (preserveId) word.id else -1,
+                        newLanguage = toLanguage,
+                        newGloss = gloss, phonemic = word.isPhonemic,
+                        newClasses = headWordForm.classes
+                    )
                 }
             }
         }
@@ -298,10 +304,18 @@ class Rule(
                 else {
                     resultWord.text
                 }
-                val result = deriveWord(word, resultText, toLanguage, resultWord.isPhonemic, stressIndex,
-                    resultWord.segments, resultWord.classes, normalizeSegments = normalizeSegments,
+                val gloss = word.glossOrNP()?.let { baseGloss ->
+                    applyCategories(baseGloss, resultWord.segments?.any { it.sourceRule == this} == true)
+                }
+                val result = word.derive(resultText,
                     id = if (preserveId) word.id else -1,
-                    stress = if (resultWord.explicitStress) resultWord.stressedPhonemeIndex else null)
+                    newLanguage = toLanguage,
+                    newGloss = gloss,
+                    phonemic = resultWord.isPhonemic,
+                    stressIndex = stressIndex,
+                    segments = if (normalizeSegments) Word.normalizeSegments(resultWord.segments) else resultWord.segments,
+                    newClasses = resultWord.classes
+                )
                 trace?.logRuleResult(this, result)
                 return result
             }
@@ -348,30 +362,6 @@ class Rule(
             if (result.isNotEmpty()) return result
         }
         return listOf(phonemes.result())
-    }
-
-    private fun deriveWord(word: Word, text: String, language: Language, phonemic: Boolean, stressIndex: Int, segments: List<WordSegment>?,
-                           classes: List<String>, stress: Int? = null, normalizeSegments: Boolean = true,
-                           id: Int = -1): Word {
-        val gloss = word.glossOrNP()?.let { baseGloss ->
-            applyCategories(baseGloss, segments?.any { it.sourceRule == this} == true)
-        }
-        return Word(id, text, language, gloss, pos = word.pos, classes = classes).also {
-            it.stressedPhonemeIndex = stressIndex
-            val sourceSegments = word.segments
-            if (segments != null) {
-                it.segments = if (normalizeSegments) Word.normalizeSegments(segments) else segments
-            }
-            else if (sourceSegments != null && word.text == text) {
-                it.segments = sourceSegments
-            }
-            it.isPhonemic = phonemic
-        }.apply {
-            if (stress != null) {
-                stressedPhonemeIndex = stress
-                explicitStress = true
-            }
-        }
     }
 
     fun applyCategories(baseGloss: String, fromSegment: Boolean = false): String {

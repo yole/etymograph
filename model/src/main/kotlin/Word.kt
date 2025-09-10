@@ -1,6 +1,7 @@
 package ru.yole.etymograph
 
 import java.util.*
+import kotlin.math.exp
 import kotlin.math.min
 
 class WordSegment(
@@ -164,17 +165,26 @@ class Word(
         return asOrthographic()
     }
 
-    fun derive(text: String, id: Int? = null,
+    fun derive(text: String,
+               id: Int? = null,
+               newLanguage: Language? = null,
+               newGloss: String? = null,
                addSegment: WordSegment? = null,
                segments: List<WordSegment>? = null,
                newClasses: List<String>? = null,
-               phonemic: Boolean? = null, keepStress: Boolean = true): Word {
+               phonemic: Boolean? = null,
+               stressIndex: Int? = null,
+               keepStress: Boolean = true): Word {
         val sourceSegments = if (text == this.text || addSegment != null) this.segments else null
         return if (this.text == text && newClasses == null && phonemic == null && id == null)
             this
         else
-            Word(id ?: -1, text, language, gloss, fullGloss, pos, newClasses ?: classes).also {
-                if (keepStress) {
+            Word(id ?: -1, text, newLanguage ?: language, newGloss ?: gloss, fullGloss, pos, newClasses ?: classes).also {
+                 if (stressIndex != null) {
+                    it.stressedPhonemeIndex = stressIndex
+                    it.explicitStress = explicitStress
+                }
+                else if (keepStress) {
                     it.stressedPhonemeIndex = stressedPhonemeIndex
                     it.explicitStress = explicitStress
                 }
@@ -327,8 +337,8 @@ class Word(
             return sourceSegments + newSegment
         }
 
-        fun normalizeSegments(segments: List<WordSegment>): List<WordSegment> {
-            var result = segments
+        fun normalizeSegments(segments: List<WordSegment>?): List<WordSegment>? {
+            var result = segments ?: return null
             while (result.size >= 2) {
                 val beforeLast = result[result.size - 2]
                 val last = result.last()
