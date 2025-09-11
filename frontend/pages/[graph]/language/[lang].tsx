@@ -11,6 +11,7 @@ import RuleListSelect from "@/components/RuleListSelect";
 import RuleLink from "@/components/RuleLink";
 import { GlobalStateContext } from "@/components/Contexts";
 import LanguageSelect from "@/components/LanguageSelect";
+import FormCheckbox from "@/components/FormCheckbox";
 
 export const config = {
     unstable_runtimeJS: true
@@ -139,6 +140,8 @@ export default function LanguageIndex(props) {
                     updateId={langId}
                     update={(data) => updateLanguage(graph, langId, data)}
                     defaultValues={{
+                        protoLanguageShortName: lang.protoLanguageShortName,
+                        reconstructed: lang.reconstructed,
                         diphthongs: lang.diphthongs.join(", "),
                         syllableStructures: lang.syllableStructures.join(", "),
                         stressRuleName: lang.stressRuleName,
@@ -153,6 +156,7 @@ export default function LanguageIndex(props) {
             >
                 <table><tbody>
                     <LanguageSelect label="Proto-language" id="protoLanguageShortName"/>
+                    <FormCheckbox label="Reconstructed" id="reconstructed"/>
                     <FormRow label="Diphthongs" id="diphthongs"/>
                     <FormRow label="Syllable structures" id="syllableStructures"/>
                     <RuleListSelect label="Stress rule" id="stressRuleName" language={langId}/>
