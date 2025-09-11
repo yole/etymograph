@@ -49,6 +49,80 @@
         {
             "name": "Tocharian B",
             "shortName": "TB"
+        },
+        {
+            "name": "Proto-Tocharian",
+            "shortName": "PT",
+            "reconstructed": true
+        },
+        {
+            "name": "Proto-Indo-Iranian",
+            "shortName": "PIIr",
+            "reconstructed": true
+        },
+        {
+            "name": "Sanskrit",
+            "shortName": "Skt"
+        },
+        {
+            "name": "Avestan",
+            "shortName": "Av"
+        },
+        {
+            "name": "Proto-Balto-Slavic",
+            "shortName": "PBSl",
+            "reconstructed": true
+        },
+        {
+            "name": "Old Church Slavonic",
+            "shortName": "OCS"
+        },
+        {
+            "name": "Lithuanian",
+            "shortName": "Lith"
+        },
+        {
+            "name": "Armenian",
+            "shortName": "Arm"
+        },
+        {
+            "name": "Albanian",
+            "shortName": "Alb"
+        },
+        {
+            "name": "Proto-Anatolian",
+            "shortName": "PAnat",
+            "reconstructed": true
+        },
+        {
+            "name": "Hittite",
+            "shortName": "Hitt"
+        },
+        {
+            "name": "Ancient Greek",
+            "shortName": "Grk"
+        },
+        {
+            "name": "Proto-Italic",
+            "shortName": "PItal",
+            "reconstructed": true
+        },
+        {
+            "name": "Proto-Celtic",
+            "shortName": "PCelt",
+            "reconstructed": true
+        },
+        {
+            "name": "Old Irish",
+            "shortName": "OIr"
+        },
+        {
+            "name": "Old High German",
+            "shortName": "OHG"
+        },
+        {
+            "name": "Latin",
+            "shortName": "Lat"
         }
     ],
     "links": [
@@ -52491,6 +52565,31 @@
             "ruleIds": [
                 9747
             ]
+        },
+        {
+            "from": 9896,
+            "to": 9895,
+            "type": "^"
+        },
+        {
+            "from": 9897,
+            "to": 9895,
+            "type": "^"
+        },
+        {
+            "from": 9898,
+            "to": 9895,
+            "type": "^"
+        },
+        {
+            "from": 9899,
+            "to": 9895,
+            "type": "^"
+        },
+        {
+            "from": 9900,
+            "to": 9895,
+            "type": "^"
         }
     ]
 }
