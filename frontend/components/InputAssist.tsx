@@ -34,7 +34,7 @@ export default function InputAssist(props: InputAssistProps) {
         const currentValue = inputField.value
         const selectionEnd = inputField.selectionEnd;
         inputField.value = currentValue.substring(0, inputField.selectionStart) + char + currentValue.substring(selectionEnd)
-        inputField.setSelectionRange(selectionEnd + 1, selectionEnd + 1)
+        inputField.setSelectionRange(selectionEnd + char.length, selectionEnd + char.length)
         inputField.focus()
     }
 
