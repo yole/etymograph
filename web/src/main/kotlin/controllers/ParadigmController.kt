@@ -131,11 +131,13 @@ class ParadigmController {
             paradigm.addColumn(columnTitle)
         }
 
+        val prefix = if (params.prefix.endsWith("-")) params.prefix else params.prefix + "-"
+
         for ((rowIndex, rowTitle) in rowList.withIndex()) {
             for ((colIndex, columnTitle) in colList.withIndex()) {
                 val ruleNameSeparator = if (rowTitle.all { it.isDigit() }) "" else "-"
                 val categorySeparator = if (rowTitle.all { it.isDigit() }) "" else "."
-                val ruleName = "${params.prefix}-${rowTitle.lowercase()}$ruleNameSeparator${columnTitle.lowercase().replace(" ", "-")}"
+                val ruleName = "$prefix${rowTitle.lowercase()}$ruleNameSeparator${columnTitle.lowercase().replace(" ", "-")}"
                 val addedCategories = params.addedCategories + "." + rowTitle.uppercase() + categorySeparator + columnTitle.uppercase().replace(" ", ".")
                 val rule = repo.ruleByName(ruleName)
                     ?: repo.addRule(ruleName, language, language, MorphoRuleLogic.empty(), addedCategories, fromPOS = pos)
