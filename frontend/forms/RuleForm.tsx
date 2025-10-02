@@ -37,8 +37,18 @@ export default function RuleForm(props: RuleFormProps) {
             <button className={ruleType === "phono" ? "inlineButton inlineButtonActive " : "inlineButton"} onClick={() => setRuleType("phono")}>Phonological</button>
         <hr/>
         <EtymographForm
-            create={(data) => addRule(graph, data)}
-            update={(data) => updateRule(graph, props.updateId, data)}
+            create={(data) => {
+                if (ruleType === "morpho") {
+                    data["fromLang"] = data["toLang"]
+                }
+                return addRule(graph, data);
+            }}
+            update={(data) => {
+                if (ruleType === "morpho") {
+                    data["fromLang"] = data["toLang"]
+                }
+                return updateRule(graph, props.updateId, data);
+            }}
             buttons={props.updateId !== undefined ? [
                 {text: 'Preview', callback: (data) => previewRuleChangesClicked(data)}
             ] : []}

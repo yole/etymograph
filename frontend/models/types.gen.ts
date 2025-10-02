@@ -204,6 +204,7 @@ export type Language = {
 export type LanguageShortViewModel = {
     name: string;
     shortName: string;
+    protoLanguageShortName?: string;
     pos: Array<WordCategoryValueViewModel>;
     wordClasses: Array<WordCategoryViewModel>;
     dictionaries: Array<(string)>;

@@ -1687,6 +1687,8 @@ components:
           type: "string"
         shortName:
           type: "string"
+        protoLanguageShortName:
+          type: "string"
         pos:
           type: "array"
           items:

@@ -58,6 +58,7 @@ class LanguageController {
     data class LanguageShortViewModel(
         val name: String,
         val shortName: String,
+        val protoLanguageShortName: String?,
         val pos: List<WordCategoryValueViewModel>,
         val wordClasses: List<WordCategoryViewModel>,
         val dictionaries: List<String>,
@@ -104,6 +105,7 @@ class LanguageController {
         LanguageShortViewModel(
             name,
             shortName,
+            protoLanguage?.shortName,
             pos.map { WordCategoryValueViewModel(it.name, it.abbreviation) },
             wordClasses.map {
                 WordCategoryViewModel(it.name, it.pos, it.values.map {
