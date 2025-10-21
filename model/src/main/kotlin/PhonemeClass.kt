@@ -279,6 +279,7 @@ val defaultPhonemeClasses = mapOf(
     "ɣ" to setOf("voiced", "velar", "fricative"),
     "m" to setOf("voiced", "bilabial", "nasal", "consonant"),
     "n" to setOf("voiced", "alveolar", "nasal", "consonant"),
+    "ŋ" to setOf("voiced", "velar", "nasal", "consonant"),
     "r" to setOf("voiced", "alveolar", "trill"),
     "l" to setOf("voiced", "alveolar", "lateral", "approximant"),
     "j" to setOf("voiced", "palatal", "approximant"),
