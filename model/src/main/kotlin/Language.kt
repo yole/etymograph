@@ -344,7 +344,7 @@ class Language(val name: String, val shortName: String) {
 
     companion object {
         val articulationPlaces = listOf(
-            "labial", "bilabial", "labiodental", "dental", "alveolar", "postalveolar", "palatal", "velar", "labiovelar",
+            "labial", "bilabial", "labiodental", "dental", "alveolar", "postalveolar", "alveolo-palatal", "palatal", "velar", "labiovelar",
             "uvular", "pharyngeal", "glottal"
         )
         val articulationManners = listOf(
