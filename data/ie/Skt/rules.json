@@ -1,0 +1,255 @@
+[
+    {
+        "id": 9918,
+        "name": "skt--nom-du",
+        "fromLang": "Skt",
+        "toLang": "Skt",
+        "branches": [],
+        "addedCategories": ".NOM.DU",
+        "fromPOS": [
+            "N"
+        ]
+    },
+    {
+        "id": 9919,
+        "name": "skt--nom-pl",
+        "fromLang": "Skt",
+        "toLang": "Skt",
+        "branches": [],
+        "addedCategories": ".NOM.PL",
+        "fromPOS": [
+            "N"
+        ]
+    },
+    {
+        "id": 9920,
+        "name": "skt--voc-sg",
+        "fromLang": "Skt",
+        "toLang": "Skt",
+        "branches": [],
+        "addedCategories": ".VOC.SG",
+        "fromPOS": [
+            "N"
+        ]
+    },
+    {
+        "id": 9921,
+        "name": "skt--voc-du",
+        "fromLang": "Skt",
+        "toLang": "Skt",
+        "branches": [],
+        "addedCategories": ".VOC.DU",
+        "fromPOS": [
+            "N"
+        ]
+    },
+    {
+        "id": 9922,
+        "name": "skt--voc-pl",
+        "fromLang": "Skt",
+        "toLang": "Skt",
+        "branches": [],
+        "addedCategories": ".VOC.PL",
+        "fromPOS": [
+            "N"
+        ]
+    },
+    {
+        "id": 9923,
+        "name": "skt--acc-sg",
+        "fromLang": "Skt",
+        "toLang": "Skt",
+        "branches": [],
+        "addedCategories": ".ACC.SG",
+        "fromPOS": [
+            "N"
+        ]
+    },
+    {
+        "id": 9924,
+        "name": "skt--acc-du",
+        "fromLang": "Skt",
+        "toLang": "Skt",
+        "branches": [],
+        "addedCategories": ".ACC.DU",
+        "fromPOS": [
+            "N"
+        ]
+    },
+    {
+        "id": 9925,
+        "name": "skt--acc-pl",
+        "fromLang": "Skt",
+        "toLang": "Skt",
+        "branches": [],
+        "addedCategories": ".ACC.PL",
+        "fromPOS": [
+            "N"
+        ]
+    },
+    {
+        "id": 9926,
+        "name": "skt--ins-sg",
+        "fromLang": "Skt",
+        "toLang": "Skt",
+        "branches": [],
+        "addedCategories": ".INS.SG",
+        "fromPOS": [
+            "N"
+        ]
+    },
+    {
+        "id": 9927,
+        "name": "skt--ins-du",
+        "fromLang": "Skt",
+        "toLang": "Skt",
+        "branches": [],
+        "addedCategories": ".INS.DU",
+        "fromPOS": [
+            "N"
+        ]
+    },
+    {
+        "id": 9928,
+        "name": "skt--ins-pl",
+        "fromLang": "Skt",
+        "toLang": "Skt",
+        "branches": [],
+        "addedCategories": ".INS.PL",
+        "fromPOS": [
+            "N"
+        ]
+    },
+    {
+        "id": 9929,
+        "name": "skt--dat-sg",
+        "fromLang": "Skt",
+        "toLang": "Skt",
+        "branches": [],
+        "addedCategories": ".DAT.SG",
+        "fromPOS": [
+            "N"
+        ]
+    },
+    {
+        "id": 9930,
+        "name": "skt--dat-du",
+        "fromLang": "Skt",
+        "toLang": "Skt",
+        "branches": [],
+        "addedCategories": ".DAT.DU",
+        "fromPOS": [
+            "N"
+        ]
+    },
+    {
+        "id": 9931,
+        "name": "skt--dat-pl",
+        "fromLang": "Skt",
+        "toLang": "Skt",
+        "branches": [],
+        "addedCategories": ".DAT.PL",
+        "fromPOS": [
+            "N"
+        ]
+    },
+    {
+        "id": 9932,
+        "name": "skt--abl-sg",
+        "fromLang": "Skt",
+        "toLang": "Skt",
+        "branches": [],
+        "addedCategories": ".ABL.SG",
+        "fromPOS": [
+            "N"
+        ]
+    },
+    {
+        "id": 9933,
+        "name": "skt--abl-du",
+        "fromLang": "Skt",
+        "toLang": "Skt",
+        "branches": [],
+        "addedCategories": ".ABL.DU",
+        "fromPOS": [
+            "N"
+        ]
+    },
+    {
+        "id": 9934,
+        "name": "skt--abl-pl",
+        "fromLang": "Skt",
+        "toLang": "Skt",
+        "branches": [],
+        "addedCategories": ".ABL.PL",
+        "fromPOS": [
+            "N"
+        ]
+    },
+    {
+        "id": 9935,
+        "name": "skt--gen-sg",
+        "fromLang": "Skt",
+        "toLang": "Skt",
+        "branches": [],
+        "addedCategories": ".GEN.SG",
+        "fromPOS": [
+            "N"
+        ]
+    },
+    {
+        "id": 9936,
+        "name": "skt--gen-du",
+        "fromLang": "Skt",
+        "toLang": "Skt",
+        "branches": [],
+        "addedCategories": ".GEN.DU",
+        "fromPOS": [
+            "N"
+        ]
+    },
+    {
+        "id": 9937,
+        "name": "skt--gen-pl",
+        "fromLang": "Skt",
+        "toLang": "Skt",
+        "branches": [],
+        "addedCategories": ".GEN.PL",
+        "fromPOS": [
+            "N"
+        ]
+    },
+    {
+        "id": 9938,
+        "name": "skt--loc-sg",
+        "fromLang": "Skt",
+        "toLang": "Skt",
+        "branches": [],
+        "addedCategories": ".LOC.SG",
+        "fromPOS": [
+            "N"
+        ]
+    },
+    {
+        "id": 9939,
+        "name": "skt--loc-du",
+        "fromLang": "Skt",
+        "toLang": "Skt",
+        "branches": [],
+        "addedCategories": ".LOC.DU",
+        "fromPOS": [
+            "N"
+        ]
+    },
+    {
+        "id": 9940,
+        "name": "skt--loc-pl",
+        "fromLang": "Skt",
+        "toLang": "Skt",
+        "branches": [],
+        "addedCategories": ".LOC.PL",
+        "fromPOS": [
+            "N"
+        ]
+    }
+]

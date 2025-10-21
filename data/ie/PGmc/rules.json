@@ -71,5 +71,59 @@
         "toLang": "PGmc",
         "branches": [],
         "addedCategories": ".PST.PL"
+    },
+    {
+        "id": 9941,
+        "name": "pgmc-cowgill-law",
+        "fromLang": "PIE",
+        "toLang": "PGmc",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "Spe",
+                        "args": [
+                            "h₃ > k / {[+sonorant]|i|u}_w"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "sourceRefs": [
+            {
+                "pubId": 10,
+                "refText": "86"
+            }
+        ]
+    },
+    {
+        "id": 9944,
+        "name": "pgmc-word-initial-H",
+        "fromLang": "PIE",
+        "toLang": "PGmc",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "Spe",
+                        "args": [
+                            "{h₁|h₂|h₃} > 0 / #_C"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "sourceRefs": [
+            {
+                "pubId": 10,
+                "refText": "88"
+            }
+        ]
     }
 ]

@@ -1,0 +1,13 @@
+[
+    {
+        "id": 9943,
+        "name": "ie-to-pgmc",
+        "fromLang": "PIE",
+        "toLang": "PGmc",
+        "steps": [
+            {
+                "ruleId": 9941
+            }
+        ]
+    }
+]

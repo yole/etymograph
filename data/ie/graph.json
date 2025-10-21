@@ -52590,6 +52590,20 @@
             "from": 9900,
             "to": 9895,
             "type": "^"
+        },
+        {
+            "from": 1977,
+            "to": 9942,
+            "type": "^",
+            "ruleIds": [
+                9941
+            ],
+            "sequenceId": 9943,
+            "sourceRefs": [
+                {
+                    "refText": "Ringe 2018:86"
+                }
+            ]
         }
     ]
 }

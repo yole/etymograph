@@ -8,5 +8,15 @@
         "id": 9901,
         "text": "ped-",
         "gloss": "foot"
+    },
+    {
+        "id": 9942,
+        "text": "gʷih₃wos",
+        "gloss": "alive",
+        "sourceRefs": [
+            {
+                "refText": "Ringe 2018:86"
+            }
+        ]
     }
 ]

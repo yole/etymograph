@@ -1,4 +1,309 @@
 {
-    "phonemes": [],
-    "protoLanguageShortName": "PIIr"
+    "phonemes": [
+        {
+            "id": 9902,
+            "graphemes": [
+                "a"
+            ],
+            "classes": [
+                "central",
+                "open",
+                "unrounded",
+                "vowel"
+            ]
+        },
+        {
+            "id": 9903,
+            "graphemes": [
+                "ā"
+            ],
+            "classes": [
+                "long",
+                "central",
+                "open",
+                "unrounded",
+                "vowel"
+            ]
+        },
+        {
+            "id": 9904,
+            "graphemes": [
+                "i"
+            ],
+            "classes": [
+                "front",
+                "close",
+                "unrounded",
+                "vowel"
+            ]
+        },
+        {
+            "id": 9905,
+            "graphemes": [
+                "ī"
+            ],
+            "classes": [
+                "front",
+                "close",
+                "unrounded",
+                "vowel"
+            ]
+        },
+        {
+            "id": 9906,
+            "graphemes": [
+                "u"
+            ],
+            "classes": [
+                "back",
+                "close",
+                "rounded",
+                "vowel"
+            ]
+        },
+        {
+            "id": 9907,
+            "graphemes": [
+                "ū"
+            ],
+            "classes": [
+                "back",
+                "close",
+                "rounded",
+                "vowel"
+            ]
+        },
+        {
+            "id": 9908,
+            "graphemes": [
+                "k"
+            ],
+            "classes": [
+                "voiceless",
+                "velar",
+                "stop"
+            ]
+        },
+        {
+            "id": 9909,
+            "graphemes": [
+                "kh"
+            ],
+            "classes": [
+                "aspirated",
+                "voiceless",
+                "velar",
+                "stop"
+            ]
+        },
+        {
+            "id": 9910,
+            "graphemes": [
+                "g"
+            ],
+            "classes": [
+                "voiced",
+                "velar",
+                "stop"
+            ]
+        },
+        {
+            "id": 9911,
+            "graphemes": [
+                "gh"
+            ],
+            "classes": [
+                "aspirated",
+                "voiced",
+                "velar",
+                "stop"
+            ]
+        },
+        {
+            "id": 9912,
+            "graphemes": [
+                "ṅ"
+            ],
+            "sound": "ŋ",
+            "classes": [
+                "voiced",
+                "velar",
+                "nasal",
+                "consonant"
+            ]
+        },
+        {
+            "id": 9913,
+            "graphemes": [
+                "c"
+            ],
+            "classes": [
+                "voiceless",
+                "alveolo-palatal",
+                "affricate"
+            ]
+        },
+        {
+            "id": 9914,
+            "graphemes": [
+                "ch"
+            ],
+            "classes": [
+                "aspirated",
+                "voiceless",
+                "alveolo-palatal",
+                "affricate"
+            ]
+        },
+        {
+            "id": 9915,
+            "graphemes": [
+                "j"
+            ],
+            "classes": [
+                "voiced",
+                "alveolo-palatal",
+                "affricate"
+            ]
+        },
+        {
+            "id": 9916,
+            "graphemes": [
+                "jh"
+            ],
+            "classes": [
+                "aspirated",
+                "voiced",
+                "alveolo-palatal",
+                "affricate"
+            ]
+        }
+    ],
+    "protoLanguageShortName": "PIIr",
+    "pos": [
+        {
+            "name": "Noun",
+            "abbreviation": "N"
+        },
+        {
+            "name": "Adjective",
+            "abbreviation": "ADJ"
+        },
+        {
+            "name": "Verb",
+            "abbreviation": "V"
+        },
+        {
+            "name": "Pronoun",
+            "abbreviation": "PRON"
+        }
+    ],
+    "grammaticalCategories": [
+        {
+            "name": "Number",
+            "pos": [
+                "N",
+                "ADJ",
+                "V"
+            ],
+            "values": [
+                {
+                    "name": "Singular",
+                    "abbreviation": "SG"
+                },
+                {
+                    "name": "Dual",
+                    "abbreviation": "DU"
+                },
+                {
+                    "name": "Plural",
+                    "abbreviation": "PL"
+                }
+            ]
+        },
+        {
+            "name": "Case",
+            "pos": [
+                "N",
+                "ADJ"
+            ],
+            "values": [
+                {
+                    "name": "Nomiinative",
+                    "abbreviation": "NOM"
+                },
+                {
+                    "name": "Vocative",
+                    "abbreviation": "VOC"
+                },
+                {
+                    "name": "Accusative",
+                    "abbreviation": "ACC"
+                },
+                {
+                    "name": "Instrumental",
+                    "abbreviation": "INST"
+                },
+                {
+                    "name": "Dative",
+                    "abbreviation": "DAT"
+                },
+                {
+                    "name": "Ablative",
+                    "abbreviation": "ABL"
+                },
+                {
+                    "name": "Genitive",
+                    "abbreviation": "GEN"
+                },
+                {
+                    "name": "Locative",
+                    "abbreviation": "LOC"
+                }
+            ]
+        },
+        {
+            "name": "Gender",
+            "pos": [
+                "ADJ",
+                "PRON"
+            ],
+            "values": [
+                {
+                    "name": "Masculine",
+                    "abbreviation": "M"
+                },
+                {
+                    "name": "Feminine",
+                    "abbreviation": "F"
+                },
+                {
+                    "name": "Neuter",
+                    "abbreviation": "N"
+                }
+            ]
+        }
+    ],
+    "wordClasses": [
+        {
+            "name": "Gender",
+            "pos": [
+                "N"
+            ],
+            "values": [
+                {
+                    "name": "Masculine",
+                    "abbreviation": "m"
+                },
+                {
+                    "name": "Feminine",
+                    "abbreviation": "f"
+                },
+                {
+                    "name": "Neuter",
+                    "abbreviation": "n"
+                }
+            ]
+        }
+    ]
 }

@@ -1,0 +1,152 @@
+[
+    {
+        "id": 49,
+        "name": "skt-noun",
+        "rows": [
+            "Nom",
+            "Voc",
+            "Acc",
+            "Ins",
+            "Dat",
+            "Abl",
+            "Gen",
+            "Loc"
+        ],
+        "columns": [
+            {
+                "title": "Sg",
+                "cells": [
+                    {},
+                    {
+                        "ruleAlternatives": [
+                            9920
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            9923
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            9926
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            9929
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            9932
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            9935
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            9938
+                        ]
+                    }
+                ]
+            },
+            {
+                "title": "Du",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            9918
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            9921
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            9924
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            9927
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            9930
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            9933
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            9936
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            9939
+                        ]
+                    }
+                ]
+            },
+            {
+                "title": "Pl",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            9919
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            9922
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            9925
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            9928
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            9931
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            9934
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            9937
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            9940
+                        ]
+                    }
+                ]
+            }
+        ],
+        "posList": [
+            "N"
+        ]
+    }
+]

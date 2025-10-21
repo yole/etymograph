@@ -30,7 +30,6 @@
             "graphemes": [
                 "h₁"
             ],
-            "sound": "ʔ",
             "classes": [
                 "glottal",
                 "stop"
@@ -41,7 +40,6 @@
             "graphemes": [
                 "h₂"
             ],
-            "sound": "ʕ",
             "classes": [
                 "voiced",
                 "pharyngeal",
@@ -53,7 +51,6 @@
             "graphemes": [
                 "h₃"
             ],
-            "sound": "ʕʷ",
             "classes": [
                 "labialized",
                 "voiced",
@@ -322,7 +319,6 @@
             "graphemes": [
                 "i̯"
             ],
-            "sound": "j",
             "classes": [
                 "voiced",
                 "palatal",
