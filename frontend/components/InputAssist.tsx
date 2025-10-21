@@ -29,7 +29,7 @@ export default function InputAssist(props: InputAssistProps) {
             .map(g => g.text)
     }
 
-    function handleInputAssist(id, char) {
+    function handleInputAssist(id: string, char: string) {
         const inputField = document.getElementById(id) as HTMLInputElement
         const currentValue = inputField.value
         const selectionEnd = inputField.selectionEnd;
