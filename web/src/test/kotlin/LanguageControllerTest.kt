@@ -4,7 +4,7 @@ import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
 import ru.yole.etymograph.MorphoRuleLogic
-import ru.yole.etymograph.RuleLogic
+import ru.yole.etymograph.AccentType
 import ru.yole.etymograph.web.controllers.LanguageController
 
 class LanguageControllerTest {
@@ -90,5 +90,16 @@ class LanguageControllerTest {
         languageController.copyPhonemes(fixture.graph, "S", LanguageController.CopyPhonemesParams("q"))
         val s = fixture.graph.languageByShortName("S")!!
         assertEquals(1, s.phonemes.size)
+    }
+
+    @Test
+    fun stressTypes() {
+        val parameters = LanguageController.UpdateLanguageParameters(
+            accentTypes = listOf(AccentType.Circumflex.name)
+        )
+        languageController.updateLanguage(fixture.graph, "q", parameters)
+        assertEquals(setOf(AccentType.Circumflex), fixture.q.accentTypes)
+        assertEquals(listOf(AccentType.Circumflex.name),
+            languageController.language(fixture.graph, "q").accentTypes)
     }
 }

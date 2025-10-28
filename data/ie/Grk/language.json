@@ -1,4 +1,9 @@
 {
     "phonemes": [],
-    "protoLanguageShortName": "PIE"
+    "protoLanguageShortName": "PIE",
+    "accentTypes": [
+        "Acute",
+        "Grave",
+        "Circumflex"
+    ]
 }

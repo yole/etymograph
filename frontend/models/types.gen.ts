@@ -7,23 +7,23 @@ export type AcceptAlternativeParameters = {
 };
 
 export type AddPublicationParameters = {
-    name?: string;
-    refId?: string;
-    author?: string;
-    date?: string;
-    publisher?: string;
+    name?: (string) | null;
+    refId?: (string) | null;
+    author?: (string) | null;
+    date?: (string) | null;
+    publisher?: (string) | null;
 };
 
 export type AddWordParameters = {
-    text?: string;
-    gloss?: string;
-    fullGloss?: string;
-    pos?: string;
-    classes?: string;
-    reconstructed?: boolean;
-    source?: string;
-    notes?: string;
-    forceNew?: boolean;
+    text?: (string) | null;
+    gloss?: (string) | null;
+    fullGloss?: (string) | null;
+    pos?: (string) | null;
+    classes?: (string) | null;
+    reconstructed?: (boolean) | null;
+    source?: (string) | null;
+    notes?: (string) | null;
+    forceNew?: (boolean) | null;
 };
 
 export type AlternativeViewModel = {
@@ -40,13 +40,13 @@ export type ApplySequenceParams = {
 export type AssociateWordParameters = {
     index: number;
     wordId: number;
-    contextGloss?: string;
+    contextGloss?: (string) | null;
 };
 
 export type AttestationViewModel = {
     textId: number;
     textTitle: string;
-    word?: string;
+    word?: (string) | null;
 };
 
 export type ComparePhonemesParameters = {
@@ -60,19 +60,19 @@ export type ComparePhonemesResult = {
 export type CompoundComponentsViewModel = {
     compoundId: number;
     components: Array<WordRefViewModel>;
-    headIndex?: number;
+    headIndex?: (number) | null;
     derivation: boolean;
     source: Array<SourceRefViewModel>;
     sourceEditableText: string;
-    notes?: string;
+    notes?: (string) | null;
 };
 
 export type CompoundParams = {
     compoundId: number;
     firstComponentId: number;
-    head?: number;
-    source?: string;
-    notes?: string;
+    head?: (number) | null;
+    source?: (string) | null;
+    notes?: (string) | null;
 };
 
 export type CopyPhonemesParams = {
@@ -109,13 +109,13 @@ export type CorpusTextViewModel = {
     lines: Array<CorpusLineViewModel>;
     source: Array<SourceRefViewModel>;
     sourceEditableText: string;
-    notes?: string;
+    notes?: (string) | null;
     translations: Array<TranslationViewModel>;
 };
 
 export type CorpusWordCandidateViewModel = {
     id: number;
-    gloss?: string;
+    gloss?: (string) | null;
 };
 
 export type CorpusWordViewModel = {
@@ -123,21 +123,21 @@ export type CorpusWordViewModel = {
     text: string;
     normalizedText: string;
     gloss: string;
-    contextGloss?: string;
-    wordId?: number;
-    wordText?: string;
-    wordCandidates?: Array<CorpusWordCandidateViewModel>;
-    stressIndex?: number;
-    stressLength?: number;
+    contextGloss?: (string) | null;
+    wordId?: (number) | null;
+    wordText?: (string) | null;
+    wordCandidates?: Array<CorpusWordCandidateViewModel> | null;
+    stressIndex?: (number) | null;
+    stressLength?: (number) | null;
     homonym: boolean;
 };
 
 export type DerivationViewModel = {
     baseWord: WordRefViewModel;
     derivation: LinkWordViewModel;
-    expectedWord?: string;
-    singlePhonemeDifference?: string;
-    pos?: string;
+    expectedWord?: (string) | null;
+    singlePhonemeDifference?: (string) | null;
+    pos?: (string) | null;
 };
 
 export type DeriveThroughSequenceParams = {
@@ -147,15 +147,16 @@ export type DeriveThroughSequenceParams = {
 export type DictionaryViewModel = {
     language: Language;
     words: Array<DictionaryWordViewModel>;
+    wordsByLetter?: (string) | null;
 };
 
 export type DictionaryWordViewModel = {
     id: number;
     text: string;
     gloss: string;
-    fullGloss?: string;
+    fullGloss?: (string) | null;
     homonym: boolean;
-    pos?: string;
+    pos?: (string) | null;
 };
 
 export type GenerateParadigmParameters = {
@@ -186,25 +187,27 @@ export type Language = {
     name: string;
     shortName: string;
     reconstructed: boolean;
-    phonemes?: Array<Phoneme>;
+    protoLanguage?: (Language) | null;
+    phonemes?: Array<Phoneme> | null;
     diphthongs: Array<(string)>;
     syllableStructures: Array<(string)>;
-    stressRule?: RuleRef;
-    phonotacticsRule?: RuleRef;
-    pronunciationRule?: RuleRef;
-    orthographyRule?: RuleRef;
-    pos?: Array<WordCategoryValue>;
-    grammaticalCategories?: Array<WordCategory>;
-    wordClasses?: Array<WordCategory>;
-    orthoPhonemeLookup?: PhonemeLookup;
-    phonoPhonemeLookup?: PhonemeLookup;
-    dictionarySettings?: string;
+    stressRule?: (RuleRef) | null;
+    phonotacticsRule?: (RuleRef) | null;
+    pronunciationRule?: (RuleRef) | null;
+    orthographyRule?: (RuleRef) | null;
+    pos?: Array<WordCategoryValue> | null;
+    grammaticalCategories?: Array<WordCategory> | null;
+    wordClasses?: Array<WordCategory> | null;
+    accentTypes?: Array<('Acute' | 'Grave' | 'Circumflex')> | null;
+    orthoPhonemeLookup?: (PhonemeLookup) | null;
+    phonoPhonemeLookup?: (PhonemeLookup) | null;
+    dictionarySettings?: (string) | null;
 };
 
 export type LanguageShortViewModel = {
     name: string;
     shortName: string;
-    protoLanguageShortName?: string;
+    protoLanguageShortName?: (string) | null;
     pos: Array<WordCategoryValueViewModel>;
     wordClasses: Array<WordCategoryViewModel>;
     dictionaries: Array<(string)>;
@@ -214,21 +217,23 @@ export type LanguageShortViewModel = {
 export type LanguageViewModel = {
     name: string;
     shortName: string;
+    protoLanguageShortName?: (string) | null;
     reconstructed: boolean;
     diphthongs: Array<(string)>;
     phonemes: Array<PhonemeTableViewModel>;
-    stressRuleId?: number;
-    stressRuleName?: string;
-    phonotacticsRuleId?: number;
-    phonotacticsRuleName?: string;
-    pronunciationRuleId?: number;
-    pronunciationRuleName?: string;
-    orthographyRule?: RuleRefViewModel;
+    stressRuleId?: (number) | null;
+    stressRuleName?: (string) | null;
+    phonotacticsRuleId?: (number) | null;
+    phonotacticsRuleName?: (string) | null;
+    pronunciationRuleId?: (number) | null;
+    pronunciationRuleName?: (string) | null;
+    orthographyRule?: (RuleRefViewModel) | null;
     syllableStructures: Array<(string)>;
     pos: string;
     grammaticalCategories: string;
     wordClasses: string;
-    dictionarySettings?: string;
+    dictionarySettings?: (string) | null;
+    accentTypes: Array<(string)>;
 };
 
 export type LinkedRuleViewModel = {
@@ -236,7 +241,7 @@ export type LinkedRuleViewModel = {
     ruleName: string;
     linkType: string;
     source: Array<SourceRefViewModel>;
-    notes?: string;
+    notes?: (string) | null;
 };
 
 export type LinkParams = {
@@ -245,7 +250,7 @@ export type LinkParams = {
     linkType: string;
     ruleNames: string;
     source: string;
-    notes?: string;
+    notes?: (string) | null;
 };
 
 export type LinkTypeViewModel = {
@@ -259,26 +264,26 @@ export type LinkWordViewModel = {
     ruleIds: Array<(number)>;
     ruleNames: Array<(string)>;
     ruleResults: Array<(string)>;
-    ruleSequence?: WordRuleSequenceViewModel;
+    ruleSequence?: (WordRuleSequenceViewModel) | null;
     source: Array<SourceRefViewModel>;
     sourceEditableText: string;
-    notes?: string;
+    notes?: (string) | null;
     suggestedSequences: Array<WordRuleSequenceViewModel>;
 };
 
 export type LookupParameters = {
     dictionaryId: string;
-    disambiguation?: string;
+    disambiguation?: (string) | null;
 };
 
 export type LookupResultViewModel = {
-    status?: string;
+    status?: (string) | null;
     variants: Array<LookupVariantViewModel>;
 };
 
 export type LookupVariantViewModel = {
     text: string;
-    disambiguation?: string;
+    disambiguation?: (string) | null;
 };
 
 export type ParadigmCellViewModel = {
@@ -307,8 +312,8 @@ export type ParadigmViewModel = {
     rowTitles: Array<(string)>;
     columns: Array<ParadigmColumnViewModel>;
     editableText: string;
-    preRule?: RuleRefViewModel;
-    postRule?: RuleRefViewModel;
+    preRule?: (RuleRefViewModel) | null;
+    postRule?: (RuleRefViewModel) | null;
 };
 
 export type ParseCandidatesViewModel = {
@@ -319,18 +324,18 @@ export type ParseCandidateViewModel = {
     text: string;
     categories: string;
     ruleNames: Array<(string)>;
-    pos?: string;
-    wordId?: number;
+    pos?: (string) | null;
+    wordId?: (number) | null;
 };
 
 export type Phoneme = {
     graphemes: Array<(string)>;
-    sound?: string;
+    sound?: (string) | null;
     classes: Array<(string)>;
     historical: boolean;
     id: number;
     source: Array<SourceRef>;
-    notes?: string;
+    notes?: (string) | null;
 };
 
 export type PhonemeLookup = {
@@ -375,16 +380,16 @@ export type PhonemeViewModel = {
     historical: boolean;
     source: Array<SourceRefViewModel>;
     sourceEditableText: string;
-    notes?: string;
+    notes?: (string) | null;
     relatedRules: Array<PhonemeRuleGroupViewModel>;
 };
 
 export type PublicationViewModel = {
     id: number;
     name: string;
-    author?: string;
-    date?: string;
-    publisher?: string;
+    author?: (string) | null;
+    date?: (string) | null;
+    publisher?: (string) | null;
     refId: string;
 };
 
@@ -401,20 +406,20 @@ export type RichText = {
 
 export type RichTextFragment = {
     text: string;
-    tooltip?: string;
+    tooltip?: (string) | null;
     emph: boolean;
     subscript: boolean;
     monospaced: boolean;
-    linkType?: string;
-    linkId?: number;
-    linkLanguage?: string;
-    linkData?: string;
+    linkType?: (string) | null;
+    linkId?: (number) | null;
+    linkLanguage?: (string) | null;
+    linkData?: (string) | null;
 };
 
 export type RuleBranchViewModel = {
     conditions: RichText;
     instructions: Array<RichText>;
-    comment?: string;
+    comment?: (string) | null;
     examples: Array<RuleExampleViewModel>;
 };
 
@@ -429,11 +434,11 @@ export type RuleExampleViewModel = {
 export type RuleGroupViewModel = {
     groupName: string;
     rules: Array<RuleShortViewModel>;
-    sequenceId?: number;
-    sequenceName?: string;
-    sequenceFromLang?: string;
-    sequenceToLang?: string;
-    paradigmId?: number;
+    sequenceId?: (number) | null;
+    sequenceName?: (string) | null;
+    sequenceFromLang?: (string) | null;
+    sequenceToLang?: (string) | null;
+    paradigmId?: (number) | null;
 };
 
 export type RuleLinkParams = {
@@ -441,7 +446,7 @@ export type RuleLinkParams = {
     toRuleName: string;
     linkType: string;
     source: string;
-    notes?: string;
+    notes?: (string) | null;
 };
 
 export type RuleLinkViewModel = {
@@ -449,7 +454,7 @@ export type RuleLinkViewModel = {
     toRuleName: string;
     linkType: string;
     source: Array<SourceRefViewModel>;
-    notes?: string;
+    notes?: (string) | null;
 };
 
 export type RuleListViewModel = {
@@ -482,8 +487,8 @@ export type RuleRefViewModel = {
 
 export type RuleSequenceLinkViewModel = {
     sequenceName: string;
-    prev?: RuleRefViewModel;
-    next?: RuleRefViewModel;
+    prev?: (RuleRefViewModel) | null;
+    next?: (RuleRefViewModel) | null;
 };
 
 export type RuleSequenceViewModel = {
@@ -505,7 +510,7 @@ export type RuleShortViewModel = {
 
 export type RuleTraceParams = {
     word: string;
-    language?: string;
+    language?: (string) | null;
     reverse: boolean;
 };
 
@@ -523,18 +528,18 @@ export type RuleViewModel = {
     toLangFullName: string;
     summaryText: string;
     editableText: string;
-    addedCategories?: string;
-    replacedCategories?: string;
-    addedCategoryDisplayNames?: string;
+    addedCategories?: (string) | null;
+    replacedCategories?: (string) | null;
+    addedCategoryDisplayNames?: (string) | null;
     fromPOS: Array<(string)>;
-    toPOS?: string;
+    toPOS?: (string) | null;
     source: Array<SourceRefViewModel>;
     sourceEditableText: string;
-    notes?: string;
-    paradigmId?: number;
-    paradigmName?: string;
-    paradigmPreRule?: RuleRefViewModel;
-    paradigmPostRule?: RuleRefViewModel;
+    notes?: (string) | null;
+    paradigmId?: (number) | null;
+    paradigmName?: (string) | null;
+    paradigmPreRule?: (RuleRefViewModel) | null;
+    paradigmPostRule?: (RuleRefViewModel) | null;
     spe: boolean;
     preInstructions: Array<RichText>;
     branches: Array<RuleBranchViewModel>;
@@ -551,7 +556,14 @@ export type RuleWordLinkViewModel = {
     toWord: WordRefViewModel;
     linkType: string;
     source: Array<SourceRefViewModel>;
-    notes?: string;
+    notes?: (string) | null;
+};
+
+export type SearchResponse = {
+    totalExact: number;
+    totalPrefix: number;
+    matches: Array<WordRefViewModel>;
+    usedMode: string;
 };
 
 export type SequenceDerivationsViewModel = {
@@ -578,18 +590,18 @@ export type SequenceRuleViewModel = {
 };
 
 export type SourceRef = {
-    pubId?: number;
+    pubId?: (number) | null;
     refText: string;
 };
 
 export type SourceRefViewModel = {
-    pubId?: number;
-    pubRefId?: string;
+    pubId?: (number) | null;
+    pubRefId?: (string) | null;
     refText: string;
 };
 
 export type SuggestCompoundParameters = {
-    compoundId?: number;
+    compoundId?: (number) | null;
 };
 
 export type SuggestCompoundViewModel = {
@@ -597,7 +609,7 @@ export type SuggestCompoundViewModel = {
 };
 
 export type TranslationParams = {
-    corpusTextId?: number;
+    corpusTextId?: (number) | null;
     text: string;
     source: string;
 };
@@ -615,28 +627,30 @@ export type UpdateCompoundParams = {
 };
 
 export type UpdateLanguageParameters = {
-    name?: string;
-    shortName?: string;
-    reconstructed?: boolean;
-    phonemes?: string;
-    diphthongs?: string;
-    stressRuleName?: string;
-    phonotacticsRuleName?: string;
-    pronunciationRuleName?: string;
-    orthographyRuleName?: string;
-    syllableStructures?: string;
-    pos?: string;
-    grammaticalCategories?: string;
-    wordClasses?: string;
-    dictionarySettings?: string;
+    name?: (string) | null;
+    shortName?: (string) | null;
+    protoLanguageShortName?: (string) | null;
+    reconstructed?: (boolean) | null;
+    phonemes?: (string) | null;
+    diphthongs?: (string) | null;
+    stressRuleName?: (string) | null;
+    phonotacticsRuleName?: (string) | null;
+    pronunciationRuleName?: (string) | null;
+    orthographyRuleName?: (string) | null;
+    syllableStructures?: (string) | null;
+    pos?: (string) | null;
+    grammaticalCategories?: (string) | null;
+    wordClasses?: (string) | null;
+    dictionarySettings?: (string) | null;
+    accentTypes?: Array<(string)> | null;
 };
 
 export type UpdateParadigmParameters = {
     name: string;
     pos: string;
     text: string;
-    preRuleName?: string;
-    postRuleName?: string;
+    preRuleName?: (string) | null;
+    postRuleName?: (string) | null;
 };
 
 export type UpdatePhonemeParameters = {
@@ -644,8 +658,8 @@ export type UpdatePhonemeParameters = {
     sound: string;
     classes: string;
     historical: boolean;
-    source?: string;
-    notes?: string;
+    source?: (string) | null;
+    notes?: (string) | null;
 };
 
 export type UpdateRuleParameters = {
@@ -653,12 +667,12 @@ export type UpdateRuleParameters = {
     fromLang: string;
     toLang: string;
     text: string;
-    addedCategories?: string;
-    replacedCategories?: string;
-    fromPOS?: string;
-    toPOS?: string;
-    source?: string;
-    notes?: string;
+    addedCategories?: (string) | null;
+    replacedCategories?: (string) | null;
+    fromPOS?: (string) | null;
+    toPOS?: (string) | null;
+    source?: (string) | null;
+    notes?: (string) | null;
 };
 
 export type UpdateSequenceParams = {
@@ -714,7 +728,7 @@ export type WordRefViewModel = {
     text: string;
     language: string;
     displayLanguage: string;
-    gloss?: string;
+    gloss?: (string) | null;
     homonym: boolean;
     reconstructed: boolean;
 };
@@ -743,13 +757,13 @@ export type WordViewModel = {
     textWithExplicitStress: string;
     gloss: string;
     glossComputed: boolean;
-    fullGloss?: string;
-    pos?: string;
+    fullGloss?: (string) | null;
+    pos?: (string) | null;
     classes: Array<(string)>;
     reconstructed: boolean;
     source: Array<SourceRefViewModel>;
     sourceEditableText: string;
-    notes?: string;
+    notes?: (string) | null;
     attestations: Array<AttestationViewModel>;
     linksFrom: Array<LinkTypeViewModel>;
     linksTo: Array<LinkTypeViewModel>;
@@ -757,8 +771,8 @@ export type WordViewModel = {
     derivationalCompounds: Array<WordRefViewModel>;
     components: Array<CompoundComponentsViewModel>;
     linkedRules: Array<LinkedRuleViewModel>;
-    stressIndex?: number;
-    stressLength?: number;
+    stressIndex?: (number) | null;
+    stressLength?: (number) | null;
     compound: boolean;
     hasParadigms: boolean;
     suggestedDeriveSequences: Array<WordRuleSequenceViewModel>;

@@ -54,7 +54,8 @@ data class LanguageDetailsData(
     val pos: List<WordCategoryValueData> = emptyList(),
     val grammaticalCategories: List<WordCategoryData> = emptyList(),
     val wordClasses: List<WordCategoryData> = emptyList(),
-    val dictionarySettings: String? = null
+    val dictionarySettings: String? = null,
+    val accentTypes: List<AccentType> = emptyList()
 )
 
 @Serializable
@@ -444,7 +445,8 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                 serializeWordCategoryValues(lang.pos),
                 serializeWordCategories(lang.grammaticalCategories),
                 serializeWordCategories(lang.wordClasses),
-                lang.dictionarySettings
+                lang.dictionarySettings,
+                lang.accentTypes.toList()
             )
             consumer(lang.shortName + "/language.json", theJson.encodeToString(languageDetailsData))
         }
@@ -640,6 +642,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             language.grammaticalCategories = deserializeWordCategories(data.grammaticalCategories)
             language.wordClasses = deserializeWordCategories(data.wordClasses)
             language.dictionarySettings = data.dictionarySettings
+            language.accentTypes = data.accentTypes.toSet()
         }
         for ((lang, protoShort) in protoShortByLanguage) {
             lang.protoLanguage = languageByShortName(protoShort)

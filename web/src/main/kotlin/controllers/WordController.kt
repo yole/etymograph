@@ -215,7 +215,7 @@ class WordController(val dictionaryService: DictionaryService) {
                 )
             },
             stressData?.index,
-            stressData?.length,
+            stressData?.length?.takeIf { accentType == null },
             graph.isCompound(this),
             hasParadigms,
             graph.suggestDeriveRuleSequences(this).map {

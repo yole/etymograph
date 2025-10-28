@@ -22,16 +22,14 @@ class Phoneme(
         get() = sound ?: graphemes.first()
 }
 
-class PhonemeLookup {
+class PhonemeLookup(val accentTypes: Set<AccentType>) {
     private val digraphLookup = arrayOfNulls<MutableMap<String, Phoneme>>(Char.MAX_VALUE.code)
     private var digraphs = mutableMapOf<String, Phoneme>()
-    private var singleGraphemes = arrayOfNulls<Phoneme>(Char.MAX_VALUE.code)
+    private var singleGraphemes = arrayOfNulls<Pair<Phoneme?, AccentType?>>(Char.MAX_VALUE.code)
 
-    fun clear() {
-        digraphs.clear()
-        for (i in 0..<Char.MAX_VALUE.code) {
-            digraphLookup[i] = mutableMapOf()
-            singleGraphemes[i] = null
+    init {
+        for (type in accentTypes) {
+            singleGraphemes[type.combiningMark.code] = null to type
         }
     }
 
@@ -45,20 +43,36 @@ class PhonemeLookup {
             digraphLookup[c]!![key] = phoneme
         }
         else {
-            singleGraphemes[key[0].code] = phoneme
+            singleGraphemes[key[0].code] = phoneme to null
+            for (type in accentTypes) {
+                val accented = type.combine(key)
+                if (accented.length == 1) {
+                    singleGraphemes[accented[0].code] = phoneme to type
+                }
+            }
         }
     }
 
-    fun iteratePhonemes(text: String, callback: (Int, Int, Phoneme?) -> Unit) {
+    fun iteratePhonemes(text: String, callback: (Int, Int, Phoneme?, AccentType?) -> Unit) {
         var offset = 0
         while (offset < text.length) {
             val digraph = digraphLookup[text[offset].code]?.keys?.firstOrNull { text.startsWith(it, offset) }
             if (digraph != null) {
-                callback(offset, offset + digraph.length, digraphs[digraph])
+                callback(offset, offset + digraph.length, digraphs[digraph], null)
                 offset += digraph.length
             }
+
             else {
-                callback(offset, offset + 1, singleGraphemes[text[offset].code])
+                val graphemeData = singleGraphemes[text[offset].code]
+                if (offset + 1 < text.length) {
+                    val nextGraphemeData = singleGraphemes[text[offset+1].code]
+                    if (nextGraphemeData?.first == null && nextGraphemeData?.second != null) {
+                        callback(offset, offset + 1, graphemeData?.first, nextGraphemeData.second)
+                        offset += 2
+                        continue
+                    }
+                }
+                callback(offset, offset + 1, graphemeData?.first, graphemeData?.second)
                 offset++
             }
         }
@@ -91,9 +105,14 @@ class Language(val name: String, val shortName: String) {
     var pos = mutableListOf<WordCategoryValue>()
     var grammaticalCategories = mutableListOf<WordCategory>()
     var wordClasses = mutableListOf<WordCategory>()
+    var accentTypes = setOf<AccentType>()
+        set(value) {
+            field = value
+            updateGraphemes()
+        }
 
-    var orthoPhonemeLookup = PhonemeLookup()
-    var phonoPhonemeLookup = PhonemeLookup()
+    var orthoPhonemeLookup = PhonemeLookup(accentTypes)
+    var phonoPhonemeLookup = PhonemeLookup(accentTypes)
 
     var dictionarySettings: String? = null
 
@@ -101,8 +120,8 @@ class Language(val name: String, val shortName: String) {
     private val phonemicCache = mutableMapOf<String, String>()
 
     private fun updateGraphemes() {
-        orthoPhonemeLookup.clear()
-        phonoPhonemeLookup.clear()
+        orthoPhonemeLookup = PhonemeLookup(accentTypes)
+        phonoPhonemeLookup = PhonemeLookup(accentTypes)
         for (phoneme in phonemes) {
             for (g in phoneme.graphemes) {
                 orthoPhonemeLookup.add(g, phoneme)
@@ -164,8 +183,9 @@ class Language(val name: String, val shortName: String) {
         return normalizeCache.getOrPut(text) {
             buildString {
                 val lowerText = text.lowercase(Locale.FRANCE)
-                orthoPhonemeLookup.iteratePhonemes(lowerText) { startIndex, endIndex, phoneme ->
-                    append(phoneme?.graphemes?.get(0) ?: lowerText.substring(startIndex, endIndex))
+                orthoPhonemeLookup.iteratePhonemes(lowerText) { startIndex, endIndex, phoneme, accentType ->
+                    append(phoneme?.graphemes?.get(0)?.let { accentType?.combine(it) ?: it }
+                        ?: lowerText.substring(startIndex, endIndex))
                 }
             }.removeSuffix("-")
         }

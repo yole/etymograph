@@ -2,6 +2,7 @@ package ru.yole.etymograph
 
 import org.junit.Test
 import org.junit.Assert.*
+import java.text.Normalizer
 
 class PhonemeIteratorTest : QBaseTest() {
     @Test
@@ -73,5 +74,23 @@ class PhonemeIteratorTest : QBaseTest() {
         it.deleteAtRelative(4)
         val index = it.mapIndex(5)
         assertEquals(4, index)
+    }
+
+    @Test
+    fun accent() {
+        ce.accentTypes = setOf(AccentType.Acute)
+        val composed = ce.word(Normalizer.normalize("áham", Normalizer.Form.NFKC))
+        val it = PhonemeIterator(composed, null)
+        assertEquals(AccentType.Acute, it.currentAccentType)
+        assertEquals("a", it.current)
+    }
+
+    @Test
+    fun accentDecomposed() {
+        ce.accentTypes = setOf(AccentType.Acute)
+        val decomposed = ce.word(Normalizer.normalize("áham", Normalizer.Form.NFKD))
+        val dit = PhonemeIterator(decomposed, null)
+        assertEquals(AccentType.Acute, dit.currentAccentType)
+        assertEquals("a", dit.current)
     }
 }

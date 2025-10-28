@@ -13,7 +13,7 @@ object WordTextChecker : ConsistencyChecker {
         for (word in repo.allWords(language)) {
             var charactersNotInInventory = false
             val text = word.asPhonemic().text
-            language.phonoPhonemeLookup.iteratePhonemes(text) { startIndex, endIndex, phoneme ->
+            language.phonoPhonemeLookup.iteratePhonemes(text) { startIndex, endIndex, phoneme, _ ->
                 if (phoneme == null && text.substring(startIndex, endIndex) != "-") charactersNotInInventory = true
             }
             if (charactersNotInInventory) {

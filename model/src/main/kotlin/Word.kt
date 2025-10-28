@@ -1,5 +1,6 @@
 package ru.yole.etymograph
 
+import java.text.Normalizer
 import java.util.*
 import kotlin.math.min
 
@@ -51,6 +52,16 @@ fun remapSegments(phonemes: PhonemeIterator, segments: List<WordSegment>?): List
     }
 }
 
+enum class AccentType(val combiningMark: Char) {
+    Acute('\u0301'),
+    Grave('\u0300'),
+    Circumflex('\u0302');
+
+    fun combine(text: String): String {
+        return Normalizer.normalize(text + combiningMark, Normalizer.Form.NFKC)
+    }
+}
+
 class Word(
     id: Int,
     text: String,
@@ -64,6 +75,7 @@ class Word(
     notes: String? = null
 ) : LangEntity(id, source, notes) {
     var stressedPhonemeIndex: Int = -1
+    var accentType: AccentType? = null
     var explicitStress: Boolean = false
 
     override fun equals(other: Any?): Boolean {
@@ -116,14 +128,18 @@ class Word(
             else {
                 buildString {
                     val lowerText = text.lowercase(Locale.FRANCE)
-                    language.orthoPhonemeLookup.iteratePhonemes(lowerText) { startIndex, endIndex, phoneme ->
+                    language.orthoPhonemeLookup.iteratePhonemes(lowerText) { startIndex, endIndex, phoneme, _ ->
                         append(phoneme?.effectiveSound ?: lowerText.substring(startIndex, endIndex))
                     }
                 } to this.segments
             }
         }
 
-        return derive(phonemicText, id = id, phonemic = true, segments = newSegments)
+        if (language.accentTypes.isNotEmpty()) {
+            calcStressedPhonemeIndex(null)
+        }
+        return derive(phonemicText, id = id, phonemic = true, segments = newSegments,
+            accentType = accentType, stressIndex = if (accentType != null) stressedPhonemeIndex else null)
     }
 
     fun asOrthographic(referenceWord: Word? = null): Word {
@@ -145,8 +161,17 @@ class Word(
         }
         else {
             buildString {
-                language.phonoPhonemeLookup.iteratePhonemes(text) { startIndex, endIndex, phoneme ->
-                    append(phoneme?.graphemes?.get(0) ?: text.substring(startIndex, endIndex))
+                var index = 0
+                language.phonoPhonemeLookup.iteratePhonemes(text) { startIndex, endIndex, phoneme, _ ->
+                    if (phoneme != null) {
+                        val text = phoneme.graphemes[0]
+                        val accent = accentType.takeIf { index == stressedPhonemeIndex }
+                        append(accent?.combine(text) ?: text)
+                    }
+                    else {
+                        append(text.substring(startIndex, endIndex))
+                    }
+                    index++
                 }
             }
         }
@@ -173,30 +198,50 @@ class Word(
                newClasses: List<String>? = null,
                phonemic: Boolean? = null,
                stressIndex: Int? = null,
+               accentType: AccentType? = null,
                keepStress: Boolean = true): Word {
         val sourceSegments = if (text == this.text || addSegment != null) this.segments else null
         return if (this.text == text && newClasses == null && phonemic == null && id == null)
             this
         else
             Word(id ?: -1, text, newLanguage ?: language, newGloss ?: gloss, fullGloss, pos, newClasses ?: classes).also {
-                 if (stressIndex != null) {
-                    it.stressedPhonemeIndex = stressIndex
-                    it.explicitStress = explicitStress
+                if (accentType != null) {
+                    if (stressIndex != null) {
+                        it.stressedPhonemeIndex = stressIndex
+                    }
+                    it.accentType = accentType
                 }
-                else if (keepStress) {
-                    it.stressedPhonemeIndex = stressedPhonemeIndex
-                    it.explicitStress = explicitStress
-                }
-                it.segments = appendSegments(segments ?: sourceSegments, addSegment)
-                if (phonemic != null) it.isPhonemic = phonemic
-            }
+                else if (stressIndex != null) {
+                   it.stressedPhonemeIndex = stressIndex
+                   it.explicitStress = explicitStress
+               }
+               else if (keepStress) {
+                   it.stressedPhonemeIndex = stressedPhonemeIndex
+                   it.explicitStress = explicitStress
+               }
+               it.segments = appendSegments(segments ?: sourceSegments, addSegment)
+               if (phonemic != null) it.isPhonemic = phonemic
+           }
     }
 
     fun calcStressedPhonemeIndex(repo: GraphRepository?): Int {
         if (stressedPhonemeIndex < 0) {
-            val wordWithStress = language.stressRule?.resolve()?.apply(this, repo ?: InMemoryGraphRepository.EMPTY)
-            if (wordWithStress != null) {
-                stressedPhonemeIndex = wordWithStress.stressedPhonemeIndex
+            if (language.accentTypes.isNotEmpty()) {
+                val it = PhonemeIterator(this, repo)
+                while (!it.atEnd()) {
+                    if (it.currentAccentType != null) {
+                        stressedPhonemeIndex = it.index
+                        accentType = it.currentAccentType
+                        break
+                    }
+                    it.advance()
+                }
+            }
+            else {
+                val wordWithStress = language.stressRule?.resolve()?.apply(this, repo ?: InMemoryGraphRepository.EMPTY)
+                if (wordWithStress != null) {
+                    stressedPhonemeIndex = wordWithStress.stressedPhonemeIndex
+                }
             }
         }
         return stressedPhonemeIndex

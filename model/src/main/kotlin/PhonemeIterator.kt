@@ -121,6 +121,7 @@ class PhonemeIterator {
     private val word: Word?
     private val repo: GraphRepository?
     private val phonemes: MutableList<String>
+    private val accentTypes: MutableList<AccentType?>
     private val origPhonemes: List<String>
     private val resultPhonemes: MutableList<String>
     private var phonemeIndex = 0
@@ -153,9 +154,10 @@ class PhonemeIterator {
 
         val sourcePhonemes = mutableListOf<String>()
         resultPhonemes = mutableListOf()
+        accentTypes = mutableListOf()
         val lookup = if (phonemic) this.language.phonoPhonemeLookup else this.language.orthoPhonemeLookup
 
-        lookup.iteratePhonemes(text) { startIndex, endIndex, phoneme ->
+        lookup.iteratePhonemes(text) { startIndex, endIndex, phoneme, stressType ->
             val normalizedResultText = if (resultPhonemic ?: phonemic) phoneme?.sound else phoneme?.graphemes?.first()
             val normalizedText = if (phonemic) phoneme?.sound else phoneme?.graphemes?.first()
             if (mergeDiphthongs && sourcePhonemes.size > 0 && sourcePhonemes.last() + (phoneme?.sound ?: text.substring(startIndex, endIndex)) in language.diphthongs) {
@@ -166,6 +168,7 @@ class PhonemeIterator {
                 sourcePhonemes.add(normalizedText ?: text.substring(startIndex, endIndex))
                 resultPhonemes.add(normalizedResultText ?: text.substring(startIndex, endIndex))
             }
+            accentTypes.add(stressType)
         }
 
         phonemes = sourcePhonemes
@@ -177,6 +180,7 @@ class PhonemeIterator {
         phonemes: List<String>,
         origPhonemes: List<String>,
         resultPhonemes: MutableList<String>,
+        accentTypes: MutableList<AccentType?>,
         language: Language,
         repo: GraphRepository?,
         word: Word?,
@@ -185,6 +189,7 @@ class PhonemeIterator {
         this.phonemes = phonemes.toMutableList()
         this.origPhonemes = origPhonemes
         this.resultPhonemes = resultPhonemes
+        this.accentTypes = accentTypes
         this.language = language
         this.repo = repo
         this.word = word
@@ -192,6 +197,7 @@ class PhonemeIterator {
     }
 
     val current: String get() = phonemes[phonemeIndex]
+    val currentAccentType: AccentType? get() = accentTypes[phonemeIndex]
     val last: String? get() = phonemes.lastOrNull()
     val size: Int get() = phonemes.size
     val index: Int get() = phonemeIndex
@@ -202,7 +208,7 @@ class PhonemeIterator {
     fun atRelative(relativeIndex: Int): String? = phonemes.getOrNull(phonemeIndex + relativeIndex)
 
     fun clone(): PhonemeIterator {
-        return PhonemeIterator(phonemes, origPhonemes, resultPhonemes, language, repo, word, phonemeToResultIndexMap).also {
+        return PhonemeIterator(phonemes, origPhonemes, resultPhonemes, accentTypes, language, repo, word, phonemeToResultIndexMap).also {
             it.phonemeIndex = phonemeIndex
             it.atEnd = atEnd
         }

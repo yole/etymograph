@@ -12,7 +12,7 @@ export interface EtymographFormProps<Data, ResponseData=Data> {
     defaultValues?: Data
     setEditMode?: (newEditMode: boolean) => void
     focusTarget?: any
-    updateId?: number
+    updateId?: string | number
     update?: (Data: Data) => Promise<Response>
     create?: (Data: Data) => Promise<Response>
     children?: React.ReactNode

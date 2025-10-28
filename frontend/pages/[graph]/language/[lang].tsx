@@ -12,6 +12,7 @@ import RuleLink from "@/components/RuleLink";
 import { GlobalStateContext } from "@/components/Contexts";
 import LanguageSelect from "@/components/LanguageSelect";
 import FormCheckbox from "@/components/FormCheckbox";
+import {LanguageViewModel, UpdateLanguageParameters} from "@/models";
 
 export const config = {
     unstable_runtimeJS: true
@@ -24,7 +25,7 @@ export async function getStaticProps(context) {
 export const getStaticPaths = fetchAllLanguagePaths
 
 export default function LanguageIndex(props) {
-    const lang = props.loaderData
+    const lang = props.loaderData as LanguageViewModel
     const langId = lang.shortName
     const [errorText, setErrorText] = useState("")
     const [showCopyPhonemesForm, setShowCopyPhonemesForm] = useState(false)
@@ -113,6 +114,7 @@ export default function LanguageIndex(props) {
                 {lang.phonotacticsRuleName != null && <p>Phonotactics rule: <Link href={`/${graph}/rule/${lang.phonotacticsRuleId}`}>{lang.phonotacticsRuleName}</Link></p>}
                 {lang.pronunciationRuleName != null && <p>Pronunciation rule: <Link href={`/${graph}/rule/${lang.pronunciationRuleId}`}>{lang.pronunciationRuleName}</Link></p>}
                 {lang.orthographyRule != null && <p>Orthography rule: <RuleLink rule={lang.orthographyRule}/></p>}
+                {lang.accentTypes && lang.accentTypes.length > 0 && <p>Accent types: {lang.accentTypes.join(", ")}</p>}
 
                 <h3>Grammar</h3>
                 {lang.pos != null && lang.pos.trim().length > 0 && <>
@@ -138,7 +140,14 @@ export default function LanguageIndex(props) {
             </View>
             <EtymographForm
                     updateId={langId}
-                    update={(data) => updateLanguage(graph, langId, data)}
+                    update={(data) => {
+                        const updateData = data as UpdateLanguageParameters;
+                        updateData.accentTypes = []
+                        if (data.acute) updateData.accentTypes.push("Acute")
+                        if (data.grave) updateData.accentTypes.push("Grave")
+                        if (data.circumflex) updateData.accentTypes.push("Circumflex")
+                        return updateLanguage(graph, langId, updateData)
+                    }}
                     defaultValues={{
                         protoLanguageShortName: lang.protoLanguageShortName,
                         reconstructed: lang.reconstructed,
@@ -151,7 +160,10 @@ export default function LanguageIndex(props) {
                         pos: lang.pos,
                         grammaticalCategories: lang.grammaticalCategories,
                         wordClasses: lang.wordClasses,
-                        dictionarySettings: lang.dictionarySettings
+                        dictionarySettings: lang.dictionarySettings,
+                        acute: lang.accentTypes.indexOf("Acute") >= 0,
+                        grave: lang.accentTypes.indexOf("Grave") >= 0,
+                        circumflex: lang.accentTypes.indexOf("Circumflex") >= 0
                     }}
             >
                 <table><tbody>
@@ -164,6 +176,10 @@ export default function LanguageIndex(props) {
                     <RuleListSelect label="Pronunciation rule" id="pronunciationRuleName" language={langId}/>
                     <RuleListSelect label="Orthography rule" id="orthographyRuleName" language={langId}/>
                 </tbody></table>
+                <h4>Accent types</h4>
+                <FormCheckbox id="acute" label="Acute"/>
+                <FormCheckbox id="grave" label="Grave"/>
+                <FormCheckbox id="circumflex" label="Circumflex"/>
                 <h3>Grammar</h3>
                 <table><tbody>
                     <FormRow label="Parts of speech" id="pos" size={50}/>

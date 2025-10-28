@@ -11,11 +11,12 @@
     },
     {
         "id": 9942,
-        "text": "gʷih₃wos",
+        "text": "gʷih₃wós",
         "gloss": "alive",
         "sourceRefs": [
             {
-                "refText": "Ringe 2018:86"
+                "pubId": 10,
+                "refText": "86"
             }
         ]
     }

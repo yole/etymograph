@@ -343,5 +343,8 @@
         "ei",
         "ou",
         "oi"
+    ],
+    "accentTypes": [
+        "Acute"
     ]
 }

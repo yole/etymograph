@@ -82,4 +82,26 @@ class OrthographyTest : QBaseTest() {
         assertEquals("az", phono.text)
         assertEquals(1, phono.segments!![0].length)
     }
+
+    @Test
+    fun acuteAccent() {
+        ce.accentTypes = mutableSetOf(AccentType.Acute)
+        val aham = ce.word("ahám")
+        assertEquals(2, aham.calcStressedPhonemeIndex(emptyRepo))
+        assertEquals(AccentType.Acute, aham.accentType)
+    }
+
+    @Test
+    fun acuteAccentRoundtrip() {
+        ce.accentTypes = mutableSetOf(AccentType.Acute)
+        val aham = ce.word("ahám")
+
+        val phono = aham.asPhonemic()
+        assertEquals(2, phono.stressedPhonemeIndex)
+        assertEquals(AccentType.Acute, phono.accentType)
+        assertEquals("aham", phono.text)
+
+        val ortho = phono.asOrthographic(ce)
+        assertEquals("ahám", ortho.text)
+    }
 }

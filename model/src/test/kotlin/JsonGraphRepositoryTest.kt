@@ -258,4 +258,13 @@ class JsonGraphRepositoryTest : QBaseTest() {
         val q2 = repo2.languageByShortName("Q")!!
         assertEquals("CE", q2.protoLanguage?.shortName)
     }
+
+    @Test
+    fun serializeAccentTypes() {
+        val accentTypes = mutableSetOf(AccentType.Acute, AccentType.Circumflex)
+        q.accentTypes = accentTypes
+        val repo2 = repo.roundtrip()
+        val q2 = repo2.languageByShortName("Q")!!
+        assertEquals(accentTypes, q2.accentTypes)
+    }
 }
