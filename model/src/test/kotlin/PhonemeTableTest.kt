@@ -6,7 +6,7 @@ import org.junit.Test
 class PhonemeTableTest : QBaseTest() {
     @Test
     fun qTables() {
-        val tables = q.buildPhonemeTables()
+        val tables = PhonemeTable.build(q.phonemes)
         val consonants = tables.first()
         assertEquals("Consonants", consonants.title)
         val nasalRow = consonants.rows.find { it.title == "nasal" }!!

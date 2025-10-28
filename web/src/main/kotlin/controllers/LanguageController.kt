@@ -133,7 +133,7 @@ class LanguageController {
             protoLanguage?.shortName,
             reconstructed,
             diphthongs,
-            buildPhonemeTables().map { table ->
+            PhonemeTable.build(phonemes).map { table ->
                 PhonemeTableViewModel(table.title, table.columnTitles, table.rows.map { row ->
                     PhonemeTableRowViewModel(row.title, row.columns.map { cell ->
                         PhonemeTableCellViewModel(cell.phonemes.map { it.toViewModel(repo, this)})
