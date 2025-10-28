@@ -14,7 +14,7 @@ export default function RuleSequenceForm(props: RuleSequenceFormProps) {
     const graph = useContext(GraphContext)
     return <EtymographForm
         create={(data) => addRuleSequence(graph, data)}
-        update={(data) => updateRuleSequence(graph, props.updateId, data)}
+        update={(data) => updateRuleSequence(graph, props.updateId as number, data)}
         {...props}
     >
         <table><tbody>

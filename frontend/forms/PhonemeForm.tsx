@@ -15,7 +15,7 @@ export default function PhonemeForm(props: PhonemeFormProps) {
 
     return <EtymographForm
         create={(data) => addPhoneme(graph, props.language, data)}
-        update={(data) => updatePhoneme(graph, props.updateId, data)}
+        update={(data) => updatePhoneme(graph, props.updateId as number, data)}
         {...props}
     >
         <table><tbody>

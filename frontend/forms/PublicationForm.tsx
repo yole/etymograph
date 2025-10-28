@@ -13,7 +13,7 @@ export default function PublicationForm(props: PublicationFormProps) {
 
     return <EtymographForm
         create={(data) => addPublication(graph, data)}
-        update={(data) => updatePublication(graph, props.updateId, data)}
+        update={(data) => updatePublication(graph, props.updateId as number, data)}
         {...props}
     >
         <table><tbody>

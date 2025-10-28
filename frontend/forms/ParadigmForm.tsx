@@ -16,7 +16,7 @@ export default function ParadigmForm(props: ParadigmFormProps) {
     const graph = useContext(GraphContext)
     return <EtymographForm
         create={(data) => addParadigm(graph, props.lang, data)}
-        update={(data) => updateParadigm(graph, props.updateId, data)}
+        update={(data) => updateParadigm(graph, props.updateId as number, data)}
         {...props}
     >
         <table><tbody>

@@ -19,7 +19,7 @@ export default function RuleForm(props: RuleFormProps) {
     const graph = useContext(GraphContext)
 
     async function previewRuleChangesClicked(data) {
-        const r = await previewRuleChanges(graph, props.updateId, data.text)
+        const r = await previewRuleChanges(graph, props.updateId as number, data.text)
         if (r.status === 200) {
             const jr = await r.json()
             if (jr.results.length === 0) {
@@ -47,7 +47,7 @@ export default function RuleForm(props: RuleFormProps) {
                 if (ruleType === "morpho") {
                     data["fromLang"] = data["toLang"]
                 }
-                return updateRule(graph, props.updateId, data);
+                return updateRule(graph, props.updateId as number, data);
             }}
             buttons={props.updateId !== undefined ? [
                 {text: 'Preview', callback: (data) => previewRuleChangesClicked(data)}

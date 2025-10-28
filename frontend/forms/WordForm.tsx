@@ -108,7 +108,7 @@ export default function WordForm(props: WordFormProps) {
     return <EtymographForm<WordFormData, WordViewModel>
         create={(data) => addWord(graph, data.language, data.text, data.gloss, data.fullGloss, data.pos, data.classes,
             data.reconstructed, data.source, data.notes, forceNew)}
-        update={(data) => updateWord(graph, props.updateId, data.text, data.gloss, data.fullGloss, data.pos, data.classes,
+        update={(data) => updateWord(graph, props.updateId as number, data.text, data.gloss, data.fullGloss, data.pos, data.classes,
             data.reconstructed, data.source, data.notes)}
         {...props}
         submitted={submitted}
