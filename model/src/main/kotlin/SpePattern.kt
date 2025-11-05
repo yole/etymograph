@@ -106,17 +106,14 @@ class SpeLiteralNode(val text: String) : SpePhonemeNode() {
 class SpePhonemeClassNode(val language: Language, val phonemeClass: PhonemeClass): SpePhonemeNode() {
     override fun matchCurrent(it: PhonemeIterator, context: SpeContext): Boolean {
         return phonemeClass.matchesCurrent(it).also { result ->
-            if (result && isCV()) context.recordMatchedClass(this, it.current)
+            if (result && phonemeClass.isShorthand()) context.recordMatchedClass(this, it.current)
         }
     }
 
     override fun toRichText(language: Language?): RichText {
         val matchingPhonemes = phonemeClass.matchingPhonemes.takeIf { it.isNotEmpty() }?.joinToString(", ")
-        if (phonemeClass.name == PhonemeClass.consonantClassName) {
-            return richText("C".rich(tooltip = matchingPhonemes))
-        }
-        if (phonemeClass.name == PhonemeClass.vowelClassName) {
-            return richText("V".rich(tooltip = matchingPhonemes))
+        if (phonemeClass.isShorthand()) {
+            return richText(phonemeClass.name.rich(tooltip = matchingPhonemes))
         }
         val name = if (phonemeClass is NegatedPhonemeClass)
             "-" + phonemeClass.baseClass.name.trimStart('+')
@@ -132,15 +129,12 @@ class SpePhonemeClassNode(val language: Language, val phonemeClass: PhonemeClass
     }
 
     override fun replace(it: PhonemeIterator, relativeIndex: Int, context: SpeContext) {
-        if (isCV()) {
+        if (phonemeClass.isShorthand()) {
             val match = context.findMatchForClass(this) ?: return
             it.replaceAtRelative(relativeIndex, match)
         }
         replacePhonemeByFeatures(it, relativeIndex, phonemeClass, context.trace)
     }
-
-    private fun isCV() =
-        phonemeClass.name == PhonemeClass.consonantClassName || phonemeClass.name == PhonemeClass.vowelClassName
 
     override fun insert(it: PhonemeIterator, relativeIndex: Int, context: SpeContext) {
         val match = context.findMatchForClass(this) ?: return
@@ -582,21 +576,15 @@ class SpePattern(
             }
         }
 
-        private fun nodeFromPhoneme(nextPhoneme: String, language: Language) = when (nextPhoneme) {
-            "#" -> SpeWordBoundaryNode
-            "C" -> SpePhonemeClassNode(
-                language,
-                language.phonemeClassByName(PhonemeClass.consonantClassName)
-                    ?: throw SpeParseException("Consonant class not found")
-            )
-
-            "V" -> SpePhonemeClassNode(
-                language,
-                language.phonemeClassByName(PhonemeClass.vowelClassName)
-                    ?: throw SpeParseException("Vowel class not found")
-            )
-
-            else -> SpeLiteralNode(nextPhoneme)
+        private fun nodeFromPhoneme(nextPhoneme: String, language: Language): SpeNode {
+            if (nextPhoneme == "#") return SpeWordBoundaryNode
+            if (nextPhoneme.length == 1 && nextPhoneme[0].isUpperCase()) {
+                return SpePhonemeClassNode(
+                    language,
+                    language.phonemeClassByName(nextPhoneme) ?: throw SpeParseException("Class $nextPhoneme not found")
+                )
+            }
+            return SpeLiteralNode(nextPhoneme)
         }
 
         private fun parseClass(language: Language, text: String): PhonemeClass {

@@ -64,8 +64,8 @@ class SpePatternTest : QBaseTest() {
     @Test
     fun parseCV() {
         val pattern = SpePattern.parse(q, q, "a > 0 / C_V")
-        assertEquals("consonant", (pattern.preceding.single() as SpePhonemeClassNode).phonemeClass.name)
-        assertEquals("vowel", (pattern.following.single() as SpePhonemeClassNode).phonemeClass.name)
+        assertEquals("C", (pattern.preceding.single() as SpePhonemeClassNode).phonemeClass.name)
+        assertEquals("V", (pattern.following.single() as SpePhonemeClassNode).phonemeClass.name)
         assertEquals("a > 0 / C_V", pattern.toString())
     }
 

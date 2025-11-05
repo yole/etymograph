@@ -8,6 +8,8 @@ open class PhonemeClass(val name: String, var matchingPhonemes: List<String> = e
     fun toRichText(): RichTextFragment =
         name.rich(emph = true, tooltip = matchingPhonemes.takeIf { it.isNotEmpty() }?.joinToString(", "))
 
+    fun isShorthand() = name.length == 1 && name[0].isUpperCase()
+
     companion object {
         val sound = object : PhonemeClass("sound") {
             override fun matchesCurrent(it: PhonemeIterator) = true
@@ -209,7 +211,7 @@ fun withImplicit(classes: Set<String>): Set<String> =
 fun implicitPhonemeClasses(classes: Set<String>): Set<String> {
     val result = classes.toMutableSet()
     for (s in classes) {
-        implicitPhonemeClasses[s]?.let { result += it }
+        collectClassesRecursive(s, result)
     }
     for (entry in implicitPhonemeClasses2) {
         if (result.containsAll(entry.key)) {
@@ -217,6 +219,15 @@ fun implicitPhonemeClasses(classes: Set<String>): Set<String> {
         }
     }
     return result - classes
+}
+
+private fun collectClassesRecursive(s: String, result: MutableSet<String>) {
+    implicitPhonemeClasses[s]?.let {
+        result.addAll(it)
+        for (c in it) {
+            collectClassesRecursive(c, result)
+        }
+    }
 }
 
 private val implicitPhonemeClasses = mapOf(
@@ -237,7 +248,7 @@ private val implicitPhonemeClasses = mapOf(
     "voiceless" to setOf("-voice"),
     "long" to setOf("+long"),
     "short" to setOf("-long"),
-    "vowel" to setOf("vocalic", "+syllabic", "+voice"),
+    "vowel" to setOf("vocalic", "+syllabic", "+voice", "V"),
     "front" to setOf("-back"),
     "back" to setOf("+back"),
     "open" to setOf("+low", "-high"),
@@ -247,7 +258,8 @@ private val implicitPhonemeClasses = mapOf(
     "unrounded" to setOf("-round"),
     "palatalized" to setOf("+high"),
     "labialized" to setOf("+round"),
-    "aspirated" to setOf("+SG")
+    "aspirated" to setOf("+SG"),
+    "consonant" to setOf("C")
 )
 
 private val implicitPhonemeClasses2 = mapOf(
