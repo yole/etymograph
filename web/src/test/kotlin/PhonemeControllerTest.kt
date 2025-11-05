@@ -2,6 +2,7 @@ package ru.yole.etymograph.web
 
 import org.junit.Assert
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNotNull
 import org.junit.Before
 import org.junit.Test
 import org.springframework.web.server.ResponseStatusException
@@ -52,11 +53,12 @@ class PhonemeControllerTest {
     fun update() {
         val phoneme = graph.addPhoneme(fixture.q, listOf("a"), null, setOf("vowel"))
         phonemeController.updatePhoneme(graph, phoneme.id, PhonemeController.UpdatePhonemeParameters(
-            "a, ǎ", "a", "short vowel", false,"", ""
+            "a, ǎ", "a", "short vowel newclass", false,"", ""
         ))
         assertEquals(listOf("a", "ǎ"), phoneme.graphemes)
         assertEquals("a", phoneme.sound)
-        assertEquals(setOf("short", "vowel"), phoneme.classes)
+        assertEquals(setOf("short", "vowel", "newclass"), phoneme.classes)
+        assertNotNull(fixture.q.phonemeClassByName("newclass"))
     }
 
     @Test

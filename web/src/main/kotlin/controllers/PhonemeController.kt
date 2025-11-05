@@ -102,6 +102,8 @@ class PhonemeController {
         phoneme.historical = params.historical
         phoneme.source = parseSourceRefs(repo, params.source)
         phoneme.notes = params.notes
+        val language = findLanguage(repo, phoneme, id)
+        language.updatePhonemes()
     }
 
     private fun parseClasses(params: UpdatePhonemeParameters) =

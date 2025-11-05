@@ -90,8 +90,7 @@ class Language(val name: String, val shortName: String) {
     var phonemes = listOf<Phoneme>()
         set(value) {
             field = value
-            phonemeClasses.update(value)
-            updateGraphemes()
+            updatePhonemes()
         }
 
     var diphthongs: List<String> = emptyList()
@@ -118,6 +117,11 @@ class Language(val name: String, val shortName: String) {
 
     private val normalizeCache = mutableMapOf<String, String>()
     private val phonemicCache = mutableMapOf<String, String>()
+
+    fun updatePhonemes() {
+        phonemeClasses.update(phonemes)
+        updateGraphemes()
+    }
 
     private fun updateGraphemes() {
         orthoPhonemeLookup = PhonemeLookup(accentTypes)
