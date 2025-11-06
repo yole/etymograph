@@ -339,7 +339,7 @@ export type Phoneme = {
 };
 
 export type PhonemeLookup = {
-    [key: string]: unknown;
+    accentTypes: Array<('Acute' | 'Grave' | 'Circumflex')>;
 };
 
 export type PhonemeRuleGroupViewModel = {
@@ -673,6 +673,7 @@ export type UpdateRuleParameters = {
     toPOS?: (string) | null;
     source?: (string) | null;
     notes?: (string) | null;
+    addToSequenceId?: (number) | null;
 };
 
 export type UpdateSequenceParams = {

@@ -2357,6 +2357,10 @@ components:
         notes:
           type: "string"
           nullable: true
+        addToSequenceId:
+          type: "integer"
+          format: "int32"
+          nullable: true
       required:
         - "name"
         - "fromLang"

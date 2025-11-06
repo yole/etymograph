@@ -11,6 +11,7 @@ import {RuleViewModel, UpdateRuleParameters} from "@/models";
 
 interface RuleFormProps extends EtymographFormProps<UpdateRuleParameters, RuleViewModel> {
     initialType?: string
+    addToSequenceId?: number
 }
 
 export default function RuleForm(props: RuleFormProps) {
@@ -40,6 +41,9 @@ export default function RuleForm(props: RuleFormProps) {
             create={(data) => {
                 if (ruleType === "morpho") {
                     data["fromLang"] = data["toLang"]
+                }
+                if (props.addToSequenceId) {
+                    data["addToSequenceId"] = props.addToSequenceId
                 }
                 return addRule(graph, data);
             }}

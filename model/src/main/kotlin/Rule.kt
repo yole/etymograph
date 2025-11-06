@@ -591,9 +591,9 @@ class Rule(
 
 data class RuleSequenceStepRef(
     val ruleId: Int,
-    val alternativeRuleId: Int?,
-    val optional: Boolean,
-    val dispreferred: Boolean
+    val alternativeRuleId: Int? = null,
+    val optional: Boolean = false,
+    val dispreferred: Boolean = false
 )
 
 data class RuleSequenceStep(

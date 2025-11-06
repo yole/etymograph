@@ -354,7 +354,8 @@ class RuleController {
         val fromPOS: String? = null,
         val toPOS: String? = null,
         val source: String? = null,
-        val notes: String? = null
+        val notes: String? = null,
+        val addToSequenceId: Int? = null
     )
 
     @PostMapping("/{graph}/rule", consumes = ["application/json"])
@@ -376,6 +377,8 @@ class RuleController {
             badRequest(e.message ?: "Cannot parse rule")
         }
 
+        val sequence = params.addToSequenceId?.let { repo.resolveRuleSequence(it) }
+
         val rule = repo.addRule(
             params.name,
             fromLanguage,
@@ -388,6 +391,11 @@ class RuleController {
             parseSourceRefs(repo, params.source),
             params.notes
         )
+
+        if (sequence != null) {
+            sequence.steps += RuleSequenceStepRef(rule.id)
+        }
+
         return rule.toViewModel(repo)
     }
 

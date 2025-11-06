@@ -16,15 +16,16 @@ export default function RuleEditor(params) {
     const router = useRouter()
     const lang = router.query.lang as string
     const globalState = useContext(GlobalStateContext)
-    console.log(globalState)
     const protoLang =
         (globalState !== undefined && lang !== undefined)
             ? globalState.languages.find((g) => g.shortName === lang)?.protoLanguageShortName
             : lang
+    const addToSequenceId = router.query.addToSequence != null ? Number(router.query.addToSequence) : null
 
     return <>
         <Breadcrumbs langId={lang} langName={langData.name} title="New Rule"/>
         <RuleForm redirectOnCreate={(r) => `/${router.query.graph}/rule/${r.id}`}
-                  defaultValues={{name: '', text: '', fromLang: protoLang, toLang: lang}}/>
+                  defaultValues={{name: '', text: '', fromLang: protoLang, toLang: lang}}
+                  addToSequenceId={addToSequenceId} />
     </>
 }
