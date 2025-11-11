@@ -394,23 +394,23 @@ class SpePattern(
     val following: List<SpeNode>
 )  {
     fun apply(language: Language, text: String, trace: RuleTrace? = null): String {
-        return apply(Word(-1, text, language), null, null, trace = trace).result()
+        val it = PhonemeIterator(Word(-1, text, language), null)
+        apply(it, null, null, trace = trace)
+        return it.result()
     }
 
     fun apply(
-        word: Word,
+        it: PhonemeIterator,
         condition: ((PhonemeIterator) -> Boolean)? = null,
         postApply: ((PhonemeIterator) -> Unit)?,
-        repo: GraphRepository? = null,
         trace: RuleTrace? = null
-    ): PhonemeIterator {
-        val it = PhonemeIterator(word, repo)
+    ): Boolean {
+        var anyChanges = false
         while (true) {
-            applyAtCurrent(it, condition, postApply, trace)
+            anyChanges = anyChanges or applyAtCurrent(it, condition, postApply, trace)
             if (!it.advance()) break
         }
-
-        return it
+        return anyChanges
     }
 
     fun applyAtCurrent(
@@ -418,7 +418,7 @@ class SpePattern(
         condition: ((PhonemeIterator) -> Boolean)?,
         postApply: ((PhonemeIterator) -> Unit)?,
         trace: RuleTrace?
-    ) {
+    ): Boolean {
         val itCopy = it.clone()
         val context = SpeContext(trace, this)
         if (before.matchNodes(itCopy, context) &&
@@ -428,7 +428,9 @@ class SpePattern(
         ) {
             applyNodes(it, 0, context, before, after)
             postApply?.invoke(it)
+            return true
         }
+        return false
     }
 
     fun toRichText(): RichText {

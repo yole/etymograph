@@ -472,14 +472,14 @@ class SpeInstruction(val pattern: SpePattern, val condition: RuleCondition? = nu
             "Matching pattern $pattern to ${word.text}"
         }
         val phonemicWord = word.asPhonemic()
-        val it = pattern.apply(
-            phonemicWord,
+        val it = PhonemeIterator(phonemicWord, context.graph)
+        val anyChanges = pattern.apply(
+            it,
             { condition == null || condition.matches(phonemicWord, it, context.graph, trace).also { result -> trace?.logCondition(condition, result) } },
             { postInstructions.forEach { insn -> insn.apply(word, it, context.graph, trace )} },
-            context.graph,
             trace
         )
-        if (it.result() != phonemicWord.text) {
+        if (anyChanges) {
             trace?.logMatchedInstruction(context.rule, word, this)
             val stress = if (word.stressedPhonemeIndex != -1)
                 it.mapIndex(word.stressedPhonemeIndex)
@@ -507,7 +507,7 @@ class SpeInstruction(val pattern: SpePattern, val condition: RuleCondition? = nu
                 }
             }
         }
-        return phonemicWord
+        return word
     }
 
     override fun apply(word: Word, phonemes: PhonemeIterator, graph: GraphRepository, trace: RuleTrace?) {
