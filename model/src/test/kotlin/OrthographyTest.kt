@@ -1,6 +1,7 @@
 package ru.yole.etymograph
 
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertTrue
 import org.junit.Test
 
 class OrthographyTest : QBaseTest() {
@@ -110,5 +111,11 @@ class OrthographyTest : QBaseTest() {
         ce.phonemes += phoneme("H", "H")
         val aham = ce.word("aHam")
         assertEquals("aHam", aham.normalizedText)
+    }
+
+    @Test
+    fun normalizedEqual() {
+        ce.accentTypes = setOf(AccentType.Acute)
+        assertTrue(ce.isNormalizedEqual(ce.word("ahám"), ce.word("aham")))
     }
 }

@@ -206,12 +206,13 @@ class Language(val name: String, val shortName: String) {
         return inverted?.let { listOf(it) } ?: emptyList()
     }
 
-    fun normalizeWord(text: String): String {
-        return normalizeCache.getOrPut(text) {
+    fun normalizeWord(text: String, removeAccent: Boolean = false): String {
+        val cacheKey = if (removeAccent) "-$text" else text
+        return normalizeCache.getOrPut(cacheKey) {
             buildString {
                 val lowerText = if (orthoPhonemeLookup.caseSensitiveGraphemes) text else text.lowercase(Locale.FRANCE)
                 orthoPhonemeLookup.iteratePhonemes(lowerText) { startIndex, endIndex, phoneme, accentType ->
-                    append(phoneme?.graphemes?.get(0)?.let { accentType?.combine(it) ?: it }
+                    append(phoneme?.graphemes?.get(0)?.let { accentType?.takeIf { !removeAccent }?.combine(it) ?: it }
                         ?: lowerText.substring(startIndex, endIndex))
                 }
             }.removeSuffix("-")
@@ -227,7 +228,7 @@ class Language(val name: String, val shortName: String) {
     }
 
     fun isNormalizedEqual(ruleProducedWord: Word, attestedWord: Word): Boolean {
-        return normalizeWord(ruleProducedWord.asOrthographic().text) == normalizeWord(attestedWord.asOrthographic().text)
+        return normalizeWord(ruleProducedWord.asOrthographic().text, true) == normalizeWord(attestedWord.asOrthographic().text, true)
     }
 
     fun findGrammaticalCategory(abbreviation: String): WordCategoryWithValue? {
