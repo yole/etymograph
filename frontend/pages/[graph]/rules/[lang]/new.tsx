@@ -16,11 +16,14 @@ export default function RuleEditor(params) {
     const router = useRouter()
     const lang = router.query.lang as string
     const globalState = useContext(GlobalStateContext)
-    const protoLang =
+    let protoLang =
         (globalState !== undefined && lang !== undefined)
             ? globalState.languages.find((g) => g.shortName === lang)?.protoLanguageShortName
             : lang
     const addToSequenceId = router.query.addToSequence != null ? Number(router.query.addToSequence) : null
+    if (router.query.fromLang) {
+        protoLang = router.query.fromLang as string
+    }
 
     return <>
         <Breadcrumbs langId={lang} langName={langData.name} title="New Rule"/>

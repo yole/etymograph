@@ -70,7 +70,7 @@ export default function RuleList(params) {
                 </tbody></table>
                 {allowEdit() && g.sequenceId !== null &&
                     <><button onClick={() => setSequenceEditId(g.sequenceId)}>Edit Sequence</button>{' '}
-                    <button onClick={() => router.push(`/${graph}/rules/${lang}/new?addToSequence=${g.sequenceId}`)}>Add Rule</button>{' '}</>
+                    <button onClick={() => router.push(`/${graph}/rules/${lang}/new?addToSequence=${g.sequenceId}&fromLang=${g.sequenceFromLang}`)}>Add Rule</button>{' '}</>
                 }
             </>}
             {g.sequenceId !== null && sequenceEditId === g.sequenceId && <>
