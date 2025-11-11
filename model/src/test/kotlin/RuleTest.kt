@@ -770,6 +770,12 @@ class RuleTest : QBaseTest() {
     }
 
     @Test
+    fun speRuleMultipleInstructionsApplyBoth() {
+        val rule = repo.rule("* eh₂ > ā\n*ē > ā")
+        assertEquals("mātār", rule.apply(q.word("meh₂tēr"), repo).text)
+    }
+
+    @Test
     fun multilanguagePhonemes() {
         q.phonemes += phoneme("kʰ", "")
         val rule = repo.rule("* kh > kʰ", fromLanguage = ce, toLanguage = q)

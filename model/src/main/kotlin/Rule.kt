@@ -424,11 +424,20 @@ class SpeRuleLogic(
     ): Word {
         val normalizedWord = word.derive(word.text.trimEnd('-'), id = word.id, phonemic = word.isPhonemic)
         val context = RuleApplyContext(rule, null, graph, word, trace)
+
+        val phonemicWord = word.asPhonemic()
+        val it = SpeInstruction.createIterator(normalizedWord, context)
+
+        var anyChanges = false
         for (instruction in instructions) {
-            val resultWord = instruction.apply(normalizedWord, context, postInstructions)
-            if (resultWord.text != normalizedWord.text) {
-                return deriveResult(resultWord, rule, graph, word, preserveId, normalizeSegments, trace)
+            it.advanceTo(0)
+            if (instruction.apply(normalizedWord, phonemicWord, it, context, postInstructions)) {
+                anyChanges = true
             }
+        }
+        if (anyChanges) {
+            val resultWord = SpeInstruction.result(normalizedWord, phonemicWord, it, context)
+            return deriveResult(resultWord, rule, graph, word, preserveId, normalizeSegments, trace)
         }
         return normalizedWord
     }

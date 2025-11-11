@@ -463,19 +463,20 @@ class SpeInstruction(val pattern: SpePattern, val condition: RuleCondition? = nu
     }
 
     override fun apply(word: Word, context: RuleApplyContext): Word {
-        return apply(word, context, emptyList())
+        val it = createIterator(word, context)
+        val phonemicWord = word.asPhonemic()
+        val anyChanges = apply(word, phonemicWord, it, context, emptyList())
+        return if (anyChanges)
+            result(word, phonemicWord, it, context)
+        else
+            word
     }
 
-    fun apply(word: Word, context: RuleApplyContext, postInstructions: List<RuleInstruction>): Word {
+    fun apply(word: Word, phonemicWord: Word, it: PhonemeIterator, context: RuleApplyContext, postInstructions: List<RuleInstruction>): Boolean{
         val trace = context.trace
         trace?.logInstruction {
             "Matching pattern $pattern to ${word.text}"
         }
-        val phonemicWord = word.asPhonemic()
-        val it = if (context.rule.fromLanguage != context.rule.toLanguage)
-            PhonemeIterator(phonemicWord, context.graph, language2 = context.rule.fromLanguage)
-        else
-            PhonemeIterator(phonemicWord, context.graph)
 
         val anyChanges = pattern.apply(
             it,
@@ -485,33 +486,9 @@ class SpeInstruction(val pattern: SpePattern, val condition: RuleCondition? = nu
         )
         if (anyChanges) {
             trace?.logMatchedInstruction(context.rule, word, this)
-            val stress = if (word.stressedPhonemeIndex != -1)
-                it.mapIndex(word.stressedPhonemeIndex)
-            else
-                null
-            val segments = remapSegments(it, word.segments)
-            return phonemicWord.derive(it.result(), phonemic = true, segments = segments).also {
-                if (stress != null && stress >= 0) {
-                    val vowels = context.rule.toLanguage.phonemeClassByName(PhonemeClass.vowelClassName)
-                    val stressIt = PhonemeIterator(it, context.graph)
-                    if (vowels != null && stressIt.advanceTo(stress) && !vowels.matchesCurrent(stressIt)) {
-                        val syllables = breakIntoSyllables(it)
-                        val syllableIndex = findSyllable(syllables, stress)
-                        if (syllableIndex >= 0) {
-                            it.stressedPhonemeIndex = syllables[syllableIndex].vowelIndex
-                        }
-                        else {
-                            it.stressedPhonemeIndex = stress
-                        }
-                    }
-                    else {
-                        it.stressedPhonemeIndex = stress
-                    }
-                    it.explicitStress = word.explicitStress
-                }
-            }
+            return true
         }
-        return word
+        return false
     }
 
     override fun apply(word: Word, phonemes: PhonemeIterator, graph: GraphRepository, trace: RuleTrace?) {
@@ -537,5 +514,44 @@ class SpeInstruction(val pattern: SpePattern, val condition: RuleCondition? = nu
             val condition = conditionText?.let { RuleCondition.parse(ParseBuffer(conditionText), context.fromLanguage) }
             return SpeInstruction(pattern, condition, comment)
         }
+
+        fun createIterator(word: Word, context: RuleApplyContext): PhonemeIterator {
+            return if (context.rule.fromLanguage != context.rule.toLanguage)
+                PhonemeIterator(word.asPhonemic(), context.graph, language2 = context.rule.fromLanguage)
+            else
+                PhonemeIterator(word.asPhonemic(), context.graph)
+        }
+
+        fun result(
+            word: Word,
+            phonemicWord: Word,
+            it: PhonemeIterator,
+            context: RuleApplyContext
+        ): Word {
+            val stress = if (word.stressedPhonemeIndex != -1)
+                it.mapIndex(word.stressedPhonemeIndex)
+            else
+                null
+            val segments = remapSegments(it, word.segments)
+            return phonemicWord.derive(it.result(), phonemic = true, segments = segments).also {
+                if (stress != null && stress >= 0) {
+                    val vowels = context.rule.toLanguage.phonemeClassByName(PhonemeClass.vowelClassName)
+                    val stressIt = PhonemeIterator(it, context.graph)
+                    if (vowels != null && stressIt.advanceTo(stress) && !vowels.matchesCurrent(stressIt)) {
+                        val syllables = breakIntoSyllables(it)
+                        val syllableIndex = findSyllable(syllables, stress)
+                        if (syllableIndex >= 0) {
+                            it.stressedPhonemeIndex = syllables[syllableIndex].vowelIndex
+                        } else {
+                            it.stressedPhonemeIndex = stress
+                        }
+                    } else {
+                        it.stressedPhonemeIndex = stress
+                    }
+                    it.explicitStress = word.explicitStress
+                }
+            }
+        }
+
     }
 }
