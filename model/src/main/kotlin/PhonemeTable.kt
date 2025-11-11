@@ -133,8 +133,8 @@ class PhonemeTable(val title: String, rowTitles: List<String>? = null, columnTit
         }
 
         val articulationPlaces = listOf(
-            "labial", "bilabial", "labiodental", "dental", "alveolar", "postalveolar", "alveolo-palatal", "palatal", "velar", "labiovelar",
-            "uvular", "pharyngeal", "glottal"
+            "labial", "bilabial", "labiodental", "dental", "alveolar", "postalveolar", "retroflex",
+            "alveolo-palatal", "palatal", "velar", "labiovelar", "uvular", "pharyngeal", "glottal"
         )
         val articulationManners = listOf(
             "plosive", "stop", "fricative", "affricate", "nasal", "approximant", "trill", "lateral"
