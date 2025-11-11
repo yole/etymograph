@@ -76,7 +76,8 @@ export default function Phoneme(props) {
                 sound: phoneme.sound,
                 classes: phoneme.classes,
                 historical: phoneme.historical,
-                source: phoneme.sourceEditableText
+                source: phoneme.sourceEditableText,
+                notes: phoneme.notes
             }}
             submitted={submitted}
             cancelled={() => setEditMode(false)}

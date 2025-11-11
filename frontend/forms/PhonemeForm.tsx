@@ -5,6 +5,7 @@ import FormCheckbox from "@/components/FormCheckbox";
 import {useContext} from "react";
 import {GraphContext} from "@/components/Contexts";
 import {PhonemeViewModel, UpdatePhonemeParameters} from "@/models";
+import FormTextArea from "@/components/FormTextArea";
 
 interface PhonemeFormProps extends EtymographFormProps<UpdatePhonemeParameters, PhonemeViewModel> {
     language?: string
@@ -23,6 +24,10 @@ export default function PhonemeForm(props: PhonemeFormProps) {
             <FormRow label="Sound" id="sound"/>
             <FormRow label="Classes" id="classes"/>
             <FormRow label="Source" id="source"/>
+            <tr>
+                <td>Notes:</td>
+                <td><FormTextArea rows={3} cols={50} id="notes"/></td>
+            </tr>
         </tbody></table>
         <FormCheckbox label="Historical" id="historical"/>
     </EtymographForm>
