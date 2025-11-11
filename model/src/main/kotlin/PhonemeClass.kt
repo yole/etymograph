@@ -218,6 +218,10 @@ fun implicitPhonemeClasses(classes: Set<String>): Set<String> {
             result.addAll(entry.value)
         }
     }
+    if ("+syllabic" in result) {
+        result -= setOf("consonant", "C")
+        result += setOf("vowel", "V")
+    }
     return result - classes
 }
 

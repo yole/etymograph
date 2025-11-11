@@ -74,34 +74,22 @@ class PhonemeTable(val title: String, rowTitles: List<String>? = null, columnTit
     companion object {
         fun build(phonemes: List<Phoneme>): List<PhonemeTable> {
             val result = mutableListOf<PhonemeTable>()
-            val consonants = phonemes.filter { PhonemeClass.consonantClassName in withImplicit(it.classes) && !it.historical }
+            val consonants = phonemes.filter { "+syllabic" !in withImplicit(it.classes) && !it.historical }
             if (consonants.isNotEmpty()) {
                 result.addAll(buildPhonemeTable(consonants, "Consonants", articulationManners, articulationPlaces))
             }
-            val historicalConsonants = phonemes.filter { PhonemeClass.consonantClassName in withImplicit(it.classes) && it.historical }
+            val historicalConsonants = phonemes.filter { "+syllabic" !in withImplicit(it.classes) && it.historical }
             if (historicalConsonants.isNotEmpty()) {
                 result.addAll(buildPhonemeTable(historicalConsonants, "Historical Consonants", articulationManners, articulationPlaces))
             }
 
-            val vowels = phonemes.filter { PhonemeClass.vowelClassName in it.classes && !it.historical }
+            val vowels = phonemes.filter { "+syllabic" in withImplicit(it.classes) && !it.historical }
             if (vowels.isNotEmpty()) {
                 result.addAll(buildPhonemeTable(vowels, "Vowels", vowelHeights, vowelBackness))
             }
-            val historicalVowels = phonemes.filter { PhonemeClass.vowelClassName in it.classes && it.historical }
+            val historicalVowels = phonemes.filter { "+syllabic" in withImplicit(it.classes) && it.historical }
             if (historicalVowels.isNotEmpty()) {
                 result.addAll(buildPhonemeTable(historicalVowels, "Historical Vowels", vowelHeights, vowelBackness))
-            }
-
-            val otherPhonemes = phonemes.filter {
-                PhonemeClass.consonantClassName !in withImplicit(it.classes) &&
-                        PhonemeClass.vowelClassName !in withImplicit(it.classes)
-            }
-            if (otherPhonemes.isNotEmpty()) {
-                val otherPhonemeTable = PhonemeTable("Other Phonemes")
-                for (phoneme in otherPhonemes) {
-                    otherPhonemeTable.add(phoneme)
-                }
-                result.add(otherPhonemeTable)
             }
 
             return result
