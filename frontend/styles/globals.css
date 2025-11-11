@@ -132,6 +132,7 @@ code {
 
 .ruleComment {
   font-style: italic;
+  margin-top: 1em;
 }
 
 .richTextMono {
