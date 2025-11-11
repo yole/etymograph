@@ -20,6 +20,10 @@ class Phoneme(
 ) : LangEntity(id, source, notes) {
     val effectiveSound: String
         get() = sound ?: graphemes.first()
+
+    override fun toString(): String {
+        return graphemes.joinToString(",") + " [" + classes.joinToString(" ") + "]"
+    }
 }
 
 class PhonemeLookup(val accentTypes: Set<AccentType>) {
