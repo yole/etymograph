@@ -129,9 +129,16 @@ class PhonemeIterator {
     private var indexMapStack: MutableList<IntArray>? = null
     private var atEnd: Boolean = false
 
-    constructor(word: Word, repo: GraphRepository?, resultPhonemic: Boolean? = null, mergeDiphthongs: Boolean = false) : this(
+    constructor(
+        word: Word,
+        repo: GraphRepository?,
+        resultPhonemic: Boolean? = null,
+        mergeDiphthongs: Boolean = false,
+        language2: Language? = null
+    ) : this(
         if (word.isPhonemic) word.text else word.normalizedText.trimEnd('-'),
         word.language,
+        language2,
         repo,
         word,
         word.isPhonemic,
@@ -142,6 +149,7 @@ class PhonemeIterator {
     constructor(
         text: String,
         language: Language,
+        language2: Language? = null,
         repo: GraphRepository?,
         word: Word? = null,
         phonemic: Boolean = false,
@@ -155,7 +163,13 @@ class PhonemeIterator {
         val sourcePhonemes = mutableListOf<String>()
         resultPhonemes = mutableListOf()
         accentTypes = mutableListOf()
-        val lookup = if (phonemic) this.language.phonoPhonemeLookup else this.language.orthoPhonemeLookup
+
+        val lookup = if (language2 != null)
+            PhonemeLookup.fromLanguages(language, language2)
+        else if (phonemic)
+            this.language.phonoPhonemeLookup
+        else
+            this.language.orthoPhonemeLookup
 
         lookup.iteratePhonemes(text) { startIndex, endIndex, phoneme, stressType ->
             val normalizedResultText = if (resultPhonemic ?: phonemic) phoneme?.sound else phoneme?.graphemes?.first()

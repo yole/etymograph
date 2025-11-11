@@ -43,7 +43,7 @@ open class RuleInstruction(val type: InstructionType, val arg: String, val comme
                 phonemes.deleteAtRelative(phonemes.size - 1)
             }
             else {
-                val conditionPhonemes = PhonemeIterator(condition.parameter!!, word.language, graph)
+                val conditionPhonemes = PhonemeIterator(condition.parameter!!, word.language, repo = graph)
                 val phonemesToDelete = conditionPhonemes.size
                 for (i in phonemes.size - 1 downTo phonemes.size - phonemesToDelete) {
                     phonemes.deleteAtRelative(i)
@@ -243,7 +243,7 @@ class ApplySoundRuleInstruction(language: Language, val ruleRef: RuleRef, arg: S
 
     override fun reverseApply(rule: Rule, text: String, language: Language, graph: GraphRepository, trace: RuleTrace?): List<String> {
         if (seekTarget == null) return listOf(text)
-        val phonemes = PhonemeIterator(text, language, graph)
+        val phonemes = PhonemeIterator(text, language, repo = graph)
         if (phonemes.seek(seekTarget)) {
             val rule = ruleRef.resolve()
             return (rule.logic as SpeRuleLogic).reverseApplyToPhoneme(phonemes)
@@ -472,7 +472,11 @@ class SpeInstruction(val pattern: SpePattern, val condition: RuleCondition? = nu
             "Matching pattern $pattern to ${word.text}"
         }
         val phonemicWord = word.asPhonemic()
-        val it = PhonemeIterator(phonemicWord, context.graph)
+        val it = if (context.rule.fromLanguage != context.rule.toLanguage)
+            PhonemeIterator(phonemicWord, context.graph, language2 = context.rule.fromLanguage)
+        else
+            PhonemeIterator(phonemicWord, context.graph)
+
         val anyChanges = pattern.apply(
             it,
             { condition == null || condition.matches(phonemicWord, it, context.graph, trace).also { result -> trace?.logCondition(condition, result) } },

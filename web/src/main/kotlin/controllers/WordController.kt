@@ -281,7 +281,7 @@ class WordController(val dictionaryService: DictionaryService) {
         val explicitStressIndex = text.indexOf(explicitStressMark)
         if (explicitStressIndex >= 0) {
             val textWithoutStress = text.removeRange(explicitStressIndex, explicitStressIndex + 1)
-            val phonemes = PhonemeIterator(textWithoutStress, language, repo)
+            val phonemes = PhonemeIterator(textWithoutStress, language, repo = repo)
             return textWithoutStress to phonemes.characterToPhonemeIndex(explicitStressIndex)
         }
         return text to null

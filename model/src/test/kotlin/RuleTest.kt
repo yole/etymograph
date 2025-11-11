@@ -770,6 +770,13 @@ class RuleTest : QBaseTest() {
     }
 
     @Test
+    fun multilanguagePhonemes() {
+        q.phonemes += phoneme("kʰ", "")
+        val rule = repo.rule("* kh > kʰ", fromLanguage = ce, toLanguage = q)
+        assertEquals("kʰith", rule.apply(q.word("khith"), repo).text)
+    }
+
+    @Test
     fun notRule() {
         val text = "* a > i if not (previous sound is 'c')"
         val rule = parseRule(ce, q, text)

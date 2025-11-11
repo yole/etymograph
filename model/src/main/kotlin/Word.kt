@@ -352,7 +352,7 @@ class Word(
         }
         val fromIt = PhonemeIterator(this, graph)
         val fromIndex = fromIt.phonemeToCharacterIndex(index)
-        val toIt = PhonemeIterator(text, toLanguage, graph)
+        val toIt = PhonemeIterator(text, toLanguage, repo = graph)
         return toIt.characterToPhonemeIndex(fromIndex)
     }
 

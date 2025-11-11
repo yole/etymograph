@@ -18,7 +18,7 @@ class PhonemeIteratorTest : QBaseTest() {
 
     @Test
     fun seekToVowel() {
-        val it = PhonemeIterator("lasse", q, null)
+        val it = PhonemeIterator("lasse", q, repo = null)
         it.seek(SeekTarget(1, v))
         assertEquals("a", it.current)
         it.seek(SeekTarget(2, v))
@@ -48,7 +48,7 @@ class PhonemeIteratorTest : QBaseTest() {
 
     @Test
     fun seekToLastVowel() {
-        val it = PhonemeIterator("lasse", q, null)
+        val it = PhonemeIterator("lasse", q, repo = null)
         assertTrue(it.seek(SeekTarget(-1, v)))
         assertEquals("e", it.current)
     }
@@ -56,7 +56,7 @@ class PhonemeIteratorTest : QBaseTest() {
     @Test
     fun digraphs() {
         q.phonemes = listOf(phoneme("hy", "voiceless glide"))
-        val it = PhonemeIterator("hyarmen", q, null)
+        val it = PhonemeIterator("hyarmen", q, repo = null)
         assertEquals("hy", it.current)
     }
 
@@ -92,5 +92,13 @@ class PhonemeIteratorTest : QBaseTest() {
         val dit = PhonemeIterator(decomposed, null)
         assertEquals(AccentType.Acute, dit.currentAccentType)
         assertEquals("a", dit.current)
+    }
+
+    @Test
+    fun multilanguage() {
+        q.phonemes += phoneme("kʰ", "")
+        val mixedIt = PhonemeIterator("kʰith", q, ce, null)
+        assertEquals("kʰ", mixedIt[0])
+        assertEquals("th", mixedIt[2])
     }
 }

@@ -92,6 +92,19 @@ class PhonemeLookup(val accentTypes: Set<AccentType>) {
         val digraph = digraphLookup[text[offset].code]?.keys?.firstOrNull { text.startsWith(it, offset) }
         return digraph ?: text.substring(offset, offset + 1)
     }
+
+    companion object {
+        fun fromLanguages(lang1: Language, lang2: Language): PhonemeLookup {
+            val result = PhonemeLookup(lang1.accentTypes + lang2.accentTypes)
+            for (phoneme in lang1.phonemes) {
+                result.add(phoneme.sound ?: phoneme.graphemes[0], phoneme)
+            }
+            for (phoneme in lang2.phonemes) {
+                result.add(phoneme.sound ?: phoneme.graphemes[0], phoneme)
+            }
+            return result
+        }
+    }
 }
 
 class Language(val name: String, val shortName: String) {
