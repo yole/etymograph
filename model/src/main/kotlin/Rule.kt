@@ -424,8 +424,13 @@ class SpeRuleLogic(
     ): Word {
         val normalizedWord = word.derive(word.text.trimEnd('-'), id = word.id, phonemic = word.isPhonemic)
         val context = RuleApplyContext(rule, null, graph, word, trace)
-        val resultWord = instructions.fold(normalizedWord) { s, i -> i.apply(s, context, postInstructions) }
-        return deriveResult(resultWord, rule, graph, word, preserveId, normalizeSegments, trace)
+        for (instruction in instructions) {
+            val resultWord = instruction.apply(normalizedWord, context, postInstructions)
+            if (resultWord.text != normalizedWord.text) {
+                return deriveResult(resultWord, rule, graph, word, preserveId, normalizeSegments, trace)
+            }
+        }
+        return normalizedWord
     }
 
     override fun reverseApply(word: Word, rule: Rule, graph: GraphRepository, trace: RuleTrace?): List<String> {

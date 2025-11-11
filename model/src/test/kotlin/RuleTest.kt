@@ -764,6 +764,12 @@ class RuleTest : QBaseTest() {
     }
 
     @Test
+    fun speRuleMultipleInstructions() {
+        val rule = repo.rule("* ei > e\n* eu > o")
+        assertEquals("deuo", rule.apply(q.word("deiuo"), repo).text)
+    }
+
+    @Test
     fun notRule() {
         val text = "* a > i if not (previous sound is 'c')"
         val rule = parseRule(ce, q, text)
