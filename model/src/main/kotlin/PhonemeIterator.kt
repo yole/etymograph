@@ -25,16 +25,6 @@ open class OrdinalTable(private val items: List<Pair<String, Int>>) {
         }
         return null
     }
-
-    fun parseMatch(match: MatchResult, index: Int): Int {
-        return match.groupValues[index].takeIf { it.isNotEmpty() }?.trim()?.let {
-            parse(it)?.first
-        } ?: 0
-    }
-
-    fun toPattern(): String {
-        return "(" + items.joinToString("|") { it.first + "\\s+" } + ")"
-    }
 }
 
 object Ordinals : OrdinalTable(
