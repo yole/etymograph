@@ -127,7 +127,7 @@ class Word(
             }
             else {
                 buildString {
-                    val lowerText = text.lowercase(Locale.FRANCE)
+                    val lowerText = if (language.orthoPhonemeLookup.caseSensitiveGraphemes) text else text.lowercase(Locale.FRANCE)
                     language.orthoPhonemeLookup.iteratePhonemes(lowerText) { startIndex, endIndex, phoneme, _ ->
                         append(phoneme?.effectiveSound ?: lowerText.substring(startIndex, endIndex))
                     }

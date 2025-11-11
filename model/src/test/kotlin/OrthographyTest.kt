@@ -104,4 +104,11 @@ class OrthographyTest : QBaseTest() {
         val ortho = phono.asOrthographic(ce)
         assertEquals("ahám", ortho.text)
     }
+
+    @Test
+    fun caseSensitivePhonemes() {
+        ce.phonemes += phoneme("H", "H")
+        val aham = ce.word("aHam")
+        assertEquals("aHam", aham.normalizedText)
+    }
 }

@@ -26,6 +26,8 @@ class PhonemeLookup(val accentTypes: Set<AccentType>) {
     private val digraphLookup = arrayOfNulls<MutableMap<String, Phoneme>>(Char.MAX_VALUE.code)
     private var digraphs = mutableMapOf<String, Phoneme>()
     private var singleGraphemes = arrayOfNulls<Pair<Phoneme?, AccentType?>>(Char.MAX_VALUE.code)
+    var caseSensitiveGraphemes: Boolean = false
+        private set
 
     init {
         for (type in accentTypes) {
@@ -34,6 +36,10 @@ class PhonemeLookup(val accentTypes: Set<AccentType>) {
     }
 
     fun add(key: String, phoneme: Phoneme) {
+        if (key.any { it.isUpperCase() }) {
+            caseSensitiveGraphemes = true
+        }
+
         if (key.length > 1) {
             digraphs[key] = phoneme
             val c = key.first().code
@@ -186,7 +192,7 @@ class Language(val name: String, val shortName: String) {
     fun normalizeWord(text: String): String {
         return normalizeCache.getOrPut(text) {
             buildString {
-                val lowerText = text.lowercase(Locale.FRANCE)
+                val lowerText = if (orthoPhonemeLookup.caseSensitiveGraphemes) text else text.lowercase(Locale.FRANCE)
                 orthoPhonemeLookup.iteratePhonemes(lowerText) { startIndex, endIndex, phoneme, accentType ->
                     append(phoneme?.graphemes?.get(0)?.let { accentType?.combine(it) ?: it }
                         ?: lowerText.substring(startIndex, endIndex))
