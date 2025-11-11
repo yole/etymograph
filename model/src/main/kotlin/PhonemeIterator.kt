@@ -1,5 +1,6 @@
 package ru.yole.etymograph
 
+import java.util.BitSet
 import kotlin.math.abs
 import kotlin.math.sign
 
@@ -118,6 +119,7 @@ class PhonemeIterator {
     private var phonemeToResultIndexMap: IntArray
     private var indexMapStack: MutableList<IntArray>? = null
     private var atEnd: Boolean = false
+    private val touched: BitSet
 
     constructor(
         word: Word,
@@ -178,6 +180,7 @@ class PhonemeIterator {
         phonemes = sourcePhonemes
         origPhonemes = phonemes.toList()
         phonemeToResultIndexMap = IntArray(phonemes.size) { it }
+        touched = BitSet(phonemes.size)
     }
 
     private constructor(
@@ -188,7 +191,8 @@ class PhonemeIterator {
         language: Language,
         repo: GraphRepository?,
         word: Word?,
-        phonemeToResultIndexMap: IntArray
+        phonemeToResultIndexMap: IntArray,
+        touched: BitSet
     ) {
         this.phonemes = phonemes.toMutableList()
         this.origPhonemes = origPhonemes
@@ -198,6 +202,7 @@ class PhonemeIterator {
         this.repo = repo
         this.word = word
         this.phonemeToResultIndexMap = phonemeToResultIndexMap
+        this.touched = touched
     }
 
     val current: String get() = phonemes[phonemeIndex]
@@ -212,7 +217,9 @@ class PhonemeIterator {
     fun atRelative(relativeIndex: Int): String? = phonemes.getOrNull(phonemeIndex + relativeIndex)
 
     fun clone(): PhonemeIterator {
-        return PhonemeIterator(phonemes, origPhonemes, resultPhonemes, accentTypes, language, repo, word, phonemeToResultIndexMap).also {
+        return PhonemeIterator(
+            phonemes, origPhonemes, resultPhonemes, accentTypes, language, repo, word, phonemeToResultIndexMap, touched
+        ).also {
             it.phonemeIndex = phonemeIndex
             it.atEnd = atEnd
         }
@@ -307,6 +314,7 @@ class PhonemeIterator {
     }
 
     fun replace(s: String) {
+        touched.set(phonemeIndex)
         val resultIndex = phonemeToResultIndexMap[phonemeIndex]
         if (resultIndex >= 0) {
             resultPhonemes[resultIndex] = s
@@ -316,6 +324,7 @@ class PhonemeIterator {
     fun replaceAtRelative(relativeIndex: Int, s: String) {
         val resultIndex = phonemeToResultIndexMap[phonemeIndex + relativeIndex]
         if (resultIndex >= 0) {
+            touched.set(phonemeIndex + relativeIndex)
             resultPhonemes[resultIndex] = s
         }
     }
@@ -384,6 +393,8 @@ class PhonemeIterator {
 
     fun atBeginning(): Boolean = phonemeIndex == 0
     fun atEnd(): Boolean = atEnd
+
+    fun isTouched(index: Int): Boolean = touched[index]
 
     fun findMatchInRange(start: Int, end: Int, phonemeClass: PhonemeClass): Int? {
         for (i in start until end) {

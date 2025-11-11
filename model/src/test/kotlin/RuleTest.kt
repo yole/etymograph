@@ -776,6 +776,12 @@ class RuleTest : QBaseTest() {
     }
 
     @Test
+    fun speRuleMultipleInstructionsOverlap() {
+        val rule = repo.rule("* eh₂ > ā\n*e > a")
+        assertEquals("mātēr", rule.apply(q.word("meh₂tēr"), repo).text)
+    }
+
+    @Test
     fun multilanguagePhonemes() {
         q.phonemes += phoneme("kʰ", "")
         val rule = repo.rule("* kh > kʰ", fromLanguage = ce, toLanguage = q)

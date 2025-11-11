@@ -407,7 +407,9 @@ class SpePattern(
     ): Boolean {
         var anyChanges = false
         while (true) {
-            anyChanges = anyChanges or applyAtCurrent(it, condition, postApply, trace)
+            if (!it.isTouched(it.index)) {
+                anyChanges = anyChanges or applyAtCurrent(it, condition, postApply, trace)
+            }
             if (!it.advance()) break
         }
         return anyChanges
