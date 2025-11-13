@@ -783,9 +783,12 @@ class RuleTest : QBaseTest() {
 
     @Test
     fun multilanguagePhonemes() {
-        q.phonemes += phoneme("kʰ", "")
+        q.phonemes += phoneme("kʰ", "aspirated consonant")
         val rule = repo.rule("* kh > kʰ", fromLanguage = ce, toLanguage = q)
-        assertEquals("kʰith", rule.apply(q.word("khith"), repo).text)
+        val word1 = rule.apply(q.word("khith"), repo)
+        assertEquals("kʰith", word1.text)
+        val rule2 = repo.rule("* i > e / C_C", fromLanguage = ce, toLanguage = q)
+        assertEquals("kʰeth", rule2.apply(word1, repo).text)
     }
 
     @Test

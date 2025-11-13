@@ -489,7 +489,7 @@ class SpePattern(
                 return SpePattern(
                     fromLanguage,
                     toLanguage,
-                    parseNodes(fromLanguage, beforeText),
+                    parseNodes(fromLanguage, toLanguage, beforeText),
                     parseTargetNodes(toLanguage, afterTextWithContext),
                     emptyList(),
                     emptyList()
@@ -506,15 +506,15 @@ class SpePattern(
             return SpePattern(
                 fromLanguage,
                 toLanguage,
-                parseNodes(fromLanguage, beforeText),
+                parseNodes(fromLanguage, toLanguage, beforeText),
                 parseTargetNodes(toLanguage, afterText),
-                parseNodes(fromLanguage, precedeText),
-                parseNodes(fromLanguage, followText)
+                parseNodes(fromLanguage, toLanguage, precedeText),
+                parseNodes(fromLanguage, toLanguage, followText)
             )
         }
 
         private fun parseTargetNodes(language: Language, text: String): List<SpeTargetNode> {
-            val nodes = parseNodes(language, text)
+            val nodes = parseNodes(language, language, text)
             nodes.find { it !is SpeTargetNode}?.let {
                 throw IllegalArgumentException("Node $it cannot be used in 'after' position")
             }
@@ -522,14 +522,14 @@ class SpePattern(
             return nodes as List<SpeTargetNode>
         }
 
-        private fun parseNodes(language: Language, text: String): List<SpeNode> {
+        private fun parseNodes(fromLanguage: Language, toLanguage: Language, text: String): List<SpeNode> {
             if (text == "0") {
                 return emptyList()
             }
             val result = mutableListOf<SpeNode>()
             var pos = 0
             while (pos < text.length) {
-                val (nextPos, node) = parseNextNode(text, pos, language)
+                val (nextPos, node) = parseNextNode(text, pos, fromLanguage, toLanguage)
                 if (node is SpeRepeatNode) {
                     result[result.size - 1] = SpeRepeatNode(result.last())
                 }
@@ -541,14 +541,14 @@ class SpePattern(
             return result
         }
 
-        private fun parseNextNode(text: String, pos: Int, language: Language): Pair<Int, SpeNode> {
+        private fun parseNextNode(text: String, pos: Int, fromLanguage: Language, toLanguage: Language): Pair<Int, SpeNode> {
             if (text[pos] == '[') {
                 val classEnd = text.indexOf(']', pos)
                 if (classEnd < 0) {
                     throw SpeParseException("Missing closing bracket in character class")
                 }
                 val classText = text.substring(pos + 1, classEnd)
-                return classEnd + 1 to SpePhonemeClassNode(language, parseClass(language, classText))
+                return classEnd + 1 to SpePhonemeClassNode(fromLanguage, parseClass(fromLanguage, toLanguage, classText))
             }
             else if (text[pos] == '{') {
                 val alternativeEnd = text.indexOf('}', pos)
@@ -556,7 +556,7 @@ class SpePattern(
                     throw SpeParseException("Missing curly brace in alternative")
                 }
                 val choices = text.substring(pos + 1, alternativeEnd).split('|')
-                return alternativeEnd + 1 to SpeAlternativeNode(choices.map { parseNodes(language, it) })
+                return alternativeEnd + 1 to SpeAlternativeNode(choices.map { parseNodes(fromLanguage, toLanguage, it) })
             }
             else if (text[pos] == '(') {
                 val optionalEnd = text.indexOf(')', pos)
@@ -564,57 +564,66 @@ class SpePattern(
                     throw SpeParseException("Missing closing parenthesis in optional")
                 }
                 val optionalPart = text.substring(pos + 1, optionalEnd)
-                return optionalEnd + 1 to SpeOptionalNode(parseNodes(language, optionalPart))
+                return optionalEnd + 1 to SpeOptionalNode(parseNodes(fromLanguage, toLanguage,optionalPart))
             }
             else if (text[pos] == '!') {
-                val (nextPos, nextNode) = parseNextNode(text, pos + 1, language)
+                val (nextPos, nextNode) = parseNextNode(text, pos + 1, fromLanguage, toLanguage)
                 return nextPos to SpeNegateNode(nextNode)
             }
             else {
-                val nextPhoneme = language.phonoPhonemeLookup.nextPhoneme(text, pos)
+                val nextPhoneme = fromLanguage.phonoPhonemeLookup.nextPhoneme(text, pos)
                 if (nextPhoneme == "0") {
                     return pos + nextPhoneme.length to SpeRepeatNode(SpeLiteralNode(""))
                 } else {
-                    return pos + nextPhoneme.length to nodeFromPhoneme(nextPhoneme, language)
+                    return pos + nextPhoneme.length to nodeFromPhoneme(nextPhoneme, fromLanguage, toLanguage)
                 }
             }
         }
 
-        private fun nodeFromPhoneme(nextPhoneme: String, language: Language): SpeNode {
+        fun findPhonemeClass(fromLanguage: Language, toLanguage: Language, text: String): PhonemeClass? {
+            val class1 = fromLanguage.phonemeClassByName(text)
+            val class2 = toLanguage.takeIf { it != fromLanguage }?.phonemeClassByName(text)
+            if (class1 != null && class2 != null) {
+                return UnionPhonemeClass(text, listOf(class1, class2))
+            }
+            return class1 ?: class2
+        }
+
+        private fun nodeFromPhoneme(nextPhoneme: String, fromLanguage: Language, toLanguage: Language): SpeNode {
             if (nextPhoneme == "#") return SpeWordBoundaryNode
             if (nextPhoneme.length == 1 && nextPhoneme[0].isUpperCase()) {
                 return SpePhonemeClassNode(
-                    language,
-                    language.phonemeClassByName(nextPhoneme) ?: throw SpeParseException("Class $nextPhoneme not found")
+                    fromLanguage,
+                    findPhonemeClass(fromLanguage, toLanguage,nextPhoneme) ?: throw SpeParseException("Class $nextPhoneme not found")
                 )
             }
             return SpeLiteralNode(nextPhoneme)
         }
 
-        private fun parseClass(language: Language, text: String): PhonemeClass {
+        private fun parseClass(fromLanguage: Language, toLanguage: Language, text: String): PhonemeClass {
             val items = text.split(',')
             if (items.size > 1) {
-                val subclasses = items.map { parseSingleClass(language, it.trim()) }
+                val subclasses = items.map { parseSingleClass(fromLanguage, toLanguage, it.trim()) }
                 return IntersectionPhonemeClass(text, subclasses)
             }
 
-            return parseSingleClass(language, text)
+            return parseSingleClass(fromLanguage, toLanguage, text)
         }
 
-        private fun parseSingleClass(language: Language, text: String): PhonemeClass {
-            language.phonemeClassByName(text)?.let { return it }
+        private fun parseSingleClass(fromLanguage: Language, toLanguage: Language, text: String): PhonemeClass {
+            findPhonemeClass(fromLanguage, toLanguage, text)?.let { return it }
             if (text.startsWith("-")) {
-                language.phonemeClassByName(text.substring(1))?.let {
+                findPhonemeClass(fromLanguage, toLanguage, text.substring(1))?.let {
                     return NegatedPhonemeClass(it)
                 }
-                language.phonemeClassByName("+" + text.substring(1))?.let {
+                findPhonemeClass(fromLanguage, toLanguage, "+" + text.substring(1))?.let {
                     return NegatedPhonemeClass(it)
                 }
             }
             if (text.startsWith("+")) {
                 val baseName = text.substring(1)
-                val baseClass = language.phonemeClassByName(baseName)
-                if (baseClass != null && language.phonemeClassByName("-$baseName") != null) {
+                val baseClass = findPhonemeClass(fromLanguage, toLanguage, baseName)
+                if (baseClass != null && findPhonemeClass(fromLanguage, toLanguage, "-$baseName") != null) {
                     return baseClass
                 }
             }
