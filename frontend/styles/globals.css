@@ -126,6 +126,10 @@ code {
   font-variant: small-caps;
 }
 
+.formRow {
+    font-size: medium;
+}
+
 .ruleText {
   font-size: medium;
 }
