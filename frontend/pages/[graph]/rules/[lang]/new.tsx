@@ -1,6 +1,6 @@
 import RuleForm from "@/forms/RuleForm";
 import {useRouter} from "next/router";
-import {fetchAllLanguagePaths, fetchBackend} from "@/api";
+import {fetchAllLanguagePaths, fetchAllLanguagePathsEditable, fetchBackend} from "@/api";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import {useContext} from "react";
 import {GlobalStateContext} from "@/components/Contexts";
@@ -9,7 +9,7 @@ export async function getStaticProps(context) {
     return fetchBackend(context.params.graph, `language/${context.params.lang}`, true)
 }
 
-export const getStaticPaths = fetchAllLanguagePaths
+export const getStaticPaths = fetchAllLanguagePathsEditable
 
 export default function RuleEditor(params) {
     const langData = params.loaderData

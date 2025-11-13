@@ -1,4 +1,4 @@
-import {fetchAllLanguagePaths, fetchBackend} from "@/api";
+import {fetchAllLanguagePaths, fetchAllLanguagePathsEditable, fetchBackend} from "@/api";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import ParadigmForm from "@/forms/ParadigmForm"
 import {useRouter} from "next/router";
@@ -7,7 +7,7 @@ export async function getStaticProps(context) {
     return fetchBackend(context.params.graph,`language/${context.params.lang}`, true)
 }
 
-export const getStaticPaths = fetchAllLanguagePaths
+export const getStaticPaths = fetchAllLanguagePathsEditable
 
 export default function ParadigmEditor() {
     const router = useRouter()

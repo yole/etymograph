@@ -68,6 +68,11 @@ export async function fetchAllGraphs() {
     return {paths, fallback: false}
 }
 
+export async function fetchAllLanguagePathsEditable() {
+    if (!allowEdit()) return { paths: [], fallback: false }
+    return fetchAllLanguagePaths()
+}
+
 export async function fetchAllLanguagePaths() {
     return fetchPathsForAllGraphs("language", (p) => ({lang: p.shortName}))
 }

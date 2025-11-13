@@ -1,5 +1,5 @@
 import CorpusTextForm from "@/forms/CorpusTextForm";
-import {fetchAllLanguagePaths, fetchBackend} from "@/api";
+import {fetchAllLanguagePaths, fetchAllLanguagePathsEditable, fetchBackend} from "@/api";
 import {useRouter} from "next/router";
 import Breadcrumbs from "@/components/Breadcrumbs";
 
@@ -7,7 +7,7 @@ export async function getStaticProps(context) {
     return fetchBackend(context.params.graph,`language/${context.params.lang}`, true)
 }
 
-export const getStaticPaths = fetchAllLanguagePaths
+export const getStaticPaths = fetchAllLanguagePathsEditable
 
 export default function CorpusTextEditor(params) {
     const langData = params.loaderData

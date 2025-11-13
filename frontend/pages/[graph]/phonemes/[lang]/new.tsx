@@ -1,13 +1,13 @@
 import {useRouter} from "next/router";
 import PhonemeForm from "@/forms/PhonemeForm";
-import {fetchAllLanguagePaths, fetchBackend} from "@/api";
+import {fetchAllLanguagePathsEditable, fetchBackend} from "@/api";
 import Breadcrumbs from "@/components/Breadcrumbs";
 
 export async function getStaticProps(context) {
     return fetchBackend(context.params.graph, `language/${context.params.lang}`, true)
 }
 
-export const getStaticPaths = fetchAllLanguagePaths
+export const getStaticPaths = fetchAllLanguagePathsEditable
 
 export default function PhonemeEditor() {
     const router = useRouter()
