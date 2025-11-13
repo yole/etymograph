@@ -177,7 +177,374 @@
                 "alveolo-palatal",
                 "affricate"
             ]
+        },
+        {
+            "id": 9955,
+            "graphemes": [
+                "p"
+            ],
+            "classes": [
+                "voiceless",
+                "bilabial",
+                "stop"
+            ],
+            "notes": ""
+        },
+        {
+            "id": 9956,
+            "graphemes": [
+                "t"
+            ],
+            "classes": [
+                "voiceless",
+                "dental",
+                "stop"
+            ],
+            "notes": ""
+        },
+        {
+            "id": 9957,
+            "graphemes": [
+                "ṭ"
+            ],
+            "classes": [
+                "voiceless",
+                "retroflex",
+                "stop"
+            ],
+            "notes": ""
+        },
+        {
+            "id": 9958,
+            "graphemes": [
+                "ph"
+            ],
+            "classes": [
+                "voiceless",
+                "aspirated",
+                "bilabial",
+                "stop"
+            ],
+            "notes": ""
+        },
+        {
+            "id": 9959,
+            "graphemes": [
+                "th"
+            ],
+            "classes": [
+                "voiceless",
+                "aspirated",
+                "dental",
+                "stop"
+            ],
+            "notes": ""
+        },
+        {
+            "id": 9960,
+            "graphemes": [
+                "ṭh"
+            ],
+            "classes": [
+                "voiceless",
+                "aspirated",
+                "retroflex",
+                "stop"
+            ],
+            "notes": ""
+        },
+        {
+            "id": 9961,
+            "graphemes": [
+                "b"
+            ],
+            "classes": [
+                "voiced",
+                "bilabial",
+                "stop"
+            ],
+            "notes": ""
+        },
+        {
+            "id": 9962,
+            "graphemes": [
+                "bh"
+            ],
+            "classes": [
+                "voiced",
+                "aspirated",
+                "bilabial",
+                "stop"
+            ],
+            "notes": ""
+        },
+        {
+            "id": 9963,
+            "graphemes": [
+                "d"
+            ],
+            "classes": [
+                "voiced",
+                "dental",
+                "stop"
+            ],
+            "notes": ""
+        },
+        {
+            "id": 9964,
+            "graphemes": [
+                "dh"
+            ],
+            "classes": [
+                "voiced",
+                "aspirated",
+                "dental",
+                "stop"
+            ],
+            "notes": ""
+        },
+        {
+            "id": 9965,
+            "graphemes": [
+                "ḍ"
+            ],
+            "classes": [
+                "voiced",
+                "retroflex",
+                "stop"
+            ],
+            "notes": ""
+        },
+        {
+            "id": 9966,
+            "graphemes": [
+                "ḍh"
+            ],
+            "classes": [
+                "voiced",
+                "aspirated",
+                "retroflex",
+                "stop"
+            ],
+            "notes": ""
+        },
+        {
+            "id": 9967,
+            "graphemes": [
+                "h"
+            ],
+            "classes": [
+                "voiced",
+                "glottal",
+                "fricative"
+            ],
+            "notes": ""
+        },
+        {
+            "id": 9968,
+            "graphemes": [
+                "s"
+            ],
+            "classes": [
+                "voiceless",
+                "dental",
+                "fricative"
+            ],
+            "notes": ""
+        },
+        {
+            "id": 9969,
+            "graphemes": [
+                "ṣ"
+            ],
+            "classes": [
+                "voiceless",
+                "retroflex",
+                "fricative"
+            ],
+            "notes": ""
+        },
+        {
+            "id": 9970,
+            "graphemes": [
+                "ś"
+            ],
+            "classes": [
+                "voiceless",
+                "alveolo-palatal",
+                "fricative"
+            ],
+            "notes": ""
+        },
+        {
+            "id": 9971,
+            "graphemes": [
+                "m"
+            ],
+            "classes": [
+                "voiced",
+                "bilabial",
+                "nasal",
+                "consonant"
+            ],
+            "notes": ""
+        },
+        {
+            "id": 9973,
+            "graphemes": [
+                "n"
+            ],
+            "classes": [
+                "voiced",
+                "dental",
+                "nasal",
+                "consonant"
+            ],
+            "notes": ""
+        },
+        {
+            "id": 9974,
+            "graphemes": [
+                "ṇ"
+            ],
+            "classes": [
+                "voiced",
+                "retroflex",
+                "nasal",
+                "consonant"
+            ],
+            "notes": ""
+        },
+        {
+            "id": 9975,
+            "graphemes": [
+                "ñ"
+            ],
+            "classes": [
+                "voiced",
+                "alveolo-palatal",
+                "nasal",
+                "consonant"
+            ],
+            "notes": ""
+        },
+        {
+            "id": 9976,
+            "graphemes": [
+                "v"
+            ],
+            "classes": [
+                "voiced",
+                "bilabial",
+                "approximant"
+            ],
+            "notes": ""
+        },
+        {
+            "id": 9977,
+            "graphemes": [
+                "y"
+            ],
+            "classes": [
+                "voiced",
+                "alveolo-palatal",
+                "approximant"
+            ],
+            "notes": ""
+        },
+        {
+            "id": 9978,
+            "graphemes": [
+                "ḥ"
+            ],
+            "classes": [
+                "voiceless",
+                "glottal",
+                "fricative"
+            ],
+            "notes": ""
+        },
+        {
+            "id": 9979,
+            "graphemes": [
+                "l"
+            ],
+            "classes": [
+                "voiced",
+                "dental",
+                "lateral",
+                "approximant"
+            ],
+            "notes": ""
+        },
+        {
+            "id": 9980,
+            "graphemes": [
+                "r"
+            ],
+            "classes": [
+                "voiced",
+                "retroflex",
+                "trill"
+            ],
+            "notes": ""
+        },
+        {
+            "id": 9981,
+            "graphemes": [
+                "r̥"
+            ],
+            "classes": [
+                "voiced",
+                "alveolar",
+                "trill",
+                "+syllabic"
+            ],
+            "notes": ""
+        },
+        {
+            "id": 9982,
+            "graphemes": [
+                "l̥"
+            ],
+            "classes": [
+                "voiced",
+                "lateral",
+                "approximant",
+                "+syllabic"
+            ],
+            "notes": ""
+        },
+        {
+            "id": 9983,
+            "graphemes": [
+                "e"
+            ],
+            "classes": [
+                "close-mid",
+                "front",
+                "unrounded",
+                "vowel"
+            ],
+            "notes": ""
+        },
+        {
+            "id": 9984,
+            "graphemes": [
+                "o"
+            ],
+            "classes": [
+                "close-mid",
+                "back",
+                "rounded",
+                "vowel"
+            ],
+            "notes": ""
         }
+    ],
+    "diphthongs": [
+        "ai",
+        "au"
     ],
     "protoLanguageShortName": "PIIr",
     "pos": [

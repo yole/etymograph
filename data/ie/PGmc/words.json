@@ -26934,5 +26934,27 @@
     {
         "id": 9650,
         "text": "setjan"
+    },
+    {
+        "id": 9946,
+        "text": "sternan-",
+        "gloss": "star",
+        "sourceRefs": [
+            {
+                "pubId": 10,
+                "refText": "88"
+            }
+        ]
+    },
+    {
+        "id": 9954,
+        "text": "frijaz",
+        "gloss": "free",
+        "sourceRefs": [
+            {
+                "pubId": 10,
+                "refText": "90"
+            }
+        ]
     }
 ]

@@ -11,7 +11,7 @@
     },
     {
         "id": 9942,
-        "text": "gʷih₃wós",
+        "text": "gʷih₃u̯ós",
         "gloss": "alive",
         "sourceRefs": [
             {
@@ -19,5 +19,77 @@
                 "refText": "86"
             }
         ]
+    },
+    {
+        "id": 9945,
+        "text": "h₂stér",
+        "gloss": "star",
+        "sourceRefs": [
+            {
+                "pubId": 10,
+                "refText": "88"
+            }
+        ]
+    },
+    {
+        "id": 9953,
+        "text": "priHós",
+        "gloss": "beloved",
+        "sourceRefs": [
+            {
+                "pubId": 10,
+                "refText": "90"
+            }
+        ]
+    },
+    {
+        "id": 9987,
+        "text": "ǵónu-",
+        "gloss": "knee"
+    },
+    {
+        "id": 9990,
+        "text": "deḱm̥",
+        "gloss": "ten"
+    },
+    {
+        "id": 9993,
+        "text": "meh₂tēr",
+        "gloss": "mother"
+    },
+    {
+        "id": 9996,
+        "text": "deiu̯o-",
+        "gloss": "god"
+    },
+    {
+        "id": 9999,
+        "text": "bʰréh₂ter-",
+        "gloss": "brother"
+    },
+    {
+        "id": 10001,
+        "text": "dʰeh₁inu-",
+        "gloss": "cow"
+    },
+    {
+        "id": 10003,
+        "text": "di̯ēus",
+        "gloss": "sky"
+    },
+    {
+        "id": 10005,
+        "text": "sékʷh₂ōi",
+        "gloss": "companion"
+    },
+    {
+        "id": 10008,
+        "text": "i̯ugóm",
+        "gloss": "yoke"
+    },
+    {
+        "id": 10010,
+        "text": "néu̯o-",
+        "gloss": "new"
     }
 ]

@@ -14413,6 +14413,7 @@
                 2060,
                 2119,
                 2156,
+                9647,
                 2953,
                 2365,
                 2391
@@ -15309,8 +15310,7 @@
                 2114,
                 2298,
                 2307,
-                2336,
-                2372
+                2336
             ],
             "sequenceId": 2027,
             "sourceRefs": [
@@ -31647,8 +31647,7 @@
                 1958,
                 1966,
                 2018,
-                2095,
-                3438
+                2095
             ],
             "sequenceId": 2162,
             "sourceRefs": [
@@ -52569,7 +52568,12 @@
         {
             "from": 9896,
             "to": 9895,
-            "type": "^"
+            "type": "^",
+            "ruleIds": [
+                9992,
+                9998
+            ],
+            "sequenceId": 9985
         },
         {
             "from": 9897,
@@ -52604,6 +52608,140 @@
                     "refText": "Ringe 2018:86"
                 }
             ]
+        },
+        {
+            "from": 9946,
+            "to": 9945,
+            "type": "^",
+            "ruleIds": [
+                9944
+            ],
+            "sequenceId": 9943,
+            "sourceRefs": [
+                {
+                    "pubId": 10,
+                    "refText": "88"
+                }
+            ]
+        },
+        {
+            "from": 9946,
+            "to": 8769,
+            "type": "="
+        },
+        {
+            "from": 9954,
+            "to": 9953,
+            "type": "^",
+            "ruleIds": [
+                9950
+            ],
+            "sequenceId": 9943,
+            "sourceRefs": [
+                {
+                    "pubId": 10,
+                    "refText": "90"
+                }
+            ]
+        },
+        {
+            "from": 9954,
+            "to": 7083,
+            "type": "="
+        },
+        {
+            "from": 9988,
+            "to": 9987,
+            "type": "^",
+            "ruleIds": [
+                9986
+            ],
+            "sequenceId": 9985
+        },
+        {
+            "from": 9991,
+            "to": 9990,
+            "type": "^",
+            "ruleIds": [
+                9992
+            ],
+            "sequenceId": 9985
+        },
+        {
+            "from": 9994,
+            "to": 9993,
+            "type": "^",
+            "ruleIds": [
+                9992
+            ],
+            "sequenceId": 9985
+        },
+        {
+            "from": 9997,
+            "to": 9996,
+            "type": "^",
+            "ruleIds": [
+                9992
+            ],
+            "sequenceId": 9985
+        },
+        {
+            "from": 10000,
+            "to": 9999,
+            "type": "^",
+            "ruleIds": [
+                9992,
+                9998
+            ],
+            "sequenceId": 9985
+        },
+        {
+            "from": 10002,
+            "to": 10001,
+            "type": "^",
+            "ruleIds": [
+                9992
+            ],
+            "sequenceId": 9985
+        },
+        {
+            "from": 10004,
+            "to": 10003,
+            "type": "^",
+            "ruleIds": [
+                10007,
+                9992
+            ],
+            "sequenceId": 9985
+        },
+        {
+            "from": 10006,
+            "to": 10005,
+            "type": "^",
+            "ruleIds": [
+                9992
+            ],
+            "sequenceId": 9985
+        },
+        {
+            "from": 10009,
+            "to": 10008,
+            "type": "^",
+            "ruleIds": [
+                10007,
+                9992
+            ],
+            "sequenceId": 9985
+        },
+        {
+            "from": 10011,
+            "to": 10010,
+            "type": "^",
+            "ruleIds": [
+                10007,
+                9992
+            ],
+            "sequenceId": 9985
         }
     ]
 }

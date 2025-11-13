@@ -251,5 +251,171 @@
         "fromPOS": [
             "N"
         ]
+    },
+    {
+        "id": 9986,
+        "name": "skt-brugmann",
+        "fromLang": "PIE",
+        "toLang": "Skt",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "Spe",
+                        "args": [
+                            "o > ā / _CV"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ]
+    },
+    {
+        "id": 9992,
+        "name": "skt-vowels",
+        "fromLang": "PIE",
+        "toLang": "Skt",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "Spe",
+                        "args": [
+                            "{ē|ō|eH|oH} > ā / {C|#}_{C|#}"
+                        ],
+                        "comment": "Long vowels"
+                    },
+                    {
+                        "type": "Spe",
+                        "args": [
+                            "H{e|o}i > e / {C|#}_{C|#}"
+                        ],
+                        "comment": "Diphthongs"
+                    },
+                    {
+                        "type": "Spe",
+                        "args": [
+                            "{e|o}i > e / {C|#}_{C|#}"
+                        ]
+                    },
+                    {
+                        "type": "Spe",
+                        "args": [
+                            "H{e|o}u > o / {C|#}_{C|#}"
+                        ]
+                    },
+                    {
+                        "type": "Spe",
+                        "args": [
+                            "{e|o}u > o / {C|#}_{C|#}"
+                        ]
+                    },
+                    {
+                        "type": "Spe",
+                        "args": [
+                            "{eHi|oHi} > e / {C|#}_{C|#}"
+                        ]
+                    },
+                    {
+                        "type": "Spe",
+                        "args": [
+                            "{eHu|oHu} > o / {C|#}_{C|#}"
+                        ]
+                    },
+                    {
+                        "type": "Spe",
+                        "args": [
+                            "{ē|ō}i > ā / _#"
+                        ],
+                        "comment": "Long diphthongs"
+                    },
+                    {
+                        "type": "Spe",
+                        "args": [
+                            "H{ē|ō}i > ai"
+                        ]
+                    },
+                    {
+                        "type": "Spe",
+                        "args": [
+                            "{ē|ō}i > ai"
+                        ]
+                    },
+                    {
+                        "type": "Spe",
+                        "args": [
+                            "H{ē|ō}u > au"
+                        ]
+                    },
+                    {
+                        "type": "Spe",
+                        "args": [
+                            "{ē|ō}u > au"
+                        ]
+                    },
+                    {
+                        "type": "Spe",
+                        "args": [
+                            "{He|e|Ho|o} > a / {C|#}_{C|#}"
+                        ],
+                        "comment": "Regular vowels"
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ]
+    },
+    {
+        "id": 9998,
+        "name": "skt-labials",
+        "fromLang": "PIE",
+        "toLang": "Skt",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "Spe",
+                        "args": [
+                            "bʰ > bh"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ]
+    },
+    {
+        "id": 10007,
+        "name": "skt-glides",
+        "fromLang": "PIE",
+        "toLang": "Skt",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "Spe",
+                        "args": [
+                            "i̯ > y"
+                        ]
+                    },
+                    {
+                        "type": "Spe",
+                        "args": [
+                            "u̯ > v"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ]
     }
 ]

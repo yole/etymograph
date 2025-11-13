@@ -1,0 +1,22 @@
+[
+    {
+        "id": 9985,
+        "name": "pie-to-skt",
+        "fromLang": "PIE",
+        "toLang": "Skt",
+        "steps": [
+            {
+                "ruleId": 9986
+            },
+            {
+                "ruleId": 10007
+            },
+            {
+                "ruleId": 9992
+            },
+            {
+                "ruleId": 9998
+            }
+        ]
+    }
+]

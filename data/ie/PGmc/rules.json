@@ -110,7 +110,7 @@
                     {
                         "type": "Spe",
                         "args": [
-                            "{h₁|h₂|h₃} > 0 / #_C"
+                            "H > 0 / #_C"
                         ]
                     }
                 ],
@@ -123,6 +123,72 @@
             {
                 "pubId": 10,
                 "refText": "88"
+            }
+        ]
+    },
+    {
+        "id": 9949,
+        "name": "pgmc-HV",
+        "fromLang": "PIE",
+        "toLang": "PGmc",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "Spe",
+                        "args": [
+                            "h₁e > e"
+                        ]
+                    },
+                    {
+                        "type": "Spe",
+                        "args": [
+                            "h₂e > a"
+                        ]
+                    },
+                    {
+                        "type": "Spe",
+                        "args": [
+                            "h₃e > o"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "sourceRefs": [
+            {
+                "pubId": 10,
+                "refText": "89"
+            }
+        ]
+    },
+    {
+        "id": 9950,
+        "name": "pgmc-iHV",
+        "fromLang": "PIE",
+        "toLang": "PGmc",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "Spe",
+                        "args": [
+                            "H > j / V_V"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "sourceRefs": [
+            {
+                "pubId": 10,
+                "refText": "90"
             }
         ]
     }

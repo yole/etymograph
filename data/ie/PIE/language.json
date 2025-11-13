@@ -32,7 +32,8 @@
             ],
             "classes": [
                 "glottal",
-                "stop"
+                "stop",
+                "H"
             ]
         },
         {
@@ -43,7 +44,8 @@
             "classes": [
                 "voiced",
                 "pharyngeal",
-                "fricative"
+                "fricative",
+                "H"
             ]
         },
         {
@@ -55,7 +57,8 @@
                 "labialized",
                 "voiced",
                 "pharyngeal",
-                "fricative"
+                "fricative",
+                "H"
             ]
         },
         {
@@ -123,7 +126,8 @@
                 "front",
                 "close",
                 "unrounded",
-                "vowel"
+                "vowel",
+                "I"
             ]
         },
         {
@@ -135,7 +139,8 @@
                 "back",
                 "close",
                 "rounded",
-                "vowel"
+                "vowel",
+                "I"
             ]
         },
         {
@@ -315,27 +320,130 @@
             ]
         },
         {
-            "id": 9684,
+            "id": 9947,
+            "graphemes": [
+                "m"
+            ],
+            "classes": [
+                "voiced",
+                "bilabial",
+                "nasal",
+                "consonant"
+            ]
+        },
+        {
+            "id": 9948,
+            "graphemes": [
+                "n"
+            ],
+            "classes": [
+                "voiced",
+                "alveolar",
+                "nasal",
+                "consonant"
+            ]
+        },
+        {
+            "id": 9951,
+            "graphemes": [
+                "a"
+            ],
+            "classes": [
+                "central",
+                "open",
+                "unrounded",
+                "vowel"
+            ],
+            "notes": "According to the Leiden School, this phoneme did not exist in PIE, but it's defined here to represent reconstructions from other sources."
+        },
+        {
+            "id": 9952,
+            "graphemes": [
+                "H"
+            ],
+            "classes": [
+                "H"
+            ],
+            "notes": "This represents any laryngeal"
+        },
+        {
+            "id": 10012,
+            "graphemes": [
+                "m̥"
+            ],
+            "classes": [
+                "voiced",
+                "bilabial",
+                "nasal",
+                "consonant",
+                "+syllabic"
+            ],
+            "notes": ""
+        },
+        {
+            "id": 10013,
+            "graphemes": [
+                "n̥"
+            ],
+            "classes": [
+                "voiced",
+                "alveolar",
+                "nasal",
+                "consonant",
+                "+syllabic"
+            ],
+            "notes": ""
+        },
+        {
+            "id": 10014,
             "graphemes": [
                 "i̯"
             ],
             "classes": [
                 "voiced",
-                "palatal",
+                "velar",
                 "approximant"
-            ]
+            ],
+            "notes": ""
         },
         {
-            "id": 9685,
+            "id": 10015,
             "graphemes": [
                 "u̯"
             ],
-            "sound": "w",
             "classes": [
                 "voiced",
-                "labiovelar",
+                "bilabial",
                 "approximant"
-            ]
+            ],
+            "notes": ""
+        },
+        {
+            "id": 10016,
+            "graphemes": [
+                "r̥"
+            ],
+            "classes": [
+                "voiced",
+                "alveolar",
+                "trill",
+                "+syllabic"
+            ],
+            "notes": ""
+        },
+        {
+            "id": 10017,
+            "graphemes": [
+                "l̥"
+            ],
+            "classes": [
+                "voiced",
+                "alveolar",
+                "lateral",
+                "approximant",
+                "+syllabic"
+            ],
+            "notes": ""
         }
     ],
     "diphthongs": [
@@ -343,6 +451,110 @@
         "ei",
         "ou",
         "oi"
+    ],
+    "pos": [
+        {
+            "name": "Noun",
+            "abbreviation": "N"
+        },
+        {
+            "name": "Adjective",
+            "abbreviation": "ADJ"
+        },
+        {
+            "name": "Verb",
+            "abbreviation": "V"
+        },
+        {
+            "name": "Pronoun",
+            "abbreviation": "PRON"
+        }
+    ],
+    "grammaticalCategories": [
+        {
+            "name": "Number",
+            "pos": [
+                "N",
+                "ADJ",
+                "V",
+                "PRON"
+            ],
+            "values": [
+                {
+                    "name": "Singular",
+                    "abbreviation": "Sg"
+                },
+                {
+                    "name": "Dual",
+                    "abbreviation": "Du"
+                },
+                {
+                    "name": "Plural",
+                    "abbreviation": "Pl"
+                }
+            ]
+        },
+        {
+            "name": "Person",
+            "pos": [
+                "V"
+            ],
+            "values": [
+                {
+                    "name": "1st",
+                    "abbreviation": "1"
+                },
+                {
+                    "name": "2nd",
+                    "abbreviation": "2"
+                },
+                {
+                    "name": "3rd",
+                    "abbreviation": "3"
+                }
+            ]
+        },
+        {
+            "name": "Case",
+            "pos": [
+                "N",
+                "ADJ"
+            ],
+            "values": [
+                {
+                    "name": "Nomiinative",
+                    "abbreviation": "NOM"
+                },
+                {
+                    "name": "Vocative",
+                    "abbreviation": "VOC"
+                },
+                {
+                    "name": "Accusative",
+                    "abbreviation": "ACC"
+                },
+                {
+                    "name": "Instrumental",
+                    "abbreviation": "INST"
+                },
+                {
+                    "name": "Dative",
+                    "abbreviation": "DAT"
+                },
+                {
+                    "name": "Ablative",
+                    "abbreviation": "ABL"
+                },
+                {
+                    "name": "Genitive",
+                    "abbreviation": "GEN"
+                },
+                {
+                    "name": "Locative",
+                    "abbreviation": "LOC"
+                }
+            ]
+        }
     ],
     "accentTypes": [
         "Acute"
