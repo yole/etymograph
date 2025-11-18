@@ -11,7 +11,7 @@ export const config = {
 }
 
 export async function getStaticProps(context) {
-    return fetchBackend(context.params.graph, `publication/${context.params.id}`)
+    return fetchBackend(context.params.graph, `publication/${context.params.id}`, true)
 }
 
 export async function getStaticPaths() {

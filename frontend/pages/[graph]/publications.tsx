@@ -5,10 +5,14 @@ import {useRouter} from "next/router";
 import {PublicationViewModel} from "@/models";
 import {PublicationText} from "@/pages/[graph]/publication/[id]";
 
+export const config = {
+    unstable_runtimeJS: true
+}
+
 export const getStaticPaths = fetchAllGraphs
 
 export async function getStaticProps(context) {
-    return fetchBackend(context.params.graph, `publications`)
+    return fetchBackend(context.params.graph, `publications`, true)
 }
 
 export default function Publications(props) {
