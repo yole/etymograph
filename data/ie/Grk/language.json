@@ -1,5 +1,20 @@
 {
-    "phonemes": [],
+    "phonemes": [
+        {
+            "id": 10018,
+            "graphemes": [
+                "α"
+            ],
+            "sound": "a",
+            "classes": [
+                "central",
+                "open",
+                "unrounded",
+                "vowel"
+            ],
+            "notes": ""
+        }
+    ],
     "protoLanguageShortName": "PIE",
     "accentTypes": [
         "Acute",

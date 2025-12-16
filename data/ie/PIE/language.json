@@ -450,7 +450,11 @@
         "eu",
         "ei",
         "ou",
-        "oi"
+        "oi",
+        "ēu",
+        "ēi",
+        "ōu",
+        "ōi"
     ],
     "pos": [
         {
@@ -468,6 +472,10 @@
         {
             "name": "Pronoun",
             "abbreviation": "PRON"
+        },
+        {
+            "name": "Affix",
+            "abbreviation": "AFF"
         }
     ],
     "grammaticalCategories": [
@@ -552,6 +560,32 @@
                 {
                     "name": "Locative",
                     "abbreviation": "LOC"
+                }
+            ]
+        }
+    ],
+    "wordClasses": [
+        {
+            "name": "Accent-ablaut paradigm",
+            "pos": [
+                "N"
+            ],
+            "values": [
+                {
+                    "name": "Hysterokinetic",
+                    "abbreviation": "HK"
+                },
+                {
+                    "name": "Proterokinetic",
+                    "abbreviation": "PK"
+                },
+                {
+                    "name": "Acrostatic",
+                    "abbreviation": "AS"
+                },
+                {
+                    "name": "Amphikinetic",
+                    "abbreviation": "AK"
                 }
             ]
         }

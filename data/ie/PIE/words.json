@@ -75,7 +75,11 @@
     {
         "id": 10003,
         "text": "di̯ēus",
-        "gloss": "sky"
+        "gloss": "sky",
+        "pos": "N",
+        "classes": [
+            "HK"
+        ]
     },
     {
         "id": 10005,
@@ -91,5 +95,26 @@
         "id": 10010,
         "text": "néu̯o-",
         "gloss": "new"
+    },
+    {
+        "id": 10068,
+        "text": "ph₂tḗr",
+        "gloss": "father",
+        "pos": "N",
+        "classes": [
+            "PK"
+        ]
+    },
+    {
+        "id": 10071,
+        "text": "m",
+        "gloss": "athematic acc. ending",
+        "pos": "AFF"
+    },
+    {
+        "id": 10074,
+        "text": "es",
+        "gloss": "athematic gen. ending",
+        "pos": "AFF"
     }
 ]

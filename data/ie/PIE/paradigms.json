@@ -1,0 +1,140 @@
+[
+    {
+        "id": 50,
+        "name": "Noun",
+        "rows": [
+            "nom",
+            "acc",
+            "gen",
+            "abl",
+            "ins",
+            "dat",
+            "loc"
+        ],
+        "columns": [
+            {
+                "title": "sg",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            null
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            10050
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            10053
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            10056
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            10059
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            10062
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            10065
+                        ]
+                    }
+                ]
+            },
+            {
+                "title": "pl",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            10048
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            10051
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            10054
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            10057
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            10060
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            10063
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            10066
+                        ]
+                    }
+                ]
+            },
+            {
+                "title": "du",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            10049
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            10052
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            10055
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            10058
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            10061
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            10064
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            10067
+                        ]
+                    }
+                ]
+            }
+        ],
+        "posList": [
+            "N"
+        ]
+    }
+]

@@ -1,0 +1,449 @@
+[
+    {
+        "id": 10048,
+        "name": "pie-nom-pl",
+        "fromLang": "PIE",
+        "toLang": "PIE",
+        "branches": [],
+        "addedCategories": ".NOM.PL",
+        "fromPOS": [
+            "N"
+        ]
+    },
+    {
+        "id": 10049,
+        "name": "pie-nom-du",
+        "fromLang": "PIE",
+        "toLang": "PIE",
+        "branches": [],
+        "addedCategories": ".NOM.DU",
+        "fromPOS": [
+            "N"
+        ]
+    },
+    {
+        "id": 10050,
+        "name": "pie-acc-sg",
+        "fromLang": "PIE",
+        "toLang": "PIE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "10070"
+                        ]
+                    },
+                    {
+                        "type": "AppendMorpheme",
+                        "args": [
+                            "10071"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".ACC.SG",
+        "fromPOS": [
+            "N"
+        ]
+    },
+    {
+        "id": 10051,
+        "name": "pie-acc-pl",
+        "fromLang": "PIE",
+        "toLang": "PIE",
+        "branches": [],
+        "addedCategories": ".ACC.PL",
+        "fromPOS": [
+            "N"
+        ]
+    },
+    {
+        "id": 10052,
+        "name": "pie-acc-du",
+        "fromLang": "PIE",
+        "toLang": "PIE",
+        "branches": [],
+        "addedCategories": ".ACC.DU",
+        "fromPOS": [
+            "N"
+        ]
+    },
+    {
+        "id": 10053,
+        "name": "pie-gen-sg",
+        "fromLang": "PIE",
+        "toLang": "PIE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "10073"
+                        ]
+                    },
+                    {
+                        "type": "AppendMorpheme",
+                        "args": [
+                            "10074"
+                        ]
+                    },
+                    {
+                        "type": "ApplyStress",
+                        "args": [
+                            "last"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".GEN.SG",
+        "fromPOS": [
+            "N"
+        ]
+    },
+    {
+        "id": 10054,
+        "name": "pie-gen-pl",
+        "fromLang": "PIE",
+        "toLang": "PIE",
+        "branches": [],
+        "addedCategories": ".GEN.PL",
+        "fromPOS": [
+            "N"
+        ]
+    },
+    {
+        "id": 10055,
+        "name": "pie-gen-du",
+        "fromLang": "PIE",
+        "toLang": "PIE",
+        "branches": [],
+        "addedCategories": ".GEN.DU",
+        "fromPOS": [
+            "N"
+        ]
+    },
+    {
+        "id": 10056,
+        "name": "pie-abl-sg",
+        "fromLang": "PIE",
+        "toLang": "PIE",
+        "branches": [],
+        "addedCategories": ".ABL.SG",
+        "fromPOS": [
+            "N"
+        ]
+    },
+    {
+        "id": 10057,
+        "name": "pie-abl-pl",
+        "fromLang": "PIE",
+        "toLang": "PIE",
+        "branches": [],
+        "addedCategories": ".ABL.PL",
+        "fromPOS": [
+            "N"
+        ]
+    },
+    {
+        "id": 10058,
+        "name": "pie-abl-du",
+        "fromLang": "PIE",
+        "toLang": "PIE",
+        "branches": [],
+        "addedCategories": ".ABL.DU",
+        "fromPOS": [
+            "N"
+        ]
+    },
+    {
+        "id": 10059,
+        "name": "pie-ins-sg",
+        "fromLang": "PIE",
+        "toLang": "PIE",
+        "branches": [],
+        "addedCategories": ".INS.SG",
+        "fromPOS": [
+            "N"
+        ]
+    },
+    {
+        "id": 10060,
+        "name": "pie-ins-pl",
+        "fromLang": "PIE",
+        "toLang": "PIE",
+        "branches": [],
+        "addedCategories": ".INS.PL",
+        "fromPOS": [
+            "N"
+        ]
+    },
+    {
+        "id": 10061,
+        "name": "pie-ins-du",
+        "fromLang": "PIE",
+        "toLang": "PIE",
+        "branches": [],
+        "addedCategories": ".INS.DU",
+        "fromPOS": [
+            "N"
+        ]
+    },
+    {
+        "id": 10062,
+        "name": "pie-dat-sg",
+        "fromLang": "PIE",
+        "toLang": "PIE",
+        "branches": [],
+        "addedCategories": ".DAT.SG",
+        "fromPOS": [
+            "N"
+        ]
+    },
+    {
+        "id": 10063,
+        "name": "pie-dat-pl",
+        "fromLang": "PIE",
+        "toLang": "PIE",
+        "branches": [],
+        "addedCategories": ".DAT.PL",
+        "fromPOS": [
+            "N"
+        ]
+    },
+    {
+        "id": 10064,
+        "name": "pie-dat-du",
+        "fromLang": "PIE",
+        "toLang": "PIE",
+        "branches": [],
+        "addedCategories": ".DAT.DU",
+        "fromPOS": [
+            "N"
+        ]
+    },
+    {
+        "id": 10065,
+        "name": "pie-loc-sg",
+        "fromLang": "PIE",
+        "toLang": "PIE",
+        "branches": [],
+        "addedCategories": ".LOC.SG",
+        "fromPOS": [
+            "N"
+        ]
+    },
+    {
+        "id": 10066,
+        "name": "pie-loc-pl",
+        "fromLang": "PIE",
+        "toLang": "PIE",
+        "branches": [],
+        "addedCategories": ".LOC.PL",
+        "fromPOS": [
+            "N"
+        ]
+    },
+    {
+        "id": 10067,
+        "name": "pie-loc-du",
+        "fromLang": "PIE",
+        "toLang": "PIE",
+        "branches": [],
+        "addedCategories": ".LOC.DU",
+        "fromPOS": [
+            "N"
+        ]
+    },
+    {
+        "id": 10069,
+        "name": "pie-e-grade-vowel",
+        "fromLang": "PIE",
+        "toLang": "PIE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "Spe",
+                        "args": [
+                            "ē > e"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ]
+    },
+    {
+        "id": 10070,
+        "name": "pie-strong-stem",
+        "fromLang": "PIE",
+        "toLang": "PIE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplySoundRule",
+                        "args": [
+                            "10069",
+                            "last nucleus vowel"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "relPhoneme",
+                    "relativeIndex": -1,
+                    "tcls": "nucleus vowel",
+                    "parameter": "ē",
+                    "relative": false
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "NoChange",
+                        "args": []
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "fromPOS": [
+            "N"
+        ],
+        "preInstructions": [
+            {
+                "type": "ApplyRule",
+                "args": [
+                    "10075"
+                ]
+            }
+        ]
+    },
+    {
+        "id": 10072,
+        "name": "pie-zero-grade-vowel",
+        "fromLang": "PIE",
+        "toLang": "PIE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "Spe",
+                        "args": [
+                            "{e|ē} > 0"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ]
+    },
+    {
+        "id": 10073,
+        "name": "pie-weak-stem",
+        "fromLang": "PIE",
+        "toLang": "PIE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplySoundRule",
+                        "args": [
+                            "10072",
+                            "last nucleus vowel"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "or",
+                    "members": [
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": -1,
+                            "tcls": "nucleus vowel",
+                            "parameter": "e",
+                            "relative": false
+                        },
+                        {
+                            "type": "relPhoneme",
+                            "relativeIndex": -1,
+                            "tcls": "nucleus vowel",
+                            "parameter": "ē",
+                            "relative": false
+                        }
+                    ]
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "NoChange",
+                        "args": []
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "preInstructions": [
+            {
+                "type": "ApplyRule",
+                "args": [
+                    "10075"
+                ]
+            }
+        ]
+    },
+    {
+        "id": 10075,
+        "name": "pie-remove-nom-ending",
+        "fromLang": "PIE",
+        "toLang": "PIE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            ""
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "s"
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "NoChange",
+                        "args": []
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ]
+    }
+]
