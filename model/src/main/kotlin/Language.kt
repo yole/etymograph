@@ -241,7 +241,7 @@ class Language(val name: String, val shortName: String) {
 
     private fun findWordCategory(abbreviation: String, wordCategories: List<WordCategory>): WordCategoryWithValue? {
         for (category in wordCategories) {
-            val gcValue = category.values.find { it.abbreviation == abbreviation }
+            val gcValue = category.values.find { it.abbreviation.equals(abbreviation, ignoreCase = true) }
             if (gcValue != null) {
                 return WordCategoryWithValue(category, gcValue)
             }
