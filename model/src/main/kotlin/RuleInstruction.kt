@@ -228,7 +228,7 @@ class ApplySoundRuleInstruction(language: Language, val ruleRef: RuleRef, arg: S
         val phonemes = PhonemeIterator(word.asPhonemic(), context.graph)
 
         if (phonemes.seek(seekTarget)) {
-            val count = if (seekTarget.syllableClass != null) (seekTarget.targetSyllable(word, phonemes.syllables)?.length ?: 1) else 1
+            val count = if (seekTarget.syllableClass != null) (seekTarget.targetSyllable(word, phonemes.syllables, context.graph)?.length ?: 1) else 1
             val rule = ruleRef.resolve()
             for (i in 0..<count) {
                 (rule.logic as SpeRuleLogic).applyToPhoneme(word, phonemes, context.graph, context.trace)
@@ -273,55 +273,27 @@ class ApplySoundRuleInstruction(language: Language, val ruleRef: RuleRef, arg: S
 
 class ApplyStressInstruction(val language: Language, arg: String, comment: String?) : RuleInstruction(InstructionType.ApplyStress, arg, comment) {
     private val syllableIndex: Int
-    private val root: Boolean
+    private val syllableClass: SyllableClass
 
     init {
         val ordinalParse = Ordinals.parse(arg) ?: throw RuleParseException("Can't parse ordinal '$arg'")
         syllableIndex = ordinalParse.first
-        if (ordinalParse.second == "root") {
-            root = true
-        }
-        else if (ordinalParse.second.isEmpty()) {
-            root = false
-        }
-        else {
-            throw RuleParseException("Can't parse syllable type ${ordinalParse.second}")
-        }
+        val syllableClassName = if (ordinalParse.second.isEmpty()) "syllable" else ordinalParse.second + " syllable"
+        syllableClass = SyllableClass.find(syllableClassName)
+            ?: throw RuleParseException("Unknown syllable class '$syllableClassName'")
     }
 
 
     override fun apply(word: Word, context: RuleApplyContext): Word {
-        var syllables = breakIntoSyllables(word)
-        if (root) {
-            val firstRootSyllable = findFirstRootSyllable(context.graph, word)
-            if (firstRootSyllable != null) {
-                syllables = syllables.drop(firstRootSyllable)
-            }
-        }
+        val syllables = breakIntoSyllables(word)
+        val matchingSyllables = syllables.filter { syllableClass.matches(word, it, context.graph) }
+        val syllable = Ordinals.at(matchingSyllables, syllableIndex) ?: return word
+
         val vowel = language.phonemeClassByName(PhonemeClass.vowelClassName) ?: return word
-        val syllable = Ordinals.at(syllables, syllableIndex) ?: return word
         val stressIndex = PhonemeIterator(word, context.graph).findMatchInRange(syllable.startIndex, syllable.endIndex, vowel)
             ?: return word
         word.stressedPhonemeIndex = stressIndex    // TODO create a copy of the word here?
         return word
-    }
-
-    private fun findFirstRootSyllable(graph: GraphRepository, word: Word): Int? {
-        val orthoWord = word.asOrthographic()
-        val segments = graph.restoreSegments(orthoWord).segments
-        val rootSegment = segments?.firstOrNull {
-            it.sourceRule == null &&
-                    (it.sourceWord == null ||
-                     (it.sourceWord.pos != KnownPartsOfSpeech.preverb.abbreviation &&
-                      it.sourceWord.pos != KnownPartsOfSpeech.affix.abbreviation))
-        }
-        if (rootSegment != null) {
-            val syllable = breakIntoSyllables(word).indexOfFirst { it.startIndex >= rootSegment.firstCharacter }
-            if (syllable >= 0) {
-                return syllable
-            }
-        }
-        return null
     }
 }
 

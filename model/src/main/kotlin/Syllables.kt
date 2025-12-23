@@ -7,23 +7,38 @@ class Syllable(val startIndex: Int, val endIndex: Int, val vowelIndex: Int, val 
 data class MutableSyllable(var startIndex: Int, var endIndex: Int, val vowelIndex: Int, var closed: Boolean)
 
 abstract class SyllableClass(val name: String) {
-    abstract fun matches(word: Word?, syllable: Syllable): Boolean
+    abstract fun matches(word: Word?, syllable: Syllable, repo: GraphRepository? = null): Boolean
 
     override fun toString(): String = name
 
     companion object {
         val syllable = object : SyllableClass("syllable") {
-            override fun matches(word: Word?, syllable: Syllable) = true
+            override fun matches(word: Word?, syllable: Syllable, repo: GraphRepository?) = true
         }
 
         val stressedSyllable = object : SyllableClass("stressed syllable") {
-            override fun matches(word: Word?, syllable: Syllable): Boolean {
+            override fun matches(word: Word?, syllable: Syllable, repo: GraphRepository?): Boolean {
                 val stress = word?.calcStressedPhonemeIndex(null) ?: return false
                 return stress in syllable.startIndex..<syllable.endIndex
             }
         }
 
-        val allClasses = listOf(syllable, stressedSyllable)
+        val rootSyllable = object : SyllableClass("root syllable") {
+            override fun matches(word: Word?, syllable: Syllable, repo: GraphRepository?): Boolean {
+                if (word == null) return false
+                val orthoWord = word.asOrthographic()
+                val segments = (repo?.restoreSegments(orthoWord) ?: orthoWord).segments
+                val rootSegment = segments?.firstOrNull {
+                    it.sourceRule == null &&
+                            (it.sourceWord == null ||
+                                    (it.sourceWord.pos != KnownPartsOfSpeech.preverb.abbreviation &&
+                                            it.sourceWord.pos != KnownPartsOfSpeech.affix.abbreviation))
+                } ?: return true
+                return syllable.startIndex >= rootSegment.firstCharacter
+            }
+        }
+
+        val allClasses = listOf(syllable, stressedSyllable, rootSyllable)
 
         fun find(name: String) = allClasses.find { it.name == name }
     }

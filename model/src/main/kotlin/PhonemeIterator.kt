@@ -69,12 +69,10 @@ class SeekTarget(val index: Int, val phonemeClass: PhonemeClass?, val syllableCl
             " ".rich() + (phonemeClass?.toRichText() ?: syllableClass!!.toString().rich())
     }
 
-    fun targetSyllable(word: Word?, syllables: List<Syllable>?): Syllable? {
+    fun targetSyllable(word: Word?, syllables: List<Syllable>?, repo: GraphRepository? = null): Syllable? {
         if (syllables == null) return null
-        val matchingSyllables = syllables.filter { syllableClass!!.matches(word, it) }
-        val absIndex = Ordinals.toAbsoluteIndex(index, syllables.size)
-        if (absIndex >= matchingSyllables.size) return null
-        return matchingSyllables[absIndex]
+        val matchingSyllables = syllables.filter { syllableClass!!.matches(word, it, repo) }
+        return Ordinals.at(matchingSyllables, index)
     }
 
     companion object {
@@ -290,7 +288,7 @@ class PhonemeIterator {
 
     fun seek(seekTarget: SeekTarget): Boolean {
         if (seekTarget.phonemeClass == null) {
-            val syllable = seekTarget.targetSyllable(word, syllables) ?: return false
+            val syllable = seekTarget.targetSyllable(word, syllables, repo) ?: return false
             advanceTo(syllable.startIndex)
             return true
         }

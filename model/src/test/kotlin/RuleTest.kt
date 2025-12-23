@@ -497,6 +497,18 @@ class RuleTest : QBaseTest() {
     }
 
     @Test
+    fun stressRootSimplex() {
+        val rule = parseRule(
+            q, q, """
+            number of syllables is 2:
+            - stress is on first root syllable
+            """.trimIndent()
+        )
+        val word = rule.apply(q.word("lasse"), emptyRepo)
+        assertEquals(1, word.stressedPhonemeIndex)
+    }
+
+    @Test
     fun serializeStressRule() {
         val rule = parseRule(
             q, q, """
