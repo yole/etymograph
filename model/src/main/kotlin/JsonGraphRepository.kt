@@ -957,6 +957,8 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                     relIndex.toString(),
                     seekTarget.toEditableText()
                 )
+                is ApplyStressInstruction ->
+                    if (accentType != null) arrayOf(arg, accentType.name) else arrayOf(arg)
                 else -> if (type.takesArgument) arrayOf(arg) else emptyArray()
             }
 
@@ -1043,7 +1045,9 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                 InstructionType.ApplySoundRule ->
                     ApplySoundRuleInstruction(fromLanguage, ruleRef(result, insnData.args[0].toInt()), insnData.args.getOrNull(1), insnData.comment)
                 InstructionType.ApplyStress ->
-                    ApplyStressInstruction(fromLanguage, insnData.args[0], insnData.comment)
+                    ApplyStressInstruction(fromLanguage, insnData.args[0],
+                        insnData.args.getOrNull(1)?.let { AccentType.find(it) },
+                        insnData.comment)
                 InstructionType.Prepend, InstructionType.Append ->
                     PrependAppendInstruction(insnData.type, fromLanguage, insnData.args[0], insnData.comment)
                 InstructionType.Insert ->

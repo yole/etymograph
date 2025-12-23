@@ -60,6 +60,10 @@ enum class AccentType(val combiningMark: Char) {
     fun combine(text: String): String {
         return Normalizer.normalize(text + combiningMark, Normalizer.Form.NFKC)
     }
+
+    companion object {
+        fun find(arg: String): AccentType? = entries.find { it.name.equals(arg, ignoreCase = true) }
+    }
 }
 
 class Word(

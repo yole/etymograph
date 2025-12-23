@@ -509,17 +509,32 @@ class RuleTest : QBaseTest() {
     }
 
     @Test
+    fun accent() {
+        val rule = parseRule(
+            q, q, """
+            number of syllables is 2:
+            - accent is acute on first syllable
+            """.trimIndent()
+        )
+        val word = rule.apply(q.word("lasse"), emptyRepo)
+        assertEquals(1, word.stressedPhonemeIndex)
+        assertEquals(AccentType.Acute, word.accentType)
+        assertEquals("accent is acute on first syllable", rule.firstInstruction.toEditableText(repo))
+    }
+
+    @Test
     fun serializeStressRule() {
         val rule = parseRule(
             q, q, """
             number of syllables is 2:
-            - stress is on first syllable
+            - accent is acute on first syllable
             """.trimIndent()
         )
 
         val serializedRule = rule.ruleToSerializedFormat()
         val branches = ruleBranchesFromSerializedFormat(emptyRepo, q, q, serializedRule.branches)
-        assertTrue(branches[0].instructions[0] is ApplyStressInstruction)
+        val instruction =  branches[0].instructions[0] as ApplyStressInstruction
+        assertEquals(AccentType.Acute, instruction.accentType)
     }
 
     @Test

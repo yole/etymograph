@@ -14,7 +14,7 @@ enum class InstructionType(
     Insert("insert", "insert '(.+)' (before|after) (.+)"),
     ApplyRule("apply rule", "apply rule '(.+)'", true),
     ApplySoundRule("apply sound rule", "apply sound rule '(.+)'( to (.+))?", true),
-    ApplyStress("stress is on", "stress is on (.+) syllable", true),
+    ApplyStress("stress is on", "(stress|accent) is (acute |grave |circumflex|)on (.+) syllable", true),
     ApplyClass("mark word as", "mark word as (.*)", true),
     Disallow("disallow", "disallow", false),
     Spe("SPE pattern", "", true);
@@ -120,7 +120,14 @@ open class RuleInstruction(val type: InstructionType, val arg: String, val comme
                     return when(type) {
                         InstructionType.ApplyRule -> ApplyRuleInstruction(context.ruleRefFactory(arg), comment)
                         InstructionType.ApplySoundRule -> ApplySoundRuleInstruction.parse(match, context, comment)
-                        InstructionType.ApplyStress -> ApplyStressInstruction(context.fromLanguage, arg, comment)
+                        InstructionType.ApplyStress -> {
+                            val accentTypeName = match.groupValues[2]
+                            val accentType = if (accentTypeName.isEmpty())
+                                null
+                            else
+                                AccentType.find(accentTypeName.trim()) ?: throw RuleParseException("Unknown accent type ${accentTypeName.trim()}")
+                            ApplyStressInstruction(context.fromLanguage, match.groupValues[3], accentType, comment)
+                        }
                         InstructionType.Prepend, InstructionType.Append ->
                             PrependAppendInstruction(type, context.fromLanguage, arg, comment)
                         InstructionType.PrependMorpheme, InstructionType.AppendMorpheme -> {
@@ -271,7 +278,9 @@ class ApplySoundRuleInstruction(language: Language, val ruleRef: RuleRef, arg: S
     }
 }
 
-class ApplyStressInstruction(val language: Language, arg: String, comment: String?) : RuleInstruction(InstructionType.ApplyStress, arg, comment) {
+class ApplyStressInstruction(val language: Language, arg: String, val accentType: AccentType?, comment: String?)
+    : RuleInstruction(InstructionType.ApplyStress, arg, comment)
+{
     private val syllableIndex: Int
     private val syllableClass: SyllableClass
 
@@ -293,7 +302,15 @@ class ApplyStressInstruction(val language: Language, arg: String, comment: Strin
         val stressIndex = PhonemeIterator(word, context.graph).findMatchInRange(syllable.startIndex, syllable.endIndex, vowel)
             ?: return word
         word.stressedPhonemeIndex = stressIndex    // TODO create a copy of the word here?
+        accentType?.let { word.accentType = it }
         return word
+    }
+
+    override fun toRichText(graph: GraphRepository): RichText {
+        if (accentType != null) {
+            return "accent is ".rich() + accentType.name.lowercase().rich(emph = true) + " on ".rich() + arg.rich(emph = true) + " syllable".rich()
+        }
+        return "stress is on ".rich() + arg.rich(emph = true) + " syllable".rich()
     }
 }
 

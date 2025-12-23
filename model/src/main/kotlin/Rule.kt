@@ -276,7 +276,8 @@ sealed class RuleLogic {
             phonemic = resultWord.isPhonemic,
             stressIndex = stressIndex,
             segments = if (normalizeSegments) Word.normalizeSegments(resultWord.segments) else resultWord.segments,
-            newClasses = resultWord.classes
+            newClasses = resultWord.classes,
+            accentType = resultWord.accentType
         )
         trace?.logRuleResult(rule, result)
         return result
