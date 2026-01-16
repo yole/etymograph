@@ -184,3 +184,28 @@ thead {
 .reportRichText {
   font-size: 11pt;
 }
+
+.uiButtonSubmit {
+  font-size: small;
+  margin: 10px 5px;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  background-color: #007aff;
+  color: white;
+}
+
+.uiButton {
+  font-size: small;
+  margin: 10px 5px;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  background-color: #e8e8e8;
+}
+
+.uiButton:hover {
+  border-color: black;
+}
+
+.uiButtonSubmit:hover {
+  border-color: black;
+}

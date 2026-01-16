@@ -529,8 +529,8 @@ function SingleWord({word}: { word: WordViewModel }) {
             />}
         {allowEdit() && !editMode && <>
             <p/>
-            <button onClick={() => setEditMode(true)}>{"Edit"}</button>&nbsp;
-            <button onClick={() => deleteWordClicked()}>Delete</button>
+            <button className="uiButton" onClick={() => setEditMode(true)}>{"Edit"}</button>&nbsp;
+            <button className="uiButton" onClick={() => deleteWordClicked()}>Delete</button>
         </>}
 
         {word.attestations.length > 0 &&

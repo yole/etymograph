@@ -86,11 +86,11 @@ export default function EtymographForm<Data, ResponseData=Data>(props: Etymograp
         <form onSubmit={methods.handleSubmit(saveForm)}>
             {props.children}
             <p>
-                <input type="submit" value={props.saveButtonText ?? "Save"}/>
+                <input type="submit" value={props.saveButtonText ?? "Save"} className="uiButtonSubmit"/>
                 {(props.cancelled !== undefined || setEditMode !== undefined) && <>{' '}
-                    <button onClick={() => props.cancelled !== undefined ? props.cancelled() : setEditMode(false)}>Cancel</button>
+                    <button className="uiButton" onClick={() => props.cancelled !== undefined ? props.cancelled() : setEditMode(false)}>Cancel</button>
                 </>}
-                {buttons.map(b => <>{' '}<button type="button" onClick={() => b.callback(methods.getValues())}>{b.text}</button></>)}
+                {buttons.map(b => <>{' '}<button type="button" className="uiButton" onClick={() => b.callback(methods.getValues())}>{b.text}</button></>)}
             </p>
             {errorText !== "" && <div className="errorText">{errorText}</div>}
         </form>
