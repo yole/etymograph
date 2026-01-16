@@ -538,6 +538,20 @@ class RuleTest : QBaseTest() {
     }
 
     @Test
+    fun stressInferAccentType() {
+        q.accentTypes = setOf(AccentType.Acute)
+        val rule = parseRule(
+            q, q, """
+            number of syllables is 2:
+            - stress is on first syllable
+            """.trimIndent()
+        )
+        val word = rule.apply(q.word("lasse"), emptyRepo)
+        assertEquals(1, word.stressedPhonemeIndex)
+        assertEquals(AccentType.Acute, word.accentType)
+    }
+
+    @Test
     fun preInstructions() {
         val ruleText = """
             | - prepend 'a'

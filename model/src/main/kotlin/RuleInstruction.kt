@@ -302,7 +302,8 @@ class ApplyStressInstruction(val language: Language, arg: String, val accentType
         val stressIndex = PhonemeIterator(word, context.graph).findMatchInRange(syllable.startIndex, syllable.endIndex, vowel)
             ?: return word
         word.stressedPhonemeIndex = stressIndex    // TODO create a copy of the word here?
-        accentType?.let { word.accentType = it }
+        val effectiveAccentType = accentType ?: language.accentTypes.singleOrNull()
+        effectiveAccentType?.let { word.accentType = it }
         return word
     }
 
