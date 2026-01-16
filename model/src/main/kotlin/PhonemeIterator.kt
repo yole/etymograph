@@ -57,6 +57,8 @@ object RelativeOrdinals : OrdinalTable(
     )
 )
 
+data class TargetRange(val startIndex: Int, val length: Int)
+
 class SeekTarget(val index: Int, val phonemeClass: PhonemeClass?, val syllableClass: SyllableClass? = null, val relative: Boolean = false) {
     fun toEditableText(): String {
         val targetSound = phonemeClass?.name ?: syllableClass!!.name
@@ -69,10 +71,13 @@ class SeekTarget(val index: Int, val phonemeClass: PhonemeClass?, val syllableCl
             " ".rich() + (phonemeClass?.toRichText() ?: syllableClass!!.toString().rich())
     }
 
-    fun targetSyllable(word: Word?, syllables: List<Syllable>?, repo: GraphRepository? = null): Syllable? {
-        if (syllables == null) return null
+    fun hasTargetRange() = syllableClass != null
+
+    fun targetRange(word: Word, repo: GraphRepository? = null): TargetRange? {
+        val syllables = breakIntoSyllables(word)
         val matchingSyllables = syllables.filter { syllableClass!!.matches(word, it, repo) }
-        return Ordinals.at(matchingSyllables, index)
+        val syllable = Ordinals.at(matchingSyllables, index) ?: return null
+        return TargetRange(syllable.startIndex, syllable.endIndex - syllable.startIndex)
     }
 
     companion object {
@@ -287,16 +292,17 @@ class PhonemeIterator {
     }
 
     fun seek(seekTarget: SeekTarget): Boolean {
-        if (seekTarget.phonemeClass == null) {
-            val syllable = seekTarget.targetSyllable(word, syllables, repo) ?: return false
-            advanceTo(syllable.startIndex)
+        if (seekTarget.hasTargetRange()) {
+            if (word == null) return false
+            val range = seekTarget.targetRange(word, repo) ?: return false
+            advanceTo(range.startIndex)
             return true
         }
+        val targetPhonemeClass = seekTarget.phonemeClass!!
         if (seekTarget.relative) {
-            return advanceToClass(seekTarget.phonemeClass, seekTarget.index)
+            return advanceToClass(targetPhonemeClass, seekTarget.index)
         }
 
-        val targetPhonemeClass = seekTarget.phonemeClass
         val matchingIndexes = mutableListOf<Int>()
         val copy = clone()
         for (targetPhonemeIndex in phonemes.indices) {
