@@ -558,7 +558,7 @@ open class InMemoryGraphRepository : GraphRepository() {
             }
             .map { listOf(it) }
         val steps = sequence.steps.map { langEntityById(it.ruleId) }
-        if (steps.all { it is RuleSequence }) {
+        if (steps.isNotEmpty() && steps.all { it is RuleSequence }) {
             val linksWithFirstSequence = findDerivationsWithSequence(steps.first() as RuleSequence)
             @Suppress("UNCHECKED_CAST")
             return directLinks + candidates + buildFollowupSteps(linksWithFirstSequence, steps as List<RuleSequence>)

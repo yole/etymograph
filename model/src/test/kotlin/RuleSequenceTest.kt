@@ -135,4 +135,11 @@ class RuleSequenceTest : QBaseTest() {
         assertEquals(aqLink, links.first().first())
         assertEquals(qLink, links.first()[1])
     }
+
+    @Test
+    fun findDerivationsWithEmptySequence() {
+        val emptySeq = repo.addRuleSequence("ce-q-empty", ce, q, emptyList())
+        val links = repo.findDerivationsWithSequence(emptySeq)
+        assertTrue(links.isEmpty())
+    }
 }
