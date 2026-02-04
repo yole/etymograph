@@ -21,6 +21,7 @@ export type AddWordParameters = {
     pos?: (string) | null;
     classes?: (string) | null;
     reconstructed?: (boolean) | null;
+    syllabographic?: (boolean) | null;
     source?: (string) | null;
     notes?: (string) | null;
     forceNew?: (boolean) | null;
@@ -762,6 +763,7 @@ export type WordViewModel = {
     pos?: (string) | null;
     classes: Array<(string)>;
     reconstructed: boolean;
+    syllabographic: boolean;
     source: Array<SourceRefViewModel>;
     sourceEditableText: string;
     notes?: (string) | null;

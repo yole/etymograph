@@ -1949,6 +1949,8 @@ components:
             type: "string"
         reconstructed:
           type: "boolean"
+        syllabographic:
+          type: "boolean"
         source:
           type: "array"
           items:
@@ -2013,6 +2015,7 @@ components:
         - "glossComputed"
         - "classes"
         - "reconstructed"
+        - "syllabographic"
         - "source"
         - "sourceEditableText"
         - "attestations"
@@ -2177,6 +2180,9 @@ components:
           type: "string"
           nullable: true
         reconstructed:
+          type: "boolean"
+          nullable: true
+        syllabographic:
           type: "boolean"
           nullable: true
         source:

@@ -445,7 +445,7 @@ function SingleWord({word}: { word: WordViewModel }) {
 
     function clearGloss() {
         callApiAndRefresh(
-            () => updateWord(graph, word.id, word.text, null, null, null, null, word.reconstructed, word.sourceEditableText, null),
+            () => updateWord(graph, word.id, word.text, null, null, null, null, word.reconstructed, word.syllabographic, word.sourceEditableText, null),
             router, setErrorText
         )
     }
@@ -520,6 +520,7 @@ function SingleWord({word}: { word: WordViewModel }) {
                 pos: word.pos,
                 classes: classesEditable,
                 reconstructed: word.reconstructed,
+                syllabographic: word.syllabographic,
                 source: word.sourceEditableText,
                 notes: word.notes
             }}

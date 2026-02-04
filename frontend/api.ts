@@ -143,12 +143,13 @@ export function addWord(
     pos?: string,
     classes?: string,
     reconstructed: boolean = false,
+    syllabographic: boolean = false,
     source: string = null,
     notes: string = null,
     forceNew: boolean = false
 ) {
     return postToBackend(`${graph}/word/${lang}`,
-        {text: text, gloss: gloss, fullGloss: fullGloss, pos, classes, reconstructed, source, notes, forceNew}
+        {text: text, gloss: gloss, fullGloss: fullGloss, pos, classes, reconstructed, syllabographic, source, notes, forceNew}
     )
 }
 
@@ -161,12 +162,13 @@ export function updateWord(
     pos: string,
     classes: string,
     reconstructed: boolean,
+    syllabographic: boolean,
     source: string,
     notes: string
 ) {
     return postToBackend(`${graph}/word/${id}/update`,
         {
-            text: text, gloss: gloss, fullGloss: fullGloss, pos, classes, reconstructed, source: source, notes
+            text: text, gloss: gloss, fullGloss: fullGloss, pos, classes, reconstructed, syllabographic, source: source, notes
         })
 }
 

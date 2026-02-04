@@ -31,7 +31,7 @@ class WordControllerTest {
 
     @Test
     fun testEmptyPOS() {
-        val addWordParams = WordController.AddWordParameters("ea", "be", "", "", "",false,"", "")
+        val addWordParams = WordController.AddWordParameters("ea", "be", "", "", "",false, false,"", "")
         val wordViewModel = wordController.addWord(graph, "q", addWordParams)
 
         assertNull(fixture.graph.wordsByText(fixture.q, "ea").single().pos)
@@ -44,11 +44,11 @@ class WordControllerTest {
     fun testValidateWordClass() {
         fixture.q.wordClasses.add(WordCategory("Gender", listOf("N"), listOf(WordCategoryValue("Male", "m"))))
 
-        val addWordParams = WordController.AddWordParameters("ea", "be", "", "N", "m", false, "", "")
+        val addWordParams = WordController.AddWordParameters("ea", "be", "", "N", "m", false, false, "", "")
         val wordViewModel = wordController.addWord(graph, "q", addWordParams)
         assertEquals(listOf("m"), wordViewModel.classes)
 
-        val badAddWordParams = WordController.AddWordParameters("ea", "be", "", "N", "f", false, "", "")
+        val badAddWordParams = WordController.AddWordParameters("ea", "be", "", "N", "f", false, false, "", "")
         Assert.assertThrows("Unknown word class 'f'", Exception::class.java) { wordController.addWord(graph, "q", badAddWordParams) }
     }
 

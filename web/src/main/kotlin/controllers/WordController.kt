@@ -93,6 +93,7 @@ class WordController(val dictionaryService: DictionaryService) {
         val pos: String?,
         val classes: List<String>,
         val reconstructed: Boolean,
+        val syllabographic: Boolean,
         val source: List<SourceRefViewModel>,
         val sourceEditableText: String,
         val notes: String?,
@@ -159,6 +160,7 @@ class WordController(val dictionaryService: DictionaryService) {
             pos,
             classes,
             reconstructed,
+            syllabographic,
             source.toViewModel(graph),
             source.toEditableText(graph),
             notes,
@@ -231,6 +233,7 @@ class WordController(val dictionaryService: DictionaryService) {
         val pos: String? = null,
         val classes: String? = null,
         val reconstructed: Boolean? = null,
+        val syllabographic: Boolean? = null,
         val source: String? = null,
         val notes: String? = null,
         val forceNew: Boolean? = false
@@ -254,6 +257,7 @@ class WordController(val dictionaryService: DictionaryService) {
                 params.pos.nullize(),
                 classes,
                 params.reconstructed ?: false,
+                params.syllabographic ?: false,
                 sourceRefs,
                 params.notes.nullize()
             )
@@ -266,6 +270,7 @@ class WordController(val dictionaryService: DictionaryService) {
                 params.pos.nullize(),
                 classes,
                 params.reconstructed ?: false,
+                params.syllabographic ?: false,
                 sourceRefs,
                 params.notes.nullize()
             )

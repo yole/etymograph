@@ -107,9 +107,9 @@ export default function WordForm(props: WordFormProps) {
 
     return <EtymographForm<WordFormData, WordViewModel>
         create={(data) => addWord(graph, data.language, data.text, data.gloss, data.fullGloss, data.pos, data.classes,
-            data.reconstructed, data.source, data.notes, forceNew)}
+            data.reconstructed, data.syllabographic, data.source, data.notes, forceNew)}
         update={(data) => updateWord(graph, props.updateId as number, data.text, data.gloss, data.fullGloss, data.pos, data.classes,
-            data.reconstructed, data.source, data.notes)}
+            data.reconstructed, data.syllabographic, data.source, data.notes)}
         {...props}
         submitted={submitted}
     >
@@ -150,6 +150,7 @@ export default function WordForm(props: WordFormProps) {
         </>}
         </tbody></table>
         {!props.hideReconstructed && <FormCheckbox id="reconstructed" label="Reconstructed"/>}
+        <FormCheckbox id="syllabographic" label="Syllabographic"/>
         {props.addToCompound !== undefined && <FormCheckbox id="markHead" label="Mark as head"/>}
     </EtymographForm>
 }
