@@ -96,7 +96,8 @@
         },
         {
             "name": "Hittite",
-            "shortName": "Hitt"
+            "shortName": "Hitt",
+            "syllabographic": true
         },
         {
             "name": "Ancient Greek",
@@ -52742,6 +52743,68 @@
                 9992
             ],
             "sequenceId": 9985
+        },
+        {
+            "from": 10089,
+            "to": 10090,
+            "type": "_"
+        },
+        {
+            "from": 10090,
+            "to": 10091,
+            "type": ">",
+            "ruleIds": [
+                10096
+            ]
+        },
+        {
+            "from": 10101,
+            "to": 10102,
+            "type": "_"
+        },
+        {
+            "from": 10103,
+            "to": 10104,
+            "type": "_"
+        },
+        {
+            "from": 10104,
+            "to": 10105,
+            "type": ">",
+            "ruleIds": [
+                10096
+            ]
+        },
+        {
+            "from": 10109,
+            "to": 10110,
+            "type": "_"
+        },
+        {
+            "from": 10110,
+            "to": 10111,
+            "type": ">",
+            "ruleIds": [
+                10096
+            ]
+        },
+        {
+            "from": 10116,
+            "to": 10117,
+            "type": "_"
+        },
+        {
+            "from": 10118,
+            "to": 10119,
+            "type": "_"
+        },
+        {
+            "from": 10119,
+            "to": 10120,
+            "type": ">",
+            "ruleIds": [
+                10096
+            ]
         }
     ]
 }

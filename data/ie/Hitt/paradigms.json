@@ -1,0 +1,176 @@
+[
+    {
+        "id": 51,
+        "name": "Present",
+        "rows": [
+            "1",
+            "2",
+            "3"
+        ],
+        "columns": [
+            {
+                "title": "Sg",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            10092
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            10094
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            10096
+                        ]
+                    }
+                ]
+            },
+            {
+                "title": "Pl",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            10093
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            10095
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            10097
+                        ]
+                    }
+                ]
+            }
+        ],
+        "posList": [
+            "V"
+        ]
+    },
+    {
+        "id": 52,
+        "name": "Noun",
+        "rows": [
+            "NOM",
+            "ACC",
+            "GEN",
+            "DAT",
+            "LOC",
+            "ALL",
+            "ERG",
+            "ABL",
+            "INS"
+        ],
+        "columns": [
+            {
+                "title": "SG",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            10126
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            10128
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            10130
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            10132
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            10134
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            10136
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            10138
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            10140
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            10142
+                        ]
+                    }
+                ]
+            },
+            {
+                "title": "PL",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            10127
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            10129
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            10131
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            10133
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            10135
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            10137
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            10139
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            10141
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            10143
+                        ]
+                    }
+                ]
+            }
+        ],
+        "posList": [
+            "N"
+        ]
+    }
+]

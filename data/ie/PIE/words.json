@@ -116,5 +116,23 @@
         "text": "es",
         "gloss": "athematic gen. ending",
         "pos": "AFF"
+    },
+    {
+        "id": 10076,
+        "text": "dóru",
+        "gloss": "wood",
+        "pos": "N",
+        "classes": [
+            "PK"
+        ]
+    },
+    {
+        "id": 10077,
+        "text": "dor"
+    },
+    {
+        "id": 10079,
+        "text": "u",
+        "pos": "AFF"
     }
 ]

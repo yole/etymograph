@@ -1,0 +1,322 @@
+[
+    {
+        "id": 10092,
+        "name": "hitt-1sg",
+        "fromLang": "Hitt",
+        "toLang": "Hitt",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'mi'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "wordIs",
+                    "wordClass": "mi"
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'ḫḫi'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".1SG",
+        "fromPOS": [
+            "V"
+        ]
+    },
+    {
+        "id": 10093,
+        "name": "hitt-1pl",
+        "fromLang": "Hitt",
+        "toLang": "Hitt",
+        "branches": [],
+        "addedCategories": ".1PL",
+        "fromPOS": [
+            "V"
+        ]
+    },
+    {
+        "id": 10094,
+        "name": "hitt-2sg",
+        "fromLang": "Hitt",
+        "toLang": "Hitt",
+        "branches": [],
+        "addedCategories": ".2SG",
+        "fromPOS": [
+            "V"
+        ]
+    },
+    {
+        "id": 10095,
+        "name": "hitt-2pl",
+        "fromLang": "Hitt",
+        "toLang": "Hitt",
+        "branches": [],
+        "addedCategories": ".2PL",
+        "fromPOS": [
+            "V"
+        ]
+    },
+    {
+        "id": 10096,
+        "name": "hitt-3sg",
+        "fromLang": "Hitt",
+        "toLang": "Hitt",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'zi'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "wordIs",
+                    "wordClass": "mi"
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'i'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".3SG",
+        "fromPOS": [
+            "V"
+        ]
+    },
+    {
+        "id": 10097,
+        "name": "hitt-3pl",
+        "fromLang": "Hitt",
+        "toLang": "Hitt",
+        "branches": [],
+        "addedCategories": ".3PL",
+        "fromPOS": [
+            "V"
+        ]
+    },
+    {
+        "id": 10126,
+        "name": "hitt-nom-sg",
+        "fromLang": "Hitt",
+        "toLang": "Hitt",
+        "branches": [],
+        "addedCategories": ".NOM.SG",
+        "fromPOS": [
+            "N"
+        ]
+    },
+    {
+        "id": 10127,
+        "name": "hitt-nom-pl",
+        "fromLang": "Hitt",
+        "toLang": "Hitt",
+        "branches": [],
+        "addedCategories": ".NOM.PL",
+        "fromPOS": [
+            "N"
+        ]
+    },
+    {
+        "id": 10128,
+        "name": "hitt-acc-sg",
+        "fromLang": "Hitt",
+        "toLang": "Hitt",
+        "branches": [],
+        "addedCategories": ".ACC.SG",
+        "fromPOS": [
+            "N"
+        ]
+    },
+    {
+        "id": 10129,
+        "name": "hitt-acc-pl",
+        "fromLang": "Hitt",
+        "toLang": "Hitt",
+        "branches": [],
+        "addedCategories": ".ACC.PL",
+        "fromPOS": [
+            "N"
+        ]
+    },
+    {
+        "id": 10130,
+        "name": "hitt-gen-sg",
+        "fromLang": "Hitt",
+        "toLang": "Hitt",
+        "branches": [],
+        "addedCategories": ".GEN.SG",
+        "fromPOS": [
+            "N"
+        ]
+    },
+    {
+        "id": 10131,
+        "name": "hitt-gen-pl",
+        "fromLang": "Hitt",
+        "toLang": "Hitt",
+        "branches": [],
+        "addedCategories": ".GEN.PL",
+        "fromPOS": [
+            "N"
+        ]
+    },
+    {
+        "id": 10132,
+        "name": "hitt-dat-sg",
+        "fromLang": "Hitt",
+        "toLang": "Hitt",
+        "branches": [],
+        "addedCategories": ".DAT.SG",
+        "fromPOS": [
+            "N"
+        ]
+    },
+    {
+        "id": 10133,
+        "name": "hitt-dat-pl",
+        "fromLang": "Hitt",
+        "toLang": "Hitt",
+        "branches": [],
+        "addedCategories": ".DAT.PL",
+        "fromPOS": [
+            "N"
+        ]
+    },
+    {
+        "id": 10134,
+        "name": "hitt-loc-sg",
+        "fromLang": "Hitt",
+        "toLang": "Hitt",
+        "branches": [],
+        "addedCategories": ".LOC.SG",
+        "fromPOS": [
+            "N"
+        ]
+    },
+    {
+        "id": 10135,
+        "name": "hitt-loc-pl",
+        "fromLang": "Hitt",
+        "toLang": "Hitt",
+        "branches": [],
+        "addedCategories": ".LOC.PL",
+        "fromPOS": [
+            "N"
+        ]
+    },
+    {
+        "id": 10136,
+        "name": "hitt-all-sg",
+        "fromLang": "Hitt",
+        "toLang": "Hitt",
+        "branches": [],
+        "addedCategories": ".ALL.SG",
+        "fromPOS": [
+            "N"
+        ]
+    },
+    {
+        "id": 10137,
+        "name": "hitt-all-pl",
+        "fromLang": "Hitt",
+        "toLang": "Hitt",
+        "branches": [],
+        "addedCategories": ".ALL.PL",
+        "fromPOS": [
+            "N"
+        ]
+    },
+    {
+        "id": 10138,
+        "name": "hitt-erg-sg",
+        "fromLang": "Hitt",
+        "toLang": "Hitt",
+        "branches": [],
+        "addedCategories": ".ERG.SG",
+        "fromPOS": [
+            "N"
+        ]
+    },
+    {
+        "id": 10139,
+        "name": "hitt-erg-pl",
+        "fromLang": "Hitt",
+        "toLang": "Hitt",
+        "branches": [],
+        "addedCategories": ".ERG.PL",
+        "fromPOS": [
+            "N"
+        ]
+    },
+    {
+        "id": 10140,
+        "name": "hitt-abl-sg",
+        "fromLang": "Hitt",
+        "toLang": "Hitt",
+        "branches": [],
+        "addedCategories": ".ABL.SG",
+        "fromPOS": [
+            "N"
+        ]
+    },
+    {
+        "id": 10141,
+        "name": "hitt-abl-pl",
+        "fromLang": "Hitt",
+        "toLang": "Hitt",
+        "branches": [],
+        "addedCategories": ".ABL.PL",
+        "fromPOS": [
+            "N"
+        ]
+    },
+    {
+        "id": 10142,
+        "name": "hitt-ins-sg",
+        "fromLang": "Hitt",
+        "toLang": "Hitt",
+        "branches": [],
+        "addedCategories": ".INS.SG",
+        "fromPOS": [
+            "N"
+        ]
+    },
+    {
+        "id": 10143,
+        "name": "hitt-ins-pl",
+        "fromLang": "Hitt",
+        "toLang": "Hitt",
+        "branches": [],
+        "addedCategories": ".INS.PL",
+        "fromPOS": [
+            "N"
+        ]
+    }
+]

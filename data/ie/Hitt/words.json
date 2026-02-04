@@ -1,7 +1,195 @@
 [
     {
         "id": 9900,
-        "text": "nepis",
-        "gloss": "cloud"
+        "text": "nepiš",
+        "gloss": "cloud",
+        "pos": "N"
+    },
+    {
+        "id": 10080,
+        "text": "_I-NA",
+        "gloss": "to",
+        "syllabographic": true
+    },
+    {
+        "id": 10081,
+        "text": "^d^SÎN",
+        "gloss": "Moon-god",
+        "syllabographic": true
+    },
+    {
+        "id": 10082,
+        "text": "LUGAL.GAL",
+        "gloss": "great king",
+        "syllabographic": true
+    },
+    {
+        "id": 10084,
+        "text": "_Ú-UL",
+        "gloss": "not",
+        "syllabographic": true
+    },
+    {
+        "id": 10085,
+        "text": "nu-mu",
+        "syllabographic": true
+    },
+    {
+        "id": 10086,
+        "text": "nu",
+        "gloss": "and",
+        "pos": "CONJ"
+    },
+    {
+        "id": 10088,
+        "text": "mu",
+        "gloss": "me",
+        "pos": "PRON",
+        "classes": [
+            "clitic"
+        ]
+    },
+    {
+        "id": 10089,
+        "text": "iš-ta-ma-aš-zi",
+        "syllabographic": true
+    },
+    {
+        "id": 10090,
+        "text": "ištamašzi"
+    },
+    {
+        "id": 10091,
+        "text": "ištamašš-",
+        "gloss": "listen",
+        "pos": "V",
+        "classes": [
+            "mi"
+        ]
+    },
+    {
+        "id": 10101,
+        "text": "ma-a-an",
+        "syllabographic": true
+    },
+    {
+        "id": 10102,
+        "text": "mān",
+        "gloss": "when",
+        "pos": "CONJ"
+    },
+    {
+        "id": 10103,
+        "text": "a-ki",
+        "syllabographic": true
+    },
+    {
+        "id": 10104,
+        "text": "aki"
+    },
+    {
+        "id": 10105,
+        "text": "āk-",
+        "gloss": "die",
+        "pos": "V",
+        "classes": [
+            "hi"
+        ]
+    },
+    {
+        "id": 10107,
+        "text": "ta",
+        "gloss": "and",
+        "pos": "CONJ",
+        "syllabographic": true
+    },
+    {
+        "id": 10108,
+        "text": "KÁ.GAL",
+        "gloss": "gate",
+        "pos": "N",
+        "syllabographic": true
+    },
+    {
+        "id": 10109,
+        "text": "ḫa-at-ki",
+        "syllabographic": true
+    },
+    {
+        "id": 10110,
+        "text": "ḫatki",
+        "pos": "V"
+    },
+    {
+        "id": 10111,
+        "text": "ḫatk-",
+        "gloss": "close",
+        "pos": "V",
+        "classes": [
+            "hi"
+        ]
+    },
+    {
+        "id": 10113,
+        "text": "ma-a-an-kán",
+        "syllabographic": true
+    },
+    {
+        "id": 10115,
+        "text": "kán",
+        "gloss": "-",
+        "pos": "CONJ",
+        "classes": [
+            "clitic"
+        ]
+    },
+    {
+        "id": 10116,
+        "text": "na-a-ú-i",
+        "syllabographic": true
+    },
+    {
+        "id": 10117,
+        "text": "nau̯i",
+        "gloss": "not yet",
+        "pos": "ADV"
+    },
+    {
+        "id": 10118,
+        "text": "u-up-zi",
+        "syllabographic": true
+    },
+    {
+        "id": 10119,
+        "text": "ūpzi"
+    },
+    {
+        "id": 10120,
+        "text": "ūp-",
+        "gloss": "go up",
+        "pos": "V",
+        "classes": [
+            "mi"
+        ]
+    },
+    {
+        "id": 10122,
+        "text": "nu-kán",
+        "syllabographic": true
+    },
+    {
+        "id": 10124,
+        "text": "_A-NA",
+        "gloss": "on",
+        "pos": "PREP",
+        "syllabographic": true
+    },
+    {
+        "id": 10125,
+        "text": "SISKUR",
+        "gloss": "ritual",
+        "fullGloss": "offer, ritual",
+        "pos": "N",
+        "syllabographic": true
     }
 ]

@@ -1,0 +1,107 @@
+[
+    {
+        "id": 10083,
+        "text": "nu-mu _Ú-UL iš-ta-ma-aš-zi",
+        "title": "Example 1.1",
+        "words": [
+            {
+                "index": 1,
+                "id": 10084,
+                "contextGloss": ""
+            },
+            {
+                "index": 0,
+                "id": 10085,
+                "contextGloss": ""
+            },
+            {
+                "index": 2,
+                "id": 10089,
+                "contextGloss": ""
+            }
+        ]
+    },
+    {
+        "id": 10100,
+        "text": "ma-a-an _I-NA UD.15.KAM ^d^SÎN-aš a-ki LUGAL.GAL a-ki",
+        "title": "Example 1.2",
+        "words": [
+            {
+                "index": 0,
+                "id": 10101,
+                "contextGloss": ""
+            },
+            {
+                "index": 6,
+                "id": 10103,
+                "contextGloss": ""
+            }
+        ]
+    },
+    {
+        "id": 10106,
+        "text": "ta KÁ.GAL ḫa-at-ki",
+        "title": "Example 1.3",
+        "words": [
+            {
+                "index": 0,
+                "id": 10107,
+                "contextGloss": ""
+            },
+            {
+                "index": 1,
+                "id": 10108,
+                "contextGloss": ""
+            },
+            {
+                "index": 2,
+                "id": 10109,
+                "contextGloss": ""
+            }
+        ]
+    },
+    {
+        "id": 10112,
+        "text": "ma-a-an-kán ^d^SÎN na-a-ú-i u-up-zi",
+        "title": "Example 1.4",
+        "words": [
+            {
+                "index": 0,
+                "id": 10113,
+                "contextGloss": ""
+            },
+            {
+                "index": 2,
+                "id": 10116,
+                "contextGloss": ""
+            },
+            {
+                "index": 3,
+                "id": 10118,
+                "contextGloss": ""
+            }
+        ]
+    },
+    {
+        "id": 10121,
+        "text": "nu-kán _A-NA ^d^IŠTAR an-na-al-li an-na-al-la-an SISKUR ḫa-pu-ša-an-zi",
+        "title": "Example 1.5",
+        "words": [
+            {
+                "index": 0,
+                "id": 10122,
+                "contextGloss": ""
+            },
+            {
+                "index": 1,
+                "id": 10124,
+                "contextGloss": ""
+            },
+            {
+                "index": 5,
+                "id": 10125,
+                "contextGloss": ""
+            }
+        ]
+    }
+]

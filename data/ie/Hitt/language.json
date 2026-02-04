@@ -1,4 +1,344 @@
 {
-    "phonemes": [],
-    "protoLanguageShortName": "PAnat"
+    "phonemes": [
+        {
+            "id": 10098,
+            "graphemes": [
+                "ḫ"
+            ],
+            "classes": [
+                "voiceless",
+                "uvular",
+                "fricative"
+            ],
+            "notes": ""
+        },
+        {
+            "id": 10099,
+            "graphemes": [
+                "š"
+            ],
+            "classes": [
+                "voiceless",
+                "alveolar",
+                "fricative"
+            ],
+            "notes": ""
+        },
+        {
+            "id": 10144,
+            "graphemes": [
+                "a"
+            ],
+            "classes": [
+                "central",
+                "open",
+                "unrounded",
+                "vowel"
+            ],
+            "notes": ""
+        },
+        {
+            "id": 10145,
+            "graphemes": [
+                "e"
+            ],
+            "classes": [
+                "close-mid",
+                "front",
+                "unrounded",
+                "vowel"
+            ],
+            "notes": ""
+        },
+        {
+            "id": 10146,
+            "graphemes": [
+                "i"
+            ],
+            "classes": [
+                "front",
+                "close",
+                "unrounded",
+                "vowel"
+            ],
+            "notes": ""
+        },
+        {
+            "id": 10147,
+            "graphemes": [
+                "k"
+            ],
+            "classes": [
+                "voiceless",
+                "velar",
+                "stop"
+            ],
+            "notes": ""
+        },
+        {
+            "id": 10148,
+            "graphemes": [
+                "l"
+            ],
+            "classes": [
+                "voiced",
+                "alveolar",
+                "lateral",
+                "approximant"
+            ],
+            "notes": ""
+        },
+        {
+            "id": 10149,
+            "graphemes": [
+                "m"
+            ],
+            "classes": [
+                "voiced",
+                "bilabial",
+                "nasal",
+                "consonant"
+            ],
+            "notes": ""
+        },
+        {
+            "id": 10150,
+            "graphemes": [
+                "n"
+            ],
+            "classes": [
+                "voiced",
+                "alveolar",
+                "nasal",
+                "consonant"
+            ],
+            "notes": ""
+        },
+        {
+            "id": 10151,
+            "graphemes": [
+                "p"
+            ],
+            "classes": [
+                "voiceless",
+                "bilabial",
+                "stop"
+            ],
+            "notes": ""
+        },
+        {
+            "id": 10152,
+            "graphemes": [
+                "t"
+            ],
+            "classes": [
+                "voiceless",
+                "alveolar",
+                "stop"
+            ],
+            "notes": ""
+        },
+        {
+            "id": 10153,
+            "graphemes": [
+                "u"
+            ],
+            "classes": [
+                "back",
+                "close",
+                "rounded",
+                "vowel"
+            ],
+            "notes": ""
+        },
+        {
+            "id": 10154,
+            "graphemes": [
+                "z"
+            ],
+            "classes": [
+                "voiced",
+                "alveolar",
+                "fricative"
+            ],
+            "notes": ""
+        }
+    ],
+    "protoLanguageShortName": "PAnat",
+    "pos": [
+        {
+            "name": "Noun",
+            "abbreviation": "N"
+        },
+        {
+            "name": "Verb",
+            "abbreviation": "V"
+        },
+        {
+            "name": "Adjective",
+            "abbreviation": "ADJ"
+        },
+        {
+            "name": "Adverb",
+            "abbreviation": "ADV"
+        },
+        {
+            "name": "Preposition",
+            "abbreviation": "PREP"
+        },
+        {
+            "name": "Conjunction",
+            "abbreviation": "CONJ"
+        },
+        {
+            "name": "Pronoun",
+            "abbreviation": "PRON"
+        }
+    ],
+    "grammaticalCategories": [
+        {
+            "name": "Number",
+            "pos": [
+                "N",
+                "V"
+            ],
+            "values": [
+                {
+                    "name": "Singular",
+                    "abbreviation": "SG"
+                },
+                {
+                    "name": "Plural",
+                    "abbreviation": "PL"
+                }
+            ]
+        },
+        {
+            "name": "Gender",
+            "pos": [
+                "ADJ"
+            ],
+            "values": [
+                {
+                    "name": "Common",
+                    "abbreviation": "C"
+                },
+                {
+                    "name": "Neuter",
+                    "abbreviation": "N"
+                }
+            ]
+        },
+        {
+            "name": "Person",
+            "pos": [
+                "V"
+            ],
+            "values": [
+                {
+                    "name": "First person",
+                    "abbreviation": "1"
+                },
+                {
+                    "name": "Second person",
+                    "abbreviation": "2"
+                },
+                {
+                    "name": "Third person",
+                    "abbreviation": "3"
+                }
+            ]
+        },
+        {
+            "name": "Case",
+            "pos": [
+                "N"
+            ],
+            "values": [
+                {
+                    "name": "Nominative",
+                    "abbreviation": "NOM"
+                },
+                {
+                    "name": "Accusative",
+                    "abbreviation": "ACC"
+                },
+                {
+                    "name": "Genitive",
+                    "abbreviation": "GEN"
+                },
+                {
+                    "name": "Dative",
+                    "abbreviation": "DAT"
+                },
+                {
+                    "name": "Locative",
+                    "abbreviation": "LOC"
+                },
+                {
+                    "name": "Allative",
+                    "abbreviation": "ALL"
+                },
+                {
+                    "name": "Ergative",
+                    "abbreviation": "ERG"
+                },
+                {
+                    "name": "Ablative",
+                    "abbreviation": "ABL"
+                },
+                {
+                    "name": "Instrumental",
+                    "abbreviation": "INS"
+                }
+            ]
+        }
+    ],
+    "wordClasses": [
+        {
+            "name": "Gender",
+            "pos": [
+                "N"
+            ],
+            "values": [
+                {
+                    "name": "Common",
+                    "abbreviation": "C"
+                },
+                {
+                    "name": "Neuter",
+                    "abbreviation": "N"
+                }
+            ]
+        },
+        {
+            "name": "Clitic",
+            "pos": [
+                "CONJ",
+                "PRON"
+            ],
+            "values": [
+                {
+                    "name": "clitic",
+                    "abbreviation": "clitic"
+                }
+            ]
+        },
+        {
+            "name": "Conjugation",
+            "pos": [
+                "V"
+            ],
+            "values": [
+                {
+                    "name": "mi",
+                    "abbreviation": "mi"
+                },
+                {
+                    "name": "hi",
+                    "abbreviation": "hi"
+                }
+            ]
+        }
+    ]
 }

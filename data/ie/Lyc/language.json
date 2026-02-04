@@ -15,6 +15,24 @@
         }
     ],
     "protoLanguageShortName": "PAnat",
+    "pos": [
+        {
+            "name": "Noun",
+            "abbreviation": "N"
+        },
+        {
+            "name": "Verb",
+            "abbreviation": "V"
+        },
+        {
+            "name": "Pronoun",
+            "abbreviation": "PRON"
+        },
+        {
+            "name": "Conjunction",
+            "abbreviation": "CONJ"
+        }
+    ],
     "grammaticalCategories": [
         {
             "name": "Case",
@@ -60,5 +78,21 @@
                 }
             ]
         }
-    ]
+    ],
+    "wordClasses": [
+        {
+            "name": "Clitic",
+            "pos": [
+                "CONJ",
+                "PRON"
+            ],
+            "values": [
+                {
+                    "name": "clitic",
+                    "abbreviation": "clitic"
+                }
+            ]
+        }
+    ],
+    "dictionarySettings": ""
 }
