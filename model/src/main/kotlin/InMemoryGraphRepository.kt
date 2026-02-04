@@ -166,7 +166,7 @@ open class InMemoryGraphRepository : GraphRepository() {
         val result = mutableSetOf<Word>()
         result.add(word)
         for (link in getLinksTo(word)) {
-            if (link.fromEntity is Word && (link.type == Link.Derived || link.type == Link.Variation)) {
+            if (link.fromEntity is Word && (link.type == Link.Derived || link.type == Link.Variation || link.type == Link.Transcription)) {
                 result.add(link.fromEntity)
             }
         }
