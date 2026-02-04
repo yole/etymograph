@@ -5,7 +5,7 @@ import WordLink from "@/components/WordLink";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import {GraphContext} from "@/components/Contexts";
 import Link from "next/link";
-import {WordParadigmListModel, WordParadigmModel} from "@/models";
+import {DictionaryViewModel, WordParadigmListModel} from "@/models";
 
 export const config = {
     unstable_runtimeJS: true
@@ -21,8 +21,9 @@ export async function getStaticPaths() {
     for (const p of langPaths.paths) {
         let url = `dictionary/${p.params.lang}/all`
         const dictData = await fetchBackend(p.params.graph, url)
-        for (const word of dictData.props.loaderData.words) {
-            paths.push({params: {graph: p.params.graph, lang: p.params.lang, id: word.id.toString()}})
+        const dictViewModel = dictData.props.loaderData as DictionaryViewModel
+        for (const word of dictViewModel.words) {
+            paths.push({params: {graph: p.params.graph, lang: p.params.lang, id: word.ref.id.toString()}})
         }
     }
     return {paths, fallback: allowEdit()}
