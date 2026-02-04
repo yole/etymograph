@@ -21,7 +21,7 @@ export default function EtymographFormView(props: EtymographFormViewProps) {
     return <EditModeContext.Provider value={editMode}>
         <SetEditModeContext.Provider value={setEditMode}>
             {props.children}
-            {allowEdit() && !editMode && <button onClick={() => setEditMode(true)}>{editButtonTitle}</button>}
+            {allowEdit() && !editMode && <button className="uiButton" onClick={() => setEditMode(true)}>{editButtonTitle}</button>}
         </SetEditModeContext.Provider>
     </EditModeContext.Provider>
 }
