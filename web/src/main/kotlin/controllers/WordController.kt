@@ -13,6 +13,7 @@ const val explicitStressMark = 'ˈ'
 data class WordRefViewModel(
     val id: Int,
     val text: String,
+    val urlKey: String?,
     val syllabogramSequence: SyllabogramSequence?,
     val language: String,
     val displayLanguage: String,
@@ -31,13 +32,17 @@ data class ParseCandidateViewModel(
 
 fun Word.toRefViewModel(graph: GraphRepository) =
     WordRefViewModel(
-        id, text, syllabogramSequence,
+        id, text,
+        urlKey(text),
+        syllabogramSequence,
         language.shortName,
         if (reconstructed) "pre-" + language.shortName else language.shortName,
         getOrComputeGloss(graph),
-        graph.isHomonym(this),
+        graph.isHomonym(this) || urlKey(text) != null,
         reconstructed || language.reconstructed
     )
+
+fun urlKey(text: String) = if ('^' in text) text.replace("^", "") else null
 
 @RestController
 class WordController(val dictionaryService: DictionaryService) {

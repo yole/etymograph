@@ -1802,6 +1802,9 @@ components:
           format: "int32"
         text:
           type: "string"
+        urlKey:
+          type: "string"
+          nullable: true
         syllabogramSequence:
           nullable: true
           $ref: "#/components/schemas/SyllabogramSequence"

@@ -57,9 +57,9 @@ export async function getStaticPaths() {
         const dictData = await fetchBackend(path.params.graph, url)
         const dictViewModel = dictData.props.loaderData as DictionaryViewModel
         for (const word of dictViewModel.words) {
-            paths.push({params: {...path.params, text: [word.ref.text.toLowerCase()]}})
+            paths.push({params: {...path.params, text: [word.ref.urlKey ?? word.ref.text.toLowerCase()]}})
             if (word.ref.homonym) {
-                paths.push({params: {...path.params, text: [word.ref.text.toLowerCase(), word.ref.id.toString()]}})
+                paths.push({params: {...path.params, text: [word.ref.urlKey ?? word.ref.text.toLowerCase(), word.ref.id.toString()]}})
             }
         }
     }

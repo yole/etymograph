@@ -737,6 +737,7 @@ export type WordParadigmModel = {
 export type WordRefViewModel = {
     id: number;
     text: string;
+    urlKey?: (string) | null;
     syllabogramSequence?: (SyllabogramSequence) | null;
     language: string;
     displayLanguage: string;

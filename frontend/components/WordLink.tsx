@@ -15,7 +15,7 @@ export default function WordLink(params: WordLinkProps) {
     const graph = router.query.graph
 
     const word = params.word
-    let linkTarget = `/${graph}/word/${word.language}/${word.text.toLowerCase()}`
+    let linkTarget = `/${graph}/word/${word.language}/${word.urlKey ?? word.text.toLowerCase()}`
     if (word.homonym) {
         linkTarget += `/${word.id}`
     }
