@@ -31,12 +31,11 @@ import {GlobalStateContext, GraphContext} from "@/components/Contexts";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import WordGloss, {WordFullGloss} from "@/components/WordGloss";
 import {
-    CompoundComponentsViewModel, LinkTypeViewModel, LinkWordViewModel,
+    CompoundComponentsViewModel, DictionaryViewModel, LinkTypeViewModel, LinkWordViewModel,
     LookupVariantViewModel,
     ParseCandidateViewModel, WordRefViewModel,
     WordViewModel
 } from "@/models";
-import {set} from "react-hook-form";
 
 export const config = {
     unstable_runtimeJS: true
@@ -56,10 +55,11 @@ export async function getStaticPaths() {
     for (const path of langPaths.paths) {
         let url = `dictionary/${path.params.lang}/all`
         const dictData = await fetchBackend(path.params.graph, url)
-        for (const word of dictData.props.loaderData.words) {
-            paths.push({params: {...path.params, text: [word.text.toLowerCase()]}})
-            if (word.homonym) {
-                paths.push({params: {...path.params, text: [word.text.toLowerCase(), word.id.toString()]}})
+        const dictViewModel = dictData.props.loaderData as DictionaryViewModel
+        for (const word of dictViewModel.words) {
+            paths.push({params: {...path.params, text: [word.ref.text.toLowerCase()]}})
+            if (word.ref.homonym) {
+                paths.push({params: {...path.params, text: [word.ref.text.toLowerCase(), word.ref.id.toString()]}})
             }
         }
     }

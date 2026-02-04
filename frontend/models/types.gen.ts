@@ -152,11 +152,8 @@ export type DictionaryViewModel = {
 };
 
 export type DictionaryWordViewModel = {
-    id: number;
-    text: string;
-    gloss: string;
+    ref: WordRefViewModel;
     fullGloss?: (string) | null;
-    homonym: boolean;
     pos?: (string) | null;
 };
 
@@ -341,6 +338,7 @@ export type Phoneme = {
 
 export type PhonemeLookup = {
     accentTypes: Array<('Acute' | 'Grave' | 'Circumflex')>;
+    caseSensitiveGraphemes: boolean;
 };
 
 export type PhonemeRuleGroupViewModel = {
@@ -609,6 +607,17 @@ export type SuggestCompoundViewModel = {
     suggestions: Array<WordRefViewModel>;
 };
 
+export type Syllabogram = {
+    text: string;
+    type: 'Syllabogram' | 'Logogram' | 'LogogramAlt' | 'Determinative';
+};
+
+export type type = 'Syllabogram' | 'Logogram' | 'LogogramAlt' | 'Determinative';
+
+export type SyllabogramSequence = {
+    syllabograms: Array<Syllabogram>;
+};
+
 export type TranslationParams = {
     corpusTextId?: (number) | null;
     text: string;
@@ -728,6 +737,7 @@ export type WordParadigmModel = {
 export type WordRefViewModel = {
     id: number;
     text: string;
+    syllabogramSequence?: (SyllabogramSequence) | null;
     language: string;
     displayLanguage: string;
     gloss?: (string) | null;

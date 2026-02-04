@@ -113,6 +113,9 @@ class Word(
             stressedPhonemeIndex = -1
         }
 
+    val syllabogramSequence: SyllabogramSequence?
+        get() = if (syllabographic) TlhDigSyllabogramSyntax.parse(text) else null
+
     val normalizedText: String get() = language.normalizeWord(text)
     val normalized: Word get() = derive(normalizedText, id)
 

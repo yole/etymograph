@@ -13,6 +13,7 @@ const val explicitStressMark = 'ˈ'
 data class WordRefViewModel(
     val id: Int,
     val text: String,
+    val syllabogramSequence: SyllabogramSequence?,
     val language: String,
     val displayLanguage: String,
     val gloss: String?,
@@ -30,7 +31,8 @@ data class ParseCandidateViewModel(
 
 fun Word.toRefViewModel(graph: GraphRepository) =
     WordRefViewModel(
-        id, text, language.shortName,
+        id, text, syllabogramSequence,
+        language.shortName,
         if (reconstructed) "pre-" + language.shortName else language.shortName,
         getOrComputeGloss(graph),
         graph.isHomonym(this),

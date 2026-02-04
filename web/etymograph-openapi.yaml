@@ -1770,6 +1770,30 @@ components:
       required:
         - "textId"
         - "textTitle"
+    Syllabogram:
+      type: "object"
+      properties:
+        text:
+          type: "string"
+        type:
+          type: "string"
+          enum:
+            - "Syllabogram"
+            - "Logogram"
+            - "LogogramAlt"
+            - "Determinative"
+      required:
+        - "text"
+        - "type"
+    SyllabogramSequence:
+      type: "object"
+      properties:
+        syllabograms:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/Syllabogram"
+      required:
+        - "syllabograms"
     WordRefViewModel:
       type: "object"
       properties:
@@ -1778,6 +1802,9 @@ components:
           format: "int32"
         text:
           type: "string"
+        syllabogramSequence:
+          nullable: true
+          $ref: "#/components/schemas/SyllabogramSequence"
         language:
           type: "string"
         displayLanguage:
@@ -3479,8 +3506,11 @@ components:
               - "Grave"
               - "Circumflex"
           uniqueItems: true
+        caseSensitiveGraphemes:
+          type: "boolean"
       required:
         - "accentTypes"
+        - "caseSensitiveGraphemes"
     Language:
       type: "object"
       properties:
@@ -3561,26 +3591,16 @@ components:
     DictionaryWordViewModel:
       type: "object"
       properties:
-        id:
-          type: "integer"
-          format: "int32"
-        text:
-          type: "string"
-        gloss:
-          type: "string"
+        ref:
+          $ref: "#/components/schemas/WordRefViewModel"
         fullGloss:
           type: "string"
           nullable: true
-        homonym:
-          type: "boolean"
         pos:
           type: "string"
           nullable: true
       required:
-        - "id"
-        - "text"
-        - "gloss"
-        - "homonym"
+        - "ref"
     DictionaryViewModel:
       type: "object"
       properties:

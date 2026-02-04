@@ -1,10 +1,10 @@
 import {fetchBackend, allowEdit, fetchAllLanguagePaths} from "@/api";
 import {useRouter} from "next/router";
-import Link from "next/link";
 import WordForm from "@/forms/WordForm";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import {useState} from "react";
 import {DictionaryWordViewModel, WordViewModel} from "@/models";
+import WordLink from "@/components/WordLink";
 
 export const config = {
     unstable_runtimeJS: true
@@ -53,9 +53,9 @@ export default function Dictionary(params) {
 
 
     function renderWordItem(w: DictionaryWordViewModel) {
-        const gloss = w.fullGloss !== null && w.fullGloss !== "" ? w.fullGloss : w.gloss;
-        return <li key={w.id}>
-            <Link href={`/${graph}/word/${dict.language.shortName}/${w.text.toLowerCase()}${w.homonym ? "/" + w.id : ""}`}>{w.text}</Link>
+        const gloss = w.fullGloss !== null && w.fullGloss !== "" ? w.fullGloss : w.ref.gloss;
+        return <li key={w.ref.id}>
+            <WordLink word={w.ref}/>
             {w.pos ? <> <i>{w.pos.toLowerCase()}.</i></> : ""} - {gloss}
         </li>
     }
