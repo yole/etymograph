@@ -198,6 +198,7 @@ export type LanguageViewModel = {
     shortName: string;
     protoLanguageShortName?: (string) | null;
     reconstructed: boolean;
+    syllabographic: boolean;
     diphthongs: Array<(string)>;
     phonemes: Array<PhonemeTableViewModel>;
     stressRuleId?: (number) | null;
@@ -598,6 +599,7 @@ export type UpdateLanguageParameters = {
     shortName?: (string) | null;
     protoLanguageShortName?: (string) | null;
     reconstructed?: (boolean) | null;
+    syllabographic?: (boolean) | null;
     phonemes?: (string) | null;
     diphthongs?: (string) | null;
     stressRuleName?: (string) | null;

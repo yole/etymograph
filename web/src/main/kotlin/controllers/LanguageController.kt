@@ -39,6 +39,7 @@ class LanguageController {
         val shortName: String,
         val protoLanguageShortName: String?,
         val reconstructed: Boolean,
+        val syllabographic: Boolean,
         val diphthongs: List<String>,
         val phonemes: List<PhonemeTableViewModel>,
         val stressRuleId: Int?,
@@ -133,6 +134,7 @@ class LanguageController {
             shortName,
             protoLanguage?.shortName,
             reconstructed,
+            syllabographic,
             diphthongs,
             PhonemeTable.build(phonemes).map { table ->
                 PhonemeTableViewModel(table.title, table.columnTitles, table.rows.map { row ->
@@ -162,6 +164,7 @@ class LanguageController {
         val shortName: String? = null,
         val protoLanguageShortName: String? = null,
         val reconstructed: Boolean? = null,
+        val syllabographic: Boolean? = null,
         val phonemes: String? = null,
         val diphthongs: String? = null,
         val stressRuleName: String? = null,
@@ -235,6 +238,10 @@ class LanguageController {
     ) {
         if (params.reconstructed != null) {
             language.reconstructed = params.reconstructed
+        }
+
+        if (params.syllabographic != null) {
+            language.syllabographic = params.syllabographic
         }
 
         language.protoLanguage = params.protoLanguageShortName?.let { repo.resolveLanguage(it) }

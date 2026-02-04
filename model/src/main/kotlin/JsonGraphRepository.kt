@@ -11,7 +11,12 @@ import kotlin.io.path.readText
 import kotlin.io.path.writeText
 
 @Serializable
-data class LanguageData(val name: String, val shortName: String, val reconstructed: Boolean = false)
+data class LanguageData(
+    val name: String,
+    val shortName: String,
+    val reconstructed: Boolean = false,
+    val syllabographic: Boolean = false
+)
 
 @Serializable
 data class SourceRefData(val pubId: Int? = null, val refText: String)
@@ -553,7 +558,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
         return GraphRepositoryData(
             id,
             name,
-            languages.values.map { LanguageData(it.name, it.shortName, it.reconstructed) },
+            languages.values.map { LanguageData(it.name, it.shortName, it.reconstructed, it.syllabographic) },
             allLinks.map { link ->
                 LinkData(
                     link.fromEntity.id, link.toEntity.id,
@@ -575,6 +580,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
         for (languageData in data.languages) {
             val language = Language(languageData.name, languageData.shortName)
             language.reconstructed = languageData.reconstructed
+            language.syllabographic = languageData.syllabographic
             addLanguage(language)
         }
         loadLanguageDetails(contentProviderCallback)

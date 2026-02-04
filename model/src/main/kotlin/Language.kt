@@ -109,6 +109,7 @@ class PhonemeLookup(val accentTypes: Set<AccentType>) {
 
 class Language(val name: String, val shortName: String) {
     var reconstructed: Boolean = false
+    var syllabographic: Boolean = false
     var protoLanguage: Language? = null
     var phonemes = listOf<Phoneme>()
         set(value) {

@@ -3201,6 +3201,8 @@ components:
           nullable: true
         reconstructed:
           type: "boolean"
+        syllabographic:
+          type: "boolean"
         diphthongs:
           type: "array"
           items:
@@ -3254,6 +3256,7 @@ components:
         - "name"
         - "shortName"
         - "reconstructed"
+        - "syllabographic"
         - "diphthongs"
         - "phonemes"
         - "syllableStructures"
@@ -3274,6 +3277,9 @@ components:
           type: "string"
           nullable: true
         reconstructed:
+          type: "boolean"
+          nullable: true
+        syllabographic:
           type: "boolean"
           nullable: true
         phonemes:

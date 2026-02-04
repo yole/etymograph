@@ -63,6 +63,7 @@ export default function LanguageIndex(props) {
         <EtymographFormView>
             <View>
                 {lang.protoLanguageShortName != null && <p>Proto-language: <Link href={`/${graph}/language/${lang.protoLanguageShortName}`}>{protoLanguageName}</Link></p>}
+                {lang.syllabographic && <p>Syllabographic</p>}
 
                 <h3>Phonetics</h3>
                 {lang.phonemes.map(pt => <>
@@ -151,6 +152,7 @@ export default function LanguageIndex(props) {
                     defaultValues={{
                         protoLanguageShortName: lang.protoLanguageShortName,
                         reconstructed: lang.reconstructed,
+                        syllabographic: lang.syllabographic,
                         diphthongs: lang.diphthongs.join(", "),
                         syllableStructures: lang.syllableStructures.join(", "),
                         stressRuleName: lang.stressRuleName,
@@ -169,6 +171,7 @@ export default function LanguageIndex(props) {
                 <table><tbody>
                     <LanguageSelect label="Proto-language" id="protoLanguageShortName"/>
                     <FormCheckbox label="Reconstructed" id="reconstructed"/>
+                    <FormCheckbox label="Syllabographic" id="syllabographic"/>
                     <FormRow label="Diphthongs" id="diphthongs"/>
                     <FormRow label="Syllable structures" id="syllableStructures"/>
                     <RuleListSelect label="Stress rule" id="stressRuleName" language={langId}/>
