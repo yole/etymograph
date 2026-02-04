@@ -293,6 +293,7 @@ function SingleWord({word}: { word: WordViewModel }) {
 
     const router = useRouter()
     const graph = router.query.graph as string
+    const [showTranscription, setShowTranscription] = useState(false)
     const [showBaseWord, setShowBaseWord] = useState(false)
     const [showDerivedWord, setShowDerivedWord] = useState(false)
     const [showOriginWord, setShowOriginWord] = useState(false)
@@ -311,6 +312,7 @@ function SingleWord({word}: { word: WordViewModel }) {
     useEffect(() => { document.title = "Etymograph : " + (word === undefined ? "Unknown Word" : word.text) })
 
     function submitted() {
+        setShowTranscription(false)
         setShowBaseWord(false)
         setShowDerivedWord(false)
         setShowOriginWord(false)
@@ -468,6 +470,8 @@ function SingleWord({word}: { word: WordViewModel }) {
 
     const dictionaries = globalState.languages.find((c) => c.shortName === word.language)?.dictionaries
 
+    const canShowTranscription = word.syllabogramSequence !== null
+
     return <>
         <Breadcrumbs langId={word.language} langName={word.languageFullName}
                      steps={[{title: dictionaryTitle, url: `/${graph}/dictionary/${word.language}${dictionaryLink}`}]}>
@@ -584,6 +588,9 @@ function SingleWord({word}: { word: WordViewModel }) {
 
         <p/>
         {allowEdit() && <>
+            {canShowTranscription && <><button onClick={() => setShowTranscription(!showBaseWord)}>Add transcription</button><br/></>}
+            {showTranscription && <WordForm wordSubmitted={submitted} linkType='_' linkTarget={word} reverseLink={true}
+                defaultValues={{language: word.language}} cancelled={() => setShowTranscription(false)}/>}
             {!isCompound && <><button onClick={() => setShowBaseWord(!showBaseWord)}>Add lemma</button><br/></>}
             {showBaseWord && <WordForm wordSubmitted={submitted} linkType='>' linkTarget={word} reverseLink={true}
                                        defaultValues={{language: word.language}} cancelled={() => setShowBaseWord(false)}/>}
