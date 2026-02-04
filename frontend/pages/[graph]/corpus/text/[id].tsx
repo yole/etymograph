@@ -2,7 +2,6 @@ import {useState} from "react";
 import WordForm, {WordFormData} from "@/forms/WordForm";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faEdit, faCheck} from '@fortawesome/free-solid-svg-icons'
-import WordWithStress from "@/components/WordWithStress";
 import {
     fetchBackend,
     associateWord,
@@ -19,6 +18,7 @@ import TranslationForm from "@/forms/TranslationForm";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import WordGloss from "@/components/WordGloss";
 import {CorpusTextViewModel, CorpusWordCandidateViewModel, CorpusWordViewModel, WordViewModel} from "@/models";
+import WordTextView from "@/components/WordTextView";
 
 export const config = {
     unstable_runtimeJS: true
@@ -47,9 +47,10 @@ export function CorpusTextWordLink(params: CorpusTextWordLinkProps) {
 
     if (w.wordCandidates && w.wordCandidates.length > 1) {
         return <span onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
-            {w.text}
-            {hovered && allowEdit() && <span className="iconWithMargin"><FontAwesomeIcon icon={faEdit}
-                                                                                         onClick={() => showWordForm(w.normalizedText, w.index)}/></span>}
+            <WordTextView text={w.text} syllabograms={w.syllabogramSequence}/>
+            {hovered && allowEdit() && <span className="iconWithMargin">
+                <FontAwesomeIcon icon={faEdit} onClick={() => showWordForm(w.normalizedText, w.index)}/>
+            </span>}
         </span>
     } else if (w.wordText || w.gloss) {
         let linkText = (w.wordText ?? w.normalizedText).toLowerCase()
@@ -58,15 +59,17 @@ export function CorpusTextWordLink(params: CorpusTextWordLinkProps) {
         }
         return <span onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
             <Link href={`/${router.query.graph}/word/${corpusText.language}/${linkText}`}>
-                <WordWithStress text={w.text} stressIndex={w.stressIndex} stressLength={w.stressLength}/>
+                <WordTextView text={w.text} syllabograms={w.syllabogramSequence}
+                              stressIndex={w.stressIndex} stressLength={w.stressLength}/>
             </Link>
-            {hovered && allowEdit() && <span className="iconWithMargin"><FontAwesomeIcon icon={faEdit}
-                                                                                         onClick={() => showWordForm(w.normalizedText, w.index)}/></span>}
+            {hovered && allowEdit() && <span className="iconWithMargin">
+                <FontAwesomeIcon icon={faEdit} onClick={() => showWordForm(w.normalizedText, w.index)}/>
+            </span>}
         </span>
     } else {
         return <span className="undefWord" onClick={() => {
             if (allowEdit()) showWordForm(w.normalizedText, w.index)
-        }}>{w.text}</span>
+        }}><WordTextView text={w.text} syllabograms={w.syllabogramSequence}/></span>
     }
 }
 
@@ -195,7 +198,8 @@ export default function CorpusText(params) {
                                       defaultValues={{
                                           language: corpusText.language,
                                           text: predefWord,
-                                          contextGloss: l.words[wordIndex - l.words[0].index].contextGloss
+                                          contextGloss: l.words[wordIndex - l.words[0].index].contextGloss,
+                                          syllabographic: corpusText.syllabographic
                                       }}
                                       languageReadOnly={true}
                                       linkType=">"

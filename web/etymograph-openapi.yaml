@@ -3495,6 +3495,9 @@ components:
           type: "string"
         normalizedText:
           type: "string"
+        syllabogramSequence:
+          nullable: true
+          $ref: "#/components/schemas/SyllabogramSequence"
         gloss:
           type: "string"
         contextGloss:
@@ -3549,6 +3552,8 @@ components:
           type: "string"
         languageFullName:
           type: "string"
+        syllabographic:
+          type: "boolean"
         text:
           type: "string"
         lines:
@@ -3573,6 +3578,7 @@ components:
         - "title"
         - "language"
         - "languageFullName"
+        - "syllabographic"
         - "text"
         - "lines"
         - "source"

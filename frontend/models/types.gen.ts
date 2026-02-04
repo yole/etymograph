@@ -107,6 +107,7 @@ export type CorpusTextViewModel = {
     title: string;
     language: string;
     languageFullName: string;
+    syllabographic: boolean;
     text: string;
     lines: Array<CorpusLineViewModel>;
     source: Array<SourceRefViewModel>;
@@ -124,6 +125,7 @@ export type CorpusWordViewModel = {
     index: number;
     text: string;
     normalizedText: string;
+    syllabogramSequence?: (SyllabogramSequence) | null;
     gloss: string;
     contextGloss?: (string) | null;
     wordId?: (number) | null;

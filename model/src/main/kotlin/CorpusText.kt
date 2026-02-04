@@ -7,6 +7,7 @@ class CorpusWord(
     val text: String,
     val normalizedText: String,
     val segmentedText: String,
+    val syllabogramSequence: SyllabogramSequence?,
     val word: Word?,
     val wordCandidates: List<Word>?,
     val gloss: String?,
@@ -82,6 +83,7 @@ class CorpusText(
                 else
                     restoreCase(tw.normalizedText, tw.baseText)
                 sentenceStart = tw.baseText.endsWith('.')
+                val syllabogramSequence = if (language.syllabographic) TlhDigSyllabogramSyntax.parse(tw.baseText) else null
                 if (word != null) {
                     val stressData = word.calculateStress(repo)
                     val leadingPunctuation = tw.baseText.takeWhile { it in leadingPunctuation }
@@ -91,7 +93,7 @@ class CorpusText(
                     val glossWithSegments = wordWithSegments.getOrComputeGloss(repo) ?: word.getOrComputeGloss(repo)
                     val stressIndex = adjustStressIndex(wordWithSegments, stressData?.index)?.plus(leadingPunctuation.length)
 
-                    CorpusWord(currentIndex++, tw.baseText, normalizedText, segmentedText, word, null,
+                    CorpusWord(currentIndex++, tw.baseText, normalizedText, segmentedText, syllabogramSequence, word, null,
                         word.getOrComputeGloss(repo),
                         assoc.contextGloss,
                         glossWithSegments, stressIndex, stressData?.length, repo.isHomonym(word))
@@ -99,7 +101,7 @@ class CorpusText(
                 else {
                     val wordCandidates = repo.wordsByText(language, tw.normalizedText)
                     val gloss = wordCandidates.firstOrNull()?.getOrComputeGloss(repo)
-                    CorpusWord(currentIndex++, tw.baseText, normalizedText, tw.baseText,null, wordCandidates,
+                    CorpusWord(currentIndex++, tw.baseText, normalizedText, tw.baseText, syllabogramSequence,null, wordCandidates,
                         gloss, null, gloss, null, null,false)
                 }
             })

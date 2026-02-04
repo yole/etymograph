@@ -471,9 +471,9 @@ function SingleWord({word}: { word: WordViewModel }) {
     return <>
         <Breadcrumbs langId={word.language} langName={word.languageFullName}
                      steps={[{title: dictionaryTitle, url: `/${graph}/dictionary/${word.language}${dictionaryLink}`}]}>
-            {!word.syllabographic && <WordWithStress text={word.text} stressIndex={word.stressIndex} stressLength={word.stressLength}
-                                          reconstructed={word.reconstructed || word.languageReconstructed}/>}
-            {word.syllabographic && <WordTextView text={word.text} syllabograms={word.syllabogramSequence}/>}
+            <WordTextView text={word.text} syllabograms={word.syllabogramSequence}
+                    stressIndex={word.stressIndex} stressLength={word.stressLength}
+                    reconstructed={word.reconstructed || word.languageReconstructed}/>
         </Breadcrumbs>
 
         {!editMode && <>

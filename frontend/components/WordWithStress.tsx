@@ -1,7 +1,7 @@
 interface WordWithStressProps {
     text: string;
-    stressIndex: number;
-    stressLength: number;
+    stressIndex?: number;
+    stressLength?: number;
     reconstructed?: boolean;
 }
 

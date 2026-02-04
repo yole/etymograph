@@ -46,6 +46,7 @@ class CorpusController {
         val index: Int,
         val text: String,  // CorpusWord.segmentedText
         val normalizedText: String, // CorpusWord.normalizedText
+        val syllabogramSequence: SyllabogramSequence?,
         val gloss: String,
         val contextGloss: String? = null,
         val wordId: Int? = null,
@@ -73,6 +74,7 @@ class CorpusController {
         val title: String,
         val language: String,
         val languageFullName: String,
+        val syllabographic: Boolean,
         val text: String,
         val lines: List<CorpusLineViewModel>,
         val source: List<SourceRefViewModel>,
@@ -92,12 +94,14 @@ class CorpusController {
             title ?: "Untitled",
             language.shortName,
             language.name,
+            language.syllabographic,
             text,
             mapToLines(repo).map { line ->
                 CorpusLineViewModel(line.corpusWords.map { cw ->
                     CorpusWordViewModel(cw.index,
                         cw.segmentedText,
                         cw.normalizedText,
+                        cw.syllabogramSequence,
                         cw.segmentedGloss ?: "",
                         cw.contextGloss,
                         cw.word?.id, cw.word?.text,

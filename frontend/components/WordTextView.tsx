@@ -1,4 +1,5 @@
 import {Syllabogram, SyllabogramSequence} from "@/models";
+import WordWithStress from "@/components/WordWithStress";
 
 function SyllabogramView(params: {syllabogram: Syllabogram, prevSyllabogram?: Syllabogram}) {
     let syl = params.syllabogram
@@ -13,9 +14,15 @@ function SyllabogramView(params: {syllabogram: Syllabogram, prevSyllabogram?: Sy
     </>
 }
 
-export default function WordTextView(params: { syllabograms?: SyllabogramSequence, text: string }) {
+export default function WordTextView(params: {
+    syllabograms?: SyllabogramSequence,
+    text: string,
+    stressIndex?: number,
+    stressLength?: number,
+    reconstructed?: boolean
+}) {
     if (!params.syllabograms) {
-        return <>{params.text}</>
+        return <WordWithStress {...params}/>
     }
     return <>{params.syllabograms.syllabograms.map((s, index) =>
         <SyllabogramView syllabogram={s} prevSyllabogram={index > 0 ? params.syllabograms.syllabograms[index - 1] : undefined}/>)}
