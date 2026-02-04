@@ -65,10 +65,13 @@ class WordController(val dictionaryService: DictionaryService) {
         val suggestedSequences: List<WordRuleSequenceViewModel>
     )
 
+    @Serializable
     data class LinkTypeViewModel(val typeId: String, val type: String, val words: List<LinkWordViewModel>)
 
+    @Serializable
     data class AttestationViewModel(val textId: Int, val textTitle: String, val word: String?)
 
+    @Serializable
     data class CompoundComponentsViewModel(
         val compoundId: Int,
         val components: List<WordRefViewModel>,
@@ -79,6 +82,7 @@ class WordController(val dictionaryService: DictionaryService) {
         val notes: String?
     )
 
+    @Serializable
     data class LinkedRuleViewModel(
         val ruleId: Int,
         val ruleName: String,
@@ -87,6 +91,7 @@ class WordController(val dictionaryService: DictionaryService) {
         val notes: String?
     )
 
+    @Serializable
     data class WordViewModel(
         val id: Int,
         val language: String,
@@ -94,6 +99,7 @@ class WordController(val dictionaryService: DictionaryService) {
         val languageReconstructed: Boolean,
         val text: String,
         val textWithExplicitStress: String,
+        val syllabogramSequence: SyllabogramSequence?,
         val gloss: String,
         val glossComputed: Boolean,
         val fullGloss: String?,
@@ -161,6 +167,7 @@ class WordController(val dictionaryService: DictionaryService) {
             language.reconstructed,
             text,
             textWithExplicitStress,
+            syllabogramSequence,
             computedGloss ?: "",
             gloss == null,
             fullGloss,

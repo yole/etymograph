@@ -36,6 +36,7 @@ import {
     ParseCandidateViewModel, WordRefViewModel,
     WordViewModel
 } from "@/models";
+import WordTextView from "@/components/WordTextView";
 
 export const config = {
     unstable_runtimeJS: true
@@ -470,8 +471,9 @@ function SingleWord({word}: { word: WordViewModel }) {
     return <>
         <Breadcrumbs langId={word.language} langName={word.languageFullName}
                      steps={[{title: dictionaryTitle, url: `/${graph}/dictionary/${word.language}${dictionaryLink}`}]}>
-            <WordWithStress text={word.text} stressIndex={word.stressIndex} stressLength={word.stressLength}
-                            reconstructed={word.reconstructed || word.languageReconstructed}/>
+            {!word.syllabographic && <WordWithStress text={word.text} stressIndex={word.stressIndex} stressLength={word.stressLength}
+                                          reconstructed={word.reconstructed || word.languageReconstructed}/>}
+            {word.syllabographic && <WordTextView text={word.text} syllabograms={word.syllabogramSequence}/>}
         </Breadcrumbs>
 
         {!editMode && <>

@@ -1742,6 +1742,30 @@ components:
           format: "int32"
       required:
         - "sequenceId"
+    Syllabogram:
+      type: "object"
+      properties:
+        text:
+          type: "string"
+        type:
+          type: "string"
+          enum:
+            - "Syllabogram"
+            - "Logogram"
+            - "LogogramAlt"
+            - "Determinative"
+      required:
+        - "text"
+        - "type"
+    SyllabogramSequence:
+      type: "object"
+      properties:
+        syllabograms:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/Syllabogram"
+      required:
+        - "syllabograms"
     SourceRefViewModel:
       type: "object"
       properties:
@@ -1770,30 +1794,6 @@ components:
       required:
         - "textId"
         - "textTitle"
-    Syllabogram:
-      type: "object"
-      properties:
-        text:
-          type: "string"
-        type:
-          type: "string"
-          enum:
-            - "Syllabogram"
-            - "Logogram"
-            - "LogogramAlt"
-            - "Determinative"
-      required:
-        - "text"
-        - "type"
-    SyllabogramSequence:
-      type: "object"
-      properties:
-        syllabograms:
-          type: "array"
-          items:
-            $ref: "#/components/schemas/Syllabogram"
-      required:
-        - "syllabograms"
     WordRefViewModel:
       type: "object"
       properties:
@@ -1963,6 +1963,9 @@ components:
           type: "string"
         textWithExplicitStress:
           type: "string"
+        syllabogramSequence:
+          nullable: true
+          $ref: "#/components/schemas/SyllabogramSequence"
         gloss:
           type: "string"
         glossComputed:

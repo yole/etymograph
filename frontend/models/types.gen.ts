@@ -768,6 +768,7 @@ export type WordViewModel = {
     languageReconstructed: boolean;
     text: string;
     textWithExplicitStress: string;
+    syllabogramSequence?: (SyllabogramSequence) | null;
     gloss: string;
     glossComputed: boolean;
     fullGloss?: (string) | null;
