@@ -10,7 +10,11 @@ import ru.yole.etymograph.web.controllers.CorpusController.TranslationViewModel
 @RequestMapping("/{graph}/corpus")
 class CorpusController {
     data class CorpusLangTextViewModel(val id: Int, val title: String)
-    data class CorpusLangViewModel(val language: Language, val corpusTexts: List<CorpusLangTextViewModel>)
+    data class CorpusLangViewModel(
+        val language: String,
+        val languageFullName: String,
+        val corpusTexts: List<CorpusLangTextViewModel>
+    )
 
     @GetMapping("")
     fun allCorpusTexts(repo: GraphRepository): List<CorpusLangTextViewModel> {
@@ -23,7 +27,8 @@ class CorpusController {
     fun langIndexJson(repo: GraphRepository, @PathVariable lang: String): CorpusLangViewModel {
         val language = repo.resolveLanguage(lang)
         return CorpusLangViewModel(
-            language,
+            language.shortName,
+            language.name,
             repo.corpusTextsInLanguage(language)
                 .sortedBy { it.title }
                 .map { it.toLangViewModel() }

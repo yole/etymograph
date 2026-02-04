@@ -86,7 +86,8 @@ export type CorpusLangTextViewModel = {
 };
 
 export type CorpusLangViewModel = {
-    language: Language;
+    language: string;
+    languageFullName: string;
     corpusTexts: Array<CorpusLangTextViewModel>;
 };
 
@@ -146,7 +147,8 @@ export type DeriveThroughSequenceParams = {
 };
 
 export type DictionaryViewModel = {
-    language: Language;
+    language: string;
+    languageFullName: string;
     words: Array<DictionaryWordViewModel>;
     wordsByLetter?: (string) | null;
 };
@@ -179,27 +181,6 @@ export type InputAssistGraphemeViewModel = {
 
 export type InputAssistViewModel = {
     graphemes: Array<InputAssistGraphemeViewModel>;
-};
-
-export type Language = {
-    name: string;
-    shortName: string;
-    reconstructed: boolean;
-    protoLanguage?: (Language) | null;
-    phonemes?: Array<Phoneme> | null;
-    diphthongs: Array<(string)>;
-    syllableStructures: Array<(string)>;
-    stressRule?: (RuleRef) | null;
-    phonotacticsRule?: (RuleRef) | null;
-    pronunciationRule?: (RuleRef) | null;
-    orthographyRule?: (RuleRef) | null;
-    pos?: Array<WordCategoryValue> | null;
-    grammaticalCategories?: Array<WordCategory> | null;
-    wordClasses?: Array<WordCategory> | null;
-    accentTypes?: Array<('Acute' | 'Grave' | 'Circumflex')> | null;
-    orthoPhonemeLookup?: (PhonemeLookup) | null;
-    phonoPhonemeLookup?: (PhonemeLookup) | null;
-    dictionarySettings?: (string) | null;
 };
 
 export type LanguageShortViewModel = {
@@ -324,21 +305,6 @@ export type ParseCandidateViewModel = {
     ruleNames: Array<(string)>;
     pos?: (string) | null;
     wordId?: (number) | null;
-};
-
-export type Phoneme = {
-    graphemes: Array<(string)>;
-    sound?: (string) | null;
-    classes: Array<(string)>;
-    historical: boolean;
-    id: number;
-    source: Array<SourceRef>;
-    notes?: (string) | null;
-};
-
-export type PhonemeLookup = {
-    accentTypes: Array<('Acute' | 'Grave' | 'Circumflex')>;
-    caseSensitiveGraphemes: boolean;
 };
 
 export type PhonemeRuleGroupViewModel = {
@@ -475,10 +441,6 @@ export type RulePreviewResultViewModel = {
     newForm: string;
 };
 
-export type RuleRef = {
-    [key: string]: unknown;
-};
-
 export type RuleRefViewModel = {
     id: number;
     name: string;
@@ -588,11 +550,6 @@ export type SequenceRuleViewModel = {
     postInstructions: Array<RichText>;
 };
 
-export type SourceRef = {
-    pubId?: (number) | null;
-    refText: string;
-};
-
 export type SourceRefViewModel = {
     pubId?: (number) | null;
     pubRefId?: (string) | null;
@@ -695,17 +652,6 @@ export type UpdateSequenceParams = {
 
 export type UpdateWordParadigmParameters = {
     items: Array<(unknown[])>;
-};
-
-export type WordCategory = {
-    name: string;
-    pos: Array<(string)>;
-    values: Array<WordCategoryValue>;
-};
-
-export type WordCategoryValue = {
-    name: string;
-    abbreviation: string;
 };
 
 export type WordCategoryValueViewModel = {

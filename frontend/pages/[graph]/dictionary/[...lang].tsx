@@ -3,7 +3,7 @@ import {useRouter} from "next/router";
 import WordForm from "@/forms/WordForm";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import {useState} from "react";
-import {DictionaryWordViewModel, WordViewModel} from "@/models";
+import {DictionaryViewModel, DictionaryWordViewModel, WordViewModel} from "@/models";
 import WordLink from "@/components/WordLink";
 
 export const config = {
@@ -31,7 +31,7 @@ export async function getStaticPaths() {
 }
 
 export default function Dictionary(params) {
-    const dict = params.loaderData
+    const dict = params.loaderData as DictionaryViewModel
     const router = useRouter()
     const graph = router.query.graph
     const filter = router.query.lang.length < 2 ? "" : router.query.lang[1]
@@ -64,7 +64,7 @@ export default function Dictionary(params) {
     const letterKeys = Object.keys(grouped).sort();
 
     return <>
-        <Breadcrumbs langId={dict.language.shortName} langName={dict.language.name} title={filterText}/>
+        <Breadcrumbs langId={dict.language} langName={dict.languageFullName} title={filterText}/>
 
         {allowEdit() && <>
             {!showAddWord && <button className="uiButton" onClick={() => setShowAddWord(!showAddWord)}>Add word</button>}
@@ -72,7 +72,7 @@ export default function Dictionary(params) {
                       wordSubmitted={submitted}
                       cancelled={() => setShowAddWord(false)}
                       defaultValues={{
-                          language: dict.language.shortName,
+                          language: dict.language,
                           reconstructed: filter === "reconstructed",
                       }}
                       hideReconstructed={filter !== "reconstructed"}

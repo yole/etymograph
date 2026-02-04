@@ -3426,174 +3426,6 @@ components:
         - "totalPrefix"
         - "matches"
         - "usedMode"
-    SourceRef:
-      type: "object"
-      properties:
-        pubId:
-          type: "integer"
-          format: "int32"
-          nullable: true
-        refText:
-          type: "string"
-      required:
-        - "refText"
-    Phoneme:
-      type: "object"
-      properties:
-        graphemes:
-          type: "array"
-          items:
-            type: "string"
-        sound:
-          type: "string"
-          nullable: true
-        classes:
-          type: "array"
-          items:
-            type: "string"
-          uniqueItems: true
-        historical:
-          type: "boolean"
-        id:
-          type: "integer"
-          format: "int32"
-        source:
-          type: "array"
-          items:
-            $ref: "#/components/schemas/SourceRef"
-        notes:
-          type: "string"
-          nullable: true
-      required:
-        - "graphemes"
-        - "classes"
-        - "historical"
-        - "id"
-        - "source"
-    RuleRef:
-      type: "object"
-      properties: { }
-    WordCategoryValue:
-      type: "object"
-      properties:
-        name:
-          type: "string"
-        abbreviation:
-          type: "string"
-      required:
-        - "name"
-        - "abbreviation"
-    WordCategory:
-      type: "object"
-      properties:
-        name:
-          type: "string"
-        pos:
-          type: "array"
-          items:
-            type: "string"
-        values:
-          type: "array"
-          items:
-            $ref: "#/components/schemas/WordCategoryValue"
-      required:
-        - "name"
-        - "pos"
-        - "values"
-    PhonemeLookup:
-      type: "object"
-      properties:
-        accentTypes:
-          type: "array"
-          items:
-            type: "string"
-            enum:
-              - "Acute"
-              - "Grave"
-              - "Circumflex"
-          uniqueItems: true
-        caseSensitiveGraphemes:
-          type: "boolean"
-      required:
-        - "accentTypes"
-        - "caseSensitiveGraphemes"
-    Language:
-      type: "object"
-      properties:
-        name:
-          type: "string"
-        shortName:
-          type: "string"
-        reconstructed:
-          type: "boolean"
-        protoLanguage:
-          nullable: true
-          $ref: "#/components/schemas/Language"
-        phonemes:
-          type: "array"
-          nullable: true
-          items:
-            $ref: "#/components/schemas/Phoneme"
-        diphthongs:
-          type: "array"
-          items:
-            type: "string"
-        syllableStructures:
-          type: "array"
-          items:
-            type: "string"
-        stressRule:
-          nullable: true
-          $ref: "#/components/schemas/RuleRef"
-        phonotacticsRule:
-          nullable: true
-          $ref: "#/components/schemas/RuleRef"
-        pronunciationRule:
-          nullable: true
-          $ref: "#/components/schemas/RuleRef"
-        orthographyRule:
-          nullable: true
-          $ref: "#/components/schemas/RuleRef"
-        pos:
-          type: "array"
-          nullable: true
-          items:
-            $ref: "#/components/schemas/WordCategoryValue"
-        grammaticalCategories:
-          type: "array"
-          nullable: true
-          items:
-            $ref: "#/components/schemas/WordCategory"
-        wordClasses:
-          type: "array"
-          nullable: true
-          items:
-            $ref: "#/components/schemas/WordCategory"
-        accentTypes:
-          type: "array"
-          nullable: true
-          items:
-            type: "string"
-            enum:
-              - "Acute"
-              - "Grave"
-              - "Circumflex"
-          uniqueItems: true
-        orthoPhonemeLookup:
-          nullable: true
-          $ref: "#/components/schemas/PhonemeLookup"
-        phonoPhonemeLookup:
-          nullable: true
-          $ref: "#/components/schemas/PhonemeLookup"
-        dictionarySettings:
-          type: "string"
-          nullable: true
-      required:
-        - "name"
-        - "shortName"
-        - "reconstructed"
-        - "diphthongs"
-        - "syllableStructures"
     DictionaryWordViewModel:
       type: "object"
       properties:
@@ -3611,7 +3443,9 @@ components:
       type: "object"
       properties:
         language:
-          $ref: "#/components/schemas/Language"
+          type: "string"
+        languageFullName:
+          type: "string"
         words:
           type: "array"
           items:
@@ -3621,6 +3455,7 @@ components:
           nullable: true
       required:
         - "language"
+        - "languageFullName"
         - "words"
     CorpusLangTextViewModel:
       type: "object"
@@ -3807,13 +3642,16 @@ components:
       type: "object"
       properties:
         language:
-          $ref: "#/components/schemas/Language"
+          type: "string"
+        languageFullName:
+          type: "string"
         corpusTexts:
           type: "array"
           items:
             $ref: "#/components/schemas/CorpusLangTextViewModel"
       required:
         - "language"
+        - "languageFullName"
         - "corpusTexts"
     LinkParams:
       type: "object"

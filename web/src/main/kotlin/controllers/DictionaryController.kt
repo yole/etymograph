@@ -3,8 +3,6 @@ package ru.yole.etymograph.web.controllers
 import kotlinx.serialization.Serializable
 import org.springframework.web.bind.annotation.*
 import ru.yole.etymograph.GraphRepository
-import ru.yole.etymograph.Language
-import ru.yole.etymograph.SyllabogramSequence
 import ru.yole.etymograph.WordKind
 import ru.yole.etymograph.web.resolveLanguage
 import java.text.Normalizer
@@ -20,7 +18,8 @@ class DictionaryController {
     )
 
     data class DictionaryViewModel(
-        val language: Language,
+        val language: String,
+        val languageFullName: String,
         val words: List<DictionaryWordViewModel>,
         val wordsByLetter: Map<String, List<DictionaryWordViewModel>>? = null
     )
@@ -90,7 +89,7 @@ class DictionaryController {
             mapped.filter { normalizeLetter(it.ref.text) == key }
         } ?: mapped
 
-        return DictionaryViewModel(language, filtered, groupWords(filtered))
+        return DictionaryViewModel(language.shortName, language.name, filtered, groupWords(filtered))
     }
 
     private fun normalizeLetter(input: String): String {
@@ -111,7 +110,7 @@ class DictionaryController {
     private fun groupWords(words: List<DictionaryWordViewModel>): Map<String, List<DictionaryWordViewModel>> {
         return words.groupBy { normalizeLetter(it.ref.text) }
             .mapValues { (_, list) ->
-                list.sortedWith(compareBy<DictionaryWordViewModel>({ it.ref.text.lowercase() }, { it.ref.id }))
+                list.sortedWith(compareBy({ it.ref.text.lowercase() }, { it.ref.id }))
             }
             .toSortedMap()
     }
