@@ -471,6 +471,7 @@ function SingleWord({word}: { word: WordViewModel }) {
     const dictionaries = globalState.languages.find((c) => c.shortName === word.language)?.dictionaries
 
     const canShowTranscription = word.syllabogramSequence !== null
+    const canSuggestParseCandidates = !isCompound && !word.syllabogramSequence
 
     return <>
         <Breadcrumbs langId={word.language} langName={word.languageFullName}
@@ -501,7 +502,7 @@ function SingleWord({word}: { word: WordViewModel }) {
                 </ul>}
             </p>}
 
-            {allowEdit() && <>
+            {allowEdit() && canSuggestParseCandidates && <>
                 <button className="inlineButton" onClick={() => suggestParseCandidatesClicked()}>Suggest parse candidates</button>
                 <br/>
                 {parseCandidates.map(pc => (
