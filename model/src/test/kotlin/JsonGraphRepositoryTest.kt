@@ -267,4 +267,14 @@ class JsonGraphRepositoryTest : QBaseTest() {
         val q2 = repo2.languageByShortName("Q")!!
         assertEquals(accentTypes, q2.accentTypes)
     }
+
+    @Test
+    fun serializeSyllabographic() {
+        val ht = Language("Hittite", "Ht")
+        repo.addLanguage(ht)
+        val word = repo.addWord("pé-ra-an", ht, gloss = null, syllabographic = true)
+        val repo2 = repo.roundtrip()
+        val word2 = repo2.wordById(word.id)!!
+        assertEquals(true, word2.syllabographic)
+    }
 }

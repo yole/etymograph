@@ -31,6 +31,7 @@ data class DictionaryWord(
     val classes: List<String>,
     val source: String,
     var reconstructed: Boolean = false,
+    var syllabographic: Boolean = false,
     val relatedWords: MutableList<DictionaryRelatedWord> = mutableListOf(),
     val compoundComponents: MutableList<DictionaryWord> = mutableListOf()
 )
@@ -125,7 +126,7 @@ fun findOrCreateWordFromDictionary(
     val existingWords = repo.wordsByText(word.language, word.text)
     return existingWords.find { isGlossSimilar(it.gloss, word.gloss) }
         ?: repo.findOrAddWord(
-            word.text, word.language, word.gloss, word.fullGloss, word.pos, word.classes, word.reconstructed,
+            word.text, word.language, word.gloss, word.fullGloss, word.pos, word.classes, word.reconstructed, word.syllabographic,
             listOf(SourceRef(null, word.source)
         )
     )

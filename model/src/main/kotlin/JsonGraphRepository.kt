@@ -25,6 +25,7 @@ data class WordData(
     val pos: String? = null,
     val classes: List<String>? = null,
     val reconstructed: Boolean = false,
+    val syllabographic: Boolean = false,
     val sourceRefs: List<SourceRefData>? = null,
     val notes: String? = null,
     val stress: Int? = null
@@ -466,6 +467,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                 WordData(it.id, it.text, it.gloss, it.fullGloss, it.pos,
                     it.classes.takeIf { it.isNotEmpty() },
                     it.reconstructed,
+                    it.syllabographic,
                     it.source.sourceToSerializedFormat(), it.notes,
                     if (it.explicitStress) it.stressedPhonemeIndex else null
                 )
@@ -660,6 +662,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                     wordData.pos,
                     wordData.classes ?: emptyList(),
                     wordData.reconstructed,
+                    wordData.syllabographic,
                     loadSource(wordData.sourceRefs),
                     wordData.notes
                 )

@@ -75,6 +75,7 @@ class Word(
     var pos: String? = null,
     var classes: List<String> = emptyList(),
     var reconstructed: Boolean = false,
+    var syllabographic: Boolean = false,
     source: List<SourceRef> = emptyList(),
     notes: String? = null
 ) : LangEntity(id, source, notes) {

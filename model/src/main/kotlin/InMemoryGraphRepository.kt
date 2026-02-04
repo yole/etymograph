@@ -341,6 +341,7 @@ open class InMemoryGraphRepository : GraphRepository() {
         pos: String?,
         classes: List<String>,
         reconstructed: Boolean,
+        syllabographic: Boolean,
         source: List<SourceRef>,
         notes: String?
     ): Word {
@@ -348,7 +349,7 @@ open class InMemoryGraphRepository : GraphRepository() {
         wordsByText.find { it.getOrComputeGloss(this) == gloss || gloss.isNullOrEmpty() }?.let {
             return it
         }
-        return addWord(text, language, gloss, fullGloss, pos, classes, reconstructed, source, notes)
+        return addWord(text, language, gloss, fullGloss, pos, classes, reconstructed, syllabographic, source, notes)
     }
 
     override fun updateWordText(word: Word, text: String) {
@@ -365,6 +366,7 @@ open class InMemoryGraphRepository : GraphRepository() {
         pos: String?,
         classes: List<String>,
         reconstructed: Boolean,
+        syllabographic: Boolean,
         source: List<SourceRef>,
         notes: String?
     ): Word {
@@ -375,7 +377,7 @@ open class InMemoryGraphRepository : GraphRepository() {
             throw IllegalArgumentException("Word text may not contain ? or /")
         }
         val wordsByText = mapOfWordsByText(language, text)
-        return Word(allLangEntities.size, text, language, gloss, fullGloss, pos, classes, reconstructed, source, notes).also {
+        return Word(allLangEntities.size, text, language, gloss, fullGloss, pos, classes, reconstructed, syllabographic, source, notes).also {
             allLangEntities.add(it)
             wordsByText.add(it)
         }

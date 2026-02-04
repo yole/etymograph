@@ -97,6 +97,7 @@ abstract class GraphRepository {
         pos: String? = null,
         classes: List<String> = emptyList(),
         reconstructed: Boolean = false,
+        syllabographic: Boolean = false,
         source: List<SourceRef> = emptyList(),
         notes: String? = null
     ): Word
@@ -109,6 +110,7 @@ abstract class GraphRepository {
         pos: String? = null,
         classes: List<String> = emptyList(),
         reconstructed: Boolean = false,
+        syllabographic: Boolean = false,
         source: List<SourceRef> = emptyList(),
         notes: String? = null
     ): Word
