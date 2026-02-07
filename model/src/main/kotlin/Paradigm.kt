@@ -78,6 +78,7 @@ data class Paradigm(
         for (column in columns) {
             column.removeRule(rule)
         }
+        allRules = collectAllRules()
     }
 
     private fun collectAllRules(): Set<Rule> {

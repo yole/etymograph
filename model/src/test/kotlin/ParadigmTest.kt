@@ -152,4 +152,18 @@ class ParadigmTest : QBaseTest() {
         val rule = repo.ruleByName("q-dat-sg")!!
         assertEquals("lassen", rule.apply(q.word("lasse"), repo).text)
     }
+
+    @Test
+    fun deleteRule() {
+        val paradigm = repo.addParadigm("Noun", q, listOf("N"))
+        paradigm.addRow("Nom")
+        paradigm.addRow("Gen")
+        paradigm.addColumn("Sg")
+
+        val genRule = repo.rule("- append 'o'", name = "q-gen", addedCategories = ".GEN")
+        paradigm.setRule(1, 0, listOf(genRule))
+
+        repo.deleteRule(genRule)
+        assertEquals(0, paradigm.allRules.size)
+    }
 }
