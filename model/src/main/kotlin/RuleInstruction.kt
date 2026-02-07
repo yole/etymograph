@@ -414,16 +414,21 @@ class MorphemeInstruction(type: InstructionType, val morphemeId: Int, comment: S
         return when (type) {
             InstructionType.PrependMorpheme ->
                 word.derive(morpheme.text.trimEnd('-') + word.text)
-            InstructionType.AppendMorpheme ->
-                word.derive(word.text + morpheme.text.trimStart('-'),
-                    addSegment = WordSegment(word.text.length, morpheme.text.length, context.rule.addedCategories, morpheme, context.rule))
+            InstructionType.AppendMorpheme -> {
+                val effectiveText = morpheme.text.trimStart('-')
+                word.derive(
+                    word.text + effectiveText,
+                    addSegment = WordSegment(word.text.length, effectiveText.length, context.rule.addedCategories, morpheme, context.rule)
+                )
+            }
 
             InstructionType.ChangeEndingToMorpheme -> {
                 val phonemes = removeMatchedEnding(word, context.branch, context.graph)
                     ?: return word
-                word.derive(phonemes.result() + morpheme.text.trimStart('-'),
+                val effectiveText = morpheme.text.trimStart('-')
+                word.derive(phonemes.result() + effectiveText,
                     segments = remapSegments(phonemes, word.segments),
-                    addSegment = WordSegment(phonemes.result().length, morpheme.text.length, context.rule.addedCategories, morpheme, context.rule))
+                    addSegment = WordSegment(phonemes.result().length, effectiveText.length, context.rule.addedCategories, morpheme, context.rule))
             }
 
             else -> throw IllegalStateException("Unsupported instruction type for this instruction implementation")
