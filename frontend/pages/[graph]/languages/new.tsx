@@ -6,6 +6,14 @@ import FormCheckbox from "@/components/FormCheckbox";
 import FormRow from "@/components/FormRow";
 import {GraphContext} from "@/components/Contexts";
 
+import {fetchAllGraphs, fetchBackend} from "@/api";
+
+export async function getStaticProps(context) {
+    return fetchBackend(context.params.graph, `languages`, true)
+}
+
+export const getStaticPaths = fetchAllGraphs
+
 interface LanguageData {
     name: string;
     shortName: string;

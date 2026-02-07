@@ -1,6 +1,6 @@
 import RuleForm from "@/forms/RuleForm";
 import {useRouter} from "next/router";
-import {fetchAllLanguagePaths, fetchAllLanguagePathsEditable, fetchBackend} from "@/api";
+import {fetchAllLanguagePathsEditable, fetchBackend} from "@/api";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import {useContext} from "react";
 import {GlobalStateContext} from "@/components/Contexts";
