@@ -38,6 +38,9 @@ export default function WordClassSelect(props: WordClassSelectProps) {
         return (val) => onChange(val.map(c => c.value).join(" "))
     }
 
+    if (wordClasses.length == 0) {
+        return <></>;
+    }
     return <tr>
         <td><label htmlFor={props.id}>{props.label}:</label></td>
         <td>
