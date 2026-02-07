@@ -448,6 +448,10 @@ open class InMemoryGraphRepository : GraphRepository() {
         return allRules().filter { rule in it.logic.referencedRules() }
     }
 
+    override fun findRulesReferencingMorpheme(morpheme: Word): List<Rule> {
+        return allRules().filter { it.logic.refersToLangEntity(morpheme) }
+    }
+
     override fun allSequences(): List<RuleSequence> {
         return allLangEntities.filterIsInstance<RuleSequence>()
     }

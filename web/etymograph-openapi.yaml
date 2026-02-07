@@ -1942,11 +1942,14 @@ components:
         notes:
           type: "string"
           nullable: true
+        canDelete:
+          type: "boolean"
       required:
         - "ruleId"
         - "ruleName"
         - "linkType"
         - "source"
+        - "canDelete"
     WordViewModel:
       type: "object"
       properties:

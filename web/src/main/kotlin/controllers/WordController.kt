@@ -88,7 +88,8 @@ class WordController(val dictionaryService: DictionaryService) {
         val ruleName: String,
         val linkType: String,
         val source: List<SourceRefViewModel>,
-        val notes: String?
+        val notes: String?,
+        val canDelete: Boolean
     )
 
     @Serializable
@@ -145,6 +146,7 @@ class WordController(val dictionaryService: DictionaryService) {
         val linksTo = graph.getLinksTo(this).groupBy { it.type }
         val ruleLinks = (linksFrom.values.flatten() + linksTo.values.flatten())
             .filter { it.fromEntity is Rule || it.toEntity is Rule }
+        val morphemeReferences = graph.findRulesReferencingMorpheme(this)
         val attestations = graph.findAttestations(this)
 
         val stressData = calculateStress(graph)
@@ -227,8 +229,10 @@ class WordController(val dictionaryService: DictionaryService) {
             ruleLinks.map { link ->
                 val rule = link.fromEntity as? Rule ?: link.toEntity as Rule
                 LinkedRuleViewModel(
-                    rule.id, rule.name, link.type.id, link.source.toViewModel(graph), link.notes
+                    rule.id, rule.name, link.type.id, link.source.toViewModel(graph), link.notes, true
                 )
+            } + morphemeReferences.map { rule ->
+                LinkedRuleViewModel(rule.id, rule.name, Link.Related.id, emptyList(), "", false)
             },
             stressData?.index,
             stressData?.length?.takeIf { accentType == null },

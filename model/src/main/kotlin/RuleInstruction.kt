@@ -104,7 +104,7 @@ open class RuleInstruction(val type: InstructionType, val arg: String, val comme
         else -> ""
     }
 
-    open fun refersToPhoneme(phoneme: Phoneme): Boolean = false
+    open fun refersToLangEntity(entity: LangEntity): Boolean = false
 
     open fun referencedRules(): Set<Rule> {
         return emptySet()
@@ -447,6 +447,10 @@ class MorphemeInstruction(type: InstructionType, val morphemeId: Int, comment: S
         else
             "-${word.text.trimStart('-')}"
     }
+
+    override fun refersToLangEntity(entity: LangEntity): Boolean {
+        return entity.id == morphemeId
+    }
 }
 
 class SpeInstruction(val pattern: SpePattern, val condition: RuleCondition? = null, comment: String?)
@@ -502,9 +506,12 @@ class SpeInstruction(val pattern: SpePattern, val condition: RuleCondition? = nu
         )
     }
 
-    override fun refersToPhoneme(phoneme: Phoneme): Boolean {
-        return pattern.before.any { it.refersToPhoneme(phoneme) } ||
-                pattern.after.any { it.refersToPhoneme(phoneme) }
+    override fun refersToLangEntity(entity: LangEntity): Boolean {
+        if (entity is Phoneme) {
+            return pattern.before.any { it.refersToPhoneme(entity) } ||
+                    pattern.after.any { it.refersToPhoneme(entity) }
+        }
+        return false
     }
 
     companion object {

@@ -46,7 +46,7 @@ sealed class RuleCondition(val negated: Boolean = false) {
     fun findLeafConditions(type: ConditionType): List<LeafRuleCondition> =
         findLeafConditions { it is LeafRuleCondition && it.type == type }.filterIsInstance<LeafRuleCondition>()
 
-    open fun refersToPhoneme(phoneme: Phoneme): Boolean = false
+    open fun refersToLangEntity(entity: LangEntity): Boolean = false
 
     protected fun Boolean.negateIfNeeded() = if (negated) !this else this
 
@@ -481,8 +481,8 @@ class RelativePhonemeRuleCondition(
             phonemePattern.toRichText()
     }
 
-    override fun refersToPhoneme(phoneme: Phoneme): Boolean {
-        return seekTarget == null && phonemePattern.refersToPhoneme(phoneme, true)
+    override fun refersToLangEntity(entity: LangEntity): Boolean {
+        return seekTarget == null && entity is Phoneme && phonemePattern.refersToPhoneme(entity, true)
     }
 
     companion object : RuleConditionParser {
@@ -578,8 +578,8 @@ sealed class CompositeRuleCondition(val members: List<RuleCondition>) : RuleCond
         return members.flatMap { it.findLeafConditions(predicate) }
     }
 
-    override fun refersToPhoneme(phoneme: Phoneme): Boolean {
-        return members.any { it.refersToPhoneme(phoneme) }
+    override fun refersToLangEntity(entity: LangEntity): Boolean {
+        return members.any { it.refersToLangEntity(entity) }
     }
 }
 

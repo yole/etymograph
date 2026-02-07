@@ -418,7 +418,7 @@ class RuleTest : QBaseTest() {
         assertTrue(condition.matches(q.word("andúna"), emptyRepo))
         assertFalse(condition.matches(q.word("anca"), emptyRepo))
         assertEquals("second to last syllable contains long vowel", condition.toEditableText())
-        assertFalse(condition.refersToPhoneme(q.phonemes.find { "á" in it.graphemes }!!))
+        assertFalse(condition.refersToLangEntity(q.phonemes.find { "á" in it.graphemes }!!))
     }
 
     @Test
@@ -631,7 +631,7 @@ class RuleTest : QBaseTest() {
         )
         assertEquals("adain", rule.apply(q.word("adan"), emptyRepo).text)
         assertEquals("fela", rule.apply(q.word("fela"), emptyRepo).text)
-        assertFalse((rule.logic as MorphoRuleLogic).branches.first().condition.refersToPhoneme(q.phonemes.find { "a" in it.graphemes }!!))
+        assertFalse((rule.logic as MorphoRuleLogic).branches.first().condition.refersToLangEntity(q.phonemes.find { "a" in it.graphemes }!!))
     }
 
     @Test
@@ -742,7 +742,7 @@ class RuleTest : QBaseTest() {
         val rule = parseRule(q, q, " * d -> l / #_")
         val result = rule.apply(q.word("danta"), repo)
         assertEquals("lanta", result.text)
-        assertTrue(rule.logic.refersToPhoneme(q.phonemes.find { it.graphemes[0] == "d" }!!))
+        assertTrue(rule.logic.refersToLangEntity(q.phonemes.find { it.graphemes[0] == "d" }!!))
     }
 
     @Test

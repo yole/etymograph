@@ -190,8 +190,8 @@ class RuleBranch(val condition: RuleCondition, val instructions: List<RuleInstru
         return instructions.map { it.toSummaryText(graph) ?: return null }.joinToString("")
     }
 
-    fun refersToPhoneme(phoneme: Phoneme): Boolean {
-        return condition.refersToPhoneme(phoneme) || instructions.any { it.refersToPhoneme(phoneme) }
+    fun refersToLangEntity(entity: LangEntity): Boolean {
+        return condition.refersToLangEntity(entity) || instructions.any { it.refersToLangEntity(entity) }
     }
 
     companion object {
@@ -256,7 +256,7 @@ sealed class RuleLogic {
     abstract fun toSummaryText(graph: GraphRepository): String
     open fun findConditionForInstruction(instruction: RuleInstruction): RuleCondition? = null
     open fun referencedRules(): Set<Rule> = emptySet()
-    abstract fun refersToPhoneme(phoneme: Phoneme): Boolean
+    abstract fun refersToLangEntity(entity: LangEntity): Boolean
 
     protected fun deriveResult(
         resultWord: Word,
@@ -364,10 +364,10 @@ class MorphoRuleLogic(
         return filteredSummaries.toSet().joinToString("/")
     }
 
-    override fun refersToPhoneme(phoneme: Phoneme): Boolean {
-        return preInstructions.any { it.refersToPhoneme(phoneme) } ||
-                branches.any { branch -> branch.refersToPhoneme(phoneme) } ||
-                postInstructions.any { it.refersToPhoneme(phoneme) }
+    override fun refersToLangEntity(entity: LangEntity): Boolean {
+        return preInstructions.any { it.refersToLangEntity(entity) } ||
+                branches.any { branch -> branch.refersToLangEntity(entity) } ||
+                postInstructions.any { it.refersToLangEntity(entity) }
     }
 
     override fun referencedRules(): Set<Rule> {
@@ -490,8 +490,8 @@ class SpeRuleLogic(
         return summaries.joinToString(", ")
     }
 
-    override fun refersToPhoneme(phoneme: Phoneme): Boolean {
-        return instructions.any { it.refersToPhoneme(phoneme) } || postInstructions.any { it.refersToPhoneme(phoneme) }
+    override fun refersToLangEntity(entity: LangEntity): Boolean {
+        return instructions.any { it.refersToLangEntity(entity) } || postInstructions.any { it.refersToLangEntity(entity) }
     }
 
     companion object {

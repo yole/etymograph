@@ -69,6 +69,7 @@ abstract class GraphRepository {
     abstract fun deleteRule(rule: Rule)
     abstract fun findReferencingParadigms(rule: Rule): List<Pair<Paradigm, String>>
     abstract fun findReferencingRules(rule: Rule): List<Rule>
+    abstract fun findRulesReferencingMorpheme(morpheme: Word): List<Rule>
 
     abstract fun allSequences(): List<RuleSequence>
     abstract fun addRuleSequence(

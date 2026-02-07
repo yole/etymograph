@@ -577,7 +577,7 @@ function SingleWord({word}: { word: WordViewModel }) {
                 {word.linkedRules.map(rl => <>
                     <Link href={`/${graph}/rule/${rl.ruleId}`}>{rl.ruleName}</Link>
                     <SourceRefs source={rl.source} span={true}/>
-                    {allowEdit() && <>
+                    {allowEdit() && rl.canDelete && <>
                         &nbsp;(<span className="inlineButtonLink">
                             <button className="inlineButton" onClick={() => deleteRuleLinkClicked(rl.ruleId, rl.linkType)}>delete</button>
                         </span>)</>

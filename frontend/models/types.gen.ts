@@ -225,6 +225,7 @@ export type LinkedRuleViewModel = {
     linkType: string;
     source: Array<SourceRefViewModel>;
     notes?: (string) | null;
+    canDelete: boolean;
 };
 
 export type LinkParams = {
