@@ -164,11 +164,12 @@ fun generateParadigm(
     repo: GraphRepository,
     language: Language,
     name: String,
-    pos: String,
-    rows: String,
-    columns: String,
+    pos: List<String>,
+    rows: List<String>,
+    columns: List<String>,
     prefix: String,
-    addedCategories: String
+    addedCategories: String,
+    endings: List<String>
 ): Paradigm {
 
     fun crossProduct(c: List<List<String>>): List<String> {
@@ -176,11 +177,10 @@ fun generateParadigm(
         return c[0]
     }
 
-    fun mapToGrammaticalCategories(list: String): List<String> {
+    fun mapToGrammaticalCategories(list: List<String>): List<String> {
         val abbreviations = list
-            .split(',')
             .map { c ->
-                language.grammaticalCategories.find { it.name == c.trim() }
+                language.grammaticalCategories.find { it.name == c }
                     ?: throw ParadigmParseException("No grammatical category $c")
             }
             .map { it.values.map { v -> v.abbreviation } }
@@ -190,7 +190,6 @@ fun generateParadigm(
     val rowList = mapToGrammaticalCategories(rows)
     val colList = mapToGrammaticalCategories(columns)
 
-    val pos = pos.split(',').map { it.trim() }
     val paradigm = repo.addParadigm(name, language, pos)
     for (rowTitle in rowList) {
         paradigm.addRow(rowTitle)
@@ -208,11 +207,33 @@ fun generateParadigm(
             val ruleName = "$prefix${rowTitle.lowercase()}$ruleNameSeparator${columnTitle.lowercase().replace(" ", "-")}"
             val addedCategories = addedCategories + "." + rowTitle.uppercase() + categorySeparator + columnTitle.uppercase().replace(" ", ".")
             val rule = repo.ruleByName(ruleName)
-                ?: repo.addRule(ruleName, language, language, MorphoRuleLogic.empty(), addedCategories, fromPOS = pos)
+                ?: createParadigmRule(repo, name, ruleName, language, addedCategories, pos, endings.getOrNull(rowIndex + colIndex * rowList.size))
+
             paradigm.setRule(rowIndex, colIndex, listOf(rule))
         }
     }
     return paradigm
+}
+
+private fun createParadigmRule(
+    repo: GraphRepository,
+    name: String,
+    ruleName: String,
+    language: Language,
+    addedCategories: String,
+    pos: List<String>,
+    ending: String?
+): Rule {
+
+    val logic = if (!ending.isNullOrBlank()) {
+        val endingGloss = "$name ${addedCategories.removePrefix(".").lowercase()}. ending"
+        repo.findOrAddWord(ending, language, endingGloss, pos = KnownPartsOfSpeech.affix.abbreviation)
+        MorphoRuleLogic.parse("- append morpheme '$ending: $endingGloss'", RuleParseContext.of(repo, language, language))
+    }
+    else {
+        MorphoRuleLogic.empty()
+    }
+    return repo.addRule(ruleName, language, language, logic, addedCategories, fromPOS = pos)
 }
 
 

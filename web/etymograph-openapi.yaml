@@ -2970,6 +2970,8 @@ components:
           type: "string"
         columns:
           type: "string"
+        endings:
+          type: "string"
       required:
         - "name"
         - "lang"
@@ -2978,6 +2980,7 @@ components:
         - "prefix"
         - "rows"
         - "columns"
+        - "endings"
     ParadigmCellViewModel:
       type: "object"
       properties:

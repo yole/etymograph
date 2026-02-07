@@ -107,6 +107,7 @@ export default function RuleList(params) {
                         <FormRow label="Prefix" id="prefix"/>
                         <FormRow label="Rows" id="rows"/>
                         <FormRow label="Columns" id="columns"/>
+                        <FormRow label="Endings" id="endings"/>
                         </tbody>
                     </table>
                 </EtymographForm>

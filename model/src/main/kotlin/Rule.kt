@@ -19,7 +19,15 @@ class RuleParseContext(
     val fromLanguage: Language,
     val toLanguage: Language,
     val ruleRefFactory: (String) -> RuleRef
-)
+) {
+    companion object {
+        fun of(repo: GraphRepository, fromLanguage: Language, toLanguage: Language): RuleParseContext {
+            return RuleParseContext(repo, fromLanguage, toLanguage) {
+                RuleRef.to(repo.ruleByName(it) ?: throw RuleParseException("No rule with name '$it'"))
+            }
+        }
+    }
+}
 
 class RuleTraceData(
     val matchedBranches: MutableSet<RuleBranch> = mutableSetOf(),
@@ -571,9 +579,7 @@ class Rule(
     data class RuleChangeResult(val word: Word, val oldResult: String, val newResult: String)
 
     fun previewChanges(graph: GraphRepository, newText: String): List<RuleChangeResult> {
-        val newLogic = parseLogic(newText, RuleParseContext(graph, fromLanguage, toLanguage,) {
-            RuleRef.to(graph.ruleByName(it) ?: throw RuleParseException("No rule with name '$it'"))
-        })
+        val newLogic = parseLogic(newText, RuleParseContext.of(graph, fromLanguage, toLanguage))
         val newRule = Rule(-1, name, fromLanguage, toLanguage, newLogic)
         val results = mutableListOf<RuleChangeResult>()
         for (word in graph.allWords(fromLanguage)) {

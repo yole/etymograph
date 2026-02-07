@@ -112,15 +112,21 @@ class ParadigmController {
         val addedCategories: String,
         val prefix: String,
         val rows: String,
-        val columns: String
+        val columns: String,
+        val endings: String
     )
 
     @PostMapping("/{graph}/paradigm/generate")
     @ResponseBody
     fun generateParadigm(repo: GraphRepository, @RequestBody params: GenerateParadigmParameters): ParadigmViewModel {
         val language = repo.resolveLanguage(params.lang)
-        val paradigm = generateParadigm(repo, language, params.name, params.pos,params.rows, params.columns,
-            params.prefix, params.addedCategories)
+        val paradigm = generateParadigm(repo, language, params.name,
+            params.pos.split(",").map { it.trim() },
+            params.rows.split(",").map { it.trim() },
+            params.columns.split(",").map { it.trim() },
+            params.prefix, params.addedCategories,
+            params.endings.split(",").map { it.trim() }
+        )
 
         return paradigm.toViewModel(repo)
     }

@@ -169,6 +169,7 @@ export type GenerateParadigmParameters = {
     prefix: string;
     rows: string;
     columns: string;
+    endings: string;
 };
 
 export type GraphViewModel = {

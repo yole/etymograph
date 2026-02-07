@@ -1,6 +1,7 @@
 package ru.yole.etymograph
 
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNotNull
 import org.junit.Before
 import org.junit.Test
 
@@ -10,6 +11,19 @@ class ParadigmTest : QBaseTest() {
     @Before
     fun setup() {
         repo = InMemoryGraphRepository().with(q)
+
+        q.grammaticalCategories.add(WordCategory(
+            "Case", listOf("N"), listOf(
+                WordCategoryValue("Nominative", "NOM"),
+                WordCategoryValue("Dative", "DAT")
+            )
+        ))
+        q.grammaticalCategories.add(WordCategory(
+            "Number", listOf("N"), listOf(
+                WordCategoryValue("Singular", "SG"),
+                WordCategoryValue("Plural", "PL")
+            )
+        ))
     }
 
     @Test
@@ -118,5 +132,24 @@ class ParadigmTest : QBaseTest() {
         val cirya = repo.findOrAddWord("kiryamo", q, "mariner", pos = "N")
         val result = genPlRule.apply(cirya, repo)
         assertEquals("kiryamo", result.text)
+    }
+
+    @Test
+    fun generateParadigm() {
+        val paradigm = generateParadigm(repo, q, "Noun", listOf("N"),
+            listOf("Case"), listOf("Number"), "q-", "", emptyList())
+
+        assertNotNull(repo.ruleByName("q-nom-sg"))
+    }
+
+    @Test
+    fun generateParadigmWithEndings() {
+        val paradigm = generateParadigm(repo, q, "Noun", listOf("N"),
+            listOf("Case"), listOf("Number"), "q-", "", listOf("", "n"))
+
+        val morpheme = repo.wordsByText(q, "n").single()
+        assertEquals("Noun dat.sg. ending", morpheme.gloss)
+        val rule = repo.ruleByName("q-dat-sg")!!
+        assertEquals("lassen", rule.apply(q.word("lasse"), repo).text)
     }
 }

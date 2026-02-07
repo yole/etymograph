@@ -1,6 +1,6 @@
 import {
     AddPublicationParameters, ComparePhonemesResult,
-    CorpusTextParams,
+    CorpusTextParams, GenerateParadigmParameters,
     LookupParameters,
     LookupResultViewModel,
     SuggestCompoundViewModel,
@@ -317,7 +317,7 @@ export function updateWordParadigm(graph: string, id: number, paradigm: any) {
     return postToBackend(`${graph}/word/${id}/paradigm`, {items: [...paradigm]})
 }
 
-export function generateParadigm(graph: string, lang: string, data) {
+export function generateParadigm(graph: string, lang: string, data: GenerateParadigmParameters) {
     return postToBackend(`${graph}/paradigm/generate`, {lang: lang, ...data})
 }
 
