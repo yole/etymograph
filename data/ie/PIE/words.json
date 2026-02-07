@@ -113,7 +113,7 @@
     },
     {
         "id": 10074,
-        "text": "es",
+        "text": "-es",
         "gloss": "athematic gen. ending",
         "pos": "AFF"
     },
@@ -134,5 +134,155 @@
         "id": 10079,
         "text": "u",
         "pos": "AFF"
+    },
+    {
+        "id": 10155,
+        "text": "-mi",
+        "gloss": "Primary athematic 1sg ending",
+        "pos": "AFF"
+    },
+    {
+        "id": 10157,
+        "text": "mes",
+        "gloss": "Athematic Present pres.1du. ending",
+        "pos": "AFF"
+    },
+    {
+        "id": 10160,
+        "text": "-si",
+        "gloss": "Primary 2sg. ending",
+        "pos": "AFF"
+    },
+    {
+        "id": 10162,
+        "text": "th₁e",
+        "gloss": "Athematic Present pres.2du. ending",
+        "pos": "AFF"
+    },
+    {
+        "id": 10165,
+        "text": "-ti",
+        "gloss": "Primary 3sg. ending",
+        "pos": "AFF"
+    },
+    {
+        "id": 10167,
+        "text": "enti",
+        "gloss": "Athematic Present pres.3du. ending",
+        "pos": "AFF"
+    },
+    {
+        "id": 10169,
+        "text": "ues",
+        "gloss": "Athematic Present pres.1du. ending",
+        "pos": "AFF"
+    },
+    {
+        "id": 10171,
+        "text": "-mes",
+        "gloss": "Primary athematic 1pl. ending (Beekes)",
+        "pos": "AFF"
+    },
+    {
+        "id": 10174,
+        "text": "tHes",
+        "gloss": "Athematic Present pres.2du. ending",
+        "pos": "AFF"
+    },
+    {
+        "id": 10176,
+        "text": "-th₁e",
+        "gloss": "Athematic 2pl. ending (Beekes)",
+        "pos": "AFF"
+    },
+    {
+        "id": 10179,
+        "text": "tes",
+        "gloss": "Athematic Present pres.3du. ending",
+        "pos": "AFF"
+    },
+    {
+        "id": 10181,
+        "text": "-enti",
+        "gloss": "Primary 3pl. ending",
+        "pos": "AFF"
+    },
+    {
+        "id": 10183,
+        "text": "-oH",
+        "gloss": "Primary thematic 1sg ending",
+        "pos": "AFF"
+    },
+    {
+        "id": 10185,
+        "text": "-omom",
+        "gloss": "Primary thematic 1pl. ending (Beekes)",
+        "pos": "AFF",
+        "sourceRefs": [
+            {
+                "pubId": 12,
+                "refText": "260"
+            }
+        ]
+    },
+    {
+        "id": 10188,
+        "text": "-eh₁i",
+        "gloss": "Primary thematic 2sg. ending (Beekes)",
+        "pos": "AFF",
+        "sourceRefs": [
+            {
+                "pubId": 12,
+                "refText": "260"
+            }
+        ]
+    },
+    {
+        "id": 10193,
+        "text": "-e",
+        "gloss": "Primary thematic 3sg. ending (Beekes)",
+        "pos": "AFF",
+        "sourceRefs": [
+            {
+                "pubId": 12,
+                "refText": "260"
+            }
+        ]
+    },
+    {
+        "id": 10196,
+        "text": "-o",
+        "gloss": "Primary thematic 3pl. ending (Beekes)",
+        "pos": "AFF"
+    },
+    {
+        "id": 10200,
+        "text": "h₁es-",
+        "gloss": "be",
+        "pos": "V"
+    },
+    {
+        "id": 10201,
+        "text": "-me",
+        "gloss": "Primary 1pl. ending",
+        "pos": "AFF",
+        "sourceRefs": [
+            {
+                "pubId": 14,
+                "refText": "124"
+            }
+        ]
+    },
+    {
+        "id": 10203,
+        "text": "-te",
+        "gloss": "Primary 2pl. ending",
+        "pos": "AFF",
+        "sourceRefs": [
+            {
+                "pubId": 14,
+                "refText": "124"
+            }
+        ]
     }
 ]

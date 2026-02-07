@@ -136,5 +136,133 @@
         "posList": [
             "N"
         ]
+    },
+    {
+        "id": 53,
+        "name": "Primary Endings",
+        "rows": [
+            "1",
+            "2",
+            "3"
+        ],
+        "columns": [
+            {
+                "title": "Sg",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            10168
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            10173
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            10178
+                        ]
+                    }
+                ]
+            },
+            {
+                "title": "Du",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            10170
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            10175
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            10180
+                        ]
+                    }
+                ]
+            },
+            {
+                "title": "Pl",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            10202
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            10204
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            10182
+                        ]
+                    }
+                ]
+            }
+        ],
+        "posList": [
+            "V"
+        ]
+    },
+    {
+        "id": 55,
+        "name": "Primary Endings (Beekes)",
+        "rows": [
+            "1",
+            "2",
+            "3"
+        ],
+        "columns": [
+            {
+                "title": "Sg",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            10168
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            10198
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            10199
+                        ]
+                    }
+                ]
+            },
+            {
+                "title": "Pl",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            10172
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            10177
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            10205
+                        ]
+                    }
+                ]
+            }
+        ],
+        "posList": [
+            "V"
+        ]
     }
 ]

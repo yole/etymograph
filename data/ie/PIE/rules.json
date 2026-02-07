@@ -445,5 +445,520 @@
                 }
             }
         ]
+    },
+    {
+        "id": 10168,
+        "name": "pie-1sg",
+        "fromLang": "PIE",
+        "toLang": "PIE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEndingToMorpheme",
+                        "args": [
+                            "10183"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "e"
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "AppendMorpheme",
+                        "args": [
+                            "10155"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".PRES.1SG",
+        "fromPOS": [
+            "V"
+        ]
+    },
+    {
+        "id": 10170,
+        "name": "pie-athematic-1du",
+        "fromLang": "PIE",
+        "toLang": "PIE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "AppendMorpheme",
+                        "args": [
+                            "10169"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".PRES.1DU",
+        "fromPOS": [
+            "V"
+        ]
+    },
+    {
+        "id": 10172,
+        "name": "pie-1pl-beekes",
+        "fromLang": "PIE",
+        "toLang": "PIE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEndingToMorpheme",
+                        "args": [
+                            "10185"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "e"
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "AppendMorpheme",
+                        "args": [
+                            "10171"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".PRES.1PL",
+        "fromPOS": [
+            "V"
+        ],
+        "sourceRefs": [
+            {
+                "pubId": 12,
+                "refText": "259"
+            }
+        ]
+    },
+    {
+        "id": 10173,
+        "name": "pie-2sg",
+        "fromLang": "PIE",
+        "toLang": "PIE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "AppendMorpheme",
+                        "args": [
+                            "10160"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".PRES.2SG",
+        "fromPOS": [
+            "V"
+        ]
+    },
+    {
+        "id": 10175,
+        "name": "pie-athematic-2du",
+        "fromLang": "PIE",
+        "toLang": "PIE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "AppendMorpheme",
+                        "args": [
+                            "10174"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".PRES.2DU",
+        "fromPOS": [
+            "V"
+        ]
+    },
+    {
+        "id": 10177,
+        "name": "pie-2pl-beekes",
+        "fromLang": "PIE",
+        "toLang": "PIE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "AppendMorpheme",
+                        "args": [
+                            "10176"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".PRES.2PL",
+        "fromPOS": [
+            "V"
+        ]
+    },
+    {
+        "id": 10178,
+        "name": "pie-3sg",
+        "fromLang": "PIE",
+        "toLang": "PIE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "AppendMorpheme",
+                        "args": [
+                            "10165"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".PRES.3SG",
+        "fromPOS": [
+            "V"
+        ]
+    },
+    {
+        "id": 10180,
+        "name": "pie-athematic-3du",
+        "fromLang": "PIE",
+        "toLang": "PIE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "AppendMorpheme",
+                        "args": [
+                            "10179"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".PRES.3DU",
+        "fromPOS": [
+            "V"
+        ]
+    },
+    {
+        "id": 10182,
+        "name": "pie-3pl",
+        "fromLang": "PIE",
+        "toLang": "PIE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEndingToMorpheme",
+                        "args": [
+                            "10181"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "e"
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ApplySoundRule",
+                        "args": [
+                            "10072",
+                            "first vowel"
+                        ]
+                    },
+                    {
+                        "type": "AppendMorpheme",
+                        "args": [
+                            "10181"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".PRES.3PL",
+        "fromPOS": [
+            "V"
+        ]
+    },
+    {
+        "id": 10198,
+        "name": "pie-2sg-beekes",
+        "fromLang": "PIE",
+        "toLang": "PIE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEndingToMorpheme",
+                        "args": [
+                            "10188"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "e"
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "AppendMorpheme",
+                        "args": [
+                            "10160"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".2SG",
+        "fromPOS": [
+            "V"
+        ],
+        "sourceRefs": [
+            {
+                "pubId": 12,
+                "refText": "260"
+            }
+        ]
+    },
+    {
+        "id": 10199,
+        "name": "pie-3sg-beekes",
+        "fromLang": "PIE",
+        "toLang": "PIE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEndingToMorpheme",
+                        "args": [
+                            "10193"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "e"
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "AppendMorpheme",
+                        "args": [
+                            "10165"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".3SG",
+        "fromPOS": [
+            "V"
+        ],
+        "sourceRefs": [
+            {
+                "pubId": 12,
+                "refText": "260"
+            }
+        ]
+    },
+    {
+        "id": 10202,
+        "name": "pie-1pl",
+        "fromLang": "PIE",
+        "toLang": "PIE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "AppendMorpheme",
+                        "args": [
+                            "10201"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "e"
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ApplySoundRule",
+                        "args": [
+                            "10072",
+                            "first vowel"
+                        ]
+                    },
+                    {
+                        "type": "AppendMorpheme",
+                        "args": [
+                            "10201"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".1PL",
+        "fromPOS": [
+            "V"
+        ],
+        "sourceRefs": [
+            {
+                "pubId": 14,
+                "refText": "124"
+            }
+        ]
+    },
+    {
+        "id": 10204,
+        "name": "pie-2pl",
+        "fromLang": "PIE",
+        "toLang": "PIE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "AppendMorpheme",
+                        "args": [
+                            "10203"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "e"
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ApplySoundRule",
+                        "args": [
+                            "10072",
+                            "first vowel"
+                        ]
+                    },
+                    {
+                        "type": "AppendMorpheme",
+                        "args": [
+                            "10203"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".2PL",
+        "fromPOS": [
+            "V"
+        ]
+    },
+    {
+        "id": 10205,
+        "name": "pie-3pl-beekes",
+        "fromLang": "PIE",
+        "toLang": "PIE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEndingToMorpheme",
+                        "args": [
+                            "10196"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "e"
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "AppendMorpheme",
+                        "args": [
+                            "10181"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".3PL",
+        "fromPOS": [
+            "V"
+        ]
     }
 ]

@@ -562,6 +562,74 @@
                     "abbreviation": "LOC"
                 }
             ]
+        },
+        {
+            "name": "Voice",
+            "pos": [
+                "V"
+            ],
+            "values": [
+                {
+                    "name": "Active",
+                    "abbreviation": "ACT"
+                },
+                {
+                    "name": "Middle",
+                    "abbreviation": "MID"
+                }
+            ]
+        },
+        {
+            "name": "Tense",
+            "pos": [
+                "V"
+            ],
+            "values": [
+                {
+                    "name": "Present",
+                    "abbreviation": "PRES"
+                },
+                {
+                    "name": "Imperfect",
+                    "abbreviation": "IPF"
+                },
+                {
+                    "name": "Aorist",
+                    "abbreviation": "AOR"
+                },
+                {
+                    "name": "Perfect",
+                    "abbreviation": "PF"
+                }
+            ]
+        },
+        {
+            "name": "Mood",
+            "pos": [
+                "V"
+            ],
+            "values": [
+                {
+                    "name": "Indicative",
+                    "abbreviation": "IND"
+                },
+                {
+                    "name": "Injunctive",
+                    "abbreviation": "INJ"
+                },
+                {
+                    "name": "Subjunctive",
+                    "abbreviation": "SUBJ"
+                },
+                {
+                    "name": "Optative",
+                    "abbreviation": "OPT"
+                },
+                {
+                    "name": "Imperative",
+                    "abbreviation": "IPV"
+                }
+            ]
         }
     ],
     "wordClasses": [
