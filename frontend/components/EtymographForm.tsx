@@ -3,7 +3,7 @@ import {useContext, useEffect, useState} from "react";
 import {useRouter} from "next/router";
 import {EditModeContext, SetEditModeContext} from "@/components/EtymographFormView";
 
-interface EtymographFormButton {
+export interface EtymographFormButton {
     text: string;
     callback: (data: any) => void;
 }
