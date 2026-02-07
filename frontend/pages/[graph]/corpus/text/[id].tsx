@@ -199,13 +199,14 @@ export default function CorpusText(params) {
                                           language: corpusText.language,
                                           text: predefWord,
                                           contextGloss: l.words[wordIndex - l.words[0].index].contextGloss,
-                                          syllabographic: corpusText.syllabographic
+                                          syllabographic: corpusText.syllabographic,
                                       }}
                                       languageReadOnly={true}
                                       linkType=">"
                                       reverseLink={true}
                                       linkTargetText={predefWord}
                                       showContextGloss={true}
+                                      showSyllabographic={true}
                                       cancelled={() => setWordFormVisible(false)}/>
                         </>
                     }

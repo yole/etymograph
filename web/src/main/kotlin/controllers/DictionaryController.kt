@@ -20,6 +20,7 @@ class DictionaryController {
     data class DictionaryViewModel(
         val language: String,
         val languageFullName: String,
+        val languageSyllabographic: Boolean,
         val words: List<DictionaryWordViewModel>,
         val wordsByLetter: Map<String, List<DictionaryWordViewModel>>? = null
     )
@@ -89,7 +90,8 @@ class DictionaryController {
             mapped.filter { normalizeLetter(it.ref.text) == key }
         } ?: mapped
 
-        return DictionaryViewModel(language.shortName, language.name, filtered, groupWords(filtered))
+        return DictionaryViewModel(language.shortName, language.name, language.syllabographic,
+            filtered, groupWords(filtered))
     }
 
     private fun normalizeLetter(input: String): String {

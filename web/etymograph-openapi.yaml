@@ -1962,6 +1962,8 @@ components:
           type: "string"
         languageReconstructed:
           type: "boolean"
+        languageSyllabographic:
+          type: "boolean"
         text:
           type: "string"
         textWithExplicitStress:
@@ -2045,6 +2047,7 @@ components:
         - "language"
         - "languageFullName"
         - "languageReconstructed"
+        - "languageSyllabographic"
         - "text"
         - "textWithExplicitStress"
         - "gloss"
@@ -3458,6 +3461,8 @@ components:
           type: "string"
         languageFullName:
           type: "string"
+        languageSyllabographic:
+          type: "boolean"
         words:
           type: "array"
           items:
@@ -3468,6 +3473,7 @@ components:
       required:
         - "language"
         - "languageFullName"
+        - "languageSyllabographic"
         - "words"
     CorpusLangTextViewModel:
       type: "object"

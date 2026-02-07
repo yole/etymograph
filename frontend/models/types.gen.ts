@@ -151,6 +151,7 @@ export type DeriveThroughSequenceParams = {
 export type DictionaryViewModel = {
     language: string;
     languageFullName: string;
+    languageSyllabographic: boolean;
     words: Array<DictionaryWordViewModel>;
     wordsByLetter?: (string) | null;
 };
@@ -718,6 +719,7 @@ export type WordViewModel = {
     language: string;
     languageFullName: string;
     languageReconstructed: boolean;
+    languageSyllabographic: boolean;
     text: string;
     textWithExplicitStress: string;
     syllabogramSequence?: (SyllabogramSequence) | null;

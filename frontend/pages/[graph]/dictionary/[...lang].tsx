@@ -76,6 +76,7 @@ export default function Dictionary(params) {
                           reconstructed: filter === "reconstructed",
                       }}
                       hideReconstructed={filter !== "reconstructed"}
+                      showSyllabographic={dict.languageSyllabographic}
             />}
         </>}
 

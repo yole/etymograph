@@ -31,6 +31,7 @@ interface WordFormProps extends EtymographFormProps<WordFormData, WordViewModel>
     textReadOnly?: boolean
     showContextGloss?: boolean
     hideReconstructed?: boolean
+    showSyllabographic?: boolean
     wordSubmitted?: (word: WordViewModel, baseWord: WordViewModel | undefined, formData: WordFormData) => any
 }
 
@@ -152,7 +153,7 @@ export default function WordForm(props: WordFormProps) {
         </>}
         </tbody></table>
         {!props.hideReconstructed && <FormCheckbox id="reconstructed" label="Reconstructed"/>}
-        <FormCheckbox id="syllabographic" label="Syllabographic"/>
+        {props.showSyllabographic && <FormCheckbox id="syllabographic" label="Syllabographic"/>}
         {props.addToCompound !== undefined && <FormCheckbox id="markHead" label="Mark as head"/>}
     </EtymographForm>
 }

@@ -532,6 +532,7 @@ function SingleWord({word}: { word: WordViewModel }) {
                 notes: word.notes
             }}
             languageReadOnly={true}
+            showSyllabographic={word.languageSyllabographic}
             wordSubmitted={editSubmitted}
             cancelled={() => setEditMode(false)}
             />}
