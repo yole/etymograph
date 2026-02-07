@@ -117,6 +117,8 @@ export default function WordForm(props: WordFormProps) {
         <table><tbody>
         {props.languageReadOnly !== true && <LanguageSelect id="language" label="Language"/>}
         <FormRow id="text" label="Text" readOnly={props.textReadOnly === true} inputAssist={true}
+                 inputAssistLanguage={props.defaultValues.language}
+                 inputAssistLanguageProp={props.languageReadOnly !== null ? "language" : undefined}
                  handleBlur={updateWordStatus}>
             {isNewWord && <span className="newWord">New</span>}
             {wordDefinitions.length > 0 && <>

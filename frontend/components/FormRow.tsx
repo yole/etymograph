@@ -10,6 +10,8 @@ interface FormRowProps extends FormFieldProps{
     readOnly?: boolean;
     size?: number;
     inputAssist?: boolean;
+    inputAssistLanguage?: string;
+    inputAssistLanguageProp?: string;
     children?: React.ReactNode;
     handleBlur?: (data: any) => void;
 }
@@ -23,7 +25,12 @@ export default function FormRow(props: FormRowProps) {
         <td><label htmlFor={props.id}>{props.label}:</label></td>
         <td>
             <input id={props.id} readOnly={props.readOnly} size={props.size} type="text" autoComplete="off" className="formRow" {...register(props.id)}/>
-            {props.inputAssist && <InputAssist id={props.id} inline={true}/>}
+            {props.inputAssist &&
+                <InputAssist id={props.id}
+                             language={props.inputAssistLanguage}
+                             languageProp={props.inputAssistLanguageProp} inline={true}
+                />
+            }
             {props.children}
         </td>
     </tr>
