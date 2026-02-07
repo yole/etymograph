@@ -119,48 +119,8 @@ class ParadigmController {
     @ResponseBody
     fun generateParadigm(repo: GraphRepository, @RequestBody params: GenerateParadigmParameters): ParadigmViewModel {
         val language = repo.resolveLanguage(params.lang)
-
-        fun crossProduct(c: List<List<String>>): List<String> {
-            // TODO
-            return c[0]
-        }
-
-        fun mapToGrammaticalCategories(list: String): List<String> {
-            val abbreviations = list
-                .split(',')
-                .map { c ->
-                    language.grammaticalCategories.find { it.name == c.trim() }
-                        ?: badRequest("No grammatical category $c")
-                }
-                .map { it.values.map { v -> v.abbreviation } }
-            return crossProduct(abbreviations)
-        }
-
-        val rowList = mapToGrammaticalCategories(params.rows)
-        val colList = mapToGrammaticalCategories(params.columns)
-
-        val pos = params.pos.split(',').map { it.trim() }
-        val paradigm = repo.addParadigm(params.name, language, pos)
-        for (rowTitle in rowList) {
-            paradigm.addRow(rowTitle)
-        }
-        for (columnTitle in colList) {
-            paradigm.addColumn(columnTitle)
-        }
-
-        val prefix = if (params.prefix.endsWith("-")) params.prefix else params.prefix + "-"
-
-        for ((rowIndex, rowTitle) in rowList.withIndex()) {
-            for ((colIndex, columnTitle) in colList.withIndex()) {
-                val ruleNameSeparator = if (rowTitle.all { it.isDigit() }) "" else "-"
-                val categorySeparator = if (rowTitle.all { it.isDigit() }) "" else "."
-                val ruleName = "$prefix${rowTitle.lowercase()}$ruleNameSeparator${columnTitle.lowercase().replace(" ", "-")}"
-                val addedCategories = params.addedCategories + "." + rowTitle.uppercase() + categorySeparator + columnTitle.uppercase().replace(" ", ".")
-                val rule = repo.ruleByName(ruleName)
-                    ?: repo.addRule(ruleName, language, language, MorphoRuleLogic.empty(), addedCategories, fromPOS = pos)
-                paradigm.setRule(rowIndex, colIndex, listOf(rule))
-            }
-        }
+        val paradigm = generateParadigm(repo, language, params.name, params.pos,params.rows, params.columns,
+            params.prefix, params.addedCategories)
 
         return paradigm.toViewModel(repo)
     }

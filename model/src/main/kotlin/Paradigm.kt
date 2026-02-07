@@ -160,4 +160,60 @@ data class Paradigm(
     }
 }
 
+fun generateParadigm(
+    repo: GraphRepository,
+    language: Language,
+    name: String,
+    pos: String,
+    rows: String,
+    columns: String,
+    prefix: String,
+    addedCategories: String
+): Paradigm {
+
+    fun crossProduct(c: List<List<String>>): List<String> {
+        // TODO
+        return c[0]
+    }
+
+    fun mapToGrammaticalCategories(list: String): List<String> {
+        val abbreviations = list
+            .split(',')
+            .map { c ->
+                language.grammaticalCategories.find { it.name == c.trim() }
+                    ?: throw ParadigmParseException("No grammatical category $c")
+            }
+            .map { it.values.map { v -> v.abbreviation } }
+        return crossProduct(abbreviations)
+    }
+
+    val rowList = mapToGrammaticalCategories(rows)
+    val colList = mapToGrammaticalCategories(columns)
+
+    val pos = pos.split(',').map { it.trim() }
+    val paradigm = repo.addParadigm(name, language, pos)
+    for (rowTitle in rowList) {
+        paradigm.addRow(rowTitle)
+    }
+    for (columnTitle in colList) {
+        paradigm.addColumn(columnTitle)
+    }
+
+    val prefix = if (prefix.endsWith("-")) prefix else "$prefix-"
+
+    for ((rowIndex, rowTitle) in rowList.withIndex()) {
+        for ((colIndex, columnTitle) in colList.withIndex()) {
+            val ruleNameSeparator = if (rowTitle.all { it.isDigit() }) "" else "-"
+            val categorySeparator = if (rowTitle.all { it.isDigit() }) "" else "."
+            val ruleName = "$prefix${rowTitle.lowercase()}$ruleNameSeparator${columnTitle.lowercase().replace(" ", "-")}"
+            val addedCategories = addedCategories + "." + rowTitle.uppercase() + categorySeparator + columnTitle.uppercase().replace(" ", ".")
+            val rule = repo.ruleByName(ruleName)
+                ?: repo.addRule(ruleName, language, language, MorphoRuleLogic.empty(), addedCategories, fromPOS = pos)
+            paradigm.setRule(rowIndex, colIndex, listOf(rule))
+        }
+    }
+    return paradigm
+}
+
+
 class ParadigmParseException(message: String) : Exception(message)
