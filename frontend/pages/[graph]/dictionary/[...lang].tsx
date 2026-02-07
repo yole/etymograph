@@ -5,6 +5,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import {useState} from "react";
 import {DictionaryViewModel, DictionaryWordViewModel, WordViewModel} from "@/models";
 import WordLink from "@/components/WordLink";
+import LanguageNavBar from "@/components/LanguageNavBar";
 
 export const config = {
     unstable_runtimeJS: true
@@ -65,6 +66,8 @@ export default function Dictionary(params) {
 
     return <>
         <Breadcrumbs langId={dict.language} langName={dict.languageFullName} title={filterText}/>
+        <LanguageNavBar langId={dict.language}/>
+        <p/>
 
         {allowEdit() && <>
             {!showAddWord && <button className="uiButton" onClick={() => setShowAddWord(!showAddWord)}>Add word</button>}

@@ -3,6 +3,7 @@ import {useRouter} from "next/router";
 import Link from "next/link";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import {CorpusLangViewModel} from "@/models";
+import LanguageNavBar from "@/components/LanguageNavBar";
 
 export const config = {
     unstable_runtimeJS: true
@@ -20,6 +21,8 @@ export default function CorpusLangIndex(props) {
     const graph = router.query.graph
     return <>
         <Breadcrumbs langId={corpusForLanguage.language} langName={corpusForLanguage.languageFullName} title="Corpus"/>
+        <LanguageNavBar langId={corpusForLanguage.language}/>
+        <p/>
         <ul>
             {corpusForLanguage.corpusTexts.map(t => (
                     <li key={t.id}><Link href={`/${graph}/corpus/text/${t.id}`}>{t.title}</Link></li>

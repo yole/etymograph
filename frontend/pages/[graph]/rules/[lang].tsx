@@ -15,6 +15,7 @@ import {
     RuleSequenceViewModel,
     RuleShortViewModel
 } from "@/models";
+import LanguageNavBar from "@/components/LanguageNavBar";
 
 // noinspection JSUnusedGlobalSymbols
 export const config = {
@@ -46,6 +47,9 @@ export default function RuleList(params) {
 
     return <>
         <Breadcrumbs langId={lang} langName={ruleList.toLangFullName} title="Rules"/>
+        <LanguageNavBar langId={lang}/>
+        <p/>
+
         {ruleList.ruleGroups.map(g => <>
             <h2 key={g.groupName}>{g.groupName}</h2>
             {g.paradigmId !== null && <p><Link href={`/${graph}/paradigm/${g.paradigmId}`}>Paradigm</Link></p>}

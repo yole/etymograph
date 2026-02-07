@@ -13,6 +13,7 @@ import { GlobalStateContext } from "@/components/Contexts";
 import LanguageSelect from "@/components/LanguageSelect";
 import FormCheckbox from "@/components/FormCheckbox";
 import {LanguageViewModel, UpdateLanguageParameters} from "@/models";
+import LanguageNavBar from "@/components/LanguageNavBar";
 
 export const config = {
     unstable_runtimeJS: true
@@ -52,13 +53,7 @@ export default function LanguageIndex(props) {
 
     return <>
         <Breadcrumbs title={lang.name + (lang.reconstructed ? " (reconstructed)" : "")}/>
-
-        <Link href={`/${graph}/dictionary/${langId}`}>Dictionary</Link>
-        {' '}| <Link href={`/${graph}/dictionary/${langId}/compounds`}>Compounds</Link>
-        {' '}| <Link href={`/${graph}/dictionary/${langId}/names`}>Names</Link>
-        {' '}| <Link href={`/${graph}/dictionary/${langId}/reconstructed`}>Reconstructed words</Link>
-        {' '}| <Link href={`/${graph}/rules/${langId}`}>Rules</Link>
-        {' '}| <Link href={`/${graph}/corpus/${langId}`}>Corpus</Link>
+        <LanguageNavBar langId={langId}/>
 
         <EtymographFormView>
             <View>
