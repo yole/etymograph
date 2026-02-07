@@ -1061,7 +1061,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                     PrependAppendInstruction(insnData.type, fromLanguage, insnData.args[0], insnData.comment)
                 InstructionType.Insert ->
                     InsertInstruction(insnData.args[0], insnData.args[1].toInt(), SeekTarget.parse(insnData.args[2], fromLanguage), insnData.comment)
-                InstructionType.PrependMorpheme, InstructionType.AppendMorpheme ->
+                InstructionType.PrependMorpheme, InstructionType.AppendMorpheme, InstructionType.ChangeEndingToMorpheme ->
                     MorphemeInstruction(insnData.type, insnData.args[0].toInt(), insnData.comment)
                 InstructionType.Spe ->
                     SpeInstruction(SpePattern.parse(fromLanguage, toLanguage, insnData.args[0]),

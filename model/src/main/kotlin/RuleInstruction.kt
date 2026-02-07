@@ -6,9 +6,10 @@ enum class InstructionType(
     val takesArgument: Boolean = false
 ) {
     NoChange("no change"),
-    ChangeEnding("change ending to", "change ending to '(.*)'", true),
     PrependMorpheme("prepend morpheme", "prepend morpheme '(.+?): (.+)'", true),
     AppendMorpheme("append morpheme", "append morpheme '(.+?): (.+)'", true),
+    ChangeEndingToMorpheme("change ending to morpheme", "change ending to morpheme '(.+?): (.+)'", true),
+    ChangeEnding("change ending to", "change ending to '(.*)'", true),
     Prepend("prepend", "prepend (.+)", true),
     Append("append", "append (.+)", true),
     Insert("insert", "insert '(.+)' (before|after) (.+)"),
@@ -34,26 +35,28 @@ open class RuleInstruction(val type: InstructionType, val arg: String, val comme
     }
 
     private fun changeEnding(word: Word, rule: Rule, branch: RuleBranch?, graph: GraphRepository): Word {
-        if (branch != null) {
-            val condition = branch.condition.findLeafConditions(ConditionType.EndsWith)
-                .firstOrNull { it.matches(word, graph) }
-                ?: return word
-            val phonemes = PhonemeIterator(word, graph)
-            if (condition.phonemeClass != null) {
-                phonemes.deleteAtRelative(phonemes.size - 1)
+        val phonemes = removeMatchedEnding(word, branch, graph)
+            ?: return word
+        return word.derive(phonemes.result() + arg,
+            segments = remapSegments(phonemes, word.segments),
+            addSegment = WordSegment.create(phonemes.result().length, arg.length, rule.addedCategories, null, rule))
+    }
+
+    protected fun removeMatchedEnding(word: Word, branch: RuleBranch?, graph: GraphRepository): PhonemeIterator? {
+        val condition = branch?.condition?.findLeafConditions(ConditionType.EndsWith)
+            ?.firstOrNull { it.matches(word, graph) }
+            ?: return null
+        val phonemes = PhonemeIterator(word, graph)
+        if (condition.phonemeClass != null) {
+            phonemes.deleteAtRelative(phonemes.size - 1)
+        } else {
+            val conditionPhonemes = PhonemeIterator(condition.parameter!!, word.language, repo = graph)
+            val phonemesToDelete = conditionPhonemes.size
+            for (i in phonemes.size - 1 downTo phonemes.size - phonemesToDelete) {
+                phonemes.deleteAtRelative(i)
             }
-            else {
-                val conditionPhonemes = PhonemeIterator(condition.parameter!!, word.language, repo = graph)
-                val phonemesToDelete = conditionPhonemes.size
-                for (i in phonemes.size - 1 downTo phonemes.size - phonemesToDelete) {
-                    phonemes.deleteAtRelative(i)
-                }
-            }
-            return word.derive(phonemes.result() + arg,
-                segments = remapSegments(phonemes, word.segments),
-                addSegment = WordSegment.create(phonemes.result().length, arg.length, rule.addedCategories, null, rule))
         }
-        return word
+        return phonemes
     }
 
     open fun reverseApply(rule: Rule, text: String, language: Language, graph: GraphRepository, trace: RuleTrace? = null): List<String> {
@@ -130,7 +133,7 @@ open class RuleInstruction(val type: InstructionType, val arg: String, val comme
                         }
                         InstructionType.Prepend, InstructionType.Append ->
                             PrependAppendInstruction(type, context.fromLanguage, arg, comment)
-                        InstructionType.PrependMorpheme, InstructionType.AppendMorpheme -> {
+                        InstructionType.PrependMorpheme, InstructionType.AppendMorpheme, InstructionType.ChangeEndingToMorpheme -> {
                             val text = match.groupValues[1]
                             val gloss = match.groupValues[2]
                             val word = context.repo.wordsByText(context.fromLanguage, text)
@@ -401,7 +404,7 @@ class MorphemeInstruction(type: InstructionType, val morphemeId: Int, comment: S
     : RuleInstruction(type, morphemeId.toString(), comment)
 {
     init {
-        if (type != InstructionType.PrependMorpheme && type != InstructionType.AppendMorpheme) {
+        if (type != InstructionType.PrependMorpheme && type != InstructionType.AppendMorpheme && type != InstructionType.ChangeEndingToMorpheme) {
             throw IllegalStateException("Unsupported instruction type for this instruction implementation")
         }
     }
@@ -414,6 +417,15 @@ class MorphemeInstruction(type: InstructionType, val morphemeId: Int, comment: S
             InstructionType.AppendMorpheme ->
                 word.derive(word.text + morpheme.text.trimStart('-'),
                     addSegment = WordSegment(word.text.length, morpheme.text.length, context.rule.addedCategories, morpheme, context.rule))
+
+            InstructionType.ChangeEndingToMorpheme -> {
+                val phonemes = removeMatchedEnding(word, context.branch, context.graph)
+                    ?: return word
+                word.derive(phonemes.result() + morpheme.text.trimStart('-'),
+                    segments = remapSegments(phonemes, word.segments),
+                    addSegment = WordSegment(phonemes.result().length, morpheme.text.length, context.rule.addedCategories, morpheme, context.rule))
+            }
+
             else -> throw IllegalStateException("Unsupported instruction type for this instruction implementation")
         }
     }

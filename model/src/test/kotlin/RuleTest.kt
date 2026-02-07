@@ -711,6 +711,19 @@ class RuleTest : QBaseTest() {
     }
 
     @Test
+    fun changeEndingToMorpheme() {
+        val pie = Language("Proto-Indo-European", "PIE")
+        val repo = InMemoryGraphRepository().with(pie)
+        repo.addWord("o", "1sg thematic ending", language = pie)
+        val text = "word ends with 'e':\n - change ending to morpheme 'o: 1sg thematic ending'"
+        val rule = repo.rule(text, fromLanguage = pie)
+        val lukeie = repo.addWord("lukeie", language = pie)
+        val result = rule.apply(lukeie, repo)
+        assertEquals("lukeio", result.text)
+        assertEquals(text, rule.toEditableText(repo))
+    }
+
+    @Test
     fun applyRuleUseExistingLink() {
         val on = Language("Old Norse", "ON")
         on.wordClasses = mutableListOf(WordCategory("Gender", listOf("N"), listOf(WordCategoryValue("Neuter", "n"))))
