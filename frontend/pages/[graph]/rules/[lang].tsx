@@ -88,11 +88,11 @@ export default function RuleList(params) {
             </>}
         </>)}
         {allowEdit() && <p>
-            <button onClick={() => router.push(`/${graph}/rules/${lang}/new`)}>Add Rule</button>
+            <button className="uiButton" onClick={() => router.push(`/${graph}/rules/${lang}/new`)}>Add Rule</button>
             {' '}
-            <button onClick={() => router.push(`/${graph}/rules/sequence/new`)}>Add Rule Sequence</button>
+            <button className="uiButton" onClick={() => router.push(`/${graph}/rules/sequence/new`)}>Add Rule Sequence</button>
             {' '}
-            <button onClick={() => router.push(`/${graph}/paradigms/${lang}/new`)}>Add Paradigm</button>
+            <button className="uiButton" onClick={() => router.push(`/${graph}/paradigms/${lang}/new`)}>Add Paradigm</button>
             {' '}
             <EtymographFormView editButtonTitle="Generate Paradigm">
                 <EtymographForm<GenerateParadigmParameters, ParadigmViewModel>
