@@ -29,6 +29,6 @@ export default function CorpusLangIndex(props) {
                 )
             )}
         </ul>
-        {allowEdit() && <button onClick={() => router.push(`/${graph}/corpus/${corpusForLanguage.language}/new`)}>Add</button>}
+        {allowEdit() && <button className="uiButton" onClick={() => router.push(`/${graph}/corpus/${corpusForLanguage.language}/new`)}>Add</button>}
     </>
 }
