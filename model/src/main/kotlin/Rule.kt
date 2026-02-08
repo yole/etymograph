@@ -3,6 +3,8 @@ package ru.yole.etymograph
 import ru.yole.etymograph.RuleBranch.Companion.parseComment
 import java.util.Locale
 import kotlin.collections.fold
+import kotlin.collections.plus
+import kotlin.collections.toSet
 
 class RuleParseException(msg: String): RuntimeException(msg)
 
@@ -492,6 +494,10 @@ class SpeRuleLogic(
 
     override fun refersToLangEntity(entity: LangEntity): Boolean {
         return instructions.any { it.refersToLangEntity(entity) } || postInstructions.any { it.refersToLangEntity(entity) }
+    }
+
+    override fun referencedRules(): Set<Rule> {
+        return (instructions.flatMap { it.referencedRules() } + postInstructions.flatMap { it.referencedRules() }).toSet()
     }
 
     companion object {
