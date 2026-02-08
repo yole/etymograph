@@ -1,5 +1,5 @@
 import {useRouter} from "next/router";
-import {RuleListView} from "@/pages/[graph]/rules/[lang]";
+import Link from "next/link";
 import {allowEdit, fetchAllLanguagePaths, fetchBackend, generateParadigm} from "@/api";
 import {GenerateParadigmParameters, ParadigmViewModel, RuleListViewModel} from "@/models";
 import Breadcrumbs from "@/components/Breadcrumbs";
@@ -14,6 +14,28 @@ export async function getStaticProps(context) {
 }
 
 export const getStaticPaths = fetchAllLanguagePaths
+
+export function RuleListView(params: {list: RuleListViewModel}) {
+    const router = useRouter()
+    const graph = router.query.graph as string
+
+    const ruleList = params.list
+    return <>{ruleList.ruleGroups.map(g => <>
+        <h2 key={g.groupName}>{g.groupName}</h2>
+        {g.paradigmId !== null && <p><Link href={`/${graph}/paradigm/${g.paradigmId}`}>Paradigm</Link></p>}
+        <table className="tableWithBorders"><tbody>
+        {g.rules.map(r => <tr key={r.id}>
+            <td>
+                <Link href={`/${graph}/rule/${r.id}`}>{r.name}</Link>
+            </td>
+            <td>
+                {r.summaryText.length > 0 ? r.summaryText : ""}
+            </td>
+        </tr>)}
+        </tbody></table>
+    </>)}
+    </>
+}
 
 export default function MorphoRuleList(params) {
     const ruleList = params.loaderData as RuleListViewModel
