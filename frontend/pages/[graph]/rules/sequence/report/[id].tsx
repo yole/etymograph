@@ -37,7 +37,7 @@ export default function RuleSequenceReport(params) {
         <Breadcrumbs
             title={ruleSequence.name}
             langId={ruleSequence.toLang}
-            steps={[{title: "Rules", url: `/${graph}/rules/${ruleSequence.toLang}`}]}
+            steps={[{title: "Historical Phonology", url: `/${graph}/rules/${ruleSequence.toLang}/phono`}]}
         />
         {ruleSequence.rules.map(r => <>
             <h3>{r.ruleName}

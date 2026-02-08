@@ -842,6 +842,46 @@ paths:
             '*/*':
               schema:
                 $ref: "#/components/schemas/RuleListViewModel"
+  /{graph}/rules/{lang}/morpho:
+    get:
+      summary: "GET {graph}/rules/{lang}/morpho"
+      operationId: "morphoRules"
+      parameters:
+        - name: "graph"
+          in: "path"
+          required: false
+        - name: "lang"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/RuleListViewModel"
+  /{graph}/rules/{lang}/phono:
+    get:
+      summary: "GET {graph}/rules/{lang}/phono"
+      operationId: "phonoRules"
+      parameters:
+        - name: "graph"
+          in: "path"
+          required: false
+        - name: "lang"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/RuleListViewModel"
   /{graph}/paradigm/generate:
     post:
       summary: "POST {graph}/paradigm/generate"
@@ -2629,6 +2669,8 @@ components:
           $ref: "#/components/schemas/RuleRefViewModel"
         spe:
           type: "boolean"
+        shownOnMorphoPage:
+          type: "boolean"
         preInstructions:
           type: "array"
           items:
@@ -2678,6 +2720,7 @@ components:
         - "source"
         - "sourceEditableText"
         - "spe"
+        - "shownOnMorphoPage"
         - "preInstructions"
         - "branches"
         - "postInstructions"

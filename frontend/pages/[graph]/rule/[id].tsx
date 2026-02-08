@@ -95,6 +95,10 @@ export default function Rule(params) {
     const router = useRouter()
     const graph = router.query.graph as string
 
+    const ruleStep = rule.shownOnMorphoPage ?
+        ({title: "Morphology", url: `/${graph}/rules/${rule.toLang}/morpho`}) :
+        ({title: "Historical Phonology", url: `/${graph}/rules/${rule.toLang}/phono`})
+
     function linkSubmitted() {
         setLinkMode(false)
         router.replace(router.asPath)
@@ -108,7 +112,7 @@ export default function Rule(params) {
     function deleteRuleClicked() {
         if (window.confirm("Delete this rule?")) {
             deleteRule(graph, rule.id)
-                .then(() => router.push(`/${graph}/rules/${rule.toLang}`))
+                .then(() => router.push(ruleStep.url))
         }
     }
 
@@ -155,7 +159,7 @@ export default function Rule(params) {
 
     return <>
     <Breadcrumbs langId={rule.toLang} langName={rule.toLangFullName}
-                     steps={[{title: "Rules", url: `/${graph}/rules/${rule.toLang}`}]}
+                     steps={[ruleStep]}
                      title={rule.name}/>
         {rule.fromLang !== rule.toLang && <p>From {rule.fromLangFullName} to {rule.toLangFullName}</p>}
         {rule.paradigmId !== null && <p>Paradigm: <Link href={`/${graph}/paradigm/${rule.paradigmId}`}>{rule.paradigmName}</Link></p>}

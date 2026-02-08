@@ -87,6 +87,7 @@ class RuleController {
         val paradigmPreRule: RuleRefViewModel?,
         val paradigmPostRule: RuleRefViewModel?,
         val spe: Boolean,
+        val shownOnMorphoPage: Boolean,
         val preInstructions: List<RichText>,
         val branches: List<RuleBranchViewModel>,
         val postInstructions: List<RichText>,
@@ -285,6 +286,10 @@ class RuleController {
             ))
         }
 
+        val isReferencedFromParadigms = this in (repo.paradigmsForLanguage(fromLanguage)
+            .flatMap { it.allRules }
+            .flatMap { it.logic.referencedRules() })
+
         val orphanExamples = if (isSPE())
             examples.filter { it.instructions.isEmpty() }
         else
@@ -308,6 +313,7 @@ class RuleController {
             paradigm?.preRule?.toRefViewModel(),
             paradigm?.postRule?.toRefViewModel(),
             isSPE(),
+            !isSPE() || isReferencedFromParadigms,
             (logic as? MorphoRuleLogic)?.preInstructions?.map { it.toRichText(repo) } ?: emptyList(),
             ruleBranchesToViewModel(repo, examples),
             logic.postInstructions.map { it.toRichText(repo) },

@@ -115,7 +115,7 @@ export default function RuleSequence(params) {
         <Breadcrumbs
             title={ruleSequence.sequence.name}
             langId={ruleSequence.sequence.toLang}
-            steps={[{title: "Rules", url: `/${graph}/rules/${ruleSequence.sequence.toLang}`}]}
+            steps={[{title: "Historical Phonology", url: `/${graph}/rules/${ruleSequence.sequence.toLang}/phono`}]}
         />
 
         <button type="button" onClick={reapplySequenceClicked}>Reapply</button>

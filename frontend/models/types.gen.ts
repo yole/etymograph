@@ -508,6 +508,7 @@ export type RuleViewModel = {
     paradigmPreRule?: (RuleRefViewModel) | null;
     paradigmPostRule?: (RuleRefViewModel) | null;
     spe: boolean;
+    shownOnMorphoPage: boolean;
     preInstructions: Array<RichText>;
     branches: Array<RuleBranchViewModel>;
     postInstructions: Array<RichText>;

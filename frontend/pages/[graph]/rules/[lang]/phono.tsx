@@ -21,7 +21,7 @@ function RuleListView(params: {list: RuleListViewModel}) {
 
     function sequenceSubmitted(data: RuleSequenceViewModel) {
         setSequenceEditId(null)
-        router.push(`/${graph}/rules/${data.toLang}`)
+        router.push(`/${graph}/rules/${data.toLang}/phono`)
     }
 
     function editableRuleName(r: RuleShortViewModel) {

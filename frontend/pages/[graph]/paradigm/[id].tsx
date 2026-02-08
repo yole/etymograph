@@ -27,7 +27,7 @@ export default function Paradigm(params) {
     function deleteParadigmClicked() {
         if (window.confirm("Delete this paradigm?")) {
             deleteParadigm(graph, paradigm.id)
-                .then(() => router.push(`/${graph}/rules/${paradigm.language}`))
+                .then(() => router.push(`/${graph}/rules/${paradigm.language}/morpho`))
         }
     }
 
@@ -41,7 +41,7 @@ export default function Paradigm(params) {
 
     return <>
         <Breadcrumbs langId={paradigm.language} langName={paradigm.languageFullName}
-                     steps={[{url: `/${graph}/rules/${paradigm.language}`, title: "Rules"}]}
+                     steps={[{url: `/${graph}/rules/${paradigm.language}/morpho`, title: "Morphology"}]}
                      title={paradigm.name}/>
 
         <EtymographFormView buttons={[{text: "Delete", callback: () => deleteParadigmClicked()}]}>
