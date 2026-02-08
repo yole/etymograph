@@ -130,6 +130,7 @@ export type CorpusWordViewModel = {
     contextGloss?: (string) | null;
     wordId?: (number) | null;
     wordText?: (string) | null;
+    wordUrlKey?: (string) | null;
     wordCandidates?: Array<CorpusWordCandidateViewModel> | null;
     stressIndex?: (number) | null;
     stressLength?: (number) | null;

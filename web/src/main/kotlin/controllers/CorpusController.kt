@@ -51,6 +51,7 @@ class CorpusController {
         val contextGloss: String? = null,
         val wordId: Int? = null,
         val wordText: String? = null,
+        val wordUrlKey: String? = null,
         val wordCandidates: List<CorpusWordCandidateViewModel>? = null,
         val stressIndex: Int? = null,
         val stressLength: Int? = null,
@@ -104,7 +105,9 @@ class CorpusController {
                         cw.syllabogramSequence,
                         cw.segmentedGloss ?: "",
                         cw.contextGloss,
-                        cw.word?.id, cw.word?.text,
+                        cw.word?.id,
+                        cw.word?.text,
+                        cw.word?.text?.let { urlKey(it) },
                         cw.wordCandidates?.map { CorpusWordCandidateViewModel(it.id, it.getOrComputeGloss(repo)) },
                         cw.stressIndex, cw.stressLength, cw.homonym)
                 })

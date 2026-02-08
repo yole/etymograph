@@ -3565,6 +3565,9 @@ components:
         wordText:
           type: "string"
           nullable: true
+        wordUrlKey:
+          type: "string"
+          nullable: true
         wordCandidates:
           type: "array"
           nullable: true

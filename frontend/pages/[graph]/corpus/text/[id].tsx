@@ -53,8 +53,8 @@ export function CorpusTextWordLink(params: CorpusTextWordLinkProps) {
             </span>}
         </span>
     } else if (w.wordText || w.gloss) {
-        let linkText = (w.wordText ?? w.normalizedText).toLowerCase()
-        if (w.wordId !== null && w.homonym) {
+        let linkText = (w.wordUrlKey ?? w.wordText ?? w.normalizedText).toLowerCase()
+        if (w.wordId !== null && (w.homonym || w.wordUrlKey)) {
             linkText += `/${w.wordId}`
         }
         return <span onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
