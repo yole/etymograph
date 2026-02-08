@@ -125,7 +125,10 @@ class CorpusText(
         return line.split(' ').map {
             val cleanText = it.trimStart(*leadingPunctuation).trimEnd(*punctuation)
                 .replace("[", "").replace("]", "")
-            WordText(it, language.normalizeWord(cleanText), currentIndex++)
+            WordText(it,
+                if (language.syllabographic) cleanText else language.normalizeWord(cleanText),
+                currentIndex++
+            )
         }
     }
 
