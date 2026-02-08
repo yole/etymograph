@@ -576,7 +576,7 @@ function SingleWord({word}: { word: WordViewModel }) {
         {allowEdit() && <>
             <h4>Define this word</h4>
             {canShowTranscription && <><button className="uiButton" onClick={() => setShowTranscription(!showBaseWord)}>Transcription</button>{' '}</>}
-            {showTranscription && <WordForm wordSubmitted={submitted} linkType='_' linkTarget={word} reverseLink={true}
+            {showTranscription && <WordForm wordSubmitted={submitted} linkType='_' linkTarget={word} reverseLink={true} languageReadOnly={true}
                 defaultValues={{language: word.language}} cancelled={() => setShowTranscription(false)}/>}
 
             {!isCompound && <><button className="uiButton" onClick={() => setShowBaseWord(!showBaseWord)}>Lemma</button>{' '}</>}
