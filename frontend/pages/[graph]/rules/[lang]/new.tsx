@@ -29,6 +29,7 @@ export default function RuleEditor(params) {
         <Breadcrumbs langId={lang} langName={langData.name} title="New Rule"/>
         <RuleForm redirectOnCreate={(r) => `/${router.query.graph}/rule/${r.id}`}
                   defaultValues={{name: '', text: '', fromLang: protoLang, toLang: lang}}
+                  initialType={router.query.type as string}
                   addToSequenceId={addToSequenceId} />
     </>
 }

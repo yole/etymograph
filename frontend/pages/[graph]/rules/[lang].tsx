@@ -86,33 +86,7 @@ export function RuleListView(params: {list: RuleListViewModel}) {
             />
         </>}
     </>)}
-    {allowEdit() && <p>
-        <button className="uiButton" onClick={() => router.push(`/${graph}/rules/${lang}/new`)}>Add Rule</button>
-        {' '}
-        <button className="uiButton" onClick={() => router.push(`/${graph}/rules/sequence/new`)}>Add Rule Sequence</button>
-        {' '}
-        <button className="uiButton" onClick={() => router.push(`/${graph}/paradigms/${lang}/new`)}>Add Paradigm</button>
-        {' '}
-        <EtymographFormView editButtonTitle="Generate Paradigm">
-            <EtymographForm<GenerateParadigmParameters, ParadigmViewModel>
-                create={(data) => generateParadigm(graph, lang, data)}
-                redirectOnCreate={(r) => `/${graph}/paradigm/${r.id}`}>
-
-                <table>
-                    <tbody>
-                    <FormRow label="Name" id="name"/>
-                    <PosSelect label="POS" id="pos" language={lang}/>
-                    <FormRow label="Added Categories" id="addedCategories"/>
-                    <FormRow label="Prefix" id="prefix"/>
-                    <FormRow label="Rows" id="rows"/>
-                    <FormRow label="Columns" id="columns"/>
-                    <FormRow label="Endings" id="endings"/>
-                    </tbody>
-                </table>
-            </EtymographForm>
-        </EtymographFormView>
-    </p>}</>
-
+    </>
 }
 
 export default function RuleList(params) {
