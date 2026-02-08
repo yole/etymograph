@@ -20,6 +20,7 @@ class RuleParseContext(
     val repo: GraphRepository,
     val fromLanguage: Language,
     val toLanguage: Language,
+    val createUnresolvedEntities: Boolean = false,
     val ruleRefFactory: (String) -> RuleRef
 ) {
     companion object {

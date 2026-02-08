@@ -133,14 +133,8 @@ open class RuleInstruction(val type: InstructionType, val arg: String, val comme
                         }
                         InstructionType.Prepend, InstructionType.Append ->
                             PrependAppendInstruction(type, context.fromLanguage, arg, comment)
-                        InstructionType.PrependMorpheme, InstructionType.AppendMorpheme, InstructionType.ChangeEndingToMorpheme -> {
-                            val text = match.groupValues[1]
-                            val gloss = match.groupValues[2]
-                            val word = context.repo.wordsByText(context.fromLanguage, text)
-                                .firstOrNull { it.getOrComputeGloss(context.repo) == gloss }
-                                ?: throw RuleParseException("Cannot find word with text '$text' and gloss '$gloss'")
-                            MorphemeInstruction(type, word.id, comment)
-                        }
+                        InstructionType.PrependMorpheme, InstructionType.AppendMorpheme, InstructionType.ChangeEndingToMorpheme ->
+                            MorphemeInstruction.parse(type, match.groupValues[1], match.groupValues[2], comment, context)
                         InstructionType.Insert -> InsertInstruction.parse(context.fromLanguage, match, comment)
                         else -> RuleInstruction(type, arg, comment)
                     }
@@ -455,6 +449,28 @@ class MorphemeInstruction(type: InstructionType, val morphemeId: Int, comment: S
 
     override fun refersToLangEntity(entity: LangEntity): Boolean {
         return entity.id == morphemeId
+    }
+
+    companion object {
+        fun parse(
+            type: InstructionType,
+            text: String,
+            gloss: String,
+            comment: String?,
+            context: RuleParseContext
+        ): MorphemeInstruction {
+            var word = context.repo.wordsByText(context.fromLanguage, text)
+                .firstOrNull { it.getOrComputeGloss(context.repo) == gloss }
+            if (word == null) {
+                if (context.createUnresolvedEntities) {
+                    word = context.repo.findOrAddWord(text, context.fromLanguage, gloss, pos = KnownPartsOfSpeech.affix.abbreviation)
+                }
+                else {
+                    throw RuleParseException("Cannot find word with text '$text' and gloss '$gloss'")
+                }
+            }
+            return MorphemeInstruction(type, word.id, comment)
+        }
     }
 }
 

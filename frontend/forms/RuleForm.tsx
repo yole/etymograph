@@ -8,6 +8,7 @@ import {GraphContext} from "@/components/Contexts";
 import PosSelect from "@/components/PosSelect";
 import WordLink from "@/components/WordLink";
 import {RuleViewModel, UpdateRuleParameters} from "@/models";
+import FormCheckbox from "@/components/FormCheckbox";
 
 interface RuleFormProps extends EtymographFormProps<UpdateRuleParameters, RuleViewModel> {
     initialType?: string
@@ -71,6 +72,7 @@ export default function RuleForm(props: RuleFormProps) {
                 <FormRow label="Source" id="source"/>
             </tbody></table>
             <FormTextArea rows={10} cols={70} id="text" className="ruleText" inputAssist={true}/>
+            <FormCheckbox id="createUnresolvedEntities" label="Create unresolved entities"/>
             <br/>
             <h3>Notes</h3>
             <FormTextArea rows={5} cols={50} id="notes"/>

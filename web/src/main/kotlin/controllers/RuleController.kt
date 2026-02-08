@@ -415,7 +415,8 @@ class RuleController {
         val toPOS: String? = null,
         val source: String? = null,
         val notes: String? = null,
-        val addToSequenceId: Int? = null
+        val addToSequenceId: Int? = null,
+        val createUnresolvedEntities: Boolean = false
     )
 
     @PostMapping("/{graph}/rule", consumes = ["application/json"])
@@ -432,7 +433,7 @@ class RuleController {
         }
 
         val logic = try {
-            Rule.parseLogic(params.text, parseContext(repo, fromLanguage, toLanguage))
+            Rule.parseLogic(params.text, parseContext(repo, fromLanguage, toLanguage, params.createUnresolvedEntities))
         } catch (e: RuleParseException) {
             badRequest(e.message ?: "Cannot parse rule")
         }
@@ -459,8 +460,11 @@ class RuleController {
         return rule.toViewModel(repo)
     }
 
-    private fun parseContext(repo: GraphRepository, fromLanguage: Language, toLanguage: Language): RuleParseContext =
-        RuleParseContext(repo, fromLanguage, toLanguage) {
+    private fun parseContext(
+        repo: GraphRepository, fromLanguage: Language, toLanguage: Language,
+        createUnresolvedEntities: Boolean = false
+    ): RuleParseContext =
+        RuleParseContext(repo, fromLanguage, toLanguage, createUnresolvedEntities = createUnresolvedEntities) {
             RuleRef.to(repo.resolveRule(it))
         }
 
@@ -481,7 +485,8 @@ class RuleController {
         rule.name = params.name
         rule.fromLanguage = fromLanguage
         rule.toLanguage = toLanguage
-        rule.logic = Rule.parseLogic(params.text, parseContext(repo, rule.fromLanguage, rule.toLanguage))
+        rule.logic = Rule.parseLogic(params.text,
+            parseContext(repo, rule.fromLanguage, rule.toLanguage, params.createUnresolvedEntities))
         rule.notes = params.notes
         rule.addedCategories = params.addedCategories.nullize()
         rule.replacedCategories = params.replacedCategories.nullize()
