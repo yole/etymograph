@@ -501,21 +501,6 @@ function SingleWord({word}: { word: WordViewModel }) {
                     )}
                 </ul>}
             </p>}
-
-            {allowEdit() && canSuggestParseCandidates && <>
-                <button className="inlineButton" onClick={() => suggestParseCandidatesClicked()}>Suggest parse candidates</button>
-                <br/>
-                {parseCandidates.map(pc => (
-                    <>
-                        <p>
-                            {pc.wordId !== null &&
-                                <Link href={`/${graph}/word/${word.language}/${pc.text}/${pc.wordId}`}>{pc.text}</Link>}
-                            {pc.wordId === null && <i>{pc.text}</i>}
-                            {pc.categories.length === 0 && ` (${pc.ruleNames.join(",")})`}
-                            {pc.categories}?{' '}
-                            <button onClick={() => acceptParseCandidate(pc)}>Accept</button>
-                        </p>
-                    </>))}</>}
         </>}
         {editMode && <WordForm
             updateId={word.id}
@@ -588,29 +573,17 @@ function SingleWord({word}: { word: WordViewModel }) {
             </>
         }
 
-        <p/>
         {allowEdit() && <>
-            {canShowTranscription && <><button onClick={() => setShowTranscription(!showBaseWord)}>Add transcription</button><br/></>}
+            <h4>Define this word</h4>
+            {canShowTranscription && <><button className="uiButton" onClick={() => setShowTranscription(!showBaseWord)}>Transcription</button>{' '}</>}
             {showTranscription && <WordForm wordSubmitted={submitted} linkType='_' linkTarget={word} reverseLink={true}
                 defaultValues={{language: word.language}} cancelled={() => setShowTranscription(false)}/>}
-            {!isCompound && <><button onClick={() => setShowBaseWord(!showBaseWord)}>Add lemma</button><br/></>}
+
+            {!isCompound && <><button className="uiButton" onClick={() => setShowBaseWord(!showBaseWord)}>Lemma</button>{' '}</>}
             {showBaseWord && <WordForm wordSubmitted={submitted} linkType='>' linkTarget={word} reverseLink={true}
                                        defaultValues={{language: word.language}} cancelled={() => setShowBaseWord(false)}/>}
-            <button onClick={() => setShowDerivedWord(!showDerivedWord)}>Add inflected form</button><br/>
-            {showDerivedWord && <WordForm wordSubmitted={submitted} linkType='>' linkTarget={word}
-                                          defaultValues={{language: word.language}} cancelled={() => setShowDerivedWord(false)} />}
-            <button onClick={() => setShowOriginWord(!showOriginWord)}>Add origin word</button><br/>
-            {showOriginWord && <WordForm wordSubmitted={submitted} linkType='^' linkTarget={word} reverseLink={true}
-                                         defaultValues={{gloss: word.gloss}} cancelled={() => setShowOriginWord(false)}/>}
-            <button onClick={() => setShowDerivativeWord(!showDerivativeWord)}>Add derivative word</button>
-            {showDerivativeWord && <WordForm wordSubmitted={submitted} linkType='^' linkTarget={word}
-                                             defaultValues={{gloss: word.gloss}} cancelled={() => setShowDerivativeWord(false)}/>}
-            {word.suggestedDeriveSequences.map(seq => <>
-                {' '}
-                <button className="inlineButton" onClick={() => deriveThroughSequenceClicked(seq.id)}>Derive through {seq.name}</button>
-            </>)}
-            <br/>
-            <button onClick={defineAsCompoundClicked}>Define as compound</button><br/>
+
+            <button className="uiButton" onClick={defineAsCompoundClicked}>Compound</button>{' '}
             {showCompoundComponent && <>
                 {compoundSuggestions.map(c => <>
                     <button className="inlineButton" onClick={() => acceptCompoundSuggestion(c.id)}>
@@ -620,16 +593,55 @@ function SingleWord({word}: { word: WordViewModel }) {
                 {compoundSuggestions.length > 0 && <br/>}
                 <WordForm wordSubmitted={submitted} newCompound={true} linkTarget={word}
                           defaultValues={{language: word.language}} cancelled={() => setShowCompoundComponent(false)}/>
-                </>
+            </>
             }
-            <button onClick={() => setShowRelated(!showRelated)}>Add related word</button><br/>
-            {showRelated && <WordForm wordSubmitted={submitted} linkType='~' linkTarget={word} defaultValues={{language: word.language}} languageReadOnly={true} cancelled={() => setShowRelated(false)}/>}
-            {!isCompound && <><button onClick={() => setShowVariationOf(!showVariationOf)}>Add variation of</button><br/></>}
+
+            {!isCompound && <><button className="uiButton" onClick={() => setShowVariationOf(!showVariationOf)}>Variation</button><br/></>}
             {showVariationOf && <WordForm wordSubmitted={submitted} linkType='=' reverseLink={true} linkTarget={word} defaultValues={{language: word.language}} languageReadOnly={true} cancelled={() => setShowVariationOf(false)}/>}
-            {!isCompound && <><button onClick={() => setShowVariation(!showVariation)}>Add variation</button><br/></>}
+
+            {canSuggestParseCandidates && <>
+                <button className="inlineButton" onClick={() => suggestParseCandidatesClicked()}>Suggest lemma and derivation</button>
+                <br/>
+                {parseCandidates.map(pc => (
+                    <>
+                        <p>
+                            {pc.wordId !== null &&
+                                <Link href={`/${graph}/word/${word.language}/${pc.text}/${pc.wordId}`}>{pc.text}</Link>}
+                            {pc.wordId === null && <i>{pc.text}</i>}
+                            {pc.categories.length === 0 && ` (${pc.ruleNames.join(",")})`}
+                            {pc.categories}?{' '}
+                            <button onClick={() => acceptParseCandidate(pc)}>Accept</button>
+                        </p>
+                    </>))}</>}
+
+            <h4>Add linked words</h4>
+
+            <button className="uiButton" onClick={() => setShowDerivedWord(!showDerivedWord)}>Add inflected form</button>{' '}
+            {showDerivedWord && <WordForm wordSubmitted={submitted} linkType='>' linkTarget={word}
+                                          defaultValues={{language: word.language}} cancelled={() => setShowDerivedWord(false)} />}
+
+            <button className="uiButton" onClick={() => setShowRelated(!showRelated)}>Add related word</button>{' '}
+            {showRelated && <WordForm wordSubmitted={submitted} linkType='~' linkTarget={word} defaultValues={{language: word.language}} languageReadOnly={true} cancelled={() => setShowRelated(false)}/>}
+
+
+            {!isCompound && <><button className="uiButton" onClick={() => setShowVariation(!showVariation)}>Add variation</button>{' '}</>}
             {showVariation && <WordForm wordSubmitted={submitted} linkType='=' linkTarget={word} defaultValues={{language: word.language}} languageReadOnly={true} cancelled={() => setShowVariation(false)}/>}
-            <button onClick={() => setShowRuleLink(!showRuleLink)}>Add related rule</button><br/>
+            <button className="uiButton" onClick={() => setShowRuleLink(!showRuleLink)}>Add related rule</button><br/>
             {showRuleLink && <RuleLinkForm submitted={ruleLinkSubmitted} fromEntityId={word.id}/>}
+
+            <h4>Etymology</h4>
+
+            <button className="uiButton"  onClick={() => setShowOriginWord(!showOriginWord)}>Add origin word</button>{' '}
+            {showOriginWord && <WordForm wordSubmitted={submitted} linkType='^' linkTarget={word} reverseLink={true}
+                                         defaultValues={{gloss: word.gloss}} cancelled={() => setShowOriginWord(false)}/>}
+            <button className="uiButton"  onClick={() => setShowDerivativeWord(!showDerivativeWord)}>Add derivative word</button>
+            {showDerivativeWord && <WordForm wordSubmitted={submitted} linkType='^' linkTarget={word}
+                                             defaultValues={{gloss: word.gloss}} cancelled={() => setShowDerivativeWord(false)}/>}
+            {word.suggestedDeriveSequences.map(seq => <>
+                {' '}
+                <button className="inlineButton" onClick={() => deriveThroughSequenceClicked(seq.id)}>Derive through {seq.name}</button>
+            </>)}
+            <br/>
             <p/>
             {errorText !== "" && <div className="errorText">{errorText}</div>}
         </>}

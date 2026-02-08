@@ -209,3 +209,7 @@ thead {
 .uiButtonSubmit:hover {
   border-color: black;
 }
+
+h4 {
+  margin-bottom: 5pt;
+}
