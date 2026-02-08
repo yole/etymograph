@@ -151,6 +151,15 @@ class RuleController {
         val paradigms = repo.paradigmsForLanguage(language)
         val paradigmRules = paradigms.associateWith { it.allRules }
         val allParadigmRules = paradigmRules.values.flatten().toSet()
+        val paradigmReferencedRules = mutableSetOf<Rule>()
+
+        fun addReferencedRules(rules: Set<Rule>) {
+            for (rule in rules) {
+                val refs = rule.logic.referencedRules()
+                paradigmReferencedRules.addAll(refs)
+                addReferencedRules(refs)
+            }
+        }
 
         for (paradigm in paradigms) {
             val rules = paradigm.allRules
@@ -161,6 +170,7 @@ class RuleController {
                         rules.mapTo(mutableListOf()) { it.toShortViewModel(repo) })
                 )
             }
+            addReferencedRules(rules)
         }
         ruleGroups.sortBy { group ->
             language.pos.indexOfFirst { pos -> pos.abbreviation == group.paradigm!!.pos.firstOrNull() }
@@ -195,11 +205,18 @@ class RuleController {
         }
 
         val phoneticsGroup by lazy { RuleGroup("Phonetics", null, null).also { ruleGroups.add(it) } }
+        val grammarAuxiliaryGroup by lazy { RuleGroup("Grammar: Auxiliary Rules", null, null).also {
+            if (showMorpho) ruleGroups.add(it)
+        } }
         val grammarOtherGroup by lazy { RuleGroup("Grammar: Other", null, null).also { ruleGroups.add(it) } }
 
         for (rule in repo.allRules().filter { it.toLanguage == language }) {
             if (rule in allParadigmRules || rule in allSequenceRules) continue
-            val group = if (rule.isSPE()) phoneticsGroup else grammarOtherGroup
+            val group = when {
+                rule in paradigmReferencedRules -> grammarAuxiliaryGroup
+                rule.isSPE() -> phoneticsGroup
+                else -> grammarOtherGroup
+            }
             group.rules.add(rule.toShortViewModel(repo))
         }
 
