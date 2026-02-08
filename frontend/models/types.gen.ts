@@ -724,6 +724,7 @@ export type WordViewModel = {
     languageSyllabographic: boolean;
     text: string;
     textWithExplicitStress: string;
+    urlKey?: (string) | null;
     syllabogramSequence?: (SyllabogramSequence) | null;
     gloss: string;
     glossComputed: boolean;

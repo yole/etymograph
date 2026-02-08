@@ -19,6 +19,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import WordGloss from "@/components/WordGloss";
 import {CorpusTextViewModel, CorpusWordCandidateViewModel, CorpusWordViewModel, WordViewModel} from "@/models";
 import WordTextView from "@/components/WordTextView";
+import {Urls} from "@/components/Urls";
 
 export const config = {
     unstable_runtimeJS: true
@@ -123,7 +124,7 @@ export default function CorpusText(params) {
         associateWord(graph, Number.parseInt(router.query.id as string), word.id, wordIndex, data.contextGloss).then(() => {
             const targetWord = baseWord !== undefined ? baseWord : word
             if (targetWord.gloss === "" || targetWord.gloss === null) {
-                router.push(`/${graph}/word/${targetWord.language}/${targetWord.text}`)
+                router.push(Urls.Words.fromWordForm(graph, targetWord))
             } else {
                 router.replace(router.asPath)
             }

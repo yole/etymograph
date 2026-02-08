@@ -2008,6 +2008,9 @@ components:
           type: "string"
         textWithExplicitStress:
           type: "string"
+        urlKey:
+          nullable: true
+          type: "string"
         syllabogramSequence:
           nullable: true
           $ref: "#/components/schemas/SyllabogramSequence"
