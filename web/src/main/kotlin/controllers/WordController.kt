@@ -348,6 +348,9 @@ class WordController(val dictionaryService: DictionaryService) {
         if (params.reconstructed != null) {
             word.reconstructed = params.reconstructed
         }
+        if (params.syllabographic != null) {
+            word.syllabographic = params.syllabographic
+        }
         word.source = parseSourceRefs(repo, params.source)
         word.notes = params.notes.nullize()
         return word.toViewModel(repo)
