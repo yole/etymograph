@@ -191,5 +191,250 @@
         "fullGloss": "offer, ritual",
         "pos": "N",
         "syllabographic": true
+    },
+    {
+        "id": 10206,
+        "text": "-i",
+        "gloss": "dat.sg. ending",
+        "pos": "AFF"
+    },
+    {
+        "id": 10207,
+        "text": "an-na-al-li",
+        "syllabographic": true
+    },
+    {
+        "id": 10208,
+        "text": "annalli"
+    },
+    {
+        "id": 10209,
+        "text": "annalla-",
+        "gloss": "old",
+        "pos": "ADJ"
+    },
+    {
+        "id": 10210,
+        "text": "an-na-al-la-an",
+        "syllabographic": true
+    },
+    {
+        "id": 10211,
+        "text": "annallan"
+    },
+    {
+        "id": 10212,
+        "text": "-n",
+        "gloss": "acc.sg. ending",
+        "pos": "AFF"
+    },
+    {
+        "id": 10213,
+        "text": "ḫa-pu-ša-an-zi",
+        "syllabographic": true
+    },
+    {
+        "id": 10214,
+        "text": "ḫapušanzi"
+    },
+    {
+        "id": 10215,
+        "text": "ḫapuš-",
+        "gloss": "retake",
+        "pos": "V",
+        "classes": [
+            "mi"
+        ]
+    },
+    {
+        "id": 10216,
+        "text": "-anzi",
+        "gloss": "pres. 3pl. ending",
+        "pos": "AFF"
+    },
+    {
+        "id": 10218,
+        "text": "^GIŠ^IG-an-na",
+        "syllabographic": true
+    },
+    {
+        "id": 10219,
+        "text": "^GIŠ^IG",
+        "gloss": "door",
+        "pos": "N",
+        "syllabographic": true
+    },
+    {
+        "id": 10221,
+        "text": "ma-a-an-mu",
+        "syllabographic": true
+    },
+    {
+        "id": 10223,
+        "text": "ka-ne-eš-ša-an-zi",
+        "syllabographic": true
+    },
+    {
+        "id": 10224,
+        "text": "kaneššanzi"
+    },
+    {
+        "id": 10225,
+        "text": "kanešš-",
+        "gloss": "recognize",
+        "pos": "V",
+        "classes": [
+            "mi"
+        ]
+    },
+    {
+        "id": 10227,
+        "text": "DINGIR^MEŠ^",
+        "syllabographic": true
+    },
+    {
+        "id": 10228,
+        "text": "DINGIR",
+        "gloss": "God",
+        "pos": "N",
+        "classes": [
+            "C"
+        ],
+        "syllabographic": true
+    },
+    {
+        "id": 10230,
+        "text": "UGULA",
+        "gloss": "head",
+        "pos": "N",
+        "syllabographic": true
+    },
+    {
+        "id": 10231,
+        "text": "^LÚ.MEŠ^MUḪALDIM",
+        "syllabographic": true
+    },
+    {
+        "id": 10232,
+        "text": "^LÚ^MUḪALDIM",
+        "gloss": "cook",
+        "pos": "N",
+        "syllabographic": true
+    },
+    {
+        "id": 10233,
+        "text": "ḫa-aš-ši-i",
+        "syllabographic": true
+    },
+    {
+        "id": 10234,
+        "text": "ḫaššī"
+    },
+    {
+        "id": 10235,
+        "text": "ḫaššā-",
+        "gloss": "fireplace",
+        "pos": "N"
+    },
+    {
+        "id": 10236,
+        "text": "ši-pa-an-ti",
+        "syllabographic": true
+    },
+    {
+        "id": 10237,
+        "text": "šipanti"
+    },
+    {
+        "id": 10238,
+        "text": "išpanti"
+    },
+    {
+        "id": 10239,
+        "text": "išpant-",
+        "gloss": "libate",
+        "pos": "V",
+        "classes": [
+            "hi"
+        ]
+    },
+    {
+        "id": 10241,
+        "text": "^LÚ^Ú.ḪUB",
+        "gloss": "deaf person",
+        "syllabographic": true
+    },
+    {
+        "id": 10242,
+        "text": "^GIŠ^AB^ḪI.A^",
+        "syllabographic": true
+    },
+    {
+        "id": 10243,
+        "text": "^GIŠ^AB",
+        "gloss": "window",
+        "pos": "N",
+        "syllabographic": true
+    },
+    {
+        "id": 10244,
+        "text": "iš-ta-a-pí",
+        "syllabographic": true
+    },
+    {
+        "id": 10245,
+        "text": "ištāpi"
+    },
+    {
+        "id": 10246,
+        "text": "ištāp-",
+        "gloss": "close",
+        "pos": "V",
+        "classes": [
+            "hi"
+        ]
+    },
+    {
+        "id": 10248,
+        "text": "UDU",
+        "gloss": "sheep",
+        "pos": "N",
+        "syllabographic": true
+    },
+    {
+        "id": 10249,
+        "text": "iš-pa-an-ta-aḫ-ḫi",
+        "syllabographic": true
+    },
+    {
+        "id": 10250,
+        "text": "išpantḫḫi"
+    },
+    {
+        "id": 10251,
+        "text": "-mi",
+        "gloss": "mi-conj. pres. 1sg. ending",
+        "pos": "AFF"
+    },
+    {
+        "id": 10253,
+        "text": "GU4",
+        "gloss": "ox",
+        "pos": "N",
+        "syllabographic": true
+    },
+    {
+        "id": 10259,
+        "text": "^GIŠ^IG-an",
+        "syllabographic": true
+    },
+    {
+        "id": 10261,
+        "text": "a",
+        "gloss": "geminating 'and'",
+        "pos": "CONJ",
+        "classes": [
+            "clitic"
+        ]
     }
 ]

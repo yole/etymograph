@@ -19,6 +19,12 @@
                 "id": 10089,
                 "contextGloss": ""
             }
+        ],
+        "translations": [
+            {
+                "id": 10254,
+                "text": "he/she doesn’t listen to me"
+            }
         ]
     },
     {
@@ -35,6 +41,12 @@
                 "index": 6,
                 "id": 10103,
                 "contextGloss": ""
+            }
+        ],
+        "translations": [
+            {
+                "id": 10255,
+                "text": "if on the 15th day the Moon-god dies (= eclipses), the Great-King will die"
             }
         ]
     },
@@ -58,6 +70,12 @@
                 "id": 10109,
                 "contextGloss": ""
             }
+        ],
+        "translations": [
+            {
+                "id": 10256,
+                "text": "he/she closes the gate"
+            }
         ]
     },
     {
@@ -80,6 +98,12 @@
                 "id": 10118,
                 "contextGloss": ""
             }
+        ],
+        "translations": [
+            {
+                "id": 10257,
+                "text": "If the Moon-god hasn’t yet risen"
+            }
         ]
     },
     {
@@ -101,6 +125,162 @@
                 "index": 5,
                 "id": 10125,
                 "contextGloss": ""
+            },
+            {
+                "index": 3,
+                "id": 10207,
+                "contextGloss": ""
+            },
+            {
+                "index": 4,
+                "id": 10210,
+                "contextGloss": ""
+            },
+            {
+                "index": 6,
+                "id": 10213,
+                "contextGloss": ""
+            }
+        ],
+        "translations": [
+            {
+                "id": 10258,
+                "text": "They will restore the old ritual for old Ištar"
+            }
+        ]
+    },
+    {
+        "id": 10217,
+        "text": "^GIŠ^IG-an-na ḫa-at-ki",
+        "title": "Example 1.6",
+        "words": [
+            {
+                "index": 0,
+                "id": 10218,
+                "contextGloss": ""
+            }
+        ],
+        "translations": [
+            {
+                "id": 10262,
+                "text": "And he/she closes / will close the door"
+            }
+        ]
+    },
+    {
+        "id": 10220,
+        "text": "ma-a-an-mu DINGIR^MEŠ^ ka-ne-eš-ša-an-zi",
+        "title": "Example 1.7",
+        "words": [
+            {
+                "index": 0,
+                "id": 10221,
+                "contextGloss": ""
+            },
+            {
+                "index": 2,
+                "id": 10223,
+                "contextGloss": ""
+            },
+            {
+                "index": 1,
+                "id": 10227,
+                "contextGloss": ""
+            }
+        ],
+        "translations": [
+            {
+                "id": 10263,
+                "text": "If/when the gods acknowledge / recognize me"
+            }
+        ]
+    },
+    {
+        "id": 10229,
+        "text": "UGULA ^LÚ.MEŠ^MUḪALDIM ḫa-aš-ši-i 1-ŠU ši-pa-an-ti",
+        "title": "Example 1.8",
+        "words": [
+            {
+                "index": 0,
+                "id": 10230,
+                "contextGloss": ""
+            },
+            {
+                "index": 1,
+                "id": 10231,
+                "contextGloss": ""
+            },
+            {
+                "index": 2,
+                "id": 10233,
+                "contextGloss": ""
+            },
+            {
+                "index": 4,
+                "id": 10236,
+                "contextGloss": ""
+            }
+        ],
+        "translations": [
+            {
+                "id": 10264,
+                "text": "The chief of the cooks libates into the fireplace once"
+            }
+        ]
+    },
+    {
+        "id": 10240,
+        "text": "nu ^LÚ^Ú.ḪUB ^GIŠ^AB^ḪI.A^ an-da iš-ta-a-pí",
+        "title": "Example 1.9",
+        "words": [
+            {
+                "index": 1,
+                "id": 10241,
+                "contextGloss": ""
+            },
+            {
+                "index": 2,
+                "id": 10242,
+                "contextGloss": ""
+            },
+            {
+                "index": 4,
+                "id": 10244,
+                "contextGloss": ""
+            }
+        ],
+        "translations": [
+            {
+                "id": 10265,
+                "text": "The deaf man closes / will close the windows"
+            }
+        ]
+    },
+    {
+        "id": 10247,
+        "text": "nu-kán _A-NA DINGIR^LIM^ 1 GU4 48 UDU iš-pa-an-ta-aḫ-ḫi",
+        "title": "Example 1.10",
+        "words": [
+            {
+                "index": 6,
+                "id": 10248,
+                "contextGloss": ""
+            },
+            {
+                "index": 7,
+                "id": 10249,
+                "contextGloss": ""
+            },
+            {
+                "index": 4,
+                "id": 10253,
+                "contextGloss": ""
+            }
+        ],
+        "translations": [
+            {
+                "id": 10266,
+                "text": "I offer / will offer one cow and 48 sheep to the deity"
             }
         ]
     }

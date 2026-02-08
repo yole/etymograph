@@ -8,9 +8,9 @@
             {
                 "instructions": [
                     {
-                        "type": "Append",
+                        "type": "AppendMorpheme",
                         "args": [
-                            "'mi'"
+                            "10251"
                         ]
                     }
                 ],
@@ -115,7 +115,21 @@
         "name": "hitt-3pl",
         "fromLang": "Hitt",
         "toLang": "Hitt",
-        "branches": [],
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "AppendMorpheme",
+                        "args": [
+                            "10216"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
         "addedCategories": ".3PL",
         "fromPOS": [
             "V"
@@ -148,10 +162,25 @@
         "name": "hitt-acc-sg",
         "fromLang": "Hitt",
         "toLang": "Hitt",
-        "branches": [],
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "AppendMorpheme",
+                        "args": [
+                            "10212"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
         "addedCategories": ".ACC.SG",
         "fromPOS": [
-            "N"
+            "N",
+            "ADJ"
         ]
     },
     {
@@ -192,10 +221,25 @@
         "name": "hitt-dat-sg",
         "fromLang": "Hitt",
         "toLang": "Hitt",
-        "branches": [],
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "AppendMorpheme",
+                        "args": [
+                            "10206"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
         "addedCategories": ".DAT.SG",
         "fromPOS": [
-            "N"
+            "N",
+            "ADJ"
         ]
     },
     {
@@ -214,7 +258,21 @@
         "name": "hitt-loc-sg",
         "fromLang": "Hitt",
         "toLang": "Hitt",
-        "branches": [],
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "10132"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
         "addedCategories": ".LOC.SG",
         "fromPOS": [
             "N"
@@ -315,6 +373,17 @@
         "toLang": "Hitt",
         "branches": [],
         "addedCategories": ".INS.PL",
+        "fromPOS": [
+            "N"
+        ]
+    },
+    {
+        "id": 10226,
+        "name": "hitt-sum-pl",
+        "fromLang": "Hitt",
+        "toLang": "Hitt",
+        "branches": [],
+        "addedCategories": ".PL",
         "fromPOS": [
             "N"
         ]
