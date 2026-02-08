@@ -130,6 +130,15 @@ class RuleController {
 
     @GetMapping("/{graph}/rules/{lang}")
     fun rules(repo: GraphRepository, @PathVariable lang: String): RuleListViewModel {
+        return fetchRules(repo, lang)
+    }
+
+    private fun fetchRules(
+        repo: GraphRepository,
+        lang: String,
+        showMorpho: Boolean = true,
+        showPhono: Boolean = true
+    ): RuleListViewModel {
         val language = repo.resolveLanguage(lang)
 
         data class RuleGroup(
@@ -145,10 +154,13 @@ class RuleController {
 
         for (paradigm in paradigms) {
             val rules = paradigm.allRules
-            ruleGroups.add(RuleGroup(
-                "Grammar: ${paradigm.name}", paradigm, null,
-                rules.mapTo(mutableListOf()) { it.toShortViewModel(repo) })
-            )
+            if (showMorpho) {
+                ruleGroups.add(
+                    RuleGroup(
+                        "Grammar: ${paradigm.name}", paradigm, null,
+                        rules.mapTo(mutableListOf()) { it.toShortViewModel(repo) })
+                )
+            }
         }
         ruleGroups.sortBy { group ->
             language.pos.indexOfFirst { pos -> pos.abbreviation == group.paradigm!!.pos.firstOrNull() }
@@ -159,7 +171,9 @@ class RuleController {
         for (sequence in sequences) {
             val groupName = "Phonetics: ${sequence.name}"
             val group = RuleGroup(groupName, null, sequence)
-            ruleGroups.add(group)
+            if (showPhono) {
+                ruleGroups.add(group)
+            }
             for (step in sequence.steps) {
                 val rule = repo.langEntityById(step.ruleId)!!
                 if (rule is Rule) {
@@ -169,7 +183,14 @@ class RuleController {
                 if (altRule != null) {
                     allSequenceRules.add(altRule)
                 }
-                group.rules.add(rule.toShortViewModel(repo, altRule?.let { RuleRefViewModel(it.id, it.name) }, step.optional, step.dispreferred))
+                group.rules.add(
+                    rule.toShortViewModel(
+                        repo,
+                        altRule?.let { RuleRefViewModel(it.id, it.name) },
+                        step.optional,
+                        step.dispreferred
+                    )
+                )
             }
         }
 
@@ -185,13 +206,29 @@ class RuleController {
         return RuleListViewModel(
             language.name,
             ruleGroups.map {
-                RuleGroupViewModel(it.name, it.rules,
-                    it.sequence?.id, it.sequence?.name, it.sequence?.fromLanguage?.shortName, it.sequence?.toLanguage?.shortName,
+                RuleGroupViewModel(
+                    it.name,
+                    it.rules,
+                    it.sequence?.id,
+                    it.sequence?.name,
+                    it.sequence?.fromLanguage?.shortName,
+                    it.sequence?.toLanguage?.shortName,
                     it.paradigm?.id
                 )
             }
         )
     }
+
+    @GetMapping("/{graph}/rules/{lang}/morpho")
+    fun morphoRules(repo: GraphRepository, @PathVariable lang: String): RuleListViewModel {
+        return fetchRules(repo, lang, showPhono = false)
+    }
+
+    @GetMapping("/{graph}/rules/{lang}/phono")
+    fun phonoRules(repo: GraphRepository, @PathVariable lang: String): RuleListViewModel {
+        return fetchRules(repo, lang, showMorpho = false)
+    }
+
 
     @GetMapping("/{graph}/rule/{id}")
     fun rule(repo: GraphRepository, @PathVariable id: Int): RuleViewModel {

@@ -11,7 +11,8 @@ export default function LanguageNavBar(props: {langId: string}) {
         {' '}| <Link href={`/${graph}/dictionary/${langId}/compounds`}>Compounds</Link>
         {' '}| <Link href={`/${graph}/dictionary/${langId}/names`}>Names</Link>
         {' '}| <Link href={`/${graph}/dictionary/${langId}/reconstructed`}>Reconstructed words</Link>
-        {' '}| <Link href={`/${graph}/rules/${langId}`}>Rules</Link>
+        {' '}| <Link href={`/${graph}/rules/${langId}/morpho`}>Morphology</Link>
+        {' '}| <Link href={`/${graph}/rules/${langId}/phono`}>Historical Phonology</Link>
         {' '}| <Link href={`/${graph}/corpus/${langId}`}>Corpus</Link>
     </>
 }
