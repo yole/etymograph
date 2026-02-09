@@ -258,9 +258,14 @@
     },
     {
         "id": 10247,
-        "text": "nu-kán _A-NA DINGIR^LIM^ 1 GU4 48 UDU iš-pa-an-ta-aḫ-ḫi",
+        "text": "nu-kán _A-NA DINGIR^_LIM^ 1 GU4 48 UDU iš-pa-an-ta-aḫ-ḫi",
         "title": "Example 1.10",
         "words": [
+            {
+                "index": 4,
+                "id": 10253,
+                "contextGloss": ""
+            },
             {
                 "index": 6,
                 "id": 10248,
@@ -272,8 +277,13 @@
                 "contextGloss": ""
             },
             {
-                "index": 4,
-                "id": 10253,
+                "index": 1,
+                "id": 10124,
+                "contextGloss": "to"
+            },
+            {
+                "index": 2,
+                "id": 10268,
                 "contextGloss": ""
             }
         ],

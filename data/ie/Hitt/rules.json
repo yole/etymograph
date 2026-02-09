@@ -387,5 +387,16 @@
         "fromPOS": [
             "N"
         ]
+    },
+    {
+        "id": 10267,
+        "name": "hitt-acc-gen",
+        "fromLang": "Hitt",
+        "toLang": "Hitt",
+        "branches": [],
+        "addedCategories": ".GEN",
+        "fromPOS": [
+            "N"
+        ]
     }
 ]
