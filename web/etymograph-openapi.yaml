@@ -1794,6 +1794,7 @@ components:
             - "Logogram"
             - "LogogramAlt"
             - "Determinative"
+            - "DeterminativeAlt"
       required:
         - "text"
         - "type"

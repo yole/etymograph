@@ -3,7 +3,10 @@ import WordWithStress from "@/components/WordWithStress";
 
 function SyllabogramView(params: {syllabogram: Syllabogram, prevSyllabogram?: Syllabogram}) {
     let syl = params.syllabogram
-    const delimiter = !params.prevSyllabogram || syl.type == "Determinative" || params.prevSyllabogram.type == "Determinative"
+    const delimiter = (!params.prevSyllabogram ||
+        syl.type.startsWith("Determinative") ||
+        params.prevSyllabogram.type.startsWith("Determinative")
+    )
         ? ""
         : (syl.type == "Logogram" ? "." : "-")
 
@@ -19,7 +22,8 @@ function SyllabogramView(params: {syllabogram: Syllabogram, prevSyllabogram?: Sy
         {delimiter}
         {syl.type == "LogogramAlt" && <i>{syl.text}</i>}
         {syl.type == "Determinative" && <sup>{syl.text}</sup>}
-        {syl.type != "LogogramAlt" && syl.type != "Determinative" && <>{renderTextWithSubscript(syl.text)}</>}
+        {syl.type == "DeterminativeAlt" && <sup><i>{syl.text}</i></sup>}
+        {syl.type != "LogogramAlt" && syl.type != "Determinative" && syl.type != "DeterminativeAlt" && <>{renderTextWithSubscript(syl.text)}</>}
     </>
 }
 

@@ -574,10 +574,10 @@ export type SuggestCompoundViewModel = {
 
 export type Syllabogram = {
     text: string;
-    type: 'Syllabogram' | 'Logogram' | 'LogogramAlt' | 'Determinative';
+    type: 'Syllabogram' | 'Logogram' | 'LogogramAlt' | 'Determinative' | 'DeterminativeAlt';
 };
 
-export type type = 'Syllabogram' | 'Logogram' | 'LogogramAlt' | 'Determinative';
+export type type = 'Syllabogram' | 'Logogram' | 'LogogramAlt' | 'Determinative' | 'DeterminativeAlt';
 
 export type SyllabogramSequence = {
     syllabograms: Array<Syllabogram>;

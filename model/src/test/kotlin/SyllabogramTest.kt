@@ -1,6 +1,5 @@
 package ru.yole.etymograph
 
-import org.junit.Assert
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
@@ -65,6 +64,18 @@ class SyllabogramTest {
         assertEquals(SyllabogramType.Logogram, syllabogramSequence.syllabograms[0].type)
         assertEquals("MEŠ", syllabogramSequence.syllabograms[1].text)
         assertEquals(SyllabogramType.Determinative, syllabogramSequence.syllabograms[1].type)
+        assertEquals(text, TlhDigSyllabogramSyntax.render(syllabogramSequence))
+    }
+
+    @Test
+    fun parseDeterminativeAlt() {
+        val text = "DINGIR^_LIM^"
+        val syllabogramSequence = TlhDigSyllabogramSyntax.parse(text)
+        assertEquals(2, syllabogramSequence.syllabograms.size)
+        assertEquals("DINGIR", syllabogramSequence.syllabograms[0].text)
+        assertEquals(SyllabogramType.Logogram, syllabogramSequence.syllabograms[0].type)
+        assertEquals("LIM", syllabogramSequence.syllabograms[1].text)
+        assertEquals(SyllabogramType.DeterminativeAlt, syllabogramSequence.syllabograms[1].type)
         assertEquals(text, TlhDigSyllabogramSyntax.render(syllabogramSequence))
     }
 }

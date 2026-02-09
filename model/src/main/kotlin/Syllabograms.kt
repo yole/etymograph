@@ -2,11 +2,12 @@ package ru.yole.etymograph
 
 import kotlinx.serialization.Serializable
 
-enum class SyllabogramType {
+enum class SyllabogramType(val isLogogram: Boolean = false, val isDeterminative: Boolean = false) {
     Syllabogram,
-    Logogram,
-    LogogramAlt,
-    Determinative
+    Logogram(isLogogram = true),
+    LogogramAlt(isLogogram = true),
+    Determinative(isDeterminative = true),
+    DeterminativeAlt(isDeterminative = true)
 }
 
 @Serializable
@@ -33,7 +34,7 @@ object TlhDigSyllabogramSyntax : SyllabogramSyntax() {
             val syllabogram = createSyllabogram(part, isAlt || afterHyphenInLogogram)
             syllabograms.add(syllabogram)
             afterHyphenInLogogram = when (delimiter) {
-                '-' -> isLogogram(syllabogram.type)
+                '-' -> syllabogram.type.isLogogram
                 '.' -> afterHyphenInLogogram // stays in logogram sequence
                 else -> false
             }
@@ -53,7 +54,12 @@ object TlhDigSyllabogramSyntax : SyllabogramSyntax() {
                         continue
                     }
                     val detText = buffer.substring(i + 1, endCaret)
-                    syllabograms.add(Syllabogram(detText, SyllabogramType.Determinative))
+                    if (detText.startsWith("_")) {
+                        syllabograms.add(Syllabogram(detText.removePrefix("_"), SyllabogramType.DeterminativeAlt))
+                    }
+                    else {
+                        syllabograms.add(Syllabogram(detText, SyllabogramType.Determinative))
+                    }
                     // Determinative acts as a boundary; reset token state.
                     start = endCaret + 1
                     isAlt = false
@@ -97,9 +103,10 @@ object TlhDigSyllabogramSyntax : SyllabogramSyntax() {
         fun appendSyllabogram(index: Int, syllabogram: Syllabogram) {
             when (syllabogram.type) {
                 SyllabogramType.Determinative -> result.append('^').append(syllabogram.text).append('^')
+                SyllabogramType.DeterminativeAlt -> result.append("^_").append(syllabogram.text).append('^')
                 SyllabogramType.LogogramAlt -> {
                     val prev = sequence.syllabograms.getOrNull(index - 1)
-                    if (prev == null || !isLogogram(prev.type)) {
+                    if (prev == null || !prev.type.isLogogram) {
                         result.append('_')
                     }
                     result.append(syllabogram.text)
@@ -113,8 +120,8 @@ object TlhDigSyllabogramSyntax : SyllabogramSyntax() {
             val prev = sequence.syllabograms[i - 1]
             val current = sequence.syllabograms[i]
 
-            if (prev.type != SyllabogramType.Determinative && current.type != SyllabogramType.Determinative) {
-                if (isLogogram(prev.type) && isLogogram(current.type)) {
+            if (!prev.type.isDeterminative && !current.type.isDeterminative) {
+                if (prev.type.isLogogram && current.type.isLogogram) {
                     if (current.type == SyllabogramType.LogogramAlt) {
                         result.append("-")
                     }
@@ -129,7 +136,4 @@ object TlhDigSyllabogramSyntax : SyllabogramSyntax() {
         }
         return result.toString()
     }
-
-    private fun isLogogram(type: SyllabogramType): Boolean =
-        type == SyllabogramType.Logogram || type == SyllabogramType.LogogramAlt
 }
