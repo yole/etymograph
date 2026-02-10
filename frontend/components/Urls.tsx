@@ -8,5 +8,10 @@ export const Urls = {
             }
             return `/${graph}/word/${word.language}/${word.text}`;
         }
+    },
+    Rules: {
+        phono: function(graph: string, lang: string){
+            return `/${graph}/rules/${lang}/phono`
+        }
     }
 }
