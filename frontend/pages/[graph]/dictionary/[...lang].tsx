@@ -6,6 +6,7 @@ import {useState} from "react";
 import {DictionaryViewModel, DictionaryWordViewModel, WordViewModel} from "@/models";
 import WordLink from "@/components/WordLink";
 import LanguageNavBar from "@/components/LanguageNavBar";
+import WordSequenceForm from "@/forms/WordSequenceForm";
 
 export const config = {
     unstable_runtimeJS: true
@@ -37,6 +38,8 @@ export default function Dictionary(params) {
     const graph = router.query.graph
     const filter = router.query.lang.length < 2 ? "" : router.query.lang[1]
     const [showAddWord, setShowAddWord] = useState(false)
+    const [showAddSequence, setShowAddSequence] = useState(false)
+    const [focusTarget, setFocusTarget] = useState(null)
 
     const filterText = filter === "names" ? "Names" :
         (filter === "reconstructed" ? "Reconstructed" :
@@ -52,6 +55,10 @@ export default function Dictionary(params) {
         }
     }
 
+    function exampleSubmitted(r, data) {
+        setShowAddSequence(false)
+        router.replace(router.asPath)
+    }
 
     function renderWordItem(w: DictionaryWordViewModel) {
         const gloss = w.fullGloss !== null && w.fullGloss !== "" ? w.fullGloss : w.ref.gloss;
@@ -70,7 +77,11 @@ export default function Dictionary(params) {
         <p/>
 
         {allowEdit() && <>
-            {!showAddWord && <button className="uiButton" onClick={() => setShowAddWord(!showAddWord)}>Add word</button>}
+            {!showAddWord && <><button className="uiButton" onClick={() => setShowAddWord(!showAddWord)}>Add word</button>{' '}</>}
+            {!showAddSequence && <><button className="uiButton" onClick={() => {
+                setShowAddSequence(!showAddSequence)
+                setFocusTarget('exampleText')
+            }}>Add derivation</button>{' '}</>}
             {showAddWord && <WordForm languageReadOnly={true}
                       wordSubmitted={submitted}
                       cancelled={() => setShowAddWord(false)}
@@ -81,6 +92,14 @@ export default function Dictionary(params) {
                       hideReconstructed={filter !== "reconstructed"}
                       showSyllabographic={dict.languageSyllabographic}
             />}
+            {showAddSequence &&
+                <WordSequenceForm
+                    focusTarget={focusTarget}
+                    setFocusTarget={setFocusTarget}
+                    submitted={exampleSubmitted}
+                    cancelled={() => setShowAddSequence(false)}
+                />
+            }
         </>}
 
         {/* Letter navigation bar */}

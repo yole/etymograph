@@ -22,6 +22,7 @@ import WordGloss from "@/components/WordGloss";
 import RuleLink from "@/components/RuleLink";
 import {RuleExampleViewModel, RuleTraceResult, RuleViewModel} from "@/models";
 import LanguageSelect from "@/components/LanguageSelect";
+import WordSequenceForm from "@/forms/WordSequenceForm";
 
 export const config = {
     unstable_runtimeJS: true
@@ -125,10 +126,6 @@ export default function Rule(params) {
                 r.json().then(r => setErrorText(r.message))
             }
         }
-    }
-
-    function createExample(data) {
-        return addWordSequence(graph, data.exampleText, data.exampleSource)
     }
 
     async function exampleSubmitted(r, data) {
@@ -287,18 +284,13 @@ export default function Rule(params) {
             }}>Add Example</button>
         }
         {showExampleForm &&
-            <EtymographForm
-                 create={createExample}
+            <WordSequenceForm
                  submitted={exampleSubmitted}
                  cancelled={() => setShowExampleForm(false)}
                  defaultValues={{exampleSource: lastExampleSource}}
                  focusTarget={focusTarget}
                  setFocusTarget={setFocusTarget}>
-                <table><tbody>
-                    <FormRow id="exampleText" label="Example" size={50} inputAssist={true}/>
-                    <FormRow id="exampleSource" label="Source"/>
-                </tbody></table>
-            </EtymographForm>
+            </WordSequenceForm>
         }
         {errorText !== "" && <div className="errorText">{errorText}</div>}
         {exampleUnmatched.length > 0 && <>
