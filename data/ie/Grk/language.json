@@ -13,9 +13,277 @@
                 "vowel"
             ],
             "notes": ""
+        },
+        {
+            "id": 10345,
+            "graphemes": [
+                "β"
+            ],
+            "sound": "b",
+            "classes": [
+                "voiced",
+                "bilabial",
+                "stop"
+            ],
+            "notes": ""
+        },
+        {
+            "id": 10346,
+            "graphemes": [
+                "γ"
+            ],
+            "sound": "g",
+            "classes": [
+                "voiced",
+                "velar",
+                "stop"
+            ],
+            "notes": ""
+        },
+        {
+            "id": 10347,
+            "graphemes": [
+                "δ"
+            ],
+            "sound": "d",
+            "classes": [
+                "voiced",
+                "alveolar",
+                "stop"
+            ],
+            "notes": ""
+        },
+        {
+            "id": 10348,
+            "graphemes": [
+                "ε"
+            ],
+            "sound": "e",
+            "classes": [
+                "close-mid",
+                "front",
+                "unrounded",
+                "vowel"
+            ],
+            "notes": ""
+        },
+        {
+            "id": 10349,
+            "graphemes": [
+                "η"
+            ],
+            "classes": [
+                "long",
+                "front",
+                "open-mid",
+                "vowel"
+            ],
+            "notes": ""
+        },
+        {
+            "id": 10350,
+            "graphemes": [
+                "θ"
+            ],
+            "classes": [
+                "aspirated",
+                "voiceless",
+                "dental",
+                "stop"
+            ],
+            "notes": ""
+        },
+        {
+            "id": 10351,
+            "graphemes": [
+                "ι"
+            ],
+            "sound": "i",
+            "classes": [
+                "front",
+                "close",
+                "unrounded",
+                "vowel"
+            ],
+            "notes": ""
+        },
+        {
+            "id": 10352,
+            "graphemes": [
+                "κ"
+            ],
+            "sound": "k",
+            "classes": [
+                "voiceless",
+                "velar",
+                "stop"
+            ],
+            "notes": ""
+        },
+        {
+            "id": 10353,
+            "graphemes": [
+                "λ"
+            ],
+            "sound": "l",
+            "classes": [
+                "voiced",
+                "alveolar",
+                "lateral",
+                "approximant"
+            ],
+            "notes": ""
+        },
+        {
+            "id": 10354,
+            "graphemes": [
+                "μ"
+            ],
+            "sound": "m",
+            "classes": [
+                "voiced",
+                "bilabial",
+                "nasal",
+                "consonant"
+            ],
+            "notes": ""
+        },
+        {
+            "id": 10355,
+            "graphemes": [
+                "ν"
+            ],
+            "sound": "n",
+            "classes": [
+                "voiced",
+                "alveolar",
+                "nasal",
+                "consonant"
+            ],
+            "notes": ""
+        },
+        {
+            "id": 10356,
+            "graphemes": [
+                "o"
+            ],
+            "sound": "o",
+            "classes": [
+                "close-mid",
+                "back",
+                "rounded",
+                "vowel"
+            ],
+            "notes": ""
+        },
+        {
+            "id": 10357,
+            "graphemes": [
+                "π"
+            ],
+            "sound": "p",
+            "classes": [
+                "voiceless",
+                "bilabial",
+                "stop"
+            ],
+            "notes": ""
+        },
+        {
+            "id": 10358,
+            "graphemes": [
+                "ρ"
+            ],
+            "sound": "r",
+            "classes": [
+                "voiced",
+                "alveolar",
+                "trill"
+            ],
+            "notes": ""
+        },
+        {
+            "id": 10359,
+            "graphemes": [
+                "σ"
+            ],
+            "sound": "s",
+            "classes": [
+                "voiceless",
+                "alveolar",
+                "fricative"
+            ],
+            "notes": ""
+        },
+        {
+            "id": 10360,
+            "graphemes": [
+                "τ"
+            ],
+            "sound": "t",
+            "classes": [
+                "voiceless",
+                "alveolar",
+                "stop"
+            ],
+            "notes": ""
+        },
+        {
+            "id": 10361,
+            "graphemes": [
+                "υ"
+            ],
+            "sound": "y",
+            "classes": [
+                "front",
+                "close",
+                "rounded",
+                "vowel"
+            ],
+            "notes": ""
+        },
+        {
+            "id": 10362,
+            "graphemes": [
+                "φ"
+            ],
+            "classes": [
+                "aspirated",
+                "bilabial",
+                "voiceless",
+                "stop"
+            ],
+            "notes": ""
+        },
+        {
+            "id": 10363,
+            "graphemes": [
+                "χ"
+            ],
+            "classes": [
+                "aspirated",
+                "voiceless",
+                "velar",
+                "stop"
+            ],
+            "notes": ""
+        },
+        {
+            "id": 10364,
+            "graphemes": [
+                "ω"
+            ],
+            "classes": [
+                "long",
+                "back",
+                "open-mid",
+                "vowel"
+            ],
+            "notes": ""
         }
     ],
     "protoLanguageShortName": "PIE",
+    "orthographyRuleId": 10370,
     "accentTypes": [
         "Acute",
         "Grave",

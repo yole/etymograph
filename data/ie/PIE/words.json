@@ -284,5 +284,143 @@
                 "refText": "124"
             }
         ]
+    },
+    {
+        "id": 10270,
+        "text": "deh₃-",
+        "gloss": "give",
+        "pos": "V"
+    },
+    {
+        "id": 10271,
+        "text": "dédeh₃ti"
+    },
+    {
+        "id": 10302,
+        "text": "dʰeh₁-",
+        "gloss": "put",
+        "pos": "V"
+    },
+    {
+        "id": 10303,
+        "text": "dʰedʰeh₁ti"
+    },
+    {
+        "id": 10365,
+        "text": "ph₂téres"
+    },
+    {
+        "id": 10368,
+        "text": "h₁esti"
+    },
+    {
+        "id": 10371,
+        "text": "mh₂d-",
+        "gloss": "be wet",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "refText": "Lubotsky 1981:54"
+            }
+        ]
+    },
+    {
+        "id": 10375,
+        "text": "mh₂ǵ-",
+        "gloss": "make",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "refText": "Lubotsky 1981:54"
+            }
+        ]
+    },
+    {
+        "id": 10378,
+        "text": "mh₂ḱ-",
+        "gloss": "long",
+        "sourceRefs": [
+            {
+                "refText": "Lubotsky 1981:54"
+            }
+        ]
+    },
+    {
+        "id": 10382,
+        "text": "i̯h₂ǵ-",
+        "gloss": "holy",
+        "sourceRefs": [
+            {
+                "pubId": 15,
+                "refText": "54"
+            }
+        ]
+    },
+    {
+        "id": 10384,
+        "text": "u̯h₂s-",
+        "gloss": "city",
+        "sourceRefs": [
+            {
+                "pubId": 15,
+                "refText": "54"
+            }
+        ]
+    },
+    {
+        "id": 10390,
+        "text": "peh₂ǵ-",
+        "gloss": "make fast",
+        "sourceRefs": [
+            {
+                "pubId": 15,
+                "refText": "54"
+            }
+        ]
+    },
+    {
+        "id": 10393,
+        "text": "su̯eh₂d-",
+        "gloss": "sweet",
+        "sourceRefs": [
+            {
+                "pubId": 15,
+                "refText": "55"
+            }
+        ]
+    },
+    {
+        "id": 10396,
+        "text": "seh₁-",
+        "gloss": "sow",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "pubId": 15,
+                "refText": "55"
+            }
+        ]
+    },
+    {
+        "id": 10397,
+        "text": "sh₁es-",
+        "gloss": "sown area",
+        "pos": "N",
+        "sourceRefs": [
+            {
+                "pubId": 15,
+                "refText": "55"
+            }
+        ]
+    },
+    {
+        "id": 10452,
+        "text": "sh₁esdʰeh₁",
+        "sourceRefs": [
+            {
+                "pubId": 15,
+                "refText": "56"
+            }
+        ]
     }
 ]

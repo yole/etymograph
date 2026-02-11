@@ -1,1 +1,65 @@
-[]
+[
+    {
+        "id": 10369,
+        "text": "ἐστι"
+    },
+    {
+        "id": 10372,
+        "text": "μαδάω",
+        "gloss": "stream away"
+    },
+    {
+        "id": 10376,
+        "text": "μάσσω",
+        "gloss": "knead"
+    },
+    {
+        "id": 10379,
+        "text": "μακρός",
+        "gloss": "long"
+    },
+    {
+        "id": 10383,
+        "text": "ἁγιός",
+        "gloss": "holy",
+        "sourceRefs": [
+            {
+                "pubId": 15,
+                "refText": "54"
+            }
+        ]
+    },
+    {
+        "id": 10385,
+        "text": "ἄστυ",
+        "gloss": "city",
+        "sourceRefs": [
+            {
+                "pubId": 15,
+                "refText": "54"
+            }
+        ]
+    },
+    {
+        "id": 10392,
+        "text": "πήγνυμι",
+        "gloss": "make fast",
+        "sourceRefs": [
+            {
+                "pubId": 15,
+                "refText": "54"
+            }
+        ]
+    },
+    {
+        "id": 10395,
+        "text": "ἡδύς",
+        "gloss": "sweet",
+        "sourceRefs": [
+            {
+                "pubId": 15,
+                "refText": "55"
+            }
+        ]
+    }
+]

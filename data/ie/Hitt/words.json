@@ -441,5 +441,196 @@
         "id": 10268,
         "text": "DINGIR^_LIM^",
         "syllabographic": true
+    },
+    {
+        "id": 10272,
+        "text": "-ši",
+        "gloss": "mi-conj. pres. 2sg. ending",
+        "pos": "AFF"
+    },
+    {
+        "id": 10273,
+        "text": "-zi",
+        "gloss": "mi-conj. pres. 3sg. ending",
+        "pos": "AFF"
+    },
+    {
+        "id": 10289,
+        "text": "-u̯eni",
+        "gloss": "pres. 1pl. ending",
+        "pos": "AFF"
+    },
+    {
+        "id": 10305,
+        "text": "-un",
+        "gloss": "mi-conj. past 1sg. ending",
+        "pos": "AFF"
+    },
+    {
+        "id": 10307,
+        "text": "-u̯en",
+        "gloss": "Past pst.1pl. ending",
+        "pos": "AFF"
+    },
+    {
+        "id": 10309,
+        "text": "-š",
+        "gloss": "Past pst.2sg. ending",
+        "pos": "AFF"
+    },
+    {
+        "id": 10311,
+        "text": "-tten",
+        "gloss": "Past pst.2pl. ending",
+        "pos": "AFF"
+    },
+    {
+        "id": 10313,
+        "text": "-t",
+        "gloss": "Past pst.3sg. ending",
+        "pos": "AFF"
+    },
+    {
+        "id": 10315,
+        "text": "-er",
+        "gloss": "past 3pl. ending",
+        "pos": "AFF"
+    },
+    {
+        "id": 10318,
+        "text": "ma-aḫ-ḫa-an-ma",
+        "syllabographic": true
+    },
+    {
+        "id": 10319,
+        "text": "maḫḫanma"
+    },
+    {
+        "id": 10320,
+        "text": "maḫḫan",
+        "gloss": "when",
+        "pos": "CONJ"
+    },
+    {
+        "id": 10322,
+        "text": "ma",
+        "gloss": "but",
+        "pos": "CONJ",
+        "classes": [
+            "clitic"
+        ]
+    },
+    {
+        "id": 10323,
+        "text": "a-ar-aḫ-ḫu-un",
+        "syllabographic": true
+    },
+    {
+        "id": 10324,
+        "text": "ārḫḫun"
+    },
+    {
+        "id": 10325,
+        "text": "ār-",
+        "gloss": "arrive",
+        "pos": "V",
+        "classes": [
+            "hi"
+        ]
+    },
+    {
+        "id": 10326,
+        "text": "-ḫḫun",
+        "gloss": "hi-conj. past 1sg. ending",
+        "pos": "AFF"
+    },
+    {
+        "id": 10327,
+        "text": "ar-ḫa",
+        "gloss": "fully",
+        "pos": "ADV",
+        "syllabographic": true
+    },
+    {
+        "id": 10328,
+        "text": "u̯a-ar-nu-nu-un",
+        "syllabographic": true
+    },
+    {
+        "id": 10329,
+        "text": "u̯arnunun"
+    },
+    {
+        "id": 10330,
+        "text": "u̯arnu-",
+        "gloss": "set on fire",
+        "pos": "V",
+        "classes": [
+            "mi"
+        ]
+    },
+    {
+        "id": 10332,
+        "text": "LÚ.KÚR",
+        "gloss": "enemy",
+        "pos": "N",
+        "syllabographic": true
+    },
+    {
+        "id": 10333,
+        "text": "pár-aš-ta",
+        "syllabographic": true
+    },
+    {
+        "id": 10334,
+        "text": "paršta"
+    },
+    {
+        "id": 10335,
+        "text": "parš-",
+        "gloss": "flee",
+        "pos": "V",
+        "classes": [
+            "mi"
+        ]
+    },
+    {
+        "id": 10337,
+        "text": "pé-ra-an",
+        "syllabographic": true
+    },
+    {
+        "id": 10338,
+        "text": "peran",
+        "gloss": "in front of",
+        "pos": "ADV"
+    },
+    {
+        "id": 10339,
+        "text": "na-aš-mu-kán",
+        "syllabographic": true
+    },
+    {
+        "id": 10341,
+        "text": "aš",
+        "gloss": "3SG.NOM.C",
+        "pos": "PRON"
+    },
+    {
+        "id": 10343,
+        "text": "na-aš-kán",
+        "syllabographic": true
+    },
+    {
+        "id": 10451,
+        "text": "šešd-",
+        "gloss": "gedeihlich zunehmen, anwachsen",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "pubId": 15,
+                "refText": "55"
+            }
+        ]
     }
 ]

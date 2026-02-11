@@ -172,5 +172,59 @@
         "posList": [
             "N"
         ]
+    },
+    {
+        "id": 58,
+        "name": "Past",
+        "rows": [
+            "1",
+            "2",
+            "3"
+        ],
+        "columns": [
+            {
+                "title": "SG",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            10306
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            10310
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            10314
+                        ]
+                    }
+                ]
+            },
+            {
+                "title": "PL",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            10308
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            10312
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            10316
+                        ]
+                    }
+                ]
+            }
+        ],
+        "posList": [
+            "V"
+        ]
     }
 ]

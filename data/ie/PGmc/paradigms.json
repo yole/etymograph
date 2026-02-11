@@ -1,0 +1,56 @@
+[
+    {
+        "id": 57,
+        "name": "Present",
+        "rows": [
+            "1",
+            "2",
+            "3"
+        ],
+        "columns": [
+            {
+                "title": "SG",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            10291
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            10295
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            10299
+                        ]
+                    }
+                ]
+            },
+            {
+                "title": "PL",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            10293
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            10297
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            10301
+                        ]
+                    }
+                ]
+            }
+        ],
+        "posList": [
+            "V"
+        ]
+    }
+]

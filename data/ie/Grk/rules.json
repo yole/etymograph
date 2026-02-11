@@ -1,0 +1,56 @@
+[
+    {
+        "id": 10366,
+        "name": "grk-laryngeal-vocalization",
+        "fromLang": "PIE",
+        "toLang": "Grk",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "Spe",
+                        "args": [
+                            "h₁e > e"
+                        ]
+                    },
+                    {
+                        "type": "Spe",
+                        "args": [
+                            "h₂e > a"
+                        ]
+                    },
+                    {
+                        "type": "Spe",
+                        "args": [
+                            "h₃e > o"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ]
+    },
+    {
+        "id": 10370,
+        "name": "grk-ortho",
+        "fromLang": "PIE",
+        "toLang": "Grk",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "Spe",
+                        "args": [
+                            "e > ἐ / #_"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ]
+    }
+]

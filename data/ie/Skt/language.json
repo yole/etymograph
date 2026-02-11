@@ -563,6 +563,10 @@
         {
             "name": "Pronoun",
             "abbreviation": "PRON"
+        },
+        {
+            "name": "Affix",
+            "abbreviation": "AFF"
         }
     ],
     "grammaticalCategories": [
@@ -585,6 +589,26 @@
                 {
                     "name": "Plural",
                     "abbreviation": "PL"
+                }
+            ]
+        },
+        {
+            "name": "Person",
+            "pos": [
+                "V"
+            ],
+            "values": [
+                {
+                    "name": "1st",
+                    "abbreviation": "1"
+                },
+                {
+                    "name": "2nd",
+                    "abbreviation": "2"
+                },
+                {
+                    "name": "3rd",
+                    "abbreviation": "3"
                 }
             ]
         },
@@ -647,6 +671,58 @@
                 {
                     "name": "Neuter",
                     "abbreviation": "N"
+                }
+            ]
+        },
+        {
+            "name": "Tense",
+            "pos": [
+                "V"
+            ],
+            "values": [
+                {
+                    "name": "Present",
+                    "abbreviation": "PRES"
+                },
+                {
+                    "name": "Imperfect",
+                    "abbreviation": "IPF"
+                },
+                {
+                    "name": "Aorist",
+                    "abbreviation": "AOR"
+                },
+                {
+                    "name": "Perfect",
+                    "abbreviation": "PF"
+                }
+            ]
+        },
+        {
+            "name": "Mood",
+            "pos": [
+                "V"
+            ],
+            "values": [
+                {
+                    "name": "Indicative",
+                    "abbreviation": "IND"
+                },
+                {
+                    "name": "Injunctive",
+                    "abbreviation": "INJ"
+                },
+                {
+                    "name": "Subjunctive",
+                    "abbreviation": "SUBJ"
+                },
+                {
+                    "name": "Optative",
+                    "abbreviation": "OPT"
+                },
+                {
+                    "name": "Imperative",
+                    "abbreviation": "IPV"
                 }
             ]
         }

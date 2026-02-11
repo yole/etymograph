@@ -26956,5 +26956,47 @@
                 "refText": "90"
             }
         ]
+    },
+    {
+        "id": 10290,
+        "text": "-ō",
+        "gloss": "Present 1sg. ending",
+        "pos": "AFF"
+    },
+    {
+        "id": 10292,
+        "text": "-maz",
+        "gloss": "Present 1pl. ending",
+        "pos": "AFF",
+        "sourceRefs": [
+            {
+                "pubId": 10,
+                "refText": "264"
+            }
+        ]
+    },
+    {
+        "id": 10294,
+        "text": "-zi",
+        "gloss": "Present 2sg. ending",
+        "pos": "AFF"
+    },
+    {
+        "id": 10296,
+        "text": "-d",
+        "gloss": "Present 2pl. ending",
+        "pos": "AFF"
+    },
+    {
+        "id": 10298,
+        "text": "-di",
+        "gloss": "Present 3sg. ending",
+        "pos": "AFF"
+    },
+    {
+        "id": 10300,
+        "text": "-ndi",
+        "gloss": "Present 3pl. ending",
+        "pos": "AFF"
     }
 ]

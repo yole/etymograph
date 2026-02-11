@@ -1,0 +1,13 @@
+[
+    {
+        "id": 10367,
+        "name": "pie-to-grk",
+        "fromLang": "PIE",
+        "toLang": "Grk",
+        "steps": [
+            {
+                "ruleId": 10366
+            }
+        ]
+    }
+]

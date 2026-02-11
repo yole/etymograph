@@ -113,5 +113,13 @@
         "author": "James Clackson",
         "date": "2007",
         "publisher": "Cambridge University Press"
+    },
+    {
+        "id": 15,
+        "name": "Against a Proto-Indo-Euro.pean phoneme *a",
+        "refId": "Lubotsky 1989",
+        "author": "Alexander Lubotsky",
+        "date": "1989",
+        "publisher": "In: Venneman, Theo. The New Sound of Indo-European. Walter de Gruyter"
     }
 ]

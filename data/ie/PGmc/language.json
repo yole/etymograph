@@ -453,6 +453,10 @@
         {
             "name": "Adverb",
             "abbreviation": "ADV"
+        },
+        {
+            "name": "Affix",
+            "abbreviation": "AFF"
         }
     ],
     "grammaticalCategories": [
@@ -486,6 +490,26 @@
                 {
                     "name": "Past",
                     "abbreviation": "PST"
+                }
+            ]
+        },
+        {
+            "name": "Person",
+            "pos": [
+                "V"
+            ],
+            "values": [
+                {
+                    "name": "1st",
+                    "abbreviation": "1"
+                },
+                {
+                    "name": "2nd",
+                    "abbreviation": "2"
+                },
+                {
+                    "name": "3rd",
+                    "abbreviation": "3"
                 }
             ]
         }

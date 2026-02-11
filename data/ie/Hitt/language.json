@@ -193,6 +193,10 @@
         {
             "name": "Pronoun",
             "abbreviation": "PRON"
+        },
+        {
+            "name": "Affix",
+            "abbreviation": "AFF"
         }
     ],
     "grammaticalCategories": [
@@ -290,6 +294,22 @@
                 {
                     "name": "Instrumental",
                     "abbreviation": "INS"
+                }
+            ]
+        },
+        {
+            "name": "Tense",
+            "pos": [
+                "V"
+            ],
+            "values": [
+                {
+                    "name": "Present",
+                    "abbreviation": "PRES"
+                },
+                {
+                    "name": "Past",
+                    "abbreviation": "PST"
                 }
             ]
         }

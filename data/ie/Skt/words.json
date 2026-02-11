@@ -53,5 +53,97 @@
         "id": 10011,
         "text": "náva",
         "gloss": "new"
+    },
+    {
+        "id": 10274,
+        "text": "-mi",
+        "gloss": "Primary 1sg. ending",
+        "pos": "AFF"
+    },
+    {
+        "id": 10276,
+        "text": "-mas",
+        "gloss": "Present 1pl. ending",
+        "pos": "AFF"
+    },
+    {
+        "id": 10279,
+        "text": "-si",
+        "gloss": "Primary 2sg. ending",
+        "pos": "AFF"
+    },
+    {
+        "id": 10281,
+        "text": "-tha",
+        "gloss": "Present 2pl. ending",
+        "pos": "AFF"
+    },
+    {
+        "id": 10284,
+        "text": "-ti",
+        "gloss": "Primary 3sg. ending",
+        "pos": "AFF"
+    },
+    {
+        "id": 10286,
+        "text": "-anti",
+        "gloss": "Primary 3pl. ending",
+        "pos": "AFF"
+    },
+    {
+        "id": 10304,
+        "text": "dádhāti",
+        "gloss": "put.PRES.3SG",
+        "pos": "V"
+    },
+    {
+        "id": 10374,
+        "text": "mad-",
+        "gloss": "be glad, drunk",
+        "pos": "V"
+    },
+    {
+        "id": 10386,
+        "text": "yaj-",
+        "gloss": "worship",
+        "pos": "V"
+    },
+    {
+        "id": 10387,
+        "text": "vāstu-",
+        "gloss": "homestead",
+        "pos": "N"
+    },
+    {
+        "id": 10391,
+        "text": "pajrá-",
+        "gloss": "firm",
+        "sourceRefs": [
+            {
+                "pubId": 15,
+                "refText": "54"
+            }
+        ]
+    },
+    {
+        "id": 10394,
+        "text": "svádati",
+        "gloss": "be sweet",
+        "sourceRefs": [
+            {
+                "pubId": 15,
+                "refText": "55"
+            }
+        ]
+    },
+    {
+        "id": 10399,
+        "text": "sasyá",
+        "gloss": "crops"
+    },
+    {
+        "id": 10400,
+        "text": "sasá-",
+        "gloss": "seed field"
     }
 ]

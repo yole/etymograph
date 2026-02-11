@@ -148,5 +148,79 @@
         "posList": [
             "N"
         ]
+    },
+    {
+        "id": 56,
+        "name": "Present",
+        "rows": [
+            "1",
+            "2",
+            "3"
+        ],
+        "columns": [
+            {
+                "title": "SG",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            10275
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            10280
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            10285
+                        ]
+                    }
+                ]
+            },
+            {
+                "title": "DU",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            10277
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            10282
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            10287
+                        ]
+                    }
+                ]
+            },
+            {
+                "title": "PL",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            10278
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            10283
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            10288
+                        ]
+                    }
+                ]
+            }
+        ],
+        "posList": [
+            "V"
+        ]
     }
 ]

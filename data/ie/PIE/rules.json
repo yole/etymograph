@@ -535,6 +535,13 @@
             {
                 "instructions": [
                     {
+                        "type": "ApplySoundRule",
+                        "args": [
+                            "10072",
+                            "first vowel"
+                        ]
+                    },
+                    {
                         "type": "AppendMorpheme",
                         "args": [
                             "10171"
@@ -957,6 +964,36 @@
             }
         ],
         "addedCategories": ".3PL",
+        "fromPOS": [
+            "V"
+        ]
+    },
+    {
+        "id": 10269,
+        "name": "pie-verbal-reduplication",
+        "fromLang": "PIE",
+        "toLang": "PIE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "Prepend",
+                        "args": [
+                            "'e'"
+                        ]
+                    },
+                    {
+                        "type": "Prepend",
+                        "args": [
+                            "first consonant"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
         "fromPOS": [
             "V"
         ]

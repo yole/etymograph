@@ -1,1 +1,13 @@
-[]
+[
+    {
+        "id": 10398,
+        "text": "sas-",
+        "gloss": "sown area",
+        "sourceRefs": [
+            {
+                "pubId": 15,
+                "refText": "55"
+            }
+        ]
+    }
+]

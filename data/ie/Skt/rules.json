@@ -417,5 +417,188 @@
                 }
             }
         ]
+    },
+    {
+        "id": 10275,
+        "name": "skt-1sg",
+        "fromLang": "Skt",
+        "toLang": "Skt",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "AppendMorpheme",
+                        "args": [
+                            "10274"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".1SG",
+        "fromPOS": [
+            "V"
+        ]
+    },
+    {
+        "id": 10277,
+        "name": "skt-1du",
+        "fromLang": "Skt",
+        "toLang": "Skt",
+        "branches": [],
+        "addedCategories": ".1DU",
+        "fromPOS": [
+            "V"
+        ]
+    },
+    {
+        "id": 10278,
+        "name": "skt-1pl",
+        "fromLang": "Skt",
+        "toLang": "Skt",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "AppendMorpheme",
+                        "args": [
+                            "10276"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".1PL",
+        "fromPOS": [
+            "V"
+        ]
+    },
+    {
+        "id": 10280,
+        "name": "skt-2sg",
+        "fromLang": "Skt",
+        "toLang": "Skt",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "AppendMorpheme",
+                        "args": [
+                            "10279"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".2SG",
+        "fromPOS": [
+            "V"
+        ]
+    },
+    {
+        "id": 10282,
+        "name": "skt-2du",
+        "fromLang": "Skt",
+        "toLang": "Skt",
+        "branches": [],
+        "addedCategories": ".2DU",
+        "fromPOS": [
+            "V"
+        ]
+    },
+    {
+        "id": 10283,
+        "name": "skt-2pl",
+        "fromLang": "Skt",
+        "toLang": "Skt",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "AppendMorpheme",
+                        "args": [
+                            "10281"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".2PL",
+        "fromPOS": [
+            "V"
+        ]
+    },
+    {
+        "id": 10285,
+        "name": "skt-3sg",
+        "fromLang": "Skt",
+        "toLang": "Skt",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "AppendMorpheme",
+                        "args": [
+                            "10284"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".3SG",
+        "fromPOS": [
+            "V"
+        ]
+    },
+    {
+        "id": 10287,
+        "name": "skt-3du",
+        "fromLang": "Skt",
+        "toLang": "Skt",
+        "branches": [],
+        "addedCategories": ".3DU",
+        "fromPOS": [
+            "V"
+        ]
+    },
+    {
+        "id": 10288,
+        "name": "skt-3pl",
+        "fromLang": "Skt",
+        "toLang": "Skt",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "AppendMorpheme",
+                        "args": [
+                            "10286"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".3PL",
+        "fromPOS": [
+            "V"
+        ]
     }
 ]

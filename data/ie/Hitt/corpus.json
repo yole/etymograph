@@ -293,5 +293,78 @@
                 "text": "I offer / will offer one cow and 48 sheep to the deity"
             }
         ]
+    },
+    {
+        "id": 10317,
+        "text": "ma-aḫ-ḫa-an-ma _I-NA ^URU^_TAR-KU-MA a-ar-aḫ-ḫu-un  nu ^URU^tar-ku-ma-an ar-ḫa u̯a-ar-nu-nu-un",
+        "title": "Example 2.1",
+        "words": [
+            {
+                "index": 0,
+                "id": 10318,
+                "contextGloss": ""
+            },
+            {
+                "index": 3,
+                "id": 10323,
+                "contextGloss": ""
+            },
+            {
+                "index": 7,
+                "id": 10327,
+                "contextGloss": ""
+            },
+            {
+                "index": 8,
+                "id": 10328,
+                "contextGloss": ""
+            }
+        ]
+    },
+    {
+        "id": 10331,
+        "text": "nu-kán LÚ.KÚR _Ú-UL pár-aš-ta",
+        "title": "Example 2.2",
+        "words": [
+            {
+                "index": 1,
+                "id": 10332,
+                "contextGloss": ""
+            },
+            {
+                "index": 3,
+                "id": 10333,
+                "contextGloss": ""
+            }
+        ]
+    },
+    {
+        "id": 10336,
+        "text": "na-aš-mu-kán pé-ra-an ar-ḫa pár-aš-ta",
+        "title": "Example 2.3",
+        "words": [
+            {
+                "index": 1,
+                "id": 10337,
+                "contextGloss": ""
+            },
+            {
+                "index": 0,
+                "id": 10339,
+                "contextGloss": ""
+            }
+        ]
+    },
+    {
+        "id": 10342,
+        "text": "na-aš-kán ^URU^ma-ra-aš-ša-an-ti-i̯a-za ar-ḫa pár-aš-ta",
+        "title": "Example 2.4",
+        "words": [
+            {
+                "index": 0,
+                "id": 10343,
+                "contextGloss": ""
+            }
+        ]
     }
 ]

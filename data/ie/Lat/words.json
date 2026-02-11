@@ -1,1 +1,17 @@
-[]
+[
+    {
+        "id": 10373,
+        "text": "madēre",
+        "gloss": "be wet, drunk"
+    },
+    {
+        "id": 10380,
+        "text": "macer",
+        "gloss": "thin",
+        "sourceRefs": [
+            {
+                "refText": "Lubotsky 1981:54"
+            }
+        ]
+    }
+]
