@@ -510,7 +510,7 @@ class WordController(val dictionaryService: DictionaryService) {
         val resultWords = mutableListOf<WordRefViewModel>()
         val resultRules = mutableListOf<Int>()
 
-        for (step in steps) {
+        fun addWordSequenceStep(step: String): Word {
             val match = sequenceStepPattern.matchEntire(step)
                 ?: badRequest("Can't parse sequence step: $step")
             val language = repo.resolveLanguage(match.groupValues[1])
@@ -532,25 +532,28 @@ class WordController(val dictionaryService: DictionaryService) {
                 }
             }
 
-            val word = repo.findOrAddWord(text, language, gloss, source = source,
-                reconstructed = reconstructed)
+            val word = repo.findOrAddWord(text, language, gloss, source = source, reconstructed = reconstructed)
             resultWords.add(word.toRefViewModel(repo))
-            if (lastWord != null) {
-                val existingLink = repo.findLink(word, lastWord, Link.Origin)
+            lastWord?.let {
+                val existingLink = repo.findLink(word, it, Link.Origin)
                 if (existingLink == null) {
-                    val link = repo.addLink(word, lastWord, Link.Origin, source = source)
+                    val link = repo.addLink(word, it, Link.Origin, source = source)
                     val ruleSequence = repo.ruleSequencesForLanguage(word.language)
                         .singleOrNull { it.fromLanguage == lastWord!!.language }
                     if (ruleSequence != null) {
                         repo.applyRuleSequence(link, ruleSequence)
                         resultRules.addAll(link.rules.map { it.id })
                     }
-                }
-                else {
+                } else {
                     resultRules.addAll(existingLink.rules.map { it.id })
                 }
             }
-            lastWord = word
+            return word
+        }
+
+        for (step in steps) {
+            val variants = step.split(';').map { it.trim() }
+            lastWord = variants.map { addWordSequenceStep(it) }.first()
         }
         return WordSequenceResults(resultWords, resultRules)
     }

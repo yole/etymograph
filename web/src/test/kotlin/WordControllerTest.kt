@@ -144,6 +144,28 @@ class WordControllerTest {
     }
 
     @Test
+    fun addWordSequenceComma() {
+        val s = Language("Sindarin", "s")
+        graph.addLanguage(s)
+
+        wordController.addWordSequence(graph, WordController.WordSequenceParams("ce am 'smth, other' > q an; s ap", "PE xx"))
+        val ceWord = graph.wordsByText(fixture.ce, "am").single()
+        assertEquals("smth, other", ceWord.gloss)
+        assertEquals("PE xx", ceWord.source.single().refText)
+
+        val qWord = graph.wordsByText(fixture.q, "an").single()
+        assertEquals("smth, other", qWord.gloss)
+        assertEquals("PE xx", qWord.source.single().refText)
+
+        val sWord = graph.wordsByText(s, "ap").single()
+        assertEquals("smth, other", sWord.gloss)
+        assertEquals("PE xx", sWord.source.single().refText)
+
+        val link = graph.findLink(qWord, ceWord, Link.Origin)
+        assertEquals("PE xx", link!!.source.single().refText)
+    }
+
+    @Test
     fun explicitStress() {
         val word = wordController.addWord(graph, "q", WordController.AddWordParameters(
             "eˈa", null, null, null, null, false, null, null)
