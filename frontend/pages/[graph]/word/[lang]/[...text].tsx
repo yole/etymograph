@@ -592,6 +592,7 @@ function SingleWord({word}: { word: WordViewModel }) {
                 </>)}
                 {compoundSuggestions.length > 0 && <br/>}
                 <WordForm wordSubmitted={submitted} newCompound={true} linkTarget={word}
+                          showSyllabographic={word.syllabographic}
                           defaultValues={{language: word.language}} cancelled={() => setShowCompoundComponent(false)}/>
             </>
             }
