@@ -78,4 +78,11 @@ class SyllabogramTest {
         assertEquals(SyllabogramType.DeterminativeAlt, syllabogramSequence.syllabograms[1].type)
         assertEquals(text, TlhDigSyllabogramSyntax.render(syllabogramSequence))
     }
+
+    @Test
+    fun syllabogramAfterSumerogram() {
+        val text = "EGIR-an-ma"
+        val syllabogramSequence = TlhDigSyllabogramSyntax.parse(text)
+        assertEquals(Syllabogram("an", SyllabogramType.Syllabogram), syllabogramSequence.syllabograms[1])
+    }
 }
