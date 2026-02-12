@@ -71,7 +71,7 @@ export default function RuleForm(props: RuleFormProps) {
                 </>}
                 <FormRow label="Source" id="source"/>
             </tbody></table>
-            <FormTextArea rows={10} cols={70} id="text" className="ruleText" inputAssist={true}/>
+            <FormTextArea rows={10} cols={70} id="text" className="uiTextArea" inputAssist={true}/>
             <FormCheckbox id="createUnresolvedEntities" label="Create unresolved entities"/>
             <br/>
             <h3>Notes</h3>

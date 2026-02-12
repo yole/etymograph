@@ -13,7 +13,7 @@ export default function TranslationForm(props) {
         update={(data) => editTranslation(graph, props.updateId, data)}
         {...props}
     >
-        <FormTextArea rows={10} cols={50} id="text"/>
+        <FormTextArea rows={10} cols={50} id="text" className="uiTextArea"/>
         <table><tbody>
             <FormRow label="Source" id="source"/>
         </tbody></table>
