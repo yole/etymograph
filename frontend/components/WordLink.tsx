@@ -3,6 +3,7 @@ import {useRouter} from "next/router";
 import WordGloss from "@/components/WordGloss";
 import {WordRefViewModel} from "@/models";
 import WordTextView from "@/components/WordTextView";
+import {Urls} from "@/components/Urls";
 
 interface WordLinkProps {
     word: WordRefViewModel;
@@ -12,13 +13,10 @@ interface WordLinkProps {
 
 export default function WordLink(params: WordLinkProps) {
     const router = useRouter()
-    const graph = router.query.graph
+    const graph = router.query.graph as string
 
     const word = params.word
-    let linkTarget = `/${graph}/word/${word.language}/${word.urlKey ?? word.text.toLowerCase()}`
-    if (word.homonym) {
-        linkTarget += `/${word.id}`
-    }
+    let linkTarget = Urls.Words.fromRef(graph, word)
     const wordText = word.reconstructed ? ("*" + word.text) : word.text
     return <>
         {params.baseLanguage !== undefined && word.language !== params.baseLanguage && word.displayLanguage + " "}

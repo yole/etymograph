@@ -1,12 +1,19 @@
-import {WordViewModel} from "@/models";
+import {WordRefViewModel, WordViewModel} from "@/models";
 
 export const Urls = {
     Words: {
         fromWordForm: function(graph: string, word: WordViewModel){
             if (word.urlKey) {
-                return `/${graph}/word/${word.language}/${word.urlKey}/${word.id}`;
+                return `/${graph}/word/${word.language}/${word.urlKey}/${word.id}`
             }
-            return `/${graph}/word/${word.language}/${word.text}`;
+            return `/${graph}/word/${word.language}/${word.text}`
+        },
+        fromRef: function(graph: string, word: WordRefViewModel){
+            let linkTarget = `/${graph}/word/${word.language}/${word.urlKey ?? word.text.toLowerCase()}`
+            if (word.homonym) {
+                linkTarget += `/${word.id}`
+            }
+            return linkTarget
         }
     },
     Rules: {

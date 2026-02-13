@@ -378,10 +378,9 @@ class WordController(val dictionaryService: DictionaryService) {
     )
 
     data class WordParadigmListModel(
-        val word: String,
-        val wordId: Int,
         val language: String,
         val languageFullName: String,
+        val wordRef: WordRefViewModel,
         val paradigms: List<WordParadigmModel>
     )
 
@@ -405,7 +404,11 @@ class WordController(val dictionaryService: DictionaryService) {
                 substitutedParadigm
             )
         }
-        return WordParadigmListModel(word.text, word.id, word.language.shortName, word.language.name, paradigmModels)
+        return WordParadigmListModel(
+            word.language.shortName, word.language.name,
+            word.toRefViewModel(repo),
+            paradigmModels
+        )
     }
 
     data class UpdateWordParadigmParameters(var items: Array<Array<Any>> = emptyArray())

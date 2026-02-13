@@ -6,6 +6,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import {GraphContext} from "@/components/Contexts";
 import Link from "next/link";
 import {DictionaryViewModel, WordParadigmListModel} from "@/models";
+import {Urls} from "@/components/Urls";
 
 export const config = {
     unstable_runtimeJS: true
@@ -90,10 +91,10 @@ function WordParadigm(params) {
             </tr>)}
             </tbody>
         </table>
-        {allowEdit() && !editMode && <button onClick={() => setEditMode(true)}>Edit</button>}
+        {allowEdit() && !editMode && <button className="uiButton" onClick={() => setEditMode(true)}>Edit</button>}
         {editMode && <>
-            <button onClick={saveParadigm}>Save</button>
-            <button onClick={cancelEditing}>Cancel</button>
+            <button className="uiButton" onClick={saveParadigm}>Save</button>
+            <button className="uiButton" onClick={cancelEditing}>Cancel</button>
         </>}
     </>
 }
@@ -106,11 +107,11 @@ export default function WordParadigms(params) {
         <Breadcrumbs langId={paradigmList.language} langName={paradigmList.languageFullName}
                      steps={[
                          {url: `/${graph}/dictionary/${paradigmList.language}`, title: "Dictionary"},
-                         {url: `/${graph}/word/${paradigmList.language}/${paradigmList.word}`, title: paradigmList.word}
+                         {url: Urls.Words.fromRef(graph, paradigmList.wordRef), title: paradigmList.wordRef.text}
                      ]}
                      title="Paradigms"/>
         {paradigmList.paradigms.map(p => <>
-            <WordParadigm wordId={paradigmList.wordId} paradigm={p}/>
+            <WordParadigm wordId={paradigmList.wordRef.id} paradigm={p}/>
         </>)}
     </>
 }

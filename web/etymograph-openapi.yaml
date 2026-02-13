@@ -2178,24 +2178,20 @@ components:
     WordParadigmListModel:
       type: "object"
       properties:
-        word:
-          type: "string"
-        wordId:
-          type: "integer"
-          format: "int32"
         language:
           type: "string"
         languageFullName:
           type: "string"
+        wordRef:
+          $ref: "#/components/schemas/WordRefViewModel"
         paradigms:
           type: "array"
           items:
             $ref: "#/components/schemas/WordParadigmModel"
       required:
-        - "word"
-        - "wordId"
         - "language"
         - "languageFullName"
+        - "wordRef"
         - "paradigms"
     ParseCandidateViewModel:
       type: "object"

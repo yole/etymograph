@@ -675,10 +675,9 @@ export type WordCategoryViewModel = {
 };
 
 export type WordParadigmListModel = {
-    word: string;
-    wordId: number;
     language: string;
     languageFullName: string;
+    wordRef: WordRefViewModel;
     paradigms: Array<WordParadigmModel>;
 };
 
