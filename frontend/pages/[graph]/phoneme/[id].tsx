@@ -5,6 +5,9 @@ import {useRouter} from "next/router";
 import PhonemeForm from "@/forms/PhonemeForm";
 import SourceRefs from "@/components/SourceRefs";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import EtymographFormView, {View} from "@/components/EtymographFormView";
+import {Urls} from "@/components/Urls";
+import {PhonemeViewModel} from "@/models";
 
 export const config = {
     unstable_runtimeJS: true
@@ -19,24 +22,22 @@ export async function getStaticPaths() {
 }
 
 export default function Phoneme(props) {
-    const phoneme = props.loaderData
-    const [editMode, setEditMode] = useState(false)
+    const phoneme = props.loaderData as PhonemeViewModel
     const [showCompareForm, setShowCompareForm] = useState(false)
     const [compareTarget, setCompareTarget] = useState('')
     const [compareResult, setCompareResult] = useState('')
     const router = useRouter()
     const graph = router.query.graph as string;
 
-    function submitted() {
-        setEditMode(false)
-        router.replace(router.asPath)
-    }
-
     function deletePhonemeClicked() {
         if (window.confirm("Delete this phoneme?")) {
             deletePhoneme(graph, phoneme.id)
                 .then(() => router.push(`/${graph}/language/` + phoneme.languageShortName))
         }
+    }
+
+    function copyPhonemeClicked() {
+        router.push(Urls.Phonemes.newPhoneme(graph, phoneme.languageShortName) + "?classes=" + phoneme.classes)
     }
 
     async function runCompare() {
@@ -54,41 +55,37 @@ export default function Phoneme(props) {
     return <>
         <Breadcrumbs langId={phoneme.languageShortName} langName={phoneme.languageFullName} title="Phoneme"/>
 
-        {!editMode && <>
-            <p>
-            Graphemes: {phoneme.graphemes.join(", ")}<br/>
-            {phoneme.sound.length > 0 && <>Sound: {phoneme.sound}<br/></>}
-            {phoneme.classes.length > 0 && <>Classes: {phoneme.classes}<br/></>}
-            {phoneme.implicitClasses.length > 0 && <>Implicit classes: {phoneme.implicitClasses}<br/></>}
-            {phoneme.features.length > 0 && <>Features {phoneme.features}<br/></>}
-            {phoneme.historical && "Historical"}
-            </p>
-            <SourceRefs source={phoneme.source}/>
-            {phoneme.notes != null && <>
-                <h3>Notes</h3>
-                <p>{phoneme.notes}</p>
-            </>}
-        </>}
-        {editMode && <PhonemeForm
-            updateId={phoneme.id}
-            defaultValues={{
-                graphemes: phoneme.graphemes.join(", "),
-                sound: phoneme.sound,
-                classes: phoneme.classes,
-                historical: phoneme.historical,
-                source: phoneme.sourceEditableText,
-                notes: phoneme.notes
-            }}
-            submitted={submitted}
-            cancelled={() => setEditMode(false)}
-        />}
+        <EtymographFormView buttons={[{text: "Delete", callback: deletePhonemeClicked}, {text: "Copy", callback: copyPhonemeClicked}]}>
+            <View>
+                <p>
+                    Graphemes: {phoneme.graphemes.join(", ")}<br/>
+                    {phoneme.sound.length > 0 && <>Sound: {phoneme.sound}<br/></>}
+                    {phoneme.classes.length > 0 && <>Classes: {phoneme.classes}<br/></>}
+                    {phoneme.implicitClasses.length > 0 && <>Implicit classes: {phoneme.implicitClasses}<br/></>}
+                    {phoneme.features.length > 0 && <>Features {phoneme.features}<br/></>}
+                    {phoneme.historical && "Historical"}
+                </p>
+                <SourceRefs source={phoneme.source}/>
+                {phoneme.notes && <>
+                    <h3>Notes</h3>
+                    <p>{phoneme.notes}</p>
+                </>}
+            </View>
+            <PhonemeForm
+                updateId={phoneme.id}
+                defaultValues={{
+                    graphemes: phoneme.graphemes.join(", "),
+                    sound: phoneme.sound,
+                    classes: phoneme.classes,
+                    historical: phoneme.historical,
+                    source: phoneme.sourceEditableText,
+                    notes: phoneme.notes
+                }}
+            />
+        </EtymographFormView>
 
         {allowEdit() && <>
-            {!editMode && <button onClick={() => setEditMode(true)}>Edit</button>}
-            {' '}
-            <button onClick={() => deletePhonemeClicked()}>Delete</button>
-            {' '}
-            {!showCompareForm && <button onClick={() => setShowCompareForm(!showCompareForm)}>Compare</button>}
+            {!showCompareForm && <button className="uiButton" onClick={() => setShowCompareForm(!showCompareForm)}>Compare</button>}
         </>}
 
         {showCompareForm && <>

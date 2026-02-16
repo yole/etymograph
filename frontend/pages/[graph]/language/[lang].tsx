@@ -14,6 +14,7 @@ import LanguageSelect from "@/components/LanguageSelect";
 import FormCheckbox from "@/components/FormCheckbox";
 import {LanguageViewModel, UpdateLanguageParameters} from "@/models";
 import LanguageNavBar from "@/components/LanguageNavBar";
+import {Urls} from "@/components/Urls";
 
 export const config = {
     unstable_runtimeJS: true
@@ -92,7 +93,7 @@ export default function LanguageIndex(props) {
                 </>)}
                 {allowEdit() && <>
                     <p/>
-                    <button className="uiButton" onClick={() => router.push(`/${graph}/phonemes/${langId}/new`)}>Add Phoneme</button>
+                    <button className="uiButton" onClick={() => router.push(Urls.Phonemes.newPhoneme(graph, langId))}>Add Phoneme</button>
                     {lang.phonemes.length === 0 &&<>
                         {' '}
                         <button className="uiButton" onClick={() => setShowCopyPhonemesForm(!showCopyPhonemesForm)}>Copy phonemes</button>

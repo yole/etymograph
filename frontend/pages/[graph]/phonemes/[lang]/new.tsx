@@ -15,6 +15,7 @@ export default function PhonemeEditor() {
 
     return <>
         <Breadcrumbs langId={lang} title="New Phoneme"/>
-        <PhonemeForm language={lang} redirectOnCreate={(r) => `/${router.query.graph}/phoneme/${r.id}`}/>
+        <PhonemeForm language={lang} defaultValues={{graphemes: '', sound: '', classes: router.query.classes as string, historical: false }}
+                     redirectOnCreate={(r) => `/${router.query.graph}/phoneme/${r.id}`}/>
     </>
 }
