@@ -771,7 +771,12 @@ open class InMemoryGraphRepository : GraphRepository() {
             if (!compoundWord.text.startsWith(textSoFar)) {
                 return emptyList()
             }
-            longestPrefix = textSoFar
+            longestPrefix = if (compoundWord.text.startsWith("-", startIndex = textSoFar.length)) {
+                "$textSoFar-"
+            }
+            else {
+                textSoFar
+            }
         }
 
         return allWords(compoundWord.language).filter {
