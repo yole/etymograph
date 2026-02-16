@@ -149,7 +149,7 @@ open class InMemoryGraphRepository : GraphRepository() {
     private fun Word.isRoot() = text.all { c -> c.isUpperCase() || c == '-' }
 
     override fun findAttestations(word: Word): List<Attestation> {
-        val allDerivedWords = collectDerivedWords(word)
+        val allDerivedWords = collectDerivedWords(word, true)
         val result = mutableListOf<Attestation>()
         corpusText@ for (corpusText in corpusTextsInLanguage(word.language)) {
             for (derivedWord in allDerivedWords) {
@@ -162,12 +162,17 @@ open class InMemoryGraphRepository : GraphRepository() {
         return result
     }
 
-    private fun collectDerivedWords(word: Word): Collection<Word> {
+    private fun collectDerivedWords(word: Word, recur: Boolean): Collection<Word> {
         val result = mutableSetOf<Word>()
         result.add(word)
         for (link in getLinksTo(word)) {
             if (link.fromEntity is Word && (link.type == Link.Derived || link.type == Link.Variation || link.type == Link.Transcription)) {
-                result.add(link.fromEntity)
+                if (recur) {
+                    result.addAll(collectDerivedWords(link.fromEntity, false))
+                }
+                else {
+                    result.add(link.fromEntity)
+                }
             }
         }
         for (compound in findCompoundsByComponent(word)) {
