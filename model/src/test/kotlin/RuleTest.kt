@@ -932,6 +932,16 @@ class RuleTest : QBaseTest() {
         assertEquals(text, instruction.toEditableText(repo))
     }
 
+    @Test
+    fun ruleAssignsStress() {
+        q.accentTypes = setOf(AccentType.Acute)
+        val rule = parseRule(q, q, "- append 'e'\n- stress is on last syllable")
+        val word = rule.apply(q.word("tul"), repo)
+        assertEquals(3, word.stressedPhonemeIndex)
+        assertEquals(AccentType.Acute, word.accentType)
+        assertEquals("tulé", word.asOrthographic().text)
+    }
+
 
     /*
     @Test

@@ -53,12 +53,13 @@ fun remapSegments(phonemes: PhonemeIterator, segments: List<WordSegment>?): List
 }
 
 enum class AccentType(val combiningMark: Char) {
+    None(0.toChar()),
     Acute('\u0301'),
     Grave('\u0300'),
     Circumflex('\u0302');
 
     fun combine(text: String): String {
-        return Normalizer.normalize(text + combiningMark, Normalizer.Form.NFKC)
+        return if (this == None) text else Normalizer.normalize(text + combiningMark, Normalizer.Form.NFKC)
     }
 
     companion object {
@@ -151,10 +152,10 @@ class Word(
     }
 
     fun asOrthographic(referenceWord: Word? = null): Word {
-        if (!isPhonemic) return this
+        if (!isPhonemic && accentType == null) return this
         val orthoRule = language.orthographyRule?.resolve()
         var wordSegments = segments
-        val orthoText: String = if (orthoRule != null) {
+        val orthoText: String = if (orthoRule != null && isPhonemic) {
             var refIt = referenceWord?.let { PhonemeIterator(it, null) }
             var it = PhonemeIterator(this, null, resultPhonemic = false)
             while (true) {
@@ -170,7 +171,8 @@ class Word(
         else {
             buildString {
                 var index = 0
-                language.phonoPhonemeLookup.iteratePhonemes(text) { startIndex, endIndex, phoneme, _ ->
+                val lookup = if (isPhonemic) language.phonoPhonemeLookup else language.orthoPhonemeLookup
+                lookup.iteratePhonemes(text) { startIndex, endIndex, phoneme, _ ->
                     if (phoneme != null) {
                         val text = phoneme.graphemes[0]
                         val accent = accentType.takeIf { index == stressedPhonemeIndex }
@@ -183,7 +185,7 @@ class Word(
                 }
             }
         }
-        return derive(orthoText, id = id, phonemic = false, segments = wordSegments)
+        return derive(orthoText, id = id, phonemic = false, segments = wordSegments, accentType = null)
     }
 
     fun asOrthographic(asLanguage: Language): Word {

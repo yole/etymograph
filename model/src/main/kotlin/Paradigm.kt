@@ -8,7 +8,7 @@ class ParadigmCell(val ruleAlternatives: List<Rule?>) {
     fun generate(word: Word, graph: GraphRepository): WordAlternatives {
         return ruleAlternatives.mapTo(mutableSetOf()) { r ->
             val link = graph.getLinksTo(word).find { it.rules == listOf(r) }
-            val expectedWord = r?.apply(word, graph) ?: word
+            val expectedWord = r?.apply(word, graph)?.asOrthographic() ?: word
             val resultWord = link?.fromEntity as? Word ?: expectedWord
             WordAlternative(resultWord, expectedWord, r)
         }.toList().ifEmpty { listOf(WordAlternative(word, word, null)) }
