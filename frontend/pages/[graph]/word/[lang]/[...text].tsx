@@ -581,6 +581,7 @@ function SingleWord({word}: { word: WordViewModel }) {
 
             {!isCompound && <><button className="uiButton" onClick={() => setShowBaseWord(!showBaseWord)}>Lemma</button>{' '}</>}
             {showBaseWord && <WordForm wordSubmitted={submitted} linkType='>' linkTarget={word} reverseLink={true}
+                                       showSyllabographic={word.syllabographic}
                                        defaultValues={{language: word.language}} cancelled={() => setShowBaseWord(false)}/>}
 
             <button className="uiButton" onClick={defineAsCompoundClicked}>Compound</button>{' '}
