@@ -1,7 +1,7 @@
 [
     {
         "id": 51,
-        "name": "Present",
+        "name": "Verb Present",
         "rows": [
             "1",
             "2",
@@ -156,11 +156,7 @@
                             10139
                         ]
                     },
-                    {
-                        "ruleAlternatives": [
-                            10141
-                        ]
-                    },
+                    {},
                     {
                         "ruleAlternatives": [
                             10143
@@ -175,7 +171,7 @@
     },
     {
         "id": 58,
-        "name": "Past",
+        "name": "Verb Past",
         "rows": [
             "1",
             "2",
@@ -218,6 +214,60 @@
                     {
                         "ruleAlternatives": [
                             10316
+                        ]
+                    }
+                ]
+            }
+        ],
+        "posList": [
+            "V"
+        ]
+    },
+    {
+        "id": 59,
+        "name": "Verb Medio-passive",
+        "rows": [
+            "1",
+            "2",
+            "3"
+        ],
+        "columns": [
+            {
+                "title": "SG",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            10573
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            10577
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            10581
+                        ]
+                    }
+                ]
+            },
+            {
+                "title": "PL",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            10575
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            10579
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            10583
                         ]
                     }
                 ]

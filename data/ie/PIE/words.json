@@ -204,7 +204,7 @@
     {
         "id": 10181,
         "text": "-enti",
-        "gloss": "Primary 3pl. ending",
+        "gloss": "Primary athematic 3pl. ending",
         "pos": "AFF"
     },
     {
@@ -422,5 +422,76 @@
                 "refText": "56"
             }
         ]
+    },
+    {
+        "id": 10520,
+        "text": "h₁ed-",
+        "gloss": "eat",
+        "pos": "V"
+    },
+    {
+        "id": 10523,
+        "text": "i̯eug-",
+        "gloss": "tie together",
+        "pos": "V"
+    },
+    {
+        "id": 10524,
+        "text": "i̯unégmi"
+    },
+    {
+        "id": 10527,
+        "text": "gʷʰnenti",
+        "gloss": "kill.3PL",
+        "pos": "V"
+    },
+    {
+        "id": 10528,
+        "text": "gʷʰen-",
+        "pos": "V"
+    },
+    {
+        "id": 10530,
+        "text": "teḱ-",
+        "gloss": "build",
+        "pos": "V"
+    },
+    {
+        "id": 10531,
+        "text": "tḱeiti"
+    },
+    {
+        "id": 10533,
+        "text": "-onti",
+        "gloss": "Primary thematic 3pl. ending",
+        "pos": "AFF"
+    },
+    {
+        "id": 10535,
+        "text": "h₂eǵ-",
+        "gloss": "drive",
+        "pos": "V"
+    },
+    {
+        "id": 10536,
+        "text": "h₂eǵeti"
+    },
+    {
+        "id": 10537,
+        "text": "gʷʰen-",
+        "gloss": "destroy",
+        "pos": "V"
+    },
+    {
+        "id": 10538,
+        "text": "h₁ei-",
+        "gloss": "go",
+        "pos": "V"
+    },
+    {
+        "id": 10539,
+        "text": "dʰeugʰ-",
+        "gloss": "milk",
+        "pos": "V"
     }
 ]

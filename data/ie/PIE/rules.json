@@ -535,10 +535,9 @@
             {
                 "instructions": [
                     {
-                        "type": "ApplySoundRule",
+                        "type": "ApplyRule",
                         "args": [
-                            "10072",
-                            "first vowel"
+                            "10521"
                         ]
                     },
                     {
@@ -630,6 +629,27 @@
                     }
                 ],
                 "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "e"
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "10521"
+                        ]
+                    },
+                    {
+                        "type": "AppendMorpheme",
+                        "args": [
+                            "10176"
+                        ]
+                    }
+                ],
+                "condition": {
                     "type": "otherwise"
                 }
             }
@@ -700,7 +720,7 @@
                     {
                         "type": "ChangeEndingToMorpheme",
                         "args": [
-                            "10181"
+                            "10533"
                         ]
                     }
                 ],
@@ -713,10 +733,9 @@
             {
                 "instructions": [
                     {
-                        "type": "ApplySoundRule",
+                        "type": "ApplyRule",
                         "args": [
-                            "10072",
-                            "first vowel"
+                            "10521"
                         ]
                     },
                     {
@@ -837,6 +856,12 @@
             {
                 "instructions": [
                     {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "o"
+                        ]
+                    },
+                    {
                         "type": "AppendMorpheme",
                         "args": [
                             "10201"
@@ -852,16 +877,21 @@
             {
                 "instructions": [
                     {
-                        "type": "ApplySoundRule",
+                        "type": "ApplyRule",
                         "args": [
-                            "10072",
-                            "first vowel"
+                            "10521"
                         ]
                     },
                     {
                         "type": "AppendMorpheme",
                         "args": [
                             "10201"
+                        ]
+                    },
+                    {
+                        "type": "ApplyStress",
+                        "args": [
+                            "last"
                         ]
                     }
                 ],
@@ -905,10 +935,9 @@
             {
                 "instructions": [
                     {
-                        "type": "ApplySoundRule",
+                        "type": "ApplyRule",
                         "args": [
-                            "10072",
-                            "first vowel"
+                            "10521"
                         ]
                     },
                     {
@@ -986,6 +1015,114 @@
                         "type": "Prepend",
                         "args": [
                             "first consonant"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "fromPOS": [
+            "V"
+        ]
+    },
+    {
+        "id": 10521,
+        "name": "pie-zero-grade-root",
+        "fromLang": "PIE",
+        "toLang": "PIE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplySoundRule",
+                        "args": [
+                            "10072",
+                            "first ablauting vowel"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ]
+    },
+    {
+        "id": 10522,
+        "name": "pie-nasal-infix",
+        "fromLang": "PIE",
+        "toLang": "PIE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "10521"
+                        ]
+                    },
+                    {
+                        "type": "Insert",
+                        "args": [
+                            "ne",
+                            "-1",
+                            "last consonant"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "fromPOS": [
+            "V"
+        ]
+    },
+    {
+        "id": 10529,
+        "name": "pie-ei-present",
+        "fromLang": "PIE",
+        "toLang": "PIE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "10521"
+                        ]
+                    },
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'ei'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "fromPOS": [
+            "V"
+        ]
+    },
+    {
+        "id": 10534,
+        "name": "pie-thematic-present",
+        "fromLang": "PIE",
+        "toLang": "PIE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'e'"
                         ]
                     }
                 ],

@@ -319,6 +319,12 @@
                 "id": 10328,
                 "contextGloss": ""
             }
+        ],
+        "translations": [
+            {
+                "id": 10461,
+                "text": "(But) when I arrived in Tarkuma, I burnt Tarkuma down to the ground."
+            }
         ]
     },
     {
@@ -335,6 +341,12 @@
                 "index": 3,
                 "id": 10333,
                 "contextGloss": ""
+            }
+        ],
+        "translations": [
+            {
+                "id": 10462,
+                "text": "The enemy did not flee."
             }
         ]
     },
@@ -353,6 +365,12 @@
                 "id": 10339,
                 "contextGloss": ""
             }
+        ],
+        "translations": [
+            {
+                "id": 10463,
+                "text": "He fled away before me"
+            }
         ]
     },
     {
@@ -363,6 +381,263 @@
             {
                 "index": 0,
                 "id": 10343,
+                "contextGloss": ""
+            },
+            {
+                "index": 1,
+                "id": 10456,
+                "contextGloss": ""
+            }
+        ],
+        "translations": [
+            {
+                "id": 10464,
+                "text": "He fled away from Maraššantii̯a"
+            }
+        ]
+    },
+    {
+        "id": 10460,
+        "text": "_I-NA KUR ^URU^ḪA-AT-TI-i̯a-aš-ma-aš KASKAL-an _Ú-UL ma-ni-i̯a-aḫ-ti",
+        "title": "Example 2.5",
+        "words": [
+            {
+                "index": 2,
+                "id": 10465,
+                "contextGloss": ""
+            },
+            {
+                "index": 3,
+                "id": 10470,
+                "contextGloss": ""
+            },
+            {
+                "index": 5,
+                "id": 10474,
+                "contextGloss": ""
+            }
+        ],
+        "translations": [
+            {
+                "id": 10476,
+                "text": "And you will not show them the road to Ḫatti-land"
+            }
+        ]
+    },
+    {
+        "id": 10477,
+        "text": "nu-uš ^m^te-li-pí-nu-uš ar-ḫa pár-aḫ-ta",
+        "title": "Example 2.6",
+        "words": [
+            {
+                "index": 0,
+                "id": 10478,
+                "contextGloss": ""
+            },
+            {
+                "index": 3,
+                "id": 10481,
+                "contextGloss": ""
+            }
+        ],
+        "translations": [
+            {
+                "id": 10484,
+                "text": "Telipinu chased them away"
+            }
+        ]
+    },
+    {
+        "id": 10485,
+        "text": "nu ^URU^ka-pa-pa-aḫ-šu-u̯a-an-ma u̯a-al-ḫu-u-u̯a-ni",
+        "title": "Example 2.7",
+        "words": [
+            {
+                "index": 1,
+                "id": 10486,
+                "contextGloss": ""
+            },
+            {
+                "index": 2,
+                "id": 10491,
+                "contextGloss": ""
+            }
+        ],
+        "translations": [
+            {
+                "id": 10494,
+                "text": "But/and we will attack (the city of) Kapapaḫšuu̯a"
+            }
+        ]
+    },
+    {
+        "id": 10495,
+        "text": "na-aš ka-a-ša pu-nu-uš-šu-un",
+        "title": "Example 2.8",
+        "words": [
+            {
+                "index": 0,
+                "id": 10496,
+                "contextGloss": ""
+            },
+            {
+                "index": 1,
+                "id": 10498,
+                "contextGloss": ""
+            },
+            {
+                "index": 2,
+                "id": 10500,
+                "contextGloss": ""
+            }
+        ],
+        "translations": [
+            {
+                "id": 10503,
+                "text": "I have just interrogated them"
+            }
+        ]
+    },
+    {
+        "id": 10504,
+        "text": "^d^UTU^_ŠI^-ma ^m^kal-lu-un ^LÚ^_BE-EL ANŠE.KUR.RA u̯a-tar-na-aḫ-ta",
+        "title": "Example 2.9",
+        "words": [
+            {
+                "index": 0,
+                "id": 10505,
+                "contextGloss": ""
+            },
+            {
+                "index": 3,
+                "id": 10508,
+                "contextGloss": ""
+            },
+            {
+                "index": 4,
+                "id": 10509,
+                "contextGloss": ""
+            }
+        ],
+        "translations": [
+            {
+                "id": 10512,
+                "text": "My Majesty has ordered Kallu as the Lord of the Cavalry"
+            }
+        ]
+    },
+    {
+        "id": 10513,
+        "text": "EGIR-an-ma LÚ.KÚR ^URU^zi-ik-kat-ta-an u̯a-al-aḫ-ta",
+        "title": "Example 2.10",
+        "words": [
+            {
+                "index": 0,
+                "id": 10514,
+                "contextGloss": ""
+            },
+            {
+                "index": 3,
+                "id": 10517,
+                "contextGloss": ""
+            }
+        ],
+        "translations": [
+            {
+                "id": 10519,
+                "text": "But then the enemy attacked (the city of) Zikkatta"
+            }
+        ]
+    },
+    {
+        "id": 10540,
+        "text": "LUGAL-i-mu DINGIR^MEŠ^ me-ek-ka4-uš MU.KAM^ḪI.A^-uš ma-ni-i̯a-aḫ-ḫe-er",
+        "title": "Example 3.1",
+        "words": [
+            {
+                "index": 0,
+                "id": 10541,
+                "contextGloss": ""
+            },
+            {
+                "index": 2,
+                "id": 10547,
+                "contextGloss": ""
+            },
+            {
+                "index": 3,
+                "id": 10550,
+                "contextGloss": ""
+            },
+            {
+                "index": 4,
+                "id": 10552,
+                "contextGloss": "allot.PST.3PL"
+            }
+        ]
+    },
+    {
+        "id": 10554,
+        "text": "nu-ut-ta ^d^GUL-ša-aš ḪUL-aḫ-ta",
+        "title": "Example 3.2",
+        "words": [
+            {
+                "index": 0,
+                "id": 10555,
+                "contextGloss": ""
+            },
+            {
+                "index": 1,
+                "id": 10558,
+                "contextGloss": ""
+            },
+            {
+                "index": 2,
+                "id": 10559,
+                "contextGloss": ""
+            }
+        ]
+    },
+    {
+        "id": 10561,
+        "text": "LUGAL-uš-ša-an ^GIŠ^ḫu-lu-ga-an-ni e-ša",
+        "title": "Example 3.3",
+        "words": [
+            {
+                "index": 0,
+                "id": 10562,
+                "contextGloss": ""
+            },
+            {
+                "index": 1,
+                "id": 10565,
+                "contextGloss": ""
+            },
+            {
+                "index": 2,
+                "id": 10585,
+                "contextGloss": ""
+            }
+        ]
+    },
+    {
+        "id": 10588,
+        "text": "na-aš-kán TA ^d^U za-aḫ-ta-ri",
+        "title": "Example 3.4",
+        "words": [
+            {
+                "index": 1,
+                "id": 10589,
+                "contextGloss": ""
+            },
+            {
+                "index": 2,
+                "id": 10590,
+                "contextGloss": ""
+            },
+            {
+                "index": 3,
+                "id": 10591,
                 "contextGloss": ""
             }
         ]

@@ -632,5 +632,470 @@
                 "refText": "55"
             }
         ]
+    },
+    {
+        "id": 10456,
+        "text": "^URU^ma-ra-aš-ša-an-ti-i̯a-za",
+        "syllabographic": true
+    },
+    {
+        "id": 10457,
+        "text": "maraššantii̯az"
+    },
+    {
+        "id": 10458,
+        "text": "maraššantii̯a",
+        "pos": "NP"
+    },
+    {
+        "id": 10459,
+        "text": "-z",
+        "gloss": "abl. ending",
+        "pos": "AFF"
+    },
+    {
+        "id": 10465,
+        "text": "^URU^ḪA-AT-TI-i̯a-aš-ma-aš",
+        "syllabographic": true
+    },
+    {
+        "id": 10466,
+        "text": "^URU^ḪA-AT-TI",
+        "gloss": "Land of Hatti",
+        "pos": "NP",
+        "syllabographic": true
+    },
+    {
+        "id": 10468,
+        "text": "i̯a",
+        "gloss": "and",
+        "pos": "CONJ",
+        "classes": [
+            "clitic"
+        ]
+    },
+    {
+        "id": 10469,
+        "text": "šmaš",
+        "gloss": "3PL.DAT/LOC",
+        "pos": "PRON",
+        "classes": [
+            "clitic"
+        ]
+    },
+    {
+        "id": 10470,
+        "text": "KASKAL-an",
+        "syllabographic": true
+    },
+    {
+        "id": 10471,
+        "text": "KASKAL",
+        "gloss": "road",
+        "pos": "N"
+    },
+    {
+        "id": 10472,
+        "text": "manii̯aḫti",
+        "syllabographic": true
+    },
+    {
+        "id": 10474,
+        "text": "ma-ni-i̯a-aḫ-ti",
+        "syllabographic": true
+    },
+    {
+        "id": 10475,
+        "text": "manii̯aḫḫ-",
+        "gloss": "show",
+        "pos": "V",
+        "classes": [
+            "hi"
+        ]
+    },
+    {
+        "id": 10478,
+        "text": "nu-uš",
+        "syllabographic": true
+    },
+    {
+        "id": 10480,
+        "text": "uš",
+        "gloss": "3PL.ACC.C",
+        "pos": "PRON",
+        "classes": [
+            "clitic"
+        ]
+    },
+    {
+        "id": 10481,
+        "text": "pár-aḫ-ta",
+        "syllabographic": true
+    },
+    {
+        "id": 10482,
+        "text": "párḫt"
+    },
+    {
+        "id": 10483,
+        "text": "parḫ-",
+        "gloss": "chase away",
+        "pos": "V",
+        "classes": [
+            "mi"
+        ]
+    },
+    {
+        "id": 10486,
+        "text": "^URU^ka-pa-pa-aḫ-šu-u̯a-an-ma",
+        "syllabographic": true
+    },
+    {
+        "id": 10487,
+        "text": "kapapaḫšuu̯anma"
+    },
+    {
+        "id": 10488,
+        "text": "kapapaḫšuu̯an"
+    },
+    {
+        "id": 10490,
+        "text": "kapapaḫšuu̯a",
+        "pos": "NP"
+    },
+    {
+        "id": 10491,
+        "text": "u̯a-al-ḫu-u-u̯a-ni",
+        "syllabographic": true
+    },
+    {
+        "id": 10492,
+        "text": "u̯alḫūu̯ani"
+    },
+    {
+        "id": 10493,
+        "text": "u̯alḫ-",
+        "gloss": "attack",
+        "pos": "V",
+        "classes": [
+            "mi"
+        ]
+    },
+    {
+        "id": 10496,
+        "text": "na-aš",
+        "syllabographic": true
+    },
+    {
+        "id": 10498,
+        "text": "ka-a-ša",
+        "syllabographic": true
+    },
+    {
+        "id": 10499,
+        "text": "kāša",
+        "gloss": "just now",
+        "pos": "ADV"
+    },
+    {
+        "id": 10500,
+        "text": "pu-nu-uš-šu-un",
+        "syllabographic": true
+    },
+    {
+        "id": 10501,
+        "text": "punuššun"
+    },
+    {
+        "id": 10502,
+        "text": "punušš-",
+        "gloss": "interrogate",
+        "pos": "V",
+        "classes": [
+            "mi"
+        ]
+    },
+    {
+        "id": 10505,
+        "text": "^d^UTU^_ŠI^-ma",
+        "syllabographic": true
+    },
+    {
+        "id": 10506,
+        "text": "^d^UTU^_ŠI^",
+        "gloss": "My Majesty",
+        "syllabographic": true
+    },
+    {
+        "id": 10508,
+        "text": "ANŠE.KUR.RA",
+        "gloss": "cavalry",
+        "syllabographic": true
+    },
+    {
+        "id": 10509,
+        "text": "u̯a-tar-na-aḫ-ta",
+        "syllabographic": true
+    },
+    {
+        "id": 10510,
+        "text": "u̯atarnaḫt"
+    },
+    {
+        "id": 10511,
+        "text": "u̯atarnaḫḫ-",
+        "gloss": "rule",
+        "pos": "V",
+        "classes": [
+            "hi"
+        ]
+    },
+    {
+        "id": 10514,
+        "text": "EGIR-an-ma",
+        "syllabographic": true
+    },
+    {
+        "id": 10515,
+        "text": "EGIR-an",
+        "gloss": "afterwards"
+    },
+    {
+        "id": 10517,
+        "text": "u̯a-al-aḫ-ta",
+        "syllabographic": true
+    },
+    {
+        "id": 10518,
+        "text": "u̯alḫt"
+    },
+    {
+        "id": 10525,
+        "text": "kuen-",
+        "gloss": "kill",
+        "pos": "V",
+        "classes": [
+            "mi"
+        ]
+    },
+    {
+        "id": 10526,
+        "text": "kunanzi"
+    },
+    {
+        "id": 10541,
+        "text": "LUGAL-i-mu",
+        "syllabographic": true
+    },
+    {
+        "id": 10542,
+        "text": "LUGAL-i",
+        "syllabographic": true
+    },
+    {
+        "id": 10544,
+        "text": "LUGAL",
+        "gloss": "king",
+        "pos": "N",
+        "syllabographic": true
+    },
+    {
+        "id": 10545,
+        "text": "-uš",
+        "gloss": "acc.pl.c. ending",
+        "pos": "AFF"
+    },
+    {
+        "id": 10547,
+        "text": "me-ek-ka4-uš",
+        "syllabographic": true
+    },
+    {
+        "id": 10548,
+        "text": "mekkauš"
+    },
+    {
+        "id": 10549,
+        "text": "mekki-",
+        "gloss": "much",
+        "pos": "ADJ"
+    },
+    {
+        "id": 10550,
+        "text": "MU.KAM^ḪI.A^-uš",
+        "syllabographic": true
+    },
+    {
+        "id": 10551,
+        "text": "MU.KAM",
+        "gloss": "year",
+        "pos": "N"
+    },
+    {
+        "id": 10552,
+        "text": "ma-ni-i̯a-aḫ-ḫe-er",
+        "syllabographic": true
+    },
+    {
+        "id": 10553,
+        "text": "manii̯aḫḫer"
+    },
+    {
+        "id": 10555,
+        "text": "nu-ut-ta",
+        "syllabographic": true
+    },
+    {
+        "id": 10557,
+        "text": "tta",
+        "gloss": "2SG.DAT/ACC",
+        "pos": "PRON",
+        "classes": [
+            "clitic"
+        ]
+    },
+    {
+        "id": 10558,
+        "text": "^d^GUL-ša-aš",
+        "gloss": "Fate goddess",
+        "syllabographic": true
+    },
+    {
+        "id": 10559,
+        "text": "ḪUL-aḫ-ta",
+        "syllabographic": true
+    },
+    {
+        "id": 10560,
+        "text": "ḪUL-aḫḫ",
+        "gloss": "treat badly",
+        "pos": "V",
+        "classes": [
+            "hi"
+        ]
+    },
+    {
+        "id": 10562,
+        "text": "LUGAL-uš-ša-an",
+        "syllabographic": true
+    },
+    {
+        "id": 10564,
+        "text": "ššan",
+        "gloss": "-",
+        "pos": "CONJ",
+        "classes": [
+            "clitic"
+        ]
+    },
+    {
+        "id": 10565,
+        "text": "^GIŠ^ḫu-lu-ga-an-ni",
+        "syllabographic": true
+    },
+    {
+        "id": 10566,
+        "text": "ḫuluganni"
+    },
+    {
+        "id": 10567,
+        "text": "ḫuluganni-",
+        "gloss": "wagon",
+        "pos": "N",
+        "classes": [
+            "C"
+        ]
+    },
+    {
+        "id": 10572,
+        "text": "-ḫḫa",
+        "gloss": "Medio-passive mp.1sg. ending",
+        "pos": "AFF"
+    },
+    {
+        "id": 10574,
+        "text": "-u̯ašta",
+        "gloss": "Medio-passive mp.1pl. ending",
+        "pos": "AFF"
+    },
+    {
+        "id": 10576,
+        "text": "-tta",
+        "gloss": "Medio-passive mp.2sg. ending",
+        "pos": "AFF"
+    },
+    {
+        "id": 10578,
+        "text": "-ttuma",
+        "gloss": "Medio-passive mp.2pl. ending",
+        "pos": "AFF"
+    },
+    {
+        "id": 10580,
+        "text": "-tta",
+        "gloss": "Medio-passive mp.3sg. ending",
+        "pos": "AFF"
+    },
+    {
+        "id": 10582,
+        "text": "-anta",
+        "gloss": "Medio-passive mp.3pl. ending",
+        "pos": "AFF"
+    },
+    {
+        "id": 10584,
+        "text": "-a",
+        "gloss": "a-conj. pres. m/p. 3sg. ending",
+        "pos": "AFF"
+    },
+    {
+        "id": 10585,
+        "text": "e-ša",
+        "syllabographic": true
+    },
+    {
+        "id": 10586,
+        "text": "eša"
+    },
+    {
+        "id": 10587,
+        "text": "eš-",
+        "gloss": "sit down",
+        "pos": "V",
+        "classes": [
+            "ari"
+        ]
+    },
+    {
+        "id": 10589,
+        "text": "TA",
+        "gloss": "by",
+        "pos": "PREP",
+        "syllabographic": true
+    },
+    {
+        "id": 10590,
+        "text": "^d^U",
+        "gloss": "Storm-god",
+        "pos": "NP",
+        "syllabographic": true
+    },
+    {
+        "id": 10591,
+        "text": "za-aḫ-ta-ri",
+        "syllabographic": true
+    },
+    {
+        "id": 10592,
+        "text": "zaḫtari"
+    },
+    {
+        "id": 10593,
+        "text": "zaḫḫ-",
+        "gloss": "hit",
+        "pos": "V",
+        "classes": [
+            "hi"
+        ]
     }
 ]

@@ -9,6 +9,7 @@
                 "close-mid",
                 "front",
                 "unrounded",
+                "ablauting",
                 "vowel"
             ]
         },
@@ -152,6 +153,7 @@
                 "close-mid",
                 "back",
                 "rounded",
+                "ablauting",
                 "vowel"
             ]
         },

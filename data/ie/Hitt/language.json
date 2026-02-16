@@ -162,6 +162,61 @@
                 "fricative"
             ],
             "notes": ""
+        },
+        {
+            "id": 10568,
+            "graphemes": [
+                "ī"
+            ],
+            "classes": [
+                "long",
+                "front",
+                "close",
+                "unrounded",
+                "vowel"
+            ],
+            "notes": ""
+        },
+        {
+            "id": 10569,
+            "graphemes": [
+                "ē"
+            ],
+            "classes": [
+                "long",
+                "close-mid",
+                "front",
+                "unrounded",
+                "vowel"
+            ],
+            "notes": ""
+        },
+        {
+            "id": 10570,
+            "graphemes": [
+                "ū"
+            ],
+            "classes": [
+                "back",
+                "close",
+                "rounded",
+                "vowel"
+            ],
+            "notes": ""
+        },
+        {
+            "id": 10571,
+            "graphemes": [
+                "ā"
+            ],
+            "classes": [
+                "long",
+                "central",
+                "open",
+                "unrounded",
+                "vowel"
+            ],
+            "notes": ""
         }
     ],
     "protoLanguageShortName": "PAnat",
@@ -169,6 +224,10 @@
         {
             "name": "Noun",
             "abbreviation": "N"
+        },
+        {
+            "name": "Proper Noun",
+            "abbreviation": "NP"
         },
         {
             "name": "Verb",
@@ -312,6 +371,22 @@
                     "abbreviation": "PST"
                 }
             ]
+        },
+        {
+            "name": "Voice",
+            "pos": [
+                "V"
+            ],
+            "values": [
+                {
+                    "name": "Active",
+                    "abbreviation": "ACT"
+                },
+                {
+                    "name": "Medio-passive",
+                    "abbreviation": "MP"
+                }
+            ]
         }
     ],
     "wordClasses": [
@@ -357,6 +432,14 @@
                 {
                     "name": "hi",
                     "abbreviation": "hi"
+                },
+                {
+                    "name": "ari",
+                    "abbreviation": "ari"
+                },
+                {
+                    "name": "ttari",
+                    "abbreviation": "ttari"
                 }
             ]
         }
