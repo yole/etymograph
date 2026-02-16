@@ -93,9 +93,9 @@ open class InMemoryGraphRepository : GraphRepository() {
         return translations[corpusText.id] ?: emptyList()
     }
 
-    override fun wordsByText(lang: Language, text: String): List<Word> {
+    override fun wordsByText(lang: Language, text: String, syllabographic: Boolean): List<Word> {
         val wordsInLang = words[lang] ?: return emptyList()
-        return wordsInLang[lang.normalizeWord(text)] ?: emptyList()
+        return wordsInLang[if (syllabographic) text else lang.normalizeWord(text)] ?: emptyList()
     }
 
     override fun wordsByTextFuzzy(lang: Language, text: String): List<Word> {

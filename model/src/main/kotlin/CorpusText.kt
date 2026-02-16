@@ -99,7 +99,7 @@ class CorpusText(
                         glossWithSegments, stressIndex, stressData?.length, repo.isHomonym(word))
                 }
                 else {
-                    val wordCandidates = repo.wordsByText(language, tw.normalizedText)
+                    val wordCandidates = repo.wordsByText(language, tw.normalizedText, language.syllabographic)
                     val gloss = wordCandidates.firstOrNull()?.getOrComputeGloss(repo)
                     CorpusWord(currentIndex++, tw.baseText, normalizedText, tw.baseText, syllabogramSequence,null, wordCandidates,
                         gloss, null, gloss, null, null,false)
