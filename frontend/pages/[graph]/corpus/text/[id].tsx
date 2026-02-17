@@ -249,11 +249,11 @@ export default function CorpusText(params) {
         </>}
         {allowEdit() && <p>
             {!editMode && <>
-                <button onClick={() => setEditMode(true)}>Edit</button>
+                <button className="uiButton" onClick={() => setEditMode(true)}>Edit</button>
                 {' '}</>}
-            <button onClick={() => toggleTranslationForm(undefined)}>Add translation</button>
+            <button className="uiButton" onClick={() => toggleTranslationForm(undefined)}>Add translation</button>
             {' '}
-            <button onClick={() => lockAssociationsClicked()}>Lock associations</button>
+            <button className="uiButton" onClick={() => lockAssociationsClicked()}>Lock associations</button>
         </p>}
         {errorText !== "" && <div className="errorText">{errorText}</div>}
         {showTranslationForm && editTranslationId === undefined &&
