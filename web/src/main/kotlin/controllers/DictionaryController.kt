@@ -2,6 +2,7 @@ package ru.yole.etymograph.web.controllers
 
 import kotlinx.serialization.Serializable
 import org.springframework.web.bind.annotation.*
+import ru.yole.etymograph.Language
 import ru.yole.etymograph.GraphRepository
 import ru.yole.etymograph.WordKind
 import ru.yole.etymograph.web.resolveLanguage
@@ -87,33 +88,40 @@ class DictionaryController {
 
         val filtered = letter?.let { l ->
             val key = normalizeLetter(l)
-            mapped.filter { normalizeLetter(it.ref.text) == key }
+            mapped.filter { groupName(repo, language, it) == key }
         } ?: mapped
 
         return DictionaryViewModel(language.shortName, language.name, language.syllabographic,
-            filtered, groupWords(filtered))
+            filtered, groupWords(repo, language, filtered))
+    }
+
+    private fun groupName(repo: GraphRepository, language: Language, word: DictionaryWordViewModel): String {
+        val syllabograms = word.ref.syllabogramSequence?.syllabograms
+        if (syllabograms != null) {
+            val firstNonDeterminative = syllabograms.dropWhile { it.type.isDeterminative }.firstOrNull()
+            if (firstNonDeterminative != null && firstNonDeterminative.type.isLogogram) {
+                return firstNonDeterminative.text[0].toString()
+            }
+        }
+        val firstGrapheme = language.orthoPhonemeLookup.nextPhoneme(word.ref.text, 0)
+        return normalizeLetter(firstGrapheme)
     }
 
     private fun normalizeLetter(input: String): String {
         if (input.isEmpty()) return "#"
-        val first = input.trim().ifEmpty { return "#" }[0].toString()
-        val normalized = Normalizer.normalize(first, Normalizer.Form.NFKD)
-        // Remove combining marks
-        val base = normalized.codePoints()
-            .filter {
-                val t = Character.getType(it)
-                t != Character.NON_SPACING_MARK.toInt() && t != Character.COMBINING_SPACING_MARK.toInt()
-            }
-            .toArray()
-        val ch = if (base.isNotEmpty()) base[0] else first.codePointAt(0)
-        return if (Character.isLetter(ch)) String(Character.toChars(Character.toUpperCase(ch))) else "#"
+        val trimmed = input.trim()
+        if (trimmed.isEmpty()) return "#"
+        return input
     }
 
-    private fun groupWords(words: List<DictionaryWordViewModel>): Map<String, List<DictionaryWordViewModel>> {
-        return words.groupBy { normalizeLetter(it.ref.text) }
+    private fun groupWords(repo: GraphRepository, language: Language, words: List<DictionaryWordViewModel>): Map<String, List<DictionaryWordViewModel>> {
+        val comparator = compareBy<String> { it.lowercase() }
+            .thenBy { it == it.uppercase() && it != it.lowercase() }
+            .thenBy { it }
+        return words.groupBy { groupName(repo, language, it) }
             .mapValues { (_, list) ->
                 list.sortedWith(compareBy({ it.ref.text.lowercase() }, { it.ref.id }))
             }
-            .toSortedMap()
+            .toSortedMap(comparator)
     }
 }

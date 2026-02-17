@@ -69,7 +69,16 @@ export default function Dictionary(params) {
     }
 
     const grouped = dict.wordsByLetter;
-    const letterKeys = Object.keys(grouped).sort();
+    const letterKeys = Object.keys(grouped).sort((a, b) => {
+        const al = a.toLowerCase();
+        const bl = b.toLowerCase();
+        const aIsUpper = a === a.toUpperCase() && a !== a.toLowerCase();
+        const bIsUpper = b === b.toUpperCase() && b !== b.toLowerCase();
+        if (aIsUpper !== bIsUpper) {
+            return aIsUpper ? 1 : -1;
+        }
+        return a.localeCompare(b);
+    });
 
     return <>
         <Breadcrumbs langId={dict.language} langName={dict.languageFullName} title={filterText}/>
