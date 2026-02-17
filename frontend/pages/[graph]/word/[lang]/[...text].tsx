@@ -223,6 +223,8 @@ function CompoundListComponent(
         router.replace(router.asPath)
     }
 
+    compounds.map(m => console.log(m))
+
     return <>
         <div>{derivation ? "Derived with affix from:" : "Compound:"}</div>
         {compounds.map(m =>
@@ -248,7 +250,7 @@ function CompoundListComponent(
                 {editCompound === m.compoundId &&
                     <EditLinkForm compoundId={m.compoundId}
                                   compoundComponents={m.components}
-                                  compoundHead={m.headIndex === null ? -1 : m.components[m.headIndex].id}
+                                  compoundHead={m.headIndex === null || m.headIndex === undefined ? -1 : m.components[m.headIndex].id}
                                   defaultValues={{source: m.sourceEditableText, notes: m.notes}}
                                   submitted={() => {
                                       setEditCompound(undefined)
