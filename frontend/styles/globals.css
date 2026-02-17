@@ -163,9 +163,14 @@ code {
 }
 
 .corpusTextWord {
-  display: inline-block;
+  display: block;
   padding: 5px;
-  vertical-align: top;
+}
+
+.corpusTextLine {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
 }
 
 .derivationLinkChain {

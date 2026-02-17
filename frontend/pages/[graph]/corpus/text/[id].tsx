@@ -173,9 +173,9 @@ export default function CorpusText(params) {
         {!editMode && <>
             {corpusText.lines.map(l => (
                 <div key={l.words[0].index}>
-                    <div>
+                    <div className="corpusTextLine">
                         {l.words.map((w, index) =>
-                            <span className="corpusTextWord">
+                            <span className="corpusTextWord" key={index}>
                                 <CorpusTextWordLink word={w} corpusText={corpusText} showWordForm={showWordForm}/><br/>
                                 {w.wordCandidates && w.wordCandidates.length > 1 &&
                                     w.wordCandidates.map((c, i) => <>
