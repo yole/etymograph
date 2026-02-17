@@ -1832,6 +1832,9 @@ components:
         word:
           type: "string"
           nullable: true
+        syllabogramSequence:
+          nullable: true
+          $ref: "#/components/schemas/SyllabogramSequence"
       required:
         - "textId"
         - "textTitle"

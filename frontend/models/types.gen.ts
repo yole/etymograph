@@ -48,6 +48,7 @@ export type AttestationViewModel = {
     textId: number;
     textTitle: string;
     word?: (string) | null;
+    syllabogramSequence?: (SyllabogramSequence) | null;
 };
 
 export type ComparePhonemesParameters = {

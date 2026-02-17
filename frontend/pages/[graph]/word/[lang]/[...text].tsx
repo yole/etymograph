@@ -531,7 +531,7 @@ function SingleWord({word}: { word: WordViewModel }) {
             <p>Attested in {word.attestations.map((att, i) => <>
                     {i > 0 && ", "}
                     <Link href={`/${graph}/corpus/text/${att.textId}`}>{att.textTitle}</Link>
-                    {att.word && ' ("' + att.word + '")'}
+                    {att.word && <>{' ('}<WordTextView text={att.word} syllabograms={att.syllabogramSequence}/>{')'}</>}
                 </>
             )}
             </p>

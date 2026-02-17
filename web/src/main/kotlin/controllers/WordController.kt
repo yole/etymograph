@@ -69,7 +69,7 @@ class WordController(val dictionaryService: DictionaryService) {
     data class LinkTypeViewModel(val typeId: String, val type: String, val words: List<LinkWordViewModel>)
 
     @Serializable
-    data class AttestationViewModel(val textId: Int, val textTitle: String, val word: String?)
+    data class AttestationViewModel(val textId: Int, val textTitle: String, val word: String?, val syllabogramSequence: SyllabogramSequence?)
 
     @Serializable
     data class CompoundComponentsViewModel(
@@ -188,7 +188,8 @@ class WordController(val dictionaryService: DictionaryService) {
                 AttestationViewModel(
                     attestation.corpusText.id,
                     attestation.corpusText.title ?: attestation.corpusText.text,
-                    attestation.word.text.takeIf { it != text }
+                    attestation.word.text.takeIf { it != text },
+                    attestation.word.syllabogramSequence?.takeIf { attestation.word.text != text }
                 )
             },
             linksFrom.mapNotNull {
