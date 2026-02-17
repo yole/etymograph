@@ -3184,6 +3184,10 @@ components:
           type: "array"
           items:
             $ref: "#/components/schemas/WordCategoryValueViewModel"
+        grammaticalCategories:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/WordCategoryViewModel"
         wordClasses:
           type: "array"
           items:
@@ -3201,6 +3205,7 @@ components:
         - "name"
         - "shortName"
         - "pos"
+        - "grammaticalCategories"
         - "wordClasses"
         - "dictionaries"
     PhonemeTableCellViewModel:

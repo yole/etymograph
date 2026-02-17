@@ -8,6 +8,7 @@ import EtymographFormView from "@/components/EtymographFormView";
 import EtymographForm from "@/components/EtymographForm";
 import FormRow from "@/components/FormRow";
 import PosSelect from "@/components/PosSelect";
+import GrammaticalCategorySelect from "@/components/GrammaticalCategorySelect";
 
 export async function getStaticProps(context) {
     return fetchBackend(context.params.graph, `rules/${context.params.lang}/morpho`, true)
@@ -64,8 +65,8 @@ export default function MorphoRuleList(params) {
                         <PosSelect label="POS" id="pos" language={lang}/>
                         <FormRow label="Added Categories" id="addedCategories"/>
                         <FormRow label="Prefix" id="prefix"/>
-                        <FormRow label="Rows" id="rows"/>
-                        <FormRow label="Columns" id="columns"/>
+                        <GrammaticalCategorySelect label="Rows" id="rows" language={lang} posProp="pos"/>
+                        <GrammaticalCategorySelect label="Columns" id="columns" language={lang} posProp="pos"/>
                         <FormRow label="Endings" id="endings"/>
                         </tbody>
                     </table>
