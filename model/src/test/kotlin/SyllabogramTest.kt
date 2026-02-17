@@ -44,6 +44,16 @@ class SyllabogramTest {
     }
 
     @Test
+    fun parseSyllabogramsMixedDiacritics() {
+        val text = "DUMU-I̯A"
+        val syllabogramSequence = TlhDigSyllabogramSyntax.parse(text)
+        assertEquals(2, syllabogramSequence.syllabograms.size)
+        assertEquals("I̯A", syllabogramSequence.syllabograms[1].text)
+        assertEquals(SyllabogramType.LogogramAlt, syllabogramSequence.syllabograms[1].type)
+        assertEquals(text, TlhDigSyllabogramSyntax.render(syllabogramSequence))
+    }
+
+    @Test
     fun parseDeterminative() {
         val text = "^d^_SÎN-aš"
         val syllabogramSequence = TlhDigSyllabogramSyntax.parse(text)

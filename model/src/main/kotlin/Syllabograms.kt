@@ -1,6 +1,7 @@
 package ru.yole.etymograph
 
 import kotlinx.serialization.Serializable
+import java.text.Normalizer
 
 enum class SyllabogramType(val isLogogram: Boolean = false, val isDeterminative: Boolean = false) {
     Syllabogram,
@@ -87,7 +88,7 @@ object TlhDigSyllabogramSyntax : SyllabogramSyntax() {
     }
 
     private fun createSyllabogram(text: String, isAlt: Boolean): Syllabogram {
-        val isLogogram = text.all { it.isUpperCase() || it.isDigit()}
+        val isLogogram = text.all { it.isUpperCase() || it.isDigit() || Character.getType(it) == Character.NON_SPACING_MARK.toInt() }
         val type = when {
             isLogogram && isAlt -> SyllabogramType.LogogramAlt
             isLogogram -> SyllabogramType.Logogram
