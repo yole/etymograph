@@ -661,7 +661,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
         for (language in languages.values) {
             val data = Json.decodeFromString<List<WordData>>(contentProviderCallback(language.shortName + "/words.json")!!)
             for (wordData in data) {
-                val wordsByText = mapOfWordsByText(language, wordData.text)
+                val wordsByText = mapOfWordsByText(language, wordData.text, wordData.syllabographic)
                 val word = Word(
                     wordData.id, wordData.text, language, wordData.gloss,
                     wordData.fullGloss,

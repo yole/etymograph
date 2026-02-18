@@ -33,4 +33,14 @@ class GraphRepositoryTest : QBaseTest() {
         val ek = repo.addWord("ek", "I")
         assertEquals(1, repo.dictionaryWords(q).size)
     }
+
+    @Test
+    fun wordByTextSyllabographic() {
+        val ht = Language("Hittite", "Ht")
+        ht.syllabographic = true
+        val repo = repoWithQ()
+        repo.addLanguage(ht)
+        repo.addWord("_A-NA", language = ht, gloss = "on", syllabographic = true)
+        assertEquals(1, repo.wordsByText(ht, "_A-NA", true).size)
+    }
 }

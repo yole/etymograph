@@ -350,17 +350,18 @@ open class InMemoryGraphRepository : GraphRepository() {
         source: List<SourceRef>,
         notes: String?
     ): Word {
-        val wordsByText = mapOfWordsByText(language, text)
+        val wordsByText = mapOfWordsByText(language, text, syllabographic)
         wordsByText.find { it.getOrComputeGloss(this) == gloss || gloss.isNullOrEmpty() }?.let {
             return it
         }
         return addWord(text, language, gloss, fullGloss, pos, classes, reconstructed, syllabographic, source, notes)
     }
 
-    override fun updateWordText(word: Word, text: String) {
-        mapOfWordsByText(word.language, word.text).remove(word)
+    override fun updateWordText(word: Word, text: String, syllabographic: Boolean) {
+        mapOfWordsByText(word.language, word.text, word.syllabographic).remove(word)
         word.text = text
-        mapOfWordsByText(word.language, text).add(word)
+        word.syllabographic = syllabographic
+        mapOfWordsByText(word.language, text, word.syllabographic).add(word)
     }
 
     override fun addWord(
@@ -381,7 +382,7 @@ open class InMemoryGraphRepository : GraphRepository() {
         if ('?' in text || '/' in text) {
             throw IllegalArgumentException("Word text may not contain ? or /")
         }
-        val wordsByText = mapOfWordsByText(language, text)
+        val wordsByText = mapOfWordsByText(language, text, syllabographic)
         return Word(allLangEntities.size, text, language, gloss, fullGloss, pos, classes, reconstructed, syllabographic, source, notes).also {
             allLangEntities.add(it)
             wordsByText.add(it)
@@ -393,7 +394,7 @@ open class InMemoryGraphRepository : GraphRepository() {
             corpusText.removeWord(word)
         }
 
-        val wordsByText = mapOfWordsByText(word.language, word.text)
+        val wordsByText = mapOfWordsByText(word.language, word.text, word.syllabographic)
         wordsByText.remove(word)
 
         val compoundsOfWord = compounds.remove(word.id)
@@ -648,10 +649,12 @@ open class InMemoryGraphRepository : GraphRepository() {
 
     protected fun mapOfWordsByText(
         language: Language,
-        text: String
+        text: String,
+        syllabographic: Boolean
     ): MutableList<Word> {
         val wordsForLanguage = words.getOrPut(language) { mutableMapOf() }
-        val wordsByText = wordsForLanguage.getOrPut(language.normalizeWord(text)) { mutableListOf() }
+        val key = if (syllabographic) text else language.normalizeWord(text)
+        val wordsByText = wordsForLanguage.getOrPut(key) { mutableListOf() }
         return wordsByText
     }
 

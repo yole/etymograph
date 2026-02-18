@@ -203,6 +203,25 @@ class WordControllerTest {
     }
 
     @Test
+    fun updateSyllabographic() {
+        val addWordParams = WordController.AddWordParameters("ea", "be", syllabographic = false)
+        val wordViewModel = wordController.addWord(graph, "q", addWordParams)
+        assertEquals(false, wordViewModel.syllabographic)
+
+        val updateWordParams = WordController.AddWordParameters("ea", "be", syllabographic = true)
+        val updatedWordViewModel = wordController.updateWord(graph, wordViewModel.id, updateWordParams)
+        assertEquals(true, updatedWordViewModel.syllabographic)
+
+        val wordInRepo = graph.wordById(wordViewModel.id)!!
+        assertEquals(true, wordInRepo.syllabographic)
+
+        val updateWordParams2 = WordController.AddWordParameters("ea", "be", syllabographic = false)
+        val updatedWordViewModel2 = wordController.updateWord(graph, wordViewModel.id, updateWordParams2)
+        assertEquals(false, updatedWordViewModel2.syllabographic)
+        assertEquals(false, graph.wordById(wordViewModel.id)!!.syllabographic)
+    }
+
+    @Test
     fun suggestCompound() {
         val laece = graph.findOrAddWord("lǣċe", oe, null)
         val cynn = graph.findOrAddWord("cynn", oe, null)

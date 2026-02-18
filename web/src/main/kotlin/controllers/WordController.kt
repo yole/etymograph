@@ -33,16 +33,20 @@ data class ParseCandidateViewModel(
 fun Word.toRefViewModel(graph: GraphRepository) =
     WordRefViewModel(
         id, text,
-        urlKey(text),
+        urlKey(text, syllabographic),
         syllabogramSequence,
         language.shortName,
         if (reconstructed) "pre-" + language.shortName else language.shortName,
         getOrComputeGloss(graph),
-        graph.isHomonym(this) || urlKey(text) != null,
+        graph.isHomonym(this) || urlKey(text, syllabographic) != null,
         reconstructed || language.reconstructed
     )
 
-fun urlKey(text: String) = if ('^' in text) text.replace("^", "") else null
+fun urlKey(text: String, syllabographic: Boolean) = when {
+    '^' in text -> text.replace("^", "")
+    syllabographic -> text
+    else -> null
+}
 
 @RestController
 class WordController(val dictionaryService: DictionaryService) {
@@ -172,7 +176,7 @@ class WordController(val dictionaryService: DictionaryService) {
             language.syllabographic,
             text,
             textWithExplicitStress,
-            urlKey(text),
+            urlKey(text, syllabographic),
             syllabogramSequence,
             computedGloss ?: "",
             gloss == null,
@@ -331,10 +335,10 @@ class WordController(val dictionaryService: DictionaryService) {
     @ResponseBody
     fun updateWord(repo: GraphRepository, @PathVariable id: Int, @RequestBody params: AddWordParameters): WordViewModel {
         val word = repo.resolveWord(id)
-        if (params.text != null) {
-            val (text, stressedPhonemeIndex) = parseStress(params.text, repo, word.language)
-            if (text != word.text) {
-                repo.updateWordText(word, text)
+        if (params.text != null || params.syllabographic != null) {
+            val (text, stressedPhonemeIndex) = parseStress(params.text ?: word.text, repo, word.language)
+            if (text != word.text || params.syllabographic != null) {
+                repo.updateWordText(word, text, params.syllabographic ?: word.syllabographic)
             }
             if (stressedPhonemeIndex != null) {
                 word.stressedPhonemeIndex = stressedPhonemeIndex
@@ -350,9 +354,6 @@ class WordController(val dictionaryService: DictionaryService) {
         word.classes = classes
         if (params.reconstructed != null) {
             word.reconstructed = params.reconstructed
-        }
-        if (params.syllabographic != null) {
-            word.syllabographic = params.syllabographic
         }
         word.source = parseSourceRefs(repo, params.source)
         word.notes = params.notes.nullize()
@@ -426,7 +427,8 @@ class WordController(val dictionaryService: DictionaryService) {
             val existingLink = derivedWordLinks.find { it.rules == listOf(rule) }
             if (existingLink != null) {
                 // TODO what if word is used in corpus texts?
-                repo.updateWordText(existingLink.fromEntity as Word, text)
+                val existingWord = existingLink.fromEntity as Word
+                repo.updateWordText(existingWord, text, existingWord.syllabographic)
             }
             else {
                 val newGloss = rule.applyCategories(gloss)
