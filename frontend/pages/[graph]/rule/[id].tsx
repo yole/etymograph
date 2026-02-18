@@ -221,9 +221,9 @@ export default function Rule(params) {
         />}
 
         {allowEdit() && <>
-            {!editMode && <><button onClick={() => setEditMode(true)}>Edit</button>{' '}</>}
-            {!linkMode && <><button onClick={() => setLinkMode(true)}>Add Link</button>{' '}</>}
-            <button onClick={() => deleteRuleClicked()}>{"Delete"}</button>
+            {!editMode && <button className="uiButton" onClick={() => setEditMode(true)}>Edit</button>}
+            {!linkMode && <button className="uiButton" onClick={() => setLinkMode(true)}>Add Link</button>}
+            <button className="uiButton" onClick={() => deleteRuleClicked()}>{"Delete"}</button>
         </>}
         {rule.links.length > 0 && <>
             <h3>Related rules</h3>
@@ -278,7 +278,7 @@ export default function Rule(params) {
         {linkMode && <RuleLinkForm fromEntityId={rule.id} submitted={linkSubmitted} cancelled={() => setLinkMode(false)}/>}
         <p/>
         {allowEdit() && !showExampleForm &&
-            <button onClick={() => {
+            <button className="uiButton" onClick={() => {
                 setShowExampleForm(true)
                 setFocusTarget("exampleText")
             }}>Add Example</button>
@@ -301,8 +301,8 @@ export default function Rule(params) {
         </>}
         {allowEdit() && !showTraceForm &&
             <>
-                {' '}<button onClick={() => prepareTrace(false)}>Trace</button>
-                {' '}<button onClick={() => prepareTrace(true)}>Trace Reverse</button>
+                <button className="uiButton" onClick={() => prepareTrace(false)}>Trace</button>
+                <button className="uiButton" onClick={() => prepareTrace(true)}>Trace Reverse</button>
             </>
         }
         {showTraceForm && <p>
