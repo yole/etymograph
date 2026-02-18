@@ -223,8 +223,6 @@ function CompoundListComponent(
         router.replace(router.asPath)
     }
 
-    compounds.map(m => console.log(m))
-
     return <>
         <div>{derivation ? "Derived with affix from:" : "Compound:"}</div>
         {compounds.map(m =>
