@@ -1,16 +1,22 @@
 import {addTranslation, editTranslation} from "@/api";
-import EtymographForm from "@/components/EtymographForm";
+import EtymographForm, {EtymographFormProps} from "@/components/EtymographForm";
 import FormTextArea from "@/components/FormTextArea";
 import FormRow from "@/components/FormRow";
 import {useContext} from "react";
 import {GraphContext} from "@/components/Contexts";
+import {TranslationParams, TranslationViewModel} from "@/models";
 
-export default function TranslationForm(props) {
+interface TranslationFormProps extends EtymographFormProps<TranslationParams, TranslationViewModel> {
+    corpusTextId: number;
+}
+
+export default function TranslationForm(props: TranslationFormProps) {
     const graph = useContext(GraphContext)
+    console.log('rendering translation form with focus ' + props.focusTarget)
 
     return <EtymographForm
         create={(data) => addTranslation(graph, props.corpusTextId, data)}
-        update={(data) => editTranslation(graph, props.updateId, data)}
+        update={(data) => editTranslation(graph, props.updateId as number, data)}
         {...props}
     >
         <FormTextArea rows={10} cols={50} id="text" className="uiTextArea"/>

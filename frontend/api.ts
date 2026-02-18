@@ -3,7 +3,7 @@ import {
     CorpusTextParams, GenerateParadigmParameters,
     LookupParameters,
     LookupResultViewModel,
-    SuggestCompoundViewModel,
+    SuggestCompoundViewModel, TranslationParams,
     UpdateLanguageParameters,
     UpdateParadigmParameters, UpdatePhonemeParameters,
     UpdateRuleParameters,
@@ -243,11 +243,11 @@ export function updateCorpusText(graph: string, id: number, data: CorpusTextPara
     return postToBackend(`${graph}/corpus/text/${id}`, data)
 }
 
-export function addTranslation(graph: string, corpusTextId: number, data) {
+export function addTranslation(graph: string, corpusTextId: number, data: TranslationParams) {
     return postToBackend(`${graph}/translation`, {corpusTextId: corpusTextId, ...data})
 }
 
-export function editTranslation(graph: string, id: number, data: any) {
+export function editTranslation(graph: string, id: number, data: TranslationParams) {
     return postToBackend(`${graph}/translations/${id}`, data)
 }
 

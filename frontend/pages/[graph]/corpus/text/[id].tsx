@@ -111,6 +111,7 @@ export default function CorpusText(params) {
     const [editTranslationId, setEditTranslationId] = useState(undefined)
     const [alternatives, setAlternatives] = useState([])
     const [errorText, setErrorText] = useState("")
+    const [focusTarget, setFocusTarget] = useState(null)
     const router = useRouter()
     const graph = router.query.graph as string;
 
@@ -151,6 +152,7 @@ export default function CorpusText(params) {
         } else {
             setShowTranslationForm(true)
             setEditTranslationId(id)
+            setFocusTarget('text')
         }
     }
 
@@ -237,14 +239,16 @@ export default function CorpusText(params) {
                     {allowEdit() && <button onClick={() => toggleTranslationForm(t.id)}>Edit translation</button>}
                 </>}
                 {showTranslationForm && editTranslationId === t.id &&
-                    <TranslationForm corpusTextId={router.query.id}
+                    <TranslationForm corpusTextId={Number.parseInt(router.query.id as string)}
                                      updateId={t.id}
                                      defaultValues={{
                                          text: t.text,
                                          source: t.sourceEditableText
                                      }}
                                      submitted={translationSubmitted}
-                                     cancelled={() => toggleTranslationForm(t.id)}/>}
+                                     cancelled={() => toggleTranslationForm(t.id)}
+                                     focusTarget={focusTarget}
+                                     setFocusTarget={setFocusTarget}/>}
             </>)}
         </>}
         {allowEdit() && <p>
@@ -258,9 +262,11 @@ export default function CorpusText(params) {
         {errorText !== "" && <div className="errorText">{errorText}</div>}
         {showTranslationForm && editTranslationId === undefined &&
             <TranslationForm
-                corpusTextId={router.query.id}
+                corpusTextId={Number.parseInt(router.query.id as string)}
                 submitted={translationSubmitted}
                 cancelled={() => toggleTranslationForm(undefined)}
+                focusTarget={focusTarget}
+                setFocusTarget={setFocusTarget}
             />}
     </>
 }
