@@ -21,5 +21,8 @@ export const Urls = {
     },
     Phonemes: {
         newPhoneme: (graph: string, lang: string) => `/${graph}/phonemes/${lang}/new`
+    },
+    Corpus: {
+        text: (graph: string, id: number) => `/${graph}/corpus/text/${id}`
     }
 }

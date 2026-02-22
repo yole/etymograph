@@ -1,7 +1,8 @@
 import CorpusTextForm from "@/forms/CorpusTextForm";
-import {fetchAllLanguagePaths, fetchAllLanguagePathsEditable, fetchBackend} from "@/api";
+import {fetchAllLanguagePathsEditable, fetchBackend} from "@/api";
 import {useRouter} from "next/router";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import {Urls} from "@/components/Urls";
 
 export async function getStaticProps(context) {
     return fetchBackend(context.params.graph,`language/${context.params.lang}`, true)
@@ -17,6 +18,9 @@ export default function CorpusTextEditor(params) {
 
     return <>
         <Breadcrumbs langName={langData.name} langId={lang} title="New Corpus Text"/>
-        <CorpusTextForm lang={lang} redirectOnCreate={r => `/${router.query.graph}/corpus/text/${r.id}`}/>
+        <CorpusTextForm
+            lang={lang}
+            focusTarget='title'
+            redirectOnCreate={r => Urls.Corpus.text(router.query.graph as string, r.id)}/>
     </>
 }
