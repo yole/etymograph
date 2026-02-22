@@ -497,6 +497,15 @@ class WordController(val dictionaryService: DictionaryService) {
         return SuggestCompoundViewModel(suggestions.map { it.toRefViewModel(repo) })
     }
 
+    @PostMapping("/{graph}/word/{id}/suggestTranscription")
+    fun suggestTranscription(repo: GraphRepository, @PathVariable id: Int): String {
+        val word = repo.resolveWord(id)
+        if (!word.syllabographic) {
+            return ""
+        }
+        return suggestTranscription(word)
+    }
+
     data class WordSequenceParams(val sequence: String = "", val source: String = "")
     data class WordSequenceResults(
         val words: List<WordRefViewModel>,

@@ -138,3 +138,30 @@ object TlhDigSyllabogramSyntax : SyllabogramSyntax() {
         return result.toString()
     }
 }
+
+fun suggestTranscription(word: Word): String {
+    val syllabograms = TlhDigSyllabogramSyntax.parse(word.text)
+    return buildString {
+        for (s in syllabograms.syllabograms) {
+            if (s.type == SyllabogramType.Syllabogram) {
+                val text = s.text.removeDiacritics()
+                if (isHittiteVowel(text[0])) {
+                    if (lastOrNull()?.let { it in hittiteVowels || it in hittiteLongVowels } == true) {
+                        if (text.length == 1) {
+                            this[length - 1] = hittiteLongVowels[hittiteVowels.indexOf(text[0])]
+                        }
+                        else {
+                            append(text.substring(1))
+                        }
+                        continue
+                    }
+                }
+                append(text)
+            }
+        }
+    }
+}
+
+fun isHittiteVowel(c: Char) = c in hittiteVowels
+const val hittiteVowels = "aeiu"
+const val hittiteLongVowels = "āēīū"

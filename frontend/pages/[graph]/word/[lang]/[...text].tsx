@@ -1,6 +1,5 @@
 import {useContext, useEffect, useState} from "react";
 import WordForm from "@/forms/WordForm";
-import WordWithStress from "@/components/WordWithStress";
 import WordLink from "@/components/WordLink";
 import {
     addLink,
@@ -20,7 +19,7 @@ import {
     callApiAndRefresh,
     addToCompound,
     updateWord,
-    refreshLinkSequence
+    refreshLinkSequence, suggestTranscription
 } from "@/api";
 import Link from "next/link";
 import {useRouter} from "next/router";
@@ -309,6 +308,7 @@ function SingleWord({word}: { word: WordViewModel }) {
     const [lookupVariants, setLookupVariants] = useState([] as LookupVariantViewModel[])
     const [parseCandidates, setParseCandidates] = useState([] as ParseCandidateViewModel[])
     const [compoundSuggestions, setCompoundSuggestions] = useState([] as WordRefViewModel[])
+    const [suggestedTranscription, setSuggestedTranscription] = useState("")
     useEffect(() => { document.title = "Etymograph : " + (word === undefined ? "Unknown Word" : word.text) })
 
     function submitted() {
@@ -453,6 +453,15 @@ function SingleWord({word}: { word: WordViewModel }) {
         )
     }
 
+    async function showTranscriptionClicked() {
+        if (!showBaseWord) {
+            const r = await suggestTranscription(graph, word.id)
+            const result = await r.text()
+            setSuggestedTranscription(result)
+        }
+        setShowTranscription(!showBaseWord)
+    }
+
     if (word === undefined) {
         return <div>No such word in the dictionary</div>
     }
@@ -575,9 +584,14 @@ function SingleWord({word}: { word: WordViewModel }) {
 
         {allowEdit() && <>
             <h4>Define this word</h4>
-            {canShowTranscription && <><button className="uiButton" onClick={() => setShowTranscription(!showBaseWord)}>Transcription</button>{' '}</>}
-            {showTranscription && <WordForm wordSubmitted={submitted} linkType='_' linkTarget={word} reverseLink={true} languageReadOnly={true}
-                defaultValues={{language: word.language}} cancelled={() => setShowTranscription(false)}/>}
+            {canShowTranscription && <><button className="uiButton" onClick={showTranscriptionClicked}>Transcription</button>{' '}</>}
+            {showTranscription &&
+                <WordForm
+                    wordSubmitted={submitted} linkType='_' linkTarget={word} reverseLink={true} languageReadOnly={true}
+                    defaultValues={{language: word.language, text: suggestedTranscription}}
+                    cancelled={() => setShowTranscription(false)}
+                />
+            }
 
             {!isCompound && <><button className="uiButton" onClick={() => setShowBaseWord(!showBaseWord)}>Lemma</button>{' '}</>}
             {showBaseWord && <WordForm wordSubmitted={submitted} linkType='>' linkTarget={word} reverseLink={true}

@@ -95,4 +95,24 @@ class SyllabogramTest {
         val syllabogramSequence = TlhDigSyllabogramSyntax.parse(text)
         assertEquals(Syllabogram("an", SyllabogramType.Syllabogram), syllabogramSequence.syllabograms[1])
     }
+
+    @Test
+    fun transcribe() {
+        val word = hittiteWord("ki-it-ta-ri")
+        assertEquals("kittari", suggestTranscription(word))
+    }
+
+    @Test
+    fun transcribeLongVowel() {
+        val word = hittiteWord("ma-a-an")
+        assertEquals("mān", suggestTranscription(word))
+    }
+
+    private fun hittiteWord(transliteration: String): Word {
+        val ht = Language("Hittite", "Ht")
+        ht.syllabographic = true
+        val repo = InMemoryGraphRepository()
+        repo.addLanguage(ht)
+        return ht.word(transliteration, syllabographic = true)
+    }
 }

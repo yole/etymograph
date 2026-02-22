@@ -184,6 +184,10 @@ export function suggestCompound(graph: string, id: number, compoundId?: number):
     return postToBackendTyped(`${graph}/word/${id}/suggestCompound`, {compoundId})
 }
 
+export function suggestTranscription(graph: string, id: number) {
+    return postToBackend(`${graph}/word/${id}/suggestTranscription`, {})
+}
+
 export function deleteWord(graph: string, id: number) {
     return postToBackend(`${graph}/word/${id}/delete`, {})
 }
