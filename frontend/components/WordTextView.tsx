@@ -20,7 +20,7 @@ function SyllabogramView(params: {syllabogram: Syllabogram, prevSyllabogram?: Sy
 
     return <>
         {delimiter}
-        {syl.type == "LogogramAlt" && <i>{syl.text}</i>}
+        {syl.type == "LogogramAlt" && <i>{renderTextWithSubscript(syl.text)}</i>}
         {syl.type == "Determinative" && <sup>{syl.text}</sup>}
         {syl.type == "DeterminativeAlt" && <sup><i>{syl.text}</i></sup>}
         {syl.type != "LogogramAlt" && syl.type != "Determinative" && syl.type != "DeterminativeAlt" && <>{renderTextWithSubscript(syl.text)}</>}
