@@ -39,7 +39,6 @@ export default function Dictionary(params) {
     const filter = router.query.lang.length < 2 ? "" : router.query.lang[1]
     const [showAddWord, setShowAddWord] = useState(false)
     const [showAddSequence, setShowAddSequence] = useState(false)
-    const [focusTarget, setFocusTarget] = useState(null)
 
     const filterText = filter === "names" ? "Names" :
         (filter === "reconstructed" ? "Reconstructed" :
@@ -87,7 +86,6 @@ export default function Dictionary(params) {
             {!showAddWord && <><button className="uiButton" onClick={() => setShowAddWord(!showAddWord)}>Add word</button>{' '}</>}
             {!showAddSequence && <><button className="uiButton" onClick={() => {
                 setShowAddSequence(!showAddSequence)
-                setFocusTarget('exampleText')
             }}>Add derivation</button>{' '}</>}
             {showAddWord && <WordForm languageReadOnly={true}
                       wordSubmitted={submitted}
@@ -101,8 +99,7 @@ export default function Dictionary(params) {
             />}
             {showAddSequence &&
                 <WordSequenceForm
-                    focusTarget={focusTarget}
-                    setFocusTarget={setFocusTarget}
+                    focusTarget={'exampleText'}
                     submitted={exampleSubmitted}
                     cancelled={() => setShowAddSequence(false)}
                 />

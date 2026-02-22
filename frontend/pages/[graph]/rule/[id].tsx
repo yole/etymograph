@@ -1,6 +1,5 @@
 import {useState} from "react";
 import {
-    addWordSequence,
     allowEdit,
     deleteLink,
     deleteRule,
@@ -92,7 +91,6 @@ export default function Rule(params) {
     const [traceReverse, setTraceReverse] = useState(false)
     const [traceResult, setTraceResult] = useState("")
     const [exampleUnmatched, setExampleUnmatched] = useState([])
-    const [focusTarget, setFocusTarget] = useState(null)
     const router = useRouter()
     const graph = router.query.graph as string
 
@@ -280,7 +278,6 @@ export default function Rule(params) {
         {allowEdit() && !showExampleForm &&
             <button className="uiButton" onClick={() => {
                 setShowExampleForm(true)
-                setFocusTarget("exampleText")
             }}>Add Example</button>
         }
         {showExampleForm &&
@@ -288,8 +285,7 @@ export default function Rule(params) {
                  submitted={exampleSubmitted}
                  cancelled={() => setShowExampleForm(false)}
                  defaultValues={{exampleSource: lastExampleSource}}
-                 focusTarget={focusTarget}
-                 setFocusTarget={setFocusTarget}>
+                 focusTarget='exampleText'>
             </WordSequenceForm>
         }
         {errorText !== "" && <div className="errorText">{errorText}</div>}

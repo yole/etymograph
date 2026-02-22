@@ -11,13 +11,12 @@ export interface EtymographFormButton {
 export interface EtymographFormProps<Data, ResponseData=Data> {
     defaultValues?: Data
     setEditMode?: (newEditMode: boolean) => void
-    focusTarget?: any
+    focusTarget?: string
     updateId?: string | number
     update?: (Data: Data) => Promise<Response>
     create?: (Data: Data) => Promise<Response>
     children?: React.ReactNode
     submitted?: (responseData: ResponseData, data: Data) => any
-    setFocusTarget?: (newFocusTarget: any) => void
     redirectOnCreate?: (Data: ResponseData) => string
     buttons?: EtymographFormButton[]
     cancelled?: () => void
@@ -31,12 +30,14 @@ export default function EtymographForm<Data, ResponseData=Data>(props: Etymograp
     const editMode = useContext(EditModeContext)
     const setEditModeContext = useContext(SetEditModeContext)
     const setEditMode = props.setEditMode ?? setEditModeContext
+    const [focusTarget, setFocusTarget] = useState(props.focusTarget)
 
-    useEffect(() => { if (props.focusTarget) methods.setFocus(props.focusTarget) });
-
-    if (props.focusTarget) {
-        props.setFocusTarget(null)
-    }
+    useEffect(() => {
+        if (focusTarget) {
+            methods.setFocus(focusTarget)
+            setFocusTarget(null)
+        }
+    })
 
     async function saveForm(data: Data) {
         const r = props.updateId !== undefined ? await props.update(data) : await props.create(data)

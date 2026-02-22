@@ -111,7 +111,6 @@ export default function CorpusText(params) {
     const [editTranslationId, setEditTranslationId] = useState(undefined)
     const [alternatives, setAlternatives] = useState([])
     const [errorText, setErrorText] = useState("")
-    const [focusTarget, setFocusTarget] = useState(null)
     const router = useRouter()
     const graph = router.query.graph as string;
 
@@ -152,7 +151,6 @@ export default function CorpusText(params) {
         } else {
             setShowTranslationForm(true)
             setEditTranslationId(id)
-            setFocusTarget('text')
         }
     }
 
@@ -247,8 +245,8 @@ export default function CorpusText(params) {
                                      }}
                                      submitted={translationSubmitted}
                                      cancelled={() => toggleTranslationForm(t.id)}
-                                     focusTarget={focusTarget}
-                                     setFocusTarget={setFocusTarget}/>}
+                                     focusTarget='text'
+                    />}
             </>)}
         </>}
         {allowEdit() && <p>
@@ -265,8 +263,7 @@ export default function CorpusText(params) {
                 corpusTextId={Number.parseInt(router.query.id as string)}
                 submitted={translationSubmitted}
                 cancelled={() => toggleTranslationForm(undefined)}
-                focusTarget={focusTarget}
-                setFocusTarget={setFocusTarget}
+                focusTarget='text'
             />}
     </>
 }

@@ -12,7 +12,6 @@ interface TranslationFormProps extends EtymographFormProps<TranslationParams, Tr
 
 export default function TranslationForm(props: TranslationFormProps) {
     const graph = useContext(GraphContext)
-    console.log('rendering translation form with focus ' + props.focusTarget)
 
     return <EtymographForm
         create={(data) => addTranslation(graph, props.corpusTextId, data)}
