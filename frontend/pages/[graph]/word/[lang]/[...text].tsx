@@ -36,6 +36,7 @@ import {
     WordViewModel
 } from "@/models";
 import WordTextView from "@/components/WordTextView";
+import {Urls} from "@/components/Urls";
 
 export const config = {
     unstable_runtimeJS: true
@@ -328,8 +329,8 @@ function SingleWord({word}: { word: WordViewModel }) {
         setEditMode(false)
         setLookupErrorText(null)
         setLookupVariants([])
-        if (r.text !== word.text) {
-            router.push(`/${graph}/word/${word.language}/${r.text}`)
+        if (r.text !== word.text || r.syllabographic !== word.syllabographic) {
+            router.push(Urls.Words.fromWordForm(graph, r))
         }
         else {
             router.replace(router.asPath)
