@@ -141,18 +141,21 @@ object TlhDigSyllabogramSyntax : SyllabogramSyntax() {
 
 fun suggestTranscription(word: Word): String {
     val syllabograms = TlhDigSyllabogramSyntax.parse(word.text)
-    return buildString {
-        for (s in syllabograms.syllabograms) {
+    fun longVowel(c: Char): Char = hittiteLongVowels[hittiteVowels.indexOf(c)]
+
+    val result = buildString {
+        for ((index, s) in syllabograms.syllabograms.withIndex()) {
             if (s.type == SyllabogramType.Syllabogram) {
-                val text = s.text.removeDiacritics()
+                val prev = syllabograms.syllabograms.getOrNull(index - 1)?.takeIf { it.type == SyllabogramType.Syllabogram }
+                val text = Normalizer.normalize(s.text, Normalizer.Form.NFKD)
+                    .replace(AccentType.Acute.combiningMark.toString(), "")
+                    .replace(AccentType.Grave.combiningMark.toString(), "")
                 if (isHittiteVowel(text[0])) {
-                    if (lastOrNull()?.let { it in hittiteVowels || it in hittiteLongVowels } == true) {
-                        if (text.length == 1) {
-                            this[length - 1] = hittiteLongVowels[hittiteVowels.indexOf(text[0])]
+                    if (lastOrNull() == text[0] || lastOrNull() == longVowel(text[0])) {
+                        if (text.length == 1 || prev?.text?.length == 1) {
+                            this[length - 1] = longVowel(text[0])
                         }
-                        else {
-                            append(text.substring(1))
-                        }
+                        append(text.substring(1))
                         continue
                     }
                 }
@@ -160,6 +163,7 @@ fun suggestTranscription(word: Word): String {
             }
         }
     }
+    return Normalizer.normalize(result, Normalizer.Form.NFC)
 }
 
 fun isHittiteVowel(c: Char) = c in hittiteVowels

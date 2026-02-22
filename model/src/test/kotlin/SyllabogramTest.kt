@@ -103,9 +103,27 @@ class SyllabogramTest {
     }
 
     @Test
+    fun transcribeDifferentVowels() {
+        val word = hittiteWord("ku-it-ma-an")
+        assertEquals("kuitman", suggestTranscription(word))
+    }
+
+    @Test
     fun transcribeLongVowel() {
         val word = hittiteWord("ma-a-an")
         assertEquals("mān", suggestTranscription(word))
+    }
+
+    @Test
+    fun transcribeDifferentVowelsLong() {
+        val word = hittiteWord("ú-e-eš")
+        assertEquals("uēš", suggestTranscription(word))
+    }
+
+    @Test
+    fun transcribeVowels2() {
+        val word = hittiteWord("u̯a-aš-ta-a-iš")
+        assertEquals("u̯aštāiš", suggestTranscription(word))
     }
 
     private fun hittiteWord(transliteration: String): Word {
