@@ -30,21 +30,23 @@ data class ParseCandidateViewModel(
     val wordId: Int?
 )
 
-fun Word.toRefViewModel(graph: GraphRepository) =
-    WordRefViewModel(
+fun Word.toRefViewModel(graph: GraphRepository): WordRefViewModel {
+    val urlKey = urlKey(language, text, syllabographic)
+    return WordRefViewModel(
         id, text,
-        urlKey(text, syllabographic),
+        urlKey,
         syllabogramSequence,
         language.shortName,
         if (reconstructed) "pre-" + language.shortName else language.shortName,
         getOrComputeGloss(graph),
-        graph.isHomonym(this) || urlKey(text, syllabographic) != null,
+        graph.isHomonym(this) || urlKey != null,
         reconstructed || language.reconstructed
     )
+}
 
-fun urlKey(text: String, syllabographic: Boolean) = when {
+fun urlKey(language: Language, text: String, syllabographic: Boolean) = when {
     '^' in text -> text.replace("^", "")
-    syllabographic -> text
+    syllabographic || text.lowercase() != language.normalizeWord(text) -> text
     else -> null
 }
 
@@ -176,7 +178,7 @@ class WordController(val dictionaryService: DictionaryService) {
             language.syllabographic,
             text,
             textWithExplicitStress,
-            urlKey(text, syllabographic),
+            urlKey(language, text, syllabographic),
             syllabogramSequence,
             computedGloss ?: "",
             gloss == null,

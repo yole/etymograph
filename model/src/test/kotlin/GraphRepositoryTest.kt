@@ -1,12 +1,19 @@
 package ru.yole.etymograph
 
 import org.junit.Assert.*
+import org.junit.Before
 import org.junit.Test
 
 class GraphRepositoryTest : QBaseTest() {
+    lateinit var repo: InMemoryGraphRepository
+
+    @Before
+    fun setup() {
+        repo = repoWithQ()
+    }
+
     @Test
     fun links() {
-        val repo = repoWithQ()
         val abc = repo.addWord("abc")
         val def = repo.addWord("def")
         repo.addLink(abc, def, Link.Derived)
@@ -17,8 +24,6 @@ class GraphRepositoryTest : QBaseTest() {
 
     @Test
     fun deleteWord() {
-        val repo = repoWithQ()
-
         val abc = repo.addWord("abc")
         repo.addWord("def")
         repo.deleteWord(abc)
@@ -29,7 +34,6 @@ class GraphRepositoryTest : QBaseTest() {
 
     @Test
     fun classifyWordI() {
-        val repo = repoWithQ()
         val ek = repo.addWord("ek", "I")
         assertEquals(1, repo.dictionaryWords(q).size)
     }
@@ -38,9 +42,18 @@ class GraphRepositoryTest : QBaseTest() {
     fun wordByTextSyllabographic() {
         val ht = Language("Hittite", "Ht")
         ht.syllabographic = true
-        val repo = repoWithQ()
         repo.addLanguage(ht)
         repo.addWord("_A-NA", language = ht, gloss = "on", syllabographic = true)
         assertEquals(1, repo.wordsByText(ht, "_A-NA", true).size)
+    }
+
+    @Test
+    fun wordByTextCaseInsensitive() {
+        val pie = Language("Proto-Indo-European", "PIE")
+        pie.phonemes += phoneme("H", "")
+        repo.addLanguage(pie)
+        repo.addWord("bheroH", language = pie, gloss = "carry.1SG")
+        assertEquals(1, repo.wordsByText(pie, "bheroH").size)
+        assertEquals(1, repo.wordsByText(pie, "bheroh").size)
     }
 }

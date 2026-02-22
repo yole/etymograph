@@ -107,7 +107,7 @@ class CorpusController {
                         cw.contextGloss,
                         cw.word?.id,
                         cw.word?.text,
-                        cw.word?.text?.let { urlKey(it, cw.word?.syllabographic ?: language.syllabographic) },
+                        cw.word?.text?.let { urlKey(language, it, cw.word?.syllabographic ?: language.syllabographic) },
                         cw.wordCandidates?.map { CorpusWordCandidateViewModel(it.id, it.getOrComputeGloss(repo)) },
                         cw.stressIndex, cw.stressLength, cw.homonym)
                 })
