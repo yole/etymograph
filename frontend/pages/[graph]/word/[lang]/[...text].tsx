@@ -243,6 +243,7 @@ function CompoundListComponent(
                     </>)}
                     {compoundSuggestions.length > 0 && <br/>}
                     <WordForm wordSubmitted={submitted} cancelled={() => setAddToCompoundId(undefined)}
+                              showSyllabographic={word.syllabographic}
                               addToCompound={m.compoundId} linkTarget={word} defaultValues={{language: word.language}}/>
                 </>}
                 {editCompound === m.compoundId &&
