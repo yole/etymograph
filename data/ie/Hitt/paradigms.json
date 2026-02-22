@@ -276,5 +276,59 @@
         "posList": [
             "V"
         ]
+    },
+    {
+        "id": 60,
+        "name": "Verb Medio-passive Past",
+        "rows": [
+            "1",
+            "2",
+            "3"
+        ],
+        "columns": [
+            {
+                "title": "SG",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            10602
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            10606
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            10610
+                        ]
+                    }
+                ]
+            },
+            {
+                "title": "PL",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            10604
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            10608
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            10612
+                        ]
+                    }
+                ]
+            }
+        ],
+        "posList": [
+            "V"
+        ]
     }
 ]

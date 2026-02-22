@@ -1134,5 +1134,108 @@
         "fromPOS": [
             "V"
         ]
+    },
+    {
+        "id": 10810,
+        "name": "pie-sk-present",
+        "fromLang": "PIE",
+        "toLang": "PIE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "10521"
+                        ]
+                    },
+                    {
+                        "type": "AppendMorpheme",
+                        "args": [
+                            "10809"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "fromPOS": [
+            "V"
+        ]
+    },
+    {
+        "id": 10817,
+        "name": "pie-o-grade-vowel",
+        "fromLang": "PIE",
+        "toLang": "PIE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "Spe",
+                        "args": [
+                            "e > o"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ]
+    },
+    {
+        "id": 10818,
+        "name": "pie-o-grade-root",
+        "fromLang": "PIE",
+        "toLang": "PIE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplySoundRule",
+                        "args": [
+                            "10817",
+                            "first ablauting vowel"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ]
+    },
+    {
+        "id": 10820,
+        "name": "pie-causative",
+        "fromLang": "PIE",
+        "toLang": "PIE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "10818"
+                        ]
+                    },
+                    {
+                        "type": "AppendMorpheme",
+                        "args": [
+                            "10819"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "fromPOS": [
+            "V"
+        ]
     }
 ]

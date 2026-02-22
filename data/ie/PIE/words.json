@@ -107,7 +107,7 @@
     },
     {
         "id": 10071,
-        "text": "m",
+        "text": "-m",
         "gloss": "athematic acc. ending",
         "pos": "AFF"
     },
@@ -154,21 +154,9 @@
         "pos": "AFF"
     },
     {
-        "id": 10162,
-        "text": "th₁e",
-        "gloss": "Athematic Present pres.2du. ending",
-        "pos": "AFF"
-    },
-    {
         "id": 10165,
         "text": "-ti",
         "gloss": "Primary 3sg. ending",
-        "pos": "AFF"
-    },
-    {
-        "id": 10167,
-        "text": "enti",
-        "gloss": "Athematic Present pres.3du. ending",
         "pos": "AFF"
     },
     {
@@ -197,7 +185,7 @@
     },
     {
         "id": 10179,
-        "text": "tes",
+        "text": "-tes",
         "gloss": "Athematic Present pres.3du. ending",
         "pos": "AFF"
     },
@@ -493,5 +481,62 @@
         "text": "dʰeugʰ-",
         "gloss": "milk",
         "pos": "V"
+    },
+    {
+        "id": 10804,
+        "text": "bʰer-",
+        "gloss": "carry",
+        "pos": "V"
+    },
+    {
+        "id": 10805,
+        "text": "bʰeroH"
+    },
+    {
+        "id": 10807,
+        "text": "bʰereti"
+    },
+    {
+        "id": 10809,
+        "text": "-ske-",
+        "gloss": "sk-present suffix",
+        "pos": "AFF"
+    },
+    {
+        "id": 10811,
+        "text": "preḱ-",
+        "gloss": "ask",
+        "pos": "V"
+    },
+    {
+        "id": 10812,
+        "text": "prḱsketi"
+    },
+    {
+        "id": 10814,
+        "text": "bʰeh₂-",
+        "gloss": "shine",
+        "pos": "V"
+    },
+    {
+        "id": 10815,
+        "text": "bʰeh₂ti"
+    },
+    {
+        "id": 10819,
+        "text": "-eie-",
+        "gloss": "causative suffix",
+        "pos": "AFF"
+    },
+    {
+        "id": 10821,
+        "text": "men-",
+        "gloss": "think",
+        "pos": "V"
+    },
+    {
+        "id": 10822,
+        "text": "moneioH",
+        "gloss": "cause to think.1SG"
     }
 ]

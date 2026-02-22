@@ -574,6 +574,12 @@
                 "id": 10552,
                 "contextGloss": "allot.PST.3PL"
             }
+        ],
+        "translations": [
+            {
+                "id": 10747,
+                "text": "The gods have allotted many years to me, the King"
+            }
         ]
     },
     {
@@ -595,6 +601,12 @@
                 "index": 2,
                 "id": 10559,
                 "contextGloss": ""
+            }
+        ],
+        "translations": [
+            {
+                "id": 10748,
+                "text": "The Fate-Goddess has treated you badly"
             }
         ]
     },
@@ -618,6 +630,12 @@
                 "id": 10585,
                 "contextGloss": ""
             }
+        ],
+        "translations": [
+            {
+                "id": 10749,
+                "text": "The King is sitting in/on the wagon"
+            }
         ]
     },
     {
@@ -639,6 +657,958 @@
                 "index": 3,
                 "id": 10591,
                 "contextGloss": ""
+            }
+        ],
+        "translations": [
+            {
+                "id": 10750,
+                "text": "He is hit by the Storm-god"
+            }
+        ]
+    },
+    {
+        "id": 10594,
+        "text": "LUGAL-uš-za šu-up-pí-a-aḫ-ḫa-ti",
+        "title": "Example 3.5",
+        "words": [
+            {
+                "index": 0,
+                "id": 10595,
+                "contextGloss": ""
+            },
+            {
+                "index": 1,
+                "id": 10599,
+                "contextGloss": ""
+            }
+        ],
+        "translations": [
+            {
+                "id": 10751,
+                "text": "The King cleansed / purified himself"
+            }
+        ]
+    },
+    {
+        "id": 10614,
+        "text": "kat-ta-ma tu-el DUMU^MEŠ^-_KA am-me-el DUMU-_I̯A pa-aḫ-ša-ri",
+        "title": "Example 3.6",
+        "words": [
+            {
+                "index": 0,
+                "id": 10618,
+                "contextGloss": ""
+            },
+            {
+                "index": 1,
+                "id": 10615,
+                "contextGloss": ""
+            },
+            {
+                "index": 2,
+                "id": 10621,
+                "contextGloss": ""
+            },
+            {
+                "index": 3,
+                "id": 10626,
+                "contextGloss": ""
+            },
+            {
+                "index": 4,
+                "id": 10629,
+                "contextGloss": ""
+            },
+            {
+                "index": 5,
+                "id": 10632,
+                "contextGloss": ""
+            }
+        ],
+        "translations": [
+            {
+                "id": 10752,
+                "text": "But/and further, my son will protect your sons"
+            }
+        ]
+    },
+    {
+        "id": 10635,
+        "text": "nu-kán da-aš-šu-uš ^NA4^ku-un-ku-nu-uz-zi-iš ne-pí-ša-az kat-ta ma-uš-ta-at",
+        "title": "Example 3.7",
+        "words": [
+            {
+                "index": 1,
+                "id": 10636,
+                "contextGloss": ""
+            },
+            {
+                "index": 2,
+                "id": 10639,
+                "contextGloss": ""
+            },
+            {
+                "index": 3,
+                "id": 10642,
+                "contextGloss": ""
+            },
+            {
+                "index": 4,
+                "id": 10644,
+                "contextGloss": "down"
+            },
+            {
+                "index": 5,
+                "id": 10646,
+                "contextGloss": ""
+            }
+        ],
+        "translations": [
+            {
+                "id": 10753,
+                "text": "A heavy kunkunuzzi-stone fell down from the sky"
+            }
+        ]
+    },
+    {
+        "id": 10648,
+        "text": "ma-a-an-kán an-tu-uḫ-ša-aš la-ga-a-ri na-aš-ma-aš-kán ^GIŠ^GIGIR-az kat-ta ma-a-uš-zi",
+        "title": "Example 3.8",
+        "words": [
+            {
+                "index": 1,
+                "id": 10649,
+                "contextGloss": ""
+            },
+            {
+                "index": 2,
+                "id": 10652,
+                "contextGloss": ""
+            },
+            {
+                "index": 3,
+                "id": 10655,
+                "contextGloss": ""
+            },
+            {
+                "index": 4,
+                "id": 10658,
+                "contextGloss": ""
+            },
+            {
+                "index": 6,
+                "id": 10660,
+                "contextGloss": ""
+            },
+            {
+                "index": 5,
+                "id": 10644,
+                "contextGloss": "down"
+            }
+        ],
+        "translations": [
+            {
+                "id": 10757,
+                "text": "If a person falls over, or (if) (s)he falls down from a wagon"
+            }
+        ]
+    },
+    {
+        "id": 10662,
+        "text": "zi-ik UR.BAR.RA-aš ki-iš-ta-at",
+        "title": "Example 3.9",
+        "words": [
+            {
+                "index": 0,
+                "id": 10663,
+                "contextGloss": ""
+            },
+            {
+                "index": 1,
+                "id": 10664,
+                "contextGloss": ""
+            },
+            {
+                "index": 2,
+                "id": 10666,
+                "contextGloss": ""
+            }
+        ],
+        "translations": [
+            {
+                "id": 10758,
+                "text": "You have become a wolf"
+            }
+        ]
+    },
+    {
+        "id": 10669,
+        "text": "ma-aḫ-ḫa-an-ma-za _A-BU-I̯A ^m^mur-ši-li-iš DINGIR^LIM^-iš ki-ša-at ŠEŠ-I̯A-ma-za-kán ^m^NIR.GÁL _A-NA ^GIŠ^GU.ZA _A-BI-ŠU e-ša-at am-mu-uk-ma-za _A-NA _PA-NI ŠEŠ-I̯A EN.KARAŠ ki-iš-ḫa-ḫa-at",
+        "title": "Example 3.10",
+        "words": [
+            {
+                "index": 0,
+                "id": 10670,
+                "contextGloss": ""
+            },
+            {
+                "index": 1,
+                "id": 10672,
+                "contextGloss": ""
+            },
+            {
+                "index": 2,
+                "id": 10675,
+                "contextGloss": ""
+            },
+            {
+                "index": 4,
+                "id": 10676,
+                "contextGloss": ""
+            },
+            {
+                "index": 5,
+                "id": 10678,
+                "contextGloss": ""
+            },
+            {
+                "index": 6,
+                "id": 10681,
+                "contextGloss": ""
+            },
+            {
+                "index": 7,
+                "id": 10124,
+                "contextGloss": ""
+            },
+            {
+                "index": 8,
+                "id": 10682,
+                "contextGloss": ""
+            },
+            {
+                "index": 9,
+                "id": 10683,
+                "contextGloss": ""
+            },
+            {
+                "index": 12,
+                "id": 10124,
+                "contextGloss": ""
+            },
+            {
+                "index": 10,
+                "id": 10687,
+                "contextGloss": ""
+            },
+            {
+                "index": 11,
+                "id": 10690,
+                "contextGloss": ""
+            },
+            {
+                "index": 14,
+                "id": 10693,
+                "contextGloss": ""
+            },
+            {
+                "index": 15,
+                "id": 10695,
+                "contextGloss": ""
+            },
+            {
+                "index": 16,
+                "id": 10698,
+                "contextGloss": ""
+            }
+        ],
+        "translations": [
+            {
+                "id": 10759,
+                "text": "(But) when my father Muršili became a god (= died), my brother Muu̯atalli sat down on the throne of his father, I became head of the army for (in service of) my brother"
+            }
+        ]
+    },
+    {
+        "id": 10700,
+        "text": "na-aš iš-dam-ma-aš-ta-ri",
+        "title": "Example 3.11",
+        "words": [
+            {
+                "index": 1,
+                "id": 10701,
+                "contextGloss": ""
+            }
+        ],
+        "translations": [
+            {
+                "id": 10760,
+                "text": "He/she is heard / is being listened to"
+            }
+        ]
+    },
+    {
+        "id": 10703,
+        "text": "nam-ma-aš-ma-aš ta-šu-u̯a-aḫ-ḫa-an-zi",
+        "title": "Example 3.12",
+        "words": [
+            {
+                "index": 0,
+                "id": 10704,
+                "contextGloss": ""
+            },
+            {
+                "index": 1,
+                "id": 10707,
+                "contextGloss": ""
+            }
+        ],
+        "translations": [
+            {
+                "id": 10710,
+                "text": "Then they made them blind."
+            }
+        ]
+    },
+    {
+        "id": 10711,
+        "text": "nu DINGIR^MEŠ^-aš _A-NA EZEN^ḪI.A^ EGIR-an-pát ar-u̯a-aš-ta",
+        "title": "Example 3.13",
+        "words": [
+            {
+                "index": 3,
+                "id": 10712,
+                "contextGloss": ""
+            },
+            {
+                "index": 1,
+                "id": 10715,
+                "contextGloss": ""
+            },
+            {
+                "index": 5,
+                "id": 10717,
+                "contextGloss": "will take care"
+            }
+        ],
+        "translations": [
+            {
+                "id": 10720,
+                "text": "And we will take care of the gods on the ritual feast."
+            }
+        ]
+    },
+    {
+        "id": 10721,
+        "text": "nu-za ^URU^pal-ḫu-iš-ša-an-na tar-aḫ-ḫu-un nu URU-an ar-ḫa u̯a-ar-nu-nu-un",
+        "title": "Example 3.14",
+        "words": [
+            {
+                "index": 0,
+                "id": 10722,
+                "contextGloss": ""
+            },
+            {
+                "index": 1,
+                "id": 10724,
+                "contextGloss": ""
+            },
+            {
+                "index": 2,
+                "id": 10728,
+                "contextGloss": ""
+            },
+            {
+                "index": 4,
+                "id": 10731,
+                "contextGloss": ""
+            }
+        ],
+        "translations": [
+            {
+                "id": 10761,
+                "text": "I conquered (the city of) Palḫuišša as well, and I burnt the city down to the ground"
+            }
+        ]
+    },
+    {
+        "id": 10733,
+        "text": "ma-a-an-mu DINGIR^MEŠ^ ka-ni-iš-ša-an-zi LUGAL-ez-zi-aḫ-ḫa-ri tu-uk-ma am-me-ta-az SIG5-eš-zi",
+        "title": "Example 3.15",
+        "words": [
+            {
+                "index": 2,
+                "id": 10734,
+                "contextGloss": ""
+            },
+            {
+                "index": 3,
+                "id": 10737,
+                "contextGloss": "I will become king"
+            },
+            {
+                "index": 4,
+                "id": 10738,
+                "contextGloss": ""
+            },
+            {
+                "index": 5,
+                "id": 10742,
+                "contextGloss": ""
+            },
+            {
+                "index": 6,
+                "id": 10744,
+                "contextGloss": ""
+            }
+        ],
+        "translations": [
+            {
+                "id": 10746,
+                "text": "when Gods elect me and I will become king it will become good to you from me"
+            }
+        ]
+    },
+    {
+        "id": 10762,
+        "text": "nu NINDA-an e-ez-za-at-te-ni u̯a-a-tar-ma e-ku-ut-te-ni",
+        "title": "Example 4.01",
+        "words": [
+            {
+                "index": 1,
+                "id": 10763,
+                "contextGloss": ""
+            },
+            {
+                "index": 2,
+                "id": 10765,
+                "contextGloss": ""
+            },
+            {
+                "index": 3,
+                "id": 10769,
+                "contextGloss": ""
+            },
+            {
+                "index": 4,
+                "id": 10773,
+                "contextGloss": ""
+            }
+        ],
+        "translations": [
+            {
+                "id": 10776,
+                "text": "You will eat bread and drink water"
+            }
+        ]
+    },
+    {
+        "id": 10777,
+        "text": "nu-uš-ma-aš-kán ŠU-az ap-pa-an-da-at",
+        "title": "Example 4.02",
+        "words": [
+            {
+                "index": 0,
+                "id": 10778,
+                "contextGloss": ""
+            },
+            {
+                "index": 1,
+                "id": 10780,
+                "contextGloss": ""
+            },
+            {
+                "index": 2,
+                "id": 10782,
+                "contextGloss": ""
+            }
+        ],
+        "translations": [
+            {
+                "id": 10785,
+                "text": "They took each other by the hand"
+            }
+        ]
+    },
+    {
+        "id": 10786,
+        "text": "na-at-ša-an ke-e-da-ni li-in-ki-i̯a-aš tup-pí-i̯a _Ú-UL ki-it-ta-ri",
+        "title": "Example 4.03",
+        "words": [
+            {
+                "index": 0,
+                "id": 10787,
+                "contextGloss": ""
+            },
+            {
+                "index": 1,
+                "id": 10790,
+                "contextGloss": ""
+            },
+            {
+                "index": 2,
+                "id": 10793,
+                "contextGloss": ""
+            },
+            {
+                "index": 3,
+                "id": 10797,
+                "contextGloss": ""
+            },
+            {
+                "index": 5,
+                "id": 10800,
+                "contextGloss": ""
+            }
+        ],
+        "translations": [
+            {
+                "id": 10803,
+                "text": "It does not lie on this tablet of the oath"
+            }
+        ]
+    },
+    {
+        "id": 10824,
+        "text": "ku-it-ma-an-za ú-e-eš nu-u-a ^URU^ḫa-at-tu-ši e-šu-en LÚ^MEŠ^ ^URU^KA4-AŠ-KA4-ma iš-ta-ma-aš-ša-an-zi",
+        "title": "Example 4.04",
+        "words": [
+            {
+                "index": 0,
+                "id": 10825,
+                "contextGloss": ""
+            },
+            {
+                "index": 1,
+                "id": 10829,
+                "contextGloss": ""
+            },
+            {
+                "index": 2,
+                "id": 10831,
+                "contextGloss": ""
+            },
+            {
+                "index": 3,
+                "id": 10833,
+                "contextGloss": ""
+            },
+            {
+                "index": 4,
+                "id": 10836,
+                "contextGloss": ""
+            },
+            {
+                "index": 5,
+                "id": 10838,
+                "contextGloss": ""
+            },
+            {
+                "index": 7,
+                "id": 10840,
+                "contextGloss": ""
+            },
+            {
+                "index": 6,
+                "id": 10843,
+                "contextGloss": ""
+            }
+        ],
+        "translations": [
+            {
+                "id": 10846,
+                "text": "While we were still present in Ḫattuša, the Kaškaeans were (litt. “are”) listening"
+            }
+        ]
+    },
+    {
+        "id": 10849,
+        "text": "nu-un-na-aš an-ni-ša-an-pát na-ak-ki-e-eš a-aš-ša-u-e-eš e-šu-u-en nu-un-na-aš le-en-ki-i̯a-aš e-šu-u-en",
+        "title": "Example 4.05",
+        "words": [
+            {
+                "index": 0,
+                "id": 10850,
+                "contextGloss": ""
+            },
+            {
+                "index": 1,
+                "id": 10853,
+                "contextGloss": ""
+            },
+            {
+                "index": 2,
+                "id": 10858,
+                "contextGloss": ""
+            },
+            {
+                "index": 3,
+                "id": 10862,
+                "contextGloss": ""
+            },
+            {
+                "index": 4,
+                "id": 10865,
+                "contextGloss": ""
+            },
+            {
+                "index": 6,
+                "id": 10867,
+                "contextGloss": ""
+            }
+        ],
+        "translations": [
+            {
+                "id": 10869,
+                "text": "In the past we were important and good, we were (men) of the oath"
+            }
+        ]
+    },
+    {
+        "id": 10870,
+        "text": "ma-a-an ^URU^ḫa-at-tu-ši šal-li-iš u̯a-aš-ta-a-iš ki-ša-ri na-aš-šu-za LUGAL-uš na-aš-ma MUNUS.LUGAL-aš DINGIR^LIM^-iš ki-ša-ri",
+        "title": "Example 4.06",
+        "words": [
+            {
+                "index": 2,
+                "id": 10871,
+                "contextGloss": ""
+            },
+            {
+                "index": 3,
+                "id": 10875,
+                "contextGloss": ""
+            },
+            {
+                "index": 4,
+                "id": 10878,
+                "contextGloss": ""
+            },
+            {
+                "index": 5,
+                "id": 10882,
+                "contextGloss": ""
+            },
+            {
+                "index": 8,
+                "id": 10886,
+                "contextGloss": ""
+            },
+            {
+                "index": 9,
+                "id": 10888,
+                "contextGloss": ""
+            }
+        ],
+        "translations": [
+            {
+                "id": 10889,
+                "text": "If in Ḫattuša a large disaster will take place, (i.e., if) either the king of or the queen will become a god (= dies)"
+            }
+        ]
+    },
+    {
+        "id": 10890,
+        "text": "SAG.DU-aš-ma-an-na-aš ^LÚ^BÁḪAR-aš ^GIŠ^UMBIN GIM-an ú-e-ḫa-at-ta-ri",
+        "title": "Example 4.07",
+        "words": [
+            {
+                "index": 2,
+                "id": 10891,
+                "contextGloss": ""
+            },
+            {
+                "index": 3,
+                "id": 10892,
+                "contextGloss": ""
+            },
+            {
+                "index": 0,
+                "id": 10893,
+                "contextGloss": ""
+            },
+            {
+                "index": 1,
+                "id": 10896,
+                "contextGloss": ""
+            },
+            {
+                "index": 4,
+                "id": 10898,
+                "contextGloss": ""
+            }
+        ],
+        "translations": [
+            {
+                "id": 10903,
+                "text": "(But) our head spins like a potter’s wheel"
+            }
+        ]
+    },
+    {
+        "id": 10904,
+        "text": "^d^UTU-uš dam-me-iš-ḫa-an-da-aš ku-ri-im-ma-aš-ša an-tu-uḫ-ḫa-aš at-ta-aš an-na-aš zi-ik",
+        "title": "Example 4.08",
+        "words": [
+            {
+                "index": 0,
+                "id": 10905,
+                "contextGloss": ""
+            },
+            {
+                "index": 1,
+                "id": 10907,
+                "contextGloss": ""
+            },
+            {
+                "index": 2,
+                "id": 10910,
+                "contextGloss": ""
+            },
+            {
+                "index": 3,
+                "id": 10915,
+                "contextGloss": ""
+            },
+            {
+                "index": 4,
+                "id": 10919,
+                "contextGloss": ""
+            },
+            {
+                "index": 5,
+                "id": 10922,
+                "contextGloss": ""
+            }
+        ],
+        "translations": [
+            {
+                "id": 10925,
+                "text": "You, Sun-god, are father (and) mother for suppressed and bereft persons"
+            }
+        ]
+    },
+    {
+        "id": 10926,
+        "text": "nu-ut-ta ar-ḫa e-et-mi",
+        "title": "Example 4.09",
+        "words": [
+            {
+                "index": 2,
+                "id": 10927,
+                "contextGloss": ""
+            }
+        ],
+        "translations": [
+            {
+                "id": 10929,
+                "text": "And I will eat you fully"
+            }
+        ]
+    },
+    {
+        "id": 10930,
+        "text": "ki-nu-un-za e-et-mi e-ku-mi",
+        "title": "Example 4.10",
+        "words": [
+            {
+                "index": 0,
+                "id": 10931,
+                "contextGloss": ""
+            },
+            {
+                "index": 2,
+                "id": 10935,
+                "contextGloss": ""
+            }
+        ],
+        "translations": [
+            {
+                "id": 10937,
+                "text": "Now I will eat and drink"
+            }
+        ]
+    },
+    {
+        "id": 10938,
+        "text": "_I-NA ^URU^KA4-AŠ-KA4-ma ḫal-ki^ḪI.A^-uš BURU5^ḪI.A^ e-ez-za-aš-ta",
+        "title": "Example 4.11",
+        "words": [
+            {
+                "index": 2,
+                "id": 10939,
+                "contextGloss": ""
+            },
+            {
+                "index": 3,
+                "id": 10942,
+                "contextGloss": ""
+            },
+            {
+                "index": 4,
+                "id": 10944,
+                "contextGloss": ""
+            }
+        ],
+        "translations": [
+            {
+                "id": 10946,
+                "text": "(But) in Kaška, the locust have eaten the grain (harvests)"
+            }
+        ]
+    },
+    {
+        "id": 10947,
+        "text": "ma-a-an ke-e-el-ma tup-pí-aš ud-da-a-ar pa-aḫ-ḫa-aš-ti",
+        "title": "Example 4.12",
+        "words": [
+            {
+                "index": 1,
+                "id": 10948,
+                "contextGloss": ""
+            },
+            {
+                "index": 2,
+                "id": 10952,
+                "contextGloss": ""
+            },
+            {
+                "index": 3,
+                "id": 10954,
+                "contextGloss": ""
+            },
+            {
+                "index": 4,
+                "id": 10956,
+                "contextGloss": ""
+            }
+        ],
+        "translations": [
+            {
+                "id": 10958,
+                "text": "If, however, you will protect (= obey) the words of this tablet"
+            }
+        ]
+    },
+    {
+        "id": 10959,
+        "text": "ku-u̯a-at-za _Ú-UL e-za-at-ti _Ú-UL e-ku-ut-ti",
+        "title": "Example 4.13",
+        "words": [
+            {
+                "index": 0,
+                "id": 10960,
+                "contextGloss": ""
+            },
+            {
+                "index": 2,
+                "id": 10964,
+                "contextGloss": ""
+            },
+            {
+                "index": 4,
+                "id": 10966,
+                "contextGloss": ""
+            }
+        ],
+        "translations": [
+            {
+                "id": 10968,
+                "text": "Why don’t you eat nor drink?"
+            }
+        ]
+    },
+    {
+        "id": 10969,
+        "text": "LUGAL-uš-kán ^GIŠ^AB-az ar-ḫa ku-u-uš-pát DINGIR^MEŠ^-aš 13-ŠU ši-pa-an-ti",
+        "title": "Example 4.14",
+        "words": [
+            {
+                "index": 0,
+                "id": 10970,
+                "contextGloss": ""
+            },
+            {
+                "index": 1,
+                "id": 10972,
+                "contextGloss": ""
+            },
+            {
+                "index": 3,
+                "id": 10973,
+                "contextGloss": ""
+            }
+        ],
+        "translations": [
+            {
+                "id": 10977,
+                "text": "The king will offer to the gods (specifically) these ones thirteen times through the window"
+            }
+        ]
+    },
+    {
+        "id": 10978,
+        "text": "nu LUGAL-uš a-ki _I-NA ^GIŠ^GU.ZA-ŠU-ma-za-kán ta-ma-iš ku-iš-ki e-ša-ri",
+        "title": "Example 4.15",
+        "words": [
+            {
+                "index": 4,
+                "id": 10979,
+                "contextGloss": ""
+            },
+            {
+                "index": 5,
+                "id": 10983,
+                "contextGloss": ""
+            },
+            {
+                "index": 6,
+                "id": 10986,
+                "contextGloss": ""
+            },
+            {
+                "index": 7,
+                "id": 10988,
+                "contextGloss": ""
+            }
+        ],
+        "translations": [
+            {
+                "id": 10990,
+                "text": "The king will die, and someone else will sit down on his throne"
+            }
+        ]
+    },
+    {
+        "id": 10991,
+        "text": "ták-ku LÚ-aš da-me-da-ni A.ŠÀ A.GÀR an-da a-ki",
+        "title": "Example 4.16",
+        "words": [
+            {
+                "index": 2,
+                "id": 10992,
+                "contextGloss": ""
+            },
+            {
+                "index": 5,
+                "id": 10994,
+                "contextGloss": ""
+            },
+            {
+                "index": 0,
+                "id": 10996,
+                "contextGloss": ""
+            },
+            {
+                "index": 1,
+                "id": 10998,
+                "contextGloss": ""
+            }
+        ],
+        "translations": [
+            {
+                "id": 10999,
+                "text": "If a person dies inside another field..."
             }
         ]
     }

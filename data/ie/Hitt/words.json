@@ -692,7 +692,8 @@
         "id": 10471,
         "text": "KASKAL",
         "gloss": "road",
-        "pos": "N"
+        "pos": "N",
+        "syllabographic": true
     },
     {
         "id": 10472,
@@ -858,7 +859,8 @@
     {
         "id": 10515,
         "text": "EGIR-an",
-        "gloss": "afterwards"
+        "gloss": "afterwards",
+        "syllabographic": true
     },
     {
         "id": 10517,
@@ -929,7 +931,8 @@
         "id": 10551,
         "text": "MU.KAM",
         "gloss": "year",
-        "pos": "N"
+        "pos": "N",
+        "syllabographic": true
     },
     {
         "id": 10552,
@@ -972,7 +975,8 @@
         "pos": "V",
         "classes": [
             "hi"
-        ]
+        ],
+        "syllabographic": true
     },
     {
         "id": 10562,
@@ -1009,7 +1013,7 @@
     {
         "id": 10572,
         "text": "-ḫḫa",
-        "gloss": "Medio-passive mp.1sg. ending",
+        "gloss": "m/p. 1sg. ending",
         "pos": "AFF"
     },
     {
@@ -1033,7 +1037,7 @@
     {
         "id": 10580,
         "text": "-tta",
-        "gloss": "Medio-passive mp.3sg. ending",
+        "gloss": "m/p. 3sg. ending",
         "pos": "AFF"
     },
     {
@@ -1097,5 +1101,1551 @@
         "classes": [
             "hi"
         ]
+    },
+    {
+        "id": 10595,
+        "text": "LUGAL-uš-za",
+        "syllabographic": true
+    },
+    {
+        "id": 10596,
+        "text": "LUGAL-uš",
+        "syllabographic": true
+    },
+    {
+        "id": 10598,
+        "text": "za",
+        "gloss": "REFL",
+        "pos": "CONJ",
+        "classes": [
+            "clitic"
+        ]
+    },
+    {
+        "id": 10599,
+        "text": "šu-up-pí-a-aḫ-ḫa-ti",
+        "syllabographic": true
+    },
+    {
+        "id": 10600,
+        "text": "šuppi̯aḫḫati"
+    },
+    {
+        "id": 10601,
+        "text": "-ḫḫat",
+        "gloss": "past m/p. 1sg. ending",
+        "pos": "AFF"
+    },
+    {
+        "id": 10603,
+        "text": "-u̯aštat",
+        "gloss": "Verb Medio-passive Past pst.mp.1pl. ending",
+        "pos": "AFF"
+    },
+    {
+        "id": 10605,
+        "text": "-ttat",
+        "gloss": "Verb Medio-passive Past pst.mp.2sg. ending",
+        "pos": "AFF"
+    },
+    {
+        "id": 10607,
+        "text": "-ttumat",
+        "gloss": "Verb Medio-passive Past pst.mp.2pl. ending",
+        "pos": "AFF"
+    },
+    {
+        "id": 10609,
+        "text": "-at",
+        "gloss": "Verb Medio-passive Past pst.mp.3sg. ending",
+        "pos": "AFF"
+    },
+    {
+        "id": 10611,
+        "text": "-antat",
+        "gloss": "Verb Medio-passive Past pst.mp.3pl. ending",
+        "pos": "AFF"
+    },
+    {
+        "id": 10613,
+        "text": "šuppii̯aḫḫ-",
+        "gloss": "purify",
+        "pos": "V",
+        "classes": [
+            "hi"
+        ]
+    },
+    {
+        "id": 10615,
+        "text": "tu-el",
+        "syllabographic": true
+    },
+    {
+        "id": 10616,
+        "text": "tuel"
+    },
+    {
+        "id": 10617,
+        "text": "zik",
+        "gloss": "2SG",
+        "pos": "PRON"
+    },
+    {
+        "id": 10618,
+        "text": "kat-ta-ma",
+        "syllabographic": true
+    },
+    {
+        "id": 10619,
+        "text": "katta",
+        "gloss": "with",
+        "pos": "ADV"
+    },
+    {
+        "id": 10621,
+        "text": "DUMU^MEŠ^-_KA",
+        "syllabographic": true
+    },
+    {
+        "id": 10622,
+        "text": "DUMU^MEŠ^",
+        "syllabographic": true
+    },
+    {
+        "id": 10624,
+        "text": "_KA",
+        "gloss": "your",
+        "pos": "PRON",
+        "classes": [
+            "clitic"
+        ],
+        "syllabographic": true
+    },
+    {
+        "id": 10625,
+        "text": "DUMU",
+        "gloss": "son",
+        "syllabographic": true
+    },
+    {
+        "id": 10626,
+        "text": "am-me-el",
+        "syllabographic": true
+    },
+    {
+        "id": 10627,
+        "text": "ammēl"
+    },
+    {
+        "id": 10628,
+        "text": "ūk",
+        "gloss": "1SG",
+        "pos": "PRON"
+    },
+    {
+        "id": 10629,
+        "text": "DUMU-I̯A",
+        "syllabographic": true
+    },
+    {
+        "id": 10631,
+        "text": "_I̯A",
+        "gloss": "my",
+        "pos": "PRON",
+        "classes": [
+            "clitic"
+        ],
+        "syllabographic": true
+    },
+    {
+        "id": 10632,
+        "text": "pa-aḫ-ša-ri",
+        "syllabographic": true
+    },
+    {
+        "id": 10633,
+        "text": "paḫšari"
+    },
+    {
+        "id": 10634,
+        "text": "paḫš-",
+        "gloss": "protect",
+        "pos": "V",
+        "classes": [
+            "hi"
+        ]
+    },
+    {
+        "id": 10636,
+        "text": "da-aš-šu-uš",
+        "syllabographic": true
+    },
+    {
+        "id": 10637,
+        "text": "daššuš"
+    },
+    {
+        "id": 10638,
+        "text": "daššu-",
+        "gloss": "strong",
+        "pos": "ADJ"
+    },
+    {
+        "id": 10639,
+        "text": "^NA4^ku-un-ku-nu-uz-zi-iš",
+        "syllabographic": true
+    },
+    {
+        "id": 10640,
+        "text": "kunkunuzziš"
+    },
+    {
+        "id": 10641,
+        "text": "kunkunuzzi-",
+        "gloss": "basalt stone",
+        "pos": "N"
+    },
+    {
+        "id": 10642,
+        "text": "ne-pí-ša-az",
+        "syllabographic": true
+    },
+    {
+        "id": 10643,
+        "text": "nepíšaz"
+    },
+    {
+        "id": 10644,
+        "text": "kat-ta",
+        "syllabographic": true
+    },
+    {
+        "id": 10645,
+        "text": "mauštat",
+        "syllabographic": true
+    },
+    {
+        "id": 10646,
+        "text": "ma-uš-ta-at",
+        "syllabographic": true
+    },
+    {
+        "id": 10647,
+        "text": "mauš-",
+        "gloss": "fall",
+        "pos": "V",
+        "classes": [
+            "mi"
+        ]
+    },
+    {
+        "id": 10649,
+        "text": "an-tu-uḫ-ša-aš",
+        "syllabographic": true
+    },
+    {
+        "id": 10650,
+        "text": "antuḫšaš"
+    },
+    {
+        "id": 10651,
+        "text": "antuḫša-",
+        "gloss": "person",
+        "pos": "N",
+        "classes": [
+            "C"
+        ]
+    },
+    {
+        "id": 10652,
+        "text": "la-ga-a-ri",
+        "syllabographic": true
+    },
+    {
+        "id": 10653,
+        "text": "lagāri"
+    },
+    {
+        "id": 10654,
+        "text": "lag-",
+        "gloss": "fall",
+        "pos": "V",
+        "classes": [
+            "āri"
+        ]
+    },
+    {
+        "id": 10655,
+        "text": "na-aš-ma-aš-kán",
+        "syllabographic": true
+    },
+    {
+        "id": 10658,
+        "text": "^GIŠ^GIGIR-az",
+        "syllabographic": true
+    },
+    {
+        "id": 10659,
+        "text": "^GIŠ^GIGIR",
+        "gloss": "wagon",
+        "pos": "N",
+        "syllabographic": true
+    },
+    {
+        "id": 10660,
+        "text": "ma-a-uš-zi",
+        "syllabographic": true
+    },
+    {
+        "id": 10661,
+        "text": "māušzi"
+    },
+    {
+        "id": 10663,
+        "text": "zi-ik",
+        "syllabographic": true
+    },
+    {
+        "id": 10664,
+        "text": "UR.BAR.RA-aš",
+        "syllabographic": true
+    },
+    {
+        "id": 10665,
+        "text": "UR.BAR.RA",
+        "gloss": "wolf",
+        "syllabographic": true
+    },
+    {
+        "id": 10666,
+        "text": "ki-iš-ta-at",
+        "syllabographic": true
+    },
+    {
+        "id": 10667,
+        "text": "kištat"
+    },
+    {
+        "id": 10668,
+        "text": "kiš-",
+        "gloss": "become",
+        "pos": "V",
+        "classes": [
+            "ari"
+        ]
+    },
+    {
+        "id": 10670,
+        "text": "ma-aḫ-ḫa-an-ma-za",
+        "syllabographic": true
+    },
+    {
+        "id": 10672,
+        "text": "_A-BU-I̯A",
+        "syllabographic": true
+    },
+    {
+        "id": 10673,
+        "text": "_A-BU",
+        "gloss": "father",
+        "pos": "N",
+        "syllabographic": true
+    },
+    {
+        "id": 10675,
+        "text": "^m^mur-ši-li-iš",
+        "pos": "NP",
+        "syllabographic": true
+    },
+    {
+        "id": 10676,
+        "text": "ki-ša-at",
+        "syllabographic": true
+    },
+    {
+        "id": 10677,
+        "text": "kišat"
+    },
+    {
+        "id": 10678,
+        "text": "ŠEŠ-I̯A-ma-za-kán",
+        "syllabographic": true
+    },
+    {
+        "id": 10679,
+        "text": "ŠEŠ",
+        "gloss": "brother",
+        "pos": "N",
+        "syllabographic": true
+    },
+    {
+        "id": 10681,
+        "text": "^m^NIR.GÁL",
+        "pos": "NP",
+        "syllabographic": true
+    },
+    {
+        "id": 10682,
+        "text": "^GIŠ^GU.ZA",
+        "gloss": "throne",
+        "pos": "N",
+        "syllabographic": true
+    },
+    {
+        "id": 10683,
+        "text": "_A-BI-ŠU",
+        "syllabographic": true
+    },
+    {
+        "id": 10684,
+        "text": "_A-BI",
+        "syllabographic": true
+    },
+    {
+        "id": 10686,
+        "text": "_ŠU",
+        "gloss": "his",
+        "pos": "PRON",
+        "classes": [
+            "clitic"
+        ],
+        "syllabographic": true
+    },
+    {
+        "id": 10687,
+        "text": "e-ša-at",
+        "syllabographic": true
+    },
+    {
+        "id": 10688,
+        "text": "ešat"
+    },
+    {
+        "id": 10689,
+        "text": "eš-",
+        "gloss": "be",
+        "pos": "V",
+        "classes": [
+            "mi"
+        ]
+    },
+    {
+        "id": 10690,
+        "text": "am-mu-uk-ma-za",
+        "syllabographic": true
+    },
+    {
+        "id": 10691,
+        "text": "ammuk"
+    },
+    {
+        "id": 10693,
+        "text": "ŠEŠ-I̯A",
+        "syllabographic": true
+    },
+    {
+        "id": 10695,
+        "text": "EN.KARAŠ",
+        "gloss": "head of the army",
+        "syllabographic": true
+    },
+    {
+        "id": 10696,
+        "text": "ammuk"
+    },
+    {
+        "id": 10698,
+        "text": "ki-iš-ḫa-ḫa-at",
+        "syllabographic": true
+    },
+    {
+        "id": 10699,
+        "text": "kišḫaḫat"
+    },
+    {
+        "id": 10701,
+        "text": "iš-dam-ma-aš-ta-ri",
+        "syllabographic": true
+    },
+    {
+        "id": 10702,
+        "text": "ištammaštari"
+    },
+    {
+        "id": 10704,
+        "text": "nam-ma-aš-ma-aš",
+        "syllabographic": true
+    },
+    {
+        "id": 10705,
+        "text": "namma",
+        "gloss": "then",
+        "pos": "ADV"
+    },
+    {
+        "id": 10707,
+        "text": "ta-šu-u̯a-aḫ-ḫa-an-zi",
+        "syllabographic": true
+    },
+    {
+        "id": 10708,
+        "text": "tašuu̯aḫḫanzi"
+    },
+    {
+        "id": 10709,
+        "text": "tašuu̯aḫḫ-",
+        "gloss": "make blind",
+        "pos": "V",
+        "classes": [
+            "hi"
+        ]
+    },
+    {
+        "id": 10712,
+        "text": "EZEN^ḪI.A^",
+        "syllabographic": true
+    },
+    {
+        "id": 10713,
+        "text": "EZEN",
+        "gloss": "ritual feast"
+    },
+    {
+        "id": 10714,
+        "text": "-aš",
+        "gloss": "dat./loc.pl. ending",
+        "pos": "AFF"
+    },
+    {
+        "id": 10715,
+        "text": "DINGIR^MEŠ^-aš",
+        "syllabographic": true
+    },
+    {
+        "id": 10717,
+        "text": "ar-u̯a-aš-ta",
+        "syllabographic": true
+    },
+    {
+        "id": 10718,
+        "text": "aru̯ašta"
+    },
+    {
+        "id": 10719,
+        "text": "ar-",
+        "gloss": "be standing",
+        "pos": "V",
+        "classes": [
+            "ttari"
+        ]
+    },
+    {
+        "id": 10722,
+        "text": "nu-za",
+        "syllabographic": true
+    },
+    {
+        "id": 10724,
+        "text": "^URU^pal-ḫu-iš-ša-an-na",
+        "syllabographic": true
+    },
+    {
+        "id": 10725,
+        "text": "palḫuiššanna"
+    },
+    {
+        "id": 10726,
+        "text": "palḫuiššannaš",
+        "pos": "NP"
+    },
+    {
+        "id": 10727,
+        "text": "-a",
+        "gloss": "all. ending",
+        "pos": "AFF"
+    },
+    {
+        "id": 10728,
+        "text": "tar-aḫ-ḫu-un",
+        "syllabographic": true
+    },
+    {
+        "id": 10729,
+        "text": "tarḫḫun"
+    },
+    {
+        "id": 10730,
+        "text": "tarḫu-",
+        "gloss": "conquer",
+        "pos": "V",
+        "classes": [
+            "mi"
+        ]
+    },
+    {
+        "id": 10731,
+        "text": "URU-an",
+        "syllabographic": true
+    },
+    {
+        "id": 10732,
+        "text": "URU",
+        "gloss": "city",
+        "pos": "N",
+        "syllabographic": true
+    },
+    {
+        "id": 10734,
+        "text": "ka-ni-iš-ša-an-zi",
+        "syllabographic": true
+    },
+    {
+        "id": 10735,
+        "text": "kaniššanzi"
+    },
+    {
+        "id": 10736,
+        "text": "kanišš-",
+        "gloss": "elect",
+        "pos": "V",
+        "classes": [
+            "mi"
+        ]
+    },
+    {
+        "id": 10737,
+        "text": "LUGAL-ez-zi-aḫ-ḫa-ri",
+        "syllabographic": true
+    },
+    {
+        "id": 10738,
+        "text": "tu-uk-ma",
+        "syllabographic": true
+    },
+    {
+        "id": 10739,
+        "text": "tu-uk",
+        "syllabographic": true
+    },
+    {
+        "id": 10741,
+        "text": "tuk"
+    },
+    {
+        "id": 10742,
+        "text": "am-me-ta-az",
+        "syllabographic": true
+    },
+    {
+        "id": 10743,
+        "text": "ammedaz"
+    },
+    {
+        "id": 10744,
+        "text": "SIG5-eš-zi",
+        "syllabographic": true
+    },
+    {
+        "id": 10745,
+        "text": "SIG5-ešš"
+    },
+    {
+        "id": 10754,
+        "text": "na-aš-ma",
+        "syllabographic": true
+    },
+    {
+        "id": 10756,
+        "text": "našma",
+        "gloss": "or",
+        "pos": "CONJ"
+    },
+    {
+        "id": 10763,
+        "text": "NINDA-an",
+        "syllabographic": true
+    },
+    {
+        "id": 10764,
+        "text": "NINDA",
+        "gloss": "bread",
+        "pos": "N"
+    },
+    {
+        "id": 10765,
+        "text": "e-ez-za-at-te-ni",
+        "syllabographic": true
+    },
+    {
+        "id": 10766,
+        "text": "ēzzatteni"
+    },
+    {
+        "id": 10767,
+        "text": "et-",
+        "gloss": "eat",
+        "pos": "V",
+        "classes": [
+            "mi"
+        ]
+    },
+    {
+        "id": 10768,
+        "text": "-tteni",
+        "gloss": "2pl. ending",
+        "pos": "AFF"
+    },
+    {
+        "id": 10769,
+        "text": "u̯a-a-tar-ma",
+        "syllabographic": true
+    },
+    {
+        "id": 10770,
+        "text": "u̯a-a-tar",
+        "syllabographic": true
+    },
+    {
+        "id": 10772,
+        "text": "u̯ātar",
+        "gloss": "water",
+        "pos": "N"
+    },
+    {
+        "id": 10773,
+        "text": "e-ku-ut-te-ni",
+        "syllabographic": true
+    },
+    {
+        "id": 10774,
+        "text": "ekutteni"
+    },
+    {
+        "id": 10775,
+        "text": "eku-",
+        "gloss": "drink",
+        "pos": "V",
+        "classes": [
+            "mi"
+        ]
+    },
+    {
+        "id": 10778,
+        "text": "nu-uš-ma-aš-kán",
+        "syllabographic": true
+    },
+    {
+        "id": 10780,
+        "text": "ŠU-az",
+        "syllabographic": true
+    },
+    {
+        "id": 10781,
+        "text": "ŠU",
+        "gloss": "hand",
+        "pos": "N"
+    },
+    {
+        "id": 10782,
+        "text": "ap-pa-an-da-at",
+        "syllabographic": true
+    },
+    {
+        "id": 10783,
+        "text": "appantat"
+    },
+    {
+        "id": 10784,
+        "text": "epp-",
+        "gloss": "seize",
+        "pos": "V",
+        "classes": [
+            "mi"
+        ]
+    },
+    {
+        "id": 10787,
+        "text": "na-at-ša-an",
+        "syllabographic": true
+    },
+    {
+        "id": 10789,
+        "text": "at",
+        "gloss": "3SG.N.NOM/ACC",
+        "pos": "PRON",
+        "classes": [
+            "clitic"
+        ]
+    },
+    {
+        "id": 10790,
+        "text": "ke-e-da-ni",
+        "syllabographic": true
+    },
+    {
+        "id": 10791,
+        "text": "kēdani"
+    },
+    {
+        "id": 10792,
+        "text": "kāš",
+        "gloss": "this",
+        "pos": "PRON"
+    },
+    {
+        "id": 10793,
+        "text": "li-in-ki-i̯a-aš",
+        "syllabographic": true
+    },
+    {
+        "id": 10794,
+        "text": "linkii̯aš"
+    },
+    {
+        "id": 10795,
+        "text": "lingai-",
+        "gloss": "oath",
+        "pos": "N",
+        "classes": [
+            "C"
+        ]
+    },
+    {
+        "id": 10796,
+        "text": "-aš",
+        "gloss": "gen.sg. ending",
+        "pos": "AFF"
+    },
+    {
+        "id": 10797,
+        "text": "tup-pí-i̯a",
+        "syllabographic": true
+    },
+    {
+        "id": 10798,
+        "text": "tuppii̯a"
+    },
+    {
+        "id": 10799,
+        "text": "tuppi-",
+        "gloss": "tablet",
+        "pos": "N",
+        "classes": [
+            "N"
+        ]
+    },
+    {
+        "id": 10800,
+        "text": "ki-it-ta-ri",
+        "syllabographic": true
+    },
+    {
+        "id": 10801,
+        "text": "kittari"
+    },
+    {
+        "id": 10802,
+        "text": "ki-",
+        "gloss": "lie",
+        "fullGloss": "to lie, to be written down",
+        "pos": "V",
+        "classes": [
+            "ttari"
+        ]
+    },
+    {
+        "id": 10825,
+        "text": "ku-it-ma-an-za",
+        "syllabographic": true
+    },
+    {
+        "id": 10826,
+        "text": "ku-it-ma-an",
+        "syllabographic": true
+    },
+    {
+        "id": 10828,
+        "text": "kuitman",
+        "gloss": "when"
+    },
+    {
+        "id": 10829,
+        "text": "ú-e-eš",
+        "syllabographic": true
+    },
+    {
+        "id": 10830,
+        "text": "uēš",
+        "gloss": "1PL",
+        "pos": "PRON"
+    },
+    {
+        "id": 10831,
+        "text": "nu-u-a",
+        "syllabographic": true
+    },
+    {
+        "id": 10832,
+        "text": "nūu̯a",
+        "gloss": "still",
+        "pos": "ADV"
+    },
+    {
+        "id": 10833,
+        "text": "^URU^ḫa-at-tu-ši",
+        "syllabographic": true
+    },
+    {
+        "id": 10834,
+        "text": "ḫattuši"
+    },
+    {
+        "id": 10835,
+        "text": "ḫattuša",
+        "pos": "NP"
+    },
+    {
+        "id": 10836,
+        "text": "e-šu-en",
+        "syllabographic": true
+    },
+    {
+        "id": 10837,
+        "text": "ešuen"
+    },
+    {
+        "id": 10838,
+        "text": "LÚ^MEŠ^",
+        "syllabographic": true
+    },
+    {
+        "id": 10839,
+        "text": "LÚ",
+        "gloss": "man",
+        "syllabographic": true
+    },
+    {
+        "id": 10840,
+        "text": "iš-ta-ma-aš-ša-an-zi",
+        "syllabographic": true
+    },
+    {
+        "id": 10841,
+        "text": "ištamaššanzi"
+    },
+    {
+        "id": 10842,
+        "text": "^URU^_KA4-AŠ-KA4-ma",
+        "syllabographic": true
+    },
+    {
+        "id": 10843,
+        "text": "^URU^KA4-AŠ-KA4-ma",
+        "syllabographic": true
+    },
+    {
+        "id": 10844,
+        "text": "^URU^_KA4-AŠ-KA4",
+        "gloss": "Kaška-lands",
+        "pos": "NP",
+        "syllabographic": true
+    },
+    {
+        "id": 10847,
+        "text": "^URU^KA4-AŠ-KA4",
+        "gloss": "Kaška-lands",
+        "pos": "NP",
+        "syllabographic": true
+    },
+    {
+        "id": 10850,
+        "text": "nu-un-na-aš",
+        "syllabographic": true
+    },
+    {
+        "id": 10852,
+        "text": "nnaš",
+        "gloss": "1PL.DAT/LOC/ACC",
+        "pos": "PRON",
+        "classes": [
+            "clitic"
+        ]
+    },
+    {
+        "id": 10853,
+        "text": "an-ni-ša-an-pát",
+        "syllabographic": true
+    },
+    {
+        "id": 10854,
+        "text": "an-ni-ša-an",
+        "syllabographic": true
+    },
+    {
+        "id": 10856,
+        "text": "pát",
+        "gloss": "EMPH"
+    },
+    {
+        "id": 10857,
+        "text": "annišan",
+        "gloss": "in the past",
+        "pos": "ADV"
+    },
+    {
+        "id": 10858,
+        "text": "na-ak-ki-e-eš",
+        "syllabographic": true
+    },
+    {
+        "id": 10859,
+        "text": "nakkiēš"
+    },
+    {
+        "id": 10860,
+        "text": "nakki-",
+        "gloss": "heavy",
+        "fullGloss": "important, heavy, difficult",
+        "pos": "ADJ"
+    },
+    {
+        "id": 10861,
+        "text": "-eš",
+        "gloss": "nom.pl. ending",
+        "pos": "AFF"
+    },
+    {
+        "id": 10862,
+        "text": "a-aš-ša-u-e-eš",
+        "syllabographic": true
+    },
+    {
+        "id": 10863,
+        "text": "āššauēš"
+    },
+    {
+        "id": 10864,
+        "text": "āššu-",
+        "gloss": "good",
+        "fullGloss": "good, beloved",
+        "pos": "ADJ"
+    },
+    {
+        "id": 10865,
+        "text": "e-šu-u-en",
+        "syllabographic": true
+    },
+    {
+        "id": 10866,
+        "text": "ešuu̯en"
+    },
+    {
+        "id": 10867,
+        "text": "le-en-ki-i̯a-aš",
+        "syllabographic": true
+    },
+    {
+        "id": 10868,
+        "text": "lenkiaš"
+    },
+    {
+        "id": 10871,
+        "text": "šal-li-iš",
+        "syllabographic": true
+    },
+    {
+        "id": 10872,
+        "text": "šalliš"
+    },
+    {
+        "id": 10873,
+        "text": "šalli-",
+        "gloss": "great",
+        "fullGloss": "great, large",
+        "pos": "ADJ"
+    },
+    {
+        "id": 10874,
+        "text": "-š",
+        "gloss": "nom.sg. ending",
+        "pos": "AFF"
+    },
+    {
+        "id": 10875,
+        "text": "u̯a-aš-ta-a-iš",
+        "syllabographic": true
+    },
+    {
+        "id": 10876,
+        "text": "u̯aštāiš"
+    },
+    {
+        "id": 10877,
+        "text": "u̯aštai-",
+        "gloss": "disaster",
+        "fullGloss": "disaster, sin",
+        "pos": "N",
+        "classes": [
+            "C"
+        ]
+    },
+    {
+        "id": 10878,
+        "text": "ki-ša-ri",
+        "syllabographic": true
+    },
+    {
+        "id": 10879,
+        "text": "kišari"
+    },
+    {
+        "id": 10880,
+        "text": "-ri",
+        "gloss": "m/p. additional ending",
+        "pos": "AFF"
+    },
+    {
+        "id": 10882,
+        "text": "na-aš-šu-za",
+        "syllabographic": true
+    },
+    {
+        "id": 10883,
+        "text": "na-aš-šu",
+        "syllabographic": true
+    },
+    {
+        "id": 10885,
+        "text": "naššu",
+        "gloss": "either",
+        "pos": "CONJ"
+    },
+    {
+        "id": 10886,
+        "text": "MUNUS.LUGAL-aš",
+        "syllabographic": true
+    },
+    {
+        "id": 10887,
+        "text": "MUNUS.LUGAL",
+        "gloss": "queen",
+        "pos": "N",
+        "syllabographic": true
+    },
+    {
+        "id": 10888,
+        "text": "DINGIR^LIM^-iš",
+        "syllabographic": true
+    },
+    {
+        "id": 10891,
+        "text": "^GIŠ^UMBIN",
+        "gloss": "wheel",
+        "syllabographic": true
+    },
+    {
+        "id": 10892,
+        "text": "GIM-an",
+        "gloss": "just as",
+        "syllabographic": true
+    },
+    {
+        "id": 10893,
+        "text": "SAG.DU-aš-ma-an-na-aš",
+        "syllabographic": true
+    },
+    {
+        "id": 10894,
+        "text": "SAG.DU",
+        "gloss": "head"
+    },
+    {
+        "id": 10896,
+        "text": "^LÚ^BÁḪAR-aš",
+        "syllabographic": true
+    },
+    {
+        "id": 10897,
+        "text": "^LÚ^BÁḪAR",
+        "gloss": "potter",
+        "pos": "N",
+        "syllabographic": true
+    },
+    {
+        "id": 10898,
+        "text": "ú-e-ḫa-at-ta-ri",
+        "syllabographic": true
+    },
+    {
+        "id": 10899,
+        "text": "ueḫattari"
+    },
+    {
+        "id": 10900,
+        "text": "ueḫ-",
+        "gloss": "turn",
+        "pos": "V",
+        "classes": [
+            "ttari"
+        ]
+    },
+    {
+        "id": 10901,
+        "text": "SAG.DU-aš",
+        "syllabographic": true
+    },
+    {
+        "id": 10905,
+        "text": "^d^UTU-uš",
+        "syllabographic": true
+    },
+    {
+        "id": 10906,
+        "text": "^d^UTU",
+        "gloss": "Sun-god",
+        "pos": "NP",
+        "syllabographic": true
+    },
+    {
+        "id": 10907,
+        "text": "dam-me-iš-ḫa-an-da-aš",
+        "syllabographic": true
+    },
+    {
+        "id": 10908,
+        "text": "dammeišḫandaš"
+    },
+    {
+        "id": 10909,
+        "text": "dammešḫant-",
+        "gloss": "suppressed",
+        "pos": "ADJ"
+    },
+    {
+        "id": 10910,
+        "text": "ku-ri-im-ma-aš-ša",
+        "syllabographic": true
+    },
+    {
+        "id": 10911,
+        "text": "ku-ri-im-ma-aš",
+        "syllabographic": true
+    },
+    {
+        "id": 10913,
+        "text": "kurimmaš"
+    },
+    {
+        "id": 10914,
+        "text": "kurimma-",
+        "gloss": "robbed",
+        "pos": "ADJ"
+    },
+    {
+        "id": 10915,
+        "text": "an-tu-uḫ-ḫa-aš",
+        "syllabographic": true
+    },
+    {
+        "id": 10916,
+        "text": "antuḫḫaš"
+    },
+    {
+        "id": 10917,
+        "text": "antuḫsaš"
+    },
+    {
+        "id": 10918,
+        "text": "antuḫsa-",
+        "gloss": "person",
+        "pos": "N",
+        "classes": [
+            "C"
+        ]
+    },
+    {
+        "id": 10919,
+        "text": "at-ta-aš",
+        "syllabographic": true
+    },
+    {
+        "id": 10920,
+        "text": "attaš"
+    },
+    {
+        "id": 10921,
+        "text": "atta-",
+        "gloss": "father",
+        "pos": "N",
+        "classes": [
+            "C"
+        ]
+    },
+    {
+        "id": 10922,
+        "text": "an-na-aš",
+        "syllabographic": true
+    },
+    {
+        "id": 10923,
+        "text": "annaš"
+    },
+    {
+        "id": 10924,
+        "text": "anna-",
+        "gloss": "mother",
+        "pos": "N",
+        "classes": [
+            "C"
+        ]
+    },
+    {
+        "id": 10927,
+        "text": "e-et-mi",
+        "syllabographic": true
+    },
+    {
+        "id": 10928,
+        "text": "ētmi"
+    },
+    {
+        "id": 10931,
+        "text": "ki-nu-un-za",
+        "syllabographic": true
+    },
+    {
+        "id": 10932,
+        "text": "ki-nu-un",
+        "syllabographic": true
+    },
+    {
+        "id": 10934,
+        "text": "kinun",
+        "gloss": "now",
+        "fullGloss": "now, presently",
+        "pos": "ADV"
+    },
+    {
+        "id": 10935,
+        "text": "e-ku-mi",
+        "syllabographic": true
+    },
+    {
+        "id": 10936,
+        "text": "ekumi"
+    },
+    {
+        "id": 10939,
+        "text": "ḫal-ki^ḪI.A^-uš",
+        "syllabographic": true
+    },
+    {
+        "id": 10940,
+        "text": "ḫal-ki^ḪI.A^",
+        "syllabographic": true
+    },
+    {
+        "id": 10941,
+        "text": "ḫalki",
+        "gloss": "grain",
+        "pos": "N",
+        "classes": [
+            "C"
+        ]
+    },
+    {
+        "id": 10942,
+        "text": "BURU5^ḪI.A^",
+        "syllabographic": true
+    },
+    {
+        "id": 10943,
+        "text": "BURU5",
+        "gloss": "locust",
+        "syllabographic": true
+    },
+    {
+        "id": 10944,
+        "text": "e-ez-za-aš-ta",
+        "syllabographic": true
+    },
+    {
+        "id": 10945,
+        "text": "ēzzašta"
+    },
+    {
+        "id": 10948,
+        "text": "ke-e-el-ma",
+        "syllabographic": true
+    },
+    {
+        "id": 10949,
+        "text": "ke-e-el",
+        "syllabographic": true
+    },
+    {
+        "id": 10951,
+        "text": "kēl"
+    },
+    {
+        "id": 10952,
+        "text": "tup-pí-aš",
+        "syllabographic": true
+    },
+    {
+        "id": 10953,
+        "text": "tuppiaš"
+    },
+    {
+        "id": 10954,
+        "text": "ud-da-a-ar",
+        "syllabographic": true
+    },
+    {
+        "id": 10955,
+        "text": "uddār",
+        "gloss": "words"
+    },
+    {
+        "id": 10956,
+        "text": "pa-aḫ-ḫa-aš-ti",
+        "syllabographic": true
+    },
+    {
+        "id": 10957,
+        "text": "paḫḫašti"
+    },
+    {
+        "id": 10960,
+        "text": "ku-u̯a-at-za",
+        "syllabographic": true
+    },
+    {
+        "id": 10961,
+        "text": "ku-u̯a-at",
+        "syllabographic": true
+    },
+    {
+        "id": 10963,
+        "text": "kuu̯at",
+        "gloss": "why"
+    },
+    {
+        "id": 10964,
+        "text": "e-za-at-ti",
+        "syllabographic": true
+    },
+    {
+        "id": 10965,
+        "text": "ezatti"
+    },
+    {
+        "id": 10966,
+        "text": "e-ku-ut-ti",
+        "syllabographic": true
+    },
+    {
+        "id": 10967,
+        "text": "ekutti"
+    },
+    {
+        "id": 10970,
+        "text": "LUGAL-uš-kán",
+        "syllabographic": true
+    },
+    {
+        "id": 10972,
+        "text": "^GIŠ^AB-az",
+        "syllabographic": true
+    },
+    {
+        "id": 10973,
+        "text": "ku-u-uš-pát",
+        "syllabographic": true
+    },
+    {
+        "id": 10974,
+        "text": "ku-u-uš",
+        "syllabographic": true
+    },
+    {
+        "id": 10976,
+        "text": "kūš"
+    },
+    {
+        "id": 10979,
+        "text": "^GIŠ^GU.ZA-ŠU-ma-za-kán",
+        "syllabographic": true
+    },
+    {
+        "id": 10983,
+        "text": "ta-ma-iš",
+        "syllabographic": true
+    },
+    {
+        "id": 10984,
+        "text": "tamaiš"
+    },
+    {
+        "id": 10985,
+        "text": "tamai-",
+        "gloss": "other",
+        "pos": "ADJ"
+    },
+    {
+        "id": 10986,
+        "text": "ku-iš-ki",
+        "syllabographic": true
+    },
+    {
+        "id": 10987,
+        "text": "kuiški",
+        "gloss": "someone",
+        "pos": "PRON"
+    },
+    {
+        "id": 10988,
+        "text": "e-ša-ri",
+        "syllabographic": true
+    },
+    {
+        "id": 10989,
+        "text": "ešari"
+    },
+    {
+        "id": 10992,
+        "text": "da-me-da-ni",
+        "syllabographic": true
+    },
+    {
+        "id": 10993,
+        "text": "damedani"
+    },
+    {
+        "id": 10994,
+        "text": "an-da",
+        "syllabographic": true
+    },
+    {
+        "id": 10995,
+        "text": "anda",
+        "gloss": "inside",
+        "pos": "ADV"
+    },
+    {
+        "id": 10996,
+        "text": "ták-ku",
+        "syllabographic": true
+    },
+    {
+        "id": 10997,
+        "text": "takku",
+        "gloss": "if",
+        "pos": "CONJ"
+    },
+    {
+        "id": 10998,
+        "text": "LÚ-aš",
+        "syllabographic": true
     }
 ]

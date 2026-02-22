@@ -107,7 +107,21 @@
         "name": "hitt-2pl",
         "fromLang": "Hitt",
         "toLang": "Hitt",
-        "branches": [],
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "AppendMorpheme",
+                        "args": [
+                            "10768"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
         "addedCategories": ".2PL",
         "fromPOS": [
             "V"
@@ -196,7 +210,21 @@
         "name": "hitt-nom-sg",
         "fromLang": "Hitt",
         "toLang": "Hitt",
-        "branches": [],
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "AppendMorpheme",
+                        "args": [
+                            "10874"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
         "addedCategories": ".NOM.SG",
         "fromPOS": [
             "N"
@@ -207,10 +235,25 @@
         "name": "hitt-nom-pl",
         "fromLang": "Hitt",
         "toLang": "Hitt",
-        "branches": [],
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "AppendMorpheme",
+                        "args": [
+                            "10861"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
         "addedCategories": ".NOM.PL",
         "fromPOS": [
-            "N"
+            "N",
+            "ADJ"
         ]
     },
     {
@@ -236,7 +279,8 @@
         "addedCategories": ".ACC.SG",
         "fromPOS": [
             "N",
-            "ADJ"
+            "ADJ",
+            "PRON"
         ]
     },
     {
@@ -255,10 +299,25 @@
         "name": "hitt-gen-sg",
         "fromLang": "Hitt",
         "toLang": "Hitt",
-        "branches": [],
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "AppendMorpheme",
+                        "args": [
+                            "10796"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
         "addedCategories": ".GEN.SG",
         "fromPOS": [
-            "N"
+            "N",
+            "PRON"
         ]
     },
     {
@@ -278,6 +337,21 @@
         "fromLang": "Hitt",
         "toLang": "Hitt",
         "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEndingToMorpheme",
+                        "args": [
+                            "10206"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "a"
+                }
+            },
             {
                 "instructions": [
                     {
@@ -303,7 +377,21 @@
         "name": "hitt-dat-pl",
         "fromLang": "Hitt",
         "toLang": "Hitt",
-        "branches": [],
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "AppendMorpheme",
+                        "args": [
+                            "10714"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
         "addedCategories": ".DAT.PL",
         "fromPOS": [
             "N"
@@ -339,7 +427,21 @@
         "name": "hitt-loc-pl",
         "fromLang": "Hitt",
         "toLang": "Hitt",
-        "branches": [],
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "10133"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
         "addedCategories": ".LOC.PL",
         "fromPOS": [
             "N"
@@ -350,7 +452,21 @@
         "name": "hitt-all-sg",
         "fromLang": "Hitt",
         "toLang": "Hitt",
-        "branches": [],
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "AppendMorpheme",
+                        "args": [
+                            "10727"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
         "addedCategories": ".ALL.SG",
         "fromPOS": [
             "N"
@@ -449,7 +565,7 @@
     },
     {
         "id": 10267,
-        "name": "hitt-acc-gen",
+        "name": "hitt-akk-gen",
         "fromLang": "Hitt",
         "toLang": "Hitt",
         "branches": [],
@@ -779,6 +895,20 @@
                     {
                         "type": "AppendMorpheme",
                         "args": [
+                            "10584"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "wordIs",
+                    "wordClass": "ari"
+                }
+            },
+            {
+                "instructions": [
+                    {
+                        "type": "AppendMorpheme",
+                        "args": [
                             "10580"
                         ]
                     }
@@ -814,6 +944,180 @@
             }
         ],
         "addedCategories": ".MP.3PL",
+        "fromPOS": [
+            "V"
+        ]
+    },
+    {
+        "id": 10602,
+        "name": "hitt-pst-mp-1sg",
+        "fromLang": "Hitt",
+        "toLang": "Hitt",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "AppendMorpheme",
+                        "args": [
+                            "10601"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".PST.MP.1SG",
+        "fromPOS": [
+            "V"
+        ]
+    },
+    {
+        "id": 10604,
+        "name": "hitt-pst-mp-1pl",
+        "fromLang": "Hitt",
+        "toLang": "Hitt",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "AppendMorpheme",
+                        "args": [
+                            "10603"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".PST.MP.1PL",
+        "fromPOS": [
+            "V"
+        ]
+    },
+    {
+        "id": 10606,
+        "name": "hitt-pst-mp-2sg",
+        "fromLang": "Hitt",
+        "toLang": "Hitt",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "AppendMorpheme",
+                        "args": [
+                            "10605"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".PST.MP.2SG",
+        "fromPOS": [
+            "V"
+        ]
+    },
+    {
+        "id": 10608,
+        "name": "hitt-pst-mp-2pl",
+        "fromLang": "Hitt",
+        "toLang": "Hitt",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "AppendMorpheme",
+                        "args": [
+                            "10607"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".PST.MP.2PL",
+        "fromPOS": [
+            "V"
+        ]
+    },
+    {
+        "id": 10610,
+        "name": "hitt-pst-mp-3sg",
+        "fromLang": "Hitt",
+        "toLang": "Hitt",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "AppendMorpheme",
+                        "args": [
+                            "10609"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".PST.MP.3SG",
+        "fromPOS": [
+            "V"
+        ]
+    },
+    {
+        "id": 10612,
+        "name": "hitt-pst-mp-3pl",
+        "fromLang": "Hitt",
+        "toLang": "Hitt",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "AppendMorpheme",
+                        "args": [
+                            "10611"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".PST.MP.3PL",
+        "fromPOS": [
+            "V"
+        ]
+    },
+    {
+        "id": 10881,
+        "name": "hitt-mp-ri",
+        "fromLang": "Hitt",
+        "toLang": "Hitt",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "AppendMorpheme",
+                        "args": [
+                            "10880"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
         "fromPOS": [
             "V"
         ]
