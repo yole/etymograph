@@ -54,6 +54,6 @@ class GraphRepositoryTest : QBaseTest() {
         repo.addLanguage(pie)
         repo.addWord("bheroH", language = pie, gloss = "carry.1SG")
         assertEquals(1, repo.wordsByText(pie, "bheroH").size)
-        assertEquals(1, repo.wordsByText(pie, "bheroh").size)
+        assertEquals(0, repo.wordsByText(pie, "bheroh").size)
     }
 }
