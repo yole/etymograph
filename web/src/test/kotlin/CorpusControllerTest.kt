@@ -86,4 +86,15 @@ class CorpusControllerTest {
         val textJson = corpusController.textJson(graph, corpusTextViewModel.id)
         assertEquals("goldenly", textJson.lines.single().words[1].contextGloss)
     }
+
+    @Test
+    fun candidateUrlKey() {
+        val corpusParams = CorpusController.CorpusTextParams(text = "^m^mur-si")
+        val corpusTextViewModel = corpusController.newText(graph, "q", corpusParams)
+
+        val word = graph.findOrAddWord("^m^mur-si", fixture.q, "Mursi")
+        val textJson = corpusController.textJson(graph, corpusTextViewModel.id)
+        assertEquals("mmur-si", textJson.lines.single().words[0].wordUrlKey)
+        assertEquals(word.id, textJson.lines.single().words[0].wordId)
+    }
 }

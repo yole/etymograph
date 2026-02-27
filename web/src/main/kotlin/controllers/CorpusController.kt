@@ -99,15 +99,17 @@ class CorpusController {
             text,
             mapToLines(repo).map { line ->
                 CorpusLineViewModel(line.corpusWords.map { cw ->
+                    val wordUrlKey = (cw.word?.text ?: cw.wordCandidates?.firstOrNull()?.text)?.let {
+                        urlKey(language, it, cw.word?.syllabographic ?: language.syllabographic)
+                    }
                     CorpusWordViewModel(cw.index,
                         cw.segmentedText,
                         cw.normalizedText,
                         cw.syllabogramSequence,
                         cw.segmentedGloss ?: "",
                         cw.contextGloss,
-                        cw.word?.id,
-                        cw.word?.text,
-                        cw.word?.text?.let { urlKey(language, it, cw.word?.syllabographic ?: language.syllabographic) },
+                        cw.word?.id ?: cw.wordCandidates?.firstOrNull()?.id?.takeIf { wordUrlKey != null },
+                        cw.word?.text, wordUrlKey,
                         cw.wordCandidates?.map { CorpusWordCandidateViewModel(it.id, it.getOrComputeGloss(repo)) },
                         cw.stressIndex, cw.stressLength, cw.homonym)
                 })
