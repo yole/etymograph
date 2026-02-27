@@ -139,6 +139,8 @@ object TlhDigSyllabogramSyntax : SyllabogramSyntax() {
     }
 }
 
+private val number = Regex("\\d$")
+
 fun suggestTranscription(word: Word): String {
     val syllabograms = TlhDigSyllabogramSyntax.parse(word.text)
     fun longVowel(c: Char): Char = hittiteLongVowels[hittiteVowels.indexOf(c)]
@@ -150,6 +152,8 @@ fun suggestTranscription(word: Word): String {
                 val text = Normalizer.normalize(s.text, Normalizer.Form.NFKD)
                     .replace(AccentType.Acute.combiningMark.toString(), "")
                     .replace(AccentType.Grave.combiningMark.toString(), "")
+                    .replace(number, "")
+
                 if (isHittiteVowel(text[0])) {
                     if (lastOrNull() == text[0] || lastOrNull() == longVowel(text[0])) {
                         if (text.length == 1 || prev?.text?.length == 1) {

@@ -126,6 +126,12 @@ class SyllabogramTest {
         assertEquals("u̯aštāiš", suggestTranscription(word))
     }
 
+    @Test
+    fun transcribeRemoveNumbers() {
+        val word = hittiteWord("le-en-ka4-nu-ut")
+        assertEquals("lenkanut", suggestTranscription(word))
+    }
+
     private fun hittiteWord(transliteration: String): Word {
         val ht = Language("Hittite", "Ht")
         ht.syllabographic = true
