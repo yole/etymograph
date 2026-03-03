@@ -179,7 +179,7 @@ function TranslationView(params: {translation: TranslationViewModel}) {
 
     return <>
         {(!showTranslationForm) && <>
-            <div>{t.text} <SourceRefs source={t.source}/></div>
+            <div>"{t.text}" <SourceRefs source={t.source}/></div>
             {allowEdit() && <>
                 <button onClick={() => setShowTranslationForm(!showTranslationForm)}>Edit translation</button>
                 {' '}
@@ -274,7 +274,7 @@ export default function CorpusText(params) {
                      ]}/>
         {!editMode && <>
             {segments.map(segment => (
-                <div key={`segment-${segment.start}-${segment.end}`}>
+                <div key={`segment-${segment.start}-${segment.end}`} className="segment">
                     {corpusText.lines.map(line => {
                         const segmentWords = line.words.filter(w => w.index >= segment.start && w.index < segment.end)
                         if (segmentWords.length === 0) return null
@@ -327,7 +327,7 @@ export default function CorpusText(params) {
                         </>
                     }
                     {segment.translations.length > 0 && <>
-                        <h4>Translations</h4>
+                        {segment.translations.length > 1 && <h4>Translations</h4>}
                         {segment.translations.map(t =>
                             <TranslationView translation={t}></TranslationView>
                         )}
