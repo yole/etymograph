@@ -160,6 +160,46 @@ function buildSegments(corpusText: CorpusTextViewModel): { segments: TextSegment
     return {segments, unanchoredTranslations}
 }
 
+function TranslationView(params: {translation: TranslationViewModel}) {
+    const router = useRouter()
+    const graph = router.query.graph as string;
+    const t = params.translation
+    const [showTranslationForm, setShowTranslationForm] = useState(false)
+
+    function translationSubmitted() {
+        setShowTranslationForm(false)
+        router.replace(router.asPath)
+    }
+
+    function deleteTranslationClicked(id: number) {
+        if (window.confirm("Delete this translation?")) {
+            deleteTranslation(graph, id).then(() => router.replace(router.asPath))
+        }
+    }
+
+    return <>
+        {(!showTranslationForm) && <>
+            <div>{t.text} <SourceRefs source={t.source}/></div>
+            {allowEdit() && <>
+                <button onClick={() => setShowTranslationForm(!showTranslationForm)}>Edit translation</button>
+                {' '}
+                <button onClick={() => deleteTranslationClicked(t.id)}>Delete translation</button>
+            </>}
+        </>}
+        {showTranslationForm &&
+            <TranslationForm corpusTextId={Number.parseInt(router.query.id as string)}
+                             updateId={t.id}
+                             defaultValues={{
+                                 text: t.text,
+                                 source: t.sourceEditableText
+                             }}
+                             submitted={translationSubmitted}
+                             cancelled={() => setShowTranslationForm(!showTranslationForm)}
+                             focusTarget='text'
+            />}
+    </>
+}
+
 export default function CorpusText(params) {
     const corpusText = params.loaderData as CorpusTextViewModel
     const [editMode, setEditMode] = useState(false)
@@ -167,7 +207,6 @@ export default function CorpusText(params) {
     const [predefWord, setPredefWord] = useState("")
     const [wordIndex, setWordIndex] = useState(-1)
     const [showTranslationForm, setShowTranslationForm] = useState(false)
-    const [editTranslationId, setEditTranslationId] = useState(undefined)
     const [newTranslationAnchorStart, setNewTranslationAnchorStart] = useState<number | undefined>(undefined)
     const [alternatives, setAlternatives] = useState([])
     const [errorText, setErrorText] = useState("")
@@ -207,28 +246,20 @@ export default function CorpusText(params) {
         setWordFormVisible(false)
     }
 
-    function toggleTranslationForm(id?: number, anchorStartIndex?: number) {
-        if (showTranslationForm && editTranslationId === id && newTranslationAnchorStart === anchorStartIndex) {
+    function toggleTranslationForm(anchorStartIndex?: number) {
+        if (showTranslationForm && newTranslationAnchorStart === anchorStartIndex) {
             setShowTranslationForm(false)
             setNewTranslationAnchorStart(undefined)
         } else {
             setShowTranslationForm(true)
-            setEditTranslationId(id)
             setNewTranslationAnchorStart(anchorStartIndex)
         }
     }
 
     function translationSubmitted() {
         setShowTranslationForm(false)
-        setEditTranslationId(undefined)
         setNewTranslationAnchorStart(undefined)
         router.replace(router.asPath)
-    }
-
-    function deleteTranslationClicked(id: number) {
-        if (window.confirm("Delete this translation?")) {
-            deleteTranslation(graph, id).then(() => router.replace(router.asPath))
-        }
     }
 
     function lockAssociationsClicked() {
@@ -256,7 +287,7 @@ export default function CorpusText(params) {
                                             word={w}
                                             corpusText={corpusText}
                                             showWordForm={showWordForm}
-                                            showTranslationFormAtWord={(clickedWordIndex) => toggleTranslationForm(undefined, clickedWordIndex)}
+                                            showTranslationFormAtWord={(clickedWordIndex) => toggleTranslationForm(clickedWordIndex)}
                                         />
                                         <br/>
                                         {w.wordCandidates && w.wordCandidates.length > 1 &&
@@ -297,29 +328,11 @@ export default function CorpusText(params) {
                     }
                     {segment.translations.length > 0 && <>
                         <h4>Translations</h4>
-                        {segment.translations.map(t => <>
-                              {(!showTranslationForm || editTranslationId !== t.id) && <>
-                                  <div>{t.text} <SourceRefs source={t.source}/></div>
-                                  {allowEdit() && <>
-                                      <button onClick={() => toggleTranslationForm(t.id)}>Edit translation</button>
-                                      {' '}
-                                      <button onClick={() => deleteTranslationClicked(t.id)}>Delete translation</button>
-                                  </>}
-                              </>}
-                            {showTranslationForm && editTranslationId === t.id &&
-                                <TranslationForm corpusTextId={Number.parseInt(router.query.id as string)}
-                                                 updateId={t.id}
-                                                 defaultValues={{
-                                                     text: t.text,
-                                                     source: t.sourceEditableText
-                                                 }}
-                                                 submitted={translationSubmitted}
-                                                 cancelled={() => toggleTranslationForm(t.id)}
-                                                 focusTarget='text'
-                                />}
-                        </>)}
+                        {segment.translations.map(t =>
+                            <TranslationView translation={t}></TranslationView>
+                        )}
                     </>}
-                    {showTranslationForm && editTranslationId === undefined && newTranslationAnchorStart !== undefined &&
+                    {showTranslationForm && newTranslationAnchorStart !== undefined &&
                         newTranslationAnchorStart >= segment.start && newTranslationAnchorStart < segment.end &&
                         <TranslationForm
                             corpusTextId={Number.parseInt(router.query.id as string)}
@@ -327,7 +340,6 @@ export default function CorpusText(params) {
                             submitted={translationSubmitted}
                             cancelled={() => {
                                 setShowTranslationForm(false)
-                                setEditTranslationId(undefined)
                                 setNewTranslationAnchorStart(undefined)
                             }}
                             focusTarget='text'
@@ -354,25 +366,7 @@ export default function CorpusText(params) {
         {unanchoredTranslations.length > 0 && <>
             <h3>Translations</h3>
             {unanchoredTranslations.map(t => <>
-                  {(!showTranslationForm || editTranslationId !== t.id) && <>
-                      <div>{t.text} <SourceRefs source={t.source}/></div>
-                      {allowEdit() && <>
-                          <button onClick={() => toggleTranslationForm(t.id)}>Edit translation</button>
-                          {' '}
-                          <button onClick={() => deleteTranslationClicked(t.id)}>Delete translation</button>
-                      </>}
-                  </>}
-                {showTranslationForm && editTranslationId === t.id &&
-                    <TranslationForm corpusTextId={Number.parseInt(router.query.id as string)}
-                                     updateId={t.id}
-                                     defaultValues={{
-                                         text: t.text,
-                                         source: t.sourceEditableText
-                                     }}
-                                     submitted={translationSubmitted}
-                                     cancelled={() => toggleTranslationForm(t.id)}
-                                     focusTarget='text'
-                    />}
+                <TranslationView translation={t}/>
             </>)}
         </>}
         {allowEdit() && <p>
