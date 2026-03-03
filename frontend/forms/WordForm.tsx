@@ -89,7 +89,11 @@ export default function WordForm(props: WordFormProps) {
     }
 
     async function updateWordStatus(data) {
-        const wordResponse = await fetchBackend(graph, `word/${data.language}/${data.text}`)
+        let url = `word/${data.language}/${data.text}`
+        if (data.syllabographic) {
+            url += `?syllabographic=true`
+        }
+        const wordResponse = await fetchBackend(graph, url)
         if (wordResponse.notFound !== undefined) {
             setNewWord(true)
             setWordDefinitions([])
@@ -153,7 +157,7 @@ export default function WordForm(props: WordFormProps) {
         </>}
         </tbody></table>
         {!props.hideReconstructed && <FormCheckbox id="reconstructed" label="Reconstructed"/>}
-        {props.showSyllabographic && <FormCheckbox id="syllabographic" label="Syllabographic"/>}
+        {props.showSyllabographic && <FormCheckbox id="syllabographic" label="Syllabographic" handleChange={updateWordStatus}/>}
         {props.addToCompound !== undefined && <FormCheckbox id="markHead" label="Mark as head"/>}
     </EtymographForm>
 }

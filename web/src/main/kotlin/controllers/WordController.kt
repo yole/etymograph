@@ -134,10 +134,15 @@ class WordController(val dictionaryService: DictionaryService) {
     )
 
     @GetMapping("/{graph}/word/{lang}/{text}")
-    fun wordJson(repo: GraphRepository, @PathVariable lang: String, @PathVariable text: String): List<WordViewModel> {
+    fun wordJson(
+        repo: GraphRepository,
+        @PathVariable lang: String,
+        @PathVariable text: String,
+        @RequestParam(required = false, defaultValue = "false") syllabographic: Boolean
+    ): List<WordViewModel> {
         val language = repo.resolveLanguage(lang)
 
-        val words = repo.wordsByText(language, text)
+        val words = repo.wordsByText(language, text, syllabographic)
         if (words.isEmpty())
             notFound("No word with text $text")
 
