@@ -89,6 +89,11 @@ export default function WordForm(props: WordFormProps) {
     }
 
     async function updateWordStatus(data) {
+        if (!data.text) {
+            setNewWord(false)
+            setWordDefinitions([])
+            return
+        }
         let url = `word/${data.language}/${data.text}`
         if (data.syllabographic) {
             url += `?syllabographic=true`
