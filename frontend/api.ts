@@ -255,6 +255,10 @@ export function editTranslation(graph: string, id: number, data: TranslationPara
     return postToBackend(`${graph}/translations/${id}`, data)
 }
 
+export function deleteTranslation(graph: string, id: number) {
+    return postToBackend(`${graph}/translations/${id}/delete`, {})
+}
+
 export function associateWord(graph: string, corpusTextId: number, wordId: number, index: number, contextGloss?: string) {
     return postToBackend(`${graph}/corpus/text/${corpusTextId}/associate`, {wordId, index, contextGloss})
 }

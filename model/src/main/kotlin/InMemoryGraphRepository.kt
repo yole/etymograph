@@ -93,6 +93,11 @@ open class InMemoryGraphRepository : GraphRepository() {
         return translations[corpusText.id] ?: emptyList()
     }
 
+    override fun deleteTranslation(translation: Translation) {
+        translations[translation.corpusText.id]?.removeIf { it.id == translation.id }
+        deleteLangEntity(translation)
+    }
+
     override fun wordsByText(lang: Language, text: String, syllabographic: Boolean): List<Word> {
         val wordsInLang = words[lang] ?: return emptyList()
         return wordsInLang[if (syllabographic) text else lang.normalizeWord(text)] ?: emptyList()

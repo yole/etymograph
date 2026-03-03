@@ -61,4 +61,11 @@ class TranslationController {
         translation.source = source
         return translationToViewModel(translation, repo)
     }
+
+    @PostMapping("/{graph}/translations/{id}/delete")
+    fun deleteTranslation(repo: GraphRepository, @PathVariable id: Int) {
+        val translation = repo.langEntityById(id) as? Translation
+            ?: notFound("No translation with ID $id")
+        repo.deleteTranslation(translation)
+    }
 }

@@ -33,6 +33,7 @@ abstract class GraphRepository {
 
     abstract fun addTranslation(corpusText: CorpusText, text: String, source: List<SourceRef>): Translation
     abstract fun translationsForText(corpusText: CorpusText): List<Translation>
+    abstract fun deleteTranslation(translation: Translation)
 
     abstract fun getLinksFrom(entity: LangEntity): Iterable<Link>
     abstract fun getLinksTo(entity: LangEntity): Iterable<Link>

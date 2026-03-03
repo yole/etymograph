@@ -8,7 +8,7 @@ import {
     allowEdit,
     fetchAlternatives,
     acceptAlternative,
-    fetchPathsForAllGraphs, callApiAndRefresh, lockWordAssociations
+    fetchPathsForAllGraphs, callApiAndRefresh, lockWordAssociations, deleteTranslation
 } from "@/api";
 import {useRouter} from "next/router";
 import Link from "next/link";
@@ -225,6 +225,12 @@ export default function CorpusText(params) {
         router.replace(router.asPath)
     }
 
+    function deleteTranslationClicked(id: number) {
+        if (window.confirm("Delete this translation?")) {
+            deleteTranslation(graph, id).then(() => router.replace(router.asPath))
+        }
+    }
+
     function lockAssociationsClicked() {
         callApiAndRefresh(() => lockWordAssociations(graph, corpusText.id),
             router, setErrorText)
@@ -292,10 +298,14 @@ export default function CorpusText(params) {
                     {segment.translations.length > 0 && <>
                         <h4>Translations</h4>
                         {segment.translations.map(t => <>
-                            {(!showTranslationForm || editTranslationId !== t.id) && <>
-                                <div>{t.text} <SourceRefs source={t.source}/></div>
-                                {allowEdit() && <button onClick={() => toggleTranslationForm(t.id)}>Edit translation</button>}
-                            </>}
+                              {(!showTranslationForm || editTranslationId !== t.id) && <>
+                                  <div>{t.text} <SourceRefs source={t.source}/></div>
+                                  {allowEdit() && <>
+                                      <button onClick={() => toggleTranslationForm(t.id)}>Edit translation</button>
+                                      {' '}
+                                      <button onClick={() => deleteTranslationClicked(t.id)}>Delete translation</button>
+                                  </>}
+                              </>}
                             {showTranslationForm && editTranslationId === t.id &&
                                 <TranslationForm corpusTextId={Number.parseInt(router.query.id as string)}
                                                  updateId={t.id}
@@ -342,12 +352,16 @@ export default function CorpusText(params) {
                                      submitted={textSubmitted}
                                      cancelled={() => setEditMode(false)}/>}
         {unanchoredTranslations.length > 0 && <>
-            <h3>Unanchored translations</h3>
+            <h3>Translations</h3>
             {unanchoredTranslations.map(t => <>
-                {(!showTranslationForm || editTranslationId !== t.id) && <>
-                    <div>{t.text} <SourceRefs source={t.source}/></div>
-                    {allowEdit() && <button onClick={() => toggleTranslationForm(t.id)}>Edit translation</button>}
-                </>}
+                  {(!showTranslationForm || editTranslationId !== t.id) && <>
+                      <div>{t.text} <SourceRefs source={t.source}/></div>
+                      {allowEdit() && <>
+                          <button onClick={() => toggleTranslationForm(t.id)}>Edit translation</button>
+                          {' '}
+                          <button onClick={() => deleteTranslationClicked(t.id)}>Delete translation</button>
+                      </>}
+                  </>}
                 {showTranslationForm && editTranslationId === t.id &&
                     <TranslationForm corpusTextId={Number.parseInt(router.query.id as string)}
                                      updateId={t.id}

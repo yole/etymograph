@@ -1199,6 +1199,23 @@ paths:
             '*/*':
               schema:
                 $ref: "#/components/schemas/TranslationViewModel"
+  /{graph}/translations/{id}/delete:
+    post:
+      summary: "POST {graph}/translations/{id}/delete"
+      operationId: "deleteTranslation"
+      parameters:
+        - name: "graph"
+          in: "path"
+          required: true
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int32"
+      responses:
+        "200":
+          description: "OK"
   /{graph}/publication/{id}:
     get:
       summary: "GET {graph}/publication/{id}"

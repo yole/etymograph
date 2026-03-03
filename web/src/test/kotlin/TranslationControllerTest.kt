@@ -47,4 +47,23 @@ class TranslationControllerTest {
         Assert.assertEquals(1, first.anchorEndIndex)
         Assert.assertEquals(3, second.anchorEndIndex)
     }
+
+    @Test
+    fun testDeleteTranslation() {
+        val fixture = QTestFixture()
+
+        val corpusController = CorpusController()
+        val corpusParams = CorpusController.CorpusTextParams(text = "Ai laurie lantar")
+        val corpusTextViewModel = corpusController.newText(fixture.graph, "q", corpusParams)
+
+        val translationController = TranslationController()
+        val added = translationController.addTranslation(
+            fixture.graph,
+            TranslationController.TranslationParams(corpusTextViewModel.id, "Golden fall", "", 1)
+        )
+        translationController.deleteTranslation(fixture.graph, added.id)
+
+        val updated = corpusController.textJson(fixture.graph, corpusTextViewModel.id)
+        Assert.assertEquals(0, updated.translations.size)
+    }
 }
